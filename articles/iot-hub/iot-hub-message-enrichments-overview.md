@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub üzenet-gazdagítás áttekintése
-description: Az üzenetek bővítésének áttekintése az Azure IoT Hub üzeneteihez
+description: Ez a cikk az üzenetek bővítéseit jeleníti meg, amelyek lehetővé teszik a IoT Hub számára, hogy az üzeneteket a kijelölt végpontnak való küldés előtt további információkkal lehessen lepecsételni.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177994"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005826"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Az eszközről a felhőbe IoT Hub üzenetek üzenet-gazdagítása (előzetes verzió)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Üzenetek bővítése az eszközről a felhőbe IoT Hub üzenetekhez
 
 Az *üzenet-gazdagítás* a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen *lepecsételni* . Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz.
 
@@ -29,7 +29,7 @@ Az üzenetek dúsításának három fő eleme van:
 
 * Egy vagy több olyan [végpont](iot-hub-devguide-endpoints.md) , amelyhez a dúsítást alkalmazni kell.
 
-A **kulcs** egy karakterlánc. A kulcsok csak alfanumerikus karaktereket vagy ezeket a speciális karaktereket tartalmazhatják: kötőjel (`-`), aláhúzás (`_`) és pont (`.`).
+A **kulcs** egy karakterlánc. A kulcsok csak alfanumerikus karaktereket vagy a speciális karaktereket tartalmazhatják: kötőjel (`-`), aláhúzás (`_`) és pont (`.`).
 
 Az **érték** az alábbi példák bármelyike lehet:
 
@@ -81,10 +81,6 @@ Az üzenet-gazdagítás kipróbálásával kapcsolatos információkért lásd: 
 ## <a name="pricing"></a>Díjszabás
 
 Az üzenetek dúsítása díjmentesen elérhető. Jelenleg akkor számítunk fel díjat, amikor üzenetet küld egy IoT Hubnak. Erre az üzenetre csak egyszer kell fizetnie, még akkor is, ha az üzenet több végpontra is érvényes.
-
-## <a name="availability"></a>Elérhetőség
-
-Ez a funkció előzetes verzióban érhető el, és minden régióban elérhető az USA keleti régiója, az USA nyugati régiója, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china)és az [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/)kivételével.
 
 ## <a name="next-steps"></a>Következő lépések
 

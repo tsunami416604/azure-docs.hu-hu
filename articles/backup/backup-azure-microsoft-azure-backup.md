@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747427"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012928"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -48,7 +48,7 @@ A Azure Backup Server működésének első lépése a Windows Server beállít�
 
 ### <a name="using-a-server-in-azure"></a>Kiszolgáló használata az Azure-ban
 
-Azure Backup Server futtatására szolgáló kiszolgáló kiválasztásakor javasoljuk, hogy a Windows Server 2016 Datacenter vagy a Windows Server 2019 Datacenter katalógusával kezdjen. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt az Azure-ban javasolt virtuális gép használatának megkezdéséhez, még akkor is, ha korábban még nem használta az Azure-t. A kiszolgáló virtuális gépnek ajánlott minimális követelményei: Standard_A4_v2 négy maggal és 8 GB RAM-mal.
+Azure Backup Server futtatására szolgáló kiszolgáló kiválasztásakor javasoljuk, hogy a Windows Server 2016 Datacenter vagy a Windows Server 2019 Datacenter katalógusával kezdjen. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt az Azure-ban javasolt virtuális gép használatának megkezdéséhez, még akkor is, ha korábban még nem használta az Azure-t. A kiszolgáló virtuális géphez (VM) ajánlott minimális követelmények: Standard_A4_v2 négy maggal és 8 GB RAM-mal.
 
 A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A cikk a [DPM Azure-beli virtuális gépként való telepítésével](https://technet.microsoft.com/library/jj852163.aspx)segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
 
@@ -95,7 +95,7 @@ A tárreplikációs beállítás szerkesztése:
 
 ### <a name="downloading-the-software-package"></a>A szoftvercsomag letöltése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 3. lépéssel. Ha nincs megnyitva Recovery Services tároló, de a Azure Portal, a főmenüben kattintson a **Tallózás**gombra.
 
    * Az erőforrások listájába írja be a következőt: **Recovery Services**.
@@ -118,7 +118,7 @@ A tárreplikációs beállítás szerkesztése:
 
     A megnyíló **első lépések a Backup (biztonsági mentés** ) paneljén a **biztonsági mentési célok** automatikusan ki lesznek választva.
 
-    ![Backup-goals-default-Opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. A **biztonsági mentés célja** panelen, a **Hol van a számítási feladatok futtatása** menü, válassza **a**helyszíni lehetőséget.
 
@@ -185,14 +185,14 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
 
     Az SSRS konfigurálásához használja a következő értékeket:
     * Szolgáltatásfiók: a "beépített fiók használata" hálózati szolgáltatásnak kell lennie
-    * Webszolgáltatás URL-címe: a virtuális könyvtárnak ReportServer_ kell lennie<SQLInstanceName>
-    * Adatbázis: a DatabaseName reportserver $<SQLInstanceName>
-    * Webportál URL-címe: a virtuális könyvtárnak Reports_ kell lennie<SQLInstanceName>
+    * Webszolgáltatás URL-címe: a virtuális könyvtárnak ReportServer_\<SQLInstanceName kell lennie >
+    * Adatbázis: a DatabaseName reportserver $\<SQLInstanceName >
+    * Webes portál URL-címe: a "virtuális könyvtár" Reports_\<SQLInstanceName kell lennie >
 
     [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
 
     > [!NOTE]
-    > A MABS-adatbázisként használt SQL Server licencelését a [Microsoft Online Services feltételei](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST) szabályozzák. Az OST szerint a MABS-mel rendelkező SQL Server csak a MABS-adatbázisként használható.
+    > A MABS-adatbázisként használt SQL Server licencelését a [Microsoft Online Services feltételei](https://www.microsoft.com/licensing/product-licensing/products) (OST) szabályozzák. Az OST szerint a MABS-mel rendelkező SQL Server csak a MABS-adatbázisként használható.
 
 4. Adja meg Microsoft Azure Backup-kiszolgáló fájljainak telepítéséhez szükséges helyet, majd kattintson a **tovább**gombra.
 
@@ -336,7 +336,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
    >
    > Ne lépjen ki az SQL-példány frissítésekor, a kilépés eltávolítja az SQL Reporting-példányt, ezért a MABS újrafrissítésére tett kísérlet sikertelen lesz.
 
-   Fontos Tudnivaló:
+
 
    > [!IMPORTANT]
    >
@@ -353,7 +353,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 Ha Microsoft Azure Backup kiszolgáló hibával leáll a telepítési fázisban (vagy biztonsági mentés vagy visszaállítás), további információért tekintse meg ezt a [hibakódot tartalmazó dokumentumot](https://support.microsoft.com/kb/3041338) .
 [Azure Backup kapcsolódó gyakori kérdések](backup-azure-backup-faq.md) is megtekinthetők
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Részletes információkat a [környezet DPM való előkészítéséről](https://technet.microsoft.com/library/hh758176.aspx) a Microsoft TechNet webhelyén talál. Emellett olyan támogatott konfigurációkról is tartalmaz információkat, amelyeken Azure Backup Server telepíthető és használható. Számos művelet végrehajtásához több [PowerShell-parancsmagot](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) is használhat.
 

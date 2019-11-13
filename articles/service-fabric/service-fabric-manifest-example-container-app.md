@@ -1,5 +1,5 @@
 ---
-title: Az Azure Service Fabric Container Application manifest-példák | Microsoft Docs
+title: Példák az Azure Service Fabric Container Application alkalmazásra – jegyzékfájlok
 description: Megtudhatja, hogyan konfigurálhatja az alkalmazás-és szolgáltatás-jegyzékfájlok beállításait egy többtárolós Service Fabric alkalmazáshoz.
 services: service-fabric
 documentationcenter: na
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650608"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013252"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
 A következő példák a többtárolós Service Fabric alkalmazás alkalmazás-és szolgáltatási jegyzékfájlját szemléltetik. A példák célja, hogy megmutassa, milyen beállítások érhetők el, és hogyan használhatja őket. Ezek az alkalmazások és szolgáltatások jegyzékfájli a [Windows Server 2016-tároló mintájának](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) jegyzékfájlján alapulnak.
 
 A következő funkciók jelennek meg:
 
-|Jegyzékfájl|Szolgáltatások|
+|Jegyzék|Szolgáltatások|
 |---|---|
-|[Alkalmazásjegyzék](#application-manifest)| [felülbírálja a környezeti változókat](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [konfigurálhatja a tároló port – gazdagép hozzárendelését](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), konfigurálhatja a [tároló beállításjegyzék](service-fabric-get-started-containers.md#configure-container-repository-authentication)-hitelesítését, az [erőforrás](service-fabric-resource-governance.md)-szabályozást, az [elkülönítési mód beállítása](service-fabric-get-started-containers.md#configure-isolation-mode), az [operációs rendszer-specifikus tároló rendszerképek](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[Alkalmazásjegyzék](#application-manifest)| a [környezeti változók felülbírálása](service-fabric-get-started-containers.md#configure-and-set-environment-variables), a [tároló-portok közötti megfeleltetés konfigurálása](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), a [tároló beállításjegyzék-hitelesítésének](service-fabric-get-started-containers.md#configure-container-repository-authentication)konfigurálása, az [erőforrás-szabályozás](service-fabric-resource-governance.md), az [elkülönítési mód beállítása](service-fabric-get-started-containers.md#configure-isolation-mode), az [operációs rendszer Build-specifikus rendszerképének megadása](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService szolgáltatás jegyzékfájlja](#frontendservice-service-manifest)| [környezeti változók beállítása](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [végpont konfigurálása](service-fabric-get-started-containers.md#configure-communication), parancsok továbbítása a tárolóhoz, [tanúsítvány importálása tárolóba](service-fabric-securing-containers.md)| 
 |[BackEndService szolgáltatás jegyzékfájlja](#backendservice-service-manifest)|[környezeti változók beállítása](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [végpont konfigurálása](service-fabric-get-started-containers.md#configure-communication), [kötet-illesztőprogram konfigurálása](service-fabric-containers-volume-logging-drivers.md)| 
 
@@ -281,7 +281,7 @@ A szolgáltatás-fejlesztő által létrehozott szolgáltatási jegyzékfájl im
 A szolgáltatás jegyzékfájljának importálása hivatkozással. Jelenleg a szolgáltatás jegyzékfájljának (ServiceManifest. xml) jelen kell lennie a Build csomagban. További információ: [ServiceManifestRef elem](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="policies-element"></a>Szabályzatok elem
-A szabályzatok (a végponti kötés, a csomagok megosztása, a futtatási és a biztonsági hozzáférés) ismertetése az importált szolgáltatás jegyzékfájlján. További információ: szabályzatok [elem](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
+A szabályzatok (a végponti kötés, a csomagok megosztása, a futtatási és a biztonsági hozzáférés) ismertetése az importált szolgáltatás jegyzékfájlján. További információ: [szabályzatok elem](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy Element
 Meghatározza a teljes szolgáltatáscsomag szintjén alkalmazott erőforrás-irányítási házirendet. További információ: [ServicePackageResourceGovernancePolicy elem](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
@@ -308,7 +308,7 @@ Illesztőprogram-beállítások, amelyeket át kell adni az illesztőprogramnak.
 Előfordulhat, hogy a Windows Server-tárolók nem kompatibilisek az operációs rendszer különböző verzióival.  Egy tárolóban több operációsrendszer-lemezképet is megadhat, és címkézheti azokat az operációs rendszer kiépítési verzióival. Szerezze be az operációs rendszer Build verzióját a "winver" parancs futtatásával egy Windows-parancssorban. Ha az alapul szolgáló operációs rendszer a 16299-es verzió (Windows Server 1709-es verzió), Service Fabric az operációs rendszer = "16299" címkével rendelkező tároló rendszerképét választja. A címkézetlen tároló képe az operációs rendszer összes verziójában működik, és felülbírálja a szolgáltatás jegyzékfájljában megadott képet. További információ: [ImageOverrides elem](service-fabric-service-model-schema-elements.md#ImageOverridesElementImageOverridesTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="image-element"></a>Képelem
-Az operációsrendszer-Build verziószámának megfelelő tároló-rendszerkép. Ha nincs megadva az operációs rendszer attribútuma, a rendszer a tároló rendszerképét feltételezi, hogy az operációs rendszer összes verziójában működik, és felülbírálja a szolgáltatás jegyzékfájljában megadott képet. További információ: képelem [](service-fabric-service-model-schema-elements.md#ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType)
+Az operációsrendszer-Build verziószámának megfelelő tároló-rendszerkép. Ha nincs megadva az operációs rendszer attribútuma, a rendszer a tároló rendszerképét feltételezi, hogy az operációs rendszer összes verziójában működik, és felülbírálja a szolgáltatás jegyzékfájljában megadott képet. További információ: [képelem](service-fabric-service-model-schema-elements.md#ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType)
 
 ### <a name="environmentoverrides-element"></a>EnvironmentOverrides elem
  További információ: [EnvironmentOverrides elem](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
@@ -319,7 +319,7 @@ Környezeti változó. További információ: [EnvironmentVariable elem](service
 ### <a name="certificateref-element"></a>CertificateRef elem
 Egy olyan X509-tanúsítvánnyal kapcsolatos információt ad meg, amely a tároló-környezet számára elérhető. A tanúsítványt az összes fürtcsomópont LocalMachine-tárolójába kell telepíteni.
 Az alkalmazás indításakor a futtatókörnyezet beolvassa a tanúsítványt, és létrehozza a PFX-fájlt és-jelszót (Windows rendszeren) vagy egy PEM-fájlt (Linux rendszeren).
-A PFX-fájl és a jelszó a tárolóban a Certificates_ServicePackageName_CodePackageName_CertName_PFX és a Certificates_ServicePackageName_CodePackageName_CertName_Password környezeti változók használatával érhető el. A PEM-fájl a tárolóban a Certificates_ServicePackageName_CodePackageName_CertName_PEM és a Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey környezeti változók használatával érhető el. További információ: [CertificateRef elem](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+A PFX-fájl és a jelszó a tárolóban a Certificates_ServicePackageName_CodePackageName_CertName_PFX és Certificates_ServicePackageName_CodePackageName_CertName_Password környezeti változók használatával érhető el. A PEM-fájl a tárolóban Certificates_ServicePackageName_CodePackageName_CertName_PEM és Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey környezeti változók használatával érhető el. További információ: [CertificateRef elem](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="defaultservices-element"></a>DefaultServices elem
 Azokat a szolgáltatási példányokat deklarálja, amelyek automatikusan létrejönnek, amikor egy alkalmazás ezen az alkalmazási típuson jön létre. További információ: [DefaultServices elem](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
@@ -351,7 +351,7 @@ A BelépésiPont által megadott végrehajtható fájl általában a hosszan fut
  További információ: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName elem
-A tárház és a rendszerkép https://hub.docker.com on vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+A tárház és a rendszerkép https://hub.docker.com vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables elem
 Adja át a környezeti változókat a tárolóba vagy az exe-be.  További információ: [EnvironmentVariables elem](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -366,10 +366,10 @@ Egy Name attribútum által elnevezett mappát deklarál, amely egy Settings. xm
 A Name attribútum által elnevezett mappát deklarál, amely statikus adatfájlokat tartalmaz. Service Fabric újrahasznosítja a gazdagépen és a támogatási csomagokban megadott összes EXEs és DLLHOSTs, ha a szolgáltatás jegyzékfájljában felsorolt adatcsomagok bármelyike frissül. További információ: [Datapackage szakaszából elem](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem
-Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: Resources [Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: [Resources Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="endpoints-element"></a>Végpontok eleme
-Meghatározza a szolgáltatáshoz tartozó végpontokat. További információ: végpontok [eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+Meghatározza a szolgáltatáshoz tartozó végpontokat. További információ: [végpontok eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
 ### <a name="endpoint-element"></a>Végpont eleme
 További információ: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
@@ -395,10 +395,10 @@ A BelépésiPont által megadott végrehajtható fájl általában a hosszan fut
 További információ: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName elem
-A tárház és a rendszerkép https://hub.docker.com on vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+A tárház és a rendszerkép https://hub.docker.com vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Parancsok elem
-Adja meg a parancsok vesszővel tagolt listáját a tárolóhoz. További információ: commands [Element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Adja meg a parancsok vesszővel tagolt listáját a tárolóhoz. További információ: [commands Element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables elem
 Adja át a környezeti változókat a tárolóba vagy az exe-be.  További információ: [EnvironmentVariables elem](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -410,10 +410,10 @@ Környezeti változó. További információ: [EnvironmentVariable elem](service
 Egy Name attribútum által elnevezett mappát deklarál, amely egy Settings. xml fájlt tartalmaz. Ez a fájl a felhasználó által definiált kulcs-érték párokat tartalmazó részeket tartalmazza, amelyeket a folyamat futási időben tud visszaolvasni. Ha a frissítés során csak a ConfigPackage verziója módosult, akkor a futó folyamat nem indul újra. Ehelyett a visszahívás értesíti a konfigurációs beállítások megváltozásának folyamatát, hogy azok dinamikusan is újratölthetők legyenek. További információ: [ConfigPackage elem](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Erőforrások elem
-Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: Resources [Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Ismerteti a szolgáltatás által használt erőforrásokat, amelyek a lefordított kód módosítása nélkül deklarálható, és a szolgáltatás telepítésekor módosulnak. Az ehhez az erőforrásokhoz való hozzáférést az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai és házirendjei szakaszban találja. További információ: [Resources Element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="endpoints-element"></a>Végpontok eleme
-Meghatározza a szolgáltatáshoz tartozó végpontokat. További információ: végpontok [eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+Meghatározza a szolgáltatáshoz tartozó végpontokat. További információ: [végpontok eleme](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
 ### <a name="endpoint-element"></a>Végpont eleme
  További információ: [végpont elem](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)

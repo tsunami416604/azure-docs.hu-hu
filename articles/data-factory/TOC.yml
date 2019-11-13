@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: Adatfolyam-teljesítmény
               href: concepts-data-flow-performance.md
-            - name: Csomópontok áthelyezése
-              href: concepts-data-flow-move-nodes.md
+            - name: A Graph felügyelete
+              href: concepts-data-flow-manage-graph.md
             - name: Kifejezésszerkesztő
               href: concepts-data-flow-expression-builder.md
             - name: Kifejezés nyelve
@@ -616,6 +616,8 @@
           href: connector-troubleshoot-guide.md
         - name: Az Azure-SSIS integrációs modul kezelésével kapcsolatos hibaelhárítás
           href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Saját üzemeltetésű integrációs modul hibaelhárítása
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Csomagvégrehajtás hibaelhárítása az Azure-SSIS integrációs modulban
           href: ssis-integration-runtime-ssis-activity-faq.md
         - name: Adatfolyamok hibaelhárítása
@@ -646,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referencia
   items:
+    - name: Adatfolyamszkript
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

@@ -1,5 +1,5 @@
 ---
-title: Hitelesítés és engedélyezés a Azure Time Series Insights API használatával | Microsoft Docs
+title: API-hitelesítés és-engedélyezés – Azure Time Series Insights | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hitelesítés és engedélyezés egy olyan egyéni alkalmazáshoz, amely meghívja a Azure Time Series Insights API-t.
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4fd68f770cbe48b15646ec41c0bf94be5e760a50
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 37a409ab28728fe40c5f054d5e9a40cb20774450
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990184"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007116"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés Azure Time Series Insights API-hoz
 
@@ -63,11 +63,11 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
 1. A **felhasználó kiválasztása** párbeszédpanelen illessze be az **alkalmazás nevét** vagy az **alkalmazás azonosítóját** a Azure Active Directory-alkalmazás regisztrációja szakaszba.
 
-   [alkalmazás keresése![a felhasználó kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [alkalmazás keresése ![a felhasználó kiválasztása párbeszédpanelen](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
 1. Válassza ki a szerepkört. Válassza ki az **olvasót** az adatlekérdezéshez vagy a **közreműködőhöz** az adatgyűjtés és a hivatkozási adatváltozások lekérdezéséhez. Kattintson az **OK** gombra.
 
-   [a felhasználói szerepkör kiválasztása párbeszédpanel![válassza az olvasó vagy közreműködő elemet](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [a felhasználói szerepkör kiválasztása párbeszédpanel ![válassza az olvasó vagy közreműködő elemet](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
 1. Mentse a szabályzatot az **OK gombra**kattintva.
 
@@ -105,7 +105,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
 Ez a szakasz a gyakori HTTP-kérelmek fejléceit és paramétereit ismerteti a Time Series Insights GA és az előzetes verziójú API-k használatával végzett lekérdezések végrehajtásához. Az API-specifikus követelmények részletesebben szerepelnek a [Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/)dokumentációjában.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 Ha hitelesített lekérdezéseket szeretne végrehajtani a [Time Series INSIGHTS REST API](https://docs.microsoft.com/rest/api/time-series-insights/)-kkal szemben, egy érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az [engedélyezési fejlécben](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) az Ön által választott Rest-ügyfél C#(Poster, JavaScript,) használatával. 
 

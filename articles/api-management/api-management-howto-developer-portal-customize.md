@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620426"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012907"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
 A fejlesztői portál egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza. Ahol az API-felhasználók felfedezhetik az API-kat, megtudhatják, hogyan használhatják őket, és hogyan kérhetnek hozzáférést.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A fejlesztői portál felügyelt verziójának elérése
@@ -38,7 +38,7 @@ A fejlesztői portálról az [Azure API Management fejlesztői portál áttekint
 
 > [!WARNING]
 > A fejlesztői portál jelenleg API Management szolgáltatások számára van bevezetve.
-> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetésének befejezése a 2019. november 11-én történik. 
+> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetése várhatóan a 2019. november 22-én fejeződik be. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -127,7 +127,7 @@ Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a lát
 
 A portál közzététele után a felügyeleti panellel megegyező URL-címen érheti el, például `https://contoso-api.developer.azure-api.net`. Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fejlesztői portálról:
 

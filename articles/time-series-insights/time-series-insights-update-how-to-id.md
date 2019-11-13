@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások idősorozat-azonosító kiválasztásához a Azure Time Series Insights Preview-ban | Microsoft Docs
-description: Az idősorozat-azonosító Azure Time Series Insights előzetes verzióban való kiválasztásakor ajánlott eljárások ismertetése.
+title: Ajánlott eljárások idősorozat-AZONOSÍTÓk kiválasztásához – Azure Time Series Insights | Microsoft Docs
+description: Ismerje meg az idősorozat-azonosító Azure Time Series Insights előzetes verzióban való kiválasztásakor ajánlott eljárásokat.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,20 +10,20 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48f1fb542f5e28c7b8130d03cd86442390a8ad56
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989940"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012496"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Ajánlott eljárások idősorozat-AZONOSÍTÓk kiválasztásához
+# <a name="best-practices-for-choosing-a-time-series-id"></a>A Time Series ID kiválasztására vonatkozó ajánlott eljárások
 
 Ez a cikk összefoglalja az idősorozat-azonosító fontosságát a Azure Time Series Insights előzetes verziójának környezetében, valamint az ajánlott eljárásokat az első kiválasztásához.
 
 ## <a name="choose-a-time-series-id"></a>Time Series-azonosító kiválasztása
 
-Az idősorozat-azonosító kiválasztása olyan, mint egy adatbázis partíciós kulcsának kiválasztása. Time Series Insights előnézeti környezet létrehozásakor ki kell választani. Ez *egy nem* módosítható tulajdonság. Ez azt ismerteti, hogy miután létrehozott egy Time Series Insights előnézeti környezetet egy idősorozat-AZONOSÍTÓval, az adott környezet esetében nem módosítható. 
+A Time Series ID kiválasztása hasonlóan olyan partíciókulcsot, egy adatbázis van. Time Series Insights előnézeti környezet létrehozásakor ki kell választani. Ez *egy nem* módosítható tulajdonság. Ez azt ismerteti, hogy miután létrehozott egy Time Series Insights előnézeti környezetet egy idősorozat-AZONOSÍTÓval, az adott környezet esetében nem módosítható. 
 
 > [!IMPORTANT]
 > Az idősorozat-azonosító megkülönbözteti a kis-és nagybetűket.
@@ -31,7 +31,7 @@ Az idősorozat-azonosító kiválasztása olyan, mint egy adatbázis partíciós
 A megfelelő idősorozat-azonosító kiválasztása kritikus. Íme néhány ajánlott eljárás, amelyet követheti:
 
 * Válasszon egy olyan partíciót, amely sok különböző értékkel rendelkezik (például több száz vagy ezer). Sok esetben ez lehet az eszköz azonosítója, az érzékelő azonosítója vagy a címke azonosítója a JSON-ban.
-* Az idősorozat-AZONOSÍTÓnak egyedinek kell lennie az [Idősorozat-modell](./time-series-insights-update-tsm.md)levél csomópontjának szintjén.
+* A Time Series azonosító egyedinek kell lennie a levél csomópont szintjén a [Idősorozat-modell](./time-series-insights-update-tsm.md).
 * Ha az eseményforrás egy IoT hub, az idősorozat-azonosító valószínűleg *iothub-kapcsolat-eszköz-azonosító*lesz.
 * Az idősorozat-azonosító tulajdonságának Name karakterláncának karakteres korlátja 128. Az idősorozat-azonosító tulajdonságának értékeként a karakteres korlát 1 024.
 * Ha hiányzik az idősorozat-azonosító egyedi tulajdonságának értéke, akkor a rendszer null értékként kezeli, és az egyediségi megkötésre vonatkozó szabályt követi.
@@ -51,7 +51,7 @@ Az alábbi forgatókönyvek több Key tulajdonság kiválasztását írják le i
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>2\. példa: idősorozat-azonosító összetett kulccsal
 
-* Több tulajdonságot is meg kell adni az azonos adatflottaon belül. 
+* Az eszközök a azonos flotta belül egyedinek kell lennie több tulajdonságra van szüksége. 
 * Az intelligens épületek gyártója és az érzékelők üzembe helyezése minden helyiségben. Minden helyiségben általában ugyanazok az értékek szerepelnek a **sensorId**. Ilyenek például a következők: **sensor1**, **sensor2**és **sensor3**.
 * Az épület átfedésben van az alapszintű és a szobai számokkal a **flrRm**tulajdonságban található helyek között. Ezek a számok olyan értékekkel rendelkeznek, mint az **1a**, **2b**és **3A**.
 * Van egy tulajdonsága, **helye**, amely olyan értékeket tartalmaz, mint a **Redmond**, a **Barcelona**és a **Tokió**. Az egyediség létrehozásához a következő három tulajdonságot kell kijelölnie idősorozat-azonosító kulcsaiként: **sensorId**, **flrRm**és **Location**.

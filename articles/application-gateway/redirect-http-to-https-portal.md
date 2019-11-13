@@ -1,18 +1,18 @@
 ---
-title: Application gateway létrehozása a HTTP – HTTPS átirányításról, az Azure portal használatával
+title: HTTP – HTTPS-átirányítás a portálon – Azure Application Gateway
 description: Ismerje meg, hogyan hozhat létre egy application gateway átirányított érkező HTTP – HTTPS az Azure portal használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/7/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101461"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012868"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Application gateway létrehozása a HTTP – HTTPS átirányításról, az Azure portal használatával
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ehhez az oktatóanyaghoz az Azure PowerShell-modul verzióját 1.0.0 vagy újabb, hozzon létre egy tanúsítványt, és telepítse az IIS szolgáltatást. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ebben az oktatóanyagban a parancsok futtatásához is futtatni szeretné `Login-AzAccount` kapcsolat létrehozása az Azure-ral.
+Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-as vagy újabb verziójára van szükség a tanúsítvány létrehozásához és az IIS telepítéséhez. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ebben az oktatóanyagban a parancsok futtatásához is futtatni szeretné `Login-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
@@ -90,7 +90,7 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 7. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 8. A **előtérbeli IP-konfiguráció**, győződjön meg, hogy **IP-cím típusa** van **nyilvános**, és **új létrehozása** van kiválasztva. Adja meg *myAGPublicIPAddress* neve. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 9. Alatt **figyelőkonfiguráció**, jelölje be **HTTPS**, majd **válasszon ki egy fájlt** , és keresse meg a *c:\appgwcert.pfx* fájl és Válassza ki **nyílt**.
-10. Típus *appgwcert* a tanúsítvány neve és *Azure123456!* .
+10. Típus *appgwcert* a tanúsítvány neve és *Azure123456!* jelszót.
 11. Hagyja meg a webalkalmazás-tűzfal le van tiltva, és válassza ki **OK**.
 12. Tekintse át a beállításokat az Összegzés lapon, és válassza ki **OK** a hálózati erőforrások és az application gateway létrehozásához. Az application gateway hozhatók létre, várjon, amíg az üzembe helyezés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
 
@@ -208,7 +208,7 @@ Miután megváltoztatta a példányok IIS-t, ismét frissítenie kell a méretez
 3. Példány is, majd válassza ki és **frissítése**.
 4. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Az alkalmazás nyilvános IP-cím is kérhet a application gateway – áttekintés oldalra.
 
@@ -223,6 +223,6 @@ Az alkalmazás nyilvános IP-cím is kérhet a application gateway – áttekint
 
    ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [application gateway létrehozása belső átirányítás](redirect-internal-site-powershell.md).

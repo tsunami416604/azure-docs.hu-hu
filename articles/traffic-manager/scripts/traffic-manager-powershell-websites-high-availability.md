@@ -1,10 +1,10 @@
 ---
-title: Az Azure PowerShell-példaszkript – forgalom irányítása az alkalmazások magas rendelkezésre állású |} A Microsoft Docs
-description: Az Azure PowerShell-példaszkript – forgalom irányítása az alkalmazások magas rendelkezésre állás
+title: Forgalom átirányítása a HA alkalmazásokhoz – Azure PowerShell – Traffic Manager
+description: Azure PowerShell parancsfájl-minta – az alkalmazások magas rendelkezésre állásának irányítására szolgáló forgalom
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
-manager: twooley
+manager: kumudD
 editor: ''
 tags: azure-infrastructure
 ms.assetid: ''
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: allensu
-ms.openlocfilehash: 1c04859e2fe8841eb679f0b3e22b54ce71f88230
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd81ef459d4b3a60d5da3dff9fff4119392ac8cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050976"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014638"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Forgalom irányítása az Azure PowerShell-lel alkalmazások magas rendelkezésre állás
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állásához Azure PowerShell használatával
 
-Ez a szkript létrehoz egy erőforráscsoportot, két app service-csomagot, két webalkalmazást, egy traffic manager-profilt és két traffic manager-végpontot. A TRAFFIC Manager irányítja a forgalmat az alkalmazás egy adott régióban, az elsődleges régióban, és a másodlagos régióba, amikor az alkalmazás az elsődleges régióban nem érhető el. Előtt hajtsa végre a parancsprogramot, módosítania kell a MyWebApp, MyWebAppL1 és MyWebAppL2 értékek egyedi értékeket az Azure-ban. A szkript futtatása után az alkalmazás az elsődleges régióban, az az URL-cím mywebapp.trafficmanager.net érheti el.
+Ez a szkript létrehoz egy erőforráscsoportot, két app Service-csomagot, két webalkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. Traffic Manager a forgalmat az egyik régióban az elsődleges régióként, a másodlagos régióba irányítja, ha az elsődleges régióban lévő alkalmazás nem érhető el. A szkript végrehajtása előtt módosítania kell a MyWebApp, a MyWebAppL1 és a MyWebAppL2 értékeket az Azure-ban lévő egyedi értékekre. A szkript futtatása után az elsődleges régióban elérheti az alkalmazást az URL-mywebapp.trafficmanager.net.
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
 
@@ -52,13 +52,13 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy webal
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. Ez olyan, mint az Azure-alapú webes alkalmazás kiszolgálófarmot. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy Azure-webalkalmazást az App Service-csomag belül. |
-| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Létrehoz egy Azure-webalkalmazást az App Service-csomag belül. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. Ez olyan, mint egy kiszolgálófarm az Azure-webalkalmazáshoz. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy Azure-webalkalmazást a App Service tervben. |
+| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Létrehoz egy Azure-webalkalmazást a App Service tervben. |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Létrehoz egy Azure Traffic Manager-profilt. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/overview).
 

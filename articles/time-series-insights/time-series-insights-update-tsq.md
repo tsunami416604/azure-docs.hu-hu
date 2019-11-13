@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights előzetes Adatlekérdezési szolgáltatás | Microsoft Docs
-description: Azure Time Series Insights az előnézeti adatlekérdezést.
+title: Adatlekérdezés az előzetes verzióban – Azure Time Series Insights | Microsoft Docs
+description: További információ a Azure Time Series Insights előzetes adatlekérdezésről.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832424"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006312"
 ---
-# <a name="data-querying"></a>Adatok lekérdezése
+# <a name="data-querying-in-azure-time-series-insights-preview"></a>Adatlekérdezés Azure Time Series Insights előzetes verzióban
 
 A Azure Time Series Insights Preview lehetővé teszi az adatlekérdezést a környezetben tárolt eseményeken és metaadatokon a nyilvános felületi API-kon keresztül. Ezeket az API-kat a [Time Series Insights Preview Explorerben](./time-series-insights-update-explorer.md)is használják.
 
@@ -71,7 +71,7 @@ A következő Time Series lekérdezési API-k érhetők el. Ezek az API-k a Time
 
   Az összesítő sorozat API az egyes változók idősorozatának értékét adja vissza az egyes intervallumokhoz. Az értékek az idősorozat-azonosító és a megadott változók halmazán alapulnak. Az összesítő sorozat API az idősorozat-modellben tárolt változók használatával csökkenti az adatmennyiséget, vagy beágyazott vagy összegzett adatokat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról Azure Time Series Insights előzetes verzióban.
 - Olvassa el a Time Series Insights előzetes verziójának [adatmodellezési](./time-series-insights-update-tsm.md) cikkét.

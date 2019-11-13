@@ -1,20 +1,19 @@
 ---
-title: A VMware és a fizikai kiszolgáló helyreállítási kiszolgálójának kezelése a Azure Site Recovery | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan kezelhető egy meglévő konfigurációs kiszolgáló a VMware virtuális gépek és fizikai kiszolgálók Azure-ba történő helyreállításához Azure Site Recovery használatával.
+title: A konfigurációs kiszolgáló kezelése a vész-helyreállításhoz Azure Site Recovery
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791820"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954358"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>A VMware virtuális gép/fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
 Ha [Azure site Recoveryt](site-recovery-overview.md) használ a VMWare virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállításához, a helyszíni konfigurációs kiszolgálót kell beállítania. A konfigurációs kiszolgáló koordinálja a helyszíni VMware és az Azure közötti kommunikációt, és felügyeli az adatreplikációt. Ez a cikk összefoglalja a konfigurációs kiszolgáló üzembe helyezése után történő felügyeletének gyakori feladatait.
 
@@ -72,7 +71,7 @@ Ha kihagyta a hitelesítő adatok hozzáadását a konfigurációs kiszolgáló 
 
 1. [Bejelentkezés](#access-configuration-server)után válassza a **virtuális gép hitelesítő adatainak kezelése**lehetőséget.
 2. Kattintson a **virtuális gép hitelesítő adatainak hozzáadása**lehetőségre.
-    ![Add-Mobility-hitelesítő adatok](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Adja meg az új hitelesítő adatokat, és kattintson a **Hozzáadás**gombra.
 
 A CSPSConfigtool. exe használatával is hozzáadhat hitelesítő adatokat.
@@ -139,7 +138,7 @@ Ha szükséges, a konfigurációs kiszolgáló újraregisztrálása ugyanabban a
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Példa:
+A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Például:
 
 - Ha 9,7, 9,8, 9,9 vagy 9,10-et futtat, közvetlenül is frissítheti a 9,11-es verzióra.
 - Ha a 9,6-es vagy korábbi verzióját futtatja, és a 9,11-re szeretne frissíteni, először frissítenie kell az 9,7-es verzióra. 9,11 előtt.
@@ -187,26 +186,26 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Type (Típus) | Leírás| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
-| /ServerMode|Szükséges|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
-|/InstallLocation|Szükséges|Az összetevők telepítési mappája| A számítógép bármely mappája|
-|/MySQLCredsFilePath|Szükséges|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
-|/VaultCredsFilePath|Szükséges|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
-|/EnvType|Szükséges|A védelemmel ellátni kívánt környezet típusa |VMware<br>NonVMware|
-|/PSIP|Szükséges|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
-|/CSIP|Szükséges|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
-|/PassphraseFilePath|Szükséges|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
-|/BypassProxy|Választható|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
-|/ProxySettingsFilePath|Választható|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
-|DataTransferSecurePort|Választható|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
-|/SkipSpaceCheck|Választható|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
-|/AcceptThirdpartyEULA|Szükséges|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
-|/ShowThirdpartyEULA|Választható|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
+| /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
+|/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
+|/MySQLCredsFilePath|Kötelező|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
+|/VaultCredsFilePath|Kötelező|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
+|/EnvType|Kötelező|A védelemmel ellátni kívánt környezet típusa |VMware<br>NonVMware|
+|/PSIP|Kötelező|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
+|/CSIP|Kötelező|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
+|/PassphraseFilePath|Kötelező|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
+|/BypassProxy|Optional|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
+|/ProxySettingsFilePath|Optional|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
+|DataTransferSecurePort|Optional|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
+|/SkipSpaceCheck|Optional|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
+|/AcceptThirdpartyEULA|Kötelező|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
+|/ShowThirdpartyEULA|Optional|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
 
 
 
-### <a name="create-file-input-for-mysqlcredsfilepath"></a>Fájl bemenetének létrehozása a MYSQLCredsFilePath
+### <a name="create-file-input-for-mysqlcredsfilepath"></a>Create file input for MYSQLCredsFilePath
 
 A MySQLCredsFilePath paraméter bemenetként veszi fel a fájlt. Hozza létre a fájlt a következő formátumban, és adja át bemeneti MySQLCredsFilePath paraméterként.
 ```ini

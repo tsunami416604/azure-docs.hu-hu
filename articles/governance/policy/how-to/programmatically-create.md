@@ -1,17 +1,14 @@
 ---
 title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése az Azure Policyvel.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 047e9cab8d7776fc3b5353aebc571e28ad780ae8
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977951"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959419"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -90,8 +87,8 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
 
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
-   A `New-AzPolicyAssignment` **hatókör** -paramétere felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le a `{rName}`, `{rgName}`, `{subId}` és `{mgName}` értéket az erőforrás nevével, az erőforráscsoport nevével, az előfizetés-AZONOSÍTÓval és a felügyeleti csoport nevével.
-   a `{rType}` a virtuális gép erőforrás- **típusával** (például `Microsoft.Compute/virtualMachines`) lesz lecserélve.
+   A `New-AzPolicyAssignment` **hatókör** -paramétere felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`, `{rgName}`, `{subId}`és `{mgName}` értékét az erőforrás nevére, az erőforráscsoport nevére, az előfizetés-AZONOSÍTÓra és a felügyeleti csoport nevére.
+   a `{rType}` helyére az **erőforrás erőforrástípus,** például egy virtuális gép `Microsoft.Compute/virtualMachines`.
 
    - Erőforrás-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -219,7 +216,7 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A (z) `az policy assignment create` **hatókör-** paramétere felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le a `{rName}`, `{rgName}`, `{subId}` és `{mgName}` értéket az erőforrás nevével, az erőforráscsoport nevével, az előfizetés-AZONOSÍTÓval és a felügyeleti csoport nevével. a `{rType}` a virtuális gép erőforrás- **típusával** (például `Microsoft.Compute/virtualMachines`) lesz lecserélve.
+   A `az policy assignment create` **hatókör** paramétere a felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`, `{rgName}`, `{subId}`és `{mgName}` értékét az erőforrás nevére, az erőforráscsoport nevére, az előfizetés-AZONOSÍTÓra és a felügyeleti csoport nevére. a `{rType}` helyére az **erőforrás erőforrástípus,** például egy virtuális gép `Microsoft.Compute/virtualMachines`.
 
    - Erőforrás-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subID}/resourceGroups/{rgName}`
@@ -240,7 +237,7 @@ A szabályzatdefiníció azonosítója számára az Ön által létrehozott szab
 
 Hogyan kezelheti az erőforrás-szabályzatok az Azure CLI-vel kapcsolatos további információkért lásd: [Azure CLI erőforrás-házirendek](/cli/azure/policy?view=azure-cli-latest).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a parancsok és lekérdezések ebben a cikkben további információt a következő cikkeket.
 

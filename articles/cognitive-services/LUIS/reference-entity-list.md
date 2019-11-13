@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 1757faf8ab2be0b62956b6939ee068929f9275a4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 1307e6cfca0debe7623eb775c69527a74584033d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695240"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011995"
 ---
 # <a name="list-entity"></a>Listaentitás 
 
@@ -28,11 +28,36 @@ Egy lista entitás nem gépi megtanult. Egy pontos egyezés egyeztetése. A LUIS
 * Ismert készlet.
 * Nem változik gyakran. Ha módosítania kell a listát, vagy ha szeretné, hogy a lista kibontható legyen, egy egyszerű entitás jobb választás egy kifejezési listával. 
 * A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. LUIS nem használja a listát a pontos szöveges egyezéseken felül. A zavaros egyezés, a kis-és nagybetűk megkülönböztetése, a kivezetés, a pluralizmus és az egyéb változatok nem oldhatók meg egy listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal.
+* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. LUIS nem használja a listát a pontos szöveges egyezéseken felül. A zavaros egyezés, a kis-és nagybetűk megkülönböztetése, a kivezetés, a pluralizmus és az egyéb változatok nem oldhatók meg egy listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal.
 
 ![lista entitás](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json"></a>Példa JSON-ban
+## <a name="example-json-to-import-into-list-entity"></a>Példa. JSON a List entitásba való importáláshoz
+
+  A következő. JSON formátum használatával importálhat értékeket egy meglévő listára:
+
+  ```JSON
+  [
+      {
+          "canonicalForm": "Blue",
+          "list": [
+              "navy",
+              "royal",
+              "baby"
+          ]
+      },
+      {
+          "canonicalForm": "Green",
+          "list": [
+              "kelly",
+              "forest",
+              "avacado"
+          ]
+      }
+  ]  
+  ```
+
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 Tegyük fel, hogy az alkalmazás rendelkezik egy nevű lista `Cities`, ami lehetővé teszi a városok nevei, beleértve a város, repülőtér (Sea-tac), a repülőtér kódja (SEA), a postai irányítószám (98101) és a telefonszám körzetszámát (206) változata.
 
@@ -107,11 +132,11 @@ Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
 
 * * * 
 
-|Objektum|Entitás neve|Value|
+|Objektum|Entitás neve|Érték|
 |--|--|--|
 |Entitás listázása|`Cities`|`paris`|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az [oktatóanyagból](luis-quickstart-intent-and-list-entity.md)megtudhatja, hogyan használhatja a **lista entitást** az ismert elemek listájának pontos egyezésének kinyeréséhez. 

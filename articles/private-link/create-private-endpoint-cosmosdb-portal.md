@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sngun
-ms.openlocfilehash: 80a0a3440a7fb5d056d1d76fb9d82931721b6e16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32595e561736b5f22f109d0caff1f3990300d2bc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514211"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007331"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privát csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
 
@@ -37,9 +37,9 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
     | ------- | ----- |
     | Name (Név) | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetést | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
+    | Hely | Válassza a **WestCentralUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
     |||
@@ -55,7 +55,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
@@ -99,7 +99,7 @@ Hozzon létre egy [Azure Cosmos SQL API-fiókot](../cosmos-db/create-cosmosdb-re
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Hozzon létre egy privát végpontot az Azure Cosmos-fiókhoz
 
-Hozzon létre egy privát hivatkozást az Azure Cosmos-fiókhoz a csatolt cikk Azure Portal szakaszának használatával, a [privát hivatkozás létrehozása](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-link-using-the-azure-portal) című témakörben leírtak szerint.
+Hozzon létre egy privát hivatkozást az Azure Cosmos-fiókhoz a csatolt cikk Azure Portal szakaszának használatával, a [privát hivatkozás létrehozása](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) című témakörben leírtak szerint.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
@@ -109,7 +109,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza ki **RDP-fájl letöltése**. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a letöltött *. rdp* fájlt.
 
@@ -174,7 +174,7 @@ Ha elkészült a privát végponttal, az Azure Cosmos-fiókkal és a virtuális 
 
 1. Adja meg a *myResourceGroup* az **erőforráscsoport nevének** beírásához, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Cosmos-fiókon és egy privát végponton. Az internetről csatlakozik a virtuális géphez, és biztonságosan kommunikál az Azure Cosmos-fiókkal a privát hivatkozás használatával.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure digitális Twins API-k navigálása | Microsoft Docs
+title: Az API-k navigálása – Azure digitális Twins | Microsoft Docs
 description: Ismerje meg, hogyan lehet az Azure digitális Twins felügyeleti API-k lekérdezésének gyakori mintáit lekérdezni.
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 135c760919f094f7b2d242ad37cc1cadb614e36e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822251"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010004"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Az Azure digitális Twins felügyeleti API-k használata
 
@@ -110,7 +110,7 @@ Az alábbi lista számos, érvényes OData szintaxissal rendelkező lekérdezés
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az API-lekérdezések gyakori mintáinak megismeréséhez olvassa el [Az Azure Digital Twins API-k lekérdezése gyakori feladatokhoz című témakört](./how-to-query-common-apis.md).
 

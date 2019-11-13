@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: eedb9d811e35d606f4d3e1df55d9303d68678b3c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478751"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007742"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -32,7 +32,7 @@ A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Az alkalmazás kezelésével kapcsolatos költségek becslése 
 
-Ha még nem használja az Application Insights-t, a [Azure monitor árképzési számológép](https://azure.microsoft.com/pricing/calculator/?service=monitor) használatával megbecsülheti a Application Insights használatának költségeit. Először írja be a "Azure Monitor" kifejezést a keresőmezőbe, és kattintson az eredményül kapott Azure Monitor csempére. Görgessen le az oldalról Azure Monitorre, majd válassza a legördülő menüből a Application Insights lehetőséget.  Itt adhatja meg, hogy hány GB-nyi adatot szeretne gyűjteni havonta, így a kérdés az, hogy mennyi adat fog Application Insights gyűjteni az alkalmazás figyelésére. 
+Ha még nem használja az Application Insights-t, a [Azure monitor árképzési számológép](https://azure.microsoft.com/pricing/calculator/?service=monitor) használatával megbecsülheti a Application Insights használatának költségeit. Először írja be a "Azure Monitor" kifejezést a keresőmezőbe, és kattintson az eredményül kapott Azure Monitor csempére. Görgessen le az oldalról Azure Monitorre, majd válassza a legördülő menüből a Application Insights lehetőséget.  Itt adhatja meg, hogy hány GB-nyi adatot szeretne gyűjteni havonta, így a kérdés az, hogy mennyi adat Application Insights gyűjti az alkalmazás figyelését. 
 
 Ennek a megoldásnak két megközelítése van: az alapértelmezett monitorozás és az adaptív mintavételezés használata, amely a ASP.NET SDK-ban érhető el, vagy a várható adatfeldolgozást a hasonló ügyfelektől függően megbecsülheti.
 
@@ -124,7 +124,7 @@ dependencies
 Az Azure nagyszerű hasznos funkciókat biztosít a [Azure Cost Management + számlázási](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) központban. A "Cost Analysis" funkció például lehetővé teszi az Azure-erőforrások költségeinek megtekintését. Ha erőforrás-típus alapján (a Microsoft. bepillantások/összetevők Application Insights) egy szűrőt ad hozzá, lehetővé teszi a kiadások nyomon követését.
 
 A használatról további ismereteket kaphat, ha [letölti a használatot a Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
-A letöltött számolótáblában napi Azure-erőforrás-használatot láthat. Ebben az Excel-táblázatban a Application Insights-erőforrásokkal való használat első szűréssel megtalálhatók a "Application Insights" és a "Log Analytics" megjelenítéséhez, majd hozzá kell adni egy szűrőt a "példány azonosítója" oszlophoz, amely "tartalmaz Microsoft. bepillantások/összetevők ".  A legtöbb Application Insights-használat a Log Analytics mérőszám-kategóriával rendelkező fogyasztásmérőn szerepel, mivel az összes Azure Monitor összetevőhöz egyetlen naplós háttér tartozik.  A rendszer csak a régi árképzési szinteken és a többlépéses webes tesztek Application Insights erőforrásait jeleníti meg Application Insights fogyasztásmérő-kategóriája alapján.  A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részleteket a [Microsoft Azure számla megismeréséhez](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)talál. 
+A letöltött számolótáblában napi Azure-erőforrás-használatot láthat. Ebben az Excel-táblázatban a Application Insights-erőforrásokkal való használat első szűréssel megtalálhatók a "Application Insights" és a "Log Analytics" megjelenítéséhez, majd hozzá kell adni egy szűrőt a "példány azonosítója" oszlophoz, amely "a Microsoft. bepillantást vagy összetevőket tartalmazza".  A legtöbb Application Insights-használat a Log Analytics mérőszám-kategóriával rendelkező fogyasztásmérőn szerepel, mivel az összes Azure Monitor összetevőhöz egyetlen naplós háttér tartozik.  A rendszer csak a régi árképzési szinteken és a többlépéses webes tesztek Application Insights erőforrásait jeleníti meg Application Insights fogyasztásmérő-kategóriája alapján.  A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részleteket a [Microsoft Azure számla megismeréséhez](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)talál. 
 
 
 ## <a name="managing-your-data-volume"></a>Adatmennyiség kezelése 
@@ -157,9 +157,9 @@ A napi mennyiségi korlátot használhatja a gyűjtött adatok korlátozására.
 
 A napi mennyiségi korlát használata helyett [mintavételezéssel](../../azure-monitor/app/sampling.md) hangolja be az adatmennyiséget a kívánt szintre. Ezt követően a napi korlátot csak akkor használja, ha az alkalmazás váratlanul megkezdi a sokkal nagyobb mennyiségű telemetria küldését.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
+### <a name="identify-what-daily-data-limit-to-define"></a>Milyen napi korlátot meghatározásához azonosítása
 
-Tekintse át Application Insights használati és becsült költségét, és Ismerje meg az adatfeldolgozási trendet, valamint azt, hogy mi a napi mennyiségi korlát. Körültekintően kell fontolóra venni, mert a korlát elérésekor nem fogja tudni figyelni az erőforrásokat. 
+Tekintse át Application Insights használati és becsült költségét, és Ismerje meg az adatfeldolgozási trendet, valamint azt, hogy mi a napi mennyiségi korlát. Kell tekinteni, körültekintően, mivel nem lehet az erőforrások figyeléséhez, a korlát elérése után. 
 
 ### <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
@@ -195,7 +195,7 @@ Ha a tényleges mintavételezési sebességet szeretné felderíteni, független
 
 Minden megőrzött rekordban `itemCount` az eredeti rekordok számát jelöli. A korábbi elvetett rekordok száma 1. 
 
-## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időszak módosítása
+## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama
 
 Application Insights erőforrások alapértelmezett megőrzése 90 nap. Minden Application Insights-erőforráshoz más adatmegőrzési idő választható. A rendelkezésre álló adatmegőrzési időszakok teljes készlete 30, 60, 90, 120, 180, 270, 365, 550 vagy 730 nap. 
 
@@ -255,11 +255,11 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különböző csomópontok számának meghatározására
 
-| Alkalmazási helyzet                               | Csomópontok napi száma összesen |
+| Forgatókönyv                               | Csomópontok napi száma összesen |
 |:---------------------------------------|:----------------:|
 | 1 alkalmazás 3 Azure App Service példány és 1 virtuális kiszolgáló használatával | 4 |
 | 3 alkalmazás 2 virtuális gépen; az alkalmazások Application Insights erőforrásai ugyanahhoz az előfizetéshez tartoznak, és a csomóponti szinten | 2 | 
-| 4 olyan alkalmazás, amelynek alkalmazásaiban az alkalmazások erőforrásai ugyanabban az előfizetésben találhatók; minden, 2 példányt futtató alkalmazás 16 óra alatt, illetve 4 példányban 8 csúcsidőben | 13,33 | 
+| 4 olyan alkalmazás, amelynek alkalmazásaiban az alkalmazások erőforrásai ugyanabban az előfizetésben találhatók; minden, 2 példányt futtató alkalmazás 16 óra alatt, illetve 4 példányban 8 csúcsidőben | 13.33 | 
 | A Cloud Services 1 feldolgozói szerepkörrel és 1 webes szerepkörrel rendelkezik, amelyek mindegyike 2 példányt futtat | 4 | 
 | Egy 5 csomópontos Azure Service Fabric-fürt, amely 50-es szolgáltatást futtat; minden 3 példányt futtató szolgáltatás | 5|
 
@@ -269,12 +269,12 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
   * Ha az alkalmazás az SDK-val állítja be a **roleInstance** egyéni értékre, alapértelmezés szerint ugyanazt az értéket használja a csomópontok számának meghatározásához. 
   * Ha egy új SDK-verziót használ az ügyfélgépekről vagy mobileszközökön futó alkalmazással, a csomópontok száma nagy (az ügyfélszámítógépek és a mobileszközök nagy száma miatt). 
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizálás
 
 Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [További tudnivalókat itt talál](powershell.md#price).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
 

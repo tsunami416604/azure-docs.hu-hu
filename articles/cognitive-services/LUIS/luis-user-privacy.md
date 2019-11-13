@@ -1,7 +1,7 @@
 ---
 title: Exportálás & adattörlés – LUIS
 titleSuffix: Azure Cognitive Services
-description: Az adatvédelem és a megfelelőség biztosítása érdekében törölje a vásárlói adatokat.
+description: Teljes körűen szabályozhatja az adatmegjelenítését, exportálását és törlését. Az adatvédelem és a megfelelőség biztosítása érdekében törölje a vásárlói adatokat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: e234f88d6e735f33be253cacb373baef63c605c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 061f019fe36e4d5495a41fc81e56d9673ad595fc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560000"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953463"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportálás és az ügyféladatokat, a Language Understanding (LUIS) a Cognitive Services törlése
 
 Az adatvédelem és a megfelelőség biztosítása érdekében törölje a vásárlói adatokat. 
 
 ## <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
-Language Understanding Intelligent Service (LUIS) őrzi meg a szolgáltatás ügyfél-tartalmat, de a LUIS felhasználó keresztül megtekintése, exportálását és törlését a teljes körű vezérléssel rendelkezik. Ezt a LUIS webportálon vagy a [](luis-reference-regions.md) [Luis authoring (más néven programozott) API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-kon keresztül teheti meg.
+Language Understanding Intelligent Service (LUIS) őrzi meg a szolgáltatás ügyfél-tartalmat, de a LUIS felhasználó keresztül megtekintése, exportálását és törlését a teljes körű vezérléssel rendelkezik. Ezt a LUIS [webportálon](luis-reference-regions.md) vagy a [Luis authoring (más néven programozott) API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-kon keresztül teheti meg.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -58,7 +58,7 @@ Az [aktív tanulás](luis-how-to-review-endpoint-utterances.md#enable-active-lea
 * [Ausztrália](#australia)
 * [Egyesült Államok](#united-states)
 
-Az aktív tanulási adatmennyiség (alább részletezve) kivételével a LUIS a [regionális szolgáltatások](https://azuredatacentermap.azurewebsites.net/)adattárolási gyakorlatát követi. 
+Az aktív tanulási adatmennyiség (alább részletezve) kivételével a LUIS a [regionális szolgáltatások adattárolási gyakorlatát](https://azuredatacentermap.azurewebsites.net/)követi. 
 
 ### <a name="europe"></a>Európa
 
@@ -87,7 +87,7 @@ A [Luis.ai](https://www.luis.ai) portál és a Egyesült Államok authoring (má
 Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Egyesült Államok-földrajzában az aktív tanuláshoz lesz tárolva. Az aktív tanulás letiltásával kapcsolatban lásd: az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning). A tárolt hosszúságú kimondott szöveg kezeléséhez lásd: a [teljes törlés](luis-how-to-review-endpoint-utterances.md#delete-utterance). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A LUIS régiók referencia](./luis-reference-regions.md)

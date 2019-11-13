@@ -1,5 +1,5 @@
 ---
-title: Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban | Microsoft Docs
+title: Felhasználó által definiált függvények létrehozása – az Azure digitális Twinsban | Microsoft Docs
 description: Felhasználó által definiált függvények, egyeztetések és szerepkör-hozzárendelések létrehozása az Azure digitális Twins-ban.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4db6f0052c92d4532917a996eda82a27d97d3063
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888845"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009568"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
@@ -71,7 +71,7 @@ JSON-törzstel:
 
 | Érték | Csere erre |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | A példány által üzemeltetett kiszolgálói régió |
+| YOUR_SPACE_IDENTIFIER | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
@@ -252,7 +252,7 @@ A térbeli intelligencia gráfban definiált érzékelő telemetria küld. A tel
 1. Attól függően, hogy az egyeztető kiértékelése sikeres volt-e, kérje le a társított felhasználó által definiált függvényeket.
 1. Minden felhasználó által definiált függvény végrehajtása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre Azure digitális Twins-végpontokat](./how-to-egress-endpoints.md) az események küldéséhez.
 

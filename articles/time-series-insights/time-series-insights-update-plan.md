@@ -1,6 +1,6 @@
 ---
-title: A Azure Time Series Insights előzetes verzió környezetének megtervezése | Microsoft Docs
-description: Tervezze meg Azure Time Series Insights előnézeti környezetét.
+title: Az előzetes verziójú környezet megtervezése – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan tervezheti meg Azure Time Series Insights előnézeti környezetét.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5a12ca2bdccee1d2f738aa3c810577caf3d8eac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b87bf9bdb70f2bcef27927dbaa0d79716c81368
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491959"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006342"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
@@ -97,7 +97,7 @@ További információ: [Shape Events](./time-series-insights-send-events.md#supp
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
 - További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.

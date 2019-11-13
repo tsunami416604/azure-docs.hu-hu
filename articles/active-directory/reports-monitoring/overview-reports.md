@@ -3,7 +3,7 @@ title: Mi az Azure Active Directory-jelentés? | Microsoft Docs
 description: Az Azure Active Directory jelentések általános áttekintését nyújtja.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127270"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007929"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Mi az Azure Active Directory-jelentés?
 
@@ -52,7 +52,7 @@ A biztonsági jelentések segítenek a szervezet identitásának védelmében. A
 
 Az Azure AD minden kiadása biztosítja a kockázatos és kockázatos bejelentkezési jelentésekhez megjelölt felhasználókat. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- A **ingyenes Azure Active Directory és**az alapszintű kiadásokban a kockázatok és a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
+- A **ingyenes Azure Active Directory és az alapszintű kiadásokban**a kockázatok és a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
 
 - A **prémium szintű Azure Active Directory 1** kiadás kiterjeszti ezt a modellt azáltal, hogy megvizsgálja az egyes jelentésekhez észlelt mögöttes kockázati észlelések némelyikét is. 
 
@@ -99,7 +99,7 @@ A bejelentkezési tevékenységjelentés eléréséhez a bérlőnek prémium szi
 
 A felhasználói felületen kívül az Azure AD [programozott hozzáférést](concept-reporting-api.md) is biztosít a jelentések adatokhoz a REST-alapú API-k segítségével. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kockázatos bejelentkezések jelentés](concept-risky-sign-ins.md)
 - [Naplók jelentés](concept-audit-logs.md)

@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523077"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005557"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
-
 Ez a cikk útmutatást nyújt a nagy teljesítményű alkalmazások létrehozásához az Azure Premium Storage használatával. A jelen dokumentumban ismertetett útmutatást az alkalmazás által használt technológiákra vonatkozó legjobb teljesítményű gyakorlattal kombinálva is használhatja. Az irányelvek szemléltetése érdekében a jelen dokumentumban SQL Server a Premium Storage-on való futtatását használták példaként.
 
 A cikkben található tárolási réteg teljesítmény-forgatókönyvei esetében optimalizálni kell az alkalmazás rétegét. Ha például egy SharePoint-farmot futtat az Azure Premium Storageon, a cikk SQL Server példáit követve optimalizálhatja az adatbázis-kiszolgálót. Emellett optimalizálja a SharePoint-farm webkiszolgálóját és az alkalmazáskiszolgáló a legtöbb teljesítmény eléréséhez.

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491974"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013196"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
 
@@ -24,7 +24,7 @@ ms.locfileid: "73491974"
 
 A ZRS jelenleg a standard általános célú v2-és FileStorage-típusok használatát támogatja. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
 
-A ZRS a Blobok, a nem lemezes Blobok, a fájlok, a táblák és a várólisták számára érhető el.
+A ZRS a Blobok, a nem lemezes Blobok, a szabványos fájlmegosztás, a táblák és a várólisták számára érhető el.
 
 Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a következő régiókban:
 
@@ -33,13 +33,13 @@ Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a köv
 - Észak-Európa
 - Közép-Franciaország
 - Kelet-Japán
-- Egyesült Királyság déli régiója
+- Az Egyesült Királyság déli régiója
 - USA középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA 2. nyugati régiója
 
-A FileStorage-fiókok esetében a ZRS általánosan elérhető a következő régiókban:
+A FileStorage-fiókok (prémium fájlmegosztás) esetében a ZRS általánosan elérhető a következő régiókban:
 
 - Nyugat-Európa
 - USA keleti régiója

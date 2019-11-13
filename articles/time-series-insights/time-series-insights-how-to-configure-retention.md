@@ -1,6 +1,6 @@
 ---
-title: Az adatmegőrzés konfigurálása a Azure Time Series Insights-környezetben | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a megőrzés a Azure Time Series Insights környezetben.
+title: Az adatmegőrzés konfigurálása a környezetben – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja az adatmegőrzést a Azure Time Series Insights-környezetben.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990058"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012593"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Adatmegőrzés konfigurálása Time Series Insights
 
@@ -34,9 +34,9 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 ## <a name="configure-data-retention"></a>Az adatmegőrzés konfigurálása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a meglévő Time Series Insights-környezetét. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Time Series Insights-környezetbe. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
 
 1. A **Beállítások** fejléc alatt válassza a **Konfigurálás**lehetőséget.
 

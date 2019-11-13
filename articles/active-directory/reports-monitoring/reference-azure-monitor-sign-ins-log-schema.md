@@ -3,7 +3,7 @@ title: Bejelentkezési naplózási séma a Azure Monitorban | Microsoft Docs
 description: Az Azure AD bejelentkezési napló sémájának leírása a Azure Monitor való használatra
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4259a23778db175de2a0331e692e878df39d0a07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895023"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014319"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Az Azure AD bejelentkezési naplók sémájának értelmezése Azure Monitor
 
@@ -145,26 +145,26 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) bejelentkezési napl
 
 | Mező neve | Leírás |
 |------------|-------------|
-| Idő | A dátum és az idő (UTC). |
+| Time | A dátum és az idő (UTC). |
 | ResourceId | Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt.  |
 | OperationName | A bejelentkezések esetében ez az érték mindig *bejelentkezési tevékenység*. |
-| operationVersion | Az ügyfél által kért REST API-verzió. |
+| OperationVersion | Az ügyfél által kért REST API-verzió. |
 | Kategória | A bejelentkezések esetében ez az érték mindig *bejelentkezési*. | 
 | TenantId | A naplókhoz társított bérlői GUID. |
-| resultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *sikertelen*. | 
-| resultSignature | A bejelentkezési művelethez tartozó hibakódot tartalmazza, ha van ilyen. |
-| resultDescription | A bejelentkezési művelet hibájának leírását adja meg. |
+| ResultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *sikertelen*. | 
+| ResultSignature | A bejelentkezési művelethez tartozó hibakódot tartalmazza, ha van ilyen. |
+| ResultDescription | A bejelentkezési művelet hibájának leírását adja meg. |
 | riskDetail | riskDetail | A "okát" a kockázatos felhasználó, a bejelentkezés vagy a kockázatkezelés egy adott állapota mögött. A lehetséges értékek a következők: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Az érték `none` azt jelenti, hogy a felhasználó vagy a bejelentkezés eddig nem végez műveletet. <br>**Megjegyzés:** A tulajdonság részleteit egy prémium szintű Azure AD P2-licencre van szükség. Más licencek `hidden`értéket adnak vissza. |
 | riskEventTypes | riskEventTypes | A bejelentkezéshez társított kockázati észlelési típusok. A lehetséges értékek a következők: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`és `unknownFutureValue`. |
 | riskLevelAggregated | riskLevel | Összesített kockázati szint. A lehetséges értékek a következők: `none`, `low`, `medium`, `high`, `hidden`és `unknownFutureValue`. Az érték `hidden` azt jelenti, hogy a felhasználó vagy a bejelentkezés nem volt engedélyezve a Azure AD Identity Protection. **Megjegyzés:** Ennek a tulajdonságnak a részletei csak prémium szintű Azure AD P2 ügyfelek esetében érhetők el. Minden más ügyfél `hidden`lesz visszaadva. |
 | riskLevelDuringSignIn | riskLevel | Kockázati szint a bejelentkezés során. A lehetséges értékek a következők: `none`, `low`, `medium`, `high`, `hidden`és `unknownFutureValue`. Az érték `hidden` azt jelenti, hogy a felhasználó vagy a bejelentkezés nem volt engedélyezve a Azure AD Identity Protection. **Megjegyzés:** Ennek a tulajdonságnak a részletei csak prémium szintű Azure AD P2 ügyfelek esetében érhetők el. Minden más ügyfél `hidden`lesz visszaadva. |
 | riskState | riskState | A kockázatos felhasználó, a bejelentkezés vagy a kockázat észlelése állapotának jelentése. A lehetséges értékek a következők: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
 | Átl |  Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt. |
-| callerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
+| CallerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
 | CorrelationId | Az ügyfél által átadott opcionális GUID-azonosító. Ez az érték segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és akkor hasznos, ha a szolgáltatásokra kiterjedő naplók követését végzi. |
-| Identitáskezelés | A kérelem elküldésekor bemutatott jogkivonat identitása. Felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév lehet. |
+| Identitás | A kérelem elküldésekor bemutatott jogkivonat identitása. Felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév lehet. |
 | Szint | Az üzenet típusát adja meg. A naplózáshoz mindig *tájékoztatás*szükséges. |
-| Földrajzi egység | Megadja a bejelentkezési tevékenység helyét. |
+| Hely | Megadja a bejelentkezési tevékenység helyét. |
 | Tulajdonságok | Felsorolja a bejelentkezésekhez kapcsolódó összes tulajdonságot. További információ: [Microsoft Graph API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Ez a séma ugyanazokat az attribútumokat használja, mint a bejelentkezési erőforrás, az olvashatóság érdekében.
 
 ## <a name="next-steps"></a>Következő lépések

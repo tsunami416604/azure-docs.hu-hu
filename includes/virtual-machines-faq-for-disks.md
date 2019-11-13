@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612089"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008578"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS VM-lemezekről, valamint a felügyelt és a nem felügyelt prémium szintű lemezekről
-
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
@@ -254,7 +252,7 @@ Az standard SSD-lemezek sablonnal történő létrehozásával kapcsolatos péld
 
 **Átválthatom a meglévő lemezeket standard SSDre?**
 Igen. Tekintse át az [Azure Managed Disks Storage standard és Premium közötti átalakítását, és fordítva](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) a Managed Disks átalakítására vonatkozó általános irányelveket. Továbbá a következő érték használatával frissítse a lemez típusát standard SSDra.
-– AccountType StandardSSD_LRS
+-AccountType StandardSSD_LRS
 
 **Milyen előnyökkel jár a standard SSD lemezek használata a HDD helyett?**
 Standard SSD lemezek jobb késést, következetességet, rendelkezésre állást és megbízhatóságot biztosítanak a HDD-lemezekhez képest. Az alkalmazás munkaterhelései sokkal simábban futnak a standard SSD miatt. Vegye figyelembe, prémium SSD lemezek a legtöbb IO-igényes éles számítási feladathoz ajánlott megoldás.
@@ -350,18 +348,6 @@ Nem. Ha azonban egy titkosított, felügyelt lemezről vagy pillanatképről exp
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Prémium szintű lemezek: felügyelt és nem felügyelt
 
-**Mely régiók támogatják a kitörési képességet a megfelelő prémium szintű SSD-lemez méretéhez?**
-
-A burst képesség jelenleg az USA nyugati középső régiójában támogatott.
-
-**Mely régiókban támogatott a 4/8/16 GiB által felügyelt lemez mérete (P1/P2/P3, E1/E2/E3)?**
-
-Az új lemezes méretek jelenleg az USA nyugati középső régiójában támogatottak.
-
-**Támogatottak-e a P1/P2/P3 méretű lemezek a nem felügyelt lemezekhez vagy a blobokhoz?**
-
-Nem, csak prémium SSD Managed Disks támogatott. 
-
 **Ha egy virtuális gép olyan méretű adatsorozatot használ, amely támogatja a prémium SSD lemezeket, például a DSv2, a prémium és a standard szintű adatlemezeket is csatlakoztatni kell?** 
 
 Igen.
@@ -391,6 +377,22 @@ A helyi SSD a Managed Disks virtuális géphez tartozó ideiglenes tároló. Ehh
 Az Azure-lemezeken a prémium és a standard szintű lemezek esetében nincs hátránya a VÁGÁSnak.
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Új lemezek mérete: felügyelt és nem felügyelt
+
+**Mely régiók támogatják a kitörési képességet a megfelelő prémium szintű SSD-lemez méretéhez?**
+
+A burst képesség jelenleg az USA nyugati középső régiójában támogatott.
+
+**Mely régiókban támogatott a 4/8/16 GiB által felügyelt lemez mérete (P1/P2/P3, E1/E2/E3)?**
+
+Az új lemezes méretek jelenleg az USA nyugati középső régiójában támogatottak.
+
+**Támogatottak-e a P1/P2/P3 méretű lemezek a nem felügyelt lemezekhez vagy a blobokhoz?**
+
+Nem, csak a prémium szintű SSD által felügyelt lemezeken támogatott. 
+
+**Támogatottak-e az E1/E2/E3 lemezes méretek a nem felügyelt lemezek vagy Blobok esetében?**
+
+Nem, a standard SSD által felügyelt lemezek bármilyen méretűek, nem használhatók nem felügyelt lemezekkel vagy Blobokkal.
 
 **Mi a legnagyobb felügyelt lemez mérete az operációs rendszer és az adatlemezek esetében?**
 

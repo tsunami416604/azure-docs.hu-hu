@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 54f3d76704a1f9bf7fec2f3c6c68c88fffd993b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932274"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936208"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -66,7 +66,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSM-csatoló megoldást.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
 
-5. Kattintson a  **Create** (Létrehozás) gombra.
+5. Kattintson a **Létrehozás** gombra.
 
 A megoldás erőforrásának telepítésekor megjelenik egy értesítés az ablak jobb felső sarkában.
 
@@ -81,7 +81,7 @@ Attól függően, hogy melyik ITSM-termékhez csatlakozik, kövesse az alábbi l
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Megjelenő](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok létrehozásához:
@@ -91,7 +91,7 @@ Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok 
    ![ITSM-kapcsolatok](media/itsmc-overview/itsm-connections.png)
 
    Ez az oldal a kapcsolatok listáját jeleníti meg.
-3. Kattintson a **kapcsolatok hozzáadása**lehetőségre.
+3. Kattintson a **kapcsolat hozzáadása**.
 
    ![ITSM-kapcsolatok hozzáadása](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -152,7 +152,7 @@ Az irányítópult információt nyújt az összekötő állapotáról is, amely
 
 Az érintett számítógépeken szinkronizált incidenseket is megjelenítheti a Service Map megoldáson belül.
 
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat úgy tekintse meg, ahogy azokra gondol – olyan összekapcsolt rendszerekhez, amelyek kritikus szolgáltatásokat biztosítanak. Service Map a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat mutatja bármely olyan TCP-kapcsolattal rendelkező architektúrán, amely nem igényel semmilyen konfigurálást, mint az ügynök telepítése. [További információk](../../azure-monitor/insights/service-map.md).
+Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat úgy tekintse meg, ahogy azokra gondol – olyan összekapcsolt rendszerekhez, amelyek kritikus szolgáltatásokat biztosítanak. Service Map a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat mutatja bármely olyan TCP-kapcsolattal rendelkező architektúrán, amely nem igényel semmilyen konfigurálást, mint az ügynök telepítése. [Részletek](../../azure-monitor/insights/service-map.md).
 
 Ha a Service Map megoldást használja, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az alábbi példában látható módon:
 
@@ -161,7 +161,7 @@ Ha a Service Map megoldást használja, megtekintheti a ITSM-megoldásokban lét
 További információ: [Service Map](../../azure-monitor/insights/service-map.md)
 
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 ### <a name="data-synced-from-itsm-product"></a>ITSM-termékről szinkronizált adatok
 Az incidensek és a módosítási kérelmek szinkronizálása a ITSM-termékről a Log Analytics munkaterületre a kapcsolódási konfiguráció alapján történik.
@@ -170,17 +170,17 @@ A következő információk példákat mutatnak a ITSMC által összegyűjtött 
 
 > [!NOTE]
 >
-> A Log Analyticsba importált munkaelem típusától függően a **ServiceDesk_CL** a következő mezőket tartalmazza:
+> Az Log Analyticsba importált munkaelem típusától függően **ServiceDesk_CL** a következő mezőket tartalmazza:
 
 **Munkaelem:** **incidensek**  
-ServiceDeskWorkItemType_s = "incidens"
+ServiceDeskWorkItemType_s="Incident"
 
 **Mezők**
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állami
-- Sürgős
+- Állapot
+- Sürgősség
 - Hatás
 - Prioritás
 - Eszkalálás
@@ -193,15 +193,15 @@ ServiceDeskWorkItemType_s = "incidens"
 - Cím
 - Leírás
 - Létrehozás dátuma
-- Lezárt dátum
-- Megoldott dátum
+- Lezárás dátuma
+- Megoldás dátuma
 - Utolsó módosítás dátuma
-- Computer
+- Számítógép
 
 
 **Munkaelem:** **módosítási kérelmek**
 
-ServiceDeskWorkItemType_s = "módosítási kérelem"
+ServiceDeskWorkItemType_s="ChangeRequest"
 
 **Mezők**
 - ServiceDeskConnectionName
@@ -211,18 +211,18 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Forrás
 - A jog birtokosa
 - Cím
-- Type (Típus)
+- Típus
 - Kategória
-- Állami
+- Állapot
 - Eszkalálás
 - Ütközési állapot
-- Sürgős
+- Sürgősség
 - Prioritás
 - Kockázat
 - Hatás
 - A jog birtokosa
 - Létrehozás dátuma
-- Lezárt dátum
+- Lezárás dátuma
 - Utolsó módosítás dátuma
 - Kért dátum
 - Tervezett kezdési dátum
@@ -230,15 +230,15 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Munka kezdő dátuma
 - Munka befejezési dátuma
 - Leírás
-- Computer
+- Számítógép
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
 
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állami |
-| Urgency_s |Sürgős |
+| IncidentState_s | Állapot |
+| Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
 | CreatedBy_s | Megnyitva |
@@ -250,9 +250,9 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
 | CreatedDate_t|  Megnyitott |
-| ClosedDate_t| zárt|
+| ClosedDate_t| Lezárt|
 | ResolvedDate_t|Oldható|
-| Computer  | Konfigurációs tétel |
+| Számítógép  | Konfigurációs tétel |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow-módosítási kérelem kimeneti adatkészlete
 
@@ -263,10 +263,10 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | ClosedBy_s | Lezárta |
 | AssignedTo_s | Hozzárendelve  |
 | Title_s|  Rövid leírás |
-| Type_s|  Type (Típus) |
+| Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állami|
-| Urgency_s|  Sürgős |
+| CRState_s|  Állapot|
+| Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
 | Impact_s| Hatás|
@@ -277,7 +277,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
 | Description_s | Leírás |
-| Computer  | Konfigurációs tétel |
+| Számítógép  | Konfigurációs tétel |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM-kapcsolatok hibáinak megoldása
@@ -290,8 +290,8 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 
 2. Ha a ServiceNow származó adatok nem lettek szinkronizálva a Log Analyticsba, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok időnként hosszabb ideig tétlenek maradnak. Máskülönben jelentse a problémát.
 3. Ha Log Analytics a riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, vagy a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy más általános információkhoz, tekintse meg a következő helyeket:
-   -  ITSMC: a megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg. Kattintson az **összekötő állapotát**megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására** kerül. További információkért tekintse meg a LogType_S a KÖVETKEZŐvel:.
-   - **Naplók keresése** oldalon: közvetlenül a lekérdezés `*`ServiceDeskLog_CL`*`használatával megtekintheti a hibákat/kapcsolódó információkat.
+   -  ITSMC: a megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg. Kattintson az **összekötő állapotát**megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására** kerül. További információkért tekintse meg a napló rekordjait LogType_S as HIBÁval.
+   - **Napló keresése** oldalon: közvetlenül a lekérdezés `*`ServiceDeskLog_CL`*`használatával tekintheti meg a hibákat/kapcsolódó információkat.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
 1.  A webalkalmazások telepítésével kapcsolatos problémák esetén győződjön meg arról, hogy rendelkezik az erőforrások létrehozásához és üzembe helyezéséhez szükséges engedélyekkel az előfizetésben.
@@ -299,9 +299,9 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 3.  Ha nem sikerül létrehozni a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, miközben létrehozza [a hibrid kapcsolatokat](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) a Azure Portal.
 
 
-## <a name="contact-us"></a>Kapcsolatfelvétel
+## <a name="contact-us"></a>Kapcsolat
 
-A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezés vagy visszajelzés esetén vegye fel velünk a kapcsolatot a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
+A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért vagy Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Következő lépések
 [ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](../../azure-monitor/platform/itsmc-connections.md).

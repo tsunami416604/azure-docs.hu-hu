@@ -1,6 +1,6 @@
 ---
-title: A Azure Time Series Insights-környezet méretezésének megtervezése | Microsoft Docs
-description: Ez a cikk az ajánlott eljárások követését ismerteti Azure Time Series Insights környezet tervezésekor. A rendszer magában foglalja a tárolási kapacitást, az adatmegőrzést, a beáramlási kapacitást, a figyelést és az üzletmenet folytonosságát és a vész-helyreállítást (BCDR).
+title: A GA-környezet megtervezése – Azure Time Series Insights | Microsoft Docs
+description: Ismerje meg a GA-környezet megtervezése során követendő ajánlott eljárásokat.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 649ff31e40bf612f1b70f81e895920f7fc21f082
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991246"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006955"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 

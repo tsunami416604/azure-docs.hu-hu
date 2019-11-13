@@ -4,18 +4,18 @@ description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy nö
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881643"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953231"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
-Az erőforrások telepítésekor meg kell adnia, hogy a központi telepítés Növekményes frissítés vagy teljes frissítés.  A két mód közötti elsődleges különbség az, hogy a Resource Manager hogyan kezelje a sablonban nem szereplő erőforrás-csoport meglévő erőforrásait. Az alapértelmezett mód növekményes.
+Az erőforrások telepítésekor meg kell adnia, hogy a központi telepítés Növekményes frissítés vagy teljes frissítés.  A két mód közötti különbség az, hogy az erőforrás-kezelő hogyan kezelje a sablonban nem szereplő erőforrás-csoport meglévő erőforrásait. Az alapértelmezett mód növekményes.
 
 A Resource Manager mindkét módban megpróbálja létrehozni a sablonban megadott összes erőforrást. Ha az erőforrás már létezik az erőforráscsoporthoz, és a beállításai nem változnak, akkor a rendszer nem végez műveletet az adott erőforráshoz. Ha módosítja egy erőforrás tulajdonságérték értékét, az erőforrás frissül az új értékekkel. Ha egy meglévő erőforrás helyét vagy típusát kísérli meg frissíteni, a központi telepítés hibát jelez. Ehelyett helyezzen üzembe egy új erőforrást a szükséges hely vagy típus szerint.
 
@@ -26,6 +26,8 @@ Teljes módban a Resource Manager **törli** az erőforráscsoport meglévő er�
 Ha a sablon olyan erőforrást tartalmaz, amely nincs központilag telepítve, mert a [feltétel](conditional-resource-deployment.md) hamis értéket ad vissza, akkor az eredmény attól függ, hogy melyik REST API-verziót használja a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. Az Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást.
 
 Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](resource-group-create-multiple.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
+
+Ha [egy sablonban több erőforráscsoporthoz](resource-manager-cross-resource-group-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
 
 Az erőforrástípusok eltérő módon kezelik a teljes módú törlést. A fölérendelt erőforrások automatikusan törlődnek, ha nem egy teljes módban telepített sablonban vannak. Néhány alárendelt erőforrás nem törlődik automatikusan, ha nem a sablonban. Ezeket a gyermek erőforrásokat azonban törli a rendszer, ha törli a fölérendelt erőforrást. 
 

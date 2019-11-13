@@ -3,7 +3,7 @@ title: Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Di
 description: A bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon – bevezetés
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553d882600203d0fa01cd876562d9ced7985d7a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043761"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014493"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -105,13 +105,13 @@ Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
 
 A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
 
-- Mind
+- Összes
 - Sikeres
 - Hiba
 
 A **feltételes hozzáférés** szűrővel kiválaszthatja a bejelentkezéshez használt hitelesítésszolgáltatói házirend állapotát:
 
-- Mind
+- Összes
 - Nincs alkalmazva
 - Sikeres
 - Hiba
@@ -146,7 +146,7 @@ Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatik
         Az Office 2013 az alapértelmezett konfigurációban, ahol a ADAL nincs engedélyezve, és a MAPI vagy az Office 2016, ahol a ADAL le van tiltva.
     - **POP**  
         Egy örökölt levelezési ügyfélprogram, amely a POP3 használatával kéri le az e-maileket.
-    - **SMTP-**  
+    - **SMTP**  
         Egy örökölt levelezési ügyfélprogram, amely az SMTP protokollal küld e-mailt.
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
@@ -185,13 +185,13 @@ A bejelentkezési tevékenységek listájának minden sora a következőkről ad
 
 Az elemekre kattintva részletes információk érhetők el a bejelentkezési műveletről:
 
-- Felhasználóazonosító
+- Felhasználói azonosító
 - Felhasználó
 - Felhasználónév
 - Alkalmazásazonosító
-- Jelentkezés
+- Alkalmazás
 - Ügyfél
-- Földrajzi egység
+- Hely
 - IP-cím
 - Dátum
 - Az MFA megadása kötelező
@@ -222,7 +222,7 @@ Az alkalmazás-használati gráfok hetente összesítik az első három alkalmaz
 
 Igény esetén egy adott alkalmazást is kiemelhet.
 
-![Jelentéskészítés](./media/concept-sign-ins/single-app-usage-graph.png "Jelentések")
+![Jelentéskészítés](./media/concept-sign-ins/single-app-usage-graph.png "Jelentéskészítés")
 
 Az alkalmazáshasználati grafikon egyik napjára kattintva részletes listát kap a bejelentkezési tevékenységekről.
 

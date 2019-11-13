@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Time Series Insights előzetes verziójú környezet beállítása | Microsoft Docs'
-description: Ismerje meg, hogyan állíthatja be a környezetet Azure Time Series Insights előzetes verzióban.
+title: 'Oktatóanyag: előzetes verziójú környezet beállítása – Azure Time Series Insights | Microsoft Docs'
+description: Ismerje meg, hogyan állíthatja be Azure Time Series Insights előnézeti környezetét.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,25 +10,25 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 2dd08af518be9b3fec84e756edf9532ef669f22f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719321"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012664"
 ---
-# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előzetes verziójú környezet beállítása
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights – előzetes környezet beállításával.
 
 Ez az oktatóanyag végigvezeti a Azure Time Series Insights előzetes utólagos elszámolású (TB) környezet létrehozásának folyamatán.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
 > * Azure Time Series Insights előnézeti környezet létrehozása.
 > * Az Azure Time Series Insights előnézeti környezetének összekötése egy IoT Hub.
 > * Egy megoldás-gyorsító minta futtatásával továbbíthatja az adatátvitelt a Azure Time Series Insights előzetes verziójának környezetében.
-> * Végezze el az adatok alapszintű elemzését.
+> * Alapvető adatok elemzését, a.
 > * Definiáljon egy idősorozat-modell típusát és hierarchiáját, és társítsa azt a példányokhoz.
 > * Használja az Power BI-összekötőt, és jelenítse meg az adatPower BIokban.
 
@@ -73,7 +73,7 @@ Ebben a szakaszban három szimulált eszközt fog létrehozni, amelyek az Azure 
 
 Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights előnézeti környezetet, és hogyan csatlakoztathatja a IoT-megoldás-gyorsító által létrehozott IoT hub-hoz a [Azure Portal](https://portal.azure.com/)használatával.
 
-1. Jelentkezzen be a Azure Portalba az előfizetési fiók használatával.
+1. Jelentkezzen be az Azure Portalra az előfizetéses fiókba.
 
 1. Válassza **az erőforrás létrehozása** > **eszközök internetes hálózata** > **Time Series Insights**lehetőséget.
 
@@ -364,7 +364,7 @@ Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásoka
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
 1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:  
 
@@ -372,7 +372,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 * Hozzon létre egy Azure Time Series Insights előzetes verziójú TB-környezetet.
 * Csatlakoztathatja a Azure Time Series Insights előnézeti környezetet egy IOT hubhoz.
 * Egy megoldás-gyorsító minta futtatásával továbbíthatja az adatátvitelt a Azure Time Series Insights előnézeti környezetbe.
-* Végezze el az adatok alapszintű elemzését.
+* Az adatok egy alapszintű elemzéseket végezhet.
 * Definiáljon egy idősorozat-modell típusát és hierarchiáját, majd társítsa azokat a példányokhoz.
 
 Most, hogy már tudja, hogyan hozhat létre saját Azure Time Series Insights előnézeti környezetet, további információt olvashat a Azure Time Series Insights főbb fogalmakról.
@@ -380,9 +380,9 @@ Most, hogy már tudja, hogyan hozhat létre saját Azure Time Series Insights el
 További információ a Azure Time Series Insights Storage-konfigurációról:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights előnézet tároló és bejövő forgalom](./time-series-insights-update-storage-ingress.md)
+> [Az Azure Time Series Insights előzetes verziója storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)
 
-További információ a Time Series-modellekről:
+További tudnivalók a Time Series modellek:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights előzetes verziójú adatmodellezés](./time-series-insights-update-tsm.md)
+> [Az Azure Time Series Insights előzetes verziója az adatmodellezés](./time-series-insights-update-tsm.md)

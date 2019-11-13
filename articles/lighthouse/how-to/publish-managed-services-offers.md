@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási aj
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ee8f0f88f1e60c6e8b5da34a165757694f52dcbb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615464"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005399"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -61,7 +61,7 @@ Hajtsa végre a következő szakaszokat a **csomag részletei** szakaszban:
 |Mező  |Leírás  |
 |---------|---------|
 |**Cím**     | A megjelenő terv felhasználóbarát neve. Legfeljebb 50 karakter hosszú lehet.        |
-|**Összefoglalás**     | A cím alatt megjelenítendő terv tömör leírása. Legfeljebb 100 karakter hosszú lehet.        |
+|**összegzés**     | A cím alatt megjelenítendő terv tömör leírása. Legfeljebb 100 karakter hosszú lehet.        |
 |**Leírás**     | Leírás szövege, amely részletesebb magyarázatot nyújt a tervről.         |
 |**Számlázási modell**     | Itt 2 számlázási modell látható, de **a saját licencét** kell választania a felügyelt szolgáltatások ajánlatait illetően. Ez azt jelenti, hogy az ügyfeleket közvetlenül az ajánlattal kapcsolatos költségekkel számoljuk fel, és a Microsoft semmilyen díjat nem számít fel Önnek.   |
 |**Ez egy privát csomag?**     | Azt jelzi, hogy az SKU magán-vagy nyilvános. Az alapértelmezett érték **nem** (nyilvános). Ha ezt a beállítást választja, a csomag nem korlátozódik meghatározott ügyfelekre (vagy bizonyos számú ügyfélre); Miután közzétett egy nyilvános csomagot, később nem módosíthatja magánjellegűre. Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen**lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 20 000 előfizetés esetén). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot. További információ: [Private SKU-i és csomagok](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
@@ -81,10 +81,10 @@ Végül adjon hozzá egy vagy több **engedélyezési** bejegyzést a csomaghoz.
 
 Minden egyes **engedélyezéshez**meg kell adnia a következőket. Ezután több felhasználó és szerepkör-definíció hozzáadásához több alkalommal is kiválaszthatja az **új engedélyezést** .
 
-  - **Azure ad-objektum azonosítója**: egy felhasználó, felhasználói csoport vagy alkalmazás Azure ad-azonosítója, amely bizonyos engedélyeket kap (a szerepkör-definíció szerint) az ügyfelek erőforrásai számára.
-  - Az **Azure ad-objektum megjelenített neve**: egy rövid név, amely segítségével az ügyfél megismerheti az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
-  - **Szerepkör-definíció**: válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. A szerepkörök leírását lásd: [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) és [szerepkör-támogatás az Azure-beli delegált erőforrás-kezeléshez](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-  - **Hozzárendelhető szerepkörök**: erre csak akkor van szükség, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), ami szükséges a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. Ha itt nem választ ki egy vagy több szerepkört, a beküldés nem ad át minősítést. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
+- **Azure ad-objektum azonosítója**: egy felhasználó, felhasználói csoport vagy alkalmazás Azure ad-azonosítója, amely bizonyos engedélyeket kap (a szerepkör-definíció szerint) az ügyfelek erőforrásai számára.
+- Az **Azure ad-objektum megjelenített neve**: egy rövid név, amely segítségével az ügyfél megismerheti az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
+- **Szerepkör-definíció**: válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. A szerepkörök leírását lásd: [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) és [szerepkör-támogatás az Azure-beli delegált erőforrás-kezeléshez](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+- **Hozzárendelhető szerepkörök**: erre csak akkor van szükség, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), ami szükséges a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. Ha itt nem választ ki egy vagy több szerepkört, a beküldés nem ad át minősítést. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
 
 > [!TIP]
 > A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet. További javaslatokért lásd: [bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
@@ -100,7 +100,7 @@ Hajtsa végre a következő mezőket az **Áttekintés** szakaszban:
 |Mező  |Leírás  |
 |---------|---------|
 |**Cím**     |  Az ajánlat címe, gyakran a hosszú, formális név. Ez a cím kiemelten jelenik meg a piactéren. Legfeljebb 50 karakter hosszú lehet. A legtöbb esetben ez megegyezik az **ajánlat beállításai** szakaszban megadott **névvel** .       |
-|**Összefoglalás**     | Az ajánlat rövid célja vagy funkciója. Ez általában a cím alatt jelenik meg. Legfeljebb 100 karakter hosszú lehet.        |
+|**összegzés**     | Az ajánlat rövid célja vagy funkciója. Ez általában a cím alatt jelenik meg. Legfeljebb 100 karakter hosszú lehet.        |
 |**Hosszú összefoglalás**     | Az ajánlat céljának vagy funkciójának összefoglalása. Legfeljebb 256 karakter hosszú lehet.        |
 |**Leírás**     | További információ az ajánlatról. A mező maximális hossza 3000 karakter, és támogatja az egyszerű HTML-formázást. A leírásban szerepelnie kell a "felügyelt szolgáltatás" vagy a "felügyelt szolgáltatások" kifejezésnek.       |
 |**Marketing azonosítója**     | Egy egyedi URL-cím-barát azonosító. ezt az ajánlatot a piactér URL-címeiben fogjuk használni. Ha például a közzétevő azonosítója *contoso* , a marketing azonosítója pedig *PéldaAlkalmazás*, akkor az Azure Marketplace-en elérhető ajánlatának URL-címe *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
@@ -143,64 +143,17 @@ Miután elvégezte az összes szakaszt, a következő lépés az ajánlat közz�
 
 ## <a name="the-customer-onboarding-process"></a>Az ügyfél bevezetési folyamata
 
-Amikor egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources) , amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg. Ha az ügyfél bérlője nem tudja végrehajtani ezt a delegálást, valószínűleg azért, mert nem rendelkeznek tulajdonosi szerepkörrel az előfizetéshez. Az előfizetést delegáló felhasználók megkereséséhez a felhasználó kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** lehetőséget, és [megtekintheti a tulajdonosi szerepkörrel rendelkező összes felhasználót](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+Miután az ügyfél hozzáadja az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources), amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg.
 
-Ahhoz, hogy előkészítse az előfizetést (vagy az előfizetéshez tartozó erőforráscsoportokat), az előfizetést a **Microsoft. ManagedServices** erőforrás-szolgáltató manuális regisztrálásával kell engedélyezni a bevezetéshez. Az ügyfél bérlője és a tulajdonos szerepkör felhasználója ezt az [Azure Resource Providers és types](../../azure-resource-manager/resource-manager-supported-services.md)című témakörben ismertetett lépéseket követve teheti meg.
+> [!IMPORTANT]
+> A delegálást olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-Az ügyfél ezután ellenőrizheti, hogy az előfizetés készen áll-e a bevezetésre az alábbi módszerek egyikével.
+Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
 
-### <a name="azure-portal"></a>Azure Portal
+> [!NOTE]
+> Jelenleg az előfizetések (vagy az előfizetésen belüli erőforráscsoportok) nem delegálható, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha egy előfizetést (vagy egy előfizetéshez tartozó erőforráscsoportot) már delegáltak, jelenleg nem lehet Databricks-munkaterületeket létrehozni az előfizetésben.
 
-1. A Azure Portal válassza ki az előfizetést.
-1. Válassza ki az **Erőforrás-szolgáltatók** elemet.
-1. Ellenőrizze, hogy a **Microsoft. ManagedServices** **regisztráltként**jelenik-e meg.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Ennek a következőhöz hasonló eredményeket kell visszaadnia:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Ennek a következőhöz hasonló eredményeket kell visszaadnia:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

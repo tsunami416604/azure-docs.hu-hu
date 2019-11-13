@@ -1,6 +1,7 @@
 ---
-title: Az alkalmazás regisztrációs portál alkalmazás regisztrálási útmutatója – Microsoft Identity platform | Azure
-description: Alkalmazásregisztrációk a Azure Portalban az alkalmazás regisztrációs portálján jártas felhasználók számára
+title: Áttérés az alkalmazás regisztrációs portálról a Azure Portal új Alkalmazásregisztrációk felületére
+titleSuffix: Microsoft identity platform
+description: Bevezetés az új alkalmazás regisztrációs felületére a Azure Portal
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -17,14 +18,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1974616c0331203a803e4f13a19297940fb5d42e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905471"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013027"
 ---
-# <a name="training-guide-using-app-registrations-in-the-azure-portal-instead-of-application-registration-portal"></a>Tanítási útmutató: Alkalmazásregisztrációk használata az alkalmazás-regisztrációs portál helyett Azure Portal
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Áttérés az alkalmazás regisztrációs portálról a Azure Portal új Alkalmazásregisztrációk felületére
 
 A Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületének számos újdonsága van. Ha még jobban ismeri az alkalmazás-regisztrációs portál (apps.dev.microsoft.com) használatát a konvergens alkalmazások regisztrálásához vagy kezeléséhez, amelyet a régi felhasználói élménynek nevezünk, az útmutató segítségével megkezdheti az új felhasználói élmény megszerzését.
 
@@ -83,15 +84,15 @@ A Azure Portal új felülete ezeket a funkciókat külön lapokon jeleníti meg.
 
 Az új felhasználói élményben az **alkalmazás-titkok** átnevezve lettek a **tanúsítványok & Secrets**névre. Emellett a **nyilvános kulcsokat** **tanúsítványoknak** és **jelszavaknak** nevezik, az **ügyfél titkos**kulcsaként. Úgy döntöttünk, hogy ezt a funkciót az új biztonsági okokból nem tudjuk elérni, ezért nem lehet új kulcspárt kiállítani.
 
-## <a name="platformsauthentication---reply-urlsredirect-uris"></a>Platformok/hitelesítés-válasz URL-címek/átirányítási URI-k
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformok/hitelesítés: válasz URL-címek/átirányítási URI-k
 A régi felületen a webes, natív és webes API-k platformokkal foglalkozó szakasza az átirányítási URL-címek, a kijelentkezési URL-cím és az implicit folyamat konfigurálására használható.
 
-Az új felhasználói felületen a válasz URL-címek a\'s hitelesítési szakaszban találhatók. Emellett a rendszer átirányítási URI-ként is hivatkozik rá, és módosult az átirányítási URI-k formátuma. Egy alkalmazás típusához (webes vagy nyilvános ügyfél – mobil és asztali) kell társítani őket. [Részletek](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Az új felhasználói felületen a válasz URL-címek a\'s hitelesítési szakaszban találhatók. Emellett a rendszer átirányítási URI-ként is hivatkozik rá, és módosult az átirányítási URI-k formátuma. Egy alkalmazás típusához (webes vagy nyilvános ügyfél – mobil és asztali) kell társítani őket. [További információ](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 A webes API-k API-lapokon vannak konfigurálva.
 
 > [!NOTE] 
-> Próbálja ki az új hitelesítési beállításokat, ahol konfigurálhatja az alkalmazás beállításait a célként használni kívánt platform vagy eszköz alapján. [Részletek](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Próbálja ki az új hitelesítési beállításokat, ahol konfigurálhatja az alkalmazás beállításait a célként használni kívánt platform vagy eszköz alapján. [További információ](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Engedélyek/API-engedélyek Microsoft Graph
 

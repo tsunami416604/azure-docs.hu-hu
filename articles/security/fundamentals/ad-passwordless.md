@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820511"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007280"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Jelszavak nélküli globális Azure Active Directory
 
@@ -24,7 +24,7 @@ A felhasználói fiókok elszivárgására leggyakrabban használt három típus
 
 Ez a cikk a Microsoft jelszavas megoldásainak megismeréséhez és megvalósításához nyújt segítséget, és segít az alábbi lehetőségek közül:
 
-* **Vállalati Windows Hello**. A Windows 10 rendszerben a Windows Hello for Business a jelszavakat erős, Kéttényezős hitelesítéssel helyettesíti a számítógépeken és mobileszközökön. Ez a hitelesítés olyan új típusú felhasználói hitelesítő adatokból áll, amely egy eszközhöz van kötve, és biometrikus vagy PIN-kódot használ.
+* **Vállalati Windows Hello**. A Windows 10 rendszerben a Windows Hello for Business a jelszavakat erős, Kéttényezős hitelesítéssel helyettesíti a számítógépeken és mobileszközökön. Ez a hitelesítés olyan új típusú felhasználói hitelesítő adatokból áll, amely egy eszközhöz van kötve, és biometrikus felismerést vagy PIN-kódot használ.
 
 * **A jelszó nélküli bejelentkezés Microsoft Authenticator**. A Microsoft Authenticator alkalmazás jelszó használata nélkül is használható az Azure AD-fiókba való bejelentkezéshez. A vállalati Windows Hello technológiához hasonlóan a Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezi az eszközhöz kötött felhasználói hitelesítő adatokat, és biometrikus vagy PIN-kódot használ.
 
@@ -281,7 +281,7 @@ A három jelszóval nem rendelkező lehetőség közül választva a vállalat b
 
 Íme néhány tényező, amelyet érdemes figyelembe vennie a Microsoft jelszó nélküli technológiájának kiválasztásakor:
 
-||**Windows Hello for Business**|**Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással**|**FIDO2 biztonsági kulcsok**|
+||**Vállalati Windows Hello**|**Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással**|**FIDO2 biztonsági kulcsok**|
 |:-|:-|:-|:-|
 |**Előfeltételek**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
 |**Mód**|Platform|Szoftver|Hardver|
@@ -299,7 +299,7 @@ A következő táblázat segítségével kiválaszthatja, hogy melyik módszer f
 |**Információkkal dolgozó feldolgozó**|Termelékenységi munka| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
 |**Frontline Worker**|Kioszkok gyárban, üzemben, kiskereskedelemben vagy adatbevitelben|Megosztott Windows 10-es eszközök|FIDO2 biztonsági kulcsok|
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 A jelszóval nem rendelkező hitelesítés a jövő hulláma, és egy biztonságosabb környezet elérési útja. Javasoljuk, hogy a szervezetek kezdjenek megtervezni ezt a változást, és csökkentsék a jelszavuk függőségeit. Első lépésként vegye figyelembe a következő célokat:
 
@@ -340,7 +340,7 @@ Az elmúlt néhány évben a Microsoft továbbra is vállalta elkötelezettség�
 
 A modern, többtényezős hitelesítési technológiák, például a biometria és a nyilvános kulcsú titkosítás széles körben elérhető eszközökön való bevezetése az egyik leginkább befolyásoló lépés, amely értelmesen csökkentheti a vállalat személyazonossági kockázatát. A jelszó nélküli a biztonságos hitelesítés hosszú távú megközelítése, amely továbbra is fejlődik. Az új igényeknek megfelelően a szervezetek előkészíthetik magukat úgy, hogy megkezdik a jelszóval nem rendelkező technológiákba való áttérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [jelszó](../../active-directory/authentication/concept-authentication-passwordless.md) nélküli tartalom áttekintése
 * [Jelszó engedélyezése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

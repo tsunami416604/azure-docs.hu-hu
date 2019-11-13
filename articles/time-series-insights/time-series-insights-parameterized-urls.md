@@ -1,6 +1,6 @@
 ---
-title: Az Azure Time Series Insights egyéni nézeteinek megosztása paraméteres URL-címek használatával | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan lehet paraméteres URL-címeket fejleszteni az Azure Time Series Insightsban az ügyfélnézetek egyszerű megosztásához.
+title: Egyéni nézetek megosztása paraméteres URL-címekkel – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan fejleszthet a Azure Time Series Insights paraméteres URL-címeket a testreszabott nézetek egyszerű megosztásához.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991115"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006375"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -33,7 +33,7 @@ A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. 
 
 Példa környezetazonosító paraméterre: `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Idő
+## <a name="time"></a>Time
 
 Paraméteres URL-cím esetében abszolút vagy relatív időértékeket is megadhat.
 
@@ -63,13 +63,13 @@ Az elfogadott értékek a Time Series Insights Explorer **gyors idő** menüjén
 * `604800000` (az elmúlt 7 nap)
 * `2592000000` (az elmúlt 30 óra)
 
-### <a name="optional-parameters"></a>Nem kötelező paraméterek
+### <a name="optional-parameters"></a>Választható paraméterek
 
 A `timeSeriesDefinitions=<collection of term objects>` paraméter a Time Series Insights nézet feltételeit adja meg:
 
 | Paraméter | URL-tétel | Leírás |
 | --- | --- | --- |
-| **név** | `\<string>` | A *kifejezés* neve. |
+| **name** | `\<string>` | A *kifejezés* neve. |
 | **splitBy** | `\<string>` | A *felosztás* alapjául szolgáló oszlop neve. |
 | **measureName** | `\<string>` | A *mérték* oszlopneve. |
 | **predikátum** | `\<string>` | A kiszolgálóoldali szűrés *where* záradéka. |

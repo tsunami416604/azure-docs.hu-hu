@@ -1,19 +1,19 @@
 ---
-title: Azure-beli IaaS virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
-description: Ebből a rövid útmutatóból megismerheti az Azure-beli IaaS virtuális gépek Azure-régiók között történő vészhelyreállításának lépéseit az Azure Site Recovery szolgáltatás használatával.
+title: Azure-beli virtuális gép vész-helyreállításának beállítása másodlagos régióba Azure Site Recovery
+description: A Azure Site Recovery szolgáltatás használatával gyorsan állíthatja be a vész-helyreállítást egy másik Azure-régióba egy Azure-beli virtuális gépen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91674d6335ae95993bcdd59250658d562302b1dc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467951"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954130"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása        
 
@@ -65,7 +65,7 @@ A replikálás leállítása a következőképpen
 
    ![A replikálás letiltása](media/azure-to-azure-quickstart/disable2-replication.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy virtuális gépet replikált egy másodlagos régióba. Most próbálkozzon egy helyreállítási terv használatával több Azure-beli virtuális gép replikálásával.
 

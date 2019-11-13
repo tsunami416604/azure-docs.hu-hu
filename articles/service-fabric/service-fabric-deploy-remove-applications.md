@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric alkalmazás üzembe helyezése | Microsoft Docs
+title: Azure Service Fabric üzembe helyezés a PowerShell-lel
 description: Alkalmazások telepítése és eltávolítása Service Fabric a PowerShell használatával.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3cfebadf6dadeb81b1b57e671b19594b75645e31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0080ba0807a4cb31fedeb132932e2e08137dd40b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599609"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013275"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Alkalmazások telepítése és eltávolítása a PowerShell használatával
 
@@ -31,7 +31,7 @@ ms.locfileid: "68599609"
 
 <br/>
 
-Miután becsomagolta az [alkalmazás típusát][10], készen áll az üzembe helyezésre egy Azure Service Fabric-fürtön. Az üzembe helyezés a következő három lépésből áll:
+Miután [becsomagolta az alkalmazás típusát][10], készen áll az üzembe helyezésre egy Azure Service Fabric-fürtön. Az üzembe helyezés a következő három lépésből áll:
 
 1. Töltse fel az alkalmazáscsomag a rendszerkép-tárolóba.
 2. Regisztrálja az alkalmazás típusát a rendszerkép-tároló relatív elérési útján.
@@ -45,9 +45,9 @@ Ha már nincs szükség az üzembe helyezett alkalmazásra, törölheti az alkal
 
 Ha a Visual studiót használja az alkalmazások helyi fejlesztési fürtön való üzembe helyezéséhez és hibakereséséhez, a rendszer az összes korábbi lépést automatikusan egy PowerShell-parancsfájl segítségével kezeli.  Ez a szkript az alkalmazás projekt *szkriptek* mappájában található. Ez a cikk a szkript működésének hátterét ismerteti, így a Visual studión kívül is végrehajthatja a műveleteket. 
 
-Az alkalmazások üzembe helyezésének másik módja a külső kiépítés használata. Az alkalmazáscsomag becsomagolható [ `sfpkg` ](service-fabric-package-apps.md#create-an-sfpkg) és feltölthető egy külső tárolóba. Ebben az esetben nincs szükség a rendszerkép-tárolóba való feltöltésre. Az üzembe helyezéshez a következő lépések szükségesek:
+Az alkalmazások üzembe helyezésének másik módja a külső kiépítés használata. Az alkalmazáscsomag [`sfpkg`ként](service-fabric-package-apps.md#create-an-sfpkg) és külső tárolóba tölthetők fel. Ebben az esetben nincs szükség a rendszerkép-tárolóba való feltöltésre. Az üzembe helyezéshez a következő lépések szükségesek:
 
-1. Töltse fel `sfpkg` a-t egy külső tárolóba. A külső tároló bármely olyan tároló lehet, amely egy REST http-vagy https-végpontot tesz elérhetővé.
+1. Töltse fel a `sfpkg`t egy külső tárolóba. A külső tároló bármely olyan tároló lehet, amely egy REST http-vagy https-végpontot tesz elérhetővé.
 2. Regisztrálja az alkalmazás típusát a külső letöltési URI-val és az alkalmazás típusával kapcsolatos információk használatával.
 2. Hozza létre az alkalmazás példányát.
 
@@ -66,7 +66,7 @@ A cikkben található PowerShell-parancsok futtatása előtt a Service Fabric-f�
 Connect-ServiceFabricCluster
 ```
 
-A Azure Active Directory-, X509-vagy Windows-Active Directory használatával biztonságossá tett távoli fürthöz vagy fürthöz való csatlakozásra például a [biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)való csatlakozást ismertető témakörben talál további információt.
+A Azure Active Directory-, X509-vagy Windows-Active Directory használatával biztonságossá tett távoli fürthöz vagy fürthöz való csatlakozásra például a [biztonságos fürthöz való csatlakozást](service-fabric-connect-to-secure-cluster.md)ismertető témakörben talál további információt.
 
 ## <a name="upload-the-application-package"></a>Alkalmazáscsomag feltöltése
 
@@ -75,7 +75,7 @@ Ha helyileg szeretné ellenőrizni az alkalmazáscsomag használatát, használj
 
 A [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancs feltölti az alkalmazáscsomag a fürt rendszerkép-tárolójába.
 
-Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studio 2015-ben. Alapértelmezés szerint az ApplicationManifest. xml fájlban szereplő alkalmazás-típus neve "MyApplicationType".  A szükséges alkalmazás-jegyzékfájlt, szolgáltatási jegyzékfájlokat és Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users\<username\>\Documents\Visual Studio 2015 \ Projects\MyApplication\ mappában található. MyApplication\pkg\Debug*. 
+Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studio 2015-ben. Alapértelmezés szerint az ApplicationManifest. xml fájlban szereplő alkalmazás-típus neve "MyApplicationType".  Az alkalmazás-jegyzékfájlt, a szolgáltatási jegyzékfájlokat és a Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users\<username\>\Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*mappában található. 
 
 A következő parancs felsorolja az alkalmazáscsomag tartalmát:
 
@@ -110,13 +110,13 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
             Settings.xml
 ```
 
-Ha az alkalmazáscsomag nagyméretű és/vagy sok fájllal rendelkezik, tömörítheti is. [](service-fabric-package-apps.md#compress-a-package) A tömörítés csökkenti a méretet és a fájlok számát.
+Ha az alkalmazáscsomag nagyméretű és/vagy sok fájllal rendelkezik, [tömörítheti](service-fabric-package-apps.md#compress-a-package)is. A tömörítés csökkenti a méretet és a fájlok számát.
 A mellékhatás az, hogy az alkalmazás típusának regisztrálása és regisztrációjának megszüntetése gyorsabb. A feltöltési idő jelenleg lassabb lehet, különösen akkor, ha a csomag tömörítésének idejét is tartalmazza. 
 
-A csomagok tömörítéséhez használja ugyanazt a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancsot. A tömörítés elkülöníthető a feltöltéstől, a `SkipCopy` jelző használatával vagy a feltöltési művelettel. Tömörített csomag tömörítésének alkalmazása nem-op.
-Tömörített csomag kibontásához használja ugyanazt a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancsot `UncompressPackage` a kapcsolóval.
+A csomagok tömörítéséhez használja ugyanazt a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancsot. A tömörítés elkülöníthető a feltöltéstől, a `SkipCopy` jelző használatával vagy a feltöltési művelettel együtt. Tömörített csomag tömörítésének alkalmazása nem-op.
+Tömörített csomag kibontásához használja ugyanazt a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancsot a `UncompressPackage` kapcsolóval.
 
-A következő parancsmag a rendszerkép-tárolóba történő másolás nélkül tömöríti a csomagot. A csomag mostantól tartalmazza a és `Code` `Config` a csomagok tömörített fájljait. Az alkalmazás és a szolgáltatási jegyzékfájlok nem tömörítettek, mert számos belső művelethez szükségesek (például a csomagok megosztása, az alkalmazásnév neve és a verziók kinyerése bizonyos érvényességek esetén). A jegyzékfájlok kijavítása nem teszi hatékonyabbá a műveleteket.
+A következő parancsmag a rendszerkép-tárolóba történő másolás nélkül tömöríti a csomagot. A csomag mostantól tartalmazza a `Code` és `Config` csomagok tömörített fájljait. Az alkalmazás és a szolgáltatási jegyzékfájlok nem tömörítettek, mert számos belső művelethez szükségesek (például a csomagok megosztása, az alkalmazásnév neve és a verziók kinyerése bizonyos érvényességek esetén). A jegyzékfájlok kijavítása nem teszi hatékonyabbá a műveleteket.
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -CompressPackage -SkipCopy
@@ -202,7 +202,7 @@ A "MyApplicationV1" a rendszerkép-tároló azon mappája, ahol az alkalmazáscs
 
 ### <a name="register-the-application-package-copied-to-an-external-store"></a>A külső tárolóba másolt alkalmazáscsomag regisztrálása
 
-A Service Fabric 6,1-es verziótól kezdődően a kiépítés támogatja a csomag külső tárból való letöltését. A letöltési URI azt az [ `sfpkg` alkalmazáscsomag](service-fabric-package-apps.md#create-an-sfpkg) elérési útját adja meg, ahonnan az alkalmazáscsomag http vagy HTTPS protokoll használatával tölthető le. A csomagot előzőleg fel kell tölteni erre a külső helyre. Az URI-nak engedélyezni kell az OLVASÁSI hozzáférést, hogy Service Fabric le tudja tölteni a fájlt. A `sfpkg` fájlnak ". sfpkg" kiterjesztéssel kell rendelkeznie. A kiépítési műveletnek tartalmaznia kell az alkalmazás típusára vonatkozó információkat, ahogy az az alkalmazás jegyzékfájljában található.
+A Service Fabric 6,1-es verziótól kezdődően a kiépítés támogatja a csomag külső tárból való letöltését. A letöltési URI a [`sfpkg` alkalmazáscsomag](service-fabric-package-apps.md#create-an-sfpkg) elérési útját jelöli, ahonnan az alkalmazáscsomag http vagy HTTPS protokoll használatával tölthető le. A csomagot előzőleg fel kell tölteni erre a külső helyre. Az URI-nak engedélyezni kell az OLVASÁSI hozzáférést, hogy Service Fabric le tudja tölteni a fájlt. A `sfpkg` fájlnak ". sfpkg" kiterjesztéssel kell rendelkeznie. A kiépítési műveletnek tartalmaznia kell az alkalmazás típusára vonatkozó információkat, ahogy az az alkalmazás jegyzékfájljában található.
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
@@ -357,18 +357,18 @@ A rendszerkép-tároló és a rendszerkép-tároló közötti kapcsolatok karakt
 
 ### <a name="deploy-large-application-package"></a>Nagyméretű alkalmazáscsomag üzembe helyezése
 
-Probléma: A [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) időtúllépést mutat ki egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
+Probléma: a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) időtúllépést jelent egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
 Próbálja ki:
-- Nagyobb időtúllépést ad meg a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancshoz `TimeoutSec` a paraméterrel. Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
+- Nagyobb időtúllépést ad meg a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancshoz `TimeoutSec` paraméterrel. Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
 - Keresse meg a számítógép és a fürt közötti hálózati kapcsolatot. Ha a kapcsolatok lassúak, érdemes lehet olyan gépet használni, amelynek jobb hálózati kapcsolatai vannak.
 Ha az ügyfélszámítógép más régióban található, mint a fürt, érdemes lehet egy ügyfélszámítógépet használni a fürttel megegyező vagy azonos régióban.
 - Ellenőrizze, hogy van-e külső szabályozás. Ha például a rendszerkép-tároló az Azure Storage használatára van konfigurálva, akkor a feltöltés szabályozható.
 
-Probléma: A feltöltési csomag sikeresen befejeződött, de a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) időtúllépést mutat. Próbálja ki:
+Probléma: a feltöltési csomag sikeresen befejeződött, de a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) időtúllépést jelent. Próbálja
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt.
 A tömörítés csökkenti a méretet és a fájlok számát, ami viszont csökkenti a forgalom mennyiségét és a Service Fabric által végrehajtandó munkát. A feltöltési művelet lassabb lehet (különösen akkor, ha belefoglalja a tömörítési időt), de az alkalmazás típusának regisztrálása és regisztrációja gyorsabb.
-- Nagyobb időtúllépést ad meg a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) `TimeoutSec` paraméterrel.
-- Kapcsoló `Async` megadása a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)számára. A parancs visszaadja a parancsot, ha a fürt elfogadja a parancsot, és az alkalmazás típusának regisztrálása aszinkron módon folytatódik. Ezért ebben az esetben nincs szükség magasabb időtúllépés megadására. A [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) parancs felsorolja az összes sikeresen regisztrált alkalmazáshiba-verziót és a regisztrációs állapotát. Ezzel a paranccsal meghatározhatja, hogy mikor történik a regisztráció.
+- Nagyobb időtúllépést ad meg a `TimeoutSec` paraméterrel rendelkező [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) .
+- `Async` kapcsoló megadása a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)számára. A parancs visszaadja a parancsot, ha a fürt elfogadja a parancsot, és az alkalmazás típusának regisztrálása aszinkron módon folytatódik. Ezért ebben az esetben nincs szükség magasabb időtúllépés megadására. A [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) parancs felsorolja az összes sikeresen regisztrált alkalmazáshiba-verziót és a regisztrációs állapotát. Ezzel a paranccsal meghatározhatja, hogy mikor történik a regisztráció.
 
 ```powershell
 Get-ServiceFabricApplicationType
@@ -383,11 +383,11 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 
 ### <a name="deploy-application-package-with-many-files"></a>Alkalmazáscsomag központi telepítése sok fájllal
 
-Probléma: [Regisztráljon – a ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) időtúllépést mutat ki egy sok fájllal rendelkező alkalmazáscsomag esetében (több ezer megrendelés).
+Probléma: a [ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) időtúllépést jelent a sok fájllal rendelkező alkalmazáscsomag esetében (több ezer).
 Próbálja ki:
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt. A tömörítés csökkenti a fájlok számát.
-- Nagyobb időtúllépést ad meg a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) `TimeoutSec` paraméterrel.
-- Kapcsoló `Async` megadása a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)számára. A parancs visszaadja a parancsot, ha a fürt elfogadja a parancsot, és az alkalmazás típusának regisztrálása aszinkron módon folytatódik.
+- Nagyobb időtúllépést ad meg a `TimeoutSec` paraméterrel rendelkező [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) .
+- `Async` kapcsoló megadása a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)számára. A parancs visszaadja a parancsot, ha a fürt elfogadja a parancsot, és az alkalmazás típusának regisztrálása aszinkron módon folytatódik.
 Ezért ebben az esetben nincs szükség magasabb időtúllépés megadására. A [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) parancs felsorolja az összes sikeresen regisztrált alkalmazáshiba-verziót és a regisztrációs állapotát. Ezzel a paranccsal meghatározhatja, hogy mikor történik a regisztráció.
 
 ```powershell
@@ -401,7 +401,7 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás becsomagolása](service-fabric-package-apps.md)
 

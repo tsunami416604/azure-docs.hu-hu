@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969098"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012821"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -24,6 +24,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy Azure-beli 
 Ez az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
+>
 > * A PowerShell beállítása és az Azure Recovery Services-szolgáltató regisztrálása.
 > * Recovery Services-tároló létrehozása.
 > * Az SQL-adatbázis biztonsági mentésének konfigurálása egy Azure-beli virtuális gépen.
@@ -270,8 +271,8 @@ Miután megadta az autoprotection-szándékot, az újonnan hozzáadott adatbázi
 
 A Azure Backup az Azure-beli virtuális gépeken futó SQL Server-adatbázisokat a következőképpen állíthatja helyre:
 
-1. Állítsa vissza egy adott dátumra vagy időpontra (a másodikra) a tranzakciónaplók biztonsági másolatainak használatával. Azure Backup automatikusan meghatározza a megfelelő teljes különbözeti biztonsági mentést, valamint a visszaállításhoz szükséges naplók láncát, amely a kijelölt idő alapján állítható vissza.
-2. Egy adott helyreállítási pontra való visszaállításhoz állítson vissza egy adott teljes vagy különbözeti biztonsági másolatot.
+* Állítsa vissza egy adott dátumra vagy időpontra (a másodikra) a tranzakciónaplók biztonsági másolatainak használatával. Azure Backup automatikusan meghatározza a megfelelő teljes különbözeti biztonsági mentést, valamint a visszaállításhoz szükséges naplók láncát, amely a kijelölt idő alapján állítható vissza.
+* Egy adott helyreállítási pontra való visszaállításhoz állítson vissza egy adott teljes vagy különbözeti biztonsági másolatot.
 
 Az SQL-adatbázisok visszaállítása előtt tekintse meg az [itt](restore-sql-database-azure-vm.md#prerequisites) említett előfeltételeket.
 
@@ -335,9 +336,9 @@ A fenti kimenet azt jelenti, hogy a felhasználó bármikor visszaállíthatja a
 
 SQL DB-visszaállítás esetén a következő visszaállítási forgatókönyvek támogatottak.
 
-1. Az SQL-adatbázis biztonsági mentésének felülbírálása egy másik helyreállítási pontról – OriginalWorkloadRestore
-2. Az SQL-adatbázis visszaállítása új ADATBÁZISként ugyanabban az SQL-példányban – AlternateWorkloadRestore
-3. Az SQL-adatbázis visszaállítása új ADATBÁZISként másik SQL-példányban egy másik SQL-beli virtuális gépen – AlternateWorkloadRestore
+* Az SQL-adatbázis biztonsági mentésének felülbírálása egy másik helyreállítási pontról – OriginalWorkloadRestore
+* Az SQL-adatbázis visszaállítása új ADATBÁZISként ugyanabban az SQL-példányban – AlternateWorkloadRestore
+* Az SQL-adatbázis visszaállítása új ADATBÁZISként másik SQL-példányban egy másik SQL-beli virtuális gépen – AlternateWorkloadRestore
 
 Miután beolvasta a megfelelő helyreállítási pontot (külön vagy a naplózási időpontot), a [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS parancsmaggal beolvashatja a helyreállítási konfigurációs objektumot a kívánt helyreállítási tervnek megfelelően.
 
@@ -560,12 +561,12 @@ Az SQL always on rendelkezésre állási csoportok esetében ügyeljen arra, hog
 
 Tegyük fel például, hogy egy SQL AG két csomóponttal rendelkezik: "SQL-Server-0" és "SQL-Server-1" és 1 SQL AG DB. Ha mindkét csomópont regisztrálva van, ha [a felhasználó felsorolja a védhető elemeket](#fetching-sql-dbs), a következő összetevőket sorolja fel
 
-1. Egy SQL AG objektum-Protected Item Type as SQLAvailabilityGroup
-2. Az SQL AG adatbázis-védelemmel ellátott elemtípus-típusa SQLDatabase
-3. SQL-Server-0 – Protected Item Type as SQLInstance
-4. SQL-Server-1 – Protected Item Type as SQLInstance
-5. Bármely alapértelmezett SQL-adatbázisok (Master, Model, msdb) az SQL-Server-0-Protected Item Type as SQLDatabase
-6. Bármely alapértelmezett SQL-adatbázisok (Master, Model, msdb) az SQL-Server-1 – Protected Item Type as SQLDatabase
+* Egy SQL AG objektum-Protected Item Type as SQLAvailabilityGroup
+* Az SQL AG adatbázis-védelemmel ellátott elemtípus-típusa SQLDatabase
+* SQL-Server-0 – Protected Item Type as SQLInstance
+* SQL-Server-1 – Protected Item Type as SQLInstance
+* Bármely alapértelmezett SQL-adatbázisok (Master, Model, msdb) az SQL-Server-0-Protected Item Type as SQLDatabase
+* Bármely alapértelmezett SQL-adatbázisok (Master, Model, msdb) az SQL-Server-1 – Protected Item Type as SQLDatabase
 
 az SQL-Server-0, SQL-Server-1 az "AzureVMAppContainer" néven jelenik meg a [biztonsági mentési tárolók listáján](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 

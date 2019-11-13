@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Azure notebook – személyre szabott'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag szimulál egy személyre szabott hurok _SYSTEM egy Azure jegyzetfüzetben, amely azt jelzi, hogy az ügyfél milyen típusú kávét rendel. A felhasználókat és azok beállításait egy felhasználói adatkészletben tárolja a rendszer. A kávéval kapcsolatos információk a Coffee-adatkészletekben is elérhetők és tárolhatók.
+description: Ez az oktatóanyag szimulál egy személyre szabott hurkot _system egy Azure jegyzetfüzetben, amely azt jelzi, hogy az ügyfél milyen típusú kávét rendel. A felhasználókat és azok beállításait egy felhasználói adatkészletben tárolja a rendszer. A kávéval kapcsolatos információk a Coffee-adatkészletekben is elérhetők és tárolhatók.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467242"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007609"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: személyre szabott használata az Azure jegyzetfüzetben
 
@@ -33,7 +33,7 @@ A jegyzetfüzet kiválasztja a véletlenszerű felhasználót, napszakot és az 
 
 Ha segítségre van a személyre szabott tanulásban, akkor az egyes személyek számára megfelelő kávé kiválasztásával a _rendszer_ a kávé részleteit is ismeri.
 
-|Kávé-műveleti funkciók|Hőmérsékleti típusok|Származási hely|A sült típusok|Organikus|
+|Kávé-műveleti funkciók|Hőmérséklet-típusok|Származási hely|A sült típusok|Organikus|
 |--|--|--|--|--|
 |Cappacino|Gyakori|Kenya|Sötét|Organikus|
 |Hideg főzet|Hideg|Brazília|Világos|Organikus|
@@ -589,7 +589,7 @@ Ha jobb tanulási szabályzatot szeretne találni a rangsor API adatai alapján,
 1. Adja meg a kiértékelési név és a dátumtartomány értékeit a hurok kiértékeléséhez. A dátumtartomány csak azokat a napokat tartalmazza, amelyeknek a kiértékelésére koncentrál. 
     ![a Azure Portalban nyissa meg a személyre szabott erőforrás értékeléseit ismertető lapot. Válassza az értékelés létrehozása lehetőséget. Adja meg a kiértékelés nevét és a dátumtartományt.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Az offline értékelés futtatásának célja annak megállapítása, hogy van-e jobb tanulási szabályzat az ebben a hurokban használt funkciókhoz és műveletekhez. Ha szeretné megkeresni a jobb tanulási szabályzatot, ellenőrizze, hogy be van-e kapcsolva az **optimalizálási szabályzat** .
+    Az offline értékelés futtatásának célja annak megállapítása, hogy van-e jobb tanulási szabályzat az ebben a hurokban használt funkciókhoz és műveletekhez. Ha szeretné megkeresni a jobb tanulási szabályzatot, ellenőrizze, hogy az **optimalizálási felderítés** be van-e kapcsolva.
 
 1. A kiértékelés elindításához kattintson **az OK gombra** . 
 1. Ez az **értékelési** oldal felsorolja az új értékelést és a jelenlegi állapotát. Attól függően, hogy mennyi adattal rendelkezik, ez a kiértékelés hosszabb időt is igénybe vehet. A találatok megjelenítéséhez néhány perc múlva visszatérhet erre az oldalra. 
@@ -661,7 +661,7 @@ Ha nem kívánja folytatni az oktatóanyag-sorozatot, törölje a következő er
 * Törölje az Azure notebook-projektet. 
 * A személyre szabott erőforrás törlése. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a mintában használt [Jupyter-jegyzetfüzet és-adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) elérhetők a GitHub-tárházban a személyre szabáshoz. 
 

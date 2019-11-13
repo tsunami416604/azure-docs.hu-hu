@@ -1,5 +1,5 @@
 ---
-title: Meglévő végrehajtható fájl üzembe helyezése az Azure Service Fabricban | Microsoft Docs
+title: Meglévő végrehajtható fájl becsomagolása az Azure Service Fabricba | Microsoft Docs
 description: További információ a meglévő alkalmazások vendég végrehajtható fájlként való csomagolásáról, így Service Fabric-fürtön is üzembe helyezhető.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: bd6984db67a8a7b9c38988558ada51e12d337f52
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599453"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013262"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl üzembe helyezése Service Fabric
 Bármilyen típusú kód, például a Node. js, a Java vagy C++ az Azure Service Fabric szolgáltatásként is futtatható. A Service Fabric vendég végrehajtható fájlokként hivatkozik az ilyen típusú szolgáltatásokra.
@@ -33,7 +33,7 @@ A Service Fabric-fürtben több előnye van a vendég végrehajtható fájl futt
 * Állapot monitorozása. Service Fabric állapot-figyelés észleli, ha egy alkalmazás fut, és diagnosztikai adatokat biztosít, ha hiba történt.   
 * Az alkalmazások életciklusának kezelése. A leállás nélküli verziófrissítések mellett a Service Fabric automatikus visszaállítást biztosít az előző verzióra, ha a frissítés során helytelen állapotú esemény jelent meg.    
 * Sűrűségű. Több alkalmazást is futtathat egy fürtben, ami szükségtelenné teszi az egyes alkalmazások saját hardveren való futtatásának szükségességét.
-* Felfedező A REST használatával meghívhatja a Service Fabric Naming Service-t, hogy a fürt más szolgáltatásait is megkeresse. 
+* Felderíthetőség: a REST használatával meghívhatja a Service Fabric Naming Service-t, hogy a fürt más szolgáltatásait is megkeresse. 
 
 ## <a name="samples"></a>Példák
 * [Minta a vendég végrehajtható fájlok csomagolásához és üzembe helyezéséhez](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -66,14 +66,14 @@ A ApplicationPackageRoot tartalmazza az alkalmazást definiáló ApplicationMani
 
 * *Kód*. Ez a könyvtár tartalmazza a szolgáltatási kódot.
 * *Konfiguráció*. Ez a könyvtár tartalmaz egy Settings. xml fájlt (és szükség esetén más fájlokat is), amelyekkel a szolgáltatás futásidőben elérheti az adott konfigurációs beállításokat.
-* *Az*adathalmazt. Ez egy további könyvtár a szolgáltatás által igényelt további helyi információk tárolására. Csak az időszakos adattárolást kell használni. Service Fabric nem másolja vagy replikálja az adatkönyvtár módosításait, ha a szolgáltatást át kell helyezni (például a feladatátvétel során).
+* *Az adathalmazt*. Ez egy további könyvtár a szolgáltatás által igényelt további helyi információk tárolására. Csak az időszakos adattárolást kell használni. Service Fabric nem másolja vagy replikálja az adatkönyvtár módosításait, ha a szolgáltatást át kell helyezni (például a feladatátvétel során).
 
 > [!NOTE]
-> Ha nincs szüksége rájuk, nem `config` kell `data` létrehoznia a és a címtárakat.
+> Ha nincs szüksége rájuk, nem kell létrehoznia a `config` és a `data` könyvtárakat.
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kapcsolódó információkkal és feladatokkal kapcsolatban tekintse meg a következő cikkeket.
 * [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
 * [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)

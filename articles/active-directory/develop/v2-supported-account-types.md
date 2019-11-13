@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852043"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942171"
 ---
 # <a name="supported-account-types"></a>Támogatott fióktípusok
 
@@ -41,7 +41,7 @@ A Microsoft Azure nyilvános felhőben a legtöbb típusú alkalmazás bejelentk
   - Munkahelyi vagy iskolai vagy személyes Microsoft-fiók.
   - Csak személyes Microsoft-fiók.
     > [!NOTE]
-    > A Microsoft Identity platform jelenleg csak a személyes Microsoft-fiókokat támogatja a **munkahelyi vagy iskolai vagy személyes Microsoft-fiókok**regisztrálásával, majd az alkalmazás kódjában az Azure ad-szolgáltató megadásával korlátozza a bejelentkezést. az alkalmazás létrehozásakor, például `https://login.onmicrosoftonline.com/consumers`:.
+    > A Microsoft Identity platform jelenleg csak a személyes Microsoft-fiókokat támogatja egy alkalmazás **munkahelyi vagy iskolai vagy személyes Microsoft-fiókhoz**való regisztrálásával, majd az alkalmazás kódjában az Azure ad-szolgáltató megadásával korlátozza a bejelentkezést a kódban, az alkalmazás létrehozásakor, például `https://login.microsoftonline.com/consumers`.
 
 - Ha üzleti alkalmazást kíván beírni a fogyasztók alkalmazásba, akkor a Azure AD B2C használatával is bejelentkezhet a felhasználók közösségi identitásával.
 
@@ -58,7 +58,7 @@ Bizonyos típusú fiókok nem használhatók bizonyos hitelesítési folyamatokk
 
  Az alkalmazások az [országos felhőkben](authentication-national-cloud.md)is bejelentkezhetnek a felhasználókba. A Microsoft személyes fiókjai azonban ezekben a felhőkben nem támogatottak (a felhők definíciója szerint). Ezért csökkenthető a támogatott fióktípus, ezek a felhők, a szervezet (egyetlen bérlő) vagy bármely szervezet (több-bérlős alkalmazások).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure Active Directory-](./single-and-multi-tenant-apps.md) beli bérletről
+- További információ a [Azure Active Directory-beli bérletről](./single-and-multi-tenant-apps.md)
 - További információ az [országos felhőkről](./authentication-national-cloud.md)

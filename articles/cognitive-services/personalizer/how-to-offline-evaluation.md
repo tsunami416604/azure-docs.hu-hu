@@ -1,7 +1,7 @@
 ---
 title: Offline próbaverzió végrehajtása – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan elemezheti tanulási ciklusát offline kiértékeléssel
+description: Ez a cikk bemutatja, hogyan használható az offline értékelés az alkalmazás hatékonyságának méréséhez és a tanulási hurok elemzéséhez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2aec0db2d1f9865188f2749a0eeb765a14d04ed
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490719"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73952999"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>A tanulási hurok elemzése offline kiértékeléssel
 
@@ -64,6 +64,6 @@ A tanulási szabályzatok összehasonlítása a következőket foglalja magában
 
 A műveletek és a környezet [funkcióinak](concepts-features.md) hatékonysága.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, [hogyan működnek az offline értékelések](concepts-offline-evaluation.md).

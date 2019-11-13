@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók a Hyper-V virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery Deployment Plannerról | Microsoft Docs
+title: Deployment Planner a Hyper-V vész-helyreállításhoz Azure Site Recovery
 description: Ismerje meg a Azure Site Recovery Deployment Planner Hyper-V vész-helyreállítást az Azure-ba.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 72b1311227f5c9f9efc35b2940d3c843a21dc261
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618830"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954017"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure-ba irányuló Hyper-V vész-helyreállítás Azure Site Recovery Deployment Planner
 
@@ -84,7 +84,7 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 
 | Kiszolgálókövetelmények | Leírás |
 |---|---|
-|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: Microsoft Windows Server 2016 vagy Microsoft Windows Server 2012 R2 </li><li>Számítógép konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>A felvenni kívánt Hyper-V-kiszolgálókat hozzá kell adni az ügyfél virtuális TrustedHosts listájához, amelyből az eszköz fut. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
+|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: Microsoft Windows Server 2016 vagy Microsoft Windows Server 2012 R2 </li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>A felvenni kívánt Hyper-V-kiszolgálókat hozzá kell adni az ügyfél virtuális TrustedHosts listájához, amelyből az eszköz fut. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
 | Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
 | Felhasználói engedélyek | Rendszergazdai fiók, amely hozzáférhet a Hyper-V-fürthöz/Hyper-V-gazdagéphez a virtuálisgép-lista lekérése és a profilkészítési műveletek során.<br>Az összes profillal ellátni kívánt gazdagépnek rendelkeznie kell egy tartományi rendszergazdai fiókkal, amelynek hitelesítő adatai, vagyis felhasználóneve és jelszava megegyezik
  |
@@ -115,7 +115,7 @@ A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 1.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.3.zip
+Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.3.zip
 
 E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
@@ -139,5 +139,5 @@ A legújabb Azure Site Recovery Deployment Planner eszköz verziója 2,5.
 Tekintse meg az egyes frissítésekben hozzáadott javítások [Azure site Recovery Deployment Planner korábbi verziók](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lapját.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az üzembehelyezés-tervező futtatása](site-recovery-hyper-v-deployment-planner-run.md).

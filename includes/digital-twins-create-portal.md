@@ -7,20 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.custom: include file
-ms.openlocfilehash: 92b9a4754769566feb3658e07081e9fdae78fcfc
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903815"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014146"
 ---
 1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
-1. A Kezdőlap lapon válassza az **+ erőforrás létrehozása**lehetőséget. Keressen rá a **digitális ikrek**kifejezésre, és válassza a **digitális ikrek**lehetőséget. Az üzembehelyezési folyamat elindításához válassza a **Létrehozás** elemet.
+1. Válassza ki a kezdőlapot, majd az **+ erőforrás létrehozása**lehetőséget. 
+
+   [![bontsa ki a Kezdőlap sávot, majd válassza az + erőforrás létrehozása lehetőséget.](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+
+1. Keressen rá a **digitális ikrek**kifejezésre, és válassza a **digitális ikrek**lehetőséget. 
 
    [új digitális Twins-példány létrehozásához ![kiválasztása](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+
+   Másik lehetőségként válassza a **eszközök internetes hálózata**lehetőséget, majd válassza a **digitális Twins (előzetes verzió)** lehetőséget.
+
+1. Az üzembehelyezési folyamat elindításához válassza a **Létrehozás** elemet.
+
+   [![az erőforrás központi telepítésének létrehozása és megerősítése](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
 
 1. A **Digital Twins** panelen adja meg a következő adatokat:
    * **Erőforrás neve**: Adjon meg egy egyedi nevet a Digital Twins-példány számára.
@@ -32,10 +42,18 @@ ms.locfileid: "73903815"
 
 1. Tekintse át a digitális ikrek adatait, majd válassza a **Létrehozás**lehetőséget. A digitális Twins-példány létrehozása eltarthat néhány percig. A létrehozás folyamatát az **Értesítések** panelen követheti nyomon.
 
-1. Nyissa meg a Digital Twins-példány **Áttekintés** paneljét. Jegyezze fel a hivatkozást a **Management API**alatt.
+1. Nyissa meg a Digital Twins-példány **Áttekintés** paneljét. Jegyezze fel a hivatkozást a **Management API**alatt. A **felügyeleti API** URL-címe a következőképpen van formázva: 
+   
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger
+   ```
+   
+   Ez az URL-cím az Ön példányára vonatkozó Azure Digital Twins REST API-dokumentációra mutat. Az API-dokumentáció értelmezésével és használatával kapcsolatban tekintse át [az Azure Digital Twins Swagger használatát](../articles/digital-twins/how-to-use-swagger.md) ismertető cikket. Másolja és módosítsa a **felügyeleti API** URL-címét erre a formátumra: 
+    
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/
+   ```
+    
+   Az alkalmazás a módosított URL-címet használja majd kiindulási URL-címként a példány eléréséhez. Másolja ezt a módosított URL-címet egy ideiglenes fájlba. Ezt a következő szakaszban kell megadnia.
 
-   A **felügyeleti API** URL-címe `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`ként van formázva. Ez az URL-cím az Ön példányára vonatkozó Azure Digital Twins REST API-dokumentációra mutat. Az API-dokumentáció értelmezésével és használatával kapcsolatban tekintse át [az Azure Digital Twins Swagger használatát](../articles/digital-twins/how-to-use-swagger.md) ismertető cikket.
-
-    Másolja és módosítsa a **felügyeleti API** URL-címét a következő formátumra: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Az alkalmazás a módosított URL-címet használja majd kiindulási URL-címként a példány eléréséhez. Másolja ezt a módosított URL-címet egy ideiglenes fájlba. Ezt a következő szakaszban kell megadnia.
-
-    [![felügyeleti API](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)
+   [![Management API – áttekintés](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

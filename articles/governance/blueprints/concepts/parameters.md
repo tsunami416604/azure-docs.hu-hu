@@ -1,17 +1,14 @@
 ---
 title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Tudjon meg többet a statikus és dinamikus paraméterekről, valamint arról, hogyan hozza létre a dinamikus tervrajzokat.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da0670bdc880c47c3b715dc8344896a6c695924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981060"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960519"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
@@ -25,7 +22,7 @@ Egyszerű példa az erőforráscsoport-összetevő. Egy erőforráscsoport létr
 
 A probléma megoldása a paraméterek. A tervrajzok segítségével meghatározhatja az adott összetevő minden tulajdonságának értékét az előfizetéshez való hozzárendelés során. A paraméter lehetővé teszi egy olyan terv újrafelhasználását, amely egy adott erőforrás-csoportot és más erőforrásokat hoz létre egy előfizetésen belül, ütközés nélkül.
 
-## <a name="blueprint-parameters"></a>Terv paraméterei
+## <a name="blueprint-parameters"></a>Tervparaméterek
 
 A REST APIon a paraméterek létrehozhatók a tervrajzon. Ezek a paraméterek eltérnek az egyes támogatott összetevők paramétereivel. Amikor létrehoznak egy paramétert a tervrajzon, azt az adott terv összetevői használhatják. Ilyen lehet például az erőforráscsoport elnevezésének előtagja. Az összetevő a terv paraméter használatával "többnyire dinamikus" paramétert hozhat létre. Mivel a paraméter a hozzárendelés során is meghatározható, ez a minta lehetővé teszi egy olyan konzisztencia használatát, amely megtarthatja az elnevezési szabályokat. A lépéseket lásd: [statikus paraméterek beállítása – terv szintű paraméter](#blueprint-level-parameter).
 
@@ -61,7 +58,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 1. Kattintson egy meglévő tervre, majd kattintson a **terv szerkesztése** vagy a **+ terv létrehozása** lehetőségre, és adja meg az alapvető tudnivalókat az **alapok** lapon.
 
-1. Kattintson a **Tovább: Összetevők @ no__t-0, vagy kattintson az összetevők **fülre.**
+1. Kattintson a **Tovább gombra:** összetevők, vagy kattintson az összetevők fülre.
 
 1. A tervhez hozzáadott összetevők, amelyekben a paraméter beállításai a **Paraméterek** oszlopban kitöltött **Y paraméterek X betűjét** jelenítik meg. Az összetevő paramétereinek szerkesztéséhez kattintson a lelet sorra.
 
@@ -134,7 +131,7 @@ A következő REST API példa létrehoz egy szerepkör-hozzárendelési összete
   }
   ```
 
-Ebben a példában a **principalIds** tulajdonság a **tulajdonosok** terv szintjének paramétert használja `[parameters('owners')]` értékkel. Ha a paramétert egy olyan összetevőn állítja be, amely egy terv szintű paramétert használ, továbbra is egy **statikus paraméterre**mutat. A tervrajzi szint paraméter nem állítható be a terv hozzárendelése során, és az egyes hozzárendelések esetében ugyanaz az érték lesz.
+Ebben a példában a **principalIds** tulajdonság a **tulajdonosi** terv szintje paramétert használja `[parameters('owners')]`értékének használatával. Ha a paramétert egy olyan összetevőn állítja be, amely egy terv szintű paramétert használ, továbbra is egy **statikus paraméterre**mutat. A tervrajzi szint paraméter nem állítható be a terv hozzárendelése során, és az egyes hozzárendelések esetében ugyanaz az érték lesz.
 
 ##### <a name="artifact-level-parameter"></a>Összetevő szintje paraméter
 
@@ -184,7 +181,7 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dinamikus paraméterek beállítása REST API
 
-A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevőhöz tartozó összes többi paramétert az **\<name @ no__t-3** és az **érték** kulcspárt tartalmazó **paraméterekben** definiáljuk. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
+A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevőhöz tartozó összes többi paramétert az **\<name\>** és az **érték** kulcspár **paraméterrel rendelkező paraméterek** alatt definiáljuk. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
 
 - REST API URI
 
@@ -235,7 +232,7 @@ A **dinamikus paraméterek** a hozzárendelés során történő beállítása k
   }
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [terv függvények](../reference/blueprint-functions.md)listáját.
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure digitális Twins – gyakori lekérdezési minták | Microsoft Docs
-description: Ismerje meg az Azure digitális Twins felügyeleti API-k lekérdezésének gyakori mintáit.
+title: Gyakori lekérdezési minták – Azure digitális Twins | Microsoft Docs
+description: Ismerkedjen meg az Azure digitális Twins felügyeleti API-kkal kapcsolatos gyakori API-lekérdezési mintákkal.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: ef9e7a41f1de05e4d21a9ad7b45ed2b99885b6b8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c821524b344c8b741047ba415127cffe59a74ca2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044440"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005897"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Azure digitális Twins API-k lekérdezése gyakori feladatokhoz
 
@@ -161,7 +161,7 @@ Ez a szakasz néhány példát mutat be arra, hogyan használhatja a felügyelet
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&maxLevel=5
     ```
 
-- Minden olyan eszköz beolvasása, amely a *YOUR_SPACE_ID*azonosítóval megegyező szinten lévő szóközökhöz van csatolva.
+- Minden olyan eszköz beolvasása, amely a *YOUR_SPACE_ID*azonosítójú szóközzel azonos szinten található.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true

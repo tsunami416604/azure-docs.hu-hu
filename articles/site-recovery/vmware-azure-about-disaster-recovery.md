@@ -1,18 +1,17 @@
 ---
-title: A VMware virtuális gépeknek az Azure-ba Azure Site Recovery használatával történő vész-helyreállításáról | Microsoft Docs
+title: VMware vész-helyreállítás Azure Site Recovery
 description: Ez a cikk áttekintést nyújt a VMware virtuális gépek az Azure-ba való vész-helyreállításáról az Azure Site Recovery szolgáltatás használatával.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814307"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954393"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>A VMware virtuális gépek az Azure-ba való vész-helyreállításáról
 
@@ -88,16 +87,16 @@ A helyszínen a következőket kell tennie:
 Az Azure és a helyszíni infrastruktúra meglétét követően beállíthatja a vész-helyreállítást.
 
 1. Az üzembe helyezni kívánt összetevők megismeréséhez tekintse át a [VMware – Azure architektúrát](vmware-azure-architecture.md), valamint a fizikai és az [Azure architektúrát](physical-azure-architecture.md). Számos összetevő létezik, ezért fontos tisztában lennie azzal, hogyan illeszkednek egymáshoz.
-2. **Forrás környezet**: Az üzembe helyezés első lépéseként be kell állítania a replikációs forrás környezetét. Megadhatja, hogy mit szeretne replikálni, és hová szeretné replikálni a-t.
-3. **Konfigurációs kiszolgáló**: Be kell állítania egy konfigurációs kiszolgálót a helyszíni forrás környezetében:
+2. **Forrásoldali környezet**: az üzembe helyezés első lépéseként be kell állítania a replikációs forrás környezetét. Megadhatja, hogy mit szeretne replikálni, és hová szeretné replikálni a-t.
+3. **Konfigurációs kiszolgáló**: be kell állítania egy konfigurációs kiszolgálót a helyszíni forrás környezetében:
     - A konfigurációs kiszolgáló egyetlen helyszíni gép. A VMware vész-helyreállítási szolgáltatásként azt javasoljuk, hogy egy letölthető OVF-sablonból üzembe helyezhető VMware virtuális gépként telepítse.
     - A konfigurációs kiszolgáló koordinálja a helyszíni és az Azure közötti kommunikációt
     - Néhány egyéb összetevő a konfigurációs kiszolgáló számítógépén fut.
         - A folyamat-kiszolgáló fogadja, optimalizálja és elküldi a replikációs adatokat az Azure-ban tárolt Storage-fiókba. Kezeli továbbá a mobilitási szolgáltatás automatikus telepítését a replikálni kívánt gépeken, és elvégzi a virtuális gépek automatikus felderítését a VMware-kiszolgálókon.
         - A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
     - A beállítás magában foglalja a konfigurációs kiszolgáló regisztrálását a tárolóban, a MySQL-kiszolgáló és a VMware-PowerCLI letöltését, valamint az automatikus felderítési és mobilitási szolgáltatás telepítéséhez létrehozott fiókok megadását.
-4. **Cél környezet**: A cél Azure-környezetet az Azure-előfizetés és a hálózati beállítások megadásával állíthatja be.
-5. **Replikációs házirend**: Megadhatja, hogyan történjen a replikálás. A beállítások közé tartozik a helyreállítási pontok létrehozásának és tárolásának gyakorisága, valamint az, hogy az alkalmazással konzisztens pillanatképeket kell-e létrehozni.
+4. **Cél környezet**: a cél Azure-környezet beállítása az Azure-előfizetés és a hálózati beállítások megadásával.
+5. **Replikációs házirend**: megadhatja, hogyan történjen a replikálás. A beállítások közé tartozik a helyreállítási pontok létrehozásának és tárolásának gyakorisága, valamint az, hogy az alkalmazással konzisztens pillanatképeket kell-e létrehozni.
 6. **Replikáció engedélyezése**. A helyszíni gépek replikálását engedélyezheti. Ha létrehozott egy fiókot a mobilitási szolgáltatás telepítéséhez, akkor a rendszer telepíti a számítógép replikálásának engedélyezésekor. 
 
 *További segítségre van szüksége?*
@@ -120,6 +119,6 @@ Az Azure és a helyszíni infrastruktúra meglétét követően beállíthatja a
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a replikáció már megtörtént, a vész- [helyreállítási gyakorlat futtatásával](tutorial-dr-drill-azure.md) gondoskodhat arról, hogy a feladatátvétel a várt módon működjön. 

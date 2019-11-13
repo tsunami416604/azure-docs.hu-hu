@@ -1,5 +1,5 @@
 ---
-title: Azure Digital Twins felhasználó által definiált függvények referenciája | Microsoft Docs
+title: Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája – Azure digitális Twins | Microsoft Docs
 description: Azure Digital Twins felhasználó által definiált függvények ügyféloldali függvénytár-referenciája.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: daab63067087267c12cef75178b5f974043e0fd9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0bbf247adbeab89cf8b16ed089eb13e53cf501f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931245"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009238"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája
 
@@ -32,7 +32,7 @@ A szóközzel megadott azonosító alapján a függvény lekéri a helyet a grá
 
 | Paraméter  | Típus                | Leírás  |
 | ---------- | ------------------- | ------------ |
-| *ID*  | `guid` | Lemezterület-azonosító |
+| *id*  | `guid` | Lemezterület-azonosító |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (azonosító) ⇒ `sensor`
 
@@ -42,7 +42,7 @@ Ez a függvény az érzékelő azonosítóját adja vissza a gráfból.
 
 | Paraméter  | Típus                | Leírás  |
 | ---------- | ------------------- | ------------ |
-| *ID*  | `guid` | Érzékelő azonosítója |
+| *id*  | `guid` | Érzékelő azonosítója |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (azonosító) ⇒ `device`
 
@@ -52,7 +52,7 @@ Az eszköz azonosítója miatt ez a függvény lekéri az eszközt a gráfból.
 
 | Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *ID* | `guid` | Eszköz azonosítója |
+| *id* | `guid` | Eszköz azonosítója |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, adattípus) ⇒ `value`
 
@@ -148,7 +148,7 @@ A szóközzel megadott azonosító alapján a függvény lekéri a szülő terü
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒ `space`
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
 A függvény az érzékelő azonosítójának alapján lekéri a szülő területét.
 
@@ -168,7 +168,7 @@ Az eszköz azonosítója miatt ez a függvény lekéri a szülő területét.
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒ `space`
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
 A függvény az érzékelő azonosítója alapján lekéri a fölérendelt eszközét.
 
@@ -211,7 +211,7 @@ Az eszköz azonosítója miatt ez a függvény a tulajdonságot és annak érté
 | *deviceId* | `guid` | Eszköz azonosítója |
 | *propertyName* | `string` | Eszköz tulajdonságának neve |
 
-### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, adattípus, érték)
+### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
 Ez a függvény egy értéket állít be az érzékelő objektumon a megadott adattípussal.
 
@@ -223,7 +223,7 @@ Ez a függvény egy értéket állít be az érzékelő objektumon a megadott ad
 | *Adattípus*  | `string` | Érzékelő adattípusa |
 | *value*  | `string` | Érték |
 
-### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, adattípus, érték)
+### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
 Ez a függvény egy értéket állít be a szóköz objektumon a megadott adattípussal.
 
@@ -388,7 +388,7 @@ Ez a függvény értesítést küld a megadott adattartalommal.
 
 ### <a name="sensor-methods"></a>Érzékelő módszerei
 
-#### <a name="space--space"></a>Szóköz () ⇒ `space`
+#### <a name="space--space"></a>Space() ⇒ `space`
 
 Ez a függvény az aktuális érzékelő szülő területét adja vissza.
 

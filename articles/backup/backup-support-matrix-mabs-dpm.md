@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: cb3561030cfd86137d7d668ca14db605cc365e86
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: d9c55773772b4f331de95bd98b1973225357c0cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969014"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012789"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -30,7 +30,7 @@ A MABS a System Center DPM alapul, és hasonló funkciókat biztosít néhány k
 - A MABS és a DPM esetében az Azure hosszú távú biztonsági mentési tárolót biztosít. Emellett a DPM lehetővé teszi az adatok biztonsági mentését a szalagos hosszú távú tároláshoz. A MABS nem biztosítja ezt a funkciót.
 - Elsődleges DPM-kiszolgálóról biztonsági mentést készíthet egy másodlagos DPM-kiszolgálóval. A másodlagos kiszolgáló biztosítja az elsődleges kiszolgáló adatbázisának és az elsődleges kiszolgálón tárolt adatforrás-replikáknak a védelme érdekében. Ha az elsődleges kiszolgáló meghibásodik, a másodlagos kiszolgáló folytathatja az elsődleges kiszolgáló által védett munkaterhelések védelmét, amíg az elsődleges kiszolgáló ismét elérhető nem lesz.  A MABS nem biztosítja ezt a funkciót.
 
-A MABS a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=57520)töltheti le. Helyszíni vagy Azure-beli virtuális gépen is futtatható.
+A MABS a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57520)töltheti le. Helyszíni vagy Azure-beli virtuális gépen is futtatható.
 
 A DPM és a MABS számos alkalmazás, valamint a kiszolgáló-és ügyféloldali operációs rendszerek biztonsági mentését támogatja. Több biztonsági mentési forgatókönyvet biztosítanak:
 
@@ -47,7 +47,7 @@ A DPM/MABS és a Azure Backup használatával történő biztonsági mentés a k
 1. A Microsoft Azure Recovery Services (MARS) ügynök telepítve van a DPM-kiszolgálón/MABS.
 1. A MARS-ügynök biztonsági mentést készít a DPM-vagy MABS-lemezekről az Azure-beli biztonsági mentési Recovery Services-tárolóba Azure Backup használatával.
 
-További információ:
+További információk:
 
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) információ a MABS architektúráról.
 - [Tekintse át](backup-support-matrix-mars-agent.md) a Mars-ügynök által támogatott tudnivalókat.
@@ -84,9 +84,9 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 **Kérdés** | **Részletek**
 --- | ---
 **Telepítés** | Telepítse a DPM/MABS egyetlen célra szolgáló gépre.<br/><br/> Ne telepítse a DPM/MABS-t egy tartományvezérlőre, egy olyan gépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör, egy Microsoft Exchange Servert vagy System Center Operations Managert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Tartományi** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
-**Storage** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
-**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információk](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
+**Tartomány** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
+**Tárolás** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
+**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [Részletek](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS áthelyezése** | Ha a MABS egy új kiszolgálóra helyezi át, a tárterület megőrzése mellett az MBS használata támogatott.<br/><br/> A kiszolgálónak ugyanazzal a névvel kell rendelkeznie, mint az eredetinek. A név nem módosítható, ha ugyanazt a tárolót szeretné megőrizni, és ugyanazt a MABS-adatbázist használja az adathelyreállítási pontok tárolásához.<br/><br/> Szüksége lesz egy biztonsági másolatra a MABS-adatbázisról, mert vissza kell állítania.
 
 ## <a name="mabs-support-on-azure-stack"></a>MABS-támogatás Azure Stack
@@ -135,7 +135,7 @@ Több mint 15 napja nincs kapcsolat | Lejárt/kiépítés | Nincs biztonsági m�
 
 A rendszer a DPM/MABS biztonsági mentést készít a helyi lemezes tárolóban.
 
-**Storage** | **Részletek**
+**Tárolás** | **Részletek**
 --- | ---
 **MBS** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
 **MABS-tároló az Azure-beli virtuális gépen** | A rendszer az DPM/MABS virtuális géphez csatolt Azure-lemezeken tárolja az adattárolást, amelyeket a DPM/MABS kezel. A DPM-vagy MABS-tárolóhoz használható lemezek számát a virtuális gép mérete korlátozza.<br/><br/> A2 méretű VM: 4 lemez; A3 méretű VM: 8 lemez; A4-es virtuális gép: 16 lemez, az egyes lemezek maximális mérete 1 TB. Ez határozza meg az összes rendelkezésre álló biztonsági mentési tár készletét.<br/><br/> Azon adatok mennyisége, amelyekről biztonsági másolatot készíthet, a csatolt lemezek számától és méretétől függ.
@@ -190,7 +190,7 @@ Az alábbi táblázat összefoglalja, hogy milyen biztonsági mentés készíthe
 **2016 SQL Server SP1** | A DPM 2012 R2 esetében nem támogatott; Támogatott a 4. vagy újabb kumulatív frissítéssel rendelkező DPM SAC DPM 2016.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
 **SQL Server 2016** | A DPM 2012 R2 esetében nem támogatott. A 2. vagy újabb kumulatív frissítéssel rendelkező DPM SAC esetében támogatott a DPM 2016.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | SQL Server 2014, DPM 2012 R2, 4. kumulatív frissítéssel vagy újabb verzióval.<br/><br/> Helyszíni/Azure-beli virtuális gép.| SQL Server adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentése támogatott.<br/><br/>A CSV tárolt adatbázisok nem támogatottak.
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | Exchange 2016 esetén a DPM 2012 R2 a 9-es vagy újabb kumulatív frissítést igényli.<br/><br/> Helyszíni | Önálló Exchange-kiszolgáló, egy DAG alatt lévő adatbázis biztonsági mentése.<br/><br/> A postaláda és a postaláda-adatbázis helyreállítása egy DAG alatt.<br/><br/> A ReFS nem támogatott.<br/><br/> A nem megosztott lemezes fürtök biztonsági mentése.<br/><br/> A folyamatos replikálásra konfigurált Exchange Server biztonsági mentése.
+**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | Exchange 2016 esetén a DPM 2012 R2 a 9-es vagy újabb kumulatív frissítést igényli.<br/><br/> Helyszíni követelmények | Önálló Exchange-kiszolgáló, egy DAG alatt lévő adatbázis biztonsági mentése.<br/><br/> A postaláda és a postaláda-adatbázis helyreállítása egy DAG alatt.<br/><br/> A ReFS nem támogatott.<br/><br/> A nem megosztott lemezes fürtök biztonsági mentése.<br/><br/> A folyamatos replikálásra konfigurált Exchange Server biztonsági mentése.
 **SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | SharePoint 2016 a DPM 2016-es és újabb verzióiban.<br/><br/>Helyszíni/Azure-beli virtuális gép. | A farm, az előtér-webkiszolgáló biztonsági mentése.<br/><br/> Farm, adatbázis, webalkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló helyreállítása.<br/><br/> A tartalom-adatbázisok SQL Server AlwaysOn használatával nem lehet biztonsági másolatot készíteni a farmról.
 **Hyper-V a Windows Server 2016 rendszeren**<br/><br/> **Windows Server 2012 R2/2012** (Datacenter/standard)<br/><br/> **Windows Server 2008 R2 (SP1)** | A 2016-es és újabb verziójú Hyper-V 2016 DPM támogatott.<br/><br/> Helyszíni. | **MABS-ügynök a Hyper-V-gazdagépen: a**teljes virtuális gépek és az adatfájlok biztonsági mentése. A virtuális gépek biztonsági mentése a helyi tárterülettel, a fürtben lévő virtuális gépek és a CSV-tárolók, valamint az SMB-fájlkiszolgáló tárolására szolgáló virtuális gépek.<br/><br/> **MABS-ügynök a vendég virtuális gépen**: a virtuális gépen futó munkaterhelések biztonsági mentése. CSV.<br/><br/> **Helyreállítás**: virtuális gép, ELEMSZINTŰ helyreállítás VHD/kötet/mappák/fájlok számára.<br/><br/> **Linuxos virtuális gépek**: biztonsági mentés, ha a Hyper-V Windows Server 2012 R2 vagy újabb rendszeren fut. A Linux rendszerű virtuális gépek helyreállítása a teljes gépen történik.
 **VMware virtuális gépek: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 <br/><br/> A DPM 2012 R2 rendszernek szüksége van a System Center 1. kumulatív frissítésére. <br/><br/>Helyszíni. | A VMware virtuális gépek biztonsági mentése a CSV, az NFS-en és a SAN-tárolón.<br/><br/> Teljes virtuális gép helyreállítása.<br/><br/> Windows/Linux biztonsági mentés.<br/><br/> Csak Windows rendszerű virtuális gépekhez tartozó mappák vagy fájlok elemszintű helyreállítása.<br/><br/> A VMware Vapp nem támogatottak.<br/><br/> A Linux rendszerű virtuális gépek helyreállítása a teljes gépen történik.

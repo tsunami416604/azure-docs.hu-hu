@@ -8,14 +8,13 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6cd721fdd7841df279bbe24cab1057ea5e16e0e2
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850469"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008455"
 ---
-# <a name="regions-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiói
 Fontos átlátni, hogy a virtuális gépek hol és hogyan működnek az Azure-ban, illetve hogy a teljesítmény, a rendelkezésre állás és a redundancia maximalizálása terén milyen lehetőségek vannak. Ez a cikk az Azure rendelkezésre állással és redundanciával kapcsolatos szolgáltatásairól nyújt áttekintést.
 
 
@@ -45,14 +44,14 @@ Néhány példa a régiópárokra:
 
 | Elsődleges | Másodlagos |
 |:--- |:--- |
-| USA nyugati régiója |East US |
+| USA nyugati régiója |USA keleti régiója |
 | Észak-Európa |Nyugat-Európa |
 | Délkelet-Ázsia |Kelet-Ázsia |
 
 [A régiópárok teljes listája](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions) itt érhető el.
 
 ## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
-Néhány szolgáltatás és virtuálisgép-funkció, például meghatározott méretű virtuális gépek vagy adott tárolótípusok csak bizonyos régiókban érhetők el. Emellett létezik pár olyan globális Azure-szolgáltatás is, amelyhez nem kell régiót választani. Ilyen például az [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), a [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) vagy az [Azure DNS](../articles/dns/dns-overview.md). Az alkalmazáskörnyezet megtervezéséhez javasoljuk, hogy tekintse meg [az Azure-szolgáltatások régiók szerinti rendelkezésre állását](https://azure.microsoft.com/regions/#services). [A virtuális gépek támogatott méreteit és korlátozásait programozott](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md)módon is lekérdezheti az egyes régiókban.
+Néhány szolgáltatás és virtuálisgép-funkció, például meghatározott méretű virtuális gépek vagy adott tárolótípusok csak bizonyos régiókban érhetők el. Emellett létezik pár olyan globális Azure-szolgáltatás is, amelyhez nem kell régiót választani. Ilyen például az [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), a [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) vagy az [Azure DNS](../articles/dns/dns-overview.md). Az alkalmazáskörnyezet megtervezéséhez javasoljuk, hogy tekintse meg [az Azure-szolgáltatások régiók szerinti rendelkezésre állását](https://azure.microsoft.com/regions/#services). [A virtuális gépek támogatott méreteit és korlátozásait programozott módon is lekérdezheti az egyes régiókban](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
 
 ## <a name="storage-availability"></a>Tárterület rendelkezésre állása
 A rendelkezésre álló tárreplikációs lehetőségek mérlegeléséhez fontos átlátni az Azure-régiók és földrajzi helyek működését. A tárterület típusától függően eltérő replikálási lehetőségek állnak rendelkezésre.

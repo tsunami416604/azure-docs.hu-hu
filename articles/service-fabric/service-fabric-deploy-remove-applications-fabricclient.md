@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric alkalmazás üzembe helyezése | Microsoft Docs
+title: Azure Service Fabric üzembe helyezés a FabricClient
 description: A FabricClient API-kkal alkalmazásokat telepíthet és távolíthat el Service Fabricban.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdb5ae4efbd4119422101eb8a05ce71e7b58d51f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599627"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013296"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Alkalmazások telepítése és eltávolítása a FabricClient használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "68599627"
 
 <br/>
 
-Miután becsomagolta az [alkalmazás típusát][10], készen áll az üzembe helyezésre egy Azure Service Fabric-fürtön. Az üzembe helyezés a következő három lépésből áll:
+Miután [becsomagolta az alkalmazás típusát][10], készen áll az üzembe helyezésre egy Azure Service Fabric-fürtön. Az üzembe helyezés a következő három lépésből áll:
 
 1. Alkalmazáscsomag feltöltése a rendszerkép-tárolóba
 2. Az alkalmazás típusának regisztrálása
@@ -55,7 +55,7 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Alkalmazáscsomag feltöltése
-Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studióban. Alapértelmezés szerint az ApplicationManifest. xml fájlban szereplő alkalmazás-típus neve "MyApplicationType".  Az alkalmazás-jegyzékfájlt, a szolgáltatási jegyzékfájlokat és a Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *\&C:\Users lt; username&gt;\Documents\Visual Studio 2019 \ Projects\MyApplication\ mappában található. MyApplication\pkg\Debug*.
+Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studióban. Alapértelmezés szerint az ApplicationManifest. xml fájlban szereplő alkalmazás-típus neve "MyApplicationType".  Az alkalmazás-jegyzékfájlt, a szolgáltatási jegyzékfájlokat és a Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users\&lt; username&gt;\Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*mappában található.
 
 Az alkalmazáscsomag feltöltése a belső Service Fabric-összetevők által elérhető helyre helyezi azt. Service Fabric ellenőrzi az alkalmazáscsomag regisztrálását az alkalmazáscsomag regisztrálása során. Ha azonban helyileg szeretné ellenőrizni az alkalmazáscsomag használatát (azaz a feltöltés előtt), használja a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancsmagot.
 
@@ -132,23 +132,23 @@ A ImageStoreConnectionString a fürt jegyzékfájljában található:
 A rendszerkép-tároló és a rendszerkép-tároló közötti kapcsolatok karakterláncával kapcsolatos további információkért lásd: [a rendszerkép-tárolási kapcsolatok karakterláncának megismerése](service-fabric-image-store-connection-string.md) .
 
 ### <a name="deploy-large-application-package"></a>Nagyméretű alkalmazáscsomag üzembe helyezése
-Probléma: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API-időtúllépés egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
+Probléma: a [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API időtúllépést jelent egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
 Próbálja ki:
-- A `timeout` paraméterrel nagyobb időkorlát adható meg a [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metódushoz. Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
+- A [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metódus nagyobb időtúllépést ad meg `timeout` paraméterrel. Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
 - Keresse meg a számítógép és a fürt közötti hálózati kapcsolatot. Ha a kapcsolatok lassúak, érdemes lehet olyan gépet használni, amelynek jobb hálózati kapcsolatai vannak.
 Ha az ügyfélszámítógép más régióban található, mint a fürt, érdemes lehet egy ügyfélszámítógépet használni a fürttel megegyező vagy azonos régióban.
 - Ellenőrizze, hogy van-e külső szabályozás. Ha például a rendszerkép-tároló az Azure Storage használatára van konfigurálva, akkor a feltöltés szabályozható.
 
-Probléma: A feltöltési csomag sikeresen befejeződött, de [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API-időtúllépés történt. Próbálja ki:
+Probléma: a feltöltési csomag sikeresen befejeződött, de [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API-időtúllépés történt. Próbálja
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt.
 A tömörítés csökkenti a méretet és a fájlok számát, ami viszont csökkenti a forgalom mennyiségét és a Service Fabric által végrehajtandó munkát. A feltöltési művelet lassabb lehet (különösen akkor, ha belefoglalja a tömörítési időt), de az alkalmazás típusának regisztrálása és törlése gyorsabb.
-- A `timeout` paraméterrel nagyobb időkorlát adható meg a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API-hoz.
+- Nagyobb időtúllépést ad meg a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API számára `timeout` paraméterrel.
 
 ### <a name="deploy-application-package-with-many-files"></a>Alkalmazáscsomag központi telepítése sok fájllal
-Probléma: Az [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) időtúllépést mutatnak a sok fájlt tartalmazó alkalmazáscsomag esetében (több ezer).
+Probléma: a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) időtúllépést jelent a sok fájlt tartalmazó alkalmazáscsomag esetében (több ezer).
 Próbálja ki:
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt. A tömörítés csökkenti a fájlok számát.
-- Nagyobb időtúllépést ad meg [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) a ProvisionApplicationAsync `timeout` paraméterrel.
+- A `timeout` paraméterrel rendelkező [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) nagyobb időtúllépést ad meg.
 
 ## <a name="code-example"></a>Mintakód
 Az alábbi példa egy alkalmazáscsomag átmásolása a rendszerkép-tárolóba, és az alkalmazás típusának kiosztása. Ezután a példa létrehoz egy alkalmazás-példányt, és létrehoz egy szolgáltatási példányt. Végül a példa eltávolítja az alkalmazás példányát, leállítja az alkalmazás típusát, és törli az alkalmazáscsomagt a rendszerkép-tárolóból.
@@ -331,7 +331,7 @@ static void Main(string[] args)
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
 
 [Service Fabric állapot bemutatása](service-fabric-health-introduction.md)

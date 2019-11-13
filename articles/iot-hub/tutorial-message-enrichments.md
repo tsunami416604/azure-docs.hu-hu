@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8b74621f2c5a9c91ece58c8118cd2bc952c3a464
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809695"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005780"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata (előzetes verzió)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenetek gazdagítása
 
 Az *üzenet-gazdagítás* a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen *lepecsételni* . Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz. További információ: az [üzenetek dúsításának áttekintése](iot-hub-message-enrichments-overview.md).
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez az alábbi feladatokat kell végrehajtani:
 
 Töltse le a [IoT-eszköz szimulációját](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és csomagolja ki. Ez a tárház több alkalmazással is rendelkezik, beleértve azt is, amelyet az üzenetek küldésére fog használni az IoT hub számára.
 
-Ez a letöltés tartalmazza azt a parancsfájlt is, amely az üzenetek dúsításának teszteléséhez használt erőforrásokat hozza létre. A szkript a/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. Egyelőre megtekintheti a szkriptet, és használhatja azt. A szkriptet közvetlenül a cikkből is másolhatja.
+Ez a letöltés tartalmazza azt a parancsfájlt is, amely az üzenetek dúsításának teszteléséhez használt erőforrásokat hozza létre. A parancsfájl a/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Egyelőre megtekintheti a szkriptet, és használhatja azt. A szkriptet közvetlenül a cikkből is másolhatja.
 
 Ha készen áll a tesztelés elindítására, az eszköz-szimulációs alkalmazás a letöltés után üzenetet küld az IoT hub-nak.
 
@@ -69,11 +69,11 @@ Ha még nem tette meg, nyisson meg egy [Cloud Shell ablakot](https://shell.azure
 
 Itt láthatók a szkript által létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Név | Value (Díj) |
+| Name (Név) | Érték |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| Tároló neve | eredeti  |
-| Tároló neve | sokoldalú és  |
+| tároló neve | eredeti  |
+| tároló neve | sokoldalú és  |
 | IoT-eszköz neve | Contoso-test-Device |
 | IoT Hub neve | ContosoTestHubMsgEn |
 | Storage-fiók neve | contosostorage |
@@ -241,7 +241,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 ### <a name="view-routing-and-configure-the-message-enrichments"></a>Útválasztás megtekintése és az üzenetek dúsításának konfigurálása
 
-1. Lépjen a IoT Hub az **erőforráscsoportok**lehetőség kiválasztásával, majd válassza ki az oktatóanyaghoz beállított erőforráscsoportot (**ContosoResources_MsgEn**). Keresse meg a IoT Hub a listában, és válassza ki. Válassza az IOT hub **üzenet-útválasztás** elemét.
+1. Lépjen a IoT Hub az **erőforráscsoportok**lehetőségre, majd válassza ki az oktatóanyaghoz beállított erőforráscsoportot (**ContosoResources_MsgEn**). Keresse meg a IoT Hub a listában, és válassza ki. Válassza az IOT hub **üzenet-útválasztás** elemét.
 
    ![Üzenet-útválasztás kiválasztása](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -251,7 +251,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 2. Adja hozzá ezeket az értékeket a ContosoStorageEndpointEnriched-végpont listájához.
 
-   | Név | Value (Díj) | Végpont (legördülő lista) |
+   | Paraméter | Érték | Végpont (legördülő lista) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | deviceLocation | $twin. Tags. location | AzureStorageContainers > ContosoStorageEndpointEnriched |

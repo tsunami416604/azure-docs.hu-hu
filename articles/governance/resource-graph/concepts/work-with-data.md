@@ -1,17 +1,14 @@
 ---
 title: Nagy méretű adathalmazok kezelése
 description: A nagyméretű adathalmazok beszerzésének és vezérlésének megismerése az Azure Resource Graph használata közben.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622612"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959021"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -167,7 +164,7 @@ request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, opt
 response = client.resources(request)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

@@ -1,6 +1,6 @@
 ---
-title: Kimenő és végpontok az Azure Digital Twinsban | Microsoft Docs
-description: Útmutató a végpontok Azure digitális ikrekkel való létrehozásához.
+title: Kimenő és végpontok – Azure digitális Twins | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és kimenő esemény-végpontokat az Azure digitális Twins szolgáltatásban.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822273"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010055"
 ---
-# <a name="egress-and-endpoints"></a>Kimenő és végpontok
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Kimenő és végpontok az Azure Digital Twinsban
 
 Az Azure Digital Twins- *végpontok* egy üzenetet vagy egy esemény-közvetítőt jelentenek a felhasználó Azure-előfizetésén belül. Az események és üzenetek elküldhetők az Azure Event Hubs, Azure Event Grid és Azure Service Bus témakörökbe.
 
@@ -50,9 +50,9 @@ Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik e
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
 | id | sztring | Az esemény egyedi azonosítója. |
-| tulajdonos | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
-| adatok | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
-| EventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
+| subject | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| data | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
+| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
 | metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
@@ -356,7 +356,7 @@ Ha a rendszer biztonsági mentési állapotban van, a kapcsolati kulcsok a végp
 
 Ha egy végpont elérhetetlenné válik, a rendszer akár 30 percen belül exponenciális visszatartási várakozási időt is elérhet. Az események eldobása minden egyes kiváltott várakozási idő alatt megtörténik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan használható az Azure Digital Twins hencegés](how-to-use-swagger.md).
 

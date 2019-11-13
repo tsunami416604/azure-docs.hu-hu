@@ -1,6 +1,6 @@
 ---
-title: A Azure Time Series Insights-környezet skálázása | Microsoft Docs
-description: Ez a cikk a Azure Time Series Insights környezetének méretezését ismerteti. Használja a Azure Portal a kapacitás hozzáadásához vagy kivonásához egy árképzési SKU-n belül.
+title: A környezet skálázása – Azure Time Series Insights | Microsoft Docs
+description: Ismerje meg, hogyan méretezheti Azure Time Series Insights-környezetét a Azure Portal használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991162"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006805"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet skálázása
 
@@ -36,7 +36,7 @@ Azonban a díjszabási csomag módosítása nem engedélyezett. Egy S1 árképz�
 
 1. A Time Series Insights-környezet menüjében válassza a **Konfigurálás**lehetőséget.
 
-   [![configure. png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
 1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás**és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
 

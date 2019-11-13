@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796023"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011486"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -27,7 +27,7 @@ Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felüg
 
 > [!WARNING]
 > Az új fejlesztői portál jelenleg API Management szolgáltatásokra van bevezetve.
-> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetésének befejezése a 2019. november 11-én történik.
+> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetése várhatóan a 2019. november 22-én fejeződik be.
 >
 > [Megtudhatja, hogyan telepítheti át az előzetes verzióról a fejlesztői portál általánosan elérhető verziójára](#preview-to-ga) .
 
@@ -143,7 +143,7 @@ Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngész
 </cors>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az új fejlesztői portálról:
 

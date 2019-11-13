@@ -1,5 +1,5 @@
 ---
-title: Az Azure digitális Twins Object models és a térbeli intelligencia Graph ismertetése | Microsoft Docs
+title: Az Object models és a térbeli intelligencia Graph áttekintése – Azure digitális Twins | Microsoft Docs
 description: Az Azure Digital Twins szolgáltatással emberek, helyek és eszközök közötti összefüggéseket modellezhet
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: da345c0cf039e3cc2f7f8828a0769b6e65048571
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930418"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010091"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>A digitális ikrek Object models és a térbeli intelligencia Graph ismertetése
 
@@ -80,8 +80,8 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 | Name (Név) | Csere erre |
 | --- | --- |
-| YOUR_INSTANCE_NAME | A digitális Twins-példány neve |
-| YOUR_LOCATION | A példány által üzemeltetett kiszolgálói régió |
+| YOUR_INSTANCE_NAME | A digitális Twins-példány nevét |
+| YOUR_LOCATION | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
  A képen megjelenik a teljes URL-cím formátuma.
 

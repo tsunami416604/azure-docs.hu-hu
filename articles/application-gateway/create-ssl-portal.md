@@ -1,30 +1,30 @@
 ---
-title: Oktatóanyag – Application Gateway konfigurálása SSL-megszakítással – Azure Portal
+title: 'Oktatóanyag: SSL-lezárás konfigurálása a portálon – Azure Application Gateway'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Application Gatewayt, és hogyan adhat hozzá tanúsítványokat az SSL-lezáráshoz a Azure Portal használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/27/2019
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470033"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012308"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Oktatóanyag: Application Gateway konfigurálása SSL-megszakítással a Azure Portal használatával
 
 A Azure Portal használatával konfigurálhatja az [Application Gateway](overview.md) -t egy olyan SSL-leállítási tanúsítvánnyal, amely virtuális gépeket használ a háttér-kiszolgálók számára.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Önaláírt tanúsítvány létrehozása
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 > * Háttér-kiszolgálóként használt virtuális gépek létrehozása
-> * Az alkalmazásátjáró tesztelése
+> * Az Application Gateway tesztelése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -69,7 +69,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
 1. Válassza az **erőforrás létrehozása** elemet a Azure Portal bal oldali menüjében. Megjelenik az **új** ablak.
 
@@ -246,7 +246,7 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
 7. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 1. Válassza a **minden erőforrás**lehetőséget, majd válassza a **myAGPublicIPAddress**lehetőséget.
 
@@ -262,7 +262,7 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
     ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/create-ssl-portal/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Application Gateway SSL-támogatásáról](ssl-overview.md)

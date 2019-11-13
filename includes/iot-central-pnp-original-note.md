@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: f56848e355759aea18a84fc9f8111e3b0df78982
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 8341ae81937d5714fbbfa4f90ac3a8ee15480fbf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73921484"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005865"
 ---
 > [!NOTE]
-> Jelenleg tekinti meg az [előzetes verziójú funkciókat használó alkalmazás-sablonok](../articles/iot-central/core/concepts-app-templates.md#preview-templates)IoT Central dokumentációját. Az [általánosan elérhető szolgáltatásokat használó alkalmazás-sablonok](../articles/iot-central/core/concepts-app-templates.md#preview-templates) dokumentációjának megtekintéséhez nyissa meg a [Mi az az Azure IoT Central?](../articles/iot-central/core/overview-iot-central.md).
+> Jelenleg tekinti meg az előzetes verziójú funkciókat használó [alkalmazás-sablonok](../articles/iot-central/core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) IoT Central dokumentációját. Az általánosan elérhető funkciókat használó [alkalmazás-sablonok](../articles/iot-central/core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) dokumentációjának megtekintéséhez keresse fel a [mi az Azure IoT Central?](../articles/iot-central/core/overview-iot-central.md)című dokumentumot.

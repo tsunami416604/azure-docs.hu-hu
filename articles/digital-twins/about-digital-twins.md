@@ -1,5 +1,5 @@
 ---
-title: Az Azure Digital Twins áttekintése | Microsoft Docs
+title: Áttekintés – Azure digitális Twins | Microsoft Docs
 description: További információ a térbeli intelligenciát megvalósító Azure IoT-megoldásról, az Azure Digital Twinsről.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: 93adf946ac630d2839f761b01a02d02f6ca92b64
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 07065e891ec46f51636fad005ffeece976c9f2fa
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718236"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005956"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
 
@@ -39,7 +39,7 @@ Az alábbi videó alaposabban megtekinti az Azure digitális ikreket.
 
 > [!VIDEO https://www.youtube.com/embed/TvN_NxpgyzQ]
 
-## <a name="key-capabilities"></a>Főbb képességek
+## <a name="key-capabilities"></a>Főbb funkciók
 
 Az Azure Digital Twins a következő főbb képességekkel rendelkezik.
 
@@ -97,7 +97,7 @@ Az Azure Digital Twins az Azure IoT Hub segítségével csatlakozik az IoT-eszk�
 
 További információ a IoT: [Azure IoT-technológiák és-megoldások](../iot-fundamentals/iot-services-and-technologies.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ugrás az Azure Digital Twins szolgáltatással kapcsolatos rövid bemutatóra:
 

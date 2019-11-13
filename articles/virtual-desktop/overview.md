@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607486"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013159"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -35,7 +35,7 @@ Ismerje meg a Windows rendszerű virtuális asztalt, hogy miért egyedi, és mi 
 
 További videók a Windows rendszerű virtuális asztalról: [lejátszási lista](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
-## <a name="key-capabilities"></a>Főbb képességek
+## <a name="key-capabilities"></a>Főbb funkciók
 
 A Windows virtuális asztal használatával méretezhető és rugalmas környezetet állíthat be:
 
@@ -73,12 +73,10 @@ Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendsze
 Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
 
 * Egy [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következő módon engedélyezheti:
-  * Azure AD Connect
-  * Azure AD tartományi szolgáltatások
-     >[!NOTE]
-     >Ha Azure AD Domain Services használ, a felhasználóknak Azure Active Directoryból kell származnia. Jelenleg nem támogatott a Azure AD Domain Services használata a Windows Server AD-ből származó felhasználókkal.
-* Egy Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
+* A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következők egyikével konfigurálhatja:
+  * Azure AD Connect (hibrid szervezetekhez)
+  * Azure AD Domain Services (hibrid vagy Felhőbeli szervezetekhez)
+* Olyan Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
   
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
@@ -92,7 +90,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
-* *. core.windows.net
+* *.core.windows.net
 * *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
@@ -100,7 +98,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 >[!NOTE]
 >Ezen URL-címek megnyitása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure AD-hez.
 
-A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok (az USA 2. keleti régiójában) található. Ez adatátvitelt eredményezhet a Egyesült Államokba.
+A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok. Ez adatátvitelt eredményezhet a Egyesült Államokba.
 
 Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálózat megfelel a következő követelményeknek:
 
@@ -117,7 +115,7 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 
 ## <a name="supported-virtual-machine-os-images"></a>Támogatott virtuális gépek operációsrendszer-lemezképei
 
-A Windows virtuális asztal a következő operációsrendszer-lemezképeket támogatja:
+A Windows rendszerű virtuális asztali szolgáltatás a következő x64 operációsrendszer-lemezképeket támogatja:
 
 * Windows 10 Enterprise multi-session
 * Windows 10 Enterprise
@@ -125,6 +123,8 @@ A Windows virtuális asztal a következő operációsrendszer-lemezképeket tám
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
+
+A Windows virtuális asztal nem támogatja az x86 (32 bites) operációsrendszer-lemezképeket.
 
 Az elérhető automatizálási és üzembe helyezési lehetőségek attól függnek, hogy melyik operációs rendszerre és verzióra van kiválasztva, ahogy az a következő táblázatban látható: 
 
@@ -139,7 +139,7 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Windows Server 2016|Igen|Igen|Igen|Igen|Automatikus|
 |Windows Server 2012 R2|Igen|Igen|Nem|Nem|Automatikus|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
 

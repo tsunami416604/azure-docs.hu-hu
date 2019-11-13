@@ -3,7 +3,7 @@ title: Tevékenységek naplóinak elemzése Azure Monitor naplók használatáva
 description: Megtudhatja, hogyan elemezheti Azure Active Directory tevékenység naplóit Azure Monitor naplók használatával
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
-ms.reviewer: markvi
+ms.author: markvi
+ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d9bb8bca64292b73bc14f02d126d384da33780
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885273"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008275"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal
 
@@ -47,7 +47,7 @@ A lépések végrehajtásához a következőkre lesz szüksége:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Navigáljon a Log Analytics munkaterületre
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
 
 2. Válassza a **Azure Active Directory**lehetőséget, majd a **figyelés** szakaszban válassza a **naplók** lehetőséget a log Analytics munkaterület megnyitásához. A munkaterület alapértelmezett lekérdezéssel fog megnyílni.
 
@@ -111,7 +111,7 @@ Az Azure AD-tevékenységek naplóihoz tartozó előre elkészített log Analyti
 Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket az Azure ad-tevékenységek naplóihoz](howto-install-use-log-analytics-views.md). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a Azure Monitor-naplókban található lekérdezésekkel](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [Riasztási csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)

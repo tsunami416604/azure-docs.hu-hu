@@ -1,17 +1,14 @@
 ---
 title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978110"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959620"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -21,7 +18,7 @@ Ha egy Azure-erőforrás úgy van meghatározva, hogy nem felel meg egy háziren
 > - [Megfelelőség részletei](#compliance-details)
 > - [Változási előzmények (előzetes verzió)](#change-history)
 
-## <a name="compliance-details"></a>Megfelelőségi részletek
+## <a name="compliance-details"></a>Megfelelőség részletei
 
 Ha egy erőforrás nem megfelelő, az adott erőforrás megfelelőségi adatai a **szabályzat megfelelőségi** lapján érhetők el. A megfelelőség részleteit tartalmazó ablaktábla a következő információkat tartalmazza:
 
@@ -84,7 +81,7 @@ Ezek a részletek ismertetik, hogy egy adott erőforrás miért nem megfelelő, 
 
 A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definícióban szereplő felelős [feltételre](../concepts/definition-structure.md#conditions) :
 
-|Reason | Állapot |
+|Ok | Állapot |
 |-|-|
 |A jelenlegi értéknek a célként megadott értéket kell tartalmaznia kulcsként. |containsKey vagy **nem** notContainsKey |
 |A jelenlegi értéknek tartalmaznia kell a célérték értékét. |notContains tartalmaz vagy **nem** |
@@ -124,7 +121,7 @@ A **megfelelőség részletei** ablaktáblán kattintson az **utolsó kiértéke
 
 A **vendég-hozzárendelés** lap megjeleníti az összes elérhető megfelelőségi részletet. A nézet minden sora a gépen belül végrehajtott értékelést jelképezi. Az **OK** oszlopban egy olyan kifejezés látható, amely leírja, hogy a vendég-hozzárendelés miért _nem megfelelő_ . Ha például a jelszóházirend naplózása, az **OK** oszlopban az egyes beállítások aktuális értéke is megjelenik.
 
-![Tekintse át a megfelelőségi részleteket.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Megfelelőségi részletek megtekintése](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +188,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a>@no__t – 0Change előzmények (előzetes verzió)
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>változási előzmények (előzetes verzió)
 
 Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
 
@@ -213,7 +210,7 @@ A _vizualizációs diff_ segédek egy erőforrás változásainak azonosításá
 
 Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/overview.md)biztosíthatja. A Azure Portalon kívüli adatok lekérdezéséhez lásd: [erőforrás-módosítások beolvasása](../../resource-graph/how-to/get-resource-changes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

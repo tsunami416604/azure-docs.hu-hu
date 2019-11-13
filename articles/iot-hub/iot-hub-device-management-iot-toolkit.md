@@ -1,104 +1,104 @@
 ---
-title: Az Azure IoT-Eszközfelügyelet az Azure IoT-eszközök a Visual Studio Code |} A Microsoft Docs
-description: Az Azure IoT-eszközök használata a Visual Studio Code az Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
+title: Azure IoT-eszközkezelés Azure IoT-eszközökkel a VSCode-hez
+description: A Visual Studio Code-hoz készült Azure IoT Tools for Azure IoT Hub eszközkezelés, valamint a közvetlen metódusok és a Twin kívánt tulajdonságok felügyeleti lehetőségei.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838723"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953198"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Az Azure IoT-eszközök a Visual Studio Code használata az Azure IoT Hub-Eszközfelügyelet
+# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata az Azure IoT Hub-eszközök felügyeletéhez
 
 ![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy hasznos, a Visual Studio Code-bővítmény, amely megkönnyíti az IoT Hub és IoT-alkalmazás fejlesztői. Felügyeleti lehetőségeket, amelyek segítségével különböző feladatok elvégzésére, tartalmaz.
+Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy hasznos Visual Studio Code-bővítmény, amely megkönnyíti a IoT hub felügyeletét és a IoT alkalmazás-fejlesztését. Olyan felügyeleti lehetőségeket tartalmaz, amelyek különböző feladatok elvégzésére használhatók.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Lehetőséget          | Tevékenység                    |
+| Felügyeleti lehetőség          | Tevékenység                    |
 |----------------------------|--------------------------------|
-| Közvetlen metódusok             | Hogy egy eszköz, például indítása vagy leállítása üzeneteket küldjenek vagy az eszköz újraindítása jár el.                                        |
-| Olvasási ikereszköz           | Az eszköz a jelentett állapot beolvasása. Például az eszköz jelenti a LED most villogó-e.                                    |
-| Ikereszköz frissítése         | Egy eszköz egyes állapotok, például a LED zöld vagy a telemetriai adatok küldési időköz – 30 percet kell helyezni.         |
-| Felhőből az eszközre irányuló üzenetek   | Értesítések küldése egy eszközt. Például "nagyon valószínű, eső még ma. Ne felejtse el ahhoz, hogy egy szolgáltatáscsaládnak."              |
+| Közvetlen metódusok             | Hajtson végre olyan eszközt, amely elindítja vagy leállítja az üzenetek küldését vagy az eszköz újraindítását.                                        |
+| Írásvédett eszköz – Twin           | Egy eszköz jelentett állapotának beolvasása. Az eszköz például azt jelenti, hogy a LED azonnal villog.                                    |
+| Eszköz dupla frissítése         | Helyezzen egy eszközt bizonyos állapotba, például állítsa be a LED-et zöldre, vagy állítsa a telemetria küldési intervallumát 30 percre.         |
+| Felhőből az eszközre irányuló üzenetek   | Értesítések küldése egy eszközre. Például: "nagyon valószínű, hogy még ma is esik az eső. Ne felejtsen el egy esernyőt bevinni. "              |
 
-A különbségek ismertetése és útmutató az ezek a beállítások használatával, lásd: [eszközről a felhőbe való kommunikáció útmutatást](iot-hub-devguide-d2c-guidance.md) és [felhőből az eszközre irányuló kommunikáció útmutatást](iot-hub-devguide-c2d-guidance.md).
+További információ az ilyen beállításokkal kapcsolatos különbségekről és útmutatásról: az [eszközről a felhőbe irányuló kommunikációs útmutató](iot-hub-devguide-d2c-guidance.md) és a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
 
-Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT Hub továbbra is fennáll, az eszközök ikereszköze a minden eszközön, amelyhez kapcsolódik hozzá. Ikereszközök kapcsolatos további információkért lásd: [ikereszközök – első lépések](iot-hub-node-node-twin-getstarted.md).
+Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. A IoT Hub minden olyan eszközön megtartja a különálló eszközt, amely csatlakozik hozzá. További információ az eszközök Twins-ról: Ismerkedés [az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Megismerheti az Azure IoT-eszközök a Visual Studio Code használata a fejlesztési számítógépén különböző felügyeleti lehetőségek.
+Megismerheti a Visual Studio Code-hoz készült Azure IoT Tools használatát a fejlesztői számítógép különböző felügyeleti lehetőségeivel.
 
-## <a name="what-you-do"></a>TEENDŐ
+## <a name="what-you-do"></a>Teendők
 
-Futtassa az Azure IoT-eszközök a Visual Studio Code különböző felügyeleti lehetőségek.
+A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző felügyeleti lehetőségekkel.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
 * Aktív Azure-előfizetés.
-* Az Azure IoT hub az előfizetéséhez.
+* Az előfizetéshez tartozó Azure IoT hub.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT-eszközök a VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy [a hivatkozás megnyitásához a Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
+* A VS Code-hoz készült [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy a [hivatkozás megnyitása a Visual Studio Code-ban](vscode:extension/vsciot-vscode.azure-iot-tools).
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
 
-1. A **Explorer** megtekintése a VS Code, bontsa ki a **Azure IoT Hub-eszközök** szakaszban a bal alsó sarokban.
+1. A VS Code **Explorer** nézetében bontsa ki az **Azure IoT hub-eszközök** szakaszt a bal alsó sarokban.
 
-2. Kattintson a **válassza ki az IoT Hub** helyi menüben.
+2. Kattintson a helyi menü **IoT hub kiválasztása** elemére.
 
-3. Egy előugró ablakban megjelenik a jobb alsó sarokban lehetővé teszi, hogy az Azure-ban először jelentkezzen be.
+3. A jobb alsó sarokban megjelenik egy előugró ablak, amely lehetővé teszi az Azure-ba való bejelentkezést az első alkalommal.
 
-4. Miután bejelentkezett, az Azure-előfizetési lista jelenik meg, majd válassza ki az Azure-előfizetés és az IoT Hub.
+4. A bejelentkezést követően megjelenik az Azure-előfizetések listája, majd válassza az Azure-előfizetés és a IoT Hub lehetőséget.
 
-5. Az eszközlistában megjelenő **Azure IoT Hub-eszközök** lapon pár másodpercen belül.
+5. Az eszközök listája az **Azure IoT hub-eszközök** lapon, néhány másodperc alatt jelenik meg.
 
    > [!Note]
-   > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. Adja meg a **iothubowner** az IoT hub, amely a felugró ablakban csatlakozik az IoT-eszköz házirend-kapcsolati karakterláncára.
+   > A telepítést elvégezheti a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre kattintva is. Adja meg annak a IoT hub- **iothubowner** a házirend-kapcsolati karakterláncát, amelyhez a IoT-eszköz csatlakozik az előugró ablakban.
 
 ## <a name="direct-methods"></a>Közvetlen metódusok
 
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **közvetlen metódus meghívása**. 
+1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen metódus meghívása**lehetőséget. 
 
-2. Adja meg a metódus nevét és az adattartalom beviteli mezőbe.
+2. Adja meg a metódus nevét és a hasznos adatokat a beviteli mezőben.
 
-3. Eredmények megjelenő **kimeneti** > **Azure IoT Hub-eszközkészlet** megtekintése.
+3. Az eredmények a **kimenet** > **Azure IoT hub Toolkit** nézetben jelennek meg.
 
-## <a name="read-device-twin"></a>Olvasási ikereszköz
+## <a name="read-device-twin"></a>Írásvédett eszköz – Twin
 
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **Ikereszköz szerkesztése**. 
+1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése**lehetőséget. 
 
-2. Egy **azure-iot-device-twin.json** fájlt fogja megnyitni az ikereszköz tartalmát.
+2. Az **Azure-IOT-Device-Twin. JSON** fájl megnyitható az eszköz Twin tartalmával.
 
-## <a name="update-device-twin"></a>Ikereszköz frissítése
+## <a name="update-device-twin"></a>Eszköz dupla frissítése
 
-1. Bizonyos szerkesztések, **címkék** vagy **properties.desired** mező.
+1. Végezze el a **címkék** vagy a **Tulajdonságok. kívánt** mező szerkesztését.
 
-2. Kattintson a jobb gombbal a **azure-iot-device-twin.json** fájlt.
+2. Kattintson a jobb gombbal az **Azure-IOT-Device-Twin. JSON** fájlra.
 
-3. Válassza ki **Ikereszköz frissítése** az ikereszköz frissíteni.
+3. Válassza az **eszköz Twin frissítése** lehetőséget az eszköz dupla frissítéséhez.
 
 ## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
 
-Küldjön üzenetet az IoT hubhoz az eszközt, kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
  
-1. Kattintson a jobb gombbal az eszközt, és válassza ki **C2D-üzenet küldése eszközre**. 
+1. Kattintson a jobb gombbal az eszközre, és válassza az **C2D-üzenet küldése az eszközre**lehetőséget. 
 
-2. Adja meg a beviteli mezőbe.
+2. Adja meg az üzenetet a beviteli mezőben.
 
-3. Eredmények megjelenő **kimeneti** > **Azure IoT Hub-eszközkészlet** megtekintése.
+3. Az eredmények a **kimenet** > **Azure IoT hub Toolkit** nézetben jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Bemutattuk, hogyan lehet Azure IoT Tools bővítmény a Visual Studio Code használata különböző felügyeleti lehetőségek.
+Megtanulta, hogyan használhatja az Azure IoT Tools bővítményt a Visual Studio Code-hoz különböző felügyeleti lehetőségekkel.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

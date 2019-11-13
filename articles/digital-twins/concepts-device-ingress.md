@@ -1,6 +1,6 @@
 ---
 title: Az eszközök csatlakoztatása és a telemetria bejövő állapota – Azure digitális Twins | Microsoft Docs
-description: Az eszközök Azure digitális Twins-beli üzembe helyezésének áttekintése
+description: Megtudhatja, hogyan csatlakozhat egy eszközhöz az Azure digitális Twins-n belül.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930391"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010129"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -69,7 +69,7 @@ Testre szabhatja az eszköz üzenetének formátumát és a hasznos adatokat, ho
 
 | Tulajdonság neve | Érték | Kötelező | Leírás |
 |---|---|---|---|
-| **DigitalTwins – telemetria** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
+| **DigitalTwins-Telemetry** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az **üzenetet**küldő érzékelő egyedi azonosítója. Ennek az értéknek meg kell egyeznie egy objektum **HardwareId** tulajdonságával, hogy a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nem | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formázott dátum sztring, amely azonosítja a hasznos adatok mintavételi idejét. Például: `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nem | Egy UUID, amely a rendszer eseményeinek nyomon követésére szolgál. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.

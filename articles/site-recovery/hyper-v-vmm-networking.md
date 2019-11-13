@@ -1,18 +1,18 @@
 ---
-title: IP-címzés beállítása egy másodlagos helyszíni helyhez való kapcsolódásra a feladatátvételt követően Azure Site Recovery
+title: IP-címzés beállítása a feladatátvétel után egy másodlagos helyre Azure Site Recovery
 description: Ismerteti, hogyan lehet IP-címzést beállítani a virtuális gépekhez való csatlakozáshoz egy másodlagos helyszíni helyen a vész-helyreállítás és a Azure Site Recovery használatával történő feladatátvétel után.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813679"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961428"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-címzés beállítása másodlagos helyszíni helyhez való kapcsolódáshoz a feladatátvétel után
 
@@ -22,8 +22,8 @@ Ha System Center Virtual Machine Manager-(VMM-) felhőkben lévő Hyper-V virtu�
 
 A feladatátvételt követően több módon is kezelheti a replika virtuális gépek IP-címzését: 
 
-- **A feladatátvételt követően ugyanazt az IP-címet kell megtartani**: Ebben az esetben a replikált virtuális gép ugyanazzal az IP-címmel rendelkezik, mint az elsődleges virtuális gép. Ez leegyszerűsíti a hálózattal kapcsolatos problémákat a feladatátvétel után, de némi infrastrukturális munkát igényel.
-- **A feladatátvételt követően eltérő IP-címet használjon**: Ebben az esetben a virtuális gép új IP-címet kap a feladatátvétel után. 
+- **Azonos IP-cím megőrzése feladatátvétel után**: ebben a forgatókönyvben a REPLIKÁLt virtuális gépnek ugyanaz az IP-címe, mint az elsődleges virtuális gép. Ez leegyszerűsíti a hálózattal kapcsolatos problémákat a feladatátvétel után, de némi infrastrukturális munkát igényel.
+- **Másik IP-cím használata feladatátvétel után**: ebben a forgatókönyvben a virtuális gép új IP-címet kap a feladatátvétel után. 
  
 
 ## <a name="retain-the-ip-address"></a>Az IP-cím megőrzése
@@ -125,7 +125,7 @@ Ebben a példában különböző IP-címek találhatók az elsődleges és máso
 ![Eltérő IP-cím – feladatátvétel után](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feladatátvétel futtatása](hyper-v-vmm-failover-failback.md)
 

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee30e52561a5560e572e33fb3bc7d191559bf5d6
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0c9a194dcd2ccb353f11aa939200213f0db1c2ea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927133"
+ms.locfileid: "73942937"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -214,9 +214,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
             @Override
             public void onCreated(ISingleAccountPublicClientApplication application) {
                 /**
-                    * This test app assumes that the app is only going to support one account.
-                    * This requires "account_mode" : "SINGLE" in the config json file.
-                    **/
+                 * This test app assumes that the app is only going to support one account.
+                 * This requires "account_mode" : "SINGLE" in the config json file.
+                 **/
                 mSingleAccountApp = application;
                 loadAccount();
             }
@@ -283,7 +283,7 @@ A token interaktív beszerzésére szolgáló kód, amely a felhasználót magá
  *  - password change
  *  - the resource you're acquiring a token for has a stricter set of requirement than your Single Sign-On refresh token.
  *  - you're introducing a new scope which the user has never consented for.
- */
+ **/
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
@@ -291,9 +291,9 @@ Ha a felhasználó már bejelentkezett, `acquireTokenSilentAsync()` lehetővé t
 
 ```java
 /**
-  * Once you've signed the user in,
-  * you can perform acquireTokenSilent to obtain resources without interrupting the user.
-  */
+ * Once you've signed the user in,
+ * you can perform acquireTokenSilent to obtain resources without interrupting the user.
+ **/
   mSingleAccountApp.acquireTokenSilentAsync(getScopes(), AUTHORITY, getAuthSilentCallback());
 ```
 
@@ -394,7 +394,7 @@ Egy több fiókból álló alkalmazás például egy olyan levelező alkalmazás
 A `MultipleAccountModeFragment.java` fájlban `onCreateView()`egy több Account app-objektum (`IMultipleAccountPublicClientApplication`) jön létre a `auth_config_multiple_account.json file`ban tárolt konfigurációs adatok használatával:
 
 ```java
-// Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
+// Creates a PublicClientApplication object with res/raw/auth_config_multiple_account.json
 PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(),
         R.raw.auth_config_multiple_account,
         new IPublicClientApplication.IMultipleAccountApplicationCreatedListener() {
@@ -419,8 +419,8 @@ Az MSAL-műveletekhez használt fiók kiválasztásához több fiókos alkalmaz�
 
 ```java
 /**
-     * Load currently signed-in accounts, if there's any.
-    */
+ * Load currently signed-in accounts, if there's any.
+ **/
 private void loadAccounts() {
     if (mMultipleAccountApp == null) {
         return;
@@ -466,7 +466,7 @@ A több fiókból álló alkalmazások általában interaktív módon szerzik be
  *  - password change
  *  - the resource you're acquiring a token for has a stricter set of requirement than your SSO refresh token.
  *  - you're introducing a new scope which the user has never consented for.
- */
+ **/
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
@@ -487,12 +487,12 @@ mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
 
 #### <a name="remove-an-account"></a>Fiók eltávolítása
 
-A fiók eltávolításához és a fiók gyorsítótárazott jogkivonatához tartozó kód a fiók eltávolítása gomb kezelőjének `initializeUI()` `MultipleAccountModeFragment.java` fájljában található. Mielőtt eltávolít egy fiókot, szüksége lesz egy fiók objektumra, amelyet a MSAL függvények (például a `getAccounts()` és a `acquireToken()`) szerez be. Mivel a fiókok eltávolítása aszinkron művelet, a rendszer a `onRemoved` visszahívást a felhasználói felület frissítéséhez.
+A fiók eltávolításához és a fiók gyorsítótárazott jogkivonatához tartozó kód a fiók eltávolítása gomb kezelőjének `initializeUI()` `MultipleAccountModeFragment.java` fájljában található. Mielőtt eltávolít egy fiókot, szüksége lesz egy fiók objektumra, amelyet a MSAL metódusok (például a `getAccounts()` és a `acquireToken()`) használatával szerezhet be. Mivel a fiókok eltávolítása aszinkron művelet, a rendszer a `onRemoved` visszahívást a felhasználói felület frissítéséhez.
 
 ```java
 /**
-  * Removes the selected account and cached tokens from this app (or device, if the device is in shared mode).
-  */
+ * Removes the selected account and cached tokens from this app (or device, if the device is in shared mode).
+ **/
 mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelectedItemPosition()),
         new IMultipleAccountPublicClientApplication.RemoveAccountCallback() {
             @Override

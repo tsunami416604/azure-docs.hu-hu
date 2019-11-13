@@ -20,6 +20,8 @@
   items:
     - name: Azure-beli virtuális gépek tömeges biztonsági mentése
       href: tutorial-backup-vm-at-scale.md
+    - name: Azure-beli virtuális gépek biztonsági mentése PowerShell-lel
+      href: tutorial-backup-azure-vm.md
     - name: Lemez visszaállítása
       href: tutorial-restore-disk.md
     - name: Egyedi fájlok visszaállítása

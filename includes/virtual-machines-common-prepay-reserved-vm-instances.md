@@ -4,15 +4,13 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08/29/2019
-ms.openlocfilehash: 75eebdf1e7628bc9c38305b7f11d4fc69af031b9
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 29cf947d1e9d26460dc34a6417e76b68bb75e9dc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391672"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005485"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Költségek megtakarítása Azure Reserved VM Instances
-
 Ha egy Azure-beli fenntartott VM-példányra véglegesít, pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő futó virtuális gépek számára. A kedvezmények beszerzéséhez nincs szükség foglalások hozzárendelésére egy virtuális géphez. A fenntartott példányok vásárlása csak a virtuális gépek használatának számítási részét fedi le. Windows rendszerű virtuális gépek esetén a használati mérőszám két külön méterre oszlik. Van egy számítási mérőszám, amely ugyanaz, mint a Linux-mérő, és egy Windows IP-mérő. A vásárláskor megjelenő díjak csak a számítási költségekre vonatkoznak. A díjak nem tartalmazzák a Windows-szoftverek költségeit. További információ a szoftverekkel kapcsolatos költségekről: [a Azure Reserved VM instances nem tartalmazott szoftveres költségek](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>A virtuális gép megfelelő méretének meghatározása a vásárlás előtt
@@ -39,7 +37,7 @@ A példány méretrugalmassági beállítása határozza meg, hogy mely szolgál
 Ha a *ConsumedService* értéke `Microsoft.Compute`, a foglalási kedvezmények automatikusan érvényesülnek minden megfelelő virtuálisgép-használat esetében, attól függetlenül, hogy a beállítás be vagy ki van-e kapcsolva. Ebből kifolyólag ellenőrizze a használati adatait a *ConsumedService* értékének megtekintéséhez. Néhány példa:
 
 - Virtual machines (Virtuális gépek)
-- Virtual Machine Scale Sets
+- Virtuálisgép-méretezési csoportok
 - Container Service
 - Azure Batch-üzemelőpéldányok (felhasználói előfizetési módban)
 - Azure Kubernetes Service (AKS)
@@ -62,7 +60,7 @@ A használati adatok elemzésével megállapíthatja, hogy mely foglalásokat ke
 
 A használati adatok a használati fájlban és az API-kon érhetők el. Ezeket együtt használva meghatározhatja, hogy melyik foglalást szeretné megvásárolni. Ellenőrizze, hogy vannak-e napi szinten magas kihasználtságú virtuálisgép-példányok a megvásárolni kívánt foglalások mennyiségének meghatározásához.
 
-Kerülje a `Meter` alkategóriát és a `Product` mezőket a használati adatok között. Nem tesznek különbséget a Premium Storage-t használó virtuális gépek méretei között. Ha ezeket a mezőket használja a foglalás megvásárlásához szükséges virtuális gép méretének meghatározásához, akkor a mérete nem megfelelő. Ezután nem fogja megkapni a várt foglalási kedvezményt. Ehelyett a megfelelő virtuálisgép-méret megállapításához tekintse meg a használati fájl vagy a használati API `AdditionalInfo` mezőjét.
+Kerülje a `Meter` alkategóriát és a `Product` mezőket a használati adatok között. Nem tesznek különbséget a Premium Storage-t használó virtuális gépek méretei között. Ha ezeket a mezőket használja a foglalás megvásárlásához szükséges virtuális gép méretének meghatározásához, akkor a mérete nem megfelelő. Ezután nem fogja megkapni a várt foglalási kedvezményt. Ehelyett tekintse meg a használati fájl vagy a használati API `AdditionalInfo` mezőjét a virtuális gép megfelelő méretének meghatározásához.
 
 ### <a name="purchase-restriction-considerations"></a>Vásárlási korlátozási megfontolások
 
@@ -74,7 +72,7 @@ A fenntartott VM-példányok a legtöbb virtuálisgép-mérethez érhetők el, n
 
 - **Felhők** – a foglalások nem vásárolhatók meg németországi vagy kínai régiókban.
 
-- Nem **elegendő kvóta** – egy adott előfizetésre vonatkozó foglalásnak az új ri-előfizetésben elérhető vCPU-kvótával kell rendelkeznie. Ha például a célként megadott előfizetés 10 vCPU a D sorozathoz, akkor nem vásárolhat le 11 Standard_D1-példányra vonatkozó foglalást. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket. Ha például az előfizetés 10 vCPU rendelkezik a D sorozathoz, és két standard_D1 példánya van telepítve, akkor az előfizetésben 10 standard_D1-példány foglalását is megvásárolhatja. A probléma megoldásához [létrehozhat árajánlat-növelési kérést](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
+- Nem **elegendő kvóta** – egy adott előfizetésre vonatkozó foglalásnak az új ri-előfizetésben elérhető vCPU-kvótával kell rendelkeznie. Ha például a célként megadott előfizetés 10 vCPU a D sorozathoz, akkor nem vásárolhat le 11 Standard_D1 példányra vonatkozó foglalást. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket. Ha például az előfizetés 10 vCPU rendelkezik a D sorozathoz, és két standard_D1 példánya van telepítve, akkor ebben az előfizetésben 10 standard_D1 példány foglalását is megvásárolhatja. A probléma megoldásához [létrehozhat árajánlat-növelési kérést](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
 
 - **Kapacitás korlátozásai** – ritka körülmények között az Azure korlátozza a virtuálisgép-méretek részhalmazára vonatkozó új foglalások megvásárlását a régió alacsony kapacitása miatt.
 
@@ -90,16 +88,16 @@ Ezek a követelmények a fenntartott VM-példányok vásárlására vonatkoznak:
 
 Példány vásárlása:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 1. Új foglalás megvásárlásához válassza a **Hozzáadás** lehetőséget, majd kattintson a **virtuális gép**elemre.
 1. Adja meg a kötelező mezőket. A kiválasztott attribútumoknak megfelelő virtuálisgép-példányok futtatása a foglalási kedvezmény beszerzéséhez. A kedvezményt megkapó virtuálisgép-példányok tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
 
 | Mező      | Leírás|
 |------------|--------------|
-|Előfizetés|A foglalás kifizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési mód díja a foglalás díja. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy Microsoft ügyfél-szerződés vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak levonására a pénzügyi kötelezettségvállalás egyenlege, ha van ilyen, vagy a felszámított díj vonatkozik. Az utólagos elszámolású előfizetések díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni az előfizetésben.|    
+|Előfizetést|A foglalás kifizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési mód díja a foglalás díja. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy Microsoft ügyfél-szerződés vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak levonására a pénzügyi kötelezettségvállalás egyenlege, ha van ilyen, vagy a felszámított díj vonatkozik. Az utólagos elszámolású előfizetések díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni az előfizetésben.|    
 |Hatókör       |A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: <ul><li>**Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.</li><li>**Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.</li><li>**Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>|
-|Region (Régió)    |A foglalás által érintett Azure-régió.|    
+|Régió    |A foglalás által érintett Azure-régió.|    
 |Virtuális gép mérete     |A virtuálisgép-példányok mérete.|
 |Optimalizálás a következőhöz:     |A VM-példány méretének rugalmassága alapértelmezés szerint ki van választva. Kattintson a **Speciális beállítások** lehetőségre a példány méretének rugalmassági értékének módosításához, hogy a foglalási kedvezményt más virtuális gépekre alkalmazza ugyanabban a virtuálisgép- [méretezési csoportban](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). A kapacitás prioritása kiemelt fontosságúként kezeli az adatközpont kapacitását az üzemelő példányok számára. További megbízhatóságot biztosít a virtuálisgép-példányok elindításához, amikor szüksége van rájuk. A kapacitás prioritása csak akkor érhető el, ha a foglalási hatókör egyetlen előfizetés. |
 |Időtartam        |Egy vagy három év.|
@@ -126,7 +124,7 @@ A foglalásokat feloszthatja kisebb adattömbökre, és összevonhatja a már fe
 A vásárlás után a következő típusú módosításokat nem végezheti el közvetlenül:
 
 - Egy meglévő foglalás régiója
-- SKU (Cikkszám)
+- SKU
 - Mennyiség
 - Időtartam
 
@@ -136,7 +134,7 @@ Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cs
 
 Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

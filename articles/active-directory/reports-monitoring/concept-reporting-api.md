@@ -3,7 +3,7 @@ title: Ismerkedés az Azure AD Reporting API-val | Microsoft Docs
 description: Ismerkedés a Azure Active Directory jelentési API-val
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127361"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008361"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Ismerkedés a Azure Active Directory Reporting API-val
 
@@ -32,27 +32,27 @@ Az Azure AD-jelentések Microsoft Graph API-jának használatával programozott 
 
 Ez a cikk áttekintést nyújt a jelentéskészítési API-ról, beleértve az elérésének módjait.
 
-Ha problémákba ütközik, tekintse meg a [Azure Active Directory támogatásának](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)beszerzése című témakört.
+Ha problémákba ütközik, tekintse meg a [Azure Active Directory támogatásának beszerzése](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha a jelentéskészítési API-t felhasználói beavatkozás nélkül vagy anélkül szeretné elérni, a következőket kell tennie:
 
 1. Szerepkörök kiosztása (biztonsági olvasó, biztonsági rendszergazda, globális rendszergazda)
-2. Alkalmazás regisztrálása
+2. Egy alkalmazás regisztrálása
 3. Engedélyek megadása
 4. Konfigurációs beállítások összegyűjtése
 
-Részletes útmutatást a [Azure Active Directory jelentési API elérésének](howto-configure-prerequisites-for-reporting-api.md)előfeltételei című témakörben talál. 
+Részletes útmutatást a [Azure Active Directory jelentési API elérésének előfeltételei](howto-configure-prerequisites-for-reporting-api.md)című témakörben talál. 
 
 ## <a name="api-endpoints"></a>API-végpontok 
 
-A naplók `https://graph.microsoft.com/beta/auditLogs/directoryAudits` Microsoft Graph API-végpontja, valamint a bejelentkezések `https://graph.microsoft.com/beta/auditLogs/signIns`Microsoft Graph API-végpontja. További információkért tekintse meg a [naplózási API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) -referenciát és a [bejelentkezési API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)-referenciát.
+A naplók Microsoft Graph API-végpontja `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, és a bejelentkezések Microsoft Graph API-végpontja `https://graph.microsoft.com/beta/auditLogs/signIns`. További információkért tekintse meg a [naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) és a [bejelentkezési API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Emellett az [Identity Protection kockázati észlelések API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/graph-get-started.md). 
 
 > [!NOTE]
->  A **https:\/\/Graph.Windows.net\/bérlői\>-név\/jelentésekvégpontjaelavult\/ .\<** A fentiekben ismertetett új API-végpontok használatával programozott módon férhet hozzá a tevékenység-és biztonsági jelentésekhez.
+>  A **https:\/\/graph.windows.net\/\<bérlő neve\>\/-jelentések\/** végpont elavult. A fentiekben ismertetett új API-végpontok használatával programozott módon férhet hozzá a tevékenység-és biztonsági jelentésekhez.
   
 ## <a name="apis-with-graph-explorer"></a>API-k a Graph Explorerrel
 
@@ -66,9 +66,9 @@ A [MSGraph Explorer](https://developer.microsoft.com/graph/graph-explorer) segí
 
 Használja az Azure AD Reporting API-t a tanúsítványokkal, ha felhasználói beavatkozás nélkül szeretné lekérni a jelentéskészítési adatgyűjtést.
 
-Részletes utasításokért lásd: [Az Azure ad Reporting API és a tanúsítványok használatával kapcsolatos információk](tutorial-access-api-with-certificates.md)lekérése.
+Részletes utasításokért lásd: [Az Azure ad Reporting API és a tanúsítványok használatával kapcsolatos információk lekérése](tutorial-access-api-with-certificates.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * [A jelentéskészítési API elérésének előfeltételei](howto-configure-prerequisites-for-reporting-api.md) 
  * [Az Azure AD Reporting API és a tanúsítványok használatával kapott adatlekérdezés](tutorial-access-api-with-certificates.md)

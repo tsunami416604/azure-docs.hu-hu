@@ -1,5 +1,5 @@
 ---
-title: A mobilitási ügynök kezelése a kiszolgálókon a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításához Azure Site Recoverykal | Microsoft Docs
+title: A VMware/fizikai kiszolgálók mobilitási ügynökének kezelése Azure Site Recovery
 description: A mobilitási szolgáltatás ügynökének kezelése a VMware virtuális gépek és fizikai kiszolgálók az Azure-ba való vész-helyreállításához a Azure Site Recovery szolgáltatás használatával.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972129"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953647"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>A mobilitási ügynök kezelése a védett gépeken
+# <a name="manage-the-mobility-agent"></a>A mobilitási ügynök kezelése 
 
 Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszolgálók Azure-ba történő helyreállításához, akkor a mobilitási ügynököt a kiszolgálón kell beállítania. A mobilitási ügynök koordinálja a védett számítógép, a konfigurációs kiszolgáló/kibővíthető folyamat kiszolgálója közötti kommunikációt, és kezeli az adatreplikációt. Ez a cikk összefoglalja a mobilitási ügynök telepítés utáni általános feladatait.
 
@@ -53,8 +53,8 @@ Site Recovery üzembe helyezése esetén a mobilitási szolgáltatás leküldés
 
 Távolítsa el a felhasználói felületet vagy a parancssorból.
 
-- **A felhasználói felületen**: A gép Vezérlőpultján válassza a **programok**lehetőséget. Válassza a **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló** > **eltávolítása**lehetőséget.
-- **Parancssorból**: Nyisson meg egy parancssori ablakot rendszergazdaként a gépen. Futtassa a következő parancsot: 
+- **A felhasználói felületen**: a gép Vezérlőpultján válassza a **programok**lehetőséget. Válassza a **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló** > **Eltávolítás**elemet.
+- **Parancssorból**: nyisson meg egy parancssori ablakot rendszergazdaként a gépen. Futtassa az alábbi parancsot: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
@@ -62,7 +62,7 @@ Távolítsa el a felhasználói felületet vagy a parancssorból.
 ### <a name="on-a-linux-machine"></a>Linux rendszerű gépen
 1. A Linux rendszerű gépen jelentkezzen be **root** felhasználóként.
 2. A terminálban nyissa meg a/usr/local/ASR
-3. Futtassa a következő parancsot:
+3. Futtassa az alábbi parancsot:
     ```
     uninstall.sh -Y
    ```
@@ -74,9 +74,9 @@ Azure Site Recovery VSS-szolgáltatóra van szükség a forrásoldali gépen az 
 1. Nyissa meg a rendszergazda cmd ablakot.
 2. Navigáljon a mobilitási szolgáltatás telepítési helyére. (Például – C:\Program Files (x86) \Microsoft Azure site Recovery\agent)
 3. Futtassa a InMageVSSProvider_Uninstall. cmd parancsfájlt. Ez a művelet eltávolítja a szolgáltatást, ha az már létezik.
-4. A VSS-szolgáltató manuális telepítéséhez futtassa a InMageVSSProvider_Install. cmd parancsfájlt.
+4. Futtassa a InMageVSSProvider_Install. cmd parancsfájlt a VSS-szolgáltató manuális telepítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vész-helyreállítás beállítása VMware virtuális gépekhez](vmware-azure-tutorial.md)
 - [A fizikai kiszolgálók vész-helyreállításának beállítása](physical-azure-disaster-recovery.md)

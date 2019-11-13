@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c4f9334a91e99c92e74af060d84308a8aaccc6e7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671280"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005414"
 ---
-# <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>A klasszikusból Azure Resource Manager-alapú környezetbe való migrálásra vonatkozó gyakori kérdések
-
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
 
 Nem. A virtuális gépek (klasszikus modell) általánosan rendelkezésre álló, teljes mértékben támogatott szolgáltatások. Továbbra is használhatja ezeket az erőforrásokat, és akár ki is terjesztheti működését a Microsoft Azure-ban.
@@ -49,24 +47,24 @@ Nem. Nemrégiben lehetővé tettük [az ExpressRoute-kapcsolatcsoportok áthelye
 
 A migrálás során az erőforrások át lesznek alakítva klasszikusból Resource Manager-alapú erőforrásokká. Ezért azt javasoljuk, hogy az RBAC-szabályzatok szükséges frissítését a migrálás befejezte utánra tervezze.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Biztonsági másolatot készítettem a klasszikus virtuális tárolóban. Áttelepíthetem a virtuális gépeimet a klasszikus módból Resource Manager módba, hogy egy Recovery Services-tárolóban védjem őket?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Biztonsági másolatot készítettem a klasszikus virtuális gépekről egy tárolóban. Áttelepíthetem a virtuális gépeimet a klasszikus módból Resource Manager módba, hogy egy Recovery Services-tárolóban védjem őket?
 
-<a name="vault">Amikor</a> helyez át egy virtuális gép Kapcsolatcsoportok módosítása klasszikusról Resource Manager módra, a migrálás előtt készített biztonsági másolatok nem telepít át az újonnan áttelepített erőforrás-kezelő virtuális gép. Ha meg szeretné tartani a klasszikus virtuális gépek biztonsági mentései, azonban kövesse az alábbi lépéseket az áttelepítés előtt. 
+<a name="vault">Ha</a> a virtuális gépet a Klasszikusról Resource Manager üzemmódba helyezi át, a Migrálás előtt készített biztonsági másolatok nem települnek át az újonnan áttelepített Resource Manager-alapú virtuális gépre. Ha azonban szeretné megőrizni a klasszikus virtuális gépek biztonsági mentését, kövesse az alábbi lépéseket az áttelepítés előtt. 
 
-1. A Recovery Services-tárolóban lépjen a **védett elemek** lapra, és válassza ki a virtuális Gépet. 
-2. Kattintson a védelem leállítása. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
+1. A Recovery Services-tárolóban lépjen a **Protected items (védett elemek** ) lapra, és válassza ki a virtuális gépet. 
+2. Kattintson a védelem kikapcsolása elemre. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
 
 > [!NOTE]
-> Számítunk biztonsági mentési példányok költségei amíg adatok megőrzése. Biztonsági másolatok megőrzési időtartamnak megfelelően törlődnek. Legutóbbi biztonsági másolat azonban mindig tartani, amíg explicit módon biztonsági mentési adatok törlése. Ellenőrizze a virtuális gép és a védett elem a tárolóban lévő "A biztonsági másolatok adatainak törlése" eseményindítón a megőrzési tartomány, ha a megőrzési tartomány javasolt. 
+> A biztonsági mentési példányok költségét a rendszer addig terheli, amíg meg nem tartja az adatmegőrzést. A biztonsági másolatok megőrzési időtartamként lesznek metszve. A legutóbbi biztonsági másolat azonban mindig a biztonsági mentési adat törlése után marad. Javasolt a virtuális gép megőrzési tartományának ellenőrzését, és a "biztonsági másolati adatok törlése" triggert a tároló védett elemén, ha a megőrzési időtartam túl van. 
 >
 >
 
-A Resource Manager módba, a virtuális gép áttelepítése 
+A virtuális gép áttelepíthető Resource Manager módba, 
 
 1. Törölje a biztonsági mentés/pillanatkép bővítményt a virtuális gépről.
 2. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tároló és hálózat adatait is mindenképpen telepítse át Resource Manager módba.
 
-Ezenkívül ha azt szeretné, az áttelepített virtuális gép biztonsági másolatának, nyissa meg a virtuális gép kezelése paneljéről [biztonsági mentés engedélyezése](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Ha az áttelepített virtuális gépre biztonsági mentést szeretne készíteni, a [biztonsági mentés engedélyezéséhez](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)lépjen a virtuális gép kezelése panelre.
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Ellenőrizhetem valahol, hogy az előfizetésem vagy az erőforrásaim esetében lehetséges-e a migrálás? 
 
@@ -88,6 +86,6 @@ A migrálás az összes olyan erőforrás nevét megőrzi, amelyeknek kifejezett
 
 Az előfizetések közötti engedélyezési hivatkozásokat használó ExpressRoute-kapcsolatcsoportok állásidő nélküli automatikus migrálása nem lehetséges. Az ezek manuális migrálására vonatkozóan vannak útmutatóink. A szükséges lépésekért és további információkért lásd: [ExpressRoute-kapcsolatcsoportok migrálása a klasszikusból a Resource Manager-alapú üzemi modellbe](../articles/expressroute/expressroute-migration-classic-resource-manager.md).
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Az üzenetet kaptam *"virtuális Gépet jelent az ügynök átfogó állapotát, nem áll készen. Ezért a virtuális gép nem migrálható. Győződjön meg arról, hogy a Virtuálisgép-ügynök átfogó állapotát Ready állapotként jelez"* vagy *"a gép tartalmazza a bővítményt, amelynek az állapotát a virtuális gép nem jelenti. Ezért ez a virtuális gép nem migrálható."*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>A következő üzenet jelenik meg: *"a virtuális gép az ügynök általános állapotát nem üzemkész állapotba jelenti. Ezért a virtuális gép nem telepíthető át. Győződjön meg arról, hogy a virtuálisgép-ügynök az ügynök teljes állapotát készként* jelenti, vagy *a virtuális gép olyan bővítményt tartalmaz, amelynek állapota nem a virtuális gépről származik. Ezért ez a virtuális gép nem telepíthető át. "*
 
 Ez az üzenet akkor jelenik meg, ha a virtuális gép nem rendelkezik kimenő internetkapcsolattal. A virtuálisgép-ügynök a kimenő kapcsolaton keresztül éri el az Azure-tárfiókot az ügynök állapotának öt percenkénti frissítéséhez.

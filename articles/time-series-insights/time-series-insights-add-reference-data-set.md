@@ -1,5 +1,5 @@
 ---
-title: Hivatkozási adathalmaz hozzáadása a Azure Time Series Insights-környezethez | Microsoft Docs
+title: Hivatkozási adathalmaz hozzáadása a környezethez – Azure Time Series Insights | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá egy hivatkozási adatkészletet a Azure Time Series Insights-környezetében lévő adatbővítéshez.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3aca1f64d469ce228a4b2738c72c0b4bc1956051
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 31ae271a4ad6aa1370828640884a54eb2669804d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991278"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012728"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
 
@@ -34,7 +34,7 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
 ## <a name="add-a-reference-data-set"></a>Hivatkozási adathalmaz hozzáadása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. Keresse meg a meglévő Azure Time Series Insights-környezetét. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
 
@@ -48,7 +48,7 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
 1. Az új adatkészlet hozzáadásának megkezdéséhez kattintson az **+ adatkészlet hozzáadása** gombra.
 
-   [adathalmaz hozzáadása![](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [adathalmaz hozzáadása ![](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. Az **új hivatkozási adatkészlet** lapon válassza ki az adatformátumot:
 

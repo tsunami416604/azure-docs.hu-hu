@@ -1,5 +1,5 @@
 ---
-title: Az adatmegőrzés ismertetése a Azure Time Series Insights-környezetben | Microsoft Docs
+title: Az adatok megőrzésének megértése a környezetben – Azure Time Series Insight | Microsoft Docs
 description: Ez a cikk két olyan beállítást ismertet, amelyek az adatmegőrzést vezérlik Azure Time Series Insights-környezetben.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990129"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012696"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Az adatmegőrzés ismertetése Azure Time Series Insights
 
@@ -90,7 +90,7 @@ Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési
 
 [![Event hub-üzenetek megőrzése.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Ha az eseményforrás egyik tulajdonsága sincs konfigurálva (`timeStampPropertyName`), a Time Series Insights az Event hub-ban az X tengelyként való megérkezés időbélyegét állítja be. Ha a `timeStampPropertyName` úgy van beállítva, hogy valami másra legyen konfigurálva, a környezet a beállított `timeStampPropertyName` értéket keresi az adatcsomagban az események elemzésekor.
+Ha az eseményforrás (`timeStampPropertyName`) egyik tulajdonsága sincs konfigurálva, Time Series Insights alapértelmezett értéke az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az események elemzésekor megkeresi a konfigurált `timeStampPropertyName` az adatcsomagban.
 
 Olvassa el, [Hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md) úgy, hogy a környezetét a további kapacitásra vagy a megőrzési időtartamra növelje.
 

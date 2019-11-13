@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934862"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012054"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -36,7 +36,7 @@ Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az id
 | További információkat kaphat az adatairól. | Hasznos információkhoz juthat az adatokról és az észlelt rendellenességekről, beleértve a várt értékeket, a rendellenességek határait és a pozíciókat. |
 | Állítsa be a anomália észlelési határait. | Az anomália detektor API automatikusan létrehoz határokat a anomáliák észleléséhez. Állítsa be ezeket a határokat az API-k adatrendellenességekre való érzékenységének növeléséhez vagy csökkentéséhez, és jobban illeszkedjen az adataihoz. |
 
-## <a name="demo"></a>Demó
+## <a name="demo"></a>Bemutató
 
 Tekintse meg ezt az [interaktív bemutatót](https://aka.ms/adDemo) , hogy megtudja, hogyan működik a rendellenesség-érzékelő.
 A bemutató futtatásához létre kell hoznia egy anomália-detektor erőforrást, és le kell kérnie az API-kulcsot és a végpontot.
@@ -52,7 +52,7 @@ A jegyzetfüzet futtatásához hajtsa végre a következő lépéseket:
 1. A klónozási művelet befejezése előtt törölje a "nyilvános" lehetőséget a párbeszédpanelen, ellenkező esetben a notebook, beleértve az előfizetési kulcsokat is, nyilvános lesz.
 1. Kattintson **a Futtatás ingyenes számításkor** lehetőségre
 1. Válassza ki az egyik jegyzetfüzetet.
-1. Adja hozzá az érvényes anomália-érzékelő API- `subscription_key` előfizetési kulcsát a változóhoz. 
+1. Adja hozzá az érvényes anomália-érzékelő API-előfizetési kulcsát a `subscription_key` változóhoz. 
 1. Módosítsa a `endpoint` változót a végpontra. Például:`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. A felső menüsorban kattintson a **cella**, majd az **összes futtatása**elemre.
 
@@ -72,18 +72,18 @@ Regisztráció után:
 
 ## <a name="algorithms"></a>Algoritmusok
 
-* Tekintse meg ezt a technikai blogot, amely bemutatja az [Azure rendellenesség-érzékelő API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) -ját a motorháztető alatt lévő algoritmusokkal kapcsolatban.
+* Tekintse meg az [Azure rendellenesség-érzékelő API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) -t bemutató technikai blogokat, és [tekintse át az SR-CNN algoritmust az Azure anomália-detektorban](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) a motorháztető alatti algoritmusokkal kapcsolatban.
 * A Microsoft által fejlesztett élvonalbeli SR-CNN-algoritmusokról a Microsoft (KDD 2019 által elfogadott) [adatsorozat-anomália-észlelési szolgáltatást](https://arxiv.org/abs/1906.03821) ismertető cikkben olvashat.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
-## <a name="join-the-anomaly-detector-community"></a>Csatlakozás az anomália detektor közösségéhez
+## <a name="join-the-anomaly-detector-community"></a>Csatlakozás az Anomáliadetektor-közösséghez
 
 * Csatlakozás az [anomália-detektor Advisors csoportjához a Microsoft Teams](https://aka.ms/AdAdvisorsJoin) szolgáltatásban
 * A kiválasztott [felhasználó által létrehozott tartalom](user-generated-content.md) megjelenítése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Rövid útmutató: Az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](quickstarts/detect-data-anomalies-csharp.md)
+* [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](quickstarts/detect-data-anomalies-csharp.md)
 * Az anomália érzékelő API [online bemutatója](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
 * Az anomália detektor [REST API referenciája](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)

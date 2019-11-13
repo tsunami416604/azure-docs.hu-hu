@@ -10,12 +10,12 @@ author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/07/2019
-ms.openlocfilehash: 976c849f9cb48e1c197f70d10e911216a6a7425c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 744ac9f8526b7d65709d3627a5f90b31d234b2cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822851"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009083"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>Gépi tanulás és AI a ONNX SQL Database Edge előzetes verzióban
 
@@ -25,27 +25,22 @@ Az Azure SQL Database Edge előzetes verziójában a Machine learning az [Open n
 
 Ha Azure SQL Database Edge-ben szeretné kikövetkeztetni a gépi tanulási modelleket, először be kell szereznie egy modellt. Ez lehet egy előre betanított modell vagy egy egyéni modell, amely az Ön által választott keretrendszerrel lett kiképezve. Azure SQL Database Edge támogatja a ONNX formátumot, és a modellt erre a formátumra kell konvertálnia. A modell pontossága nem befolyásolható, és ha már rendelkezik a ONNX-modellel, a modellt üzembe helyezheti Azure SQL Database Edge-ben, és használhatja [a natív pontozást a prediktív T-SQL függvénnyel](/sql/advanced-analytics/sql-native-scoring/).
 
-## <a name="get-onnx-models"></a>ONNX-modellek beolvasása
+## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 
-Több módon is beszerezheti a modelleket a ONNX formátumban:
+Modell beszerzése ONNX formátumban:
 
-- [ONNX Model Zoo](https://github.com/onnx/models): számos előre betanított ONNX-modellt tartalmaz különböző típusú feladatokhoz, amelyek letölthetők és használatra készek.
+- **Modell-építési szolgáltatások**: olyan szolgáltatások, mint például a Azure Machine learning és az [Custom Vision Service Azure](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) [automatizált Machine learning szolgáltatása](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , a betanított modell ONNX-formátumba történő közvetlen exportálásának támogatása.
 
-- [Natív Exportálás az ml betanítási keretrendszerekből](https://onnx.ai/supported-tools): számos oktatási keretrendszer támogatja a natív exportálási funkciókat a ONNX, ami lehetővé teszi a betanított modell mentését a ONNX formátum egy adott verziójára, beleértve a [PyTorch](https://pytorch.org/docs/stable/onnx.html), a láncot és a Caffe2. Emellett a modell olyan szolgáltatásokat is kínál, mint például az [automatikus Machine learning funkció a Azure Machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) és az [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) ONNX-exportálást biztosít.
+- [**Meglévő modellek konvertálása és/vagy exportálása**](https://github.com/onnx/tutorials#converting-to-onnx-format): több betanítási keretrendszer (pl. [PyTorch](https://pytorch.org/docs/stable/onnx.html), láncolás és Caffe2) támogatja a natív exportálási funkciókat a ONNX, így a betanított modellt a ONNX formátum egy adott verziójára mentheti. A natív exportálást nem támogató keretrendszerek esetében léteznek különálló ONNX Converter telepíthető csomagok, amelyek lehetővé teszik különböző gépi tanulási keretrendszerekből betanított modellek átalakítását a ONNX formátumba.
 
-- [Meglévő modellek konvertálása](https://github.com/onnx/tutorials#converting-to-onnx-format): a natív exportálást nem támogató keretrendszerek esetében léteznek önálló csomagok, amelyek a modelleket ONNX formátumra alakítják át. Példák és oktatóanyagok: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format). 
-
-### <a name="supported-frameworks"></a>Támogatott keretrendszerek
-
-A ONNX-átalakítók lehetővé teszik különböző gépi tanulási keretrendszerekből betanított modellek átalakítását a ONNX formátumba. A népszerű átalakítók a következők: 
-
-* [PyTorch](http://pytorch.org/docs/master/onnx.html)
-* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
-* [Kerasz](https://github.com/onnx/keras-onnx)
-* [Scikit-learn](https://github.com/onnx/sklearn-onnx)
-* [CoreML](https://github.com/onnx/onnxmltools)
-
-A támogatott keretrendszerek teljes listájáért lásd: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format).
+     **Támogatott keretrendszerek**
+   * [PyTorch](http://pytorch.org/docs/master/onnx.html)
+   * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+   * [Kerasz](https://github.com/onnx/keras-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [CoreML](https://github.com/onnx/onnxmltools)
+    
+    A támogatott keretrendszerek és példák teljes listájáért lásd: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -58,7 +53,7 @@ A más numerikus típusok a [Cast és a convert](https://docs.microsoft.com/sql/
 
 A modell bemeneteit strukturálni kell, hogy a modell minden bemenete egy tábla egyetlen oszlopának felel meg. Ha például pandák dataframe használ a modell betanításához, akkor minden bemenetnek külön oszlopnak kell lennie a modellhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL Database Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [ONNX-modell üzembe helyezése Azure SQL Database Edge előzetes verziójában](deploy-onnx.md)

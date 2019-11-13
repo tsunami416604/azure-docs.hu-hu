@@ -1,17 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani az Azure-erőforrások Azure Resource Graph használatával történő lekérdezésével kapcsolatos problémákat.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: troubleshooting
-ms.service: resource-graph
-ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e8f42650265b1ca400731365203408eeb22a4e4c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389700"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958528"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
 
@@ -33,7 +30,7 @@ Azok az ügyfelek, akik több mint 1000 előfizetéshez férnek hozzá, beleért
 
 Az Azure CLI és a PowerShell csak az első 1000-előfizetést továbbítja az Azure Resource Graph-ba. Az Azure Resource Graph REST API maximális számú előfizetést fogad el a lekérdezés végrehajtásához.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 Batch-kérelmek a lekérdezéshez az előfizetések egy olyan részhalmazával, amely az 1000-os előfizetési korlát alatt marad. A megoldás az **előfizetés** paramétert használja a PowerShellben.
 
@@ -70,9 +67,9 @@ Az Azure Resource Graph REST API lekérdező ügyfelek megkapják a _500_ (bels�
 
 Az Azure Resource Graph REST API csak az **Application/json**`Content-Type` használatát támogatja. Néhány REST-eszköz vagy-ügynök alapértelmezett értéke **text/plain**, amelyet a REST API nem támogat.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
-Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök REST API fejléce `Content-Type` van-e konfigurálva az **alkalmazáshoz/JSON**-hoz.
+Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök rendelkezik-e az **alkalmazáshoz/JSON-** hoz konfigurált REST API fejléctel `Content-Type`.
 
 ### <a name="rest-403"></a>Forgatókönyv: nincs olvasási engedély a listában szereplő összes előfizetéshez
 
@@ -84,7 +81,7 @@ Azok az ügyfelek, akik explicit módon átadják egy Azure Resource Graph-leké
 
 Ha az ügyfél nem rendelkezik olvasási engedéllyel az összes megadott előfizetéshez, a rendszer a megfelelő biztonsági jogosultságok hiánya miatt megtagadja a kérelmet.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 Vegyen fel legalább egy előfizetést az előfizetések listájában, amelyet a lekérdezést futtató ügyfélnek legalább olvasási hozzáféréssel kell rendelkezniük. További információ: [engedélyek az Azure Resource Graph-ban](../overview.md#permissions-in-azure-resource-graph).
 

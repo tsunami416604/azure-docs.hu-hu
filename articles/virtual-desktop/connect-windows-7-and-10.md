@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 2552fcbd860a0cc98aa7e2a6c7f92796a8d588ca
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 420978e79da99847f16e5c85b2d2510083ca97a7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605790"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006237"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
@@ -28,8 +28,8 @@ Windows rendszerű virtuális asztali erőforrásokat a Windows 7 vagy Windows 1
 Válassza ki azt az ügyfelet, amely megfelel a Windows-verziójának:
 
 - [Windows 64 bites](https://go.microsoft.com/fwlink/?linkid=2068602)
-- [Windows 32 bites előzetes verzió](https://go.microsoft.com/fwlink/?linkid=2098960)
-- [Windows ARM64 előzetes verzió](https://go.microsoft.com/fwlink/?linkid=2098961)
+- [Windows 32 bites](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Telepítheti az aktuális felhasználóhoz tartozó ügyfelet, amely nem követeli meg a rendszergazdai jogosultságokat, vagy a rendszergazda telepítheti és konfigurálhatja az ügyfelet, hogy az eszköz összes felhasználója hozzáférhessen.
 
@@ -55,6 +55,6 @@ Az erőforrásokat két módszer egyikével indíthatja el.
 
 A hírcsatornára való előfizetést követően a rendszer rendszeresen frissíti a hírcsatorna tartalmát. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Windows asztali ügyfél használatáról, tekintse meg [a Windows asztali ügyfélprogram használatának első lépéseivel foglalkozó](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)témakört.

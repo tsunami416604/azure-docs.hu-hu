@@ -1,5 +1,5 @@
 ---
-title: Azure IoT-Eszközkezelés a Cloud Explorer for Visual Studio segítségével | Microsoft Docs
+title: Azure IoT-eszközkezelés w/Visual Studio Cloud Explorer
 description: Használja a Cloud Explorer for Visual Studio for Azure IoT Hub eszközkezelés szolgáltatást, amely a közvetlen metódusokat és a Twin kívánt tulajdonságok kezelési lehetőségeit is felhasználja.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048679"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953187"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Cloud Explorer használata az Azure-hoz készült Visual Studio IoT Hub-eszközök kezeléséhez
 
@@ -29,7 +29,7 @@ A [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuret
 | Eszköz dupla frissítése         | Helyezzen egy eszközt bizonyos állapotba, például állítsa be a LED-et zöldre, vagy állítsa a telemetria küldési intervallumát 30 percre.         |
 | Felhőből az eszközre irányuló üzenetek   | Értesítések küldése egy eszközre. Például: "nagyon valószínű, hogy még ma is esik az eső. Ne felejtsen el egy esernyőt bevinni. "              |
 
-További információ az ilyen beállításokkal kapcsolatos különbségekről és útmutatásról: az eszközről a felhőbe irányuló [kommunikációs útmutató](iot-hub-devguide-d2c-guidance.md) és a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
+További információ az ilyen beállításokkal kapcsolatos különbségekről és útmutatásról: az [eszközről a felhőbe irányuló kommunikációs útmutató](iot-hub-devguide-d2c-guidance.md) és a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
 
 Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. A IoT Hub minden olyan eszközön megtartja a különálló eszközt, amely csatlakozik hozzá. További információ az eszközök Twins-ról: Ismerkedés [az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md).
 
@@ -59,7 +59,7 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 ## <a name="sign-in-to-access-your-hub"></a>Bejelentkezés a hub eléréséhez
 
-1. A Visual Studióban kattintson a**Cloud** Explorer **megtekintése** > elemre a Cloud Explorer megnyitásához.
+1. A Visual Studióban válassza a **megtekintés** > **Cloud Explorer** lehetőséget a Cloud Explorer megnyitásához.
 
 1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
 
@@ -77,11 +77,11 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 A közvetlen módszerek használatához hajtsa végre a következő lépéseket:
 
-1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen eszköz metódusának**meghívása lehetőséget.
+1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen eszköz metódusának meghívása**lehetőséget.
 
 1. Adja meg a metódus nevét és a hasznos adatokat a **közvetlen hívási metódusban**, majd kattintson **az OK gombra**.
 
-    Az eredmények megjelenneka kimenetben.
+    Az eredmények megjelennek a **kimenetben**.
 
 ## <a name="update-device-twin"></a>Eszköz dupla frissítése
 
@@ -95,7 +95,7 @@ Az eszközök kettős szerkesztéséhez hajtsa végre a következő lépéseket:
 
 1. Nyomja le a **CTRL + S** billentyűkombinációt az eszköz dupla frissítéséhez.
 
-   Az eredmények megjelenneka kimenetben.
+   Az eredmények megjelennek a **kimenetben**.
 
 ## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
 
@@ -105,9 +105,9 @@ Ha üzenetet szeretne küldeni a IoT Hub az eszközére, kövesse az alábbi lé
 
 1. Adja meg az üzenetet a **C2D küldése üzenetben** , majd kattintson **az OK gombra**.
 
-   Az eredmények megjelenneka kimenetben.
+   Az eredmények megjelennek a **kimenetben**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan használhatja a Cloud Explorer for Visual Studio különböző felügyeleti lehetőségeket.
 

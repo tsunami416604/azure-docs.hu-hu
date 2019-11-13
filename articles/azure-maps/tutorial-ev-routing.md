@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243289"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011117"
 ---
 # <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Elektromos járművek átirányítása Azure Notebooks (Python) használatával
 
@@ -41,13 +41,13 @@ Az oktatóanyag elvégzéséhez először létre kell hoznia egy Azure Maps fió
 
 Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához kövesse a [Azure Maps fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)című témakör útmutatását. 
 
-A fiókjához tartozó elsődleges előfizetési kulcs lekéréséhez kövesse a [közeli helyek keresése a Azure Maps használatával](./tutorial-search-location.md#getkey) című témakör utasításait.
+A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse a [fiók létrehozása és a kulcs beszerzése](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)című témakör utasításait.
 
 ## <a name="create-an-azure-notebook"></a>Azure-beli jegyzetfüzet létrehozása
 
 Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter notebook-fájlt. A jegyzetfüzet-fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Azure notebook-projekt létrehozásához és a Jupyter notebook-dokumentum feltöltéséhez tegye a következőket:
 
-1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. A nyilvános profil lap tetején válassza a **saját projektek**lehetőséget.
 
     ![A saját projektek gomb](./media/tutorial-ev-routing/myproject.png)
@@ -76,12 +76,12 @@ A jegyzetfüzet-fájlban megvalósított funkciók jobb megismerése érdekében
 
   ![A Futtatás gomb](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Projekt szintű csomagok telepítése
+## <a name="install-project-level-packages"></a>Projekt szolgáltatásiszint-csomagok telepítése
 
 A kód a jegyzetfüzetben való futtatásához a következő lépésekkel telepítse a csomagokat a projekt szintjén:
 
 1. Töltse le a [*követelmények. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
-1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget. 
+1. Válassza ki a projekt irányítópultján **Projektbeállítások**. 
 1. A **projekt beállításai** ablaktáblán válassza a **környezet** lapot, majd kattintson a **Hozzáadás**gombra.
 1. A **környezet beállítása lépésekben**tegye a következőket:   
     a. Az első legördülő listában válassza a **követelmények. txt**elemet.  
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 Miután meghatározta az összes lehetséges díjszabási állomást a rendelkezésre álló tartományon belül, tudnia kell, hogy a lehető legkevesebb ideig legyenek elérhetők. 
 
-A következő parancsfájl meghívja a Azure Maps [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)-t, amely visszaadja a megadott jármű helyének az utazási időt és a távolságot az egyes díjszabási állomások számára. A következő cellában lévő parancsfájl elemzi a választ, hogy megkeresse a legközelebbi elérhető díjszabási állomást az idő tekintetében.
+A következő parancsfájl meghívja a Azure Maps [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)-t, amely visszaadja a megadott jármű helyének az utazási időt és a távolságot az egyes díjszabási állomások számára. A következő cellában lévő parancsfájl elemzi a választ, hogy megkeresse a legközelebbi elérhető díjszabási állomást az idő tekintetében.
 
 A lehető legkevesebb idő alatt elérhető, legközelebb álló töltőállomás megtalálásához futtassa a szkriptet a következő cellában:
 
@@ -395,7 +395,7 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 * [Keresés közzététele a geometrián belül](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Adatok feltöltése](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
 * [Render-Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Útvonal-mátrix küldése](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [Útvonal-mátrix küldése](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Útvonal irányának beolvasása](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference)-k.

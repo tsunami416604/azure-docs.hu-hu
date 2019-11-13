@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803346"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013060"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: alkalmazás közzétevő tartományának konfigurálása (előzetes verzió)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Útmutató: alkalmazás közzétevő tartományának konfigurálása
 
 Az alkalmazás közzétevői tartománya megjelenik a felhasználók számára az [alkalmazás jóváhagyására vonatkozó kérésben](application-consent-experience.md) , hogy a felhasználók tudják, hol küldik el az adataikat. A több-bérlős alkalmazások, amelyek a 2019. május 21. után vannak regisztrálva, amelyek nem rendelkeznek közzétevő tartománnyal, nem **ellenőrzöttként**jelennek meg. A több-bérlős alkalmazások olyan alkalmazások, amelyek egyetlen szervezeti címtáron kívül is támogatják a fiókokat. például támogassa az összes Azure AD-fiókot, vagy támogassa az összes Azure AD-fiókot és a személyes Microsoft-fiókokat.
 
@@ -40,8 +40,8 @@ A következő táblázat összefoglalja a közzétevő tartomány értékének a
 | Bérlő által ellenőrzött tartományok | Közzétevő tartomány alapértelmezett értéke |
 |-------------------------|----------------------------|
 | NULL | NULL |
-| *. onmicrosoft.com | *. onmicrosoft.com |
-| -*. onmicrosoft.com<br/>– domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
+| *.onmicrosoft.com | *.onmicrosoft.com |
+| - *.onmicrosoft.com<br/>- domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
 
 Ha a több-bérlős alkalmazás közzétevő tartománya nincs beállítva, vagy ha egy olyan tartományra van beállítva, amely a. onmicrosoft.com-ben ér véget, akkor az alkalmazás hozzájárulási kérése nem **ellenőrzöttként** jelenik meg a közzétevő tartománya helyett.
 

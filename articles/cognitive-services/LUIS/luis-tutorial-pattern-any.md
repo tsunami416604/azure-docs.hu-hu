@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c118a74e273e153746240465692b1c712bd25f47
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499421"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953603"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: szabad formátumú adatok kinyerése mintázattal. bármely entitás
 
@@ -110,7 +110,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 1. Adja meg a következő, az új entitást használó kimondottszöveg-sablont:
 
-    |Kimondottszöveg-sablon|
+    |Kimondottszöveg-sablonok|
     |--|
     |Hol található a ["]{FormName}["] űrlap, és kinek kell aláírnia, miután elolvastam[?]|
     |Hol található a ["]{FormName}["] űrlap a kiszolgálón[?]|
@@ -123,7 +123,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Az új minta tesztelése a szabad formátumú adatok kinyeréséhez
+## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Tesztelje az új mintát a szabad formátumú adatok kinyerésére
 1. A tesztelési panel megnyitásához válassza a felső sávon a **Test** lehetőséget. 
 
 1. Adja meg a következő kimondott szöveget: 
@@ -138,16 +138,16 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 ## <a name="using-an-explicit-list"></a>Explicit lista használata
 
-Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát.
+Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag egy meglévő leképezéshez adott hozzá példa kimondott szövegeket, majd létrehozott egy új Pattern.any entitást az űrlapnévhez. Az oktatóanyag ezután az új példa kimondott szövegekkel és entitással mintát hozott létre a meglévő leképezéshez. Az interaktív tesztelés megmutatta, hogy mivel az entitást a rendszer megtalálta, a minta és annak leképezései előrejelezhetők voltak. 
 
 > [!div class="nextstepaction"]
-> [Ismerje meg a szerepkörök mintával való használatát](luis-tutorial-pattern-roles.md)
+> [Útmutató a szerepkörök és a minták együttes használatához](luis-tutorial-pattern-roles.md)

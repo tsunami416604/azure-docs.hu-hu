@@ -1,6 +1,6 @@
 ---
-title: A biztonság konfigurálása Azure Time Series Insights előzetes verziójának eléréséhez és kezeléséhez | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a biztonság és az engedélyek felügyeleti hozzáférési házirendekként és adatelérési házirendként a Azure Time Series Insights előzetes verziójának biztonságossá tételéhez.
+title: Az adathozzáférést biztosító biztonság konfigurálása – Azure Time Series Insights előzetes verzió | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat biztonsági, engedélyezési és kezelési házirendeket az Azure Time Series Insights előzetes verziójának környezetében.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f49567b8060be2bf2a9ca2b8a1bdee23f58fdd6b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990156"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012688"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Az adathozzáférés biztosítása egy környezethez
 
@@ -24,8 +24,8 @@ Ez a cikk a Azure Time Series Insights előzetes verziójának hozzáférési h�
 
 ## <a name="sign-in-to-time-series-insights"></a>Bejelentkezés Time Series Insights
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-1. Keresse meg Time Series Insights-környezetét. A **keresőmezőbe** írja be a `Time Series` értéket. Válassza az **idősorozat-környezet** lehetőséget a keresési eredmények között.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Keresse meg Time Series Insights-környezetét. Írja be a `Time Series` **kifejezést a keresőmezőbe** . Válassza az **idősorozat-környezet** lehetőséget a keresési eredmények között.
 1. Válassza ki az Azure Time Series Insights környezetet a listából.
 
 ## <a name="grant-data-access"></a>Adathozzáférés biztosítása
@@ -34,7 +34,7 @@ Az alábbi lépések végrehajtásával biztosíthatja az adathozzáférést egy
 
 1. Válassza **az adatelérési házirendek**, majd a **+ Hozzáadás**lehetőséget.
 
-    [adat![-hozzáférés – egy](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
+    [![Data-access-one](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
 1. Válassza a **felhasználó kiválasztása**lehetőséget. Keresse meg a felhasználónevet vagy az e-mail-címet, hogy megkeresse a hozzáadni kívánt felhasználót. Válassza **a kijelölés lehetőséget a** kijelölés megerősítéséhez.
 
@@ -56,7 +56,7 @@ Az alábbi lépések végrehajtásával biztosíthatja az adathozzáférést egy
 
 1. Győződjön meg arról, hogy az **adatelérési házirendek** lap felsorolja a felhasználókat és az egyes felhasználók szerepköreit.
 
-    [adat![-hozzáférés – öt](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![Data-access-five](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Vendég hozzáférés biztosítása másik HRE-bérlőtől
 
@@ -66,19 +66,19 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
 1. Válassza **az adatelérési házirendek**, majd a **+ meghívás**lehetőséget.
 
-    [adat![-hozzáférés – hat](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Adja meg a meghívni kívánt felhasználó e-mail-címét. Ezt az e-mail-címet hozzá kell rendelni az Azure AD-hez. Igény szerint személyes üzenetet is hozzáadhat a meghívóhoz.
 
-    [adat![-hozzáférés – hét](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![Data-access-seven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Keresse meg a képernyőn megjelenő megerősítő buborékot.
 
-    [adat![-hozzáférés – nyolc](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
+    [![Data-access-eight](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
 1. Válassza a **felhasználó kiválasztása**lehetőséget. Keresse meg a vendég felhasználó e-mail-címét, amelyet a felvenni kívánt felhasználó megtalálására meghívott. Ezután **válassza a lehetőséget** a kijelölés megerősítéséhez.
 
-    [adat![-hozzáférés – kilenc](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![Data-access-nine](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. Válassza a **szerepkör kiválasztása**lehetőséget. Válassza ki a megfelelő hozzáférési szerepkört a vendég felhasználó számára:
 
@@ -88,17 +88,17 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
    A szerepkör választásának megerősítéséhez kattintson **az OK gombra** .
 
-    [adat![-hozzáférés – TEN](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![Data-access-ten](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. A **felhasználói szerepkör kiválasztása** lapon kattintson az **OK gombra** .
 
 1. Győződjön meg arról, hogy az **adatelérési házirendek** lap felsorolja a vendég felhasználót és az egyes vendég felhasználók szerepköreit.
 
-    [adat![-hozzáférés – tizenegy](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
+    [![Data-access-eleven](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
 1. Most a vendég felhasználónak el kell végeznie az Azure-bérlőben található környezet eléréséhez szükséges lépéseket. Először elfogadják az elküldött meghívót. Ezt a meghívót e-mailben küldjük el az 5. lépésben használt e-mail-címre. Ezek közül választhatnak az első **lépések** elfogadásához.
 
-    [adat![-hozzáférés – tizenkét](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
+    [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
 1. Ezután a vendég felhasználó elfogadja a rendszergazda szervezetéhez társított engedélyeket.
 
@@ -110,7 +110,7 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
 1. Ezután a vendég felhasználó kiválasztja az Azure-bérlőt a címtár legördülő menüből. Ezt a bérlőt kell meghívnia.
 
-    [adat![-hozzáférés – tizenöt](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+    [![Data-access-fifteen](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Miután a vendég felhasználó kiválasztja a bérlőt, láthatják azt a Time Series Insights környezetet, amelyhez hozzáférést biztosított számukra. Most már az **5. lépésben**megadott szerepkörhöz tartozó összes képességgel rendelkeznek.
 

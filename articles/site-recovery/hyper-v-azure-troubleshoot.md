@@ -1,5 +1,5 @@
 ---
-title: A Hyper-V és az Azure közötti vész-helyreállítás hibáinak elhárítása Azure Site Recovery használatával | Microsoft Docs
+title: A Hyper-V vész-helyreállítás hibáinak elhárítása Azure Site Recovery
 description: Ismerteti, hogyan lehet elhárítani a Hyper-V-ről az Azure-ba történő helyreállítási problémákat a Azure Site Recovery használatával
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828407"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961478"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>A Hyper-V és az Azure közötti replikáció és feladatátvétel hibáinak megoldása
 
@@ -23,16 +23,16 @@ Ez a cikk a helyszíni Hyper-V virtuális gépek Azure-ba történő replikálá
 
 Ha problémákat tapasztal a Hyper-V virtuális gépek védelmének engedélyezésekor, tekintse át a következő javaslatokat:
 
-1. Győződjön meg arról, hogy a Hyper-V-gazdagépek és virtuális gépek megfelelnek az összes [követelménynek és](hyper-v-azure-support-matrix.md)előfeltételnek.
+1. Győződjön meg arról, hogy a Hyper-V-gazdagépek és virtuális gépek megfelelnek az összes [követelménynek és előfeltételnek](hyper-v-azure-support-matrix.md).
 2. Ha a Hyper-V-kiszolgálók System Center Virtual Machine Manager (VMM) felhőkben találhatók, ellenőrizze, hogy előkészítette-e a [VMM-kiszolgálót](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional).
 3. Győződjön meg arról, hogy a Hyper-V Virtuálisgép-kezelő szolgáltatás a Hyper-V-gazdagépeken fut.
-4. Keressen olyan problémákat, amelyek megjelennek a Hyper-V-VMMS\Admin a virtuális gépre való bejelentkezéskor. Ez a napló az **alkalmazások és szolgáltatások naplójában** > található a**Microsoft** > **Windowsban**.
+4. Keressen olyan problémákat, amelyek megjelennek a Hyper-V-VMMS\Admin a virtuális gépre való bejelentkezéskor. Ez a napló a **Microsoft** > **Windows** > **alkalmazások és szolgáltatások naplóiban** található.
 5. A vendég virtuális gépen ellenőrizze, hogy a WMI engedélyezve van-e és elérhető-e.
    - [Ismerje meg az](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) alapszintű WMI-tesztelést.
    - [Hibakeresés](https://aka.ms/WMiTshooting) WMI.
-   - [](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI-parancsfájlokkal és-szolgáltatásokkal kapcsolatos problémák elhárítása.
+   - WMI-parancsfájlokkal és-szolgáltatásokkal kapcsolatos problémák [elhárítása](https://technet.microsoft.com/library/ff406382.aspx#H22) .
 6. A vendég virtuális gépen ellenőrizze, hogy az integrációs szolgáltatások legújabb verziója fut-e.
-    - [](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) Győződjön meg arról, hogy a legújabb verzióval rendelkezik.
+    - [Győződjön meg arról,](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) hogy a legújabb verzióval rendelkezik.
     - [Tartsa](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) meg Az integrációs szolgáltatások naprakészek.
     
 ## <a name="replication-issues"></a>Replikációs problémák
@@ -42,7 +42,7 @@ A kezdeti és a folyamatban lévő replikációval kapcsolatos problémákat a k
 1. Győződjön meg arról, hogy a Site Recovery szolgáltatások [legújabb verzióját](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) futtatja.
 2. Annak ellenőrzése, hogy a replikáció szüneteltetve van-e:
    - A Hyper-V kezelőjének konzolján keresse meg a virtuális gép állapota állapotot.
-   - Ha ez kritikus fontosságú, kattintson a jobb gombbal a virtuális gépre > **replikáció** > **nézet replikálási állapota**elemre.
+   - Ha ez kritikus fontosságú, kattintson a jobb gombbal a virtuális gépre > **replikáció** > a **replikálás állapotának megtekintése**elemre.
    - Ha a replikálás szüneteltetve van, kattintson a **replikáció folytatása**gombra.
 3. Győződjön meg arról, hogy a szükséges szolgáltatások futnak. Ha nem, indítsa újra őket.
     - Ha VMM nélkül replikálja a Hyper-V-t, ellenőrizze, hogy a szolgáltatások futnak-e a Hyper-V-gazdagépen:
@@ -64,7 +64,7 @@ A hálózati sávszélesség korlátozásai befolyásolhatják a replikálást. 
 1. [Ellenőrizze](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage) , hogy vannak-e sávszélesség-vagy szabályozási korlátozások a környezetben.
 2. Futtassa a [Deployment Planner Profilert](hyper-v-deployment-planner-run.md).
 3. A Profiler futtatása után kövesse a [sávszélességgel](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) és a [tárolással](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) kapcsolatos javaslatokat.
-4. [Az](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)adatváltozások korlátozásának ellenõrzése. Ha magas adatváltozást tapasztal egy virtuális gépen, tegye a következőket:
+4. Az adatváltozások [korlátozásának](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)ellenõrzése. Ha magas adatváltozást tapasztal egy virtuális gépen, tegye a következőket:
    - Ellenőrizze, hogy a virtuális gép meg van-e jelölve újraszinkronizálásra.
    - A forgalom forrásának vizsgálatához kövesse az [alábbi lépéseket](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) .
    - A forgalom akkor fordulhat elő, ha a HRL-naplófájlok mérete meghaladja a rendelkezésre álló lemezterület 50%-át. Ha ez a probléma, több tárolóhelyet kell kiépíteni minden olyan virtuális géphez, amelyen a probléma bekövetkezik.
@@ -75,12 +75,12 @@ A hálózati sávszélesség korlátozásai befolyásolhatják a replikálást. 
 
 1. A replikálás állapotának ellenőrzéséhez kapcsolódjon a helyszíni Hyper-V Manager-konzolhoz, válassza ki a virtuális gépet, és ellenőrizze az állapotot.
 
-    ![Replikáció állapota](media/hyper-v-azure-troubleshoot/replication-health1.png)
+    ![Replikálás állapota](media/hyper-v-azure-troubleshoot/replication-health1.png)
     
 
 2. A részletek megtekintéséhez kattintson a **replikációs állapot megtekintése** elemre:
 
-    - Ha a replikálás szüneteltetve van, kattintson a jobb gombbal a > virtuális gépre, > a replikálás**folytatását**.
+    - Ha a replikálás szüneteltetve van, kattintson a jobb gombbal a virtuális gépre **, > a replikálás > ** **folytassa a replikálást**.
     - Ha egy Site Recoveryban konfigurált Hyper-V-gazdagépen lévő virtuális gép egy másik Hyper-V-gazdagépre, vagy egy önálló gépre kerül át, a virtuális gép replikálását nem érinti. Csak győződjön meg róla, hogy az új Hyper-V-gazdagép megfelel az összes előfeltételnek, és Site Recovery van konfigurálva.
 
 ## <a name="app-consistent-snapshot-issues"></a>Alkalmazás-konzisztens pillanatképekkel kapcsolatos problémák
@@ -107,12 +107,12 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
     ![Dinamikus lemez](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Győződjön meg arról, hogy nincs iSCSI-lemez csatlakoztatva a virtuális géphez. Ez a funkció nem támogatott.
-5. Győződjön meg arról, hogy a biztonsági mentési szolgáltatás engedélyezve van. Ellenőrizze, hogy engedélyezve van-e a **Hyper-V beállítások** > **integrációs szolgáltatásaiban**.
+5. Győződjön meg arról, hogy a biztonsági mentési szolgáltatás engedélyezve van. Ellenőrizze, hogy az engedélyezve van-e a **Hyper-V-beállításokban** > **Integration Services szolgáltatásban**.
 6. Győződjön meg arról, hogy a VSS-pillanatképeket tartalmazó alkalmazások nem ütköznek. Ha egyszerre több alkalmazás is próbálkozik a VSS-Pillanatképek elvégzésével, az ütközések előfordulhatnak. Ha például egy biztonságimásolat-készítő alkalmazás VSS-pillanatképeket készít, amikor a replikációs házirend Site Recovery ütemezi a pillanatkép készítését.   
 7. Ellenőrizze, hogy a virtuális gép magas adatváltozási arányt tapasztal-e:
     - A vendég virtuális gépek napi adatváltozási arányának mérésére a Hyper-V-gazdagépen lévő teljesítményszámlálók használatával van lehetőség. Az adatváltozások arányának méréséhez engedélyezze a következő számlálót. Az érték mintájának összesítése a virtuálisgép-lemezeken 5-15 percen át, a virtuális gép forgalmának beszerzése érdekében.
-        - Kategória "Hyper-V virtuális tárolóeszköz"
-        - Számláló "Írási sebesség (bájt/s)"</br>
+        - Kategória: "Hyper-V virtuális tárolóeszköz"
+        - Számláló: "írási sebesség (bájt/mp)"</br>
         - Ez az adatváltozási arány magas szinten növekszik vagy marad, attól függően, hogy milyen elfoglalt a virtuális gép vagy alkalmazásai.
         - Az átlagos forrás lemez adatváltozása 2 MB/s a standard szintű tároláshoz a Site Recovery számára. [További információ](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Emellett [ellenőrizheti a tárolási skálázhatósági célokat](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)is.
@@ -123,34 +123,34 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS-hiba a Hyper-V-gazdagépen belül
 
 1. Tekintse meg a VSS-hibák és-javaslatok eseménynaplóit:
-    - A Hyper-v-gazdagépen nyissa meg a Hyper-v rendszergazdai eseménynaplóját **Eseménynapló** > **alkalmazások és szolgáltatások naplók** > **Microsoft** > **Windows** > **Hyper-v**  >  **Rendszergazda**.
+    - A Hyper-V gazdagép-kiszolgálón nyissa meg a Hyper-V rendszergazdai eseménynaplóját **Eseménynapló** > **alkalmazások és szolgáltatások naplóiban** > **Microsoft** > **Windows** > **Hyper-v > -** **rendszergazda**.
     - Ellenőrizze, hogy vannak-e olyan események, amelyek az alkalmazással konzisztens pillanatkép-hibákat jeleznek.
-    - Egy tipikus hiba: "A Hyper-V nem tudta létrehozni a VSS pillanatkép-készletet a (z)" XYZ "virtuális géphez: Az író nem átmeneti hibát észlelt. A VSS szolgáltatás újraindítása megoldhatja a problémákat, ha a szolgáltatás nem válaszol. "
+    - Tipikus hiba: "a Hyper-V nem tudta létrehozni a VSS pillanatkép-készletet a (z)" XYZ "virtuális géphez: az író nem átmeneti hibát észlelt. A VSS szolgáltatás újraindítása megoldhatja a problémákat, ha a szolgáltatás nem válaszol. "
 
 2. Ha VSS-pillanatképeket szeretne létrehozni a virtuális géphez, győződjön meg arról, hogy a Hyper-V integrációs szolgáltatások telepítve vannak a virtuális gépen, és hogy a biztonsági mentési (VSS) integrációs szolgáltatás engedélyezve van.
     - Győződjön meg arról, hogy az Integration Services VSS szolgáltatás/démonok futnak a vendégen, és **OK** állapotban vannak.
-    - Ezt a Hyper-V-gazdagépen egy emelt szintű PowerShell-munkamenetből is megtekintheti a **Get\<-VMIntegrationService-VMName VMName >-name VSS** paranccsal. ezt az információt a vendég virtuális gépre való bejelentkezéssel is beszerezheti. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Ezt a Hyper-V-gazdagépen egy emelt szintű PowerShell-munkamenetből tekintheti meg a **Get-VMIntegrationService-VMName\<VMName >-name VSS** használatával, ha bejelentkezik a vendég virtuális gépre. [Részletek](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Győződjön meg arról, hogy a virtuális gépen a biztonsági mentési/VSS-integrációs szolgáltatások futnak és kifogástalan állapotban vannak. Ha nem, indítsa újra ezeket a szolgáltatásokat és a Hyper-v Kötet árnyékmásolata kérelmező szolgáltatást a Hyper-V-gazdagép kiszolgálóján.
 
 ### <a name="common-errors"></a>Gyakori hibák
 
 **Hibakód:** | **Üzenetet** | **Részletek**
 --- | --- | ---
-**0x800700EA** | "A Hyper-V nem tudta létrehozni a VSS pillanatkép-készletet a virtuális géphez: További információ érhető el. (0x800700EA). A VSS-pillanatkép-készlet létrehozása sikertelen lehet, ha a biztonsági mentési művelet folyamatban van.<br/><br/> Sikertelen volt a virtuális gép replikációs művelete: További információ érhető el. " | Ellenőrizze, hogy a virtuális gépen engedélyezve van-e a dinamikus lemez. Ez a funkció nem támogatott.
+**0x800700EA** | "A Hyper-V nem tudta létrehozni a VSS pillanatkép-készletet a virtuális géphez: további adatok érhetők el. (0x800700EA). A VSS-pillanatkép-készlet létrehozása sikertelen lehet, ha a biztonsági mentési művelet folyamatban van.<br/><br/> A virtuális gép replikálási művelete sikertelen volt: További információ érhető el. " | Ellenőrizze, hogy a virtuális gépen engedélyezve van-e a dinamikus lemez. Ez a funkció nem támogatott.
 **0x80070032** | "A Hyper-V Kötet árnyékmásolata kérelmező nem tudott kapcsolódni a (z) <./VMname > virtuális géphez, mert a verzió nem egyezik a Hyper-V által várt verzióval | Ellenőrizze, hogy telepítve vannak-e a legújabb Windows-frissítések.<br/><br/> [Frissítsen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) az integrációs szolgáltatások legújabb verziójára.
 
 
 
 ## <a name="collect-replication-logs"></a>Replikációs naplók gyűjtése
 
-A rendszer minden Hyper-V replikációs eseményt naplóz a Hyper-V-VMMS\Admin-naplóban, amely az **alkalmazások és szolgáltatások naplóban** > található a**Microsoft** > **Windowsban**. Emellett engedélyezheti a Hyper-V Virtuálisgép-kezelő szolgáltatás analitikus naplóját is, az alábbiak szerint:
+A rendszer minden Hyper-V replikációs eseményt naplóz a Hyper-V-VMMS\Admin naplóban, amely az **alkalmazások és szolgáltatások naplóiban** > **Microsoft** > **Windows rendszerben**. Emellett engedélyezheti a Hyper-V Virtuálisgép-kezelő szolgáltatás analitikus naplóját is, az alábbiak szerint:
 
-1. Az elemzési és hibakeresési naplók megtekinthetők legyenek a Eseménynaplóban. A naplók elérhetővé tételéhez kattintson a Eseménynapló az**elemzési és hibakeresési naplók megjelenítése**elemre. >  Az analitikai napló a **Hyper-V-vmms**alatt jelenik meg.
+1. Az elemzési és hibakeresési naplók megtekinthetők legyenek a Eseménynaplóban. A naplók elérhetővé tételéhez kattintson a Eseménynapló > a **Megtekintés** **elemzési és hibakeresési naplók megjelenítése**lehetőségre. Az analitikai napló a **Hyper-V-vmms**alatt jelenik meg.
 2. A **műveletek** ablaktáblán kattintson a **napló engedélyezése**lehetőségre. 
 
     ![Napló engedélyezése](media/hyper-v-azure-troubleshoot/enable-log.png)
     
-3. Az engedélyezése után a Teljesítményfigyelőben az adatgyűjtő-csoportosítók esemény- **nyomkövetési** munkamenetejelenik meg. 
+3. Az engedélyezése után a **Teljesítményfigyelőben**az **Adatgyűjtő-csoportosítók**esemény- **nyomkövetési munkamenete** jelenik meg. 
 4. Az összegyűjtött adatok megtekintéséhez állítsa le a nyomkövetési munkamenetet a napló letiltásával. Ezután mentse a naplót, majd nyissa meg újra a Eseménynaplóban, vagy használjon más eszközöket, hogy szükség szerint alakítsa át.
 
 
@@ -159,9 +159,9 @@ A rendszer minden Hyper-V replikációs eseményt naplóz a Hyper-V-VMMS\Admin-n
 **Eseménynapló** | **Részletek** |
 --- | ---
 **Alkalmazások és szolgáltatások naplói/Microsoft/VirtualMachineManager/Server/admin** (VMM-kiszolgáló) | Naplók a VMM kapcsolatos problémák elhárításához.
-**Alkalmazások és szolgáltatások naplói/MicrosoftAzureRecoveryServices/replikációja** (Hyper-V-gazdagép) | Naplók Microsoft Azure Recovery Services ügynökkel kapcsolatos problémák elhárításához. 
+**Alkalmazások és szolgáltatások naplói/MicrosoftAzureRecoveryServices/Replication** (Hyper-V-gazdagép) | Naplók Microsoft Azure Recovery Services ügynökkel kapcsolatos problémák elhárításához. 
 **Alkalmazások és szolgáltatások naplói/Microsoft/Azure site Recovery/Provider/Operational** (Hyper-V-gazdagép)| A Microsoft Azure Site Recovery szolgáltatással kapcsolatos problémák elhárítására szolgáló naplók.
-**Alkalmazások és szolgáltatások naplói/Microsoft/Windows/Hyper-V-vmms/admin** (Hyper-V-gazdagép) | A Hyper-V virtuális gépek kezelésével kapcsolatos problémák elhárítására szolgáló naplók.
+**Alkalmazások és szolgáltatások naplói/Microsoft/Windows/Hyper-v-vmms/admin** (Hyper-v-gazdagép) | A Hyper-V virtuális gépek kezelésével kapcsolatos problémák elhárítására szolgáló naplók.
 
 ### <a name="log-collection-for-advanced-troubleshooting"></a>A speciális hibaelhárítási naplók gyűjteménye
 

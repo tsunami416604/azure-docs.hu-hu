@@ -8,23 +8,22 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: de2e33ceb182383d9529bfe41afffbbf28e1e493
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 40da2016026c8a7e02d1b243a783d01559e8c197
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671298"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005532"
 ---
-# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager
-Ez a cikk bemutatja az infrastruktúra áttelepítése egy szolgáltatás (IaaS) erőforrásokat a klasszikusból Resource Manager üzembe helyezési modellek és részleteivel kapcsolatban, a virtual network használatával az előfizetésében fennálló két üzemi modellekből származó erőforrások összekapcsolása helyek közötti átjárók. További információ [Azure Resource Manager-funkciók és előnyök](../articles/azure-resource-manager/resource-group-overview.md). 
+Ez a cikk bemutatja, hogyan telepíthet át szolgáltatásként (IaaS) elérhető erőforrásokat a Klasszikusról Resource Manager-alapú üzemi modellekre, és hogyan kapcsolódhat az előfizetésben található két üzembe helyezési modellből a virtuális hálózat használatával helyek közötti átjárók. További információ: [Azure Resource Manager funkciók és előnyök](../articles/azure-resource-manager/resource-group-overview.md). 
 
-## <a name="goal-for-migration"></a>Áttelepítés célja
-Resource Manager lehetővé teszi az összetett alkalmazások sablonok üzembe helyezése, konfigurálja a virtuális gépek Virtuálisgép-bővítmények használatával, és magában foglalja a hozzáférés-kezelés és a címkézést. Az Azure Resource Manager tartalmazza a méretezhető, párhuzamos üzembe helyezés virtuális gépek rendelkezésre állási csoportokba. Az új üzembe helyezési modellre is biztosít számítási, hálózati és storage, életciklus-felügyelet egymástól függetlenül. Végül pedig a fókusz a biztonság engedélyezése annak érdekében, a virtuális hálózatban lévő virtuális gépek alapértelmezés szerint.
+## <a name="goal-for-migration"></a>Cél az áttelepítéshez
+A Resource Manager lehetővé teszi összetett alkalmazások sablonokon keresztüli üzembe helyezését, a virtuális gépek virtuálisgép-bővítmények használatával történő konfigurálását, valamint a hozzáférés-kezelést és a címkézést. A Azure Resource Manager méretezhető, párhuzamos üzembe helyezést biztosít a virtuális gépek számára a rendelkezésre állási csoportokban. Az új üzembe helyezési modell a számítás, a hálózat és a tárolás életciklus-kezelését is biztosítja egymástól függetlenül. Végezetül a virtuális gépek virtuális gépei általi kényszerítésével a biztonsági beállítások alapértelmezés szerint is elérhetővé válik.
 
-A klasszikus üzemi modellből szinte minden szolgáltatás számítási, hálózati és tárolási Azure Resource Manager alatt támogatottak. Kihasználhatja az Azure Resource Manager új funkcióit, migrálja meglévő megoldásait a klasszikus üzemi modellből.
+A klasszikus üzemi modellből majdnem minden funkció támogatott a számítási, hálózati és tárolási Azure Resource Manager alatt. A Azure Resource Manager új képességeinek kihasználásához áttelepítheti a meglévő központi telepítéseket a klasszikus üzemi modellből.
 
-## <a name="supported-resources-for-migration"></a>Az áttelepítéshez támogatott erőforrások
-A klasszikus IaaS-erőforrások támogatottak az áttelepítés során
+## <a name="supported-resources-for-migration"></a>Az áttelepítéshez támogatott források
+A klasszikus IaaS-erőforrások az áttelepítés során támogatottak
 
 * Virtuális gépek
 * Rendelkezésre állási csoportok
@@ -32,103 +31,103 @@ A klasszikus IaaS-erőforrások támogatottak az áttelepítés során
 * Tárfiókok
 * Virtuális hálózatok
 * VPN-átjárók
-* Express Route-átjárók _(azonos előfizetésben található virtuális hálózat csak)_
+* Express Route Gateways _(ugyanabban az előfizetésben, mint Virtual Network csak)_
 * Network Security Groups (Hálózati biztonsági csoportok)
 * Útvonaltáblák
 * Fenntartott IP-címek
 
-## <a name="supported-scopes-of-migration"></a>Az áttelepítés támogatott hatókörök
-Számítási, hálózati és tárolási erőforrások áttelepítése a négy különböző módja van:
+## <a name="supported-scopes-of-migration"></a>Áttelepítési támogatott hatókörök
+A számítási, hálózati és tárolási erőforrások áttelepítésének négy különböző módja van:
 
-* [(Nem a virtuális hálózat) virtuális gépek migrálása](#migration-of-virtual-machines-not-in-a-virtual-network)
-* [(A virtuális hálózat) virtuális gépek migrálása](#migration-of-virtual-machines-in-a-virtual-network)
-* [A tárfiókok áttelepítése](#migration-of-storage-accounts)
-* [Nem csatolt erőforrások migrálása](#migration-of-unattached-resources)
+* [Virtuális gépek áttelepítése (nem virtuális hálózatban)](#migration-of-virtual-machines-not-in-a-virtual-network)
+* [Virtuális gépek áttelepítése (virtuális hálózatban)](#migration-of-virtual-machines-in-a-virtual-network)
+* [Storage-fiókok áttelepítése](#migration-of-storage-accounts)
+* [A nem csatolt erőforrások áttelepítése](#migration-of-unattached-resources)
 
-### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>(Nem a virtuális hálózat) virtuális gépek migrálása
-A Resource Manager-alapú üzemi modellben biztonsági alapértelmezés szerint kényszerítve alkalmazásai számára. Minden virtuális gépnek kell lennie egy virtuális hálózatot a Resource Manager-modellben. Az Azure-platform újraindul (`Stop`, `Deallocate`, és `Start`) a virtuális gépek a migrálás részeként. A virtuális hálózatok, amelyek a virtuális gépek migrálása két lehetősége van:
+### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>Virtuális gépek áttelepítése (nem virtuális hálózatban)
+A Resource Manager-alapú üzemi modellben alapértelmezés szerint az alkalmazások biztonsága érvénybe lép. Minden virtuális gépnek a Resource Manager-modellben lévő virtuális hálózatban kell lennie. Az Azure platform a Migrálás részeként újraindítja a virtuális gépeket (`Stop`, `Deallocate`és `Start`). Két lehetőség közül választhat a virtuális hálózatok számára, amelyeket a Virtual Machines áttelepíteni fog a következőre:
 
-* Hozzon létre egy új virtuális hálózatot, és migrálni a virtuális gépet az új virtuális hálózatot a platform kérhetnek.
-* Áttelepítheti a virtuális gép meglévő virtuális hálózatban a Resource Managerben.
+* Kérheti a platformot, hogy hozzon létre egy új virtuális hálózatot, és telepítse át a virtuális gépet az új virtuális hálózatba.
+* A virtuális gépet áttelepítheti egy meglévő virtuális hálózatba a Resource Managerben.
 
 > [!NOTE]
-> A migrálás hatókörben felügyeletisík műveletei, mind az adatsík műveletek nem lehet engedélyezni, adott időszakban az áttelepítés során.
+> Ebben az áttelepítési hatókörben a felügyeleti sík és az adatsík műveletek nem engedélyezettek az áttelepítés ideje alatt.
 >
 
-### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>(A virtuális hálózat) virtuális gépek migrálása
-A legtöbb Virtuálisgép-konfigurációk esetén csak a metaadatokat a klasszikus és Resource Manager üzemi modellek között végez áttelepítést. Az alapul szolgáló virtuális gépek ugyanazt a hardvert, ugyanazon a hálózaton, és ugyanazon a tárterületen futnak. Felügyeletisík műveletei nem lehet engedélyezni, egy bizonyos ideig az áttelepítés során. Azonban az adatsík továbbra is működik. Vagyis a virtuális gépek (klasszikus) felett futó alkalmazások nem jár többletköltséggel leállás az áttelepítés során.
+### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>Virtuális gépek áttelepítése (virtuális hálózatban)
+A legtöbb virtuálisgép-konfiguráció esetében a rendszer csak a metaadatokat telepíti át a klasszikus és a Resource Manager-alapú üzemi modellek között. A mögöttes virtuális gépek ugyanazon a hardveren, ugyanabban a hálózatban és ugyanazzal a tárolóval futnak. Előfordulhat, hogy a felügyeleti sík műveletei bizonyos ideig nem engedélyezettek az áttelepítés során. Az adatközpont azonban továbbra is működik. Vagyis a virtuális gépeken futó alkalmazások (klasszikus) nem járnak állásidővel az áttelepítés során.
 
-A következő konfigurációk jelenleg nem támogatottak. Támogatás bevezetése esetén a későbbiekben, az egyes virtuális gépeken Ez a konfiguráció vonatkozhatnak állásidő (keresse a stop, keresztül szabadítsa fel, és indítsa újra a virtuális gép műveletek).
+A következő konfigurációk jelenleg nem támogatottak. Ha a jövőben is támogatást adnak hozzá, a konfiguráció egyes virtuális gépei állásidőt okozhatnak (leállíthatja, felszabadíthatja és újraindíthatja a virtuális gépek műveleteit).
 
-* Az egyetlen felhőalapú szolgáltatás beállítása egynél több rendelkezésre állási rendelkezik.
-* Rendelkezik egy vagy több rendelkezésre állási csoportok és a virtuális gépek, amelyek nem rendelkezésre állási csoportba egy felhőszolgáltatásban.
+* Egynél több rendelkezésre állási csoporttal rendelkezik egyetlen felhőalapú szolgáltatásban.
+* Egy vagy több rendelkezésre állási csoporttal és virtuális géppel rendelkezik, amelyek egyetlen felhőalapú szolgáltatásban nem rendelkezésre állási csoportba tartoznak.
 
 > [!NOTE]
-> A migrálás hatókörben a felügyeleti sík nem lehet engedélyezni, adott időszakban az áttelepítés során. Az egyes konfigurációk adatsík állásidő következik be a korábban ismertetett módon.
+> Ebben az áttelepítési hatókörben előfordulhat, hogy a felügyeleti sík az áttelepítés során nem engedélyezett ideig. A korábban leírtaknak megfelelően a rendszer az adatsík állásidőt alkalmazza.
 >
 
-### <a name="migration-of-storage-accounts"></a>A tárfiókok áttelepítése
-Ahhoz, hogy problémamentes, üzembe helyezése Resource Manager virtuális gépek a klasszikus tárfiók. Ez a képesség számítási és hálózati erőforrásokat is, és a storage-fiókok függetlenül kell áttelepíteni. Miután az áttelepítés során a virtuális gépek és a virtuális hálózat szeretné áttelepíteni keresztül a storage-fiókok a migrálás befejezéséhez.
+### <a name="migration-of-storage-accounts"></a>Storage-fiókok áttelepítése
+A zökkenőmentes áttelepítés lehetővé tételéhez a Resource Manager-alapú virtuális gépeket egy klasszikus Storage-fiókban is üzembe helyezheti. Ezzel a képességgel a számítási és hálózati erőforrások a Storage-fiókoktól függetlenül telepíthetők és áttelepíthetők. Miután áttelepítette a Virtual Machines és Virtual Network, át kell telepítenie a Storage-fiókjait az áttelepítési folyamat befejezéséhez.
 
-A storage-fiók nem rendelkezik társított lemezek vagy a virtuális gépek adatai, és csak a blobok, fájlok, táblák és üzenetsorok rendelkezik majd a migrálás az Azure Resource Manager hajtható végre, egy önálló áttelepítés függőségek nélkül.
+Ha a Storage-fiók nem rendelkezik társított lemezzel vagy Virtual Machines adattal, és csak Blobokkal, fájlokkal, táblázatokkal és várólistákkal rendelkezik, akkor a rendszerbe Azure Resource Manager történő áttelepítés a függőségek nélküli önálló áttelepítésként is elvégezhető.
 
 > [!NOTE]
-> A Resource Manager üzemi modell nem rendelkezik a klasszikus lemezképek és lemezek fogalmát. Ha a tárfiók áttelepített, klasszikus lemezképek és lemezek nem láthatók a Resource Manager-készletben, de a mögöttes VHD-k a tárfiókban maradnak.
+> A Resource Manager-alapú üzemi modell nem rendelkezik a klasszikus rendszerképek és lemezek fogalmával. A Storage-fiók áttelepítésekor a klasszikus rendszerképek és lemezek nem láthatók a Resource Manager-veremben, de a háttérben működő virtuális merevlemezek megmaradnak a Storage-fiókban.
 
-Az alábbi képernyőfelvételnek megfelelően klasszikus tárfiók frissítése az Azure portal használatával egy Azure Resource Manager-tárfiókba megjelenítése:
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+A következő képernyőképek bemutatják, hogyan frissíthet egy klasszikus Storage-fiókot egy Azure Resource Manager Storage-fiókra Azure Portal használatával:
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a tárfiókot.
-3. Az a **beállítások** területén kattintson **ARM átállás**.
-4. Kattintson a **ellenőrzése** migrálási megvalósíthatósági meghatározásához.
-5. Ha az ellenőrzés eredménye, kattintson a **előkészítése** áttelepített tárfiók létrehozásához.
-6. Típus **Igen** a migrálás jóváhagyásához, és kattintson az **véglegesítése** az áttelepítés befejezéséhez.
+3. A **Beállítások** szakaszban kattintson az **áttelepítés az ARM**-be elemre.
+4. Az áttelepítés megvalósíthatóságának meghatározásához kattintson az **Érvényesítés** elemre.
+5. Ha érvényesítést végez, kattintson az **előkészítés** elemre az áttelepített Storage-fiók létrehozásához.
+6. Írja be az **Igen** értéket az áttelepítés megerősítéséhez, majd kattintson a **véglegesítés** gombra az áttelepítés befejezéséhez.
 
-    ![Storage-fiók érvényesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    ![Storage-fiók ellenőrzése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
-    ![Készítse elő a Storage-fiók](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    ![Storage-fiók előkészítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
     
-    ![Tárfiók Migrálásához véglegesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
+    ![A Storage-fiók áttelepítésének véglegesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
-### <a name="migration-of-unattached-resources"></a>Nem csatolt erőforrások migrálása
-Nincs társított lemezek vagy a virtuális gépek adatainak a Storage-fiókok egymástól függetlenül is telepíthető át.
+### <a name="migration-of-unattached-resources"></a>A nem csatolt erőforrások áttelepítése
+A társított lemezzel nem rendelkező és Virtual Machines adatmennyiségű tárolási fiókok egymástól függetlenül telepíthetők át.
 
-Hálózati biztonsági csoportok, útválasztási táblázatokat és a fenntartott IP-címek a virtuális gépek és virtuális hálózatok nem csatolt is áttelepíthetők egymástól függetlenül.
+A hálózati biztonsági csoportok, az útválasztási táblák & a fenntartott IP-címek, amelyek nincsenek csatolva a Virtual Machineshoz és a virtuális hálózatokhoz, egymástól függetlenül is áttelepíthetők.
 
 <br>
 
 ## <a name="unsupported-features-and-configurations"></a>Nem támogatott funkciók és konfigurációk
-Egyes szolgáltatások és a konfiguráció jelenleg nem támogatott; a következő szakaszok ismertetik az ajánlásokat közöttük.
+Bizonyos funkciók és konfigurációk jelenleg nem támogatottak; a következő szakaszok ismertetik a rájuk vonatkozó javaslatokat.
 
 ### <a name="unsupported-features"></a>Nem támogatott funkciók
-A következő funkciók jelenleg nem támogatottak. Szükség esetén távolítsa el ezeket a beállításokat, a virtuális gépek migrálása, és majd engedélyezze újra a beállításokat a Resource Manager-alapú üzemi modellben.
+A következő funkciók jelenleg nem támogatottak. Szükség esetén eltávolíthatja ezeket a beállításokat, áttelepítheti a virtuális gépeket, majd újból engedélyezheti a beállításokat a Resource Manager-alapú üzemi modellben.
 
 | Erőforrás-szolgáltató | Funkció | Ajánlás |
 | --- | --- | --- |
-| Compute | Társítatlan virtuálisgép-lemezeket. | Mögött ezek a lemezek Virtuálismerevlemez-blobokat fog települnek, ha telepít át a Storage-fiók |
-| Compute | Virtuálisgép-lemezképeket. | Mögött ezek a lemezek Virtuálismerevlemez-blobokat fog települnek, ha telepít át a Storage-fiók |
-| Network (Hálózat) | Végponti ACL-ek. | Végponti ACL-ek távolítsa el, és próbálkozzon újra a migrálással. |
-| Network (Hálózat) | Application Gateway | Távolítsa el az Application Gateway áttelepítés megkezdése előtt, és ezután hozza létre újból az Application Gateway migrálás befejeződése után. |
-| Network (Hálózat) | Virtuális hálózatok közötti Társviszony útján. | Virtuális hálózat migrálása a Resource Manager, majd társviszonyt. Tudjon meg többet [virtuális hálózatok közötti Társviszony](../articles/virtual-network/virtual-network-peering-overview.md). |
+| Számítás | Nem társított virtuálisgép-lemezek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
+| Számítás | Virtuálisgép-lemezképek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
+| Network (Hálózat) | Végponti ACL-ek. | Távolítsa el a végponti ACL-eket, és próbálkozzon újra |
+| Network (Hálózat) | Application Gateway | A Migrálás megkezdése előtt távolítsa el a Application Gateway, majd hozza létre újra a Application Gateway az áttelepítés befejeződése után. |
+| Network (Hálózat) | VNet-társítást használó virtuális hálózatok. | Virtual Network migrálása a Resource Managerbe, majd a társ. További információ a [VNet](../articles/virtual-network/virtual-network-peering-overview.md)-kezelésről. |
 
 ### <a name="unsupported-configurations"></a>Nem támogatott konfigurációk
 A következő konfigurációk jelenleg nem támogatottak.
 
 | Szolgáltatás | Konfiguráció | Ajánlás |
 | --- | --- | --- |
-| Resource Manager |Szerepköralapú hozzáférés-vezérlés (RBAC) a klasszikus erőforrások |Mivel URI-ját az erőforrásokat az áttelepítés után módosult, javasoljuk, hogy az RBAC szabályzatok történjen a migrálás után szükséges frissítését tervezi. |
-| Compute |Több alhálózattal társított virtuális gép |Frissítse az alhálózati konfigurációt való hivatkozáshoz csak egy alhálózat. Ez előfordulhat, hogy távolítsa el a másodlagos hálózati adapter (amely egy másik alhálózatra hivatkozik) a virtuális gépről, és csatlakoztassa újra a migrálás befejezése után. |
-| Compute |Virtuális gépek, virtuális hálózathoz tartozó, de még nincs hozzárendelve egy explicit alhálózat |Szükség esetén törölheti a virtuális Gépet. |
-| Compute |Riasztások, szabályzatok automatikus skálázási rendelkező virtuális gépek |Az áttelepítés halad végig, és ezeket a beállításokat a rendszer elveti. Azt javasoljuk, hogy a környezet kiértékelése, az áttelepítés előtt. Újrakonfigurálhatja azt is megteheti, a riasztási beállítások az áttelepítés befejezése után. |
-| Compute |XML-Virtuálisgép-bővítmények (BGInfo 1.*, Visual Studio hibakereső funkcióját, a Web Deploy és távoli hibakeresés) |Ez nem támogatott. Javasoljuk, hogy ezek a bővítmények a virtuális gépről a migrálás folytatásához távolítsa el, vagy azok dobja el a rendszer automatikusan az áttelepítési folyamat során. |
-| Compute |A Premium storage a rendszerindítási diagnosztika |Migrálás folytatása előtt tiltsa le a virtuális gépek rendszerindítási diagnosztikai funkciót. A migrálás befejezése után újra engedélyezheti a rendszerindítási diagnosztika a Resource Manager veremben. Ezenkívül képernyőkép és a soros naplók használt blobot törölni kell a így már nem kell azokat a blobokat. |
-| Compute | A cloud services webes és feldolgozói szerepköröket tartalmazó | Ez jelenleg nem támogatott. |
-| Compute | Egynél több rendelkezésre állási tartalmazó felhőszolgáltatások állítsa be, vagy több rendelkezésre állási csoportokat. |Ez jelenleg nem támogatott. Helyezze át a virtuális gépek ugyanazon rendelkezésre állási csoportjának való migrálás előtt. |
-| Compute | Virtuális gép az Azure Security Center-bővítménnyel | Az Azure Security Center automatikusan telepíti a bővítményeket, a virtuális gépeken a biztonsági állapotuk figyelését, és riasztást. Ezekről a kiterjesztésekről általában települjenek automatikusan, ha az Azure Security Center házirend engedélyezve van az előfizetésben. A virtuális gépek áttelepítését, tiltsa le a security center szabályzatával, ezzel a művelettel eltávolítja a bővítményt a virtuális gépek figyelése a Security Center az előfizetésben. |
-| Compute | Virtuális gép biztonsági mentési vagy a pillanatkép-bővítménnyel | Ezek a bővítmények telepítve az Azure Backup szolgáltatással konfigurált virtuális gépen. Ezek a virtuális gépek áttelepítése nem támogatott, az útmutatót követve [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) való migrálás előtt végrehajtott biztonsági mentések megtartása.  |
-| Network (Hálózat) |Virtuális hálózatok, amelyek tartalmazzák a virtuális gépek és a webes/feldolgozói szerepkörök |Ez jelenleg nem támogatott. Helyezze át a webes/feldolgozói szerepkörök a saját virtuális hálózaton való migrálás előtt. A klasszikus virtuális hálózat telepít át, miután a migrált Azure Resource Managerbeli virtuális hálózat társviszonyba állíthatók elérése érdekében a hasonló konfigurációjú mint korábban a klasszikus virtuális hálózattal.|
-| Network (Hálózat) | Klasszikus Expressroute-Kapcsolatcsoportok |Ez jelenleg nem támogatott. A Kapcsolatcsoportok kell áttelepíteni az Azure Resource Manager IaaS-migrálás megkezdése előtt. További tudnivalókért lásd: [áthelyezése ExpressRoute-Kapcsolatcsoportok a klasszikusból a Resource Manager-alapú üzemi modellbe](../articles/expressroute/expressroute-move.md).|
-| Azure App Service |Virtuális hálózatok, amelyek tartalmazzák az App Service Environment-környezetek |Ez jelenleg nem támogatott. |
-| Azure HDInsight |Virtuális hálózatok, amelyek tartalmazzák a HDInsight-szolgáltatások |Ez jelenleg nem támogatott. |
-| A Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services által felügyelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
-| Azure AD Domain Services |Virtuális hálózatok, amelyek tartalmazzák az Azure AD tartományi szolgáltatások |Ez jelenleg nem támogatott. |
-| Azure API Management |Virtuális hálózatok, amelyek tartalmazzák az Azure API Management-telepítések |Ez jelenleg nem támogatott. Az IaaS virtuális hálózat migrálása, módosítsa a virtuális hálózat, az API Management központi telepítését, amely nincs állásidő művelet. |
+| Resource Manager |Szerepköralapú Access Control (RBAC) klasszikus erőforrásokhoz |Mivel az erőforrások URI-ja módosul az áttelepítés után, azt javasoljuk, hogy tervezze meg azokat a RBAC-házirend-frissítéseket, amelyekre az áttelepítés után szükség van. |
+| Számítás |Egy virtuális géppel társított több alhálózat |Az alhálózat konfigurációjának frissítése, hogy csak egy alhálózatra hivatkozzon. Ehhez a virtuális gépről el kell távolítania egy másodlagos hálózati ADAPTERt (amely egy másik alhálózatra hivatkozik), és az áttelepítés befejeződése után újra csatlakoztatni kell. |
+| Számítás |Virtuális hálózathoz tartozó virtuális gépek, de nincs hozzárendelve explicit alhálózat |Lehetősége van törölni a virtuális gépet. |
+| Számítás |Riasztásokkal rendelkező virtuális gépek, autoskálázási szabályzatok |Az áttelepítés áthalad, és ezek a beállítások el lesznek dobva. Javasoljuk, hogy az áttelepítés megkezdése előtt értékelje ki a környezetét. Azt is megteheti, hogy újrakonfigurálja a riasztási beállításokat az áttelepítés befejeződése után. |
+| Számítás |XML virtuálisgép-bővítmények (BGInfo 1. *, Visual Studio Debugger, web Deploy és távoli hibakeresés) |Ez nem támogatott. Javasoljuk, hogy távolítsa el ezeket a bővítményeket a virtuális gépről a Migrálás folytatásához, vagy az áttelepítési folyamat során a rendszer automatikusan eldobja azokat. |
+| Számítás |Rendszerindítási diagnosztika Premium Storage szolgáltatással |A Migrálás folytatása előtt tiltsa le a virtuális gépek rendszerindítási diagnosztikai funkcióját. Az áttelepítés befejezése után újra engedélyezheti a rendszerindítási diagnosztikát a Resource Manager-veremben. Emellett a képernyőfelvételekhez és a soros naplókhoz használt blobokat is törölni kell, így a Blobok után már nem számítunk fel díjat. |
+| Számítás | Webes/feldolgozói szerepköröket tartalmazó felhőalapú szolgáltatások | Ez jelenleg nem támogatott. |
+| Számítás | Több rendelkezésre állási csoportot vagy több rendelkezésre állási készletet tartalmazó Cloud Services. |Ez jelenleg nem támogatott. A Migrálás előtt helyezze át a Virtual Machinest ugyanarra a rendelkezésre állási csoportba. |
+| Számítás | Virtuális gép Azure Security Center bővítménnyel | A Azure Security Center automatikusan telepíti a bővítményeket a Virtual Machines a biztonsági és riasztási riasztások figyelésére. Ezek a bővítmények általában automatikusan települnek, ha a Azure Security Center szabályzat engedélyezve van az előfizetésben. A Virtual Machines áttelepítése érdekében tiltsa le az előfizetéshez tartozó Security Center-szabályzatot, amely eltávolítja a Virtual Machines Security Center figyelési bővítményét. |
+| Számítás | Virtuális gép biztonsági mentési vagy pillanatkép-bővítménnyel | Ezek a bővítmények a Azure Backup szolgáltatással konfigurált virtuális gépre vannak telepítve. A virtuális gépek áttelepítése nem támogatott, az [itt](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) található útmutatást követve megőrizheti a Migrálás előtt végrehajtott biztonsági mentéseket.  |
+| Network (Hálózat) |Virtuális gépeket és webes/feldolgozói szerepköröket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. Migrálás előtt helyezze át a webes/feldolgozói szerepköröket a saját Virtual Networkba. A klasszikus Virtual Network áttelepítését követően az áttelepített Azure Resource Manager Virtual Network a klasszikus Virtual Networkkal is összehívhatók, hogy hasonló konfigurációt érjenek el, mint korábban.|
+| Network (Hálózat) | Klasszikus expressz Route-áramkörök |Ez jelenleg nem támogatott. A IaaS áttelepítés megkezdése előtt át kell telepíteni ezeket az áramköröket Azure Resource Manager. További információ: [ExpressRoute-áramkörök áthelyezése a Klasszikusból a Resource Manager](../articles/expressroute/expressroute-move.md)-alapú üzemi modellbe.|
+| Azure App Service |App Service környezeteket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
+| Azure HDInsight |HDInsight szolgáltatásokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
+| Microsoft Dynamics Lifecycle Services |A Dynamics Lifecycle Services által felügyelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
+| Azure AD Domain Services |Azure AD tartományi szolgáltatásokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
+| Azure API Management |Azure API Management üzemelő példányokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. A IaaS-VNET áttelepítéséhez módosítsa az API Management üzemelő példány VNET, amely nem leállási művelet. |
