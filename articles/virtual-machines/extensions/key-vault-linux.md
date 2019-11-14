@@ -1,5 +1,5 @@
 ---
-title: Virtuálisgép-bővítmények Azure Key Vault Linuxra | Microsoft Docs
+title: A Linux rendszerhez készült virtuálisgép-bővítmény Azure Key Vault
 description: Telepítsen egy ügynököt, amely a virtuális gépek Key Vault tanúsítványainak automatikus frissítését végzi a virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2de8a072aec66c2c087541ed9620f3dbdc137ee9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584384"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073004"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -64,25 +64,25 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 > Ennek az az oka, hogy a `/secrets` útvonal a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg a `/certificates` útvonal nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
-### <a name="property-values"></a>Tulajdonságértékek
+### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
-| Publisher | Microsoft. Azure. kulcstartó. EDP | sztring |
+| publisher | Microsoft. Azure. kulcstartó. EDP | sztring |
 | type | KeyVaultForLinux | sztring |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | MY | sztring |
-| linkOnRenewal | hamis | logikai |
+| linkOnRenewal | false | logikai |
 | certificateStoreLocation  | LocalMachine | sztring |
-| requiredInitialSync | igaz | logikai |
+| requiredInitialSync | true | logikai |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a tanúsítványok telepítés utáni frissítését igénylik. A bővítmény az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra is telepíthető. A séma és a konfiguráció a sablonok típusainál is gyakori. 
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a tanúsítványok telepítés utáni frissítését igénylik. A bővítmény az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra is telepíthető. A séma és a konfiguráció a sablonok típusainál is gyakori. 
 
 A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-erőforrás szilánkján belül kell beágyazni, különösen `"resources": []` objektumot a virtuálisgép-sablonhoz, és a `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` objektum alatti virtuálisgép-méretezési csoport esetén.
 
@@ -158,7 +158,7 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
     
     ```
 
-## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
+## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
 Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítményt egy meglévő virtuális gépre vagy virtuálisgép-méretezési csoportba. 
  
@@ -190,7 +190,7 @@ Vegye figyelembe a következő korlátozásokat/követelményeket:
     - Key Vault hozzáférési szabályzat a VM/VMSS identitáshoz van beállítva az MSI használatával
 
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -208,4 +208,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

@@ -5,7 +5,7 @@ metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 'A Bing Image Search API dokumentációja – oktatóanyagok, gyorsútmutatók és API-referenciák'
   titleSuffix: Azure Cognitive Services
-  description: 'Megismerheti, hogyan kereshet az interneten képeket a Bing Image Search API használatával.'
+  description: A Bing Image Search API segítségével integrálhatja a Bing képkeresési képességeit az alkalmazásaiba.
   services: cognitive-services
   author: nitinme
   manager: nitinme

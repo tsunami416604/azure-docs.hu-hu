@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 85d6b9e00798926bee2d5050767ba47512fc9e86
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012821"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074114"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -460,7 +460,7 @@ $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ````
 
-Az ad hoc Backup parancs a nyomon követett feladatot adja vissza.
+Az igény szerinti biztonsági mentési parancs a nyomon követett feladatot adja vissza.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -541,13 +541,13 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Fontos megjegyezni, hogy Azure Backup csak a felhasználó által aktivált feladatokat követi nyomon az SQL Backup szolgáltatásban. Az ütemezett biztonsági mentések (beleértve a naplók biztonsági mentését) nem láthatók a portálon/PowerShellben. Ha azonban bármelyik ütemezett feladat meghiúsul, [biztonsági mentési riasztás](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jön létre, és megjelenik a portálon. A [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md) nyomon követheti az összes ütemezett feladatot és egyéb releváns információt.
 
-A felhasználók nyomon követhetik az alkalmi/felhasználó által aktivált műveleteket az aszinkron feladatok (például biztonsági mentés) [kimenetében](#on-demand-backup) visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS parancsmag használatával nyomon követheti a feladatot és annak részleteit.
+A felhasználók nyomon követhetik az igény szerinti vagy felhasználó által aktivált műveleteket az aszinkron feladatok, például a biztonsági másolat [kimenetében](#on-demand-backup) visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS parancsmag használatával nyomon követheti a feladatot és annak részleteit.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ````
 
-A [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS parancsmaggal lekérdezheti az ad hoc feladatok listáját és azok állapotát a Azure Backup szolgáltatásból. A következő példa az összes folyamatban lévő SQL-feladatot adja vissza.
+Az igény szerinti feladatok és a Azure Backup szolgáltatásból származó állapotok listájának lekéréséhez használja a [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS parancsmagot. A következő példa az összes folyamatban lévő SQL-feladatot adja vissza.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
@@ -570,4 +570,4 @@ Tegyük fel például, hogy egy SQL AG két csomóponttal rendelkezik: "SQL-Serv
 
 az SQL-Server-0, SQL-Server-1 az "AzureVMAppContainer" néven jelenik meg a [biztonsági mentési tárolók listáján](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Csak a megfelelő SQL-adatbázist olvassa be a [biztonsági mentés engedélyezéséhez](#configuring-backup) , és az ad [hoc biztonsági mentési](#on-demand-backup) és [visszaállítási PS-parancsmagok](#restore-sql-dbs) megegyeznek.
+A [biztonsági mentés engedélyezéséhez](#configuring-backup) és az [igény szerinti biztonsági mentési](#on-demand-backup) és [visszaállítási PS-parancsmagok](#restore-sql-dbs) megegyeznek a megfelelő SQL-adatbázis beolvasásával.

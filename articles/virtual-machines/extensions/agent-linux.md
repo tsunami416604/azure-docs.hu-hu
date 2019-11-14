@@ -1,5 +1,5 @@
 ---
-title: Az Azure Linux VM-ügynök áttekintése | Microsoft Docs
+title: Az Azure Linux VM-ügynök áttekintése
 description: Ismerje meg, hogyan telepítheti és konfigurálhatja a Linux-ügynököt (waagent) a virtuális gép Azure Fabric-vezérlővel való interakciójának kezeléséhez.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bc28c7454296f32dda09894ad3dca2f4fae99b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169161"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073851"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Az Azure Linux-ügynök megismerése és használata
 
@@ -48,7 +48,7 @@ A Microsoft Azure Linux-ügynök (waagent) kezeli a Linux & a FreeBSD kiépíté
   * Biztosítja a hálózati adapter nevének stabilitását
 * **Kernel**
   
-  * Virtuális NUMA konfigurálása (kernel <`2.6.37`letiltása)
+  * Virtuális NUMA konfigurálása (kernel <-`2.6.37`letiltása)
   * A Hyper-V entrópia használata a/dev/Random
   * SCSI-időtúllépések konfigurálása a gyökérszintű eszközhöz (amely távoli lehet)
 * **Diagnosztika**
@@ -60,7 +60,7 @@ A Microsoft Azure Linux-ügynök (waagent) kezeli a Linux & a FreeBSD kiépíté
 * **VM-bővítmény**
   
   * A Microsoft és partnerei által a szoftverek és a konfiguráció automatizálásának lehetővé tételéhez a Linux VM (IaaS) segítségével létrehozott összetevő behelyezése
-  * A virtuálisgép-bővítmény referenciájának megvalósítása[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Virtuálisgép-bővítmények implementációja [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Kommunikáció
 A platformról az ügynökre irányuló információáramlás két csatornán keresztül történik:
@@ -72,7 +72,7 @@ A platformról az ügynökre irányuló információáramlás két csatornán ke
 A következő rendszerek lettek tesztelve, és ismertek az Azure Linux-ügynökkel való együttműködésre:
 
 > [!NOTE]
-> Ez a lista eltérhet a Microsoft Azure platform támogatott rendszereinek hivatalos listájától, az itt leírtak szerint:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> A lista a Microsoft Azure platform támogatott rendszereinek hivatalos listájától eltérő lehet, az itt leírtak szerint: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -107,12 +107,12 @@ A speciális telepítési lehetőségekről, például a forrásról vagy az egy
 
 ## <a name="command-line-options"></a>Parancssori kapcsolók
 ### <a name="flags"></a>Jelölők
-* részletes A megadott parancs részletességének fokozása
-* hatályba Egyes parancsok interaktív megerősítésének kihagyása
+* részletes: a megadott parancs részletességének fokozása
+* kényszerített: az interaktív megerősítés kihagyása egyes parancsokhoz
 
 ### <a name="commands"></a>Parancsok
-* segítség: Felsorolja a támogatott parancsokat és jelzőket.
-* megszüntetése Próbálja meg a rendszer tisztítását, és tegye alkalmassá újra a kiépítéshez. A következő művelet törölhető:
+* Súgó: felsorolja a támogatott parancsokat és jelzőket.
+* megszüntetés: megkísérli a rendszer tisztítását, és alkalmassá tenni az újratelepítésre. A következő művelet törölhető:
   
   * Minden SSH-gazdagép kulcsa (ha a kiépítés. a RegenerateSshHostKeyPair a konfigurációs fájlban "y".
   * Névkiszolgáló-konfiguráció a/etc/resolv.conf-ben
@@ -125,11 +125,11 @@ A speciális telepítési lehetőségekről, például a forrásról vagy az egy
 > 
 > 
 
-* kiépítés + felhasználó: Végrehajtja az összes műveletet (fent), és törli az utolsó kiépített felhasználói fiókot (a/var/lib/waagent-ből) és a kapcsolódó adatokkal is. Ez a paraméter egy olyan rendszerkép kihelyezése, amely korábban az Azure-ban lett kiépítve, így rögzíthető és újra felhasználható.
-* Verziója Megjeleníti a waagent verzióját.
-* serialconsole: A GRUB beállítása a ttyS0 (az első soros port) megjelölésére a rendszerindító konzolként. Ez biztosítja, hogy a rendszer elküldje a kernel-rendszerindítási naplókat a soros portra, és elérhetővé teszi a hibakereséshez
-* démon Futtassa a waagent démonként a platformmal való interakció kezeléséhez. Ez az argumentum a waagent init parancsfájl waagent van megadva.
-* Start Waagent futtatása háttérbeli folyamatként
+* kiépítés + felhasználó: mindent végrehajt (fent), és törli az utolsó kiépített felhasználói fiókot (a/var/lib/waagent-ből) és a kapcsolódó adatokkal is. Ez a paraméter egy olyan rendszerkép kihelyezése, amely korábban az Azure-ban lett kiépítve, így rögzíthető és újra felhasználható.
+* verzió: a waagent verzióját jeleníti meg
+* serialconsole: a GRUB beállítása a ttyS0 (az első soros port) megjelölésére a rendszerindító konzolként. Ez biztosítja, hogy a rendszer elküldje a kernel-rendszerindítási naplókat a soros portra, és elérhetővé teszi a hibakereséshez
+* démon: futtassa a waagent démonként a platformmal való interakció kezeléséhez. Ez az argumentum a waagent init parancsfájl waagent van megadva.
+* indítás: waagent futtatása háttérbeli folyamatként
 
 ## <a name="configuration"></a>Konfiguráció
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. A következő példában egy minta konfigurációs fájl látható:
@@ -170,7 +170,7 @@ Default: y
 Ez lehetővé teszi, hogy a felhasználó engedélyezze vagy tiltsa le az ügynök kiépítési funkcióit. Az érvényes értékek: "y" vagy "n". Ha a kiépítés le van tiltva, a rendszer megőrzi az SSH-gazdagépet és a felhasználói kulcsokat a rendszerképben, és figyelmen kívül hagyja az Azure üzembe helyezési API-ban megadott konfigurációkat.
 
 > [!NOTE]
-> A `Provisioning.Enabled` paraméter alapértelmezés szerint "n" értékre van beállítva az Ubuntu Felhőbeli rendszerképeken, amelyek az üzembe helyezéshez a Cloud-init szolgáltatást használják.
+> A `Provisioning.Enabled` paraméter alapértelmezés szerint "n" értékre van beállítva a Cloud-init-t használó Ubuntu Cloud-lemezképeken a kiépítés során.
 > 
 > 
 
@@ -343,6 +343,6 @@ Az Ubuntu Cloud images a [Cloud-init](https://launchpad.net/ubuntu/+source/cloud
 
 * További információt a következő forrásokban talál az erőforrás-lemez csatlakoztatási pontjának konfigurálásához és az Ubuntu Felhőbeli rendszerképeken a kiépítés során felcserélt területről:
   
-  * [Ubuntu wiki: Swap-partíciók konfigurálása](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu wiki: swap-partíciók konfigurálása](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Egyéni adatbevitel egy Azure-beli virtuális gépre](../windows/classic/inject-custom-data.md)
 

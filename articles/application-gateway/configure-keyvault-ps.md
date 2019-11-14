@@ -1,18 +1,19 @@
 ---
-title: Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
+title: Az SSL-lezárás konfigurálása Key Vault-tanúsítványokkal – PowerShell
+titleSuffix: Azure Application Gateway
 description: Ismerje meg, hogyan integrálhatja az Azure Application Gatewayt a Key Vaultval a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: b7408d6169e1cf42bcda8855a19076c739d086dd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c40c4cf9f25ce17bc7042191324aeb864696995f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001006"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074587"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
 
@@ -22,7 +23,7 @@ További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-
 
 Ez a cikk bemutatja, hogyan használható egy Azure PowerShell-szkript a kulcstartó és az Application Gateway integrálásához az SSL-leállítási tanúsítványokhoz.
 
-Ehhez a cikkhez Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához a futtatásával `Connect-AzAccount`is létre kell hoznia egy, az Azure-nal való kapcsolódást.
+Ehhez a cikkhez Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához a `Connect-AzAccount`futtatásával is létre kell hoznia egy, az Azure-nal való kapcsolódást.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

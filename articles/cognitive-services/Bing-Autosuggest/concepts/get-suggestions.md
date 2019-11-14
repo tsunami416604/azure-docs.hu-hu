@@ -1,7 +1,7 @@
 ---
 title: Keresési kifejezések javaslata a Bing Autosuggest API
 titleSuffix: Azure Cognitive Services
-description: Útmutató a Bing Autosuggest API használatához.
+description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezési kifejezéseket a Bing Autosuggest API és a lekérdezési hosszra gyakorolni a relevancia alapján.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882447"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072893"
 ---
 # <a name="suggesting-query-terms"></a>Lekérdezési kifejezések javaslása
 
-Általában a Bing Autosuggest API minden alkalommal, amikor egy felhasználó új karaktert keres az alkalmazás keresési mezőjében. A lekérdezési sztring teljessége hatással van az API által visszaadott javasolt lekérdezési kifejezések relevanciájára. Minél teljesebb a lekérdezési sztring, annál relevánsabb lesz a javasolt lekérdezési kifejezések listája. Előfordulhat `s` például, hogy az API által visszaadott javaslatok valószínűleg kevésbé lesznek érvényesek, mint a által `sailing dinghies`visszaadott lekérdezések.
+Általában a Bing Autosuggest API minden alkalommal, amikor egy felhasználó új karaktert keres az alkalmazás keresési mezőjében. A lekérdezési sztring teljessége hatással van az API által visszaadott javasolt lekérdezési kifejezések relevanciájára. Minél teljesebb a lekérdezési sztring, annál relevánsabb lesz a javasolt lekérdezési kifejezések listája. Előfordulhat például, hogy az API által visszaadott javaslatok `s` valószínűleg kevésbé lesznek érvényesek, mint a `sailing dinghies`által visszaadott lekérdezések.
 
 ## <a name="example-request"></a>Példakérelem
 

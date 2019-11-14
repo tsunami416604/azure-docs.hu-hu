@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gép létrehozása és kezelése az Azure-ban a Python használatával | Microsoft Docs
+title: Windows rendszerű virtuális gép létrehozása és kezelése az Azure-ban a Python használatával
 description: Útmutató a Windows rendszerű virtuális gépek Azure-ban való létrehozásához és kezeléséhez a Python használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102478"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065601"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
@@ -40,11 +40,11 @@ Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
 2. A Visual Studio telepítése és elindítása után kattintson a **fájl** > **új** > **projekt**elemre.
-3. Kattintson a **sablonok** > **Python** > Python-**alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
+3. Kattintson a **sablonok** > **Python** > **Python alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
 
 ## <a name="install-packages"></a>Csomagok telepítése
 
-1. Megoldáskezelő a *myPythonProject*alatt kattintson a jobb gombbal a **Python**-környezetek elemre, majd válassza a **virtuális környezet hozzáadása**elemet.
+1. Megoldáskezelő a *myPythonProject*alatt kattintson a jobb gombbal a **Python-környezetek**elemre, majd válassza a **virtuális környezet hozzáadása**elemet.
 2. A virtuális környezet hozzáadása képernyőn fogadja el az *env*alapértelmezett nevét, győződjön meg arról, hogy a *Python 3,6 (64-bit)* van kiválasztva az alapértelmező számára, majd kattintson a **Létrehozás**gombra.
 3. Kattintson a jobb gombbal a létrehozott *env* -környezetre, kattintson a **Python-csomag telepítése**parancsra, írja be az *Azure* kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
 
@@ -439,7 +439,7 @@ Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását,
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Ha felszabadítani szeretné a virtuális gépet, módosítsa a power_off a következő kódra:
+    Ha felszabadítani szeretné a virtuális gépet, módosítsa a power_off hívást a következő kódra:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)
@@ -498,7 +498,7 @@ A központi telepítés számos aspektusát figyelembe kell venni a virtuális g
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális géphez
 
-A virtuális gépekhez egy vagy több [](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) VHD-ként tárolt adatlemez tartozhat.
+A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tartozhat.
 
 1. Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a függvényt a. a. file-fájl változói után: 
 
@@ -573,5 +573,5 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 ## <a name="next-steps"></a>További lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
-- További információ az [Azure Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python) -könyvtárról
+- További információ az [Azure Python-könyvtárról](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
 

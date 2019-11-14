@@ -1,5 +1,5 @@
 ---
-title: Azure virtuálisgép-bővítmények és-funkciók Linux rendszeren | Microsoft Docs
+title: Azure virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 description: Ismerje meg, hogy mely bővítmények érhetők el az Azure Virtual Machines szolgáltatásban, az általuk biztosított vagy a fejlesztésük szerint csoportosítva.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: f66ec2ea9d0c042b698db1725980e981a27a55d0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169012"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073752"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -85,7 +85,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt a futtatáshoz (https:\//RAW.githubusercontent.com/Me/Project/Hello.sh) a saját adataival. 
+Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a futtatni kívánt parancsfájlt (https:\//raw.githubusercontent.com/me/project/hello.sh) a saját adataival. 
 
 ```azurecli
 az vm extension set `
@@ -241,7 +241,7 @@ Ha az ügynök telepítve van, a rendszer egy szülő démont hoz létre. Ez a s
 
 A fölérendelt folyamat nem frissíthető automatikusan. A szülőt csak a disztribúciós csomag frissítésével lehet frissíteni.
 
-A futtatott verziót a `waagent` következőképpen tekintheti meg:
+Ha szeretné megtekinteni a futtatott verziót, a következőképpen tekintse meg a `waagent`:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Linux-ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a */var/log/waagent.log* -ben
 
-2. További részletek a *\</var/log/Azure/extensionName >*
+2. További részletekért olvassa el a */var/log/azure/\<extensionName >*
 
 3. A bővítményekre vonatkozó dokumentációs hibaelhárítási szakaszt a hibakódok, az ismert problémák stb. című szakaszban tekintheti meg.
 
@@ -403,7 +403,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
 ## <a name="common-vm-extension-reference"></a>Általános virtuálisgép-bővítmény leírása
 
-| Bővítmény neve | Leírás | További információ |
+| Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
 | Egyéni parancsfájl-kiterjesztés Linux rendszerhez |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-kiterjesztés Linux rendszerhez](custom-script-linux.md) |
 | Virtuálisgép-hozzáférési bővítmény |Azure-beli virtuális gép hozzáférésének visszanyerése |[Virtuálisgép-hozzáférési bővítmény](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

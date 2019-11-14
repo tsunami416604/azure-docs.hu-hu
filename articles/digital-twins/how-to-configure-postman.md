@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/13/2019
+ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014179"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072279"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -58,14 +58,9 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
 
     [![rendszergazdai jóváhagyás](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. Egy második **átirányítási URI** beállítása `https://www.getpostman.com/oauth2/callback`ra.
 
-1. Válassza a **jegyzékfájl** lehetőséget az alkalmazáshoz tartozó alkalmazási jegyzékfájl megnyitásához. A *oauth2AllowImplicitFlow* beállítása `true`ra.
-
-    [![Azure Active Directory implicit folyamat](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
-
-1. Adja meg a **Válasz URL-címét** `https://www.getpostman.com/oauth2/callback`ra.
-
-    [![Azure Active Directory válasz URL-címe](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [Post-átirányítási URI ![hozzáadása](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. Másolja és őrizze meg Azure Active Directory **alkalmazásának azonosítóját** . Ezt az alábbi lépések használják.
 
@@ -106,10 +101,6 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
     [![Poster-ügyfél – példa](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Válassza a **kérelem tokenje**elemet.
-
-    >[!TIP]
-    >Ha a "OAuth 2 nem sikerült befejezni" hibaüzenet jelenik meg, próbálja meg a következőket:
-    > * Zárjuk be a Poster-t, majd nyissa meg újra, és próbálkozzon újra.
   
 1. Görgessen le, és válassza a **token használata**lehetőséget.
 
@@ -117,13 +108,13 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
 
 Az előző lépések elvégzése után konfigurálja a Poster-t egy hitelesített HTTP többrészes POST-kérelem létrehozásához:
 
-1. A **fejléc** lapon adjon hozzá egy HTTP-kérelem fejléce kulcs **Content-Type** értéket `multipart/mixed`értékkel.
+1. A **headers (fejlécek** ) lapon adjon hozzá egy HTTP-kérelem fejléce kulcs **Content-Type** értéket `multipart/mixed`értékkel.
 
    [![tartalom típusa többrészes/kevert](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Nem szöveges adatfájlok szerializálása fájlokba. A JSON-fájlok JSON-fájlként lesznek mentve.
 1. A **törzs** lapon válassza a `form-data`lehetőséget. 
-1. Adja hozzá az egyes fájlokat egy **Kulcsnév** hozzárendelésével, majd válassza a `file`lehetőséget.
+1. Adja hozzá az egyes fájlokat egy **Kulcsnév** hozzárendelésével, majd válassza a `File`lehetőséget.
 1. Ezután válassza ki az egyes fájlokat a **Fájl választása** gombbal.
 
    [![Poster-ügyfél – példa](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,9 +124,9 @@ Az előző lépések elvégzése után konfigurálja a Poster-t egy hitelesítet
    > * Az egyes részekhez nem kell megadnia ezeket a fejléceket.
    > * Ki kell választania `multipart/mixed` vagy egy másik megfelelő **tartalomtípust** a teljes kérelemhez.
 
-1. Végül válassza a **Küldés** lehetőséget a többrészes http post-kérelem elküldéséhez.
+1. Végül válassza a **Küldés** lehetőséget a többrészes http post-kérelem elküldéséhez. `200` vagy `201` állapotkód sikeres kérést jelez. A megfelelő válaszüzenet is megjelenik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha többet szeretne megtudni a digitális Twins felügyeleti API-król és azok használatáról, olvassa el az [Azure digitális Twins felügyeleti API](how-to-navigate-apis.md)-k használatát ismertető témakört.
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Manager-sablonok
-description: Ismerteti, hogyan használhatók Azure Resource Manager sablonok az erőforrások telepítéséhez.
+title: Azure Resource Manager sablonok áttekintése
+description: A Azure Resource Manager-sablonok használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 956450e5a47e4d0e16de44b6bc72c6cb24d05889
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300152"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074387"
 ---
-# <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
+# <a name="azure-resource-manager-templates-overview"></a>Azure Resource Manager sablonok áttekintése
 
 A felhőbe való áttéréssel számos csapat agilis fejlesztési módszereket fogadott el. Ezek a csapatok gyorsan megismétlik. A megoldásoknak többször is üzembe kell helyezniük a felhőben, és tudniuk kell, hogy az infrastruktúra megbízható állapotban van. Mivel az infrastruktúra az iterációs folyamat részévé vált, a műveletek és a fejlesztés közötti felosztás eltűnt. A csapatoknak egységes folyamaton keresztül kell kezelniük az infrastruktúrát és az alkalmazás kódját.
 
@@ -123,7 +123,8 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](resource-group-linked-templates.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+* A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
 * További információ a sablonfájlok tulajdonságairól: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](resource-group-authoring-templates.md).
 * A sablonok exportálásával kapcsolatos tudnivalókat [a gyors útmutató: Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal segítségével](./resource-manager-quickstart-create-templates-use-the-portal.md)című témakörben talál.

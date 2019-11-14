@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása az Azure CLI használatával | Microsoft Docs
+title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása az Azure CLI használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Windows rendszerű virtuális gépet az Azure CLI használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3ad81091fa93993f71c6d65175e50f6ee216757
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088840"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073472"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Gyors útmutató: Windowsos virtuális gép létrehozása az Azure parancssori felülettel
+# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure CLI segítségével
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure CLI segítségével Windows Server 2016 rendszerű virtuális gépeket (VM-eket) az Azure-ban. A virtuális gép működésének ellenőrzéséhez ezután RDP-kapcsolaton keresztül csatlakozzon a géphez, és telepítse az IIS-webkiszolgálót.
 
@@ -44,10 +44,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa egy rendszergazdai felhasználónévhez tartozó azureuser-t használ. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa egy rendszergazdai felhasználónévhez tartozó *azureuser* -t használ. 
 
-Meg kell változtatnia a értékét `--admin-password` , vagy sikertelen lesz. Módosítsa olyan jelszóra, amely megfelel az [Azure-beli virtuális gépek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)jelszavára vonatkozó követelményeknek. A felhasználónevet és a jelszót később fogja használni a rendszer a virtuális géphez való csatlakozáskor.
+Meg kell változtatnia `--admin-password` értékét, vagy sikertelen lesz. Módosítsa olyan jelszóra, amely megfelel az [Azure-beli virtuális gépek jelszavára vonatkozó követelményeknek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). A felhasználónevet és a jelszót később fogja használni a rendszer a virtuális géphez való csatlakozáskor.
 
 ```azurecli-interactive
 az vm create \
@@ -91,7 +91,7 @@ Az alábbi parancs használatával hozzon létre egy távoli asztali munkamenete
 mstsc /v:publicIpAddress
 ```
 
-## <a name="install-web-server"></a>A webkiszolgáló telepítése
+## <a name="install-web-server"></a>Webkiszolgáló telepítése
 
 A virtuális gép működésének ellenőrzéséhez telepítse az IIS-webkiszolgálót. Nyisson meg egy PowerShell-parancssort a virtuális gépen, és futtassa a következő parancsot:
 
@@ -101,7 +101,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 Ha elkészült, zárja be a virtuális géphez nyitott RDP-kapcsolatot.
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
 
 Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Használja a virtuális gép az egyik előző lépésben megkapott nyilvános IP-címét. Az alábbi példa az alapértelmezett IIS-webhelyet mutatja:
 

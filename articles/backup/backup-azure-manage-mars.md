@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903216"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074999"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -206,7 +206,7 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 1. A **megőrzési szabály kiválasztása**területen adja meg a megőrzési időtartamot, majd kattintson a **tovább**gombra.
 1. Végül a **megfelelőség** képernyőn tekintse át a szabályzat részleteit, és kattintson a **Befejezés**gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- További információ az [ad hoc biztonsági mentési szabályzatok megőrzési viselkedéséről](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).
+- További információ az [igény szerinti biztonsági mentési szabályzat megőrzési viselkedéséről](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

@@ -1,7 +1,7 @@
 ---
 title: A Bing Image Search API végpontjai
 titleSuffix: Azure Cognitive Services
-description: A Bing Image Search API elérhető végpontok listája.
+description: A Image Search API három végpontot tartalmaz. Az 1. végpont a webről származó képeket ad vissza. A 2. végpont a ImageInsights adja vissza. A 3. végpont a trendi képeket adja vissza.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: fc1a0670767b134ad6e330fb41fc5564c754d91c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883406"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072633"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>A Bing Image Search API végpontjai
 
@@ -25,18 +25,18 @@ A **Image Search API** három végpontot tartalmaz.  Az 1. végpont a webről sz
 
 Ha a Bing API használatával szeretné beolvasni a képkeresési eredményeket, küldjön egy kérelmet a következő végpontok egyikére. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
 
-**1. végpont:** Azokat a képeket adja vissza, amelyek az által `?q=""`definiált felhasználó keresési lekérdezéséhez szükségesek.
+**1. végpont:** Azokat a lemezképeket adja vissza, amelyek a `?q=""`által definiált felhasználó keresési lekérdezéséhez szükségesek.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**2. végpont:** Egy képpel kapcsolatos elemzéseket ad vissza a `GET` vagy `POST`a használatával.
+**2. végpont:** Egy képpel kapcsolatos elemzéseket ad vissza `GET` vagy `POST`használatával.
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-A GET-kérelem egy képpel kapcsolatos információkat ad vissza, például a képet tartalmazó weblapokat. Adja meg a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) paramétert `GET` egy kéréssel.
+A GET-kérelem egy képpel kapcsolatos információkat ad vissza, például a képet tartalmazó weblapokat. Adja meg a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) paramétert egy `GET` kéréssel.
 
-Vagy egy bináris képet is hozzáadhat egy `POST` kérelem törzséhez, és a modules paramétert [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) `RecognizedEntities`a következőre állíthatja:. Ez egy olyan [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) ad vissza, amelyet paraméterként fog használni egy `GET` későbbi kérelemben, amely a rendszerképben szereplő személyekre vonatkozó adatokat adja vissza.  `modules` `RecognizedEntities` `POST` Állítsabe`insightsToken`az értékre az összes bepillantást, kivéve a eredményét anélkül, hogy egy másik hívást kellene tennieahasználatával.`All`
+Vagy egy `POST` kérelem törzsében is használhat bináris képet, és a modules [paramétert](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) `RecognizedEntities`értékre állíthatja. Ez egy olyan [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) ad vissza, amelyet paraméterként fog használni egy későbbi `GET` kérelemben, amely a rendszerképben szereplő személyekre vonatkozó adatokat adja vissza.  Állítsa be úgy a `modules`t, hogy `All` az összes bepillantást, kivéve a `POST` eredményében lévő `RecognizedEntities`eket anélkül, hogy egy másik hívást kellene beszereznie a `insightsToken`használatával.
 
 
 **3. végpont:** Azokat a képeket adja vissza, amelyek a mások által végzett keresési kérelmek alapján alakulnak. A képek különböző kategóriákba vannak elkülönítve, például a figyelemreméltó személyek vagy események alapján.

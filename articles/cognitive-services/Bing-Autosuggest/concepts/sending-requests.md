@@ -1,7 +1,7 @@
 ---
 title: Kérelmek küldése a Bing Autosuggest APInak
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan küldhet kérelmeket Bing Autosuggest APIba.
+description: A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján. További információ a kérelmek küldéséről.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: dbc8e2ccbd0a9d8c395a3b4e8a95e4e51f152792
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882418"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072850"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Kérelmek küldése a Bing Autosuggest APInak.
 
@@ -25,9 +25,9 @@ Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a B
 
 A **Bing AutoSuggest API** egy végpontot tartalmaz, amely egy részleges keresési kifejezésből származó javasolt lekérdezések listáját adja vissza.
 
-Ha a Bing API használatával szeretne felvenni a javasolt lekérdezéseket, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
+Ha a Bing API használatával szeretne felvenni javasolt lekérdezéseket, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
 
-**Végpont** A keresési javaslatokat adja vissza JSON-eredményekként, amelyek az által definiált felhasználó `?q=""`által megadott bemenetre vonatkoznak.
+**Végpont:** A keresési javaslatokat adja vissza JSON-eredményekként, amelyek az `?q=""`által definiált felhasználói bemenetre vonatkoznak.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -39,7 +39,7 @@ A **Bing** API-k olyan keresési műveleteket támogatnak, amelyek típusaik ala
 Minden végpont támogatja a lekérdezéseket, amelyek adott nyelvet és/vagy helyet adnak vissza a földrajzi hosszúság, a szélesség és a keresési sugár alapján.
 
 Az egyes végpontok által támogatott paraméterekkel kapcsolatos részletes információkért tekintse meg az egyes típusok hivatkozási oldalait.
-Az automatikus kiegészítési API-t használó alapszintű kérelmekre vonatkozó példákért tekintse meg az automatikus kiegészítési útmutatókat. [](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest)
+Az automatikus kiegészítési API-t használó alapszintű kérelmekre vonatkozó példákért [tekintse](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest)meg az automatikus kiegészítési útmutatókat.
 
 ## <a name="bing-autosuggest-api-requests"></a>Bing Autosuggest API kérelmek
 
@@ -64,7 +64,7 @@ Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://d
 > [!NOTE]
 > Ha a Bing Autosuggest API a JavaScriptből hívja meg, a böngésző beépített biztonsági funkciói megakadályozhatják a fejlécek értékének elérését.
 
-Ennek megoldásához a Bing Autosuggest API kérelmet egy CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
+Ennek megoldásához a Bing Autosuggest API kérelmet egy CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejléctel rendelkezik, amely lehetővé teszi a válasz fejlécének engedélyezési listáját, és elérhetővé teszi őket a JavaScript számára.
 
 Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](../tutorials/autosuggest.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
@@ -95,11 +95,11 @@ A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja 
 
 Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosító fejlécét, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-A következő webes javaslati csoport a fenti kérelemre adott válasz. A csoport a keresési lekérdezési javaslatok listáját tartalmazza, és minden javaslatot tartalmaz, `displayText`beleértve `query`a, `url` a és a mezőt is.
+A következő webes javaslati csoport a fenti kérelemre adott válasz. A csoport a keresési lekérdezési javaslatok listáját tartalmazza, és minden javaslatot tartalmaz, beleértve a `displayText`, `query`és `url` mezőt.
 
 A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.  
 
-Ha a felhasználó egy lekérdezést választ ki a legördülő listából, használhatja a [Bing Search API-k](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) egyikének meghívására, és saját maga is megtekintheti az eredményeket, vagy a visszaadott `url` mező használatával elküldheti a felhasználót a Bing eredmények oldalára.
+Ha a felhasználó egy lekérdezést választ ki a legördülő listából, használhatja a [Bing Search API-k](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) egyikének meghívására, és saját maga is megtekintheti az eredményeket, vagy elküldheti a felhasználót a Bing-eredmények lapra a visszaadott `url` mező használatával.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

@@ -1,20 +1,21 @@
 ---
-title: Rövid útmutató – Azure DNS-zóna és -rekord létrehozása az Azure PowerShell használatával
+title: 'Gyors útmutató: Azure DNS zóna és rekord létrehozása Azure PowerShell'
+titleSuffix: Azure DNS
 description: A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti rövid útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730311"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072171"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Gyors útmutató: Hozzon létre egy Azure DNS-zóna és -rekord Azure PowerShell-lel
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rövid útmutató: Azure DNS-zóna és -rekord létrehozása az Azure PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,7 +39,7 @@ New-AzResourceGroup -name MyResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
-A DNS-zóna az `New-AzDnsZone` parancsmag használatával hozható létre. A következő példában létrehozunk egy DNS-zónát *contoso.xyz* az erőforráscsoport neve *MyResourceGroup*. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
+A DNS-zóna az `New-AzDnsZone` parancsmag használatával hozható létre. Az alábbi példa egy *contoso. xyz* nevű DNS-zónát hoz létre a *MyResourceGroup*nevű erőforráscsoport-csoportban. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
 
 ```powershell
 New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
@@ -46,7 +47,7 @@ New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 
 ## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
-Rekordhalmazt a `New-AzDnsRecordSet` parancsmag használatával hozhat létre. Az alábbi példa létrehoz egy rekordot a DNS-zóna "contoso.xyz", "MyResourceGroup" erőforráscsoport "www" relatív névvel. A beállított rekord teljes neve nem "www.contoso.xyz". A rekord típusa "A", "10.10.10.10" IP-címmel, az Élettartama pedig 3600 másodperc.
+Rekordhalmazt a `New-AzDnsRecordSet` parancsmag használatával hozhat létre. Az alábbi példa egy "www" relatív névvel rendelkező rekordot hoz létre a "contoso. xyz" DNS-zónában, a "MyResourceGroup" erőforráscsoport esetében. A rekord teljes neve "www. contoso. xyz". A rekord típusa "A", az IP-cím "10.10.10.10", az élettartam pedig 3600 másodperc.
 
 ```powershell
 New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
@@ -62,17 +63,17 @@ Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
 
 ## <a name="test-the-name-resolution"></a>A névfeloldás tesztelése
 
-Most, hogy a teszt DNS-zóna egy teszt "A" rekord, ezt kipróbálhatja a névfeloldás nevű eszközt *nslookup*. 
+Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a névfeloldást egy *nslookup*nevű eszközzel. 
 
 **DNS-névfeloldás tesztelése:**
 
-1. Futtassa a következő parancsmagot a zóna névkiszolgálói listájának lekérése:
+1. Futtassa a következő parancsmagot a zóna névkiszolgálók listájának lekéréséhez:
 
    ```azurepowershell
    Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
    ```
 
-1. Másolja ki az egyik a Névkiszolgálók neveit az előző lépés kimenetéből származó.
+1. Másolja az egyik névkiszolgálói nevet az előző lépésben megadott kimenetből.
 
 1. Nyisson meg egy parancssort, és futtassa a következő parancsot:
 
@@ -80,17 +81,17 @@ Most, hogy a teszt DNS-zóna egy teszt "A" rekord, ezt kipróbálhatja a névfel
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Példa:
+   Például:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
    ```
 
-   Hiba a következő képernyőhöz hasonlóan kell megjelennie:
+   A következő képernyőhöz hasonlóan kell megjelennie:
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Az állomásnév **www\.contoso.xyz** mutat **10.10.10.10**, ugyanúgy, mint a be vannak állítva ezek. Ezt az eredményt ellenőrzi, hogy a névfeloldás megfelelően működik-e.
+A (z) **www\.contoso. xyz** állomásnév a **10.10.10.10**-re van feloldva, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 

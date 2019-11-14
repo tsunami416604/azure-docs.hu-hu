@@ -1,19 +1,19 @@
 ---
 title: Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 description: Az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztüli, a Microsoft partner Center webhelyen található kereskedelmi Piactéri portál használatával új, szolgáltatásként nyújtott szoftveres (SaaS-) ajánlat létrehozásához.
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: a6694d094d185ad70cce8c546e12f48afb69f1ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825553"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076947"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -33,7 +33,6 @@ Ha más ajánlat típusát választja, akkor a rendszer átirányítja a régebb
 Megjelenik az **új ajánlat** párbeszédpanel. 
 
 ![Új ajánlat párbeszédpanel](./media/new-offer-popup.png)
-
 
 ## <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
@@ -105,16 +104,6 @@ Az alábbi táblázat egy példát mutat be a költségek és a kifizetések leb
 > [!NOTE]
 > **Csökkentett Piactéri szolgáltatási díj**: a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Ahhoz, hogy az ajánlat megfelelő legyen, legalább az egyik ajánlatát a Microsoftnak kell kijelölnie, mint az IP-címek közös értékesítésének vagy az IP-címek közös értékesítésének prioritása.  A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkaphassa a Marketplace szolgáltatási díját a hónapra.  A Piactéri szolgáltatási díj nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre.  A csökkentett Piactéri szolgáltatási díj csak a Microsoft által a 2019 és a 2020. június 30. között gyűjtött licencek díjaihoz érhető el.  Ezt követően a Piactéri szolgáltatási díj visszaáll a normál mennyiségre. 
 
-
-
-
-#### <a name="csp-program-opt-in"></a>CSP-program – opt-in
-A [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) program lehetővé teszi, hogy a szoftverek több millió minősített Microsoft-ügyfelet érjenek el minimális marketing-és értékesítési befektetéssel.
-
-- **Csatornák: az ajánlatom elérhetővé tétele a CSP programban** (jelölőnégyzet)
-
-Ha azt szeretné, hogy az ajánlata elérhető legyen a CSP programban, a Cloud Solution Providers lehetővé teszi, hogy a terméket egy csomagban lévő megoldás részeként értékesítse az ügyfeleiknek. 
-
 ### <a name="list-through-microsoft"></a>Listázás a Microsofton keresztül
 
 A piactér-lista létrehozásával népszerűsítheti vállalkozását a Microsofttal. Ha csak az ajánlat listázását választja, és nem a Microsofttól, hanem azt is jelenti, hogy a Microsoft nem vesz részt közvetlenül a szoftverlicenc-tranzakciókban. Nincs hozzárendelt tranzakciós díj, és a közzétevő megtartja az ügyféltől begyűjtött licencelési díjak 100%-át. A közzétevő azonban felelős a szoftverlicenc-tranzakció valamennyi aspektusának támogatásában, beleértve a rendelés teljesítését, a mérést, a számlázást, a számlázást, a fizetést és a gyűjtést. 
@@ -141,7 +130,7 @@ Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse öss
 
 A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt megkeresi a "kipróbálás előtt" lehetőséget, ami növeli a konverziót és a magas minősítésű érdeklődők generációját. [További információ a tesztelési meghajtókról.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **Tesztelési meghajtó engedélyezése** (jelölőnégyzet) 
+- **Tesztelési meghajtó engedélyezése** (jelölőnégyzet)
 
 A test Drive engedélyezésével a rendszer arra kéri, hogy állítson be egy demonstrációs környezetet az ügyfeleknek az ajánlat meghatározott időn belül történő kipróbálásához. 
 
@@ -331,7 +320,6 @@ Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-
 ## <a name="preview"></a>Előzetes verzió
 
 Az **előnézet** lapon megadhat egy korlátozott **előzetes** verziót, amely az ajánlat közzétételét megelőzően közzéteszi az ajánlatot a piactér szélesebb közönsége számára.
@@ -416,8 +404,7 @@ Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel ka
 
 - **Piacok szerkesztése** (nem kötelező)
 
-Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be annak a piaci helynek a jelölőnégyzetét, amely számára elérhetővé szeretné tenni ezt a csomagot. Egy keresőmező és egy gomb a "Tax átutalt" országok kiválasztásához, amelyben a Microsoft az Ön nevében értékesítési és használati adót alkalmaz, és a segítségére is felhasználható. 
-
+Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be annak a piaci helynek a jelölőnégyzetét, amely számára elérhetővé szeretné tenni ezt a csomagot. Egy keresőmező és egy gomb a "Tax átutalt" országok kiválasztásához, amelyben a Microsoft az Ön nevében értékesítési és használati adót alkalmaz, és a segítségére is felhasználható.
 
 Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és egy másik piaci helyet ad hozzá, az új piac díját az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt mindig tekintse át az egyes piacok árát. A díjszabást a módosítások mentése után a "export prics (xlsx)" hivatkozással tekintheti át.
 
@@ -450,7 +437,7 @@ A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos
 
 Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy adott célközönségnek. Az Azure AD-bérlői azonosítók használatával a korlátozott célközönséghez is hozzárendelhet tagságot.
 
-#### <a name="privacy"></a>Adatvédelem
+#### <a name="privacy"></a>Személyes adatok védelme
 
 - **Ez egy privát csomag** (opcionális jelölőnégyzet)
 
@@ -475,11 +462,15 @@ Míg a SaaS a bérlői azonosítókat használja a privát célközönség defin
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
+## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cloud Solution Provider (CSP) viszonteladói közönség
+
+Ha azt szeretné, hogy az ajánlata elérhető legyen a CSP programban, a Cloud Solution Providers lehetővé teszi, hogy a terméket egy csomagban lévő megoldás részeként értékesítse az ügyfeleiknek. További információ: [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers.md).
+
 ## <a name="publish"></a>Közzététel
 
-#### <a name="submit-offer-to-preview"></a>Ajánlat beküldése az előzetes verzióra
+Miután elvégezte az ajánlat összes szükséges szakaszt, válassza a **Közzététel** elemet a portál jobb felső sarkában. A rendszer átirányítja a **felülvizsgálati és a közzétételi** oldalra.
 
-Miután elvégezte az ajánlat összes szükséges szakaszt, válassza a **Közzététel** elemet a portál jobb felső sarkában. A rendszer átirányítja a **felülvizsgálati és a közzétételi** oldalra. 
+#### <a name="submit-offer-to-preview"></a>Ajánlat beküldése az előzetes verzióra
 
 Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 

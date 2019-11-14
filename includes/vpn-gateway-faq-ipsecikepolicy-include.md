@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799895"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075403"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
-Az egyéni IPsec/IKE-házirendet az Azure **VpnGw1, VpnGw2, VpnGw3, Standard** és a **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU **nem** támogatott.
+Az Egyéni IPsec/IKE-házirendet az alapszintű SKU kivételével az összes Azure-beli SKU támogatja.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hány házirendeket adhatok meg egy kapcsolathoz?
 Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
@@ -27,22 +27,22 @@ Nem, minden algoritmust és paramétert meg kell adnia mind az IKE (Elsődleges 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Milyen algoritmusokat és milyen erősségű kulcsokat támogat az egyéni házirend?
 Az alábbi táblázatban megtekintheti az ügyfelek által konfigurálható, támogatott titkosítási algoritmusokat és kulcserősségeket. Minden mezőhöz választania kell egy lehetőséget.
 
-| **IPsec/IKEv1, IKEv2**  | **Beállítások**                                                                   |
-| ---                     | ---                                                                           |
-| IKEv1, IKEv2 titkosítás | AES256, AES192, AES128, DES3, DES                                             |
-| IKEv1, IKEv2 integritás  | SHA384, MD5, SHA1, SHA256                                                     |
-| DH-csoport                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Nincs  |
-| IPsec-titkosítás        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs      |
-| IPsec-integritás         | GCMAES256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5                            |
-| PFS-csoport               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs                              |
-| Gyorsmódú biztonsági társítás élettartama          | Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB) |
-| Forgalomválasztó        | UsePolicyBasedTrafficSelectors ($True/$False; alapértelmezett: $False)                 |
-|                         |                                                                               |
+| **IPsec/IKEv2**  | **Beállítások**                                                                   |
+| ---              | ---                                                                           |
+| IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES                                             |
+| IKEv2-integritás  | SHA384, MD5, SHA1, SHA256                                                     |
+| DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Nincs |
+| IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs      |
+| IPsec-integritás  | GCMAES256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5                            |
+| PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs                              |
+| Gyorsmódú biztonsági társítás élettartama   | Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)           |
+| Forgalomválasztó | UsePolicyBasedTrafficSelectors ($True/$False; alapértelmezett: $False)                 |
+|                  |                                                                               |
 
 > [!IMPORTANT]
 > 1. A DHGroup2048 és PFS2048 megegyeznek az IKE és IPsec PFS **14-es** Diffie-Hellman csoportjával. A teljes leképezések megtekintéséhez lásd: [Diffie-Hellman csoport](#DH).
 > 2. GCMAES-algoritmusok esetében ugyanazt a GCMAES-algoritmust és kulcshosszt kell megadnia az IPsec-titkosítás és -integritás esetében.
-> 3. A IKEv1 és a IKEv2 fő módú SA élettartama 28 800 másodpercen belül megoldódott az Azure VPN-átjárók esetében.
+> 3. A IKEv2 fő módú SA élettartama 28 800 másodpercen belül megoldódott az Azure VPN Gateway-átjárók esetében.
 > 4. A gyorsmódú biztonsági társítás élettartama paraméter megadása opcionális. Ha nem ad meg értéket, a rendszer az alapértelmezett értékeket használja: 27 000 másodperc (7,5 óra) és 102 400 000 kB (102 GB).
 > 5. A UsePolicyBasedTrafficSelector a kapcsolat egy opcionális paramétere. Tekintse meg a „UsePolicyBasedTrafficSelectors” paraméterre vonatkozó következő GYIK elemet
 

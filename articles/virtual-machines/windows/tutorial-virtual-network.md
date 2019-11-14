@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure-alapú virtuális hálózatok létrehozása és felügyelete Windows rendszerű virtuális gépeken | Microsoft Docs
+title: Oktatóanyag – Azure-beli virtuális hálózatok létrehozása és kezelése Windows rendszerű virtuális gépekhez
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet Azure-beli virtuális hálózatokat Windows rendszerű virtuális gépekhez az Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5a780617b8f46c5ec5f00fbfc45b7d91c29a836
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67cfb04f67e3454bde25969b634116f2871cbeb5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100209"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064742"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Azure-beli virtuális hálózatok létrehozása és kezelése a Azure PowerShell-vel rendelkező Windows rendszerű virtuális gépekhez
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és felügyelete Windows rendszerű virtuális gépeken az Azure PowerShell-lel
 
 Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák azt feltételezik, hogy a virtuális gépek egy adatbázis-háttérrel rendelkező webalkalmazást üzemeltetnek, azonban az oktatóanyagban nincs telepítve az alkalmazás. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -156,7 +156,7 @@ New-AzVM `
 
 A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatók alhálózatokhoz vagy egyedi hálózati adapterekhez. Egy hálózati adapterhez tartozó NSG csak a társított virtuális gépre vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra.
 
-### <a name="network-security-group-rules"></a>Hálózatbiztonságicsoport-szabályok
+### <a name="network-security-group-rules"></a>Hálózat biztonsági csoportok szabályai
 
 Az NSG-szabályok határozzák meg azokat a hálózatkezelési portokat, amelyeken engedélyezett vagy tiltott a forgalom. A szabályok között szerepelhetnek forrás és cél IP-címtartományok, így szabályozható az adatforgalom adott rendszerek vagy alhálózatok között. Az NSG-szabályok között megadható a prioritás is (1–4096). A szabályokat a rendszer prioritás szerinti sorrendben értékeli. A 100-as prioritású szabályt a rendszer a 200-as prioritású szabály előtt ellenőrzi.
 

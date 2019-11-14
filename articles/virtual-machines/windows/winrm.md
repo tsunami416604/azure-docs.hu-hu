@@ -1,5 +1,5 @@
 ---
-title: WinRM-hozzáférés beállítása Azure-beli virtuális gépekhez | Microsoft Docs
+title: WinRM-hozzáférés beállítása Azure-beli virtuális gépekhez
 description: A WinRM-hozzáférés beállítása a Resource Manager-alapú üzemi modellben létrehozott Azure-beli virtuális gépekkel való használatra.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749052"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067308"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>WinRM-hozzáférés beállítása Virtual Machineshoz Azure Resource Manager
 

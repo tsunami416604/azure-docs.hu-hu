@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cfac7fdbbdbf06ae74385fbc33e61d11cb99ff87
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795697"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066321"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
 
 Az Azure Storage automatikusan titkosítja az adatait a felhőben való megőrzés során. A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure Storage-ban tárolt adatai a 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)vannak titkosítva és visszafejtve, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás hasonló a Windows rendszeren a BitLocker-titkosításhoz.
 
-Az Azure Storage-titkosítás minden új és meglévő Storage-fiók esetében engedélyezve van, és nem tiltható le. Mivel az adatai alapértelmezés szerint biztonságosak, nem kell módosítania a kódot vagy az alkalmazásokat, hogy kihasználhassa az Azure Storage-titkosítás előnyeit.
+Az Azure Storage-titkosítás minden új Storage-fiók esetében engedélyezve van, és nem tiltható le. Mivel az adatai alapértelmezés szerint biztonságosak, nem kell módosítania a kódot vagy az alkalmazásokat, hogy kihasználhassa az Azure Storage-titkosítás előnyeit.
 
 A Storage-fiókok titkosítása a teljesítmény szintjétől (standard vagy prémium) vagy az üzembe helyezési modelltől (Azure Resource Manager vagy klasszikus) függetlenül történik. Az összes Azure Storage-redundancia-beállítás támogatja a titkosítást, és a Storage-fiók összes példánya titkosítva van. Minden Azure Storage-erőforrás titkosítva van, beleértve a blobokat, a lemezeket, a fájlokat, a várólistákat és a táblákat. Az összes objektum metaadatai is titkosítva vannak.
 
@@ -117,7 +117,7 @@ A kérelemben szereplő titkosítási kulcsok megadása nem kötelező. Ha azonb
 
 A blob Storage következő műveletei támogatják az ügyfél által biztosított titkosítási kulcsok küldését egy kérelemre:
 
-- [BLOB elhelyezése](/rest/api/storageservices/put-blob)
+- [Put Blob](/rest/api/storageservices/put-blob)
 - [Tiltási lista](/rest/api/storageservices/put-block-list)
 - [Put blokk](/rest/api/storageservices/put-block)
 - [Blokk elhelyezése URL-címről](/rest/api/storageservices/put-block-from-url)
@@ -194,7 +194,7 @@ public static void UploadBlobWithClientKey(CloudBlobContainer container)
 
 ## <a name="azure-storage-encryption-versus-disk-encryption"></a>Azure Storage-titkosítás és lemez titkosítása
 
-Az Azure Storage encryption szolgáltatással az összes Azure Storage-fiók és a bennük található erőforrások titkosítva vannak, beleértve az Azure-beli virtuális gépek lemezeit tároló blobokat is. Az Azure-beli virtuális gépek lemezei [Azure Disk Encryptionkal](../../security/azure-security-disk-encryption-overview.md)is titkosíthatók. Azure Disk Encryption az iparági szabványnak megfelelő [BitLockert](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) használ a Windowson és a [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt) on Linuxon, hogy az operációs rendszer-alapú titkosítási megoldásokat biztosítson a Azure Key Vaulthoz.
+Az Azure Storage encryption titkosítja az Azure-beli virtuális gépek lemezeit tároló blobokat. Emellett az összes Azure-beli virtuálisgép-lemez, beleértve a helyi Temp lemezeket is, [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md)is titkosítható. Azure Disk Encryption az iparági szabványnak megfelelő [BitLockert](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) használ a Windowson és a [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt) on Linuxon, hogy az operációs rendszer-alapú titkosítási megoldásokat biztosítson a Azure Key Vaulthoz.
 
 ## <a name="next-steps"></a>További lépések
 

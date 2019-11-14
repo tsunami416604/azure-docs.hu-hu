@@ -1,7 +1,7 @@
 ---
 title: Egy belső alapszintű terheléselosztó létrehozása – Azure CLI-vel
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure CLI használatával
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre belső Load balancert az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: e38cc4e6da574e0c3be490cf5d9cd929624343e5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8492ce820a31183b0b3078b1fb366c25a39b7639
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275456"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076066"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -41,7 +41,7 @@ A következő példa létrehoz egy *myResourceGroupILB* nevű erőforráscsoport
 ```
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
+Az *az network vnet create* paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) nevű alhálózattal.
 
 ```azurecli-interactive
   az network vnet create \
@@ -60,7 +60,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy belső Load Balancer az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **myLoadBalancer** , amely tartalmaz egy **myFrontEnd**nevű előtérbeli IP-konfigurációt, egy **myBackEndPool** nevű háttér-készletet, amely egy magánhálózati IP-címhez van társítva * 10.0.0.7.
+Hozzon létre egy belső Load Balancer az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **myLoadBalancer** , amely tartalmaz egy **myFrontEnd**nevű előtérbeli IP-konfigurációt, egy **myBackEndPool** nevű háttér-készletet, amely egy magánhálózati IP-címhez * * 10.0.0.7 van társítva.
 
 ```azurecli-interactive
   az network lb create \

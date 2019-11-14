@@ -1,6 +1,6 @@
 ---
-title: PowerShell-példa – bejövő forgalmának terheléselosztása virtuális gépek magas rendelkezésre állás érdekében – Azure
-titlesuffix: Azure Load Balancer
+title: A virtuális gépek forgalmának elosztása HA-Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Ez az Azure PowerShell-példaszkript bemutatja, hogyan lehet terheléselosztást végezni a virtuális gépekre a magas rendelkezésre álláshoz
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 956a67897fa08fdd2c0d602ba514fcf58fabc292
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273525"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075912"
 ---
-# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Az Azure PowerShell-példaszkript: Bejövő forgalmának terheléselosztása virtuális gépek magas rendelkezésre állás érdekében
+# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell-példaszkript: Forgalom terheléselosztása virtuális gépekre a magas rendelkezésre álláshoz
 
 Ez az Azure PowerShell-példaszkript minden összetevőt létrehoz, amelyre szükség van több, magas rendelkezésre állásra és terheléselosztásra konfigurált Windows rendszerű virtuális gép futtatásához. A szkript futtatása után három virtuális géppel rendelkezik majd, amelyek egy Azure-beli rendelkezésre állási csoporthoz vannak csatlakoztatva, és egy Azure Load Balanceren keresztül érhetők el.
 

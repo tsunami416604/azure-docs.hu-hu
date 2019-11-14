@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
+title: CRS-szabályok csoportjai és szabályai
+titleSuffix: Azure Web Application Firewall
 description: Ez az oldal információt nyújt a webalkalmazási tűzfal CRS-szabályainak csoportjairól és szabályairól.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59e4203ca219802a95a09761b90c00a039b47631
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516967"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075379"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
 
@@ -27,7 +28,7 @@ A Application Gateway WAF alapértelmezés szerint előre konfigurálva van a CR
 
 A WAF a következő webes biztonsági rések ellen véd:
 
-- SQL-befecskendezéses támadások
+- SQL-injection attacks
 - Helyek közötti parancsfájlok elleni támadások
 - Más gyakori támadások, például a parancsok befecskendezése, a HTTP-kérelmek csempészete, a HTTP-válaszok felosztása és a távoli fájlok bevonása
 - HTTP-protokollok megsértése
@@ -55,7 +56,7 @@ A CRS 3,1 13 szabályt tartalmaz, ahogy az alábbi táblázatban is látható. M
 |**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-31)**|Védelem a munkamenet-rögzítési támadásokkal szemben|
 |**[KÉRELEM-944-APPLICATION-ATTACK-SESSION-JAVA](#crs944-31)**|Védelem a JAVA-támadásokkal szemben|
 
-### <a name="owasp-crs-30"></a>OWASP CRS 3,0
+### <a name="owasp-crs-30"></a>OWASP CRS 3.0
 
 A CRS 3,0 12 szabályt tartalmaz, ahogy az alábbi táblázatban is látható. Minden csoport több szabályt tartalmaz, amelyek letilthatók.
 
@@ -99,20 +100,20 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="general-31"></a> <p x-ms-format-detection="none">Általános kérdések</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |200004|Lehetséges többrészes nem egyező határ.|
 
-### <a name="crs911-31"></a> <p x-ms-format-detection="none">KÉRELEM-911-METHOD-KÉNYSZERÍTÉS</p>
+### <a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |911100|A metódus nem engedélyezett a szabályzatban|
 
 
 ### <a name="crs913-31"></a> <p x-ms-format-detection="none">KÉRELEM-913-SZKENNER-ÉSZLELÉS</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |913100|A biztonsági ellenőrzőeszközhez társított felhasználói ügynök található|
 |913101|A parancsfájlhoz/általános HTTP-ügyfélhez társított felhasználói ügynök található.|
@@ -123,7 +124,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs920-31"></a> <p x-ms-format-detection="none">KÉRELEM-920-PROTOCOL-KÉNYSZERÍTÉS</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |920100|Érvénytelen HTTP-kérési sor|
 |920120|Többrészes/űrlap – adatmegkerülési kísérlet|
@@ -175,7 +176,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs921-31"></a> <p x-ms-format-detection="none">KÉRELEM-921-PROTOCOL-ATTACK</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |921110|HTTP-kérelem csempészete elleni támadás|
 |921120|HTTP-válasz felosztásának támadása|
@@ -189,7 +190,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs930-31"></a> <p x-ms-format-detection="none">KÉRELEM-930-APPLICATION-ATTACK-LFI</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |930100|Elérési út átjárási támadása (/.. /)|
 |930110|Elérési út átjárási támadása (/.. /)|
@@ -198,7 +199,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs931-31"></a> <p x-ms-format-detection="none">KÉRELEM-931-APPLICATION-ATTACK-RFI</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |931100|Lehetséges távoli fájlok felvételének (RFI) támadása = URL-paraméter IP-cím használatával|
 |931110|Lehetséges távoli fájlok bevonása (RFI) elleni támadás|
@@ -207,7 +208,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs932-31"></a> <p x-ms-format-detection="none">KÉRELEM-932-APPLICATION-ATTACK-RCE</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |932100|Távoli parancs végrehajtása: UNIX-parancs befecskendezése|
 |932105|Távoli parancs végrehajtása: UNIX-parancs befecskendezése|
@@ -225,7 +226,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs933-31"></a> <p x-ms-format-detection="none">KÉRELEM-933-APPLICATION-ATTACK-PHP</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |933100|PHP-befecskendező támadás = megtalált címke megnyitása/bezárása|
 |933110|PHP-befecskendezési támadás = PHP parancsfájl feltöltése megtalálva|
@@ -244,7 +245,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs941-31"></a> <p x-ms-format-detection="none">KÉRELEM-941-APPLICATION-ATTACK-XSS</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |941100|XSS-támadás észlelhető a libinjection-n keresztül|
 |941101|XSS-támadás észlelhető a libinjection-n keresztül|
@@ -274,9 +275,9 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 |941350|UTF-7 kódolás, azaz XSS – a rendszer támadást észlelt.|
 
 
-### <a name="crs942-31"></a> <p x-ms-format-detection="none">KÉRELEM-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |942100|SQL-injektálási támadás észlelhető a libinjection-n keresztül|
 |942110|SQL-befecskendezési támadás: az általános befecskendezéses tesztelés észlelve|
@@ -323,9 +324,9 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 |942480|SQL-injektálási támadás|
 |942490|Észleli a klasszikus SQL injection probs 3/3|
 
-### <a name="crs943-31"></a> <p x-ms-format-detection="none">KÉRELEM-943-APPLICATION-ATTACK-SESSION-RÖGZÍTÉS</p>
+### <a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |943100|Lehetséges munkamenet-rögzítési támadás = cookie-értékek beállítása HTML-ben|
 |943110|Lehetséges munkamenet-rögzítési támadás = munkamenet-azonosító paraméter neve a tartományon kívüli Hivatkozóval|
@@ -333,32 +334,32 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs944-31"></a> <p x-ms-format-detection="none">KÉRELEM-944-APPLICATION-ATTACK-SESSION-JAVA</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |944120|Lehetséges adattartalom-végrehajtás és távoli parancs végrehajtása|
 |944130|Gyanús Java-osztályok|
 |944200|A Java deszerializálás Apache Commons kiaknázása|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3,0](#tab/owasp30)
+# <a name="owasp-30tabowasp30"></a>[OWASP 3.0](#tab/owasp30)
 
 ## <a name="owasp30"></a>Szabálykészlet
 
 ### <a name="general-30"></a> <p x-ms-format-detection="none">Általános kérdések</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |200004|Lehetséges többrészes nem egyező határ.|
 
-### <a name="crs911-30"></a> <p x-ms-format-detection="none">KÉRELEM-911-METHOD-KÉNYSZERÍTÉS</p>
+### <a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |911100|A metódus nem engedélyezett a szabályzatban|
 
 
 ### <a name="crs913-30"></a> <p x-ms-format-detection="none">KÉRELEM-913-SZKENNER-ÉSZLELÉS</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |913100|A biztonsági ellenőrzőeszközhez társított felhasználói ügynök található|
 |913110|A biztonsági lapolvasóhoz tartozó kérelem fejléce található|
@@ -368,7 +369,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs920-30"></a> <p x-ms-format-detection="none">KÉRELEM-920-PROTOCOL-KÉNYSZERÍTÉS</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |920100|Érvénytelen HTTP-kérési sor|
 |920130|Nem sikerült elemezni a kérelem törzsét.|
@@ -414,7 +415,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs921-30"></a> <p x-ms-format-detection="none">KÉRELEM-921-PROTOCOL-ATTACK</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |921100|HTTP-kérelem csempészett támadása.|
 |921110|HTTP-kérelem csempészete elleni támadás|
@@ -429,7 +430,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs930-30"></a> <p x-ms-format-detection="none">KÉRELEM-930-APPLICATION-ATTACK-LFI</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |930100|Elérési út átjárási támadása (/.. /)|
 |930110|Elérési út átjárási támadása (/.. /)|
@@ -438,7 +439,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs931-30"></a> <p x-ms-format-detection="none">KÉRELEM-931-APPLICATION-ATTACK-RFI</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |931100|Lehetséges távoli fájlok felvételének (RFI) támadása = URL-paraméter IP-cím használatával|
 |931110|Lehetséges távoli fájlok bevonása (RFI) elleni támadás|
@@ -447,7 +448,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs932-30"></a> <p x-ms-format-detection="none">KÉRELEM-932-APPLICATION-ATTACK-RCE</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |932120|Távoli parancs végrehajtása = Windows PowerShell-parancs található|
 |932130|Távoli parancs végrehajtása = UNIX rendszerhéj-kifejezés található|
@@ -458,7 +459,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs933-30"></a> <p x-ms-format-detection="none">KÉRELEM-933-APPLICATION-ATTACK-PHP</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |933100|PHP-befecskendező támadás = megtalált címke megnyitása/bezárása|
 |933110|PHP-befecskendezési támadás = PHP parancsfájl feltöltése megtalálva|
@@ -474,7 +475,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs941-30"></a> <p x-ms-format-detection="none">KÉRELEM-941-APPLICATION-ATTACK-XSS</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |941100|XSS-támadás észlelhető a libinjection-n keresztül|
 |941110|XSS-szűrő – 1. kategória = parancsfájl-címke vektora|
@@ -499,9 +500,9 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 |941350|UTF-7 kódolás, azaz XSS – a rendszer támadást észlelt.|
 |941320|Lehetséges XSS-támadás észlelhető – HTML-címke kezelője|
 
-### <a name="crs942-30"></a> <p x-ms-format-detection="none">KÉRELEM-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |942100|SQL-injektálási támadás észlelhető a libinjection-n keresztül|
 |942110|SQL-befecskendezési támadás: az általános befecskendezéses tesztelés észlelve|
@@ -531,9 +532,9 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 |942251|Észleli az injekciókat|
 |942460|Meta-karakteres anomália észlelési riasztás – ismétlődő nem Word karakterek|
 
-### <a name="crs943-30"></a> <p x-ms-format-detection="none">KÉRELEM-943-APPLICATION-ATTACK-SESSION-RÖGZÍTÉS</p>
+### <a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |943100|Lehetséges munkamenet-rögzítési támadás = cookie-értékek beállítása HTML-ben|
 |943110|Lehetséges munkamenet-rögzítési támadás = munkamenet-azonosító paraméter neve a tartományon kívüli Hivatkozóval|
@@ -545,7 +546,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs20"></a>crs_20_protocol_violations
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |960911|Érvénytelen HTTP-kérési sor|
 |981227|Apache Error = érvénytelen URI a kérelemben.|
@@ -571,7 +572,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs21"></a>crs_21_protocol_anomalies
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |960008|A kérelemből hiányzik egy állomásfejléc|
 |960007|Üres állomásfejléc|
@@ -584,7 +585,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs23"></a>crs_23_request_limits
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |960209|Az argumentum neve túl hosszú|
 |960208|Túl hosszú az argumentum értéke|
@@ -595,7 +596,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs30"></a>crs_30_http_policy
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |960032|A metódus nem engedélyezett a szabályzatban|
 |960010|A kérelem tartalmának típusa nem engedélyezett a szabályzatban|
@@ -605,7 +606,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs35"></a>crs_35_bad_robots
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |990002|A kérelem azt jelzi, hogy a biztonsági ellenőrzőeszköz beolvasta a helyet|
 |990901|A kérelem azt jelzi, hogy a biztonsági ellenőrzőeszköz beolvasta a helyet|
@@ -614,7 +615,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs40"></a>crs_40_generic_attacks
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |960024|Meta-karakteres anomália észlelési riasztás – ismétlődő nem Word karakterek|
 |950008|Nem dokumentált ColdFusion-címkék injektálása|
@@ -643,7 +644,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs41sql"></a>crs_41_sql_injection_attacks
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |981231|A rendszer SQL-megjegyzési sorozatot észlelt.|
 |981260|SQL hex-kódolás azonosítva|
@@ -680,7 +681,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs41xss"></a>crs_41_xss_attacks
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |973336|XSS-szűrő – 1. kategória = parancsfájl-címke vektora|
 |973338|XSS-szűrő – 3. kategória = JavaScript URI-vektor|
@@ -785,13 +786,13 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ### <a name="crs42"></a>crs_42_tight_security
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |950103|Elérési út átjárási támadása|
 
 ### <a name="crs45"></a>crs_45_trojans
 
-|ruleId|Leírás|
+|RuleId|Leírás|
 |---|---|
 |950110|Backdoor-hozzáférés|
 |950921|Backdoor-hozzáférés|

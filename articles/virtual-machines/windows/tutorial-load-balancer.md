@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Windows rendszerű virtuális gépek terheléselosztása az Azure-ban | Microsoft Docs
+title: Oktatóanyag – Windows rendszerű virtuális gépek terheléselosztása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre terheléselosztót az Azure PowerShell-lel egy magas rendelkezésre állású és biztonságos alkalmazáshoz három Windows rendszerű virtuális gépen keresztül
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fe202712f5e269950b64046453867bd23d18a9ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 05a796d7bbe08f8e560c6545f3ed37c0f54b9cf9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100224"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067867"
 ---
-# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Oktatóanyag: A Windows rendszerű virtuális gépek terheléselosztása az Azure-ban egy magasan elérhető alkalmazás létrehozása Azure PowerShell
+# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű Azure-beli virtuális gépek terheléselosztása az Azure PowerShell használatával magas rendelkezésre állású alkalmazások létrehozásához
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
@@ -69,7 +69,7 @@ $publicIP = New-AzPublicIpAddress `
   -Name "myPublicIP"
 ```
 
-### <a name="create-a-load-balancer"></a>Load Balancer létrehozása
+### <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
 Hozzon létre egy új előtér [-IP-címkészletet a New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Az alábbi példában létrejön egy *myFrontEndPool* nevű előtérbeli IP-címkészlet, amely a *myPublicIP* címhez kötődik: 
 
 ```azurepowershell-interactive

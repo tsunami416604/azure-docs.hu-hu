@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 5824b835b3debb33386c0d1f86581c6bb91b14ae
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: c7e34b816f33c5286557dfc5d58711128ff68437
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904198"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075880"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding gyakori kérdések (GYIK)
 
@@ -24,49 +24,49 @@ Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott
 
 ## <a name="whats-new"></a>Újdonságok
 
-[További](whats-new.md) információ a Language Understanding újdonságait ismertető témakörben.
+[További](whats-new.md) információ a Language Understanding újdonságáról (Luis).
 
 <a name="luis-authoring"></a>
 
 ## <a name="authoring"></a>Tartalomkészítés
 
-### <a name="what-are-the-luis-best-practices"></a>Mik a LUIS ajánlott eljárásai?
-Kezdje a [szerzői ciklussal](luis-concept-app-iteration.md), majd olvassa el az [ajánlott eljárásokat](luis-concept-best-practices.md).
+### <a name="what-are-the-luis-best-practices"></a>Mik azok a LUIS-ajánlott eljárások?
+Kezdje a [szerzői ciklus](luis-concept-app-iteration.md), olvassa el a [ajánlott eljárások](luis-concept-best-practices.md).
 
-### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>Mi a legjobb módszer az alkalmazás létrehozásához a LUIS-ben?
+### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>Mi az a legjobb módja, és kezdje el létrehozni egy alkalmazást az intelligens HANGFELISMERÉSI?
 
-Az alkalmazás kiépítésének legjobb módja egy [növekményes folyamat](luis-concept-app-iteration.md).
+A legjobb módszer az alkalmazás elkészítésére keresztül történik egy [növekményes folyamata](luis-concept-app-iteration.md).
 
-### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Mi a bevált gyakorlat az alkalmazás céljainak modellezéséhez? Érdemes-e több konkrét vagy több általános szándékot létrehozni?
+### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Mi az jó megoldás a modell a leképezések az alkalmazásom? Kell-e létre pontosabb vagy több általános leképezések?
 
-Válassza ki azokat a leképezéseket, amelyek nem annyira általánosak, hogy átfedésben legyenek, de nem annyira, hogy a LUIS megnehezíti a hasonló szándékok megkülönböztetését. A megkülönböztethető specifikus leképezések létrehozása a LUIS modellezés egyik ajánlott eljárása.
+Válassza ki, amelyek nem átfedésben lévő, de nem így meghatározott, hogy lehetővé teszi, hogy nehéz megkülönböztetni a hasonló leképezések LUIS kell tehát általános leképezések. Discriminative adott szándékot létrehozása az ajánlott eljárást a LUIS modellezési egyik.
 
-### <a name="is-it-important-to-train-the-none-intent"></a>Fontos a nincs szándék betanítása?
+### <a name="is-it-important-to-train-the-none-intent"></a>Fontos a nincs szándék betanításához?
 
-Igen, érdemes betanítani a **nincs** szándékot több hosszúságú kimondott szöveg, mivel további címkéket ad hozzá más szándékokhoz. A megfelelő arány 1 vagy 2 címke, amelyet a rendszer az egyik szándékhoz hozzáadott 10 címkéhez **sem** ad hozzá. Ez az arány fokozza a LUIS megkülönböztető erejét.
+Igen, akkor jó taníthat be a **nincs** szándék a további utterances, hozzáadhat további címkék más leképezések. Egy jó arány hozzá 1 vagy 2 címke **nincs** megjelölésű hozzáadott minden 10 címkék. Ez az arány felgyorsíthatók a LUIS discriminative hatékonyságát.
 
-### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Hogyan lehet helyesírási hibákat kijavítani a hosszúságú kimondott szöveg-ben?
+### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Hogyan javíthatja a kimondott szöveg helyesírási hibákat?
 
-Lásd a [Bing Spell Check API v7](luis-tutorial-bing-spellcheck.md) oktatóanyagot. LUIS kikényszeríti a Bing Spell Check API v7 által kiszabott korlátokat.
+Tekintse meg a [a Bing Spell ellenőrzés API 7-es](luis-tutorial-bing-spellcheck.md) oktatóanyag. A LUIS határoz meg a Bing Spell ellenőrzés API 7-es érvénybe lépteti.
 
-### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hogyan a LUIS-alkalmazás programozással való szerkesztését?
-Ha programozott módon szeretné szerkeszteni a LUIS alkalmazást, használja az [authoring API](https://go.microsoft.com/fwlink/?linkid=2092087)-t. A szerzői API meghívásával kapcsolatos példákért tekintse meg a [Luis authoring API meghívása](./luis-quickstart-node-add-utterance.md) és [a Luis-alkalmazás programozott módon történő létrehozásával](./luis-tutorial-node-import-utterances-csv.md) foglalkozó témakört. A szerzői API használatához a létrehozási [kulcsot](luis-concept-keys.md#azure-resources-for-luis) kell használnia a végponti kulcs helyett. A programozott szerzői műveletek másodpercenként legfeljebb 1 000 000 hívást tesznek lehetővé, és másodpercenként öt tranzakciót biztosítanak. A LUIS használatával használt kulcsokról további információt a [kulcsok kezelése](./luis-concept-keys.md)című témakörben talál.
+### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hogyan szerkeszthetem a LUIS-alkalmazásokon programozott módon?
+A LUIS-alkalmazás programozott módon szerkesztéséhez használja a [szerzői API](https://go.microsoft.com/fwlink/?linkid=2092087). Lásd: [szerzői API hívása LUIS](./luis-quickstart-node-add-utterance.md) és [programozott módon a Node.js használatával a LUIS-alkalmazások felépítése](./luis-tutorial-node-import-utterances-csv.md) példákat arra, hogyan hívhat meg a jelentéskészítési API-t. A jelentéskészítési API használatát igényli egy [kulcs létrehozási](luis-concept-keys.md#azure-resources-for-luis) egy végponti kulcs helyett. Programozott szerzői lehetővé teszi, hogy legfeljebb 1 000 000 hívást, havi és öt tranzakció / másodperc. További információ a kulcsokról, az intelligens hangfelismerési szolgáltatással használja, lásd: [kulcsok kezelése](./luis-concept-keys.md).
 
-### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Hol található a reguláris kifejezésnek megfelelő minta funkció?
-Az előző **minta funkció** jelenleg elavult, **[mintázatok](luis-concept-patterns.md)** helyett.
+### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Hol van a minta-szolgáltatás, amely a megadott reguláris kifejezéssel egyező?
+Az előző **minta funkció** jelenleg elavult, lecserélve  **[minták](luis-concept-patterns.md)** .
 
-### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Hogyan használ egy entitást a megfelelő adatok lekéréséhez?
-Tekintse meg az [entitások](luis-concept-entity-types.md) és [az adatkiemelés](luis-concept-data-extraction.md)témakört.
+### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Hogyan használhatom egy entitás is, a helyes adatokat?
+Lásd: [entitások](luis-concept-entity-types.md) és [adatkinyerés](luis-concept-data-extraction.md).
 
-### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Egy példa kifejezés változatának tartalmaznia kell a központozást?
-Adja hozzá a különböző változatokat példaként hosszúságú kimondott szöveg a szándékhoz, vagy adja hozzá a példa kizáró mintázatát a [szintaxissal, hogy figyelmen kívül hagyja](luis-concept-patterns.md#pattern-syntax) a központozást.
+### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Tartalmaznia kell egy példa utterance (kifejezés) változata írásjelek?
+A példában szándéka kimondott szöveg szerint adja hozzá, a másik változata, vagy adja hozzá a példa utterance (kifejezés) minta a [figyelmen kívül hagyása szintaxis](luis-concept-patterns.md#pattern-syntax) az absztrakt.
 
-### <a name="does-luis-currently-support-cortana"></a>A LUIS jelenleg támogatja a Cortana-t?
+### <a name="does-luis-currently-support-cortana"></a>A LUIS jelenleg támogatja a Cortana?
 
-A Cortana előre elkészített alkalmazások 2017-ben elavultak. Már nem támogatottak.
+A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem támogatottak.
 
-### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan LUIS-alkalmazás tulajdonjogának átruházása?
-Ha egy LUIS-alkalmazást másik Azure-előfizetésre szeretne továbbítani, exportálja a LUIS alkalmazást, és importálja egy új fiókkal. Frissítse a LUIS-alkalmazás AZONOSÍTÓját az ügyfélalkalmazás, amely meghívja az alkalmazást. Előfordulhat, hogy az új alkalmazás némileg eltérő LUIS-pontszámot ad vissza az eredeti alkalmazásból.
+### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan ruházhatom át tulajdonjogát a LUIS-alkalmazások?
+LUIS-alkalmazásokon át egy másik Azure-előfizetést, a LUIS alkalmazás exportálása, és importálja egy új fiók használatával. Frissítse a LUIS alkalmazás azonosítója, amely meghívja ezt az ügyfélalkalmazásban. Az új alkalmazás adhat vissza eltérő LUIS pontszámokat az eredeti alkalmazásból.
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy előre összeépített entitás egy példaként való kiírással van megjelölve az egyéni entitás helyett. Hogyan javítsa ezt? 
 
@@ -88,7 +88,7 @@ A közreműködők hozzáférésének megismeréséhez tekintse meg [Azure Activ
 
 ## <a name="endpoint"></a>Végpont
 
-### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>HTTP 403-es hiba-állapotkód érkezett. Hogyan kijavítani?
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>HTTP 403-es hiba-állapotkód érkezett. Hogyan javíthatom?
 
 A 403-es és a 429-es hibakód akkor jelenik meg, ha az árképzési szinten a másodpercenkénti tranzakciók száma vagy a havi tranzakció. Növelje az árképzési szintet, vagy használjon Language Understanding [tárolókat](luis-container-howto.md).
 
@@ -101,7 +101,7 @@ A hiba megoldásai a következők:
 * A [Azure Portal](https://portal.azure.com)a Language Understanding erőforráson az **Erőforrás-kezelés – > díjszabási**szinten módosítsa az árképzési szintet magasabb TPS szintjére. Ha az erőforrás már hozzá van rendelve a Language Understanding alkalmazáshoz, semmit nem kell tennie a Language Understanding portálon.
 *  Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
 
-### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>HTTP 429-es hiba-állapotkód érkezett. Hogyan kijavítani?
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>HTTP 429-es hiba-állapotkód érkezett. Hogyan javíthatom?
 
 A 403-es és a 429-es hibakód akkor jelenik meg, ha az árképzési szinten a másodpercenkénti tranzakciók száma vagy a havi tranzakció. Növelje az árképzési szintet, vagy használjon Language Understanding [tárolókat](luis-container-howto.md).
 
@@ -113,29 +113,29 @@ A megoldások a következők:
 * Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
 * Az ügyfélalkalmazás kérelmeit megadhatja az [újrapróbálkozási szabályzattal](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , amelyet Ön saját maga is végrehajthat, amikor megkapja ezt az állapotkódot. 
 
-### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>A végponti lekérdezés nem várt eredményt adott vissza. Mit tegyek?
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Végpont a lekérdezés váratlan eredményt adott vissza. Mit tegyek?
 
-A lekérdezési előrejelzések váratlan eredményei a közzétett modell állapotától függenek. A modell kijavítani lehet, hogy módosítania kell a modellt, a betanítást és a közzétételt. 
+Váratlan lekérdezési előrejelzési eredményeket a közzétett modell állapotának alapulnak. A modell kijavítani lehet, hogy módosítania kell a modellt, a betanítást és a közzétételt. 
 
-A modell javítása az [aktív tanulással](luis-how-to-review-endpoint-utterances.md)kezdődik.
+A modell javításának kezdődik [aktív tanulás](luis-how-to-review-endpoint-utterances.md).
 
-A nem determinisztikus-képzések eltávolításához frissítse az [Application Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t az összes betanítási érték használatához.
+Eltávolíthatja a nem determinisztikus képzési frissítésével a [alkalmazás verziója beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) összes betanítási adatok használatához.
 
-További tippekért tekintse át az [ajánlott eljárásokat](luis-concept-best-practices.md) . 
+Tekintse át a [ajánlott eljárások](luis-concept-best-practices.md) más tippeket. 
 
-### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Miért adja meg a LUIS szóközt a lekérdezéshez a szavak közepén?
-LUIS [tokenizes](luis-glossary.md#token) a [kultúrán](luis-language-support.md#tokenization)alapuló Kimondás. Az eredeti érték és a jogkivonat-érték is elérhető az [kinyeréshez](luis-concept-data-extraction.md#tokenized-entity-returned).
+### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Miért nem LUIS szóközöket a lekérdezésbe felvenni kívánt körül vagy közepén szavak?
+A LUIS [tokenizes](luis-glossary.md#token) az utterance (kifejezés) alapján a [kulturális környezet](luis-language-support.md#tokenization). Az eredeti és tokenekre értéke is érhetők el [adatkinyerés](luis-concept-data-extraction.md#tokenized-entity-returned).
 
-### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hogyan LUIS Endpoint-kulcsot létrehozni és hozzárendelni?
-[Hozza létre a végponti kulcsot](luis-how-to-azure-subscription.md) az Azure-ban a [szolgáltatási](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szinthez. [Rendelje hozzá a kulcsot](luis-how-to-azure-subscription.md) az **[Azure-erőforrások](luis-how-to-azure-subscription.md)** lapon. Ehhez a művelethez nem tartozik megfelelő API. Ezt követően módosítania kell a HTTP-kérést a végpontra [az új Endpoint kulcs használatához](luis-concept-keys.md).
+### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hogyan létrehozása és hozzárendelése egy LUIS végponti kulcs?
+[A végpont kulcs létrehozása](luis-how-to-azure-subscription.md) az Azure-ban a [szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szintjét. [Rendelje hozzá a kulcsot](luis-how-to-azure-subscription.md) az **[Azure-erőforrások](luis-how-to-azure-subscription.md)** lapon. Nincs a művelet nem megfelelő API-t. Ezután a végpontot kell módosítania a HTTP-kérelem [használja az új végpont kulcs](luis-concept-keys.md).
 
-### <a name="how-do-i-interpret-luis-scores"></a>Hogyan a LUIS pontszámok értelmezését?
-A rendszeren a legmagasabb pontozási szándékot kell használnia, függetlenül annak értékétől. Például az alábbi pontszám 0,5 (kevesebb, mint 50%) nem feltétlenül jelenti azt, hogy LUIS alacsony megbízhatósággal rendelkezik. A további betanítási [adatmennyiséggel növelheti a](luis-concept-prediction-score.md) legvalószínűbb szándékot.
+### <a name="how-do-i-interpret-luis-scores"></a>Mi a LUIS pontszámok?
+A rendszer függetlenül annak értéke a legmagasabb pontozási leképezést kell használnia. Ha például 0.5-ös (kevesebb mint 50 %) alatti nem feltétlenül jelenti, hogy a LUIS alacsony megbízhatósági rendelkezik. Növelheti az adatok segíthetnek további képzés biztosítása a [pontszám](luis-concept-prediction-score.md) a legvalószínűbb leképezés.
 
-### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Miért nem látom a végpontok találatait az alkalmazás irányítópultján?
-Az alkalmazás irányítópultján a végpontok teljes látogatottsága rendszeresen frissül, de a Azure Portal LUIS-végpont kulcsához társított metrikák gyakrabban frissülnek.
+### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Miért nem látom, hogy a végpont a találatok saját alkalmazás-irányítópult?
+Az alkalmazás-irányítópult a teljes végpont a találatok rendszeres időközönként frissülnek, de a metrikák az Azure Portalon, a LUIS végponti kulcs társított gyakran frissülnek.
 
-Ha nem látja a végpontok frissített találatait az irányítópulton, jelentkezzen be a Azure Portalba, és keresse meg a LUIS Endpoint kulcshoz társított erőforrást, és nyissa meg a **metrikákat** a **hívások teljes** metrikájának kiválasztásához. Ha a végponti kulcsot több LUIS-alkalmazáshoz is használják, a Azure Portal metrika az azt használó LUIS-alkalmazásoktól érkező hívások összesített számát jeleníti meg.
+Ha nem látja a végpontok frissített találatait az irányítópulton, jelentkezzen be a Azure Portalba, és keresse meg a LUIS Endpoint kulcshoz társított erőforrást, és nyissa meg a **metrikákat** a **hívások teljes** metrikájának kiválasztásához. A végpont kulcs egynél több LUIS alkalmazás használata esetén az Azure Portalon a metrika azt használó összes LUIS-alkalmazások hívásait összesített számát jeleníti meg.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Van egy PowerShell-parancs a végponti kvóta eléréséhez?
 
@@ -147,64 +147,64 @@ A végponti kvóta megtekintéséhez használhatja a PowerShell-parancsot:
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
 ``` 
 
-### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>A LUIS-alkalmazásom tegnap dolgoztam, de ma 403-es hiba történt. Nem módosítottam az alkalmazást. Hogyan kijavítani?
+### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>A LUIS-alkalmazásokon tegnap dolgozott, de még ma érkeznek meg hozzám a 403-as hibák. Az alkalmazás nem módosítható. Hogyan javíthatom?
 Az alábbi [útmutatást](#how-do-i-create-and-assign-a-luis-endpoint-key) követve hozzon létre egy Luis-végponti kulcsot, és rendelje hozzá az alkalmazáshoz. Ezután az [új Endpoint kulcs használatához](luis-concept-keys.md)módosítania kell az ügyfélalkalmazás http-kérelmét a végpontra. Ha egy másik régióban hozott létre egy új erőforrást, módosítsa a HTTP-ügyfél kérelmének régióját is.
 
-### <a name="how-do-i-secure-my-luis-endpoint"></a>Hogyan biztonságos My LUIS-végpontom?
-Lásd: [a végpont biztonságossá tétele](luis-concept-keys.md#securing-the-endpoint).
+### <a name="how-do-i-secure-my-luis-endpoint"></a>Hogyan védhetem meg a LUIS végpontomhoz?
+Lásd: [biztonságossá tétele az endpoint](luis-concept-keys.md#securing-the-endpoint).
 
-## <a name="working-within-luis-limits"></a>A LUIS-korlátokon belül működik
+## <a name="working-within-luis-limits"></a>A LUIS korlátokon belül működik
 
-### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>A LUIS-alkalmazás által támogatott leképezések és entitások maximális száma
-Lásd a [határok](luis-boundaries.md) referenciát.
+### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Mi az a szándékok és entitások, LUIS-alkalmazások által támogatott maximális számát?
+Tekintse meg a [határok](luis-boundaries.md) hivatkozást.
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>El szeretnék készíteni egy LUIS-alkalmazást, amely több mint a leképezések maximális száma. Mit tegyek?
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Szeretnék a LUIS alkalmazás felépítése a több mint leképezések maximális számát. Mit tegyek?
 
-Lásd: [ajánlott eljárások a szándékokhoz](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
+Lásd: [ajánlott eljárásai leképezések](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Egy olyan alkalmazást szeretnék létrehozni a LUIS-ben, amely több, mint az entitások maximális száma. Mit tegyek?
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Szeretnék az entitások maximális száma meghaladja a LUIS-alkalmazás létrehozása. Mit tegyek?
 
-Lásd: [ajánlott eljárások az entitásokhoz](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
+Lásd: [ajánlott eljárások az entitások](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
 
-### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Milyen korlátozások vonatkoznak a kifejezések számának és méretének korlátozására?
-A [kifejezések listájának](./luis-concept-feature.md)maximális hosszát lásd: a [határok](luis-boundaries.md) hivatkozása.
+### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Mik azok a számát és méretét, a kifejezés korlátait felsorolja?
+A maximális hosszához egy [kifejezéslista](./luis-concept-feature.md), tekintse meg a [határok](luis-boundaries.md) hivatkozást.
 
-### <a name="what-are-the-limits-on-example-utterances"></a>Milyen korlátozások vonatkoznak például a hosszúságú kimondott szöveg?
-Lásd a [határok](luis-boundaries.md) referenciát.
+### <a name="what-are-the-limits-on-example-utterances"></a>Mik azok a példa utterances korlátait?
+Tekintse meg a [határok](luis-boundaries.md) hivatkozást.
 
 ## <a name="testing-and-training"></a>Tesztelés és képzés
 
-### <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>Néhány hibát látok a Batch tesztelési paneljén az alkalmazás egyes modelljeinél. Hogyan lehet kezelni ezt a problémát?
+### <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>A köteg bizonyos, a modellek az alkalmazásom panel tesztelése hibák láthatók. Hogyan kezelheti a probléma?
 
-A hibák arra utalnak, hogy a címkék és a modellek előrejelzései között némi eltérés tapasztalható. A probléma megoldásához hajtsa végre az alábbi műveletek egyikét vagy mindkettőt:
-* Ha segíteni szeretne a LUIS számára a szándékok közötti diszkrimináció növelésében, adjon hozzá további címkéket.
-* Ha segítségre van a LUIS-ról, adja hozzá a tartomány-specifikus szókincset bevezető kifejezés-lista funkciókat.
+A hibákat jelzik, hogy van néhány eltérés van, a címkék és a modellek által létrehozott javaslatok között. A probléma megoldása érdekében hajthatja végre a következő feladatok közül:
+* A LUIS közötti leképezések megkülönböztetés javítása érdekében adjon hozzá további címkéket.
+* Ismerje meg, gyorsabb LUIS érdekében adja hozzá a kifejezéslista funkciók, amelyek bemutatják a tartomány-specifikus szókincsből eredőket.
 
-Lásd a [Batch-tesztelési](luis-tutorial-batch-testing.md) oktatóanyagot.
+Tekintse meg a [Batch tesztelés](luis-tutorial-batch-testing.md) oktatóanyag.
 
-### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Egy alkalmazás exportálásakor a rendszer újraimportál egy új alkalmazásba (új alkalmazás-AZONOSÍTÓval), a LUIS-előrejelzési pontszámok eltérőek. Miért történik ez?
+### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Amikor az alkalmazás van exportálva, majd újra be egy új alkalmazást (egy új alkalmazás azonosítója), a LUIS-előrejelzési eredmények eltérőek. Miért jelentkezik?
 
-Tekintse meg [az azonos alkalmazás példányai között megjelenő előrejelzési különbségeket](luis-concept-prediction-score.md#review-intents-with-similar-scores).
+Lásd: [ugyanazon alkalmazás példánya előrejelzési különbségeit](luis-concept-prediction-score.md#review-intents-with-similar-scores).
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Néhány hosszúságú kimondott szöveg az alkalmazás módosítása után nem megfelelő szándékot mutat. Úgy tűnik, hogy a probléma véletlenszerűen eltűnik. Hogyan kijavítani? 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Néhány utterances nyissa meg a nem megfelelő leképezés után az alkalmazás végrehajtott módosításokat. A probléma úgy tűnik, hogy véletlenszerűen eltűnnek. Hogyan javíthatom? 
 
-Tekintse meg [a vonatot az összes adattal](luis-how-to-train.md#train-with-all-data).
+Lásd: [összes adatot Train](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="app-publishing"></a>Alkalmazások közzététele
 
-### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Mi a bérlő azonosítója a "kulcs hozzáadása az alkalmazáshoz" ablakban?
-Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory** >  > **tulajdonságainak** **kezelése** lehetőség kiválasztásával.
+### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Mi az a bérlő Azonosítóját, a "Hozzáadás egy billentyűt az alkalmazás a" ablakban?
+Az Azure-ban a bérlő az ügyfél vagy a szervezet, amely a társított szolgáltatás jelöl. Az Azure Portalon keresse meg a bérlő Azonosítóját a **címtár-azonosító** mező kiválasztásával **Azure Active Directory** > **kezelés**  >  **Tulajdonságok**.
 
-![Bérlő azonosítója a Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
+![Az Azure Portalon a bérlő azonosítója](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
 <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
 <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
 
 
-### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Miért van több Endpoint Key rendelve az alkalmazáshoz, mint amennyit hozzárendeltem?
-Az egyes LUIS-alkalmazások kényelme érdekében a végpontok listájában a szerzői és kezdő kulcs szerepel. Ez a kulcs csak néhány végponti találatot tesz lehetővé, így kipróbálhatja a LUIS-t.  
+### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Miért vannak-e további végpont kulcsok kiosztott, mint az alkalmazás hozzárendelve?
+Minden LUIS alkalmazás a szerzői műveletek/alapszintű kulcs rendelkezik a végpont listájában a kényelem. Ezt a kulcsot csak néhány végpont találatok lehetővé teszi, így kipróbálhatja a LUIS.  
 
-Ha az alkalmazás már a LUIS általánosan elérhetővé vált (GA), az előfizetés LUIS Endpoint kulcsait a rendszer automatikusan hozzárendeli. Ez azért történt, hogy a GA-áttelepítés egyszerűbb legyen. A Azure Portalban található új LUIS Endpoint kulcsok _nem_ lesznek automatikusan kiosztva a Luis-hoz.
+Ha az alkalmazás korábban létezett, előtt a LUIS általánosan elérhető (GA), automatikusan hozzárendelve LUIS végpont kulcsok az előfizetésében. Ez megtörtént, a végleges verzió áttelepítés egyszerűbbé. Minden olyan új LUIS végpont kulcsok az Azure Portalon _nem_ automatikusan hozzárendelve a LUIS.
 
 ## <a name="key-management"></a>Kulcskezelés
 
@@ -212,7 +212,7 @@ Ha az alkalmazás már a LUIS általánosan elérhetővé vált (GA), az előfiz
 
 További információ a szerzői műveletek és az előrejelzési futtatókörnyezet kulcsa közötti különbségekről: [szerzői és lekérdezési előrejelzési végpont kulcsai a Luis-ben](luis-concept-keys.md) . 
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Hiba történt a kvóta lejártakor. Hogyan kijavítani? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Hiba történt a kvóta lejártakor. Hogyan javíthatom? 
 
 További információért lásd: a [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) -es és a [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) -es http-állapotkód javítása.
 
@@ -224,43 +224,43 @@ További információért lásd: a [403](#i-received-an-http-403-error-status-co
 
 A szerzői kulcsok a [szerzői műveletek elvégzése](luis-migration-authoring.md)után érhetők el a Luis-portálon.  
 
-## <a name="app-management"></a>Alkalmazások kezelése
+## <a name="app-management"></a>Alkalmazáskezelés
 
-### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hogyan letölti a felhasználói hosszúságú kimondott szöveg naplóját?
-Alapértelmezés szerint a LUIS-alkalmazás a felhasználóktól hosszúságú kimondott szöveg naplózza. A felhasználók által a LUIS-alkalmazásba küldött hosszúságú kimondott szöveg letöltéséhez lépjen a **saját alkalmazások**elemre, és válassza ki az alkalmazást. A környezetfüggő eszköztáron válassza a **végponti naplók exportálása**lehetőséget. A napló vesszővel tagolt (CSV) fájlként van formázva.
+### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hogyan töltse le a felhasználó utterances naplózása?
+Alapértelmezés szerint a LUIS-alkalmazás a felhasználók naplózza a kimondott szöveg. Töltse le, hogy a felhasználók küldeni a LUIS-alkalmazás megcímkézzen naplóját, lépjen a **saját alkalmazások**, és válassza ki az alkalmazást. Környezetfüggő eszköztárán válassza **végpont naplók exportálása**. A napló formátuma vesszővel tagolt (CSV) fájlként.
 
-### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hogyan lehet letiltani a hosszúságú kimondott szöveg naplózását?
-A felhasználói hosszúságú kimondott szöveg naplózását kikapcsolhatja az ügyfélalkalmazás által a LUIS lekérdezéséhez használt végponti URL-cím `log=false` beállításával. A naplózás kikapcsolása azonban letiltja a LUIS-alkalmazás hosszúságú kimondott szöveg, vagy javíthatja az [aktív tanuláson](luis-concept-review-endpoint-utterances.md#what-is-active-learning)alapuló teljesítményt. Ha az adatvédelemre vonatkozó probléma miatt `log=false` beállítani, akkor nem töltheti le a felhasználói hosszúságú kimondott szöveg származó adatokat a LUIS-ból, vagy az alkalmazás fejlesztéséhez használja ezeket a hosszúságú kimondott szöveg.
+### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hogyan tilthatom az utterances naplózását?
+Felhasználók bármikor kikapcsolhatják a naplózást a felhasználói kimondott szöveg beállításával `log=false` az a végpont URL-címe, amely az ügyfélalkalmazásban használ a LUIS-lekérdezéshez. Azonban letiltja a LUIS-alkalmazás lehetőségét utterances javaslat, amely azon alapul, a teljesítmény javítása naplózási kikapcsolásával [aktív tanulás](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Ha `log=false` miatt az adatvédelem problémákat, nem töltheti le az adott felhasználó utterances rekord LUIS és használja ezeket a kimondott szöveg tökéletesítheti alkalmazását.
 
-A naplózás a hosszúságú kimondott szöveg egyetlen tárolója.
+A naplózás nem utterances csak tárolására.
 
-### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Miért nem szeretném naplózni az összes végponti hosszúságú kimondott szöveg?
-Ha a naplót előrejelzési elemzésre használja, ne rögzítsen teszt hosszúságú kimondott szöveg a naplóban.
+### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Miért nem szeretné az összes naplózott saját végpont utterances?
+Ha a napló előrejelzési elemzésre használ, ne rögzítsen rajta teszt utterances a naplóban tárolt.
 
 ## <a name="data-management"></a>Adatkezelés
 
-### <a name="can-i-delete-data-from-luis"></a>Törölhetők az adatok a LUIS-ból?
+### <a name="can-i-delete-data-from-luis"></a>Törölhetem-e adatokat a LUIS?
 
-* Bármikor törölheti például a LUIS-képzéshez használt hosszúságú kimondott szöveg. Ha töröl egy példát a LUIS-alkalmazásból, az el lesz távolítva a LUIS webszolgáltatásból, és nem érhető el exportálásra.
-* A hosszúságú kimondott szöveg törölheti a felhasználói hosszúságú kimondott szöveg listájáról, amelyet a LUIS az **Endpoint hosszúságú kimondott szöveg áttekintése** lapon javasol. Ha törli a hosszúságú kimondott szöveg a listából, azzal megakadályozza, hogy a rendszer ne törölje őket a naplókból.
-* Ha töröl egy fiókot, a rendszer törli az összes alkalmazást, valamint a hosszúságú kimondott szöveg és a naplókat. Az adat megőrzése a kiszolgálókon 60 nappal a végleges törlés előtt történik.
+* A LUIS oktatási használt példa kimondott szöveg mindig törölheti. Ha töröl egy példa utterance (kifejezés) a LUIS-alkalmazás, törlődik a LUIS webszolgáltatás és az exportálás nem érhető el.
+* Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a **tekintse át a végpont utterances** lapot. Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
+* Ha töröl egy fiókot, az összes alkalmazás törlődnek, azokhoz példa kimondott szöveg és a naplókat. Az adatok végleges törlés előtt 60 napig őrződnek a kiszolgálókon.
 
-### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Hogyan kezeli a Microsoft a LUIS-nak küldött adatvédelmet?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Hogyan kezeli a Microsoft LUIS küldött adatokat?
 
-Az adatvédelmi [központ](https://www.microsoft.com/trustcenter) ismerteti a kötelezettségvállalásokat, valamint az adatkezelési és-hozzáférési lehetőségeket az Azure-szolgáltatásokban.
+A [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter) ismerteti a Microsoft és az adatok kezelése és a hozzáférés az Azure-szolgáltatások beállításait.
 
 ## <a name="language-and-translation-support"></a>Nyelvi és fordítási támogatás
 
-### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Van egy alkalmazásom egy nyelven, és egy másik nyelven szeretnék létrehozni egy párhuzamos alkalmazást. Mi a legegyszerűbb módszer?
-1. Exportálja az alkalmazást.
-2. Fordítsa le a címkével ellátott hosszúságú kimondott szöveg az exportált alkalmazás JSON-fájljából a célként megadott nyelvre.
-3. Előfordulhat, hogy módosítania kell a leképezések és entitások nevét, vagy hagyja őket.
-4. Végül importálja az alkalmazást, hogy a megcélzott nyelven rendelkezzen LUIS-alkalmazással.
+### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Szükségem van egy alkalmazása egy nyelven, és hozzon létre egy párhuzamos alkalmazást egy másik nyelven szeretné. Mi az a legegyszerűbb módja, ehhez?
+1. Az alkalmazás exportálása.
+2. Az exportált alkalmazásnak, hogy a célként megadott nyelv a JSON-fájlban címkézett megcímkézzen fordítja le.
+3. Szüksége lehet a nevet a szándékok és entitások, vagy hagyja őket, mivel ezek.
+4. Végül importálja a LUIS-alkalmazásokon rendelkezik a célként megadott nyelven az alkalmazást.
 
-## <a name="app-notification"></a>Alkalmazás-értesítés
+## <a name="app-notification"></a>Alkalmazásban megjelenő értesítésre
 
-### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Miért kaptam egy e-mailt, mondván, hogy már majdnem a kvóta?
-Az authoring/Starter-kulcs csak havonta 1000-es végpontot kérdez le. Hozzon létre egy LUIS Endpoint Key (ingyenes vagy fizetős) kulcsot, és használja az adott kulcsot a végponti lekérdezések végrehajtásakor. Ha egy robot vagy egy másik ügyfélalkalmazás végponti lekérdezéseit teszi elérhetővé, akkor ott kell módosítania a LUIS Endpoint kulcsot.
+### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Miért jelenik meg egy e-mail arról tájékoztatja, szinte kvótájából vagyok?
+A szerzői műveletek/alapszintű kulcs csak akkor engedélyezett, 1000 végpont havonta kérdezi le. Hozzon létre egy LUIS végponti kulcs (ingyenes vagy fizetős) és a kulcs végpont lekérdezések létrehozásakor. Ha egy robot vagy egy másik ügyfélalkalmazás végpont lekérdezések végez, a LUIS végponti kulcs van módosítani szeretné.
 
 ## <a name="bots"></a>Robotok
 
@@ -293,13 +293,13 @@ Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a rob
 
 ## <a name="integrating-luis"></a>A LUIS integrálása
 
-### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>Hol jött létre a LUIS-alkalmazásom az Azure-webalkalmazás bot-előfizetési folyamata során?
-Ha kijelöl egy LUIS-sablont, majd kiválasztja a **kiválasztás** gombot a sablon ablaktáblán, a bal oldali ablaktábla a sablon típusát is megváltoztatja, és megkérdezi, hogy milyen régióban hozza létre a Luis-sablont. A webalkalmazás-robot folyamata azonban nem hoz létre LUIS-előfizetést.
+### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>Ahol létrejött a LUIS-alkalmazásom az Azure web app bot előfizetés során?
+Ha, válasszon ki egy LUIS-sablont, és válassza a **kiválasztása** gombra a sablon ablaktáblán, a bal oldali ablaktáblán tartalmazza a sablon típusát módosítja, és kéri a régióját, a LUIS-sablon létrehozásához. A web app bot folyamat LUIS előfizetés azonban nem létrehozása.
 
-![LUIS-sablon webalkalmazásának bot-régiója](./media/luis-faq/web-app-bot-location.png)
+![A LUIS sablon web app bot régió](./media/luis-faq/web-app-bot-location.png)
 
-### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Milyen LUIS-régiók támogatják a bot Framework Speech alapozót?
-A [beszédfelismerési](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) alapszolgáltatások csak a Central (US) példányban található Luis-alkalmazásokhoz támogatottak.
+### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Milyen a LUIS-régiók támogatják a Bot Framework speech betanítási művelet?
+[Beszéd betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) csak a központi (amerikai) példány LUIS-alkalmazások esetén támogatott.
 
 ## <a name="api-programming-strategies"></a>API programozási stratégiák
 
@@ -307,11 +307,11 @@ A [beszédfelismerési](https://docs.microsoft.com/bot-framework/bot-service-man
 
 A LUIS-minta használatával programozott módon [keresheti meg a régiót](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) C# vagy a Node. js-t. 
 
-## <a name="luis-service"></a>LUIS szolgáltatás
+## <a name="luis-service"></a>Intelligens HANGFELISMERÉSI szolgáltatás
 
-### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Elérhető-e a Language Understanding (LUIS) a helyszínen vagy a privát felhőben?
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Language Understanding (LUIS) érhető el a helyszínen vagy a privát felhőben?
 
-Igen, használhatja a LUIS- [tárolót](luis-container-howto.md) ezekben a forgatókönyvekben, ha rendelkezik a szükséges kapcsolattal a méréshez. 
+Igen, használhatja a LUIS [tároló](luis-container-howto.md) ebben az esetben, ha rendelkezik a szükséges kapcsolatokat használatának mérését. 
 
 ## <a name="migrating-to-the-next-version"></a>Migrálás a következő verzióra
 
@@ -333,8 +333,8 @@ Videók:
 
 * [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
-* [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN Language Understanding intelligens szolgáltatások (LUIS) Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+A LUIS kapcsolatos további információkért lásd a következőket:
+* [Stack Overflow kérdések címkézett az intelligens hangfelismerési szolgáltatással](https://stackoverflow.com/questions/tagged/luis)
+* [MSDN Language Understanding Intelligent Services (LUIS) fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)

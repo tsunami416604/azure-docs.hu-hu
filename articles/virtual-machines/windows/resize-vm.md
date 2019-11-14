@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gép átméretezése a PowerShell használatával az Azure-ban | Microsoft Docs
+title: Windows rendszerű virtuális gép átméretezése a PowerShell használatával az Azure-ban
 description: A Resource Manager-alapú üzemi modellben létrehozott Windows rendszerű virtuális gépek átméretezése az Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 1f5f8f3a315b894ab8bc972d36008b5bce85d8e7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749244"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073368"
 ---
 # <a name="resize-a-windows-vm"></a>Windows rendszerű virtuális gép átméretezése
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan helyezhet át egy virtuális gépet egy másik virtu
 
 Miután létrehozta a virtuális gépet (VM), a virtuálisgép-méret módosításával felfelé vagy lefelé méretezheti a virtuális gépet. Bizonyos esetekben először fel kell szabadítania a virtuális gépet. Ez akkor fordulhat elő, ha az új méret nem érhető el azon a hardveres fürtön, amely jelenleg a virtuális gépet üzemelteti.
 
-Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához **a méret egyik verzióját kell** választania. Válassza például a Standard_E4**s**_v3 elemet a standard E4 v3 helyett.
+Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához **a méret egyik verzióját kell** választania. Válassza például a Standard_E4**s**_v3 a Standard_E4_v3 helyett.
 
  
 

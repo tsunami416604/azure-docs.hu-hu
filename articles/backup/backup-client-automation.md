@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bf79957bec4b330ca9acce3f8b92aab1a0944440
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747264"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074859"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -547,9 +547,9 @@ IsExclude : True
 IsRecursive : True
 ```
 
-### <a name="performing-an-ad-hoc-backup"></a>Alkalmi biztonsági mentés végrehajtása
+### <a name="performing-an-on-demand-backup"></a>Igény szerinti biztonsági mentés végrehajtása
 
-Miután beállította a biztonsági mentési szabályzatot, a biztonsági mentések az ütemezés szerint történnek. Az ad hoc biztonsági mentés a [Start-OBBackup](https://technet.microsoft.com/library/hh770426) parancsmag használatával is lehetséges:
+Miután beállította a biztonsági mentési szabályzatot, a biztonsági mentések az ütemezés szerint történnek. Az igény szerinti biztonsági mentést a [Start-OBBackup](https://technet.microsoft.com/library/hh770426) parancsmaggal is lehet használni:
 
 ```powershell
 Get-OBPolicy | Start-OBBackup

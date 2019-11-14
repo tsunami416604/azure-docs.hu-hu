@@ -1,5 +1,5 @@
 ---
-title: Egyéni parancsfájlok futtatása Linux rendszerű virtuális gépeken az Azure-ban | Microsoft Docs
+title: Egyéni parancsfájlok futtatása Linux rendszerű virtuális gépeken az Azure-ban
 description: Linux rendszerű virtuális gépek konfigurációs feladatainak automatizálása az egyéni parancsfájl-bővítmény v1 használatával
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b7dbabf5be8b1f223f6e39f294b9d7022b83c4f8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092628"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073183"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 1. verziójának használata Linux rendszerű virtuális gépekkel
 
@@ -37,7 +37,7 @@ Két Linux egyéni parancsfájl-bővítmény létezik:
 
 * Version 2 - Microsoft.Azure.Extensions.CustomScript
 
-Az új és a meglévő központi telepítések helyett használja az új verziót ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)). Az új verzió célja, hogy a rendszer visszaadja a cserét. Ezért az áttelepítés olyan egyszerű, mint a név és a verzió módosítása, nem kell módosítania a bővítmény konfigurációját.
+Az új és a meglévő központi telepítések helyett használja az új verziót ([Microsoft. Azure. Extensions. CustomScript](custom-script-linux.md)). Az új verzió a régi kiváltására készült. A migrálásához így elég megváltoztatni a nevet és a verziót, nincs szükség a bővítménykonfiguráció módosítására.
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -58,7 +58,7 @@ A bővítmény használatával az Azure Blob Storage hitelesítő adatait haszn�
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubot vagy az Azure Storage-t, akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. Ha például a parancsfájl az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a [](../../virtual-network/security-overview.md#service-tags)hozzáférést a tároláshoz.
+Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubot vagy az Azure Storage-t, akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. Ha például a parancsfájl az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést a [tároláshoz](../../virtual-network/security-overview.md#service-tags).
 
 Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal/hálózati biztonsági csoport portjainak megnyitására.
 
@@ -69,8 +69,8 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * Győződjön meg arról, hogy a parancsfájlok futtatásakor nincs szükség felhasználói bevitelre.
 * A szkript futtatásához 90 perc van engedélyezve, ami továbbra is a bővítmény sikertelen kiépítését eredményezi.
 * Ne helyezzen újraindítást a parancsfájlba, ezért a rendszer a telepített többi bővítménnyel kapcsolatos problémákat okoz, és az újraindítás után a bővítmény nem fog folytatódni az újraindítás után. 
-* Ha egy szkript újraindítást vált ki, telepítenie kell az alkalmazásokat, futtatnia kell a szkripteket stb. Be kell ütemezni az újraindítást egy cron-feladatokkal, vagy olyan eszközök használatával, mint a DSC, a Chef vagy a Puppet Extensions.
-* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](../linux/using-cloud-init.md) , és használhat [parancsfájlokat](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) rendszerindítási modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
+* Ha olyan szkripttel rendelkezik, amely újraindítást eredményez, telepítse az alkalmazásokat, és futtassa a parancsfájlokat stb. Be kell ütemezni az újraindítást egy cron-feladatokkal, vagy olyan eszközök használatával, mint a DSC, a Chef vagy a Puppet Extensions.
+* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](../linux/using-cloud-init.md) , és használhat [parancsfájlokat rendszerindítási](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
 * Ha egy parancsfájl futását szeretné ütemezni, a bővítmény használatával hozzon létre egy cron-feladatot.
 * Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha egy futó parancsfájl gyakoribb frissítési állapotát szeretné használni, létre kell hoznia a saját megoldását.
 * Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálók használatát, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *curl*-t.
@@ -120,15 +120,15 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | Karakterlánc |
-| type | CustomScriptForLinux | Karakterlánc |
+| apiVersion | 2015-06-15 | dátum |
+| publisher | Microsoft.OSTCExtensions | sztring |
+| type | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (például) | Python- \<MyPythonScript.py My-param1\> | Karakterlánc |
-| enableInternalDNSCheck | true | boolean |
-| storageAccountName (például:) | examplestorageacct | Karakterlánc |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
+| fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
+| commandToExecute (például) | Python MyPythonScript.py \<My-param1\> | sztring |
+| enableInternalDNSCheck | true | logikai |
+| storageAccountName (például:) | examplestorageacct | sztring |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 ### <a name="property-value-details"></a>Tulajdonság értékének részletei
 
@@ -260,7 +260,7 @@ az vm extension set
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete is ebbe a könyvtárba kerül a `stdout` és `stderr` a fájlokba.
+Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete `stdout` és `stderr` fájlokban is ebbe a könyvtárba kerül.
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
@@ -295,7 +295,7 @@ Néhány Megjegyzés:
 
 1. Az engedélyezés az, amikor a parancs elindul.
 1. A letöltés az Azure-ból származó CustomScript-bővítmény-csomag letöltésére vonatkozik, nem a fileUris megadott parancsfájl-fájlokra.
-1. Azt is megtekintheti, hogy melyik naplófájlba írja a rendszer`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Azt is megtekintheti, hogy melyik naplófájlba írja az `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 A következő lépés a naplófájl bejelölése, ez a formátum:
 

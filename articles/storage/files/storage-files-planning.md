@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33fa474d719ec8a20142f35f56cc697c11e03e86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926627"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066348"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
-A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő SMB protokollon keresztül érhető el. Mivel a Azure Files teljes körűen felügyelt, az éles környezetekben való üzembe helyezése sokkal egyszerűbb, mint a fájlkiszolgáló vagy a NAS-eszköz telepítése és kezelése. Ez a cikk azokat a témaköröket ismerteti, amelyeket figyelembe kell venni egy Azure-fájlmegosztás üzembe helyezése során a szervezeten belüli éles használatra.
+[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Mivel a Azure Files teljes körűen felügyelt, az éles környezetekben való üzembe helyezése sokkal egyszerűbb, mint a fájlkiszolgáló vagy a NAS-eszköz telepítése és kezelése. Ez a cikk azokat a témaköröket ismerteti, amelyeket figyelembe kell venni egy Azure-fájlmegosztás üzembe helyezése során a szervezeten belüli éles használatra.
 
 ## <a name="management-concepts"></a>Felügyeleti fogalmak
 
@@ -124,12 +124,12 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 |---------|---------|---------|---------|---------|
 |100         | 100     | Akár 300     | 66   | 44   |
 |500         | 500     | Akár 1 500   | 90   | 60   |
-|1 024       | 1 024   | Akár 3 072   | 122   | 81   |
+|1,024       | 1,024   | Akár 3 072   | 122   | 81   |
 |5 120       | 5 120   | Akár 15 360  | 368   | 245   |
 |10 240      | 10 240  | Akár 30 720  | 675 | 450   |
 |33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
+|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
@@ -199,26 +199,30 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 
 - A LRS/ZRS és a GRS/GZRS fiók átalakítása nem lehetséges a nagyméretű fájlmegosztást engedélyező Storage-fiókok esetében.
 
-### <a name="regional-availability"></a>Regionális elérhetőség
+### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhetők el, ezek a régiók a következő táblázatban láthatók:
 
-|Region (Régió) |Támogatott redundancia |
+|Régió |Támogatott redundancia |
 |-------|---------|
 |Ausztrália keleti régiója |LRS     |
 |Délkelet-Ausztrália|LRS |
 |Közép-Kanada  |LRS     |
+|Kelet-Kanada     |LRS     |
 |Közép-India  |LRS     |
+|USA középső régiója *   |LRS     |
 |Kelet-Ázsia      |LRS     |
 |USA keleti régiója *        |LRS     |
+|USA 2. keleti régiója *      |LRS     |
 |Közép-Franciaország |LRS, ZRS|
 |Dél-Franciaország   |LRS     |
+|Észak-Európa   |LRS     |
 |Dél-India    |LRS     |
 |Délkelet-Ázsia |LRS, ZRS|
 |USA nyugati középső régiója|LRS     |
 |Nyugat-Európa *    |LRS, ZRS|
 |USA nyugati régiója *        |LRS     |
-|USA 2. nyugati régiója      |LRS, ZRS|
+|USA nyugati régiója, 2.      |LRS, ZRS|
 
 az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
 
@@ -243,7 +247,7 @@ Számos egyszerű lehetőség van a meglévő fájlmegosztás, például egy hel
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : a Robocopy egy jól ismert másolási eszköz, amely a Windows-és Windows Server-kiszolgálóval is rendelkezik. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : a AzCopy egy parancssori segédprogram, amely az adatok átmásolását Azure Files, valamint az Azure Blob Storage-t használja az optimális teljesítményű egyszerű parancsok használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)
 * [Azure Files üzembe helyezése](storage-files-deployment-guide.md)
 * [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

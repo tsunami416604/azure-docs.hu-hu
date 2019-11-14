@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ee9594e7aa3b55f7eb6fc7ba41783708555bd15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513769"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075290"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Saját üzemeltetésű átjáró kiépítése az Azure API Management
 
@@ -32,13 +32,14 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="provision-a-self-hosted-gateway"></a>Saját üzemeltetésű átjáró kiépítése
+## <a name="provision-a-self-hosted-gateway"></a>Saját üzemeltetésű átjáró üzembe helyezése
 
 1. Válassza ki az **átjárókat** a **Beállítások**területen.
 2. Kattintson a **+Hozzáadás** gombra.
 3. Adja meg az átjáró **nevét** és **régióját** .
 > [!TIP]
 > A **régió** adja meg az átjáró-erőforráshoz társítandó átjáró-csomópontok kívánt helyét. Szemantikailag egyenértékű az Azure-erőforrásokhoz társított hasonló tulajdonsággal, de tetszőleges karakterlánc-értéket rendelhet hozzá.
+
 4. Igény szerint megadhatja az átjáró erőforrásának **leírását** .
 5. Ha szeretné, az **API** -k területen válassza a **+** lehetőséget, hogy egy vagy több API-t társítson ehhez az átjáró-erőforráshoz.
 > [!TIP]
@@ -46,7 +47,8 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
 
 > [!IMPORTANT]
 > Alapértelmezés szerint a meglévő API-k egyike sem lesz társítva az új átjáró erőforráshoz. Ezért az új átjárón keresztül történő meghívására tett kísérletek `404 Resource Not Found` választ fognak eredményezni.
-6. Kattintson az **Add** (Hozzáadás) parancsra.
+
+6. Kattintson az **Hozzáadás** parancsra.
 
 Most az átjáró-erőforrás kiépítve lett a API Management-példányban. Folytathatja az átjáró üzembe helyezését.
 

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Egyéni virtuálisgép-rendszerképek létrehozása az Azure PowerShell-lel | Microsoft Docs
+title: Oktatóanyag – egyéni virtuálisgép-rendszerképek létrehozása a Azure PowerShell
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure PowerShell virtuálisgép-rendszerkép létrehozására az Azure-ban
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 906ac3b28a512a866e712cefda4355ad901c258d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390571"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064719"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása Azure virtuális gépről az Azure PowerShell-lel
 
@@ -35,7 +35,7 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 
 A nyilvános előzetes verzióban elérhető az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) szolgáltatás. Egyszerűen írja le a testreszabásokat egy sablonban, és kezelje a cikk rendszerkép-létrehozási lépéseit. [Próbálja ki az Azure rendszerkép-készítőt (előzetes verzió)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az alábbi lépések ismertetik, hogyan alakíthat egy meglévő virtuális gépet újrahasznosítható egyéni rendszerképpé, amely segítségével új virtuálisgép-példányokat hozhat létre.
 
@@ -45,7 +45,7 @@ Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglé
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához csak kattintson a kódblokk jobb felső sarkában található **Kipróbálás** elemre. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="prepare-vm"></a>Virtuális gép előkészítése
 
@@ -57,7 +57,7 @@ A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet p
 
 
 1. Csatlakozzon a virtuális géphez.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a *%WINDIR%\system32\sysprep*értékre, majd futtassa a `sysprep.exe` parancsot.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a *%WINDIR%\system32\sysprep*értékre, majd futtassa a `sysprep.exe`.
 3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **Leállítási beállítások** területen válassza a **Leállítás** lehetőséget, és kattintson az **OK** gombra.
 5. A Sysprep a feladat befejezése után leállítja a virtuális gépet. **Ne indítsa újra a virtuális gépet**.
@@ -74,7 +74,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-Állítsa a virtuális gép állapotát `-Generalized` értékre a [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)használatával. 
+Állítsa be a virtuális gép állapotát úgy, hogy `-Generalized` a [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)használatával. 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -155,7 +155,7 @@ Remove-AzImage `
     -ResourceGroupName myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

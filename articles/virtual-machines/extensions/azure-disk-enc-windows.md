@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption a Windows rendszerhez | Microsoft Docs
+title: Windows Azure Disk Encryption
 description: Azure Disk Encryption üzembe helyezése egy Windows rendszerű virtuális gépen a virtuálisgép-bővítmény használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901331"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073208"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -132,34 +132,34 @@ Az 1,1 sémához `aadClientID` és `aadClientSecret` vagy `AADClientCertificate`
 ```
 
 
-### <a name="property-values"></a>Tulajdonságértékek
+### <a name="property-values"></a>Tulajdonságok értékei
 
-| Név | Érték/példa | Adattípus |
+| Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| Publisher | Microsoft. Azure. Security | sztring |
+| publisher | Microsoft.Azure.Security | sztring |
 | type | AzureDiskEncryptionForLinux | sztring |
 | typeHandlerVersion | 1,1, 2,2 | sztring |
-| (1,1 séma) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | GUID | 
+| (1,1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
 | (1,1 séma) AADClientSecret | jelszó | sztring |
-| (1,1 séma) AADClientCertificate | ujjlenyomat | sztring |
-| DiskFormatQuery | {"dev_path": "", "Name": "", "file_system": ""} | JSON-szótár |
+| (1,1 séma) AADClientCertificate | thumbprint | sztring |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótár |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | sztring | 
-| KeyEncryptionAlgorithm | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | sztring |
-| keyEncryptionKeyURL | url | sztring |
-| keyVaultURL | url | sztring |
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | sztring |
+| KeyEncryptionKeyURL | url | sztring |
+| KeyVaultURL | url | sztring |
 | választható Jelszót | jelszó | sztring | 
-| sequenceVersion | uniqueidentifier | sztring |
-| volumeType | Operációs rendszer, az összes | sztring |
+| SequenceVersion | uniqueidentifier | sztring |
+| VolumeType | Operációs rendszer, az összes | sztring |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 A sablonok központi telepítésének példáját lásd: [új titkosított Windows rendszerű virtuális gép létrehozása a katalógus rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
 
-## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
+## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
 Az utasítások az [Azure CLI legújabb dokumentációjában](/cli/azure/vm/encryption?view=azure-cli-latest)találhatók. 
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -167,7 +167,7 @@ Tekintse át a [Azure Disk Encryption hibaelhárítási útmutatót](../../secur
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/community/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](features-windows.md).

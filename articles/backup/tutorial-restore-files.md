@@ -8,39 +8,41 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: b150dc8e0688b27fdc677bf23a75389c493f1325
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 8d23eb5c177464642ffcafec8877fd2649c0d4f7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210191"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073994"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
-Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk részletesen ismerteti az egyes fájlok visszaállításának módját. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+
+Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk részletesen ismerteti az egyes fájlok visszaállításának módját. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
+>
 > * Helyreállítási pontok listázása és kiválasztása
 > * Helyreállítási pont csatlakoztatása egy virtuális géphez
 > * Fájlok visszaállítása egy helyreállítási pontból
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
-
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Ehhez az oktatóanyaghoz olyan Linux rendszerű virtuális gépre van szükség, amelyet az Azure Backup véd. A fájl véletlen törlésének és a helyreállítási folyamatnak a szimulálásához töröljön egy oldalt egy webkiszolgálóról. Ha szüksége van egy linuxos virtuális gépre, amely egy webkiszolgálót futtat, és amelyet az Azure Backup véd, lásd: [Virtuális gép biztonsági mentése az Azure-ban a parancssori felület használatával](quick-backup-vm-cli.md).
 
-
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
+
 Amikor az Azure biztonsági mentést kezdeményez, a virtuális gépen futó biztonsági mentési bővítmény időponthoz kötött pillanatképet készít. A biztonsági mentési bővítmény az első biztonsági mentés kérésekor települ a virtuális gépre. Az Azure Backup akkor is tud pillanatképet készíteni az alapul szolgáló tárolóról, ha a virtuális gép a biztonsági mentés közben nem fut.
 
 Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít. Amikor az Azure Backup elkészítette a pillanatképet, az adatok átkerülnek a helyreállítási tárba. A maximális hatékonyság érdekében az Azure Backup csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
 Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, és létrehoz egy helyreállítási pontot.
 
-
 ## <a name="delete-a-file-from-a-vm"></a>Fájl törlése egy virtuális gépről
+
 Ha véletlenül törölt vagy módosított egy fájlt, arra is van lehetősége, hogy a helyreállítási pontból csak egyes fájlokat állítson vissza. Ez a folyamat lehetővé teszi a helyreállítási pont biztonsági másolatában szereplő fájlok tallózását, és csak a szükséges fájlok visszaállítását. Ebben a példában a fájlszintű helyreállítási folyamat bemutatásához törölni fogunk egy fájlt egy webkiszolgálóról.
 
 1. A virtuális géphez való csatlakozáshoz kérje le a virtuális gép IP-címét az [az vm show](/cli/azure/vm?view=azure-cli-latest#az-vm-show) paranccsal:
@@ -75,8 +77,8 @@ Ha véletlenül törölt vagy módosított egy fájlt, arra is van lehetősége,
     exit
     ```
 
-
 ## <a name="generate-file-recovery-script"></a>Fájlhelyreállítási szkript létrehozása
+
 A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtatható szkriptet biztosít, amely helyi meghajtóként csatlakoztatja a helyreállítási pontot. Ezen a helyi meghajtón megkeresheti és visszaállíthatja a fájlokat a virtuális gépre. Ha ezzel végzett, válassza le a helyreállítási pont. Az Azure Backup a hozzárendelt ütemezési és megőrzési szabályzat szerint folytatja az adatok biztonsági mentését.
 
 1. A virtuális gép helyreállítási pontjainak listázásához használja [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) parancsot. Ebben a példában kiválasztjuk a virtuális gép legutóbbi, *myVM* nevű helyreállítási pontját, amelyet a rendszer a *myRecoveryServicesVault* tárolóban őriz:
@@ -116,8 +118,8 @@ A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtath
     scp myVM_we_1571974050985163527.sh 52.174.241.110:
     ```
 
-
 ## <a name="restore-file-to-your-vm"></a>Fájl visszaállítása a virtuális gépre
+
 Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlakoztathatja a helyreállítási pontot, és visszaállíthatja a fájlokat.
 
 1. Csatlakozzon a virtuális géphez SSH-val. Cserélje le *publicIpAddress* kifejezést a virtuális gép nyilvános IP-címére az alább látható módon:
@@ -146,19 +148,19 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
     Please enter the password as shown on the portal to securely connect to the recovery point. : c068a041ce12465
-    
+
     Connecting to recovery point using ISCSI service...
-    
+
     Connection succeeded!
-    
+
     Please wait while we attach volumes of the recovery point to this machine...
-    
+
     ************ Volumes of the recovery point and their mount paths on this machine ************
-    
+
     Sr.No.  |  Disk  |  Volume  |  MountPath
-    
+
     1)  | /dev/sdc  |  /dev/sdc1  |  /home/azureuser/myVM-20170919213536/Volume1
-    
+
     ************ Open File Explorer to browse for files. ************
     ```
 
@@ -168,20 +170,20 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
     sudo cp /home/azureuser/myVM-20170919213536/Volume1/var/www/html/index.nginx-debian.html /var/www/html/
     ```
 
-6. A webböngészőben frissítse a weblapot. A webhely most ismét megfelelően betöltődik az alábbi példában látható módon:
+5. A webböngészőben frissítse a weblapot. A webhely most ismét megfelelően betöltődik az alábbi példában látható módon:
 
     ![Az NGINX webhely most már megfelelően betöltődik](./media/tutorial-restore-files/nginx-restored.png)
 
-7. Zárja be a virtuális gép felé indított SSH-munkamenetet a következőképpen:
+6. Zárja be a virtuális gép felé indított SSH-munkamenetet a következőképpen:
 
     ```bash
     exit
     ```
 
-8. Válassza le a helyreállítási pontot a virtuális gépről az [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-unmount-rp) paranccsal. Az alábbi példa leválasztja a helyreállítási pontot a *myRecoveryServicesVault* tárolóban őrzött *myVM* nevű virtuális gépről.
+7. Válassza le a helyreállítási pontot a virtuális gépről az [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-unmount-rp) paranccsal. Az alábbi példa leválasztja a helyreállítási pontot a *myRecoveryServicesVault* tárolóban őrzött *myVM* nevű virtuális gépről.
 
     Cserélje le a *myRecoveryPointName* kifejezést az előző parancsokkal beszerzett helyreállítási pont nevére:
-    
+
     ```azurecli-interactive
     az backup restore files unmount-rp \
         --resource-group myResourceGroup \
@@ -192,9 +194,11 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
     ```
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban egy helyreállítási pontot csatlakoztatott egy virtuális géphez, és visszaállította egy webkiszolgáló fájljait. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
+>
 > * Helyreállítási pontok listázása és kiválasztása
 > * Helyreállítási pont csatlakoztatása egy virtuális géphez
 > * Fájlok visszaállítása egy helyreállítási pontból
@@ -203,4 +207,3 @@ Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan végezhető
 
 > [!div class="nextstepaction"]
 > [Windows Server biztonsági mentése az Azure-ba](tutorial-backup-windows-server-to-azure.md)
-

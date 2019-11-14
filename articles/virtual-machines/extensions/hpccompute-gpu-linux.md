@@ -1,5 +1,5 @@
 ---
-title: NVIDIA GPU illesztőprogram-bővítmény – Azure Linux rendszerű virtuális gépek | Microsoft Docs
+title: NVIDIA GPU illesztőprogram-bővítmény – Azure Linux rendszerű virtuális gépek
 description: Microsoft Azure bővítmény NVIDIA GPU-illesztőprogramok telepítéséhez Linux rendszeren futó N-sorozatú számítási virtuális gépeken.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174004"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073741"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez
 
@@ -36,7 +36,7 @@ A bővítmény az NVIDIA GPU [-illesztőprogramok Windows N sorozatú virtuális
 
 Ez a bővítmény a következő operációsrendszer-disztribúciókat támogatja, az adott operációsrendszer-verzióhoz tartozó illesztőprogram-támogatástól függően.
 
-| Disztribúció | Version |
+| Disztribúció | Verzió |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -70,13 +70,13 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
+| apiVersion | 2015-06-15 | dátum |
+| publisher | Microsoft.HpcCompute | sztring |
+| type | NvidiaGpuDriverLinux | sztring |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Beállítások
@@ -85,9 +85,9 @@ Az összes beállítás megadása nem kötelező. Az alapértelmezett viselkedé
 
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | false | true, false | boolean |
-| driverVersion | NV: RÁCS illesztőprogramjának verziója<br> NC/ND: A CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | string |
-| installCUDA | Telepítse a CUDA eszközkészletet. Csak az NC/ND sorozatú virtuális gépek esetében fontos. | true | true, false | boolean |
+| updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | false | true, false | logikai |
+| driverVersion | NV: GRID-illesztőprogram verziója<br> NC/ND: CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | Legújabb | RÁCS: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
+| installCUDA | Telepítse a CUDA eszközkészletet. Csak az NC/ND sorozatú virtuális gépek esetében fontos. | true | true, false | logikai |
 
 
 ## <a name="deployment"></a>Környezet

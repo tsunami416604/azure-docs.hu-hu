@@ -1,5 +1,5 @@
 ---
-title: A Symantec Endpoint Protection telepítése Azure-beli Windows rendszerű virtuális gépen | Microsoft Docs
+title: A Symantec Endpoint Protection telepítése Azure-beli Windows rendszerű virtuális gépen
 description: Megtudhatja, hogyan telepítheti és konfigurálhatja a Symantec Endpoint Protection biztonsági bővítményt egy olyan új vagy meglévő Azure virtuális gépen, amely a klasszikus üzemi modellel lett létrehozva.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 315cb5f22a3667db93c2421b924ac0d988e56164
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 143a697e509b96787ad3f52567f5a70fb7e5f4a4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168851"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072964"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>A Symantec Endpoint Protection telepítése és konfigurálása windowsos virtuális gépen
 > [!IMPORTANT] 
@@ -32,7 +32,7 @@ Ha a Symantec meglévő előfizetése egy helyszíni megoldáshoz tartozik, hasz
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>A Symantec Endpoint Protection telepítése meglévő virtuális gépre
 A Kezdés előtt a következőkre lesz szüksége:
 
-* A Azure PowerShell modul, 0.8.2 vagy újabb verzió a munkahelyi számítógépen. A **Get-Module Azure | Format-Table Version** paranccsal megtekintheti Azure PowerShell telepített verzióját. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása][PS]című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount`.
+* A Azure PowerShell modul, 0.8.2 vagy újabb verzió a munkahelyi számítógépen. A **Get-Module Azure | Format-Table Version** paranccsal megtekintheti Azure PowerShell telepített verzióját. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása][PS]című témakörben talál. Jelentkezzen be az Azure-előfizetésbe `Add-AzureAccount`használatával.
 * Az Azure-beli virtuális gépen futó virtuálisgép-ügynök.
 
 Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e a virtuális gépen. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.

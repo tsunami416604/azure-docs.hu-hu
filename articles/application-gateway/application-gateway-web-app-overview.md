@@ -1,18 +1,19 @@
 ---
-title: Több-bérlős háttér – például Azure app Service – áttekintése az Azure Application Gateway
+title: Több-bérlős háttér vége
+titleSuffix: Azure Application Gateway
 description: Ez az oldal áttekintést nyújt az Application Gateway több-bérlős háttérrendszerekhez elérhető támogatásáról.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 66e4a578e3f443f4cbc3f6e5467cf9a86adf05fe
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297047"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075178"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway támogatja a több-bérlős háttérrendszer, például az App Service használatát
 
@@ -49,7 +50,7 @@ Figyelje meg, hogy a fenti képen nincs szükség hitelesítési tanúsítványo
 
 ### <a name="health-probe"></a>Állapotadat-mintavétel
 
-A gazdagép fejlécének felülbírálása a **http** -beállításokban csak a kérést és annak útválasztását érinti. nem befolyásolja az állapot mintavételi viselkedését. A végpontok közötti funkciók működéséhez a mintavételi és a HTTP-beállításokat is úgy kell módosítani, hogy azok a megfelelő konfigurációt tükrözzék. Amellett, hogy lehetővé teszi a gazdagép fejlécének megadását a mintavételi konfigurációban, az egyéni mintavételek is támogatják a gazdagép fejlécének a jelenleg konfigurált HTTP-beállításokból való származtatása lehetőségét. Ezt a konfigurációt a mintavételi konfigurációban a `PickHostNameFromBackendHttpSettings` paraméterrel is megadhatjuk.
+A gazdagép fejlécének felülbírálása a **http-beállításokban** csak a kérést és annak útválasztását érinti. nem befolyásolja az állapot mintavételi viselkedését. A végpontok közötti funkciók működéséhez a mintavételi és a HTTP-beállításokat is úgy kell módosítani, hogy azok a megfelelő konfigurációt tükrözzék. Amellett, hogy lehetővé teszi a gazdagép fejlécének megadását a mintavételi konfigurációban, az egyéni mintavételek is támogatják a gazdagép fejlécének a jelenleg konfigurált HTTP-beállításokból való származtatása lehetőségét. Ezt a konfigurációt a mintavételi konfigurációban a `PickHostNameFromBackendHttpSettings` paraméterrel is megadhatjuk.
 
 ### <a name="redirection-to-app-services-url-scenario"></a>Átirányítás App Service URL-címére
 

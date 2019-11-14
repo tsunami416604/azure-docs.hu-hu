@@ -1,5 +1,5 @@
 ---
-title: Virtuális merevlemez pillanatképének létrehozása az Azure-ban | Microsoft Docs
+title: Virtuális merevlemez pillanatképének létrehozása az Azure-ban
 description: Megtudhatja, hogyan hozhat létre másolatot egy Azure-beli virtuális gép biztonsági mentésre vagy hibaelhárítási problémákra való használatra.
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749142"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075342"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
@@ -29,7 +29,7 @@ Ha az új virtuális gép létrehozásához a pillanatképet fogja használni, j
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza az **erőforrás létrehozása**lehetőséget, majd keresse meg és válassza ki a **pillanatképet**.
 3. A **Pillanatkép** ablakban válassza a **Létrehozás**elemet. Megjelenik a **pillanatkép létrehozása** ablak.
 4. Adja meg a pillanatkép **nevét** .

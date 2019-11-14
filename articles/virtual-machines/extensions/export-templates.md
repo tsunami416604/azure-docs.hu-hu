@@ -1,5 +1,5 @@
 ---
-title: VM-bővítményeket tartalmazó Azure-erőforráscsoportok exportálása | Microsoft Docs
+title: VM-bővítményeket tartalmazó Azure-erőforráscsoportok exportálása
 description: A virtuálisgép-bővítményeket tartalmazó Resource Manager-sablonok exportálása.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169062"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073132"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Virtuálisgép-bővítményeket tartalmazó erőforráscsoportok exportálása
 
@@ -78,7 +78,7 @@ Az erőforráscsoport exportálásakor a rendszer egyetlen sablon paramétert ho
 
 Mivel minden védett beállításhoz szükséges tulajdonságok vannak megadva, ezeknek a tulajdonságoknak a listáját össze kell gyűjteni. A védett beállítások konfigurációjának minden paraméterét a [GitHub Azure Resource Manager sémájánál](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json)találja. Ez a séma csak a jelen dokumentum Áttekintés szakaszában felsorolt bővítmények paramétereinek készletét tartalmazza. 
 
-A séma adattárában keresse meg a kívánt kiterjesztést, ebben a példában `IaaSDiagnostics`. Ha a bővítmények `protectedSettings` objektum található, jegyezze fel az egyes paramétereket. A `IaasDiagnostic` bővítmény példájában a szükséges paraméterek a `storageAccountKey`következők `storageAccountName`:, és `storageAccountEndPoint`.
+A séma adattárában keresse meg a kívánt kiterjesztést, ehhez a példához `IaaSDiagnostics`. Ha a bővítmények `protectedSettings` objektum található, jegyezze fel az egyes paramétereket. A `IaasDiagnostic` bővítmény példájában a szükséges paraméterek `storageAccountName`, `storageAccountKey`és `storageAccountEndPoint`.
 
 ```json
 "protectedSettings": {
@@ -104,7 +104,7 @@ A séma adattárában keresse meg a kívánt kiterjesztést, ebben a példában 
 
 ### <a name="step-3---re-create-the-protected-configuration"></a>3\. lépés – a védett konfiguráció újbóli létrehozása
 
-Az exportált sablonban keresse `protectedSettings` meg és cserélje le az exportált védett beállítás objektumot egy olyan új elemre, amely tartalmazza a szükséges kiterjesztési paramétereket és az egyes értékek értékét.
+Az exportált sablonban keressen rá `protectedSettings`, és cserélje le az exportált védett beállítás objektumot egy olyan új elemre, amely tartalmazza a szükséges kiterjesztési paramétereket és az egyes értékek értékét.
 
 A `IaasDiagnostic` bővítmény példájában az új védett beállítási konfiguráció a következő példához hasonlóan fog kinézni:
 
@@ -148,7 +148,7 @@ A végső kiterjesztési erőforrás a következő JSON-példához hasonlóan n�
 }
 ```
 
-Ha a tulajdonságértékek megadásához a sablon paramétereit használja, ezeket létre kell hozni. Ha sablon-paramétereket hoz létre a védett beállítási értékekhez, ügyeljen arra `SecureString` , hogy a paraméter típusát használja, hogy a bizalmas értékek biztonságosak legyenek. További információ a paraméterek használatáról: [Azure Resource Manager sablonok készítése](../../resource-group-authoring-templates.md).
+Ha a tulajdonságértékek megadásához a sablon paramétereit használja, ezeket létre kell hozni. Ha a védett beállítási értékekhez sablon-paramétereket hoz létre, ügyeljen arra, hogy a `SecureString` paraméter típusát használja, hogy a bizalmas értékek biztonságosak legyenek. További információ a paraméterek használatáról: [Azure Resource Manager sablonok készítése](../../resource-group-authoring-templates.md).
 
 A `IaasDiagnostic` bővítmény példájában a következő paraméterek jönnek létre a Resource Manager-sablon paraméterek szakaszában.
 

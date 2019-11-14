@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel | Microsoft Docs
+title: Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet Azure-lemezeket virtuális gépekhez az Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: f44ea76ed22ab4feacc6ee37b165bbc33f7ddafc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c68299e4df187b1e9006d9ee1f2f70a13df3c52
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101599"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064784"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 
@@ -144,7 +144,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>Az adatlemez ellenőrzése
 
-Annak ellenőrzéséhez, hogy az adatlemez csatlakozik-e, tekintse meg a csatlakoztatott `DataDisks` `StorageProfile` profilját.
+Annak ellenőrzéséhez, hogy az adatlemez csatlakozik-e, tekintse meg a csatlakoztatott `StorageProfile` `DataDisks` profilját.
 
 ```azurepowershell-interactive
 $vm.StorageProfile.DataDisks

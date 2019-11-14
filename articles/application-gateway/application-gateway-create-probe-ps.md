@@ -1,51 +1,44 @@
 ---
-title: Egyéni mintavétel - létrehozása az Azure Application Gatewayjel – PowerShell |} A Microsoft Docs
-description: Egyéni mintavétel létrehozása az Application Gateway a Resource Managerben PowerShell használatával.
+title: Egyéni mintavétel létrehozása a PowerShell használatával
+titleSuffix: Azure Application Gateway
+description: Ismerje meg, hogyan hozhat létre egyéni mintavételt a Application Gatewayhez a PowerShell használatával a Resource Managerben
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135250"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075274"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Egyéni mintavétel létrehozása az Azure Application Gateway Azure Resource Manager PowerShell használatával.
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Egyéni mintavétel létrehozása az Azure Application Gatewayhoz a PowerShell használatával Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
-Ebben a cikkben egy meglévő application gateway a PowerShell használatával vegyen fel egy egyéni mintát. Az alkalmazásokat, egy adott állapotellenőrzési oldalt, vagy az alapértelmezett webalkalmazást a sikeres válasz nem biztosító alkalmazások egyéni minták hasznosak lehetnek.
+Ebben a cikkben egy egyéni mintavételt ad hozzá egy meglévő Application gatewayhez a PowerShell használatával. Az egyéni mintavételek olyan alkalmazások esetében hasznosak, amelyek adott állapot-ellenőrzési oldallal rendelkeznek, illetve olyan alkalmazásokhoz, amelyek nem adnak választ az alapértelmezett webalkalmazásra.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway-with-a-custom-probe"></a>Egyéni mintavétel az application gateway létrehozása
+## <a name="create-an-application-gateway-with-a-custom-probe"></a>Application Gateway létrehozása egyéni mintavételsel
 
-### <a name="sign-in-and-create-resource-group"></a>Bejelentkezés és erőforráscsoport létrehozása
+### <a name="sign-in-and-create-resource-group"></a>Jelentkezzen be, és hozzon létre egy erőforráscsoportot
 
-1. Használat `Connect-AzAccount` hitelesítéséhez.
+1. A hitelesítéshez használja a `Connect-AzAccount`.
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. A fiókhoz tartozó előfizetések beolvasása.
+1. Szerezze be a fiók előfizetéseit.
 
    ```powershell
    Get-AzSubscription
@@ -57,19 +50,19 @@ Ebben a cikkben egy meglévő application gateway a PowerShell használatával v
    Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
    ```
 
-1. Hozzon létre egy erőforráscsoportot. Ezt a lépést kihagyhatja, ha rendelkezik egy meglévő erőforráscsoportot.
+1. Hozzon létre egy erőforráscsoportot. Ezt a lépést kihagyhatja, ha rendelkezik egy meglévő erőforráscsoporthoz.
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez a hely lesz az erőforráscsoport erőforrásainak alapértelmezett helye. Győződjön meg arról, hogy az application gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez a hely lesz az erőforráscsoport erőforrásainak alapértelmezett helye. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
 
-Az előző példában létrehoztunk egy erőforráscsoportot, nevű **appgw-RG** helyen **USA nyugati RÉGIÓJA**.
+Az előző példában létrehoztunk egy **appgw-RG** nevű ERŐFORRÁSCSOPORTOT az **USA nyugati**régiójában.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Hozzon létre egy virtuális hálózatot és egy alhálózatot
 
-Az alábbi példa létrehoz egy virtuális hálózatot és egy alhálózatot az application gateway számára. Az Application gateway használja a saját alhálózatához van szüksége. Emiatt az application gateway számára létrehozott alhálózat kisebb, mint a többi alhálózathoz való létrehozásának és használatának engedélyezése a virtuális hálózat címteréhez kell lennie.
+A következő példa létrehoz egy virtuális hálózatot és egy alhálózatot az Application Gateway számára. Az Application Gateway használatához saját alhálózat szükséges. Emiatt az Application Gateway számára létrehozott alhálózatnak kisebbnek kell lennie, mint a VNET, hogy más alhálózatokat lehessen létrehozni és használni.
 
 ```powershell
 # Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
@@ -84,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
-Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában. Ebben a példában az előtérbeli IP-cím az application Gateway nyilvános IP-címet használ.  Az Application gateway igényel, ezért rendelkeznie egy dinamikusan létrehozott DNS-nevet a nyilvános IP-címet a `-DomainNameLabel` nyilvános IP-cím létrehozása közben nem adható meg.
+Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában. Ez a példa egy nyilvános IP-címet használ az Application Gateway előtér-IP-címéhez.  Az Application Gateway használatához a nyilvános IP-címnek dinamikusan létrehozott DNS-névnek kell lennie, ezért a `-DomainNameLabel` nem adható meg a nyilvános IP-cím létrehozásakor.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -92,17 +85,17 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 ### <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az application gateway létrehozása előtt beállítása minden konfigurációs elemet. Az alábbi példa létrehoz egy application gateway erőforráshoz szükséges konfigurációs elemeket.
+Az Application Gateway létrehozása előtt minden konfigurációs elemet be kell állítania. Az alábbi példa az Application Gateway-erőforrásokhoz szükséges konfigurációs elemeket hozza létre.
 
 | **Összetevő** | **Leírás** |
 |---|---|
-| **Átjáró IP-konfiguráció** | Az application Gateway IP-konfigurációval.|
-| **Háttérkészlet** | A pool of IP addresses, FQDN's, or NICs that are to the application servers that host the web application|
-| **Állapotadat-mintavétel** | Egyéni mintavétel háttérkészlet-tagokra állapotának figyelésére szolgál|
-| **HTTP-beállítások** | Beállításai, többek között, port, protokoll, cookie-alapú affinitás, mintavétel és időtúllépési gyűjteménye.  Ezek a beállítások határozzák meg, hogyan van átirányítva a forgalom háttérkészlet-tagokra|
-| **Előtérbeli port** | A port, amelyet az application gateway figyeli a forgalmat a|
-| **Listener** | A protokoll, előtérbeli IP-konfiguráció és előtérbeli port kombinációját. Ez a mi figyeli a bejövő kéréseket.
-|**Rule**| HTTP-beállításai alapján a forgalom a megfelelő háttérrendszerre útvonalakat.|
+| **Átjáró IP-konfigurációja** | Egy Application Gateway IP-konfigurációja.|
+| **Háttér-készlet** | IP-címek, FQDN-k vagy hálózati adapterek készlete, amelyek a webalkalmazást futtató alkalmazás-kiszolgálókhoz tartoznak.|
+| **Állapot mintavétele** | A háttérbeli készlet tagjai állapotának figyelésére szolgáló egyéni mintavétel|
+| **HTTP-beállítások** | Beállítások gyűjteménye, beleértve a portot, a protokollt, a cookie-alapú affinitást, a mintavételt és az időkorlátot.  Ezek a beállítások határozzák meg, hogy a rendszer hogyan irányítja át a forgalmat a háttér-készlet tagjai számára|
+| **Előtér-port** | Az a port, amelyre az Application Gateway figyeli a forgalmat|
+| **Hallgató** | Egy protokoll, a előtér-IP-konfiguráció és a frontend-port kombinációja. Ez az, ami figyeli a bejövő kérelmeket.
+|**Szabály**| A megfelelő háttérbe irányítja a forgalmat a HTTP-beállítások alapján.|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -136,9 +129,9 @@ $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location 'West US' -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-## <a name="add-a-probe-to-an-existing-application-gateway"></a>Mintavétel hozzáadása egy meglévő application gateway
+## <a name="add-a-probe-to-an-existing-application-gateway"></a>Mintavétel hozzáadása meglévő Application Gateway-átjáróhoz
 
-A következő kódrészletet a mintavétel hozzáadása meglévő application gateway.
+A következő kódrészlet hozzáadja a mintavételt egy meglévő Application Gateway-átjáróhoz.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -154,9 +147,9 @@ $getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw 
 Set-AzApplicationGateway -ApplicationGateway $getgw
 ```
 
-## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Mintavétel eltávolítja a meglévő application gateway
+## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Mintavétel eltávolítása egy meglévő Application gatewayből
 
-Az alábbi kódrészlet egy mintavételt eltávolítja a meglévő application gateway.
+A következő kódrészlet eltávolítja a mintavételt egy meglévő Application gatewayből.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -204,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg az SSL-kiürítés funkcionáló konfigurálása: [SSL-alapú kiszervezés konfigurálása](application-gateway-ssl-arm.md)
+Megtudhatja, hogyan konfigurálhatja az SSL-alapú kiszervezést: az [SSL-kiszervezés konfigurálása](application-gateway-ssl-arm.md)
 

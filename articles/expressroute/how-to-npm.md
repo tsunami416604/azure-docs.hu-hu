@@ -1,5 +1,5 @@
 ---
-title: A Network Performance Monitor konfigurálása ExpressRoute-Kapcsolatcsoportok – Azure |} A Microsoft Docs
+title: 'Azure-ExpressRoute: NPM konfigurálása áramkörökhöz'
 description: Konfigurálja a felhő alapú hálózatfigyelési (NPM) az Azure ExpressRoute-Kapcsolatcsoportok számára. Tartalmazza a figyelés ExpressRoute privát társviszony-létesítés és Microsoft társviszony-létesítésen keresztül.
 services: expressroute
 author: cherylmc
@@ -7,17 +7,16 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60840172"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076591"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
-Ez a cikk segít az ExpressRoute figyelése a Network Performance Monitor bővítmény konfigurálása. Network Performance monitort (NPM) egy olyan felhő alapú hálózati figyelő megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. Npm-et az Azure Monitor naplóira részét képezi. Az NPM kibővíti az expressroute-hoz, amely lehetővé teszi a hálózati teljesítmény nyomon követése az ExpressRoute-Kapcsolatcsoportok privát társviszony-létesítés, vagy a Microsoft társviszony-létesítés használatára konfigurált keresztül. Hálózati problémák azonosítása és kiküszöbölése érdekében észlelését az npm-et az expressroute-hoz való konfigurálásakor. Ez a szolgáltatás az Azure Government felhőben is érhető el.
+Ez a cikk segít az ExpressRoute figyelése a Network Performance Monitor bővítmény konfigurálása. A Network Performance Monitor (NPM) egy felhőalapú hálózatmonitorozási megoldás, amely az Azure felhőkörnyezetek és a helyszíni környezetek (fiókirodák stb.) közötti kapcsolatot monitorozza. Az NPM az Azure Monitor-naplók részét képezi. Az NPM által biztosított ExpressRoute-bővítménnyel monitorozhatja a privát vagy Microsoft-társviszony használatára konfigurált ExpressRoute-kapcsolatcsoportok hálózati teljesítményét. Az NPM ExpressRoute használatára való konfigurálásával azonosíthatja és elkerülheti a hálózati problémákat. Ez a szolgáltatás az Azure Government felhő esetében is elérhető.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,15 +39,15 @@ A következőket teheti:
 Monitorozási ügynökök több kiszolgálón vannak telepítve a helyszínen és az Azure-ban. Az ügynökök kommunikálnak egymással, de ne küldjön adatokat, azokat a TCP kézfogás csomagok küldése. Az ügynökök közötti kommunikáció lehetővé teszi, hogy az Azure-bA a hálózati topológia és az elérési út a forgalom is igénybe vehet.
 
 1. Hozzon létre egy NPM-munkaterületet. Ez a Log Analytics-munkaterület megegyezik.
-2. Telepítse és konfigurálja a szoftverfrissítési ügynökök. (Ha csak figyelni kívánt Microsoft-Peering keresztül, nem kell telepítse és konfigurálja a szoftverfrissítési ügynökök.): 
+2. A szoftveres ügynökök telepítése és konfigurálása. (Ha csak a Microsoft társközi felügyeletét szeretné figyelni, nem kell telepítenie és konfigurálnia a szoftver-ügynököket.): 
     * Monitorozási ügynökök telepítése a helyszíni kiszolgálók és az Azure virtuális gépek (a privát társviszony-létesítés).
     * Beállítások konfigurálása a monitorozási ügynök kiszolgálókon, hogy a monitorozási ügynökök való kommunikációhoz. (Nyissa meg a tűzfal portjait, stb.)
 3. Konfigurálja a hálózati biztonsági csoport (NSG) szabályai a monitorozási ügynök kommunikáljon a helyszíni Azure virtuális gépeken telepített monitorozási ügynökök.
-4. Figyelés beállítása: Automatikus felderítése és kezelése, mely hálózatokat láthatók az npm-et.
+4. Figyelés beállítása: automatikus felderítése és kezelése, mely hálózatokat láthatók az npm-et.
 
 Ha már használja a Network Performance Monitor más objektumok vagy szolgáltatásokat, és a támogatott régiók egyikében már rendelkezik munkaterület, 1. lépést és a 2. lépést kihagyhatja, és 3. lépés-a konfigurálás megkezdése.
 
-## <a name="configure"></a>1. lépés: Munkaterület létrehozása
+## <a name="configure"></a>1. lépés: Hozzon létre egy munkaterületet
 
 Hozzon létre egy munkaterületet, amely rendelkezik a virtuális hálózatokat az ExpressRoute-kapcsolatcsoport az előfizetésben.
 
@@ -60,7 +59,7 @@ Hozzon létre egy munkaterületet, amely rendelkezik a virtuális hálózatokat 
 
    ![portal](./media/how-to-npm/3.png)<br><br>
 2. A fő alján **Network Performance Monitor** lap, kattintson **létrehozás** megnyitásához **Network Performance Monitor – új megoldás létrehozása** lap. Kattintson a **Log Analytics-munkaterület - válassza ki a munkaterület** a munkaterületek lap megnyitásához. Kattintson a **+ létrehozás új munkaterület** nyissa meg a munkaterületen.
-3. Az a **Log Analytics-munkaterület** lapon jelölje be **hozzon létre új**, majd adja meg a következő beállításokat:
+3. A **log Analytics munkaterület** lapon válassza az **új létrehozása**lehetőséget, majd konfigurálja a következő beállításokat:
 
    * Log Analytics-munkaterület - adja meg a munkaterület nevét.
    * Előfizetés – Ha több előfizetést, válasszon egyet az új munkaterületet társítani szeretné.
@@ -78,9 +77,9 @@ Hozzon létre egy munkaterületet, amely rendelkezik a virtuális hálózatokat 
 
    ![további beállítások](./media/how-to-npm/5.png)
 
-## <a name="agents"></a>2. lépés: Ügynökök telepítése és konfigurálása
+## <a name="agents"></a>2. lépés: Telepítse és konfigurálja az ügynökök
 
-### <a name="download"></a>2.1: Az ügynök telepítési fájl letöltése
+### <a name="download"></a>2.1-es verzióját: az ügynök telepítési fájl letöltése
 
 1. Nyissa meg a **közös beállítások** lapján a **hálózati Teljesítményfigyelő beállítása** az erőforrás oldalán. Kattintson arra az ügynökre, amely megfelel a kiszolgáló processzor, a **Log Analytics-ügynökök telepítése** szakaszt, és töltse le a telepítőfájlt.
 2. Ezután másolja a **munkaterület-Azonosítót** és **elsődleges kulcs** a Jegyzettömbbe.
@@ -88,7 +87,7 @@ Hozzon létre egy munkaterületet, amely rendelkezik a virtuális hálózatokat 
 
    ![PowerShell-szkript](./media/how-to-npm/7.png)
 
-### <a name="installagent"></a>2.2: Monitorozási ügynök telepítése minden felügyeleti kiszolgálón (az egyes virtuális hálózat, amely a figyelni kívánt)
+### <a name="installagent"></a>2.2-es: monitorozási ügynök telepítése minden felügyeleti kiszolgálón (az egyes virtuális hálózat, amely a figyelni kívánt)
 
 Azt javasoljuk, hogy a redundancia biztosítása érdekében (Ha például a helyszínen, az Azure virtuális hálózatok) az ExpressRoute-kapcsolat mindkét oldalán legalább két ügynökök telepítése. Az ügynököt telepíteni kell a Windows Server (2008 SP1 vagy újabb). Windows asztali operációs rendszer és a Linux operációs rendszer használata az ExpressRoute-Kapcsolatcsoportok figyelés nem támogatott. Használja az alábbi lépéseket az ügynökök telepítéséhez:
    
@@ -100,7 +99,7 @@ Azt javasoljuk, hogy a redundancia biztosítása érdekében (Ha például a hel
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. Az a **licencfeltételek** lapon olvassa el a licencfeltételeket, és kattintson a **elfogadom**.
 4. Az a **célmappa** lapon módosíthatja vagy megtartani az alapértelmezett telepítési mappát, és kattintson a **tovább**.
-5. Az a **ügynök telepítésének beállításai** lapon lehet váltani, az ügynök csatlakoztatása az Azure Monitor naplóira vagy az Operations Manager. Vagy üresen hagyhatja, a lehetőségek, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **tovább**.
+5. Az **ügynök telepítésének beállításai** lapon összekapcsolhatja az ügynököt Azure monitor naplókhoz vagy Operations Managerhoz. Vagy üresen hagyhatja, a lehetőségek, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **tovább**.
 
    * Ha úgy döntött, hogy csatlakozni **Azure Log Analytics**, illessze be a **munkaterület-Azonosítót** és **Munkaterületkulcsot** Jegyzettömbbe az előző szakaszban kimásolt (elsődleges kulcs). Ezután kattintson a **Tovább** gombra.
 
@@ -113,11 +112,11 @@ Azt javasoljuk, hogy a redundancia biztosítása érdekében (Ha például a hel
      ![Fiók](./media/how-to-npm/10.png)
 6. Az a **telepítésre kész** lapon ellenőrizze a beállításokat, és kattintson a **telepítése**.
 7. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
-8. Amikor végzett, a Microsoft Monitoring Agentet a Vezérlőpulton jelenik meg. Áttekintheti a konfigurációt, és győződjön meg arról, hogy az ügynök csatlakozik az Azure Monitor naplóira. Ha csatlakozik, az ügynök megjeleníti a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban**.
+8. Amikor végzett, a Microsoft Monitoring Agentet a Vezérlőpulton jelenik meg. Itt áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök csatlakoztatva van-e Azure Monitor naplókhoz. Ha csatlakozik, az ügynök megjeleníti a következő üzenetet: **a Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban**.
 
 9. Ismételje meg ezt az eljárást minden egyes virtuális hálózat, amely figyelni kell.
 
-### <a name="proxy"></a>2.3: Konfigurálja a proxybeállításokat (nem kötelező)
+### <a name="proxy"></a>2.3: konfigurálja a proxybeállításokat (nem kötelező)
 
 Használatakor egy webalkalmazás-proxyn keresztül csatlakozik az internetre, a következő lépések használatával konfigurálja a proxybeállításokat a Microsoft Monitoring Agent számára. Hajtsa végre ezeket a lépéseket minden olyan kiszolgáló esetén. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse meg a [proxybeállításokat a Microsoft Monitoring Agent egy olyan parancsfájllal](../log-analytics/log-analytics-windows-agent.md).
 
@@ -137,7 +136,7 @@ Egyszerűen ellenőrizheti az ügynökök kommunikálnak-e.
 1. A figyelőügynök kiszolgálóra, nyissa meg a **Vezérlőpult**.
 2. Nyissa meg a **a Microsoft Monitoring Agent**.
 3. Kattintson a **Azure Log Analytics** fülre.
-4. Az a **állapot** oszlopban kell megjelennie, az ügynök sikeresen csatlakozott az Azure Monitor naplóira.
+4. Az **állapot** oszlopban látnia kell, hogy az ügynök sikeresen csatlakozott a naplók Azure monitor.
 
    ![status](./media/how-to-npm/12.png)
 
@@ -158,7 +157,7 @@ Az ügynök kiszolgálón nyissa meg egy PowerShell-ablakot rendszergazdai jogos
 
 ![PowerShell_Script](./media/how-to-npm/script.png)
 
-## <a name="opennsg"></a>3. lépés: Hálózatbiztonságicsoport-szabályok konfigurálása
+## <a name="opennsg"></a>3. lépés: Konfigurálja a hálózati biztonsági csoport szabályai
 
 Az Azure-ban ügynök kiszolgálók figyelése, konfigurálnia kell a hálózati biztonsági csoport (NSG) szabályai egy portot a szintetikus tranzakciókhoz NPM által használt TCP-forgalom engedélyezéséhez. Az alapértelmezett port: 8084. Ez lehetővé teszi, hogy a monitorozási ügynök kommunikáljon a helyszíni-beli virtuális gépen telepített ügynök figyelése.
 
@@ -168,7 +167,7 @@ NSG-t kapcsolatos további információkért lásd: [hálózati biztonsági csop
 >Győződjön meg arról, hogy telepítette az ügynököket (a helyszíni kiszolgáló ügynök és az Azure server agent), és az ebben a lépésben a PowerShell-parancsfájlt, a folytatás előtt futtatnia kell.
 >
 
-## <a name="setupmonitor"></a>4. lépés: Fedezze fel a társviszony-kapcsolatok
+## <a name="setupmonitor"></a>4. lépés: A társviszony-kapcsolatok felderítése
 
 1. A Network Performance Monitor áttekintése csempe a keresse meg a **összes erőforrás** lapon, majd kattintson az NPM-munkaterület az engedélyezési listához hozzáadni kívánt.
 
@@ -183,7 +182,7 @@ NSG-t kapcsolatos további információkért lásd: [hálózati biztonsági csop
    * Az ehhez az előfizetéshez társított ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítési kapcsolások mindegyikét.
    * Az előfizetéshez tartozó összes a privát társviszony-kapcsolatokat, amelyek a virtuális hálózatokhoz csatlakoznak.
             
-## <a name="configmonitor"></a>5. lépés: Figyelők konfigurálása
+## <a name="configmonitor"></a>5. lépés: Konfigurálja a figyelők
 
 Ebben a szakaszban konfigurálni a figyelők. Kövesse a lépéseket a társviszony-létesítés típusa, amely a figyelni kívánt: **magánhálózati társviszony-létesítés**, vagy **Microsoft társviszony-létesítés**.
 
@@ -219,7 +218,7 @@ A Microsoft társviszony-létesítéshez, kattintson a figyelni kívánt Microso
 6. A beállítások mentéséhez.
 7. A szabályok engedélyezése, és kiválaszthatja a kívánt értékeket, és a figyelni kívánt ügynököket, után várjon körülbelül 30 – 60 perc feltöltése megkezdéséhez az értékek nincs és a **az ExpressRoute monitorozása** elérhető csempék.
 
-## <a name="explore"></a>6. lépés: Csempék figyelési nézet
+## <a name="explore"></a>6. lépés: Figyelési csempék megjelenítése
 
 Ha már látja a figyelési csempék, az ExpressRoute-Kapcsolatcsoportok és kapcsolati erőforrás figyeli, az NPM. A Microsoft-Peering kapcsolatok állapotának részletes keresztül a Microsoft Peering csempére kattinthat.
 

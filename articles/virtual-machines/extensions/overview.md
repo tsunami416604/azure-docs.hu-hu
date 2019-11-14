@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuálisgép-bővítmények és-funkciók | Microsoft Docs
+title: Azure-beli virtuálisgép-bővítmények és-funkciók
 description: Ismerje meg, hogy milyen Azure-beli virtuálisgép-bővítmények és hogyan használhatók az Azure Virtual Machines szolgáltatással
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
-ms.openlocfilehash: deb49267a262705370e48e150cc5ed6c4dc04247
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168886"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072981"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure-beli virtuálisgép-bővítmények és-funkciók
 Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációt és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken, meglévő lemezképeket használhat, majd az üzembe helyezés részeként testreszabhatja azokat, így az egyéni tevékenységek rendszerkép kiépítése.

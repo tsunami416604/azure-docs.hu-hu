@@ -1,5 +1,5 @@
 ---
-title: A virtuálisgép-bővítmények telepítésének korlátozása a Azure Policy használatával | Microsoft Docs
+title: A virtuálisgép-bővítmények telepítésének korlátozása Azure Policy használatával
 description: A bővítmények üzembe helyezésének korlátozásához használja a Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 599417131f228c95168641c54ffbb947e3682f7b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750013"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073118"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>A bővítmények Windows rendszerű virtuális gépeken való telepítésének korlátozása Azure Policy használatával
 
@@ -151,7 +151,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-A portálon a jelszó módosításának sikertelennek kell lennie a "a sablon központi telepítése sikertelen volt a szabályzat megsértése miatt." Üzenetet.
+A portálon a jelszó módosításának sikertelennek kell lennie a "a sablon központi telepítése sikertelen volt a szabályzat megsértése miatt." üzenetet.
 
 ## <a name="remove-the-assignment"></a>A hozzárendelés eltávolítása
 

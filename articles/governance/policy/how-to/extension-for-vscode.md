@@ -1,17 +1,14 @@
 ---
 title: Azure Policy-bővítmény a Visual Studio Code-hoz
 description: Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét Resource Manager-aliasok kereséséhez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 20af29c40ec13add90294e28d64f0166acc95319
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514809"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072038"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 
@@ -77,7 +74,7 @@ Az erőforrások és a keresési aliasok kiértékeléséhez csatlakoznia kell a
 
 1. Az Azure-ba való bejelentkezéshez kövesse a bejelentkezési utasításokat. A csatlakozás után az Azure-fiók neve megjelenik a Visual Studio Code ablak alján található állapotsorban.
 
-## <a name="select-subscriptions"></a>Előfizetések kiválasztása
+## <a name="select-subscriptions"></a>Keresés az előfizetések között
 
 Amikor először jelentkezik be, csak az alapértelmezett előfizetési erőforrásokat és házirendeket tölti be a Azure Policy bővítmény. Az erőforrások és házirendek megjelenítéséhez szükséges előfizetések hozzáadásához vagy eltávolításához kövesse az alábbi lépéseket:
 

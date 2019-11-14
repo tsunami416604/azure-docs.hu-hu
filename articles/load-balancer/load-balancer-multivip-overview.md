@@ -1,10 +1,9 @@
 ---
-title: Több előtér Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Több előtérbeli felület áttekintése Azure Load Balancer
+title: Több frontend – Azure Load Balancer
+description: Ez a képzési terv az első lépéseket mutatja be a Azure Load Balancer több előtér-felületének áttekintésével
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
-ms.author: chkuhtz
-ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884213"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075949"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
@@ -30,7 +29,7 @@ Azure Load Balancer definiálásakor a rendszer egy előtér-és egy háttér-k�
 
 A következő táblázat néhány példát tartalmaz a frontend-konfigurációkra:
 
-| Előtér | IP-cím | protocol | port |
+| Frontend | IP-cím | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -48,13 +47,13 @@ Azure Load Balancer lehetővé teszi mindkét szabálytípus összekeverését u
 
 Ezeket a forgatókönyveket tovább vizsgálja az alapértelmezett viselkedéstől kezdve.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Szabály típusa #1: Nincs háttér-port újrahasznosítása
+## <a name="rule-type-1-no-backend-port-reuse"></a>Szabály típusa #1: nincs háttér-port újrahasznosítása
 
 ![Több előtér-illusztráció zöld és lila felülettel](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
 Ebben az esetben a frontendek konfigurálása a következőképpen történik:
 
-| Előtér | IP-cím | protocol | port |
+| Frontend | IP-cím | protocol | port |
 | --- | --- | --- | --- |
 | ![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![lila felület](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -104,14 +103,14 @@ Ebben az esetben a háttér-készlet minden virtuális gépe három hálózati c
 
 Tegyük fel, hogy ugyanazt a frontend-konfigurációt feltételezzük, mint az előző forgatókönyvben:
 
-| Előtér | IP-cím | protocol | port |
+| Frontend | IP-cím | protocol | port |
 | --- | --- | --- | --- |
 | ![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![lila felület](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 Két szabályt definiálunk:
 
-| Szabály | Előtér | Leképezés a háttérrendszer-készletre |
+| Szabály | Frontend | Leképezés a háttérrendszer-készletre |
 | --- | --- | --- |
 | 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (a VM1 és a VM2) |
 | 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (a VM1 és a VM2) |

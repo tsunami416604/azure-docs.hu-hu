@@ -1,7 +1,7 @@
 ---
-title: Load Balancer TCP Üresjárati időkorlát konfigurálása az Azure-ban
-titlesuffix: Azure Load Balancer
-description: Load Balancer TCP Üresjárati időkorlát konfigurálása
+title: A terheléselosztó TCP-üresjárati időkorlátjának konfigurálása az Azure-ban
+titleSuffix: Azure Load Balancer
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Load Balancer TCP üresjárati időkorlátját.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 530bfbe85a564b3dd517e14df819586dee332a78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274171"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076966"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát beállításainak konfigurálása Azure Load Balancer
 
@@ -26,9 +26,9 @@ ms.locfileid: "68274171"
 
 Az alapértelmezett konfigurációjában a Azure Load Balancer 4 perc üresjárati időtúllépési beállítással rendelkezik. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad.
 
-Ha a csatlakozás be van zárva, az ügyfélalkalmazás a következő hibaüzenetet kaphatja: "A mögöttes kapcsolatok bezárultak: A kiszolgáló lezárta az életben tartani várt kapcsolatokat. "
+Ha a csatlakozás be van zárva, az ügyfélalkalmazás a következő hibaüzenetet kaphatja: "az alapul szolgáló csatlakozás bezárult: a kiszolgáló lezárta az életben tartani várt kapcsolatokat."
 
-Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információkért tekintse meg ezeket a [.net](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)-példákat. Ha a Keep-Alive engedélyezve van, a rendszer a csatlakozáskor inaktivitási időszakokban küld csomagokat. Ezek a életben tartási csomagok biztosítják, hogy az Üresjárati időkorlát értéke soha ne legyen elérhető, és a kapcsolat hosszabb ideig marad.
+Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információkért tekintse meg ezeket a [.net-példákat](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Ha a Keep-Alive engedélyezve van, a rendszer a csatlakozáskor inaktivitási időszakokban küld csomagokat. Ezek a életben tartási csomagok biztosítják, hogy az Üresjárati időkorlát értéke soha ne legyen elérhető, és a kapcsolat hosszabb ideig marad.
 
 Ez a beállítás csak a bejövő kapcsolatok esetében működik. A kapcsolat elvesztésének elkerülése érdekében a TCP Keep-Alive értéket a tétlen időtúllépési beállításnál kisebb intervallummal kell konfigurálni, vagy növelje az Üresjárati időkorlát értékét. Ilyen helyzetekben a konfigurálható Üresjárati időkorlát támogatása is támogatott. Most már 4 és 30 perc közötti időtartamra is beállíthatja.
 
@@ -76,7 +76,7 @@ Az Üresjárati időkorlát konfigurációjának lekéréséhez használja a kö
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Egy elosztott terhelésű végponton beállított TCP-Időtúllépés beállítása
 
-Ha a végpontok egy elosztott terhelésű végpont készletének részét képezik, a TCP-időtúllépést be kell állítani a terheléselosztásos végpont-készletre. Példa:
+Ha a végpontok egy elosztott terhelésű végpont készletének részét képezik, a TCP-időtúllépést be kell állítani a terheléselosztásos végpont-készletre. Például:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
@@ -113,7 +113,7 @@ A nyilvános IP-címek időtúllépési beállításának. cscfg változásai a 
 
 ## <a name="rest-api-example"></a>REST API példa
 
-A TCP üresjárati időkorlátot a Service Management API használatával konfigurálhatja. Győződjön meg arról, `x-ms-version` hogy a fejléc verziója `2014-06-01` vagy újabb. A megadott elosztott terhelésű bemeneti végpontok konfigurációjának frissítése a központi telepítésben lévő összes virtuális gépen.
+A TCP üresjárati időkorlátot a Service Management API használatával konfigurálhatja. Győződjön meg arról, hogy a `x-ms-version` fejléce `2014-06-01` vagy újabb verzióra van beállítva. A megadott elosztott terhelésű bemeneti végpontok konfigurációjának frissítése a központi telepítésben lévő összes virtuális gépen.
 
 ### <a name="request"></a>Kérés
 

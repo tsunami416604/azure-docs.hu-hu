@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 800acb622a54ae922300d4c1b188f7ec19f5a95f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969234"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074255"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -34,7 +34,7 @@ A biztonsági mentéseket az irányítópult használatával és az egyes virtu�
 
 Virtuális gépek megtekintése a tároló irányítópultján:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. A központi menüben válassza a **Tallózás**lehetőséget. Az erőforrások listájába írja be a következőt: **Recovery Services**. A beíráskor a lista a bemenet alapján szűrve lesz. Válassza ki **Recovery Services**tárolókat.
 
     ![Recovery Services-tároló létrehozása](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -60,7 +60,7 @@ Virtuális gépek megtekintése a tároló irányítópultján:
 
 Biztonsági mentési szabályzat kezelése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
 2. A **biztonsági mentési elemek** csempén válassza az **Azure Virtual Machines**elemet.
 
     ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -167,11 +167,11 @@ A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölhet
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Olyan biztonsági mentési elem, amelyben az elsődleges adatforrás már nem létezik
 
-* Ha az Azure Backup szolgáltatáshoz konfigurált Azure-beli virtuális gépeket törölték vagy áthelyezik a védelem leállítása nélkül, akkor az ütemezett biztonsági mentési feladatok és az igény szerinti (ad-hoc) biztonsági mentési feladatok sikertelenek lesznek a hiba UserErrorVmNotFoundV2. A biztonsági mentés előzetes ellenőrzési művelete csak a sikertelen ad hoc biztonsági mentési feladatok esetében kritikusként jelenik meg (sikertelen ütemezett feladatok nem jelennek meg).
+* Ha az Azure Backup szolgáltatáshoz konfigurált Azure-beli virtuális gépeket törölték vagy áthelyezik a védelem leállítása nélkül, akkor az ütemezett biztonsági mentési feladatok és az igény szerinti (ad-hoc) biztonsági mentési feladatok sikertelenek lesznek a hiba UserErrorVmNotFoundV2. A biztonsági mentés előzetes ellenőrzési művelete csak a sikertelen igény szerinti biztonsági mentési feladatokhoz kritikusként jelenik meg (sikertelen ütemezett feladatok nem jelennek meg).
 * Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam alapján törlődnek.
-* A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mert az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a következőképpen számítjuk fel: a biztonsági mentés díjszabása érvényes.
+* A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mivel az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a biztonsági mentés díjszabása szerint számítjuk fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
 * Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).

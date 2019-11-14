@@ -1,7 +1,7 @@
 ---
 title: A beszélgetés átírása (előzetes verzió) – Speech Service
 titleSuffix: Azure Cognitive Services
-description: A beszélgetés átírása egy beszéd-szöveg típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes beszélők (más néven diarization) számára a valós idejű és/vagy aszinkron átírások biztosításához beszélgetés. A társalgási átirat mindenki számára elérhetővé teszi a beszélgetéseket, például a siketek és a nagyothallók számára.
+description: A beszélgetés átírása egy beszéd-szöveg típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes beszélők (más néven diarization) számára a valós idejű és/vagy aszinkron átírások biztosításához beszélgetés.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f4b7591d5ddb138db0abbdb673cadc6afd71f315
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608029"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075849"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Mi a beszélgetés átírása (előzetes verzió)?
 

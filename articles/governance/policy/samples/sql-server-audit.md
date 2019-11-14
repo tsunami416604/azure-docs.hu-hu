@@ -1,17 +1,14 @@
 ---
 title: Minta – naplózási SQL Server naplózási beállításai
 description: Ez a minta házirend-definíció az SQL Server naplózási beállításait az auditIfNotExists-mel naplózza.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: c548d1e0e9f21f482a0cfc4b19c482e040d7f298
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5a0d758bd96937ca443d434b76d22aaefc618687
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069797"
 ---
 # <a name="sample---audit-sql-server-audit-settings"></a>Példa – az SQL Server naplózási beállításainak naplózása
 
@@ -95,4 +92,4 @@ az policy assignment delete --name "SQL Audit audit" --resource-group myResource
 
 ## <a name="next-steps"></a>További lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

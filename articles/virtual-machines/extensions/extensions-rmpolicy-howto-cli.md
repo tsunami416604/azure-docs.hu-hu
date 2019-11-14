@@ -1,5 +1,5 @@
 ---
-title: A virtuálisgép-bővítmények telepítésének korlátozása a Azure Policy használatával | Microsoft Docs
+title: A virtuálisgép-bővítmények telepítésének korlátozása Azure Policy használatával
 description: A virtuálisgép-bővítmények üzembe helyezésének korlátozásához használja a Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 20099bb32a1984be0bfbbaaa4e7bc6cd4481a806
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174027"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073779"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>A bővítmények Linux rendszerű virtuális gépeken való telepítésének korlátozása a Azure Policy használatával
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a CLI-t használja a Azure Cloud Shellon belül, amely folyam
 
 A bővítmények telepítésének korlátozásához rendelkeznie kell egy olyan [szabállyal](../../governance/policy/concepts/definition-structure.md#policy-rule) , amely megadja a logikát a bővítmény azonosításához.
 
-Ebből a példából megtudhatja, hogyan tagadhatja meg a "Microsoft. OSTCExtensions" által közzétett bővítmények telepítését egy Azure Cloud Shell, de ha a parancssori felület helyileg dolgozik, létrehozhat egy helyi fájlt is, és lecserélheti az elérési utat (~/clouddrive) a következő elérési útra: a helyi fájl a gépen.
+Ebből a példából megtudhatja, hogyan tagadhatja meg a "Microsoft. OSTCExtensions" által közzétett bővítmények telepítését egy Azure Cloud Shell, de ha a parancssori felület helyileg dolgozik, létrehozhat egy helyi fájlt is, és lecserélheti az elérési utat (~/clouddrive) a helyi fájl elérési útjára a gépen.
 
 Egy [bash-Cloud Shell](https://shell.azure.com/bash)írja be a következőt:
 

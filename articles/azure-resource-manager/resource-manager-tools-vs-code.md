@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196152"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075011"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
@@ -24,7 +24,7 @@ A Visual Studio Code támogatja a MacOS, a Windows és a Linux rendszert.  A [Vi
 ## <a name="install-resource-manager-tools-extension"></a>Resource Manager-eszközök bővítményének telepítése
 
 1. Nyissa meg a Visual Studio Code-ot.
-1. A bal oldali menüben válassza a bővítmények lehetőséget. Vagy a **nézet** menüben válassza a **bővítmények** lehetőséget a bővítmények panel megnyitásához.
+1. A bal oldali menüben válassza a **bővítmények** lehetőséget. Vagy a **nézet** menüben válassza a **bővítmények** lehetőséget a bővítmények panel megnyitásához.
 
     ![A Visual Studio Code Resource Manager Tools bővítmény telepítése](./media/resource-manager-tools-vs-code/resource-manager-visual-studio-code-tools-extension.png)
 1. Keresse meg a **Resource Managert**.
@@ -70,7 +70,7 @@ Ha a függvények neve fölé mutat, a bővítmény az aláírás súgóját jel
 
 ### <a name="go-to-definition-for-variable-and-parameter-references"></a>Ugrás a változó és a paraméterek hivatkozásainak definíciója
 
-A definícióra ugorhat a **CTRL + kattintás**, vagy a helyi menüben, ahogy az a képernyőképen is látható: ![A Visual Studio Code Resource Manager-eszközök bővítményeinek definíciója](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
+A definícióra ugorhat a **Ctrl + kattintással**, vagy a helyi menüben, ahogy az a képernyőképen is látható: ![Visual Studio Code Resource Manager-eszközök bővítmények pont a definíció](./media/resource-manager-tools-vs-code/resource-manager-tools-extension-context-menu.png)
 
 A definíciót a **Ctrl + Alt + kattintás billentyűkombinációval**is megnyithatja.
 
@@ -121,5 +121,5 @@ A figyelmeztetések a következők:
 
 ## <a name="next-steps"></a>További lépések
 
-- A Resource Managerrel és a Resource Manager-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
-- A Visual Studio Code használatával a gyors üzembe helyezést a gyors [útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)
+- Azure Resource Manager sablonok létrehozásáról az [oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md)című témakörben olvashat bővebben.
+- A Visual Studio Code használatával a gyors útmutatóban a következő témakörben talál további információt [: Azure Resource Manager sablonok létrehozása Visual Studio Code használatával](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)

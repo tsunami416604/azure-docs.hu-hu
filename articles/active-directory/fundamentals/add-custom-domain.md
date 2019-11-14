@@ -8,102 +8,111 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f90e594e69c58364b699299964273ce371e525
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561723"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073533"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
-Minden új Azure AD-bérlőt egy kezdeti tartománynevet tartalmaz *domainname*. onmicrosoft.com. Nem módosítható, és a kezdeti tartománynév törlése, de a szervezet neveket adhat hozzá a listában. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználónevek (például *Alain\@contoso.com*) hozhatók létre.
+
+Minden új Azure AD-bérlőhöz tartozik egy kezdeti tartománynév, *\<tartománynév >. onmicrosoft. com*. A kezdeti tartománynév nem módosítható vagy törölhető, de felveheti a szervezet nevét. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználónevek (például *alain\@contoso.com*) hozhatók létre.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Egyéni tartománynév hozzáadása előtt létre kell hoznia a tartománynév a tartományregisztrálónál. Egy akkreditált tartományregisztráló, lásd: [ICANN-Accredited regisztráló szervezetek](https://www.icann.org/registrar-reports/accredited-list.html).
+
+Egyéni tartománynév hozzáadása előtt hozza létre a tartománynevet egy tartományregisztráló használatával. Egy akkreditált tartományregisztráló, lásd: [ICANN-Accredited regisztráló szervezetek](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>A címtár létrehozása az Azure ad-ben
-A tartománynév kap, miután az első Azure AD-címtár is létrehozhat.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtárhoz, egy olyan fiókkal rendelkező a **tulajdonosa** az előfizetést, és válassza ki a szerepkör **Azure Active Directory**. Előfizetési szerepkörökhöz kapcsolatos további információkért lásd: [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
+A tartománynév kap, miután az első Azure AD-címtár is létrehozhat. Jelentkezzen be a címtár Azure Portalba egy olyan fiókkal, amely az előfizetés **tulajdonosi** szerepkörét használja.
 
-    ![Azure Portal képernyő, amelyen az Azure AD lehetőség látható](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+Az új könyvtár létrehozása a lépéseket követve [hozzon létre egy új bérlőt a szervezetén belül](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
 
-    >[!TIP]
-    > Ha helyszíni Windows Server AD-jét szeretné összevonni az Azure AD-vel, az Azure AD Connect eszköz futtatásakor jelölje be a **Szeretném konfigurálni ezt a tartományt egyszeri bejelentkezéshez a helyi Active Directoryhoz** jelölőnégyzetet a címtárak szinkronizálásához. Emellett a helyszíni címtárral való összevonáshoz kiválasztott tartománynevet is regisztrálnia kell az **Azure AD-tartomány** lépésnél a varázslóban. Megtekintheti, hogyan néz ki ez a lépés a varázslóban [ezekben az útmutatásokban](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation). Ha még nem rendelkezik Azure AD Connect eszközzel, [innen letöltheti](https://go.microsoft.com/fwlink/?LinkId=615771).
+>[!IMPORTANT]
+>A személy, aki a bérlőt hoz létre a program automatikusan az adott bérlő globális rendszergazdája. A globális rendszergazdai a bérlőhöz további rendszergazdákat is hozzáadhat.
 
-2. Az új könyvtár létrehozása a lépéseket követve [hozzon létre egy új bérlőt a szervezetén belül](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization).
+Az előfizetési szerepkörökkel kapcsolatos további információkért tekintse meg az [Azure RBAC szerepköreivel](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)foglalkozó témakört.
 
-    >[!Important]
-    >A személy, aki a bérlőt hoz létre a program automatikusan az adott bérlő globális rendszergazdája. A globális rendszergazdai a bérlőhöz további rendszergazdákat is hozzáadhat.
+>[!TIP]
+> Ha azt tervezi, hogy a helyszíni Windows Server AD-t az Azure AD-vel szeretné összevonása, akkor be kell jelölnie **ezt a tartományt a helyi Active Directory való egyszeri bejelentkezéshez** , amikor a Azure ad Connect eszközt futtatja a címtárak szinkronizálásához.
+>
+> Emellett a helyszíni címtárral való összevonáshoz kiválasztott tartománynevet is regisztrálnia kell az **Azure AD-tartomány** lépésnél a varázslóban. Ha szeretné megtekinteni, hogy a telepítő hogyan néz ki, tekintse meg [az összevonás számára kijelölt Azure ad-tartomány ellenőrzése](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)című témakört. Ha nem rendelkezik a Azure AD Connect eszközzel, [letöltheti itt](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="add-your-custom-domain-name-to-azure-ad"></a>Az egyéni tartománynév hozzáadása az Azure ad-ben
+
 Miután létrehozta a címtárban, az egyéni tartománynevet is hozzáadhat.
 
-1. Válassza ki **egyéni tartománynevek**, majd válassza ki **egyéni tartomány hozzáadása**.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon. Ezután válassza az **Egyéni tartománynevek** > **egyéni tartomány hozzáadása**elemet.
 
     ![Custom Domain Names (egyéni tartománynevek) lap, amelyen az egyéni tartomány hozzáadása látható](media/add-custom-domain/add-custom-domain.png)
 
-2. Írja be a szervezet új tartomány nevét, a **egyéni tartománynév** mezőbe (például _contoso.com_), majd válassza ki **tartomány hozzáadása**.
-
-    A nem ellenőrzött tartomány van felvéve, és a **Contoso** lap jelenik meg, amelyen látható a DNS-adatok.
-
-    >[!Important]
-    >Szerepelnie kell .com, .net vagy egyéb legfelső szintű kiterjesztés ennek megfelelően működjön.
+1. Az **Egyéni tartománynév**mezőben adja meg a szervezet új nevét, ebben a példában a *contoso.com*. Válassza az **Add domain** (Tartomány hozzáadása) lehetőséget.
 
     ![Egyéni tartománynevek lap az egyéni tartomány hozzáadása oldalon](media/add-custom-domain/add-custom-domain-blade.png)
 
-4. A DNS-adatok másolása a **Contoso** lapot. Ha például az MS = ms64983159.
+    >[!IMPORTANT]
+    >A megfelelő működéshez a *. com*, a *.net*vagy bármely más legfelső szintű bővítményt kell megadni.
+
+    A nem ellenőrzött tartomány hozzá van adva. Megjelenik a **contoso.com** lap, amely a DNS-adatokat jeleníti meg. Mentse ezt az információt. Később szüksége lesz rá egy TXT-rekord létrehozásához a DNS konfigurálásához.
 
     ![DNS-bejegyzés adatokkal contoso lap](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>A DNS-adatokat hozzáadni a tartományregisztráló
-Az egyéni tartománynév hozzáadása az Azure ad-hez, után térjen vissza a tartományregisztrálónál, és adja hozzá az Azure AD DNS-információkat a másolt TXT-fájlból. Létrehozás a txt típusú rekordot a tartományra vonatkozóan "ellenőrzi a" a tartománynév tulajdonjogát.
 
--  Lépjen vissza a tartományregisztráló felé, hozzon létre egy új TXT-rekordot a tartományhoz a másolt DNS-adatok alapján , állítsa be az élettartamot (az élettartamot) 3600 másodpercre (60 perc), majd mentse az adatokat.
+Az egyéni tartománynév hozzáadása az Azure ad-hez, után térjen vissza a tartományregisztrálónál, és adja hozzá az Azure AD DNS-információkat a másolt TXT-fájlból. A TXT-rekordnak a tartományhoz való létrehozása ellenőrzi a tartománynév tulajdonjogát.
 
-    >[!Important]
-    >A kívánt számú tartománynevek regisztrálhat. Azonban minden egyes tartományhoz lekérdezi a saját txt típusú rekordot az Azure ad-ből. Ügyeljen arra, hogy a txt típusú fájl adatait, a tartományregisztráló megadásakor. Ha nem a megfelelő adja meg, vagy véletlenül ismétlődő információt, kell Várjon, amíg a TTL időtúllépés (60 perc), mielőtt újra próbálkozhat.
+Térjen vissza a tartományregisztráló, és hozzon létre egy új TXT-rekordot a tartományhoz a másolt DNS-adatok alapján. Állítsa az élettartamot (TTL) 3600 másodpercre (60 perc), majd mentse a rekordot.
+
+>[!IMPORTANT]
+>A kívánt számú tartománynevek regisztrálhat. Azonban minden egyes tartományhoz lekérdezi a saját txt típusú rekordot az Azure ad-ből. Ügyeljen arra, hogy a rendszer a TXT-fájl adatait adja meg a tartományregisztrálónál. Ha hiba esetén helytelen vagy ismétlődő információt ad meg, meg kell várnia, amíg a TTL időtúllépés (60 perc), mielőtt újra próbálkozik.
 
 ## <a name="verify-your-custom-domain-name"></a>Az egyéni tartománynév ellenőrzése
-Miután regisztrálta az egyéni tartománynevet, meg kell róla, hogy érvényes Azure AD-ben. Az Azure ad-hez a tartományregisztrálónál propagálása azonnali vagy is igénybe vehet néhány napra, attól függően, a tartományregisztrálónál.
 
-### <a name="to-verify-your-custom-domain-name"></a>Az egyéni tartománynév ellenőrzése
+Az Egyéni tartománynév regisztrálását követően győződjön meg arról, hogy az érvényes az Azure AD-ben. A tartományregisztráló és az Azure AD közötti propagálás lehet azonnali, vagy eltarthat néhány napig a tartományregisztrálótól függően.
+
+Az egyéni tartomány nevének ellenőrzéséhez kövesse az alábbi lépéseket:
+
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Válassza ki **Azure Active Directory**, majd válassza ki **egyéni tartománynevek**.
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely lapon, majd válassza az **Egyéni tartománynevek**lehetőséget.
 
-3. Az a **Fabrikam – egyéni tartománynevek** lapra, jelölje be az egyéni tartománynév **Contoso**.
+1. Az **Egyéni tartománynevek**területen válassza ki az egyéni tartománynevet. Ebben a példában válassza a **contoso.com**lehetőséget.
 
     ![A Fabrikam – egyéni tartomány nevét oldala, amelyen kiemelve contoso](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
-4. Az a **Contoso** lapon jelölje be **ellenőrizze** , hogy az egyéni tartomány megfelelően regisztrálva van, és érvényes Azure AD-hez.
+1. A **contoso.com** lapon válassza az **ellenőrzés** lehetőséget, hogy ellenőrizze, hogy az egyéni tartomány megfelelően van-e regisztrálva, és hogy érvényes-e az Azure ad-hez.
 
     ![A DNS-bejegyzés adatainak és az ellenőrzés gombra a Contoso lap](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
 Miután ellenőrizte az egyéni tartománynevet, törölheti az ellenőrző TXT-vagy MX-fájlt.
 
 ## <a name="common-verification-issues"></a>Gyakori hitelesítési hibák
-- Ha az Azure AD nem képes egyéni tartománynév ellenőrzésére, próbálkozzon a következőkkel:
-  - **Várjon legalább egy órát, és próbálkozzon újra**. DNS-rekordokat kell propagálása előtt az Azure AD ellenőrizni tudja a tartományt, és ez a folyamat egy vagy több óráig tarthat.
 
-  - **Győződjön meg arról, hogy a DNS-rekord helyességéről.** Lépjen vissza a tartomány nevét regisztráló helyre, és ellenőrizze, hogy a bejegyzés létezik, és, hogy megegyezik-e a DNS-bejegyzés adatait az Azure AD által támogatott.
+Ha az Azure AD nem képes egyéni tartománynév ellenőrzésére, próbálkozzon a következőkkel:
 
-    Ha nem frissíti a rekordot a regisztrálójánál helyen, egy olyan személlyel, amely rendelkezik a megfelelő engedélyekkel a bejegyzést, és győződjön meg arról, pontosan meg kell osztania a bejegyzést.
+- **Várjon legalább egy órát, és próbálkozzon újra**. A DNS-rekordokat propagálni kell, mielőtt az Azure AD ellenőrizni tudja a tartományt. A folyamat egy óráig vagy tovább is tarthat.
 
-- **Ellenőrizze, hogy a tartománynév már nem használt egy másik címtárban.** A tartománynév csak egy címtárban, ami azt jelenti, hogy a tartománynév jelenleg ellenőrizve van egy másik címtárban, ha azt nem is lehet ellenőrizni az új címtárban ellenőrizhető. Duplikáció a probléma elhárításához törölnie kell az a tartomány nevét a régi könyvtárból. További információ a tartománynevek törléséről: [egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
+- **Győződjön meg arról, hogy a DNS-rekord helyességéről.** Térjen vissza a tartománynév-regisztráló webhelyhez. Győződjön meg arról, hogy a bejegyzés létezik, és hogy az megfelel az Azure AD által biztosított DNS-bejegyzési információknak.
 
-- **Ellenőrizze, hogy nem kell minden olyan nem felügyelt Power BI-bérlők.** Ha a felhasználók önkiszolgáló regisztráció a Power bi-ban aktiválták és létrehozott egy nem felügyelt bérlőt a szervezetén belül, meg kell átveszi belső vagy külső rendszergazdaként PowerShell használatával. Egy nem felügyelt könyvtár átvétele kapcsolatos további tudnivalókért lásd: [rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele](../users-groups-roles/domains-admin-takeover.md).
+  Ha nem tudja frissíteni a rekordot a regisztrátor webhelyén, ossza meg a bejegyzést olyan személlyel, aki jogosult a bejegyzés hozzáadására, és ellenőrizze, hogy helyes-e.
+
+- **Ellenőrizze, hogy a tartománynév már nem használt egy másik címtárban.** A tartománynév csak egy címtárban ellenőrizhető. Ha a tartománynevet egy másik címtárban ellenőrzi, az nem ellenőrizhető az új könyvtárban is. Duplikáció a probléma elhárításához törölnie kell az a tartomány nevét a régi könyvtárból. További információ a tartománynevek törléséről: [egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
+
+- **Ellenőrizze, hogy nem kell minden olyan nem felügyelt Power BI-bérlők.** Ha a felhasználók önkiszolgáló regisztráció a Power bi-ban aktiválták és létrehozott egy nem felügyelt bérlőt a szervezetén belül, meg kell átveszi belső vagy külső rendszergazdaként PowerShell használatával. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../users-groups-roles/domains-admin-takeover.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
 - Egy másik globális rendszergazda hozzáadása a címtárhoz. További információ: [szerepkörök és rendszergazdák társítása](active-directory-users-assign-role-azure-portal.md).
 
-- Felhasználók hozzáadása a tartományhoz: [felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md).
+- Felhasználók hozzáadása a tartományhoz. További információ: [felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md).
 
 - Kezelheti a tartomány nevét adatait az Azure ad-ben. További információ: [Egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
 

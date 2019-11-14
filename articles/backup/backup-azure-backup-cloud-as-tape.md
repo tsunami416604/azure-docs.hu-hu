@@ -7,14 +7,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.author: dacurwin
-ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d646cd40312765b11c711f4c63c0943c9e8555
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954881"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074329"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>A hosszú távú tároló áthelyezése szalagról az Azure-felhőbe
+
 A Azure Backup és a System Center Data Protection Manager ügyfelei a következőket tehetik:
 
 * A szervezeti igényeknek leginkább megfelelő ütemtervek adatairól biztonsági másolatot készíthet.
@@ -24,6 +25,7 @@ A Azure Backup és a System Center Data Protection Manager ügyfelei a következ
 Ez a cikk azt ismerteti, hogy az ügyfelek hogyan engedélyezhetik a biztonsági mentési és adatmegőrzési házirendeket. Azok az ügyfelek, akik szalagokat használnak a hosszú távú adatmegőrzési igények kielégítésére, mostantól hatékony és életképes alternatívát biztosítanak a szolgáltatás rendelkezésre állásával. A szolgáltatás a Azure Backup legújabb kiadásában van engedélyezve (amely [itt](https://aka.ms/azurebackup_agent)érhető el). A System Center DPM ügyfeleinek legalább DPM 2012 R2 UR5 kell frissíteniük, mielőtt a DPM szolgáltatást használják a Azure Backup szolgáltatással.
 
 ## <a name="what-is-the-backup-schedule"></a>Mi a biztonsági mentési ütemterv?
+
 A biztonsági mentési ütemterv a biztonsági mentési művelet gyakoriságát jelzi. A következő képernyőn látható beállítások például azt jelzik, hogy a biztonsági mentések naponta, 18:00 és éjfélkor készülnek.
 
 ![Napi ütemterv](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
@@ -33,6 +35,7 @@ Az ügyfelek heti biztonsági mentést is ütemezhetnek. A következő képerny�
 ![Heti ütemterv](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
 ## <a name="what-is-the-retention-policy"></a>Mi az adatmegőrzési szabály?
+
 Az adatmegőrzési szabály meghatározza azt az időtartamot, ameddig a biztonsági másolatot tárolni kell. Ahelyett, hogy az összes biztonsági mentési ponthoz megadta a "lapos házirendet", az ügyfelek eltérő adatmegőrzési házirendeket adhatnak meg a biztonsági mentés során. Például a napi biztonsági mentési pont, amely operatív helyreállítási pontként szolgál, 90 napig megmarad. Az egyes negyedévek végén végrehajtott biztonsági mentési pont naplózási célokra hosszabb ideig megmarad.
 
 ![Adatmegőrzési szabályzat](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
@@ -40,12 +43,13 @@ Az adatmegőrzési szabály meghatározza azt az időtartamot, ameddig a biztons
 Az ebben a házirendben megadott "adatmegőrzési pontok" teljes száma 90 (napi pont) + 40 (az egyik negyedév 10 évre) = 130.
 
 ## <a name="example--putting-both-together"></a>Példa – a kettő együtt történő elhelyezés
+
 ![Minta képernyő](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Napi adatmegőrzési szabály**: A naponta készített biztonsági mentéseket hét napig tároljuk.
-2. **Heti adatmegőrzési szabály**: A minden nap éjfélkor készített biztonsági másolatok és a 18:00 óra megőrzött négy hétig
-3. **Havi adatmegőrzési szabály**: Az egyes hónapok utolsó szombatján éjfélkor és 18:00 órakor készített biztonsági mentések 12 hónapig őrződnek meg
-4. **Éves adatmegőrzési szabály**: Minden március utolsó szombatján éjfélkor készített biztonsági másolatok 10 évig őrződnek meg
+1. **Napi adatmegőrzési szabályzat**: a naponta készített biztonsági mentések hét napig tárolódnak.
+2. **Heti adatmegőrzési szabály**: a biztonsági másolatok minden nap éjfélkor készültek, és a 6. szombat időtartamot négy hétig őrzi meg a rendszer
+3. **Havi adatmegőrzési szabály**: minden hónap utolsó szombatján éjfélkor és 18:00-kor tartott biztonsági másolatok 12 hónapig őrződnek meg
+4. **Éves adatmegőrzési szabály**: minden március utolsó szombatján éjfélkor készített biztonsági másolatok 10 évig őrződnek meg
 
 A "megőrzési pontok" (az ügyfelek által az adatok visszaállítására szolgáló pontok) teljes száma az előző ábrán a következőképpen számítható ki:
 
@@ -61,11 +65,13 @@ A helyreállítási pontok teljes száma 56.
 >
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
+
 Ha az előző képernyőn a **módosítás** gombra kattint, az ügyfelek továbbra is rugalmasságot biztosítanak az adatmegőrzési ütemtervek megadásával.
 
 ![Módosítás](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>További lépések
+
 További információ a Azure Backupról:
 
 * [Az Azure Backup bemutatása](backup-introduction-to-azure-backup.md)

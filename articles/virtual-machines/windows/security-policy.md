@@ -1,6 +1,6 @@
 ---
-title: Biztonságos és házirendek használata a Windows virtuális gépek az Azure-ban |} A Microsoft Docs
-description: További információ a biztonsági és szabályzatok a Windows és az Azure-beli virtuális gépek.
+title: Házirendek biztonságossá tétele és használata az Azure-beli Windows rendszerű virtuális gépeken
+description: Ismerje meg az Azure-beli Windows-és virtuális gépek biztonsági és szabályzatait.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: da89d2181909688c465160d88274614f7e325aaf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4ae87a7a7a62d2cbf9b712fdd99b9a275aaf4f22
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709218"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073294"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Biztonságos és szabályzatok használata az Azure-beli virtuális gépeken
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

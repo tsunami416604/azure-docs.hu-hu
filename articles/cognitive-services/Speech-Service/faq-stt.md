@@ -1,7 +1,7 @@
 ---
 title: Gyakran ismételt kérdések az Azure-beli szöveges szolgáltatásról
 titleSuffix: Azure Cognitive Services
-description: Választ kaphat a beszédfelismeréssel kapcsolatos legnépszerűbb kérdésekre a szöveges szolgáltatással kapcsolatban.
+description: Válaszok a szöveges szolgáltatás beszédével kapcsolatos gyakori kérdésekre.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f03a937aff17c6ee622f3b5ab6045f912b51bbf2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010647"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072583"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -25,7 +25,7 @@ Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb 
 
 **K: mi a különbség az alapmodell és a szöveges modell egyéni beszéde között?**
 
-**A**: az alapmodell a Microsoft tulajdonában lévő adataival lett kiképezve, és már telepítve van a felhőben.  Egyéni modell használatával úgy alakíthatja ki a modelleket, hogy jobban illeszkedjen egy adott környezethez, amely adott környezeti zajt vagy nyelvet tartalmaz. A gyári szintekhez, autókhoz vagy zajos utcákhoz alkalmazkodó akusztikai modellre van szükség. A biológia, a fizika, a radiológia, a terméknév és az egyéni betűszók által használt témákhoz alkalmazkodó nyelvi modellre van szükség.
+**A**: az alapmodell a Microsoft tulajdonában lévő adataival lett kiképezve, és már telepítve van a felhőben. Egyéni modell használatával úgy alakíthatja ki a modelleket, hogy jobban illeszkedjen egy adott környezethez, amely adott környezeti zajt vagy nyelvet tartalmaz. A gyári szintekhez, autókhoz vagy zajos utcákhoz alkalmazkodó akusztikai modellre van szükség. A biológia, a fizika, a radiológia, a terméknév és az egyéni betűszók által használt témákhoz alkalmazkodó nyelvi modellre van szükség.
 
 **K: hol kezdjek, ha alapmodellt szeretnék használni?**
 
@@ -123,13 +123,13 @@ Válasz: Ha az egyes csatornákat külön küldi el (mindegyik csatornát a saj�
 
 **A**: az adatkészlet jelenlegi korlátja 2 GB. A korlátot a HTTP-feltöltéshez használt fájl méretének korlátozása okozza.
 
-**K: használhatom a szövegfájlom zip-fájljait, hogy feltölthető legyen egy nagyobb szövegfájl?** 
+**K: használhatom a szövegfájlom zip-fájljait, hogy feltölthető legyen egy nagyobb szövegfájl?**
 
 **A**: nem. Jelenleg csak a nem tömörített szövegfájlok engedélyezettek.
 
 **K: az Adatjelentés szerint a hosszúságú kimondott szöveg sikertelen volt. Mi a probléma?**
 
-**A**: nem sikerült feltölteni a hosszúságú kimondott szöveg 100 százalékát egy fájlban, nem probléma. Ha a hosszúságú kimondott szöveg túlnyomó többsége akusztikai vagy nyelvi adatkészletekben (például több mint 95 százalék) sikeresen importálva lett, az adatkészlet használható. Azt azonban javasoljuk, hogy próbálja meg megérteni, miért nem sikerült a hosszúságú kimondott szöveg és elhárítani a problémákat. A leggyakoribb problémák (például a formázási hibák) könnyen orvosolhatók. 
+**A**: nem sikerült feltölteni a hosszúságú kimondott szöveg 100 százalékát egy fájlban, nem probléma. Ha a hosszúságú kimondott szöveg túlnyomó többsége akusztikai vagy nyelvi adatkészletekben (például több mint 95 százalék) sikeresen importálva lett, az adatkészlet használható. Azt azonban javasoljuk, hogy próbálja meg megérteni, miért nem sikerült a hosszúságú kimondott szöveg és elhárítani a problémákat. A leggyakoribb problémák (például a formázási hibák) könnyen orvosolhatók.
 
 ## <a name="creating-an-acoustic-model"></a>Akusztikai modell létrehozása
 
@@ -139,11 +139,11 @@ Válasz: Ha az egyes csatornákat külön küldi el (mindegyik csatornát a saj�
 
 **K: milyen adatokat kell gyűjteni?**
 
-**A**: gyűjti az alkalmazási forgatókönyvnek leginkább megfelelő adatokat, és a lehető leghamarabb használja a használati esetet. Az adatgyűjtésnek meg kell egyeznie a célalkalmazás és a felhasználók számára az eszközök, a környezetek és a hangszórók típusai alapján. Általánosságban elmondható, hogy a lehető legszélesebb körben gyűjtsön adatokat a különböző hangszórókból. 
+**A**: gyűjti az alkalmazási forgatókönyvnek leginkább megfelelő adatokat, és a lehető leghamarabb használja a használati esetet. Az adatgyűjtésnek meg kell egyeznie a célalkalmazás és a felhasználók számára az eszközök, a környezetek és a hangszórók típusai alapján. Általánosságban elmondható, hogy a lehető legszélesebb körben gyűjtsön adatokat a különböző hangszórókból.
 
 **K: Hogyan gyűjthetek akusztikus adatokat?**
 
-**A**: létrehozhat egy önálló adatgyűjtési alkalmazást, vagy használhatja a polcon kívüli hangrögzítési szoftvert is. Létrehozhatja az alkalmazás egy olyan verzióját is, amely naplózza a hangadatokat, majd az adatok használatával. 
+**A**: létrehozhat egy önálló adatgyűjtési alkalmazást, vagy használhatja a polcon kívüli hangrögzítési szoftvert is. Létrehozhatja az alkalmazás egy olyan verzióját is, amely naplózza a hangadatokat, majd az adatok használatával.
 
 **K: szeretném magam átírni az adaptációs adatszolgáltatásokat?**
 
@@ -167,7 +167,7 @@ Válasz **: igen**, egyszerűen válassza ki az egyéni akusztikai modellt a leg
 
 **A**: az eredmények az alapmodell és a testre szabott modell összehasonlítását mutatják. Érdemes megverni az alapmodellt, hogy a testreszabási lehetőségek is hasznosak legyenek.
 
-**K: Hogyan meghatározhatja az alapmodell WERjét, hogy megtudjam, van-e javulás?** 
+**K: Hogyan meghatározhatja az alapmodell WERjét, hogy megtudjam, van-e javulás?**
 
 **A**: az offline teszt eredményei az egyéni modell alapkonfigurációjának pontosságát és az alapkonfigurációt mutatják be.
 
@@ -179,21 +179,21 @@ Válasz **: attól**függ, hogy az alkalmazásban használt szókincs és kifeje
 
 **K: csak egy szólistát tölthetek fel?**
 
-**A**: a szavak listájának feltöltése felveszi a szavakat a szókincsbe, de nem fogja tanítani a rendszerre, hogy a szavakat általában hogyan használják. Ha teljes vagy részleges hosszúságú kimondott szöveg (mondatokat vagy kifejezéseket) biztosít a felhasználók számára, akkor a nyelvi modell megismerheti az új szavakat és azok használatát. Az egyéni nyelvi modell nem csupán az új szavak a rendszerhez való hozzáadására, hanem az alkalmazáshoz tartozó ismert szavak valószínűségének módosítására is jó. A teljes hosszúságú kimondott szöveg biztosítása segít a rendszeren a jobb megismerésben. 
+**A**: a szavak listájának feltöltése felveszi a szavakat a szókincsbe, de nem fogja tanítani a rendszerre, hogy a szavakat általában hogyan használják. Ha teljes vagy részleges hosszúságú kimondott szöveg (mondatokat vagy kifejezéseket) biztosít a felhasználók számára, akkor a nyelvi modell megismerheti az új szavakat és azok használatát. Az egyéni nyelvi modell nem csupán az új szavak a rendszerhez való hozzáadására, hanem az alkalmazáshoz tartozó ismert szavak valószínűségének módosítására is jó. A teljes hosszúságú kimondott szöveg biztosítása segít a rendszeren a jobb megismerésben.
 
 ## <a name="tenant-model-custom-speech-with-office-365-data"></a>Bérlői modell (Custom Speech Office 365-adattal)
 
 **K: milyen információk szerepelnek a bérlői modellben, és hogyan jön létre?**
 
-**A:** A bérlői modell olyan [nyilvános csoportos](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-mailek és dokumentumok használatával készült, amelyeket bárki láthat a szervezetében. 
- 
+**A:** A bérlői modell olyan [nyilvános csoportos](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-mailek és dokumentumok használatával készült, amelyeket bárki láthat a szervezetében.
+
 **K: milyen beszédfelismerési élményt fejlesztenek a bérlői modell?**
 
-**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatás használatával létrehozott vállalati alkalmazások felismerését is javítja. Ez egy olyan felhasználói HRE-tokent is továbbít, amely a nagyvállalati tagságot jelzi.
+**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését is javítja. Ez egy felhasználói HRE tokent is továbbít, amely a vállalatnak való tagságot jelzi.
 
 Az Office 365-ben beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok, nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [hibaelhárítással](troubleshooting.md)
-* [Kibocsátási megjegyzések](releasenotes.md)
+- [Hibaelhárítás](troubleshooting.md)
+- [Kibocsátási megjegyzések](releasenotes.md)

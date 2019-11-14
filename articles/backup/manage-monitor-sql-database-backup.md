@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b9a292d06ce68d211b5c758e287f2935411c6f12
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968372"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074780"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>SQL Server adatbázisok biztonsági mentésének kezelése és figyelése
 
@@ -42,7 +42,7 @@ Mivel a naplók biztonsági mentései 15 percenként történnek, a biztonsági 
 
 Az adatbázis biztonsági mentési értesítéseinek figyelése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 2. A tároló Irányítópultján kattintson a **riasztások és események**elemre.
 
@@ -117,7 +117,7 @@ Különböző típusú, igény szerinti biztonsági mentést is futtathat:
 - Különbségi biztonsági mentés
 - Naplóalapú biztonsági mentés
 
-Míg a csak a teljes biztonsági mentés megőrzési időtartamát kell megadnia, az ad-hoc teljes biztonsági mentés megőrzési tartománya automatikusan 45 napra lesz állítva az aktuális időpontnál.
+Míg a csak a teljes biztonsági mentés megőrzési időtartamát kell megadnia, az igény szerinti teljes biztonsági mentés megőrzési tartománya automatikusan 45 napra lesz állítva az aktuális időpontnál.
 
 További információ: [SQL Server biztonsági mentési típusok](backup-architecture.md#sql-server-backup-types).
 
@@ -170,6 +170,6 @@ Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény
 
 Ezt a beállítást körültekintően használhatja. Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ez azt eredményezheti, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet megkezdése előtt kérjük, ellenőrizze, hogy van-e egy vagy több [tünet](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: SQL Server- [adatbázis biztonsági másolatainak hibáinak megoldása](backup-sql-server-azure-troubleshoot.md).

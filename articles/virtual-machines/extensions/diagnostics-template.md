@@ -1,5 +1,5 @@
 ---
-title: Figyelési & diagnosztika hozzáadása egy Azure-beli virtuális géphez | Microsoft Docs
+title: Figyelési & diagnosztika hozzáadása egy Azure-beli virtuális géphez
 description: Hozzon létre egy új Windowsos virtuális gépet az Azure Diagnostics bővítmény használatával Azure Resource Manager sablonnal.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ba8fdba3b7283185920432b5b096b80b2e32021
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092538"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073842"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal
-A Azure Diagnostics bővítmény a Windows-alapú Azure-beli virtuális gépek monitorozási és diagnosztikai funkcióit biztosítja. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt a Azure Resource Manager sablon részeként is engedélyezi. A virtuálisgép-sablonok részét képező bővítményekkel kapcsolatos további információkért lásd: [Azure Resource Manager sablonok létrehozása VM](../windows/template-description.md#extensions) -bővítményekkel. Ez a cikk azt ismerteti, hogyan adhatja hozzá a Azure Diagnostics bővítményt egy Windows rendszerű virtuálisgép-sablonhoz.  
+A Azure Diagnostics bővítmény a Windows-alapú Azure-beli virtuális gépek monitorozási és diagnosztikai funkcióit biztosítja. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt a Azure Resource Manager sablon részeként is engedélyezi. A virtuálisgép-sablonok részét képező bővítményekkel kapcsolatos további információkért lásd: [Azure Resource Manager sablonok létrehozása VM-bővítményekkel](../windows/template-description.md#extensions) . Ez a cikk azt ismerteti, hogyan adhatja hozzá a Azure Diagnostics bővítményt egy Windows rendszerű virtuálisgép-sablonhoz.  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Adja hozzá a Azure Diagnostics bővítményt a virtuális gép erőforrás-definícióhoz
 Ha engedélyezni szeretné a diagnosztikai bővítményt egy Windows rendszerű virtuális gépen, hozzá kell adnia a bővítményt virtuálisgép-erőforrásként a Resource Manager-sablonban.
@@ -62,7 +62,7 @@ Egy egyszerű Resource Manager-alapú virtuális gép esetében adja hozzá a b�
 ]
 ```
 
-Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Példa: 
+Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Például: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -157,24 +157,24 @@ A *PT1M* és a *PT1H* MetricAggregation értéke egy percen belül összesíti a
 ## <a name="wadmetrics-tables-in-storage"></a>WADMetrics-táblák a tárolóban
 A fenti metrikai konfiguráció a diagnosztikai Storage-fiókban lévő táblákat a következő elnevezési konvenciókkal hozza létre:
 
-* **WADMetrics**: Szabványos előtag az összes WADMetrics-táblához
-* **PT1H** vagy **PT1M**: Azt jelzi, hogy a tábla 1 óránál vagy 1 percen belül összesített adatokat tartalmaz
-* **P10D**: Azt jelenti, hogy a tábla 10 napig tartalmaz adatgyűjtést, amikor a tábla megkezdte az adatok gyűjtését.
-* **V2S**: Karakterlánc-állandó
-* **ééééhhnn**: Az a dátum, amikor a tábla elkezdte az adatok gyűjtését
+* **WADMetrics**: standard előtag az összes WADMetrics-táblához
+* **PT1H** vagy **PT1M**: azt jelzi, hogy a tábla 1 órán vagy 1 percen belül összesített adatokat tartalmaz
+* **P10D**: azt jelzi, hogy a tábla 10 napig tartalmaz-e az adatok gyűjtésének megkezdése után.
+* **V2S**: karakterlánc-állandó
+* **ééééhhnn**: az a dátum, amikor a tábla elkezdte az adatok gyűjtését
 
-Példa: A *WADMetricsPT1HP10DV2S20151108* olyan mérőszámokat tartalmaz, amelyek összesített száma egy óra alatt 10 nap, 11 – november – 2015    
+Példa: a *WADMetricsPT1HP10DV2S20151108* olyan mérőszámokat tartalmaz, amelyek összesített száma egy óra alatt 10 nap, 11 – november – 2015    
 
 Minden WADMetrics-tábla a következő oszlopokat tartalmazza:
 
-* **PartitionKey**: A partíciós kulcs a *resourceID* érték alapján épül fel a virtuálisgép-erőforrás egyedi azonosítására. Például:`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: A következő formátumot `<Descending time tick>:<Performance Counter Name>`követi:. A csökkenő időtartamú Tick-számítás a maximális idő, amely az összesítési időszak kezdetének időpontját jelöli. Például, ha a mintavételi időszak 10 – Nov-2015 és 00:00Hrs UTC, akkor a számítás a következő lesz: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. A rendelkezésre álló memória bájtjainak teljesítményszámláló a sor kulcsa a következőképpen fog kinézni:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName**: A teljesítményszámláló neve. Ez megegyezik az XML-konfigurációban definiált *counterSpecifier* .
-* **Maximális**érték: A teljesítményszámláló maximális értéke az összesítési időszakban.
-* **Minimum**: A teljesítményszámláló minimális értéke az összesítési időszakban.
-* **Összesen**: Az összesítési időszakban jelentett teljesítményszámláló összes értékének összege.
-* **Darabszám**: A teljesítményszámláló számára jelentett értékek teljes száma.
-* **Átlag**: A teljesítményszámláló átlagos (teljes/darabszám) értéke az összesítési időszakban.
+* **PartitionKey**: a partíciós kulcs a *resourceID* érték alapján épül fel a virtuálisgép-erőforrás egyedi azonosítására. Például:`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **RowKey**: a következő formátumot követi `<Descending time tick>:<Performance Counter Name>`. A csökkenő időtartamú Tick-számítás a maximális idő, amely az összesítési időszak kezdetének időpontját jelöli. Ha például a mintavételi időszak 10 – Nov-2015 és 00:00Hrs UTC, akkor a számítás a következő lesz: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. A rendelkezésre álló memória bájtjainak teljesítményszámláló mezőjének értéke a következőhöz hasonlóan fog kinézni: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **CounterName**: a teljesítményszámláló neve. Ez megegyezik az XML-konfigurációban definiált *counterSpecifier* .
+* **Maximum**: a teljesítményszámláló maximális értéke az összesítési időszakban.
+* **Minimum**: a teljesítményszámláló minimális értéke az összesítési időszakban.
+* **Összesen**: az összesítési időszakban jelentett teljesítményszámláló összes értékének összege.
+* **Darabszám**: a teljesítményszámláló számára jelentett értékek teljes száma.
+* **Average (átlag**): a teljesítményszámláló átlagos (teljes/darabszám) értéke az összesítési időszakban.
 
 ## <a name="next-steps"></a>További lépések
 * A diagnosztikai bővítménnyel rendelkező Windows rendszerű virtuális gépek teljes mintája: [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   

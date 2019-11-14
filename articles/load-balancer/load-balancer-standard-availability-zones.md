@@ -1,7 +1,7 @@
 ---
 title: Azure standard Load Balancer és Availability Zones
-titlesuffix: Azure Load Balancer
-description: A Standard Load Balancer és a rendelkezésre állási zónák
+titleSuffix: Azure Load Balancer
+description: Ezzel a képzési útvonallal megismerheti az Azure standard Load Balancer és a Availability Zones.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 925e7857d337f7f2fd501e4e4467c05952b0da65
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882946"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076989"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
-Az Azure standard Load Balancer támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyveit. Standard Load Balancer használatával optimalizálhatja a rendelkezésre állást a végpontok közötti forgatókönyvben az erőforrások zónákhoz igazításával és a zónák közötti elosztásával.  Tekintse át a rendelkezésre állási [zónákat](../availability-zones/az-overview.md) a rendelkezésre állási zónákra vonatkozó útmutatásért, mely régiókban jelenleg a rendelkezésre állási zónák és egyéb kapcsolódó fogalmak és termékek érhetők el. a rendelkezésre állási zónák és a standard Load Balancer együttes használata egy átfogó és rugalmas szolgáltatáskészlet, amely számos különböző forgatókönyvet képes létrehozni.  Tekintse át ezt a dokumentumot [](#concepts) , hogy megértse ezeket a fogalmakat és az alapvető forgatókönyv kialakítására vonatkozó [útmutatót](#design).
+Az Azure standard Load Balancer támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyveit. Standard Load Balancer használatával optimalizálhatja a rendelkezésre állást a végpontok közötti forgatókönyvben az erőforrások zónákhoz igazításával és a zónák közötti elosztásával.  Tekintse át a rendelkezésre állási [zónákat](../availability-zones/az-overview.md) a rendelkezésre állási zónákra vonatkozó útmutatásért, mely régiókban jelenleg a rendelkezésre állási zónák és egyéb kapcsolódó fogalmak és termékek érhetők el. a rendelkezésre állási zónák és a standard Load Balancer együttes használata egy átfogó és rugalmas szolgáltatáskészlet, amely számos különböző forgatókönyvet képes létrehozni.  Tekintse át ezt a dokumentumot, hogy megértse ezeket a [fogalmakat](#concepts) és az alapvető forgatókönyv [kialakítására vonatkozó útmutatót](#design).
 
 >[!IMPORTANT]
 >Tekintse át [Availability Zones](../availability-zones/az-overview.md) kapcsolódó témaköröket, beleértve a régióra vonatkozó információkat is.
@@ -37,7 +37,7 @@ A rendelkezésre állási zónák kontextusában a Load Balanceri szabályok vis
 
 Mind a nyilvános, mind a belső Load Balancer támogatja a zóna-redundáns és a zónákra kiterjedő forgatókönyveket, és mindkettő képes a zónák közötti közvetlen forgalmat igény szerint (*több zóna terheléselosztása*). 
 
-### <a name="frontend"></a>Előtér
+### <a name="frontend"></a>Frontend
 
 A Load Balancer előtér olyan előtéri IP-konfiguráció, amely egy nyilvános IP-cím erőforrásra vagy egy virtuális hálózati erőforrás alhálózatán belüli magánhálózati IP-címére hivatkozik.  Ez az elosztott terhelésű végpontot képezi, ahol a szolgáltatás elérhető.
 
@@ -88,17 +88,17 @@ Az alábbi részlet azt szemlélteti, hogyan határozható meg egy zóna – red
                 ],
 ```
 
-A bájtértékre-kivonatok nem végeznek teljes sablonokat, de a rendelkezésre állási zónák tulajdonságainak megjelenítésére szolgálnak.  Ezeket az utasításokat bele kell foglalni a sablonokba.
+Az előző részletek nem teljesek, hanem a rendelkezésre állási zónák tulajdonságainak megjelenítésére szolgálnak.  Ezeket az utasításokat bele kell foglalni a sablonokba.
 
 #### <a name="optional-zone-isolation"></a>Választható zónák elkülönítése
 
-Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, amelyegy zónákhoz tartozik.  Ez azt jelenti, hogy bármely bejövő vagy kimenő folyamat egy adott régióban egyetlen zónában szolgál.  A frontend a zóna állapotával osztja meg a sorsot.  Az adatelérési útvonalat a rendszer nem érinti a nem az adott zónán kívüli zónák meghibásodása esetén. Az IP-cím rendelkezésre állási zónákban való megjelenítéséhez használhatja a zónákhoz tartozó előtérbeli felületet.  
+Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, amely egy *zónákhoz*tartozik.  Ez azt jelenti, hogy bármely bejövő vagy kimenő folyamat egy adott régióban egyetlen zónában szolgál.  A frontend a zóna állapotával osztja meg a sorsot.  Az adatelérési útvonalat a rendszer nem érinti a nem az adott zónán kívüli zónák meghibásodása esetén. Az IP-cím rendelkezésre állási zónákban való megjelenítéséhez használhatja a zónákhoz tartozó előtérbeli felületet.  
 
 Ezen kívül az egyes zónákon belüli elosztott terhelésű végpontokhoz közvetlenül is felhasználhatja a zónákhoz tartozó előtérbeli felületet. Ezt a zónát is használhatja a zónák elosztott terhelésű végpontok számára, hogy külön figyelje az egyes zónákat.  Vagy nyilvános végpontok esetén integrálhatja őket egy DNS terheléselosztási termékkel, például [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , és egyetlen DNS-nevet használhat. Az ügyfél ezután ezt a DNS-nevet fogja feloldani a több zóna IP-címére.  
 
 Ha szeretné összekeverni ezeket a fogalmakat (a zóna redundáns és az azonos háttérbeli névteret), tekintse át [Azure Load Balancer több](load-balancer-multivip-overview.md)előtérben is.
 
-Nyilvános Load Balancer előtér esetén a megfelelő szabály által használt ELŐTÉRI IP-konfiguráció által hivatkozott nyilvános IP-erőforráshoz hozzá kell adni egy Zones paramétert.
+Nyilvános Load Balancer előtér esetén a megfelelő szabály által használt előtéri IP-konfiguráció által hivatkozott nyilvános IP-erőforráshoz hozzá kell adni egy *Zones* paramétert.
 
 Belső Load Balancer frontend esetén adjon hozzá egy *Zones* paramétert a belső Load Balancer előtér-IP-konfigurációhoz. A zóna-előtérbeli felület hatására a Load Balancer egy adott zónához tartozó IP-címet garantál.
 
@@ -151,7 +151,7 @@ A zónák közötti terheléselosztás az Load Balancer képessége, hogy bárme
 
 Ügyelnie kell arra, hogy a forgatókönyvet olyan módon hozza létre, amely a rendelkezésre állási zónák fogalmát jelezte. Például garantálnia kell, hogy a virtuális gép üzembe helyezése egyetlen zónán vagy több zónán belül történjen, és a zóna-előtérben és a zónákhoz tartozó háttér-erőforrások ugyanazon zónához legyenek igazítva.  Ha a rendelkezésre állási zónákat csak a zónákhoz tartozó erőforrásokkal együtt szeretné megtekinteni, a forgatókönyv működni fog, de a rendelkezésre állási zónák tekintetében nem lehet tiszta meghibásodási mód. 
 
-### <a name="backend"></a>Háttérszolgáltatás
+### <a name="backend"></a>Backend
 
 A Load Balancer Virtual Machines-példányokkal működik.  Ezek lehetnek önálló, rendelkezésre állási csoportok vagy virtuálisgép-méretezési csoportok.  Az egyetlen virtuális hálózatban található virtuálisgép-példányok a háttér-készlet részét képezhetik, függetlenül attól, hogy az adott zóna számára garantált-e vagy sem, vagy hogy melyik zónában volt garantált.
 
@@ -165,7 +165,7 @@ Ugyanez a zóna – a redundáns és a zónákra vonatkozó tulajdonságok a [ki
 
 A SNAT port előfoglalási algoritmusa ugyanaz, mint a rendelkezésre állási zónák vagy azok nélkül.
 
-### <a name="health-probes"></a>Állapotadat-mintavételek
+### <a name="health-probes"></a>Állapotminták
 
 A meglévő állapot-mintavételi definíciók a rendelkezésre állási zónák nélkül maradnak.  Az egészségügyi modellt azonban infrastrukturális szinten bővítettük. 
 
@@ -217,6 +217,6 @@ Nincs általános útmutatás arra, hogy az egyik a szolgáltatás architektúr�
 ## <a name="next-steps"></a>További lépések
 - További információ a [Availability Zones](../availability-zones/az-overview.md)
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
-- Ismerje meg, hogyan oszthatja meg a virtuális gépeket egy zónán belül egy olyan [standard Load Balancer használatával,](load-balancer-standard-public-zonal-cli.md) amely egy zóna-előtérben található.
+- Ismerje meg, hogyan oszthatja meg a [virtuális gépeket egy zónán belül egy olyan standard Load Balancer használatával,](load-balancer-standard-public-zonal-cli.md) amely egy zóna-előtérben található.
 - Megtudhatja, hogyan oszthatja meg a [virtuális gépeket zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](load-balancer-standard-public-zone-redundant-cli.md)
 - Ismerje meg az [Azure Felhőbeli kialakítási mintáit](https://docs.microsoft.com/azure/architecture/patterns/) , amelyekkel javítható az alkalmazás meghibásodási forgatókönyvekhez való rugalmassága.

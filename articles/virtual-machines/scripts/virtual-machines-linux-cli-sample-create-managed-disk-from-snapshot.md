@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Felügyelt lemez létrehozása pillanatképből | Microsoft Docs
+title: Azure CLI-példaszkript – Felügyelt lemez létrehozása pillanatképből
 description: Azure CLI-példaszkript – Felügyelt lemez létrehozása pillanatképből
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 030f3d9455956c3c728e450aca058b2df10eb3d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a219b24c4d4b82363094ccba74db22e3b4018c4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302415"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023315"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Felügyelt lemez létrehozása pillanatképből a CLI-vel
 
@@ -46,7 +46,7 @@ A szkript a következő parancsokat használja arra, hogy létrehozzon egy felü
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Lekérdezi egy pillanatkép összes tulajdonságát a pillanatkép neve és erőforráscsoport-tulajdonságai alapján. A felügyelt lemezek létrehozásához a rendszer az „Id” tulajdonságot használja.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Létrehoz egy felügyelt lemezt egy felügyelt pillanatkép pillanatkép-azonosítójának használatával. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gép létrehozása felügyelt lemez rendszerlemezként való csatlakoztatásával](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 

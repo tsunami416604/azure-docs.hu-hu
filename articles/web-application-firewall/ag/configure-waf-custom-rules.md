@@ -1,18 +1,19 @@
 ---
-title: A webalkalmazási tűzfal v2 konfigurálása Application Gateway egyéni szabályokban a Azure PowerShell használatával
+title: Egyéni v2-szabályok konfigurálása a PowerShell használatával
+titleSuffix: Azure Web Application Firewall
 description: Ismerje meg, hogyan konfigurálhatja a WAF v2 egyéni szabályait a Azure PowerShell használatával
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 8c307ac5553c2c333425b6c14b9b4da4a6582f62
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 48f45629b82e63dfc3f098b68e1be2523a3a0e5c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516798"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075388"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Webalkalmazási tűzfal v2 konfigurálása Application Gateway egyéni szabállyal Azure PowerShell használatával
 

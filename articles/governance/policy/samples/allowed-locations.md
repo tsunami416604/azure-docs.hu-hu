@@ -1,21 +1,18 @@
 ---
 title: Példaként engedélyezett helyszínek
 description: Ez a minta házirend-definíció megköveteli, hogy minden erőforrást a jóváhagyott helyszínekre telepítsen.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 5c4a23b355a4d7841c42d03042399635a55bac03
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 7561e57a00f440e50701fa75bd54676ad014e1d5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980637"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071922"
 ---
 # <a name="sample---allowed-region-locations"></a>Példa – engedélyezett régió helyei
 
-Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezet által az erőforrások telepítésekor megadható helyekre vonatkozó korlátozásokat. A Geo-megfelelőségi követelmények betartatására használható. Az erőforráscsoportok, a Microsoft. AzureActiveDirectory/b2cDirectories és a "globális" régiót használó erőforrások kizárása. Az engedélyezett helyszínek tömbjét kell megadnia.
+Ezzel a szabályzattal korlátozható azon helyek köre, amelyeket a szervezet megadhat az erőforrások üzembe helyezésekor. A földrajzi megfelelőségi követelmények betartására szolgál. Az erőforráscsoportok, a Microsoft. AzureActiveDirectory/b2cDirectories és a "globális" régiót használó erőforrások kizárása. Az engedélyezett helyszínek tömbjét kell megadnia.
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -51,9 +48,9 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 ## <a name="parameters"></a>Paraméterek
 
-|Name (Név) |Type |Mező |Leírás |
+|Name (Név) |Típus |Mező |Leírás |
 |---|---|---|---|
-|listOfAllowedLocations |Array |locations |Az engedélyezett helyszínek listája|
+|listOfAllowedLocations |Tömb |locations |Az engedélyezett helyszínek listája|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
@@ -73,8 +70,8 @@ Ebben a példában csak a _eastus2_ vagy a _westus_ hely lesz engedélyezve.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[@no__t – 1Deploy a szabályzatot az azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
-[![Deploy az Azure gov-hoz](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![telepítse a házirend-mintát az Azure-](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json) ba
+[![telepítse a házirend-mintát az Azure gov-](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json) ba
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -217,10 +214,10 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 
 | Szolgáltatás | Csoport | Művelet | Megjegyzések |
 |---|---|---|---|
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív [Létrehozás a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatíva: [Létrehozás felügyeleti csoportnál](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Létrehozás](/rest/api/resources/policyassignments/create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Törlés](/rest/api/resources/policyassignments/delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív [Törlés a felügyeleti csoportban](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatíva: [Eltávolítás felügyeleti csoportnál](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>További lépések
 

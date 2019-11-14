@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7d09e7839356c040e6632ef728cc579abaa17268
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: d9272aa4a46a5835558be8c695b62ec0770e3827
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968346"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074066"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -74,7 +74,7 @@ Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A re
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Láthatom az ütemezett biztonsági mentési feladatokat a biztonsági mentési feladatok menüben?
 
-A **biztonsági mentési feladat** menü csak az alkalmi biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz [Azure monitor használatával történő figyelést](backup-azure-monitoring-use-azuremonitor.md)használhat.
+A **biztonsági mentési feladat** menü csak az igény szerinti biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz [Azure monitor használatával történő figyelést](backup-azure-monitoring-use-azuremonitor.md)használhat.
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>A jövőbeli adatbázisok automatikusan hozzáadódnak a biztonsági mentéshez?
 
@@ -104,6 +104,6 @@ Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan ada
 
   ![Újonnan hozzáadott adatbázis manuális felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

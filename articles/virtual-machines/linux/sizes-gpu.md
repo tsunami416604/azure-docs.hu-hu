@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM-méretek – gyorsított számítás | Microsoft Docs
+title: Azure Linux VM-méretek – gyorsított számítás
 description: Az Azure-beli linuxos virtuális gépekhez elérhető különböző GPU-ra optimalizált méretek listája. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 983e85dc0ebefb27804c0f3a794360def6050ba9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082132"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034906"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-ra optimalizált virtuálisgép-méretek
 
@@ -37,7 +37,7 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Az Ubuntu NC virtuális gépeken az `Nouveau` illesztőprogramot használó X-kiszolgáló vagy más rendszerek telepítése nem ajánlott. Az NVIDIA GPU-illesztőprogramok telepítése előtt le kell tiltania `Nouveau` az illesztőprogramot.  
+* Ne telepítse az X Servert vagy más rendszert, amely a `Nouveau` illesztőprogramot használja az Ubuntu NC virtuális gépeken. Az NVIDIA GPU-illesztőprogramok telepítése előtt le kell tiltania a `Nouveau` illesztőprogramot.  
 
 ## <a name="other-sizes"></a>Egyéb méretek
 - [Általános célú](sizes-general.md)
@@ -47,5 +47,5 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

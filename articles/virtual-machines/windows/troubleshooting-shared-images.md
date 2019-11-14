@@ -1,5 +1,5 @@
 ---
-title: A megosztott rendszerképekkel kapcsolatos problémák elhárítása az Azure-ban | Microsoft Docs
+title: A megosztott rendszerképekkel kapcsolatos problémák elhárítása az Azure-ban
 description: Ismerje meg, hogyan oldhatja meg a megosztott képtárakkal kapcsolatos problémákat.
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 6ea90291c25a89c0a62bfbad2f0d48369ccd0746
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 945c5fb4c1641f425c842ac4f6048c7db75db5de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101750"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068101"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>Megosztott képtárak hibaelhárítása
 
@@ -30,4 +30,4 @@ ms.locfileid: "70101750"
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [megosztott](shared-image-galleries.md)képtárakról.
+További információ a [megosztott képtárakról](shared-image-galleries.md).

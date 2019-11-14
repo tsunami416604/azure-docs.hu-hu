@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019067"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074829"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -27,19 +27,19 @@ A Azure Backup Server v2 és újabb verziók olyan modern biztonsági másolati 
 
 A Backup Server v2 vagy újabb verziója fogadja a tárolási köteteket. Kötet hozzáadásakor a biztonsági mentési kiszolgáló a kötetet a rugalmas fájlrendszerre (ReFS) formázza, amelyhez modern biztonsági másolati tárhely szükséges. Ha egy kötetet szeretne hozzáadni, és később szeretné kibontani, javasoljuk, hogy használja ezt a munkafolyamatot:
 
-1.  Állítsa be a biztonsági mentési kiszolgálót egy virtuális gépen.
-2.  Kötet létrehozása egy virtuális lemezen egy tárolási készletben:
-    1.  Adjon hozzá egy lemezt egy tárolóhoz, és hozzon létre egy egyszerű elrendezésű virtuális lemezt.
-    2.  Vegyen fel további lemezeket, és terjessze ki a virtuális lemezt.
-    3.  Hozzon létre köteteket a virtuális lemezen.
-3.  Adja hozzá a köteteket a biztonsági mentési kiszolgálóhoz.
-4.  A munkaterhelés-kompatibilis tároló konfigurálása.
+1. Állítsa be a biztonsági mentési kiszolgálót egy virtuális gépen.
+2. Kötet létrehozása egy virtuális lemezen egy tárolási készletben:
+    1. Adjon hozzá egy lemezt egy tárolóhoz, és hozzon létre egy egyszerű elrendezésű virtuális lemezt.
+    2. Vegyen fel további lemezeket, és terjessze ki a virtuális lemezt.
+    3. Hozzon létre köteteket a virtuális lemezen.
+3. Adja hozzá a köteteket a biztonsági mentési kiszolgálóhoz.
+4. A munkaterhelés-kompatibilis tároló konfigurálása.
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Kötet létrehozása modern biztonsági másolati tárhelyhoz
 
 A Backup Server v2 vagy újabb verziókkal, a lemezes tárolással rendelkező kötetek használatával kezelheti a tárhely feletti irányítást. Egy kötet lehet egyetlen lemez. Ha azonban később szeretné bővíteni a tárterületet, hozzon létre egy kötetet a tárolóhelyek használatával létrehozott lemezből. Ez segíthet, ha ki szeretné bővíteni a kötetet a biztonsági mentési tárolóban. Ez a szakasz ajánlott eljárásokat tartalmaz a kötet létrehozásához ezzel a telepítővel.
 
-1. A Kiszolgálókezelőben válassza a **fájl-és tárolási szolgáltatások** > **kötetek** > **tárolási készletek**elemet. A **fizikai lemezek**területen válassza az **új tárolási készlet**lehetőséget.
+1. A Kiszolgálókezelőben válassza a **fájl-és tárolási szolgáltatások** > **kötetek** > **Storage-készletek**elemet. A **fizikai lemezek**területen válassza az **új tárolási készlet**lehetőséget.
 
     ![Új tárolási készlet létrehozása](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -75,7 +75,7 @@ A munkaterhelés-kompatibilis tárolással kiválaszthatja azokat a köteteket, 
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Az Update-DPMDiskStorage PowerShell-parancsmag használatával beállíthatja a munkaterhelés-kompatibilis tárolót, amely egy Azure Backup Server a tárolóban lévő kötet tulajdonságait frissíti. 
+Az Update-DPMDiskStorage PowerShell-parancsmag használatával beállíthatja a munkaterhelés-kompatibilis tárolót, amely egy Azure Backup Server a tárolóban lévő kötet tulajdonságait frissíti.
 
 Szintaxis
 
@@ -84,6 +84,7 @@ Szintaxis
 ```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 A következő képernyőképen az Update-DPMDiskStorage parancsmag látható a PowerShell-ablakban.
 
 ![Az Update-DPMDiskStorage parancs a PowerShell-ablakban](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,8 +93,8 @@ A PowerShell használatával végrehajtott módosítások megjelennek a biztons�
 
 ![Lemezek és kötetek a felügyeleti konzol](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Örökölt tároló migrálása modern biztonsági másolati tárhelyre
+
 Miután frissítette vagy telepítette a Backup Server v2-t, és az operációs rendszert a Windows Server 2016-re frissíti, frissítse a védelmi csoportokat modern biztonsági másolati tárhely használatára. Alapértelmezés szerint a védelmi csoportok nem változnak. Továbbra is ugyanúgy működnek, mint az eredetileg beállítottak.
 
 A védelmi csoportok modern biztonsági másolati tárhely használatára való frissítése nem kötelező. A védelmi csoport frissítéséhez állítsa le az összes adatforrás védelmét az adat megőrzése lehetőség használatával. Ezután adja hozzá az adatforrásokat egy új védelmi csoporthoz.
@@ -102,7 +103,7 @@ A védelmi csoportok modern biztonsági másolati tárhely használatára való 
 
    ![Tag védelmének leállítása](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. A csoportból való **Eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezett érték a helyreállítási pontok elhagyása a lemezen, és a hozzájuk tartozó adatmegőrzési házirend érvényességének engedélyezése. Kattintson az **OK** gombra.
+2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezett érték a helyreállítási pontok elhagyása a lemezen, és a hozzájuk tartozó adatmegőrzési házirend érvényességének engedélyezése. Kattintson az **OK** gombra.
 
    Ha azonnal vissza kívánja adni a felhasznált lemezterületet az ingyenes tárterületre, jelölje be a **replika törlése a lemezen** jelölőnégyzetet az ehhez a taghoz tartozó biztonsági mentési információk (és helyreállítási pontok) törléséhez.
 
@@ -120,11 +121,12 @@ Lemezes tár hozzáadása:
 
     ![Disk Storage hozzáadása párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. A **Disk Storage hozzáadása** párbeszédpanelen válassza a **lemezek hozzáadása**lehetőséget.
+2. A **Disk Storage hozzáadása** párbeszédpanelen válassza a **lemezek hozzáadása**lehetőséget.
 
-5. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás**lehetőséget, majd kattintson **az OK gombra**.
+3. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás**lehetőséget, majd kattintson **az OK gombra**.
 
 ## <a name="next-steps"></a>További lépések
+
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 
 - [A biztonsági mentési kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)

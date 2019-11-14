@@ -1,5 +1,6 @@
 ---
-title: Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
+title: Önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
+titleSuffix: Azure Application Gateway
 description: Útmutató Azure Application Gateway önaláírt tanúsítvány létrehozásához egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833373"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075088"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
 
@@ -23,7 +24,7 @@ A Application Gateway alapértelmezés szerint megbízhatónak minősíti a webh
 > [!NOTE]
 > Az önaláírt tanúsítványok alapértelmezés szerint nem megbízhatók, és nehéz lehet fenntartani őket. Emellett elavult kivonatoló és titkosító csomagokat is használhatnak, amelyek esetleg nem erősek. A biztonság érdekében érdemes megvásárolnia egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ez a cikk azt ismerteti, hogyan lehet:
 
 - Saját egyéni hitelesítésszolgáltató létrehozása
 - Egyéni HITELESÍTÉSSZOLGÁLTATÓ által aláírt önaláírt tanúsítvány létrehozása

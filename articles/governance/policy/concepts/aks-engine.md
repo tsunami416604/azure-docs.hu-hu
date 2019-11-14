@@ -1,17 +1,14 @@
 ---
 title: Ismerkedjen meg Azure Policy az AK-motorral
 description: Megtudhatja, hogyan használja a Azure Policy a CustomResourceDefinitions-t és a házirend-ügynököt a forgalomirányító v3-mel a fürtök és az AK-motor
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 71f3f26b9ea7f24d674c911e18c785b0798a072c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512131"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072067"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Az AK-motor Azure Policy ismertetése
 
@@ -38,7 +35,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
 1. Az erőforrás-szolgáltató engedélyezéséhez kövesse az erőforrás- [szolgáltatók és-típusok](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) lépéseit, vagy futtassa az Azure CLI vagy a Azure PowerShell parancsot:
 
-   - Azure parancssori felület (CLI)
+   - Azure CLI
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell

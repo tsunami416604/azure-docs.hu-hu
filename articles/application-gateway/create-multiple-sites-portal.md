@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag – több webhelyet üzemeltető Application Gateway létrehozása a Azure Portal használatával
+title: 'Oktatóanyag: több webhely üzemeltetése a Azure Portal használatával'
+titleSuffix: Azure Application Gateway
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amely több webhelyet üzemeltet a Azure Portal használatával.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833575"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075153"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása és konfigurálása több webhelynek a Azure Portal használatával történő üzemeltetéséhez
 
@@ -21,7 +22,7 @@ Az Azure Portal használatával [több webhely üzemeltetését konfigurálhatja
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Alkalmazásátjáró létrehozása
+> * Application Gateway létrehozása
 > * Virtuális gépek létrehozása háttérbeli kiszolgálókhoz
 > * Háttér-készletek létrehozása a háttér-kiszolgálókkal
 > * Háttérbeli figyelők létrehozása
@@ -36,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen
 
-## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
 1. Válassza az **erőforrás létrehozása** elemet a Azure Portal bal oldali menüjében. Megjelenik az **új** ablak.
 
@@ -217,7 +218,7 @@ Miután az Application Gateway nyilvános IP-címmel lett létrehozva, lekérhet
 
 2. Másolja ki az IP-címet, és használja egy új *www* -rekord értékként a tartományokban.
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 1. Adja meg a tartománya nevét a böngésző címsorában. Például: `http://www.contoso.com`.
 

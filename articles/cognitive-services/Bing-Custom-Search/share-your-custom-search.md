@@ -1,7 +1,7 @@
 ---
 title: Egyéni keresés megosztása – Bing Custom Search
 titleSuffix: Azure Cognitive Services
-description: Útmutató egyéni keresési példányok megosztásához.
+description: Egyszerűen engedélyezheti a példányok együttműködési szerkesztését és tesztelését azáltal, hogy megosztja azt a csapat tagjaival.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: d016fbed07fa31ac92ac804d6b4d63692834b42c
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404968"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072692"
 ---
 # <a name="share-your-custom-search-instance"></a>Egyéni keresési példány megosztása
 

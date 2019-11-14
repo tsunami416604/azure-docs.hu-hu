@@ -1,6 +1,6 @@
 ---
-title: Biztonságos és házirendek használata a Linux rendszerű virtuális gépek az Azure-ban |} A Microsoft Docs
-description: További információ a biztonsági és szabályzatok Linux-és Azure-beli virtuális gépek.
+title: A Linux rendszerű virtuális gépekhez tartozó szabályzatok biztonságossá tétele és használata az Azure-ban
+description: Ismerje meg az Azure-beli Linux és Virtual Machines biztonsági és szabályzatait.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 6f884d46db34dda5f3812efb3418bffdf3165941
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9cd31d39d2881aebf83d5b40aa826433de5d0993
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708315"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035064"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Biztonságos és szabályzatok használata az Azure-beli virtuális gépeken
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

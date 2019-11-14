@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 741c6c1f937988dcce41603417a1bc7dc95091cb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747082"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073983"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 
@@ -106,18 +106,18 @@ A biztonsági mentést a következőképpen engedélyezheti:
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 
-A biztonsági mentések a biztonsági mentési szabályzatban megadott ütemezés szerint futnak. Az ad hoc biztonsági mentést is futtathatja:
+A biztonsági mentések a biztonsági mentési szabályzatban megadott ütemezés szerint futnak. Az igény szerinti biztonsági mentést is futtathatja:
 
 - Az első kezdeti biztonsági mentési feladathoz teljes helyreállítási pont jön létre.
 - A kezdeti biztonsági mentés után az egyes biztonsági mentési feladatok növekményes helyreállítási pontokat hoznak létre.
 - A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
 
-Alkalmi biztonsági mentés futtatásához használja a [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+Igény szerinti biztonsági mentés futtatásához használja a [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
 - Megad egy tárolót a tárolóban, amely a biztonsági mentési adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer)tárolja.
 - A rendszer minden olyan virtuális gépet, amelyről biztonsági másolat készül, egy elemként kezeli. A biztonsági mentési feladatok elindításához a [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)használatával szerezheti be a virtuális gép adatait.
 
-Futtasson egy ad hoc biztonsági mentési feladatot a következőképpen:
+Futtasson egy igény szerinti biztonsági mentési feladatot a következőképpen:
 
 1. Adja meg a tárolót, szerezze be a virtuális gép adatait, és futtassa a biztonsági mentést.
 

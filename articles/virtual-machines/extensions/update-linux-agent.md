@@ -1,5 +1,5 @@
 ---
-title: Az Azure Linux-ügynök frissítése a GitHubról | Microsoft Docs
+title: Az Azure Linux-ügynök frissítése a GitHubról
 description: Ismerje meg, hogyan frissítheti az Azure Linux-ügynököt Linux rendszerű virtuális gépén az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: akjosh
-ms.openlocfilehash: 1ae3c3a74d1a46a98fa6676e18ffe71a4d6937a1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2215136c02d9cf967e0184af7588ce8d48362009
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168771"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072939"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Az Azure Linux-ügynök frissítése egy virtuális gépen
 
@@ -351,7 +351,7 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 és 7
 
-Oracle Linux esetén győződjön meg arról, hogy `Addons` az adattár engedélyezve van. Szerkessze a `/etc/yum.repos.d/public-yum-ol6.repo`fájlt (Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), `enabled=1` és módosítsa a sort `enabled=0` a következőre: **[ol6_addons]** vagy **[ol7_addons]** .
+Oracle Linux esetén győződjön meg arról, hogy a `Addons` adattár engedélyezve van. A fájl szerkesztéséhez válassza a `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) vagy a `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) elemet, majd a fájlban a **[`enabled=0`]** vagy a **[`enabled=1`]** területen módosítsa a sort ol6_addons.
 
 Ezután az Azure Linux-ügynök legújabb verziójának telepítéséhez írja be a következőt:
 
@@ -389,15 +389,15 @@ Ezután írja be a következőt:
 sudo yum update WALinuxAgent
 ```
 
-Általában ez minden, amire szüksége van, de ha valamilyen okból nem kell https://github.com közvetlenül telepítenie, kövesse az alábbi lépéseket.
+Általában ez minden, amire szüksége van, de ha valamilyen okból telepítenie kell azt https://github.com közvetlenül a következő lépésekkel.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>A Linux-ügynök frissítése, ha nem létezik ügynök-csomag a terjesztéshez
 
-A wget telepítése (vannak olyan disztribúciók, amelyek nem telepítik alapértelmezés szerint, például a Red Hat, a CentOS és a Oracle Linux 6,4-es és 6,5 `sudo yum install wget` -es verziókat) a parancssorba való beírásával.
+Telepítse a wget-t (vannak olyan disztribúciók, amelyek nem telepítik alapértelmezésben, például a Red Hat, a CentOS és a Oracle Linux 6,4-es és 6,5-es verziókat) `sudo yum install wget` a parancssorba való beírásával.
 
-### <a name="1-download-the-latest-version"></a>1. A legújabb verzió letöltése
-Nyissa meg [Az Azure Linux Agent kiadását a githubon](https://github.com/Azure/WALinuxAgent/releases) egy weblapon, és keresse meg a legújabb verziószámot. (Az aktuális verziót megkeresheti a beírásával `waagent --version`.)
+### <a name="1-download-the-latest-version"></a>1. Töltse le a legújabb verziót
+Nyissa meg [Az Azure Linux Agent kiadását a githubon](https://github.com/Azure/WALinuxAgent/releases) egy weblapon, és keresse meg a legújabb verziószámot. (Az aktuális verziót a `waagent --version`beírásával keresheti meg.)
 
 #### <a name="for-version-22x-or-later-type"></a>A 2.2. x vagy újabb verziónál írja be a következőt:
 ```bash
@@ -414,10 +414,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2. Az Azure Linux-ügynök telepítése
+### <a name="2-install-the-azure-linux-agent"></a>2. az Azure Linux-ügynök telepítése
 
 #### <a name="for-version-22x-use"></a>A 2.2. x verzióhoz használja a következőt:
-Előfordulhat, hogy először telepítenie kell `setuptools` a csomagot – lásd [itt](https://pypi.python.org/pypi/setuptools). Majd futtassa ezt:
+Előfordulhat, hogy telepítenie kell a csomagot `setuptools` először is – lásd [itt](https://pypi.python.org/pypi/setuptools). Majd futtassa ezt:
 
 ```bash
 sudo python setup.py install
@@ -444,7 +444,7 @@ A Futtatás engedélyezése:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. A waagent szolgáltatás újraindítása
+### <a name="3-restart-the-waagent-service"></a>3. Indítsa újra a waagent szolgáltatást
 A legtöbb Linux-disztribúció esetében:
 
 ```bash
@@ -463,7 +463,7 @@ A CoreOS használja a következőt:
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Az Azure Linux-ügynök verziójának megerősítése
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. az Azure Linux-ügynök verziójának megerősítése
     
 ```bash
 waagent -version

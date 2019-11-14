@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 8aeef72c23f3ed40a7f187c976c67c2ae117189a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958497"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069624"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
@@ -123,7 +123,7 @@ A második Zookeeper kvórum az első kvórumtól független, így előfordulhat
 
 A HDInsight-fürtök Apache Hadoop 2,4-es vagy újabb verziója alapján támogatják a erőforráskezelő magas rendelkezésre állását. Két ResourceManagers, RM1 és RM2 fut a átjárócsomóponthoz 0 és a átjárócsomóponthoz 1 rendszeren. A NameNode hasonlóan a fonal erőforráskezelő is automatikus feladatátvételre van konfigurálva. A rendszer automatikusan választ egy másik erőforráskezelő, amely akkor aktív, ha az aktuális aktív erőforráskezelő leáll vagy nem válaszol.
 
-A fonal erőforráskezelő a beágyazott *ActiveStandbyElector* meghibásodási detektorként és vezető választóként használja. A HDFS NodeManager eltérően a fonal erőforráskezelő nem igényel külön ZKFC démont. Az aktív erőforráskezelő az állapotait az Apache Zookeeper írja.
+A fonal erőforráskezelő a beágyazott *ActiveStandbyElector* meghibásodási detektorként és vezető választóként használja. A HDFS NameNode eltérően a fonal erőforráskezelő nem igényel külön ZKFC démont. Az aktív erőforráskezelő az állapotait az Apache Zookeeper írja.
 
 A fonal erőforráskezelő magas rendelkezésre állása független a NameNode és más HDInsight-szolgáltatástól. Előfordulhat, hogy az aktív erőforráskezelő nem fut az aktív átjárócsomóponthoz vagy a átjárócsomóponthoz, amelyen az aktív NameNode fut. A erőforráskezelő magas rendelkezésre állásáról további információt a [erőforráskezelő magas rendelkezésre állása](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)című témakörben talál.
 
@@ -131,7 +131,7 @@ A fonal erőforráskezelő magas rendelkezésre állása független a NameNode �
 
 A HDInsight HBase-fürtök támogatják HBase Master magas rendelkezésre állást. A átjárócsomópontokkal-on futó egyéb HA-szolgáltatásokkal ellentétben a HBase-főkiszolgálók a három Zookeeper csomóponton futnak, ahol az egyik az aktív főkiszolgáló, a másik kettő pedig készenléti. A NameNode-hez hasonlóan HBase Master az Apache Zookeeper-vel való koordinátákat a Leader-választásokhoz, és automatikus feladatátvételt hajt végre, ha a jelenlegi aktív főkiszolgáló problémába Egyszerre csak egy aktív HBase Master van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
 - [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

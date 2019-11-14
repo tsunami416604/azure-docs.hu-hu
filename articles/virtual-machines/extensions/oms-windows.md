@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor virtuálisgép-bővítmény a Windowshoz | Microsoft Docs
+title: A Windows rendszerhez készült virtuálisgép-bővítmény Azure Monitor
 description: Telepítse a Log Analytics Agent ügynököt a Windows rendszerű virtuális gépen a virtuálisgép-bővítmény használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: fe8bafcb63c1a27b905bdc339c07d30c9f0a5982
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168924"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073676"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Azure Monitor
 
@@ -38,12 +38,12 @@ Az alábbi táblázat a Windows Azure Monitor virtuálisgép-bővítmény verzi�
 
 | Log Analytics Windows-ügynök csomagjának verziója | Azure Monitor Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18011 | 1.0.18011 | Július 2019 | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Megnövekedett MaxExpressionDepth – 10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | Június 2019 | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Új lehetőség az alapértelmezett hitelesítő adatok letiltására a proxy-kapcsolatok létrehozásakor (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH-támogatás) </li></ul>|
-| 10.19.13515 | 1.0.13515 | Március 2019 | <ul><li>Kisebb stabilizációs javítások </li></ul> |
-| 10.19.10006 | n/a | Dec 2018 | <ul><li> Kisebb stabilizációs javítások </li></ul> | 
-| 8.0.11136 | n/a | Szeptember 2018 |  <ul><li> Az erőforrás-azonosító változásának észlelése a virtuális gépek áthelyezésének támogatásával </li><li> Jelentéskészítési erőforrás-azonosító támogatása a nem bővítmények telepítésének használatakor </li></ul>| 
-| 8.0.11103 | n/a |  2018. április | |
+| 10.20.18011 | 1.0.18011 | 2019. július | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Megnövekedett MaxExpressionDepth – 10000 </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019. június | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Lehetővé tette az alapértelmezett hitelesítő adatok letiltását proxy-kapcsolatok létrehozásakor (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH támogatása) </li></ul>|
+| 10.19.13515 | 1.0.13515 | 2019. március | <ul><li>Kisebb stabilizációs javítások </li></ul> |
+| 10.19.10006 | – | Dec 2018 | <ul><li> Kisebb stabilizációs javítások </li></ul> | 
+| 8.0.11136 | – | Szeptember 2018 |  <ul><li> Az erőforrás-azonosító változásának észlelése a virtuális gépek áthelyezésének támogatásával </li><li> Jelentéskészítési erőforrás-azonosító támogatása a nem bővítmények telepítésének használatakor </li></ul>| 
+| 8.0.11103 | – |  2018. április | |
 | 8.0.11081 | 1.0.11081 | November 2017 | | 
 | 8.0.11072 | 1.0.11072 | Szeptember 2017 | |
 | 8.0.11049 | 1.0.11049 | Feb 2017 | |
@@ -93,7 +93,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 | workspaceId (például:)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például:) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
-\*A munkaterület azonosítója neve consumerId a Log Analytics API-ban.
+\* a munkaterület azonosítója neve consumerId a Log Analytics API-ban.
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
@@ -159,7 +159,7 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 
 ## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-A `Set-AzVMExtension` parancs használatával telepítheti a log Analytics Agent virtuálisgép-bővítményt egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni. 
+A `Set-AzVMExtension` parancs használatával telepítheti a Log Analytics Agent virtuálisgép-bővítményt egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

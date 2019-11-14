@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1411d64a6adc6f340b3ad49ca38ca30136bdef47
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104550"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074758"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-szel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az F5-et Azure Active Directory (Azure AD) használatával. Az F5 és az Azure AD integrálásával a következőket teheti:
 
@@ -87,18 +87,18 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourCustomFQDN>.f5.com/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourCustomFQDN>.f5.com/`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<YourCustomFQDN>.f5.com/`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek megszerzéséhez lépjen kapcsolatba az [F5 ügyfél-támogatási csapattal](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek megszerzéséhez lépjen kapcsolatba az [F5 ügyfél-támogatási csapattal](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -116,7 +116,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -188,9 +188,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     >[!Note]
     >Ehhez létre kell hoznia és meg kell adni a Kerberos-delegálási fiókot. Tekintse át a KCD szakaszt (lásd: függelék a változó hivatkozásokhoz)
 
-    • Felhasználónév forrása`session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    • Felhasználónév forrásának `session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    • Felhasználói tartomány forrása`session.logon.last.domain`
+    • Felhasználói tartomány forrása `session.logon.last.domain`
 
     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure11.png)
 
@@ -246,15 +246,22 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 >[!Note]
 >További részletekért [tekintse](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf) meg a következőt:
 
-* **1. lépés: Delegálási fiók létrehozása**
+* **1. lépés: delegálási fiók létrehozása**
 
-    * Példa a tartománynévre: főverzió. élő Sam-fiók neve: Big-ipuser
+    * Példa
+    ```
+    Domain Name : superdemo.live
+    Sam Account Name : big-ipuser
 
-    * New-ADUser-Name "APM delegálási fiók"- host/big-ipuser.superdemo.live@superdemo.live userPrincipalName-sAMAccountName "Big-ipuser"-PasswordNeverExpires $True-enabled $True-AccountPassword (read-Host-AsSecureString "password! 1234")
+    New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    ```
 
-* **2. lépés: SPN beállítása (az APM delegálási fiókján)**
+* **2. lépés: az SPN beállítása (az APM delegálási fiókján)**
 
-    *  Példa Setspn – A Host/Big-ipuser. redemo. Live Big-ipuser
+    *  Példa
+    ```
+    setspn –A host/big-ipuser.superdemo.live big-ipuser
+    ```
 
 * **3. lépés: SPN-delegálás (a App Service fiókhoz)**
 
@@ -276,38 +283,38 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 | | |
 | -- | -- |
-| eb46b6b6. Session. SAML. Last. assertionID | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
-| eb46b6b6. Session. SAML. Last. assertionIssueInstant  | 2019-06-16T19:18:03.054 Z |
+| eb46b6b6. Session. SAML. Last. assertionID | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. assertionIssueInstant  | `<ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/DisplayName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/EmailAddress | user0@superdemo.live |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/givenName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/Name | user0@superdemo.live |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/surname | 0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/identity/claims/displayname | user0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/identity/claims/objectidentifier | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. hallgatóság | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: Oasis: nevek: TC: SAML: 2.0: AC: classs: Password |
-| eb46b6b6. Session. SAML. Last. authNInstant | 2019-06-16T19:18:00.318 Z |
-| eb46b6b6. Session. SAML. Last. Identity | user0@superdemo.live |
-| eb46b6b6. Session. SAML. Last. inResponseTo | _b9c67faa63a224d7a63f4f3cbb09f78dc05fab |
-| eb46b6b6. Session. SAML. Last. nameIDValue | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. authNInstant | `<ID>` |
+| eb46b6b6. Session. SAML. Last. Identity | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. inResponseTo | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. nameIDValue | `user0@superdemo.live` |
 | eb46b6b6. Session. SAML. Last. nameIdFormat | urn: Oasis: nevek: TC: SAML: 1.1: nameid-Format: emailAddress |
 | eb46b6b6. Session. SAML. Last. responseDestination | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
-| eb46b6b6. Session. SAML. Last. responseId | _a1eca95a-6c41-449e-bb53-1477ba106470 |
-| eb46b6b6. Session. SAML. Last. responseIssueInstant | 2019-06-16T19:18:03.070 Z |
+| eb46b6b6. Session. SAML. Last. responseId | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. responseIssueInstant | `<ID>` |
 | eb46b6b6. Session. SAML. Last. responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6. Session. SAML. Last. result | 1 |
 | eb46b6b6. Session. SAML. Last. samlVersion | 2.0 |
-| eb46b6b6. Session. SAML. Last. sessionIndex | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
+| eb46b6b6. Session. SAML. Last. sessionIndex | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. statusValue | urn: Oasis: nevek: TC: SAML: 2.0: Status: sikeres |
-| eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | 2019-06-16T19:23:03.054 Z |
+| eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | `<ID>` |
 | eb46b6b6. Session. SAML. Last. subjectConfirmDataRecipient | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
 | eb46b6b6. Session. SAML. Last. subjectConfirmMethod | urn: Oasis: nevek: TC: SAML: 2.0: cm: tulajdonos |
-| eb46b6b6. Session. SAML. Last. validityNotBefore | 2019-06-16T19:13:03.054 Z |
-| eb46b6b6. Session. SAML. Last. validityNotOnOrAfter | 2019-06-16T20:13:03.054 Z |
+| eb46b6b6. Session. SAML. Last. validityNotBefore | `<ID>` |
+| eb46b6b6. Session. SAML. Last. validityNotOnOrAfter | `<ID>` |
 
 ### <a name="create-f5-test-user"></a>F5 test User létrehozása
 

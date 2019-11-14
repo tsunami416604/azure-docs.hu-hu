@@ -1,6 +1,6 @@
 ---
-title: Load Balancer létrehozása a zóna-előtérben – Azure parancssori felület
-titlesuffix: Azure Load Balancer
+title: Terheléselosztó létrehozása a zóna-előtérben – Azure CLI
+titleSuffix: Azure Load Balancer
 description: Megtudhatja, hogyan hozhat létre standard Load Balancert az Azure CLI-vel a zónabeli előtér használatával
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 663567f6e3b078c1cb2afc60c3aaa9fcfb7af4dd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 620e4456e86a8610819495bd490353a3a5681738
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275247"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076089"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>standard Load Balancer létrehozása az Azure parancssori felületének használatával
 
@@ -50,7 +50,7 @@ Hozzon létre egy szabványos nyilvános IP-címet a következő parancs haszná
 az network public-ip create --resource-group myResourceGroupZLB --name myPublicIPZonal --sku Standard --zone 1
 ```
 
-## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
+## <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
 
 Hozzon létre egy nyilvános standard Load Balancer a standard nyilvános IP-címmel, amelyet az előző lépésben hozott létre a következő parancs használatával:
 

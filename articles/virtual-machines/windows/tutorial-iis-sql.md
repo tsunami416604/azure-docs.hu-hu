@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – SQL-, IIS-, .NET stack-alapú virtuális gépek létrehozása az Azure-ban | Microsoft Docs
+title: Oktatóanyag – SQL-, IIS-, .NET stack-alapú virtuális gépek létrehozása az Azure-ban
 description: Ez az oktatóanyag bemutatja, hogyan telepítheti az Azure SQL, IIS, .NET vermet Windows rendszerű virtuális gépeken az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8b2cf6f5475966426ee75cf73ce7bd84abc9ba42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 286d00ce718a34dea15a075984cc3b2a5e4cfec3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101610"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064662"
 ---
-# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Az SQL, az IIS és a .NET stack telepítése egy Windows rendszerű virtuális gépen Azure PowerShell
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: az SQL, az IIS és a .NET stack telepítése egy Windows rendszerű virtuális gépen Azure PowerShell
 
 Ebben az oktatóanyagban egy SQL-, IIS-, .NET stack-t telepítünk Azure PowerShell használatával. Ez a verem két, Windows Server 2016-alapú virtuális gépből áll, amelyek közül az egyiken az IIS és a .NET, a másikon pedig az SQL Server fut.
 
@@ -99,7 +99,7 @@ A vNet frissítése az új alhálózati információkkal a [set-AzVirtualNetwork
 $vNet | Set-AzVirtualNetwork
 ```
 
-## <a name="azure-sql-vm"></a>Azure SQL VM
+## <a name="azure-sql-vm"></a>Azure SQL virtuális gép
 
 Az SQL virtuális gép létrehozásához használja egy SQL Server előzetesen konfigurált, Azure Marketplace-en elérhető rendszerképét. Először létrehozzuk a virtuális gépet, majd telepítjük az SQL Server-bővítményt a gépen. 
 

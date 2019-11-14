@@ -1,7 +1,7 @@
 ---
 title: Rövid útmutató – lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megkezdheti a Bing helyi üzleti keresési API használatát javában.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 3e71268004ca8fd171835adf289436a65d866fdc
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: eee5bc8d9d2587251b5564ecbd9f0ab1eaa44fcc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994409"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075682"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: Lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 
 Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a HTTP-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-Ez a példában szereplő alkalmazás a keresési lekérdezés `hotel in Bellevue`API-ból érkező helyi válaszüzeneteket kéri le.
+Ez a példában szereplő alkalmazás helyi válaszüzeneteket kap az API-ból a keresési lekérdezés `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -164,7 +164,7 @@ public class LocalSearchCls {
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Helyi üzleti keresés – rövid útmutató](local-quickstart.md)
 - [Helyi üzleti keresési csomópont rövid útmutatója](local-search-node-quickstart.md)
 - [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

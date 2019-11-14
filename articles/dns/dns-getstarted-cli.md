@@ -1,20 +1,21 @@
 ---
-title: Rövid útmutató – Azure DNS-zóna és -rekord létrehozása az Azure CLI használatával
+title: 'Rövid útmutató: Azure DNS zóna és rekord létrehozása – Azure CLI'
+titleSuffix: Azure DNS
 description: Rövid útmutató – A cikkből megtudhatja, hogyan hozhat létre DNS-zónát és -rekordot az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure CLI használatával létrehozhatja és kezelheti az első DNS-zónáját és -rekordját.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: b5d842c2d6ff84a0f17c4e8be0bfade018edc48b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: 14d47a82ec6b5ec0ede626748216889a6943bfa6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959975"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072159"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Gyors útmutató: Azure DNS zóna és rekord létrehozása az Azure CLI-vel
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Rövid útmutató: Azure DNS-zóna és -rekord létrehozása az Azure CLI használatával
 
 Ez a cikk bemutatja az első DNS-zóna és -rekord létrehozásának lépéseit az Azure CLI használatával, amely Windows, Mac és Linux platformokon is elérhető. Ezeket a lépéseket az [Azure Portal](dns-getstarted-portal.md) vagy az [Azure PowerShell](dns-getstarted-powershell.md) használatával is elvégezheti.
 
@@ -82,7 +83,7 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Példa:
+   Például:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -92,7 +93,7 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-A **www\.contoso.xyz** állomásnév a **10.10.10.10**hasonlóan oldódik meg, ugyanúgy, ahogy azt konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
+A (z) **www\.contoso. xyz** állomásnév a **10.10.10.10**-re van feloldva, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 

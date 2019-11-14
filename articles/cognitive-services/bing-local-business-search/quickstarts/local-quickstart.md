@@ -1,7 +1,7 @@
 ---
 title: Rövid útmutató – lekérdezés küldése a Bing helyi üzleti keresési API-nak a következőben:C#
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megkezdheti a Bing helyi üzleti keresési API C#használatát a alkalmazásban.
+description: Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 163a85a7fb7521054ebec58fb9ac86373963f2b9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d14e9dd8d02db7ca0131927682804fe81b750d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906314"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072327"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Gyors útmutató: Lekérdezés küldése a Bing helyi üzleti keresési API-nak a következőben:C#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak a következőben:C#
 
 Ezzel a rövid útmutatóval megkezdheti a kérések küldését a Bing local Business Search API számára, amely egy Azure kognitív szolgáltatás. Habár ez az egyszerű alkalmazás be C#van írva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a http-kérelmeket és a JSON-elemzést lehetővé tevő programozási nyelvekkel.
 
-Ez a példában szereplő alkalmazás a keresési lekérdezés `hotel in Bellevue`API-ból érkező helyi válaszüzeneteket kéri le.
+Ez a példában szereplő alkalmazás helyi válaszüzeneteket kap az API-ból a keresési lekérdezés `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

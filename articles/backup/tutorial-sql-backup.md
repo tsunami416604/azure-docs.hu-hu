@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747031"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074662"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>SQL Server-adatbázis biztonsági mentése Azure-beli virtuális gépen
 
@@ -23,7 +23,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági mentést 
 > * Tároló létrehozása és konfigurálása.
 > * Adatbázisok felderítése és biztonsági mentések beállítása.
 > * Automatikus védelem beállítása adatbázisok számára.
-> * Futtasson egy ad-hoc biztonsági mentést.
+> * Futtasson egy igény szerinti biztonsági mentést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ Az SQL Server VM virtuális gépnek minden művelethez kapcsolódnia kell az Azu
 
 Minden lehetőségnek vannak előnyei és hátrányai
 
-**Beállítás** | **Előnyei** | **Hátrányai**
+**Beállítás** | **Előnyei** | **Disadvantages**
 --- | --- | ---
 IP-címtartományok engedélyezése | Nincs további költség. | Összetett a kezeléshez, mert az IP-címtartományok változnak az idő múlásával. <br/><br/> Hozzáférést biztosít az egész Azure-hoz, nem csak az Azure Storage-hoz.
 HTTP-proxy használata   | A proxy részletes vezérlője a tárolási URL-címeken keresztül engedélyezett. <br/><br/> A virtuális gépekhez való internetes hozzáférés egyetlen pontja. <br/><br/> Nem vonatkozik az Azure IP-címek változásai. | További költségek a virtuális gép futtatásához a proxy szoftverrel.
@@ -68,7 +68,7 @@ A következő nevek elkerülnek az adatbázis neveként:
 * Szögletes zárójel "]"
 * A "F:\" kezdetű adatbázisok nevei
 
-Az Azure Table nem támogatott karakterekhez aliast adunk, de javasoljuk, hogy ne legyenek elkerülve. [Részletek](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Az Azure Table nem támogatott karakterekhez aliast adunk, de javasoljuk, hogy ne legyenek elkerülve. [További információ](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -215,7 +215,7 @@ Biztonsági mentési szabályzat létrehozásához:
 
 14. Miután befejezte a módosításokat a biztonsági mentési szabályzatban, kattintson az **OK gombra**.
 
-## <a name="run-an-ad-hoc-backup"></a>Alkalmi biztonsági mentés futtatása
+## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
 
 1. A Recovery Services-tárolóban válassza a biztonsági másolati elemek lehetőséget.
 2. Kattintson az "SQL Azure-beli virtuális gépen" elemre.
@@ -233,7 +233,7 @@ Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 > * Tároló létrehozása és konfigurálása.
 > * Adatbázisok felderítése és biztonsági mentések beállítása.
 > * Automatikus védelem beállítása adatbázisok számára.
-> * Futtasson egy ad-hoc biztonsági mentést.
+> * Futtasson egy igény szerinti biztonsági mentést.
 
 Folytassa a következő oktatóanyaggal, ha tudni szeretné, hogyan lehet lemezről visszaállítani Azure-beli virtuális gépeket.
 

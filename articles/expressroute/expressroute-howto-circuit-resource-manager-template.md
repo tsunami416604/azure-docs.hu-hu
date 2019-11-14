@@ -1,19 +1,19 @@
 ---
-title: 'Hozzon létre egy ExpressRoute Circuit-Resource Manager-sablont: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute-sablon: ExpressRoute-áramkör létrehozása'
 description: ExpressRoute-áramkör létrehozása, kiépítése, törlése és megszüntetése.
-services: expressroute;azure-resource-manager
+services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: 103c61b6ad244bf4b140f897c070ce5bfd54cded
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: d6d9a3b472e2a40bfacf25a0b8fe0accb7d62cb8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849222"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031972"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "67849222"
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
 
-Megtudhatja, hogyan hozhat létre ExpressRoute áramkört egy Azure Resource Manager-sablonnak a Azure PowerShell használatával történő telepítésével. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a sablonra vonatkozó [referenciát](/azure/templates/microsoft.network/expressroutecircuits).
+Megtudhatja, hogyan hozhat létre ExpressRoute áramkört egy Azure Resource Manager-sablonnak a Azure PowerShell használatával történő telepítésével. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -101,7 +101,7 @@ $resourceGroupName = "${circuitName}rg"
 Remove-AzExpressRouteCircuit -ResourceGroupName $resourceGroupName -Name $circuitName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a kapcsolatcsoportot, folytassa a következő lépések:
 

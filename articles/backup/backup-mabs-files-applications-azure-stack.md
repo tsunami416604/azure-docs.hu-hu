@@ -1,5 +1,5 @@
 ---
-title: Azure Stack virtuális gépek fájljainak biztonsági mentése
+title: Azure Stack virtuális gépek fájljainak biztonsági mentése – Azure Backup
 description: A Azure Backup használatával biztonsági mentést készíthet, valamint helyreállíthatja Azure Stack fájljait és alkalmazásait a Azure Stack-környezetében.
 ms.reviewer: adigan
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210207"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074092"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése az Azure Stackben
 
@@ -45,19 +45,19 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. A **csoporttagok kiválasztása** képernyőn kattintson **+** az alelemek listájának kibontásához. A védelemmel ellátni kívánt összes elemnél jelölje be a jelölőnégyzetet. Ha minden elem ki van választva, kattintson a **tovább**gombra.
+3. A **csoporttagok kiválasztása** képernyőn kattintson a **+** elemre az alelemek listájának kibontásához. A védelemmel ellátni kívánt összes elemnél jelölje be a jelölőnégyzetet. Ha minden elem ki van választva, kattintson a **tovább**gombra.
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     A Microsoft azt javasolja, hogy minden olyan, a védelmi szabályzattal megosztva tárolt adattal egy védelmi csoportba helyezze. A védelmi csoportok megtervezésével és telepítésével kapcsolatos teljes információkért tekintse meg a System Center DPM című cikket, amely a [védelmi csoportok telepítését](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)ismerteti.
 
-4. Az **adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét. Jelölje be a **rövid távú védelmet szeretnék** a következő használatával jelölőnégyzetet: és **szeretnék online védelmet**használni. Kattintson a **Tovább** gombra.
+4. Az **adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét. Jelölje be a **rövid távú védelmet szeretnék** a következő használatával jelölőnégyzetet: és **szeretnék online védelmet**használni. Kattintson a **Tovább**gombra.
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Az **online védelem szeretnék**kiválasztásához először válassza a **rövid távú védelmet szeretnék a következő használatával:** Lemez. Azure Backup Server nem véd a szalagra, ezért a rövid távú védelem érdekében a lemez az egyetlen választás.
+    Az **online védelem kívánt**lehetőség kiválasztásához először válassza **a rövid távú védelmet szeretnék a következő használatával:** Disk (lemez) lehetőséget. Azure Backup Server nem véd a szalagra, ezért a rövid távú védelem érdekében a lemez az egyetlen választás.
 
-5. A **rövid távú célok megadása** képernyőn válassza ki, hogy mennyi ideig szeretné megőrizni a lemezre mentett helyreállítási pontokat, és hogy mikor mentse a növekményes biztonsági mentéseket. Kattintson a **Tovább** gombra.
+5. A **rövid távú célok megadása** képernyőn válassza ki, hogy mennyi ideig szeretné megőrizni a lemezre mentett helyreállítási pontokat, és hogy mikor mentse a növekményes biztonsági mentéseket. Kattintson a **Tovább**gombra.
 
     > [!IMPORTANT]
     > A Azure Backup Server csatolt lemezeken több mint öt napig **ne** őrizze meg az operatív helyreállítási (biztonsági mentési) adatait.
@@ -71,7 +71,7 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
 6. A **lemez kiosztásának áttekintése** képernyőn tekintse át a védelmi csoport számára lefoglalt tárterület lemezterületét.
 
-    A védelmi csoport számára ajánlott terület a **teljes adatméret** a biztonsági mentésre és a lemezterület kiszámítására szolgáló Azure Backup Server. Azure Backup Server kiválasztja az ideális biztonsági mentési kötetet a beállítások alapján. A lemez-foglalás részleteiben azonban szerkesztheti a kötetek biztonsági mentésének lehetőségeit. A munkaterhelések esetében válassza ki az előnyben részesített tárolót a legördülő menüben. A módosítások a rendelkezésre álló Disk Storage ablaktáblán a teljes tárterület és a szabad tárterület értékeit módosítják. A kiépített terület az a tárterület, Azure Backup Server a kötethez való hozzáadását javasolja, hogy a biztonsági mentések zökkenőmentesen folytatódnak a jövőben.
+    A védelmi csoport számára ajánlott terület a **teljes adatméret** a biztonsági mentésre és **a lemezterület** kiszámítására szolgáló Azure Backup Server. Azure Backup Server kiválasztja az ideális biztonsági mentési kötetet a beállítások alapján. A lemez-foglalás részleteiben azonban szerkesztheti a kötetek biztonsági mentésének lehetőségeit. A munkaterhelések esetében válassza ki az előnyben részesített tárolót a legördülő menüben. A módosítások a rendelkezésre álló Disk Storage ablaktáblán a teljes tárterület és a szabad tárterület értékeit módosítják. A kiépített terület az a tárterület, Azure Backup Server a kötethez való hozzáadását javasolja, hogy a biztonsági mentések zökkenőmentesen folytatódnak a jövőben.
 
 7. A **replika-létrehozási módszer**kiválasztása lapon válassza ki, hogyan szeretné kezelni a kezdeti teljes adatreplikációt. Ha úgy dönt, hogy a hálózaton keresztül replikál, az Azure azt javasolja, hogy válasszon ki egy off-Peak időpontot. Nagy mennyiségű vagy az optimális hálózati feltételeknél kisebb méretű adatforgalom esetén érdemes lehet a cserélhető adathordozó használatával replikálni az adatreplikálást.
 
@@ -111,7 +111,7 @@ A Azure Backup Server-konzol használatával állítsa helyre az adatokat a virt
 
     * A **meglévő verzió-helyreállítási viselkedéshez**válassza a **másolat létrehozása**, a **kihagyás**vagy a **felülírás**lehetőséget. A felülírás csak az eredeti helyre történő helyreállításkor érhető el.
     * A **biztonsági mentéshez**válassza **a célszámítógép beállításainak alkalmazása** vagy a **helyreállítási pont biztonsági beállításainak alkalmazása**lehetőséget.
-    * A **hálózati**sávszélesség-használat szabályozásához kattintson a **módosítás** gombra a hálózati sávszélesség-használat szabályozásának engedélyezéséhez.
+    * A **hálózati sávszélesség-használat szabályozásához**kattintson a **módosítás** gombra a hálózati sávszélesség-használat szabályozásának engedélyezéséhez.
     * **Értesítés** Kattintson az **E-mail küldése a helyreállítás befejezéséről**elemre, és adja meg a címzetteket, akik megkapják az értesítést. Az e-mail címeket vesszővel válassza el egymástól.
     * A kijelölések után kattintson a **tovább** gombra.
 

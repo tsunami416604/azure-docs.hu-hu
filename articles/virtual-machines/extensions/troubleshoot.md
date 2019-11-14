@@ -1,5 +1,5 @@
 ---
-title: Windowsos virtuálisgép-bővítményekkel kapcsolatos hibák elhárítása | Microsoft Docs
+title: A Windowsos virtuális gépek bővítményével kapcsolatos hibák elhárítása
 description: Tudnivalók az Azure-beli Windows virtuálisgép-bővítményekkel kapcsolatos hibák elhárításáról
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084295"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073660"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure-beli Windows VM-bővítményekkel kapcsolatos hibák elhárítása
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -61,7 +61,7 @@ Itt látható a minta kimenete:
 ## <a name="troubleshooting-extension-failures"></a>Bővítményekkel kapcsolatos hibák elhárítása
 ### <a name="rerun-the-extension-on-the-vm"></a>A bővítmény újrafuttatása a virtuális gépen
 Ha a virtuális gépen parancsfájlokat futtat egyéni szkriptek használatával, időnként előfordulhat, hogy a virtuális gép sikeres létrehozásakor hiba történt, de a parancsfájl végrehajtása sikertelen volt. Ilyen körülmények között a hiba helyreállításának ajánlott módja a bővítmény eltávolítása és újbóli újrafuttatása.
-Megjegyzés: A jövőben ez a funkció továbbra is kibővült a bővítmény eltávolításának szükségességével.
+Megjegyzés: a későbbiekben ez a funkció továbbra is kibővült, hogy eltávolítsa a bővítmény eltávolításának szükségességét.
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Távolítsa el a bővítményt Azure PowerShell
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"

@@ -1,18 +1,19 @@
 ---
-title: Az Azure webalkalmazási tűzfal bemutatása az Azure Application Gateway
+title: Az Azure webalkalmazási tűzfal bemutatása
+titleSuffix: Azure Web Application Firewall
 description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfalról (WAF) Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4ba2772ffb89809c2262880385207a12c74882cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607324"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067147"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazási tűzfal az Azure Application Gateway
 
@@ -61,7 +62,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 ## <a name="features"></a>Szolgáltatások
 
-- SQL-befecskendezéses védelem.
+- SQL-injection protection.
 - Helyek közötti parancsfájlok elleni védelem.
 - Más gyakori webes támadások elleni védelem, például a parancsok befecskendezése, a HTTP-kérések csempészete, a HTTP-válaszok felosztása és a távoli fájlok bevonása.
 - A HTTP protokoll megsértésének védelme.
@@ -198,7 +199,7 @@ Application Gateway WAF részletes jelentéskészítést biztosít az általa é
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Application Gateway WAF – A termékváltozat díjszabása
 
-A díjszabási modellek a WAF_v1 és a WAF_v2 SKU-ban különböznek. További információért tekintse meg a [Application Gateway díjszabási](https://azure.microsoft.com/pricing/details/application-gateway/) oldalát. 
+A díjszabási modellek a WAF_v1 és az WAF_v2 SKU esetében eltérőek. További információért tekintse meg a [Application Gateway díjszabási](https://azure.microsoft.com/pricing/details/application-gateway/) oldalát. 
 
 ## <a name="next-steps"></a>További lépések
 

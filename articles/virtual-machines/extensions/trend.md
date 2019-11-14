@@ -1,5 +1,5 @@
 ---
-title: A Trend Micro Deep Security telepítése virtuális gépen | Microsoft Docs
+title: A Trend Micro Deep Security telepítése virtuális gépen
 description: Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Trend Micro Security szolgáltatást a klasszikus üzembe helyezési modellel létrehozott virtuális gépeken az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: 14ef0a94cb8b2b735b3dc02cf5ccdcc65a6c1beb
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a9f99d418d572c14a7cdd7975483cf39f0707cba
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168799"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072991"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -54,7 +54,7 @@ A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseke
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>A mély biztonsági ügynök telepítése meglévő virtuális gépre
 Az ügynök meglévő virtuális gépen való telepítéséhez a következő elemek szükségesek:
 
-* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount`.
+* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe `Add-AzureAccount`használatával.
 * A virtuális gépre telepített virtuálisgép-ügynök.
 
 Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.

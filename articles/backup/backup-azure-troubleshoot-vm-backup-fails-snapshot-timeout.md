@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969087"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074136"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -29,7 +29,7 @@ Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megol
 
 Előfordulhat, hogy az Azure-beli virtuálisgép-ügynök leállt, elavult, inkonzisztens állapotban van, vagy nincs telepítve, és nem akadályozza meg, hogy Azure Backup szolgáltatás elindítsa a pillanatképeket.  
 
-- Ha a virtuálisgép-ügynök leállt vagy inkonzisztens állapotban van, **indítsa újra az ügynököt** , és próbálkozzon újra a biztonsági mentési művelettel (az ad hoc biztonsági mentés kipróbálása). Az ügynök újraindításának lépéseiért lásd: [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) vagy [linuxos virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
+- Ha a virtuálisgép-ügynök leállt vagy inkonzisztens állapotban van, **indítsa újra az ügynököt** , és ismételje meg a biztonsági mentési műveletet (próbálkozzon egy igény szerinti biztonsági mentéssel). Az ügynök újraindításának lépéseiért lásd a [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) vagy a [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) útmutatását.
 - Ha a virtuálisgép-ügynök nincs telepítve vagy elavult, telepítse/frissítse a virtuálisgép-ügynököt, és próbálkozzon újra a biztonsági mentési művelettel. Az ügynök telepítésének vagy frissítésének lépéseiért lásd: [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) vagy [linuxos virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nem tudott kommunikálni a virtuálisgép-ügynökkel a pillanatkép állapotához
@@ -213,7 +213,7 @@ Távolítsa el a bővítményt a VMSnapshot-bővítmény újratöltésének kén
 A bővítmény eltávolítása:
 
 1. A [Azure Portal](https://portal.azure.com/)lépjen a biztonsági mentési hibát észlelő virtuális gépre.
-2. Válassza a **Beállítások**lehetőséget.
+2. Válassza ki **beállítások**.
 3. Kattintson az **Extensions** (Bővítmények) gombra.
 4. Válassza ki a **Vmsnapshot bővítményt**.
 5. Válassza az **Eltávolítás**lehetőséget.
@@ -224,7 +224,7 @@ Ezeknek a lépéseknek a végrehajtásával a bővítmény újratelepíthető a 
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>A helyreállítási pont erőforráscsoporthoz tartozó zárolás eltávolítása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`.
 3. A zárolások megjelenítéséhez a **Beállítások** szakaszban válassza a **zárolások** lehetőséget.
 4. A zárolás eltávolításához válassza a három pontot, majd kattintson a **Törlés**gombra.
@@ -239,22 +239,22 @@ Ha törli a virtuális gép erőforráscsoportot, vagy maga a virtuális gép, a
 
 A visszaállítási pontok tisztításához kövesse az alábbi módszereket:<br>
 
-- [A visszaállítási pontok gyűjtésének törlése alkalmi biztonsági mentés futtatásával](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [A visszaállítási pontok gyűjtésének tisztítása igény szerinti biztonsági mentés futtatásával](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Visszaállítási pont gyűjtésének törlése Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>A visszaállítási pontok gyűjtésének törlése alkalmi biztonsági mentés futtatásával
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>A visszaállítási pontok gyűjtésének tisztítása igény szerinti biztonsági mentés futtatásával
 
-A zárolás eltávolítását követően aktiválja az ad hoc/manuális biztonsági mentést. Ezzel biztosítható, hogy a visszaállítási pontok automatikusan törlődnek. Az ad hoc/manuális művelet elvégzése az első alkalommal meghiúsul; a visszaállítási pontok manuális törlése helyett azonban gondoskodni fog az automatikus tisztításról. A következő ütemezett biztonsági mentés sikeres törlését követően.
+A zárolás eltávolítását követően indítson el egy igény szerinti biztonsági mentést. Ezzel biztosítható, hogy a visszaállítási pontok automatikusan törlődnek. Az igény szerinti művelet az első alkalommal meghiúsul; a visszaállítási pontok manuális törlése helyett azonban gondoskodni fog az automatikus tisztításról. A következő ütemezett biztonsági mentés sikeres törlését követően.
 
 > [!NOTE]
-> Az automatikus tisztítás az alkalmi/manuális biztonsági mentés néhány órája után is megtörténik. Ha az ütemezett biztonsági mentés továbbra is sikertelen, próbálja meg manuálisan törölni a visszaállítási pont gyűjteményét az [itt](#clean-up-restore-point-collection-from-azure-portal)felsorolt lépések segítségével.
+> Az automatikus tisztítás az igény szerinti biztonsági mentés néhány órája után is megtörténik. Ha az ütemezett biztonsági mentés továbbra is sikertelen, próbálja meg manuálisan törölni a visszaállítási pont gyűjteményét az [itt](#clean-up-restore-point-collection-from-azure-portal)felsorolt lépések segítségével.
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Visszaállítási pont gyűjtésének törlése Azure Portal <br>
 
 Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, amely az erőforráscsoport zárolása miatt nem törlődik, próbálkozzon a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>` ahol a virtuális gép található.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`, ahol a virtuális gép található.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/resource-group.png)
 

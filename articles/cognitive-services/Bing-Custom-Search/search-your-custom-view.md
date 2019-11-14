@@ -1,7 +1,7 @@
 ---
 title: Egyéni nézet keresése – Bing Custom Search
 titleSuffix: Azure Cognitive Services
-description: Útmutatás a web egyéni nézetének kereséséhez.
+description: Miután konfigurálta az egyéni keresési élményt, tesztelheti azt a Bing Custom Search-portálon belül.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405006"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072746"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search-példány meghívása a portálról
 
-Miután konfigurálta az egyéni keresési élményt, tesztelheti azt a Bing Custom Search-portálon belül [](https://customsearch.ai). 
+Miután konfigurálta az egyéni keresési élményt, tesztelheti azt a Bing Custom Search- [portálon](https://customsearch.ai)belül. 
 
 ![a Bing Custom Search portál képernyőképe](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Keresési lekérdezés létrehozása 
 
-Miután bejelentkezett a Bing Custom Search- [portálra](https://customsearch.ai), válassza ki a keresési példányt, és kattintson a Production ( **éles** ) fülre. A **végpontok**területen válasszon ki egy API-végpontot (például a webes API-t). Az előfizetés határozza meg, hogy mely végpontok jelenjenek meg.
+Miután bejelentkezett a Bing Custom Search- [portálra](https://customsearch.ai), válassza ki a keresési példányt, és kattintson a **Production (éles** ) fülre. A **végpontok**területen válasszon ki egy API-végpontot (például a webes API-t). Az előfizetés határozza meg, hogy mely végpontok jelenjenek meg.
 
-Keresési lekérdezés létrehozásához adja meg a végpont paramétereinek értékét. Vegye figyelembe, hogy a portálon megjelenő paraméterek a kiválasztott végponttól függően változhatnak. További információért tekintse meg a [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) -referenciát. A keresési példány által használt előfizetés módosításához adja hozzá a megfelelő előfizetési kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
+Keresési lekérdezés létrehozásához adja meg a végpont paramétereinek értékét. Vegye figyelembe, hogy a portálon megjelenő paraméterek a kiválasztott végponttól függően változhatnak. További információért tekintse meg a [Custom Search API-referenciát](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) . A keresési példány által használt előfizetés módosításához adja hozzá a megfelelő előfizetési kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
 
 Néhány fontos paraméter a következő:
 
@@ -36,7 +36,7 @@ Néhány fontos paraméter a következő:
 |Lekérdezés     | A keresendő keresési kifejezés. Csak a webes, a képi, a videó-és az automatikus kiegészítési végpontokhoz érhető el |
 |Egyéni konfigurációs azonosító | A kiválasztott egyéni keresési példány konfigurációs azonosítója. Ez a mező csak olvasható. |
 |Market     | Az eredményeket kezdeményező piac. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el.        |
-|Előfizetői azonosító | A teszteléshez használandó előfizetési kulcs. Kijelölhet egy kulcsot a legördülő listából, vagy megadhat egy manuálisan.          |
+|Előfizetési kulcs | A teszteléshez használandó előfizetési kulcs. Kijelölhet egy kulcsot a legördülő listából, vagy megadhat egy manuálisan.          |
 
 Ha **további paraméterekre** kattint, a következő paramétereket mutatja be:  
 
@@ -44,8 +44,8 @@ Ha **további paraméterekre** kattint, a következő paramétereket mutatja be:
 |---------|---------|
 |Safe Search     | A felnőtt tartalmak weblapjainak szűrésére szolgáló szűrő. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el.        |
 |Felhasználói felület nyelve    | A felhasználói felületi karakterláncokhoz használt nyelv. Ha például az üzemeltetett felhasználói felületen engedélyezi a képeket és a videókat, a **kép** és a **videó** lapok a megadott nyelvet használják.        |
-|Count     | A válaszban visszaadni kívánt keresési eredmények száma. Csak webes, képi és videós végpontok esetén érhető el.         |
-|Offset    | A kihagyni kívánt keresési eredmények száma az eredmények visszaadása előtt. Csak webes, képi és videós végpontok esetén érhető el.        |
+|Darabszám     | A válaszban visszaadni kívánt keresési eredmények száma. Csak webes, képi és videós végpontok esetén érhető el.         |
+|Eltolás    | A kihagyni kívánt keresési eredmények száma az eredmények visszaadása előtt. Csak webes, képi és videós végpontok esetén érhető el.        |
     
 Miután megadta az összes szükséges beállítást, kattintson a **hívás** gombra a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. Ha kijelöli a futtatott felhasználói felület végpontját, tesztelheti a keresési felületet az alsó ablaktáblán.
 

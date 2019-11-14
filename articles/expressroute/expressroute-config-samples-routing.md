@@ -1,5 +1,5 @@
 ---
-title: Útválasztó-konfigurációs minták – Azure ExpressRoute |} A Microsoft Docs
+title: 'Azure ExpressRoute: útválasztó-konfigurációs minták'
 description: Ezt oldal útválasztó-konfigurációs minták Cisco és a Juniper útválasztó nyújt.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367472"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076667"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Kezeli az útválasztást és útválasztó-konfigurációs minták
 Ez az oldal nyújt felület és az útválasztási konfigurációs minták Cisco IOS-XE-és a Juniper MX-sorozatú útválasztó az ExpressRoute használata során. Ezek a minták az útmutató csak nem, és nem használható, mert. Használhatja, így kapja meg a hálózat megfelelő konfigurációk a tárolóeszközök gyártójával egyeztetve. 
@@ -33,7 +32,7 @@ Ez az oldal nyújt felület és az útválasztási konfigurációs minták Cisco
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE-alapú útválasztók
 Ebben a szakaszban a minták az IOS-XE operációsrendszer-család futó bármilyen útválasztó vonatkozik.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. És alárendelt kapcsolatain konfigurálása
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. felületek és alcsatolók konfigurálása
 Szüksége lesz egy sub felület minden csatlakozik a Microsofthoz útválasztót támaszkodunk. Egy alárendelt felületet egy VLAN-Azonosítót vagy VLAN-azonosítót és a egy IP-cím halmozott párjai azonosíthatók.
 
 **Dot1Q interface definition**
@@ -52,7 +51,7 @@ Ez a példa egy két VLAN-azonosító egy alárendelt felületen alárendelt ill
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Az eBGP-munkamenetek beállításához
+### <a name="2-setting-up-ebgp-sessions"></a>2. eBGP-munkamenetek beállítása
 Be kell állítania egy BGP-munkamenet a Microsoft minden társviszony-létesítéshez. Az alábbi minta lehetővé teszi egy BGP-munkamenetet a Microsoft beállítása. Ha az IPv4-címet a sub felület használt a.b.c.d volt, az IP-címet a BGP szomszéd (Microsoft) nem a.b.c.d+1 címet. Az utolsó oktettet az IPv4-címet a BGP-szomszéd mindig lesz páros szám.
 
     router bgp <Customer_ASN>
@@ -64,7 +63,7 @@ Be kell állítania egy BGP-munkamenet a Microsoft minden társviszony-létesít
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. A BGP-munkamenetben meg lehetnek hirdetve az előtagok beállítása
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. a BGP-munkamenetben meghirdetett előtagok beállítása
 Az útválasztót, jelölje be a Microsoft előtagokat hirdet meg. Megteheti, hogy az alábbi minta használatával.
 
     router bgp <Customer_ASN>
@@ -77,7 +76,7 @@ Az útválasztót, jelölje be a Microsoft előtagokat hirdet meg. Megteheti, ho
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. Útvonal-leképezések
+### <a name="4-route-maps"></a>4. útvonal-térképek
 Útvonal-leképezéseket is használhatja és az előtag a szűrő előtagok propagálja a hálózatban. Az alábbi minta használatával a feladatnak. Győződjön meg arról, hogy a megfelelő előtaggal listák beállítása.
 
     router bgp <Customer_ASN>
@@ -98,7 +97,7 @@ Az útválasztót, jelölje be a Microsoft előtagokat hirdet meg. Megteheti, ho
 ## <a name="juniper-mx-series-routers"></a>Juniper MX sorozat útválasztók
 Ebben a szakaszban a minták bármely Juniper MX-sorozatú útválasztó a alkalmazni.
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. És alárendelt kapcsolatain konfigurálása
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. felületek és alcsatolók konfigurálása
 
 **Dot1Q interface definition**
 
@@ -133,7 +132,7 @@ Ez a példa egy két VLAN-azonosító egy alárendelt felületen alárendelt ill
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. Az eBGP-munkamenetek beállításához
+### <a name="2-setting-up-ebgp-sessions"></a>2. eBGP-munkamenetek beállítása
 Be kell állítania egy BGP-munkamenet a Microsoft minden társviszony-létesítéshez. Az alábbi minta lehetővé teszi egy BGP-munkamenetet a Microsoft beállítása. Ha az IPv4-címet a sub felület használt a.b.c.d volt, az IP-címet a BGP szomszéd (Microsoft) nem a.b.c.d+1 címet. Az utolsó oktettet az IPv4-címet a BGP-szomszéd mindig lesz páros szám.
 
     routing-options {
@@ -149,7 +148,7 @@ Be kell állítania egy BGP-munkamenet a Microsoft minden társviszony-létesít
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. A BGP-munkamenetben meg lehetnek hirdetve az előtagok beállítása
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. a BGP-munkamenetben meghirdetett előtagok beállítása
 Az útválasztót, jelölje be a Microsoft előtagokat hirdet meg. Megteheti, hogy az alábbi minta használatával.
 
     policy-options {
@@ -174,7 +173,7 @@ Az útválasztót, jelölje be a Microsoft előtagokat hirdet meg. Megteheti, ho
     }
 
 
-### <a name="4-route-maps"></a>4. Útvonal-leképezések
+### <a name="4-route-maps"></a>4. útvonal-térképek
 Útvonal-leképezéseket is használhatja és az előtag a szűrő előtagok propagálja a hálózatban. Az alábbi minta használatával a feladatnak. Győződjön meg arról, hogy a megfelelő előtaggal listák beállítása.
 
     policy-options {

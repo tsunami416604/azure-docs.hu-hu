@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835665"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031430"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -33,7 +33,7 @@ Az elnevezett entitások felismerése lehetővé teszi a különböző entitáso
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Elnevezett entitás-felismerés v3 nyilvános előzetes verziója
 
-Az [elnevezett entitások felismerésének következő verziója](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) már elérhető a nyilvános előzetes verzióban. Frissítéseket biztosít mind az entitások, mind a nevesített entitások felismeréséhez. 
+Az [elnevezett entitások felismerésének következő verziója]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) már elérhető a nyilvános előzetes verzióban. Frissítéseket biztosít mind az entitások, mind a nevesített entitások felismeréséhez. 
 
 :::row:::
     :::column span="":::
@@ -71,7 +71,7 @@ Az [elnevezett entitások felismerésének következő verziója](https://cognit
     :::column-end:::
 :::row-end:::
 
-### <a name="entity-types"></a>Entitások típusai
+### <a name="entity-types"></a>Entitás típusa
 
 A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. Jelenleg az alábbi kategóriájú entitásokat ismeri fel: v3. A támogatott entitások és nyelvek részletes listáját az [elnevezett entitások típusai](../named-entity-types.md) című cikkben találja.
 
@@ -346,7 +346,7 @@ Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogal
 + POST-kérés a `/entities` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
 + Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)

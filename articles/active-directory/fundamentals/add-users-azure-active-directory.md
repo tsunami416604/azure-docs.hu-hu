@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b01eb7730290fbf7340fc0a6d8cac8157498f64a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013617"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073507"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hozzáadhat vagy törölhet a felhasználók Azure Active Directory használatával
 
@@ -28,33 +28,33 @@ Vegyen fel új felhasználókat, vagy törölje a meglévő felhasználókat a A
 
 Létrehozhat egy új felhasználót az Azure Active Directory portál használatával.
 
-### <a name="to-add-a-new-user"></a>Új felhasználó hozzáadása
+Új felhasználó hozzáadásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként a szervezet számára.
 
-2. Válassza ki **Azure Active Directory**válassza **felhasználók**, majd válassza ki **új felhasználó**.
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon.
 
-    ![Felhasználók – minden felhasználó oldalon kiemelve az új felhasználóval](media/add-users-azure-active-directory/new-user-all-users-blade.png)
+1. Válassza a **felhasználók**lehetőséget, majd válassza az **új felhasználó**lehetőséget.
 
-3. Az **új felhasználó** lapon válassza a **felhasználó létrehozása** elemet, majd adja hozzá a felhasználó adatait.
+    ![Felhasználó hozzáadása felhasználókon keresztül – az Azure AD összes felhasználója](media/add-users-azure-active-directory/add-user-in-users-all-users.png)
 
-    ![Új felhasználó, a felhasználó oldalon a felhasználói adatok hozzáadása](media/add-users-azure-active-directory/new-user-user-blade.png)
+1. A **felhasználó** lapon adja meg a felhasználó adatait:
 
-   - **Név (kötelező)** : az új felhasználó vezetékneve és utóneve. Például: Chris Green.
+   - **Név**. Kötelező. Az első és utolsó az új felhasználó neve. Ha például *Mary Parker*.
 
-   - **Felhasználónév (kötelező)** : az új felhasználó felhasználóneve. Például: chris@contoso.com.
+   - **Felhasználónév**. Kötelező. Az új felhasználó felhasználóneve. Például: `mary@contoso.com`.
 
-     A Felhasználónév tartományának a kezdeti alapértelmezett tartománynevet, <_yourdomainname_>. onmicrosoft. com vagy egy egyéni tartománynevet kell használnia az Azure ad-szervezetben, például a contoso.com-ben. Az elérhető tartományok listájából választhat. A lista szűréséhez a tartománynév egy részét is beírhatja. Egyéni tartománynév létrehozásával kapcsolatos további információkért lásd: [egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md).
+     A Felhasználónév tartomány részének a kezdeti alapértelmezett tartománynevet kell használnia, *\<yourdomainname >. onmicrosoft. com*vagy egy egyéni tartománynevet, például *contoso.com*. További információ az Egyéni tartománynév létrehozásáról: [Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával](add-custom-domain.md).
 
-   - **Csoportok**: a felhasználót hozzáadhatja egy vagy több meglévő csoporthoz, vagy később is megteheti. Felhasználói csoportok hozzáadásával kapcsolatos további információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
+   - **Csoportok**. Szükség esetén a felhasználót adhat hozzá egy vagy több meglévő csoportot. A felhasználói csoportokhoz egy későbbi időpontban is hozzáadhat. A felhasználók csoportokba való felvételével kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](active-directory-groups-create-azure-portal.md).
 
    - **Címtárbeli szerepkör**: Ha az Azure ad rendszergazdai engedélyekre van szüksége a felhasználó számára, hozzáadhat egy Azure ad-szerepkörhöz. A felhasználót hozzárendelheti globális rendszergazdaként, vagy egy vagy több korlátozott rendszergazdai szerepkörrel az Azure AD-ben. További információ a szerepkörök hozzárendelése: [szerepkörök hozzárendelése a felhasználók](active-directory-users-assign-role-azure-portal.md).
 
    - **Job info**: további információkat adhat meg a felhasználóról, vagy később is megteheti. Felhasználói adatok hozzáadásával kapcsolatos további információkért lásd: [hozzáadása vagy módosítása a felhasználói profil adatainak](active-directory-users-profile-azure-portal.md).
 
-4. A megadott automatikusan létrehozott jelszó másolása a **jelszó** mezőbe. Használhatja a jelszó mezőben megadott automatikusan generált jelszót, vagy létrehozhat egy egyéni jelszót. Kell megadnia ezt a jelszót a felhasználónak a kezdeti bejelentkezési folyamathoz.
+1. Másolja a **jelszó** mezőben megadott automatikusan generált jelszót. Ezt a jelszót kell megadnia a felhasználónak, hogy első alkalommal jelentkezzen be.
 
-5. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
 A rendszer létrehozza és hozzáadja a felhasználót az Azure AD-szervezethez.
 
@@ -74,24 +74,28 @@ Ha rendelkezik Azure Active Directory (felhő) és a Windows Server Active Direc
 
 Egy meglévő felhasználó Azure Active Directory portálon törölheti.
 
-### <a name="to-delete-a-user"></a>Felhasználó törlése
+A felhasználók törléséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a szervezet felhasználói rendszergazdai fiókjának használatával.
 
-1. Válassza ki **Azure Active Directory**válassza **felhasználók**, és keressen rá, és válassza ki a felhasználót az Azure AD-bérlőjéből törölni szeretné. Ha például _Mary Parker_.
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon.
+
+1. Keresse meg és válassza ki azt a felhasználót, akit törölni szeretne az Azure AD-bérlőből. Ha például _Mary Parker_.
 
 1. Válassza ki **felhasználó törlése**.
 
     ![Felhasználók – minden felhasználó oldalon a kiemelt felhasználó törlése](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    A felhasználó törlődik, és már nem jelenik meg a **felhasználók – minden felhasználó** lapot. A felhasználó láthatók a **törölt felhasználók** lapon a következő 30 napra, és ez idő alatt vissza tudja állítani. A felhasználó visszaállításával kapcsolatos további információkért lásd: [visszaállítása, vagy véglegesen a közelmúltban törölt felhasználó eltávolítása](active-directory-users-restore.md). Ha töröl egy felhasználót, a felhasználó által felhasznált összes licenc elérhetővé válik más felhasználók számára.
+A felhasználó törlődik, és már nem jelenik meg a **felhasználók – minden felhasználó** lapot. A felhasználó láthatók a **törölt felhasználók** lapon a következő 30 napra, és ez idő alatt vissza tudja állítani. További információ a felhasználók visszaállításáról: [nemrég törölt felhasználó visszaállítása vagy eltávolítása Azure Active Directory használatával](active-directory-users-restore.md).
 
-    >[!Note]
-    >Az identitás, a kapcsolattartási adatok vagy a feladat adatainak a felhasználók számára, akiknek mérvadó forrás a Windows Server Active Directory frissítéséhez a Windows Server Active Directory kell használnia. Miután elvégezte a frissítést, meg kell várnia a következő szinkronizálási ciklus befejezését, mielőtt a módosítások láthatja.
+Ha töröl egy felhasználót, a felhasználó által felhasznált összes licenc elérhetővé válik más felhasználók számára.
 
-## <a name="next-steps"></a>Következő lépések
+>[!Note]
+>A Windows Server Active Directory használatával frissítenie kell az identitást, a kapcsolattartási adatokat vagy a feladatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory. Miután elvégezte a frissítést, meg kell várnia a következő szinkronizálási ciklus befejezését, mielőtt a módosítások láthatja.
 
-Miután hozzáadta a felhasználókat, a következő alapszintű folyamatok hajthatja végre:
+## <a name="next-steps"></a>További lépések
+
+A felhasználók hozzáadása után a következő alapvető folyamatokat végezheti el:
 
 - [Profil adatok hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)
 
@@ -101,4 +105,4 @@ Miután hozzáadta a felhasználókat, a következő alapszintű folyamatok hajt
 
 - [Dinamikus csoportok és felhasználók használata](../users-groups-roles/groups-create-rule.md)
 
-Más felhasználói felügyeleti feladatokat is elvégezhet, például a [vendég felhasználóinak egy másik Azure ad-szervezetből való hozzáadásával](../b2b/what-is-b2b.md) vagy [egy törölt felhasználó visszaállításával](active-directory-users-restore.md). Egyéb elérhető műveletekkel kapcsolatos további információkért lásd: [Azure Active Directory felhasználói felügyeleti dokumentáció](../users-groups-roles/index.yml).
+Más felhasználói felügyeleti feladatokat is elvégezhet, például a [vendég felhasználóinak egy másik címtárból való hozzáadásával](../b2b/what-is-b2b.md) vagy [egy törölt felhasználó visszaállításával](active-directory-users-restore.md). Egyéb elérhető műveletekkel kapcsolatos további információkért lásd: [Azure Active Directory felhasználói felügyeleti dokumentáció](../users-groups-roles/index.yml).

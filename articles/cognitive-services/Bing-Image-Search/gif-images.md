@@ -1,7 +1,7 @@
 ---
 title: GIF-képek keresése a Bing Image Search API használatával
 titleSuffix: Azure Cognitive Services
-description: A Bing Image Search API használatával kereshet. gif képeket a weben.
+description: A Bing Image Search API lehetővé teszi, hogy a teljes weben is keressen a legrelevánsabb. gif-képekre.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a8c9afa618df468e038c80f72713b12c7f6ee226
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882292"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072645"
 ---
 # <a name="search-for-gif-images"></a>GIF-képek keresése 
 
@@ -26,7 +26,7 @@ A következő URL-cím az animált. gif rendszerképek lekérdezése.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-A [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) paraméter határozza meg a keresési kifejezéseket.  Az előző lekérdezés a `animatedGif` [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Filter paraméter használatát is megadja.
+A [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) paraméter határozza meg a keresési kifejezéseket.  Az előző lekérdezés azt is megadja, `animatedGif` a [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Filter paraméter használatával.
 
 A találatok megjelenítéséhez használja a következő URL-címet a bing.com kereséséhez.
 ```
@@ -35,7 +35,7 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 
-A lekérdezési paraméterekkel és beállításokkal kapcsolatos további információkért tekintse meg a [Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters)-referenciát. Egy példa a címsor alatt [, például az animált GIF keresése a Java használatával](#gifExample)című szakaszban látható.
+A lekérdezési paraméterekkel és beállításokkal kapcsolatos további információkért tekintse meg a [Image Search API-referenciát](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). Egy példa a címsor alatt [, például az animált GIF keresése a Java használatával](#gifExample)című szakaszban látható.
 
 ## <a name="tips-and-suggestions"></a>Tippek és javaslatok
 
@@ -50,7 +50,7 @@ A lekérdezési paraméterekkel és beállításokkal kapcsolatos további infor
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Példa az animált GIF keresésére a Javával
 
-A következő URL-cím megkeresi az animált. gif képeket:`q=interesting`
+A következő URL-cím megkeresi az animált. gif rendszerképeket: `q=interesting`
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 

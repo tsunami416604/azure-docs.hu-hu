@@ -1,6 +1,6 @@
 ---
-title: VM-pillanatkép Windows kiterjesztése az Azure Backuphoz |} A Microsoft Docs
-description: Alkalmazáskonzisztens biztonsági mentése a virtuális géphez igénybe az Azure Backup használatával VM snapshot bővítményt
+title: Virtuális gép pillanatképének Windows-bővítménye Azure Backup
+description: Alkalmazás-konzisztens biztonsági másolat készítése a virtuális gépről Azure Backupról a VM Snapshot bővítmény használatával
 services: backup, virtual-machines-windows
 documentationcenter: ''
 author: trinadhk
@@ -9,29 +9,29 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8e6468d06341f49e3c57532df8cacb0b6eb25b05
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 32e8b0099ef464312b6f2b9c0eb989154815af77
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706592"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072906"
 ---
-# <a name="vm-snapshot-windows-extension-for-azure-backup"></a>VM-pillanatkép Windows Azure Backup-bővítmény
+# <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Virtuális gép pillanatképének Windows-bővítménye Azure Backup
 
-Az Azure Backup támogatja munkaterhelések biztonsági mentéséhez a helyszíni, felhőbeli és a Recovery Services-tároló biztonsági másolatot a felhőbeli erőforrások. Az Azure Backup olyan alkalmazáskonzisztens biztonsági mentése az Azure virtuális gépen nincs szükség érvénybe leállítja a virtuális gép VM snapshot bővítményt használ. VM Snapshot bővítményt közzétett és a Microsoft Azure Backup szolgáltatás részeként támogatja. Az Azure Backup az első ütemezett biztonsági mentési aktivált bejegyzés a biztonsági mentés engedélyezése részeként fogja telepíteni a bővítményt. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és a VM-pillanatkép bővítményt üzembe helyezési lehetőségeit.
+Azure Backup támogatja a helyszíni rendszerből a felhőbe irányuló munkaterhelések biztonsági mentését és a Felhőbeli erőforrások biztonsági mentését Recovery Services-tárolóba. A Azure Backup a VM Snapshot bővítmény használatával gondoskodik az Azure-beli virtuális gépek alkalmazásának konzisztens biztonsági mentéséről anélkül, hogy le kellene állítania a virtuális gépet. A virtuális gép pillanatkép-bővítményét a Microsoft a Azure Backup szolgáltatás részeként teszi közzé és támogatja. Azure Backup telepíti a bővítményt az első ütemezett biztonsági mentés által aktivált, a biztonsági mentést engedélyező bejegyzés részeként. Ez a dokumentum a virtuális gép pillanatkép-bővítményének támogatott platformokat, konfigurációkat és telepítési lehetőségeket ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
-A támogatott operációs rendszerek listájáért tekintse meg [az Azure Backup által támogatott operációs rendszerek](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
+A támogatott operációs rendszerek listáját a [Azure Backup által támogatott operációs rendszerek](../../backup/backup-azure-arm-vms-prepare.md#before-you-start) című témakörben találja.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A virtuális gép pillanatképét bővítmény szükséges, hogy a céloldali virtuális gép csatlakoztatva az internethez, amikor egy virtuális gép biztonsági mentése is.
+A virtuális gép pillanatkép-bővítménye megköveteli, hogy a célként megadott virtuális gép az internethez kapcsolódjon, amikor biztonsági másolatot készít a virtuális gépről.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON VM snapshot bővítményt sémáját jeleníti meg. A bővítmény telepítéséhez a feladat Azonosítóját – ez azonosítja a biztonsági mentési feladat aktiválódik, amely a virtuális gépen, a pillanatkép állapotát blob uri -, a pillanatkép-készítési művelet állapotának írása, ütemezett kezdési idő a pillanatkép, a naplók blob uri - ahol megfelelő naplók pillanatkép-feladat írt, Virtuálisgép-lemezek és a metaadatok objstr-ábrázolását.  Ezek a beállítások kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy ezek a beállítások az Azure Backup szolgáltatás biztonsági mentési feladat részeként átadandó használata ajánlott.
+A következő JSON a virtuális gép pillanatkép-bővítményének sémáját mutatja be. A bővítmény igényli a feladat AZONOSÍTÓját – ez azonosítja azt a biztonsági mentési feladatot, amely pillanatfelvételt váltott ki a virtuális gépen, az állapot blob URI-ját, a pillanatkép-művelet állapotát, a pillanatkép ütemezett kezdési időpontját, naplózza a blob URI-ját – a pillanatkép-feladatnak megfelelő naplókat. a VM-lemezek és a metaadatok írására, objstr.  Mivel ezeket a beállításokat bizalmas adatokként kell kezelni, a védett beállítási konfigurációban kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy ezeket a beállításokat csak a biztonsági mentési feladatok részeként ajánlott átadni Azure Backup szolgáltatásból.
 
 ```json
 {
@@ -63,24 +63,24 @@ A következő JSON VM snapshot bővítményt sémáját jeleníti meg. A bővít
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | Karakterlánc |
-| commandStartTimeUTCTicks | 6.36458E + 17 | Karakterlánc |
-| Területi beállítás | en-us | sztring |
-| objectStr | Az sas URI-t tömb – "blobSASUri" kódolásának: ["https:\/\/sopattna5365.blob.core.windows.net\/VHD-k\/vmwin1404ltsc201652903941.vhd? sv 2014. 02. 14 = & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," https:\/\/sopattna8461.blob.core.windows.net\/VHD-k\/vmwin1404ltsc-20160629-122418.vhd? sv 2014. 02. 14 = & sr = b & sig 5S0A6YDWvVwqPAkzWXVy % 2BS % 2FqMwzFMbamT5upwx05v8Q % = 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," https:\/ \/ sopattna8461.BLOB.Core.Windows.NET\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd? sv 2014. 02. 14 = & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4 % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," https:\/\/sopattna5365.blob.core.windows.net\/VHD-k\/vmwin1404ltsc-20160701-163922.vhd? sv 2014. 02. 14 = & sr = b & sig oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 2BC % 2BNIAork % = 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," https:\/ \/ sopattna5365.BLOB.Core.Windows.NET\/VHD-k\/vmwin1404ltsc-20170705-124311.vhd? sv 2014. 02. 14 = & sr = b & sig ZUM9d28Mvvm % 2FfrhJ71TFZh0Ni90m38bBs3zMl % 2FQ9rs0 % = 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "] | Karakterlánc |
-| logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Karakterlánc |
-| statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Karakterlánc |
+| apiVersion | 2015-06-15 | dátum |
+| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | sztring |
+| commandStartTimeUTCTicks | 6.36458 e + 17 | sztring |
+| területi beállítás | hu-hu | sztring |
+| objectStr | Sas URI-tömb kódolása – "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/VHD-k\/vmwin1404ltsc201652903941. vhd? SV = 2014-02-14 & SR = b & SIG = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA% 3D & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW", "https:\/\/sopattna8461.blob.core.windows.net\/VHD\/vmwin1404ltsc-20160629-122418. vhd? SV = 2014-02-14 & SR = b & SIG = 5S0A6YDWvVwqPAkzWXVy% 2BS% 2FqMwzFMbamT5upwx05v8Q% 3D & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW "," https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541. vhd? SV = 2014-02-14 & SR = b & SIG = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4% 3D & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW "," https:\/\/sopattna5365.blob.core.windows.net\/VHD-k\/vmwin1404ltsc-20160701-163922. vhd? SV = 2014-02-14 & SR = b & SIG = oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r% 2BC% 2BNIAork% 3D & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW "," https:\/\/sopattna5365.blob.core.windows.net\/VHD\/vmwin1404ltsc-20170705-124311. vhd? SV = 2014-02-14 & SR = b & SIG = ZUM9d28Mvvm% 2FfrhJ71TFZh0Ni90m38bBs3zMl% 2FQ9rs0% 3D & St = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & SP = RW "] | sztring |
+| logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | sztring |
+| statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | sztring |
 
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az ajánlott módszer a VM-pillanatkép bővítmény hozzáadása egy virtuális géphez, azonban nem engedélyezi a biztonsági mentés a virtuális gépen. Ez megvalósítható a Resource Manager-sablon használatával.  Egy mintául szolgáló Resource Manager-sablon, amely a virtuális gép biztonsági mentését találhatók a [Azure gyors üzembe helyezési katalógus](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A virtuális gép pillanatkép-bővítményének a virtuális géphez való hozzáadásának ajánlott módja azonban a biztonsági mentés engedélyezése a virtuális gépen. Ez egy Resource Manager-sablonon keresztül érhető el.  A virtuális gépek biztonsági mentését lehetővé tevő Resource Manager-sablon az [Azure gyorskonfigurálás](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/)-katalógusban található.
 
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI segítségével a virtuális gépek biztonsági mentésének engedélyezése. Biztonsági mentés a POST engedélyezése, első ütemezett biztonsági mentési feladat telepíti a Vm snapshot bővítményt a virtuális Gépet.
+Az Azure CLI használatával engedélyezheti a biztonsági mentést egy virtuális gépen. A biztonsági mentés engedélyezése után az első ütemezett biztonsági mentési feladata telepíti a virtuális gép pillanatkép-bővítményét a virtuális gépen.
 
 ```azurecli
 az backup protection enable-for-vm \
@@ -108,7 +108,7 @@ C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és azok jelentését
 
-Hibaelhárítási információk találhatók a [hibaelhárítási útmutató Azure VM backup](../../backup/backup-azure-vms-troubleshoot.md).
+A hibaelhárítási információk az [Azure virtuális gépek biztonsági mentésének hibaelhárítási útmutatójában](../../backup/backup-azure-vms-troubleshoot.md)találhatók.
 
 ### <a name="support"></a>Támogatás
 

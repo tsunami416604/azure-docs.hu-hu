@@ -1,5 +1,5 @@
 ---
-title: Egyéni Azure-szkriptek bővítménye Windowshoz | Microsoft Docs
+title: Egyéni Azure-szkriptek bővítménye Windowshoz
 description: A Windowsos virtuális gépek konfigurációs feladatainak automatizálása az egyéni szkriptek bővítményének használatával
 services: virtual-machines-windows
 manager: carmonm
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204203"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073820"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéni parancsfájl-bővítmény a Windowshoz
 
@@ -108,25 +108,25 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | Karakterlánc |
-| type | CustomScriptExtension | Karakterlánc |
+| apiVersion | 2015-06-15 | dátum |
+| publisher | Microsoft.Compute | sztring |
+| type | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.9 | int |
-| fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
 | timestamp (például:) | 123456789 | 32 bites egész szám |
-| commandToExecute (például) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | Karakterlánc |
-| storageAccountName (például:) | examplestorageacct | Karakterlánc |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
+| commandToExecute (például) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | sztring |
+| storageAccountName (például:) | examplestorageacct | sztring |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 >[!NOTE]
 >Ezek a tulajdonságok nevei megkülönböztetik a kis-és nagybetűket. Az üzembe helyezési problémák elkerüléséhez használja az itt látható neveket.
 
 #### <a name="property-value-details"></a>Tulajdonság értékének részletei
 
-* `commandToExecute`: (**kötelező**, karakterlánc) a belépési pont parancsfájlját végre kell hajtani. Akkor használja ezt a mezőt, ha a parancs titkos kódokat (például jelszavakat) tartalmaz, vagy ha a fileUris bizalmasak.
+* `commandToExecute`: (**kötelező**, karakterlánc) a futtatandó belépési pont parancsfájlja. Akkor használja ezt a mezőt, ha a parancs titkos kódokat (például jelszavakat) tartalmaz, vagy ha a fileUris bizalmasak.
 * `fileUris`: (opcionális, karakterlánc-tömb) a letölteni kívánt fájl (ok) URL-címei.
-* `timestamp`(opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újrafuttatásának indítására használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
-* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, `fileUris` az összes URL-címet az Azure-Blobok számára kell megadni.
+* `timestamp` (opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újrafuttatásának indítására használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
+* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, az összes `fileUris`nak az Azure-Blobok URL-címeinek kell lennie.
 * `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
 
 A következő értékek a nyilvános vagy a védett beállításokban állíthatók be, a bővítmény elveti az összes olyan konfigurációt, ahol az alábbi értékek a nyilvános és a védett beállításokban is be vannak állítva.
@@ -141,12 +141,12 @@ A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a vi
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni szkriptek bővítmény futtatásához az üzembe helyezés során. Az alábbi példák azt mutatják be, hogyan használható az egyéni szkriptek bővítménye:
 
-* [Oktatóanyag: Virtuálisgép-bővítmények üzembe helyezése Azure Resource Manager-sablonokkal](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése Azure Resource Manager-sablonokkal](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Kétszintű alkalmazás üzembe helyezése a Windowsban és az Azure SQL DB-ben](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-A `Set-AzVMCustomScriptExtension` parancs használatával hozzáadhatja az egyéni parancsfájl-bővítményt egy meglévő virtuális géphez. További információ: [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
+A `Set-AzVMCustomScriptExtension` parancs használatával hozzáadhatja az egyéni szkriptek bővítményét egy meglévő virtuális géphez. További információ: [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
@@ -161,7 +161,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Több parancsfájl használata
 
-Ebben a példában három parancsfájlt használ a kiszolgáló létrehozásához. A **commandToExecute** meghívja az első parancsfájlt, majd a mások meghívásának lehetőségeit. Rendelkezhet például egy olyan főparancsfájllal, amely a megfelelő hibák kezelésével, naplózásával és állapotának kezelésével vezérli a végrehajtást. A parancsfájlok a helyi gépre lesznek letöltve a futtatáshoz. Például `1_Add_Tools.ps1` ha `2_Add_Features.ps1` a szkripthez hozzáadja `.\2_Add_Features.ps1` a parancsot, és megismétli ezt a folyamatot a ben `$settings`definiált többi parancsfájlhoz.
+Ebben a példában három parancsfájlt használ a kiszolgáló létrehozásához. A **commandToExecute** meghívja az első parancsfájlt, majd a mások meghívásának lehetőségeit. Rendelkezhet például egy olyan főparancsfájllal, amely a megfelelő hibák kezelésével, naplózásával és állapotának kezelésével vezérli a végrehajtást. A parancsfájlok a helyi gépre lesznek letöltve a futtatáshoz. Például `1_Add_Tools.ps1` a `2_Add_Features.ps1` meghívásához `.\2_Add_Features.ps1` hozzáadását a parancsfájlhoz, és ismételje meg ezt a folyamatot a `$settings`ban definiált többi parancsfájlhoz.
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -215,7 +215,7 @@ Azt is megteheti, hogy a [ForceUpdateTag](/dotnet/api/microsoft.azure.management
 
 ### <a name="using-invoke-webrequest"></a>A meghívás-webkérés használata
 
-Ha a szkriptben a [meghívás-webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja, meg kell adnia a paramétert `-UseBasicParsing` , különben a részletes állapot ellenőrzésekor a következő hibaüzenetet fogja kapni:
+Ha a szkriptben a [Request-Webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja, meg kell adnia a paramétert `-UseBasicParsing` vagy más esetben a következő hibaüzenetet fogja kapni a részletes állapot ellenőrzésekor:
 
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
@@ -273,17 +273,17 @@ A megadott fájlok a cél virtuális gép következő mappájába lesznek letöl
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-ahol `<n>` a decimális egész szám, amely változhat a bővítmény végrehajtásai között.  Az `1.*` érték megegyezik a bővítmény tényleges, `typeHandlerVersion` aktuális értékével.  Például a tényleges könyvtár lehet `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+ahol a `<n>` decimális egész szám, amely a bővítmény végrehajtásai között változhat.  A `1.*` érték megegyezik a bővítmény tényleges, aktuális `typeHandlerVersion` értékével.  A tényleges könyvtár például `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`lehet.  
 
-A `commandToExecute` parancs végrehajtásakor a bővítmény beállítja ezt a könyvtárat ( `...\Downloads\2`például) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát a `fileURIs` tulajdonságon keresztül letöltött fájlok megkereséséhez. Példákért tekintse meg az alábbi táblázatot.
+A `commandToExecute` parancs végrehajtásakor a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2`) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát, hogy megkeresse a letöltött fájlokat a `fileURIs` tulajdonságon keresztül. Példákért tekintse meg az alábbi táblázatot.
 
-Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Példa:
+Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet a relatív parancsfájl-/fájlelérési útvonalakat a `commandToExecute` sztringben választani, ha lehetséges. Például:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Az elérési út adatai az első URI-szegmens megtartása után `fileUris` a tulajdonságok listáján letöltött fájlok számára.  Ahogy az alábbi táblázatban is látható, a letöltött fájlok a letöltési alkönyvtárakba vannak leképezve, hogy tükrözzék `fileUris` az értékek szerkezetét.  
+Az elérési út adatai az első URI-szegmens megtartása után a `fileUris`-tulajdonságok listáján keresztül letöltött fájlok számára.  Ahogy az alábbi táblázatban is látható, a letöltött fájlok a letöltési alkönyvtárakba vannak leképezve, hogy tükrözzék a `fileUris` értékek szerkezetét.  
 
 #### <a name="examples-of-downloaded-files"></a>Példák a letöltött fájlokra
 

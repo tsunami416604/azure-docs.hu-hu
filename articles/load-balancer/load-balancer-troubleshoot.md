@@ -1,7 +1,6 @@
 ---
 title: Az Azure Load Balancer hibaelhárítása
-titlesuffix: Azure Load Balancer
-description: A Azure Load Balancer ismert problémáinak elhárítása
+description: Ismerje meg, hogy miként lehet elhárítani a Azure Load Balancer ismert problémáit.
 services: load-balancer
 documentationcenter: na
 author: chadmath
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154926"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076924"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -29,7 +28,7 @@ Ez az oldal a gyakori Azure Load Balancer kérdésekre vonatkozó hibaelhárít�
 - A Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre 
 - A Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált porton lévő forgalomra
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Jelenség A Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Tünet: a Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre
 Ahhoz, hogy a háttér-kiszolgálók részt vegyenek a terheléselosztó készletében, át kell adni a mintavétel-ellenőrzést. További információ az állapot-mintavételekről: Load Balancer mintavételek [ismertetése](load-balancer-custom-probe-overview.md). 
 
 Előfordulhat, hogy a Load Balancer backend-készlet virtuális gépei nem válaszolnak a mintavételre a következő okok miatt: 
@@ -38,7 +37,7 @@ Előfordulhat, hogy a Load Balancer backend-készlet virtuális gépei nem vála
 - A tűzfal vagy egy hálózati biztonsági csoport blokkolja a portot a Load Balancer backend-készletben lévő virtuális gépeken 
 - Egyéb helytelen konfigurációk Load Balancer
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>1\. ok: Load Balancer háttérbeli készlet virtuális gépe nem kifogástalan állapotú 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>1\. ok: Load Balancer háttérbeli készlet virtuális gépe sérült 
 
 **Ellenőrzés és megoldás**
 
@@ -52,10 +51,10 @@ Ha a virtuális gép kifogástalan állapotban van, de nem válaszol a mintavét
 1. Jelentkezzen be a háttérbeli virtuális gépre. 
 2. Nyisson meg egy parancssort, és futtassa a következő parancsot annak ellenőrzéséhez, hogy van-e olyan alkalmazás, amely figyeli a mintavételi portot:   
             netstat – a
-3. Ha a port állapota nem figyeltvan felsorolva, konfigurálja a megfelelő portot. 
-4. Másik lehetőségként kiválaszthat egy másik portot,amely Figyelésként jelenik meg, és ennek megfelelően frissíti a terheléselosztó konfigurációját.              
+3. Ha a port állapota nem **figyelt**van felsorolva, konfigurálja a megfelelő portot. 
+4. Másik lehetőségként kiválaszthat egy másik portot, amely **Figyelésként**jelenik meg, és ennek megfelelően frissíti a terheléselosztó konfigurációját.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3\. ok: A tűzfal vagy egy hálózati biztonsági csoport blokkolja a terheléselosztó háttér-készletének virtuális gépei portját.  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3\. ok: a tűzfal vagy egy hálózati biztonsági csoport blokkolja a terheléselosztó háttér-készletének virtuális gépei portját.  
 Ha a virtuális gépen lévő tűzfal blokkolja a mintavételi portot, vagy egy vagy több, az alhálózaton vagy a virtuális gépen konfigurált hálózati biztonsági csoport nem engedélyezi a mintavételt a port eléréséhez, a virtuális gép nem tud válaszolni az állapot-mintavételre.          
 
 **Ellenőrzés és megoldás**
@@ -66,7 +65,7 @@ Ha a virtuális gépen lévő tűzfal blokkolja a mintavételi portot, vagy egy 
 * Ha a szabályok bármelyike blokkolja a mintavételi forgalmat, távolítsa el és konfigurálja újra a szabályokat a mintavételi forgalom engedélyezéséhez.  
 * Tesztelje, hogy a virtuális gép most már megkezdte-e a válaszadást az állapotra. 
 
-### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>4\. ok: Egyéb helytelen konfigurációk Load Balancer
+### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>4\. ok: egyéb helytelen konfigurációk Load Balancer
 Ha az összes korábbi ok úgy tűnik, hogy a rendszer megfelelően érvényesíti és orvosolja az összes okot, és a háttérbeli virtuális gép továbbra sem válaszol az állapot-mintavételre, akkor manuálisan tesztelje a kapcsolatot, és gyűjtsön néhány nyomkövetést a kapcsolat megismeréséhez.
 
 **Ellenőrzés és megoldás**
@@ -81,7 +80,7 @@ Ha az összes korábbi ok úgy tűnik, hogy a rendszer megfelelően érvényesí
     - Ellenőrizze, hogy a mintavételi csomagok kényszerítve vannak-e egy másik célra (valószínűleg UDR-beállításokon keresztül) a terheléselosztó elérése előtt. Ez azt eredményezheti, hogy a forgalom soha nem éri el a háttérbeli virtuális gépet. 
 * Módosítsa a mintavételi típust (például HTTP-ről TCP-re), és konfigurálja a megfelelő portot a hálózati biztonsági csoportok ACL-jei és a tűzfalon annak ellenőrzéséhez, hogy a probléma a mintavételi válasz konfigurációjának megfelelően van-e kiválasztva. További információ az állapot-mintavételezési konfigurációról: a végpont terheléselosztási [állapotának mintavételi beállítása](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Jelenség Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált adatporton tárolt forgalomra
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Tünet: Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált adatporton tárolt forgalomra
 
 Ha a háttérrendszer-készlet virtuális gépe kifogástalan állapotú, és válaszol az állapotfigyelő tesztekre, de továbbra sem vesz részt a terheléselosztásban, vagy nem válaszol az adatforgalomra, az a következő okok bármelyike miatt előfordulhat: 
 * Load Balancer háttérbeli készlet virtuális gépe nem figyeli az adatportot 
@@ -95,11 +94,11 @@ Ha egy virtuális gép nem válaszol az adatforgalomra, annak oka az lehet, hogy
 **Ellenőrzés és megoldás**
 
 1. Jelentkezzen be a háttérbeli virtuális gépre. 
-2. Nyisson meg egy parancssort, és futtassa a következő parancsot annak ellenőrzéséhez, hogy egy alkalmazás figyeli-e  az adatportot: netstat-a 
+2. Nyisson meg egy parancssort, és futtassa a következő parancsot annak ellenőrzéséhez, hogy az alkalmazás figyeli-e az adatportot:  netstat-an 
 3. Ha a port nem szerepel a "LISTENing" állapotú állapotban, konfigurálja a megfelelő figyelő portot. 
 4. Ha a port figyelt van megjelölve, akkor bármely lehetséges probléma esetén ellenőrizze az adott porton található célalkalmazás használatát. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>2\. ok: A hálózati biztonsági csoport blokkolja a portot a Load Balancer háttérrendszer-készlet virtuális gépén.  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>2\. ok: a hálózati biztonsági csoport blokkolja a portot a Load Balancer háttérrendszer-készlet virtuális gépén.  
 
 Ha az alhálózaton vagy a virtuális gépen konfigurált egy vagy több hálózati biztonsági csoport blokkolja a forrás IP-címet vagy portot, akkor a virtuális gép nem tud válaszolni.
 
@@ -110,7 +109,7 @@ Ha az alhálózaton vagy a virtuális gépen konfigurált egy vagy több hálóz
 * Ha a szabályok bármelyike blokkolja a forgalmat, távolítsa el és konfigurálja újra ezeket a szabályokat az adatforgalom engedélyezéséhez.  
 * Tesztelje, hogy a virtuális gép most már elindult-e az állapotra.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>3\. ok: A Load Balancer elérése ugyanarról a virtuális gépről és hálózati adapterről 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>3\. ok: a Load Balancer elérése ugyanarról a virtuális gépről és hálózati adapterről 
 
 Ha egy Load Balancer háttérbeli virtuális gépén lévő alkalmazása megpróbál elérni egy másik, ugyanazon a háttér-virtuális gépen futó alkalmazást ugyanazon a hálózati adapteren keresztül, akkor ez nem támogatott forgatókönyv, és sikertelen lesz. 
 
@@ -118,7 +117,7 @@ Ha egy Load Balancer háttérbeli virtuális gépén lévő alkalmazása megpró
 * Különálló háttérrendszer-készlet virtuális gépek konfigurálása egy alkalmazásban. 
 * Konfigurálja az alkalmazást kettős NIC virtuális gépeken, hogy minden alkalmazás a saját hálózati adapterét és IP-címét használja. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>4\. ok: A belső Load Balancer felület elérése a résztvevő Load Balancer háttérrendszer-készletből származó virtuális gépről
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>4\. ok: a belső Load Balancer előtér elérésének elérése a résztvevő Load Balancer backend Pool virtuális gépről
 
 Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott. Tekintse át a részletes megbeszélések [korlátozásait](load-balancer-overview.md#limitations) .
 

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Alapszintű Load Balancer létrehozása – Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre alapszintű terheléselosztót a PowerShell használatával
+title: 'Gyors útmutató: alapszintű Load Balancer létrehozása – Azure PowerShell'
+titleSuffix: Azure Load Balancer
+description: Ezzel a rövid útmutatóval megkezdheti az alapszintű Load Balancer létrehozását a PowerShell használatával.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0743c1aff07014e83d72c43bdf85ad2d36f31d0a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129083"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075980"
 ---
-# <a name="get-started"></a>QuickStart Nyilvános terheléselosztó létrehozása Azure PowerShell használatával
+# <a name="get-started"></a>Rövid útmutató: Nyilvános terheléselosztó létrehozása az Azure PowerShell használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre alapszintű terheléselosztót az Azure PowerShell használatával. A terheléselosztó teszteléséhez két, Windows kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
@@ -268,7 +268,7 @@ A [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft
 $cred = Get-Credential
 ```
 
-Most már létrehozhatja a virtuális gépeket a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. A következő példa két virtuális gépet hoz létre, és a szükséges virtuális hálózati összetevőket, ha azok még nem léteznek. Ebben a példában az előző lépésben létrehozott hálózati adaptereket (*VM1* és *VM2*) a rendszer automatikusan hozzárendeli a virtuális gépek *VM1* és *VM2* , mivel azok azonos névvel rendelkeznek, és ugyanahhoz a virtuális hálózathoz (*myVnet*) vannak társítva, és alhálózat (*mySubnet*). Továbbá, mivel a hálózati adapterek a terheléselosztó háttér-készletéhez vannak társítva, a rendszer automatikusan hozzáadja a virtuális gépeket a háttér-készlethez.
+Most már létrehozhatja a virtuális gépeket a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. A következő példa két virtuális gépet hoz létre, és a szükséges virtuális hálózati összetevőket, ha azok még nem léteznek. Ebben a példában az előző lépésben létrehozott hálózati adaptereket (*VM1* és *VM2*) a rendszer automatikusan hozzárendeli a virtuális gépek *VM1* és *VM2* , mivel azok azonos névvel rendelkeznek, és ugyanahhoz a virtuális hálózathoz (*myVnet*) és alhálózathoz (*mySubnet*) vannak rendelve. Továbbá, mivel a hálózati adapterek a terheléselosztó háttér-készletéhez vannak társítva, a rendszer automatikusan hozzáadja a virtuális gépeket a háttér-készlethez.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -306,7 +306,7 @@ Telepítése az IIS-t egyéni weblappal mindkét háttérszolgáltatás nyújtó
     ```
 
 3. Adja meg a hitelesítő adatokat a *VM1* géphez az RDP-munkamenet elindításához.
-4. Indítsa el a Windows PowerShellt a VM1 gépen, majd telepítse az IIS-kiszolgálót, és frissítse az alapértelmezett htm-fájlt az alábbi parancsokkal.
+4. Indítsa el a Windows PowerShellt a VM1-en, és a következő parancsok használatával telepítse az IIS-kiszolgálót, valamint frissítse az alapértelmezett htm-fájlt.
 
     ```azurepowershell-interactive
         # Install IIS
@@ -319,7 +319,7 @@ Telepítése az IIS-t egyéni weblappal mindkét háttérszolgáltatás nyújtó
           Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
 5. Szüntesse meg a távoli asztali kapcsolatot a *myVM1*-gyel.
-6. **Hozzon létre egy RDP-kapcsolatot a helyi gépen** a `mstsc /v:PublicIpAddress:4222` *myVM2* paranccsal, és ismételje meg a 4. lépést a *VM2*.
+6. **Hozzon létre egy RDP-kapcsolatokat a helyi gépen** a *myVM2* `mstsc /v:PublicIpAddress:4222` parancs futtatásával, és ismételje meg a 4. lépést a *VM2*esetében.
 
 ## <a name="test-load-balancer"></a>Terheléselosztó tesztelése
 Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:

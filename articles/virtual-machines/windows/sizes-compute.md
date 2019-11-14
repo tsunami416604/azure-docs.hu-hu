@@ -1,5 +1,5 @@
 ---
-title: Azure Windows rendszerű virtuális gépek méretei – optimalizált számítás | Microsoft Docs
+title: Azure Windows rendszerű virtuális gépek méretei – optimalizált számítás
 description: Felsorolja az Azure-beli Windows rendszerű virtuális gépekhez elérhető különböző számítási optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 52537a9442d96196f63b55229347a8dfadea8cee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ae42988aa2c792be5e9cba267c8ebe8c45665147
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102320"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077157"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>Számítási optimalizált virtuálisgép-méretek
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639715"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074848"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a biztonsági mentés a virtuá
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Győződjön meg arról, [hogy mely operációs](backup-support-matrix-iaas.md#supported-backup-actions) rendszerek támogatottak, ha a virtuális gép létrehozásakor engedélyezi a biztonsági mentést.
+- [Győződjön meg](backup-support-matrix-iaas.md#supported-backup-actions) arról, hogy mely operációs rendszerek támogatottak, ha a virtuális gép létrehozásakor engedélyezi a biztonsági mentést.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -52,11 +52,8 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](htt
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-during-vm-creation/daily-policy.png)
 
-
 > [!NOTE]
-> Azure Backup szolgáltatás létrehoz egy különálló erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) a pillanatkép tárolására a **AzureBackupRG_geography_number** elnevezési formátumával (példa: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési szabályzatának az *azonnali helyreállítási pillanatkép* megtartása szakaszában megadott időtartam alatt lesznek tárolva.  Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet.<br>
-Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
-
+> Azure Backup a szolgáltatás egy külön erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) hoz létre a pillanatkép tárolásához, a névadási formátum **AzureBackupRG_geography_number** (például: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési szabályzatának az *azonnali helyreállítási pillanatkép megtartása* szakaszában megadott időtartam alatt lesznek tárolva.  Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet. <br> Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Biztonsági mentés indítása a virtuális gép létrehozása után
 
@@ -72,8 +69,6 @@ A virtuális gép létrehozása után tegye a következőket:
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Védett virtuális gép üzembe helyezése Resource Manager-sablonnal
 
 Az előző lépések azt ismertetik, hogyan használható a Azure Portal egy virtuális gép létrehozásához és egy Recovery Services-tárolóban való megvédéséhez. Egy vagy több virtuális gép gyors üzembe helyezéséhez és Recovery Services-tárolóban való védeleméhez tekintse meg a [Windows rendszerű virtuális gép üzembe helyezése és a biztonsági mentés engedélyezése](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)című témakört.
-
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809226"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073612"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
@@ -33,7 +33,7 @@ A hibrid Azure AD-csatlakozásnak a Windows aktuális eszközökön való ellen�
 1. Ha létezik, törölje a szolgáltatáskapcsolódási pont (SCP) bejegyzését Active Directoryból (AD).
 1. Ügyféloldali beállításjegyzék-beállítás konfigurálása SZOLGÁLTATÁSKAPCSOLÓDÁSI ponthoz a tartományhoz csatlakoztatott számítógépeken Csoportházirend objektum (GPO) használatával
 1. Ha AD FS használ, az ügyféloldali beállításjegyzék-beállítást is konfigurálnia kell a SZOLGÁLTATÁSKAPCSOLÓDÁSI ponthoz a AD FS-kiszolgálón a csoportházirend-objektum használatával  
-
+1. Előfordulhat, hogy a Azure AD Connect [szinkronizálási beállításait is testre kell szabnia](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) az eszközök szinkronizálásának engedélyezéséhez. 
 
 
 ### <a name="clear-the-scp-from-ad"></a>SZOLGÁLTATÁSKAPCSOLÓDÁSI pont törlése az AD-ből
@@ -82,7 +82,7 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
 Ha AD FS használ, először konfigurálnia kell az ügyféloldali SCP-t a fent említett utasítások alapján, de a csoportházirend-objektumot a AD FS-kiszolgálókhoz kell összekapcsolnia. Az SCP objektum határozza meg az eszköz-objektumok szolgáltatójának forrását. Helyszíni vagy Azure AD-t is használhat. Ha a AD FS konfigurálva van, az eszköz objektumainak forrása Azure AD-ként lesz létrehozva.
 
 > [!NOTE]
-> Ha nem tudta konfigurálni az ügyféloldali SCP-t a AD FS-kiszolgálókon, akkor az eszköz identitásának forrása helyszíninek tekintendő, és ha rendelkezik az eszköz visszaírási, a AD FS megkezdi a helyszíni regisztrált eszköz tárolójában lévő eszközbeállítások törlését meghatározott időszak.
+> Ha nem tudta konfigurálni az ügyféloldali szolgáltatáskapcsolódási pontot a AD FS-kiszolgálókon, az eszköz identitásának forrása a helyszínen tekinthető. Az ADFS ezután megkezdi az eszközbeállítások törlését a helyszíni címtárból az ADFS-eszköz regisztrációjának "MaximumInactiveDays" attribútumában meghatározott meghatározott időtartam után. Az ADFS-eszköz regisztrációs objektumai a [Get-AdfsDeviceRegistration parancsmag](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)használatával találhatók meg.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzése Windows rendszerű eszközökön
 
@@ -100,6 +100,6 @@ Az eszköz regisztrációjának szabályozásához a Windows Installer csomagot 
 
 Miután meggyőződött róla, hogy minden a várt módon működik-e, automatikusan regisztrálhatja a Windows jelenlegi és régebbi verziójú eszközeit az Azure AD-vel az [SCP konfigurálásával Azure ad Connect használatával](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése](hybrid-azuread-join-plan.md)

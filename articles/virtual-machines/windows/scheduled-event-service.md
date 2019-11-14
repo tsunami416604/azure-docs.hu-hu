@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gépek ütemezett eseményeinek figyelése az Azure-ban | Microsoft Docs
+title: Windows rendszerű virtuális gépek ütemezett eseményeinek figyelése az Azure-ban
 description: Ismerje meg, hogyan figyelheti meg az Azure-beli virtuális gépeket az ütemezett eseményekhez.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1cda07c18e4f5ef2a8c00b6a275f22ecc0935751
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376195"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073318"
 ---
 # <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 Töltse le a projekt telepítési. zip fájlját a [githubról](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a `SchService.ps1` tartalmú mappába, például: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, és állítsa be a szolgáltatást.
+Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a `SchService.ps1`tartalmazó mappába, például: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, és állítsa be a szolgáltatást.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Ellenőrizze a szolgáltatás állapotát, és győződjön meg róla, hogy fut.
 .\SchService.ps1 -status  
 ```
 
-Ennek `Running` értéket kell visszaadnia.
+Ennek `Running`kell visszaadnia.
 
 A szolgáltatás mostantól 10 másodpercenként megkezdi a lekérdezést minden ütemezett eseményre, és jóváhagyja az eseményeket a karbantartás meggyorsításához.  A befagyasztás, az újraindítás, az újbóli üzembe helyezés és a megelőzik az események ütemezett eseményei által rögzített események. Kiterjesztheti a szkriptet bizonyos enyhítések elindításához az esemény jóváhagyása előtt.
 
@@ -98,7 +98,7 @@ Ha az események az ütemezett esemény szolgáltatásban vannak rögzítve, akk
 >
 > A beállításhoz a Windowst választottuk, de a Linuxon hasonló megoldást is tervezhet.
 
-Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a `–stop` és a `–remove` kapcsolók használatával.
+Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a kapcsolók `–stop` és `–remove`használatával.
 
 ## <a name="connect-to-the-workspace"></a>Kapcsolódás a munkaterülethez
 
@@ -157,8 +157,8 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
 
     ![A lekérdezés mentése](./media/notifications/save-query.png)
 
-1. Válassza az **új riasztási szabály**lehetőséget. 
-1. A **szabály létrehozása** lapon hagyja a `collectorworkspace` **erőforrásként**.
+1. Válassza az **Új riasztási szabály** lehetőséget. 
+1. A **szabály létrehozása** lapon hagyja `collectorworkspace` **erőforrásként**.
 1. A **feltétel**területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése <login undefined>* . Ekkor megnyílik a **jel logikai beállítása** lap.
 1. A **küszöbérték**mezőben adja meg a *0* értéket, majd válassza a **kész**lehetőséget.
 1. A **műveletek**területen válassza a **műveleti csoport létrehozása**lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
@@ -175,6 +175,6 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
 A riasztási szabályok kezeléséhez nyissa meg az erőforráscsoportot, válassza a bal oldali menüben a **riasztások** elemet, majd a lap tetején válassza a **riasztási szabályok kezelése** lehetőséget.
 
      
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [ütemezett események szolgáltatás](https://github.com/microsoft/AzureScheduledEventsService) lapja a githubon.

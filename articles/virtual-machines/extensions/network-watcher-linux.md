@@ -1,5 +1,5 @@
 ---
-title: Azure Network Watcher Agent virtuálisgép-bővítmény Linux rendszerhez | Microsoft Docs
+title: Azure Network Watcher Agent virtuálisgép-bővítmény Linux rendszerhez
 description: Telepítse a Network Watcher-ügynököt a Linux rendszerű virtuális gépen a virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b59e4c570032bdd3341dc7d519f23f4cd86984c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084448"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073036"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Network Watcher Agent virtuálisgép-bővítmény Linux rendszerhez
 
@@ -35,7 +35,7 @@ Ez a cikk a Linux rendszerhez készült Network Watcher Agent virtuálisgép-bő
 
 A Network Watcher ügynök bővítmény a következő Linux-disztribúciók esetében konfigurálható:
 
-| Disztribúció | Version |
+| Disztribúció | Verzió |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 és 8 |
@@ -129,4 +129,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, tekintse meg az [Network Watcher dokumentációját](/azure/network-watcher/), vagy lépjen kapcsolatba az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, tekintse meg az [Network Watcher dokumentációját](/azure/network-watcher/), vagy lépjen kapcsolatba az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

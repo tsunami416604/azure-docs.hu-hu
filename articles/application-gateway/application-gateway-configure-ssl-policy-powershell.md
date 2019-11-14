@@ -1,19 +1,19 @@
 ---
-title: Az SSL-szabályzat konfigurálása az Azure Application Gateway – PowerShell
+title: Az SSL-szabályzat konfigurálása a PowerShell használatával
+titleSuffix: Azure Application Gateway
 description: Ez a cikk útmutatást nyújt az SSL-szabályzat Azure-beli konfigurálásához Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/3/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018246"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075234"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Az SSL-szabályzat verziói és a titkosítási csomagok konfigurálása Application Gateway
 
@@ -23,7 +23,7 @@ Ismerje meg, hogyan konfigurálhatja az SSL-házirend verzióit és a titkosít�
 
 ## <a name="get-available-ssl-options"></a>Elérhető SSL-beállítások beolvasása
 
-A `Get-AzApplicationGatewayAvailableSslOptions` parancsmag az elérhető előre definiált szabályzatok, a rendelkezésre álló titkosítási csomagok és a konfigurálható protokollok listáját tartalmazza. Az alábbi példa egy példát mutat be a parancsmag futtatásához.
+Az `Get-AzApplicationGatewayAvailableSslOptions` parancsmag az elérhető előre definiált szabályzatok, a rendelkezésre álló titkosítási csomagok és a konfigurálható protokollok listáját tartalmazza. Az alábbi példa egy példát mutat be a parancsmag futtatásához.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>Előre definiált SSL-házirendek listázása
 
-Az Application Gateway három előre definiált szabályzatot tartalmaz, amelyek felhasználhatók. A `Get-AzApplicationGatewaySslPredefinedPolicy` parancsmag lekéri ezeket a szabályzatokat. Minden házirendben engedélyezve vannak a protokollok és a titkosítási csomagok. Ezek az előre definiált házirendek segítségével gyorsan konfigurálhatók az SSL-szabályzatok az Application Gateway-ben. Alapértelmezés szerint a **AppGwSslPolicy20150501** van kiválasztva, ha nincs megadva adott SSL-házirend.
+Az Application Gateway három előre definiált szabályzatot tartalmaz, amelyek felhasználhatók. A `Get-AzApplicationGatewaySslPredefinedPolicy` parancsmag lekéri ezeket a házirendeket. Minden házirendben engedélyezve vannak a protokollok és a titkosítási csomagok. Ezek az előre definiált házirendek segítségével gyorsan konfigurálhatók az SSL-szabályzatok az Application Gateway-ben. Alapértelmezés szerint a **AppGwSslPolicy20150501** van kiválasztva, ha nincs megadva adott SSL-házirend.
 
-A következő kimenet egy példa a futtatásra `Get-AzApplicationGatewaySslPredefinedPolicy`.
+A következő kimenet egy példa a `Get-AzApplicationGatewaySslPredefinedPolicy`futtatására.
 
 ```
 Name: AppGwSslPolicy20150501
@@ -110,13 +110,13 @@ CipherSuites:
 
 Egyéni SSL-házirend konfigurálásakor a következő paramétereket kell megadnia: PolicyType, MinProtocolVersion, CipherSuite és ApplicationGateway. Ha más paramétereket próbál átadni, hibaüzenet jelenik meg a Application Gateway létrehozásakor vagy frissítésekor. 
 
-Az alábbi példa egyéni SSL-szabályzatot állít be egy Application gatewayen. Beállítja a protokoll minimális verzióját, `TLSv1_1` és engedélyezi a következő titkosítási csomagokat:
+Az alábbi példa egyéni SSL-szabályzatot állít be egy Application gatewayen. Beállítja a protokoll minimális verzióját `TLSv1_1`re, és engedélyezi a következő titkosítási csomagokat:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> Egyéni SSL-házirend konfigurálásakor ki kell választani a TLS_RSA_WITH_AES_256_CBC_SHA256. Az Application Gateway ezt a titkosítási csomagot használja a háttér-felügyelethez. Ezt bármilyen más lakosztállyal együtt is használhatja, de ezt is ki kell választani. 
+> Egyéni SSL-házirend konfigurálásakor TLS_RSA_WITH_AES_256_CBC_SHA256t kell kiválasztani. Az Application Gateway ezt a titkosítási csomagot használja a háttér-felügyelethez. Ezt bármilyen más lakosztállyal együtt is használhatja, de ezt is ki kell választani. 
 
 ```powershell
 # get an application gateway resource

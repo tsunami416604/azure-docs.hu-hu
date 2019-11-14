@@ -1,7 +1,7 @@
 ---
 title: Egyéni önszuggesztió-javaslatok meghatározása – Bing Custom Search
 titleSuffix: Azure Cognitive Services
-description: Ismerteti, hogyan konfigurálhat egyéni automatikus kiegészítést egyéni javaslatokkal
+description: Az egyéni automatikus kiegészítés a keresési élményhez kapcsolódó javasolt keresési lekérdezési karakterláncok listáját adja vissza.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: b08eb49b0c4f9655326d2ab09ce39210205e28a9
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405103"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072808"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Egyéni automatikus kiegészítési élmény konfigurálása
 
@@ -36,7 +36,7 @@ A Bing-javaslatok engedélyezéséhez kapcsolja be az **automatikus Bing Suggest
 
 ## <a name="add-your-own-suggestions"></a>Saját javaslatok hozzáadása
 
-Saját lekérdezési karakterlánc-javaslatok hozzáadásához vegye fel őket a listára a **felhasználó által definiált javaslatok**alatt. Ha hozzáad egy javaslatot a listához, nyomja le az ENTER billentyűt, **+** vagy kattintson az ikonra. Megadhatja a javaslatot bármilyen nyelven. Legfeljebb 5 000 lekérdezési karakterláncra vonatkozó javaslatot adhat hozzá.
+Saját lekérdezési karakterlánc-javaslatok hozzáadásához vegye fel őket a listára a **felhasználó által definiált javaslatok**alatt. Ha hozzáad egy javaslatot a listához, nyomja le az ENTER billentyűt, vagy kattintson a **+** ikonra. Megadhatja a javaslatot bármilyen nyelven. Legfeljebb 5 000 lekérdezési karakterláncra vonatkozó javaslatot adhat hozzá.
 
 ## <a name="upload-suggestions"></a>Javaslatok feltöltése
 
@@ -48,7 +48,7 @@ A lekérdezési karakterláncokra vonatkozó javaslat eltávolításához kattin
 
 ## <a name="block-suggestions"></a>Javaslatok letiltása
 
-Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdezési karakterláncokról, amelyeket nem kíván visszaadni a Bingnek. A letiltott lekérdezési karakterláncok hozzáadásához kattintson a **letiltott javaslatok megjelenítése**lehetőségre. Adja hozzá a lekérdezési karakterláncot a listához, majd nyomja le az **+** ENTER billentyűt, vagy kattintson az ikonra. Legfeljebb 50 letiltott lekérdezési karakterláncot adhat hozzá.
+Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdezési karakterláncokról, amelyeket nem kíván visszaadni a Bingnek. A letiltott lekérdezési karakterláncok hozzáadásához kattintson a **letiltott javaslatok megjelenítése**lehetőségre. Adja hozzá a lekérdezési karakterláncot a listához, majd nyomja le az ENTER billentyűt, vagy kattintson a **+** ikonra. Legfeljebb 50 letiltott lekérdezési karakterláncot adhat hozzá.
 
 
 
@@ -65,7 +65,7 @@ Az üzemeltetett felhasználói felület lekérdezési karakterláncára vonatko
 
 ## <a name="calling-the-autosuggest-api"></a>Az automatikus javaslat API meghívása
 
-Ha a Bing Custom Search API használatával szeretne lekérdezési karakterláncokat beolvasni `GET` , küldjön egy kérelmet a következő végpontnak.
+Ha a javasolt lekérdezési karakterláncokat a Bing Custom Search API használatával szeretné beolvasni, küldjön egy `GET` kérelmet a következő végpontnak.
 
 ```
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
@@ -81,9 +81,9 @@ A válasz tartalmazza a javasolt lekérdezési karakterláncokat tartalmazó `Se
         },  
 ```
 
-Minden javaslat tartalmaz egy `displayText` és `query` egy mezőt. A `displayText` mező tartalmazza azt a javasolt lekérdezési karakterláncot, amelyet a keresőmező legördülő listájának feltöltéséhez használ.
+Minden javaslat tartalmaz egy `displayText` és `query` mezőt. A `displayText` mező tartalmazza azt a javasolt lekérdezési karakterláncot, amelyet a keresőmező legördülő listájának feltöltéséhez használ.
 
-Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a lekérdezési `query` karakterláncot a mezőben a [Bing Custom Search API](overview.md)hívásakor.
+Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a `query` mezőben a lekérdezési karakterláncot a [Bing Custom Search API](overview.md)hívásakor.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,22 +1,23 @@
 ---
-title: A hozzáférési naplók, a Teljesítménynaplók, a háttérbeli állapot és a metrikák figyelése az Azure Application Gateway
+title: Háttér állapot-és diagnosztikai naplók
+titleSuffix: Azure Application Gateway
 description: Ismerje meg, hogyan engedélyezheti és kezelheti az Azure-beli hozzáférési naplókat és Teljesítménynaplók Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 448e5bf798f5b1c3006888f846722e54fec46ef8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958262"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075299"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
 
-Az Azure Application Gateway használatával az alábbi módokon figyelheti az erőforrásokat:
+Az Azure Application Gateway-erőforrásokat a következő módokon figyelheti:
 
 * [Háttérbeli állapot](#back-end-health): Application Gateway lehetővé teszi a háttérbeli készletekben lévő kiszolgálók állapotának figyelését a Azure Portal és a PowerShell használatával. A háttér-készletek állapotát a teljesítmény diagnosztikai naplóin keresztül is megtalálhatja.
 
@@ -364,7 +365,7 @@ A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és telje
 
 Közzétettünk egy Resource Manager-sablont, amely a népszerű [GoAccess](https://goaccess.io/) log Analyzert telepíti és futtatja Application Gateway hozzáférési naplókhoz. A GoAccess olyan értékes HTTP-forgalmi statisztikát biztosít, mint például az egyedi látogatók, a kért fájlok, gazdagépek, operációs rendszerek, böngészők, HTTP-állapotkódok és egyebek. További részletekért tekintse meg az [információs fájlt a GitHub Resource Manager-sablon mappájából](https://aka.ms/appgwgoaccessreadme).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Számlálók és Eseménynaplók megjelenítése [Azure monitor naplók](../azure-monitor/insights/azure-networking-analytics.md)használatával.
 * [Jelenítse meg az Azure-beli tevékenység naplóját Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzésben.

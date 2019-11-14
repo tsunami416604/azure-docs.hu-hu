@@ -1,5 +1,5 @@
 ---
-title: Az Azure Linux-ügynök bővítményének Stackify újrarajzolása | Microsoft Docs
+title: Stackify az Azure Linux-ügynök bővítményének újranyomkövetése
 description: Telepítse a Stackify retrace Linux-ügynököt egy linuxos virtuális gépre.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
-ms.openlocfilehash: 2278f1bef3a72408b097f9a2d676931fd07369f4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173977"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073642"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>A Linux-ügynök bővítményének Stackify újranyomkövetése
 
@@ -43,7 +43,7 @@ Ez a bővítmény telepítési útvonalat biztosít a Linux-ügynök újranyomk�
 
 Az újranyomkövetési ügynök futtatható a Linux-disztribúciók ellen
 
-| Disztribúció | Version |
+| Disztribúció | Verzió |
 |---|---|
 | Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 és 17,04 |
 | Debian | 7,9 + és 8.2 +, 9 |
@@ -54,14 +54,14 @@ Az újranyomkövetési ügynök futtatható a Linux-disztribúciók ellen
 
 A Linux Stackify-ügynökének kiterjesztése megköveteli, hogy a célként megadott virtuális gép csatlakozik az internethez. 
 
-Előfordulhat, hogy módosítania kell a hálózati konfigurációt, hogy engedélyezze a kapcsolódást a Stackify számára. lásd: https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Előfordulhat, hogy a hálózati konfigurációt úgy kell módosítania, hogy engedélyezze a kapcsolódást a Stackify, lásd: https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
 ---
 
-A következő JSON a Stackify újranyomkövetési ügynök bővítményének sémáját mutatja be. A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A következő JSON a Stackify újranyomkövetési ügynök bővítményének sémáját mutatja be. A kiterjesztéshez a `environment` és a `activationKey`szükséges.
 
 ```json
     {
@@ -95,7 +95,7 @@ A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforr
 
 Az alábbi példa azt feltételezi, hogy a Stackify retrace Linux-bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép "erőforrások": [] objektumára kerül.
 
-A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A kiterjesztéshez a `environment` és a `activationKey`szükséges.
 
 ```json
     {
@@ -150,9 +150,9 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 
 ## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-A `Set-AzVMExtension` parancs segítségével telepítheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni.
+A `Set-AzVMExtension` parancs használatával telepítheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni.
 
-A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A kiterjesztéshez a `environment` és a `activationKey`szükséges.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +173,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Az Azure CLI-eszköz használatával üzembe helyezheti a Stackify retrace Linux-ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre.  
 
-A kiterjesztéshez a `environment` és `activationKey`a szükséges.
+A kiterjesztéshez a `environment` és a `activationKey`szükséges.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -198,4 +198,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Hiba letiltása | A szolgáltatás eltávolítása nem sikerült |
 | 120 | Eltávolítási hiba | A szolgáltatás leállítása sikertelen |
 
-Ha további segítségre van szüksége, vegye fel a kapcsolatot https://support.stackify.com a Stackify támogatási szolgálatával.
+Ha további segítségre van szüksége, vegye fel a kapcsolatot a Stackify támogatási szolgálatával https://support.stackify.comcímen.

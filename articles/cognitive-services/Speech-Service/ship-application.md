@@ -1,7 +1,7 @@
 ---
 title: Alkalmazások fejlesztése a Speech SDK-Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan hozhat létre alkalmazásokat a Speech SDK használatával.
+description: Megtudhatja, hogyan helyezhet üzembe olyan alkalmazást, amely a Speech SDK-t használja a támogatott platformokon.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -11,56 +11,56 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 166ae00085f07ef24d746b60947a31e7680a0f00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0bcfd40510352abc9e64782255d3c8349b8ad87e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490999"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072420"
 ---
 # <a name="ship-an-application"></a>Alkalmazáskészítés
 
-Tekintse meg a [SPEECH SDK-licencet](https://aka.ms/csspeech/license201809), valamint a [harmadik féltől származó szoftvereket](https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html) , amikor az Azure Cognitive Services Speech SDK-t terjeszti. Tekintse át a [Microsoft adatvédelmi nyilatkozatát](https://aka.ms/csspeech/privacy)is.
+Figyelje meg a [beszéd SDK licenc](https://aka.ms/csspeech/license201809), valamint a [harmadik féltől származó szoftverek értesítések](https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html) amikor az Azure Cognitive Services beszédfelismerő SDK terjesztése. Ezenkívül tekintse át a [Microsoft adatvédelmi nyilatkozatát](https://aka.ms/csspeech/privacy).
 
-A platformtól függően eltérő függőségek állnak fenn az alkalmazás végrehajtásához.
+A platformtól függően eltérő függőség létezik, az alkalmazás végrehajtása.
 
 ## <a name="windows"></a>Windows
 
-A Cognitive Services Speech SDK tesztelése a Windows 10 és a Windows Server 2016 rendszeren történik.
+A Cognitive Services beszédfelismerő SDK a Windows 10 és Windows Server 2016 rendszerben lett tesztelve.
 
-A Cognitive Services Speech SDK-hoz a [Microsoft C++ Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -es verziójának terjeszthető változata szükséges a rendszeren. A `Microsoft Visual C++ Redistributable for Visual Studio 2019` legújabb verziójához a telepítőket letöltheti:
+A Cognitive Services Speech SDK-hoz a [Microsoft C++ Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -es verziójának terjeszthető változata szükséges a rendszeren. Letöltheti a legújabb verziójának telepítője a `Microsoft Visual C++ Redistributable for Visual Studio 2019` itt:
 
-- [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+- [A Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
 
-Ha az alkalmazás felügyelt kódot használ, akkor a célszámítógépen `.NET Framework 4.6.1` vagy annál újabb szükséges.
+Ha az alkalmazás felügyelt kódot, a `.NET Framework 4.6.1` vagy újabb szükséges a célszámítógépen.
 
-A mikrofonos bevitelhez telepíteni kell a Multimédia alaprendszer kódtárakat. Ezek a kódtárak a Windows 10 és a Windows Server 2016 rendszer részét képezik. Ezen könyvtárak nélkül is használhatja a Speech SDK-t, ha a mikrofon nem hangbemeneti eszközként van használatban.
+Mikrofon bemeneti a Multimédia alaprendszer függvénytárak telepítve kell lennie. Ezek a könyvtárak a Windows 10 és Windows Server 2016 részét képezik. Akkor lehet a Speech SDK használata nélkül ezek a kódtárak mindaddig, amíg a hangbemeneti eszköz egy mikrofonnal nem használja.
 
-A szükséges Speech SDK-fájlokat az alkalmazással megegyező könyvtárba lehet telepíteni. Így az alkalmazás közvetlenül hozzáférhet a könyvtárakhoz. Ügyeljen arra, hogy a megfelelő verziót (Win32/x64) válassza ki, amely megfelel az alkalmazásnak.
+A szükséges beszéd SDK-fájlokat is telepíthető az alkalmazás könyvtárába. Ezzel a módszerrel az alkalmazás közvetlenül hozzáférhet a kódtárakat. Győződjön meg arról, hogy válassza ki a megfelelő verzióját (Win32/x64), amely megfelel az alkalmazás.
 
-| Name (Név) | Függvény
-|:-----|:----|
-| `Microsoft.CognitiveServices.Speech.core.dll` | A natív és felügyelt központi telepítéshez szükséges Core SDK
-| `Microsoft.CognitiveServices.Speech.csharp.dll` | Felügyelt központi telepítéshez szükséges
+| Name (Név) | Függvény |
+| :--- | :------- |
+| `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK-t, natív és felügyelt üzembe helyezéséhez szükséges |
+| `Microsoft.CognitiveServices.Speech.csharp.dll` | felügyelt üzembe helyezéséhez szükséges                      |
 
->[!NOTE]
+> [!NOTE]
 > A (korábbi kiadásokban szállított) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` fájl kiadási 1.3.0 kezdve többé nem szükséges. A funkció most már integrálva van az alap SDK-val.
 
->[!NOTE]
+> [!NOTE]
 > A Windows Forms-alkalmazás (.NET-keretrendszer C# ) projekt esetében ellenőrizze, hogy a könyvtárak szerepelnek-e a projekt központi telepítési beállításai között. Ezt a `Properties -> Publish Section`alatt tekintheti meg. Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a legördülő listából. Győződjön meg arról, hogy az érték `Included`. A Visual Studio tartalmazni fogja a fájlt a projekt közzétételekor vagy telepítésekor.
 
 ## <a name="linux"></a>Linux
 
 A Speech SDK jelenleg az Ubuntu 16,04, az Ubuntu 18,04 és a Debian 9 disztribúciókat támogatja.
-Natív alkalmazás esetén a Speech SDK-függvénytárat kell átadnia `libMicrosoft.CognitiveServices.Speech.core.so`.
-Ügyeljen arra, hogy az alkalmazásnak megfelelő verziót (x86, x64) válassza ki. A Linux-verziótól függően előfordulhat, hogy a következő függőségeket is meg kell adnia:
+Egy natív alkalmazást, a beszéd SDK-könyvtár szállításra való szüksége `libMicrosoft.CognitiveServices.Speech.core.so`.
+Jelölje ki, amely megfelel az alkalmazás verziója (x86, x64). A Linux verziójától függően is szüksége lehet a következő függőségeket tartalmaznak:
 
-* A GNU C könyvtár megosztott kódtárai (beleértve a POSIX-szálak programozási könyvtárát, `libpthreads`)
-* Az OpenSSL-könyvtár (`libssl.so.1.0.0` vagy `libssl.so.1.0.2`)
-* Az ALSA-alkalmazások megosztott könyvtára (`libasound.so.2`)
+- A megosztott szalagtárakkal GNU C-függvénytár (beleértve a POSIX szálak programozási könyvtár `libpthreads`)
+- Az OpenSSL-könyvtár (`libssl.so.1.0.0` vagy `libssl.so.1.0.2`)
+- A megosztott szalagtár ALSA alkalmazásokhoz (`libasound.so.2`)
 
-Ubuntu rendszeren a GNU C-kódtárakat már alapértelmezés szerint telepíteni kell. Az utolsó három telepíthető a következő parancsokkal:
+Ubuntu rendszeren a GNU C-kódtárakat már alapértelmezés szerint telepíteni kell. Az utolsó három is telepíthetők az alábbi parancsokkal:
 
 ```sh
 sudo apt-get update
@@ -76,5 +76,5 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ## <a name="next-steps"></a>További lépések
 
-* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lásd: beszédfelismerés felismeréseC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [A beszédfelismerést a C#-ban való használatáról](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

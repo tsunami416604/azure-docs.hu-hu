@@ -1,5 +1,5 @@
 ---
-title: Útválasztó-konfigurációs minták az Azure ExpressRoute - NAT - |} A Microsoft Docs
+title: 'Azure ExpressRoute: útválasztó-konfigurációs minták – NAT'
 description: Ezt oldal útválasztó-konfigurációs minták Cisco és a Juniper útválasztó nyújt.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367608"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072118"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Útválasztó-konfigurációs minták beállításához és kezeléséhez NAT
 
@@ -83,7 +82,7 @@ NAT-parancsokat:
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX sorozat útválasztók
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Redundáns Ethernet-illesztőkhöz a fürt létrehozása
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. redundáns Ethernet-felületek létrehozása a fürthöz
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -115,7 +114,7 @@ NAT-parancsokat:
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. Hozzon létre két biztonsági zóna
+### <a name="2-create-two-security-zones"></a>2. hozzon létre két biztonsági zónát
 * Megbízhatósági kapcsolat a belső hálózathoz és Untrust zónába peremhálózati útválasztói rendelkező külső hálózat
 * A zónák megfelelő adapterek hozzárendelése
 * A kapcsolatok-szolgáltatások engedélyezése
@@ -123,7 +122,7 @@ NAT-parancsokat:
     a biztonsági zónák {{biztonsági-zóna megbízhatósági {gazdagép-bejövő-forgalom {-rendszerszolgáltatások {ping;                   } {bgp; protokollok                   {reth0.100;}} felületek               }} {gazdagép-bejövő-forgalom {-rendszerszolgáltatások {ping; biztonsági-zóna Untrust                   } {bgp; protokollok                   {reth1.100;}} felületek               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. Zónák közötti biztonsági házirendek létrehozása
+### <a name="3-create-security-policies-between-zones"></a>3. biztonsági szabályzatok létrehozása zónák között
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -154,7 +153,7 @@ NAT-parancsokat:
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. NAT-szabályzatok konfigurálása
+### <a name="4-configure-nat-policies"></a>4. NAT-házirendek konfigurálása
 * Hozzon létre két NAT-készletek. Egy használandó kimenő, a Microsoft és más NAT-forgalom a Microsoft az ügyfél számára.
 * A NAT-szabályok létrehozása a megfelelő forgalmat
   
@@ -213,10 +212,10 @@ NAT-parancsokat:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Az összes csatlakozás minden irányában szelektív előtagokat hirdet meg a BGP konfigurálása
-Tekintse meg a mintákat [útválasztás konfigurációs minták](expressroute-config-samples-routing.md) lapot.
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Állítsa be a BGP-t, hogy az egyes irányokban külön előtagokat Hirdessen
+Tekintse át a mintákat az [útválasztási konfigurációs minták](expressroute-config-samples-routing.md) oldalon.
 
-### <a name="6-create-policies"></a>6. Szabályzatok létrehozása
+### <a name="6-create-policies"></a>6. szabályzatok létrehozása
     routing-options {
                   autonomous-system <Customer-ASN>;
     }

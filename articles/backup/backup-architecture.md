@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888492"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074352"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -48,8 +48,8 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
@@ -134,7 +134,7 @@ Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük
     - A MARS-ügynök csak a Windows rendszer írási műveletét használja a pillanatkép rögzítéséhez.
     - Mivel az ügynök semmilyen Application VSS-írót nem használ, nem rögzíti az alkalmazás-konzisztens pillanatképeket.
 1. A pillanatképnek a VSS-vel való elkészítése után a MARS-ügynök létrehoz egy virtuális merevlemezt (VHD) a biztonsági mentés konfigurálásakor megadott gyorsítótár-mappában. Az ügynök az egyes adatblokkok ellenőrzőösszegeit is tárolja.
-1. A növekményes biztonsági mentések az Ön által megadott ütemezés szerint futnak, kivéve, ha ad-hoc biztonsági mentést futtatnak.
+1. A növekményes biztonsági mentések az Ön által megadott ütemezés szerint futnak, kivéve, ha igény szerinti biztonsági mentést futtatnak.
 1. A növekményes biztonsági mentések során a rendszer a módosított fájlokat azonosítja, és létrehoz egy új virtuális merevlemezt. A virtuális merevlemez tömörítve és titkosítva van, majd a rendszer elküldje a tárolónak.
 1. A növekményes biztonsági mentés befejeződése után az új VHD a kezdeti replikáció után létrehozott VHD-vel lesz egyesítve. Ez az egyesített VHD biztosítja a legújabb, a folyamatban lévő biztonsági mentéshez való összehasonlításhoz használt állapotot.
 
@@ -148,7 +148,7 @@ Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük
     - A DPM/MABS segítségével a biztonsági másolatok, a megosztások, a fájlok és a mappák is védhetők. A gép rendszerállapotát (operációs rendszer nélküli) is védetté teheti, és az alkalmazással kompatibilis biztonsági mentési beállításokkal biztosíthatja az adott alkalmazásokat.
 1. Ha a DPM/MABS-ben egy gép vagy alkalmazás védelmét állítja be, akkor a rövid távú tárolás és az Azure online védelem érdekében biztonsági mentést kell készítenie a MABS/DPM helyi lemezre. Azt is megadhatja, hogy mikor fusson a helyi DPM-vagy MABS-tároló biztonsági mentése, és hogy mikor fusson az Azure online biztonsági mentése.
 1. A védett munkaterhelés lemezét a megadott ütemtervnek megfelelően a rendszer a helyi MABS/DPM-lemezekre készíti.
-4. A DPM-/MABS-lemezekről a DPM/MABS kiszolgálón futó MARS-ügynök készít biztonsági másolatot a tárolóhoz.
+1. A DPM-/MABS-lemezekről a DPM/MABS kiszolgálón futó MARS-ügynök készít biztonsági másolatot a tárolóhoz.
 
 ![DPM vagy MABS által védett gépek és számítási feladatok biztonsági mentése](./media/backup-architecture/architecture-dpm-mabs.png)
 
@@ -178,7 +178,7 @@ A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival
 Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a Azure Backup használatával végezheti el:
 
 - A Premium Storage *-alapú*virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
-- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [Részletek](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
+- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [További információ](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
 - A biztonsági mentési feladatok befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/windows/disks-types.md#billing).
 

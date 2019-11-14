@@ -1,5 +1,5 @@
 ---
-title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület | Microsoft Docs
+title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület
 description: Ismerje meg, hogyan optimalizálhatja megoldásának teljesítményét a Lsv2-sorozatú virtuális gépeken.
 services: virtual-machines-windows
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101784"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068165"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
 
@@ -39,13 +39,13 @@ Az Lsv2 sorozatú virtuális gépek az AMD EYPC™ kiszolgálói processzorokat 
 
 * A Lsv2-felhasználók nem hivatkozhatnak a virtuális gépen belül az adatmeghajtók számára jelentett NUMA-információkra (mind a 0-ra), hogy kidöntsenek a NUMA-affinitást az alkalmazásaikban. A jobb teljesítmény érdekében ajánlott a számítási feladatok felosztása a processzorok között, ha lehetséges. 
 
-* A Lsv2 VM NVMe-eszközön a maximálisan támogatott üzenetsor-mélység/I/O-várólista-párok száma 1024 (vs. Amazon i3 QD 32 korlátja). A Lsv2-felhasználóknak a (szintetikus) teljesítménytesztek számítási feladatait a 1024-es vagy alacsonyabb várólista-mélységre kell korlátoznia a várólista teljes feltételeinek elindításához, ami csökkentheti a teljesítményt.
+* A Lsv2 VM NVMe-eszközhöz tartozó I/O-várólista-párok maximális támogatott üzenetsor-mélysége 1024 (vs. Amazon i3 QD 32 limit). A Lsv2-felhasználóknak a (szintetikus) teljesítménytesztek számítási feladatait a 1024-es vagy alacsonyabb várólista-mélységre kell korlátoznia a várólista teljes feltételeinek elindításához, ami csökkentheti a teljesítményt.
 
 ## <a name="utilizing-local-nvme-storage"></a>Helyi NVMe-tároló használata
 
 Az 1,92 TB-os NVMe-lemez helyi tárterülete minden Lsv2 virtuális gépen elmúló. A virtuális gép sikeres újraindításakor a helyi NVMe-lemezen lévő összes információ megmarad. Ha a virtuális gépet újra üzembe helyezi, lefoglalják vagy törölték, az NVMe nem maradnak meg. Az adatvédelem nem szűnik meg, ha egy másik probléma miatt a virtuális gép vagy a rajta futó hardver nem Kifogástalan állapotba kerül. Ha ez történik, a régi gazdagépen lévő összes adat biztonságos törlésre kerül.
 
-Olyan esetek is előfordulnak, amikor a virtuális gépet egy másik gazdagépre kell áthelyezni, például egy tervezett karbantartási művelet során. A tervezett karbantartási műveletek és néhány hardverhiba a Scheduled Eventssal várható. [](scheduled-events.md) A Scheduled Eventst kell használni az előre jelzett karbantartási és helyreállítási műveletek frissítésének megmaradása érdekében.
+Olyan esetek is előfordulnak, amikor a virtuális gépet egy másik gazdagépre kell áthelyezni, például egy tervezett karbantartási művelet során. A tervezett karbantartási műveletek és néhány hardverhiba a [Scheduled Eventssal](scheduled-events.md)várható. A Scheduled Eventst kell használni az előre jelzett karbantartási és helyreállítási műveletek frissítésének megmaradása érdekében.
 
 Abban az esetben, ha egy tervezett karbantartási esemény megköveteli, hogy a virtuális gép új, üres helyi lemezekkel rendelkező gazdagépen legyen létrehozva, akkor az adatokat újra kell szinkronizálni (a régi gazdagépen lévő összes adat biztonságos törléséhez). Ez azért fordul elő, mert a Lsv2-sorozatú virtuális gépek jelenleg nem támogatják a helyi NVMe-lemez élő áttelepítését.
 
@@ -77,7 +77,7 @@ Az ügyfél védelme érdekében az adatok biztonságos törlését szolgáló f
 - A virtuális gép nem Kifogástalan állapotba kerül, és hardveres probléma miatt egy másik csomópontra kell a szolgáltatást meggyógyítania.
 - Kis mennyiségű tervezett karbantartási karbantartási művelet, amely megköveteli, hogy a virtuális gép egy másik gazdagépre legyen hozzárendelve a karbantartáshoz.
 
-Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és](backup-and-disaster-recovery-for-azure-iaas-disks.md)vész-helyreállításával foglalkozó témakört.
+Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

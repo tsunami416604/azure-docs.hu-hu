@@ -1,7 +1,7 @@
 ---
 title: Mi a Bing Autosuggest?
 titleSuffix: Azure Cognitive Services
-description: Útmutató a Bing Autosuggest API használatához.
+description: A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405384"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072871"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
 
@@ -35,7 +35,7 @@ A Bing Autosuggest API egy REST-alapú webszolgáltatás, amely bármilyen progr
 2. Kérés küldése erre az API-ra minden alkalommal, amikor egy felhasználó új karaktert kér az alkalmazás keresési mezőjében.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-Ezt az API-t általában minden alkalommal meg kell hívnia, amikor a felhasználó új karaktert keres az alkalmazás keresési mezőjében. Ahogy egyre több karakter van megadva, az API több releváns javasolt keresési lekérdezést fog visszaadni. Előfordulhat `s` például, hogy az API által visszaadott javaslatok valószínűleg kevésbé lesznek érvényesek, mint a esetében `sail`.
+Ezt az API-t általában minden alkalommal meg kell hívnia, amikor a felhasználó új karaktert keres az alkalmazás keresési mezőjében. Ahogy egyre több karakter van megadva, az API több releváns javasolt keresési lekérdezést fog visszaadni. Előfordulhat például, hogy az API által visszaadott javaslatok egyetlen `s` esetében valószínűleg kevésbé lesznek érvényesek, mint a `sail`.
 
 A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest API javasolt lekérdezési kifejezéssel.
 

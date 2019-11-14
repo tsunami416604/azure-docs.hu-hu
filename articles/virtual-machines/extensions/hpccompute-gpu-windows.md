@@ -1,5 +1,5 @@
 ---
-title: NVIDIA GPU illesztőprogram-bővítmény – Azure Windows rendszerű virtuális gépek | Microsoft Docs
+title: NVIDIA GPU illesztőprogram-bővítmény – Azure Windows rendszerű virtuális gépek
 description: Microsoft Azure bővítmény az NVIDIA GPU-illesztőprogramok telepítéséhez az N sorozatú, Windows rendszerű számítási virtuális gépeken.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 13a7189d9758fd6d1e7daac38e948e1b482a019b
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686776"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073022"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogram-bővítmény a Windowshoz
 
@@ -35,7 +35,7 @@ A bővítmény az NVIDIA GPU [-illesztőprogramok Linux N sorozatú virtuális g
 
 Ez a bővítmény a következő OSs-t támogatja:
 
-| Disztribúció | Version |
+| Disztribúció | Verzió |
 |---|---|
 | Windows 10 | Core |
 | Windows Server 2016 | Core |
@@ -69,13 +69,13 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverWindows | string |
+| apiVersion | 2015-06-15 | dátum |
+| publisher | Microsoft.HpcCompute | sztring |
+| type | NvidiaGpuDriverWindows | sztring |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | Sikeres művelet |
 | 1 | A művelet sikeresen befejeződött. Újraindítás szükséges. |
-| 100 | A művelet nem támogatott, vagy nem hajtható végre. | Lehetséges okok: A PowerShell-verzió nem támogatott, a virtuális gép mérete nem N sorozatú virtuális gép, az adatletöltés meghiúsult. A hibák okának megállapításához ellenőrizze a naplófájlokat. |
+| 100 | A művelet nem támogatott, vagy nem hajtható végre. | Lehetséges okok: a PowerShell verziója nem támogatott, a virtuális gép mérete nem N sorozatú virtuális gép, az adatletöltés meghiúsul. A hibák okának megállapításához ellenőrizze a naplófájlokat. |
 | 240, 840 | Művelet időtúllépése. | Újrapróbálkozás művelet. |
 | -1 | Kivétel történt. | Ellenőrizze a naplófájlokat a kivétel okának meghatározásához. |
 | -5x | A művelet a függőben lévő újraindítás miatt megszakadt. | Indítsa újra a virtuális gépet. A telepítés az újraindítás után is folytatódni fog. Az eltávolítást manuálisan kell meghívni. |

@@ -1,7 +1,6 @@
 ---
-title: Az IPv6 használatának áttekintése Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: A Azure Load Balancer és a terheléselosztást használó virtuális gépek IPv6-támogatásának ismertetése.
+title: Az IPv6-Azure Load Balancer áttekintése
+description: Ez a képzési terv a Azure Load Balancer és a terheléselosztásos virtuális gépek IPv6-támogatásának első lépéseiben nyújt segítséget.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147340"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077027"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Az IPv6 használatának áttekintése Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-overview.md).
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. A Standard Load Balancerről további információt a [Standard Load Balancer áttekintő lapján](load-balancer-standard-overview.md) találhat.
 
 Az alapszintű SKU internetkapcsolattal rendelkező terheléselosztó IPv6-cím használatával telepíthető. Az IPv4-kapcsolaton kívül ez a következő képességeket teszi lehetővé:
 
