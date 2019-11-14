@@ -1,6 +1,6 @@
 ---
-title: Az Azure Traffic Manager kezelése a PowerShell segítségével
-description: A Traffic Manager esetében az Azure Resource Manager PowerShell használatával
+title: Traffic Manager kezelése a PowerShell használatával az Azure-ban
+description: Ez a képzési terv a Traffic Manager Azure PowerShell használatának első lépéseiben nyújt segítséget.
 services: traffic-manager
 documentationcenter: na
 author: asudbring
@@ -11,47 +11,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: allensu
-ms.openlocfilehash: a2065ba51b74d7f55464a22df0f55cac4c6defcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071026"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038124"
 ---
-# <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell segítségével
+# <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell használatával
 
-Az Azure Resource Manager az Azure-szolgáltatások az előnyben részesített felügyeleti kezelőfelület. Az Azure Traffic Manager-profilok az Azure Resource Manager-alapú API-k és eszközök használatával kezelhetők.
+Azure Resource Manager az Azure-szolgáltatások előnyben részesített kezelőfelülete. Az Azure Traffic Manager profilokat Azure Resource Manager-alapú API-kkal és eszközökkel lehet felügyelni.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>Erőforrásmodell
 
-Az Azure Traffic Manager van beállítva, a Traffic Manager-profil nevű beállítások használatával. Ehhez a profilhoz DNS-beállítások, forgalom-útválasztási beállítások, végpont a figyelési beállításokat és az adatforgalmat, amelyhez végpontok listáját tartalmazza.
+Az Azure Traffic Manager Traffic Manager profil nevű beállításcsoport használatával van konfigurálva. Ez a profil a DNS-beállításokat, a forgalmi útválasztási beállításokat, a végpont-figyelési beállításokat és azon szolgáltatási végpontok listáját tartalmazza, amelyeknek a forgalmát át kell irányítani.
 
-Minden egyes Traffic Manager-profil "TrafficManagerProfiles" típusú erőforrás képviseli. A REST API-szintjén az URI-t az egyes profilok a következőképpen történik:
+Minden Traffic Manager-profilt egy "TrafficManagerProfiles" típusú erőforrás képvisel. A REST API szinten az egyes profilok URI-ja a következő:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
 
-## <a name="setting-up-azure-powershell"></a>Azure PowerShell telepítése
+## <a name="setting-up-azure-powershell"></a>Azure PowerShell beállítása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek az utasítások a Microsoft Azure PowerShell-lel. A következő cikk ismerteti az Azure PowerShell telepítése és konfigurálása.
+Ezek az utasítások a Microsoft Azure PowerShell. A következő cikk a Azure PowerShell telepítésének és konfigurálásának módját ismerteti.
 
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 
-Ebben a cikkben szereplő példák feltételezik, hogy egy meglévő erőforráscsoportot. Létrehozhat egy erőforráscsoportot a következő paranccsal:
+A cikkben szereplő példák azt feltételezik, hogy van egy meglévő erőforráscsoport. Hozzon létre egy erőforráscsoportot a következő parancs használatával:
 
 ```powershell
 New-AzResourceGroup -Name MyRG -Location "West US"
 ```
 
 > [!NOTE]
-> Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport helyét. Ezen a helyen az alapértelmezett szolgál az erőforráscsoport létrehozott erőforrásokat. Azonban mivel a Traffic Manager-profil erőforrások globális, nem pedig regionális, a kiválasztott erőforráscsoport helye nem befolyásolja az Azure Traffic Manager.
+> Azure Resource Manager megköveteli, hogy minden erőforráscsoport rendelkezzen egy hellyel. A rendszer ezt a helyet használja alapértelmezettként az adott erőforráscsoporthoz létrehozott erőforrásokhoz. Mivel azonban a Traffic Manager profil erőforrásai globálisak, nem regionálisak, az erőforráscsoport helyének megválasztása nem befolyásolja az Azure Traffic Manager.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-Traffic Manager-profil létrehozásához használja a `New-AzTrafficManagerProfile` parancsmagot:
+Traffic Manager profil létrehozásához használja a `New-AzTrafficManagerProfile` parancsmagot:
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName contoso -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -61,38 +61,38 @@ A következő táblázat ismerteti a paramétereket:
 
 | Paraméter | Leírás |
 | --- | --- |
-| Name |A Traffic Manager-profil erőforrás erőforrás neve. A profilok ugyanabban az erőforráscsoportban egyedi névvel kell rendelkezniük. Ezt a nevet a DNS-név, DNS-lekérdezések használt elkülönül. |
-| ResourceGroupName |A profil-erőforrást tartalmazó erőforráscsoport neve. |
-| TrafficRoutingMethod |Adja meg a forgalom-útválasztási módszer segítségével meghatározhatja, melyik végponthoz válaszban visszaadott DNS-lekérdezést. Lehetséges értékek: "Teljesítmény", "Súlyozott" vagy "Priority". |
-| RelativeDnsName |Adja meg a Traffic Manager-profil által biztosított DNS-név állomásnév részét. Ezt az értéket a profil teljesen minősített tartománynevét (FQDN) az Azure Traffic Manager által használt DNS-tartománynév együtt. Például "contoso" értékre állítja lesz "contoso.trafficmanager.net." |
-| TTL |A DNS Time-to-Live élettartam (TTL) megadja a másodpercek alatt. A TTL tájékoztatja a helyi DNS-feloldók és a DNS-ügyfelek mennyi a gyorsítótár DNS-válaszok a Traffic Manager-profil. |
-| MonitorProtocol |A végpont állapotának figyeléséhez használt protokollt adja. Lehetséges értékek: "HTTP" és "HTTPS". |
-| MonitorPort |Adja meg a végpont állapotának figyeléséhez használt TCP-portot. |
-| MonitorPath |A végpont számára, hogy megvizsgálja a végpontonkénti állapotot használt tartománynév képest relatív elérési útja. |
+| Name (Név) |Az Traffic Manager-profil erőforrásának neve. Az azonos erőforráscsoporthoz tartozó profiloknak egyedi névvel kell rendelkezniük. Ez a név nem azonos a DNS-lekérdezésekhez használt DNS-névvel. |
+| ResourceGroupName |A profil erőforrását tartalmazó erőforráscsoport neve. |
+| TrafficRoutingMethod |Megadja a forgalom-útválasztási módszert, amellyel meghatározható, hogy melyik végpontot adja vissza a rendszer a DNS-lekérdezés válaszában. A lehetséges értékek a következők: "Performance", "súlyozott" vagy "priority". |
+| RelativeDnsName |Megadja a Traffic Manager profil által megadott DNS-név állomásnév részét. Ez az érték az Azure Traffic Manager által használt DNS-tartománynévvel együtt alkotja a profil teljes tartománynevét (FQDN). A "contoso" értékének beállítása például "contoso.trafficmanager.net" lesz. |
+| TTL |Megadja a DNS élettartamát (TTL) másodpercben. Ez a TTL tájékoztatja a helyi DNS-feloldókat és a DNS-ügyfeleket arról, hogy mennyi ideig kell gyorsítótárazni a DNS-válaszokat ehhez a Traffic Manager profilhoz. |
+| MonitorProtocol |Meghatározza a végpont állapotának figyeléséhez használandó protokollt. A lehetséges értékek a következők: "HTTP" és "HTTPS". |
+| MonitorPort |Meghatározza a végpont állapotának figyeléséhez használt TCP-portot. |
+| MonitorPath |Megadja a végponti állapot mintavételéhez használt végponti tartománynévhez viszonyított elérési utat. |
 
-A parancsmag létrehoz egy Traffic Manager-profil az Azure-ban, és a egy megfelelő profil objektumot ad vissza, a PowerShell. Ezen a ponton a profil nem tartalmaz olyan végpontok, amelyek. Végpontok Traffic Manager-profil történő hozzáadásával kapcsolatos további információkért tekintse meg a Traffic Manager-végpontok hozzáadása.
+A parancsmag létrehoz egy Traffic Manager-profilt az Azure-ban, és egy megfelelő profil-objektumot ad vissza a PowerShell-nek. Ezen a ponton a profil nem tartalmaz végpontokat. A végpontok Traffic Manager profilhoz való hozzáadásával kapcsolatos további információkért lásd: Traffic Manager-végpontok hozzáadása.
 
-## <a name="get-a-traffic-manager-profile"></a>Traffic Manager-profil beolvasása
+## <a name="get-a-traffic-manager-profile"></a>Traffic Manager profil beolvasása
 
-Egy meglévő Traffic Manager-profil objektumot lekéréséhez használja a `Get-AzTrafficManagerProfle` parancsmagot:
+Meglévő Traffic Manager profil objektum beolvasásához használja a `Get-AzTrafficManagerProfle` parancsmagot:
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 ```
 
-Ez a parancsmag egy Traffic Manager-profil objektumot ad vissza.
+Ez a parancsmag egy Traffic Manager profil objektumot ad vissza.
 
 ## <a name="update-a-traffic-manager-profile"></a>Traffic Manager-profil frissítése
 
-Traffic Manager-profilok módosítása egy 3-lépés folyamatot követi:
+Traffic Manager profilok módosítása 3 lépésből álló folyamatot követ:
 
-1. A profil használatával lekérdezni `Get-AzTrafficManagerProfile` vagy használni a profil által visszaadott `New-AzTrafficManagerProfile`.
-2. Módosítsa a profil. Adja hozzá, és távolítsa el a végpontok vagy endpoint vagy a profil paramétereinek módosítása. Végezze a rögzítést műveletek, amelyek ezeket a módosításokat. A helyi objektum, a memória, a profilt jelölő csak változnak.
-3. Mentse a módosításokat, használja a `Set-AzTrafficManagerProfile` parancsmagot.
+1. Kérje le a profilt a `Get-AzTrafficManagerProfile` használatával, vagy használja a `New-AzTrafficManagerProfile`által visszaadott profilt.
+2. Módosítsa a profilt. Hozzáadhat és eltávolíthat végpontokat, illetve módosíthatja a végpontok vagy a profilok paramétereit. Ezek a módosítások off-line műveletekkel rendelkeznek. Csak a profilt jelölő, a memóriában lévő helyi objektumot módosítja.
+3. Véglegesítse a módosításokat a `Set-AzTrafficManagerProfile` parancsmaggal.
 
-Az összes profil tulajdonságainak kivételével a profil RelativeDnsName módosítható. Ha módosítani szeretné a RelativeDnsName, törölnie kell a profil és a egy új nevet az új profilt.
+Az összes profil tulajdonságai módosíthatók a profil RelativeDnsName kivételével. A RelativeDnsName módosításához új névvel kell törölnie a profilt és egy új profilt.
 
-Az alábbi példa bemutatja, hogyan módosításához a profil TTL:
+Az alábbi példa bemutatja, hogyan módosíthatja a profil TTL-értékét:
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
@@ -100,34 +100,34 @@ $TmProfile.Ttl = 300
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-Traffic Manager-végpontok három típusa van:
+A Traffic Manager végpontok három típusa létezik:
 
-1. **Azure-beli** olyan Azure-ban üzemeltetett szolgáltatások
-2. **Külső végpontok** olyan Azure-on kívül üzemeltetett szolgáltatások
-3. **A beágyazott végpontokat** beágyazott hierarchiák a Traffic Manager-profilok létrehozására szolgálnak. Beágyazott végpontokat forgalom-útválasztási speciális konfigurációk, az összetett alkalmazások engedélyezéséhez.
+1. Az **Azure-végpontok** az Azure-ban üzemeltetett szolgáltatások
+2. A **külső végpontok** az Azure-on kívül üzemeltetett szolgáltatások
+3. A **beágyazott végpontok** Traffic Manager profilok beágyazott hierarchiáinak létrehozására használhatók. A beágyazott végpontok lehetővé teszik a speciális forgalom – az összetett alkalmazások útválasztási konfigurációit.
 
-Három esetben végpontok hozzáadása is lehetséges a két módon:
+Mindhárom esetben a végpontok kétféleképpen vehetők fel:
 
-1. Korábban leírt folyamat 3. lépés – használatával. Ez a módszer az az előnye, hogy több végpont módosíthatók egy frissítés.
-2. A New-AzTrafficManagerEndpoint parancsmag használatával. Ez a parancsmag hozzáad egy végpontot egy meglévő Traffic Manager-profilt egy művelettel.
+1. A korábban leírt 3 lépésből álló folyamat használatával. Ennek a módszernek az az előnye, hogy egyetlen frissítésben több végpont-módosítás is elvégezhető.
+2. A New-AzTrafficManagerEndpoint parancsmag használata. Ez a parancsmag egy végpontot hoz létre egy meglévő Traffic Manager-profilhoz egyetlen művelettel.
 
 ## <a name="adding-azure-endpoints"></a>Azure-végpontok hozzáadása
 
-Azure-beli Azure-ban üzemeltetett szolgáltatások hivatkozhat. Kétféle típusú Azure-beli támogatottak:
+Azure-végpontok referenciái az Azure-ban üzemeltetett szolgáltatásokhoz. Az Azure-végpontok két típusa támogatott:
 
 1. Azure App Service
-2. Az Azure PublicIpAddress erőforrásokat (amely lehet rendelni egy terheléselosztót vagy egy virtuális gép hálózati adapter). A nyilvános IP-címre rendelt használható a Traffic Manager DNS névvel kell rendelkeznie.
+2. Azure PublicIpAddress-erőforrások (amelyek egy terheléselosztó vagy egy virtuális gép hálózati adapteréhez csatlakoztathatók). A PublicIpAddress hozzá kell rendelni a Traffic Managerhoz használandó DNS-nevet.
 
 Minden esetben:
 
-* A szolgáltatás van megadva, a "targetresourceid azonosítója" paraméter használatával `Add-AzTrafficManagerEndpointConfig` vagy `New-AzTrafficManagerEndpoint`.
-* A "Cél" és "EndpointLocation" targetresourceid azonosítója által is beleértve.
-* Késleltetve a "Weight" megadása nem kötelező. Súlyok csak akkor használja, ha a profilt a "Súlyozott" forgalom-útválasztási módszer használatára van konfigurálva. Ellenkező esetben figyelmen kívül hagyja őket. Ha meg van adva, az érték 1 és 1000 közötti számnak kell lennie. Az alapértelmezett értéke "1".
-* Késleltetve a "prioritás" megadása nem kötelező. Prioritások csak akkor használja, ha a profilt a "Priority" forgalom-útválasztási módszer használatára van konfigurálva. Ellenkező esetben figyelmen kívül hagyja őket. Érvényes értékek 1 és 1000 az alacsonyabb magasabb prioritású jelző:. Ha meg van adva egy végpontot, azok minden végpontok adható meg. Ha nincs megadva, alapértelmezett értéket "1" kezdődően alkalmazza a rendszer az, hogy szerepel-e a végpontokon.
+* A szolgáltatás az `Add-AzTrafficManagerEndpointConfig` vagy `New-AzTrafficManagerEndpoint`"Targetresourceid azonosítója" paraméterének használatával van megadva.
+* A Targetresourceid azonosítója a "Target" és a "EndpointLocation" jelölést is feltételezi.
+* A "Weight" megadása nem kötelező. A súlyok használata csak akkor történik meg, ha a profil úgy van konfigurálva, hogy a "súlyozott" forgalom-útválasztási módszert használja. Ellenkező esetben a rendszer figyelmen kívül hagyja őket. Ha meg van adva, az értéknek 1 és 1000 közötti számnak kell lennie. Az alapértelmezett érték: "1".
+* A "priority" megadása nem kötelező. A prioritásokat csak akkor használja a rendszer, ha a profil a "priority" forgalom – útválasztási módszer használatára van konfigurálva. Ellenkező esetben a rendszer figyelmen kívül hagyja őket. Az érvényes értékek 1 és 1000 közöttiek, a magasabb prioritást jelző alacsonyabb értékekkel. Ha egy végponthoz meg van adva, azt az összes végponthoz meg kell adni. Ha nincs megadva, a rendszer az "1" kezdetű alapértelmezett értékeket alkalmazza a végpontok listájának sorrendjében.
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>1\. példa: App Service-végpont használatával hozzáadása `Add-AzTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>1\. példa: App Service-végpontok hozzáadása `Add-AzTrafficManagerEndpointConfig` használatával
 
-Ebben a példában hozunk létre Traffic Manager-profil, és adjon hozzá két App Service-végpont használatával a `Add-AzTrafficManagerEndpointConfig` parancsmagot.
+Ebben a példában egy Traffic Manager profilt hozunk létre, és két App Service végpontot adunk hozzá a `Add-AzTrafficManagerEndpointConfig` parancsmag használatával.
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -137,28 +137,28 @@ $webapp2 = Get-AzWebApp -Name webapp2
 Add-AzTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $TmProfile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>2\. példa Egy nyilvános IP-végpontot a hozzáadása `New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>2\. példa: publicIpAddress-végpont hozzáadása `New-AzTrafficManagerEndpoint` használatával
 
-Ebben a példában egy nyilvános IP-cím erőforrás hozzáadódik a Traffic Manager-profil. A nyilvános IP-cím rendelkeznie kell egy DNS-név konfigurálva, és a hálózati Adaptert egy virtuális gép vagy terheléselosztó köthető.
+Ebben a példában egy nyilvános IP-cím erőforrás kerül a Traffic Manager-profilba. A nyilvános IP-címnek konfigurálnia kell egy DNS-nevet, és a virtuális gép hálózati adapteréhez vagy egy terheléselosztóhoz is köthető.
 
 ```powershell
 $ip = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyRG
 New-AzTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
-## <a name="adding-external-endpoints"></a>Külső végpontok hozzáadása
+## <a name="adding-external-endpoints"></a>Külső végpont hozzáadása
 
-A TRAFFIC Manager külső végpontokat használ Azure-on kívül üzemeltetett szolgáltatások adatforgalmat. Mivel az Azure-végponttal rendelkező külső végpontokat is hozzáadhatók vagy segítségével `Add-AzTrafficManagerEndpointConfig` követ `Set-AzTrafficManagerProfile`, vagy `New-AzTrafficManagerEndpoint`.
+A Traffic Manager külső végpontokat használ az Azure-on kívül üzemeltetett szolgáltatásokhoz való közvetlen forgalomra. Ahogy az Azure-végpontok esetében is, a külső végpontok a `Add-AzTrafficManagerEndpointConfig`, majd `Set-AzTrafficManagerProfile`vagy `New-AzTrafficManagerEndpoint`használatával is hozzáadhatók.
 
 Külső végpontok megadásakor:
 
-* A végpont tartomány nevét a "Cél" paraméter használatával kell megadni
-* Ha a "Teljesítmény" forgalom-útválasztási módszert használja, a "EndpointLocation" szükség. Ellenkező esetben ez nem kötelező. Az értéknek kell lennie egy [érvényes Azure-régió neve](https://azure.microsoft.com/regions/).
-* A "Weight" és "Priority" megadása nem kötelező.
+* Meg kell adni a végpont tartománynevét a "Target" paraméter használatával.
+* Ha a "Performance" forgalom – útválasztási módszer van használatban, a "EndpointLocation" megadása kötelező. Ellenkező esetben nem kötelező. Az értéknek [érvényes Azure-régió nevének](https://azure.microsoft.com/regions/)kell lennie.
+* A "Weight" és a "priority" nem kötelező.
 
-### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>1\. példa: Külső végpontok használata hozzáadása `Add-AzTrafficManagerEndpointConfig` és `Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>1\. példa: külső végpontok hozzáadása `Add-AzTrafficManagerEndpointConfig` és `Set-AzTrafficManagerProfile` használatával
 
-Ebben a példában azt egy Traffic Manager-profil létrehozása, adjon hozzá két külső végpontokat, és véglegesítse a módosításokat.
+Ebben a példában egy Traffic Manager profilt hozunk létre, két külső végpontot adunk hozzá, és véglegesítjük a módosításokat.
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -167,9 +167,9 @@ Add-AzTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProf
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>2\. példa Külső végpontok használata hozzáadása `New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>2\. példa: külső végpontok hozzáadása `New-AzTrafficManagerEndpoint` használatával
 
-Ebben a példában a külső végpont egy meglévő profilt hozzáadunk. A profil van megadva, a profil és az erőforráscsoport nevét használja.
+Ebben a példában egy külső végpontot adunk hozzá egy meglévő profilhoz. A profil a profil és az erőforráscsoport neve alapján van megadva.
 
 ```powershell
 New-AzTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointStatus Enabled
@@ -177,18 +177,18 @@ New-AzTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceG
 
 ## <a name="adding-nested-endpoints"></a>"Beágyazott" végpontok hozzáadása
 
-Minden egyes Traffic Manager-profil megadja egy forgalom-útválasztási módszert. Vannak azonban olyan kifinomultabb forgalom-útválasztást egyetlen Traffic Manager-profil által kínált útválasztását esetekben. Traffic Manager-profilok úgy, hogy egynél több forgalom-útválasztási módszer előnyei ágyazhatja be. Beágyazott profilok segítségével felülírhatja az alapértelmezett a Traffic Manager viselkedés támogatási nagyobb és összetettebb alkalmazások központi telepítésének engedélyezése. További részletes példák: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).
+Mindegyik Traffic Manager profil egyetlen forgalom-útválasztási módszert határoz meg. Vannak azonban olyan forgatókönyvek, amelyekkel összetettebb forgalmi útválasztás szükséges, mint az egyetlen Traffic Manager profil által biztosított útválasztás. Traffic Manager-profilok beágyazásával több forgalom-útválasztási módszer előnyeit is összekapcsolhatja. A beágyazott profilok lehetővé teszik az alapértelmezett Traffic Manager viselkedés felülbírálását a nagyobb és összetettebb alkalmazások központi telepítésének támogatásához. Részletesebb példák: [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md).
 
-Beágyazott végpontokat vannak beállítva, a szülő profil egy adott típusú végpont, "NestedEndpoints". Beágyazott végpontokat megadásakor:
+A beágyazott végpontok a szülő profilban konfigurálhatók, egy adott végpont ("NestedEndpoints") használatával. Beágyazott végpontok megadásakor:
 
-* A végpont a "targetresourceid azonosítója" paraméter használatával kell megadni
-* Ha a "Teljesítmény" forgalom-útválasztási módszert használja, a "EndpointLocation" szükség. Ellenkező esetben ez nem kötelező. Az értéknek kell lennie egy [érvényes Azure-régió neve](https://azure.microsoft.com/regions/).
-* A "Weight" és "Priority" megadása nem kötelező, mint az Azure-beli.
-* A minchildendpoints "tulajdonság" paramétert nem kötelező megadni. Az alapértelmezett értéke "1". Elérhető végpontok száma a küszöbérték alá csökken, ha a szülő profilt úgy ítéli meg, a gyermek profil "csökkentett teljesítményű", és a szülő-profilban a többi végpontokra érkező forgalom hozunk.
+* Meg kell adni a végpontot a "Targetresourceid azonosítója" paraméter használatával.
+* Ha a "Performance" forgalom – útválasztási módszer van használatban, a "EndpointLocation" megadása kötelező. Ellenkező esetben nem kötelező. Az értéknek [érvényes Azure-régió nevének](https://azure.microsoft.com/regions/)kell lennie.
+* Az Azure-végpontok esetében a "Weight" és a "priority" nem kötelező.
+* A "MinChildEndpoints" paraméter megadása nem kötelező. Az alapértelmezett érték: "1". Ha a rendelkezésre álló végpontok száma a küszöbérték alá esik, a szülő profil a "csökkentett teljesítményű" osztályt veszi figyelembe, és a fölérendelt profil többi végpontján átirányítja a forgalmat.
 
-### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>1\. példa: Használatával beágyazott végpontok hozzáadása `Add-AzTrafficManagerEndpointConfig` és `Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>1\. példa: beágyazott végpontok hozzáadása `Add-AzTrafficManagerEndpointConfig` és `Set-AzTrafficManagerProfile` használatával
 
-Ebben a példában azt új Traffic Manager gyermek és szülő-profilok létrehozása a gyermek hozzáadása egy beágyazott végpont a szülő és a módosítások véglegesítéséhez.
+Ebben a példában új Traffic Manager gyermek-és szülő-profilt hozunk létre, adja hozzá a gyermeket beágyazott végpontként a szülőhöz, és véglegesítse a módosításokat.
 
 ```powershell
 $child = New-AzTrafficManagerProfile -Name child -ResourceGroupName MyRG -TrafficRoutingMethod Priority -RelativeDnsName child -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -197,11 +197,11 @@ Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint -TrafficManagerP
 Set-AzTrafficManagerProfile -TrafficManagerProfile $parent
 ```
 
-Ebben a példában kivonatosan azt tette nem adható hozzá bármilyen más végpontok a gyermek vagy szülő profilok.
+Ebben a példában a rövidség kedvéért nem adunk hozzá más végpontokat a gyermek-vagy szülő profilokhoz.
 
-### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>2\. példa Használatával beágyazott végpontok hozzáadása `New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>2\. példa: beágyazott végpontok hozzáadása `New-AzTrafficManagerEndpoint` használatával
 
-Ebben a példában hozzáadunk egy meglévő gyermek-profilt egy beágyazott végpontként egy meglévő szülő profilt. A profil van megadva, a profil és az erőforráscsoport nevét használja.
+Ebben a példában egy meglévő alárendelt profilt adunk hozzá beágyazott végpontként egy meglévő szülő profilhoz. A profil a profil és az erőforráscsoport neve alapján van megadva.
 
 ```powershell
 $child = Get-AzTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
@@ -210,7 +210,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>Végpontok hozzáadása egy másik előfizetésből
 
-A TRAFFIC Manager képes együttműködni különböző előfizetésekről csatlakoztat végpontok. Váltson át az előfizetést az a végpont beolvasni a szükséges bemeneti átirányítása a Traffic Managerhez hozzáadni kívánt kell. Ezután kell váltson arra a felsorolt előfizetéssel, valamint a Traffic Manager-profil, és hozzá tud adni a végponthoz. Az alábbi példa bemutatja, hogyan ehhez a nyilvános IP-címmel.
+A Traffic Manager különböző előfizetések végpontokkal is működhetnek. Az előfizetésre kell váltania a hozzáadni kívánt végponttal, hogy lekérje a szükséges bemenetet Traffic Manager. Ezután a Traffic Manager profillal kell váltania az előfizetésekhez, és hozzá kell adnia a végpontot. Az alábbi példa bemutatja, hogyan teheti ezt meg egy nyilvános IP-címmel.
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription
@@ -222,14 +222,14 @@ New-AzTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -Reso
 
 ## <a name="update-a-traffic-manager-endpoint"></a>Traffic Manager végpont frissítése
 
-Egy meglévő Traffic Manager-végpont frissítése két módja van:
+Egy meglévő Traffic Manager végpontot kétféleképpen frissíthet:
 
-1. A Traffic Manager profil használatával lekérése `Get-AzTrafficManagerProfile`, a profilon belül a végpont tulajdonságainak frissítése, és hajtsa végre a módosításokat `Set-AzTrafficManagerProfile`. Ez a módszer az előnye, hogy egyetlen művelettel több végpont frissítése.
-2. A Traffic Manager-végpontot a GET `Get-AzTrafficManagerEndpoint`, a végpont tulajdonságainak frissítése, és hajtsa végre a módosításokat `Set-AzTrafficManagerEndpoint`. Ez a módszer azért egyszerűbb, mert nem igényel az indexelés a profil végpontjainak tömbbe.
+1. Szerezze be a Traffic Manager profilt a `Get-AzTrafficManagerProfile`használatával, frissítse a végpont tulajdonságait a profilon belül, és véglegesítse a módosításokat a `Set-AzTrafficManagerProfile`használatával. Ennek a módszernek az az előnye, hogy egynél több végpontot tud frissíteni egyetlen műveletben.
+2. Szerezze be a Traffic Manager végpontot `Get-AzTrafficManagerEndpoint`használatával, frissítse a végpont tulajdonságait, és véglegesítse a módosításokat a `Set-AzTrafficManagerEndpoint`használatával. Ez a módszer egyszerűbb, mivel nem igényli az indexelést a profilban található végpontok tömbbe.
 
-### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>1\. példa: A végpontok segítségével frissítése `Get-AzTrafficManagerProfile` és `Set-AzTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>1\. példa: végpontok frissítése `Get-AzTrafficManagerProfile` és `Set-AzTrafficManagerProfile` használatával
 
-Ebben a példában két végpontot egy meglévő profilon belül a prioritásának módosítjuk.
+Ebben a példában a prioritást két végpontra módosítjuk egy meglévő profilon belül.
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG
@@ -238,9 +238,9 @@ $TmProfile.Endpoints[1].Priority = 1
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>2\. példa Frissíti egy végpontot a `Get-AzTrafficManagerEndpoint` és `Set-AzTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>2\. példa: végpont frissítése `Get-AzTrafficManagerEndpoint` és `Set-AzTrafficManagerEndpoint` használatával
 
-Ebben a példában egy meglévő profilt az egyetlen végpont súlyának módosítjuk.
+Ebben a példában egyetlen végpont súlyát módosítjuk egy meglévő profilban.
 
 ```powershell
 $endpoint = Get-AzTrafficManagerEndpoint -Name myendpoint -ProfileName myprofile -ResourceGroupName MyRG -Type ExternalEndpoints
@@ -248,81 +248,81 @@ $endpoint.Weight = 20
 Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 ```
 
-## <a name="enabling-and-disabling-endpoints-and-profiles"></a>Engedélyezése és letiltása a végpontok és profilok
+## <a name="enabling-and-disabling-endpoints-and-profiles"></a>Végpontok és profilok engedélyezése és letiltása
 
-A TRAFFIC Manager lehetővé teszi, hogy engedélyezve van, és le van tiltva, valamint engedélyezése és letiltása a teljes profilok lehetővé teszik az egyes végpontokat.
-Ezeket a módosításokat a végpontot, illetve profil erőforrások beolvasása/frissítése/beállítás szerint módosíthatók. Egyszerűsíthetők a gyakori műveleteket, hogy támogatottak továbbá akkor dedikált parancsmagjai.
+Traffic Manager lehetővé teszi az egyes végpontok engedélyezését és letiltását, valamint lehetővé teszi a teljes profilok engedélyezését és letiltását.
+Ezek a módosítások a végpont vagy a profil erőforrásainak beolvasásával/frissítésével vagy beállításával hajthatók végre. Ezeknek a gyakori műveleteknek a egyszerűsítése érdekében a dedikált parancsmagokon keresztül is támogatottak.
 
-### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>1\. példa: Engedélyezése és letiltása Traffic Manager-profil
+### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>1\. példa: Traffic Manager profil engedélyezése és letiltása
 
-Engedélyezze a Traffic Manager-profil az `Enable-AzTrafficManagerProfile`. A profilt a profil objektummal adható meg. A profil objektum használatával vagy a folyamat keresztül át lehet adni a "-TrafficManagerProfile" paraméter. Ebben a példában azt adja meg a profilhoz a profil- és erőforrás-csoport nevét.
+Traffic Manager profil engedélyezéséhez használja a `Enable-AzTrafficManagerProfile`. A profil megadható egy profil objektum használatával. A profil objektum a folyamaton keresztül vagy a "-TrafficManagerProfile" paraméter használatával adható át. Ebben a példában a profilt a profil és az erőforráscsoport neve alapján adjuk meg.
 
 ```powershell
 Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-Traffic Manager-profil letiltása:
+Traffic Manager profil letiltása:
 
 ```powershell
 Disable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-A Disable-AzTrafficManagerProfile parancsmag megerősítést kér. Ez a parancssor használatával letilthatók a "-Force" paraméter.
+A Disable-AzTrafficManagerProfile parancsmag megerősítést kér. Ezt a kérést a "-Force" paraméter használatával lehet letiltani.
 
-### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>2\. példa Engedélyezése és letiltása Traffic Manager végpont
+### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>2\. példa: Traffic Manager végpont engedélyezése és letiltása
 
-Engedélyezze a Traffic Manager végpont az `Enable-AzTrafficManagerEndpoint`. Adja meg a végpont kétféleképpen
+Traffic Manager végpont engedélyezéséhez használja a `Enable-AzTrafficManagerEndpoint`. A végpontot kétféleképpen lehet megadni
 
-1. Egy TrafficManagerEndpoint objektum átadása a folyamat, vagy pedig a "-TrafficManagerEndpoint" paraméter
-2. A végpont neve, a végpont típusa, a profil nevét és a erőforráscsoport-név használatával:
+1. A folyamaton keresztül átadott TrafficManagerEndpoint objektum vagy a "-TrafficManagerEndpoint" paraméter használata
+2. A végpont neve, a végpont típusa, a profil neve és az erőforráscsoport neve:
 
 ```powershell
 Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
-Hasonlóképpen egy Traffic Manager végpont letiltása:
+Hasonlóképpen, ha le szeretne tiltani egy Traffic Manager végpontot:
 
 ```powershell
 Disable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG -Force
 ```
 
-A `Disable-AzTrafficManagerProfile`, a `Disable-AzTrafficManagerEndpoint` parancsmag megerősítést kér. Ez a parancssor használatával letilthatók a "-Force" paraméter.
+A `Disable-AzTrafficManagerProfile`höz hasonlóan a `Disable-AzTrafficManagerEndpoint` parancsmag megerősítést kér. Ezt a kérést a "-Force" paraméter használatával lehet letiltani.
 
-## <a name="delete-a-traffic-manager-endpoint"></a>A Traffic Manager-végpont törlése
+## <a name="delete-a-traffic-manager-endpoint"></a>Traffic Manager végpont törlése
 
-Egyéni végpontok eltávolításához használja a `Remove-AzTrafficManagerEndpoint` parancsmagot:
+Az egyes végpontok eltávolításához használja az `Remove-AzTrafficManagerEndpoint` parancsmagot:
 
 ```powershell
 Remove-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
-Ez a parancsmag megerősítést kérni fogja. Ez a parancssor használatával letilthatók a "-Force" paraméter.
+Ez a parancsmag megerősítést kér. Ezt a kérést a "-Force" paraméter használatával lehet letiltani.
 
 ## <a name="delete-a-traffic-manager-profile"></a>Traffic Manager-profil törlése
 
-Traffic Manager-profil törléséhez használja a `Remove-AzTrafficManagerProfile` parancsmagot, adja meg a profil és az erőforráscsoport nevét:
+Traffic Manager profil törléséhez használja a `Remove-AzTrafficManagerProfile` parancsmagot a profil és az erőforráscsoport nevének megadásával:
 
 ```powershell
 Remove-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Force]
 ```
 
-Ez a parancsmag megerősítést kérni fogja. Ez a parancssor használatával letilthatók a "-Force" paraméter.
+Ez a parancsmag megerősítést kér. Ezt a kérést a "-Force" paraméter használatával lehet letiltani.
 
-A profil törölni is egy profil objektummal adható meg:
+A törlendő profil is megadható egy profil objektummal:
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 Remove-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile [-Force]
 ```
 
-Ez a sorozat is átadható olyan parancsoknak:
+Ez a folyamat is lehet vezetékes:
 
 ```powershell
 Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Traffic Manager figyelése](traffic-manager-monitoring.md)
+[Traffic Manager figyelés](traffic-manager-monitoring.md)
 
 [A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)

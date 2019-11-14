@@ -1,6 +1,6 @@
 ---
-title: Azure Virtuálisgép-lemezkép előkészítése a cloud-init való használatra |} A Microsoft Docs
-description: Egy már meglévő Azure-beli Virtuálisgép-lemezkép előkészítése az üzembe helyezés, a cloud-Init használatával
+title: Azure-beli virtuális gép rendszerképének előkészítése a Cloud-init használatával
+description: Meglévő Azure-beli virtuálisgép-rendszerkép előkészítése a Cloud-init használatával történő üzembe helyezéshez
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
@@ -14,21 +14,21 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668253"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036754"
 ---
-# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Meglévő Azure-beli Linux rendszerű Virtuálisgép-rendszerképet használja a cloud-Init használatával előkészítése
-Ez a cikk bemutatja, hogyan egy meglévő Azure virtuális gépen és készítse elő a újratelepített, a cloud-init használatra kész lesz. Az eredményül kapott kép egy új virtuális gépet vagy virtuális gép méretezési csoportok – amely bármelyike sikerült majd további testre a cloud-init üzembe helyezéskor üzembe helyezéséhez használható.  Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
+# <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Meglévő linuxos Azure VM-rendszerkép előkészítése a Cloud-init használatával
+Ebből a cikkből megtudhatja, hogyan készíthet meglévő Azure-beli virtuális gépet, és hogyan készítheti elő újra az üzembe helyezést, és készen áll a Cloud-init használatára. Az eredményül kapott lemezkép új virtuális gép vagy virtuálisgép-méretezési csoportok üzembe helyezésére használható, amelyek ezt követően a Cloud-init használatával további testre szabhatók a telepítési időpontnál.  Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelen dokumentum céljából feltételezzük, hogy már rendelkezik a Linux operációs rendszer támogatott verziója fut az Azure virtuális gép. Igényei, a gép már konfigurálta a szükséges modulok telepítése, minden szükséges frissítés feldolgozása és tesztelt, annak érdekében, hogy megfelelnek-e a követelményeknek. 
+Ez a dokumentum azt feltételezi, hogy már rendelkezik egy futó Azure-beli virtuális géppel, amely a Linux operációs rendszer támogatott verzióját futtatja. Már beállította a gépet az igényeinek megfelelően, telepítette az összes szükséges modult, feldolgozta az összes szükséges frissítést, és tesztelte, hogy megfeleljen az igényeinek. 
 
-## <a name="preparing-rhel-76--centos-76"></a>Felkészülés az RHEL 7.6 / CentOS 7.6
-Az SSH a Linux rendszerű virtuális Gépre való kell, és futtassa az alábbi parancsokat a cloud-init telepítéséhez.
+## <a name="preparing-rhel-76--centos-76"></a>RHEL 7,6/CentOS 7,6 előkészítése
+A Cloud-init telepítéséhez az SSH-t kell használnia a linuxos virtuális géphez, és futtatnia kell a következő parancsokat.
 
 ```bash
 sudo yum makecache fast
@@ -36,13 +36,13 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-Frissítés a `cloud_init_modules` szakasz `/etc/cloud/cloud.cfg` a következő modulok tartalmazza:
+A `/etc/cloud/cloud.cfg` `cloud_init_modules` szakaszának frissítésével vegye fel a következő modulokat:
 ```bash
 - disk_setup
 - mounts
 ```
 
-Íme egy példa, mely egy általános célú `cloud_init_modules` szakasz néz ki.
+Íme egy példa az általános célú `cloud_init_modules` szakaszra.
 ```bash
 cloud_init_modules:
  - migrator
@@ -59,7 +59,7 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-Kiépítés és ideiglenes lemezek kezelése kapcsolatos feladatok számos frissítenie kell a `/etc/waagent.conf`. Futtassa az alábbi parancsokat a megfelelő beállítások frissítéséhez. 
+`/etc/waagent.conf`-ben frissíteni kell az ideiglenes lemezek kiépítési és kezelési feladatait. A megfelelő beállítások frissítéséhez futtassa a következő parancsokat. 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
@@ -68,23 +68,23 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Engedélyezése csak az Azure adatforrásként az Azure Linux-ügynök hozzon létre egy új fájlt `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` egy tetszőleges szövegszerkesztőben használata a következő sort:
+Csak az Azure-t engedélyezi az Azure Linux-ügynök adatforrásaként egy új fájl létrehozásával `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` a választott szerkesztővel a következő sorral:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
 ```
 
-Ha a meglévő Azure-rendszerképet egy lapozófájl konfigurálva van, és meg szeretné változtatni a lapozófájl-kapacitás fájl konfigurációját a cloud-init használatával új képek, távolítsa el a meglévő lapozófájl szeretné.
+Ha a meglévő Azure-lemezképhez konfigurálva van egy lapozófájl, és módosítani szeretné az új lemezképek lapozófájl-konfigurációját a Cloud-init használatával, el kell távolítania a meglévő lapozófájlt.
 
-Red Hat-alapú lemezképek – kövesse a következő Red Hat dokumentum elmagyarázza a hogyan [távolítsa el a lapozófájl](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
+A Red Hat-alapú rendszerképeknél kövesse a következő Red Hat-dokumentum utasításait, amely leírja, hogyan [távolíthatja el a swap-fájlt](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
-A lapozófájl engedélyezve van a CentOS-lemezképek esetében kapcsolja ki a lapozófájl a következő parancsot futtathatja:
+Ha a CentOS-lemezképek esetében engedélyezve van a swapfile, a következő parancs futtatásával kikapcsolhatja a swapfile:
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Győződjön meg arról, a lapozófájl hivatkozás eltávolítják az `/etc/fstab` -valamit a következő példához hasonlóan kell kinéznie:
+Győződjön meg arról, hogy a swapfile-hivatkozás el van távolítva a `/etc/fstab`ból – a következő kimenethez hasonlóan kell kinéznie:
 ```text
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
@@ -94,31 +94,31 @@ UUID=99cf66df-2fef-4aad-b226-382883643a1c / xfs defaults 0 0
 UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
-Mentse a helyet, és távolítsa el a lapozófájl futtathatja a következő parancsot:
+A tárterület mentéséhez és a lapozófájl eltávolításához futtassa a következő parancsot:
 ```bash
 rm /mnt/resource/swapfile
 ```
-## <a name="extra-step-for-cloud-init-prepared-image"></a>A cloud-init előkészített lemezképek extra lépés
+## <a name="extra-step-for-cloud-init-prepared-image"></a>További lépés a Cloud-init előkészített rendszerképhez
 > [!NOTE]
-> Ha a rendszerkép korábban egy **a cloud-init** előkészített és konfigurált lemezképet kell tennie a következő lépéseket.
+> Ha a rendszerkép korábban a **Cloud-init** előkészített és konfigurált rendszerkép volt, a következő lépéseket kell elvégeznie.
 
-A következő három parancsokat csak akkor használatosak, ha a virtuális gép testreszabása speciális forráslemezkép kell korábban kiépítette a cloud-init.  NEM kell lefuttatni ezeket, ha a rendszerképet az Azure Linux-ügynök használatával lett konfigurálva.
+A következő három parancs csak akkor használatos, ha a testre szabható virtuális gépet korábban a Cloud-init üzembe helyezte.  Ezeket nem kell futtatnia, ha a rendszerkép az Azure Linux-ügynök használatával lett konfigurálva.
 
 ```bash
 sudo cloud-init clean --logs
 sudo waagent -deprovision+user -force
 ```
 
-## <a name="finalizing-linux-agent-setting"></a>Linux-ügynök véglegesítése beállítás 
-Az összes Azure-platform-lemezképek az Azure Linux-ügynök telepítve van, függetlenül attól, ha konfigurálása a cloud-Init eszközt, vagy nem rendelkezik.  Futtassa a következő parancsot a befejezéséhez a megszüntetés a felhasználó a Linux rendszerű gépen. 
+## <a name="finalizing-linux-agent-setting"></a>Linux-ügynök beállításának véglegesítése 
+Az Azure-platform összes rendszerképének telepítve van az Azure Linux-ügynöke, függetlenül attól, hogy a felhő-init vagy sem lett konfigurálva.  A következő parancs futtatásával fejezze be a felhasználó kiépítését a Linux rendszerű gépről. 
 
 ```bash
 sudo waagent -deprovision+user -force
 ```
 
-Az Azure Linux-ügynök megszüntetési parancsokkal kapcsolatos további információkért lásd: a [Azure Linux-ügynök](../extensions/agent-linux.md) további részletekért.
+Az Azure Linux-ügynök megszüntetési parancsaival kapcsolatos további információkért tekintse meg az [Azure Linux-ügynököt](../extensions/agent-linux.md) . további részleteket a következő témakörben talál:.
 
-Az SSH-munkamenetet, majd a bash-rendszerhéjból, futtassa a következő AzureCLI-parancsok felszabadítása, generalize, és hozzon létre egy új Azure-beli Virtuálisgép-rendszerképet.  Cserélje le `myResourceGroup` és `sourceVmName` a sourceVM tükröző a megfelelő információkkal.
+Lépjen ki az SSH-munkamenetből, majd a bash rendszerhéjból futtassa az alábbi AzureCLI-parancsokat az új Azure-beli virtuálisgép-rendszerkép felszabadításához, általánosításához és létrehozásához.  Cserélje le a `myResourceGroup` és a `sourceVmName`t a sourceVM tükröző megfelelő információkkal.
 
 ```bash
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
@@ -126,10 +126,10 @@ az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName
 ```
 
-## <a name="next-steps"></a>További lépések
-Konfigurációs módosítások további a cloud-init példákért tekintse meg a következőket:
+## <a name="next-steps"></a>Következő lépések
+További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
-- [További Linux-felhasználó hozzáadása virtuális Géphez](cloudinit-add-user.md)
-- [Az első rendszerindításkor a meglévő csomagokat frissíteni Csomagkezelő futtatása](cloudinit-update-vm.md)
-- [Módosítsa a virtuális gép helyi gazdagépnév](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítése, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)
+- [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)
+- [Csomagkezelő futtatása a meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
+- [Virtuális gép helyi gazdagépének módosítása](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok behelyezése](tutorial-automate-vm-deployment.md)

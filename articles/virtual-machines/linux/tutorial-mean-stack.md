@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – MEAN-verem létrehozása Linux rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+title: Oktatóanyag – MEAN stack létrehozása Linux rendszerű virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) vermet Linux rendszerű virtuális gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,20 +15,20 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300805"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034403"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem létrehozása Linux rendszerű virtuális gépen az Azure-ban
 
 Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem Linux rendszerű virtuális gépen az Azure-ban. A létrehozott MEAN-készlet lehetővé teszi a könyvek hozzáadását, törlését és felsorolását egy adatbázison belül. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Linux rendszerű virtuális gépek létrehozása
-> * Node.js telepítése
+> * Linux rendszerű virtuális gép létrehozása
+> * A Node.js telepítése
 > * A MongoDB telepítése és a kiszolgáló beállítása
 > * Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
 > * Az útvonalak elérése AngularJS segítségével
@@ -39,7 +39,7 @@ Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.micro
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gépek létrehozása
+## <a name="create-a-linux-vm"></a>Linux rendszerű virtuális gép létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group), illetve egy Linux rendszerű virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -79,7 +79,7 @@ Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuáli
 ssh azureuser@13.72.77.9
 ```
 
-## <a name="install-nodejs"></a>Node.js telepítése
+## <a name="install-nodejs"></a>A Node.js telepítése
 
 A [Node.js](https://nodejs.org/en/) egy JavaScript futtatókörnyezet, amely a Chrome 8-as verziójú JavaScript-motorján alapul. Ebben az oktatóanyagban a Node.js használatával állíthat be Express-útvonalakat és AngularJS-vezérlőket.
 
@@ -323,11 +323,11 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
     nodejs server.js
     ```
 
-2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például *http: \//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
+2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például *http:\//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
 
     ![Könyvrekord](media/tutorial-mean/meanstack-init.png)
 
-3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Példa:
+3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Például:
 
     ![Könyvrekord hozzáadása](media/tutorial-mean/meanstack-add.png)
 
@@ -342,8 +342,8 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 Ebben az oktatóanyagban létrehozott egy webalkalmazást, amely nyomon követi a könyvrekordokat egy MEAN-készlet használatával egy Linux rendszerű virtuális gépen. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Linux rendszerű virtuális gépek létrehozása
-> * Node.js telepítése
+> * Linux rendszerű virtuális gép létrehozása
+> * A Node.js telepítése
 > * A MongoDB telepítése és a kiszolgáló beállítása
 > * Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
 > * Az útvonalak elérése AngularJS segítségével

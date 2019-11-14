@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Az Azure Security Center használata az Azure-beli Linux rendszerű virtuális gépekhez | Microsoft Docs
+title: Oktatóanyag – Azure Security Center használata Linux rendszerű virtuális gépekhez az Azure-ban
 description: Ebben az oktatóanyagban megismerkedhet az Azure Security Center szolgáltatásaival, amelyekkel megvédheti és biztonságossá teheti Linux rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081713"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034610"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: A Linux rendszerű virtuális gépek figyelése a Azure Security Center használatával
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
 
 Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
  
@@ -122,7 +122,7 @@ Az információk megtekintéséhez válasszon ki egy riasztást. Megjelenik pél
 
 ![RDP-támadás](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekintette a virtuális gépek Security Centerben való kezelését. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

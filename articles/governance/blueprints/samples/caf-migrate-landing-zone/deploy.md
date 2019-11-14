@@ -1,18 +1,14 @@
 ---
 title: A CAF migrációs leszállási zóna tervezetének mintája – üzembe helyezési lépések
 description: Üzembe helyezési lépések a CAF Migration Landing Zone tervhez – példa a Blueprint-összetevők paraméterének részleteire.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: 4693959a2b4f0638caea57fb97796faf62aba9a0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 67dabde6afe2dbc17a5ca2bd32534108b8008a8a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163568"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038446"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
 
@@ -120,7 +116,7 @@ Most, hogy áttekintette a CAF Migrálás bevezetési zóna üzembe helyezésén
 > [!div class="nextstepaction"]
 > [A CAF migrációs leszállási zóna tervezete – áttekintés](./index.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

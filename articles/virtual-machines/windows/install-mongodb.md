@@ -1,5 +1,5 @@
 ---
-title: A MongoDB telepítése egy Windows rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+title: A MongoDB telepítése egy Windows rendszerű virtuális gépen az Azure-ban
 description: Ismerje meg, hogyan telepítheti a MongoDB-t egy, a Resource Manager-alapú üzemi modellel létrehozott Windows Server 2012 R2 rendszert futtató Azure-beli virtuális gépre.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 3cf1e6ba574fdafd8150212688475450e4cc2379
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103136"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038551"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>A MongoDB telepítése és konfigurálása az Azure-beli Windows rendszerű virtuális gépen
 A [MongoDB](https://www.mongodb.org) egy népszerű, nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk végigvezeti a MongoDB telepítésének és konfigurálásának a Windows Server 2016 virtuális gépen (VM) az Azure-ban. A [MongoDB-et Linux rendszerű virtuális gépre is telepítheti az Azure-ban](../linux/install-mongodb.md).
@@ -29,7 +29,7 @@ A MongoDB telepítése és konfigurálása előtt létre kell hoznia egy virtuá
 * Hozzon létre egy Windows Server rendszerű virtuális gépet [a Azure Portal vagy a](quick-create-portal.md) [Azure PowerShell](quick-create-powershell.md)használatával.
 * Adatlemez csatlakoztatása Windows Server rendszerű virtuális géphez [a Azure Portal](attach-managed-disk-portal.md) vagy [Azure PowerShell](attach-disk-ps.md)használatával.
 
-A MongoDB telepítésének és konfigurálásának megkezdéséhez jelentkezzen be a [Windows Server rendszerű virtuális gépre](connect-logon.md) távoli asztal használatával.
+A MongoDB telepítésének és konfigurálásának megkezdéséhez [Jelentkezzen be a Windows Server rendszerű virtuális gépre](connect-logon.md) távoli asztal használatával.
 
 ## <a name="install-mongodb"></a>A MongoDB telepítése
 > [!IMPORTANT]
@@ -42,7 +42,7 @@ A MongoDB telepítésének és konfigurálásának megkezdéséhez jelentkezzen 
    
    * Válassza az **eszközök** ikont a jobb felső sarokban.
    * Az **Internetbeállítások**területen válassza a **Biztonság** fület, majd válassza a **megbízható helyek** ikont.
-   * Kattintson a **helyek** gombra. Adja hozzá a *\*https://. mongodb.com* a megbízható helyek listájához, majd a párbeszédpanel bezárásához.
+   * Kattintson a **helyek** gombra. Adja hozzá a *https://\*. mongodb.com* a megbízható helyek listájához, majd a párbeszédpanel bezárásához.
      
      ![Az Internet Explorer biztonsági beállításainak konfigurálása](./media/install-mongodb/configure-internet-explorer-security.png)
 4. Keresse meg a [MongoDB-letöltések](https://www.mongodb.com/downloads) lapot (https://www.mongodb.com/downloads).
@@ -56,22 +56,22 @@ A MongoDB telepítésének és konfigurálásának megkezdéséhez jelentkezzen 
 8. Az utolsó képernyőn kattintson a **telepítés**gombra.
 
 ## <a name="configure-the-vm-and-mongodb"></a>A virtuális gép és a MongoDB konfigurálása
-1. Az MongoDB-telepítő nem frissíti az elérésiút-változókat. A MongoDB `bin` helye nélkül a Path változóban minden alkalommal meg kell adnia a teljes elérési utat, amikor egy MongoDB-végrehajtható fájlt használ. A hely hozzáadása a Path változóhoz:
+1. Az MongoDB-telepítő nem frissíti az elérésiút-változókat. Ha a MongoDB nem `bin` helyet a Path változóban, minden alkalommal meg kell adnia a teljes elérési utat, amikor egy MongoDB-végrehajtható fájlt használ. A hely hozzáadása a Path változóhoz:
    
    * Kattintson a jobb gombbal a **Start** menüre, és válassza a **System (rendszerek**) lehetőséget.
    * Kattintson a **Speciális rendszerbeállítások**elemre, majd kattintson a **környezeti változók**elemre.
-   * ARendszerváltozók területen válassza az **elérési út**lehetőséget, majd kattintson a **Szerkesztés**gombra.
+   * A **rendszerváltozók**területen válassza az **elérési út**lehetőséget, majd kattintson a **Szerkesztés**gombra.
      
      ![ELÉRÉSIÚT-változók konfigurálása](./media/install-mongodb/configure-path-variables.png)
      
-     Adja hozzá az elérési utat `bin` a MongoDB mappához. A MongoDB általában a *C:\Program Files\MongoDB*-ben települ. Ellenőrizze a telepítési útvonalat a virtuális gépen. A következő példa hozzáadja az alapértelmezett MongoDB telepítési helyet a `PATH` változóhoz:
+     Adja hozzá az elérési utat a MongoDB `bin` mappához. A MongoDB általában a *C:\Program Files\MongoDB*-ben települ. Ellenőrizze a telepítési útvonalat a virtuális gépen. A következő példa hozzáadja a MongoDB alapértelmezett telepítési helyét a `PATH` változóhoz:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin
      ```
      
      > [!NOTE]
-     > Ügyeljen arra, hogy a vezető pontosvessző (`;`) hozzáadásával jelezze, hogy helyet ad hozzá a `PATH` változóhoz.
+     > Ügyeljen arra, hogy a vezető pontosvesszőt (`;`) adja hozzá, hogy jelezze, ha helyet ad hozzá a `PATH` változóhoz.
 
 2. Hozzon létre MongoDB-és naplózási könyvtárakat az adatlemezen. A **Start** menüben válassza a **parancssor**lehetőséget. Az alábbi példák az F meghajtón hozza létre a címtárakat:
    
@@ -85,12 +85,12 @@ A MongoDB telepítésének és konfigurálásának megkezdéséhez jelentkezzen 
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    Több percet is igénybe vehet, amíg a MongoDB le nem osztja a naplófájlokat, és megkezdheti a kapcsolatok figyelését. Az összes naplózási üzenet a *F:\MongoLogs\mongolog.log* -fájlra `mongod.exe` lesz irányítva a kiszolgáló indításakor és a naplófájlok lefoglalása során.
+    Több percet is igénybe vehet, amíg a MongoDB le nem osztja a naplófájlokat, és megkezdheti a kapcsolatok figyelését. Az összes naplózási üzenet a *F:\MongoLogs\mongolog.log* -fájlra van irányítva, mivel `mongod.exe` kiszolgáló elindul, és lefoglalja a napló fájljait.
    
    > [!NOTE]
    > A parancs erre a feladatra koncentrál, amíg a MongoDB-példány fut. A MongoDB futtatásának folytatásához hagyja nyitva a parancssorablakot. Vagy telepítse a MongoDB as Service-t a következő lépésben részletezett módon.
 
-4. Robusztusabb MongoDB-élményért telepítse a `mongod.exe` szolgáltatást. A szolgáltatás létrehozása azt jelenti, hogy nem kell minden alkalommal futtatnia a parancssort, amikor a MongoDB-t szeretné használni. A következő módon hozza létre a szolgáltatást, és ennek megfelelően állítsa be az elérési utat az adataihoz és a naplók könyvtáraihoz:
+4. A robusztus MongoDB-élmény érdekében telepítse a `mongod.exe` szolgáltatást. A szolgáltatás létrehozása azt jelenti, hogy nem kell minden alkalommal futtatnia a parancssort, amikor a MongoDB-t szeretné használni. A következő módon hozza létre a szolgáltatást, és ennek megfelelően állítsa be az elérési utat az adataihoz és a naplók könyvtáraihoz:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
@@ -98,9 +98,9 @@ A MongoDB telepítésének és konfigurálásának megkezdéséhez jelentkezzen 
    
     Az előző parancs létrehoz egy MongoDB nevű szolgáltatást a "Mongo DB" leírásával. A következő paraméterek is meg vannak adva:
    
-   * Ez `--dbpath` a beállítás határozza meg az adatkönyvtár helyét.
-   * A `--logpath` beállítást a naplófájl megadására kell használni, mert a futó szolgáltatásnak nincs parancssori ablaka a kimenet megjelenítéséhez.
-   * A `--logappend` beállítással megadható, hogy a szolgáltatás újraindítása a kimenet hozzáfűzését okozza a meglévő naplófájlhoz.
+   * A `--dbpath` beállítás megadja az adatkönyvtár helyét.
+   * A `--logpath` kapcsolót kell használni a naplófájl megadásához, mert a futó szolgáltatás nem tartalmaz parancssori ablakot a kimenet megjelenítéséhez.
+   * A `--logappend` beállítás azt adja meg, hogy a szolgáltatás újraindítása a kimenet hozzáfűzését okozza a meglévő naplófájlhoz.
    
    A MongoDB szolgáltatás elindításához futtassa a következő parancsot:
    
@@ -117,7 +117,7 @@ Ha a MongoDB önálló példányként vagy szolgáltatásként van telepítve, m
 mongo  
 ```
 
-Az adatbázisokat a `db` paranccsal listázhatja. Szúrjon be néhányat az alábbi módon:
+Az adatbázisokat az `db` parancs használatával listázhatja. Szúrjon be néhányat az alábbi módon:
 
 ```
 db.foo.insert( { a : 1 } )
@@ -135,7 +135,7 @@ A kimenet a következő példához hasonló:
 { "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 }
 ```
 
-A következőképpen `mongo` lépjen ki a konzolból:
+A következőképpen lépjen ki a `mongo`-konzolról:
 
 ```
 exit
@@ -158,9 +158,9 @@ A szabályt a **fokozott biztonságú Windows tűzfal** -kezelő eszköz haszná
 Ha szükséges, hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt, amely lehetővé teszi, hogy a MongoDB a meglévő Azure virtuális hálózat alhálózatán kívülről is hozzáférhessen. A hálózati biztonsági csoport szabályait a [Azure Portal](nsg-quickstart-portal.md) vagy [Azure PowerShell](nsg-quickstart-powershell.md)használatával hozhatja létre. A Windows tűzfal szabályaihoz hasonlóan engedélyezze a 27017-es TCP-portot a MongoDB virtuális gép virtuális hálózati adapteréhez.
 
 > [!NOTE]
-> A MongoDB által használt alapértelmezett port a 27017-es TCP-port. Ez a port manuálisan vagy szolgáltatásból történő `--port` indításkor `mongod.exe` a paraméterrel módosítható. Ha módosítja a portot, ügyeljen arra, hogy frissítse a Windows tűzfal és a hálózati biztonsági csoport szabályait az előző lépésekben.
+> A MongoDB által használt alapértelmezett port a 27017-es TCP-port. Ezt a portot a `--port` paraméterrel módosíthatja, ha `mongod.exe` manuálisan vagy egy szolgáltatásból indítja el. Ha módosítja a portot, ügyeljen arra, hogy frissítse a Windows tűzfal és a hálózati biztonsági csoport szabályait az előző lépésekben.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan telepítheti és konfigurálhatja a MongoDB a Windows rendszerű virtuális gépen. Most már elérheti a MongoDB a Windows rendszerű virtuális gépen a [MongoDB dokumentációjában](https://docs.mongodb.com/manual/)található speciális témakörök követésével.
 

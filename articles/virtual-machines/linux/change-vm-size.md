@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-vel Linux virtuális gép átméretezése |} A Microsoft Docs
-description: Hogyan növelheti vagy csökkentheti a Linuxos virtuális gépek, a virtuális gép méretének módosításával.
+title: Linux rendszerű virtuális gép átméretezése az Azure CLI-vel
+description: Linux rendszerű virtuális gépek vertikális felskálázása vagy leskálázása a virtuális gép méretének módosításával.
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46baa3d4dbcd466944d7a91e446e380c89f53f2b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b6f3f0a937b33b1c5dd1a68d86f80f870a7311d0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671737"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036883"
 ---
-# <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI-vel Linux virtuális gépek átméretezése 
+# <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Linux rendszerű virtuális gép átméretezése az Azure CLI-vel 
 
-Miután egy virtuális gépet (VM) üzembe helyez, méretezheti a virtuális gép felfelé vagy lefelé módosításával a [Virtuálisgép-méret][vm-sizes]. Bizonyos esetekben kell először felszabadítja a virtuális Gépet. Szabadítsa fel a virtuális Gépet, ha a kívánt méret nem érhető el a hardver fürtön, amelyen a virtuális Gépet kell. Ez a cikk részletesen bemutatja az Azure CLI-vel Linux rendszerű virtuális gépek átméretezése. 
+Miután kiépített egy virtuális gépet (VM), a virtuális gép [méretének][vm-sizes]módosításával felfelé vagy lefelé méretezheti. Bizonyos esetekben először fel kell szabadítania a virtuális gépet. Ha a kívánt méret nem érhető el a virtuális gépet futtató hardveres fürtön, fel kell szabadítania a virtuális gépet. Ez a cikk a Linux rendszerű virtuális gépek Azure CLI-vel való átméretezésének részleteit ismerteti. 
 
 ## <a name="resize-a-vm"></a>Virtuális gép átméretezése
-Virtuális gép átméretezése, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
+A virtuális gépek átméretezéséhez a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t kell telepítenie, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
-1. A virtuális Gépet üzemeltető a hardver-fürtön elérhető Virtuálisgép-méretek listájának megtekintéséhez [az vm list-vm-resize-options](/cli/azure/vm). Az alábbi példa felsorolja a Virtuálisgép-méretek nevű virtuális gép `myVM` erőforráscsoportban `myResourceGroup` régió:
+1. Tekintse meg az elérhető virtuálisgép-méretek listáját azon a hardveres fürtön, ahol a virtuális gép az az [VM List-VM-Resize-Options](/cli/azure/vm). Az alábbi példa felsorolja a `myVM` nevű virtuális gép virtuálisgép-méreteit az erőforráscsoport `myResourceGroup` régióban:
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. Ha a virtuális gép kívánt méretét szerepel a listán, méretezze át a virtuális Gépet a [az virtuális gép átméretezése](/cli/azure/vm). Az alábbi példában a virtuális gép nevű átméretezi `myVM` , a `Standard_DS3_v2` mérete:
+2. Ha a kívánt virtuális gép mérete megjelenik, méretezze át a virtuális gépet az [az VM átméretezésével](/cli/azure/vm). Az alábbi példa átméretezi `myVM` nevű virtuális gépet a `Standard_DS3_v2` méretre:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
     ```
    
-    A virtuális gép újraindul, a folyamat során. Az újraindítás után a meglévő operációs rendszer és az adatlemezek állapotba kerülnek. Az ideiglenes lemez semmit sem elvész.
+    A virtuális gép újraindul a folyamat során. Az újraindítás után a rendszer újra leképezi a meglévő operációs rendszert és az adatlemezeket. Az ideiglenes lemezen lévő minden adat elvész.
 
-3. Ha a kívánt VM-méret nem szerepel, akkor először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm). Ez a folyamat lehetővé teszi, hogy a virtuális Gépen, majd át lehet méretezni, tetszőleges méretű érhető el, hogy a régió támogatja, és ezután elindult. Az alábbi lépéseket felszabadítása, átméretezése és indítsa el a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+3. Ha a kívánt virtuálisgép-méret nem szerepel a listáján, először fel kell szabadítania a virtuális gépet az [az VM felszabadításával](/cli/azure/vm). Ez a folyamat lehetővé teszi, hogy a virtuális gép átméretezi a régió által támogatott, majd megkezdett méretre. A következő lépésekkel felszabadíthatja, átméretezheti, majd elindíthatja `myVM` nevű virtuális gépet az `myResourceGroup`nevű erőforráscsoport:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -53,10 +53,10 @@ Virtuális gép átméretezése, a legújabb kell [Azure CLI-vel](/cli/azure/ins
     ```
    
    > [!WARNING]
-   > A virtuális gép felszabadítása is bármely dinamikus IP-címek a virtuális géphez hozzárendelt ad ki. Az operációs rendszer és az adatlemezek nem érinti.
+   > A virtuális gép felszabadítása a virtuális géphez hozzárendelt dinamikus IP-címeket is felszabadítja. Az operációs rendszer és az adatlemezek nem érintettek.
 
-## <a name="next-steps"></a>További lépések
-A további skálázhatóság érdekében több Virtuálisgép-példány futtatása és a horizontális felskálázás. További információkért lásd: [Linux-gépeinek automatikus skálázása a Virtual Machine Scale Set][scale-set]. 
+## <a name="next-steps"></a>Következő lépések
+További méretezhetőség érdekében futtasson több virtuálisgép-példányt és horizontális felskálázást. További információ: [Linux rendszerű gépek automatikus méretezése virtuálisgép-méretezési csoportokban][scale-set]. 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

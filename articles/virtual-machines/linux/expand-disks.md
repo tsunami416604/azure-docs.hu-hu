@@ -1,5 +1,5 @@
 ---
-title: Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure-ban | Microsoft Docs
+title: Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure-ban
 description: Megtudhatja, hogyan bővítheti a virtuális merevlemezeket Linux rendszerű virtuális GÉPEN az Azure CLI-vel
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3bd85048cf12760d5918544ed6aac803e9fe120a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828414"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036209"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
 
@@ -35,7 +35,7 @@ A következő példákban cserélje le a példában szereplő paraméterek nevé
     ```
 
     > [!NOTE]
-    > A virtuális merevlemez kibontásához fel kell osztani a virtuális GÉPET. A virtuális gép leállítása `az vm stop` értékkel nem szabadítja fel a számítási erőforrásokat. A számítási erőforrások kiadásához használja a `az vm deallocate` értéket.
+    > A virtuális merevlemez kibontásához fel kell osztani a virtuális GÉPET. A virtuális gép leállítása `az vm stop` nem mentesíti a számítási erőforrásokat. A számítási erőforrások kiadásához használja a `az vm deallocate`.
 
 1. Egy erőforráscsoport felügyelt lemezeinek listáját az [az Disk List](/cli/azure/disk#az-disk-list)paranccsal tekintheti meg. Az alábbi példa megjeleníti a felügyelt lemezek listáját a *myResourceGroup*nevű erőforráscsoport:
 
@@ -88,7 +88,7 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     sudo parted /dev/sdc
     ```
 
-    Megtekintheti a meglévő partíciós elrendezés adatait `print` értékkel. A kimenet a következő példához hasonlóan jelenik meg, amely a mögöttes lemez 215 GB-ot mutatja:
+    Megtekintheti a meglévő partíciók elrendezésével kapcsolatos információkat `print`. A kimenet a következő példához hasonlóan jelenik meg, amely a mögöttes lemez 215 GB-ot mutatja:
 
     ```bash
     GNU Parted 3.2
@@ -105,7 +105,7 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Bontsa ki a partíciót `resizepart` értékkel. Adja meg a partíció számát, az *1*értéket és az új partíció méretét:
+    c. Bontsa ki a partíciót a `resizepart`. Adja meg a partíció számát, az *1*értéket és az új partíció méretét:
 
     ```bash
     (parted) resizepart
@@ -113,15 +113,15 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     End?  [107GB]? 215GB
     ```
 
-    d. A kilépéshez írja be a következőt: `quit`.
+    d. A kilépéshez írja be a `quit`.
 
-1. A partíció átméretezése után ellenőrizze a partíció konzisztenciáját `e2fsck` értékkel:
+1. A partíció átméretezése után ellenőrizze a partíció konzisztenciáját `e2fsck`:
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. A fájlrendszer átméretezése `resize2fs`:
+1. Méretezze át a fájlrendszert `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
@@ -133,13 +133,13 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Az adatlemez átméretezésének ellenőrzéséhez használja a `df -h` értéket. A következő példa kimenetében az adatmeghajtó */dev/sdc1* jelenleg 200 GB:
+1. Az adatlemez átméretezésének ellenőrzéséhez használja a `df -h`. A következő példa kimenetében az adatmeghajtó */dev/sdc1* jelenleg 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha további tárhelyre van szüksége, [adatlemezeket is hozzáadhat egy Linux rendszerű virtuális géphez](add-disk.md). 
 * További információ a lemezek titkosításáról: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md).

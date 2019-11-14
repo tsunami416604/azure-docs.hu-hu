@@ -1,5 +1,5 @@
 ---
-title: Virtuális gépek rendelkezésre állási csoportjának módosítása | Microsoft Docs
+title: Virtuális gépek rendelkezésre állási csoportjának módosítása
 description: Megtudhatja, hogyan módosíthatja a virtuális gépek rendelkezésre állási csoportját a Azure PowerShell és a Resource Manager-alapú üzemi modell használatával.
 keywords: ''
 services: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 5390643723f2907301554e69a1142cef181deb13
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7d03d684edfded1450043b943fc188c7aa07dc16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749610"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039566"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Windows rendszerű virtuális gép rendelkezésre állási csoportjának módosítása
 A következő lépések azt ismertetik, hogyan módosítható a virtuális gépek rendelkezésre állási csoportja a Azure PowerShell használatával. A virtuális gépeket csak akkor lehet felvenni a rendelkezésre állási csoportba, ha az létrejött. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
@@ -108,7 +108,7 @@ Az alábbi parancsfájl egy példát mutat be a szükséges információk össze
        -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Adjon hozzá további tárhelyet a virtuális géphez egy további [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hozzáadásával.
 

@@ -1,5 +1,5 @@
 ---
-title: Portok megnyitása virtuális géphez a Azure Portal használatával | Microsoft Docs
+title: Portok megnyitása virtuális géphez a Azure Portal használatával
 description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a Windows rendszerű virtuális géphez az Azure Portal Resource Manager-alapú üzemi modelljének használatával
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: f9edee7a0ff19a536d0ea719ede6d0cd2e9d6ac7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102635"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033111"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális géphez a Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -63,7 +63,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Az utolsó lépés a hálózati biztonsági csoport társítása egy alhálózattal vagy egy adott hálózati adapterrel. Ebben a példában a hálózati biztonsági csoportot egy alhálózattal társítjuk. 
 
-1. Válasszaaz alhálózatok, majd a **hozzárendelés**lehetőséget.
+1. Válassza az **alhálózatok**, majd a **hozzárendelés**lehetőséget.
 
     ![Hálózati biztonsági csoport hozzárendelése alhálózattal](./media/nsg-quickstart-portal/associate-subnet.png)
 
@@ -75,13 +75,13 @@ Az utolsó lépés a hálózati biztonsági csoport társítása egy alhálózat
 
 ## <a name="additional-information"></a>További információ
 
-[A cikkben ismertetett lépéseket a Azure PowerShell használatával](nsg-quickstart-powershell.md)is végrehajthatja.
+[A cikkben ismertetett lépéseket a Azure PowerShell használatával is végrehajthatja](nsg-quickstart-powershell.md).
 
 A cikkben ismertetett parancsok segítségével gyorsan lekérheti a virtuális gépre irányuló forgalmat. A hálózati biztonsági csoportok számos nagyszerű szolgáltatást és részletességet biztosítanak az erőforrásokhoz való hozzáférés szabályozásához. További információ: [hálózati forgalom szűrése hálózati biztonsági csoporttal](../../virtual-network/tutorial-filter-network-traffic.md).
 
 A magasan elérhető webalkalmazások esetében érdemes lehet egy Azure Load Balancer mögött elhelyezni a virtuális gépeket. A terheléselosztó elosztja a forgalmat a virtuális gépekre egy olyan hálózati biztonsági csoporttal, amely forgalmi szűrést biztosít. További információkért lásd: [Windows rendszerű virtuális gépek terheléselosztása az Azure-ban egy magasan elérhető alkalmazás létrehozásához](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, létrehozott egy bejövő szabályt, amely engedélyezi a HTTP-forgalmat az 80-as porton, majd hozzárendeli a szabályt egy alhálózathoz. 
 
 A részletesebb környezetek létrehozásáról a következő cikkekben talál információt:

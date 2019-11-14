@@ -1,5 +1,5 @@
 ---
-title: Linux rendszerű virtuális gép optimalizálása az Azure-ban | Microsoft Docs
+title: Linuxos virtuális gép optimalizálása az Azure-ban
 description: Ismerkedjen meg az optimalizálási tippekkel, hogy megbizonyosodjon arról, hogy beállította-e a linuxos virtuális gépet az Azure-beli optimális teljesítmény érdekében
 keywords: Linux rendszerű virtuális gép, virtuális gép Linux, Ubuntu rendszerű virtuális gép
 services: virtual-machines-linux
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091683"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035392"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
@@ -37,9 +37,9 @@ A virtuális gép mérete alapján akár 16 további lemezt is csatlakoztathat e
 
 Annak érdekében, hogy Premium Storage lemezek legmagasabb IOps legyenek elérhetők, ahol a gyorsítótár beállításai **readonly** vagy **none**értékre lettek állítva, le kell tiltania a **korlátokat** , miközben a fájlrendszert a Linux rendszerhez csatlakoztatja. Nincs szükség korlátokra, mert a lemezre Premium Storage lemezek írása a gyorsítótár-beállítások számára tartós.
 
-* Ha a **reiserFS**-t használja, tiltsa le a korlátozásokat a csatlakoztatási lehetőség `barrier=none` használatával (az akadályok `barrier=flush`engedélyezéséhez)
-* Ha **ext3/ext4**-t használ, tiltsa le a korlátozásokat `barrier=0` a csatlakoztatási lehetőség használatával ( `barrier=1`az akadályok engedélyezéséhez)
-* Ha **XFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez használja a kapcsolót `barrier`).
+* Ha **reiserFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `barrier=none` (az akadályok engedélyezéséhez használja a `barrier=flush`t)
+* Ha **ext3/ext4**-t használ, tiltsa le az akadályokat a csatlakoztatási lehetőséggel `barrier=0` (az akadályok engedélyezéséhez használja a `barrier=1`t)
+* Ha **XFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez használja a `barrier`lehetőséget)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Nem felügyelt Storage-fiókok szempontjai
 Ha az Azure CLI-vel hoz létre virtuális gépet, az alapértelmezett művelet az Azure Managed Disks használata.  Ezeket a lemezeket az Azure platform kezeli, és nem igényel előkészítést vagy helyet a tároláshoz.  A nem felügyelt lemezekhez szükség van egy Storage-fiókra, és további teljesítménnyel kapcsolatos szempontokat kell figyelembe vennie.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md).  A következő szakasz csak akkor ismerteti a teljesítménnyel kapcsolatos szempontokat, ha nem felügyelt lemezeket használ.  Az alapértelmezett és az ajánlott tárolási megoldás a felügyelt lemezek használata.
@@ -50,7 +50,7 @@ Ha magas IOps számítási feladatokra van szükség, és a lemezek esetében a 
  
 
 ## <a name="your-vm-temporary-drive"></a>A virtuális gép ideiglenes meghajtója
-Alapértelmezés szerint a virtuális gépek létrehozásakor az Azure egy operációsrendszer-lemezt ( **/dev/sda**) és egy ideiglenes lemezt ( **/dev/sdb**) biztosít Önnek.  A hozzáadott további lemezek a **/dev/SDC**, a **/dev/SDD**, a **/dev/Sde** és így tovább jelennek meg. Az ideiglenes lemezen ( **/dev/sdb**) lévő összes érték nem tartós, és elvész, ha adott események, például a virtuális gépek átméretezése, újratelepítése vagy karbantartása kényszeríti a virtuális gép újraindítását.  Az ideiglenes lemez mérete és típusa az üzembe helyezéskor kiválasztott virtuálisgép-mérethez kapcsolódik. A prémium szintű virtuális gépek (DS, G és DS_V2 sorozatok) mindegyike az ideiglenes meghajtót egy helyi SSD-vel támogatja a 48k IOps további teljesítményének növeléséhez. 
+Alapértelmezés szerint a virtuális gépek létrehozásakor az Azure egy operációsrendszer-lemezt ( **/dev/sda**) és egy ideiglenes lemezt ( **/dev/sdb**) biztosít Önnek.  A hozzáadott további lemezek a **/dev/SDC**, a **/dev/SDD**, a **/dev/Sde** és így tovább jelennek meg. Az ideiglenes lemezen ( **/dev/sdb**) lévő összes érték nem tartós, és elvész, ha adott események, például a virtuális gépek átméretezése, újratelepítése vagy karbantartása kényszeríti a virtuális gép újraindítását.  Az ideiglenes lemez mérete és típusa az üzembe helyezéskor kiválasztott virtuálisgép-mérethez kapcsolódik. A prémium méretű virtuális gépek (DS, G és DS_V2 sorozatok) mindegyike az ideiglenes meghajtót egy helyi SSD-vel támogatja, amely akár 48k-IOps is biztosít további teljesítményt. 
 
 ## <a name="linux-swap-partition"></a>Linux-swap partíció
 Ha az Azure-beli virtuális gép Ubuntu-vagy CoreOS-rendszerképből származik, a CustomData használatával felhő-konfigurációt küldhet a Cloud-init számára. Ha [olyan egyéni Linux-rendszerképet töltött](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) fel, amely a Cloud-init szolgáltatást használja, a Cloud-init használatával is konfigurálhatja a swap-partíciókat.
@@ -59,14 +59,14 @@ Ubuntu Cloud images esetén a Cloud-init használatával kell konfigurálnia a s
 
 A Cloud-init támogatás nélküli rendszerképeknél az Azure piactéren üzembe helyezett virtuálisgép-lemezképek rendelkeznek egy, az operációs rendszerhez integrált virtuálisgép-Linux-ügynökkel. Ez az ügynök lehetővé teszi a virtuális gép számára a különböző Azure-szolgáltatásokkal való interakciót. Feltételezve, hogy az Azure Marketplace-ről standard rendszerképet helyezett üzembe, a következő lépéseket kell elvégeznie a Linux-swap fájl beállításainak megfelelő konfigurálásához:
 
-Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban. Egy dedikált swap-fájl létezését és a lapozófájl méretét vezérlik. Az ellenőrzéshez szükséges paraméterek a következők `ResourceDisk.EnableSwap` .`ResourceDisk.SwapSizeMB` 
+Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban. Egy dedikált swap-fájl létezését és a lapozófájl méretét vezérlik. Az ellenőrzéshez szükséges paraméterek `ResourceDisk.EnableSwap` és `ResourceDisk.SwapSizeMB` 
 
 A megfelelően engedélyezett lemez és a csatlakoztatott lapozófájl engedélyezéséhez győződjön meg arról, hogy a paraméterek a következő beállításokkal rendelkeznek:
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk. SwapSizeMB = {az igényeinek megfelelő méret MB-ban} 
 
-A módosítás elvégzése után újra kell indítania a waagent, vagy újra kell indítania a linuxos virtuális gépet, hogy azok tükrözzék ezeket a módosításokat.  Ismeri a módosításokat, és egy lapozófájl jött létre, amikor a `free` parancs használatával megtekinti a szabad területet. Az alábbi példában a **waagent. conf** fájl módosításának eredményeképpen létrehozott 512-es swap-fájl látható:
+A módosítás elvégzése után újra kell indítania a waagent, vagy újra kell indítania a linuxos virtuális gépet, hogy azok tükrözzék ezeket a módosításokat.  Ismeri a módosításokat, és létrehozta a lapozófájlt, amikor a `free` parancs használatával megtekinti a szabad területet. Az alábbi példában a **waagent. conf** fájl módosításának eredményeképpen létrehozott 512-es swap-fájl látható:
 
 ```bash
 azuseruser@myVM:~$ free

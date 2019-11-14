@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása az Azure Portalon | Microsoft Docs
+title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása a Azure Portal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet a Azure Portal használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693304"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035220"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -34,7 +34,7 @@ A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már
 SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Az oldal tetején lévő menüben válassza a `>_` ikont a Cloud Shell megnyitásához.
 1. Győződjön meg arról, hogy a Cloudshellben a bal felső sarokban található **bash** . Ha a PowerShell-t mondja, a legördülő menüből válassza a **bash** elemet, és válassza a **megerősítés** lehetőséget a bash rendszerhéjra való váltáshoz.
 1. Az SSH-kulcs létrehozásához írja be a `ssh-keygen -t rsa -b 2048`. 
@@ -56,7 +56,7 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 
     ![Új erőforráscsoport létrehozása virtuális géphez](./media/quick-create-portal/project-details.png)
 
-1. A **példány részletei**területen írja be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója**lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei**területen írja be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója**lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja változatlanul a többi alapértelmezett értéket.
 
     ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
@@ -66,9 +66,9 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 
 1. A **Bejövőport-szabályok** > **Nyilvános bejövő portok** részen válassza a **Kijelölt portok engedélyezése** lehetőséget, majd az **SSH (22)** és a **HTTP (80)** elemet a legördülő listából. 
 
-    ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
+    ![RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
-1. Hagyja meg a többi alapértelmezett beállítást, és kattintson a **Felülvizsgálat + létrehozás** gombra a lap alján.
+1. Hagyja változatlanul a többi alapértelmezett beállítást, és kattintson a **Áttekintés + létrehozás** gombra a lap alján.
 
 1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
@@ -103,9 +103,9 @@ sudo apt-get -y install nginx
 Ha elkészült, az SSH-munkamenetből való kilépéshez írja be: `exit`.
 
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
 
-Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Adja meg a virtuális gép nyilvános IP-címét a webes címként. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
+Egy tetszőleges webböngészővel tekintse meg az alapértelmezett NGINX-kezdőlapot. Adja meg a virtuális gép nyilvános IP-címét a webes címként. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 
 ![Alapértelmezett NGINX-webhely](./media/quick-create-portal/nginx.png)
 
@@ -113,7 +113,7 @@ Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett N
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a **Törlés** elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, létrehozott egy hálózati biztonsági csoportot és szabályt, valamint telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

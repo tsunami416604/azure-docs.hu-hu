@@ -3,12 +3,12 @@ title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan hozhat létre jobb lekérdezéseket az Azure Resource Graph-ba irányuló kérések szabályozásának elkerülése érdekében.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 46af11bfea47e37b97fa9492f71be8b5fe1817e3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 651a5daa9e7e19a5dc157ba0cfa17da2c8abe3db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959202"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038326"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -215,11 +215,11 @@ Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 
   Az Azure CLI vagy a Azure PowerShell használatakor a rendszer automatikusan lekérdezi az Azure Resource Graph lekérdezéseit, hogy a legtöbb 5000 bejegyzést beolvassa. A lekérdezés eredménye a bejegyzések összesített listáját jeleníti meg az összes többoldalas hívásból. Ebben az esetben a lekérdezési eredmény bejegyzéseinek számától függően egy többoldalas lekérdezés egynél több lekérdezési kvótát is használhat. Az alábbi példában például a lekérdezés egyetlen futtatása akár öt lekérdezési kvótát is felhasználhat:
 
   ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' --first 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>Továbbra is szabályozható?

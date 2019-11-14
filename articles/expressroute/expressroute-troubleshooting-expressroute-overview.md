@@ -1,5 +1,5 @@
 ---
-title: 'Kapcsolat ellenőrzése – ExpressRoute hibaelhárítási útmutatója: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: kapcsolat ellenőrzése – hibaelhárítási útmutató'
 description: Ez az oldal útmutatást nyújt a ExpressRoute-áramkör végpontok közötti kapcsolatának hibaelhárításához és ellenőrzéséhez.
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c5001e884047fc6078faf3a8de0e45b7e30e1038
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580302"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033792"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt az ExpressRoute-kapcsolatok ellenőrzéséhez és hibakereséséhez. A ExpressRoute kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amelyet általában egy kapcsolat szolgáltatója is megkönnyít. A ExpressRoute-kapcsolat hagyományosan három különálló hálózati zónát foglal magában, az alábbiak szerint:
@@ -289,7 +289,7 @@ A nem létező társításhoz tartozó parancs mintájának kimenete a következ
     StatusCode: 400
 
 ## <a name="next-steps"></a>További lépések
-További információért és segítségért tekintse meg az alábbi hivatkozásokat:
+További információ vagy a Súgó tekintse meg az alábbi hivatkozásokat:
 
 - [Microsoft ügyfélszolgálata][Support]
 - [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása][CreateCircuit]

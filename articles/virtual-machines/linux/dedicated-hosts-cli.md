@@ -1,5 +1,5 @@
 ---
-title: Azure dedikált gazdagépek üzembe helyezése a parancssori felület használatával | Microsoft Docs
+title: Azure dedikált gazdagépek üzembe helyezése a parancssori felület használatával
 description: Virtuális gépek üzembe helyezése dedikált gazdagépekre az Azure CLI használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827289"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036404"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Előzetes verzió: Virtuális gépek üzembe helyezése dedikált gazdagépeken az Azure CLI használatával
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Előzetes verzió: virtuális gépek üzembe helyezése dedikált gazdagépeken az Azure CLI használatával
  
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy [dedikált](dedicated-hosts.md) Azure-gazdagépet a virtuális gépek (VM-EK) üzemeltetéséhez. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
-Győződjön meg arról, hogy telepítette az Azure CLI 2.0.70 vagy újabb verzióját, majd jelentkezzen be egy Azure `az login`-fiókba a használatával. 
+Győződjön meg arról, hogy telepítette az Azure CLI 2.0.70 vagy újabb verzióját, majd jelentkezzen be egy Azure-fiókba `az login`használatával. 
 
 > [!IMPORTANT]
 > Az Azure dedikált gazdagépek jelenleg nyilvános előzetes verzióban érhetők el.
@@ -239,7 +239,7 @@ Ha most szeretne létrehozni egy további fejlesztési környezetet ugyanazzal a
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Ez a parancs az `myDHResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja `--include-parameter-default-value` a paramétert `az group export` a parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy hozzon létre egy Parameters. JSON fájlt, amely megadja az erőforrások nevét.
+Ez a parancs létrehozza a `myDHResourceGroup.json` fájlt az aktuális munkakönyvtárban. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy hozzon létre egy Parameters. JSON fájlt, amely megadja az erőforrások nevét.
  
 Ha létre szeretne hozni egy környezetet a sablonból, használja az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)elemet.
 
@@ -278,7 +278,7 @@ A teljes erőforráscsoportot egyetlen parancsban is törölheti. Ezzel törli a
 az group delete -n myDHResourceGroup 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információt a [dedikált gazdagépek](dedicated-hosts.md) áttekintése című témakörben talál.
 

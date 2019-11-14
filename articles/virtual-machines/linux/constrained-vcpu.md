@@ -1,5 +1,5 @@
 ---
-title: Korlátozott vCPU-méretek az Azure-ban – Linux | Microsoft Docs
+title: Korlátozott vCPU-méretek az Azure-ban – Linux
 description: Felsorolja azokat a virtuálisgép-méreteket, amelyek képesek korlátozott számú vCPU.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: 473db3ad0a31e66c6b8f148d5756978dab44ed27
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f4bb48bb4225d8ce19f577a7e4156aaa46ee065a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091966"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036644"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Korlátozott vCPU képességgel rendelkező VM-méretek
 
@@ -34,6 +34,6 @@ ms.locfileid: "70091966"
 - [GPU](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
 

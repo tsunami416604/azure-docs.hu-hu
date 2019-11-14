@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure PowerShell-lel alkalmazások magas rendelkezésre álláshoz a Traffic Manager-profil létrehozása
-description: Ez a rövid útmutató a cikk ismerteti a magas rendelkezésre állású webalkalmazás létrehozása a Traffic Manager-profil létrehozása.
+title: 'Gyors útmutató: az alkalmazások magas rendelkezésre állását biztosító profil létrehozása – Azure PowerShell – Azure Traffic Manager'
+description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy Traffic Manager-profilt egy magasan elérhető webalkalmazás létrehozásához.
 services: traffic-manager
 author: asudbring
 mnager: twooley
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2019
 ms.author: allensu
-ms.openlocfilehash: ce05d594555095c061e43df2464b906138811448
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b1a0040c3cf6d517b19445be689dcc786334325
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051112"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038851"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Gyors útmutató: A Traffic Manager profil létrehozása az Azure PowerShell-lel magas rendelkezésre állású webalkalmazás
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Gyors útmutató: Traffic Manager profil létrehozása egy kiválóan elérhető webalkalmazáshoz Azure PowerShell használatával
 
-Ebben a rövid útmutató egy Traffic Manager-profilt, amely a webalkalmazás magas rendelkezésre állást nyújt.
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre olyan Traffic Manager-profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára.
 
-Ebben a rövid útmutatóban egy webalkalmazás két példánya fog létrehozni. Azok a fut egy másik Azure-régióban. Traffic Manager-profil alapján fog létrehozni [végpontprioritás](traffic-manager-routing-methods.md#priority). A profil arra utasítja a felhasználói adatforgalmat a webalkalmazás fut az elsődleges hely. A TRAFFIC Manager folyamatosan figyeli a webalkalmazást. Ha az elsődleges hely nem érhető el, a helykiszolgáló biztonsági mentése automatikus feladatátvételt biztosít.
+Ebben a rövid útmutatóban egy webalkalmazás két példányát fogja létrehozni. Mindegyik egy másik Azure-régióban fut. A Traffic Manager-profilt a [végpont prioritása](traffic-manager-routing-methods.md#priority)alapján hozza létre. A profil a webes alkalmazást futtató elsődleges helyre irányítja a felhasználói forgalmat. Traffic Manager folyamatosan figyeli a webalkalmazást. Ha az elsődleges hely nem érhető el, automatikus feladatátvételt biztosít a biztonsági mentési helyhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Hozzon létre egy erőforrás csoport [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával.
 
 ```azurepowershell-interactive
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name MyResourceGroup -Location $Location1
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-Hozzon létre egy Traffic Manager profil [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) , amely arra utasítja a felhasználói adatforgalmat a végpont prioritás alapján.
+Hozzon létre egy Traffic Manager profilt a [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) használatával, amely a felhasználói forgalmat a végponti prioritás alapján irányítja.
 
 ```azurepowershell-interactive
 
@@ -67,10 +67,10 @@ New-AzTrafficManagerProfile `
 
 ## <a name="create-web-apps"></a>Create Web Apps
 
-Ebben a rövid útmutatóban két különböző Azure-régióban üzembe helyezett webalkalmazás két példányát kell (*USA nyugati RÉGIÓJA* és *USA keleti Régiójában*). Minden egyes erre a célra elsődleges és feladatátvételi végpontok Traffic Manager esetében.
+Ebben a rövid útmutatóban két különböző Azure-régióban (az USA*nyugati* régiójában és az *USA keleti*régiójában) üzembe helyezett webalkalmazás két példánya szükséges. Mindegyik a Traffic Manager elsődleges és feladatátvételi végpontjának fogja szolgálni.
 
-### <a name="create-web-app-service-plans"></a>Web App Service-csomagok létrehozása
-Hozzon létre Web App service-csomagok használatával [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) a webalkalmazást, amely központilag telepíti, két különböző Azure-régiókban lévő két példánya esetén.
+### <a name="create-web-app-service-plans"></a>Webes App Service csomagok létrehozása
+Hozzon létre webalkalmazás-szolgáltatási csomagokat a [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) használatával a webalkalmazás két különböző Azure-régióban üzembe helyezett példányaihoz.
 
 ```azurepowershell-interactive
 
@@ -85,8 +85,8 @@ New-AzAppservicePlan -Name "$App1Name-Plan" -ResourceGroupName MyResourceGroup -
 New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
 
 ```
-### <a name="create-a-web-app-in-the-app-service-plan"></a>Egy webalkalmazás létrehozása az App Service-csomag
-Hozzon létre két példányt, a webes alkalmazást a [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) az App Service-csomagok az a *USA nyugati RÉGIÓJA* és *USA keleti Régiójában* Azure-régióban.
+### <a name="create-a-web-app-in-the-app-service-plan"></a>Webalkalmazás létrehozása a App Service tervben
+Hozzon létre két példányt a webalkalmazásban a [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) használatával az *USA nyugati* régiójában és az *usa keleti* régiójában található app Service-csomagokban.
 
 ```azurepowershell-interactive
 $App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
@@ -95,9 +95,9 @@ $App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
-Adja hozzá a két Web Apps használatával Traffic Manager-végpontok [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) a Traffic Manager profil a következőképpen:
-- Adja hozzá a Web App található a *USA nyugati RÉGIÓJA* az elsődleges végpontra irányíthatja a felhasználói forgalom Azure-régióban. 
-- Adja hozzá a Web App található a *USA keleti Régiójában* a feladatátvételi végpontot Azure-régióban. Az elsődleges végpont nem érhető el, ha forgalom automatikusan a feladatátvétel végpontra irányítja.
+Adja hozzá a két Web Apps Traffic Manager-végpontként a [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) használatával a Traffic Manager profiljához a következőképpen:
+- Adja hozzá az *USA nyugati* régiója Azure-régióban található webalkalmazást elsődleges végpontként az összes felhasználói forgalom átirányításához. 
+- Adja hozzá az *USA keleti* régiója Azure-régióban található webalkalmazást feladatátvételi végpontként. Ha az elsődleges végpont nem érhető el, a forgalom automatikusan átirányítja a feladatátvételi végpontot.
 
 ```azurepowershell-interactive
 New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `
@@ -117,25 +117,25 @@ New-AzTrafficManagerEndpoint -Name "$App2Name-$Location2" `
 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager-profil tesztelése
 
-Ebben a szakaszban be fogja a tartományneve a Traffic Manager-profil. Is konfigurálja az elsődleges végpont nem érhető el. Végül, kérje meg, hogy a webalkalmazás továbbra is elérhető. Mivel a Traffic Manager küldi el a forgalmat a feladatátvételi végpont van.
+Ebben a szakaszban a Traffic Manager profil tartománynevét fogja megtekinteni. Azt is beállíthatja, hogy az elsődleges végpont ne legyen elérhető. Végezetül láthatja, hogy a webalkalmazás továbbra is elérhető. Ennek oka, hogy Traffic Manager továbbítja a forgalmat a feladatátvételi végpontnak.
 
 ### <a name="determine-the-dns-name"></a>A DNS-név meghatározása
 
-Határozza meg a DNS-nevével a Traffic Manager profil használatával [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile).
+Határozza meg a Traffic Manager profil DNS-nevét a [Get-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile)használatával.
 
 ```azurepowershell-interactive
 Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 -ResourceGroupName MyResourceGroup
 ```
 
-Másolás a **RelativeDnsName** értéket. A DNS-név, a Traffic Manager-profil *http://<* relativednsname *>. trafficmanager.net*. 
+Másolja a **RelativeDnsName** értéket. A Traffic Manager profil DNS-neve a *http://<* relativednsname *>. trafficmanager támogatása. net*. 
 
 ### <a name="view-traffic-manager-in-action"></a>A Traffic Manager megtekintése működés közben
-1. Egy webböngészőben, adja meg a Traffic Manager-profil DNS-nevét (*http://<* relativednsname *>. trafficmanager.net*) megtekintéséhez a webalkalmazás alapértelmezett webhelyet.
+1. A webböngészőben adja meg a Traffic Manager profiljának DNS-nevét (*http://<* relativednsname *>. trafficmanager támogatása. net*) a webalkalmazás alapértelmezett webhelyének megtekintéséhez.
 
     > [!NOTE]
-    > Ebben a rövid útmutató forgatókönyvben összes kérelem átirányítása az elsődleges végpontot. A változó értéke **prioritása 1**.
-2. A Traffic Manager feladatátvételi megtekintése működés közben, tiltsa le az elsődleges hely használatával [Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint).
+    > Ebben a rövid útmutatóban az összes kérelem az elsődleges végpontra irányítja át. Az **1-es prioritásra**van beállítva.
+2. Ha Traffic Manager feladatátvételt szeretné megtekinteni működés közben, tiltsa le az elsődleges helyet a [disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint)használatával.
 
    ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name $App1Name-$Location1 `
@@ -144,20 +144,20 @@ Másolás a **RelativeDnsName** értéket. A DNS-név, a Traffic Manager-profil 
     -ResourceGroupName MyResourceGroup `
     -Force
    ```
-3. Másolja a Traffic Manager-profil DNS-nevét (*http://<* relativednsname *>. trafficmanager.net*) kattintva megtekintheti a webhelyét az új webes böngésző-munkamenetet.
-4. Ellenőrizze, hogy a webalkalmazás továbbra is elérhető.
+3. Másolja a Traffic Manager profiljának DNS-nevét (*http://<* relativednsname *>. trafficmanager támogatása. net*), hogy megtekintse a webhelyet egy új böngésző-munkamenetben.
+4. Ellenőrizze, hogy a webalkalmazás továbbra is elérhető-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor végzett, törölje az erőforráscsoportok, a webes alkalmazások és a használatával minden kapcsolódó erőforrás [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
+Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Traffic Manager-profilt, amely a magas rendelkezésre állást biztosít a webalkalmazás. Forgalom szabályozásával kapcsolatos további információkért folytassa a Traffic Manager oktatóanyagok.
+Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Traffic Manager-oktatóanyagok](tutorial-traffic-manager-improve-website-response.md)

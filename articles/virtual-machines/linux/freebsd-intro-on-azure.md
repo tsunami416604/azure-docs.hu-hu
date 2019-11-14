@@ -1,5 +1,5 @@
 ---
-title: A FreeBSD bemutatása az Azure-ban | Microsoft Docs
+title: A FreeBSD bemutatása az Azure-ban
 description: Tudnivalók a FreeBSD rendszerű virtuális gépek használatáról az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: c1ac7a0310eda032b45fb57cea95ba38b753ef1d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: d243806d619aa6d7328220eae53804d734737489
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695350"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036125"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>A FreeBSD bemutatása az Azure-ban
 Ez a cikk áttekintést nyújt a FreeBSD rendszerű virtuális gépek Azure-ban való futtatásáról.
@@ -59,9 +59,9 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-A telepítés során a rendszer megkérdezi `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Ha a `y` értéket választja, és a `/etc/rc.conf` értéket `a path to an rc file to update` értékre adja meg, akkor a `ERROR: [Errno 13] Permission denied`. A probléma megoldásához meg kell adnia az írási jogot az aktuális felhasználónak a `etc/rc.conf` fájlon.
+A telepítés során a rendszer megkérdezi `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Ha `y` választ, és `a path to an rc file to update`ként adja meg a `/etc/rc.conf`, akkor előfordulhat, hogy a probléma `ERROR: [Errno 13] Permission denied`. A probléma megoldásához meg kell adnia az írási jogot az aktuális felhasználónak a fájl `etc/rc.conf`.
 
-Most már bejelentkezhet az Azure-ba, és létrehozhatja a FreeBSD rendszerű virtuális gépet. Az alábbi példa egy FreeBSD 11,0 virtuális gép létrehozását mutatja be. A `--public-ip-address-dns-name` paramétert is hozzáadhatja egy globálisan egyedi DNS-névvel az újonnan létrehozott nyilvános IP-címekhez. 
+Most már bejelentkezhet az Azure-ba, és létrehozhatja a FreeBSD rendszerű virtuális gépet. Az alábbi példa egy FreeBSD 11,0 virtuális gép létrehozását mutatja be. Hozzáadhat egy globálisan egyedi DNS-névvel rendelkező `--public-ip-address-dns-name` paramétert is az újonnan létrehozott nyilvános IP-címekhez. 
 
 ```azurecli
 az login 
@@ -89,7 +89,7 @@ A [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAcces
 * Hozzon létre egy új sudo-felhasználót a megadott jelszóval.
 * Állítsa a nyilvános gazda kulcsot a megadott kulccsal.
 * Állítsa alaphelyzetbe a virtuális gép kiépítés során megadott nyilvános gazdagép kulcsát, ha nincs megadva a gazdagép kulcsa.
-* Nyissa meg az SSH-portot (22), és állítsa vissza a sshd_config, ha a reset_ssh értéke TRUE (igaz).
+* Nyissa meg az SSH-portot (22), és állítsa vissza a sshd_config, ha reset_ssh True (igaz) értékre van állítva.
 * Távolítsa el a meglévő felhasználót.
 * Lemezek ellenőrzéséhez.
 * Javítsa ki a hozzáadott lemezt.
@@ -110,7 +110,7 @@ A [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/Cus
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Hitelesítés: felhasználónevek, jelszavak és SSH-kulcsok
 Ha a Azure Portal használatával hoz létre egy FreeBSD rendszerű virtuális gépet, meg kell adnia a felhasználónevet, a jelszót vagy az SSH nyilvános kulcsát.
 A FreeBSD rendszerű virtuális gépek Azure-beli üzembe helyezéséhez használt felhasználónevek nem egyeznek meg a virtuális gépen (például "root") már meglévő rendszerfiókok (UID < 100) neveivel.
-Jelenleg csak az RSA SSH-kulcs támogatott. A többsoros SSH-kulcsnak a `---- BEGIN SSH2 PUBLIC KEY ----` értékkel kell kezdődnie, és a `---- END SSH2 PUBLIC KEY ----` végződéssel kell végződnie.
+Jelenleg csak az RSA SSH-kulcs támogatott. A többsoros SSH-kulcsnak a `---- BEGIN SSH2 PUBLIC KEY ----`vel kell kezdődnie, és `---- END SSH2 PUBLIC KEY ----`kell végződnie.
 
 ## <a name="obtaining-superuser-privileges"></a>Rendszergazdai jogosultságok beszerzése
 Az Azure-beli virtuálisgép-példány üzembe helyezése során megadott felhasználói fiók egy kiemelt fiók. A sudo csomag a közzétett FreeBSD-rendszerképbe lett telepítve.
@@ -120,10 +120,10 @@ Miután bejelentkezett ezzel a felhasználói fiókkal, a parancs szintaxisa seg
 $ sudo <COMMAND>
 ```
 
-@No__t-0 használatával beszerezheti a legfelső szintű rendszerhéjt is.
+`sudo -s`használatával beszerezheti a legfelső szintű rendszerhéjt is.
 
 ## <a name="known-issues"></a>Ismert problémák
 Az [Azure VM-vendég ügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2-es verziója [ismert hibát](https://github.com/Azure/WALinuxAgent/pull/517) tartalmaz, amely az Azure-beli FreeBSD rendszerű virtuális gépek üzembe helyezési hibáját okozza. A javítást az [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) 2.2.3-es és újabb kiadásaiban rögzítettük. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Nyissa meg az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) -t egy FreeBSD rendszerű virtuális gép létrehozásához.

@@ -1,5 +1,5 @@
 ---
-title: Külső figyelő konfigurálása always on rendelkezésre állási csoportokhoz | Microsoft Docs
+title: Külső figyelő konfigurálása a rendelkezésre állási csoportokhoz
 description: Ez az oktatóanyag végigvezeti azon lépéseken, amelyekkel egy always on rendelkezésre állási csoport figyelője hozható létre az Azure-ban, amely külsőleg elérhető a társított felhőalapú szolgáltatás nyilvános virtuális IP-címének használatával.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 78881830d4e558daaad6e1929b30287e2731fb1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100416"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032722"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Külső figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Külső figyelő konfigurálása a rendelkezésre állási csoportokhoz az Azure SQL Server virtuális gépeken
 > [!div class="op_single_selector"]
 > * [Belső figyelő](../classic/ps-sql-int-listener.md)
 > * [Külső figyelő](../classic/ps-sql-ext-listener.md)
@@ -52,12 +53,12 @@ Ez a cikk a **külső terheléselosztást**használó figyelő létrehozására 
 ## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Elosztott terhelésű virtuálisgép-végpontok létrehozása közvetlen kiszolgálói visszatéréssel
 A külső terheléselosztás a virtuális gépeket üzemeltető felhőalapú szolgáltatás virtuális IP-címét használja. Így ebben az esetben nem kell létrehoznia vagy konfigurálnia a terheléselosztó-t.
 
-Minden Azure-replikát üzemeltető virtuális géphez létre kell hoznia egy elosztott terhelésű végpontot. Ha több régióban is vannak replikák, akkor az adott régió minden replikájának ugyanabban a felhőalapú szolgáltatásban kell lennie ugyanabban a VNet. A több Azure-régióra kiterjedő rendelkezésre állási csoport replikáinak létrehozásához több virtuális hálózatok-t kell konfigurálni. A VNet-kapcsolatok konfigurálásával kapcsolatos további információkért lásd: [VNet konfigurálása VNet](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)-kapcsolathoz.
+Minden Azure-replikát üzemeltető virtuális géphez létre kell hoznia egy elosztott terhelésű végpontot. Ha több régióban is vannak replikák, akkor az adott régió minden replikájának ugyanabban a felhőalapú szolgáltatásban kell lennie ugyanabban a VNet. A több Azure-régióra kiterjedő rendelkezésre állási csoport replikáinak létrehozásához több virtuális hálózatok-t kell konfigurálni. A VNet-kapcsolatok konfigurálásával kapcsolatos további információkért lásd: [VNet konfigurálása VNet-kapcsolathoz](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
 1. A Azure Portal navigáljon a replikát üzemeltető virtuális gépekhez, és tekintse meg a részleteket.
-2. Kattintson az egyes virtuális gépek végpontok fülére.
+2. Kattintson az egyes virtuális gépek **végpontok** fülére.
 3. Győződjön meg arról, hogy a használni kívánt figyelő végpontjának **neve** és **nyilvános portja** még nincs használatban. Az alábbi példában a név "MyEndpoint", a port pedig "1433".
-4. A helyi ügyfélen töltse le és telepítse [a legújabb PowerShell](https://azure.microsoft.com/downloads/)-modult.
+4. A helyi ügyfélen töltse le és telepítse [a legújabb PowerShell-modult](https://azure.microsoft.com/downloads/).
 5. **Azure PowerShell**elindítása. A rendszer új PowerShell-munkamenetet nyit meg az Azure felügyeleti modulok betöltésével.
 6. Run **Get-AzurePublishSettingsFile**. Ez a parancsmag arra utasítja a böngészőt, hogy töltsön le egy közzétételi beállítási fájlt egy helyi könyvtárba. Előfordulhat, hogy a rendszer felszólítja az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokra.
 7. Futtassa az **import-AzurePublishSettingsFile** parancsot a letöltött közzétételi beállítások fájljának elérési útjával:
@@ -126,10 +127,10 @@ Ha a figyelőt a virtuális hálózaton kívülről szeretné elérni, a ILB hel
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Az előző példától eltérően az SQL-hitelesítést kell használni, mivel a hívó nem használhatja a Windows-hitelesítést az interneten keresztül. További információkért lásd [: always on rendelkezésre állási csoport az Azure virtuális gépen: Ügyfél-csatlakozási](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)forgatókönyvek. SQL-hitelesítés használatakor győződjön meg arról, hogy ugyanazt a bejelentkezést hozza létre mindkét replikán. A rendelkezésre állási csoportokkal való bejelentkezések hibaelhárításával kapcsolatos további információkért lásd: [bejelentkezések leképezése vagy SQL Database-felhasználó használata más replikához való kapcsolódáshoz, valamint a rendelkezésre állási adatbázisok leképezése](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+Az előző példától eltérően az SQL-hitelesítést kell használni, mivel a hívó nem használhatja a Windows-hitelesítést az interneten keresztül. További információ [: always on rendelkezésre állási csoport az Azure-beli virtuális gépen: ügyfél-csatlakozási forgatókönyvek](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). SQL-hitelesítés használatakor győződjön meg arról, hogy ugyanazt a bejelentkezést hozza létre mindkét replikán. A rendelkezésre állási csoportokkal való bejelentkezések hibaelhárításával kapcsolatos további információkért lásd: [bejelentkezések leképezése vagy SQL Database-felhasználó használata más replikához való kapcsolódáshoz, valamint a rendelkezésre állási adatbázisok leképezése](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Ha az Always On replikák különböző alhálózatokban találhatók, az ügyfeleknek a **MultisubnetFailover = True** értéket kell megadniuk a kapcsolatok karakterláncában. Ennek eredményeképpen a párhuzamos kapcsolódás megkísérli a különböző alhálózatokban lévő replikákat. Vegye figyelembe, hogy ez a forgatókönyv több régióra kiterjedő always on rendelkezésre állási csoport központi telepítését is magában foglalja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
 

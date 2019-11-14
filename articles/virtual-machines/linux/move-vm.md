@@ -1,6 +1,6 @@
 ---
-title: Linux rendszerű virtuális gép áthelyezése az Azure-ban |} A Microsoft Docs
-description: Linux rendszerű virtuális gép áthelyezése egy másik Azure vagy erőforráscsoportonként csoportot a Resource Manager-alapú üzemi modellben.
+title: Linux rendszerű virtuális gép áthelyezése az Azure-ban
+description: Linux rendszerű virtuális gép áthelyezése egy másik Azure-előfizetésre vagy erőforráscsoporthoz a Resource Manager-alapú üzemi modellben.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,41 +15,41 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035646"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux rendszerű virtuális gép áthelyezése egy másik előfizetést vagy az erőforrás-csoport
-Ez a cikk végigvezeti egy Linux rendszerű virtuális gép (VM) áthelyezése erőforráscsoportok vagy előfizetések között. Virtuális gép áthelyezése előfizetések között lehet hasznos, ha létrehozott egy virtuális Gépet egy személyes előfizetésben, és most át kívánja helyezni a vállalati előfizetéséhez.
+# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux rendszerű virtuális gép áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
+Ez a cikk bemutatja, hogyan helyezhet át egy linuxos virtuális gépet (VM) Az erőforráscsoportok vagy előfizetések között. A virtuális gépek előfizetések közötti áthelyezése akkor lehet hasznos, ha létrehozott egy virtuális gépet egy személyes előfizetésben, és most át szeretné helyezni a céges előfizetésbe.
 
 > [!IMPORTANT]
->Jelenleg nem helyezhetők át az Azure Managed Disks. 
+>Jelenleg nem helyezhető át az Azure Managed Disks. 
 >
->Új erőforrás-azonosítók az áthelyezés során jönnek létre. Után a virtuális gép át lett helyezve, az eszközök és parancsfájlok használata az új erőforrás-azonosítók frissíteni kell. 
+>Az áthelyezés részeként új erőforrás-azonosítók jönnek létre. A virtuális gép áthelyezése után frissítenie kell az eszközöket és a parancsfájlokat az új erőforrás-azonosítók használatára. 
 > 
 > 
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Virtuális gép áthelyezése az Azure CLI használatával
 
 
-A továbblépés előtt a virtuális gép az Azure CLI-vel, annak biztosításához, hogy a forrás- és az előfizetések ugyanahhoz a bérlőhöz létezniük kell. Ellenőrizze, hogy mindkét előfizetéshez tartozik-e az azonos bérlő azonosítója, használja a [az fiók show](/cli/azure/account).
+Mielőtt áthelyezi a virtuális gépet az Azure CLI-vel, meg kell győződnie arról, hogy a forrás-és a cél-előfizetések ugyanazon a bérlőn belül találhatók. Annak a megadásához, hogy mindkét előfizetés ugyanazzal a bérlői AZONOSÍTÓval rendelkezik-e, használja az [az Account show](/cli/azure/account)lehetőséget.
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
 az account show --subscription myDestinationSubscription --query tenantId
 ```
-Ha a bérlőazonosítók a forrás- és előfizetés esetében nem ugyanaz, hogy kapcsolatba kell lépnie [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) kell helyeznie az erőforrásokat az új bérlőhöz.
+Ha a forrás-és a cél-előfizetéshez tartozó bérlői azonosítók nem egyeznek meg, forduljon az [ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és helyezze át az erőforrásokat egy új bérlőre.
 
-Sikerült áthelyezni egy virtuális gép, helyezze át a virtuális gép és a támogató erőforrások kell. Használja a [az erőforrások listájából](/cli/azure/resource) paranccsal listát készíthet az erőforráscsoportot és a hozzájuk tartozó azonosítóik összes erőforrást. Segít pipe Ez a parancs kimenete egy fájlba, így másolja és illessze be az azonosítók újabb parancsok.
+A virtuális gép sikeres áthelyezéséhez át kell helyeznie a virtuális gépet és annak összes támogató erőforrását. Az az [Resource List](/cli/azure/resource) parancs használatával listázhatja az erőforráscsoport összes erőforrását és azonosítóját. Ez segít a parancs kimenetének egy fájlba való átirányításában, így az azonosítókat később is másolhatja és beillesztheti.
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-Egy virtuális Gépet és erőforrásainak áthelyezése másik erőforráscsoportba, használja a [az erőforrás-áthelyezési](/cli/azure/resource). Az alábbi példa bemutatja, hogyan kívánja áthelyezni a virtuális gép és a leggyakrabban használt erőforrás-mennyiséggel. Használja a **-azonosítók** paramétert, és adja meg egy vesszővel tagolt (szóközök nélkül) azonosítók listáját az erőforrások áthelyezése.
+Ha egy virtuális gépet és erőforrásait egy másik erőforráscsoporthoz szeretné áthelyezni, használja [az az erőforrás áthelyezése](/cli/azure/resource)lehetőséget. Az alábbi példa bemutatja, hogyan helyezheti át a virtuális gépet és a szükséges leggyakoribb erőforrásokat. Használja az **-IDS** paramétert, és adja át az áthelyezni kívánt erőforrások azonosítóinak vesszővel tagolt listáját (szóközök nélkül).
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
@@ -65,12 +65,12 @@ az resource move \
     --destination-group "myDestinationResourceGroup"
 ```
 
-Ha szeretné helyezni a virtuális gép és az erőforrások másik előfizetésbe való, vegye fel a **– cél-subscriptionId** paraméterrel adja meg a cél előfizetést.
+Ha át szeretné helyezni a virtuális gépet és annak erőforrásait egy másik előfizetésbe, adja hozzá a **--Destination-subscriptionId** paramétert a cél előfizetésének megadásához.
 
-Amikor a rendszer felkéri, hogy szeretné-e a megadott erőforrások áthelyezése, adja meg, ellenőrizze **Y** megerősítéséhez.
+Ha a rendszer arra kéri, hogy erősítse meg, hogy szeretné-e áthelyezni a megadott erőforrásokat, adja meg az **Y** értéket a megerősítéshez.
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="next-steps"></a>További lépések
-Számos különböző típusú erőforrások helyezheti át erőforráscsoportok és előfizetések között. További információkért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../resource-group-move-resources.md).    
+## <a name="next-steps"></a>Következő lépések
+Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../resource-group-move-resources.md).    
 

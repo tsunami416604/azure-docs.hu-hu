@@ -1,5 +1,5 @@
 ---
-title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület | Microsoft Docs
+title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület
 description: Ismerje meg, hogyan optimalizálhatja megoldásának teljesítményét a Lsv2-sorozatú virtuális gépeken.
 services: virtual-machines-linux
 author: laurenhughes
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034758"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
 
@@ -45,13 +45,13 @@ Az Lsv2 sorozatú virtuális gépek az AMD EYPC™ kiszolgálói processzorokat 
 
 * A Lsv2-felhasználók nem hivatkozhatnak a virtuális gépen belül az adatmeghajtók számára jelentett NUMA-információkra (mind a 0-ra), hogy kidöntsenek a NUMA-affinitást az alkalmazásaikban. A jobb teljesítmény érdekében ajánlott a számítási feladatok felosztása a processzorok között, ha lehetséges.
 
-* A Lsv2 VM NVMe-eszközön a maximálisan támogatott üzenetsor-mélység/I/O-várólista-párok száma 1024 (vs. Amazon i3 QD 32 korlátja). A Lsv2-felhasználóknak a (szintetikus) teljesítménytesztek számítási feladatait a 1024-es vagy alacsonyabb várólista-mélységre kell korlátoznia a várólista teljes feltételeinek elindításához, ami csökkentheti a teljesítményt.
+* A Lsv2 VM NVMe-eszközhöz tartozó I/O-várólista-párok maximális támogatott üzenetsor-mélysége 1024 (vs. Amazon i3 QD 32 limit). A Lsv2-felhasználóknak a (szintetikus) teljesítménytesztek számítási feladatait a 1024-es vagy alacsonyabb várólista-mélységre kell korlátoznia a várólista teljes feltételeinek elindításához, ami csökkentheti a teljesítményt.
 
 ## <a name="utilizing-local-nvme-storage"></a>Helyi NVMe-tároló használata
 
 Az 1,92 TB-os NVMe-lemez helyi tárterülete minden Lsv2 virtuális gépen elmúló. A virtuális gép sikeres újraindításakor a helyi NVMe-lemezen lévő összes információ megmarad. Ha a virtuális gépet újra üzembe helyezi, lefoglalják vagy törölték, az NVMe nem maradnak meg. Az adatvédelem nem szűnik meg, ha egy másik probléma miatt a virtuális gép vagy a rajta futó hardver nem Kifogástalan állapotba kerül. Ha ez történik, a régi gazdagépen lévő összes adat biztonságos törlésre kerül.
 
-Olyan esetek is előfordulnak, amikor a virtuális gépet egy másik gazdagépre kell áthelyezni, például egy tervezett karbantartási művelet során. A tervezett karbantartási műveletek és néhány hardverhiba a Scheduled Eventssal várható. [](scheduled-events.md) A Scheduled Eventst kell használni az előre jelzett karbantartási és helyreállítási műveletek frissítésének megmaradása érdekében.
+Olyan esetek is előfordulnak, amikor a virtuális gépet egy másik gazdagépre kell áthelyezni, például egy tervezett karbantartási művelet során. A tervezett karbantartási műveletek és néhány hardverhiba a [Scheduled Eventssal](scheduled-events.md)várható. A Scheduled Eventst kell használni az előre jelzett karbantartási és helyreállítási műveletek frissítésének megmaradása érdekében.
 
 Abban az esetben, ha egy tervezett karbantartási esemény megköveteli, hogy a virtuális gép új, üres helyi lemezekkel rendelkező gazdagépen legyen létrehozva, akkor az adatokat újra kell szinkronizálni (a régi gazdagépen lévő összes adat biztonságos törléséhez). Ez azért fordul elő, mert a Lsv2-sorozatú virtuális gépek jelenleg nem támogatják a helyi NVMe-lemez élő áttelepítését.
 
@@ -83,7 +83,7 @@ Az ügyfél védelme érdekében az adatok biztonságos törlését szolgáló f
 - A virtuális gép nem Kifogástalan állapotba kerül, és hardveres probléma miatt egy másik csomópontra kell a szolgáltatást meggyógyítania.
 - Kis mennyiségű tervezett karbantartási karbantartási művelet, amely megköveteli, hogy a virtuális gép egy másik gazdagépre legyen hozzárendelve a karbantartáshoz.
 
-Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és](backup-and-disaster-recovery-for-azure-iaas-disks.md)vész-helyreállításával foglalkozó témakört.
+Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -93,21 +93,21 @@ Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági men
 * **Egyetlen NVMe lemezhiba miatt a gazdagépen lévő összes virtuális gép meghibásodik?**  
    Ha a hardver csomóponton lemezhiba észlelhető, a hardver hibás állapotban van. Ha ez történik, a csomóponton lévő összes virtuális gép automatikusan le lesz osztva, és egy kifogástalan állapotú csomópontra kerül. Az Lsv2 sorozatú virtuális gépek esetében ez azt jelenti, hogy az ügyfél hibás csomópontján lévő adatai is biztonságosan törlődnek, és az ügyfélnek újra létre kell hoznia az új csomóponton. Ahogy azt az élő áttelepítés az Lsv2-on való elérhetővé válása előtt megtörtént, a hibás csomóponton lévő adatai proaktív módon lesznek áthelyezve a virtuális gépekkel, mivel azokat egy másik csomópontra helyezzük át.
 
-* **Kell-e módosítani a rq_affinity a teljesítményhez?**  
-   A rq_affinity beállítás egy kisebb beállítás a másodpercenkénti maximális bemeneti/kimeneti műveletek (IOPS) használata esetén. Ha minden más jól működik, próbálja meg 0-ra beállítani a rq_affinity-t, hogy ellenőrizze, van-e különbség.
+* **Kell-e módosítani az rq_affinity a teljesítményhez?**  
+   A rq_affinity beállítás kisebb beállítás a másodpercenkénti maximális bemeneti/kimeneti műveletek (IOPS) használatakor. Ha minden más jól működik, próbálja meg rq_affinity 0-ra állítani, hogy a rendszer különbséget tesz-e.
 
-* **Módosítani kell a blk_mq-beállításokat?**  
-   A RHEL/CentOS 7. x automatikusan a BLK-MQ-t használja a NVMe-eszközökhöz. Nincs szükség konfigurációs módosításra vagy beállításra. A scsi_mod. use _blk_mq beállítás csak a SCSI esetében használatos, és a Lsv2 előzetes verziójában használták, mert a NVMe-eszközök a vendég virtuális gépeken SCSI-eszközként voltak láthatók. A NVMe-eszközök jelenleg NVMe-eszközökként jelennek meg, így a SCSI BLK-MQ beállítás nem releváns.
+* **Módosítani kell a blk_mq beállításokat?**  
+   A RHEL/CentOS 7. x automatikusan a BLK-MQ-t használja a NVMe-eszközökhöz. Nincs szükség konfigurációs módosításra vagy beállításra. A scsi_mod. use_blk_mq beállítás csak a SCSI esetében használható, és a Lsv2 előzetes verziójában használták, mert a NVMe-eszközök a vendég virtuális gépeken SCSI-eszközként voltak láthatók. A NVMe-eszközök jelenleg NVMe-eszközökként jelennek meg, így a SCSI BLK-MQ beállítás nem releváns.
 
 * **Módosítani kell a "Fio" kifejezést?**  
-   A L64v2 és a L80v2 virtuálisgép-méretekben a "Fio" értékkel rendelkező teljesítmény-mérési eszközzel maximális IOPS az egyes Rq_affinity-eszközökön a "NVMe" értékre kell állítani.  Ez a parancssor például a "rq_affinity" értéket állítja be nulla értékre egy L80v2 virtuális gépen lévő összes 10 NVMe-eszközön:
+   A L64v2 és a L80v2 virtuálisgép-méretekben a "Fio" értékkel rendelkező IOPS maximális számának megadásához állítsa a "rq_affinity" értéket 0-ra az egyes NVMe-eszközökön.  Ez a parancssor például a "rq_affinity" értéket állítja be nulla értékre egy L80v2 virtuális gépen lévő összes 10 NVMe-eszközön:
 
    ```console
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Azt is vegye figyelembe, hogy a legjobb teljesítmény akkor érhető el, ha az I/O-t közvetlenül a particionálás nélküli, a fájlrendszer nélküli, a RAID 0 konfigurációval nem rendelkező NVMe-eszközökön hajtja végre. A tesztelési munkamenet megkezdése előtt győződjön meg arról, hogy a konfiguráció ismert, friss/ `blkdiscard` tiszta állapotban van, és mindegyik NVMe-eszközön fut.
+   Azt is vegye figyelembe, hogy a legjobb teljesítmény akkor érhető el, ha az I/O-t közvetlenül a particionálás nélküli, a fájlrendszer nélküli, a RAID 0 konfigurációval nem rendelkező NVMe-eszközökön hajtja végre. A tesztelési munkamenet megkezdése előtt győződjön meg arról, hogy a konfiguráció ismert friss/tiszta állapotban van, ha az egyes NVMe-eszközökön `blkdiscard` futtat.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az Azure [tárolási teljesítményére optimalizált összes virtuális gép](sizes-storage.md) specifikációit

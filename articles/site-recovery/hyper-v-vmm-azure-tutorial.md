@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 0c570702e4c3899ef2847883e6fc8649e603a787
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953973"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039690"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>A VMM-felhőkben lévő helyszíni Hyper-V virtuális gépek vész-helyreállításának beállítása az Azure-ba
 
@@ -32,8 +32,6 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért tekintse át a [site Recovery dokumentációjának](https://docs.microsoft.com/azure/site-recovery) **útmutatók** szakaszának cikkeit.
 
-> [!WARNING]
-> A System Center VMM használatával a Hyper-V virtuális gépek vész-helyreállítási támogatása a közeljövőben elavulttá válik. A folytatás előtt ajánlott az [elavult](scvmm-site-recovery-deprecation.md) adatok olvasása.
 
 
 ## <a name="before-you-begin"></a>Előkészületek

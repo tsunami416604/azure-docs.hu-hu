@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI – létrehozása az Azure virtuális Gépet az Azure Monitor |} A Microsoft Docs
-description: Az Azure CLI – Windows Server 2016 virtuális gép és az Azure Monitor futtató Azure virtuális gép létrehozása.
+title: Azure CLI-minta – Azure Monitor rendszerű Azure-beli virtuális gép létrehozása
+description: Azure CLI-minta – Windows Server 2016 rendszerű virtuális gépet és Azure Monitor futtató Azure-beli virtuális gép létrehozása.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: e5bee7a2b9d203909ccd11c4485ecc850688f4ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708237"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039910"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>A figyelő egy virtuális Gépet az Azure Monitor naplóira
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Virtuális gép figyelése Azure Monitor naplókkal
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitor szolgáltatásban.
 
@@ -54,7 +54,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

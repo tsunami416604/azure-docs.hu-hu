@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933545"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030200"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V – Azure vész-helyreállítási architektúra
 
@@ -38,9 +38,6 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 
 ![Architektúra](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
-
-> [!WARNING]
-> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architektúra-összetevők – Hyper-V és VMM
 

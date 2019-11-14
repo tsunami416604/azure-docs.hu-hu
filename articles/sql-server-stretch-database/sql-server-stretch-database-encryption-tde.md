@@ -1,5 +1,5 @@
 ---
-title: Transzparens adattitkosítás engedélyezése Stretch Database-Azure-hoz | Microsoft Docs
+title: Stretch Database transzparens adattitkosítás engedélyezése
 description: Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli SQL Server Stretch Databasehoz
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -13,12 +13,13 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 61f556476958484b78b9c3dff2583eb6db043637
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66003037"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034017"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli Stretch Databasehoz
 > [!div class="op_single_selector"]
@@ -36,8 +37,8 @@ Ha engedélyezni szeretné a TDE egy olyan Azure-adatbázishoz, amely a stretch-
 
 1. Nyissa meg az adatbázist a [Azure Portal](https://portal.azure.com)
 2. Az adatbázis panelen kattintson a **Beállítások** gombra.
-3. Az **átlátszó adattitkosítási** lehetőség kiválasztása![][1]
-4. Válassza a be beállítást, majd kattintson a **Mentés** gombra.
+3. Válassza ki az **transzparens adattitkosítási** beállítást ![][1]
+4. Válassza a **be beállítást,** majd válassza a **Mentés**
    ![][2]
 
 ## <a name="disabling-encryption"></a>Titkosítás letiltása
@@ -46,7 +47,7 @@ Ha le szeretné tiltani egy olyan Azure-adatbázis TDE, amely a stretch-kompatib
 1. Nyissa meg az adatbázist a [Azure Portal](https://portal.azure.com)
 2. Az adatbázis panelen kattintson a **Beállítások** gombra.
 3. Az **átlátszó adattitkosítási** lehetőség kiválasztása
-4. Válassza ki a Kikapcsolva beállítást, majd kattintson a **Mentés** gombra.
+4. Válassza ki a **kikapcsolva** beállítást, majd kattintson a **Mentés** gombra.
 
 <!--Anchors-->
 [Transzparens adattitkosítás (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

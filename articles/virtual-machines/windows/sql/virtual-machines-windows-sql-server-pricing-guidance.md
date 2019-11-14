@@ -1,10 +1,9 @@
 ---
-title: Hatékonyan kezelheti az Azure Virtual Machines szolgáltatásokhoz való SQL Server költségeit | Microsoft Docs
+title: Díjszabási útmutató & a költségek kezelése
 description: Ajánlott eljárásokat biztosít a virtuális gépek díjszabásának megfelelő SQL Server kiválasztásához.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028630"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038878"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>A SQL Server Azure-beli virtuális gépek díjszabási útmutatója
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Az Azure SQL Server virtuális gépek díjszabási útmutatója
 
 Ez a cikk az Azure-ban [SQL Server virtuális gépek](virtual-machines-windows-sql-server-iaas-overview.md) díjszabását ismerteti. Több lehetőség is van, amelyek befolyásolják a költségeket, és fontos, hogy kiválassza a megfelelő képet, amely egyensúlyt teremt az üzleti követelményekkel.
 
@@ -58,7 +58,7 @@ Ha nem könnyű üzemi számítási feladattal rendelkezik, használja a követk
 |-----|-----|
 | Web | Kisméretű webhelyek |
 | Standard | Kis-és közepes számítási feladatok |
-| Vállalati | Nagy vagy kritikus fontosságú számítási feladatok|
+| Enterprise | Nagy vagy kritikus fontosságú számítási feladatok|
 
 A következő kiadásokra vonatkozóan két lehetőség SQL Server közül választhat: *fizetés/használat* vagy *saját licenc (BYOL)* .
 
@@ -139,7 +139,7 @@ A SQL Server licencelési díja közvetlenül kapcsolódik a vCPU számához. V�
 
 Az új gépi méretek bizonyos típusú SQL Server számítási feladatokhoz is jól működnek. Ezek a gépek méretei nagy mennyiségű memóriát, tárterületet és I/O-sávszélességet foglalnak magukban, de alacsonyabb virtualizált alapszámmal rendelkeznek. Vegyük például a következő példát:
 
-| Virtuális gép mérete | vCPU | Memory (Memória) | Lemezek maximális száma | Maximális I/O-átviteli sebesség | SQL licencelési költségek | Teljes költség (számítás + licencelés) |
+| Virtuális gép mérete | vCPU | Memória | Lemezek maximális száma | Maximális I/O-átviteli sebesség | SQL licencelési költségek | Teljes költség (számítás + licencelés) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 IOPS vagy 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 IOPS vagy 768 MB/s | 75%-kal alacsonyabb | 57%-kal alacsonyabb |
@@ -147,7 +147,7 @@ Az új gépi méretek bizonyos típusú SQL Server számítási feladatokhoz is 
 > [!IMPORTANT]
 > Ez egy időpontra vonatkozó példa. A legfrissebb specifikációkat a Windows és a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) [rendszerhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) készült Azure-díjszabást ismertető cikkben találja.
 
-Az előző példában láthatja, hogy a **Standard_DS14v2** és a **Standard_DS14-4v2** specifikációi azonosak, kivéve a vCPU. Az **Standard_DS14-4v2** **4v2** végén lévő utótag az aktív vCPU számát jelzi. Mivel SQL Server licencelési költségek a vCPU számával vannak kötve, ez jelentősen csökkenti a virtuális gép költségét olyan helyzetekben, amikor a további vCPU nem szükségesek. Ez az egyik példa, és számos, korlátozott vCPU rendelkező, az utótag mintázatával azonosított számítógép mérete van. További információ: új Azure-beli virtuálisgép- [méretek bejelentése a költséghatékony adatbázis-munkához](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+Az előző példában láthatja, hogy a **Standard_DS14v2** és a **Standard_DS14-4v2** specifikációi azonosak, kivéve a vCPU. Az **Standard_DS14-4v2** gép végén lévő **4V2** az aktív vCPU számát jelzi. Mivel SQL Server licencelési költségek a vCPU számával vannak kötve, ez jelentősen csökkenti a virtuális gép költségét olyan helyzetekben, amikor a további vCPU nem szükségesek. Ez az egyik példa, és számos, korlátozott vCPU rendelkező, az utótag mintázatával azonosított számítógép mérete van. További információ: új Azure-beli virtuálisgép- [méretek bejelentése a költséghatékony adatbázis-munkához](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 ### <a name="shut-down-your-vm-when-possible"></a>A virtuális gép leállítása, ha lehetséges
 
@@ -164,7 +164,7 @@ Más munkafolyamatok esetében érdemes lehet az Azure-beli virtuális gépek au
 > [!IMPORTANT]
 > A költségek elkerülése érdekében a virtuális gép leállítása és felszabadítása az egyetlen módszer. A virtuális gép leállításához szükséges energiaellátási beállítások egyszerűen leállíthatók, és a használati díjak is megmaradnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure díjszabásával kapcsolatos általános útmutatóért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../../billing/billing-getting-started.md). A legújabb Virtual Machines díjszabásról, beleértve a SQL Servert is, tekintse meg a [Windows rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) és a Linux rendszerű virtuális [gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)Azure-beli virtuálisgép-díjszabás
 

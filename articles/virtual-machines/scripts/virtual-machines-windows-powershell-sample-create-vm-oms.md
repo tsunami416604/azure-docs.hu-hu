@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl mintája – Azure Monitor naplók | Microsoft Docs
+title: Azure PowerShell parancsfájl mintája – Azure Monitor naplók
 description: Azure PowerShell parancsfájl mintája – Azure Monitor naplók
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ddca46e56186ad471f76e0eb152410d88282b4f7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: fdffb05ac7aff8aac2db9ac588c1dedf8f5c9ea5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749752"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038960"
 ---
 # <a name="create-an-azure-monitor-vm-with-powershell"></a>Azure Monitor virtuális gép létrehozása a PowerShell-lel 
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Egy virtuálisgép-bővítményt ad hozzá a virtuális géphez. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

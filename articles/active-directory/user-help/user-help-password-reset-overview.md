@@ -1,5 +1,5 @@
 ---
-title: Saját munkahelyi vagy iskolai jelszavának átállítása – Azure Active Directory | Microsoft Docs
+title: Saját munkahelyi vagy iskolai jelszó átállítása – Azure AD
 description: A munkahelyi vagy iskolai jelszavának rendszergazdai segítség nélküli regisztrálására és alaphelyzetbe állítására vonatkozó cikkekre mutató hivatkozások listája.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160603"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028508"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Saját munkahelyi vagy iskolai jelszó átállítása – áttekintés
 
@@ -34,5 +34,5 @@ A jelszó-visszaállításhoz és a jelszó alaphelyzetbe állításához szüks
 
 |Cikk |Leírás |
 |------|------------|
-| [Regisztrálás az önkiszolgáló jelszó-visszaállításhoz](active-directory-passwords-reset-register.md) ] Útmutatás a hitelesítési módszerek ellenőrzéséhez és az önkiszolgáló jelszó-visszaállításhoz való regisztrációhoz, hogy visszaállítsa a saját jelszavát.|
-| [Jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) ] Útmutató a munkahelyi vagy iskolai fiók jelszavának alaphelyzetbe állításához vagy feloldásához.|
+| [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md) | Útmutatás a hitelesítési módszerek ellenőrzéséhez és az önkiszolgáló jelszó-visszaállításhoz való regisztrációhoz, hogy visszaállítsa a saját jelszavát. |
+| [Új jelszó kérése](active-directory-passwords-update-your-own-password.md) | Útmutató a munkahelyi vagy iskolai fiók jelszavának alaphelyzetbe állításához vagy feloldásához. |

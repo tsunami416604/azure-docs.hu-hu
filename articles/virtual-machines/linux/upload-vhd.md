@@ -1,5 +1,5 @@
 ---
-title: Egyéni linuxos virtuális gép feltöltése vagy másolása az Azure CLI-vel | Microsoft Docs
+title: Egyéni linuxos virtuális gép feltöltése vagy másolása az Azure CLI-vel
 description: Testreszabott virtuális gép feltöltése vagy másolása a Resource Manager-alapú üzemi modell és az Azure CLI használatával
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cc01266bb6e7f122868257e8a5b9e88e78dddea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553496"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034303"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -40,7 +40,7 @@ A következő lépések elvégzéséhez a következőkre lesz szüksége:
 
 - Az Azure-ban használatra előkészített Linux rendszerű virtuális gép. Ez a cikk a [virtuális gép előkészítése](#prepare-the-vm) című szakasza ismerteti, hogyan lehet megkeresni a disztribúcióval kapcsolatos információkat az Azure Linux-ügynök (waagent) telepítésével kapcsolatban, amely szükséges ahhoz, hogy SSH-val csatlakozzon egy virtuális géphez.
 - Egy meglévő [Azure által támogatott Linux-disztribúcióból](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) származó vhd-fájl (vagy a [nem támogatott disztribúciókkal kapcsolatos információk](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) egy virtuális lemezre a VHD formátumban. Több eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
-  - Telepítse és konfigurálja a [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) -t vagy a [KVM](https://www.linux-kvm.org/page/RunningKVM)-t, ügyelve arra, hogy a VHD-t használja képformátumként. Ha szükséges, [átalakíthat egy rendszerképet](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) `qemu-img convert` használatával.
+  - Telepítse és konfigurálja a [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) -t vagy a [KVM](https://www.linux-kvm.org/page/RunningKVM)-t, ügyelve arra, hogy a VHD-t használja képformátumként. Ha szükséges, [átalakíthat egy rendszerképet](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) `qemu-img convert`használatával.
   - A Hyper-V-t [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx)rendszeren is használhatja.
 
 > [!NOTE]
@@ -51,7 +51,7 @@ A következő lépések elvégzéséhez a következőkre lesz szüksége:
 
 - Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és bejelentkezett egy Azure-fiókba az [az login](/cli/azure/reference-index#az-login)paranccsal.
 
-Az alábbi példákban cserélje le a példában szereplő paramétereket a saját értékeire, például `myResourceGroup`, `mystorageaccount` és `mydisks`.
+Az alábbi példákban cserélje le a példában szereplő paramétereket a saját értékeire, például `myResourceGroup`, `mystorageaccount`és `mydisks`.
 
 <a id="prepimage"> </a>
 

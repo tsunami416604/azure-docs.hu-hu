@@ -1,5 +1,5 @@
 ---
-title: Zónában lévő Windows rendszerű virtuális gép létrehozása a Azure Portal | Microsoft Docs
+title: Zónában lévő Windows rendszerű virtuális gép létrehozása a Azure Portal
 description: Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c6f843693ccfa16f9b31027ba370242e0462b138
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168557"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033896"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
 
@@ -46,7 +46,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Virtuális gép méretének kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. A **Beállítások** > **magas rendelkezésre állása**területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK**gombra.
+5. A **beállítások** > **magas rendelkezésre állás**területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK**gombra.
 
     ![Rendelkezésre állási zóna kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
@@ -72,6 +72,6 @@ Ezen erőforrások zónájának beállításait a portálon ellenőrizheti.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](availability.md) .

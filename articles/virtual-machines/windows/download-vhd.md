@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális merevlemez letöltése az Azure-ból | Microsoft Docs
+title: Windows rendszerű virtuális merevlemez letöltése az Azure-ból
 description: Töltse le a Windows VHD-t a Azure Portal használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5891d7ea2b53ab3524cfff267e71b4f05779cfc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079625"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033594"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Windows rendszerű virtuális merevlemez letöltése az Azure-ból
 
@@ -53,9 +53,9 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 1.  A virtuális gép paneljének menüjében kattintson a **lemezek**elemre.
 2.  Válassza ki a virtuális gép operációsrendszer-lemezét, majd kattintson a **lemez exportálása**lehetőségre.
 3.  Állítsa be az URL-cím lejárati idejét *36000*-ra.
-4.  Kattintson az **URL-cím**előállítása gombra.
+4.  Kattintson az **URL-cím előállítása**gombra.
 
-    ![URL-cím generálása](./media/download-vhd/export-generate-new.png)
+    ![URL-cím előállítása](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > A lejárati idő megnő az alapértelmezetttől, hogy elegendő időt biztosítson a nagyméretű VHD-fájl letöltésére a Windows Server operációs rendszer számára. A Windows Server operációs rendszert tartalmazó VHD-fájl várhatóan több órányi letöltést is igénybe vehet a kapcsolódástól függően. Ha egy adatlemezre letölt egy VHD-t, az alapértelmezett idő elegendő. 
@@ -72,7 +72,7 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 
     ![Kattintson a Mentés gombra a böngészőben](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [tölthet fel egy VHD-fájlt az Azure-](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ba. 
 - [Felügyelt lemezek létrehozása a nem felügyelt lemezekről egy Storage-fiókban](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – LEMP üzembe helyezése Linux rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+title: Oktatóanyag – LEMP üzembe helyezése Linux rendszerű virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan telepíthet LEMP stacket az Azure-ban üzemeltetett linuxos virtuális gépre
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299385"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034455"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LEMP-webkiszolgáló telepítése Linux rendszerű virtuális gépre az Azure-ban
 
-Ez a cikk ismerteti, hogyan helyezhet üzembe NGINX-webkiszolgálót, MySQL-t és PHP-t (a LEMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. A LEMP-verem a népszerű [LAMP-verem](tutorial-lamp-stack.md) alternatívája, amelyet az Azure-ban is telepíthet. Ha szeretné működés közben megtekinteni a LEMP-kiszolgálót, telepíthet és konfigurálhat egy WordPress-webhelyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez a cikk ismerteti, hogyan helyezhet üzembe NGINX-webkiszolgálót, MySQL-t és PHP-t (a LEMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. A LEMP-verem a népszerű [LAMP-verem](tutorial-lamp-stack.md) alternatívája, amelyet az Azure-ban is telepíthet. Ha szeretné működés közben megtekinteni a LEMP-kiszolgálót, telepíthet és konfigurálhat egy WordPress-webhelyet. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Ubuntu rendszerű virtuális gép létrehozása (a LEMP-veremben az „L” betű)
@@ -74,7 +74,7 @@ Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetű
 mysql -V
 ```
 
-A MySQL telepítésének biztonságossá tételéhez, beleértve a gyökér jelszavának beállítását is, futtassa a `mysql_secure_installation` parancsfájlt. 
+A MySQL telepítésének biztonságossá tételéhez, beleértve a legfelső szintű jelszó beállítását is, futtassa a `mysql_secure_installation` szkriptet. 
 
 ```bash
 sudo mysql_secure_installation
@@ -107,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-A szerkesztőben cserélje le az `/etc/nginx/sites-available/default` tartalmát az alábbira. A megjegyzésekben találja a beállítások magyarázatát. Helyettesítse be a virtuális gép nyilvános IP-címét a *yourPublicIPAddress*, erősítse meg a PHP-verziót `fastcgi_pass`-ben, és hagyja meg a többi beállítást. Ezután mentse a fájlt.
+A szerkesztőben cserélje le az `/etc/nginx/sites-available/default` tartalmát az alábbira. A megjegyzésekben találja a beállítások magyarázatát. Helyettesítse be a virtuális gép nyilvános IP-címét a *yourPublicIPAddress*, erősítse meg `fastcgi_pass`a PHP-verziót, és hagyja meg a többi beállítást. Ezután mentse a fájlt.
 
 ```
 server {

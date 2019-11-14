@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57bea93fd03dc19caa1ce29a34a40bc3cff06209
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499928"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039054"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -36,7 +36,7 @@ Az alábbi módokon biztosíthatja az ilyen típusú triggerekhez való hozzáf�
 
 * [Közös hozzáférési aláírások előállítása](#sas)
 * [Bejövő IP-címek korlátozása](#restrict-inbound-ip-addresses)
-* [Azure Active Directory, OAuth vagy más biztonsági szolgáltatás hozzáadása](#add-authentication)
+* [Azure Active Directory OAuth vagy más biztonsági szolgáltatás hozzáadása](#add-authentication)
 
 <a name="sas"></a>
 
@@ -163,9 +163,9 @@ Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzemb
 
 <a name="add-authentication"></a>
 
-### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory, OAuth vagy más biztonsági szolgáltatás hozzáadása
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory OAuth vagy más biztonsági szolgáltatás hozzáadása
 
-Ha további hitelesítési protokollokat szeretne hozzáadni a logikai alkalmazáshoz, érdemes lehet az [Azure API Management](../api-management/api-management-key-concepts.md) szolgáltatást használni. Ez a szolgáltatás lehetővé teszi a logikai alkalmazás API-ként való kihirdetését, és részletes monitorozást, biztonságot, szabályzatot és dokumentációt biztosít bármely végpont számára. A API Management nyilvános vagy privát végpontot tehet közzé a logikai alkalmazás számára. Ezután az adott végponthoz való hozzáférés engedélyezéséhez Azure Active Directory-, OAuth-, tanúsítvány-vagy egyéb biztonsági szabványokat is használhat. Ha API Management kap egy kérést, a szolgáltatás elküldi a kérést a logikai alkalmazásnak, valamint a szükséges átalakításokat vagy korlátozásokat a módszernek megfelelően. Ahhoz, hogy csak API Management aktiválja a logikai alkalmazást, használhatja a logikai alkalmazás bejövő IP-tartományának beállításait.
+Ha további hitelesítési protokollokat szeretne hozzáadni a logikai alkalmazáshoz, érdemes lehet az [Azure API Management](../api-management/api-management-key-concepts.md) szolgáltatást használni. Ez a szolgáltatás lehetővé teszi a logikai alkalmazás API-ként való kihirdetését, és részletes monitorozást, biztonságot, szabályzatot és dokumentációt biztosít bármely végpont számára. A API Management nyilvános vagy privát végpontot tehet közzé a logikai alkalmazás számára. A végponthoz való hozzáférés engedélyezéséhez [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), [ügyféltanúsítványt](#client-certificate-authentication)vagy más biztonsági szabványokat használhat a végpont elérésének engedélyezéséhez. Ha API Management kap egy kérést, a szolgáltatás elküldi a kérést a logikai alkalmazásnak, valamint a szükséges átalakításokat vagy korlátozásokat a módszernek megfelelően. Ahhoz, hogy csak API Management aktiválja a logikai alkalmazást, használhatja a logikai alkalmazás bejövő IP-tartományának beállításait.
 
 <a name="secure-operations"></a>
 
@@ -361,7 +361,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 Ha különböző környezetekben végez üzembe helyezést, érdemes parameterizing a munkafolyamat-definícióban szereplő értékeket, amelyek az adott környezettől függően változnak. Így elkerülhetők a rögzített adatok egy [Azure Resource Manager sablonnal](../azure-resource-manager/template-deployment-overview.md) a logikai alkalmazás üzembe helyezéséhez, a bizalmas adatok védelméhez a biztonságos paraméterek meghatározásával, valamint az adatok továbbítása külön bemenetként a [sablon paramétereinek](../azure-resource-manager/template-parameters.md) használatával egy [paraméter-fájl](../azure-resource-manager/resource-manager-parameter-files.md).
 
-Ha például [Azure Active Directory](#azure-active-directory-oauth-authentication)használatával hitelesíti a http-műveleteket, megadhatja és biztonságossá teheti azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, használja a Logic apps munkafolyamat-definíciójának `parameters` szakaszát, és a Resource Manager-sablont a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek elrejtéséhez adja meg a paramétereket a `securestring` vagy `secureobject` típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. Ha a paraméter értékeit futásidőben szeretné elérni, használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definíciójában. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
+Ha például [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)hitelesíti a http-műveleteket, megadhatja és biztonságossá teheti azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, használja a Logic apps munkafolyamat-definíciójának `parameters` szakaszát, és a Resource Manager-sablont a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek elrejtéséhez adja meg a paramétereket a `securestring` vagy `secureobject` típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. Ha a paraméter értékeit futásidőben szeretné elérni, használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definíciójában. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
 
 > [!NOTE]
 > Ha a kérelem fejlécében vagy törzsében paramétert használ, akkor ez a paraméter látható lesz a logikai alkalmazás futtatási előzményeinek és a kimenő HTTP-kérések megtekintésekor. Győződjön meg arról, hogy a tartalom-hozzáférési házirendeket is megfelelően állította be. A futtatási előzményekben lévő bemenetek és kimenetek elrejtéséhez is használhatja a [elhomályosítás](#obfuscate) lehetőséget. Az engedélyezési fejlécek soha nem láthatók bemeneteken vagy kimeneteken keresztül. Tehát ha van titok, a titkos kód nem kérhető le.
@@ -573,7 +573,17 @@ Ez a példa több olyan biztonságos paraméter-definíciót tartalmaz, amelyek 
 
 * Hitelesítés hozzáadása a kimenő kérelmekhez.
 
-  Ha olyan HTTP-alapú triggerrel vagy művelettel dolgozik, amely kimenő hívásokat végez, például HTTP, HTTP + henceg vagy webhook, akkor a logikai alkalmazás által küldött kérelemhez is hozzáadhat hitelesítést. Használhat például egyszerű hitelesítést, ügyféltanúsítvány-alapú hitelesítést, [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) hitelesítést vagy felügyelt identitást. További információ: a [kimenő hívások hitelesítésének hozzáadása](#add-authentication-outbound) a témakör későbbi részében.
+  Ha olyan HTTP-alapú triggerrel vagy művelettel dolgozik, amely kimenő hívásokat végez, például HTTP, HTTP + henceg vagy webhook, akkor a logikai alkalmazás által küldött kérelemhez is hozzáadhat hitelesítést. Használhatja például a következő hitelesítési típusokat:
+
+  * [Alapszintű hitelesítés](#basic-authentication)
+
+  * [Ügyféltanúsítvány-alapú hitelesítés](#client-certificate-authentication)
+
+  * [Active Directory OAuth-hitelesítés](#azure-active-directory-oauth-authentication)
+
+  * [Felügyelt identitások hitelesítése](#managed-identity-authentication)
+  
+  További információ: a [kimenő hívások hitelesítésének hozzáadása](#add-authentication-outbound) a témakör későbbi részében.
 
 * A logikai alkalmazás IP-címeitől való hozzáférés korlátozása.
 
@@ -617,7 +627,7 @@ Ha az [alapszintű](../active-directory-b2c/active-directory-b2c-custom-rest-api
 
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
-| **Hitelesítés** | `type` | Igen | Basic | A használni kívánt hitelesítési típus |
+| **Hitelesítés** | `type` | Igen | Alapszintű | A használni kívánt hitelesítési típus |
 | **Felhasználónév** | `username` | Igen | <*felhasználónév*>| A cél szolgáltatási végponthoz való hozzáférés hitelesítéséhez használt Felhasználónév |
 | **Jelszó** | `password` | Igen | <*jelszó*> | A cél szolgáltatási végponthoz való hozzáférés hitelesítéséhez használt jelszó |
 ||||||
@@ -650,7 +660,7 @@ Ha az [ügyféltanúsítvány](../active-directory/authentication/active-directo
 |---------------------|-----------------|----------|-------|-------------|
 | **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A SSL-(SSL-) Ügyféltanúsítványok esetében használandó hitelesítési típus. Míg az önaláírt tanúsítványok támogatottak, az önaláírt tanúsítványok nem támogatottak az SSL-hez. |
 | **Pfx** | `pfx` | Igen | <*kódolású-pfx-file-content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
-| **Jelszó** | `password`| Igen | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó |
+| **Jelszó** | `password`| Lásd a leírást | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó. <p><p>**Megjegyzés**: Ez a tulajdonságérték akkor szükséges, ha a Logic app Designerben dolgozik, és *nem* szükséges a kód nézetben való munka során. |
 |||||
 
 Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kifejezésekkel érheti el ezeket a paramétereket futásidőben. Ez a példa a HTTP-művelet definíciója meghatározza a hitelesítési `type` `ClientCertificate` és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékeinek lekéréséhez:
@@ -687,10 +697,10 @@ Ha a [Active Directory OAuth](../active-directory/develop/about-microsoft-identi
 
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
-| **Hitelesítés** | `type` | Igen | **Active Directory OAuth** <br>vagy <br>`ActiveDirectoryOAuth` | A használni kívánt hitelesítési típus. A Logic Apps jelenleg a [OAuth 2,0 protokollt](../active-directory/develop/v2-overview.md)követi. |
-| **Bérlő** | `tenant` | Igen | <*bérlő-azonosító*> | Az Azure AD-bérlő bérlői azonosítója |
+| **Hitelesítés** | `type` | Igen | **Active Directory OAuth** <br>vagy <br>`ActiveDirectoryOAuth` | A használandó hitelesítés típusa. A Logic Apps jelenleg a [OAuth 2,0 protokollt](../active-directory/develop/v2-overview.md)követi. |
+| **Bérlő** | `tenant` | Igen | <*tenant-ID*> | Az Azure AD-bérlő bérlői azonosítója |
 | **Célközönség** | `audience` | Igen | *erőforrás-engedélyezés* <> | Az engedélyezéshez használni kívánt erőforrás, például `https://management.core.windows.net/` |
-| **Ügyfél-azonosító** | `clientId` | Igen | <*ügyfél-azonosító*> | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |
+| **Ügyfél-azonosító** | `clientId` | Igen | <*client-ID*> | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |
 | **Hitelesítő adat típusa** | `credentialType` | Igen | Tanúsítvány <br>vagy <br>Titkos | Az ügyfél által a hitelesítés kérelmezéséhez használt hitelesítő adat típusa. Ez a tulajdonság és érték nem jelenik meg a logikai alkalmazás alapjául szolgáló definícióban, de meghatározza a kiválasztott hitelesítőadat-típushoz megjelenő tulajdonságokat. |
 | **Titkos kód** | `secret` | Igen, de csak a "titkos" hitelesítő adatok típusához | <*ügyfél-titkos*> | Az engedélyezést kérő ügyfél titka |
 | **Pfx** | `pfx` | Igen, de csak a "tanúsítvány" hitelesítő adat típusa esetén | <*kódolású-pfx-file-content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
@@ -797,7 +807,7 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Üzembe helyezés automatizálása Azure Logic Apps](logic-apps-azure-resource-manager-templates-overview.md)  
 * [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)  

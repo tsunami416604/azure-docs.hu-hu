@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: ecec237eab42cf434ab8627ebdf9b1e34f3ab3f1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838134"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039130"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Egyéni API-k biztonságos hívása Azure Logic Apps
 
@@ -202,14 +202,14 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
-| célközönség | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| tenant | Igen | Az Azure AD-bérlő GUID azonosítója | 
+| audience | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
 | clientId | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
 | titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
 | type | Igen | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. | 
 |||| 
 
-Példa:
+Például:
 
 ``` json
 {
@@ -251,12 +251,12 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 } 
 ```
 
-| Tulajdonság | Kötelező | Leírás | 
-| -------- | -------- | ----------- | 
-| type | Igen | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az értéknek `ClientCertificate`nak kell lennie. | 
-| jelszó | Igen | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) | 
-| pfx | Igen | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) | 
-|||| 
+| Tulajdonság | Kötelező | Leírás |
+| -------- | -------- | ----------- |
+| `type` | Igen | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az értéknek `ClientCertificate`nak kell lennie. |
+| `password` | Nem | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
+| `pfx` | Igen | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) |
+||||
 
 <a name="basic"></a>
 
@@ -296,6 +296,6 @@ and not use the Azure portal, learn how to
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni API-k üzembe helyezése és meghívása a Logic app-munkafolyamatokból](../logic-apps/logic-apps-custom-api-host-deploy-call.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával | Microsoft Docs
+title: Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával
 description: Az Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828392"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035658"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával
 
@@ -39,9 +39,9 @@ Hozzon létre egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA keleti* r
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
-Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést @ no__t-1random number >* nevű Storage-fiókot, és a **storageacct tárfiókban**változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, a `$RANDOM` értékkel hozzáfűz egy számot a végéhez, hogy az egyedi legyen.
+Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy Mystorageacct kifejezést nevű Storage-fiókot *\<véletlenszerű számú >* , és a **storageacct tárfiókban**változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, a `$RANDOM` használatával a végponthoz hozzáfűz egy számot, hogy az egyedi legyen.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -99,7 +99,7 @@ Csatlakoztassa az Azure-fájlmegosztást a helyi könyvtárba.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. Pontosabban, a file_mode és a dir_mode beállítások a fájlok és könyvtárak beállítását `0777` engedélyre állítja be. A `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
+A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. A file_mode és az dir_mode lehetőség a fájlok és könyvtárak beállítását adja meg az engedély `0777`ához. A `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
 
 
 ## <a name="persist-the-mount"></a>A csatlakoztatás fenntartása
@@ -111,7 +111,7 @@ A Linux rendszerű virtuális gép újraindításakor a csatlakoztatott SMB-mego
 ```
 Az éles környezetek fokozott biztonsága érdekében a hitelesítő adatokat az fstab-n kívül kell tárolnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Linux rendszerű virtuális gép testreszabása a Cloud-init használatával a létrehozás során](using-cloud-init.md)
 - [Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)](add-disk.md)

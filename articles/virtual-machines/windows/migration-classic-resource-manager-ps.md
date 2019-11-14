@@ -1,5 +1,5 @@
 ---
-title: Migrálás a Resource Managerbe a PowerShell használatával | Microsoft Docs
+title: Migrálás a Resource Managerbe a PowerShell használatával
 description: Ez a cikk a IaaS-erőforrások, például a virtuális gépek (VM-EK), a virtuális hálózatok (virtuális hálózatok), valamint a Klasszikusból a Azure Resource Managerba (ARM) való, Azure PowerShell parancsok használatával történő áttelepítését ismerteti.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 01d5670add82291cb91264ab41fcd312a338840c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 99650b090a84fd417fca5bbeb1ce3f58d32729bb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749325"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033212"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>IaaS-erőforrások migrálása klasszikusról Azure Resource Managerra Azure PowerShell használatával
 Ezek a lépések bemutatják, hogyan használhatók Azure PowerShell parancsok a klasszikus üzemi modellből származó infrastruktúra szolgáltatásként (IaaS) a Azure Resource Manager üzembe helyezési modellbe való áttelepítéséhez.
@@ -342,7 +342,7 @@ Ha befejezte a virtuális gépek áttelepítését, javasoljuk, hogy a Storage-f
         Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

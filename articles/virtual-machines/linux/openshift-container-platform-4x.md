@@ -1,5 +1,5 @@
 ---
-title: A OpenShift Container platform 4. x telepítése az Azure-ban | Microsoft Docs
+title: A OpenShift Container platform 4. x telepítése az Azure-ban
 description: Telepítse az OpenShift Container platform 4. x verzióját az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 9f807823b1d0d8079c43b2ba0e074a1c8a91b458
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 213c02b76f822d134729ebc4c0e6bff40f62089f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392682"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035440"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>A OpenShift Container platform 4. x telepítése az Azure-ban
 

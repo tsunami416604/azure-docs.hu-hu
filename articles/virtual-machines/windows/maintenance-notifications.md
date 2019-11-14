@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gépek karbantartási értesítéseinek kezeléséhez az Azure-ban | Microsoft Docs
+title: Windows rendszerű virtuális gépek karbantartási értesítéseinek kezeléséhez az Azure-ban
 description: Megtekintheti az Azure-ban futó Windowsos virtuális gépek karbantartási értesítéseit, és megkezdheti az önkiszolgáló karbantartást.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 2e7f51ecb948764f6ac4c3e7a52dc14ef5d00741
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6e269e9b21fe16a1d77b4e1f714517f91fa531d4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749371"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039193"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>A Windows rendszerű virtuális gépek tervezett karbantartási értesítéseinek kezeléséhez
 
@@ -211,6 +211,6 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 4.  A virtuális gép **automatikus leállítása** be van kapcsolva
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan regisztrálhat a virtuális gépen lévő karbantartási eseményekre [Scheduled Events](scheduled-events.md)használatával.

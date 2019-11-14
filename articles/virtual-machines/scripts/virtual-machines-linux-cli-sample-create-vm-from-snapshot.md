@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Virtuális gép létrehozása pillanatképből | Microsoft Docs
+title: Azure CLI-példaszkript – Virtuális gép létrehozása pillanatképből
 description: Azure CLI-példaszkript – Virtuális gép létrehozása pillanatképből
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 33f21786b1af4d169d184487a030b7e4ea321327
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92f56ef06583bbd59509337352e1509b35b449a6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304531"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032603"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Virtuális gép létrehozása pillanatképből a CLI használatával
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja egy felügyelt lemez, egy virtuá
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Felügyelt lemezeket hoz létre egy pillanatképből a pillanatkép-azonosító, a lemeznév, a tárhelytípus és a méret alapján.  |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Létrehoz egy virtuális gépet egy felügyelt operációsrendszer-lemezből. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

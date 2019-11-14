@@ -1,5 +1,5 @@
 ---
-title: Azure N-Series GPU illesztőprogram-telepítő Linux rendszerhez | Microsoft Docs
+title: Azure N-Series GPU illesztőprogram-telepítő Linux rendszerhez
 description: NVIDIA GPU-illesztőprogramok beállítása az Azure-ban Linux rendszerű N sorozatú virtuális gépekhez
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3abc221295a90dfbf7e46e3bd5bff1c8c0937162
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6ebc991d54ef902eb653cf2d99b2f74f18551568
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035019"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035625"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -98,7 +98,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS vagy Red Hat Enterprise Linux
 
-1. Frissítse a kernelt (ajánlott). Ha úgy dönt, hogy nem frissíti a kernelt, győződjön meg arról, hogy az `kernel-devel` és a `dkms` verziója megfelel a rendszermagnak.
+1. Frissítse a kernelt (ajánlott). Ha úgy dönt, hogy nem frissíti a kernelt, győződjön meg arról, hogy az `kernel-devel` és a `dkms` verziója megfelelő a rendszermag számára.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -190,7 +190,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    
    sudo apt-get install linux-azure -y
    ```
-3. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NVv2-alapú virtuális gépeken.) Ehhez hozzon létre egy fájlt `/etc/modprobe.d` nevű `nouveau.conf` névvel a következő tartalommal:
+3. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NVv2-alapú virtuális gépeken.) Ehhez hozzon létre egy fájlt a `nouveau.conf` nevű `/etc/modprobe.d` a következő tartalommal:
 
    ```
    blacklist nouveau
@@ -223,14 +223,14 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Adja hozzá a következőt a `/etc/nvidia/gridd.conf` értékhez:
+8. Adja hozzá a következőt a `/etc/nvidia/gridd.conf`hoz:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Távolítsa el az alábbiakat a `/etc/nvidia/gridd.conf` értékről, ha az megtalálható:
+9. Ha van ilyen, távolítsa el az alábbiakat `/etc/nvidia/gridd.conf`, ha vannak ilyenek:
  
    ```
    FeatureType=0
@@ -240,7 +240,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS vagy Red Hat Enterprise Linux 
 
-1. Frissítse a kernelt és a DKMS (ajánlott). Ha úgy dönt, hogy nem frissíti a kernelt, győződjön meg arról, hogy az `kernel-devel` és a `dkms` verziója megfelel a rendszermagnak.
+1. Frissítse a kernelt és a DKMS (ajánlott). Ha úgy dönt, hogy nem frissíti a kernelt, győződjön meg arról, hogy az `kernel-devel` és a `dkms` verziója megfelelő a rendszermag számára.
  
    ```bash  
    sudo yum update
@@ -254,7 +254,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    sudo yum install hyperv-daemons
    ```
 
-2. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NV2-alapú virtuális gépeken.) Ehhez hozzon létre egy fájlt `/etc/modprobe.d` nevű `nouveau.conf` névvel a következő tartalommal:
+2. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NV2-alapú virtuális gépeken.) Ehhez hozzon létre egy fájlt a `nouveau.conf` nevű `/etc/modprobe.d` a következő tartalommal:
 
    ```
    blacklist nouveau
@@ -296,13 +296,13 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Adja hozzá a következőt a `/etc/nvidia/gridd.conf` értékhez:
+8. Adja hozzá a következőt a `/etc/nvidia/gridd.conf`hoz:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Távolítsa el az alábbiakat a `/etc/nvidia/gridd.conf` értékről, ha az megtalálható:
+9. Ha van ilyen, távolítsa el az alábbiakat `/etc/nvidia/gridd.conf`, ha vannak ilyenek:
  
    ```
    FeatureType=0
@@ -321,7 +321,7 @@ Ha az illesztőprogram telepítve van, az alábbihoz hasonló kimenet jelenik me
  
 
 ### <a name="x11-server"></a>X11-kiszolgáló
-Ha egy NV-vagy NVv2-alapú virtuális géphez távoli kapcsolatokhoz X11-kiszolgálóra van szüksége, akkor a [x11vnc](http://www.karlrunge.com/x11vnc/) használata javasolt, mivel lehetővé teszi a grafikus processzorok hardveres gyorsítását. A M60 eszközt manuálisan kell hozzáadni az X11 konfigurációs fájljához (általában `etc/X11/xorg.conf`). Adjon hozzá egy, a következőhöz hasonló `"Device"` szakaszt:
+Ha egy NV-vagy NVv2-alapú virtuális géphez távoli kapcsolatokhoz X11-kiszolgálóra van szüksége, akkor a [x11vnc](http://www.karlrunge.com/x11vnc/) használata javasolt, mivel lehetővé teszi a grafikus processzorok hardveres gyorsítását. A M60 eszközt manuálisan kell hozzáadni az X11 konfigurációs fájljához (általában `etc/X11/xorg.conf`). Adja hozzá az alábbihoz hasonló `"Device"` szakaszt:
  
 ```
 Section "Device"
@@ -357,13 +357,13 @@ else
 fi
 ```
 
-Ezt követően hozzon létre egy bejegyzést a frissítési parancsfájlhoz `/etc/rc.d/rc3.d`-ban, hogy a parancsfájl gyökérként legyen meghívva a rendszerindításhoz.
+Ezt követően hozzon létre egy bejegyzést a frissítési parancsfájlhoz `/etc/rc.d/rc3.d`, hogy a parancsfájl gyökérként legyen meghívva a rendszerindításhoz.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* Az adatmegőrzési módot `nvidia-smi` értékkel állíthatja be, így a parancs kimenete gyorsabb, ha a kártyákat le kell kérdezni. Az adatmegőrzési mód beállításához hajtsa végre a `nvidia-smi -pm 1` értéket. Vegye figyelembe, hogy ha a virtuális gép újraindul, a Mode (mód) beállítás eltűnik. A mód beállítását bármikor végrehajthatja indításkor.
+* Az adatmegőrzési módot a `nvidia-smi` használatával állíthatja be, így a parancs kimenete gyorsabb, ha a kártyákat le kell kérdezni. Az adatmegőrzési mód beállításához hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy ha a virtuális gép újraindul, a Mode (mód) beállítás eltűnik. A mód beállítását bármikor végrehajthatja indításkor.
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi a RDMA connectivcity, akkor [telepítse újra a RDMA-illesztőprogramokat](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) a kapcsolat reistablish. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Linux rendszerű virtuálisgép-lemezképnek a telepített NVIDIA-illesztőprogramokkal való rögzítéséről lásd: [Linux rendszerű virtuális gép általánosítása és rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

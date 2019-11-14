@@ -1,5 +1,5 @@
 ---
-title: A Virtual Machines Azure dedikált gazdagépek áttekintése | Microsoft Docs
+title: A Virtual Machines Azure dedikált gazdagépek áttekintése
 description: További információ arról, hogyan használhatók az Azure dedikált gazdagépek a virtuális gépek telepítéséhez.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 5f2b34b3acb559d74414ea622fba2769ede7f0a7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: f4a5e78afdf774af056d7c9b8a108c3418c2caa4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976635"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036392"
 ---
-# <a name="preview-azure-dedicated-hosts"></a>Előzetes verzió: Dedikált Azure-gazdagépek
+# <a name="preview-azure-dedicated-hosts"></a>Előzetes verzió: Azure dedikált gazdagépek
 
 Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyek az adatközpontokban, erőforrásként vannak megadva. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
 
@@ -31,7 +31,7 @@ Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat
 
 virtual-machines-common-dedicated-hosts-preview.md
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A dedikált gazdagépeket az [Azure CLI](dedicated-hosts-cli.md), a [portál](dedicated-hosts-portal.md)és a [PowerShell](../windows/dedicated-hosts-powershell.md)használatával helyezheti üzembe.
 

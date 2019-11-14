@@ -1,5 +1,5 @@
 ---
-title: Linux Azure VM-méretek – memória | Microsoft Docs
+title: Linux Azure VM-méretek – memória
 description: Felsorolja az Azure-beli Linux rendszerű virtuális gépekhez elérhető különböző memória-optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: e2cc3427d85983618df94f02d92cdcf44bd3a75a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9ad5eabb85b01a48e32cc49784a9597866415253
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719118"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034873"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Memória-optimalizált virtuális gépek méretei
 
@@ -38,7 +38,7 @@ ms.locfileid: "73719118"
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
 

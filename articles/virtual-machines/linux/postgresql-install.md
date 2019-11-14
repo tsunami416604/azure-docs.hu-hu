@@ -1,5 +1,5 @@
 ---
-title: A PostgreSQL beállítása Linux rendszerű virtuális gépen | Microsoft Docs
+title: A PostgreSQL beállítása Linux rendszerű virtuális gépen
 description: Ismerje meg, hogyan telepítheti és konfigurálhatja a PostgreSQL-t egy Linux rendszerű virtuális gépen az Azure-ban
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091723"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035266"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 A PostgreSQL egy fejlett, nyílt forráskódú adatbázis, amely az Oracle és a DB2 számára is hasonló. Olyan nagyvállalati használatra kész funkciókat tartalmaz, mint például a teljes sav megfelelősége, a megbízható tranzakciós feldolgozás és a többverziós Egyidejűség-vezérlés. Emellett olyan szabványokat is támogat, mint például az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és számos más adatburkolót is). A szolgáltatás nagyszámú, több mint 12 eljárási nyelv, a GIN és a lényegi indexek, a térbeli adattámogatás, valamint a JSON-vagy kulcs-érték alapú alkalmazások több NoSQL funkciójának támogatásával bővíthető.
@@ -91,7 +91,7 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
    > Biztonsági okokból a PostgreSQL egy nem root felhasználót használ az adatbázis inicializálására, indítására vagy leállítására.
    > 
    > 
-4. Szerkessze a *bash_profile* fájlt az alábbi parancsok beírásával. Ezek a sorok a *bash_profile* -fájl végéhez lesznek hozzáadva:
+4. Szerkessze a *bash_profile* fájlt az alábbi parancsok beírásával. Ezek a sorok a *bash_profile* fájl végéhez lesznek hozzáadva:
    
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -105,7 +105,7 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
         alias rm='rm -i'
         alias ll='ls -lh'
         EOF
-5. Futtassa a *bash_profile* fájlt:
+5. A *bash_profile* fájl végrehajtása:
    
         $ source .bash_profile
 6. Ellenőrizze a telepítést a következő paranccsal:
@@ -237,5 +237,5 @@ A következő parancs használatával frissítheti a táblákban lévő adatfáj
 
 
 ## <a name="get-more-information-about-postgresql"></a>További információ a PostgreSQL-ről
-Most, hogy befejezte a PostgreSQL telepítését egy Azure Linux rendszerű virtuális gépen, használhatja azt az Azure-ban. Ha többet szeretne megtudni a PostgreSQL-ről, látogasson el a [PostgreSQL](https://www.postgresql.org/)webhelyére.
+Most, hogy befejezte a PostgreSQL telepítését egy Azure Linux rendszerű virtuális gépen, használhatja azt az Azure-ban. Ha többet szeretne megtudni a PostgreSQL-ről, látogasson el a [PostgreSQL webhelyére](https://www.postgresql.org/).
 

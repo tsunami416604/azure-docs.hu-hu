@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Operációsrendszer-lemez csatolása | Microsoft Docs
+title: Azure CLI-példaszkript – Operációsrendszer-lemez csatolása
 description: Azure CLI-példaszkript – Operációsrendszer-lemez csatolása
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5d534b66f95078d853f67aa40a014c599a3853da
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 292d67dafa768c82041a2cae8e6d888ee5d9050b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709415"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037596"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Egy virtuális gép operációsrendszer-lemezének hibaelhárítása
 
@@ -47,7 +47,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | Csatlakoztat egy lemezt egy virtuális géphez. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | Visszaadja egy virtuális gép IP-címeit. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

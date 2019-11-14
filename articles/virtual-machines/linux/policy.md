@@ -1,5 +1,5 @@
 ---
-title: Biztonság kikényszerítása az Azure-beli Linux rendszerű virtuális gépekre vonatkozó szabályzatokkal | Microsoft Docs
+title: Biztonság kikényszerítása az Azure-beli Linux rendszerű virtuális gépek házirendjeivel
 description: Szabályzat alkalmazása Azure Resource Manager Linux rendszerű virtuális gépre
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: c0399044e1776d10a70cf4bcb1dca8d87e4981c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091578"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035321"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Szabályzatok alkalmazása Linux rendszerű virtuális gépekre Azure Resource Manager
 A házirendek használatával a szervezetek különböző egyezményeket és szabályokat alkalmazhatnak a vállalaton belül. A kívánt viselkedés kényszerítésével csökkentheti a kockázatokat, miközben hozzájárul a szervezet sikeréhez. Ebben a cikkben bemutatjuk, hogyan használhatók Azure Resource Manager házirendek a szervezet Virtual Machines kívánt viselkedésének meghatározásához.
@@ -88,7 +88,7 @@ Használjon helyettesítő kártyát az előző szabályzat módosításához az
 }
 ```
 
-További információ a szabályzat mezőiről: [házirend](../../governance/policy/concepts/definition-structure.md#aliases)-aliasok.
+További információ a szabályzat mezőiről: [házirend-aliasok](../../governance/policy/concepts/definition-structure.md#aliases).
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
@@ -208,7 +208,7 @@ Előfordulhat, hogy meg szeretné tiltani bizonyos típusú bővítmények haszn
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A házirend-szabály meghatározása után (ahogy az előző példákban is látható) létre kell hoznia a házirend-definíciót, és hozzá kell rendelnie egy hatókörhöz. A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A szabályzatok hozzárendeléséhez tekintse meg az erőforrás-házirendek hozzárendelésére [és kezelésére szolgáló Azure Portal használata](../../governance/policy/assign-policy-portal.md), a [PowerShell használatával házirendek hozzárendelését](../../governance/policy/assign-policy-powershell.md), vagy az [Azure CLI használatával házirendek hozzárendelését](../../governance/policy/assign-policy-azurecli.md).
 * Az erőforrás-házirendek bemutatása: [Mi az Azure Policy?](../../governance/policy/overview.md)
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

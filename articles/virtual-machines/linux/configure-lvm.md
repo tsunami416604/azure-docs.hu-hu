@@ -1,5 +1,5 @@
 ---
-title: Az LVM konfigurálása Linux rendszerű virtuális gépen | Microsoft Docs
+title: Az LVM konfigurálása Linux rendszerű virtuális gépen
 description: Ismerje meg, hogyan konfigurálhatja az LVMt Linux rendszeren az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 1ab545edf9b45e37082509452a858a154b361251
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083819"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036686"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban
 Ebből a dokumentumból megtudhatja, hogyan konfigurálhatja a Logical Volume Managert (LVM) az Azure-beli virtuális gépen. Az LVM az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken lévő adatlemezeken is használható, azonban a legtöbb Felhőbeli rendszerkép alapértelmezés szerint nem lesz beállítva az operációsrendszer-lemezen. Az alábbi lépések az LVM konfigurálására koncentrálnak az adatlemezek esetében.
@@ -59,14 +59,14 @@ Az egyik általában két vagy több üres adatlemezt szeretne kezdeni az LVM ha
     sudo zypper install lvm2
     ```
 
-    A SLES11-on az "Enable `/etc/sysconfig/lvm` " ( `LVM_ACTIVATED_ON_DISCOVERED` engedélyezés) értékre kell módosítania a következőt:
+    A SLES11-on a `/etc/sysconfig/lvm` szerkesztése és a `LVM_ACTIVATED_ON_DISCOVERED` beállítása az "engedélyezés" beállításra is vonatkozik:
 
     ```sh   
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
-## <a name="configure-lvm"></a>LVM konfigurálása
-Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amelyeket a következőre fogunk `/dev/sdc`hivatkozni `/dev/sde` `/dev/sdd` : és. Előfordulhat, hogy ezek az elérési utak nem egyeznek a virtuális gép lemezének elérési útjaival. A (`sudo fdisk -l`z) vagy hasonló parancs futtatásával listázhatja az elérhető lemezeket.
+## <a name="configure-lvm"></a>Az LVM konfigurálása
+Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amelyeket `/dev/sdc`, `/dev/sdd` és `/dev/sde`re fogunk hivatkozni. Előfordulhat, hogy ezek az elérési utak nem egyeznek a virtuális gép lemezének elérési útjaival. A "`sudo fdisk -l`" vagy hasonló parancs futtatásával listázhatja az elérhető lemezeket.
 
 1. A fizikai kötetek előkészítése:
 
@@ -77,14 +77,14 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Hozzon létre egy kötet csoportot. Ebben a példában a kötet csoportot `data-vg01`hívjuk:
+2. Hozzon létre egy kötet csoportot. Ebben a példában a `data-vg01`kötetet hívjuk:
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
     Volume group "data-vg01" successfully created
     ```
 
-3. Hozza létre a logikai kötet (eke) t. Az alábbi parancs egy nevű `data-lv01` logikai kötetet hoz létre, amely a teljes kötet csoportra terjed ki, de vegye figyelembe, hogy a kötet csoportban több logikai kötet is létrehozható.
+3. Hozza létre a logikai kötet (eke) t. Az alábbi parancs egy `data-lv01` nevű logikai kötetet hoz létre, amely a teljes kötet csoportra terjed ki, azonban vegye figyelembe, hogy a kötet csoportban több logikai kötet is létrehozható.
 
     ```bash   
     sudo lvcreate --extents 100%FREE --stripes 3 --name data-lv01 data-vg01
@@ -102,7 +102,7 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Az új fájlrendszer hozzáadása az/etc/fstab modulhoz
 > [!IMPORTANT]
-> A `/etc/fstab` fájl helytelen szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos, tekintse meg a terjesztés dokumentációját a fájl megfelelő szerkesztésével kapcsolatos információkért. Azt is javasoljuk, hogy a Szerkesztés előtt hozza `/etc/fstab` létre a fájl biztonsági másolatát.
+> A `/etc/fstab` fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos, tekintse meg a terjesztés dokumentációját a fájl megfelelő szerkesztésével kapcsolatos információkért. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre a `/etc/fstab` fájl biztonsági másolatát.
 
 1. Hozza létre az új fájlrendszer kívánt csatlakoztatási pontját, például:
 
@@ -119,22 +119,22 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
     ....
     ```
 
-3. Nyisson `/etc/fstab` meg egy szövegszerkesztőben, és adjon hozzá egy bejegyzést az új fájlrendszerhez, például:
+3. Nyisson meg `/etc/fstab` egy szövegszerkesztőben, és adjon hozzá egy bejegyzést az új fájlrendszerhez, például:
 
     ```bash    
     /dev/data-vg01/data-lv01  /data  ext4  defaults  0  2
     ```   
-    Ezután a Mentés és bezárás `/etc/fstab`gombra.
+    Ezután mentse és zárjunk be `/etc/fstab`.
 
-4. Ellenőrizze, hogy `/etc/fstab` helyes-e a bejegyzés:
+4. Ellenőrizze, hogy helyesek-e a `/etc/fstab` bejegyzés:
 
     ```bash    
     sudo mount -a
     ```
 
-    Ha ez a parancs hibaüzenetet eredményez, ellenőrizze a `/etc/fstab` fájlban szereplő szintaxist.
+    Ha ez a parancs hibaüzenetet eredményez, ellenőrizze a szintaxist a `/etc/fstab` fájlban.
    
-    A következő `mount` parancs futtatásával győződjön meg arról, hogy a fájlrendszer csatlakoztatva van:
+    Ezután futtassa a `mount` parancsot a fájlrendszer csatlakoztatásának biztosításához:
 
     ```bash    
     mount
@@ -142,9 +142,9 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Választható Failsafe rendszerindítási paraméterek a-ben`/etc/fstab`
+5. Választható Failsafe rendszerindítási paraméterek `/etc/fstab`
    
-    Számos disztribúció tartalmazhatja a `nobootwait` `/etc/fstab` fájlhoz `nofail` adható vagy csatlakoztatási paramétereket. Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
+    Számos eloszlás magában foglalja az `/etc/fstab`-fájlhoz adható `nobootwait` vagy `nofail` csatlakoztatási paramétereket. Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
    
     Példa (Ubuntu):
 
@@ -157,13 +157,13 @@ Egyes linuxos kernelek támogatják a TRIM/LEKÉPEZÉSÉNEK megszüntetése műv
 
 A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-támogatás. A szokásos módon tekintse meg az ajánlott módszert az eloszlásban:
 
-- Használja a `discard` csatlakoztatási `/etc/fstab`lehetőséget a alkalmazásban, például:
+- Használja a `/etc/fstab``discard` csatlakoztatási lehetőségét, például:
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
+- Bizonyos esetekben a `discard`i beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, hogy manuálisan futtatja a `fstrim` parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
 
     **Ubuntu**
 

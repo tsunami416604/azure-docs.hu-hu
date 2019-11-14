@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban Linux rendszerű virtuális gépek figyelése |} A Microsoft Docs
-description: Tudnivalók a megfigyelési lehetőségek Linux rendszerű virtuális gépek az Azure-ban.
+title: Linux rendszerű virtuális gépek monitorozása az Azure-ban
+description: Ismerje meg az Azure-beli linuxos virtuális gépek figyelési lehetőségeit.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: f37967073c78b34d21d24c81e41b7f32184bc1e6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a23a6f88a5194e42d543e35e783db206e768a919
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667331"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035679"
 ---
-# <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure-beli virtuális gépek figyelése
+# <a name="how-to-monitor-virtual-machines-in-azure"></a>Virtuális gépek figyelése az Azure-ban
 
 [!INCLUDE [virtual-machines-monitor](../../../includes/virtual-machines-monitor.md)]

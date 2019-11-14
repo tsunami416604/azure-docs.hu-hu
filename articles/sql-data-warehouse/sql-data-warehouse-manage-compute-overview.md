@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 11/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692631"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039085"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Számítások kezelése Azure SQL Data Warehouseban
 További információ a számítási erőforrások Azure SQL Data Warehouseban történő kezeléséről. Csökkentse az adattárház felfüggesztését, vagy méretezze át az adattárházat a teljesítményre vonatkozó igények kielégítése érdekében. 
@@ -34,19 +34,23 @@ A méretezési művelet végrehajtásához SQL Data Warehouse először az össz
 A következő táblázat azt mutatja be, hogy a számítási csomópontok hány eloszlása változik az adatraktár-egységek változásakor.  A DWU6000 60 számítási csomópontot biztosít, és sokkal nagyobb lekérdezési teljesítményt érhet el, mint a DWU100. 
 
 | Adattárházegységek  | Számítási csomópontok \# | eloszlások \# csomóponton |
-| ---- | ------------------ | ---------------------------- |
-| 100  | 1                  | 60                           |
-| 200  | 2                  | 30                           |
-| 300  | 3                  | 20                           |
-| 400  | 4                  | 15                           |
-| 500  | 5                  | 12                           |
-| 600  | 6                  | 10                           |
-| 1000 | 10                 | 6                            |
-| 1200 | 12                 | 5                            |
-| 1500 | 15                 | 4                            |
-| 2000 | 20                 | 3                            |
-| 3000 | 30                 | 2                            |
-| 6000 | 60                 | 1                            |
+| -------- | ---------------- | -------------------------- |
+| DW100c   | 1                | 60                         |
+| DW200c   | 1                | 60                         |
+| DW300c   | 1                | 60                         |
+| DW400c   | 1                | 60                         |
+| DW500c   | 1                | 60                         |
+| DW1000c  | 2                | 30                         |
+| DW1500c  | 3                | 20                         |
+| DW2000c  | 4                | 15                         |
+| DW2500c  | 5                | 12                         |
+| DW3000c  | 6                | 10                         |
+| DW5000c  | 10               | 6                          |
+| DW6000c  | 12               | 5                          |
+| DW7500c  | 15               | 4                          |
+| DW10000c | 20               | 3                          |
+| DW15000c | 30               | 2                          |
+| DW30000c | 60               | 1                          |
 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Az adatraktár-egységek megfelelő méretének megállapítása
@@ -115,5 +119,5 @@ Az adatraktár állapotának vizsgálatához tekintse meg a [PowerShell](quickst
 Az adatraktár skálázásához az [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)utasításban ismertetett engedélyek szükségesek.  A Szüneteltetés és folytatás megköveteli az [SQL-adatbázis közreműködői](../role-based-access-control/built-in-roles.md#sql-db-contributor) engedélyét, különösen a Microsoft. SQL/kiszolgálók/adatbázisok/művelet esetében.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A számítási erőforrások kezelésével kapcsolatos [további](manage-compute-with-azure-functions.md) tudnivalókat lásd a különböző számítási erőforrások lefoglalása az egyes lekérdezésekhez című témakör útmutatását. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).

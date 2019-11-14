@@ -1,5 +1,5 @@
 ---
-title: Példa az Azure infrastruktúra-útmutatóra | Microsoft Docs
+title: Példa az Azure infrastruktúra-útmutatóra
 description: Ismerje meg az Azure-beli infrastruktúra üzembe helyezésének legfontosabb tervezési és megvalósítási irányelveit.
 documentationcenter: ''
 services: virtual-machines-windows
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4191015ee4dc7eb753c70f23be242f2ca88dcc3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079390"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038567"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Példa Azure Infrastructure-útmutató Windows rendszerű virtuális gépekhez
 Ez a cikk végigvezeti egy példaként szolgáló alkalmazás-infrastruktúra kiépítésén. Részletesen ismertetjük az infrastruktúra tervezését egy egyszerű online áruházban, amely összefoglalja az elnevezési konvenciókat, a rendelkezésre állási csoportokat, a virtuális hálózatokat és a Load balancereket, és ténylegesen üzembe helyezi a virtuális gépeket (VM).
@@ -60,7 +60,7 @@ A fenti elnevezési konvenciók mindegyike a következő:
 ## <a name="azure-subscriptions-and-accounts"></a>Azure-előfizetések és-fiókok
 Az Adventure Works-ciklusok nagyvállalati előfizetéssel rendelkeznek, amely az Adventure Works Enterprise előfizetését használja az IT-számítási feladatok számlázásához.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 Az Adventure Works-ciklusok határozzák meg, hogy az Azure Managed Disks-t használják. Virtuális gépek létrehozásakor a rendszer mindkét rendelkezésre álló tárolási szintet használja:
 
 * A webkiszolgálók, az alkalmazás-kiszolgálók és a tartományvezérlők, valamint az adatlemezek **szabványos tárolói** .
@@ -71,14 +71,14 @@ Mivel a virtuális hálózatnak nincs szüksége folyamatos kapcsolatra a kaland
 
 Egy csak felhőalapú virtuális hálózatot hoztak létre a következő beállításokkal a Azure Portal használatával:
 
-* Név: AZOS-USE-VN01
-* Helyen USA 2. keleti régiója
+* Name: AZOS-USE-VN01
+* Hely: USA 2. keleti régiója
 * Virtuális hálózati címtartomány: 10.0.0.0/8
 * Első alhálózat:
-  * Név: Előtér
+  * Név: előtér
   * Címterület: 10.0.1.0/24
 * Második alhálózat:
-  * Név: Háttér
+  * Name: háttérrendszer
   * Címterület: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
