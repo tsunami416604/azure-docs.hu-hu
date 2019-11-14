@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban Linux rendszerű virtuális gép létrehozása sablon alapján |} A Microsoft Docs
-description: Az Azure CLI használatával egy Linux virtuális gép létrehozása Resource Manager-sablonnal
+title: Linuxos virtuális gép létrehozása az Azure-ban sablon alapján
+description: Linux rendszerű virtuális gép létrehozása Resource Manager-sablonból az Azure CLI használatával
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,33 +16,33 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f12bfaa09b74bf2d9004044dbedb8d7bb15965c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3e32e9f17b5c48e18453724eb683ba2e86dd0cdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671579"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036485"
 ---
-# <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Linux rendszerű virtuális gép létrehozása Azure Resource Manager-sablonokkal
+# <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Linuxos virtuális gép létrehozása Azure Resource Manager-sablonokkal
 
-Megtudhatja, hogyan hozhat létre egy Linux rendszerű virtuális gép (VM) az Azure Resource Manager-sablon és az Azure CLI, az Azure Cloud shell használatával. Windows virtuális gép létrehozásához lásd: [Windows virtuális gép létrehozása Resource Manager-sablonból](../windows/ps-template.md).
+Megtudhatja, hogyan hozhat létre linuxos virtuális gépet (VM) egy Azure Resource Manager sablonnal és az Azure parancssori felülettel az Azure Cloud Shell használatával. Windows rendszerű virtuális gép létrehozásához tekintse meg [a Windows rendszerű virtuális gép Resource Manager-sablonból](../windows/ps-template.md)történő létrehozását ismertető témakört.
 
 ## <a name="templates-overview"></a>Sablonok – áttekintés
 
-Az Azure Resource Manager-sablonok JSON-fájlok, amelyek meghatározzák az infrastruktúra és az Azure-megoldás konfigurációs. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. A sablont, és hogyan formázásával kapcsolatos további információkért lásd: [a rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md). Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/microsoft.compute/allversions) témakört.
+Azure Resource Manager a sablonok JSON-fájlok, amelyek meghatározzák az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Ha többet szeretne megtudni a sablon formátumáról és a létrehozásáról, tekintse meg [a rövid útmutató: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)című témakört. Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/microsoft.compute/allversions) témakört.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Az Azure virtuális gép létrehozása általában két lépésekből áll:
+Az Azure-beli virtuális gépek létrehozása általában két lépést tartalmaz:
 
 1. Hozzon létre egy erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni.
 1. Virtuális gépet hoz létre.
 
-Az alábbi példa létrehoz egy virtuális Gépet egy [Azure gyorsindítási sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). A központi telepítés csak az SSH-hitelesítés engedélyezett. Amikor a rendszer kéri, adja meg az értékét a saját nyilvános SSH-kulcsot, például a tartalmát *~/.ssh/id_rsa.pub*. Ha SSH-kulcspár létrehozásához szüksége, tekintse meg [létrehozásával és SSH-kulcspár használata Linux rendszerű virtuális gépekhez az Azure-ban](mac-create-ssh-keys.md). Itt látható a sablon egy példányát:
+Az alábbi példa egy virtuális gépet hoz létre egy [Azure Gyorsindítás sablonból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Ehhez a központi telepítéshez csak SSH-hitelesítés engedélyezett. Ha a rendszer kéri, adja meg saját nyilvános SSH-kulcsának értékét, például a *~/.ssh/id_rsa. pub*tartalmát. Ha létre kell hoznia egy SSH-kulcspárt, tekintse meg a Linux rendszerű [virtuális gépekhez készült SSH-kulcspár létrehozása és használata az Azure-ban](mac-create-ssh-keys.md)című témakört. A sablon egy másolata:
 
 [!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
 
-A CLI-szkript futtatásához válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**:
+A CLI-szkript futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -60,29 +60,29 @@ az group deployment create --resource-group $resourceGroupName --template-uri ht
 az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-details --query publicIps --output tsv
 ```
 
-A legutóbbi Azure CLI-parancsot az újonnan létrehozott virtuális gép nyilvános IP-címét jeleníti meg. A nyilvános IP-címet a virtuális gép csatlakozni kell. Ez a cikk a következő szakaszban talál.
+Az utolsó Azure CLI-parancs az újonnan létrehozott virtuális gép nyilvános IP-címét jeleníti meg. A virtuális géphez való kapcsolódáshoz a nyilvános IP-címnek kell lennie. Tekintse meg a jelen cikk következő szakaszát.
 
-Az előző példában megadott a Githubon tárolt sablonból. Is letöltheti vagy -sablon létrehozása és a helyi elérési útját adja meg a `--template-file` paraméter.
+Az előző példában egy GitHubban tárolt sablont adott meg. Emellett letölthet vagy létrehozhat egy sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
 
-Az alábbiakban néhány további erőforrást:
+Íme néhány további erőforrás:
 
-- Megtudhatja, hogyan fejleszthet Resource Manager-sablonokat, lásd: [Azure Resource Manager dokumentációjában](/azure/azure-resource-manager/).
-- Az Azure-beli virtuálisgép-sémákat, olvassa el [Azure sablonreferenciája](/azure/templates/microsoft.compute/allversions).
-- Több virtuális gép sablonminták megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
+- A Resource Manager-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](/azure/azure-resource-manager/)talál további információt.
+- Az Azure-beli virtuális gépek sémáinak megtekintéséhez lásd: [Azure-sablonok referenciája](/azure/templates/microsoft.compute/allversions).
+- A virtuálisgép-sablonok további mintáinak megtekintéséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
-Akkor majd SSH, a virtuális gép szokásos módon. Adja meg, az előző parancs a saját nyilvános IP-cím:
+Ezt követően SSH-t használhat a virtuális géphez a szokásos módon. Adja meg saját nyilvános IP-címét az előző parancsból:
 
 ```bash
 ssh <adminUsername>@<ipAddress>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a példában egy egyszerű Linux virtuális Gépet hozott létre. További Resource Manager-sablonok, amelyek tartalmazzák az alkalmazás-keretrendszerek vagy összetett környezeteket hozhat létre, tallózással keresse meg a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
+Ebben a példában egy alapszintű linuxos virtuális gépet hozott létre. További Resource Manager-sablonok, amelyek alkalmazás-keretrendszereket tartalmaznak, vagy összetettebb környezeteket hoznak létre, Böngésszen az [Azure Gyorsindítás sablonjain](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
-Sablonok létrehozásával kapcsolatos további információkért tekintse meg a JSON-szintaxist és a telepített erőforrások típusok tulajdonságait:
+A sablonok létrehozásával kapcsolatos további tudnivalókért tekintse meg a telepített erőforrások típusának JSON-szintaxisát és tulajdonságait:
 
 - [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
 - [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)

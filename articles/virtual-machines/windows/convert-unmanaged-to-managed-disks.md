@@ -1,17 +1,17 @@
 ---
-title: Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre – Azure Managed Disks | Microsoft Docs
+title: Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre – Azure Managed Disks
 description: Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről a felügyelt lemezekre a PowerShell használatával a Resource Manager-alapú üzemi modellben
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 64ff47f1dc4b06d1407497adf41981c670ea9064
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 92f70cbfcf261c218ea43b159ed49126f7b2ecd5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749530"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033904"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -94,7 +94,7 @@ A konvertálás előtt győződjön meg arról, hogy az összes virtuálisgép-b
 
 A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a felügyelt lemezekre.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a portálon lévő virtuális gépek listájából.
 3. A virtuális gép paneljén válassza a menü **lemezek** elemét.
 4. A **lemezek** panel tetején válassza az **áttelepítés felügyelt lemezekre**lehetőséget.
@@ -102,7 +102,7 @@ A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a f
 
 A rendszer a Migrálás befejezése után leállítja és újraindítja a virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Standard szintű felügyelt lemezek átalakítása prémium szintre](convert-disk-storage.md)
 

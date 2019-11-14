@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása WordPress használatával | Microsoft Docs
+title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása WordPress használatával
 description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása WordPress használatával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1956ade75bab3d819c92ce7bc7be966c1a23d708
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b25dde1ee36d325585be427dbef04fb39755473e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709474"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037583"
 ---
 # <a name="create-a-vm-with-wordpress"></a>Virtuális gép létrehozása WordPress használatával
 
@@ -55,7 +55,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm extension set](https://docs.microsoft.com/cli/azure/vm) | Hozzáadja az egyéni szkriptbővítményt a virtuális géphez, amely meghív egy szkriptet a WordPress telepítésére. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

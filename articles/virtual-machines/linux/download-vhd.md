@@ -1,5 +1,5 @@
 ---
-title: Linuxos virtuális merevlemez letöltése az Azure-ból | Microsoft Docs
+title: Linuxos virtuális merevlemez letöltése az Azure-ból
 description: Töltsön le egy linuxos virtuális merevlemezt az Azure CLI és a Azure Portal használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083488"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036295"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linuxos virtuális merevlemez letöltése az Azure-ból
 
@@ -56,7 +56,7 @@ Ha a virtuális merevlemezt képként szeretné használni más virtuális gépe
 
 Ha a virtuális merevlemezt lemezként szeretné használni egy meglévő virtuális gép vagy adatlemez új példánya számára, hajtsa végre a következő lépéseket:
 
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2.  A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
 3.  Válassza ki a virtuális gépet a listából.
 4.  A virtuális gép lapján válassza a **Leállítás**lehetőséget.
@@ -69,21 +69,21 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 
 1.  A virtuális gép oldalának menüjében válassza a **lemezek**lehetőséget.
 2.  Válassza ki a virtuális gép operációsrendszer-lemezét, majd válassza a **lemez exportálása**lehetőséget.
-3.  Válassza az **URL-cím**előállítása lehetőséget.
+3.  Válassza az **URL-cím előállítása**lehetőséget.
 
-    ![URL-cím generálása](./media/download-vhd/export-generate.png)
+    ![URL-cím előállítása](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>VHD letöltése
 
 1.  A létrehozott URL-cím alatt válassza **a VHD-fájl letöltése**lehetőséget.
 **
-    ![VHD letöltése](./media/download-vhd/export-download.png)
+    ![VHD-fájl letöltése](./media/download-vhd/export-download.png)
 
 2.  Előfordulhat, hogy a letöltés indításához a böngésző **Mentés** elemét kell választania. A VHD-fájl alapértelmezett neve *ABCD*.
 
     ![Válassza a mentés lehetőséget a böngészőben](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [tölthet fel és hozhat létre Linux rendszerű virtuális gépet egyéni lemezről az Azure CLI-vel](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 - [Azure-lemezek kezelése az Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-vel.

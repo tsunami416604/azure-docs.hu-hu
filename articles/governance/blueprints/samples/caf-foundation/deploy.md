@@ -1,18 +1,14 @@
 ---
 title: A CAF Foundation tervezetének mintája – üzembe helyezési lépések
 description: A CAF Foundation Blueprint minta lépéseinek üzembe helyezése.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ad5d7ce2fb895032f9ae5d19ee6d2978830ccc89
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163590"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038476"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure Foundation Blueprint minta Microsoft Cloud bevezetési keretrendszerének üzembe helyezése
 
@@ -106,11 +102,11 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Policy_Allowed-StorageAccount-SKU|A diagnosztikai napló tárolási fiókjaiban használt SKU|
+|Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Policy_Allowed – StorageAccount – SKU|A diagnosztikai napló tárolási fiókjaiban használt SKU|
 |Engedélyezett virtuális gépek SKU-i|Szabályzat-hozzárendelés|Policy_Allowed – VM-SKU|Engedélyezett virtuális gépek SKU-i|
 |CostCenter-címke hozzáfűzése erőforráscsoporthoz|Szabályzat-hozzárendelés|Policy_CostCenter_Tag|CostCenter címke és a hozzá tartozó érték hozzáfűzése az erőforráscsoporthoz|
-|A környezetében engedélyezni nem kívánt erőforrástípusok|Szabályzat-hozzárendelés|Szabályzat _Allowed – erőforrás-típusok|Mely Azure-erőforrásokat szeretné engedélyezni a környezetben|
-|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** – Azure ad-csoport vagy felhasználói <Object ID> – engedélyeket adhat meg Key Vault|
+|A környezetében engedélyezni nem kívánt erőforrástípusok|Szabályzat-hozzárendelés|Házirend _Allowed – erőforrás-típusok|Mely Azure-erőforrásokat szeretné engedélyezni a környezetben|
+|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** – Azure ad-csoport vagy felhasználói <Object ID> engedélyek megadására Key Vault|
 |Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
 |Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
 
@@ -121,7 +117,7 @@ Most, hogy áttekintette a CAF Foundation Blueprint-minta üzembe helyezésének
 > [!div class="nextstepaction"]
 > [A CAF Foundation tervezete – áttekintés](./index.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

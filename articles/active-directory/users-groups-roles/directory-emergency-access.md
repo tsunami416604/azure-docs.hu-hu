@@ -1,10 +1,11 @@
 ---
-title: A vészhelyzeti hozzáférési rendszergazdai fiókok kezelése – Azure Active Directory | Microsoft Docs
+title: Vészhelyzeti hozzáférési rendszergazdai fiókok kezelése – Azure AD | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet vészhelyzeti hozzáférési fiókok használatával megakadályozni, hogy véletlenül kizárja a Azure Active Directory (Azure AD) szervezetét.
 services: active-directory
 author: markwahl-msft
+manager: daveba
 ms.author: curtand
-ms.date: 09/09/2019
+ms.date: 11/08/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04016df86a9bed06f2cbb79d459b10486a9b7d67
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772424"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028134"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
@@ -38,7 +39,7 @@ Előfordulhat, hogy egy szervezetnek a következő helyzetekben vészhelyzeti ho
 
 ## <a name="create-emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok létrehozása
 
-Hozzon létre két vagy több vészhelyzeti hozzáférési fiókot. Ezeknek a fiókoknak kizárólag felhőalapú fiókoknak kell lenniük, \*amelyek a. onmicrosoft.com tartományt használják, és amelyek nem összevont vagy nem szinkronizált helyszíni környezetből.
+Hozzon létre két vagy több vészhelyzeti hozzáférési fiókot. Ezek a fiókok csak felhőalapú fiókok, amelyek a \*. onmicrosoft.com tartományt használják, és amelyek nem összevont vagy nem szinkronizált helyszíni környezetből.
 
 A fiókok konfigurálásakor a következő követelményeknek kell teljesülniük:
 
@@ -51,7 +52,7 @@ A fiókok konfigurálásakor a következő követelményeknek kell teljesülniü
 
 Ha csökkenteni szeretné a sérült jelszó miatti támadás kockázatát, akkor az Azure AD azt javasolja, hogy minden egyes felhasználóhoz többtényezős hitelesítést igényeljen. Ebbe a csoportba tartoznak a rendszergazdák és az összes többi (például pénzügyi tisztviselők), akiknek a feltört fiók jelentős hatással lenne.
 
-A segélyhívó fiókok közül legalább egy nem rendelkezhet ugyanazzal a többtényezős hitelesítési mechanizmussal, mint a többi nem vészhelyzeti fiók. Ez magában foglalja a külső felek többtényezős hitelesítési megoldásait is. Ha feltételes hozzáférési szabályzattal szeretné megkövetelni a [többtényezős hitelesítés használatát az](../authentication/howto-mfa-userstates.md) Azure ad-hez és más csatlakoztatott szoftverekhez (SaaS) tartozó összes rendszergazda számára, ki kell zárnia a vészhelyzeti hozzáférési fiókokat ebből a követelményből, és konfigurálnia kell a egy másik mechanizmus helyett. Emellett győződjön meg arról, hogy a fiókok nem rendelkeznek felhasználónkénti multi-Factor Authentication-házirenddel.
+A segélyhívó fiókok közül legalább egy nem rendelkezhet ugyanazzal a többtényezős hitelesítési mechanizmussal, mint a többi nem vészhelyzeti fiók. Ez magában foglalja a külső felek többtényezős hitelesítési megoldásait is. Ha feltételes hozzáférési szabályzattal szeretné megkövetelni a [többtényezős hitelesítés használatát az](../authentication/howto-mfa-userstates.md) Azure ad-hez és más csatlakoztatott szoftverekhez (SaaS) tartozó összes rendszergazda számára, ki kell zárnia a vészhelyzeti hozzáférési fiókokat ebből a követelményből, és egy másik mechanizmust kell konfigurálnia. Emellett győződjön meg arról, hogy a fiókok nem rendelkeznek felhasználónkénti multi-Factor Authentication-házirenddel.
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Válasszon ki legalább egy fiókot a feltételes hozzáférési házirendből
 
@@ -78,7 +79,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>A break Glass-fiókok objektumazonosítók beszerzése
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely hozzá van rendelve a felhasználói rendszergazdai szerepkörhöz.
-1. Válassza ki **Azure Active Directory** > **felhasználókat**.
+1. Válassza **Azure Active Directory** > **felhasználók**lehetőséget.
 1. Keressen rá a break-Glass fiókra, és válassza ki a felhasználó nevét.
 1. Másolja ki és mentse az Object ID attribútumot, hogy később is használhassa.
 1. Ismételje meg az előző lépéseket a második break-Glass-fióknál.
@@ -100,8 +101,8 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 
     1. A **riasztási logika**területen adja meg a következőket:
 
-        - Alapja: Eredmények száma
-        - Üzemeltető Nagyobb, mint
+        - Alapján: eredmények száma
+        - Operátor: nagyobb, mint
         - Küszöbérték: 0
 
     1. A **kiértékelve**alapján területen válassza ki azt az **időtartamot (percben)** , ameddig a lekérdezés futtatásának idejét szeretné használni, valamint a **gyakoriságot (percben)** , hogy milyen gyakran szeretné futtatni a lekérdezést. A gyakoriság értéke nem lehet kisebb, mint az időszak.
@@ -149,7 +150,7 @@ Ezeket a lépéseket rendszeres időközönként és a legfontosabb változások
 - Ha a közelmúltban módosult az informatikai személyzet, például a feladatok változása, a távozás vagy egy új bérlet
 - Ha a szervezet Azure AD-előfizetései megváltoztak
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](directory-admin-roles-secure.md)
 - [Felhasználók hozzáadása az Azure ad használatával](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó társítása a globális rendszergazdai szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md)

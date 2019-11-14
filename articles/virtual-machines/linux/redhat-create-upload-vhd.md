@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux VHD létrehozása és feltöltése az Azure-ban való használatra | Microsoft Docs
+title: Red Hat Enterprise Linux VHD létrehozása és feltöltése az Azure-ban való használatra
 description: Ismerje meg, hogyan hozhat létre és tölthet fel egy Red Hat Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: aef25e79d99c6c7434123df76e85e605b22fde51
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082248"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035162"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
-Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) webhelyét, és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)című témakört.
+Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)című témakört.
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Red Hat-alapú virtuális gép előkészítése a Hyper-V kezelőjéből
 
@@ -32,7 +32,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 **RHEL-telepítési megjegyzések**
 
 * Az Azure nem támogatja a VHDX formátumot. Az Azure csak a rögzített VHD-t támogatja. A Hyper-V kezelőjével átalakíthatja a lemezt VHD formátumba, vagy használhatja a convert-VHD parancsmagot is. Ha VirtualBox-t használ, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget a dinamikusan lefoglalt alapértelmezett beállítással szemben.
-* Az Azure csak az 1. generációs virtuális gépeket támogatja. Az 1. generációs virtuális gépeket átalakíthatja a VHDX-ből a VHD-fájlformátumba, és dinamikusan bővült egy rögzített méretű lemezre. A virtuális gép generációja nem módosítható. További információ: hozzon [létre egy 1. vagy 2. generációs virtuális gépet a Hyper-V-ben?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Az Azure csak az 1. generációs virtuális gépeket támogatja. Az 1. generációs virtuális gépeket átalakíthatja a VHDX-ből a VHD-fájlformátumba, és dinamikusan bővült egy rögzített méretű lemezre. A virtuális gép generációja nem módosítható. További információ: [hozzon létre egy 1. vagy 2. generációs virtuális gépet a Hyper-V-ben?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 * A VHD számára engedélyezett maximális méret 1 023 GB.
 * A logikai kötet-kezelő (LVM) támogatott, és az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken található adatlemezeken is használható. Általánosságban azonban ajánlott standard partíciókat használni az operációsrendszer-lemezen az LVM helyett. Ezzel a gyakorlattal elkerülhető, hogy az LVM Name ütközik a klónozott virtuális gépekkel, különösen akkor, ha az operációs rendszer lemezét egy másik azonos virtuális géphez kell csatlakoztatni a hibaelhárításhoz. Lásd még: az [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentációja.
 * Az univerzális lemezes formázású (UDF-) fájlrendszerek kernel-támogatása szükséges. Az Azure első indításakor a vendéghez csatlakoztatott UDF formátumú adathordozó továbbítja a kiépítési konfigurációt a linuxos virtuális gépre. Az Azure Linux-ügynöknek képesnek kell lennie az UDF fájlrendszer csatlakoztatására a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.
@@ -78,11 +78,11 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. A WALinuxAgent-csomagot `WALinuxAgent-<version>`leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
+1. A WALinuxAgent-csomagot (`WALinuxAgent-<version>`) leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyisson `/boot/grub/menu.lst` meg egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/boot/grub/menu.lst` egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -92,10 +92,10 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     
         rhgb quiet crashkernel=auto
     
-    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra.  Ha szükséges, hagyja `crashkernel` a beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gépen elérhető memória mennyiségét 128 MB vagy újabb értékkel csökkenti. Előfordulhat, hogy ez a konfiguráció a kisebb virtuálisgép-méretekkel kapcsolatos problémát okoz.
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra.  Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gépen elérhető memória mennyiségét 128 MB vagy újabb értékkel csökkenti. Előfordulhat, hogy ez a konfiguráció a kisebb virtuálisgép-méretekkel kapcsolatos problémát okoz.
 
 
-1. Győződjön meg arról, hogy a Secure Shell-(SSH-) kiszolgáló telepítve van és úgy van konfigurálva, hogy indításkor induljon el, ami általában az alapértelmezett. Módosítsa a/etc/ssh/sshd_config, hogy az tartalmazza a következő sort:
+1. Győződjön meg arról, hogy a Secure Shell-(SSH-) kiszolgáló telepítve van és úgy van konfigurálva, hogy indításkor induljon el, ami általában az alapértelmezett. Módosítsa a/etc/ssh/sshd_config a következő sor belefoglalásával:
 
         ClientAliveInterval 180
 
@@ -131,7 +131,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # logout
 
-1. Kattintson a **művelet** > **leállítása** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
+1. Kattintson a **művelet** > **Leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből
@@ -164,7 +164,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyisson `/etc/default/grub` meg egy szövegszerkesztőben, és szerkessze `GRUB_CMDLINE_LINUX` a (z) paramétert. Példa:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -172,17 +172,17 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
    
         rhgb quiet crashkernel=auto
    
-    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja `crashkernel` a beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
-1. Miután végzett a szerkesztéssel `/etc/default/grub`, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
+1. Miután végzett a `/etc/default/grub`szerkesztésével, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik, ami általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor befoglalásával:
+1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik, ami általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor belefoglalásával:
 
         ClientAliveInterval 180
 
-1. A WALinuxAgent-csomagot `WALinuxAgent-<version>`leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
+1. A WALinuxAgent-csomagot (`WALinuxAgent-<version>`) leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -194,7 +194,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
 1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
 
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelően módosítsa a következő paramétereket:
+    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelő módon módosítsa a következő paramétereket:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -216,7 +216,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # logout
 
-1. Kattintson a **művelet** > **leállítása** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
+1. Kattintson a **művelet** > **Leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Red Hat-alapú virtuális gép előkészítése KVM-ből
@@ -272,7 +272,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez a konfigurációhoz nyisson meg `/boot/grub/menu.lst` egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A konfiguráció elvégzéséhez nyissa meg `/boot/grub/menu.lst` egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -282,12 +282,12 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     
         rhgb quiet crashkernel=auto
     
-    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja `crashkernel` a beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
 
 1. Hyper-V modulok hozzáadása a initramfs-hez:  
 
-    Szerkessze `/etc/dracut.conf`és adja hozzá a következő tartalmat:
+    Szerkessze `/etc/dracut.conf`, és adja hozzá a következő tartalmat:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -303,12 +303,12 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # chkconfig sshd on
 
-    Módosítsa a/etc/ssh/sshd_config, hogy az tartalmazza a következő sorokat:
+    Módosítsa a/etc/ssh/sshd_config a következő sorok belefoglalásával:
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. A WALinuxAgent-csomagot `WALinuxAgent-<version>`leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
+1. A WALinuxAgent-csomagot (`WALinuxAgent-<version>`) leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
@@ -418,7 +418,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez a konfigurációhoz nyisson meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` (z) paramétert. Példa:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A konfiguráció elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -426,15 +426,15 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
    
         rhgb quiet crashkernel=auto
    
-    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja `crashkernel` a beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
-1. Miután végzett a szerkesztéssel `/etc/default/grub`, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
+1. Miután végzett a `/etc/default/grub`szerkesztésével, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Hyper-V modulok hozzáadása a initramfs-hez.
 
-    Tartalom `/etc/dracut.conf` szerkesztése és hozzáadása:
+    `/etc/dracut.conf` szerkesztése és tartalom hozzáadása:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -450,12 +450,12 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # systemctl enable sshd
 
-    Módosítsa a/etc/ssh/sshd_config, hogy az tartalmazza a következő sorokat:
+    Módosítsa a/etc/ssh/sshd_config a következő sorok belefoglalásával:
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. A WALinuxAgent-csomagot `WALinuxAgent-<version>`leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
+1. A WALinuxAgent-csomagot (`WALinuxAgent-<version>`) leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -469,7 +469,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
 1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
 
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelően módosítsa a következő paramétereket:
+    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelő módon módosítsa a következő paramétereket:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -564,11 +564,11 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. A WALinuxAgent-csomagot `WALinuxAgent-<version>`leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
+1. A WALinuxAgent-csomagot (`WALinuxAgent-<version>`) leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyisson meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` (z) paramétert. Példa:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -576,11 +576,11 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
    
         rhgb quiet crashkernel=auto
    
-    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja `crashkernel` a beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
 1. Hyper-V modulok hozzáadása a initramfs-hez:
 
-    Szerkessze `/etc/dracut.conf`és adja hozzá a következő tartalmat:
+    Szerkessze `/etc/dracut.conf`, és adja hozzá a következő tartalmat:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -588,7 +588,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
         # dracut -f -v
 
-1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik, ami általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor befoglalásával:
+1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik, ami általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor belefoglalásával:
 
     ClientAliveInterval 180
 
@@ -600,7 +600,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
 
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelően módosítsa a következő paramétereket:
+    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelő módon módosítsa a következő paramétereket:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -676,7 +676,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyisson `/etc/default/grub` meg egy szövegszerkesztőben, és szerkessze `GRUB_CMDLINE_LINUX` a (z) paramétert. Példa:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -684,15 +684,15 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
    
         rhgb quiet crashkernel=auto
    
-    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja `crashkernel` a beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
 
-1. Miután végzett a szerkesztéssel `/etc/default/grub`, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
+1. Miután végzett a `/etc/default/grub`szerkesztésével, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Hyper-V modulok hozzáadása a initramfs-hez.
 
-    Szerkesztés `/etc/dracut.conf`, tartalom hozzáadása:
+    `/etc/dracut.conf`szerkesztése, tartalom hozzáadása:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -700,11 +700,11 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
         # dracut -f -v
 
-1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik. Ez a beállítás általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor befoglalásával:
+1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik. Ez a beállítás általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor belefoglalásával:
 
         ClientAliveInterval 180
 
-1. A WALinuxAgent-csomagot `WALinuxAgent-<version>`leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
+1. A WALinuxAgent-csomagot (`WALinuxAgent-<version>`) leküldte a Red Hat extrák tárházba. Engedélyezze az extrák tárházát a következő parancs futtatásával:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -716,7 +716,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
 
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelően módosítsa a következő paramétereket:
+    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, `/etc/waagent.conf` megfelelő módon módosítsa a következő paramétereket:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -905,7 +905,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 1. Indítsa el a virtuális gépet. Amikor megjelenik a telepítési útmutató, nyomja le a **Tab** billentyűt a rendszerindítási beállítások konfigurálásához.
 
-1. Adja `inst.ks=<the location of the kickstart file>` meg a rendszerindítási beállítások végét, majd nyomja le az **ENTER**billentyűt.
+1. Adja meg `inst.ks=<the location of the kickstart file>` a rendszerindítási beállítások végén, majd nyomja le az **ENTER**billentyűt.
 
 1. Várjon, amíg a telepítés befejeződik. Ha elkészült, a rendszer automatikusan leállítja a virtuális gépet. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
@@ -914,11 +914,11 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 Bizonyos esetekben előfordulhat, hogy a Linux-telepítők nem tartalmazzák a Hyper-V illesztőprogramjait a kezdeti RAM-lemezen (initrd vagy initramfs), kivéve, ha a Linux azt észleli, hogy egy Hyper-V környezetben fut.
 
-Ha más virtualizációs rendszert (azaz VirtualBox, Xen stb.) használ a Linux-lemezkép előkészítéséhez, előfordulhat, hogy újra kell építenie a initrd, hogy legalább a hv_vmbus és a hv_storvsc kernel modulok elérhetők legyenek a kezdeti RAM-lemezen. Ez egy ismert probléma, amely legalább a felsőbb rétegbeli Red Hat-disztribúción alapuló rendszereken jelent meg.
+Ha más virtualizációs rendszert (azaz VirtualBox, Xen stb.) használ a Linux-lemezkép előkészítéséhez, előfordulhat, hogy újra kell építenie a initrd, hogy legalább a hv_vmbus és hv_storvsc kernel-modulok elérhetők legyenek a kezdeti RAM-lemezen. Ez egy ismert probléma, amely legalább a felsőbb rétegbeli Red Hat-disztribúción alapuló rendszereken jelent meg.
 
 A probléma megoldásához vegyen fel Hyper-V modulokat a initramfs és az újraépítéshez:
 
-Szerkessze `/etc/dracut.conf`és adja hozzá a következő tartalmat:
+Szerkessze `/etc/dracut.conf`, és adja hozzá a következő tartalmat:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -928,7 +928,7 @@ Initramfs újraépítése:
 
 További részletekért tekintse meg a [initramfs újjáépítésével](https://access.redhat.com/solutions/1958)kapcsolatos információkat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a Red Hat Enterprise Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
 
-A Red Hat Enterprise Linux futtatására jogosult hypervisorokkal kapcsolatos további részletekért tekintse meg [a Red Hat](https://access.redhat.com/certified-hypervisors)webhelyét.
+A Red Hat Enterprise Linux futtatására jogosult hypervisorokkal kapcsolatos további részletekért tekintse meg [a Red Hat webhelyét](https://access.redhat.com/certified-hypervisors).

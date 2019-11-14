@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás Windows Server-rendszerű virtuális géphez | Microsoft Docs
+title: Kapcsolódás Windows Server rendszerű virtuális géphez
 description: Útmutató a Windows rendszerű virtuális gépekhez való kapcsolódáshoz és a Azure Portal és a Resource Manager-alapú üzemi modell használatával történő bejelentkezéshez.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 43b6d541cfb3d2e5bd583223d9d93921982c65e0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749570"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039443"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először kapcsolódjon a virtuális géphez, majd jelentkezzen be.
@@ -71,6 +71,6 @@ Az RDP-fájl későbbi használatra is menthető.
 Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha problémája van a kapcsolódással, tekintse meg a [Távoli asztal kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakört 
 

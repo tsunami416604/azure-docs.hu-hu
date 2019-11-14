@@ -1,5 +1,5 @@
 ---
-title: Adatlemez leválasztása Linux rendszerű virtuális gépről – Azure | Microsoft Docs
+title: Adatlemez leválasztása Linux rendszerű virtuális gépről – Azure
 description: Megtudhatja, hogyan választhat adatlemezt az Azure-beli virtuális gépről az Azure CLI vagy a Azure Portal használatával.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695869"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036372"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Adatlemez leválasztása linuxos virtuális gépről
 
@@ -28,7 +28,7 @@ Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ug
 
 Mielőtt leválasztja a lemezt a parancssori felület vagy a portál használatával, le kell választania a lemezt, és el kell távolítania a hivatkozásokat az fstab-fájlból.
 
-Csatlakozzon a virtuális géphez. Ebben a példában a virtuális gép nyilvános IP-címét *10.0.1.4* a username azureuser: 
+Csatlakozzon a virtuális géphez. Ebben a példában a virtuális gép nyilvános IP-címét *10.0.1.4* a username *azureuser*: 
 
 ```bash
 ssh azureuser@10.0.1.4
@@ -82,7 +82,7 @@ Ebben a példában a következő sort törölni kell az */etc/fstab* fájlból:
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-A `umount` lemez leválasztásához használja a következőt:. Az alábbi példa leválasztja a */dev/sdc1* partíciót a */datadrive* csatlakoztatási pontról:
+A lemez leválasztásához használja a `umount`. Az alábbi példa leválasztja a */dev/sdc1* partíciót a */datadrive* csatlakoztatási pontról:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -109,7 +109,7 @@ A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 2. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található, és kattintson a **Leállítás** gombra a virtuális gép felszabadításához.
 3. A virtuális gép ablaktáblán válassza a **lemezek**elemet.
 4. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
-5. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a ![Leválasztás gombra, majd a lemezkép](./media/detach-disk/detach.png) leválasztása gombra.
+5. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a ![leválasztási gomb képe](./media/detach-disk/detach.png) Leválasztás gombra.
 5. A lemez eltávolítása után kattintson a panel tetején található Mentés gombra.
 6. A virtuális gép ablaktáblán kattintson az **Áttekintés** elemre, majd kattintson a panel tetején található **Start** gombra a virtuális gép újraindításához.
 
@@ -117,6 +117,6 @@ A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja azt egy másik virtuális géphez](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -1,61 +1,61 @@
 ---
-title: SQL-lekérdezést használja a Power bi-ban Azure adatkezelő adatainak megjelenítése
-description: 'Ebből a cikkből elsajátíthatja, hogyan használja a következő három lehetőség közül használatával megjelenítheti az adatokat a Power bi-ban: egy Azure Data Explorer-fürtöt egy SQL-lekérdezést.'
+title: Adatok megjelenítése az Azure Adatkezelő egy SQL-lekérdezés használatával Power BI
+description: 'Ebből a cikkből megtudhatja, hogyan használhatja a három lehetőség egyikét az Power BI: SQL-lekérdezés az Azure Adatkezelő-fürtön való megjelenítéséhez.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806418"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024085"
 ---
-# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>SQL-lekérdezést használja a Power bi-ban Azure adatkezelő adatainak megjelenítése
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Adatok megjelenítése az Azure Adatkezelő egy SQL-lekérdezés használatával Power BI
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket.
 
-A Power BI-adatokhoz való csatlakozásról három lehetőséget kínál a Azure Data Explorer: használja a beépített összekötő, importálhat egy lekérdezést az Azure Data Explorer vagy egy SQL-lekérdezést. Ez a cikk bemutatja, hogyan használható SQL-lekérdezés adatok lekérése, és jelenítheti meg azokat a Power BI-jelentésekben.
+Az Azure Adatkezelő három lehetőséget biztosít az adatokhoz való kapcsolódáshoz Power BI: a beépített összekötő használata, lekérdezés importálása az Azure-ból Adatkezelő vagy SQL-lekérdezés használata. Ebből a cikkből megtudhatja, hogyan kérhet le és jelenítheti meg az SQL-lekérdezéseket egy Power BI jelentésekben.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk a következőkre lesz szüksége:
+A cikk elvégzéséhez a következőkre lesz szüksége:
 
-* Szervezeti e-mail-fiókkal, amely tagja az Azure Active directory, így kapcsolódhat a [Azure adatkezelő súgófürtben](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* Egy olyan szervezeti e-mail fiók, amely az Azure Active Directory tagja, így kapcsolódhat az [azure adatkezelő Súgó fürthöz](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (válasszon **ingyenes letöltés**)
+* [Power bi Desktop](https://powerbi.microsoft.com/get-started/) (válassza az **ingyenes letöltés**lehetőséget)
 
-## <a name="get-data-from-azure-data-explorer"></a>Adatok lekérése az Azure Data Explorer
+## <a name="get-data-from-azure-data-explorer"></a>Adatok beolvasása az Azure Adatkezelőból
 
-Először csatlakozik az Azure Data Explorer súgófürtben, majd származó adatok egy részét a tenné a *StormEvents* tábla. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEvents* tábla adatainak egy részhalmazát adja meg. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-Általában a natív lekérdezési nyelvet használja az Azure Data Explorer használatával, de azt is támogatja az SQL-lekérdezések, amelyek itt fogja használni. Az adatkezelő az Azure az SQL-lekérdezést fordítja, a natív lekérdezés.
+Általában a natív lekérdezési nyelvet használja az Azure Adatkezelő, de támogatja az SQL-lekérdezéseket is, amelyeket itt fog használni. Az Azure Adatkezelő egy natív lekérdezésre fordítja le az SQL-lekérdezést.
 
-1. A Power BI Desktopban a a **kezdőlap** lapon jelölje be **adatok lekérése** majd **további**.
+1. Power BI Desktop a **Kezdőlap** lapon válassza az **adatlekérdezés** , majd a **továbbiak**lehetőséget.
 
     ![Adatok lekérése](media/power-bi-sql-query/get-data-more.png)
 
-1. Keresse meg *Azure SQL Database*válassza **Azure SQL Database** majd **Connect**.
+1. Keresse meg a *Azure SQL Database*, válassza a **Azure SQL Database** majd a **kapcsolat**lehetőséget.
 
     ![Adatok keresése és lekérése](media/power-bi-sql-query/search-get-data.png)
 
-1. Az a **SQL Server-adatbázis** lapon töltse ki az űrlapot a következő információkat.
+1. Az **SQL Server adatbázis** képernyőn töltse ki az űrlapot a következő információkkal.
 
-    ![Adatbázis, a tábla, a lekérdezés beállításai](media/power-bi-sql-query/database-table-query.png)
+    ![Adatbázis, tábla, lekérdezési beállítások](media/power-bi-sql-query/database-table-query.png)
 
     **Beállítás** | **Érték** | **Mező leírása**
     |---|---|---|
-    | Kiszolgáló | *help.kusto.windows.net* | A súgófürtben URL-CÍMÉT (nélkül *https://* ). Egyéb fürtök esetében az URL-cím szerepel az űrlap  *\<ClusterName\>.\< Régió\>. kusto.windows.net*. |
-    | Adatbázis | *Példák* | A minta a fürtön futó adatbázis, amelyhez csatlakozik. |
-    | Adatkapcsolati mód | *Importálás* | Meghatározza, hogy a Power BI importálta az adatokat, vagy közvetlenül csatlakozik az adatforráshoz. Mindkét módszerhez ezzel az összekötővel. |
-    | Parancs időkorlátja | Hagyja üresen | Mennyi ideig a lekérdezés előtt fut, egy időtúllépési hibát jelez. |
-    | SQL-utasítás | A lekérdezés a táblázat alatti másolása | Az SQL-utasítást, amely az Azure Data Explorer azt jelenti, hogy egy natív lekérdezés. |
-    | Egyéb beállítások | Hagyja az alapértelmezett értékek | Azure Data Explorer fürtök beállítások nem vonatkoznak. |
+    | Kiszolgáló | *help.kusto.windows.net* | A Súgó fürt URL-címe ( *https://* nélkül). Más fürtök esetében az URL-cím a következő formában található *\<ClusterName\>.\<régió\>. kusto.Windows.net*. |
+    | Adatbázis | *Példák* | A fürtön tárolt mintaadatbázis, amelyhez csatlakozik. |
+    | Adatkapcsolati mód | *Importálás* | Meghatározza, hogy Power BI importálja-e az adatimportálást, vagy közvetlenül kapcsolódik-e az adatforráshoz. Ezzel az összekötővel bármelyik lehetőséget használhatja. |
+    | Parancs időkorlátja | Hagyja üresen | Mennyi ideig fut a lekérdezés, mielőtt időtúllépési hibát jelez. |
+    | SQL-utasítás | A lekérdezés másolása a táblázat alá | Az Azure által Adatkezelő natív lekérdezésre fordított SQL-utasítás. |
+    | Egyéb beállítások | Kilépés alapértelmezett értékként | A beállítások nem vonatkoznak az Azure Adatkezelő-fürtökre. |
     | | | |
 
     ```SQL
@@ -64,24 +64,24 @@ Először csatlakozik az Azure Data Explorer súgófürtben, majd származó ada
     ORDER BY DamageCrops DESC
     ```
 
-1. Ha már nincs a súgófürtben csatlakozni, jelentkezzen be. A Microsoft-fiókkal, majd válassza a **Connect**.
+1. Ha még nem rendelkezik a Súgó fürthöz való kapcsolódással, jelentkezzen be. Jelentkezzen be egy Microsoft-fiók, majd válassza a **kapcsolat**lehetőséget.
 
     ![Bejelentkezés](media/power-bi-sql-query/sign-in.png)
 
-1. Az a **help.kusto.windows.net: A minták** képernyőn válassza ki **terhelés**.
+1. A **help.kusto.Windows.net: Samples** képernyőn válassza a **Betöltés**lehetőséget.
 
     ![Adatok betöltése](media/power-bi-sql-query/load-data.png)
 
-    A tábla megnyitása a Power BI főablakban, a jelentés nézetben, ahol a mintaadatok alapján jelentéseket hozhat létre.
+    A tábla a jelentés nézet fő Power BI ablakában nyílik meg, ahol jelentéseket hozhat létre a mintaadatok alapján.
 
-## <a name="visualize-data-in-a-report"></a>A jelentésben szereplő adatok megjelenítése
+## <a name="visualize-data-in-a-report"></a>Az adatjelentések megjelenítése
 
 [!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a létrehozott jelentés ebben a cikkben, törölje a Power BI Desktop (.pbix) fájlt.
+Ha már nincs szüksége a cikkhez létrehozott jelentésre, törölje a Power BI Desktop (. pbix) fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával](power-bi-connector.md)
+[Adatmegjelenítés az Azure Adatkezelő Connector használatával Power BI](power-bi-connector.md)

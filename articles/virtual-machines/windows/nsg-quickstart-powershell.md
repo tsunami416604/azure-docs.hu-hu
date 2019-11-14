@@ -1,5 +1,5 @@
 ---
-title: Portok megnyitása virtuális géphez Azure PowerShell használatával | Microsoft Docs
+title: Portok megnyitása virtuális géphez Azure PowerShell használatával
 description: Ismerje meg, hogyan nyithat meg egy portot/hozzon létre egy végpontot a Windows rendszerű virtuális géphez az Azure Resource Manager-alapú üzembe helyezési móddal és Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cd5aab6934e2f9692411e09046722cd59ad5e6a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3577c97b55baebe08ca4020b0c570160d551dfd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089106"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033079"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Portok és végpontok megnyitása az Azure-beli virtuális gépeken a PowerShell használatával
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Gyors parancsok
-A hálózati biztonsági csoport és az ACL-szabályok létrehozásához [a Azure PowerShell telepítésének legújabb verziójára](/powershell/azureps-cmdlets-docs)van szükség. [Ezeket a lépéseket a Azure Portal használatával](nsg-quickstart-portal.md)is végrehajthatja.
+A hálózati biztonsági csoport és az ACL-szabályok létrehozásához [a Azure PowerShell telepítésének legújabb verziójára](/powershell/azureps-cmdlets-docs)van szükség. [Ezeket a lépéseket a Azure Portal használatával is végrehajthatja](nsg-quickstart-portal.md).
 
 Jelentkezzen be az Azure-fiókjába:
 
@@ -92,7 +92,7 @@ Az itt található gyors parancsok lehetővé teszik a virtuális gép felé ir�
 
 A magasan elérhető webalkalmazások esetében a virtuális gépeket egy Azure Load Balancer mögé kell helyeznie. A terheléselosztó elosztja a forgalmat a virtuális gépekre egy olyan hálózati biztonsági csoporttal, amely forgalmi szűrést biztosít. További információkért lásd: a [Linux rendszerű virtuális gépek terheléselosztása az Azure-ban egy olyan, magasan elérhető alkalmazás létrehozásához](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a példában egy egyszerű szabályt hozott létre a HTTP-forgalom engedélyezéséhez. A részletesebb környezetek létrehozásáról a következő cikkekben talál információt:
 
 * [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)

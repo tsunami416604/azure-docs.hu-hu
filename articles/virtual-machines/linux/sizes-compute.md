@@ -1,5 +1,5 @@
 ---
-title: Azure-beli linuxos virtuális gépek méretei – optimalizált számítás | Microsoft Docs
+title: Azure-beli linuxos virtuális gépek méretei – optimalizált számítás
 description: Felsorolja az Azure-beli Linux rendszerű virtuális gépekhez elérhető különböző számítási optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 154209c78746e1a44c7cee51675150e8acca0f0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe95c6caf608e5746147fa5bc61ab6e7b63e1028
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082093"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034949"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>Számítási optimalizált virtuálisgép-méretek
 
@@ -36,5 +36,5 @@ ms.locfileid: "70082093"
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

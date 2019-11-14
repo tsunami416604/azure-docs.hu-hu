@@ -1,5 +1,5 @@
 ---
-title: Azure Diagnostics bővítmény a Windowshoz | Microsoft Docs
+title: Azure Diagnostics bővítmény a Windowshoz
 description: Azure-beli Windows rendszerű virtuális gépek figyelése az Azure Diagnostics bővítmény használatával
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 4230e2aac8d386c759a403b9008029d68049569c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749394"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033482"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure Diagnostics bővítmény a Windows rendszerű virtuális gépekhez
 
@@ -41,9 +41,9 @@ A Azure Diagnostics bővítmény megköveteli, hogy a célként megadott virtuá
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-séma Azure Resource Manager sablonban használható a Azure Diagnostics bővítmény futtatásához Azure Resource Manager sablon központi telepítésekor. Lásd: [figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal](extensions-diagnostics-template.md).
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma Azure Resource Manager sablonban használható a Azure Diagnostics bővítmény futtatásához Azure Resource Manager sablon központi telepítésekor. Lásd: [figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
+## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
 Az Azure CLI használatával telepítheti az Azure Diagnostics-bővítményt egy meglévő virtuális gépre. Cserélje le a védett beállítások és beállítások tulajdonságokat érvényes JSON-ra a fenti kiterjesztési sémából. 
 
@@ -74,11 +74,11 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
   -DiagnosticsConfigurationPath $diagnosticsconfig_path
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A bővítmények állapotával kapcsolatos adatok a Azure Portalból és az Azure CLI használatával kérhetők le. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot az Azure CLI használatával.
+Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -88,8 +88,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További információ a Azure Diagnostics bővítménnyel kapcsolatban](../../azure-monitor/platform/diagnostics-extension-overview.md)
 * [A bővítmény sémájának és verzióinak áttekintése](../../azure-monitor/platform/diagnostics-extension-schema.md)

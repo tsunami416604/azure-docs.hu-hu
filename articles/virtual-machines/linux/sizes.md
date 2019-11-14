@@ -1,5 +1,5 @@
 ---
-title: Linux rendszerű virtuális gépek méretei az Azure-ban | Microsoft Docs
+title: Linux rendszerű virtuális gépek méretei az Azure-ban
 description: Felsorolja az Azure-beli Linux rendszerű virtuális gépekhez elérhető különböző méreteket.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 468ae6f249f21f04681d56c660d03a8cd7806634
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 668e87050809da24a3bcedd7c388e37db2215ff0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719090"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034821"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>A Linux rendszerű virtuális gépek méretei az Azure-ban
 Ez a cikk a Linux-alkalmazások és-munkaterhelések futtatására használható Azure-beli virtuális gépek elérhető méreteit és lehetőségeit ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy a rendszer mikor tervezi ezeket az erőforrásokat. Ez a cikk a Windows rendszerű [virtuális gépekhez](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)is elérhető.
@@ -58,7 +58,7 @@ További információ arról, hogy az [Azure számítási egységei (ACU)](acu.m
 
 További információ a Linux rendszerű virtuális gépek számítási teljesítményéről a [Megjegyzések összehasonlítási pontjainak](compute-benchmark-scores.md)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a rendelkezésre álló különböző virtuálisgép-méretekről:
 - [Általános célú](sizes-general.md)

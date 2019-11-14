@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gépek monitorozása az Azure-ban | Microsoft Docs
+title: Oktatóanyag – Linux rendszerű virtuális gépek monitorozása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti a linuxos virtuális gépeken futó teljesítmény-és észlelt alkalmazás-összetevőket.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eb3f73f3ceb27bec05d4e2e88877ea398de7cdf5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71680077"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034365"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gép figyelése az Azure-ban
 
 Az Azure monitoring ügynökök használatával gyűjti az Azure-beli virtuális gépekről származó rendszerindítási és teljesítményadatokat, tárolja ezeket az adatokat az Azure Storage-ban, és elérhetővé teszi a portálon, a Azure PowerShell modulon és az Azure CLI-n keresztül A speciális figyelés Azure Monitor for VMs a teljesítmény-metrikák gyűjtésével, a virtuális gépre telepített alkalmazás-összetevők felderítésével, valamint a teljesítmény-és a függőségi térképekkel együtt.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
@@ -129,13 +129,13 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor fo
 
 1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
-2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
+2. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
 
-3. Az **áttekintések (előzetes verzió)** lapon válassza a **kipróbálás most**lehetőséget.
+3. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
 
-    ![Virtuális gép Azure Monitor for VMsának engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![A virtuális gépek az Azure Monitor engedélyezése a virtuális gép](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. Ha egy meglévő Log Analytics munkaterülettel rendelkezik ugyanabban az előfizetésben, akkor a **Azure monitor** megállapítások bevezetése lapon válassza ki azt a legördülő listából.  
+4. Az a **Azure Monitor Insights felvételi** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben, válassza a legördülő listában.  
 
     A lista előjelöli az alapértelmezett munkaterületet és helyet, ahol a virtuális gép üzembe lett helyezve az előfizetésben. 
 
@@ -144,7 +144,7 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor fo
 
 Ha engedélyezte a figyelést, előfordulhat, hogy néhány percet várnia kell, amíg meg nem tekinti a virtuális gép teljesítmény-metrikáit.
 
-![Azure Monitor for VMs figyelés telepítésének engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 
@@ -152,7 +152,7 @@ Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több f�
 
 1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
-2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
+2. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
 
 3. Válassza a **teljesítmény** fület.
 

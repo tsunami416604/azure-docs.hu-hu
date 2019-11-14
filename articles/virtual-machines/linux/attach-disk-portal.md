@@ -1,5 +1,5 @@
 ---
-title: Adatlemez csatolása Linux rendszerű virtuális géphez | Microsoft Docs
+title: Adatlemez csatolása Linux rendszerű virtuális géphez
 description: A portál használatával új vagy meglévő adatlemezt csatolhat egy linuxos virtuális géphez.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036378"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037051"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,7 +33,7 @@ Mielőtt lemezeket csatol a virtuális géphez, tekintse át a következő tippe
 
 
 ## <a name="find-the-virtual-machine"></a>A virtuális gép megkeresése
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben kattintson a **Virtual Machines**elemre.
 3. Válassza ki a virtuális gépet a listából.
 4. A virtuális gépek lap **Essentials**területén kattintson a **lemezek**elemre.
@@ -79,7 +79,7 @@ Az új lemez particionálásához, formázásához és csatlakoztatásához, íg
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először keresse meg a lemezt a `dmesg` használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
+A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először is keresse meg a lemezt a `dmesg` használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
 
 ```bash
 dmesg | grep SCSI
@@ -103,13 +103,13 @@ Ha olyan meglévő lemezt használ, amely tartalmaz egy adatkészletet, ugorjon 
 > [!NOTE]
 > Azt javasoljuk, hogy használja az fdisk legújabb verzióit, illetve azokat, amelyek elérhetők a disztribúcióhoz.
 
-Particionálja a lemezt az `fdisk` használatával. Ha a lemez mérete 2 tebibájt (TiB) vagy nagyobb, `parted` akkor GPT particionálást kell használnia. Ha a lemez mérete 2TiB alatt van, akkor MBR-vagy GPT-particionálást is használhat. Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
+Particionálja a lemezt az `fdisk` használatával. Ha a lemez mérete 2 tebibájt (TiB) vagy nagyobb, akkor GPT-particionálást kell használnia, `parted` használatával végezheti el a GPT particionálást. Ha a lemez mérete 2TiB alatt van, akkor MBR-vagy GPT-particionálást is használhat. Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Új partíció `n` hozzáadásához használja a parancsot. Ebben a példában az elsődleges partíciót is `p` választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet a következő példához hasonló lesz:
+Új partíció hozzáadásához használja a `n` parancsot. Ebben a példában az elsődleges partíció `p` is választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet a következő példához hasonló lesz:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -131,7 +131,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-A partíciós tábla kinyomtatásához írja `p` be a parancsot, `w` majd írja be a táblát a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
+Nyomtassa ki a partíciós táblát úgy, hogy beírja `p` majd a `w` paranccsal írja be a táblázatot a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
 ```bash
 Command (m for help): p
@@ -153,7 +153,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Most írjon egy fájlrendszert a partícióra a `mkfs` paranccsal. Adja meg a fájlrendszer típusát és az eszköz nevét. Az alábbi példa egy *ext4* fájlrendszert hoz létre az előző lépésekben létrehozott */dev/sdc1* -partíción:
+Most írjon egy fájlrendszert a partícióra az `mkfs` paranccsal. Adja meg a fájlrendszer típusát és az eszköz nevét. Az alábbi példa egy *ext4* fájlrendszert hoz létre az előző lépésekben létrehozott */dev/sdc1* -partíción:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -184,19 +184,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 ### <a name="mount-the-disk"></a>A lemez csatlakoztatása
-Hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához `mkdir`a használatával. A következő példa egy könyvtárat hoz létre a */datadrive*:
+Hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához `mkdir`használatával. A következő példa egy könyvtárat hoz létre a */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Ezzel `mount` a paranccsal csatlakoztathatja a fájlrendszert. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
+A fájlrendszer csatlakoztatásához használja a `mount`. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Annak biztosítása érdekében, hogy a meghajtó újracsatlakoztatása újraindítás után automatikusan megtörténjen, hozzá kell adni az */etc/fstab* fájlhoz. Emellett erősen ajánlott az UUID (univerzálisan egyedi azonosító) használata az */etc/fstab* -ben a meghajtóra, nem csak az eszköz neve (például */dev/sdc1*). Ha az operációs rendszer lemezes hibát észlel a rendszerindítás során, az UUID használatával elkerülhető, hogy a helytelen lemez csatlakoztatva legyen egy adott helyhez. A fennmaradó adatlemezek ezután ugyanahhoz az eszköz-azonosítóhoz lesznek rendelve. Az új meghajtó UUID azonosítójának megkereséséhez használja a `blkid` következő segédprogramot:
+Annak biztosítása érdekében, hogy a meghajtó újracsatlakoztatása újraindítás után automatikusan megtörténjen, hozzá kell adni az */etc/fstab* fájlhoz. Emellett erősen ajánlott az UUID (univerzálisan egyedi azonosító) használata az */etc/fstab* -ben a meghajtóra, nem csak az eszköz neve (például */dev/sdc1*). Ha az operációs rendszer lemezes hibát észlel a rendszerindítás során, az UUID használatával elkerülhető, hogy a helytelen lemez csatlakoztatva legyen egy adott helyhez. A fennmaradó adatlemezek ezután ugyanahhoz az eszköz-azonosítóhoz lesznek rendelve. Az új meghajtó UUID azonosítójának megkereséséhez használja a `blkid` segédprogramot:
 
 ```bash
 sudo -i blkid
@@ -240,7 +240,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
+* Bizonyos esetekben a `discard`i beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, hogy manuálisan futtatja a `fstrim` parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
   
     **Ubuntu**
   
@@ -256,5 +256,5 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
     sudo fstrim /datadrive
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Adatlemezt](add-disk.md) az Azure CLI használatával is csatolhat.

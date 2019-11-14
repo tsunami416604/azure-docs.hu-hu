@@ -1,5 +1,5 @@
 ---
-title: SQL Server virtuális gép létrehozása Azure PowerShellban (klasszikus) | Microsoft Docs
+title: Klasszikus SQL Server VM létrehozása (PowerShell)
 description: Útmutatást és PowerShell-szkripteket biztosít az Azure-beli virtuális gépek SQL Server virtuálisgép-katalógus rendszerképeivel való létrehozásához. Ez a témakör a klasszikus üzembe helyezési módot használja.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4c7c29736cdd80ef7ebe413a377aba630d61858
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8757b634b76867a2d5ccce3dcfdc9d66ef25c25e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101873"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032739"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>SQL Server virtuális gép kiépítése Azure PowerShell használatával (klasszikus)
 
@@ -77,9 +78,9 @@ A SQL Server virtuális gép egy adott Azure-régióban található felhőalapú
    ```
 
    > [!NOTE]
-   > Ha új Storage-fiókra van szüksége, először hozzon létre egy teljesen alacsony szintű Storage-fióknevet a New-AzureStorageAccount paranccsal a következő példában látható módon:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
+   > Ha új Storage-fiókra van szüksége, először hozzon létre egy teljesen alacsony szintű Storage-fióknevet a New-AzureStorageAccount paranccsal a következő példában látható módon: `New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
-4. Rendelje hozzá a cél Storage-fióknevét a $staccounthoz. Ezután a **set-azuresubscription parancsot** használatával állítsa be az előfizetést és az aktuális Storage-fiókot.
+4. Rendelje hozzá a cél Storage-fiók nevét a **$staccounthoz**. Ezután a **set-azuresubscription parancsot** használatával állítsa be az előfizetést és az aktuális Storage-fiókot.
 
    ```powershell
    $staccount="<storage account name>"
@@ -196,7 +197,7 @@ New-AzureVM –ServiceName $svcname -VMs $vm1
 
 Miután bejelentkezett a gépre a távoli asztal használatával, konfigurálja a SQL Server a [SQL Server-kapcsolat Azure-beli virtuális gépen való konfigurálásának lépései](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)című részben leírtak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual Machines és a [Virtual Machines dokumentációjában](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)további útmutatást talál a virtuális gépek üzembe helyezéséhez.
 

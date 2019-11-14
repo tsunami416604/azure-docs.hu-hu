@@ -1,5 +1,5 @@
 ---
-title: Szoftveres RAID konfigurálása Linux rendszerű virtuális gépen | Microsoft Docs
+title: Szoftveres RAID konfigurálása Linux rendszerű virtuális gépen
 description: Ismerje meg, hogyan konfigurálhatja a mdadm a RAID használatára az Azure-ban Linux rendszeren.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: d0658af090d9a3f39bee69f5103a78a329fe189c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083793"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036666"
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxban
 A Linux rendszerű virtuális gépeken az Azure-ban a szoftveres RAID használatával egyetlen RAID-eszközként több csatlakoztatott adatlemezt is be lehet mutatni. Ez általában a teljesítmény javítása és a jobb átviteli sebesség lehetővé tétele, mint a csak egyetlen lemez használata.
@@ -48,7 +48,7 @@ RAID-eszköz konfigurálásához legalább két üres adatlemez szükséges.  A 
 ## <a name="create-the-disk-partitions"></a>A lemezpartíciók létrehozása
 Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.-on. Az új lemezpartíció neve/dev/sdc1. lesz.
 
-1. `fdisk` A partíciók létrehozásának megkezdése
+1. A `fdisk` elindítása a partíciók létrehozásának megkezdéséhez
 
     ```bash
     sudo fdisk /dev/sdc
@@ -82,14 +82,14 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
     Partition number (1-4): 1
     ```
 
-1. Válassza ki az új partíció kiindulási pontját, `<enter>` vagy nyomja meg a gombot, hogy fogadja el az alapértelmezett értéket, hogy a partíciót a szabad terület elején helyezze el a meghajtón:
+1. Válassza ki az új partíció kezdőpontját, vagy nyomja meg az `<enter>` gombot, hogy fogadja el az alapértelmezett értéket a meghajtó szabad területének elején.
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-1. Válassza ki a partíció méretét, például a "+ 10G" típust egy 10 gigabájtos partíció létrehozásához. Vagy nyomja meg `<enter>` a teljes meghajtót átívelő egyetlen partíció létrehozása:
+1. Válassza ki a partíció méretét, például a "+ 10G" típust egy 10 gigabájtos partíció létrehozásához. Vagy nyomja meg `<enter>` hozzon létre egy partíciót, amely a teljes meghajtót felöleli:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
@@ -112,7 +112,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
     ```
 
 ## <a name="create-the-raid-array"></a>A RAID-tömb létrehozása
-1. A következő példa a "Stripe" (0. RAID-szint) három partíciót mutat be három különálló adatlemezen (sdc1, sdd1, sde1).  A parancs futtatása után létrejön egy új, **/dev/md127** nevű RAID-eszköz. Azt is vegye figyelembe, hogy ha ezek az adatlemezek korábban egy másik inaktív RAID-tömb részét képezték `--force` , akkor szükség `mdadm` lehet a paraméter hozzáadására a parancshoz:
+1. A következő példa a "Stripe" (0. RAID-szint) három partíciót mutat be három különálló adatlemezen (sdc1, sdd1, sde1).  A parancs futtatása után létrejön egy új, **/dev/md127** nevű RAID-eszköz. Azt is vegye figyelembe, hogy ha ezek az adatlemezek korábban egy másik inaktív RAID-tömb részét képezik, akkor szükség lehet a `--force` paraméter hozzáadására a `mdadm` parancshoz:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -154,7 +154,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
     ```bash
     sudo mkdir /data
     ```
-1. Az/etc/fstab-fájl szerkesztésekor az **UUID** -t kell használni az eszköz neve helyett a fájlrendszerre való hivatkozáshoz.  `blkid` A segédprogram használatával határozza meg az új fájlrendszer UUID-azonosítóját:
+1. Az/etc/fstab-fájl szerkesztésekor az **UUID** -t kell használni az eszköz neve helyett a fájlrendszerre való hivatkozáshoz.  Az új fájlrendszer UUID-azonosítójának meghatározásához használja az `blkid` segédprogramot:
 
     ```bash   
     sudo /sbin/blkid
@@ -184,7 +184,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
 
     Ha ez a parancs hibaüzenetet eredményez, ellenőrizze a szintaxist az/etc/fstab fájlban.
    
-    A következő `mount` parancs futtatásával győződjön meg arról, hogy a fájlrendszer csatlakoztatva van:
+    Ezután futtassa a `mount` parancsot a fájlrendszer csatlakoztatásának biztosításához:
 
     ```bash   
     mount
@@ -196,7 +196,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
    
     **fstab-konfiguráció**
    
-    Számos disztribúció tartalmazza az `nobootwait` /etc/fstab fájlhoz adható vagy `nofail` csatlakoztatási paramétereket. Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
+    Számos eloszlás magában foglalja az/etc/fstab fájlhoz adható `nobootwait` vagy `nofail` csatlakoztatási paramétereket. Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
    
     Példa (Ubuntu):
 
@@ -206,7 +206,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
 
     **Linux rendszerindítási paraméterek**
    
-    A fenti paraméterek mellett a (z) "`bootdegraded=true`" kernel paraméter a rendszerindítást is lehetővé teszi, még akkor is, ha a RAID sérült vagy csökkentett teljesítményű, például ha egy adatmeghajtót véletlenül eltávolítottak a virtuális gépről. Ez alapértelmezés szerint nem rendszerindító rendszert is eredményezhet.
+    A fenti paramétereken kívül a "`bootdegraded=true`" kernel-paraméter lehetővé teszi a rendszer számára, hogy akkor is elindítsa a rendszerindítást, ha a RAID sérült vagy csökkentett teljesítményű, például ha egy adatmeghajtót véletlenül eltávolítottak a virtuális gépről. Ez alapértelmezés szerint nem rendszerindító rendszert is eredményezhet.
    
     A rendszermag paramétereinek megfelelő szerkesztéséhez tekintse meg a disztribúció dokumentációját. Például sok disztribúcióban (CentOS, Oracle Linux, SLES 11) ezeket a paramétereket manuálisan is hozzáadhatja a "`/boot/grub/menu.lst`" fájlhoz.  Ubuntu esetén ez a paraméter a "/etc/default/grub" `GRUB_CMDLINE_LINUX_DEFAULT` változóhoz adható hozzá.
 
@@ -215,17 +215,17 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
 Egyes linuxos kernelek támogatják a TRIM/LEKÉPEZÉSÉNEK megszüntetése műveleteket a lemezen lévő nem használt blokkok elvetéséhez. Ezek a műveletek elsődlegesen a standard szintű tárolásban hasznosak, hogy tájékoztassák az Azure-t arról, hogy a törölt lapok már nem érvényesek, és el lehet őket dobni. Ha nagyméretű fájlokat hoz létre, és törli őket, a lapok elvetése is megtakaríthatja a költségeket.
 
 > [!NOTE]
-> Előfordulhat, hogy a RAID nem ad ki elveti parancsokat, ha a tömb méretének értéke kisebb, mint az alapértelmezett (512 KB nál). Ennek az az oka, hogy a gazdagépen a leképezésének megszüntetése részletessége is 512 KB nál. Ha módosította a tömb méretének méretét a mdadm `--chunk=` paraméterrel, akkor a rendszer a kernel által figyelmen kívül hagyhatja a Trim/leképezésének megszüntetése kérelmeket.
+> Előfordulhat, hogy a RAID nem ad ki elveti parancsokat, ha a tömb méretének értéke kisebb, mint az alapértelmezett (512 KB nál). Ennek az az oka, hogy a gazdagépen a leképezésének megszüntetése részletessége is 512 KB nál. Ha módosította a tömb méretének méretét a mdadm `--chunk=` paraméterén keresztül, akkor előfordulhat, hogy a kernel nem fogja figyelmen kívül hagyni a TRIM/leképezésének megszüntetése kérelmeket.
 
 A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-támogatás. A szokásos módon tekintse meg az ajánlott módszert az eloszlásban:
 
-- Használja a `discard` csatlakoztatási `/etc/fstab`lehetőséget a alkalmazásban, például:
+- Használja a `/etc/fstab``discard` csatlakoztatási lehetőségét, például:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
+- Bizonyos esetekben a `discard`i beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, hogy manuálisan futtatja a `fstrim` parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
 
     **Ubuntu**
 

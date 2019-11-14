@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gépek terheléselosztása az Azure-ban | Microsoft Docs
+title: Oktatóanyag – Linux rendszerű virtuális gépek terheléselosztása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre három Linux rendszerű virtuális gépen terheléselosztót az Azure CLI-vel egy magas rendelkezésre állású és biztonságos alkalmazáshoz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: daad74ae5f046edb1b4bf6eef547c963e52593f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300818"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034437"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
 
@@ -68,7 +68,7 @@ az network public-ip create \
     --name myPublicIP
 ```
 
-### <a name="create-a-load-balancer"></a>Load Balancer létrehozása
+### <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
 Hozzon létre egy terheléselosztót az [az network lb create](/cli/azure/network/lb) paranccsal. Az alábbi példa létrehoz egy *myLoadBalancer* nevű terheléselosztót, és hozzárendeli a *myPublicIP* címet az előtérbeli IP-konfigurációhoz:
 
 ```azurecli-interactive 

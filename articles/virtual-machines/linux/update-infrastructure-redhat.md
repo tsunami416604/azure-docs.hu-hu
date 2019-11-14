@@ -1,5 +1,5 @@
 ---
-title: Red Hat frissítési infrastruktúrához |} A Microsoft Docs
+title: A Red Hat frissítési infrastruktúrája
 description: További információk a Red Hat frissítési infrastruktúrához az igény szerinti Red Hat Enterprise Linux-példányok a Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: 6b332af53f421230b3fb5401e525bd77c5e87ed9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b19ccad5254418092446aaf781d49fa7edf0e4f4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081382"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034323"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  [Red Hat frissítési infrastruktúrához](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi a felhőszolgáltatók, például az Azure Red Hat-ban üzemeltetett tárház tartalmának tükrözik, az Azure-ra vonatkozó egyéni adattárak tartalom létrehozása és végfelhasználói virtuális gépek számára elérhető legyen.
@@ -32,7 +32,7 @@ A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes v
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI vonatkozó fontos információk
 
 * Az Azure RHUI a frissítési infrastruktúra, amely támogatja az Azure-ban létrehozott összes RHEL TB virtuális gépet. Ez nem zárja ki, hogy regisztrálja a TB RHEL-alapú virtuális gépeket az előfizetés-kezelővel, illetve a műholdon vagy más frissítési forrásokkal, de a TB virtuális géppel való használata esetén a rendszer közvetett kettős számlázást eredményez. A részletekért tekintse meg a következő pontot.
-* Az Azure-ban üzemeltetett RHUI a hozzáférést a RHEL Használatalapú lemezképének díja tartalmazza. Ha akkor regisztrációját, az Azure-ban üzemeltetett RHUI PAYG RHEL virtuális Gépet, amely nem átalakítása a virtuális gép egy virtuális gép bring-your-saját licenc (használata BYOL) típusú. Ha ugyanazon a virtuális Gépen egy másik forrása a frissítések regisztrál, vonatkozhatnak _közvetett_ díjak duplán. Az első alkalommal az Azure RHEL szoftvert díjat fizetnie. A második alkalommal a Red Hat-előfizetéseit, korábban beszerzett díjkötelesek. Ha az Azure által üzemeltetett RHUI eltérő frissítési infrastruktúrát kell használnia, érdemes regisztrálni a [RHEL BYOS](https://aka.ms/rhel-byos)-lemezképek használatára.
+* Az Azure-ban üzemeltetett RHUI a hozzáférést a RHEL Használatalapú lemezképének díja tartalmazza. Ha akkor regisztrációját, az Azure-ban üzemeltetett RHUI PAYG RHEL virtuális Gépet, amely nem átalakítása a virtuális gép egy virtuális gép bring-your-saját licenc (használata BYOL) típusú. Ha ugyanazon a virtuális Gépen egy másik forrása a frissítések regisztrál, vonatkozhatnak _közvetett_ díjak duplán. Az első alkalommal az Azure RHEL szoftvert díjat fizetnie. A második alkalommal a Red Hat-előfizetéseit, korábban beszerzett díjkötelesek. Ha az Azure által üzemeltetett RHUI eltérő frissítési infrastruktúrát kell használnia, érdemes regisztrálni a [RHEL BYOS-lemezképek](https://aka.ms/rhel-byos)használatára.
 
 * Az Azure-ban elérhető SAP-TB (RHEL for SAP, RHEL for SAP HANA és RHEL for SAP Business Applications) olyan dedikált RHUI-csatornákhoz csatlakoznak, amelyek az adott RHEL alverzióban maradnak, és az SAP-minősítéshez szükségesek.
 
@@ -40,13 +40,13 @@ A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes v
 
 ## <a name="image-update-behavior"></a>Rendszerkép-frissítési viselkedés
 
-Április 2019 az Azure olyan RHEL-rendszerképeket kínál, amelyek alapértelmezés szerint a kiterjesztett frissítési támogatási (EUS) adattárakhoz csatlakoznak, és RHEL a normál (nem EUS) adattárakhoz csatlakozó lemezképeket. A RHEL EUS kapcsolatos további részletek a Red Hat verziójának [életciklus](https://access.redhat.com/support/policy/updates/errata) -dokumentációjában és a [EUs dokumentációjában](https://access.redhat.com/articles/rhel-eus)találhatók. Az alapértelmezett viselkedés `sudo yum update` attól függ, hogy melyik RHEL-lemezképet hozta létre a rendszer, mivel a különböző rendszerképek különböző adattárakhoz csatlakoznak.
+Április 2019 az Azure olyan RHEL-rendszerképeket kínál, amelyek alapértelmezés szerint a kiterjesztett frissítési támogatási (EUS) adattárakhoz csatlakoznak, és RHEL a normál (nem EUS) adattárakhoz csatlakozó lemezképeket. A RHEL EUS kapcsolatos további részletek a Red Hat [verziójának életciklus-dokumentációjában](https://access.redhat.com/support/policy/updates/errata) és a [EUs dokumentációjában](https://access.redhat.com/articles/rhel-eus)találhatók. A `sudo yum update` alapértelmezett viselkedése attól függ, hogy melyik RHEL-lemezképből lett kiépítve, mert a különböző rendszerképek különböző adattárakhoz csatlakoznak.
 
-A teljes rendszerkép listában futtassa `az vm image list --publisher redhat --all` az Azure CLI-t.
+A teljes rendszerkép listához futtassa az `az vm image list --publisher redhat --all` az Azure CLI használatával.
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Nem EUS-tárházhoz csatlakoztatott képek
 
-Ha olyan RHEL-lemezképből hoz létre virtuális gépet, amely nem EUS-tárházhoz van csatlakoztatva, a futtatásakor `sudo yum update`a rendszer a legújabb RHEL alverzióra frissíti. Ha például egy virtuális gépet egy RHEL 7,4 TB-lemezképből hoz létre, és `sudo yum update`a futtatását futtatja, akkor a RHEL 7,7 virtuális gép (a RHEL7 család legújabb alverziója).
+Ha olyan RHEL-lemezképből hoz létre virtuális gépet, amely nem EUS-adattárakhoz csatlakozik, akkor a `sudo yum update`futtatásakor a rendszer a legújabb RHEL alverzióra frissíti. Ha például RHEL 7,4 TB lemezképből helyez üzembe egy virtuális gépet, és `sudo yum update`futtat, akkor a RHEL 7,7 virtuális gép (a RHEL7-család legújabb alverziója) végén jelenik meg.
 
 A nem EUS adattárakhoz csatlakoztatott lemezképek nem tartalmaznak alverziószámot az SKU-ban. Az SKU a harmadik eleme az URN-ben (a rendszerkép teljes neve). Az alábbi képek például a nem EUS adattárakhoz vannak csatolva:
 
@@ -63,7 +63,7 @@ Vegye figyelembe, hogy az SKU-nak 7-LVM vagy 7-RAW értékűnek kell lennie. Az 
 
 ### <a name="images-connected-to-eus-repositories"></a>EUS-adattárakhoz csatlakoztatott képek
 
-Ha EUS-adattárakhoz csatlakoztatott RHEL-lemezképből hoz létre virtuális gépet, a futtatásakor `sudo yum update`a rendszer nem FRISSÍTI a legújabb RHEL alverzióra. Ennek az az oka, hogy a EUS-adattárakhoz csatlakoztatott rendszerképek szintén a megadott alverzióhoz vannak rögzítve.
+Ha EUS-adattárakhoz csatlakoztatott RHEL-lemezképből helyez üzembe egy virtuális gépet, a `sudo yum update`futtatásakor a rendszer nem frissíti a legújabb RHEL alverzióra. Ennek az az oka, hogy a EUS-adattárakhoz csatlakoztatott rendszerképek szintén a megadott alverzióhoz vannak rögzítve.
 
 A EUS-adattárakhoz csatlakozó rendszerképek az SKU-ban is szerepelni fognak. Az alábbi képek például az EUS-adattárakhoz vannak csatolva:
 
@@ -108,7 +108,7 @@ Az alábbi útmutatást követve zárolhat egy RHEL virtuális gépet egy adott 
     ```
 
     >[!NOTE]
-    > A fenti utasítás a RHEL-alverzió zárolását az aktuális másodlagos kiadáshoz fogja zárolni. Adjon meg egy adott másodlagos kiadást, ha a frissítést és a zárolást egy későbbi, nem a legújabb verzióra szeretné használni. Például a RHEL `echo 7.5 > /etc/yum/vars/releasever` -verziót a RHEL 7,5-re fogja zárolni
+    > A fenti utasítás a RHEL-alverzió zárolását az aktuális másodlagos kiadáshoz fogja zárolni. Adjon meg egy adott másodlagos kiadást, ha a frissítést és a zárolást egy későbbi, nem a legújabb verzióra szeretné használni. A `echo 7.5 > /etc/yum/vars/releasever` például a RHEL-verziót RHEL 7,5-re fogja zárolni
 
 1. A RHEL virtuális gép frissítése
     ```bash
@@ -167,15 +167,15 @@ Ha a hozzáférés további korlátozását RHEL Használatalapú virtuális gé
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Frissítés a virtuális gép RHUI ügyféltanúsítvány lejárt
 
-Ha egy régebbi RHEL virtuálisgép-rendszerképet használ, például a RHEL 7,4 (rendszerkép urn: `RedHat:RHEL:7.4:7.4.2018010506`), a rendszer kapcsolódási problémákat tapasztal a RHUI miatt egy már lejárt SSL-ügyféltanúsítvány miatt. A megjelenített hiba a következőhöz hasonló lehet: _"SSL-társ elutasította a tanúsítvány lejártként"_ vagy _"hiba: Az adattár metaadatainak (repomd. xml) nem olvashatók be a tárházhoz:... Ellenőrizze az elérési útját, és_próbálkozzon újra ". A probléma megoldásához frissítse a RHUI-ügyfélszoftvert a virtuális gépen a következő parancs használatával:
+Ha egy régebbi RHEL virtuálisgép-rendszerképet használ, például a RHEL 7,4 (rendszerkép URN: `RedHat:RHEL:7.4:7.4.2018010506`), a rendszer csatlakozási problémákba ütközik a RHUI miatt egy már lejárt SSL-ügyféltanúsítvány miatt. A megjelenített hiba a következőhöz hasonló lehet: _"az SSL-társ a tanúsítvány lejártként való elutasítása"_ vagy _"hiba: nem lehet lekérni a tárház metaadatait (repomd. xml) az adattár számára... Ellenőrizze az elérési útját, és próbálkozzon újra "_ . A probléma megoldásához frissítse a RHUI-ügyfélszoftvert a virtuális gépen a következő parancs használatával:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-Azt is megteheti, hogy a Futtatás `sudo yum update` a RHEL-verziótól függően frissíti az ügyféltanúsítvány-csomagot (a lejárt SSL-tanúsítvány után), és más adattárakban is megjelenik. Ha ez a frissítés sikeres, a más RHUI-adattárakhoz való normál kapcsolatot vissza kell állítani, hogy sikeresen fusson `sudo yum update` .
+Azt is megteheti, hogy `sudo yum update` futtatja az ügyféltanúsítvány-csomagot is (a RHEL verziójától függően), a "lejárt SSL-tanúsítvány" hibaüzenetek ellenére, amelyeket más adattárakhoz fog látni. Ha a frissítés sikeres, a többi RHUI-tárházhoz való normál kapcsolatot vissza kell állítani, így a `sudo yum update` sikeresen futtatható.
 
-Ha a futtatása során `yum update`404-as hibát észlel, próbálja meg a következőt a yum-gyorsítótár frissítéséhez:
+Ha egy `yum update`futtatása során 404-as hibát észlel, próbálja meg a következőt a yum cache frissítéséhez:
 ```bash
 sudo yum clean all;
 sudo yum makecache
@@ -213,7 +213,7 @@ Ez az eljárás csak referenciaként van megadva. RHEL Használatalapú lemezké
   yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Red Hat Enterprise Linux virtuális gép létrehozása az Azure Marketplace-en PAYG rendszerképből, és használata az Azure-ban üzemeltetett RHUI, nyissa meg a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/redhat/).
 * Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./rhel-images.md).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

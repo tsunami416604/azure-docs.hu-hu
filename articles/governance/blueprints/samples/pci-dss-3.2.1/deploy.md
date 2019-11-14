@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 terv minta – üzembe helyezési lépések
 description: Üzembe helyezheti a Payment Card Industry adatbiztonsági szabvány v 3.2.1 tervének lépéseit, beleértve a terv-összetevő paraméterének részleteit.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b29a1a66b7407558769e506deed5e65f7ecb064c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163036"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037261"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 terv üzembe helyezése minta
 
@@ -99,7 +95,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |-|-|-|-|
 |\[előzetes verzió\] a PCI v 3.2.1:2018-as verziójának ellenőrzése és speciális virtuálisgép-bővítmények telepítése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
 |Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyszínek listája|A alkalmazásba telepítendő összes erőforráshoz engedélyezett adatközpont-helyszínek listája. Ez a lista globálisan testreszabható a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyet.| 
-|Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A Geo-megfelelőségi követelmények betartatására használható.| 
+|Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A földrajzi megfelelőségi követelmények betartására szolgál.| 
 |Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Adatmegőrzés a napok száma szerint. Az alapértelmezett érték 180, de a PCI esetében 365.| 
 |Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd).| 
 
@@ -111,7 +107,7 @@ Most, hogy áttekintette a PCI-DSS v 3.2.1 Blueprint minta üzembe helyezéséne
 > [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
 > [PCI-DSS v 3.2.1 terv – vezérlés leképezése](./control-mapping.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

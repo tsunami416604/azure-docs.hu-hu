@@ -1,5 +1,5 @@
 ---
-title: Gyakori hibák a Klasszikusban Azure Resource Manager Migrálás során | Microsoft Docs
+title: A klasszikusból az Azure Resource Manager-alapú üzemi modellbe való migrálás során előforduló gyakori hibák
 description: Ez a cikk a IaaS-erőforrások Azure Service Management szolgáltatásból a Azure Resource Manager verembe történő áttelepítése során leggyakrabban előforduló hibákat és enyhítéseket ismerteti.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: b4dbb2bec739b4523abd8a02eef0e1c8299f4d97
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f85a5c5ed7147bda8a032e220de0945968e2d9ed
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013713"
+ms.locfileid: "74035763"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>A klasszikusból az Azure Resource Manager-alapú üzemi modellbe való migrálás során előforduló gyakori hibák
 [!INCLUDE [virtual-machines-common-migration-errors](../../../includes/virtual-machines-common-classic-resource-manager-migration-common-errors.md)]

@@ -1,5 +1,5 @@
 ---
-title: Fájlok áthelyezése Azure-beli Linux rendszerű virtuális gépekről és az SCP használatával | Microsoft Docs
+title: Fájlok áthelyezése Azure-beli linuxos virtuális gépekről és az SCP használatával
 description: A fájlokat biztonságosan helyezheti át az Azure-ban lévő Linux rendszerű virtuális gépekre az SCP és egy SSH-kulcspár használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 56b264b61976607a3afdaa7a6ec7dc5da2091aba
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173935"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036600"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Fájlok áthelyezése Linux rendszerű virtuális gépről SCP használatával
 
@@ -48,9 +48,9 @@ Példaként egy Linux rendszerű virtuális gépre helyezünk át egy Azure-beli
 
 ## <a name="ssh-key-pair-authentication"></a>SSH-kulcspár hitelesítése
 
-Az SCP SSH-t használ a szállítási réteghez. Az SSH kezeli a hitelesítést a cél gazdagépen, és a fájlt egy, az SSH-val alapértelmezés szerint elérhető titkosított alagútba helyezi át. Az SSH-hitelesítéshez felhasználóneveket és jelszavakat lehet használni. Az SSH nyilvános és titkos kulcsú hitelesítés azonban ajánlott biztonsági eljárás. Miután az SSH hitelesítette a kapcsolódást, az SCP megkezdi a fájl másolását. A megfelelően konfigurált `~/.ssh/config` és az SSH nyilvános és titkos kulcsok használatával az scp-kapcsolatok csak kiszolgálónév (vagy IP-cím) használatával állíthatók be. Ha csak egy SSH-kulccsal rendelkezik, a szolgáltatáskapcsolódási pont a könyvtárban keresi `~/.ssh/` a könyvtárat, és alapértelmezés szerint a virtuális gépre való bejelentkezéshez használja.
+Az SCP SSH-t használ a szállítási réteghez. Az SSH kezeli a hitelesítést a cél gazdagépen, és a fájlt egy, az SSH-val alapértelmezés szerint elérhető titkosított alagútba helyezi át. Az SSH-hitelesítéshez felhasználóneveket és jelszavakat lehet használni. Az SSH nyilvános és titkos kulcsú hitelesítés azonban ajánlott biztonsági eljárás. Miután az SSH hitelesítette a kapcsolódást, az SCP megkezdi a fájl másolását. A megfelelően konfigurált `~/.ssh/config` és SSH nyilvános és titkos kulcsok használatával a SZOLGÁLTATÁSKAPCSOLÓDÁSI ponttal létesített kapcsolatok csak kiszolgálónév (vagy IP-cím) használatával állíthatók be. Ha csak egy SSH-kulccsal rendelkezik, az SCP a `~/.ssh/` könyvtárban keresi, és alapértelmezés szerint a virtuális gépre való bejelentkezéshez használja.
 
-A nyilvános és a `~/.ssh/config` titkos ssh-kulcsok konfigurálásával kapcsolatos további információkért lásd: SSH- [kulcsok létrehozása](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A `~/.ssh/config` és az SSH nyilvános és titkos kulcsainak konfigurálásával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SZOLGÁLTATÁSKAPCSOLÓDÁSI pont egy fájl Linux rendszerű virtuális géphez
 
@@ -72,8 +72,8 @@ A következő parancs fájlokat másol az Azure-beli virtuális gép */Home/azur
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-A `-r` CLI jelző arra utasítja az scp-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg `cp` , hogy a parancssori szintaxis hasonló a másolási parancshoz.
+Az `-r` CLI-jelző arra utasítja az SCP-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg, hogy a parancssori szintaxis hasonló egy `cp` Copy parancshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A VMAccess-bővítmény használatával kezelheti a felhasználókat, SSH-t, és megvizsgálhatja vagy kijavíthatja az Azure Linux virtuális gépek lemezeit](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

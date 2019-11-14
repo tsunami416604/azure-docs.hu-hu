@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések – Azure Disk Encryption Linux rendszerű virtuális gépekhez | Microsoft Docs
+title: Gyakori kérdések – Azure Disk Encryption Linux rendszerű virtuális gépekhez
 description: Ez a cikk a Linux IaaS virtuális gépek Microsoft Azure lemezes titkosításával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 author: msmbaldwin
 ms.service: security
@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8d31c8df4d073ccd744e792d1316ce02e4bf387
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828643"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036353"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -137,7 +137,7 @@ Azure Backup lehetővé teszi a titkosított virtuális gépek biztonsági ment�
 
 Kérdéseket tehet fel, vagy visszajelzést adhat a [az Azure Disk Encryption fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megtudhatta, további információt az Azure Disk Encryption kapcsolatos leggyakoribb kérdések. Ezzel a szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Az Azure Disk Encryption áttekintése](disk-encryption-overview.md)

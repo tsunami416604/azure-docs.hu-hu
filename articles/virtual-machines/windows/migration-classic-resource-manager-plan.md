@@ -1,5 +1,5 @@
 ---
-title: IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba | Microsoft Docs
+title: IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 description: IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 840d7b9534124a4fcc93962e8329dc6ce2bdf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749349"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033224"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 Míg Azure Resource Manager számos csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát.
@@ -213,7 +213,7 @@ Legyen céltudatos, hogy milyen szolgáltatásokat szeretne engedélyezni a Azur
 Ne feledje, miért kezdte meg ezt a klasszikus Azure Resource Manager áttelepítési útra.  Mi volt az eredeti üzleti ok? Sikerült elérni az üzleti okot?
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

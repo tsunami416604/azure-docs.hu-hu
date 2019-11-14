@@ -1,24 +1,24 @@
 ---
 title: Adatok megjelenítése az Azure Adatkezelő Grafana használatával
-description: Ebben a útmutatóban megtudhatja, hogyan állíthatja be az Azure Adatkezelő-t a Grafana adatforrásaként, majd hogyan jeleníthet meg egy minta-fürt adatait.
+description: Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Adatkezelőt a Grafana adatforrásaként, majd hogyan jelenítheti meg az adatait egy minta fürtből.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581989"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038045"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Adatok megjelenítése az Azure Adatkezelő a Grafana-ben
 
-A Grafana egy elemzési platform, amely lehetővé teszi az adatlekérdezést és megjelenítést, majd irányítópultok létrehozását és megosztását a vizualizációk alapján. A Grafana egy Azure Adatkezelő *beépülő modult*biztosít, amely lehetővé teszi az azure-Adatkezelőhoz való kapcsolódást és az adatok megjelenítését. Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Adatkezelőt a Grafana adatforrásaként, majd hogyan jelenítheti meg a minta-fürt adatait.
+A Grafana egy elemzési platform, amely lehetővé teszi az adatlekérdezést és megjelenítést, majd irányítópultok létrehozását és megosztását a vizualizációk alapján. A Grafana egy Azure Adatkezelő *beépülő modult*biztosít, amely lehetővé teszi az azure-Adatkezelőhoz való kapcsolódást és az adatok megjelenítését. Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Adatkezelőt a Grafana adatforrásaként, majd hogyan jelenítheti meg az adatait egy minta fürtből.
 
-A következő videó segítségével megismerheti a Grafana Azure Adatkezelő beépülő moduljának használatát, beállíthatja az Azure Adatkezelőt a Grafana adatforrásaként, majd megjelenítheti az információkat. 
+A következő videó segítségével megismerheti, hogyan használhatja a Grafana Azure Adatkezelő beépülő modulját, hogyan állíthatja be az Azure Adatkezelőt adatforrásként a Grafana, majd megjelenítheti az információkat. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
@@ -26,7 +26,7 @@ Másik lehetőségként [konfigurálhatja az adatforrást](#configure-the-data-s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő lépéseket kell végrehajtania:
+A cikk elvégzéséhez a következőkre lesz szüksége:
 
 * Az operációs rendszer [Grafana-verziójának 5.3.0 vagy újabb verziója](https://docs.grafana.org/installation/)
 
@@ -56,17 +56,17 @@ A *megjelenítői* szerepkörhöz hozzárendelt egyszerű szolgáltatással a Gr
 
     ![Kapcsolat tulajdonságai](media/grafana/connection-properties.png)
 
-    | Grafana felhasználói felület | Azure Portal | Azure CLI |
+    | Grafana UI | Azure Portal | Azure CLI |
     | --- | --- | --- |
-    | Előfizetés azonosítója | ELŐFIZETÉS AZONOSÍTÓJA | SubscriptionId |
-    | Bérlő azonosítója | Könyvtár azonosítója | Bérlő |
+    | Előfizetési azonosító | ELŐFIZETÉS AZONOSÍTÓJA | SubscriptionId |
+    | Bérlő azonosítója | Könyvtár azonosítója | tenant |
     | Ügyfél-azonosító | Alkalmazásazonosító | appId |
     | Titkos ügyfélkulcs | Jelszó | jelszó |
     | | | |
 
 1. Válassza a **mentés & teszt**lehetőséget.
 
-    Ha a teszt sikeres, ugorjon a következő szakaszra. Ha bármilyen problémába ütközik, ellenőrizze a Grafana megadott értékeket, és tekintse át az előző lépéseket.
+    Ha a teszt sikeres, ugorjon a következő szakaszra. Ha bármilyen probléma merül fel, ellenőrizze a Grafana megadott értékeket, és tekintse át az előző lépéseket.
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 
@@ -111,8 +111,26 @@ Most, hogy befejezte az Azure Adatkezelő konfigurálását a Grafana adatforrá
 
 1. A felső menüben válassza a Mentés ikont: ![Mentés ikon](media/grafana/save-icon.png).
 
-## <a name="next-steps"></a>További lépések
+## <a name="create-alerts"></a>Riasztások létrehozása
+
+1. Új értesítési csatorna létrehozásához a Kezdőlap irányítópultján válassza a **riasztás** > **értesítési csatornák** lehetőséget.
+
+    ![értesítési csatorna létrehozása](media/grafana/create-notification-channel.png)
+
+1. Hozzon létre egy új **értesítési csatornát**, majd **mentse**.
+
+    ![Új értesítési csatorna létrehozása](media/grafana/new-notification-channel-adx.png)
+
+1. Az **irányítópulton**válassza a **Szerkesztés** lehetőséget a legördülő listából.
+
+    ![Szerkesztés kiválasztása az irányítópulton](media/grafana/edit-panel-4-alert.png)
+
+1. Válassza a riasztási harang ikont a **riasztás** panel megnyitásához. Válassza a **riasztás létrehozása**lehetőséget. Hajtsa végre a következő tulajdonságokat a **riasztás** ablaktáblán.
+
+    ![riasztás tulajdonságai](media/grafana/alert-properties.png)
+
+1. A módosítások mentéséhez kattintson az **irányítópult mentése** ikonra.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
-
-* [Oktatóanyag: adatok megjelenítése az Azure Adatkezelőról Power BI](visualize-power-bi.md)

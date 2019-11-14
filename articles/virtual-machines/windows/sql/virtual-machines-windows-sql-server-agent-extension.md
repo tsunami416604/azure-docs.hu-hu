@@ -1,5 +1,5 @@
 ---
-title: Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával | Microsoft Docs
+title: Felügyeleti feladatok automatizálása a IaaS-ügynök bővítménnyel
 description: Ez a cikk ismerteti, hogyan kezelheti a SQL Server IaaS-ügynök bővítményt, amely automatizálja az adott SQL Server felügyeleti feladatokat. Ezek közé tartozik az automatikus biztonsági mentés, az automatikus javítás és a Azure Key Vault integráció.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3240bb689447c16de8c62e9e8118b0b0df2b1ea3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9aae386e21df6711fc4984a7abfd34f418399f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034200"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával
 > [!div class="op_single_selector"]
@@ -58,7 +59,7 @@ Az alábbi követelmények vonatkoznak a SQL Server IaaS-ügynök bővítmény h
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
-* A Windows Server 2019 
+* Windows Server 2019 
 
 **SQL Server verziója**:
 
@@ -120,7 +121,7 @@ Az előző parancs megerősíti, hogy az ügynök telepítve van, és általáno
     $sqlext.AutoBackupSettings
    ```
 
-## <a name="removal"></a>Eltávolítás
+## <a name="removal"></a>Eltávolítása
 A Azure Portal távolítsa el a bővítményt a virtuális gép tulajdonságainak **bővítmények** ablakában található három pontot kiválasztva. Ezután válassza a **Törlés** elemet.
 
 ![A SQL Server IaaS-ügynök bővítményének eltávolítása Azure Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
@@ -131,7 +132,7 @@ A **Remove-AzVMSqlServerExtension PowerShell-** parancsmagot is használhatja:
     Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Kezdje el használni a bővítmény által támogatott szolgáltatások egyikét. További információkért tekintse meg a jelen cikk [támogatott szolgáltatások](#supported-services) című részében hivatkozott cikkeket.
 
 További információ az Azure Virtual Machines SQL Server futtatásáról: [mi SQL Server az azure Virtual Machines?](virtual-machines-windows-sql-server-iaas-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között | Microsoft Docs
+title: Azure PowerShell-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között
 description: Azure PowerShell-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: 57162ec41cd1de639890cac7b7d217ed538a59ce
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13add6614af8d3ad76e820228b748c0084a29876
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749839"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039805"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a PowerShell használatával
 
 Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. Használja ezt a parancsfájlt a következő esetekben:
 
-1. A prémium szintű Storage (Premium_LRS) szolgáltatásban a standard Storage-ba (Standard_LRS vagy Standard_ZRS) áttelepítheti a pillanatképeket, így csökkentheti költségeit.
-1. Áttelepíthet egy pillanatképet a helyileg redundáns tárterületről (Premium_LRS, Standard_LRS) a zóna redundáns tárterületére (Standard_ZRS) a ZRS-tároló nagyobb megbízhatóságának kihasználása érdekében.
+1. A prémium szintű Storage-ban (Premium_LRS) lévő pillanatkép áttelepíthető a standard Storage-ba (Standard_LRS vagy Standard_ZRS) a díjak csökkentése érdekében.
+1. A ZRS-tároló nagyobb megbízhatóságának kihasználása érdekében áttelepíthet egy pillanatképet a helyileg redundáns tárterületről (Premium_LRS, Standard_LRS) a zónák redundáns tárolására (Standard_ZRS).
 1. Áthelyezheti a pillanatképet más előfizetésbe ugyanabban a régióban a hosszú megőrzés érdekében.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
@@ -45,10 +45,10 @@ A szkript a következő parancsokat használja egy, a forráspillanatkép azonos
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új – AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | Egy, a pillanatképek létrehozásához használt pillanatkép-konfigurációt hoz létre. Tartalmazza a szülőpillanatkép erőforrás-azonosítóját, valamint a helyet, amely azonos a szülőpillanatkép helyével.  |
-| [Új – AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy pillanatképet a pillanatkép-konfiguráció, a pillanatkép neve és az erőforráscsoport neve alapján, amelyek paraméterként vannak megadva. |
+| [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | Egy, a pillanatképek létrehozásához használt pillanatkép-konfigurációt hoz létre. Tartalmazza a szülőpillanatkép erőforrás-azonosítóját, valamint a helyet, amely azonos a szülőpillanatkép helyével.  |
+| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy pillanatképet a pillanatkép-konfiguráció, a pillanatkép neve és az erőforráscsoport neve alapján, amelyek paraméterként vannak megadva. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gép létrehozása pillanatképből](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

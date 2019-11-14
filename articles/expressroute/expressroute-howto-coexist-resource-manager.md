@@ -1,6 +1,6 @@
 ---
-title: 'A ExpressRoute és a helyek közötti VPN-kapcsolatok konfigurálása – egyidejű: PowerShell: Azure | Microsoft Docs'
-description: Konfigurálja a ExpressRoute és egy helyek közötti VPN-kapcsolat konfigurálását, amely a PowerShell használatával a Resource Manager-modellben is létezhet.
+title: 'ExpressRoute és S2S VPN egyidejű kapcsolatainak konfigurálása: Azure PowerShell'
+description: Konfigurálja az ExpressRoute- és egy helyek közötti VPN-kapcsolat, amelyek párhuzamosan használhatók a PowerShell használatával a Resource Manager-modellben.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8a89c5121d5010245ce16cade921bb96346fcbf5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e25d6ff0bf0c27926040fcfe190724a666713a05
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748318"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031751"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>A ExpressRoute és a helyek közötti egyidejű kapcsolatok konfigurálása a PowerShell használatával
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell-lel ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell – Klasszikus](expressroute-howto-coexist-classic.md)
 > 
 > 
 
-Ez a cikk segítséget nyújt a ExpressRoute és a helyek közötti VPN-kapcsolatok konfigurálásához. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. A helyek közötti VPN-t konfigurálhatja biztonságos feladatátvételi útvonalként a ExpressRoute, vagy a helyek közötti VPN-kapcsolattal csatlakozhat olyan helyekhez, amelyek nem csatlakoznak a ExpressRoute-on keresztül. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
+Ez a cikk segít fennálló ExpressRoute és Site-to-Site VPN-kapcsolatok konfigurálása. A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. Site-to-Site VPN konfigurálhatja biztonságos feladatátvételi útvonalként az expressroute-hoz, vagy a nem expressroute-on keresztül kapcsolódó helyekhez való csatlakozáshoz használja a Site-to-Site VPN-eket. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
 
 Az egyidejű helyek közötti VPN- és ExpressRoute-kapcsolatok konfigurálása több előnnyel jár:
 
 * Konfigurálhat helyek közötti VPN-t biztonságos feladatátvételi útvonalként az ExpressRoute számára. 
 * Azt is megteheti, hogy helyek közötti VPN-t használ olyan helyekhez való csatlakozáshoz, amelyek nem az ExpressRoute-on keresztül kapcsolódnak. 
 
-Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépéseit. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja. Ezeket a forgatókönyveket a Azure Portal használatával is konfigurálhatja, bár a dokumentáció még nem érhető el. Először az átjárót is konfigurálhatja. Az új átjáró vagy átjáró-kapcsolatok hozzáadásakor általában nem kell állásidőt fizetnie.
+Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépéseit. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja. Ezek a forgatókönyvek az Azure portal használatával is konfigurálhatja, bár dokumentáció még nem érhető el. Mindkét átjáró először is beállíthatja. Általában akkor számítunk fel állásidő nélkül egy új átjárót vagy gateway-kapcsolat hozzáadásakor.
 
 >[!NOTE]
 >Ha helyek közötti VPN-t szeretne létrehozni egy ExpressRoute-kapcsolatcsoport között, tekintse meg [ezt a cikket](site-to-site-vpn-over-microsoft-peering.md).
@@ -243,7 +243,7 @@ Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön �
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Pont-hely konfiguráció hozzáadása a VPN-átjáróhoz
 
-Az alábbi lépések végrehajtásával pont – hely konfigurációt adhat hozzá a VPN-átjáróhoz egy párhuzamos telepítésben. A VPN-főtanúsítvány feltöltéséhez a PowerShellt helyileg kell telepítenie a számítógépre, vagy a Azure Portalt kell használnia.
+Követheti a pont – hely konfiguráció hozzáadása a VPN-átjáróhoz a párhuzamos telepítés az alábbi lépéseket. A VPN-főtanúsítvány feltöltéséhez a PowerShellt helyileg kell telepítenie a számítógépre, vagy a Azure Portalt kell használnia.
 
 1. Adja hozzá a VPN-ügyfél címterét.
 
@@ -264,5 +264,5 @@ Az alábbi lépések végrehajtásával pont – hely konfigurációt adhat hozz
 
 A pont-hely VPN-ekkel kapcsolatos további információkért lásd: [Pont-hely kapcsolat konfigurálása](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

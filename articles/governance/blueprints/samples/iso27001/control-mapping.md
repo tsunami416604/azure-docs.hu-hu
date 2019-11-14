@@ -1,17 +1,14 @@
 ---
 title: ISO 27001 terv minta – vezérlési leképezés
 description: Az ISO 27001 tervrajzi minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: f187bf5a77f756bbc6293a14e1873d13788d3929
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6d77573a37c27aba96bace1f6d228ac892b0ecd9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162482"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038339"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Az ISO 27001 tervrajzi minta vezérlésének leképezése
 
@@ -50,7 +47,7 @@ A szabályzatok megsértése miatti erőforrások megismerése segíthet az Azur
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A. 9.2.3-kezelés az emelt szintű hozzáférési jogosultságokkal
 
-Ez a terv segít a privilegizált hozzáférési jogosultságok korlátozásában és szabályozásában azáltal, hogy négy [Azure Policy](../../../policy/overview.md) definíció hozzárendelésével naplózza a tulajdonossal és/vagy írási engedélyekkel rendelkező külső fiókokat, valamint a tulajdonos és/vagy írási engedélyekkel rendelkező fiókokat, amelyek nem rendelkeznek a többtényezős hitelesítés engedélyezve van. Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. A terv emellett három Azure Policy definíciót is hozzárendel az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. Ez a terv egy Azure Policy-definíciót is hozzárendel az egyéni RBAC-szabályok használatának naplózásához. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak.
+Ez a terv segít a privilegizált hozzáférési jogosultságok korlátozásában és szabályozásában azáltal, hogy négy [Azure Policy](../../../policy/overview.md) definíció hozzárendelésével naplózza a tulajdonossal és/vagy írási engedélyekkel rendelkező külső fiókokat, valamint olyan fiókokat, amelyek tulajdonosi és/vagy írási engedélyekkel rendelkeznek, amelyek nem rendelkeznek a többtényezős Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. A terv emellett három Azure Policy definíciót is hozzárendel az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. Ez a terv egy Azure Policy-definíciót is hozzárendel az egyéni RBAC-szabályok használatának naplózásához. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak.
 
 - \[előzetes verzió\]: fiókok naplózása olyan tulajdonosi engedélyekkel, akik nem MFA engedélyezve vannak az előfizetéseken
 - \[előzetes verzió\]: fiókok naplózása olyan írási engedélyekkel, akik nem engedélyezett az MFA-előfizetés
@@ -173,7 +170,7 @@ Az adaptív alkalmazások vezérlése Azure Security Center megoldás, amely seg
 
 ## <a name="a1261-management-of-technical-vulnerabilities"></a>A. a technikai sebezhetőségek 12.6.1 kezelése
 
-Ebből a tervből megtudhatja, hogyan kezelheti az informatikai biztonsági réseket úgy, hogy öt [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá, amelyek a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, az SQL biztonsági réseket Azure Security Center. A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára.
+Ebből a tervből megtudhatja, hogyan kezelheti az információs rendszer biztonsági réseit úgy, hogy öt [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, Azure Security Center az SQL biztonsági réseket és a virtuális gép A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára.
 
 - \[előzetes verzió\]: a hiányzó Endpoint Protection figyelése Azure Security Center
 - \[előzetes verzió\]: a hiányzó rendszerfrissítések figyelése a Azure Security Center
@@ -211,7 +208,7 @@ Most, hogy áttekintette az ISO 27001-es terv vezérlési leképezését, az al�
 > [Iso 27001 terv – áttekintés](./index.md)
 > [ISO 27001 terv – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

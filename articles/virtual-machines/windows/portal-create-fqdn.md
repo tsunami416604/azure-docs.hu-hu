@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gép teljes tartománynevének létrehozása a Azure Portalban | Microsoft Docs
+title: Windows rendszerű virtuális gép teljes tartománynevének létrehozása a Azure Portal
 description: Megtudhatja, hogyan hozhat létre teljes tartománynevet vagy teljes TARTOMÁNYNEVEt a Azure Portal Resource Manager-alapú virtuális géphez.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c86e2739efd951ad9274f2fa0829b9fd7e13e3e5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 727636b4b59bf4b31fd7592b1a0f2d52d5dbbfd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102599"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032992"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Teljes tartománynév létrehozása a Azure Portal a Windows rendszerű virtuális gépekhez
 
@@ -33,7 +33,7 @@ Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha sz�
 
 Mostantól távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például a RDP protokoll (RDP) protokollal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat telepíthet, mint például az IIS, az SQL vagy a SharePoint.
 
 További információt a [Resource Manager használatával](../../azure-resource-manager/resource-group-overview.md) kapcsolatban az Azure-beli üzembe helyezések létrehozásával kapcsolatos tippekhez is találhat.

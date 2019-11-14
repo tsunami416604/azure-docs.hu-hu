@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513537"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034144"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
@@ -25,9 +25,16 @@ Folytatja a meglévő feladatot a megadott AZONOSÍTÓJÚ feladattal.
 azcopy jobs resume [jobID] [flags]
 ```
 
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>Beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |--|--|
 |--cél-sas-karakterlánc|Az adott JobId céljának cél SAS-je.|
 |– karakterlánc kizárása|Szűrő: a sikertelen átvitel (ek) kizárása a feladatok folytatásakor. A fájlokat ";" karakterrel kell elválasztani.|
@@ -37,11 +44,11 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [azcopy-feladatok](storage-ref-azcopy-jobs.md)

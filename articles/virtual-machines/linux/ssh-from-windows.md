@@ -1,5 +1,5 @@
 ---
-title: SSH-kulcsok használata a Windowsban Linux rendszerű virtuális gépekhez | Microsoft Docs
+title: Az SSH-kulcsok és a Windows együttes használata Linux rendszerű virtuális gépek esetében
 description: Útmutató SSH-kulcsok létrehozásához és használatához Windows-számítógépen az Azure-beli Linux rendszerű virtuális gépekhez való kapcsolódáshoz.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e8e63f2c916153b5d43267869d7bc5be8fa646c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e01fb23bbf1720f7d8df9c269373c1b8dc3ec75c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081979"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034808"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
@@ -43,7 +43,7 @@ A helyileg telepíthető egyéb gyakori Windows SSH-ügyfelek a következő csom
 
 Használhatja a Bashben elérhető SSH-segédprogramokat is a [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-* Cloud Shell [https://shell.azure.com](https://shell.azure.com) a böngészőben vagy a [Azure Portal](https://portal.azure.com). 
+* A webböngészőjében [https://shell.azure.com](https://shell.azure.com) vagy a [Azure Portal](https://portal.azure.com)Cloud Shell férhet hozzá. 
 * Az [Azure-fiók bővítményének](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)telepítésével elérheti Cloud Shell terminálként a Visual Studio Code-ban.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
@@ -51,13 +51,13 @@ A következő szakaszok két lehetőséget ismertetnek az SSH-kulcspár Windowso
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>SSH-kulcsok létrehozása ssh-keygen használatával
 
-Ha olyan Windows-parancssort futtat, amely támogatja az SSH-ügyféleszközök használatát (vagy Azure Cloud Shell), hozzon létre egy SSH-kulcspárt `ssh-keygen` a parancs használatával. Írja be a következő parancsot, és válaszolja meg a kérdéseit. Ha egy SSH-kulcspár létezik a kiválasztott helyen, a rendszer felülírja ezeket a fájlokat. 
+Ha olyan Windows-parancssort futtat, amely támogatja az SSH-ügyféleszközök használatát (vagy Azure Cloud Shell), hozzon létre egy SSH-kulcspárt a `ssh-keygen` parancs használatával. Írja be a következő parancsot, és válaszolja meg a kérdéseit. Ha egy SSH-kulcspár létezik a kiválasztott helyen, a rendszer felülírja ezeket a fájlokat. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-További háttér és információk: az SSH-kulcsok használatával [](create-ssh-keys-detailed.md) `ssh-keygen`történő létrehozásának [gyors](mac-create-ssh-keys.md) vagy részletes lépései.
+További háttér és információk: az SSH-kulcsok `ssh-keygen`használatával történő létrehozásának [gyors](mac-create-ssh-keys.md) vagy [részletes](create-ssh-keys-detailed.md) lépései.
 
 ### <a name="create-ssh-keys-with-puttygen"></a>SSH-kulcsok létrehozása a PuTTYgen
 
@@ -81,7 +81,7 @@ SSH RSA kulcspár létrehozása a PuTTYgen:
 
     ![A PuTTY titkos kulcs fájljának mentése](./media/ssh-from-windows/save-ppk-file.png)
 
-    Ha az OpenSSH formátumban szeretné menteni a titkos kulcsot, a számos SSH-ügyfél által használt titkos kulcs formátumát válassza a **konverziók** > **Exportálás OpenSSH-kulcs**lehetőséget.
+    Ha az OpenSSH formátumban szeretné menteni a titkos kulcsot, a számos SSH-ügyfél által használt titkos kulcs formátuma beállításnál válassza a **konverziók** > az **OpenSSH-kulcs exportálása**lehetőséget.
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Nyilvános SSH-kulcs megadása virtuális gép telepítésekor
 
@@ -97,7 +97,7 @@ Az alábbi példa bemutatja, hogyan másolja és illessze be ezt a nyilvános ku
 Az egyik lehetőség, hogy SSH-kapcsolatokat létesítsen a Linux rendszerű virtuális géppel a Windowsból, hogy SSH-ügyfelet használjon. Ez az előnyben részesített módszer, ha egy SSH-ügyfél van telepítve a Windows rendszerére, vagy ha az SSH-eszközöket használja a Bashben Azure Cloud Shell. Ha a GUI-alapú eszközt részesíti előnyben, a PuTTY segítségével csatlakozhat.  
 
 ### <a name="use-an-ssh-client"></a>SSH-ügyfél használata
-Az Azure-beli virtuális gépen üzembe helyezett nyilvános kulccsal és a helyi rendszeren lévő titkos kulccsal, SSH-val a virtuális géphez a virtuális gép IP-címét vagy DNS-nevét használva. Cserélje le az azureuser és a *myvm.westus.cloudapp.Azure.com* parancsot a következő parancsra a rendszergazdai felhasználónévvel és a teljes TARTOMÁNYNÉVVEL (vagy IP-címmel):
+Az Azure-beli virtuális gépen üzembe helyezett nyilvános kulccsal és a helyi rendszeren lévő titkos kulccsal, SSH-val a virtuális géphez a virtuális gép IP-címét vagy DNS-nevét használva. Cserélje le az *azureuser* és a *myvm.westus.cloudapp.Azure.com* parancsot a következő parancsra a rendszergazdai felhasználónévvel és a teljes TARTOMÁNYNÉVVEL (vagy IP-címmel):
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -117,13 +117,13 @@ Ha telepítette a [Putty letöltési csomagot](https://www.chiark.greenend.org.u
 
     ![Új Putty-kapcsolatok megnyitása](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Válassza ki a **kapcsolatok** > **SSH** > -**hitelesítésének** kategóriáját. Keresse meg és válassza ki a PuTTY titkos kulcsát (. PPK-fájl):
+3. Válassza ki a **kapcsolatokat** > **SSH** > **Auth** kategóriát. Keresse meg és válassza ki a PuTTY titkos kulcsát (. PPK-fájl):
 
     ![Válasszon Putty titkos kulcsot a hitelesítéshez](./media/ssh-from-windows/putty-auth-dialog.png)
 
 4. Kattintson a **Megnyitás** gombra a virtuális géphez való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az SSH-kulcsok használatának részletes lépéseiről, lehetőségeiről és speciális példáit az [SSH-kulcspár létrehozásának részletes lépései](create-ssh-keys-detailed.md)című cikkben tekintheti meg.
 

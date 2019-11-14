@@ -1,6 +1,6 @@
 ---
-title: Linux Azure VM-rendszerképek létrehozása a Packer |} A Microsoft Docs
-description: Ismerje meg, hogyan Packer használatával Linux virtuálisgép-rendszerképek létrehozása az Azure-ban
+title: Linux Azure VM-rendszerképek létrehozása a csomagoló használatával
+description: Ismerje meg, hogyan hozhat létre az Azure-ban Linux rendszerű virtuális gépek képeit a csomagoló használatával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 4dcf6f2e26a2cc589e350ee2b40c10b85786d4be
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a9f0750908123c236596683ec2ad6de505c46213
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671768"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036950"
 ---
-# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linux virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
-Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Linux-disztribúció és operációsrendszer-verzió. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít rendszerek leggyakoribb disztribúciói és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
+# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linuxos virtuálisgép-lemezképek létrehozása az Azure-ban a csomagoló használatával
+Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Linux-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure piactér számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb disztribúciók és alkalmazási környezetek számára, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz- [csomagoló](https://www.packer.io/) használatával.
 
 > [!NOTE]
-> Az Azure-szolgáltatás, az Azure az Image Builder (előzetes verzió), most már rendelkezik meghatározására és saját egyéni rendszerképek létrehozásához. Az Azure az Image Builder Packer, épül, így még akkor is használhatja a meglévő Packer rendszerhéj webhelykiépítőt parancsfájlok vele. Ismerkedés az Azure az Image Builder, lásd: [Linux rendszerű virtuális gép létrehozása az Azure az Image Builder](image-builder.md).
+> Az Azure-ban már van egy szolgáltatás, egy Azure Image Builder (előzetes verzió), amellyel meghatározhatja és létrehozhatja saját egyéni rendszerképeit. Az Azure rendszerkép-szerkesztő a Csomagolón alapul, így a meglévő csomagoló rendszerhéj-szkripteket is használhatja. Az Azure rendszerkép-szerkesztő megkezdéséhez lásd: [linuxos virtuális gép létrehozása az Azure rendszerkép-készítővel](image-builder.md).
 
 
 ## <a name="create-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
-Az összeállítási folyamat során Packer hozza létre, ideiglenes Azure-erőforrások, a forrás virtuális Gépet épít. Rögzíti a forrásoldali virtuális gép lemezképként való használatra, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport a Packer buildelési folyamat kimenete tárolja.
+A kiépítési folyamat során a csomagoló ideiglenes Azure-erőforrásokat hoz létre, mivel létrehozza a forrás virtuális gépet. Ahhoz, hogy a forrás virtuális gép lemezképként használható legyen, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló-összeállítási folyamat kimenetét.
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
@@ -40,15 +40,15 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
-Csomagolói hitelesíti az Azure-ral egyszerű szolgáltatás használatával. Azure-beli szolgáltatásnév egy biztonsági identitás, az alkalmazások, szolgáltatások és automatizálási eszközökkel, mint például a Packer használható. Szabályozhatja és az egyszerű szolgáltatás az Azure-ban hajthat végre műveleteket helyrendszerszerepkörökre engedélyeinek megadásához.
+A csomagoló az Azure-ban egy egyszerű szolgáltatásnév használatával hitelesíti magát. Az Azure egyszerű szolgáltatás olyan biztonsági identitás, amely az alkalmazásokkal, szolgáltatásokkal és automatizálási eszközökkel, például a csomagoló eszközzel használható. Ön szabályozhatja és meghatározhatja az engedélyeket az Azure-ban az egyszerű szolgáltatás által elvégezhető műveletekhez.
 
-Az egyszerű szolgáltatás létrehozása [az ad sp create-for-rbac](/cli/azure/ad/sp) és csomagolói szükséges a hitelesítő adatokat:
+Hozzon létre egy egyszerű szolgáltatást az [az ad SP Create-for-RBAC](/cli/azure/ad/sp) , és adja meg a csomagoló által igényelt hitelesítő adatokat:
 
 ```azurecli
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-Egy példa a kimenetre az az előző parancsokban a következőképpen történik:
+Az előző parancsok kimenetének példája a következő:
 
 ```azurecli
 {
@@ -58,28 +58,28 @@ Egy példa a kimenetre az az előző parancsokban a következőképpen történi
 }
 ```
 
-Azure-beli hitelesítésre, is kell szerezze be az Azure-előfizetési Azonosítóját a [az fiók show](/cli/azure/account):
+Az Azure-ban való hitelesítéshez az Azure-előfizetés AZONOSÍTÓját is be kell szereznie az [az Account show](/cli/azure/account)paranccsal:
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
 ```
 
-Ez a két parancs kimenete a következő lépésben fogja használni.
+A következő lépésben a két parancs kimenetét kell használnia.
 
 
-## <a name="define-packer-template"></a>Csomagoló sablon meghatározása
-A lemezképeket, hozzon létre egy sablon JSON-fájlként. A sablonban és adjon meg sikerei provisioners, amely a tényleges buildelési folyamat végrehajtására. Csomagoló rendelkezik egy [Azure webhelykiépítőt](https://www.packer.io/docs/builders/azure.html) , amely lehetővé teszi, megadhatja az Azure-erőforrások, például az egyszerű szolgáltatás hitelesítő adatai az előző létrehozott lépést.
+## <a name="define-packer-template"></a>Csomagoló sablon definiálása
+Lemezképek létrehozásához JSON-fájlként hozzon létre egy sablont. A sablonban meg kell határoznia a tényleges felépítési folyamatot végző építőket és kiépítési folyamatokat. A csomagoló rendelkezik [Az Azure](https://www.packer.io/docs/builders/azure.html) -hoz, amely lehetővé teszi az Azure-erőforrások, például az előző lépésben létrehozott szolgáltatásnév hitelesítő adatok definiálását.
 
-Hozzon létre egy fájlt *ubuntu.json* , és illessze be az alábbi tartalommal. Adja meg a saját értékeit a következőkhöz:
+Hozzon létre egy *Ubuntu. JSON* nevű fájlt, és illessze be az alábbi tartalmat. Adja meg a saját értékeit a következőkhöz:
 
-| Paraméter                           | Beszerzési helyét |
+| Paraméter                           | A beszerzés helye |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Első sorában kimenete `az ad sp` create parancs - *appId* |
-| *client_secret*                     | A második sor kimenetét `az ad sp` create parancs - *jelszó* |
-| *tenant_id*                         | A kimenet harmadik sora `az ad sp` create parancs - *bérlő* |
-| *subscription_id*                   | A kimeneti `az account show` parancs |
-| *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport nevét |
-| *managed_image_name*                | A létrehozott felügyelt lemez lemezkép neve |
+| *client_id*                         | A kimenet első sora `az ad sp` Create paranccsal – *AppID* |
+| *client_secret*                     | Kimenet második sora `az ad sp` Create Command- *Password* |
+| *tenant_id*                         | Harmadik kimeneti vonal `az ad sp` Create parancsból – *bérlő* |
+| *subscription_id*                   | `az account show` parancs kimenete |
+| *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport neve |
+| *managed_image_name*                | A létrehozott felügyelt lemezkép neve |
 
 
 ```json
@@ -123,23 +123,23 @@ Hozzon létre egy fájlt *ubuntu.json* , és illessze be az alábbi tartalommal.
 }
 ```
 
-Ez a sablon összeállít egy Ubuntu 16.04 LTS rendszerképet, telepíti az nginx-et, és a virtuális gép deprovisions.
+Ez a sablon egy Ubuntu 16,04 LTS-rendszerképet hoz létre, telepíti az NGINX-et, majd kiosztja a virtuális gépet.
 
 > [!NOTE]
-> Ha kibontja a sablon üzembe helyezése felhasználói hitelesítő adatokat, állítsa be, olvassa el az Azure-ügynök deprovisions webhelykiépítőt parancsot `-deprovision` helyett `deprovision+user`.
-> A `+user` jelző összes felhasználói fiók távolít el a forrás virtuális Gépen.
+> Ha kibontja ezt a sablont a felhasználói hitelesítő adatok kiépítéséhez, állítsa be az Azure-ügynököt kiépítő kiépítési parancsot úgy, hogy `deprovision+user`helyett a `-deprovision` olvassa el.
+> A `+user` jelző eltávolítja az összes felhasználói fiókot a forrás virtuális gépről.
 
 
-## <a name="build-packer-image"></a>Csomagolói rendszerkép összeállítása
-Ha még nincs telepítve a helyi gépen Packer [csomagolói telepítési utasításokat](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Csomagoló rendszerkép létrehozása
+Ha még nincs telepítve a csomagoló a helyi gépen, [kövesse a csomagoló telepítési utasításait](https://www.packer.io/docs/install/index.html).
 
-A rendszerkép létrehozásához adja meg a Packer sablonfájl módon:
+Hozza létre a képet a csomagoló sablon fájljának megadásával a következőképpen:
 
 ```bash
 ./packer build ubuntu.json
 ```
 
-Egy példa a kimenetre az az előző parancsokban a következőképpen történik:
+Az előző parancsok kimenetének példája a következő:
 
 ```bash
 azure-arm output will be in this color.
@@ -200,11 +200,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-A virtuális gép létrehozása, futtassa a provisioners és a központi telepítés tisztítása Packer néhány percig tart.
+Eltarthat néhány percig, amíg a csomagoló létrehozza a virtuális gépet, futtathatja a kiépítő példányokat, és megtisztíthatja az üzembe helyezést.
 
 
 ## <a name="create-vm-from-azure-image"></a>Virtuális gép létrehozása az Azure-rendszerképből
-Most már létrehozhat egy virtuális Gépet a rendszerképből [az virtuális gép létrehozása](/cli/azure/vm). Adja meg a létrehozott lemezképet a `--image` paraméter. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* a *myPackerImage* és SSH-kulcsokat hoz létre, ha azok még nem léteznének:
+Mostantól létrehozhat egy virtuális gépet a rendszerképből az [az VM Create](/cli/azure/vm)paranccsal. A `--image` paraméterrel létrehozott rendszerkép meghatározása. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a *myPackerImage* -ből, és SSH-kulcsokat hoz létre, ha azok még nem léteznek:
 
 ```azurecli
 az vm create \
@@ -215,9 +215,9 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Ha szeretne egy másik erőforráscsoportban vagy régióban, mint a Packer lemezkép hozzon létre virtuális gépet, adja meg a rendszerkép neve helyett a lemezkép-azonosító. Szerezheti be a lemezkép-azonosító [kép megjelenítése az](/cli/azure/image#az-image-show).
+Ha virtuális gépeket szeretne létrehozni egy másik erőforráscsoporthoz vagy régióban, mint a csomagoló-rendszerkép, a rendszerkép neve helyett adja meg a rendszerkép AZONOSÍTÓját. A rendszerkép-azonosítót az [az rendszerkép show](/cli/azure/image#az-image-show)paranccsal szerezheti be.
 
-A virtuális gép létrehozása néhány percet vesz igénybe. A virtuális gép létrehozása után jegyezze fel a `publicIpAddress` az Azure CLI által megjelenített. Ezzel a címmel a webböngészőn keresztül NGINX-webhely eléréséhez.
+A virtuális gép létrehozása néhány percet vesz igénybe. A virtuális gép létrehozása után jegyezze fel az Azure CLI által megjelenített `publicIpAddress`. Ez a címe az NGINX-webhely webböngészőből való elérésére szolgál.
 
 Ahhoz, hogy a webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 80-as portot az [az vm open-port](/cli/azure/vm) paranccsal:
 
@@ -228,11 +228,11 @@ az vm open-port \
     --port 80
 ```
 
-## <a name="test-vm-and-nginx"></a>Virtuális gép és az NGINX tesztelése
-Most nyisson meg egy webböngészőt, és írja be a `http://publicIpAddress` címet a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Az alapértelmezett NGINX-lap a következő példához hasonlóan jelenik meg:
+## <a name="test-vm-and-nginx"></a>Virtuális gép és NGINX tesztelése
+Most nyisson meg egy webböngészőt, és írja be a `http://publicIpAddress` címet a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Az alapértelmezett NGINX-lap az alábbi példában látható módon jelenik meg:
 
 ![Alapértelmezett NGINX-webhely](./media/build-image-with-packer/nginx.png) 
 
 
-## <a name="next-steps"></a>További lépések
-Használhatja a meglévő Packer webhelykiépítőt parancsfájlok [Azure Image Builder](image-builder.md).
+## <a name="next-steps"></a>Következő lépések
+Az [Azure rendszerkép-készítővel](image-builder.md)meglévő csomagoló-kiépítési parancsfájlokat is használhat.

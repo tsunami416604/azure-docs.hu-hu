@@ -8,14 +8,14 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 82c399580322334e67c0c9c2b88d1edf6f175e0c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518290"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034159"
 ---
-# <a name="azcopy-jobs-remove"></a>azcopy feladatok eltávolítása
+# <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
 Távolítsa el a megadott AZONOSÍTÓJÚ feladathoz társított összes fájlt.
 
@@ -25,6 +25,13 @@ Távolítsa el a megadott AZONOSÍTÓJÚ feladathoz társított összes fájlt.
 ```
 azcopy jobs remove [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
@@ -42,6 +49,6 @@ azcopy jobs remove [jobID] [flags]
 
 **--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [azcopy-feladatok](storage-ref-azcopy-jobs.md)

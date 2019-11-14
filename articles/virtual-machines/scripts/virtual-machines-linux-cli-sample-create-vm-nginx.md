@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása NGINX-szel | Microsoft Docs
+title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása NGINX-szel
 description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása NGINX-szel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f1ed8b2d943a377fc868344cffffff931bb6fba1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4e3e24565375f68b4b5bdf1dfb0b16bb280aa417
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709605"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039489"
 ---
 # <a name="create-a-vm-with-nginx"></a>Virtuális gép létrehozása NGINX-szel
 
@@ -69,7 +69,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Hozzáad és futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben a példában az NGINX telepítésére az egyéni szkriptbővítmény használatával kerül sor.|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

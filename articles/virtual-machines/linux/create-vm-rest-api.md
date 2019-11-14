@@ -1,5 +1,5 @@
 ---
-title: Linux rendszerű virtuális gép létrehozása az Azure REST API | Microsoft Docs
+title: Linux rendszerű virtuális gép létrehozása az Azure REST API
 description: Megtudhatja, hogyan hozhat létre olyan linuxos virtuális gépet az Azure-ban, amely az Azure REST API Managed Disks és SSH-hitelesítést használ.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083479"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036445"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH-hitelesítést használó linuxos virtuális gép létrehozása a REST API
 
@@ -33,9 +33,9 @@ Ez REST API a cikk bemutatja, hogyan hozhat létre az Ubuntu 18,04-LTS rendszert
 
 A kérelem létrehozása és elküldése előtt a következőkre lesz szüksége:
 
-* Az `{subscription-id}` előfizetéséhez tartozó
+* Az előfizetéshez tartozó `{subscription-id}`
   * Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) című témakört.
-* Az `{resourceGroupName}` Ön által létrehozott idő előtt
+* Az idő előtt létrehozott `{resourceGroupName}`
 * Azonos erőforráscsoporthoz tartozó [virtuális hálózati adapter](../../virtual-network/virtual-network-network-interface.md)
 * SSH-kulcspár (ha még nem rendelkezik ilyennel, létrehozhat [egy újat](mac-create-ssh-keys.md) )
 
@@ -47,14 +47,14 @@ Virtuális gép létrehozásához vagy frissítéséhez használja a következő
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-`{subscription-id}` A és `{vmName}` `api-version` `api-version=2017-12-01`a paraméterek mellett meg kell adnia a (nem kötelező, de a cikket tesztelte) `{resourceGroupName}`
+A `{subscription-id}` és `{resourceGroupName}` paramétereken kívül meg kell adnia a `{vmName}` (`api-version` nem kötelező, de ez a cikk `api-version=2017-12-01`-mel lett tesztelve)
 
-A következő fejlécek szükségesek:
+A következő fejlécek megadása kötelező:
 
 | Kérelem fejléce   | Leírás |
 |------------------|-----------------|
-| *Content-Type:*  | Kötelező. Állítsa a `application/json`következőre:. |
-| *Authorization:* | Kötelező. Érvényes `Bearer` [hozzáférési](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)jogkivonatra van beállítva. |
+| *Content-Type* (Tartalomtípus):  | Kötelező. Állítsa `application/json` értékre. |
+| *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 REST API kérelmekkel kapcsolatos általános információkért tekintse meg [a REST API kérelem/válasz összetevőit](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -64,14 +64,14 @@ A kérelem törzsének létrehozásához a következő általános definíciók 
 
 | Name (Név)                       | Kötelező | Típus                                                                                | Leírás  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | Karakterlánc                                                                              | Erőforrás helye. |
-| name                       |          | Karakterlánc                                                                              | A virtuális gép neve. |
+| location                   | True (Igaz)     | sztring                                                                              | Erőforrás helye. |
+| név                       |          | sztring                                                                              | A virtuális gép neve. |
 | Properties. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Megadja a virtuális gép hardveres beállításait. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Megadja a virtuális gépek lemezeinek tárolási beállításait. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Megadja a virtuális gép operációs rendszerének beállításait. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Megadja a virtuális gép hálózati adaptereit. |
 
-Egy példa a kérelem törzsére. Győződjön meg róla, hogy megadta a virtuális `{computerName}` gép `{name}` nevét a és a paraméterek között, a létrehozott hálózati `networkInterfaces`adapter nevét, a felhasználónevét `adminUsername` és `path`az SSH *nyilvános* részét. kulcspár (a következő helyen található:, például `~/.ssh/id_rsa.pub`: `keyData`). A módosítani kívánt egyéb paraméterek közé tartoznak a `location` és `vmSize`a is.  
+Egy példa a kérelem törzsére. Győződjön meg arról, hogy a virtuális gép nevét a `{computerName}` és `{name}` paraméterekben adja meg, a `networkInterfaces`alatt létrehozott hálózati adapter nevét, a felhasználónevet `adminUsername` és `path`, valamint az SSH-kulcspár *nyilvános* részét (például `~/.ssh/id_rsa.pub`) a `keyData`ban. A módosítani kívánt egyéb paraméterek közé tartoznak a `location` és a `vmSize`.  
 
 ```json
 {
@@ -132,7 +132,7 @@ A kérelem törzsében elérhető definíciók teljes listáját a [virtuális g
 
 A HTTP-kérelem elküldéséhez használhatja a kívánt ügyfelet. Egy [böngészőbeli eszközt](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) is használhat a **kipróbálás** gombra kattintva.
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Válaszok
 
 A műveletnek két sikeres válasza van a virtuális gép létrehozásához vagy frissítéséhez:
 
@@ -152,11 +152,11 @@ Az előző példában szereplő, egy virtuális gépet létrehozó ProvisioningS
 
 További információ a REST API válaszokról: [a válaszüzenet feldolgozása](/rest/api/azure/#process-the-response-message).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure REST API-kkal vagy más felügyeleti eszközökkel, például az Azure CLI-vel vagy a Azure PowerShell-vel kapcsolatos további információkért tekintse meg a következőket:
 
 - [Azure számítási szolgáltató REST API](/rest/api/compute/)
-- [Ismerkedés az Azure REST API](/rest/api/azure/)
+- [Bevezetés az Azure REST API használatába](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
 - [Azure PowerShell modul](/powershell/azure/overview)

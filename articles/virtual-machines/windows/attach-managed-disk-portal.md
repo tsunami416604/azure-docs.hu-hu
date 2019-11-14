@@ -1,5 +1,5 @@
 ---
-title: Felügyelt adatlemez csatolása a Windows virtuális gép – Azure |} A Microsoft Docs
+title: Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez – Azure
 description: Hogyan lehet egy Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ece7cbe76cd744302362b8c59f100e23f1b74dff
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699839"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039321"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával
 
@@ -45,7 +45,7 @@ Ez a cikk bemutatja, hogyan kell új felügyelt adatlemez csatolása egy Windows
 9. Megjelenik egy figyelmeztetés értesíti, hogy a lemezek formázása törli az összes adatot. Kattintson az **OK** gombra.
 10. Válassza a formázás befejeződése után **OK**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Emellett [adatlemez csatolása a PowerShell-lel](attach-disk-ps.md).
 - Ha az alkalmazásnak kell használnia a *D:* meghajtó adatokat tárolni, használhatja [a Windows ideiglenes lemez meghajtóbetűjelét](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

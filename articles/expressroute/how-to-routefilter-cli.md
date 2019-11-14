@@ -1,5 +1,5 @@
 ---
-title: 'Útválasztási szűrők konfigurálása a Microsoft társ-ExpressRoute számára: Azure CLI | Microsoft Docs'
+title: 'ExpressRoute: útvonal-szűrők – Microsoft-partnerek: Azure CLI'
 description: Ez a cikk ismerteti az Azure parancssori felület használatával a Microsoft Peering útvonalszűrők konfigurálása
 services: expressroute
 author: anzaman
@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: f60bf8de33cd9552bf7c903f4c8921d50e911643
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123351"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033416"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: Azure CLI
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Azure CLI-vel
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
@@ -90,32 +90,32 @@ Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsop
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>1. lépés: Az előtagok és a BGP közösségi értékek listájának beolvasása
+## <a name="prefixes"></a>1. lépés: Az előtagok és BGP-Közösség értékét listájának lekérése
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. A BGP-Közösség értékét tartalmazó lista beolvasása
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. a BGP-közösségi értékek listájának beolvasása
 
 A BGP-Közösség értékét társított szolgáltatások, a Microsoft társviszony-létesítésekhez listáját, és a hozzájuk társított előtaglistát beolvasásához használja a következő parancsmagot:
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Győződjön meg a használni kívánt értékek listáját
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. a használni kívánt értékek listájának létrehozása
 
 Ellenőrizze a BGP-Közösség értékét az útvonalszűrőt használni kívánt listáját.
 
-## <a name="filter"></a>2. lépés: Útvonal-szűrő és egy szűrési szabály létrehozása
+## <a name="filter"></a>2. lépés: Egy útvonalszűrőhöz és a egy Állapotszűrő szabály létrehozása
 
 Egy útvonalszűrőhöz lehet csak egy szabályt, és a szabály "Engedélyezés" típusúnak kell lennie. Ez a szabály is van egy listája azokról a BGP-Közösség értékét társítva.
 
-### <a name="1-create-a-route-filter"></a>1. Hozzon létre egy útvonalszűrőhöz
+### <a name="1-create-a-route-filter"></a>1. útvonal-szűrő létrehozása
 
-Először hozza létre az útvonalszűrőt. A parancs `az network route-filter create` csak egy útvonal-szűrő erőforrást hoz létre. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
+Először hozza létre az útvonalszűrőt. A parancs `az network route-filter create` csak útvonal-szűrő erőforrást hoz létre. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. Szűrési szabály létrehozása
+### <a name="2-create-a-filter-rule"></a>2. szűrési szabály létrehozása
 
 Futtassa a következő parancsot egy új szabály létrehozása:
  
@@ -123,7 +123,7 @@ Futtassa a következő parancsot egy új szabály létrehozása:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>3. lépés: Az útvonal-szűrő csatolása ExpressRoute-áramkörhöz
+## <a name="attach"></a>3. lépés: Az útvonalszűrőt csatlakoztatása egy ExpressRoute-kapcsolatcsoporttal
 
 Futtassa a következő parancsot az útvonalszűrőt csatolása az ExpressRoute-kapcsolatcsoport:
 

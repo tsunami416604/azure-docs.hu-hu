@@ -1,17 +1,14 @@
 ---
 title: CIS Microsoft Azure alapítványok teljesítményteszt-minta – üzembe helyezési lépések
 description: Telepítse a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 2c270d228d806c5715819ea380f2c5f9967fbd38
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e33a7788d9d7a13cb7f8df3f6663bf009b685169
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586571"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038374"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének üzembe helyezése minta
 
@@ -99,7 +96,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |\[előzetes verzió\]: a CIS Microsoft Azure alapjaira vonatkozó teljesítményteszt-javaslatok és a speciális virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
 |\[előzetes verzió\]: a CIS Microsoft Azure alapjaira vonatkozó teljesítményteszt-javaslatok és a speciális virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének üzembe helyezéséhez szükséges lépéseket, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 

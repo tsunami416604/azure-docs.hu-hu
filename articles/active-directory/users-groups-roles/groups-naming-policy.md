@@ -1,26 +1,25 @@
 ---
-title: Csoport elnevezési szabályzatának érvénybe léptetése az Office 365-csoportokban – Azure Active Directory | Microsoft Docs
+title: Csoport elnevezési szabályzatának betartatása Azure Active Directoryban | Microsoft Docs
 description: Az Office 365-csoportok elnevezési szabályzatának beállítása Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: b3a9300148f4ac2adf6b95ef0afb500af5bc9284
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013414"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027037"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése az Office 365-csoportokban Azure Active Directory
 
@@ -35,23 +34,23 @@ A rendszer az elnevezési házirendet alkalmazza a munkaterhelések között lé
 
 Két különböző módon kényszerítheti ki a csoportok elnevezési szabályzatát:
 
-- **Előtag – utótag elnevezési házirend** Megadhatja azokat az előtagokat vagy utótagokat, amelyeket a rendszer automatikusan hozzáad a csoportok elnevezési konvenciójának érvényesítéséhez (\_például a "GRP japán\_My Group\_Engineering" csoportban)\_, a GRP Japánban\_ az előtag, \_a mérnöki érték pedig az utótag. 
+- **Előtag – utótag elnevezési házirend** Megadhatja azokat az előtagokat vagy utótagokat, amelyeket a rendszer automatikusan hozzáad a csoportok elnevezési konvenciójának érvényesítéséhez (például a "GRP\_Japánban\_saját csoport\_Engineering", a GRP\_japán\_ az előtag, és \_mérnöki az utótag). 
 
 - **Egyéni tiltott szavak** Feltölthet olyan tiltott szavakat is, amelyek a szervezet számára jellemzőek, hogy a felhasználók által létrehozott csoportokban le legyenek tiltva (például "VEZÉRIGAZGATÓ, bérszámfejtés, HR").
 
 ### <a name="prefix-suffix-naming-policy"></a>Előtag – utótag elnevezési házirend
 
-Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehetnek rögzített karakterláncok vagy felhasználói attribútumok, \[például részlegek\] , amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma 53 karakter. 
+Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehet rögzített karakterláncok vagy felhasználói attribútumok, például \[részleg\], amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma 53 karakter. 
 
 Az előtagok és az utótagok olyan speciális karaktereket tartalmazhatnak, amelyek a csoport neve és a csoport aliasában is támogatottak. Az előtag vagy utótag azon karaktereit, amelyeket a csoport aliasa nem támogat, továbbra is a csoport nevében lesznek alkalmazva, de a csoport aliasa el lesz távolítva. Ennek a korlátozásnak a miatt a csoport nevére alkalmazott előtagok és utótagok eltérőek lehetnek a csoport aliasán alkalmazott értékekkel. 
 
 #### <a name="fixed-strings"></a>Rögzített karakterláncok
 
-A karakterláncok segítségével könnyebben vizsgálhatja és megkülönböztetheti a csoportokat a globális címlistában, valamint a csoportos munkaterhelések bal oldali navigációs hivatkozásait. Néhány gyakori előtagok olyan kulcsszavak, mint például a "\_GRP neve",\#a "Name"\_, a "Name"
+A karakterláncok segítségével könnyebben vizsgálhatja és megkülönböztetheti a csoportokat a globális címlistában, valamint a csoportos munkaterhelések bal oldali navigációs hivatkozásait. Néhány gyakori előtagok olyan kulcsszavak, mint például a "GRP\_neve", a "\#neve", a "\_Name"
 
 #### <a name="user-attributes"></a>Felhasználói attribútumok
 
-Használhatja azokat az attribútumokat, amelyek segítségével a felhasználók megadhatják, hogy melyik részleget, irodát vagy földrajzi régiót hozta létre a csoport. Ha például a (z) és `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering`a (z) elnevezési házirendet definiálja, akkor a kényszerített csoport neve lehet "a csoportom megtervezése". A támogatott Azure ad- \[attribútumok\]az \[részleg\], a vállalat \[, \[az \[Office\], a StateOrProvince\], a CountryorRegion \] ,\[Cím.\] A nem támogatott felhasználói attribútumok rögzített karakterláncként vannak kezelve; például: "\[irányítószám\]". A bővítmény attribútumai és az egyéni attribútumok nem támogatottak.
+Használhatja azokat az attribútumokat, amelyek segítségével a felhasználók megadhatják, hogy melyik részleget, irodát vagy földrajzi régiót hozta létre a csoport. Ha például `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`ként definiálja az elnevezési házirendet, és `User’s department = Engineering`, akkor a kényszerített csoport neve lehet "a csoport mérnöki csoportja". A támogatott Azure AD-attribútumok \[részleg\], \[vállalati\], \[Office\], \[StateOrProvince\], \[CountryOrRegion\], \[title\]. A nem támogatott felhasználói attribútumok rögzített karakterláncként vannak kezelve; például: "\[irányítószám\]". A bővítmény attribútumai és az egyéni attribútumok nem támogatottak.
 
 Javasoljuk, hogy a szervezet összes felhasználója számára kitöltött értékeket tartalmazó attribútumokat használjon, és ne használjon hosszú értékeket tartalmazó attribútumokat.
 
@@ -73,12 +72,12 @@ A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes cso
 - Globális rendszergazda
 - 1\. partneri szintű támogatás
 - 2\. partneri szintű támogatás
-- Felhasználói adminisztrátor
-- Címtárírók
+- Felhasználói rendszergazda
+- Címtár-írók
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Elnevezési házirend konfigurálása a Azure Portalban
 
-1. Jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba globális rendszergazdai fiókkal.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai fiókkal.
 1. Válassza a **csoportok**lehetőséget, majd válassza az **elnevezési házirend** elemet az elnevezési házirend lap megnyitásához.
 
     ![az elnevezési szabályzat lap megnyitása a felügyeleti központban](./media/groups-naming-policy/policy.png)
@@ -117,7 +116,7 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
    Install-Module AzureADPreview
    ```
 
-   Ha a rendszer felszólítja a nem megbízható adattár elérésére, írja be az **Y**értéket. Az új modul telepítése igénybe vehet néhány percet.
+   Ha a rendszer felszólítja a nem megbízható adattár elérésére, írja be az **Y**értéket. Az új modul telepítéséhez néhány percet is igénybe vehet.
 
 ## <a name="configure-naming-policy-in-powershell"></a>Elnevezési házirend konfigurálása a PowerShellben
 
@@ -172,7 +171,7 @@ Ennyi az egész. Beállította az elnevezési házirendet, és hozzáadta a blok
 
 ## <a name="export-or-import-custom-blocked-words"></a>Egyéni tiltott szavak exportálása vagy importálása
 
-További információ: Azure Active Directory parancsmagok a [csoportházirend-beállítások konfigurálásához](groups-settings-cmdlets.md).
+További információ: [Azure Active Directory parancsmagok a csoportházirend-beállítások konfigurálásához](groups-settings-cmdlets.md).
 
 Íme egy példa egy PowerShell-szkriptre több blokkolt szó exportálásához:
 
@@ -253,7 +252,7 @@ PowerShell-parancsmagok Azure Active Directory | Azure Active Directory PowerShe
 Exchange felügyeleti központ | Az Exchange felügyeleti központ megfelel az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoport neve és a csoport aliasában.
 Microsoft 365 felügyeleti központ | Microsoft 365 felügyeleti központ megfelel az elnevezési házirendnek. Amikor egy felhasználó létrehoz vagy szerkeszt egy csoportnevet, a rendszer automatikusan alkalmazza az elnevezési házirendet, és a felhasználók a megfelelő hibákat kapják meg, amikor egyéni tiltott szavakat hoznak létre. A Microsoft 365 felügyeleti központ még nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak az Azure AD-csoportokról.
 

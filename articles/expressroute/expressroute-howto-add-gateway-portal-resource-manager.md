@@ -1,6 +1,6 @@
 ---
-title: 'Az expressroute-hoz egy Azure virtuális hálózat átjáró hozzáadása: Portál |} A Microsoft Docs'
-description: Ez a cikk végigvezeti egy már létrehozott Resource Manager virtuális hálózathoz, az ExpressRoute virtuális hálózati átjáró hozzáadása.
+title: 'Azure ExpressRoute: átjáró hozzáadása VNet: portál'
+description: Ez a cikk bemutatja, hogyan adhat hozzá egy virtuális hálózati átjárót egy már létrehozott Resource Manager-VNet a ExpressRoute-hez a Azure Portal használatával.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 68376751a3c673b2d89d028312f992aec40d4dee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366024"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037399"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Az Azure portal használatával ExpressRoute virtuális hálózati átjáró konfigurálása
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Ez a feladat lépései használják egy virtuális hálózathoz, a következő k
     * Alhálózat címtere = "192.168.1.0/24"
 * Erőforráscsoport = "TestRG"
 * Hely = "USA keleti RÉGIÓJA"
-* Átjáróalhálózat neve: Egy átjáró-alhálózatot kell neve "GatewaySubnet" *GatewaySubnet*.
+* Átjáróalhálózat neve: "GatewaySubnet" kell neve egy átjáró-alhálózatot *GatewaySubnet*.
     * Átjáró-alhálózat címtere = "192.168.200.0/26"
 * Átjáró neve = "ERGW"
 * Átjáró nyilvános IP-cím neve = "MyERGWVIP"
@@ -58,25 +58,25 @@ Megtekintheti egy [videó](https://azure.microsoft.com/documentation/videos/azur
 
 4. Az alhálózat **nevénél** automatikusan megjelenik a „GatewaySubnet” érték. Ez az érték szükséges ahhoz, hogy az Azure felismerje, hogy az alhálózat egy átjáró alhálózata. Módosítsa úgy a **címtartomány** automatikusan kitöltött értékeit, hogy megfeleljenek a konfigurációs követelményeinek. Javasolt létrehozni egy átjáró-alhálózat/27-es vagy nagyobb (/ 26-os vagy/25 stb.). Kattintson a **OK** mentse az értékeket, és az átjáró-alhálózat létrehozásához.
 
-    ![Az alhálózat hozzáadása](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Az alhálózat hozzáadása")
+    ![Alhálózat hozzáadása](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Az alhálózat hozzáadása")
 
 ## <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 
 1. A portálon a bal oldalon kattintson a **+** gombra, és írja be a „Virtuális hálózati átjáró” kifejezést a keresőmezőbe. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. A **Virtuális hálózati átjáró** panel alsó részén kattintson a **Létrehozás** gombra. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** panelt.
 2. A **Virtuális hálózati átjáró létrehozása** panelen töltse ki a virtuális hálózati átjáró értékeit.
 
-    ![Virtuális hálózati átjáró létrehozása panel mezői](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Virtuális hálózati átjáró létrehozása panel mezői")
-3. **Név**: Adjon nevet az átjáró. Ez nem ugyanaz, mint egy átjáró alhálózatának elnevezése. Ez a létrehozni kívánt átjáróobjektum neve.
-4. **Átjáró típusa**: Válassza ki **ExpressRoute**.
-5. **TERMÉKVÁLTOZAT**: A legördülő listából válassza ki az átjáró-Termékváltozatot.
+    ![Virtuális hálózati átjáró létrehozása panel mezői](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "A Virtuális hálózati átjáró létrehozása panel mezői")
+3. **Név**: adjon nevet az átjárónak. Ez nem ugyanaz, mint egy átjáró alhálózatának elnevezése. Ez a létrehozni kívánt átjáróobjektum neve.
+4. **Átjáró típusa**: válasszon **ExpressRoute**.
+5. **SKU**: válassza ki az átjáró SKU-ját a legördülő listából.
 6. **Hely**: Állítsa be úgy a **Hely** mezőt, hogy a virtuális hálózat helyére mutasson. Ha a hely nem egyezik meg azzal a régióval, ahol a virtuális hálózat található, a virtuális hálózat nem jelenik meg a Virtuális hálózat választása legördülő menüben.
 7. Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni az átjárót. Kattintson a **Virtuális hálózat** elemre a **Virtuális hálózat választása** panel megnyitásához. Válassza ki a VNet elemet. Ha a VNet nem jelenik meg, ellenőrizze, hogy a **Hely** mező arra a régióra mutat-e, amelyikben a virtuális hálózata található.
 9. Válasszon egy nyilvános IP-címet. A **Nyilvános IP-cím** elemre kattintva nyissa meg a **Nyilvános IP-cím választása** panelt. Ezután az **+Új létrehozása** elemre kattintva nyissa meg a **Nyilvános IP-cím létrehozása** panelt. Adjon egy nevet a nyilvános IP-címnek. Ez a panel létrehoz egy nyilvános IP-cím-objektumot, amelyhez dinamikusan hozzá lesz rendelve egy nyilvános IP-cím. Kattintson az **OK** gombra a panel módosításainak mentéséhez.
-10. **Előfizetés**: Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva.
-11. **Erőforráscsoport**: Ez a beállítás a kiválasztott virtuális hálózat határozza meg.
+10. **Előfizetés**: ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
+11. **Erőforráscsoport**: ezt a beállítást a kiválasztott virtuális hálózat határozza meg.
 12. Ne módosítsa a **Helyet** az előbbi beállítások megadása után.
 13. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a panel alján lévő **Rögzítés az irányítópulton** elemet.
 14. A **Létrehozás** gombra kattintva hozzákezdhet az átjáró létrehozásához. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. Virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozta a virtuális hálózati átjáró, kapcsolat a virtuális hálózat csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz. Lásd: [virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport](expressroute-howto-linkvnet-portal-resource-manager.md).

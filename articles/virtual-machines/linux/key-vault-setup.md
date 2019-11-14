@@ -1,5 +1,5 @@
 ---
-title: A Linux rendszerű virtuális gépekhez tartozó Azure Key Vault beállítása | Microsoft Docs
+title: Azure Key Vault beállítása Linux rendszerű virtuális gépekhez
 description: Key Vault beállítása Azure Resource Manager virtuális géppel az Azure CLI-vel való használatra.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: kasing
-ms.openlocfilehash: cbc8b6be09fcf4232636b580dc0c62482b83bd60
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 25ef1d43af9d37cebde4a28479010776cc148b6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002166"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035951"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Virtuális gépek Key Vaultának beállítása az Azure CLI-vel
 
@@ -29,21 +29,21 @@ A Azure Resource Manager veremben a titkok/tanúsítványok a Key Vault által b
 Ezen lépések elvégzéséhez szüksége lesz a legújabb [Azure CLI](/cli/azure/install-az-cli2) -re, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-Hozzon létre egy kulcstartót, és rendelje hozzá a központi telepítési szabályzatot az [az Key Vault Create](/cli/azure/keyvault)paranccsal. A következő példában létrehozunk egy nevű `myKeyVault` kulcstárolót az `myResourceGroup` erőforráscsoporthoz:
+Hozzon létre egy kulcstartót, és rendelje hozzá a központi telepítési szabályzatot az [az Key Vault Create](/cli/azure/keyvault)paranccsal. Az alábbi példa egy `myKeyVault` nevű kulcstartót hoz létre a `myResourceGroup` erőforráscsoporthoz:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Key Vault frissítése virtuális gépekkel való használatra
-Állítsa be a központi telepítési szabályzatot egy meglévő kulcstartóba az [az Key Vault Update paranccsal](/cli/azure/keyvault). A következő frissítés az `myKeyVault` `myResourceGroup` erőforráscsoport nevű kulcstartót frissíti:
+Állítsa be a központi telepítési szabályzatot egy meglévő kulcstartóba az [az Key Vault Update paranccsal](/cli/azure/keyvault). A következő frissíti a `myKeyVault` nevű kulcstartót a `myResourceGroup` erőforráscsoporthoz:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Sablonok használata a Key Vault beállításához
-Ha sablont használ, a `enabledForDeployment` `true` tulajdonságot a következő értékre kell állítania a Key Vault erőforráshoz:
+Ha sablont használ, a `enabledForDeployment` tulajdonságot úgy kell beállítania, hogy `true` a Key Vault erőforráshoz az alábbiak szerint:
 
 ```json
 {
@@ -59,5 +59,5 @@ Ha sablont használ, a `enabledForDeployment` `true` tulajdonságot a következ�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Key Vault sablonok használatával történő létrehozásakor konfigurálható egyéb beállításokért lásd: [kulcstartó létrehozása](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

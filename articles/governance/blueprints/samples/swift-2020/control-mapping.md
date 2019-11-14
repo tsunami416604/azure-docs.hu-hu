@@ -1,17 +1,14 @@
 ---
 title: Sample-SWIFT CSP-CSCF v2020 Blueprint-vezérlés leképezése
 description: A SWIFT CSP-CSCF v2020 tervezetének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163012"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037840"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020 Blueprint-minta leképezésének vezérlése
 
@@ -80,7 +77,7 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="13-and-64-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>1,3 és 6,4 a naplózási rekordok tartalma | Tervezett auditálási rekordok központosított kezelése
 
@@ -88,9 +85,9 @@ A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkater�
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 és 6,4 Válasz a naplózási feldolgozási hibákra
 
@@ -106,9 +103,9 @@ A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics mun
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 és 6.5 A naplózási generáció
 
@@ -116,9 +113,9 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
@@ -229,10 +226,10 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A nem biztonságos kommunikációs protokollokat használó Windows-webkiszolgálók naplózási eredményeinek megjelenítése
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához szükséges előfeltételek központi telepítése
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
-- A webalkalmazás csak HTTPS protokollon keresztül érhető el
+- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 
 ## <a name="22-23-25-41-and-27-protection-of-information-at-rest--cryptographic-protection"></a>2,2, 2,3, 2,5, 4,1 és 2,7 a REST-adatok védelme | Titkosítási védelem
 
@@ -275,9 +272,9 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 - Az SQL Server speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
 - A Azure Stream Analytics lévő diagnosztikai naplókat engedélyezni kell
@@ -300,10 +297,10 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 Most, hogy áttekintette a SWIFT CSP-CSCF v2020 tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, és bemutatja, hogyan helyezheti üzembe a mintát:
 
 > [!div class="nextstepaction"]
-> [Swift CSP-CSCF v2020 terv – áttekintés](./index.md)
-> [Swift CSP-CSCF v2020 Blueprint – lépések üzembe helyezése](./deploy.md)
+> [Swift CSP-CSCF v2020 Blueprint – áttekintés](./index.md)
+> [Swift CSP – CSCF v2020 Blueprint – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

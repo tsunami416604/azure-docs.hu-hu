@@ -1,18 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 terv minta – vezérlés leképezése
 description: A Payment Card Industry adatbiztonsági standard v 3.2.1 tervezetének vezérlése a Azure Policy és a RBAC.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3e72f923ea3d752d829731d1f741bda090ae9fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163059"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037269"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
@@ -34,8 +30,8 @@ Ez a terv segítséget nyújt a hálózatok kezelésében és szabályozásában
 
 Ez a terv segít kikényszeríteni a szabályzatot a titkosítási vezérlők használatával [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek bizonyos titkosítási vezérlőket kényszerítenek, és a gyenge titkosítási beállítások naplózási funkcióit használják. Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, az ehhez a tervhez hozzárendelt szabályzatok transzparens adattitkosítást igényelnek az SQL-adatbázisokban; a Storage-fiókok és az Automation-fiókok változóinak naplózása. Léteznek olyan szabályzatok is, amelyek a Storage-fiókok, a Function apps, a WebApp, a API Apps és a Redis Cache nem biztonságos kapcsolatait naplózzák, és naplózzák a titkosítatlan Service Fabric kommunikációt.
 
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
-- A webalkalmazás csak HTTPS protokollon keresztül érhető el
+- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
@@ -48,7 +44,7 @@ Ez a terv segít kikényszeríteni a szabályzatot a titkosítási vezérlők ha
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 és 11.2.1 sebezhetőségi vizsgálat és rendszerfrissítések
 
-Ez a terv a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, az SQL-biztonsági réseket és a virtuális gépek Azure-beli biztonsági réseit figyelő [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével segíti a biztonsági rések kezelését Security Center. A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára.
+Ebből a tervből megtudhatja, hogyan kezelheti a rendszerbiztonsági réseket olyan [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével, amelyek a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit, Azure Security Center az SQL-biztonsági réseket és a virtuális gépek A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára.
 
 - Hiányzó Endpoint Protection figyelése Azure Security Center
 - A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése
@@ -67,7 +63,7 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a és 8.3.1. b privilegizált hozzáférési jogosultságok kezelése
 
-Ebből a tervből megtudhatja, hogyan korlátozhatja és szabályozhatja a privilegizált hozzáférési jogosultságokat, ha [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá a külső fiókoknak a tulajdonossal, írási és/vagy olvasási engedélyekkel, valamint a tulajdonossal és/vagy írási engedélyekkel rendelkező alkalmazott fiókokkal. a többtényezős hitelesítés engedélyezve van. Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata leegyszerűsíti az engedélyek kezelését, és központosítja az adatbázis-felhasználók és más Microsoft-identitások felügyeletét  
+Ebből a tervből megtudhatja, hogyan korlátozhatja és szabályozhatja a privilegizált hozzáférési jogosultságokat, ha [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá a külső fiókok tulajdonosi, írási és olvasási engedélyekkel és olyan alkalmazottak fiókjaival, amelyeken nincs engedélyezve a többtényezős hitelesítés. Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata leegyszerűsíti az engedélyek kezelését, és központosítja az adatbázis-felhasználók és más Microsoft-identitások felügyeletét  
 Services.
  
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
@@ -132,9 +128,9 @@ Most, hogy áttekintette a PCI-DSS v 3.2.1 terv vezérlési leképezését, a k�
 
 > [!div class="nextstepaction"]
 > [PCI-DSS v 3.2.1 terv – áttekintés](./index.md)
-> [PCI-DSS v 3.2.1 Blueprint – lépések üzembe helyezése](./deploy.md)
+> [PCI-DSS v 3.2.1 terv – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

@@ -1,5 +1,5 @@
 ---
-title: Windowsos VM-rendszerképek kiválasztása az Azure-ban | Microsoft Docs
+title: Windowsos VM-rendszerképek kiválasztása az Azure-ban
 description: A Azure PowerShell segítségével meghatározhatja a Piactéri virtuálisgép-rendszerképek közzétevőjét, ajánlatát, SKU-jának és verziószámát.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 32264fc6c58dd1cb6c1514af1c07391ab0e9193d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039539"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows rendszerű virtuális gépek rendszerképeinek keresése az Azure Marketplace-en Azure PowerShell
 
@@ -35,20 +35,20 @@ Az elérhető lemezképek és ajánlatok az [Azure Marketplace](https://azuremar
 
 Ez a táblázat a jelzett közzétevők és ajánlatok számára elérhető SKU-ket mutatja.
 
-| Közzétevő | Ajánlat | Termékváltozat |
+| Közzétevő | Ajánlat | SKU |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019 – Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter-Core |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter – tárolók |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2016 – Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter – Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter – tárolók |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
 | MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer – WS2016 |Enterprise |
+| MicrosoftRServer |RServer-WS2016 |Enterprise |
 
 ## <a name="navigate-the-images"></a>A képek navigálása
 
@@ -320,7 +320,7 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 ```
 Ezután átadja a virtuális gép konfigurációját a hálózati konfigurációs objektumokkal együtt a `New-AzVM` parancsmagnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a virtuális gépet gyorsan szeretné létrehozni a `New-AzVM` parancsmaggal az alapszintű képinformációk segítségével, tekintse meg [a Windows rendszerű virtuális gép létrehozása a PowerShell](quick-create-powershell.md)használatával című témakört.
 

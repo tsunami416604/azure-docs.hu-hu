@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Két virtuális gép létrehozása belső és külső NSG-vel | Microsoft Docs
+title: Azure CLI-szkript mintája – két virtuális gép létrehozása belső és külső NSG
 description: Azure CLI-példaszkript – Két virtuális gép létrehozása belső és külső NSG-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ed3ed5c3f44f9ddf912b420c4a89b6ca0fa94af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709592"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039587"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>A virtuális gépek közötti hálózati adatforgalom védelme
 
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Frissít egy NSG-szabályt. Ebben a példában a háttérrendszerre vonatkozó szabályt frissítjük, hogy csak az előtéri alhálózatról érkező forgalmat engedje át. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

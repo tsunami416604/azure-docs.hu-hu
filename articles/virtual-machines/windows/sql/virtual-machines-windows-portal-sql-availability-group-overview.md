@@ -1,5 +1,5 @@
 ---
-title: SQL Server rendelkezésre állási csoportok – Azure Virtual Machines – áttekintés | Microsoft Docs
+title: A rendelkezésre állási csoportok áttekintése
 description: Ez a cikk SQL Server rendelkezésre állási csoportokat mutatja be az Azure Virtual Machines szolgáltatásban.
 services: virtual-machines
 documentationCenter: na
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: d89e25b6a39649bb8421fd32b8842c3c76807268
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8119990ab4ab4a918e325976092100086a547aa4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102166"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037499"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server always on rendelkezésre állási csoportok bemutatása Azure-beli virtuális gépeken #
+# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>SQL Server rendelkezésre állási csoportok bemutatása Azure-beli virtuális gépeken
 
 Ez a cikk SQL Server rendelkezésre állási csoportokat mutatja be az Azure Virtual Machines-on. 
 
-Az Azure Virtual Machines always on rendelkezésre állási csoportok hasonlók a helyszíni always on rendelkezésre állási csoportokhoz. További információ: Always [on rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
+Az Azure Virtual Machines always on rendelkezésre állási csoportok hasonlók a helyszíni always on rendelkezésre állási csoportokhoz. További információ: [Always On rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
 
 A diagram az Azure Virtual Machines teljes SQL Server rendelkezésre állási csoportjának részeit mutatja be.
 
@@ -71,6 +72,6 @@ Saját maga is létrehozhatja a virtuális gépeket a sablon nélkül. Először
 
 - [Always On rendelkezésre állási csoport létrehozása a rendelkezésre állás és a vész-helyreállítás javítása érdekében](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SQL Server always on rendelkezésre állási csoport konfigurálása az Azure Virtual Machines különböző régiókban](virtual-machines-windows-portal-sql-availability-group-dr.md)

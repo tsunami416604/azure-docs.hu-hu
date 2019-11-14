@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példa – DNS-zóna és-rekord létrehozása egy tartománynévhez
+title: DNS-zóna és-rekord létrehozása egy tartománynévhez – Azure CLI-Azure DNS
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan hozhat létre DNS-zónát és -rekordot egy tartománynévhez.
 services: dns
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 691eeebf61ffd4ea7bee6b5ac6c60cafb076e11d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8ae4e8c515b658ac3f0bb4eb0d88706814993355
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156225"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037156"
 ---
-# <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Példa az Azure CLI-szkriptre: DNS-zóna és -rekord létrehozása
+# <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI-példaszkript: DNS-zóna és -rekord létrehozása
 
 Ez az Azure CLI-példaszkript DNS-zónát és -rekordot hoz létre egy tartománynévhez. 
 
@@ -46,7 +46,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az network dns record-set list](/cli/azure/network/dns/record-set) | Egy DNS-zóna összes *A* rekordkészletét listázza. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

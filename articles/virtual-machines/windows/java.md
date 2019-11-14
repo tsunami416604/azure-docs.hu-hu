@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gép létrehozása és kezelése Java használatával | Microsoft Docs
+title: Azure-beli virtuális gép létrehozása és kezelése Java használatával
 description: A Java és a Azure Resource Manager használatával helyezzen üzembe egy virtuális gépet és annak összes támogató erőforrását.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103024"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039720"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
 
@@ -39,7 +39,7 @@ Ezek a lépések körülbelül 20 percet vesznek igénybe.
 ## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
 1. Ha még nem tette meg, telepítse a [Java](https://aka.ms/azure-jdks)-t.
-2. Telepítse [](https://maven.apache.org/download.cgi)a mavent.
+2. Telepítse a [mavent](https://maven.apache.org/download.cgi).
 3. Hozzon létre egy új mappát és a projektet:
     
     ```
@@ -51,7 +51,7 @@ Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-1. A mappában Nyissa meg a `pom.xml` fájlt, és &lt;adja hozzá a Build konfigurációt a projekthez&gt; , hogy lehetővé váljon az alkalmazás létrehozása: `testAzureApp`
+1. A `testAzureApp` mappában Nyissa meg a `pom.xml` fájlt, és adja hozzá a Build-konfigurációt &lt;projekthez&gt; az alkalmazás kiépítésének engedélyezéséhez:
 
     ```xml
     <build>
@@ -120,7 +120,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési fájl létrehozása
 
-1. Hozzon létre egy `azureauth.properties` nevű fájlt, és adja hozzá ezeket a tulajdonságokat:
+1. Hozzon létre egy `azureauth.properties` nevű fájlt, és adja hozzá a következő tulajdonságokat:
 
     ```
     subscription=<subscription-id>
@@ -133,14 +133,14 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
     graphURL=https://graph.windows.net/
     ```
 
-    Cserélje le  **&lt;az előfizetés&gt; -azonosítót** az előfizetési azonosítóra,  **&lt;az Application-ID&gt; -** t a Active Directory alkalmazás-azonosítóra, **&lt;a hitelesítési kulcsra az&gt;** alkalmazás kulcsa **és&lt;abérlő&gt;** azonosítója a bérlő azonosítójával.
+    Cserélje le **&lt;előfizetés-azonosító&gt;** az előfizetési azonosítóra, **&lt;az alkalmazás-azonosító&gt;** a Active Directory alkalmazás-azonosítóval, **&lt;a hitelesítő kulcs&gt;** az alkalmazás kulcsával, és **&lt;bérlő azonosítója&gt;** a bérlői azonosítóval.
 
 2. Mentse a fájlt.
 3. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a rendszerhéjban a hitelesítési fájl teljes elérési útjával.
 
 ### <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa `App.java` meg a `src\main\java\com\fabrikam` fájlt a (z) területen, és győződjön meg róla, hogy a Package utasítás felül van:
+1. Nyissa meg a `App.java` fájlt a `src\main\java\com\fabrikam` alatt, és győződjön meg róla, hogy ez a Package utasítás felül van:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -470,6 +470,6 @@ Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes k
 2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
 
-## <a name="next-steps"></a>További lépések
-* További információ a Javához készült [Azure](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)-kódtárak használatáról.
+## <a name="next-steps"></a>Következő lépések
+* További információ a [Javához készült Azure-kódtárak](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)használatáról.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Felügyelt lemezek másolása (mozgatása) előfizetésen belül vagy előfizetések között | Microsoft Docs
+title: Azure CLI-példaszkript – Felügyelt lemezek másolása (mozgatása) előfizetésen belül vagy előfizetések között
 description: Azure CLI-példaszkript – Felügyelt lemezek másolása (mozgatása) előfizetésen belül vagy előfizetések között
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: abb051e9646d547907384ed06413439845a29d5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea648f8dcc8f5cd8180fa9079cb404d8231e405c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318138"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040013"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Felügyelt lemezek másolása előfizetésen belül vagy előfizetések között a CLI használatával
 
-Ez a szkript átmásol egy felügyelt lemezt egy előfizetésen belül vagy egy eltérő, de ugyanabban a régióban található előfizetésbe. A példány csak működik, ha az előfizetések ugyanahhoz az AAD-bérlőhöz részét képezik.
+Ez a szkript átmásol egy felügyelt lemezt egy előfizetésen belül vagy egy eltérő, de ugyanabban a régióban található előfizetésbe. A másolás csak akkor működik, ha az előfizetések ugyanahhoz a HRE-bérlőhöz tartoznak.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -44,8 +44,8 @@ A szkript a következő parancsokat használja egy új felügyelt lemez létreho
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | Lekérdezi egy felügyelt lemez összes tulajdonságát a lemez neve és erőforráscsoport-tulajdonságai alapján. Az „Id” tulajdonság a felügyelt lemez másik előfizetésbe való másolásakor használatos.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Lemásol egy felügyelt lemezt úgy, hogy a szülő felügyelt lemez azonosítójának és nevének használatával egy másik előfizetésben hoz létre egy felügyelt lemezt.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép és a felügyelt lemezek CLI-példaszkripteket megtalálható a [Azure Windows virtuális gép dokumentációja](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+További virtuális gépek és felügyelt lemezek a CLI-parancsfájlok az [Azure Windows VM dokumentációjában](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)találhatók.

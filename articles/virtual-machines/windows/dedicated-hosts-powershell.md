@@ -1,5 +1,5 @@
 ---
-title: Az Azure dedikált gazdagépek üzembe helyezése a Azure PowerShell használatával | Microsoft Docs
+title: Az Azure dedikált gazdagépek üzembe helyezése a Azure PowerShell használatával
 description: A virtuális gépeket a Azure PowerShell használatával dedikált gazdagépekre helyezheti üzembe.
 services: virtual-machines-windows
 author: cynthn
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261700"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033365"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Előzetes verzió: Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Előzetes verzió: virtuális gépek üzembe helyezése dedikált gazdagépekre a Azure PowerShell használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
-Győződjön meg arról, hogy telepítette a Azure PowerShell 2.4.2-as vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a szolgáltatásban `Connect-AzAccount`. A 2.4.2-es verzió telepítéséhez nyisson meg egy PowerShell-parancssort, és írja be a következőt:
+Győződjön meg arról, hogy telepítette a Azure PowerShell 2.4.2-as vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a (`Connect-AzAccount`) használatával. A 2.4.2-es verzió telepítéséhez nyisson meg egy PowerShell-parancssort, és írja be a következőt:
 
 ```powershell
 Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
@@ -115,7 +115,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>A gazdagép állapotának keresése
 
-Megtekintheti a gazdagép állapotának állapotát, valamint azt, hogy hány virtuális gépet telepíthet a gazdagépre a [GetAzHost](/powershell/module/az.compute/get-azhost) használatával `-InstanceView` a paraméterrel.
+Megtekintheti a gazdagép állapotát, és hány virtuális gépet telepíthet a gazdagépre a [GetAzHost](/powershell/module/az.compute/get-azhost) használatával a `-InstanceView` paraméterrel.
 
 ```
 Get-AzHost `
@@ -215,7 +215,7 @@ Remove-AzResourceGroup -Name $rgName
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
 

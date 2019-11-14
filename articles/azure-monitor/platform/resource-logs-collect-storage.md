@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262556"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030877"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-beli erőforrás-naplók archiválása a Storage-fiókba
 Az Azure-beli [erőforrás-naplók](resource-logs-overview.md) részletes és gyakori információkat biztosítanak az Azure-erőforrások belső működéséről. Ez a cikk az erőforrás-naplók Azure Storage-fiókba való gyűjtését ismerteti az adatok archiválás céljából történő megőrzése érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha még nem rendelkezik ilyennel, [létre kell hoznia egy Azure Storage-fiókot](../../storage/common/storage-quickstart-create-account.md) . A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
+
+
+> [!IMPORTANT]
+> A Azure Data Lake Storage Gen2 fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelye, annak ellenére, hogy érvényes lehetőségként szerepelnek a Azure Portalban.
+
 
 Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a [tevékenység naplóját](activity-logs-overview.md) is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adatmennyiséget egy központi helyen tárolja.
 
@@ -58,7 +63,7 @@ Az PT1H. JSON fájlon belül minden eseményt a következő formátumban tárol 
 > [!NOTE]
 > A platform naplói a blob Storage-ba kerülnek a [JSON-vonalak](http://jsonlines.org/)használatával, ahol minden esemény egy sor, a sortörési karakter pedig új eseményt jelez. Ez a formátum a 2018 novemberében lett implementálva. Ezen időpont előtt a naplók a blob Storage-ba kerülnek, mint a rekordok JSON-tömbje, amelyet a következő témakörben talál: [felkészülés a formátum változására a Storage-fiókba archivált Azure monitor platform-naplók](resource-logs-blob-format.md)számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Blobok letöltése elemzéshez](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * [Archiválja Azure Active Directory naplókat a Azure monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).

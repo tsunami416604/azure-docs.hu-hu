@@ -1,5 +1,5 @@
 ---
-title: Jelentkezzen be egy Linux rendszerű virtuális gépre Azure Active Directory hitelesítő adatokkal | Microsoft Docs
+title: Bejelentkezés Azure Active Directory hitelesítő adatokkal rendelkező linuxos virtuális gépre
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat Linux rendszerű virtuális gépeket Azure Active Directory hitelesítéssel való bejelentkezéshez.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327097"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035927"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: Jelentkezzen be egy Linux rendszerű virtuális gépre az Azure-ban Azure Active Directory hitelesítés használatával
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
 Az Azure-beli linuxos virtuális gépek (VM-EK) biztonságának növelése érdekében integrálható Azure Active Directory (AD) hitelesítéssel. Ha az Azure AD-hitelesítést Linux rendszerű virtuális gépekhez használja, központilag szabályozza és érvényesíti a virtuális gépekhez való hozzáférést engedélyező vagy megtagadó házirendeket. Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat Linux rendszerű virtuális gépeket az Azure AD-hitelesítés használatához.
 
@@ -48,7 +48,7 @@ Az Azure AD-hitelesítés számos előnnyel jár az Azure-beli linuxos virtuáli
 
 A következő Linux-disztribúciók jelenleg a funkció előzetes verziójában támogatottak:
 
-| Disztribúció | Version |
+| Disztribúció | Verzió |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -106,8 +106,8 @@ A *sikeres* *provisioningState* akkor jelenik meg, ha a bővítmény telepítés
 
 Az Azure szerepköralapú Access Control (RBAC) szabályzata meghatározza, hogy ki jelentkezhet be a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
 
-- **Virtuális gép rendszergazdai bejelentkezése**: A hozzárendelt szerepkörrel rendelkező felhasználók bejelentkezhetnek egy Azure-beli virtuális gépre a Windows rendszergazdai vagy a Linux root felhasználói jogosultságokkal.
-- **Virtuális gép felhasználói bejelentkezése**: Az ehhez a szerepkörhöz hozzárendelt felhasználók normál felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
+- **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók bejelentkezhetnek egy Azure-beli virtuális gépre a Windows rendszergazdai vagy a Linux root felhasználói jogosultságokkal.
+- **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 
 > [!NOTE]
 > Annak engedélyezéséhez, hogy a felhasználó SSH-kapcsolaton keresztül jelentkezzen be a virtuális gépre, hozzá kell rendelnie a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét. Egy virtuális géphez hozzárendelt *tulajdonosi* vagy *közreműködői* szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan bejelentkezni a virtuális gépre SSH-kapcsolaton keresztül.
@@ -139,25 +139,25 @@ Először tekintse meg a virtuális gép nyilvános IP-címét az [az VM show](/
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Jelentkezzen be az Azure Linux rendszerű virtuális gépre az Azure AD-beli hitelesítő adataival. A `-l` paraméter segítségével megadhatja saját Azure ad-fiókjának a címeit. Cserélje le a példában szereplő fiókot a sajátra. A fiók címét minden kisbetűs értékben kell megadni. Cserélje le a példában szereplő IP-címet a virtuális gép nyilvános IP-címére az előző parancsból.
+Jelentkezzen be az Azure Linux rendszerű virtuális gépre az Azure AD-beli hitelesítő adataival. A `-l` paraméterrel saját Azure AD-fiókjának címe adható meg. Cserélje le a példában szereplő fiókot a sajátra. A fiók címét minden kisbetűs értékben kell megadni. Cserélje le a példában szereplő IP-címet a virtuális gép nyilvános IP-címére az előző parancsból.
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-A rendszer felszólítja, hogy jelentkezzen be az Azure AD-be egy egyszeri használatú kóddal a következő címen: [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Másolja és illessze be az egyszer használatos kódot az eszköz bejelentkezési oldalára.
+A rendszer felszólítja, hogy jelentkezzen be az Azure AD-be egy egyszeri használatú kóddal [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Másolja és illessze be az egyszer használatos kódot az eszköz bejelentkezési oldalára.
 
 Ha a rendszer kéri, adja meg az Azure AD bejelentkezési hitelesítő adatait a bejelentkezési oldalon. 
 
-A következő üzenet jelenik meg a böngészőben a sikeres hitelesítés után:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+A következő üzenet jelenik meg a böngészőben a sikeres hitelesítés után: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 A böngészőablak bezárásához térjen vissza az SSH-parancssorba, majd nyomja le az **ENTER** billentyűt. 
 
-Most bejelentkezett az Azure Linux rendszerű virtuális gépre a hozzárendelt szerepkör-engedélyekkel, mint például a *VM-felhasználó* vagy a VM- *rendszergazda*. Ha a felhasználói fiókja a *virtuális gép rendszergazdai bejelentkezési* szerepköréhez van rendelve, akkor `sudo` a paranccsal olyan parancsokat futtathat, amelyek rendszergazdai jogosultságokat igényelnek.
+Most bejelentkezett az Azure Linux rendszerű virtuális gépre a hozzárendelt szerepkör-engedélyekkel, mint például a *VM-felhasználó* vagy a VM- *rendszergazda*. Ha a felhasználói fiókja a *virtuális gép rendszergazdai bejelentkezési* szerepköréhez van rendelve, akkor a `sudo` használatával futtathat olyan parancsokat, amelyek rendszergazdai jogosultságokat igényelnek.
 
 ## <a name="sudo-and-aad-login"></a>Sudo és HRE bejelentkezés
 
-Amikor először futtatja a sudo-t, a rendszer kérni fogja, hogy másodszor is hitelesítse magát. Ha nem szeretné ismét hitelesíteni a sudo-t, szerkesztheti a sudoers-fájlt `/etc/sudoers.d/aad_admins` , és lecserélheti a következő sort:
+Amikor először futtatja a sudo-t, a rendszer kérni fogja, hogy másodszor is hitelesítse magát. Ha nem szeretné ismét hitelesíteni a sudo-t, szerkesztheti a sudoers-fájlt `/etc/sudoers.d/aad_admins` és lecserélheti a következő sort:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -173,7 +173,7 @@ Ezzel a sorral:
 
 Az Azure AD-beli hitelesítő adatokkal való SSH-val való próbálkozáskor előforduló gyakori hibákhoz nem tartoznak RBAC-szerepkörök, és a rendszer ismételten kéri a bejelentkezést. Ezeket a problémákat a következő fejezetek segítségével orvosolhatja.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Hozzáférés megtagadva: A RBAC szerepkör nincs hozzárendelve
+### <a name="access-denied-rbac-role-not-assigned"></a>Hozzáférés megtagadva: a RBAC szerepkör nincs hozzárendelve
 
 Ha a következő hibaüzenet jelenik meg az SSH-parancssorban, ellenőrizze, hogy konfigurálta-e a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét biztosító RBAC házirendeket a virtuális géphez:
 
@@ -190,14 +190,14 @@ Access denied
 
 Ha sikeresen elvégezte a hitelesítési lépést egy webböngészőben, akkor előfordulhat, hogy a rendszer azonnal felszólítja, hogy új kóddal jelentkezzen be. Ezt a hibát általában az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-nal bejelentkezett fiók közötti eltérés okozza. A probléma megoldásához:
 
-- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Tegyük fel például, hogy a *azuresuer\@contoso.onmicrosoft.com* -et adta meg az *\@azureuser contoso.onmicrosoft.com*helyett.
+- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Például Begépelte a *azuresuer\@contoso.onmicrosoft.com* a *Azureus\@contoso.onmicrosoft.com*helyett.
 - Ha több felhasználói fiókkal rendelkezik, ügyeljen arra, hogy a böngészőablakban ne adjon meg másik felhasználói fiókot az Azure AD-ba való bejelentkezéskor.
-- A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a (z)Azureuser@contoso.onmicrosoft.comazureuser@contoso.onmicrosoft.comés a (z) között, ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
+- A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a "Azureuser@contoso.onmicrosoft.com" és a "azureuser@contoso.onmicrosoft.com" között, ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
 
 ## <a name="preview-feedback"></a>Előzetes visszajelzés
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse az [Azure ad visszajelzési fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) használó problémákat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

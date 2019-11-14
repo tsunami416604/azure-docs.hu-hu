@@ -1,18 +1,14 @@
 ---
 title: Egyesült Királyság hivatalos & Egyesült Királysági NHS Blueprint Samples – üzembe helyezési lépések
 description: Üzembe helyezheti az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetének lépéseit, beleértve a tervrajz-összetevők paramétereit.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162935"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037748"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és egyesült királysági NHS-mintáinak üzembe helyezése
 
@@ -98,8 +94,8 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |Tervezet kezdeményezés az Egyesült Királyság hivatalos vagy Egyesült Királysági NHS-hez|Szabályzat-hozzárendelés |A diagnosztikai naplók naplózására szolgáló erőforrástípusok (szabályzat: tervezet kezdeményezés az Egyesült Királyság hivatalos vagy Egyesült Királysági NHS) |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása Megjegyzés engedélyezve van.  Elfogadható értékek: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|\[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Opcionális: azoknak a virtuálisgép-lemezképeknek a listája, amelyek támogatottak a hatókörhöz hozzáadandó linuxos operációs rendszer (házirend: \[előzetes verzió\]: Log Analytics-ügynök telepítése Linux virtuális gépekre) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre |Szabályzat-hozzárendelés |Nem kötelező: azon virtuálisgép-lemezképek listája, amelyek támogatják a hatókörhöz hozzáadandó Windows operációs rendszert (házirend: \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése |Szabályzat-hozzárendelés |Opcionális: azoknak a virtuálisgép-lemezképeknek a listája, amelyek támogatottak a hatókörhöz hozzáadandó linuxos operációs rendszer (házirend: \[előzetes verzió\]: Log Analytics-ügynök telepítése Linux virtuális gépekre) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |Szabályzat-hozzárendelés |Nem kötelező: azon virtuálisgép-lemezképek listája, amelyek támogatják a hatókörhöz hozzáadandó Windows operációs rendszert (házirend: \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -109,7 +105,7 @@ Most, hogy áttekintette a brit hivatalos és az Egyesült Királysági NHS-terv
 > [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – áttekintés](./index.md)
 > [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – vezérlési leképezés](./control-mapping.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

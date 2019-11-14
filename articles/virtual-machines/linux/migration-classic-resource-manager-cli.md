@@ -1,5 +1,5 @@
 ---
-title: Virtuális gépek migrálása a Resource Managerbe az Azure CLI használatával | Microsoft Docs
+title: Virtuális gépek migrálása a Resource Managerbe az Azure CLI használatával
 description: Ez a cikk végigvezeti az erőforrások platformon támogatott áttelepítésének klasszikusról Azure Resource Managerre az Azure CLI használatával
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 7af101b036e8e40a14ad5d9931cc897cb1758ea0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 69107052d84f28dfd08f59dec40ea66eca79ecaa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035777"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-erőforrások migrálása klasszikusról Azure Resource Managerra az Azure CLI használatával
 Ezek a lépések bemutatják, hogyan használhatja az Azure parancssori felület (CLI) parancsait az infrastruktúra szolgáltatásként (IaaS) való áttelepítésére a klasszikus üzemi modellből a Azure Resource Manager telepítési modellbe. A cikkhez a [klasszikus Azure parancssori](../../cli-install-nodejs.md)felület szükséges. Mivel az Azure CLI csak Azure Resource Manager erőforrásokra alkalmazható, nem használható ehhez az áttelepítéshez.
@@ -34,7 +34,7 @@ Az alábbi folyamatábra azt határozza meg, hogy milyen sorrendben kell végreh
 
 ![Képernyőkép a migrálási lépésekről](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="step-1-prepare-for-migration"></a>1\. lépés: Előkészületek a migráláshoz
+## <a name="step-1-prepare-for-migration"></a>1\. lépés: Felkészülés az áttelepítésre
 Íme néhány ajánlott eljárás, amelyet ajánlunk a IaaS-erőforrások klasszikusról Resource Managerbe való áttelepítésének kiértékelése során:
 
 * Olvassa el a nem [támogatott konfigurációk vagy szolgáltatások listáját](../windows/migration-classic-resource-manager-overview.md). Ha olyan virtuális gépekkel rendelkezik, amelyek nem támogatott konfigurációkat vagy szolgáltatásokat használnak, javasoljuk, hogy várjon, amíg bejelenti a szolgáltatás/konfiguráció támogatását. Azt is megteheti, hogy eltávolítja ezt a szolgáltatást, vagy kilép az adott konfigurációból, hogy engedélyezze az áttelepítést, ha az megfelel az igényeinek.
@@ -47,8 +47,8 @@ Az alábbi folyamatábra azt határozza meg, hogy milyen sorrendben kell végreh
 > 
 > 
 
-## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2\. lépés: Az előfizetés beállítása és a szolgáltató regisztrálása
-Áttelepítési forgatókönyvek esetén a környezetet a klasszikus és a Resource Managerhez is be kell állítania. [Telepítse az Azure CLI](../../cli-install-nodejs.md) -t, és [válassza ki az](/cli/azure/authenticate-azure-cli)előfizetését.
+## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2\. lépés: az előfizetés beállítása és a szolgáltató regisztrálása
+Áttelepítési forgatókönyvek esetén a környezetet a klasszikus és a Resource Managerhez is be kell állítania. [Telepítse az Azure CLI](../../cli-install-nodejs.md) -t, és [válassza ki az előfizetését](/cli/azure/authenticate-azure-cli).
 
 Jelentkezzen be a fiókjába.
 
@@ -61,7 +61,7 @@ Az alábbi parancs használatával válassza ki az Azure-előfizetést.
 > [!NOTE]
 > A regisztráció egy egyszeri lépés, de az áttelepítés megkísérlése előtt egyszer kell elvégezni. Regisztráció nélkül az alábbi hibaüzenet jelenik meg 
 > 
-> *BadRequest Az előfizetés nincs regisztrálva áttelepítésre.* 
+> *BadRequest: az előfizetés nincs regisztrálva áttelepítésre.* 
 > 
 > 
 
@@ -69,16 +69,16 @@ Regisztrálja az áttelepítési erőforrás-szolgáltatót az alábbi parancs h
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-Várjon öt percet, amíg a regisztráció befejeződik. A jóváhagyás állapotát a következő parancs használatával tekintheti meg. A `Registered` folytatás előtt győződjön meg arról, hogy a RegistrationState.
+Várjon öt percet, amíg a regisztráció befejeződik. A jóváhagyás állapotát a következő parancs használatával tekintheti meg. A folytatás előtt győződjön meg arról, hogy a RegistrationState `Registered`.
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Most váltson a CLI- `asm` re a módba.
+Most váltson a CLI-re a `asm` módba.
 
     azure config mode asm
 
-## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3\. lépés: Győződjön meg arról, hogy van-e elegendő Azure Resource Manager virtuálisgép-vCPU az aktuális üzembe helyezési vagy VNET Azure-régiójában
-Ehhez a lépéshez át kell váltania `arm` módba. Ezt a következő paranccsal teheti meg.
+## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3\. lépés: Győződjön meg arról, hogy rendelkezik-e elegendő Azure Resource Manager virtuálisgép-vCPU a jelenlegi üzembe helyezési vagy VNET Azure-régiójában
+Ehhez a lépéshez `arm` módba kell váltania. Ezt a következő paranccsal teheti meg.
 
 ```
 azure config mode arm
@@ -90,7 +90,7 @@ A következő CLI-paranccsal ellenőrizhető, hogy az aktuálisan hány vCPU Azu
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Ha elkészült a lépés ellenőrzésével, visszaválthat `asm` módba.
+Ha végzett a lépés ellenőrzésével, visszaválthat `asm` módba.
 
     azure config mode asm
 
@@ -120,7 +120,7 @@ Ha a Resource Manager-alapú üzemi modellben meglévő virtuális hálózatra k
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
-Az előkészítési művelet sikeres végrehajtása után megtekintheti a részletes kimenetet, hogy beolvassa a virtuális gépek áttelepítési állapotát, és győződjön meg `Prepared` arról, hogy azok állapotban vannak.
+Az előkészítési művelet sikeres végrehajtása után megtekintheti a részletes kimenetet a virtuális gépek áttelepítési állapotának lekéréséhez, és gondoskodhat arról, hogy azok a `Prepared` állapotban legyenek.
 
     azure vm show <vmName> -vv
 
@@ -165,7 +165,7 @@ Ha az előkészített konfiguráció jól néz ki, az alábbi parancs használat
 
     azure network vnet commit-migration <virtualNetworkName>
 
-## <a name="step-5-migrate-a-storage-account"></a>5\. lépés: Storage-fiók migrálása
+## <a name="step-5-migrate-a-storage-account"></a>5\. lépés: Storage-fiók átmigrálása
 Ha elkészült a virtuális gépek áttelepítésével, javasoljuk, hogy telepítse át a Storage-fiókot.
 
 Készítse elő a Storage-fiókot az áttelepítéshez a következő parancs használatával
@@ -180,7 +180,7 @@ Ha az előkészített konfiguráció jól néz ki, az alábbi parancs használat
 
     azure storage account commit-migration <storageAccountName>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

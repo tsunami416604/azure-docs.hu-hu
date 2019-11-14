@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gép sablonjának letöltése | Microsoft Docs
+title: Azure-beli virtuális gép sablonjának letöltése
 description: Töltse le a templatefor egy virtuális gépre, amely segítséget nyújt az üzembe helyezések automatizálásához a Resource Manager-alapú üzemi modellben
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898873"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033552"
 ---
-# <a name="download-the-template-for-a-vm"></a>Sablon letöltése virtuális géphez
+# <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
 Amikor a portál vagy a PowerShell használatával hoz létre egy virtuális gépet az Azure-ban, a rendszer automatikusan létrehoz egy Resource Manager-sablont. A sablon használatával gyorsan duplikálhat egy központi telepítést. A sablon az erőforráscsoport összes erőforrásával kapcsolatos információkat tartalmaz. A virtuális gépek esetében ez azt jelenti, hogy a sablon tartalmaz mindent, ami az adott erőforráscsoporthoz tartozó virtuális gép támogatásában jön létre, beleértve a hálózati erőforrásokat is.
 
 ## <a name="download-the-template-using-the-portal"></a>A sablon letöltése a portál használatával
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
 3. Válassza ki a virtuális gépet a listából.
 4. Válassza a **sablon exportálása**lehetőséget.
@@ -33,7 +33,7 @@ Amikor a portál vagy a PowerShell használatával hoz létre egy virtuális gé
 6. Nyissa meg a. zip fájlt, és bontsa ki a fájlokat egy mappába. A. zip fájl a következőket tartalmazza:
    
    * Parameters. JSON
-   * sablon. JSON
+   * template.json
 
 A sablon. JSON fájl a sablon.
 

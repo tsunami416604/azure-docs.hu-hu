@@ -1,5 +1,5 @@
 ---
-title: Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel | Microsoft Docs
+title: Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel
 description: Hozzon létre egy tárolót, egy Linux virtuális gépet, egy virtuális hálózatot és alhálózatot, egy Load balancert, egy hálózati adaptert, egy nyilvános IP-címet és egy hálózati biztonsági csoportot, amely az Azure klasszikus parancssori felületének használatával egészen az alapoktól.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: aaf91aa81be5fc4c5944dde804798a61ceffc5a6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1ee89ce18600685f3f82bfb49d4d8ecbaf192b04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083719"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036531"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel
 Ebben a cikkben egy olyan egyszerű hálózatot hozunk létre, amely egy terheléselosztó és egy virtuális gép, amely a fejlesztéshez és az egyszerű számítástechnikahoz hasznos. Bemutatjuk a folyamat parancsát a parancs szerint, egészen addig, amíg két működő, biztonságos Linux virtuális gépet használ, amelyekhez bárhonnan csatlakozhat az interneten. Ezután az összetettebb hálózatokra és környezetekre léphet tovább.
@@ -32,7 +32,7 @@ A környezet a következőket tartalmazza:
 * Egy terheléselosztási szabályt tartalmazó terheléselosztó a 80-es porton.
 * Hálózati biztonsági csoport (NSG) szabályai a virtuális gép nemkívánatos forgalom elleni védelméhez.
 
-Az egyéni környezet létrehozásához a legújabb [Azure parancssori](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) felületre van szükség Resource Manager módban (`azure config mode arm`). Szükség van egy JSON-elemzési eszközre is. Ez a példa az [jQ](https://stedolan.github.io/jq/)-t használja.
+Az egyéni környezet létrehozásához Resource Manager módban kell lennie a legújabb [klasszikus Azure parancssori](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) felületnek (`azure config mode arm`). Szükség van egy JSON-elemzési eszközre is. Ez a példa az [jQ](https://stedolan.github.io/jq/)-t használja.
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
@@ -51,9 +51,9 @@ Győződjön meg arról, hogy [a klasszikus Azure CLI](../../cli-install-nodejs.
 azure config mode arm
 ```
 
-Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Például a paraméterek nevei `myResourceGroup`a `mystorageaccount`következők: `myVM`, és.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: `myResourceGroup`, `mystorageaccount`és `myVM`.
 
-Hozza létre az erőforráscsoportot. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen:
+Hozza létre az erőforráscsoportot. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `westeurope` helyen:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
@@ -65,7 +65,7 @@ Ellenőrizze az erőforráscsoportot a JSON-elemző használatával:
 azure group show myResourceGroup --json | jq '.'
 ```
 
-Hozza létre a Storage-fiókot. A következő példa egy nevű `mystorageaccount`Storage-fiókot hoz létre. (A Storage-fiók nevének egyedinek kell lennie, ezért adja meg a saját egyedi nevét.)
+Hozza létre a Storage-fiókot. A következő példa egy `mystorageaccount`nevű Storage-fiókot hoz létre. (A Storage-fiók nevének egyedinek kell lennie, ezért adja meg a saját egyedi nevét.)
 
 ```azurecli
 azure storage account create -g myResourceGroup -l westeurope \
@@ -78,14 +78,14 @@ Ellenőrizze a Storage-fiókot a JSON-elemző használatával:
 azure storage account show -g myResourceGroup mystorageaccount --json | jq '.'
 ```
 
-Hozza létre a virtuális hálózatot. A következő példa létrehoz egy nevű `myVnet`virtuális hálózatot:
+Hozza létre a virtuális hálózatot. A következő példában létrehozunk egy `myVnet`nevű virtuális hálózatot:
 
 ```azurecli
 azure network vnet create -g myResourceGroup -l westeurope\
   -n myVnet -a 192.168.0.0/16
 ```
 
-Hozzon létre egy alhálózatot. A következő példában létrehozunk egy nevű `mySubnet`alhálózatot:
+Hozzon létre egy alhálózatot. Az alábbi példa egy `mySubnet`nevű alhálózatot hoz létre:
 
 ```azurecli
 azure network vnet subnet create -g myResourceGroup \
@@ -98,34 +98,34 @@ Ellenőrizze a virtuális hálózatot és az alhálózatot a JSON-elemző haszn�
 azure network vnet show myResourceGroup myVnet --json | jq '.'
 ```
 
-Hozzon létre egy nyilvános IP-címet. A következő példa egy nevű `myPublicIP` nyilvános IP-címet hoz létre a DNS- `mypublicdns`nevével. (A DNS-névnek egyedinek kell lennie, ezért adja meg a saját egyedi nevét.)
+Hozzon létre egy nyilvános IP-címet. Az alábbi példa egy `myPublicIP` nevű nyilvános IP-címet hoz létre `mypublicdns`DNS-nevével. (A DNS-névnek egyedinek kell lennie, ezért adja meg a saját egyedi nevét.)
 
 ```azurecli
 azure network public-ip create -g myResourceGroup -l westeurope \
   -n myPublicIP  -d mypublicdns -a static -i 4
 ```
 
-Hozza létre a Load balancert. A következő példa létrehoz egy nevű terheléselosztó- `myLoadBalancer`nevet:
+Hozza létre a Load balancert. A következő példa létrehoz egy `myLoadBalancer`nevű terheléselosztó:
 
 ```azurecli
 azure network lb create -g myResourceGroup -l westeurope -n myLoadBalancer
 ```
 
-Hozzon létre egy előtér-IP-készletet a terheléselosztó számára, és rendelje hozzá a nyilvános IP-címet. A következő példában létrehozunk egy nevű `mySubnetPool`előtér-IP-címkészletet:
+Hozzon létre egy előtér-IP-készletet a terheléselosztó számára, és rendelje hozzá a nyilvános IP-címet. Az alábbi példa egy `mySubnetPool`nevű előtér-IP-címkészletet hoz létre:
 
 ```azurecli
 azure network lb frontend-ip create -g myResourceGroup -l myLoadBalancer \
   -i myPublicIP -n myFrontEndPool
 ```
 
-Hozza létre a Load Balancer háttérbeli IP-készletét. Az alábbi példa egy nevű `myBackEndPool`háttérbeli IP-készletet hoz létre:
+Hozza létre a Load Balancer háttérbeli IP-készletét. Az alábbi példa egy `myBackEndPool`nevű háttérbeli IP-készletet hoz létre:
 
 ```azurecli
 azure network lb address-pool create -g myResourceGroup -l myLoadBalancer \
   -n myBackEndPool
 ```
 
-Hozzon létre SSH bejövő hálózati címfordítási (NAT) szabályokat a terheléselosztó számára. A következő példa két terheléselosztó-szabályt hoz létre `myLoadBalancerRuleSSH1` , `myLoadBalancerRuleSSH2`és:
+Hozzon létre SSH bejövő hálózati címfordítási (NAT) szabályokat a terheléselosztó számára. A következő példa két terheléselosztó szabályt hoz létre, `myLoadBalancerRuleSSH1` és `myLoadBalancerRuleSSH2`:
 
 ```azurecli
 azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
@@ -134,7 +134,7 @@ azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
   -n myLoadBalancerRuleSSH2 -p tcp -f 4223 -b 22
 ```
 
-Hozza létre a terheléselosztó webes bejövő NAT-szabályait. A következő példa egy nevű `myLoadBalancerRuleWeb`terheléselosztó szabályt hoz létre:
+Hozza létre a terheléselosztó webes bejövő NAT-szabályait. A következő példa egy `myLoadBalancerRuleWeb`nevű terheléselosztó szabályt hoz létre:
 
 ```azurecli
 azure network lb rule create -g myResourceGroup -l myLoadBalancer \
@@ -142,7 +142,7 @@ azure network lb rule create -g myResourceGroup -l myLoadBalancer \
   -t myFrontEndPool -o myBackEndPool
 ```
 
-Hozza létre a terheléselosztó állapotának mintavételét. A következő példa egy nevű `myHealthProbe`TCP-mintavételi műveletet hoz létre:
+Hozza létre a terheléselosztó állapotának mintavételét. A következő példa egy `myHealthProbe`nevű TCP-mintavételt hoz létre:
 
 ```azurecli
 azure network lb probe create -g myResourceGroup -l myLoadBalancer \
@@ -155,9 +155,9 @@ Ellenőrizze a terheléselosztó, az IP-készletek és a NAT-szabályokat a JSON
 azure network lb show -g myResourceGroup -n myLoadBalancer --json | jq '.'
 ```
 
-Hozza létre az első hálózati adaptert (NIC). Cserélje le `#####-###-###` a részeket saját Azure-előfizetés-azonosítójával. Az előfizetés AZONOSÍTÓját a **jQ** kimenetében, a létrehozandó erőforrások vizsgálata során kell megállapítani. Megtekintheti az előfizetési AZONOSÍTÓját `azure account list`is a használatával.
+Hozza létre az első hálózati adaptert (NIC). Cserélje le a `#####-###-###` szakaszt saját Azure-előfizetés-azonosítójával. Az előfizetés AZONOSÍTÓját a **jQ** kimenetében, a létrehozandó erőforrások vizsgálata során kell megállapítani. Az előfizetési azonosítót `azure account list`használatával is megtekintheti.
 
-A következő példa egy nevű `myNic1`hálózati adaptert hoz létre:
+A következő példa egy `myNic1`nevű hálózati adaptert hoz létre:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -166,7 +166,7 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1"
 ```
 
-Hozza létre a második hálózati adaptert. A következő példa egy nevű `myNic2`hálózati adaptert hoz létre:
+Hozza létre a második hálózati adaptert. A következő példa egy `myNic2`nevű hálózati adaptert hoz létre:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -182,14 +182,14 @@ azure network nic show myResourceGroup myNic1 --json | jq '.'
 azure network nic show myResourceGroup myNic2 --json | jq '.'
 ```
 
-Hozza létre a hálózati biztonsági csoportot. A következő példa egy nevű `myNetworkSecurityGroup`hálózati biztonsági csoportot hoz létre:
+Hozza létre a hálózati biztonsági csoportot. A következő példa egy `myNetworkSecurityGroup`nevű hálózati biztonsági csoportot hoz létre:
 
 ```azurecli
 azure network nsg create -g myResourceGroup -l westeurope \
   -n myNetworkSecurityGroup
 ```
 
-Adja meg a hálózati biztonsági csoport két bejövő szabályát. Az alábbi példa két szabályt `myNetworkSecurityGroupRuleSSH` `myNetworkSecurityGroupRuleHTTP`hoz létre:
+Adja meg a hálózati biztonsági csoport két bejövő szabályát. Az alábbi példa két szabályt hoz létre, `myNetworkSecurityGroupRuleSSH` és `myNetworkSecurityGroupRuleHTTP`:
 
 ```azurecli
 azure network nsg rule create -p tcp -r inbound -y 1000 -u 22 -c allow \
@@ -211,13 +211,13 @@ azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic1
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic2
 ```
 
-Hozza létre a rendelkezésre állási készletet. Az alábbi példa egy nevű `myAvailabilitySet`rendelkezésre állási készletet hoz létre:
+Hozza létre a rendelkezésre állási készletet. Az alábbi példa egy `myAvailabilitySet`nevű rendelkezésre állási készletet hoz létre:
 
 ```azurecli
 azure availset create -g myResourceGroup -l westeurope -n myAvailabilitySet
 ```
 
-Hozza létre az első linuxos virtuális gépet. Az alábbi példa egy nevű `myVM1`virtuális gépet hoz létre:
+Hozza létre az első linuxos virtuális gépet. A következő példa egy `myVM1`nevű virtuális gépet hoz létre:
 
 ```azurecli
 azure vm create \
@@ -235,7 +235,7 @@ azure vm create \
     --admin-username azureuser
 ```
 
-Hozza létre a második linuxos virtuális gépet. Az alábbi példa egy nevű `myVM2`virtuális gépet hoz létre:
+Hozza létre a második linuxos virtuális gépet. A következő példa egy `myVM2`nevű virtuális gépet hoz létre:
 
 ```azurecli
 azure vm create \
@@ -275,10 +275,10 @@ Győződjön meg arról, hogy [a klasszikus Azure CLI](../../cli-install-nodejs.
 azure config mode arm
 ```
 
-Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Például a paraméterek nevei `myResourceGroup`a `mystorageaccount`következők: `myVM`, és.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: `myResourceGroup`, `mystorageaccount`és `myVM`.
 
 ## <a name="create-resource-groups-and-choose-deployment-locations"></a>Erőforráscsoportok létrehozása és a telepítési helyszínek kiválasztása
-Az Azure-erőforráscsoportok olyan logikai telepítési entitások, amelyek konfigurációs adatokat és metaadatokat tartalmaznak az erőforrás-telepítések logikai kezelésének engedélyezéséhez. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen:
+Az Azure-erőforráscsoportok olyan logikai telepítési entitások, amelyek konfigurációs adatokat és metaadatokat tartalmaznak az erőforrás-telepítések logikai kezelésének engedélyezéséhez. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `westeurope` helyen:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope
@@ -300,10 +300,10 @@ data:
 info:    group create command OK
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 Szüksége lesz a virtuálisgép-lemezekhez és a hozzáadni kívánt további adatlemezekhez szükséges tárolási fiókokra. A Storage-fiókokat szinte azonnal létrehozhatja az erőforráscsoportok létrehozása után.
 
-Itt a `azure storage account create` parancsot használjuk, amely átadja a fiók helyét, az azt vezérlő erőforráscsoportot, valamint a kívánt tárterület-támogatást. A következő példában létrehozunk egy nevű `mystorageaccount`Storage-fiókot:
+Itt a `azure storage account create` parancsot használjuk, amely átadja a fiók helyét, az azt vezérlő erőforráscsoportot, valamint a kívánt tárterület-támogatást. A következő példa egy `mystorageaccount`nevű Storage-fiókot hoz létre:
 
 ```azurecli
 azure storage account create \  
@@ -321,7 +321,7 @@ info:    Executing command storage account create
 info:    storage account create command OK
 ```
 
-Ha az `azure group show` paranccsal szeretné megvizsgálni az erőforráscsoportot, használja a [jQ](https://stedolan.github.io/jq/) `--json` eszközt az Azure CLI lehetőséggel együtt. (Használhatja a **jsawk** -t vagy bármilyen nyelvi könyvtárat, amelyet a JSON elemzéséhez szeretne használni.)
+Ha az `azure group show` parancs használatával szeretné megvizsgálni az erőforráscsoportot, használja a [jQ](https://stedolan.github.io/jq/) eszközt az `--json` Azure CLI-vel együtt. (Használhatja a **jsawk** -t vagy bármilyen nyelvi könyvtárat, amelyet a JSON elemzéséhez szeretne használni.)
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -383,7 +383,7 @@ info:    storage container list command OK
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
-Ezután létre kell hoznia egy Azure-beli virtuális hálózatot és egy olyan alhálózatot, amelyben létre lehet hozni a virtuális gépeket. Az alábbi példa egy nevű `myVnet` virtuális hálózatot hoz létre a `192.168.0.0/16` címe előtaggal:
+Ezután létre kell hoznia egy Azure-beli virtuális hálózatot és egy olyan alhálózatot, amelyben létre lehet hozni a virtuális gépeket. A következő példában létrehozunk egy `myVnet` nevű virtuális hálózatot a `192.168.0.0/16`-címek előtagjával:
 
 ```azurecli
 azure network vnet create --resource-group myResourceGroup --location westeurope \
@@ -407,7 +407,7 @@ data:      192.168.0.0/16
 info:    network vnet create command OK
 ```
 
-Ismét használjuk a--JSON lehetőséget `azure group show` `jq` , hogy meglássuk, hogyan épülnek fel az erőforrásaink. Most már rendelkezik egy `storageAccounts` erőforrással és `virtualNetworks` egy erőforrással.  
+A `azure group show` és a `jq` JSON-kapcsolójának használatával megtudhatja, hogyan építjük fel az erőforrásokat. Most már van egy `storageAccounts` erőforrás és egy `virtualNetworks` erőforrás.  
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -452,7 +452,7 @@ Kimenet:
 }
 ```
 
-Most hozzon létre egy alhálózatot `myVnet` abban a virtuális hálózaton, amelyben a virtuális gépek üzembe vannak helyezve. A `azure network vnet subnet create` parancsot a már létrehozott erőforrásokkal együtt használjuk: az `myResourceGroup` erőforráscsoportot és a `myVnet` virtuális hálózatot. Az alábbi példában a nevű `mySubnet` alhálózatot a következő alhálózati `192.168.1.0/24`előtaggal vesszük fel:
+Most hozzon létre egy alhálózatot abban a `myVnet` virtuális hálózaton, amelyben a virtuális gépek üzembe vannak helyezve. A `azure network vnet subnet create` parancsot használjuk a már létrehozott erőforrásokkal együtt: a `myResourceGroup` erőforráscsoportot és a `myVnet` virtuális hálózatot. Az alábbi példában a `mySubnet` nevű alhálózatot a `192.168.1.0/24`alhálózati előtaggal bővítjük:
 
 ```azurecli
 azure network vnet subnet create --resource-group myResourceGroup \
@@ -475,7 +475,7 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-Mivel az alhálózat logikailag a virtuális hálózaton belül van, az alhálózati adatokat egy kicsit más paranccsal kell megkeresni. Az általunk használt `azure network vnet show`parancs, de a használatával `jq`folytatjuk a JSON-kimenet vizsgálatát.
+Mivel az alhálózat logikailag a virtuális hálózaton belül van, az alhálózati adatokat egy kicsit más paranccsal kell megkeresni. Az általunk használt parancs `azure network vnet show`, de a `jq`használatával folytatjuk a JSON-kimenet vizsgálatát.
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
@@ -513,7 +513,7 @@ Kimenet:
 ```
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-Most hozzuk létre a terheléselosztó számára hozzárendelt nyilvános IP-címet (PIP). Lehetővé teszi a virtuális gépekhez való kapcsolódást az internetről a `azure network public-ip create` parancs használatával. Mivel az alapértelmezett címek dinamikusak, a `--domain-name-label` beállítás használatával hozunk létre egy nevesített DNS-bejegyzést a **cloudapp.Azure.com** tartományban. A következő példa egy nevű `myPublicIP` nyilvános IP-címet hoz létre a DNS- `mypublicdns`nevével. Mivel a DNS-névnek egyedinek kell lennie, meg kell adnia a saját egyedi DNS-nevét:
+Most hozzuk létre a terheléselosztó számára hozzárendelt nyilvános IP-címet (PIP). Lehetővé teszi a virtuális gépekhez való kapcsolódást az internetről az `azure network public-ip create` parancs használatával. Mivel az alapértelmezett címek dinamikusak, a `--domain-name-label` lehetőség használatával hozunk létre egy nevesített DNS-bejegyzést a **cloudapp.Azure.com** tartományban. Az alábbi példa egy `myPublicIP` nevű nyilvános IP-címet hoz létre `mypublicdns`DNS-nevével. Mivel a DNS-névnek egyedinek kell lennie, meg kell adnia a saját egyedi DNS-nevét:
 
 ```azurecli
 azure network public-ip create --resource-group myResourceGroup \
@@ -539,7 +539,7 @@ data:    FQDN                            : mypublicdns.westeurope.cloudapp.azure
 info:    network public-ip create command OK
 ```
 
-A nyilvános IP-cím egyben legfelső szintű erőforrás is, így megtekintheti a következőt: `azure group show`.
+A nyilvános IP-cím egyben legfelső szintű erőforrás is, így megtekintheti a `azure group show`.
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -591,7 +591,7 @@ Kimenet:
 }
 ```
 
-A Complete `azure network public-ip show` paranccsal további erőforrás-részleteket is megvizsgálhat, beleértve az altartomány teljes tartománynevét (FQDN) is. A nyilvános IP-cím erőforrása logikailag lett kiosztva, de egy adott cím még nincs hozzárendelve. IP-cím beszerzéséhez szüksége lesz egy terheléselosztó, amelyet még nem hozott létre.
+A teljes `azure network public-ip show` parancs használatával több erőforrás-részletet is megvizsgálhat, beleértve az altartomány teljes tartománynevét (FQDN) is. A nyilvános IP-cím erőforrása logikailag lett kiosztva, de egy adott cím még nincs hozzárendelve. IP-cím beszerzéséhez szüksége lesz egy terheléselosztó, amelyet még nem hozott létre.
 
 ```azurecli
 azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
@@ -617,7 +617,7 @@ Kimenet:
 ```
 
 ## <a name="create-a-load-balancer-and-ip-pools"></a>Terheléselosztó és IP-készletek létrehozása
-A terheléselosztó létrehozásakor lehetővé teszi a forgalom elosztását több virtuális gép között. Azt is biztosítja, hogy a redundancia az alkalmazáshoz több virtuális gép futtatásával, amelyek a felhasználói kérésekre válaszolnak a karbantartás vagy a nagy terhelések esetén. A következő példa létrehoz egy nevű terheléselosztó- `myLoadBalancer`nevet:
+A terheléselosztó létrehozásakor lehetővé teszi a forgalom elosztását több virtuális gép között. Azt is biztosítja, hogy a redundancia az alkalmazáshoz több virtuális gép futtatásával, amelyek a felhasználói kérésekre válaszolnak a karbantartás vagy a nagy terhelések esetén. A következő példa létrehoz egy `myLoadBalancer`nevű terheléselosztó:
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \
@@ -640,7 +640,7 @@ info:    network lb create command OK
 
 A terheléselosztó meglehetősen üres, ezért hozzunk létre néhány IP-készletet. Két IP-készletet szeretnénk létrehozni a terheléselosztó számára, egyet az előtér-és egy a háttérrendszer számára. Az előtér-IP-készlet nyilvánosan látható. Emellett a korábban létrehozott PIP-t is kiosztjuk. Ezután a háttérrendszer-készletet használjuk a virtuális gépekhez való kapcsolódáshoz. Így a forgalom a terheléselosztó és a virtuális gépek között is áthaladhat.
 
-Először hozzuk létre az előtér-IP-címkészletet. A következő példa egy nevű `myFrontEndPool`előtér-készletet hoz létre:
+Először hozzuk létre az előtér-IP-címkészletet. Az alábbi példa egy `myFrontEndPool`nevű előtér-készletet hoz létre:
 
 ```azurecli
 azure network lb frontend-ip create --resource-group myResourceGroup \
@@ -662,9 +662,9 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/my
 info:    network lb mySubnet-ip create command OK
 ```
 
-Figyelje meg, hogy a `--public-ip-name` kapcsolót a korábban létrehozott `myPublicIP` módon továbbítottuk. A nyilvános IP-cím a terheléselosztó számára való hozzárendelésével elérhetővé válik a virtuális gépek elérése az interneten keresztül.
+Figyelje meg, hogy a `--public-ip-name` kapcsolót használta a korábban létrehozott `myPublicIP` továbbítására. A nyilvános IP-cím a terheléselosztó számára való hozzárendelésével elérhetővé válik a virtuális gépek elérése az interneten keresztül.
 
-Ezután hozzuk létre a második IP-címkészletet, ezúttal a háttér-forgalomhoz. A következő példa egy nevű `myBackEndPool`háttér-készletet hoz létre:
+Ezután hozzuk létre a második IP-címkészletet, ezúttal a háttér-forgalomhoz. A következő példa egy `myBackEndPool`nevű háttér-készletet hoz létre:
 
 ```azurecli
 azure network lb address-pool create --resource-group myResourceGroup \
@@ -682,7 +682,7 @@ data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-Láthatjuk, hogyan hajtja végre a terheléselosztó a JSON `azure network lb show` -kimenet megkeresésével és vizsgálatával:
+Láthatjuk, hogyan végzi a terheléselosztó a `azure network lb show` és a JSON-kimenet vizsgálatával:
 
 ```azurecli
 azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
@@ -728,7 +728,7 @@ Kimenet:
 ```
 
 ## <a name="create-load-balancer-nat-rules"></a>Terheléselosztó NAT-szabályainak létrehozása
-A terheléselosztó használatával áramló forgalom beszerzéséhez létre kell hoznia egy hálózati címfordítási (NAT) szabályokat, amelyek a bejövő vagy kimenő műveleteket határozzák meg. Megadhatja a használni kívánt protokollt, majd igény szerint leképezheti a külső portokat a belső portokra. A környezetünk számára hozzon létre néhány szabályt, amely engedélyezi az SSH-t a terheléselosztó használatával a virtuális gépeken. A 4222-es és a 4223-es TCP-portokat a virtuális gépeken a 22-es TCP-portra irányítjuk (amelyet később hozunk létre). A következő példa létrehoz egy nevű `myLoadBalancerRuleSSH1` szabályt a 4222-as TCP-port a 22-es portra való leképezéséhez:
+A terheléselosztó használatával áramló forgalom beszerzéséhez létre kell hoznia egy hálózati címfordítási (NAT) szabályokat, amelyek a bejövő vagy kimenő műveleteket határozzák meg. Megadhatja a használni kívánt protokollt, majd igény szerint leképezheti a külső portokat a belső portokra. A környezetünk számára hozzon létre néhány szabályt, amely engedélyezi az SSH-t a terheléselosztó használatával a virtuális gépeken. A 4222-es és a 4223-es TCP-portokat a virtuális gépeken a 22-es TCP-portra irányítjuk (amelyet később hozunk létre). Az alábbi példa egy `myLoadBalancerRuleSSH1` nevű szabályt hoz létre a 4222-es TCP-port a 22-es portra való leképezéséhez:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -756,7 +756,7 @@ data:    mySubnet IP configuration id    : /subscriptions/guid/resourceGroups/my
 info:    network lb inbound-nat-rule create command OK
 ```
 
-Ismételje meg az eljárást az SSH második NAT-szabályához. A következő példa létrehoz egy nevű `myLoadBalancerRuleSSH2` szabályt a 4223-as TCP-port a 22-es portra való leképezéséhez:
+Ismételje meg az eljárást az SSH második NAT-szabályához. Az alábbi példa egy `myLoadBalancerRuleSSH2` nevű szabályt hoz létre a 4223-es TCP-port a 22-es portra való leképezéséhez:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -764,7 +764,7 @@ azure network lb inbound-nat-rule create --resource-group myResourceGroup \
   --frontend-port 4223 --backend-port 22
 ```
 
-Nézzük meg, majd hozzon létre egy NAT-szabályt a 80-as TCP-porthoz a webes forgalomhoz, és csatlakoztassa a szabályt az IP-készletekhez. Ha a szabályt egy IP-készlethez csatlakoztatjuk, ahelyett, hogy a szabályt a virtuális gépekre külön-külön csatlakoztatjuk, hozzáadhatunk vagy eltávolíthatunk virtuális gépeket az IP-készletből. A terheléselosztó automatikusan módosítja a forgalom áramlását. A következő példa létrehoz egy nevű `myLoadBalancerRuleWeb` szabályt a 80-es TCP-port a 80-es portra való leképezéséhez:
+Nézzük meg, majd hozzon létre egy NAT-szabályt a 80-as TCP-porthoz a webes forgalomhoz, és csatlakoztassa a szabályt az IP-készletekhez. Ha a szabályt egy IP-készlethez csatlakoztatjuk, ahelyett, hogy a szabályt a virtuális gépekre külön-külön csatlakoztatjuk, hozzáadhatunk vagy eltávolíthatunk virtuális gépeket az IP-készletből. A terheléselosztó automatikusan módosítja a forgalom áramlását. Az alábbi példa egy `myLoadBalancerRuleWeb` nevű szabályt hoz létre a 80-es TCP-port a 80-es portra való leképezéséhez:
 
 ```azurecli
 azure network lb rule create --resource-group myResourceGroup \
@@ -796,7 +796,7 @@ info:    network lb rule create command OK
 ```
 
 ## <a name="create-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának létrehozása
-Az állapot-mintavétel rendszeres időközönként ellenőrzi a terheléselosztó mögött lévő virtuális gépeket, így meggyőződhet arról, hogy a rendszer működést végez, és válaszol a megadott kérelmekre. Ha nem, akkor törlődnek a műveletből, így biztosítva, hogy a felhasználók ne legyenek átirányítva. Meghatározhat egyéni ellenőrzéseket az állapot-mintavételhez, valamint az intervallumokat és az időtúllépési értékeket. További információ az állapot-mintavételekről: [Load Balancer](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)mintavétel. A következő példa egy nevű `myHealthProbe`TCP-állapotot hoz létre:
+Az állapot-mintavétel rendszeres időközönként ellenőrzi a terheléselosztó mögött lévő virtuális gépeket, így meggyőződhet arról, hogy a rendszer működést végez, és válaszol a megadott kérelmekre. Ha nem, akkor törlődnek a műveletből, így biztosítva, hogy a felhasználók ne legyenek átirányítva. Meghatározhat egyéni ellenőrzéseket az állapot-mintavételhez, valamint az intervallumokat és az időtúllépési értékeket. További információ az állapot-mintavételekről: [Load Balancer](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)mintavétel. A következő példa egy `myHealthProbe`nevű TCP-állapotot hoz létre:
 
 ```azurecli
 azure network lb probe create --resource-group myResourceGroup \
@@ -957,9 +957,9 @@ Kimenet:
 ## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Hozzon létre egy hálózati adaptert a linuxos virtuális géppel való használatra
 A hálózati adapterek programozott módon elérhetők, mert szabályokat alkalmazhat a használatára. Több is lehet. A következő `azure network nic create` parancsban csatlakoztatja a hálózati adaptert a betöltési háttér IP-készletéhez, és társítja a NAT-szabállyal az SSH-forgalom engedélyezéséhez.
 
-Cserélje le `#####-###-###` a részeket saját Azure-előfizetés-azonosítójával. Az előfizetési azonosítót a létrehozott erőforrások vizsgálata `jq` során a kimenetében kell megállapítani. Megtekintheti az előfizetési AZONOSÍTÓját `azure account list`is a használatával.
+Cserélje le a `#####-###-###` szakaszt saját Azure-előfizetés-azonosítójával. Az előfizetési azonosítót a rendszer a `jq` kimenetében jelzi, amikor megvizsgálja a létrehozott erőforrásokat. Az előfizetési azonosítót `azure account list`használatával is megtekintheti.
 
-A következő példa egy nevű `myNic1`hálózati adaptert hoz létre:
+A következő példa egy `myNic1`nevű hálózati adaptert hoz létre:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -995,7 +995,7 @@ data:
 info:    network nic create command OK
 ```
 
-A részleteket az erőforrás közvetlen vizsgálatával tekintheti meg. Az erőforrást a `azure network nic show` parancs használatával vizsgálja meg:
+A részleteket az erőforrás közvetlen vizsgálatával tekintheti meg. Az erőforrást az `azure network nic show` parancs használatával vizsgálhatja meg:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
@@ -1043,7 +1043,7 @@ Kimenet:
 }
 ```
 
-Most létrehozjuk a második hálózati adaptert, és újra kell csatlakoztatni a háttérbeli IP-készletet. Ezúttal a második NAT-szabály engedélyezi az SSH-forgalmat. A következő példa egy nevű `myNic2`hálózati adaptert hoz létre:
+Most létrehozjuk a második hálózati adaptert, és újra kell csatlakoztatni a háttérbeli IP-készletet. Ezúttal a második NAT-szabály engedélyezi az SSH-forgalmat. A következő példa egy `myNic2`nevű hálózati adaptert hoz létre:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -1053,14 +1053,14 @@ azure network nic create --resource-group myResourceGroup --location westeurope 
 ```
 
 ## <a name="create-a-network-security-group-and-rules"></a>Hálózati biztonsági csoport és szabályok létrehozása
-Most létrehozunk egy hálózati biztonsági csoportot és a bejövő szabályokat, amelyek a hálózati ADAPTERhez való hozzáférést szabályozzák. Hálózati biztonsági csoport is alkalmazható egy hálózati ADAPTERre vagy alhálózatra. Szabályokat határozhat meg a virtuális gépek bejövő és kimenő forgalmának szabályozásához. A következő példa egy nevű `myNetworkSecurityGroup`hálózati biztonsági csoportot hoz létre:
+Most létrehozunk egy hálózati biztonsági csoportot és a bejövő szabályokat, amelyek a hálózati ADAPTERhez való hozzáférést szabályozzák. Hálózati biztonsági csoport is alkalmazható egy hálózati ADAPTERre vagy alhálózatra. Szabályokat határozhat meg a virtuális gépek bejövő és kimenő forgalmának szabályozásához. A következő példa egy `myNetworkSecurityGroup`nevű hálózati biztonsági csoportot hoz létre:
 
 ```azurecli
 azure network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-Adjuk hozzá a bejövő kapcsolatokat a NSG, hogy engedélyezzék a bejövő kapcsolatokat a 22-es porton (az SSH támogatásához). A következő példában létrehozunk egy nevű `myNetworkSecurityGroupRuleSSH` szabályt, amely engedélyezi a TCP-t a 22-es porton:
+Adjuk hozzá a bejövő kapcsolatokat a NSG, hogy engedélyezzék a bejövő kapcsolatokat a 22-es porton (az SSH támogatásához). A következő példa egy `myNetworkSecurityGroupRuleSSH` nevű szabályt hoz létre, hogy engedélyezze a TCP-t a 22-es porton:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1069,7 +1069,7 @@ azure network nsg rule create --resource-group myResourceGroup \
   --name myNetworkSecurityGroupRuleSSH
 ```
 
-Most adjuk hozzá a NSG bejövő hozzáférését a 80-as porton bejövő kapcsolatok engedélyezéséhez a webes forgalom támogatásához. A következő példa létrehoz egy nevű `myNetworkSecurityGroupRuleHTTP` szabályt, amely engedélyezi a TCP-t a 80-as porton:
+Most adjuk hozzá a NSG bejövő hozzáférését a 80-as porton bejövő kapcsolatok engedélyezéséhez a webes forgalom támogatásához. A következő példa egy `myNetworkSecurityGroupRuleHTTP` nevű szabályt hoz létre a TCP engedélyezéséhez a 80-as porton:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1079,7 +1079,7 @@ azure network nsg rule create --resource-group myResourceGroup \
 ```
 
 > [!NOTE]
-> A bejövő hálózati kapcsolatok esetében a Bejövő szabály egy szűrő. Ebben a példában a NSG a virtuális gépek virtuális hálózati adapteréhez köti, ami azt jelenti, hogy a 22-es portra irányuló kérést a virtuális gép hálózati adapterén keresztül továbbítja a rendszer. Ez a Bejövő szabály egy hálózati kapcsolatban szól, és nem a végpontról, hanem a klasszikus telepítések esetén. A portok megnyitásához hagyja meg a " `--source-port-range` \*" (az alapértelmezett érték) beállítást, hogy fogadja a bejövő kérelmeket a kért portokról. A portok általában dinamikusak.
+> A bejövő hálózati kapcsolatok esetében a Bejövő szabály egy szűrő. Ebben a példában a NSG a virtuális gépek virtuális hálózati adapteréhez köti, ami azt jelenti, hogy a 22-es portra irányuló kérést a virtuális gép hálózati adapterén keresztül továbbítja a rendszer. Ez a Bejövő szabály egy hálózati kapcsolatban szól, és nem a végpontról, hanem a klasszikus telepítések esetén. A portok megnyitásához a `--source-port-range` a "\*" értékre kell állítani (az alapértelmezett érték), hogy fogadja a bejövő kérelmeket **a kért** portokról. A portok általában dinamikusak.
 >
 >
 
@@ -1097,7 +1097,7 @@ azure network nic set --resource-group myResourceGroup --name myNic2 \
 ```
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
-A rendelkezésre állási csoportok segítenek a virtuális gépeket a tartalék tartományok és a frissítési tartományok között elosztani. Hozzon létre egy rendelkezésre állási készletet a virtuális gépek számára. Az alábbi példa egy nevű `myAvailabilitySet`rendelkezésre állási készletet hoz létre:
+A rendelkezésre állási csoportok segítenek a virtuális gépeket a tartalék tartományok és a frissítési tartományok között elosztani. Hozzon létre egy rendelkezésre állási készletet a virtuális gépek számára. Az alábbi példa egy `myAvailabilitySet`nevű rendelkezésre állási készletet hoz létre:
 
 ```azurecli
 azure availset create --resource-group myResourceGroup --location westeurope
@@ -1111,18 +1111,18 @@ A frissítési tartományok olyan virtuális gépek és mögöttes fizikai hardv
 További információ a [virtuális gépek rendelkezésre állásának kezeléséről](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="create-the-linux-vms"></a>A Linux rendszerű virtuális gépek létrehozása
-Létrehozta a tárolási és hálózati erőforrásokat az internetről elérhető virtuális gépek támogatásához. Most hozzuk létre ezeket a virtuális gépeket, és biztosítjuk azokat olyan SSH-kulccsal, amely nem rendelkezik jelszóval. Ebben az esetben a legújabb LTS alapján hozunk létre egy Ubuntu-alapú virtuális gépet. A rendszerképet az Azure virtuálisgép- `azure vm image list` [rendszerképek](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)megkeresése című témakörben leírtak alapján keressük meg.
+Létrehozta a tárolási és hálózati erőforrásokat az internetről elérhető virtuális gépek támogatásához. Most hozzuk létre ezeket a virtuális gépeket, és biztosítjuk azokat olyan SSH-kulccsal, amely nem rendelkezik jelszóval. Ebben az esetben a legújabb LTS alapján hozunk létre egy Ubuntu-alapú virtuális gépet. A rendszerképet az Azure-beli virtuálisgép- [rendszerképek megkeresése](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című témakörben leírtak szerint `azure vm image list`használatával találhatja meg.
 
-A parancs `azure vm image list westeurope canonical | grep LTS`használatával választottunk egy rendszerképet. Ebben az esetben a következőt `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`használjuk:. Az utolsó mező esetében továbbítjuk `latest` , hogy a jövőben mindig a legfrissebb buildet fogjuk beszerezni. (Az általunk használt `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`karakterlánc:).
+A rendszerképet a `azure vm image list westeurope canonical | grep LTS`parancs használatával választottuk ki. Ebben az esetben a `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`használjuk. Az utolsó mező esetében `latest`, hogy a jövőben mindig a legfrissebb buildet fogjuk beszerezni. (Az általunk használt karakterlánc `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
-Ez a következő lépés mindenki számára ismerős, aki már létrehozott egy nyilvános és titkos SSH RSA-kulcspárt Linuxon vagy Mac gépen az **ssh-keygen-t RSA-b 2048**használatával. Ha nem rendelkezik tanúsítvány-kulcspár a `~/.ssh` címtárban, a következőket hozhatja létre:
+Ez a következő lépés mindenki számára ismerős, aki már létrehozott egy nyilvános és titkos SSH RSA-kulcspárt Linuxon vagy Mac gépen az **ssh-keygen-t RSA-b 2048**használatával. Ha nem rendelkezik tanúsítvány-kulcsokkal a `~/.ssh`-címtárban, a következőket hozhatja létre:
 
 * Automatikusan, a `azure vm create --generate-ssh-keys` kapcsoló használatával.
 * Manuálisan, [az útmutatás használatával saját maga is létrehozhatja őket](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azt is megteheti, `--admin-password` hogy a metódus használatával hitelesíti az SSH-kapcsolatokat a virtuális gép létrehozása után. Ez a módszer általában kevésbé biztonságos.
+Azt is megteheti, hogy az `--admin-password` metódus használatával hitelesíti az SSH-kapcsolatokat a virtuális gép létrehozása után. Ez a módszer általában kevésbé biztonságos.
 
-A virtuális gépet úgy hozunk létre, hogy az összes erőforrást és információt `azure vm create` a paranccsal együtt hozza létre:
+A virtuális gépet úgy hozunk létre, hogy az összes erőforrást és információt az `azure vm create` paranccsal együtt hozza létre:
 
 ```azurecli
 azure vm create \
@@ -1276,7 +1276,7 @@ Most, hogy kiépítette ezt a környezetet, mi a teendő, ha egy további fejles
 azure group export --name myResourceGroup
 ```
 
-Ez a parancs az `myResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer kéri az összes erőforrás nevét, beleértve a terheléselosztó, a hálózati adapterek vagy a virtuális gépek nevét. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja `-p` a `--includeParameterDefaultValue` vagy a paramétert a `azure group export` korábban bemutatott parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy Parameters. JSON fájlt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely megadja az erőforrások nevét.
+Ez a parancs létrehozza a `myResourceGroup.json` fájlt az aktuális munkakönyvtárban. Amikor létrehoz egy környezetet a sablonból, a rendszer kéri az összes erőforrás nevét, beleértve a terheléselosztó, a hálózati adapterek vagy a virtuális gépek nevét. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `-p` vagy `--includeParameterDefaultValue` paramétert a korábban megjelenő `azure group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy Parameters. JSON fájlt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely megadja az erőforrások nevét.
 
 Környezet létrehozása a sablonból:
 
@@ -1285,7 +1285,7 @@ azure group deployment create --resource-group myNewResourceGroup \
   --template-file myResourceGroup.json
 ```
 
-Előfordulhat, hogy további információra van szüksége a sablonokból való [üzembe helyezésről](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). További információ a környezetek növekményes frissítéséről, a Parameters fájl használatáról és a sablonok egyetlen tárolási helyről való eléréséről.
+Előfordulhat, hogy [további információra van szüksége a sablonokból való üzembe helyezésről](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). További információ a környezetek növekményes frissítéséről, a Parameters fájl használatáról és a sablonok egyetlen tárolási helyről való eléréséről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a több hálózati összetevő és virtuális gép használatának megkezdésére. Ezzel a minta környezettel kiépítheti az alkalmazást az itt bemutatott alapvető összetevők használatával.

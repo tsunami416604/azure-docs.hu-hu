@@ -1,5 +1,5 @@
 ---
-title: Azure-támogatás a 2. generációs virtuális gépekhez | Microsoft Docs
+title: Azure-támogatás a 2. generációs virtuális gépekhez
 description: A 2. generációs virtuális gépek Azure-támogatásának áttekintése
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: b5cc4a511d6347d28a1737932c1b4b5b768d3fc4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7747d1b5e2b18ddf02403ad21fe875c498e43820
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891574"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036048"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
@@ -37,7 +37,7 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [Dsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) és [Dsv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
-* [GS sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
+* [GS-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [HB sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
 * [HC sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
 * Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
@@ -78,7 +78,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1\. generációs, 2. generációs funkciók
 
-| Szolgáltatás | 1\. generáció | 2\. generáció |
+| Funkció | 1\. generáció | 2\. generáció |
 |---------|--------------|--------------|
 | Rendszerindítás             | PCAT         | UEFI |
 | Lemezvezérlő-vezérlők | IDE          | SCSI |
@@ -192,6 +192,6 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 * **Áttelepíthetek egy virtuális gépet az 1. generációról a 2. generációra?**  
     Nem, a létrehozás után nem módosítható a virtuális gép generációja. Ha váltania kell a virtuálisgép-generációk között, hozzon létre egy másik generációs új virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

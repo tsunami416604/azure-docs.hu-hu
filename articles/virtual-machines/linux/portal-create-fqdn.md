@@ -1,5 +1,5 @@
 ---
-title: Teljes tartománynév létrehozása Linux rendszerű virtuális gép számára a Azure Portalban | Microsoft Docs
+title: Teljes tartománynév létrehozása Linux rendszerű virtuális gép számára a Azure Portal
 description: Megtudhatja, hogyan hozhat létre teljes tartománynevet vagy teljes TARTOMÁNYNEVEt a Azure Portal Resource Manager-alapú virtuális géphez.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7309f4be43c6b653f261e5de5fbe3e638e83294
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082447"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035298"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Teljes tartománynév létrehozása a Azure Portal Linux rendszerű virtuális gép számára
 
@@ -31,9 +31,9 @@ Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha sz�
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Most már távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például `ssh azureuser@mydns.westus.cloudapp.azure.com`:.
+Mostantól távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például a `ssh azureuser@mydns.westus.cloudapp.azure.com`használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, üzembe helyezhet olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat, mint például az Nginx, a MongoDB, a Docker stb.
 
 További információt a [Resource Manager használatával](../../azure-resource-manager/resource-group-overview.md) kapcsolatban az Azure-beli üzembe helyezések létrehozásával kapcsolatos tippekhez is találhat.

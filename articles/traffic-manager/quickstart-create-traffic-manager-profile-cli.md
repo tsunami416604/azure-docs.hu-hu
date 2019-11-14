@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Traffic Manager profil létrehozása az alkalmazások magas rendelkezésre állásához az Azure CLI használatával
+title: 'Gyors útmutató: profil létrehozása az alkalmazások számára – Azure CLI – Azure Traffic Manager'
 description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egy Traffic Manager-profilt egy magasan elérhető webalkalmazás létrehozásához.
 services: traffic-manager
 author: asudbring
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: allensu
-ms.openlocfilehash: dc7e555eb95cf88ecf57a6df4999672bb721b8cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 8b8880e10f9b920a2ec077d4cc4c2239e6ea7438
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034219"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Gyors útmutató: Traffic Manager-profil létrehozása egy magasan elérhető webalkalmazáshoz az Azure CLI használatával
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Gyors útmutató: Traffic Manager profil létrehozása egy magasan elérhető webalkalmazáshoz az Azure CLI használatával
 
 Ez a rövid útmutató azt ismerteti, hogyan hozhat létre olyan Traffic Manager-profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára.
 
@@ -48,7 +48,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 
 Hozzon létre egy Traffic Manager profilt [az az Network Traffic-Manager Profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) paranccsal, amely a felhasználói forgalmat a végponti prioritás alapján irányítja.
 
-A következő példában cserélje le **< profile_name >** egyedi Traffic Manager profilnév.
+A következő példában cserélje le a **< profile_name >** egy egyedi Traffic Manager-profil nevére.
 
 ```azurecli-interactive
 
@@ -71,7 +71,7 @@ Ebben a rövid útmutatóban két különböző Azure-régióban (az*USA keleti*
 ### <a name="create-web-app-service-plans"></a>Web App Service-csomagok létrehozása
 Hozzon létre Web App Service-csomagokat az az [appservice Plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) paranccsal a webalkalmazás két különböző Azure-régióban üzembe helyezett példányaihoz.
 
-Az alábbi példában cserélje le **< appspname_eastus >** és **< appspname_westeurope >** egyedi app Service csomagjának nevére
+A következő példában cserélje le a **< appspname_eastus >** és **< appspname_westeurope >** egyedi app Service csomagjának nevére
 
 ```azurecli-interactive
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Webalkalmazás létrehozása az App Service-csomagban
 Hozzon létre két példányt a webalkalmazás az [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) PARANCCSAL az *USA keleti* régiójában és a *Nyugat-európai* Azure-régióban található app Service-csomagokban.
 
-Az alábbi példában cserélje le **< app1name_eastus >** és **< App2name_westeurope >** egyedi alkalmazásnév használatával, és cserélje le **< appspname_eastus >** és **< appspname_westeurope >** a létrehozáshoz használt névvel. az előző szakaszban App Service csomagok.
+Az alábbi példában cserélje le a **< app1name_eastus >** és **< App2name_westeurope** > egyedi névvel, és cserélje le **< appspname_eastus** > és **<** appspname_westeurope > az előző szakaszban app Service csomagok létrehozásához használt névvel.
 
 ```azurecli-interactive
 
@@ -115,7 +115,7 @@ Adja hozzá a két Web Apps Traffic Manager végpontként az [az Network Traffic
 
 Ha az elsődleges végpont nem érhető el, a forgalom automatikusan átirányítja a feladatátvételi végpontot.
 
-Az alábbi példában cserélje le **< app1name_eastus >** és **< app2name_westeurope >** az előző szakasz egyes régióihoz létrehozott alkalmazásokra, cserélje le a **< appspname_eastus >** és **< appspname_ a westeurope >** a app Service csomagok előző szakaszban való létrehozásához használt névvel, és a **< profile_name >** az előző szakaszban használt profilnév helyett. 
+Az alábbi példában cserélje le a **< app1name_eastus >** és **< app2name_westeurope >** az előző szakaszban szereplő egyes régiókhoz létrehozott alkalmazásokra, cserélje le **< appspname_eastus** > és **<** appspname_westeurope > az előző szakaszban az App Service-csomagok létrehozásához használt névvel, és cserélje le az **< profile_name >** az előző szakaszban használt profil nevére. 
 
 **USA keleti végpontja**
 
@@ -170,7 +170,7 @@ az network traffic-manager endpoint create \
 
 Ebben a szakaszban a Traffic Manager profil tartománynevét fogja megtekinteni. Azt is beállíthatja, hogy az elsődleges végpont ne legyen elérhető. Végezetül láthatja, hogy a webalkalmazás továbbra is elérhető. Ennek oka, hogy Traffic Manager továbbítja a forgalmat a feladatátvételi végpontnak.
 
-Az alábbi példában cserélje le **< app1name_eastus >** és **< app2name_westeurope >** az előző szakasz egyes régióihoz létrehozott alkalmazásokra, cserélje le a **< appspname_eastus >** és **< appspname_ a westeurope >** a app Service csomagok előző szakaszban való létrehozásához használt névvel, és a **< profile_name >** az előző szakaszban használt profilnév helyett.
+Az alábbi példában cserélje le a **< app1name_eastus >** és **< app2name_westeurope >** az előző szakaszban szereplő egyes régiókhoz létrehozott alkalmazásokra, cserélje le **< appspname_eastus** > és **<** appspname_westeurope > az előző szakaszban az App Service-csomagok létrehozásához használt névvel, és cserélje le az **< profile_name >** az előző szakaszban használt profil nevére.
 
 ### <a name="determine-the-dns-name"></a>A DNS-név meghatározása
 
@@ -219,7 +219,7 @@ az group delete \
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 

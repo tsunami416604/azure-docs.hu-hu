@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796054"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033981"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Több protokollos hozzáférés Azure Data Lake Storage
 
@@ -49,6 +49,7 @@ Az ebben a táblázatban megjelenő elemek a blob Storage-szolgáltatások támo
 |---|---|
 |[Lassú elérési szint](storage-blob-storage-tiers.md)|Általánosan elérhető|
 |BLOB SDK-k |Általánosan elérhető|
+|BLOB REST API-k|Általánosan elérhető|
 |[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Általánosan elérhető|
 |[Parancssori felület](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Általánosan elérhető|
 |[Diagnosztikai naplók](../common/storage-analytics-logging.md)| Előzetes verzió|
@@ -85,7 +86,7 @@ Az Data Lake Storage Gen2 Azure ökoszisztéma-támogatásának teljes listájá
 
 Ha többet szeretne megtudni az általános ismert problémákról és a Azure Data Lake Storage Gen2ekkel kapcsolatos korlátozásokról, tekintse meg az [ismert problémák](data-lake-storage-known-issues.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismert problémák](data-lake-storage-known-issues.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Megosztott képgyűjtemények létrehozása az Azure CLI-vel | Microsoft Docs
+title: Megosztott képgyűjtemények létrehozása az Azure CLI-vel
 description: Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI-t egy virtuális gép megosztott rendszerképének létrehozásához az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: ea884b80698fb257106ef68d293f350b2f55dc06
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de1afa2367afcb78e8ca68e518acc93e33f61c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103553"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034966"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Megosztott képgyűjtemény létrehozása az Azure CLI-vel
 
@@ -33,10 +33,10 @@ A katalógus egy legfelső szintű erőforrás, amely teljes körű szerepköral
 
 A megosztott képkatalógus funkció több erőforrástípust is tartalmaz. Ebben a cikkben a következő lépéseket fogjuk használni vagy felépíteni:
 
-| Resource | Leírás|
+| Erőforrás | Leírás|
 |----------|------------|
 | **Felügyelt rendszerkép** | Ez egy alapszintű rendszerkép, amely önmagában vagy rendszerkép- **verzió** létrehozásához használható egy képgyűjteményben. A felügyelt lemezképek általánosított virtuális gépekről jönnek létre. A felügyelt rendszerkép olyan speciális VHD-típus, amellyel több virtuális gép hozható létre, és most már használható a megosztott rendszerkép-verziók létrehozásához is. |
-| **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus is a lemezképek kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
+| **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus **is a lemezképek** kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
 | **Rendszerkép definíciója** | A lemezképek a katalógusban vannak definiálva, és a rendszerképekkel és a belső használattal kapcsolatos követelményekkel rendelkeznek. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. |
 | **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
 
@@ -56,14 +56,14 @@ az vm create\
    --generate-ssh-keys
 ```
 
-Egy adott verziót is használhat a `--image` paraméterhez tartozó rendszerkép-verzió azonosítójának használatával. Például a következő rendszerkép-verzió használata : `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`
+Egy adott verziót is használhat a `--image` paraméter rendszerkép-verziójának AZONOSÍTÓjának használatával. Ha például *a következőt* szeretné használni: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`.
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
-## <a name="next-steps"></a>További lépések
-Az [Azure rendszerkép-szerkesztő (előzetes verzió)](image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép](image-builder-gallery-update-image-version.md)-verzióból is frissítheti és létrehozhatja az új rendszerkép verzióját. 
+## <a name="next-steps"></a>Következő lépések
+Az [Azure rendszerkép-szerkesztő (előzetes verzió)](image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
 
@@ -72,4 +72,4 @@ Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrá
 - [Rendszerkép-verzió létrehozása megosztott rendszerkép-gyűjteményben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Virtuális gép létrehozása rendszerkép-verzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-A megosztott képtárakkal kapcsolatos további információkért tekintse [](shared-image-galleries.md)meg az áttekintést. Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](troubleshooting-shared-images.md)című témakört.
+A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](troubleshooting-shared-images.md)című témakört.

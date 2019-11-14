@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926655"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029984"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -34,7 +34,14 @@ A forrásadatok másolása a célhelyre. A támogatott utasítások a következ�
 
 További információért tekintse meg a példákat.
 
-## <a name="advanced"></a>Extra szintű
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+
+## <a name="advanced"></a>Speciális
 
 A AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
 
@@ -138,27 +145,27 @@ Az összes blob-tároló,-könyvtár és-blob másolása a Storage-fiókból egy
 
 - azcopy CP "https://[srcaccount]. blob. Core. Windows. net? [SAS] "" https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
 
-Egyetlen objektum másolása Amazon Web Services (AWS) S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Egyetlen objektum másolása Amazon Web Services (AWS) S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
   
-- azcopy CP "https://s3.amazonaws.com/ [gyűjtő]/[objektum]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/to/blob]? [SAS] "
+- azcopy CP "https://s3.amazonaws.com/[gyűjtő]/[objektum]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/to/blob]? [SAS] "
 
-Egy teljes könyvtár másolása az AWS S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Egy teljes könyvtár másolása az AWS S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/ [Bucket]/[mappa]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
+- azcopy CP "https://s3.amazonaws.com/[Bucket]/[mappa]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
 
 A [mappa] helyőrző jobb megismeréséhez tekintse meg a https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html.
 
-Másolja az összes gyűjtőt a Amazon Web Services (AWS) Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Másolja az összes gyűjtőt a Amazon Web Services (AWS) Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
 
-Másolja az összes gyűjtőt egy Amazon Web Services (AWS) régióból Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Másolja az összes gyűjtőt egy Amazon Web Services (AWS) régióból Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3- [régió]. Amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP "https://s3-[régió]. Amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
 
-Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimbólum használatával a gyűjtő nevében. Az előző példákhoz hasonlóan egy hozzáférési kulcsra és egy SAS-jogkivonatra is szüksége lesz. Ügyeljen arra, hogy a AWS_ACCESS_KEY_ID és a AWS_SECRET_ACCESS_KEY környezeti változót AWS S3-forrásként adja meg.
+Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimbólum használatával a gyűjtő nevében. Az előző példákhoz hasonlóan egy hozzáférési kulcsra és egy SAS-jogkivonatra is szüksége lesz. Ügyeljen arra, hogy az AWS S3-forráshoz AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót állítsa be.
 
-- azcopy CP "https://s3.amazonaws.com/ [Bucket * name]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP "https://s3.amazonaws.com/[Bucket * name]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
 
 ## <a name="options"></a>Beállítások
 
@@ -234,6 +241,6 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 
 **--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

@@ -1,5 +1,5 @@
 ---
-title: 'ARP-táblák lekérése – hibaelhárítás – ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: ARP-táblák lekérése – hibaelhárítás'
 description: Ez az oldal a ExpressRoute-áramkör ARP-tábláinak beolvasására vonatkozó utasításokat tartalmazza.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e35020923405ec072ac9c42093752ec5a9290824
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2410465052bd9ff83090c6f7122ffab2855af1d0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748159"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033432"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák lekérése a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
@@ -173,10 +173,10 @@ vagy
 * Ha problémák merülnek fel a Microsoft oldalán, nem jelenik meg a társak számára megjelenített ARP-táblázat. 
 * Nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy van-e probléma a 2. rétegbeli kapcsolattal. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * 3\. rétegbeli konfigurációk ellenőrzése a ExpressRoute-áramkörhöz
   * Útvonal-összefoglalás beolvasása a BGP-munkamenetek állapotának megállapításához 
   * Útválasztási táblázat beolvasása a ExpressRoute-ben meghirdetett előtagok meghatározásához
 * Adatátvitel ellenőrzése a bájtok és a kimenő adatok áttekintésével
-* Ha továbbra is problémákat tapasztal, nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+* Nyisson meg egy támogatási jegyet a [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Ha továbbra is problémákat tapasztal.
 

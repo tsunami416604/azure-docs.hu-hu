@@ -1,5 +1,5 @@
 ---
-title: Vállalati internetes tartomány átirányítása egy Azure Traffic Manager szolgáltatásbeli tartománynévre
+title: Internetes tartomány Traffic Manager – Azure Traffic Manager
 description: Ez a cikk segít átirányítani a vállalata tartománynevét egy Traffic Manager szolgáltatásbeli tartománynevére.
 services: traffic-manager
 author: asudbring
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: allensu
-ms.openlocfilehash: cd99d8829a8a7bb57b6affe98c1257eaa3ea8ce7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb656e5a8185951d203ed10ed819ff5ef11e8071
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070967"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038049"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Vállalati internetes tartomány átirányítása Azure Traffic Manager-tartományra
 
@@ -25,12 +25,12 @@ Ha például a `www.contoso.com` nevet szeretné a Traffic Manager `contoso.traf
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Összes *www\.contoso.com* forgalomkérést átirányítja a *contoso.trafficmanager.net*.
+A *www\.contoso.com* érkező összes forgalmi kérelem a *contoso.trafficmanager.net*-re irányul.
 
 > [!IMPORTANT]
 > A második szintű tartomány, például a *contoso.com*, nem irányítható á Traffic Manager-tartományra. A DNS-protokollszabványok nem engedélyezik a CNAME-rekordokat a másodlagos szintű tartománynevek esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Traffic Manager útválasztási módszerei](traffic-manager-routing-methods.md)
 * [Traffic Manager – Profil letiltása, engedélyezése vagy törlése](disable-enable-or-delete-a-profile.md)

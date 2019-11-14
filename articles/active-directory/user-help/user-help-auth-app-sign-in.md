@@ -1,5 +1,5 @@
 ---
-title: Jelentkezzen be a fiókjába a Microsoft Authenticator app-Azure Active Directory használatával | Microsoft Docs
+title: Bejelentkezés a Microsoft Authenticator alkalmazás használatával – Azure AD
 description: A Microsoft Authenticator alkalmazással bejelentkezhet a munkahelyi vagy iskolai fiókjába, illetve a személyes Microsoft-és nem Microsoft-fiókokba a kétfaktoros ellenőrzés vagy a telefonos bejelentkezés használatával.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4cf9b92793d6c769751590dd0a375cbc8894759c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616015"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028972"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
 
@@ -62,11 +62,11 @@ A telefonos bejelentkezés bekapcsolását követően egyszerűen bejelentkezhet
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
-    Miután beírta a felhasználónevet, megjelenik egy, a jóváhagyást kérő **bejelentkezési** képernyő, amely két számjegyű számot mutat be, és a Microsoft Authenticator alkalmazáson keresztül kéri a bejelentkezést. Ha nem szeretné használni ezt a bejelentkezési módszert, válassza **a jelszó használata helyet**, és jelentkezzen be a jelszavával.
+    Miután beírta a felhasználónevet, megjelenik egy, a **jóváhagyást kérő bejelentkezési** képernyő, amely két számjegyű számot mutat be, és a Microsoft Authenticator alkalmazáson keresztül kéri a bejelentkezést. Ha nem szeretné használni ezt a bejelentkezési módszert, válassza **a jelszó használata helyet**, és jelentkezzen be a jelszavával.
 
     ![Bejelentkezési mező jóváhagyása a számítógépen](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
-2. Nyissa meg az értesítés vagy a Microsoft Authenticator alkalmazást az eszközön, majd koppintson arra a számra, amely megfelel a számítógép jóváhagyására szolgáló **bejelentkezési** képernyőn megjelenő számnak.
+2. Nyissa meg az értesítés vagy a Microsoft Authenticator alkalmazást az eszközön, majd koppintson arra a számra, amely megfelel a számítógép **jóváhagyására szolgáló bejelentkezési** képernyőn megjelenő számnak.
 
     ![Bejelentkezési mező jóváhagyása az eszközön](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
@@ -101,7 +101,7 @@ Bekapcsolhatja a telefonos bejelentkezést a személyes Microsoft-fiók, példá
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Bejelentkezés a fiók kétfaktoros ellenőrzésének használatával
 
-A standard kétfaktoros ellenőrzési módszernek meg kell adnia a felhasználónevét és jelszavát ahhoz az eszközhöz, amelyhez be van jelentkezve, majd válassza ki, hogy a Microsoft Authenticator alkalmazás küldjön-e értesítést, vagy ha szeretné átmásolni a kapcsolódó ellenőrzést kód a Microsoft Authenticator alkalmazás **fiókok** képernyőjéről. A fiók a Microsoft Authenticator alkalmazásba való felvételének folyamata során bekapcsolja a fiók kétfaktoros ellenőrzését.
+A standard kétfaktoros ellenőrzési módszernek meg kell adnia a felhasználónevét és jelszavát ahhoz az eszközhöz, amelyhez be van jelentkezve, majd válassza ki, hogy a Microsoft Authenticator alkalmazás küldjön-e értesítést, vagy ha szeretné, hogy a társított ellenőrző kódot a Microsoft Authenticator alkalmazás **fiókok** képernyőjéről másolja. A fiók a Microsoft Authenticator alkalmazásba való felvételének folyamata során bekapcsolja a fiók kétfaktoros ellenőrzését.
 
 >[!Note]
 >Ha nem látja munkahelyi vagy iskolai fiókját vagy személyes fiókját a Microsoft Authenticator alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy nem adta hozzá a fiókot a Microsoft Authenticator alkalmazáshoz. A fiók hozzáadásához tekintse meg [a munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md) vagy [a személyes fiókok](user-help-auth-app-add-personal-ms-account.md)hozzáadása című témakört.
@@ -120,12 +120,12 @@ A munkahelyi vagy iskolai vagy személyes fiókba való bejelentkezéshez szüks
 | Miért nem használhatok több munkahelyi vagy iskolai fiókot a telefonos bejelentkezéshez? | A telefont egyetlen munkahelyi vagy iskolai fiókhoz kell regisztrálni. Ha másik munkahelyi vagy iskolai fiókhoz szeretné bekapcsolni a telefonos bejelentkezést, először a **Beállítások** lapon kell megszüntetnie a régi eszköz regisztrációját. |
 | Be tudok jelentkezni a számítógépre a telefonom használatával? | A számítógép esetében javasoljuk, hogy jelentkezzen be a Windows Hello használatával a Windows 10 rendszeren. A Windows Hello lehetővé teszi az arc, az ujjlenyomat vagy a PIN-kód használatát a bejelentkezéshez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző** kód problémáinak elhárítása című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
+- Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 
 - Ha általánosabb kérdései vannak az alkalmazással kapcsolatban, tekintse meg a [Microsoft Authenticator gyakori](user-help-auth-app-faq.md) kérdések című témakört.
 
-- Ha további információra van szüksége a kétlépéses ellenőrzésről, tekintse [meg a fiók beállítása](multi-factor-authentication-end-user-first-time.md) kétlépéses ellenőrzéshez című témakört.
+- Ha további információra van szüksége a kétlépéses ellenőrzésről, tekintse [meg a fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című témakört.
 
 - Ha további információra van szüksége a biztonsági adatokról, tekintse meg a [biztonsági adatok (előzetes verzió) áttekintése](user-help-security-info-overview.md) című témakört.

@@ -1,5 +1,5 @@
 ---
-title: A OpenShift Container platform 3,11 üzembe helyezésének hibája az Azure-ban | Microsoft Docs
+title: A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban – problémamegoldás
 description: A OpenShift Container platform 3,11 üzembe helyezésének hibája az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392760"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035492"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban – problémamegoldás
 
@@ -41,9 +41,9 @@ SSH-t a Ansible forgatókönyv-gazdagéphez. A OKD-sablonhoz (3,9-es és korább
 
 ## <a name="log-files"></a>Naplófájlok
 
-A gazdagép-előkészítési parancsfájlok naplófájljai (stderr és StdOut) a `/var/lib/waagent/custom-script/download/0` helyen találhatók minden gazdagépen. Ha hiba történt a gazdagép előkészítése során, tekintse meg ezeket a naplófájlokat a hiba megállapításához.
+A gazdagép-előkészítési parancsfájlok naplófájljai (stderr és StdOut) az összes gazdagépen `/var/lib/waagent/custom-script/download/0` találhatók. Ha hiba történt a gazdagép előkészítése során, tekintse meg ezeket a naplófájlokat a hiba megállapításához.
 
-Ha az előkészítési parancsfájlok sikeresen futottak, akkor meg kell vizsgálni a naplófájlokat a Ansible ötletekbõl-gazdagép `/var/lib/waagent/custom-script/download/1` könyvtárában. Ha a hiba a OpenShift tényleges telepítése közben történt, akkor az stdout-fájl megjeleníti a hibát. Ezekkel az információkkal további segítségért forduljon az ügyfélszolgálathoz.
+Ha az előkészítési parancsfájlok sikeresen futottak, akkor meg kell vizsgálni a naplófájlokat a Ansible forgatókönyv-gazdagép `/var/lib/waagent/custom-script/download/1` könyvtárában. Ha a hiba a OpenShift tényleges telepítése közben történt, akkor az stdout-fájl megjeleníti a hibát. Ezekkel az információkkal további segítségért forduljon az ügyfélszolgálathoz.
 
 Példa kimenetre
 
@@ -118,5 +118,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Bizonyos hibák esetén az alábbi parancsokkal további információkat kaphat:
 
-1. systemctl állapota @no__t – 0service >
+1. systemctl állapota \<szolgáltatás >
 2. journalctl – XE

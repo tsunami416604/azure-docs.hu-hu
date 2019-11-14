@@ -1,5 +1,5 @@
 ---
-title: A Windows rendszerű virtuális gépek felügyelt lemezének áttekintése Azure Disk Storage | Microsoft Docs
+title: A Windows rendszerű virtuális gépek felügyelt lemezének áttekintése Azure Disk Storage
 description: Az Azure Managed Disks áttekintése, amely az Azure Windows rendszerű virtuális gépek használatakor kezeli a Storage-fiókokat
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c71d51580c064b5b2b0bbbbf7bf95d50aa40f72f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c23cfbc418cca82393a0a66b0ceace622b2833f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515562"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038160"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure Managed Disks használatába
 

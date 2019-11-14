@@ -1,17 +1,14 @@
 ---
 title: IRS 1075 terv minta – vezérlés leképezése
 description: Az IRS 1075 Blueprint minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: faaa16cb69ec7aaeb88696b3094b426b208a9939
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b56e1a2c8a71e3bb7927dc487e0c2f1e7709d413
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161397"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032209"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075 tervrajzi minta leképezésének vezérlése
 
@@ -84,7 +81,7 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="9313-au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>9.3.1.3 AU-3 (2) a naplózási rekordok tartalma | Tervezett auditálási rekordok központosított kezelése
 
@@ -92,11 +89,11 @@ A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkater�
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
+- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 
 ## <a name="9335-au-5-response-to-audit-processing-failures"></a>9.3.3.5 AU-5 Válasz a naplózási feldolgozási hibákra
 
@@ -113,11 +110,11 @@ A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics mun
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
+- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 
 ## <a name="93311-au-12-audit-generation"></a>9.3.3.11 AU-12 naplózási generáció
 
@@ -125,11 +122,11 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
+- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
@@ -250,10 +247,10 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása
 - Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
-- A webalkalmazás csak HTTPS protokollon keresztül érhető el
+- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 
 ## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) a REST-adatok védelme | Titkosítási védelem
 
@@ -300,11 +297,11 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
+- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
@@ -329,7 +326,7 @@ Most, hogy áttekintette az IRS 1075 terv vezérlési leképezését, az alábbi
 > [!div class="nextstepaction"]
 > [IRS 1075 terv – áttekintés](./index.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

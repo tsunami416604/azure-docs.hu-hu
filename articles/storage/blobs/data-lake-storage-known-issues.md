@@ -1,6 +1,6 @@
 ---
-title: Ismert problémák a Azure Data Lake Storage Gen2kal | Microsoft Docs
-description: Ismerje meg a korlátozásokat és a Azure Data Lake Storage Gen2 ismert problémáit
+title: Ismert problémák az Azure Data Lake Storage Gen2 |} A Microsoft Docs
+description: További információ a korlátozások és az Azure Data Lake Storage Gen2 ismert problémái
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581492"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033944"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
 Ez a cikk azokat a funkciókat és eszközöket sorolja fel, amelyek még nem támogatottak, vagy csak részlegesen támogatottak olyan Storage-fiókokkal, amelyek hierarchikus névtérrel rendelkeznek (Azure Data Lake Storage Gen2).
 
@@ -57,7 +57,7 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 | **Azure Blob Storage életciklus-kezelési szabályzatok** | Minden hozzáférési szintet támogat. Az archív hozzáférési szint jelenleg előzetes verzióban érhető el. A blob-Pillanatképek törlése még nem támogatott. |
 | **Azure Content Delivery Network (CDN)** | Még nem támogatott|
 | **Azure-keresés** |Támogatott (előzetes verzió)|
-| **Azure Storage Explorer** | Verzió-specifikus támogatás <br><br>Csak `1.6.0` vagy újabb verziót használjon. <br>A verzió `1.6.0` [ingyenes letöltésként](https://azure.microsoft.com/features/storage-explorer/)érhető el.|
+| **Azure Storage Explorer** | Verzió-specifikus támogatás <br><br>Csak a `1.10.0``1.6.0` verziókat használja. <br> A verzió `1.10.0` [ingyenes letöltésként](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)érhető el. A `1.11.0` verziója még nem támogatott.|
 | **BLOB Container ACL-ek** |Még nem támogatott|
 | **Blobfuse** |Még nem támogatott|
 | **Egyéni tartományok** |Még nem támogatott|

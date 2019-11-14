@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f7fa5d7ef68613301c30e26d21f69a80559dbcb9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953979"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030015"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektúra – Hyper-V replikáció másodlagos helyre
 
 Ez a cikk azokat az összetevőket és folyamatokat ismerteti, amelyek részt vesznek a System Center Virtual Machine Manager- (VMM-) felhőkben lévő helyszíni Hyper-V virtuális gépeknek (VM-eknek) az Azure Portalon elérhető [Azure Site Recovery](site-recovery-overview.md) szolgáltatással egy másodlagos VMM-helyre történő replikációjában.
 
 > [!WARNING]
-> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
+> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](site-to-site-deprecation.md) adatokat.
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 

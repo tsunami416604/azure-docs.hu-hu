@@ -1,5 +1,5 @@
 ---
-title: A Cloud-init használatával konfigurálhatja a swap-partíciót egy Linux rendszerű virtuális gépen | Microsoft Docs
+title: A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
 description: A Cloud-init használata a swap-partíció konfigurálásához Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640770"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036760"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
 Ez a cikk bemutatja, hogyan konfigurálhatja a swap partíciót különböző Linux-disztribúciókban a [Cloud-init](https://cloudinit.readthedocs.io) használatával. A swap-partíciót hagyományosan a Linux-ügynök (WALA) állította be, amely alapján a disztribúciók közül egy szükséges.  Ez a dokumentum felvázolja a swap-partíció igény szerinti felépítési folyamatát a üzembe helyezés ideje alatt a Cloud-init használatával.  További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
@@ -54,7 +54,7 @@ A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot a
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a `--custom-data cloud_init_swappart.txt` Cloud-init fájlt a következő módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a Cloud-init fájlt `--custom-data cloud_init_swappart.txt` a következőképpen:
 
 ```azurecli-interactive 
 az vm create \
@@ -88,7 +88,7 @@ Filename                Type        Size    Used    Priority
 > [!NOTE] 
 > Ha van olyan meglévő Azure-lemezképe, amelynek van konfigurált swap-partíciója, és módosítani szeretné az új lemezképek swap-partíciójának konfigurációját, távolítsa el a meglévő swap partíciót. További részletekért tekintse meg a "rendszerképek testreszabása a Cloud-init" dokumentumban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
 - [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 42b8bde9adb6980ff2c7004d43b02fc1fdc38363
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513448"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034123"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
 
@@ -31,20 +31,27 @@ Ha a `with-status` jelző be van állítva, a rendszer megjeleníti a megadott �
 azcopy jobs show [jobID] [flags]
 ```
 
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>Beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |--|--|
 |-h,-– Súgó|Megjeleníti a show parancs súgójának tartalmát.|
 |--with-status sztring|Csak az adott állapotú feladatok átvitelének listázása, elérhető értékek: elindítva, sikeres, sikertelen|
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [azcopy-feladatok](storage-ref-azcopy-jobs.md)

@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gép létrehozása speciális virtuális merevlemezről az Azure-ban | Microsoft Docs
+title: Windows rendszerű virtuális gép létrehozása speciális virtuális merevlemezről az Azure-ban
 description: Hozzon létre egy új Windowsos virtuális gépet úgy, hogy a Resource Manager-alapú üzemi modell használatával egy speciális felügyelt lemezt csatlakoztat az operációsrendszer-lemezként.
 services: virtual-machines-windows
 author: cynthn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553428"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033859"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről a PowerShell használatával
 
@@ -226,7 +226,7 @@ Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel v
 
 ### <a name="set-the-vm-name-and-size"></a>A virtuális gép nevének és méretének beállítása
 
-Ebben a példában a virtuális gép nevét *myVM* értékre állítja, a virtuális gép mérete pedig a *Standard_A2*.
+Ebben a példában a virtuális gép nevét *myVM* értékre állítja, a virtuális gép mérete pedig *Standard_A2*.
 
 ```powershell
 $vmName = "myVM"
@@ -267,7 +267,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **Tallózás** > **virtuális gépen**, vagy a következő PowerShell-parancsok használatával kell látnia.
+Az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **Tallózás** > **virtuális gépek**alatt, vagy a következő PowerShell-parancsok használatával kell látnia.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

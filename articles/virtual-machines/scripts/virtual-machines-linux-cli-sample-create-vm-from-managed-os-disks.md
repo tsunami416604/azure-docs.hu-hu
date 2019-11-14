@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Virtuális gép létrehozása felügyelt lemez csatlakoztatásával operációsrendszer-lemezként | Microsoft Docs
+title: Azure CLI-példaszkript – Virtuális gép létrehozása felügyelt lemez csatlakoztatásával operációsrendszer-lemezként
 description: Azure CLI-példaszkript – Virtuális gép létrehozása felügyelt lemez csatlakoztatásával operációsrendszer-lemezként
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05263df1327eff49d0c9ec84316447ba563695ca
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301919"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039160"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Virtuális gép létrehozása meglévő felügyelt operációsrendszer-lemezből a CLI használatával
 
@@ -54,7 +54,7 @@ A szkript a következő parancsokat használja a felügyelt lemez tulajdonságai
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | Lekérdezi a felügyelt lemez tulajdonságait a lemeznév és az erőforráscsoport neve alapján. A felügyelt lemezt az „Id” tulajdonság használatával csatlakoztatja egy új virtuális géphez. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Létrehoz egy virtuális gépet egy felügyelt operációsrendszer-lemezből. |
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

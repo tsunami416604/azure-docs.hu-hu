@@ -1,83 +1,83 @@
 ---
-title: LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás – Azure Active Directory |} A Microsoft Docs
-description: Azt ismerteti, hogyan LinkedIn-integráció oszt meg adatokat a Microsoft-alkalmazások az Azure Active Directory-n keresztül
+title: A LinkedIn adatmegosztása és belekötése – Azure Active Directory | Microsoft Docs
+description: A cikk azt ismerteti, hogyan osztja meg a LinkedIn Integration az adatmegosztást a Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469637"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025395"
 ---
-# <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn fiók kapcsolatok az adatok megosztása és jóváhagyás
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>A LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett hozzáférése
 
-A csatlakozás a Microsoft munkahelyi vagy iskolai és a LinkedIn-fiók jóváhagyást az Active Directory (Azure AD) szervezet lehetővé teheti a felhasználók. Miután egy felhasználó kapcsolódott fiókjukat, információt és a LinkedIn pillanatai egyes Microsoft-alkalmazásokhoz és szolgáltatásokhoz érhető el. Felhasználók saját kapcsolatépítési élményt a Linkedinen fejlesztjük és a Microsoft information renderelésre számíthatnak.
+Engedélyezheti a Active Directory (Azure AD) szervezet felhasználói számára a Microsoft munkahelyi vagy iskolai fiókjához való kapcsolódást a LinkedIn-fiókkal. Miután egy felhasználó összekapcsolta a fiókokat, a LinkedIn információi és kiemelései bizonyos Microsoft-alkalmazásokban és-szolgáltatásokban érhetők el. A felhasználók a LinkedIn-ben is számíthatnak a hálózati élmény javítására és a Microsoft információinak bővítésére.
 
-LinkedIn-adatokat a Microsoft-alkalmazások és szolgáltatások megtekintéséhez felhasználók bele kell egyeznie a saját Microsoft- és LinkedIn-fiók kapcsolódni. Csatlakoztathassák a fiókjukat, az Outlook, OneDrive vagy SharePoint online-hoz egy profil kártya valakinek a LinkedIn-információinak megtekintéséhez kattintson az első alkalommal a rendszer kéri. LinkedIn-fiókkapcsolatok nem teljes mértékben engedélyezettek a felhasználók mindaddig, amíg azok hozzájárul a felhasználói élményt és csatlakoztathassák a fiókjukat.
+Ha meg szeretné tekinteni a LinkedIn-információkat a Microsoft-alkalmazásokban és-szolgáltatásokban, a felhasználóknak hozzá kell adniuk a saját Microsoft-és LinkedIn-fiókjaikat. A rendszer felkéri a felhasználókat a fiókok összekapcsolására, amikor először rákattintanak a LinkedIn-információk megtekintésére a profil kártyán az Outlook, a OneDrive vagy a SharePoint Online szolgáltatásban. A LinkedIn-fiókok kapcsolatai nem teljes mértékben engedélyezve vannak a felhasználók számára, amíg nem veszik figyelembe a felhasználói élményt és a fiókjaik összekapcsolását.
 
 [!INCLUDE [active-directory-gdpr-note](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="benefits-of-sharing-linkedin-information"></a>LinkedIn-adatok megosztása előnyei
+## <a name="benefits-of-sharing-linkedin-information"></a>A LinkedIn-információk megosztásának előnyei
 
-Microsoft-alkalmazások és szolgáltatások LinkedIn információkhoz való hozzáférés megkönnyíti a csatlakozás, és szakmai kapcsolatok létrehozása munkatársakkal, ügyfelek és partnerek belüli és a szervezeten kívüli felhasználók számára. Új felhasználók is gyorsan elsajátíthatja gyorsabban a munkatársakkal való csatlakozás, azokat többet és könnyen fér hozzá a további információkat. Íme egy példa LinkedIn-adatokat hogyan jelenik meg a profil kártya a Microsoft-alkalmazások:
+A Microsoft-alkalmazásokon és-szolgáltatásokon belüli LinkedIn-adatokhoz való hozzáférés megkönnyíti a felhasználók számára, hogy a szervezeten belüli és kívüli munkatársakkal, ügyfelekkel és partnerekkel csatlakozzanak, kapcsolódjanak és építsenek szakmai kapcsolatokat. Az új felhasználók gyorsabban, a munkatársakkal való csatlakozással, a róluk való ismerkedéssel és a további információk elérésével gyorsabbá válnak. Íme egy példa arra, hogyan jelennek meg a LinkedIn-információk a Microsoft-alkalmazások profil kártyáján:
 
-![A szervezet LinkedIn-integráció engedélyezése](./media/linkedin-user-consent/display-example.png)
+![A LinkedIn-integráció engedélyezése a szervezetben](./media/linkedin-user-consent/display-example.png)
 
-## <a name="enable-and-announce-linkedin-integration"></a>Engedélyezze és jelentjük be a LinkedIn-integráció
+## <a name="enable-and-announce-linkedin-integration"></a>A LinkedIn-integráció engedélyezése és bejelentése
 
-Az Azure Active Directory-rendszergazda kezelheti a beállítást a szervezet számára kell lennie. Az összes felhasználó számára, vagy a felhasználók adott csoportja számára engedélyezheti.
+A szervezet beállításának kezeléséhez Azure Active Directory rendszergazdának kell lennie. Engedélyezheti az összes felhasználó számára, vagy egy adott felhasználói csoport számára.
 
-1. Engedélyezze vagy tiltsa le az integrációt, kövesse a lépéseket a [járul hozzá az Azure AD-szervezet LinkedIn-integráció](linkedin-integration.md).
-2. LinkedIn integrálása a szervezet jelentjük be, amikor mutasson a felhasználók számára a gyakori Kérdéseket kapcsolatos [LinkedIn-adatokat a Microsoft-alkalmazások és szolgáltatások](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). A cikk ismerteti, hol LinkedIn-adatokat mutatja be, hogyan csatlakozhat a fiókok és egyéb.
+1. Az integráció engedélyezéséhez vagy letiltásához kövesse az [Azure ad-szervezetének LinkedIn Integration-integrációjának](linkedin-integration.md)lépéseit.
+2. Amikor bejelenti a LinkedIn-integrációt a szervezetében, a felhasználókat a [Microsoft-alkalmazások és-szolgáltatások LinkedIn-adataival](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)kapcsolatos gyakori kérdések között találhatja meg. A cikk tájékoztatást nyújt arról, hogy hol jelennek meg a LinkedIn-információk, hogyan csatlakoztathatók a fiókok, és így tovább.
 
-## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Felhasználói beleegyezés az adatok eléréséhez a Microsoft és a LinkedIn
+## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>A Microsoft és a LinkedIn adatelérési szolgáltatásának felhasználói beleegyezett
 
-A LinkedIn elérhető adatok nincsenek maradandóan tárolva a Microsoft services. A Microsoft elérhető adatok nincsenek maradandóan tárolva a Linkedinnel, kivéve a névjegyeket. A Microsoft Contacts tárolódnak a Linkedinen felhasználók távolítsa el őket, amíg leírtak szerint [importált névjegyek törlése a LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
+A LinkedIn szolgáltatásból elért adatok nem tárolódnak véglegesen a Microsoft szolgáltatásaiban. A Microsofttól elért adatok nem tárolódnak véglegesen a LinkedIn-mel, kivéve a névjegyeket. A Microsoft névjegyek a LinkedIn [-ben tárolódnak](https://www.linkedin.com/help/linkedin/answer/43377), amíg a felhasználók el nem távolítják azokat
 
-Amikor a felhasználóknak a fiókjaik csatlakoztatására, információkat és elemzéseket a LinkedIn érhetők el az egyes Microsoft-alkalmazások, például a profil kártyák. Felhasználók saját kapcsolatépítési élményt a Linkedinen fejlesztjük és a Microsoft information renderelésre számíthatnak.
-Ha a szervezet felhasználói csatlakozzon a LinkedIn és a Microsoft munkahelyi vagy iskolai fiókokat, akkor két lehetősége van:
+Amikor a felhasználók összekapcsolhatják a fiókjaikat, a LinkedIn információi és adatai bizonyos Microsoft-alkalmazásokban, például a profil kártyában is elérhetők. A felhasználók a LinkedIn-ben is számíthatnak a hálózati élmény javítására és a Microsoft információinak bővítésére.
+Ha a cégen belüli felhasználók a LinkedIn és a Microsoft munkahelyi vagy iskolai fiókjaikat használják, két lehetőség közül választhatnak:
 
-* Engedélyezze a fiókot is az elérhető adatok. Ez azt jelenti, hogy engedélyt a Microsoft számára, vagy a munkahelyi LinkedIn-fiókjából, valamint a fiók adatokhoz való hozzáférésének [érheti el adatait a Microsoft munkahelyi vagy iskolai fiókjával, a LinkedIn-fiók](https://www.linkedin.com/help/linkedin/answer/84077).
-* Engedélyezze a csak a LinkedIn adatra vonatkozó érhető el a Microsoft által munkahelyi és iskolai fiókot.
+* Adja meg az adatok mindkét fiókból való elérésének engedélyét. Ez azt jelenti, hogy a Microsoft vagy a munkahelyi fiók számára engedélyt adnak a LinkedIn-fiókjából származó adatok elérésére, illetve a [LinkedIn-fiókjuk számára a Microsoft munkahelyi vagy iskolai fiókjából származó adatok elérésére](https://www.linkedin.com/help/linkedin/answer/84077).
+* A Microsoft munkahelyi és iskolai fiókja által elérhetővé tett csak a LinkedIn-adatelérési engedélyek megadása.
 
-A felhasználók leválasztása a fiókok és adatokhoz való hozzáférési jogosultságok eltávolítása a tetszőleges időpontban, és [felhasználók szabályozhatják, hogyan a saját LinkedIn-profilok megtekintett](https://www.linkedin.com/help/linkedin/answer/83), például hogy a profil tekinthet meg a Microsoft-alkalmazások.
+A felhasználók bármikor leválaszthatják a fiókokat és eltávolíthatják az adatelérési engedélyeket, és a [felhasználók vezérelhetik a saját LinkedIn-profiljuk megtekintését](https://www.linkedin.com/help/linkedin/answer/83), beleértve azt is, hogy a profil megtekinthető-e a Microsoft-alkalmazásokban.
 
-### <a name="linkedin-account-data"></a>LinkedIn-fiókja adatait
+### <a name="linkedin-account-data"></a>LinkedIn-fiókadatok
 
-Ha csatlakozik a Microsoft és a LinkedIn-fiók, engedélyezi a Linkedinnek adja meg a következő adatokat a Microsoftnak:
+A Microsoft-és a LinkedIn-fiókok összekapcsolásával a LinkedIn a következő adatait biztosítja a Microsoftnak:
 
-* Profiladatok – tartalmazza a LinkedIn-identitást, kapcsolattartási adatokat és az adatokat a megosztja másokkal a [LinkedIn-profilok](https://www.linkedin.com/help/linkedin/answer/15493).
-* Adatok megnézzem – érdekében a Linkedinen, tartalmaz, például a személyek és a témaköröket, hajtsa végre a tanfolyamok csoportokat, és a tartalom, például a, és megoszthatja.
-* Előfizetések - szerepel az előfizetések LinkedIn-alkalmazásokhoz és szolgáltatásokhoz kapcsolódó adatokkal együtt. 
-* Kapcsolatok – szerepel a [LinkedIn-hálózatot](https://www.linkedin.com/help/linkedin/answer/110) profilok és a kapcsolattartási adatokat. 1-szintű kapcsolat.
+* Profil adatai – ide tartozik a LinkedIn-identitás, a kapcsolattartási adatok és a [LinkedIn-profilban](https://www.linkedin.com/help/linkedin/answer/15493)másokkal megosztott információk.
+* Érdeklődési körök – a LinkedIn érdeklődéseit is magában foglalja, például az Ön által követett személyeket és témákat, a tanfolyamok csoportjait és a megosztható tartalmakat.
+* Előfizetések – a LinkedIn-alkalmazásokra és-szolgáltatásokra vonatkozó előfizetések, valamint a hozzájuk kapcsolódó adatai. 
+* Kapcsolatok adatai – magába foglalja a [LinkedIn-hálózatot](https://www.linkedin.com/help/linkedin/answer/110) , beleértve az 1. szintű kapcsolatok profiljait és kapcsolattartási adatait.
 
-A LinkedIn elérhető adatok nincsenek maradandóan tárolva a Microsoft services. A személyes adatok használata a Microsoft kapcsolatos további információkért lásd: a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement/).
+A LinkedIn szolgáltatásból elért adatok nem tárolódnak véglegesen a Microsoft szolgáltatásaiban. A személyes adatok Microsoft általi felhasználásával kapcsolatos további információkért lásd a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement/).
 
-### <a name="microsoft-work-or-school-account-data"></a>A Microsoft munkahelyi vagy iskolai fiók adatok
+### <a name="microsoft-work-or-school-account-data"></a>Microsoft munkahelyi vagy iskolai fiókadatok
 
-Ha csatlakozik a Microsoft és a LinkedIn-fiók, engedélyezi a Microsoftnak adja meg a következő adatokat a LinkedIn webhelyre:
+A Microsoft-és a LinkedIn-fiókok összekapcsolásával lehetővé teszi, hogy a Microsoft a következő adatait adja meg a LinkedIn számára:
 
-* Profiladatok – például az Utónév, utolsó nevét, profilkép, e-mail cím, kezelő és személyek, Ön által kezelt információkat tartalmaz.
-* Naptár-adatok – értekezletek naptárak, időponthoz képest, helyek és résztvevők kapcsolattartási adatait tartalmazza. Információ az értekezlet napirend, a tartalmat vagy az értekezlet-cím nem szerepel a naptári adatok.
-* Adatok megnézzem - magában foglalja a Microsoft-szolgáltatások, például a Cortana és a vállalati Bing alapján, a fiókjához társított érdekében.
-* Előfizetések-adatok – Microsoft-alkalmazások és szolgáltatások, például az Office 365, a szervezet biztosítja nekik előfizetését tartalmazza.
-* Kapcsolatba lép a data - partnerlistájukat az Outlook, a Skype és más Microsoft fiók-szolgáltatások, többek között az emberek gyakran kommunikációhoz vagy együttműködhet kapcsolattartási adatait tartalmazza. Névjegyek importálható, rendszeres időközönként, tárolása, és a LinkedIn, által használt kapcsolatok javasolja például biztosíthatja a névjegyek rendszerezheti és ügyfeleivel kapcsolatos frissítések megjelenítése.
+* Profil adatai – olyan információkat tartalmaz, mint például az utónév, a vezetéknév, a profil fényképe, az e-mail-cím, a felettes és a kezelt személyek.
+* Naptáradatok – a naptárakban, az időpontokban, a helyszíneken és a résztvevők kapcsolattartási adatait tartalmazza. Az értekezletre, például a napirendre, a tartalomra vagy az értekezlet címére vonatkozó információk nem szerepelnek a naptári adatokban.
+* Érdeklődési körök – a Microsoft-szolgáltatások (például a Cortana és a Bing for Business) alapján a fiókjához társított érdekeket foglalja magában.
+* Előfizetések adatai – a szervezet által a Microsoft-alkalmazásokhoz és-szolgáltatásokhoz, például az Office 365-hoz biztosított előfizetéseket tartalmazza.
+* Kapcsolattartási adatok – az Outlookban, a Skype-ban és más Microsoft-fiók-szolgáltatásokban található kapcsolattartási listát is tartalmazza, beleértve a gyakran kommunikáló vagy együttműködő személyekhez tartozó kapcsolattartási adatokat is. A névjegyeket a LinkedIn rendszeresen importálja, tárolja és használja, például a kapcsolatok javaslatára, a névjegyek rendszerezésére és a névjegyek frissítéseinek megjelenítésére.
 
-A Microsoft elérhető adatok nincsenek maradandóan tárolva a Linkedinnel, kivéve a névjegyeket. A Microsoft Contacts tárolják a Linkedinen, amíg a felhasználók távolítsa el őket. Tudjon meg többet [importált névjegyek törlése a LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
+A Microsofttól elért adatok nem tárolódnak véglegesen a LinkedIn-mel, kivéve a névjegyeket. A Microsoft névjegyek a LinkedIn-ben tárolódnak, amíg a felhasználók el nem távolítják őket. További információ az [importált névjegyek a linkedinből való törléséről](https://www.linkedin.com/help/linkedin/answer/43377).
 
-A személyes adatok LinkedIn-a használja a további információkért lásd: a [LinkedIn adatvédelmi szabályzatát](https://www.linkedin.com/legal/privacy-policy). LinkedIn szolgáltatások, az adatátviteli és tárolási is adatfolyam az Európai Unióból, az Egyesült Államokban és vissza, és az adatvédelem védett leírtak szerint [Európai Unió adatforgalom](https://www.linkedin.com/help/linkedin/answer/62533).
+A LinkedIn személyes adatainak használatával kapcsolatos további információkért tekintse meg a [LinkedIn adatvédelmi szabályzatát](https://www.linkedin.com/legal/privacy-policy). A LinkedIn-szolgáltatások, az adatforgalom és a tárolás esetében az adatok az Európai Unióból a Egyesült Államokba és vissza is áramlanak, és az adatvédelem védelme az [Európai Unió adatátviteli](https://www.linkedin.com/help/linkedin/answer/62533)szolgáltatásában leírtaknak megfelelően történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A Microsoft-alkalmazások munkahelyi vagy iskolai fiókjával LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077)
+* [A LinkedIn a munkahelyi vagy iskolai fiókkal rendelkező Microsoft-alkalmazásokban](https://www.linkedin.com/help/linkedin/answer/84077)

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882223"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038092"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -25,6 +25,13 @@ A parancsok általános formátuma: `azcopy [command] [arguments] --[flag-name]=
 
 Ha problémákat szeretne jelenteni, vagy többet szeretne megtudni az eszközről, tekintse meg a következőt: [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
 
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+
 ## <a name="options"></a>Beállítások
 
 **--Cap-Mbps UInt32**   Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
@@ -33,7 +40,7 @@ Ha problémákat szeretne jelenteni, vagy többet szeretne megtudni az eszközr�
       
 **--output-Type**  A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 - [azcopy pad](storage-ref-azcopy-bench.md)

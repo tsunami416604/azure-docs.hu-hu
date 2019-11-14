@@ -1,5 +1,5 @@
 ---
-title: 'Az ExpressRoute - klasszikus virtuális hálózati átjáró konfigurálása: Azure PowerShell-lel |} A Microsoft Docs'
+title: 'Azure ExpressRoute: átjáró hozzáadása VNet: klasszikus'
 description: Klasszikus üzemi modellben a virtuális hálózati átjáró konfigurálása virtuális hálózathoz a PowerShell használatával egy ExpressRoute-konfiguráció modell.
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75c2b400a2caf4e5f2e14589fc007bb506b46338
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365149"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031859"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>PowerShell (klasszikus) használatával ExpressRoute virtuális hálózati átjáró konfigurálása
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Ez a cikk végigvezeti a lépéseket adja hozzá, átméretezése és egy már m
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
-**Tudnivalók az Azure üzembe helyezési modelljeiről**
+**Tudnivalók az Azure üzembehelyezési modellekről**
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
@@ -36,6 +36,6 @@ Győződjön meg arról, hogy telepítette-e ehhez a konfigurációhoz szükség
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozta a virtuális hálózati átjáró, kapcsolat a virtuális hálózat csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz. Lásd: [virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport](expressroute-howto-linkvnet-classic.md).
 

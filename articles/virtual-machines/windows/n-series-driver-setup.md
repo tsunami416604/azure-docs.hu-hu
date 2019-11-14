@@ -1,5 +1,5 @@
 ---
-title: Azure N-Series GPU illesztőprogram-telepítő Windows rendszerhez | Microsoft Docs
+title: Azure N-Series GPU illesztőprogram-telepítő Windows rendszerhez
 description: NVIDIA GPU-illesztőprogramok beállítása az Azure-ban Windows Servert vagy Windowst futtató N sorozatú virtuális gépekhez
 services: virtual-machines-windows
 author: cynthn
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 9f6286f0a9c15b8089ff5ce9d6f3879b40aceaef
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207367"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033165"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken 
 
@@ -68,8 +68,8 @@ A legújabb 1,1 HpcVMDrivers bővítmény telepítése egy myVM nevű meglévő 
 A RDMA-hálózat támogatja a [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) vagy az Intel MPI 5. x verzióban futó alkalmazások üzenet-átadási felületének (MPI) forgalmát. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az NVIDIA Tesla GPU-k számára készült GPU-gyorsított alkalmazásokat fejlesztő fejlesztők is letölthetik és telepíthetik a legújabb [CUDA](https://developer.nvidia.com/cuda-downloads)-eszközkészletet. További információ: a [CUDA telepítési útmutatója](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* Az NVIDIA Tesla GPU-k számára készült GPU-gyorsított alkalmazásokat fejlesztő fejlesztők is letölthetik és telepíthetik a legújabb [CUDA-eszközkészletet](https://developer.nvidia.com/cuda-downloads). További információ: a [CUDA telepítési útmutatója](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 
 

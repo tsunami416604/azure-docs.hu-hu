@@ -1,6 +1,6 @@
 ---
-title: A Stretch Database TSQL - Azure transzparens adattitkosítás engedélyezése |} A Microsoft Docs
-description: Az SQL Server Stretch Database az Azure TSQL transzparens adattitkosításának (TDE) engedélyezése
+title: Stretch Database (T-SQL) transzparens adattitkosítás engedélyezése
+description: Transzparens adattitkosítás (TDE) engedélyezése SQL Server Stretch Database Azure-beli TSQL
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
@@ -13,49 +13,50 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002871"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033958"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transzparens adattitkosítás (TDE) engedélyezze a Stretch Database az Azure-ban (Transact-SQL)
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli Stretch Database (Transact-SQL)
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Transzparens adattitkosítás (TDE) segítségével elleni védelemhez kártevő szándékú tevékenységek valós idejű titkosítási és visszafejtési az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra inaktív elvégzésével az alkalmazás módosítása nélkül.
+A transzparens adattitkosítás (TDE) segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok számára, anélkül, hogy módosítani kellene az alkalmazást.
 
-TDE titkosítja a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. Az adatbázis-titkosítási kulcs egy beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány egy egyedülálló megoldás minden egyes Azure-kiszolgáló. A Microsoft legalább 90 naponként automatikusan elforgatja ezeket a tanúsítványokat. TDE általános ismertetését lásd: [Transzparens adattitkosítás (TDE)].
+A TDE titkosítja egy teljes adatbázis tárterületét az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával. Az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi. A beépített kiszolgáló tanúsítványa minden egyes Azure-kiszolgáló esetében egyedi. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat legalább 90 naponta. A TDE általános ismertetését lásd: [transzparens adattitkosítás (TDE)].
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése
-TDE engedélyezése az Azure-adatbázis, amely tárolja az adatokat át a Stretch engedélyezve van az SQL Server-adatbázisból, tegye a következőket:
+Ha engedélyezni szeretné a TDE egy olyan Azure-adatbázishoz, amely a stretch-kompatibilis SQL Server-adatbázisból áttelepített adatok tárolására szolgál, tegye a következőket:
 
-1. Csatlakozás a *fő* adatbázis az Azure használatával olyan bejelentkezési azonosítót, a rendszergazda vagy egy tagja az adatbázist futtató kiszolgálón a **dbmanager** szerepkör a master adatbázisban
-2. Futtassa a következő utasítást az adatbázis titkosításához.
+1. Kapcsolódjon az adatbázist futtató Azure-kiszolgálón található *Master* adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
+2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
-## <a name="disabling-encryption"></a>Letiltja a titkosítást
-TDE letiltása az Azure-adatbázis, amely tárolja az adatokat át a Stretch engedélyezve van az SQL Server-adatbázisból, tegye a következőket:
+## <a name="disabling-encryption"></a>Titkosítás letiltása
+Ha le szeretné tiltani egy olyan Azure-adatbázis TDE, amely a stretch-kompatibilis SQL Server-adatbázisból áttelepített adatok tárolására szolgál, tegye a következőket:
 
-1. Csatlakozás a *fő* használatával olyan bejelentkezési azonosítót, a rendszergazda vagy egy tagja a **dbmanager** szerepkör a master adatbázisban
-2. Futtassa a következő utasítást az adatbázis titkosításához.
+1. Kapcsolódjon a *Master* adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
+2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
-## <a name="verifying-encryption"></a>Titkosítási ellenőrzése
-Annak ellenőrzéséhez, hogy a Stretch engedélyezve van az SQL Server-adatbázisból áttelepítése titkosítási állapotát az Azure-adatbázis, amely tárolja az adatokat, tegye a következőket:
+## <a name="verifying-encryption"></a>Titkosítás ellenőrzése
+Egy olyan Azure-adatbázis titkosítási állapotának ellenőrzéséhez, amely a stretch-kompatibilis SQL Server-adatbázisból áttelepített adatok tárolására szolgál, tegye a következőket:
 
-1. Csatlakozás a *fő* vagy példány adatbázishoz olyan bejelentkezési azonosítót, a rendszergazda vagy egy tagja az a **dbmanager** szerepkör a master adatbázisban
-2. Futtassa a következő utasítást az adatbázis titkosításához.
+1. Kapcsolódjon a *Master* vagy a instance adatbázishoz egy olyan bejelentkezéssel, amely a főadatbázisban rendszergazda vagy a **DBManager** szerepkör tagja.
+2. A következő utasítás végrehajtásával titkosíthatja az adatbázist.
 
 ```sql
 SELECT
@@ -65,7 +66,7 @@ FROM
     sys.databases;
 ```
 
-Eredménye ```1``` azt jelzi, hogy egy titkosított adatbázis ```0``` azt jelzi, hogy a nem titkosított adatbázis.
+```1``` eredménye titkosított adatbázist jelez, ```0``` nem titkosított adatbázist jelez.
 
 <!--Anchors-->
 [Transzparens adattitkosítás (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

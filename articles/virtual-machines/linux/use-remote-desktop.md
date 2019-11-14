@@ -1,5 +1,5 @@
 ---
-title: Távoli asztal használata Linux rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+title: Távoli asztal használata Linux rendszerű virtuális gépen az Azure-ban
 description: Megtudhatja, hogyan telepíthet és konfigurálhat Távoli asztal (xrdp) az Azure-beli Linux rendszerű virtuális gépekhez grafikus eszközök használatával való kapcsolódáshoz
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 8631b05bc42df86ef6865bf2a07c0e3deaaad2fe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961542"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034281"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
 Az Azure-ban a Linux rendszerű virtuális gépeket általában egy Secure Shell-(SSH-) kapcsolatok használatával kezelik a parancssorból. A Linux vagy a gyors hibaelhárítási forgatókönyvek esetében a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen ismerteti, hogyan telepíthet és konfigurálhat egy asztali környezetet ([Xfce](https://www.xfce.org)) és egy távoli asztalt ([Xrdp](https://www.xrdp.org)) a Linux rendszerű virtuális géphez a Resource Manager-alapú üzemi modell használatával.
@@ -34,7 +34,7 @@ Ez a cikk egy meglévő Ubuntu 18,04 LTS virtuális gépet igényel az Azure-ban
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Asztali környezet telepítése Linux rendszerű virtuális gépen
 Az Azure-ban a legtöbb Linux rendszerű virtuális gép nem rendelkezik alapértelmezés szerint telepített asztali környezettel. A Linux rendszerű virtuális gépeket általában SSH-kapcsolatokkal, és nem asztali környezettel kezeljük. A Linux különböző asztali környezeteket is választhat. Az asztali környezettől függően egy-két GB lemezterületet is felhasználhat, és 5 – 10 percet is igénybe vehet az összes szükséges csomag telepítéséhez és konfigurálásához.
 
-Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek ( `yum` a Red Hat Enterprise Linux telepítésére és a megfelelő `selinux` szabályok konfigurálására, `zypper` vagy például a (z) rendszerre történő telepítésre használhatók a SUSE használatára).
+Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek (a `yum` használatával telepítheti Red Hat Enterprise Linux és konfigurálhatja a megfelelő `selinux` szabályokat, vagy a `zypper` használatával telepítheti a SUSE-et, például:).
 
 Először SSH-t a virtuális géphez. A következő példa a *myvm.westus.cloudapp.Azure.com* nevű virtuális géphez csatlakozik az *azureuser*felhasználónevével. Saját értékek használata:
 
@@ -44,7 +44,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 Ha Windows rendszert használ, és további információkra van szüksége az SSH használatával kapcsolatban, tekintse meg az [ssh-kulcsok használata a Windowsban](ssh-from-windows.md)című témakört.
 
-Ezután telepítse az Xfce `apt` -t a következő módon:
+Ezután telepítse az Xfce-t a `apt` használatával az alábbiak szerint:
 
 ```bash
 sudo apt-get update
@@ -106,7 +106,7 @@ Ha a helyi RDP-ügyfél hálózati szintű hitelesítést (NLA) használ, előfo
 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-Ha távoli asztal-ügyféllel nem tud csatlakozni a linuxos virtuális géphez, használja `netstat` a-t a linuxos virtuális gépen annak ellenőrzéséhez, hogy a virtuális gép az alábbi módon figyeli-e az RDP-kapcsolatokat:
+Ha Távoli asztal-ügyféllel nem tud csatlakozni a linuxos virtuális géphez, a Linux rendszerű virtuális gépen lévő `netstat` használatával ellenőrizze, hogy a virtuális gép az alábbi módon figyeli-e az RDP-kapcsolatokat:
 
 ```bash
 sudo netstat -plnt | grep rdp
@@ -136,7 +136,7 @@ Más Linux-disztribúciók, például a Red Hat Enterprise Linux és a SUSE kül
 Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](../windows/troubleshoot-app-connection.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az SSH-kulcsok Linux virtuális gépekkel való létrehozásával és használatával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Linux rendszerű virtuális gépekhez az Azure-ban](mac-create-ssh-keys.md).
 
 További információ az SSH Windows rendszeren való használatáról: [ssh-kulcsok használata a Windowsban](ssh-from-windows.md).

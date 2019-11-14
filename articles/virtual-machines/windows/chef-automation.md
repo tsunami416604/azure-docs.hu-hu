@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gépek üzembe helyezése Chef segítségével | Microsoft Docs
+title: Azure-beli virtuális gépek üzembe helyezése Chef segítségével
 description: Ismerje meg, hogyan használható a Chef a virtuális gépek automatikus üzembe helyezéséhez és konfigurálásához Microsoft Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 58642cdbf164523390d5e4925290b43f6c05549b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080087"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039548"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Azure-beli virtuális gépek üzembe helyezése a Cheffel
 
@@ -30,7 +30,7 @@ A Cloud API legújabb kiadásával a Chef zökkenőmentesen integrálható az Az
 Ebben a cikkben a Chef-környezetet úgy állíthatja be, hogy kiépítse az Azure-beli virtuális gépeket, és végigvezeti a szabályzatok vagy a "szakácskönyvek" létrehozásán, majd a szakácskönyv Azure-beli virtuális gépre való üzembe helyezésén.
 
 ## <a name="chef-basics"></a>Chef alapjai
-Mielőtt elkezdené, [tekintse át a Chef](https://www.chef.io/chef)alapfogalmait.
+Mielőtt elkezdené, [tekintse át a Chef alapfogalmait](https://www.chef.io/chef).
 
 A következő ábra a magas szintű Chef architektúrát ábrázolja.
 
@@ -44,8 +44,8 @@ A Chef-ügyfél (node) a kezelt kiszolgálókon található ügynök.
 
 A Chef munkaállomás, amely a felügyeleti munkaállomás neve, ahol szabályzatokat hozhat létre, és felügyeleti parancsokat, valamint a Chef Tools szoftvercsomag használatát is végrehajthatja.
 
-Általában a munkaállomást fogja látni a szoftvercsomag műveleteinek és _Chef_ -munkaállomásának helyeként.
-Például letöltheti a kés parancsot a _Chef munkaállomás_részeként, de a munkaállomásról származó kés parancsokat futtatva kezelheti az infrastruktúrát.
+Általában a _munkaállomást_ fogja látni a szoftvercsomag műveleteinek és _Chef-munkaállomásának_ helyeként.
+Például letöltheti a kés parancsot a _Chef munkaállomás_részeként, de a _munkaállomásról_ származó kés parancsokat futtatva kezelheti az infrastruktúrát.
 
 A Chef a "szakácskönyvek" és a "receptek" fogalmait is alkalmazza, amelyek gyakorlatilag az általunk definiált szabályzatok, és a kiszolgálókra érvényesek.
 
@@ -97,15 +97,15 @@ A szervezet létrehozása után töltse le az alapszintű csomagot.
 > Ha figyelmeztetés jelenik meg, hogy a kulcsok alaphelyzetbe lesznek állítva, akkor a folytatáshoz, mivel még nincs konfigurálva a meglévő infrastruktúra.
 >
 
-Ez a Starter Kit zip-fájl tartalmazza a szervezet konfigurációs fájljait és `.chef` a felhasználói kulcsot a címtárban.
+Ez a Starter Kit zip-fájl tartalmazza a szervezet konfigurációs fájljait és a felhasználói kulcsot a `.chef` könyvtárban.
 
-A `organization-validator.pem` fájlt külön kell letölteni, mert a titkos kulcs, és a titkos kulcsok nem tárolhatók a Chef-kiszolgálón. A [Chef-kezelés](https://manage.chef.io/)területen lépjen az adminisztráció szakaszra, és válassza az "érvényesítési kulcs alaphelyzetbe állítása" lehetőséget, amely egy fájlt biztosít, amely külön letölthető. Mentse a fájlt a c:\chef.
+A `organization-validator.pem` külön kell letölteni, mert az egy titkos kulcs, és a titkos kulcsokat nem szabad a Chef-kiszolgálón tárolni. A [Chef-kezelés](https://manage.chef.io/)területen lépjen az adminisztráció szakaszra, és válassza az "érvényesítési kulcs alaphelyzetbe állítása" lehetőséget, amely egy fájlt biztosít, amely külön letölthető. Mentse a fájlt a c:\chef.
 
 ### <a name="configuring-your-chef-workstation"></a>A Chef munkaállomás konfigurálása
 
 A Chef-Starter. zip fájl tartalmának kibontása a c:\chef.
 
-Másolja az összes fájlt a\.Chef-starter\chef-repo Chef alá a c:\chef könyvtárba.
+Másolja az Chef-starter\chef-repo\.Chef alatt lévő összes fájlt a c:\chef-könyvtárba.
 
 Másolja a `organization-validator.pem` fájlt a c:\chef-be, ha az letöltések-ben lett mentve
 
@@ -193,9 +193,9 @@ knife[:azure_client_secret] = "#1234p$wdchef19"
 Ezután [töltse le és telepítse a](https://downloads.chef.io/chef-workstation/) Chef munkaállomást.
 Telepítse a Chef munkaállomás alapértelmezett helyét. A telepítés néhány percet is igénybe vehet.
 
-Az asztalon egy "CW PowerShell" jelenik meg, amely a Chef-termékekkel való interakcióhoz szükséges eszközzel betöltött környezet. A CW PowerShell új ad hoc parancsokat tesz elérhetővé, `chef-run` például a hagyományos Chef CLI-parancsokat is, `chef`például:. Megtekintheti a Chef munkaállomás és a Chef eszközeinek `chef -v`telepített verzióját. Azt is megteheti, hogy a munkaállomásának verzióját a Chef Workstation alkalmazás "a Chef munkaállomás névjegye" elemére kattintva is megtekintheti.
+Az asztalon egy "CW PowerShell" jelenik meg, amely a Chef-termékekkel való interakcióhoz szükséges eszközzel betöltött környezet. A CW PowerShell új ad hoc parancsokat tesz elérhetővé, például a `chef-run`t, valamint a hagyományos Chef CLI-parancsokat, például a `chef`. Megtekintheti a Chef Workstation és a Chef Tools-t a `chef -v`segítségével. Azt is megteheti, hogy a munkaállomásának verzióját a Chef Workstation alkalmazás "a Chef munkaállomás névjegye" elemére kattintva is megtekintheti.
 
-`chef --version`a következőhöz hasonlót kell visszaadnia:
+`chef --version` a következőhöz hasonlót kell visszaadnia:
 
 ```
 Chef Workstation: 0.4.2

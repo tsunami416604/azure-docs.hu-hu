@@ -1,6 +1,6 @@
 ---
-title: Linux-környezet létrehozása az Azure CLI-vel |} A Microsoft Docs
-description: Hozzon létre a storage, Linux rendszerű virtuális gép, virtuális hálózat és alhálózat, egy terheléselosztó, egy hálózati Adaptert, nyilvános IP-cím és egy hálózati biztonsági csoportot, az alapoktól az Azure CLI-vel az összes.
+title: Linux-környezet létrehozása az Azure CLI-vel
+description: Hozzon létre egy tárolót, egy Linux virtuális gépet, egy virtuális hálózatot és egy alhálózatot, egy terheléselosztó, egy hálózati adapter, egy nyilvános IP-címet és egy hálózati biztonsági csoportot, amely az Azure CLI használatával az alapoktól kezdve.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bcaa3ae105490fe4f38a9de47ba0450c33da5ee1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 56b476c431ed8b41f04b1a1c11c730e5260ade8d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671639"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036545"
 ---
-# <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
-Gyorsan létrehozhat egy virtuális gépet (VM) az Azure-ban, használhatja egy egyetlen Azure CLI-paranccsal, amely minden szükséges támogató erőforrások létrehozása az alapértelmezett értékeket használja. Erőforrások, például egy virtuális hálózat, nyilvános IP-cím és hálózati biztonsági csoport szabályait a rendszer automatikusan létrehozza. Az éles környezet még nagyobb mértékben használja, előfordulhat, hogy a kívánt időben az erőforrások létrehozásához, és hozzáadhatja őket a virtuális gépek. Ez a cikk végigvezeti egy virtuális Gépet, és a támogató erőforrások egyenként mindegyike létrehozása.
+# <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes linuxos virtuális gép létrehozása az Azure CLI-vel
+Virtuális gép (VM) gyors létrehozásához az Azure-ban használhat egyetlen Azure CLI-parancsot, amely az alapértelmezett értékeket használja a szükséges támogatási erőforrások létrehozásához. A rendszer automatikusan létrehozza az erőforrásokat, például a virtuális hálózatot, a nyilvános IP-címet és a hálózati biztonsági csoport szabályait. A környezet éles környezetben való használatának szabályozása érdekében érdemes lehet előre létrehozni ezeket az erőforrásokat, majd hozzáadni a virtuális gépeket. Ez a cikk végigvezeti a virtuális gépek és az egyes támogatási erőforrások egyenkénti létrehozásán.
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és az Azure-fiók [az bejelentkezési](/cli/azure/reference-index).
+Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és bejelentkezett egy Azure-fiókba az az [login](/cli/azure/reference-index)paranccsal.
 
-A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: *myResourceGroup*, *myVnet*és *myVM*.
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A virtuális gépek és a támogató virtuális hálózati erőforrások előtt egy erőforráscsoportot kell létrehozni. Hozzon létre az erőforráscsoportot a [az csoport létrehozása](/cli/azure/group). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Létre kell hozni egy erőforráscsoportot a virtuális gép és a virtuális hálózati erőforrások támogatása előtt. Hozza létre az erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object Notation) formátumban. Ha módosítani szeretné az alapértelmezett kimeneti listában vagy táblázat, például használata [konfigurálása az--output](/cli/azure/reference-index). Azt is megteheti `--output` egy ideje semmilyen parancs kimeneti formátum változtatható meg. Az alábbi példa bemutatja a JSON-kimenet a `az group create` parancsot:
+Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object Notation). Az alapértelmezett kimenet listára vagy táblára való módosításához használja például az [az configure--output](/cli/azure/reference-index)értéket. `--output` is hozzáadhat bármely parancshoz, ha a kimeneti formátum egy alkalommal változik. Az alábbi példa a `az group create` parancs JSON-kimenetét mutatja:
 
 ```json                       
 {
@@ -51,7 +51,7 @@ Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
-Tovább az Azure és a egy alhálózatot a virtuális hálózatot hoz létre, amelyhez a virtuális gépeket hozhat létre. Használat [az network vnet létrehozása](/cli/azure/network/vnet) nevű virtuális hálózat létrehozása *myVnet* az a *192.168.0.0/16* cím előtagja. Nevű alhálózatot is hozzáadhat *mySubnet* a cím előtagja *192.168.1.0/24*:
+Ezután hozzon létre egy virtuális hálózatot az Azure-ban, és egy alhálózatot, amelybe létrehozhatja a virtuális gépeket. Az [az Network vnet Create](/cli/azure/network/vnet) paranccsal hozzon létre egy *myVnet* nevű virtuális hálózatot a *192.168.0.0/16-* címe előtaggal. A *mySubnet* nevű alhálózatot is hozzáadhatja a *192.168.1.0/24*címének előtagjaként:
 
 ```azurecli
 az network vnet create \
@@ -62,7 +62,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-A kimenet mutatja, hogy az alhálózat logikailag jön létre a virtuális hálózaton belül:
+A kimenet azt mutatja, hogy az alhálózat logikailag jön létre a virtuális hálózaton belül:
 
 ```json
 {
@@ -103,7 +103,7 @@ A kimenet mutatja, hogy az alhálózat logikailag jön létre a virtuális hál�
 
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-Most hozzunk létre egy nyilvános IP-címet [az network public-ip létrehozása](/cli/azure/network/public-ip). A nyilvános IP-cím lehetővé teszi, hogy az internetről a virtuális gépek csatlakozni. Mivel az alapértelmezett cím a dinamikus, hozzon létre egy elnevezett DNS-bejegyzést a a `--domain-name-label` paraméter. Az alábbi példa létrehoz egy nyilvános IP-cím nevű *myPublicIP* a DNS-nevét *mypublicdns*. Mivel a DNS-nevének egyedinek kell lennie, adja meg a saját egyedi DNS-nevet:
+Most hozzon létre egy nyilvános IP-címet az [az Network Public-IP Create](/cli/azure/network/public-ip)paranccsal. Ez a nyilvános IP-cím lehetővé teszi, hogy az internetről csatlakozhasson a virtuális gépekhez. Mivel az alapértelmezett címek dinamikusak, hozzon létre egy nevesített DNS-bejegyzést a `--domain-name-label` paraméterrel. A következő példa egy *myPublicIP* nevű nyilvános IP-címet hoz létre a *mypublicdns*DNS-nevével. Mivel a DNS-névnek egyedinek kell lennie, meg kell adnia a saját egyedi DNS-nevét:
 
 ```azurecli
 az network public-ip create \
@@ -142,7 +142,7 @@ Kimenet:
 
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-A virtuális gépek és gépből irányuló forgalom szabályozásához, a hálózati biztonsági csoport egy virtuális hálózati adapter vagy alhálózat a alkalmazni. Az alábbi példában [az network nsg létrehozása](/cli/azure/network/nsg) hozhat létre egy hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+A virtuális gépek bejövő és kimenő forgalmának szabályozásához egy hálózati biztonsági csoportot kell alkalmaznia egy virtuális hálózati ADAPTERre vagy alhálózatra. Az alábbi példa az [az Network NSG Create](/cli/azure/network/nsg) paranccsal hoz létre egy *myNetworkSecurityGroup*nevű hálózati biztonsági csoportot:
 
 ```azurecli
 az network nsg create \
@@ -150,7 +150,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Meghatározhat szabályokat, amelyek adott adatforgalom engedélyezéséhez vagy letiltásához. (Az SSH-hozzáférés engedélyezése) 22-es port bejövő kapcsolatok engedélyezéséhez hozzon létre egy bejövő szabályt, [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule). A következő példában létrehozunk egy nevű szabályt *myNetworkSecurityGroupRuleSSH*:
+Olyan szabályokat határozhat meg, amelyek engedélyezik vagy megtagadják a megadott forgalmat. Ha engedélyezni szeretné a bejövő kapcsolatokat a 22-es porton (az SSH-hozzáférés engedélyezéséhez), hozzon létre egy bejövő szabályt az [az Network NSG Rule Create](/cli/azure/network/nsg/rule)paranccsal. A következő példa egy *myNetworkSecurityGroupRuleSSH*nevű szabályt hoz létre:
 
 ```azurecli
 az network nsg rule create \
@@ -163,7 +163,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Ahhoz, hogy a bejövő kapcsolatokat a 80-as porton (a webes forgalom), adjon hozzá egy másik hálózati biztonsági csoportra vonatkozó szabályt. A következő példában létrehozunk egy nevű szabályt *myNetworkSecurityGroupRuleHTTP*:
+Ha engedélyezni szeretné a bejövő kapcsolatokat az 80-as porton (webes forgalomhoz), adjon hozzá egy másik hálózati biztonsági csoportra vonatkozó szabályt. A következő példa egy *myNetworkSecurityGroupRuleHTTP*nevű szabályt hoz létre:
 
 ```azurecli
 az network nsg rule create \
@@ -176,7 +176,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Ellenőrizze a hálózati biztonsági csoport és a szabályok [az network nsg show](/cli/azure/network/nsg):
+Vizsgálja meg a hálózati biztonsági csoportot és a szabályokat az [az Network NSG show](/cli/azure/network/nsg)paranccsal:
 
 ```azurecli
 az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGroup
@@ -332,8 +332,8 @@ Kimenet:
 }
 ```
 
-## <a name="create-a-virtual-nic"></a>Hozzon létre egy virtuális hálózati Adaptert
-Virtuális hálózati adapterek (NIC) programozott módon érhető el, mert használati szabályokat alkalmazhat. Attól függően, a [Virtuálisgép-méret](sizes.md), több virtuális hálózati adapter csatlakoztatása egy virtuális Gépet. A következő [az network nic létrehozása](/cli/azure/network/nic) parancs létrehoz egy hálózati Adaptert *myNic* , és társíthatja azt a hálózati biztonsági csoport. A nyilvános IP-cím *myPublicIP* is kapcsolódik a virtuális hálózati adaptert.
+## <a name="create-a-virtual-nic"></a>Virtuális hálózati adapter létrehozása
+A virtuális hálózati adapterek (NIC-EK) programozott módon elérhetők, mert szabályokat alkalmazhat a használatára. A virtuálisgép- [mérettől](sizes.md)függően több virtuális hálózati adaptert is csatolhat egy virtuális géphez. A következő az [Network NIC Create](/cli/azure/network/nic) paranccsal hozzon létre egy *MYNIC* nevű hálózati adaptert, és társítsa azt a hálózati biztonsági csoporttal. A nyilvános IP- *myPublicIP* a virtuális hálózati adapterhez is társítva van.
 
 ```azurecli
 az network nic create \
@@ -437,15 +437,15 @@ Kimenet:
 
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
-Rendelkezésre állási a virtuális gépek csoportok súgó megállítását tartalék tartományokban és frissítési tartományok között. Annak ellenére, hogy csak egy virtuális Gépet hoz létre most, hogy egyszerűbb legyen a jövőben bontsa ki a rendelkezésre állási csoportok használata ajánlott eljárás. 
+A rendelkezésre állási csoportok segítenek a virtuális gépeknek a tartalék tartományokban és a frissítési tartományokban való terjesztésében. Annak ellenére, hogy jelenleg csak egy virtuális gépet hoz létre, ajánlott a rendelkezésre állási csoportok használata, hogy könnyebben kibővíthető legyen a jövőben. 
 
-A tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkező virtuális gépek csoportját határozza meg. Alapértelmezés szerint a rendelkezésre állási csoportba konfigurált virtuális gépek legfeljebb három tartalék tartományba vannak elkülönítve. A tartalék tartományok valamelyikében hardverprobléma minden virtuális gép, amelyen fut az alkalmazás nincs hatással.
+A tartalék tartományok definiálják azokat a virtuális gépeket, amelyek közös áramforrással és hálózati kapcsolóval rendelkeznek. Alapértelmezés szerint a rendelkezésre állási csoporton belül konfigurált virtuális gépek legfeljebb három tartalék tartományba vannak elválasztva. Ezen tartalék tartományok egyikének hardveres hibája nem befolyásolja az alkalmazást futtató összes virtuális gépet.
 
-Frissítési tartományok adja meg a csoportok a virtuális gépeket és mögöttes fizikai hardvereszközöket, amelyek egyszerre indíthatók újra. A tervezett karbantartás során melyik frissítés tartományok újraindulásakor sorrendje nem feltétlenül egymást követő, de csak egyetlen frissítési tartományt lehet újraindítani egyszerre.
+A frissítési tartományok olyan virtuális gépek és mögöttes fizikai hardverek csoportjait jelölik, amelyek egy időben újraindíthatók. A tervezett karbantartás során előfordulhat, hogy a frissítési tartományok újraindítása nem szekvenciális, de egyszerre csak egy frissítési tartományt indít el a rendszer.
 
-Azure virtuális gépek automatikusan a tartalék és frissítési tartományok között osztja el, ha egy rendelkezésre állási csoportba helyezi őket. További információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](manage-availability.md).
+Az Azure automatikusan elosztja a virtuális gépeket a hibák és a frissítési tartományok között, amikor rendelkezésre állási csoportba helyezi őket. További információ: [a virtuális gépek rendelkezésre állásának kezelése](manage-availability.md).
 
-Hozzon létre egy rendelkezésre állási csoportot a virtuális gép [az virtuális gép rendelkezésre állási csoport létrehozása](/cli/azure/vm/availability-set). Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
+Hozzon létre egy rendelkezésre állási készletet a virtuális géphez az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set)paranccsal. Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 
 ```azurecli
 az vm availability-set create \
@@ -453,7 +453,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-A kimeneti megjegyzések tartalék tartományokban és frissítési tartományok:
+A kimeneti megjegyzések tartalék tartományai és frissítési tartományai:
 
 ```json
 {
@@ -478,11 +478,11 @@ A kimeneti megjegyzések tartalék tartományokban és frissítési tartományok
 
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
-A hálózati erőforrások az internethez csatlakozó virtuális gépek támogatásához létrehozott. Most hozzon létre egy virtuális Gépet, és biztonságos, az SSH-kulcsot. Ebben a példában hozzunk létre egy Ubuntu virtuális gép a legutóbbi LTS alapján. További rendszerképeket az annak [az virtuálisgép-lemezkép lista](/cli/azure/vm/image)leírtak szerint [Azure Virtuálisgép-rendszerképek keresése](cli-ps-findimage.md).
+Létrehozta a hálózati erőforrásokat az internetről elérhető virtuális gépek támogatásához. Most hozzon létre egy virtuális gépet, és gondoskodjon róla, hogy SSH-kulccsal lássa el. Ebben a példában hozzunk létre egy Ubuntu virtuális gépet a legfrissebb LTS alapján. További rendszerképeket az [az VM Image List](/cli/azure/vm/image)paranccsal talál, az [Azure VM-rendszerképek megkeresése](cli-ps-findimage.md)című témakörben leírtak szerint.
 
-Adjon meg egy SSH-kulcsot a hitelesítéshez használandó. Ha a nyilvános ssh-kulcs nem rendelkezik, [hozza létre őket](mac-create-ssh-keys.md) vagy használja a `--generate-ssh-keys` paramétert kell létrehoznia őket. Ha már rendelkezik egy kulcsból álló kulcspárt, ezt a paramétert a meglévő kulcsokat használ-e `~/.ssh`.
+A hitelesítéshez használandó SSH-kulcs megadása. Ha nem rendelkezik nyilvános SSH-kulcspár használatával [, létrehozhatók, vagy a](mac-create-ssh-keys.md) `--generate-ssh-keys` paraméterrel hozhatja létre őket. Ha már van kulcspár, a paraméter a `~/.ssh`meglévő kulcsait használja.
 
-A virtuális gép létrehozásához, és az erőforrások és információk együtt a [az virtuális gép létrehozása](/cli/azure/vm) parancsot. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
+Hozza létre a virtuális gépet úgy, hogy az az [VM Create](/cli/azure/vm) paranccsal együtt létrehozza az összes erőforrást és információt. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
 ```azurecli
 az vm create \
@@ -496,7 +496,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép nyilvános IP-cím létrehozásakor megadott DNS-bejegyzést az ssh-KAPCSOLATOT. Ez `fqdn` a virtuális gép létrehozásakor a kimenet látható:
+SSH-t a virtuális géphez a nyilvános IP-cím létrehozásakor megadott DNS-bejegyzéssel. Ez a `fqdn` a virtuális gép létrehozásakor jelenik meg a kimenetben:
 
 ```json
 {
@@ -548,26 +548,26 @@ See "man sudo_root" for details.
 azureuser@myVM:~$
 ```
 
-Telepítheti az nginx-et és a hálózati forgalom a virtuális géphez a folyamat. Nginx-et a következőképpen telepítheti:
+Telepítheti az NGINX-t, és megtekintheti a virtuális gép felé irányuló forgalmat. Telepítse az NGINX-et a következőképpen:
 
 ```bash
 sudo apt-get install -y nginx
 ```
 
-Ha szeretné látni működés közben az alapértelmezett NGINX-webhely, nyissa meg a webböngészőjét, és adja meg a teljes Tartománynevet:
+Az alapértelmezett NGINX-webhely működés közbeni megtekintéséhez nyissa meg a webböngészőt, és adja meg a teljes tartománynevet:
 
-![Alapértelmezett NGINX helyet a virtuális Gépen](media/create-cli-complete/nginx.png)
+![Alapértelmezett NGINX-webhely a virtuális gépen](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportálás sablonként
-Mi történik, ha most szeretné hozzon létre egy további fejlesztési környezetben ugyanazokat a paramétereket, vagy éles környezetben, amely megfelel azt? Resource Manager használ a környezet összes paramétereit meghatározó JSON-sablonok. A JSON-sablon hivatkozik felépítése teljes környezetek. Is [JSON-sablonok készítése manuálisan](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy egy meglévő környezetet hozza létre a JSON-sablon exportálása. Használat [az exportálása](/cli/azure/group) módon exportálhatja az erőforráscsoport:
+Mi a teendő, ha már szeretne egy további fejlesztési környezetet létrehozni ugyanazzal a paraméterekkel vagy egy olyan éles környezettel, amely megfelel a szolgáltatásnak? A Resource Manager JSON-sablonokat használ, amelyek meghatározzák a környezet összes paraméterét. A JSON-sablonra hivatkozó teljes környezeteket hozhat létre. A JSON- [sablonokat manuálisan](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is létrehozhatja, vagy exportálhat egy meglévő környezetet a JSON-sablon létrehozásához. Az alábbi módon exportálhatja az erőforráscsoportot az az [Group export](/cli/azure/group) paranccsal:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Ez a parancs létrehozza a `myResourceGroup.json` fájlt az aktuális munkakönyvtárba. Ebből a sablonból létrehozott egy környezetet, ha a rendszer kéri az erőforrások nevei esetében. Fel lehet tölteni ezeket a neveket a sablon fájlban adja hozzá a `--include-parameter-default-value` paramétert a `az group export` parancsot. Az erőforrás nevének megadása a JSON-sablon szerkesztése vagy [hozzon létre egy parameters.json fájlban](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely meghatározza, hogy az erőforrások nevei.
+Ez a parancs létrehozza a `myResourceGroup.json` fájlt az aktuális munkakönyvtárban. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy Parameters. JSON fájlt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely megadja az erőforrások nevét.
 
-Létrehoz egy környezetet a sablonból, használja a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment) módon:
+Ha létre szeretne hozni egy környezetet a sablonból, használja az [az Group Deployment Create](/cli/azure/group/deployment) elemet a következő módon:
 
 ```azurecli
 az group deployment create \
@@ -575,7 +575,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-Előfordulhat, hogy szeretné olvasni [sablonokból történő központi telepítéséről további](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ismerje meg hogyan növekményes környezetek frissítse, használhatja a paramétereket tartalmazó fájlt, és sablonok egyetlen helyről.
+Előfordulhat, hogy [további információra van szüksége a sablonokból való üzembe helyezésről](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). További információ a környezetek növekményes frissítéséről, a Parameters fájl használatáról és a sablonok egyetlen tárolási helyről való eléréséről.
 
-## <a name="next-steps"></a>További lépések
-Most már készen áll a több hálózati összetevők és a virtuális gépek használatának megkezdése előtt. Ez a minta-környezet használatával hozhatja létre az alkalmazás a bevezetett alapvető összetevők ide használatával.
+## <a name="next-steps"></a>Következő lépések
+Most már készen áll a több hálózati összetevő és virtuális gép használatának megkezdésére. Ezzel a minta környezettel kiépítheti az alkalmazást az itt bemutatott alapvető összetevők használatával.

@@ -1,5 +1,5 @@
 ---
-title: Key Vault beállítása a Windows rendszerű virtuális gépekhez Azure Resource Managerban | Microsoft Docs
+title: Key Vault beállítása a Windows rendszerű virtuális gépekhez Azure Resource Manager
 description: Key Vault beállítása Azure Resource Manager virtuális géppel való használatra.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 225ce9fcbb18aa374f413e8e237c911c85cc77a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999354"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038208"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault beállítása virtuális gépekhez Azure Resource Manager
 
@@ -56,7 +56,7 @@ Ezután az Key Vault a sablonok központi telepítésének engedélyezéséhez f
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Sablonok használata a Key Vault beállításához
-Sablon használatakor a `enabledForDeployment` `true` tulajdonságot a Key Vault erőforráshoz kell beállítania.
+A sablon használatakor a `enabledForDeployment` tulajdonságot a Key Vault erőforráshoz tartozó `true`re kell állítania.
 
     {
       "type": "Microsoft.KeyVault/vaults",

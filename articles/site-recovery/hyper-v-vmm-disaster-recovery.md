@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933530"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039675"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Másodlagos helyszíni helyre irányuló vészhelyreállítás beállítása Hyper-V virtuális gépekhez
 
@@ -30,7 +30,7 @@ A cikk bemutatja, hogyan állíthat be vészhelyreállítást egy másodlagos he
 > * Virtuális gép replikálásának engedélyezése
 
 > [!WARNING]
-> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
+> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](site-to-site-deprecation.md) adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ A forgatókönyv teljesítéséhez:
 - Ellenőrizze, hogy a replikálni kívánt virtuális gépek megfelelnek-e [a replikált gépekre vonatkozó támogatás](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support) feltételeinek.
 - Készítse elő a VMM-kiszolgálókat a hálózatleképezéshez.
 
-### <a name="prepare-for-network-mapping"></a>Hálózatleképezés előkészítése
+### <a name="prepare-for-network-mapping"></a>A hálózatleképezés előkészítése
 
 A [hálózatleképezés](hyper-v-vmm-network-mapping.md) kapcsolatot hoz létre a forrás- és célfelhőkben lévő helyszíni VMM-virtuálisgép-hálózatok között. A leképezés a következőket hajtja végre:
 

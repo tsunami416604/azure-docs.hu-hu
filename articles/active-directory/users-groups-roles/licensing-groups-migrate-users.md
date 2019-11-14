@@ -1,31 +1,31 @@
 ---
-title: Egyénileg licencelt felhasználók hozzáadása a csoportos licenceléshez – Azure Active Directory | Microsoft Docs
+title: Közvetlen licenccel rendelkező felhasználók hozzáadása a licenceléshez – Azure AD | Microsoft Docs
 description: Áttelepítés az egyes felhasználói licencekről a csoport alapú licencelésre Azure Active Directory használatával
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034760"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025681"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Egyéni licenccel rendelkező felhasználók áttelepítése licencelési csoportokba
 
-Lehetséges, hogy a szervezet felhasználói számára a "közvetlen hozzárendelés" használatával telepített licencek léteznek. Ez a PowerShell-parancsfájlok vagy más eszközök használata az egyes felhasználói licencek hozzárendeléséhez. Mielőtt elkezdi a csoportos licencelés használatát a szervezeten belüli licencek kezeléséhez, az áttelepítési terv segítségével zökkenőmentesen lecserélheti a meglévő megoldásokat a csoport alapú licenceléssel.
+Előfordulhat, hogy a szervezet felhasználói számára közvetlen hozzárendeléssel telepített meglévő licencek vannak telepítve. Ez a PowerShell-parancsfájlok vagy más eszközök használata az egyes felhasználói licencek hozzárendeléséhez. Mielőtt elkezdi a csoportos licencelés használatát a szervezeten belüli licencek kezeléséhez, az áttelepítési terv segítségével zökkenőmentesen lecserélheti a meglévő megoldásokat a csoport alapú licenceléssel.
 
 A legfontosabb, hogy ne feledje, hogy el kell kerülnie azt a helyzetet, amikor a csoport alapú licencelésre való áttérés miatt a felhasználók átmenetileg elvesztik a jelenleg hozzárendelt licenceket. A licencek eltávolítását eredményező folyamatokat el kell kerülni, hogy el lehessen távolítani a felhasználókat a szolgáltatásokhoz és az azokhoz való hozzáférés elvesztésével járó kockázatokat.
 
@@ -77,7 +77,7 @@ Az áttelepítési folyamat így néz ki:
 
    ![Győződjön meg arról, hogy a közvetlen licencek el vannak távolítva](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a csoportos licencek kezelésével kapcsolatos egyéb forgatókönyvekről:
 

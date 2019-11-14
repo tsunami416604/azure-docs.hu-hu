@@ -1,79 +1,79 @@
 ---
-title: A LinkedIn-fiókkapcsolatok – Azure Active Directory rendszergazdai jóváhagyás |} A Microsoft Docs
-description: Azt ismerteti, hogyan engedélyezheti vagy tilthatja le a LinkedIn integrációs fiók kapcsolatok a Microsoft-alkalmazások az Azure Active Directoryban
+title: Rendszergazdai engedély a LinkedIn-fiókok kapcsolataihoz – Azure AD | Microsoft Docs
+description: A cikk azt ismerteti, hogyan engedélyezhető vagy tiltható le a LinkedIn integrációs fiók kapcsolatai a Microsoft-alkalmazásokban Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164713"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025415"
 ---
-# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-fiókkapcsolatok az Azure Active Directory integrálása
+# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
 
-A saját LinkedIn kapcsolatok bizonyos Microsoft-alkalmazások eléréséhez a szervezet lehetővé tehetik a felhasználóknak. Nincsenek adatok meg van osztva, amíg a felhasználók beleegyezik abba, hogy csatlakoztathassák a fiókjukat. A szervezet az Azure Active Directoryban (Azure AD) integrálható [felügyeleti központban](https://aad.portal.azure.com).
+Lehetővé teheti, hogy a szervezet felhasználói a LinkedIn-kapcsolataikat bizonyos Microsoft-alkalmazásokon belül elérhessék. A felhasználók nem oszthatnak meg semmilyen adatmegosztást, amíg a felhasználók nem csatlakoznak a fiókjához. A szervezet integrálható a Azure Active Directory (Azure AD) [felügyeleti központba](https://aad.portal.azure.com).
 
 > [!IMPORTANT]
-> A LinkedIn-fiókkapcsolatok beállítása jelenleg tesszük elérhetővé az Azure AD a szervezetek számára. Amikor bevezetné a szervezet számára, hogy alapértelmezés szerint engedélyezve van.
+> A LinkedIn-fiók kapcsolatainak beállítása jelenleg az Azure AD-szervezeteknél zajlik. Ha a szervezet számára bekerül, alapértelmezés szerint engedélyezve van.
 > 
-> Kivételek:
-> * A beállítás nem érhető el az USA kormányzati szerveinek biztosított, a Microsoft Cloud németországi adatközpontjában, vagy az Azure és az Office 365 Kínában a 21Vianet által üzemeltetett Microsoft Cloudot használó ügyfelek számára.
-> * A beállítás Németországban kiépített bérlők alapértelmezés szerint ki van kapcsolva. Vegye figyelembe, hogy a beállítás nem érhető el a Microsoft Cloud németországi adatközpontjában használó ügyfelek számára.
-> * A beállítás a franciaországi kiépített bérlők alapértelmezés szerint ki van kapcsolva.
+> Kivételek
+> * A beállítás nem érhető el olyan ügyfelek számára, akik az Egyesült Államok kormánya, a Microsoft Cloud Németország vagy az Azure és az Office 365 Microsoft Cloudt használják Kínában 21Vianet.
+> * A beállítás alapértelmezés szerint ki van kapcsolva a Németországban kiépített bérlők esetében. Vegye figyelembe, hogy a beállítás nem érhető el a Microsoft Cloud Németországot használó ügyfelek számára.
+> * A beállítás alapértelmezés szerint ki van kapcsolva a Franciaországban kiépített bérlők esetében.
 >
-> Ha a LinkedIn-fiókkapcsolatok engedélyezve vannak a szervezet számára, az a fiók kapcsolatok követően a felhasználók járul hozzá az alkalmazások hozzáférjenek a céges adatok saját nevükben való működik. A felhasználó hozzájárulási beállítással kapcsolatos további információkért lásd: [eltávolítása egy felhasználó hozzáférést egy alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
+> Ha a LinkedIn-fiókok kapcsolatai engedélyezve vannak a szervezet számára, a fiókok kapcsolatai a felhasználók által a nevükben elérhető vállalati adatokhoz való hozzáférésük után működnek. A felhasználói beleegyező beállításokkal kapcsolatos további információkért lásd: [felhasználó hozzáférésének eltávolítása egy alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 
-## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>Az Azure Portalon LinkedIn-fiókkapcsolatok engedélyezése
+## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>A LinkedIn-fiókok kapcsolatainak engedélyezése a Azure Portalban
 
-LinkedIn-fiókkapcsolatok csak a felhasználók számára szeretné engedélyezni a hozzáférést, a teljes szervezet a szervezet csak a kijelölt felhasználókra is engedélyezheti.
+A LinkedIn-fiókok kapcsolatai csak azokra a felhasználókra engedélyezhetők, akik számára hozzáférést szeretne elérni, a teljes szervezetből csak a szervezet kiválasztott felhasználói számára.
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/) egy olyan fiókkal, amely az Azure ad-ben a szervezet globális rendszergazdája.
-1. Válassza ki **felhasználók**.
-1. Az a **felhasználók** panelen válassza ki **felhasználói beállítások**.
-1. A **LinkedIn-fiókkapcsolatok**, engedélyezése a felhasználók számára, hogy csatlakoztathassák a fiókjukat a LinkedIn kapcsolatok bizonyos Microsoft-alkalmazások eléréséhez. Nincsenek adatok meg van osztva, amíg a felhasználók beleegyezik abba, hogy csatlakoztathassák a fiókjukat.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
+1. Válassza a **felhasználók**lehetőséget.
+1. A **felhasználók** panelen válassza a **felhasználói beállítások**lehetőséget.
+1. A **LinkedIn-fiókok kapcsolatai**területen engedélyezze a felhasználók számára, hogy a LinkedIn-kapcsolataik elérését néhány Microsoft-alkalmazáson belül hozzáférjenek a fiókjához. A felhasználók nem oszthatnak meg semmilyen adatmegosztást, amíg a felhasználók nem csatlakoznak a fiókjához.
 
-    * Válassza ki **Igen** a szervezet összes felhasználója számára a szolgáltatás engedélyezése
-    * Válassza ki **kiválasztott csoportot** a szolgáltatás csak a kiválasztott felhasználók a szervezet csoport engedélyezése
-    * Válassza ki **nem** való Jóváhagyás eltávolítása a szervezet összes felhasználója
+    * Az **Igen** lehetőség kiválasztásával engedélyezheti a szolgáltatást a szervezet összes felhasználója számára
+    * Válassza a **kijelölt csoport** lehetőséget, hogy a szolgáltatás csak a szervezet kiválasztott felhasználói csoportjának engedélyezze a szolgáltatást
+    * A **nem** gombra kattintva visszavonhatja a szervezet összes felhasználójának beleegyezikét
 
-    ![Integrálása a szervezet LinkedIn-fiókkapcsolatok](./media/linkedin-integration/linkedin-integration.png)
+    ![A LinkedIn-fiókok kapcsolatainak integrálása a szervezetbe](./media/linkedin-integration/linkedin-integration.png)
 
-1. Ha elkészült, válassza ki a **mentése** a beállítások mentéséhez.
+1. Ha elkészült, válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
 > [!Important]
-> LinkedIn-integráció nem teljes mértékben áll a felhasználók mindaddig, amíg azok beleegyezik abba, hogy csatlakoztathassák a fiókjukat. Nincs adat fiókkapcsolatok engedélyezésével a felhasználók számára meg van osztva.
+> A LinkedIn-integráció nincs teljesen engedélyezve a felhasználók számára, amíg nem engedélyezik a fiókjaik összekapcsolását. A felhasználói fiókok kapcsolatainak engedélyezésekor a rendszer nem osztja meg az összes adatmegosztást.
 
-### <a name="assign-selected-users-with-a-group"></a>Kiválasztott felhasználók hozzárendelése egy csoporthoz
-A "Kijelölt" lehetőséget, amely meghatározza a felhasználók listáját a engedélyezheti a LinkedIn- és Microsoft-fiókok számos egyéni felhasználók helyett egy adott csoportra vonatkozó csatlakozás lehetővé teszi, hogy a felhasználók egy csoportjára kívánt váltotta. Ha nincs engedélyezve a kiválasztott egyéni felhasználók LinkedIn-fiókkapcsolatok, nem kell semmit. Ha korábban engedélyezte a LinkedIn-fiókkapcsolatok a kiválasztott egyéni felhasználók számára, akkor az alábbi lépéseket kell tennie:
+### <a name="assign-selected-users-with-a-group"></a>Kijelölt felhasználók társítása csoporttal
+Kiváltottuk a "kiválasztott" lehetőséget, amely meghatározza a felhasználók egy csoportjának kiválasztására szolgáló lehetőséget, így lehetővé teheti a LinkedIn és a Microsoft-fiókok egyetlen csoporthoz való összekapcsolását számos egyéni felhasználó helyett. Ha nincs engedélyezve a LinkedIn-fiókok kapcsolatai a kiválasztott egyéni felhasználók számára, semmit nem kell tennie. Ha korábban engedélyezte a LinkedIn-fiókok kapcsolatait a kiválasztott egyéni felhasználók számára, tegye a következőket:
 
 1. Az egyes felhasználók aktuális listájának beolvasása
-1. A jelenleg engedélyezve van az egyes felhasználók csoport áthelyezése
-1. A csoport az előző használja a beállítása az Azure AD felügyeleti központ az a LinkedIn-fiókkapcsolatok a kiválasztott csoporthoz.
+1. A jelenleg engedélyezett egyéni felhasználók áthelyezése egy csoportba
+1. Az Azure AD felügyeleti központban a LinkedIn Account Connections beállításban az előzőből kiválasztott csoportból válassza ki a csoportot.
 
 > [!NOTE]
-> Akkor is, ha a jelenleg kijelölt egyes felhasználók nem át egy csoportot, LinkedIn-adatokat a Microsoft-alkalmazások továbbra is láthatják.
+> Még ha nem helyezi át a jelenleg kijelölt felhasználókat egy csoportba, továbbra is láthatják a LinkedIn-adatokat a Microsoft-alkalmazásokban.
 
-### <a name="get-the-current-list-of-selected-users"></a>Kiválasztott felhasználók aktuális listájának beolvasása
+### <a name="get-the-current-list-of-selected-users"></a>A kiválasztott felhasználók aktuális listájának beolvasása
 
-1. Jelentkezzen be a Microsoft 365-rendszergazdai fiókjával.
-1. Nyissa meg a következőt: https://linkedinselectedusermigration.azurewebsites.net/. Láthatja, hogy ki van választva a LinkedIn-fiókkapcsolatok felhasználók listája.
-1. A lista exportálása CSV-fájlba.
+1. Jelentkezzen be Microsoft 365ba a rendszergazdai fiókjával.
+1. Nyissa meg a következőt: https://linkedinselectedusermigration.azurewebsites.net/. Megjelenik a LinkedIn-fiók kapcsolataihoz kiválasztott felhasználók listája.
+1. Exportálja a listát egy CSV-fájlba.
 
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>A jelenleg kijelölt egyes felhasználók csoport áthelyezése
+### <a name="move-the-currently-selected-individual-users-to-a-group"></a>A jelenleg kijelölt egyéni felhasználók áthelyezése egy csoportba
 
 1. A PowerShell indítása
-1. Futtassa az Azure AD-modul telepítése `Install-Module AzureAD`
+1. Telepítse az Azure AD-modult `Install-Module AzureAD` futtatásával
 1. Futtassa a következő parancsfájlt:
 
   ``` PowerShell
@@ -86,29 +86,29 @@ A "Kijelölt" lehetőséget, amely meghatározza a felhasználók listáját a e
   foreach($user in $users} { Add-AzureADGroupMember -ObjectId $groupId -RefObjectId $user ; Write-Host $i Added $user ; $i++ ; Start-Sleep -Milliseconds 10 }
   ```
 
-A csoport a második lépés a kiválasztott csoport beállítása az Azure AD felügyeleti központ az a LinkedIn-fiókkapcsolatok használja, lásd: [engedélyezése LinkedIn-fiókkapcsolatok az Azure Portalon](#enable-linkedin-account-connections-in-the-azure-portal).
+Ha az Azure AD felügyeleti központban lévő LinkedIn Account Connections (LinkedIn-fiók kapcsolatainak engedélyezése) beállításban a második lépésből származó csoportot kívánja használni, tekintse meg a következő témakört: [Azure Portal](#enable-linkedin-account-connections-in-the-azure-portal).
 
-## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>LinkedIn-fiókkapcsolatok engedélyezése csoportházirend használatával
+## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>A LinkedIn-fiókok kapcsolatainak engedélyezése a Csoportházirend használatával
 
-1. Töltse le a [Office 2016 felügyeleti sablonfájlok (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-1. Bontsa ki a **ADMX** fájlokat, és másolja őket a központi tárolóban.
-1. Nyissa meg a Csoportházirend kezelése.
-1. Hozzon létre egy csoportházirend-objektum a következő beállítást: **Felhasználói konfiguráció** > **felügyeleti sablonok** > **a Microsoft Office 2016** > **vegyes**  >  **Megjelenítése a LinkedIn-funkciókat az Office-alkalmazásokban**.
-1. Válassza ki **engedélyezve** vagy **letiltott**.
+1. Töltse le az [Office 2016 felügyeleti sablon fájljait (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
+1. Bontsa ki az **ADMX** -fájlokat, és másolja őket a központi tárolóba.
+1. Nyissa meg Csoportházirend felügyeletet.
+1. Hozzon létre egy Csoportházirend objektumot a következő beállítással: **felhasználói konfiguráció** > **Felügyeleti sablonok** > **Microsoft Office 2016** > **vegyes** > **az Office-alkalmazások LinkedIn szolgáltatásainak megjelenítése**.
+1. Válassza az **engedélyezve** vagy a **Letiltva**lehetőséget.
   
-   Állapot | Következmény
+   Állapot | Hatás
    ------ | ------
-   **Engedélyezve** | A **megjelenítése a LinkedIn-funkciókat az Office-alkalmazásokban** Office 2016-beállítások a beállítás engedélyezve van. A szervezet felhasználói az Office 2016 alkalmazásaikban használhatja a munkahelyi LinkedIn-szolgáltatásokat.
-   **Letiltva** | A **megjelenítése a LinkedIn-funkciókat az Office-alkalmazásokban** az Office 2016 beállítások beállítás le van tiltva, és a végfelhasználók számára a beállítás nem módosítható. A szervezet felhasználói az Office 2016 alkalmazásaikban nem használható a munkahelyi LinkedIn-szolgáltatásokat.
+   **Engedélyezve** | Engedélyezve van az Office 2016-beállítások az Office- **alkalmazásokban beállítás a LinkedIn funkcióinak megjelenítése** lehetőség. A szervezet felhasználói a LinkedIn funkcióit használhatják az Office 2016-alkalmazásaikban.
+   **Letiltva** | A **LinkedIn funkcióinak megjelenítése** az Office-alkalmazások Office 2016-beállításokban beállítás le van tiltva, és a végfelhasználók nem változtathatják meg ezt a beállítást. A szervezet felhasználói nem használhatják a LinkedIn szolgáltatásait az Office 2016-alkalmazásokban.
 
-A csoportházirend érvényes csak az Office 2016-alkalmazások a helyi számítógépeken. Ha a felhasználó letiltotta a LinkedIn-alkalmazásokban az Office 2016, Office 365-ben a munkahelyi LinkedIn-szolgáltatásokat továbbra is megjelenik.
+Ez a csoportházirend csak az Office 2016-alkalmazásokat érinti a helyi számítógépeken. Ha a felhasználók az Office 2016-alkalmazásokban letiltják a LinkedIn szolgáltatást, továbbra is megjelenhetnek a LinkedIn szolgáltatásai az Office 365-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Felhasználói beleegyezés és az adatok megosztása a Linkedinen](linkedin-user-consent.md)
+* [Felhasználói beleegyezett és adatmegosztás a LinkedIn szolgáltatásban](linkedin-user-consent.md)
 
-* [LinkedIn-adatokat és a szolgáltatások a Microsoft-alkalmazásba](https://go.microsoft.com/fwlink/?linkid=850740)
+* [A LinkedIn információi és funkciói a Microsoft-alkalmazásokban](https://go.microsoft.com/fwlink/?linkid=850740)
 
-* [LinkedIn-súgóközpont](https://www.linkedin.com/help/linkedin)
+* [LinkedIn súgó központ](https://www.linkedin.com/help/linkedin)
 
-* [Megtekintheti a jelenlegi LinkedIn-integráció beállítása az Azure Portalon](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings)
+* [A Azure Portal aktuális LinkedIn-integrációs beállításának megtekintése](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings)

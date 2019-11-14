@@ -1,5 +1,5 @@
 ---
-title: 'A D: virtuális gép meghajtójának elkészítése adatlemezre | Microsoft Docs'
+title: 'A D: virtuális gép meghajtójának elkészítése adatlemezként '
 description: 'Útmutató a Windows rendszerű virtuális gépek meghajtóbetűjelének módosításához, hogy a D: meghajtót adatmeghajtóként használhassa.'
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 491e7b7be084017cc370fe431c3175ac5b2673f9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079878"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033654"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A D: meghajtó használata adatmeghajtóként Windows-alapú virtuális gépen
 Ha az alkalmazásnak a D meghajtót kell használnia az adattároláshoz, kövesse az alábbi utasításokat, hogy az ideiglenes lemezhez egy másik meghajtóbetűjelet használjon. Soha ne használja az ideiglenes lemezt a megőrizni kívánt adatmennyiség tárolására.
@@ -58,10 +58,10 @@ Először csatlakoztatnia kell az adatlemezt a virtuális géphez. Ha ezt a port
 4. Válassza a **speciális** lapot.
 5. A **virtuális memória** szakaszban válassza a **módosítás**lehetőséget.
 6. Válassza ki a **C** operációsrendszer-meghajtót, és kattintson a **nincs lapozófájl** elemre, majd a **beállítás**gombra.
-7. Válassza ki az ideiglenes tároló meghajtót, majd kattintson a **rendszer által felügyelt méret** elemre, majd a **beállítás**gombra.
+7. Válassza ki az ideiglenes tároló **meghajtót, majd kattintson** a **rendszer által felügyelt méret** elemre, majd a **beállítás**gombra.
 8. Kattintson az **Alkalmaz** gombra. A módosítások érvénybe lépéséhez figyelmeztetést kap, hogy a számítógépet újra kell indítani.
 9. Indítsa újra a virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A virtuális gép számára elérhető tárterületet [további adatlemez csatolásával](attach-managed-disk-portal.md)növelheti.
 

@@ -1,5 +1,5 @@
 ---
-title: MATLAB-fürtök a virtuális gépeken | Microsoft Docs
+title: MATLAB-fürtök a virtuális gépeken
 description: A Microsoft Azure Virtual Machines használatával MATLAB Distributed Computing Server-fürtöket hozhat létre a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d57d9bfa964759e639c2cf40d86bd603b1900ce7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103016"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038145"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-fürtök létrehozása Azure-beli virtuális gépeken
-Microsoft Azure virtuális gépek használatával hozzon létre egy vagy több MATLAB Distributed Computing Server-fürtöt a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához. Telepítse a MATLAB Distributed Computing Server szoftvert egy virtuális gépre alaprendszerképként való használatra, és használjon egy Azure-beli rövid útmutató sablont vagy Azure PowerShell [](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)szkriptet (amely a githubon érhető el) a fürt üzembe helyezéséhez és kezeléséhez. Az üzembe helyezés után kapcsolódjon a fürthöz a számítási feladatok futtatásához.
+Microsoft Azure virtuális gépek használatával hozzon létre egy vagy több MATLAB Distributed Computing Server-fürtöt a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához. Telepítse a MATLAB Distributed Computing Server szoftvert egy virtuális gépre alaprendszerképként való használatra, és használjon egy Azure-beli rövid útmutató sablont vagy Azure PowerShell szkriptet (amely a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)érhető el) a fürt üzembe helyezéséhez és kezeléséhez. Az üzembe helyezés után kapcsolódjon a fürthöz a számítási feladatok futtatásához.
 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>Tudnivalók a MATLAB és a MATLAB Distributed Computing Serverről
 A [MATLAB](https://www.mathworks.com/products/matlab/) platform mérnöki és tudományos problémák megoldására van optimalizálva. A nagy léptékű szimulációkkal és adatfeldolgozási feladatokkal rendelkező MATLAB-felhasználók MathWorks párhuzamos számítástechnikai termékekkel növelhetik a számítási igényű munkaterheléseket a számítási fürtök és a Grid-szolgáltatások kihasználásával. A [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) lehetővé teszi, hogy a MATLAB-felhasználók integrálással az alkalmazásokat, és kihasználhassanak több magos processzort, GPU-t és számítási fürtöt. A [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) lehetővé teszi, hogy a MATLAB-felhasználók számos számítógépet használjanak egy számítási fürtben.
@@ -33,11 +33,11 @@ Az Azure Virtual Machines használatával olyan MATLAB elosztott számítástech
 * **Azure PowerShell** – megtudhatja, [hogyan telepítheti és konfigurálhatja az Azure PowerShell](/powershell/azure/overview) az ügyfélszámítógépen való telepítéséhez.
 * **Azure-előfizetés** – ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) . Nagyobb fürtök esetén vegye figyelembe az utólagos elszámolású előfizetést vagy más vásárlási lehetőségeket.
 * **vCPU kvóta** – előfordulhat, hogy a vCPU-kvótát a nagyméretű fürt vagy több MATLAB Distributed Computing Server-fürt üzembe helyezéséhez kell emelnie. A kvóta növeléséhez [Nyisson meg egy online ügyfélszolgálati kérést](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) díjmentesen.
-* **MATLAB, Parallel Computing Toolbox és MATLAB Distributed Computing Server** -licencek – a parancsfájlok feltételezik, hogy a [MathWorks üzemeltetett licenckezelő](https://www.mathworks.com/help/install/license-management.html) minden licenchez használatos.  
+* **MATLAB, Parallel Computing Toolbox és MATLAB Distributed Computing Server-licencek** – a parancsfájlok feltételezik, hogy a [MathWorks üzemeltetett licenckezelő](https://www.mathworks.com/help/install/license-management.html) minden licenchez használatos.  
 * **MATLAB Distributed Computing Server szoftver** – a rendszer telepíti a virtuális gépre, amelyet a fürt virtuális gépei alapszintű virtuálisgép-rendszerképként fog használni.
 
 ## <a name="high-level-steps"></a>Magas szintű lépések
-Ha Azure-beli virtuális gépeket szeretne használni a MATLAB Distributed Computing Server-fürtökhöz, a következő magas szintű lépésekre van szükség. A részletes utasítások a gyors üzembe helyezési sablont és a githubon [](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)lévő szkripteket kísérő dokumentációban találhatók.
+Ha Azure-beli virtuális gépeket szeretne használni a MATLAB Distributed Computing Server-fürtökhöz, a következő magas szintű lépésekre van szükség. A részletes utasítások a gyors üzembe helyezési sablont és a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)lévő szkripteket kísérő dokumentációban találhatók.
 
 1. **Alap VM-rendszerkép létrehozása**  
 
@@ -69,6 +69,6 @@ Más típusú MATLAB Distributed Computing Server-fürtökhöz hasonlóan a MATL
 
 ![Fürterőforrás-kezelő](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A MATLAB Distributed Computing Server-fürtök az Azure-ban való üzembe helyezésével és felügyeletével kapcsolatos részletes utasításokért tekintse meg a sablonokat és parancsfájlokat tartalmazó [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) -tárházat.
-* Nyissa meg a [MathWorks](https://www.mathworks.com/) webhelyét a MATLAB és a MATLAB Distributed Computing Server részletes dokumentációjában.
+* Nyissa meg a [MathWorks webhelyét](https://www.mathworks.com/) a MATLAB és a MATLAB Distributed Computing Server részletes dokumentációjában.

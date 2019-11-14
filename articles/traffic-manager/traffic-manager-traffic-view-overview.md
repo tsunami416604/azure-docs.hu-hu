@@ -1,6 +1,6 @@
 ---
 title: forgalomáttekintő az Azure-ban Traffic Manager
-description: Traffic Manager forgalomáttekintő bemutatása
+description: Ebből a bevezetőből megtudhatja, hogyan működik a Traffic Manager forgalom nézete.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035479"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023247"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager forgalomáttekintő
 
@@ -64,7 +64,7 @@ Az Azure-régiók, amelyekben a végpontok találhatók, kék pontként jelennek
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Táblázatos Listázás és nyers adatok letöltése
 
-Az forgalomáttekintő adatokat táblázatos formátumban tekintheti meg Azure Portalban. Minden DNS-feloldó IP-/végponti pár olyan bejegyzéssel rendelkezik, amely megjeleníti a DNS-feloldó IP-címét, az Azure-régió nevét és földrajzi helyét, amelyben a végpont található (ha elérhető), a DNS-feloldóhoz társított kérelmek mennyiségét ezt a végpontot, valamint az adott DNS-t használó végfelhasználók (ahol elérhető) jellemző késését. A forgalomáttekintő adatait CSV-fájlként is letöltheti, amely a választott elemzési munkafolyamatok részeként is használható.
+Az forgalomáttekintő adatokat táblázatos formátumban tekintheti meg Azure Portalban. Minden olyan DNS-feloldó IP-/végponti pár esetében szerepel egy bejegyzés, amely megjeleníti a DNS-feloldó IP-címét, az Azure-régió nevét és földrajzi helyét (ha elérhető), a DNS-feloldóhoz társított kérelmek mennyiségét az adott végponthoz, valamint az adott DNS-t használó végfelhasználók (ahol elérhető) jellemző késését. A forgalomáttekintő adatait CSV-fájlként is letöltheti, amely a választott elemzési munkafolyamatok részeként is használható.
 
 ## <a name="billing"></a>Számlázás
 
@@ -90,7 +90,7 @@ Forgalomáttekintő használatakor a számlázás a bemutatott elemzések létre
 
 * [Hogyan működik forgalomáttekintő számlázás?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)

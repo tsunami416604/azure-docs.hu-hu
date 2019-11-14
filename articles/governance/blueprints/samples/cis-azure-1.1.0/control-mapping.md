@@ -1,17 +1,14 @@
 ---
 title: CIS Microsoft Azure alapítványok teljesítményteszt-minta – javaslat-hozzárendelés
 description: Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének leképezése a Azure Policyra.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7974a5f9e5ccca41cdaa838cf05e3861dbae1b8d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583141"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038421"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének hozzárendelésére
 
@@ -252,7 +249,7 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel
 
 - Az SSL-kapcsolat betartatását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében
 
-## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 ellenőrizze, hogy a (z) "connection_throttling" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló számára
+## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 ellenőrizze, hogy a (z) "connection_throttling" kiszolgálói paraméter "ON" értékre van-e állítva a PostgreSQL adatbázis-kiszolgáló esetében
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a PostgreSQL-adatbázis-kiszolgálókon a találgatásos támadásokkal kapcsolatos támadások enyhítésében.
 
@@ -352,9 +349,9 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a webalkalmazások csak biztonságos kapcsolatokon keresztül legyenek elérhetők.
 
-- A webalkalmazás csak HTTPS protokollon keresztül érhető el
+- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, vagy megtekintheti a Azure Policy a Azure Portal a kezdeményezés hozzárendeléséhez:
 

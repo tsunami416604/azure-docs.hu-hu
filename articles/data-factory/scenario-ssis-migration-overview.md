@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684411"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038280"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Helyszíni SSIS számítási feladatok migrálása az ADF-SSIS
 
@@ -48,7 +48,7 @@ A Data Migration Assistant (DMA) egy ingyenesen letölthető eszköz erre a cél
   - A MSDB, amely a SSIS-csomagok tárolására használt SQL Server rendszeradatbázisa.
   - Felügyelt fájlrendszer, amely a SSIS-csomagok tárolására szolgáló SQL Server telepítési útvonal adott mappája.
 
-A DMA jelenleg támogatja a **fájlrendszerbeli** tárolóban tárolt csomagok kötegelt értékelését a **DMA v 4.5 verzió**óta.
+A DMA jelenleg támogatja a **fájlrendszerben**, a **Package Store**-ban és a **SSIS-katalógusban** tárolt csomagok kötegelt értékelését a **DMA v 5.0-s verziójának**futtatása óta.
 
 Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [végezze el a csomag értékelését](https://docs.microsoft.com/sql/dma/dma-assess-ssis).
 
@@ -85,7 +85,7 @@ Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [vé
 - [SSIS-csomagok migrálása Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Csomagok újbóli üzembe helyezése Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-ba telepített SSIS-csomagok ellenőrzése](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-validate-packages)
 - [Az Azure-ban üzembe helyezett SSIS-csomagok futtatása](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)

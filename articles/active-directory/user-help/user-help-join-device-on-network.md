@@ -1,6 +1,6 @@
 ---
-title: A munkahelyi eszköz csatlakoztatása a szervezet hálózati – Azure Active Directory |} A Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a munkahelyi eszközök a vállalati hálózathoz.
+title: Munkahelyi eszköz csatlakoztatása a szervezet hálózatához – AD
+description: Ismerje meg, hogyan csatlakozhat munkahelyi eszközéhez a szervezet hálózatához.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,107 +13,107 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243269"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028527"
 ---
-# <a name="join-your-work-device-to-your-organizations-network"></a>A munkahelyi eszköz csatlakoztatása a vállalati hálózaton
-A munkahelyi tulajdonú Windows 10 rendszerű eszköz csatlakoztatása a vállalati hálózaton potenciálisan korlátozott erőforrások eléréséhez.
+# <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
+Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz.
 
-## <a name="what-happens-when-you-join-your-device"></a>Mi történik, ha az eszköz csatlakozik
-Windows 10 rendszerű eszközét a vállalati hálózathoz csatlakozik, miközben történik, a következő műveleteket:
+## <a name="what-happens-when-you-join-your-device"></a>Mi történik az eszköz csatlakoztatásakor?
+A Windows 10-es eszköznek a szervezet hálózatához való csatlakoztatása közben a következő műveletek történnek:
 
-- Windows regisztrálja az eszközt a vállalati hálózathoz, a személyes fiókjával erőforrások eléréséhez, ami lehetővé teszi. Az eszköz regisztrálása után Windows majd csatlakoztatja az eszközt a hálózathoz, így jelentkezik be, és a korlátozott erőforrások eléréséhez használhatja a szervezet felhasználónevet és jelszót.
+- A Windows regisztrálja az eszközt a szervezet hálózatán, és lehetővé teszi az erőforrások elérését a személyes fiókjával. Az eszköz regisztrálása után a Windows csatlakoztatja az eszközt a hálózathoz, így a bejelentkezéshez és a korlátozott erőforrásokhoz való hozzáféréshez a szervezet felhasználónevét és jelszavát is használhatja.
 
-- Igény szerint a szervezet lehetőségek alapján, akkor a rendszer keresztül vagy a kétlépéses ellenőrzés beállítása [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy [biztonsági adatok](user-help-security-info-overview.md).
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy az [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági adatok](user-help-security-info-overview.md)között két lépésből álló ellenőrzést kell beállítania.
 
-- Igény szerint lehetőségeket a szervezet alapján, akkor előfordulhat, hogy automatikusan regisztrálhatók mobileszköz-kezelés, például a Microsoft Intune. A Microsoft Intune-ban regisztrációval kapcsolatos további információkért lásd: [-eszköz regisztrálása az Intune-ban](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy automatikusan regisztrálva van a mobileszköz-kezelésben, például Microsoft Intune. További információ a Microsoft Intune való regisztrálásáról: [eszköz regisztrálása az Intune-ban](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
 
-- A bejelentkezési folyamat lépünk használatával automatikus bejelentkezés a munkahelyi fiókjával.
+- A bejelentkezési folyamattal a szervezeti fiókjával való automatikus bejelentkezést használva végezheti el a bejelentkezést.
 
-## <a name="to-join-a-brand-new-windows-10-device"></a>A leállításig; a Windows 10-es eszköz csatlakoztatása
-Ha az eszköz vadonatúj, és még nincs beállítva, nyissa meg az eszköz csatlakoztatása a hálózathoz, a Windows a kezdőélmény (OOBE) folyamatát.
+## <a name="to-join-a-brand-new-windows-10-device"></a>Új Windows 10-es eszköz csatlakoztatása
+Ha az eszköz teljesen új, és még nincs beállítva, átléphet a Windows beépített felhasználói felületének (OOBE) folyamatával, amellyel csatlakoztathatja az eszközt a hálózathoz.
 
-1. Indítsa el az új eszközt, és megkezdheti a OOBE folyamaton.
+1. Indítsa el az új eszközt, és kezdje meg az OOBE folyamatát.
 
-2. Az a **Bejelentkezés Microsoft-fiókkal** képernyőn írja be a munkahelyi vagy iskolai e-mail-címét.
+2. A **Bejelentkezés Microsoft-fiókkal** képernyőn írja be a munkahelyi vagy iskolai e-mail-címét.
 
-    ![Bejelentkezési képernyő, e-mail-címmel](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
+    ![Bejelentkezési képernyő e-mail-címmel](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
 
-3. Az a **adja meg a jelszót** írja be a jelszót.
+3. A **jelszó megadása** képernyőn írja be a jelszót.
 
-    ![Adja meg a jelszót képernyő](./media/user-help-join-device-on-network/join-device-oobe-password.png)
+    ![Adja meg a jelszó képernyőjét](./media/user-help-join-device-on-network/join-device-oobe-password.png)
 
-4. A mobileszközén hagyja jóvá az eszköz, ezért a fiók hozzáférhessen. 
+4. A mobileszközön hagyja jóvá az eszközt, hogy hozzáférhessen a fiókjához. 
 
-    ![Mobilértesítést képernyő](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Mobil értesítési képernyő](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
-5. Fejezze be a OOBE folyamaton, beleértve a beállítás az adatvédelmi beállításokat, és beállítása Windows Hello (ha szükséges).
+5. Fejezze be az OOBE folyamatát, beleértve az adatvédelmi beállítások megadását és a Windows Hello beállítását (ha szükséges).
 
-    Az eszköz most már csatlakozott a munkahelyi hálózathoz.
+    Az eszköz most már csatlakoztatva van a szervezet hálózatához.
 
-## <a name="to-make-sure-youre-joined"></a>Győződjön meg arról, hogy csatlakoznak
-Biztos lehet benne, hogy csatlakoznak-megnézzük a beállításokat.
+## <a name="to-make-sure-youre-joined"></a>Annak ellenőrzése, hogy csatlakozik-e
+Győződjön meg arról, hogy a beállításait megtekinti.
 
-1. Nyissa meg **beállítások**, majd válassza ki **fiókok**.
+1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
 
-    ![Fiókok, a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
+    ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy arról, hogy a következőhöz hasonló, szöveges **csatlakozik  *\<Saját_szervezet elemre >* Azure ad-ben**.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a *\<your_organization >* Azure ad**-hez csatlakozik.
 
-    ![Hozzáférés munkahelyi vagy iskolai képernyő és csatlakoztatott contoso-fiók](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
-## <a name="to-join-an-already-configured-windows-10-device"></a>Csatlakozás egy már konfigurált Windows 10 rendszerű eszköz
-Ha már rendelkezik egy ideig, és ez az eszköz már létre van hozva, hajtsa végre az alábbi lépéseket az eszköz csatlakoztatása a hálózathoz.
+## <a name="to-join-an-already-configured-windows-10-device"></a>Csatlakozás egy már konfigurált Windows 10-es eszközhöz
+Ha már beállította az eszközét, és már be van állítva, akkor az alábbi lépéseket követve csatlakoztathatja az eszközt a hálózathoz.
 
-1. Nyissa meg **beállítások**, majd válassza ki **fiókok**.
+1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
 
-2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, majd válassza ki **Connect**.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez, majd a **Kapcsolódás**lehetőséget.
 
-    ![Hozzáférés munkahelyi vagy iskolai és Connect hivatkozások](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
+    ![Munkahelyi vagy iskolai hozzáférés és hivatkozások összekapcsolása](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
-3. Az a **munkahelyi vagy iskolai fiók beállítása** képernyőn válassza ki **eszköz csatlakoztatása az Azure Active Directory**.
+3. A **munkahelyi vagy iskolai fiók beállítása** képernyőn válassza az **eszköz csatlakoztatása a Azure Active Directory**lehetőséget.
 
-    ![Állítsa be a munkahelyi vagy iskolai fiók képernyő](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
+    ![Munkahelyi vagy iskolai fiók képernyőjének beállítása](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. Az a **jelentkezzen** írja be az e-mail-címét (például alain@contoso.com), majd válassza ki **tovább**.
+4. A **let on bejelentkezett** képernyőn írja be az e-mail-címét (például alain@contoso.com), majd kattintson a **tovább**gombra.
 
-    ![Képernyőn jelentkezzen](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
+    ![A bejelentkezett képernyő beolvasása](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. Az a **jelszó** képernyőn írja be a jelszavát, majd válassza ki **jelentkezzen be a**.
+5. A **jelszó megadása** képernyőn írja be a jelszót, majd válassza a **Bejelentkezés**lehetőséget.
 
-    ![Adja meg a jelszót](./media/user-help-join-device-on-network/join-device-setup-password.png)
+    ![Jelszó megadása](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
-6. A mobileszközén hagyja jóvá az eszköz, ezért a fiók hozzáférhessen. 
+6. A mobileszközön hagyja jóvá az eszközt, hogy hozzáférhessen a fiókjához. 
 
-    ![Mobilértesítést képernyő](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
+    ![Mobil értesítési képernyő](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. Az a **ellenőrizze, hogy ez a szervezet** képernyőn, majd válassza ki, tekintse át az adatokat, hogy megfelelő **csatlakozzon**.
+7. A győződjön meg róla, hogy **Ez a szervezet** képernyő, tekintse át az adatokat, és győződjön meg arról, hogy a megfelelő, majd válassza a **Csatlakozás**lehetőséget.
 
-    ![Ellenőrizze, hogy ez az a szervezet ellenőrzési képernyő](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
+    ![Győződjön meg arról, hogy a szervezet ellenőrző képernyője](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. Az a **készen vagyunk** kattintson **kész**.
+8. Az **összes beállított** képernyőn kattintson a **kész**gombra.
 
-    ![Ön az összes beállítása képernyő](./media/user-help-join-device-on-network/join-device-setup-finish.png)
+    ![Az összes beállított képernyő](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
-## <a name="to-make-sure-youre-joined"></a>Győződjön meg arról, hogy csatlakoznak
-Biztos lehet benne, hogy csatlakoznak-megnézzük a beállításokat.
+## <a name="to-make-sure-youre-joined"></a>Annak ellenőrzése, hogy csatlakozik-e
+Győződjön meg arról, hogy a beállításait megtekinti.
 
-1. Nyissa meg **beállítások**, majd válassza ki **fiókok**.
+1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
 
-    ![Fiókok, a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
+    ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy arról, hogy a következőhöz hasonló, szöveges **csatlakozik  *\<Saját_szervezet elemre >* Azure ad-ben**.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a *\<your_organization >* Azure ad**-hez csatlakozik.
 
-    ![Hozzáférés munkahelyi vagy iskolai képernyő és csatlakoztatott contoso-fiók](./media/user-help-join-device-on-network/join-device-setup-verify.png)
+    ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
-## <a name="next-steps"></a>További lépések
-Miután az eszköz csatlakoztatása a szervezet hálózatához, elérhető minden, az erőforrások a munkahelyi vagy iskolai fiókjának adatait, képesnek kell lennie.
+## <a name="next-steps"></a>Következő lépések
+Miután csatlakoztatta az eszközt a szervezete hálózatához, a munkahelyi vagy iskolai fiókja adataival férhet hozzá az összes erőforráshoz.
 
-- Ha a szervezet azt szeretné, hogy regisztrálja a személyes eszköz, például a telefon [regisztrálja a személyes eszköz a vállalati hálózaton](user-help-register-device-on-network.md).
+- Ha a szervezete szeretné regisztrálni a személyes eszközét, például a telefont, tekintse meg a [személyes eszköz regisztrálása a szervezet hálózatán](user-help-register-device-on-network.md)című témakört.
 
-- Ha a szervezete a Microsoft Intune-nal felügyelt és a regisztrációval kapcsolatos kérdése van, jelentkezzen be, vagy bármely egyéb Intune-nal kapcsolatos probléma, tekintse meg a [Intune felhasználói súgó tartalma](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Ha a szervezetét Microsoft Intune használatával felügyeli, és kérdései vannak a beléptetéssel, a bejelentkezéssel vagy bármely más, az Intune-nal kapcsolatos problémával kapcsolatban, tekintse meg az [Intune felhasználói súgójának tartalmát](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

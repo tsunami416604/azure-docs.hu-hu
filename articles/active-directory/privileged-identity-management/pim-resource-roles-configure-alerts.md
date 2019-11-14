@@ -4,23 +4,23 @@ description: Megtudhatja, hogyan konfigurálhat biztonsági riasztásokat az Azu
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f191eac841bd9f79844a09cd25725de7ea8b154
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895776"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023082"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörökre vonatkozó biztonsági riasztások konfigurálása Privileged Identity Management
 
@@ -34,15 +34,15 @@ Válassza ki a riasztást, hogy megjelenjen egy jelentés, amely felsorolja a ri
 
 ![Riasztási jelentés, amely a legutóbbi vizsgálat idejét, a leírását, a kockázatcsökkentő lépéseket, a típust, a súlyosságot, a biztonsági hatásokat és a következő idő megelőzését mutatja be](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
-| Riasztás | Súlyosság | Eseményindító | Ajánlás |
+| Riasztás | Severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
 | **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó rendelkezik tulajdonosi szerepkörrel. |Tekintse át a listában szereplő felhasználókat, és rendeljen hozzá néhányat a kevésbé Kiemelt szerepkörökhöz. |
 | **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó van hozzá véglegesen rendelve egy szerepkörhöz. |Tekintse át a listában szereplő felhasználókat, és rendelje újra a szerepkör-használathoz szükséges aktiválást. |
 | **Ismétlődő szerepkör létrehozva** |Közepes |Több szerepkör azonos feltételekkel rendelkezik. |Csak az egyik szerepkört használja. |
 
-### <a name="severity"></a>Súlyosság
+### <a name="severity"></a>Severity
 
 - **Magas**: a szabályzat megsértése miatt azonnali műveletre van szükség. 
 - **Közepes**: nincs szükség azonnali műveletre, de az esetleges szabályzat megsértését jelzi.

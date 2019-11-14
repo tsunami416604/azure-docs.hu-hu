@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gép operációsrendszer-lemezének felcserélése a CLI használatával | Microsoft Docs "
+title: Azure-beli virtuális gép operációsrendszer-lemezének felcserélése a CLI használatával
 description: Módosítsa az Azure-beli virtuális gépek által használt operációsrendszer-lemezt a parancssori felület használatával.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfbe47fb68ffe7cee1ee2f9f7b94b418d8da2a1d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091673"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035331"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Azure-beli virtuális gép által használt operációsrendszer-lemez módosítása a parancssori felület használatával
 
@@ -52,7 +52,7 @@ az vm stop \
 ```
 
 
-Használja az az [VM Update](/cli/azure/vm#az-vm-update) -t a `--osdisk` paraméter új lemezének teljes erőforrás-azonosítójával. 
+Az az [VM Update](/cli/azure/vm#az-vm-update) és a `--osdisk` paraméter új lemezének teljes erőforrás-azonosítójával való használata 
 
 ```azurecli-interactive 
 az vm update \

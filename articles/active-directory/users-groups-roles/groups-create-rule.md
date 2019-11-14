@@ -1,25 +1,25 @@
 ---
-title: Dinamikus csoport létrehozása és állapotának ellenõrzése – Azure Active Directory | Microsoft Docs
+title: Dinamikus csoport létrehozása és állapotának ellenõrzése – Azure AD | Microsoft Docs
 description: Csoporttagság-szabály létrehozása a Azure Portalban, ellenőrzési állapot.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193943"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027249"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamikus csoport létrehozása és az állapot ellenõrzése
 
@@ -35,7 +35,7 @@ Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és
 - Szabály ötnél több kifejezéssel
 - A közvetlen jelentések szabálya
 - [Operátor prioritásának](groups-dynamic-membership.md#operator-precedence) beállítása
-- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például:`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
@@ -46,7 +46,7 @@ A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára
 
 ## <a name="to-create-a-group-membership-rule"></a>Csoporttagság-szabály létrehozása
 
-1. Jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba egy olyan fiókkal, amely a bérlő globális rendszergazdája, Intune-rendszergazdája vagy felhasználói rendszergazdai szerepköre.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája, Intune-rendszergazdája vagy felhasználói rendszergazdai szerepköre.
 1. Válassza a **csoportok**lehetőséget.
 1. Válassza ki **az összes csoportot**, és válassza az **új csoport**lehetőséget.
 
@@ -57,7 +57,7 @@ A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára
    ![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. A tagsági lekérdezéshez elérhető egyéni kiterjesztési tulajdonságok megtekintéséhez:
-   1. Válassza az **Egyéni bővítmény tulajdonságainak** beolvasása elemet.
+   1. Válassza az **Egyéni bővítmény tulajdonságainak beolvasása** elemet.
    1. Adja meg az alkalmazás AZONOSÍTÓját, majd kattintson a **Tulajdonságok frissítése**elemre.
 1. A szabály létrehozása után válassza a **Mentés**lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget az **új csoport** lapon a csoport létrehozásához.
@@ -76,17 +76,17 @@ A csoport **Áttekintés** lapján megtekintheti a tagság feldolgozási állapo
 
 A következő állapotüzenetek láthatók a **tagság feldolgozási** állapotához:
 
-- **Értékelés**:  A csoport módosítása megérkezett, és a frissítések kiértékelése folyamatban van.
-- **Feldolgozás**: A frissítések feldolgozása folyamatban van.
-- A **frissítés befejeződött**: A feldolgozás befejeződött, és az összes vonatkozó frissítés megtörtént.
-- **Feldolgozási hiba**:  Nem sikerült befejezni a feldolgozást, mert hiba történt a tagsági szabály kiértékelése során.
-- **Frissítés szüneteltetve**: A dinamikus tagsági szabály frissítéseit a rendszergazda szünetelteti. A MembershipRuleProcessingState "szüneteltetve" értékre van állítva.
+- **Értékelés**: a csoport módosítása megérkezett, és a frissítések kiértékelése folyamatban van.
+- **Feldolgozás**: folyamatban van a frissítések feldolgozása.
+- A **frissítés befejeződött**: a feldolgozás befejeződött, és a rendszer az összes vonatkozó frissítést elvégezte.
+- **Feldolgozási hiba**: a feldolgozás nem fejeződött be, mert hiba történt a tagsági szabály kiértékelése során.
+- A **frissítés szüneteltetve**: a dinamikus tagsági szabály frissítéseit a rendszergazda szünetelteti. A MembershipRuleProcessingState "szüneteltetve" értékre van állítva.
 
 A következő állapotüzenetek jeleníthetők meg a **tagság utolsó frissítésének** állapotához:
 
-- &lt;**Dátum és idő**&gt;: A tagság utolsó frissítésének időpontja.
-- **Folyamatban**: A frissítések jelenleg folyamatban vannak.
-- **Ismeretlen**: A legutóbbi frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
+- &lt;**dátum és idő**&gt;: a tagság utolsó frissítésének időpontja.
+- **Folyamatban**: a frissítések jelenleg folyamatban vannak.
+- **Ismeretlen**: az utolsó frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
 
 Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha a bérlőn belüli összes csoportra vonatkozóan még 24 óráig nem dolgozható fel a függőben lévő dinamikus tagsági frissítések, a rendszer az **összes csoport**tetején riasztást jelenít meg.
 

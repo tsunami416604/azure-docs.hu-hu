@@ -1,5 +1,5 @@
 ---
-title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban
 description: Ismerje meg, hogyan telepítheti a MySQL-t egy OpenSUSE Linux rendszerű virtuális gépre az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d5f2ef2d82cbcced6202ad2c09f23dd734d373b3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300857"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035585"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 
@@ -36,7 +36,7 @@ Először hozzon létre egy erőforráscsoportot. Ebben a példában az erőforr
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Hozza létre a virtuális gépet. Ebben a példában a virtuális gép neve *myVM* , a virtuális gép mérete pedig *Standard_D2s_v3*, de érdemes kiválasztani a számítási feladathoz legmegfelelőbb virtuálisgép- [méretet](sizes.md) .
+Hozza létre a virtuális gépet. Ebben a példában a virtuális gép neve *myVM* , a virtuális gép mérete pedig *Standard_D2s_v3*, de ki kell választania azt a virtuálisgép- [méretet](sizes.md) , amelyet a munkaterheléshez legmegfelelőbbnek tekint.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -102,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL-jelszó
 
-A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **MySQL @ no__t-1secure @ no__t-2installation** szkriptet a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
+A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **mysql\_secure\_telepítési** parancsfájlt a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
 
 A kiszolgáló újraindítása után ismét SSH-t a virtuális gépre.
 
@@ -137,7 +137,7 @@ A Semi-Colon (;) a sor végén elengedhetetlen a parancs befejezése.
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
 
-Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeket.
+Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeit.
 
 ```sql
 CREATE DATABASE testdatabase;

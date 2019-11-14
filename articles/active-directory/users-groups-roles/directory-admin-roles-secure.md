@@ -1,12 +1,12 @@
 ---
-title: Ajánlott eljárások a biztonságos rendszergazdai hozzáféréshez – Azure Active Directory | Microsoft Docs
+title: Ajánlott eljárások a biztonságos rendszergazdai hozzáféréshez – Azure AD | Microsoft Docs
 description: Győződjön meg arról, hogy a szervezet rendszergazdai hozzáférési és rendszergazdai fiókjai biztonságosak. Olyan rendszerfejlesztők és informatikai szakemberek számára, akik az Azure AD-t, az Azure-t és a Microsoft Online Servicest konfigurálják.
 services: active-directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
-ms.date: 03/18/2019
+ms.date: 11/13/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,19 +14,19 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259413"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028458"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD-ben a hibrid és a Felhőbeli üzemelő példányokhoz való emelt szintű hozzáférés biztonságossá tétele
 
 A modern szervezetben a legtöbb vagy az összes üzleti eszköz biztonsága az informatikai rendszereket kezelő és kezelő Kiemelt jogosultságú fiókok integritásának függvénye. A rosszindulatú szereplők, például a Cyber-támadók gyakran a rendszergazdai fiókokat és az emelt szintű hozzáférés más elemeit használják, hogy gyorsan hozzáférjenek a bizalmas adatokhoz és rendszerekhez a hitelesítőadat-lopás elleni támadásokkal. A Cloud Services esetében a megelőzés és a reagálás a felhőalapú szolgáltató és az ügyfél együttes feladatai közé tartozik. A végpontokra és a felhőre vonatkozó legújabb fenyegetésekkel kapcsolatos további információkért tekintse meg a [Microsoft biztonsági intelligencia jelentését](https://www.microsoft.com/security/operations/security-intelligence-report). Ez a cikk segítséget nyújt egy olyan ütemterv kidolgozásához, amely a jelenlegi csomagok és az itt ismertetett útmutató közötti hézagok lezárását célozza.
 
 > [!NOTE]
-> A Microsoft elkötelezte magát a megbízhatóság, az átláthatóság, a szabványok és a jogszabályi megfelelőség legmagasabb szintjére. Tudjon meg többet arról, hogy a Microsoft globális incidensek csapatának milyen hatása van a Cloud Services elleni támadások következményeire, és hogy a biztonság hogyan épül fel a Microsoft üzleti termékeibe és a Felhőbeli szolgáltatásokra a [Microsoft adatvédelmi központban – biztonság](https://www.microsoft.com/trustcenter/security) és Microsoft megfelelőségi célok a [Microsoft adatvédelmi központban – megfelelőség](https://www.microsoft.com/trustcenter/compliance).
+> A Microsoft elkötelezte magát a megbízhatóság, az átláthatóság, a szabványok és a jogszabályi megfelelőség legmagasabb szintjére. Tudjon meg többet arról, hogy a Microsoft globális incidensek csapatának milyen hatása van a Cloud Services elleni támadások következményeire, és hogy a Microsoft adatvédelmi központ – a Microsoft adatvédelmi [központjában –](https://www.microsoft.com/trustcenter/compliance) [biztonsági](https://www.microsoft.com/trustcenter/security) és Microsoft-megfelelőségi célokból hogyan építhető be a biztonság a Microsoft üzleti termékeibe és a felhőalapú szolgáltatásokba.
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -60,21 +60,21 @@ Ez a dokumentum elsősorban az Azure AD-ben, az Microsoft Azure-ban, az Office 3
 
 ## <a name="develop-a-roadmap"></a>Ütemterv kidolgozása 
 
-A Microsoft azt javasolja, hogy fejlesszen és kövessen el egy ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. Az ütemtervet bármikor módosíthatja, hogy megfeleljen a meglévő képességeinek és a szervezeten belül meghatározott követelményeknek. Az ütemterv minden szakaszának meg kell növelnie a költségeket és a nehézségeket, hogy a támadók a helyi, a Felhőbeli és a hibrid eszközökre emelt szintű hozzáférést kapjanak. A Microsoft a következő négy ütemtervi szakaszt javasolja: Ez az ajánlott ütemterv a leghatékonyabb és a leggyorsabb megvalósítást a Microsoft által a Cyber-támadási incidensek és a reagálások megvalósításával kapcsolatos tapasztalatok alapján ütemezheti. Az ütemterv ütemterve hozzávetőleges.
+A Microsoft azt javasolja, hogy fejlesszen és kövessen el egy ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. Az ütemtervet bármikor módosíthatja, hogy megfeleljen a meglévő képességeinek és a szervezeten belül meghatározott követelményeknek. Az ütemterv minden szakaszának meg kell növelnie a költségeket és a nehézségeket, hogy a támadók a helyi, a Felhőbeli és a hibrid eszközökre emelt szintű hozzáférést kapjanak. A Microsoft a következő négy ütemtervi szakaszt javasolja: ez az ajánlott ütemterv a leghatékonyabb és a leggyorsabb megvalósításokat először a Microsoft által a Cyber-támadási incidensek és a reagálások megvalósításával kapcsolatos tapasztalatok alapján ütemezheti. Az ütemterv ütemterve hozzávetőleges.
 
 ![Az ütemterv szakaszai a Time Lines szolgáltatással](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* 1\. fázis (24-48 óra): A kritikus fontosságú elemek, amelyekről javasoljuk, hogy azonnal elvégezze
+* 1\. fázis (24-48 óra): a kritikus fontosságú elemek, amelyekről javasoljuk, hogy azonnal elvégezze
 
-* 2\. fázis (2-4 hét): A leggyakrabban használt támadási technikák enyhítése
+* 2\. fázis (2-4 hét): a leggyakrabban használt támadási technikák enyhítése
 
-* 3\. fázis (1-3 hónap): A felügyeleti tevékenységek láthatóságának és teljes körű felügyeletének kialakítása
+* 3\. fázis (1-3 hónap): a felügyeleti tevékenység kiépítése és teljes körű vezérlése
 
-* 4\. fázis (hat hónap és újabb): A védelmi platform további megerősítő fejlesztése érdekében folytassa a fejlesztést
+* 4\. fázis (hat hónap és újabb): a védelmi platform további megerősítése érdekében folytassa a fejlesztést.
 
 Ez az ütemterv-keretrendszer úgy lett kialakítva, hogy maximalizálja a már üzembe helyezett Microsoft-technológiák használatát. Emellett kihasználhatja a jelenlegi és a közelgő biztonsági technológiák előnyeit, és integrálhatja azokat a más gyártóktól származó biztonsági eszközöket, amelyeket már üzembe helyezett vagy üzembe helyez. 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1\. fázis: A kritikus fontosságú elemek, amelyekről javasoljuk, hogy azonnal elvégezze
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1\. fázis: a kritikus fontosságú elemek, melyeket ajánlott azonnal elvégeznie
 
 ![1\. lépés a kritikus elemek első lépése](./media/directory-admin-roles-secure/stage-one.png)
 
@@ -123,9 +123,9 @@ A vészhelyzeti hozzáférési fiókok segítenek a szervezeteknek a meglévő A
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A többtényezős hitelesítés bekapcsolása és az összes többi magas jogosultságú, egyfelhasználós, nem összevont rendszergazdai fiók regisztrálása
 
-Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: Globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen [https://aka.ms/mfasetup](https://aka.ms/mfasetup). További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
+Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor az összes olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és biztosíthatja, hogy minden felhasználó regisztrálva legyen [https://aka.ms/mfasetup](https://aka.ms/mfasetup). További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2\. fázis: A leggyakrabban használt támadási technikák enyhítése
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2\. fázis: a leggyakrabban használt támadási technikák enyhítése
 
 ![2\. fázis – a gyakran használt támadások enyhítése](./media/directory-admin-roles-secure/stage-two.png)
 
@@ -179,7 +179,7 @@ A Azure AD Identity Protection egy algoritmus-alapú figyelési és jelentéské
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)
 
-A biztonságos pontszám alapján megtekintheti, hogy milyen Office 365-szolgáltatásokat használ (például OneDrive, SharePoint és Exchange), majd a beállításokat és tevékenységeket a Microsoft által létrehozott alaptervhez hasonlítja. A legjobb biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik (globális rendszergazda vagy egyéni rendszergazdai szerepkör) az Office 365 üzleti prémium vagy nagyvállalati előfizetéshez, elérheti a biztonságos pontszámot [https://securescore.office.com](https://securescore.office.com/)címen.
+A biztonságos pontszám alapján megtekintheti, hogy milyen Office 365-szolgáltatásokat használ (például OneDrive, SharePoint és Exchange), majd a beállításokat és tevékenységeket a Microsoft által létrehozott alaptervhez hasonlítja. A legjobb biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik (globális rendszergazda vagy egyéni rendszergazdai szerepkör) az Office 365 üzleti prémium vagy nagyvállalati előfizetéshez, elérheti [https://securescore.office.com](https://securescore.office.com/)biztonságos pontszámát.
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (ha az Office 365-at használja)
 
@@ -218,7 +218,7 @@ Az Azure-tevékenység naplója az Azure-beli előfizetési szintű események e
 Feltételes hozzáférési szabályzatok előkészítése a helyszíni és a felhőben üzemeltetett alkalmazásokhoz. Ha a felhasználók munkahelyhez csatlakoztatott eszközöket használnak, további információkat kaphat a helyszíni [feltételes hozzáférés beállításáról Azure Active Directory eszköz regisztrációjának használatával](../active-directory-device-registration-on-premises-setup.md).
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3\. fázis: A felügyeleti tevékenységek láthatóságának és teljes körű felügyeletének kialakítása
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3\. fázis: láthatóság kialakítása és a rendszergazdai tevékenység teljes körű felügyelete
 
 ![3\. fázis – a rendszergazdai tevékenység vezérlése](./media/directory-admin-roles-secure/stage-three.png)
 
@@ -261,7 +261,7 @@ Ha már használja a Azure AD Privileged Identity Management-t, módosítsa a sz
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Jelszó alapú bejelentkezési protokollok (az Exchange Online használata esetén) való kitettség meghatározása
 
-A múltban a protokollok azt feltételezik, hogy a Felhasználónév/jelszó kombinációk be lettek ágyazva az eszközökbe, e-mail-fiókokba, telefonokra stb. A Felhőbeli számítógépes támadások kockázata azonban azt javasoljuk, hogy azonosítsa az összes olyan felhasználót, aki, ha a hitelesítő adatai biztonságban voltak, katasztrofális lehet a szervezet számára, és zárja ki őket, hogy be tudja jelentkezni az e-mail-címre a Felhasználónév/ a jelszó erős hitelesítési követelmények és feltételes hozzáférés megvalósításával. [A feltételes hozzáférés használatával blokkolhatja az örökölt hitelesítést](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Tekintse át az [alapszintű hitelesítés exchnage online-on keresztül történő blokkolásának](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) részleteit. 
+A múltban a protokollok azt feltételezik, hogy a Felhasználónév/jelszó kombinációk be lettek ágyazva az eszközökbe, e-mail-fiókokba, telefonokra stb. A Felhőbeli számítógépes támadások kockázata azonban azt javasoljuk, hogy azonosítsa az összes olyan felhasználót, aki, ha a hitelesítő adatai illetéktelenek voltak, katasztrofális lehet a szervezet számára, és kizárhatja őket az e-mail-címére a Felhasználónév/jelszó segítségével, erős hitelesítési követelmények és feltételes hozzáférés bevezetésével. [A feltételes hozzáférés használatával blokkolhatja az örökölt hitelesítést](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Tekintse át az [alapszintű hitelesítés exchnage online-on keresztül történő blokkolásának](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) részleteit. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Töltse ki az Office 365-szerepkörök felülvizsgálatának értékelését (az Office 365 használata esetén)
 
@@ -320,7 +320,7 @@ Ha biztosítani szeretné, hogy a felhasználók hozzáférése a csatlakoztatot
 
 Az Cloud App Security SIEM-ügynök integrálja a Cloud App Securityt az SIEM-kiszolgálóval, hogy lehetővé tegye az Office 365-riasztások és-tevékenységek központosított figyelését. Ez a kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Securityről, és továbbítja azokat az SIEM-kiszolgálóra. További információkért lásd: [SIEM-integráció](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. fázis: Továbbra is kiépítheti a védelmet a proaktív biztonsági helyzetbe
+## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. fázis: a védelem folytatása proaktív biztonsági helyzetbe
 
 ![A 4. fázis egy proaktív biztonsági állapotot fogad el](./media/directory-admin-roles-secure/stage-four.png)
 
@@ -387,45 +387,45 @@ A terv tökéletesítése érdekében a Microsoft azt javasolja, hogy rendszeres
 
 További információ arról, hogyan kezeli a Microsoft Office 365 a biztonsági incidenseket: [a biztonsági incidensek kezelése Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>GYIK: Az emelt szintű hozzáférés biztonságossá tételével kapcsolatban kapott gyakori kérdések  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>GYAKORI kérdések: az emelt szintű hozzáférés biztonságossá tételével kapcsolatban kapott gyakori kérdések  
 
 **K:** Mi a teendő, ha még nem hajtottam végre biztonságos hozzáférési összetevőket?
 
-**Válasz** Adjon meg legalább két, a fiókhoz tartozó, az MFA-t a Kiemelt rendszergazdai fiókokhoz, és válassza el a felhasználói fiókokat a globális rendszergazdai fiókokból.
+**Válasz:** Adjon meg legalább két, a fiókhoz tartozó, az MFA-t a Kiemelt rendszergazdai fiókokhoz, és válassza el a felhasználói fiókokat a globális rendszergazdai fiókokból.
 
 **K:** Mi az a leggyakoribb probléma, amelyet először kell megoldani?
 
-**Válasz** Győződjön meg arról, hogy a legszigorúbb hitelesítést igényli a magasan elérhető személyek számára.
+**Válasz:** Győződjön meg arról, hogy a legszigorúbb hitelesítést igényli a magasan elérhető személyek számára.
 
 **K:** Mi történik, ha a Kiemelt rendszergazdák inaktiválva vannak?
 
-**Válasz** Hozzon létre egy globális rendszergazdai fiókot, amely mindig naprakész állapotban van.
+**Válasz:** Hozzon létre egy globális rendszergazdai fiókot, amely mindig naprakész állapotban van.
 
 **K:** Mi történik, ha csak egy globális rendszergazda van hátra, és nem érhető el? 
 
-**Válasz** Az egyik, az Ön által használt fiókkal azonnali jogosultsági szintű hozzáférést nyerhet.
+**Válasz:** Az egyik, az Ön által használt fiókkal azonnali jogosultsági szintű hozzáférést nyerhet.
 
 **K:** Hogyan biztosíthatom a rendszergazdákat a szervezeten belül?
 
-**Válasz** A rendszergazdáknak mindig a szokásos "nem privilegizált" felhasználóként kell elvégezniük a mindennapi tevékenységet.
+**Válasz:** A rendszergazdáknak mindig a szokásos "nem privilegizált" felhasználóként kell elvégezniük a mindennapi tevékenységet.
 
 **K:** Mik az ajánlott eljárások az Azure AD-ben rendszergazdai fiókok létrehozásához?
 
-**Válasz** Emelt szintű hozzáférés az adott rendszergazdai feladatokhoz.
+**Válasz:** Emelt szintű hozzáférés az adott rendszergazdai feladatokhoz.
 
 **K:** Milyen eszközök léteznek az állandó rendszergazdai hozzáférés csökkentése érdekében?
 
-**Válasz** Privileged Identity Management (PIM) és az Azure AD rendszergazdai szerepkörei.
+**Válasz:** Privileged Identity Management (PIM) és az Azure AD rendszergazdai szerepkörei.
 
 **K:** Mi a Microsoft pozíciója a rendszergazdai fiókok Azure AD-vel való szinkronizálásához?
 
-**Válasz** A 0. rétegbeli rendszergazdai fiókok (beleértve a fiókokat, a csoportokat és az AD-erdő, a tartományok, a tartományvezérlők és az összes eszköz közvetlen vagy közvetett felügyeleti felügyeletét biztosító más eszközöket) csak a helyszíni AD-fiókok esetében használhatók, és általában nem szinkronizálva az Azure AD-vel a felhőben.
+**Válasz:** A 0. rétegbeli rendszergazdai fiókok (beleértve a fiókokat, a csoportokat és az AD-erdő, a tartományok, a tartományvezérlők és az összes eszköz közvetlen vagy közvetett felügyeletét biztosító eszközöket) csak a helyszíni AD-fiókok esetében használhatók, és általában nem szinkronizálhatók az Azure AD-vel a felhőben.
 
 **K:** Hogyan lehet megőrizni a rendszergazdákat, hogy véletlenszerű rendszergazdai hozzáférést rendeljenek a portálon?
 
-**Válasz** A nem Kiemelt fiókok használata az összes felhasználó és a legtöbb rendszergazda számára. Kezdje azzal, hogy kifejleszti a szervezeti lábnyomot, és meghatározza, hogy mely néhány rendszergazdai fióknak kell jogosultságot biztosítania. És figyelés az újonnan létrehozott rendszergazda felhasználók számára.
+**Válasz:** A nem Kiemelt fiókok használata az összes felhasználó és a legtöbb rendszergazda számára. Kezdje azzal, hogy kifejleszti a szervezeti lábnyomot, és meghatározza, hogy mely néhány rendszergazdai fióknak kell jogosultságot biztosítania. És figyelés az újonnan létrehozott rendszergazda felhasználók számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Microsoft adatvédelmi központ a termékbiztonság számára](https://www.microsoft.com/trustcenter/security) – a Microsoft Cloud Products és Services biztonsági funkciói
 

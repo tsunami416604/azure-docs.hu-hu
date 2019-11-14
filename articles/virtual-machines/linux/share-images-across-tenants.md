@@ -1,5 +1,5 @@
 ---
-title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között | Microsoft Docs
+title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között
 description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal.
 services: virtual-machines-linux
 author: cynthn
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: b63bc1089b113edaac637df0a7e55c39f3a11f1a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 18337620a6f9506e402149909667026e4a8ba7eb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904976"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034973"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
 

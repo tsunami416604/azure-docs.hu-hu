@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI Példaszkript – Linux rendszerű virtuális gép létrehozása az Azure Monitor |} A Microsoft Docs
-description: Az Azure CLI Példaszkript – Linux rendszerű virtuális gép létrehozása az Azure monitorral
+title: Azure CLI parancsfájl-minta – linuxos virtuális gép létrehozása Azure Monitor
+description: Azure CLI parancsfájl-minta – linuxos virtuális gép létrehozása Azure Monitor
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b463df00f57d2dd8f00964eaf10bd0d5f2c2eaab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: af71bc8e0ad793c37084ce3e5cc9f48ef8f55714
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709505"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037697"
 ---
-# <a name="monitor-a-vm-with-azure-monitor"></a>Virtuális gép monitorozása az Azure monitorral
+# <a name="monitor-a-vm-with-azure-monitor"></a>Virtuális gép figyelése Azure Monitor
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik a konzolon.
 
@@ -51,10 +51,10 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben az esetben az Azure Monitor-ügynök bővítmény szolgál a Log Analytics-ügynök telepítése, és regisztrálja a virtuális Gépet egy Log Analytics-munkaterületet. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben az esetben a Azure Monitor ügynök bővítmény használatával telepítheti a Log Analytics-ügynököt, és regisztrálhatja a virtuális gépet egy Log Analytics munkaterületen. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

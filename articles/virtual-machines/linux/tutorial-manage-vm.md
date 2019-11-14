@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel | Microsoft Docs
+title: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI-t Linux rendszerű Azure-beli virtuális gépek létrehozásához és kezeléséhez
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300791"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034416"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -154,7 +154,7 @@ A virtuális gép mérete a virtuális gép által elérhető számítási erőf
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Type (Típus)                     | Gyakori méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -253,7 +253,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 
 | Energiaállapot | Leírás
 |----|----|
-| Indulás alatt | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
+| Indítás | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
 | Fut | Azt jelzi, hogy a virtuális gép fut. |
 | Leállítás | Azt jelzi, hogy a virtuális gép leáll. | 
 | Leállítva | Azt jelzi, hogy a virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |

@@ -1,6 +1,6 @@
 ---
 title: valós felhasználómérés az Azure-ban Traffic Manager
-description: A Traffic Manager valós felhasználómérés bemutatása
+description: Ebben az oktatóanyagban megismerheti, hogyan működik az Azure Traffic Manager valós felhasználómérés.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4aa2649ba2e49e1fec1b9b124a9b82313280cee9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1cb3bd1f4a665da4422d296641b193b1e45e45a2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333722"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037955"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager valós felhasználómérés áttekintése
 
@@ -75,7 +75,7 @@ Valós felhasználómérés használatakor a számlázás a Traffic Managerra el
 
 * [Növekedni fog az Azure sávszélesség-használatom a valós felhasználómérés használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan használhatja [a valós felhasználómérést weblapok](traffic-manager-create-rum-web-pages.md) használatával
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a [Mobile Centerről](https://docs.microsoft.com/mobile-center/)

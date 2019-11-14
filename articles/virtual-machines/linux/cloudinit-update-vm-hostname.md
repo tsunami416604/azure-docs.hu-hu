@@ -1,6 +1,6 @@
 ---
-title: A cloud-init használatával Linux rendszerű virtuális gép az Azure-ban beállított állomásnév |} A Microsoft Docs
-description: A cloud-init használata Linux rendszerű virtuális gép testreszabása az Azure CLI-vel létrehozása során
+title: Az Azure-beli Linux rendszerű virtuális gép állomásnévének beállítása a Cloud-init használatával
+description: Linux rendszerű virtuális gép testreszabása a Cloud-init használatával az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,33 +14,33 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1e437200ec6af22d104f9878e7bdfd20141759fb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: adac9dc41aaba7ce6bfd9f01917d647174b41282
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668205"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036717"
 ---
-# <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>A cloud-init használatával Linux rendszerű virtuális gép az Azure-ban beállított állomásnév
-Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) konfigurálása egy adott gazdagépnévnek küldenek egy virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS) kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
+# <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Az Azure-beli Linux rendszerű virtuális gép állomásnévének beállítása a Cloud-init használatával
+Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.io) használatával konfigurálni egy adott állomásnevet egy virtuális GÉPEN (VM) vagy virtuálisgép-méretezési csoportokon (VMSS) az Azure üzembe helyezési ideje alatt. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
 
-## <a name="set-the-hostname-with-cloud-init"></a>Állítsa be az állomásnevet a cloud-Init használatával
-Alapértelmezés szerint az állomásnév megegyezik a virtuális gép nevét egy új virtuális gépet az Azure-ban való létrehozásakor.  Ez az alapértelmezett állomásnév módosítani, ha egy virtuális Gépet hoz létre az Azure-ban a cloud-init parancsfájl futtatása [az virtuális gép létrehozása](/cli/azure/vm), adja meg a cloud-init-fájlt a `--custom-data` váltani.  
+## <a name="set-the-hostname-with-cloud-init"></a>Az állomásnév beállítása a Cloud-init használatával
+Alapértelmezés szerint az állomásnév ugyanaz, mint a virtuális gép neve, amikor új virtuális gépet hoz létre az Azure-ban.  Ha az [az VM Create](/cli/azure/vm)paranccsal hoz létre egy virtuális gépet az Azure-ban az az VM Create paranccsal, a Cloud-init parancsfájl futtatásával állítsa be a Cloud-init fájlt a `--custom-data` kapcsolóval.  
 
-A frissítési folyamat működés közben látni, hozzon létre egy fájlt az aktuális felületen *cloud_init_hostname.txt* , és illessze be a következő konfigurációt. Ebben a példában a Cloud shellben, nem a helyi gépén hozzon létre a fájlt. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_hostname.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy a teljes cloud-init-fájlt, másolja, különösen az első sort.  
+A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt a *cloud_init_hostname. txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_hostname.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
 
 ```yaml
 #cloud-config
 hostname: myhostname
 ```
 
-Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm) , és adja meg a cloud-init fájl `--custom-data cloud_init_hostname.txt` módon:
+Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a Cloud-init fájlt `--custom-data cloud_init_hostname.txt` a következőképpen:
 
 ```azurecli-interactive 
 az vm create \
@@ -51,28 +51,28 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-Létrehozása után az Azure CLI a virtuális Géppel kapcsolatos információkat jeleníti meg. Használja a `publicIpAddress` , a virtuális gép ssh-KAPCSOLATOT. A saját címét adja meg a következők szerint:
+A létrehozást követően az Azure CLI a virtuális géppel kapcsolatos információkat jeleníti meg. Használja a `publicIpAddress` SSH-val a virtuális gépre. Adja meg a saját lakcímét a következő módon:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-A virtuális gép nevének megtekintéséhez használja a `hostname` paranccsal a következőképpen:
+A virtuális gép nevének megtekintéséhez használja a `hostname` parancsot az alábbiak szerint:
 
 ```bash
 hostname
 ```
 
-A virtuális gép jelentse az állomásnevet, ezt az értéket állítsa be a cloud-init-fájl az alábbi példa kimenetében látható módon:
+A virtuális gépnek a Cloud-init fájlban megadott értékként jelentenie kell a gazdagépet, ahogy az a következő példában látható:
 
 ```bash
 myhostname
 ```
 
-## <a name="next-steps"></a>További lépések
-Konfigurációs módosítások további a cloud-init példákért tekintse meg a következőket:
+## <a name="next-steps"></a>Következő lépések
+További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
-- [További Linux-felhasználó hozzáadása virtuális Géphez](cloudinit-add-user.md)
-- [Az első rendszerindításkor a meglévő csomagokat frissíteni Csomagkezelő futtatása](cloudinit-update-vm.md)
-- [Módosítsa a virtuális gép helyi gazdagépnév](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítése, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)
+- [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)
+- [Csomagkezelő futtatása a meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
+- [Virtuális gép helyi gazdagépének módosítása](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok behelyezése](tutorial-automate-vm-deployment.md)

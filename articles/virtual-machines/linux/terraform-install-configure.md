@@ -1,5 +1,5 @@
 ---
-title: Terraform telepítése és konfigurálása az Azure-erőforrások kiépítéséhez | Microsoft Docs
+title: Terraform telepítése és konfigurálása Azure-erőforrások kiépítéséhez
 description: Ismerje meg, hogyan telepítheti és konfigurálhatja az Azure-erőforrások létrehozásához szükséges Terraform
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168728"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034687"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform telepítése és konfigurálása Azure-erőforrások kiépítéséhez
  
@@ -33,7 +33,7 @@ A Terraform alapértelmezés szerint telepítve van a [Cloud Shell](/azure/terra
 
 ## <a name="install-terraform"></a>A Terraform telepítése
 
-A Terraform telepítéséhez [töltse le](https://www.terraform.io/downloads.html) az operációs rendszerének megfelelő csomagot egy különálló telepítési könyvtárba. A letöltés egyetlen végrehajtható fájlt tartalmaz, amelynek globális elérési utat is meg kell határoznia. A Linux-és Mac-eszközök elérési útjának beállításával kapcsolatos útmutatásért keresse fel [ezt](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux)a weblapot. Az elérési út Windows rendszeren való beállításával kapcsolatos utasításokért keresse fel [ezt](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows)a weblapot.
+A Terraform telepítéséhez [töltse le](https://www.terraform.io/downloads.html) az operációs rendszerének megfelelő csomagot egy különálló telepítési könyvtárba. A letöltés egyetlen végrehajtható fájlt tartalmaz, amelynek globális elérési utat is meg kell határoznia. A Linux-és Mac-eszközök elérési útjának beállításával kapcsolatos útmutatásért keresse fel [ezt a weblapot](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Az elérési út Windows rendszeren való beállításával kapcsolatos utasításokért keresse fel [ezt a weblapot](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows).
 
 Ellenőrizze az elérési út konfigurációját a `terraform` paranccsal. Megjelenik az elérhető Terraform lehetőségek listája, ahogy az alábbi példában is látható:
 
@@ -52,19 +52,19 @@ Ha több Azure-előfizetéssel rendelkezik, először kérdezze le fiókját az 
 az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
-Ha a kiválasztott előfizetést szeretné használni, állítsa be ennek a munkamenetnek az előfizetését az [az Account set](/cli/azure/account#az-account-set)paranccsal. Állítsa be `SUBSCRIPTION_ID` úgy a környezeti változót, hogy a visszaadott mező értékét a használni kívánt előfizetésből kapja: `id`
+Ha a kiválasztott előfizetést szeretné használni, állítsa be ennek a munkamenetnek az előfizetését az [az Account set](/cli/azure/account#az-account-set)paranccsal. Állítsa be a `SUBSCRIPTION_ID` környezeti változót a használni kívánt előfizetéshez tartozó visszaadott `id` mező értékének megtartásához:
 
 ```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-Most létrehozhat egy egyszerű szolgáltatásnevet a Terraform-hez való használatra. Használja az [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac), és állítsa be a hatókört az előfizetésre a következőképpen:
+Most létrehozhat egy egyszerű szolgáltatásnevet a Terraform-hez való használatra. Használja az [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac), és állítsa be a *hatókört* az előfizetésre a következőképpen:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-A `appId` ,`password`a, a és`tenant` a értéket adja vissza. `sp_name` Jegyezze fel a és `appId` `password`a.
+A rendszer `appId`, `password`, `sp_name`és `tenant` ad vissza. Jegyezze fel a `appId` és a `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Terraform környezeti változók konfigurálása
 
@@ -92,7 +92,7 @@ export ARM_ENVIRONMENT=public
 
 ## <a name="run-a-sample-script"></a>Minta parancsfájl futtatása
 
-Hozzon létre `test.tf` egy fájlt egy üres könyvtárban, és illessze be az alábbi szkriptet.
+Hozzon létre egy fájlt `test.tf` egy üres könyvtárban, és illessze be az alábbi szkriptet.
 
 ```hcl
 provider "azurerm" {
@@ -117,7 +117,7 @@ A kimenet a következő példához hasonló:
 Terraform has been successfully initialized!
 ```
 
-Megtekintheti a Terraform-szkript `terraform plan`által végrehajtandó műveleteket. Ha készen áll az erőforráscsoport létrehozására, alkalmazza a Terraform tervet a következőképpen:
+Megtekintheti a Terraform-parancsfájl által a `terraform plan`használatával végrehajtandó műveleteket. Ha készen áll az erőforráscsoport létrehozására, alkalmazza a Terraform tervet a következőképpen:
 
 ```bash
 terraform apply
@@ -145,7 +145,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben telepítette a Terraform-t, vagy használta a Cloud Shell az Azure-beli hitelesítő adatok konfigurálásához és az erőforrások létrehozásának megkezdéséhez az Azure-előfizetésében. A Terraform üzembe helyezéséhez az Azure-ban a következő cikkben talál további információt:
 

@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása az Azure PowerShell használatával | Microsoft Docs
+title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása Azure PowerShell
 description: Ebből a rövid útmutatóból elsajátíthatja, hogyan használható az Azure PowerShell Linux rendszerű virtuális gépek létrehozására
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 88d028f48b75238e2123d939a832e3fa70fc0056
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1e336ad05d70341365b63d806b249740113724d3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300882"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035192"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rövid útmutató: Linux virtuális gép létrehozása az Azure-ban PowerShell-lel
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához csak kattintson a kódblokk jobb felső sarkában található **Kipróbálás** elemre. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-ssh-key-pair"></a>SSH-kulcspár létrehozása
 
@@ -48,7 +48,7 @@ Az SSH-kulcspárok létrehozásáról, többek között a PuTTy használatáról
 
 Ha a Cloud Shell használatával hozza létre az SSH-kulcspárt, az [a Cloud Shell által automatikusan létrehozott tárfiókban](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) lévő tárolórendszerképben lesz tárolva. Ne törölje a tárfiókot vagy a benne lévő a fájlmegosztást, amíg le nem kérte a kulcsokat, ellenkező esetben elveszíti a hozzáférést a virtuális géphez. 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoportok olyan logikai tárolók, amelyekbe a rendszer üzembe helyezi az Azure-erőforrásokat és kezeli azokat:
 
@@ -203,12 +203,12 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Ha elkészült, az SSH-munkamenetből való kilépéshez írja be a következőt: `exit`.
+Ha elkészült, az SSH-munkamenetből való kilépéshez írja be: `exit`.
 
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
 
-Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Webcímként adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
+Egy tetszőleges webböngészővel tekintse meg az alapértelmezett NGINX-kezdőlapot. Webcímként adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 
 ![NGINX alapértelmezett kezdőlapja](./media/quick-create-cli/nginix-welcome-page.png)
 

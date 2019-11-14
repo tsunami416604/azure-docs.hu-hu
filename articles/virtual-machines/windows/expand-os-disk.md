@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gép operációsrendszer-meghajtójának kibontása az Azure-ban | Microsoft Docs
+title: Windows rendszerű virtuális gép operációsrendszer-meghajtójának kibontása az Azure-ban
 description: A Resource Manager-alapú üzemi modellben bontsa ki a virtuális gép operációsrendszer-meghajtójának méretét az Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749411"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033501"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának kibontása
 
@@ -214,6 +214,6 @@ Miután kibontotta a virtuális gép lemezét, be kell lépnie az operációs re
 4.  A **DiskPart** parancssorba írja be a következőt: `extend [size=<size>]`. Ez kibővíti a kijelölt kötetet megabájtban (MB).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Azure Portal](attach-managed-disk-portal.md)használatával is csatolhat lemezeket.

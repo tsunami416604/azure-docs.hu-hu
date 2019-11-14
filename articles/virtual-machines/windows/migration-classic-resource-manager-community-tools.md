@@ -1,5 +1,5 @@
 ---
-title: Közösségi eszközök – klasszikus erőforrások áthelyezése a Azure Resource Managerba | Microsoft Docs
+title: Közösségi eszközök – klasszikus erőforrások áthelyezése a Azure Resource Managerba
 description: Ez a cikk a IaaS-erőforrások klasszikusról a Azure Resource Manager üzemi modellbe való áttelepítését segítő eszközöket katalogizálja a Közösség által biztosított eszközökkel.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 2b5d218812878db6fb110c043afffd2f9a2d344d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a4a7ed6d57e72deb7f49895935e522e65e18f7d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102677"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033317"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Közösségi eszközök az IaaS-erőforrások migrálásához a klasszikusból az Azure Resource Manager-alapú üzemi modellbe
 Ez a cikk a IaaS-erőforrások klasszikusról a Azure Resource Manager üzemi modellbe való áttelepítését segítő, a Közösség által biztosított eszközöket katalogizálja.
@@ -41,7 +41,7 @@ Ez az Azure Service Management szolgáltatásból a Azure Resource Managerba val
 [Az eszköz dokumentációjának hivatkozása](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-a migAz egy további lehetőség a klasszikus IaaS erőforrások teljes készletének áttelepítésére Azure Resource Manager IaaS-erőforrásokra. Az áttelepítés ugyanazon az előfizetésen belül vagy a különböző előfizetések és előfizetési típusok között történhet (pl.: CSP-előfizetések).
+a migAz egy további lehetőség a klasszikus IaaS erőforrások teljes készletének áttelepítésére Azure Resource Manager IaaS-erőforrásokra. Az áttelepítés ugyanazon az előfizetésen belül vagy a különböző előfizetések és előfizetési típusok (pl.: CSP-előfizetések) között történhet.
 
 [Az eszköz dokumentációjának hivatkozása](https://github.com/Azure/migAz)
 

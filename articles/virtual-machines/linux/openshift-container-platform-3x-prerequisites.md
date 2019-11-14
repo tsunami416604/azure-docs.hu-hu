@@ -1,5 +1,5 @@
 ---
-title: OpenShift Container platform 3,11 az Azure-előfeltételekben | Microsoft Docs
+title: OpenShift Container platform 3,11 az Azure-előfeltételekben
 description: Az OpenShift Container platform 3,11 Azure-beli üzembe helyezésének előfeltételei.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882401"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035476"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -57,7 +57,7 @@ Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index
 ```azurecli 
 az login
 ```
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A Key Vault üzemeltetéséhez dedikált erőforráscsoportot kell használnia. Ez a csoport a OpenShift-fürt erőforrásainak üzembe helyezéséhez használt erőforráscsoporthoz eltér.
 
@@ -79,7 +79,7 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>SSH-kulcs létrehozása 
-Egy SSH-kulcsra van szükség a OpenShift-fürthöz való hozzáférés biztonságossá tételéhez. SSH-kulcspár létrehozása a `ssh-keygen` parancs használatával (Linux vagy macOS rendszeren):
+Egy SSH-kulcsra van szükség a OpenShift-fürthöz való hozzáférés biztonságossá tételéhez. Hozzon létre egy SSH-kulcspárt a `ssh-keygen` parancs használatával (Linux vagy macOS rendszeren):
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
@@ -139,7 +139,7 @@ Az egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Csak Resource Manager-sablonra vonatkozó előfeltételek
 
-A titkos SSH-kulcs (**sshPrivateKey**), az Azure ad Client Secret (**aadClientSecret**), a OpenShift admin password (**OpenshiftPassword**) és a Red Hat Subscription Manager jelszava vagy aktiválási kulcsa **alapján létre kell hozni a titkokat. rhsmPasswordOrActivationKey**).  Emellett ha egyéni SSL-tanúsítványokat használ, akkor hat további titkot kell létrehoznia – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és  **masterkeyfile**.  A paramétereket részletesebben is ismertetjük.
+A titkos SSH-kulcs (**sshPrivateKey**), az Azure ad Client Secret (**aadClientSecret**), a OpenShift admin password (**OpenshiftPassword**) és a Red Hat előfizetés-kezelő jelszava vagy az aktiválási kulcs (**rhsmPasswordOrActivationKey**) számára létre kell hozni a titkokat.  Emellett ha egyéni SSL-tanúsítványokat használ, akkor hat további titkot kell létrehoznia – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és **masterkeyfile**.  A paramétereket részletesebben is ismertetjük.
 
 A sablon megadott titkos nevekre hivatkozik, ezért a fent felsorolt félkövér neveket **kell** használnia (kis-és nagybetűk megkülönböztetése).
 
