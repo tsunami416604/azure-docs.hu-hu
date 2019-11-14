@@ -1,5 +1,5 @@
 ---
-title: Nem csatolt Azure felügyelt és nem felügyelt lemezek keresése és törlése | Microsoft Docs
+title: Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése
 description: Az Azure által felügyelt és nem felügyelt (VHD/oldal Blobok) lemezek az Azure CLI használatával történő megkeresése és törlése.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e17292b3cf6edf851415efb83430331c54fbf610
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e475fcc5812177366b8c27ae2cca6b45d6c00709
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695533"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036154"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése
 Amikor töröl egy virtuális gépet (VM) az Azure-ban, alapértelmezés szerint a virtuális géphez csatolt összes lemez nem törlődik. Ez a funkció segít megakadályozni az adatvesztést a virtuális gépek véletlen törlése miatt. A virtuális gép törlése után továbbra is fizetnie kell a nem csatlakoztatott lemezekre. Ez a cikk bemutatja, hogyan keresheti meg és törölheti a nem csatolt lemezeket, és csökkentheti a szükségtelen költségeket. 
 
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Felügyelt lemezek: Nem csatlakoztatott lemezek keresése és törlése 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Felügyelt lemezek: nem csatolt lemezek keresése és törlése 
 
 A következő parancsfájl a nem csatlakoztatott [felügyelt lemezeket](managed-disks-overview.md) keresi a **többé** tulajdonság értékének vizsgálatával. Ha egy felügyelt lemez egy virtuális géphez van csatlakoztatva, a **többé** tulajdonság tartalmazza a virtuális gép erőforrás-azonosítóját. Ha egy felügyelt lemez nincs csatlakoztatva, a **többé** tulajdonság null értékű. A parancsfájl megvizsgálja az Azure-előfizetések összes felügyelt lemezét. Ha a parancsfájl egy olyan felügyelt lemezt keres, amelynek **többé** tulajdonsága NULL értékűre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
 
@@ -50,9 +50,9 @@ do
 done
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nem felügyelt lemezek: Nem csatlakoztatott lemezek keresése és törlése 
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nem felügyelt lemezek: nem csatolt lemezek keresése és törlése 
 
-A nem felügyelt lemezek az [Azure Storage](../../storage/common/storage-create-storage-account.md)-fiókokban [blobként](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) tárolt VHD-fájlok. A következő parancsfájl a nem csatolt nem felügyelt lemezeket (blobokat) keresi a **LeaseStatus** tulajdonság értékének vizsgálatával. Ha egy nem felügyelt lemez egy virtuális géphez van csatlakoztatva, a **LeaseStatus** tulajdonság **zárolt**értékre van állítva. Ha egy nem felügyelt lemez nincs csatlakoztatva, a **LeaseStatus** tulajdonság zárolása zárolvaértékre van állítva. A parancsfájl megvizsgálja az Azure-előfizetések összes Azure Storage-fiókjában lévő összes nem felügyelt lemezt. Ha a parancsfájl egy nem felügyelt lemezt keres, amelynek **LeaseStatus** tulajdonsága zárolvaértékre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
+A nem felügyelt lemezek az [Azure Storage-fiókokban](../../storage/common/storage-create-storage-account.md) [blobként](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) tárolt VHD-fájlok. A következő parancsfájl a nem csatolt nem felügyelt lemezeket (blobokat) keresi a **LeaseStatus** tulajdonság értékének vizsgálatával. Ha egy nem felügyelt lemez egy virtuális géphez van csatlakoztatva, a **LeaseStatus** tulajdonság **zárolt**értékre van állítva. Ha egy nem felügyelt lemez nincs csatlakoztatva, a **LeaseStatus** tulajdonság **zárolása zárolva**értékre van állítva. A parancsfájl megvizsgálja az Azure-előfizetések összes Azure Storage-fiókjában lévő összes nem felügyelt lemezt. Ha a parancsfájl egy nem felügyelt lemezt keres, amelynek **LeaseStatus** tulajdonsága **zárolva**értékre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
 
 >[!IMPORTANT]
 >Először futtassa a szkriptet úgy, hogy a **deleteUnattachedVHDs** változót 0-ra állítja. Ezzel a művelettel megkeresheti és megtekintheti a nem csatolt nem felügyelt virtuális merevlemezeket.
@@ -103,7 +103,7 @@ do
 done 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Storage-fiók törlése](../../storage/common/storage-create-storage-account.md)
 

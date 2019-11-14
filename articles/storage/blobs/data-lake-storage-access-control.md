@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991911"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037247"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés Azure Data Lake Storage Gen2
 
@@ -23,9 +23,9 @@ Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít m
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A RBAC szerepkör-hozzárendelésekkel hatékonyan alkalmazza a rendszerbiztonsági *tag*engedélyeinek készleteit. A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő Azure Active Directory (ad) által meghatározott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl.
+A RBAC szerepkör-hozzárendelésekkel hatékonyan alkalmazza a *rendszerbiztonsági tag*engedélyeinek készleteit. A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő Azure Active Directory (ad) által meghatározott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl.
 
-Ezek az Azure-erőforrások jellemzően a legfelső szintű erőforrásokra vannak korlátozva (például: Azure Storage-fiókok). Az Azure Storage esetében, és ennek következtében Azure Data Lake Storage Gen2 ezt a mechanizmust a tároló (fájlrendszer) erőforrásra kiterjesztették.
+Ezek az Azure-erőforrások jellemzően legfelső szintű erőforrásokra vannak korlátozva (például: Azure Storage-fiókok). Az Azure Storage esetében, és ennek következtében Azure Data Lake Storage Gen2 ezt a mechanizmust a tároló (fájlrendszer) erőforrásra kiterjesztették.
 
 Ha szeretné megtudni, hogyan rendeljen hozzá szerepköröket rendszerbiztonsági tag számára a Storage-fiók hatókörében, tekintse meg [Az Azure Blob-és üzenetsor-kezelés hozzáférésének biztosítása a Azure Portal RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)című témakört.
 
@@ -36,7 +36,7 @@ A RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozz
 Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag RBAC-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik RBAC-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
 
 > [!NOTE]
-> Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag egy felügyelőnek minősül, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár tulajdonosának beállítását, vagy fájl és ACL-ek a címtárakhoz és fájlokhoz, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
+> Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag egy *felügyelőnek* tekintendő, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár vagy fájl tulajdonosának beállítását, valamint a könyvtárak és fájlok hozzáférés-vezérlési listáihoz tartozó ACL-eket, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Megosztott kulcs és közös hozzáférésű aláírás (SAS) hitelesítése
 
@@ -64,7 +64,7 @@ A fájl-és könyvtári szintű engedélyek megadásához tekintse meg a követk
 |REST API    |[Elérési út – frissítés](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Ha a rendszerbiztonsági tag egy egyszerű *szolgáltatásnév* , fontos, hogy használja az egyszerű szolgáltatásnév objektum-azonosítóját, nem pedig a kapcsolódó alkalmazás regisztrációs OBJEKTUMának azonosítóját. Az egyszerű szolgáltatásnév objektum-AZONOSÍTÓjának lekéréséhez nyissa meg az Azure CLI-t, majd `az ad sp show --id <Your App ID> --query objectId`használja a következő parancsot:. Ügyeljen arra, hogy a `<Your App ID>` helyőrzőt cserélje le az alkalmazás-regisztrációhoz tartozó alkalmazás-azonosítóra.
+> Ha a rendszerbiztonsági tag egy egyszerű *szolgáltatásnév* , fontos, hogy használja az egyszerű szolgáltatásnév objektum-azonosítóját, nem pedig a kapcsolódó alkalmazás regisztrációs OBJEKTUMának azonosítóját. Az egyszerű szolgáltatásnév objektum-AZONOSÍTÓjának lekéréséhez nyissa meg az Azure CLI-t, majd használja a következő parancsot: `az ad sp show --id <Your App ID> --query objectId`. Ügyeljen arra, hogy az `<Your App ID>` helyőrzőt cserélje le az alkalmazás-regisztrációhoz tartozó alkalmazás-AZONOSÍTÓra.
 
 ### <a name="types-of-access-control-lists"></a>Hozzáférés-vezérlési listák típusai
 
@@ -90,7 +90,7 @@ A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **
 | **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 kontextusában | Egy könyvtár alárendelt elemeinek bejárásához szükséges. |
 
 > [!NOTE]
-> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, az egyszerű szolgáltatásnév eléréséhez olvasási vagy írási hozzáférést kell biztosítania a szolgáltatásnak a tárolóhoz, valamint a mappák hierarchiájának minden mappájához, amely a fájlhoz vezethet.
+> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, a rendszerbiztonsági tag számára olvasási vagy írási hozzáférést kell adnia egy fájlhoz, meg kell adnia a rendszerbiztonsági tag számára a tárolóhoz **tartozó engedélyeket,** valamint a fájlhoz vezető mappák hierarchiájában lévő összes mappát.
 
 #### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -154,8 +154,8 @@ A POSIX ACL-ekben minden felhasználó egy *elsődleges csoporttal*van társítv
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A tulajdonos csoport kiosztása új fájlhoz vagy könyvtárhoz
 
-* **1. eset**: A gyökérkönyvtár "/". Ez a könyvtár akkor jön létre, amikor létrejön egy Data Lake Storage Gen2 tároló. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a tárolót, ha az a OAuth használatával történt. Ha a tároló megosztott kulccsal, a fiók SAS-vel vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonoscsoport $superuserra van állítva.
-* **2. eset** (Minden egyéb eset): Új elem létrehozásakor a rendszer átmásolja a tulajdonos csoportot a szülő könyvtárából.
+* **1. eset**: a gyökérkönyvtár "/". Ez a könyvtár akkor jön létre, amikor létrejön egy Data Lake Storage Gen2 tároló. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a tárolót, ha az a OAuth használatával történt. Ha a tároló megosztott kulccsal, a fiók SAS-vel vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonos csoport **$superuserra**van állítva.
+* **2. eset** (minden egyéb eset): új elem létrehozásakor a tulajdonos csoportot a rendszer a szülő könyvtárából másolja.
 
 ##### <a name="changing-the-owning-group"></a>A tulajdonos csoport módosítása
 
@@ -309,7 +309,7 @@ A GUID azonosító akkor jelenik meg, ha a bejegyzés egy felhasználót jelöl,
 
 Ha az egyszerű szolgáltatások hozzáférés-vezérlési listáit definiálja, fontos, hogy az *egyszerű szolgáltatás* OBJEKTUMAZONOSÍTÓ (OID) használatával használja a létrehozott alkalmazás-regisztrációt. Fontos megjegyezni, hogy a regisztrált alkalmazások külön szolgáltatásnevet biztosítanak az adott Azure AD-bérlőben. A regisztrált alkalmazások egy OID-vel rendelkeznek, amely látható a Azure Portalban, de az *egyszerű szolgáltatásnév* egy másik (eltérő) OID-vel rendelkezik.
 
-Az alkalmazás regisztrálásához használt szolgáltatásnév OID-azonosítójának lekéréséhez használhatja az `az ad sp show` parancsot. Határozza meg az alkalmazás AZONOSÍTÓját paraméterként. Íme egy példa arra, hogyan kérheti le az OID-t az App ID = 18218b12-1895-43e9-ad80-6e8fc1ea88ce azonosítójú alkalmazás-regisztrációnak megfelelő egyszerű szolgáltatásnév számára. Futtassa az alábbi parancsot az Azure CLI-ben:
+Az alkalmazás regisztrálásához tartozó egyszerű szolgáltatás OID-azonosítójának lekéréséhez használhatja a `az ad sp show` parancsot. Határozza meg az alkalmazás AZONOSÍTÓját paraméterként. Íme egy példa arra, hogyan kérheti le az OID-t az App ID = 18218b12-1895-43e9-ad80-6e8fc1ea88ce azonosítójú alkalmazás-regisztrációnak megfelelő egyszerű szolgáltatásnév számára. Futtassa az alábbi parancsot az Azure CLI-ben:
 
 ```
 $ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId

@@ -1,24 +1,24 @@
 ---
-title: Egyéni rendszergazdai szerepkör engedélyei az alkalmazások regisztrálásának kezeléséhez – Azure Active Directory | Microsoft Docs
+title: Elérhető egyéni rendszergazdai szerepkör-engedélyek – Azure AD | Microsoft Docs
 description: Egyéni rendszergazdai szerepkör engedélyei az Identitáskezelés delegálásához.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ebffbc1c451404d93383a483eecdd4a25acf6b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928619"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025151"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Alkalmazás regisztrációs altípusai és engedélyei Azure Active Directory
 
@@ -52,7 +52,7 @@ A létrehozási engedélyek hozzáférést biztosítanak az **új regisztráció
 
 Az alkalmazások regisztrációjának törlésére két engedély áll rendelkezésre:
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>Microsoft. Directory/alkalmazások/törlés
+#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft.directory/applications/delete
 
 Lehetővé teszi az alkalmazások regisztrációjának törlését a altípustól függetlenül; vagyis az egybérlős és a több-bérlős alkalmazások is.
 
@@ -101,7 +101,7 @@ Lehetőség az egykönyvtáros és a több könyvtáros alkalmazások összes tu
 
 Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applications/allProperties/Update, de csak egybérlős alkalmazásokhoz.
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>Microsoft. Directory/alkalmazások/célközönség/frissítés
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
 Képes frissíteni a támogatott fióktípus (signInAudience) tulajdonságot az egykönyvtáras és a több könyvtáros alkalmazásokhoz.
 
@@ -111,7 +111,7 @@ Képes frissíteni a támogatott fióktípus (signInAudience) tulajdonságot az 
 
 Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applications/hallgatóság/Update, de csak egybérlős alkalmazásokhoz.
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>Microsoft. Directory/alkalmazások/hitelesítés/frissítés
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft.directory/applications/authentication/update
 
 A válasz URL-cím, a kijelentkezési URL-cím, az implicit folyamat és a közzétevői tartomány tulajdonságainak frissítése egyetlen bérlős és több-bérlős alkalmazásokban. Hozzáférést biztosít az alkalmazás regisztrációs hitelesítése oldalon található összes mezőhöz a támogatott fióktípus kivételével:
 
@@ -121,7 +121,7 @@ A válasz URL-cím, a kijelentkezési URL-cím, az implicit folyamat és a közz
 
 Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applications/Authentication/Update, de csak egybérlős alkalmazásokhoz.
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>Microsoft. Directory/alkalmazások/alapszintű/frissítés
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft.directory/applications/basic/update
 
 A név, embléma, Kezdőlap URL-cím, szolgáltatási URL-cím és adatvédelmi nyilatkozat URL-tulajdonságainak frissítése az egybérlős és a több-bérlős alkalmazásokban. Hozzáférést biztosít az alkalmazás regisztrációjának védjegyezése lapon lévő összes mezőhöz:
 
@@ -131,7 +131,7 @@ A név, embléma, Kezdőlap URL-cím, szolgáltatási URL-cím és adatvédelmi 
 
 Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applications/Basic/Update, de csak egybérlős alkalmazásokhoz.
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft.directory/applications/credentials/update
 
 Az egybérlős és a több-bérlős alkalmazásokhoz tartozó tanúsítványok és az ügyfél-titkok tulajdonságainak frissítése. Hozzáférést biztosít az alkalmazás regisztrációs tanúsítványainak & Secrets oldalon található összes mezőhöz:
 
@@ -141,7 +141,7 @@ Az egybérlős és a több-bérlős alkalmazásokhoz tartozó tanúsítványok �
 
 Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés, de csak egykönyvtáras alkalmazásokhoz.
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>Microsoft. Directory/alkalmazások/tulajdonosok/frissítés
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 
 Az egybérlős és a több-bérlős tulajdonos tulajdonságának frissítése. Hozzáférést biztosít az összes mezőhöz az alkalmazás-regisztrációs tulajdonosok lapon:
 
@@ -151,7 +151,7 @@ Az egybérlős és a több-bérlős tulajdonos tulajdonságának frissítése. H
 
 Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applications/owners/Update, de csak egybérlős alkalmazásokhoz.
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>Microsoft. Directory/alkalmazások/engedélyek/frissítés
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft.directory/applications/permissions/update
 
 Lehetőség van a delegált engedélyek, alkalmazás-engedélyek, engedélyezett ügyfélalkalmazások, szükséges engedélyek frissítésére, valamint az egybérlős és a több-bérlős alkalmazások engedélyezési tulajdonságainak megadására. A nem teszi lehetővé a jóváhagyás végrehajtását. Hozzáférést biztosít az alkalmazás regisztrációs API-engedélyeihez tartozó összes mezőhöz, és elérhetővé teszi az API-lapokat:
 

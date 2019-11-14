@@ -1,26 +1,26 @@
 ---
-title: Privileged Identity Management-Azure Active Directory Azure-erőforrás szerepköreinek hozzáférési felülvizsgálatának befejezése | Microsoft Docs
-description: Ismerje meg, hogyan végezheti el a Azure AD Privileged Identity Management (PIM) Azure Resource szerepköreinek hozzáférési felülvizsgálatát.
+title: Az Azure-erőforrás szerepköreinek hozzáférési felülvizsgálatának befejezése a PIM-ben – Azure AD | Microsoft Docs
+description: Ismerje meg, hogyan végezheti el Azure Active Directory Privileged Identity Management Azure Resource szerepköreinek hozzáférési felülvizsgálatát.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6761d1d6aea796e0cca708676f69c47328642cc2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895819"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021985"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>A Privileged Identity Management Azure Resource szerepköreinek hozzáférési felülvizsgálatának befejezése
 
@@ -50,9 +50,9 @@ Minden hozzáférési felülvizsgálat befejező dátummal rendelkezik. Kattints
 
 ### <a name="reset"></a>Alaphelyzetbe állítás
 
-A hozzáférési felülvizsgálat alaphelyzetbe állítható, hogy eltávolítsa a rajta végrehajtott összes döntést. A hozzáférési felülvizsgálat alaphelyzetbe állítása után a rendszer az összes felhasználót újra megjelöli.
+A hozzáférési felülvizsgálat alaphelyzetbe állítható, hogy eltávolítsa a rajta végrehajtott összes döntést. A hozzáférési felülvizsgálat alaphelyzetbe állítása után a rendszer minden felhasználót megjelöl, és nem tekinti át újra.
 
-### <a name="apply"></a>Jelentkezés
+### <a name="apply"></a>Alkalmaz
 
 A hozzáférési felülvizsgálat befejezése után válassza az **alkalmaz** lehetőséget a felülvizsgálat eredményének megvalósításához. Ha egy felhasználó hozzáférése megtagadva a felülvizsgálatban, ez a lépés eltávolítja a szerepkör-hozzárendelést.  
 
@@ -60,7 +60,7 @@ A hozzáférési felülvizsgálat befejezése után válassza az **alkalmaz** le
 
 Ha még nem érdekli a felülvizsgálat, törölje. Válassza a **Törlés** gombra, majd távolítsa el a felülvizsgálatot a Privileged Identity Management szolgáltatásból.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 Az **eredmények** lapon megtekintheti és letöltheti a felülvizsgálati eredmények listáját.
 

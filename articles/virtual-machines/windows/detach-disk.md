@@ -1,5 +1,5 @@
 ---
-title: Adatlemez leválasztása Windows rendszerű virtuális gépről – Azure | Microsoft Docs
+title: Adatlemez leválasztása Windows rendszerű virtuális gépről – Azure
 description: Adatlemez leválasztása az Azure-beli virtuális gépről a Resource Manager-alapú üzemi modell használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: de33ed80055c26870a29b4c4393a9072ec8dda5e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93db2935fdc41787bb1820d1f8ce85ac05ef0863
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749488"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033349"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Adatlemez leválasztása egy Windows rendszerű virtuális gépről
 
@@ -59,6 +59,6 @@ A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja azt egy másik virtuális géphez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .

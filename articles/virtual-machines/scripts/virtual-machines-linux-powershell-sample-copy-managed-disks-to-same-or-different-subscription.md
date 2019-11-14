@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl-minta – felügyelt lemezek másolása (mozgatása) azonos vagy eltérő előfizetésre | Microsoft Docs
+title: Azure PowerShell parancsfájl mintája – a felügyelt lemezek másolása (mozgatása) azonos vagy eltérő előfizetésre
 description: Azure PowerShell parancsfájl mintája – a felügyelt lemezek másolása (mozgatása) azonos vagy eltérő előfizetésre
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: babf7bf9de46e1657f94d19fe13bb0e328831ce0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: bb473a2f543c1621b99904b5a58dc7fc6625f6fc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748885"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021468"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemezek másolása ugyanabban az előfizetésben vagy eltérő előfizetésben a PowerShell-lel
 
@@ -41,10 +41,10 @@ A szkript a következő parancsokat használja egy új felügyelt lemez létreho
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új – AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Tartalmazza a szülő lemez erőforrás-azonosítóját, valamint a szülő lemez helyét megegyező helyet.  |
-| [Új – AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
+| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Tartalmazza a szülő lemez erőforrás-azonosítóját, valamint a szülő lemez helyét megegyező helyet.  |
+| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

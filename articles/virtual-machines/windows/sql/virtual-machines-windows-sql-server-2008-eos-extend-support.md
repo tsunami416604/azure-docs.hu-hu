@@ -1,6 +1,6 @@
 ---
-title: A SQL Server 2008 és SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ra
-description: Ismerje meg, hogy miként terjeszthető ki a SQL Server 2008 és SQL Server 2008 R2 támogatása a SQL Server-példány Azure-ba való áttelepítésével, vagy kiterjesztett támogatás megvásárlásával a helyszíni példányok megőrzése érdekében.
+title: A SQL Server 2008 & 2008 R2 támogatásának kiterjesztése
+description: A SQL Server-példány Azure-ba való áttelepítésével, illetve a helyszíni példányok megtartására szolgáló kiterjesztett támogatás megvásárlásával bővítheti SQL Server 2008 és SQL Server 2008 R2 támogatását.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100455"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034177"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ra
 
@@ -37,16 +38,16 @@ SQL Server 2008 rendszerű ügyfeleknek telepíteniük vagy frissíteniük kell 
 Az Azure Marketplace-en keresztül üzembe helyezett lemezképek előre telepítve vannak az SQL IaaS bővítménnyel. Az SQL IaaS bővítmény a rugalmas licencelés és az automatikus javítás követelménye. Az önállóan telepített virtuális gépeket telepítő ügyfeleknek manuálisan kell telepíteniük az SQL IaaS bővítményt. Az SQL IaaS bővítmény nem támogatott a Windows Server 2008 rendszeren.
 
 > [!NOTE]
-> Bár a SQL Server -létrehozási és- **kezelési** panel a Azure Portal SQL Server 2008 R2 rendszerképpel fog működni, a következő funkciók _nem támogatottak_: Automatikus biztonsági mentések, Azure Key Vault integráció, R-szolgáltatások és tárolási konfiguráció.
+> Bár a SQL Server- **létrehozási** és- **kezelési** lapok a Azure Portal SQL Server 2008 R2 rendszerképpel működnek együtt, a következő funkciók _nem támogatottak_: automatikus biztonsági mentések, Azure Key Vault integráció, R-szolgáltatások és tárolási konfiguráció.
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 Az utólagos elszámolású SQL Server 2008 R2-es üzemelő példányok [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-benefit/)konvertálhatók.
 
 Ha frissítési garanciát (SA) alapuló licencet szeretne átváltani, az ügyfélnek regisztrálnia kell az SQL VM erőforrás- [szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). A regisztráció után az SQL-licenc típusa Azure Hybrid Benefit és utólagos elszámolású.
 
 Az Azure-beli virtuális gépen lévő, öntelepített SQL Server 2008-es vagy SQL Server 2008 R2-példányok regisztrálhatnak az SQL VM erőforrás-szolgáltatóval, és a licencük típusát elvégezheti.
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 A manuális biztonsági mentési/visszaállítási módszerekkel áttelepítheti az EOS SQL Server példányait egy Azure-beli virtuális gépre. Ez a legelterjedtebb áttelepítési módszer a helyszínről egy Azure-beli virtuális gépre.
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -63,17 +64,17 @@ A [Database Migration Service](/azure/dms/dms-overview) az ügyfelek számára, 
 
 Az Azure-beli virtuális gépeken az EOS SQL Server vész-helyreállítási megoldásai a következők:
 
-- **SQL Server biztonsági mentések**: A Azure Backup segítségével megvédheti az EOS-SQL Server ransomware, véletlen törléssel és sérüléssel szemben. A megoldás jelenleg előzetes verzióban érhető el az EOS SQL Server esetében, és támogatja a Windows 2008 R2 SP1 rendszeren futó SQL Server 2008 és 2008 R2 rendszert. További részletekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
-- **Napló szállítása**: A RTO csökkentése érdekében egy másik zónában vagy Azure-régióban is létrehozhat egy naplóbeli szállítási replikát. Manuálisan kell konfigurálnia a napló szállítását.
-- **Azure Site Recovery**: A virtuális gép a zónák és régiók között Azure Site Recovery replikáció használatával replikálható. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
+- **SQL Server biztonsági mentések**: a Azure Backup segítségével megvédheti az EOS-SQL Servert a ransomware, a véletlen törlés és a sérülés ellen. A megoldás jelenleg előzetes verzióban érhető el az EOS SQL Server esetében, és támogatja a Windows 2008 R2 SP1 rendszeren futó SQL Server 2008 és 2008 R2 rendszert. További részletekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
+- **Napló szállítása**: létrehozhat egy naplóbeli szállítási replikát egy másik zónában vagy az Azure-régióban folyamatos visszaállításokkal a RTO csökkentése érdekében. Manuálisan kell konfigurálnia a napló szállítását.
+- **Azure site Recovery**: a virtuális gép a zónák és régiók között replikálható Azure site Recovery replikálással. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
 
 ## <a name="security-patching"></a>Biztonsági javítások
-SQL Server virtuális gépek bővített biztonsági frissítései a Microsoft Update csatornákon keresztül érkeznek, miután a SQL Server VM regisztrálva lettek az SQL VM [erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatónál. A javítások manuálisan vagy automatikusan is letölthetők.
+SQL Server virtuális gépek bővített biztonsági frissítései a Microsoft Update csatornákon keresztül érkeznek, miután a SQL Server VM regisztrálva lettek az SQL VM [erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md). A javítások manuálisan vagy automatikusan is letölthetők.
 
 Az *Automatikus javítás* alapértelmezés szerint engedélyezve van. Az automatizált javítás lehetővé teszi, hogy az Azure automatikus javításokat alkalmazzon az SQL Serveren és az operációs rendszeren. Megadhatja a hét egy napját, az időpontot és az időtartamot a karbantartási időszakra vonatkozóan, ha a SQL Server IaaS bővítmény telepítve van. Az Azure ebben a karbantartási időszakban végzi el a javításokat. A karbantartási időszak ütemezése a virtuális gép területi beállítása szerinti időt használja.  További információ: [SQL Server automatikus javítása az Azure Virtual Machines-on](virtual-machines-windows-sql-automated-patching.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 SQL Server VM migrálása az Azure-ba:
 

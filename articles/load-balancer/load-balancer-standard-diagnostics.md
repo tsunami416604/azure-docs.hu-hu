@@ -1,6 +1,5 @@
 ---
-title: Azure standard Load Balancer diagnosztika mérőszámokkal, riasztásokkal és erőforrás-állapottal
-titlesuffix: Azure Load Balancer
+title: Diagnosztika mérőszámokkal, riasztásokkal és erőforrás-állapottal – Azure standard Load Balancer
 description: Az Azure-standard Load Balancer diagnosztizálásához használja az elérhető metrikákat, riasztásokat és erőforrás-állapotokra vonatkozó információkat.
 services: load-balancer
 documentationcenter: na
@@ -13,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516250"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048729"
 ---
-# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Standard Load Balancer diagnosztika mérőszámokkal, riasztásokkal és erőforrás-állapottal
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
 Az Azure standard Load Balancer a következő diagnosztikai képességeket teszi elérhetővé:
 
-* **Többdimenziós mérőszámok és riasztások**: Az új, többdimenziós diagnosztikai képességeket [](https://docs.microsoft.com/azure/azure-monitor/overview) biztosít a standard Load Balancer-konfigurációk Azure monitoron keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
+* **Többdimenziós mérőszámok és riasztások**: új többdimenziós diagnosztikai képességeket biztosít a standard Load Balancer-konfigurációk [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview) keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
 
-* **Az erőforrás állapota**: A Azure Portal és a Resource Health lap Load Balancer oldalán (a figyelő alatt) tegye elérhetővé a standard Load Balancer Resource Health szakaszát. 
+* **Erőforrás állapota**: a Azure Portal Load Balancer lapja és a Resource Health lap (a figyelő alatt) tegye elérhetővé a standard Load Balancer Resource Health szakaszát. 
 
 Ez a cikk gyors áttekintést nyújt ezekről a képességekről, és lehetőséget nyújt a standard Load Balancer használatára.
 
@@ -38,12 +37,12 @@ A különböző standard Load Balancer konfigurációk a következő metrikákat
 
 | Metrika | Erőforrás típusa | Leírás | Ajánlott összesítés |
 | --- | --- | --- | --- |
-| Adatelérési út rendelkezésre állása (VIP rendelkezésre állása)| Nyilvános és belső terheléselosztó | Standard Load Balancer folyamatosan gyakorolja az adatelérési utat a régión belülről a terheléselosztó kezelőfelületére, egészen az SDN-veremig, amely támogatja a virtuális gépet. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatelérési út is érvényesítve lesz. A mérték láthatatlan az alkalmazás számára, és nem zavarja a többi műveletet.| Average |
-| Állapot mintavételi állapota (DIP rendelkezésre állása) | Nyilvános és belső terheléselosztó | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő minden példány végpontjának összesített vagy végponti szűrt nézetét biztosítja. Megtudhatja, hogyan tekintheti meg Load Balancer az alkalmazás állapotát, ahogy azt az állapot-mintavételi konfiguráció jelzi. |  Average |
-| (Szinkronizált) csomagok | Nyilvános és belső terheléselosztó | A standard Load Balancer nem szakítja meg Transmission Control Protocol (TCP) kapcsolatait, vagy nem kommunikál a TCP-vagy UDP-csomagok forgalmával. A folyamatok és a kézfogások mindig a forrás és a virtuálisgép-példány között vannak. A TCP protokollal kapcsolatos forgatókönyvek jobb megoldásához használhatja az SYN-csomagok számlálóit, hogy megtudja, hány TCP-kapcsolati kísérletet hajt végre a rendszer. A metrika a fogadott TCP SYN-csomagok számát jelenti.| Average |
-| SNAT-kapcsolatok | Nyilvános Load Balancer |Standard Load Balancer a nyilvános IP-címhez maszkolás kimenő folyamatok számát jelenti. A forrásoldali hálózati címfordítási (SNAT) portok kimeríthető erőforrások. Ez a metrika arra utalhat, hogy az alkalmazás milyen mértékben támaszkodik a SNAT a kimenő folyamatokból. A sikeres és sikertelen kimenő SNAT folyamatokra vonatkozó számlálókat jelentettek, és felhasználhatók a kimenő folyamatok állapotának hibakeresésére és megismerésére.| Average |
-| Bájtok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer az előtér által feldolgozott adatmennyiséget jelenti.| Average |
-| Csomagok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer jelentést készít az előtér által feldolgozott csomagokról.| Average |
+| Adatelérési út rendelkezésre állása (VIP rendelkezésre állása)| Nyilvános és belső terheléselosztó | Standard Load Balancer folyamatosan gyakorolja az adatelérési utat a régión belülről a terheléselosztó kezelőfelületére, egészen az SDN-veremig, amely támogatja a virtuális gépet. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatelérési út is érvényesítve lesz. A mérték láthatatlan az alkalmazás számára, és nem zavarja a többi műveletet.| Átlag |
+| Állapot mintavételi állapota (DIP rendelkezésre állása) | Nyilvános és belső terheléselosztó | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő minden példány végpontjának összesített vagy végponti szűrt nézetét biztosítja. Megtudhatja, hogyan tekintheti meg Load Balancer az alkalmazás állapotát, ahogy azt az állapot-mintavételi konfiguráció jelzi. |  Átlag |
+| (Szinkronizált) csomagok | Nyilvános és belső terheléselosztó | A standard Load Balancer nem szakítja meg Transmission Control Protocol (TCP) kapcsolatait, vagy nem kommunikál a TCP-vagy UDP-csomagok forgalmával. A folyamatok és a kézfogások mindig a forrás és a virtuálisgép-példány között vannak. A TCP protokollal kapcsolatos forgatókönyvek jobb megoldásához használhatja az SYN-csomagok számlálóit, hogy megtudja, hány TCP-kapcsolati kísérletet hajt végre a rendszer. A metrika a fogadott TCP SYN-csomagok számát jelenti.| Átlag |
+| SNAT-kapcsolatok | Nyilvános Load Balancer |Standard Load Balancer a nyilvános IP-címhez maszkolás kimenő folyamatok számát jelenti. A forrásoldali hálózati címfordítási (SNAT) portok kimeríthető erőforrások. Ez a metrika arra utalhat, hogy az alkalmazás milyen mértékben támaszkodik a SNAT a kimenő folyamatokból. A sikeres és sikertelen kimenő SNAT folyamatokra vonatkozó számlálókat jelentettek, és felhasználhatók a kimenő folyamatok állapotának hibakeresésére és megismerésére.| Átlag |
+| Bájtok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer az előtér által feldolgozott adatmennyiséget jelenti.| Átlag |
+| Csomagok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer jelentést készít az előtér által feldolgozott csomagokról.| Átlag |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>A terheléselosztó metrikáinak megtekintése a Azure Portalban
 
@@ -58,7 +57,7 @@ A standard Load Balancer erőforrások metrikáinak megtekintése:
 
     ![standard Load Balancer metrikái](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
-    *Ábra Adatelérési út rendelkezésre állási mérőszáma standard Load Balancer*
+    *Ábra: az adatelérési út rendelkezésre állási metrikája standard Load Balancer*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Többdimenziós mérőszámok programozott módon történő beolvasása API-kon keresztül
 
@@ -75,13 +74,13 @@ A virtuális IP-cím rendelkezésre állási mérőszáma a régión belüli ada
 
 Az adatelérési út rendelkezésre állásának beolvasása a standard Load Balancer erőforrásaihoz:
 1. Győződjön meg arról, hogy a helyes terheléselosztó erőforrás van kiválasztva. 
-2. A **metrika** legördülő listában válassza ki az adatelérési **út rendelkezésre állása**elemet. 
+2. A **metrika** legördülő listában válassza ki az **adatelérési út rendelkezésre állása**elemet. 
 3. Az **Összesítés** legördülő listában válassza az **AVG**elemet. 
 4. Emellett vegyen fel egy szűrőt a előtérbeli IP-cím vagy a frontend-port számára a szükséges előtér-IP-címmel vagy előtér-porttal rendelkező dimenzióként, majd csoportosítsa őket a kiválasztott dimenzió alapján.
 
 ![VIP-szondázás](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Ábra Load Balancer frontend-szondázás részletei*
+*Ábra: Load Balancer frontend-szondázás részletei*
 
 A metrikát egy aktív, sávon belüli mérés hozza létre. A régión belüli szondázás-szolgáltatás a méréshez kapcsolódó forgalomból származik. A szolgáltatás akkor aktiválódik, amikor nyilvános előtérrel hoz létre egy központi telepítést, és addig folytatódik, amíg el nem távolítja az előtért. 
 
@@ -91,9 +90,9 @@ A virtuális IP-cím elérhetősége a következő okok miatt sikertelen:
 - Az üzemelő példány nem rendelkezik kifogástalan állapotú virtuális gépekkel a háttér-készletben. 
 - Infrastruktúra-kimaradás történt.
 
-Diagnosztikai célból használhatja az adatelérési [út rendelkezésre állási metrikáját az](#vipavailabilityandhealthprobes)állapot mintavételi állapotával együtt.
+Diagnosztikai célból használhatja az [adatelérési út rendelkezésre állási metrikáját az állapot mintavételi állapotával együtt](#vipavailabilityandhealthprobes).
 
-A legtöbb forgatókönyv esetében az átlagot használja az összesítéshez.
+A legtöbb forgatókönyv esetében az **átlagot** használja az összesítéshez.
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>A virtuális IP-címekről érkező háttér-példányok választanak a mintavételre?
 
@@ -107,7 +106,7 @@ Az állapot-mintavétel a következő okok miatt meghiúsul:
 - Az állapot-mintavétel olyan portra konfigurálható, amely nem figyel vagy nem válaszol, vagy helytelen protokollt használ. Ha a szolgáltatás közvetlen kiszolgáló-visszaküldési (DSR-vagy úszó IP-) szabályokat használ, győződjön meg arról, hogy a szolgáltatás figyeli a hálózati adapter IP-konfigurációjának IP-címét, és nem csak az előtér-IP-címmel konfigurált visszacsatolást.
 - A mintavételt nem engedélyezi a hálózati biztonsági csoport, a virtuális gép vendég operációs rendszerének tűzfala vagy az alkalmazás rétegének szűrői.
 
-A legtöbb forgatókönyv esetében az átlagot használja az összesítéshez.
+A legtöbb forgatókönyv esetében az **átlagot** használja az összesítéshez.
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Hogyan a kimenő kapcsolatok statisztikáit? 
 
@@ -121,25 +120,25 @@ A SNAT-kapcsolatok statisztikáinak beolvasása:
 
 ![SNAT-kapcsolatok](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*Ábra Load Balancer SNAT-kapcsolatok száma*
+*Ábra: Load Balancer SNAT kapcsolatok száma*
 
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hogyan a szolgáltatáshoz tartozó bejövő/kimenő csatlakozási kísérletek ellenőrzését?
 
 A SYN-csomagok mérőszáma az adott előtérhöz társított TCP SYN-csomagok mennyiségét írja le, amelyek elérkeztek vagy elküldhetők ( [kimenő forgalom](https://aka.ms/lboutbound)esetén). Ez a metrika a szolgáltatáshoz való TCP-kapcsolódási kísérletek megismerésére használható.
 
-A legtöbb forgatókönyv esetében használja az összesítést.
+A legtöbb forgatókönyv **esetében használja az összesítést** .
 
 ![SYN-kapcsolatok](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*Ábra Load Balancer SYN-szám*
+*Ábra: Load Balancer SYN-szám*
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Hogyan a hálózat sávszélesség-felhasználását? 
 
 A bájtok és a csomagméret mérőszáma a szolgáltatás által az előtér-alapon küldött vagy fogadott bájtok és csomagok mennyiségét írja le.
 
-A legtöbb forgatókönyv esetében használja az összesítést.
+A legtöbb forgatókönyv **esetében használja az összesítést** .
 
 A bájt vagy a csomagok számának statisztikáinak beolvasása:
 1. Válassza ki a **bájtok számát** és/vagy a **csomagok darabszámának** metrikai típusát, az **átlagot** pedig összesítésként. 
@@ -149,7 +148,7 @@ A bájt vagy a csomagok számának statisztikáinak beolvasása:
 
 ![Bájtok száma](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*Ábra Load Balancer bájtok száma*
+*Ábra: Load Balancer bájtok száma*
 
 #### <a name = "vipavailabilityandhealthprobes"></a>Hogyan a terheléselosztó üzembe helyezésének diagnosztizálása?
 
@@ -161,7 +160,7 @@ További lépésként igénybe veheti a VIP-elérhetőségi metrikákat, és meg
 
 ![Az adatelérési út rendelkezésre állásának és az állapot-mintavételi állapot metrikáinak egyesítése](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
-*Ábra Az adatelérési út rendelkezésre állásának és az állapot-mintavételi állapot metrikáinak egyesítése*
+*Ábra: az adatelérési út rendelkezésre állásának és az állapot-mintavételi állapot metrikáinak kombinálása*
 
 A diagram a következő információkat jeleníti meg:
 - A virtuális gépeket üzemeltető infrastruktúra nem volt elérhető, és a diagram elején 0% volt. Később az infrastruktúra Kifogástalan állapotba került, és a virtuális gépek elérhetők voltak, és több virtuális gépet helyeztek el a háttérbe. Ezt az információt az adatelérési utak rendelkezésre állása (VIP rendelkezésre állása) kék nyomkövetése jelzi, amely később 100%-os volt. 
@@ -174,35 +173,35 @@ A diagram lehetővé teszi, hogy az ügyfelek az üzembe helyezést a saját mag
 A standard Load Balancer erőforrások állapotának állapota a meglévő **erőforrás** -állapoton keresztül érhető el a **monitor > Service Health**.
 
 A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
-1. Válassza a **figyelő** > **Service Health**elemet.
+1. Válassza a **figyelő** > **Service Health**lehetőséget.
 
    ![Figyelő oldal](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Ábra A Azure Monitor Service Health hivatkozása*
+   *Ábra: a Service Health hivatkozás a Azure Monitor*
 
 2. Válassza a **Resource Health**lehetőséget, majd győződjön meg arról, hogy az **előfizetés azonosítója** és az **erőforrástípus = Load Balancer** van kiválasztva.
 
-   ![Erőforrás állapotadatai](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   ![Erőforrás állapotának állapota](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
-   *Ábra Válassza ki az erőforrást az állapot nézethez*
+   *Ábra: válasszon erőforrást az állapot nézethez*
 
 3. A listából válassza ki a Load Balancer erőforrást a korábbi állapotának megtekintéséhez.
 
     ![Load Balancer állapot](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Ábra Erőforrás-állapot nézet Load Balancer*
+   *Ábra: Load Balancer erőforrás-állapot nézet*
  
 A különböző erőforrás-állapotokat és azok leírását az alábbi táblázat tartalmazza: 
 
-| Erőforrás állapotadatai | Leírás |
+| Erőforrás állapotának állapota | Leírás |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
-| Nem elérhető | A standard Load Balancer erőforrás nem kifogástalan állapotú. **Azure monitor** > **metrikák**kiválasztásával diagnosztizálhatja az állapotot.<br>(A nem*elérhető* állapot azt is jelenti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.) |
+| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A **Azure Monitor** > **metrikák**kiválasztásával diagnosztizálhatja az állapotot.<br>(A nem*elérhető* állapot azt is jelenti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.) |
 | Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült.<br>(Az*ismeretlen* állapot azt is jelentheti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.)  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
 - További információ a [terheléselosztó kimenő kapcsolatáról](https://aka.ms/lboutbound).
 - A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)megismerése.
-- Ismerje meg a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) és a metrikák beolvasását [REST API használatával](/rest/api/monitor/metrics/list).
+- Ismerje meg a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) és a [metrikák beolvasását REST API használatával](/rest/api/monitor/metrics/list).

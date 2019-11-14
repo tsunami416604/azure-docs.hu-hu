@@ -1,25 +1,25 @@
 ---
-title: A PowerShell és a Graph példák a licencelési csoportokra – Azure Active Directory | Microsoft Docs
+title: A PowerShell és a Graph példák a csoportos licencelésre – Azure AD | Microsoft Docs
 description: PowerShell + Graph-példák és forgatókönyvek Azure Active Directory Group-alapú licenceléshez
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8965f4872ac88601a4a77dc48ba430c2f419250f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 52a741fd0616fc17ed133309ea6200dca43a83b7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160575"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025581"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>A PowerShell és a Graph példák az Azure AD-beli csoportos licencelésre
 
@@ -627,6 +627,6 @@ Ha többet szeretne megtudni a csoportokon keresztüli licencelési szolgáltat�
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
-* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)

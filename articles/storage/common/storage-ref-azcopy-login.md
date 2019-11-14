@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514717"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034075"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -35,6 +35,13 @@ További információért tekintse meg a példákat.
 ```azcopy
 azcopy login [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
@@ -74,13 +81,13 @@ Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitás�
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-Jelentkezzen be egyszerű szolgáltatásként egy ügyfél-titkos kulcs használatával. Állítsa be a AZCOPY_SPA_CLIENT_SECRET környezeti változót a Secret-alapú szolgáltatásnév hitelesítéséhez.
+Jelentkezzen be egyszerű szolgáltatásként egy ügyfél-titkos kulcs használatával. Állítsa a környezeti változót AZCOPY_SPA_CLIENT_SECRET a titkos kulcson alapuló egyszerű szolgáltatás hitelesítéséhez.
 
 ```azcopy
 azcopy login --service-principal
 ```
 
-Jelentkezzen be egyszerű szolgáltatásként tanúsítvány és jelszó használatával. Állítsa be a környezeti változót a tanúsítvány AZCOPY_SPA_CERT_PASSWORD a tanúsítvány-alapú egyszerű szolgáltatás hitelesítéséhez.
+Jelentkezzen be egyszerű szolgáltatásként tanúsítvány és jelszó használatával. Állítsa be a környezeti változót a tanúsítvány-alapú egyszerű szolgáltatás hitelesítéséhez AZCOPY_SPA_CERT_PASSWORD a tanúsítvány jelszavára.
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert
@@ -92,7 +99,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>Beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |--|--|
 |--Application-ID karakterlánc|A felhasználó által hozzárendelt identitás alkalmazás-azonosítója. Az egyszerű szolgáltatás hitelesítéséhez szükséges.|
 |--Certificate-Path karakterlánc|A tanúsítvány elérési útja az SPN-hitelesítéshez. A tanúsítványalapú szolgáltatásnév hitelesítéséhez szükséges.|
@@ -106,11 +113,11 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

@@ -1,5 +1,5 @@
 ---
-title: OpenShift Container platform 3,11 Azure-beli üzembe helyezés utáni feladatokban | Microsoft Docs
+title: OpenShift Container platform 3,11 Azure-beli üzembe helyezés utáni feladatok
 description: További feladatok a OpenShift Container platform 3,11-fürt üzembe helyezését követően.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: c1e04f048c081da4777045e5bee43991c95b4625
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392773"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035510"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -74,7 +74,7 @@ Jegyezze fel a parancs által visszaadott appId tulajdonságot egy későbbi lé
 
 Az Azure Portalon:
 
-1. Válassza ki **Azure Active Directory** > **alkalmazás regisztrációját**.
+1. Válassza **Azure Active Directory** > az **alkalmazás regisztrációja**lehetőséget.
 2. Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
 3. Az eredmények között kattintson az alkalmazás regisztrációja elemre.
 4. A **Beállítások**területen válassza a **szükséges engedélyek**lehetőséget.
@@ -155,7 +155,7 @@ sudo /usr/local/bin/master-restart api
 sudo /usr/local/bin/master-restart controllers
 ```
 
-A OpenShift-konzolon most két hitelesítési lehetőség látható: a htpasswd_auth és az [alkalmazás regisztrálása].
+A OpenShift-konzolon mostantól két hitelesítési lehetőség látható: htpasswd_auth és [alkalmazás regisztrálása].
 
 ## <a name="monitor-openshift-with-azure-monitor-logs"></a>OpenShift figyelése Azure Monitor naplókkal
 

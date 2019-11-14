@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513422"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023497"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -35,7 +35,14 @@ A szinkronizálási parancs többféle módon eltér a másolási parancstól:
 2. A virtuális könyvtárak közötti szinkronizáláskor adjon hozzá egy perjelet az elérési úthoz (példák), ha van olyan blob, amelynek a neve megegyezik a virtuális könyvtárak egyikével.
 3. Ha az "deleteDestination" jelző értéke TRUE (igaz) vagy prompt, akkor a Sync törli a célhelyen található fájlokat és blobokat, amelyek nem szerepelnek a forrásban.
 
-### <a name="advanced"></a>Extra szintű
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+
+### <a name="advanced"></a>Speciális
 
 Ha nem ad meg fájlkiterjesztést, a AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
 
@@ -48,7 +55,7 @@ A beépített keresési táblázat kicsi, de a UNIX rendszeren a helyi rendszer 
 Windows rendszeren a MIME-típusokat a rendszer kinyeri a beállításjegyzékből.
 
 ```azcopy
-azcopy sync [flags]
+azcopy sync <source> <destination> [flags]
 ```
 
 ## <a name="examples"></a>Példák
@@ -147,11 +154,11 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

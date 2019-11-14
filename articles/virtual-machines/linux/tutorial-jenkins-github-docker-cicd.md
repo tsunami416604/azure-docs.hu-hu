@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Fejlesztési folyamat létrehozása az Azure-ban a Jenkins használatával | Microsoft Docs
+title: Oktatóanyag – fejlesztési folyamat létrehozása az Azure-ban a Jenkins szolgáltatással
 description: Oktatóanyag – Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre az Azure-ban egy Jenkins-alapú virtuális gépet, amely a GitHubról kéri le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 875285b6a168d9aa9820d660d9c366a36545d319
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b755ac015095e537134f1ff5c076c23a432ec91
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299405"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034486"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
 
@@ -108,7 +108,7 @@ Biztonsági okokból a Jenkins telepítésének megkezdéséhez meg kell adnia a
 ssh azureuser@<publicIps>
 ```
 
-Ellenőrizze, hogy fut-e a Jenkins a `service` paranccsal:
+Ellenőrizze, hogy fut-e a Jenkins a `service` parancs használatával:
 
 ```bash
 $ service jenkins status
@@ -149,7 +149,7 @@ Hozzon létre egy webhookot a létrehozott elágazásban:
 
 - Válassza a **Beállítások**, majd a bal oldali **webhookok** lehetőséget.
 - Válassza a **webhook hozzáadása**lehetőséget, majd írja be a *Jenkins* kifejezést a szűrő mezőbe.
-- A **hasznos adatok URL-címéhez**írja be a következőt: `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
+- A **hasznos adatok URL-címe**mezőbe írja be a következőt: `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
 - A **tartalom típusa**beállításnál válassza az *Application/x-www-Form-urlencoded*lehetőséget.
 - **Mely eseményekhez szeretné elindítani ezt a webhookot?** jelölje ki *a csak a leküldéses eseményt.*
 - Az **aktív** érték bejelölve.

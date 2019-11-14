@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 335e3c3ddabbf5bc267458fc1c55fef0e551583e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d4dedf2f90baa5eae005f47719e67bd8e97d8490
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039028"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -77,11 +77,11 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja a signficantly 100 elemre csökken [.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) Ha az elemek száma meghaladja ezt a korlátot, a SplitOn képesség le van tiltva. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre [csökken.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Ha a Egyidejűség-vezérlő be van kapcsolva, a várakozási idő minimális száma 10, az egyidejű futtatások száma (Egyidejűség). A maximális számot akár 100-ig is megváltoztathatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát írja le, amelyek csak akkor tudnak futni, ha a logikai alkalmazás már futtatja az egyidejű példányokat. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
 | Foreach | 100 000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](../connectors/connectors-native-query.md). |
 | Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes " [egyidejűségek korlátait](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtatását](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)" részben tekintse meg egymás után. |
-| SplitOn elemek | * 100 000 trigger-párhuzamosság nélkül <p><p>* 100 trigger-párhuzamosságtal | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja significanly csökken. Ha az elemek száma meghaladja ezt a korlátot, a SplitOn le van tiltva. |
+| SplitOn elemek | * 100 000 trigger-párhuzamosság nélkül <p><p>* 100 trigger-párhuzamosságtal | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre csökken. |
 | Iterációig | 5000 | |
 ||||
 
@@ -96,10 +96,10 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
 | Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Az alapértelmezett korlát módosításához tekintse [meg a logikai alkalmazás futtatása nagy teljesítményű módban](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), amely előzetes verzióban érhető el. Vagy a számítási feladatok több logikai alkalmazásban is eloszthatók a szükséges módon. |
-| Művelet: egyidejű kimenő hívások | ~ 2 500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
-| Futásidejű végpont: egyidejű bejövő hívások | ~ 1 000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
-| Futásidejű végpont: olvasási hívások/5 perc  | 60 000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
-| Futásidejű végpont: hívások hívása 5 percenként | 45 000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
+| Művelet: egyidejű kimenő hívások | ~2,500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
+| Futásidejű végpont: egyidejű bejövő hívások | ~1,000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
+| Futásidejű végpont: olvasási hívások/5 perc  | 60,000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
+| Futásidejű végpont: hívások hívása 5 percenként | 45,000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
 | Tartalom átviteli sebessége 5 percenként | 600 MB | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
 ||||
 
@@ -209,7 +209,7 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 > [!NOTE]
 > Az ingyenes szintet csak feltáró forgatókönyvek esetében használja, éles környezetben nem. Ez a szint korlátozza az átviteli sebességet és a használatot, és nem rendelkezik szolgáltatói szerződéssel (SLA).
 
-| Összetevő | Ingyenes | Alapszintű | Standard |
+| Összetevő | Free | Alapszintű | Standard |
 |----------|------|-------|----------|
 | EDI kereskedelmi szerződések | 10 | 1 | 1,000 |
 | EDI kereskedelmi partnerek | 25 | 2 | 1,000 |
@@ -233,10 +233,10 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 
 | Futásidejű végpont | Korlát | Megjegyzések |
 |------------------|-------|-------|
-| Olvasási hívások száma 5 percenként | 60 000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
-| Hívások hívása 5 percenként | 45 000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
-| Hívások követése 5 percenként | 45 000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
-| Egyidejű hívások blokkolása | ~ 1 000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
+| Olvasási hívások száma 5 percenként | 60,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Hívások hívása 5 percenként | 45,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Hívások követése 5 percenként | 45,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Egyidejű hívások blokkolása | ~1,000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 ||||
 
 <a name="b2b-protocol-limits"></a>
@@ -315,8 +315,8 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 | Nyugat-Európa | 13.95.155.53, 52.174.54.218, 52.174.49.6, 51.144.176.185 |
 | Nyugat-India | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | USA nyugati régiója | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
-| USA 2. nyugati régiója | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |
-| Egyesült Királyság déli régiója | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
+| USA nyugati régiója, 2. | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |
+| Az Egyesült Királyság déli régiója | 51.140.78.71, 51.140.79.109, 51.140.84.39, 51.140.155.81 |
 | Az Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
@@ -351,12 +351,12 @@ A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek att
 | Nyugat-Európa | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118 |
 | Nyugat-India | 104.211.154.7, 104.211.154.59, 104.211.156.153, 104.211.158.123, 104.211.158.127, 104.211.162.205, 104.211.164.80, 104.211.164.136 | 104.211.146.224 - 104.211.146.239, 104.211.189.218 |
 | USA nyugati régiója | 40.83.164.80, 40.118.244.241, 40.118.241.243, 52.160.92.112, 104.42.38.32, 104.42.49.145, 157.56.162.53, 157.56.167.147 | 40.112.243.160 - 40.112.243.175, 104.42.122.49 |
-| USA 2. nyugati régiója | 13.66.201.169, 13.66.210.167, 13.66.246.219, 13.77.149.159, 52.175.198.132, 52.183.29.132, 52.183.30.169 | 13.66.140.128 - 13.66.140.143, 52.183.78.157 |
-| Egyesült Királyság déli régiója | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.148.0 - 51.140.148.15, 51.140.80.51 |
+| USA nyugati régiója, 2. | 13.66.201.169, 13.66.210.167, 13.66.246.219, 13.77.149.159, 52.175.198.132, 52.183.29.132, 52.183.30.169 | 13.66.140.128 - 13.66.140.143, 52.183.78.157 |
+| Az Egyesült Királyság déli régiója | 51.140.28.225, 51.140.73.85, 51.140.74.14, 51.140.78.44, 51.140.137.190, 51.140.142.28, 51.140.153.135, 51.140.158.24 | 51.140.148.0 - 51.140.148.15, 51.140.80.51 |
 | Az Egyesült Királyság nyugati régiója | 51.141.45.238, 51.141.47.136, 51.141.54.185, 51.141.112.112, 51.141.113.36, 51.141.114.77, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105 |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhatja létre első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * Tudnivalók a [gyakori példákról és forgatókönyvekről](../logic-apps/logic-apps-examples-and-scenarios.md)

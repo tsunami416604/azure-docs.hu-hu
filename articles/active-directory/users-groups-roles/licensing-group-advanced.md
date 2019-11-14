@@ -1,26 +1,26 @@
 ---
-title: Csoportos licenceléssel kapcsolatos további forgatókönyvek – Azure Active Directory | Microsoft Docs
+title: Csoportos licenceléssel kapcsolatos további forgatókönyvek – Azure AD | Microsoft Docs
 description: További forgatókönyvek Azure Active Directory csoport alapú licenceléshez
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034143"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025947"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
@@ -28,7 +28,7 @@ Az alábbi információk és példák segítségével összetettebb ismereteket 
 
 ## <a name="usage-location"></a>Használat helye
 
-Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. [A Azure Portalban](https://portal.azure.com)megadhatja a használati helyet a **User** &gt; **profil** &gt; **beállításainál**.
+Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. [A Azure Portalban](https://portal.azure.com)megadhatja a használati helyet a **felhasználói** &gt; **profil** &gt; **Beállítások**lehetőségnél.
 
 A csoport licencének hozzárendelésekor a megadott használati hely nélküli felhasználók öröklik a címtár helyét. Ha több helyen is vannak felhasználók, ügyeljen arra, hogy a felhasználói erőforrásokban megfelelően tükrözze, mielőtt felhasználókat adna hozzá a licencekhez.
 
@@ -57,7 +57,7 @@ Előfordulhat, hogy a felhasználóknak egy licencre van szükségük, de nem eg
 
 ![Képernyőkép a Enterprise Mobility + Security licenccel rendelkező felhasználókról](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-Ebben a példában módosítsa az egyik felhasználót, és állítsa be a extensionAttribute1 a `EMS;E5_baseservices;` értékre, ha azt szeretné, hogy a felhasználó mindkét licenccel rendelkezzen. Ezt a módosítást a helyszínen végezheti el. Miután a módosítás szinkronizálva lett a felhővel, a rendszer automatikusan hozzáadja a felhasználót mindkét csoporthoz, és hozzárendeli a licenceket.
+Ebben a példában módosítsa az egyik felhasználót, és állítsa be a extensionAttribute1 értékét `EMS;E5_baseservices;` értékre, ha azt szeretné, hogy a felhasználó mindkét licenccel rendelkezzen. Ezt a módosítást a helyszínen végezheti el. Miután a módosítás szinkronizálva lett a felhővel, a rendszer automatikusan hozzáadja a felhasználót mindkét csoporthoz, és hozzárendeli a licenceket.
 
 ![A felhasználó extensionAttribute1 beállítását bemutató képernyőfelvétel](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -70,7 +70,7 @@ Ebben a példában módosítsa az egyik felhasználót, és állítsa be a exten
 
 Egy felhasználó több, licenccel rendelkező csoport tagja is lehet. Íme néhány megfontolandó szempont:
 
-- Ugyanannak a terméknek több licence is átfedésben van, és az összes engedélyezett szolgáltatást alkalmazza a felhasználóra. A következő példa két licencelési csoportot mutat be: Az *E3 alapszolgáltatások* az elsőként üzembe helyezett Foundation-szolgáltatásokat tartalmazzák az összes felhasználó számára. Az *E3 bővített szolgáltatásai* pedig további szolgáltatásokat (Sway és Planner) tartalmaznak, amelyek csak bizonyos felhasználók számára telepíthetők. Ebben a példában a felhasználó mindkét csoporthoz hozzá lett adva:
+- Ugyanannak a terméknek több licence is átfedésben van, és az összes engedélyezett szolgáltatást alkalmazza a felhasználóra. Az alábbi példa két licencelési csoportot mutat be: az *E3 alapszolgáltatások* az elsőként üzembe helyezett alapszolgáltatásokat tartalmazzák az összes felhasználó számára. Az *E3 bővített szolgáltatásai* pedig további szolgáltatásokat (Sway és Planner) tartalmaznak, amelyek csak bizonyos felhasználók számára telepíthetők. Ebben a példában a felhasználó mindkét csoporthoz hozzá lett adva:
 
   ![Az engedélyezett szolgáltatások képernyőképe](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -112,7 +112,7 @@ Rendszergazdaként áttekintheti a változás által érintett összes csoportot
 
 3. Lépjen a [**Azure Active Directory > licencek > minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelre, és válassza az *Office 365 Enterprise E5*lehetőséget, majd válassza a **licencelt csoportok** lehetőséget az adott termékkel rendelkező csoportok listájának megtekintéséhez.
 
-4. Kattintson az áttekinteni kívánt csoportra (ebben az esetben az *O365 E5-Exchange-* re). Ekkor megnyílik a **licencek** lap. Ha az E5-licencre kattint, megnyílik egy panel, amely felsorolja az összes engedélyezett szolgáltatást.
+4. Kattintson az áttekinteni kívánt csoportra (ebben az esetben az *O365 E5-Exchange-* re). Ekkor megnyílik a **licencek** lap. az E5-licencre kattintva megnyílik egy panel, amely felsorolja az összes engedélyezett szolgáltatást.
    > [!NOTE]
    > A *Microsoft stream* szolgáltatás automatikusan lett hozzáadva és engedélyezve ebben a csoportban, az *Exchange Online* szolgáltatás mellett:
 
@@ -128,9 +128,9 @@ Rendszergazdaként áttekintheti a változás által érintett összes csoportot
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>A PowerShell használatával megtekintheti, hogy ki örökölt és közvetlen licenceket
 A PowerShell-parancsfájlok segítségével ellenőrizhető, hogy a felhasználók rendelkeznek-e közvetlenül vagy egy csoporttól örökölt licenccel.
 
-1. A `connect-msolservice` parancsmag futtatásával hitelesítheti és csatlakozhat a bérlőhöz.
+1. Az `connect-msolservice` parancsmag futtatásával hitelesítheti és kapcsolódhat a bérlőhöz.
 
-2. a `Get-MsolAccountSku` használható a bérlő összes kiépített termék-licencének felderítésére.
+2. `Get-MsolAccountSku` használatával felderítheti a bérlő összes kiépített termék-licencét.
 
    ![A Get-Msolaccountsku parancsmag képernyőképe](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -179,7 +179,7 @@ Amikor egy licenc megváltozik egy csoporton, az Azure AD elkezdi alkalmazni a m
    > ```
 
 3. Ha meg szeretné tekinteni a csoport feldolgozásának teljes naplóját, beleértve az összes felhasználó módosítását, állítsa be a következő szűrőket:
-   - **Kezdeményező (színész)** : "Microsoft Azure AD csoport alapú licencelés"
+   - **Kezdeményező (színész)** : "Microsoft Azure ad csoport alapú licencelés"
    - **Dátumtartomány** (nem kötelező): egyéni tartomány, ha tudja, hogy egy adott csoport elindult, és befejeződött a feldolgozás.
 
 Ez a minta kimenet a feldolgozás kezdetét, az összes eredményül kapott felhasználói változást és a feldolgozás befejezését mutatja.
@@ -193,7 +193,7 @@ Ez a minta kimenet a feldolgozás kezdetét, az összes eredményül kapott felh
 
 Nem lehet törölni egy olyan csoportot, amelyhez aktív licenc van rendelve. Egy rendszergazda törölheti azt a csoportot, amely nem veszi észre, hogy a licenceket el kell távolítani a felhasználóktól, ezért a törléshez előbb el kell távolítani a csoportból a licenceket.
 
-Amikor egy csoportot próbál törölni a Azure Portalban, a következőhöz hasonló hibaüzenet jelenhet meg: @no__t 0Screenshot-csoport törlése sikertelen @ no__t-1
+Amikor egy csoportot próbál törölni a Azure Portalban, a következőhöz hasonló hibaüzenet jelenhet meg: ![képernyőfelvétel-csoport törlése sikertelen](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Lépjen a csoport **licencek** fülére, és ellenőrizze, hogy vannak-e hozzárendelve licencek. Ha igen, távolítsa el ezeket a licenceket, és próbálja meg újból törölni a csoportot.
 
@@ -219,7 +219,7 @@ Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátoz
 
   Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás**gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 

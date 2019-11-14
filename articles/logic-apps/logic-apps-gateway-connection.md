@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 356eab6122272162f20e1516a9ef7f4ea0127084
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796253"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049055"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan hozhatja létre az Azure Gateway-erőforrást egy ko
 Az átjáró más szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
 
 * [Microsoft Power BI helyszíni adatátjáró](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [A helyszíni adatátjáró automatizálása](https://flow.microsoft.com/documentation/gateway-manage/)
+* [A helyszíni adatátjáró automatizálása](/power-automate/gateway-reference)
 * [Microsoft Power apps helyszíni adatátjáró](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Helyszíni adatátjáró Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
@@ -172,7 +172,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A logikai alkalmazások védelme](./logic-apps-securing-a-logic-app.md)
 * [Gyakori példák és forgatókönyvek logikai alkalmazásokhoz](./logic-apps-examples-and-scenarios.md)

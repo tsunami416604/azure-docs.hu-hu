@@ -1,5 +1,5 @@
 ---
-title: OpenShift üzembe helyezése Azure Stackban | Microsoft Docs
+title: OpenShift üzembe helyezése Azure Stack
 description: OpenShift üzembe helyezése Azure Stackban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d6c73b8cd33aa85793a2ce839410065e03b97be7
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390656"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035536"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift-tároló platform vagy OKD üzembe helyezése Azure Stack
 
@@ -45,7 +45,7 @@ Ha a Resource Manager-sablont használja, válassza ki a megfelelő ágat (azure
 ```
 
 Az összes beállításhoz szükség van egy Red Hat-előfizetésre. Az üzembe helyezés során a Red Hat Enterprise Linux példány regisztrálva van a Red Hat-előfizetésben, és ahhoz a készlet-AZONOSÍTÓhoz van csatolva, amely tartalmazza a jogosultságokat a OpenShift-tároló platformhoz.
-Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be https://access.redhat.com -ra.
+Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be https://access.redhat.comba.
 
 ## <a name="azure-stack-prerequisites"></a>Előfeltételek Azure Stack
 

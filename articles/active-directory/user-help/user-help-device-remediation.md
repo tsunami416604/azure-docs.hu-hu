@@ -1,6 +1,6 @@
 ---
-title: A "Meg nem innen érheti el" hiba – az Azure Active Directory hibaelhárítása |} A Microsoft Docs
-description: Hárítsa el a lehetséges okok a "Meg nem innen érheti el" hibaüzenetet kap.
+title: A "nem érhető el innen" hibaüzenettel kapcsolatos javítások – Azure AD
+description: A "nem érhető el innen" hibaüzenetből megtudhatja, hogyan érheti el a lehetséges javításokat.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,60 +14,61 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473803"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028560"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>A "Meg nem innen érheti el" hibaüzenetet a lehetséges okok
-Arról, hogy a, hibaüzenetet kaphat közben: a szervezet belső webalkalmazásokat vagy szolgáltatásokat, **nem érheti el itt**. Ez az üzenet azt jelenti, a szervezet rendelkezik egy szabályzatot, amely megakadályozza, hogy az eszköz a szervezet erőforrásaihoz. Bár előfordulhat, hogy végül forduljon az ügyfélszolgálathoz a probléma megoldásához rendelkezik, az alábbiakban néhány dolgot, először próbálja meg.
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>A "nem érhető el innen" hibaüzenet lehetséges javításai
+
+A szervezet belső webes alkalmazásaihoz vagy szolgáltatásaihoz való hozzáférés **során a következő**hibaüzenet jelenhet meg: Ez az üzenet azt jelenti, hogy a szervezete olyan szabályzatot állított be, amely megakadályozza, hogy az eszköz hozzáférjen a szervezet erőforrásaihoz. Habár előfordulhat, hogy a probléma megoldásához kapcsolatba kell lépnie az ügyfélszolgálattal, íme néhány dolog, amelyet először is kipróbálhat.
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>Győződjön meg arról, hogy támogatott böngészőt használ
-Ha a **nem érheti el itt** üzenetet kap arról, hogy próbál hozzáférni a szervezet helyekhez nem támogatott böngészőből, ellenőrizze, hogy milyen böngészőt futtatja.
+Ha úgy látja, hogy **nem tud** innen üzenetet kapni, mondván, hogy nem támogatott böngészőből próbál hozzáférni a szervezet webhelyeihez, ellenőrizze, hogy melyik böngészőt futtatja.
 
-![Böngészőtámogatás kapcsolatos hibaüzenet](media/user-help-device-remediation/browser-version.png)
+![A böngésző támogatásával kapcsolatos hibaüzenet](media/user-help-device-remediation/browser-version.png)
 
-A probléma megoldásához telepítse, és futtassa az operációs rendszer alapján egy támogatott böngészővel. A Windows 10 használata, a támogatott többek között a Microsoft Edge, Internet Explorer és a Google Chrome-ban. Ha eltérő operációs rendszert használ, ellenőrizheti a teljes listát [támogatott böngészők](../conditional-access/technical-reference.md#supported-browsers).
+A probléma megoldásához telepítenie és futtatnia kell egy támogatott böngészőt az operációs rendszere alapján. Ha a Windows 10 rendszert használja, a támogatott böngészők közé tartoznak a Microsoft Edge, az Internet Explorer és a Google Chrome. Ha más operációs rendszert használ, a [támogatott böngészők](../conditional-access/technical-reference.md#supported-browsers)teljes listáját is megtekintheti.
 
-## <a name="make-sure-youre-using-a-supported-operating-system"></a>Győződjön meg arról, hogy egy támogatott operációs rendszert használja
-Győződjön meg arról, hogy az operációs rendszer támogatott verzióját futtatja, többek között:
+## <a name="make-sure-youre-using-a-supported-operating-system"></a>Győződjön meg arról, hogy támogatott operációs rendszert használ
+Győződjön meg arról, hogy az operációs rendszer támogatott verzióját futtatja, beleértve a következőket:
 
-- **Windows Client.** Windows 7 vagy újabb.
+- **Windows-ügyfél.** Windows 7 vagy újabb.
 
-- **A Windows Server.** A Windows Server 2008 R2 vagy újabb.
+- **Windows Server.** Windows Server 2008 R2 vagy újabb.
 
 - **macOS.** macOS X vagy újabb
 
-- **Android és IOS rendszerű.** Android és IOS rendszerű mobileszközök operációs rendszerek legújabb verziója
+- **Android és iOS.** Az Android és iOS rendszerű mobil operációs rendszerek legújabb verziója
 
-A probléma megoldásához telepítse, és egy támogatott operációs rendszert futtat.
+A probléma megoldásához telepítenie és futtatnia kell egy támogatott operációs rendszert.
 
-## <a name="make-sure-your-device-is-joined-to-your-network"></a>Győződjön meg arról, hogy az eszköz csatlakozik a hálózathoz
-Ha a **nem érheti el itt** üzenetet kap arról, hogy az eszköz megfelelőségi ki-e a szervezet hozzáférési szabályzatot, és ellenőrizze, hogy az eszköz csatlakozott a munkahelyi hálózathoz.
+## <a name="make-sure-your-device-is-joined-to-your-network"></a>Győződjön meg arról, hogy az eszköz csatlakoztatva van a hálózathoz
+Ha a **következő** üzenet jelenik meg, amely azt jelzi, hogy az eszköz nem felel meg a szervezet hozzáférési házirendjének, győződjön meg róla, hogy csatlakoztatta az eszközt a szervezet hálózatához.
 
-![Van-e a hálózaton kapcsolatos hibaüzenet](media/user-help-device-remediation/network-version.png)
+![Hibaüzenet, hogy a hálózata van-e](media/user-help-device-remediation/network-version.png)
 
-### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Ellenőrizze, hogy az eszköz csatlakozik-e a hálózati
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjával Windows. Például: alain@contoso.com.
+### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>Annak ellenőrzését, hogy az eszköz csatlakozik-e a hálózathoz
+1. Jelentkezzen be a Windowsba munkahelyi vagy iskolai fiókjával. Például: alain@contoso.com.
 
-2. A virtuális magánhálózati (VPN) vagy Directaccessen keresztül a vállalati hálózathoz csatlakozni.
+2. Kapcsolódjon a szervezet hálózatához egy virtuális magánhálózat (VPN) vagy a DirectAccess használatával.
 
-3. Miután csatlakozott, nyomja le az **Windows billentyű + l billentyűkombinációt** zárolja az eszközt.
+3. A csatlakozás után a **Windows billentyű + L** billentyű lenyomásával zárolhatja az eszközt.
 
-4. Oldja fel az eszköz a munkahelyi vagy iskolai fiókjával, és ismételje meg a problémás alkalmazás eléréséhez, vagy újra a szolgáltatást.
+4. Oldja fel az eszközét munkahelyi vagy iskolai fiókjával, majd próbálja meg újra elérni a problémás alkalmazást vagy szolgáltatást.
 
-    Ha megjelenik a **nem érheti el itt** hibaüzenet jelenik meg, válassza ki a **további részleteket** hivatkozásra, és, forduljon a Segélyszolgálathoz az adataival.
+    Ha úgy látja, hogy **nem tud többé ide-** hibaüzenetet kapni, válassza a **További részletek** hivatkozást, majd lépjen kapcsolatba az ügyfélszolgálattal a részletekkel.
 
-### <a name="to-join-your-device-to-your-network"></a>Az eszköz csatlakoztatása a hálózat
-Ha az eszköz nem csatlakozik a vállalati hálózaton, két dolog egyikét teheti:
+### <a name="to-join-your-device-to-your-network"></a>Az eszköz csatlakoztatása a hálózathoz
+Ha az eszköz nincs csatlakoztatva a szervezet hálózatához, akkor két dolog közül választhat:
 
-- **Eszköz munkahelyi csatlakoztatáson.** A munkahelyi tulajdonú Windows 10 rendszerű eszköz csatlakoztatása a vállalati hálózaton potenciálisan korlátozott erőforrások eléréséhez. További információk és részletes útmutatást lásd: [a munkahelyi eszköz csatlakoztatása a szervezet hálózati](user-help-join-device-on-network.md).
+- **Csatlakoztassa munkahelyi eszközét.** Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz. További információt és részletes útmutatást a [munkahelyi eszköz csatlakoztatása a szervezet hálózatához](user-help-join-device-on-network.md)című témakörben talál.
 
-- **Regisztrálja a személyes eszköz munkahelyi számára.** Regisztrálja a személyes eszköz, általában egy telefonjához vagy táblagépéhez, a vállalati hálózaton. Az eszköz regisztrálása után hozzáférhet a szervezet korlátozott erőforrások. További információk és részletes útmutatást lásd: [regisztrálja a személyes eszköz a vállalati hálózaton](user-help-register-device-on-network.md).
+- **Regisztrálja a személyes eszközét a munkához.** Regisztrálja személyes eszközét (jellemzően telefon vagy Tablet) a szervezet hálózatán. Az eszköz regisztrálása után hozzáférhet a szervezet korlátozott erőforrásaihoz. További információk és részletes útmutatás: [személyes eszköz regisztrálása a szervezet hálózatán](user-help-register-device-on-network.md).
 
-## <a name="next-steps"></a>További lépések
-- [Mi az a MyApps portálról?](active-directory-saas-access-panel-introduction.md)
+## <a name="next-steps"></a>Következő lépések
+- [Mi a MyApps-portál?](active-directory-saas-access-panel-introduction.md)
 
 - [Bejelentkezés telefonnal a jelszó helyett](user-help-auth-app-sign-in.md)

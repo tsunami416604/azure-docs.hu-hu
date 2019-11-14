@@ -1,5 +1,5 @@
 ---
-title: Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban | Microsoft Docs
+title: Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 description: Linux rendszerű virtuális gépek időszinkronizálása.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7e23b71edd05154f3c19a097ebf92c690426c777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100781"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034661"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -67,7 +67,7 @@ Alapértelmezés szerint a Linux rendszerhez készült legtöbb Azure Marketplac
 
 Az újabb Linux-disztribúciókban a VMICTimeSync szolgáltatás a (z) pontosságot használja, de előfordulhat, hogy a korábbi disztribúciók nem támogatják a PTP-t, és az NTP-re kerülnek vissza a gazdagépről való idő beszerzéséhez.
 
-Az NTP sikeres szinkronizálásának megerősítéséhez futtassa a `ntpq -p` parancsot.
+Az NTP sikeres szinkronizálásának megerősítéséhez futtassa az `ntpq -p` parancsot.
 
 ### <a name="host-only"></a>Csak gazdagép 
 
@@ -87,7 +87,7 @@ Az időszinkronizálási konfiguráció ellenőrzéséhez néhány alapszintű p
 
 ### <a name="integration-services"></a>Integrációs szolgáltatások
 
-Ellenőrizze, hogy az integrációs szolgáltatás (hv_utils) be van-e töltve.
+Ellenőrizze, hogy be van-e töltve az integrációs szolgáltatás (hv_utils).
 
 ```bash
 lsmod | grep hv_utils
@@ -148,11 +148,11 @@ Ha a chrony-és a TimeSync-források egyszerre is engedélyezve vannak, megjelö
 
 ### <a name="systemd"></a>rendszerszintű 
 
-Ubuntu és SUSE idő szinkronizálásakor a [rendszer](https://www.freedesktop.org/wiki/Software/systemd/)a rendszerbeállítással van konfigurálva. Az Ubuntuval kapcsolatos további információkért lásd [](https://help.ubuntu.com/lts/serverguide/NTP.html): időszinkronizálás. További információ a SUSE-ről: [SUSE Linux Enterprise Server 12 SP3 kibocsátási megjegyzések](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)4.5.8 szakasza.
+Ubuntu és SUSE idő szinkronizálásakor a [rendszer](https://www.freedesktop.org/wiki/Software/systemd/)a rendszerbeállítással van konfigurálva. Az Ubuntuval kapcsolatos további információkért lásd: [időszinkronizálás](https://help.ubuntu.com/lts/serverguide/NTP.html). További információ a SUSE-ről: [SUSE Linux Enterprise Server 12 SP3 kibocsátási megjegyzések](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)4.5.8 szakasza.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
 

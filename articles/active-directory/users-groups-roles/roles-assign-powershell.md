@@ -1,30 +1,30 @@
 ---
-title: Egyéni szerepkörök kiosztása erőforrás-hatókörrel Azure PowerShell-Azure Active Directory használatával | Microsoft Docs
+title: Egyéni szerepkörök társítása Azure PowerShell használatával – Azure AD | Microsoft Docs
 description: Az Azure AD-rendszergazda egyéni szerepkör tagjainak kezelése Azure PowerShell.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3f590659017d2bb79c7445f6896817b8432f41
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a2096b7899039e7a9d3455bc0c6fb3ec84ebd1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880735"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025315"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Egyéni szerepkörök társítása erőforrás-hatókörrel a PowerShell használatával Azure Active Directory
 
-Ez a cikk azt ismerteti, hogyan lehet szerepkör-hozzárendelést létrehozni a szervezeti szintű hatókörben Azure Active Directory (Azure AD). Az Azure AD-szervezeten belül az egész szervezetre kiterjedő hatókörrel rendelkező szerepkör kiosztása biztosít hozzáférést. Ha egy szerepkör-hozzárendelést egyetlen Azure AD-erőforrás hatókörével szeretne létrehozni, tekintse [meg az egyéni szerepkör létrehozása és hozzárendelése az erőforrás](roles-create-custom.md)-hatókörben című témakört. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modulját használja.
+Ez a cikk azt ismerteti, hogyan lehet szerepkör-hozzárendelést létrehozni a szervezeti szintű hatókörben Azure Active Directory (Azure AD). Az Azure AD-szervezeten belül az egész szervezetre kiterjedő hatókörrel rendelkező szerepkör kiosztása biztosít hozzáférést. Ha egy szerepkör-hozzárendelést egyetlen Azure AD-erőforrás hatókörével szeretne létrehozni, tekintse [meg az egyéni szerepkör létrehozása és hozzárendelése az erőforrás-hatókörben](roles-create-custom.md)című témakört. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modulját használja.
 
-További információ az Azure AD rendszergazdai szerepköreiről: [rendszergazdai szerepkörök](directory-assign-admin-roles.md)kiosztása Azure Active Directoryban.
+További információ az Azure AD rendszergazdai szerepköreiről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](directory-assign-admin-roles.md).
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -52,7 +52,7 @@ Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulba
 ## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Szerepkör társítása egy felhasználóhoz vagy egy egyszerű szolgáltatáshoz erőforrás-hatókörrel
 
 1. Nyissa meg az Azure AD Preview PowerShell-modult.
-1. Jelentkezzen be a parancs `Connect-AzureAD`végrehajtásával.
+1. Jelentkezzen be `Connect-AzureAD`parancs végrehajtásával.
 1. Hozzon létre egy új szerepkört a következő PowerShell-parancsfájl használatával.
 
 ``` PowerShell
@@ -160,7 +160,7 @@ Get-AzureADMSRoleAssignment -Filter "roleDefinitionId eq '355aed8a-864b-4e2b-b22
 Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-1'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ossza meg velünk az [Azure ad rendszergazdai szerepköreit tartalmazó fórumot](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökről és az Azure AD rendszergazdai szerepkör-hozzárendeléseiről a [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md)című témakörben olvashat bővebben.

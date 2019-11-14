@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM-méretek – HPC | Microsoft Docs
+title: Azure Linux VM-méretek – HPC
 description: Felsorolja az Azure-ban a Linux nagy teljesítményű számítástechnikai virtuális gépekhez elérhető különböző méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 214ab48b6b0dca37eff3b3f155aaa92afc7fee16
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100864"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034894"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -88,7 +88,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló linuxos
 
 * **Virtual Machines** – helyezze üzembe a RDMA-kompatibilis HPC virtuális gépeket ugyanabban a rendelkezésre állási készletben (az Azure Resource Manager üzemi modell használatakor). Ha a klasszikus üzemi modellt használja, telepítse a virtuális gépeket ugyanabban a felhőalapú szolgáltatásban. 
 
-* **Virtuálisgép** -méretezési csoportok – egy virtuálisgép-méretezési csoportban győződjön meg arról, hogy egyetlen elhelyezési csoportra korlátozza a központi telepítést. Például egy Resource Manager-sablonban állítsa be a `singlePlacementGroup` `true`tulajdonságot a következőre:. 
+* **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban győződjön meg arról, hogy egyetlen elhelyezési csoportra korlátozza a központi telepítést. Például egy Resource Manager-sablonban állítsa a `singlePlacementGroup` tulajdonságot `true`re. 
 
 * **MPI a virtuális gépek között** – ha a virtuális gépek (VM-EK) közötti MPI-kommunikáció szükséges, győződjön meg arról, hogy a virtuális gépek ugyanabban a rendelkezésre állási csoportba vagy a virtuális gépre ugyanazok a méretezési csoportba tartoznak.
 
@@ -96,7 +96,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló linuxos
 
 * **Azure batch** – hozzon létre egy [Azure batch](/azure/batch/) -készletet MPI-számítási feladatok futtatásához Linux rendszerű számítási csomópontokon. További információ: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](../../batch/batch-pool-compute-intensive-sizes.md). Tekintse meg a [Batch-hajógyár](https://github.com/Azure/batch-shipyard) projektjét, amely a tároló-alapú számítási feladatok futtatására használható a Batch szolgáltatásban.
 
-* **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) számos Linux-disztribúciót támogat a RDMA-kompatibilis Azure-beli virtuális gépeken üzembe helyezett számítási csomópontokon való futtatáshoz, amelyeket egy Windows Server Head csomópont kezel. A központi telepítésre példát a [HPC Pack Linux RDMA-fürt létrehozása az Azure-ban](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)című témakörben talál.
+* A **Microsoft HPC pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) számos Linux-disztribúciót támogat a RDMA-kompatibilis Azure-beli virtuális gépeken üzembe helyezett számítási csomópontokon való futtatáshoz, amelyeket egy Windows Server Head csomópont kezel. A központi telepítésre példát a [HPC Pack Linux RDMA-fürt létrehozása az Azure-ban](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)című témakörben talál.
 
 
 ### <a name="network-considerations"></a>Hálózati megfontolások
@@ -114,7 +114,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló linuxos
 - [GPU](../windows/sizes-gpu.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [HPC](../workloads/hpc/configure.md) -munkaterhelések beállításáról, optimalizálásáról és méretezéséről az Azure-ban.
+- További információ a [HPC-munkaterhelések](../workloads/hpc/configure.md) beállításáról, optimalizálásáról és méretezéséről az Azure-ban.
 - További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

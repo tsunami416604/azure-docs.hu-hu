@@ -1,39 +1,39 @@
 ---
-title: Hogyan állapítható meg, ha egy Azure AD bejelentkezési lapján fogadja el a Microsoft-fiókok |} A Microsoft Docs
-description: Képernyő-felhasználónév keresési üzenetkezelési tükrözi a bejelentkezés során
+title: Az Azure AD bejelentkezési oldalán Elfogadom a Microsoft-fiókokat | Microsoft Docs
+description: A bejelentkezéskor a képernyőn megjelenő üzenetkezelés a felhasználónevek keresését tükrözi
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468206"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024288"
 ---
-# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Microsoft-fiókok az Azure Active Directory bejelentkezési lehetőségek
+# <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Bejelentkezési lehetőségek a Azure Active Directory Microsoft-fiókjaihoz
 
-A Microsoft 365 bejelentkezési oldal az Azure Active Directory (Azure AD) támogatja a munkahelyi vagy iskolai fiókokhoz és a Microsoft-fiókok, de attól függően, a felhasználó a helyzet, annak oka az lehet az egyik vagy másik vagy mindkettőt. Ha például az Azure AD bejelentkezési oldal támogatja:
+A Azure Active Directory (Azure AD) Microsoft 365 bejelentkezési lapja támogatja a munkahelyi vagy iskolai fiókokat és a Microsoft-fiókokat, de a felhasználó helyzetének függvényében az egyik vagy a másik, vagy mindkettő. Az Azure AD bejelentkezési oldala például a következőket támogatja:
 
-* Fogadja el a bejelentkezési fiók mindkét típusú alkalmazások
-* A szervezetek, fogadja el a vendégek
+* Mindkét típusú fiókból érkező bejelentkezéseket elfogadó alkalmazások
+* A vendégeket elfogadó szervezetek
 
-## <a name="identification"></a>Azonosító
-Beállíthatja, hogy ha a szervezete bejelentkezési oldal támogatja a Microsoft-fiókok megnézzük a segítő szöveg a felhasználónév mezője. Ha a segítő szöveg a "E-mail, telefonszám vagy Skype" feliratú, a bejelentkezési oldal támogatja a Microsoft-fiókok.
+## <a name="identification"></a>Szoftverazonosító
+Megtudhatja, hogy a szervezet által használt bejelentkezési oldal támogatja-e a Microsoft-fiókokat a Felhasználónév mezőben található tipp szövegének megkeresésével. Ha a tipp szövege "e-mail-cím, telefon vagy Skype", a bejelentkezési oldal támogatja a Microsoft-fiókokat.
 
-![Fiók bejelentkezési lapok közötti különbség](./media/signin-account-support/ui-prompt.png)
+![A fiók bejelentkezési oldalai közötti különbség](./media/signin-account-support/ui-prompt.png)
 
-[További bejelentkezési lehetőségek csak a személyes Microsoft-fiókok esetében működik](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , de csak akkor használható a bejelentkezés munkahelyi vagy iskolai fiók erőforrásai.
+A [további bejelentkezési lehetőségek csak személyes Microsoft-fiókokhoz működnek](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ) , de nem használhatók munkahelyi vagy iskolai fiók erőforrásaiba való bejelentkezésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[A bejelentkezési márkajelzés testreszabása](../fundamentals/add-custom-domain.md)
+[A bejelentkezési arculat testreszabása](../fundamentals/add-custom-domain.md)

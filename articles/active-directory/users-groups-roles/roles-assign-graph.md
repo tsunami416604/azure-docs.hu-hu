@@ -1,5 +1,5 @@
 ---
-title: Egyéni rendszergazdai szerepkörök kiosztása és eltávolítása Microsoft Graph API-Azure Active Directory használatával | Microsoft Docs
+title: Azure AD-rendszergazdai szerepkörök kiosztása Microsoft Graph API-val | Microsoft Docs
 description: Azure AD-rendszergazdai szerepkörök kiosztása és eltávolítása Graph APIekkel Azure Active Directory
 services: active-directory
 author: curtand
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 898f444e868a469aed5358f49f48f5bcbfab4450
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707577"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025345"
 ---
 # <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása Graph API használatával Azure Active Directory 
 
@@ -38,7 +38,7 @@ POST
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
 ```
 
-Body
+Törzs
 
 ``` HTTP
 {
@@ -62,7 +62,7 @@ POST
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
 ```
 
-Body
+Törzs
 
 ``` HTTP
 {
@@ -89,7 +89,7 @@ POST
 https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
 ```
 
-Body
+Törzs
 
 ``` HTTP
 {
@@ -246,8 +246,8 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)foglalkozó fórumát.
+* Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).
 * Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](../fundamentals/users-default-permissions.md).

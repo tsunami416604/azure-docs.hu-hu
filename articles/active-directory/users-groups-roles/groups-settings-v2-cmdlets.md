@@ -1,35 +1,35 @@
 ---
-title: PowerShell-példák a csoportok kezelésére és az előzetes verziójú csoportok visszaírási a helyszíni Azure Active Directory | Microsoft Docs
+title: PowerShell V2 példák a csoportok kezelésére – Azure AD | Microsoft Docs
 description: Ez az oldal PowerShell-példákkal segíti a csoportok kezelését Azure Active Directory
 keywords: Azure AD, Azure Active Directory, PowerShell, csoportok, csoport kezelése
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1aa696ccaecc24df700315962c1f01f3a298c56c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381839"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026692"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> * [PowerShell](groups-settings-v2-cmdlets.md)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
-Ez a cikk példákat tartalmaz arra, hogyan használhatja a PowerShell-t a csoportok kezelésére Azure Active Directory (Azure AD).  Emellett azt is bemutatja, hogyan lehet beállítani az Azure AD PowerShell-modult. Először [le kell töltenie az Azure ad PowerShell](https://www.powershellgallery.com/packages/AzureAD/)-modult.
+Ez a cikk példákat tartalmaz arra, hogyan használhatja a PowerShell-t a csoportok kezelésére Azure Active Directory (Azure AD).  Emellett azt is bemutatja, hogyan lehet beállítani az Azure AD PowerShell-modult. Először [le kell töltenie az Azure ad PowerShell-modult](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="install-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell modul telepítése
 
@@ -60,7 +60,7 @@ A csoportok Azure AD PowerShell-parancsmagokkal történő kezelésének megkezd
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-A parancsmag kérni fogja a címtár eléréséhez használni kívánt hitelesítő adatokat. Ebben a példában a szolgáltatást használjuk karen@drumkit.onmicrosoft.com a bemutató könyvtár eléréséhez. A parancsmag visszaigazolja a munkamenet sikeres csatlakoztatását a címtárhoz:
+A parancsmag kérni fogja a címtár eléréséhez használni kívánt hitelesítő adatokat. Ebben a példában a bemutató könyvtár eléréséhez karen@drumkit.onmicrosoft.com használjuk. A parancsmag visszaigazolja a munkamenet sikeres csatlakoztatását a címtárhoz:
 
 ```powershell
     Account                       Environment Tenant
@@ -270,7 +270,7 @@ A csoportok létrehozásának letiltása a nem rendszergazda felhasználók szá
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
+2. Ha `UsersPermissionToCreateGroupsEnabled : True`ad vissza, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
@@ -316,7 +316,7 @@ Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasz
 * hostmaster
 * majordomo
 * postamester
-* legfelső szintű
+* Legfelső szintű
 * biztonságos
 * biztonság
 * SSL – rendszergazda
@@ -330,11 +330,11 @@ Az Office 365-csoportok létrehozása és kezelése a felhőben történik. A vi
 
 További részletekért tekintse meg a [Azure ad Connect Sync szolgáltatás](../hybrid/how-to-connect-syncservice-features.md)dokumentációját.
 
-Az Office 365 Group visszaírási a Azure Active Directory (Azure AD) nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhető. Az előzetes verziókkal kapcsolatos jogi információkhoz tekintse meg a [Microsoft Azure előzetes verziójának kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
+Az Office 365 Group visszaírási a Azure Active Directory (Azure AD) nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhető. Az előzetes verziókkal kapcsolatos jogi információkhoz tekintse meg a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Azure Active Directory](/powershell/azure/install-adv2?view=azureadps-2.0)-parancsmagokkal kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
+[Azure Active Directory-parancsmagokkal](/powershell/azure/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

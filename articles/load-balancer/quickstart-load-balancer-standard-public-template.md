@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Standard Load Balancer létrehozása – Azure Resource Manager sablon'
-titlesuffix: Azure Load Balancer
+title: 'Gyors útmutató: standard Load Balancer létrehozása – Azure-sablon'
+titleSuffix: Azure Load Balancer
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre standard Load balancert a Azure Resource Manager sablon használatával.
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ab55583d72297f2a1c72bac21e4414919f31b91b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 884ba1106e7b68fefaf91ee4e25cacd05bf96fc0
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161396"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048749"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: Standard Load Balancer létrehozása a virtuális gépek terheléselosztásához Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: standard Load Balancer létrehozása a virtuális gépek terheléselosztásához Azure Resource Manager sablon használatával
 
 A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe olyan Azure Resource Manager-sablont, amely létrehoz egy standard Load balancert a virtuális gépek terheléselosztásához. A Resource Manager-sablon használata kevesebb lépést vesz igénybe a többi üzembe helyezési módszer összehasonlításával.
 
@@ -44,10 +44,10 @@ Több Azure-erőforrás van definiálva a sablonban:
 - **Microsoft. Network/nyilvános IP**: a terheléselosztó számára.
 - **Microsoft.Network/networkSecurityGroups**
 - **Microsoft.Network/virtualNetworks**
-- **Microsoft. számítás/virutalMachines** (3 közülük)
-- **Microsoft. Network/nyilvános IP** (3 közülük): a három virtuális gép mindegyikéhez.
+- **Microsoft. számítási/virutalMachines** (3)
+- **Microsoft. Network/nyilvános IP** (3): mindhárom virtuális géphez.
 - **Microsoft. Network/networkInterfaces** (3 közülük)
-- **Microsoft. számítás/virtualMachine/bővítmények** (3 közülük): az IIS és a weblapok konfigurálására használható
+- **Microsoft. számítás/virtualMachine/Extensions** (3): az IIS és a weblapok konfigurálására használható.
 
 A Azure Load Balancer kapcsolódó további sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
@@ -88,7 +88,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
@@ -110,7 +110,7 @@ Ha látni szeretné, hogy a terheléselosztó mindhárom virtuális gépen osztj
 
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a terheléselosztó és az összes kapcsolódó erőforrást. Ehhez nyissa meg a Azure Portal, válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó elemet, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy standard Load balancert, csatlakoztatott virtuális gépeket, konfigurálta a terheléselosztó forgalmi szabályát, elvégezte az állapot mintavételét, majd tesztelte a terheléselosztó.
 

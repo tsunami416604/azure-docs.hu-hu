@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 05/25/2017
+ms.date: 11/12/2019
 tags: active-directory
 ms.author: mimart
 author: v-miegge
@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795183"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021846"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -62,7 +62,7 @@ A probléma megoldásához a külső felhasználó rendszergazdájának szinkron
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan működik a "\#", amely nem általában érvényes karakter, szinkronizáljon az Azure AD-vel?
 
-a "\#" az Azure AD B2B Collaboration vagy külső felhasználók számára fenntartott karakter az UPN-ben, mivel a meghívott fiók user@contoso.com user_contoso. com # EXT #@fabrikam.onmicrosoft.comválik. Ezért \# a helyi környezetből érkező egyszerű felhasználónevek nem jelentkezhetnek be a Azure Portalba. 
+a "\#" az Azure AD B2B Collaboration vagy külső felhasználók számára fenntartott karakter az UPN-ben, mivel a meghívott fiók user@contoso.com user_contoso. com # EXT #@fabrikam.onmicrosoft.comlesz. Ezért \# a helyi környezetből érkező egyszerű felhasználónevek nem jelentkezhetnek be a Azure Portalba. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Hibaüzenet jelenik meg, amikor külső felhasználókat veszek fel egy szinkronizált csoportba
 
@@ -95,6 +95,10 @@ A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a
 
 Ha az identitás bérlője egy igény szerinti (JIT) vagy vírusos bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>A vendég felhasználó nem tudja használni a AzureAD PowerShell v1-modult
+
+November 18-án 2019-én a címtárban található vendég felhasználók a AzureAD PowerShell v1 modullal le vannak tiltva a **userType** tulajdonságot futtató felhasználói fiókok. A jövőben a felhasználónak **egy tagnak (** ahol a **userType** egyenlőnek kell lennie) vagy a AzureAD PowerShell V2 modullal kell rendelkeznie.
+
+## <a name="next-steps"></a>Következő lépések
 
 [Támogatás kérése B2B-együttműködéshez](get-support.md)

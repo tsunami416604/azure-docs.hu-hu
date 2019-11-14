@@ -1,5 +1,5 @@
 ---
-title: 'Azure Premium Storage: a Windows rendszerű virtuális gépek teljesítményének kialakítása | Microsoft Docs'
+title: 'Azure Premium Storage: teljesítmény kialakítása Windows rendszerű virtuális gépeken '
 description: Nagy teljesítményű alkalmazások tervezése az Azure Premium Storage használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 073b0f0b0078f8e1159fad5e4eb6a70543c81700
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 584c69f4079eeebf04a0e40021bfc843b40e8b1b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012367"
+ms.locfileid: "74032955"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]

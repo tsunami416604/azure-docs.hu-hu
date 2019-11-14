@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gép testreszabása a cloud-init használatával az Azure-ban | Microsoft Docs
+title: Oktatóanyag – Linux rendszerű virtuális gép testreszabása a Cloud-init használatával az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Cloud-init és a Key Vaultt a linuxos virtuális gépek testreszabásához az Azure-ban való első rendszerindítás alkalmával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8bc396611f2e6f611de5a41de9525ba71287b363
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595109"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034642"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
 
-Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuális gépekhez, és hogyan telepítheti manuálisan az NGINX-et. A virtuális gépek gyors és következetes létrehozásához általában valamilyen automatizálásra van szükség. A virtuális gépek első rendszerindításkor való testreszabásának általánosan használt megközelítése a [cloud-init](https://cloudinit.readthedocs.io) használata. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuális gépekhez, és hogyan telepítheti manuálisan az NGINX-et. A virtuális gépek gyors és következetes létrehozásához általában valamilyen automatizálásra van szükség. A virtuális gépek első rendszerindításkor való testreszabásának általánosan használt megközelítése a [cloud-init](https://cloudinit.readthedocs.io) használata. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Cloud-init konfigurációs fájl létrehozása
@@ -42,13 +42,13 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
 
-| Gyártó/kiadó | Ajánlat | SKU (Cikkszám) | Verzió | Cloud-init Ready |
+| Közzétevő | Ajánlat | SKU | Verzió | a cloud-init kész |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |legutóbbi |igen | 
-|Canonical |UbuntuServer |16.04-LTS |legutóbbi |igen | 
-|Canonical |UbuntuServer |14.04.5-LTS |legutóbbi |igen |
-|CoreOS |CoreOS |Stable |legutóbbi |igen |
-|OpenLogic 7,6 |CentOS |7-CI |legutóbbi |előzetes verzió |
+|Canonical |UbuntuServer |18.04-LTS |Legújabb |igen | 
+|Canonical |UbuntuServer |16.04-LTS |Legújabb |igen | 
+|Canonical |UbuntuServer |14.04.5-LTS |Legújabb |igen |
+|CoreOS |CoreOS |Stable |Legújabb |igen |
+|OpenLogic 7,6 |CentOS |7-CI |Legújabb |előzetes verzió |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |előzetes verzió |
 
@@ -130,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a következőt *: http: \/ \/ \<publicIpAddress >* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
+Most nyisson meg egy webböngészőt, és írja be a következőt *: http:\/\/\<publicIpAddress >* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
 
 ![Futó NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -261,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a következőt *: https: \/ \/ \<publicIpAddress >* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet az előző virtuálisgép-létrehozási folyamat kimeneteként kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
+Most nyisson meg egy webböngészőt, és írja be a *https:\/\/\<publicIpAddress >* a címsorba. Adja meg a saját nyilvános IP-címét, amelyet az előző virtuálisgép-létrehozási folyamat kimeneteként kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
 
 ![Webböngésző biztonsági figyelmeztetésének elfogadása](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

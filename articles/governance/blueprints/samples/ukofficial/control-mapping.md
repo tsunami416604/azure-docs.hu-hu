@@ -1,18 +1,14 @@
 ---
 title: Egyesült Királyság hivatalos & Egyesült Királysági NHS Blueprint Samples – vezérlés leképezése
 description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162959"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037764"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
@@ -48,7 +44,7 @@ Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási kon
 
 ## <a name="52-vulnerability-management"></a>5,2 biztonsági rések kezelése
 
-Ebből a tervből megtudhatja, hogyan kezelheti az információs rendszer biztonsági réseit olyan [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével, amelyek figyelik a hiányzó Endpoint Protectiont, a hiányzó rendszerfrissítéseket, az operációs rendszer biztonsági réseit a gép biztonsági rései. Ezek az információk valós idejű információkat biztosítanak az üzembe helyezett erőforrások biztonsági állapotáról, és segíthetnek a Szervizelési műveletek rangsorolásában.
+Ez a terv segítséget nyújt az információs rendszer biztonsági réseinak kezeléséhez olyan [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével, amelyek figyelik a hiányzó Endpoint Protectiont, a hiányzó rendszerfrissítéseket, az operációs rendszer sebezhetőségeit, az SQL biztonsági réseket és a virtuális Ezek az információk valós idejű információkat biztosítanak az üzembe helyezett erőforrások biztonsági állapotáról, és segíthetnek a Szervizelési műveletek rangsorolásában.
 
 - Hiányzó Endpoint Protection figyelése Azure Security Center
 - A számítógépekre telepíteni kell a rendszerfrissítéseket
@@ -67,7 +63,7 @@ Ez a terv segítséget nyújt az információs rendszer eszközeinek védelméhe
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 biztonságos felhasználói felügyelet/10 identitás és hitelesítés
 
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít a hozzáférési jogosultságok korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával a külső fiókok naplózásához tulajdonossal és/vagy olvasási/írási engedélyekkel, valamint tulajdonosi, olvasási és/vagy írási engedéllyel rendelkező fiókokkal, amelyek nem rendelkeznek több tényezővel hitelesítés engedélyezve.
+Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít a hozzáférési jogosultságok korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, hogy a külső fiókokat a tulajdonossal és/vagy az olvasási/írási engedélyekkel és a tulajdonosi, olvasási és/vagy írási engedélyekkel rendelkező fiókokkal naplózza, amelyeken nincs engedélyezve a többtényezős hitelesítés
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
 - Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
@@ -124,7 +120,7 @@ Ha több mint 25 házirendet használ a megfelelő biztonságos felhasználói f
 
 ## <a name="12-secure-service-administration"></a>12 biztonságos szolgáltatás felügyelete
 
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít az emelt szintű hozzáférési jogosultságok korlátozásában és szabályozásában úgy, hogy öt [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá a tulajdonossal és/vagy írási engedélyekkel rendelkező külső fiókok, valamint a tulajdonossal és/vagy írási engedélyekkel rendelkező fiókokhoz. a többtényezős hitelesítés engedélyezve van.
+Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít az emelt szintű hozzáférési jogosultságok korlátozásában és szabályozásában azáltal, hogy öt [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá a tulajdonossal és/vagy írási engedélyekkel rendelkező külső fiókokhoz, valamint a tulajdonossal és/vagy olyan írási engedélyekkel, amelyeken nincs engedélyezve a többtényezős hitelesítés.
 
 A felhőalapú szolgáltatás felügyeletéhez használt rendszerek magas jogosultsági szintű hozzáférést kapnak a szolgáltatáshoz. A kompromisszum jelentős hatással lenne, beleértve a biztonsági ellenőrzés megkerülését és a nagy adatmennyiségek ellopását és kezelését. A szolgáltató rendszergazdája által az operatív szolgáltatás kezeléséhez használt módszereket úgy kell kialakítani, hogy enyhítse a szolgáltatás biztonságát veszélyeztető kiaknázás kockázatát. Ha ez az elv nem valósul meg, a támadók megkerülhetik a biztonsági ellenőrzéseket, vagy nagy mennyiségű adatmennyiséget ellopnak vagy kezelhetnek.
 
@@ -156,8 +152,8 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
 
 ## <a name="next-steps"></a>Következő lépések
@@ -168,7 +164,7 @@ Most, hogy áttekintette az Egyesült Királyság hivatalos és egyesült királ
 > [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – áttekintés](./index.md)
 > [Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

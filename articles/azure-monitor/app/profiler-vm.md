@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900003"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031019"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton futó profil Web Apps Application Insights Profiler használatával
 
@@ -89,15 +89,15 @@ Még nem tudjuk beállítani a Application Insights Profiler-gyűjtőt a portál
 
     ![Ellenőrizze, hogy telepítve van-e a WAD bővítmény][wadextension]
 
-1. Keresse meg a VM Diagnostics bővítményt a virtuális géphez. Bontsa ki az erőforráscsoportot, a Microsoft. számítási virtualMachines, a virtuális gép nevét és a bővítményeket.  
+2. Keresse meg a VM Diagnostics bővítményt a virtuális géphez. Nyissa meg a következőt: [https://resources.azure.com](https://resources.azure.com). Bontsa ki az erőforráscsoportot, a Microsoft. számítási virtualMachines, a virtuális gép nevét és a bővítményeket.  
 
     ![Navigáljon a WAD-konfigurációhoz Azure Erőforrás-kezelő][azureresourceexplorer]
 
-1. Adja hozzá a Application Insights Profiler-gyűjtőt a SinksConfig csomóponthoz a WadCfg alatt. Ha még nem rendelkezik SinksConfig résszel, előfordulhat, hogy hozzá kell adnia egyet. Ügyeljen arra, hogy a megfelelő Application Insights Rendszerállapotkulcsot adja meg a beállításokban. A Térkezelő üzemmódot a jobb felső sarokban olvasható/olvashatóra kell váltania, majd a kék "szerkesztés" gombra kell kattintania.
+3. Adja hozzá a Application Insights Profiler-gyűjtőt a SinksConfig csomóponthoz a WadCfg alatt. Ha még nem rendelkezik SinksConfig résszel, előfordulhat, hogy hozzá kell adnia egyet. Ügyeljen arra, hogy a megfelelő Application Insights Rendszerállapotkulcsot adja meg a beállításokban. A Térkezelő üzemmódot a jobb felső sarokban olvasható/olvashatóra kell váltania, majd a kék "szerkesztés" gombra kell kattintania.
 
     ![Application Insights Profiler fogadó hozzáadása][resourceexplorersinksconfig]
 
-1. Ha elkészült a konfiguráció szerkesztésével, nyomja meg az "put" gombot. Ha a Put sikeres, egy zöld pipa jelenik meg a képernyő közepén.
+4. Ha elkészült a konfiguráció szerkesztésével, nyomja meg az "put" gombot. Ha a Put sikeres, egy zöld pipa jelenik meg a képernyő közepén.
 
     ![Put kérelem küldése a módosítások alkalmazásához][resourceexplorerput]
 

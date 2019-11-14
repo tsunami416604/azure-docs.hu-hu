@@ -1,23 +1,19 @@
 ---
-title: Application Gateway létrehozása több hely üzemeltetésével – Azure PowerShell | Microsoft Docs
+title: Több hely üzemeltetése a PowerShell-lel
+titleSuffix: Azure Application Gateway
 description: Megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amely több helyet üzemeltet az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e96579d52752f75b864c430ea0334a544606998c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 449095c92c30638b25836a2c7803176f7f0512e5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835576"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048068"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Alkalmazás-átjáró létrehozása több hely üzemeltetésével Azure PowerShell használatával
 
@@ -27,7 +23,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása
+> * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok létrehozása
 > * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 > * CNAME rekord létrehozása a tartományban
@@ -74,7 +70,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
@@ -258,7 +254,7 @@ Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lek
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Adja meg a tartománya nevét a böngésző címsorában. Például: https://www.contoso.com.
 
@@ -268,13 +264,13 @@ Változtassa meg a címet a másik tartományára. Ekkor az eredmény a követke
 
 ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása
+> * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok létrehozása
 > * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 > * CNAME rekord létrehozása a tartományban

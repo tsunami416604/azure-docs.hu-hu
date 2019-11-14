@@ -1,85 +1,85 @@
 ---
-title: Az e-mailben ellenőrzött felhasználói fiókok – az Azure Active Directory önkiszolgáló regisztráció |} A Microsoft Docs
-description: Használja az Azure Active Directory (Azure AD) bérlő önkiszolgáló regisztráció
+title: Önkiszolgáló regisztráció e-mailben ellenőrzött felhasználók számára – Azure AD | Microsoft Docs
+description: Önkiszolgáló regisztráció használata Azure Active Directory (Azure AD) bérlőben
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d949b746f05eb440f5ae28f683dfc838217ab47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956513"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027635"
 ---
-# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi az önkiszolgáló regisztráció az Azure Active Directory?
+# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi a Azure Active Directory önkiszolgáló regisztrációja?
 
-Ez a cikk bemutatja, hogyan önkiszolgáló használatával töltse fel az Azure Active Directoryban (Azure AD) egy szervezet. Ha azt szeretné, tartománynév átvételével egy nem felügyelt Azure AD a szervezeten belül, lásd: [rendszergazdaként egy nem felügyelt könyvtár átvétele](domains-admin-takeover.md).
+Ez a cikk azt ismerteti, hogyan használhatja az önkiszolgáló regisztrációt Azure Active Directory (Azure AD) szervezetének feltöltéséhez. Ha egy nem felügyelt Azure AD-szervezetből szeretne tartománynevet átvenni, tekintse meg a nem [felügyelt címtár átvétele rendszergazdaként](domains-admin-takeover.md)című témakört.
 
-## <a name="why-use-self-service-sign-up"></a>Miért érdemes használni az önkiszolgáló regisztráció?
-* A szolgáltatások gyorsabban szeretnének hívja meg ügyfeleit
-* Hozzon létre egy szolgáltatás e-mail-alapú ajánlatok
-* E-mail-alapú regisztrációs folyamatok létrehozása, amely gyorsan engedélyezése a felhasználók számára, hogy azok könnyen megjegyezhető munkahelyi e-mail alias identitások
-* Egy önkiszolgáló-üzemeltetési által létrehozott Azure AD-címtár kapcsolható egy felügyelt könyvtárba, amely más szolgáltatások is használható
+## <a name="why-use-self-service-sign-up"></a>Miért érdemes önkiszolgáló regisztrációt használni?
+* Az ügyfeleket gyorsabban szeretnék lekérni
+* E-mail-alapú ajánlatok létrehozása szolgáltatáshoz
+* Hozzon létre e-mail-alapú regisztrációs folyamatokat, amelyekkel gyorsan engedélyezheti a felhasználók számára, hogy identitásokat hozzanak létre a könnyen megjegyezhető munkahelyi e-mail Aliasok használatával
+* Az önkiszolgáló által létrehozott Azure AD-címtár olyan felügyelt címtárba kapcsolható, amely más szolgáltatásokhoz is használható
 
-## <a name="terms-and-definitions"></a>Kifejezések és meghatározások
-* **Önkiszolgáló**: Ez az a módszer egy felhasználója regisztrál a felhőszolgáltatások és van egy automatikusan jönnek létre számukra az Azure AD identity alapuló e-mail-címe.
-* **Nem felügyelt Azure AD-címtár**: Ez az a könyvtárat, amelyben létrehozza az identitásukat. Egy nem felügyelt címtár egy könyvtárat, amely nem globális rendszergazda rendelkezik.
-* **E-mailben ellenőrzött felhasználói**: Ez olyan felhasználói fiók az Azure ad-ben. Egy felhasználó, aki a rendszer automatikusan létrehozza, miután egy önkiszolgáló ajánlatra való regisztráláskor nevezik, egy e-mailben ellenőrzött felhasználói identitást. Az e-mailben ellenőrzött felhasználók tagja rendszeres címkével ellátott creationmethod könyvtár = EmailVerified.
+## <a name="terms-and-definitions"></a>Feltételek és definíciók
+* **Önkiszolgáló regisztráció**: ez az a módszer, amellyel a felhasználó feliratkozik egy felhőalapú szolgáltatásra, és az Azure ad-ben automatikusan létrejön egy identitás az e-mail tartományuk alapján.
+* Nem **felügyelt Azure ad-címtár**: ez az a könyvtár, amelyben a rendszer létrehozta az identitást. A nem felügyelt könyvtárak olyan könyvtárak, amelyeknek nincs globális rendszergazdája.
+* E- **mailben ellenőrzött felhasználó**: ez az Azure ad-beli felhasználói fiók. Az önkiszolgáló ajánlatra való regisztráció után automatikusan létrehozott identitással rendelkező felhasználó e-mailben ellenőrzött felhasználó néven ismert. Az e-mailek által ellenőrzött felhasználók a creationmethod = EmailVerified címkével ellátott címtár szabályos tagja.
 
-## <a name="how-do-i-control-self-service-settings"></a>Hogyan szabályozhatja a önkiszolgáló beállítások?
-Rendszergazdák rendelkeznek két önkiszolgáló vezérlőelem még ma. Szabályozhatja, hogy:
+## <a name="how-do-i-control-self-service-settings"></a>Hogyan szabályozhatja az önkiszolgáló beállításokat?
+A rendszergazdáknak jelenleg két önkiszolgáló vezérlője van. Megadhatják, hogy:
 
-* A felhasználók úgy csatlakozhatnak az e-mailen keresztül könyvtár
-* Felhasználók licencelheti magukat az alkalmazások és szolgáltatások
+* A felhasználók e-mailben csatlakozhatnak a címtárhoz
+* A felhasználók licenccel rendelkezhetnek az alkalmazásokhoz és szolgáltatásokhoz
 
-### <a name="how-can-i-control-these-capabilities"></a>Hogyan felügyelhetem ezeket a képességeket?
-Egy rendszergazda konfigurálhatja ezeket a képességeket a következő Azure ad-ben Set-MsolCompanySettings parancsmag-paraméterek használatával:
+### <a name="how-can-i-control-these-capabilities"></a>Hogyan szabályozható ezek a képességek?
+A rendszergazdák a következő Azure AD-parancsmagok Msolcompanysettings parancsmagjával paramétereinek használatával konfigurálhatják ezeket a képességeket:
 
-* **AllowEmailVerifiedUsers** azt szabályozza, hogy egy felhasználó létrehozhat vagy csatlakozzon egy könyvtárat. A paraméter értéke $false, ha e-mailben ellenőrzött felhasználó nem csatlakozhat a címtárban.
-* **AllowAdHocSubscriptions** meghatározza, hogy a felhasználók önkiszolgáló regisztráció végrehajtásához. A paraméter értéke $false, ha a felhasználó nem hajthat végre önkiszolgáló bejelentkezést.
+* A **AllowEmailVerifiedUsers** szabályozza, hogy egy felhasználó létrehozhat-e vagy csatlakozhat-e egy címtárhoz. Ha úgy állítja be ezt a paramétert, hogy $false, akkor az e-mailek által ellenőrzött felhasználók nem csatlakozhatnak a címtárhoz.
+* A **AllowAdHocSubscriptions** lehetővé teszi, hogy a felhasználók önkiszolgáló regisztrációt végezzenek. Ha úgy állítja be ezt a paramétert, hogy $false, egyetlen felhasználó sem végezhet önkiszolgáló regisztrációt.
   
-AllowEmailVerifiedUsers és AllowAdHocSubscriptions, amelyek alkalmazhatók a felügyelt vagy nem felügyelt címtár directory kiterjedő beállítások. Íme egy példa ahol:
+A AllowEmailVerifiedUsers és a AllowAdHocSubscriptions olyan címtár-szintű beállítások, amelyek felügyelt vagy nem felügyelt címtárra alkalmazhatók. Íme egy példa:
 
-* Felügyelni, például a contoso.com egy ellenőrzött tartomány könyvtár
-* Egy másik címtárból B2B-együttműködés segítségével, amely már nem létezik felhasználó meghívása (userdoesnotexist@contoso.com) a kezdőkönyvtárban contoso.com
-* A kezdőkönyvtár rendelkezik-e kapcsolva a AllowEmailVerifiedUsers
+* A címtárat ellenőrzött tartománnyal (például contoso.com) felügyelheti
+* A VÁLLALATKÖZI együttműködés egy másik címtárból való használata olyan felhasználó meghívásához, amely még nem létezik (userdoesnotexist@contoso.com) a contoso.com kezdőkönyvtárának
+* A kezdőkönyvtár a AllowEmailVerifiedUsers be van kapcsolva
 
-Az előző feltételek teljesülése esetén majd jön létre a tag felhasználó a kezdőkönyvtárban, és a B2B vendégfelhasználó meghívó a címtárban jön létre.
+Ha az előző feltételek teljesülnek, akkor a rendszer létrehoz egy tagot a kezdőlapon, és létrehoz egy B2B vendég felhasználót a meghívó címtárban.
 
-Flow és a PowerApps próbaverziós feliratkozások nem szabályozza a **AllowAdHocSubscriptions** beállítás. További információkért tekintse át a következő cikkeket:
+A flow és a PowerApps próbaverzióját nem a **AllowAdHocSubscriptions** beállítás vezérli. További információkért tekintse át a következő cikkeket:
 
-* [Hogyan védekezhetek a meglévő felhasználók elkezdjék használni a Power bi-ban?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [Flow a munkahelyen, a Q & A](https://docs.microsoft.com/flow/organization-q-and-a)
+* [Hogyan akadályozható meg, hogy a meglévő felhasználók megkezdsék a Power BI használatát?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+* [A flow a munkahelyen Q & A](https://docs.microsoft.com/flow/organization-q-and-a)
 
-### <a name="how-do-the-controls-work-together"></a>Hogyan vezérlők működik együtt?
-A két paraméter önkiszolgáló még pontosabban szabályozhatja meghatározásához használható együtt. Például a következő parancs segítségével a felhasználók hajtsa végre az önkiszolgáló előfizetés, de csak akkor, ha ezek a felhasználók már rendelkezik fiókkal az Azure ad-ben (más szóval, felhasználók, akik e-mailben ellenőrzött fiók hozható létre kell először nem hajtható végre önkiszolgáló):
+### <a name="how-do-the-controls-work-together"></a>Hogyan működnek együtt a vezérlőelemek?
+Ez a két paraméter együtt használható az önkiszolgáló regisztráció pontosabb szabályozásának meghatározásához. A következő parancs például lehetővé teszi, hogy a felhasználók önkiszolgáló regisztrációt végezzenek, de csak akkor, ha ezek a felhasználók már rendelkeznek fiókkal az Azure AD-ben (vagyis a felhasználóknak, akik e-mailben hitelesített fiókra lenne szükségük, először nem végezhetnek önkiszolgáló regisztrációt):
 
 ```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 ```
 
-A következő folyamatábra szemlélteti azt ismerteti, az e paraméterek különböző kombinációit és a címtár és az önkiszolgáló eredményül kapott feltételeinek.
+A következő folyamatábra ismerteti a paraméterek különböző kombinációit, valamint a címtár és az önkiszolgáló regisztráció eredményeként létrejövő feltételeket.
 
-![önkiszolgáló regisztrációs vezérlők folyamatábrája](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![önkiszolgáló bejelentkezési vezérlők folyamatábrája](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-További információt és példákat ezekkel a paraméterekkel: [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+További információt és példákat a paraméterek használatáról a [set-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Egy egyéni tartománynév hozzáadása az Azure ad-ben](../fundamentals/add-custom-domain.md)
+* [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
-* [Zárja be a munkahelyi vagy iskolai fiókkal, egy nem felügyelt címtárban](users-close-account.md)
+* [Munkahelyi vagy iskolai fiók lezárása nem felügyelt címtárban](users-close-account.md)

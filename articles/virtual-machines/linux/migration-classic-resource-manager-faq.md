@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések a Klasszikusról Azure Resource Manager Migrálás esetén | Microsoft Docs
+title: Gyakori kérdések a Klasszikusról Azure Resource Manager áttelepítésre
 description: Gyakori kérdések a Klasszikusról Azure Resource Manager áttelepítésre
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 21a305662bffbecd7efaa355f3ee9100afb9bec9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05d98674ad046ffdb5056bf76c5616b26e5021ff
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013682"
+ms.locfileid: "74035746"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Migrálás a klasszikusból az Azure Resource Manager-alapú üzemi modellbe – gyakori kérdések
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-faq.md)]

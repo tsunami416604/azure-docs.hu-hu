@@ -1,25 +1,25 @@
 ---
-title: Hozzáférés biztosítása más rendszergazdák számára a PIM felügyeletéhez – Azure Active Directory | Microsoft Docs
+title: Hozzáférés biztosítása a PIM kezeléséhez – Azure Active Directory | Microsoft Docs
 description: Megtudhatja, hogyan biztosíthat hozzáférést más adminisztrációs szolgáltatásokhoz Azure AD Privileged Identity Management (PIM) kezeléséhez.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60c0e1bfd457137ddfb8f3ae81fc9044098c1f8d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7424e92f8520d13137b6ac8787523095058a005f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809070"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022115"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Hozzáférés biztosítása más rendszergazdáknak a Privileged Identity Management kezeléséhez
 
@@ -32,7 +32,7 @@ Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemel
 
 ## <a name="grant-access-to-manage-pim"></a>Hozzáférés biztosítása a PIM kezeléséhez
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Az Azure AD-ben nyissa meg **Privileged Identity Management**.
 
@@ -70,7 +70,7 @@ Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemel
 
 Mielőtt eltávolít valakit a Kiemelt szerepkörű rendszergazda szerepkörből, mindig győződjön meg arról, hogy még legalább két felhasználó van hozzárendelve.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 

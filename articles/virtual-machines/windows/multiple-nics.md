@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gépek létrehozása és kezelése több hálózati adaptert használó Azure-ban | Microsoft Docs
+title: Windows rendszerű virtuális gépek létrehozása és kezelése több hálózati adaptert használó Azure-ban
 description: Megtudhatja, hogyan hozhat létre és kezelhet olyan Windowsos virtuális gépeket, amelyek több hálózati adapterrel rendelkeznek, Azure PowerShell vagy Resource Manager-sablonok használatával.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: f7f4e65253e0fc160da4d343115e9115abfab808
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749312"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033144"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows rendszerű virtuális gép létrehozása és kezelése
 Az Azure-ban a virtuális gépek (VM-EK) több virtuális hálózati adapterrel (NIC) is rendelkezhetnek hozzájuk. Gyakori forgatókönyv, hogy különböző alhálózatokat kell létrehozni az előtér-és háttér-kapcsolathoz. Több hálózati adaptert is hozzárendelhet egy virtuális GÉPHEZ több alhálózathoz, de ezek az alhálózatok mind ugyanabban a virtuális hálózatban (vNet) találhatók. Ez a cikk részletesen ismerteti, hogyan hozható létre több hálózati adapterrel rendelkező virtuális gép. Azt is megtudhatja, hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni.
@@ -293,7 +293,7 @@ Az Azure egy alapértelmezett átjárót rendel hozzá a virtuális géphez csat
 
     Az **átjáró**alatt a *192.168.1.1* listázott útvonal az elsődleges hálózati adapter alapértelmezett útvonala. Az **átjáró**alatti *192.168.2.1* útvonal a hozzáadott útvonal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni, tekintse át a [Windows rendszerű virtuális gépek méretét](sizes.md) . Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak. 
 
 

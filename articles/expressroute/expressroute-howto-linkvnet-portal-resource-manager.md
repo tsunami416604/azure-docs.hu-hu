@@ -1,6 +1,6 @@
 ---
-title: 'Virtuális hálózat összekapcsolása egy áramkör-ExpressRoute: Azure Portal | Microsoft Docs'
-description: Virtuális hálózat csatlakozni egy Azure ExpressRoute-Kapcsolatcsoportot. Útmutató lépéseit.
+title: 'ExpressRoute: VNet csatolása egy áramkörhöz: Azure Portal'
+description: Csatlakoztasson egy VNet egy Azure ExpressRoute-áramkörhöz. Útmutató lépéseit.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088913"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022192"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz a portál használatával
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Ezen cikk segítségével létrehozhat egy kapcsolatot a virtuális hálózat ö
    [![Képernyőkép a ExpressRoute áramkörről](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Áramkör megtekintése")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. Most elkezdheti csatolni a virtuális hálózati átjáró az ExpressRoute-kapcsolatcsoportot a kapcsolat kiépítése. Kattintson a **kapcsolat** > **Hozzáadás** megnyitásához a **kapcsolat hozzáadása** lapon, és adja meg az értékeket.
 
-   [A ![kapcsolatok hozzáadása képernyőkép] A (./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "kapcsolatok hozzáadása képernyőkép")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
+   [![A kapcsolatok hozzáadása képernyőkép](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "A kapcsolatok hozzáadása képernyőkép")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Miután a kapcsolat sikeresen konfigurálva lett, a kapcsolat objektumot jelennek meg a kapcsolat adatait.
 
    ![Kapcsolat objektum képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
@@ -71,7 +71,7 @@ ExpressRoute-kapcsolatcsoport több előfizetésre kiterjedő megoszthatja. Az a
 
 - A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet különböző részlegei tartozó előfizetések megjelenítésére szolgál.
 - Minden, a szervezeti egységek, a szervezeten belül a saját előfizetés használata a szolgáltatások üzembe helyezése, de meg is oszthatják egyetlen ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni a helyszíni hálózathoz.
-- Egyetlen részleg (ebben a példában: IT) a ExpressRoute áramkör tulajdonosa lehet. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoport és a kapcsolatcsoportot, beleértve a kapcsolódó egyéb Azure Active Directory-bérlők és a nagyvállalati szerződés regisztrációk előfizetéseket társított engedélyeket.
+- Egyetlen részleg (ebben a példában: informatikai) is a saját ExpressRoute-kapcsolatcsoportot. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoport és a kapcsolatcsoportot, beleértve a kapcsolódó egyéb Azure Active Directory-bérlők és a nagyvállalati szerződés regisztrációk előfizetéseket társított engedélyeket.
 
   > [!NOTE]
   > Az ExpressRoute-kapcsolatcsoport tulajdonosát a kapcsolatot és a sávszélesség díjak a dedikált kapcsolatcsoport lépnek érvénybe. Minden virtuális hálózat ossza meg ugyanazt a sávszélesség.
@@ -135,5 +135,5 @@ Egy engedélyezési fel lehet szabadítani, a kapcsolat törlésével a hivatkoz
 
 A kapcsolat törlésével, és a virtuális hálózat az ExpressRoute-kapcsolatcsoport leválasztása kiválasztásával a **törlése** ikonra a kapcsolat az oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

@@ -1,26 +1,25 @@
 ---
-title: Felügyeleti egységek kezelése (előzetes verzió) – Azure Active Directory | Microsoft Docs
+title: Felügyeleti egységek kezelése (előzetes verzió) – Azure AD | Microsoft Docs
 description: Felügyeleti egységek használata az engedélyek részletesebb delegálásához Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/13/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 3c4958975a080a98fb900bf317229ba9eda795d5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336925"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028415"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Felügyeleti egységek felügyelete Azure Active Directoryban (előzetes verzió)
 
@@ -40,8 +39,8 @@ A felügyeleti egységek használatához prémium szintű Azure Active Directory
 
 Ebben az előzetes kiadásban a felügyeleti egységek létrehozásához és kezeléséhez az egyetlen lehetőség a Azure Active Directory modul használata a Windows PowerShell-parancsmagokhoz a [felügyeleti egységek](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) használata című témakörben leírtak szerint.
 
-További információ a szoftverekre vonatkozó követelményekről és az Azure AD-modul telepítéséről, valamint a felügyeleti egységek kezelésére szolgáló Azure AD modul-parancsmagokról, beleértve a szintaxist, a paraméterek leírását és a példákat lásd: [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+A szoftverre vonatkozó követelményekről és az Azure AD-modul telepítéséről, valamint a felügyeleti egységek kezelésére szolgáló Azure AD modul-parancsmagokkal kapcsolatos további információkért, beleértve a szintaxist, a paraméterek leírását és a példákat, lásd: [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md)

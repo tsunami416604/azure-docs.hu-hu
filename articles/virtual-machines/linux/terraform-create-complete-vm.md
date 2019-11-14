@@ -1,5 +1,5 @@
 ---
-title: Teljes linuxos virtuális gép létrehozása az Azure-ban a Terraform használatával | Microsoft Docs
+title: Teljes linuxos virtuális gép létrehozása az Azure-ban a Terraform használatával
 description: Ismerje meg, hogyan hozhat létre és kezelhet teljes linuxos virtuálisgép-környezetet az Azure-ban a Terraform használatával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: bb4628477719d0aa2f176c466047531b42d7cfc3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924890"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034703"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Teljes linuxos virtuális gépi infrastruktúra létrehozása az Azure-ban a Terraform
 
@@ -30,7 +30,7 @@ A Terraform lehetővé teszi, hogy az Azure-ban teljes infrastruktúra-telepít�
 
 Nézzük végig a Terraform-sablonok egyes szakaszait. Megtekintheti a másolható és beilleszthető [Terraform-sablon](#complete-terraform-script) teljes verzióját is.
 
-A `provider` szakasz azt jelzi, hogy a Terraform Azure-szolgáltatót használ. A *subscription_id*, a *client_id*, a *client_secret*és a *tenant_id*értékének lekéréséhez lásd: a [Terraform telepítése és konfigurálása](terraform-install-configure.md). 
+A `provider` szakasz azt jelzi, hogy a Terraform Azure-szolgáltatót használ. *Subscription_id*, *client_id*, *client_secret*és *tenant_id*értékének beolvasásához tekintse meg a [Terraform telepítése és konfigurálása](terraform-install-configure.md)című témakört. 
 
 > [!TIP]
 > Ha környezeti változókat hoz létre az értékekhez, vagy az [Azure Cloud SHELL bash-élményt](/azure/cloud-shell/overview) használja, akkor ebben a szakaszban nem kell tartalmaznia a változó deklarációit.
@@ -57,7 +57,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-A további szakaszban a *$ {azurerm_resource_group. myterraformgroup. name} nevű*erőforráscsoport hivatkozik.
+A további fejezetekben a (z) *$ {azurerm_resource_group. myterraformgroup. name}* erőforrás-csoportra hivatkozik.
 
 ## <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 A következő szakasz létrehoz egy *myVnet* nevű virtuális hálózatot a *10.0.0.0/16* címtartomány:
@@ -191,7 +191,7 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 Utolsó lépésként hozzon létre egy virtuális gépet, és használja az összes létrehozott erőforrást. Az alábbi szakasz létrehoz egy *myVM* nevű virtuális gépet, és csatolja a *myNIC*nevű virtuális hálózati adaptert. A legújabb *Ubuntu 16,04-LTS* rendszerképet használja a rendszer, és az *azureuser* nevű felhasználó jelszavas hitelesítéssel lett letiltva.
 
- Az SSH-kulcsokra vonatkozó információk a *ssh_keys* szakaszban találhatók. Adjon meg egy érvényes nyilvános SSH-kulcsot a *key_data* mezőben.
+ Az SSH-kulcsokra vonatkozó információk a *ssh_keys* szakaszban találhatók meg. Adjon meg egy érvényes nyilvános SSH-kulcsot a *key_data* mezőben.
 
 ```hcl
 resource "azurerm_virtual_machine" "myterraformvm" {

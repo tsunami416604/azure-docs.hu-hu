@@ -1,61 +1,61 @@
 ---
-title: Adatok vizualizálása a Tableau megnyitott adatbázis-kapcsolat (ODBC) kapcsolat az Adatkezelőbe az Azure használatával
-description: Ebből a cikkből elsajátíthatja egy megnyitott adatbázis-kapcsolat (ODBC) kapcsolatot az adatkezelőt az Azure-kapcsolat használata az adatok vizualizálása a Tableau.
+title: Az Open Database Connectivity (ODBC) kapcsolat használata az Azure Adatkezelő az adatmegjelenítéshez a Tablóval
+description: Ebből a cikkből megtudhatja, hogyan használható a nyílt adatbázis-kapcsolat (ODBC) kapcsolat az Azure Adatkezelő kapcsolattal az adatmegjelenítéshez a Tablóval.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a0948ae35a5c23768df117979db819861ac64529
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66499084"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023866"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Azure Data Explorer, a Tableau adatainak megjelenítése
+# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Adatok megjelenítése az Azure Adatkezelő a Tablóban
 
- [A tableau](https://www.tableau.com/) az üzleti intelligencia vizuális elemzési platform. Csatlakozás Azure adatkezelő a Tableau és a egy minta-fürtből származó adatokat betöltheti használja az SQL Server megnyitott adatbázis kapcsolat (ODBC) illesztőprogram. 
+ A [tabló](https://www.tableau.com/) az üzleti intelligencia vizuális elemzési platformja. Ha az Azure Adatkezelő-hoz szeretne csatlakozni a tablóból, és egy minta fürt adatait szeretné bevezetni, használja a SQL Server Open Database Connectivity (ODBC) illesztőprogramot. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk a következőkre lesz szüksége:
+A cikk elvégzéséhez a következőkre lesz szüksége:
 
-* [Csatlakozhat az Azure Data Explorer ODBC](connect-odbc.md) az SQL Server ODBC-illesztőprogramját használja a csatlakozás az Azure Data Explorer a Tableau. 
+* [Kapcsolódjon az azure adatkezelő az ODBC-vel](connect-odbc.md) az SQL Server ODBC-illesztővel, és kapcsolódjon az Azure Adatkezelőhoz a tablóból. 
 
-* A tableau Desktop teljes körű, vagy [próbaverziós](https://www.tableau.com/products/desktop/download) verzió.
+* A tabló asztali, teljes vagy [próbaverziós](https://www.tableau.com/products/desktop/download) verziója.
 
-* A StormEvents mintaadatokat tartalmazó fürt. További információkért lásd: [hozzon létre egy Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
+* Egy fürt, amely tartalmazza a StormEvents. További információ: [azure adatkezelő-fürt és-adatbázis létrehozása](create-cluster-database-portal.md) és [mintaadatok begyűjtése az Azure Adatkezelőba](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="visualize-data-in-tableau"></a>Adatok megjelenítése a Tableau 
+## <a name="visualize-data-in-tableau"></a>Adatgyűjtés a Tablóban 
 
-Végzett ODBC konfigurálása, ha a mintaadatokat, Tableau is tenné.
+Miután befejezte az ODBC konfigurálását, a mintaadatok beállíthatók a Tablóba.
 
-1. A Tableau Desktop, a bal oldali menüben válassza **más adatbázisok ODBC**.
+1. A tabló asztal bal oldali menüjében válassza a **más adatbázisok (ODBC)** elemet.
 
     ![Kapcsolódás ODBC-vel](media/tableau/connect-odbc.png)
 
-1. A **DSN**, jelölje ki az adatforrást, az ODBC számára létrehozott, majd válassza ki **bejelentkezés**.
+1. Az **DSN**esetében válassza ki az ODBC-hez létrehozott adatforrást, majd válassza a **Bejelentkezés**lehetőséget.
 
     ![ODBC-bejelentkezés](media/tableau/odbc-sign-in.png)
 
-1. A **adatbázis**, válassza ki például az adatbázist a mintául szolgáló fürtön *TestDatabase*. A **séma**válassza *dbo*, és a **tábla**, jelölje be a *StormEvents* mintatáblát.
+1. Az **adatbázis**lapon válassza ki a fürtben található adatbázist, például *TestDatabase*. A **séma**területen válassza a *dbo*lehetőséget, majd a **táblánál**válassza ki a *StormEvents* -minta táblát.
 
-    ![Adatbázis és tábla kijelölése](media/tableau/select-database-table.png)
+    ![Adatbázis és tábla kiválasztása](media/tableau/select-database-table.png)
 
-1. A tableau most a mintaadatok sémáját jeleníti meg. Válassza ki **frissítés most** ahhoz, hogy az adatokat, a Tableau.
+1. A tabló most a mintaadatok sémáját jeleníti meg. Válassza a **Frissítés most** lehetőséget az adatgyűjtés a tablóba való bekapcsolásához.
 
     ![Adatok frissítése](media/tableau/update-data.png)
 
-    Az adatok importálásakor a Tableau, az alábbi képhez hasonló látható sornyi adatot.
+    Az adatok importálásakor a tabló az alábbi képhez hasonló adatsorokat jelenít meg.
 
     ![Eredményhalmaz](media/tableau/result-set.png)
 
-1. Most Tableau Azure Data Explorer beillesztette adatokon alapuló vizualizációkat hozhat létre. További információkért lásd: [Tableau Learning](https://www.tableau.com/learn).
+1. Most már létrehozhat vizualizációkat a Tablóban az Azure Adatkezelőból bevitt adatok alapján. További információ: a [tabló megismerése](https://www.tableau.com/learn).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)

@@ -1,5 +1,5 @@
 ---
-title: Migrálás AWS-ről és más platformokról az Azure-ba való Managed Disksre | Microsoft Docs
+title: Migrálás AWS-ről és más platformokról az Azure-ba való Managed Disks
 description: Hozzon létre virtuális gépeket az Azure-ban más felhőktől (AWS vagy más virtualizációs platformok) feltöltött VHD-k használatával, és használja ki az Azure-Managed Disks
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102592"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033049"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
@@ -31,7 +31,7 @@ Feltöltheti az általánosított és a speciális virtuális merevlemezeket is.
 - **Speciális VHD** – karbantartja az eredeti virtuális gépről származó felhasználói fiókokat, alkalmazásokat és egyéb állapotinformációkat. 
 
 > [!IMPORTANT]
-> A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való feltöltéshez szükséges [Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.
+> A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.
 >
 >
 
@@ -54,7 +54,7 @@ Ez a szakasz segíti a legjobb döntést a virtuális gépek és a lemezek típu
 
 Ha nem felügyelt lemezekről felügyelt lemezekre kíván áttelepítést végrehajtani, vegye figyelembe, hogy a virtuálisgép-közreműködő szerepkörrel rendelkező felhasználók nem változtathatják meg a [virtuális gép](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) méretét (ahogy a konverzió megtörtént). Ennek az az oka, hogy a felügyelt lemezekkel rendelkező virtuális gépeken a felhasználónak rendelkeznie kell a Microsoft. számítás/lemezek/írási engedéllyel az operációsrendszer-lemezeken.
 
-### <a name="location"></a>Location
+### <a name="location"></a>Hely
 
 Válasszon ki egy helyet, ahol elérhetők az Azure Managed Disks. Ha prémium szintű Managed Disksra végez áttelepítést, győződjön meg arról, hogy a Premium Storage elérhető abban a régióban, ahol az áttelepítést tervezi. Tekintse meg az [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services) az elérhető helyszínekről szóló naprakész információkat.
 
@@ -98,4 +98,4 @@ Tekintse át a [Managed Disks díjszabását](https://azure.microsoft.com/pricin
 
 ## <a name="next-steps"></a>További lépések
 
-- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való feltöltéshez szükséges [Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.
+- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.

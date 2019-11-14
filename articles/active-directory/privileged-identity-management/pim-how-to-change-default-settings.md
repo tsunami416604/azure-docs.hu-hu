@@ -1,25 +1,25 @@
 ---
-title: Az Azure AD szerepkör beállításainak konfigurálása a Privileged Identity Managementban – Azure Active Directory | Microsoft Docs
+title: Azure AD-szerepkör beállításainak konfigurálása a PIM-ben – Azure AD | Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja az Azure AD szerepkör beállításait a Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cff298e24ac185767e6290e396818ccece7b9b55
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ee99a8e75fe8da85b1cf82623ed110991db24b66
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809150"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021798"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -65,7 +65,7 @@ További információkért tekintse [meg az e-mailes értesítéseket Privileged
 
 Az **incidens/kérelem jegy** kapcsolójának használatával megkövetelheti, hogy a jogosult rendszergazdák a szerepkörük aktiválása után is tartalmazzák a jegy számát. Ezzel a gyakorlattal hatékonyabbá teheti a szerepkör-hozzáférés naplózását.
 
-## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Használja a **multi-Factor Authentication** kapcsolót annak megadásához, hogy a felhasználóknak meg kell-e adniuk identitását az MFA-ban, mielőtt aktiválni tudják a szerepköreiket. Csak egyszer kell meggyőződniük a saját identitásukat, nem minden alkalommal, amikor aktiválnak egy szerepkört. Az MFA engedélyezésekor két tippet kell szem előtt tartani:
 

@@ -1,17 +1,14 @@
 ---
 title: FedRAMP mérsékelt terv minta – vezérlés leképezése
 description: A FedRAMP mérsékelt tervrajz-minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/31/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 35b2e524298b1b34bae3903c842577b1683b9a93
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1bf87ef1b5116b086797b8521268bd4575970925
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581388"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032344"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>A FedRAMP mérsékelt tervrajz-minta leképezésének vezérlése
 
@@ -73,7 +70,7 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 Válasz a feldolgozási hibák naplózására
 
@@ -90,11 +87,11 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
+- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - Diagnosztikai beállítás naplózása
 - Az SQL Server naplózását engedélyezni kell
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
@@ -215,10 +212,10 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása
 - Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
-- A webalkalmazás csak HTTPS protokollon keresztül érhető el
+- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 
 ## <a name="sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>SC-28 (1) a REST-adatok védelme | Titkosítási védelem
 
@@ -265,11 +262,11 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 
 - \[előzetes verzió\]: naplózás Log Analytics ügynök üzembe helyezése – nem listázva a virtuálisgép-rendszerkép (OS)
 - \[előzetes verzió\]: Log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[előzetes verzió\]: Log Analytics munkaterületének naplózása virtuális géphez – a jelentés eltérése
+- \[Előzetes verzió\]: jelentés eltérő virtuális gép – Log Analytics-munkaterület naplózása
 - \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
-- \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
+- \[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
@@ -281,7 +278,7 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a FedRAMP mérsékelt tervének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 

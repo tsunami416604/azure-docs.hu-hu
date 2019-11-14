@@ -1,34 +1,34 @@
 ---
-title: Csoportházirend-beállítások konfigurálása a PowerShell használatával – Azure Active Directory | Microsoft Docs
+title: Csoportházirend-beállítások konfigurálása a PowerShell használatával – Azure AD | Microsoft Docs
 description: Csoportok beállításainak kezelése Azure Active Directory-parancsmagok használatával
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6a1b900d4a67390ae867d770c3b984c43fd501b5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263961"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026754"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
-Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure Active Directory (Azure AD) PowerShell-parancsmagok használatára vonatkozó utasításokat tartalmazza. Ez a tartalom csak az Office 365-csoportokra vonatkozik (más néven Unified groups). 
+
+Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure Active Directory (Azure AD) PowerShell-parancsmagok használatára vonatkozó utasításokat tartalmazza. Ez a tartalom csak az Office 365-csoportokra vonatkozik (más néven Unified groups).
 
 > [!IMPORTANT]
 > Egyes beállításokhoz prémium szintű Azure Active Directory P1 licenc szükséges. További információt a [sablon beállításai](#template-settings) táblázatban talál.
 
-A nem rendszergazda felhasználók biztonsági csoportok létrehozásával kapcsolatos további információkért állítsa be a @ no__t-0 értéket a [set-msolcompanysettings parancsmagjával](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben leírtak szerint.
+A nem rendszergazda felhasználók biztonsági csoportok létrehozásával kapcsolatos további információkért állítsa be a `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` a [set-msolcompanysettings parancsmagjával](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben leírtak szerint.
 
 Az Office 365-csoportok beállításait egy Setting objektummal és egy SettingsTemplate objektummal kell konfigurálni. Kezdetben a címtárban nem jelennek meg beállítások objektumok, mert a címtár az alapértelmezett beállításokkal van konfigurálva. Az alapértelmezett beállítások módosításához egy új beállítási objektumot kell létrehoznia egy beállítási sablonnal. A beállítások sablonjait a Microsoft határozza meg. Több különböző beállítási sablon is létezik. A címtárhoz tartozó Office 365-csoport beállításainak konfigurálásához használja a "Group. Unified" nevű sablont. Az Office 365-csoport beállításainak egyetlen csoportra való konfigurálásához használja a "Group. Unified. Guest" nevű sablont. Ez a sablon egy Office 365-csoport vendég-hozzáférésének kezelésére szolgál. 
 

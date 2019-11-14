@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – LAMP üzembe helyezése Linux rendszerű virtuális gépen az Azure-ban | Microsoft Docs
+title: Oktatóanyag – LAMP üzembe helyezése Linux rendszerű virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan telepíthet LAMP stacket az Azure-ban üzemeltetett linuxos virtuális gépre
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 893fba20af12bbbeeab2f0393177cd6f0daa6452
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299434"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034473"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LAMP-webkiszolgáló telepítése Linux rendszerű virtuális gépre az Azure-ban
 
-Ez a cikk ismerteti, hogyan helyezhet üzembe Apache-webkiszolgálót, MySQL-t és PHP-t (a LAMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. Ha az NGINX-webkiszolgálót szeretné használni, tekintse meg a [LEMP-veremmel](tutorial-lemp-stack.md) kapcsolatos oktatóanyagot. Ha szeretné működés közben megtekinteni a LAMP-vermet, telepíthet és konfigurálhat egy WordPress-webhelyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez a cikk ismerteti, hogyan helyezhet üzembe Apache-webkiszolgálót, MySQL-t és PHP-t (a LAMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. Ha az NGINX-webkiszolgálót szeretné használni, tekintse meg a [LEMP-veremmel](tutorial-lemp-stack.md) kapcsolatos oktatóanyagot. Ha szeretné működés közben megtekinteni a LAMP-vermet, telepíthet és konfigurálhat egy WordPress-webhelyet. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Ubuntu rendszerű virtuális gép létrehozása (a LAMP-veremben az „L” betű)
@@ -75,7 +75,7 @@ Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetű
 mysql -V
 ```
 
-A MySQL telepítésének biztonságossá tételéhez, beleértve a gyökér jelszavának beállítását is, futtassa a `mysql_secure_installation` parancsfájlt. 
+A MySQL telepítésének biztonságossá tételéhez, beleértve a legfelső szintű jelszó beállítását is, futtassa a `mysql_secure_installation` szkriptet. 
 
 ```bash
 sudo mysql_secure_installation

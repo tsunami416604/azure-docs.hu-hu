@@ -9,14 +9,14 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 11/11/2019
-ms.openlocfilehash: 938286f0dafdeb11473bef1b88f876d7918e76ca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 21577936f2487313683ac763b0c6c661c6c1f958
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012753"
+ms.locfileid: "74039337"
 ---
-# <a name="algorithm--module-reference"></a>Algoritmusokra és modulokra vonatkozó referenciák
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algoritmus & Azure Machine Learning Designer modul-hivatkozása
 
 Ez a hivatkozási tartalom a Azure Machine Learning Designer (előzetes verzió) szolgáltatásban elérhető gépi tanulási algoritmusok és modulok technikai hátterét ismerteti.
 

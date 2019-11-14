@@ -1,12 +1,12 @@
 ---
-title: Felhasználók, csoportok, licencelési és szerepkörök áttekintése – Azure Active Directory |} A Microsoft Docs
+title: Felhasználók, csoportok, licencelés és szerepkörök áttekintése – Azure AD | Microsoft Docs
 description: A felhasználók és a hozzárendelt licencek, a rendszergazdai szerepkörök és a csoporttagságok közti kapcsolatok az Azure Active Directoryban
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/28/2019
+ms.date: 11/08/2019
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083891"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027742"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Nagyobb szervezetek felhasználói, csoportjai, licenckezelése és szerepkörei
 
@@ -52,7 +52,7 @@ Számos nagyméretű szervezet szeretne a felhasználó számára megfelelő leh
 
  Szerepkörnév | Engedélyek összegzése
  --------- | -------------------
- **Alkalmazás-rendszergazda** | Hozzáadhatja és felügyelheti a vállalati alkalmazásokat és az alkalmazásregisztrációkat, és konfigurálhatja a proxyalkalmazás-beállításokat. Alkalmazás-rendszergazdák feltételes hozzáférési szabályzatok és az eszközök megtekintése, de nem kezelheti azokat.
+ **Alkalmazás-rendszergazda** | Hozzáadhatja és felügyelheti a vállalati alkalmazásokat és az alkalmazásregisztrációkat, és konfigurálhatja a proxyalkalmazás-beállításokat. Az alkalmazás-rendszergazdák megtekinthetik a feltételes hozzáférési házirendeket és eszközöket, de nem kezelhetik azokat.
  **Felhőalkalmazás-rendszergazda** | Hozzáadhatja és felügyelheti a vállalati alkalmazásokat és a vállalati alkalmazásregisztrációkat. Ez a szerepkör az alkalmazás-rendszergazda összes engedélyével rendelkezik, azzal a különbséggel, hogy nem tudja kezelni az alkalmazásproxy-beállításokat.
 **Alkalmazásfejlesztő** | Hozzáadhatja és frissítheti az alkalmazásregisztrációkat, de nem felügyelheti a vállalati alkalmazásokat és nem konfigurálhatja az alkalmazásproxykat.
 
@@ -70,7 +70,7 @@ Az Azure AD emellett lehetővé teszi az alkalmazások és a hozzáféréssel fe
 * Elindíthatja vagy leállíthatja az Azure AD kiépítési szolgáltatást valamely alkalmazásra, törölheti a kiépítési gyorsítótárat, vagy újraindíthatja a szolgáltatást
 * Megtekintheti a **kiépítési tevékenységekre vonatkozó jelentést**, amely naplózza az Azure AD és az alkalmazás között létrehozott, frissített és törölt összes felhasználót és csoportot, valamint a **kiépítési hibákat tartalmazó jelentést**, amely a részletes hibaüzeneteket tartalmazza
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Amennyiben még csak most ismerkedik az Azure AD rendszergazdai feladataival, az alapvető információkért tekintse meg [az Azure Active Directory alapjait](https://docs.microsoft.com/azure/active-directory/fundamentals/index) bemutató cikket.
 

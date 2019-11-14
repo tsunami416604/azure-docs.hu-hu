@@ -1,60 +1,60 @@
 ---
-title: Felhasználónév keresése során bejelentkezési hitelesítés – az Azure Active Directory |} A Microsoft Docs
-description: Képernyő-felhasználónév keresési üzenetkezelési tükrözi a bejelentkezés során
+title: Felhasználónév-keresés a bejelentkezéskor – Azure Active Directory | Microsoft Docs
+description: A bejelentkezéskor a képernyőn megjelenő üzenetkezelés a Felhasználónév-keresést tükrözi Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418221"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024252"
 ---
-# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory bejelentkezési lapok hitelesítőtartomány
+# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>A Azure Active Directory bejelentkezési oldalain a Kezdőlap tartományának felderítése
 
 Módosítjuk az Azure Active Directory (Azure AD) bejelentkezési folyamatát, hogy lehetővé tegyük az új hitelesítési módszerek használatát, és hogy javítsuk a használati élményt. A bejelentkezés során az Azure AD meghatározza, hogy a felhasználónak hol kell hitelesítést végeznie. Az Azure AD intelligens döntéseket hoz a bejelentkezési oldalon megadott felhasználónévhez tartozó szervezeti és felhasználói beállítások alapján. Ez egy újabb lépés végeredményben a jelszó nélküli használathoz, amelynél lehetővé válik majd további hitelesítő adatok, például a FIDO 2.0 használata is.
 
-## <a name="home-realm-discovery-behavior"></a>Hitelesítőtartomány felderítési működését
+## <a name="home-realm-discovery-behavior"></a>A Kezdőlap tartományának felderítési viselkedése
 
-Hitelesítőtartomány hagyományosan szabályozott volt a bejelentkezéskor megadott tartomány vagy egy otthoni Kezdőtartomány-felderítés házirend néhány örökölt alkalmazások számára. Például a felderítési működését a egy Azure Active Directory-felhasználót sikerült elírta a felhasználóneve, de továbbra is érkezik, a szervezeti hitelesítő adatok gyűjtése képernyőn. Ez akkor fordul elő, amikor a felhasználó megfelelően biztosít a szervezet azon tartomány neve "contoso.com". Ez a viselkedés nem teszi lehetővé, hogy a folyamatot az egyes felhasználók szintjén testre szabjuk.
+A Kezdőlap tartomány felderítését a rendszer a bejelentkezéskor vagy egy örökölt alkalmazásokhoz tartozó Home Realm-felderítési szabályzatban megadott tartomány szabályozza. A felderítési viselkedésben például egy Azure Active Directory felhasználó írhatja be a felhasználónevét, de továbbra is a szervezete hitelesítőadat-gyűjtési képernyőjén fog megérkezni. Ez akkor fordul elő, ha a felhasználó helyesen adja meg a szervezet "contoso.com" tartománynevét. Ez a viselkedés nem teszi lehetővé, hogy a folyamatot az egyes felhasználók szintjén testre szabjuk.
 
-Hitelesítő adatok szélesebb körének támogatására, és a használhatóságot, az Azure Active Directory felhasználónevet keresési viselkedés a bejelentkezési folyamat során most frissült. Az új viselkedés intelligens döntéseket bérlő és a felhasználói szintű beállítások alapján a megadott felhasználónév egyeztetése a bejelentkezési oldalon olvassa el. Ahhoz, hogy ez lehetséges, az Azure Active Directory ellenőrzi, hogy ha a felhasználónév, amelyet is meg kell adni a bejelentkezési oldalon létezik a megadott tartományhoz, vagy az átirányítja a felhasználót a hitelesítő adatok megadására.
+A hitelesítő adatok szélesebb körének és a használhatóság növelésének támogatásához a bejelentkezési folyamat során Azure Active Directory Felhasználónév-keresési viselkedése frissül. Az új viselkedés intelligens döntéseket tesz, ha a bejelentkezési oldalon megadott Felhasználónév alapján beolvassa a bérlői és a felhasználói szintű beállításokat. Ennek lehetővé tételéhez Azure Active Directory ellenőrizze, hogy a bejelentkezési oldalon megadott felhasználónév létezik-e a megadott tartományban, vagy átirányítja a felhasználót a hitelesítő adatok megadásához.
 
-További előnye ennek, javult a hibajelentések üzenetkezelés. Szívesen adunk néhány ötletet a üzenetküldési bejelentkezés egy alkalmazásba, amely támogatja a csak az Azure Active Directory-felhasználók továbbfejlesztett hiba.
+A munka további előnye, hogy javul a hibaüzenetek. Íme néhány példa a továbbfejlesztett hibaüzenetekre, amikor olyan alkalmazásba jelentkezik be, amely csak Azure Active Directory felhasználókat támogat.
 
-- A felhasználónév rosszul van, vagy a felhasználónév már nem szinkronizált Azure ad-hez:
+- A Felhasználónév típusa helytelen, vagy a Felhasználónév még nem lett szinkronizálva az Azure AD-vel:
   
-    ![a felhasználónév rosszul adott meg, vagy nem található](./media/signin-realm-discovery/typo-username.png)
+    ![a Felhasználónév típusa helytelen, vagy nem található](./media/signin-realm-discovery/typo-username.png)
   
-- A tartománynév rosszul van:
+- A tartománynév a következő:
   
-    ![a tartománynév rosszul adott meg, vagy nem található](./media/signin-realm-discovery/typo-domain.png)
+    ![a tartománynév helytelenül van begépelve, vagy nem található.](./media/signin-realm-discovery/typo-domain.png)
   
-- Felhasználó megpróbál bejelentkezni egy ismert fogyasztói tartománynak:
+- A felhasználó egy ismert fogyasztói tartománnyal próbál bejelentkezni:
   
-    ![Jelentkezzen be egy ismert fogyasztói tartománynak](./media/signin-realm-discovery/consumer-domain.png)
+    ![Bejelentkezés ismert fogyasztói tartománnyal](./media/signin-realm-discovery/consumer-domain.png)
   
-- A jelszó rosszul van, de a felhasználónév pontos:  
+- A jelszó hibásan van begépelve, de a Felhasználónév pontos:  
   
-    ![jelszava hibásan írta be a helyes felhasználónévvel](./media/signin-realm-discovery/incorrect-password.png)
+    ![a jelszó típusa jó felhasználónévvel van ellátva](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Ez a funkció lehet hatással a függő entitások kényszerített az összevonási Kezdőtartomány felderítésének régi tartományi szint összevont tartományok. Ha összevont tartományt fogja támogatni a frissítéseket, lásd: [kezdőlap kezdőtartomány-felderítés során jelentkezzen be a Microsoft 365-szolgáltatásokhoz](https://azure.microsoft.com/updates/signin-hrd/). Addig is egyes szervezetek számára, hogy jelentkezzen be az Azure Active Directoryban nem létezik, de tartalmazza a megfelelő tartománynevet, felhasználónevet, mivel a tartománynevek átirányítja a felhasználókat jelenleg a szervezeti tartományi végpontra szakképzett. Az új bejelentkezés működése nem engedélyezi ezt. A felhasználó értesítést kap, javítsa ki a felhasználó nevét, és azok nincs engedélye arra, hogy jelentkezzen be egy felhasználónevet, amely nem létezik az Azure Active Directoryban.
+> Ez a funkció hatással lehet az összevont tartományokra, amelyek a régi tartományi szintű Kezdőlap-felderítésre támaszkodnak az összevonás kényszerítése érdekében. Az összevont tartományi támogatással kapcsolatos frissítések hozzáadásához tekintse meg a [Kezdőlap tartomány felderítése Microsoft 365 szolgáltatások bejelentkezését](https://azure.microsoft.com/updates/signin-hrd/)ismertető témakört. Addig is előfordulhat, hogy egyes szervezetek az alkalmazottakat olyan felhasználónévvel jelentkeznek be, amely nem szerepel a Azure Active Directoryban, de a megfelelő tartománynevet tartalmazza, mert a tartománynevek jelenleg a szervezet tartományi végpontja felé irányítják a felhasználókat. Az új bejelentkezési viselkedés nem teszi lehetővé ezt. A felhasználó értesítést kap a Felhasználónév kijavítani, és nem jogosult olyan felhasználónévvel való bejelentkezésre, amely nem szerepel a Azure Active Directoryban.
 >
-> Ha Ön vagy a szervezet rendelkezik gyakorlatokat, amelyek a régi viselkedése attól függ, fontos a szervezet rendszergazdák alkalmazott bejelentkezési és hitelesítési dokumentáció frissítésére és alkalmazottak számára az Azure Active Directory felhasználónevet használva a bejelentkezéshez betanításához.
+> Ha Ön vagy a szervezete olyan gyakorlattal rendelkezik, amelyek a régi viselkedéstől függenek, akkor fontos, hogy a szervezeti rendszergazdák frissíteni tudják az alkalmazottak bejelentkezési és hitelesítési dokumentációját, valamint hogy betanítsák az alkalmazottakat Azure Active Directory felhasználónevét a bejelentkezéshez.
   
-Ha kérdése merül fel a új működése, hagyja meg a megjegyzéseit alfejlécekkel a **visszajelzés** című szakaszát.  
+Ha az új viselkedéssel kapcsolatos problémái vannak, hagyja meg a megjegyzéseit a jelen cikk **visszajelzések** szakaszában.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[A bejelentkezési márkajelzés testreszabása](../fundamentals/add-custom-domain.md)
+[A bejelentkezési arculat testreszabása](../fundamentals/add-custom-domain.md)

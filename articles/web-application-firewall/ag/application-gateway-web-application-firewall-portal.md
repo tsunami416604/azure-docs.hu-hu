@@ -1,30 +1,30 @@
 ---
-title: Oktatóanyag – Application Gateway létrehozása webalkalmazási tűzfallal – Azure Portal
+title: 'Oktatóanyag: létrehozás a portál használatával – webalkalmazási tűzfal'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Application Gateway-t webalkalmazási tűzfallal a Azure Portal használatával.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d439703f1637282c73cd960923733460502c55bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501707"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049223"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása webalkalmazási tűzfallal a Azure Portal használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Application Gateway webalkalmazási tűzfallal (WAF) a Azure Portal használatával. A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések. Az Application Gateway létrehozása után tesztelje, hogy megfelelően működik-e. Az Azure Application Gateway használatával a figyelőket a portokhoz, a szabályok létrehozásához és az erőforrások háttér-készlethez való hozzáadásához irányíthatja az alkalmazás webes forgalmát adott erőforrásokra. Az egyszerűség kedvéért ez az oktatóanyag egy egyszerű telepítőt használ egy nyilvános előtér-IP-címmel, egy alapszintű figyelővel, amely egyetlen helyet üzemeltet az Application gatewayben, két virtuális gépet használ a háttér-készlethez, valamint egy alapszintű kérelem-útválasztási szabályt.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
 > * Háttér-kiszolgálóként használt virtuális gépek létrehozása
 > * Tárfiók létrehozása és diagnosztika konfigurálása
-> * Az alkalmazásátjáró tesztelése
+> * Az Application Gateway tesztelése
 
 ![Példa webalkalmazási tűzfalra](../media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
 Ahhoz, hogy az Azure kommunikáljon az erőforrásokkal, szüksége van egy virtuális hálózatra. Hozzon létre egy új virtuális hálózatot, vagy használjon egy meglévőt. Ebben a példában egy új virtuális hálózatot hozunk létre. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Application Gateway példányok külön alhálózatokban jönnek létre. Ebben a példában két alhálózatot hoz létre: egyet az Application Gateway számára, és egy másikat a háttér-kiszolgálók számára.
 
@@ -218,7 +218,7 @@ Ebben a cikkben az Application Gateway egy Storage-fiók használatával tárolj
 1. Az *erőforráscsoport területen válassza*az **myResourceGroupAG** lehetőséget.
 1. Írja be a *myagstore1* nevet a Storage-fiók nevéhez.
 1. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
+1. Tekintse át a beállításokat, és válassza ki **létrehozás**.
 
 ### <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
 
@@ -240,7 +240,7 @@ A WAF-testreszabások és-beállítások mindegyike egy külön objektumban tal�
 
 ![Társított Application Gateway átjárók](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Bár az Application Gateway létrehozásához nem szükséges az IIS, telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
 
@@ -250,7 +250,7 @@ Bár az Application Gateway létrehozásához nem szükséges az IIS, telepítet
 1. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 1. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és hogy sikeresen tud-e kapcsolatot létesíteni a háttérrel.
 
-   ![Az alkalmazásátjáró tesztelése](../media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
+   ![Az Application Gateway tesztelése](../media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -263,7 +263,7 @@ Az erőforráscsoport eltávolítása:
 3. Az **erőforráscsoport lapon**válassza az **erőforráscsoport törlése**elemet.
 4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a webalkalmazási tűzfalról](../overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure-beli virtuális gépek vezérlése az Azure CLI használatával | Microsoft Docs
+title: Oktatóanyag – Azure-beli virtuális gépek szabályozása az Azure CLI-vel
 description: Ez az oktatóanyag bemutatja, hogyan kezelheti Azure-beli virtuális gépeit az RBAC, szabályzatok, zárolások és címkék alkalmazásával az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676499"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034543"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Oktatóanyag: Ismerje meg a linuxos virtuális gépek irányítását az Azure CLI-vel
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Oktatóanyag: A Linux rendszerű virtuális gépek Azure CLI-vel történő vezérlése
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "71676499"
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szüksége. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="understand-scope"></a>A hatókör megismerése
+## <a name="understand-scope"></a>A hatókör bemutatása
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -64,11 +64,11 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ha olyan hibaüzenetet kap, amely **@no__t 1guid > nem létezik a címtárban**, az új csoport nem lett propagálva az egész Azure Active Directory. Próbálja meg ismét futtatni a parancsot.
+Ha olyan hibaüzenetet kap, amely **\<GUID-> nem létezik a címtárban**, az új csoport nem lett propagálva az egész Azure Active Directory. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
-## <a name="azure-policy"></a>Azure Policy
+## <a name="azure-policy"></a>Azure szabályzat
 
 Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](https://docs.microsoft.com/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) parancsot:
 
@@ -226,7 +226,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

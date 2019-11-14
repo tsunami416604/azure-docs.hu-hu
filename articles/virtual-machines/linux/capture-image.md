@@ -1,5 +1,5 @@
 ---
-title: Linux rendszerű virtuális gép lemezképének rögzítése az Azure-ban az Azure CLI használatával | Microsoft Docs
+title: Linux rendszerű virtuális gép lemezképének rögzítése az Azure CLI használatával
 description: Az Azure CLI használatával rögzítheti az Azure-beli virtuális gép lemezképét, amelyet tömeges üzembe helyezéshez használhat.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552797"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036923"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Virtuális gép vagy VHD rendszerképének létrehozása
 
@@ -53,7 +53,7 @@ Először távolítsa el a virtuális gépet az Azure virtuálisgép-ügynök ha
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Csak olyan virtuális gépen futtassa ezt a parancsot, amelyet lemezképként fog rögzíteni. Ez a parancs nem garantálja, hogy a rendszer törli a képet az összes bizalmas adatról, vagy újraelosztásra alkalmas. A `+user` paraméter az utolsó kiosztott felhasználói fiókot is eltávolítja. Ha a felhasználói fiók hitelesítő adatait szeretné megőrizni a virtuális gépen, csak `-deprovision` használjon.
+   > Csak olyan virtuális gépen futtassa ezt a parancsot, amelyet lemezképként fog rögzíteni. Ez a parancs nem garantálja, hogy a rendszer törli a képet az összes bizalmas adatról, vagy újraelosztásra alkalmas. A `+user` paraméter az utolsó kiosztott felhasználói fiókot is eltávolítja. Ha a felhasználói fiók hitelesítő adatait szeretné megőrizni a virtuális gépen, csak `-deprovision`használjon.
  
 3. A folytatáshoz adja meg az **y** értéket. A megerősítési lépés elkerüléséhez hozzáadhatja a `-force` paramétert.
 4. A parancs befejezése után a **Kilépés** gombra kattintva zárja be az SSH-ügyfelet.  Ezen a ponton továbbra is fut a virtuális gép.

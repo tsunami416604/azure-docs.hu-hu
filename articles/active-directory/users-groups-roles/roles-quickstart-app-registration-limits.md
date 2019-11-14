@@ -1,26 +1,26 @@
 ---
-title: Egyéni engedély megadása az alkalmazások regisztrációjának korlátozásához – Azure Active Directory | Microsoft Docs
-description: Rendeljen hozzá egy egyéni szerepkört, amely nem korlátozott alkalmazás-regisztrációkat biztosít az Azure AD-Active Directoryban.
+title: Alkalmazás-regisztrációk létrehozási korlátainak eltávolítása – Azure AD | Microsoft Docs
+description: Egyéni szerepkör hozzárendelése a nem korlátozott alkalmazások regisztrációjának engedélyezéséhez az Azure AD-Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026284"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024411"
 ---
-# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: Korlátlan számú alkalmazás regisztrációjának létrehozása engedély megadása
+# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: korlátlan alkalmazás-regisztrációk létrehozásának engedélyezése
 
 Ebben a rövid útmutatóban egy egyéni szerepkört hoz létre, amely lehetővé teszi korlátlan számú alkalmazás regisztrációjának létrehozását, majd ezt a szerepkört hozzárendelheti egy felhasználóhoz. A hozzárendelt felhasználó ezután használhatja az Azure AD-portált, az Azure AD PowerShellt, az Azure AD Graph API vagy Microsoft Graph API-t az alkalmazások regisztrációjának létrehozásához. A beépített alkalmazás-fejlesztői szerepkörtől eltérően ez az egyéni szerepkör korlátlan számú alkalmazás-regisztráció létrehozását teszi lehetővé. Az alkalmazás fejlesztői szerepköre biztosítja a képességet, de a létrehozott objektumok teljes száma a 250-ra van korlátozva, hogy ne verjék [a teljes címtárra kiterjedő objektum kvótáját](directory-service-limits-restrictions.md).
 
@@ -32,7 +32,7 @@ Az Azure AD egyéni szerepköreinek létrehozásához és hozzárendeléséhez s
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Új egyéni szerepkör létrehozása az Azure AD-portál használatával
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) With Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
 1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válassza az **új egyéni szerepkör**lehetőséget.
 
     ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/roles-create-custom/new-custom-role.png)
@@ -49,7 +49,7 @@ Az Azure AD egyéni szerepköreinek létrehozásához és hozzárendeléséhez s
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>A szerepkör kiosztása egy felhasználónak az Azure AD-portál használatával
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) with Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
 1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák**lehetőséget.
 1. Válassza ki az alkalmazás regisztrációjának létrehozója szerepkört, és válassza a **hozzárendelés hozzáadása**elemet.
 1. Válassza ki a kívánt felhasználót, és kattintson a **kiválasztás** gombra a felhasználó szerepkörhöz való hozzáadásához.
@@ -63,8 +63,8 @@ Kész! Ebben a rövid útmutatóban sikeresen létrehozott egy egyéni szerepkö
 
 Két engedély áll rendelkezésre, amelyek lehetővé teszi az alkalmazás-regisztrációk létrehozását, amelyek mindegyike különböző viselkedést biztosít.
 
-- Microsoft. Directory/alkalmazások/createAsOwner: Az engedély kiosztása azt eredményezi, hogy a létrehozó létrehozta a létrehozott alkalmazás regisztrációjának első tulajdonosát, és a létrehozott alkalmazás regisztrálása a létrehozó 250 létrehozott objektumok kvótájának megfelelően fog megjelenni.
-- Microsoft. Directory/applicationPolicies/Create: Az engedély kiosztása azt eredményezi, hogy a létrehozó nem lesz hozzáadva a létrehozott alkalmazás regisztrációjának első tulajdonosaként, és a létrehozott alkalmazás regisztrálása nem fog megjelenni a létrehozó 250 létrehozott objektum-kvótájában. Ezt az engedélyt körültekintően kell használni, mivel semmi nem akadályozza meg, hogy az alkalmazás regisztrációkat hozzon létre, amíg meg nem találja a címtár-szintű kvótát. Ha mindkét engedély hozzá van rendelve, ez az engedély elsőbbséget élvez.
+- Microsoft. Directory/Applications/createAsOwner: az engedély kiosztása azt eredményezi, hogy a létrehozó a létrehozott alkalmazás regisztrációjának első tulajdonosaként lesz hozzáadva, és a létrehozott alkalmazás regisztrálása a létrehozó 250 létrehozott objektum-kvótájának megfelelően fog megjelenni.
+- Microsoft. Directory/applicationPolicies/Create: az engedély kiosztása azt eredményezi, hogy a létrehozó nem jelenik meg a létrehozott alkalmazás regisztrációjának első tulajdonosaként, és a létrehozott alkalmazás regisztrálása nem fog megjelenni a létrehozó 250 létrehozott objektum-kvótájában. Ezt az engedélyt körültekintően kell használni, mivel semmi nem akadályozza meg, hogy az alkalmazás regisztrációkat hozzon létre, amíg meg nem találja a címtár-szintű kvótát. Ha mindkét engedély hozzá van rendelve, ez az engedély elsőbbséget élvez.
 
 ## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Egyéni szerepkör létrehozása az Azure AD PowerShell-lel
 
@@ -141,7 +141,7 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
 ```
 
-Body
+Törzs
 
 ```HTTP
 {
@@ -178,7 +178,7 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-Body
+Törzs
 
 ``` HTTP
 {
@@ -188,7 +188,7 @@ Body
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).

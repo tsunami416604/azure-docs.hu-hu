@@ -1,25 +1,25 @@
 ---
-title: Az Azure AD-szerepkörök hozzáférési felülvizsgálatának befejezése a PIM-Azure Active Directoryban | Microsoft Docs
+title: Azure AD-szerepkörök hozzáférési felülvizsgálatának befejezése a PIM-ben – Azure AD | Microsoft Docs
 description: Ismerje meg, hogyan végezheti el a Azure AD Privileged Identity Management (PIM) Azure AD szerepköreinek hozzáférési felülvizsgálatát, és megtekintheti az eredményeket
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197abc0642d6abf1278a75c2101c195cafeb53b2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809140"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022283"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD-szerepkörök hozzáférési felülvizsgálatának befejezése
 
@@ -45,7 +45,7 @@ Ha a hozzáférési felülvizsgálat úgy van beállítva, hogy a felhasználók
 
 Az összes hozzáférési felülvizsgálat befejező dátummal rendelkezik, de a **Leállítás** gomb használatával is befejezheti korán. Ha a felhasználó nem tekinti át ezt az időt, nem fogja tudni leállítani a felülvizsgálatot. Az ellenőrzés leállítása után nem indítható újra.
 
-### <a name="apply"></a>Jelentkezés
+### <a name="apply"></a>Alkalmaz
 
 A hozzáférési felülvizsgálat befejezése után vagy azért, mert elérte a befejezési dátumot, vagy manuálisan leállította, az **Apply (alkalmaz** ) gomb végrehajtja a felülvizsgálat eredményét. Ha egy felhasználó hozzáférése meg lett tagadva a felülvizsgálat során, akkor ez az a lépés, amely eltávolítja a szerepkör-hozzárendelését.  
 
