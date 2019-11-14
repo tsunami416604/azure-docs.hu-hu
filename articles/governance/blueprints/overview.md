@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 ms.date: 08/26/2019
 ms.topic: overview
-ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960320"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048288"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure BluePrints szolgáltatás áttekintése
 
@@ -51,7 +51,7 @@ A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások
 |Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetést | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
-|Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonokkal összetett környezetek állíthatók össze. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
+|Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
 |Szabályzat-hozzárendelés | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A szabályzatnak vagy kezdeményezésnek a terv meghatározási helyének hatókörén belül kell lennie. Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni. |
 |Szerepkör-hozzárendelés | Előfizetés, erőforráscsoport | Egy meglévő felhasználót vagy csoportot hozzáadhat egy beépített szerepkörhöz, és ezzel biztosíthatja, hogy a megfelelő személyek mindig a megfelelő hozzáféréssel rendelkezzenek az erőforrásokhoz. A szerepkör-hozzárendelések meghatározhatók az egész előfizetésre, vagy leszűkíthetők egy bizonyos erőforráscsoportra, amely a tervben található. |
 
@@ -114,7 +114,7 @@ A következő beépített szerepkörök érhetők el:
 Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás **tulajdonosi** szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak kell **tulajdonosi** engedélyeket létrehoznia.
+> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás **tulajdonosi** szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak kell megadnia a `Microsoft.Blueprint/blueprintAssignments/write` engedélyt, amelyet a **tulajdonos** és a **Blueprint operátor** beépített szerepkörei is tartalmaznak.
 
 ## <a name="naming-limits"></a>Elnevezési korlátok
 

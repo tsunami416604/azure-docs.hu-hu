@@ -1,23 +1,18 @@
 ---
-title: Application Gateway létrehozása több hely üzemeltetésével – Azure CLI | Microsoft Docs
+title: Több hely üzemeltetése a parancssori felület használatával – Azure Application Gateway
 description: Megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amely több helyet üzemeltet az Azure CLI használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ce5701d4125123798c6b6a654e4fa4a4887778a3
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5edc2e5228146aee913027a83e495d94c003e237
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717268"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047340"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Application Gateway létrehozása több hely üzemeltetésével az Azure CLI használatával
 
@@ -74,7 +69,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -94,11 +89,11 @@ az network application-gateway create \
 
 Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmazásátjáró létrehozása után a következő új funkcióit láthatja:
 
-- *appGatewayBackendPool* – Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.
+- *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
 - *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
 - *appGatewayHttpListener* – Az *appGatewayBackendPool* készlethez társított alapértelmezett figyelő.
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
-- *rule1* – Az *appGatewayHttpListener* figyelőhöz rendelt alapértelmezett útválasztási szabály.
+- *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
 
 ### <a name="add-the-backend-pools"></a>A háttérkészletek hozzáadása
 
@@ -167,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek az alkalmazásátjáróban lévő három háttérkészletet támogatják. A létrehozott méretezési csoportok neve *myvmss1*, *myvmss2* és *myvmss3*. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek az alkalmazásátjáróban lévő három háttérkészletet támogatják. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -225,7 +220,7 @@ az network public-ip show \
 
 Az A rekordok használata nem javasolt, mivel a virtuális IP-cím változhat az alkalmazásátjáró újraindításakor.
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Adja meg a tartománya nevét a böngésző címsorában. Például:, http\://www.contoso.com.
 
@@ -235,7 +230,7 @@ Változtassa meg a címet a másik tartományára. Ekkor az eredmény a követke
 
 ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/tutorial-multisite-cli/application-gateway-nginxtest2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

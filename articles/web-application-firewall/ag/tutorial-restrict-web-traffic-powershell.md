@@ -1,18 +1,19 @@
 ---
-title: Webes forgalom korlátozása webalkalmazási tűzfallal – Azure PowerShell
+title: Webes forgalom korlátozása a PowerShell használatával
+titleSuffix: Azure Web Application Firewall
 description: Megtudhatja, hogyan korlátozhatja a webes forgalmat az Application Gateway webalkalmazási tűzfallal egy Azure PowerShell használatával.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: b96065b6551f604cfd817a00e6a39cec37c71377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.topic: conceptual
+ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502281"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046277"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Webalkalmazási tűzfal engedélyezése Azure PowerShell használatával
 
@@ -36,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Login-AzAccount` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Login-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -74,7 +75,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
 Ebben a szakaszban olyan erőforrásokat hoz létre, amelyek támogatják az Application Gatewayt, majd végül létrehozza és létrehoz egy WAF. A következő erőforrásokat hozza létre:
 
@@ -283,7 +284,7 @@ Set-AzDiagnosticSetting `
   -RetentionInDays 30
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
@@ -301,6 +302,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Webalkalmazási tűzfalszabályok testreszabása](application-gateway-customize-waf-rules-portal.md)

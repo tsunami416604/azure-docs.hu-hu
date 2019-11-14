@@ -1,26 +1,26 @@
 ---
-title: Azure-beli erőforrás-szerepkörök aktiválása a PIM-Azure Active Directoryban | Microsoft Docs
+title: Azure-erőforrás szerepköreinek aktiválása a PIM-ben – Azure AD | Microsoft Docs
 description: Ismerje meg, hogyan aktiválhatja Azure-beli erőforrás-szerepköreit Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2062ece84676e0af37c79cf25d8662f186ab0a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808984"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023152"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök aktiválása Privileged Identity Management
 
@@ -32,7 +32,7 @@ Ez a cikk azokra a tagokra vonatkozik, akiknek aktiválniuk kell az Azure-erőfo
 
 Ha egy Azure-erőforrás szerepkört kell igénybe vennie, az aktiválást az Privileged Identity Management **saját szerepkörök** navigációs lehetősége használatával kérheti le.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**. További információ a Privileged Identity Management csempe irányítópulthoz való hozzáadásáról: a [Privileged Identity Management használatának megkezdése](pim-getting-started.md).
 

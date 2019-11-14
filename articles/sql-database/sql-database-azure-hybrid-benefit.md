@@ -8,20 +8,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: 17252f6544ee56647315dc44ace4db3e3abe9726
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/13/2019
+ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821874"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048392"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy Azure SQL Database akár 30%-ot is megtakaríthat a helyszíni SQL Server-licencek frissítési garanciával való használatával.
+A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy Azure SQL Database akár 30%-ot is megtakaríthat a helyszíni SQL Server-licencek frissítési garanciával való használatával. 
+
+> [!NOTE]
+> A Azure Hybrid Benefitra való váltás nem igényel állásidőt.
 
 ![árképzési](./media/sql-database-service-tiers/pricing.png)
-
 
 ## <a name="choose-a-license-model"></a>Licencelési modell kiválasztása
 
@@ -31,9 +33,9 @@ A licencelési modellt a Azure Portal használatával vagy a következő API-k e
 
 - A licenc típusának beállítása vagy frissítése a PowerShell használatával:
 
-  - [Új – AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
   - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [Új – AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
   - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
 
 - A licenc típusának beállítása vagy frissítése az Azure CLI használatával:
@@ -50,9 +52,7 @@ A licencelési modellt a Azure Portal használatával vagy a következő API-k e
   - [Felügyelt példányok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Database központi telepítési lehetőségek [közül választhat: válassza a megfelelő központi telepítési lehetőséget az Azure SQL-ben](sql-database-paas-vs-sql-server-iaas.md).
 - SQL Database funkciók összehasonlítását lásd: [Azure SQL Database szolgáltatások](sql-database-features.md).

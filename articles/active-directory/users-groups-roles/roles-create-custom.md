@@ -1,24 +1,24 @@
 ---
-title: Egyéni szerepkör létrehozása és társítása az Azure AD szerepköralapú hozzáférés-vezérlésében – Azure Active Directory | Microsoft Docs
+title: Egyéni szerepkörök létrehozása az Azure AD szerepköralapú hozzáférés-vezérlésében | Microsoft Docs
 description: Egyéni Azure AD-szerepköröket hozhat létre és rendelhet hozzá erőforrás-hatókörrel Azure Active Directory erőforrásokhoz.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026403"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025275"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -30,8 +30,8 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Új egyéni szerepkör létrehozása az alkalmazások regisztrálásához való hozzáférés biztosításához
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) with Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Azure Active Directory** > **szerepkörök és rendszergazdák** > **új egyéni szerepkör**lehetőséget.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Válassza **Azure Active Directory** > **szerepkörök és rendszergazdák** > **új egyéni szerepkör**lehetőséget.
 
    ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/roles-create-custom/new-custom-role.png)
 
@@ -122,7 +122,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
     ```
 
-    Body
+    Törzs
 
     ``` HTTP
    {
@@ -151,7 +151,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    Body
+    Törzs
 
     ``` HTTP
    {
@@ -176,7 +176,7 @@ A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök alapértelme
 1. Válassza ki a szerepkört a **hozzárendelések** lap megnyitásához.
 1. Felhasználó hozzáadásához válassza a **hozzárendelés hozzáadása** lehetőséget. A felhasználó csak a kiválasztott alkalmazás regisztrációja után kap engedélyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).

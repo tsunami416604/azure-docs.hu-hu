@@ -1,5 +1,5 @@
 ---
-title: Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell használatával | Microsoft Docs
+title: Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell-lel
 description: Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell-lel
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: dc5dc187bf23c9391108b24df9836645756fd62c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d3931d2affd77ce53b6ace9cc043e0272eaaf954
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165293"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040076"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell-lel
 
 Ez a szkript létrehoz egy CSV-t, amely tartalmazza a virtuális gép nevét, az erőforráscsoport nevét, a régiót, a Virtual Networkt, az alhálózatot, a magánhálózati IP-címet, az operációsrendszer-típust és a virtuális gépek nyilvános IP-címét a megadott
 
-Ha nem rendelkezik [Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha nem rendelkezik Azure- [előfizetéssel](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
@@ -79,7 +79,7 @@ Ez a szkript a következő parancsokat használja az előfizetésben található
 |[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Egy nyilvános IP-címet kap.|
 |[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Hálózati adapter beolvasása.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/overview).
 

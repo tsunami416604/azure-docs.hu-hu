@@ -10,19 +10,19 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582494"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049141"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebben az oktatóanyagban a teljes körű lépéseket követve megkezdheti a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK megkezdését. Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat első része**, amely a Python környezet beállítását és konfigurálását, valamint a kísérletek és a gépi tanulási modellek kezelésére szolgáló munkaterület létrehozását ismerteti. A második [**rész**](tutorial-1st-experiment-sdk-train.md) erre épít több gépi tanulási modell betanításához és a modell-felügyeleti folyamat bevezetéséhez a Azure Machine learning Studio és az SDK használatával.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Hozzon létre egy [Azure Machine learning-munkaterület](concept-workspace.md) , amelyet a következő oktatóanyagban szeretne használni.
@@ -81,7 +81,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 1. A felső sávon válassza ki a notebook futtatásához használni kívánt notebook virtuális gépet. Ezek a virtuális gépek előre konfigurálva vannak a Azure Machine Learning futtatásához szükséges összes értékkel. Kiválaszthat egy virtuális gépet, amelyet a munkaterület bármely felhasználója létrehoz. 
 
-1. Ha nem találhatók virtuális gépek, válassza a **+ számítás hozzáadása** elemet a virtuális gép létrehozásához.
+1. Ha nem találhatók virtuális gépek, válassza a **+ virtuális gép hozzáadása** elemet a virtuális gép létrehozásához. 
 
     1. Virtuális gép létrehozásakor adjon meg egy nevet.  A névnek 2 és 16 karakter közöttinek kell lennie. Az érvényes karakterek betűk, számjegyek és karakterek, és az Azure-előfizetésben is egyedinek kell lenniük.
 
@@ -90,7 +90,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 1. Miután a virtuális gép elérhetővé válik, megjelenik a felső eszköztáron.  Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a jegyzetfüzet kódjának **SHIFT + ENTER** billentyűkombinációjának használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

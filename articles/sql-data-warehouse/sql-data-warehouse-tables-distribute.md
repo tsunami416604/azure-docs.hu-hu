@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685467"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049115"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Útmutatás a Azure SQL Data Warehouse elosztott tábláinak megtervezéséhez
 Javaslatok a kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez Azure SQL Data Warehouseban.
@@ -60,7 +60,7 @@ A következő helyzetekben érdemes lehet a táblázat ciklikus multiplexelés h
 
 - Az első lépések egyszerű kiindulási pontként, mivel ez az alapértelmezett
 - Ha nincs nyilvánvaló csatlakozási kulcs
-- Ha nincs jó jelölt oszlop a táblázatot elosztó kivonathoz
+- Ha nincs jó jelölt oszlop a táblát elosztó kivonathoz
 - Ha a tábla nem oszt meg közös illesztési kulcsot más táblákkal
 - Ha az illesztés kevésbé jelentős, mint a lekérdezés többi illesztése
 - Ha a tábla ideiglenes előkészítési tábla
@@ -213,7 +213,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 

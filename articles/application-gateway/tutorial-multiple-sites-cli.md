@@ -1,23 +1,24 @@
 ---
-title: Több webhelyet üzemeltető alkalmazásátjáró létrehozása – Azure CLI
+title: Több webhely üzemeltetése a parancssori felület használatával
+titleSuffix: Azure Application Gateway
 description: Megismerheti, hogyan hozható létre több webhelyet üzemeltető alkalmazásátjáró az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: eceb380112002ef951d6d5e74998d944da01bd7a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688233"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047361"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet üzemeltető Application Gateway létrehozása az Azure CLI használatával
 
-Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben a háttérbeli címkészletet a Virtual Machines Scale sets használatával határozhatja meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk azt feltételezi, hogy több tartománya van, és példákat használ a *www\.-contoso.com* és a *www\.-fabrikam.com*.
+Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben a háttérbeli címkészletet a Virtual Machines Scale sets használatával határozhatja meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk azt feltételezi, hogy több tartománya van, és példákat használ a *www\.contoso.com* és a *www\.fabrikam.com*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -77,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) paranccsal létrehozhatja az alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) paranccsal létrehozhatja az alkalmazásátjárót. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -97,11 +98,11 @@ az network application-gateway create \
 
 Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmazásátjáró létrehozása után a következő új funkcióit láthatja:
 
-- *appGatewayBackendPool* – Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.
+- *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
 - *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
 - *appGatewayHttpListener* – Az *appGatewayBackendPool* készlethez társított alapértelmezett figyelő.
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
-- *rule1* – Az *appGatewayHttpListener* figyelőhöz rendelt alapértelmezett útválasztási szabály.
+- *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
 
 ### <a name="add-the-backend-pools"></a>A háttérkészletek hozzáadása
 
@@ -233,7 +234,7 @@ az network public-ip show \
 
 A-Records használata nem ajánlott, mert a VIP az Application Gateway újraindításakor változhat.
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Adja meg a tartománya nevét a böngésző címsorában. Például:, http:\//www.contoso.com.
 
@@ -251,6 +252,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)

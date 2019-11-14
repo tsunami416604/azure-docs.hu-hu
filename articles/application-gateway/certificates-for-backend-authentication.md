@@ -1,18 +1,19 @@
 ---
-title: Az Azure-ban Application Gateway
-description: Ez a cikk példákat mutat be arra, hogy az SSL-tanúsítványok hogyan alakíthatók át hitelesítési tanúsítványra és megbízható főtanúsítványra, amelyek szükségesek az Azure-beli háttérbeli példányok engedélyezési feltételéhez Application Gateway
+title: A háttér-kiszolgálók engedélyezéséhez szükséges tanúsítványok
+titleSuffix: Azure Application Gateway
+description: Ez a cikk bemutatja, hogyan alakítható át az SSL-tanúsítvány hitelesítési tanúsítványra és megbízható főtanúsítványra, amelyek szükségesek az Azure-beli backend-példányok engedélyezéséhez Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774791"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048172"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tanúsítványok létrehozása a háttér Azure Application Gateway való engedélyezéséhez
 
@@ -61,11 +62,11 @@ Az SSL-tanúsítványból exportálja a nyilvános kulcsú. cer fájlt (ne a tit
 
 7. A tanúsítvány exportálása sikeresen megtörtént.
 
-   ![Siker](./media/certificates-for-backend-authentication/success.png)
+   ![Sikeres](./media/certificates-for-backend-authentication/success.png)
 
    Az exportált tanúsítvány ehhez hasonlóan néz ki:
 
-   ![Exportálva](./media/certificates-for-backend-authentication/exported.png)
+   ![Exportált](./media/certificates-for-backend-authentication/exported.png)
 
 8. Ha a Jegyzettömb használatával nyitja meg az exportált tanúsítványt, az ehhez hasonló példához hasonlóan jelenik meg. A kék szakasz az Application Gateway szolgáltatásba feltöltött információkat tartalmazza. Ha a tanúsítványt a Jegyzettömbben nyitja meg, és nem hasonlít ehhez, ez általában azt jelenti, hogy nem exportálta az alap-64 kódolású X. 509 (. CER) formátum. Emellett, ha egy másik szövegszerkesztőt szeretne használni, ismerkedjen meg azzal, hogy egyes szerkesztők nem kívánt formázást tudnak bevezetni a háttérben. Ez problémákat okozhat a tanúsítvány szövegének az Azure-ba való feltöltésekor.
 
@@ -103,7 +104,7 @@ Az alábbi lépések segítségével exportálhatja a tanúsítványhoz tartozó
 
 6. Ekkor kibontotta a főtanúsítvány részleteit a háttér-tanúsítványból. Ekkor megjelenik a **Tanúsítvány exportálása varázsló**. Ezután használja a fentiekben említett 2-9 lépéseket a **hitelesítési tanúsítvány exportálása a háttér-tanúsítványból (a v1 SKU** -hoz) című szakaszban, hogy exportálja a megbízható főtanúsítványt az alap-64 kódolású X. 509 (. CER) formátum.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már rendelkezik a hitelesítési tanúsítvánnyal/megbízható főtanúsítvánnyal a Base-64 kódolású X. 509 (. CER) formátum. Ezt hozzáadhatja az Application gatewayhez a háttér-kiszolgálóinak a teljes körű SSL-titkosításhoz való hozzáférésének engedélyezéséhez. Lásd: [a végpontok közötti SSL-titkosítás konfigurálása](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 

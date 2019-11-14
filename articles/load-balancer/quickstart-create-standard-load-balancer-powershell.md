@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Standard Load Balancer létrehozása – Azure PowerShell'
-titlesuffix: Azure Load Balancer
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert a PowerShell használatával
+title: 'Gyors útmutató: standard Load Balancer létrehozása Azure PowerShell'
+titleSuffix: Azure Load Balancer
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre standard Load Balancer a Azure PowerShell használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0e00728e091a7d7d96cb624135519b17524d2227
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274103"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049106"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Gyors útmutató: standard Load Balancer létrehozása a Azure PowerShell használatával
+# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rövid útmutató: standard Load Balancer létrehozása Azure PowerShell használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert az Azure PowerShell használatával. A terheléselosztó teszteléséhez telepítsen három virtuális gépet (VM) a Windows Server rendszert futtató virtuális gépekre, és helyezzen terheléselosztást egy webalkalmazásba a virtuális gépek között. További információk a Standard Load Balancerről: [Mi a Standard Load Balancer?](load-balancer-standard-overview.md).
 
@@ -298,7 +298,7 @@ A három virtuális gép létrehozása és konfigurálása néhány percet vesz 
 
 Telepítse az IIS-t egy egyéni weboldallal mindkét háttérbeli virtuális gépen a következőképpen:
 
-1. A által használt `Get-AzPublicIPAddress`három virtuális gép nyilvános IP-címeinek lekérése.
+1. Szerezze be a három virtuális gép nyilvános IP-címét a `Get-AzPublicIPAddress`használatával.
 
    ```azurepowershell
      $vm1_rdp_ip = (Get-AzPublicIPAddress -ResourceGroupName $rgName -Name "RdpPublicIP_1").IpAddress
@@ -354,7 +354,7 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 Remove-AzResourceGroup -Name myResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy standard terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmi szabályát és az állapot-mintavételt, majd tesztelte a terheléselosztót. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
 

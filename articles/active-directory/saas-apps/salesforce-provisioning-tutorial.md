@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68825778"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047240"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -96,7 +96,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 10. Másolja ki a tokent, nyissa meg az Azure AD-ablakot, és illessze be a **titkos jogkivonat** mezőbe.
 
-11. A **bérlői URL-címet** meg kell adni, ha a Salesforce példánya a Salesforce Government felhőben van. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-címet a "https://\<your-instance \>. my.salesforce.com" formátumban, a \<your példány \> helyett a Salesforce-példány nevét.
+11. A **bérlői URL-címet** meg kell adni, ha a Salesforce példánya a Salesforce Government felhőben van. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-címet a "https://\<saját példánya\>. my.salesforce.com" formátumban, majd cserélje le \<a példányát\> a Salesforce példányának nevére.
 
 12. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Salesforce-alkalmazáshoz.
 
@@ -106,7 +106,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 15. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Salesforce lehetőséget.**
 
-16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
 17. Az Azure AD-kiépítési szolgáltatás Salesforce való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
@@ -117,7 +117,10 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 Ezzel elindítja a felhasználók és csoportok szakaszban Salesforce rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Salesforce alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="common-issues"></a>Gyakori problémák
+* A Salesforce való kiépítés alapértelmezett attribútuma a SingleAppRoleAssignments kifejezéssel tartalmazza a felhasználói szerepkörök Salesforce való kiépítését. Győződjön meg arról, hogy a felhasználók nem rendelkeznek több, az alkalmazáshoz hozzárendelt szerepkörrel, mivel az attribútum-hozzárendelés csak az egyik szerepkör kiosztását támogatja. 
 
 ## <a name="additional-resources"></a>További források
 

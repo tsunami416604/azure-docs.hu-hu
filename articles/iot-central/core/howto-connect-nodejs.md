@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1ddb947e9bcbdde655b5c83cffb67e8fc13d9d0e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930237"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048677"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Általános ügyfélalkalmazás összekötése az Azure IoT Central-alkalmazással (node. js)
 
@@ -30,7 +30,9 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="create-a-device-template"></a>Eszköz sablonjának létrehozása
 
-Az Azure IoT Central alkalmazásban szüksége lesz egy eszköz sablonra a következő mértékekkel, eszköz tulajdonságaival, beállításokkal és parancsokkal:
+Az Azure IoT Central alkalmazásban szüksége lesz egy eszköz sablonra a következő mértékekkel, az eszköz tulajdonságaival, a beállításokkal és a parancsokkal.
+
+Az érvényes tulajdonságokkal kapcsolatos további információkért lásd: [címkék és tulajdonságok formátuma](../../iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format).
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 

@@ -1,5 +1,5 @@
 ---
-title: Alhálózati forgalom útválasztásának konfigurálása – Azure Traffic Manager
+title: 'Oktatóanyag: alhálózat-forgalom útválasztásának konfigurálása – Azure Traffic Manager'
 description: Ez a cikk azt ismerteti, hogy hogyan konfigurálhatja úgy a Traffic Managert, hogy a felhasználói alhálózatok forgalmát adott végpontokba irányítsa.
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: 79a8712dbe54446214f3c094a1377efea4defcce
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014573"
+ms.locfileid: "74048811"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Oktatóanyag: a Traffic Manager használatával a felhasználói alhálózat alapján adott végpontokra irányuló közvetlen forgalom
 
 Ez a cikk ismerteti, hogy hogyan konfigurálhatja a forgalom-útválasztási metódust. A **Subnet** forgalom-útválasztási metódussal IP-címtartományok egy készletét képezheti le adott végpontokra, így amikor a Traffic Manager egy kérést kap, megvizsgálja annak forrás IP-címét, és visszaadja a hozzá tartozó végpontot.
 

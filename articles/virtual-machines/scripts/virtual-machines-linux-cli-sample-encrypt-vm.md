@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Linux rendszerű virtuális gép titkosítása | Microsoft Docs
+title: Azure CLI-példaszkript – Linux rendszerű virtuális gép titkosítása
 description: Azure CLI-példaszkript – Linux rendszerű virtuális gép titkosítása
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 16bbd4031c851a950af0f3c0fe98ebdd24b183df
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 26d453adb4ded59de162fda0ae62322399fa4d9a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709439"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040275"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép titkosítása az Azure-ban
 
@@ -59,7 +59,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy Azure
 | [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | Megmutatja a virtuális gép titkosítási folyamatának állapotát. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

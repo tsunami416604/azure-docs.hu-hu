@@ -1,43 +1,44 @@
 ---
-title: Az Azure Log Analytics használatával vizsgálja meg az Application Gateway webalkalmazási tűzfal naplói
-description: Ez a cikk bemutatja, hogyan használhatja az Azure Log Analytics, vizsgálja meg az Application Gateway webalkalmazási tűzfal naplói
+title: WAF-naplók vizsgálata az Azure Log Analytics
+titleSuffix: Azure Application Gateway
+description: Ez a cikk bemutatja, hogyan használható az Azure Log Analytics a webalkalmazási tűzfal naplófájljainak Application Gateway vizsgálatához
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: aa867e33ef0faa96b6a66a9075a3a5b8b0b0bca4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712175"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048100"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Vizsgálja meg az Application Gateway webalkalmazási tűzfal naplói a Log Analytics használatával
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>A Log Analytics használata az Application Gateway webalkalmazási tűzfal naplóinak vizsgálatához
 
-Amint az Application Gateway WAF működési, engedélyezheti a naplók vizsgálata, mi történik minden egyes kérelemmel. A WAF milyen tűzfal naplók számára alkalmazásüzemeltetés kiértékelése, megfelelő, és blokkolja-e. A Log Analytics-szel vizsgálja meg a még részletesebb elemzéseket biztosítanak a tűzfalnaplók lévő adatok. Log Analytics-munkaterület létrehozásával kapcsolatos további információkért lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../azure-monitor/learn/quick-create-workspace.md). Napló lekérdezésekkel kapcsolatos további információkért lásd: [napló áttekintése az Azure monitorban lekérdezések](../azure-monitor/log-query/log-query-overview.md).
+Ha a Application Gateway WAF működőképes, engedélyezheti a naplók számára, hogy megvizsgálják, mi történik az egyes kérelmekkel. A tűzfal naplói betekintést nyújtanak a WAF értékelésére, egyeztetésére és blokkolására. A Log Analytics segítségével megvizsgálhatja a tűzfalakon belüli adatnaplókat, hogy még több elemzést nyújtson. Log Analytics munkaterület létrehozásával kapcsolatos további információkért lásd: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). További információ a naplózási lekérdezésekről: [a Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="import-waf-logs"></a>WAF-naplók importálása
 
-A tűzfalnaplók importálni a Log Analytics, lásd: [háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Ha a tűzfal naplói a Log Analytics-munkaterület, adatok megtekintéséhez, lekérdezéseket írni, vizualizációkat hozhat létre, és hozzáadhatja őket az irányítópulton.
+A tűzfal naplóinak Log Analyticsba való importálásához tekintse meg [a háttér állapota, a diagnosztikai naplók és a metrikák Application Gateway](application-gateway-diagnostics.md#diagnostic-logging). Ha a tűzfal naplókat tartalmaz a Log Analytics munkaterületen, megtekintheti az adatait, lekérdezéseket írhat, vizualizációkat hozhat létre, és hozzáadhatja őket a portál irányítópultján.
 
-## <a name="explore-data-with-examples"></a>Példák az adatok megismerése
+## <a name="explore-data-with-examples"></a>Az adatelemzés példákkal
 
-A nyers adatok megtekintése a tűzfal naplóban, futtassa a következő lekérdezést:
+A következő lekérdezés futtatásával tekintheti meg a tűzfal naplójában lévő nyers adatfájlokat:
 
 ```
 AzureDiagnostics 
 | where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
 ```
 
-Ez fog hasonlítani, a következő lekérdezést:
+Ez a következő lekérdezéshez hasonlóan fog kinézni:
 
-![Log Analytics-lekérdezés](media/log-analytics/log-query.png)
+![Log Analytics lekérdezés](media/log-analytics/log-query.png)
 
-Az adatok feltárásához és a grafikonon jeleníti meg, vagy hozzon létre vizualizációt itt. Tekintse meg a következő lekérdezéseket kiindulási pontként:
+Megtekintheti az adatok részletezését, és diagramokat rajzolhat, vagy létrehozhat vizualizációkat. Kiindulási pontként tekintse meg a következő lekérdezéseket:
 
-### <a name="matchedblocked-requests-by-ip"></a>Egyező/letiltott kérelmek IP-cím alapján
+### <a name="matchedblocked-requests-by-ip"></a>Egyeztetett/letiltott kérések IP alapján
 
 ```
 AzureDiagnostics
@@ -46,7 +47,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>Egyező/letiltott kérelmek URI
+### <a name="matchedblocked-requests-by-uri"></a>Egyeztetett/letiltott kérések URI szerint
 
 ```
 AzureDiagnostics
@@ -55,7 +56,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>Felső minden egyező szabályt
+### <a name="top-matched-rules"></a>Leggyakoribb egyezési szabályok
 
 ```
 AzureDiagnostics
@@ -65,7 +66,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-five-matched-rule-groups"></a>Az első öt szabály egyező csoportot
+### <a name="top-five-matched-rule-groups"></a>Az első öt megfeleltetett szabály csoportja
 
 ```
 AzureDiagnostics
@@ -75,12 +76,12 @@ AzureDiagnostics
 | render piechart
 ```
 
-## <a name="add-to-your-dashboard"></a>Hozzáadás a saját irányítópulthoz
+## <a name="add-to-your-dashboard"></a>Hozzáadás az irányítópulthoz
 
-Ha egy lekérdezést hoz létre, hozzáadhat az irányítópulthoz.  Válassza ki a **rögzítés az irányítópulton** felső, jobb a log analytics-munkaterületet. Egy példa irányítópultra rögzített előző négy lekérdezésekkel Ez az egyetlen pillantással láthatja az adatokat:
+A lekérdezés létrehozása után felveheti azt az irányítópultra.  A log Analytics-munkaterület jobb felső sarkában válassza a **rögzítés az irányítópulton** lehetőséget. Egy példa irányítópultra rögzített előző négy lekérdezéssel az alábbi információk láthatók:
 
 ![Irányítópult](media/log-analytics/dashboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára](application-gateway-diagnostics.md)
+[Háttérbeli állapot, diagnosztikai naplók és metrikák a Application Gateway](application-gateway-diagnostics.md)

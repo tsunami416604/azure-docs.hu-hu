@@ -1,5 +1,5 @@
 ---
-title: CLI-példa – Virtuális gépek terheléselosztása rendelkezésre állási zónák között – Azure | Microsoft Docs
+title: Virtuális gépek terheléselosztása rendelkezésre állási zónák között – Azure CLI – Azure Load Balancer
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet elosztani a forgalom jelentette terhelést a virtuális gépek között több rendelkezésre állási zónán keresztül
 services: load-balancer
 documentationcenter: load-balancer
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: fdfd1de3d20a275dbc19ed414a22ebe2a6864eeb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 92f03981a573a9688115d9505266e94b7cab0e78
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273708"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048888"
 ---
-# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Az Azure CLI-példaszkript: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
+# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI-példaszkript: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
 
 A CLI-példaszkript minden összetevőt létrehoz, amelyre szükség van több, magas rendelkezésre állásra és terheléselosztásra konfigurált Ubuntu rendszerű virtuális gép futtatásához. A szkript futtatása után három virtuális géppel rendelkezik majd, amelyek egy régió több különböző rendelkezésre állási zónájában találhatók, és egy standard Azure Load Balanceren keresztül érhetők el. 
 
@@ -182,7 +182,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm create](/cli/azure/vm#az-vm-create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

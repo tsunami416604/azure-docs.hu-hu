@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Load Balancer virtuális gépek rendelkezésre állási zónában – Azure portal'
+title: 'Oktatóanyag: virtuális gépek terheléselosztása rendelkezésre állási zónák között – Azure Portal'
 titlesuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozzon létre egy standard terheléselosztót zónaredundáns előtérrel a rendelkezésre állási zónák közötti virtuális gépek Azure Portal használatával történő terheléselosztásához
 services: load-balancer
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2079ec95b582ed724583112f7af4865af66eef9d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273476"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048873"
 ---
-# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
 
-A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez az oktatóanyag végigvezeti egy nyilvános Standard Load Balancer létrehozása, amely betöltése elosztja a virtuális gépek rendelkezésre állási zónák között. Így biztosíthatja az alkalmazások és az adatok védelmét nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére. A zónaredundanciával az adatok elérési útja egy vagy több zóna meghibásodása után is ép marad mindaddig, amíg a régióban legalább egy zóna megfelelően működik. Az alábbiak végrehajtásának módját ismerheti meg:
+A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez az oktatóanyag végigvezeti egy olyan nyilvános standard Load Balancer létrehozásán, amely terheléselosztást biztosít a virtuális gépek számára a rendelkezésre állási zónák között. Így biztosíthatja az alkalmazások és az adatok védelmét nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére. A zónaredundanciával az adatok elérési útja egy vagy több zóna meghibásodása után is ép marad mindaddig, amíg a régióban legalább egy zóna megfelelően működik. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Standard Load Balancer létrehozása
@@ -50,19 +50,19 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a terheléselosztó létrehozása során létrehoz egy új nyilvános IP-címet, akkor az automatikusan standard termékváltozatként lesz konfigurálva, és automatikusan zónaredundánssá is válik.
 
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
-2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
+2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Subscription               | Válassza ki előfizetését.    |    
-    | Resource group         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLBAZ* a szövegmezőben.|
+    | Előfizetést               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *MyResourceGroupLBAZ* szöveget a szövegmezőbe.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Type          | Válassza ki **nyilvános**.                                        |
-    | SKU           | Válassza ki **Standard**.                          |
+    | Típus          | Válassza a **nyilvános**lehetőséget.                                        |
+    | SKU           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
-    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
-    |Rendelkezésre állási zónában| Válassza ki **Zónaredundáns**.    |
+    | Nyilvános IP-cím neve              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
+    |Rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
    
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
@@ -98,24 +98,24 @@ Ebben a szakaszban a hálózati biztonsági csoport szabályait fogja létrehozn
 1. Az Azure Portalon kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd keresse meg a **myResourceGroupLBAZ** erőforráscsoportban található **myNetworkSecurityGroup** elemet, és kattintson rá.
 2. A **Beállítások** területen kattintson a **Bejövő biztonsági szabályok** lehetőségre, majd a **Hozzáadás** gombra.
 3. Adja meg az alábbi értékeket a *myHTTPRule* nevű bejövő biztonsági szabály számára a 80-as portot használó, bejövő HTTP-kapcsolatok engedélyezése érdekében:
-    - **Forrás**: *Szolgáltatáscímke*.
-    - **Forrás szolgáltatáscímkéje**: *Internet*
-    - **Célporttartomány**: *80*
-    - **Protokoll**: *TCP*
-    - **Művelet**: *Engedélyezés*
-    - **Prioritás**: *100*
+    - *Forrás*: **Szolgáltatáscímke**.
+    - *Forrás szolgáltatáscímkéje*: **Internet**
+    - *Célporttartomány*: **80**
+    - *Protokoll*: **TCP**
+    - *Művelet*: **Engedélyezés**
+    - *Prioritás*: **100**
     - A terheléselosztási szabály neve: *myHTTPRule*.
     - A terheléselosztási szabály leírása: *HTTP engedélyezése*.
 4. Kattintson az **OK** gombra.
  
    ![Virtuális hálózat létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Ismételje meg a 2–4. lépéseket egy másik, *myRDPRule* nevű szabály létrehozásához, amely engedélyezi a 3389-es portot használó, bejövő RDP-kapcsolatokat. Ehhez adja meg az alábbi értékeket:
-    - **Forrás**: *Szolgáltatáscímke*.
-    - **Forrás szolgáltatáscímkéje**: *Internet*
-    - **Célporttartomány**: *3389*
-    - **Protokoll**: *TCP*
-    - **Művelet**: *Engedélyezés*
-    - **Prioritás**: *200*
+    - *Forrás*: **Szolgáltatáscímke**.
+    - *Forrás szolgáltatáscímkéje*: **Internet**
+    - *Célporttartomány*: **3389**
+    - *Protokoll*: **TCP**
+    - *Művelet*: **Engedélyezés**
+    - *Prioritás*: **200**
     - Név: *myRDPRule*
     - Leírás: *RDP engedélyezése*
 
@@ -143,7 +143,7 @@ Hozzon létre virtuális gépeket különböző zónákban (1. zóna, 2. zóna, 
 
 ### <a name="install-iis-on-vms"></a>Az IIS telepítése virtuális gépekre
 
-1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a *myResourceGroupLBAZ* erőforráscsoportban található **myVM1** elemre.
+1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a **myResourceGroupLBAZ** erőforráscsoportban található *myVM1* elemre.
 2. Az **Áttekintés** oldalon a **Csatlakozás** gombra kattintva hozzon létre RDP-kapcsolatot a virtuális géppel.
 3. Jelentkezzen be a virtuális gépbe az *azureuser* felhasználónévvel.
 4. A kiszolgáló asztalán lépjen a **Windows felügyeleti eszközök**>**Windows PowerShell** elemre.
@@ -179,7 +179,7 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
     - Válassza a **Virtuális gép** legördülő menüben a **myVM1** lehetőséget.
     - Az **IP-cím** esetében a legördülő menüben kattintson a myVM1 IP-címére.
 4. Kattintson az **Új háttérerőforrás hozzáadása** lehetőségre a virtuális gépek (*myVM2* és *myVM3*) a terheléselosztó háttérkészletéhez való hozzáadásához.
-5. Kattintson a **Hozzáadás**lehetőségre.
+5. Kattintson az **Hozzáadás** parancsra.
 
     ![Hozzáadás a háttércímkészlethez –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -195,8 +195,8 @@ Ahhoz, hogy a terheléselosztó monitorozhassa az alkalmazás állapotát, álla
     - Az állapotminta neve: *myHealthProbe*.
     - Protokoll típusa: **HTTP**.
     - Portszám: *80*.
-    - A mintavételi kísérletek közötti **Időköz** másodpercben megadva: *15*.
-    - A **Nem kifogástalan állapot küszöbértéke**, vagyis hány egymást követő meghibásodásnak kell történnie, hogy a rendszer sérültnek minősítsen egy virtuális gépet: *2*.
+    - A mintavételi kísérletek közötti *Időköz* másodpercben megadva: **15**.
+    - A *Nem kifogástalan állapot küszöbértéke*, vagyis hány egymást követő meghibásodásnak kell történnie, hogy a rendszer sérültnek minősítsen egy virtuális gépet: **2**.
 4. Kattintson az **OK** gombra.
 
    ![Mintavétel hozzáadása](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
@@ -231,6 +231,6 @@ Ha meg szeretné tekinteni, hogy hogyan osztja el a terheléselosztó a zónák 
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki a terheléselosztót tartalmazó erőforráscsoportot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647149"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049177"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,8 +146,8 @@ Ezek a beállítások az ütemezett adatkészlet-figyelő folyamathoz tartoznak,
 | ------- | ----------- | ---- | ------- |
 | Bekapcsolás | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Ezzel a beállítással letilthatja a korábbi adatértékek elemzését a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
 | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatokat az SQL-adatbázis saját adatkészlet-beágyazásában, állítsa a késleltetést 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
-| E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
-| Küszöb | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen | 
+| E-mail cím | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
+| Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen | 
 
 ### <a name="backfill-settings"></a>Backfill-beállítások
 
@@ -179,7 +179,7 @@ Az eredményül kapott adatkészlet figyelője megjelenik a listában. Válassza
 
 ### <a name="from-python-sdk"></a>Python SDK-ból
 
-A teljes részletekért tekintse [meg a PYTHON SDK dokumentációját az adateltolódásról](https://aka.ms/datadriftapi) . 
+A teljes részletekért tekintse [meg a PYTHON SDK dokumentációját az adateltolódásról](/python/api/azureml-datadrift/azureml.datadrift) . 
 
 Az alábbi példa egy adatkészlet-figyelő Python SDK-val történő létrehozását szemlélteti
 
@@ -323,7 +323,7 @@ Az adatkészletben lévő oszlopok vagy szolgáltatások a következő tábláza
 | Kategorikus | karakterlánc, bool, int, float | A szolgáltatásban található egyedi értékek száma kevesebb, mint 100, és a sorok száma kevesebb, mint 5%. | A Null érték a saját kategóriája. | 
 | Numerikus | int, float | Numerikus adattípus esetén, és nem felel meg a kategorikus funkció feltételeinek. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozzon létre egy adatkészlet-figyelőt a [Azure Machine learning Studióban](https://ml.azure.com) vagy a [Python-jegyzetfüzetben](https://aka.ms/datadrift-notebook) .
 * Ismerje meg, hogyan állíthatja be az adateltolódást az [Azure Kubernetes szolgáltatásban üzembe helyezett modelleken](how-to-monitor-data-drift.md).

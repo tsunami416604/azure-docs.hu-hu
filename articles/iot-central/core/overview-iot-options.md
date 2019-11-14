@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958160"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049093"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Az Azure IoT Central és az Azure IoT Suite lehetőségeinek összehasonlítása
 
 Microsoft Azure IoT Central és az Azure IoT számos lehetőséget kínál az IoT-megoldások létrehozására. Ezek a lehetőségek az ügyfelek különböző igényeihez szükségesek:
 
-* Az [Azure IoT Central](overview-iot-central.md) egy olyan szolgáltatott szoftver (SaaS) megoldás, amely modellen alapuló megközelítést használ a nagyvállalati szintű IoT-megoldások létrehozásához anélkül, hogy szakértelemre lenne szükség a felhőalapú megoldások fejlesztésében.
+* Az [Azure IoT Central](overview-iot-central.md) egy olyan IoT-alkalmazási platform, amely modellen alapuló megközelítést használ a nagyvállalati szintű IoT megoldások létrehozásához anélkül, hogy szakértelemre lenne szükség a felhőalapú megoldások fejlesztésében.
 
 * Az [Azure IoT megoldás](https://docs.microsoft.com/azure/iot-accelerators/) -gyorsítók olyan nagyvállalati szintű [megoldás-gyorsítók](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) , amelyek az Azure platform szolgáltatásként (Péter) alapuló, az egyéni IoT-megoldások fejlesztésének felgyorsítását lehetővé teszik.
 
@@ -42,7 +42,7 @@ Az alábbi táblázat összegzi az IoT-megoldásgyorsítók és az Azure IoT Cen
 |     | Azure IoT Central | Azure IoT-megoldásgyorsítók |
 | --- | ----------- | --------- |
 | Elsődleges használat                      | Részletes szolgáltatás-testreszabást nem igénylő, egyszerű IoT-megoldások piaci bevezetési idejének lerövidítéséhez.                                                    | A lehető legnagyobb rugalmasságot igénylő, egyéni IoT-megoldás fejlesztésének felgyorsításához.                                                                                                                             |
-| Hozzáférés az alapul szolgáló PaaS szolgáltatásokhoz | SaaS. Mivel ez egy teljes körűen felügyelt megoldás, az alapul szolgáló szolgáltatások nincsenek kitéve.                                                                                            | Hozzáféréssel rendelkezik az alapul szolgáló Azure-szolgáltatásokhoz, felügyelheti, vagy igény szerint lecserélheti őket.                                                                                                                    |
+| Hozzáférés az alapul szolgáló PaaS szolgáltatásokhoz | Mivel ez egy teljes körűen felügyelt megoldás, az alapul szolgáló szolgáltatások nincsenek kitéve.                                                                                            | Hozzáféréssel rendelkezik az alapul szolgáló Azure-szolgáltatásokhoz, felügyelheti, vagy igény szerint lecserélheti őket.                                                                                                                    |
 | Rugalmasság                        | Közepes. A beépített böngészőalapú felhasználói felületet használhatja a megoldásmodell és a felhasználói felület aspektusainak testreszabásához. Az infrastruktúra nem testreszabható, mert a különböző összetevők nincsenek kitéve. | Magas. A szolgáltatásprofil programkódja nyílt forráskódú, és bármilyen módon módosítható, ahogy az illik. Ezenkívül az üzembehelyezési infrastruktúra testreszabható.                                               |
 | Ismeretek szintje                        | Alacsony. A megoldás testreszabásához modellezési ismeretek szükségesek. Nincs szükség kódolási ismeretekre.                                                                          | Közepes – magas. A megoldás hátterének testre szabásához Java-vagy .NET-ismeretekre van szükség. A megjelenítés testreszabásához JavaScript-ismeretek szükségesek.                                                                       |
 | Első lépések – tapasztalat             | Az alkalmazások sablonjai és sablonjai előre elkészített modelleket biztosítanak. Percek alatt üzembe helyezhető.                                                                                                  | Előre konfigurált megoldások implementálnak általános IoT-forgatókönyveket. Percek alatt üzembe helyezhető.                                                                                                                            |

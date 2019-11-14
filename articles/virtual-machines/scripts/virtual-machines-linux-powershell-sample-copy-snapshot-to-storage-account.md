@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba | Microsoft Docs
+title: Azure PowerShell parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba
 description: Azure PowerShell parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként ugyanazon a különböző régióban lévő Storage-fiókba
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 7c721c10bd02824247df71abea4e037678fd5584
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c1ad520aadf8b2bafa9fdd03333e50b47612fa49
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749956"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040203"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával
 
@@ -42,11 +42,11 @@ A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS U
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Engedélyezés – AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
+| [Grant-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Létrehozza egy tárfiókkörnyezetet a fióknév és -kulcs használatával. Ennek a környezetnek a használatával olvasási/írási műveletek hajthatók végre a tárfiókon. |
 | [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Másolatot készít egy pillanatkép mögöttes VHD-fájljáról egy tárfiókba |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felügyelt lemez létrehozása virtuális merevlemezből](virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

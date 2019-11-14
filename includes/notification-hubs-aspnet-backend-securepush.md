@@ -4,16 +4,16 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: b150cad22528234286fa7939bf7055e8312ed361
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 3086d15ba541aa7f08f983dac4bc363f43248a9e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229205"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062890"
 ---
 ## <a name="webapi-project"></a>WebAPI projekt
 1. A Visual Studióban nyissa meg a **felhasználók értesítése** oktatóanyagban létrehozott **AppBackend** projektet.
-2. A Notifications.cs-ben cserélje le  a teljes értesítési osztályt a következő kódra. Ügyeljen rá, hogy a helyőrzőket cserélje le a kapcsolati sztringre (teljes hozzáféréssel) az értesítési központ és a hub nevénél. Ezeket az értékeket a [Azure Portal](https://portal.azure.com)lehet beszerezni. Ez a modul mostantól az elküldött különböző biztonságos értesítéseket is megjeleníti. A teljes implementációban az értesítések tárolása egy adatbázisban történik. az egyszerűség kedvéért ebben az esetben a memóriában tároljuk őket.
+2. A Notifications.cs-ben cserélje le a teljes **értesítési** osztályt a következő kódra. Ügyeljen rá, hogy a helyőrzőket cserélje le a kapcsolati sztringre (teljes hozzáféréssel) az értesítési központ és a hub nevénél. Ezeket az értékeket a [Azure Portal](https://portal.azure.com)lehet beszerezni. Ez a modul mostantól az elküldött különböző biztonságos értesítéseket is megjeleníti. A teljes implementációban az értesítések tárolása egy adatbázisban történik. az egyszerűség kedvéért ebben az esetben a memóriában tároljuk őket.
    
         public class Notification
         {
@@ -36,10 +36,11 @@ ms.locfileid: "68229205"
 
             public Notification CreateNotification(string payload)
             {
-                var notification = new Notification() {
-                Id = notifications.Count,
-                Payload = payload,
-                Read = false
+                var notification = new Notification
+                {
+                    Id = notifications.Count,
+                    Payload = payload,
+                    Read = false
                 };
 
                 notifications.Add(notification);
@@ -88,8 +89,8 @@ ms.locfileid: "68229205"
         }
 
 
-Vegye figyelembe, `Post` hogy a metódus most nem küld bejelentési értesítést. Nyers értesítést küld, amely csak az értesítési azonosítót tartalmazza, és nem bizalmas tartalmat. Ügyeljen arra is, hogy a küldési műveletet jegyezze fel azon platformok esetében, amelyekhez nem rendelkezik az értesítési központban konfigurált hitelesítő adatokkal, mivel ezek hibákat eredményeznek.
+Vegye figyelembe, hogy a `Post` metódus most nem küld bejelentési értesítést. Nyers értesítést küld, amely csak az értesítési azonosítót tartalmazza, és nem bizalmas tartalmat. Ügyeljen arra is, hogy a küldési műveletet jegyezze fel azon platformok esetében, amelyekhez nem rendelkezik az értesítési központban konfigurált hitelesítő adatokkal, mivel ezek hibákat eredményeznek.
 
 1. Most újra telepítjük ezt az alkalmazást egy Azure-webhelyre, hogy minden eszközről elérhetővé váljon. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
-2. A közzétételi célként válassza az Azure-webhely lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
+2. A közzétételi célként válassza az Azure-webhely lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Ebben az oktatóanyagban a *háttérbeli végpontként* erre az URL-címre fogunk hivatkozni. Kattintson a **Publish** (Közzététel) gombra.
 

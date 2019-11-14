@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099495"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049001"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -38,7 +38,7 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 *  A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. Azure Resource Manager sablonok használatával átalakításokat, folyamatos átviteli végpontokat, élő eseményeket és egyéb műveleteket hozhat létre és helyezhet üzembe.
 * [OpenAPI-specifikáció (korábbi nevén henceg)](https://aka.ms/ams-v3-rest-sdk) dokumentum.
     Minden szolgáltatás-összetevő számára elérhetővé teszi a sémát, beleértve a fájl alapú kódolást is.
-* A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node. js](https://aka.ms/ams-v3-nodejs-ref), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
+* A [.net](https://aka.ms/ams-v3-dotnet-ref), a .net Core, a [Node. js](/javascript/api/overview/azure/mediaservices/management), a [Python](https://aka.ms/ams-v3-python-ref), a [Java](https://aka.ms/ams-v3-java-ref), a [Go](https://aka.ms/ams-v3-go-ref)és a Ruby esetében elérhető SDK-k.
 * [Azure CLI](https://aka.ms/ams-v3-cli-ref) -integráció az egyszerű parancsfájlok támogatásához.
 
 ### <a name="new-features"></a>ÚJ funkciók
@@ -101,7 +101,7 @@ A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartal
 
 Az alábbi táblázat a v2 és v3 kód közötti különbségeket mutatja be a gyakori forgatókönyvek esetében.
 
-|Alkalmazási helyzet|V2 API|V3 API|
+|Forgatókönyv|V2 API|V3 API|
 |---|---|---|
 |Eszköz létrehozása és fájl feltöltése |[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Feladatok elküldése|[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Bemutatja, hogyan hozhat létre először egy átalakítót, majd küldhet el egy feladatot.|

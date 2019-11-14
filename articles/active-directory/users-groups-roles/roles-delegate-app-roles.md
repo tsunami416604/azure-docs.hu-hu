@@ -1,26 +1,25 @@
 ---
-title: Alkalmazás-rendszergazda létrehozási és felügyeleti engedélyeinek delegálása – Azure Active Directory | Microsoft Docs
+title: Az alkalmazás-adminisztrátorok felügyeletének engedélyezése – Azure AD | Microsoft Docs
 description: Engedélyek megadása az alkalmazás-hozzáférés kezeléséhez Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025517"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024860"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -61,8 +60,8 @@ Bizonyos esetekben az alkalmazás-katalógusból létrehozott vállalati alkalma
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Tulajdonos társítása vállalati alkalmazásokhoz
 
-1. Jelentkezzen be az [Azure ad-szervezetbe](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t – 1with egy olyan fiókot, amely jogosult az alkalmazás-rendszergazda vagy a felhőalapú alkalmazás-rendszergazda számára a szervezet számára.
-1. A [Alkalmazásregisztrációk oldalon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)@no__t – a szervezet 1for válassza ki az alkalmazást, és nyissa meg az alkalmazás áttekintés lapját.
+1. Jelentkezzen be az [Azure ad-szervezet](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely jogosult az alkalmazás-rendszergazda vagy a felhőalapú alkalmazás-rendszergazda számára a szervezet számára.
+1. A szervezet [Alkalmazásregisztrációk lapján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) válassza ki az alkalmazást, és nyissa meg az alkalmazás áttekintés lapját.
 1. A **tulajdonosok** lehetőség kiválasztásával megtekintheti az alkalmazás tulajdonosainak listáját.
 1. Válassza a **Hozzáadás** lehetőséget, ha egy vagy több tulajdonost szeretne hozzáadni az alkalmazáshoz.
 
@@ -75,8 +74,8 @@ Bizonyos esetekben az alkalmazás-katalógusból létrehozott vállalati alkalma
 
 Az Azure AD beépített rendszergazdai szerepkörökkel rendelkezik, amelyek hozzáférést biztosítanak az Azure AD-ben az összes alkalmazás konfigurációjának kezeléséhez. Ezek a szerepkörök ajánlottak az informatikai szakértők számára a széles körű alkalmazás-konfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést biztosítanak az Azure AD egyéb részeinek kezeléséhez, amelyek nem kapcsolódnak az alkalmazás konfigurációjához.
 
-- Alkalmazás rendszergazdája: Az ebben a szerepkörben lévő felhasználók a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát hozhatják létre és kezelhetik. Ez a szerepkör lehetővé teszi a delegált engedélyekhez való hozzájárulást, valamint az Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kizárását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
-- Cloud Application Administrator: Az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, az alkalmazásproxy felügyeletének lehetősége nélkül. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
+- Alkalmazás-rendszergazda: ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát. Ez a szerepkör lehetővé teszi a delegált engedélyekhez való hozzájárulást, valamint az Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kizárását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
+- Cloud Application Administrator: az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, kivéve az alkalmazásproxy felügyeletének képességét. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
 További információért és a szerepkörök leírásának megtekintéséhez tekintse meg a [rendelkezésre álló szerepkörök](directory-assign-admin-roles.md#available-roles)című témakört.
 
@@ -102,7 +101,7 @@ Tippek az alkalmazások kezelésének delegálásához egyéni szerepkörök lé
 
 Az egyéni szerepkörök alapjaival kapcsolatos további információkért tekintse meg az [Egyéni szerepkörök áttekintését](roles-custom-overview.md), valamint az [Egyéni szerepkör létrehozását](roles-create-custom.md) és [a szerepkör hozzárendelését](roles-assign-powershell.md)ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazás regisztrációs altípusai és engedélyei](roles-custom-available-permissions.md)
 - [Azure AD-rendszergazdai szerepkör-hivatkozás](directory-assign-admin-roles.md)

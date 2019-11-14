@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-példaszkript – Felügyelt lemez létrehozása pillanatképből | Microsoft Docs
+title: Azure PowerShell-példaszkript – Felügyelt lemez létrehozása pillanatképből
 description: Azure PowerShell-példaszkript – Felügyelt lemez létrehozása pillanatképből
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: be763f2df9352cafaedcd5c80a60c48e919d3f1c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93f2e24a2a32af1fb4bfa6560b27ce6c113ad7a1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749942"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040141"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Felügyelt lemez létrehozása pillanatképből a PowerShell használatával
 
@@ -40,10 +40,10 @@ A szkript a következő parancsokat használja arra, hogy létrehozzon egy felü
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | Beolvassa a pillanatkép tulajdonságait.  |
-| [Új – AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Tartalmazza a szülőpillanatkép erőforrás-azonosítóját, a helyet (mely azonos a szülőpillanatkép helyével) és a tárolás típusát.  |
-| [Új – AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
+| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Tartalmazza a szülőpillanatkép erőforrás-azonosítóját, a helyet (mely azonos a szülőpillanatkép helyével) és a tárolás típusát.  |
+| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [Virtuális gép létrehozása felügyelt lemezből](./virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

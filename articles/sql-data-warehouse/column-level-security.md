@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34172e313b537d59287a424683ea1555cbba9b99
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693085"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049160"
 ---
 # <a name="column-level-security"></a>Oszlop szintű biztonság
 Az oszlop szintű biztonság (CLS) lehetővé teszi az ügyfelek számára, hogy a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák az adatbázis-táblázat oszlopaihoz való hozzáférést.
-
+Frissítsen az alábbi videóra – mivel ez a videó közzé lett téve a [sor szintjének biztonsága](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) SQL Data Warehouseban is elérhető. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 A CLS leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. A CLS lehetővé teszi a bizalmas adatok védelme érdekében az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden olyan alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás a biztonsági rendszerek megbízhatóságát és megbízhatóságát teszi lehetővé a teljes biztonsági rendszerek felületének csökkentésével. Emellett a CLS is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.

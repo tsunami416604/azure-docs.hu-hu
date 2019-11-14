@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4a0736267ca00b67f35abc7cf263e7cf19543d81
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6ab01cf42dac280e64470355f7ea5804cad669d7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932126"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048803"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-- Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
+- A modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
 
 - Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](how-to-vscode-tools.md)-hoz készült Azure Machine learning.
 
@@ -194,7 +194,7 @@ A parancsfájl két olyan függvényt tartalmaz, amelyek betöltik és futtatjá
 
 * `init()`: Ez a függvény általában egy globális objektumba tölti be a modellt. Ez a függvény csak egyszer fut, amikor a webszolgáltatás Docker-tárolója elindult.
 
-* `run(input_data)`: Ez a függvény a modellt használva előre jelez egy értéket a bemeneti adatok alapján. A Futtatás bemenetei és kimenetei általában a JSON-t használják a szerializáláshoz és a deszerializáláshoz. A nyers bináris adatmennyiségeket is használhatja. Az adatokat átalakíthatja a modellbe való küldés előtt, vagy az ügyfélnek való visszatérés előtt.
+* `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. A Futtatás bemenetei és kimenetei általában a JSON-t használják a szerializáláshoz és a deszerializáláshoz. A nyers bináris adatmennyiségeket is használhatja. Az adatokat átalakíthatja a modellbe való küldés előtt, vagy az ügyfélnek való visszatérés előtt.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Adja meg a modell fájljait a belépési parancsfájlban
 
@@ -233,7 +233,7 @@ Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzék
 Modell regisztrálása esetén a nevet adja meg. A név a modell elhelyezésének helyét adja meg helyileg vagy a szolgáltatás telepítése során.
 
 > [!IMPORTANT]
-> Ha az automatizált gépi tanulást használta a modell betanításához, a modell neveként `model_id` értéket kell használni. Az automatizált gépi tanulással betanított modellek regisztrálásához és üzembe helyezéséhez lásd: az [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) a githubon.
+> Ha az automatizált gépi tanulást használta a modell betanításához, a modell neveként `model_id` értéket kell használni. Az automatizált gépi tanulással betanított modellek regisztrálásához és üzembe helyezéséhez lásd: az [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features) a githubon.
 
 A következő példa egy `sklearn_mnist_model.pkl` nevű fájl elérési útját adja vissza (amely a (z) `sklearn_mnist`névvel lett regisztrálva):
 
@@ -375,8 +375,8 @@ def run(data):
 
 További példákért tekintse meg a következő parancsfájlokat:
 
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Kerasz](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
@@ -530,7 +530,7 @@ Az alábbi táblázat az egyes számítási célkitűzések központi telepíté
 
 | Számítási cél | Üzembe helyezési konfiguráció – példa |
 | ----- | ----- |
-| Helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Helyi: | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -572,7 +572,7 @@ További információ a parancssori felületről történő profilkészítésrő
 További információ a következő dokumentumokban található:
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profil ()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [A konfigurációs fájl sémájának következtetése](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
@@ -584,7 +584,7 @@ Az üzemelő példány a konfiguráció központi telepítési konfigurációjá
 Modell helyi üzembe helyezéséhez a Docker-t telepíteni kell a helyi gépre.
 
 #### <a name="using-the-sdk"></a>Az SDK használata
-
+zzs
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -853,7 +853,7 @@ SDK
 model_path = Model(ws,'mymodel').download()
 ```
 
-CLI
+CLI:
 ```azurecli-interactive
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
@@ -1137,8 +1137,8 @@ Megjegyzés: ezek a függőségek az előre elkészített sklearn következteté
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Központilag telepített webszolgáltatás törléséhez használja a `service.delete()`.
-A regisztrált modellek törléséhez használja a `model.delete()`.
+Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
+A regisztrált modell törléséhez használja `model.delete()`.
 
 További információ: a [webszolgáltatások dokumentációja. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) és [Model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1146,7 +1146,7 @@ További információ: a [webszolgáltatások dokumentációja. Delete ()](https
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
-* [Biztonságos Azure Machine Learning webszolgáltatások SSL használatával](how-to-secure-web-service.md)
+* [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása](how-to-consume-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

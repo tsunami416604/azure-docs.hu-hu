@@ -1,5 +1,5 @@
 ---
-title: PowerShell-példa – Több webhely terheléselosztása az Azure PowerShell-lel | Microsoft Docs
+title: Több webhely terheléselosztása – Azure PowerShell-Azure Load Balancer
 description: Ez az Azure PowerShell-mintaszkript bemutatja, hogyan lehet több webhely terheléselosztását megoldani ugyanazon a virtuális gépen
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 82bd8a82418bad44786f009c75d742fcc0fc66e7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273618"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048910"
 ---
-# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Az Azure PowerShell-példaszkript: Több webhely terheléselosztását kezelheti
+# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell-mintaszkript: Több webhely terheléselosztása
 
 Ez az Azure PowerShell-mintaszkript olyan két virtuális gépből álló virtuális hálózatot hoz létre, amelyek egy rendelkezésre állási csoport tagjai. A terheléselosztó két különböző IP-cím forgalmát irányítja a két virtuális gépre. A szkript futtatása után telepíthet a webkiszolgáló szoftvert a virtuális gépekre, és több webhelyet is üzemeltethet, mindegyiket a saját IP-címével.
 
@@ -66,7 +66,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, virtuáli
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/overview).
 

@@ -1,11 +1,11 @@
 ---
-title: Load Balancer létrehozása a Zone-redundáns felülettel – Azure CLI
-titlesuffix: Azure Load Balancer
+title: Terheléselosztó létrehozása az Azure parancssori felülettel
+titleSuffix: Azure Load Balancer
 description: Megtudhatja, hogyan hozhat létre nyilvános standard Load Balancer a Zone-redundáns nyilvános IP-cím felülettel az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: allensu
-ms.openlocfilehash: 2dcd7d2cffa567307e1d6eb4326a379bc2d409be
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d5dd2dc04f4307c810fdc673286505f6001491ec
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275173"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048360"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Standard Load Balancer létrehozása az Azure CLI-vel zónaredundáns frontend
 
@@ -51,7 +51,7 @@ Hozzon létre egy nyilvános IP Standard a következő paranccsal:
 az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku Standard
 ```
 
-## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
+## <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
 
 A Standard nyilvános IP-címmel, amely a következő parancsot az előző lépésben létrehozott egy nyilvános Load Balancer Standard létrehozása:
 
@@ -78,7 +78,7 @@ az network lb rule create --resource-group myResourceGroup --lb-name myLoadBalan
   --backend-pool-name myBackEndPool --probe-name myHealthProbe
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tudjon meg többet [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md).
 
 

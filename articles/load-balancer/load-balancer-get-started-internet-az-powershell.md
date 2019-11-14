@@ -1,6 +1,6 @@
 ---
-title: Load Balancer létrehozása a Zone-redundáns frontend-Azure PowerShell
-titlesuffix: Azure Load Balancer
+title: Terheléselosztó létrehozása zónával redundáns előtér-Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Megtudhatja, hogyan hozhat létre nyilvános standard Load Balancer egy zóna – redundáns nyilvános IP-cím felülettel a PowerShell használatával
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4f7cf5c7600a057a913be28ff4b2a44b241e6be5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275089"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049192"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Standard Load Balancer létrehozása az Azure PowerShell-lel zónaredundáns frontend
 
@@ -88,7 +88,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
    $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
-## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
+## <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
 Hozzon létre egy standard Load Balancer a következő parancs használatával:
 
 ```azurepowershell-interactive
@@ -97,5 +97,5 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalance
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tudjon meg többet [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md).

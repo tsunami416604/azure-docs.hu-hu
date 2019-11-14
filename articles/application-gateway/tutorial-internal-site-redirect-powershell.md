@@ -1,23 +1,18 @@
 ---
-title: Application Gateway létrehozása belső átirányítás használatával – Azure PowerShell | Microsoft Docs
+title: Belső átirányítás a PowerShell használatával – Azure Application Gateway
 description: Megtudhatja, hogyan hozhat létre olyan Application Gateway-t, amely a belső webes forgalmat átirányítja a kiszolgálók megfelelő háttér-készletéből az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2fcfac582000056a1ef82e8fe5dcaed99dfee068
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 5ef10623ad50488df03302ba61121cca086d010e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835025"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047372"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Belső átirányítással rendelkező Application Gateway létrehozása Azure PowerShell használatával
 
@@ -27,7 +22,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása
+> * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
 > * CNAME rekord létrehozása a tartományban
@@ -72,7 +67,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
@@ -296,7 +291,7 @@ Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lek
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Adja meg a tartománya nevét a böngésző címsorában. Például: `http://www.contoso.com`.
 
@@ -304,13 +299,13 @@ Adja meg a tartománya nevét a böngésző címsorában. Például: `http://www
 
 Módosítsa a címeket a másik tartományra, például `http://www.contoso.org`ra, és látnia kell, hogy a forgalom átirányítva lett a figyelőnek `www.contoso.com`re.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása
+> * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása a háttér-készletekkel
 > * CNAME rekord létrehozása a tartományban

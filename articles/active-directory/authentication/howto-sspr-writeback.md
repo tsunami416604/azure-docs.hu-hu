@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a16ad3c571086a73a2aae192fb2d00bce4d5f9
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808154"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021773"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: a jelszó visszaírási konfigurálása
 
@@ -99,7 +99,7 @@ A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajt
     * **PwdLastSet írása**
 9. Válassza az **alkalmaz/ok** lehetőséget a módosítások alkalmazásához és a megnyitott párbeszédpanelek bezárásához.
 
-Mivel a hatóság forrása a helyszínen található, a jelszó-összetettségi szabályzatok ugyanarra a csatlakoztatott adatforrásra vonatkoznak. Ellenőrizze, hogy módosította-e a meglévő csoportházirendeket a "jelszó minimális hossza" értékre. A csoportházirend nem állítható be 1 értékre, ami azt jelenti, hogy a jelszónak legalább egy nappal korábbinak kell lennie ahhoz, hogy frissíteni lehessen. Győződjön meg arról, hogy 0-ra van beállítva. Ezek a beállítások a `gpmc.msc` **Számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > fiók házirendek**területen találhatók. `gpupdate /force` futtatásával győződjön meg arról, hogy a módosítás érvénybe lép. 
+Mivel a hatóság forrása a helyszínen található, a jelszó-összetettségi szabályzatok ugyanarra a csatlakoztatott adatforrásra vonatkoznak. Ellenőrizze, hogy módosította-e a meglévő csoportházirendeket a "jelszó minimális kora" értékre. A csoportházirend nem állítható be 1 értékre, ami azt jelenti, hogy a jelszónak legalább egy nappal korábbinak kell lennie ahhoz, hogy frissíteni lehessen. Győződjön meg arról, hogy 0-ra van beállítva. Ezek a beállítások a `gpmc.msc` **Számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > fiók házirendek**területen találhatók. `gpupdate /force` futtatásával győződjön meg arról, hogy a módosítás érvénybe lép. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: 8dd46d8224567e1883fd2a397d5ba2b00a0fd43d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a599a7cbb1ceff165d7bde77ba4bf797d66b5026
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048233"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
@@ -355,12 +355,12 @@ Gyakran használt beállítások a `ApplicationInsightsServiceOptions`
 
 |Beállítás | Leírás | Alapértelmezett
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | igaz
-|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | igaz
-|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | igaz
-|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | igaz
+|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | true
+|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | true
+|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | true
+|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | true
 
-A legnaprakészebb listához tekintse [meg a `ApplicationInsightsServiceOptions`konfigurálható beállításait](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
+A legnaprakészebb listához tekintse [meg a `ApplicationInsightsServiceOptions`konfigurálható beállításait](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
 ### <a name="sampling"></a>Mintavételezés
 
@@ -537,11 +537,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net Core 3,0 Worker szolgáltatás](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Akkor használja ezt a mintát, ha a .NET Core 3,0 Worker szolgáltatásalkalmazás az [alábbi](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template) hivatalos útmutatás szerint van
 
-## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
+## <a name="open-source-sdk"></a>Open-source SDK
 
 [Olvassa el és járuljon hozzá a kódhoz](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az API használatával](../../azure-monitor/app/api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletes áttekintéséhez.
 * A [további függőségek nyomon követése nem történik meg automatikusan](../../azure-monitor/app/auto-collect-dependencies.md).

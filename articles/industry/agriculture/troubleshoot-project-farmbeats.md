@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797633"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048278"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -84,7 +84,7 @@ Az alábbi gyakori hibák fordulnak elő egy eszköz törlésekor:
 
 ## <a name="accelerator-troubleshooting"></a>Gyorssegéd hibaelhárítása
 
-### <a name="access-control"></a>Access Control
+### <a name="access-control"></a>Hozzáférés-vezérlés
 
 **Hiba történt a szerepkör-hozzárendelés hozzáadásakor**
 
@@ -251,7 +251,7 @@ Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage
 
 **Jelentés**: az Azure ad-alkalmazás regisztrációs konfigurációja nem történt meg megfelelően.  
 
-**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáférésével), hogy az Azure ad-alkalmazás regisztrációjának létrehozásához használja a [szkriptet](https://aka.ms/PPCreateAADappregistration) . Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is. mint  
+**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáférésével), hogy az Azure ad-alkalmazás regisztrációjának létrehozásához használja a [szkriptet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) . Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
 
 **Hiba**: nem sikerült létrehozni a (z) "dummyname" nevű új Active Directory alkalmazást ebben a bérlőben: már létezik egy azonos értékkel rendelkező objektum az URI azonosítóhoz.
 
@@ -278,6 +278,6 @@ Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage
 2.  Válassza ki az App Service-t.  
 3.  Lépjen a vertikális felskálázás (App Service terv) lehetőségre, és válasszon ki egy megfelelő [árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, lépjen kapcsolatba velünk a [támogatási fórumon](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).

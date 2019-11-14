@@ -1,6 +1,6 @@
 ---
-title: standard Load Balancer létrehozása az Azure parancssori felületének használatával
-titlesuffix: Azure Load Balancer
+title: Standard Load Balancer a zóna-előtérben – Azure parancssori felület
+titleSuffix: Azure Load Balancer
 description: Megtudhatja, hogyan hozhat létre nyilvános standard Load Balancert az Azure CLI-vel rendelkező, Zona nyilvános IP-címekkel rendelkező előtér használatával
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 5e6dd06cf43b0eb5389597dcedbc323f4c035333
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274318"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048346"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>standard Load Balancer létrehozása az Azure parancssori felületének használatával
 
@@ -249,7 +249,7 @@ A nyilvános IP-címet beírhatja egy böngészőbe. Ne feledje: néhány percet
 
 Ha szeretné megtekinteni, hogy a terheléselosztó az 1. zónán belüli virtuális gépekre osztja el az alkalmazást, akkor kényszerítheti a webböngésző frissítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További tudnivalók a [Standard Load Balancerről](./load-balancer-standard-overview.md).
 
 

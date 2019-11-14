@@ -1,18 +1,19 @@
 ---
-title: URL-elérésiút-alapú útválasztási szabályokkal rendelkező Application Gateway létrehozása – Azure PowerShell | Microsoft Docs
+title: URL-elérésiút-alapú útválasztási szabályok a PowerShell használatával
+titleSuffix: Azure Application Gateway
 description: Útmutató az Application Gateway és a virtuálisgép-méretezési csoport URL-alapú útválasztási szabályainak létrehozásához a Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ebe09e2c10bed1779d9189755f66bbea9bca1d43
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306258"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048047"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>URL-elérésiút-alapú útválasztási szabályokkal rendelkező Application Gateway létrehozása a Azure PowerShell használatával
 
@@ -150,7 +151,7 @@ $appgw = New-AzApplicationGateway `
   -Sku $sku
 ```
 
-### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek, illetve port hozzáadása
+### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek és port hozzáadása
 
 Az [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool)használatával hozzáadhat *imagesBackendPool* és *videoBackendPool* nevű backend-készleteket az Application gatewayhez. Az [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)használatával adja hozzá a készletek előtérbeli portját. Ezután elküldheti az Application Gateway módosításait a [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway)használatával.
 
@@ -257,7 +258,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A létrehozott méretezési csoportok neve *myvmss1*, *myvmss2* és *myvmss3*. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -343,9 +344,9 @@ for ($i=1; $i -le 3; $i++)
 }
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
-A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`,, vagy `http://52.168.55.24:8080/video/test.htm`.
+A [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) használatával lekérheti az Application Gateway nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`vagy `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -353,15 +354,15 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Módosítsa az URL `http://<ip-address>:8080/video/test.htm`- `<ip-address>`címet, és cserélje le az IP-címét, és az alábbi példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet `http://<ip-address>:8080/video/test.htm`re, és cserélje le az IP-címét `<ip-address>`re, és az alábbi példához hasonlóan kell megjelennie:
 
-![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
+![Tesztképek URL-címe az alkalmazásátjáróban](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Módosítsa az URL- `http://<ip-address>:8080/video/test.htm` címet, és a következő példához hasonlóan kell megjelennie:
+Módosítsa `http://<ip-address>:8080/video/test.htm` URL-címét, és az alábbi példához hasonlóan kell megjelennie:
 
-![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
+![Tesztvideó URL-címe az alkalmazásátjáróban](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

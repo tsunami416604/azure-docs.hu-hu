@@ -3,20 +3,20 @@ title: Ajánlott eljárások az Azure Adatkezelő-beli adatlekérdezés és-megj
 description: Ebből a cikkből megtudhatja, hogyan kérheti le és jelenítheti meg az Azure Adatkezelő-beli adatPower BI az ajánlott eljárások használatával.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286748"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024032"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Ajánlott eljárások az Azure Adatkezelő-beli adatlekérdezés és-megjelenítés Power BI használatához
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A [Power bi](https://docs.microsoft.com/power-bi/) egy üzleti elemzési megoldás, amellyel megjelenítheti az adatait, és megoszthatja az eredményeket a szervezeten belül. Az Azure Adatkezelő három lehetőséget biztosít a Power BIban lévő adatkapcsolatokhoz. Használja a [beépített összekötőt](power-bi-connector.md), [importáljon egy lekérdezést az Azure Adatkezelőból a Power BIba](power-bi-imported-query.md), vagy használjon [SQL-lekérdezést](power-bi-sql-query.md). Ez a cikk tippekkel szolgál az Azure Adatkezelő-adatPower BIekkel való lekérdezéséhez és megjelenítéséhez. 
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A [Power bi](https://docs.microsoft.com/power-bi/) egy üzleti elemzési megoldás, amellyel megjelenítheti az adatait, és megoszthatja az eredményeket a szervezeten belül. Az Azure Adatkezelő három lehetőséget biztosít a Power BIban lévő adatkapcsolatokhoz. Használja a [beépített összekötőt](power-bi-connector.md), [importáljon egy lekérdezést az Azure Adatkezelőból a Power BIba](power-bi-imported-query.md), vagy használjon [SQL-lekérdezést](power-bi-sql-query.md). Ez a cikk tippekkel szolgál az Azure Adatkezelő-adatPower BIekkel való lekérdezéséhez és megjelenítéséhez. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Ajánlott eljárások Power BI használatához 
 
@@ -46,12 +46,12 @@ A következő szakasz tippeket és trükköket tartalmaz a Kusto lekérdezési n
 
 ### <a name="complex-queries-in-power-bi"></a>Összetett lekérdezések a Power BIban
 
-Az összetett lekérdezések könnyebben Kusto, mint a Power Query. Ezeket a [Kusto függvényekként](/azure/kusto/query/functions)kell megvalósítani, és Power bi-ben kell meghívni őket. Ez a módszer akkor szükséges, ha a **DirectQuery** `let` utasításokkal használja a Kusto-lekérdezésben. Mivel Power BI két lekérdezéshez csatlakozik, és `let` utasítások nem használhatók az `join` operátorral, szintaktikai hibák jelentkezhetnek. Ezért mentse az illesztés egyes részeit Kusto-függvényként, és engedélyezze a Power BI számára a két funkció összekapcsolását.
+Az összetett lekérdezések könnyebben Kusto, mint a Power Query. Ezeket a [Kusto függvényekként](/azure/kusto/query/functions)kell megvalósítani, és Power bi-ben kell meghívni őket. Ez a módszer akkor szükséges, ha a Kusto-lekérdezésben **DirectQuery** használ a `let` utasítással. Mivel Power BI két lekérdezéshez csatlakozik, és `let` utasítások nem használhatók a `join` operátorral, szintaktikai hibák jelentkezhetnek. Ezért mentse az illesztés egyes részeit Kusto-függvényként, és engedélyezze a Power BI számára a két funkció összekapcsolását.
 
 ### <a name="how-to-simulate-a-relative-date-time-operator"></a>Relatív dátum-idő operátor szimulálása
 
 Power BI nem tartalmaz *relatív* dátum-idő operátort, például `ago()`.
-@No__t – 0 szimulálása `DateTime.FixedLocalNow()` és `#duration` Power BI függvények kombinációját használja.
+`ago()`szimulálása `DateTime.FixedLocalNow()` és `#duration` Power BI függvények kombinációját használja.
 
 A lekérdezés helyett a `ago()` operátort használja:
 
@@ -74,13 +74,13 @@ in
 
 A Kusto lekérdezések alapértelmezés szerint legfeljebb 500 000 sort vagy 64 MB-ot adnak vissza a [lekérdezési korlátok](/azure/kusto/concepts/querylimits)című cikkben leírtak szerint. Ezeket az alapértelmezett értékeket felülbírálhatja **speciális beállításokkal** az **Azure adatkezelő (Kusto)** -kapcsolatok ablakban:
 
-![speciális beállítások](media/power-bi-best-practices/advanced-options.png)
+![Speciális beállítások](media/power-bi-best-practices/advanced-options.png)
 
 Ezekkel a beállításokkal a lekérdezés az alapértelmezett lekérdezési korlátok megváltoztatására vonatkozó [utasításokat állítja be](/azure/kusto/query/setstatement) :
 
-  * A **lekérdezési eredmények számának korlátozása** a `set truncationmaxrecords` értéket generálja
-  * A **lekérdezési eredmény adatméretének korlátozása bájtban** `set truncationmaxsize` értéket hoz létre
-  * Az **eredményhalmaz letiltásának letiltása** egy `set notruncation` érték generálása
+  * **Lekérdezési eredmény rekordjának korlátozása** `set truncationmaxrecords` generálása
+  * A **lekérdezési eredmények adatméretének korlátozása bájtban** `set truncationmaxsize` generál
+  * **Eredményhalmaz letiltásának tiltása** `set notruncation` generálása
 
 ### <a name="using-query-parameters"></a>Lekérdezési paraméterek használata
 
@@ -98,7 +98,7 @@ A **lekérdezések szerkesztése** ablakban a **Home** > **speciális szerkeszt�
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   Példa:
+   Például:
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
@@ -106,7 +106,7 @@ A **lekérdezések szerkesztése** ablakban a **Home** > **speciális szerkeszt�
 
 1. Cserélje le a lekérdezés megfelelő részét a paraméterrel. Ossza szét a lekérdezést több részre, és fűzze össze őket egy jel (&) használatával, a paraméterrel együtt.
 
-   A fenti lekérdezésben például elvégezjük a `State == 'ALABAMA'` részt, és a következőre kell bontani: `State == '` és `'`, és a `State` paramétert a következők közé helyezjük:
+   A fenti lekérdezésben például elvégezjük a `State == 'ALABAMA'` részt, és felosztjuk a következőre: `State == '` és `'`, és a `State` paramétert helyezjük el egymás között:
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"
@@ -140,7 +140,7 @@ Egy lekérdezési paramétert is használhat bármely olyan lekérdezési lépé
 
 Power BI tartalmaz egy adatfrissítési ütemező, amely rendszeres időközönként lekérdezést tud kiadni egy adatforrásra vonatkozóan. Ezt a mechanizmust nem szabad felhasználni a Kusto tartozó vezérlési parancsok megadására, mert Power BI feltételezi, hogy az összes lekérdezés írásvédett.
 
-### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI csak rövid (&lt;2000 karakteres) lekérdezéseket küldhet a Kusto
+### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI csak rövid (&lt;2000 karakterből álló) lekérdezéseket küldhet a Kusto
 
 Ha a Power BI lekérdezés futtatásakor a következő hibaüzenet jelenik meg: _"DataSource. error: web. contents nem sikerült lekérni a tartalmakat..."_ a lekérdezés valószínűleg hosszabb 2000 karakternél. Power BI a **PowerQuery** használatával kérdezi le a Kusto-t egy olyan HTTP Get kérelem kibocsátásával, amely kódolja a lekérdezést a beolvasott URI azonosítójának részeként. Ezért a Power BI által kiadott Kusto-lekérdezések a kérelem URI-ja maximális hosszára korlátozódnak (2000 karakter, mínusz kis eltolás). Megkerülő megoldásként megadhat egy [tárolt függvényt](/azure/kusto/query/schema-entities/stored-functions) a Kusto-ben, és Power bi használhatja ezt a függvényt a lekérdezésben.
 

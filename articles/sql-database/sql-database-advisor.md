@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811383"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048412"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Teljesítménnyel kapcsolatos javaslatok a SQL Database
 
@@ -25,6 +25,17 @@ Azure SQL Database tanul és alkalmazkodik az alkalmazáshoz. Testreszabott ajá
 > [!TIP]
 > Az [automatikus hangolás](sql-database-automatic-tuning.md) az ajánlott módszer a leggyakoribb adatbázis-teljesítménnyel kapcsolatos problémák automatikus finomhangolására. Az alapszintű Azure SQL Database teljesítmény-figyelési igényeknek megfelelően a [lekérdezési teljesítményre](sql-database-query-performance.md) vonatkozó információ a javasolt módszer. A [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) ajánlott módszer az adatbázis-teljesítmény magas szinten történő figyelésére, beépített intelligenciával az automatikus teljesítménnyel kapcsolatos hibaelhárításhoz.
 >
+
+## <a name="performance-recommendations-options"></a>Teljesítménnyel kapcsolatos javaslatok beállításai
+
+A teljesítményre vonatkozó javaslati lehetőségek elérhetők Azure SQL Database a következők:
+
+| Teljesítményre vonatkozó javaslat | Önálló adatbázis és készletezett adatbázis-támogatás | Példány-adatbázis támogatása |
+| :----------------------------- | ----- | ----- |
+| **Tárgymutató-javaslatok létrehozása** – olyan indexek létrehozását javasolja, amelyek javíthatják a számítási feladatok teljesítményét. | Igen | Nem | 
+| A **drop index ajánlásai** – a redundáns és ismétlődő indexek napi eltávolítását javasolja, kivéve azokat az egyedi indexeket és indexeket, amelyeket hosszú ideje nem használtak (> 90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Igen | Nem |
+| **Parametrizálja-lekérdezések ajánlásai (előzetes verzió)** – a kényszerített parametrization ajánlja olyan esetekben, amikor egy vagy több olyan lekérdezéssel rendelkezik, amely állandóan újrafordításra kerül, de ugyanazzal a lekérdezés-végrehajtási tervvel fejeződik be. | Igen | Nem |
+| **Sémával kapcsolatos problémák elhárítása (előzetes verzió)** – a séma javítására vonatkozó javaslatok akkor jelennek meg, ha az SQL Database szolgáltatás anomália az SQL-adatbázison futó, a sémával kapcsolatos SQL-hibák számában. A Microsoft jelenleg "a séma hibájának javítása" javaslatok elavult. | Igen | Nem |
 
 ## <a name="create-index-recommendations"></a>Tárgymutató-javaslatok létrehozása
 SQL Database folyamatosan figyeli a futó lekérdezéseket, és azonosítja azokat az indexeket, amelyek javíthatják a teljesítményt. Ha elég biztos abban, hogy egy adott index hiányzik, létrejön egy új **create index** -javaslat.
@@ -50,8 +61,7 @@ A hiányzó indexek észlelése mellett SQL Database folyamatosan elemzi a megl�
 
 Az indexek eldobására vonatkozó javaslatok a megvalósítás után is meghaladják az ellenőrzést. Ha a teljesítmény javul, a hatás jelentés elérhető. Ha a teljesítmény csökken, a rendszer visszaállít egy javaslatot.
 
-
-## <a name="parameterize-queries-recommendations"></a>Parametrizálja-lekérdezések javaslatai
+## <a name="parameterize-queries-recommendations-preview"></a>Parametrizálja-lekérdezések javaslatai (előzetes verzió)
 A *parametrizálja-lekérdezések* javaslatai akkor jelennek meg, ha egy vagy több olyan lekérdezést tartalmaz, amely állandóan újrafordításra kerül, de ugyanazzal a lekérdezés-végrehajtási tervvel végződik. Ez a feltétel létrehoz egy lehetőséget a kényszerített paraméterezés alkalmazására. A kényszerített paraméterezés lehetővé teszi a lekérdezési tervek gyorsítótárazását és újbóli felhasználását a jövőben, ami javítja a teljesítményt, és csökkenti az erőforrás-használatot. 
 
 A rendszer minden SQL Server kiállított lekérdezést először le kell fordítani egy végrehajtási terv létrehozásához. Minden létrehozott csomag hozzá lesz adva a terv gyorsítótárába. Ugyanannak a lekérdezésnek a későbbi végrehajtásai újra felhasználhatják ezt a csomagot a gyorsítótárból, így nincs szükség további fordításra. 
@@ -89,7 +99,7 @@ A "séma javítása" javaslat akkor jelenik meg, ha az Azure SQL Database szolg�
 
 A fejlesztők fontolóra vehetik az egyéni alkalmazások fejlesztését a Azure SQL Database teljesítményével kapcsolatos javaslatok használatával. Az adatbázis-portálon felsorolt összes javaslat a [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API-n keresztül érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Figyelje a javaslatokat, és alkalmazza őket a teljesítmény pontosítására. Az adatbázis-számítási feladatok dinamikusak, és folyamatosan változnak. SQL Database Advisor folytatja az adatbázis teljesítményének növelésére szolgáló javaslatok figyelését és megadását. 
 
 * Az adatbázis-indexek és a lekérdezés-végrehajtási tervek automatikus finomhangolásával kapcsolatos további információkért lásd: [Azure SQL Database automatikus hangolás](sql-database-automatic-tuning.md).

@@ -1,18 +1,18 @@
 ---
-title: Webalkalmazási tűzfalszabályok testreszabása az Azure Application Gateway-Azure Portal
+title: Szabályok testreszabása a portálon – Azure webalkalmazási tűzfal
 description: Ez a cikk azt ismerteti, hogyan lehet testre szabni a webalkalmazási tűzfalszabályok szabályait a Azure Portal Application Gateway.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/24/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: ab2722ed4a4aa4fe95be15cd536bfd5d959f9139
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516928"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048377"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Webalkalmazási tűzfalszabályok testreszabása a Azure Portal használatával
 
@@ -63,7 +63,7 @@ CRS 3. x-specifikus:
 
 * A bejövő anomália pontszáma túllépte a küszöbértéket
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A letiltott szabályok konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 

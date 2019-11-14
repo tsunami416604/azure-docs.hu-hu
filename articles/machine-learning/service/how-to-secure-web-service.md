@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 00731d3520c98c3fd770dc411f6c5c940555fbe5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932063"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048600"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Az SSL használata az a-Azure Machine Learning biztonságossá tételéhez
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ A TLS és az SSL egyaránt *digitális tanúsítványokra*támaszkodik, amelyek 
 
 Ez a következő általános folyamata:
 
-1. Tartománynév beszerzése.
+1. Kérje le egy tartomány nevét.
 
 2. Digitális tanúsítvány beszerzése.
 
@@ -50,7 +50,7 @@ Ez a következő általános folyamata:
 
 Kis eltérések vannak, amikor a biztonsági s-t az [üzembe helyezési célok](how-to-deploy-and-where.md)között.
 
-## <a name="get-a-domain-name"></a>Tartománynév beszerzése
+## <a name="get-a-domain-name"></a>A tartománynév beolvasása
 
 Ha még nem rendelkezik tartománynévvel, vásároljon egyet a tartománynév- *regisztrálótól*. A folyamat és az ár eltér a regisztrátorok között. A regisztrátor a tartománynevet kezelő eszközöket biztosít. Ezeknek az eszközöknek a segítségével teljes tartománynevet (például www\.contoso.com) képezhető le a gazdagép IP-címére.
 
@@ -58,8 +58,8 @@ Ha még nem rendelkezik tartománynévvel, vásároljon egyet a tartománynév- 
 
 Az SSL-tanúsítványok (digitális tanúsítványok) többféleképpen is beszerezhetők. A leggyakoribb a *hitelesítésszolgáltató (CA* ) egyikének megvásárlása. A tanúsítvány lekérésének helyétől függetlenül a következő fájlokra lesz szüksége:
 
-* Egy **tanúsítvány**. A tanúsítványnak tartalmaznia kell a teljes tanúsítványláncot, és a "PEM-kódolt" értéknek kell lennie.
-* Egy **kulcs**. A kulcsnak PEM-kódolású is kell lennie.
+* A **tanúsítvány**. A tanúsítványnak tartalmaznia kell a teljes tanúsítványláncot, és a "PEM-kódolt" értéknek kell lennie.
+* A **kulcs**. A kulcsnak PEM-kódolású is kell lennie.
 
 Tanúsítvány igénylése esetén meg kell adnia a használni kívánt címek teljes tartománynevét (például a www\.contoso.com). A tanúsítványba bepecsételő és az ügyfelek által használt címek összevetése az identitásának ellenőrzéséhez. Ha ezek a címek nem egyeznek, az ügyfél hibaüzenetet kap.
 
@@ -67,7 +67,7 @@ Tanúsítvány igénylése esetén meg kell adnia a használni kívánt címek t
 > Ha a hitelesítésszolgáltató nem tudja megadni a tanúsítványt és a kulcsot PEM-kódolású fájlként, használhat egy olyan segédprogramot, mint például az [OpenSSL](https://www.openssl.org/) a formátum megváltoztatásához.
 
 > [!WARNING]
-> *Önaláírt* tanúsítványokat csak fejlesztéshez használhat. Ne használja őket éles környezetekben. Az önaláírt tanúsítványok problémákat okozhatnak az ügyfélalkalmazások számára. További információkért tekintse meg az ügyfélalkalmazás által használt hálózati kódtárak dokumentációját.
+> *Önaláírt* tanúsítványokat csak fejlesztéshez használhat. Ne használja őket éles környezetekben. Önaláírt tanúsítványok problémákat okozhat az ügyfél az alkalmazásokat. További információkért tekintse meg az ügyfélalkalmazás által használt hálózati kódtárak dokumentációját.
 
 ## <a id="enable"></a>Az SSL engedélyezése és üzembe helyezése
 
@@ -85,7 +85,7 @@ Ha AK-ra végez üzembe helyezést, létrehozhat egy új AK-fürtöt, vagy csato
 
 A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt tanúsítvánnyal rendelkező tanúsítványt is használhat.
 
-  * Ha tanúsítványt használ a Microsofttól, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "myservice" érték például egy "myservice\<hat véletlenszerű karakterből álló > tartománynevet hoz létre.\<azureregion >. cloudapp. Azure. com ", ahol a \<azureregion > a szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*.
+  * Ha tanúsítványt használ a Microsofttól, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "contoso" érték például a "contoso\<hat-Random-characters > tartománynevet hozza létre.\<azureregion >. cloudapp. Azure. com ", ahol a \<azureregion > a szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*.
 
     A szolgáltatás üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) engedélyezve van az SSL, állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
 
@@ -98,11 +98,19 @@ A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt 
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * A *megvásárolt tanúsítvány*használatakor a *ssl_cert_pem_file*, *ssl_key_pem_file*és *ssl_cname* paramétereket kell használnia. Az alábbi példa bemutatja, hogyan használhatók a *. PEM* -fájlok olyan konfigurációk létrehozásához, amelyek egy MEGvásárolt SSL-tanúsítványt használnak:
@@ -248,6 +256,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Az alábbiak végrehajtásának módját ismerheti meg:
+A webinárium témái:
 + [A-ben üzembe helyezett gépi tanulási modell felhasználása](how-to-consume-web-service.md)
 + [Kísérletek és következtetések biztonságos futtatása Azure-beli virtuális hálózaton belül](how-to-enable-virtual-network.md)

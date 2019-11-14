@@ -1,18 +1,18 @@
 ---
-title: Az Azure webalkalmazási tűzfalának hibáinak megoldása Application Gateway
+title: Hibakeresés – Azure webalkalmazási tűzfal
 description: Ez a cikk az Azure-hoz készült webalkalmazási tűzfal (WAF) hibaelhárítási információit ismerteti Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: fff50417bd7944e125ce1d7c1e1ae52ec22f806f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516564"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046192"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfalának (WAF) hibáinak megoldása
 
@@ -148,7 +148,7 @@ Ahhoz, hogy tájékozott döntést hozzon a hamis pozitív megoldásokról, font
 
 A kizárási lista használatának egyik előnye, hogy csak a kérés egy adott részét tiltja le a rendszer. Azonban ez azt jelenti, hogy egy adott kizárás a WAF áthaladó összes forgalomra érvényes, mivel ez egy globális beállítás. Ez például akkor okozhat problémát, ha *1 = 1* érvényes kérelem a törzsben egy adott alkalmazáshoz, de mások számára nem. Egy másik előny, hogy kiválaszthatja a törzs, a fejlécek és a cookie-k kizárását, ha egy bizonyos feltétel teljesül, a teljes kérelem kizárása helyett.
 
-Időnként előfordulhat, hogy bizonyos paramétereket nem lehet intuitív módon átadni a WAF. Például van egy token, amely a Azure Active Directory használatával történő hitelesítéskor lesz átadva. Ezt a tokent ( *__RequestVerificationToken*) általában kérelem cookie-ként adja át a rendszer. Bizonyos esetekben azonban, amikor a cookie-k le vannak tiltva, ez a token kérelem-attribútumként vagy "ARG"-ként is át lesz adva. Ha ez történik, győződjön meg arról, hogy a *__RequestVerificationToken* hozzá van adva a kizárási listához a **kérelem attribútumának neveként** is.
+Időnként előfordulhat, hogy bizonyos paramétereket nem lehet intuitív módon átadni a WAF. Például van egy token, amely a Azure Active Directory használatával történő hitelesítéskor lesz átadva. Ez a token, *__RequestVerificationToken*, általában kérelem cookie-ként kerül beolvasásra. Bizonyos esetekben azonban, amikor a cookie-k le vannak tiltva, ez a token kérelem-attribútumként vagy "ARG"-ként is át lesz adva. Ha ez történik, gondoskodnia kell arról, hogy a *__RequestVerificationToken* a rendszer hozzáadja a kizárási listához a **kérelem-attribútum neveként** is.
 
 ![Korlátozások](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
@@ -322,7 +322,7 @@ Ha a kérelem cookie-kat tartalmaz, a **cookie-k** lapon lehet megtekinteni őke
    > [!NOTE]
    > Ha tudja, hogy az alkalmazásnak nincs szüksége a fájl feltöltésére egy adott méretnél magasabb szintre, korlátozhatja a korlátot.
 
-## <a name="firewall-metrics-waf_v1-only"></a>Tűzfal Metrikái (csak WAF_v1)
+## <a name="firewall-metrics-waf_v1-only"></a>Tűzfalak Metrikái (csak WAF_v1)
 
 A v1-es webalkalmazási tűzfalak esetében a következő metrikák érhetők el a portálon: 
 
@@ -332,6 +332,6 @@ A v1-es webalkalmazási tűzfalak esetében a következő metrikák érhetők el
      
 A metrikák engedélyezéséhez válassza a **metrikák** fület a portálon, és válasszon egyet a három mérőszám közül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [webalkalmazási tűzfal konfigurálása Application Gatewayon](tutorial-restrict-web-traffic-powershell.md).

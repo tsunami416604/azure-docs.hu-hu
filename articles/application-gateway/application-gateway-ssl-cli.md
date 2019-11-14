@@ -1,25 +1,22 @@
 ---
-title: Hozzon létre egy application gateway SSL-lezárást – Azure CLI-vel |} A Microsoft Docs
+title: SSL-lezárás a CLI használatával – Azure Application Gateway
 description: Megismerheti, hogyan hozhat létre alkalmazásátjárót és adhat hozzá egy tanúsítványt az SSL leállításához az Azure CLI használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d1decdda096fb902ff605205d7193e1264e5170
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135155"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048003"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Hozzon létre egy application gateway SSL-lezárást az Azure CLI használatával
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Application Gateway létrehozása SSL-megszakítással az Azure CLI használatával
 
-Az Azure CLI használatával létrehozhat egy [alkalmazásátjárót](application-gateway-introduction.md) egy [SSL leállítási](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) tanúsítvánnyal, amely egy [virtuálisgép-méretezési csoportot](application-gateway-backend-ssl.md) használ háttérkiszolgálókként. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
+Az Azure CLI használatával létrehozhat egy [alkalmazásátjárót](application-gateway-introduction.md) egy [SSL leállítási](application-gateway-backend-ssl.md) tanúsítvánnyal, amely egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használ háttérkiszolgálókként. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -85,7 +82,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja az alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja az alkalmazásátjárót. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. 
 
 Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. Ebben a példában társítja a létrehozott tanúsítványt és annak jelszavát az alkalmazásátjáró létrehozásakor. 
 
@@ -110,11 +107,11 @@ az network application-gateway create \
 
  Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmazásátjáró létrehozása után a következő új funkcióit láthatja:
 
-- *appGatewayBackendPool* – Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.
+- *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
 - *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
 - *appGatewayHttpListener* – Az *appGatewayBackendPool* készlethez társított alapértelmezett figyelő.
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
-- *rule1* – Az *appGatewayHttpListener* figyelőhöz rendelt alapértelmezett útválasztási szabály.
+- *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
@@ -149,7 +146,7 @@ az vmss extension set \
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használhatja az [az network public-ip show](/cli/azure/network/public-ip) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
@@ -167,7 +164,7 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -177,4 +174,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Az application Gateway átjárók és a kapcsolódó erőforrásokkal kapcsolatos további információkért folytassa az útmutató cikkekre.
+Ha többet szeretne megtudni az Application Gateway és a hozzájuk kapcsolódó erőforrásairól, folytassa az útmutató cikkeivel.

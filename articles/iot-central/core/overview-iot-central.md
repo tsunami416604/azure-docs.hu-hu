@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure IoT Central? | Microsoft Docs
-description: Az Azure IoT Central egy teljes körű SaaS-megoldás, amellyel létrehozhatja és kezelheti az egyéni IoT-megoldást. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
+description: Az Azure IoT Central egy IoT-alkalmazási platform, amely leegyszerűsíti a IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/26/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0cb3ac836569c782d7b7d84917af276567e89c86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957705"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048656"
 ---
 <!---
 Purpose of an Overview article: 

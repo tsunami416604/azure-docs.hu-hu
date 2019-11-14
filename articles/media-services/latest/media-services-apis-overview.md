@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820642"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049018"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
@@ -95,7 +95,7 @@ Media Services a következő hosszan futó műveletekkel rendelkezik:
 * [Élő esemény indítása](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [LiveEvent leállítása](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  Az `removeOutputsOnStop` paraméter használatával törölheti az összes kapcsolódó élő kimenetet az esemény leállításakor.  
+  A `removeOutputsOnStop` paraméter használatával törölheti az összes társított élő kimenetet az esemény leállításakor.  
 * [LiveEvent alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [LiveOutput létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [LiveOutput törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
@@ -122,11 +122,11 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-referencia](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-referencia](https://aka.ms/ams-v3-java-ref)|
 |[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-referencia](https://aka.ms/ams-v3-python-ref)|
-|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-referencia](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-referencia](/javascript/api/overview/azure/mediaservices/management)| 
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-referencia](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Lásd még:
+### <a name="see-also"></a>Lásd még
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -135,7 +135,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 
 A [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) a Windows-ügyfelek számára elérhető eszköz, akik a Media Servicesről szeretnének többet megtudni. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a problémát a https://github.com/Azure/Azure-Media-Services-Explorer/issues) értékkel lehet jelenteni. Ez a projekt elfogadta a [Microsoft Nyílt forráskóddal kapcsolatos viselkedési szabályzatát](https://opensource.microsoft.com/codeofconduct/). További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy lépjen kapcsolatba opencode@microsoft.com további kérdésekkel vagy megjegyzésekkel.
+A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a probléma https://github.com/Azure/Azure-Media-Services-Explorer/issues). Ez a projekt elfogadta a [Microsoft Nyílt forráskóddal kapcsolatos viselkedési szabályzatát](https://opensource.microsoft.com/codeofconduct/). További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy lépjen kapcsolatba opencode@microsoft.com további kérdésekkel vagy megjegyzésekkel.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
@@ -145,11 +145,11 @@ Lásd: [Azure Media Services entitások szűrése, rendezése és lapozása](ent
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás Media Services Javával](configure-connect-java-howto.md)
 * [Kapcsolódás Media Services a .NET-tel](configure-connect-dotnet-howto.md)

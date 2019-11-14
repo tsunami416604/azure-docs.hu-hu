@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 99768afa9de22767d73576143a5c747be6a3bef9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 183599fccfad1806faae3cb90de225d388b77da8
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013365"
+ms.locfileid: "74049238"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állása érdekében
+# <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állásához – Azure PowerShell
 
 Ez a szkript létrehoz egy erőforráscsoportot, két app Service-csomagot, két webalkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. Traffic Manager a forgalmat az egyik régióban az elsődleges régióként, a másodlagos régióba irányítja, ha az elsődleges régióban lévő alkalmazás nem érhető el. A szkript végrehajtása előtt módosítania kell a MyWebApp, a MyWebAppL1 és a MyWebAppL2 értékeket az Azure-ban lévő egyedi értékekre. A szkript futtatása után az elsődleges régióban elérheti az alkalmazást az URL-mywebapp.trafficmanager.net.
 

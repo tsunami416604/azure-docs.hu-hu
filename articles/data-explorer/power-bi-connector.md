@@ -3,16 +3,16 @@ title: Adatmegjelenítés az Azure Adatkezelő Connector használatával Power B
 description: 'Ebből a cikkből megtudhatja, hogyan használható a három lehetőség a Power BIban található adatmegjelenítéshez: az Azure Adatkezelő Power BI-összekötője.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349142"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024219"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Adatmegjelenítés az Azure Adatkezelő Connector használatával Power BI
 
@@ -30,7 +30,7 @@ A cikk elvégzéséhez a következőkre lesz szüksége:
 
 Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEvents* tábla adatainak egy részhalmazát adja meg. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-1. Power BI Desktop a **Kezdőlap** lapon válassza az adatlekérdezés, majd a **továbbiak**lehetőséget.
+1. Power BI Desktop a **Kezdőlap** lapon válassza az **adatlekérdezés** , majd a **továbbiak**lehetőséget.
 
     ![Adatok lekérése](media/power-bi-connector/get-data-more.png)
 
@@ -44,7 +44,7 @@ Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEven
 
     **Beállítás** | **Érték** | **Mező leírása**
     |---|---|---|
-    | Fürt | *https://help.kusto.windows.net* | A Súgó fürthöz tartozó URL-cím. Más fürtök esetében az URL-cím a következő formátumú: *https://\<ClusterName @ no__t-2. @no__t -3Region\>.kusto.windows.net*. |
+    | Fürt | *https://help.kusto.windows.net* | A Súgó fürthöz tartozó URL-cím. Más fürtök esetében az URL-cím a következő formátumú: *https://\<ClusterName\>.\<régió\>. kusto.Windows.net*. |
     | Adatbázis | Hagyja üresen | Azon a fürtön tárolt adatbázis, amelyhez csatlakozik. Ezt egy későbbi lépésben fogjuk kiválasztani. |
     | Tábla neve | Hagyja üresen | Az adatbázis egyik táblája, vagy egy lekérdezés, például <code>StormEvents \| take 1000</code>. Ezt egy későbbi lépésben fogjuk kiválasztani. |
     | Speciális beállítások | Hagyja üresen | A lekérdezésekre vonatkozó beállítások, például az eredményhalmaz méretének beállítása. |
@@ -69,7 +69,7 @@ Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEven
 
 1. A **navigátor** képernyőjén bontsa ki a **minták** adatbázist, és válassza a **StormEvents** , majd a **Szerkesztés**lehetőséget.
 
-    ![Tábla kiválasztása](media/power-bi-connector/select-table.png)
+    ![tábla kiválasztása](media/power-bi-connector/select-table.png)
 
     A tábla megnyílik a Power Query-szerkesztőben, ahol az adatok importálása előtt Ön szerkesztheti a sorokat és oszlopokat.
 
@@ -93,6 +93,6 @@ Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEven
 
 Ha már nincs szüksége a cikkhez létrehozott jelentésre, törölje a Power BI Desktop (. pbix) fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tippek az Azure Adatkezelő-összekötő használatához a Power BI az adatlekérdezéshez](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

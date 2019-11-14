@@ -1,10 +1,10 @@
 ---
-title: Konfigurálja a prioritás forgalom-útválasztási módszer az Azure Traffic Managerrel |} A Microsoft Docs
-description: Ez a cikk ismerteti a prioritás forgalom-útválasztási módszert a Traffic Manager konfigurálása
+title: Prioritási forgalom útválasztásának konfigurálása – Azure Traffic Manager
+description: Ez a cikk ismerteti, hogyan konfigurálhatja a prioritási forgalom útválasztási módszerét Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,50 +12,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 259457a604727cba6e6964851ec4fcf4b13a20a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9954c7733c30efaea4a74e04949556a3a8617fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048485"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040352"
 ---
-# <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Prioritás forgalom-útválasztási módszert a Traffic Manager konfigurálása
+# <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Prioritási forgalom útválasztási módszerének konfigurálása Traffic Manager
 
-A webhely működési függetlenül az Azure Websites már meg feladatátvételi funkció (más néven régióhoz) adatközponton belüli webhelyekhez. A TRAFFIC Manager feladatátvételt biztosít a különböző adatközpontokban található webhely számára.
+A webhelyek módjától függetlenül az Azure websites szolgáltatás már biztosít feladatátvételi funkciókat az adatközponton belüli (más néven régió) webhelyekhez. A Traffic Manager a különböző adatközpontokban lévő webhelyek feladatátvételét teszi lehetővé.
 
-A szolgáltatás feladatátvételének egyik küldeni a forgalmat a szolgáltatás elsődleges és feladatátvételi azonos biztonsági mentési szolgáltatások körét. Az alábbi lépéseket a rangsorolt feladatátvétel konfigurálása az Azure cloud services és websites ismertetik:
+A szolgáltatás feladatátvételének általános mintája egy elsődleges szolgáltatás felé irányuló forgalom elküldése, és a feladatátvételhez azonos biztonsági mentési szolgáltatások készletének biztosítása. A következő lépések elmagyarázzák, hogyan konfigurálhatja ezt a rangsorolt feladatátvételt az Azure Cloud Services és websites szolgáltatással:
 
-## <a name="to-configure-the-priority-traffic-routing-method"></a>A prioritás forgalom-útválasztási módszer konfigurálása
+## <a name="to-configure-the-priority-traffic-routing-method"></a>A prioritási forgalom útválasztási módszerének konfigurálása
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
-2. A portál keresősávjában keressen a **Traffic Manager-profilok** és kattintson a profil nevét, amelyet szeretne az útválasztási módszer konfigurálása.
-3. Az a **Traffic Manager-profil** panelen ellenőrizze, hogy a cloud services és a webhelyeket, amelyeket fel szeretne venni a konfiguráció jelen.
-4. Az a **beállítások** területén kattintson **konfigurációs**, majd a a **konfigurációs** panelen adja meg a következőket:
-    1. A **forgalom-útválasztási módszer beállításait**, győződjön meg arról, hogy a forgalom-útválasztási módszer **prioritású**. Ha nem, kattintson a **prioritású** a legördülő listából.
-    2. Állítsa be a **Végpontfigyelő beállításai** azonos az összes minden végpontot a profiljában, az alábbiak szerint:
-        1. Válassza ki a megfelelő **protokoll**, és adja meg a **Port** számát. 
-        2. A **elérési** írja be a perjellel */* . Végpontok monitorozása, az elérési útvonalat és fájlnevet kell megadnia. A perjel "/" érvényes bejegyzés a relatív elérési útja, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
-        3. Kattintson a lap tetején **mentése**.
-5. Az a **beállítások** területén kattintson **végpontok**.
-6. Az a **végpontok** panelen tekintse át a prioritási sorrendet a végpontokon. Amikor kiválasztja a **prioritású** forgalom-útválasztási módszer, a kiválasztott végpontok kérdések sorrendjét. Ellenőrizze a végpontok a prioritásuk szerinti sorrendben történik.  Az elsődleges végpont felül van. Ellenőrizze a rendelés jelenik meg. összes kérést átirányítja az első végpont a Traffic Manager észleli, ha nem megfelelő állapotú lesz, és a forgalom automatikusan átadja a feladatokat a következő végpont. 
-7. Végpont prioritásának módosításához kattintson a végpontra, majd a a **végpont** panel, amelyen megjelenik, kattintson a **szerkesztése** , és módosítsa a **prioritású** érték szükség szerint. 
-8. Kattintson a **mentése** menteni a végpont beállításainak módosításához.
-9. Miután végzett a konfiguráció módosításait, kattintson a **mentése** az oldal alján.
-10. A módosítások teszteléséhez a konfiguráció a következő:
-    1.  A portál keresősávjában, keresse meg a Traffic Manager-profil nevét és a Traffic Manager-profil az eredmények között kattintson, amely jelenik meg.
-    2.  Az a **Traffic Manager** profil panelen, kattintson a **áttekintése**.
-    3.  A **Traffic Manager-profil** panel megjeleníti az újonnan létrehozott Traffic Manager-profil DNS-nevét. Ezzel használhatja az ügyfelek (például megnyitásával, egy webböngésző használatával), mint a megfelelő végpontra van irányítva határozza meg az útválasztási típus. Ebben az esetben minden kérelemhez legyenek átirányítva az első végpont a Traffic Manager észleli, ha nem megfelelő állapotú lesz, és a forgalom automatikusan átadja a feladatokat a következő végpont.
-11. Miután a Traffic Manager-profil működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón a vállalata tartománynevét átirányítása a Traffic Manager szolgáltatásbeli tartománynévre.
+2. A portál keresési sávján keresse meg a **Traffic Manager profilokat** , majd kattintson arra a profil nevére, amelyre az útválasztási módszert konfigurálni kívánja.
+3. A **Traffic Manager profil** panelen ellenőrizze, hogy a konfigurációban szerepeltetni kívánt Cloud Services és websites is megtalálható-e.
+4. A **Beállítások** szakaszban kattintson a **konfiguráció**elemre, majd a **konfiguráció** panelen hajtsa végre a következő lépéseket:
+    1. A **forgalom-útválasztási módszer beállításainál**ellenőrizze, hogy a forgalom-útválasztási módszer **prioritás**-e. Ha nem, kattintson a **prioritás** lehetőségre a legördülő listából.
+    2. A következő módon állítsa be a profil összes végpontján megegyező **Endpoint monitor beállításait** :
+        1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámot** . 
+        2. Az **elérési út** mezőbe írja be a perjel */* . A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
+        3. Kattintson a lap tetején található **Mentés**gombra.
+5. A **Beállítások** szakaszban kattintson a **végpontok**elemre.
+6. A **végpontok** panelen tekintse át a végpontok prioritási sorrendjét. Ha a **prioritási** forgalom útválasztási módszerét választja, a kiválasztott végpontok sorrendje számít. Ellenőrizze a végpontok prioritási sorrendjét.  Az elsődleges végpont felül van. Ellenőrizze a megjelenő sorrendet. az összes kérelem át lesz irányítva az első végpontra, és ha Traffic Manager észleli, hogy sérült, akkor a forgalom automatikusan átadja a következő végpontot. 
+7. A végpont prioritási sorrendjének módosításához kattintson a végpontra, majd a megjelenő **végpont** panelen kattintson a **Szerkesztés** elemre, és szükség szerint módosítsa a **prioritási** értéket. 
+8. Kattintson a **Save (Mentés** ) gombra a végpont beállításainak módosításához.
+9. A konfigurációs módosítások elvégzése után kattintson a lap alján található **Mentés** gombra.
+10. Tesztelje a konfiguráció módosításait a következőképpen:
+    1.  A portál keresési sávjában keressen rá a Traffic Manager profilnév nevére, és kattintson a Traffic Manager profilra a megjelenített eredmények között.
+    2.  A **Traffic Manager** profil panelen kattintson az **Áttekintés**elemre.
+    3.  A **Traffic Manager profil** panel az újonnan létrehozott Traffic Manager-profil DNS-nevét jeleníti meg. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján. Ebben az esetben a rendszer az első végponthoz irányítja a kérelmeket, és ha Traffic Manager észleli, hogy nem kifogástalan állapotú, akkor a forgalom automatikusan átadja a következő végpontot.
+11. Ha a Traffic Manager-profilja működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón, hogy a vállalat tartománynevét a Traffic Manager tartománynevére mutassa.
 
-![Prioritás forgalom-útválasztási módszer használatával a Traffic Manager konfigurálása][1]
+![Prioritási forgalom útválasztási módszerének konfigurálása Traffic Manager használatával][1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 - További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
-- Ismerje meg [Teljesítménycentrikus útválasztási mód](traffic-manager-configure-performance-routing-method.md).
+- További információ a [teljesítmény-útválasztási módszerről](traffic-manager-configure-performance-routing-method.md).
 - További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
-- Ismerje meg, hogyan [Traffic Manager beállításainak tesztelése](traffic-manager-testing-settings.md).
+- Ismerje meg, hogyan [tesztelheti Traffic Manager beállításait](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-priority-routing-method/traffic-manager-priority-routing-method.png

@@ -1,5 +1,5 @@
 ---
-title: SQL Server kiadás helyben történő frissítése Azure-beli virtuális gépen | Microsoft Docs
+title: SQL Server kiadás helyben történő frissítése
 description: Megtudhatja, hogyan módosíthatja az Azure-beli SQL Server VM kiadását.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1db45097b0416b680571cb47ec1d9b52f9275c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100510"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022215"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>SQL Server kiadás helyben történő frissítése Azure-beli virtuális gépen
 
@@ -28,7 +29,7 @@ A SQL Server kiadását a termékkulcs határozza meg, és a telepítési folyam
 
 Ha az SQL VM erőforrás-szolgáltatóval való regisztrációt követően a telepítési adathordozó használatával frissítette SQL Server kiadását, akkor az Azure-számlázás megfelelő frissítéséhez az alábbi módon kell beállítania az SQL VM-erőforrás SQL Server Edition tulajdonságát:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
 1. Nyissa meg a SQL Server virtuális gép erőforrását. 
 1. A **Beállítások**területen válassza a **Konfigurálás**lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás**alatti legördülő listából. 
 
@@ -43,8 +44,8 @@ Ha az SQL VM erőforrás-szolgáltatóval való regisztrációt követően a tel
 A SQL Server kiadásának helyben történő megváltoztatásához a következőkre lesz szüksége: 
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- Az [SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatónál regisztrált [Windows-SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
-- Állítsa be az adathordozót SQL Server kívánt kiadásával. A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési](https://www.microsoft.com/Licensing/servicecenter/default.aspx)központból szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják.
+- Az [SQL VM erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md)regisztrált [Windows-SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- Állítsa be az adathordozót SQL Server kívánt kiadásával. A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják.
 
 
 ## <a name="upgrade-an-edition"></a>Kiadás frissítése
@@ -59,7 +60,7 @@ SQL Server frissítéséhez szerezze be a SQL Server kívánt kiadásához tarto
 
    ![SQL Server kiadásának frissítésére szolgáló kijelölés](media/virtual-machines-windows-sql-change-edition/edition-upgrade.png)
 
-1. Kattintson a **Next (tovább** ) gombra, amíg el nem éri a verziófrissítési **kiadás** oldalát, majd válassza a **frissítés**lehetőséget. Előfordulhat, hogy a beállítási időszak néhány percen belül leáll, amíg a módosítás érvénybe lép. A **teljes** oldal megerősíti, hogy a kiadás frissítése befejeződött. 
+1. Kattintson a **Next (tovább** ) gombra, amíg el nem éri a **Verziófrissítési kiadás** oldalát, majd válassza a **frissítés**lehetőséget. Előfordulhat, hogy a beállítási időszak néhány percen belül leáll, amíg a módosítás érvénybe lép. A **teljes** oldal megerősíti, hogy a kiadás frissítése befejeződött. 
 
 A SQL Server kiadás frissítése után módosítsa a Azure Portal SQL Server virtuális gép kiadás tulajdonságát a korábban látható módon. Ezzel frissíti a virtuális géphez társított metaadatokat és számlázást.
 
@@ -89,7 +90,7 @@ A SQL Server kiadásának visszaminősítése után módosítsa a Azure Portal S
 - A kiadás módosításának lehetősége az SQL VM erőforrás-szolgáltató szolgáltatása. Egy Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal automatikusan regisztrálja az SQL Server VM az erőforrás-szolgáltatóval. A SQL Server önálló telepítését végző ügyfeleknek azonban manuálisan kell [regisztrálniuk SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md).
 - SQL Server VM hozzáadása egy rendelkezésre állási csoporthoz újra kell létrehozni a virtuális gépet. A rendelkezésre állási csoportba felvett virtuális gépek vissza lesznek állítva az alapértelmezett kiadásra, és a kiadást újra módosítani kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket: 
 

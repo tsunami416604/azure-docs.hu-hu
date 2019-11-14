@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6daf9351e48603824aa6cec30adb4a6b82349784
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796309"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049046"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése Azure Logic Apps
 
@@ -22,7 +22,7 @@ A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic
 
 * [Microsoft Power BI helyszíni adatátjáró](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Microsoft Power apps helyszíni adatátjáró](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [A helyszíni adatátjáró automatizálása](https://flow.microsoft.com/documentation/gateway-manage/)
+* [A helyszíni adatátjáró automatizálása](/power-automate/gateway-reference)
 * [Helyszíni adatátjáró Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
 Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a helyszíni adatátjárót, hogy a helyszíni adatforrások hozzáférhessenek Azure Logic Apps. További információ arról, [hogy az adatátjáró hogyan működik a](#gateway-cloud-service) témakör későbbi részében. Az átjáróval kapcsolatos további információkért lásd: [Mi az a helyszíni átjáró](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
@@ -274,7 +274,7 @@ További információkért tekintse meg a következő témaköröket:
 * [Helyszíni adatátjáróval kapcsolatos hibák](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Az átjáró teljesítményének figyelése és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás a helyszíni adatokhoz a Logic appsből](../logic-apps/logic-apps-gateway-connection.md)
 * [Vállalati integrációs funkciók](../logic-apps/logic-apps-enterprise-integration-overview.md)

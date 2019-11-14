@@ -7,18 +7,21 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 02/06/2019
-ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b11671f20a7e3e6053f90a884777b31196232a38
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932896"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048311"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure-beli tevékenységek naplóinak gyűjtése a Azure Monitor Azure Active Directory-bérlők között
 
+> [!NOTE]
+> Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](activity-log-collect.md).
+
 Ez a cikk a Logic Apps Azure Log Analytics adatgyűjtő összekötőjét használó Azure Azure Monitor-beli tevékenységek naplóinak egy Log Analytics munkaterületre való gyűjtésének módszerét ismerteti. A cikkben ismertetett eljárást akkor érdemes használni, ha egy másik Azure Active Directory bérlő munkaterületére kell naplókat küldenie. Például ha felügyelt szolgáltatást kínál, előfordulhat, hogy tevékenységnaplókat szeretne gyűjteni az egyik ügyfél előfizetéséből, és a saját előfizetése Log Analytics-munkaterületén szeretné tárolni azokat.
 
-Ha a Log Analytics munkaterület ugyanabban az Azure-előfizetésben, vagy egy másik előfizetésben, de ugyanabban a Azure Active Directoryban található, akkor az Azure-beli adatgyűjtés [Azure monitor az Azure-beli tevékenység naplóinak összegyűjtése és elemzése című log Analytics munkaterületének](activity-log-collect.md) lépéseit. Tevékenységek naplói.
+Ha a Log Analytics munkaterület ugyanabban az Azure-előfizetésben van, vagy egy másik előfizetésben, de ugyanabban a Azure Active Directoryban, akkor az Azure-Tevékenységnaplók összegyűjtéséhez használja az Azure-beli [log Analytics munkaterület összegyűjtése és elemzése](activity-log-collect.md) című témakör lépéseit Azure monitor.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -123,10 +126,10 @@ Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez köve
 
    |Beállítás | Leírás  |
    |:---|:---|
-   | Név           | A logikai alkalmazás egyedi neve. |
-   | Előfizetés   | Válassza ki azt az Azure-előfizetést, amely a logikai alkalmazást tartalmazni fogja. |
+   | Name (Név)           | A logikai alkalmazás egyedi neve. |
+   | Előfizetést   | Válassza ki azt az Azure-előfizetést, amely a logikai alkalmazást tartalmazni fogja. |
    | Erőforráscsoport | Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat a logikai alkalmazás számára. |
-   | Földrajzi egység       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
+   | Hely       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
    | Log Analytics  | Válassza ki, hogy szeretné-e naplózni a logikai alkalmazás egyes futtatásainak állapotát egy Log Analytics munkaterületen.  |
 
     
@@ -288,7 +291,7 @@ Az [Azure log Analytics adatgyűjtő](https://docs.microsoft.com/connectors/azur
 
    ![Naplóelemzési adatküldési művelet hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Írja be a kapcsolat nevét, majd illessze be a Log Analytics-munkaterülethez tartozó **munkaterület-azonosítót** és **munkaterületkulcsot**.  Kattintson a  **Create** (Létrehozás) gombra.
+3. Írja be a kapcsolat nevét, majd illessze be a Log Analytics-munkaterülethez tartozó **munkaterület-azonosítót** és **munkaterületkulcsot**.  Kattintson a **Létrehozás** gombra.
 
    ![naplóelemzési kapcsolat hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -296,7 +299,7 @@ Az [Azure log Analytics adatgyűjtő](https://docs.microsoft.com/connectors/azur
 
     ![Az adatküldési művelet konfigurálása](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Beállítás        | Value (Díj)           | Leírás  |
+   |Beállítás        | Érték           | Leírás  |
    |---------------|---------------------------|--------------|
    |JSON-kérelem törzse  | Az **Összeállítás** művelet **kimenete** | Lekéri a rekordokat az Összeállítás művelet törzséből. |
    | Egyéni napló neve | AzureActivity | A Log Analytics munkaterületen létrehozandó egyéni napló tábla neve, amely az importált adatmennyiséget tárolni fogja. |

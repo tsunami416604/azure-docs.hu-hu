@@ -1,27 +1,27 @@
 ---
-title: Licenc-hozzárendelések módosítása felhasználók és csoportok számára – Azure Active Directory | Microsoft Docs
-description: Ismerteti a felhasználók csoporton belüli áttelepítésének javasolt folyamatát különböző szolgáltatási licencekre (Office 365 Enterprise E1 és E3) a csoportos licencelés használatával
+title: Licenc-csomagok módosítása felhasználók és csoportok számára – Azure AD | Microsoft Docs
+description: Felhasználók áttelepítésének módja egy csoporton belül különböző szolgáltatási csomagokra a csoportos licencelés használatával Azure Active Directory
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7212983470e71ff6d7c1c33de142767ecf38d1f
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034009"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025909"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználóra vagy csoportra vonatkozó licenc-hozzárendelések módosítása Azure Active Directory
 
@@ -46,7 +46,7 @@ A licenc-hozzárendelések frissítése előtt fontos ellenőrizni, hogy egyes f
 Ha úgy látja, hogy egyes jelölőnégyzetek nem érhetők el, a **licenc-hozzárendelések frissítése** oldalon láthatja azokat a szolgáltatásokat, amelyek nem módosíthatók, mert örökölnek egy csoporttól származó licenccel.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza ki **Azure Active Directory** > **felhasználó**elemet, majd nyissa meg egy felhasználó **profil** lapját.
+1. Válassza ki **Azure Active Directory** > **felhasználók**elemet, majd nyissa meg egy felhasználó **profil** lapját.
 1. Válassza a **licencek**lehetőséget.
 1. Válassza a **hozzárendelések** lehetőséget a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez. A **hozzárendelések** lap a licenc-hozzárendelési ütközések feloldására szolgál.
 1. Jelölje be az Office 366 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van választva.
@@ -61,7 +61,7 @@ Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi li
 ## <a name="change-group-license-assignments"></a>Csoport licenc-hozzárendeléseinek módosítása
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza a **Azure Active Directory** > **csoportok**lehetőséget, majd nyissa meg egy csoport **Áttekintés** lapját.
+1. Válassza ki **Azure Active Directory** > **csoportokat**, majd nyissa meg egy csoport **Áttekintés** lapját.
 1. Válassza a **licencek**lehetőséget.
 1. Kattintson a **hozzárendelések** parancsra a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez.
 1. Jelölje be az Office 366 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében válassza ki az összes olyan E1-szolgáltatást, amely már hozzá van rendelve a felhasználóhoz.
@@ -73,7 +73,7 @@ Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi li
 
 A szolgáltatás folytonosságának biztosítása érdekében az Azure AD alkalmazza az új licenceket, és a csoport összes felhasználójára egyidejűleg eltávolítja a régi licenceket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók a licencek kezelésével kapcsolatos egyéb forgatókönyvekről a csoportok segítségével a következő cikkekben:
 

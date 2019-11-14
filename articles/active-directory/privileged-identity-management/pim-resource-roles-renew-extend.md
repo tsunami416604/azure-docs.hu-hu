@@ -1,10 +1,10 @@
 ---
-title: Az Azure erőforrás-szerepkörök hozzárendeléseinek kiterjesztése vagy megújítása Privileged Identity Management-Azure Active Directoryban | Microsoft Docs
+title: Azure Resource role-hozzárendelések megújítása a PIM-ben – Azure AD | Microsoft Docs
 description: Megtudhatja, hogyan bővítheti vagy újíthatja meg az Azure-erőforrások szerepkör-hozzárendeléseit Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfe6a545aa9acae8045e9c9756fc2711504d75d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 577c028582bc3b23d13e71522bb83db558065ee2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895554"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022916"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Az Azure erőforrás-szerepkörök hozzárendeléseinek kiterjesztése vagy megújítása Privileged Identity Management
 
@@ -43,7 +43,7 @@ A következő lépések ismertetik a szerepkör-hozzárendelések kiterjesztés�
 
 ### <a name="self-extend-expiring-assignments"></a>Lejáró hozzárendelések önálló kiterjesztése
 
-A szerepkörhöz hozzárendelt felhasználók vagy csoportok közvetlenül az adott erőforrás **saját szerepkörök** lapján és a Privileged Identity Management portál legfelső szintű **saját szerepkörök** lapján lévő **jogosult** vagy **aktív** lapon is kiterjeszthetik lejáró szerepkör-hozzárendeléseket. . A felhasználók vagy csoportok kérhetik a következő 14 napban lejáró jogosult és aktív (hozzárendelt) szerepkörök kiterjesztését.
+A szerepkörhöz hozzárendelt felhasználók vagy csoportok közvetlenül az adott erőforrás **saját szerepkörök** lapján és a Privileged Identity Management portál legfelső szintű **saját szerepkörök** lapjának **jogosult** vagy **aktív** lapjáról is kiterjeszthetők. A felhasználók vagy csoportok kérhetik a következő 14 napban lejáró jogosult és aktív (hozzárendelt) szerepkörök kiterjesztését.
 
 ![Azure-erőforrások – saját szerepkörök lap, amely egy műveleti oszloppal rendelkező jogosult szerepkörök listáját tartalmazza](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 

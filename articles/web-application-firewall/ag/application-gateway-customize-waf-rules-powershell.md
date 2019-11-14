@@ -1,20 +1,21 @@
 ---
-title: Webalkalmazási tűzfalszabályok testreszabása az Azure Application Gateway-PowerShellben
+title: Szabályok testreszabása a PowerShell használatával
+titleSuffix: Azure Web Application Firewall
 description: Ez a cikk azt ismerteti, hogyan szabható testre a webalkalmazási tűzfalszabályok a Application Gateway a PowerShell használatával.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 2930204cd322f3a8ba25eb6f3455a51f1d3d2ee9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516954"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048513"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Webalkalmazási tűzfalszabályok testreszabása a PowerShell használatával
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>Webalkalmazási tűzfalszabályok testreszabása a PowerShell használatával
 
 Az Azure Application Gateway webalkalmazási tűzfal (WAF) védelmet biztosít a webalkalmazások számára. Ezeket a védelmet a nyílt Web Application Security Project (OWASP) alapszintű szabálykészlet (CRS) adja meg. Bizonyos szabályok hamis pozitív és valós adatforgalom blokkolására vezethetnek. Emiatt a Application Gateway lehetővé teszi a szabályok csoportjának és szabályainak testreszabását. További információ az adott szabályok csoportjairól és szabályairól: a [webalkalmazási TŰZFAL CRS-szabályait tartalmazó csoportok és szabályok listája](application-gateway-crs-rulegroups-rules.md).
 
@@ -105,7 +106,7 @@ CRS 3. x-specifikus:
 
 * A bejövő anomália pontszáma túllépte a küszöbértéket
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A letiltott szabályok konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 

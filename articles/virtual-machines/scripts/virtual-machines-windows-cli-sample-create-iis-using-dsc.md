@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – IIS-sel rendelkező Windows Server 2016 virtuális gép létrehozása DSC használatával | Microsoft Docs
+title: Azure CLI-példaszkript – IIS-sel rendelkező Windows Server 2016 virtuális gép létrehozása DSC használatával
 description: Azure CLI-példaszkript – IIS-sel rendelkező Windows Server 2016 virtuális gép létrehozása DSC használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: a17bb1fc4f2d297742620dc39756d2f89ec8df1e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 60f4447015e43d02048afd19504be0e758a56e86
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708283"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040062"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>IIS-sel rendelkező virtuális gép létrehozása DSC használatával
 
@@ -55,7 +55,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm open-port](https://docs.microsoft.com/cli/azure/vm) | Létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 80-as portot nyitjuk meg a HTTP-forgalom számára. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

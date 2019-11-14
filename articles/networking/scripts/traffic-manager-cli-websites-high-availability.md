@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
 ms.author: allensu
-ms.openlocfilehash: fdd54039cd3e039439c70e02b962e56d72efa715
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2a083520a0da324d7033d4597a6b734b43c025b7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890263"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049252"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állása érdekében
+# <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állása érdekében – Azure CLI
 
 Ez a szkript létrehoz egy erőforráscsoportot, két app Service-csomagot, két webalkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. Traffic Manager a forgalmat az egyik régióban az elsődleges régióként, a másodlagos régióba irányítja, ha az elsődleges régióban lévő alkalmazás nem érhető el. A szkript végrehajtása előtt módosítania kell a MyWebApp, a MyWebAppL1 és a MyWebAppL2 értékeket az Azure-ban lévő egyedi értékekre. A szkript futtatása után az elsődleges régióban elérheti az alkalmazást az URL-mywebapp.trafficmanager.net.
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy webal
 | [az Network Traffic-Manager Profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Létrehoz egy Azure Traffic Manager-profilt. |
 | [az Network Traffic-Manager Endpoint Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

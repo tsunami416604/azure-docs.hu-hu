@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935232"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048653"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure eszközök internetes hálózata (IoT)?
 
@@ -20,7 +20,7 @@ Az Azure IoT (eszközök internetes hálózata) a Microsoft által felügyelt fe
 
 Ez a cikk a IoT alapjait, a használati eseteket tárgyalja, és röviden ismerteti az elérhető nyolc különálló szolgáltatást. A rendelkezésre álló elemek megismerésével kiderítheti, hogy mit szeretne jobban megtekinteni a forgatókönyv kialakításához.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A IoT-megoldások fő részei a következők: eszközök, háttér-szolgáltatások, valamint a kettő közötti kommunikáció. 
 
@@ -105,7 +105,7 @@ Ennek a IoT-megoldásnak a megvalósítása révén a vállalat gyorsan ellenőr
 
 Az Azure-ban számos IoT kapcsolódó szolgáltatás található, és zavaró lehet annak megállapítása, hogy melyiket kívánja használni. Egyesek, például a IoT Central és a IoT megoldás-gyorsítók olyan sablonokat biztosítanak, amelyek segítenek a saját megoldás létrehozásában és a gyors kezdésben. Saját megoldásait is teljes mértékben kifejlesztheti más elérhető szolgáltatásokkal – mindez attól függ, hogy mennyi segítségre van szüksége, és hogy Mennyibe kerül a vezérlés. Itt láthatja az elérhető szolgáltatások listáját, valamint azt, hogy mire használhatja őket.
 
-1. [**IoT Central**](../iot-central/core/overview-iot-central.md): ez egy SaaS-megoldás, amely segítséget nyújt a IoT-eszközök csatlakoztatásához, figyeléséhez és felügyeletéhez. Az indításhoz ki kell választania egy sablont az eszköz típusához, és létre kell hoznia és tesztelni kell egy alapszintű IoT Central alkalmazást, amelyet az eszköz üzemeltetői használni fognak. A IoT Central alkalmazás az eszközök figyelését és az új eszközök kiépítését is lehetővé teszi. Ez a szolgáltatás olyan egyszerű megoldásokhoz használható, amelyek nem igénylik a mélyreható szolgáltatás testreszabását. 
+1. [**IoT Central**](../iot-central/core/overview-iot-central.md): ez egy IoT-alkalmazási platform, amely leegyszerűsíti a IoT-megoldások létrehozását, és segít csökkenteni a IoT-kezelési műveletek terheit és költségeit, valamint a fejlesztést. Az indításhoz ki kell választania egy sablont az eszköz típusához, és létre kell hoznia és tesztelni kell egy alapszintű IoT Central alkalmazást, amelyet az eszköz üzemeltetői használni fognak. A IoT Central alkalmazás az eszközök figyelését és az új eszközök kiépítését is lehetővé teszi. Ez a szolgáltatás olyan egyszerű megoldásokhoz használható, amelyek nem igénylik a mélyreható szolgáltatás testreszabását.
 
 2. [**IoT megoldás-gyorsítók**](/azure/iot-suite): Ez a IoT-megoldások fejlesztésének felgyorsítására szolgáló, a-ben felhasználható Pásti-megoldások gyűjteménye. Egy megadott IoT-megoldással kezdheti meg, majd teljes mértékben testreszabhatja a megoldást az igényeinek megfelelően. Java-vagy .NET-ismeretekre van szüksége a háttérbeli és a JavaScript-ismeretek testreszabásához a vizualizáció testreszabásához. 
 

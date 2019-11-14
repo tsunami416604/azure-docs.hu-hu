@@ -1,26 +1,26 @@
 ---
-title: Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management-Azure Active Directoryban | Microsoft Docs
+title: Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása a PIM-ben – Azure AD | Microsoft Docs
 description: Megtudhatja, hogyan hagyhatja jóvá vagy tilthatja le a Azure AD Privileged Identity Management (PIM) Azure-beli erőforrás-szerepköreire vonatkozó kérelmeket.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c436a529ebaf15a3024f935c1b28327230da0ac0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e779f633efccf7b594c193e165a584d22b1d653b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895897"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74021969"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
@@ -32,7 +32,7 @@ Az Azure-erőforrás szerepköreire vonatkozó kérések jóváhagyásához vagy
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-erőforrás szerepkörre vonatkozó kérelem jóváhagyásra vár. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 

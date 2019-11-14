@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 10/14/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 76a82696986f4957e7a5a96a3b93497ed461f0c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491682"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048474"
 ---
 # <a name="about-azure-virtual-wan"></a>Tudnivalók az Azure Virtual WAN-ról
 
@@ -21,7 +21,7 @@ Az Azure Virtual WAN egy hálózati szolgáltatás, amely optimalizált és auto
 
 Az Azure Virtual WAN számos Azure Cloud connectivity-szolgáltatást kínál, többek között a helyek közötti VPN-t, a felhasználói VPN-t (pont – hely), a ExpressRoute pedig egyetlen operatív felületre. Az Azure virtuális hálózatok-hez való kapcsolódás virtuális hálózati kapcsolatok használatával történik. Lehetővé teszi a [globális átviteli hálózati architektúrát](virtual-wan-global-transit-network-architecture.md) egy olyan klasszikus sugaras kapcsolati modell alapján, ahol a felhőben üzemeltetett hálózat lehetővé teszi az olyan végpontok közötti tranzitív kapcsolódást, amelyek különböző típusú "küllők" között lehetnek elosztva.
 
-![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan1.png)
+![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan1.png)
 
 Ez a cikk gyors áttekintést nyújt az Azure Virtual WAN hálózati kapcsolatáról. A Virtual WAN a következő előnyöket biztosítja:
 
@@ -63,7 +63,7 @@ A virtuális WAN a következő típusú kapcsolatokat teszi lehetővé: helyek k
 
 ### <a name="s2s"></a>Helyek közötti VPN-kapcsolatok
 
-![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan.png)
+![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan.png)
 
 Ha virtuális WAN-helyek közötti kapcsolatot hoz létre, akkor dolgozhat egy elérhető partnerrel. Ha nem szeretne partnert használni, manuálisan is konfigurálhatja a kapcsolatot. További információ: [helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md).
 
@@ -81,7 +81,7 @@ Az elérhető partnerek és helyszínek listáját a [virtuális WAN-partnerek �
 
 ### <a name="uservpn"></a>Felhasználói VPN (pont – hely) kapcsolatok
 
-Az Azure-beli erőforrásokhoz IPsec/IKE (IKEv2) vagy OpenVPN-kapcsolat használatával kapcsolódhat. Az ilyen típusú kapcsolathoz a VPN-ügyfél konfigurálására van szükség az ügyfélszámítógépen. További információ: [pont – hely kapcsolat létrehozása](virtual-wan-site-to-site-portal.md).
+Az Azure-beli erőforrásokhoz IPsec/IKE (IKEv2) vagy OpenVPN-kapcsolat használatával kapcsolódhat. Az ilyen típusú kapcsolathoz a VPN-ügyfél konfigurálására van szükség az ügyfélszámítógépen. További információ: [pont – hely kapcsolat létrehozása](virtual-wan-point-to-site-portal.md).
 
 ### <a name="er"></a>ExpressRoute-kapcsolatok
 A ExpressRoute lehetővé teszi a helyszíni hálózat csatlakoztatását az Azure-hoz egy privát kapcsolaton keresztül. A kapcsolat létrehozásával kapcsolatban lásd: [ExpressRoute-kapcsolat létrehozása virtuális WAN használatával](virtual-wan-expressroute-portal.md).
@@ -94,6 +94,6 @@ A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-lo
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

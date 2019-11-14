@@ -1,5 +1,5 @@
 ---
-title: 'Azure Notification Hubs: Gyakori kérdések (GYIK) | Microsoft Docs'
+title: 'Azure Notification Hubs: gyakori kérdések (GYIK) | Microsoft Docs'
 description: A megoldások tervezésével/megvalósításával kapcsolatos gyakori kérdések Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
@@ -13,20 +13,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213147"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048786"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: Gyakori kérdések
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Mi a Notification Hubs erőforrás-szerkezete?
 
@@ -38,16 +38,16 @@ Az ajánlott leképezés egyetlen alkalmazással egyezik egy névtérrel. A név
 
 A legfrissebb díjszabás a [Díjszabás Notification Hubs] oldalán található. Notification Hubs számlázása a névtér szintjén történik. (Névtér definíciója: "mi az az erőforrás szerkezete Notification Hubs?") A Notification Hubs három szintet kínál:
 
-* **Ingyenes**: Ez a szintek jó kiindulási pont a leküldéses képességek feltárására. Éles alkalmazások esetében nem ajánlott. A 500-es és az 1 000 000-es leküldéses szolgáltatás havonta, a szolgáltatói szerződés (SLA) garanciája nélkül is elérhető.
-* Alapszintű: Ez a szint (vagy a standard szint) kisebb üzemi alkalmazások esetében ajánlott. Az 200 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg.
-* **Standard**: Ez a csomag közepes és nagy üzemi alkalmazások esetében ajánlott. Az 10 000 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg. Gazdag telemetria tartalmaz (a leküldéses állapottal kapcsolatos további információkat).
+* **Ingyenes**: Ez a szinten jó kiindulási pont a leküldéses képességek feltárására. Éles alkalmazások esetében nem ajánlott. A 500-es és az 1 000 000-es leküldéses szolgáltatás havonta, a szolgáltatói szerződés (SLA) garanciája nélkül is elérhető.
+* **Alapszintű**: Ez a szint (vagy a standard szint) kisebb üzemi alkalmazások esetében ajánlott. Az 200 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg.
+* **Standard**: Ez a szint közepes és nagy üzemi alkalmazások esetében ajánlott. Az 10 000 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg. Gazdag telemetria tartalmaz (a leküldéses állapottal kapcsolatos további információkat).
 
 Standard szintű funkciók:
 
-* **Gazdag telemetria**: Az telemetria Notification Hubs használhatja a leküldéses kérelmek nyomon követéséhez és a hibakereséshez Platform Notification System visszajelzésekhez.
-* **Bérlős**: A névtér szintjén Platform Notification System hitelesítő adatokkal is dolgozhat. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
-* **Ütemezett leküldés**: Az értesítések bármikor ütemezhetők.
-* **Tömeges műveletek**: A regisztrációk exportálási/importálási funkciójának engedélyezése a [Regisztráció Exportálás/Importálás] dokumentumában leírtak szerint.
+* **Rich telemetria**: a leküldéses kérelmek nyomon követéséhez és a hibakereséshez platform Notification System visszajelzések Notification Hubséhez használhatja az telemetria-t.
+* **Bérlős**: platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
+* **Ütemezett**leküldés: az értesítések bármikor ütemezhetők.
+* **Tömeges műveletek**: engedélyezi a regisztrációk exportálási/importálási funkcióit a [Regisztráció Exportálás/Importálás] dokumentumában leírtak szerint.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Mi a Notification Hubs SLA?
 
@@ -165,7 +165,7 @@ Bizalmas adattartalom küldéséhez biztonságos leküldéses mintát ajánlott 
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Milyen támogatást biztosít a vész-helyreállítás?
 
-A metaadatokon alapuló vész-helyreállítási lefedettséget biztosítunk a végén (a Notification Hubs neve, a kapcsolatok karakterlánca és egyéb kritikus információk). Vész-helyreállítási forgatókönyv esetén a regisztrációs adatmennyiség az Notification Hubs infrastruktúra *egyetlen szegmense* , amely elveszett. Meg kell valósítania egy megoldást, amellyel újra feltöltheti ezeket az adatokat az új hubhoz a helyreállítás után:
+A metaadatokon alapuló vész-helyreállítási lefedettséget biztosítunk a végén (a Notification Hubs neve, a kapcsolatok karakterlánca és egyéb kritikus információk). Vész-helyreállítási forgatókönyv esetén a regisztrációs adatmennyiség az Notification Hubs infrastruktúra *egyetlen szegmense* , amely elveszett. Be kell vezetnie egy megoldást, amellyel újra fel lehet tölteni ezeket az adatokat az új hubhoz a helyreállítás után:
 
 1. Másodlagos értesítési központ létrehozása egy másik adatközpontban. Azt javasoljuk, hogy hozzon létre egyet az elejétől kezdve, és megvédje Önt olyan vész-helyreállítási eseménytől, amely hatással lehet a felügyeleti képességeire. A vész-helyreállítási esemény időpontjában is létrehozhat egyet.
 
@@ -182,6 +182,10 @@ Az alkalmazás-háttérrendszer két javaslattal rendelkezik:
 Ha nem rendelkezik háttérrel, az alkalmazás a céleszköz indításakor új regisztrációt hajt végre a másodlagos értesítési központban. Végül a másodlagos értesítési központ minden aktív eszközön regisztrálva lesz.
 
 A nem megnyitott alkalmazásokkal rendelkező eszközök nem kapják meg az értesítéseket.
+
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>Az összes tárolt adatai titkosított formában vannak tárolva?
+
+Az Azure Notification Hubs a regisztrációs címkék kivételével titkosítja az összes vásárlói adatmennyiséget. Ezért ne tárolja a személyes vagy bizalmas adatok címkével történő tárolását.
 
 ### <a name="is-there-audit-log-capability"></a>Naplózható a naplózási funkció?
 

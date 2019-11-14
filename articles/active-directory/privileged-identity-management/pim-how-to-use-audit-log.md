@@ -1,10 +1,10 @@
 ---
-title: Azure AD-szerepkörök naplózási előzményeinek megtekintése a PIM-Azure Active Directoryban | Microsoft Docs
+title: Azure AD-szerepkörök naplózási jelentésének megtekintése a PIM-ben – Azure AD | Microsoft Docs
 description: Megtudhatja, hogyan tekintheti meg Azure AD Privileged Identity Management (PIM) Azure AD-szerepkörök naplózási előzményeit.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa1c5121c723148884584ca3f00522c1c459859
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7c4a157d8d5bcd281ca9fee488e58c455034e898
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808999"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022065"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Azure AD-szerepkörök naplózási előzményeinek megtekintése a PIM-ben
 
@@ -45,7 +45,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
 
     | Column | Leírás |
     | --- | --- |
-    | Idő | Ha a művelet bekövetkezett. |
+    | Time | Ha a művelet bekövetkezett. |
     | Kérelmező | A szerepkör aktiválását vagy módosítását kérő felhasználó. Ha az érték az **Azure System**, további információért tekintse meg az Azure naplózási előzményeit. |
     | Műveletek | A kérelmező által végrehajtott műveletek. A műveletek lehetnek például a hozzárendelés, a hozzárendelés megszüntetése, az aktiválás, az inaktiválás vagy a AddedOutsidePIM. |
     | Tag | Az a felhasználó, aki aktivál vagy hozzárendel egy szerepkörhöz. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515134"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048960"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Az Zscaler internet-hozzáférésének összekötése az Azure Sentinel használatával
 
@@ -30,7 +30,7 @@ ms.locfileid: "73515134"
 Ez a cikk azt ismerteti, hogyan csatlakoztatható a Zscaler Internet-hozzáférési berendezés az Azure Sentinelhez. A Zscaler adatösszekötővel egyszerűen csatlakoztathatja a Zscaler internet-hozzáférés (ZIA) naplóit az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Zscaler használata az Azure Sentinelben részletesebb információkat biztosít a szervezet internetes használatáról, és fokozza a biztonsági üzemeltetési képességeit. 
 
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A Zscaler internet-hozzáférés és az Azure Sentinel közötti kommunikáció támogatásához telepítenie kell egy ügynököt egy dedikált linuxos gépen (VM vagy helyszíni). Az alábbi ábra az Azure-beli Linux rendszerű virtuális gépek esetén történő telepítést ismerteti.
 
@@ -106,7 +106,7 @@ Ebben a lépésben ki kell választania azt a Linux-gépet, amely proxyként fog
     - Port = 514
     - Format = CEF
     - IP-cím – ügyeljen arra, hogy a CEF üzeneteket az erre a célra kijelölt virtuális gép IP-címére küldje el.
- További információ: [Zscaler Azure Sentinel Integration Guide](https://aka.ms/ZscalerCEFInstructions).
+ További információ: a [Zscaler és az Azure Sentinel üzembe helyezési útmutatója](https://aka.ms/ZscalerCEFInstructions).
  
    > [!NOTE]
    > Ez a megoldás a syslog RFC 3164 vagy az RFC 5424 szolgáltatást támogatja.
@@ -124,7 +124,7 @@ Ebben a lépésben ki kell választania azt a Linux-gépet, amely proxyként fog
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Zscaler internet-hozzáférés az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).

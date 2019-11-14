@@ -1,27 +1,22 @@
 ---
-title: Hozzon létre egy application gateway a külső forgalom átirányítása – Azure CLI-vel |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre átjáróalkalmazást, amely átirányítja a belső webes forgalom a megfelelő készlet az Azure CLI használatával.
+title: Külső forgalom átirányítása CLI használatával – Azure Application Gateway
+description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely az Azure CLI használatával átirányítja a belső webes forgalmat a megfelelő készletbe.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: bf3061509e08648aa63b843a4b1d7b8968f3e88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45b5dc9c73cc98d049d6eb02776f08f790e708eb
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133663"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047600"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Külső átirányítás, az Azure CLI használatával az application gateway létrehozása
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Application Gateway létrehozása külső átirányítással az Azure CLI használatával
 
-Az Azure CLI-vel való konfigurálásához használható [webes forgalom átirányítása](application-gateway-multi-site-overview.md) létrehozásakor egy [az application gateway](application-gateway-introduction.md). Ebben az oktatóanyagban konfigurál egy figyelőt és szabályt, amely átirányítja a felhasználókat az application gatewayben külső helyre érkező webes forgalmat.
+Az Azure CLI használatával konfigurálhatja a [webes forgalom átirányítását](application-gateway-multi-site-overview.md) az [Application Gateway](application-gateway-introduction.md)létrehozásakor. Ebben az oktatóanyagban egy figyelőt és egy szabályt konfigurál, amely átirányítja az Application Gateway-nek egy külső helyre érkező webes forgalmat.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -65,7 +60,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az application gateway hozzá van rendelve *myAGSubnet* és *myPublicIPAddress* , amelyet korábban hozott létre. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. Az Application Gateway hozzá van rendelve a korábban létrehozott *myAGSubnet* és *myPublicIPAddress* . 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -85,15 +80,15 @@ az network application-gateway create \
 
 Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmazásátjáró létrehozása után a következő új funkcióit láthatja:
 
-- *appGatewayBackendPool* – Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.
+- *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
 - *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
 - *appGatewayHttpListener* – Az *appGatewayBackendPool* készlethez társított alapértelmezett figyelő.
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
-- *rule1* – Az *appGatewayHttpListener* figyelőhöz rendelt alapértelmezett útválasztási szabály.
+- *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
 
-### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
+### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
 
-Adja hozzá az átirányítási konfiguráció, amely az alkalmazásátjáróra érkező forgalmat küld *bing.com* használatával [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Adja hozzá azt az átirányítási konfigurációt, amely a forgalmat az Application gatewaytől a *Bing.com* -be küldi az [az Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)paranccsal.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +101,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Figyelő és útválasztási szabály hozzáadása
 
-Egy figyelő szükséges ahhoz, hogy az application gateway megfelelően irányítja a forgalmat. Hozza létre a használatával [az network application-gateway http-listener létrehozása](/cli/azure/network/application-gateway) a frontend-port használatával létrehozott [az network application-gateway frontend-port létrehozása](/cli/azure/network/application-gateway). A szabály a figyelőt, hogy tudja, hova küldhetők a bejövő forgalom szükség. Hozzon létre egy egyszerű szabályt nevű *redirectRule* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway) az átirányítási konfigurációval.
+Egy figyelőre van szükség ahhoz, hogy az Application Gateway megfelelően irányítsa a forgalmat. Hozza létre a figyelőt az [az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway) paranccsal az az [Network Application-Gateway frontend-port Create](/cli/azure/network/application-gateway)paranccsal létrehozott frontend-porttal. Egy szabály szükséges ahhoz, hogy a figyelő tudja, hová kell elküldeni a bejövő forgalmat. Hozzon létre egy *redirectRule* nevű alapszintű szabályt az [az Network Application-Gateway Rule Create](/cli/azure/network/application-gateway) paranccsal az átirányítás konfigurációjával.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -129,13 +124,13 @@ az network application-gateway rule create \
   --redirect-config myredirect
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
 Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használhatja az [az network public-ip show](/cli/azure/network/public-ip) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
-Megtekintheti az *bing.com* jelennek meg a böngészőben.
+A böngészőben megjelenik a *Bing.com* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

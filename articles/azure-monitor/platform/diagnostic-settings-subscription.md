@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587978"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048207"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>Az Azure-tevékenység naplójának összegyűjtése diagnosztikai beállításokkal (előzetes verzió)
 Az [Azure-tevékenység naplója](activity-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Eddig létrehozott egy log-profilt, amely a tevékenységi naplók bejegyzéseit [egy Event hub-vagy Storage-fiókba](activity-log-export.md) küldi, és egy összekötőt használ egy [log Analytics munkaterületre](activity-log-collect.md)való begyűjtéséhez.
@@ -22,6 +22,8 @@ Mostantól konfigurálhatja az Azure-tevékenység naplójának gyűjteményét 
 - Konzisztens módszer az összes platform naplójának összegyűjtéséhez.
 - Gyűjtsön több előfizetésre és bérlőre kiterjedő tevékenység naplóját.
 - A szűrő gyűjtemény csak bizonyos kategóriákhoz tartozó naplókat gyűjt.
+- Az összes műveletnapló-kategória összegyűjtése. Egyes kategóriák gyűjtése nem az előző módszer használatával történik.
+- Gyorsabb késés a naplók betöltéséhez. Az előző metódus körülbelül 15 percet vesz igénybe, míg a diagnosztikai beállítások csak 1 percet vesznek fel.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 A funkció engedélyezése előtt vegye figyelembe a következő részleteket a tevékenység naplóinak gyűjtéséhez a diagnosztikai beállítások használatával.
@@ -69,7 +71,7 @@ A következő tulajdonságok lettek hozzáadva:
 ## <a name="activity-log-monitoring-solution"></a>Műveletnapló-figyelési megoldás
 Az Azure Log Analytics-figyelési megoldás több naplózási lekérdezést és nézetet tartalmaz a Log Analytics munkaterületen található műveletnapló-rekordok elemzéséhez. Ez a megoldás a Log Analytics munkaterületen összegyűjtött naplózási adatokat használja, és a tevékenység naplójának diagnosztikai beállításokkal történő begyűjtése után továbbra is működni fog. A megoldás részleteiért tekintse meg a [Tevékenységnaplók Analytics-figyelési megoldást](activity-log-collect.md#activity-logs-analytics-monitoring-solution) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a tevékenység naplóról](../../azure-resource-manager/resource-group-audit.md)
 * [További információ a diagnosztikai beállításokról](diagnostic-settings.md)

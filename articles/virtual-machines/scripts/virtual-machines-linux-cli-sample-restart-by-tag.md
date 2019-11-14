@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Virtuális gépek újraindítása | Microsoft Docs
+title: 'Azure CLI-parancsfájl – példa: virtuális gépek újraindítása'
 description: Azure CLI-példaszkript – Virtuális gépek újraindítása címke és azonosító alapján
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 78e646887a0e595589b9d0cc794029dcd4be91ca
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841397"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040246"
 ---
 # <a name="restart-vms"></a>Virtuális gépek újraindítása
 
@@ -94,7 +94,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Újraindítja a virtuális gépeket. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

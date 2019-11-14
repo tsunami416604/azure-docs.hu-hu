@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473955"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046555"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
 
@@ -53,11 +53,11 @@ Az ügyfelek hozzáférési jogkivonatokkal férnek hozzá egy védett erőforr�
 
 ### <a name="saml-tokens"></a>SAML-jogkivonatok
 
-Az SAML-jogkivonatokat számos web-alapú SAAS-alkalmazás használja, és a Azure Active Directory egy SAML2 protokoll-végpontján keresztül szerezhetők be.  Ezeket a WS-Federationt használó alkalmazások is használják.    A token alapértelmezett élettartama 1 óra. A-től és az alkalmazásokkal kapcsolatos szempontból a token érvényességi időtartamát a < feltételek NotOnOrAfter értéke adja meg... > elem a jogkivonatban.  A jogkivonat érvényességi időszaka után az ügyfélnek új hitelesítési kérelmet kell kezdeményeznie, amely az egyszeri bejelentkezés (SSO) munkamenet-tokenje miatt gyakran elégedett lesz az interaktív bejelentkezés nélkül.
+Az SAML-jogkivonatokat számos web-alapú SAAS-alkalmazás használja, és a Azure Active Directory egy SAML2 protokoll-végpontján keresztül szerezhetők be. Ezeket a WS-Federationt használó alkalmazások is használják. A token alapértelmezett élettartama 1 óra. Egy alkalmazás szemszögéből a jogkivonat érvényességi idejét a jogkivonat `<conditions …>` elemének NotOnOrAfter értéke adja meg. A jogkivonat érvényességi időtartamának lejárta után az ügyfélnek új hitelesítési kérelmet kell kezdeményeznie, amely az egyszeri bejelentkezés (SSO) munkamenet-jogkivonatának eredményeképpen gyakran elégedett lesz az interaktív bejelentkezés nélkül.
 
-A NotOnOrAfter értéke a TokenLifetimePolicy AccessTokenLifetime paramétere alapján módosítható.  A házirendben megadott élettartamra lesz beállítva, ha van ilyen, valamint egy óra, amely öt percet vesz igénybe.
+A NotOnOrAfter értéke módosítható a `TokenLifetimePolicy``AccessTokenLifetime` paraméterének használatával. A házirendben megadott élettartamra lesz beállítva, ha van ilyen, valamint egy óra, amely öt percet vesz igénybe.
 
-Vegye figyelembe, hogy a <SubjectConfirmationData> elemben megadott tulajdonos megerősítő NotOnOrAfter nem érinti a jogkivonat élettartamának konfigurációja. 
+Vegye figyelembe, hogy a `<SubjectConfirmationData>` elemben megadott tulajdonos megerősítő NotOnOrAfter nem érinti a jogkivonat élettartamának konfigurációja. 
 
 ### <a name="refresh-tokens"></a>Tokenek frissítése
 
@@ -66,7 +66,7 @@ Amikor egy ügyfél hozzáférési jogkivonatot kap egy védett erőforrás elé
 Fontos, hogy különbséget tegyen a bizalmas ügyfelek és a nyilvános ügyfelek között, mivel ez azt befolyásolja, hogy mennyi ideig használhatók a frissítési tokenek. További információ a különböző típusú ügyfelekről: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Jogkivonat-élettartamok bizalmas ügyfél-frissítési jogkivonatokkal
-A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatják az ügyfél jelszavát (titkos kulcs). Bizonyítani tudják, hogy a kérések a biztonságos ügyfélalkalmazás felől érkeznek, nem rosszindulatú színésztől. Egy webalkalmazás például egy bizalmas ügyfél, mert a webkiszolgálón tárolhatja az ügyfél titkos kulcsát. Nincs kitéve. Mivel ezek a folyamatok biztonságosabbak, az ezekre a folyamatokra kiállított frissítési jogkivonatok alapértelmezett élettartama `until-revoked`, a szabályzat nem módosítható, és a rendszer nem vonja vissza az önkéntes jelszó-visszaállítást.
+A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatják az ügyfél jelszavát (titkos kulcs). Bizonyítani tudják, hogy a kérések a biztonságos ügyfélalkalmazás felől érkeznek, nem rosszindulatú színésztől. Egy webalkalmazás például egy bizalmas ügyfél, mert a webkiszolgálón tárolhatja az ügyfél titkos kulcsát. Nincs kitéve. Mivel ezek a folyamatok biztonságosabbak, az ezekre a folyamatokra kiállított frissítési tokenek alapértelmezett élettartama `until-revoked`, nem módosítható a szabályzat használatával, és nem vonható vissza az önkéntes jelszó-visszaállítások.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokenek élettartama nyilvános ügyfél-frissítési jogkivonatokkal
 
@@ -95,10 +95,10 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférési jogkivonat élettartama |<sup>2</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
-| Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
+| Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
 * <sup>2</sup> A Microsoft Teams Web Client működésének biztosítása érdekében ajánlott a AccessTokenLifetime 15 percnél hosszabb ideig megőrizni a Microsoft Teams szolgáltatásban.
@@ -108,7 +108,7 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | --- | --- | --- |
 | Frissítési jogkivonat maximális kora (a nem elegendő visszavonási<sup>információval</sup>rendelkező összevont felhasználók számára kiállított) |Frissítési tokenek (olyan összevont felhasználók számára, akik nem rendelkeznek elegendő visszavonási információval<sup>1</sup>) |12 óra |
 | Frissítési jogkivonat maximális inaktív ideje (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |90 nap |
-| Frissítési token maximális kora (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |Visszavonásig |
+| Frissítési token maximális kora (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |Until-revoked |
 
 * <sup>1</sup> Azok az összevont felhasználók, akik nem rendelkeznek elegendő visszavonási információval, minden olyan felhasználóhoz tartoznak, akik nem rendelkeznek szinkronizált "LastPasswordChangeTimestamp" attribútummal. Ezek a felhasználók ezt a rövid maximális kort kapják meg, mert a HRE nem tudja ellenőrizni, hogy mikor kell visszavonni a régi hitelesítő adatokhoz kötődő jogkivonatokat (például a jelszót, amely megváltozott), és gyakrabban kell visszanéznie, hogy a felhasználó és a társított jogkivonatok továbbra is megfelelőek legyenek.  állandó. A környezet javítása érdekében a bérlői rendszergazdáknak biztosítaniuk kell, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ezt a felhasználói objektumhoz a PowerShell vagy a AADSync használatával lehet beállítani).
 
@@ -124,7 +124,7 @@ További információ az alkalmazásobjektumok és a szolgáltatás-objektumok k
 
 A jogkivonat érvényességét a rendszer a jogkivonat használatának időpontjában értékeli ki. Az elérni kívánt alkalmazás legmagasabb prioritású szabályzata érvénybe lép.
 
-Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan) objektum – D. HH: PP: mm.  Tehát 80 nap és 30 perc lenne `80.00:30:00`.  A vezető D-t nullára lehet dobni, így 90 perc `00:90:00`.  
+Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan) objektum – D. HH: PP: mm.  Tehát 80 nap és 30 perc `80.00:30:00`.  A vezető D-t nullára lehet dobni, így 90 perc `00:90:00`.  
 
 > [!NOTE]
 > Példa erre a forgatókönyvre.
@@ -222,7 +222,7 @@ Az alábbi példákban létrehozhat, frissíthet, csatolhat és törölhet szab�
 A kezdéshez hajtsa végre a következő lépéseket:
 
 1. Töltse le a legújabb [Azure ad PowerShell-modul nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Futtassa az `Connect` parancsot az Azure AD-beli rendszergazdai fiókjába való bejelentkezéshez. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
+2. Az `Connect` parancs futtatásával jelentkezzen be az Azure AD-rendszergazdai fiókjába. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -367,7 +367,7 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. A `IsOrganizationDefault` jelző beállítása false értékre:
+3. A `IsOrganizationDefault` jelző beállítása false (hamis) értékre:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
@@ -387,7 +387,7 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
 A szabályzatok kezeléséhez a következő parancsmagokat használhatja.
 
-#### <a name="new-azureadpolicy"></a>Új – AzureADPolicy
+#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
 
 Létrehoz egy új szabályzatot.
 
