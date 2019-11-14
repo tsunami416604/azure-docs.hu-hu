@@ -109,7 +109,7 @@
     - name: Tartalomvédelem
       items:
         - name: Dinamikus titkosítás és kulcskézbesítés
-          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
         - name: Több DRM-es rendszerek tervezése
           displayName: 'drm, access control'
