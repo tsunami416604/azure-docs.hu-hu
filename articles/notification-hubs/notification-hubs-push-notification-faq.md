@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048786"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066876"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
@@ -30,9 +30,7 @@ ms.locfileid: "74048786"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Mi a Notification Hubs erőforrás-szerkezete?
 
-Az Azure Notification Hubs két erőforrás-szinttel rendelkezik: hubok és névterek. A hub egyetlen leküldéses erőforrás, amely egy alkalmazás platformfüggetlen leküldéses adatait képes tárolni. A névtér egy adott régióban található hubok gyűjteménye.
-
-Az ajánlott leképezés egyetlen alkalmazással egyezik egy névtérrel. A névtéren belül az éles környezetben működő üzemi központ, amely a tesztelési alkalmazással együtt használható, és így tovább.
+Az Azure Notification Hubs két erőforrás-szinttel rendelkezik: hubok és névterek. A hub egyetlen leküldéses erőforrás, amely egy alkalmazás platformfüggetlen leküldéses adatait képes tárolni. A névtér egy adott régióban található hubok gyűjteménye. Az ajánlott leképezés egyetlen alkalmazással egyezik egy névtérrel. A névtéren belül az éles környezetben működő üzemi központ, amely a tesztelési alkalmazással együtt használható, és így tovább.
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Mi a Notification Hubs díjszabási modellje?
 
@@ -45,7 +43,7 @@ A legfrissebb díjszabás a [Díjszabás Notification Hubs] oldalán található
 Standard szintű funkciók:
 
 * **Rich telemetria**: a leküldéses kérelmek nyomon követéséhez és a hibakereséshez platform Notification System visszajelzések Notification Hubséhez használhatja az telemetria-t.
-* **Bérlős**: platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
+* **Több-bérlős**: platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
 * **Ütemezett**leküldés: az értesítések bármikor ütemezhetők.
 * **Tömeges műveletek**: engedélyezi a regisztrációk exportálási/importálási funkcióit a [Regisztráció Exportálás/Importálás] dokumentumában leírtak szerint.
 
@@ -54,7 +52,7 @@ Standard szintű funkciók:
 Az alapszintű és a standard szintű Notification Hubs-csomagok esetében a megfelelően konfigurált alkalmazások leküldéses értesítéseket küldhetnek, vagy az idő legalább 99,9%-ában elvégezhetik a regisztrációs kezelési műveleteket. Ha többet szeretne megtudni az SLA-ról, látogasson el a [Notification HUBS SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) oldalára.
 
 > [!NOTE]
-> Mivel a leküldéses értesítések a harmadik féltől származó platform értesítési rendszereitől függenek (például az Apple APNS és a Google FCM-től), az üzenetek kézbesítésére nem biztosítunk SLA-t. Miután Notification Hubs elküldte a batchs-t a platform értesítési rendszereinek (garantált SLA), a platform értesítési rendszereinek feladata a leküldések kézbesítése (SLA-val nem garantált).
+> Mivel a leküldéses értesítések a külső platformtól származó értesítési rendszerektől függenek, például az Apple leküldéses értesítési szolgáltatásának (APNs) és a Google Firebase Cloud Messaging (FCM) szolgáltatástól, az üzenetek kézbesítésére nem biztosítunk SLA-t. Miután Notification Hubs elküldte a batchs-t a platform értesítési rendszereinek (garantált SLA), a platform értesítési rendszereinek feladata a leküldések kézbesítése (SLA-val nem garantált).
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hogyan a hubot vagy a névteret egy másik szintre?
 
@@ -75,13 +73,7 @@ A leküldéses értesítések [iOS](notification-hubs-ios-apple-push-notificatio
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Támogatja a szöveges üzenetet, az e-maileket vagy a webes értesítéseket?
 
-A Notification Hubs elsődleges célja, hogy értesítéseket küldjön a Mobile apps szolgáltatásnak. Nem biztosít e-mail-vagy SMS-képességeket. Azonban az ezeket a képességeket biztosító harmadik féltől származó platformok integrálható Notification Hubs a natív leküldéses értesítések [Mobile apps]használatával történő küldéséhez.
-
-Notification Hubs emellett nem biztosít böngészőbeli leküldéses értesítés kézbesítési szolgáltatást a dobozból. Az ügyfelek a támogatott kiszolgálóoldali platformokra épülő Signaler használatával tudják megvalósítani ezt a szolgáltatást. 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Hogyan kapcsolódnak a Mobile Apps és az Azure Notification Hubs, és mikor tudom használni?
-
-Ha rendelkezik egy meglévő Mobile apps-háttérrel, és csak a leküldéses értesítések küldését szeretné hozzáadni, használhatja az Azure Notification Hubs. Ha szeretné, hogy a Mobile apps-háttérrendszer teljesen új legyen, vegye fontolóra a Azure App Service Mobile Apps funkciójának használatát. A Mobile apps automatikusan kiépít egy értesítési központot, így egyszerűen küldhet leküldéses értesítéseket a Mobile apps-háttérből. A Mobile Apps díjszabása az értesítési központ alapdíjait tartalmazza. Csak akkor kell fizetnie, ha túllépi a belefoglalt leküldéseket. A költségekkel kapcsolatos további részletekért lépjen a [Az App Service díjszabása] oldalára.
+Notification Hubs értesítéseket küld a Mobile Apps szolgáltatást futtató eszközökre. Nem biztosít e-mail-vagy SMS-képességeket. Notification Hubs emellett nem biztosít böngészőbeli leküldéses értesítés kézbesítési szolgáltatást a dobozból. Az ügyfelek a támogatott kiszolgálóoldali platformokra épülő Signaler használatával tudják megvalósítani ezt a szolgáltatást. 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Hány eszközt támogatok, ha leküldéses értesítéseket küldek Notification Hubson keresztül?
 
@@ -94,7 +86,7 @@ Ha több mint 10 000 000 regisztrált eszköz támogatására van szüksége, t�
 A kiválasztott szinttől függően az Azure Notification Hubs a rendszeren keresztül áramló értesítések száma alapján automatikusan méretezi a méretezést.
 
 > [!NOTE]
-> A teljes használati díj a kiszolgált leküldéses értesítések száma alapján növelhető. Győződjön meg arról, hogy ismeri a [Díjszabás Notification Hubs] oldalon ismertetett szintű korlátokat.
+> A teljes használati díj az elküldött leküldéses értesítések száma alapján növelhető. Győződjön meg arról, hogy ismeri a [Díjszabás Notification Hubs] oldalon ismertetett szintű korlátokat.
 
 Ügyfeleink a Notification Hubs használatával naponta több millió leküldéses értesítést küldhetnek. A leküldéses értesítések elérésének méretezéséhez nem szükséges semmilyen speciális művelet, feltéve, hogy az Azure Notification Hubs-t használja.
 
@@ -135,7 +127,7 @@ A névtereket a központi telepítés csoportosításához használhatja. Felhas
 
 #### <a name="geo-distribution"></a>Földrajzi eloszlás
 
-A földrajzi eloszlás nem mindig kritikus a leküldéses értesítési forgatókönyvekben. Különböző PNSes (például APNS vagy FCM), amelyek leküldéses értesítéseket küldenek az eszközökre még nem terjeszthetők ki.
+A földrajzi eloszlás nem mindig kritikus a leküldéses értesítési forgatókönyvekben. Különböző PNSes (például APNs vagy FCM), amelyek leküldéses értesítéseket küldenek az eszközökre még nem terjeszthetők ki.
 
 Ha olyan alkalmazással rendelkezik, amelyet globálisan használ, különböző névterekben hozhat létre hubokat a világ különböző Azure-régióiban található Notification Hubs szolgáltatás használatával.
 
@@ -157,7 +149,7 @@ A platform PNS minden értesítést továbbít a megcélzott eszközöknek. Amik
 Minden kapcsolat, a küldőtől az Azure Notification Hubs a PNS, használja a HTTPS protokollt.
 
 > [!NOTE]
-> Az Azure Notification Hubs semmilyen módon nem naplózza az üzenetek adattartalmát.
+> Az Azure Notification Hubs nem naplózza az üzenetek hasznos adatait.
 
 Bizalmas adattartalom küldéséhez biztonságos leküldéses mintát ajánlott használni. A küldő a bizalmas adattartalom nélkül kézbesít egy, az eszközhöz tartozó üzenet-azonosítóval rendelkező ping-értesítést. Amikor az eszközön az alkalmazás megkapja a hasznos adatokat, az alkalmazás közvetlenül a biztonságos API-t hívja meg az üzenet részleteinek beolvasásához. A minta megvalósításának útmutatóját a [Biztonságos leküldéses oktatóanyag Notification Hubs] oldalán találja.
 
@@ -207,9 +199,8 @@ Programozott módon is elérheti a metrikákat. További információkért tekin
 - [Erőforrások metrikáinak és tevékenységi naplóinak beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure monitoring REST API útmutató](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> A sikeres értesítések egyszerűen leküldéses értesítéseket küldenek a külső PNS (például APNS az Apple vagy az FCM for Google esetében). A PNS feladata az értesítések továbbítása az eszközök számára. A PNS jellemzően nem tesznek elérhetővé kézbesítési metrikákat harmadik félnek.  
+> A sikeres értesítések egyszerűen leküldéses értesítéseket küldenek a külső PNS (például iOS-re, macOS-re vagy FCM-re Android-eszközök esetén). A PNS feladata az értesítések továbbítása az eszközök számára. A PNS jellemzően nem tesznek elérhetővé kézbesítési metrikákat harmadik félnek.  
 
 [Azure Portal]: https://portal.azure.com
 [Díjszabás Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -226,5 +217,4 @@ Programozott módon is elérheti a metrikákat. További információkért tekin
 [Regisztráció Exportálás/Importálás]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[Az App Service díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

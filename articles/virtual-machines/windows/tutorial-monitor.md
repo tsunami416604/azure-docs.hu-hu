@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Windows rendszerű virtuális gépek figyelése az Azure-ban | Microsoft Docs
+title: Oktatóanyag – Windows rendszerű virtuális gépek monitorozása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti a Windows rendszerű virtuális gépeken futó teljesítmény-és felderített alkalmazás-összetevőket.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a2f4083841c801db3edf1b2838b8d3271b700731
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 13e5cc9ee45cf230668ef7a7cbe85b6437044643
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71680063"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064772"
 ---
-# <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windows rendszerű virtuális gép figyelése az Azure-ban
+# <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windowsos virtuális gép figyelése az Azure-ban
 
 Az Azure monitoring ügynökök használatával gyűjti az Azure-beli virtuális gépekről származó rendszerindítási és teljesítményadatokat, tárolja ezeket az adatokat az Azure Storage-ban, és elérhetővé teszi a portálon, a Azure PowerShell modulon és az Azure CLI-n keresztül A speciális figyelés Azure Monitor for VMs a teljesítmény-metrikák gyűjtésével, a virtuális gépre telepített alkalmazás-összetevők felderítésével, valamint a teljesítmény-és a függőségi térképekkel együtt.
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
 > * Virtuálisgép-gazda metrikáinak megtekintése
-> * Az Azure Monitor engedélyezése a virtuális gépeknek
+> * Azure Monitor for VMs engedélyezése
 > * VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 > * Riasztás létrehozása
 
@@ -143,7 +143,7 @@ Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép telje
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
 > * Gazdagép metrikáinak megtekintése
-> * Az Azure Monitor engedélyezése a virtuális gépeknek
+> * Azure Monitor for VMs engedélyezése
 > * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 

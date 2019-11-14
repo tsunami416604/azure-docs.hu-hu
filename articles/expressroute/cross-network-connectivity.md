@@ -1,143 +1,140 @@
 ---
-title: Az Azure közötti hálózati kapcsolat |} A Microsoft Docs
-description: Ez az oldal egy alkalmazás forgatókönyv közötti hálózati kapcsolatot és az Azure hálózati funkciókat alapuló megoldás ismerteti.
-documentationcenter: na
-services: networking
+title: Azure-beli hálózati kapcsolat
+description: Ez az oldal az Azure hálózati szolgáltatásain alapuló, hálózati kapcsolattal és megoldással kapcsolatos alkalmazási forgatókönyvet ismerteti.
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e503dc2b4ae8773ebfedc7a9b73bc5ea93dd9d5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866002"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076750"
 ---
 # <a name="cross-network-connectivity"></a>Hálózatok közötti kapcsolatok
 
-A Fabrikam, Inc. rendelkezik egy nagy méretű fizikai jelenlét és az Azure-telepítés az USA keleti régiójában. A Fabrikam rendelkezik háttér-kapcsolattal a helyszíni és Azure expressroute-on keresztül-környezetek között. Ehhez hasonlóan a Contoso Ltd. jelenlét érdekében, illetve az USA nyugati Azure-telepítés rendelkezik. Contoso rendelkezik háttér-kapcsolattal a helyszíni és Azure expressroute-on keresztül-környezetek között.  
+A fabrikam Inc. jelentős fizikai jelenléttel és Azure-beli üzembe helyezéssel rendelkezik az USA keleti régiójában. A fabrikam háttérbeli kapcsolatot létesít a helyszíni és az Azure-beli üzemelő példányok között a ExpressRoute-on keresztül. Ehhez hasonlóan a contoso Ltd. rendelkezik az USA nyugati régiójában található jelenléttel és Azure-beli üzembe helyezéssel. A contoso háttérbeli kapcsolatot létesít a helyszíni és az Azure-beli üzemelő példányok között a ExpressRoute-on keresztül.  
 
-A Fabrikam, Inc. beszerzi a Contoso Kft. A fúzió, a következő Fabrikam azt szeretné, a hálózatok összekapcsolhatók. Az alábbi ábra a forgatókönyvet mutatja be:
+A fabrikam Inc. beszerzi a contoso Ltd-t. Az egyesítést követően a fabrikam szeretné összekapcsolni a hálózatokat. Az alábbi ábra a forgatókönyvet szemlélteti:
 
  [![1]][1]
 
-A fenti ábrán közepén szaggatott nyilak jelzik a kívánt hálózati csatlakozás. Pontosabban a kívánt közötti kapcsolatok három típusa van: 1.) a Fabrikam és a Contoso virtuális hálózatok közötti kapcsolódás, 2) közötti regionális helyszíni és a virtuális hálózatok közötti kapcsolódik (amely, a Fabrikam a helyszíni hálózat csatlakoztatása az Contoso virtuális hálózat és a Contoso a helyszíni hálózat csatlakoztatása az Fabrikam VNet), és a Fabrikam 3), és a Contoso a helyszíni hálózat közötti kapcsolatot. 
+A fenti ábrán látható szaggatott nyíl jelzi a kívánt hálózati összekapcsolást. Konkrétan három típusú kapcsolatra van szükség: 1) a fabrikam és a contoso virtuális hálózatok Cross Connect, 2) régión kívüli helyi és virtuális hálózatok Cross összekapcsolása (azaz a fabrikam helyszíni hálózat csatlakoztatása a contoso VNet és a contoso csatlakoztatása helyszíni hálózat – Fabrikam VNet) és 3) Fabrikam és contoso helyszíni hálózat közötti kapcsolat. 
 
-Az alábbi táblázat az útválasztási táblázatot, a privát társviszony-létesítés, az ExpressRoute a Contoso Ltd., az egyesülés előtt.
+Az alábbi táblázat a contoso Ltd. ExpressRoute privát társának útválasztási táblázatát mutatja be az egyesítés előtt.
 
 [![2]][2]
 
-Az alábbi táblázat az érvényes útvonalak a virtuális gépek a Contoso az előfizetésben az egyesülés előtt. A táblánként a virtuális hálózat címterét, és a Contoso a helyszíni hálózat, az alapértelmezett meglévőket szereplőkkel tisztában a virtuális Gépet a virtuális hálózaton. 
+Az alábbi táblázat egy virtuális gép tényleges útvonalait mutatja be a contoso-előfizetésben, az egyesítés előtt. A táblázatban a VNet lévő virtuális gép ismeri a VNet és a contoso helyszíni hálózatát az alapértelmezett beállításoktól függetlenül. 
 
 [![4]][4]
 
-Az alábbi táblázat az útválasztási táblázatot, a privát társviszony-létesítés, az ExpressRoute a Fabrikam Inc., az egyesülés előtt.
+A következő táblázat a fabrikam Inc. ExpressRoute privát társának útválasztási táblázatát mutatja be az egyesítés előtt.
 
 [![3]][3]
 
-Az alábbi táblázat az érvényes útvonalak a virtuális gépek a Fabrikam az előfizetésben az egyesülés előtt. A táblánként a virtuális hálózat címterét, és a Fabrikam a helyszíni hálózat, az alapértelmezett meglévőket szereplőkkel tisztában a virtuális Gépet a virtuális hálózaton.
+Az alábbi táblázat egy virtuális gép tényleges útvonalait mutatja be a fabrikam-előfizetésben, az egyesítés előtt. A táblázatban a VNet lévő virtuális gép ismeri a VNet és a fabrikam helyszíni hálózatát az alapértelmezett beállításoktól függetlenül.
 
 [![5]][5]
 
-Ebben a cikkben vegyünk át lépésről lépésre, és ismertetik a kívánt közötti kapcsolatok használatával az alábbi Azure-beli hálózati szolgáltatások eléréséhez:
+Ebben a cikkben áttekintjük a lépésről lépésre, és megtudhatjuk, hogyan érheti el a kívánt kapcsolatokat a következő Azure hálózati funkciók használatával:
 
-* [Virtuális hálózatok közötti társviszony][Virtual network peering] 
-* [Virtuális hálózat ExpressRoute-kapcsolat][connection]
-* [Globális elérhetőség][Global Reach] 
+* [Társviszony létesítése virtuális hálózatok között][Virtual network peering] 
+* [Virtuális hálózat ExpressRoute-kapcsolatai][connection]
+* [Global Reach][Global Reach] 
 
-## <a name="cross-connecting-vnets"></a>Tartományok közötti virtuális hálózatok csatlakoztatása
+## <a name="cross-connecting-vnets"></a>Virtuális hálózatok közötti kapcsolat
 
-A legoptimálisabb és a legjobb hálózati teljesítmény virtuális hálózatok közötti társviszony (virtuális hálózatok közötti társviszony-létesítés) biztosít, amikor két virtuális hálózat összekapcsolása. Virtuális hálózatok közötti társviszony a társviszony-létesítés két virtuális hálózat (más néven virtuális hálózatok közötti társviszony) azonos Azure-régióban és a két különböző Azure-régió (más néven globális virtuális társhálózatok létesítése) is támogatja. 
+A virtuális hálózatok társítása (VNet peering) a legoptimálisabb és a legjobb hálózati teljesítményt biztosítja két virtuális hálózat összekapcsolása esetén. A VNet peering a két virtuális hálózatok egyazon Azure-régión (általában VNet-társításon) belül és két különböző Azure-régióban (általában globális VNet-társításnak nevezik) is támogatja. 
 
-A Contoso és Fabrikam Azure-előfizetések virtuális hálózatok közötti társviszony-létesítés globális virtuális végezzük konfigurálását. A virtuális hálózat két közötti társviszony-létesítés virtuális hálózatok létrehozása, olvassa el a [virtuális hálózati társviszony-létesítés] [ Configure VNet peering] cikk.
+Konfiguráljuk a globális VNet-társítást a contoso és a fabrikam Azure-előfizetések virtuális hálózatok között. A virtuális hálózatok két virtuális hálózat közötti társításának létrehozásával kapcsolatban tekintse meg [a virtuális hálózati társak létrehozása][Configure VNet peering] című cikket.
 
-Az alábbi képen látható a hálózati architektúra konfigurálása a globális virtuális társhálózatok létesítése után.
+A következő képen a hálózati architektúra látható a globális VNet-társítás konfigurálása után.
 
 [![6]][6]
 
-Az alábbi táblázat az útvonalakat a Contoso-előfizetéshez VM ismert. A tábla utolsó bejegyzése figyelmet fordítania. Ez a bejegyzés csatlakoztathatók a virtuális hálózatok közötti eredménye.
+A következő táblázat a contoso előfizetési virtuális gépen ismert útvonalakat mutatja. Figyeljen a tábla utolsó bejegyzésére. Ez a bejegyzés a virtuális hálózatok közötti kapcsolat összekapcsolásának eredménye.
 
 [![7]][7]
 
-Az alábbi táblázat az útvonalakat a Fabrikam előfizetéshez VM ismert. A tábla utolsó bejegyzése figyelmet fordítania. Ez a bejegyzés csatlakoztathatók a virtuális hálózatok közötti eredménye.
+A következő táblázat a fabrikam előfizetési virtuális géphez ismert útvonalakat mutatja. Figyeljen a tábla utolsó bejegyzésére. Ez a bejegyzés a virtuális hálózatok közötti kapcsolat összekapcsolásának eredménye.
 
 [![8]][8]
 
-Közvetlenül virtuális hálózatok közötti társviszony létesítés két virtuális hálózatot (lásd: nincsenek nem a következő Ugrás *VNetGlobalPeering* bejegyzést a fenti két tábla)
+A VNet-társítás közvetlenül két virtuális hálózatra hivatkozik (lásd a fenti két táblázat *VNetGlobalPeering* bejegyzésének következő ugrását)
 
-## <a name="cross-connecting-vnets-to-the-on-premises-networks"></a>Tartományok közötti virtuális hálózatok csatlakoztatása a helyszíni hálózatok
+## <a name="cross-connecting-vnets-to-the-on-premises-networks"></a>Virtuális hálózatok csatlakoztatása a helyszíni hálózatokhoz
 
-Több virtuális hálózat ExpressRoute-kapcsolatcsoport csatlakozhassunk. Lásd: [előfizetés- és Szolgáltatáskorlátok] [ Subscription limits] az ExpressRoute-kapcsolatcsoport lehet csatlakoztatni virtuális hálózatok maximális száma. 
+ExpressRoute áramkört több virtuális hálózathoz is összekapcsolhat. Tekintse meg a ExpressRoute-áramkörhöz csatlakoztatható virtuális hálózatok maximális számát az [előfizetés és a szolgáltatás korlátaiban][Subscription limits] . 
 
-Csatlakozzunk Fabrikam ExpressRoute-kapcsolatcsoport Contoso előfizetés virtuális hálózathoz, és hasonlóképpen Contoso ExpressRoute-kapcsolatcsoport Fabrikam előfizetéshez virtuális hálózatok közötti virtuális hálózatok és a helyszíni hálózatok közötti kapcsolat. A virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz, egy másik előfizetésben, szükségünk hozhat létre és használhat egy engedélyezési.  Tekintse meg a cikket: [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz][Connect-ER-VNet].
+A virtuális hálózatok és a helyszíni hálózatok közötti kapcsolatok lehetővé tételéhez a fabrikam ExpressRoute áramkört a contoso előfizetés VNet és hasonló contoso ExpressRoute-áramkörhöz csatlakoztathatja a fabrikam előfizetési VNet. Ha egy virtuális hálózatot egy másik előfizetésben lévő ExpressRoute-áramkörhöz szeretne kapcsolni, egy engedélyt kell létrehoznia és használnia.  Tekintse meg a [virtuális hálózat ExpressRoute-áramkörhöz való kapcsolódását][Connect-ER-VNet]ismertető cikket.
 
-Az alábbi képen látható a hálózati architektúra az ExpressRoute konfigurálása után közötti kapcsolatot a virtuális hálózatok.
+Az alábbi képen a hálózati architektúra látható, miután konfigurálta a ExpressRoute kapcsolatát a virtuális hálózatokkal.
 
 [![9]][9]
 
-Az alábbi táblázat az útválasztási táblázatot, a privát társviszony-létesítés, a Contoso Kft. ExpressRoute után közötti virtuális hálózatok összekapcsolása az expressroute-on keresztül a helyszíni hálózatokhoz. Tekintse meg, hogy az útvonaltáblát rendelkezik-e a virtuális hálózatok tartozó útvonalak.
+A következő táblázat a contoso Ltd. ExpressRoute privát kapcsolatának útválasztási táblázatát mutatja be, miután a virtuális hálózatokat a helyszíni hálózatokhoz csatlakoztatta a ExpressRoute-n keresztül. Láthatja, hogy az útválasztási táblázat a virtuális hálózatokhoz tartozó útvonalakat is tartalmaz.
 
 [![10]][10]
 
-Az alábbi táblázat az útválasztási táblázatot, a privát társviszony-létesítés, a Fabrikam ExpressRoute Inc. után közötti virtuális hálózatok összekapcsolása az expressroute-on keresztül a helyszíni hálózatokhoz. Tekintse meg, hogy az útvonaltáblát rendelkezik-e a virtuális hálózatok tartozó útvonalak.
+A következő táblázat a fabrikam Inc. ExpressRoute privát társításának útválasztási táblázatát mutatja be, miután a virtuális hálózatokat a helyszíni hálózatokhoz csatlakoztatta a ExpressRoute-n keresztül. Láthatja, hogy az útválasztási táblázat a virtuális hálózatokhoz tartozó útvonalakat is tartalmaz.
 
 [![11]][11]
 
-Az alábbi táblázat az útvonalakat a Contoso-előfizetéshez VM ismert. Figyelmet fordítani *virtuális hálózati átjáró* bejegyzéseket a tábla. A virtuális gép útvonalakat a helyszíni hálózatok mindkét fog látni.
+A következő táblázat a contoso előfizetési virtuális gépen ismert útvonalakat mutatja. Figyeljen a tábla *Virtual Network Gateway* bejegyzéseire. A virtuális gép a helyszíni hálózatok útvonalait is látja.
 
 [![12]][12]
 
-Az alábbi táblázat az útvonalakat a Fabrikam előfizetéshez VM ismert. Figyelmet fordítani *virtuális hálózati átjáró* bejegyzéseket a tábla. A virtuális gép útvonalakat a helyszíni hálózatok mindkét fog látni.
+A következő táblázat a fabrikam előfizetési virtuális géphez ismert útvonalakat mutatja. Figyeljen a tábla *Virtual Network Gateway* bejegyzéseire. A virtuális gép a helyszíni hálózatok útvonalait is látja.
 
 [![13]][13]
 
 >[!NOTE]
->Akár az is lehet a Fabrikam és/vagy Contoso előfizetések küllő virtuális hálózatok a megfelelő agyi virtuális hálózat (egy küllős tervező nem mutatja be ez a cikk az architektúra-diagramok). Keresztszűrés kapcsolatainak a hub virtuális hálózati átjárók az expressroute-hoz is lehetővé teszi a kommunikációt keleti régiójában és Nyugat-hubs és a küllők között.
+>A fabrikam és/vagy contoso-előfizetésekben a megfelelő hub-VNet is küllős virtuális hálózatok (a hub és a küllős kialakítás nem látható a jelen cikk architektúra-diagramjaiban). A hub VNet-átjárók és a ExpressRoute közötti kapcsolatok lehetővé teszik a Kelet-és Nyugat-hubok közötti kommunikációt és a küllőket is.
 >
 
-## <a name="cross-connecting-on-premises-networks"></a>A helyszíni hálózatok csatlakoztatását adatbázisközi
+## <a name="cross-connecting-on-premises-networks"></a>Helyszíni hálózatok közötti kapcsolat
 
-Az ExpressRoute globális elérhetőségű biztosítja a helyszíni hálózatokhoz csatlakozó ExpressRoute-Kapcsolatcsoportok különböző közötti kapcsolatot. Konfiguráljuk az globális elérhetőségű a Contoso és Fabrikam ExpressRoute-Kapcsolatcsoportok között. Mivel az ExpressRoute-Kapcsolatcsoportok különböző előfizetésekben találhatóak, hozhat létre és használhat egy engedélyezési kell. Lásd: [konfigurálása ExpressRoute globális elérhetőségű] [ Configure Global Reach] cikkben részletes útmutatást.
+A ExpressRoute Global Reach kapcsolatot biztosít a különböző ExpressRoute-áramkörökhöz csatlakozó helyszíni hálózatok között. Konfigurálja Global Reach a contoso és a fabrikam ExpressRoute áramkörök között. Mivel a ExpressRoute-áramkörök különböző előfizetésekben vannak, létre kell hozniuk és használniuk kell az engedélyt. Lásd: a [ExpressRoute Global REACH konfigurálása][Configure Global Reach] című cikk részletes útmutatást nyújt.
 
-Az alábbi képen látható a hálózati architektúra globális elérhetőségű konfigurálása után.
+Az alábbi képen a Global Reach konfigurálása után a hálózati architektúra látható.
 
 [![14]][14]
 
-Az alábbi táblázat az útválasztási táblázatot, a Contoso Kft. ExpressRoute privát társviszony globális elérhetőségű konfigurálása után. Tekintse meg, hogy az útvonaltáblát útvonalakat a helyszíni hálózatokhoz tartozó rendelkezik-e. 
+A következő táblázat a contoso Ltd. ExpressRoute privát társának útválasztási táblázatát mutatja Global Reach konfigurálása után. Láthatja, hogy az útválasztási táblázat a helyszíni hálózatokhoz tartozó útvonalakat is tartalmazza. 
 
 [![15]][15]
 
-Az alábbi táblázat az útválasztási táblázatot, a privát társviszony-létesítés, a Fabrikam ExpressRoute Inc. globális elérhetőségű konfigurálása után. Tekintse meg, hogy az útvonaltáblát útvonalakat a helyszíni hálózatokhoz tartozó rendelkezik-e.
+A következő táblázat a fabrikam Inc. ExpressRoute privát összevonásának útválasztási táblázatát mutatja Global Reach konfigurálása után. Láthatja, hogy az útválasztási táblázat a helyszíni hálózatokhoz tartozó útvonalakat is tartalmazza.
 
 [![16]][16]
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [virtuális hálózat – gyakori kérdések][VNet-FAQ], bármilyen további virtuális hálózatok és virtuális hálózatok közötti társviszony kérdés esetén. Lásd: [ExpressRoute – gyakori kérdések] [ ER-FAQ] minden olyan további kérdésekre, az expressroute-on és a virtuális hálózati kapcsolat.
+A VNet és VNet kapcsolatos további kérdésekért lásd: [Virtual Network – gyakori kérdések][VNet-FAQ]. A ExpressRoute és a virtuális hálózati kapcsolattal kapcsolatos további kérdésekért tekintse meg a [ExpressRoute – gyakori kérdések][ER-FAQ] című témakört.
 
-Globális elérhetőség ország/régió szerint ország/régió alapján jelennek meg. Ha a globális elérhetőségű érhető el ezekben az országokban vagy régiókban, amelyeket szeretne, olvassa el [ExpressRoute globális elérhetőségű][Global Reach].
+A Global Reach ország/régió alapján kerül bevezetésre az ország/régió területén. Ha szeretné megtekinteni, hogy Global Reach elérhető-e a kívánt országokban/régiókban, tekintse meg a következőt: [ExpressRoute Global REACH][Global Reach].
 
 <!--Image References-->
-[1]: ./media/cross-network-connectivity/premergerscenario.png "az alkalmazási forgatókönyv"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "Contoso ExpressRoute útválasztási táblázat egyesülés előtt"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "Fabrikam ExpressRoute útválasztási táblázat egyesülés előtt"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "előtt egyesülés irányítja a Contoso virtuális gép"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "előtt egyesülés irányítja a Fabrikam VM"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "után a virtuális hálózatok közötti társviszony az architektúra"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "Contoso VM irányítja a virtuális társhálózatok létesítése után"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "Fabrikam VM irányítja a virtuális társhálózatok létesítése után"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "az architektúra után útvonalszűrőt közötti kapcsolat"
-[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "Contoso ExpressRoute útválasztási táblázatot követően csatlakozó ExR és virtuális hálózatok közötti"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "Fabrikam ExpressRoute útválasztási táblázatot követően csatlakozó ExR és virtuális hálózatok közötti"
-[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "Contoso Virtuálisgép-útvonalak után csatlakozó ExR és virtuális hálózatok közötti"
-[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "Fabrikam Virtuálisgép-útvonalak után csatlakozó ExR és virtuális hálózatok közötti"
-[14]: ./media/cross-network-connectivity/globalreach.png "globális elérhetőségű konfigurálása után az architektúra"
-[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "Contoso ExpressRoute útválasztási táblázatot követően globális elérhetőségű"
-[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "globális elérhetőségű után a Fabrikam az ExpressRoute útválasztási táblázat"
+[1]: ./media/cross-network-connectivity/premergerscenario.png "az alkalmazás forgatókönyve"
+[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "contoso ExpressRoute-útválasztási tábla az egyesítés előtt"
+[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "Fabrikam ExpressRoute-útválasztási táblázat az egyesítés előtt"
+[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "contoso VM-útvonal az egyesítés előtt"
+[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "Fabrikam virtuális gép útvonala az egyesítés előtt"
+[6]: ./media/cross-network-connectivity/vnet-peering.png "az architektúra a VNet után"
+[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "contoso VM-útvonalak a VNet" -társítás után
+[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "Fabrikam virtuális gép útvonala a VNet" -társítás után
+[9]: ./media/cross-network-connectivity/exr-x-connect.png "az architektúra a expressroute keresztben való csatlakoztatása után"
+[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "contoso ExpressRoute-útválasztási táblázat az ExR és a virtuális hálózatok közötti csatlakozást követően"
+[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "Fabrikam ExpressRoute-útválasztási táblázat az ExR és a virtuális hálózatok közötti kapcsolat után"
+[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "contoso virtuális gép útvonala az ExR és a virtuális hálózatok csatlakoztatása után"
+[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "Fabrikam virtuális gép útvonala az ExR és a virtuális hálózatok csatlakoztatása után"
+[]: ./media/cross-network-connectivity/globalreach.png "az architektúra 14 Global REACH konfigurálása után"
+[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "contoso ExpressRoute-útválasztási táblázat Global REACH után"
+[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "Fabrikam ExpressRoute-útválasztási táblázat Global REACH után"
 
 <!--Link References-->
 [Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

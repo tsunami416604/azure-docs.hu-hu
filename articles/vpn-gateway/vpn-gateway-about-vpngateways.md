@@ -1,19 +1,19 @@
 ---
-title: Azure VPN Gateway | Microsoft Docs
+title: Tudnivalók az Azure VPN Gateway
 description: Ebben a cikkben megismerkedhet a VPN-átjárókkal, és megtudhatja, hogyan csatlakozhat VPN-átjáró segítségével az Azure virtuális hálózatokhoz. Beleértve az IPsec/IKE helyek közötti, létesítmények közötti és VNet–VNet megoldásokat, valamint a pont–hely típusú VPN-t.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495693"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075449"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
@@ -53,7 +53,10 @@ Az alábbi táblázat segíthet eldönteni, melyik az Ön megoldásához legmegf
 
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 
-Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. További információ az átjárók SKU-ról, beleértve a támogatott szolgáltatásokat, a termelési és fejlesztési-tesztelési és konfigurációs lépéseket a [VPN Gateway Settings-Gateway SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) -ról szóló cikkben talál. Örökölt SKU-információk: az [örökölt SKU-használat használata](vpn-gateway-about-skus-legacy.md).
+Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot.
+
+* További információ az átjárók SKU-ról, beleértve a támogatott szolgáltatásokat, a termelési és fejlesztési-tesztelési és konfigurációs lépéseket a [VPN Gateway Settings-Gateway SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) -ról szóló cikkben talál.
+* Örökölt SKU-információk: az [örökölt SKU-használat használata](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Átjáró-termékváltozatok alagút, kapcsolat és átviteli sebesség szerint
 
@@ -92,7 +95,6 @@ Ez a típusú kapcsolat a helyek közötti kapcsolat egy változata. A virtuáli
 A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni.
 
 A helyek közötti kapcsolatoktól eltérően a pont–hely kapcsolatok nem igényelnek helyszíni nyilvános IP-címet vagy VPN-eszközt a működéshez. A pont–hely (P2S) kapcsolatok helyek közötti (S2S) kapcsolatokkal együtt is használhatók ugyanazon a VPN-átjárón keresztül, ha a kapcsolatok minden konfigurációs követelménye kompatibilis egymással. További információk a pont–hely kapcsolatokról: [Információk a pont–hely VPN-ről](point-to-site-about.md).
-
 
 ![Azure VPN Gateway pont–hely kapcsolat – példa](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

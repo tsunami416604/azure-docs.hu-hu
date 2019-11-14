@@ -1,19 +1,20 @@
 ---
-title: Gyors útmutató – végpontok közötti SSL-titkosítás konfigurálása az Azure Application Gateway-Azure Portal használatával | Microsoft Docs
+title: Végpontok közötti SSL-titkosítás konfigurálása a portál használatával
+titleSuffix: Azure Application Gateway
 description: Ebből a témakörből megtudhatja, hogyan hozhat létre teljes körű SSL-titkosítással rendelkező Application Gateway-t a Azure Portal használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243665"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075126"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Végpontok közötti SSL konfigurálása Application Gateway használatával a portálon
 
@@ -24,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure Portal a végpontok köz�
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A végpontok közötti SSL az Application Gateway szolgáltatással való konfigurálásához tanúsítvány szükséges az átjáróhoz. A háttér-kiszolgálókhoz is szükség van tanúsítványokra. Az átjáró tanúsítványa egy szimmetrikus kulcs származtatása az SSL protokoll specifikációjának megfelelően történik. A szimmetrikus kulcs ezután az átjárónak továbbított forgalom titkosítására és visszafejtésére szolgál. 
 
@@ -60,7 +61,7 @@ További információ: SSL- [Lezárás engedélyezése új Application Gateway l
 
    ![Tanúsítvány hozzáadása](./media/end-to-end-ssl-portal/addcert.png)
 
-   A Standard_v2 és a WAF_v2 Application Gateway átjárók esetében. cer formátumban fel kell töltenie a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert hitelesítésszolgáltató (CA) állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
+   Standard_v2 és WAF_v2 Application Gateway esetén. cer formátumban töltse fel a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert hitelesítésszolgáltató (CA) állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
 
    ![Megbízható főtanúsítvány hozzáadása](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
@@ -114,13 +115,13 @@ Ha az utóbbi lehetőséget választja, alkalmazza az alábbi eljárás lépése
 
    ![Tanúsítvány hozzáadása](./media/end-to-end-ssl-portal/addcert.png)
 
-   A Standard_v2 és a WAF_v2 Application Gateway átjárók esetében. cer formátumban fel kell töltenie a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert HITELESÍTÉSSZOLGÁLTATÓ állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
+   Standard_v2 és WAF_v2 Application Gateway esetén. cer formátumban töltse fel a háttér-kiszolgálói tanúsítvány főtanúsítványát. Ha a háttér-tanúsítványt egy jól ismert HITELESÍTÉSSZOLGÁLTATÓ állítja ki, akkor jelölje be a **jól ismert hitelesítésszolgáltatói tanúsítvány használata** jelölőnégyzetet, és nem kell tanúsítványt feltöltenie.
 
    ![Megbízható főtanúsítvány hozzáadása](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
 8. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)

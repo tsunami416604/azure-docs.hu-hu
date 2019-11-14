@@ -1,11 +1,11 @@
 ---
-title: A szolgáltatás magas rendelkezésre állásának biztosítása Azure Load Balancer állapot-mintavételek használatával
-titlesuffix: Azure Load Balancer
-description: Állapot-mintavételei használata a terheléselosztó mögött példányok figyelése céljából
+title: A szolgáltatás méretezésére és a rendelkezésre állásának biztosítására szolgáló állapot-próbák
+titleSuffix: Azure Load Balancer
+description: Ebből a cikkből megtudhatja, hogyan használhatók az állapot-mintavételek a Azure Load Balancer mögötti példányok figyeléséhez
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d9873c4d8d4ca2b74532706f079c7384bf38db42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033822"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077076"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -251,7 +251,7 @@ Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesí
 - HTTPS-vizsgálatok nem támogatják a kölcsönös hitelesítés ügyféltanúsítvánnyal.
 - Ha a TCP-időbélyegek engedélyezve vannak, a assumehHealth-mintavétel sikertelen lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
 - [Első lépések a Resource Managerben nyilvános load balancer létrehozása PowerShell használatával](load-balancer-get-started-internet-arm-ps.md)

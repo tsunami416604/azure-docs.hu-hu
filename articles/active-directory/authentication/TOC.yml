@@ -139,8 +139,6 @@
           href: howto-authentication-passwordless-security-key.md
         - name: Jelszó nélküli Windows 10
           href: howto-authentication-passwordless-security-key-windows.md
-        - name: Jelszó nélküli helyszíni
-          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Jelszó nélküli telefonos bejelentkezés
           href: howto-authentication-passwordless-phone.md
         - name: Vállalati Windows Hello

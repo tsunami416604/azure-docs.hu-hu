@@ -6,18 +6,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 065f392f3089f4d6872cd39c6aaab2098afc6c90
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8fe665ed9a9c580f5ce7d7bf43e71b9672a2bc5b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012173"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075034"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése
 
 Ez a cikk egy Azure Resource Manager sablon szerkezetét ismerteti. Bemutatja a sablon különböző részeit és az ezekben a részekben elérhető tulajdonságokat.
 
-Ez a cikk a Resource Manager-sablonok megismerését végző felhasználók számára készült. Részletes információkat tartalmaz a sablon struktúrájáról. Ha a sablon létrehozásához szeretne bevezetést készíteni, tekintse meg a [Azure Resource Manager sablonokat](template-deployment-overview.md).
+Ez a cikk a Resource Manager-sablonok megismerését végző felhasználók számára készült. Részletes információkat tartalmaz a sablon struktúrájáról. A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
 
 ## <a name="template-format"></a>Sablon formátuma
 
@@ -404,7 +404,7 @@ A sztringeket több sorba is lehet bontani. Például a Location tulajdonság é
 
 Ha többsoros sztringekkel rendelkező sablonokat szeretne üzembe helyezni az Azure CLI használatával, akkor a `--handle-extended-json-format` kapcsolót kell használnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 * A sablonon belül használhatja függvényeivel kapcsolatos részletekért lásd: [Azure Resource Manager-Sablonfüggvények](resource-group-template-functions.md).

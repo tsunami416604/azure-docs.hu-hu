@@ -1,21 +1,18 @@
 ---
-title: Magas rendelkezésre állás tervezése az Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: magas rendelkezésre állás tervezése'
 description: Ez az oldal az Azure ExpressRoute használata során magas rendelkezésre álláshoz nyújt építészeti javaslatokat.
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67466650"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076682"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Magas rendelkezésre állás tervezése a ExpressRoute
 
@@ -80,16 +77,16 @@ Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és e
 
 A ExpressRoute támogatja a BFD. A BFD csökkenti a hiba észlelési idejét a 2. rétegbeli hálózat között a Microsoft Enterprise Edge (Msee) és a helyi oldalon lévő BGP-szomszédok között, körülbelül 3 percen belül (alapértelmezett), és kevesebb mint egy másodpercig. A gyors észlelési idő segít felgyorsítani a sikertelen helyreállítást. További információ: [BFD konfigurálása ExpressRoute][BFD]-en keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy ExpressRoute-áramköri kapcsolat magas rendelkezésre állásának kialakítását ismertetjük. Egy ExpressRoute-áramköri pont egy földrajzi helyre van rögzítve, ezért a teljes helyet érintő katasztrofális meghibásodás okozhatja. 
 
 Ahhoz, hogy tervezési megfontolások legyenek olyan geo-redundáns hálózati kapcsolatok kiépítéséhez a Microsoft-gerinchez, amelyek a teljes régiót érintő katasztrofális hibákat okozhatnak, lásd: a vész- [helyreállítás megtervezése a ExpressRoute privát][DR]társításával.
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "ajánlott módszer a ExpressRoute használatával való kapcsolódásra"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "optimális, utolsó mérföldes kapcsolat"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT-beállítás"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Ajánlott módszer a ExpressRoute használatával való kapcsolódásra"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Az utolsó mérföldes kapcsolat optimális állapota"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT-beállítások"
 
 
 <!--Link References-->

@@ -1,22 +1,22 @@
 ---
-title: Oktatóanyag – az első Azure Resource Manager-sablon létrehozása és üzembe helyezése
-description: Az első Azure Resource Manager-sablon létrehozásának lépéseit ismerteti. Megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
+title: Oktatóanyag – & üzembe helyezése Azure Resource Manager-sablon létrehozása
+description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029551"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074375"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése
+# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése
 
-Ez az oktatóanyag bemutatja a Resource Manager-sablonokat. Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
+Ez az oktatóanyag bemutatja, hogyan Azure Resource Manager sablonokat. Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
 
 Ez az oktatóanyag egy sorozat első része. Az adatsorozaton keresztüli előrehaladást követően módosítsa a sablon indítása lépésről lépésre, amíg meg nem vizsgálja a Resource Manager-sablonok összes alapvető részét. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
 
@@ -69,9 +69,9 @@ Most már készen áll a sablonok megismerésének megkezdésére.
 
     A JSON-fájl a következő elemeket tartalmazza:
 
-    - **$Schema**: Megadja a JSON-séma fájljának helyét. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2015-01-01. Ez a séma-verzió naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
-    - **contentVersion**: Meghatározza a sablon verzióját (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Ha a sablonnal telepít erőforrásokat, ezzel az értékkel meggyőződhet arról, hogy a megfelelő sablon használatban van-e.
-    - **erőforrások**: A telepíteni vagy frissíteni kívánt erőforrásokat tartalmazza. Jelenleg üres, de később további erőforrásokat fog hozzáadni.
+    - **$Schema**: a JSON-séma fájljának helyét adja meg. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2015-01-01. Ez a séma-verzió naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
+    - **contentVersion**: a sablon verzióját adja meg (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Ha a sablonnal telepít erőforrásokat, ezzel az értékkel meggyőződhet arról, hogy a megfelelő sablon használatban van-e.
+    - **erőforrások**: tartalmazza a telepíteni vagy frissíteni kívánt erőforrásokat. Jelenleg üres, de később további erőforrásokat fog hozzáadni.
 
 1. Mentse a fájlt.
 
@@ -142,7 +142,7 @@ az group deployment create \
 
 ---
 
-Az üzembehelyezési parancs az eredményeket adja vissza. Keresse meg a `ProvisioningState` értéket, és ellenőrizze, hogy a telepítés sikeres volt-e.
+Az üzembehelyezési parancs az eredményeket adja vissza. Keresse meg a `ProvisioningState`, és ellenőrizze, hogy sikeres volt-e az üzembe helyezés.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -158,7 +158,7 @@ Az üzembehelyezési parancs az eredményeket adja vissza. Keresse meg a `Provis
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 

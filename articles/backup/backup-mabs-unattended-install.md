@@ -7,24 +7,24 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a02d9f42242b9a762c58ef65a798ff6ab8f53914
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210171"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074796"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server felügyelet nélküli telepítésének futtatása
 
 Megtudhatja, hogyan futtathatja Azure Backup Server felügyelet nélküli telepítését.
 
-Ezek a lépések nem érvényesek Azure Backup Server v1 telepítésekor.
+Ezek a lépések nem érvényesek, ha Azure Backup Server v1-es verzióját telepíti.
 
 ## <a name="install-backup-server"></a>A biztonsági mentési kiszolgáló telepítése
 
 1. A Azure Backup Server v2 vagy újabb verziót futtató kiszolgálón hozzon létre egy szövegfájlt. (A fájlt a Jegyzettömbben vagy egy másik szövegszerkesztőben is létrehozhatja.) Mentse a fájlt MABSSetup. ini néven.
 
-2. Illessze be a következő kódot a MABSSetup. ini fájlba. Cserélje le a zárójelben (\< \>) lévő szöveget a környezetének megfelelő értékekre. A következő szöveg egy példa:
+2. Illessze be a következő kódot a MABSSetup. ini fájlba. Cserélje le a zárójelben lévő szöveget (\< \>) a környezetének megfelelő értékekkel. A következő szöveg egy példa:
 
    ```text
    [OPTIONS]
@@ -55,11 +55,12 @@ Ezek a lépések nem érvényesek Azure Backup Server v1 telepítésekor.
 
 Az alábbi jelzőket használhatja a telepítéshez:</br>
 **/f**:. ini fájl elérési útja</br>
-**/l**: Napló elérési útja</br>
-**/i**: Telepítési útvonal</br>
-**/x**: Eltávolítási útvonal</br>
+**/l**: naplófájl elérési útja</br>
+**/i**: telepítési útvonal</br>
+**/x**: eltávolítási útvonal</br>
 
 ## <a name="next-steps"></a>További lépések
+
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 
 - [A biztonsági mentési kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)

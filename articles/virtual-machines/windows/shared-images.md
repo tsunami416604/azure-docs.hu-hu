@@ -1,5 +1,5 @@
 ---
-title: Közös virtuálisgép-rendszerképek létrehozása a Azure PowerShell-mel | Microsoft Docs
+title: Közös virtuálisgép-rendszerképek létrehozása a Azure PowerShell
 description: Megtudhatja, hogyan hozhat létre megosztott virtuálisgép-rendszerképeket az Azure-ban a Azure PowerShell használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 01e6d9dff0ea2c2b60d8e2ab42e39e36d998be83
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390580"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066241"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Közös rendszerkép-katalógus létrehozása Azure PowerShell 
 
@@ -41,7 +41,7 @@ A megosztott képkatalógus funkció több erőforrástípust is tartalmaz. Ebbe
 
 Minden olyan 20 virtuális gép esetében, amelyet egyszerre hoz létre, javasoljuk, hogy tartsa meg az egyik replikát. Ha például 120 virtuális gépet hoz létre egyidejűleg ugyanazon rendszerkép használatával egy régióban, javasoljuk, hogy legalább 6 replikát őrizzen meg a rendszerképből. További információ: [skálázás](/azure/virtual-machines/windows/shared-image-galleries#scaling).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben szereplő példa végrehajtásához rendelkeznie kell egy meglévő felügyelt képpel. Követheti az [oktatóanyagot: hozzon létre egy Azure-beli virtuális gép egyéni rendszerképét, és](tutorial-custom-images.md) hozzon létre egy Azure PowerShell, ha szükséges. Ha a felügyelt lemezkép adatlemezt tartalmaz, az adatlemez mérete nem haladhatja meg az 1 TB-ot.
 
@@ -96,7 +96,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 

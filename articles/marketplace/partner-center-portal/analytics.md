@@ -8,22 +8,22 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813194"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075523"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi Piactérének elemzései
 
-Ismerje meg, hogyan érheti el az elemzési jelentéseket a Microsoft partner Centerben az értékesítések figyelése, a teljesítmény kiértékelése és az ajánlatok a piactéren való optimalizálása érdekében. Partnerként a partner Center által támogatott adatvizualizációk és betekintési diagramok segítségével figyelheti az ajánlati listáját, és megtalálhatja az értékesítés maximalizálásának módjait. A továbbfejlesztett elemzési eszközök lehetővé teszik a teljesítménybeli eredmények elvégzését, valamint az ügyfelekkel és viszonteladókkal való jobb kapcsolatok fenntartását. 
+Ismerje meg, hogyan érheti el az elemzési jelentéseket a Microsoft partner Centerben az értékesítések figyelése, a teljesítmény kiértékelése és az ajánlatok a piactéren való optimalizálása érdekében. Partnerként a partner Center által támogatott adatvizualizációk és betekintési diagramok segítségével figyelheti az ajánlati listáját, és megtalálhatja az értékesítés maximalizálásának módjait. A továbbfejlesztett elemzési eszközök lehetővé teszik a teljesítménybeli eredmények elvégzését, valamint az ügyfelekkel és viszonteladókkal való jobb kapcsolatok fenntartását.
 
 A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a kereskedelmi piactéren.
 
 |**Irányítópult**|**Megjelenített tartalom**|
 |:---|:---|
-|[Összefoglalás](#summary-dashboard)|Diagramok, trendek és az összesített adatok azon értékei, amelyek összegzik a Piactéri tevékenységet az ajánlatokhoz|
+|[összegzés](#summary-dashboard)|Diagramok, trendek és az összesített adatok azon értékei, amelyek összegzik a Piactéri tevékenységet az ajánlatokhoz|
 |[Rendelések](#orders-dashboard)|A megrendelésekkel kapcsolatos információk grafikus és letölthető formátumban|
 |[Ügyfelek](#customer-dashboard)|Az ügyfelekkel kapcsolatos információk, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg|
 |[Letölti](#downloads-dashboard)|A letöltési kérelmek listája az elmúlt 30 napban|
@@ -141,7 +141,7 @@ Az **Orders by Marketplace licenc Type** diagram a Piactéri ajánlat licenc tí
 - **Számlázás az Azure**-on keresztül: a Microsoft számlázza az ügyfelet az Ön nevében, ha úgy dönt, hogy [eladja az ajánlatot a Microsofttal](./create-new-saas-offer.md#sell-through-microsoft) ezzel a licenccel. A fizetési típusok közé tartozik a bankkártya vagy a nagyvállalati számlázás.
 - **Saját licenc**használata: a Microsoft nem számlázza az ügyfeleket az ilyen típusú piactér-ajánlat használatáért. A szolgáltatás **[most már (ingyenes) jelenik meg](./create-new-saas-offer.md#get-it-now-free)** a piactéren.
 - **Ingyenes**: a Microsoft nem számlázza az ügyfeleket az ilyen típusú Marketplace-ajánlat használatáért. Az **[ingyenes próbaverzióként](./create-new-saas-offer.md##free-trial-listing)** szerepel a piactéren.
-- **Microsoft as viszonteladó**: a Microsoft viszonteladói által a **[Cloud Solution Provider (CSP) program](./create-new-saas-offer.md#csp-program-opt-in)** részeként eladott ajánlatokat képviseli.
+- **Microsoft as viszonteladó**: a Microsoft viszonteladói által a **[Cloud Solution Provider (CSP) program](./create-new-saas-offer.md)** részeként eladott ajánlatokat képviseli.
 
 ![A partner Center elemzi a rendeléseket licenc típusa szerint](./media/analyze-license-type.png)
 

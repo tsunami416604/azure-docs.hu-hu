@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a24f670314d2f6679e37b438a74421e0e84604e2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973436"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075490"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Titkosított titkok kezelése Service Fabric alkalmazásokban
 Ez az útmutató végigvezeti a Service Fabric alkalmazásban található titkok kezelésének lépésein. A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni.
@@ -37,7 +37,7 @@ A titkosítási tanúsítvány beállítása és a titkok titkosítása a Window
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Titkosított titkok meghatározása egy alkalmazásban
 Az előző lépés leírja, hogyan titkosíthatja a titkos kódot egy tanúsítvánnyal, és hogyan hozhat létre Base-64 kódolású karakterláncot az alkalmazásokban való használathoz. Ez a Base-64 kódolású karakterlánc a szolgáltatás Settings. XML fájljában, illetve titkosított [környezeti változóként][environment-variables-link] is megadható titkosított [paraméterként][parameters-link] a szolgáltatás ServiceManifest. XML fájljában.
 
-Adja meg a szolgáltatás Settings. xml konfigurációs fájljának titkosított [paraméterét][parameters-link] az `IsEncrypted` attribútummal, amely `true` értékre van beállítva:
+A szolgáltatás Settings. xml konfigurációs fájljában adja meg a titkosított [paramétereket][parameters-link] a `IsEncrypted` attribútummal `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -47,7 +47,7 @@ Adja meg a szolgáltatás Settings. xml konfigurációs fájljának titkosított
   </Section>
 </Settings>
 ```
-Adja meg a titkosított [környezeti változót][environment-variables-link] a szolgáltatás ServiceManifest. XML fájljában a `Type` attribútummal, amely `Encrypted` értékre van beállítva:
+A szolgáltatás ServiceManifest. XML fájljában adja meg a titkosított [környezeti változót][environment-variables-link] a `Type` attribútummal `Encrypted`:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -111,7 +111,7 @@ A PowerShell használatával a paraméter a `New-ServiceFabricApplication` paran
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-A C#használatakor az alkalmazás paramétereinek megadása egy `ApplicationDescription` `NameValueCollection`:
+A C#használatakor az alkalmazás paramétereinek `ApplicationDescription` megadása `NameValueCollection`:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -147,10 +147,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)
+* Service Fabric [Secrets áruház](service-fabric-application-secret-store.md) 
+* További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

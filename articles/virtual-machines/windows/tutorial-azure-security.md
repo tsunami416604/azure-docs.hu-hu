@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Security Center használata Azure-beli Windows rendszerű virtuális gépekhez | Microsoft Docs
+title: Oktatóanyag – Windows rendszerű virtuális gépekhez használható Azure Security Center használata az Azure-ban
 description: Ebben az oktatóanyagban megismeri az Azure Security Centert, és megtudhatja, hogyan védheti meg és teheti biztonságossá Windows rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100309"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064959"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Azure Security Center használata a Windows rendszerű virtuális gépek figyeléséhez
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata Windows rendszerű virtuális gépek megfigyeléséhez
 
 Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
 

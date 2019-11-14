@@ -1,11 +1,11 @@
 ---
-title: Internetre irányuló terheléselosztó létrehozása IPv6-PowerShell használatával
-titlesuffix: Azure Load Balancer
+title: Internetre irányuló terheléselosztó létrehozása IPv6-Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó az IPv6 protokollal a Resource Managerhez készült PowerShell használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6, mobil, IOT
+keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025808"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077057"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
 
@@ -28,14 +28,14 @@ ms.locfileid: "73025808"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Sablon](load-balancer-ipv6-internet-template.md)
 
->[! Megjegyzés: az IPv6-os ajánlott eljárás módosítása esetén ez a cikk egy bevezető IPv6-funkciót ismertet, amely lehetővé teszi az alapszintű terheléselosztó számára az IPv4-és IPv6-alapú kapcsolatok biztosítását.  A átfogóbb IPv6-kapcsolat mostantól elérhető az [IPv6 for Azure virtuális hálózatok](../virtual-network/ipv6-overview.md) , amely integrálja az IPv6-kapcsolatot a virtuális hálózatokkal, és olyan főbb funkciókat tartalmaz, mint például az IPv6 hálózati biztonsági csoport szabályai, IPv6 felhasználó által megadott útválasztás, IPv6 alapszintű és Standard szintű terheléselosztás és egyebek.  Az Azure virtuális hálózatok-hez készült IPv6 az ajánlott eljárás az IPv6-alkalmazások számára az Azure-ban. 
+>[! Megjegyzés: az IPv6-os ajánlott eljárás módosítása esetén ez a cikk egy bevezető IPv6-funkciót ismertet, amely lehetővé teszi az alapszintű terheléselosztó számára az IPv4-és IPv6-alapú kapcsolatok biztosítását.  A szélesebb körű IPv6-kapcsolatok mostantól elérhetők az [IPv6 for Azure virtuális hálózatok](../virtual-network/ipv6-overview.md) , amely integrálja az IPv6-kapcsolatot a virtuális hálózatokkal, és olyan kulcsfontosságú funkciókat tartalmaz, mint az IPv6 hálózati biztonsági csoport szabályai, az IPv6 felhasználó által megadott útválasztás, az IPv6 alapszintű és a standard szintű terheléselosztás, valamint egyebek.  Az Azure virtuális hálózatok-hez készült IPv6 az ajánlott eljárás az IPv6-alkalmazások számára az Azure-ban. 
 >Lásd: [IPv6 az Azure VNET PowerShell üzembe helyezéséhez](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A terheléselosztó a felhőszolgáltatások vagy virtuális gépek kifogástalan állapotú szolgáltatási példányai között osztja meg a bejövő forgalmat egy terheléselosztói készletben, és ezáltal biztosítja a magas rendelkezésre állást. Az Azure Load Balancer a szolgáltatásokat több portra vagy több IP-címre, illetve portokra és IP-címekre egyaránt továbbíthatja.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="example-deployment-scenario"></a>Példa telepítési forgatókönyv
+## <a name="example-deployment-scenario"></a>A példában üzembe helyezési forgatókönyv
 
 A következő ábra szemlélteti a cikkben üzembe helyezett terheléselosztási megoldást.
 
@@ -81,7 +81,7 @@ Győződjön meg arról, hogy rendelkezik a PowerShell Azure Resource Manager mo
     Get-AzSubscription
     ```
 
-3. Válassza ki, hogy melyek Azure-előfizetését használja.
+3. Válassza ki, hogy melyik Azure előfizetést fogja használni.
 
     ```azurepowershell-interactive
     Select-AzSubscription -SubscriptionId 'GUID of subscription'

@@ -1,5 +1,5 @@
 ---
-title: Chef-bővítmény Azure-beli virtuális gépekhez | Microsoft Docs
+title: Chef-bővítmény Azure-beli virtuális gépekhez
 description: Telepítse a Chef-ügyfelet egy virtuális gépre a Chef VM bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169150"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073192"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
 
@@ -36,7 +36,7 @@ A Chef virtuálisgép-bővítmény megköveteli, hogy a célként megadott virtu
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A kiterjesztéshez legalább a Chef-kiszolgáló URL-címére, az érvényesítési ügyfél nevére és a Chef-kiszolgáló érvényesítési kulcsára van szükség; Ezek az értékek a `knife.rb` [Chef automatizálása](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) vagy egy önálló Chef- [kiszolgáló](https://downloads.chef.io/chef-server)telepítésekor letöltött Starter-Kit. zip fájlban találhatók. Mivel az ellenőrző kulcsot bizalmas adatokként kell kezelni, azt a **protectedsettingsfromkeyvault** elem alatt kell konfigurálni, ami azt jelenti, hogy csak a célként megadott virtuális gépen lesz visszafejtve.
+A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A kiterjesztéshez legalább a Chef-kiszolgáló URL-címére, az érvényesítési ügyfél nevére és a Chef-kiszolgáló érvényesítési kulcsára van szükség; Ezek az értékek a [Chef automatizálása](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) vagy egy önálló [Chef-kiszolgáló](https://downloads.chef.io/chef-server)telepítésekor letöltött starter-kit. zip fájl `knife.rb` fájlban találhatók. Mivel az ellenőrző kulcsot bizalmas adatokként kell kezelni, azt a **protectedsettingsfromkeyvault** elem alatt kell konfigurálni, ami azt jelenti, hogy csak a célként megadott virtuális gépen lesz visszafejtve.
 
 ```json
 {
@@ -70,8 +70,8 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | sztring |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | sztring |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Beállítások
@@ -79,14 +79,14 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | I |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | I |
-| settings/runlist | `recipe[mycookbook::default]` | string | I |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
+| settings/runlist | `recipe[mycookbook::default]` | sztring | I |
 
 ### <a name="protected-settings"></a>Védett beállítások
 
 | Name (Név) | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | I |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
 
 <!--
 ### Linux-specific settings
@@ -110,7 +110,7 @@ Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típus
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI használatával üzembe helyezheti a Chef virtuálisgép-bővítményt egy meglévő virtuális gépre. Cserélje le a **validation_key** az érvényesítési kulcs tartalmára (ez a fájl `.pem` kiterjesztésként).  Cserélje le a **validation_client_name**, a **chef_server_url** és a **run_list** értéket `knife.rb` az alapszintű csomagban található fájl értékeire.
+Az Azure CLI használatával üzembe helyezheti a Chef virtuálisgép-bővítményt egy meglévő virtuális gépre. Cserélje le a **validation_keyt** az érvényesítési kulcs tartalmára (ez a fájl `.pem` kiterjesztésként).  Cserélje le a **validation_client_name**, **chef_server_url** és **run_list** értékeket az alapszintű csomagban lévő `knife.rb` fájlból.
 
 ```azurecli
 az vm extension set \

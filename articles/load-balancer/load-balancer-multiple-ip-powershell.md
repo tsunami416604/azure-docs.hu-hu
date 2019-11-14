@@ -1,10 +1,10 @@
 ---
-title: Több IP-konfiguráció – Azure CLI-vel a terheléselosztás
-titlesuffix: Azure Load Balancer
-description: Terheléselosztás több elsődleges és másodlagos IP-konfigurációkban.
+title: Terheléselosztás több IP-konfiguráción – Azure CLI
+titleSuffix: Azure Load Balancer
+description: Ebben a cikkben megismerheti az elsődleges és másodlagos IP-konfigurációk terheléselosztását az Azure CLI használatával.
 services: load-balancer
 documentationcenter: na
-author: anavinahar
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: anavin
-ms.openlocfilehash: bbd21ffeffeaf036909b5ab89f1a07909a03c3f0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: allensu
+ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621712"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075962"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráció PowerShell-lel
+# <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráción a PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](load-balancer-multiple-ip.md)
@@ -28,42 +28,42 @@ ms.locfileid: "67621712"
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
 
-Ez a cikk több, a másodlagos hálózati adapter (NIC) IP-címekkel rendelkező Azure Load Balancer használatát ismerteti. Ebben a forgatókönyvben két virtuális gépet futtató Windows, minden elsődleges és a egy másodlagos hálózati adapterre van Mindegyik másodlagos hálózati adapter két IP-konfigurációval rendelkezik. Minden virtuális gép, amelyen webhelyek a contoso.com és fabrikam.com. Minden webhely van kötve, az IP-konfigurációk közül a másodlagos hálózati adapteren. Az Azure Load Balancer használatával két előtérbeli IP-cím, egy minden olyan webhelyhez, a megfelelő IP-konfigurációhoz a webhely forgalom elosztását teszi közzé. Ebben a forgatókönyvben használja ugyanazt a portszámot is előtérrendszer, valamint háttérbeli címkészlet IP-címe között.
+Ez a cikk azt ismerteti, hogyan használható a Azure Load Balancer több IP-címmel a másodlagos hálózati adapteren (NIC). Ebben a forgatókönyvben két, Windows rendszerű virtuális gépet használunk, amelyek mindegyike elsődleges és másodlagos hálózati adapterrel rendelkezik. A másodlagos hálózati adapterek mindegyike két IP-konfigurációval rendelkezik. Mindegyik virtuális gép contoso.com és fabrikam.com egyaránt üzemelteti a webhelyeket. Minden webhely a másodlagos hálózati adapter egyik IP-konfigurációjáról van kötve. A Azure Load Balancer használatával két előtér-IP-címet teszünk közzé, amelyek közül az egyik az egyes webhelyekhez, a forgalom elosztása a webhely megfelelő IP-konfigurációjához. Ez a forgatókönyv ugyanazt a portszámot használja mindkét előtérben, valamint a háttérbeli készlet IP-címei között.
 
-![LB-forgatókönyv kép](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+![LB-forgatókönyv képe](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Terheléselosztás több IP-konfiguráció lépések
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Több IP-konfiguráció terheléselosztásának lépései
 
-A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lépésekkel:
+Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megvalósításához:
 
 1. Az Azure PowerShell telepítése. Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
-2. Hozzon létre egy erőforráscsoportot, a következő beállításokkal:
+2. Hozzon létre egy erőforráscsoportot a következő beállítások használatával:
 
     ```powershell
     $location = "westcentralus".
     $myResourceGroup = "contosofabrikam"
     ```
 
-    További információkért lásd a 2. lépés [hozzon létre egy erőforráscsoportot](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+    További információ: az [erőforráscsoport létrehozásának](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)2. lépése.
 
-3. [Hozzon létre egy rendelkezésre állási csoport](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) tartalmazza a virtuális gépek. A jelen esetben használja a következő parancsot:
+3. [Hozzon létre egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) , amely tartalmazza a virtuális gépeket. Ehhez a forgatókönyvhöz használja a következő parancsot:
 
     ```powershell
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Kövesse az utasításokat lépéseket 3 – 5 a [Windows virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) cikk egyetlen hálózati adapterrel. a virtuális gép létrehozásának előkészítése 6\.1-es lépés végrehajtása, és használja a következő lépés 6.2 helyett:
+4. Kövesse a [Windows rendszerű virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) című cikk 3 – 5. lépését a virtuális gép egyetlen hálózati adapterrel való létrehozásának előkészítéséhez. Hajtsa végre az 6,1-es lépést, és a 6,2-es lépés helyett használja a következőt:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Végezze el [Windows virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) lépések 6.3 6.8 keresztül.
+    Ezután [hozzon létre egy Windows rendszerű virtuális gép](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 – 6,8. lépéseit.
 
-5. A második IP-konfiguráció hozzáadása a virtuális gépek mindegyike. Kövesse a [több IP-cím hozzárendelése a virtuális gépek](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) cikk. Használja a következő beállításokat:
+5. Adjon hozzá egy második IP-konfigurációt az egyes virtuális gépekhez. Kövesse a [több IP-cím társítása virtuális gépekhez](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) című cikk utasításait. Használja a következő konfigurációs beállításokat:
 
     ```powershell
     $NicName = "VM1-NIC2"
@@ -73,11 +73,11 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
     $Subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $myVnet
     ```
 
-    Nem kell a másodlagos IP-konfigurációk társítani a jelen oktatóanyag nyilvános IP-címek. A parancsban távolítsa el a nyilvános IP-társítás rész.
+    A másodlagos IP-konfigurációkat nem kell a nyilvános IP-címekkel társítani az oktatóanyag céljára. Szerkessze a parancsot a nyilvános IP-társítási rész eltávolításához.
 
-6. Hajtsa végre a 4 – 6, ez a cikk újra VM2 számára. Feltétlenül cserélje le a virtuális gép nevét, a VM2, ennek során. Vegye figyelembe, hogy nem kell a második virtuális gép virtuális hálózat létrehozása. Előfordulhat, hogy Ön, vagy nem hozható létre egy új alhálózatot a használati eset alapján.
+6. Fejezze be a cikk 4 – 6. lépését a VM2. Ha ezt megteszi, ne felejtse el lecserélni a virtuális gép nevét a VM2. Vegye figyelembe, hogy a második virtuális GÉPHEZ nem szükséges virtuális hálózatot létrehoznia. A használati eset alapján lehetséges, hogy nem hoz létre új alhálózatot.
 
-7. Hozzon létre két nyilvános IP-címet, és tárolhatja őket a megfelelő változók látható módon:
+7. Hozzon létre két nyilvános IP-címet, és tárolja azokat a megfelelő változókban az alábbiak szerint:
 
     ```powershell
     $publicIP1 = New-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel contoso
@@ -87,14 +87,14 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
     $publicIP2 = Get-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam
     ```
 
-8. Hozzon létre két előtérbeli IP-konfigurációk:
+8. Hozzon létre két előtér-IP-konfigurációt:
 
     ```powershell
     $frontendIP1 = New-AzLoadBalancerFrontendIpConfig -Name contosofe -PublicIpAddress $publicIP1
     $frontendIP2 = New-AzLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2
     ```
 
-9. Hozza létre a háttércímkészletek, mintavétel és a terheléselosztási szabályok:
+9. Hozza létre a háttér-címkészlet, a mintavétel és a terheléselosztási szabályokat:
 
     ```powershell
     $beaddresspool1 = New-AzLoadBalancerBackendAddressPoolConfig -Name contosopool
@@ -106,13 +106,13 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
     $lbrule2 = New-AzLoadBalancerRuleConfig -Name HTTPf -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
     ```
 
-10. Ha már rendelkezik a következő erőforrások jönnek létre, a load balancer létrehozása:
+10. Miután létrehozta ezeket az erőforrásokat, hozza létre a terheléselosztó:
 
     ```powershell
     $mylb = New-AzLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'West Central US' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
     ```
 
-11. Adja hozzá az újonnan létrehozott terheléselosztó a második háttérrendszer cím-készlet és előtérbeli IP-konfiguráció:
+11. Adja hozzá a második háttér-címkészletet és az előtér-IP-konfigurációt az újonnan létrehozott Load Balancerhez:
 
     ```powershell
     $mylb = Get-AzLoadBalancer -Name "mylb" -ResourceGroupName $myResourceGroup | Add-AzLoadBalancerBackendAddressPoolConfig -Name fabrikampool | Set-AzLoadBalancer
@@ -122,7 +122,7 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
     Add-AzLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzLoadBalancer
     ```
 
-12. Az alábbi parancsokat a hálózati adapter lekérése, és adja hozzá a load balancer-háttércímkészlet mindkét minden másodlagos hálózati adapter IP-konfigurációja:
+12. Az alábbi parancsok lekérik a hálózati adaptereket, majd az összes másodlagos hálózati adapter IP-konfigurációját a terheléselosztó háttér-címkészlet részére is felveszik:
 
     ```powershell
     $nic1 = Get-AzNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
@@ -139,8 +139,8 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
     $nic2 | Set-AzNetworkInterface
     ```
 
-13. Végül konfigurálnia kell DNS-erőforrásrekordok, a terheléselosztó megfelelő előtérbeli IP-címre mutasson. You may host your domains in Azure DNS. Azure DNS használata a Load Balancer kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
+13. Végezetül konfigurálnia kell a DNS-erőforrásrekordokat úgy, hogy az a Load Balancer megfelelő előtérbeli IP-címére mutasson. You may host your domains in Azure DNS. A Azure DNS és a Load Balancer használatával kapcsolatos további információkért lásd: a [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>További lépések
-- Többféle terheléselosztási szolgáltatás az Azure-ban történő használatáról további [terheléselosztási szolgáltatás használata az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Ismerje meg, hogyan használhatja naplók különböző típusú Azure-beli kezeléséhez, és a load balancer hibaelhárítása [Azure Monitor-naplók az Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- További információ az Azure terheléselosztási szolgáltatásainak az Azure-beli [terheléselosztási szolgáltatások használatával](../traffic-manager/traffic-manager-load-balancing-azure.md)történő összevonásáról.
+- Ismerje meg, hogyan használhatja a különböző típusú naplókat az Azure-ban a [Azure Load Balancer Azure monitor naplófájljaiban](../load-balancer/load-balancer-monitor-log.md)található Load Balancer kezeléséhez és hibakereséséhez.

@@ -1,17 +1,14 @@
 ---
 title: Minta – naplózási diagnosztikai beállítás
 description: Ez a példa a házirend-definíciók naplózására, ha a diagnosztikai beállítások nincsenek engedélyezve a megadott erőforrástípusok esetében.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: b71876195ffd3993b49794835781e8ccbd1648d3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 5940fcc86221d4089609ac2d0828b0c710de7fbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977459"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076400"
 ---
 # <a name="sample---audit-diagnostic-setting"></a>Minta – naplózási diagnosztikai beállítás
 
@@ -73,4 +70,4 @@ az policy assignment delete --name "Audit diagnostics" --resource-group myResour
 
 ## <a name="next-steps"></a>További lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

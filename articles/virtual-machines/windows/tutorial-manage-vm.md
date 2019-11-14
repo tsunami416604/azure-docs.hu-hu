@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel | Microsoft Docs
+title: Oktatóanyag – Windows rendszerű virtuális gépek létrehozása és kezelése Azure PowerShell
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet Windows rendszerű virtuális gépeket az Azure-ban az Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101578"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067806"
 ---
-# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és kezelése Azure PowerShell
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel
 
 Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és rugalmas számítási környezetet nyújtanak. Az oktatóanyag az Azure-beli virtuális gépek (VM) üzembe helyezésének alapvető feladatait ismerteti, például a virtuális gépek méretének és rendszerképeinek kiválasztását és a virtuális gépek üzembe helyezését. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -180,7 +180,7 @@ A virtuális gép mérete határozza meg a virtuális gép számára elérhető 
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Type                     | Gyakori méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -244,7 +244,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Energiaállapot | Leírás
 |----|----|
 | Indítás | A virtuális gép indítása folyamatban van. |
-| Fut | Még fut a virtuális gép. |
+| Fut | A virtuális gép fut. |
 | Leállítás | A virtuális gép leállítása folyamatban van. |
 | Leállítva | A virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |
 | Felszabadítás | A virtuális gép fel van foglalva. |
@@ -269,7 +269,7 @@ Status
 PowerState/running
 ```
 
-## <a name="management-tasks"></a>Kezelési feladatok
+## <a name="management-tasks"></a>Felügyeleti feladatok
 
 A virtuális gépek életciklusa során előfordulhat, hogy olyan felügyeleti feladatokat szeretne futtatni, mint például a virtuális gépek elindítása, leállítása vagy törlése. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure PowerShell használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével.
 

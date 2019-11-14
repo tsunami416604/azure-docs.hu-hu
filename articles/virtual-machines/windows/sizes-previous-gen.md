@@ -1,5 +1,5 @@
 ---
-title: Azure Windowsos VM-méretek – korábbi generációk | Microsoft Docs
+title: Azure Windowsos VM-méretek – előző generációk
 description: Az Azure-beli Windows rendszerű virtuális gépekhez elérhető méretek korábbi generációit sorolja fel.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 43fecfcdbb381588f0c717b7ca771c23c19f367d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b5d1483082b319c5668fba41a7adfec8ba45d25c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088480"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066159"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 

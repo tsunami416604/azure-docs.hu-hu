@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb0f373000d09cb387fb73eec344997381fe45d1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961662"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076897"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
@@ -164,12 +164,12 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
 ## <a name="debug-locally"></a>Helyi hibakeresés
 
-Ha olyan problémák merülnek fel, amelyek a modell ACI-vagy AK-beli üzembe helyezésével kapcsolatosak, próbálja meg helyiként telepíteni. A helyi használata megkönnyíti a problémák elhárítását. A modellt tartalmazó Docker-rendszerkép le van töltve, és elindult a helyi rendszeren.
+Ha olyan problémák merülnek fel, amelyek a modell ACI-vagy AK-beli üzembe helyezésével kapcsolatosak, próbálja meg helyi webszolgáltatásként telepíteni. A helyi webszolgáltatás használatával egyszerűbbé válik a problémák elhárítása. A modellt tartalmazó Docker-rendszerkép le van töltve, és elindult a helyi rendszeren.
 
 > [!WARNING]
-> A helyi központi telepítések éles környezetben nem támogatottak.
+> A helyi webszolgáltatások üzembe helyezése éles környezetben nem támogatott.
 
-A helyileg történő üzembe helyezéshez módosítsa a kódot a `LocalWebservice.deploy_configuration()` használatára a telepítési konfiguráció létrehozásához. Ezután a `Model.deploy()` használatával telepítse a szolgáltatást. A következő példa egy modellt helyez üzembe (a `model` változóban) helyiként:
+A helyileg történő üzembe helyezéshez módosítsa a kódot a `LocalWebservice.deploy_configuration()` használatára a telepítési konfiguráció létrehozásához. Ezután a `Model.deploy()` használatával telepítse a szolgáltatást. A következő példa egy modellt helyez üzembe (a `model` változóban) helyi webszolgáltatásként:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -180,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -297,7 +297,7 @@ Két olyan dolog van, amely segíthet megelőzni a 503-es állapotkódot:
     > [!IMPORTANT]
     > Ez a változás nem eredményezi a replikák *gyorsabb*létrehozását. Ehelyett alacsonyabb kihasználtsági küszöbértékben jönnek létre. Ahelyett, hogy megvárná, amíg a szolgáltatás 70%-ot nem használ, az érték 30%-ra való módosítása a replikákat a 30%-os kihasználtság esetén hozza létre.
     
-    Ha a már használja a jelenlegi maximális replikákat, és továbbra is a 503-es állapotkódot látja, növelje a `autoscale_max_replicas` értéket a replikák maximális számának növeléséhez.
+    Ha a webszolgáltatás már használja a jelenlegi maximális replikákat, és továbbra is a 503-es állapotkódot látja, növelje a `autoscale_max_replicas` értéket a replikák maximális számának növeléséhez.
 
 * Módosítsa a replikák minimális számát. A minimális replikák növelése nagyobb készletet biztosít a bejövő tüskék kezeléséhez.
 
@@ -333,7 +333,7 @@ Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végezni
 > [!IMPORTANT]
 > Ez a hibakeresési módszer nem működik, ha a `Model.deploy()` és `LocalWebservice.deploy_configuration` használatával helyileg helyezi üzembe a modellt. Ehelyett létre kell hoznia egy rendszerképet a [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály használatával. 
 
-A helyi központi telepítések működéséhez a helyi rendszeren működő Docker-telepítés szükséges. A Docker használatával kapcsolatos további információkért lásd a [Docker dokumentációját](https://docs.docker.com/).
+A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Docker-telepítés szükséges. A Docker használatával kapcsolatos további információkért lásd a [Docker dokumentációját](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
@@ -534,7 +534,7 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről:
 

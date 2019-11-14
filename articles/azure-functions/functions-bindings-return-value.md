@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086406"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074403"
 ---
 # <a name="using-the-azure-function-return-value"></a>Az Azure Function Return értékének használata
 
@@ -23,21 +23,13 @@ Ez a cikk azt ismerteti, hogyan működnek a visszatérési értékek egy függv
 A visszatérési értékkel rendelkező nyelveken a függvény [kimeneti kötését](./functions-triggers-bindings.md#binding-direction) a visszatérési értékhez kötheti:
 
 * Egy C# osztály-függvénytárban alkalmazza a kimeneti kötési attribútumot a metódus visszatérési értékére.
-* Más nyelveken állítsa a `name` *Function* `$return`. JSON tulajdonságot a következőre:.
+* Más nyelveken a *function. JSON* fájl `name` tulajdonságát állítsa `$return`.
 
 Ha több kimeneti kötés is van, akkor a visszatérési értéket csak az egyikre használja.
 
-A C# és C# a parancsfájlban az adatok `out` kimeneti kötésbe való küldésének alternatív módjai a paraméterek és a [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
+A C# és C# a parancsfájlban az adatok kimeneti kötésbe való küldésének alternatív módjai `out` paraméterek és [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
 
-Tekintse meg a visszatérési érték használatát bemutató nyelvspecifikus példát:
-
-* [C#](#c-example)
-* [C# script (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-## <a name="c-example"></a>C#például
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az alábbi C# kód egy kimeneti kötés visszatérési értékét használja, amelyet egy aszinkron példa követ:
 
@@ -63,7 +55,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C#parancsfájl – példa
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Itt látható a *function. JSON* fájlban található kimeneti kötés:
 
@@ -96,7 +88,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F#például
+# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
 Itt látható a *function. JSON* fájlban található kimeneti kötés:
 
@@ -118,7 +110,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-## <a name="javascript-example"></a>JavaScript-példa
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Itt látható a *function. JSON* fájlban található kimeneti kötés:
 
@@ -131,7 +123,7 @@ Itt látható a *function. JSON* fájlban található kimeneti kötés:
 }
 ```
 
-A JavaScriptben a visszatérési érték a második paraméterben a `context.done`következő:
+A JavaScriptben a visszatérési érték a `context.done`második paramétere:
 
 ```javascript
 module.exports = function (context, input) {
@@ -141,7 +133,7 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Python-példa
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Itt látható a *function. JSON* fájlban található kimeneti kötés:
 
@@ -163,6 +155,8 @@ def main(input: azure.functions.InputStream) -> str:
         'content': input.read().decode('utf-8')
     })
 ```
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

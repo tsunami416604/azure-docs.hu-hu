@@ -1,5 +1,5 @@
 ---
-title: A Visual Studio használata Azure-beli virtuális gépeken | Microsoft Docs
+title: A Visual Studio használata Azure-beli virtuális gépeken
 description: A Visual Studio használata Azure-beli virtuális gépeken.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 09/24/2019
 ms.author: phillee
 keywords: VisualStudio
-ms.openlocfilehash: 3cdec1bb9d4cb44c4cead6d2d208d661bf5da6ae
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 2879317289b0c828ac580a7df11771b1b4550bd2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971874"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067415"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.
@@ -35,11 +35,11 @@ A legújabb főverziók, a Visual Studio 2019, a Visual Studio 2017 és a Visual
 
 | Kiadás verziója                                                                                                                                                | Kiadások              | Termék verziója   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Legújabb (16,2-es verzió) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.0 verziója    |
-| [Visual Studio 2019: RTW @ NO__T – 0                         | Vállalat, Közösség | 16.0.8 verziója    |
-| [Visual Studio 2017: Legújabb (15,9-es verzió) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Vállalat, Közösség | 15.9.16 verziója   |
-| [Visual Studio 2017: RTW @ NO__T – 0                             | Vállalat, Közösség | 15.0.25 verziója   |
-| [Visual Studio 2015: Legutóbbi (3. frissítés) @no__t – 0               | Vállalat, Közösség | 14.0.25431.01 verziója |
+| [Visual Studio 2019: legújabb (16,2-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.0 verziója    |
+| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Vállalat, Közösség | 16.0.8 verziója    |
+| [Visual Studio 2017: legújabb (15,9-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Vállalat, Közösség | 15.9.16 verziója   |
+| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Vállalat, Közösség | 15.0.25 verziója   |
+| [Visual Studio 2015: legújabb (3. frissítés)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Vállalat, Közösség | 14.0.25431.01 verziója |
 
 > [!NOTE]
 > A Microsoft karbantartási szabályzatának megfelelően a Visual Studio 2015 eredetileg kiadott (RTW) verziója lejárt a karbantartáshoz. A Visual Studio 2015 Update 3 az egyetlen, a Visual Studio 2015 termékcsalád számára elérhető verzió.
@@ -97,7 +97,7 @@ További információ: [Bejelentkezés a Visual studióba](/visualstudio/ide/sig
 
 A fejlesztési környezetek spektruma óriási, és a bonyolultabb környezetek kiépítéséhez is valós díjak tartoznak. A környezet konfigurációjától függetlenül elmentheti vagy rögzítheti a konfigurált virtuális gépet "alaprendszerképként" a későbbi használatra, illetve a csapat más tagjai számára. Ezután az új virtuális gép indításakor kiépítheti azt az alaprendszerképből, nem az Azure Marketplace-rendszerképből.
 
-Gyors Összefoglalás: Használja a rendszer-előkészítő eszközt (Sysprep), és állítsa le a futó virtuális gépet, majd rögzítse *(1. ábra)* a virtuális gépet lemezképként a Azure Portal felhasználói felületén. Az Azure menti a `.vhd` fájlt, amely tartalmazza a képet a választott Storage-fiókban. Az új rendszerkép megjelenik a rendszerkép-erőforrásként az előfizetés erőforrásainak listájában.
+Gyors Összefoglalás: használja a rendszer-előkészítő eszközt (Sysprep), és állítsa le a futó virtuális gépet, majd rögzítse *(1. ábra)* a virtuális gépet lemezképként a Azure Portal felhasználói felületén. Az Azure menti a képet tartalmazó `.vhd` fájlt a választott Storage-fiókban. Az új rendszerkép megjelenik a rendszerkép-erőforrásként az előfizetés erőforrásainak listájában.
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(1. ábra) Rendszerkép rögzítése a Azure Portal felhasználói felületén keresztül.* </center>
 

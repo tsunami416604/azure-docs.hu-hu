@@ -9,24 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 09/24/2019
-ms.openlocfilehash: 7e67b9e1c611d14b78db53f8662fb4e1f493a8df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 1ed57e30273c9ba3feb110e0e5acbd3bcc7ffd40
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990199"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74062887"
 ---
-> [!IMPORTANT]
-> * Az új **Azure Active Directory** > **Alkalmazásregisztrációk** panel lecseréli az örökölt **Azure Active Directory** > **Alkalmazásregisztrációk (örökölt)** 2019.
-> * Az örökölt panelen létrehozott vagy megjelenő Alkalmazásregisztrációk automatikusan megjelenik az új panelen.
-> * Az új Azure-alkalmazás regisztrációs felületére való áttelepítéssel kapcsolatos részletes információkért olvassa el az [azure Alkalmazásregisztrációk képzési útmutatót](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) , és [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)a gyors üzembe helyezést.
-
 1. A [Azure Portal](https://ms.portal.azure.com/)válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
 
-   [Új alkalmazás-regisztráció![Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
-
-   > [!TIP]
-   > Az új Azure Active Directory alkalmazás regisztrációs panelje lehetővé teszi a megjelenített alkalmazások szűrését a **saját alkalmazások**kiválasztásával.
+   [Új alkalmazás-regisztráció ![Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
     A regisztrálás után az alkalmazás itt jelenik meg.
 
@@ -49,13 +41,13 @@ ms.locfileid: "72990199"
 
     1. Engedélyezze az implicit engedélyezési folyamatot az **azonosító tokenek**ellenőrzésével.
 
-   [új ügyfél-titkos![létrehozása](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+   [új ügyfél-titkos ![létrehozása](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
    Kattintson a **Save** (Mentés) gombra.
 
 1. Válassza a **tanúsítványok & Secrets** , majd az **új ügyfél titka** elemet egy olyan alkalmazás jelszavának létrehozásához, amelyet az ügyfél a személyazonosságának bizonyítására használhat fel.
 
-   [új ügyfél-titkos![létrehozása](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
+   [új ügyfél-titkos ![létrehozása](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 
    Ekkor megjelenik az ügyfél titkos jelszava. Másolja a kulcsot a kedvenc szövegszerkesztőbe.
 

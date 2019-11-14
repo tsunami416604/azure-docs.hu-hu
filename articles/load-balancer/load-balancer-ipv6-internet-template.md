@@ -1,7 +1,7 @@
 ---
 title: Internetkapcsolattal rendelkező Load-Balancer üzembe helyezése IPv6-Azure-sablonnal
 titleSuffix: Azure Load Balancer
-description: IPv6-támogatás telepítése Azure Load Balancer és elosztott terhelésű virtuális gépekhez.
+description: Ismerje meg, hogyan telepíthet IPv6-támogatást Azure Load Balancer és elosztott terhelésű virtuális gépekhez egy Azure-sablon használatával.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: e5cfc980387b63701fb3ff36e7fa8ac43800ecce
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f92011a6955398ef85e44fae1ce8f782cc9cc12c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048446"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076006"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó megoldás üzembe helyezése IPv6-sablonnal sablon használatával
 
@@ -136,6 +136,6 @@ A cikkben használt példa sablon a következő változókat és paramétereket 
 
 A sablon többi változója olyan származtatott értékeket tartalmaz, amelyek akkor vannak hozzárendelve, amikor az Azure létrehozza az erőforrásokat. Ne módosítsa ezeket a változókat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sablonban lévő terheléselosztó JSON-szintaxisához és tulajdonságaihoz lásd: [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

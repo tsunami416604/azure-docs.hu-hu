@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Magas rendelkezésre állás az Azure-beli Windows rendszerű virtuális gépeken | Microsoft Docs
+title: Oktatóanyag – magas rendelkezésre állás a Windows rendszerű virtuális gépek számára az Azure-ban
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure PowerShellt magas rendelkezésre állású virtuális gépek üzembe helyezésére a rendelkezésre állási csoportokban
 documentationcenter: ''
 services: virtual-machines-windows
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b943a4476a6b0d639353816337deea96eb14fe24
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101703"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068138"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Magasan elérhető virtuális gépek létrehozása és üzembe helyezése Azure PowerShell
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure PowerShell-lel
 
 Ebből az oktatóanyagból megtudhatja, hogyan növelheti a Virtual Machines (VM-EK) rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok használatával. A rendelkezésre állási csoportok gondoskodnak arról, hogy az Azure-ban üzembe helyezett virtuális gépek több, elkülönített hardverkonfiguráció között legyenek elosztva a fürtben. 
 
@@ -63,7 +63,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-Hozzon létre egy felügyelt rendelkezésre állási készletet `-sku aligned` a [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) és a paraméter használatával.
+Hozzon létre egy felügyelt rendelkezésre állási készletet a [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) és a `-sku aligned` paraméter használatával.
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -79,7 +79,7 @@ New-AzAvailabilitySet `
 A virtuális gépeket a rendelkezésre állási csoporton belül kell létrehozni annak biztosításához, hogy megfelelően legyenek elosztva a hardveren. A létrehozás után nem adhat hozzá meglévő virtuális gépet egy rendelkezésre állási csoporthoz. 
 
 
-Amikor [új AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)hoz létre egy virtuális gépet, a `-AvailabilitySetName` paraméter használatával megadhatja a rendelkezésre állási csoport nevét.
+Amikor [új AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)hoz létre egy virtuális gépet, a `-AvailabilitySetName` paraméterrel adhatja meg a rendelkezésre állási csoport nevét.
 
 Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
@@ -107,7 +107,7 @@ for ($i=1; $i -le 2; $i++)
 
 A két virtuális gép létrehozása és konfigurálása néhány percet vesz igénybe. Ha befejeződött, két virtuális géppel rendelkezik majd elosztva a mögöttes hardveren. 
 
-Ha megtekinti a rendelkezésre állási **csoportot** > a portálon, az erőforráscsoportok**myResourceGroupAvailability** > **myAvailabilitySet**, látnia kell, hogyan oszlanak meg a virtuális gépek a két hiba és a frissítés között tartományok.
+Ha megtekinti a rendelkezésre állási csoportot a portálon, az **erőforráscsoportok** > **myResourceGroupAvailability** > **myAvailabilitySet**, látnia kell, hogyan oszlanak meg a virtuális gépek a két hiba és a frissítési tartomány között.
 
 ![Rendelkezésre állási csoport a portálon](./media/tutorial-availability-sets/fd-ud.png)
 

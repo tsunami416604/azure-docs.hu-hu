@@ -1,7 +1,7 @@
 ---
 title: Mi az Azure standard Load Balancer?
 titlesuffix: Azure Load Balancer
-description: Az Azure standard Load Balancer funkcióinak áttekintése
+description: Ezzel a képzési útvonallal megismerheti az Azure standard Load Balancer funkcióinak áttekintését.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: allensu
-ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274399"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068786"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure standard Load Balancer áttekintése
 
@@ -66,11 +66,11 @@ A háttérbeli készlet kialakításának megtervezése során a felügyeleti m�
 
 ### <a name="probes"></a>Állapot-mintavételek
   
-A standard Load Balancer támogatja a [https](load-balancer-custom-probe-overview.md#httpprobe) -állapotú mintavételeket (http-mintavétel TRANSPORT Layer Security (TLS) burkolóval) a https-alkalmazások pontos figyeléséhez.  
+A standard Load Balancer támogatja a [https-állapotú](load-balancer-custom-probe-overview.md#httpprobe) mintavételeket (http-mintavétel TRANSPORT Layer Security (TLS) burkolóval) a https-alkalmazások pontos figyeléséhez.  
 
-Emellett, ha a teljes háttérrendszer- [](load-balancer-custom-probe-overview.md#probedown)készlet mintavételt végez, standard Load Balancer lehetővé teszi az összes létesített TCP-kapcsolat folytatását. (Az alapszintű Load Balancer leállítja az összes TCP-kapcsolatot az összes példányra).
+Emellett, ha a teljes háttérrendszer- [készlet](load-balancer-custom-probe-overview.md#probedown)mintavételt végez, standard Load Balancer lehetővé teszi az összes létesített TCP-kapcsolat folytatását. (Az alapszintű Load Balancer leállítja az összes TCP-kapcsolatot az összes példányra).
 
-A részletekért tekintse át [Load Balancer Health](load-balancer-custom-probe-overview.md) -szondákat.
+A részletekért tekintse át [Load Balancer Health-szondákat](load-balancer-custom-probe-overview.md) .
 
 ### <a name="az"></a>Availability Zones
 
@@ -144,13 +144,13 @@ Ha további SNAT-portokra van szüksége, mert várt vagy már magas keresletet 
 Ha korlátozni szeretné a kimenő kapcsolatokat, hogy csak egy adott előtér-IP-címről származzanak, akkor letilthatja a kimenő SNAT a kimenő leképezést kifejező szabályon.
 
 #### <a name="control-outbound-connectivity"></a>Kimenő kapcsolat vezérlése
-Standard Load Balancer létezik a virtuális hálózat kontextusában.  A virtuális hálózat egy elkülönített, magánhálózati hálózat.  Ha nem létezik nyilvános IP-címmel rendelkező társítás, a nyilvános kapcsolat nem engedélyezett.  Elérheti a [VNet szolgáltatás](../virtual-network/virtual-network-service-endpoints-overview.md) -végpontokat, mivel azok a virtuális hálózatban és a helyi hálózaton belül vannak.  Ha kimenő kapcsolatot szeretne létesíteni a virtuális hálózatán kívüli célhoz, két lehetőség közül választhat:
+Standard Load Balancer létezik a virtuális hálózat kontextusában.  A virtuális hálózat egy elkülönített, magánhálózati hálózat.  Ha nem létezik nyilvános IP-címmel rendelkező társítás, a nyilvános kapcsolat nem engedélyezett.  Elérheti a [VNet szolgáltatás-végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md) , mivel azok a virtuális hálózatban és a helyi hálózaton belül vannak.  Ha kimenő kapcsolatot szeretne létesíteni a virtuális hálózatán kívüli célhoz, két lehetőség közül választhat:
 - rendeljen hozzá egy standard SKU nyilvános IP-címet a virtuálisgép-erőforráshoz tartozó példány-szintű nyilvános IP-címnek
 - Helyezze a virtuális gép erőforrását egy nyilvános standard Load Balancer háttér-készletéből.
 
 Mindkettő lehetővé teszi a virtuális hálózat kimenő kapcsolatát a virtuális hálózaton kívülre. 
 
-Ha _csak_ belső standard Load Balancer van társítva ahhoz a háttér-készlethez, amelyben a virtuális gép erőforrása található, a virtuális gép csak virtuális hálózati erőforrásokat és [VNet](../virtual-network/virtual-network-service-endpoints-overview.md)-végpontokat érhet el.  A kimenő kapcsolatok létrehozásához kövesse az előző bekezdésben ismertetett lépéseket.
+Ha _csak_ belső standard Load Balancer van társítva ahhoz a háttér-készlethez, amelyben a virtuális gép erőforrása található, a virtuális gép csak virtuális hálózati erőforrásokat és [VNet-végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)érhet el.  A kimenő kapcsolatok létrehozásához kövesse az előző bekezdésben ismertetett lépéseket.
 
 A standard SKU-hoz nem társított virtuálisgép-erőforrások kimenő kapcsolata korábban is megmarad.
 
@@ -228,8 +228,8 @@ A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](http
 - Egy Load Balancer szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a hozzájuk kapcsolódó háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
 - Az [előfizetési műveletek](../azure-resource-manager/resource-group-move-resources.md) nem támogatottak a standard SKU LB és a pip-erőforrások esetében.
 - A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök csak akkor érhetők el, ha csak belső standard Load Balancer van használatban, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkciójának mellékhatása. Ezt nem kell felhasználnia, mert a saját maga vagy a mögöttes platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a [kimenő kapcsolatot](load-balancer-outbound-connections.md) explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges.
-- A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Az előtérhöz való csatlakozás sikeres ellenőrzéséhez a terheléselosztás vagy a bejövő NAT-szabályban (TCP vagy UDP) használt protokollnak kell futnia, _és_ a virtuális gépek közül legalább az egyiknek választ kell adnia az ügyfél számára a válasz megtekintéséhez előtér-végpont.  Nem érkezett sávon kívüli válasz a Load Balancer előtérből azt jelzi, hogy egyetlen virtuális gép sem tudott válaszolni.  Nem lehet kommunikálni Load Balancer előtérrel anélkül, hogy a virtuális gép válaszolni tudjon.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.
-- A nyilvános terheléselosztással ellentétben, amelyek [kimenő kapcsolatokat](load-balancer-outbound-connections.md) biztosítanak a virtuális hálózaton belüli magánhálózati IP-címekről a nyilvános IP-címekre való áttéréskor, a belső terheléselosztó nem fordítja le az előtérben lévő kimenő kapcsolatokat. belső Load Balancer, mert mindkettő a magánhálózati IP-címtartomány részét képezi.  Ezzel elkerülhető, hogy a SNAT kimerülése az egyedi belső IP-címtartomány belsejében történjen, ahol a fordítás nem szükséges.  Ennek mellékhatása az, hogy ha a háttér-készletben lévő virtuális gépről érkező kimenő forgalom egy olyan belső Load Balancer előtér-végpontját kísérli meg, amelyben a készlet található, _és_ az önmagához van rendelve, a folyamat mindkét lába nem egyezik, és a folyamat sikertelen lesz.  Ha a folyamat nem adott vissza ugyanarra a virtuális gépre a háttér-készletben, amely létrehozta az előtér-folyamatot, a folyamat sikeres lesz.   Ha a folyamat magához a rendszerhez kapcsolódik, a kimenő folyamat úgy tűnik, hogy a virtuális gépről a kezelőfelületről származik, és úgy tűnik, hogy a megfelelő bejövő folyamat a virtuális gépről származik. A vendég operációs rendszer szempontjából ugyanazon folyamat bejövő és kimenő részei nem egyeznek a virtuális gépen belül. A TCP-verem nem fogja ugyanazon folyam részeiként felismerni a folyamat két felét, mivel a forrás és a cél nem egyezik.  Ha a folyamat a háttérbeli készlet bármely más virtuális gépe felé mutat, a folyamat felei megegyeznek, és a virtuális gép sikeresen tud válaszolni a folyamatra.  A forgatókönyv tünete átmeneti kapcsolati időtúllépés. A forgatókönyv megbízható megvalósításának számos gyakori megkerülő megoldása van (a háttér-készletből a háttér-készletekből származó, a belső Load Balancer előtér-környezetből származó folyamatokat is beleértve), amelyek magukban foglalják a harmadik fél proxyját a belső terhelés mögött A kiegyenlítő vagy [a DSR stílusú szabályok használata](load-balancer-multivip-overview.md).  Habár a mérsékléshez használható nyilvános Load Balancer, a létrejövő forgatókönyvnél valószínű lesz az [SNAT elfogyása](load-balancer-outbound-connections.md#snat), és ez körültekintő felügyelet nélkül inkább kerülendő.
+- A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Az előtérhöz való csatlakozás sikeres ellenőrzéséhez a terheléselosztásban vagy a bejövő NAT-szabályban (TCP vagy UDP) használt protokollnak kell futnia, _és_ legalább az egyik virtuális gépnek választ kell adnia az ügyfél számára, hogy megtekintse az előtértől kapott választ.  Nem érkezett sávon kívüli válasz a Load Balancer előtérből azt jelzi, hogy egyetlen virtuális gép sem tudott válaszolni.  Nem lehet kommunikálni Load Balancer előtérrel anélkül, hogy a virtuális gép válaszolni tudjon.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.
+- A belső terheléselosztási szolgáltatásokkal ellentétben, amelyek [kimenő kapcsolatokat](load-balancer-outbound-connections.md) biztosítanak a virtuális hálózaton belüli magánhálózati IP-címekről a nyilvános IP-címekre való áttéréskor, a belső terheléselosztó nem fordítja le a kimenő kapcsolatot a belső Load Balancer előtér-hálózatával, mivel mindkettő a magánhálózati IP-címtartomány részét képezi.  Ezzel elkerülhető, hogy a SNAT kimerülése az egyedi belső IP-címtartomány belsejében történjen, ahol a fordítás nem szükséges.  Ennek mellékhatása az, hogy ha a háttér-készletben lévő virtuális gépről érkező kimenő forgalom egy olyan belső Load Balancer előtér-végpontját kísérli meg, amelyben a készlet található, _és_ az önmagához van rendelve, a folyamat mindkét lába nem egyezik, és a folyamat sikertelen lesz.  Ha a folyamat nem adott vissza ugyanarra a virtuális gépre a háttér-készletben, amely létrehozta az előtér-folyamatot, a folyamat sikeres lesz.   Ha a folyamat magához a rendszerhez kapcsolódik, a kimenő folyamat úgy tűnik, hogy a virtuális gépről a kezelőfelületről származik, és úgy tűnik, hogy a megfelelő bejövő folyamat a virtuális gépről származik. A vendég operációs rendszer szempontjából ugyanazon folyamat bejövő és kimenő részei nem egyeznek a virtuális gépen belül. A TCP-verem nem fogja ugyanazon folyam részeiként felismerni a folyamat két felét, mivel a forrás és a cél nem egyezik.  Ha a folyamat a háttérbeli készlet bármely más virtuális gépe felé mutat, a folyamat felei megegyeznek, és a virtuális gép sikeresen tud válaszolni a folyamatra.  A forgatókönyv tünete átmeneti kapcsolati időtúllépés. A forgatókönyv megbízható megvalósításának számos gyakori megkerülő megoldása van (a háttér-készletből a háttér-készletekből származó, a belső Load Balancer előtér-környezetből származó folyamatokat), amelyek a belső Load Balancer vagy a [DSR-stílus szabályainak használatával](load-balancer-multivip-overview.md)vagy egy külső gyártótól származó proxy beszúrását is magukban foglalják.  Habár a mérsékléshez használható nyilvános Load Balancer, a létrejövő forgatókönyvnél valószínű lesz az [SNAT elfogyása](load-balancer-outbound-connections.md#snat), és ez körültekintő felügyelet nélkül inkább kerülendő.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -237,12 +237,12 @@ A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](http
 - Tudnivalók az [állapot](load-balancer-custom-probe-overview.md)-mintavételekről.
 - További információ a [Availability Zonesról](../availability-zones/az-overview.md).
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
-- Ismerje meg a [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) [-diagnosztika támogatott](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) többdimenziós mérőszámait.
+- Ismerje meg a [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) [-diagnosztika támogatott többdimenziós mérőszámait](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) .
 - A megismerése [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md).
 - További információ a [kimenő szabályokról](load-balancer-outbound-rules-overview.md).
-- További információ [a TCP](load-balancer-tcp-reset.md)alaphelyzetbe állításáról üresjáratban.
+- További információ [a TCP alaphelyzetbe állításáról üresjáratban](load-balancer-tcp-reset.md).
 - További tudnivalók a HA-portok terheléselosztási [szabályaival standard Load Balancer](load-balancer-ha-ports-overview.md).
-- Ismerje meg, hogyan használhatja [a Load Balancert több](load-balancer-multivip-overview.md)előtér-felülettel.
+- Ismerje meg, hogyan használhatja [a Load Balancert több előtér-felülettel](load-balancer-multivip-overview.md).
 - További információ a [virtuális hálózatokról](../virtual-network/virtual-networks-overview.md).
 - További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
 - További információ a [VNet szolgáltatási végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md).

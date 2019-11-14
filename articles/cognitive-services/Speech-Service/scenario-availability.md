@@ -1,7 +1,7 @@
 ---
 title: Forgatókönyv rendelkezésre állása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Speech Service régióira mutató hivatkozás.
+description: A Speech SDK számos különféle forgatókönyvet tartalmaz a programozási nyelvek és környezetek széles körében. Nem minden forgatókönyv érhető el minden programozási nyelven vagy az összes környezetben. Az alábbiakban az egyes forgatókönyvek rendelkezésre állása látható.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02632e5bc84c7406ce3a42eb4be71cf6aaf75c15
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491343"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075764"
 ---
 # <a name="scenario-availability"></a>Forgatókönyv rendelkezésre állása
 
-A Speech Service SDK számos különböző forgatókönyvet tartalmaz a programozási nyelvek és környezetek széles körében.  Jelenleg nem minden forgatókönyv érhető el az összes programozási nyelven vagy az összes környezetben.  Az alábbiakban az egyes forgatókönyvek rendelkezésre állása látható.
+A Speech SDK számos különféle forgatókönyvet tartalmaz a programozási nyelvek és környezetek széles körében. Nem minden forgatókönyv érhető el minden programozási nyelven vagy az összes környezetben. Az alábbiakban az egyes forgatókönyvek rendelkezésre állása látható.
 
 - **Beszédfelismerés (SR), kifejezések listája, szándék, fordítás és helyszíni tárolók**
   - Minden programozási nyelv/környezet, ahol van nyíl hivatkozás <img src="media/index/link.jpg" height="15" width="15"></img> [itt](https://aka.ms/csspeech)találja a rövid útmutató táblázatát.

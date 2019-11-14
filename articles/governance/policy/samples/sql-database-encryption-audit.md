@@ -1,17 +1,14 @@
 ---
 title: Minta – transzparens adattitkosítás naplózása SQL-kiszolgálón
 description: Ez a példa a házirend-definíció naplózására vonatkozik, ha az SQL Database-ben nincs engedélyezve a transzparens adattitkosítás.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 4027ad28b6589872dd2f52961710c4db95a257e7
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 60f617445c33de524cf71b0c81514bf93b3592d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254793"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069716"
 ---
 # <a name="sample---audit-sql-database-encryption"></a>Példa – az SQL Database titkosításának naplózása
 
@@ -47,7 +44,7 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +52,7 @@ Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL TDE Audit" --policy 17k78e20-9358-41c9-923c-fb736d382a12
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 
@@ -63,6 +60,6 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További példákat [Az Azure Policy-minták](index.md) oldalon talál.
+- További minták [Az Azure Policy mintái](index.md) oldalon

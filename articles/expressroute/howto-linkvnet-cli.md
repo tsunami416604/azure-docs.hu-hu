@@ -1,5 +1,5 @@
 ---
-title: 'Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport: CLI: Azure| Microsoft Docs'
+title: 'Azure ExpressRoute: VNet összekapcsolása az áramkörrel: CLI'
 description: Ez a cikk bemutatja, hogyan virtuális hálózatok (Vnetek) az ExpressRoute-Kapcsolatcsoportok összekapcsolása a Resource Manager üzemi modell és a CLI használatával.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.custom: seodec18
-ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621060"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076546"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz parancssori felület használatával
 
@@ -58,7 +56,7 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 ExpressRoute-kapcsolatcsoport több előfizetésre kiterjedő megoszthatja. Az alábbi ábra egy egyszerű az ExpressRoute-Kapcsolatcsoportok hogyan megosztási alkotások sematikus több előfizetéshez.
 
-A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet különböző részlegei tartozó előfizetések megjelenítésére szolgál. Minden, a szervezeti egységek, a szervezeten belül használhatja a saját előfizetés üzembe helyezéséhez a szolgáltatásaik –, de egyetlen ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni a helyszíni hálózaton is megoszthatja. Egyetlen részleg (ebben a példában: Informatikai) is a saját ExpressRoute-kapcsolatcsoportot. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoporthoz.
+A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet különböző részlegei tartozó előfizetések megjelenítésére szolgál. Minden, a szervezeti egységek, a szervezeten belül használhatja a saját előfizetés üzembe helyezéséhez a szolgáltatásaik –, de egyetlen ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni a helyszíni hálózaton is megoszthatja. Egyetlen részleg (ebben a példában: informatikai) is a saját ExpressRoute-kapcsolatcsoportot. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoporthoz.
 
 > [!NOTE]
 > Az ExpressRoute-kapcsolatcsoport tulajdonosát a kapcsolatot és a sávszélesség díjak a dedikált kapcsolatcsoport lépnek érvénybe. Minden virtuális hálózat ossza meg ugyanazt a sávszélesség.
@@ -154,11 +152,11 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 
 A számos *routingweight értékének* 0 a 32000 van. Az alapértelmezett érték a 0.
 
-## <a name="configure-expressroute-fastpath"></a>Configure ExpressRoute FastPath 
-Engedélyezheti a [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Ha az ExpressRoute-kapcsolatcsoport [ExpressRoute közvetlen](expressroute-erdirect-about.md) és a virtuális newtork átjáró Ultranagy teljesítményű vagy ErGw3AZ. FastPath javítja az adatok elérési útja preformance például a csomagok másodpercenkénti számát és a kapcsolatok száma másodpercenként a helyszíni hálózat és a virtuális hálózat között. 
+## <a name="configure-expressroute-fastpath"></a>ExpressRoute-FastPath konfigurálása 
+Engedélyezheti a [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , ha a ExpressRoute-áramkör a [ExpressRoute Direct](expressroute-erdirect-about.md) szolgáltatásban van, és a virtuális newtork látogasson el-átjáró Ultra Performance vagy ErGw3AZ. A FastPath a helyszíni hálózat és a virtuális hálózat között a másodpercenkénti adatelérési utak, például a csomagok másodpercenkénti számát és a kapcsolatok másodpercenkénti számát javítja. 
 
 > [!NOTE] 
-> Ha már rendelkezik a virtuális hálózati kapcsolat, de még nem engedélyezte a FastPath kell törölni a virtuális hálózati kapcsolatot, és hozzon létre egy újat. 
+> Ha már rendelkezik virtuális hálózati kapcsolatban, de nincs engedélyezve a FastPath, törölnie kell a virtuális hálózati kapcsolatokat, és létre kell hoznia egy újat. 
 > 
 >  
 

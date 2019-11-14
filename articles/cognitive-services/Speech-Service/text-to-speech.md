@@ -1,7 +1,7 @@
 ---
 title: Szöveges – beszéd – beszéd szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Speech Service szöveg-beszéd funkciója egy olyan szolgáltatás, amely lehetővé teszi, hogy az alkalmazások, eszközök vagy eszközök szövegét természetes, emberi – például szintetizált beszédre alakítsa át. Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang 4 nyelven és területi beállításban érhető el.
+description: A beszédfelismerési szolgáltatás szöveg-beszéd funkciója lehetővé teszi, hogy az alkalmazások, eszközök és eszközök szövegét természetes emberi – például szintetizált beszédre alakítsa át. Válassza az előre definiált hangok lehetőséget, vagy hozza létre saját egyéni hangját.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468678"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075708"
 ---
-# <a name="what-is-text-to-speech"></a>Mi az a szöveg – beszéd?
+# <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
 Az Azure Speech Services egy olyan szolgáltatás, amely lehetővé teszi, hogy az alkalmazások, eszközök vagy eszközök szöveggé alakítsanak természetes, emberi – például szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang 4 nyelven és területi beállításban érhető el. A teljes listát lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 A szövegről beszédre irányuló technológia lehetővé teszi, hogy a Content Creator különböző módokon kommunikáljon a felhasználóival. A szöveg és a beszéd közötti kommunikáció javíthatja a hozzáférést azáltal, hogy a felhasználók számára lehetővé teszi a tartalmak hallható módon történő használatát. Azt jelzi, hogy a felhasználó rendelkezik-e a vizualizációs fogyatékossággal, a tanulási fogyatékossággal vagy a navigációs információk megadásával, miközben a szöveg és a beszéd is javíthatja a meglévő felhasználói élményt. A szöveg és a beszéd is értékes kiegészítő funkció a hangvezérelt robotok és a hangsegédek számára.
-
 
 A Speech szintézis Markup Language (SSML) használatával egy XML-alapú Markup Language, a szöveg-beszéd szolgáltatást használó fejlesztők megadhatják, hogy a bemeneti szöveg hogyan legyen konvertálva a szintetizált beszédbe. A SSML a Pitch, a kiejtés, a beszéd arány, a kötet és más beállítások állíthatók be. További információ: [SSML](#speech-synthesis-markup-language-ssml).
 
@@ -54,10 +53,10 @@ A szöveg-beszéd szolgáltatásnak eljuttatott összes szöveges bemenetet SSML
 
 A szöveg-beszéd típusú szolgáltatás használatakor a rendszer minden, a beszédre konvertált karakter után számláz, beleértve a központozást is. Míg maga a SSML-dokumentum nem számlázható, a szöveg átalakításának módjára, például a fonémák és a Pitch formátumára szolgáló opcionális elemek számlázandó karakternek számítanak. Az alábbi lista tartalmazza a számlázható tartalmakat:
 
-* A kérelem SSML törzsében a szöveg-beszéd szolgáltatásnak átadott szöveg
-* A kérés törzsének összes jelölése a SSML formátumban, kivéve `<speak>` és `<voice>` címkét
-* Betűk, írásjelek, szóközök, tabulátorok, jelölések és minden fehér szóköz
-* Minden Unicode-ban definiált kód pont
+- A kérelem SSML törzsében a szöveg-beszéd szolgáltatásnak átadott szöveg
+- A kérés törzsének összes jelölése a SSML formátumban, kivéve `<speak>` és `<voice>` címkét
+- Betűk, írásjelek, szóközök, tabulátorok, jelölések és minden fehér szóköz
+- Minden Unicode-ban definiált kód pont
 
 Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)talál.
 
@@ -68,16 +67,16 @@ Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricin
 
 Ez a táblázat a szöveg és a beszéd alapvető funkcióit sorolja fel:
 
-| Használati eset | SDK | REST |
-|----------|-----|------|
-| Szöveg konvertálása beszédre | Igen | Igen |
-| Adatkészletek feltöltése a hangalapú átalakításhoz. | Nem | Igen\* |
-| Hang betűkészlet-modelljeinek létrehozása és kezelése. | Nem | Igen\* |
-| Hangbetűkészletek központi telepítésének létrehozása és kezelése. | Nem | Igen\* |
-| Hangos betűkészlet-tesztek létrehozása és kezelése. | Nem | Igen\* |
-| Előfizetések kezelése. | Nem | Igen\* |
+| Használati eset                                  | SDK | REST  |
+| ----------------------------------------- | --- | ----- |
+| Szöveg konvertálása beszédre                   | Igen | Igen   |
+| Adatkészletek feltöltése a hangalapú átalakításhoz.     | Nem  | Igen\* |
+| Hang betűkészlet-modelljeinek létrehozása és kezelése.      | Nem  | Igen\* |
+| Hangbetűkészletek központi telepítésének létrehozása és kezelése. | Nem  | Igen\* |
+| Hangos betűkészlet-tesztek létrehozása és kezelése.       | Nem  | Igen\* |
+| Előfizetések kezelése.                     | Nem  | Igen\* |
 
-\* *ezek a szolgáltatások az Cris.ai-végpont használatával érhetők el. Lásd a [hencegés referenciáját](https://westus.cris.ai/swagger/ui/index). Ezek az egyéni hangképzési és felügyeleti API-k olyan szabályozást valósítanak meg, amely 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket, míg a Speech szintézis API maga valósítja meg a szabályozást, amely lehetővé teszi a maximális 200-kérelmek másodpercenkénti számát. A szabályozás során a rendszer értesítést küld az üzenetek fejlécén keresztül.*
+\*_ezek a szolgáltatások az Cris.ai-végpont használatával érhetők el. Lásd a [hencegés referenciáját](https://westus.cris.ai/swagger/ui/index). Ezek az egyéni hangképzési és felügyeleti API-k olyan szabályozást valósítanak meg, amely 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket, míg a Speech szintézis API maga valósítja meg a szabályozást, amely lehetővé teszi a maximális 200-kérelmek másodpercenkénti számát. A szabályozás során a rendszer értesítést küld az üzenetek fejlécén keresztül._
 
 ## <a name="get-started-with-text-to-speech"></a>Ismerkedés a szöveg és a beszéd között
 
@@ -85,9 +84,9 @@ Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt fu
 
 ### <a name="sdk-quickstarts"></a>SDK-gyors útmutatók
 
-| Gyors útmutató (SDK) | Platform | API-referencia |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| Gyors útmutató (SDK) | Platform | API-hivatkozás |
+| ---------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET-keretrendszer](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, Egység](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Tallózás](https://aka.ms/csspeech/csharpref) |
@@ -97,14 +96,14 @@ Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt fu
 | [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
 | [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
 | [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
+| Swift (~/articles/Cognitive-Services/Speech-Service/QuickStarts/Text-to-speech-langs/Swift-MacOS.MD | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
 | [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
 | [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Ablak, Linux, macOS | [Tallózás](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST-útmutató
 
 | Gyors útmutató (REST) | Platform | API-referencia |
-|------------|----------|---------------|
+| ----------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Ablak, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Ablak, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -113,18 +112,18 @@ Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt fu
 
 A szöveg és a beszéd mintája a GitHubon érhető el. Ezek a minták a legnépszerűbb programozási nyelvek szöveg-beszéd átalakítását fedik le.
 
-* [Szöveg – beszéd minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Szöveg – beszéd minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Szöveg – beszéd minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Szöveg – beszéd minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Segédanyagok
 
-* [Beszéd SDK](speech-sdk-reference.md)
-* [Beszédfelismerési eszközök SDK](speech-devices-sdk.md)
-* [REST API: beszéd – szöveg](rest-speech-to-text.md)
-* [REST API: szövegről beszédre](rest-text-to-speech.md)
-* [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
+- [Beszéd SDK](speech-sdk-reference.md)
+- [Speech Devices SDK](speech-devices-sdk.md)
+- [REST API: beszéd – szöveg](rest-speech-to-text.md)
+- [REST API: szövegről beszédre](rest-text-to-speech.md)
+- [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ingyenes Speech Services-előfizetés beszerzése](get-started.md)
-* [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)
+- [Ingyenes Speech Services-előfizetés beszerzése](get-started.md)
+- [Hozzon létre egyéni hangtípust](how-to-customize-voice-font.md)

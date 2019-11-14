@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – a Windows rendszerű virtuális gépek konfigurációjának kezelése az Azure-ban | Microsoft Docs
+title: Oktatóanyag – a Windows rendszerű virtuális gépek konfigurációjának kezelése az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit egy Windows rendszerű virtuális gépen
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 13a9534920f936287109a451b542c81a007c3a4c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027898"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064801"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: változások figyelése és Windowsos virtuális gépek frissítése az Azure-ban
 
@@ -94,7 +94,7 @@ Az **Update Management engedélyezése** ablakban válassza ki a log Analytics m
 A rendszer az előkészítés során hiányzó alábbi előfeltételek bármelyikét automatikusan hozzáadja:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület
-* [Automatizálás](../../automation/automation-offering-get-started.md)
+* [Automation](../../automation/automation-offering-get-started.md)
 * [Hibrid runbook Worker](../../automation/automation-hybrid-runbook-worker.md), amely engedélyezve van a virtuális gépen
 
 A megoldás engedélyezését követően megnyílik az **Update Management** ablak. Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés**lehetőséget. Ha ezek a beállítások szürkén jelennek meg, egy másik automatizálási megoldás van engedélyezve a virtuális gépen, és a megoldás munkaterület-és Automation-fiókját kell használnia.
@@ -115,7 +115,7 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 
 A virtuális gép új központi telepítésének megadásához válassza a frissítés **központi telepítésének ütemezett** frissítése lehetőséget az **Update Management** ablak tetején. Az **új frissítés központi telepítése** ablakban a következő információkat kell megadnia:
 
-| Lehetőség | Leírás |
+| Beállítás | Leírás |
 | --- | --- |
 | **Name (Név)** |Adjon meg egy egyedi nevet a frissítés központi telepítésének azonosításához. |
 |**Operációs rendszer**| Válassza a **Linux** vagy a **Windows**lehetőséget.|
@@ -206,7 +206,7 @@ Az előző diagramon az idő múlásával történt változások láthatók. Miu
 
 A sávdiagramok minden sora egy másik, nyomon követhető módosítás típusát jelöli. Ezek a típusok a Linux-démonok, a fájlok, a Windows-beállításkulcsok, a szoftverek és a Windows-szolgáltatások. A **módosítás lap a változás** részleteit jeleníti meg. A változások az egyes előfordulások sorrendjében jelennek meg, és a legutóbbi változás látható először.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
