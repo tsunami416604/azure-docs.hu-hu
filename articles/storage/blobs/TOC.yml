@@ -539,11 +539,11 @@
           items:
             - name: Microsoft.Azure.Storage.Common (11.x verzió)
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-            - name: Azure.Storage.Common (12.x verzió – előzetes)
+            - name: Azure.Storage.Common (12.x verzió)
               href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
             - name: Microsoft.Azure.Storage.Blob (11.x verzió)
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/'
-            - name: Azure.Storage.Blob (12.x verzió – előzetes)
+            - name: Azure.Storage.Blob (12.x verzió)
               href: 'https://www.nuget.org/packages/Azure.Storage.Blobs/'
             - name: Azure Configuration Manager
               href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
@@ -557,7 +557,7 @@
               items:
                 - name: Azure Storage-ügyfélkódtár
                   items:
-                    - name: 12.x verzió (előzetes)
+                    - name: 12.x verzió
                       href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
                     - name: 11.x és korábbi verziók
                       href: 'https://github.com/Azure/azure-storage-net'
@@ -567,19 +567,19 @@
                   href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
             - name: Java
               items:
-                - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)
+                - name: Azure Storage-ügyfélkódtár 12.x verzió
                   href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
                 - name: Azure Storage-ügyfélkódtár 8.x és korábbi verziók
                   href: 'https://github.com/Azure/azure-storage-java'
             - name: Node.js
               items:
-                - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)
+                - name: Azure Storage-ügyfélkódtár 12.x verzió
                   href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
                 - name: Azure Storage-ügyfélkódtár 10.x verzió
                   href: 'https://github.com/Azure/azure-storage-node'
             - name: Python
               items:
-                - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)
+                - name: Azure Storage-ügyfélkódtár 12.x verzió
                   href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
                 - name: Azure Storage-ügyfélkódtár 2.1 verzió
                   href: 'https://github.com/Azure/azure-storage-python'
@@ -754,7 +754,7 @@
             - name: Storage Resource Provider
               href: /java/api/overview/azure/storage/management
         - name: JavaScript (12.x verzió)
-          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+          href: /javascript/api/@azure/storage-blob/
         - name: Python (12.x verzió)
           href: /python/api/azure-storage-blob/
         - name: REST

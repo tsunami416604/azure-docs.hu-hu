@@ -856,11 +856,20 @@
             - name: A nyomon követés áttekintése
               href: /azure/databricks/applications/mlflow/tracking
               maintainContext: true
-            - name: Példák az MLflow általi nyomon követésre
-              href: /azure/databricks/applications/mlflow/  tracking-examples
+            - name: Scikit-learn-modell betanítása
+              href: /azure/databricks/applications/mlflow/tracking-ex-scikit
+              maintainContext: true
+            - name: PyTorch-modell betanítása
+              href: /azure/databricks/applications/mlflow/tracking-ex-pytorch
+              maintainContext: true
+            - name: PySpark-modell betanítása és mentése MLeap-formátumokban
+              href: /azure/databricks/applications/mlflow/tracking-ex-pyspark
+              maintainContext: true
+            - name: Gépi tanulási modellek betanítási adatainak nyomon követése a Delta Lake segítségével
+              href: /azure/databricks/applications/mlflow/tracking-ex-delta
               maintainContext: true
             - name: Nyomon követés külső hozzáférése
-              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
         - name: 'Modellek mentése, betöltése és üzembe helyezése'
           items:
@@ -911,6 +920,9 @@
             - name: Tumor/normál folyamat
               href: /azure/databricks/applications/genomics/secondary/tumor-normal-pipeline
               maintainContext: true
+            - name: Változatjegyzés a Pipe Transformer használatával
+              href: /azure/databricks/applications/genomics/secondary/variant-annotation-pipe
+              maintainContext: true
             - name: Változatjegyző módszerek
               href: /azure/databricks/applications/genomics/secondary/annotate-variants
               maintainContext: true
@@ -920,26 +932,6 @@
             - name: Vep-folyamat
               href: /azure/databricks/applications/genomics/secondary/vep-pipeline
               maintainContext: true
-        - name: ETL
-          items:
-            - name: A Genomics ETL áttekintése
-              href: /azure/databricks/applications/genomics/etl/index
-              maintainContext: true
-            - name: IO-változat Apache Spark SQL-lel
-              href: /azure/databricks/applications/genomics/etl/variant-data
-              maintainContext: true
-            - name: Genomics Delta Lake létrehozása
-              href: /azure/databricks/applications/genomics/etl/vcf2delta
-              maintainContext: true
-            - name: A változat minőségének ellenőrzése
-              href: /azure/databricks/applications/genomics/etl/variant-qc
-              maintainContext: true
-            - name: A minta minőségének ellenőrzése
-              href: /azure/databricks/applications/genomics/etl/sample-qc
-              maintainContext: true
-            - name: Átemelés
-              href: /azure/databricks/applications/genomics/etl/lift-over
-              maintainContext: true
         - name: Harmadlagos elemzés
           items:
             - name: A harmadlagos elemzés áttekintése
@@ -947,18 +939,6 @@
               maintainContext: true
             - name: Közös genotípus-meghatározó folyamat
               href: /azure/databricks/applications/genomics/tertiary/joint-genotyping-pipeline
-              maintainContext: true
-            - name: Parancssori eszközök párhuzamosítása folyamatátalakítóval
-              href: /azure/databricks/applications/genomics/tertiary/pipe-transformer
-              maintainContext: true
-            - name: Változatnormalizálás
-              href: /azure/databricks/applications/genomics/tertiary/variant-normalization
-              maintainContext: true
-            - name: Regressziós tesztek
-              href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: Python-statisztikatárak
-              href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
             - name: SAIGE
               href: /azure/databricks/applications/genomics/tertiary/saige
@@ -1228,7 +1208,10 @@
               maintainContext: true
             - name: A kódolás nem észlelhető a JSON-ban
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true j
+              maintainContext: true
+            - name: A WASB-ben lévő fájlok olvasása nem sikerült.
+              href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
         - name: DBFS
           items:
             - name: A DBFS-gyökérben tárolt objektumok nem olvashatók
@@ -1550,6 +1533,9 @@
           items:
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019. november
+              href: /azure/databricks/release-notes/product/2019/november
               maintainContext: true
             - name: 2019. október
               href: /azure/databricks/release-notes/product/2019/october

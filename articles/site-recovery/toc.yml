@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Kezelés
           items:
-            - name: Az SCVMM-konfigurációk ASR-beli támogatásának közelgő megszüntetésével kapcsolatos információk
-              href: scvmm-site-recovery-deprecation.md
+            - name: Vészhelyreállítás elavulása ügyfél tulajdonában lévő helyek között
+              href: site-to-site-deprecation.md
             - name: Site Recoveryvel konfigurált Windows-kiszolgálók frissítése
               href: upgrade-2012R2-to-2016.md
             - name: Kiszolgálók eltávolítása és a védelem letiltása

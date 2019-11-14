@@ -114,6 +114,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Key Vault-értesítések irányítása az Event Griddel
       href: event-grid-tutorial.md
+    - name: Integrálás az Azure Policy szolgáltatással
+      href: azure-policy.md
     - name: Az Azure Key Vault naplózása
       href: key-vault-logging.md
     - name: Tűzfal mögötti hozzáférés

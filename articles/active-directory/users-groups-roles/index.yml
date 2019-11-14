@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Vállalati felhasználókezelési dokumentáció – Azure Active Directory
+title: Vállalati felhasználókezelési dokumentáció – Azure AD
 summary: Az Azure AD felhasználókezelői szolgáltatásai, például a rendszergazdai szerepkörök hozzárendelése vagy a csoportok segítségével gyorsabban hajthatja végre a mindennapos feladatokat. Licenceket vagy alkalmazások hozzáféréseit egyéni felhasználókhoz vagy csoportokhoz is hozzárendelheti, vagy engedélyeket delegálhat az identitáskezelő feladatainak elosztásához.
 metadata:
   title: Azure Active Directory-felhasználók, -csoportok, -szerepkörök és -licencek dokumentációja
@@ -7,17 +7,17 @@ metadata:
   services: active-directory
   ms.service: active-directory
   ms.subservice: users-groups-roles
-  manager: mtillman
+  manager: daveba
   ms.topic: landing-page
-  ms.date: 08/28/2019
+  ms.date: 11/08/2019
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: db210331e07ec1b23c3300a5a5a972570be5b591
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 2e7a21395059a73047678aa02ff8119511597b74
+  ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73885811"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74026414"
 landingContent:
 - title: Információk a felhasználókról, csoportokról, szerepkörökről és licencekről
   linkLists:

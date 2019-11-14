@@ -166,6 +166,8 @@
               href: sap-high-availability-guide-wsfc-shared-disk.md
             - name: Magas rendelkezésre állás Windows rendszeren SOFS-fájlmegosztással (A)SCS példányhoz
               href: sap-high-availability-guide-wsfc-file-share.md
+            - name: Magas rendelkezésre állás a SAP NetWeaver esetében Windows rendszeren az Azure NetApp Files (SMB) használatával
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz
               href: high-availability-guide-suse.md
             - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz Azure NetApp Files szolgáltatással

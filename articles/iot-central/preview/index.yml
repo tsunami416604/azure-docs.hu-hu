@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Az Azure IoT Central dokumentációja (előzetes verziójú funkciók)
-summary: Az Azure IoT Central egy teljes körűen felügyelt SaaS- (szolgáltatott szoftver-) megoldás, amely megkönnyíti az IoT-eszközök méretezhető csatlakoztatását, monitorozását és felügyeletét. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.
+summary: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.
 metadata:
   title: Az Azure IoT Central dokumentációja
-  description: Az Azure IoT Central egy teljes körűen felügyelt SaaS- (szolgáltatott szoftver-) megoldás, amely megkönnyíti az IoT-eszközök méretezhető csatlakoztatását, monitorozását és felügyeletét. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.
+  description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.
   services: iot-central
   ms.service: iot-central
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 90faa0b7422814011096a10164a6f2bdfceba4d5
-  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+  ms.openlocfilehash: 97a378eaab323391ccfcc0b03f337f6693a2a761
+  ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/12/2019
-  ms.locfileid: "73929841"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74048325"
 landingContent:
 - title: Tudnivalók az Azure IoT Centralról (előzetes verziójú funkciók)
   linkLists:

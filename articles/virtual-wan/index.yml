@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 08/28/2019
-  ms.openlocfilehash: 2c5922eb7ca13e6b22000890f6825d3d29ae3455
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.date: 11/13/2019
+  ms.openlocfilehash: f004b965901f161d16034f0cea91a99c50cc2575
+  ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71327078"
+  ms.lasthandoff: 11/14/2019
+  ms.locfileid: "74072237"
 landingContent:
 - title: A Virtual WAN bemutatása
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
       url: virtual-wan-site-to-site-portal.md
     - text: ExpressRoute-társítás létrehozása
       url: virtual-wan-expressroute-portal.md
+    - text: Felhasználói VPN-kapcsolat (pont–hely) létrehozása
+      url: virtual-wan-point-to-site-portal.md
   - linkListType: how-to-guide
     links:
     - text: Forgalom irányítása virtuális központról NVA-ra
@@ -53,8 +55,8 @@ landingContent:
     links:
     - text: Globális átviteli hálózati architektúra
       url: virtual-wan-global-transit-network-architecture.md
-    - text: Office 365-vezérlősík
-      url: virtual-wan-office365-overview.md
+    - text: Migrálás virtuális WAN-ba
+      url: migrate-from-hub-spoke-topology.md
 - title: Referencia
   linkLists:
   - linkListType: reference

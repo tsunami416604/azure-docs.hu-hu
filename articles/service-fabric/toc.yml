@@ -482,6 +482,8 @@
               href: service-fabric-tutorial-deploy-api-management.md
             - name: Titkos alkalmazáskulcsok kezelése
               href: service-fabric-application-secret-management.md
+            - name: A Service Fabric titkoskulcs-tárolójának használata
+              href: service-fabric-application-secret-store.md
               items:
                 - name: Titkosítási tanúsítvány beállítása és titkos kódok titkosítása Windowson
                   href: service-fabric-application-secret-management-windows.md
