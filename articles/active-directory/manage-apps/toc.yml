@@ -24,6 +24,8 @@
 - name: Alapelvek
   expanded: true
   items:
+    - name: Ajánlott alkalmazáskezelési eljárások
+      href: application-management-fundamentals.md
     - name: Felhőalkalmazások és egyszeri bejelentkezés
       items:
         - name: Felhőalkalmazás-integráció megtervezése

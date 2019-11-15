@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: beef37b0ece9cf57c86927b9f57d85ad4a25dbd1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103750"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746315"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -202,6 +202,10 @@ Az Ön fiókja felelős az átadás időpontjától kezdve jelentkező használa
 ### <a name="can-i-use-a-different-payment-method"></a>Használhatok más fizetési módot?
 
 Igen. Az átadási kérelem elfogadásakor kiválaszthatja a fiókja meglévő fizetési módját, vagy hozzáadhat egy új fizetési módot.
+
+### <a name="how-can-i-transfer-ownership-of-my-enterprise-agreement-ea-subscription-account-ownership-if-the-original-account-owner-is-no-longer-with-the-organization"></a>Hogyan adhatom át a nagyvállalati szerződéssel (EA) rendelkező előfizetés fióktulajdonjogát, ha az eredeti fióktulajdonos már nem a vállalat munkatársa?
+
+A vállalati rendszergazda bármilyen fiók tulajdonjogát frissítheti, még azután is, hogy az eredeti fióktulajdonos már nem a vállalat munkatársa. Ehhez [a fiók tulajdonjogának átvitele az összes előfizetésre vonatkozóan](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) eljárás utasításait kell követnie az EA Portalon.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

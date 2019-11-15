@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499244"
+ms.locfileid: "73580092"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
-Az Azure Reservationsszel csökkentheti költségeit, ha egy vagy három évre előre kötelezettséget vállal a virtuális gépekre, az SQL Database számítási kapacitására, az Azure Cosmos DB átviteli sebességére vagy más Azure-erőforrásokra. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti a virtuális gép, az SQL Database-számítások, az Azure Cosmos DB és más erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára.
+Az Azure Reservationsszel csökkentheti költségeit, ha egy- vagy hároméves csomagra vonatkozó kötelezettséget vállal a virtuális gépekre, az Azure Blob Storage-ra vagy Azure Data Lake Storage Gen2-re, az SQL Database számítási kapacitására, az Azure Cosmos DB átviteli sebességére vagy más Azure-erőforrásokra. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára.
 
 A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 
@@ -24,13 +24,14 @@ Foglalásokat az [Azure Portalon](https://ms.portal.azure.com/?microsoft_azure_m
 
 ## <a name="why-buy-a-reservation"></a>Miért érdemes foglalást vásárolnia?
 
-Ha hosszú ideig futó virtuális gépekkel, Azure Cosmos DB-vel vagy SQL Database-adatbázisokkal rendelkezik, egy foglalás vásárlása a legköltséghatékonyabb lehetőség. Ha például egy szolgáltatás négy példányát futtatja folyamatosan foglalás nélkül, akkor használatalapú fizetéses díjakat fizet. Ha ezen erőforrásokhoz vásárol egy foglalást, azonnal megkapja a foglalási kedvezményt. Az erőforrásokért ezután nem használatalapú fizetéses díjakat kell fizetnie.
+Ha jelentős kapacitást vagy átviteli sebességet használó, illetve hosszú ideig futó virtuális gépekkel, Blob Storage-adatokkal, Azure Cosmos DB-vel vagy SQL Database-adatbázisokkal rendelkezik, egy foglalás vásárlása a leginkább költséghatékony lehetőség. Ha például egy szolgáltatás négy példányát futtatja folyamatosan foglalás nélkül, akkor használatalapú fizetéses díjakat fizet. Ha ezen erőforrásokhoz vásárol egy foglalást, azonnal megkapja a foglalási kedvezményt. Az erőforrásokért ezután nem használatalapú fizetéses díjakat kell fizetnie.
 
 ## <a name="charges-covered-by-reservation"></a>A foglalás által fedezett költségek
 
 Szolgáltatáscsomagok:
 
 - **Fenntartott virtuálisgép-példány** – A foglalás csak a virtuális gép számítási költségeit fedezi. Nem fedezi azonban a további szoftverek, a hálózatkezelés és a tárolás költségeit.
+- **Fenntartott kapacitás az Azure Storage-ban** – A foglalás a standard Blob Storage- vagy Azure Data Lake Gen2-tárfiókok tárolási kapacitását fedezi. A foglalás nem fedezi a sávszélességgel és a tranzakciókkal járó díjakat.
 - **Fenntartott Azure Cosmos DB-kapacitás** – A foglalás az erőforrások számára kiosztott átviteli sebességet fedezi. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit.
 - **Fenntartott SQL Database virtuális mag** – A foglalás csak a számítási költségeket foglalja magában. A licenc számlázása külön történik.
 - **SQL Data Warehouse** – A foglalás a cDWU-használatot fedezi. Nem fedezi azonban az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
@@ -134,6 +135,7 @@ Foglalás vásárlásakor a foglalás alkalmazható az ugyanabban a méretcsopor
 Szolgáltatáscsomagok:
 
 - Reserved VM Instances: Ha a foglalás megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a kiválasztott virtuálisgép-mérettől függ. A foglalást az ugyanabban a méretsorozat-csoportban található virtuálisgép-méretekre lehet alkalmazni. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
+- Fenntartott kapacitás az Azure Storage-ban: A standard Azure Storage-fiókoknak havi 100 TiB-os vagy 1 PiB-os egységben vásárolhat lefoglalt kapacitást. A Fenntartott kapacitás az Azure Storage-ban minden régióban elérhető bármelyik hozzáférési szinthez (gyakori, ritka és archív) és replikációs lehetőséghez (LRS, GRS és ZRS).
 - Fenntartott SQL Database-kapacitás: A kedvezmény általi lefedettség a kiválasztott teljesítményszinttől függ. További információkért lásd [az Azure-beli foglalási kedvezmény alkalmazását](billing-understand-reservation-charges.md) ismertető cikket.
 - Fenntartott Azure Cosmos DB-kapacitás: A kedvezmény általi lefedettség a kiosztott átviteli sebességtől függ. További információkért lásd [az Azure Cosmos DB-beli foglalási kedvezmény alkalmazását](billing-understand-cosmosdb-reservation-charges.md) ismertető cikket.
 

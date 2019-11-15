@@ -145,6 +145,8 @@
       href: how-to-send-additional-data.md
     - name: Hibaelhárítás
       href: how-to-troubleshoot-dps.md
+    - name: Kommunikáció a DPS-sel az MQTT protokoll használatával
+      href: iot-dps-mqtt-support.md
 - name: Referencia
   items:
     - name: REST API

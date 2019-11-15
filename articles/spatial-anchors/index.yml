@@ -27,6 +27,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Horgonyzási kapcsolatok és útkeresés.</a>
           - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Útmutatók.</a>
           - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Naplózás és diagnosztika.</a>
+          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">Durva helyzet-újrameghatározás.</a>
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph

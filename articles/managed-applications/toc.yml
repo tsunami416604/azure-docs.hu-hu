@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: Üzembe helyezés felügyelt identitással
           href: publish-managed-identity.md
+        - name: Üzembe helyezés értesítésekkel
+          href: publish-notifications.md
     - name: Fogyasztók
       items:
         - name: Felügyelt alkalmazások monitorozása

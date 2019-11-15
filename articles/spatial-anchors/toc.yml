@@ -57,6 +57,20 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: A C++/WinRT-ben
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: Helyszíni érzékelők használata a közeli horgonyok felderítéséhez
+      items:
+        - name: 'A C#/Unityben'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: Az Objective-C-ben
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: A Swiftben
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: A Javában
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: A C++/NDK-ban
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: A C++/WinRT-ben
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: Példák
   items:
     - name: Azure Spatial Anchors-példák (GitHub)
@@ -71,6 +85,8 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: Naplózás és diagnosztika
       href: concepts/logging-diagnostics.md
+    - name: Durva helyzet-újrameghatározás
+      href: concepts/coarse-reloc.md
 - name: Referencia
   items:
     - name: Unityhez készült SDK
