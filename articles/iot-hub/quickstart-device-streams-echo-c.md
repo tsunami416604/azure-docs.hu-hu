@@ -1,5 +1,5 @@
 ---
-title: Kommunikáció a C eszköz alkalmazásával az Azure IoT Hub Device Streams használatával (előzetes verzió) | Microsoft Docs
+title: Kommunikáció a C eszköz alkalmazásával az Azure IoT Hub eszköz Streams használatával
 description: Ebben a rövid útmutatóban egy olyan C-eszközön futó alkalmazást futtat, amely egy IoT-eszközzel kommunikál egy eszköz streamen keresztül.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: b0a23486d81ac6b48bf7bb256e3583973a338002
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d53b36beeca2c5e0456965cf5af19e5324b31ad9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900921"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084218"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: a C eszközön lévő alkalmazásokkal való kommunikáció IoT Hub eszköz streamen keresztül (előzetes verzió)
 
@@ -150,7 +150,7 @@ Ebben a szakaszban az eszköz-és a kiszolgálóoldali alkalmazást is futtatja,
 
 Az eszköz oldali alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Adja meg az eszköz hitelesítő adatait a `iothub_client/samples/iothub_client_c2d_streaming_sample` mappában található **iothub_client_c2d_streaming_sample. c** forrásfájl szerkesztésével, és adja hozzá az eszközhöz tartozó kapcsolási karakterláncot.
+1. Adja meg az eszköz hitelesítő adatait a `iothub_client/samples/iothub_client_c2d_streaming_sample` mappában található **iothub_client_c2d_streaming_sample. c** forrásfájl szerkesztésével, és adja hozzá az eszköz-csatlakoztatási karakterláncot.
 
    ```C
    /* Paste in your iothub connection string  */

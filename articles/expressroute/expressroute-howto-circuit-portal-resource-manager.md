@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute-kör létrehozása és módosítása – portál: Azure | Microsoft Docs'
+title: 'ExpressRoute: áramkör létrehozása és módosítása: Azure Portal'
 description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846580"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083568"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 
@@ -38,11 +36,11 @@ Ez a cikk segít az Azure portal és az Azure Resource Manager üzemi modell has
 
 ## <a name="create"></a>Létrehozása és kiépítése az ExpressRoute-kapcsolatcsoport
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Jelentkezzen be az Azure Portalra
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Jelentkezzen be a Azure Portalba
 
 Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. Egy új ExpressRoute-kapcsolatcsoport létrehozása
+### <a name="2-create-a-new-expressroute-circuit"></a>2. hozzon létre egy új ExpressRoute áramkört
 
 > [!IMPORTANT]
 > Az ExpressRoute-kapcsolatcsoport számlázása a szolgáltatáskulcs pillanatától kezdve. Győződjön meg arról, hogy ha a kapcsolatszolgáltató üzembe helyezi a kapcsolatcsoportot készen áll a művelet végrehajtása.
@@ -65,7 +63,7 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
      > [!IMPORTANT]
      > Azt jelzi, hogy a társviszony-létesítési helye a [fizikai helyének](expressroute-locations.md) hol vannak a Microsoft társviszony. Ez a **nem** "Hely" tulajdonság, amely hivatkozik a földrajzi hely, ahol az Azure hálózati erőforrás-szolgáltató csatolva. Amíg nem áll(nak), tanácsos válassza ki a hálózati erőforrás-szolgáltató földrajzilag közeli, a kapcsolatcsoport társviszony-létesítési helye.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. A Kapcsolatcsoportok és a tulajdonságok megtekintéséhez
+### <a name="3-view-the-circuits-and-properties"></a>3. a áramkörök és a tulajdonságok megtekintése
 
 **Minden kapcsolatcsoportra megtekintése**
 
@@ -79,41 +77,41 @@ A kapcsolatcsoport tulajdonságainak megtekintéséhez jelölje ki. Az a **átte
 
 ![Tulajdonságok megtekintése](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. A kulcs küldése a kapcsolatszolgáltató a kiépítés
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. küldje el a szolgáltatási kulcsot a kapcsolat szolgáltatójának az üzembe helyezéshez
 
 Ezen a lapon **szolgáltató állapota** információt nyújt a szolgáltatói oldalon kiépítés aktuális állapotát. **Kapcsolatcsoport állapota** a állapotot biztosít a Microsoft oldalán. A kapcsolatcsoport kiépítési állapotok kapcsolatos további információkért lásd: a [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states) cikk.
 
 Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolatcsoport a következő állapotban van:
 
-Szolgáltató állapota: Nincs kiépítve<BR>
-Áramkör állapota: Enabled
+Szolgáltató állapota: nincs kiépítve<BR>
+Kapcsolatcsoport-állapot: engedélyezve
 
 ![Üzembe helyezési folyamatának elindításához](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 A kapcsolatcsoport változik a következő állapotot, amikor a kapcsolatszolgáltató van folyamatban, amely lehetővé teszi az Ön számára:
 
-Szolgáltató állapota: Kiépítés<BR>
-Áramkör állapota: Enabled
+Szolgáltató állapota: kiépítése<BR>
+Kapcsolatcsoport-állapot: engedélyezve
 
 ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
 
-Szolgáltató állapota: Kiépítve<BR>
-Áramkör állapota: Enabled
+Szolgáltató állapota: kiépítve<BR>
+Kapcsolatcsoport-állapot: engedélyezve
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Rendszeresen ellenőrizze a kapcsolatcsoport kulcs állapotát és az állapot
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
 
 Megtekintheti, hogy az Önt érdeklő, ha kiválasztja a kapcsolatcsoport tulajdonságainak. Ellenőrizze a **szolgáltató állapota** , és győződjön meg arról, hogy átkerült az **kiépített** a folytatás előtt.
 
 ![Kapcsolatcsoport és a szolgáltató állapota](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
-### <a name="6-create-your-routing-configuration"></a>6. Az útválasztási konfiguráció létrehozása
+### <a name="6-create-your-routing-configuration"></a>6. az útválasztási konfiguráció létrehozása
 
 Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útválasztási konfigurációja](expressroute-howto-routing-portal-resource-manager.md) cikk létrehozásához és módosításához a kapcsolatcsoport társviszony-létesítéseket.
 
 > [!IMPORTANT]
 > Ezek az utasítások csak 2 réteg szolgáltatás kínáló szolgáltatóknál létrehozott Kapcsolatcsoportok vonatkoznak. Ha használja a szolgáltató által kínált felügyelt réteg (általában egy IP VPN, mint az MPLS) 3 szolgáltatások, a kapcsolatszolgáltató konfigurálja és kezeli az útválasztást Ön helyett.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel
 
 Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot. Használja a [virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok](expressroute-howto-linkvnet-arm.md) című cikket, amikor a Resource Manager üzemi modellel dolgozik.
 
@@ -158,7 +156,7 @@ Az ExpressRoute-kapcsolatcsoport kiválasztásával törölheti a **törlése** 
 * Ha az ExpressRoute kapcsolatcsoport szolgáltató üzembe helyezési állapota **kiépítési** vagy **kiépített** -e, hogy azok oldalán a kapcsolatcsoport megszüntetése a szolgáltató. Továbbra is erőforrásokat tartalékolnia, és addig, amíg a szolgáltató befejeződött, a kapcsolatcsoport megszüntetése, és értesítést küld nekünk fel díjat.
 * Ha a szolgáltató eltávolította a kapcsolatcsoportot (a kiépítési állapota szolgáltató beállítása **nincs kiépítve**), törölheti a kapcsolatcsoportot. Ez leállítja a kapcsolatcsoport számlázását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a kapcsolatcsoportot, folytassa a következő lépések:
 

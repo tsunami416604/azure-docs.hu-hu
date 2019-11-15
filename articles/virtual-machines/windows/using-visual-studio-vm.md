@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 09/24/2019
 ms.author: phillee
 keywords: VisualStudio
-ms.openlocfilehash: 2879317289b0c828ac580a7df11771b1b4550bd2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1f89cc55b8b62ca3c28d8d00ee733141179781ed
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067415"
+ms.locfileid: "74078590"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.
@@ -28,14 +28,14 @@ A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsa
 Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free).
 
 > [!NOTE]
-> Nem minden előfizetés beküld szabályok minősít a Windows 10-es lemezképek központi telepítéséhez. További információ: [Windows-ügyfél használata az Azure-ban fejlesztési és tesztelési helyzetekben](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
+> Nem minden előfizetés jogosult a Windows 10-es lemezképek üzembe helyezésére. További információ: [Windows-ügyfél használata az Azure-ban fejlesztési és tesztelési helyzetekben](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
 
 ## <a name="what-configurations-and-versions-are-available"></a>Milyen konfigurációk és verziók érhetők el?
 A legújabb főverziók, a Visual Studio 2019, a Visual Studio 2017 és a Visual Studio 2015 rendszerképei az Azure piactéren találhatók.  Az egyes kiadott főverziók esetében az eredeti "megjelent a web" (RTW) és a legújabb frissített verziók láthatók.  Ezen verziók mindegyike a Visual Studio Enterprise és a Visual Studio Community kiadásait kínálja.  Ezek a lemezképek legalább minden hónapban frissülnek, hogy tartalmazzák a legújabb Visual Studio-és Windows-frissítéseket.  Míg a képek nevei változatlanok maradnak, az egyes képek leírása tartalmazza a telepített termék verzióját és a lemezkép "as of" dátumát.
 
 | Kiadás verziója                                                                                                                                                | Kiadások              | Termék verziója   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: legújabb (16,2-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.0 verziója    |
+| [Visual Studio 2019: legújabb (16,3-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.0 verziója    |
 | [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Vállalat, Közösség | 16.0.8 verziója    |
 | [Visual Studio 2017: legújabb (15,9-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Vállalat, Közösség | 15.9.16 verziója   |
 | [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Vállalat, Közösség | 15.0.25 verziója   |
@@ -111,7 +111,7 @@ További információ: [általánosított virtuális gép felügyelt rendszerké
 
 Emellett előfordulhat, hogy a fejlesztési feladatokhoz vagy technológiákhoz több méretezésre van szükség, például a fejlesztési konfigurációk és a több gép konfigurációjának változatosságára. A Azure DevTest Labs használatával olyan _recepteket_ hozhat létre, amelyek automatizálják az "arany rendszerkép" kialakítását. A DevTest Labs szolgáltatással is kezelheti a csoportok futó virtuális gépek szabályzatait. A DevTest Labs szolgáltatással kapcsolatos további információkért a [Azure DevTest Labs for Developers használata](/azure/devtest-lab/devtest-lab-developer-lab) a legjobb forrás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már ismeri az előre konfigurált Visual Studio-rendszerképeket, a következő lépés egy új virtuális gép létrehozása:
 
 * [Virtuális gép létrehozása a Azure Portal](quick-create-portal.md)

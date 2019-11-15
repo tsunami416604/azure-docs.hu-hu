@@ -1,18 +1,18 @@
 ---
 title: A Azure Site Recovery folyamat kiszolgálójának figyelése
-description: Ez a cikk a Azure Site Recovery Process Server figyelését ismerteti.
+description: Ez a cikk bemutatja, hogyan figyelheti a VMware VM/fizikai kiszolgáló vész-helyreállításához használt Azure Site Recovery Process Servert
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383202"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082247"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 
@@ -24,7 +24,7 @@ Ez a cikk a [site Recovery](site-recovery-overview.md) Process Server figyelés�
 
 [További](vmware-physical-azure-config-process-server-overview.md) információ a folyamat-kiszolgálók szerepköreiről és központi telepítéséről.
 
-## <a name="monitoring-overview"></a>Figyelés áttekintése
+## <a name="monitoring-overview"></a>Monitorozás áttekintése
 
 Mivel a Process Server számos szerepkörrel rendelkezik, különösen a replikált adatgyorsítótárazásban, a tömörítésben és az Azure-ba való átvitelben, fontos a folyamat-kiszolgáló állapotának folyamatos figyelése.
 
@@ -93,7 +93,7 @@ A folyamat-kiszolgálók állapotát a következőképpen figyelheti:
 A **site Recovery infrastruktúra**alatt figyelheti a tárolóban lévő folyamat-kiszolgálókat is. A **site Recovery-infrastruktúra kezelése**területen kattintson a **konfigurációs kiszolgálók**elemre. Válassza ki a Process Serverhez társított konfigurációs kiszolgálót, és bontsa ki a folyamat kiszolgálójának adatait.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémái vannak a folyamatok kiszolgálóival, kövesse a [hibaelhárítási útmutatót](vmware-physical-azure-troubleshoot-process-server.md)
 - Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 

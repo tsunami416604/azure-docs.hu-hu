@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285913"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091786"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Adatkezelő adatfeldolgozás
 
 Az adatgyűjtési folyamat az adatrekordok egy vagy több forrásból való betöltésére szolgál az Azure Adatkezelő-beli tábla létrehozásához vagy frissítéséhez. A betöltést követően az adatmennyiség elérhetővé válik a lekérdezéshez. Az alábbi ábra az Azure-Adatkezelő működésének teljes folyamatát mutatja be, beleértve az adatfeldolgozást is.
 
-![Adatfolyam](media/ingest-data-overview/data-flow.png)
+![Az adatfolyam](media/ingest-data-overview/data-flow.png)
 
 Az adatfeldolgozásért felelős Azure Adatkezelő adatkezelési szolgáltatás a következő funkciókat biztosítja:
 
@@ -117,11 +117,9 @@ Az olyan meglévő infrastruktúrával rendelkező szervezetek esetében, amelye
 
 ## <a name="supported-data-formats"></a>Támogatott adatformátumok
 
-A lekérdezésből bekövetkező összes betöltési módszernél formázza az adatot úgy, hogy az Azure Adatkezelő képes legyen elemezni. A támogatott adatformátumok a következők:
-
-* TXT, CSV, TSV, TSVE, PSV, SCSV, RENDSZERÁLLAPOT-KIMUTATÁS
-* JSON (sor-külön, többsoros), Avro
-* ZIP és GZIP 
+A lekérdezésből bekövetkező összes betöltési módszernél formázza az adatot úgy, hogy az Azure Adatkezelő képes legyen elemezni. 
+* A támogatott adatformátumok a következők: TXT, CSV, TSV, TSVE, PSV, SCSV, rendszerállapot-kimutatás, JSON (line-elválasztva, többsoros), Avro és parketta. 
+* Támogatja a ZIP-és a GZIP-tömörítést.
 
 > [!NOTE]
 > Az adatgyűjtés során az adattípusok a céltábla oszlopai alapján lesznek kikövetkeztetve. Ha egy rekord hiányos, vagy egy mező nem értelmezhető a szükséges adattípussal, a rendszer null értékekkel tölti fel a megfelelő táblázat oszlopait.

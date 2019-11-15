@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 70da426f1dff843f1e2515052431f54f8ea83780
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074092"
+ms.locfileid: "74091567"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése az Azure Stackben
 
@@ -134,7 +134,7 @@ A Azure Portal Azure Backup Server entitások megtekintéséhez kövesse az alá
 2. Kattintson a biztonsági mentési infrastruktúra elemre.
 3. A biztonságimásolat-felügyeleti kiszolgálók megtekintése.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Backup Server használatáról más számítási feladatok ellátásához: a következő cikkek egyike:
 

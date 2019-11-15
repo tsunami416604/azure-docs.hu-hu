@@ -1,5 +1,5 @@
 ---
-title: 'Útválasztási követelmények – ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: útválasztási követelmények'
 description: Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 934dc94da9bbdfc38cc12e78eaa5b67fa9f786ca
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029036"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083309"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -198,9 +197,9 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | **Dél-Afrika**| |
 | Dél-Afrika északi régiója | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | Dél-Afrika nyugati régiója | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
-| **EGYESÜLT ARAB EMÍRSÉGEK**| |
-| Az Egyesült Arab Emírségek északi régiója | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
-| Az Egyesült Arab Emírségek középső régiója | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
+| **Egyesült Arab Emírségek**| |
+| Egyesült Arab Emírségek északi régiója | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| Egyesült Arab Emírségek középső régiója | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 
@@ -252,7 +251,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Skype Vállalati online verzió |12076:5130 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)

@@ -1,5 +1,5 @@
 ---
-title: A Hyper-V virtuális gépek Azure-ba való vész-helyreállítására vonatkozó Azure Site Recovery Deployment Planner jelentés elemzése | Microsoft Docs
+title: A Hyper-V Deployment Planner jelentés elemzése Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan elemezheti a Azure Site Recovery Deployment Planner által generált jelentéseket a Hyper-V virtuális gépek Azure-ba való vész-helyreállításához.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693591"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084959"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>A Azure Site Recovery Deployment Planner jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
@@ -41,7 +41,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt a vizsgált Hyper-V-k
 
 **Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)): Az összes profilkészítési napon megfigyelt átlagos adatváltozás.
 
-## <a name="recommendations"></a>Ajánlatok 
+## <a name="recommendations"></a>Javaslatok 
 A Hyper-V – Azure jelentés javaslati táblázatában a következő részletek találhatók (a kiválasztott RPO szerint):
 
 ![Hyper-V – Azure jelentéshez kapcsolódó javaslatok](media/hyper-v-deployment-planner-analyze-report/Recommendations-h2a.png)
@@ -179,7 +179,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor, a VMListFile-ban használt virtuálisgép-név. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen** \* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen**\* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15.
 * 256 GB és 512 GB között P20.

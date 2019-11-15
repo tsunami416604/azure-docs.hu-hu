@@ -7,12 +7,12 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074696"
+ms.locfileid: "74091495"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
 
@@ -44,7 +44,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | A fájlmegosztás biztonsági mentésének konfigurációja (vagy a védelmi szabályzat konfigurálása) sikertelen. | <ul><li>Próbálja megismételni a műveletet annak ellenőrzéséhez, hogy a probléma továbbra is fennáll-e. <li> Győződjön meg arról, hogy a védeni kívánt fájlmegosztás nem lett törölve. <li> Ha több fájlmegosztást kíván egyszerre védeni, és a fájlmegosztások némelyike nem működik, ismételje meg a sikertelen fájlmegosztások biztonsági mentésének konfigurálását. |
 | Nem sikerült törölni a helyreállítási tárat a fájlmegosztás védelmének feloldása után. | Nyissa meg az Azure Portalon a saját Tár > **Biztonsági mentési infrastruktúra** > **Tárfiókok** elemet, és kattintson a **Regisztráció törlése** lehetőségre a tárfiók helyreállítási tárból történő eltávolításához.|
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>A feladatok biztonsági mentése vagy helyreállítása során jelentkező hibák üzenetei
+## <a name="error-messages-for-backup-or-restore-job-failures"></a>Sikertelen biztonsági mentési vagy visszaállítási feladatok hibaüzenetei
 
 | Hibaüzenetek | Megkerülő vagy megoldási tippek |
 | -------------- | ----------------------------- |
@@ -69,7 +69,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | Folyamatban van egy másik konfigurálási védelmi művelet ehhez az objektumhoz. | Várjon, amíg befejeződik az előző házirend-módosítási művelet, és némi várakozás után próbálkozzon újra.|
 | Egy másik művelet van folyamatban a kijelölt elemen. | Várjon, amíg a másik folyamatban lévő művelet befejeződik, és próbálkozzon újra egy kis idő elteltével |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-fájlmegosztás biztonsági mentéséről további információt a következő témakörben talál:
 

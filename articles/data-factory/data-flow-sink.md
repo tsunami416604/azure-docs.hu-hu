@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519317"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082935"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
 
@@ -28,7 +28,7 @@ Az összes bejövő mező elfogadásához kapcsolja be az **automatikus leképez
 ## <a name="output"></a>Kimenet 
 Az Azure Blob Storage-hoz vagy a Data Lake Storage fogadó típushoz az átalakított adatokat egy mappába írja. A Spark particionált kimeneti adatfájlokat hoz létre a fogadó átalakítás által használt particionálási séma alapján. 
 
-Az **optimalizálás** lapon állíthatja be a particionálási sémát. Ha azt szeretné, Data Factory hogy egyetlen fájlba egyesítse a kimenetet, válassza az **egyetlen partíció**lehetőséget.
+Az **optimalizálás** lapon állíthatja be a particionálási sémát. Ha azt szeretné, Data Factory hogy egyetlen fájlba egyesítse a kimenetet, válassza az **egyetlen partíció**lehetőséget. Ha particionált mappákat kíván fenntartani vagy létrehozni, használja a **kulcs particionálását** , és állítsa be a particionált mappastruktúrát használni kívánt kulcsokat.
 
 ![Beállítások az optimalizálás lapon](media/data-flow/opt001.png "fogadó beállításai")
 
@@ -113,5 +113,5 @@ A CosmosDB-ben való kirakodáskor ezeket a további lehetőségeket kell figyel
 * Partíciós kulcs: ez egy kötelező mező. Adjon meg egy karakterláncot, amely a gyűjtemény partíciós kulcsát jelöli. Például: ```/movies/title```
 * Átviteli sebesség: állítsa be azt a nem kötelező értéket, amelyet az adott adatfolyam minden egyes végrehajtásához alkalmazni kíván a CosmosDB-gyűjteményre. Minimális értéke 400.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy létrehozta az adatfolyamatot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz](concepts-data-flow-overview.md).

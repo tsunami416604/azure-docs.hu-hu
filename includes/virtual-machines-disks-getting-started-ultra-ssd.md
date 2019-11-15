@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3525edb2a73811254b2a4dce70ce3edb58988492
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 63045bf1b836215b00b9b7c1b46dd208152fa772
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012443"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74101060"
 ---
 Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok.
 
@@ -133,7 +133,7 @@ az disk update `
 
 ## <a name="deploy-an-ultra-disk-using-powershell"></a>Ultra-lemez üzembe helyezése a PowerShell használatával
 
-Először határozza meg a telepítendő virtuális gép méretét. A támogatott virtuálisgép-méretek listáját a [GA hatókör és korlátozások](#ga-scope-and-limitations) című szakaszban találja. További információ ezekről a virtuálisgép-méretekről.
+Először határozza meg a telepítendő virtuális gép méretét. A támogatott virtuálisgép-méretek listáját a [GA hatókör és korlátozások](#ga-scope-and-limitations) című szakaszban találja.
 
 Az ultra-lemezek használatához létre kell hoznia egy virtuális gépet, amely képes az ultra lemezek használatára. Cserélje le vagy állítsa be a **$resourcegroup** és a **$vmName** változót a saját értékeivel. Állítsa **$Zone** értéket a [cikk elejétől](#determine-vm-size-and-region-availability)kapott rendelkezésre állási zóna értékére. Ezután futtassa a következő [New-AzVm](/powershell/module/az.compute/new-azvm) parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
 
@@ -195,6 +195,6 @@ $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné kipróbálni az új lemez típusának [elérésére vonatkozó kérést](https://aka.ms/UltraDiskSignup).

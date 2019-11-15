@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097797"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091998"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha `/etc/fstab`-bejegyzést hoz létre.
@@ -22,11 +22,11 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásának ajánlott m
 | | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + | 10 + |
+| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5 + |
+| CentOS | 7+ |  7.5 + |
+| Debian | 8+ | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
 
 Ha a fenti táblázatban nem szereplő Linux-disztribúciót használ, ellenőrizheti, hogy a Linux-disztribúció támogatja-e az SMB 3,0-et a titkosítással a Linux kernel verziójának ellenőrzésével. Az SMB 3,0 titkosítással lett hozzáadva a Linux kernel 4,11-es verziójához. A `uname` parancs a használatban lévő Linux kernel verzióját fogja visszaadni:
 
@@ -53,7 +53,7 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    A **Red Hat Enterprise Linux** és a **CentOS**régebbi verzióiban használja a `dnf` csomagkezelő eszközt:
+    A **Red Hat Enterprise Linux** és a **CentOS**régebbi verzióiban használja a `yum` csomagkezelő eszközt:
 
     ```bash
     sudo yum install cifs-utils 
@@ -173,7 +173,7 @@ Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` 
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. A **következő parancs használatával fűzze hozzá a következő sort a `/etc/fstab`hoz** : az alábbi példában a helyi Linux-fájl és a mappa engedélyei alapértelmezett 0755, ami azt jelenti, hogy a tulajdonoshoz tartozó olvasási, írási és végrehajtási engedély (a fájl/könyvtár Linux-tulajdonos alapján), olvasás és végrehajtás a tulajdonos csoportban lévő felhasználók számára, valamint olvasás és végrehajtás mások számára a rendszeren. A `uid` és a `gid` csatlakoztatási lehetőségekkel beállíthatja a csatlakoztatás felhasználói AZONOSÍTÓját és a csoport AZONOSÍTÓját. `dir_mode` és `file_mode` is használhatja az egyéni engedélyek megadásához a kívánt módon. További információ az engedélyek beállításáról: [UNIX numerikus jelölés](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) a wikipedia-ben.
+1. A **következő paranccsal fűzze hozzá a következő sort a `/etc/fstab`hoz** : az alábbi példában a helyi Linux-fájl és a mappa engedélyei alapértelmezett 0755, ami azt jelenti, hogy olvasás, írás és végrehajtás a tulajdonos számára (a fájl/könyvtár Linux-tulajdonos alapján), olvasás és végrehajtás a tulajdonos csoportba tartozó felhasználók számára, valamint olvasás és végrehajtás mások számára a rendszeren. A `uid` és a `gid` csatlakoztatási lehetőségekkel beállíthatja a csatlakoztatás felhasználói AZONOSÍTÓját és a csoport AZONOSÍTÓját. `dir_mode` és `file_mode` is használhatja az egyéni engedélyek megadásához a kívánt módon. További információ az engedélyek beállításáról: [UNIX numerikus jelölés](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) a wikipedia-ben.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -199,7 +199,7 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásához a 445-es po
 
 A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amelyet örökölt okok miatt `cifs`, egy új modul-paramétert (más néven a különböző külső dokumentációban *paramétert* ) tesz elérhetővé (más néven `disable_legacy_dialects`). Bár a Linux kernel 4,18-ben jelent meg, egyes gyártók backported ezt a változást az általuk támogatott régebbi kerneleken. A kényelmes használat érdekében a következő táblázat részletezi a modul paraméterének rendelkezésre állását a gyakori Linux-disztribúciók esetében.
 
-| Terjesztés | Az SMB 1 letiltása |
+| Disztribúció | Az SMB 1 letiltása |
 |--------------|-------------------|
 | Ubuntu 14.04 – 16.04 | Nem |
 | Ubuntu 18.04 | Igen |
@@ -282,5 +282,5 @@ A Linux-felhasználók csoportjának Azure Files egy olyan fórumot biztosít, a
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-* [GYIK](../storage-files-faq.md)
+* [GYAKORI KÉRDÉSEK](../storage-files-faq.md)
 * [hibaelhárítással](storage-troubleshoot-linux-file-connection-problems.md)

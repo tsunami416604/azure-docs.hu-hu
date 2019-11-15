@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a7cd61854176dc702f213211b14c2361b3e433ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5196dbbfb52ce75031a53764b371d6d34b43fba7
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825362"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091420"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Javához
 
@@ -152,7 +152,7 @@ public class App
 
 Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetővé, akkor azt engedélyezni kell. A kérések engedélyezéséhez adja hozzá a Storage-fiók hitelesítő adatait az alkalmazáshoz kapcsolódási karakterláncként. A tárfiók hitelesítő adatainak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a Storage-fiókját.
 3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Itt megtekintheti a fiókhoz tartozó hozzáférési kulcsokat, valamint az egyes kulcsokhoz tartozó teljes kapcsolati sztringeket.
 4. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához. A kapcsolati sztring értékét hozzáadja egy környezeti változóhoz a következő lépés során.
@@ -201,11 +201,11 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 A következő Java-osztályok használhatók az alábbi erőforrásokkal való kommunikációhoz:
 
-* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient): a `BlobServiceClient` osztály lehetővé teszi az Azure Storage-erőforrások és a blob-tárolók kezelését. A Storage-fiók a legfelső szintű névteret biztosítja a Blob service számára.
-* [BlobServiceClientBuilder](/java/api/com.azure.storage.blob.blobserviceclientbuilder): a `BlobServiceClientBuilder` osztály egy Fluent Builder API-t biztosít a `BlobServiceClient` objektumok konfigurációjának és példányának támogatásához.
-* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient): a `BlobContainerClient` osztály lehetővé teszi az Azure Storage-tárolók és a Blobok kezelését.
-* [BlobClient](/java/api/com.azure.storage.blob.blobclient): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
-* [Blobelemet](/java/api/com.azure.storage.blob.blobitem): a `BlobItem` osztály a `listBlobsFlat`hívásával visszaadott blobokat jelöli.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): a `BlobServiceClient` osztály lehetővé teszi az Azure Storage-erőforrások és a blob-tárolók kezelését. A Storage-fiók a legfelső szintű névteret biztosítja a Blob service számára.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): a `BlobServiceClientBuilder` osztály egy Fluent Builder API-t biztosít a `BlobServiceClient` objektumok konfigurációjának és példányának támogatásához.
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): a `BlobContainerClient` osztály lehetővé teszi az Azure Storage-tárolók és a Blobok kezelését.
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
+* [Blobelemet](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): a `BlobItem` osztály a `listBlobsFlat`hívásával visszaadott blobokat jelöli.
 
 ## <a name="code-examples"></a>Példák a kódokra
 
@@ -243,7 +243,7 @@ Döntse el az új tároló nevét. Az alábbi kód egy UUID értéket fűz hozz�
 > [!IMPORTANT]
 > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos további információkért lásd a [tárolók, blobok és metaadatok elnevezését és hivatkozását](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Ezután hozza létre a [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient) osztály egy példányát, majd hívja meg a [create](/java/api/com.azure.storage.blob.blobcontainerclient.create) metódust, hogy ténylegesen létrehozza a tárolót a Storage-fiókban.
+Ezután hozza létre a [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) osztály egy példányát, majd hívja meg a [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) metódust, hogy ténylegesen létrehozza a tárolót a Storage-fiókban.
 
 Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
@@ -263,8 +263,8 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 A következő kódrészlet:
 
 1. Létrehoz egy szövegfájlt *a helyi* adatkönyvtárban.
-1. Beolvas egy [BlobClient](/java/api/com.azure.storage.blob.blobclient) objektumra mutató hivatkozást úgy, hogy meghívja a [getBlobClient](/java/api/com.azure.storage.blob.blobcontainerclient.getblobclient) metódust a tárolóban a [tároló létrehozása](#create-a-container) szakaszban.
-1. A [uploadFromFile](/java/api/com.azure.storage.blob.blobclient.uploadfromfile) metódus meghívásával feltölti a helyi szövegfájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
+1. Beolvas egy [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) objektumra mutató hivatkozást úgy, hogy meghívja a [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) metódust a tárolóban a [tároló létrehozása](#create-a-container) szakaszban.
+1. A [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) metódus meghívásával feltölti a helyi szövegfájlt a blobba. Ez a metódus létrehozza a blobot, ha még nem létezik, de nem írja felül, ha igen.
 
 Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
@@ -290,7 +290,7 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A tárolóban lévő Blobok listázása a [listBlobsFlat](/java/api/com.azure.storage.blob.blobcontainerclient.listblobsflat) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
+A tárolóban lévő Blobok listázása a [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
 Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
@@ -305,7 +305,7 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a korábban létrehozott blobot a [downloadToFile](/java/api/com.azure.storage.blob.blobclient.downloadtofile) metódus meghívásával. A példában szereplő kód a "Letöltés" utótagot adja hozzá a fájl nevéhez, hogy mindkét fájl látható legyen a helyi fájlrendszerben.
+Töltse le a korábban létrehozott blobot a [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) metódus meghívásával. A példában szereplő kód a "Letöltés" utótagot adja hozzá a fájl nevéhez, hogy mindkét fájl látható legyen a helyi fájlrendszerben.
 
 Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
@@ -322,7 +322,7 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Tároló törlése
 
-A következő kód törli az alkalmazás által létrehozott erőforrásokat, ha eltávolítja a teljes tárolót a [delete](/java/api/com.azure.storage.blob.blobcontainerclient.delete) metódus használatával. Emellett törli az alkalmazás által létrehozott helyi fájlokat is.
+A következő kód törli az alkalmazás által létrehozott erőforrásokat, ha eltávolítja a teljes tárolót a [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) metódus használatával. Emellett törli az alkalmazás által létrehozott helyi fájlokat is.
 
 Az alkalmazás a `System.console().readLine()` meghívásával szünetelteti a felhasználói bevitelt, mielőtt törli a blobot, a tárolót és a helyi fájlokat. Ez jó eséllyel ellenőrizhető, hogy az erőforrások valóban helyesen lettek-e létrehozva a Törlésük előtt.
 
@@ -390,7 +390,7 @@ A tisztítási folyamat megkezdése előtt tekintse meg a két fájl *MyDocument
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Java használatával.
 

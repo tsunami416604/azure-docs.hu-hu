@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961587"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091634"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -66,17 +66,13 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
     Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancsfájlt, ellenőrizze, hogy van-e hozzáférése a következőhöz:
 
     - download.microsoft.com
-    - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (Azure nyilvános térségek)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (Azure China 21Vianet)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (Azure US government esetében)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (az Azure Germany esetében)
+    - A helyreállítási szolgáltatás URL-címei (a Geo-név a helyreállítási tárolót tartalmazó régióra vonatkozik) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure Public térségek esetén) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure China 21Vianet esetén) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure US government esetében) - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure Germany esetében)
     - 3260-es kimenő port
 
 > [!Note]
 >
-> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve \'VMname\'\_\'geoname\'_\'GUID\', például ContosoVM_wcus_12345678.....<br><br>
-> - Az URL-cím a következő lenne: "https:\//pod01-rec2.wcus.backup.windowsazure.com"
+> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve \'VMname\'\_\'geoname\'_\'GUID\', például ContosoVM_wcus_12345678
+> - Az URL-cím <https://pod01-rec2.wcus.backup.windowsazure.com>"
 
    Linux esetén a parancsfájl "Open-iSCSI" és "lshw" összetevőket igényel a helyreállítási ponthoz való kapcsolódáshoz. Ha az összetevők nem léteznek azon a számítógépen, amelyen a parancsfájl fut, a parancsfájl engedélyt kér az összetevők telepítésére. Adja meg a szükséges összetevők telepítésének jóváhagyását.
 
@@ -141,21 +137,21 @@ A kötetek csoportjának neveinek listázása fizikai kötet alatt.
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 Az összes logikai kötet, név és elérési út listázása egy kötet csoportban.
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 A logikai kötetek csatlakoztatása a választott elérési úthoz.
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>RAID-tömbök esetén
@@ -164,7 +160,7 @@ A következő parancs az összes RAID-lemez részleteit jeleníti meg.
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  A megfelelő RAID-lemez `/dev/mdm/<RAID array name in the protected VM>`ként jelenik meg
@@ -173,7 +169,7 @@ Ha a RAID-lemez fizikai kötetekkel rendelkezik, használja a csatlakoztatás pa
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 Ha a RAID-lemezen van egy másik LVM konfigurálva, használja a fenti eljárást az LVM-partíciók számára, de használja a kötet nevét a RAID-lemez nevének helyén.

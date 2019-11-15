@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 248b66a928d373678d3058be488e226ee51bbcae
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845728"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092128"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása Azure térbeli Horgonyokkal
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
-Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Android-alkalmazást az [Azure térbeli](../overview.md) horgonyok C++használatával Java-vagy/NDK.-ben Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy ARCore Android-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Android-alkalmazást az [Azure térbeli horgonyok](../overview.md) használatával Java-vagy C++/NDK.-ben Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy ARCore Android-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
 
 A következőket fogja megtanulni:
 
@@ -34,11 +34,11 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 - Windows vagy macOS rendszerű számítógép, <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
   - Ha Windows rendszeren fut, szüksége lesz <a href="https://git-scm.com/download/win" target="_blank">a git for Windowsra</a>is.
-  - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa a `brew install git`parancsot.
+  - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
   - A NDK minta létrehozásához telepítenie kell a NDK és a CMak 3,6-es vagy újabb SDK-eszközöket is a Android Studio-ben.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
   - Előfordulhat, hogy a számítógépe számára további eszközillesztők szükségesek az Android-eszközkel való kommunikációhoz. További információért és útmutatásért lásd [itt](https://developer.android.com/studio/run/device.html) .
-- Az alkalmazásnak a **1,8**ARCore kell megcéloznia.
+- Az alkalmazásnak meg kell céloznia a ARCore **1.11.0**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -52,7 +52,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Töltse `arcore_c_api.h` le [](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h) innen, és helyezze el `Android\NDK\libraries\include`a következő helyen:.
+Töltse le `arcore_c_api.h` [innen, és helyezze](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) `Android\NDK\libraries\include`ba.
 
 Az újonnan klónozott tárházból inicializálja az almodulokat a következő parancs futtatásával:
 
@@ -66,11 +66,11 @@ Nyissa meg az Android Studiót.
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/Java/`projektet a következő helyen:.
+Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/Java/`címen található projektet.
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/NDK/`projektet a következő helyen:.
+Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/NDK/`címen található projektet.
 
 ---
 
@@ -80,19 +80,19 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Nyissa meg `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`a t.
+Nyissa meg `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a `Set me`t a fiók azonosítójával.
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Nyissa meg `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`a t.
+Nyissa meg `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a `Set me`t a fiók azonosítójával.
 
 ---
 
@@ -117,4 +117,4 @@ A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasí
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

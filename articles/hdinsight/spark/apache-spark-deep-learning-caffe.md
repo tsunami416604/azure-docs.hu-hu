@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e5988bf1955502d89cc31bcc30672de983a399ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145710"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083343"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz
 
@@ -21,7 +21,7 @@ ms.locfileid: "71145710"
 
 A Deep learning az egészségügyi ellátásról a gyártásba való szállításra és egyebekre is hatással van. A vállalatok mély tanulást folytatnak a problémák megoldásában, például a [képosztályozás](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), a [beszédfelismerés](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), az objektumok felismerése és a gépi fordítás terén.
 
-[Számos népszerű keretrendszer](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)létezik, többek között a [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), a [Tensorflow](https://www.tensorflow.org/), az [Apache MXNet](https://mxnet.apache.org/), a theano stb. A [Cafe](https://caffe.berkeleyvision.org/) a legismertebb, nem szimbolikus (kötelező) neurális hálózati keretrendszerek egyike, és széles körben használatos számos területen, beleértve a számítógépes jövőképet is. Emellett a [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) a Cafe-t a Apache Spark-mel ötvözi, ebben az esetben a Deep learning könnyen használható egy meglévő Hadoop-fürtön. A Deep learning és a Spark ETL-folyamatok együttes használata, a rendszer bonyolultságának csökkentése és a megoldás teljes körű késése.
+[Számos népszerű keretrendszer](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)létezik, többek között a [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), a [Tensorflow](https://www.tensorflow.org/), az [Apache MXNet](https://mxnet.apache.org/), a theano stb. a [Cafe](https://caffe.berkeleyvision.org/) az egyik legismertebb, nem szimbolikus (kötelező) neurális hálózati keretrendszer, és széles körben használatos számos területen, többek között a számítógépes jövőképben. Emellett a [CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) a Cafe-t a Apache Spark-mel ötvözi, ebben az esetben a Deep learning könnyen használható egy meglévő Hadoop-fürtön. A Deep learning és a Spark ETL-folyamatok együttes használata, a rendszer bonyolultságának csökkentése és a megoldás teljes körű késése.
 
 A [HDInsight](https://azure.microsoft.com/services/hdinsight/) egy olyan felhőalapú Apache Hadoop ajánlat, amely optimalizált, nyílt forráskódú analitikai fürtöket biztosít Apache Spark, Apache Hive, Apache Hadoop, Apache HBase, Apache Storm, Apache KAFKA és ml szolgáltatásokhoz. A HDInsight a 99,9%-os SLA-val támogatja. Ezek a big data technológiák és ISV-alkalmazások könnyen telepíthetők felügyelt fürtökként a vállalatok biztonságával és monitorozásával.
 
@@ -36,7 +36,7 @@ A feladat végrehajtása négy lépésből áll:
 
 Mivel a HDInsight egy Pásti-megoldás, nagyszerű platform-funkciókat kínál, így könnyen elvégezhető néhány feladat. Az ebben a blogbejegyzésben használt egyik funkciót [parancsfájl-műveletnek](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)nevezzük, amellyel rendszerhéj-parancsokat futtathat a fürtcsomópontok (a fő csomópont, a feldolgozó csomópont vagy a peremhálózati csomópont) testreszabásához.
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1\. lépés:  A szükséges függőségek telepítése az összes csomóponton
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1\. lépés: a szükséges függőségek telepítése az összes csomóponton
 
 Első lépésként telepítenie kell a függőségeket. A Cafe-hely és a [CaffeOnSpark-hely](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) néhány hasznos wikit kínál a Spark-függőségek a fonal módban való telepítéséhez. A HDInsight a Spark on szál módot is használja. Azonban hozzá kell adnia néhány függőséget a HDInsight platformhoz. Ehhez használjon parancsfájl-műveletet, és futtassa azt az összes fő csomóponton és munkavégző csomóponton. Ez a parancsfájl körülbelül 20 percet vesz igénybe, mivel ezek a függőségek más csomagoktól is függenek. A HDInsight-fürt számára elérhető helyen kell elhelyezni, például egy GitHub-helyen vagy az alapértelmezett BLOB Storage-fiókban.
 
@@ -66,7 +66,7 @@ Első lépésként futtassa ezt a szkriptet a fürtön a munkavégző csomópont
 
 ![Függőségek telepítésére szolgáló parancsfájl-műveletek](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
-## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2\. lépés: Build Cafe Apache Spark HDInsight a fő csomóponton
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2\. lépés: a HDInsight a főcsomóponton való kiépítésének Apache Spark a Cafe
 
 A második lépés a Cafe kiépítése a átjárócsomóponthoz, majd a lefordított kódtárak terjesztése az összes munkavégző csomópontra. Ebben a lépésben az SSH- [t kell a átjárócsomóponthoz](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezt követően a [CaffeOnSpark-létrehozási folyamatnak](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)kell megfelelnie. Az alábbi szkripttel hozhat létre CaffeOnSpark néhány további lépéssel.
 
@@ -112,7 +112,7 @@ Előfordulhat, hogy többet kell tennie, mint amit a CaffeOnSpark dokumentáció
 - Helyezze el az adatkészleteket a BLOB Storage-ba, amely egy megosztott hely, amely az összes munkavégző csomópont számára elérhető a későbbi használat érdekében.
 - Helyezze a lefordított Cafe-kódtárakat a BLOB Storage-ba, majd később másolja a kódtárakat az összes csomópontra a parancsfájlok használatával, hogy elkerülje a további fordítási időt.
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Hibaelhárítás Egy Ant-BuildException történt: az exec visszaadott: 2
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Hibaelhárítás: Ant-BuildException történt: az exec visszatért: 2
 
 Amikor először próbál létrehozni CaffeOnSpark, néha
 
@@ -120,7 +120,7 @@ Amikor először próbál létrehozni CaffeOnSpark, néha
 
 A probléma megoldásához szüntesse meg a kód tárházának tisztítását, majd futtassa a "make build" parancsot, ha a megfelelő függőségekkel rendelkezik.
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>Hibaelhárítás Maven-tárház kapcsolatainak időtúllépése
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>Hibaelhárítás: a Maven-tárház kapcsolatainak időtúllépése
 
 Időnként a Maven a következő kódrészlethez hasonló időtúllépési hibát biztosít:
 
@@ -131,7 +131,7 @@ Időnként a Maven a következő kódrészlethez hasonló időtúllépési hibá
 
 Néhány perc múlva újra kell próbálkoznia.
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>Hibaelhárítás Tesztelési hiba a Cafe-ban
+### <a name="troubleshooting-test-failure-for-caffe"></a>Hibaelhárítás: a Cafe tesztelési hibája
 
 A CaffeOnSpark végső ellenőrzésének végrehajtásakor valószínűleg sikertelen volt a teszt. Ez valószínűleg az UTF-8 kódolással kapcsolódik, de nem befolyásolhatja a Cafe használatát
 
@@ -141,7 +141,7 @@ A CaffeOnSpark végső ellenőrzésének végrehajtásakor valószínűleg siker
     Tests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0
     *** 1 TEST FAILED ***
 
-## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>3\. lépés: A szükséges kódtárak terjesztése az összes munkavégző csomópont számára
+## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>3\. lépés: a szükséges kódtárak terjesztése az összes munkavégző csomópont számára
 
 A következő lépés a kódtárak terjesztése (alapvetően a CaffeOnSpark-/Cafe-Public/Distribution/lib/és CaffeOnSpark/Cafe-történő/Distribute/a) összes csomópontjának kódtára. A 2. lépésben ezeket a kódtárakat a BLOB Storage-ba helyezi el, és ebben a lépésben parancsfájl-műveletek használatával másolja azt az összes fő csomópontra és munkavégző csomópontra.
 
@@ -154,17 +154,17 @@ Győződjön meg arról, hogy a fürthöz tartozó megfelelő helyre kell mutatn
 
 Mivel a 2. lépésben a BLOB Storage-ba helyezi azt, amely az összes csomópont számára elérhető, ebben a lépésben egyszerűen másolja az összes csomópontra.
 
-## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4\. lépés: Egy Cafe-modell összeállítása és elosztott módon történő futtatása
+## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4\. lépés: Cafe-modell összeállítása és elosztott módon történő futtatása
 
 A Cafe telepítése az előző lépések futtatása után történik. A következő lépés egy Cafe-modell írása. 
 
 A Cafe egy "kifejező architektúrát" használ, ahol a modell összeállításához csak egy konfigurációs fájlt kell definiálnia, és nem kell kódolást végeznie (a legtöbb esetben). Nézzük meg, hogy. 
 
-Az Ön által betanított modell a MNIST képzéshez használható minta modell. A kézzel írt számjegyek MNIST-adatbázisa 60 000 példákkal és 10 000-es tesztelési készlettel rendelkezik. Ez egy, a NIST által elérhető nagyobb készlet részhalmaza. A számjegyek mérete normalizálva lett, és középre igazított, rögzített méretű ábrán. A CaffeOnSpark néhány szkripttel tölti le az adatkészletet, és a megfelelő formátumba alakítja át.
+Az Ön által betanított modell a MNIST képzéshez használható minta modell. A kézzel írt számjegyek MNIST-adatbázisa 60 000 példákkal és 10 000-es tesztelési készlettel rendelkezik. Ez egy, a NIST által elérhető nagyobb készlet részhalmaza. A számjegyek egységesített méretűek és az azonos méretű képek közepére vannak rendezve. A CaffeOnSpark néhány szkripttel tölti le az adatkészletet, és a megfelelő formátumba alakítja át.
 
 A CaffeOnSpark néhány hálózati topológiát biztosít például a MNIST betanításához. Remek terve a hálózati architektúra (a hálózat topológiája) és az optimalizálás felosztására. Ebben az esetben két fájl szükséges:
 
-a "Solver" fájl ($ {CAFFE_ON_SPARK}/Data/lenet_memory_solver.prototxt) az optimalizálás és a paraméter-létrehozási frissítések felügyeletére szolgál. Meghatározhatja például, hogy a CPU vagy a GPU használatban van-e, mi a lendület, hány ismétlés van, stb. Azt is meghatározza, hogy a program melyik neuron-hálózati topológiát használja (ami a szükséges második fájl). A Solverrel kapcsolatos további információkért lásd: a [Cafe dokumentációja](https://caffe.berkeleyvision.org/tutorial/solver.html).
+a "Solver" fájl ($ {CAFFE_ON_SPARK}/Data/lenet_memory_solver. prototxt) segítségével felügyelhető az optimalizálási és a létrehozási paraméterek frissítései. Meghatározhatja például, hogy a CPU vagy a GPU használatban van-e, mi a lendület, hány ismétlés van, stb. Azt is meghatározza, hogy a program melyik neuron-hálózati topológiát használja (ami a szükséges második fájl). A Solverrel kapcsolatos további információkért lásd: a [Cafe dokumentációja](https://caffe.berkeleyvision.org/tutorial/solver.html).
 
 Ehhez a példához, mivel a GPU helyett CPU-t használ, az utolsó sort kell megváltoztatnia a következőre:
 
@@ -176,7 +176,7 @@ Ehhez a példához, mivel a GPU helyett CPU-t használ, az utolsó sort kell meg
 
 Szükség szerint más vonalakat is módosíthat.
 
-A második fájl ($ {CAFFE_ON_SPARK}/Data/lenet_memory_train_test.prototxt) meghatározza, hogyan néz ki a neuron-hálózat, valamint a megfelelő bemeneti és kimeneti fájl. Emellett frissítenie kell a fájlt, hogy az tükrözze a betanítási adatterületet. Módosítsa a következő részt a lenet_memory_train_test. prototxt (a fürthöz tartozó megfelelő helyre kell mutatnia):
+A második fájl ($ {CAFFE_ON_SPARK}/Data/lenet_memory_train_test. prototxt) meghatározza, hogyan néz ki a neuron-hálózat, valamint a megfelelő bemeneti és kimeneti fájl. Emellett frissítenie kell a fájlt, hogy az tükrözze a betanítási adatterületet. Módosítsa a következő részt a lenet_memory_train_test. prototxt (a fürthöz tartozó megfelelő helyre kell mutatnia):
 
 - change the "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" to "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - change "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" to "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
@@ -189,7 +189,7 @@ Ebben a cikkben ezt a MNIST példát használjuk. Futtassa a következő parancs
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
-Az előző parancs elosztja a szükséges fájlokat (lenet_memory_solver. prototxt és lenet_memory_train_test. prototxt) minden egyes fonal-tárolóra. A parancs az egyes Spark-illesztők/végrehajtók megfelelő elérési útját is beállítja a LD_LIBRARY_PATH. A LD_LIBRARY_PATH az előző kódrészletben van definiálva, és arra a helyre mutat, amely a CaffeOnSpark-tárakat tartalmazta. 
+Az előző parancs elosztja a szükséges fájlokat (lenet_memory_solver. prototxt és lenet_memory_train_test. prototxt) minden egyes fonal-tárolóra. A parancs az egyes Spark-illesztőprogramok/végrehajtók megfelelő elérési útját is beállítja LD_LIBRARY_PATHra. LD_LIBRARY_PATH az előző kódrészletben van definiálva, és arra a helyre mutat, amely a CaffeOnSpark-könyvtárakkal rendelkezik. 
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 
@@ -247,11 +247,11 @@ Időnként előfordulhat, hogy a probléma az illesztőprogramok helyett a végr
 
     Container exited with a non-zero exit code 134
 
-Ebben az esetben le kell kérnie a sikertelen tároló AZONOSÍTÓját (a fenti esetben container_1485916338528_0008_05_000005). Ezután futtatnia kell 
+Ebben az esetben be kell szereznie a sikertelen tároló AZONOSÍTÓját (a fenti esetben container_1485916338528_0008_05_000005). Ezután futtatnia kell 
 
     yarn logs -containerId container_1485916338528_0008_03_000005
 
-a átjárócsomóponthoz. A tároló hibájának ellenőrzése után a rendszer GPU-módot használ (ha ehelyett CPU-módot kell használnia) a lenet_memory_solver. prototxt.
+a átjárócsomóponthoz. A tároló hibájának ellenőrzése után a rendszer GPU-módot használ (ha inkább CPU-módot használ) lenet_memory_solver. prototxt.
 
     17/02/01 07:10:48 INFO LMDB: Batch size:100
     WARNING: Logging before InitGoogleLogging() is written to STDERR
@@ -285,12 +285,12 @@ Ebben a dokumentációban megpróbálta telepíteni a CaffeOnSpark-t egy egyszer
 
 ## <a name="seealso"></a>Lásd még:
 
-* [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
+* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése
 

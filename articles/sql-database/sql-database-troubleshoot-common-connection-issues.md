@@ -11,17 +11,17 @@ author: dalechen
 manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
-ms.date: 01/25/2019
-ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: ffbe52bfcef3f32a12e97d37c39a2199cefe72ce
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822478"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082465"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>A Azure SQL Database kapcsolódási problémáinak elhárítása
 
-Ha a Azure SQL Databasehoz való csatlakozás meghiúsul, [hibaüzeneteket](sql-database-develop-error-messages.md)kap. Ez a cikk egy központi témakör, amely segít a Azure SQL Database kapcsolódási problémák elhárításában. Bemutatja a kapcsolódási problémák [gyakori okait](#cause) , és a [hibaelhárítási eszközt](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) javasolja a probléma azonosításához, valamint hibaelhárítási lépéseket tesz lehetővé az [átmeneti hibák](#troubleshoot-transient-errors) és az [állandó vagy nem átmeneti hibák megoldásához. ](#troubleshoot-persistent-errors). 
+Ha a Azure SQL Databasehoz való csatlakozás meghiúsul, [hibaüzeneteket](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)kap. Ez a cikk egy központi témakör, amely segít a Azure SQL Database kapcsolódási problémák elhárításában. Bemutatja a kapcsolódási problémák [gyakori okait](#cause) , és a [hibaelhárítási eszközt](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) javasolja a probléma azonosításához, valamint hibaelhárítási lépéseket tesz lehetővé az [átmeneti hibák](#troubleshoot-transient-errors) és az [állandó vagy nem átmeneti hibák megoldásához. ](#troubleshoot-persistent-errors).
 
 Ha megtapasztalja a kapcsolatok problémáit, próbálkozzon a cikkben ismertetett hibaelhárítási lépésekkel.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -56,8 +56,6 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 
 > [!NOTE]
 > Ez a hibaüzenet általában átmeneti (rövid életű).
-> 
-> 
 
 Ez a hiba akkor fordul elő, amikor az adatbázist áthelyezi (vagy újrakonfigurálták), és az alkalmazás elveszíti a kapcsolatát az adatbázissal. Az adatbázis-újrakonfigurálási események egy tervezett esemény (például egy szoftverfrissítés) vagy egy nem tervezett esemény (például egy folyamat összeomlása vagy terheléselosztás) miatt történnek. A legtöbb újrakonfigurálási esemény általában rövid életű, és legfeljebb 60 másodpercnél rövidebb idő alatt elvégezhető. Ezek az események azonban esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
@@ -69,6 +67,7 @@ Ez a hiba akkor fordul elő, amikor az adatbázist áthelyezi (vagy újrakonfigu
 4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az Azure- **támogatás beszerzése** lehetőség választásával kérheti le. [ Támogatási](https://azure.microsoft.com/support/options) webhely.
 
 ## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
+
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure SQL Databasehoz, általában a következők egyikével kapcsolatos problémát jelez:
 
 * Tűzfal-konfiguráció. Az Azure SQL Database vagy az ügyféloldali tűzfal blokkolja a Azure SQL Database kapcsolatait.
@@ -76,17 +75,14 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure SQL Databasehoz, által�
 * Felhasználói hiba: például a hibás típusú kapcsolatok paraméterei, például a kiszolgáló neve a kapcsolatok karakterláncában.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
-1. [Tűzfalszabályok](sql-database-configure-firewall-settings.md) beállítása az ügyfél IP-címének engedélyezéséhez. Ideiglenes tesztelési célból állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címtartományként, és használja a 255.255.255.255-t a záró IP-címtartományként. Ekkor megnyílik a kiszolgáló minden IP-címre. Ha ezzel feloldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályot a megfelelő korlátozott IP-címhez vagy címtartomány létrehozásához. 
+
+1. [Tűzfalszabályok](sql-database-configure-firewall-settings.md) beállítása az ügyfél IP-címének engedélyezéséhez. Ideiglenes tesztelési célból állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címtartományként, és használja a 255.255.255.255-t a záró IP-címtartományként. Ekkor megnyílik a kiszolgáló minden IP-címre. Ha ezzel feloldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályot a megfelelő korlátozott IP-címhez vagy címtartomány létrehozásához.
 2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 1433-es port nyitva van-e a kimenő kapcsolatok számára. Tekintse át [a Windows tűzfal konfigurálását, hogy engedélyezze SQL Server hozzáférését](https://msdn.microsoft.com/library/cc646023.aspx) és a [hibrid identitás szükséges portokat és protokollokat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) a Azure Active Directory hitelesítéshez szükséges további portokhoz kapcsolódó további mutatókhoz.
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse meg a kapcsolódási karakterlánc szakaszt a [kapcsolódási problémák témakörben](sql-database-connectivity-issues.md#connections-to-sql-database).
 4. A szolgáltatás állapotának keresése az irányítópulton. Ha úgy gondolja, hogy van egy regionális leállás, a [helyreállítás](sql-database-disaster-recovery.md) egy új régióba való helyreállítás lépéseiből című témakörben talál további információt.
 
-## <a name="next-steps"></a>További lépések
-* [Keresés a dokumentációban Microsoft Azure](https://azure.microsoft.com/search/documentation/)
-* [A Azure SQL Database szolgáltatás legújabb frissítéseinek megtekintése](https://azure.microsoft.com/updates/?service=sql-database)
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="additional-resources"></a>További források
 * [SQL Database fejlesztés áttekintése](sql-database-develop-overview.md)
 * [Általános átmeneti hibák kezelésére vonatkozó útmutató](../best-practices-retry-general.md)
 * [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](sql-database-libraries.md)
-

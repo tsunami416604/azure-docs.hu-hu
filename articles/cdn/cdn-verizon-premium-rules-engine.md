@@ -1,103 +1,103 @@
 ---
-title: Az Azure CDN a Verizon prémium szintű szabálymotorral használatával HTTP-viselkedés felülbírálásához |} A Microsoft Docs
-description: A rules engine teszi lehetővé testre szabhatja, milyen HTTP-kérések kezelésének a Verizon prémium szintű Azure CDN által például blokkolja a bizonyos tartalomtípusok kézbesítését, gyorsítótárazási szabályzat definiálása és módosíthatja a HTTP-fejléceket.
+title: A HTTP-viselkedés felülbírálása a Azure CDN-Verizon Premium Rules motorral
+description: A szabályok motor lehetővé teszi a HTTP-kérések kezelésének testreszabását a Verizon Premium Azure CDNtól, például bizonyos tartalomtípusok kézbesítésének blokkolásával, a gyorsítótárazási házirend meghatározásával és a HTTP-fejlécek módosításával.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593190"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082953"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Az Azure CDN a Verizon prémium szintű szabálymotorral használatával HTTP a működés felülbírálása
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-viselkedés felülbírálása a Verizon Premium Rules Engine Azure CDN használatával
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure CDN szabálymotorral lehetővé teszi, hogy testre szabhatja a HTTP-kérések kezelésének módja. Például blokkolja a bizonyos tartalomtípusok kézbesítését, tartalom, gyorsítótárazási szabályzatot definiálhat, vagy módosítása egy HTTP-fejlécben. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy szabályt, amely az eszközök CDN gyorsítótárazási viselkedésének módosítása. A szabályok motor szintaxissal kapcsolatos további információkért lásd: [Azure CDN szabálymotor-referencia](cdn-verizon-premium-rules-engine-reference.md).
+A Azure CDN Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását. Például letilthatja bizonyos tartalomtípusok kézbesítését, a gyorsítótárazási házirend meghatározását vagy egy HTTP-fejléc módosítását. Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan szabályt, amely megváltoztatja a CDN-eszközök gyorsítótárazási viselkedését. A szabályok motor szintaxisával kapcsolatos további információkért lásd a [Azure CDN Rules Engine-referenciát](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Access
+## <a name="access"></a>Hozzáférés
 
-Hozzáférhet a rules engine, először jelöljön ki **kezelés** tetején a **CDN-profil** oldal az Azure CDN felügyeleti lap elérésére. Attól függően, hogy a végpont a dinamikuswebhely-gyorsítás (DSA) van optimalizálva hogy elérhesse a a rules engine, az a végpont típusa megfelelő szabályokat együtt:
+A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lévő **kezelés** elemre kell kiválasztania a Azure CDN felügyeleti oldalának eléréséhez. Attól függően, hogy a végpont a dinamikus hely gyorsítására van-e optimalizálva (DSA), akkor a szabályok motorját a megadott típusú végpontnak megfelelő szabályokkal érheti el:
 
-- Általános webes kézbesítés vagy egyéb nem DSA optimalizálási optimalizált végpontok:
+- Általános webes kézbesítésre vagy más, nem DSA-optimalizálásra optimalizált végpontok:
     
-    Válassza ki a **HTTP nagy** lapfülre, majd válassza ki **Szabálymotorral**.
+    Válassza ki a **http nagyméretű** lapot, majd válassza a **szabályok motor**elemet.
 
-    ![Szabálymotor HTTP-hez](./media/cdn-rules-engine/cdn-http-rules-engine.png)
+    ![A HTTP-re vonatkozó szabályok motorja](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
-- A végpontok DSA optimalizálva:
+- DSA-ra optimalizált végpontok:
     
-    Válassza ki a **ADN** lapfülre, majd válassza ki **Szabálymotorral**.
+    Válassza az **ADN** lapot, majd a **szabályok motor**elemet.
     
-    ADN DSA tartalom megadásához Verizon által használt kifejezés. Az itt létrehozott szabályok olyan végpontok, amelyek a profil nem optimalizált DSA figyelmen kívül hagyja.
+    Az ADN olyan kifejezés, amelyet a Verizon a DSA-tartalom megadására használ. Az itt létrehozott szabályokat a rendszer figyelmen kívül hagyja a profil egyik olyan végpontján sem, amely nem a DSA-ra van optimalizálva.
 
-    ![A DSA szabálymotor](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![A DSA szabályainak motorja](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
 ## <a name="tutorial"></a>Oktatóanyag
 
-1. Az a **CDN-profil** lapon jelölje be **kezelés**.
+1. A **CDN-profil** lapon válassza a **kezelés**lehetőséget.
    
-    ![A CDN-profil felügyelet gombra](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![CDN-profil kezelése gomb](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    Megnyílik a CDN felügyeleti portálját.
+    Megnyílik a CDN felügyeleti portál.
 
-2. Válassza ki a **HTTP nagy** lapfülre, majd válassza ki **Szabálymotorral**.
+2. Válassza ki a **http nagyméretű** lapot, majd válassza a **szabályok motor**elemet.
    
-    Új szabály beállításait jelennek meg.
+    Megjelenik egy új szabály beállításai.
    
-    ![Új CDN-szabály beállítások](./media/cdn-rules-engine/cdn-new-rule.png)
+    ![CDN új szabály beállításai](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > A sorrend, amelyben több szabály szerepel a listában érinti, hogyan kezeli őket. A következő szabály felülbírálhatja az előző szabályok által meghatározott műveleteket.
+   > A különböző szabályok listájának sorrendje befolyásolja a kezelésük módját. Egy későbbi szabály felülbírálhatja egy korábbi szabály által megadott műveleteket.
    >
 
-3. Írjon be egy nevet a **neve / leírása** szövegmezőbe.
+3. Adjon meg egy nevet a **név/leírás** szövegmezőben.
 
-4. Azonosítja a kérelmeket a szabály vonatkozik. Az alapértelmezett egyezés feltétel használatához **mindig**.
+4. Azon kérelmek típusának meghatározása, amelyekre a szabály vonatkozik. Használja az alapértelmezett egyezési feltételt, **mindig**.
    
-   ![CDN szabályfeltétel-egyezés](./media/cdn-rules-engine/cdn-request-type.png)
+   ![CDN-szabály egyeztetési feltétele](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!NOTE]
-   > A legördülő listában több egyezési feltételei érhetők el. A jelenleg kijelölt egyezési feltétellel kapcsolatos információkért válassza a kék információs ikonra a bal oldalán.
+   > A legördülő listában több egyezési feltétel is elérhető. Az aktuálisan kiválasztott egyeztetési feltétellel kapcsolatos információkért válassza ki a kék információs ikont a bal oldalon.
    >
-   >  A feltételes kifejezések részletes listájáért lásd: [szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   >  A feltételes kifejezések részletes listáját a [szabályok motor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-match-conditions.md)című témakörben tekintheti meg.
    >  
-   > Részletes listát egyezési feltételei, lásd: [szabálymotor egyezési feltételei szabályok](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   > Az egyeztetési feltételek részletes listáját lásd: a [szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
    >
    >
 
-5. Adjon hozzá egy új funkció, jelölje be a **+** megjelenítő gombra **funkciók**.  Válassza ki a legördülő listában, a bal oldali, **kényszerített belső Max-Age**.  A megjelenő szövegmezőbe írja be **300**. Ne változtassa meg a többi alapértelmezett értéket.
+5. Új szolgáltatás hozzáadásához kattintson a **szolgáltatások**elem melletti **+** gombra.  A bal oldali legördülő menüben válassza a **kényszerített belső Max-Age**lehetőséget.  A megjelenő szövegmezőbe írja be a **300**értéket. Ne módosítsa a fennmaradó alapértelmezett értékeket.
    
-   ![CDN szabály funkció](./media/cdn-rules-engine/cdn-new-feature.png)
+   ![CDN-szabály funkció](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > A legördülő listában több funkciók érhetők el. A jelenleg kijelölt szolgáltatással kapcsolatos további információkért válassza a kék információs ikonra a bal oldalán.
+   > Több funkció is elérhető a legördülő listában. Az aktuálisan kiválasztott szolgáltatással kapcsolatos információkért válassza ki a kék információs ikont a bal oldalon.
    >
-   > A **kényszerített belső Max-Age**, az eszköz `Cache-Control` és `Expires` fejlécek felülbírálják szabályozhatja, mikor a CDN élcsomópont frissíti az eszköz a forrásból. Ebben a példában a CDN élcsomópont gyorsítótárazza az eszköz 300 másodpercig, azaz 5 perc, mielőtt azt frissíti az eszköz a forrásból.
+   > A **belső Max-Age kényszerítéséhez**az eszköz `Cache-Control` és `Expires` fejléce felül lesz írva, amikor a CDN peremhálózati csomópontja frissíti az eszközt a forrásból. Ebben a példában a CDN peremhálózati csomópontja 300 másodpercig vagy 5 percen belül gyorsítótárazza az adategységet, mielőtt frissíti az eszközt a forrástól.
    >
-   > Funkciók részletes listájáért lásd: [szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md).
+   > A szolgáltatások részletes listáját a [szabályok motor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)című témakörben tekintheti meg.
    >
    >
 
-6. Válassza ki **Hozzáadás** az új szabály mentéséhez.  Az új szabály most jóváhagyására vár. Miután jóváhagyták, az állapot változik a **függőben lévő XML** való **aktív XML**.
+6. Az új szabály mentéséhez válassza a **Hozzáadás** lehetőséget.  Az új szabály most jóváhagyásra vár. A jóváhagyást követően az állapot a **függőben lévő XML** -ből **aktív XML-** re változik.
    
    > [!IMPORTANT]
-   > Szabályok módosítások keresztül az Azure CDN propagálása akár 10 percet is igénybe vehet.
+   > A szabályok változásai akár 10 percet is igénybe vehetnek Azure CDN.
    >
    >
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure CDN áttekintése](cdn-overview.md)
+- [Azure CDN áttekintése](cdn-overview.md)
 - [Szabálymotor-referencia](cdn-verizon-premium-rules-engine-reference.md)
 - [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Azure fridays-re: Az Azure CDN hatékony új prémium szintű szolgáltatásai](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (videó)
+- [Azure Fridays: Azure CDN hatékony új funkciói](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (videó)

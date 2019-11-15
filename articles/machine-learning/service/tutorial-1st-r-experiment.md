@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888611"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092262"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Oktatóanyag: az első modell betanítása és üzembe helyezése az R-ben Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -108,7 +108,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>Számítási cél létrehozása
+### <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
 Azure Machine Learning számítás (AmlCompute) használatával a felügyelt szolgáltatás, az adatszakértők pedig gépi tanulási modelleket hozhatnak létre az Azure-beli virtuális gépek fürtjén. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban egy egycsomópontos AmlCompute-fürtöt hoz létre oktatási környezetként. Az alábbi kód létrehozza a számítási fürtöt, ha még nem létezik a munkaterületen.
 
 Előfordulhat, hogy néhány percet várnia kell, amíg a számítási fürt kiépíthető, ha még nem létezik.
@@ -271,7 +271,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 A modell segítségével előre megjósolhatja, hogy az ütközésből származó halál veszélye. Használja az Azure ML-t a modell előrejelzési szolgáltatásként való üzembe helyezéséhez. Ebben az oktatóanyagban üzembe helyezi a webszolgáltatást [Azure Container Instancesban](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
-### <a name="register-the-model"></a>A modell regisztrálása
+### <a name="register-the-model"></a>Regisztrálja a modellt
 
 Először regisztrálja a munkaterületre letöltött modellt [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html)használatával. A regisztrált modell lehet fájlok gyűjteménye, de ebben az esetben az R Model objektum elegendő. Az Azure ML a regisztrált modellt fogja használni az üzembe helyezéshez.
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 Ha már nincs szüksége rájuk, törölje az erőforrásokat. Ne töröljön olyan erőforrást, amelyet még használni szeretne. 
 
 Webszolgáltatás törlése:
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 A regisztrált modell törlése:
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 A számítási fürt törlése:
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 
@@ -373,7 +373,7 @@ delete_compute(compute)
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
 

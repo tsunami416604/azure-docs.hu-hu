@@ -1,25 +1,25 @@
 ---
-title: Visszaadja az Azure-beli virtuális gépeket egy másodlagos Azure-régióba a Azure Site Recovery szolgáltatással való vész-helyreállítás érdekében.
-description: Ismerje meg, hogyan végezhet vissza Azure-beli virtuális gépeket a Azure Site Recovery szolgáltatással.
+title: Az Azure-beli virtuális gépeket az Azure Site Recovery szolgáltatással rendelkező elsődleges régióba adja vissza.
+description: Ismerteti, hogyan lehet az Azure-beli virtuális gépeket az elsődleges régióba Azure Site Recovery szolgáltatással visszaadni.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242955"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091345"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure-beli virtuális gép feladatátvétele Azure-régiók között
 
 A [Azure site Recovery](site-recovery-overview.md) szolgáltatás a helyi gépek és az Azure-beli virtuális gépek (VM-EK) replikációjának, feladatátvételének és feladat-visszavételének kezelésével és koordinálásával járul hozzá a vész-helyreállítási stratégiához.
 
-Ez az oktatóanyag egy Azure-beli virtuális gép feladatátvételét ismerteti. A feladatátvételt követően vissza kell térnie az elsődleges régióra, ha az elérhető. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag egy Azure-beli virtuális gép feladatátvételét ismerteti. A feladatátvételt követően vissza kell térnie az elsődleges régióra, ha az elérhető. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > 

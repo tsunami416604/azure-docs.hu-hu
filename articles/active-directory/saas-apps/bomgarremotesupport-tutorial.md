@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Bomgar-vel – távoli támogatás | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Bomgar távoli támogatás között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és BeyondTrust távoli támogatás között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,193 +13,193 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 10/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ea2fb15c426da1198c655efb38c9a298a998d0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158807"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082067"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>Oktatóanyag: Azure Active Directory integráció a Bomgar-vel – távoli támogatás
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Bomgar távoli támogatását Azure Active Directory (Azure AD) használatával.
-A Bomgar távoli támogatásának az Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a BeyondTrust távoli támogatását Azure Active Directory (Azure AD) használatával. Ha a BeyondTrust távoli támogatását az Azure AD-vel integrálja, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Bomgar távoli támogatásához.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy Bomgar a távoli támogatást (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A BeyondTrust távoli támogatáshoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek, hogy BeyondTrust a távoli támogatást az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Bomgar távoli támogatással való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Bomgar távoli támogatás egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* BeyondTrust távoli támogatás egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Bomgar távoli támogatása támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* A Bomgar-támogatás **csak időben támogatja a** felhasználók üzembe helyezését
+* A BeyondTrust távoli támogatása támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A BeyondTrust-támogatás **csak időben támogatja a** felhasználók üzembe helyezését
 
-## <a name="adding-bomgar-remote-support-from-the-gallery"></a>Bomgar távoli támogatásának hozzáadása a katalógusból
+## <a name="adding-beyondtrust-remote-support-from-the-gallery"></a>BeyondTrust távoli támogatásának hozzáadása a katalógusból
 
-A Bomgar távoli támogatásának az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Bomgar távoli támogatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A BeyondTrust távoli támogatásának az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a BeyondTrust távoli támogatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Bomgar távoli támogatásának a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **BeyondTrust távoli támogatás** kifejezést a keresőmezőbe.
+1. Válassza a **BeyondTrust távoli támogatás** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a BeyondTrust távoli támogatásához
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t BeyondTrust távoli támogatással a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a BeyondTrust-távoli támogatásban.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a BeyondTrust távoli támogatásának konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[BeyondTrust távoli támogatásának egyszeri bejelentkezéses](#configure-beyondtrust-remote-support-sso)** beállítása – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre BeyondTrust-alapú távoli támogatási teszt felhasználót](#create-beyondtrust-remote-support-test-user)** – ha a BeyondTrust-hez tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó távoli támogatásban található B. Simon partnere.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A keresőmezőbe írja be a **Bomgar-távoli támogatás**kifejezést, válassza a **Bomgar távoli támogatás** az eredmény panelről lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A [Azure Portal](https://portal.azure.com/) **BeyondTrust távoli támogatás** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-     ![Bomgar távoli támogatás az eredmények listájában](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Bomgar-alapú távoli támogatással egy **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti Bomgar távoli támogatásban kell létrehozni.
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml`
 
-Az Azure AD egyszeri bejelentkezés Bomgar-alapú távoli támogatással történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com`
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Bomgar-alapú távoli támogatás egyszeri bejelentkezésének konfigurálása](#configure-bomgar-remote-support-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre Bomgar-alapú távoli támogatási teszt felhasználót](#create-bomgar-remote-support-test-user)** – hogy a Britta Simon partnere legyen a Bomgar távoli támogatásban, amely a felhasználó Azure ad-képviseletéhez van társítva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés Bomgar-alapú távoli támogatással történő konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/) **Bomgar távoli támogatás** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Bomgar távoli támogatási tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
-
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.trafficmanager.net/saml`
-
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.trafficmanager.net`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a [Bomgar távoli ügyfélszolgálat](https://www.bomgar.com/docs/index.htm#support) ügyfélszolgálatához. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+1. A BeyondTrust távoli támogatási alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![image](common/default-attributes.png)
 
-6. A **Bomgar-távoli támogatás beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény szerint.
+1. A fentieken kívül a BeyondTrust távoli támogatási alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+
+    | Name (Név) |  Forrás attribútum|
+    | ---------------| ----------|
+    | givenName | User. givenName |
+    | EmailAddress | user.mail |
+    | Name (Név) | user.userprincipalname |
+    | Felhasználónév | user.userprincipalname |
+    | Csoportok | User. groups |
+    | Egyedi felhasználói azonosító | user.userprincipalname |
+
+    > [!NOTE]
+    > Ha Azure AD-csoportokat rendel a BeyondTrust távoli támogatási alkalmazáshoz, a "jogcímek visszaadott csoportok" beállítást kell módosítania a nincs értékről a SecurityGroup. A csoportok az alkalmazásba lesznek importálva az objektum-azonosítók szerint. Az Azure AD-csoport objektumazonosító az Azure Active Directory felületen található tulajdonságok ellenőrzésével érhető el. Erre szükség lesz az Azure AD-csoportok megfelelő csoportházirendekhez való hivatkozásához és hozzárendeléséhez.
+
+1. Az egyedi felhasználói azonosító beállításakor ezt az értéket NameID: **állandó**értékre kell beállítani. A felhasználónak a megfelelő csoportházirendek helyes azonosításához és az engedélyekhez való hozzárendeléséhez szükség van egy állandó azonosítóra. A Szerkesztés ikonra kattintva megnyithatja a **felhasználói attribútumok & jogcímek** párbeszédpanelt az egyedi felhasználói azonosító értékének szerkesztéséhez.
+
+1. A **jogcím kezelése** szakaszban kattintson a **név azonosítójának kiválasztása** lehetőségre, és állítsa az értéket **állandó** értékre, majd kattintson a **Mentés**gombra.
+
+    ![Felhasználói attribútumok és jogcímek](./media/bomgarremotesupport-tutorial/attribute-unique-user-identifier.png)
+
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+
+1. A BeyondTrust-alapú **távoli támogatás beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL-cím
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** elemre.
 
-### <a name="configure-bomgar-remote-support-single-sign-on"></a>Bomgar-alapú távoli támogatás egyszeri bejelentkezésének konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ha egyszeri bejelentkezést szeretne konfigurálni a **Bomgar távoli támogatás** oldalán, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal [Bomgar a távoli támogatási támogatási csapatnak](https://www.bomgar.com/docs/index.htm#support). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a BeyondTrust távoli támogatásához.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **BeyondTrust távoli támogatás**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![Új felhasználó gomb](common/new-user.png)
+## <a name="configure-beyondtrust-remote-support-sso"></a>A BeyondTrust távoli támogatásának egyszeri bejelentkezésének konfigurálása
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+1. Egy másik böngészőablakban jelentkezzen be a BeyondTrust-rendszergazdaként a távoli támogatás szolgáltatásba.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+1. Kattintson az **állapot** menüre, és másolja ki az **azonosítót**, a **Válasz URL-címét** és a **bejelentkezési URL-címet** , és használja ezeket az értékeket a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
-    Például: BrittaSimon@contoso.com
+    ![A BeyondTrust távoli támogatásának konfigurálása](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+1. Navigáljon a BeyondTrust távoli támogatás belépési pont felületére `https://support.example.com/login` ahol a **support.example.com** a berendezés elsődleges állomásneve, és a rendszergazdai hitelesítő adataival hitelesíti magát.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+1. Navigáljon a **felhasználók & biztonsági** > **biztonsági szolgáltatók**elemre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+1. A legördülő menüben válassza ki az **SAML** elemet, majd kattintson a **szolgáltató létrehozása** gombra.
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Bomgar távoli támogatásához.
+1. Az identitás-szolgáltató beállításai szakaszban lehetősége van az identitás-szolgáltató metaadatainak feltöltésére. Keresse meg a Azure Portal letöltött metaadat-XML-fájlt, majd kattintson a **feltöltés** gombra. Az **entitás-azonosító**, az **egyszeri bejelentkezési szolgáltatás URL-címe** és a tanúsítvány automatikusan feltöltve lesz, és a **protokoll kötését** a **http post**értékre kell módosítani. Lásd az alábbi képernyőképet:
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Bomgar távoli támogatás**lehetőséget.
+    ![A BeyondTrust távoli támogatásának konfigurálása](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust távoli támogatási teszt felhasználó létrehozása
 
-2. Az alkalmazások listában válassza a **Bomgar távoli támogatás**lehetőséget.
+A felhasználó-kiépítési beállításokat itt fogjuk konfigurálni. Az ebben a szakaszban használt értékeket a Azure Portal **felhasználói attribútumok & jogcímek** szakasza hivatkozik. Ezt úgy konfiguráltuk, hogy az a létrehozáskor már importált alapértelmezett értékek legyenek, azonban az érték szükség esetén testreszabható.
 
-    ![Az Bomgar távoli támogatás hivatkozása az alkalmazások listájában](common/all-applications.png)
+![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user1.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+> [!NOTE]
+> A csoportok és az e-mail-attribútum nem szükséges ehhez a megvalósításhoz. Ha Azure AD-csoportokat használ, és hozzárendeli őket a BeyondTrust távoli támogatási csoportházirendekhez az engedélyekhez, a csoport objektum-AZONOSÍTÓját a Azure Portal és az "elérhető csoportok" szakaszban elhelyezett tulajdonságok segítségével kell hivatkozni. A művelet befejezését követően az objektum-azonosító/AD-csoport elérhető lesz a Csoportházirendhez való hozzárendeléshez az engedélyek számára.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user3.png)
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+> [!NOTE]
+> Másik lehetőségként beállíthatja a egy SAML2 biztonsági szolgáltató alapértelmezett csoportházirendjét is. Ennek a beállításnak a megadásával a a csoportházirendben megadott engedélyek alapján az SAML-n keresztül hitelesítő összes felhasználót hozzárendeli. Az általános tagok házirend a BeyondTrust-alapú távoli támogatás/privilegizált távoli hozzáférés korlátozott engedélyekkel való használatának része, amely a hitelesítés tesztelésére és a felhasználók megfelelő szabályzatokhoz való hozzárendelésére használható. A felhasználók nem töltik be a egy SAML2-felhasználók listájára a belépési pont > felhasználóval & a biztonságot az első sikeres hitelesítési kísérletig. A csoportházirendekkel kapcsolatos további információk a következő hivatkozáson találhatók: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-bomgar-remote-support-test-user"></a>Bomgar távoli támogatási teszt felhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Bomgar távoli támogatásban. A Bomgar-alapú távoli támogatás az igény szerinti felhasználói üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Bomgar távoli támogatásban, a hitelesítés után létrejön egy új.
-
-> [!Note]
-> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [Bomgar távoli támogatási szolgálatához](https://www.bomgar.com/docs/index.htm#support).
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
-
-Ha a hozzáférési panelen a Bomgar távoli támogatás csempére kattint, automatikusan be kell jelentkeznie a Bomgar távoli támogatására, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a BeyondTrust távoli támogatás csempére kattint, automatikusan be kell jelentkeznie a BeyondTrust távoli támogatására, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Próbálja ki a BeyondTrust távoli támogatását az Azure AD-vel](https://aad.portal.azure.com/)

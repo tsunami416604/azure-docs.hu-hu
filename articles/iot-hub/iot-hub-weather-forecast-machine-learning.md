@@ -1,5 +1,5 @@
 ---
-title: Időjárás-előrejelzés a Azure Machine Learning IoT Hubból származó adatokkal | Microsoft Docs
+title: Időjárás-előrejelzés a Azure Machine Learning IoT Hub adataival
 description: A Azure Machine Learning segítségével előre megjósolhatja, hogy az IoT hub milyen hőmérséklet-és páratartalom-adatok alapján gyűjti az eső esélyét.
 author: robinsh
 manager: philmea
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498889"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079267"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning
 

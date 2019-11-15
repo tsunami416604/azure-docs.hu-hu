@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 397de7d1de9acc657fa0fd0cb93bd6e26e5606e2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747226"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090891"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
 
@@ -37,7 +37,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Védelmi csoport létrehozása](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure Backup Server elindítja a védelmi csoport varázslót, amely végigvezeti a **védelmi csoport**létrehozásának lépésein. Kattintson a **Tovább** gombra.
+    Azure Backup Server elindítja a védelmi csoport varázslót, amely végigvezeti a **védelmi csoport**létrehozásának lépésein. Kattintson a **Tovább**gombra.
 
 3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók**elemet.
 
@@ -64,9 +64,9 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
    >
    >
 
-7. A **lemez kiosztásának áttekintése** képernyőn ellenőrizze a rendelkezésre álló teljes tárolóhelyet, valamint a lehetséges lemezterületet. Kattintson a **Tovább** gombra.
+7. A **lemez kiosztásának áttekintése** képernyőn ellenőrizze a rendelkezésre álló teljes tárolóhelyet, valamint a lehetséges lemezterületet. Kattintson a **Tovább**gombra.
 
-8. A **replika-létrehozási módszer választása**területen válassza ki, hogyan hozza létre az első helyreállítási pontot. A kezdeti biztonsági mentést manuálisan (hálózaton kívül) is átviheti a sávszélesség-torlódás vagy a hálózat felett. Ha úgy dönt, hogy megvárja az első biztonsági mentést, megadhatja a kezdeti átvitel időpontját. Kattintson a **Tovább** gombra.
+8. A **replika-létrehozási módszer választása**területen válassza ki, hogyan hozza létre az első helyreállítási pontot. A kezdeti biztonsági mentést manuálisan (hálózaton kívül) is átviheti a sávszélesség-torlódás vagy a hálózat felett. Ha úgy dönt, hogy megvárja az első biztonsági mentést, megadhatja a kezdeti átvitel időpontját. Kattintson a **Tovább**gombra.
 
     ![Kezdeti replikációs módszer](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -140,13 +140,13 @@ A következő lépések szükségesek egy védett entitás (SQL Server adatbázi
 2. Kattintson a jobb gombbal az adatbázis nevére, és kattintson a **helyreállítás**elemre.
 
     ![Helyreállítás az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. A MABS a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Kattintson a **Tovább** gombra.
+3. A MABS a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább**gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Kattintson a **Tovább**gombra.
 
     ![Visszaállítás az eredeti helyre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Ebben a példában a MABS egy másik SQL Server példányra vagy egy különálló hálózati mappába helyreállítja az adatbázist.
 
-4. A **helyreállítási beállítások megadása** képernyőn kiválaszthatja a helyreállítási beállításokat, például a hálózati sávszélesség használatának szabályozását a helyreállítás által használt sávszélesség szabályozásához. Kattintson a **Tovább** gombra.
+4. A **helyreállítási beállítások megadása** képernyőn kiválaszthatja a helyreállítási beállításokat, például a hálózati sávszélesség használatának szabályozását a helyreállítás által használt sávszélesség szabályozásához. Kattintson a **Tovább**gombra.
 
 5. Az **Összefoglalás** képernyőn az eddig megadott összes helyreállítási konfiguráció látható. Kattintson a **helyreállítás**gombra.
 

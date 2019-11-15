@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e073b4ff366c05cdf429f81d46647cd330604057
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603511"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081579"
 ---
 # <a name="passwordless-authentication-options"></a>Jelszóval nem rendelkező hitelesítési lehetőségek
 
@@ -75,7 +75,7 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID fájlok | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
+| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 
 > [!NOTE]
@@ -94,7 +94,7 @@ A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvá
    - Microsoft Authenticator alkalmazás: olyan helyzetekben fog működni, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) telepítése során, valamint az integrált Mobile apps bármely operációs rendszeren.
    - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjén működik a Microsoft Edge-hez hasonló támogatott böngészőkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A FIDO2 biztonsági kulcs passwordlesss beállításainak engedélyezése a szervezetben](howto-authentication-passwordless-security-key.md)
 

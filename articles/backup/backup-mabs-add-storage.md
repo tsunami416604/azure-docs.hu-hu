@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 92717e704fb3f9e79b364fcf47bbcc096c5dd1d0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074829"
+ms.locfileid: "74090741"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -22,6 +22,8 @@ A Azure Backup Server v2 és újabb verziók olyan modern biztonsági másolati 
 > [!NOTE]
 > A modern biztonsági másolati tárhely használatához a Backup Server v2 vagy v3 verzióját kell futtatnia a Windows Server 2016-es vagy v3-es verziójával a Windows Server 2019 rendszeren.
 > Ha a Backup Server v2-t a Windows Server egy korábbi verziójára futtatja, Azure Backup Server nem tudja kihasználni modern biztonsági másolati tárhely. Ehelyett a biztonsági mentési kiszolgáló v1-es verziójának megfelelően védi a munkaterheléseket. További információt a biztonsági mentési kiszolgáló verziójának [védelmi mátrixa](backup-mabs-protection-matrix.md)című témakörben talál.
+>
+> A továbbfejlesztett biztonsági mentési teljesítmény érdekében javasoljuk, hogy a Windows Server 2019-es verziójában a MABS v3-ot a többplatformos tárolással telepítse. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a "[MBS és Tiered Storage beállítása](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)" DPM.
 
 ## <a name="volumes-in-backup-server"></a>Kötetek a biztonsági mentési kiszolgálón
 
@@ -64,6 +66,11 @@ A Backup Server v2 vagy újabb verziókkal, a lemezes tárolással rendelkező k
     ![A kiszolgáló és a lemez kiválasztása](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Kötetek hozzáadása a biztonsági mentési kiszolgáló lemezes tárolásához
+
+> [!NOTE]
+>
+> - Csak egy lemezt adjon hozzá a készlethez, hogy az oszlopok száma 1 legyen. Ezután szükség szerint lemezeket adhat hozzá.
+> - Ha egy ugrásban több lemezt ad hozzá a tárolóhoz, a lemezek száma az oszlopok számának megfelelően tárolódik. Ha több lemez van hozzáadva, akkor csak az oszlopok számának többszöröse lehet.
 
 Ha kötetet szeretne hozzáadni a biztonsági mentési kiszolgálóhoz, a **felügyelet** ablaktáblán Ellenőrizze újra a tárolót, majd válassza a **Hozzáadás**lehetőséget. Megjelenik a Backup Server-tárolóhoz hozzáadandó összes kötet listája. Miután hozzáadta a rendelkezésre álló köteteket a kiválasztott kötetek listájához, egy felhasználóbarát nevet adhat nekik, amely segít a kezelésben. Ha ezeket a köteteket ReFS szeretné formázni, hogy a biztonsági mentési kiszolgáló használhassa a modern biztonsági másolati tárhely előnyeit, kattintson az **OK gombra**.
 
@@ -125,7 +132,7 @@ Lemezes tár hozzáadása:
 
 3. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás**lehetőséget, majd kattintson **az OK gombra**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 

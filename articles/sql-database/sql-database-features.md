@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: bfb44a44967c474da319c574307c7c289b28648e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 294fd39bfa78219df4bb0134aa744dd7515ff0f2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807810"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092148"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkciók
 
@@ -65,7 +65,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [Kiterjesztett események (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Néhány – lásd [a kiterjesztett eseményeket SQL Database](sql-database-xevent-db-diff-from-svr.md) | Igen – lásd a [kiterjesztett események különbségeit](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Kiterjesztett tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nem | Nem |
 | [Fájlok és fájlcsoportok](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Csak az elsődleges fájl csoport | Igen. A rendszer automatikusan hozzárendeli a fájlelérési utakat, és a fájl helye nem adható meg `ALTER DATABASE ADD FILE` [utasításban](sql-database-managed-instance-transact-sql-information.md#alter-database-statement).  |
-| [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nem | [Nem](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
+| [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nem | [Nem](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
 | [Teljes szöveges keresés (FTS)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Igen, de a harmadik féltől származó Word-megszakítók nem támogatottak | Igen, de [a harmadik féltől származó Word-megszakítók nem támogatottak](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | A legtöbb esetben – lásd az egyes függvényeket | Igen – lásd: [tárolt eljárások, függvények, eseményindítók eltérései](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – a [prémium és a üzletileg kritikus szint csak](sql-database-in-memory.md) korlátozott mértékben támogatja a nem állandó memóriabeli objektumokat, például a táblák típusát | Igen – [csak üzletileg kritikus réteg](sql-database-managed-instance.md) |
@@ -108,7 +108,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | Windows-hitelesítés | Nem | Nem |
 | [Windows Server feladatátvételi fürtszolgáltatás](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nem. A [magas rendelkezésre állást](sql-database-high-availability.md) biztosító egyéb technikákat minden adatbázis tartalmazza. A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) | Nem. A [magas rendelkezésre állást](sql-database-high-availability.md) biztosító egyéb technikákat minden adatbázis tartalmazza. A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) |
 
-## <a name="platform-capabilities"></a>Platform-képességek
+## <a name="platform-capabilities"></a>Platform képességei
 
 Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáadott, új értékkel rendelkező Pásti-képességet biztosít. Számos külső szolgáltatás használható Azure SQL Database szolgáltatással. 
 
@@ -124,7 +124,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | Biztonsági mentés megőrzése | Igen. 7 nap alapértelmezett, max. 35 nap. | Igen. 7 nap alapértelmezett, max. 35 nap. |
 | [Adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Igen | Igen |
 | Fájlrendszer-hozzáférés | Nem. Alternatív megoldásként [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. | Nem. Alternatív megoldásként [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. |
-| [Geo-visszaállítás](sql-database-recovery-using-backups.md#geo-restore) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen – [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa)használatával. |
+| [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével |
 | [Nagy kapacitású architektúra](sql-database-service-tier-hyperscale.md) | Igen | Nem |
 | [Biztonsági másolatok hosszú távú megőrzése – LTR](sql-database-long-term-retention.md) | Igen, az automatikusan megtarthatja a biztonsági mentéseket akár 10 évig. | még nem. Ideiglenes megkerülő megoldásként használjon `COPY_ONLY` [manuális biztonsági mentést](sql-database-managed-instance-transact-sql-information.md#backup) . |
 | Szüneteltetés/folytatás | Igen, [kiszolgáló nélküli modellben](sql-database-serverless.md) | Nem | 
@@ -134,8 +134,8 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Igen. Egyetlen felügyelt példány több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. Emellett több felügyelt példányt is telepíthet olyan példány- [készletekbe (előzetes verzió)](sql-database-instance-pools.md) , amelyek megoszthatják az erőforrásokat. |
 | Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. |
 | [SQL-alias](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nem, használjon [DNS-aliast](dns-alias-overview.md) | Nem, a [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) használatával állítson be aliast az ügyfélgépeken. |
-| [SQL-elemzés](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
-| [SQL-adatszinkronizálás](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
+| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
+| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a Azure SQL Database által futtatott és az Azure SSIS Integration Runtime (IR) szolgáltatásban futtatott SSISDB történik, lásd: [Azure-SSIS IR létrehozása ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database-kiszolgáló és a felügyelt példány SSIS-szolgáltatásainak összehasonlításához tekintse meg az [Azure SQL Database önálló adatbázis, a rugalmas készlet és a felügyelt példány összevetését](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)ismertető témakört. | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a felügyelt példány által üzemeltetett SSISDB történik, és az Azure SSIS Integration Runtime (IR) hajtja végre, lásd: [Create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database és a felügyelt példány SSIS funkcióinak összehasonlításához tekintse meg az [Azure SQL Database önálló adatbázis, a rugalmas készlet és a felügyelt példány összevetését](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)ismertető témakört. |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem – [lásd Power bi](https://docs.microsoft.com/power-bi/) | Nem – [lásd Power bi](https://docs.microsoft.com/power-bi/) |
@@ -174,7 +174,7 @@ Különböző áttelepítési módszerekkel helyezheti át az adatait SQL Server
 | Önálló adatbázis | **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
 | Felügyelt példány | **Online:** [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](sql-database-managed-instance-transactional-replication.md) | **Online:** [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Példányok közötti időponthoz tartozó visszaállítás ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) vagy [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natív biztonsági mentés/visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](sql-database-managed-instance-transactional-replication.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft továbbra is felveszi a szolgáltatásokat a Azure SQL Databasehoz. Az alábbi szűrőket használó legújabb frissítésekért látogasson el az Azure Service Updates weblapjára:
 

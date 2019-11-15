@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure Storage-fiók integrálása az Azure CDN-nel | Microsoft Docs
+title: Gyors útmutató – Azure Storage-fiók integrálása Azure CDN
 description: Az útmutató azt ismerteti, hogyan kézbesíthet nagy sávszélességű tartalmakat az Azure Content Delivery Network (CDN) segítségével az Azure Storage-ben lévő blobok gyorsítótárazása révén.
 services: cdn
 documentationcenter: ''
@@ -15,23 +15,23 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594018"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083075"
 ---
-# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Gyors útmutató: Az Azure storage-fiók integrálása az Azure CDN-nel
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rövid útmutató: Azure Storage-fiók integrálása az Azure CDN-nel
 Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Network (CDN)](cdn-overview.md) számára az Azure Storage-ből származó tartalmak gyorsítótárazását. Az Azure CDN egy globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. Képes arra, hogy fizikai csomópontokon gyorsítótárazza a blobokat és a számítási példányok statikus tartalmát az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika területén.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
-Az alábbi módon hozhat létre Azure-előfizetéshez tartozó új tárfiókot. A tárfiókok hozzáférést biztosítanak az Azure Storage szolgáltatásaihoz, A tárfiók eléréséhez az Azure Storage szolgáltatás-összetevők mindegyike a névtér a legmagasabb szintű jelöli: Az Azure Blob, Queue és Table storage. További információkért lásd: [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
+## <a name="create-a-storage-account"></a>Create a storage account
+Az alábbi módon hozhat létre Azure-előfizetéshez tartozó új tárfiókot. A tárfiókok hozzáférést biztosítanak az Azure Storage szolgáltatásaihoz, és ők képviselik az Azure Storage szolgáltatási összetevőihez – Azure Blob, Queue és Table Storage – való hozzáférés legmagasabb szintű névterét. További információkért lásd: [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
 
 Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszergazdájának vagy társadminisztrátorának kell lennie.
 
@@ -66,11 +66,11 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
     
 4. A többi beállításhoz használja a következő táblázatban megadott értékeket:
 
-    | Beállítás  | Value |
+    | Beállítás  | Érték |
     | -------- | ----- |
     | **Üzemi modell** | Használja az alapértelmezett értéket. |
     | **Fióktípus** | Használja az alapértelmezett értéket. |
-    | **Location**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
+    | **Hely**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
     | **Replikáció** | Használja az alapértelmezett értéket. |
     | **Teljesítmény** | Használja az alapértelmezett értéket. |
     | **Biztonságos átvitelre van szükség** | Használja az alapértelmezett értéket. |
@@ -94,11 +94,11 @@ Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. 
     
 2. Új végpontot a következő táblázatban ismertetett információk megadásával hozhat létre:
 
-    | Beállítás  | Value |
+    | Beállítás  | Érték |
     | -------- | ----- |
-    | **CDN-profil** | Válassza ki **új létrehozása** , és adja meg a profil nevét, például *my-cdn-profile-123*. A névnek globálisan egyedinek kell lennie.  |
+    | **CDN-profil** | Válassza az **új létrehozása** elemet, és adja meg a profil nevét, például: *My-CDN-profile-123*. A névnek globálisan egyedinek kell lennie.  |
     | **Tarifacsomag** | Válassza a **Standard – Verizon** értéket a legördülő listából. |
-    | **CDN-végpont neve** | Adja meg a végpont gazdaneve, azaz *my-endpoint-123*. A névnek globálisan egyedinek kell lennie. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_ .azureedge.net tartományban. |
+    | **CDN-végpont neve** | Adja meg a végpont állomásnevét, azaz *a My-Endpoint-123*. A névnek globálisan egyedinek kell lennie. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_ .azureedge.net tartományban. |
     | **Forrás gazdaneve** | Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként. |
 
 3. Kattintson a **Létrehozás** gombra. A létrejött végpont megjelenik a végpontok listájában.
@@ -142,9 +142,9 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 
 3. A törlendő tárfiókot jelölje ki az irányítópulton, majd válassza ki a **Törlés** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához és engedélyezheti azon a HTTPS-t:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Tárolási blobok elérése az Azure CDN egyéni tartományon használatával HTTPS-kapcsolaton keresztül](cdn-storage-custom-domain-https.md)
+> [Oktatóanyag: Storage-blobok elérése egyéni CDN-tartomány használatával HTTPS-en keresztül](cdn-storage-custom-domain-https.md)
 

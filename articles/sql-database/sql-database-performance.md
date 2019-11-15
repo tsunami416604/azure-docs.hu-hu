@@ -9,29 +9,28 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821328"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090354"
 ---
 # <a name="monitor-and-improve-performance"></a>A teljesítmény monitorozása és javítása
 
 Azure SQL Database azonosítja az adatbázis lehetséges problémáit, és javaslatokat tesz a számítási feladatok teljesítményének javítására az intelligens hangolási műveletek és javaslatok biztosításával.
 
-Az adatbázis teljesítményének áttekintéséhez használja az Áttekintés oldalon található **Performance (teljesítmény** ) csempét, vagy navigáljon a "támogatás + hibaelhárítás" szakaszhoz:
+## <a name="performance-tuning-options"></a>Teljesítmény-hangolási beállítások
 
-   ![Teljesítmény megtekintése](./media/sql-database-performance/entries.png)
+Az elérhető teljesítmény-hangolási lehetőségek Azure SQL Database az "intelligens teljesítmény" alatt az adatbázis navigációs menüjében érhetők el:
 
-A "támogatás + hibaelhárítás" szakaszban a következő lapokat használhatja:
-
-
-1. A [teljesítmény áttekintése](#performance-overview) az adatbázis teljesítményének figyeléséhez. 
-2. [Teljesítménnyel kapcsolatos javaslatok](#performance-recommendations) a számítási feladatok teljesítményének javításához szükséges teljesítménnyel kapcsolatos javaslatok megtalálásához.
-3. [Lekérdezési terheléselemző](#query-performance-insight) a leggyakoribb erőforrás-felhasználású lekérdezések kereséséhez.
-4. [Automatikus hangolás](#automatic-tuning) , hogy Azure SQL Database automatikusan optimalizálja az adatbázist.
+| Teljesítmény-finomhangolási beállítás | Önálló adatbázis és készletezett adatbázis-támogatás | Példány-adatbázis támogatása |
+| :----------------------------- | ----- | ----- |
+| **[Teljesítmény áttekintése](#performance-overview)** – az adatbázis összes teljesítményének figyelése. | Igen | Nem | 
+| **[Teljesítménnyel kapcsolatos javaslatok](#performance-recommendations)** – a teljesítményre vonatkozó ajánlásokat jeleníti meg, amelyek javítják a számítási feladatok teljesítményét. | Igen | Nem | 
+| **[Lekérdezési terheléselemző](#query-performance-insight)** – a leggyakrabban felhasználható lekérdezések teljesítményét jeleníti meg az adatbázisban. | Igen | Nem | 
+| **[Automatikus hangolás](#automatic-tuning)** – a Azure SQL Database használatával automatikusan optimalizálhatja az adatbázis teljesítményét. | Igen | Nem | 
 
 ## <a name="performance-overview"></a>Teljesítmény áttekintése
 
@@ -58,10 +57,6 @@ A múltban alkalmazott hangolási műveletek teljes előzményeit is megtalálha
 
 Ismerje meg, hogyan találhatja meg a teljesítményre vonatkozó ajánlásokat az alkalmazás [teljesítményének megkeresése és alkalmazása](sql-database-advisor-portal.md) című cikkben.
 
-## <a name="automatic-tuning"></a>Automatikus hangolás
-
-A [teljesítményre vonatkozó javaslatok](sql-database-advisor.md)alkalmazásával az Azure SQL Database-adatbázisok automatikusan is hangolják az adatbázis teljesítményét. További információért olvassa el az [automatikus hangolással](sql-database-automatic-tuning.md)foglalkozó cikket. Az engedélyezéshez olvassa el az [automatikus hangolás engedélyezése című témakört](sql-database-automatic-tuning-enable.md).
-
 ## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
 
 A [lekérdezési terheléselemző](sql-database-query-performance.md) lehetővé teszi, hogy az adatbázis-teljesítménnyel kapcsolatos hibák elhárításához a következőket biztosítson:
@@ -74,8 +69,11 @@ A [lekérdezési terheléselemző](sql-database-query-performance.md) lehetővé
 
 További információt erről az oldalról a **[lekérdezési terheléselemző használata](sql-database-query-performance.md)** című cikkben talál.
 
+## <a name="automatic-tuning"></a>Automatikus hangolás
+
+A [teljesítményre vonatkozó javaslatok](sql-database-advisor.md)alkalmazásával az Azure SQL Database-adatbázisok automatikusan is hangolják az adatbázis teljesítményét. További információért olvassa el az [automatikus hangolással](sql-database-automatic-tuning.md)foglalkozó cikket. Az engedélyezéshez olvassa el az [automatikus hangolás engedélyezése című témakört](sql-database-automatic-tuning-enable.md).
+
 ## <a name="additional-resources"></a>További források
 
 * [Azure SQL Database teljesítményre vonatkozó útmutató önálló adatbázisokhoz](sql-database-performance-guidance.md)
 * [Mikor érdemes rugalmas készletet használni?](sql-database-elastic-pool-guidance.md)
-

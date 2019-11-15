@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező NEOGOV |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és NEOGOV között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NEOGOV | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és NEOGOV között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,163 +13,156 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8e208c8e5f1136ef5029e03b59a2f09e113dc3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20b0954cac84a791367c5f9af18d3e760a27db11
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096344"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081695"
 ---
-# <a name="tutorial-integrate-neogov-with-azure-active-directory"></a>Oktatóanyag: NEOGOV integrálása az Azure Active Directoryval
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NEOGOV
 
-Ebben az oktatóanyagban elsajátíthatja a NEOGOV integrálása az Azure Active Directory (Azure AD) lesz. NEOGOV integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NEOGOV a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az NEOGOV-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá NEOGOV Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve NEOGOV az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A NEOGOV-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a NEOGOV az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* NEOGOV egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* NEOGOV egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a NEOGOV **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-## <a name="adding-neogov-from-the-gallery"></a>NEOGOV hozzáadása a katalógusból
+* A NEOGOV támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-Az Azure AD integrálása a NEOGOV konfigurálásához hozzá kell NEOGOV a katalógusból a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-neogov-from-the-gallery"></a>NEOGOV hozzáadása a gyűjteményből
+
+A NEOGOV Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a NEOGOV a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **NEOGOV** kifejezést a keresőmezőbe.
-1. Válassza ki **NEOGOV** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **NEOGOV** kifejezést a keresőmezőbe.
+1. Válassza ki a **NEOGOV** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata NEOGOV **b Simon**. Az SSO működjön kell NEOGOV az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-neogov"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a NEOGOV
 
-Az Azure AD SSO NEOGOV tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Konfigurálja és tesztelje az Azure AD SSO-t a NEOGOV a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a NEOGOV-ben.
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[NEOGOV egyszeri bejelentkezést](#configure-neogov-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre NEOGOV tesztfelhasználót](#create-neogov-test-user)**  – egy megfelelője a b Simon NEOGOV, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+Az Azure AD SSO és a NEOGOV konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[NEOGOV SSO konfigurálása](#configure-neogov-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre NEOGOV-teszt felhasználót](#create-neogov-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-NEOGOV rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **NEOGOV** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+
+1. A [Azure Portal](https://portal.azure.com/) **NEOGOV** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
-    
-    | Környezet | Az URL-minta |
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
+
+    | Környezet | URL-minta |
     | -- | -- |
     | Production | `https://www.neogov.com/` |
-    | Sandbox | `https://www.uat.neogov.net/` |
+    | Védőfal | `https://www.uat.neogov.net/` |
     | | |
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | Környezet | Az URL-minta |
+    | Környezet | URL-minta |
     | -- | -- |
     | Production | `https://login.neogov.com/authentication/saml/consumer` |
-    | Sandbox | `https://login.uat.neogov.net/authentication/saml/consumer` |
+    | Védőfal | `https://login.uat.neogov.net/authentication/saml/consumer` |
     | | |
 
-1. NEOGOV alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. NEOGOV alkalmazás vár **nameidentifier** a leképezendő **user.objectid**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
+1. A NEOGOV alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A NEOGOV alkalmazás a **felhasználó. ObjectId** **NameIdentifier** várja, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
-1. Emellett a fentiekben NEOGOV alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A felhasználói jogcímek szakaszban felhasználói attribútumok párbeszédpanelen a következő lépésekkel SAML-jogkivonat attribútum hozzáadása, ahogyan az az alábbi táblázatban:
+1. A fentiek mellett a NEOGOV alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) |  Adatforrás-attribútum|
+    | Name (Név) |  Forrás attribútum|
     | -------|--------- |
-    | levelezés | user.mail |
+    | mail | user.mail |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
-
-    c. Hagyja a **Namespace** üres.
-
-    d. Válassza ki a forrás, **attribútum**.
-
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-
-    f. Kattintson a **Ok**
-
-    g. Kattintson a **Save** (Mentés) gombra.
-
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
-### <a name="configure-neogov-sso"></a>NEOGOV egyszeri bejelentkezés konfigurálása
-
-Az egyszeri bejelentkezés konfigurálása **NEOGOV** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [NEOGOV támogatási csoportjának](mailto:itops@neogov.net). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
-
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban b Simon által biztosított hozzáférés NEOGOV Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a NEOGOV.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **NEOGOV**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **NEOGOV**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-neogov-test-user"></a>NEOGOV tesztfelhasználó létrehozása
+## <a name="configure-neogov-sso"></a>NEOGOV SSO konfigurálása
 
-Ebben a szakaszban egy felhasználói b Simon nevű NEOGOV hoz létre. Együttműködve [NEOGOV támogatási csoportjának](mailto:itops@neogov.net) a felhasználók hozzáadása az NEOGOV platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Az egyszeri bejelentkezés **NEOGOV** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [NEOGOV támogatási csapatának](mailto:itops@neogov.net). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="create-neogov-test-user"></a>NEOGOV-tesztelési felhasználó létrehozása
 
-A NEOGOV csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a NEOGOV, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a NEOGOV-ben. Együttműködik a [NEOGOV támogatási csapatával](mailto:itops@neogov.net) , hogy hozzáadja a felhasználókat a NEOGOV platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+
+Ha a hozzáférési panelen a NEOGOV csempére kattint, automatikusan be kell jelentkeznie arra a NEOGOV, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A NEOGOV kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

@@ -1,5 +1,5 @@
 ---
-title: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával | Microsoft Docs
+title: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
 description: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ef73aed577645af5af82c439abb57022b389d040
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809722"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084395"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Azure Resource Manager-sablon használata IoT Hub üzenet-útválasztás konfigurálásához
 
@@ -30,7 +30,7 @@ ms.locfileid: "72809722"
 
 Az oktatóanyag második részében le kell töltenie és futtatnia kell egy Visual Studio-alkalmazást, amely üzeneteket küld a IoT Hub. A letöltésben egy olyan mappa található, amely tartalmazza a Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-t és a PowerShell-parancsfájlokat.
 
-Most töltse le az [Azure IoT C# -mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) . Bontsa ki a Master. zip fájlt. A Resource Manager-sablon és a Parameters fájl a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ben **template_iothub. JSON** és **template_iothub_parameters. JSON**néven szerepel.
+Most töltse le az [Azure IoT C# -mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) . Bontsa ki a Master. zip fájlt. A Resource Manager-sablon és a Parameters fájl a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ban **template_iothub. JSON** és **template_iothub_parameters. JSON**néven szerepel.
 
 ## <a name="create-your-resources"></a>Erőforrások létrehozása
 
@@ -50,15 +50,15 @@ Ezeknek a paramétereknek a többsége alapértelmezett értéket tartalmaz. A *
 
 **subscriptionId**: Ez a mező arra az előfizetésre van beállítva, amelybe a sablont telepíti. Ez a mező nem szerepel a Parameters fájlban, mert az be van állítva.
 
-**IoTHubName_in**: Ez a mező az alapszintű IoT hub neve, amely globálisan egyediként van összefűzve a randomValue.
+**IoTHubName_in**: Ez a mező az alap IoT hub neve, amely globálisan egyedi randomValue van fűzve.
 
 **hely**: Ez a mező az az Azure-régió, amelyben üzembe helyezi, például "westus".
 
-**consumer_group**: Ez a mező az útválasztási végponton keresztül érkező üzenetekhez beállított fogyasztói csoport. A Azure Stream Analytics eredményeinek szűrésére szolgál. Például van egy teljes stream, ahol mindent megtudhat, vagy ha a consumer_group-be beállított adatok a **contoso**-ra vannak beállítva, akkor beállíthat egy Azure stream Analytics streamet (és Power bi jelentést), amely csak a bejegyzéseket jeleníti meg. Ezt a mezőt az oktatóanyag 2. része használja.
+**consumer_group**: Ez a mező az útválasztási végponton keresztül érkező üzenetek fogyasztói csoportját határozza meg. A Azure Stream Analytics eredményeinek szűrésére szolgál. Például van egy teljes stream, ahol mindent megtudhat, vagy ha a consumer_groupt a **contoso**-ra beállított adatokkal, akkor beállíthat egy Azure stream Analytics streamet (és Power bi jelentést), amely csak ezeket a bejegyzéseket jeleníti meg. Ezt a mezőt az oktatóanyag 2. része használja.
 
 **sku_name**: Ez a mező a IoT hub skálázása. Ez az érték csak S1 vagy újabb lehet. Ebben az oktatóanyagban az ingyenes szint nem működik, mert több végpontot nem engedélyez.
 
-**sku_units**: Ez a mező a **sku_name**, valamint a felhasználható IoT hub egységek számát használja.
+**sku_units**: ebben a mezőben a **sku_name**látható, a szám pedig a felhasználható IoT hub egységek számát.
 
 **d2c_partitions**: Ez a mező az esemény-adatfolyamhoz használt partíciók száma.
 
@@ -86,7 +86,7 @@ Ezek az értékek a sablonban használatosak, és többnyire paraméterekből sz
 
 **service_bus_namespace**: Ez a mező a névtér a randomValue összefűzése után.
 
-**service_bus_queue**: Ez a mező a Service Bus üzenetsor neve a randomValue összefűzése után.
+**service_bus_queue**: Ez a mező a Service Bus üzenetsor neve, miután összefűzött egy randomValue.
 
 **sbVersion**: a használni kívánt Service Bus API verziója. Ebben az esetben az "2017-04-01".
 

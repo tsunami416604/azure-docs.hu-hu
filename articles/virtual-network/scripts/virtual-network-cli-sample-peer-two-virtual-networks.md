@@ -1,13 +1,10 @@
 ---
-title: Azure CLI-példaszkript – Társviszony létesítése két virtuális hálózat között | Microsoft Docs
+title: Társ két virtuális hálózat – Azure CLI parancsfájl minta
 description: Azure CLI-példaszkript – Társviszony létesítése két virtuális hálózat között.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 82f4f06cd4e615df38f2251be9aef9e8578b9df4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726785"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083842"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Példaszkript társviszony létesítéséhez két virtuális hálózat között
 
@@ -54,7 +51,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az network vnet peering create](/cli/azure/network/vnet/peering) | Társviszonyt létesít két virtuális hálózat között.  |
 | [az group delete](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

@@ -6,32 +6,32 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 080fda3077a10d0605f061aca5226783457348f9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837540"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077816"
 ---
-# <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Oktatóanyag: Azure virtuálisgép-méretezési csoport létrehozása egy csomagoló egyéni rendszerképből a Terraform használatával
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Oktatóanyag: Azure virtuálisgép-méretezési csoport létrehozása egy csomagoló egyéni rendszerképből a Terraform használatával
 
-Ebben az oktatóanyagban a [Terraform](https://www.terraform.io/) használatával hoz létre és helyez üzembe a [Packer](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) által készített egyéni rendszerképpel létrehozott [Azure-beli virtuálisgép-méretezési csoportot](https://www.packer.io/intro/index.html) felügyelt lemezekkel a [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL) használatával.  
+Ebben az oktatóanyagban a [Terraform](https://www.terraform.io/) használatával hozzon létre és helyezzen üzembe egy Azure-beli [virtuálisgép-méretezési készletet](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) , amelyet a [HashiCorp-konfigurációs nyelvet](https://www.terraform.io/docs/configuration/syntax.html) (HCl-t) használó, felügyelt lemezeket használó [csomagolóval](https://www.packer.io/intro/index.html) készített. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A Terraform-környezet beállítása
-> * Változók és kimenetek használata egy Terraform-környezethez 
-> * Hálózati infrastruktúra létrehozása és üzembe helyezése
-> * Egyéni virtuálisgép-rendszerkép létrehozása a Packer használatával
-> * Virtuálisgép-méretezési csoport létrehozása és üzembe helyezése az egyéni rendszerképpel
-> * Jumpbox létrehozása és üzembe helyezése 
+> * A Terraform üzembe helyezésének beállítása.
+> * Változók és kimenetek használata a Terraform telepítéséhez.
+> * Hozzon létre és helyezzen üzembe egy hálózati infrastruktúrát.
+> * Hozzon létre egy egyéni virtuálisgép-rendszerképet a csomagoló használatával.
+> * Hozzon létre és helyezzen üzembe egy virtuálisgép-méretezési csoportját az egyéni rendszerkép használatával.
+> * Hozzon létre és helyezzen üzembe egy Jumpbox.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Terraform**: [a Terraform telepítése és az Azure-hoz való hozzáférés konfigurálása](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform**: [telepítse a Terraform-t, és konfigurálja az Azure-hoz való hozzáférést](/azure/virtual-machines/linux/terraform-install-configure).
 - **SSH-kulcspár**: [hozzon létre egy SSH-kulcspárt](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Csomagoló**: a [csomagoló telepítése](https://www.packer.io/docs/install/index.html).
 
@@ -47,7 +47,7 @@ Hozzon létre három új fájlt egy üres könyvtárban a következő nevekkel:
 
 Ebben a lépésben a Terraform által létrehozott erőforrások beállítására szolgáló változókat adhatja meg.
 
-Szerkessze a `variables.tf` fájlt, másolja ki a következő kódot, majd mentse a módosításokat.
+Szerkessze a `variables.tf` fájlt, másolja a következő kódot, majd mentse a módosításokat.
 
 ```hcl
 variable "location" {
@@ -63,11 +63,11 @@ variable "resource_group_name" {
 ```
 
 > [!NOTE]
-> A resource_group_name változó alapértelmezett értéke nincs beállítva, ezért adjon meg egy saját értéket.
+> A resource_group_name változó alapértelmezett értéke nincs beállítva. Adja meg a saját értékét.
 
 Mentse a fájlt.
 
-A Terraform-sablon üzembe helyezésekor az alkalmazás eléréséhez használt teljes tartománynevet szeretné lekérni. A Terraform `output` erőforrástípusát használja, és kérje le az erőforrás `fqdn` tulajdonságát. 
+A Terraform-sablon központi telepítésekor szeretné lekérni az alkalmazás eléréséhez használt teljes tartománynevet. A Terraform `output` erőforrástípusát használja, és kérje le az erőforrás `fqdn` tulajdonságát. 
 
 Szerkessze az `output.tf` fájlt, és másolja ki az alábbi kódot, hogy megkapja a virtuális gépek teljes tartománynevét. 
 
@@ -80,9 +80,9 @@ output "vmss_public_ip" {
 ## <a name="define-the-network-infrastructure-in-a-template"></a>A hálózati infrastruktúra meghatározása egy sablonban 
 
 Ebben a lépésben az alábbi hálózati infrastruktúrát hozza létre egy új Azure-erőforráscsoportban: 
-  - Egy VNET a következő címtérrel: 10.0.0.0/16 
-  - Egy alhálózat a következő címtérrel: 10.0.2.0/24
-  - Két nyilvános IP-cím. Az egyiket a virtuálisgép-méretezési csoport terheléselosztója használja, a másik az SSH jumpboxhoz való csatlakozáshoz szükséges.
+  - Egy virtuális hálózat, amely a 10.0.0.0/16 címtartomány.
+  - Egy alhálózat a 10.0.2.0/24 címtartomány.
+  - Két nyilvános IP-cím. Az egyiket a virtuálisgép-méretezési csoport terheléselosztó használja. A másik az SSH-Jumpbox való kapcsolódásra szolgál.
 
 Egy erőforráscsoportra is szüksége van, ahol az összes erőforrás létrejön. 
 
@@ -132,7 +132,7 @@ resource "azurerm_public_ip" "vmss" {
 ``` 
 
 > [!NOTE]
-> Az Azure-on üzembe helyezett erőforrások címkézését javasoljuk, hogy a jövőben könnyebben azonosíthatók legyenek.
+> Az Azure-ban üzembe helyezett erőforrások címkézésének megjelölése a jövőben.
 
 ## <a name="create-the-network-infrastructure"></a>A hálózati infrastruktúra létrehozása
 
@@ -152,31 +152,31 @@ terraform apply
 
 Győződjön meg arról, hogy a nyilvános IP-cím teljes tartományneve megfeleljen a konfigurációnak.
 
-![Virtuálisgép-méretezési csoport nyilvános IP-címének teljes Terraform-tartományneve](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
+![Virtuálisgép-méretezési csoport Terraform teljes tartományneve a nyilvános IP-címhez](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
 
 Az erőforráscsoport a következő erőforrásokat tartalmazza:
 
 ![Virtuálisgép-méretezési csoport hálózati Terraform-erőforrásai](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
 
 
-## <a name="create-an-azure-image-using-packer"></a>Azure-rendszerkép létrehozása a Packer használatával
-Az [Azure-ban a Linux rendszerű virtuális gépek rendszerképeinek Packerrel való létrehozását](/azure/virtual-machines/linux/build-image-with-packer) tárgyaló oktatóanyagban leírt lépésekkel egyéni Linux-rendszerképet hozhat létre.
+## <a name="create-an-azure-image-by-using-packer"></a>Azure-rendszerkép létrehozása a csomagoló használatával
+Hozzon létre egy egyéni linuxos rendszerképet az oktatóanyag lépéseivel, amely [bemutatja, hogyan hozhat létre linuxos virtuálisgép-lemezképeket az Azure-ban a csomagoló használatával](/azure/virtual-machines/linux/build-image-with-packer).
  
-Kövesse az oktatóanyagot egy NGINX-telepítést tartalmazó, üzemből kivont Ubuntu-rendszerkép létrehozásához.
+Kövesse az oktatóanyagot, és hozzon létre egy felépített Ubuntu-rendszerképet az Nginx-mel.
 
-![A Packer-rendszerkép létrehozása után egy rendszerképpel rendelkezik](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
+![Miután létrehozta a csomagoló rendszerképet, rendelkezik egy képpel](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
 
 > [!NOTE]
-> Ebben az oktatóanyagban a Packer-rendszerképben egy parancs fut az nginx telepítéséhez. A létrehozás alatt saját szkriptet is futtathat.
+> Ebben az oktatóanyagban a csomagoló rendszerképben egy parancs fut az Nginx telepítéséhez. A létrehozás alatt saját szkriptet is futtathat.
 
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Az infrastruktúra szerkesztése a virtuálisgép-méretezési csoport hozzáadásához
 
 Ebben a lépésben a következő erőforrásokat hozza létre a korábban üzembe helyezett hálózaton:
-- Az Azure Load Balancer az alkalmazás kiszolgálásához és a korábban üzembe helyezett nyilvános IP-címhez csatolásához.
-- Egy Azure Load Balancer és az alkalmazást kiszolgáló szabályok, és ezek csatolása a korábban konfigurált nyilvános IP-címhez.
-- Azure háttérbeli címkészlet és hozzárendelés a terheléselosztó számára.
+- Az alkalmazás kiszolgálására szolgáló Azure Load Balancer. Csatolja a korábban üzembe helyezett nyilvános IP-címhez.
+- Egy Azure Load Balancer és az alkalmazás kiszolgálására szolgáló szabályok. Csatolja a korábban konfigurált nyilvános IP-címhez.
+- Egy Azure háttérbeli címkészlet. Rendelje hozzá a terheléselosztó számára.
 - Az alkalmazás által használt és a terheléselosztó által konfigurált állapot-mintavételi port.
-- Egy virtuálisgép-méretezési csoport a terheléselosztó mögött, amely a korábban üzembe helyezett VNET fut.
+- Egy virtuálisgép-méretezési csoport, amely a terheléselosztó mögött helyezkedik el, és a korábban üzembe helyezett virtuális hálózaton fut.
 - [Nginx](https://nginx.org/) az egyéni rendszerképből telepített virtuálisgép-skála csomópontjain.
 
 
@@ -342,7 +342,7 @@ Nyisson meg egy böngészőt, és csatlakozzon a parancs által visszaadott telj
 Ez a választható lépés SSH-hozzáférést tesz lehetővé a virtuálisgép-méretezési csoport példányaihoz egy jumpbox használatával.
 
 Adja hozzá a következő erőforrásokat a meglévő üzemelő példányhoz:
-- Hálózati adapter, amely ugyanahhoz az alhálózathoz csatlakozik, mint a virtuálisgép-méretezési csoport
+- A virtuálisgép-méretezési csoporttal azonos alhálózathoz csatlakozó hálózati adapter
 - Ezzel a hálózati adapterrel rendelkező virtuális gép
 
 Adja hozzá az alábbi kódot a `vmss.tf` fájl végéhez:
@@ -419,7 +419,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 }
 ```
 
-Szerkessze az `outputs.tf` fájlt a következő kód hozzáadásával, amely megjeleníti a jumpbox gazdagépnevét az üzembe helyezés befejezésekor:
+`outputs.tf` szerkesztésével adja hozzá a következő kódot, amely megjeleníti a Jumpbox állomásnevét az üzembe helyezés befejezésekor:
 
 ```
 output "jumpbox_public_ip" {
@@ -435,12 +435,12 @@ Helyezze üzembe a jumpboxot.
 terraform apply 
 ```
 
-Az üzembe helyezés befejeztével az erőforráscsoport tartalma a következő képhez hasonlóan néz ki:
+Az üzembe helyezés befejezése után az erőforráscsoport tartalma a következő képhez hasonlóan néz ki:
 
 ![A Terraform virtuálisgép-méretezési csoportjának erőforráscsoportja](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
 
 > [!NOTE]
-> A jelszóval történő bejelentkezés le van tiltva a jumpboxon és az üzembe helyezett virtuálisgép-méretezési csoporton. A virtuális gépek eléréséhez jelentkezzen be SSH-val.
+> A jelszóval való bejelentkezés le van tiltva a Jumpbox és a telepített virtuálisgép-méretezési csoporton. Jelentkezzen be SSH-val a virtuális gépek eléréséhez.
 
 ## <a name="clean-up-the-environment"></a>A környezet fölösleges elemeinek az eltávolítása
 
@@ -450,9 +450,9 @@ A következő parancsok törlik a jelen oktatóanyagban létrehozott erőforrás
 terraform destroy
 ```
 
-Írja be a `yes` választ, amikor a rendszer az erőforrások törlésének megerősítését kéri. Az eltávolítási folyamat eltarthat pár percig.
+Adja meg az *Igen* értéket, ha a rendszer kéri, hogy erősítse meg az erőforrások törlését. Az eltávolítási folyamat eltarthat pár percig.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [További információ a Terraform Azure-beli használatáról](/azure/terraform)

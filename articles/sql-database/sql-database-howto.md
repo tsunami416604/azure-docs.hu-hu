@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 5773ea37585bb5c63736aaa4432243dc1d41f7bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811182"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082427"
 ---
 # <a name="how-to-use-azure-sql-database"></a>A Azure SQL Database használata
 
@@ -32,7 +32,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
-- [SQL-adatszinkronizálás](sql-database-sync-data.md)
+- [SQL Data Sync](sql-database-sync-data.md)
 - [Adatszinkronizálási ügynök](sql-database-data-sync-agent.md)
 - [Séma módosításainak replikálása](sql-database-update-sync-schema.md)
 - [Figyelés az OMS-szel](sql-database-sync-monitor-oms.md)
@@ -72,7 +72,6 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - [Kapcsolatok](sql-database-libraries.md)
 - [Spark-összekötő használata](sql-database-spark-connector.md)
 - [Alkalmazás hitelesítése](sql-database-client-id-keys.md)
-- [Hibaüzenetek](sql-database-develop-error-messages.md)
 - [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](sql-database-use-batching-to-improve-performance.md)
 - [Csatlakoztatási útmutató](sql-database-connectivity-issues.md)
 - [DNS-aliasok](dns-alias-overview.md)
@@ -93,7 +92,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - [SaaS video Indexer](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazás biztonsága](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [felügyelt példányokkal kapcsolatos útmutatókról](sql-database-howto-managed-instance.md).
 - További információ [az önálló adatbázisok](sql-database-howto-single-database.md)útmutatóinak megismeréséről.

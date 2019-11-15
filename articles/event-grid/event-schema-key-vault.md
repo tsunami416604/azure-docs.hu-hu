@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid Azure Key Vault esemény sémája
+title: Azure Key Vault Azure Event Gridi esemény sémája
 description: A Azure Key Vault eseményekhez megadott tulajdonságokat és sémát ismerteti Azure Event Grid
 services: event-grid
 author: msmbaldwin
@@ -7,36 +7,36 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c92352dd28b870c5f58dec0b82a8000f14a8e62d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033523"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082872"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault Azure Event Gridi esemény sémája (előzetes verzió)
 
-Ez a cikk a jelenleg előzetes verzióban elérhető [Azure Key Vault](../key-vault/index.yml) események tulajdonságait és sémáját tartalmazza. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md).
+Ez a cikk a [Azure Key Vault](../key-vault/index.yml), jelenleg előzetes verzióban elérhető események tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md).
 
 ## <a name="available-event-types"></a>Elérhető események típusai
 
-Egy Azure Key Vault fiók a következő típusú eseményeket bocsátja ki:
+Egy Azure Key Vault fiók a következő típusú eseményeket hozza létre:
 
-| Esemény teljes neve | Esemény megjelenítendő neve | leírás |
+| Esemény teljes neve | Esemény megjelenítendő neve | Leírás |
 | ---------- | ----------- |---|
-| Microsoft. kulcstartó. CertificateNewVersionCreated | Tanúsítvány új verziója létrehozva | Új tanúsítvány vagy új tanúsítvány verziójának létrehozásakor aktiválódik |
-| Microsoft. kulcstartó. CertificateNearExpiry | A tanúsítvány hamarosan lejár | Akkor aktiválódik, ha a tanúsítvány aktuális verziója hamarosan lejár (az alapértelmezett érték a lejárati dátum előtti 30 nap). |
-| Microsoft. kulcstartó. CertificateExpired | A tanúsítvány lejárt | A tanúsítvány lejártakor aktiválódik |
-| Microsoft. kulcstartó. KeyNewVersionCreated | A kulcs új verziója létrehozva | Új kulcs vagy új kulcs létrehozásakor aktiválódik |
-| Microsoft. kulcstartó. KeyNearExpiry | Kulcs közel lejárata | Akkor aktiválódik, ha a kulcs jelenlegi verziója hamarosan lejár (az alapértelmezett érték a lejárati dátum előtti 30 nap). |
-| A Microsoft. kulcstartó. kulcstartó lejárt | A kulcs lejárt | A kulcs lejártakor aktiválódik |
-| Microsoft. kulcstartó. SecretNewVersionCreated | A titkos új verzió létrehozva | Új titok vagy új titkos verzió létrehozásakor aktiválódik |
-| Microsoft. kulcstartó. SecretNearExpiry | Közel lejáró titkos kód | Akkor aktiválódik, ha a titkos kulcs jelenlegi verziója hamarosan lejár (az alapértelmezett érték a lejárati dátum előtti 30 nap). |
-| Microsoft. kulcstartó. SecretExpired | A titkos kód lejárt | A titkos kulcs lejártakor aktiválódik |
+| Microsoft. kulcstartó. CertificateNewVersionCreated | Tanúsítvány új verziója létrehozva | Új tanúsítvány vagy új tanúsítvány-verzió létrehozásakor aktiválódik. |
+| Microsoft. kulcstartó. CertificateNearExpiry | A tanúsítvány hamarosan lejár | Akkor aktiválódik, ha a tanúsítvány aktuális verziója hamarosan lejár. (Az alapértelmezett érték 30 nap a lejárati dátum előtt.) |
+| Microsoft. kulcstartó. CertificateExpired | A tanúsítvány lejárt | A tanúsítvány lejártakor aktiválódik. |
+| Microsoft. kulcstartó. KeyNewVersionCreated | A kulcs új verziója létrehozva | Új kulcs vagy új kulcs létrehozásakor aktiválódik. |
+| Microsoft. kulcstartó. KeyNearExpiry | Kulcs közel lejárata | Akkor aktiválódik, ha a kulcs aktuális verziója hamarosan lejár. (Az alapértelmezett érték 30 nap a lejárati dátum előtt.) |
+| A Microsoft. kulcstartó. kulcstartó lejárt | A kulcs lejárt | A kulcs lejártakor aktiválódik. |
+| Microsoft. kulcstartó. SecretNewVersionCreated | A titkos új verzió létrehozva | Új titok vagy új titkos verzió létrehozásakor aktiválódik. |
+| Microsoft. kulcstartó. SecretNearExpiry | Közel lejáró titkos kód | Akkor aktiválódik, ha a titkos kulcs aktuális verziója hamarosan lejár. (Az alapértelmezett érték 30 nap a lejárati dátum előtt.) |
+| Microsoft. kulcstartó. SecretExpired | A titkos kód lejárt | A titkos kód lejártakor aktiválódik. |
 
 ## <a name="event-examples"></a>Példák az eseményekre
 
-Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated**sémáját jeleníti meg.
+Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated**sémáját mutatja be:
 
 ```JSON
 [
@@ -65,26 +65,25 @@ Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated**sémájá
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | ---------- | ----------- |---|
-| id | sztring | Az eseményt kiváltó objektum azonosítója. |
-| vaultName | sztring | Az eseményt kiváltó objektum kulcstárolójának neve. |
-| Objektumtípus | sztring | Az eseményt kiváltó objektum típusa |
+| id | sztring | Az eseményt kiváltó objektum azonosítója |
+| vaultName | sztring | Az eseményt kiváltó objektum kulcstárolójának neve |
+| objectType | sztring | Az eseményt kiváltó objektum típusa |
 | ObjectName | sztring | Az eseményt kiváltó objektum neve |
 | version | sztring | Az eseményt kiváltó objektum verziója |
-| NBF | szám | A (z) 1970-01-01T00:00: az eseményt kiváltó objektum 00Z óta nem korábbi. |
-| Exp | szám | Az eseményt kiváltó objektum lejárati dátuma (másodpercben) 1970-01-01T00:00:00Z |
+| nbf | szám | A nem az idő előtti dátum másodpercben 1970-01-01T00:00: az eseményt kiváltó objektum 00Z |
+| exp | szám | Az eseményt kiváltó objektum lejárati dátuma (másodpercben) 1970-01-01T00:00:00Z |
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
-* Ha többet szeretne megtudni a Key Vault/Event Grid integrációról, tekintse meg [a figyelési Key Vault a Azure Event Grid (előzetes verzió)](../key-vault/event-grid-overview.md) című témakört.
-* A Key Vault/Event Grid integrációval kapcsolatos oktatóanyag megtekintéséhez lásd [: How to: Route Key Vault Events to Automation Runbook (előzetes verzió)](../key-vault/event-grid-tutorial.md).
-
-- [Azure Key Vault áttekintése](../key-vault/key-vault-overview.md)
-- [Azure Event Grid áttekintése](overview.md)
-- [Key Vault figyelése Azure Event Grid (előzetes verzió)](../key-vault/event-grid-overview.md)
-- [Útmutató: Key Vault-események átirányítása az Automation Runbook (előzetes verzió)](../key-vault/event-grid-tutorial.md).
-- [Az Azure Automation áttekintése](../automation/index.yml)
+* Ha többet szeretne megtudni a Event Gridekkel való Key Vault-integrációról, tekintse meg [a Key Vault Azure Event Grid (előzetes verzió) figyelése](../key-vault/event-grid-overview.md)című témakört.
+* A Event Gridekkel való Key Vault integrációval kapcsolatos oktatóanyagért lásd: a [Key Vault-értesítések fogadása és reagálás a Azure Event Grid (előzetes verzió) használatával](../key-vault/event-grid-tutorial.md).
+* A Key Vault és Azure Automation további útmutatását a következő témakörben tekintheti meg:
+    - [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+    - [Key Vault figyelése Azure Event Grid (előzetes verzió)](../key-vault/event-grid-overview.md)
+    - [A Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)](../key-vault/event-grid-tutorial.md)
+    - [Az Azure Automation áttekintése](../automation/index.yml)

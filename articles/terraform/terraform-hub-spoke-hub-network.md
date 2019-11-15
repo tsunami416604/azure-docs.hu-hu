@@ -1,40 +1,40 @@
 ---
 title: Oktatóanyag – hub virtuális hálózat létrehozása az Azure-ban a Terraform használatával
-description: Az oktatóanyag bemutatja, hogyan hozhat létre olyan központi VNet az Azure-ban, amely közös kapcsolódási pontként működik más hálózatok között
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan központi virtuális hálózatot az Azure-ban, amely közös kapcsolódási pontként működik más hálózatok között
 ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 231f8c6b98db785f3ef155af271be7e354998d54
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 25c4d6fa881f7ec6c96dd5ea7c935544374bc57d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969424"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077702"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-using-terraform"></a>Oktatóanyag: hub-beli virtuális hálózat létrehozása az Azure-ban a Terraform használatával
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Oktatóanyag: hub virtuális hálózat létrehozása az Azure-ban a Terraform használatával
 
-A hub virtuális hálózat (VNet) a helyszíni hálózathoz való kapcsolódás központi pontja. A VNet a küllős virtuális hálózatok üzemeltetett munkaterhelések által használt megosztott szolgáltatásokat üzemelteti. Bemutató célból egyetlen megosztott szolgáltatás sincs implementálva ebben az oktatóanyagban.
+A hub virtuális hálózat központi kapcsolódási pontként működik a helyszíni hálózathoz. A virtuális hálózat a küllős virtuális hálózatokban üzemeltetett munkaterhelések által használt megosztott szolgáltatásokat üzemelteti. Bemutató célból egyetlen megosztott szolgáltatás sincs implementálva ebben az oktatóanyagban.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * A HCL (HashiCorp Language) használata a hub-VNet megvalósításához küllős topológiában
-> * A Terraform használata a hub Jump Box virtuális gép létrehozásához
-> * A Terraform használata hub virtuális magánhálózati átjáró létrehozásához
-> * A Terraform használata a hub és a helyszíni átjáró kapcsolatainak létrehozásához
+> * A HashiCorp konfigurációs nyelv (HCL) használatával implementálhatja a hub virtuális hálózatot egy sugaras topológiában.
+> * A Terraform használatával hozzon létre egy hub Jumpbox virtuális gépet.
+> * A Terraform használatával hozzon létre egy hub virtuális magánhálózati átjárót.
+> * Hub-és helyszíni átjáró-kapcsolatok létrehozásához használja a Terraform.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
+1. [Hozzon létre egy sugaras hibrid hálózati topológiát a Terraform az Azure-ban](./terraform-hub-spoke-introduction.md).
 1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
 A hub-hálózat a következő összetevőkből áll:
 
-- Hub virtuális hálózata
+- Egy hub virtuális hálózat
 - Hub virtuális hálózati átjáró
 - Hub Gateway-kapcsolatok 
 
@@ -52,15 +52,15 @@ A következő Terraform-konfigurációs fájl határozza meg az erőforrásokat:
     cd clouddrive
     ```
 
-1. Lépjen be az új könyvtárba:
+1. Módosítsa a címtárakat az új könyvtárba.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-vnet"></a>A hub VNet deklarálása
+## <a name="declare-the-hub-virtual-network"></a>A hub virtuális hálózat deklarálása
 
-Hozza létre a hub virtuális hálózatot deklaráló Terraform konfigurációs fájlt.
+Hozza létre a hub virtuális hálózatot deklaráló Terraform-konfigurációs fájlt.
 
 1. Hozzon létre egy `hub-vnet.tf` nevű fájlt a Cloud Shellben.
 
@@ -226,7 +226,7 @@ Hozza létre a hub virtuális hálózatot deklaráló Terraform konfigurációs 
     }
     ```
     
-1. Mentse a fájlt, és zárja be a szerkesztőt.
+3. Mentse a fájlt, és zárja be a szerkesztőt.
 
 ## <a name="next-steps"></a>Következő lépések
 

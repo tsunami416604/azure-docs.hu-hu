@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub-eszköz streamek C gyors SSH-hoz és RDP-hez (előzetes verzió) | Microsoft Docs
+title: Azure IoT Hub-eszköz streamek C gyors SSH és RDP esetén
 description: Ebben a rövid útmutatóban egy olyan minta C-alkalmazást futtat, amely proxyként szolgál az SSH-és RDP-forgatókönyvek engedélyezéséhez IoT Hub eszköz streamen.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 5d610f14dc037d1585b7f8ec1e0dd28944847b7a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c8554fc3f691af05a2c6a660d07ffb9a6ff29f31
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900856"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084336"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon C alkalmazásproxy-alkalmazással (előzetes verzió)
 
@@ -151,7 +151,7 @@ Ebben a szakaszban egy végpontok közötti streamet hoz létre az SSH-forgalom 
 
 ### <a name="run-the-device-local-proxy-application"></a>Az eszköz helyi proxy alkalmazásának futtatása
 
-1. Szerkessze a **iothub_client_c2d_streaming_proxy_sample. c** forrásfájlt a mappában `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`, és adja meg az eszközhöz tartozó kapcsolatok karakterláncát, a célként megadott eszköz IP-címét/állomásnevét, valamint a 22-es SSH-portot:
+1. Szerkessze a (z **) iothub_client_c2d_streaming_proxy_sample. c** forrásfájlt a (z) `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`mappában, és adja meg az eszközhöz tartozó kapcsolatok karakterláncát, a célként megadott eszköz IP-címét/állomásnevét és a 22-es SSH-portot:
 
    ```C
    /* Paste in your device connection string  */

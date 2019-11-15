@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747485"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091098"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése és visszaállítása
 
@@ -195,13 +195,13 @@ A fájlmegosztás védelmének visszaállításához nyissa meg a biztonsági me
 
    ![Jelölje ki a monitorozni kívánt feladatot](./media/backup-file-shares/resume-backup-job.png)
 
-### <a name="delete-backup-data"></a>Biztonsági másolatok adatainak törlése
+### <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
 
 A fájlmegosztás biztonsági mentését törölheti a biztonsági mentés leállítása feladatokban, vagy bármikor a védelem leállítását követően. Érdemes lehet akár napokat vagy heteket is várni a helyreállítási pontok törlése előtt. A helyreállítási pontok visszaállításával ellentétben a biztonsági másolatok adatainak törlésekor nem törölhet meghatározott helyreállítási pontokat. Ha úgy dönt, hogy törli a biztonsági másolatok adatait, azzal törli az elemhez tartozó összes helyreállítási pontot is.
 
 A következő eljárás azt feltételezi, hogy a virtuális gép biztonsági mentési feladata le lett állítva. Ha a biztonsági mentési feladatot leállítja, a Biztonsági mentés folytatása és a Biztonsági másolatok adatainak törlése lehetőségek érhetők el a Biztonsági mentési elem irányítópulton. Kattintson a Biztonsági másolatok adatainak törlése lehetőségre, és írja be a fájlmegosztás nevét a törlés megerősítéséhez. Igény szerint adjon meg egy törlési okot vagy megjegyzést.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-fájlmegosztás szolgáltatásról:
 

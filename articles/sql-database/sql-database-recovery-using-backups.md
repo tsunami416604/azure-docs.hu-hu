@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821210"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091978"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel
 
@@ -108,11 +108,13 @@ A törölt adatbázisokat a kiszolgáló és a példány erőforrásból a Azure
 
 Egy vagy készletezett törölt adatbázis helyreállításához a Azure Portal segítségével nyissa meg a kiszolgáló áttekintése lapot, és válassza a **törölt adatbázisok**lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
 
-  ![Képernyőfelvétel a törölt adatbázisok lehetőségeiről](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Képernyőkép a törölt Azure SQL Database-adatbázis visszaállításáról](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>Felügyelt példány adatbázisa
 
-Felügyelt példányon nem használható a törölt adatbázis visszaállítása a Azure Portal használatával. Erre a célra használhatja a PowerShellt. 
+Felügyelt adatbázis helyreállításához a Azure Portal segítségével nyissa meg a felügyelt példányok áttekintése lapot, és válassza a **törölt adatbázisok**lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
+
+  ![Képernyőkép a törölt Azure SQL-példány-adatbázis visszaállításáról](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>Adatbázis-visszaállítás törölve a PowerShell használatával
 
@@ -203,7 +205,7 @@ A helyreállításhoz Azure PowerShell vagy a REST API is használhatja. A köve
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Egy vagy több adatbázist kér le. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
   | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) |Lekéri egy adatbázis georedundáns biztonsági másolatát. |
-  | [Visszaállítás – AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Visszaállít egy SQL-adatbázist. |
+  | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Visszaállít egy SQL-adatbázist. |
 
   > [!TIP]
   > Az adatbázisok időponthoz való visszaállítását bemutató minta PowerShell-parancsfájlt az [SQL-adatbázis visszaállítása a PowerShell használatával](scripts/sql-database-restore-database-powershell.md)című témakörben talál.
@@ -216,7 +218,7 @@ A felügyelt példányok adatbázisának visszaállításával kapcsolatban lás
   | --- | --- |
   | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Egy vagy több felügyelt példány beolvasása. |
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Lekéri egy példány-adatbázist. |
-  | [Visszaállítás – AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Visszaállítja egy példány-adatbázist. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Visszaállítja egy példány-adatbázist. |
 
 ### <a name="rest-api"></a>REST API
 
@@ -241,7 +243,7 @@ A felügyelt példányok adatbázisának az Azure CLI használatával történő
 
 Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzletmenet-folytonosság áttekintése](sql-database-business-continuity.md)
 - [Automatikus biztonsági mentések SQL Database](sql-database-automated-backups.md)

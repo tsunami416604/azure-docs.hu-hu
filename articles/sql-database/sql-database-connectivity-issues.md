@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826799"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082491"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database kapcsolati problémák és átmeneti hibák használata
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan lehet megakadályozni, elhárítani, diagnosztiz
 
 Az átmeneti hiba, amely átmeneti hibának is nevezik, egy mögöttes oka van, amely hamarosan feloldja magát. Az átmeneti hibák esetenként előfordulnak, amikor az Azure-rendszer gyorsan áthelyezi a hardveres erőforrásokat a különböző számítási feladatok egyensúlyának növelése érdekében. Ezeknek az újrakonfigurálási eseményeknek a többsége kevesebb, mint 60 másodperc. Az újrakonfigurálási időszak során előfordulhat, hogy a SQL Database kapcsolódási problémái vannak. Az SQL Databasehoz csatlakozó alkalmazásokat úgy kell felépíteni, hogy elvárják ezeket az átmeneti hibákat. A kezeléséhez az újrapróbálkozási logikát implementálja a kódban, ahelyett, hogy az alkalmazási hibákat felszínre helyezze őket a felhasználók számára.
 
-Ha az ügyfélalkalmazás a ADO.NET-t használja, a program a **SqlException**eldobásával kapcsolatos átmeneti hibáról tájékoztat. Hasonlítsa össze a **Number** tulajdonságot azon átmeneti hibák listájával, amelyek az [SQL-hibakódok az SQL Database ügyfélalkalmazások számára](sql-database-develop-error-messages.md)című cikk elején találhatók.
+Ha az ügyfélalkalmazás a ADO.NET-t használja, a program a **SqlException**eldobásával kapcsolatos átmeneti hibáról tájékoztat. 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -108,7 +108,7 @@ A teszt gyakorlati elvégzéséhez a program elindítása előtt húzza ki a sz�
 
 A program szándékosan helytelenül betűzheti a felhasználónevet az első kapcsolódási kísérlet előtt. A hiba a következő:
 
-- **SqlException. Number** = 18456
+- **SqlException.Number** = 18456
 - Üzenet: "a (z)" WRONG_MyUserName "felhasználó bejelentkezése sikertelen."
 
 Az első újrapróbálkozási kísérlet részeként a program képes kijavítani a hibát, majd megpróbál csatlakozni.
@@ -442,7 +442,7 @@ public bool IsTransient(Exception ex)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az egyéb gyakori SQL Database kapcsolódási problémák elhárításával kapcsolatos további információkért lásd: a [Azure SQL Database kapcsolódási problémáinak elhárítása](sql-database-troubleshoot-common-connection-issues.md).
 - [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](sql-database-libraries.md)

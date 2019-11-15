@@ -1,26 +1,26 @@
 ---
-title: Azure-beli virtuális gépek vészhelyreállítási próbájának végrehajtása egy másodlagos Azure-régióba az Azure Site Recovery szolgáltatás használatával
-description: Ismerje meg, hogyan hajthatja végre az Azure-beli virtuális gépek vészhelyreállítási próbáját egy másodlagos Azure-régióba az Azure IaaS virtuális gépekhez az Azure Site Recovery szolgáltatás használatával.
+title: Azure-beli virtuális gépek vész-helyreállítási részletezésének futtatása Azure Site Recovery
+description: Megtudhatja, hogyan futtathat vész-helyreállítási gyakorlatot egy másodlagos régióban Azure-beli virtuális gépekhez az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 817a220e36ac250b1d5a5aa90d0bddbfb155cc26
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053383"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091339"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek vészhelyreállítási próbájának végrehajtása egy másodlagos Azure-régióba
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Vész-helyreállítási gyakorlat futtatása Azure-beli virtuális gépek másodlagos régiójába 
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás működőképes és elérhető állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
-Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállítási próbát egy Azure-beli virtuális gép esetében az egyik Azure-régióból a másikba egy feladatátvételi teszt segítségével. A próba adatveszteség és állásidő nélkül ellenőrzi a replikációs stratégiáját, és nincs hatással az éles környezetre. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállítási próbát egy Azure-beli virtuális gép esetében az egyik Azure-régióból a másikba egy feladatátvételi teszt segítségével. A próba adatveszteség és állásidő nélkül ellenőrzi a replikációs stratégiáját, és nincs hatással az éles környezetre. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az előfeltételek ellenőrzése
@@ -33,7 +33,7 @@ Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállít�
 
 - Javasoljuk, hogy a feladatátvételi teszt futtatása előtt ellenőrizze a virtuális gép tulajdonságait, hogy biztosan minden a várt módon működjön.  Lépjen a virtuális gép tulajdonságaihoz a **Replikált elemek** területen. Az **Alapvető erőforrások** panel megjeleníti a gépek beállításaira és állapotára vonatkozó információkat.
 - **Javasoljuk, hogy a feladatátvételi teszthez a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett használjon egy külön Azure-beli virtuálisgép-hálózatot**.
-- Az egyes hálózati ADAPTERek forrás-hálózati konfigurációjától függően megadhatja az **alhálózat, az IP-cím, a nyilvános IP-cím, a hálózati biztonsági csoport vagy a belső Load Balancer** az egyes hálózati adapterekhez való kapcsolódáshoz a számítási & hálózat előtti feladatátvételi beállítások területen. a DR-részletezés végrehajtásához.
+- Az egyes hálózati adapterek forrás-hálózati konfigurációjától függően megadhatja az **alhálózat, az IP-cím, a nyilvános IP-cím, a hálózati biztonsági csoport vagy a belső Load Balancer** is, hogy az egyes hálózati adapterekhez a Dr működést megelőzően a teszt feladatátvételi beállítások alatt & lévő összes hálózati adapterhez társítson.
 
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása

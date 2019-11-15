@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 9421f730ea6480c9e4223dd9ddbd15852b1fce8f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072602"
+ms.locfileid: "74091203"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Kibocsátási megjegyzések: beszédfelismerési eszközök SDK
 
 A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
+
+## <a name="speech-devices-sdk-170"></a>Beszédfelismerési eszközök SDK-1.7.0:
+
+*   A Linux ARM mostantól támogatott.
+*   A Roobov2 kezdeti bináris fájljai (Linux ARM64) vannak megadva.
+*   A Windows-felhasználók a AudioConfig. fromDefaultMicrophoneInput () vagy a AudioConfig. fromMicrophoneInput (deviceName) használatával határozzák meg a használni kívánt mikrofont.
+*   A könyvtár mérete optimalizált.
+*   Több-turn felismerés támogatása ugyanazzal a beszédfelismerési/szándék-felismerő objektummal.
+*   Javítsa ki az alkalmi lefagyást, amely az elismerés leállításakor következik be.
+*   A minta alkalmazások mostantól egy minta résztvevő. properties fájlt tartalmaznak a fájl formátumának bemutatásához.
+*   Frissítette a [SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) összetevőjét a 1.7.0 verzióra. További információt a [kibocsátási megjegyzései](https://aka.ms/csspeech/whatsnew)című témakörben talál.
 
 ## <a name="speech-devices-sdk-160"></a>Speech Devices SDK 1.6.0:
 

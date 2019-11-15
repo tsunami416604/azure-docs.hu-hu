@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: dapine
-ms.openlocfilehash: fc4b9469d8634cbb46eccb842c9795a155384eb7
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2b6118930626ce753060addcf64c568c7c086efb
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961920"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091234"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
@@ -38,10 +38,12 @@ Cognitive Services erőforrások elérhetők [Microsoft Azureon](https://azure.m
 
 ## <a name="features-and-benefits"></a>Funkciók és előnyök
 
+- Nem módosítható **infrastruktúra**: a DevOps csapatok lehetővé teszik az ismert rendszerparaméterek egységes és megbízható készletének kihasználása, miközben a változáshoz alkalmazkodni tudnak. A tárolók rugalmasságot biztosítanak a kiszámítható ökoszisztémán belül, és elkerülheti a konfigurációs eltolódást.
 - **Adatok felett**: lehetővé teszi az ügyfelek számára, hogy válassza ki, ahol a ezeket a Cognitive Services az adatok feldolgozása. Ez a alapvető olyan ügyfelek számára, nem tud adatokat küldeni a felhőben, de a Cognitive Services technológia hozzáférésre van szükségük. A hibrid környezetek – az adatok, a felügyelet, az identitás és a biztonság – közötti konzisztencia támogatása.
 - **Adatmodell-frissítéseket felett**: nyújt az ügyfeleknek verziókezelés és a modellek üzembe helyezett megoldásaikat frissítése.
 - **Hordozható architektúra**: egy hordozható alkalmazásarchitektúra is üzembe helyezhetők az Azure-ban, a helyszíni és a peremhálózaton létrehozásának engedélyezéséhez. Tárolók közvetlenül telepíthető [Azure Kubernetes Service](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml), vagy egy [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](/azure-stack/operator). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Nagy átviteli sebesség / kis késés**: teszi lehetővé az ügyfelek nagy átviteli sebességet és közel valós idejű követelmények méretezését, engedélyezi a Cognitive Services futtatásához fizikailag közel az alkalmazáslogika és az adatokat. A tárolók nem költségplafont, másodpercenkénti tranzakciók (TPS), és a horizontális felskálázás és kibővítés is kezeléséhez igény szerint, ha megadja a szükséges hardver-erőforrások lehet tenni. 
+- **Nagy átviteli sebesség / kis késés**: teszi lehetővé az ügyfelek nagy átviteli sebességet és közel valós idejű követelmények méretezését, engedélyezi a Cognitive Services futtatásához fizikailag közel az alkalmazáslogika és az adatokat. A tárolók nem költségplafont, másodpercenkénti tranzakciók (TPS), és a horizontális felskálázás és kibővítés is kezeléséhez igény szerint, ha megadja a szükséges hardver-erőforrások lehet tenni.
+- **Méretezhetőség**: a tárolókra bontás és a tároló-összehangoló szoftverek egyre növekvő népszerűsége, például a Kubernetes; a skálázhatóság a technológiai fejlesztések élvonalában van. A skálázható fürt alapjainak kiépítésekor az alkalmazások fejlesztése magas rendelkezésre állást biztosít.
 
 ## <a name="containers-in-azure-cognitive-services"></a>A tárolók az Azure Cognitive Services
 

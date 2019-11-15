@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886052"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081473"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -239,9 +239,9 @@ Először is kövesse az alkalmazáshoz [való hozzáférés megadására](../ap
 
 Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs fájljába, használja a környezeti változók injekciós szintaxisát (`${MY_ENV_VAR}`). A Spring konfigurációs fájlok esetében tekintse meg ezt a dokumentációt a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
-## <a name="using-the-java-key-store"></a>A Java Key Store használata
+### <a name="using-the-java-key-store"></a>A Java Key Store használata
 
-Alapértelmezés szerint a rendszer a [app Service Linuxra feltöltött](../configure-ssl-certificate.md) nyilvános vagy privát tanúsítványokat a tároló indításakor betölti a Java Key Store-ba. Ez azt jelenti, hogy a feltöltött tanúsítványok a kapcsolati környezetben lesznek elérhetők a kimenő TLS-kapcsolatok létrehozásakor.
+Alapértelmezés szerint a rendszer a [app Service Linuxra feltöltött](../configure-ssl-certificate.md) nyilvános vagy privát tanúsítványokat a tároló indításakor betölti a Java Key Store-ba. Ez azt jelenti, hogy a feltöltött tanúsítványok a kapcsolati környezetben lesznek elérhetők a kimenő TLS-kapcsolatok létrehozásakor. A tanúsítvány feltöltése után újra kell indítania a App Service, hogy betöltse a Java Key Store-ba.
 
 A Java-kulcs eszköz interakcióját vagy hibakeresését úgy teheti meg, hogy [megnyit egy SSH-kapcsolatot](app-service-linux-ssh-support.md) a app Service és futtatja a parancsot `keytool`. A parancsok listáját a [legfontosabb eszköz dokumentációjában](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) találja. A tanúsítványokat a Java alapértelmezett tároló-fájljának helye tárolja, `$JAVA_HOME/jre/lib/security/cacerts`.
 
@@ -251,7 +251,7 @@ A JDBC-kapcsolatok titkosításához további konfigurálásra lehet szükség. 
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 
-### <a name="manually-initialize-and-load-the-key-store"></a>A Key Store manuális inicializálása és betöltése
+#### <a name="manually-initialize-and-load-the-key-store"></a>A Key Store manuális inicializálása és betöltése
 
 A kulcstárolót inicializálhatja, és manuálisan is hozzáadhat tanúsítványokat. Hozzon létre egy alkalmazás-beállítást, `SKIP_JAVA_KEYSTORE_LOAD`a `1` értékkel, hogy letiltsa App Service a tanúsítványok automatikus betöltését a Key Store-ba. Az Azure Portalon App Service feltöltött nyilvános tanúsítványokat a rendszer a `/var/ssl/certs/`alatt tárolja. A privát tanúsítványokat a `/var/ssl/private/`alatt tárolja.
 
@@ -438,7 +438,7 @@ Ha a Spring boot-alkalmazásokban lévő adatforrásokhoz szeretne csatlakozni, 
 
 Erről a témakörről a [Spring boot dokumentációjában](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) talál további információt az adathozzáférésről és a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) .
 
-## <a name="configure-java-ee-wildfly"></a>Java EE konfigurálása (WildFly)
+## <a name="configure-java-ee-wildfly"></a>Configure Java EE (WildFly)
 
 > [!NOTE]
 > A Java Enterprise Edition App Service Linux rendszeren jelenleg előzetes verzióban érhető el. Ez a verem éles munkához **nem** ajánlott.
@@ -579,7 +579,7 @@ A következő lépések ismertetik a meglévő App Service és adatbázis össze
 
 6. Az Azure CLI-vel olyan beállításokat adhat hozzá az App Servicehoz, amelyek az adatbázis-kapcsolódási adatokat tárolják. Cserélje le a `<resource group>` és a `<webapp name>` értéket a App Service által használt értékekre. Cserélje le `<database server name>`, `<database name>`, `<admin name>`és `<admin password>` az adatbázis-kapcsolatok adataira. A App Service és az adatbázis adatai a Azure Portalból szerezhetők be.
 
-    **PostgreSQL**
+    **PostgreSQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -591,7 +591,7 @@ A következő lépések ismertetik a meglévő App Service és adatbázis össze
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL**
+    **MySQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -812,7 +812,7 @@ A főbb biztonsági rések javításait és javításait a rendszer azonnal fels
 
 Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett futtatókörnyezetet használó Azure-fejlesztők elavult értesítést kapnak a futtatókörnyezet kivonása előtt legalább hat hónappal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az Azure [for Java Developers](/java/azure/) Center webhelyre, ahol megtalálhatja az Azure rövid útmutatók, oktatóanyagok és a Java-dokumentációt.
 

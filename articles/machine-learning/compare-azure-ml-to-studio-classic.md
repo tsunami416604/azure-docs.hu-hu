@@ -8,23 +8,23 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 00a2268442f94822064f86d95b14160d67e1516c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716691"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084762"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Miben különbözik a Azure Machine Learning ML Studiotól (klasszikus)
 
 Ez a cikk a Azure Machine Learning funkcióit, képességeit és felületét hasonlítja össze ML Studio (klasszikus). 
 
 ## <a name="about-ml-studio-classic"></a>Tudnivalók a ML Studioról (klasszikus)
-A [ml Studio (klasszikus)](/studio/what-is-ml-studio.md) egy együttműködésen alapuló, húzással ellátható vizualizációs munkaterület, ahol a gépi tanulási megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez nem szükséges programkódot írni. Előre összeépített és előre konfigurált gépi tanulási algoritmusokat és adatkezelési modulokat, valamint egy szabadalmaztatott számítási platformot használ.
+A [ml Studio (klasszikus)](studio/what-is-ml-studio.md) egy együttműködésen alapuló, húzással ellátható vizualizációs munkaterület, ahol a gépi tanulási megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez nem szükséges programkódot írni. Előre összeépített és előre konfigurált gépi tanulási algoritmusokat és adatkezelési modulokat, valamint egy szabadalmaztatott számítási platformot használ.
 
 ## <a name="about-azure-machine-learning"></a>Tudnivalók az Azure Machine Learningről
 
-Eközben [Azure Machine learning](/service/overview-what-is-azure-ml.md) a Designer (előzetes verzió) nevű webes felületet **és** számos SDK-t és CLI-t is biztosít az adatelőkészítéshez, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Azure Machine Learning a méretezés, a több keretrendszer támogatása, a speciális ML-képességek, például az automatizált gépi tanulás és a folyamat-támogatás.
+Eközben [Azure Machine learning](service/overview-what-is-azure-ml.md) a Designer (előzetes verzió) nevű webes felületet **és** számos SDK-t és CLI-t is biztosít az adatelőkészítéshez, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Azure Machine Learning a méretezés, a több keretrendszer támogatása, a speciális ML-képességek, például az automatizált gépi tanulás és a folyamat-támogatás.
 
 A Azure Machine Learning Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, méretezhető és teljes mértékben integrálva van Azure Machine Learningba.  
 
@@ -58,7 +58,7 @@ A következő források segíthetnek a Azure Machine Learning megkezdésében
 
 ![Azure Machine Learning Designer – példa](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tervezőben a fogd és vidd funkció mellett a Azure Machine Learning más eszközök is elérhetők:  
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](./service/tutorial-1st-experiment-sdk-setup.md)

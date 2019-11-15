@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 1394ea03874db5e05831100ef7bfec5187f3f4e4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c15f3f899b856cb715406bf0e2f95914cd58cca0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074151"
+ms.locfileid: "74091671"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
 
@@ -144,7 +144,7 @@ Miután a korábban ismertetett módon konfigurálta a MABS-t és a SharePoint-f
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a kiválasztott beállításokat az **Összefoglalás** lapon, majd kattintson a **csoport létrehozása**elemre. A védelmi csoport létrehozása után sikert jelző üzenet jelenik meg.
 
-    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>SharePoint-elem visszaállítása a lemezről a MABS használatával
 
@@ -243,7 +243,7 @@ Válasz: igen, az elem visszaállítható az eredeti SharePoint-webhelyre.
 K: lehet helyreállítani egy SharePoint-adatbázist az eredeti helyre, ha a SharePoint az SQL AlwaysOn használatával van konfigurálva?<br>
 A: mivel a SharePoint-adatbázisok konfigurálva vannak az SQL-AlwaysOn, csak akkor módosíthatók, ha a rendelkezésre állási csoport el lett távolítva. Ennek eredményeképpen a MABS nem tudja visszaállítani az adatbázist az eredeti helyére. SQL Server-adatbázist egy másik SQL Server-példányra is helyreállíthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [biztonsági másolat fájljait és az alkalmazásról](backup-mabs-files-applications-azure-stack.md) szóló cikket.
 A [biztonsági mentési SQL Server Azure stack](backup-mabs-sql-azure-stack.md) cikkben talál.

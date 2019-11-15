@@ -1,5 +1,5 @@
 ---
-title: 'Útválasztási ExpressRoute áramkörök optimalizálása: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: Útválasztás optimalizálása'
 description: Ez az oldal részletesen ismerteti, hogyan optimalizálható az útválasztás, ha több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti a Microsoftot a vállalati hálózatával.
 services: expressroute
 author: charwen
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141868"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080139"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
@@ -55,7 +54,7 @@ Vizsgáljuk meg az útválasztási problémát egy példán keresztül. Tegyük 
 ![1\. ExpressRoute-probléma – az optimálisnál rosszabb útválasztás az ügyféltől a Microsoft felé](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Megoldás: BGP-közösségek használata
-Az útválasztás mindkét irodához való optimalizálásához ismernie kell, hogy melyik előtag származik az USA nyugati Azure-régiójából és melyik az USA keleti Azure-régiójából. Ezt az információt a [BGP-közösség értékeivel](expressroute-routing.md) kódoljuk. Egy egyedi BGP-közösségértéket rendeltünk hozzá mindegyik Azure-régióhoz, például a „12076:51004” előtagot az USA keleti régiójához, a „12076:51006” előtagot az USA nyugati régiójához. Most, hogy tudja, melyik előtag melyik Azure-régióból származik, konfigurálhatja, hogy melyik ExpressRoute-kapcsolatcsoportot részesíti előnyben. Mivel az útválasztási információ cseréje a BGP segítségével történik, a BGP helyi preferenciaértékével befolyásolhatja az útválasztást. A példában magasabb helyi preferenciaértéket rendelhet hozzá a 13.100.0.0/16 előtaghoz az USA nyugati régiójában, mint az USA keleti régiójában, és hasonlóképpen magasabb helyi preferenciaértéket rendelhet hozzá a 23.100.0.0/16 előtaghoz az USA keleti régiójában, mint az USA nyugati régiójában. Ez a konfiguráció biztosítja, hogy ha a Microsoft felé mindkét útvonal elérhető, a Los Angelesben lévő felhasználók az USA nyugati régiójában lévő ExpressRoute-kapcsolatcsoport segítségével csatlakoznak az USA nyugati Azure-régiójához, míg a New Yorkban lévő felhasználók az USA keleti régiójában lévő ExpressRoute-ot használják az USA keleti Azure-régiójához való csatlakozásra. Az útválasztás minkét oldalon optimalizálva van. 
+Az útválasztás mindkét irodához való optimalizálásához ismernie kell, hogy melyik előtag származik az USA nyugati Azure-régiójából és melyik az USA keleti Azure-régiójából. Ezt az információt a [BGP-közösség értékeivel](expressroute-routing.md) kódoljuk. Minden egyes Azure-régióban egyedi BGP-közösségi értéket rendeltünk, például "12076:51004" az USA keleti régiójában, "12076:51006" az USA nyugati régiójában. Most, hogy tudja, melyik előtag melyik Azure-régióból származik, konfigurálhatja, hogy melyik ExpressRoute-kapcsolatcsoportot részesíti előnyben. Mivel az útválasztási információ cseréje a BGP segítségével történik, a BGP helyi preferenciaértékével befolyásolhatja az útválasztást. A példában magasabb helyi preferenciaértéket rendelhet hozzá a 13.100.0.0/16 előtaghoz az USA nyugati régiójában, mint az USA keleti régiójában, és hasonlóképpen magasabb helyi preferenciaértéket rendelhet hozzá a 23.100.0.0/16 előtaghoz az USA keleti régiójában, mint az USA nyugati régiójában. Ez a konfiguráció biztosítja, hogy ha a Microsoft felé mindkét útvonal elérhető, a Los Angelesben lévő felhasználók az USA nyugati régiójában lévő ExpressRoute-kapcsolatcsoport segítségével csatlakoznak az USA nyugati Azure-régiójához, míg a New Yorkban lévő felhasználók az USA keleti régiójában lévő ExpressRoute-ot használják az USA keleti Azure-régiójához való csatlakozásra. Az útválasztás minkét oldalon optimalizálva van. 
 
 ![1\. ExpressRoute-eset megoldása – BGP-közösségek használata](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 

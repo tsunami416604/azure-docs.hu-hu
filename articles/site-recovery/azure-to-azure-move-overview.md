@@ -1,33 +1,23 @@
 ---
-title: Az Azure MS áthelyezése egy másik régióba Azure Site Recovery
-description: Az Azure IaaS virtuális gépek egyik Azure-régióból a másikba való áthelyezéséhez használja a Azure Site Recovery.
+title: Azure-beli virtuális gépek áthelyezése másik régióba Azure Site Recovery
+description: A Azure Site Recovery használatával Azure-beli virtuális gépeket helyezhet át egyik Azure-régióból a másikba.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e3a3db66b4833a8ba21dc9d3c1938f645919221c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954169"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091941"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
+# <a name="moving-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
 
-Az Azure az ügyfélkörrel együtt növekszik, és támogatja az új régiók támogatását, hogy lépést tartson a növekvő igényekkel. Az új funkciók a szolgáltatásokban is havonta bővülnek. A rendelkezésre állás növeléséhez érdemes áthelyeznie a virtuális gépeket (VM) egy másik régióba vagy Availability Zonesba.
+Ez a cikk áttekintést nyújt az Azure-beli virtuális gépek egy másik Azure-régióba való áthelyezésének okairól és lépéseiről [Azure site Recovery](site-recovery-overview.md)használatával. 
 
-Ez az oktatóanyag azokat a különböző forgatókönyveket ismerteti, amelyekben a virtuális gépeket szeretné áthelyezni. Azt is leírja, hogyan konfigurálhatja az architektúrát a céltartományban a magasabb rendelkezésre állás érdekében. 
-
-Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
-
-> [!div class="checklist"]
-> 
-> * Virtuális gépek áthelyezésének okai
-> * Tipikus architektúrák
-> * Virtuális gépek áthelyezése célként megadott régióba
-> * Virtuális gépek áthelyezése a rendelkezésre állás növeléséhez
 
 ## <a name="reasons-to-move-azure-vms"></a>Az Azure-beli virtuális gépek áthelyezésének okai
 

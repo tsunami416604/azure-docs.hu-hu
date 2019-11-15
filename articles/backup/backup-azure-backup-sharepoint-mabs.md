@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: a9a72a9b9df18462c1a4dfe470c7c7393cf356d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a7a1b088868add308f128c5a51d8cce4339c637c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074287"
+ms.locfileid: "74091719"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
 
@@ -148,7 +148,7 @@ Miután a korábban ismertetett módon konfigurálta a MABS-t és a SharePoint-f
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a kiválasztott beállításokat az **Összefoglalás** lapon, majd kattintson a **csoport létrehozása**elemre. A védelmi csoport létrehozása után sikert jelző üzenet jelenik meg.
 
-    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>SharePoint-elem visszaállítása a lemezről a MABS használatával
 
@@ -239,7 +239,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az [Exchange Server biztonsági mentése](backup-azure-exchange-mabs.md) című cikket.
 Tekintse meg a [SQL Server biztonsági mentése](backup-azure-sql-mabs.md) című cikket.

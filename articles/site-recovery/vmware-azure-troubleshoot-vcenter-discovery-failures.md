@@ -1,20 +1,20 @@
 ---
-title: A helyszíni feladat-visszavétel hibakeresése a VMware virtuális gép vész-helyreállításával az Azure-ba Azure Site Recovery
-description: Ez a cikk bemutatja, hogyan lehet elhárítani a feladat-visszavétel és az ismételt védelem hibáit a VMware virtuális gépek vész-helyreállítás közben az Azure-ba Azure Site Recovery használatával
+title: A VMware vCenter felderítési hibáinak elhárítása Azure Site Recovery
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a VMware vCenter-felderítési hibákat a Azure Site Recoveryban.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053855"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091243"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>A vCenter-felderítési hibák elhárítása
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server felderítési hibák elhárítása
 
 Ez a cikk segítséget nyújt a VMware vCenter-felderítési hibák miatt előforduló problémák elhárításában.
 
@@ -60,7 +60,7 @@ Felderítési proxy konfigurálásához:
 
 1. Nyissa meg az IE-t a rendszer felhasználói környezetében a PsExec eszközzel.
     
-    PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
+    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 
 2. Módosítsa a proxybeállításokat az Internet Explorerben a vCenter IP-cím megkerüléséhez.
 3. Indítsa újra a tmanssvc szolgáltatást.

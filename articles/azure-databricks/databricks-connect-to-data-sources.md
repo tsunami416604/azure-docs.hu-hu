@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: f40edec088172bf7460d99b611e6be80f818ff9c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 932031f545ccc75cb12f368f5c7894c1b5e454cd
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601891"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091688"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Kapcsolódás adatforrásokhoz Azure Databricks
 
@@ -26,34 +26,34 @@ Ez a cikk az Azure-beli különböző adatforrásokra mutató hivatkozásokat ta
 
 ## <a name="data-sources-for-azure-databricks"></a>Azure Databricks adatforrásai
 
-Az alábbi lista az Azure-ban használható adatforrásokat tartalmazza, amelyeket Azure Databricks használhat. A Azure Databricks használható adatforrások teljes listájáért tekintse meg a [Azure Databricks adatforrásait](/azure/databricks/data/data-sources/index.html)ismertető témakört.
+Az alábbi lista az Azure-ban használható adatforrásokat tartalmazza, amelyeket Azure Databricks használhat. A Azure Databricks használható adatforrások teljes listájáért tekintse meg a [Azure Databricks adatforrásait](/azure/databricks/data/data-sources/index)ismertető témakört.
 
-- [Azure SQL Database](/azure/databricks/data/data-sources/sql-databases.html)
+- [Azure SQL Database](/azure/databricks/data/data-sources/sql-databases)
 
     Ez a hivatkozás a DataFrame API-t biztosítja az SQL-adatbázisokhoz való csatlakozáshoz a JDBC használatával, valamint az olvasások párhuzamosságának vezérlését a JDBC felületen keresztül. Ez a témakör részletes példákat tartalmaz a Scala API-val, valamint a rövidített Python és Spark SQL-példákkal.
-- [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)
+- [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
     Ez a hivatkozás példákat tartalmaz arra, hogyan használhatja a Azure Active Directory egyszerű szolgáltatást a Azure Data Lake Storage való hitelesítéshez. Emellett útmutatást nyújt arról, hogyan férhet hozzá a Azure Data Lake Storage lévő adatokhoz Azure Databricksból.
 
-- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html)
+- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
 
     Ez a hivatkozás példákat tartalmaz arra, hogyan lehet közvetlenül hozzáférni az Azure Blob Storagehoz a Azure Databricks hozzáférési kulccsal vagy SAS-vel egy adott tárolóhoz. A hivatkozás azt is ismerteti, hogyan férhet hozzá az Azure Blob Storage a Azure Databricks a RDD API használatával.
 
-- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector.html)
+- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector)
 
     Ez a hivatkozás azt ismerteti, hogyan használható a [Azure Cosmos db Spark-összekötő](https://github.com/Azure/azure-cosmosdb-spark) a Azure Databricksból a Azure Cosmos db lévő adatok eléréséhez.
 
-- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector.html)
+- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector)
 
     Ez a hivatkozás azt ismerteti, hogyan használható az [azure Event Hubs Spark-összekötő](https://github.com/Azure/azure-event-hubs-spark) Azure Databricks az adatok Azure-beli Event Hubs való eléréséhez.
 
-- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse.html)
+- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
 
     Ez a hivatkozás azt ismerteti, hogyan használható az Azure SQL Data Warehouse-összekötő a Azure Databricksból való csatlakozáshoz.
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az adatok Azure Databricksba való importálásának forrásairól a [Azure Databricks adatforrásaiban](/azure/databricks/data/data-sources/index.html#)talál további információt.
+Az adatok Azure Databricksba való importálásának forrásairól a [Azure Databricks adatforrásaiban](/azure/databricks/data/data-sources/index)talál további információt.
 
 

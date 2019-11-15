@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087693"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082853"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure-ban üzemeltetett API exportálása PowerApps és Microsoft Flow
 
@@ -30,7 +30,7 @@ Hasonlóképpen, az API-kat a szervezeten belül szélesebb körben támogató f
 Az API exportálása előtt le kell írnia az API-t egy OpenAPI-definíció (korábbi nevén egy [hencegő](https://swagger.io/) fájl) használatával. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését. A PowerApps és a Microsoft Flow bármely OpenAPI 2,0-definícióhoz létrehozhat egyéni összekötőket. A Azure Functions és Azure App Service beépített támogatást nyújt a OpenAPI-definíciók létrehozásához, üzemeltetéséhez és kezeléséhez. További információkért lásd: [REST API üzemeltetése a CORS-ben Azure app Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> Emellett egyéni összekötőket is létrehozhat a PowerApps és Microsoft Flow felhasználói felületen, anélkül, hogy OpenAPI-definíciót kellene használnia. További információkért lásd: [Egyéni összekötők regisztrálása és használata (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) , valamint az [Egyéni összekötők regisztrálása és használata (Microsoft flow)](https://flow.microsoft.com/documentation/register-custom-api/).
+> Emellett egyéni összekötőket is létrehozhat a PowerApps és Microsoft Flow felhasználói felületen, anélkül, hogy OpenAPI-definíciót kellene használnia. További információkért lásd: [Egyéni összekötők regisztrálása és használata (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) , valamint az [Egyéni összekötők regisztrálása és használata (Microsoft flow)](/power-automate/developer/register-custom-api).
 
 Az API-definíció exportálásához kövesse az alábbi lépéseket:
 
@@ -57,7 +57,7 @@ Az API-definíció exportálásához kövesse az alábbi lépéseket:
     ![Exportálási mód](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
 > [!NOTE]
-> Az egyéni összekötő az API -definíció egy példányát használja, így a PowerApps és a Microsoft flow nem fogja tudni azonnal, hogy módosítja-e az alkalmazást és az API-definícióját. Ha változtatásokat hajt végre, ismételje meg az új verzió exportálási lépéseit.
+> Az egyéni összekötő az API-definíció egy *példányát* használja, így a PowerApps és a Microsoft flow nem fogja tudni azonnal, hogy módosítja-e az alkalmazást és az API-definícióját. Ha változtatásokat hajt végre, ismételje meg az új verzió exportálási lépéseit.
 
 <a name="express"></a>
 ## <a name="use-express-export"></a>Expressz exportálás használata
@@ -70,7 +70,7 @@ Az Exportálás **expressz** módban való végrehajtásához kövesse az alább
 
     |Beállítás|Leírás|
     |--------|------------|
-    |**Környezet**|Válassza ki azt a környezetet, amelyre az egyéni összekötőt menteni kívánja. További információ: környezetek [áttekintése](https://powerapps.microsoft.com/tutorials/environments-overview/).|
+    |**Környezet**|Válassza ki azt a környezetet, amelyre az egyéni összekötőt menteni kívánja. További információ: [környezetek áttekintése](https://powerapps.microsoft.com/tutorials/environments-overview/).|
     |**Egyéni API neve**|Adjon meg egy nevet, amelyet a PowerApps és a Microsoft Flow-építők látnak majd az összekötők listájában.|
     |**Biztonsági konfiguráció előkészítése**|Ha szükséges, adja meg a biztonsági konfigurációs adatokat, amelyek szükségesek ahhoz, hogy hozzáférést biztosítson a felhasználóknak az API-hoz. Ez a példa egy API-kulcsot mutat be. További információ: az alábbi [hitelesítési típus megadása](#auth) .|
  
@@ -123,11 +123,11 @@ Az API-definíciónak a PowerApps és a Microsoft Flowba történő importálás
 
     ![Definíciók lap](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Ehhez a példához egy nevű `CalculateCosts`művelet tartozik. A metaadatok, például a **Leírás**a OpenAPI fájlból származnak.
+    Ehhez a példához egy `CalculateCosts`nevű művelet tartozik. A metaadatok, például a **Leírás**a OpenAPI fájlból származnak.
 
 7. Kattintson az **összekötő létrehozása** lehetőségre az oldal tetején.
 
-Most már csatlakozhat az egyéni összekötőhöz a PowerApps-ben és a Microsoft Flowban. Az összekötők PowerApps és Microsoft Flow portálon való létrehozásával kapcsolatos további információkért lásd: [az egyéni összekötő regisztrálása (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) és [az egyéni összekötő (Microsoft flow) regisztrálása](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector).
+Most már csatlakozhat az egyéni összekötőhöz a PowerApps-ben és a Microsoft Flowban. Az összekötők PowerApps és Microsoft Flow portálon való létrehozásával kapcsolatos további információkért lásd: [az egyéni összekötő regisztrálása (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) és [az egyéni összekötő (Microsoft flow) regisztrálása](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>A hitelesítés típusának megadása
@@ -146,24 +146,24 @@ A PowerApps és a Microsoft Flow támogatja az egyéni összekötők hitelesít�
 ``` 
 Az exportálás során olyan konfigurációs értékeket adhat meg, amelyek lehetővé teszik a PowerApps és a Microsoft Flow számára a felhasználók hitelesítését.
 
-Ez a szakasz az **expressz** módban támogatott hitelesítési típusokat ismerteti: Az API-kulcs, a Azure Active Directory és az általános OAuth 2,0. A PowerApps és a Microsoft Flow támogatja az alapszintű hitelesítést és a OAuth 2,0-et, például a Dropbox, a Facebook és a SalesForce szolgáltatásokat.
+Ez a szakasz az **expressz** módban támogatott hitelesítési típusokat ismerteti: API-kulcs, Azure Active Directory és általános OAuth 2,0. A PowerApps és a Microsoft Flow támogatja az alapszintű hitelesítést és a OAuth 2,0-et, például a Dropbox, a Facebook és a SalesForce szolgáltatásokat.
 
 ### <a name="api-key"></a>API-kulcs
-Ha API-kulcsot használ, az összekötő felhasználóinak meg kell adniuk a kulcsot a kapcsolatok létrehozásakor. Meg kell adnia egy API-kulcs nevét, amely segít megérteni, hogy melyik kulcsra van szükség. A korábbi példában a nevet `API Key (contact meganb@contoso.com)` használjuk, hogy az emberek tudják, hol kaphatnak információt az API-kulcsról. Azure Functions esetén a kulcs általában az egyik gazdagép kulcsa, amely a Function alkalmazásban található több függvényt is magában foglalja.
+Ha API-kulcsot használ, az összekötő felhasználóinak meg kell adniuk a kulcsot a kapcsolatok létrehozásakor. Meg kell adnia egy API-kulcs nevét, amely segít megérteni, hogy melyik kulcsra van szükség. A korábbi példában a nevet használjuk `API Key (contact meganb@contoso.com)`, hogy az emberek tudják, hol kaphatnak információt az API-kulcsról. Azure Functions esetén a kulcs általában az egyik gazdagép kulcsa, amely a Function alkalmazásban található több függvényt is magában foglalja.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Az Azure AD használatakor két Azure AD-alkalmazás regisztrálása szükséges: egyet az API-hoz, egyet pedig az egyéni összekötőhöz:
 
 - Az API regisztrálásának konfigurálásához használja a [app Service hitelesítés/engedélyezés](../app-service/configure-authentication-provider-aad.md) funkciót.
 
-- Az összekötő regisztrálásának konfigurálásához kövesse az [Azure ad-alkalmazás hozzáadása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)című témakör lépéseit. A regisztrációhoz delegált hozzáféréssel kell rendelkeznie az API-hoz és a válasz `https://msmanaged-na.consent.azure-apim.net/redirect`URL-címéhez. 
+- Az összekötő regisztrálásának konfigurálásához kövesse az [Azure ad-alkalmazás hozzáadása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)című témakör lépéseit. A regisztrációhoz delegált hozzáférés szükséges az API-hoz, és a `https://msmanaged-na.consent.azure-apim.net/redirect`válasz URL-címe. 
 
-További információkért tekintse meg az Azure AD-beli regisztrációs példákat a [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) és a [Microsoft flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/). Ezek a példák a Azure Resource Manager API-ként használják. Ha követi a lépéseket, cserélje ki az API-t.
+További információkért tekintse meg az Azure AD-beli regisztrációs példákat a [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) és a [Microsoft flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Ezek a példák a Azure Resource Manager API-ként használják. Ha követi a lépéseket, cserélje ki az API-t.
 
 A következő konfigurációs értékek szükségesek:
 - **Ügyfél-azonosító** – az összekötő Azure ad-regisztrációjának ügyfél-azonosítója
 - **Ügyfél titkos kulcsa** – az összekötő Azure ad-regisztrációjának ügyfél-titka
-- **Bejelentkezési URL** -cím – az Azure ad alap URL-címe. Az Azure-ban ez általában `https://login.windows.net`a következő:.
+- **Bejelentkezési URL** -cím – az Azure ad alap URL-címe. Az Azure-ban ez általában `https://login.windows.net`.
 - **Bérlő azonosítója** – a bejelentkezéshez használandó bérlő azonosítója. Ennek a következőnek kell lennie: "Common" vagy annak a bérlőnek az azonosítója, amelyben az összekötőt létrehozták.
 - **Erőforrás URL-címe** – az Azure ad-regisztráció erőforrás-URL-címe az API-hoz
 

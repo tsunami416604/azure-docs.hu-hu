@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747447"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091125"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -99,7 +99,7 @@ Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**ki
 * Biztonsági másolati tétel
 * Védett kiszolgáló
 * Severity
-* Időtartam
+* Duration
 * Létrehozás ideje
 * status
 * Legutóbbi előfordulás időpontja
@@ -221,7 +221,7 @@ Megtekintheti az egyik műveletet vagy az összes műveletet. Két vagy három m
 * Minden művelet
 * Regisztráljon
 * Biztonsági mentés konfigurálása
-* Biztonsági mentés
+* Backup
 * Visszaállítás
 * Biztonsági mentés letiltása
 * Biztonsági mentési adatok törlése
@@ -272,7 +272,7 @@ Az irányítópulton található Backup Storage (biztonsági mentés) csempén a
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` például:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Windows Server-vagy Windows-ügyfél visszaállítása az Azure-ból](backup-azure-restore-windows-server.md)
 * További információ a Azure Backupről: [Azure Backup áttekintése](backup-introduction-to-azure-backup.md)

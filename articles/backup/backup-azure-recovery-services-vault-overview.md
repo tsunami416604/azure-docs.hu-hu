@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7339ef136639ceaaacb1c416c147155c7ce659f8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e61949dc739230382fab4cfaad53a6cb449de79a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074162"
+ms.locfileid: "74091619"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services-tárolók áttekintése
 
@@ -76,7 +76,7 @@ A következő szakaszokban olyan cikkekre mutató hivatkozások találhatók, am
 
 - [A Felhőbeli biztonsági másolatok védelmének biztosítása Recovery Services-tárolókban](backup-azure-security-feature.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek használhatók:</br>
 [IaaS virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md)</br>

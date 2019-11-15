@@ -1,39 +1,38 @@
 ---
-title: 'Áramkörök áthelyezése a Klasszikusból a Resource Managerbe – ExpressRoute: PowerShell: Azure | Microsoft Docs'
-description: Ez a lap leírja, hogyan helyezheti át a klasszikus áramkört a Resource Manager-alapú üzemi modellbe a PowerShell használatával.
+title: 'Azure ExpressRoute: klasszikus áramkörök áthelyezése a Resource Managerbe'
+description: Ezen a lapon azt ismerteti, miként helyezhetők át klasszikus expressroute-kapcsolatcsoporthoz a PowerShell-lel Resource Manager-alapú üzemi modellbe.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 34dd7ed4c6352ed90793288f918d78b7fb07af80
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4e49a3bc803733f5e78207fa3573c93395924d6a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748245"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080172"
 ---
-# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-áramkörök áthelyezése a Klasszikusból a Resource Manager-alapú üzemi modellbe a PowerShell használatával
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból Resource Manager-alapú üzemi modellbe PowerShell-lel
 
-Ahhoz, hogy a klasszikus és a Resource Manager-alapú üzemi modellhez is ExpressRoute áramkört lehessen használni, át kell helyeznie az áramkört a Resource Manager-alapú üzemi modellbe. A következő részekben a PowerShell használatával helyezheti át az áramkörét.
+Szeretne használni egy ExpressRoute-kapcsolatcsoportot a klasszikus és Resource Manager üzembe helyezési modellel, a kapcsolatcsoport kell áthelyezni a Resource Manager-alapú üzemi modellbe. A következő szakaszok segítenek a kapcsolatcsoport áthelyezése a PowerShell használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 * Győződjön meg arról, hogy a klasszikus és az Azure PowerShell modulok helyileg is telepítve vannak a számítógépen. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
-* A konfigurálás megkezdése előtt ellenőrizze, hogy áttekintette-e az [előfeltételeket](expressroute-prerequisites.md), az [útválasztási követelményeket](expressroute-routing.md)és a [munkafolyamatokat](expressroute-workflows.md) .
-* Tekintse át a [ExpressRoute-áramkör áthelyezése a Klasszikusból a Resource Managerbe](expressroute-move.md)című témakörben megadott információkat. Győződjön meg arról, hogy teljes mértékben ismeri a korlátozásokat és korlátozásokat.
-* Ellenőrizze, hogy az áramkör teljesen működőképes-e a klasszikus üzemi modellben.
-* Győződjön meg arról, hogy van egy erőforráscsoport, amely a Resource Manager-alapú üzemi modellben lett létrehozva.
+* Győződjön meg arról, hogy áttekintette a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
+* Tekintse át az adatokat a megadott [az ExpressRoute-Kapcsolatcsoportok áthelyezése klasszikusból Resource Manager](expressroute-move.md). Győződjön meg arról, hogy megértette a korlátok és korlátozások.
+* Ellenőrizze, hogy a kapcsolatcsoport teljesen működőképes, a klasszikus üzemi modellben.
+* Győződjön meg arról, hogy a Resource Manager-alapú üzemi modellben létrehozott erőforráscsoport.
 
-## <a name="move-an-expressroute-circuit"></a>ExpressRoute áramkör áthelyezése
+## <a name="move-an-expressroute-circuit"></a>ExpressRoute-Kapcsolatcsoportok áthelyezése
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>1\. lépés: áramkör részleteinek összegyűjtése a klasszikus üzemi modellből
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>1\. lépés: Kapcsolat részleteinek gyűjtsön a klasszikus üzemi modellben
 
-Jelentkezzen be a klasszikus Azure-környezetbe, és Gyűjtse össze a szolgáltatás kulcsát.
+Jelentkezzen be a klasszikus Azure-környezet, és a kulcs összegyűjtése.
 
 1. Jelentkezzen be Azure-fiókjába.
 
@@ -47,24 +46,24 @@ Jelentkezzen be a klasszikus Azure-környezetbe, és Gyűjtse össze a szolgált
    Select-AzureSubscription "<Enter Subscription Name here>"
    ```
 
-3. Importálja az Azure és a ExpressRoute PowerShell-modulját.
+3. A PowerShell-modulok importálása az Azure és az ExpressRoute számára.
 
    ```powershell
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. Használja az alábbi parancsmagot az összes ExpressRoute-áramkörhöz tartozó szolgáltatási kulcsok beszerzéséhez. A kulcsok beolvasása után másolja át a Resource Manager-alapú üzemi modellbe áthelyezni kívánt áramköri **szolgáltatás kulcsát** .
+4. Az alábbi parancsmag használatával minden az ExpressRoute-Kapcsolatcsoportok a szolgáltatás-kulcsok beolvasása. A kulcsok beolvasása után másolja a **Szolgáltatáskulcs** a kapcsolatcsoport, amely szeretné helyezni a Resource Manager-alapú üzemi modellbe.
 
    ```powershell
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>2\. lépés: Jelentkezzen be, és hozzon létre egy erőforráscsoportot
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>2\. lépés: Bejelentkezés, és hozzon létre egy erőforráscsoportot
 
-Jelentkezzen be a Resource Manager-környezetbe, és hozzon létre egy új erőforráscsoportot.
+Jelentkezzen be a Resource Manager-környezetben, és hozzon létre egy új erőforráscsoportot.
 
-1. Jelentkezzen be Azure Resource Manager-környezetbe.
+1. Jelentkezzen be az Azure Resource Manager-környezetben.
 
    ```powershell
    Connect-AzAccount
@@ -76,86 +75,86 @@ Jelentkezzen be a Resource Manager-környezetbe, és hozzon létre egy új erőf
    Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
    ```
 
-3. Az alábbi kódrészlet módosításával hozzon létre egy új erőforráscsoportot, ha még nem rendelkezik erőforráscsoport-csoporttal.
+3. Módosítsa a hozzon létre egy új erőforráscsoportot, ha még nem rendelkezik egy erőforráscsoportot az alábbi kódrészletet.
 
    ```powershell
    New-AzResourceGroup -Name "DemoRG" -Location "West US"
    ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>3\. lépés: a ExpressRoute áramkör áthelyezése a Resource Manager-alapú üzemi modellbe
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>3\. lépés: Az ExpressRoute-kapcsolatcsoport áthelyezése a Resource Manager-alapú üzemi modellbe
 
-Most már készen áll a ExpressRoute-áramkör áthelyezésére a klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe. A továbblépés előtt tekintse át az [ExpressRoute áramkör Klasszikusból a Resource Manager-alapú üzemi modellbe való áthelyezésével](expressroute-move.md)kapcsolatos információkat.
+Most már készen áll az ExpressRoute-kapcsolatcsoport áthelyezése a klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe. A folytatás előtt ellenőrizze a megadott információkat [az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-move.md).
 
-Az áramkör áthelyezéséhez módosítsa és futtassa a következő kódrészletet:
+A kapcsolatcsoport áthelyezése, módosíthatja, és futtassa az alábbi kódrészletet:
 
 ```powershell
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-Klasszikus módban egy ExpressRoute-áramkör nem rendelkezik egy régióhoz kötött koncepcióval. A Resource Managerben azonban minden erőforrást egy Azure-régióhoz kell rendelni. A Move-AzExpressRouteCircuit parancsmagban megadott régió technikailag bármely régió lehet. A szervezeti célokra érdemes lehet olyan régiót választani, amely szorosan reprezentálja a társi helyet.
+Klasszikus módban ExpressRoute-kapcsolatcsoport nem rendelkezik a régió nem kötődik fogalmát. Azonban a Resource Managerben minden erőforrás kell le kell képezni egy Azure-régióban. A Move-AzExpressRouteCircuit parancsmagban megadott régió technikailag bármely régió lehet. Szervezeti okokból érdemes válasszon, amely szorosan jelöli a társviszony-létesítési helyszínen régiót.
 
 > [!NOTE]
-> Az áthelyezés befejezése után a rendszer az előző parancsmagban szereplő új nevet fogja használni az erőforrás kezeléséhez. Az áramkör alapvetően átnevezve lesz.
+> Az Áthelyezés befejezése után, az új nevet, amely az előző parancsmag szerepel-e, oldja meg az erőforrás használható. A kapcsolatcsoport lényegében neve lesz.
 > 
 
-## <a name="modify-circuit-access"></a>Áramköri hozzáférés módosítása
+## <a name="modify-circuit-access"></a>Kapcsolatcsoport hozzáférés módosítása
 
-### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>A ExpressRoute áramkör-hozzáférés engedélyezése mindkét üzembe helyezési modellhez
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Mindkét ExpressRoute kapcsolatcsoport-hozzáférés engedélyezése
 
-A klasszikus ExpressRoute-áramkör Resource Manager-alapú üzemi modellbe való áthelyezése után mindkét üzemi modellhez engedélyezheti a hozzáférést. A következő parancsmagok futtatásával engedélyezheti mindkét telepítési modell elérését:
+Helyezze át a klasszikus ExpressRoute-kapcsolatcsoport a Resource Manager-alapú üzemi modellre, akkor lehetővé teszik, hogy mindkét üzemi modellben. Mindkét üzemi modellben való hozzáférés engedélyezéséhez a következő parancsmagok futtatásához:
 
-1. Az áramkör részleteinek beolvasása.
+1. Ismerje meg a kapcsolatcsoport részleteket.
 
    ```powershell
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Állítsa a "klasszikus műveletek engedélyezése" értéket igaz értékre.
+2. Állítsa be a "Klasszikus működés engedélyezése" TRUE.
 
    ```powershell
    $ckt.AllowClassicOperations = $true
    ```
 
-3. Az áramkör frissítése. A művelet sikeres befejezését követően megtekintheti az áramkört a klasszikus üzembehelyezési modellben.
+3. Frissítse a kapcsolatcsoportot. Ez a művelet sikeres futtatása után lesz megtekintheti a kapcsolatcsoportot a klasszikus üzemi modellben.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-4. Futtassa a következő parancsmagot a ExpressRoute áramkör részleteinek lekéréséhez. Meg kell tudnia tekinteni a felsorolt szolgáltatási kulcsot.
+4. Az ExpressRoute-kapcsolatcsoport részleteit a következő parancsmag futtatásával. Megtekintheti a felsorolt kulcsot kell lennie.
 
    ```powershell
    get-azurededicatedcircuit
    ```
 
-5. Most már kezelheti a ExpressRoute-áramkörre mutató hivatkozásokat a klasszikus virtuális hálózatok, valamint a Resource Manager-virtuális hálózatok Resource Manager-parancsainak használatával. A következő cikkek segítenek a ExpressRoute áramkörre mutató hivatkozások kezelésében:
+5. Az ExpressRoute-kapcsolatcsoportot a klasszikus üzemi modell parancsok használatával a klasszikus virtuális hálózatok és a Resource Manager-parancsok a Resource Manager virtuális hálózatok mutató hivatkozásokat is kezelni. A következő cikkekben talál hivatkozásokat az ExpressRoute-kapcsolatcsoport kezeléséhez nyújt segítséget:
 
-    * [A virtuális hálózat összekapcsolása a ExpressRoute-áramkörrel a Resource Manager-alapú üzemi modellben](expressroute-howto-linkvnet-arm.md)
-    * [A virtuális hálózat összekapcsolása a ExpressRoute-áramkörrel a klasszikus üzemi modellben](expressroute-howto-linkvnet-classic.md)
+    * [A virtuális hálózat összekapcsolása a Resource Manager-alapú üzemi modellben az ExpressRoute-kapcsolatcsoport](expressroute-howto-linkvnet-arm.md)
+    * [A virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot a klasszikus üzemi modellben](expressroute-howto-linkvnet-classic.md)
 
-### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>A ExpressRoute-áramköri hozzáférés letiltása a klasszikus üzemi modellhez
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>A klasszikus üzemi modellben az ExpressRoute kapcsolatcsoport elérésének letiltása
 
-Futtassa a következő parancsmagokat a klasszikus üzemi modellhez való hozzáférés letiltásához.
+A klasszikus üzemi modellben való hozzáférés letiltása a következő parancsmagok futtatásához.
 
-1. A ExpressRoute áramkör részleteinek beolvasása.
+1. Az ExpressRoute-kapcsolatcsoport részleteinek beolvasása.
 
    ```powershell
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Állítsa a "klasszikus műveletek engedélyezése" értéket hamis értékre.
+2. Állítsa be a "Klasszikus működés engedélyezése" FALSE.
 
    ```powershell
    $ckt.AllowClassicOperations = $false
    ```
 
-3. Az áramkör frissítése. A művelet sikeres befejezését követően nem fogja tudni megtekinteni az áramkört a klasszikus üzemi modellben.
+3. Frissítse a kapcsolatcsoportot. Miután a művelet sikeresen befejeződött, nem tudja megtekinteni a kapcsolatcsoportot a klasszikus üzemi modellben.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az ExpressRoute-áramkör útválasztásának létrehozása és módosítása](expressroute-howto-routing-arm.md)
-* [A virtuális hálózat összekapcsolása a ExpressRoute-áramkörrel](expressroute-howto-linkvnet-arm.md)
+* [Útválasztás az ExpressRoute-kapcsolatcsoport létrehozása vagy módosítása](expressroute-howto-routing-arm.md)
+* [A virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoport](expressroute-howto-linkvnet-arm.md)

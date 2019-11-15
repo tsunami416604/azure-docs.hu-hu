@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8f8d1c9f53d08d017c6c07abf8e00ab77e6879e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477181"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091399"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 
@@ -60,7 +60,7 @@ További információkért lásd:
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [A Microsoft Identity platform fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>SAML EGYSZERI BEJELENTKEZÉS
+## <a name="saml-sso"></a>SAML SSO
 
 A **SAML egyszeri bejelentkezés**, az Azure AD akkor hitelesíti az alkalmazásnak a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. Az SAML-alapú egyszeri bejelentkezéssel az SAML-jogcímek által meghatározott szabályok alapján leképezheti a felhasználókat bizonyos alkalmazási szerepkörökre.
 
@@ -73,9 +73,9 @@ SAML-alapú egyszeri bejelentkezés bármely ezeket a protokollokat használó a
 
 Az SAML-alapú egyszeri bejelentkezéshez használható SaaS-alkalmazás konfigurálásával kapcsolatban lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Emellett számos szoftveres (SaaS) alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal](../saas-apps/tutorial-list.md) , amely VÉGIGVEZETI az SAML-alapú egyszeri bejelentkezés konfigurációjának lépésein.
 
-A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatást az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont `https://login.microsoftonline.com/<tenant-ID>/wsfed`Azure ad bejelentkezési URL-címét.
+A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatást az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont `https://login.microsoftonline.com/<tenant-ID>/wsfed`Azure AD bejelentkezési URL-címét.
 
-A helyszíni alkalmazások SAML-alapú egyszeri bejelentkezéshez való konfigurálásáról lásd: [SAML egyszeri bejelentkezés](application-proxy-configure-single-sign-on-on-premises-apps.md)a helyszíni alkalmazásokhoz alkalmazásproxy használatával.
+A helyszíni alkalmazások SAML-alapú egyszeri bejelentkezéshez való konfigurálásáról lásd: [SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy](application-proxy-configure-single-sign-on-on-premises-apps.md)használatával.
 
 További információ az SAML protokollról: [egyszeri bejelentkezéses SAML protokoll](../develop/single-sign-on-saml-protocol.md).
 
@@ -97,6 +97,8 @@ Jelszavas egyszeri bejelentkezés bármely felhőalapú alkalmazás, amely rende
    > Az Internet Explorer korlátozott támogatást nyújt, és többé nem kap új szoftverfrissítéseket. A Microsoft Edge az ajánlott böngésző.
 
 - Microsoft Edge a Windows 10 évfordulós kiadásán vagy később
+- Microsoft Edge iOS és Android rendszerhez
+- Intune Managed Browser
 - Chrome, a Windows 7 vagy újabb, és a MacOS X rendszeren vagy újabb
 - Firefox 26.0 vagy újabb, Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb
 
@@ -188,9 +190,9 @@ Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti partneri kapcso
 További információk: [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Azure Active Directory-kiadások).
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](../saas-apps/tutorial-list.md)
+* [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](../saas-apps/tutorial-list.md)
 * [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md)
 * [Jelszó alapú egyszeri bejelentkezés konfigurálása](configure-password-single-sign-on-non-gallery-applications.md)
 * [Csatolt bejelentkezés konfigurálása](configure-linked-sign-on.md)
 * [Alkalmazásokhoz való hozzáférés kezelése bemutatása](what-is-access-management.md)
-* Letöltési hivatkozás: [Egyszeri bejelentkezési telepítési terv](https://aka.ms/SSODeploymentPlan).
+* Letöltési hivatkozás: [egyszeri bejelentkezéses telepítési tervének](https://aka.ms/SSODeploymentPlan).

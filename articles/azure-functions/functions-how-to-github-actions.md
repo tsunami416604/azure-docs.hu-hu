@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8decf4622c4043cbac0f2e2f6e2ad59f1b5baaae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074015"
+ms.locfileid: "74091383"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -213,9 +213,9 @@ Az alábbi példa a `functions-action`1. verzióját használja:
         app-name: PLEASE_REPLACE_THIS_WITH_YOUR_FUNCTION_APP_NAME
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Egy teljes munkafolyamat megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://github.com/Azure/actions-workflow-samples) tárházában található egyik fájlt, amely `functionapp` szerepel a névben. Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
+Egy teljes munkafolyamat megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://aka.ms/functions-actions-samples) tárházában található egyik fájlt, amely `functionapp` szerepel a névben. Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 
 > [!div class="nextstepaction"]
 > [További információ a GitHub-műveletekről](https://help.github.com/en/articles/about-github-actions)

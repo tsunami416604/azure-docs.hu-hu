@@ -1,5 +1,5 @@
 ---
-title: 'MACsec konfigurálása – ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure-ExpressRoute: a MACsec konfigurálása'
 description: Ez a cikk segítséget nyújt a MACsec konfigurálásában a peremhálózati útválasztók és a Microsoft peremhálózati útválasztói közötti kapcsolatok biztonságossá tételéhez.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748268"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083549"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec konfigurálása a ExpressRoute Direct portokon
 
@@ -26,7 +26,7 @@ A konfigurálás megkezdése előtt erősítse meg a következőket:
 * Létrehozott egy [ExpressRoute Direct port-erőforrást](expressroute-howto-erdirect.md).
 * Ha helyileg szeretné futtatni a PowerShellt, ellenőrizze, hogy a Azure PowerShell legújabb verziója van-e telepítve a számítógépen.
 
-### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -134,7 +134,7 @@ Ezen a ponton a MACsec le van tiltva a ExpressRoute Direct-portok között a Mic
 ### <a name="test-connectivity"></a>Kapcsolat tesztelése
 Miután konfigurálta a MACsec (beleértve a MACsec kulcs frissítését) a ExpressRoute Direct-portok esetében, [ellenőrizze](expressroute-troubleshooting-expressroute-overview.md) , hogy az áramkör BGP-munkamenetei futnak-e. Ha még nem rendelkezik a portok egyetlen áramkörével sem, hozzon létre egyet először, és állítsa be az Azure-beli privát társat vagy a Microsoft-partnert. Ha a MACsec helytelenül van konfigurálva, beleértve a MACsec, a hálózati eszközök és a Microsoft hálózati eszközei között, a 3. rétegben nem jelenik meg az ARP-feloldás a 2. rétegben és a BGP-ben. Ha minden megfelelően van konfigurálva, akkor a BGP-útvonalakat a megfelelő módon kell meghirdetni mindkét irányban és az alkalmazás adatfolyamatában, ennek megfelelően a ExpressRoute.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 1. [ExpressRoute-kör létrehozása a ExpressRoute Direct-on](expressroute-howto-erdirect.md)
 2. [ExpressRoute-áramkör összekapcsolása egy Azure-beli virtuális hálózattal](expressroute-howto-linkvnet-arm.md)
-3. [ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
+3. [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)

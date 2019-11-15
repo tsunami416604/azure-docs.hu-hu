@@ -1,5 +1,5 @@
 ---
-title: Figyelés, mérőszámok és riasztások – az Azure ExpressRoute |} A Microsoft Docs
+title: 'Azure ExpressRoute: figyelés, mérőszámok és riasztások'
 description: Ez az oldal ismerteti az ExpressRoute monitorozása
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672041"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083437"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
@@ -32,14 +31,14 @@ Ha kijelöl egy mérőszámot, a rendszer az alapértelmezett összesítést alk
 ### <a name="available-metrics"></a>Elérhető metrikák
 |**Metrika**|**Kategória**|**Dimenzió (k)**|**Szolgáltatás (ok)**|
 | --- | --- | --- | --- |
-|ARP rendelkezésre állása|Rendelkezésre állás|<ui><li>Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus (privát/nyilvános/Microsoft)</ui></li>|ExpressRoute|
+|ARP rendelkezésre állása|Rendelkezésre állás|<ui><li>Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Peering Type (magán/nyilvános/Microsoft)</ui></li>|ExpressRoute|
 |BGP rendelkezésre állása|Rendelkezésre állás|<ui><li> Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus</ui></li>|ExpressRoute|
-|BitsInPerSecond|Forgalom|<ui><li> Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li>Hivatkozás (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Forgalom| <ui><li>Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>Közvetlen ExpressRoute</ui></li> |
-|GlobalReachBitsInPerSecond|Forgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
-|GlobalReachBitsOutPerSecond|Forgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
-|AdminState|Fizikai kapcsolat|Összekapcsolás|ExpressRoute Direct|
-|LineProtocol|Fizikai kapcsolat|Összekapcsolás|ExpressRoute Direct|
+|BitsInPerSecond|Adatforgalom|<ui><li> Peering Type (ExpressRoute)</ui></li><ui><li>Hivatkozás (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Adatforgalom| <ui><li>Peering Type (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>Közvetlen ExpressRoute</ui></li> |
+|GlobalReachBitsInPerSecond|Adatforgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
+|GlobalReachBitsOutPerSecond|Adatforgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
+|AdminState|Fizikai kapcsolat|Hivatkozás|ExpressRoute Direct|
+|LineProtocol|Fizikai kapcsolat|Hivatkozás|ExpressRoute Direct|
 |RxLightLevel|Fizikai kapcsolat|<ui><li>Hivatkozás</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
 |TxLightLevel|Fizikai kapcsolat|<ui><li>Hivatkozás</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
 >[!NOTE]
@@ -116,7 +115,7 @@ Megtekintheti a TX-fény szintjét (a ExpressRoute közvetlen port által **köz
 
 2. Kattintson a **+ cél kiválasztása** , és válassza ki az ExpressRoute-átjáró kapcsolati erőforrás.
 
-   ![cél]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. A riasztás részleteinek megadása.
 
    ![Műveletcsoport](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
@@ -135,7 +134,7 @@ Az a **riasztási feltételek**, választhat **tevékenységnapló** a jel típu
 
   ![egy másik](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ExpressRoute-kapcsolat konfigurálása.
   

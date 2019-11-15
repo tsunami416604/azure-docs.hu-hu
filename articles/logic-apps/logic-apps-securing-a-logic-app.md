@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 57bea93fd03dc19caa1ce29a34a40bc3cff06209
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039054"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084729"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -659,7 +659,7 @@ Ha az [ügyféltanúsítvány](../active-directory/authentication/active-directo
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
 | **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A SSL-(SSL-) Ügyféltanúsítványok esetében használandó hitelesítési típus. Míg az önaláírt tanúsítványok támogatottak, az önaláírt tanúsítványok nem támogatottak az SSL-hez. |
-| **Pfx** | `pfx` | Igen | <*kódolású-pfx-file-content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
+| **Pfx** | `pfx` | Igen | <*kódolású-pfx-file-content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból <p><p>A PFX-fájl Base64 kódolású formátumba való átalakításához a következő lépéseket követve használhatja a PowerShellt: <p>1. mentse a tanúsítvány tartalmát egy változóba: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. alakítsa át a tanúsítvány tartalmát az `ToBase64String()` függvény használatával, és mentse a tartalmat egy szövegfájlba: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Jelszó** | `password`| Lásd a leírást | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó. <p><p>**Megjegyzés**: Ez a tulajdonságérték akkor szükséges, ha a Logic app Designerben dolgozik, és *nem* szükséges a kód nézetben való munka során. |
 |||||
 
@@ -701,7 +701,7 @@ Ha a [Active Directory OAuth](../active-directory/develop/about-microsoft-identi
 | **Bérlő** | `tenant` | Igen | <*tenant-ID*> | Az Azure AD-bérlő bérlői azonosítója |
 | **Célközönség** | `audience` | Igen | *erőforrás-engedélyezés* <> | Az engedélyezéshez használni kívánt erőforrás, például `https://management.core.windows.net/` |
 | **Ügyfél-azonosító** | `clientId` | Igen | <*client-ID*> | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |
-| **Hitelesítő adat típusa** | `credentialType` | Igen | Tanúsítvány <br>vagy <br>Titkos | Az ügyfél által a hitelesítés kérelmezéséhez használt hitelesítő adat típusa. Ez a tulajdonság és érték nem jelenik meg a logikai alkalmazás alapjául szolgáló definícióban, de meghatározza a kiválasztott hitelesítőadat-típushoz megjelenő tulajdonságokat. |
+| **Hitelesítő adat típusa** | `credentialType` | Igen | Tanúsítvány <br>vagy <br>Secret | Az ügyfél által a hitelesítés kérelmezéséhez használt hitelesítő adat típusa. Ez a tulajdonság és érték nem jelenik meg a logikai alkalmazás alapjául szolgáló definícióban, de meghatározza a kiválasztott hitelesítőadat-típushoz megjelenő tulajdonságokat. |
 | **Titkos kód** | `secret` | Igen, de csak a "titkos" hitelesítő adatok típusához | <*ügyfél-titkos*> | Az engedélyezést kérő ügyfél titka |
 | **Pfx** | `pfx` | Igen, de csak a "tanúsítvány" hitelesítő adat típusa esetén | <*kódolású-pfx-file-content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
 | **Jelszó** | `password` | Igen, de csak a "tanúsítvány" hitelesítő adat típusa esetén | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó |

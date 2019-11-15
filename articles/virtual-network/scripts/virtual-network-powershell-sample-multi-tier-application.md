@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-példaszkript – Hálózat létrehozása többszintű alkalmazásokhoz | Microsoft Docs
+title: VNet létrehozása többrétegű alkalmazásokhoz – Azure PowerShell szkript minta
 description: Azure PowerShell-példaszkript – Hálózat létrehozása többszintű alkalmazásokhoz.
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725391"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091309"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Hálózat létrehozása többszintű alkalmazásokhoz – példaszkript
 
 Ez a példaszkript előtérbeli és háttérbeli alhálózattal rendelkező virtuális hálózatot hoz létre. Az előtérbeli alhálózat felé irányuló forgalom a HTTP- és az SSH-protokollon, a háttérbeli alhálózat felé irányuló forgalom pedig a MySQL-en, a 3306-os porton keresztül engedélyezett. A szkript futtatása után két virtuális géppel fog rendelkezni, eggyel-eggyel mindegyik olyan alhálózatban, amelyben üzembe helyezhet webkiszolgálót és MySQL-szoftvert.
 
-A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy egy helyi PowerShell-telepítésből futtathatja. Ha helyileg használja a Powershellt, ehhez a szkripthez az Azure PowerShell-modul verzióját 1.0.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy egy helyi PowerShell-telepítésből futtathatja. Ha helyileg használja a PowerShellt, a parancsfájlhoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +35,7 @@ A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy e
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
-Alhálózati azonosító hozzá van rendelve, miután létrehozta a virtuális hálózat; pontosabban, a New-AzVirtualNetwork parancsmaggal a - alhálózati beállítással. Ha az alhálózat, a New-AzVirtualNetworkSubnetConfig parancsmaggal a New-AzVirtualNetwork hívása előtt konfigurálja, az alhálózati azonosító, amíg New-AzVirtualNetwork meghívása után nem jelenik meg.
+A virtuális hálózat létrehozása után a rendszer alhálózati azonosítót rendel hozzá. pontosabban a New-AzVirtualNetwork parancsmagot használja az-subnet kapcsolóval. Ha az alhálózatot a New-AzVirtualNetworkSubnetConfig parancsmaggal konfigurálja a New-AzVirtualNetwork hívása előtt, az alhálózati azonosító addig nem jelenik meg, amíg a New-AzVirtualNetwork meghívása nem történik meg.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
@@ -63,7 +63,7 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépeket hoz létre, és minden virtuális géphez csatol egy NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
 

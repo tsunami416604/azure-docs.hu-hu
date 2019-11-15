@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: df425f723aa6a5e261ed6dcd15abfe87b367ad68
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747975"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091901"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba történő értékelésére és áttelepítésére
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet felkészülni a helyszíni fizikai kiszolg
 
 [Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
 
-Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
@@ -86,11 +86,11 @@ A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket:
     ![Azure AD-engedélyek](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Ez egy alapértelmezett beállítás, amely nem érzékeny. [Részletek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 #### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása 
 
-A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [Részletek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
 ## <a name="prepare-for-physical-server-assessment"></a>Felkészülés a fizikai kiszolgáló értékelésére
@@ -99,29 +99,29 @@ A fizikai kiszolgáló értékelésének előkészítéséhez ellenőriznie kell
 
 ### <a name="verify-physical-server-settings"></a>Fizikai kiszolgáló beállításainak ellenőrzése
 
-1. Ellenőrizze a [fizikai kiszolgálóra vonatkozó követelményeket](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) a kiszolgálók értékeléséhez.
-2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#assessment-port-requirements) meg vannak nyitva a fizikai kiszolgálókon.
+1. Ellenőrizze a [fizikai kiszolgálóra vonatkozó követelményeket](migrate-support-matrix-physical.md#assessment-physical-server-requirements) a kiszolgálók értékeléséhez.
+2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-physical.md#assessment-port-requirements) meg vannak nyitva a fizikai kiszolgálókon.
 
 
 ### <a name="verify-appliance-settings"></a>Berendezés beállításainak ellenőrzése
 
 A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt a következő oktatóanyagban készítse elő a berendezés üzembe helyezését.
 
-1. A berendezésre vonatkozó követelmények [ellenőrzése](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
-2. [Tekintse át](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
+1. A berendezésre vonatkozó követelmények [ellenőrzése](migrate-support-matrix-physical.md#assessment-appliance-requirements) .
+2. [Tekintse át](migrate-support-matrix-physical.md#assessment-appliance-url-access) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
 3. Tekintse át a berendezés által a felderítés és az értékelés során gyűjtött adatokat.
-4. [Jegyezze](migrate-support-matrix-hyper-v.md#assessment-port-requirements) fel a port hozzáférési követelményeit a készülékhez.
+4. [Jegyezze](migrate-support-matrix-physical.md#assessment-port-requirements) fel a port hozzáférési követelményeit a készülékhez.
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Fiók beállítása a fizikai kiszolgáló felderítéséhez
 
 Azure Migrate a helyszíni kiszolgálók felderítéséhez szükséges engedélyekkel.
 
-- **Windows:** Állítson be egy helyi felhasználói fiókot az összes olyan Windows-kiszolgálón, amelyet fel szeretne venni a felderítésbe. A felhasználói fiókot fel kell venni a következő csoportokba:-Távoli asztal felhasználók – Teljesítményfigyelő felhasználók – Teljesítménynapló felhasználói
+- **Windows:** Állítson be egy helyi felhasználói fiókot az összes olyan Windows-kiszolgálón, amelyet fel szeretne venni a felderítésbe. A felhasználói fiókot fel kell venni a következő csoportokba:-távfelügyeleti felhasználók – Teljesítményfigyelő felhasználók – Teljesítménynapló felhasználói
 - **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
  

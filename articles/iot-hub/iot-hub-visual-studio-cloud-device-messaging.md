@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub felhőalapú eszközök üzenetkezelésének kezelése a Cloud Explorer for Visual Studio használatával | Microsoft Docs
+title: Az Azure IoT Hub eszköz üzenetkezelésének kezelése a VS Cloud Explorer használatával
 description: Megtudhatja, hogyan figyelheti a Cloud Explorer for Visual Studio eszközt az eszköz Felhőbeli üzeneteinek figyelésére és Felhőbeli üzenetek küldésére az Azure IoT Hubban.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050267"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079480"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Üzenetek küldése és fogadása az eszköz és a IoT Hub között a Cloud Explorer for Visual Studio használatával
 
@@ -54,7 +54,7 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 A hub eléréséhez kövesse az alábbi lépéseket:
 
-1. A Visual Studióban kattintson a**Cloud** Explorer **megtekintése** > elemre a Cloud Explorer megnyitásához.
+1. A Visual Studióban válassza a **megtekintés** > **Cloud Explorer** lehetőséget a Cloud Explorer megnyitásához.
 
 1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
 
@@ -96,7 +96,7 @@ Ha üzenetet szeretne küldeni a IoT Hub az eszközére, kövesse az alábbi lé
 
     ![C2D-üzenet eredményének küldése](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan figyelheti az eszközről a felhőbe irányuló üzeneteket, és hogyan küldhet a felhőből az eszközre irányuló üzeneteket a IoT-eszköz és az Azure IoT Hub között.
 

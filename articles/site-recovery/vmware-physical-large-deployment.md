@@ -1,18 +1,18 @@
 ---
-title: Állítsa be a vész-helyreállítást az Azure-ba nagy számú VMware virtuális gép vagy fizikai kiszolgáló számára Azure Site Recovery használatával | Microsoft Docs
+title: VMware/fizikai vész-helyreállítás méretezése Azure Site Recovery
 description: Megtudhatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba nagy számú helyszíni VMware virtuális gép vagy fizikai kiszolgáló esetén Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782662"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082222"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>A vész-helyreállítási szolgáltatás beállítása a VMware virtuális gépek/fizikai kiszolgálók esetében
 
@@ -30,12 +30,12 @@ Az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégia r�
 
 A nagy léptékű vész-helyreállítással kapcsolatos általános ajánlott eljárások. Ezeket az ajánlott eljárásokat részletesebben a dokumentum következő részeiben tárgyaljuk.
 
-- A **cél követelményeinek azonosítása**: A vész-helyreállítás beállítása előtt mérje fel az Azure kapacitás-és erőforrás-szükségleteit.
-- **Site Recovery-összetevők**megtervezése: Állapítsa meg, hogy milyen Site Recovery összetevőket (konfigurációs kiszolgáló, folyamat-kiszolgálók) kell teljesítenie a becsült kapacitásnak.
-- **Egy vagy több kibővíthető folyamat kiszolgálójának beállítása**: Ne használja a konfigurációs kiszolgálón alapértelmezés szerint futó folyamat-kiszolgálót. 
-- **A legújabb frissítések futtatása**: A Site Recovery csapat rendszeresen kibocsátja Site Recovery összetevők új verzióit, és gondoskodni kell arról, hogy a legújabb verziókat futtassa. Ezzel a megoldással a frissítések [újdonságait](site-recovery-whats-new.md) követheti nyomon, valamint [engedélyezheti és telepítheti a frissítéseket](service-updates-how-to.md) .
-- **Proaktív figyelés**: A vész-helyreállítás és a működés közben proaktív módon figyelnie kell a replikált gépek állapotát és állapotát, valamint az infrastruktúra-erőforrásokat.
-- Vész- **helyreállítási részletezések**: A vész-helyreállítási gyakorlatokat rendszeresen kell futtatnia. Ezek nem befolyásolják az éles környezetet, de segítenek biztosítani, hogy az Azure-ba történő feladatátvétel szükség esetén is megfelelően működjön.
+- A **megcélzott követelmények meghatározása**: a vész-helyreállítás beállítása előtt mérje fel az Azure kapacitás-és erőforrás-szükségleteit.
+- **Site Recovery-összetevők megtervezése**: állapítsa meg, hogy milyen site Recovery-összetevőket (konfigurációs kiszolgálót, folyamat-kiszolgálókat) kell teljesítenie a becsült kapacitásnak.
+- **Egy vagy több kibővíthető folyamat kiszolgálójának beállítása**: ne használja a konfigurációs kiszolgálón alapértelmezés szerint futó folyamatot. 
+- **A legújabb frissítések futtatása**: az site Recovery-csapat rendszeresen felszabadítja site Recovery összetevők új verzióit, és meg kell győződnie arról, hogy a legújabb verziókat futtatja. Ezzel a megoldással a frissítések [újdonságait](site-recovery-whats-new.md) követheti nyomon, valamint [engedélyezheti és telepítheti a frissítéseket](service-updates-how-to.md) .
+- **Proaktív figyelés**: a vész-helyreállítás és a használat során proaktív módon figyelnie kell a replikált gépek állapotát és állapotát, valamint az infrastruktúra-erőforrásokat.
+- Vész- **helyreállítási részletezések**: a vész-helyreállítási gyakorlatokat rendszeresen futtatni kell. Ezek nem befolyásolják az éles környezetet, de segítenek biztosítani, hogy az Azure-ba történő feladatátvétel szükség esetén is megfelelően működjön.
 
 
 
@@ -57,8 +57,8 @@ A Deployment Planner segítségével információkat gyűjthet a VMware helyszí
 
 Ezután futtassa a Plannert a következő módon:
 
-1. [](site-recovery-deployment-planner.md) A Deployment Planner megismerése. A legújabb verziót letöltheti a portálról, vagy [közvetlenül](https://aka.ms/asr-deployment-planner)is letöltheti.
-2. Tekintse [](site-recovery-deployment-planner.md#prerequisites) át az előfeltételeket és a [legújabb frissítéseket](site-recovery-deployment-planner-history.md) a Deployment Planner, majd [töltse le és bontsa](site-recovery-deployment-planner.md#download-and-extract-the-deployment-planner-tool) ki az eszközt.
+1. A Deployment Planner [megismerése](site-recovery-deployment-planner.md) . A legújabb verziót letöltheti a portálról, vagy [közvetlenül is letöltheti](https://aka.ms/asr-deployment-planner).
+2. Tekintse át az [előfeltételeket](site-recovery-deployment-planner.md#prerequisites) és a [legújabb frissítéseket](site-recovery-deployment-planner-history.md) a Deployment Planner, majd [töltse le és bontsa](site-recovery-deployment-planner.md#download-and-extract-the-deployment-planner-tool) ki az eszközt.
 3. [Futtassa a Deployment Planner](site-recovery-vmware-deployment-planner-run.md) a konfigurációs kiszolgálón.
 4. [Jelentés létrehozása](site-recovery-vmware-deployment-planner-run.md#generate-report) a becslések és javaslatok összefoglalásához.
 5. Elemezze a [jelentés javaslatait](site-recovery-vmware-deployment-planner-analyze-report.md) és a [költségbecslést](site-recovery-vmware-deployment-planner-cost-estimation.md).
@@ -68,14 +68,14 @@ Ezután futtassa a Plannert a következő módon:
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>A cél (Azure) követelményeinek és kapacitásának megtervezése
 
-Az összegyűjtött becslések és javaslatok használatával megtervezheti a cél erőforrásait és kapacitását. Ha a VMware virtuális gépekhez Deployment Planner futtatott, a jelentéssel kapcsolatos [javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) közül számos segítséget használhat.
+Az összegyűjtött becslések és javaslatok használatával megtervezheti a cél erőforrásait és kapacitását. Ha a VMware virtuális gépekhez Deployment Planner futtatott, a [jelentéssel kapcsolatos javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) közül számos segítséget használhat.
 
-- **Kompatibilis virtuális gépek**: Ezzel a számmal azonosíthatja azon virtuális gépek számát, amelyek készen állnak az Azure-ba való vész-helyreállításra. A hálózati sávszélességgel és az Azure-magokkal kapcsolatos javaslatok ezen a számon alapulnak.
-- **Szükséges hálózati sávszélesség**: Figyelje meg a kompatibilis virtuális gépek különbözeti replikálásához szükséges sávszélességet. 
+- **Kompatibilis virtuális gépek**: ezt a számot használhatja azon virtuális gépek számának azonosítására, amelyek készen állnak az Azure-ba való vész-helyreállításra. A hálózati sávszélességgel és az Azure-magokkal kapcsolatos javaslatok ezen a számon alapulnak.
+- **Szükséges hálózati sávszélesség**: figyelje meg a kompatibilis virtuális gépek különbözeti replikálásához szükséges sávszélességet. 
     - A Planner futtatásakor percek alatt megadhatja a kívánt RPO. A javaslatok a RPO 100%-os és az idő 90%-ának megfelelő sávszélességet mutatják be. 
     - A hálózati sávszélességgel kapcsolatos javaslatok figyelembe veszik a Plannerben ajánlott konfigurációs kiszolgálók és feldolgozható kiszolgálók teljes számához szükséges sávszélességet.
-- **Szükséges Azure-magok**: Figyelje meg, hogy hány magot kell megadnia a cél Azure-régióban a kompatibilis virtuális gépek száma alapján. Ha nem rendelkezik elegendő maggal, a feladatátvétel Site Recovery nem fogja tudni létrehozni a szükséges Azure-beli virtuális gépeket.
-- **Ajánlott virtuálisgép-köteg mérete**: Az ajánlott batch-méret azon alapul, hogy a köteg kezdeti replikációját 72 órán belül, alapértelmezés szerint a 100%-os RPO kell befejezni. Az óra értéke módosítható.
+- **Szükséges Azure-magok**: figyelje meg, hogy a cél Azure-régióban milyen magok szükségesek a kompatibilis virtuális gépek száma alapján. Ha nem rendelkezik elegendő maggal, a feladatátvétel Site Recovery nem fogja tudni létrehozni a szükséges Azure-beli virtuális gépeket.
+- **Ajánlott virtuálisgép-köteg mérete**: az ajánlott batch-méret a Batch kezdeti replikációjának a 72 órán belüli befejezésére szolgál, a RPO pedig 100%. Az óra értéke módosítható.
 
 Ezekkel a javaslatokkal megtervezheti az Azure-erőforrásokat, a hálózati sávszélességet és a virtuális gépek kötegelt feldolgozását.
 
@@ -85,7 +85,7 @@ Azt szeretnénk, hogy a cél előfizetésben rendelkezésre álló kvóták eleg
 
 **Tevékenység** | **Részletek** | **Művelet**
 --- | --- | ---
-**Magok keresése** | Ha a rendelkezésre álló kvóta magjai nem egyeznek meg a feladatátvétel időpontjában, vagy nem lépik túl a cél teljes számát, a feladatátvétel sikertelen lesz. | VMware virtuális gépek esetén győződjön meg arról, hogy elegendő mag található a cél előfizetésben az Deployment Planner Core javaslat teljesítéséhez.<br/><br/> Fizikai kiszolgálók esetén győződjön meg arról, hogy az Azure magok megfelelnek a manuális becsléseknek.<br/><br/> A kvóták ellenőrzését a Azure Portal > előfizetésben kattintson a **használat + kvóták**elemre.<br/><br/> [További](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) információ a kvóták növeléséről.
+**Magok keresése** | Ha a rendelkezésre álló kvóta magjai nem egyeznek meg a feladatátvétel időpontjában, vagy nem lépik túl a cél teljes számát, a feladatátvétel sikertelen lesz. | VMware virtuális gépek esetén győződjön meg arról, hogy elegendő mag található a cél előfizetésben az Deployment Planner Core javaslat teljesítéséhez.<br/><br/> Fizikai kiszolgálók esetén győződjön meg arról, hogy az Azure magok megfelelnek a manuális becsléseknek.<br/><br/> A kvóták ellenőrzését a Azure Portal > **előfizetésben**kattintson a **használat + kvóták**elemre.<br/><br/> [További](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) információ a kvóták növeléséről.
 **Feladatátvételi korlátok keresése** | A feladatátvételek száma nem haladhatja meg az Site Recovery feladatátvételi korlátot. |  Ha a feladatátvétel túllépi a korlátozásokat, előfizetéseket adhat hozzá, és több előfizetésre is felveheti a feladatokat, vagy növelheti az előfizetések kvótáját. 
 
 
@@ -95,7 +95,7 @@ A határértékek egy órán belül Site Recovery által támogatott feladatátv
 
 Mit jelent a megfelelés? Azure-beli virtuális gép indításához az Azure-nak egyes illesztőprogramoknak rendszerindítási indítási állapotban kell lennie, és az olyan szolgáltatásokat, mint a DHCP, az automatikus indítást kell beállítani.
 - Azok a gépek, amelyek megfelelnek a követelményeknek, már rendelkeznek ezekkel a beállításokkal.
-- A Windows rendszert futtató gépek esetében proaktív módon ellenőrizhető a megfelelőség, és szükség esetén megfelelővé teheti azokat. [További információk](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
+- A Windows rendszert futtató gépek esetében proaktív módon ellenőrizhető a megfelelőség, és szükség esetén megfelelővé teheti azokat. [További információ](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
 - A Linux rendszerű gépeket csak a feladatátvétel időpontjában kell megfelelni.
 
 **A gép megfelel az Azure-nak?** | **Azure-beli virtuális gépek korlátai (felügyelt lemez feladatátvétele)**
@@ -155,14 +155,14 @@ A feldolgozási kiszolgáló kapacitását az adatváltozások aránya befolyás
 
 **CPU** | **Memória** | **Lemez gyorsítótára** | **Adatforgalom aránya**
  --- | --- | --- | --- 
-12 vCPU<br> 2 szoftvercsatorna * 6 mag @ 2,5 GHz | 24 GB | 1 GB | Akár 2 TB naponta
+12 vCPU<br> 2 szoftvercsatorna * 6 mag @ 2,5 GHz | 24 GB | 1 GB | Akár 2 TB naponta
 
 Állítsa be a Process Servert a következőképpen:
 
-1. Tekintse [](vmware-azure-set-up-process-server-scale.md#prerequisites)át az előfeltételeket.
-2. Telepítse a kiszolgálót a [portálon](vmware-azure-set-up-process-server-scale.md#install-from-the-ui)vagy a parancssorból [](vmware-azure-set-up-process-server-scale.md#install-from-the-command-line).
+1. Tekintse át az [előfeltételeket](vmware-azure-set-up-process-server-scale.md#prerequisites).
+2. Telepítse a kiszolgálót a [portálon](vmware-azure-set-up-process-server-scale.md#install-from-the-ui)vagy a [parancssorból](vmware-azure-set-up-process-server-scale.md#install-from-the-command-line).
 3. Konfigurálja a replikált gépeket az új kiszolgáló használatára. Ha már rendelkezik replikálást végző gépekkel:
-    - A folyamat [](vmware-azure-manage-process-server.md#switch-an-entire-workload-to-another-process-server) -kiszolgáló teljes számítási feladatait áthelyezheti az új Process Serverre.
+    - A folyamat-kiszolgáló teljes számítási feladatait [áthelyezheti](vmware-azure-manage-process-server.md#switch-an-entire-workload-to-another-process-server) az új Process Serverre.
     - Azt is megteheti, hogy adott virtuális gépeket [helyez át](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load) az új Process Serverre.
 
 
@@ -176,7 +176,7 @@ A kapacitás megtervezése és a szükséges összetevők és infrastruktúra ü
     - VMware virtuális gépek esetén a Deployment Planner jelentésben a virtuálisgép- [köteg ajánlott mérete](site-recovery-vmware-deployment-planner-analyze-report.md#recommended-vm-batch-size-for-initial-replication) használható.
     - A fizikai gépek esetében javasoljuk, hogy azonosítsa a kötegeket a hasonló méretű és adatmennyiségű, valamint az elérhető hálózati átviteli sebességű gépek alapján. A cél az, hogy a Batch-gépek képesek legyenek a kezdeti replikálásuk befejezésére az adott idő körül.
     
-2. Ha a gép lemezének megváltozása magas, vagy meghaladja az üzembe helyezési thePlanner korlátait, áthelyezheti a nem kritikus fontosságú fájlokat, amelyeket nem kell replikálni (például naplózási memóriaképek vagy ideiglenes fájlok) a gépről. A VMware virtuális gépek esetében áthelyezheti ezeket a fájlokat egy különálló lemezre, majd kihagyhatja a [lemezt](vmware-azure-exclude-disk.md) a replikációból.
+2. Ha a gép lemezének megváltozása magas, vagy meghaladja az üzembe helyezési thePlanner korlátait, áthelyezheti a nem kritikus fontosságú fájlokat, amelyeket nem kell replikálni (például naplózási memóriaképek vagy ideiglenes fájlok) a gépről. A VMware virtuális gépek esetében áthelyezheti ezeket a fájlokat egy különálló lemezre, majd [kihagyhatja a lemezt](vmware-azure-exclude-disk.md) a replikációból.
 3. A replikáció engedélyezése előtt győződjön meg arról, hogy a gépek teljesítik a [replikálási követelményeket](vmware-physical-azure-support-matrix.md#replicated-machines).
 4. Konfiguráljon egy replikációs házirendet a [VMWare virtuális gépek](vmware-azure-set-up-replication.md#create-a-policy) vagy a [fizikai kiszolgálók](physical-azure-disaster-recovery.md#create-a-replication-policy)számára.
 5. Engedélyezze a replikációt [VMWare virtuális gépek](vmware-azure-enable-replication.md) vagy [fizikai kiszolgálók](physical-azure-disaster-recovery.md#enable-replication)számára. Ez elindítja a kiválasztott gépek kezdeti replikálását.
@@ -186,8 +186,8 @@ A kapacitás megtervezése és a szükséges összetevők és infrastruktúra ü
 Miután elindította a virtuális gépek első kötegének replikációját, a következőképpen indíthatja el a központi telepítés figyelését:  
 
 1. Rendeljen hozzá egy vész-helyreállítási rendszergazdát a replikált gépek állapotának figyeléséhez.
-2. [](site-recovery-monitor-and-troubleshoot.md) A replikált elemek és az infrastruktúra eseményeinek figyelése.
-3. [](vmware-physical-azure-monitor-process-server.md) A kibővíthető folyamat-kiszolgálók állapotának figyelése.
+2. A replikált elemek és az infrastruktúra [eseményeinek figyelése](site-recovery-monitor-and-troubleshoot.md) .
+3. A kibővíthető folyamat-kiszolgálók [állapotának figyelése](vmware-physical-azure-monitor-process-server.md) .
 4. Regisztráljon az eseményekre vonatkozó [e-mail-értesítések](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) beszerzéséhez a könnyebb monitorozás érdekében.
 5. Végezzen rendszeres vész- [helyreállítási gyakorlatokat](site-recovery-test-failover-to-azure.md), és győződjön meg róla, hogy minden a vártnak megfelelően működik-e.
 
@@ -199,7 +199,7 @@ Vészhelyzet esetén előfordulhat, hogy nagy számú gépet/munkaterhelést kel
 A feladatátvételt előre is előkészítheti a következőképpen:
 
 - [Készítse elő az infrastruktúrát és a virtuális gépeket](#plan-infrastructure-and-vm-connectivity) , hogy a számítási feladatok elérhetők legyenek a feladatátvétel után, és hogy a felhasználók hozzáférhessenek az Azure-beli virtuális gépekhez.
-- Jegyezze fel [](#failover-limits) a jelen dokumentum korábbi, feladatátvételi korlátait. Győződjön meg arról, hogy a feladatátvételek a fenti korlátok között esnek.
+- Jegyezze fel a jelen dokumentum korábbi, [feladatátvételi korlátait](#failover-limits) . Győződjön meg arról, hogy a feladatátvételek a fenti korlátok között esnek.
 - Futtasson rendszeres vész- [helyreállítási gyakorlatokat](site-recovery-test-failover-to-azure.md). A részletezés a következő műveletekhez nyújt segítséget:
     - A feladatátvétel előtt megkeresheti az üzemelő példányok hiányosságait.
     - Az alkalmazások végpontok közötti RTO becslése.
@@ -212,13 +212,13 @@ Nagyméretű feladatátvétel futtatásához a következőket javasoljuk:
 1. Helyreállítási tervek létrehozása a számítási feladatok feladatátvételéhez.
     - Minden helyreállítási terv akár 50 gép feladatátvételét is elindíthatja.
     - [További](recovery-plan-overview.md) információ a helyreállítási tervekről.
-2. Vegyen fel Azure Automation runbook-szkripteket helyreállítási tervekhez, és automatizálja az Azure-beli manuális feladatokat. A tipikus feladatok közé tartozik a terheléselosztó konfigurálása, a DNS frissítése stb. [További információ](site-recovery-runbook-automation.md)
+2. Vegyen fel Azure Automation runbook-szkripteket helyreállítási tervekhez, és automatizálja az Azure-beli manuális feladatokat. A tipikus feladatok közé tartozik a terheléselosztó konfigurálása, a DNS frissítése stb. [Részletek](site-recovery-runbook-automation.md)
 2. A feladatátvétel előtt készítse elő a Windows rendszerű gépeket, hogy azok megfeleljenek az Azure-környezetnek. A [feladatátvételi korlátok](#plan-azure-subscriptions-and-quotas) magasabbak azoknál a gépeknél, amelyek megfelelnek a követelményeknek. [További](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) információ a runbookok.
 4.  Indítsa el a feladatátvételt a [Start-AzRecoveryServicesAsrPlannedFailoverJob PowerShell-](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) parancsmaggal és egy helyreállítási tervvel együtt.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Figyelő Site Recovery](site-recovery-monitor-and-troubleshoot.md)

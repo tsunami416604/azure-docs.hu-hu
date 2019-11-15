@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 42a97646a6881ead61ceeaff3fe8c0c8d73d6057
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a1d2fa083c0083423767484b20e296a3080e4ebe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929412"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092118"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: iOS-alkalmazás létrehozása Azure térbeli Horgonyokkal Swift vagy Objective-C nyelven
 
@@ -32,7 +32,7 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- A <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10 +</a> -t és <a href="https://cocoapods.org" target="_blank">CocoaPods</a> -t futtató, támogatott MacOS-es gép.
+- A <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> és a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> legújabb verziójával rendelkező, a fejlesztőknek készült MacOS-es gép.
 - A git telepítése a HomeBrew használatával történik. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
 - A fejlesztők által engedélyezett <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> IOS-eszköz.
 
@@ -122,7 +122,7 @@ Válassza **a létrehozás lehetőséget, majd futtassa az aktuális sémát**.
 
 A Xcode-ben állítsa le az alkalmazást a **Leállítás**gomb megnyomásával.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods kapcsolatos problémák macOS Catalinaen (10,15)
 

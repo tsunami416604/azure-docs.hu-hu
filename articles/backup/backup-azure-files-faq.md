@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747454"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091606"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -85,7 +85,7 @@ Az előzetes verzióban táranként legfeljebb 50 tárfiók Azure-fájlmegosztá
 
 Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal a tárolóval biztosítható védelem.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hány ütemezett biztonsági mentést állíthatok be fájlmegosztás esetén?
 
@@ -119,7 +119,7 @@ Igen. A részletes dokumentációt [itt](backup-azure-afs-automation.md) tekinth
 
 Az Azure Backup által készített minden pillanatkép elérhető a portál Pillanatképek megtekintése részén, illetve a PowerShell vagy a parancssori felület segítségével. Az Azure Files megosztási pillanatképeiről információkért lásd: [Az Azure Files megosztási pillanatképeinek áttekintése (előzetes verzió)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Mi a biztonsági mentésekhez konfigurálható megőrzés maximális száma?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Mi a biztonsági mentésekhez konfigurálható maximális adatmegőrzés?
 
 Az Azure-fájlmegosztás biztonsági mentése lehetővé teszi, hogy a szabályzatokat 180 napig megtartva konfigurálja. A [PowerShell "igény szerinti biztonsági mentés" lehetőségének](backup-azure-afs-automation.md#trigger-an-on-demand-backup)használatával azonban akár 10 évig is megtarthatja a helyreállítási pontot.
 
@@ -127,9 +127,9 @@ Az Azure-fájlmegosztás biztonsági mentése lehetővé teszi, hogy a szabályz
 
 Amikor új házirendet alkalmaznak a fájlmegosztáso(ko)n, az új szabályzat ütemezése és megőrzése érvényes. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>Következő lépések
 
-Ezek az információk kizárólag az Azure Files biztonsági mentésére vonatkoznak, az Azure Backup más területeinek megismeréséhez tekintse át az alábbi Backup GYIK-fejezeteket:
+Ha többet szeretne megtudni a Azure Backup egyéb területeiről, tekintse meg a következő biztonsági mentési gyakori kérdéseket:
 
 - [Helyreállítási tár – GYIK](backup-azure-backup-faq.md)
 - [Azure-beli virtuális gép biztonsági mentése – GYIK](backup-azure-vm-backup-faq.md)
