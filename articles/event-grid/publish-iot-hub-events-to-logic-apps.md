@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps-műveletek aktiválása IoT Hub-eseményekkel | Microsoft Docs
-description: Az Azure Event Grid esemény-útválasztó szolgáltatásával automatikus folyamatokat hozhat létre, amelyek IoT Hub-események alapján hajtanak végre Azure Logic Apps-műveleteket.
+title: 'Oktatóanyag: IoT Hub-események használata az aktiváláshoz Azure Logic Apps'
+description: 'Oktatóanyag: a Azure Event Grid esemény-útválasztási szolgáltatásának használatával automatizált folyamatokat hozhat létre, amelyek IoT Hub események alapján Azure Logic Apps műveleteket hajtanak végre.'
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -10,16 +10,16 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e003cb650b0589ab43c984850838c56cbbf1ff2f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823771"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106778"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Oktatóanyag: Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése a Logic Apps használatával
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Oktatóanyag: Küldése e-mailes értesítést az Azure IoT Hub-események Logic Apps használatával
 
 Az Azure Event Griddel reagálhat az IoT Hub eseményeire a folyamatok későbbi szakaszában használt üzleti alkalmazásokban kiváltott műveletekkel.
 
@@ -37,16 +37,16 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 
 ### <a name="create-a-logic-app-resource"></a>Logikai alkalmazás erőforrás létrehozása
 
-1. Az a [az Azure portal](https://portal.azure.com)válassza **erőforrás létrehozása** > **integrációs** > **logikai alkalmazás**.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Integráció** > **Logikai alkalmazás** lehetőséget.
 
    ![Logikai alkalmazás létrehozása](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
 2. Adjon az előfizetésben egyedi nevet a logikai alkalmazásnak, majd válassza ki ugyanazt az előfizetést, erőforráscsoportot és helyet, ahová az IoT-központ tartozik. 
 3. Kattintson a **Létrehozás** gombra.
 
-4. Az erőforrás létrehozása után keresse meg a logikai alkalmazást. 
+4. Az erőforrás létrehozása után navigáljon a logikai alkalmazáshoz. 
 
-5. A Logic Apps Designerben megjelennek, gyakran használt minták sablonjait, hogy megkönnyítse az első lépéseket. A Logic App Designerben a **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet, így az alapoktól építheti fel logikai alkalmazását.
+5. A Logic Apps Designer az általános minták sablonjait jeleníti meg, így gyorsabban elsajátíthatja az első lépéseket. A Logic App Designerben a **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet, így az alapoktól építheti fel logikai alkalmazását.
 
 ### <a name="select-a-trigger"></a>Trigger kiválasztása
 
@@ -128,8 +128,8 @@ A műveletek azok a lépések, azután mennek végbe, hogy a trigger elindítja 
 5. Ha a rendszer kéri, jelentkezzen be az e-mail-fiókjába. 
 
 6. Hozza létre az e-mail-sablont. 
-   * **A**: Adja meg az értesítési e-maileket kap e-mail-címe. Ehhez az oktatóanyaghoz használjon egy olyan e-mail-fiókot, amelyet a tesztelés során el tud majd érni. 
-   * **Tulajdonos** és **törzs**: Írja be a szöveget az e-mailek. A választóeszközben a megfelelő JSON-tulajdonságok kiválasztásával az eseményadatokon alapuló dinamikus tartalmakat szúrhat be.  
+   * **Címzett**: Adja meg az e-mail-címet, amely az értesítő e-maileket fogadja. Ehhez az oktatóanyaghoz használjon egy olyan e-mail-fiókot, amelyet a tesztelés során el tud majd érni. 
+   * **Tárgy** és **törzs**: Írja be az e-mail szövegét. A választóeszközben a megfelelő JSON-tulajdonságok kiválasztásával az eseményadatokon alapuló dinamikus tartalmakat szúrhat be.  
 
    Az e-mail-sablon a következő példához hasonló lehet:
 
@@ -162,23 +162,23 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
    ![Új esemény-előfizetés létrehozása](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
-   * **Esemény típusa**: Törölje a jelet az előfizetés az összes eseménytípusra, és válassza ki **létre az eszköz** a menüből.
-   * **Végpont részletei**: Válassza ki a végpont típusa szerint **Webhook** és kattintson a válassza végpont, és illessze be az URL-cím a logikai alkalmazás kimásolt és kijelölés megerősítéséhez.
+   * **Esemény típusa**: Törölje az Előfizetés az összes eseménytípusra jelölőnégyzet jelölését, majd válassza ki a menüből az **Eszköz által létrehozott** elemet.
+   * **Végpont részletei**: A Végpont típusánál válassza a **Webhook** elemet, kattintson a végpont kiválasztása elemre, majd illessze be a logikai alkalmazásból kimásolt URL-címet, és hagyja jóvá a kiválasztást.
 
      ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-   * **Esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid-séma**
+   * **Esemény-előfizetés részletei**: Adjon meg egy leíró nevet, majd válassza ki az **Event Grid-séma** elemet
 
    Amikor elkészült, az űrlapnak az alábbi példához hasonlóan kell kinéznie: 
 
     ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. Ha most mentené az esemény-előfizetést, akkor az IoT-központban létrehozott minden eszközről értesítést kapna. A jelen oktatóanyag esetében, pedig a kötelező mezők szűréséhez használja az egyes eszközöktől. Válassza ki **további funkciók** a képernyő tetején. 
+5. Ha most mentené az esemény-előfizetést, akkor az IoT-központban létrehozott minden eszközről értesítést kapna. Ebben az oktatóanyagban azonban a választható mezők használatával szűrheti az adott eszközöket. Válassza ki az űrlap tetején található **további szolgáltatásokat** . 
 
 6. Hozza létre a következő szűrőket:
 
-   * **Tulajdonos kezdődik**: Adja meg `devices/Building1_` . épület 1 eszköz események szűréséhez.
-   * **Tulajdonos végződik**: Adja meg `_Temperature` hőmérséklet kapcsolódó eszköz-események szűréséhez.
+   * **Tárgy kezdete**: A `devices/Building1_` megadásával az 1. épület eszközeseményeire szűrhet.
+   * **Tárgy vége**: A `_Temperature` megadásával a hőmérséklettel kapcsolatos eseményekre szűrhet.
 
 5. Kattintson a **Létrehozás** gombra az esemény-előfizetés mentéséhez.
 
@@ -222,7 +222,7 @@ Az esemény-előfizetést akkor is érdemes lehet törölnie, ha megtartja az Io
 2. Válassza ki a törölni kívánt esemény-előfizetést. 
 3. Válassza a **Törlés** elemet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [az IoT Hub-eseményekre való válaszadást az Event Griddel kiváltott műveletek használatával](../iot-hub/iot-hub-event-grid.md).
 * [Ismerje meg, hogyan rendezheti az eszközhöz csatlakoztatott és nem csatlakoztatott eseményeket](../iot-hub/iot-hub-how-to-order-connection-state-events.md)

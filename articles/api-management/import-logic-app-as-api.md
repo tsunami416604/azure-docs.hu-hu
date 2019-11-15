@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 57965b0326171f37d33aeae02080c8887c3acf23
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072079"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108390"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Logikai alkalmazás importálása API-ként
 
@@ -33,8 +33,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--   Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
--   Ellenőrizze, hogy van-e olyan logikai alkalmazás az előfizetésben, amely egy HTTP-végpontot tesz elérhetővé. További információ: munkafolyamatok [indítása http](../logic-apps/logic-apps-http-endpoint.md) -végpontokkal
+-   Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+-   Ellenőrizze, hogy van-e olyan logikai alkalmazás az előfizetésben, amely egy HTTP-végpontot tesz elérhetővé. További információ: [munkafolyamatok indítása http-végpontokkal](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -59,7 +59,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 7. Kattintson a **Létrehozás** gombra.
 
-## <a name="test-the-imported-api-in-the-azure-portal"></a>Az importált API tesztelése a Azure Portal
+## <a name="test-the-api-in-the-azure-portal"></a>Az API tesztelése az Azure Portalon
 
 A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.
 
@@ -73,22 +73,6 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
     A háttér a **200 OK** üzenetet és néhány adatot küld válaszként.
 
-## <a name="call-operation"></a>Művelet meghívása a fejlesztői portálról
-
-A **fejlesztői portálról** is meghívhat műveleteket az API-k teszteléséhez.
-
-1. Válassza ki a „Háttérrendszeri API importálása és közzététele” című lépésben létrehozott API-t.
-2. Nyomja meg a **Fejlesztői portál** gombot.
-
-    Megnyílik a Fejlesztői portál webhely.
-
-3. Jelölje ki a létrehozott **API**-t.
-4. Kattintson a tesztelni kívánt műveletre.
-5. Kattintson a **Kipróbálás** gombra.
-6. Kattintson a **Küldés** gombra.
-
-    A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz állapota**, a **Válasz fejlécei** és a **Válasz tartalma** minden információját.
-
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 >[!NOTE]
@@ -96,7 +80,7 @@ A **fejlesztői portálról** is meghívhat műveleteket az API-k teszteléséhe
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >

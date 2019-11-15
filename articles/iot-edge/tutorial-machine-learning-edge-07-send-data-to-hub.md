@@ -1,19 +1,19 @@
 ---
-title: Az eszközre vonatkozó adatküldés transzparens átjárón keresztül – Machine Learning on Azure IoT Edge | Microsoft Docs
-description: A fejlesztői gépet szimulált IoT Edge eszközként használva küldheti el az adatait a IoT Hub számára egy transzparens átjáróként konfigurált eszközön keresztül.
+title: 'Oktatóanyag: az eszközbeállítások transzparens átjárón keresztüli küldése – Machine Learning on Azure IoT Edge'
+description: 'Oktatóanyag: a fejlesztői gépet szimulált IoT Edge eszközként használva küldheti el az adatait a IoT Hub számára egy transzparens átjáróként konfigurált eszközön keresztül.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1a1974a9d9e635bad4094e38c2c194ff49993611
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163114"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113948"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
 
@@ -107,7 +107,7 @@ A avroFileWriter modul kimenete könnyen megfigyelhető a IoT Edge eszköz megke
 
 5. A 10 perc eltelte után a modulnak fel kell töltenie a fájlokat. Ha a feltöltés sikeres, törli a fájlokat a lemezről.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage tárterület
 
 Megfigyelheti a levélben tárolt adatok eredményét a Storage-fiókok megtekintésével, ahol az adatok továbbítása várható.
 

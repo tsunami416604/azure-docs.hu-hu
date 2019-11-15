@@ -1,19 +1,19 @@
 ---
 title: C#oktatóanyag az eredmények megrendeléséről
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag az "keresési eredmények tördelése – Azure Cognitive Search" projektre épít a keresési eredmények rendezésének hozzáadásához. Megtudhatja, hogyan rendezheti az eredményeket egy elsődleges tulajdonságra, valamint az azonos elsődleges tulajdonsággal rendelkező eredmények esetében, hogyan rendelhet hozzá eredményeket egy másodlagos tulajdonsághoz. Végezetül megtudhatja, hogyan rendezheti az eredményeket egy pontozási profil alapján.
+description: Ez az oktatóanyag bemutatja, hogyan rendezheti a keresési eredményeket. A szolgáltatás egy korábbi, az elsődleges tulajdonság és a másodlagos tulajdonság szerinti rendezést, valamint egy pontozási profilt tartalmaz, amely növeli a feltételt.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794055"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112684"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Oktatóanyag: az eredmények rendezése – Azure Cognitive Search
 
@@ -21,7 +21,7 @@ Egészen addig, amíg ez a pont nem szerepel az oktatóanyagokban, a rendszer vi
 
 Ha a visszaadott eredményeket egyszerűen össze szeretné hasonlítani, a projekt az [ C# oktatóanyag: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyagban létrehozott végtelen görgetési projektre épül.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Eredmények megrendelése egy tulajdonság alapján
 > * Eredmények megrendelése több tulajdonság alapján
@@ -114,7 +114,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
     ```
 
     >[!Tip]
-    >A böngészők általában a CSS-fájlokat gyorsítótárazzák, és ez egy régi CSS-fájl használatát eredményezi, és a módosítások figyelmen kívül lesznek hagyva. Ez egy jó módja annak, hogy egy lekérdezési karakterláncot adjon hozzá egy Version paraméterrel a hivatkozáshoz. Példa:
+    >A böngészők általában a CSS-fájlokat gyorsítótárazzák, és ez egy régi CSS-fájl használatát eredményezi, és a módosítások figyelmen kívül lesznek hagyva. Ez egy jó módja annak, hogy egy lekérdezési karakterláncot adjon hozzá egy Version paraméterrel a hivatkozáshoz. Például:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -956,7 +956,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 4. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>Segédanyagok és eszközök
+### <a name="resources"></a>Erőforrások
 
 További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)című témakörben talál.
 

@@ -1,19 +1,19 @@
 ---
-title: Az operátori nézetek testreszabása az Azure IoT Centralban | Microsoft Docs
-description: Szerkesztőként testreszabhatja az operátori nézeteket az Azure IoT Central-alkalmazásban.
+title: 'Oktatóanyag: az operátor nézeteinek testreszabása az Azure-ban IoT Central'
+description: 'Oktatóanyag: szerkesztőként testreszabhatja az operátor nézeteit az Azure IoT Central alkalmazásban.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 07/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 60e76a1a1d48aaafa8b9aa6b581e8634b1e47836
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d835ce5a1cbdcbd9741c775c4e9bd2eea7c803d7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956956"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112344"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátori nézeteinek testreszabása
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan szabhatja testre az a
 
 Ebben az oktatóanyagban úgy szabja testre az alkalmazást, hogy a csatlakoztatott légkondicionáló eszközre vonatkozó információkat megjelenítse egy operátornak. A testreszabások lehetővé teszik, hogy az operátor kezelhesse az alkalmazáshoz csatlakoztatott légkondicionáló eszközöket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az eszköz irányítópultjának konfigurálása
@@ -56,9 +56,9 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     A KPI meghatározásához használja a következő táblázatban szereplő információkat:
 
-    | Beállítás     | Value (Díj) |
+    | Beállítás     | Érték |
     | ----------- | ----- |
-    | Név        | Maximális hőmérséklet |
+    | Name (Név)        | Maximális hőmérséklet |
     | Időtartomány  | Előző 1 hét |
     | Mérték típusa | Telemetria |
     | Mérés | hőmérséklet |

@@ -1,109 +1,109 @@
 ---
-title: Machine Learning az Azure IoT Edge részletes bemutatója |} A Microsoft Docs
-description: Magas szintű oktatóanyag, amely végigvezeti a különböző feladatok egy teljes körű, gépi tanulási, a peremhálózati forgatókönyv létrehozásához szükséges.
+title: 'Oktatóanyag: a Azure IoT Edge Machine Learning részletes bemutatója'
+description: Magas szintű oktatóanyag, amely végigvezeti a teljes körű, gépi tanuláshoz szükséges különféle feladatokkal az Edge-forgatókönyvben.
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 916e48752431be41ff150c2ac84e66eb1e98e81f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057749"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106503"
 ---
-# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Oktatóanyag: Egy teljes körű megoldás az Azure Machine Learning és az IoT Edge használatával
+# <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Oktatóanyag: teljes körű megoldás Azure Machine Learning és IoT Edge használatával
 
-Gyakran IoT-alkalmazásokat szeretne az intelligens felhőben és az intelligens peremhálózat előnyeit. Ez az oktatóanyag részletesen egy gépi tanulási modellt az adatok a felhőben, IoT-eszközökről gyűjtött képzési helyezi üzembe a modellt, IoT Edge segítségével, és karbantartásával és a modell rendszeres időközönként finomítása.
+A IoT-alkalmazások gyakran szeretnék kihasználni az intelligens felhő és az intelligens peremhálózat előnyeit. Ebben az oktatóanyagban bemutatjuk a gépi tanulási modellek betanítását a felhőben lévő IoT-eszközökről gyűjtött adatokkal, a modell üzembe helyezésével IoT Edge, valamint a modell karbantartásával és finomításával rendszeresen.
 
-Ebben az oktatóanyagban elsődleges célja, a machine learning, az Edge-ben a kifejezetten az IoT-adatok feldolgozása bevezetni. Machine learning-munkafolyamat általános számos szempontból touch azt, miközben ebben az oktatóanyagban nem készült részletes bemutatása, Machine learning. Olyan esetben, hogy ne kísérelje meg a használati esetekhez magas szinten optimalizált modell létrehozása – csak végzünk elegendő ábrázolni a folyamatot, létrehozásának és a egy működőképes modell segítségével az IoT-adatok feldolgozása.
+Az oktatóanyag elsődleges célja, hogy bevezesse a IoT-adatfeldolgozást a gépi tanulással, különösen a szélén. Habár az általános gépi tanulási munkafolyamatok számos aspektusát érintik, ez az oktatóanyag nem a gépi tanulás részletes bevezetését célozza. Ebben az esetben a használati esethez nem próbálunk meg kiválóan optimalizált modellt létrehozni – csak annyit teszünk, hogy egy életképes modell létrehozására és használatára vonatkozó folyamatot IoT az adatfeldolgozáshoz.
 
 ## <a name="target-audience-and-roles"></a>Célközönség és szerepkörök
 
-Ezen IoT-fejlesztés vagy a machine learning a korábbi tapasztalatok nélkül a fejlesztők számára készült. Üzembe helyezése a machine learning a peremhálózaton technológiák számos kapcsolódás ismeretek szükségesek. Ezért ez az oktatóanyag bemutatja egy teljes, végpontok közötti forgatókönyv bemutatásához az egyik módszer, ezek a technológiák együttesen az IoT-megoldás csatlakoztatása. Valós környezetben ezeket a feladatokat előfordulhat, hogy a különböző szakterületek több felhasználó között elosztva. Például a fejlesztők lenne koncentrálhat, eszköz vagy a felhőbeli kódja, miközben kínál adatelemző szakembereknek megtervezni a szövegelemzési modelleket. Ahhoz, hogy ez az oktatóanyag sikeres elvégzéséhez egy egyéni fejlesztői, az insights kiegészítő útmutató biztosítunk, és Reméljük, hogy további információkra mutató hivatkozásokat is elegendő tudni, mi történik, valamint hogy miért.
+Ez a cikksorozat olyan fejlesztők számára készült, akik korábbi felhasználói élmény nélkül IoT a fejlesztést vagy a gépi tanulást. A gépi tanulás élvonalbeli üzembe helyezéséhez ismernie kell a technológiák széles körének összekapcsolását. Ebből az oktatóanyagból megtudhatja, hogy a teljes végpontok közötti forgatókönyvvel miként lehet a technológiák összekapcsolásának egyik módját egy IoT-megoldáshoz csatlakoztatni. A valós környezetekben ezek a feladatok különböző specializációkkal rendelkező személyek között terjeszthetők. A fejlesztők például az eszközre vagy a felhőre összpontosítanak, az adatszakértők pedig az elemzési modelleket tervezték. Ahhoz, hogy egy egyéni fejlesztő sikeresen elvégezze ezt az oktatóanyagot, kiegészítő útmutatást biztosítunk az információkhoz, és további információra mutató hivatkozásokat kaptunk, amelyekkel tisztában lehet azzal, hogy mi történik, illetve miért.
 
-Azt is megteheti előfordulhat, hogy csapat munkatársaival a eltérő szerepkörök együtt, kövesse az oktatóanyag teljes szaktudását viselik, így és csapatként megtudhatja, hogyan dolgot működnek együtt.
+Azt is megteheti, hogy a különböző szerepkörökkel rendelkező munkatársakkal együtt követheti az oktatóanyagot, így teljes körű szakértelmét kihasználhatja, és megtanulhatja, hogyan illeszkednek egymáshoz a dolgok.
 
-Mindkét esetben segítse a az olvasó, hogy minden egyes cikk ebben az oktatóanyagban azt jelzi, hogy a felhasználó szerepkörét. Ezeket a szerepköröket a következők:
+Mindkét esetben az olvasó (k) elérésének elősegítése érdekében az oktatóanyagban szereplő cikkek a felhasználó szerepkörét jelzik. Ezek a szerepkörök a következők:
 
-* Felhőalapú fejlesztés (beleértve a fejlesztési és üzemeltetési kapacitásban dolgozó fejlesztők felhő)
+* Felhőalapú fejlesztés (beleértve a DevOps-kapacitásban dolgozó felhőalapú fejlesztőket)
 * Adatelemzés
 
-## <a name="use-case-predictive-maintenance"></a>Használati eset: Prediktív karbantartás
+## <a name="use-case-predictive-maintenance"></a>Használati eset: prediktív karbantartás
 
-Ebben a forgatókönyvben azt alapján 2008 Prognostics és állapot-felügyeleti (PHM08) konferencián bemutatott használati eset. A célja a fennmaradó hasznos élettartamának (RUL) turbofan repülőgép-hajtóművek áll. Ezek az adatok C-MAPSS, kereskedelmi verziójának MAPSS (moduláris Aero-Propulsion rendszer szimuláció) használatával lett létrehozva. Ez a szoftver kényelmesen szimulálása a állapotát, ellenőrzési és motor paraméterek rugalmas turbofan engine szimuláció környezetet biztosít.
+Ezt a forgatókönyvet a 2008-es, a PHM08-konferencián bemutatott használati esetünk alapján ismertetjük. A cél a turbofan-RUL hátralévő hasznos élettartamának előrejelzése. Ezeket az adatmennyiségeket C-MAPS, a MAPSs (moduláris Aero-meghajtórendszer-szimuláció) szoftver kereskedelmi verziója hozta létre. Ez a szoftver rugalmas turbofan motor-szimulációs környezetet biztosít az állapot, a vezérlés és a motor paramétereinek megfelelő szimulálása érdekében.
 
-Ebben az oktatóanyagban használt adatok forrása a [Turbofan engine degradation szimuláció adatkészlet](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
+Az oktatóanyagban használt adatok a [Turbofan motor degradációs szimulációs adatkészletből](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)származnak.
 
-A fontos fájlból:
+A readme fájlból:
 
 ***Kísérleti forgatókönyv***
 
-*Adatkészletek többváltozós idősorozatban állnak. Minden adathalmaz tanítási és tesztelési részekre osztott. Minden egyes különböző motor – azaz, az adatok lehessen venni egy járműflotta azonos típusú motorok lennie ahhoz. Mindegyik motor kezdeti motorkopási és a felhasználó számára ismeretlen variation gyártási különböző fok kezdődik. Ez motorkopási és változásairól számít normál, azaz, egy tartalék feltétel nem minősül. Nincsenek három működési beállításait, amelyek a motor teljesítményének jelentős hatással lehet. Ezek a beállítások is szerepelnek az adatokat. Az adatok az érzékelő zaj szennyezett.*
+*Az adatkészletek több többváltozós idősorozatból állnak. Az egyes adatkészletek tovább vannak osztva a betanítási és tesztelési részhalmazokra. Az egyes idősorozatok egy másik motortól származnak, azaz az adatok ugyanabba a típusba tartozó hajtóművekből származnak. Az egyes motorok a kezdeti kopás és a gyártási variáció különböző mértékével kezdődnek, ami ismeretlen a felhasználó számára. Ez a kopás és a változás normálisnak számít, azaz nem minősül hibás feltételnek. Három működési beállítás van, amelyek jelentős hatással vannak a motor teljesítményére. Ezeket a beállításokat az adatközpont is tartalmazza. Az adatsérülést érzékelő zaj okozta.*
 
-*A motor minden egyes elején megfelelően működik, és az adatsorozat során valamikor hiba fejleszt. A betanítási készlet a tartalék növekszik nagyságrendűek rendszerhiba-ig. A teszt készletbe a time series véget ér, néhány esetben, amikor a rendszer hibája. A verseny célja a teszt készletbe, azaz a működési ciklusokat, amelyek a motor továbbra is megfelelően működjenek a legutóbbi ciklust követően száma meghibásodása előtt hátralévő működési ciklusok megjósolható, hogy. A teszt adatai is biztosítja a valódi fennmaradó hasznos élettartama (RUL) értékek vektor.*
+*A motor általában az egyes idősorok elején működik, és az adatsorozat során egy bizonyos ponton hibát dolgoz fel. A betanítási készletben a hiba a rendszerhibaig növekszik. A tesztelési készletben az idősorozat a rendszerhiba előtt némi időt ér el. A verseny célja, hogy előre megjósolja a hátralévő működési ciklusok számát a tesztelési csoport meghibásodása előtt, azaz a motor utolsó ciklusa utáni működési ciklusok számát. A tesztelési adatok valódi hátralévő hasznos élettartamának (RUL) a vektorát is biztosította.*
 
-Mivel az adatok versenyregisztráció lett közzétéve, számos megközelítés hogy a machine learning-modellek egymástól függetlenül közzétéve. Úgy találtuk, hogy tanulmányozza a példák akkor lehet hasznos, a folyamat megismeréséhez, és mintafelismerési részt vesz egy adott machine learning-modellek létrehozását. Lásd például:
+Mivel az adatgyűjtés a versenyre történt, a gépi tanulási modellek elsajátításának számos módszerét egymástól függetlenül tették közzé. Azt találtuk, hogy a példák tanulmányozása hasznos lehet egy adott gépi tanulási modell létrehozásához szükséges folyamat és indoklás megismeréséhez. Lásd például:
 
-[Repülőgép motor hibája előrejelzési modell](https://github.com/jancervenka/turbofan_failure) a GitHub felhasználói jancervenka.
+[Repülőgép-hajtómű meghibásodásának előrejelzési modellje](https://github.com/jancervenka/turbofan_failure) a GitHub felhasználói jancervenka.
 
-[Turbofan engine degradation](https://github.com/hankroark/Turbofan-Engine-Degradation) a GitHub felhasználói hankroark.
+A [Turbofan-motor csökkenése](https://github.com/hankroark/Turbofan-Engine-Degradation) a GitHub-felhasználók hankroark.
 
-## <a name="process"></a>Process
+## <a name="process"></a>Folyamat
 
-Az alábbi képen a nyers lépéseket fogjuk követni, ebben az oktatóanyagban mutatja be:
+Az alábbi képen láthatók az oktatóanyagban követett durva lépések:
 
-![A folyamat lépéseivel architektúra ábrája](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
+![Architektúra-diagram a folyamat lépéseihez](media/tutorial-machine-learning-edge-01-intro/tutorial-steps-overview.png)
 
-1. **Betanítási adatok összegyűjtése**: A folyamat elindul a betanítási adatok gyűjtésével. Bizonyos esetekben az adatok már összegyűjtött és egy adatbázist, vagy adatfájlok formában érhető el. Különösen az IoT-forgatókönyveket, más esetekben az adatokat kell IoT-eszközök és érzékelők és a felhőben tárolt.
+1. A **betanítási adatok gyűjtése**: a folyamat a betanítási adatok összegyűjtésével kezdődik. Bizonyos esetekben az adatok gyűjtése már megtörtént, és egy adatbázisban, vagy adatfájlok formájában érhető el. Más esetekben – különösen a IoT forgatókönyvek esetében – az adatokat a IoT-eszközökről és-érzékelőkről kell gyűjteni, és a felhőben kell tárolni.
 
-   Feltételezzük, hogy nem rendelkezik turbofan motorok gyűjteménye, így a projektfájlok tartalmaznak egy egyszerű készülékszimulátort, amely a NASA eszköz adatokat küld a felhőbe.
+   Feltételezzük, hogy nem rendelkezik turbofan-motorokkal, így a projektfájlok egy egyszerű eszköz-szimulátort is tartalmaznak, amely a NASA-eszköz adatokat küldi el a felhőbe.
 
-1. **Adatok előkészítése**. A legtöbb esetben a nyers adatok, eszközök és érzékelők begyűjtött előkészítés a machine Learning szükséges. Ebben a lépésben is igénybe vehet adatok karbantartása, adatok újraformázást, vagy további információk a gépi tanulás a beillesztendő előfeldolgozása is kulcs ki.
+1. **Készítse elő az adatfeldolgozást**. A legtöbb esetben az eszközökből és érzékelőkből gyűjtött nyers adatoknak a gépi tanulás előkészítését kell előkészíteniük. Ez a lépés magában foglalhatja az adatok törlését, az adatok újraformázását, vagy a további információk gépi tanuláshoz való előfeldolgozását.
 
-   Az repülőgépes motor gép adatokhoz adat-előkészítési magában foglalja a kifejezett idő – hiba többször a minta az adatok tényleges megfigyelések alapján minden adatponthoz tartozó kiszámítása. Ez az információ lehetővé teszi, hogy a gépi tanulási algoritmus tényleges érzékelő adatmintákhoz szűrősablonokat és a motor fennmaradó várható élettartama közötti összefüggések keresésére. Ez a lépés rendkívül tartomány-specifikus nem.
+   A repülőgép-hajtóművek adatai esetében az adatok előkészítése magában foglalja az adatokra vonatkozó tényleges észrevételek alapján a mintában szereplő összes adatpontra vonatkozó explicit idő-a meghibásodási idők kiszámítását. Ez az információ lehetővé teszi, hogy a gépi tanulási algoritmus megkeresse a tényleges érzékelő adatmintái és a motor várható hátralévő élettartama közötti összefüggéseket. Ez a lépés nagytartományra jellemző.
 
-1. **Hozhat létre egy gépi tanulási modellt**. Az előkészített adatok alapján, hogy most már kísérletezhet a különböző gépi tanulási algoritmusok és -modellek betanításához, és hasonlítsa össze az eredményeket egy másik parameterizations.
+1. **Hozzon létre egy gépi tanulási modellt**. Az előkészített adatmennyiség alapján már különböző gépi tanulási algoritmusok és parameterizations használatával kísérletezünk, és összehasonlítjuk egymással az eredményeket.
 
-   Ebben az esetben tesztelési összehasonlítva az előre jelzett serkenti az eredményt a modell által megfigyelt különböző motorok valós eredményekkel számított. Az Azure Machine Learning modellek létrehozunk egy modellt beállításjegyzékben különböző ismétlésének lehet kezelni.
+   Ebben az esetben a teszteléshez hasonlítjuk össze a modell által kiszámított előre jelzett eredményt a motorok egy készletén megfigyelt valós eredmény alapján. Azure Machine Learning a modell beállításjegyzékében létrehozott modellek különböző ismétléseit kezeljük.
 
-1. **A modell üzembe helyezése**. Amint rendelkezésünkre áll egy modellt, amely eleget tesz a sikeresség feltétele, továbbléphet a telepítéshez. Amely magában foglalja a modell alkalmazásburkoló webalkalmazásba szolgáltatás, amely REST-hívások használatával is lehet adatkéréseket és elemzési eredményeket adja vissza. A web service-alkalmazás majd egy docker-tároló, amely ezután is üzembe helyezhetők a felhőben vagy az IoT Edge-modul be van csomagolva. Ebben a példában koncentrálunk üzembe helyezés IoT Edge-ben.
+1. **A modell üzembe helyezése**. Ha már van olyan modellünk, amely megfelel a siker feltételeinek, átléphetünk az üzembe helyezésre. Ez magában foglalja a modell becsomagolását egy webszolgáltatási alkalmazásba, amely a REST-hívásokkal és a visszaadott elemzési eredményekkel együtt használható adatokkal. A webszolgáltatás-alkalmazás ezután egy Docker-tárolóba lesz csomagolva, amely a felhőben vagy IoT Edge modulban is üzembe helyezhető. Ebben a példában az üzembe helyezésre koncentrálunk IoT Edgera.
 
-1. **Karbantartása és finomíthatja a modell**. A munkahelyi nem történik meg, a modell üzembe helyezése után. Sok esetben szeretnénk továbbra is az adatok gyűjtése és rendszeres időközönként tölthet fel adatokat a felhőbe. Használhatjuk ezeket az adatokat ezután újratanítás és finomíthatja a modell, amely azt majd is ismételt üzembe helyezése IoT Edge-ben.
+1. **A modell karbantartása és pontosítása**. A modell üzembe helyezése után nem végezünk munkát. Sok esetben szeretnénk folytatni az adatok gyűjtését és az adatok felhőbe való rendszeres feltöltését. Ezután ezeket az adattípusokat felhasználhatjuk a modell újratanításához és pontosításához, amelyet aztán újra üzembe helyezhetünk IoT Edge.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez hozzáférésre van szüksége, amelyben megfelelő jogosultságokkal rendelkezik erőforrások létrehozása Azure-előfizetéssel. Ebben az oktatóanyagban használt szolgáltatások számos számítunk fel Azure-szolgáltatások díjait. Ha Ön még nem rendelkezik Azure-előfizetéssel, előfordulhat, hogy kell használatának első lépései egy [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/).
+Az oktatóanyag elvégzéséhez hozzá kell férnie egy Azure-előfizetéshez, amelyben jogosultságokkal rendelkezik az erőforrások létrehozásához. Az oktatóanyagban használt szolgáltatások közül több Azure-díjat számol fel. Ha még nem rendelkezik Azure-előfizetéssel, akkor lehet, hogy megkezdheti az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/)megkezdését.
 
-A PowerShell használatával is futtathat parancsfájlokat, állítsa be egy Azure virtuális gépként a fejlesztői gépére telepíteni kell egy gép is.
+Szükség van egy olyan gépre is, amelyen telepítve van a PowerShell, ahol parancsfájlokat futtathat egy Azure-beli virtuális gép fejlesztői számítógépként való beállításához.
 
-Ebben a dokumentumban a következő eszközök készletét használjuk:
+Ebben a dokumentumban a következő eszközkészleteket használjuk:
 
-* Az Azure IoT hub, az adatváltozások rögzítése
+* Azure IoT hub adatrögzítéshez
 
-* A fő előtér adat-előkészítési és a machine learning-kísérletezés, Azure jegyzetfüzeteket. Futó python kódját történő használatát egy minta részhalmazt egy nagyszerű lehetőséget kínál a gyors, iteratív és interaktív válaszidejű, optimalizált adat-előkészítés során. Jupyter-notebookok is használható, készítse elő a parancsfájlok futtatását a horizontális leskálázás számítási háttérrendszernek.
+* Az adatelőkészítés és a gépi tanulási kísérletezés fő kezelőfelületének Azure Notebooks. A Python-kód a mintaadatok egy részhalmazán való futtatása nagyszerű módja annak, hogy gyors iterációs és interaktív fordulatot kapjon az adat-előkészítés során. A Jupyter-jegyzetfüzetek felhasználhatók a parancsfájlok futtatására is a számítási háttérbeli méretezési műveletekben.
 
-* Az Azure Machine Learning gépi tanulási ipari méretekben, és a machine learning oldalháttérkép-létrehozás háttérmoduljaként. Azt a meghajtó a parancsfájlok előkészített és tesztelt, a Jupyter notebookok használata az Azure Machine Learning-háttérrendszer.
+* Azure Machine Learning háttérként a gépi tanuláshoz a nagy léptékű és a gépi tanulási rendszerkép generálásához. A Azure Machine Learning hátteret a Jupyter-jegyzetfüzetekben előkészített és tesztelt parancsfájlok használatával hajtjuk.
 
-* Az Azure IoT Edge alkalmazás kikapcsolása felhőben a machine learning-lemezkép
+* Azure IoT Edge gépi tanulási rendszerkép nem felhőalapú alkalmazásához
 
-Természetesen más lehetőség érhető el. Bizonyos helyzetekben például IoT-központ használható alternatíva kód nélküli IoT-eszközök kezdeti betanítási adatok rögzítése.
+Természetesen vannak más elérhető lehetőségek is. Bizonyos helyzetekben például a IoT Central a IoT-eszközökből származó kezdeti betanítási adatok rögzítésére szolgáló, kód nélküli Alternatív megoldásként használható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag a következő szakaszokra oszlik:
 
-1. Állítsa be a fejlesztési számítógép és az Azure-szolgáltatásokat.
-2. Hozzon létre a betanítási adatok, a gépi tanulási modul számára.
-3. Betanítása és a machine learning modul üzembe helyezése.
-4. A transzparens átjáróként működő IoT Edge-eszköz konfigurálása.
-5. Hozzon létre, és üzembe helyezése IoT Edge-modulok.
-6. Adatokat küld az IoT Edge-eszköz.
+1. Állítsa be a fejlesztési gépet és az Azure-szolgáltatásokat.
+2. A gépi tanulási modul betanítási szolgáltatásának előállítása.
+3. A Machine learning modul betanítása és üzembe helyezése.
+4. Konfiguráljon egy IoT Edge eszközt úgy, hogy transzparens átjáróként működjön.
+5. IoT Edge-modulok létrehozása és üzembe helyezése.
+6. Az adatküldés a IoT Edge eszközre.
 
-Továbbra is a következő cikk állítsa be a fejlesztői gépen, és az Azure-erőforrások kiépítése.
+Folytassa a következő cikkel egy fejlesztési gép beállításához és az Azure-erőforrások kiépítéséhez.
 
 > [!div class="nextstepaction"]
-> [A machine learning, az IoT Edge-környezet beállítása](tutorial-machine-learning-edge-02-prepare-environment.md)
+> [Környezet beállítása a gépi tanuláshoz IoT Edge](tutorial-machine-learning-edge-02-prepare-environment.md)

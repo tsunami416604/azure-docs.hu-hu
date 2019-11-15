@@ -1,5 +1,5 @@
 ---
-title: 'REST-oktatóanyag: AI-bővítési folyamat létrehozása szöveg és struktúra kinyeréséhez JSON-blobokból'
+title: 'Oktatóanyag: szöveg és struktúra kinyerése JSON-blobokból'
 titleSuffix: Azure Cognitive Search
 description: A Poster és az Azure Cognitive Search REST API-k használatával a JSON-blobokban található tartalommal kapcsolatos szöveg-kinyerési és természetes nyelvi feldolgozás példája.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790195"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113657"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>Oktatóanyag: struktúra hozzáadása strukturálatlan tartalomhoz mesterséges intelligenciával
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Oktatóanyag: szöveg és struktúra kinyerése a JSON-blobokból az Azure-ban REST API-k használatával (Azure Cognitive Search)
 
-Ha strukturálatlan szöveg-vagy képtartalommal rendelkezik, az [AI](cognitive-search-concept-intro.md) -bővítési folyamat segítséget nyújt az adatok kinyeréséhez és olyan új tartalmak létrehozásához, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamat képes a képfájlok (JPG, PNG, TIFF) feldolgozására, ez az oktatóanyag a Word-alapú tartalomra összpontosít, a nyelvfelismerés és a szöveges elemzés alkalmazásával pedig új mezőket és információkat hozhat létre a lekérdezésekben, a dimenziókban és a szűrőkben.
+Ha strukturálatlan szöveggel vagy képpel rendelkezik az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat segítséget nyújt az adatok kinyeréséhez és olyan új tartalmak létrehozásához, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamat képes a képfájlok (JPG, PNG, TIFF) feldolgozására, ez az oktatóanyag a Word-alapú tartalomra összpontosít, a nyelvfelismerés és a szöveges elemzés alkalmazásával pedig új mezőket és információkat hozhat létre a lekérdezésekben, a dimenziókban és a szűrőkben.
 
 > [!div class="checklist"]
 > * Az Azure Blob Storage-ban a teljes dokumentumokkal (strukturálatlan szöveggel), például a PDF, az MD, a DOCX és a PPTX formátummal kezdheti meg a használatot.
@@ -90,7 +90,7 @@ A mesterséges intelligenciát Cognitive Services támogatja, beleértve a term�
 
 Ennél a gyakorlatnál azonban kihagyhatja az erőforrások kiosztását, mivel az Azure Cognitive Search képes csatlakozni a háttérben a Cognitive Serviceshoz, és az indexelő futtatásakor 20 ingyenes tranzakciót biztosít. Mivel ez az oktatóanyag 7 tranzakciót használ, az ingyenes kiosztás elegendő. Nagyobb projektek esetében tervezze meg Cognitive Services kiépítés az utólagos elszámolású S0 szinten. További információ: [Cognitive Services csatolása](cognitive-search-attach-cognitive-services.md).
 
-### <a name="azure-cognitive-search"></a>Azure-Cognitive Search
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
 A harmadik összetevő az Azure Cognitive Search, amelyet [a portálon lehet létrehozni](search-create-service-portal.md). A bemutató elvégzéséhez használhatja az ingyenes szintet. 
 
@@ -100,7 +100,7 @@ Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs g
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL-címe `https://mydemo.search.windows.net`volt, a szolgáltatás neve `mydemo`.
 
-2. A **beállítások** > **kulcsok**területen szerezze be a szolgáltatásra vonatkozó teljes körű jogosultságokat. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
     Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
@@ -169,7 +169,7 @@ A [készségkészlet objektum](https://docs.microsoft.com/rest/api/searchservice
    | [Entitások felismerése](cognitive-search-skill-entity-recognition.md) | Kibontja a személyek, szervezetek és helyszínek nevét a blob-tároló tartalmából. |
    | [Nyelvfelismerés](cognitive-search-skill-language-detection.md) | Észleli a tartalom nyelvét. |
    | [Szöveg felosztása](cognitive-search-skill-textsplit.md)  | Megszakítja a nagyméretű tartalmakat kisebb adattömbökbe, mielőtt meghívja a Key kifejezés kinyerési készségét. A kulcskifejezések kinyerése legfeljebb 50 000 karakter méterű bemeneteket fogad el. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba. |
-   | [Kulcsszókeresés](cognitive-search-skill-keyphrases.md) | Lekéri a legfontosabb mondatokat. |
+   | [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) | Lekéri a legfontosabb mondatokat. |
 
    Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban talált szöveg a létrehozott ```content``` mezőbe kerül, amelyből dokumentumonként egy jön létre. Ennek megfelelően a bemenet ```"/document/content"```válik.
 

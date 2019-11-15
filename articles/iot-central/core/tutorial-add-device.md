@@ -1,20 +1,20 @@
 ---
-title: Valós eszköz hozzáadása Azure IoT Central-alkalmazáshoz | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá és konfigurálhat egy valós eszközt az Azure IoT Central alkalmazásban. Azt is megtudhatja, hogyan használható a kód a valódi eszközön.
+title: 'Oktatóanyag: valós eszköz hozzáadása Azure IoT Central-alkalmazáshoz'
+description: 'Oktatóanyag: Ismerje meg, hogyan adhat hozzá és konfigurálhat egy valódi eszközt az Azure IoT Central alkalmazásban. Azt is megtudhatja, hogyan használható a kód a valódi eszközön.'
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 08/23/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5234c371cc4a7238148915f4dcca1faac564f608
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824611"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108972"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag két részből áll:
 * Először operátorként megismeri, hogyan adhat hozzá és konfigurálhat valós eszközt az Azure IoT Central -alkalmazásban. A jelen rész végén lekér egy kapcsolati sztringet, amelyet a második részben fog használni.
 * Ezt követően eszközfejlesztőként megismeri a valós eszközben lévő kódot. Az első részben lévő kapcsolati sztringet hozzáadja a mintakódhoz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Új valós eszköz hozzáadása
@@ -342,7 +342,7 @@ Most futtathatja az ügyfélszoftvert, és megtekintheti, hogyan működik együ
 
     ![A hőmérséklet-telemetria most nagyobb](media/tutorial-add-device/highertemperature.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

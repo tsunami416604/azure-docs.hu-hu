@@ -1,5 +1,5 @@
 ---
-title: Az operátor irányítópultjának testreszabása az Azure IoT Centralban | Microsoft Docs
+title: 'Oktatóanyag: az operátor irányítópultjának testreszabása az Azure-ban IoT Central'
 description: Ez az oktatóanyag bemutatja, hogyan szabhatja testre az operátor irányítópultját egy IoT Central alkalmazásban, és hogyan kezelheti az eszközöket.
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: timlt
 author: timlt
-ms.date: 10/03/2019
-ms.openlocfilehash: cb43facfc6b838a6e29a1b08e50648abf0f04911
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615303"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112922"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Oktatóanyag: az operátor irányítópultjának testreszabása és az eszközök kezelése az Azure-ban IoT Central
 
@@ -24,7 +24,7 @@ ms.locfileid: "73615303"
 
 Ebből az oktatóanyagból megtudhatja, hogyan szabhatja testre az operátor irányítópultját az Azure IoT Central Store Analytics-alkalmazásban. Az alkalmazás-kezelők a testreszabott irányítópult használatával futtathatják az alkalmazást, és kezelhetik a csatlakoztatott eszközöket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Irányítópult nevének módosítása
 > * Képcsempék testreszabása az irányítópulton
@@ -247,7 +247,7 @@ Parancs hozzáadása az átjáró újraindításához:
 
 1. Ha szeretné, a reboot **(újraindítás) csempét** választva futtassa az újraindítás parancsot az átjárón.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Irányítópult nevének módosítása

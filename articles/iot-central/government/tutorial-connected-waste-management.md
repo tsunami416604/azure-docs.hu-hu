@@ -1,18 +1,18 @@
 ---
-title: Csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása az Azure IoT Central | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy csatlakoztatott hulladékgazdálkodási alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.
+title: 'Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása az Azure IoT Central'
+description: 'Oktatóanyag: megtudhatja, hogyan hozhat létre egy csatlakoztatott hulladékgazdálkodási alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: fa2ea8cdf5148d27b025c62fbeec512ceac0943e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890826"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112641"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
 
@@ -263,6 +263,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [csatlakoztatott hulladékgazdálkodási fogalmakról](./concepts-connectedwastemanagement-architecture.md)

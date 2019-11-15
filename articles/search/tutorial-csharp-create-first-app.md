@@ -1,25 +1,25 @@
 ---
 title: C#oktatóanyag az első alkalmazás létrehozásához
 titleSuffix: Azure Cognitive Search
-description: Megtudhatja, hogyan hozhatja létre első keresési alkalmazását lépésről lépésre. Az oktatóanyagban egy, a GitHubon működő alkalmazásra mutató hivatkozás, valamint az alkalmazás teljesen új felépítésének teljes folyamata is elérhető. Az Azure Cognitive Search alapvető összetevőinek megismerése.
+description: Ismerje meg, hogyan hozhatja C# létre az első keresőalkalmazás lépéseit. Az oktatóanyagban egy, a GitHubon működő alkalmazásra mutató hivatkozás, valamint az alkalmazás teljesen új felépítésének teljes folyamata is elérhető. Az Azure Cognitive Search alapvető összetevőinek megismerése.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794136"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112232"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#Oktatóanyag: az első alkalmazás létrehozása – Azure Cognitive Search
 
 Megtudhatja, hogyan hozhat létre webes felületet az indexek keresési eredményeinek lekérdezéséhez és megjelenítéséhez az Azure Cognitive Search használatával. Ez az oktatóanyag egy meglévő, üzemeltetett indextel kezdődik, így a keresési oldal kiépítésére koncentrálhat. Az index fiktív szállodai adathalmazt tartalmaz. Ha már rendelkezik alapszintű oldallal, a következő leckében javíthatja a lapozást, az aspektusokat és a fajta élményt.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Fejlesztési környezet beállítása
 > * Adatstruktúrák modellezése

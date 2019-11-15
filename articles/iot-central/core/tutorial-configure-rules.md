@@ -1,20 +1,20 @@
 ---
-title: Szabályok és műveletek konfigurálása az Azure IoT Centralban | Microsoft Docs
+title: 'Oktatóanyag: szabályok és műveletek konfigurálása az Azure IoT Central'
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan konfigurálhat telemetria-alapú szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5358563de9f35d2cef74a32cb1794de418066810
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955794"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106598"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Oktatóanyag: Az eszközre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Centralban
 
@@ -24,7 +24,7 @@ ms.locfileid: "72955794"
 
 Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, amikor a csatlakoztatott légkondicionáló készülék hőmérséklete meghaladja a 90 &deg;F értéket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Telemetria-alapú szabály létrehozása
@@ -50,10 +50,10 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
 5. A szabály meghatározásához használja a következő táblázatban lévő információkat:
 
-    | Beállítás                                      | Value (Díj)                             |
+    | Beállítás                                      | Érték                             |
     | -------------------------------------------- | ------------------------------    |
-    | Név                                         | Légkondicionáló hőmérsékletével kapcsolatos figyelmeztetés |
-    | Szabály bekapcsolása a sablon összes eszközén | Be                                |
+    | Name (Név)                                         | Légkondicionáló hőmérsékletével kapcsolatos figyelmeztetés |
+    | Szabály bekapcsolása a sablon összes eszközén | Bekapcsolva                                |
     | Állapot                                    | A hőmérséklet nagyobb, mint 90    |
     | Összesítés                                  | None                              |
 
@@ -71,9 +71,9 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
 2. A művelet meghatározásához használja a következő táblázatban lévő információkat:
 
-    | Beállítás   | Value (Díj)                          |
+    | Beállítás   | Érték                          |
     | --------- | ------------------------------ |
-    | –        | Az Ön e-mail-címe             |
+    | Művelet        | Az Ön e-mail-címe             |
     | Megjegyzések     | A légkondicionáló hőmérséklete túllépte a küszöbértéket. |
 
     > [!NOTE]

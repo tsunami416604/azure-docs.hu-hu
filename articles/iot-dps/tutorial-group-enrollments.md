@@ -1,23 +1,23 @@
 ---
-title: Szimulált X.509-eszköz kiépítése Azure IoT Hubra Java és regisztrációs csoportok használatával | Microsoft Docs
+title: 'Oktatóanyag: szimulált X. 509 eszköz kiépítése az Azure IoT Hub Javával és regisztrációs csoportok használatával'
 description: Azure-oktatóanyag – Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Java eszköz- és szolgáltatásspecifikus SDK-kal és regisztrációs csoportokkal
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/04/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 8e926c3ff7c3d7abc9467291e9b1de77781f664e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3cb506b241adab44df490e2fe7f363d35f0f747
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61251137"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112436"
 ---
-# <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Java eszköz- és szolgáltatásspecifikus SDK-kal és csoportos regisztrációkkal
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Oktatóanyag: szimulált X. 509 eszköz létrehozása és kiépítése a Java-eszköz és a Service SDK használatával, valamint csoportos regisztrációkkal IoT Hub Device Provisioning Service
 
 Ezek a lépések bemutatják, hogyan hozhat létre szimulált X.509-eszközt egy Windows operációs rendszert futtató fejlesztői gépen, és hogyan használhat egy kódmintát, hogy ezt a szimulált eszközt regisztrációs csoportok segítségével összekösse a Device Provisioning Service-szel és az IoT Hubbal. 
 
@@ -32,10 +32,10 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
 
 1. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a telepíteni kívánt `git` eszközök legújabb verzióját, amely tartalmazza a **Git Bash** eszközt, azt a parancssori alkalmazást, amellyel kommunikálhat a helyi Git-adattárral. 
 
-1. Használja a következő [tanúsítványok áttekintése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) a teszt tanúsítványokat hozhat létre.
+1. A tesztelési tanúsítványok létrehozásához használja az alábbi [tanúsítvány-áttekintést](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) .
 
     > [!NOTE]
-    > Ez a lépés szükséges [OpenSSL](https://www.openssl.org/), amely vagy beépített és telepíthető, vagy letölthető, és telepített egy [3. fél](https://wiki.openssl.org/index.php/Binaries) például [ez](https://sourceforge.net/projects/openssl/). Ha már létrehozta a _fő-_, _köztes_ és _eszköztanúsítványt_, kihagyhatja ezt a lépést.
+    > Ez a lépés az [OpenSSL](https://www.openssl.org/)-t igényli, amely a forrástól, illetve a külső [féltől](https://wiki.openssl.org/index.php/Binaries) származó, illetve azokból letölthető és [telepíthető.](https://sourceforge.net/projects/openssl/) Ha már létrehozta a _fő-_ , _köztes_ és _eszköztanúsítványt_, kihagyhatja ezt a lépést.
     >
 
     1. A _fő-_ és a _köztes_ tanúsítvány létrehozásához végezze el az első két lépést.
@@ -46,7 +46,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
 
         1. A **Tanúsítvány hozzáadása** területen adja meg a következő információkat:
             - Adjon meg egy egyedi tanúsítványnevet.
-            - Válassza ki a **_RootCA.pem_** létrehozott fájlt.
+            - Válassza ki a létrehozott **_RootCA. PEM_** fájlt.
             - Ha végzett, kattintson a **Mentés** gombra.
 
            ![Tanúsítvány hozzáadása](./media/tutorial-group-enrollments/add-certificate.png)
@@ -91,9 +91,9 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    1. Nyissa meg a köztes aláírásitanúsítvány-fájlt egy szövegszerkesztőben. Frissítés a `PUBLIC_KEY_CERTIFICATE_STRING` érték a következő értékkel: a köztes aláíró tanúsítványt.
+    1. Nyissa meg a köztes aláíró tanúsítványfájl-fájlt egy szövegszerkesztőben. Frissítse a `PUBLIC_KEY_CERTIFICATE_STRING` értéket a közbenső aláíró tanúsítványának értékével.
 
-        Ha a tanúsítványok a Bash felületen létrehozott *./certs/azure-iot-test-only.intermediate.cert.pem* tartalmazza a köztes tanúsítvány kulcsát. Ha a tanúsítványok a PowerShell-lel, generált *./Intermediate1.pem* lesz a köztes tanúsítványfájlt.
+        Ha a bash rendszerhéjral generálta az eszköz tanúsítványait, a *./certs/Azure-IOT-test-only.Intermediate.CERT.PEM* tartalmazza a köztes tanúsítvány kulcsát. Ha a tanúsítványok a PowerShell-lel lettek létrehozva, a *./Intermediate1.PEM* lesz a köztes tanúsítványfájl.
 
         ```java
         private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -117,7 +117,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
         private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
         ```
 
-    1. Tanulmányozza a mintakódot. A segítségével létrehozhat, frissíthet, lekérdezhet és törölhet egy csoportos X.509-eszközregisztrációt. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a következő kódsorokat a _ServiceEnrollmentGroupSample.java_ fájl végén:
+    1. Tanulmányozza a mintakódot, A segítségével létrehozhat, frissíthet, lekérdezhet és törölhet egy csoportos X.509-eszközregisztrációt. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a következő kódsorokat a _ServiceEnrollmentGroupSample.java_ fájl végén:
 
         ```java
         // ************************************** Delete info of enrollmentGroup ***************************************
@@ -160,7 +160,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-X509-sample
     ```
 
-1. Szerkesztés `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` tartalmazza a _azonosító hatóköre_ és _kiépítési szolgáltatás globális végpontja_ , amely a korábban feljegyzett.
+1. Szerkessze `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` a korábban feljegyzett _azonosító hatókör_ és _kiépítési szolgáltatás globális végpontjának_ belefoglalásához.
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -171,13 +171,13 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
     private static final String leafPrivateKey = "<Your Private PEM Key here>";
     ```
 
-1. Frissítés a `leafPublicPem` és `leafPrivateKey` változókról, a nyilvános és privát tanúsítványok.
+1. Frissítse a `leafPublicPem` és `leafPrivateKey` változókat a nyilvános és a privát eszköz tanúsítványával.
 
-    Ha a tanúsítványok a PowerShell használatával létrehozott, a fájlok sajáteszköz * található a nyilvános kulcsot, a titkos kulcs és a PFX-az eszköz.
+    Ha az eszköz tanúsítványait a PowerShell-lel generálta, a fájlok mydevice a * tartalmazza a nyilvános kulcsot, a titkos kulcsot és a PFX-t az eszközhöz.
 
-    Ha létrehozta az eszköztanúsítványok a Bash felületet,./certs/new-device.cert.pem nyilvános kulcsot tartalmazza. Az eszköz titkos kulcs lesz a./private/new-device.key.pem fájlban.
+    Ha a bash rendszerhéjral generálta az eszköz tanúsítványait, a./certs/New-Device.CERT.PEM a nyilvános kulcsot tartalmazza. Az eszköz titkos kulcsa a./Private/New-Device.key.PEM fájlban lesz.
 
-    Nyissa meg a nyilvános kulcs fájlját, és a frissítés a `leafPublicPem` változó, ezt az értéket. Másolja be a szöveget a _---BEGIN PRIVATE KEY----_ való _---END PRIVATE KEY----_.
+    Nyissa meg a nyilvános kulcs fájlját, és frissítse a `leafPublicPem` változót ezzel az értékkel. Másolja ki a _-----BEGIN Private key-----_ _-----END titkos kulcs-----_ .
 
     ```java
     private static final String leafPublicPem = "-----BEGIN CERTIFICATE-----\n" +
@@ -189,7 +189,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
         "-----END CERTIFICATE-----\n";
     ```
 
-    Nyissa meg a titkos kulcs fájlját, és a frissítés a `leafPrivatePem` változó, ezt az értéket. Másolja be a szöveget a _---BEGIN RSA PRIVATE KEY----_ való _---END RSA PRIVATE KEY----_.
+    Nyissa meg a titkos kulcsot tartalmazó fájlt, és frissítse a `leafPrivatePem` változót ezzel az értékkel. Másolja a szöveget a _-----BEGIN RSA titkos kulcs-----_ _-----End rsa titkos kulcs-----_ .
 
     ```java
     private static final String leafPrivateKey = "-----BEGIN RSA PRIVATE KEY-----\n" +
@@ -201,9 +201,9 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
         "-----END RSA PRIVATE KEY-----\n";
     ```
 
-1. Adjon hozzá egy új változót csak az alábbiakban `leafPrivateKey` a köztes tanúsítványt. Nevezze el az új változó `intermediateKey`. Adjon meg az értékét a köztes aláíró tanúsítványt.
+1. Vegyen fel egy új változót közvetlenül az alábbi `leafPrivateKey` a köztes tanúsítványhoz. Nevezze el az új változót `intermediateKey`. Adja meg a köztes aláíró tanúsítvány értékét.
 
-    Ha a tanúsítványok a Bash felületen létrehozott *./certs/azure-iot-test-only.intermediate.cert.pem* tartalmazza a köztes tanúsítvány kulcsát. Ha a tanúsítványok a PowerShell-lel, generált *./Intermediate1.pem* lesz a köztes tanúsítványfájlt.
+    Ha a bash rendszerhéjral generálta az eszköz tanúsítványait, a *./certs/Azure-IOT-test-only.Intermediate.CERT.PEM* tartalmazza a köztes tanúsítvány kulcsát. Ha a tanúsítványok a PowerShell-lel lettek létrehozva, a *./Intermediate1.PEM* lesz a köztes tanúsítványfájl.
 
     ```java
     private static final String intermediateKey = "-----BEGIN CERTIFICATE-----\n" +
@@ -215,7 +215,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
         "-----END CERTIFICATE-----\n";
     ```
 
-1. Az a `main` működik, adja hozzá a `intermediateKey` , a `signerCertificates` gyűjtemény inicializálása előtt `securityProviderX509`.
+1. A `main` függvényben adja hozzá a `intermediateKey` a `signerCertificates` gyűjteményhez a `securityProviderX509`inicializálását megelőzően.
 
     ```java
     public static void main(String[] args) throws Exception
@@ -252,11 +252,11 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
 Ha azt tervezi, hogy folytatja az eszközügyfél minta használatát és megismerését, akkor ne törölje a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutatóhoz létrehozott összes erőforrást.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
-1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **Regisztrációk kezelése** paneljét, majd kattintson az **Egyéni regisztrációk** lapra. Válassza ki a rövid útmutatóban regisztrált eszköz *REGISZTRÁCIÓS AZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra. 
+1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd kattintson az **Egyéni regisztrációk** fülre. Válassza ki az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítóját* , majd kattintson a felül található **Törlés** gombra. 
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Nyissa meg a hub **IoT-eszközök** paneljét, válassza ki a rövid útmutatóban regisztrált eszköz *ESZKÖZAZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóprogramban egy szimulált X.509-eszközt hozott létre Windows rendszerű gépén, majd kiépítette az IoT Hubon az Azure IoT Hub Device Provisioning Service-szel és regisztrációs csoportokkal. Ha további információra van szüksége az X.509-eszközzel kapcsolatban, folytassa az eszközzel kapcsolatos alapvető információkat ismertető témakörrel. 
 

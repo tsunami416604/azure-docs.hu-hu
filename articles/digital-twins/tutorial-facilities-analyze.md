@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: események elemzése – Azure digitális Twins | Microsoft Docs'
+title: 'Oktatóanyag: események elemzése az Azure Digital Twins telepítőből'
 description: Megtudhatja, hogyan jelenítheti meg és elemezheti az Azure digitális Twins-tárhelyek eseményeit az oktatóanyag lépéseinek használatával Azure Time Series Insightsával.
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: b082de36b954f1ed387782c3eefdc2b01cf09a90
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/12/2019
+ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014013"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107683"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Oktatóanyag: az Azure Digital Twins eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
@@ -48,7 +48,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet.
 

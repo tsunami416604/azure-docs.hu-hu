@@ -1,19 +1,19 @@
 ---
-title: Machine Learning IoT Edge eszköz konfigurálása a Azure IoT Edgeon | Microsoft Docs
-description: Konfiguráljon egy Linux rendszerű Azure-beli virtuális gépet olyan Azure IoT Edge eszközként, amely transzparens átjáróként működik.
+title: 'Oktatóanyag: IoT Edge eszköz Machine Learning konfigurálása Azure IoT Edge'
+description: 'Oktatóanyag: Linux rendszerű Azure-beli virtuális gép konfigurálása olyan Azure IoT Edge eszközként, amely transzparens átjáróként működik.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 714f0c335e2871fa1afe2f99d08870f0e39c488e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494020"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113965"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -26,7 +26,7 @@ A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja
 
 ## <a name="generate-certificates"></a>Tanúsítványok előállítása
 
-Ahhoz, hogy egy eszköz átjáróként működjön, képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie a IoT Edge eszköz identitását. További információ arról, hogy IoT Edge eszközök hogyan használják a tanúsítványokat: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
+Ahhoz, hogy egy eszköz átjáróként működjön, képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Az Azure IoT Edge lehetővé teszi, hogy a nyilvános kulcsokra épülő infrastruktúrájú (PKI) eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie a IoT Edge eszköz identitását. További információ arról, hogy IoT Edge eszközök hogyan használják a tanúsítványokat: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
 
 Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-rendszerkép használatával, amelyet aztán kiépítünk és futtatunk. Úgy döntöttünk, hogy egy Docker-rendszerképet használunk ennek a lépésnek a végrehajtásához, mert jelentősen csökkentette a tanúsítványok a Windows fejlesztői gépen való létrehozásához szükséges lépések számát. A tanúsítványok tároló nélküli létrehozásával kapcsolatos részleteket lásd: [tanúsítványok létrehozása a Windowsban](how-to-create-transparent-gateway.md#generate-certificates-with-windows) . A Linux-alapú [tanúsítványok létrehozása](how-to-create-transparent-gateway.md#generate-certificates-with-linux) olyan utasításokat tartalmaz, amelyeket a Docker-rendszerképpel automatizálunk.
 
@@ -65,10 +65,10 @@ Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-ren
 
 12. Ha a tároló futása befejeződött, keresse meg a következő fájlokat a **c:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\certs\\Azure-IOT-test-only. root. ca. CERT. PEM
-    * c:\\edgeCertificates\\certs\\New-Edge-Device-Full-Chain. CERT. PEM
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
     * c:\\edgeCertificates\\certs\\New-Edge-Device. CERT. PEM
-    * c:\\edgeCertificates\\certs\\New-Edge-Device. CERT. pfx
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
     * c:\\edgeCertificates\\Private\\New-Edge-Device. key. PEM
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Tanúsítványok feltöltése a Azure Key Vaultba
@@ -174,7 +174,7 @@ Ezután futtassa a parancsfájlt a IoT Edge eszközhöz tartozó virtuális gép
 
     ![SSH-kapcsolatok karakterláncának másolása virtuális géphez](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
-## <a name="connect-to-your-iot-edge-device"></a>Kapcsolódás a IoT Edge eszközhöz
+## <a name="connect-to-your-iot-edge-device"></a>Csatlakozás az IoT Edge-eszköz
 
 A következő néhány szakaszban az általunk létrehozott Azure-beli virtuális gépet konfiguráljuk. Az első lépés a virtuális géphez való kapcsolódás.
 
@@ -294,7 +294,7 @@ A következő lépésben frissíteni fogjuk a tanúsítványokat és a gazdagép
     journalctl -u iotedge --no-pager --no-full
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Először a Azure Key Vaultba feltöltött tesztelési tanúsítványok létrehozásával kezdtük el. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. A szkript az Azure CLI telepítésének további lépéseit vette igénybe (az[Azure CLI telepítése az apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)használatával). Az SSH-n keresztül csatlakoztatott virtuális gépekkel, az Azure-ba való bejelentkezéssel, a Key Vault tanúsítványok letöltésével, valamint az IoT Edge Runtime konfigurációjának számos frissítését a config. YAML fájl frissítésével végezheti el. További információ a IoT Edge átjáróként való használatáról: [IoT Edge eszköz átjáróként](iot-edge-as-gateway.md)való használata. Az IoT Edge eszköz transzparens átjáróként való konfigurálásával kapcsolatos további információkért lásd: [IoT Edge-eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)működéshez.
 

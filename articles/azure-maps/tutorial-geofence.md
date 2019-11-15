@@ -1,22 +1,22 @@
 ---
-title: Geokerítésen létrehozása a Azure Maps használatával | Microsoft Docs
-description: Geokerítésen beállítása Azure Maps használatával.
+title: 'Oktatóanyag: geokerítésen létrehozása Azure Maps használatával'
+description: 'Oktatóanyag: geokerítésen beállítása Azure Maps használatával.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694924"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107103"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Geokerítésen beállítása Azure Maps használatával
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: geokerítésen beállítása Azure Maps használatával
 
 Ez az oktatóanyag végigvezeti a geokerítésen a Azure Maps használatával történő beállításához szükséges alapismereteken. Az ebben az oktatóanyagban ismertetett forgatókönyv segít az építkezési vezetők számára a kijelölt építési területeken túlmutató lehetséges veszélyes berendezések figyelésében. Az építkezések költséges berendezéseket és előírásokat foglalnak magukban. Általában megköveteli, hogy a berendezés az építkezési helyen maradjon, és ne hagyjon engedély nélkül.
 
@@ -154,13 +154,13 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Másolja az állapot-URI-t `subscription-key` , és fűzze hozzá a paramétert a Azure Maps fiókja előfizetési kulcsának értékéhez. Az állapot URI-formátumának az alábbihoz hasonlónak kell lennie:
+6. Másolja ki az állapot-URI-t, és fűzze hozzá a `subscription-key` paramétert a Azure Maps fiókja előfizetési kulcsának értékeként. Az állapot URI-formátumának az alábbihoz hasonlónak kell lennie:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. A létrehozásához `udId` nyisson meg egy új fület a Poster alkalmazásban, majd válassza a http-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és tegyen egy Get-kérést az állapot URI-ja Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId későbbi használatra.
+7. A `udId` megnyitásához nyisson meg egy új fület a Poster alkalmazásban, majd válassza a HTTP-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és hozzon igénybe egy GET kérelmet az állapot URI-n Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId későbbi használatra.
 
    ```JSON
    {
@@ -257,7 +257,7 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
   
    ![4\. geokerítésen-lekérdezés](./media/tutorial-geofence/geofence-query4.png)
 
-   A megfelelő válasz körültekintő betartásával azt is megfigyelheti, hogy egyetlen esemény sem jelenik meg itt annak ellenére, hogy a berendezés kilépett a alhelyhez tartozó geokerítésen. Ha megtekinti a felhasználó megadott időpontját a GET kérelemben, láthatja, hogy az alwebhely geokerítésen lejárt, és a berendezés még mindig a fő geokerítésen van. A válasz törzsében a alhelyhez tartozó geokerítésen `expiredGeofenceGeometryId` geometriájának azonosítóját is megtekintheti.
+   A megfelelő válasz körültekintő betartásával azt is megfigyelheti, hogy egyetlen esemény sem jelenik meg itt annak ellenére, hogy a berendezés kilépett a alhelyhez tartozó geokerítésen. Ha megtekinti a felhasználó megadott időpontját a GET kérelemben, láthatja, hogy az alwebhely geokerítésen lejárt, és a berendezés még mindig a fő geokerítésen van. A válasz törzsében a `expiredGeofenceGeometryId` alatt található Alhely geokerítésen geometriájának AZONOSÍTÓját is megtekintheti.
 
 
 5. 5\. hely:
@@ -270,7 +270,7 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
 
    Láthatja, hogy a berendezés elhagyta a fő építkezési hely geokerítésen. Egy eseményt tesz közzé, súlyos szabálysértést jelent, és kritikus riasztási e-mailt küld a Operations Managernak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan állíthatja be a geokerítésen úgy, hogy feltölti a Azure Mapsba az adatfeltöltő API használatával. Azt is megtanulta, hogyan használhatja a Azure Maps Events Gridt a geokerítésen-események előfizetéséhez és kezeléséhez. 
 

@@ -1,20 +1,20 @@
 ---
-title: Az eszközök monitorozása az Azure IoT Centralban | Microsoft Docs
-description: Operátorként az Azure IoT Central alkalmazással monitorozza az eszközöket.
+title: 'Oktatóanyag: eszközök figyelése az Azure IoT Central'
+description: 'Oktatóanyag: operátorként használhatja az Azure IoT Central alkalmazást az eszközök figyelésére.'
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 78f0c8cf9efd8b264da3c1d80c8baeb9f03016cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955444"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106574"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Oktatóanyag: Az eszközök monitorozása az Azure IoT Central használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "72955444"
 
 Ez az oktatóanyag bemutatja, hogy operátorként hogyan használhatja a Microsoft Azure IoT Central alkalmazást az eszközök monitorozására és a beállítások módosítására.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Értesítés fogadása

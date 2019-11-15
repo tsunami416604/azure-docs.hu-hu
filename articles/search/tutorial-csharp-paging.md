@@ -1,25 +1,25 @@
 ---
 title: C#oktatóanyag a keresési eredmények tördeléséről
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag az "első app-Azure Cognitive Search" projekt létrehozásán alapul, és két különböző típusú lapozást választ ki. Az első a oldalszám gombokat, valamint az első, a következő, az előző és az utolsó oldal gombokat használja. A második lapozási rendszer végtelen görgetést használ, amelyet egy függőleges görgetősávnak az alsó határértékre való áthelyezésével indít el.
+description: Ez az oktatóanyag a keresési eredmények lapozását mutatja be. Egy meglévő Hotels-projektre épít, amely az első, a következő, az előző, az utolsó és a számozott gombok lapozásával rendelkezik. A második lapozási rendszer végtelen görgetést használ, amelyet egy függőleges görgetősávnak az alsó határértékre való áthelyezésével indít el.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793998"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113762"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#Oktatóanyag: keresési eredmények tördelése – Azure Cognitive Search
 
 Megtudhatja, hogyan valósítható meg két különböző lapozófájl-rendszer, az első a oldalszámok alapján, a második pedig a végtelen görgetésen. A lapozás mindkét rendszerét széles körben használják, és a jobb gombbal kiválaszthatja az eredményekkel kapcsolatos felhasználói élményt. Ez az oktatóanyag a lapozási rendszereket a következő [ C# oktatóanyagban létrehozott projektbe építi: az első alkalmazás létrehozása – Azure Cognitive Search](tutorial-csharp-create-first-app.md) oktatóanyag.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Az alkalmazás kiterjesztése számozott lapozással
 > * Az alkalmazás kiterjesztése végtelen görgetéssel
@@ -471,7 +471,7 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
 
 ### <a name="handle-the-next-action"></a>A következő művelet kezelése
 
-Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futtatása, amely meghívja az **indexet ()** , a felhasználó első keresését, amely meghívja az **indexet (Model)** , majd a további találatokat a **következő (modell)** használatával. .
+Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futtatása, amely meghívja az **indexet ()** , a felhasználó első keresését, amely meghívja az **indexet (Model)** , majd a további találatokat a **következő (modell)** használatával.
 
 1. Nyissa meg a Kezdőlap vezérlő fájlját, és törölje a **RunQueryAsync** metódust az eredeti oktatóanyagból.
 

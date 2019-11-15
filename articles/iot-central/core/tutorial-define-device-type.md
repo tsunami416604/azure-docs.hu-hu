@@ -1,20 +1,20 @@
 ---
-title: Új eszköztípus definiálása az Azure IoT Centralban | Microsoft Docs
+title: 'Oktatóanyag: új eszköz típusának definiálása az Azure-ban IoT Central'
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust az Azure IoT Central alkalmazásban. Megadhatja a típus telemetria, állapotát, tulajdonságait és beállításait.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/07/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: ee1f461f14a46031e3fa9d62a6dceae55d892613
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3d79e710f2c71d96179ab8774ee89c90cb462ca4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955570"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112349"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban egy **Csatlakoztatott légkondicionáló** eszközsablo
 * Olyan eszköztulajdonságokkal rendelkezik, mint a belső vezérlőprogram verziója és a sorozatszám.
 * Olyan beállításokkal rendelkezik, mint a célhőmérséklet.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Új eszközsablon létrehozása
@@ -106,13 +106,13 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
      A **Hőmérséklet** telemetria konfigurálásához használja a következő táblázatban lévő információkat:
 
-     | Beállítás              | Value (Díj)         |
+     | Beállítás              | Érték         |
      | -------------------- | -----------   |
      | Megjelenítendő név         | Hőmérséklet   |
      | Mezőnév           | hőmérséklet   |
-     | egység                | F             |
+     | Egység                | F             |
      | Min                  | 60            |
-     | Maximum                  | 110           |
+     | Max                  | 110           |
      | Tizedeshelyek       | 0             |
 
      A telemetria megjelenítésének színét is kiválaszthatja. A telemetria-definíció mentéséhez válassza a **Mentés**lehetőséget:
@@ -148,11 +148,11 @@ Az események segítségével meghatározhatja az adott időponthoz tartozó ada
 
      A **Ventilátormotor-hiba** esemény konfigurálásához használja a következő táblázatban lévő információkat:
 
-     | Beállítás              | Value (Díj)             |
+     | Beállítás              | Érték             |
      | -------------------- | -----------       |
      | Megjelenítendő név         | Ventilátormotor-hiba   |
      | Mezőnév           | fanmotorerr       |
-     | Súlyosság             | Hiba             |
+     | Severity             | Hiba             |
 
      Az esemény definíciójának mentéséhez válassza a **Mentés**lehetőséget:
 
@@ -186,13 +186,13 @@ Az állapot használatával meghatározhatja és megjelenítheti az eszköz vagy
 
      A **Ventilátor mód** állapot konfigurálásához használja a következő táblázatban lévő információkat:
 
-     | Beállítás              | Value (Díj)             |
+     | Beállítás              | Érték             |
      | -------------------- | -----------       |
      | Megjelenítendő név         | Ventilátor mód          |
      | Mezőnév           | fanmode           |
-     | Value (Díj)                | 1                 |
+     | Érték                | 1                 |
      | Felirat megjelenítése        | Üzemel         |
-     | Value (Díj)                | 0                 |
+     | Érték                | 0                 |
      | Felirat megjelenítése        | Leállítva           |
 
      Az állapot-mérési definíció mentéséhez válassza a **Mentés**lehetőséget:
@@ -231,7 +231,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 3. A **Megadott hőmérséklet** beállítás konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Value (Díj)           |
+    | Mező                | Érték           |
     | -------------------- | -----------     |
     | Megjelenítendő név         | Megadott hőmérséklet |
     | Mezőnév           | setTemperature  |
@@ -261,11 +261,11 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 1. Különböző típusú eszköztulajdonságokat hozhat létre, például számokat vagy szöveget. Ha hely tulajdonságot szeretne adni az eszközsablonhoz, válassza a **Hely** lehetőséget. A hely tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Value (Díj)                |
+    | Mező                | Érték                |
     | -------------------- | -------------------- |
-    | Megjelenítendő név         | Földrajzi egység             |
+    | Megjelenítendő név         | Hely             |
     | Mezőnév           | location             |
-    | Kezdeti érték        | Seattle          |
+    | Kezdeti érték        | Seattle, WA          |
     | Leírás          | Eszközhely      |
 
     A többi mező alapértelmezett értékeit ne módosítsa.
@@ -278,7 +278,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 1. Az utolsó szervizelés dátuma tulajdonság konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Value (Díj)                   |
+    | Mező                | Érték                   |
     | -------------------- | ----------------------- |
     | Megjelenítendő név         | Utolsó szervizelés dátuma       |
     | Mezőnév           | serviceDate             |
@@ -295,7 +295,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 1. A belső vezérlőprogram verziójának konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Value (Díj)                   |
+    | Mező                | Érték                   |
     | -------------------- | ----------------------- |
     | Megjelenítendő név         | Belső vezérlőprogram verziója        |
     | Mezőnév           | firmwareVersion         |
@@ -310,7 +310,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
 1. A sorozatszám konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Value (Díj)                   |
+    | Mező                | Érték                   |
     | -------------------- | ----------------------- |
     | Megjelenítendő név         | Sorozatszám           |
     | Mezőnév           | serialNumber            |
@@ -334,7 +334,7 @@ A _parancsok_ használatával engedélyezheti, hogy az operátor közvetlenül a
 
 1. Az új parancs konfigurálásához használja a következő táblázatban lévő információkat:
 
-    | Mező                | Value (Díj)           |
+    | Mező                | Érték           |
     | -------------------- | -----------     |
     | Megjelenítendő név         | Echo parancs    |
     | Mezőnév           | echo            |
@@ -360,11 +360,11 @@ Most, hogy meghatározta a **csatlakoztatott légkondicionáló** eszköz sablon
 
 1. Konfigurálja a **Vonaldiagram** összetevőt a következő táblázatban lévő információk használatával:
 
-    | Beállítás      | Value (Díj)       |
+    | Beállítás      | Érték       |
     | ------------ | ----------- |
     | Cím        | Hőmérséklet |
     | Időtartomány   | Az elmúlt 30 perc |
-    | Adatok     | Hőmérséklet ( **láthatóság** kijelölése a **hőmérséklet**mellett) |
+    | Mértékek     | Hőmérséklet ( **láthatóság** kijelölése a **hőmérséklet**mellett) |
 
     ![Vonaldiagram beállításai](./media/tutorial-define-device-type/linechartsettings.png)
 
@@ -372,11 +372,11 @@ Most, hogy meghatározta a **csatlakoztatott légkondicionáló** eszköz sablon
 
 1. Válassza ki az **esemény előzményei** összetevőt az alábbi táblázatban szereplő információk alapján:
 
-    | Beállítás      | Value (Díj)       |
+    | Beállítás      | Érték       |
     | ------------ | ----------- |
     | Cím        | Ventilátoros motoros események |
     | Időtartomány   | Az elmúlt 30 perc |
-    | Adatok     | Ventilátoros motor hibája (a **ventilátoros motor hibája**melletti **láthatóság** kiválasztása) |
+    | Mértékek     | Ventilátoros motor hibája (a **ventilátoros motor hibája**melletti **láthatóság** kiválasztása) |
 
     ![Az események diagramjának beállításai](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
@@ -384,11 +384,11 @@ Most, hogy meghatározta a **csatlakoztatott légkondicionáló** eszköz sablon
 
 1. Konfigurálja az **Állapotelőzmények** összetevőt a következő táblázatban lévő információk használatával:
 
-    | Beállítás      | Value (Díj)       |
+    | Beállítás      | Érték       |
     | ------------ | ----------- |
     | Cím        | Ventilátor mód |
     | Időtartomány   | Az elmúlt 30 perc |
-    | Adatok | Ventilátor mód (válassza a **láthatóság** lehetőséget a **ventilátor mód**mellett) |
+    | Mértékek | Ventilátor mód (válassza a **láthatóság** lehetőséget a **ventilátor mód**mellett) |
 
     ![Vonaldiagram beállításai](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
@@ -398,7 +398,7 @@ Most, hogy meghatározta a **csatlakoztatott légkondicionáló** eszköz sablon
 
 1. Konfigurálja a **Beállítások és tulajdonságok** összetevőt a következő táblázatban lévő információk használatával:
 
-    | Beállítás                 | Value (Díj)         |
+    | Beállítás                 | Érték         |
     | ----------------------- | ------------- |
     | Cím                   | Eszköztulajdonságok |
     | Beállítások és tulajdonságok | Megadott hőmérséklet<br/>Sorozatszám<br/>Belső vezérlőprogram verziója |

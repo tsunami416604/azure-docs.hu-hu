@@ -1,19 +1,19 @@
 ---
-title: Modell betanítása és üzembe helyezése Machine Learning Azure IoT Edgeon | Microsoft Docs
-description: Gépi tanulási modell betanítása Azure Machine Learning használatával, majd a modell becsomagolása Azure IoT Edge modulként üzembe helyezhető tároló lemezképként.
+title: 'Oktatóanyag: modell betanítása és üzembe helyezése Machine Learning Azure IoT Edge'
+description: 'Oktatóanyag: gépi tanulási modell betanítása Azure Machine Learning használatával, majd a modell becsomagolása Azure IoT Edge modulként üzembe helyezhető tároló lemezképként.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8cb3d0329c41256823a66fc3276711c43da61cdd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493990"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112468"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
@@ -118,7 +118,7 @@ Most, hogy létrejött a projekt, futtassa a **01-turbofan\_regresszió. ipynb**
 
 6. Nyissa meg a **02-turbofan\_telepítse\_Model. ipynb** , majd ismételje meg a szakasz lépéseit a második jegyzetfüzet futtatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökből származó adatok használatára a hátralévő hasznos élettartam (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webes se-ként való üzembe helyezéséhez és teszteléséhez. rvice.
 

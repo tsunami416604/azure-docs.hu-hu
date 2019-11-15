@@ -1,23 +1,23 @@
 ---
-title: Eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) segítségével | Microsoft Docs
-description: Eszköz kiépítése egyetlen IoT Hubra az Azure IoT Hub Device Provisioning Service (.NET) használatával
+title: 'Oktatóanyag: eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) használatával'
+description: 'Oktatóanyag: eszköz kiépítése egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service (.NET) használatával'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 4a6a074c3f677023928fefa5c09eb305b5441dfe
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303980"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112819"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Az eszköz regisztrálása IoT Hubra az Azure IoT Hub Provisioning Service ügyfél (.NET) használatával
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: az eszköz regisztrálása egy IoT hubhoz az Azure IoT Hub-létesítési szolgáltatás ügyfelének használatával (.NET)
 
 Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan építheti ki az eszközt ezzel a szolgáltatással egyetlen IoT Hubra, **_egyéni regisztráció_** és **_regisztrációs csoportok_** használatával. Ez az oktatóanyag a következőket mutatja be:
 
@@ -28,7 +28,7 @@ Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folytatás előtt győződjön meg arról, hogy [a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását](./tutorial-set-up-device.md) ismertető oktatóanyagban leírt módon konfigurálta az eszközt és annak *hardverbiztonsági modulját*.
+A folytatás előtt győződjön meg arról, hogy *a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását* ismertető oktatóanyagban leírt módon konfigurálta az eszközt és annak [hardverbiztonsági modulját](./tutorial-set-up-device.md).
 
 * Visual Studio
 
@@ -130,7 +130,7 @@ A következő két módon regisztrálható az eszköz a Device Provisioning Serv
     Console.ReadLine();
     ```
         
-1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza az **Egyetlen kezdőprojekt** lehetőséget, majd a legördülő menüből válassza a **DeviceProvisioning** projektet.  
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson az **indítási projektek beállítása.** .. elemre. Válassza az **egyetlen indítási projekt**lehetőséget, majd a legördülő menüben válassza ki a **DeviceProvisioning** projektet.  
 
 1. Futtassa a **DeviceProvisiong** .NET-eszközalkalmazást. Az eszközalkalmazás beállítja az eszköz kiépítését: 
 
@@ -240,7 +240,7 @@ Az eszköz indítása után a következő műveleteket kell elvégezni. További
 
     ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

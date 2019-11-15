@@ -1,19 +1,19 @@
 ---
-title: Víz-használati monitorozási alkalmazás létrehozása az Azure IoT Central-vel | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre vízfelhasználást figyelő alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.
+title: 'Oktatóanyag: vízfogyasztást figyelő alkalmazás létrehozása az Azure IoT Central'
+description: 'Oktatóanyag: megtudhatja, hogyan hozhat létre vízfelhasználást figyelő alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889155"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112622"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Oktatóanyag: vízfelhasználást figyelő alkalmazás létrehozása IoT Central
 
@@ -247,6 +247,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [vízfelhasználás figyelésével kapcsolatos fogalmakról](./concepts-waterconsumptionmonitoring-architecture.md)

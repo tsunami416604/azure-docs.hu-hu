@@ -1,22 +1,22 @@
 ---
-title: Elektromos járművek átirányítása Azure Notebooks (Python) használatával | Microsoft Docs
-description: Az elektromos járművek átirányítása Azure Maps útválasztási API-k és Azure Notebooks használatával.
+title: 'Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)'
+description: 'Oktatóanyag: elektromos járművek átirányítása Azure Maps útválasztási API-k és Azure Notebooks használatával.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/01/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011117"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109605"
 ---
-# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Elektromos járművek átirányítása Azure Notebooks (Python) használatával
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
 Azure Maps a térinformatikai szolgáltatási API-k portfóliója, amelyek natív módon vannak integrálva az Azure-ba. Ezekkel az API-kkal a fejlesztők, a vállalatok és az ISV-k létrehozhatnak helyet támogató alkalmazásokat és IoT, mobilitási, logisztikai és Asset-követési megoldásokat. 
 

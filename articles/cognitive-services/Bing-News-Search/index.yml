@@ -4,7 +4,7 @@ title: A Bing News Search API dokumentációja
 metadata:
   title: 'A Bing News Search API dokumentációja – oktatóanyagok, gyorsútmutatók, API-referenciák'
   titleSuffix: Azure Cognitive Services
-  description: 'Ismerje meg, hogyan kereshet híreket az interneten a Bing News Search API-val.'
+  description: A Bing News Search API segítségével integrálhatja a Bing hírkeresési képességeit az alkalmazásokba.
   services: cognitive-services
   author: aahill
   manager: nitinme

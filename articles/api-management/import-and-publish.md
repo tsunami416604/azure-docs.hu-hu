@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 6a1ae2966e8d5535a5fd9aeffb5ddc3a788f85ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072101"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108534"
 ---
 # <a name="import-and-publish-your-first-api"></a>Az első API importálása és közzététele 
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag bemutatja a https://conferenceapi.azurewebsites.net?format=js
 
 A háttérrendszeri API API Management (APIM) szolgáltatásba történő importálása után az APIM API lesz a háttérrendszeri API homlokzata. A háttérrendszeri API importálásakor a forrás-API és az APIM API megegyezik. Az APIM lehetővé teszi a homlokzat igény szerinti testreszabását a háttérrendszeri API módosítása nélkül. További információ: [Az API átalakítása és védelme](transform-api.md). 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az első API importálása
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -47,11 +47,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API importálását és közzétételét.
  
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
-2. Válassza ki a **OpenAPI** -specifikációt a listából, majd kattintson az előugró ablakban a **teljes** elemre.
+2. Válassza ki a **OpenAPI-specifikációt** a listából, majd kattintson az előugró ablakban a **teljes** elemre.
 
     ![API létrehozása](./media/api-management-get-started/create-api.png)
 
-    Az API értékeit a létrehozás során vagy később is megadhatja, a **Beállítások** lapon. A piros csillag a mező mellett azt jelzi, hogy a mező kitöltése kötelező.
+    Az API-értékeket a létrehozás során vagy később is beállíthatja a **Beállítások** lapon. A mező melletti piros csillag azt jelzi, hogy a mező megadása kötelező.
 
     Használja az alábbi táblázat értékeit az első API létrehozásához.
 
@@ -59,11 +59,11 @@ Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API import
     |---------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **OpenAPI-specifikáció** | https://conferenceapi.azurewebsites.net?format=json | Az API-t alkalmazó szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
     | **Megjelenített név**          | *Demo Conference API*                              | Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján. <br/>Ez a név a fejlesztői portálon jelenik meg.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **Name**                  | *demo-conference-api*                              | Egyedi nevet ad meg az API-nak. <br/>Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Name (Név)**                  | *demo-conference-api*                              | Egyedi nevet ad meg az API-nak. <br/>Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | **Leírás**           | Adjon meg egy opcionális leírást az API-hoz.        | Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     | **URL-séma**            | *HTTPS*                                            | Meghatározza, mely protokollok használatával lehet hozzáférni az API-hoz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | **API URL-címének utótagja**        | *conference*                                       | Az utótag az API Management szolgáltatás kiindulási URL-címéhez van hozzáfűzve. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Termékek**              | *Korlátlan*                                        | A termékek egy vagy több API társításai. Megadhatja az API-k számát egy termékben, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>Az API egy termékkel (ebben a példában *Unlimited*) való társítással tehető közzé. Az új API termékhez történő hozzáadásához adja meg a termék nevét (ezt később is megteheti a **Beállítások** lapon). Ez a lépés többször is megismételhető, így az az API több termékhez is hozzáadható.<br/>Ahhoz, hogy a fejlesztők hozzáférhessenek az API-hoz, elő kell fizetniük a termékre. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. <br/> Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így minden termékre előfizetett.<br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Kezdő** és **korlátlan**. |
+    | **Termékek**              | *Korlátlan*                                        | A termékek egy vagy több API társításai. Megadhatja az API-k számát egy termékben, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>Az API egy termékkel (ebben a példában *Unlimited*) való társítással tehető közzé. Az új API termékhez történő hozzáadásához adja meg a termék nevét (ezt később is megteheti a **Beállítások** lapon). Ez a lépés többször is megismételhető, így az az API több termékhez is hozzáadható.<br/>Ahhoz, hogy a fejlesztők hozzáférhessenek az API-hoz, elő kell fizetniük a termékre. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. <br/> Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így minden termékre előfizetett.<br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**. |
     | **Címkék**                  |                                                    | API-k rendszerezésére szolgáló címkék. A címkék kereséshez, csoportosításhoz vagy szűréshez használhatók.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
     | **Az API verziója?**     |                                                    | További információ a verziókezelésről: [Az API több verziójának közzététele](api-management-get-started-publish-versions.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
@@ -75,7 +75,7 @@ Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API import
 > [!TIP]
 > Ha problémát tapasztal saját API-definíciójának importálása során, [tekintse meg az ismert problémák és korlátozások listáját](api-management-api-import-restrictions.md).
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Az új APIM API tesztelése az Azure Portalon
+## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
 
 ![API-leképezés tesztelése](./media/api-management-get-started/01-import-first-api-01.png)
 
@@ -88,23 +88,6 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
     A háttér a **200 OK** üzenetet és néhány adatot küld válaszként.
 
-## <a name="call-operation"></a>Művelet meghívása a fejlesztői portálról
-
-Műveletek is meghívhatók a **fejlesztői portálról** az API-k teszteléséhez.
-
-1. Lépjen a **fejlesztői portálra**.
-
-    ![Fejlesztői portál](./media/api-management-get-started/developer-portal.png)
-
-2. Kattintson az **API-k**, majd a **Demo Conference API**, majd a **GetSpeakers** lehetőségre.
-
-    A lapon megjelennek a lekérdezési paraméterek mezői (ilyenek ebben az esetben nincsenek), valamint a fejlécek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer.
-
-3. Kattintson a **Kipróbálás** gombra.
-4. Kattintson a **Küldés** gombra.
-
-    A művelet meghívása után a fejlesztői portál megjeleníti a válaszokat.  
-
 ## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
@@ -112,7 +95,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Az első API importálása
 > * Az API tesztelése az Azure Portalon
-> * Az API tesztelése a fejlesztői portálon
 
 Folytassa a következő oktatóanyaggal:
 

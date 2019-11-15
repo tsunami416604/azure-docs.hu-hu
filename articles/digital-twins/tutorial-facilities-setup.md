@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: térbeli gráf üzembe helyezése – Azure digitális Twins | Microsoft Docs'
+title: 'Oktatóanyag: Azure digitális Twins üzembe helyezése'
 description: Ismerje meg, hogyan helyezheti üzembe az Azure digitális Twins-példány, és a térbeli erőforrások konfigurálása az ebben az oktatóanyagban szereplő lépések segítségével.
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: e78a85ac590cc6c6f501774a2cdd64a4544676a1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4d4e7e47b82c46cca53fab0540a4867031eaab85
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039435"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107741"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: az Azure digitális Twins előzetes verziójának üzembe helyezése és a térbeli gráf konfigurálása
 

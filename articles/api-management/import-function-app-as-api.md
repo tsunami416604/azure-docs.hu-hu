@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 7e9215d7250628ed9177e097d127a1554a1f0ea0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073351"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107845"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -74,7 +74,7 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-06.png)
 
-8. Kattintson a **Create** (Létrehozás) gombra.
+8. Kattintson a **Létrehozás** gombra.
 
 ## <a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
 
@@ -106,7 +106,7 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
 
-8. Kattintson az **Importálás** elemre.
+8. Kattintson a **importálás**.
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 
@@ -117,7 +117,7 @@ Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a köve
 * A függvényalkalmazáson belüli APIM-{az*Azure API Management szolgáltatási példányának neve*} nevű gazdagép kulcsa,
 * Megnevezett érték az Azure API Management példányban, amelynek neve {az*azure függvényalkalmazás példánynév*} – kulcs, amely a létrehozott gazdagép kulcsát tartalmazza.
 
-A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a rendszer a API Management lévő HTTP-kérésekben továbbítja a fejlécben található függvényalkalmazás. A régebbi API-k lekérdezési [paraméterként](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)adják át a gazdagép kulcsát. Ez a viselkedés a függvényalkalmazáshoz társított `PATCH Backend` *háttér* -entitás [REST API hívásával](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) módosítható.
+A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a rendszer a API Management lévő HTTP-kérésekben továbbítja a fejlécben található függvényalkalmazás. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)adják át a gazdagép kulcsát. Ez a viselkedés a függvényalkalmazáshoz társított *háttér* -entitás `PATCH Backend` [REST API hívásával](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) módosítható.
 
 > [!WARNING]
 > Az új Azure-függvényalkalmazás gazdagépkulcsának vagy az Azure API Management névvel ellátott értékének eltávolítása vagy megváltoztatása megszakítja a szolgáltatások közti kommunikációt. Az értékek nem szinkronizálódnak automatikusan.
@@ -142,7 +142,7 @@ Az Azure API Management példányában válassza a **Névvel ellátott értékek
 
 ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a> Az új API Management API tesztelése az Azure Portalon
+## <a name="test-in-azure-portal"></a>Az új API tesztelése a Azure Portal
 
 Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon kényelmesen megtekintheti és tesztelheti az API-k műveleteit.  
 
@@ -158,29 +158,9 @@ Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon ké
 
     A háttérrendszer a **200 OK** üzenetet és néhány adatot küld válaszként.
 
-## <a name="test-in-developer-portal"></a> Művelet meghívása a fejlesztői portálról
-
-A műveletek meghívhatók a fejlesztői portálról is az API-k teszteléséhez. 
-
-1. Válassza ki az importálás során létrehozott API-t, és tegye közzé a háttérbeli API-t.
-
-2. Válassza ki a **fejlesztői portált**.
-
-    Megnyílik a fejlesztői portál webhelye.
-
-3. Jelölje ki a létrehozott **API**-t.
-
-4. Válassza ki a tesztelni kívánt műveletet.
-
-5. Kattintson a **Kipróbálás** lehetőségre.
-
-6. Kattintson a **Küldés** gombra.
-    
-    A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz állapota**, a **Válasz fejlécei** és a **Válasz tartalma** minden információját.
-
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

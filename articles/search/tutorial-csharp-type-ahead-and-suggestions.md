@@ -1,25 +1,25 @@
 ---
 title: C#oktatóanyag az autocomplete és a javaslatok kapcsán
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag a "keresési eredmények tördelése – Azure Cognitive Search" projektre épül az autocomplete és a javaslatok hozzáadásához. A cél egy gazdagabb felhasználói élmény. Megtudhatja, hogyan egyesítheti a javaslatok legördülő listáját a beágyazott autocomplete használatával.
+description: Ez az oktatóanyag azt mutatja be, hogy az autocomplete és a javaslatok Hogyan gyűjthetik be a keresési kifejezéseket a felhasználóktól a legördülő lista használatával. Egy meglévő Hotels-projektre épül.
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786508"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114563"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#Oktatóanyag: az autocomplete és a javaslatok hozzáadása – Azure Cognitive Search
 
 Megtudhatja, hogyan valósítja meg az autocomplete (előre nem látható és javaslatok) megvalósítását, amikor a felhasználó elkezd begépelni a keresőmezőbe. Ebben az oktatóanyagban a típuson belüli eredményeket és a javaslatok eredményeit külön-külön mutatjuk be, majd egy olyan metódust mutatunk be, amely kombinálja őket egy gazdagabb felhasználói élmény létrehozásához. Egy felhasználónak csak két vagy három kulcsot kell beírnia az összes elérhető eredmény megkereséséhez. Ez az oktatóanyag az [ C# oktatóanyagban létrehozott lapozási projektre épül: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Javaslatok hozzáadása
 > * Kiemelés hozzáadása a javaslatokhoz
@@ -80,7 +80,7 @@ A fenti parancsfájlban meghívott automatikus kiegészítési függvény nem va
     </head>
     ```
 
-2. Az _Layout. cshtml fájlban (a **nézetek/megosztott** mappában) is el kell távolítania vagy ki kell mondania egy jQuery-re hivatkozó sort. Keresse meg a következő sorokat, és tegye megjegyzésbe az első parancsfájlt az ábrán látható módon. Ez a változás megakadályozza a jQuery-re mutató hivatkozások összeütközését.
+2. Emellett el kell távolítania vagy ki kell mondania egy jQuery-re hivatkozó sort a _Layout. cshtml fájlban (a **views/Shared** mappában). Keresse meg a következő sorokat, és tegye megjegyzésbe az első parancsfájlt az ábrán látható módon. Ez a változás megakadályozza a jQuery-re mutató hivatkozások összeütközését.
 
     ```html
     <environment include="Development">
@@ -311,7 +311,7 @@ Vannak olyan kódtárak, amelyek ezt a funkciót használják – gyakran "beág
 
     Az **eredmények** listájának tetején egy autocomplete beállítást ad vissza, amelyet a javaslatok követnek.
 
-2. A nézetben először egy olyan trükköt teszünk elérhetővé, hogy egy világosszürke autocomplete szó közvetlenül a felhasználó által megadott merészebb-szöveg alatt legyen megjelenítve. A HTML relatív elhelyezést is tartalmaz erre a célra. Módosítsa a **TextBoxFor** utasítást (és a körülötte lévő &lt;div&gt; utasításokat) a következőre, és megállapítsa, hogy az **alatta** lévő második keresőmező közvetlenül a normál keresőmező alatt található, ehhez a keresőmező 39 képpont kikapcsolásával az alapértelmezett hely!
+2. A nézetben először egy olyan trükköt teszünk elérhetővé, hogy egy világosszürke autocomplete szó közvetlenül a felhasználó által megadott merészebb-szöveg alatt legyen megjelenítve. A HTML relatív elhelyezést is tartalmaz erre a célra. Módosítsa a **TextBoxFor** utasítást (és a körülötte lévő &lt;div&gt; utasításokat) a következőre, és megállapítsa, hogy az **alatta** lévő második keresőmező közvetlenül a normál keresőmező alatt található, ehhez a keresőmező 39 képpontját húzza ki az alapértelmezett helyükről.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -433,7 +433,7 @@ Vannak olyan kódtárak, amelyek ezt a funkciót használják – gyakran "beág
     </script>
     ```
 
-    Figyelje meg, hogy az **intervallum** függvény okosan használja a mögöttes szöveget, ha már nem egyezik meg a felhasználó által beírt szöveggel, valamint hogy ugyanazt az esetet (felső vagy alsó) állítja be, ahogy a felhasználó begépeli (a "PA" a "PA", a "PA", a "PA" karakterláncot keresi) , hogy a betakart szöveg szép legyen.
+    Figyelje meg, hogy az **intervallum** függvény okosan használja a mögöttes szöveget, ha már nem egyezik meg a felhasználó által beírt szöveggel, és azt is, hogy a felhasználó beírásakor ugyanezt a kis-és nagybetűket (a "PA" a "PA", a "PA", a "PA" karakterláncot) adja meg, hogy az átfedett szöveg szép legyen.
 
     Tekintse át a szkript megjegyzéseit, és ismerkedjen meg a teljes körű ismeretekkel.
 
