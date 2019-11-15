@@ -5,7 +5,7 @@ metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
   title: 'A Bing Visual Search API dokumentációja – oktatóanyagok, gyorsútmutatók, API-referenciák'
   titleSuffix: Azure Cognitive Services
-  description: 'Útmutató a Bing Visual Search API használatához, amellyel egy képpel kapcsolatos információkat jeleníthet meg.'
+  description: 'A kép feltöltése vagy a kép URL-címének megadása után az API számos részletet azonosít a képpel kapcsolatban, és vizuálisan hasonló képeket, vásárlási lehetőségeket és weboldalakat ad vissza találatként.'
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
