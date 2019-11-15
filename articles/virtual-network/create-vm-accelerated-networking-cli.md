@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure virtuális gép gyorsított hálózatkezelésű |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre Linux rendszerű virtuális gép gyorsított hálózatkezelés engedélyezett.
+title: Gyorsított hálózatkezelést használó Azure-beli virtuális gép létrehozása az Azure CLI-vel
+description: Megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet, ha engedélyezve van a gyorsított hálózatkezelés.
 services: virtual-network
 documentationcenter: na
 author: gsilva5
@@ -16,85 +16,85 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873419"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083674"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel az Azure CLI használatával
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy Linux rendszerű virtuális gép (VM) gyorsított hálózatkezelésű. Windows virtuális gép gyorsított hálózatkezelésű létrehozásához lásd: [hozzon létre egy Windows virtuális gép gyorsított hálózatkezelésű](create-vm-accelerated-networking-powershell.md). Gyorsított hálózatkezelés lehetővé teszi, hogy az egygyökerű i/o-virtualizálás (SR-IOV) egy virtuális géphez, nagy mértékben javítva a hálózati teljesítmény. A nagy teljesítményű elérési út megkerüli a gazdagép a datapath csökkenti a késés, a jitter és a Processzor kihasználtsága a legnagyobb hálózati számítási a támogatott Virtuálisgép-típusok való használatra. Az alábbi képen látható a két virtuális gépet, és anélkül gyorsított hálózatkezelés közötti kommunikáció:
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy linuxos virtuális gépet (VM) a gyorsított hálózatkezeléssel. A gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gépek létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](create-vm-accelerated-networking-powershell.md). A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál. Az alábbi képen a két virtuális gép közötti kommunikáció gyorsított hálózatkezeléssel és anélkül látható:
 
 ![Összehasonlítás](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-Gyorsított hálózatkezelés nélkül a-ból a virtuális gép minden hálózati forgalmat kell haladnak át, a gazdagép és a virtuális kapcsolóhoz. A virtuális kapcsoló az összes házirend betartatása, például a hálózati biztonsági csoportok, hozzáférés-vezérlési listák, elkülönítési és egyéb hálózati forgalom virtualizált hálózati szolgáltatások biztosít. Virtuális kapcsolók kapcsolatos további információkért olvassa el a [Hyper-V hálózatvirtualizálás és a virtuális kapcsoló](https://technet.microsoft.com/library/jj945275.aspx) cikk.
+A gyorsított hálózatkezelés nélkül a virtuális GÉPEN belüli és kívüli összes hálózati forgalomnak át kell haladnia a gazdagépen és a virtuális kapcsolón. A virtuális kapcsoló biztosítja az összes házirend-kényszerítést, például a hálózati biztonsági csoportokat, a hozzáférés-vezérlési listát, az elkülönítést és az egyéb, a hálózati forgalomhoz tartozó virtualizált szolgáltatásokat. Ha többet szeretne megtudni a virtuális kapcsolókról, olvassa el a [Hyper-V hálózati virtualizálás és a virtuális kapcsoló](https://technet.microsoft.com/library/jj945275.aspx) című cikket.
 
-Gyorsított hálózatkezeléssel, a hálózati forgalom szolgáltatáshoz érkezik, a virtuális gép hálózati adapteréhez (NIC), és továbbítja a virtuális Gépet. Minden hálózati házirendek, amelyekre vonatkozik a virtuális kapcsoló most kiszervezett és hardver a alkalmazni. A hardver házirend alkalmazása lehetővé teszi, hogy a hálózati Adaptert a hálózati forgalom közvetlenül az a virtuális Gépet, a gazdagép és a virtuális kapcsolót, megkerülése, alkalmazza a gazdagép minden házirend fenntartásával.
+A gyorsított hálózatkezeléssel a hálózati forgalom a virtuális gép hálózati adapterén (NIC) érkezik, majd továbbítva lesz a virtuális géphez. A virtuális kapcsoló által érintett összes hálózati házirend már ki van kiszervezve és alkalmazva a hardveren. A szabályzat a hardveren való alkalmazása lehetővé teszi, hogy a hálózati adapter közvetlenül a virtuális gépre továbbítsa a hálózati forgalmat, megkerülve a gazdagépet és a virtuális kapcsolót, miközben a gazdagépen alkalmazott összes házirendet megőrzi.
 
-A gyorsított hálózatkezelés előnyeit csak a virtuális gép, amely engedélyezve van a vonatkoznak. A legjobb eredmények érdekében ideális engedélyezze ezt a funkciót, legalább két virtuális gépet az azonos Azure virtuális hálózat (VNet). Való kommunikációhoz, virtuális hálózatok közötti vagy helyszíni összekötő, ez a funkció csak minimális befolyással van a teljes késést.
+A gyorsított hálózatkezelés előnyei csak azokra a virtuális gépekre érvényesek, amelyeken engedélyezve van a szolgáltatás. A legjobb eredmények elérése érdekében ideális, ha ezt a funkciót legalább két, ugyanahhoz az Azure Virtual Network (VNet) hálózathoz csatlakozó virtuális gépre engedélyezi. A virtuális hálózatok keresztüli kommunikáció vagy a helyszíni csatlakozás esetén ez a funkció minimális hatással van a teljes késésre.
 
 ## <a name="benefits"></a>Előnyök
-* **Rövidebb válaszidőt / magasabb szintű csomag / másodperc (pps):** A virtuális kapcsoló eltávolítása a datapath eltávolítja a csomagok töltött idő a gazdagép a csoportházirend feldolgozása, és növeli a dolgozhatók fel a virtuális gép csomagok száma.
-* **Végrehajtását alacsonyabb jitter:** Virtuáliskapcsoló-feldolgozó a szabályzatot, amely a alkalmazni mennyiségét és a munkaterhelés, a CPU, amely a feldolgozási függ. A házirend betartatása hardverre tehermentesítést eltávolítja az adott változékonyságát azáltal, hogy a csomagok közvetlenül a virtuális gép eltávolítása a gazdagépet a virtuális gép kommunikációs és az összes szoftver megszakítások és környezeti kapcsolók a.
-* **Csökkent a CPU-kihasználtság:** A virtuális kapcsoló a gazdagép megkerülésével kevesebb hálózati forgalom feldolgozása tekintetében CPU-kihasználtság vezet.
+* **Kisebb késés/nagyobb csomagok másodpercenként (PPS):** Ha eltávolítja a virtuális kapcsolót a DataPath, azzal eltávolítja a gazdagépen a házirendek feldolgozására fordított időt, és növeli a virtuális gépen belül feldolgozható csomagok számát.
+* **Csökkentett Jitter:** A virtuális kapcsolók feldolgozása az alkalmazandó házirend mennyiségétől és a feldolgozást végző CPU munkaterheléstől függ. A szabályzat kényszerítésének a hardverre való kiszervezése eltávolítja a változékonyságot a csomagok közvetlenül a virtuális géphez való továbbításával, a gazdagép és a virtuális gépek közötti kommunikáció, valamint az összes szoftveres megszakítás és környezeti kapcsoló eltávolításával.
+* **Csökkent CPU-kihasználtság:** A gazdagépen lévő virtuális kapcsoló megkerülése kevesebb CPU-kihasználtságot eredményez a hálózati forgalom feldolgozásakor.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-A következő disztribúciók az Azure katalógusából beépített támogatottak: 
-* **Az linux-azure kernel Ubuntu 14.04**
-* **Ubuntu 16.04 vagy újabb** 
-* **SLES12 SP3 vagy újabb** 
-* **RHEL 7.4-es vagy újabb**
-* **CentOS 7.4-es vagy újabb**
+Az Azure-katalógusból az alábbi disztribúciók támogatottak: 
+* **Ubuntu 14,04 Linux rendszeren – Azure kernel**
+* **Ubuntu 16,04 vagy újabb** 
+* **SLES12 SP3 vagy újabb verzió** 
+* **RHEL 7,4 vagy újabb**
+* **CentOS 7,4 vagy újabb**
 * **CoreOS Linux**
-* **Debian "kiterjeszthető" portolások kernel**
-* **Oracle Linux 7.4-es és újabb verziók a Red Hat kompatibilis Kernel (RHCK)**
-* **Oracle Linux 7.5 vagy újabb a UEK 5-ös verzió**
-* **FreeBSD 10.4, 11.1 & 12.0-s**
+* **Debian "stretch" a backports kernelrel**
+* **Oracle Linux 7,4-es és újabb verziók a Red hat-kompatibilis Kernelrel (RHCK)**
+* **Oracle Linux 7,5 és újabb verzió a UEK 5-ös verziójával**
+* **FreeBSD 10,4, 11,1 & 12,0**
 
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
-### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
-Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat a következők: D/DSv2 és az F/Fs
+### <a name="supported-vm-instances"></a>Támogatott VM-példányok
+A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja 2 vagy több vCPU.  A támogatott adatsorozatok a következők: D/DSv2 és F/FS
 
-Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat a következők: A Dsv3/D, E/Esv3, Fsv2, Lsv2, Ms és Mms és Ms/Mmsv2.
+A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy több vCPU rendelkező virtuálisgép-példányok támogatják. A támogatott adatsorozatok: D/Dsv3, E/Esv3, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
 
-További információ a Virtuálisgép-példányokon: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuálisgép-példányokkal kapcsolatos további információkért lásd: Linux rendszerű [virtuális gépek mérete](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="regions"></a>Régiók
-Elérhető minden nyilvános Azure-régióban, valamint az Azure Government felhőben.
+### <a name="regions"></a>Regions
+Az összes nyilvános Azure-régióban, valamint Azure Government felhőkben is elérhető.
 
 <!-- ### Network interface creation 
 Accelerated networking can only be enabled for a new NIC. It cannot be enabled for an existing NIC.
 removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
-### <a name="enabling-accelerated-networking-on-a-running-vm"></a>A futó virtuális gép gyorsított hálózatkezelés engedélyezése
-Gyorsított hálózatkezelés engedélyezett nélkül támogatott virtuális gép mérete legfeljebb a funkció engedélyezve van a leállítása és felszabadítása.  
-### <a name="deployment-through-azure-resource-manager"></a>Üzembe helyezés Azure Resource Manager használatával
-Gyorsított hálózatkezelésű nem állítható rendszerbe a virtuális gépek (klasszikus).
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Gyorsított hálózatkezelés engedélyezése egy futó virtuális gépen
+A gyorsított hálózatkezelést nem támogató, támogatott virtuálisgép-méret csak akkor engedélyezhető, ha a funkció le van állítva és fel van foglalva.  
+### <a name="deployment-through-azure-resource-manager"></a>Üzembe helyezés Azure Resource Manageron keresztül
+A virtuális gépek (klasszikus) a gyorsított hálózatkezeléssel nem helyezhetők üzembe.
 
-## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Linux rendszerű virtuális gép létrehozása az Azure gyorsított hálózatkezelés
+## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Linux rendszerű virtuális gép létrehozása az Azure gyorsított hálózatkezeléssel
 ## <a name="portal-creation"></a>Portál létrehozása
-Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure CLI-vel gyorsított hálózatkezeléssel, is [virtuális gép létrehozása az Azure portal használatával gyorsított hálózatkezeléssel](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Az a portálon, a virtuális gép létrehozásakor a **hozzon létre egy virtuális gépet** panelen válassza ki a **hálózati** fülre.  Ezen a lapon lehetősége van a **gyorsított hálózatkezelés**.  Ha úgy döntött, egy [támogatott operációs rendszert](#supported-operating-systems) és [Virtuálisgép-méret](#supported-vm-instances), ezzel a beállítással automatikusan feltölti az "On".  Ha nem, akkor töltse fel a gyorsított hálózatkezelés "Kikapcsolva" lehetőséget, és a felhasználó okot miért nem lehet engedélyezve van.   
+Bár ez a cikk a gyorsított hálózatkezelést használó virtuális gépek Azure CLI használatával történő létrehozását ismerteti, a [Azure Portal használatával létrehozhat egy gyorsított hálózatkezeléssel rendelkező virtuális gépet](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)is. Amikor virtuális gépet hoz létre a portálon, a **virtuális gép létrehozása** panelen válassza a **hálózatkezelés** lapot.  Ezen a lapon van lehetőség a **gyorsított hálózatkezelésre**.  Ha a [támogatott operációs rendszert](#supported-operating-systems) és virtuálisgép- [méretet](#supported-vm-instances)választotta, akkor ez a beállítás automatikusan betöltődik a "be" értékre.  Ha nem, akkor feltölti a felgyorsított hálózatkezelés "off" beállítását, és megadja a felhasználónak, hogy miért nem engedélyezhető.   
 
-* *Megjegyzés:* Csak a támogatott operációs rendszerek a portálon keresztül engedélyezhető.  Ha egy egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelés, hozzon létre a virtuális gép parancssori felület vagy Powershell használatával. 
+* *Megjegyzés:* Csak a támogatott operációs rendszerek engedélyezhetők a portálon keresztül.  Ha egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelést, akkor a parancssori felület vagy a PowerShell használatával hozza létre a virtuális gépet. 
 
-A virtuális gép létrehozása után a gyorsított hálózatkezelés engedélyezve van a következő témakör utasításait követve ellenőrizheti a [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
+A virtuális gép létrehozása után megerősítheti a gyorsított hálózatkezelést, ha azt [szeretné, hogy a gyorsított hálózatkezelés engedélyezve legyen](#confirm-that-accelerated-networking-is-enabled).
 
-## <a name="cli-creation"></a>Parancssori felület létrehozása
+## <a name="cli-creation"></a>CLI-létrehozás
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index). A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt *myResourceGroup*, *myNic*, és *myVm*.
+Telepítse a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és jelentkezzen be egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával. Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *myNic*és *myVm*.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroup* a a *centralus* helye:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *CentralUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
 ```
 
-Válassza ki a felsorolt támogatott Linux-régióban [Linuxos gyorsított hálózatkezelést](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
+Válasszon egy támogatott Linux-régiót a [Linux-gyorsított hálózatkezelésben](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. A következő példában létrehozunk egy nevű virtuális hálózatot *myVnet* egyetlen alhálózattal:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Az alábbi példa egy *myVnet* nevű virtuális hálózatot hoz létre egy alhálózattal:
 
 ```azurecli
 az network vnet create \
@@ -106,7 +106,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](/cli/azure/network/nsg). A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
+Hozzon létre egy hálózati biztonsági csoportot az [az Network NSG Create](/cli/azure/network/nsg)paranccsal. A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
 
 ```azurecli
 az network nsg create \
@@ -114,7 +114,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-A hálózati biztonsági csoport több alapértelmezett szabályokat, amelyek közül az egyik letiltja az internetről érkező összes bejövő hozzáférést tartalmaz. Nyisson meg egy portot a virtuális gép SSH-hozzáférésének engedélyezése [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule):
+A hálózati biztonsági csoport több alapértelmezett szabályt tartalmaz, amelyek közül az egyik letiltja az internetről érkező összes bejövő hozzáférést. Nyisson meg egy portot, hogy engedélyezze az SSH-hozzáférést a virtuális géphez az [az Network NSG Rule Create](/cli/azure/network/nsg/rule)paranccsal:
 
 ```azurecli
 az network nsg rule create \
@@ -131,9 +131,9 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-### <a name="create-a-network-interface-with-accelerated-networking"></a>Hozzon létre egy hálózati adapter gyorsított hálózatkezelés
+### <a name="create-a-network-interface-with-accelerated-networking"></a>Hálózati adapter létrehozása gyorsított hálózatkezeléssel
 
-Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. Nyilvános IP-cím nem szükséges, ha nem a virtuális gép elérhető az internetről, de a cikkben ismertetett lépések végrehajtásához, szükség rá.
+Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. Nincs szükség nyilvános IP-cím megadására, ha nem tervezi a virtuális gép internetről való elérését, de a cikk lépéseinek elvégzéséhez szükség van rá.
 
 ```azurecli
 az network public-ip create \
@@ -141,7 +141,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-Hozzon létre egy hálózati adaptert a [az network nic létrehozása](/cli/azure/network/nic) gyorsított hálózatkezeléssel engedélyezve van. A következő példában létrehozunk egy hálózati adapter nevű *myNic* a a *mySubnet* alhálózatának a *myVnet* virtuális hálózathoz, és hozzárendeli a  *myNetworkSecurityGroup* hálózati biztonsági csoportot a hálózati adapterhez:
+Hozzon létre egy hálózati adaptert az [az Network NIC Create](/cli/azure/network/nic) paranccsal, és engedélyezze a gyorsított hálózatkezelést. A következő példa létrehoz egy *myNic* nevű hálózati adaptert a *MyVnet* virtuális hálózat *mySubnet* alhálózatán, és hozzárendeli a *myNetworkSecurityGroup* hálózati biztonsági csoportot a hálózati adapterhez:
 
 ```azurecli
 az network nic create \
@@ -154,10 +154,10 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-### <a name="create-a-vm-and-attach-the-nic"></a>Hozzon létre egy virtuális Gépet, és a hálózati adapter csatolása
-A virtuális gép létrehozásakor adja meg a hálózati adapter segítségével létrehozott `--nics`. Válasszon ki egy mérete és a felsorolt terjesztési [Linuxos gyorsított hálózatkezelést](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
+### <a name="create-a-vm-and-attach-the-nic"></a>Virtuális gép létrehozása és a hálózati adapter csatlakoztatása
+A virtuális gép létrehozásakor meg kell adnia a `--nics`-vel létrehozott hálózati adaptert. Válassza ki a [Linux-gyorsított hálózatkezelésben](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)felsorolt méretet és eloszlást. 
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* a UbuntuLTS-rendszerkép, és amely támogatja a gyorsított hálózatkezelés (*Standard_DS4_v2*):
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a UbuntuLTS-lemezképpel és egy olyan mérettel, amely támogatja a gyorsított hálózatkezelést (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \
@@ -170,9 +170,9 @@ az vm create \
     --nics myNic
 ```
 
-Az összes Virtuálisgép-méretek és jellemzői, lásd: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuális gépek méretének és jellemzőinek listáját lásd: Linux rendszerű [virtuális gépek méretei](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-A virtuális gép létrehozása után az alábbi példa kimenetében hasonló kimenetet ad vissza. Jegyezze fel a **publicIpAddress** értékét. Ezzel a címmel eléri a virtuális Gépet, a későbbi lépésekben.
+A virtuális gép létrehozása után a rendszer a következő példában szereplő kimenethez hasonló kimenetet ad vissza. Jegyezze fel a **publicIpAddress** értékét. Ez a címe a virtuális gép a következő lépésekben való elérésére szolgál.
 
 ```azurecli
 {
@@ -187,23 +187,23 @@ A virtuális gép létrehozása után az alábbi példa kimenetében hasonló ki
 }
 ```
 
-### <a name="confirm-that-accelerated-networking-is-enabled"></a>Győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>Annak ellenőrzése, hogy engedélyezve van-e a gyorsított hálózat
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le `<your-public-ip-address>` a nyilvános IP-cím rendelve a virtuális gép létrehozott, és cserélje le *azureuser* eltérő értékeket használatakor `--admin-username` a virtuális gép létrehozásakor.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le a `<your-public-ip-address>`t a létrehozott virtuális géphez hozzárendelt nyilvános IP-címhez, és cserélje le az *azureuser* -t, ha a virtuális gép létrehozásakor más értéket használt `--admin-username`.
 
 ```bash
 ssh azureuser@<your-public-ip-address>
 ```
 
-Adja meg a Bash felületen `uname -r` , és győződjön meg arról, hogy a kernel verziója egyet a következő verziójú vagy újabb:
+A bash rendszerhéjból írja be `uname -r`, és ellenőrizze, hogy a kernel verziója a következő verziók egyike-e, vagy nagyobb-e:
 
-* **Ubuntu 16.04**: 4.11.0-1013
+* **Ubuntu 16,04**: 4.11.0 – 1013
 * **SLES SP3**: 4.4.92-6.18
 * **RHEL**: 7.4.2017120423
 * **CentOS**: 7.4.20171206
 
 
-Erősítse meg a Mellanox VF eszköz közvetlenül csatlakozik a virtuális Gépet a `lspci` parancsot. A visszaadott kimenetet az alábbi kimenet hasonlít:
+Ellenőrizze, hogy a Mellanox VF eszköz elérhető-e a virtuális géphez a `lspci` paranccsal. A visszaadott kimenet a következő kimenethez hasonló:
 
 ```bash
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
@@ -214,7 +214,7 @@ Erősítse meg a Mellanox VF eszköz közvetlenül csatlakozik a virtuális Gép
 0001:00:02.0 Ethernet controller: Mellanox Technologies MT27500/MT27520 Family [ConnectX-3/ConnectX-3 Pro Virtual Function]
 ```
 
-Kérdezze a VF (virtuális függvény) tevékenységre a `ethtool -S eth0 | grep vf_` parancsot. Ha megjelenik a kimeneti kimeneti engedélyezve van a gyorsított hálózatkezelés és használatához a következő mintához hasonló.
+Keressen tevékenységeket a VF (virtuális függvény) és a `ethtool -S eth0 | grep vf_` paranccsal. Ha a következő mintához hasonló kimenetet kap, a gyorsított hálózatkezelés engedélyezve és működik.
 
 ```bash
 vf_rx_packets: 992956
@@ -223,21 +223,21 @@ vf_tx_packets: 2656684
 vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
-Gyorsított hálózatkezelés engedélyezve van a virtuális géphez.
+A gyorsított hálózatkezelés mostantól engedélyezve van a virtuális gépen.
 
-## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>Dinamikus kötés és -visszavonás virtuális függvény kezeléséhez 
-Alkalmazások a szintetikus hálózati Adaptert, amely ki van téve a virtuális Gépen keresztül kell futtatnia. Ha az alkalmazás közvetlenül a hálózati adapter VF keresztül futtat, akkor nem kap **összes** a virtuális géphez, mivel az egyes csomagok mutatja a szintetikus adapter küldött csomagokat.
-Ha egy alkalmazás a szintetikus hálózati adapter keresztül futtatja, Ez garantálja, hogy az alkalmazás fogad **összes** csomagokat, amelyek végül azt. Azt is gondoskodik arról, hogy a rendszer az alkalmazás továbbra is működik, akkor is, ha a VF vissza lett vonva, ha a gazdagép javítás alatt áll. Alkalmazások a szintetikus hálózati Adapterhez kötve van egy **kötelező** kihasználhatja a minden alkalmazás esetében követelmény **gyorsított hálózatkezelés**.
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>A virtuális függvény dinamikus kötésének és visszavonásának kezelése 
+Az alkalmazásoknak a virtuális gépen elérhető szintetikus hálózati adapteren kell futniuk. Ha az alkalmazás közvetlenül a VF hálózati adapteren fut, nem kapja meg a virtuális géphez tartozó **összes** csomagot, mivel egyes csomagok megjelennek a szintetikus felületen.
+Ha a szintetikus hálózati adapteren keresztül futtat egy alkalmazást, az garantálja, hogy az alkalmazás megkapja az **összes** olyan csomagot, amely erre a célra szolgál. Azt is ellenőrzi, hogy az alkalmazás folyamatosan fut-e, még akkor is, ha a VF-t visszavonják a gazdagép kiszolgálása során. A szintetikus hálózati ADAPTERhez kötődő alkalmazások **kötelező** követelményt jelentenek az összes alkalmazás számára, amely kihasználja a **gyorsított hálózatkezelést**.
 
-## <a name="enable-accelerated-networking-on-existing-vms"></a>A meglévő virtuális gépek gyorsított hálózatkezelés engedélyezéséhez
-Létrehozott egy virtuális gép gyorsított hálózatkezelés nélkül, célszerű lehet engedélyezni ezt a funkciót egy meglévő virtuális Gépet.  A virtuális gép támogatnia kell a gyorsított hálózatkezelés az alábbi előfeltételek is fent leírt feltételek:
+## <a name="enable-accelerated-networking-on-existing-vms"></a>Gyorsított hálózatkezelés engedélyezése meglévő virtuális gépeken
+Ha felgyorsított hálózatkezelés nélküli virtuális gépet hozott létre, akkor lehetséges, hogy egy meglévő virtuális gépen engedélyezte ezt a funkciót.  A virtuális gépnek támogatnia kell a gyorsított hálózatkezelést az alábbi, a fent ismertetett előfeltételek teljesítésével:
 
-* A virtuális Gépnek kell lennie egy támogatott méret gyorsított hálózatkezelés
-* A virtuális Gépet egy támogatott Azure Gallery-image (és a Linux-Kernelverzió) kell lennie.
-* Rendelkezésre állási csoportban lévő összes virtuális gép vagy VMSS kell leállítva és felszabadítva bármely NIC gyorsított hálózatkezelés engedélyezése előtt
+* A virtuális gépnek a gyorsított hálózatkezeléshez támogatott méretnek kell lennie
+* A virtuális gépnek támogatott Azure Gallery-rendszerképnek (és Linux kernel-verziónak) kell lennie
+* A rendelkezésre állási csoportokban vagy VMSS lévő virtuális gépeket le kell állítani/fel kell osztani a gyorsított hálózatkezelés bármely hálózati adapteren való engedélyezése előtt.
 
-### <a name="individual-vms--vms-in-an-availability-set"></a>Az egyes virtuális gépek és virtuális gépek a rendelkezésre állási beállítása
-Először állítsa le vagy szabadítsa fel a virtuális gép vagy, ha a rendelkezésre állási csoport, a csoport összes virtuális gépen:
+### <a name="individual-vms--vms-in-an-availability-set"></a>A rendelkezésre állási csoportba tartozó egyes virtuális gépek & virtuális gépek
+Először állítsa le/szabadítsa fel a virtuális gépet, vagy ha rendelkezésre állási csoport, a készletben lévő összes virtuális gép:
 
 ```azurecli
 az vm deallocate \
@@ -245,9 +245,9 @@ az vm deallocate \
     --name myVM
 ```
 
-Fontos, kérjük vegye figyelembe, hogy ha a virtuális gép külön-külön, egy rendelkezésre állási csoportban, akkor csak nélkül hozták létre kell az egyes virtuális gép gyorsított hálózatkezelés engedélyezéséhez állítsa le vagy szabadítsa fel.  Ha a gép egy rendelkezésre állási csoport létrehozásakor, a rendelkezésre állási csoportban található összes virtuális gép kell leállítva és felszabadítva lehet bármelyik hálózati adapter gyorsított hálózatkezelés engedélyezése előtt. 
+Fontos megjegyezni, hogy ha a virtuális gépet különállóan hozták létre, rendelkezésre állási csoport nélkül, a gyorsított hálózatkezelés engedélyezéséhez csak le kell állítania/fel kell szabadítania az egyes virtuális gépeket.  Ha a virtuális gép rendelkezésre állási csoporttal lett létrehozva, a rendelkezésre állási csoportba tartozó összes virtuális gépet le kell állítani/fel kell szüntetni, mielőtt engedélyezné a gyorsított hálózatkezelést bármelyik hálózati adapteren. 
 
-Leállítását követően engedélyezze a hálózati adapteren a virtuális gép gyorsított Hálózatkezelés:
+Ha leállt, engedélyezze a gyorsított hálózatkezelést a virtuális gép hálózati adapterén:
 
 ```azurecli
 az network nic update \
@@ -256,7 +256,7 @@ az network nic update \
     --accelerated-networking true
 ```
 
-Indítsa újra a virtuális Gépet, vagy ha egy rendelkezésre állási csoportban, a csoport összes virtuális gépen, és győződjön meg arról, hogy engedélyezve van-e a gyorsított Hálózatkezelés: 
+Indítsa újra a virtuális gépet, vagy ha rendelkezésre állási csoport, a készletben lévő összes virtuális gép, és ellenőrizze, hogy engedélyezve van-e a gyorsított hálózat: 
 
 ```azurecli
 az vm start --resource-group myResourceGroup \
@@ -264,7 +264,7 @@ az vm start --resource-group myResourceGroup \
 ```
 
 ### <a name="vmss"></a>VMSS
-VMSS kissé eltérő, de a következő ugyanabban a munkafolyamatban.  Először állítsa le a virtuális gépek:
+A VMSS némileg eltérő, de ugyanazt a munkafolyamatot követi.  Először állítsa le a virtuális gépeket:
 
 ```azurecli
 az vmss deallocate \
@@ -272,7 +272,7 @@ az vmss deallocate \
     --resource-group myrg
 ```
 
-Miután a virtuális gépek leállnak, frissítse a gyorsított hálózatkezelés tulajdonság alatt a hálózati adapter:
+A virtuális gépek leállítása után frissítse a gyorsított hálózatkezelési tulajdonságot a hálózati adapter alatt:
 
 ```azurecli
 az vmss update --name myvmss \
@@ -280,7 +280,7 @@ az vmss update --name myvmss \
     --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
 ```
 
-Vegye figyelembe, hogy egy VMSS a virtuális gép olyan frissítések, amelyek a alkalmazni a frissítéseket az három különböző beállításokkal, automatikus, működés közbeni és manuális rendelkezik.  Ebben az útmutatóban a szabályzat automatikusra van beállítva, hogy a VMSS kiesik a módosítások újraindítás után azonnal.  Nastavit nA automatikus úgy, hogy a módosítások azonnal mértékének: 
+Vegye figyelembe, hogy a VMSS olyan virtuálisgép-frissítésekkel rendelkezik, amelyek három különböző beállítással, automatikus, működés közbeni és manuális beállításokkal alkalmazzák a frissítéseket.  Ebben az útmutatóban a szabályzat automatikusra van beállítva, hogy a VMSS az újraindítást követően azonnal vegye fel a módosításokat.  Ha automatikusra szeretné állítani, hogy a módosítások azonnal fellegyenek, válassza a következőt: 
 
 ```azurecli
 az vmss update \
@@ -297,15 +297,15 @@ az vmss start \
     --resource-group myrg
 ```
 
-Egyszer, indítsa újra, várjon, amíg befejeződik a frissítéseket, de ha befejeződött, a VF jelenik meg a virtuális Gépen belül.  (Ellenőrizze, hogy egy támogatott operációs rendszer és a virtuális gép mérete használ.)
+Ha újraindul, várjon, amíg a frissítés befejeződik, de ha elkészült, a VF a virtuális gépen fog megjelenni.  (Ellenőrizze, hogy támogatott operációs rendszert és virtuálisgép-méretet használ-e.)
 
-### <a name="resizing-existing-vms-with-accelerated-networking"></a>Gyorsított hálózatkezelésű meglévő virtuális gépek átméretezése
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>Meglévő virtuális gépek átméretezése gyorsított hálózatkezeléssel
 
-Virtuális gépek gyorsított hálózatkezelésű engedélyezve van, amely támogatja a gyorsított hálózatkezelés virtuális gépek csak átméretezhetők.  
+A gyorsított hálózatkezelést használó virtuális gépeket csak a gyorsított hálózatkezelést támogató virtuális gépekre lehet átméretezni.  
 
-Egy Virtuálisgép-példányhoz, amely nem támogatja a gyorsított hálózatkezelés az átméretezés használatával nem méretezhetők át egy virtuális Gépet a gyorsított hálózatkezelés engedélyezett.  Ehelyett egy ilyen virtuális gépek átméretezése: 
+A gyorsított hálózatkezelést használó virtuális gépek nem méretezhetők át olyan virtuálisgép-példányra, amely nem támogatja a gyorsított hálózatkezelést az átméretezési művelettel.  Ehelyett a következő virtuális gépek egyikének átméretezéséhez: 
 
-* A virtuális gép leállítása vagy felszabadítási vagy egy rendelkezésre állási csoport/VMSS, ha a Leállítás/szabadítsa fel a set/VMSS összes virtuális gépen.
-* Gyorsított hálózatkezelés le kell tiltani a hálózati adapteren a virtuális gép vagy egy rendelkezésre állási készlet/VMSS, a set/VMSS minden virtuális gépen belül.
-* Gyorsított hálózatkezelés le van tiltva, miután a virtuális gép vagy rendelkezésre állási csoport/VMSS áthelyezhetők az új méret, amely nem támogatja a gyorsított hálózatkezelés és újraindul.  
+* Állítsa le/szabadítsa fel a virtuális gépet, vagy ha rendelkezésre állási csoport/VMSS, állítsa le/szabadítsa fel a set/VMSS összes virtuális gépét.
+* A gyorsított hálózatkezelést le kell tiltani a virtuális gép hálózati adapterén, vagy ha rendelkezésre állási csoport/VMSS, a set/VMSS összes virtuális gépe.
+* Ha a gyorsított hálózatkezelés le van tiltva, a virtuális gép/rendelkezésre állási csoport/VMSS olyan új méretre helyezhető át, amely nem támogatja a gyorsított hálózatkezelést és az újraindítást.  
 

@@ -1,25 +1,24 @@
 ---
-title: Gyakori kérdések a VMware – Azure vész-helyreállítással kapcsolatban Azure Site Recovery
+title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure Site Recovery
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053686"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084159"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések a VMware-ről az Azure-ba történő replikálásra
 
 Ez a cikk a helyszíni VMware virtuális gépek (VM-EK) Azure-ba történő vész-helyreállításának telepítésekor felmerülő gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Mire van szükség a VMware virtuális gépek vész-helyreállításához?
 
@@ -189,7 +188,7 @@ Nem, Site Recovery nem támogatja az Azure Storage-ba való replikálást a virt
 
 ## <a name="component-upgrade"></a>Összetevő frissítése
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mi a teendő?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mit tegyek?
 
 Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr_support_statement) információ a nagyon régi verziókról való frissítésről.
 
@@ -203,7 +202,7 @@ Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Szükség van-e az egyes verziófrissítésekhez szükséges forrásoldali gépek újraindítására?
 
-Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](https://aka.ms/asr_vmware_upgrades).
+Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információ](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -327,7 +326,7 @@ A VMware-ből az Azure-ba a legrégebbi helyreállítási pont 72 óra lehet.
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan Azure-beli virtuális gépeket a feladatátvételt követően?
 
-A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>A feladatátvételi feladathoz képest rugalmas?
 
@@ -339,7 +338,7 @@ A [feladatátvétel](site-recovery-failover.md) nem automatikus. A feladatátvé
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Visszatérhetek egy másik helyre?
 
-Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információ](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Miért van szükségem VPN-vagy ExpressRoute-kapcsolatra a feladat-visszavétel érdekében?
 
@@ -353,13 +352,13 @@ Nem, a cél virtuális gép méretét vagy típusát a feladatátvétel után ne
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Beállítható a replikáció parancsfájlok futtatásával?
 
-Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információk](vmware-azure-disaster-recovery-powershell.md).
+Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információ](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Teljesítmény és kapacitás
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Szabályozható a replikálási sávszélesség?
 
-Igen. [További információk](site-recovery-plan-capacity-vmware.md).
+Igen. [További információ](site-recovery-plan-capacity-vmware.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

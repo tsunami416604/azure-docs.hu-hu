@@ -1,21 +1,21 @@
 ---
-title: Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
+title: Az Azure előkészítése a Hyper-V vész-helyreállításra Azure Site Recovery
 description: Ismerje meg, hogyan készítheti elő az Azure-t a helyszíni Hyper-V virtuális gépek vész-helyreállításához Azure Site Recovery használatával
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814351"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084176"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Azure-erőforrások előkészítése a Hyper-V vész-helyreállításhoz
 
  [Azure site Recovery](site-recovery-overview.md) segíti az üzletmenet folytonosságát és a vész-helyreállítást (BCDR) azáltal, hogy a tervezett és nem tervezett leállások során futó üzleti alkalmazásokat tart. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in"></a>Bejelentkezés
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Fiókengedélyek ellenőrzése
 
@@ -48,11 +48,11 @@ Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés rendsz
 
 A feladatok elvégzéséhez a fiókját hozzá kell rendelni a virtuális gép közreműködői beépített szerepköréhez. A tárolóban Site Recovery műveletek kezeléséhez a fióknak hozzá kell rendelnie a Site Recovery közreműködő beépített szerepkört.
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
 A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során. A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 
-1. A [Azure Portal](https://portal.azure.com) menüben válassza > az >  **erőforrás létrehozása**Storage **-fiók – blob, fájl, tábla, üzenetsor**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás létrehozása** > **tároló** > **Storage-fiók – blob, fájl, tábla, üzenetsor**lehetőséget.
 2. A **Tárfiók létrehozása** területen írja be a fiók nevét.  A választott névnek egyedinek kell lennie az Azure-ban, 3 – 24 karakter hosszúnak kell lennie, és csak kisbetűket és számokat használjon. Ebben az oktatóanyagban használja a **contosovmsacct1910171607**-t.
 3. Az **Üzemi modell** mezőben válassza a **Resource Manager** lehetőséget.
 4. A **Fiók típusa**területen válassza a **Storage (általános célú v1)** lehetőséget. Ne válasszon blob-tárolót.
@@ -63,7 +63,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 9. A **hely**mezőben válassza ki a Storage-fiók földrajzi helyét. Ehhez az oktatóanyaghoz használja a **Nyugat-Európát**.
 10. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
-   ![Tárfiók létrehozása](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Create a storage account](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -103,7 +103,7 @@ További információ:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Helyszíni Hyper-V-infrastruktúra előkészítése az Azure-ba való vész-helyreállításhoz](hyper-v-prepare-on-premises-tutorial.md)

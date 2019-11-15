@@ -1,5 +1,5 @@
 ---
-title: Replikáció engedélyezése egy Azure Site Recovery által replikált Azure-beli virtuális géphez hozzáadott lemez számára | Microsoft Docs
+title: Replikáció engedélyezése egy hozzáadott Azure-beli virtuálisgép-lemezhez Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a replikáció egy olyan Azure-beli virtuális géphez hozzáadott lemez számára, amely Azure Site Recovery
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934549"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084986"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure-beli virtuális géphez hozzáadott lemez replikálásának engedélyezése
 
@@ -50,6 +50,6 @@ A replikációs feladatok engedélyezése és a kezdeti replikálás befejezése
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

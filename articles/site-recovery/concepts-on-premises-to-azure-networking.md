@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás Azure-beli virtuális gépekhez a helyszíni rendszerből az Azure-ba történő feladatátvétel után Azure Site Recovery
+title: Kapcsolódás Azure-beli virtuális gépekhez helyszíni feladatátvétel a Azure Site Recovery használatával
 description: Útmutató Azure-beli virtuális gépekhez való kapcsolódáshoz a helyszíni rendszerről az Azure-ba történő feladatátvétel után Azure Site Recovery használatával
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333048"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084265"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Kapcsolódás Azure-beli virtuális gépekhez a helyszíni feladatátvétel után 
 
@@ -60,7 +60,7 @@ A helyszíni Linux rendszerű gépeken tegye a következőket:
 
 A feladatátvételt követően tegye a következőket a létrehozott Azure-beli virtuális gépeken.
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Nem használhatja ugyanazt a nyilvános IP-címet a helyszíni géphez használt Azure-beli virtuális géphez. [További információ](../virtual-network/virtual-network-public-ip-address.md)
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Nem használhatja ugyanazt a nyilvános IP-címet a helyszíni géphez használt Azure-beli virtuális géphez. [Részletek](../virtual-network/virtual-network-public-ip-address.md)
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 
@@ -96,7 +96,7 @@ Az IP-címek megtartásához a következő lépések szükségesek:
 
 ### <a name="failover-example"></a>Példa feladatátvételre
 
-Nézzük meg egy példát.
+Lássunk erre egy példát.
 
 - A fiktív vállalati Woodgrove Bank a helyileg üzemeltetett üzleti alkalmazásokat üzemelteti a mobil alkalmazásaikat az Azure-ban.
 - A helyek közötti VPN-kapcsolaton keresztül csatlakoznak a helyszínről az Azure-hoz. 

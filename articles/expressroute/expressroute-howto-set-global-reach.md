@@ -1,23 +1,22 @@
 ---
-title: 'Global Reach konfigurálása – ExpressRoute: Azure | Microsoft Docs'
-description: Ennek a cikknek a segítségével összekapcsolhatja a ExpressRoute-áramköröket, hogy magánhálózat legyen a helyszíni hálózatok között, és engedélyezze a Global Reach.
+title: 'Azure-ExpressRoute: Global Reach konfigurálása'
+description: Ez a cikk az ExpressRoute-Kapcsolatcsoportok privát hálózati a helyszíni hálózat között, és engedélyezze a globális elérhetőségű teszik hivatkozásra.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 64abf820a502db0ee0033ce52ed148bae6b8ffc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748166"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083462"
 ---
 # <a name="configure-expressroute-global-reach"></a>Az ExpressRoute Global Reach konfigurálása
 
-Ez a cikk segítséget nyújt a ExpressRoute-Global Reach konfigurálásához a PowerShell használatával. További információ: [ExpressRouteRoute Global REACH](expressroute-global-reach.md).
+Ez a cikk segít az ExpressRoute globális elérhetőségű PowerShell-lel konfigurálja. További információkért lásd: [ExpressRouteRoute globális elérhetőségű](expressroute-global-reach.md).
 
  ## <a name="before-you-begin"></a>Előkészületek
 
@@ -28,7 +27,7 @@ A konfigurálás megkezdése előtt erősítse meg a következőket:
 * Az Azure-beli privát kapcsolatok konfigurálása a ExpressRoute-áramkörökben történik.
 * Ha helyileg szeretné futtatni a PowerShellt, ellenőrizze, hogy a Azure PowerShell legújabb verziója van-e telepítve a számítógépen.
 
-### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -50,7 +49,7 @@ Engedélyezze a kapcsolatot a helyszíni hálózatok között. Az azonos Azure-e
 
 ### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>ExpressRoute-áramkörök ugyanabban az Azure-előfizetésben
 
-1. Használja az alábbi parancsokat az 1. és a 2. áramkör beszerzéséhez. A két áramkör ugyanahhoz az előfizetéshez tartoznak.
+1. Kapcsolatcsoport 1 és 2 kapcsolatcsoport beolvasásához használja a következő parancsokat. A két Kapcsolatcsoportok találhatók ugyanabban az előfizetésben.
 
    ```azurepowershell-interactive
    $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
@@ -76,11 +75,11 @@ Engedélyezze a kapcsolatot a helyszíni hálózatok között. Az azonos Azure-e
 
 Ha az előző művelet befejeződik, mindkét oldalon a két ExpressRoute-áramkörön keresztül kapcsolatot fog létesíteni a helyszíni hálózatok között.
 
-### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>ExpressRoute-áramkörök különböző Azure-előfizetésekben
+### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>Az ExpressRoute-Kapcsolatcsoportok az Azure-előfizetések
 
 Ha a két áramkör nem ugyanabban az Azure-előfizetésben található, akkor engedélyre van szüksége. A következő konfigurációban az engedélyezés a 2. áramkör-előfizetésben jön létre, az engedélyezési kulcsot pedig az 1. áramkörhöz adja át.
 
-1. Engedélyezési kulcs létrehozása.
+1. Hitelesítési kulcs létrehozásához.
 
    ```azurepowershell-interactive
    $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
@@ -89,7 +88,7 @@ Ha a két áramkör nem ugyanabban az Azure-előfizetésben található, akkor e
    ```
 
    Jegyezze fel a 2. áramkör privát társ-AZONOSÍTÓját, valamint az engedélyezési kulcsot.
-2. Futtassa a következő parancsot az 1. áramkörön. Adja át a 2. áramkör privát társ-AZONOSÍTÓját és az engedélyezési kulcsot.
+2. Futtassa a következő parancsot a kapcsolatcsoport 1 ellen. Adja át a 2. áramkör privát társ-AZONOSÍTÓját és az engedélyezési kulcsot.
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
@@ -121,11 +120,11 @@ Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -Expre
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```
 
-Az állapot ellenőrzéséhez futtathatja a Get műveletet.
+A Get-művelet a állapotának ellenőrzése futtathatja.
 
 Az előző művelet befejezése után már nincs kapcsolat a helyszíni hálózat és a ExpressRoute-áramkörök között.
 
-## <a name="next-steps"></a>További lépések
-1. [További információ a ExpressRoute Global Reach](expressroute-global-reach.md)
-2. [ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
+## <a name="next-steps"></a>Következő lépések
+1. [További információ az ExpressRoute globális elérhetőségű](expressroute-global-reach.md)
+2. [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
 3. [ExpressRoute-áramkör összekapcsolása egy Azure-beli virtuális hálózattal](expressroute-howto-linkvnet-arm.md)

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: helohr
-ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c482291e665656bf16f28cd114a9cb8141ae77c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931707"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084004"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -133,6 +133,16 @@ A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megk�
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Lépjen a partner webhelyére](https://getnerdio.com/windows-virtual-desktop/).
 
+## <a name="numecent"></a>Numecent
+
+![Numecent embléma](./media/partners/numecent.png)
+
+A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a felhasználók által igényelt konfiguráció mennyiségét, csökkenti az alkalmazások frissítéseit, és leegyszerűsíti az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
+
+A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést, ha a Windows rendszerű virtuális asztali környezetekben valós időben szükség szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
+
+- [Lépjen a partner webhelyére](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
 ## <a name="policypak"></a>PolicyPak
 
 ![PolicyPak embléma](./media/partners/policypak.png)
@@ -147,21 +157,22 @@ A PolicyPak leggyakoribb felhasználási esetei a helyi rendszergazdai jogosults
 
 ![PrinterLogic embléma](./media/partners/printerlogic.png)
 
-A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatói platform, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és egy magasan elérhető kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztali környezet és az Azure értékét, így könnyen kezelhető a nyomtatók központi telepítése és üzembe helyezése bármely nyomtatón vagy végponti operációs rendszeren.   
+A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatói platform, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és egy magasan elérhető kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztali környezet és az Azure értékét, így könnyen kezelhető a nyomtatók központi telepítése és üzembe helyezése bármely nyomtatón vagy végponti operációs rendszeren. 
 
-A SaaS vagy webes veremként elérhető PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkeznek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
+A SaaS vagy webes veremként elérhető PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkeznek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
 
 - [Lépjen a partner webhelyére](https://www.printerlogic.com).
 
-## <a name="numecent"></a>Numecent
+## <a name="printix"></a>Printix
 
-![Numecent embléma](./media/partners/numecent.png)
+![Printix embléma](./media/partners/printix.png)
 
-A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a felhasználók által igényelt konfiguráció mennyiségét, csökkenti az alkalmazások frissítéseit, és leegyszerűsíti az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
+A Printix egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely automatizálja a felhasználói kapcsolatokat az Office nyomtatási erőforrásaihoz. Az ügyfél Azure-beli áttelepítésének hiányában a Printix a leghatékonyabb szolgáltatás, amely a nyomtatási munkafolyamatok minden felhasználó számára történő támogatásához és optimalizálásához kapcsolódó infrastruktúra és IT-feladatok eltávolítására szolgál, a helytől függetlenül.
 
-A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést, ha a Windows rendszerű virtuális asztali környezetekben valós időben szükség szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
+A nyomtatás alapvető feladat minden irodai és kisméretű üzleti környezetben. A Windows rendszerű virtuális asztalok teljes körű kihasználása és a nagyszerű felhasználói élmény biztosítása érdekében elengedhetetlen, hogy a felhasználók a minimális erőfeszítéssel és a maximális megbízhatósággal csatlakozhassanak a nyomtatókhoz. A Printix használatával az egyszeri bejelentkezés (SSO), a csendes konfiguráció, a rendszeres frissítések és a nyomtatási környezet folyamatos figyelése révén a lehető legtöbbet hozhatja ki a Windows rendszerű virtuális asztalok közül.
 
-- [Lépjen a partner webhelyére](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [Rövid útmutató a közös megoldásról](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [Ugrás a partner webhelyére](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 

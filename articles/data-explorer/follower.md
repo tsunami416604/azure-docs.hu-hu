@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828564"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083192"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
@@ -242,15 +242,15 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>Rendszerbiztonsági tag kezelése
 
-Adatbázis csatolásakor az **alapértelmezett rendszerbiztonsági tag módosítási típust**kell megadnia. " Az alapértelmezett érték a vezető adatbázis-gyűjtemény, amely a [felhatalmazott rendszerbiztonsági tag](/azure/kusto/management/access-control/index.md#authorization)
+Adatbázis csatolásakor az **alapértelmezett rendszerbiztonsági tag módosítási típust**kell megadnia. " Az alapértelmezett érték a vezető adatbázis-gyűjtemény, amely a [felhatalmazott rendszerbiztonsági tag](/azure/kusto/management/access-control/index#authorization)
 
 |**Típusú** |**Leírás**  |
 |---------|---------|
 |**Union**     |   A csatolt adatbázis-rendszerbiztonsági tag mindig tartalmazza az eredeti adatbázis-rendszerbiztonsági tag, valamint a követő adatbázishoz hozzáadott további új rendszerbiztonsági tagokat is.      |
 |**Csere**   |    Nem található a rendszerbiztonsági tag öröklése az eredeti adatbázisból. Új rendszerbiztonsági tag létrehozása szükséges a csatolt adatbázishoz. Legalább egy rendszerbiztonsági tag hozzáadása szükséges a rendszerbiztonsági tag öröklődésének blokkolásához.     |
-|**NEz egy**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
+|**Nincsenek**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
 
-További információ a jogosultságokkal rendelkező rendszerbiztonsági tag konfigurálásához használható vezérlési parancsokról: a [követő parancsok kezelése a követő fürtök](/azure/kusto/management/cluster-follower.md)felügyeletéhez.
+További információ a jogosultságokkal rendelkező rendszerbiztonsági tag konfigurálásához használható vezérlési parancsokról: a [követő parancsok kezelése a követő fürtök](/azure/kusto/management/cluster-follower)felügyeletéhez.
 
 ### <a name="manage-permissions"></a>Engedélyek kezelése
 
@@ -258,7 +258,7 @@ A csak olvasási jogosultsággal rendelkező adatbázis-engedélyek kezelése ug
 
 ### <a name="configure-caching-policy"></a>Gyorsítótárazási házirend konfigurálása
 
-A követő adatbázis rendszergazdája módosíthatja a csatolt adatbázis vagy a hozzá tartozó táblák [gyorsítótárazási házirendjét](/azure/kusto/management/cache-policy) az üzemeltetési fürtön. Az alapértelmezett érték az adatbázis és a tábla szintű gyorsítótárazási házirendek vezető adatbázis-gyűjteményének megőrzése. Például egy 30 napos gyorsítótárazási házirendet használhat a Leader-adatbázisban a havi jelentéskészítés futtatásához és egy három napos gyorsítótárazási házirendet a követő adatbázison, hogy csak a legutóbbi adatokat kérdezze le a hibaelhárításhoz. A következő témakörben talál további információt arról, hogyan használhatók a vezérlési parancsok a követő adatbázison vagy táblázatban a gyorsítótárazási házirend konfigurálásához: [vezérlési parancsok egy követő fürt kezeléséhez](/azure/kusto/management/cluster-follower.md).
+A követő adatbázis rendszergazdája módosíthatja a csatolt adatbázis vagy a hozzá tartozó táblák [gyorsítótárazási házirendjét](/azure/kusto/management/cache-policy) az üzemeltetési fürtön. Az alapértelmezett érték az adatbázis és a tábla szintű gyorsítótárazási házirendek vezető adatbázis-gyűjteményének megőrzése. Például egy 30 napos gyorsítótárazási házirendet használhat a Leader-adatbázisban a havi jelentéskészítés futtatásához és egy három napos gyorsítótárazási házirendet a követő adatbázison, hogy csak a legutóbbi adatokat kérdezze le a hibaelhárításhoz. A következő témakörben talál további információt arról, hogyan használhatók a vezérlési parancsok a követő adatbázison vagy táblázatban a gyorsítótárazási házirend konfigurálásához: [vezérlési parancsok egy követő fürt kezeléséhez](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -268,6 +268,6 @@ A követő adatbázis rendszergazdája módosíthatja a csatolt adatbázis vagy 
 * Nem törölhet olyan fürtöt, amely egy másik fürthöz csatolt adatbázissal rendelkezik a leválasztása előtt.
 * Nem állíthat le olyan fürtöt, amely csatolt követő vagy vezető adatbázis (oka) t tartalmaz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a követő fürt konfigurációjával kapcsolatban: [vezérlési parancsok a követő fürtök kezeléséhez](/azure/kusto/management/cluster-follower.md).
+* További információ a követő fürt konfigurációjával kapcsolatban: [vezérlési parancsok a követő fürtök kezeléséhez](/azure/kusto/management/cluster-follower).

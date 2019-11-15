@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743245"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081522"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének üzembe helyezése az Azure AD-ben
+
+> [!NOTE]
+> Ez az útmutató ismerteti az önkiszolgáló jelszó-visszaállítást és az üzembe helyezésének módját. Ha az önkiszolgáló jelszó-visszaállítási eszközt keresi, hogy visszalépjen a fiókjába, lépjen a [https://aka.ms/sspr](https://aka.ms/sspr). 
 
 Az önkiszolgáló jelszó-visszaállítás (SSPR) egy Azure Active Directory funkció, amely lehetővé teszi az alkalmazottak számára, hogy az IT-részleggel való kapcsolatfelvétel nélkül visszaállítsák a jelszavukat. Az alkalmazottaknak regisztrálniuk kell az önkiszolgáló jelszó-visszaállításra, vagy regisztrálniuk kell a szolgáltatás használata előtt. A regisztráció során az alkalmazott egy vagy több, a szervezet által engedélyezett hitelesítési módszert választ.
 
@@ -53,7 +56,7 @@ A kombinált regisztrációs élmény nem igényli, hogy a szervezetek mind a SS
 
 A következő beállítások szükségesek a SSPR engedélyezéséhez az ajánlott értékekkel együtt.
 
-| Terület | Beállítás | Value |
+| Terület | Beállítás | Érték |
 | --- | --- | --- |
 | **SSPR tulajdonságai** | Önkiszolgáló jelszó-visszaállítás engedélyezve | **Kijelölt** csoport a próbaüzem/ **mind** az éles környezethez |
 | **Hitelesítési módszerek** | A regisztráláshoz szükséges hitelesítési módszerek | Az alaphelyzetbe állításhoz mindig 1 nagyobb érték szükséges |
@@ -62,8 +65,8 @@ A következő beállítások szükségesek a SSPR engedélyezéséhez az ajánlo
 |   | Azon napok száma, amely után a felhasználóknak újra meg kell erősíteniük hitelesítési adataikat | 90 – 180 nap |
 | **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Igen |
 |   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Igen |
-| **Testreszabási** | Ügyfélszolgálati hivatkozás testreszabása | Igen |
-|   | Egyéni ügyfélszolgálati e-mail cím vagy URL-cím | Támogatási webhely vagy e-mail-cím |
+| **Testreszabási** | Segélyszolgálat hivatkozásának testreszabása | Igen |
+|   | Egyéni segélyszolgálat e-mail-címe vagy URL-címe | Támogatási webhely vagy e-mail-cím |
 | **Helyszíni integráció** | Jelszavak visszaírása a helyszíni AD-be | Igen |
 |   | Fiók feloldásának engedélyezése a felhasználók számára a jelszó alaphelyzetbe állítása nélkül | Igen |
 
@@ -87,7 +90,7 @@ Tekintse meg, mi az a [hitelesítési módszer](concept-authentication-methods.m
 
 Adja meg a **napok számát, mielőtt a rendszer megkéri a felhasználóktól, hogy hitelesítő adataikat** a **90** és **180** nap között újra erősítse meg, kivéve, ha a szervezetnek rövidebb időre van szüksége üzleti igényekre.
 
-### <a name="notifications-settings"></a>Értesítésbeállítások
+### <a name="notifications-settings"></a>Értesítések beállításai
 
 Konfigurálja mind a **felhasználók értesítése jelszó** **alaphelyzetbe állítását, mind a rendszergazdák értesítése, ha más rendszergazdák Igen értékre állítják vissza a jelszavukat** . Ha az **Igen** lehetőséget választja, mindkettő növeli a biztonságot azáltal, hogy a felhasználók tisztában vannak a jelszavuk alaphelyzetbe állítását követően, és az összes rendszergazda tisztában van azzal, hogy a rendszergazda módosítja a jelszót. Ha a felhasználók vagy rendszergazdák ilyen értesítést kapnak, és nem kezdeményezték a változást, azonnal jelenthetik a potenciális biztonsági problémákat.
 
@@ -206,7 +209,7 @@ Az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakozó, 1803-es va
 
 ### <a name="configure-password-writeback"></a>Jelszó visszaírási konfigurálása
 
-A szervezet jelszavas visszaírási konfigurálásának lépései a cikk [útmutató: Adja meg a](howto-sspr-writeback.md)jelszó visszaírási.
+A szervezethez tartozó jelszó-visszaírási konfigurálásának lépései a következő cikkben találhatók [: a jelszó visszaírási konfigurálása](howto-sspr-writeback.md).
 
 ## <a name="manage-sspr"></a>SSPR kezelése
 
@@ -214,15 +217,15 @@ Az önkiszolgáló jelszó-visszaállításhoz társított szolgáltatások keze
 
 | Üzleti szerepkör/persona | Azure AD-szerepkör (ha szükséges) |
 | :---: | :---: |
-| 1\. szint segélyszolgálat | Jelszókezelő |
-| 2\. szint helpdesk | Felhasználói adminisztrátor |
+| 1\. szint segélyszolgálat | Jelszó-rendszergazda |
+| 2\. szint helpdesk | Felhasználói rendszergazda |
 | SSPR-rendszergazda | Globális rendszergazda |
 
 ### <a name="support-scenarios"></a>Támogatási forgatókönyvek
 
 A támogatási csapat sikerességének engedélyezéséhez a felhasználóktól kapott kérdések alapján hozhat létre GYIK-et. A következő táblázat általános támogatási forgatókönyveket tartalmaz.
 
-| Forgatókönyvek | Leírás |
+| Alkalmazási helyzetek | Leírás |
 | --- | --- |
 | A felhasználónak nincs elérhető regisztrált hitelesítési módszere. | A felhasználó megpróbálja alaphelyzetbe állítani a jelszavát, de nem rendelkezik a rendelkezésre álló hitelesítési módszerekkel (például a mobiltelefonját otthon hagyta, és nem fér hozzá az e-mailekhez) |
 | A felhasználó nem kap SMS-t vagy hívást az irodában vagy a mobiltelefonján | A felhasználó szöveges vagy hívási identitást próbál meg ellenőrizni, de nem kap szöveget vagy hívást. |
@@ -239,7 +242,7 @@ További hibaelhárításhoz az alábbi információkat is érdemes feltüntetni
 
 Az önkiszolgáló jelszó-visszaállítás hibaelhárítását ismertető online dokumentációban is tájékozódhat a leggyakoribb SSPR forgatókönyvek általános hibaelhárítási lépéseinek megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD jelszavas védelem megvalósításának megfontolása](concept-password-ban-bad.md)
 

@@ -1,21 +1,21 @@
 ---
-title: VMware vCenter-kiszolgálók kezelése a VMware virtuális gépek Azure-ba történő helyreállításához Azure Site Recovery használatával | Microsoft Docs "
+title: VMware vCenter-kiszolgálók kezelése a Azure Site Recoveryban
 description: Ez a cikk bemutatja, hogyan veheti fel és kezelheti a VMWare virtuális gépek vész-helyreállítását az Azure-ba a Azure Site Recovery használatával.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904248"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083977"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter-kiszolgáló kezelése
 
-Ez a cikk a VMware-vCenter végrehajtható különböző Site Recovery műveleteket ismerteti. Mielőtt elkezdené, ellenőrizze az előfeltételeket. [](vmware-physical-azure-support-matrix.md#replicated-machines)
+Ez a cikk a VMware-vCenter végrehajtható különböző Site Recovery műveleteket ismerteti. Mielőtt elkezdené, ellenőrizze az [előfeltételeket](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
 
 ## <a name="set-up-an-account-for-automatic-discovery"></a>Fiók beállítása az automatikus felderítéshez
@@ -42,7 +42,7 @@ Körülbelül 15 percet vesz igénybe, hogy a fiókadatok a Site Recovery szolg�
 
 ## <a name="add-vmware-server-to-the-vault"></a>VMware-kiszolgáló hozzáadása a tárolóhoz
 
-1. A Azure Portal nyissa meg a tárolót > **site Recovery infrastruktúra** > -**konfigurációs severs**, és nyissa meg a konfigurációs kiszolgálót.
+1. A Azure Portal nyissa meg a tárolót > **site Recovery infrastruktúra** > **konfigurációs severs**, és nyissa meg a konfigurációs kiszolgálót.
 2. A **részletek** lapon kattintson a **+ vCenter**elemre.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -56,7 +56,7 @@ Módosítsa a vCenter-kiszolgálóhoz vagy ESXi-gazdagéphez való kapcsolódás
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Adja meg az új fiók adatait, majd kattintson **az OK** gombra a hozzáadásához. A fióknak a [fent](#account-permissions)felsorolt jogosultságokkal kell rendelkeznie.
-4. A Azure Portal nyissa meg a tárolót > **site Recovery infrastruktúra** > -**konfigurációs**kiszolgálók csomópontot, és nyissa meg a konfigurációs kiszolgálót.
+4. A Azure Portal nyissa meg a tárolót > **site Recovery infrastruktúra** > **konfigurációs severok**csomópontot, és nyissa meg a konfigurációs kiszolgálót.
 5. A **részletek** lapon kattintson a **kiszolgáló frissítése**elemre.
 6. A kiszolgáló frissítése feladatot követően válassza ki a vCenter Server, hogy megnyissa a vCenter **összegzése** lapot.
 7. Válassza ki az újonnan hozzáadott fiókot a **vCenter-kiszolgáló/vSphere-gazda fiók** mezőben, majd kattintson a **Mentés**gombra.
@@ -65,7 +65,7 @@ Módosítsa a vCenter-kiszolgálóhoz vagy ESXi-gazdagéphez való kapcsolódás
 
 ## <a name="delete-a-vcenter-server"></a>VCenter-kiszolgáló törlése
 
-1. A Azure Portal nyissa meg a tárolót > **site Recovery infrastruktúra** > -**konfigurációs severs**, és nyissa meg a konfigurációs kiszolgálót.
+1. A Azure Portal nyissa meg a tárolót > **site Recovery infrastruktúra** > **konfigurációs severs**, és nyissa meg a konfigurációs kiszolgálót.
 2. A **részletek** lapon válassza ki a vCenter-kiszolgálót.
 3. Kattintson a **Törlés** gombra.
 
@@ -74,7 +74,7 @@ Módosítsa a vCenter-kiszolgálóhoz vagy ESXi-gazdagéphez való kapcsolódás
 ## <a name="modify-the-vcenter-ip-address-and-port"></a>A vCenter IP-címének és portjának módosítása
 
 1. Jelentkezzen be az Azure portálra.
-2. Navigáljon **Recovery Services** > tároló**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**elemre.
+2. Navigáljon **Recovery Services** tároló > **site Recovery infrastruktúra** > **konfigurációs kiszolgálók**elemre.
 3. Kattintson arra a konfigurációs kiszolgálóra, amelyhez a vCenter hozzá van rendelve.
 4. A **vCenter-kiszolgálók** szakaszban kattintson a módosítani kívánt vCenter.
 5. A vCenter összegzése lapon frissítse a vCenter IP-címét és portját a megfelelő mezőkben, majd mentse a módosításokat.
@@ -88,7 +88,7 @@ Módosítsa a vCenter-kiszolgálóhoz vagy ESXi-gazdagéphez való kapcsolódás
 Ha az összes virtuális gépet át szeretné telepíteni az új vCenter, ne adjon hozzá újabb vCenter-fiókot. Ennek eredményeképpen ismétlődő bejegyzések hozhatók létre. Csak frissítse az új vCenter IP-címét:
 
 1. Jelentkezzen be az Azure portálra.
-2. Navigáljon **Recovery Services** > tároló**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**elemre.
+2. Navigáljon **Recovery Services** tároló > **site Recovery infrastruktúra** > **konfigurációs kiszolgálók**elemre.
 3. Kattintson arra a konfigurációs kiszolgálóra, amelyhez a régi vCenter hozzá van rendelve.
 4. A **vCenter-kiszolgálók** szakaszban kattintson arra a vCenter, amelyet át szeretne telepíteni.
 5. A vCenter összegzése lapon frissítse az új vCenter IP-címét a **vCenter-kiszolgáló/vSphere-állomásnév vagy az IP-cím**mezőben. Mentse a módosításokat.
@@ -103,12 +103,12 @@ Amint az IP-cím frissül, Site Recovery-összetevők elkezdik a virtuális gép
 Néhány virtuális gép áthelyezése egy új vCenter:
 
 1. [Adja hozzá az új vCenter adatait a konfigurációs kiszolgálóhoz](#add-vmware-server-to-the-vault).
-2. [Tiltsa le az](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) áttelepíteni kívánt virtuális gépek replikációját.
+2. [Tiltsa le az áttelepíteni kívánt virtuális gépek replikációját](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) .
 3. Fejezze be a kiválasztott virtuális gépek áttelepítését az új vCenter.
-4. Most [a védelem engedélyezésekor az új vCenter](vmware-azure-tutorial.md#enable-replication)kiválasztásával gondoskodhat az áttelepített virtuális gépek védelméről.
+4. Most [a védelem engedélyezésekor az új vCenter kiválasztásával](vmware-azure-tutorial.md#enable-replication)gondoskodhat az áttelepített virtuális gépek védelméről.
 
 > [!TIP]
-> Ha az áttelepítendő virtuális gépek száma **nagyobb** , mint a régi vCenter megőrzött virtuális gépek száma, frissítse az új vCenter IP-címét az itt megadott utasítások alapján. A régi vCenter megőrzött néhány virtuális gép esetén [Tiltsa le](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)a replikációt. [adja hozzá az új vCenter adatait a konfigurációs kiszolgálóhoz](#add-vmware-server-to-the-vault), és indítsa el a **[védelem engedélyezése](vmware-azure-tutorial.md#enable-replication)** lehetőséget.
+> Ha az áttelepítendő virtuális gépek száma **nagyobb** , mint a régi vCenter megőrzött virtuális gépek száma, frissítse az új vCenter IP-címét az itt megadott utasítások alapján. A régi vCenter megőrzött néhány virtuális gép esetén [Tiltsa le a replikációt](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure). [adja hozzá az új vCenter adatait a konfigurációs kiszolgálóhoz](#add-vmware-server-to-the-vault), és indítsa el a **[védelem engedélyezése](vmware-azure-tutorial.md#enable-replication)** lehetőséget.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

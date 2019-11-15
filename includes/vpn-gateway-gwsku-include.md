@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 75152fabfc33dda0494d871fbdf9a388f4260c0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495744"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085245"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. A Azure Availability Zones virtuális hálózati átjárói SKU-ban tekintse meg a [Azure Availability Zones Gateway SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)-ket.
 
@@ -21,7 +21,11 @@ Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni 
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
+> [!NOTE]
+> A VpnGw SKU-ban (VpnGw1, VpnGw1AZ, VpnGw2, VpnGw2AZ, VpnGw3, VpnGw3AZ, VpnGw4, VpnGw4AZ, VpnGw5 és VpnGw5AZ) csak a Resource Manager-alapú üzemi modellben támogatottak. A klasszikus virtuális hálózatok továbbra is a régi (örökölt) SKU-ket használják.
+>  * További információ az örökölt átjárók (alapszintű, standard és HighPerformance) használatával kapcsolatban: [VPN Gateway SKU-EK (örökölt SKU-EK) használata](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+>  * A ExpressRoute átjárók esetében lásd: [Virtual Network átjárók a ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
+>
 
 ###  <a name="feature"></a>Átjárók SKU-ként a szolgáltatáskészlet alapján
 

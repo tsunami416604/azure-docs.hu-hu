@@ -1,5 +1,5 @@
 ---
-title: Vész-helyreállítás beállítása SQL Serverhoz SQL Server és Azure Site Recovery esetén | Microsoft Docs
+title: Vész-helyreállítás beállítása SQL Serverhoz Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan állíthat be SQL Server vész-helyreállítást a SQL Server és a Azure Site Recovery használatával.
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934832"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084741"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vész-helyreállítás beállítása SQL Serverhoz
 
@@ -44,7 +44,7 @@ SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| Replikálás Az
 > [!NOTE]
 > Néhány fontos szempontot figyelembe kell venni, ha az SQL-munkaterheléseket a Site Recovery segítségével kívánja védetté tenni:
 > * Site Recovery az alkalmazás agnosztikus. A Site Recovery a támogatott operációs rendszereken telepített SQL Server bármely verziójának védelmére képes. További információ: a replikált gépek [helyreállításának támogatási mátrixa](vmware-physical-azure-support-matrix.md#replicated-machines) .
-> * Az Azure-ban, a Hyper-V-ben, a VMware-ben vagy a fizikai infrastruktúrában üzemelő üzembe helyezéshez Site Recovery is használhat. A jelen cikk végén található útmutatást követve megtudhatja, hogyan biztosítható [SQL Server-fürt](#how-to-help-protect-a-sql-server-cluster) site Recoveryokkal való védelméhez.
+> * Az Azure-ban, a Hyper-V-ben, a VMware-ben vagy a fizikai infrastruktúrában üzemelő üzembe helyezéshez Site Recovery is használhat. A jelen cikk végén található útmutatást követve [megtudhatja, hogyan biztosítható SQL Server-fürt](#how-to-help-protect-a-sql-server-cluster) site Recoveryokkal való védelméhez.
 > * Győződjön meg arról, hogy a gépen megfigyelt adatváltozási arány [site Recovery korláton](vmware-physical-azure-support-matrix.md#churn-limits)belül van. A változási arányt írási bájt/másodpercben mérjük. A Windows rendszert futtató gépek esetében a változási arányt a Feladatkezelő **teljesítmény** lapjára kattintva tekintheti meg. Figyelje meg az egyes lemezek írási sebességét.
 > * Site Recovery támogatja a feladatátvevő fürtök példányainak replikálását Közvetlen tárolóhelyekon. További információ: [közvetlen tárolóhelyek replikáció engedélyezése](azure-to-azure-how-to-enable-replication-s2d-vms.md).
 
@@ -54,18 +54,18 @@ Site Recovery összehangolja a feladatátvételi tesztet és a teljes alkalmazá
 
 Néhány előfeltétel, hogy a helyreállítási terv teljes mértékben testre szabható legyen, igény szerint. A SQL Server üzembe helyezésének általában Active Directory központi telepítésre van szüksége. Emellett kapcsolódnia kell az alkalmazási szintjéhez.
 
-### <a name="step-1-set-up-active-directory"></a>1\. lépés: Az Active Directory beállítása
+### <a name="step-1-set-up-active-directory"></a>1\. lépés: a Active Directory beállítása
 
 Állítsa be a Active Directory a másodlagos helyreállítási helyen, hogy a SQL Server megfelelően fusson.
 
-* **Kis vállalat**: Kis számú alkalmazás és egyetlen tartományvezérlő a helyszíni helyhez. Ha a teljes helyet szeretné felvenni, használja a Site Recovery replikálást. Ez a szolgáltatás replikálja a tartományvezérlőt a másodlagos adatközpontba vagy az Azure-ba.
-* **Közepes és nagy vállalat**: Lehetséges, hogy további tartományvezérlőket kell beállítania.
+* **Kisvállalat**: kis mennyiségű alkalmazással és egyetlen tartományvezérlővel rendelkezik a helyszíni helyhez. Ha a teljes helyet szeretné felvenni, használja a Site Recovery replikálást. Ez a szolgáltatás replikálja a tartományvezérlőt a másodlagos adatközpontba vagy az Azure-ba.
+* **Közepes – nagy vállalat**: lehetséges, hogy további tartományvezérlőket kell beállítania.
   - Ha nagy számú alkalmazással rendelkezik, Active Directory erdőben kell lennie, és az alkalmazás vagy a munkaterhelés feladatátvételt szeretne végezni, állítson be egy másik tartományvezérlőt a másodlagos adatközpontban vagy az Azure-ban.
   -  Ha always on rendelkezésre állási csoportokat használ egy távoli helyre történő helyreállításhoz, állítson be egy másik tartományvezérlőt a másodlagos helyen vagy az Azure-ban. Ez a tartományvezérlő a helyreállított SQL Server példányhoz használatos.
 
 A cikkben szereplő utasítások feltételezik, hogy a tartományvezérlő elérhető a másodlagos helyen. További információkért tekintse meg a [Active Directory és site Recovery elleni védelem segítésére](site-recovery-active-directory.md)szolgáló eljárásokat.
 
-### <a name="step-2-ensure-connectivity-with-other-tiers"></a>2\. lépés: Más rétegek kapcsolatának biztosítása
+### <a name="step-2-ensure-connectivity-with-other-tiers"></a>2\. lépés: a más rétegek kapcsolatának biztosítása
 
 Miután az adatbázis-szintet futtatta a cél Azure-régióban, ellenőrizze, hogy van-e kapcsolat az alkalmazással és a webes rétegekkel. Végezze el a szükséges lépéseket a feladatátvételi teszttel való kapcsolat ellenőrzéséhez.
 
@@ -74,7 +74,7 @@ A következő példákban megismerheti, hogyan tervezhet meg alkalmazásokat a k
 * [Alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 * [Rugalmas készlet vész-helyreállítási stratégiái](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
-### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>3\. lépés: Együttműködés a mindig bekapcsolt, aktív geo-replikálási és automatikus feladatátvételi csoportokkal
+### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>3\. lépés: az Always on, az aktív geo-replikáció és az automatikus feladatátvételi csoportok együttműködése
 
 A BCDR Technologies always on, Active geo-Replication és automatikus feladatátvételi csoportok másodlagos replikái SQL Server futnak a cél Azure-régióban. Az alkalmazás feladatátvételének első lépéseként meg kell adnia a replikát elsődlegesként. Ez a lépés azt feltételezi, hogy már rendelkezik tartományvezérlővel a másodlagosban. Előfordulhat, hogy a lépés nem szükséges, ha automatikus feladatátvételt hajt végre. A webes és az alkalmazási rétegek feladatátvétele csak az adatbázis-feladatátvétel befejeződése után végezhető el.
 
@@ -85,13 +85,13 @@ A BCDR Technologies always on, Active geo-Replication és automatikus feladatát
 
 1. Importálja a parancsfájlokat az SQL rendelkezésre állási csoport feladatátvételére egy [Resource Manager-alapú virtuális gépen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) és egy [klasszikus virtuális gépen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). Importálja a parancsfájlokat a Azure Automation-fiókjába.
 
-    [!["Üzembe helyezés az Azure-ban" embléma képe](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    ["üzembe helyezés az Azure-ban" embléma ![képe](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Adja hozzá az ASR-SQL-FailoverAG parancsfájlt a helyreállítási terv első csoportjának előzetes műveletéhez.
 
 1. Az Automation-változó létrehozásához kövesse a parancsfájlban található utasításokat. Ez a változó a rendelkezésre állási csoportok nevét adja meg.
 
-### <a name="step-4-conduct-a-test-failover"></a>4\. lépés: Feladatátvételi teszt végrehajtása
+### <a name="step-4-conduct-a-test-failover"></a>4\. lépés: feladatátvételi teszt végrehajtása
 
 Bizonyos BCDR-technológiák, például az SQL always on nem támogatják natív módon a feladatátvételi tesztet. A következő módszert *csak akkor javasoljuk, ha ilyen technológiákat használ*.
 
@@ -101,7 +101,7 @@ Bizonyos BCDR-technológiák, például az SQL always on nem támogatják natív
 
     ![A konfiguráció visszaállítására szolgáló ablak képernyőképe Azure Backup](./media/site-recovery-sql/restore-from-backup.png)
 
-1. [Olyan kvórumot](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) kell kényszeríteni a virtuális gépen, amelyet biztonsági másolatból állítottak vissza.
+1. [Olyan kvórumot kell kényszeríteni](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) a virtuális gépen, amelyet biztonsági másolatból állítottak vissza.
 
 1. Frissítse a figyelő IP-címét, hogy a teszt feladatátvételi hálózaton elérhető Cím legyen.
 
@@ -109,7 +109,7 @@ Bizonyos BCDR-technológiák, például az SQL always on nem támogatják natív
 
 1. A figyelő online állapotba helyezése.
 
-    ![Képernyőkép a Content_AG és az állapotokat megjelenítő ablakról](./media/site-recovery-sql/bring-listener-online.png)
+    ![A kiszolgálók neveit és állapotát megjelenítő Content_AG ablak képernyőképe](./media/site-recovery-sql/bring-listener-online.png)
 
 1. Győződjön meg arról, hogy a terheléselosztó a feladatátvételi hálózaton egyetlen IP-címmel rendelkezik, az előtéri IP-címkészletet, amely az egyes rendelkezésre állási csoportok figyelője, valamint a háttérbeli készlet SQL Server VM.
 
@@ -159,7 +159,7 @@ SQL Server Site Recovery replikációját a frissítési garancia vész-helyreá
 
 Site Recovery az alkalmazás agnosztikus. A Site Recovery a támogatott operációs rendszereken telepített SQL Server bármely verziójának védelmére képes. További információ: a replikált gépek [helyreállításának támogatási mátrixa](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [site Recovery architektúráról](site-recovery-components.md).
 * Az Azure-beli SQL Server a másodlagos Azure-régióban történő helyreállításhoz használható [magas rendelkezésre állási megoldásokról](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) itt tájékozódhat.

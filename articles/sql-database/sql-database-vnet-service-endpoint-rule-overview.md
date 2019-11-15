@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 08/27/2019
-ms.openlocfilehash: f171181aa56287561aba3159f5039f70165dc8ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: faf3573178693ec806000eb89ce7a975955d61b9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807513"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084121"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -203,8 +203,6 @@ A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *vir
 
 *Hiba feloldása:* Adja meg az ügyfél IP-címét IP-szabályként. Ezt az Azure Portal Tűzfal panelén végezheti el.
 
-[Itt][sql-database-develop-error-messages-419g] találja az SQL-adatbázis számos hibaüzenetének listáját.
-
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>A portál létrehozhat egy virtuális hálózati szabályt
@@ -218,7 +216,7 @@ Ez a szakasz azt szemlélteti, hogyan használható a [Azure Portal][http-azure-
 
 ## <a name="powershell-alternative"></a>PowerShell-alternatíva
 
-A PowerShell-parancsfájlok létrehozhatnak virtuális hálózati szabályokat is. A **New-AzSqlServerVirtualNetworkRule**kritikus parancsmag. Ha érdeklik, tekintse meg [a PowerShellt, és hozzon létre egy Virtual Network szolgáltatási végpontot és szabályt a Azure SQL Databasehoz][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+A PowerShell-parancsfájlok létrehozhatnak virtuális hálózati szabályokat is. The crucial cmdlet **New-AzSqlServerVirtualNetworkRule**. Ha érdeklik, tekintse meg [a PowerShellt, és hozzon létre egy Virtual Network szolgáltatási végpontot és szabályt a Azure SQL Databasehoz][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>REST API alternatív megoldás
 
@@ -237,7 +235,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure portálra][http-azure-portal-link-ref-477t].
+1. Bejelentkezés az [Azure Portalra][http-azure-portal-link-ref-477t].
 
 2. Ezután navigáljon a portálon az **SQL-kiszolgálók** &gt; **tűzfal/virtuális hálózatok**elemre.
 
@@ -280,7 +278,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
 A Azure SQL Database virtuális hálózati szabály funkciója a 2017 szeptember végén elérhetővé vált.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek
@@ -302,8 +300,6 @@ A Azure SQL Database virtuális hálózati szabály funkciója a 2017 szeptember
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
-
-[sql-database-develop-error-messages-419g]: sql-database-develop-error-messages.md
 
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
 

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791898"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082400"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrid kapcsolatok #
 
@@ -106,7 +106,7 @@ A App Service Hibrid kapcsolatok csak az alapszintű, a standard, a prémium és
 
 | Díjszabási csomag | A tervben használható Hibrid kapcsolatok száma |
 |----|----|
-| Basic | 5 |
+| Alapszintű | 5 |
 | Standard | 25 |
 | Prémium | 200 |
 | Izolált | 200 |
@@ -221,7 +221,13 @@ Az API használatához szüksége lesz a küldési kulcs és a továbbító erő
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
-## <a name="troubleshooting"></a>Hibakeresés ##
+## <a name="secure-your-hybrid-connections"></a>A Hibrid kapcsolatok biztonságossá tétele ##
+
+Meglévő hibrid kapcsolatok más App Service Web Appshoz is hozzáadhatók olyan felhasználók számára, akik megfelelő engedélyekkel rendelkeznek az alapul szolgáló Azure Service Bus-továbbítóhoz. Ez azt jelenti, hogy ha meg kell akadályoznia, hogy mások újra használják ugyanezt a hibrid kapcsolatot (például ha a cél erőforrás olyan szolgáltatás, amely nem rendelkezik a jogosulatlan hozzáférés megakadályozása érdekében szükséges további biztonsági intézkedésekkel), le kell zárnia az Azure-hoz való hozzáférést. Service Bus Relay.
+
+Bárki, aki `Reader` hozzáféréssel rendelkezik a továbbítóhoz, _megtekintheti_ a hibrid kapcsolatot, amikor megpróbál hozzáadni a webalkalmazáshoz az Azure Portalon, de nem fogja tudni _hozzáadni_ , mert nem rendelkezik a továbbítási kapcsolat létrehozásához használt kapcsolati karakterlánc lekéréséhez szükséges engedélyekkel. A hibrid kapcsolatok sikeres hozzáadásához rendelkeznie kell a `listKeys` engedéllyel (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). Az `Contributor` szerepkör vagy bármely más szerepkör, amely tartalmazza ezt az engedélyt a továbbítón, lehetővé teszi a felhasználók számára, hogy a hibrid kapcsolatokat használják, és hozzáadja a saját Web Appshoz.
+
+## <a name="troubleshooting"></a>Hibaelhárítás ##
 
 A "Connected" állapot azt jelenti, hogy legalább egy HCM a hibrid kapcsolattal van konfigurálva, és képes elérni az Azure-t. Ha a hibrid kapcsolat állapota nem **kapcsolódik a hálózathoz**, a hibrid kapcsolat nincs KONFIGURÁLVA olyan HCM-re, amely hozzáfér az Azure-hoz.
 

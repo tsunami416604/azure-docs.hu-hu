@@ -1,19 +1,19 @@
 ---
-title: 'A VMware virtuális gépek vagy fizikai kiszolgálók vész-helyreállítási mátrixának támogatása másodlagos VMware-helyre a következővel: Azure Site Recovery | Microsoft Docs'
+title: A VMware/fizikai katasztrófák helyreállításának támogatása másodlagos helyre Azure Site Recovery
 description: Összefoglalja a VMware virtuális gépek és fizikai kiszolgálók vész-helyreállításának támogatását egy másodlagos helyre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255201"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082193"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre való vész-helyreállításának támogatási mátrixa
 
@@ -79,14 +79,14 @@ Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
-## <a name="storage"></a>Adattárolás
+## <a name="storage"></a>Tárolás
 
 ### <a name="host-storage"></a>Gazdagép tárterülete
 
 **Storage (gazdagép)** | **Támogatott** 
 --- | --- 
 NFS | Igen 
-SMB 3.0 | – 
+SMB 3.0 | N/A 
 SAN (ISCSI) | Igen 
 Több elérési út (MPIO) | Igen 
 
@@ -95,8 +95,8 @@ Több elérési út (MPIO) | Igen
 **Konfigurálás** | **Támogatott** 
 --- | --- 
 VMDK | Igen 
-VHD/VHDX | – 
-2\. generációs VM | – 
+VHD/VHDX | N/A 
+2\. generációs VM | N/A 
 Megosztott fürtözött lemez | Igen 
 Titkosított lemez | Nem 
 UEFI| Igen 
@@ -108,7 +108,7 @@ Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
 Tárolóhelyek | Nem 
 Lemez gyors hozzáadása/eltávolítása | Igen 
 Lemez kizárása | Igen 
-Több elérési út (MPIO) | – 
+Több elérési út (MPIO) | N/A 
 
 ## <a name="vaults"></a>Tárolók
 
@@ -121,10 +121,10 @@ Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforr�
 
 A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók, a fizikai kiszolgálók és a másodlagos hely közötti replikációt. A replikáció beállításakor győződjön meg arról, hogy rendelkezik a mobilitási szolgáltatás legújabb verziójával és más összetevőkkel.
 
-| **Update** | **Részletek** |
+| **Frissítés** | **Részletek** |
 | --- | --- |
 |Felderítő frissítések | A Scout frissítései összegző jellegűek. <br/><br/> A legújabb Scout [-frissítések megismerése és letöltése](vmware-physical-secondary-disaster-recovery.md#updates) |
-|Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információ](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Következő lépések

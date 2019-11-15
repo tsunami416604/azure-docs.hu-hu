@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2cf69b456aeccd6da5ac393b88171fb3bb03cf2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470070"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082552"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -91,7 +91,7 @@ Lásd [Application Gateway alhálózat méretével kapcsolatos szempontokat](htt
 
 Igen. Egy adott Application Gateway-telepítés több példányán kívül egy másik egyedi Application Gateway erőforrást is kiépíthet egy meglévő alhálózatba, amely egy másik Application Gateway erőforrást tartalmaz.
 
-Egyetlen alhálózat nem támogatja a Standard_v2 és a standard Application Gateway együttes használatát.
+Egyetlen alhálózat nem támogatja A Standard_v2 és a standard Application Gateway együttes használatát.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Támogatja a Application Gateway az x által továbbított fejléceket?
 
@@ -290,10 +290,6 @@ Nem, csak alfanumerikus karaktereket használjon a. pfx-fájl jelszavában.
 
 Igen. A WAF a standard SKU összes funkcióját támogatja.
 
-### <a name="which-crs-versions-does-application-gateway-support"></a>Mely CRS-verziókat támogatja a Application Gateway?
-
-Application Gateway támogatja a CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) és a CRS [3,0](application-gateway-crs-rulegroups-rules.md#owasp30)-et.
-
 ### <a name="how-do-i-monitor-waf"></a>Hogyan monitor WAF?
 
 WAF figyelése diagnosztikai naplózással. További információ: [diagnosztikai naplózás és mérőszámok Application Gatewayhoz](application-gateway-diagnostics.md).
@@ -308,7 +304,7 @@ Igen. További információ: [WAF és-szabályok testreszabása](application-gat
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>Jelenleg milyen szabályok érhetők el a WAF?
 
-A WAF jelenleg a CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) és a [3,0](application-gateway-crs-rulegroups-rules.md#owasp30)-es verziója támogatja. Ezek a szabályok alapkonfigurációt biztosítanak a Web Application Security Project (OWASP) által azonosított legtöbb 10 legfontosabb biztonsági rés ellen: 
+A WAF jelenleg a CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), a [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)és a [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31)-es verziója támogatja. Ezek a szabályok alapkonfigurációt biztosítanak a Web Application Security Project (OWASP) által azonosított legtöbb 10 legfontosabb biztonsági rés ellen: 
 
 * SQL-injektálás elleni védelem
 * Helyek közötti parancsfájlok elleni védelem
@@ -386,6 +382,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

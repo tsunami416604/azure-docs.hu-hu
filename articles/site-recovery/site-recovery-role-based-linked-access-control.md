@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC) | Microsoft Docs
+title: Az Azure szerepköralapú hozzáférés-vezérlésének kezelése Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan alkalmazhat szerepköralapú hozzáférés-vezérlést (RBAC) Azure Site Recovery hozzáférésének kezeléséhez.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51c0d832a6d6d9b1cd148f765e68cb77c4679819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929221"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083761"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC)
 
-Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. A RBAC segítségével elkülönítheti a munkatársain belüli feladatokat, és adott feladatok elvégzéséhez szükség esetén csak konkrét hozzáférési engedélyeket biztosíthat a felhasználóknak.
+Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. A RBAC segítségével elkülönítheti a munkatársain belüli feladatokat, és adott feladatok elvégzéséhez szükség esetén csak konkrét hozzáférési engedélyeket biztosíthat a felhasználóknak.
 
 A Azure Site Recovery 3 beépített szerepkört biztosít Site Recovery felügyeleti műveletek vezérléséhez. További információ az [Azure beépített RBAC-szerepköreivel](../role-based-access-control/built-in-roles.md) kapcsolatban.
 
@@ -43,31 +43,31 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 
 | **Erőforrás típusa** | **Üzembe helyezési modell** | **Engedéllyel** |
 | --- | --- | --- |
-| Számítási szolgáltatások | Erőforrás-kezelő | Microsoft. számítás/availabilitySets/olvasás |
-|  |  | Microsoft. számítás/virtualMachines/olvasás |
-|  |  | Microsoft. számítás/virtualMachines/írás |
-|  |  | Microsoft. számítás/virtualMachines/törlés |
-|  | Hagyományos | Microsoft. ClassicCompute/tartománynév/olvasás |
-|  |  | Microsoft. ClassicCompute/tartománynév/írás |
-|  |  | Microsoft. ClassicCompute/tartománynév/törlés |
-|  |  | Microsoft. ClassicCompute/virtualMachines/READ |
-|  |  | Microsoft. ClassicCompute/virtualMachines/Write |
-|  |  | Microsoft. ClassicCompute/virtualMachines/delete |
-| Network (Hálózat) | Erőforrás-kezelő | Microsoft. Network/networkInterfaces/READ |
-|  |  | Microsoft. Network/networkInterfaces/Write |
-|  |  | Microsoft. Network/networkInterfaces/delete |
-|  |  | Microsoft. Network/networkInterfaces/csatlakozás/művelet |
-|  |  | Microsoft. Network/virtualNetworks/READ |
-|  |  | Microsoft. Network/virtualNetworks/alhálózatok/olvasás |
-|  |  | Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet |
-|  | Hagyományos | Microsoft. ClassicNetwork/virtualNetworks/READ |
-|  |  | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action |
-| Adattárolás | Erőforrás-kezelő | Microsoft. Storage/storageAccounts/olvasás |
-|  |  | Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet |
-|  | Hagyományos | Microsoft. ClassicStorage/storageAccounts/READ |
-|  |  | Microsoft. ClassicStorage/storageAccounts/Listkeys műveletének beolvasása/művelet |
-| Erőforráscsoport | Erőforrás-kezelő | Microsoft. Resources/üzemelő példány/* |
-|  |  | Microsoft. Resources/Subscriptions/resourceGroups/READ |
+| Számítás | Resource Manager | Microsoft.Compute/availabilitySets/read |
+|  |  | Microsoft.Compute/virtualMachines/read |
+|  |  | Microsoft.Compute/virtualMachines/write |
+|  |  | Microsoft.Compute/virtualMachines/delete |
+|  | Klasszikus | Microsoft.ClassicCompute/domainNames/read |
+|  |  | Microsoft.ClassicCompute/domainNames/write |
+|  |  | Microsoft.ClassicCompute/domainNames/delete |
+|  |  | Microsoft.ClassicCompute/virtualMachines/read |
+|  |  | Microsoft.ClassicCompute/virtualMachines/write |
+|  |  | Microsoft.ClassicCompute/virtualMachines/delete |
+| Network (Hálózat) | Resource Manager | Microsoft.Network/networkInterfaces/read |
+|  |  | Microsoft.Network/networkInterfaces/write |
+|  |  | Microsoft.Network/networkInterfaces/delete |
+|  |  | Microsoft.Network/networkInterfaces/join/action |
+|  |  | Microsoft.Network/virtualNetworks/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
+|  | Klasszikus | Microsoft.ClassicNetwork/virtualNetworks/read |
+|  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
+| Tárolás | Resource Manager | Microsoft.Storage/storageAccounts/read |
+|  |  | Microsoft.Storage/storageAccounts/listkeys/action |
+|  | Klasszikus | Microsoft.ClassicStorage/storageAccounts/read |
+|  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
+| Erőforráscsoport | Resource Manager | Microsoft.Resources/deployments/* |
+|  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
 Érdemes lehet a "Virtual Machine közreműködő" és a "klasszikus virtuálisgép-közreműködő" [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használni a Resource Manager és a klasszikus üzemi modellekhez.
 

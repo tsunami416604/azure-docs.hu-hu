@@ -1,5 +1,5 @@
 ---
-title: Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépek számára a PowerShell és a Azure Resource Manager használatával | Microsoft Docs
+title: Hyper-V virtuális gép vész-helyreállítás a Azure Site Recovery és a PowerShell használatával
 description: Automatizálja a Hyper-V virtuális gépek vész-helyreállítását az Azure-ba az Azure Site Recovery szolgáltatással a PowerShell és a Azure Resource Manager használatával.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200531"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082675"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával
 
@@ -47,9 +47,9 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>1\. lépés: Jelentkezzen be az Azure-fiókjába
 
-1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókba való bejelentkezéshez. A parancsmag egy weboldalt hoz létre a fiók hitelesítő adatainak megadásához: **Connect-AzAccount**.
+1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókba való bejelentkezéshez. A parancsmag egy weboldalt nyit meg a fiók hitelesítő adatainak megadásához: **AzAccount**.
     - Másik lehetőségként a fiók hitelesítő adatait a **kapcsolat-AzAccount** parancsmag paraméterként is hozzáadhatja a **-hitelesítőadat** paraméter használatával.
-    - Ha a CSP-partner bérlő nevében dolgozik, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Példa: **Kapcsolat – AzAccount – bérlő "fabrikam.com"**
+    - Ha a CSP-partner bérlő nevében dolgozik, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Például: **kapcsolat-AzAccount-bérlő "fabrikam.com"**
 2. Társítsa a fiókhoz használni kívánt előfizetést, mivel egy fiók több előfizetéssel is rendelkezhet:
 
     `Select-AzSubscription -SubscriptionName $SubscriptionName`
@@ -66,7 +66,7 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-## <a name="step-2-set-up-the-vault"></a>2\. lépés: A tároló beállítása
+## <a name="step-2-set-up-the-vault"></a>2\. lépés: a tároló beállítása
 
 1. Hozzon létre egy Azure Resource Manager erőforráscsoportot, amelyben létre kívánja hozni a tárolót, vagy használjon egy meglévő erőforráscsoportot. Hozzon létre egy új erőforráscsoportot az alábbiak szerint. A $ResourceGroupName változó tartalmazza a létrehozni kívánt erőforráscsoport nevét, és a $Geo változó tartalmazza azt az Azure-régiót, amelyben létre kívánja hozni az erőforráscsoportot (például "Dél-Brazília").
 
@@ -80,7 +80,7 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
     A **Get-AzRecoveryServicesVault** parancsmaggal lekérheti a meglévő tárolók listáját.
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>3\. lépés: A Recovery Services-tároló környezetének beállítása
+## <a name="step-3-set-the-recovery-services-vault-context"></a>3\. lépés: a Recovery Services-tároló környezetének beállítása
 
 Állítsa be a tár környezetét az alábbiak szerint:
 
@@ -104,7 +104,7 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
 
 5. Másolja a letöltött kulcsot a Hyper-V-gazdagépre. A Hyper-V-gazdagépnek a helyre való regisztrálásához szükség van a kulcsra.
 
-## <a name="step-5-install-the-provider-and-agent"></a>5\. lépés: A szolgáltató és az ügynök telepítése
+## <a name="step-5-install-the-provider-and-agent"></a>5\. lépés: a szolgáltató és az ügynök telepítése
 
 1. Töltse le a szolgáltató legújabb verziójához készült telepítőt a [Microsofttól](https://aka.ms/downloaddra).
 2. Futtassa a telepítőt a Hyper-V-gazdagépen.
@@ -115,15 +115,15 @@ Emellett a cikkben ismertetett példa a következő előfeltételeket ismerteti:
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 Ha a Hyper-V Core-kiszolgálót futtatja, töltse le a telepítőfájlt, és kövesse az alábbi lépéseket:
-1. Bontsa ki a fájlokat a AzureSiteRecoveryProvider. exe fájlból egy helyi könyvtárba a következő parancs futtatásával:```AzureSiteRecoveryProvider.exe /x:. /q```
-2. A ```.\setupdr.exe /i``` futtatási eredmények naplózása a%ProgramData%\ASRLogs\DRASetupWizard.log.
+1. Bontsa ki a fájlokat a AzureSiteRecoveryProvider. exe fájlból egy helyi könyvtárba a következő parancs futtatásával: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. A Futtatás ```.\setupdr.exe /i``` találatok naplózása a%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Regisztrálja a kiszolgálót a következő parancs futtatásával:
 
     ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
 
 
-## <a name="step-6-create-a-replication-policy"></a>6\. lépés: Replikációs házirend létrehozása
+## <a name="step-6-create-a-replication-policy"></a>6\. lépés: replikációs házirend létrehozása
 
 Mielőtt elkezdené, vegye figyelembe, hogy a megadott Storage-fióknak ugyanabban az Azure-régióban kell lennie, mint a tárolónak, és engedélyezni kell a Geo-replikációt.
 
@@ -151,7 +151,7 @@ Mielőtt elkezdené, vegye figyelembe, hogy a megadott Storage-fióknak ugyanabb
 
         $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $protectionContainer
 
-## <a name="step-7-enable-vm-protection"></a>7\. lépés: VIRTUÁLIS gépek védelmének engedélyezése
+## <a name="step-7-enable-vm-protection"></a>7\. lépés: a virtuális gépek védelmének engedélyezése
 
 1. Kérje le a védelemmel ellátni kívánt virtuális géphez tartozó védhető elem beolvasását az alábbiak szerint:
 
@@ -190,7 +190,7 @@ Mielőtt elkezdené, vegye figyelembe, hogy a megadott Storage-fióknak ugyanabb
 
 
 
-## <a name="step-8-run-a-test-failover"></a>8\. lépés: Feladatátvételi teszt futtatása
+## <a name="step-8-run-a-test-failover"></a>8\. lépés: feladatátvételi teszt futtatása
 1. Futtasson egy feladatátvételi tesztet a következőképpen:
 
         $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
@@ -203,5 +203,5 @@ Mielőtt elkezdené, vegye figyelembe, hogy a megadott Storage-fióknak ugyanabb
 
         $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További](https://docs.microsoft.com/powershell/module/az.recoveryservices) információ a Azure site Recovery Azure Resource Manager PowerShell-parancsmagokkal.

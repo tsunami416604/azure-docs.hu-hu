@@ -1,5 +1,5 @@
 ---
-title: A VMware vész-helyreállítási konfigurációs kiszolgáló üzembe helyezése Azure Site Recoverysal | Microsoft Docs
+title: A konfigurációs kiszolgáló üzembe helyezése Azure Site Recovery
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy konfigurációs kiszolgálót a VMware vész-helyreállításhoz Azure Site Recovery
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 92b51b3955833bac6f87457a19e4d6359600a25a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747872"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084147"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -121,7 +121,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 4. **Külső gyártótól származó szoftverek telepítése**:
 
-    |Forgatókönyv   |Követendő lépések  |
+    |Alkalmazási helyzet   |Követendő lépések  |
     |---------|---------|
     |Letölthetem és telepíthetem a MySQL-t manuálisan?     |  Igen. Töltse le a MySQL-alkalmazást, helyezze azt a **C:\Temp\ASRSetup**mappába, majd telepítse manuálisan. A feltételek elfogadása és a **letöltés és telepítés**kiválasztása után a portál *már telepítve van*. Folytassa a következő lépéssel.       |
     |El tudom kerülni a MySQL online letöltését?     |   Igen. Helyezze a MySQL Installer-alkalmazást a **C:\Temp\ASRSetup**mappába. Fogadja el a feltételeket, válassza a **letöltés és telepítés**lehetőséget, és a portál az alkalmazás telepítéséhez hozzáadott telepítőt használja. A telepítés befejeződése után folytassa a következő lépéssel.    |
@@ -191,6 +191,6 @@ További gyakori kérdések a konfigurációs kiszolgálókról: [konfiguráció
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állítsa be a [VMWare virtuális gépek](vmware-azure-tutorial.md) vész-helyreállítását az Azure-ba.

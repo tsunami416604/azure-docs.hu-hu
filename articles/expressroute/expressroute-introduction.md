@@ -1,5 +1,5 @@
 ---
-title: 'A helyszíni hálózat kiterjesztése az Azure-ra privát kapcsolaton keresztül – ExpressRoute Áttekintés: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute – Áttekintés: privát kapcsolaton keresztüli csatlakoztatás'
 description: Az ExpressRoute technikai áttekintése ismerteti, hogyan terjeszthető ki a helyszíni hálózatát az Azure-ra egy ExpressRoute-kapcsolattal egy privát kapcsolaton keresztül.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123331"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083414"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute – áttekintés
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services szolgáltatással, például a Microsoft Azure és az Office 365-mel.
@@ -80,7 +79,7 @@ Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek sz�
 Az ExpressRoute Direct fő előnyei a teljesség igénye nélkül a következők:
 
 * Nagy mennyiségű adat betöltése az olyan szolgáltatásokba, mint például a Storage és az Cosmos DB
-* Olyan iparágak fizikai elkülönítése, amelyek szabályozva vannak, és dedikált és elkülönített kapcsolatot igényelnek, például: Banki, kormányzati és kereskedelmi
+* Fizikai elkülönítés a szabályozott, valamint dedikált és elszigetelt kapcsolódást igénylő iparágak, például a banki, kormányzati és kiskereskedelmi ágazatok számára
 * A kapcsolatcsoportok elosztásának üzleti egységen alapuló, részletes szabályzása
 
 További információ: [Az ExpressRoute Direct ismertetése](https://go.microsoft.com/fwlink/?linkid=2022973).
@@ -92,7 +91,7 @@ A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolat
 * 100 Mbps
 * 200 Mbps
 * 500 Mbps
-* 1 Gbps
+* 1 Gb/s
 * 2 Gbps
 * 5 Gbps
 * 10 Gbps
@@ -113,7 +112,7 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Az alábbi sz
 ## <a name="faq"></a>GYIK
 Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az ExpressRoute kapcsolati modelljeinek](expressroute-connectivity-models.md) ismertetése.
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).

@@ -1,41 +1,41 @@
 ---
-title: A Verizon prémium szintű Azure CDN-szabályok szabálymotor feltételes kifejezései |} A Microsoft Docs
-description: A Verizon prémium szintű Azure CDN dokumentációja szabályok szabálymotor egyezési feltételei és funkciókat.
+title: A Azure CDN-Verizon Premium Rules motor feltételes kifejezései
+description: A Verizon Premium Rules Engine Azure CDN a feltételekkel és szolgáltatásokkal kapcsolatos dokumentációja.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: f790e37ae876c0640d55ebfb51abb43c6a705f04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d28bda28894477845c2a050666b3b4dd332b7d50
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593222"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082976"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Az Azure CDN a Verizontól prémium szabályok szabálymotor feltételes kifejezései
+# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN a Verizon Premium Rules Engine feltételes kifejezésekkel
 
-Ez a cikk felsorolja az Azure Content Delivery Network (CDN), a feltételes kifejezések részletes leírását [Szabálymotorral](cdn-verizon-premium-rules-engine.md).
+Ez a cikk az Azure Content Delivery Network (CDN) [szabályok motorjának](cdn-verizon-premium-rules-engine.md)feltételes kifejezéseit ismerteti.
 
-A szabály első része a feltételes kifejezéssel.
+A szabály első része a feltételes kifejezés.
 
-Feltételes kifejezéssel | Leírás
+Feltételes kifejezés | Leírás
 -----------------------|-------------
-HA | Egy IF kifejezés mindig egy szabályban utasításnak elsőként egy részét képezi. Mint minden más feltételes kifejezés IF nyilatkozattal egyezést társítva kell lennie. Ha nincsenek további feltételes kifejezéseket vannak megadva, ez határozza meg azokat a feltételt, amely a szolgáltatások alkalmazandó kérelem előtt teljesülniük kell.
-HA | ÉS a egy IF kifejezés csak a feltételes kifejezések: Ha, és ha a következő típusú után adható hozzá. Azt jelzi, hogy nincs-e egy másik feltétel, amelyeknek teljesülniük kell a kezdeti IF utasítás.
-VAGY HA| Egy vagy ha egy másik feltétel, amelyeknek teljesülniük kell, vagy ha nyilatkozattal adott szolgáltatások előtt adja meg. VAGY ha utasítás jelzi az előző utasítást végén. Csak a feltételes kifejezés, amely lehet helyezni, vagy ha egy másik utasítás egy más IF utasítás után. Ez azt jelenti, hogy egy vagy ha utasítás csak akkor használható, amely rendelkezik, amelyeknek teljesülniük kell egyetlen további feltétel megadásához.
+Ha | Az IF kifejezés mindig a szabály első utasításának részét képezi. Az összes többi feltételes kifejezéshez hasonlóan ez az IF utasításnak egyezéssel kell társítania. Ha nincs megadva további feltételes kifejezés, akkor ez a megfeleltetés határozza meg azt a feltételt, amelynek teljesülnie kell ahhoz, hogy a szolgáltatások egy csoportját alkalmazni lehessen egy kérelemre.
+ÉS HA | A és IF kifejezés csak a következő típusú feltételes kifejezések után vehető fel: IF, és IF. Azt jelzi, hogy egy másik feltételnek kell teljesülnie a kezdeti IF utasításhoz.
+MÁS, HA| MÁS, ha a kifejezés olyan alternatív feltételt határoz meg, amelynek teljesülnie kell ahhoz, hogy az ehhez a MÁSIKhoz tartozó szolgáltatások készlete megtörténjen. Ha az utasítás az előző utasítás végét jelöli, akkor más, mint a. Az egyetlen feltételes kifejezés, amely akkor helyezhető el, ha egy másik, ha az utasítás más más, mint a utasítás. Ez azt jelenti, hogy egy másik, ha az utasítás csak egyetlen további feltételt tartalmazhat, amelynek teljesülnie kell.
 
-**Példa**: ![CDN egyezési feltételei](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**Példa**: ![CDN egyeztetési feltétel](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
-   > A következő szabály felülbírálhatja az előző szabályok által meghatározott műveleteket.
-   > Példa: Egy kevésbé szabály összes kérelem keresztül jogkivonat-alapú hitelesítés védi. Egy másik szabály közvetlenül alá kivételt az egyes kérések hozható létre.
+   > Egy későbbi szabály felülbírálhatja egy korábbi szabály által megadott műveleteket.
+   > Példa: A catch-all szabály A jogkivonat-alapú hitelesítésen keresztül minden kérést biztosít. Egy másik szabály is létrehozható közvetlenül az alatt, hogy bizonyos típusú kérelmek esetében kivételt hozzon létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure CDN áttekintése](cdn-overview.md)
+- [Azure CDN áttekintése](cdn-overview.md)
 - [Szabálymotor-referencia](cdn-verizon-premium-rules-engine-reference.md)
 - [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
-- [A rules engine használatával a HTTP alapértelmezés felülbírálása](cdn-verizon-premium-rules-engine.md)
+- [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)

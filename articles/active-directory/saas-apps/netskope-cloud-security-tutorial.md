@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Netskope Cloud Security szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Netskope Cloud Security között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Netskope-felügyeleti konzolokkal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Netskope felügyeleti konzol között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e33d05450e19331d876029b07d520634a40ab31
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dec8f8065114b89dfa7bcaceee3f26855953dde2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884449"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081766"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-cloud-security"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Netskope Cloud Security szolgáltatással
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Netskope felügyeleti konzol
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Netskope Cloud Securityt Azure Active Directory (Azure AD) használatával. A Netskope Cloud Security és az Azure AD integrálásával a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Netskope-felügyeleti konzolokat Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Netskope felügyeleti konzol, a következőket teheti:
 
-* A Netskope Cloud Security szolgáltatáshoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek, hogy Netskope a Cloud Security Azure AD-fiókjaikat.
+* Az Azure AD-ben a Netskope-felügyeleti konzolhoz hozzáférő vezérlő.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-fiókjával felügyeleti konzol Netskope.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -38,43 +38,43 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Netskope Felhőbeli biztonsági egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* A Netskope felügyeleti konzol egyszeri bejelentkezés (SSO) engedélyezett előfizetést.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Netskope Cloud Security támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A Netskope felügyeleti konzol támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-## <a name="adding-netskope-cloud-security-from-the-gallery"></a>A Netskope Cloud Security hozzáadása a katalógusból
+## <a name="adding-netskope-administrator-console-from-the-gallery"></a>Netskope-felügyeleti konzol hozzáadása a katalógusból
 
-A Netskope Cloud Security az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Netskope Cloud Security szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Netskope felügyeleti konzol Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Netskope-felügyeleti konzol a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Netskope Cloud Security** kifejezést a keresőmezőbe.
-1. Válassza a **Netskope Cloud Security** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Netskope felügyeleti konzol** kifejezést a keresőmezőbe.
+1. Válassza ki a **Netskope felügyeleti konzol** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-cloud-security"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Netskope Cloud Security szolgáltatásban
+## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-administrator-console"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Netskope felügyeleti konzol
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Netskope Cloud Security használatával egy **B. Simon**nevű tesztelési felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Netskope Cloud Securityben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Netskope felügyeleti konzol egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Netskope felügyeleti konzolban.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Netskope Cloud Security használatával hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és a Netskope felügyeleti konzol való teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[Netskope Cloud Security SSO konfigurálása](#configure-netskope-cloud-security-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre egy Netskope Cloud Security test User](#create-netskope-cloud-security-test-user)** -t, hogy rendelkezzen a Netskope Cloud Security-beli, a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel.
+1. **[Netskope felügyeleti konzol SSO konfigurálása](#configure-netskope-administrator-console-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre Netskope felügyeleti konzol tesztelési felhasználóval](#create-netskope-administrator-console-test-user)** , hogy a B. Simon partnere legyen a Netskope felügyeleti konzol, amely a felhasználó Azure ad-beli képviseletéhez van csatolva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Netskope Cloud Security** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Netskope felügyeleti konzol** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
@@ -86,20 +86,23 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<tenant_host_name>/saml/acs`
 
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
+
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<tenantname>.goskope.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [Netskope Cloud Security](mailto:support@netskope.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A bejelentkezési URL-címek értéke nem valódi. A bejelentkezési URL-cím értékének frissítése a tényleges bejelentkezési URL-címmel. A bejelentkezési URL-cím beszerzéséhez lépjen kapcsolatba a [Netskope felügyeleti konzol ügyfél-támogatási csapatával](mailto:support@netskope.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A Netskope Cloud Security alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Netskope felügyeleti konzol alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentieken kívül a Netskope Cloud Security alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A fentiek mellett a Netskope felügyeleti konzol alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ---------| --------- |
     | rendszergazda – szerepkör | User. assignedroles |
 
@@ -108,33 +111,33 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-1. A **Netskope Cloud Security beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. A **Netskope felügyeleti konzol beállítása** szakaszban másolja a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** elemre.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Netskope Cloud Security szolgáltatáshoz.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Netskope felügyeleti konzolhoz.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Netskope Cloud Security**elemet.
+1. Az alkalmazások listában válassza a **Netskope felügyeleti konzol**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -144,19 +147,81 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-netskope-cloud-security-sso"></a>A Netskope Cloud Security SSO konfigurálása
+## <a name="configure-netskope-administrator-console-sso"></a>Netskope felügyeleti konzol SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Netskope Cloud Security** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portal a [Netskope Cloud Security támogatási csapatának](mailto:support@netskope.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a Netskope felügyeleti konzol vállalati webhelyre rendszergazdaként.
 
-### <a name="create-netskope-cloud-security-test-user"></a>Netskope Cloud Security-teszt felhasználó létrehozása
+1. Kattintson a bal oldali navigációs ablaktábla **Beállítások** fülére.
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Netskope Cloud Securityben. Működjön együtt a [Netskope Cloud Security támogatási csapatával](mailto:support@netskope.com) , és vegye fel a felhasználókat a Netskope Cloud Security platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+    ![Netskope felügyeleti konzol konfiguráció](./media/netskope-cloud-security-tutorial/config-settings.png)
+
+1. Kattintson az **Adminisztráció** fülre.
+
+    ![Netskope felügyeleti konzol konfiguráció](./media/netskope-cloud-security-tutorial/config-administration.png)
+
+1. Kattintson az **SSO** fülre.
+
+    ![Netskope felügyeleti konzol konfiguráció](./media/netskope-cloud-security-tutorial/config-sso.png)
+
+1. A **hálózati beállítások** szakaszban hajtsa végre a következő lépéseket:
+    
+    ![Netskope felügyeleti konzol konfiguráció](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+
+    a. Másolja a **felhasználói szolgáltatás URL-címének** értékét, és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+
+    b. Másolja a **szolgáltatói entitás azonosítójának** értékét, és illessze be a Azure Portal **alapszintű SAML-konfiguráció** szakaszának **azonosító** szövegmezőbe.
+
+1. Kattintson a **beállítások szerkesztése** lehetőségre az **SSO/slo beállítások** szakaszban.
+
+    ![Netskope felügyeleti konzol konfiguráció](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+
+1. A **Beállítások** előugró ablakban hajtsa végre a következő lépéseket:
+
+    ![Netskope felügyeleti konzol konfiguráció](./media/netskope-cloud-security-tutorial/configuration.png)
+
+    a. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
+
+    b. A **identitásszolgáltató URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
+
+    c. Az **IDENTITÁSSZOLGÁLTATÓ entitás-azonosító** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portal másolt.
+
+    d. Nyissa meg a letöltött Base64-kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be a **identitásszolgáltató-tanúsítvány** szövegmezőbe.
+
+    e. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
+
+    f. Illessze be a **IDENTITÁSSZOLGÁLTATÓ slo URL** szövegmezőbe a **kijelentkezési URL** értékét, amelyet a Azure Portal másolt.
+
+    g. Kattintson a **Submit (Küldés**) gombra.
+
+### <a name="create-netskope-administrator-console-test-user"></a>Netskope létrehozása felügyeleti konzol tesztelési felhasználóval
+
+1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a Netskope felügyeleti konzol vállalati webhelyre rendszergazdaként.
+
+1. Kattintson a bal oldali navigációs ablaktábla **Beállítások** fülére.
+
+    ![Netskope felügyeleti konzol felhasználó létrehozása](./media/netskope-cloud-security-tutorial/config-settings.png)
+
+1. Kattintson az **aktív platform** fülre.
+
+    ![Netskope felügyeleti konzol felhasználó létrehozása](./media/netskope-cloud-security-tutorial/user1.png)
+
+1. Kattintson a **felhasználók** fülre.
+
+    ![Netskope felügyeleti konzol felhasználó létrehozása](./media/netskope-cloud-security-tutorial/add-user.png)
+
+1. Kattintson a **felhasználók hozzáadása**elemre.
+
+    ![Netskope felügyeleti konzol felhasználó létrehozása](./media/netskope-cloud-security-tutorial/user-add.png)
+
+1. Adja meg a hozzáadni kívánt felhasználó e-mail-címét, majd kattintson a **Hozzáadás**gombra.
+
+    ![Netskope felügyeleti konzol felhasználó létrehozása](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Netskope Cloud Security csempére kattint, automatikusan be kell jelentkeznie a Netskope Cloud Security szolgáltatásba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Netskope felügyeleti konzol csempére kattint, automatikusan be kell jelentkeznie arra a Netskope-felügyeleti konzol, amelyhez be szeretné állítani az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -166,4 +231,4 @@ Ha a hozzáférési panelen a Netskope Cloud Security csempére kattint, automat
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A Netskope Cloud Security kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [A Netskope felügyeleti konzol kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

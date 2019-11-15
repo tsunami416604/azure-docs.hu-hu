@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 09/04/2019
-ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 0b8bfff03414dd02360cab1957ea2205e392235d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826659"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082483"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -72,8 +72,8 @@ Adatbázis-másolat létrehozásához a következő szerepköröket kell megadni
 - SQL Server közreműködő szerepkör vagy
 - Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás   
-   Microsoft. SQL/kiszolgálók/adatbázisok/írás   
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Az adatbázis-másolatok megszakításához a következő szerepköröket kell megadnia
 
@@ -81,8 +81,8 @@ Az adatbázis-másolatok megszakításához a következő szerepköröket kell m
 - SQL Server közreműködő szerepkör vagy
 - Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás   
-   Microsoft. SQL/kiszolgálók/adatbázisok/írás   
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
    
 Az adatbázis-másolat Azure Portal használatával történő kezeléséhez a következő engedélyekre is szüksége lesz:
 
@@ -157,7 +157,27 @@ Az új adatbázisban lévő összes felhasználó megőrzi a forrás-adatbázisb
 
 Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist a felhasználók és a bejelentkezések kezelésével kapcsolatban, tekintse meg az [Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="database-copy-errors"></a>Adatbázis-másolási hibák
+
+A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
+
+| Hibakód | Severity | Leírás |
+| ---:| ---:|:--- |
+| 40635 |16 |Ügyfél IP-címmel ( '%.&#x2a;ls' ) ideiglenesen le van tiltva. |
+| 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |
+| 40561 |16 |Az adatbázis másolása sikertelen volt. A forrás-vagy a céladatbázis nem létezik. |
+| 40562 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |
+| 40563 |16 |Az adatbázis másolása sikertelen volt. A célként megadott adatbázis el lett dobva. |
+| 40564 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40565 |16 |Az adatbázis másolása sikertelen volt. Nem engedélyezett több mint 1 egyidejű adatbázis-másolat ugyanabból a forrásból. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+| 40566 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40567 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40568 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis elérhetetlenné vált. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40569 |16 |Az adatbázis másolása sikertelen volt. A céladatbázis elérhetetlenné vált. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40570 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+| 40571 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a bejelentkezésekről: [bejelentkezések kezelése](sql-database-manage-logins.md) és [Az Azure SQL Database biztonságának kezelése a vész-helyreállítás után](sql-database-geo-replication-security-config.md).
 * Az adatbázisok exportálásával kapcsolatban tekintse meg [az adatbázis exportálása BACPAC](sql-database-export.md)című témakört.

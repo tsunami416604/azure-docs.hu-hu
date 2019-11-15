@@ -1,142 +1,142 @@
 ---
-title: VMware virtuális gép az Azure (CSP) Azure Site Recovery használata vész-helyreállítási több-bérlős támogatásának áttekintése |} A Microsoft Docs
-description: Az Azure Site Recovery támogatási áttekintést nyújt a VMWare-vészhelyreállításhoz az Azure-bA egy több-bérlős környezet (CSP) program.
+title: VMware virtuális gép – több-bérlős vész-helyreállítás Azure Site Recovery
+description: Áttekintést nyújt Azure Site Recovery az Azure-ba irányuló VMWare vész-helyreállítási támogatásról több-bérlős környezet (CSP) program keretében.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718068"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083991"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>VMware-vészhelyreállításhoz az Azure CSP-bA több-bérlős támogatásának áttekintése
+# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Több-bérlős támogatás a VMware vész-helyreállításhoz az Azure-ban a CSP használatával – áttekintés
 
-[Az Azure Site Recovery](site-recovery-overview.md) bérlői előfizetések támogatja a több-bérlős környezetben. Több-bérlős létrehozása és felügyelete a Microsoft Cloud Solution Provider (CSP) program keretében bérlői előfizetéseket is támogatja.
+[Azure site Recovery](site-recovery-overview.md) támogatja a bérlői előfizetések több-bérlős környezetét. Emellett támogatja a bérlői előfizetések több-bérlős használatát is, amelyeket a Microsoft Cloud megoldás-szolgáltató (CSP) programon keresztül hoztak létre és felügyelnek.
 
-Ez a cikk megvalósítása és kezelése az Azure-bA több-bérlős VMware áttekintést nyújt.
+Ez a cikk áttekintést nyújt a több-bérlős VMware-ről az Azure-ba történő replikációjának megvalósításáról és kezeléséről.
 
-## <a name="multi-tenant-environments"></a>Több-bérlős környezetekben
+## <a name="multi-tenant-environments"></a>Több-bérlős környezetek
 
-Nincsenek három fő több-bérlős modell:
+Három fő több-bérlős modell létezik:
 
-* **Üzemeltetési Megosztottkeresőszolgáltatás-ellátó (HSP)** : A partner tulajdonában lévő fizikai infrastruktúráját, és használja a megosztott erőforrások (vCenter, adatközpontok, fizikai tároló és így tovább) több bérlő virtuális gépek üzemeltetéséhez ugyanazon az infrastruktúrán. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját vész-helyreállítási önkiszolgáló megoldást.
+* **Megosztott üzemeltetési szolgáltatások szolgáltatója (HSP)** : a partner tulajdonosa a fizikai infrastruktúra, és megosztott erőforrásokat (vCenter, adatközpontokat, fizikai tárhelyet stb.) használ a több bérlős virtuális gép ugyanazon az infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is saját vész-helyreállítási megoldást kínál.
 
-* **Dedikált szolgáltatás szolgáltató**: A partner a fizikai infrastruktúra tulajdonosa, de dedikált erőforrásokat (több vCenters, fizikai adattárolók, és így tovább) használja a külön infrastruktúra minden egyes bérlő-alapú virtuális gépek üzemeltetéséhez. A partner is képes a globálisnév vész-helyreállítási felügyelt szolgáltatás, vagy a bérlő is saját, önkiszolgáló megoldás.
+* **Dedikált üzemeltetési szolgáltató**: a partner a fizikai infrastruktúrát használja, de dedikált erőforrásokat (több vCenter, fizikai adattárolót stb.) használ az egyes bérlők virtuális gépei külön infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is rendelkezhet.
 
-* **Felügyelt szolgáltatások szolgáltatói (MSP)** : Az ügyfél a tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúráját, és a partner által biztosított a vész-helyreállítási engedélyezését és felügyelet.
+* **Felügyelt szolgáltató (msp)** : az ügyfél tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúra, a partner pedig vész-helyreállítási engedélyezést és felügyeletet biztosít.
 
-## <a name="shared-hosting-services-provider-hsp"></a>A megosztott üzemeltetési szolgáltatásokat szolgáltató (HSP)
+## <a name="shared-hosting-services-provider-hsp"></a>Közös üzemeltetésű szolgáltatók (HSP)
 
-A két esetben a megosztott üzemeltetési forgatókönyv részhalmaza, és alapelveket használnak. A megosztott üzemeltetési útmutató végén a különbségeket ismerteti.
+A másik két forgatókönyv a megosztott üzemeltetésű forgatókönyv részhalmaza, és ugyanazokat az elveket használják. A különbségeket a megosztott üzemeltetési útmutató végén mutatjuk be.
 
-Egy több-bérlős forgatókönyvben alapvető követelmény az, hogy a bérlők számára elkülönített kell lennie. Egyetlen bérlő nem kell tudni figyelje meg, milyen más bérlők üzemeltetett rendelkezik. Partner által felügyelt környezetben ez a követelmény nem számít, mivel egy önkiszolgáló környezet, amelyben kritikus fontosságú. Ez a cikk feltételezi, hogy a bérlők elkülönítését szükséges.
+A több-bérlős forgatókönyv alapvető követelménye, hogy a bérlőknek elkülönítettnek kell lenniük. Az egyik bérlő nem tudja megfigyelni, hogy egy másik bérlő hol található. A partner által felügyelt környezetekben ez a követelmény nem annyira fontos, mint az önkiszolgáló környezetekben, ahol kritikus fontosságú lehet. Ez a cikk azt feltételezi, hogy a bérlő elkülönítése kötelező.
 
-Az architektúra a következő ábrán látható.
+Az architektúra az alábbi ábrán látható.
 
-![A vCenter egy megosztott HSP](./media/vmware-azure-multi-tenant-overview/shared-hosting-scenario.png)  
+![Megosztott HSP egyetlen vCenter](./media/vmware-azure-multi-tenant-overview/shared-hosting-scenario.png)  
 
-**A megosztott-üzemeltet egy vCenter-kiszolgáló**
+**Megosztott üzemeltetés egyetlen vCenter-kiszolgálóval**
 
-Az ábrán minden ügyfél rendelkezik egy külön felügyeleti kiszolgálóhoz. Ez a konfiguráció korlátozza a bérlői hozzáférési bérlőspecifikus virtuális gépekhez, és lehetővé teszi a bérlők elkülönítésének. VMware virtuális gép replikációja a konfigurációs kiszolgáló virtuális gépek felderítése és ügynökök telepítésére használja. Több-bérlős környezetekben, igény szerinti hozzáadásával vCenter hozzáférés-vezérlés használatával virtuális gépek felderítésének korlátozása ugyanezek az elvek vonatkoznak.
+A diagramon minden ügyfél külön felügyeleti kiszolgálóval rendelkezik. Ez a konfiguráció korlátozza a bérlőhöz tartozó virtuális gépek bérlői hozzáférését, és lehetővé teszi a bérlők elkülönítését. A VMware VM-replikáció a konfigurációs kiszolgáló használatával észleli a virtuális gépeket, és telepíti az ügynököket. Ugyanazok az alapelvek vonatkoznak a több-bérlős környezetekre is, a virtuálisgép-felderítés korlátozásával a vCenter hozzáférés-vezérlés használatával.
 
-Az adatok elkülönítése követelmény, az azt jelenti, hogy minden bizalmas infrastruktúra információt (például a hozzáférési hitelesítő adatok) továbbra is a bérlők számára nem nyilvános. Ezért azt javasoljuk, hogy a felügyeleti kiszolgáló összes összetevőjét a partner kizárólagos felügyelete alatt maradnak. A felügyeleti kiszolgáló-összetevők a következők:
+Az adatelkülönítési követelmény azt jelenti, hogy az összes bizalmas infrastruktúra-információ (például a hozzáférési hitelesítő adatok) a bérlők számára nyilvánosságra is marad. Ezért javasoljuk, hogy a felügyeleti kiszolgáló összes összetevője a partner kizárólagos felügyelete alatt maradjon. A felügyeleti kiszolgáló összetevői a következők:
 
 * Konfigurációs kiszolgáló
-* Folyamatkiszolgáló
+* Kiszolgáló feldolgozása
 * Fő célkiszolgáló
 
-A különálló horizontálisan felskálázott folyamatkiszolgálók is a partner ellenőrzés alatt áll.
+A partner által felügyelt különálló felskálázású folyamat-kiszolgáló is.
 
-## <a name="configuration-server-accounts"></a>Konfigurációs kiszolgáló fiókok
+## <a name="configuration-server-accounts"></a>Konfigurációs kiszolgálói fiókok
 
-Minden konfigurációs kiszolgálót a több-bérlős forgatókönyvben két fiókot használja:
+A több-bérlős forgatókönyvben szereplő összes konfigurációs kiszolgáló két fiókot használ:
 
-- **vCenter-hozzáférési fiók**: Ez a fiók bérlői virtuális gépek felderítésére szolgál. Hozzárendelt vCenter hozzáférési engedéllyel rendelkezik. Hozzáférés adatszivárgás elkerülése érdekében azt javasoljuk, hogy partnerek adja meg ezeket a hitelesítő adatokat, maguk a konfigurációs eszközt.
+- **vCenter hozzáférési fiók**: Ez a fiók a bérlői virtuális gépek felderítésére szolgál. Hozzá van rendelve vCenter hozzáférési engedélyekkel. Ha el szeretné kerülni a hozzáférési szivárgások elkerülését, javasoljuk, hogy a partnerek ezeket a hitelesítő adatokat saját maguk adja meg a konfigurációs eszközben.
 
-- **Virtuálisgép-hozzáférési fiók**: Ez a fiók a Mobilitásiszolgáltatás-ügynök telepítése a bérlő virtuális gépek, az automatikus leküldés szolgál. Ez általában a egy tartományfiókot, amely egy bérlő biztosíthatnak a partnernek, vagy egy fiókot, amely közvetlenül a partner kezelhet. Egy bérlő adatait megosztja a partner közvetlenül nem szeretné, ha azok adja meg a hitelesítő adatokat, korlátozott idejű hozzáférés és a konfigurációs kiszolgáló. Vagy a partner segítségét, és telepíthetik a Mobilitásiszolgáltatás-ügynök manuális.
+- **Virtuális gép hozzáférési fiókja**: Ez a fiók használható a mobilitási szolgáltatás ügynökének a bérlői virtuális gépeken való telepítésére, automatikus leküldéses küldéssel. Általában egy olyan tartományi fiók, amelyet a bérlő egy partnernek vagy egy olyan fióknak ad meg, amelyet a partner közvetlenül kezelhet. Ha a bérlő nem szeretné közvetlenül megosztani az adatokat a partnerrel, a konfigurációs kiszolgálóhoz való korlátozott hozzáféréssel megadhatja a hitelesítő adatokat. Vagy a partner segítségével manuálisan is telepíthetik a mobilitási szolgáltatás ügynökét.
 
 ## <a name="vcenter-account-requirements"></a>vCenter-fiókra vonatkozó követelmények
 
-A konfigurációs kiszolgáló konfigurálása egy olyan fiókkal, amely egy hozzárendelt különleges szerepkörrel rendelkezik.
+Konfigurálja a konfigurációs kiszolgálót egy olyan fiókkal, amelyhez hozzá van rendelve egy speciális szerepkör.
 
-- A szerepkör-hozzárendelés legyen a vCenter-hozzáférési fiók minden vCenter objektumon alkalmazza, és az gyermekobjektum nem érvényesülnek. Ez a konfiguráció biztosítja a bérlők elszigetelésére, mivel hozzáférés propagálás véletlen hozzáférést eredményezhet más objektumokra.
+- A szerepkör-hozzárendelést az egyes vCenter-objektumok vCenter-hozzáférési fiókjára kell alkalmazni, és a rendszer nem propagálja a gyermekobjektumok számára. Ez a konfiguráció biztosítja a bérlők elkülönítését, mivel a hozzáférés-propagálás más objektumokhoz való véletlen hozzáféréshez vezethet.
 
-    ![Az gyermekobjektum beállítás terjesztése](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
+    ![A propagálás gyermekobjektum számára beállítás](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
 
-- Az alternatív megoldás, hogy a felhasználói fiók és az Adatközpont-objektum szerepkörhöz hozzárendelni, és átvezeti őket az gyermekobjektum. Adjon a fióknak egy **nincs hozzáférés** minden objektum (például virtuális gépeket, más bérlők tartozó) szerepkör, amely nem érhető el, hogy egy adott bérlő kell lennie. Ez a konfiguráció nehézkes. Véletlen hozzáférés-vezérlést, mivel minden új propagálás is automatikusan hozzáférést kap, amely örökli a szülő teszi elérhetővé. Ezért azt javasoljuk, hogy az első módszer használata.
+- Az alternatív módszer a felhasználói fiók és a szerepkör társítása az adatközpont-objektumhoz, majd a gyermekobjektumok továbbítása. Ezután adja meg a fióknak, hogy minden objektumhoz (például más bérlőhöz tartozó virtuális gépekhez) **ne legyen hozzáférési** szerepkör, amely nem érhető el egy adott bérlő számára. Ez a konfiguráció nehézkes. Lehetővé teszi a véletlen hozzáférés-vezérlést, mivel minden új gyermekobjektum automatikusan megkapja a szülőtől örökölt hozzáférést is. Ezért javasoljuk, hogy az első módszert használja.
 
-### <a name="create-a-vcenter-account"></a>A vCenter-fiók létrehozása
+### <a name="create-a-vcenter-account"></a>VCenter-fiók létrehozása
 
-1. Új szerepkör létrehozása a klónozásával az előre meghatározott *csak olvasható* szerepkört, majd adjon meg egy kényelmes nevet (például Azure_Site_Recovery, ahogyan az ebben a példában), és.
-2. A következő engedélyek hozzárendelése ehhez a szerepkörhöz:
+1. Hozzon létre egy új szerepkört az előre meghatározott *írásvédett* szerepkör klónozásával, majd adjon meg egy kényelmes nevet (például Azure_Site_Recovery, ahogy az ebben a példában látható).
+2. Rendelje hozzá a következő engedélyeket ehhez a szerepkörhöz:
 
-   * **Adattároló**: Foglaljon le helyet, Tallózás datastore, alacsony szintű fájlműveletek, fájl, a frissítés virtuálisgép-fájlok eltávolítása
-   * **Hálózati**: Hálózat hozzárendelése
-   * **Erőforrás**: Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép áttelepítése, bekapcsolt virtuális gép áttelepítése
-   * **Feladatok**: A feladat, a frissítési feladat létrehozása
-   * **Virtuálisgép - konfiguráció**: Összes
-   * **Virtuálisgép - kapcsolati** > választ a kérdésre, eszközkapcsolat, CD konfigurálása a media, konfigurálás hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése
-   * **Virtuálisgép - készlet** > Létrehozás meglévőből, létrehozhat új, Regisztrálás, regisztráció törlése
-   * **VM - kiépítés** > virtuális gép letöltésének, engedélyezése a virtuális gép fájlok feltöltése
-   * **VM - pillanatkép kezelése** > pillanatképek eltávolítása
+   * **Adattár**: tárhely kiosztása, adattár tallózása, alacsony szintű fájl műveletei, fájl eltávolítása, virtuálisgép-fájlok frissítése
+   * **Hálózat**: hálózati hozzárendelés
+   * **Erőforrás**: virtuális gép kiosztása erőforráskészlet számára, áttelepítési virtuális gép, Migrálás virtuális gépen
+   * **Feladatok**: létrehozási feladat, feladat frissítése
+   * **Virtuális gép – konfiguráció**: mind
+   * **Virtuális gép – interakció** > válasz kérdés, eszköz kapcsolat, CD-adathordozó konfigurálása, hajlékonylemez-adathordozó konfigurálása, kikapcsolás, bekapcsolás, VMware-eszközök telepítése
+   * **Virtuális gépek – leltár** > Létrehozás meglévőből, új létrehozása, regisztráció, regisztráció törlése
+   * Virtuálisgép **-kiépítés** > a virtuális gépek letöltésének engedélyezése, a virtuális gépek fájljainak feltöltése
+   * **Virtuális gép – Pillanatképek kezelése** > Pillanatképek eltávolítása
 
        ![A szerepkör szerkesztése párbeszédpanel](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
-3. Rendelje hozzá hozzáférési szintekkel, a vCenter-fióknak (a bérlő konfigurációs kiszolgálón használt) különböző objektumok, a következő:
+3. Rendeljen hozzáférési szinteket a vCenter-fiókhoz (amelyet a bérlői konfigurációs kiszolgálón használ) különböző objektumokhoz, az alábbiak szerint:
 
->| Object | Szerepkör | Megjegyzések |
+>| Objektum | Szerepkör | Megjegyzések |
 >| --- | --- | --- |
->| vCenter | Csak olvasható | Csak a vCenter hozzáférést a különböző objektumok kezeléséhez szükséges. Is távolítsa el ezt az engedélyt, ha a fiók soha nem fog adni a bérlő, és a vcenter-kiszolgáló felügyeleti műveleteket sem használható. |
+>| vCenter | Csak olvasható | Csak a különböző objektumok kezeléséhez szükséges vCenter-hozzáférés engedélyezésére van szükség. Ezt az engedélyt akkor távolíthatja el, ha a fiókot soha nem fogja megadni a bérlőnek, vagy semmilyen felügyeleti művelethez nem használja a vCenter. |
 >| Adatközpont | Azure_Site_Recovery |  |
->| Gazdagép és a gazdagép fürt | Azure_Site_Recovery | Újra biztosítja, hogy hozzáférést az objektumok szintjén, hogy csak az elérhető gazdagépek bérlői virtuális gépeket a feladatátvétel előtt és után a feladat-visszavétel. |
->| Adattároló és adattároló-fürt | Azure_Site_Recovery | Ugyanaz, mint az előző. |
+>| Gazdagép és gazda fürt | Azure_Site_Recovery | Gondoskodjon arról, hogy a hozzáférés az objektum szintjén legyen, így csak az elérhető gazdagépek rendelkeznek a feladatátvétel előtt és a feladat-visszavétel után. |
+>| Adattár-és adattár-fürt | Azure_Site_Recovery | Ugyanaz, mint az előző. |
 >| Network (Hálózat) | Azure_Site_Recovery |  |
->| Felügyeleti kiszolgáló | Azure_Site_Recovery | Az összes összetevő (CS, PS és MT) kívül a CS géphez való hozzáférést tartalmaz. |
->| Bérlő virtuális gépek | Azure_Site_Recovery | Biztosítja, hogy minden olyan új bérlőt egy adott bérlő virtuális gépek is hozzáférhet a, vagy nem észlelhető, az Azure Portalon keresztül. |
+>| Felügyeleti kiszolgáló | Azure_Site_Recovery | A CS-gépen kívül minden összetevő (CS, PS és MT) elérését tartalmazza. |
+>| Bérlői virtuális gépek | Azure_Site_Recovery | Gondoskodik arról, hogy egy adott bérlő új bérlői virtuális gépei is megkapják ezt a hozzáférést, vagy a Azure Portalon keresztül nem lesznek felderíthetők. |
 
-A vCenter-fiók hozzáférési már befejeződött. Ebben a lépésben teljesíti a minimális engedélyek elvégzéséhez követelmény, hogy feladat-visszavételi műveletet. A hozzáférési engedélyek a meglévő szabályzatokat is használhatja. A meglévő engedélyeket úgy, hogy tartalmazza a szerepkör engedélyeivel 2,. lépés részletes korábban egyszerűen módosíthatja.
+A vCenter fiókhoz való hozzáférés most már befejeződött. Ez a lépés teljesíti a feladat-visszavételi műveletek végrehajtásához szükséges minimális engedélyeket. Ezeket a hozzáférési engedélyeket használhatja a meglévő szabályzatokhoz is. Csak módosítsa a meglévő engedélyeket úgy, hogy a 2. lépésből származó szerepkör-engedélyeket tartalmazza, korábban részletezve.
 
-### <a name="failover-only"></a>Csak feladatátvételi
-Korlátozni vész-helyreállítási művelet csak feladatátvételi másnapi (azt jelenti, feladat-visszavétel képességek nélkül), ezeket a kivételeket az előző eljárás használata:
+### <a name="failover-only"></a>Csak feladatátvétel
+Ha a vész-helyreállítási műveleteket csak feladatátvételre szeretné korlátozni (azaz a feladat-visszavételi képességek nélkül), használja az előző eljárást a következő kivételekkel:
 
-- Helyett a *Azure_Site_Recovery* a vCenter-hozzáférési fiókként, a szerepkör hozzárendelése csak egy *csak olvasható* -szerepkört ahhoz a fiókhoz. Ezzel a halmazával lehetővé teszi a virtuális gép replikációs és feladatátvételi, és nem teszi lehetővé feladat-visszavétel.
-- Minden más, a fenti folyamat marad van. Győződjön meg, hogy a bérlők elszigetelésére, és korlátozzák a virtuális gépek felderítésének, minden engedély továbbra is csak az objektumok szintjén hozzárendelt, és nem vonatkoznak az gyermekobjektum.
+- Ahelyett, hogy az *Azure_Site_Recovery* szerepkört a vCenter-hozzáférési fiókhoz rendelje, csak *olvasási* szerepkört rendeljen ehhez a fiókhoz. Ez az engedélyezési beállítás engedélyezi a virtuális gépek replikálását és feladatátvételét, és nem engedélyezi a feladat-visszavételt.
+- Az előző folyamat során minden más más marad. A bérlők elkülönítésének és a virtuálisgép-felderítés korlátozásának biztosításához minden engedély csak az objektum szintjén van hozzárendelve, és nem terjed ki a gyermek objektumokra.
 
-### <a name="deploy-resources-to-the-tenant-subscription"></a>A bérlői előfizetéshez erőforrások üzembe helyezése
+### <a name="deploy-resources-to-the-tenant-subscription"></a>Erőforrások üzembe helyezése a bérlői előfizetésben
 
-1. Az Azure Portalon hozzon létre egy erőforráscsoportot, és a Recovery Services-tároló, a szokásos folyamatonként telepíteni.
-2. Töltse le a tárolóregisztrációs kulcsot.
-3. A CS regisztrálja a bérlő által a tároló regisztrációs kulcsát használja.
-4. Adja meg a két hozzáférési fiókokat, a fiók a vCenter-kiszolgálóhoz való hozzáféréshez és eléri a virtuális Gépet a fiók hitelesítő adatait.
+1. A Azure Portal hozzon létre egy erőforráscsoportot, majd telepítsen egy Recovery Services-tárolót a szokásos folyamat alapján.
+2. Töltse le a tároló regisztrációs kulcsát.
+3. Regisztrálja a CS-t a bérlőhöz a tároló regisztrációs kulcsának használatával.
+4. Adja meg a két hozzáférési fiók hitelesítő adatait, a vCenter-kiszolgáló eléréséhez használt fiókot és a virtuális gép eléréséhez szükséges fiókot.
 
-    ![Manager konfigurációs kiszolgáló-fiókok](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
+    ![Kezelői konfigurációs kiszolgáló fiókjai](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
 
-### <a name="register-servers-in-the-vault"></a>Regisztrálja a kiszolgálót a tárolóban
+### <a name="register-servers-in-the-vault"></a>Kiszolgálók regisztrálása a tárolóban
 
-1. Az Azure Portalon, a tárolóban, amelyet korábban hozott létre a vCenter-kiszolgáló és a konfigurációs kiszolgáló regisztrálása, a létrehozott fiók a vcenter-kiszolgáló használatával.
-2. Az "Infrastruktúra előkészítése" folyamat befejezéséhez a Site Recovery a szokásos folyamatonként.
-3. A virtuális gépek replikációja készen áll. Győződjön meg arról, hogy csak a bérlői virtuális gépek megjelennek **replikálása** > **válassza ki a virtuális gépek**.
+1. A Azure Portal a korábban létrehozott tárolóban regisztrálja a vCenter-kiszolgálót a konfigurációs kiszolgálón a létrehozott vCenter-fiók használatával.
+2. Fejezze be az "infrastruktúra előkészítése" folyamatot Site Recovery a szokásos folyamat során.
+3. A virtuális gépek most már készen állnak a replikálásra. Győződjön meg arról, hogy csak a bérlő virtuális gépei jelennek meg a **replikálás** > **válassza a virtuális gépek lehetőséget**.
 
 ## <a name="dedicated-hosting-solution"></a>Dedikált üzemeltetési megoldás
 
-Az alábbi ábrán látható, az architekturális a dedikált üzemeltetési megoldás különbség, hogy minden bérlő infrastruktúra beállításával csak a bérlő számára.
+Ahogy az a következő ábrán is látható, az építészeti különbség egy dedikált üzemeltetési megoldásban az, hogy minden bérlői infrastruktúra csak az adott bérlőre van beállítva.
 
-![architektúra megosztott hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
-**A több vCenters dedikált üzemeltetés**
+![architektúra – közös-HSP](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
+**Dedikált üzemeltetési forgatókönyv több vCenter**
 
-## <a name="managed-service-solution"></a>Felügyelt megoldás
+## <a name="managed-service-solution"></a>Felügyelt szolgáltatási megoldás
 
-Az alábbi ábrán látható, az architekturális felügyelt szolgáltatottszoftver-megoldás a különbség, hogy minden bérlő infrastruktúra is fizikailag elkülönül más bérlők infrastruktúra. Ebben a forgatókönyvben általában létezik, amikor a bérlő az infrastruktúra tulajdonosa és vészhelyreállításhoz megoldásszolgáltató szeretne.
+Ahogy az a következő ábrán is látható, a felügyelt szolgáltatási megoldás építészeti különbsége az, hogy minden bérlői infrastruktúra fizikailag el van különítve a többi bérlői infrastruktúrától. Ez a forgatókönyv általában akkor fordul elő, ha a bérlő tulajdonosa az infrastruktúra, és a megoldás szolgáltatója szeretné kezelni a vész-helyreállítást.
 
-![architektúra megosztott hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
-**Felügyelt szolgáltatás több vCenters forgatókönyv**
+![architektúra – közös-HSP](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
+**Felügyelt szolgáltatás forgatókönyve több vCenter**
 
-## <a name="next-steps"></a>További lépések
-- [További](site-recovery-role-based-linked-access-control.md) vonatkozó szerepköralapú hozzáférés-vezérlés a Site Recoveryben.
-- Ismerje meg, hogyan [beállítása VMware virtuális gépek vészhelyreállítása az Azure-bA](vmware-azure-tutorial.md).
-- Tudjon meg többet [VMWare virtuális gépek több felhőszolgáltatóval](vmware-azure-multi-tenant-csp-disaster-recovery.md).
+## <a name="next-steps"></a>Következő lépések
+- [További](site-recovery-role-based-linked-access-control.md) információ a site Recovery szerepköralapú hozzáférés-vezérléséről.
+- Ismerje meg, hogyan [állíthatja be a VMWare virtuális gépek vész-helyreállítását az Azure-](vmware-azure-tutorial.md)ba.
+- További információ a [VMWare virtuális gépekhez készült CSP-vel rendelkező többszörös bérletről](vmware-azure-multi-tenant-csp-disaster-recovery.md).

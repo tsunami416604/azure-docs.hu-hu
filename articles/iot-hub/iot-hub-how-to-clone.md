@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: robinsh
-ms.openlocfilehash: 8d071d4cd6ae3f9a52433104075e396d70d5bc57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828694"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083268"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
 
@@ -355,7 +355,7 @@ Hozza létre az új hubot az új helyen a sablon használatával. Ha útválaszt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az erőforrás létrehozása**lehetőséget. 
+1. Válassza ki **erőforrás létrehozása**. 
 
 1. A keresőmezőbe írja be a "sablon központi telepítése" kifejezést, és válassza az ENTER billentyűt.
 
@@ -391,7 +391,7 @@ A portál most ellenőrzi a sablont, és üzembe helyezi a klónozott hubot. Ha 
 
 Most, hogy már telepítette a klónozást, az összes eszközt át kell másolnia az eredeti hubhoz a klónba. 
 
-Ezt többféle módon is elvégezheti. Eredetileg a [Device kiépítési szolgáltatás (DPS)](/azure/iot-dps/about-iot-dps.md)használatával helyezi üzembe az eszközöket, vagy nem. Ha igen, ez nem nehéz. Ha nem, akkor ez nagyon bonyolult lehet. 
+Ezt többféle módon is elvégezheti. Eredetileg a [Device kiépítési szolgáltatás (DPS)](/azure/iot-dps/about-iot-dps)használatával helyezi üzembe az eszközöket, vagy nem. Ha igen, ez nem nehéz. Ha nem, akkor ez nagyon bonyolult lehet. 
 
 Ha nem használta a DPS-t az eszközök kiépítéséhez, ugorja át a következő szakaszt, és kezdje az [Importálás/exportálás használatával az eszközök az új hubhoz való áthelyezéséhez](#using-import-export-to-move-the-devices-to-the-new-hub).
 
@@ -491,7 +491,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>A minta alkalmazás futtatása és parancssori argumentumok használata
 
-1. Nyisson meg egy parancssort. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
+1. Nyisson meg egy parancsablakot. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
 
 1. Másolja a környezeti változókat beállító parancsokat egy időben, és illessze be őket a parancssorablakba, és válassza az ENTER billentyűt. Ha elkészült, írja be a `SET` parancsot a parancssori ablakban, hogy megtekintse a környezeti változókat és azok értékeit. Miután bemásolta ezeket a parancssori ablakba, nem kell újból átmásolnia, hacsak nem nyit meg egy új parancssori ablakot.
 
@@ -595,7 +595,7 @@ Ne törölje a tisztítást, amíg nem biztos benne, hogy az új hub működik, 
 
 * Ha rendelkezik olyan útválasztási erőforrásokkal, amelyeket az új helyre helyezett át, akkor törölheti a régi útválasztási erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az IoT hub egy új régióban található új hubhoz klónozott, és az eszközön is elkészült. További információ a IoT Hub található Identity registryben végzett tömeges műveletek végrehajtásáról: [IoT hub eszköz-identitások tömeges importálása és exportálása](iot-hub-bulk-identity-mgmt.md).
 

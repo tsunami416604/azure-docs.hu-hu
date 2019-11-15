@@ -1,6 +1,6 @@
 ---
-title: Az Azure Site Recovery a feladatátvételt követően nyilvános IP-címek használata |} A Microsoft Docs
-description: Ismerteti, hogyan állíthat be vészhelyreállítást és az áttelepítés az Azure Site Recovery és az Azure Traffic Manager nyilvános IP-címek
+title: Nyilvános IP-címek kiosztása a feladatátvétel után Azure Site Recovery
+description: Ismerteti, hogyan lehet nyilvános IP-címeket beállítani a Azure Site Recovery és az Azure Traffic Manager a vész-helyreállítási és-áttelepítéshez
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,52 +8,52 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101951"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084252"
 ---
-# <a name="set-up-public-ip-addresses-after-failover"></a>A feladatátvételt követően nyilvános IP-címek beállítása
+# <a name="set-up-public-ip-addresses-after-failover"></a>Nyilvános IP-címek beállítása a feladatátvétel után
 
 A nyilvános IP-címek lehetővé teszik az internetes erőforrások bejövő kommunikációját az Azure-erőforrásokkal. A nyilvános IP-címek emellett lehetővé teszik az Azure-erőforrások kimenő kommunikációját az internettel és a nyilvános Azure-szolgáltatásokkal, az erőforráshoz rendelt IP-címet használva.
-- Az erőforrás, például az Azure Virtual Machines (VM), az Azure Application Gateway átjárók, az Azure Load Balancer Terheléselosztók, Azure VPN Gateway és mások az internetről bejövő kommunikációt. Továbbra is kommunikálhat egyes erőforrásokat, például a virtuális gépek, az internetről, ha a virtuális gép nem rendelkezik egy nyilvános IP-cím rendelhető, mindaddig, amíg a virtuális gép része egy load balancer háttérkészlethez, és a terheléselosztó nyilvános IP-cím van hozzárendelve.
-- Kimenő kapcsolódás az internethez, kiszámítható IP-címet használ. Például a virtuális gépek kommunikálhatnak az interneten egy nyilvános IP-cím nélkül kimenő rendelve, de a cím alapértelmezés szerint egy előre nem látható, nyilvános cím, az Azure által lefordított hálózati cím. Nyilvános IP-cím hozzárendelése egy erőforrás lehetővé teszi, hogy tudja, melyik IP-címet használja a kimenő kapcsolat. Előre jelezhető, bár a cím változhat, a választott hozzárendelési módszertől függően. További információkért lásd: [hozzon létre egy nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Az Azure-erőforrások kimenő kapcsolatok kapcsolatos további információkért lásd: [kimenő kapcsolatainak ismertetése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Az internetről az erőforrás felé irányuló bejövő kommunikáció, például Azure Virtual Machines (VM), Azure Application Gateway, Azure Load Balancer, Azure VPN Gateway és mások. Továbbra is kommunikálhat bizonyos erőforrásokkal, például a virtuális gépekkel, ha a virtuális gép nem rendelkezik nyilvános IP-címmel, feltéve, hogy a virtuális gép egy terheléselosztó háttér-készlet része, és a terheléselosztó egy nyilvános IP-címet kap.
+- Az internet felé irányuló kimenő kapcsolat kiszámítható IP-cím használatával. Egy virtuális gép például a hozzá tartozó nyilvános IP-cím nélkül tud kommunikálni az internet felé, de a címe az Azure által fordított hálózati cím, amely alapértelmezés szerint nem előre jelezhető nyilvános cím. Egy nyilvános IP-cím erőforráshoz való hozzárendelésével megtudhatja, melyik IP-címet használja a kimenő kapcsolat. A megadott hozzárendelési módszertől függően előfordulhat, hogy a címe megváltozhat. További információt a [nyilvános IP-cím létrehozása](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)című témakörben talál. Ha többet szeretne megtudni az Azure-erőforrások kimenő kapcsolatairól, tekintse meg a [Kimenő kapcsolatok ismertetése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
-Az Azure Resource Manager, egy nyilvános IP-cím egy erőforrás, amely saját tulajdonságokkal rendelkezik. A nyilvános IP-cím-erőforrást például a következő erőforrásokhoz rendelheti hozzá:
+Azure Resource Manager a nyilvános IP-cím olyan erőforrás, amely saját tulajdonságokkal rendelkezik. A nyilvános IP-cím-erőforrást például a következő erőforrásokhoz rendelheti hozzá:
 
 * Virtuális gépek hálózati adapterei
 * Internetkapcsolattal rendelkező terheléselosztók
 * VPN-átjárók
 * Alkalmazásátjárók
 
-Ez a cikk bemutatja, hogyan használható nyilvános IP-címek a Site Recoveryvel.
+Ez a cikk azt ismerteti, hogyan használhatók a nyilvános IP-címek Site Recovery használatával.
 
-## <a name="public-ip-address-assignment-using-recovery-plan"></a>Nyilvános IP-cím hozzárendelése a helyreállítási terv használatával
+## <a name="public-ip-address-assignment-using-recovery-plan"></a>Nyilvános IP-cím hozzárendelése helyreállítási terv használatával
 
-Az éles alkalmazás nyilvános IP-cím **nem őrzi meg a feladatátvételi**. A számítási feladatok kerülnek sorra, a feladatátvétel során hozzá kell rendelni a célrégióban elérhető az Azure nyilvános IP-erőforrás. Ebben a lépésben történhet manuálisan vagy a helyreállítási tervek automatikusan végbemegy. A helyreállítási terv összegyűjti a gépek helyreállítási csoportokba. Segít, hogy meghatározza a rendszeres a helyreállítási folyamatot. A helyreállítási terv használatával írnak elő a sorrend, és automatizálhatja az egyes lépéseknél szükséges műveleteket a Azure-ban, vagy parancsfájlok feladatátvétel az Azure Automation-runbookok használatával.
+Az üzemi alkalmazás nyilvános IP-címe **nem tartható fenn feladatátvételkor**. A feladatátvételi folyamat részeként indított munkaterhelésekhez hozzá kell rendelni egy Azure nyilvános IP-erőforrást a céltartományban. Ezt a lépést manuálisan vagy a helyreállítási tervekkel automatizáltan is elvégezheti. A helyreállítási terv helyreállítási csoportokba gyűjti a gépeket. Segít egy rendszeres helyreállítási folyamat definiálásában. A helyreállítási terv segítségével megadhatja a sorrendet, és automatizálhatja az egyes lépésekhez szükséges műveleteket, Azure Automation runbookok használatával végezheti el a feladatátvételt az Azure-ba vagy a parancsfájlokba.
 
-A telepítő a következőképpen történik:
-- Hozzon létre egy [helyreállítási terv](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) és csoportosíthatja a számítási feladatokat szükség szerint a tervbe.
-- A terv testreszabása egy lépés egy nyilvános IP cím segítségével történő hozzáadásával [Azure Automation-runbookok](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) szkripteket a feladatátvételen átesett virtuális gép.
+A telepítés a következő:
+- Hozzon létre egy [helyreállítási tervet](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) , és szükség szerint csoportosítsa a számítási feladatokat a tervbe.
+- Szabja testre a tervet egy olyan lépés hozzáadásával, amely egy nyilvános IP-címet csatol [Azure Automation runbookok](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) parancsfájlokkal a feladatátvételt használó virtuális géphez.
 
  
-## <a name="public-endpoint-switching-with-dns-level-routing"></a>Nyilvános végpont-felcserélés a DNS-szintű Útválasztás
+## <a name="public-endpoint-switching-with-dns-level-routing"></a>Nyilvános végponti váltás DNS-szintű útválasztással
 
-Az Azure Traffic Manager lehetővé teszi, hogy a DNS-szintű, végpontok közötti útválasztást és segítségére lehetnek [le az RTO-k vezetési](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) egy Vészhelyreállítási forgatókönyvhöz. 
+Az Azure Traffic Manager lehetővé teszi a DNS-szintű útválasztást a végpontok között, és segít a DR-forgatókönyvek [RTOs levezetésében](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) . 
 
-További információ a Traffic Manager feladatátvételi funkciók:
-1. [A helyszíni Azure feladatátvétel](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) a Traffic Managerrel 
-2. [Azure-bA feladatátvételi](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) a Traffic Managerrel 
+További információ a feladatátvételi forgatókönyvekről Traffic Manager:
+1. Helyszíniről [Azure-ba történő feladatátvétel](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) Traffic Manager 
+2. [Azure-ról Azure-ba történő feladatátvétel](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) Traffic Manager 
 
-A telepítő a következőképpen történik:
-- Hozzon létre egy [Traffic Manager-profil](../traffic-manager/traffic-manager-create-profile.md).
-- Használatával a **prioritás** útválasztási módszer, hozzon létre két végpontot – **elsődleges** a forrás és a **feladatátvételi** az Azure-hoz. **Elsődleges** hozzá van rendelve a prioritása 1 és **feladatátvételi** prioritású 2 van hozzárendelve.
-- A **elsődleges** végpont lehet [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) vagy [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) attól függően, hogy a forrás-környezet Azure-on kívülről vagy belülről.
-- A **feladatátvételi** végpont jön létre egy **Azure** végpont. Használja a **statikus nyilvános IP-cím** , ez lesz a vész-helyreállítási esemény a Traffic Manager esetében elérhető végponton külső.
+A telepítés a következő:
+- Hozzon létre egy [Traffic Manager profilt](../traffic-manager/traffic-manager-create-profile.md).
+- A **prioritási** útválasztási módszer kihasználása esetén hozzon létre két végpontot – **elsődleges** forrásként és **feladatátvételt** az Azure-hoz. Az **elsődleges** hozzárendelés 1. prioritású, a **feladatátvétel** pedig 2. prioritású.
+- Az **elsődleges** végpont lehet az [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) vagy a [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) , attól függően, hogy a forrás-környezet az Azure-on belül vagy kívül van-e.
+- A **feladatátvételi** végpont **Azure** -végpontként jön létre. **Statikus nyilvános IP-címet** használjon, mivel ez a katasztrófa-esemény Traffic Manager külső végpontja lesz.
 
-## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [Traffic Manager az Azure Site Recoveryvel](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
-- További tudnivalók a Traffic Manager [útválasztási metódusait](../traffic-manager/traffic-manager-routing-methods.md).
-- Tudjon meg többet [helyreállítási tervek](site-recovery-create-recovery-plans.md) alkalmazás a feladatátvétel automatizálásához.
+## <a name="next-steps"></a>Következő lépések
+- További információ a [Traffic Managerról Azure site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
+- További információ a Traffic Manager [útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).
+- További információ az alkalmazások feladatátvételének automatizálására szolgáló [helyreállítási tervekről](site-recovery-create-recovery-plans.md) .

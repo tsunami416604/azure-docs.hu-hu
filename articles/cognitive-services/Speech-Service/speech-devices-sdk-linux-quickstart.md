@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490967"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090429"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Linuxon
 
@@ -25,7 +25,7 @@ Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bi
 
 Ehhez az útmutatóhoz egy Speech Services-erőforrással rendelkező [Azure Cognitive Services](get-started.md) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
-A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speech Devices SDK tartalmazza. Is [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 Az Eclipse elindítása előtt győződjön meg róla, hogy ezek a függőségek telepítve vannak.
 
-* Ubuntu rendszeren:
+* On Ubuntu:
 
   ```sh
   sudo apt-get update
@@ -80,20 +80,43 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![A Package Explorer képernyőképe](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. Nyissa meg a Pom. xml fájlt, és szerkessze.
+
+    A fájl végén, a záró címke `</project>`előtt hozzon létre `repositories` és `dependencies` elemeket az itt látható módon, és győződjön meg arról, hogy a `version` megfelel a jelenlegi verziójának:
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
 1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok**, majd a **Futtatás/hibakeresés beállítások** > **új... lehetőséget.** > **Java-alkalmazást**. 
 
 1. Megjelenik a **konfiguráció szerkesztése** ablak. A **név** mezőbe írja be a **Main**értéket, és a **fő osztály** **keresése** elemre kattintva keresse meg és válassza ki a következőt: **com. microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
 
    ![Képernyőkép – indítási konfiguráció szerkesztése](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. Emellett a **konfiguráció szerkesztése** ablakban válassza ki a **környezet** lapot és az **új**elemet. Megjelenik az **új környezeti változó** ablak. A **név** mezőbe írja be a **LD_LIBRARY_PATH** értéket, és az **érték** mezőbe írja be a *. so fájlokat tartalmazó mappát, például **/Home/wcaltest/JRE-Sample-Release**
+1. A cél architektúrához tartozó hangbináris fájlok másolása **Linux-ARM** vagy **Linux-x64 rendszerről**a Java-projekt helyére, például **/Home/wcaltest/JRE-Sample-Release**
+
+1. Emellett a **konfiguráció szerkesztése** ablakban válassza ki a **környezet** lapot és az **új**elemet. Megjelenik az **új környezeti változó** ablak. A **név** mezőbe írja be a **LD_LIBRARY_PATH** értéket, és az **érték** mezőbe írja be a *. so fájlokat tartalmazó mappát (például **/Home/wcaltest/JRE-Sample-Release** ).
 
 1. `kws.table` és `participants.properties` másolása a Project mappa **céljába/osztályaiba**
 
 
 ## <a name="configure-the-sample-application"></a>A minta alkalmazás konfigurálása
 
-1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.
+1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha azt szeretné, próbálkozhat szándékának felismerése, is hozzáadhat a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcs és az alkalmazás azonosítóját.
 
    A Speech és a LUIS esetében az adatai bekerülnek a `FunctionsList.java`ba:
 
@@ -118,24 +141,23 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
    > [!TIP]
    > [Egyéni kulcsszó is létrehozható](speech-devices-sdk-create-kws.md).
 
-    Új kulcsszó használatához frissítse a `FunctionsList.java`következő két sorát, és másolja a Kulcsszóválasztó csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag `kws-machine.zip`:
+    Új kulcsszó használatához frissítse a következő sort a `FunctionsList.java`ban, és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag `machine.zip`:
 
-   * Másolja a kulcsszó-csomagot a Project Folder **cél/osztályok**mappájába.
+   * Másolja a zip-csomagból a `kws.table` fájlt a Project Folder **cél/osztályok**mappájába.
 
-   * Frissítse a `FunctionsList.java`t a kulcsszóval és a csomag nevével:
+   * A `FunctionsList.java` frissítése a kulcsszó nevével:
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>A minta alkalmazás futtatása az Eclipse-ből
 
 1. Az Eclipse menüsávban **futtassa** > **Run** parancsot. 
 
-1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
+1. A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
 
-   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. A **munkamenet** - > **indításának**megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor azokat `participants.properties`ba helyezheti a projekt mappájában **célként vagy osztályokban**. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](how-to-use-conversation-transcription-service.md).
 
@@ -154,7 +176,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Helyezze el `kws.table` és `participants.properties` a fenti célmappában, mivel az alkalmazásnak szüksége van ezekre a fájlokra.
 
-1. Állítsa a LD_LIBRARY_LIB a *. so fájlokat tartalmazó mappára.
+1. Állítsa a LD_LIBRARY_LIBt a *. so fájlokat tartalmazó mappára.
 
      ```bash
      export LD_LIBRARY_PATH=/home/wcaltest/JRE-Sample-Release
@@ -166,7 +188,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
      java -jar SpeechDemo.jar
      ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A kibocsátási megjegyzések áttekintése](devices-sdk-release-notes.md)
+> [Tekintse át a kibocsátási megjegyzések](devices-sdk-release-notes.md)

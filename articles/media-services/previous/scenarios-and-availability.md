@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991427"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083216"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Microsoft Azure Media Services (AMS) lehetővé teszi különböző videó- és hangtartalmak biztonságos feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő streamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
 Az AMS világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. [A régiók és a kapcsolódó helyek listáját itt](https://azure.microsoft.com/regions/) tekintheti meg. 
 
-Ez a témakör bemutatja a tartalom továbbításának leggyakoribb eseteit [élő](#live_scenarios) vagy igény szerinti. Ez a témakör a médiafunkciók és szolgáltatások adatközpontok közötti rendelkezésre állásáról is részleteket nyújt.
+Ez a témakör a tartalmak [élő](#live_scenarios) vagy igény szerinti továbbításának általános forgatókönyveit mutatja be. Ez a témakör a médiafunkciók és szolgáltatások adatközpontok közötti rendelkezésre állásáról is részleteket nyújt.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -151,7 +151,7 @@ Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a
 
     A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. A **prémium** streamvégponttal rendelkező ügyfelek alapértelmezés szerint kapnak egy adategységet (SU-t). A streamvégpont adategységek hozzáadásával méretezhető. Mindegyik adategység további sávszélesség-kapacitást nyújt az alkalmazásnak. A **prémium** szintű streamvégpontok méretezéséről további információt a [streamvégpontok méretezését](media-services-portal-scale-streaming-endpoints.md) ismertető témakörben talál.
 
-* A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
+* A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
 
     A Fenntartott egység típusának meghatározása mellett megadhatja, hogy ellátja-e a fiókot **Fenntartott egységekkel** (RU-kkal). A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát.
 
@@ -177,7 +177,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name (Név)|Állapot|Adatközpontok
+|Name (Név)|status|Adatközpontok
 |---|---|---|
 |Standard|FE|Összes|
 |Prémium|FE|Összes|
@@ -186,7 +186,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-Kivételével minden adatközpontban elérhető: Németország, Dél-Brazília, Nyugat-India, Dél-India és közép-India. 
+Az összes adatközpontban elérhető a következők kivételével: Németország, Dél-Brazília, Nyugat-India, Dél-India és Közép-India. 
 
 ### <a name="encoding-media-processors"></a>Médiafeldolgozók kódolása
 
@@ -194,7 +194,7 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|Állapot|Adatközpontok
+|Médiafeldolgozó neve|status|Adatközpontok
 |---|---|---|
 |Media Encoder Standard|FE|Összes|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
@@ -205,14 +205,13 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|Állapot|Adatközpontok
+|Médiafeldolgozó neve|status|Adatközpontok
 |---|---|---|
 |Azure Media Face Detector|Előzetes verzió|Összes|
 |Azure Media Indexer|FE|Összes|
 |Azure Media Motion Detector|Előzetes verzió|Összes|
 |Azure Media OCR|Előzetes verzió|Összes|
 |Azure Media Redactor|Előzetes verzió|Összes|
-|Azure Media Stabilizer|Előzetes verzió|Összes|
 |Azure Media Video Thumbnails|Előzetes verzió|Összes|
 |Azure Media Indexer 2|Előzetes verzió|Kína és a szövetségi kormányzati régió kivételével|
 
@@ -222,9 +221,9 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Encryption|Állapot|Adatközpontok|
+|Titkosítás|status|Adatközpontok|
 |---|---|---| 
-|Storage|FE|Összes|
+|Tárolás|FE|Összes|
 |AES-128-kulcsok|FE|Összes|
 |FairPlay|FE|Összes|
 |PlayReady|FE|Összes|
@@ -242,19 +241,19 @@ Minden adatközpontban elérhető.
 
 ### <a name="reserved-unit-ru-type"></a>Fenntartott egység (RU) típusa
 
-A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: S1, S2 vagy S3.
+A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: S1, S2 vagy S3.
 
 További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|RU típusának neve|Állapot|Adatközpontok
+|RU típusának neve|status|Adatközpontok
 |---|---|---|
 |S1|FE|Összes|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
 |S3|FE|Mindenhol, kivéve Nyugat-Indiát|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Media Services képzési terveket.
 

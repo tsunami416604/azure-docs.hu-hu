@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4c8f123eb8c32362219f21dc70d137f2cc9b4b1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802061"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078821"
 ---
-# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
+# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: az Azure AD-Graph API használata
 
 Azure Active Directory B2C (Azure AD B2C) bérlők több ezer vagy több millió felhasználót tartalmazhatnak. Ez azt jelenti, hogy számos gyakori bérlői felügyeleti feladatot programozott módon kell végrehajtani. Elsődleges példa a felhasználók kezelése.
 
@@ -28,16 +28,16 @@ A B2C-bérlők esetében két elsődleges mód van a Graph API való kommunikác
 * **Interaktív**, egyszeri futtatású feladatok esetén a feladatok végrehajtásakor rendszergazdai fiókként kell működnie a B2C-bérlőben. Ehhez a módhoz a rendszergazdának be kell jelentkeznie a hitelesítő adatokkal, mielőtt a rendszergazda bármilyen hívást el tud végezni a Graph API.
 * **Automatizált**, folyamatos feladatok esetén a felügyeleti feladatok elvégzéséhez szükséges jogosultságokkal ellátott valamilyen típusú szolgáltatásfiókot kell használnia. Az Azure AD-ben ezt egy alkalmazás regisztrálásával és az Azure AD-be történő hitelesítéssel teheti meg. Ezt egy olyan *alkalmazás-azonosító* használatával végezheti el, amely a [OAuth 2,0 ügyfél hitelesítő adatait](../active-directory/develop/service-to-service.md)használja. Ebben az esetben az alkalmazás önmaga, nem pedig felhasználóként működik a Graph API meghívásához.
 
-Ebből a cikkből megtudhatja, hogyan hajthatja végre az automatikus használati esetet. Létre fog hozni egy .net 4,5 `B2CGraphClient` -et, amely felhasználói létrehozási, olvasási, frissítési és törlési (szifilisz-) műveleteket hajt végre. Az ügyfél egy Windows parancssori felülettel (CLI) fog rendelkezni, amely lehetővé teszi különböző módszerek meghívását. A kód azonban nem interaktív, automatizált módon viselkedik.
+Ebből a cikkből megtudhatja, hogyan hajthatja végre az automatikus használati esetet. Olyan .NET 4,5 `B2CGraphClient` hoz létre, amely felhasználói létrehozási, olvasási, frissítési és törlési (szifilisz-) műveleteket hajt végre. Az ügyfél egy Windows parancssori felülettel (CLI) fog rendelkezni, amely lehetővé teszi különböző módszerek meghívását. A kód azonban nem interaktív, automatizált módon viselkedik.
 
 >[!IMPORTANT]
-> Az [Azure ad Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) használatával felügyelheti a felhasználókat egy Azure ad B2C könyvtárban. Az Azure AD Graph API eltér a Microsoft Graph API-tól. További információ ebben az MSDN blogbejegyzésben: [Microsoft Graph vagy Azure ad Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
+> Az [Azure ad Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) használatával felügyelheti a felhasználókat egy Azure ad B2C könyvtárban. Az Azure AD Graph API eltér a Microsoft Graph API-tól. További információt ebben az MSDN blogbejegyzésben talál: [Microsoft Graph vagy Azure ad Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Alkalmazások vagy felhasználók létrehozása előtt Azure AD B2C bérlőre van szükség. Ha még nem rendelkezik ilyennel, [hozzon létre egy Azure Active Directory B2C bérlőt](tutorial-create-tenant.md).
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 Ha Azure AD B2C Bérlővel rendelkezik, regisztrálnia kell a felügyeleti alkalmazást a [Azure Portal](https://portal.azure.com)használatával. Azt is meg kell adnia, hogy a felügyeleti feladatok elvégzéséhez szükséges engedélyeket az automatikus parancsfájl vagy a felügyeleti alkalmazás nevében kell megadni.
 
@@ -77,7 +77,7 @@ A Azure AD B2C alkalmazás már rendelkezik a felhasználók törléséhez szük
 
 A kód minta egy olyan .NET-konzol alkalmazás, amely a [Active Directory-hitelesítési tár (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) használja az Azure AD-Graph API való interakcióhoz. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
 
-[Letöltheti a minta archívumát](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) vagy klónozott a GitHub-tárházat:
+[Letöltheti a minta archívumot](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) vagy klónozott a GitHub-tárházat:
 
 ```cmd
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
@@ -87,7 +87,7 @@ A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a 
 
 1. Nyissa meg az `B2CGraphClient\B2CGraphClient.sln` elemet a Visual Studióban.
 1. A **B2CGraphClient** projektben nyissa meg az *app. config* fájlt.
-1. Cserélje le `<appSettings>` a szakaszt a következő XML-fájlra. Ezután cserélje `{your-b2c-tenant}` le a nevet a bérlő nevére `{Application ID}` , `{Client secret}` és a korábban feljegyzett értékekre.
+1. Cserélje le a `<appSettings>` szakaszt a következő XML-fájlra. Ezután cserélje le a `{your-b2c-tenant}`t a bérlő nevére, és `{Application ID}` és `{Client secret}` a korábban feljegyzett értékekkel.
 
     ```xml
     <appSettings>
@@ -99,29 +99,29 @@ A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a 
 
 1. Hozza létre a megoldást. Kattintson a jobb gombbal a **B2CGraphClient** -megoldásra a megoldáskezelő, majd válassza a **megoldás Újraépítés**elemet.
 
-Ha a Build sikeres, a `B2C.exe` konzol alkalmazás a következő címen érhető el:. `B2CGraphClient\bin\Debug`
+Ha a Build sikeres, a `B2C.exe` Console alkalmazás megtalálható a `B2CGraphClient\bin\Debug`ban.
 
 ## <a name="review-the-sample-code"></a>Tekintse át a mintakódot
 
-A B2CGraphClient használatához nyisson meg egy parancssort (`cmd.exe`), és váltson a `Debug` projekt könyvtárába. Ezután futtassa a `B2C Help` parancsot.
+A B2CGraphClient használatához nyisson meg egy parancssort (`cmd.exe`), és váltson a projekt `Debug` könyvtárába. Ezután futtassa a `B2C Help` parancsot.
 
 ```cmd
 cd B2CGraphClient\bin\Debug
 B2C Help
 ```
 
-A `B2C Help` parancs az elérhető alparancsok rövid leírását jeleníti meg. Minden alkalommal, amikor meghívja valamelyik alparancsát, `B2CGraphClient` küld egy kérést az Azure ad-Graph APInak.
+Az `B2C Help` parancs az elérhető alparancsok rövid leírását jeleníti meg. Minden alkalommal, amikor meghívja valamelyik alparancsát, `B2CGraphClient` küld egy kérést az Azure AD-Graph APInak.
 
 Az alábbi fejezetek azt ismertetik, hogy az alkalmazás kódja hogyan hívja meg az Azure AD Graph API.
 
 ### <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-Az Azure AD Graph APIre irányuló minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. `B2CGraphClient`a nyílt forráskódú Active Directory-hitelesítési tár (ADAL) használatával segíti a hozzáférési jogkivonatok beszerzését. A ADAL megkönnyíti a tokenek beszerzését azáltal, hogy egy segítő API-t biztosít, és gondoskodik néhány fontos adatról, például a hozzáférési tokenek gyorsítótárazásáról. A jogkivonatok lekéréséhez azonban nem kell ADAL-t használnia. Ehelyett lekérheti a jogkivonatokat a HTTP-kérések manuális elindításával.
+Az Azure AD Graph APIre irányuló minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. a `B2CGraphClient` a nyílt forráskódú Active Directory-hitelesítési tár (ADAL) használatával segíti a hozzáférési jogkivonatok beszerzését. A ADAL megkönnyíti a tokenek beszerzését azáltal, hogy egy segítő API-t biztosít, és gondoskodik néhány fontos adatról, például a hozzáférési tokenek gyorsítótárazásáról. A jogkivonatok lekéréséhez azonban nem kell ADAL-t használnia. Ehelyett lekérheti a jogkivonatokat a HTTP-kérések manuális elindításával.
 
 > [!NOTE]
 > Az Azure AD Graph API használható hozzáférési jogkivonatok beszerzéséhez a ADAL v2 vagy újabb verzióját kell használnia. A ADAL v1 nem használható.
 
-A végrehajtásakor a a `B2CGraphClient` osztály egy példányát hozza létre. `B2CGraphClient` Az osztály konstruktora a ADAL hitelesítési állványzatot állítja be:
+`B2CGraphClient` végrehajtásakor a létrehozza a `B2CGraphClient` osztály egy példányát. Az osztály konstruktora a ADAL hitelesítési állványzatot állítja be:
 
 ```csharp
 public B2CGraphClient(string clientId, string clientSecret, string tenant)
@@ -140,9 +140,9 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 }
 ```
 
-Tegyük fel, `B2C Get-User` hogy a parancsot példaként használjuk.
+Példaként használja az `B2C Get-User` parancsot.
 
-Ha `B2C Get-User` a meghívása további argumentumok nélkül megtörténik, `B2CGraphClient.GetAllUsers()` az alkalmazás meghívja a metódust. `GetAllUsers()`Ezután meghívja `B2CGraphClient.SendGraphGetRequest()`a-t, amely egy HTTP Get-kérést küld az Azure ad-Graph APInak. A `B2CGraphClient.SendGraphGetRequest()` Get kérelem elküldése előtt először a ADAL használatával szerzi be a hozzáférési jogkivonatot:
+Ha a `B2C Get-User` további argumentumok nélkül hívja meg, az alkalmazás meghívja a `B2CGraphClient.GetAllUsers()` metódust. `GetAllUsers()` ezután meghívja a `B2CGraphClient.SendGraphGetRequest()`, amely egy HTTP GET-kérést küld az Azure AD Graph APInak. Mielőtt `B2CGraphClient.SendGraphGetRequest()` elküldi a GET kérelmet, először a ADAL használatával szerzi be a hozzáférési jogkivonatot:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -153,11 +153,11 @@ public async Task<string> SendGraphGetRequest(string api, string query)
     ...
 ```
 
-A ADAL `AuthenticationContext.AcquireToken()` metódus meghívásával lekérheti a Graph API hozzáférési jogkivonatát. A ADAL ezután visszaadja az alkalmazás identitását jelképező értéket `access_token` .
+A ADAL `AuthenticationContext.AcquireToken()` metódus meghívásával lekérheti a Graph API hozzáférési jogkivonatát. A ADAL ezután visszaadja az alkalmazás identitását jelölő `access_token`.
 
 ### <a name="read-users"></a>Felhasználók beolvasása
 
-Ha szeretné lekérni a felhasználók listáját, vagy egy adott felhasználót az Azure ad-Graph API, http `GET` -kérést küldhet a `/users` végpontnak. A bérlő összes felhasználója számára a következőhöz hasonló kérelem fog kinézni:
+Ha szeretné lekérni a felhasználók listáját, vagy egy adott felhasználót az Azure AD-Graph API, küldhet egy HTTP-`GET` kérelmet a `/users` végpontnak. A bérlő összes felhasználója számára a következőhöz hasonló kérelem fog kinézni:
 
 ```HTTP
 GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
@@ -172,10 +172,10 @@ A kérelem megtekintéséhez futtassa a következőt:
 
 Két fontos szempontot kell figyelembe venni:
 
-* A ADAL használatával beszerzett hozzáférési jogkivonat a `Authorization` `Bearer` séma használatával kerül a fejlécbe.
-* B2C-bérlők esetén a lekérdezési paramétert `api-version=1.6`kell használnia.
+* A ADAL használatával beszerzett hozzáférési jogkivonat a `Bearer` séma használatával kerül a `Authorization` fejlécbe.
+* A B2C-bérlők esetében `api-version=1.6`lekérdezési paramétert kell használnia.
 
-Mindkét részletet a `B2CGraphClient.SendGraphGetRequest()` metódus kezeli:
+Mindkét részlet kezelése a `B2CGraphClient.SendGraphGetRequest()` metódusban történik:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -200,9 +200,9 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 
 ### <a name="create-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok létrehozása
 
-Amikor felhasználói fiókokat hoz létre a B2C-bérlőben, http `POST` -kérést küldhet a `/users` végpontnak. A következő http `POST` -kérelem egy példát mutat be a bérlőben létrehozandó felhasználóra.
+Amikor felhasználói fiókokat hoz létre a B2C-bérlőben, HTTP-`POST` kérelmet küldhet a `/users` végpontnak. A következő HTTP `POST`-kérelem egy példát mutat be a bérlőben létrehozandó felhasználóra.
 
-A felhasználói felhasználók létrehozásához a következő kérelemben szereplő tulajdonságok többsége szükséges. A `//` megjegyzések szerepelnek az ábrán – nem tartalmazzák azokat a tényleges kérelemben.
+A felhasználói felhasználók létrehozásához a következő kérelemben szereplő tulajdonságok többsége szükséges. A `//` megjegyzései szerepelnek az ábrán – nem tartalmazzák azokat a tényleges kérelemben.
 
 ```HTTP
 POST https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
@@ -238,22 +238,22 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-A `Create-User` parancs bemeneti paraméterként egy JSON-fájlt használ, amely egy felhasználói objektum JSON-ábrázolását tartalmazza. A kód mintájában két minta JSON-fájl található: `usertemplate-email.json` és `usertemplate-username.json`. Ezeket a fájlokat az igényeinek megfelelően módosíthatja. A fenti kötelező mezőkön kívül számos választható mező is szerepel a fájlokban.
+A `Create-User` parancs bemeneti paraméterként egy JSON-fájlt használ, amely egy felhasználói objektum JSON-ábrázolását tartalmazza. A kódban két minta JSON-fájl található: `usertemplate-email.json` és `usertemplate-username.json`. Ezeket a fájlokat az igényeinek megfelelően módosíthatja. A fenti kötelező mezőkön kívül számos választható mező is szerepel a fájlokban.
 
 A kötelező és a nem kötelező mezőkkel kapcsolatos további információkért lásd: [entitás és összetett típus referenciája | Graph API hivatkozás](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference).
 
-Láthatja, hogyan épül fel a POST kérelem a `B2CGraphClient.SendGraphPostRequest()`következő helyen:
+Láthatja, hogyan épül fel a POST kérelem `B2CGraphClient.SendGraphPostRequest()`:
 
-* Hozzáférési jogkivonatot `Authorization` csatol a kérelem fejlécébe.
+* Hozzáférési jogkivonatot csatol a kérelem `Authorization` fejlécébe.
 * Beállítja `api-version=1.6`.
 * Magában foglalja a kérelem törzsében található JSON felhasználói objektumot.
 
 > [!NOTE]
-> Ha a meglévő felhasználói tárolóból áttelepíteni kívánt fiókoknál alacsonyabb a jelszó erőssége, mint az [Azure ad B2C által kényszerített erős jelszó](active-directory-b2c-reference-password-complexity.md), akkor az erős jelszó megkövetelését `DisableStrongPassword` a következő `passwordPolicies`értékkeltilthatjale:tulajdonság. Módosíthatja például az előző felhasználói kérést a következő módon: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
+> Ha a meglévő felhasználói tárolóból áttelepíteni kívánt fiókoknál alacsonyabb a jelszó erőssége, mint az [Azure ad B2C által kényszerített erős jelszó](active-directory-b2c-reference-password-complexity.md), a `passwordPolicies` tulajdonság `DisableStrongPassword` értékével letilthatja az erős jelszóra vonatkozó követelményt. Például módosíthatja az előző felhasználói kérelmet a következő módon: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 
 ### <a name="update-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok frissítése
 
-Amikor frissíti a felhasználói objektumokat, a folyamat a felhasználói objektumok létrehozásához használthoz hasonló, de a http `PATCH` -metódust használja:
+Amikor frissíti a felhasználói objektumokat, a folyamat a felhasználói objektumok létrehozásához használthoz hasonló, de a HTTP `PATCH` metódust használja:
 
 ```HTTP
 PATCH https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
@@ -266,21 +266,22 @@ Content-Length: 37
 }
 ```
 
-Próbálja meg frissíteni a felhasználót úgy, hogy módosítja a JSON-fájlok egyes értékeit, `B2CGraphClient` majd a paranccsal futtatja a következő parancsok egyikét:
+Próbálja meg frissíteni a felhasználót úgy, hogy módosítja a JSON-fájlok egyes értékeit, majd a `B2CGraphClient` használatával futtatja a következő parancsok egyikét:
 
 ```cmd
 B2C Update-User <user-object-id> ..\..\..\usertemplate-email.json
 B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
 ```
 
-A kérelem `B2CGraphClient.SendGraphPatchRequest()` elküldésével kapcsolatos részletekért tekintse meg a metódust.
+A kérelem elküldésével kapcsolatos részletekért tekintse meg a `B2CGraphClient.SendGraphPatchRequest()` metódust.
 
 ### <a name="search-users"></a>Felhasználók keresése
 
-A B2C-bérlő felhasználóinak kétféleképpen kereshet:
+A B2C-bérlőben lévő felhasználókat a következő módokon keresheti meg:
 
 * Hivatkozzon a felhasználó **objektumazonosítóára**.
 * Hivatkozzon a bejelentkezési termékazonosító, a `signInNames` tulajdonságra.
+* Az érvényes OData-paraméterek (például givenName, vezetéknév, displayName stb.) hivatkozása.
 
 Futtassa a következő parancsok egyikét egy felhasználó kereséséhez:
 
@@ -289,16 +290,19 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Példa:
+Például:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
 B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27consumer@fabrikam.com%27)
+B2C get-user $filter=givenName%20eq%20%27John%27
+B2C get-user $filter=surname%20eq%20%27Doe%27
+B2C get-user $filter=displayName%20eq%20%27John%20Doe%27
 ```
 
 ### <a name="delete-users"></a>Felhasználók törlése
 
-A felhasználók törléséhez használja a http `DELETE` metódust, és hozza létre az URL-címet a felhasználó objektum-azonosítójával:
+A felhasználók törléséhez használja a HTTP `DELETE` metódust, és hozza létre az URL-címet a felhasználó objektum-azonosítójával:
 
 ```HTTP
 DELETE https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
@@ -311,7 +315,7 @@ Ha példát szeretne látni, írja be ezt a parancsot, és tekintse meg a konzol
 B2C Delete-User <object-id-of-user>
 ```
 
-A kérelem `B2CGraphClient.SendGraphDeleteRequest()` elküldésével kapcsolatos részletekért tekintse meg a metódust.
+A kérelem elküldésével kapcsolatos részletekért tekintse meg a `B2CGraphClient.SendGraphDeleteRequest()` metódust.
 
 A felhasználók felügyelete mellett számos más műveletet is végrehajthat az Azure AD Graph API. Az [Azure AD Graph API dokumentációja](/previous-versions/azure/ad/graph/api/api-catalog) részletesen ismerteti az egyes műveleteket, valamint a mintavételi kérelmeket.
 
@@ -321,14 +325,14 @@ A legtöbb fogyasztói alkalmazásnak bizonyos típusú egyéni felhasználói p
 
 Ha egyéni attribútumot szeretne definiálni a B2C-bérlőben, tekintse meg a [B2C egyéni attribútumok referenciáját](active-directory-b2c-reference-custom-attr.md).
 
-A B2C-bérlőben definiált egyéni attribútumok az alábbi `B2CGraphClient` parancsokkal tekinthetők meg:
+A B2C-bérlőben definiált egyéni attribútumok a következő `B2CGraphClient` parancsok használatával tekinthetők meg:
 
 ```cmd
 B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-A kimenet felfedi az egyes egyéni attribútumok részleteit. Példa:
+A kimenet felfedi az egyes egyéni attribútumok részleteit. Például:
 
 ```json
 {
@@ -346,19 +350,19 @@ A kimenet felfedi az egyes egyéni attribútumok részleteit. Példa:
 }
 ```
 
-Használhatja a teljes nevet, például `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number`a (z) tulajdonságot a felhasználói objektumokban. Frissítse a JSON-fájlt az új tulajdonsággal és egy értékkel a tulajdonsághoz, majd futtassa a következőt:
+A teljes nevet, például a `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number`t használhatja a felhasználói objektumok tulajdonsága. Frissítse a JSON-fájlt az új tulajdonsággal és egy értékkel a tulajdonsághoz, majd futtassa a következőt:
 
 ```cmd
 B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A használatával `B2CGraphClient`olyan szolgáltatásalkalmazás is rendelkezésre áll, amely programozott módon felügyelheti a B2C-bérlői felhasználókat. `B2CGraphClient`a saját alkalmazás-identitását használja az Azure AD-Graph API való hitelesítéshez. Emellett a tokeneket is megvásárolja az ügyfél titkos kódjának használatával.
+`B2CGraphClient`használatával olyan szolgáltatásalkalmazás van, amely programozott módon képes kezelni a B2C-bérlői felhasználókat. `B2CGraphClient` a saját alkalmazás identitását használja az Azure AD-Graph API való hitelesítéshez. Emellett a tokeneket is megvásárolja az ügyfél titkos kódjának használatával.
 
 A funkciónak a saját alkalmazásba való beépítésekor jegyezze fel a B2C-alkalmazások néhány kulcsfontosságú pontját:
 
 * Adja meg az alkalmazás számára a szükséges engedélyeket a bérlőn.
 * Jelenleg a ADAL (nem MSAL) kell használnia a hozzáférési tokenek lekéréséhez. (A protokollon keresztüli üzenetküldést közvetlenül is elküldheti függvénytár használata nélkül.)
-* A Graph API meghívásakor használja `api-version=1.6`a t.
+* A Graph API meghívásakor használja a `api-version=1.6`.
 * Ha felhasználói felhasználókat hoz létre és frissít, néhány tulajdonságot meg kell adni a fentiekben leírtak szerint.

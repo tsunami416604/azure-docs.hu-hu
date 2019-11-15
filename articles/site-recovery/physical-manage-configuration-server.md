@@ -1,5 +1,5 @@
 ---
-title: A konfigurációs kiszolgáló kezelése a helyszíni fizikai kiszolgálók vész-helyreállítására az Azure-ba a Azure Site Recovery használatával | Microsoft Docs "
+title: A Azure Site Recovery-beli fizikai kiszolgálók konfigurációs kiszolgálójának kezelése
 description: Ez a cikk azt ismerteti, hogyan kezelhető a fizikai kiszolgáló vész-helyreállításának Azure Site Recovery konfigurációs kiszolgálója az Azure-ba.
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242993"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084615"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -35,11 +35,11 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló számító
 | Operációs rendszer területi beállítása | Angol (Egyesült Államok)|
 | VMware vSphere PowerCLI verziója | Nem szükséges|
 | Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
-| Csoportházirendek| Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssorhoz való hozzáférés letiltása <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása <br> – A fájlmellékletek megbízhatósági logikája <br> – A parancsfájlok végrehajtásának bekapcsolása <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| Csoportházirendek| Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssorhoz való hozzáférés letiltása <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása <br> – A fájlmellékletek megbízhatósági logikája <br> – A parancsfájlok végrehajtásának bekapcsolása <br> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | – Nincs előre meglévő alapértelmezett webhely <br> – [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése  <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton<br>|
 | Hálózati adapter típusa | VMXNET3 (VMware virtuális gépként való üzembe helyezéskor) |
 | IP-cím típusa | Statikus |
-| Internetelérés | A kiszolgálónak hozzá kell férnie az alábbi URL-címekhez: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (nem szükséges a kibővíthető folyamat-kiszolgálókhoz) <br> - time.nist.gov <br> - time.windows.com |
+| Internetelérés | A kiszolgálónak hozzá kell férnie az alábbi URL-címekhez: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (nem szükséges a kibővíthető folyamat-kiszolgálókhoz) <br> - time.nist.gov <br> - time.windows.com |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)|
 
 ## <a name="download-the-latest-installation-file"></a>A legújabb telepítési fájl letöltése
@@ -108,26 +108,26 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Type (Típus) | Leírás| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
-| /ServerMode|Szükséges|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
-|/InstallLocation|Szükséges|Az összetevők telepítési mappája| A számítógép bármely mappája|
-|/MySQLCredsFilePath|Szükséges|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
-|/VaultCredsFilePath|Szükséges|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
-|/EnvType|Szükséges|A védelemmel ellátni kívánt környezet típusa |VMware<br>NonVMware|
-|/PSIP|Szükséges|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
-|/CSIP|Szükséges|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
-|/PassphraseFilePath|Szükséges|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
-|/BypassProxy|Választható|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
-|/ProxySettingsFilePath|Választható|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
-|DataTransferSecurePort|Választható|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
-|/SkipSpaceCheck|Választható|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
-|/AcceptThirdpartyEULA|Szükséges|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
-|/ShowThirdpartyEULA|Választható|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
+| /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
+|/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
+|/MySQLCredsFilePath|Kötelező|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
+|/VaultCredsFilePath|Kötelező|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
+|/EnvType|Kötelező|A védelemmel ellátni kívánt környezet típusa |VMware<br>NonVMware|
+|/PSIP|Kötelező|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
+|/CSIP|Kötelező|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
+|/PassphraseFilePath|Kötelező|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
+|/BypassProxy|Optional|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
+|/ProxySettingsFilePath|Optional|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
+|DataTransferSecurePort|Optional|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
+|/SkipSpaceCheck|Optional|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
+|/AcceptThirdpartyEULA|Kötelező|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
+|/ShowThirdpartyEULA|Optional|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
 
 
 
-### <a name="create-file-input-for-mysqlcredsfilepath"></a>Fájl bemenetének létrehozása a MYSQLCredsFilePath
+### <a name="create-file-input-for-mysqlcredsfilepath"></a>Create file input for MYSQLCredsFilePath
 
 A MySQLCredsFilePath paraméter bemenetként veszi fel a fájlt. Hozza létre a fájlt a következő formátumban, és adja át bemeneti MySQLCredsFilePath paraméterként.
 ```ini
@@ -155,7 +155,7 @@ A konfigurációs kiszolgáló számítógép proxybeállításait a következő
 3. Kattintson a tároló **regisztrációja** fülre.
 4. Töltsön le egy új adattár-regisztrációs fájlt a portálról, és adja meg az eszközt bemenetként.
 
-   ![regisztráció – konfigurációs kiszolgáló](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Adja meg az új proxy adatait, és kattintson a **regisztrálás** gombra.
 6. Nyisson meg egy rendszergazdai PowerShell-parancssori ablakot.
 7. Futtassa az alábbi parancsot:
@@ -175,7 +175,7 @@ A konfigurációs kiszolgáló számítógép proxybeállításait a következő
 2. Indítsa el a cspsconfigtool. exe fájlt az asztalán található parancsikon használatával.
 3. Kattintson a tároló **regisztrációja** fülre.
 4. Töltsön le egy új regisztrációs fájlt a portálról, és adja meg az eszközt bemenetként.
-      ![regisztrálása – Configuration-Server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Adja meg a proxykiszolgáló adatait, és kattintson a **regisztrálás** gombra.  
 6. Nyisson meg egy rendszergazdai PowerShell-parancssori ablakot.
 7. Futtassa a következő parancsot
@@ -217,7 +217,7 @@ A konfigurációs kiszolgáló számítógép proxybeállításait a következő
 
 ## <a name="upgrade-a-configuration-server"></a>Konfigurációs kiszolgáló frissítése
 
-A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Példa:
+A kumulatív frissítések futtatásával frissítheti a konfigurációs kiszolgálót. A frissítések akár N-4 verzióra is alkalmazhatók. Például:
 
 - Ha 9,7, 9,8, 9,9 vagy 9,10 rendszert futtat, közvetlenül is frissíthet a 9,11-ra.
 - Ha 9,6-es vagy korábbi verziót futtat, és a 9,11-re szeretne frissíteni, először frissítenie kell az 9,7-es verzióra. 9,11 előtt.

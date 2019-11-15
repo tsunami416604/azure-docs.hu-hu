@@ -1,18 +1,18 @@
 ---
-title: A Hyper-V virtuális gép hálózati leképezése (VMM) vész-helyreállítás az Azure-ba Site Recovery
+title: A Hyper-V (VMM) hálózati leképezésének ismertetése Site Recovery
 description: Ismerteti, hogyan lehet hálózati leképezést beállítani a VMM-felhőkben felügyelt Hyper-V virtuális gépek vész-helyreállítására az Azure-ba Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813668"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082563"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hálózati leképezés előkészítése a Hyper-V virtuális gép vész-helyreállítására az Azure-ba
 
@@ -53,7 +53,7 @@ A hálózati megfeleltetés a következőképpen működik:
 
 Az alábbi példa szemlélteti ezt a mechanizmust. Vessünk egy olyan szervezetet, amelyben két helyszín található a New York-i és Chicago-ban.
 
-**Location** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Leképezve erre**
+**Hely** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Leképezve erre**
 ---|---|---|---
 New York | VMM – NewYork| VMNetwork1-NewYork | Leképezve a VMNetwork1-Chicago-hoz
  |  | VMNetwork2-NewYork | Nincs leképezve
@@ -78,7 +78,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 ### <a name="logical-and-vm-network-settings"></a>Logikai és virtuális gép hálózati beállításai
 
-**Location** | **Logikai hálózat** | **Társított virtuálisgép-hálózat**
+**Hely** | **Logikai hálózat** | **Társított virtuálisgép-hálózat**
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1 – Chicago
@@ -88,11 +88,11 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1 – Chicago
 
 Ezen beállítások alapján a cél virtuálisgép-hálózat kiválasztásakor a következő táblázat a választható lehetőségeket tartalmazza.
 
-**Select** | **Védett felhő** | **A felhő védelme** | **Elérhető célként megadott hálózat**
+**Kiválasztás** | **Védett felhő** | **A felhő védelme** | **Elérhető célként megadott hálózat**
 ---|---|---|---
 VMNetwork1 – Chicago | SilverCloud1 | SilverCloud2 | Elérhető
  | GoldCloud1 | GoldCloud2 | Elérhető
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Nem állnak rendelkezésre adatok
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Nem érhető el
  | GoldCloud1 | GoldCloud2 | Elérhető
 
 
@@ -120,7 +120,7 @@ A VMNetwork1-Chicago hálózati leképezése módosult. | A VM-1 a VMNetwork1-Ch
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](hyper-v-vmm-networking.md) információ IP-címzés feladatátvétel után másodlagos VMM-helyre.
 - [További](concepts-on-premises-to-azure-networking.md) információ IP-címzés az Azure-ba történő feladatátvétel után.

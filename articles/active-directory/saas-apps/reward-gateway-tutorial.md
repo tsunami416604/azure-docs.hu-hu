@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció ellenszolgáltatás átjáróval |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ellenszolgáltatás átjáró között.
+title: 'Oktatóanyag: Azure Active Directory integráció a jutalmazási átjáróval | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a jutalmazási átjáró között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092800"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081956"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Oktatóanyag: Az Azure Active Directory-integráció ellenszolgáltatás átjáróval
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Oktatóanyag: Azure Active Directory integráció a jutalmazási átjáróval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan ellenszolgáltatás Gateway integrálása az Azure Active Directoryval (Azure AD).
-Ellenszolgáltatás átjáró integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a jutalmazási átjárót Azure Active Directory (Azure AD) használatával.
+A jutalmazási átjáró az Azure AD-vel való integrálásával a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá ellenszolgáltatás átjáró az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett ellenszolgáltatás átjáróhoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a jutalmazási átjáróhoz.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az átjáró (egyszeri bejelentkezés) Azure AD-fiókjával való jutalmazására.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása ellenszolgáltatás átjáróval, a következőkre van szükség:
+Az Azure AD-integráció jutalmazási átjáróval való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Ellenszolgáltatás átjáró egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
+* Az átjáró egyszeri bejelentkezésre engedélyezett előfizetésének jutalmazása
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Átjáró által támogatott díjazza **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A jutalmazási átjáró támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Ellenszolgáltatás átjáró hozzáadása a katalógusból
+## <a name="adding-reward-gateway-from-the-gallery"></a>Jutalmazási átjáró hozzáadása a katalógusból
 
-Az Azure AD integrálása a ellenszolgáltatás átjáró konfigurálásához szüksége ellenszolgáltatás átjáró hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
+A jutalmazási átjáró Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a jutalmazási átjárót a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ellenszolgáltatás átjáró hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A jutalmazási átjáró a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -65,47 +65,47 @@ Az Azure AD integrálása a ellenszolgáltatás átjáró konfigurálásához sz
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **ellenszolgáltatás átjáró**, jelölje be **ellenszolgáltatás átjáró** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **jutalmazási átjáró**kifejezést, válassza az **átjáró kijutalmazása** az eredményről panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában ellenszolgáltatás átjáró](common/search-new-app.png)
+     ![A jutalmazási átjáró az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés alapján nevű tesztfelhasználó ellenszolgáltatás átjáróval **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó ellenszolgáltatás Gateway hivatkozás kapcsolata kell hozható létre.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a jutalmazási átjárón a **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a jutalmazási átjáró kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
-Az Azure AD egyszeri bejelentkezés ellenszolgáltatás átjáróval tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés a jutalmazási átjáróval való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Ellenszolgáltatás átjáró egyszeri bejelentkezés konfigurálása](#configure-reward-gateway-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. A **[jutalmazási átjáró egyszeri bejelentkezésének konfigurálása](#configure-reward-gateway-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre ellenszolgáltatás átjáró tesztfelhasználót](#create-reward-gateway-test-user)**  – egy megfelelője a Britta Simon ellenszolgáltatás átjáró, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Jutalom-átjáró tesztelési felhasználó létrehozása](#create-reward-gateway-test-user)** – ahhoz, hogy a Britta Simon a jutalmazási átjárón legyen, amely a felhasználó Azure ad-képviseletéhez van társítva.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés ellenszolgáltatás átjáró, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés a jutalmazási átjáróval való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **ellenszolgáltatás átjáró** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az [Azure Portal](https://portal.azure.com/)a **jutalmazási átjáró** alkalmazás-integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
+4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
 
-    ![Ellenszolgáltatás Átjárótartományhoz és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
+    ![Az átjáró tartományának és az URL-címek egyszeri bejelentkezési adatainak jutalmazása](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
     | |
     |--|
@@ -114,7 +114,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés ellenszolgáltatás átjáró,
     | `https://<companyname>.rewardgateway.co.nz/`|
     | `https://<companyname>.rewardgateway.com.au/`|
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
     | |
     |--|
@@ -124,25 +124,25 @@ Konfigurálja az Azure AD egyszeri bejelentkezés ellenszolgáltatás átjáró,
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Beolvasni ezeket az értékeket kezdje-integráció beállítása a ellenszolgáltatás Manager portál. A részletek megtalálhatók https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Ezeknek az értékeknek a beszerzéséhez kezdjen el egy integrációt beállítani a jutalmazási portálon. A részletek a következő címen találhatók https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. Az a **ellenszolgáltatás átjáró beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **jutalmazási átjáró beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure ad-azonosító
 
     c. Kijelentkezési URL
 
-### <a name="configure-reward-gateway-single-sign-on"></a>Ellenszolgáltatás átjáró egyszeri bejelentkezés konfigurálása
+### <a name="configure-reward-gateway-single-sign-on"></a>Jutalmazási átjáró egyszeri bejelentkezésének konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **ellenszolgáltatás átjáró** oldalán, az integráció beállításának megkezdése a ellenszolgáltatás Manager portál. A letöltött metaadatok használatával az aláíró tanúsítvány beszerzése és feltöltése, a konfiguráció során. A részletek megtalálhatók https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **jutalmazási átjáró** oldalán, kezdjen el egy integrációt beállítani a jutalmazási vezető portálon. Használja a letöltött metaadatokat az aláíró tanúsítvány beszerzéséhez és a konfiguráció során történő feltöltéséhez. A részletek a következő címen találhatók https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -160,50 +160,50 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
+    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával ellenszolgáltatás átjáróhoz Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a jutalmazási átjáró elérésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ellenszolgáltatás átjáró**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **jutalmazási átjáró**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **ellenszolgáltatás átjáró**.
+2. Az alkalmazások listában válassza a **jutalmazási átjáró**elemet.
 
-    ![Az alkalmazások listáját a ellenszolgáltatás átjáró hivatkozás](common/all-applications.png)
+    ![A jutalmazási átjáró hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-reward-gateway-test-user"></a>Ellenszolgáltatás átjáró tesztfelhasználó létrehozása
+### <a name="create-reward-gateway-test-user"></a>Jutalmazási átjáró tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű ellenszolgáltatás átjárót hoz létre. Együttműködve [ellenszolgáltatás átjáró támogatási csapatának](mailto:clientsupport@rewardgateway.com) a felhasználók hozzáadása az átjáró ellenszolgáltatás platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a jutalmazási átjáróban. A jutalmazási [átjáró támogatási csapatával](mailto:clientsupport@rewardgateway.com) felveheti a felhasználókat a jutalmas átjáró platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a ellenszolgáltatás átjáró csempére kattint, akkor kell automatikusan megtörténik a ellenszolgáltatás átjáróhoz, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a jutalmazási átjáró csempére kattint, automatikusan be kell jelentkeznie arra a jutalmazási átjáróra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -211,4 +211,4 @@ Ha a hozzáférési panelen a ellenszolgáltatás átjáró csempére kattint, a
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

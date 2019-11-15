@@ -1,25 +1,26 @@
 ---
-title: Oktatóanyag – Azure DNS-aliasrekord létrehozása tartomány legfelső szintű neveinek támogatásához a Traffic Managerrel
+title: 'Oktatóanyag: alias-rekord létrehozása a tartományhoz tartozó csúcspont-nevek támogatásához – Traffic Manager'
+titleSuffix: Azure DNS
 description: Ez az oktatóanyag bemutatja, hogyan konfigurálhat Azure DNS-aliasrekordot, hogy támogassa a tartomány legfelső szintű nevének használatát a Traffic Managerrel.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921418"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082250"
 ---
-# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Oktatóanyag: -Aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása 
+# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Oktatóanyag: aliasrekord konfigurálása a hogy, támogassa a legfelső szintű tartományneveket a Traffic Managerrel 
 
 Létrehozhat egy aliasrekordot a legfelső szintű tartománynévhez egy Azure Traffic Manager-profilra való hivatkozáshoz. Például: contoso.com. Átirányítási szolgáltatás használata helyett konfigurálhatja az Azure DNS-t, hogy közvetlenül a zónájából hivatkozzon egy Traffic Manager-profilra. 
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Gazda-virtuálisgép és hálózati infrastruktúra létrehozása.
@@ -33,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 
-Üzemeltessen saját tartományt az Azure DNS-ben való útmutatásért lásd: [oktatóanyag: Üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
+A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért lásd az [Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben](dns-delegate-domain-azure-dns.md) című szakaszt.
 
 Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön használja a saját tartománynevét.
 
@@ -116,7 +117,7 @@ Hozzon létre egy aliasrekordot, amely a Traffic Manager-profilra mutat.
 
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti az **RG-DNS-Alias-TM** erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy aliasrekordot, hogy a legfelső szintű tartománynevet használhassa egy Traffic Manager-profilra való hivatkozáshoz. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

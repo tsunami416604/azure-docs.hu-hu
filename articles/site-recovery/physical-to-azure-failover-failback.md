@@ -1,18 +1,19 @@
 ---
-title: Fizikai kiszolgálók feladatátvétele és visszavétele az Azure-ba való vész-helyreállítás Site Recovery használatával | Microsoft Docs
+title: Fizikai kiszolgálók feladatátvételének és feladat-visszavételének beállítása Site Recovery
 description: Ismerje meg, hogyan hajthatja végre a fizikai kiszolgálók feladatátvételét az Azure-ba, és hogyan térhet vissza a helyszíni helyre a vész-helyreállításhoz Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 49b61423b33282be7f0ace52c2a164d52ba20314
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 2c0d2e57a34286f65be45a95403a32de42c51908
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814409"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084575"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált fizikai kiszolgálók feladatátvétele és feladatátvétele
 
@@ -24,10 +25,10 @@ Az Azure-ba replikált fizikai kiszolgálók Site Recovery csak a VMware virtuá
 
 A feladatátvétel és a feladat-visszavétel négy fázisból áll:
 
-1. **Feladatátvétel az Azure-** ba: Feladatátvétel a helyszíni helyről az Azure-ba.
-2. **Azure-beli virtuális gépek ismételt védetté**: Állítsa be újra az Azure-beli virtuális gépeket, hogy azok a helyszíni VMware virtuális gépekre replikálódnak.
-3. **Feladatátvétel a helyszíni rendszerbe**: Futtasson feladatátvételt az Azure-ból való visszatéréshez.
-4. Helyszíni **virtuális gépek ismételt védetté**: Az adatműveletek visszautasítása után állítsa be újra a helyszíni VMware virtuális gépeket, amelyekről a művelet sikertelen volt, hogy megkezdje az Azure-ba való replikálást.
+1. **Feladatátvétel az Azure-ba**: Gépek átvétele a helyszíni helyről az Azure-ba.
+2. **Azure-beli virtuális gépek újravédése**: az Azure-beli virtuális gépek ismételt védetté tételével megkezdheti a replikálást a helyszíni VMWare virtuális gépekre.
+3. **Feladatátvétel a helyszínre**: Feladatátvétel futtatása az Azure-ból való feladat-visszavételhez.
+4. Helyszíni **virtuális gépek ismételt védelme**: az adatkezelést követően újra kell védetté tenni azokat a helyszíni VMWare virtuális gépeket, amelyekről a művelet sikertelen volt, így az Azure-ba történő replikáció megkezdődik.
 
 ## <a name="verify-server-properties"></a>Kiszolgáló tulajdonságainak ellenőrzése
 
@@ -44,10 +45,10 @@ Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy a
 
 1. A **Beállítások** > **Replikált elemek** területen kattintson a gépre > **Feladatátvétel** ikonra.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Az alábbi lehetőségek egyikét használhatja:
-   - **Legutóbbi**: Ez a beállítás először a Site Recoveryba elküldett összes adatfeldolgozást feldolgozza. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
-   - **Legutóbb feldolgozott**: Ez a beállítás feladatátvételt hajt végre a gépen a Site Recovery által feldolgozott legújabb helyreállítási pontra. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
-   - **Legújabb alkalmazás – konzisztens**: Ez a beállítás feladatátvételt hajt végre a gépen a Site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra.
-   - **Egyéni**: Egy helyreállítási pontot kell megadnia.
+   - **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
+   - **Legutóbb feldolgozott**: Ez a beállítás feladatátvételt hajt végre a gépen a site Recovery által feldolgozott legutóbbi helyreállítási pontra. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
+   - **Legújabb alkalmazás-konzisztens**: Ez a beállítás a gépet a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre.
+   - **Egyéni**: Adjon meg egy helyreállítási pontot.
 
 3. Válassza a **gép leállítása a feladatátvétel** megkezdése előtt lehetőséget, ha azt szeretné, hogy a site Recovery a feladatátvétel elindítása előtt megpróbálja leállítani a forrásoldali gépet. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 4. Ha felkészült az Azure-beli virtuális géphez való kapcsolódáshoz, csatlakozzon a feladatátvétel utáni ellenőrzéshez.

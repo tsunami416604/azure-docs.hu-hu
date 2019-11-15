@@ -1,5 +1,5 @@
 ---
-title: Folyamat-kiszolgáló beállítása az Azure-ban a VMware virtuális gépek és a fizikai kiszolgálók feladat-visszavétele Azure Site Recoveryvel | Microsoft Docs
+title: Folyamat-kiszolgáló VMware/fizikai feladat-visszavétel beállítása Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan állíthat be egy folyamat-kiszolgálót az Azure-ban az Azure-beli virtuális gépek VMware-re való visszavételéhez.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968834"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083956"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Folyamat-kiszolgáló beállítása az Azure-ban feladat-visszavételhez
 
@@ -37,7 +37,7 @@ További információ az ismételt [védelemről](vmware-azure-reprotect.md) és
 
 4. A **kiszolgáló neve**, a **Felhasználónév**és a **jelszó**mezőben adja meg a folyamat kiszolgálójának nevét, valamint a rendszergazdai jogosultságokkal rendelkező hitelesítő adatokat a kiszolgálón.
 5. Itt adhatja meg a kiszolgálói virtuálisgép-lemezekhez használandó Storage-fiókot, valamint azt az alhálózatot, amelyben a folyamat-kiszolgáló virtuális gép található, valamint a kiszolgáló IP-címe, amely a virtuális gép indításakor lesz hozzárendelve.
-6. Kattintson az **OK** gombra a Process Server virtuális gép üzembe helyezésének megkezdéséhez. A Process Server a Standard_A8_v2 SKU-ra lesz telepítve. Győződjön meg arról, hogy ez a virtuálisgép-SKU elérhető az előfizetéséhez.
+6. Kattintson az **OK** gombra a Process Server virtuális gép üzembe helyezésének megkezdéséhez. A Process Server Standard_A8_v2 SKU-ra lesz telepítve. Győződjön meg arról, hogy ez a virtuálisgép-SKU elérhető az előfizetéséhez.
 
 >
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery konfiguráció áthelyezése másik Azure-régióba | Microsoft Docs
-description: Útmutató egy Site Recovery konfiguráció másik Azure-régióba való áthelyezéséhez
+title: Azure Site Recovery-tároló áthelyezése egy másik régióba
+description: Útmutató Recovery Services-tároló (Azure Site Recovery) másik Azure-régióba való áthelyezéséhez
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2cf06a0c4e35d22cbad260201183516db2f07436
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013462"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090300"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Recovery Services-tároló áthelyezése és Azure Site Recovery konfigurálása egy másik Azure-régióba
 
@@ -45,12 +45,12 @@ Ebben a dokumentumban a következőket fogja megtekinteni:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Az Azure Site Recovery által használt erőforrások azonosítása
 Javasoljuk, hogy ezt a lépést a következőre való továbblépés előtt végezze el. A virtuális gépek replikálásakor könnyebb azonosítani a kapcsolódó erőforrásokat.
 
-Minden replikált Azure-beli virtuális gép esetében lépjen a **védett elemek** > **replikált** > elemek**tulajdonságaiba** , és azonosítsa a következő erőforrásokat:
+Minden replikált Azure-beli virtuális gép esetében válassza a **védett elemek** > **replikált elemek** > a **Tulajdonságok** elemet, és azonosítsa a következő erőforrásokat:
 
-- Célzott erőforráscsoport
-- Gyorsítótárfiók
+- Cél erőforráscsoport
+- Gyorsítótáras Storage-fiók
 - Cél Storage-fiók (nem felügyelt lemezes Azure-beli virtuális gép esetén) 
-- Célhálózat
+- Célként megadott hálózat
 
 
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>A vész-helyreállítási meglévő konfiguráció letiltása
@@ -77,4 +77,4 @@ Kövesse az alábbi cikkekben ismertetett lépéseket az Azure-beli virtuális g
 
 ## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>Site Recovery beállítása a virtuális gépek új forrásoldali régiója alapján
 
-Állítsa be az új régióba áthelyezett Azure-beli virtuális gépek vész-helyreállítását az [Azure-beli virtuális gépek](azure-to-azure-tutorial-enable-replication.md)vész-helyreállításának beállítása című témakör lépéseit követve.
+Állítsa be az új régióba áthelyezett Azure-beli virtuális gépek vész-helyreállítását az [Azure-beli virtuális gépek vész-helyreállításának beállítása](azure-to-azure-tutorial-enable-replication.md)című témakör lépéseit követve.

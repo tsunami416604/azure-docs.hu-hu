@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232358"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089459"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Alkalmazás vertikális felskálázása Azure App Service
 
 Ez a cikk bemutatja, hogyan méretezheti az alkalmazást Azure App Serviceban. Két munkafolyamat áll rendelkezésre a skálázáshoz, a vertikális felskálázáshoz és a horizontális felskálázáshoz, és ez a cikk a vertikális Felskálázási munkafolyamatot ismerteti.
 
-* [](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)Vertikális felskálázás: Nagyobb CPU-, memória-, lemezterület-és extra funkciók, például dedikált virtuális gépek (VM-EK), egyéni tartományok és tanúsítványok, átmeneti tárolóhelyek, automatikus skálázás és egyéb szolgáltatások. A vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service terv díjszabási szintjét.
-* [](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)Vertikális felskálázás: Növelje az alkalmazást futtató virtuálisgép-példányok számát.
-  A díjszabási szintjétől függően akár 20 példányra is kibővíthető. Az **elszigetelt** szinten [app Service környezetek](environment/intro.md) tovább növelik a kibővíthető darabszámot 100 példányra. További információ a horizontális felskálázásról: [Példányszám manuális vagy automatikus skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md). Itt megtudhatja, hogyan használhatja az automatikus skálázást, amely az előre meghatározott szabályok és ütemtervek alapján automatikusan méretezi a példányszámot.
+* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több processzor, memória, lemezterület és további funkciók, például dedikált virtuális gépek (VM-EK), egyéni tartományok és tanúsítványok, átmeneti tárolóhelyek, automatikus skálázás és egyéb szolgáltatások. A vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service terv díjszabási szintjét.
+* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje az alkalmazást futtató virtuálisgép-példányok számát.
+  A díjszabási szintjétől függően akár 30 példányra is kibővíthető. Az **elszigetelt** szinten [app Service környezetek](environment/intro.md) tovább növelik a kibővíthető darabszámot 100 példányra. További információ a horizontális felskálázásról: [Példányszám manuális vagy automatikus skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md). Itt megtudhatja, hogyan használhatja az automatikus skálázást, amely az előre meghatározott szabályok és ütemtervek alapján automatikusan méretezi a példányszámot.
 
 A méretezési beállítások csak másodperceket vesznek igénybe, és hatással lesznek a [app Service-csomag](../app-service/overview-hosting-plans.md)összes alkalmazására.
 Nem igénylik a kód módosítását vagy az alkalmazás újbóli üzembe helyezését.
@@ -34,7 +34,7 @@ Nem igénylik a kód módosítását vagy az alkalmazás újbóli üzembe helyez
 Az egyes App Service csomagok díjszabásával és funkcióival kapcsolatos információkért tekintse meg a [app Service díjszabási részleteit](https://azure.microsoft.com/pricing/details/web-sites/).  
 
 > [!NOTE]
-> Mielőtt átvált egy App Service csomagot az **ingyenes** csomagból, először el kell távolítania az Azure-előfizetéshez tartozó költségkeret- [korlátokat](https://azure.microsoft.com/pricing/spending-limits/) . A Microsoft Azure App Service-előfizetés beállításainak megtekintéséhez vagy módosításához lásd: [Microsoft Azure][azuresubscriptions]előfizetések.
+> Mielőtt átvált egy App Service csomagot az **ingyenes** csomagból, először el kell távolítania az Azure-előfizetéshez tartozó költségkeret- [korlátokat](https://azure.microsoft.com/pricing/spending-limits/) . A Microsoft Azure App Service-előfizetés beállításainak megtekintéséhez vagy módosításához lásd: [Microsoft Azure előfizetések][azuresubscriptions].
 > 
 > 
 
@@ -83,7 +83,7 @@ A szolgáltatási korlátok, kvóták és megkötések, valamint az egyes réteg
 
 <a name="Next Steps"></a>
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További erőforrások
 
 [Példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)  
 [App Service PremiumV2-szintjeinek konfigurálása](app-service-configure-premium-tier.md)

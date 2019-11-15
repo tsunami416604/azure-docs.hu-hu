@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991459"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081017"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -62,7 +62,7 @@ Maga a szolgáltatás nem támogatja közvetlenül ezt a forgatókönyvet. A fel
 Igen. További információ: [a Azure ad Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Engedélyezhető a Azure AD Domain Services Resource Manager-sablon használatával?
-Nem, jelenleg nem lehet engedélyezni Azure AD Domain Services sablon használatával. A parancsfájlokkal való megközelítéssel kapcsolatban lásd: [Azure ad Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md).
+Igen, létrehozhat egy Azure AD Domain Services felügyelt tartományt egy Resource Manager-sablon használatával. A sablon üzembe helyezése előtt létre kell hozni egy egyszerű szolgáltatásnevet és egy Azure AD-csoportot az Azure Portal vagy Azure PowerShell használatával. Amikor Azure AD Domain Services felügyelt tartományt hoz létre a Azure Portalban, lehetőség van a sablon exportálására további üzemelő példányokkal való használatra. [A GitHub templates minta-](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)tárházban is szerepel egy példa sablon.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Adhatok tartományvezérlőket Azure AD Domain Services felügyelt tartományhoz?
 Nem. A Azure AD Domain Services által megadott tartomány felügyelt tartomány. A tartományhoz tartozó tartományvezérlőket nem kell kiépíteni, konfigurálni vagy más módon kezelni. Ezeket a felügyeleti tevékenységeket a Microsoft szolgáltatásként biztosítjuk. Ezért nem adhat hozzá további tartományvezérlőket (írható vagy olvasható) a felügyelt tartományhoz.
@@ -139,7 +139,7 @@ Nem. A Azure AD Domain Services egy utólagos elszámolású Azure-szolgáltatá
 ### <a name="what-azure-regions-is-the-service-available-in"></a>Milyen Azure-régiók érhetők el a szolgáltatásban?
 Az Azure- [szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/) lapon megtekintheti az Azure-régiók listáját, ahol a Azure ad Domain Services elérhető.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos gyakori problémák megoldásához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md) .
 

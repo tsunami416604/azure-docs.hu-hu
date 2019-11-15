@@ -1,66 +1,67 @@
 ---
-title: Importálása és exportálása egy tartományi zónafájl az Azure DNS Azure parancssori felületével |} A Microsoft Docs
-description: Ismerje meg, hogyan importálása és exportálása a DNS-zónafájl az Azure DNS Azure CLI-vel
+title: Tartományi zónafájl importálása és exportálása – Azure CLI
+titleSuffix: Azure DNS
+description: Ismerje meg, hogyan importálhat és exportálhat egy DNS-zónafájl Azure DNS az Azure CLI használatával
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.date: 4/3/2019
-ms.author: victorh
+ms.author: allensu
 ms.topic: conceptual
-ms.openlocfilehash: b65b70e7a994d7d49b2282d7e193fe6e7b84cfca
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 036486ed15c9d6502b5e1655bdab4643128bca4b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612774"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082903"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>DNS-zónafájl importálása és exportálása az Azure CLI használatával
 
-Ez a cikk végigvezeti importálása és exportálása a DNS-zónafájlok az Azure DNS-hez, az Azure CLI használatával.
+Ez a cikk bemutatja, hogyan importálhat és exportálhat Azure DNS DNS-zónákat az Azure CLI használatával.
 
-## <a name="introduction-to-dns-zone-migration"></a>Bevezetés a DNS-zóna áttelepítése
+## <a name="introduction-to-dns-zone-migration"></a>A DNS-zónák áttelepítésének bemutatása
 
-DNS-zónafájl egy szövegfájlt, amelyek minden zónában tartománynévrendszer (DNS) rekord részleteit tartalmazza. Ebből következik, szabványos formátumban, alkalmassá téve azt a DNS-rekordok DNS rendszerek közötti átviteléhez. A zónafájl használata egy gyors, megbízható és kényelmes módon vihetők át a DNS-zónát, vagy onnan máshová az Azure DNS-ben.
+A DNS-zónafájl szövegfájl, amely a zónában lévő összes DNS-rekord részleteit tartalmazza. Szabványos formátumot követ, amely lehetővé teszi a DNS-rekordok DNS-rendszerek közötti átvitelét. A zónafájl egy gyors, megbízható és kényelmes módszer a DNS-zónák Azure DNSba vagy onnan történő átvitelére.
 
-Az Azure DNS támogatja a importálásával és exportálásával zónafájlok az Azure parancssori felület (CLI) használatával. A zónafájl importálása van **nem** jelenleg az Azure PowerShell vagy az Azure Portalon keresztül támogatott.
+Azure DNS támogatja a zónafájl importálását és exportálását az Azure parancssori felület (CLI) használatával. A zónafájl importálása jelenleg **nem** támogatott Azure PowerShell vagy a Azure Portalon keresztül.
 
-Az Azure CLI az Azure-szolgáltatások kezelésére használt többplatformos parancssori eszköz. Elérhető a Windows, Mac és Linux platformokon a a [Azure letöltések lap](https://azure.microsoft.com/downloads/). Többplatformos támogatást fontos történő importálására és exportálására zónafájlok, mert a leggyakrabban használt név kiszolgálószoftver [kötési](https://www.isc.org/downloads/bind/), általában a Linux rendszeren futó.
+Az Azure CLI egy platformfüggetlen parancssori eszköz, amely az Azure-szolgáltatások kezelésére szolgál. A Windows, Mac és Linux platformokon elérhető az [Azure letöltések oldaláról](https://azure.microsoft.com/downloads/). A Többplatformos támogatás fontos a zónafájl importálásához és exportálásához, mert a leggyakoribb névkiszolgálói szoftver, a [kötés](https://www.isc.org/downloads/bind/)általában Linux rendszeren fut.
 
-## <a name="obtain-your-existing-dns-zone-file"></a>Szerezze be a meglévő DNS-zónafájl
+## <a name="obtain-your-existing-dns-zone-file"></a>Meglévő DNS-zóna fájljának beszerzése
 
-Az Azure DNS DNS-zónafájl importálása, mielőtt kell a zónafájl hozzájutni. A fájl forrásában attól függ, ahol a DNS-zóna jelenleg üzemel.
+A DNS-zónafájl Azure DNSba való importálása előtt be kell szereznie a zóna fájljának másolatát. A fájl forrása attól függ, hogy a DNS-zóna jelenleg hol van üzemeltetve.
 
-* Ha a DNS-zóna (például a tartományregisztráló, dedikált DNS-szolgáltató, vagy alternatív felhőszolgáltató) partner szolgáltatás működteti, a szolgáltatás kell lehetővé teszi, hogy töltse le a DNS-zónafájljában.
-* Ha a DNS-zóna Windows DNS-ban üzemel, van-e az alapértelmezett mappát, a zóna fájlok **%systemroot%\system32\dns**. Minden zóna fájl teljes elérési útját is látható a **általános** lapján a DNS-konzolt.
-* A DNS-zóna-KÖTÉS használatával üzemeltet, ha a zóna fájl minden zóna helye van megadva a KÖTÉS konfigurációs fájlban **named.conf**.
+* Ha a DNS-zónát egy partneri szolgáltatás (például egy tartományregisztráló, egy dedikált DNS-szolgáltató vagy egy alternatív felhőalapú szolgáltató) üzemelteti, a szolgáltatásnak meg kell adnia a DNS-zónafájl letöltésének lehetőségét.
+* Ha a DNS-zóna a Windows DNS-ben üzemel, a zónafájl alapértelmezett mappája a **%systemroot%\System32\Dns**. Az egyes zónák teljes elérési útja a DNS-konzol **általános** lapján is látható.
+* Ha a DNS-zóna a kötés használatával fut, az egyes zónákhoz tartozó zónafájl helye a **. conf nevű**kötési konfigurációs fájlban van megadva.
 
-## <a name="import-a-dns-zone-file-into-azure-dns"></a>Az Azure DNS DNS-zónafájl importálása
+## <a name="import-a-dns-zone-file-into-azure-dns"></a>DNS-zóna fájljának importálása a Azure DNSba
 
-Az Azure DNS-zónafájl importálása az új zóna létrehozza, ha az egyik nem létezik. Ha a zóna már létezik, a rekordhalmazok zónafájljában egyesíthető kell a meglévő rekordhalmazt.
+A zónafájl importálása egy új zónát hoz létre Azure DNS, ha még nem létezik ilyen. Ha a zóna már létezik, a zónafájl rekordhalmazát egyesíteni kell a meglévő rekordhalmazokkal.
 
-### <a name="merge-behavior"></a>Viselkedés egyesítése
+### <a name="merge-behavior"></a>Egyesítési viselkedés
 
-* Alapértelmezés szerint a meglévő és új rekordhalmazok összefésülése megtörténjen. Egyesített rekordhalmaz azonos rekordján megszüntetéséhez duplikált.
-* Rekordhalmazok egyesítésekor, amikor az élettartam (TTL), már létező rekordhalmazok idő szolgál.
-* Kezdő hatóság (SOA) paraméterek (kivéve a `host`) mindig megnyílik a zóna importált fájlból. Ehhez hasonlóan a névkiszolgálói rekord a zóna legfelső pontján állítsa be, a az élettartam mindig veszi át a importált zónafájlban.
-* Az importált CNAME rekord nem cserélje le egy meglévő CNAME-rekord ugyanazzal a névvel.  
-* Ha ütközés lép fel egy CNAME-rekordot és a egy másik rekord, azonos nevű, de más típusú (függetlenül attól, amely meglévő vagy új) között, a rendszer megőrzi a meglévő rekord. 
+* Alapértelmezés szerint a meglévő és az új rekordhalmazok egyesülnek. Az egyesített rekordhalmazon belüli azonos rekordok megismétlődnek.
+* A rekordhalmazok egyesítése esetén a rendszer a meglévő rekordhalmazok élettartamát (TTL) használja.
+* A SOA-paraméterek (a `host`kivételével) mindig az importált zóna fájljából származnak. Hasonlóképpen, ha a névkiszolgáló-rekord a zóna csúcsára van beállítva, az ÉLETTARTAMot mindig az importált zónafájl veszi át.
+* Egy importált CNAME rekord nem cseréli le a meglévő CNAME rekordot ugyanazzal a névvel.  
+* Ha ütközés lép fel egy CNAME rekord és egy azonos nevű, de eltérő típusú rekord között (függetlenül attól, hogy melyik a meglévő vagy az új), a rendszer megőrzi a meglévő rekordot. 
 
-### <a name="additional-information-about-importing"></a>További információ a importálása
+### <a name="additional-information-about-importing"></a>További információ az importálásról
 
-Az alábbi megjegyzések adja meg a zóna további technikai részleteiért importálási folyamatot.
+A következő megjegyzések további technikai részleteket tartalmaznak a zóna importálási folyamatáról.
 
-* A `$TTL` irányelv nem kötelező, és a támogatott. Ha nem `$TTL` irányelv van megadva, a rekordok egy explicit TTL nélkül importált állítva egy alapértelmezett élettartam 3600 másodperc. Ha a beállított ugyanazon rekord két rekordot adja meg a különböző TTLs, az alacsonyabb értéket használja.
-* A `$ORIGIN` irányelv nem kötelező, és a támogatott. Ha nem `$ORIGIN` beállítva, a használt alapértelmezett érték a zóna nevét a parancssorban megadott (és a záró ".").
-* A `$INCLUDE` és `$GENERATE` nem támogatott.
-* Ezek erőforrásrekord-típusok támogatottak: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV, and TXT.
-* A SOA típusú rekord automatikusan létrejön az Azure DNS által a zóna létrehozásakor. Egy zóna fájl importálásakor összes SOA típusú paramétereket a zóna fájlból megnyílik *kivételével* a `host` paraméter. Ez a paraméter az Azure DNS által nyújtott értéket használja. Ennek oka az, ezt a paramétert az Azure DNS által nyújtott elsődleges névkiszolgálóra kell hivatkoznia.
-* A névkiszolgáló-rekord zóna felső pontjánál beállítása szintén automatikusan létrejön az Azure DNS által a zóna létrehozásakor. Csak a beállított rekord az élettartam a rendszer importálja. Ezeket a rekordokat az Azure DNS által nyújtott névkiszolgálói neveket tartalmaz. Az importált zóna fájlban szereplő értékek nem felülírja a rekord adatait.
-* A nyilvános előzetes verzióban az Azure DNS támogatja a txt típusú rekordok csak egyetlen-karakterlánc. Multistring TXT records are be concatenated and truncated to 255 characters.
+* A `$TTL` direktíva nem kötelező, és támogatott. Ha nincs megadva `$TTL` direktíva, a rendszer a explicit TTL nélküli rekordokat az alapértelmezett 3600 másodperces TTL-értékre állítja be. Ha ugyanabban a rekordhalmazban két rekord eltérő TTLs-t határoz meg, akkor az alacsonyabb értéket használja a rendszer.
+* A `$ORIGIN` direktíva nem kötelező, és támogatott. Ha nincs `$ORIGIN` beállítva, a rendszer az alapértelmezett értéket használja a parancssorban megadott zóna neve (valamint a "." megszakítása).
+* A `$INCLUDE` és `$GENERATE` irányelvek nem támogatottak.
+* Ezek a rekordtípusok támogatottak: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV és TXT.
+* A SOA-rekordot a rendszer automatikusan hozza létre Azure DNS a zóna létrehozásakor. Zónafájl importálásakor a rendszer az összes SOA-paramétert a zónafájl alapján veszi át a `host` paraméter *kivételével* . Ez a paraméter a Azure DNS által megadott értéket használja. Ennek az az oka, hogy ennek a paraméternek a Azure DNS által biztosított elsődleges névkiszolgáló-kiszolgálóra kell hivatkoznia.
+* A zóna csúcsán lévő névkiszolgáló-rekordhalmazt a rendszer automatikusan létrehozza Azure DNS a zóna létrehozásakor. A rendszer csak a rekord TTL-értékét importálja. Ezek a rekordok tartalmazzák a Azure DNS által megadott névkiszolgálói neveket. A rekord adatait nem írja felül az importált zónafájl értékei.
+* A nyilvános előzetes verzióban a Azure DNS csak az egyetlen karakterláncos TXT-rekordokat támogatja. A többkarakterláncos TXT-rekordok összefűzése és 255 karakter közötti csonkítása.
 
-### <a name="cli-format-and-values"></a>Parancssori felület formátuma és értékei
+### <a name="cli-format-and-values"></a>CLI formátum és értékek
 
-Az Azure CLI-paranccsal importálhatja a DNS-zóna formátuma:
+A DNS-zónák importálására szolgáló Azure CLI-parancs formátuma a következő:
 
 ```azurecli
 az network dns zone import -g <resource group> -n <zone name> -f <zone file name>
@@ -68,40 +69,40 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Értékek:
 
-* `<resource group>` az a zóna Azure DNS-ben az erőforráscsoport neve.
-* `<zone name>` a zóna neve van.
-* `<zone file name>` a zóna fájl importálni elérési útja és neve van.
+* a `<resource group>` a Azure DNS zónájában lévő erőforráscsoport neve.
+* `<zone name>` a zóna neve.
+* `<zone file name>` az importálandó zónafájl elérési útja/neve.
 
-Ha egy ilyen nevű zóna nem létezik az erőforráscsoportban, létrejön az Ön számára. Ha a zóna már létezik, az importált rekordhalmazok egyesítésekor a meglévő rekordhalmazt. 
+Ha egy ilyen nevű zóna nem létezik az erőforráscsoporthoz, a rendszer létrehozza az Ön számára. Ha a zóna már létezik, az importált rekordhalmazok egyesítve lesznek a meglévő rekordhalmazokkal. 
 
-### <a name="step-1-import-a-zone-file"></a>1\.lépés A zónafájl importálása
+### <a name="step-1-import-a-zone-file"></a>1\. lépés Zónafájl importálása
 
-A zóna egy zónafájl importálása **contoso.com**.
+Zónafájl importálása a zóna **contoso.com**.
 
-1. Ha Ön nem rendelkezik ilyennel, hozzon létre egy erőforrás-kezelő szeretné.
+1. Ha még nem rendelkezik ilyennel, létre kell hoznia egy Resource Manager-erőforráscsoportot.
 
     ```azurecli
     az group create --group myresourcegroup -l westeurope
     ```
 
-2. A zóna importálása **contoso.com** a fájlból **contoso.com.txt** be egy új DNS-zóna az erőforráscsoportban lévő **myresourcegroup**, a parancs futtatásakor `az network dns zone import` .<BR>Ez a parancs betölti a zóna fájlt, és elemzi azt. A parancs végrehajtása parancsokat a zóna létrehozása az Azure DNS szolgáltatásban, és minden rekordot a zónában állítja be. A parancs jelentések folyamatban van a konzolablakban, valamint az esetleges hibákat vagy figyelmeztetéseket. Rekordhalmazok sorozat jönnek létre, mert egy nagy zónafájl importálása néhány percet igénybe vehet.
+2. Ha a **contoso.com** a **contoso. com. txt** FÁJLBÓL egy új DNS-zónába kívánja importálni az erőforráscsoport **myresourcegroup**, futtassa a következő parancsot: `az network dns zone import`.<BR>Ez a parancs betölti a zónafájl fájlját, és elemzi azt. A parancs végrehajt egy több parancsot a Azure DNS szolgáltatásban a zóna és a zóna összes rekordhalmazának létrehozásához. A parancs a konzol ablakban a hibákkal és figyelmeztetésekkel kapcsolatos folyamatokat is jelzi. Mivel a rekordhalmazok sorozatokban jönnek létre, eltarthat néhány percig, amíg a rendszer importál egy nagyméretű zónafájl-fájlt.
 
     ```azurecli
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-### <a name="step-2-verify-the-zone"></a>2\.lépés A zóna ellenőrzése
+### <a name="step-2-verify-the-zone"></a>2\. lépés A zóna ellenőrzése
 
-Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bármelyikét használhatja:
+Ha a DNS-zónát a fájl importálása után szeretné ellenőrizni, az alábbi módszerek bármelyikét használhatja:
 
-* A rekordok használatával a következő Azure CLI-paranccsal listázhatja:
+* A rekordokat a következő Azure CLI-parancs használatával listázhatja:
 
     ```azurecli
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* Az Azure CLI-paranccsal listázhatja a rekordok `az network dns record-set ns list`.
-* Használhat `nslookup` a rekordok névfeloldás ellenőrzése. Mivel a zóna még nem delegálta, adja meg a megfelelő Azure DNS névkiszolgálóit, explicit módon kell. A következő minta bemutatja, hogyan kérheti le a zóna névkiszolgálóinak neveit. Ez is bemutatja, hogyan kérdezhet le a "www" rekordhalmazhoz a `nslookup`.
+* A rekordokat az Azure CLI parancs `az network dns record-set ns list`használatával listázhatja.
+* `nslookup` segítségével ellenőrizheti a rekordok névfeloldását. Mivel a zóna még nincs delegálva, explicit módon meg kell adnia a helyes Azure DNS névkiszolgálók nevét. Az alábbi példa bemutatja, hogyan kérhető le a zónához hozzárendelt névkiszolgálók neve. Ez azt is bemutatja, hogyan lehet lekérdezni a "www" rekordot a `nslookup`használatával.
 
     ```azurecli
     az network dns record-set ns list -g myresourcegroup -z contoso.com  --output json 
@@ -148,13 +149,13 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
         134.170.188.221
     ```
 
-### <a name="step-3-update-dns-delegation"></a>3\. lépés. DNS-delegálás frissítése
+### <a name="step-3-update-dns-delegation"></a>3\. lépés DNS-delegálás frissítése
 
-Miután ellenőrizte, hogy helyesen importálta a zónában, a DNS-delegálás az Azure DNS névkiszolgálóit átirányítása frissíteni szeretné. További információkért tekintse meg a cikket [a DNS-delegálás frissítése](dns-domain-delegation.md).
+Miután meggyőződött róla, hogy a zóna megfelelően lett importálva, frissítenie kell a DNS-delegálást, hogy az a Azure DNS névkiszolgálók mutasson. További információt a [DNS-delegálás frissítése](dns-domain-delegation.md)című cikkben talál.
 
-## <a name="export-a-dns-zone-file-from-azure-dns"></a>Az Azure DNS DNS-zónafájl exportálása
+## <a name="export-a-dns-zone-file-from-azure-dns"></a>DNS-zóna fájljának exportálása Azure DNS
 
-Az Azure CLI-paranccsal exportálhatja a DNS-zóna formátuma:
+A DNS-zónák exportálására szolgáló Azure CLI-parancs formátuma a következő:
 
 ```azurecli
 az network dns zone export -g <resource group> -n <zone name> -f <zone file name>
@@ -162,22 +163,22 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 Értékek:
 
-* `<resource group>` az a zóna Azure DNS-ben az erőforráscsoport neve.
-* `<zone name>` a zóna neve van.
-* `<zone file name>` a zóna fájl exportálható elérési útja és neve van.
+* a `<resource group>` a Azure DNS zónájában lévő erőforráscsoport neve.
+* `<zone name>` a zóna neve.
+* `<zone file name>` az exportálandó zónafájl elérési útja/neve.
 
-A zóna importálás, először kell bejelentkezni, válassza ki az előfizetését, és az Azure CLI használata a Resource Manager módra való konfigurálása.
+A zóna importálásához hasonlóan először be kell jelentkeznie, ki kell választania az előfizetést, és az Azure CLI-t a Resource Manager üzemmód használatára kell beállítania.
 
-### <a name="to-export-a-zone-file"></a>Exportálja egy zóna
+### <a name="to-export-a-zone-file"></a>Zónafájl exportálása
 
-A meglévő Azure DNS-zóna exportálása **contoso.com** erőforráscsoportban **myresourcegroup** a fájl **contoso.com.txt** futtassa (az aktuális mappában), `azure network dns zone export`. Ez a parancs meghívja a rekordhalmazok zónában enumerálása, és exportálhatja az eredményeket egy zóna BIND-kompatibilis fájl, az Azure DNS szolgáltatásban.
+Ha exportálni szeretné a meglévő Azure DNS zóna **contoso.com** az erőforráscsoport **myresourcegroup** a **contoso. com. txt** fájlba (az aktuális mappában), futtassa a `azure network dns zone export`parancsot. Ezzel a paranccsal a rendszer meghívja a Azure DNS szolgáltatást a rekordhalmazok enumerálásához a zónában, és exportálja az eredményeket egy KÖTÉSsel kompatibilis zónafájl-fájlba.
 
 ```
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg, hogyan [rekordhalmazok és -rekordok kezelése](dns-getstarted-create-recordset-cli.md) a DNS-zónában.
+* Ismerje meg, hogyan kezelheti a rekordhalmazokat [és rekordokat](dns-getstarted-create-recordset-cli.md) a DNS-zónában.
 
-* Ismerje meg, hogyan [tartomány delegálása az Azure DNS](dns-domain-delegation.md).
+* Ismerje meg, hogyan [delegálhatja a tartományt Azure DNSre](dns-domain-delegation.md).

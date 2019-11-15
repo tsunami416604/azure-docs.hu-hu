@@ -1,22 +1,23 @@
 ---
-title: Webalkalmazások védelmének biztosítása az Azure Application Gatewayjel – PowerShell
+title: App Service konfigurálása a PowerShell használatával
+titleSuffix: Azure Application Gateway
 description: Ez a cikk a webalkalmazások háttérrendszeri gazdagépekként, meglévő vagy új Application Gatewayen történő beállításához nyújt útmutatást.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122217"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089514"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Az App Service az Application Gateway konfigurálása
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>App Service konfigurálása a Application Gateway PowerShell használatával
 
-Az Application gateway lehetővé teszi egy App Service-alkalmazást vagy egyéb több-bérlős szolgáltatás háttérkészlet-tagként. Ez a cikk bemutatja az App Service-alkalmazások konfigurálása az Application Gatewayen. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
+Az Application Gateway lehetővé teszi, hogy egy App Service alkalmazást vagy más, több-bérlős szolgáltatást háttérbeli készlet tagjaként. Ebből a cikkből megtudhatja, hogyan konfigurálhat egy App Service alkalmazást Application Gateway használatával. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -159,10 +160,10 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Hozzáférés korlátozása
 
-Az ezekben a példákban üzembe helyezett webalkalmazások közvetlenül az internetről elérhető nyilvános IP-címek használatára. A hibaelhárítás, amikor egy új funkciót működésével ismerkedik, és új néhány dolgot, így. Azonban éles üzembe helyezés egy szolgáltatást szeretne, ha szeretné hozzáadhat több korlátozást.
+A példákban telepített webalkalmazások nyilvános IP-címeket használnak, amelyek közvetlenül az internetről érhetők el. Ez segít a hibaelhárításban az új funkciók megismerése és új dolgok kipróbálása során. Ha azonban éles környezetben szeretne üzembe helyezni egy szolgáltatást, további korlátozásokat is fel szeretne venni.
 
-A web Apps korlátozhatja a hozzáférést egy módja [statikus IP-korlátozások az Azure App Service](../app-service/app-service-ip-restrictions.md). Például korlátozhatja a web app, hogy ez csak származó forgalmat megkapja az application gateway. Az app service IP korlátozás szolgáltatás használatával az application gateway virtuális IP-CÍMEK listája csak címként hozzáféréssel rendelkező.
+A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Átirányítás konfigurálásáról további információ: [Átirányítás konfigurálása az Application Gatewayen a PowerShell-lel](redirect-overview.md).
+Információk az átirányítás konfigurálásáról: [Átirányítás konfigurálása az Application Gatewayen PowerShell-lel](redirect-overview.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9dbc24aa93b1f2c89b23120abb018c920835d8d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896981"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084639"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -29,10 +29,10 @@ Az Azure Storage a Microsoft felhőalapú tárolási megoldása a modern adattá
 
 Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza:
 
-- [Azure](../blobs/storage-blobs-introduction.md)-Blobok: Nagymértékben méretezhető objektum-tároló a szöveges és bináris adatfájlokhoz.
-- [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztás Felhőbeli vagy helyszíni központi telepítésekhez.
-- [Azure-várólisták](../queues/storage-queues-introduction.md): Üzenetküldési tároló az alkalmazás-összetevők közötti megbízható üzenetküldéshez. 
-- [Azure-táblák](../tables/table-storage-overview.md): A strukturált adattárolók séma nélküli tárolására szolgáló NoSQL-tároló.
+- [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló szöveges és bináris adatokhoz.
+- [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányokhoz.
+- [Azure Queues](../queues/storage-queues-introduction.md): Az alkalmazások összetevői között megbízható üzenetkezelést biztosító üzenettároló. 
+- [Azure Tables](../tables/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
 
 Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-quickstart-create-account.md).
 
@@ -78,13 +78,13 @@ Tegyük fel például, hogy biztosítani szeretné az ügyfelei számára, hogy 
 
 További információ az Azure Queuesról: [Bevezetés az Azure Queues használatába](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Táblatároló
+## <a name="table-storage"></a>Table Storage
 
 Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB Table API](https://aka.ms/premiumtables)-t ismertető cikket.
 
 További információ a Table Storage-ról: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md).
 
-## <a name="disk-storage"></a>Lemezes tárolás
+## <a name="disk-storage"></a>Disk Storage
 
 Az Azure Managed Disk egy virtuális merevlemez (VHD). Úgy gondolhatja, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizált. Az Azure Managed Disks szolgáltatás blobként tárolódik, amely az Azure-ban egy véletlenszerű IO Storage-objektum. A felügyelt lemezeket nevezzük felügyelt, mivel ez egy absztrakt lap Blobok, blob-tárolók és Azure Storage-fiókok esetében. A felügyelt lemezekkel mindössze annyit kell tennie, hogy kiépíti a lemezt, az Azure pedig gondoskodik a többiről.
 
@@ -106,13 +106,13 @@ Minden Azure Storage-kérelemnek engedélyezve kell lennie. Az Azure Storage a k
 - **Hitelesítés közös hozzáférésű aláírásokkal (SAS).** A közös hozzáférésű aláírás (SAS) egy olyan karakterlánc, amely egy olyan biztonsági jogkivonatot tartalmaz, amely egy tárolási erőforrás URI azonosítójának hozzáfűzésére használható. A biztonsági jogkivonat olyan korlátozásokat ágyaz be, mint az engedélyek és a hozzáférés intervalluma. További információt a [közös hozzáférésű aláírások (SAS) használata](storage-sas-overview.md)című témakörben talál.
 - **A tárolók és Blobok névtelen hozzáférése.** Előfordulhat, hogy a tároló és a Blobok nyilvánosan elérhetők. Ha megadja, hogy a tároló vagy a blob nyilvános, akkor bárki névtelenül olvashatja. nincs szükség hitelesítésre. További információk: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése).
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>Titkosítás
 
 A Storage-szolgáltatásokban két alapszintű titkosítási módszer áll rendelkezésre. A biztonsággal és a titkosítással kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-Az Azure Storage-titkosítás megvédi és védi az adatait, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségeknek. Az Azure Storage automatikusan titkosítja az összes adathalmazt a Storage-fiók megőrzése előtt, és visszafejti azt a lekérés előtt. A titkosítás, a visszafejtés és a kulcskezelő folyamat teljes mértékben átlátható a felhasználók számára. Az ügyfelek a Azure Key Vault használatával is dönthetnek saját kulcsaik kezeléséhez. További információ: az [Azure Storage titkosítása](storage-service-encryption.md)inaktív adatokhoz.
+Az Azure Storage-titkosítás megvédi és védi az adatait, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségeknek. Az Azure Storage automatikusan titkosítja az összes adathalmazt a Storage-fiók megőrzése előtt, és visszafejti azt a lekérés előtt. A titkosítás, a visszafejtés és a kulcskezelő folyamat teljes mértékben átlátható a felhasználók számára. Az ügyfelek a Azure Key Vault használatával is dönthetnek saját kulcsaik kezeléséhez. További információ: az [Azure Storage titkosítása inaktív adatokhoz](storage-service-encryption.md).
 
 ### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
 
@@ -128,7 +128,7 @@ A vész-helyreállítási szolgáltatással kapcsolatos további információké
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage-ba és az Azure Storage-ból
 
-Az Azure Storage-ba vagy az-ba való adatáthelyezésre több lehetőség is rendelkezésre áll. A választott lehetőség az adatkészlet méretétől és a hálózati sávszélességtől függ. További információ: Azure- [alapú megoldás kiválasztása](storage-choose-data-transfer-solution.md)adatátvitelhez.
+Az Azure Storage-ba vagy az-ba való adatáthelyezésre több lehetőség is rendelkezésre áll. A választott lehetőség az adatkészlet méretétől és a hálózati sávszélességtől függ. További információ: Azure- [alapú megoldás kiválasztása adatátvitelhez](storage-choose-data-transfer-solution.md).
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -143,7 +143,7 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 - [Azure Storage-REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Azure Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Azure Storage ügyféloldali kódtár Java/Android rendszerhez](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage ügyféloldali kódtár a Node. js-hez](https://docs.microsoft.com/javascript/api/azure-storage)
+- [Azure Storage ügyféloldali kódtár a Node. js-hez](https://docs.microsoft.com/javascript/api/overview/azure/storage)
 - [Az Azure Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
 - [Az Azure Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
 - [Azure Storage ügyféloldali kódtár a Rubyhoz](https://github.com/Azure/azure-storage-ruby)
@@ -169,6 +169,6 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 - [Azure Storage-ügyféleszközök](../storage-explorers.md)
 - [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Storage gyors üzembe helyezéséhez lásd a [tárfiók létrehozásával](storage-quickstart-create-account.md) foglalkozó témakört.

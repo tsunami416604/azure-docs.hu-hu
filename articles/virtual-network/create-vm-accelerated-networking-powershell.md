@@ -1,5 +1,5 @@
 ---
-title: Gyorsított hálózatkezeléssel rendelkező Azure-beli virtuális gép létrehozása | Microsoft Docs
+title: Gyorsított hálózatkezelést biztosító Azure-beli virtuális gép létrehozása – Azure PowerShell
 description: Megtudhatja, hogyan hozhat létre egy gyorsított hálózatkezeléssel rendelkező linuxos virtuális gépet.
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677996"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083704"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gép létrehozása
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gép létrehozása Azure PowerShell használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gépet (VM). A gyorsított hálózatkezelést biztosító linuxos virtuális gép létrehozásával kapcsolatban lásd: [Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](create-vm-accelerated-networking-cli.md). A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál. Az alábbi képen a két virtuális gép közötti kommunikáció gyorsított hálózatkezeléssel és anélkül látható:
 
@@ -49,7 +49,7 @@ Az Azure-katalógusból az alábbi disztribúciók támogatottak:
 ### <a name="supported-vm-instances"></a>Támogatott VM-példányok
 A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja 2 vagy több vCPU.  A támogatott adatsorozatok a következők: D/DSv2 és F/FS
 
-A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy több vCPU rendelkező virtuálisgép-példányok támogatják. A támogatott adatsorozatok a következők: D/Dsv3, E/Esv3, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
+A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy több vCPU rendelkező virtuálisgép-példányok támogatják. A támogatott adatsorozatok: D/Dsv3, E/Esv3, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
 
 A virtuálisgép-példányokkal kapcsolatos további információkért lásd: [Windows rendszerű virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -74,7 +74,7 @@ A virtuális gép létrehozása után megerősítheti a gyorsított hálózatkez
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Telepítse [Azure PowerShell](/powershell/azure/install-az-ps) a 1.0.0 vagy újabb verziót. A jelenleg telepített verziójának megkereséséhez futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, telepítse az az modul legújabb verzióját a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az). Egy PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba a Connection [-AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával.
+Telepítse [Azure PowerShell](/powershell/azure/install-az-ps) a 1.0.0 vagy újabb verziót. A jelenleg telepített verziójának megkereséséhez futtassa `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, telepítse az az modul legújabb verzióját a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az). Egy PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba a Connection [-AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával.
 
 Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *myNic*és *myVM*.
 
@@ -165,13 +165,13 @@ $nic = New-AzNetworkInterface `
 
 ## <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-Állítsa be a virtuális gép hitelesítő adatait a `$cred` változóra a [Get-hitelesítőadat](/powershell/module/microsoft.powershell.security/get-credential)használatával:
+Állítsa be a virtuális gép hitelesítő adatait a `$cred` változóba a [Get-hitelesítőadat](/powershell/module/microsoft.powershell.security/get-credential)használatával:
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Először határozza meg a virtuális gépet a [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). Az alábbi példa egy *myVM* nevű virtuális gépet definiál egy virtuálisgép-mérettel, amely támogatja a gyorsított hálózatkezelést (*Standard_DS4_v2*):
+Először határozza meg a virtuális gépet a [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). A következő példa egy *myVM* nevű virtuális gépet definiál egy virtuálisgép-mérettel, amely támogatja a gyorsított hálózatkezelést (*Standard_DS4_v2*):
 
 ```powershell
 $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"

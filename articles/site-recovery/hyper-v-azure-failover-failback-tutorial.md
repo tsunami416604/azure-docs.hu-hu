@@ -1,24 +1,23 @@
 ---
-title: Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele az Azure-ba irányuló vészhelyreállítás során az Azure Site Recoveryvel | Microsoft Docs
+title: A Hyper-V virtuális gépek feladatátvételének és feladat-visszavételének beállítása Azure Site Recovery
 description: Ismerje meg, hogyan végezhet feladatátvételt és feladat-visszavételt az Azure-ba irányuló vészhelyreállítás során az Azure Site Recovery szolgáltatással.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845713"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082652"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Az Azure-ba replikált Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele
 
-Ez az oktatóanyag leírja, hogyan vehetők át a Hyper-V virtuális gépek feladatai az Azure-ba. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag leírja, hogyan vehetők át a Hyper-V virtuális gépek feladatai az Azure-ba. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A Hyper-V virtuális gép tulajdonságainak ellenőrzése abból a szempontból, hogy az megfelel-e az Azure-követelményeknek
@@ -39,9 +38,9 @@ Gondoskodjon arról, hogy a virtuális gépen ne legyenek pillanatképek, és ho
 
 A feladatátvétel és a feladat-visszavétel három fázisból áll:
 
-1. **Feladatátvétel az Azure-** ba: A helyszíni helyről az Azure-ba irányuló feladatátvételi Hyper-V virtuális gépek.
-2. Feladat **-visszavétel a helyszínen**: Feladatátvételi Azure-beli virtuális gépek a helyszíni helyre, ha a helyszíni hely elérhető. Ekkor a rendszer megkezdi az adatok szinkronizálását az Azure-ból a helyszínre, majd ha végzett, elindítja a helyszíni virtuális gépeket.  
-3. Helyszíni **virtuális gépek visszirányú replikálása**: A helyszíni virtuális gépek visszavonása után fordítottan replikálja a helyszíni virtuális gépeket az Azure-ba való replikálás megkezdése érdekében.
+1. **Feladatátvétel az Azure-ba**: Hyper-V virtuális gépek feladatainak átvétele a helyszíni helyről az Azure-ba.
+2. **Feladat-visszavétel a helyszínre**: Az Azure-beli virtuális gépek feladatainak visszavétele a helyszíni helyre, ha a helyszíni hely elérhető. Ekkor a rendszer megkezdi az adatok szinkronizálását az Azure-ból a helyszínre, majd ha végzett, elindítja a helyszíni virtuális gépeket.  
+3. **Helyszíni virtuális gépek visszirányú replikálása**: Miután megtörtént a feladat-visszavétel a helyszínre, a helyszíni gépek visszirányú replikálásával elindítható azok replikálása az Azure-ba.
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
@@ -65,7 +64,7 @@ A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetős
 4. A feladatátvétel ellenőrzése után kattintson a **Véglegesítés** lehetőségre. Ez törli az összes rendelkezésre álló helyreállítási pontot.
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban**lévő feladatátvételt: Ha megszakítja a folyamatot, a feladatátvétel leáll, de a virtuális gép nem replikálódik újra.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: Ha menet közben megszakítja a feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Azure-beli virtuális gép feladatainak visszavétele a helyszínre és a helyszíni virtuális gép visszirányú replikációja
 

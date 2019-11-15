@@ -1,19 +1,19 @@
 ---
-title: A másodlagos adatközpontba replikált Hyper-V virtuális gépek feladatátvétele és feladatátvétele a Azure Site Recovery-alapú vész-helyreállítás során Microsoft Docs
+title: Feladatátvétel/feladat-visszavétel beállítása másodlagos Hyper-V-helyhez Azure Site Recovery
 description: Megtudhatja, hogyan hajthat végre feladatátvételt a Hyper-V virtuális gépeken a másodlagos helyszíni helyre, és hogyan térhet vissza az elsődleges helyhez a vész-helyreállítás Azure Site Recoveryával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813702"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082602"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A másodlagos helyszíni helyre replikált Hyper-V virtuális gépek feladatátvétele és feladatátvétele
 
@@ -30,8 +30,8 @@ Ez a cikk egy System Center Virtual Machine Manager (VMM) felhőben felügyelt H
 
 A feladatátvétel és a feladat-visszavétel három szakaszból áll:
 
-1. **Feladatátvétel a másodlagos helyre**: A számítógépek feladatátvétele az elsődleges helyről a másodlagosra történik.
-2. Feladat **-visszavétel a másodlagos helyről**: Replikálja a virtuális gépeket másodlagosról elsődlegesre, és futtasson egy tervezett feladatátvételt a feladat-visszavétel érdekében.
+1. **Feladatátvétel másodlagos helyre**: az elsődleges helyről a másodlagosra történő feladatátvételt okozó gépek.
+2. Feladat **-visszavétel a másodlagos helyről**: virtuális gépek replikálása másodlagosról elsődlegesre, és egy tervezett feladatátvétel végrehajtása a feladat-visszavétel érdekében.
 3. A tervezett feladatátvétel után megkezdheti a replikálást az elsődleges helyről a másodlagosra.
 
 
@@ -72,5 +72,5 @@ Indítsa el a replikálást a másodlagos helyről az elsődlegesre, és hajtsa 
 5. Az elsődleges VMM felhőben győződjön meg arról, hogy a virtuális gép elérhető.
 6. Ha újra meg szeretné kezdeni az elsődleges virtuális gép replikálását a másodlagos helyre, kattintson a **visszirányú replikálás**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Tekintse át a](hyper-v-vmm-disaster-recovery.md) Hyper-V virtuális gépek másodlagos helyre történő replikálásának lépéseit.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329580"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082831"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan helyezhetők üzembe a függvények az Azur
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre függvényeket egyéni Linux-rendszerképekben az Azure Functions Core Tools használatával. A rendszerképet egy, az Azure CLI-vel létrehozott függvényalkalmazásban teszi közzé az Azure-ban. Később frissíti a függvényt az Azure üzenetsor-tárolóhoz való kapcsolódáshoz. Azt is engedélyezi.  
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Függvényalkalmazás és a Docker-fájl létrehozása a Core Tools használatával.
@@ -57,7 +57,7 @@ Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 ## <a name="create-the-local-project"></a>A helyi projekt létrehozása
 
-Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. Python-projektekhez [virtuális környezetben kell futnia](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
+Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. Python-projektekhez [virtuális környezetben kell futnia](functions-create-first-function-python.md#create-and-activate-a-virtual-environment).
 
 ```bash
 func init MyFunctionProj --docker
@@ -117,7 +117,7 @@ Amikor az egyéni rendszerkép fut a helyi Docker-tárolóban, a függvényalkal
 ![Futtassa helyileg a Function alkalmazást.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
 > [!NOTE]
-> Ezen a ponton, amikor megpróbálja meghívni az adott HTTP-függvényt, HTTP 401-es hibaüzenetet kap. Ennek az az oka, hogy a függvény a helyi tárolóban fut, ahogyan az az Azure-ban lenne, ami azt jelenti, hogy a függvény kulcsának megadása kötelező. Mivel a tároló még nem lett közzétéve egy Function alkalmazásban, nincs elérhető funkcióbillentyű. Később láthatja, hogy amikor a fő eszközöket használja a tároló közzétételéhez, a funkciógombok megjelennek Önnek. Ha a helyi tárolóban futó függvényt szeretné tesztelni, az [engedélyezési kulcsot](functions-bindings-http-webhook.md#authorization-keys) `anonymous` értékre módosíthatja. 
+> Ezen a ponton, amikor megpróbálja meghívni az adott HTTP-függvényt, HTTP 401-es hibaüzenetet kap. Ennek az az oka, hogy a függvény a helyi tárolóban fut, ahogyan az az Azure-ban lenne, ami azt jelenti, hogy a függvény kulcsának megadása kötelező. Mivel a tároló még nem lett közzétéve egy Function alkalmazásban, nincs elérhető funkcióbillentyű. Később láthatja, hogy amikor a fő eszközöket használja a tároló közzétételéhez, a funkciógombok megjelennek Önnek. Ha a helyi tárolóban futó függvényt szeretné tesztelni, az [engedélyezési kulcsot](functions-bindings-http-webhook.md#authorization-keys) `anonymous`re módosíthatja. 
 
 Miután ellenőrizte a függvényalkalmazást a tárolóban, állítsa le a végrehajtást. Most leküldheti az egyéni rendszerképet a Docker Hub-fiókjába.
 
@@ -147,7 +147,7 @@ A leküldéses művelet sikeres elvégzése után a rendszerképet használhatja
 
 A [dedikált (App Service) csomagok](functions-scale.md#app-service-plan) és [prémium csomagok](functions-premium-plan.md#features)által támogatott egyéni functions-tárolók Linux-üzemeltetése. Ez az oktatóanyag egy prémium szintű csomagot használ, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md).
 
-Az alábbi példa egy `myPremiumPlan` nevű prémium csomagot hoz létre az **1** . szintű prémium szintű 1. csomag (`--sku EP1`), az USA nyugati régiójában (`-location WestUS`), valamint egy Linux-tárolóban (`--is-linux`).
+Az alábbi példa egy `myPremiumPlan` nevű prémium csomagot hoz létre a **rugalmas prémium 1** díjszabási szinten (`--sku EP1`), az USA nyugati régiójában (`-location WestUS`) és egy Linux-tárolóban (`--is-linux`).
 
 ```azurecli-interactive
 az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
@@ -195,14 +195,14 @@ AzureWebJobsStorage=$storageConnectionString
 
 <!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
 
-A létrehozott HTTP-trigger függvényhez egy [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) szükséges a végpont meghívásakor. Jelenleg a legegyszerűbb módszer a függvény URL-címének lekérésére, a kulcsot is beleértve, a [Azure Portalra]. 
+A létrehozott HTTP-trigger függvényhez egy [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) szükséges a végpont meghívásakor. Jelenleg a legegyszerűbb módszer a függvény URL-címének lekérésére, a kulcsot is beleértve, a [Azure Portal]. 
 
 > [!TIP]
 > A funkcióbillentyűk a [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)-k segítségével is beszerezhetők, amelyekhez [tulajdonosi jogkivonatot](/cli/azure/account#az-account-get-access-token)kell bemutatnia a hitelesítéshez.
 
-Keresse meg az új Function alkalmazást a [Azure Portalra] írja be a Function alkalmazás nevét a lap tetején található **keresőmezőbe** , és válassza ki a **app Service** erőforrást.
+Keresse meg az új Function alkalmazást a [Azure Portal] írja be a Function alkalmazás nevét a lap tetején található **keresőmezőbe** , és válassza ki a **app Service** erőforrást.
 
-Válassza ki a **MyHttpTrigger** függvényt, válassza a **</> a függvény URL-címének beolvasása** > **alapértelmezett (Function Key)**  > **Másolás**elemet.
+Válassza ki a **MyHttpTrigger** függvényt, válassza **</> a függvény URL-címének beolvasása** > **alapértelmezett (Function Key)**  > **Másolás**elemet.
 
 ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
 
@@ -253,7 +253,7 @@ A két alaprendszerkép különbségei lehetővé teszik az SSH-kapcsolatokat a 
 
 ### <a name="rebuild-and-redeploy-the-image"></a>A rendszerkép újraépítése és újbóli üzembe helyezése
 
-A gyökérkönyvtárban futtassa újra a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot az előzőekben lecserélve a Docker hub-fiók azonosítójának `<docker-id>` helyére. 
+A gyökérkönyvtárban futtassa újra a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, ahogy az előzőekben is, cserélje le a `<docker-id>`t a Docker hub-fiók azonosítójával. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -269,7 +269,7 @@ A rendszer újratelepíti a frissített lemezképet a Function alkalmazásba.
 
 ### <a name="connect-to-your-container-in-azure"></a>Kapcsolódás a tárolóhoz az Azure-ban
 
-A böngészőben nyissa meg az alábbi speciális eszközöket (kudu) `scm.` végpontot a Function app-tárolóhoz, és cserélje le a `<app_name>` értéket a Function alkalmazás nevével.
+A böngészőben navigáljon az alábbi speciális eszközök (kudu) `scm.` végpontra a Function app-tárolóhoz, és cserélje le a `<app_name>`t a Function alkalmazás nevére.
 
 ```
 https://<app_name>.scm.azurewebsites.net/
@@ -317,7 +317,7 @@ Most hozzáadhat egy tárolási kimeneti kötést a projekthez.
 
 ### <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-A functions esetében minden típusú kötéshez `direction`, `type` és egy egyedi `name` szükséges, amely a function. JSON fájlban adható meg. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
+A functions szolgáltatásban minden típusú kötéshez szükség van egy `direction`, `type`ra és egy egyedi `name`ra, amelyet a function. JSON fájlban kell meghatározni. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
 
 # <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
@@ -331,7 +331,7 @@ A functions esetében minden típusú kötéshez `direction`, `type` és egy egy
 
 ### <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-A kötés meghatározása után a kötés `name` értékkel férhet hozzá a függvény aláírása attribútumként. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
+A kötés meghatározása után a kötés `name` használhatja a függvény aláírása attribútumként való eléréséhez. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -349,7 +349,7 @@ A kötés meghatározása után a kötés `name` értékkel férhet hozzá a fü
 
 ### <a name="update-the-hosted-container"></a>Az üzemeltetett tároló frissítése
 
-A gyökérkönyvtárban futtassa újra a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és ezúttal frissítse a címkén lévő verziót `v1.0.2` értékre. Ahogy korábban is, cserélje le a `<docker-id>` értéket a Docker hub-fiók azonosítójával. 
+Futtassa újra a [Docker-Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot a gyökérkönyvtárban, és ezúttal frissítse a címkében szereplő verziót `v1.0.2`. Ahogy korábban is, cserélje le a `<docker-id>`t a Docker hub-fiók azonosítójával. 
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -363,7 +363,7 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 ### <a name="verify-the-updates-in-azure"></a>A frissítések ellenőrzése az Azure-ban
 
-A függvény elindításához ugyanazt az URL-címet használja, mint a böngészőben. Ugyanezt a választ kell látnia. Ezúttal azonban a `name` paraméternek átadott karakterlánc a `outqueue` tárolási várólistába íródik.
+A függvény elindításához ugyanazt az URL-címet használja, mint a böngészőben. Ugyanezt a választ kell látnia. Ezúttal azonban a `name` paraméterként megadott karakterlánc a `outqueue` Storage-várólistába íródik.
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
@@ -379,4 +379,4 @@ Most, hogy sikeresen telepítette az egyéni tárolót egy Azure-beli Function-a
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)
 + [Kubernetes-alapú kiszolgáló nélküli üzemeltetés](functions-kubernetes-keda.md)
 
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

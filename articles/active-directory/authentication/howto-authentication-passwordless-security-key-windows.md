@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603478"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081561"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése Windows 10-es eszközökre (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 ## <a name="requirements"></a>Követelmények
 
-- [Azure-Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Az Azure multi-factor Authentication](howto-mfa-getstarted.md)
 - [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md)
 - Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
 - A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli
@@ -60,7 +60,7 @@ A szervezetek az alábbi módszerek közül egyet vagy többet is választhatnak
 
 ### <a name="enable-with-intune"></a>Engedélyezés az Intune-nal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg **Microsoft Intune** > **eszköz beléptetése** > **Windows-regisztráció** > **Windows Hello for Business** > **tulajdonságokat**.
 1. A **Settings (beállítások** ) beállításnál a **bejelentkezéshez a biztonsági kulcsok használata** **engedélyezett**.
 
@@ -70,7 +70,7 @@ A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a 
 
 A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egyéni beállításokat használhatja az Intune-on keresztül.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Tallózással keresse meg **Microsoft Intune** > az **eszköz konfigurációjának** > **profiljait** , > **hozza létre a profilt**.
 1. Konfigurálja az új profilt a következő beállításokkal
    1. Név: biztonsági kulcsok a Windows-bejelentkezéshez
@@ -88,7 +88,7 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
 
 ### <a name="enable-with-a-provisioning-package"></a>Engedélyezés kiépítési csomaggal
 
-Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telepíthető a funkció engedélyezéséhez. A Windows Configuration Designer alkalmazást a [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22)lehet telepíteni.
+Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telepíthető a funkció engedélyezéséhez. A Windows Configuration Designer alkalmazást a [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)lehet telepíteni.
 
 1. Indítsa el a Windows Configuration Designer alkalmazást.
 1. Válassza a **fájl** > **új projekt**lehetőséget.
@@ -154,7 +154,7 @@ Ezen funkció általánosan elérhetővé vált ezen a lehetőségen.
 
 A kulcsokat a Azure Portalból távolíthatja el, ha a biztonsági adatok lapra navigál, és eltávolítja a biztonsági kulcsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ az eszközök regisztrálásáról](../devices/overview.md)
 
