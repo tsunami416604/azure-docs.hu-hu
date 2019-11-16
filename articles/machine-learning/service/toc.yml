@@ -103,7 +103,7 @@
             - name: Felhasználók és szerepkörök kezelése
               href: how-to-assign-roles.md
             - name: Virtuális hálózatok használata
-              displayName: vnet
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Webszolgáltatások biztonságossá tétele SSL használatával
               href: how-to-secure-web-service.md
