@@ -1,25 +1,17 @@
 ---
-title: Azure Key Vault használata Resource Manager-sablonban
+title: Azure Key Vault használata a sablonokban
 description: Megtudhatja, hogyan használható az Azure Key Vault biztonságos paraméterértékek megadására a Resource Manager-sablon üzembe helyezése során
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 86625132e4ac4aa3ed2c42f1e94babcfbbf63a51
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533599"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149280"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Oktatóanyag: a Azure Key Vault integrálása a Resource Manager-sablonok üzembe helyezésével
 
@@ -107,7 +99,7 @@ Most előkészített egy kulcstartót és egy titkos kulcsot. A következő rés
 
 Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az oktatóanyagban használt sablon [egy egyszerű Windows-alapú virtuális gép üzembe helyezését](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)hívja meg.
 
-1. A Visual Studio Code-ban válassza a **fájl**  >  fájl**megnyitása**lehetőséget.
+1. A Visual Studio Code-ban válassza a **fájl** > fájl **megnyitása**lehetőséget.
 
 1. Illessze be a következő URL-címet a **fájlnév** mezőbe:
 
@@ -118,15 +110,15 @@ Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza. Teljese
 1. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt. A forgatókönyv ugyanaz, mint az [oktatóanyagban használt: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
    A sablon öt erőforrást határoz meg:
 
-   * `Microsoft.Storage/storageAccounts` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
    A Testreszabás előtt hasznos lehet a sablon alapvető ismerete.
 
-1. Válassza a **fájl**  > **Mentés másként**lehetőséget, majd mentse a fájl egy másolatát a helyi számítógépre a *azuredeploy. JSON*néven.
+1. Válassza a **fájl** > **Mentés másként**lehetőséget, majd mentse a fájl egy másolatát a helyi számítógépre a *azuredeploy. JSON*néven.
 
 1. Ismételje meg a 1-3 lépést a következő URL-cím megnyitásához, majd mentse a fájlt *azuredeploy. Parameters. JSON*néven.
 
@@ -187,9 +179,9 @@ A sablon központi telepítésekor használja ugyanazt az erőforráscsoportot, 
 
 A virtuális gép sikeres üzembe helyezését követően tesztelje a bejelentkezési hitelesítő adatokat a Key vaultban tárolt jelszó használatával.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-1. Válassza ki az **erőforráscsoportok**  >  **\<*YourResourceGroupName* >**  > **simpleWinVM**.
+1. Válassza ki az **erőforráscsoportok** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. Kattintson a fent található **kapcsolat** lehetőségre.
 1. Válassza az **RDP-fájl letöltése**lehetőséget, majd kövesse az utasításokat a virtuális gépre való bejelentkezéshez a Key vaultban tárolt jelszó használatával.
 
@@ -204,7 +196,7 @@ $resourceGroupName = "${projectName}rg"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy titkos kulcsot adott vissza az Azure Key vaultból. Ezután használta a titkot a sablon üzembe helyezésében. Ha meg szeretné tudni, hogyan hozhat létre csatolt sablonokat, tekintse meg a következőt:
 

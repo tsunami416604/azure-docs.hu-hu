@@ -7,13 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f2cf69b456aeccd6da5ac393b88171fb3bb03cf2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082552"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130586"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -382,6 +381,6 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

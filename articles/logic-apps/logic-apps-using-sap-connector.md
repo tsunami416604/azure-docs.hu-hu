@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 6067a60ed2883ea358dbdfff523b9224175bc5c2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390118"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113494"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Kapcsolódás SAP-rendszerekhez Azure Logic Apps
 
@@ -26,11 +26,11 @@ ms.locfileid: "70390118"
 
 Ez a cikk bemutatja, hogyan érheti el a helyszíni SAP-erőforrásokat egy logikai alkalmazásból az SAP-összekötő használatával. Az összekötő az SAP klasszikus kiadásaival működik, mint például az R/3 és az ECC rendszerek a helyszínen. Az összekötő az SAP újabb HANA-alapú SAP-rendszereivel, például az S/4 HANA-vel való integrációt is lehetővé teszi, függetlenül attól, hogy azok a helyszínen vagy a felhőben vannak tárolva. Az SAP-összekötő támogatja az SAP NetWeaver-alapú rendszerek üzenet-vagy adatintegrációját köztes dokumentumon (IDoc), a Business Application Programming Interface (BAPI) vagy a Remote Function Call (RFC) szolgáltatáson keresztül.
 
-Az SAP-összekötő az [SAP .net Connector (NKH) függvénytárát](https://support.sap.com/en/product/connectors/msnet.html) használja, és biztosítja ezeket a műveleteket vagy műveleteket:
+Az SAP-összekötő az [SAP .net Connector (NKH) függvénytárát](https://support.sap.com/en/product/connectors/msnet.html) használja, és a következő műveleteket biztosítja:
 
-* **Küldés az SAP-be**: Küldje el az IDoc-t a tRFC-on keresztül, hívja meg az BAPI függvényt az RFC-en keresztül, vagy hívja meg az RFC/tRFC
-* **Fogadás az SAP-tól**: Fogadjon IDoc a tRFC-en keresztül, hívja meg a BAPI functions-t a tRFC-on keresztül, vagy hívja az RFC/tRFC-t
-* **Sémák előállítása**: Sémák előállítása az SAP-összetevőkhöz a IDoc, a BAPI és az RFC számára.
+* **Üzenet küldése az SAP**-nak: küldje el az IDoc-t a tRFC-on keresztül, hívja meg az BAPI függvényt az RFC-en keresztül, vagy hívja az RFC/tRFC
+* **Ha üzenet érkezik az SAP**: Receive IDoc over tRFC, hívja a BAPI functions-t a tRFC-on keresztül, vagy hívja meg az RFC/tRFC-t az SAP Systems-ben.
+* **Sémák előállítása**: sémák előállítása az SAP-összetevőkhöz a IDoc, a BAPI és az RFC számára.
 
 Ezen műveletek esetében az SAP-összekötő a felhasználónevek és jelszavak használatával támogatja az alapszintű hitelesítést. Az összekötő támogatja a [biztonságos hálózati kommunikációt (Snc)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)is. A SNC az SAP NetWeaver egyszeri bejelentkezéshez (SSO), vagy egy külső biztonsági termék által biztosított további biztonsági képességekhez használható.
 
@@ -46,7 +46,7 @@ Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
 * Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Az a logikai alkalmazás, amelyről el szeretné érni az SAP-rendszerét, valamint egy triggert, amely elindítja a logikai alkalmazás munkafolyamatát. Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md) és [a gyors útmutató: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását.
+* Az a logikai alkalmazás, amelyről el szeretné érni az SAP-rendszerét, valamint egy triggert, amely elindítja a logikai alkalmazás munkafolyamatát. Ha most ismerkedik a Logic apps szolgáltatással, olvassa el a [Mi a Azure Logic apps?](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakört.
 
 * Az [SAP-alkalmazáskiszolgáló](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) vagy az [SAP-üzenetküldési kiszolgáló](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
@@ -76,13 +76,13 @@ Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
 1. A régebbi SAP-összekötőt használó logikai alkalmazásban törölje a **Küldés az SAP-** ba műveletet.
 
-1. A legújabb SAP-összekötőből adja hozzá a **Küldés az SAP-hoz** műveletet. A művelet használata előtt hozza létre újra a kapcsolódást az SAP-rendszerrel.
+1. A legújabb SAP-összekötőből adja hozzá az **üzenet küldése az SAP** -művelethez lehetőséget. A művelet használata előtt hozza létre újra a kapcsolódást az SAP-rendszerrel.
 
 1. Ha elkészült, mentse a logikai alkalmazást.
 
 <a name="add-trigger"></a>
 
-## <a name="send-to-sap"></a>Küldés az SAP-be
+## <a name="send-message-to-sap"></a>Üzenet küldése az SAP-nak
 
 Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválható. A logikai alkalmazás egy IDoc küld egy SAP-kiszolgálónak, és visszaadja a logikai alkalmazásnak nevezett választ a kérelmezőnek.
 
@@ -94,9 +94,9 @@ Ebben a példában egy Azure-beli végponttal rendelkező logikai alkalmazást h
 
 1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást, amely megnyitja a Logic app designert.
 
-1. A keresőmezőbe írja be szűrőként a "http-kérelem" kifejezést. Az **Eseményindítók** listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
+1. A keresőmezőbe írja be a `http request` szűrőt. Az **Eseményindítók** listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
 
-   ![HTTP-kérési trigger hozzáadása](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![HTTP-kérési trigger hozzáadása](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Most mentse a logikai alkalmazást, hogy létrehozzon egy végponti URL-címet a logikai alkalmazáshoz. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -112,31 +112,39 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. A Logic app Designerben az trigger alatt válassza az **új lépés**lehetőséget.
 
-   ![Válassza az "új lépés" lehetőséget](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Új lépés hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. A keresőmezőbe írja be a "SAP" kifejezést a szűrőként. A **műveletek** listából válassza az **üzenet küldése az SAP**-nek lehetőséget.
+1. A keresőmezőbe írja be a `sap` szűrőt. A **műveletek** listából válassza az **üzenet küldése az SAP**-nek lehetőséget.
   
-   ![SAP küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   ![Az "üzenet küldése az SAP-nek" művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
-   A keresés helyett válassza a **vállalat** lapot, és válassza ki az SAP-műveletet.
+   Vagy válassza a **vállalat** lapot, és válassza ki az SAP-műveletet.
 
-   ![SAP-küldési művelet kiválasztása a vállalati lapon](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![Az "üzenet küldése az SAP-nek" művelet kiválasztása a vállalati lapon](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Ha a rendszer megkérdezi a kapcsolat részleteit, hozza létre most az SAP-kapcsolatát. Ellenkező esetben, ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet.
+1. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet. Ha azonban a rendszer megkéri a kapcsolat részleteinek megadását, adja meg az adatokat, hogy most létrehozza a kapcsolatát a helyszíni SAP-kiszolgálóval.
 
-   **Helyszíni SAP-kapcsolatok létrehozása**
+   1. Adja meg a kapcsolatok nevét.
 
-   Adja meg az SAP-kiszolgáló elérhetőségi adatait. Az **adatátjáró** tulajdonságnál válassza ki a Azure Portalban létrehozott adatátjárót az átjáró telepítéséhez. Ha elkészült, válassza a **Létrehozás**lehetőséget. Logic Apps beállítja és teszteli a kapcsolódást, hogy a kapcsolódás megfelelően működjön.
+   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az átjáró-erőforráshoz tartozó Azure-előfizetést, amelyet az átjáró telepítéséhez Azure Portal hozott létre. 
+   
+   1. A **csatlakoztatási átjáró**területen válassza ki az átjáró erőforrását.
 
-   * Ha a **bejelentkezési típus** tulajdonsága az **alkalmazáskiszolgáló**értékre van beállítva, akkor ezek a tulajdonságok, amelyek általában nem kötelezőek, kötelezőek:
+   1. Folytassa a kapcsolatok adatainak biztosítását. A **bejelentkezési típus** tulajdonságnál kövesse a lépést attól függően, hogy a tulajdonság az **Application Server** vagy a **Group**értékre van-e állítva:
+   
+      * Az **alkalmazáskiszolgáló**esetében ezek a tulajdonságok, amelyek általában opcionálisak, kötelezőek:
 
-     ![SAP Application Server-kapcsolatok létrehozása](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+        ![SAP Application Server-kapcsolatok létrehozása](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-   * Ha a **Bejelentkezés típusa** tulajdonság a **Group**értékre van beállítva, akkor ezek a tulajdonságok, amelyek általában nem kötelezőek, kötelezőek:
+      * A **Group (csoport**) esetében ezek a tulajdonságok, amelyek általában opcionálisak, kötelezőek:
 
-     ![SAP-üzenetkezelő kiszolgáló kapcsolatainak létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![SAP-üzenetkezelő kiszolgáló kapcsolatainak létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-   Alapértelmezés szerint az erős beírással ellenőrizhető az érvénytelen értékek ellenőrzése a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. További információ a [biztonságos gépelési lehetőségről](#safe-typing).
+      Alapértelmezés szerint az erős beírással ellenőrizhető az érvénytelen értékek ellenőrzése a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. További információ a [biztonságos gépelési lehetőségről](#safe-typing).
+
+   1. Ha elkészült, válassza a **Létrehozás**lehetőséget.
+
+      Logic Apps beállítja és teszteli a kapcsolódást, hogy a kapcsolódás megfelelően működjön.
 
 1. Most keresse meg és válasszon ki egy műveletet az SAP-kiszolgálóról.
 
@@ -159,11 +167,11 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
       Ez a lépés a HTTP-kérelmi trigger törzsének tartalmát tartalmazza, és elküldi a kimenetet az SAP-kiszolgálónak.
 
-      ![Válassza a "törzs" mezőt](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+      ![Válassza ki a "Body" tulajdonságot az triggerből](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
       Ha elkészült, az SAP-művelet a következő példához hasonlóan néz ki:
 
-      ![SAP-művelet végrehajtása](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+      ![Az SAP-művelet befejezése](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -175,7 +183,7 @@ Most adjon hozzá egy válasz műveletet a logikai alkalmazás munkafolyamataiho
 
 1. A Logic app Designer SAP-művelet területén válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be a "válasz" kifejezést a szűrőként. A **műveletek** listából válassza a **Válasz**lehetőséget.
+1. A keresőmezőbe írja be a `response` szűrőt. A **műveletek** listából válassza a **Válasz**lehetőséget.
 
 1. Kattintson a **törzs** mezőbe, hogy megjelenjen a dinamikus tartalmak listája. A listából válassza az **üzenet küldése az SAP**-be lehetőséget, majd a **törzs** mezőt.
 
@@ -194,7 +202,7 @@ Adja meg az üzenet tartalmát a kérelemmel. A kérelem elküldéséhez olyan e
 
    Ebben a cikkben a kérelem egy IDoc-fájlt küld, amelynek XML-formátumúnak kell lennie, és tartalmaznia kell az Ön által használt SAP-művelet névterét, például:
 
-   ``` xml
+   ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
    <Send xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/2/ORDERS05//720/Send">
       <idocData>
@@ -210,7 +218,9 @@ Adja meg az üzenet tartalmát a kérelemmel. A kérelem elküldéséhez olyan e
 
 Ezzel létrehozott egy logikai alkalmazást, amely képes kommunikálni az SAP-kiszolgálóval. Most, hogy beállított egy SAP-csatlakozást a logikai alkalmazáshoz, megismerheti a többi elérhető SAP-műveletet, például a BAPI és az RFC-t is.
 
-## <a name="receive-from-sap"></a>Fogadás az SAP-ból
+<a name="receive-from-sap"></a>
+
+## <a name="receive-message-from-sap"></a>Üzenet fogadása az SAP-től
 
 Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, amikor az alkalmazás egy SAP-rendszerből kap üzenetet.
 
@@ -218,29 +228,37 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
 1. A Azure Portal hozzon létre egy üres logikai alkalmazást, amely megnyitja a Logic app designert.
 
-1. A keresőmezőbe írja be a "SAP" kifejezést a szűrőként. Az **Eseményindítók** listából válassza ki, **hogy mikor érkezik üzenet az SAP-től**.
+1. A keresőmezőbe írja be a `sap` szűrőt. Az **Eseményindítók** listából válassza ki, **hogy mikor érkezik üzenet az SAP-től**.
 
-   ![SAP-trigger hozzáadása](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
+   ![SAP-trigger hozzáadása](./media/logic-apps-using-sap-connector/add-sap-trigger-logic-app.png)
 
-   Vagy nyissa meg a **vállalati** lapot, és válassza ki a triggert:
+   Vagy válassza a **vállalat** lapot, majd válassza ki az triggert:
 
    ![SAP-trigger hozzáadása a vállalati lapról](./media/logic-apps-using-sap-connector/add-sap-trigger-ent-tab.png)
 
-1. Ha a rendszer megkérdezi a kapcsolat részleteit, hozza létre most az SAP-kapcsolatát. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet.
+1. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet. Ha azonban a rendszer megkéri a kapcsolat részleteinek megadását, adja meg az adatokat, hogy most létrehozza a kapcsolatát a helyszíni SAP-kiszolgálóval.
 
-   **Helyszíni SAP-kapcsolatok létrehozása**
+   1. Adja meg a kapcsolatok nevét.
 
-   Adja meg az SAP-kiszolgáló elérhetőségi adatait. Az **adatátjáró** tulajdonságnál válassza ki a Azure Portalban létrehozott adatátjárót az átjáró telepítéséhez. Ha elkészült, válassza a **Létrehozás**lehetőséget. Logic Apps beállítja és teszteli a kapcsolódást, hogy a kapcsolódás megfelelően működjön.
+   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az átjáró-erőforráshoz tartozó Azure-előfizetést, amelyet az átjáró telepítéséhez Azure Portal hozott létre. 
 
-   * Ha a **bejelentkezési típus** tulajdonsága az **alkalmazáskiszolgáló**értékre van beállítva, akkor ezek a tulajdonságok, amelyek általában nem kötelezőek, kötelezőek:
+   1. A **csatlakoztatási átjáró**területen válassza ki az átjáró erőforrását.
 
-     ![SAP Application Server-kapcsolatok létrehozása](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+   1. Folytassa a kapcsolatok adatainak biztosítását. A **bejelentkezési típus** tulajdonságnál kövesse a lépést attól függően, hogy a tulajdonság az **Application Server** vagy a **Group**értékre van-e állítva:
 
-   * Ha a **Bejelentkezés típusa** tulajdonság a **Group**értékre van beállítva, akkor ezek a tulajdonságok, amelyek általában nem kötelezőek, kötelezőek:
+      * Az **alkalmazáskiszolgáló**esetében ezek a tulajdonságok, amelyek általában opcionálisak, kötelezőek:
 
-     ![SAP-üzenetkezelő kiszolgáló kapcsolatainak létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+        ![SAP Application Server-kapcsolatok létrehozása](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-   Alapértelmezés szerint az erős beírással ellenőrizhető az érvénytelen értékek ellenőrzése a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. További információ a [biztonságos gépelési lehetőségről](#safe-typing).
+      * A **Group (csoport**) esetében ezek a tulajdonságok, amelyek általában opcionálisak, kötelezőek:
+
+        ![SAP-üzenetkezelő kiszolgáló kapcsolatainak létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Alapértelmezés szerint az erős beírással ellenőrizhető az érvénytelen értékek ellenőrzése a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. További információ a [biztonságos gépelési lehetőségről](#safe-typing).
+
+   1. Ha elkészült, válassza a **Létrehozás**lehetőséget.
+
+      Logic Apps beállítja és teszteli a kapcsolódást, hogy a kapcsolódás megfelelően működjön.
 
 1. Adja meg a szükséges paramétereket az SAP rendszerkonfigurációja alapján.
 
@@ -248,7 +266,7 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    Kiválaszthat egy SAP-műveletet a file pickerből:
 
-   ![SAP-művelet kiválasztása](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
+   ![SAP-művelet hozzáadása a logikai alkalmazáshoz](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
 
    Vagy manuálisan is megadhat egy műveletet:
 
@@ -256,12 +274,11 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    Az alábbi példa bemutatja, hogyan jelenik meg a művelet, amikor beállítja, hogy a trigger egynél több üzenetet kapjon.
 
-   ![Példa triggerre](media/logic-apps-using-sap-connector/example-trigger.png)  
+   ![Több üzenetet fogadó trigger – példa](media/logic-apps-using-sap-connector/example-trigger.png)
 
    Az SAP-művelettel kapcsolatos további információkért lásd: [IDOC-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-1. Most mentse a logikai alkalmazást, így elkezdheti az SAP-rendszerből érkező üzenetek fogadását.
-A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Most mentse a logikai alkalmazást, így elkezdheti az SAP-rendszerből érkező üzenetek fogadását. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 A logikai alkalmazás most már készen áll az SAP-rendszerből érkező üzenetek fogadására.
 
@@ -280,21 +297,21 @@ A logikai alkalmazás most már készen áll az SAP-rendszerből érkező üzene
 
 Beállíthatja az SAP-t, hogy [IDOCs küldjön a csomagokban](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), amelyek kötegek vagy IDOCs-csoportok. A IDOC-csomagok fogadásához az SAP-összekötőt, és különösen az triggert nem kell külön konfigurálni. Ahhoz azonban, hogy az trigger megkapja a csomagot, a IDOC-csomagok minden egyes elemét fel kell dolgozni, néhány további lépés szükséges a csomag különálló IDOCs való felosztásához.
 
-Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból a [ `xpath()` következő függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
+Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból a [`xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
 
-1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve beállíthat egy [SAP-triggerrel rendelkező logikai alkalmazást](#receive-from-sap).
+1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-from-sap).
 
-   Példa:
+   Például:
 
-   ![SAP-trigger](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+   ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDOC. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, `xpath()` és egy kifejezéssel tárolja a névteret:
+1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDOC. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, és a névteret egy `xpath()` kifejezés használatával tárolja:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
-   ![Névtér beolvasása](./media/logic-apps-using-sap-connector/get-namespace.png)
+   ![Gyökérszintű névtér beolvasása a IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Egy adott IDOC kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy tömböt változót, és egy `xpath()` másik kifejezéssel tárolja a IDOC gyűjteményt:
+1. Egy adott IDOC kibontásához adjon hozzá egy olyan lépést, amely létrehoz egy tömböt változót, és a IDOC gyűjteményt egy másik `xpath()` kifejezés használatával tárolja:
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
@@ -302,14 +319,13 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból
 
    A Array változó lehetővé teszi, hogy minden IDOC elérhető legyen a logikai alkalmazás számára a gyűjteményre való enumerálással. Ebben a példában a logikai alkalmazás az egyes IDOC egy SFTP-kiszolgálóra továbbítja egy hurok használatával:
 
-   ![IDOC küldése](./media/logic-apps-using-sap-connector/loop-batch.png)
+   ![IDOC küldése SFTP-kiszolgálónak](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Minden IDOC tartalmaznia kell a legfelső szintű névteret, ami azt okozza, hogy a fájl tartalma miért van `<Receive></Receive` becsomagolva egy elembe a legfelső szintű névtérrel együtt, mielőtt elküldi a IDOC az alsóbb rétegbeli alkalmazásba vagy SFTP-kiszolgálóra ebben az esetben.
+   Minden IDOC tartalmaznia kell a legfelső szintű névteret, ami azt okozza, hogy a fájl tartalma miért van becsomagolva egy `<Receive></Receive` elembe a legfelső szintű névtérrel együtt, mielőtt elküldi a IDOC az alsóbb rétegbeli alkalmazásba vagy az SFTP-kiszolgálóra ebben az esetben.
 
-> [!TIP]
-> A minta rövid útmutató sablonjának használatával új logikai alkalmazás létrehozásakor kiválaszthatja ezt a sablont a Logic app Designer alkalmazásban.
->
-> ![Batch-sablon](./media/logic-apps-using-sap-connector/batch-template.png)
+A minta rövid útmutató sablonjának használatával új logikai alkalmazás létrehozásakor kiválaszthatja ezt a sablont a Logic app Designer alkalmazásban.
+
+![Batch Logic app-sablon kiválasztása](./media/logic-apps-using-sap-connector/select-batch-logic-app-template.png)
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Sémák előállítása összetevők számára az SAP-ban
 
@@ -319,9 +335,9 @@ Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválhat
 
 1. A Azure Portal hozzon létre egy üres logikai alkalmazást, amely megnyitja a Logic app designert.
 
-1. A keresőmezőbe írja be szűrőként a "http-kérelem" kifejezést. Az **Eseményindítók** listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
+1. A keresőmezőbe írja be a `http request` szűrőt. Az **Eseményindítók** listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
 
-   ![HTTP-kérési trigger hozzáadása](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![HTTP-kérési trigger hozzáadása](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Most mentse a logikai alkalmazást, hogy létrehozzon egy végponti URL-címet a logikai alkalmazáshoz.
 A tervező eszköztárán válassza a **Mentés**lehetőséget.
@@ -334,29 +350,33 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 1. A Logic app Designerben az trigger alatt válassza az **új lépés**lehetőséget.
 
-   ![Válassza az "új lépés" lehetőséget](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Új lépés hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. A keresőmezőbe írja be a "SAP" kifejezést a szűrőként. A **műveletek** listából válassza a **sémák előállítása**lehetőséget.
+1. A keresőmezőbe írja be a `sap` szűrőt. A **műveletek** listából válassza a **sémák előállítása**lehetőséget.
   
-   ![SAP küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
+   !["Sémák előállítása" művelet hozzáadása a logikai alkalmazáshoz](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
-   Emellett kiválaszthatja a **vállalat** lapot is, és kiválaszthatja az SAP-műveletet.
+   Vagy válassza a **vállalat** lapot, és válassza ki az SAP-műveletet.
 
    ![SAP-küldési művelet kiválasztása a vállalati lapon](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
 
-1. Ha a rendszer megkérdezi a kapcsolat részleteit, hozza létre most az SAP-kapcsolatát. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet.
+1. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet. Ha azonban a rendszer megkéri a kapcsolat részleteinek megadását, adja meg az adatokat, hogy most létrehozza a kapcsolatát a helyszíni SAP-kiszolgálóval.
 
-   **Helyszíni SAP-kapcsolatok létrehozása**
+   1. Adja meg a kapcsolatok nevét.
 
-   1. Adja meg az SAP-kiszolgáló elérhetőségi adatait. Az **adatátjáró** tulajdonságnál válassza ki a Azure Portalban létrehozott adatátjárót az átjáró telepítéséhez.
+   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az átjáró-erőforráshoz tartozó Azure-előfizetést, amelyet az átjáró telepítéséhez Azure Portal hozott létre. 
+   
+   1. A **csatlakoztatási átjáró**területen válassza ki az átjáró erőforrását.
 
-      * Ha a **bejelentkezési típus** tulajdonsága az **alkalmazáskiszolgáló**értékre van beállítva, akkor ezek a tulajdonságok, amelyek általában nem kötelezőek, kötelezőek:
+   1. Folytassa a kapcsolatok adatainak biztosítását. A **bejelentkezési típus** tulajdonságnál kövesse a lépést attól függően, hogy a tulajdonság az **Application Server** vagy a **Group**értékre van-e állítva:
+   
+      * Az **alkalmazáskiszolgáló**esetében ezek a tulajdonságok, amelyek általában opcionálisak, kötelezőek:
 
         ![SAP Application Server-kapcsolatok létrehozása](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      * Ha a **Bejelentkezés típusa** tulajdonság a **Group**értékre van beállítva, akkor ezek a tulajdonságok, amelyek általában nem kötelezőek, kötelezőek:
+      * A **Group (csoport**) esetében ezek a tulajdonságok, amelyek általában opcionálisak, kötelezőek:
 
-        ![SAP-üzenetkezelő kiszolgáló kapcsolatainak létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![SAP-üzenetkezelő kiszolgáló kapcsolatainak létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
       Alapértelmezés szerint az erős beírással ellenőrizhető az érvénytelen értékek ellenőrzése a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. További információ a [biztonságos gépelési lehetőségről](#safe-typing).
 
@@ -398,7 +418,7 @@ A létrehozott sémákat (például blob, Storage vagy integrációs fiók) is l
 
 1. A Logic app Designerben az trigger alatt válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként a "Resource Manager" kifejezést. Válassza **az erőforrás létrehozása vagy frissítése**lehetőséget.
+1. A keresőmezőbe írja be a `Resource Manager` szűrőt. Válassza **az erőforrás létrehozása vagy frissítése**lehetőséget.
 
    ![Azure Resource Manager művelet kiválasztása](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
 
@@ -412,9 +432,10 @@ A létrehozott sémákat (például blob, Storage vagy integrációs fiók) is l
 
    Az SAP- **létrehozási sémák** művelet gyűjteményként hoz létre sémákat, így a tervező automatikusan hozzáadja az **egyes** hurkokat a művelethez. Az alábbi példa bemutatja, hogyan jelenik meg ez a művelet:
 
-   ![Azure Resource Manager művelet az "for each" ciklussal](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
+   ![Azure Resource Manager művelet az "for each" ciklussal](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)
+
    > [!NOTE]
-   > A sémák Base64 kódolású formátumot használnak. A sémák integrációs fiókba való feltöltéséhez a `base64ToString()` függvény használatával dekódolni kell őket. Az alábbi példa az `"properties"` elem kódját mutatja be:
+   > A sémák Base64 kódolású formátumot használnak. A sémák integrációs fiókba való feltöltéséhez a `base64ToString()` függvény használatával dekódolni kell őket. Az alábbi példa a `"properties"` elem kódját mutatja be:
    >
    > ```json
    > "properties": {
@@ -446,7 +467,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban fel
 
    | Tulajdonság | Leírás |
    |----------| ------------|
-   | **SNC-könyvtár elérési útja** | A SNC-könyvtár neve vagy elérési útja NKH-telepítési helyhez vagy abszolút elérési úthoz viszonyítva. Ilyenek `sapsnc.dll` például `.\security\sapsnc.dll` a `c:\security\sapsnc.dll`következők: vagy. |
+   | **SNC-könyvtár elérési útja** | A SNC-könyvtár neve vagy elérési útja NKH-telepítési helyhez vagy abszolút elérési úthoz viszonyítva. Ilyenek például `sapsnc.dll` vagy `.\security\sapsnc.dll` vagy `c:\security\sapsnc.dll`. |
    | **SNC SSO** | Ha a-t a SNC-n keresztül kapcsolódik, a rendszer általában a-hívó hitelesítésére használja a SNC-identitást. Egy másik lehetőség, hogy felülbírálja a felhasználó és a jelszó információit a hívó hitelesítéséhez, de a sor továbbra is titkosítva van. |
    | **SNC nevem** | A legtöbb esetben ez a tulajdonság nem hagyható el. A telepített SNC-megoldás általában ismeri a saját SNC-nevét. Csak a több identitást támogató megoldások esetében lehet, hogy meg kell adnia az adott célhelyhez vagy kiszolgálóhoz használni kívánt identitást. |
    | **SNC-partner neve** | A háttér-végpont neve. |
@@ -454,13 +475,13 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban fel
    |||
 
    > [!NOTE]
-   > Ne állítsa be a környezeti változókat a SNC_LIB és a SNC_LIB_64 azon a gépen, amelyen az adatátjáró és a SNC-könyvtár található. Ha be van állítva, elsőbbséget élveznek az összekötőn átadott SNC-függvénytár értékével szemben.
+   > Ne állítsa be a környezeti változókat SNC_LIB és SNC_LIB_64 azon a gépen, amelyen az adatátjáró és a SNC-könyvtár található. Ha be van állítva, elsőbbséget élveznek az összekötőn átadott SNC-függvénytár értékével szemben.
 
 <a name="safe-typing"></a>
 
 ## <a name="safe-typing"></a>Biztonságos gépelés
 
-Alapértelmezés szerint az SAP-kapcsolatok létrehozásakor a rendszer erős beírással ellenőrzi az érvénytelen értékeket a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. Ha a **biztonságos gépelés**lehetőséget választja, a dats típusa és a Tims típus az SAP-ban karakterláncként lesz kezelve, nem pedig `xs:date` az `xs:time`XML- `xmlns:xs="http://www.w3.org/2001/XMLSchema"`megfelelő, és ahol. A biztonságos gépelés hatással van a séma összes generációjának viselkedésére, az "elküldött" adattartalomra és a "kapott" válaszra, valamint az aktiválásra vonatkozó üzenet küldésére. 
+Alapértelmezés szerint az SAP-kapcsolatok létrehozásakor a rendszer erős beírással ellenőrzi az érvénytelen értékeket a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. Ha a **biztonságos gépelés**lehetőséget választja, a dats típusa és a Tims típusa karakterláncként lesz kezelve, nem pedig XML-ekvivalensként, `xs:date` és `xs:time`, ahol `xmlns:xs="http://www.w3.org/2001/XMLSchema"`. A biztonságos gépelés hatással van a séma összes generációjának viselkedésére, az "elküldött" adattartalomra és a "kapott" válaszra, valamint az aktiválásra vonatkozó üzenet küldésére. 
 
 Ha erős gépelés van használatban (a**biztonságos gépelés** nincs engedélyezve), a séma a dats és a Tims típusait egyszerűbb XML-típusokra képezi le:
 
@@ -516,7 +537,7 @@ Az alábbi példa a következő mintát mutatja be:
 
 1. Az SAP-összekötőben adja hozzá a **Send IDOC** műveletet. Adja meg az SAP-rendszernek küldött IDOC adatait.
 
-1. Ha explicit módon szeretné megerősíteni a tranzakció-azonosítót egy külön lépésben, a TID-azonosító **megerősítése** tulajdonságban válassza a **nem**lehetőséget. A nem kötelező **tranzakció-azonosító GUID** tulajdonsága esetén manuálisan megadhatja az értéket, vagy az összekötő automatikusan létrehozhatja és visszaküldheti ezt a GUID azonosítót a Send IDOC művelet válaszában.
+1. Ha explicit módon szeretné megerősíteni a tranzakció AZONOSÍTÓját egy külön lépésben, a **TID megerősítése** mezőben válassza a **nem**lehetőséget. A nem kötelező **tranzakció-azonosító GUID-azonosítója** mezőben manuálisan is megadhatja az értéket, vagy az összekötő automatikusan létrehozhatja és visszaküldheti ezt a GUID azonosítót a Send IDOC művelet válaszában.
 
    ![IDOC művelet tulajdonságainak küldése](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 

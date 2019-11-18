@@ -1,7 +1,7 @@
 ---
 title: OData-gyűjtési szűrők hibaelhárítása
 titleSuffix: Azure Cognitive Search
-description: A OData-gyűjtési hibák elhárítása az Azure Cognitive Search lekérdezésekben.
+description: Megtudhatja, Hogyan oldhatók fel a OData-gyűjtési szűrési hibák az Azure Cognitive Search-lekérdezésekben.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793184"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113078"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>OData-gyűjtési szűrők hibaelhárítása Az Azure-ban Cognitive Search
 
@@ -171,10 +171,10 @@ Az ilyen összehasonlító kifejezések azonban korlátozásokkal kombinálható
 
     Ez a kifejezés azonban a megengedettnél nem hasznos, mert a feltételek átfedésben vannak:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - `eq`, `lt`, `le`, `gt`vagy `ge` összevonásával egyszerű összehasonlító kifejezések kombinálhatók `and`/`or`. Példa:
+  - `eq`, `lt`, `le`, `gt`vagy `ge` összevonásával egyszerű összehasonlító kifejezések kombinálhatók `and`/`or`. Például:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - A `and`ekkel összevont összehasonlító kifejezések (összekapcsolva) tovább kombinálhatók `or`használatával. Ez az űrlap a logikai logikában ismert "[diszjunkt kötelezőségi normál formában](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Példa:
+  - A `and`ekkel összevont összehasonlító kifejezések (összekapcsolva) tovább kombinálhatók `or`használatával. Ez az űrlap a logikai logikában ismert "[diszjunkt kötelezőségi normál formában](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Például:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - `all`vonatkozó szabályok:
   - Az egyszerű egyenlőségi kifejezések nem kombinálhatók más kifejezésekkel. Ez a kifejezés például engedélyezett:
@@ -185,10 +185,10 @@ Az ilyen összehasonlító kifejezések azonban korlátozásokkal kombinálható
 
     Ez a kifejezés azonban a megengedettnél nem hasznos, mert a feltételek átfedésben vannak:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - `ne`, `lt`, `le`, `gt`vagy `ge` összevonásával egyszerű összehasonlító kifejezések kombinálhatók `and`/`or`. Példa:
+  - `ne`, `lt`, `le`, `gt`vagy `ge` összevonásával egyszerű összehasonlító kifejezések kombinálhatók `and`/`or`. Például:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - A `or` (leválasztással együtt) összevont összehasonlító kifejezések tovább kombinálhatók `and`használatával. Ez az űrlap a logikai logikában ismert "[Conjunctive normál formában](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (cnf). Példa:
+  - A `or` (leválasztással együtt) összevont összehasonlító kifejezések tovább kombinálhatók `and`használatával. Ez az űrlap a logikai logikában ismert "[Conjunctive normál formában](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (cnf). Például:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
@@ -223,7 +223,7 @@ Példák az érvényes szűrők összeállítására az egyes esetekben: az [ér
 
 Ha gyakran ír szűrőket, és megértette, hogy az első alapelvek szabályai jobban megjegyezik őket, tekintse meg a [OData-gyűjtési szűrők ismertetése az Azure Cognitive Search-ban](search-query-understand-collection-filters.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search](search-query-understand-collection-filters.md)
 - [Szűrők az Azure Cognitive Search](search-filters.md)

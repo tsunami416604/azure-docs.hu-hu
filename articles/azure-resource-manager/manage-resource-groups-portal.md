@@ -1,19 +1,16 @@
 ---
 title: Erőforráscsoportok kezelése – Azure Portal
 description: Az erőforráscsoportok Azure Resource Manager használatával történő kezeléséhez használja a Azure Portal. Megjeleníti az erőforráscsoportok létrehozását, listázását és törlését.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: b0fac4f618f742a13633473f00dbd24ff8411c44
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e3402f496371fe89c832dc22c8288a1b94378c82
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528536"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147154"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával
 
@@ -36,10 +33,10 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
 
 ## <a name="create-resource-groups"></a>Erőforráscsoportok létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. **Erőforráscsoportok** kiválasztása
 
-    ![Erőforráscsoport hozzáadása](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
+    ![erőforráscsoport hozzáadása](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
 3. Válassza a **Hozzáadás** lehetőséget.
 4. Írja be a következő értékeket:
 
@@ -47,7 +44,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
    - **Erőforráscsoport**: adjon meg egy új erőforráscsoport-nevet. 
    - **Régió**: válasszon ki egy Azure-helyet, például az **USA középső**régióját.
 
-     ![Erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Válassza a **felülvizsgálat + létrehozás** lehetőséget
 6. Kattintson a **Létrehozás** gombra. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
 7. A felső menüben válassza a **frissítés** lehetőséget az erőforráscsoport listájának frissítéséhez, majd válassza ki az újonnan létrehozott erőforráscsoportot a megnyitásához. Vagy válassza a felül az **értesítés**(harang ikon) lehetőséget, majd válassza az **Ugrás az erőforrás-csoportba** lehetőséget az újonnan létrehozott erőforráscsoport megnyitásához.
@@ -56,7 +53,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
 
 ## <a name="list-resource-groups"></a>Erőforráscsoportok listázása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Az erőforráscsoportok listázásához válassza az **erőforráscsoportok** lehetőséget.
 
     ![erőforráscsoportok tallózása](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -65,7 +62,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor meg
 
 ## <a name="open-resource-groups"></a>Erőforráscsoportok megnyitása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza ki a megnyitni kívánt erőforráscsoportot.
 
@@ -111,7 +108,7 @@ További információ a sablonok exportálásáról: [egy-és többerőforrásos
 
 A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: bc8b834e0dd128457910c46cc1a62382bbc28ee1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721568"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133247"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -56,14 +56,16 @@ az extension add --name spring-cloud
 
 1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
-1. Válassza az **Azure Spring Cloud** lehetőséget az Áttekintés oldalra való ugráshoz. A kezdéshez kattintson a **Létrehozás** gombra.
-
-1. Töltse ki az űrlapot, figyelembe véve a következő irányelveket:
+1. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
     - Szolgáltatás neve: adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
     - Előfizetés: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
     - Erőforráscsoport: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás.
     - Hely: válassza ki a szolgáltatás példányának helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
-    
+
+1. Kattintson **a felülvizsgálat és létrehozás**gombra.
+
+1. Ellenőrizze a specifikációkat, majd kattintson a **Létrehozás**gombra.
+
 A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A telepítés után megjelenik a szolgáltatási példány **Áttekintés** lapja.
 
 ## <a name="set-up-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
@@ -72,7 +74,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Az **alapértelmezett adattár** **szakaszban állítsa be** a "https\://GitHub.com/Azure-Samples/piggymetrics" értéket, állítsa a **címkét** a "config" értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Service-alkalmazások készítése és üzembe helyezése
 
@@ -118,7 +120,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Ugyanezt a mintát követve hozza létre a `account-service` és a `auth-service` alkalmazást, és telepítse a JAR-fájljait.
+1. Ugyanezt a mintát követve hozza létre a `account-service` és `auth-service` alkalmazásokat, és telepítse a JAR-fájljait.
 
     ```azurecli
     az spring-cloud app create -n account-service

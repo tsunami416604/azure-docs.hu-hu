@@ -8,66 +8,102 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/14/2019
 ms.author: darrine
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d16668e2c0f52c0824016c977251e64c800c54d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc3bb5987c31fe718951a3cae02ed7c4ddc29957
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161732"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123078"
 ---
 # <a name="paper-entity"></a>Papír entitás
 
-<sub>* Az alábbi attribútumok a papír entitásra jellemzőek. (Ty = "0")</sub>
+> [!NOTE]
+> Az alábbi attribútumok a papír entitásra jellemzőek. (Ty = "0")
 
-Név | Leírás | Type (Típus) | Műveletek
+Name (Név) | Leírás | Típus | Műveletek
 --- | --- | --- | ---
-AA. AfId | Szerzői kapcsolat azonosítója | Int64 | Egyenlő
-AA. AfN | Szerzői kapcsolat neve | Sztring | Egyenlő, StartsWith
-AA. AuId | Szerző azonosítója | Int64 | Egyenlő
+AA.AfId | Szerzői kapcsolat azonosítója | Int64 | Egyenlő
+AA.AfN | Szerzői kapcsolat neve | Sztring | Egyenlő, StartsWith
+AA.AuId | Szerző azonosítója | Int64 | Egyenlő
 AA. AuN | Normalizált szerző neve | Sztring | Egyenlő, StartsWith
-AA. DAuN | Eredeti szerző neve | Sztring | None
-AA. DAfN | Eredeti kapcsolat neve | Sztring | None
-AA. S | Numerikus pozíció a szerző listában | Int32 | Egyenlő
-CC | Idézetek száma | Int32 | None  
-C. CId | Konferencia-sorozat azonosítója | Int64 | Egyenlő
+AA. DAuN | Eredeti szerző neve | Sztring | Nincs
+AA. DAfN | Eredeti kapcsolat neve | Sztring | Nincs
+AA.S | Numerikus pozíció a szerző listában | Int32 | Egyenlő
+BT | BibTex dokumentumtípus ("a": Journal-cikk, "b": könyv, "c": könyv fejezet, "p": konferencia-könyv) | Sztring | Nincs
+BV | BibTex-helyszín neve | Sztring | Nincs
+C.CId | Konferencia-sorozat azonosítója | Int64 | Egyenlő
 C.CN | Konferencia adatsorozatának neve | Sztring | Egyenlő, StartsWith
+CC | Idézetek száma | Int32 | Nincs  
+CitCon | Idézetek kontextusai</br></br>A hivatkozott papír AZONOSÍTÓjának és a dokumentum megfelelő környezetének (például [{123: ["Brown rókák", az 123-es papíron hivatkozott jumping-nek a neve "," a lusta 123 kutyák a " | Egyéni | Nincs
 D | Közzététel dátuma éééé-hh-nn formátumban | Dátum | Egyenlő, IsBetween
-E | Kiterjesztett metaadatok (lásd az alábbi táblázatot) | Sztring | –  
-ECC | Becsült idézetek száma | Int32 | None
-F. DFN | A tanulmány nevének eredeti mezője | Sztring | None
-F. FId | Tanulmányi azonosító mező | Int64 | Egyenlő
+DN | Eredeti papír címe | Sztring | Nincs
+DOI | Digitális objektum azonosítója | Sztring | Egyenlő, StartsWith
+E | Kiterjesztett metaadatok</br></br>**Fontos**: ez az attribútum elavult, és csak örökölt alkalmazások esetében támogatott. Ha ezt az attribútumot külön kéri (például attribútumok = azonosító, ti, E), a rendszer az összes kibővített metaadat-attribútumot visszaadja egy *szerializált JSON-karakterláncban* .</br></br>A kiterjesztett metaadatokban szereplő összes attribútum mostantól legfelső szintű attribútumként érhető el, és a következő módon kérhető le: (pl. attribútumok = azonosító, ti, DOI, IA) | [Kiterjesztett](#extended) | Nincs
+ECC | Becsült idézetek száma | Int32 | Nincs
+F. DFN | A tanulmány nevének eredeti mezője | Sztring | Nincs
+F.FId | Tanulmányi azonosító mező | Int64 | Egyenlő
 F. FN | A tanulmány neve normalizált mező | Sztring | Egyenlő, StartsWith
+FP | A dokumentum első lapja a kiadványban | Sztring | Egyenlő
+I | Közzétételi probléma | Sztring | Egyenlő
+IA | Fordított absztrakt | [InvertedAbstract](#invertedabstract) | Nincs
 Azonosító | Papír azonosítója | Int64 | Egyenlő
 J. JId | Napló azonosítója | Int64 | Egyenlő
 J. JN | Napló neve | Sztring | Egyenlő, StartsWith
+. LP | A dokumentum utolsó lapja a kiadványban | Sztring | Egyenlő
+PB | Közzétevő | Sztring | Nincs
 PT | Kiadvány típusa (0: ismeretlen, 1: Journal-cikk, 2: szabadalom, 3: konferencia papír, 4: könyv fejezet, 5: könyv, 6: könyv hivatkozási bejegyzés, 7: adatkészlet, 8: adattár | Sztring | Egyenlő
 RId | Hivatkozott papír-azonosítók listája | Int64 [] | Egyenlő
+S | A papír URL-címeinek listája relevancia szerint rendezve | [Forrás](#source)[] | Nincs
 Ti | Normalizált cím | Sztring | Egyenlő, StartsWith
+V | Kiadvány kötete | Sztring | Egyenlő
+VFN | A napló vagy a konferencia helyszínének teljes neve | Sztring | Nincs
+VSN | A napló vagy a konferencia helyszínének rövid neve | Sztring | Nincs
 W | Egyedi szavak a címben | Karakterlánc [] | Egyenlő
 I | Év közzététele | Int32 | Egyenlő, IsBetween
 
-## <a name="extended-metadata-attributes"></a>Bővített metaadatok attribútumai ##
+## <a name="extended"></a>Kiterjesztett
+> [!IMPORTANT]
+> Ez az attribútum elavult, és csak örökölt alkalmazások esetében támogatott. Ha ezt az attribútumot külön kéri (például attribútumok = azonosító, ti, E), a rendszer az összes kibővített metaadat-attribútumot visszaadja egy *szerializált JSON-karakterláncban* .</br></br>A kiterjesztett metaadatokban szereplő összes attribútum mostantól legfelső szintű attribútumként érhető el, és a következő módon kérhető le: (pl. attribútumok = azonosító, ti, DOI, IA)
 
-Név | Leírás               
---- | ---
-BT | BibTex dokumentumtípus ("a": Journal-cikk, "b": könyv, "c": könyv fejezet, "p": konferencia-könyv)
-BV | BibTex-helyszín neve
-CC | Idézetek kontextusai – a hivatkozott papír AZONOSÍTÓjának és a dokumentum megfelelő környezetének listája (például [{123: ["Brown rókák ismertek a 123-es papíron hivatkozott jumping-szövegekben", "a lusta kutyák a korábbi, a 123-es papíron látható"]})
-DN | Eredeti papír címe
-DOI | Digitális objektum azonosítója
-FP | A dokumentum első lapja a kiadványban
-I | Közzétételi probléma
-IA | Fordított absztrakt
-IA. IndexLength | Az indexben lévő elemek száma (absztrakt szavak száma)
-IA. InvertedIndex | Az absztrakt szavak és a hozzájuk tartozó pozíciók listája az eredeti absztraktban (például [{"": [0, 15, 30]}, {"Brown": [1]}, {"Fox": [2]}])
-. LP | A dokumentum utolsó lapja a kiadványban
-PB | Gyártó/kiadó
-S | Források – a papír webes forrásainak listája, a statikus rangsor szerint rendezve
-S. Ty | Forrás típusa (1: HTML, 2: Text, 3: PDF, 4: DOC, 5: PPT, 6: XLS, 7: PS)
-S. U | Forrás URL-címe
-V | Kiadvány kötete
-VFN | A napló vagy a konferencia helyszínének teljes neve
-VSN | A napló vagy a konferencia helyszínének rövid neve
+> [!IMPORTANT]
+> Egyéni kiterjesztett attribútumok kérésének támogatása az "E" használatával a hatókör, azaz az "E. DN" elavult. Habár ez továbbra is technikailag támogatott, az "E" használatával az egyes kiterjesztett attribútumokat is kéri. a hatókör azt eredményezi, hogy a rendszer az attribútum értékét a JSON-válasz két helyén adja vissza, az "E" objektum és a legfelső szintű attribútum részeként.
+
+Name (Név) | Leírás | Típus | Műveletek
+--- | --- | --- | ---
+BT | BibTex dokumentumtípus ("a": Journal-cikk, "b": könyv, "c": könyv fejezet, "p": konferencia-könyv) | Sztring | Nincs
+BV | BibTex-helyszín neve | Sztring | Nincs
+CC | Idézetek kontextusai</br></br>A hivatkozott papír AZONOSÍTÓjának és a dokumentum megfelelő környezetének (például [{123: ["Brown rókák", az 123-es papíron hivatkozott jumping-nek a neve "," a lusta 123 kutyák a " | Egyéni | Nincs
+DN | Eredeti papír címe | Sztring | Nincs
+DOI | Digitális objektum azonosítója | Sztring | Nincs
+FP | A dokumentum első lapja a kiadványban | Sztring | Nincs
+I | Közzétételi probléma | Sztring | Nincs
+IA | Fordított absztrakt | [InvertedAbstract](#invertedabstract) | Nincs
+. LP | A dokumentum utolsó lapja a kiadványban | Sztring | Nincs
+PB | Közzétevő | Sztring | Nincs
+S | A papír URL-címeinek listája relevancia szerint rendezve | [Forrás](#source)[] | Nincs
+V | Kiadvány kötete | Sztring | Nincs
+VFN | A napló vagy a konferencia helyszínének teljes neve | Sztring | Nincs
+VSN | A napló vagy a konferencia helyszínének rövid neve | Sztring | Nincs
+
+## <a name="invertedabstract"></a>InvertedAbstract
+
+> [!IMPORTANT]
+> A InvertedAbstract attribútumokat nem lehet közvetlenül visszaküldési attribútumként kérni. Ha egyéni attribútumra van szüksége, a legfelső szintű "IA" attribútumot kell megadnia, azaz a következőt: IA. IndexLength-kérelem attribútumai = IA
+
+Name (Név) | Leírás | Típus | Műveletek
+--- | --- | --- | ---
+IndexLength | Az indexben lévő elemek száma (absztrakt szavak száma) | Int32 | Nincs
+InvertedIndex | Az absztrakt szavak és a hozzájuk tartozó pozíciók listája az eredeti absztraktban (például [{"": [0, 15, 30]}, {"Brown": [1]}, {"Fox": [2]}]) | Egyéni | Nincs
+
+## <a name="source"></a>Forrás
+
+> [!IMPORTANT]
+> A forrás attribútumai nem igényelhetők vissza attribútumként. Ha egyéni attribútumra van szüksége, akkor a legfelső szintű "S" attribútumot kell megadnia, azaz az S. U kérelem attribútumait kell kérnie = S
+
+Name (Név) | Leírás | Típus | Műveletek
+--- | --- | --- | ---
+Úlyossága | Forrás URL-cím típusa (1: HTML, 2: Text, 3: PDF, 4: DOC, 5: PPT, 6: XLS, 7: PS) | Sztring | Nincs
+U | Forrás URL-címe | Sztring | Nincs

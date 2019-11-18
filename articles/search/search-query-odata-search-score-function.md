@@ -1,7 +1,7 @@
 ---
 title: OData keresés. score-függvény referenciája
 titleSuffix: Azure Cognitive Search
-description: OData Search. score függvény az Azure Cognitive Search lekérdezésekben.
+description: Szintaxis és dokumentáció a Search. score függvény Azure Cognitive Search lekérdezésekben való használatához.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 500ac4f3a44d54e367ddc4ee5efc9514d603cab6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793275"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113134"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>OData `search.score` függvény az Azure-ban Cognitive Search
 
@@ -40,7 +40,7 @@ A szállodát csökkenő sorrendbe rendezheti `search.score` és `rating`szerint
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)

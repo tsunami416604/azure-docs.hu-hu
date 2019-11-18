@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824252"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111885"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatásban üzembe helyezett modellek adateltolódásának (előzetes verzió) észlelése
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +37,7 @@ A Azure Machine Learning segítségével figyelheti a bemeneteket egy AK-ra tele
 + Riasztásokat küldhet az adateltolódásnak e-mailben.
 
 > [!Note]
-> Ez a szolgáltatás jelenleg előzetes verzióban érhető el, és korlátozott a konfigurációs beállításokban. A részletekért és a frissítésért tekintse meg az [API-dokumentációt](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) és a [kibocsátási megjegyzéseket](azure-machine-learning-release-notes.md) . 
+> Ez a szolgáltatás jelenleg előzetes verzióban érhető el, és korlátozott a konfigurációs beállításokban. A részletekért és a frissítésért tekintse meg az [API-dokumentációt](https://docs.microsoft.com/python/api/azureml-datadrift/) és a [kibocsátási megjegyzéseket](azure-machine-learning-release-notes.md) . 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Az adateltolódás figyelése Azure Machine Learning
 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>DataDriftDetector futtatásának elküldése
 
-Ha a `DataDriftDetector` objektum konfigurálva van, elküldheti a modell egy adott dátumára vonatkozó [adateltolódást](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) . A Futtatás részeként engedélyezze a DataDriftDetector riasztásokat a `drift_threshold` paraméter beállításával. Ha a [datadrift_coefficient](#metrics) a megadott `drift_threshold`felett van, akkor a rendszer e-mailt küld.
+Ha a `DataDriftDetector` objektum konfigurálva van, elküldheti a modell egy adott dátumára vonatkozó [adateltolódást](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) . A Futtatás részeként engedélyezze a DataDriftDetector riasztásokat a `drift_threshold` paraméter beállításával. Ha a [datadrift_coefficient](#visualize-drift-metrics) a megadott `drift_threshold`felett van, akkor a rendszer e-mailt küld.
 
 ```python
 # adhoc run today

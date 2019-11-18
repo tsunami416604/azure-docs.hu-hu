@@ -1,25 +1,17 @@
 ---
-title: Redis-fürtözés konfigurálása prémium szintű Azure cache-hez a Redis-hez | Microsoft Docs
+title: A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 description: Ismerje meg, hogyan hozhat létre és kezelhet Redis-fürtözést a prémium szintű Azure cache Redis-példányokhoz
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596919"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122157"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk azt ismerteti, hogyan konfigurálható a fürtözés a prémium szintű Azure cache-ben a Redis-példányhoz.
@@ -38,20 +30,20 @@ A fürtözés nem fokozza a fürtözött gyorsítótár számára elérhető kap
 
 Az Azure-ban a Redis-fürt elsődleges/replika modellként érhető el, ahol az egyes szegmensek olyan elsődleges/replika párokkal rendelkeznek, ahol a replikálást a Redis szolgáltatáshoz tartozó Azure cache felügyeli. 
 
-## <a name="clustering"></a>Fürtszolgáltatás
+## <a name="clustering"></a>Fürtözés
 A fürtözés engedélyezve van a **Redis panel új Azure-gyorsítótárában** a gyorsítótár létrehozásakor. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 A fürtözés a **Redis-fürt** panelen van konfigurálva.
 
-![Fürtszolgáltatás][redis-cache-clustering]
+![Fürtözés][redis-cache-clustering]
 
 A fürtben legfeljebb 10 szegmens lehet. Kattintson az **engedélyezve** elemre, és csúsztassa a csúszkát, vagy írjon be egy 1 és 10 közötti számot a szegmensek **száma** mezőbe, és kattintson **az OK**gombra.
 
 Az egyes szegmensek az Azure által kezelt elsődleges/replika gyorsítótár-párok, a gyorsítótár teljes mérete pedig a díjszabási szinten kiválasztott gyorsítótár-méret szorzatával számítható ki. 
 
-![Fürtszolgáltatás][redis-cache-clustering-selected]
+![Fürtözés][redis-cache-clustering-selected]
 
 Miután létrehozta a gyorsítótárat, csatlakozik hozzá, és ugyanúgy használható, mint a nem fürtözött gyorsítótár, és a Redis elosztja az összes gyorsítótár-szegmenst. Ha a diagnosztika [engedélyezve](cache-how-to-monitor.md#enable-cache-diagnostics)van, a metrikák külön lesznek rögzítve az egyes szegmensekhez, és megtekinthetők a Redis panelhez készült Azure cache [-ben.](cache-how-to-monitor.md) 
 
@@ -111,7 +103,7 @@ Az alábbi lista az Azure cache szolgáltatással történő Redis-fürtözésse
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Hogyan történik a kulcsok elosztása a fürtben?
 A Redis- [kulcsok terjesztési modellje](https://redis.io/topics/cluster-spec#keys-distribution-model) dokumentációja: a kulcs területe 16384 bővítőhelyre van bontva. Az egyes kulcsok kivonatolása és hozzárendelése az egyik ilyen tárolóhelyhez történik, amelyek a fürt csomópontjai között oszlanak meg. Beállíthatja, hogy a kulcs melyik részét használja a rendszer a kivonattal annak biztosítására, hogy több kulcs is ugyanabban a szegmensben legyen a kivonatoló címkék használatával.
 
-* Kulcsok egy kivonatoló címkével – ha a kulcs bármely része `{` és `}` van lefoglalva, akkor a kulcs kivonatának meghatározásakor a rendszer csak a kulcs egy részét használja kivonatként. A következő 3 kulcs például ugyanabban a szegmensben található: `{key}1`, `{key}2` és `{key}3`, mert csak a név `key` része kerül kivonatolásra. A kulcsok kivonatoló címke specifikációinak teljes listáját lásd: [kulcsok kivonatának](https://redis.io/topics/cluster-spec#keys-hash-tags)címkéje.
+* Kulcsok egy kivonatoló címkével – ha a kulcs bármely része `{` és `}`van lefoglalva, akkor a kulcs kivonatának meghatározásakor a rendszer csak a kulcs egy részét használja kivonatként. A következő 3 kulcs például ugyanabban a szegmensben található: `{key}1`, `{key}2`és `{key}3`, mert csak a név `key` része kerül kivonatolásra. A kulcsok kivonatoló címke specifikációinak teljes listáját lásd: [kulcsok kivonatának](https://redis.io/topics/cluster-spec#keys-hash-tags)címkéje.
 * Kivonatoló címke nélküli kulcsok – a rendszer a teljes kulcs nevét használja a kivonatoláshoz. Ez statisztikailag egyenletes eloszlást eredményez a gyorsítótár szegmensei között.
 
 A legjobb teljesítmény és átviteli sebesség érdekében javasoljuk, hogy egyenletesen osztja el a kulcsokat. Ha kivonatoló címkével rendelkező kulcsokat használ, akkor az alkalmazás feladata annak biztosítása, hogy a kulcsok egyenletesen legyenek elosztva.
@@ -167,7 +159,7 @@ A fürtözés csak a prémium szintű gyorsítótárak esetében érhető el.
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Kivételeket kapok a StackExchange. Redis és fürtözési műveletek használatakor?
 Ha a StackExchange. Redis-t használja, és a fürtözés használatakor `MOVE` kivételeket kap, győződjön meg arról, hogy a [StackExchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) vagy újabb verziót használja. A .NET-alkalmazások StackExchange. Redis használatára való konfigurálásával kapcsolatos utasításokért lásd: [a gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a prémium szintű gyorsítótár-funkciók használatáról.
 
 * [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)

@@ -1,5 +1,5 @@
 ---
-title: Mező-hozzárendelések az indexelő használatával történő automatikus indexeléshez
+title: Mezőleképezések az indexelőkben
 titleSuffix: Azure Cognitive Search
 description: Az indexelő mező-hozzárendelések konfigurálása a mezőnevek és az adatábrázolások közötti különbségek kiszámításához.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786977"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123996"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -175,11 +175,14 @@ Az Azure Cognitive Search két különböző Base64-kódolást támogat. Ugyanez
 
 #### <a name="base64-encoding-options"></a>Base64 kódolási beállítások
 
-Az Azure Cognitive Search két különböző Base64-kódolást támogat: a **HTTPSERVERUTILITY URL-tokent**és az **URL-alapú biztonságos Base64 kódolást a kitöltés nélkül**. Az indexelés során Base64 kódolású karakterláncot később dekódolni kell ugyanazzal a kódolási lehetőséggel, különben az eredmény nem egyezik meg az eredetivel.
+Az Azure Cognitive Search támogatja az URL-alapú biztonságos Base64-kódolást és a normál Base64-kódolást. Az indexelés során Base64 kódolású karakterláncot később kell dekódolni ugyanazzal a kódolási lehetőségekkel, különben az eredmény nem egyezik az eredetivel.
 
 Ha a kódoláshoz és a dekódoláshoz `useHttpServerUtilityUrlTokenEncode` vagy `useHttpServerUtilityUrlTokenDecode` paraméterek `true`értékre vannak beállítva, akkor `base64Encode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) , és a `base64Decode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Ha nem a teljes .NET-keretrendszert használja (azaz .NET Core-t vagy más keretrendszert használ) az Azure Cognitive Search viselkedését emuláló kulcs értékének előállításához, akkor `useHttpServerUtilityUrlTokenEncode` és `useHttpServerUtilityUrlTokenDecode` kell beállítania `false`. A használt könyvtártól függően a Base64-kódolás és a dekódolási függvények eltérhetnek az Azure Cognitive Search által használttól.
+> [!WARNING]
+> Ha `base64Encode`t használ a kulcsok értékének megadásához, az `useHttpServerUtilityUrlTokenEncode`t igaz értékre kell állítani. A kulcsok értékeihez csak az URL-alapú biztonságos Base64-kódolást lehet használni. Lásd: az [Azure &#40;Cognitive Search&#41; elnevezési szabályai](https://docs.microsoft.com/rest/api/searchservice/naming-rules) a kulcs értékeit érintő korlátozások teljes halmazához.
+
+A .NET-kódtárak az Azure-ban Cognitive Search feltételezik a teljes .NET-keretrendszert, amely beépített kódolást biztosít. A `useHttpServerUtilityUrlTokenEncode` és `useHttpServerUtilityUrlTokenDecode` beállítások a beépített functionaity használják. Ha .NET Core-t vagy más keretrendszert használ, javasoljuk, hogy ezeket a beállításokat úgy állítsa be, hogy `false`, és a keretrendszer kódolási és dekódolási funkcióit közvetlenül meghívja.
 
 A következő táblázat összehasonlítja a karakterlánc különböző Base64 kódolásait `00>00?00`. Ha meg szeretné határozni a Base64-függvények szükséges további feldolgozását (ha van ilyen), alkalmazza a függvénytár-kódolás függvényt a karakterláncra `00>00?00` és hasonlítsa össze a kimenetet a várt kimeneti `MDA-MDA_MDA`ával.
 
@@ -188,7 +191,7 @@ A következő táblázat összehasonlítja a karakterlánc különböző Base64 
 | Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
 | Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
 | URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
-| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | None | None |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincs | Nincs |
 
 <a name="extractTokenAtPositionFunction"></a>
 

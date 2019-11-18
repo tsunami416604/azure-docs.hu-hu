@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b26b5edeaac1f6305ed2db920c711f906eb10384
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76b7c9436b8d1d466a69df7e5427991df0a9c63e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503905"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125504"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
+>
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [LUIS-alkalmazás létrehozása és végponti kulcs beszerzése](../../../../quickstarts/create-luis.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=windows)
@@ -42,16 +43,16 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegy
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-`IntentRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely a LUIS Endpoing kulcsot és régiót használja. Szúrja be ezt a kódot a `recognizeIntent()` metódusba.
+`IntentRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely a LUIS Endpoint kulcsát és régióját használja. Szúrja be ezt a kódot a `recognizeIntent()` metódusba.
 
 Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
 
 > [!NOTE]
-> Fontos, hogy a LUIS Endpoint kulcsot használja, nem pedig az indító vagy a Authroing kulcsokat, mivel csak a végpont kulcsa érvényes a beszédfelismerési szándék felismerésére. A megfelelő kulcs beszerzésével kapcsolatos útmutatásért lásd: [Luis-alkalmazás létrehozása és végponti kulcs beszerzése](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
+> Fontos, hogy a LUIS Endpoint kulcsot használja, nem pedig a kezdő vagy a szerzői kulcsot, mert csak a végpont kulcsa érvényes a beszédfelismerési szándék felismerésére. A megfelelő kulcs beszerzésével kapcsolatos útmutatásért lásd: [Luis-alkalmazás létrehozása és végponti kulcs beszerzése](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-## <a name="initialize-a-intentrecognizer"></a>IntentRecognizer inicializálása
+## <a name="initialize-an-intentrecognizer"></a>IntentRecognizer inicializálása
 
 Most hozzon létre egy `IntentRecognizer`. Szúrja be ezt a kódot a `recognizeIntent()` metódusba, közvetlenül a beszédfelismerési konfiguráció alatt.
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=28)]
@@ -63,8 +64,8 @@ Most hozzá kell rendelnie egy `LanguageUnderstandingModel`t a szándék-felisme
 
 ## <a name="recognize-an-intent"></a>Szándék felismerése
 
-A `IntentRecognizer` objektumban meg kell hívnia a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a reconizing beszédének leállításához.
-A similicity várni fogjuk, amíg a jövő befejeződik.
+A `IntentRecognizer` objektumban meg kell hívnia a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
+Az egyszerűség kedvéért várni fogjuk, amíg a jövő befejeződik.
 
 A using utasításon belül adja hozzá a következő kódot: [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=44)]
 
@@ -76,13 +77,14 @@ A using utasításon belül `RecognizeOnceAsync()`alatt adja hozzá a következ�
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
-Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzést ehhez a verzióhoz) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
+Ezen a ponton a kódnak így kell kinéznie:  
+(Ehhez a verzióhoz hozzáadott néhány megjegyzést) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-1. **Fordítsa le a kódot** a vizuális Stuio menüsávján, majd válassza a **Build** > **Build megoldás**elemet.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **Build megoldás**elemet.
 2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az **F5**billentyű lenyomása lehetőséget.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 

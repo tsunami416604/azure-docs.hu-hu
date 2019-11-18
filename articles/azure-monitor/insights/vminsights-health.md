@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/14/2019
+ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162289"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109765"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának megismerése
 
@@ -26,11 +26,15 @@ Ez a cikk bemutatja, hogyan lehet gyorsan felmérni, megvizsgálni és elhárít
 
 További információ a Azure Monitor for VMs konfigurálásáról: [Azure monitor for VMS engedélyezése](vminsights-enable-overview.md).
 
+>[!NOTE]
+>A közelmúltban bejelentettük, hogy a nyilvános előzetes verzió ügyfeleinktől kapott visszajelzések alapján az állapotfigyelő funkció [bekövetkezett](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) . A változtatások száma miatt a rendszer leállítja az új ügyfelek számára az állapotfigyelő funkciót. A meglévő ügyfelek továbbra is használhatják az állapot funkciót. További részletekért tekintse meg az [általános elérhetőséggel kapcsolatos gyakori kérdéseket](vminsights-ga-release-faq.md). 
+
 ## <a name="monitoring-configuration-details"></a>Figyelési konfiguráció részletei
 
 Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelésére vonatkozó alapértelmezett állapot-feltételeket ismerteti. Az összes állapotra vonatkozó feltétel előre konfigurálva van, hogy riasztást küldjön, ha nem kifogástalan állapotot azonosítanak.
 
-| Figyelő neve | Gyakoriság (perc) | Lookback időtartama (perc) | Művelet | Küszöb | Riasztás állapot szerint | Súlyosság | Munkaterhelés kategóriája | 
+| Figyelő neve | Gyakoriság (perc) | Lookback időtartama (perc) | Művelet | Küszöbérték | Riasztás állapot szerint | Severity | Munkaterhelés kategóriája | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Online logikai lemez | 5 | 15 | <> | 1 (igaz) | Kritikus | Sev1 | Linux | 
 | Logikai lemez – szabad terület | 5 | 15 | < | 200 MB (figyelmeztetés)<br> 100 MB (kritikus) | Figyelmeztetés | Sev1<br> Sev2 | Linux | 
@@ -75,7 +79,7 @@ Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelés�
 >A Lookback időtartama azt jelzi, hogy a visszatekintő ablak milyen gyakran ellenőrzi a metrika értékeit, például az elmúlt öt percben.  
 
 >[!NOTE]
->A gyakoriság azt jelzi, hogy a metrikai riasztás milyen gyakran ellenőrzi, hogy a feltételek teljesülnek-e, például percenként.  Ez az az időtartam, ameddig a rendszer végrehajtja az állapot feltételeit, és a lookback az az időtartam, ameddig a rendszer kiértékeli az állapotot. Például az állapotra vonatkozó feltétel akkor kerül kiértékelésre, ha a **processzor kihasználtsága** nagyobb, mint 95%, 5 perces gyakorisággal, és 15 percnél (3 egymást követő kiértékelési ciklus) meghaladja a 95%-ot, majd az állapot kritikusra frissül. Súlyosság, ha még nem volt.
+>A gyakoriság azt jelzi, hogy a metrikai riasztás milyen gyakran ellenőrzi, hogy a feltételek teljesülnek-e, például percenként.  Ez az az időtartam, ameddig a rendszer végrehajtja az állapot feltételeit, és a lookback az az időtartam, ameddig a rendszer kiértékeli az állapotot. Például az állapotra vonatkozó feltétel akkor kerül kiértékelésre, ha a **processzor kihasználtsága** 95%-nál nagyobb 5 perces gyakorisággal, és 15 percnél nagyobb marad a 95%-nál (3 egymást követő kiértékelési ciklus), majd az állapotot a kritikus súlyosságra frissíti, ha még nem volt ilyen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -278,7 +282,7 @@ Ha például a *lemez-1 d:* lehetőséget választja, a listában az **összetev
 
 A frissített állapot megjelenítéséhez a **frissítés** hivatkozásra kattintva frissítheti az állapot-diagnosztika lapot. Ha az állapotra vonatkozó feltétel állapota az előre definiált lekérdezési időköz alapján frissül, ez a feladat lehetővé teszi, hogy elkerülje a legutóbbi állapot várakozását, és tükrözze azt. Az állapotra **vonatkozó feltételek állapota** olyan szűrő, amely lehetővé teszi az eredmények hatókörét a kiválasztott állapot alapján: kifogástalan, figyelmeztetés, kritikus, ismeretlen és mind. A jobb felső sarokban lévő **utolsó frissítés** az állapot-diagnosztika lap utolsó frissítésekor jelent meg.
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
 Azure Monitor for VMs az állapot integrálható az [Azure-riasztásokkal](../../azure-monitor/platform/alerts-overview.md). Riasztást küld, ha a rendszer előre definiált feltételek alapján észleli, hogy kifogástalan állapotról sérült állapotra vált. A riasztások súlyosság szerint vannak kategorizálva, a "0" és "4" között, a legmagasabb szinttel 0.
 
@@ -298,11 +302,11 @@ A nézet szűréséhez válassza az értékek lehetőséget a lap tetején talá
 
 |Column |Leírás |
 |-------|------------|
-|Előfizetés |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben lévő riasztások szerepelnek a nézetben. |
+|Előfizetést |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben lévő riasztások szerepelnek a nézetben. |
 |Erőforráscsoport |Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
 |Erőforrás típusa |Válasszon ki egy vagy több erőforrástípust. Alapértelmezés szerint csak a cél **virtuális gépekre** vonatkozó riasztások vannak kiválasztva, és ebben a nézetben szerepelnek. Ez az oszlop csak az erőforráscsoport megadása után érhető el. |
 |Erőforrás |Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
-|Súlyosság |Válasszon ki egy riasztási súlyosságot, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
+|Severity |Válasszon ki egy riasztási súlyosságot, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
 |Figyelési feltétel |Válassza ki a figyelési feltételt a riasztások szűréséhez, ha azokat a rendszer kilőtte vagy feloldotta, ha a feltétel már nem aktív. Vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
 |Riasztás állapota |Válassza ki a riasztási állapotot, az **új**, a **nyugtázás**, a **lezárt**vagy az **összes** beállítást, hogy az összes állapotú riasztást tartalmazzon. |
 |Szolgáltatás figyelése |Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. Ehhez a szolgáltatáshoz csak a VM-adatokból származó riasztások támogatottak.|
@@ -321,7 +325,7 @@ A riasztások kezelésével kapcsolatos további tudnivalókért tekintse meg a 
 Egy vagy több riasztás állapotának megváltoztatásához jelölje ki őket, majd a bal felső sarokban található **minden riasztás** lapon válassza az **Állapot módosítása** lehetőséget. Válassza ki az egyik állapotot a **riasztás állapotának módosítása** panelen, adja meg a módosítás leírását a **Megjegyzés** mezőben, majd kattintson **az OK** gombra a módosítások elvégzéséhez. Amikor az adatok ellenőrzése megtörtént, és a módosítások érvénybe lépnek, a menü **értesítések** részén nyomon követheti a folyamat állapotát.
 
 ### <a name="configure-alerts"></a>Riasztások konfigurálása
-A Azure Portal nem kezelhet bizonyos riasztási felügyeleti feladatokat. Ezeket a feladatokat a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)használatával kell elvégezni. Konkrétan:
+A Azure Portal nem kezelhet bizonyos riasztási felügyeleti feladatokat. Ezeket a feladatokat a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)használatával kell elvégezni. Ezek:
 
 - Állapotra vonatkozó riasztás engedélyezése vagy letiltása
 - Értesítések beállítása az állapotra vonatkozó feltételekkel kapcsolatos riasztásokhoz
@@ -432,7 +436,7 @@ A Azure Monitor for VMs Health támogatja az SMS-és e-mail-értesítéseket, ha
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A korlátozások és a virtuális gépek teljes teljesítményének azonosításához lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
 

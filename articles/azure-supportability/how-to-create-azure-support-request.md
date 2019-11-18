@@ -1,129 +1,126 @@
 ---
 title: Azure-támogatási kérelem létrehozása | Microsoft Docs
-description: Azure-támogatási kérelem létrehozása.
+description: Azok az ügyfelek, akiknek segítségre van szükségük, a Azure Portal használhatják az önkiszolgáló megoldásokat, valamint a támogatási kérések létrehozását és kezelését.
 services: Azure Supportability
 author: ganganarayanan
 manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: gangan
-ms.openlocfilehash: 0195cc86875b075e00e9305d803b8d637905db78
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/13/2019
+ms.author: kfollis
+ms.openlocfilehash: fbcf534b549a12887732ce5ae4db1e4d45692791
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248709"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131066"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Támogatási kérések létrehozása az Azure-hoz
-## <a name="summary"></a>Összefoglalás
-Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban, [https://portal.azure.com](https://portal.azure.com).
+# <a name="how-to-create-an-azure-support-request"></a>Azure-támogatáskérések létrehozása
+
+## <a name="overview"></a>Áttekintés
+
+Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a [Azure Portalban](https://portal.azure.com).
 
 > [!NOTE]
-> A kereskedelmi felhasználásra Azure Portal [https://portal.azure.com](https://portal.azure.com) Azure Portal németország esetében [https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
-> A Egyesült Államok Government Azure Portal [https://portal.azure.us](https://portal.azure.us)
-
+> A Azure Portal URL-cím kifejezetten arra az Azure-felhőre vonatkozik, ahol a szervezete telepítve van. 
+>* A kereskedelmi felhasználásra Azure Portal a következő: [https://portal.azure.com](https://portal.azure.com)
+>* Németország Azure Portal: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* A Egyesült Államok Government Azure Portal a következő: [https://portal.azure.us](https://portal.azure.us)
+>
+>
 
 Az ügyfelek visszajelzései alapján frissítettük a támogatási kérések tapasztalatát, hogy három fő célt összpontosítsanak:
 
-* **Egyszerűsített**: a kattintások és a pengék csökkentése a támogatási kérelem egyszerű elküldésének folyamata érdekében.
-* **Integrált**: Ha egy Azure-erőforrással kapcsolatos hibát próbál elhárítani, könnyen megnyithat egy támogatási kérést az adott erőforráshoz a környezet kapcsolása nélkül.
-* **Hatékony**: gyűjtsön olyan kulcsfontosságú információkat, amelyekre a támogatási szakembernek szüksége van a probléma megoldásához.
+* **Egyszerűsítve**: a támogatási kérések beküldésével egyszerűen megtalálhatja és leegyszerűsítheti a támogatást és a hibaelhárítást.
+* **Integrált**: létrehozhat egy támogatási kérést, ha egy Azure-erőforrással kapcsolatos problémát hibaelhárítás nélkül kapcsol be a környezettel.
+* **Hatékony**: gyűjtsön olyan legfontosabb információkat, amelyekre a támogatási ügynöknek szüksége van ahhoz, hogy hatékonyan megoldja a problémát.
 
-## <a name="getting-started"></a>Bevezetés
-Létrehozhat egy támogatási kérést a felső navigációs menüből, vagy közvetlenül egy erőforrás-panelen is.
+## <a name="getting-started"></a>Első lépések
 
-**A felső navigációs sávon**
+A Azure Portal Súgó és **támogatás** szolgáltatását is elérheti. A szolgáltatás a globális fejlécből vagy a szolgáltatások erőforrás menüjéből érhető el.
 
-![Súgó és támogatás](./media/how-to-create-azure-support-request/HelpandSupport.png)
+### <a name="go-to-help--support-from-the-global-header"></a>Ugrás a Súgó + támogatás elemre a globális fejlécből
 
-A Súgó és támogatás lapon válassza az "új támogatási kérelem" elemet.
+Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
-![Új támogatási kérelem](./media/how-to-create-azure-support-request/NewSupportRequest.png)
+1. Jelölje be a **?** a globális fejlécben. Ezután válassza a **Súgó + támogatás**lehetőséget.
 
-**Erőforrás-panelen**
+   ![Súgó és támogatás](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-![Kontextusban](./media/how-to-create-azure-support-request/Incontext.png)
+2. Válassza az **+ új támogatási kérés**lehetőséget. Az utasításokat követve adja meg nekünk a problémával kapcsolatos információkat. Javaslatot teszünk néhány lehetséges megoldásra, a probléma részleteinek begyűjtésére és a támogatási kérelem elküldésére és nyomon követésére.
 
-## <a name="basics"></a>Alapvető beállítások
+   ![Új támogatási kérelem](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
+
+### <a name="go-to-help--support-from-a-resource-menu"></a>Ugrás a Súgó + támogatás erőforrás menüjéből
+
+Ha támogatási kérést szeretne elindítani az erőforrás kontextusában, jelenleg a következővel dolgozik:
+
+1. Az erőforrás menüben, a **támogatás + hibaelhárítás** szakaszban válassza az **új támogatási kérelem**lehetőséget.
+
+   ![Kontextusban](./media/how-to-create-azure-support-request/incontext2lower.png)
+
+2. Az utasításokat követve adja meg nekünk a problémával kapcsolatos információkat. Amikor elindítja a támogatási kérés folyamatát az erőforrásból, egyes beállítások előre ki vannak választva.
+
+## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
+
+Végigvezeti a problémával kapcsolatos információk gyűjtésének lépésein, és segít a megoldásában. Az egyes lépéseket a következő szakaszokban ismertetjük.
+
+### <a name="basics"></a>Alapvető beállítások
+
 A támogatási kérelem folyamatának első lépése a probléma és a támogatási csomag alapvető információit gyűjti.
 
-Vegyük például a technikai nehézségeket a virtuális géppel szemben, és a hálózati kapcsolattal kapcsolatos problémára gyanakszik.
-Ha kiválasztja a szolgáltatást ("Windows rendszerű virtuális gép") és az erőforrást (a virtuális gép neve) a varázsló első lépésében, elindítja a probléma megoldásának folyamatát.
+Az **új támogatási kérelem** **alapjai** lapon a választókkal kezdheti el a problémát. Először meg kell határoznia néhány általános kategóriát a probléma típusához, és kiválaszthatja a kapcsolódó előfizetést. A szolgáltatás kiválasztása (például "a Windows rendszerű virtuális gép") és az erőforrás (a virtuális gép neve) a következő lépés a Súgó beszerzéséhez. Röviden ismertesse a problémát a saját szavaival, majd **válassza a probléma típusa lehetőséget** a pontosabb megjelenítéshez.
 
-![Alapvető beállítások panel](./media/how-to-create-azure-support-request/Basics.png)
+![Alapvető beállítások panel](./media/how-to-create-azure-support-request/basics2lower.png)
 
 > [!NOTE]
 > Az Azure korlátlan támogatást nyújt az előfizetés-kezeléshez (ilyenek például a számlázás, a kvóta-beállítások és a fiókok átvitele). Technikai támogatásért támogatási csomagra van szükség. [További információ a támogatási csomagokról](https://azure.microsoft.com/support/plans).
 >
 >
 
-## <a name="problem"></a>Probléma
-A varázsló második lépése a probléma további részleteit gyűjti. Ennek a lépésnek a pontos részletei lehetővé teszik számunkra, hogy a probléma megoldásához a legjobb támogatási szakemberre irányítsa az esetet, és a lehető leghamarabb megkezdi a probléma diagnosztizálását.
+### <a name="solutions"></a>Megoldások
 
-![Probléma panel](./media/how-to-create-azure-support-request/Problem01.png)
+Az alapszintű információk összegyűjtése után a következő megoldásokat mutatjuk be a saját kipróbálására. Bizonyos esetekben előfordulhat, hogy egy gyors diagnosztikát is futtatunk. A megoldásokat az Azure-mérnökök írták, és a leggyakoribb problémák megoldására szolgálnak.
 
-A fentiekben ismertetett virtuálisgép-kapcsolati példa használatával kitöltheti ezt az űrlapot, hogy jelezze a hálózati kapcsolati problémát, és további részleteket is megadhat a problémáról, beleértve a probléma megoldásának várható időpontját.
+### <a name="details"></a>Részletek
 
-![Probléma panel 2](./media/how-to-create-azure-support-request/Problem02.png)
+A következő lépés a problémával kapcsolatos további részletek begyűjtése. Az ebben a lépésben található részletes és részletes információk segítenek a támogatási kérelem átirányításában a megfelelő ügynöknek, és lehetővé teszik a probléma diagnosztizálását.
 
-## <a name="related-help"></a>Kapcsolódó Súgó
-A probléma típusa és a kiválasztott kategória alapján olyan megoldást biztosítunk, amely segíthet a probléma megoldásában.
+Érdemes megismernie, hogy mikor indult el a probléma, és milyen lépéseket kell megtennie. Előfordulhat, hogy fel kell töltenie egy fájlt is, például egy naplófájlt vagy a diagnosztika kimenetét.
 
-![Kapcsolódó Súgó](./media/how-to-create-azure-support-request/RelatedHelp.png)
+Miután megtörtént a problémával kapcsolatos összes információ, megadhatja, hogyan kérhet támogatást. A **részletek** lap **támogatási módszer** szakaszában válassza ki a hatás súlyosságát. Adja meg az előnyben részesített kapcsolattartási módszert, amely az Önnel való kapcsolatfelvételhez és a támogatási nyelvhez nyújt segítséget.
 
-A probléma szöveges leírása alapján a kontextus önsegítő megoldásait is biztosítjuk.
+Ezután végezze el a **kapcsolattartási adatok** szakaszt, hogy tudjuk, hogyan kell felvenni Önnel a kapcsolatot.
 
-![Kapcsolódó Súgó 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
+### <a name="review--create"></a>Felülvizsgálat + létrehozás
 
-Ha az ajánlott megoldások nem segítenek, folytathatja a támogatási kérések létrehozásának folyamatát.
+Fejezze be az összes szükséges információt az egyes lapokon, majd válassza a **felülvizsgálat + létrehozás**elemet. Tekintse át a támogatáshoz küldendő adatokat. Ha szükséges, lépjen vissza bármelyik lapra, és végezze el a módosítást. Ha meggyőződött arról, hogy a támogatási kérelem elkészült, válassza a **Létrehozás**lehetőséget.
 
-![Probléma panel 3](./media/how-to-create-azure-support-request/Problem03.png)
-
-## <a name="contact-information"></a>Kapcsolattartási adatok
-A varázsló utolsó lépése megerősíti a kapcsolattartási beállításokat és a kapcsolattartási adatokat, hogy tudjuk, hogyan lehet elérni.
-
-![Kapcsolattartási adatok](./media/how-to-create-azure-support-request/ContactInformation.png)
-
-A probléma súlyossága alapján előfordulhat, hogy meg kell adnia, hogy szeretné-e felvenni Önnel a kapcsolatot munkaidőn belül, vagy ha nonstop választ szeretne kapni, ami azt jelenti, hogy bármikor felvesszük Önnel a kapcsolatot.
-
-![Kapcsolattartási adatok nonstop](./media/how-to-create-azure-support-request/ContactInformation-2.png)
+A támogatási ügynök felveszi Önnel a kapcsolatot a megadott módszer használatával. A kezdeti válaszidőt kapcsolatos információkért lásd a [támogatási hatókört és a válaszadást](https://azure.microsoft.com/support/plans/response/) .
 
 ## <a name="all-support-requests"></a>Minden támogatási kérelem
-A támogatási kérelem létrehozása után a részletek a **minden támogatási kérelem** lapon tekinthetők meg.
 
-**A felső navigációs sávon**
+A támogatási kérések részleteit és állapotát úgy tekintheti meg, hogy a **Súgó + támogatás** >  az **összes támogatási kérést**.
 
-![Súgó és támogatás](./media/how-to-create-azure-support-request/HelpandSupport.png)
+![Minden támogatási kérelem](./media/how-to-create-azure-support-request/allrequestslower.png)
 
-A Súgó és támogatás lapon válassza a bal oldali menüben a "minden támogatási kérelem" lehetőséget.
+Ezen a lapon az előfizetés, a Létrehozás dátuma (UTC) és az állapot alapján szűrheti a támogatási kérelmeket. Ezen a lapon a támogatási kérések is rendezhetők és kereshetők.
 
-![Minden támogatási kérelem hivatkozása](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
+Válasszon ki egy támogatási kérést a részletek megtekintéséhez, beleértve a súlyosságot és azt a várható időt, amelyet a támogatási ügynök válaszolni fog.
 
-A **minden támogatási kérelem** oldalon megtekintheti az összes támogatási kérést és azok állapotát.
-
-![Minden támogatási kérelem](./media/how-to-create-azure-support-request/AllSupportRequest.png)
-
-A támogatási kérelmek oldalon az ügyfelek az előfizetések, a Létrehozás dátuma (UTC) és az állapot alapján szűrhetik az eseteket.
-Ezen a lapon a támogatási kérések is rendezhetők és kereshetők.
-
-Válassza ki a támogatási kérést a részletek megtekintéséhez, beleértve a súlyosságot és azt a várható időt, amelyet a támogatási mérnöknek válaszolni fog.
-![VID @ no__t-1
-
-Ha módosítani szeretné a kérelem súlyosságát, kattintson a **Business Impact (üzleti hatás** ) csempére. Az előző példában a kérelem jelenleg a súlyosság C értékre van állítva.
-
-A csempére kattintva megtekintheti a nyitott támogatási kérelemhez hozzárendelhető súlyossági listát.
+Ha módosítani szeretné a kérelem súlyosságát, válassza az **üzleti hatás**lehetőséget. Megjelenik a hozzárendelni kívánt jogosultságok listája.
 
 > [!NOTE]
 > A maximális súlyossági szint a támogatási csomagtól függ. [További információ a támogatási csomagokról](https://azure.microsoft.com/support/plans).
 >
 >
+Ha többet szeretne megtudni az Azure önsegítő támogatási lehetőségeiről, tekintse meg ezt a videót:
 
-![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
+> [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
-## <a name="feedback"></a>Visszajelzés
-Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Kérjük, küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy az [MSDN-fórumokon](https://social.msdn.microsoft.com/Forums/azure)is elvégezheti a kapcsolatfelvételt.
-
-## <a name="learn-more"></a>További információ
-[Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq)
+## <a name="next-steps"></a>További lépések
+* [Küldje el nekünk visszajelzését és javaslatait](https://feedback.azure.com/forums/266794-support-feedback)
+* Részvétel a [Twitteren](https://twitter.com/azuresupport)
+* Segítség kérése a társaitól az [MSDN-fórumokon](https://social.msdn.microsoft.com/Forums/azure)
+* További információ az [Azure-támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq)

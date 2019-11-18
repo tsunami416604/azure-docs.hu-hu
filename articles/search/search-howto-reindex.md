@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Search index újraépítése
+title: Keresési index újraépítése
 titleSuffix: Azure Cognitive Search
 description: Új elemek hozzáadása, meglévő elemek vagy dokumentumok frissítése vagy elavult dokumentumok törlése egy teljes újraépítéssel vagy részleges növekményes indexeléssel egy Azure Cognitive Search index frissítéséhez.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466441"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112966"
 ---
-# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Cognitive Search index újraépítése
+# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Index újraépítése az Azure Cognitive Searchban
 
 Ez a cikk azt ismerteti, hogyan lehet újraépíteni az Azure Cognitive Search indexét, a szükséges körülményeket, valamint a folyamatban lévő lekérdezési kérelmek újraépítésének következményeit enyhítő javaslatokat.
 

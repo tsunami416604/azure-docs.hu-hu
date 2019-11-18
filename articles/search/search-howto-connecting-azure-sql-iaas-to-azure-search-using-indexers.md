@@ -1,5 +1,5 @@
 ---
-title: Azure SQL virtuális gép virtuálisgép-kapcsolatai a keresés indexeléséhez
+title: Azure SQL VM-kapcsolatok a keresés indexeléséhez
 titleSuffix: Azure Cognitive Search
 description: Engedélyezze a titkosított kapcsolatokat, és konfigurálja a tűzfalat úgy, hogy engedélyezze az Azure-beli virtuális gépeken (VM) SQL Server való csatlakozást az Azure-beli Cognitive Search.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 57bea41d95b8859af55be777b17189861a445a12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792147"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111891"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Cognitive Search indexelő használatával létesített kapcsolatok konfigurálása Azure-beli virtuális gépeken való SQL Server
 
-Ahogy azt az [Azure SQL Database az Azure-Cognitive Search az indexelő használatával való csatlakoztatása](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)során feltettük, az Azure-beli **virtuális gépeken** (vagy a rövid **SQL Azure virtuális gépeken** ) az azure-Cognitive Search is támogatja az SQL Server indexek létrehozását, de van néhány a biztonsággal kapcsolatos előfeltételeket, amelyekkel gondoskodhat az első lépésekről. 
+Ahogy azt az [Azure SQL Database az Azure-Cognitive Search az indexelő használatával való csatlakoztatása](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)során feltettük, az Azure-beli **virtuális gépeken** (vagy a rövid **SQL Azure virtuális gépeken** ) lévő SQL Server indexeket az Azure Cognitive Search támogatja, de a biztonsággal kapcsolatos előfeltételekre is van lehetőség. 
 
 Az Azure Cognitive Search és a virtuális gép SQL Server közötti kapcsolatai nyilvános internetkapcsolattal rendelkeznek. Ezen kapcsolatok esetében általában az alábbi biztonsági intézkedések érvényesek:
 
@@ -87,6 +87,6 @@ A harmadik életképes (de nem különösen biztonságos) módszer az az Azure-r
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Az Azure Cognitive Search-portál IP-címeinek belefoglalása
 Ha az Azure Portalt használja az indexelő létrehozásához, az Azure Cognitive Search Portal Logic is hozzáférést igényel a SQL Azure virtuális géphez a létrehozás ideje alatt. Az Azure Cognitive Search-portál IP-címei a `stamp2.search.ext.azure.com`pingelésével is megtalálhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-beli Cognitive Search indexelő adatforrásaként megadhat egy SQL Servert az Azure-beli virtuális gépen. További információkért lásd: [Azure SQL Database csatlakoztatása az Azure Cognitive Searchhoz az indexelő használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .
 

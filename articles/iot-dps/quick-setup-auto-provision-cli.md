@@ -9,23 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ef40d0df630fc369705a1365aa8d95317aa54cb3
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 20ad503582a35c1b47e90ca1c8c53af2c10fc6f8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904700"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151949"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása az Azure CLI-vel
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató egy IoT Hub és egy IoT Hub Device Provisioning-szolgáltatás Azure CLI használatával végzett létrehozását, valamint a két szolgáltatás csatolását ismerteti. 
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy IoT hubot és egy IoT Hub Device Provisioning Servicet az Azure CLI használatával, és hogyan kapcsolhatja össze a két szolgáltatást. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!IMPORTANT]
-> Az ezzel a rövid útmutatóval létrehozott IoT Hub és az eszközkiépítési szolgáltatás is DNS-végpontként nyilvánosan észlelhető lesz. Ha úgy dönt, hogy megváltoztatja ezen erőforrások nevét, ügyeljen arra, hogy ne adjon meg bizalmas adatokat.
+> Az IoT hub és az ebben a rövid útmutatóban létrehozott kiépítési szolgáltatás a DNS-végpontként nyilvánosan felderíthetővé válik. Ha úgy dönt, hogy megváltoztatja ezen erőforrások nevét, ügyeljen arra, hogy ne adjon meg bizalmas adatokat.
 >
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -49,17 +48,17 @@ az group create --name my-sample-resource-group --location westus
 
 Egy IoT Hubot az [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal hozhat létre.
 
-A következő példában létrehozunk egy *my-sample-hub* nevű IoT Hubot a *westus* helyen.  
+A következő példában létrehozunk egy *my-sample-hub* nevű IoT Hubot a *westus* helyen. Az IoT hub nevének globálisan egyedinek kell lennie az Azure-ban, ezért érdemes lehet egyedi előtagot vagy utótagot hozzáadni a példában szereplő névhez, vagy teljesen új nevet választani. Győződjön meg arról, hogy a neve megfelel az IoT hub megfelelő elnevezési konvencióinak: 3-50 karakter hosszúnak kell lennie, és csak kis-és nagybetűket (alfanumerikus karaktereket vagy kötőjeleket) tartalmazhat ("-"). 
 
 ```azurecli-interactive 
 az iot hub create --name my-sample-hub --resource-group my-sample-resource-group --location westus
 ```
 
-## <a name="create-a-provisioning-service"></a>Eszközkiépítési szolgáltatás létrehozása
+## <a name="create-a-device-provisioning-service"></a>Eszköz-kiépítési szolgáltatás létrehozása
 
-Eszközkiépítési szolgáltatás létrehozása az [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. 
+Hozzon létre egy eszköz-kiépítési szolgáltatást az az [IOT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. 
 
-A következő példában létrehozunk egy *my-sample-dps* nevű eszközkiépítési szolgáltatást a *westus* helyen.  
+A következő példában létrehozunk egy *My-Sample-DPS* nevű kiépítési szolgáltatást a *westus* helyen. Emellett ki kell választania egy globálisan egyedi nevet a saját kiépítési szolgáltatásához. Győződjön meg arról, hogy az egy IoT Hub Device Provisioning Service megfelelő elnevezési konvenciókat használ: 3-64 karakter hosszúnak kell lennie, és csak kis-és nagybetűket, alfanumerikus karaktereket és kötőjeleket (-) tartalmazhat.
 
 ```azurecli-interactive 
 az iot dps create --name my-sample-dps --resource-group my-sample-resource-group --location westus
@@ -69,12 +68,11 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 > Ebben a példában az eszközkiépítési szolgáltatás az USA nyugati régiójában jön létre. Az elérhető helyek listáját az `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` parancs futtatásával vagy az [Azure állapotlapjának](https://azure.microsoft.com/status/) megnyitásával, majd a „Device Provisioning Service” kifejezésre való kereséssel tekintheti meg. A parancsokban a hely megadható egy vagy több szóból álló formátumban is. például: westus, USA nyugati régiója, USA nyugati régiója stb. Az érték nem megkülönbözteti a kis-és nagybetűket. Ha többszavas formátumot használ a hely megadásához, tegye idézőjelek közé az értéket, például: `-- location "West US"`.
 >
 
-
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Az IoT Hub kapcsolati sztringjének lekérése
 
 Szükség van az IoT Hub kapcsolati sztringjére a Device Provisioning Service-szel való összekapcsoláshoz. Az [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) használatával kérje le a kapcsolati sztringet, majd használja a kimenetét egy olyan változó megadásához, amelyet a két erőforrás összekötésére fog használni. 
 
-Az alábbi példa a *hubConnectionString* változót a hub *iothubowner* szabályzatának elsődleges kulcsához tartozó kapcsolati sztring értékére állítja. Megadhat egy másik szabályzatot is a `--policy-name` paraméterrel. A parancs az Azure CLI [lekérdezés](/cli/azure/query-azure-cli) és [kimenet](/cli/azure/format-output-azure-cli#tsv-output-format) lehetőségeinek használatával nyeri ki a kapcsolati sztringet a parancskimenetből.
+A következő példa a *hubConnectionString* változót a hub *iothubowner* -házirendjének elsődleges kulcsához tartozó kapcsolódási karakterlánc értékére állítja be (a `--policy-name` paraméter egy másik házirend megadására használható). A korábban kiválasztott egyedi IoT hub-név kiértékelése a *My-Sample-hub* . A parancs az Azure CLI [lekérdezés](/cli/azure/query-azure-cli) és [kimenet](/cli/azure/format-output-azure-cli#tsv-output-format) lehetőségeinek használatával nyeri ki a kapcsolati sztringet a parancskimenetből.
 
 ```azurecli-interactive 
 hubConnectionString=$(az iot hub show-connection-string --name my-sample-hub --key primary --query connectionString -o tsv)
@@ -94,25 +92,30 @@ echo $hubConnectionString
 
 Az IoT Hub és az eszközkiépítési szolgáltatás csatolása az [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) paranccsal. 
 
-A következő példában egy, a *westus* helyen található, *my-sample-hub* nevű IoT Hubot csatolunk egy *my-sample-dps* nevű Device Provisioning-szolgáltatáshoz. A *my-sample-hub* kapcsolati sztringjét használja, amelyet az előző lépésben szereplő *hubConnectionString* változó tárol.
+Az alábbi példa egy *My-Sample-hub* nevű IoT-hubot használ a *westus* helyen és egy *My-Sample-DPS*nevű Device kiépítési szolgáltatásban. Ezeket a neveket az egyedi IoT hub és a korábban kiválasztott eszközök kiépítési szolgáltatásának nevére kell kiforgalmaznia. A parancs az előző lépésben a *hubConnectionString* változóban tárolt IoT hub-hoz tartozó kapcsolatok karakterláncot használja.
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus
 ```
 
+A parancs végrehajtása több percet is igénybe vehet.
+
 ## <a name="verify-the-provisioning-service"></a>Eszközkiépítési szolgáltatás ellenőrzése
 
 Eszközkiépítési szolgáltatás adatainak lekérése az [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show) paranccsal.
 
-Az alábbi példa lekéri a *my-sample-dps* nevű eszközkiépítési szolgáltatás adatait. A csatolt IoT Hub a *properties.iotHubs* gyűjteményben jelenik meg.
+Az alábbi példa lekéri a *my-sample-dps* nevű eszközkiépítési szolgáltatás adatait. Ezt a nevet a saját eszköz kiépítési szolgáltatásának nevére kell kiforgalmazni.
 
 ```azurecli-interactive
 az iot dps show --name my-sample-dps
 ```
+A csatolt IoT Hub a *properties.iotHubs* gyűjteményben jelenik meg.
+
+![Kiépítési szolgáltatás ellenőrzése](./media/quick-setup-auto-provision-cli/verify-provisioning-service.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, a következő parancsok használatával törölheti az eszközkiépítési szolgáltatást, az IoT Hubot, vagy az erőforráscsoportot az ahhoz tartozó összes erőforrással együtt.
+Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, a következő parancsok használatával törölheti az eszközkiépítési szolgáltatást, az IoT Hubot, vagy az erőforráscsoportot az ahhoz tartozó összes erőforrással együtt. Cserélje le az alább írt erőforrások nevét a saját erőforrásainak nevére.
 
 Az eszközkiépítési szolgáltatás törléséhez futtassa az [az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete) parancsot:
 
@@ -131,9 +134,9 @@ Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futta
 az group delete --name my-sample-resource-group
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban IoT Hubot és eszközkiépítési szolgáltatás példányt helyezett üzembe, és csatolta a két erőforrást. Ha szimulált eszköz kiépítéséhez szeretné használni ezt a beállítást, folytassa a szimulált eszköz létrehozásának rövid útmutatójával.
+Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan lehet szimulált eszközt kiépíteni a telepítővel, folytassa a szimulált eszköz létrehozására szolgáló rövid útmutatóval.
 
 > [!div class="nextstepaction"]
 > [Szimulált eszköz létrehozásának rövid útmutatója](./quick-create-simulated-device.md)

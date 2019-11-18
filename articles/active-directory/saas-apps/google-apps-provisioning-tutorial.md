@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120319"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: a G Suite konfigurálása automatikus felhasználók kiépítési feladatokhoz
 
@@ -80,7 +80,7 @@ Mielőtt konfigurálja a G Suite-t az Azure AD-vel való automatikus felhasznál
 
     a. A [G Suite felügyeleti konzolon](https://admin.google.com/)válassza a **tartományok**lehetőséget.
 
-    ![Tartományok kiválasztása][20]
+    ![Select Domains][20]
 
     b. Válassza **a tartomány hozzáadása vagy a tartományi alias**lehetőséget.
 
@@ -96,11 +96,11 @@ Mielőtt konfigurálja a G Suite-t az Azure AD-vel való automatikus felhasznál
 
 5. Ezután határozza meg, hogy melyik rendszergazdai fiókot szeretné használni a G Suite-ban a felhasználók üzembe helyezésének kezeléséhez. Navigáljon a **rendszergazdai szerepkörök**elemre.
 
-    ![Google Apps kiválasztása][26]
+    ![Select Google Apps][26]
     
 6. A fiók **rendszergazdai szerepköréhez** szerkessze az adott szerepkörhöz tartozó **jogosultságokat** . Ügyeljen arra, hogy az összes **rendszergazdai API-jogosultságot** engedélyezze, hogy ez a fiók használható legyen az üzembe helyezéshez.
 
-    ![Google Apps kiválasztása][27]
+    ![Select Google Apps][27]
 
 ## <a name="add-g-suite-from-the-gallery"></a>G csomag hozzáadása a gyűjteményből
 
@@ -108,11 +108,11 @@ Ha a G Suite-t az Azure AD-vel való automatikus felhasználói üzembe helyezé
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
 2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
@@ -131,7 +131,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>A G Suite automatikus felhasználói üzembe helyezésének konfigurálása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -195,17 +195,23 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a G Suite-on végrehajtott összes műveletet ismertetik.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > A G Suite-hoz való felhasználói üzembe helyezés automatizálására egy másik lehetőség áll a [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en)használatára. Ez a beállítás a G Suite-hoz a helyszíni Active Directory identitásait adja meg.
+
+## <a name="common-issues"></a>Gyakori problémák
+* A G Suite megköveteli, hogy minden kiépített felhasználó ellenőrzött tartományba kerüljön. Győződjön meg arról, hogy a kiépíteni kívánt összes felhasználónak van egy egyszerű felhasználóneve a G Suite-ban ellenőrzött tartományból. Ha egy nem ellenőrzött tartományból álló felhasználó a kiépítés hatókörében van, hibaüzenet jelenik meg a [kiépítési naplókban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) (például "GoogleAppsInvalidDomain"). Meggátolhatja ezeket a hibákat, és a nem ellenőrzött tartományokból származó felhasználók hatókörét egy hatóköri [szűrő](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)használatával megakadályozhatja.
+    * Cél attribútum: userPrincipalName
+    * Operátor: REGEX egyezés vagy nem REGEX egyezés
+    * Érték:. *@domain.com
 
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
 

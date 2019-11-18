@@ -1,5 +1,5 @@
 ---
-title: Azure Blob Storage-tartalom indexelése teljes szöveges kereséshez
+title: Keresés az Azure Blob Storage-tartalmakon
 titleSuffix: Azure Cognitive Search
 description: Megtudhatja, hogyan indexelheti az Azure Blob Storaget, és hogyan kinyerheti a dokumentumokat az Azure Cognitive Search használatával.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b093525fcabc31074b398444a2fceffd0f6d3493
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791797"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113024"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Dokumentumok indexelése az Azure Blob Storage az Azure-ban Cognitive Search
 
@@ -30,7 +30,7 @@ A blob-indexelő a következő dokumentum-formátumokból tud szöveget kinyerni
 ## <a name="setting-up-blob-indexing"></a>BLOB-indexelés beállítása
 Beállíthat egy Azure Blob Storage indexelő a használatával:
 
-* [Azure Portalra](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.net SDK](https://aka.ms/search-sdk)
 
@@ -70,7 +70,7 @@ További információ a Create DataSource API-ról: [adatforrás létrehozása](
 
 A blob-tároló hitelesítő adatait az alábbi módszerek egyikével adhatja meg:
 
-- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` a Azure Portal kapcsolati sztringjét a Storage-fiók panel > Beállítások > kulcsok (klasszikus Storage-fiókok esetében) vagy a beállítások > hozzáférési kulcsok (Azure Resource Manager-beli Storage-fiókok).
+- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` a Azure Portal kapcsolati karakterláncát a Storage-fiók panel > Beállítások > kulcsok (klasszikus Storage-fiókok esetében) vagy a beállítások > hozzáférési kulcsok (Azure Resource Manager Storage-fiókok esetében) lehetőségre kattintva érheti el.
 - A **Storage-fiók megosztott hozzáférésének aláírása** (SAS) kapcsolati karakterlánca: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` az SAS-nek szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók és objektumok (ebben az esetben Blobok).
 -  **Tároló közös hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` az SAS-nek a tárolóban szerepelnie kell a listával és az olvasási engedéllyel.
 
@@ -162,7 +162,7 @@ Az Azure Cognitive Search a dokumentum kulcsa egyedileg azonosít egy dokumentum
 
 Alaposan gondolja át, hogy melyik kibontott mező legyen leképezve az index Key mezőjére. A jelöltek a következők:
 
-* **metaadatok\_storage\_neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban vannak, és 2) a név érvénytelen karaktereket tartalmaz a dokumentumban kulcsok, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező leképezési funkciójával](search-indexer-field-mappings.md#base64EncodeFunction) kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait az API-hívásokban (például a lookup) való átadáskor. (Például a .NET-ben a [UrlTokenEncode metódust](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) használhatja erre a célra).
+* **metaadatok\_storage\_neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban vannak, és 2) a név olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például a kötőjeleket. Az érvénytelen karaktereket a `base64Encode` [mező leképezési funkciójával](search-indexer-field-mappings.md#base64EncodeFunction) kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait az API-hívásokban (például a lookup) való átadáskor. (Például a .NET-ben a [UrlTokenEncode metódust](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) használhatja erre a célra).
 * **metaadatok\_storage\_elérési út** – a teljes elérési út használata biztosítja az egyediséget, de az elérési út nem tartalmaz `/` karaktert, amely [érvénytelen a dokumentum kulcsaiban](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a `base64Encode` [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával.
 * Ha a fenti lehetőségek egyike sem működik, hozzáadhat egy egyéni metaadat-tulajdonságot a blobokhoz. Ez a beállítás azonban megköveteli a blob feltöltési folyamatát, hogy hozzáadja a metaadat-tulajdonságot az összes blobhoz. Mivel a kulcs egy kötelező tulajdonság, a tulajdonságot nem tartalmazó Blobok nem lesznek indexelve.
 
@@ -280,7 +280,7 @@ Az Azure Cognitive Search korlátozza az indexelt Blobok méretét. Ezek a korl�
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton történnek, vagy a Blobok elemzése vagy a dokumentumok indexbe való felvétele során. Ha egy adott számú hibát szeretne figyelmen kívül hagyni, állítsa a `maxFailedItems` és `maxFailedItemsPerBatch` konfigurációs paramétereket a kívánt értékekre. Példa:
+Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton történnek, vagy a Blobok elemzése vagy a dokumentumok indexbe való felvétele során. Ha egy adott számú hibát szeretne figyelmen kívül hagyni, állítsa a `maxFailedItems` és `maxFailedItemsPerBatch` konfigurációs paramétereket a kívánt értékekre. Például:
 
     {
       ... other parts of indexer definition
@@ -373,26 +373,26 @@ Az alábbi táblázat összefoglalja az egyes dokumentumok formátumának feldol
 | --- | --- | --- |
 | HTML (text/html) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML-jelölés és szöveg kinyerése |
 | PDF (alkalmazás/PDF) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is (képek nélkül) |
-| DOCX (Application/vnd. openxmlformats-officedocument. WordprocessingML. Document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | DOC (alkalmazás/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | DOCM (Application/vnd. MS-Word. Document. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | WORD XML (Application/vnd. MS-word2006ml) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szalag XML-kódjának és kinyerésének szövege |
 | WORD 2003 XML (Application/vnd. MS-WordML) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date` |Szalag XML-kódjának és kinyerésének szövege |
-| XLSX (Application/vnd. openxmlformats-officedocument. SpreadsheetXML. Sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| XLS (Application/vnd. MS-Excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | XLSM (Application/vnd. MS-Excel. Sheet. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| PPTX (Application/vnd. openxmlformats-officedocument. presentationml. Presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| PPT (Application/vnd. MS-PowerPoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | PPTM (Application/vnd. MS-PowerPoint. Presentation. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| MSG (Application/vnd. MS-Outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Szöveg kinyerése, beleértve a mellékleteket |
+| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Szöveg kinyerése, beleértve a mellékleteket |
 | ODT (Application/vnd. Oasis. OpenDocument. Text) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | ODS (Application/vnd. Oasis. OpenDocument. számolótábla) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | ODP (Application/vnd. Oasis. OpenDocument. Presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| ZIP (alkalmazás/zip) |`metadata_content_type` |Szöveg kinyerése az archívumban található összes dokumentumból |
+| ZIP (application/zip) |`metadata_content_type` |Szöveg kinyerése az archívumban található összes dokumentumból |
 | GZ (alkalmazás/gzip) |`metadata_content_type` |Szöveg kinyerése az archívumban található összes dokumentumból |
 | EPUB (alkalmazás/EPUB + zip) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |Szöveg kinyerése az archívumban található összes dokumentumból |
 | XML (alkalmazás/XML) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |Szalag XML-kódjának és kinyerésének szövege |
-| JSON (alkalmazás/JSON) |`metadata_content_type`<br/>`metadata_content_encoding` |Szöveg kinyerése<br/>Megjegyzés: Ha több dokumentumot szeretne kinyerni egy JSON-blobból, tekintse meg a részletek a JSON-Blobok [indexelésével](search-howto-index-json-blobs.md) foglalkozó témakört. |
+| JSON (application/json) |`metadata_content_type`<br/>`metadata_content_encoding` |Szöveg kinyerése<br/>Megjegyzés: Ha több dokumentumot szeretne kinyerni egy JSON-blobból, tekintse meg a részletek a JSON-Blobok [indexelésével](search-howto-index-json-blobs.md) foglalkozó témakört. |
 | EML (üzenet/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Szöveg kinyerése, beleértve a mellékleteket |
 | RTF (alkalmazás/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Szöveg kinyerése|
 | Egyszerű szöveg (szöveg/egyszerű) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Szöveg kinyerése|

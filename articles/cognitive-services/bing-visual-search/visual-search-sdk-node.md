@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Képelemzések beolvasása a Node. js-hez készült Bing Visual Search SDK-val'
+title: 'Gyors útmutató: képelemzések lekérése a Node. js-hez készült Bing Visual Search SDK-val'
 titleSuffix: Azure Cognitive Services
-description: Töltsön fel egy rendszerképet a Bing Visual Search SDK-val, és szerezzen információt.
+description: Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a Node. js SDK használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: f0dd0bb82f899146956b5671497d298c7ce076ef
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd69179c98e999323936daf7e83b165126c20381
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360518"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111592"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Gyors útmutató: Képelemzések beolvasása a Node. js-hez készült Bing Visual Search SDK-val
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Gyors útmutató: képelemzések lekérése a Node. js-hez készült Bing Visual Search SDK-val
 
 Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a Node. js SDK használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)található. 
 
@@ -57,7 +57,7 @@ Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Vis
 
 ## <a name="search-for-images"></a>Képek keresése
 
-1. A `fs.createReadStream()` használatával beolvashatja a képfájlt, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
+1. A `fs.createReadStream()` használatával olvashatja el a képfájlt, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);

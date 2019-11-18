@@ -1,5 +1,5 @@
 ---
-title: Tartalom indexelése az Azure Table Storage-ból a teljes szöveges kereséshez
+title: Keresés az Azure Table Storage-tartalomban
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg, hogyan indexelheti az Azure Table Storage-ban tárolt Azure Cognitive Search indexelő szolgáltatásait.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ae99145178fba8e204267546dc1cedf42df412eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793740"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112997"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Táblázatok indexelése az Azure Table Storage-ból az Azure Cognitive Search
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Cognitive Search az Azure Tab
 
 Az alábbi erőforrásokkal állíthatja be az Azure Table Storage indexelő szolgáltatását:
 
-* [Azure Portalra](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.net SDK](https://aka.ms/search-sdk)
 
@@ -67,7 +67,7 @@ További információ a Create DataSource API-ról: [adatforrás létrehozása](
 
 A következő módszerek egyikével megadhatja a táblázat hitelesítő adatait: 
 
-- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` a Azure Portal kapcsolati sztringjét a Storage- **fiók** panel > **Beállítások** > **kulcsok** (klasszikus Storage-fiókok esetében) vagy **Beállítások** > **hozzáférési kulcsok** (Azure Resource Manager Storage-fiókok esetében).
+- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` a Azure Portal kapcsolati karakterláncát a Storage- **fiók** panel > **Beállítások** > **kulcsok** (klasszikus storage-fiókok esetében) vagy a **Beállítások** > **hozzáférési kulcsok** (Azure Resource Manager Storage-fiókok esetében) lehetőségre kattintva érheti el.
 - **Storage-fiók közös hozzáférési aláírásának kapcsolati karakterlánca**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` a közös hozzáférési aláírásnak tartalmaznia kell a listát és az olvasási engedélyeket a tárolókban (ebben az esetben a táblákat) és az objektumokat (tábla sorai).
 -  **Táblázat közös hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` a közös hozzáférésű aláírásnak lekérdezési (olvasási) engedélyekkel kell rendelkeznie a táblához.
 
@@ -121,7 +121,7 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 Előfordulhat, hogy a meglévő index mezőinek nevei eltérnek a táblában lévő tulajdonságok neveitől. A mező-hozzárendelések segítségével leképezheti a tulajdonságok nevét a táblából a keresési indexben lévő mezőnevek alapján. További információ a mezők-hozzárendelésekről: [Az Azure Cognitive Search indexelő mező-hozzárendelések áthidalják az adatforrások és a keresési indexek közötti különbségeket](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Dokumentum kulcsainak kezelése
-Az Azure Cognitive Search a dokumentum kulcsa egyedileg azonosít egy dokumentumot. Minden keresési indexnek pontosan egy `Edm.String` típusú kulcsfontosságú mezővel kell rendelkeznie. Az indexhez hozzáadott minden dokumentumhoz meg kell adni a Key mezőt. (Valójában ez az egyetlen kötelező mező.)
+Az Azure Cognitive Search a dokumentum kulcsa egyedileg azonosít egy dokumentumot. Minden keresési indexnek pontosan egy `Edm.String`típusú kulcsfontosságú mezővel kell rendelkeznie. Az indexhez hozzáadott minden dokumentumhoz meg kell adni a Key mezőt. (Valójában ez az egyetlen kötelező mező.)
 
 Mivel a tábla sorainak összetett kulcsa van, az Azure Cognitive Search létrehoz egy `Key` nevű szintetikus mezőt, amely a partíciós kulcs és a sor kulcsainak összefűzése. Ha például egy sor PartitionKey `PK1`, és a RowKey `RK1`, akkor a `Key` mező értéke `PK1RK1`.
 
@@ -148,7 +148,7 @@ Ha azt szeretné jelezni, hogy bizonyos dokumentumokat el kell távolítani az i
     }   
 
 <a name="Performance"></a>
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
 Alapértelmezés szerint az Azure Cognitive Search a következő lekérdezési szűrőt használja: `Timestamp >= HighWaterMarkValue`. Mivel az Azure-táblák nem rendelkeznek másodlagos indexszel a `Timestamp` mezőben, az ilyen típusú lekérdezésekhez teljes táblázatos vizsgálat szükséges, ezért a nagyméretű táblák esetében lassú.
 

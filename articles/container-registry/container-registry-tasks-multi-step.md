@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 27321dbcdeae3a830b6ddf5ea70cbaa098d7e4e3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 06bdcc1cd4f9bfcb1a77140d70435545fbe01079
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931494"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148768"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-feladatokban
 
@@ -84,7 +84,7 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-A különböző forgatókönyvek esetében tekintse meg a több lépésből álló YAML-fájlok és Dockerfiles teljes körű [feladatait ismertető példát][task-examples] .
+Számos forgatókönyv esetén tekintse meg a több lépésből álló YAML-fájlok és-Dockerfiles kapcsolatos [példákat](container-registry-tasks-samples.md) .
 
 ## <a name="run-a-sample-task"></a>Minta feladat futtatása
 
@@ -150,12 +150,12 @@ Run ID: yd14 was successful after 19s
 
 További információ a git-véglegesítő vagy az alaprendszerkép-frissítés automatizált buildekről: a [rendszerkép-buildek automatizálása](container-registry-tutorial-build-task.md) és az [alaprendszerkép frissítése](container-registry-tutorial-base-image-update.md) című oktatóanyag cikkei.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A többlépéses feladatok hivatkozását és a példákat itt találja:
 
 * [Feladat leírása](container-registry-tasks-reference-yaml.md) – a feladat lépésének típusai, tulajdonságai és használata.
-* [Példa a feladatra][task-examples] – példa `task.yaml` fájlokra több forgatókönyv esetén – egyszerű és összetett.
+* Példa a [feladatra](container-registry-tasks-samples.md) – példa a `task.yaml` és a Docker-fájlokra több forgatókönyv esetén – egyszerű és összetett.
 * [Cmd](https://github.com/AzureCR/cmd) -tárház – a tárolók gyűjteménye az ACR-feladatok parancsaiként.
 
 <!-- IMAGES -->

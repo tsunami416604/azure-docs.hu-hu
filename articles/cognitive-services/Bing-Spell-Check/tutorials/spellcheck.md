@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Spell Check eredmények beolvasása a Bing Spell Check API használatával'
+title: 'Oktatóanyag: Spell Check-eredmények lekérése a Bing Spell Check API használatával'
 titleSuffix: Azure Cognitive Services
-description: Bemutatja a Bing Spell Check használatát.
+description: Ebben az oktatóanyagban egy olyan weblapot hozunk létre, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését és az eredmények megjelenítését.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 73466b80915d5eb7228eef397d5aad68d27faa15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996847"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111451"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Weboldalt Spell Check-ügyfél létrehozása
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Spell Check-ügyfél weboldalának létrehozása
 
-Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a githubon. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html)
+Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -118,7 +118,7 @@ A getSubscriptionKeyLocalStorage segítő függvény először megpróbálja lek
     }
 ```
 
-A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
+A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** (érvénytelenítés) szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -148,7 +148,7 @@ Adja vissza a getSubscriptionKey segítő függvényt a külső getSubscriptionK
 
 ## <a name="helper-functions"></a>Segítő függvények
 
-A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címke segítségével előre formázott, megadott szöveget.
+A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címkével előre formázott adott szöveget.
 
 ```html
 function pre(text) {
@@ -164,7 +164,7 @@ function renderSearchResults(results) {
 }
 ```
 
-A renderErrorMessage függvény a megadott hibaüzenetet és a hibakódot jeleníti meg.
+A renderErrorMessage függvény az adott hibaüzenetet és hibakódot jeleníti meg.
 
 ```html
 function renderErrorMessage(message, code) {
@@ -283,7 +283,7 @@ Mentse a fájlt.
 
 ## <a name="display-results"></a>Eredmények megjelenítése
 
-Nyissa meg a weboldalt a böngészőben. Ha a rendszer kéri, adja meg a Bing Spell Check API előfizetői azonosítóját. Adjon meg egy lekérdezést (például a „Hollo, wrld!” kifejezést) a **Spell Check** szövegmezőben, majd nyomja le az **ENTER** billentyűt. A weboldal ezután megjeleníti a lekérdezési eredményeket.
+Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing Spell Check API előfizetői azonosítóját. Adjon meg egy lekérdezést (például a „Hollo, wrld!” kifejezést) a **Spell Check** szövegmezőben, majd nyomja le az **ENTER** billentyűt. A weboldal ezután megjeleníti a lekérdezési eredményeket.
 
 ```json
 {

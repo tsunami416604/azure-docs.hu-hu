@@ -300,9 +300,19 @@
     - name: Nem megfelelő erőforrások szervizelése
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
-    - name: Az Azure Monitor engedélyezése virtuális gépek számára (előzetes verzió)
-      displayName: 'insights, log analytics, builtin'
-      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
+    - name: Azure Lighthouse-integráció
+      items:
+        - name: Szabályzat nagy léptékű üzembe helyezése
+          displayName: 'lighthouse, scale, deploy'
+          href: ../../lighthouse/how-to/policy-at-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+        - name: Javítható szabályzat telepítése
+          displayName: 'lighthouse, scale, remediate'
+          href: ../../lighthouse/how-to/deploy-policy-remediation.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure Monitor-integráció
+      items:
+        - name: Az Azure Monitor engedélyezése virtuális gépek számára (előzetes verzió)
+          displayName: 'monitor, insights, log analytics, builtin'
+          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Referencia
   items:
     - name: Azure CLI

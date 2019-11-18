@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9bc01e0e703ea9f98d877be39011dcca7c7b284a
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4fc0654aab1c68888e86dc95de658bc69a01e02d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521760"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123977"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Az Azure Kubernetes Services integrációja Security Center (előzetes verzió)
 Az Azure Kubernetes Service (ak) a Microsoft által felügyelt szolgáltatás a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. 
@@ -41,7 +41,7 @@ A két szolgáltatás együttes használata a következőket biztosítja:
 
 * **Környezet megerősítése** – Security Center folyamatosan figyeli a Kubernetes-fürtök konfigurációját, és biztonsági javaslatokat hoz létre az iparági szabványoknak megfelelően.
 
-* **Futásidejű védelem** – a következő AK-források folyamatos elemzése révén Security Center riasztásokat jelenít meg a gazdagépen és az AK *-* beli fürt szintjén észlelt fenyegetésekkel és rosszindulatú tevékenységgel kapcsolatban (További információ: [Azure Container Service ](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-container-service-)):
+* **Futásidejű védelem** – a következő AK-források folyamatos elemzése révén Security Center riasztásokat jelenít meg a gazdagépen és az AK *-* beli fürt szintjén észlelt fenyegetésekkel és rosszindulatú tevékenységgel kapcsolatban (További információ: [Azure Container Service ](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)):
     * Nyers biztonsági események, például a hálózati adatfeldolgozás és a folyamat létrehozása
     * A Kubernetes naplója
 

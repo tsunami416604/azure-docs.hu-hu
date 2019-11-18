@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473694"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106611"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez
 
@@ -48,14 +48,14 @@ Ebben a rövid útmutatóban bemutatjuk, hogyan konfigurálhatja alkalmazását 
 Először is győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
 
 * Megismerte a támogatott [engedélyekkel és hozzájárulással](v2-permissions-and-consent.md) kapcsolatos tudnivalókat, mivel fontos szem előtt tartania őket olyan alkalmazások készítésekor, amelyeket más felhasználóknak vagy alkalmazásoknak is használniuk kell.
-* Rendelkezik olyan bérlővel, amelyhez regisztrált alkalmazások tartoznak.
+* Rendelkezik egy olyan bérlővel, amelyen vannak alkalmazások regisztrálva.
   * Ha nincsenek regisztrált alkalmazásai, [ismerje meg, hogyan regisztrálhat alkalmazásokat a Microsoft Identity Platformon](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
 
 Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
 1. Keresse meg és válassza ki a **Azure Active Directory**. 
 1. A bal oldali panelen válassza a **Alkalmazásregisztrációk**lehetőséget.
@@ -171,7 +171,7 @@ Ha hitelesítő adatokat szeretne hozzáadni webalkalmazásához:
 Ha erőforrás-API-k ügyfélről való elérésére vonatkozó engedélyt vagy engedélyeket kíván hozzáadni:
 
 1. Az alkalmazás **Áttekintés** lapján válassza az **API-engedélyek** lehetőséget.
-1. Nyomja meg **Az engedély hozzáadása** gombot.
+1. A **konfigurált engedélyek** szakaszban kattintson az **engedély hozzáadása** gombra.
 1. Alapértelmezés szerint ebben a nézetben választhat a **Microsoft API-k** közül. Válassza ki az Önt érdeklő API-k szakaszát:
     * **Microsoft API-k** – itt a Microsoft API-kra, például a Microsoft Graph-ra vonatkozó engedélyeket választhatja ki.
     * **Saját szervezet által használt API-k** – itt a szervezete által közzétett vagy integrált API-kra vonatkozó engedélyeket választhatja ki.
@@ -179,12 +179,39 @@ Ha erőforrás-API-k ügyfélről való elérésére vonatkozó engedélyt vagy 
 1. Miután kiválasztotta az API-kat, **Az API-engedélyek kérése** lap jelenik meg. Ha az API delegált és alkalmazásengedélyeket egyaránt közzétesz, válassza ki, milyen típusú engedélyre van szüksége az alkalmazásának.
 1. Miután végzett, válassza az **Engedélyek hozzáadása** lehetőséget. Újra megjelenik az **API-engedélyek** lap, ahol az engedélyek a mentést követően bekerülnek a táblázatba.
 
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>Az API-engedélyek és a rendszergazdai beleegyezési felhasználói felület ismertetése
+
+### <a name="configured-permissions"></a>Konfigurált engedélyek
+
+Ez a szakasz azokat az engedélyeket mutatja be, amelyek az Application objektumon explicit módon vannak konfigurálva (\the engedélyek, amelyek az alkalmazás szükséges erőforrás-hozzáférési listájának részét képezik). A táblából hozzáadhat vagy eltávolíthat engedélyeket is. Rendszergazdaként az API engedélyeinek vagy az ebben a szakaszban szereplő egyedi engedélyeknek a rendszergazdai beleegyezését is megadhatja/vonhatja vissza.
+
+### <a name="other-permissions-granted"></a>Egyéb megadott engedélyek
+
+Ha az alkalmazás regisztrálva van egy bérlőben, akkor további, **a bérlőnek biztosított engedélyek**című szakasza is megjelenik. Ez a szakasz a bérlő számára biztosított engedélyeket jeleníti meg, de nem lettek explicit módon konfigurálva az Application objektumon (például a dinamikusan kért és a hozzájuk rendelt engedélyeket). Ez a szakasz csak akkor jelenik meg, ha legalább egy engedély vonatkozik rá.
+
+Hozzáadhat egy API-k engedélyeit vagy az ebben a szakaszban megjelenő egyéni engedélyeket a **konfigurált engedélyek** szakaszhoz. Rendszergazdaként az egyes API-k vagy engedélyek rendszergazdai beleegyezését is visszavonhatja ebben a szakaszban.
+
+### <a name="admin-consent-button"></a>Rendszergazdai beleegyezett gomb
+
+Ha az alkalmazás regisztrálva van egy bérlőben, megjelenik a **jogosultság megadása a bérlő számára** gomb. Ha Ön nem rendszergazda, akkor le lesz tiltva, vagy ha nem konfiguráltak az alkalmazáshoz engedélyeket.
+Ez a gomb lehetővé teszi, hogy a rendszergazda egyszerűen adja meg a rendszergazdai jóváhagyást az alkalmazáshoz konfigurált engedélyekhez. A rendszergazdai jóváhagyás gombra kattintva megnyílik egy új ablak, amely az összes konfigurált engedélyt megjeleníti.
+
+> [!NOTE]
+> Az alkalmazáshoz konfigurált engedélyek és a hozzájárulási kérések között késés van. Ha nem látja az összes konfigurált engedélyt a hozzájárulási kérésben, akkor zárd be, majd indítsa el újra.
+
+Ha olyan engedélyekkel rendelkezik, amelyek meg lettek adva, de nem lettek konfigurálva, akkor a rendszergazda beleegyezike gombra kattintva eldöntheti, hogyan kezelje ezeket az engedélyeket. Ezeket hozzáadhatja a konfigurált engedélyekhez, vagy eltávolíthatja őket.
+
+A beleegyezés kérése lehetőséget biztosít az **elfogadás** vagy a **Visszavonás**lehetőségre. Ha az **elfogadás**lehetőséget választja, a rendszergazda beleegyezik. Ha a Mégse gombot választja, a rendszergazdai Belefoglalás nem adható meg, és egy hibaüzenet jelenik meg, amely szerint a rendszer elutasította a **Belefoglalást**.
+
+> [!NOTE]
+> A rendszergazdai jóváhagyás megadása (az **elfogadás** engedélyezése a jóváhagyáshoz) és a rendszergazdai jóváhagyás állapota a felhasználói felületen.
+
 ## <a name="next-steps"></a>További lépések
 
 Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
 
 * [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
-* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
+* [Alkalmazás konfigurálása a webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
 * [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
 * [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)
 

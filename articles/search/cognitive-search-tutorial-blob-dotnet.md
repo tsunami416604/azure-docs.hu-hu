@@ -1,21 +1,21 @@
 ---
-title: C#Oktatóanyag a Cognitive Services API-k meghívásához egy AI-dúsítási folyamatban
+title: 'Oktatóanyag: készségkészlet létrehozása a C# .NET használatával'
 titleSuffix: Azure Cognitive Search
-description: Átlépési példa az adatok kinyerésére, természetes nyelvre és képai-feldolgozásra az Azure Cognitive Search a dúsítási folyamat során.
+description: Átlépési példa az adatok kinyerését, természetes nyelvét és a kép AI-feldolgozását bemutató kódot egy Azure Cognitive Search-alapú dúsítási folyamatba.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7a8146f524a6e6f9abed2440c98a83aa3878f0c7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790225"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111749"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-indexing-pipeline"></a>C#Oktatóanyag: Cognitive Services API-k hívása az Azure Cognitive Search indexelési folyamatában
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Oktatóanyag: AI-dúsítási folyamat létrehozása a C# és a .net SDK használatával
 
 Ebben az oktatóanyagban megismerheti az Azure-Cognitive Search programozási feladatainak *megismerését a kognitív képességek*segítségével. A szaktudást a természetes nyelvi feldolgozási (NLP) és a Cognitive Services képelemzési képességei is alátámasztják. A készségkészlet-összeállításon és-konfiguráción keresztül kinyerheti egy rendszerkép vagy beolvasott dokumentum szövegét és szöveges ábrázolását. Emellett a nyelv, az entitások, a legfontosabb kifejezések és egyebek is észlelhetők. A végeredmény a keresési indexben gazdag további tartalom, amely egy AI-alapú indexelési folyamattal jön létre.
 
@@ -57,11 +57,11 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**területen szerezze be a szolgáltatásra vonatkozó teljes körű jogosultságokat. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
-Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
 
 ## <a name="prepare-sample-data"></a>Mintaadatok előkészítése
 
@@ -85,13 +85,13 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
 
 A kapcsolati sztring megadásának egyéb módjai is vannak, például egy közös hozzáférésű jogosultságkód biztosítása. Az adatforrások hitelesítő adataival kapcsolatos további információért lásd: [Indexelés az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#Credentials).
 
-## <a name="set-up-your-environment"></a>A környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-on futtatható Console app-projektet.
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-Az [Azure Cognitive Search .net SDK](https://aka.ms/search-sdk) néhány ügyféloldali kódtárat tartalmaz, amelyek lehetővé teszik az indexek, az adatforrások, az indexelő és a szakértelmével kezelését, valamint a dokumentumok feltöltését és kezelését, valamint a lekérdezések futtatását, anélkül, hogy a részleteket kellene foglalkoznia HTTP és JSON. Ezek az ügyféloldali kódtárak mind NuGet-csomagként vannak elosztva.
+Az [Azure Cognitive Search .net SDK](https://aka.ms/search-sdk) néhány ügyféloldali kódtárat tartalmaz, amelyek lehetővé teszik az indexek, az adatforrások, az indexelő és a szakértelmével kezelését, valamint dokumentumok feltöltését és kezelését, valamint lekérdezések futtatását, anélkül, hogy a http-és JSON-adatokkal kellene foglalkoznia. Ezek az ügyféloldali kódtárak mind NuGet-csomagként vannak elosztva.
 
 Ehhez a projekthez telepítenie kell a `Microsoft.Azure.Search` NuGet csomag 9-es verzióját és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet csomagot.
 
@@ -222,7 +222,7 @@ A képességcsoportok alapvető tudnivalóval kapcsolatos bővebb információk�
 
 ### <a name="ocr-skill"></a>OCR-képesség
 
-Az **OCR** -képesség Kinyeri a szöveget a képekből. Ez a képesség azt feltételezi, hogy létezik egy normalized_images mező. Ennek a mezőnek a létrehozásához az oktatóanyag későbbi részében a ```"imageAction"``` konfigurációt az indexelő definíciójában ```"generateNormalizedImages"```re állítja be.
+Az **OCR** -képesség Kinyeri a szöveget a képekből. Ez a szaktudás azt feltételezi, hogy egy normalized_images mező létezik. Ennek a mezőnek a létrehozásához az oktatóanyag későbbi részében a ```"imageAction"``` konfigurációt az indexelő definíciójában ```"generateNormalizedImages"```re állítja be.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -691,7 +691,7 @@ Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja
 
 Az oktatóanyag elvégzésének leggyorsabb módja az Azure Cognitive Search Service és az Azure Blob servicet tartalmazó erőforráscsoport törlése. Feltéve, hogy mindkét szolgáltatást ugyanabban a csoportban helyezte üzembe, törölje az erőforráscsoportot, amellyel véglegesen eltávolíthatja annak teljes tartalmát, a rövid útmutató során létrehozott összes szolgáltatást és tárolt tartalmat is beleértve. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat.
 

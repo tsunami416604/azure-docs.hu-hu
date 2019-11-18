@@ -1,24 +1,16 @@
 ---
-title: Feltételek használata az Azure Resource Manager-sablonokban | Microsoft Docs
+title: Feltétel használata a sablonokban
 description: Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján. Bemutatja, hogyan helyezhet üzembe egy új erőforrást, vagy használjon egy meglévő erőforrást.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fe0a30ab3931be0473ea4f067d6a02797fec1e4d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390194"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150381"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltételek használata az Azure Resource Manager-sablonokban
 
@@ -36,7 +28,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon üzembe helyezése
 > * Az erőforrások eltávolítása
 
-Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információ eléréséhez lásd:
+Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információkért lásd:
 
 * [Sablonfájl szerkezete: feltétel](conditional-resource-deployment.md).
 * [Erőforrás feltételes üzembe helyezése Azure Resource Manager-sablonban](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
@@ -72,11 +64,11 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A sablon öt erőforrást határoz meg:
 
-   * `Microsoft.Storage/storageAccounts` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines` kérdésre adott válaszban foglalt lépéseket. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
      Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
 5. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
@@ -174,7 +166,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the same resource group name you u
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy olyan sablont állított össze, amellyel a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. Ha szeretné megtudni, hogyan kérheti le az Azure Key Vaultban tárolt titkos kódokat, és hogyan használhatja azokat jelszóként sablonok üzembe helyezésekor, tekintse meg a következőt:
 

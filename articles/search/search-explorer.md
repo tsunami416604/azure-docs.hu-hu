@@ -1,5 +1,5 @@
 ---
-title: A Search Explorer eszköz használata az adatlekérdezéshez Azure Portal
+title: Keresési Explorer lekérdezési eszköz a Azure Portal
 titleSuffix: Azure Cognitive Search
 description: A Search Explorer a Azure Portalbe van építve, amely hasznos lehet a tartalmak feltárásához és a lekérdezések érvényesítéséhez az Azure Cognitive Searchban. Karakterláncokat adhat meg a kifejezés vagy kifejezés kereséséhez, vagy a speciális szintaxissal rendelkező teljes keresési kifejezésekhez.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff2986c4e90cb997df250d647bdfbd068d70e51f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792962"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112095"
 ---
 # <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Az Azure-ban a dokumentumok lekérdezéséhez használja a Azure Portal keresési ablakát Cognitive Search 
 
@@ -145,7 +145,7 @@ Tippek a **Search Explorerben**való kereséshez:
 + A lekérdezési és szűrési kifejezéseket az Azure Cognitive Search által támogatott szintaxissal kell tagolni. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de igény szerint a [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) is használhatja nagyobb teljesítményű lekérdezésekhez. A [szűrési kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData szintaxis.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi forrásokban további tudnivalókat és példákat találhat a lekérdezési szintaxisokról.
 

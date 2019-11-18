@@ -1,5 +1,5 @@
 ---
-title: Bevezetés a növekményes indexelésbe (előzetes verzió)
+title: Növekményes indexelés (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: Állítsa be az AI-bővítési folyamatot úgy, hogy az adatait az esetleges konzisztencia érdekében a szaktudás, szakértelmével, indexelő vagy adatforrások frissítéseinek kezeléséhez irányítsa. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715422"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113602"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Mi az Azure Cognitive Search növekményes indexelése?
 
@@ -138,7 +138,7 @@ Egyes indexelő ( [adatforrásokon](https://docs.microsoft.com/rest/api/searchse
 
 A szakértelmével nem támogatja az új műveleteket, de támogatni fogja az új querystring paramétert: a `disableCacheReprocessingChangeDetection`t úgy kell beállítani, hogy `true`, ha a jelenlegi művelet alapján nem kívánja frissíteni a meglévő dokumentumokat.
 
-### <a name="datasources"></a>adatforrások
+### <a name="datasources"></a>Adatforrások
 
 Az adatforrások nem támogatják az új műveleteket, de támogatják az új querystring paramétert: a `ignoreResetRequirement` `true` kell beállítani, ha a frissítési művelet nem érvényteleníti a gyorsítótárat.
 

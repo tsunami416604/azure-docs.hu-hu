@@ -8,69 +8,38 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 2dd5d197851b0090ac1af7bbde5a1ad1b951c785
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0d89be9da55c97a5b49157251896d3a513c2c6db
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569916"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152069"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub"></a>Rövid útmutató: a Windows rendszeren futó minta IoT Plug and Play előzetes verziójú eszköz csatlakoztatása IoT Hub
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-c-windows"></a>Gyors útmutató: a Windows rendszeren futó minta IoT Plug and Play előzetes verziójú eszköz csatlakoztatása IoT Hub (C Windows)
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Play-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás C nyelven íródott, amely a C Azure IoT Device SDK-ban szerepel. A megoldás fejlesztője az Azure IoT Explorer eszköz használatával megismerheti egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Play-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás C nyelven íródott, és az Azure IoT Hub Device C SDK részét képezi. A megoldás fejlesztője az Azure IoT Explorer eszköz használatával megismerheti egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket a helyi gépre:
 
-* [Hozzon létre eszközöket a Visual studióhoz](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) ,  **C++ és hozzon létre eszközöket** és **NuGet csomagkezelő összetevő** -számítási feladatokat. Ha már rendelkezik a [Visual Studióval (Közösség, Professional vagy Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 vagy 2015-val, és ugyanazokat a számítási feladatokat telepítette.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az asztali fejlesztést a Visual Studio telepítésekor számítási **feladatokkal C++**  végezze el.
 * [Git](https://git-scm.com/download/).
 * [CMAK](https://cmake.org/download/).
 
 ### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
 
-Töltse le és telepítse az Azure IoT Explorer eszközt a [legújabb kiadási](https://github.com/Azure/azure-iot-explorer/releases) oldalról.
+Töltse le és telepítse az **Azure IoT Explorer** legújabb kiadását az eszköz [tárházának](https://github.com/Azure/azure-iot-explorer/releases) oldaláról, ehhez válassza ki az. msi fájlt a legutóbbi frissítéshez az "eszközök" területen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
-
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-> [!NOTE]
-> A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
-
-Adja hozzá a Microsoft Azure IoT bővítményt az Azure CLI-hez:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-A következő parancs futtatásával hozza létre az eszköz identitását az IoT hub-ban. Cserélje le a **YourIoTHubName** és a **YourDevice** helyőrzőket a tényleges nevekre. Ha nem rendelkezik IoT Hubval, [az alábbi útmutatást követve hozhat létre egyet](../iot-hub/iot-hub-create-using-cli.md):
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name [YourIoTHubName] --device-id [YourDevice]
-```
-
-Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id [YourDevice] --output table
-```
-
-Futtassa az alábbi parancsokat a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>A C Azure IoT Device SDK beszerzése
+Ebben a rövid útmutatóban olyan fejlesztési környezetet készít elő, amellyel klónozott és felépítheti az Azure IoT Hub Device C SDK-t.
 
-Ebben a rövid útmutatóban egy fejlesztési környezetet készít elő, amellyel klónozott és felépítheti az Azure IoT C Device SDK-t.
-
-Nyisson meg egy parancssort. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
+Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa az alábbi parancsot az [Azure IoT C SDK-k és könyvtárak GitHub-](https://github.com/Azure/azure-iot-sdk-c) tárházának klónozásához a következő helyre:
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -80,7 +49,7 @@ Ez a művelet várhatóan több percig is eltarthat.
 
 ## <a name="build-the-code"></a>A kód létrehozása
 
-Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
+Az eszköz SDK-val felépítheti a mellékelt mintakód-kódot. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
 1. Hozzon létre egy `cmake` alkönyvtárat az eszköz SDK gyökérkönyvtárában, és navigáljon a következő mappába:
 
@@ -102,31 +71,31 @@ Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy I
 
 ## <a name="run-the-device-sample"></a>Az eszköz mintájának futtatása
 
-Futtassa az alkalmazást úgy, hogy az IoT hub-eszköz kapcsolatok sztringjét paraméterként adja át.
+Futtasson egy minta alkalmazást az SDK-ban egy IoT Plug and Play-eszköz szimulálásához, amely telemetria küld az IoT hubhoz. A minta alkalmazás futtatásához használja az alábbi parancsokat, és adja át az _eszköz kapcsolódási karakterláncát_ paraméterként.
 
 ```cmd\sh
 cd digitaltwin_client\samples\digitaltwin_sample_device\Release
 copy ..\EnvironmentalSensor.interface.json .
-digitaltwin_sample_device.exe "[IoT Hub device connection string]"
+digitaltwin_sample_device.exe "<YourDeviceConnectionString>"
 ```
 
-Az eszköz megkezdi az adatok küldését a IoT Hubba.
+Az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát.
 
 ## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>A kód érvényesítése az Azure IoT Explorer használatával
 
-1. Nyissa meg az Azure IoT Explorert, és megjelenik az **alkalmazás konfigurációja** lap.
+1. Nyissa meg az Azure IoT Explorert. Megjelenik az **alkalmazás-konfigurációk** lap.
 
-1. Adja meg IoT Hub kapcsolati karakterláncát, és kattintson a **Csatlakoztatás**gombra.
+1. Adja meg _IoT hub kapcsolati karakterláncát_ , és válassza a **Csatlakoztatás**lehetőséget.
 
-1. A csatlakoztatása után megjelenik az eszköz áttekintő lapja.
+1. A csatlakoztatása után megjelenik az **eszközök** áttekintése oldal.
 
-1. A vállalati tárház hozzáadásához válassza a **Beállítások**, majd az **+ új**, majd a **csatlakoztatott eszköz**elemet.
+1. A **Beállítások**lehetőségre kattintva ellenőrizheti, hogy az eszköz képes-e az eszközön található felületi modell-definíciók beolvasására. Előfordulhat, hogy a beállítások menüben a **csatlakoztatott eszközön** már szerepel a Plug and Play konfigurációk; Ha nem, válassza a **+ modul-definíciós forrás hozzáadása** lehetőséget, majd a **csatlakoztatott eszközön** a hozzáadáshoz.
 
-1. Az eszköz áttekintése lapon keresse meg a korábban létrehozott eszköz identitását, és válassza ki a további részletek megtekintéséhez.
+1. Az **eszközök** áttekintése lapon keresse meg a korábban létrehozott eszköz identitását. Ha az eszköz még fut a parancssorban, ellenőrizze, hogy az eszköz **kapcsolati állapota** az Azure IoT Explorerben _csatlakoztatva_ van-e (ha nem, nyomja meg a **frissítést** , amíg meg nem történik). Válassza ki az eszközt a további részletek megtekintéséhez.
 
-1. Bontsa ki az **urn: YOUR_COMPANY_NAME_HERE: EnvironmentalSensor: 1** azonosítójú felületet a IoT Plug and Play primitívek – tulajdonságok, parancsok és telemetria megtekintéséhez.
+1. Bontsa ki az **urn: YOUR_COMPANY_NAME_HERE: EnvironmentalSensor: 1** azonosítójú felületet, amely felfedi a felületet és a IoT Plug and Play primitívek – tulajdonságok, parancsok és telemetria.
 
-1. Válassza ki a **telemetria** lapot, és tekintse meg az eszköz által küldött telemetria adatokat.
+1. Válassza ki a **telemetria** lapot, és kattintson a _Start_ gombra az eszköz által küldött telemetria-adatok megtekintéséhez.
 
 1. Válassza a **Tulajdonságok (nem írható)** lapot az eszköz által jelentett nem írható tulajdonságok megtekintéséhez.
 
@@ -134,13 +103,15 @@ Az eszköz megkezdi az adatok küldését a IoT Hubba.
 
 1. Bontsa **ki a tulajdonságnév, a**frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget. 
 
-1. Ha látni szeretné, hogy az új név megjelenik a **jelentett tulajdonság** oszlopban, kattintson a lap tetején található **frissítés** gombra.
+1. Ha meg szeretné jeleníteni az új nevet a **jelentett tulajdonság** oszlopban, válassza a lap tetején található **frissítés** gombot.
 
-1. Kattintson a **parancs** lapra az eszköz által támogatott összes parancs megtekintéséhez.
+1. Válassza a **parancsok** lapot az eszköz által támogatott összes parancs megtekintéséhez.
 
 1. Bontsa ki a **Blink** parancsot, és állítson be egy új villogási időközt. Válassza a **Küldés parancs** lehetőséget a parancs meghívásához az eszközön.
 
-1. Lépjen a szimulált eszközre, és győződjön meg arról, hogy a parancs a várt módon lett végrehajtva.
+1. Nyissa meg a szimulált eszköz parancssorát, és olvassa el a kinyomtatott megerősítő üzeneteket, és ellenőrizze, hogy a parancsok a várt módon lettek-e végrehajtva.
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Adatimportálás a keresési indexbe történő adatfeldolgozáshoz
+title: Importálás és adatfeldolgozás a keresési indexekben
 titleSuffix: Azure Cognitive Search
 description: Adatok feltöltése és feltöltése az Azure Cognitive Searchban külső adatforrásokból származó indexbe.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a05291012bcf44b1a07d9b451eef1302862b2fce
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794160"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113773"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Az adatimportálás áttekintése – Azure Cognitive Search
 
@@ -51,7 +51,7 @@ A .NET SDK-ban csomagolja az adatait egy `IndexBatch` objektumba. A `IndexBatch`
 | @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Az `upload` művelet működése hasonló az „upsert” (frissítés/beszúrás) műveletéhez, ahol a rendszer az új dokumentumot beilleszti, ha pedig már létező dokumentumról van szó, akkor frissíti/kicseréli azt. |billentyű, továbbá a meghatározni kívánt egyéb mezők |Létező dokumentum frissítése/cseréje esetén a kérésben nem megadott mezők beállítása a következő lesz: `null`. Ez történik abban az esetben is, ha a mező korábban nem null értékre lett beállítva. |
-| `merge` |Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. A .NET SDK-ban ide tartoznak a következő típusú mezők: `DataType.Collection(DataType.String)`. A REST API `Collection(Edm.String)`típusú mezőket tartalmaz. Ha például a dokumentum egy `["budget"]` értékű `tags` mezőt tartalmaz, és egyesítést hajt végre a `tags` mező `["economy", "pool"]` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`. |
+| `merge` |Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. A .NET SDK-ban ide tartoznak a következő típusú mezők: `DataType.Collection(DataType.String)`. A REST API `Collection(Edm.String)`típusú mezőket tartalmaz. Ha például a dokumentum egy `tags` értékű `["budget"]` mezőt tartalmaz, és egyesítést hajt végre a `["economy", "pool"]` mező `tags` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`. |
 | `mergeOrUpload` |Ha az indexben már létezik az adott kulccsal ellátott dokumentum, ezen művelet viselkedése hasonló lesz a `merge` műveletéhez. Ha nem létezik ilyen dokumentum, a művelet viselkedése az `upload` új dokumentum esetében mutatott viselkedésének fog megfelelni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |- |
 | `delete` |Eltávolítja a megadott dokumentumot az indexből. |csak billentyű |A rendszer figyelmen kívül hagyja a kulcsmezőn kívül megadott mezőket. Ha egyetlen mezőt kíván eltávolítani a dokumentumból, e helyett használja a `merge` műveletet, és a mező számára explicit módon adja meg a null értéket. |
 
@@ -93,7 +93,7 @@ A dokumentum feltöltésének előzetes ellenőrzésének gyors módja a **Searc
 > [!TIP]
 > Számos [Azure Cognitive Search code-minta](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tartalmaz beágyazott vagy könnyen elérhető adatkészleteket, így könnyen megkezdheti az első lépéseket. A portál emellett egy mintaindexelőt és egy adatforrást is kínál, amely egy kisméretű ingatlan-adatkészletet tartalmaz („realestate-us-sample” néven). Amikor az előre konfigurált indexelő a minta adatforráson futtatja, a rendszer létrehoz egy indexet, és betölti azokat dokumentumokkal, amelyek ezután a keresési Explorerben vagy az Ön által írt kóddal kérhetők le.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Az indexelő áttekintése](search-indexer-overview.md)
 + [Útmutató a Portal használatához: indexek létrehozása, betöltése és lekérdezése](search-get-started-portal.md)

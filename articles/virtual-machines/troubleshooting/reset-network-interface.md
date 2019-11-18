@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058466"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111720"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Az Azure Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása 
 
@@ -68,7 +68,7 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. Próbálja meg az RDP-t a gépre.  Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja.
 
@@ -109,7 +109,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja. 
 
@@ -117,10 +117,10 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 Miután a Távoli asztalt elvégezte a gépen, törölnie kell a régi hálózati adaptereket, hogy elkerülje a lehetséges problémát:
 
 1.  Nyissa meg Eszközkezelő.
-2.  Válassza a **nézet** > **rejtett eszközök megjelenítése**lehetőséget.
+2.  Válassza ki a **megtekintés** > a **rejtett eszközök megjelenítése**lehetőséget.
 3.  Válassza a **hálózati adapterek**lehetőséget. 
 4.  Keresse meg a "Microsoft Hyper-V hálózati adapter" nevű adaptereket.
-5.  A nem elérhető adapterek szürke színnel jelennek meg. Kattintson a jobb gombbal az adapterre, majd válassza az Eltávolítás lehetőséget.
+5.  Előfordulhat, hogy egy nem elérhető adapter szürkén jelenik meg. Kattintson a jobb gombbal az adapterre, majd válassza az Eltávolítás lehetőséget.
 
     ![a hálózati adapter képe](media/reset-network-interface/nicpage.png)
 

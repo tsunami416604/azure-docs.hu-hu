@@ -1,7 +1,7 @@
 ---
 title: OData geo-térbeli függvények referenciája
 titleSuffix: Azure Cognitive Search
-description: OData geo-térbeli függvények, Geo. Distance és Geo. metszetek az Azure Cognitive Search lekérdezésekben.
+description: Szintaxis és dokumentáció a OData geo-térbeli függvények, a Geo. Distance és a Geo. metszetek használatáról az Azure Cognitive Search lekérdezésekben.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 09034423e16c652cf6994b38f8d92574abc0ce55
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793336"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113172"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Search-`geo.distance` és `geo.intersects`
 
@@ -121,7 +121,7 @@ A szállodát csökkenő sorrendbe rendezheti `search.score` és `rating`szerint
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

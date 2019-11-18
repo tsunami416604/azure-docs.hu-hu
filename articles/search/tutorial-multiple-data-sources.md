@@ -1,19 +1,19 @@
 ---
 title: 'C#Oktatóanyag: több adatforrás indexelése'
 titleSuffix: Azure Cognitive Search
-description: Megtudhatja, hogyan importálhat több adatforrásból származó adatait egyetlen Azure Cognitive Search indexbe.
+description: 'Megtudhatja, hogyan importálhat több adatforrásból származó adatait egyetlen Azure Cognitive Search indexbe az indexelő használatával. Ez az oktatóanyag és mintakód a következőben található: C#.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: fbe3b9ada556f26bd559f040bf2ba5b22367abd0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795644"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112224"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Oktatóanyag: több adatforrásból származó adatok egyesítése egy Azure Cognitive Search indexben
 
@@ -78,7 +78,7 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
    ![Feltöltés Azure Cosmos DB gyűjteménybe](media/tutorial-multiple-data-sources/cosmos-upload.png "Feltöltés Cosmos DB gyűjteménybe")
 
-1. A feltöltés panelen kattintson a mappa gombra, és keresse meg a **cosmosdb/HotelsDataSubset_CosmosDb. JSON** fájlt a Project mappában. A feltöltés elindításához kattintson **az OK** gombra.
+1. A feltöltés panelen kattintson a mappa gombra, majd keresse meg a **cosmosdb/HotelsDataSubset_CosmosDb. JSON** fájlt a Project mappában. A feltöltés elindításához kattintson **az OK** gombra.
 
    ![Válassza ki a feltölteni kívánt fájlt](media/tutorial-multiple-data-sources/cosmos-upload2.png "Válassza ki a feltölteni kívánt fájlt")
 

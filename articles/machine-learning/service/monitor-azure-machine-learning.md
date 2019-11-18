@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0a28292ac95dca7b46d9f82c32b9881c18d74b87
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582892"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123545"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Figyelés Azure Machine Learning
 
@@ -38,7 +38,7 @@ A Azure Monitorhez kapcsolódó költségek megismeréséhez tekintse meg a [has
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Adatok figyelése Azure Machine Learningról
 
-A Azure Machine Learning ugyanolyan típusú figyelési adatokat gyűjt, mint a többi Azure-erőforrást, amelyeket az [Azure-erőforrások adatainak monitorozása](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)című témakörben talál. A Azure Machine Learning által létrehozott naplók és metrikák részletes ismertetését lásd: [Azure Machine learning monitorozási adatok referenciája](monitor-resource-reference.md) .
+A Azure Machine Learning ugyanolyan típusú figyelési adatokat gyűjt, mint a többi Azure-erőforrást, amelyeket az [Azure-erőforrások adatainak monitorozása](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)című témakörben talál. A Azure Machine Learning által létrehozott naplók és metrikák részletes ismertetését lásd: [Azure Machine learning monitorozási adatok referenciája](monitor-resource-reference.md) .
 
 ## <a name="analyzing-metric-data"></a>Metrikus adatok elemzése
 
@@ -62,7 +62,7 @@ Azure Machine Learning riasztásait a **Azure monitor** menüből származó **r
 
 A következő táblázat a Azure Machine Learning vonatkozó gyakori és javasolt metrikai szabályokat sorolja fel:
 
-| Riasztás típusa | Állapot | Leírás |
+| A riasztás típusa | Állapot | Leírás |
 |:---|:---|:---|
 | Modell-üzembehelyezés sikertelen | Összesítés típusa: Total, operátor: nagyobb, mint, küszöbérték: 0 | Ha egy vagy több modell telepítése meghiúsult |
 | Kvóta kihasználtsága (%) | Összesítés típusa: átlag, operátor: nagyobb, mint, küszöbérték: 90| Ha a kvóta kihasználtsági aránya nagyobb, mint 90% |
@@ -111,7 +111,7 @@ Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajd
 
 A naplók és a metrikák részletes ismertetését lásd: [Azure Machine learning monitorozási adatok referenciája](monitor-resource-reference.md).
 
-### <a name="sample-queries"></a>Példák a lekérdezésekre
+### <a name="sample-queries"></a>Mintalekérdezések
 
 A következő lekérdezések segítségével figyelheti Azure Machine Learning erőforrásait: 
 

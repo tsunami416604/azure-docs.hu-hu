@@ -1,5 +1,5 @@
 ---
-title: Központi telepítési stratégiák és ajánlott eljárások a teljesítmény optimalizálása érdekében
+title: Üzembe helyezés és teljesítmény optimalizálása
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg az Azure Cognitive Search teljesítményének finomhangolásához és az optimális méretezés konfigurálásához szükséges technikákat és ajánlott eljárásokat.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 15557a437732ee15c3c6dada7b2d9fe1d397dc5a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4ff6779843546bd41423c140ef40de6a7e24b026
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793423"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113249"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-cognitive-search"></a>Üzembe helyezési stratégiák és ajánlott eljárások az Azure-Cognitive Search teljesítményének optimalizálásához
 
@@ -94,7 +94,7 @@ Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehet
 
    ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a díjszabási csomagokról és a szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [szolgáltatási korlátok az Azure Cognitive Search-ban](search-limits-quotas-capacity.md)című témakört.
 
 A particionálási és a replika-kombinációkkal kapcsolatos további információkért látogasson el a [kapacitás megtervezésére](search-capacity-planning.md) .

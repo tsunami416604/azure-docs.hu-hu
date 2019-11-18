@@ -1,45 +1,46 @@
 ---
-title: 'Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával'
+title: A beszédfelismerés céljainak felismerése a Speech SDK használatávalC#
 titleSuffix: Azure Cognitive Services
-description: Ezen oktatóanyag segítségével megtanulhatja, hogyan ismerheti fel a szándékot beszédből a C#-hez készült Speech SDK használatával.
+description: Ebből az útmutatóból megtudhatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech C#SDK használatával.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464629"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110155"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával
+# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>A beszédfelismerés céljainak felismerése a Speech SDK-valC#
 
 A Cognitive Services [SPEECH SDK](speech-sdk.md) a [Language Understanding szolgáltatással (Luis)](https://www.luis.ai/home) integrálódik a **szándék-felismerés**biztosításához. A szándék az, amit a felhasználó tenni szeretne: például repülőutat foglalni, megnézni az időjárást vagy telefonhívást indítani. A felhasználó bármilyen kifejezést használhat, amely számára természetes. A Machine learning használatával a LUIS leképezi a felhasználói kéréseket a definiált szándékokra.
 
 > [!NOTE]
 > A LUIS alkalmazás meghatározza a felismerni kívánt szándékokat és entitásokat. Az alkalmazás elkülönül a Speech Service szolgáltatást használó C#-alkalmazástól. Ebben a cikkben az „app” program kifejezés a LUIS-alkalmazásra, az „alkalmazás” kifejezés pedig a C#-kódra utal.
 
-Ebben az oktatóanyagban a Speech SDK használatával fejleszthet ki egy olyan C#-konzolalkalmazást, amely az eszköz mikrofonján keresztül a felhasználó által kimondott szöveg alapján meghatározza a szándékot. A következőket fogja megtanulni:
+Ebben az útmutatóban a Speech SDK-val fejlesztünk egy C# olyan konzolszoftver-alkalmazást, amely az eszköz mikrofonján keresztül a felhasználói hosszúságú kimondott szöveg származó szándékot eredményez. A következőket fogja megtanulni:
 
 > [!div class="checklist"]
-> * A Speech SDK NuGet-csomagra vonatkozó Visual Studio-projekt létrehozása
-> * Beszédfelismerési konfiguráció létrehozása és a szándék felismerésének beolvasása
-> * A LUIS-app modelljének lekérése és a kívánt szándékok hozzáadása
-> * A beszédfelismerés nyelvének megadása
-> * Beszédfelismerés végrehajtása fájlból
-> * Aszinkron, eseményvezérelt folyamatos felismerés használata
+>
+> - A Speech SDK NuGet-csomagra vonatkozó Visual Studio-projekt létrehozása
+> - Beszédfelismerési konfiguráció létrehozása és a szándék felismerésének beolvasása
+> - A LUIS-app modelljének lekérése és a kívánt szándékok hozzáadása
+> - A beszédfelismerés nyelvének megadása
+> - Beszédfelismerés végrehajtása fájlból
+> - Aszinkron, eseményvezérelt folyamatos felismerés használata
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
+Az útmutató elkezdése előtt győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
-* Egy LUIS-fiók. Létrehozhat egy ingyenes fiókot a [LUIS portal](https://www.luis.ai/home) segítségével.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (bármely kiadás).
+- Egy LUIS-fiók. Létrehozhat egy ingyenes fiókot a [LUIS portal](https://www.luis.ai/home) segítségével.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (bármely kiadás).
 
 ## <a name="luis-and-speech"></a>A LUIS és a beszéd
 
@@ -47,15 +48,15 @@ A LUIS integrálva van a Speech Services szolgáltatással, hogy felismerje a be
 
 A LUIS háromféle kulcsot használ:
 
-|Kulcs típusa|Cél|
-|--------|-------|
-|Tartalomkészítés|Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását|
-|Kezdő|Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával|
-|Végpont |Engedélyezi a hozzáférést egy adott LUIS-alkalmazáshoz|
+| Kulcs típusa  | Cél                                               |
+| --------- | ----------------------------------------------------- |
+| Tartalomkészítés | Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását |
+| Kezdő   | Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával   |
+| Végpont  | Engedélyezi a hozzáférést egy adott LUIS-alkalmazáshoz            |
 
-Ebben az oktatóanyagban a végponti kulcs típusát kell megadnia. Az oktatóanyag a példa Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használata](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) című rövid útmutatóban hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
+Ebben az útmutatóban a végponti kulcs típusát kell megadnia. Ez az útmutató a példaként szolgáló Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használatának](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) első lépésein hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
 
-LUIS-alkalmazás létrehozásakor a LUIS automatikusan létrehoz egy alapszintű kulcsot, amellyel szöveges lekérdezések használatával tesztelheti az alkalmazást. Ez a kulcs nem engedélyezi a beszédfelismerési szolgáltatások integrációját, és nem fog működni ezzel az Oktatóanyaggal. Hozzon létre egy LUIS-erőforrást az Azure irányítópulton, és rendelje hozzá a LUIS alkalmazáshoz. Az oktatóanyaghoz használhatja az ingyenes előfizetési szintet.
+LUIS-alkalmazás létrehozásakor a LUIS automatikusan létrehoz egy alapszintű kulcsot, amellyel szöveges lekérdezések használatával tesztelheti az alkalmazást. Ez a kulcs nem engedélyezi a beszédfelismerési szolgáltatások integrációját, és nem fog működni ezzel az útmutatóval. Hozzon létre egy LUIS-erőforrást az Azure irányítópulton, és rendelje hozzá a LUIS alkalmazáshoz. Ehhez az útmutatóhoz használhatja az ingyenes előfizetési szintet.
 
 Miután létrehozta a LUIS-erőforrást az Azure-irányítópulton, jelentkezzen be a [Luis portálra](https://www.luis.ai/home), válassza ki az alkalmazást a **saját alkalmazások** lapon, majd váltson az alkalmazás **kezelése** lapra. Végül válassza a **kulcsok és végpontok** lehetőséget az oldalsávon.
 
@@ -66,11 +67,11 @@ A **kulcsok és végpont beállításai** lapon:
 1. Görgessen le az **erőforrások és kulcsok** szakaszhoz, majd válassza az **erőforrás kiosztása**elemet.
 1. A **kulcs kiosztása az alkalmazáshoz** párbeszédpanelen végezze el a következő módosításokat:
 
-   * A **bérlő**területen válassza a **Microsoft**lehetőséget.
-   * Az **előfizetés neve**területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
-   * A **kulcs**alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
+   - A **bérlő**területen válassza a **Microsoft**lehetőséget.
+   - Az **előfizetés neve**területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
+   - A **kulcs**alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
 
-   Az új előfizetés hamarosan megjelenik a lap alján található táblázatban. 
+   Az új előfizetés hamarosan megjelenik a lap alján található táblázatban.
 
 1. Kattintson a kulcs melletti ikonra a vágólapra másoláshoz. (Bármelyik kulcsot használhatja.)
 
@@ -112,13 +113,13 @@ Ezután adja hozzá a projekthez egy kódot.
 
 1. A metódusban szereplő helyőrzőket cserélje le a LUIS előfizetési kulcsára, a régióra és az app azonosítójára az alább látható módon.
 
-   |Helyőrző|Csere erre|
-   |-----------|------------|
-   |`YourLanguageUnderstandingSubscriptionKey`|A LUIS végpontkulcsa. Ezt az elemet újra be kell szereznie az Azure-irányítópultról, nem pedig "kezdő kulcs". A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **kulcsai és végpontok** lapján (a **kezelés**alatt).|
-   |`YourLanguageUnderstandingServiceRegion`|Annak a régiónak a rövid azonosítója, amelyben a LUIS-előfizetése van, például az USA nyugati régiója esetén `westus`. Lásd: [Régiók](regions.md).|
-   |`YourLanguageUnderstandingAppId`|A LUIS-app azonosítója. A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **Beállítások** lapján.|
+   | Helyőrző | Csere erre |
+   | ----------- | ------------ |
+   | `YourLanguageUnderstandingSubscriptionKey` | A LUIS végpontkulcsa. Ezt az elemet újra be kell szereznie az Azure-irányítópultról, nem pedig "kezdő kulcs". A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **kulcsai és végpontok** lapján (a **kezelés**alatt). |
+   | `YourLanguageUnderstandingServiceRegion` | Annak a régiónak a rövid azonosítója, amelyben a LUIS-előfizetése van, például az USA nyugati régiója esetén `westus`. Lásd: [Régiók](regions.md). |
+   | `YourLanguageUnderstandingAppId` | A LUIS-app azonosítója. A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **Beállítások** lapján. |
 
-Ezekkel a módosításokkal létrehozhatja (**vezérlő + SHIFT + B**) és futtathatja (**F5**) az oktatóanyag-alkalmazást. Ha a rendszer kéri, próbálja meg "a fények kikapcsolása" kifejezést a számítógép mikrofonjában. Az alkalmazás megjeleníti az eredményt a konzol ablakban.
+Ezekkel a módosításokkal létrehozhatja az alkalmazást (**vezérlő + SHIFT + B**) és futtathatja (**F5**) az alkalmazást. Ha a rendszer kéri, próbálja meg "a fények kikapcsolása" kifejezést a számítógép mikrofonjában. Az alkalmazás megjeleníti az eredményt a konzol ablakban.
 
 A kód ismertetése a következő szakaszokban szerepel.
 
@@ -137,10 +138,10 @@ Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppI
 
 A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak, és a neve `model`), a szándék neve és a szándék azonosítója. Az azonosító és a név közötti különbség a következő.
 
-|`AddIntent()`&nbsp;argumentum|Cél|
-|--------|-------|
-|intentName|A szándék LUIS-appban meghatározott neve. Ennek az értéknek pontosan egyeznie kell a LUIS-cél nevével.|
-|intentID|A Speech SDK által felismert szándékhoz rendelt azonosító. Ez az érték lehet bármilyen hasonló; nem kell megegyeznie a cél nevével a LUIS alkalmazásban meghatározottak szerint. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót.|
+| `AddIntent()`&nbsp;argumentum | Cél |
+| --------------------------- | ------- |
+| `intentName` | A szándék LUIS-appban meghatározott neve. Ennek az értéknek pontosan egyeznie kell a LUIS-cél nevével. |
+| `intentID` | A Speech SDK által felismert szándékhoz rendelt azonosító. Ez az érték lehet bármilyen hasonló; nem kell megegyeznie a cél nevével a LUIS alkalmazásban meghatározottak szerint. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót. |
 
 A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `AddIntent` metódus három `RecognizeIntentAsync()` sorát erre a kódra.
 
@@ -155,24 +156,24 @@ Az egyéni leképezések hozzáadása helyett a `AddAllIntents` metódussal is h
 
 A felismerő létrehozása és a szándékok hozzáadása után elkezdődhet a felismerés. A Speech SDK az egyszeri és folyamatos felismerést is támogatja.
 
-|Felismerési mód|Meghívandó metódusok|Eredmény|
-|----------------|-----------------|---------|
-|Egyszeri|`RecognizeOnceAsync()`|Egyszer kimondott szöveg alapján visszaadja a felismert szándékot (ha van).|
-|Folyamatos|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Több hosszúságú kimondott szöveg felismerése; eseményeket bocsát ki (például `IntermediateResultReceived`), ha az eredmények elérhetők.|
+| Felismerési mód | Meghívandó metódusok | Eredmény |
+| ---------------- | --------------- | ------ |
+| Egyszeri | `RecognizeOnceAsync()` | Egyszer kimondott szöveg alapján visszaadja a felismert szándékot (ha van). |
+| Folyamatos | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Több hosszúságú kimondott szöveg felismerése; eseményeket bocsát ki (például `IntermediateResultReceived`), ha az eredmények elérhetők. |
 
-Az oktatóalkalmazás az egyszeri módot használja, ezért a felismerés megkezdéséhez a `RecognizeOnceAsync()` metódust alkalmazza. Az eredmény egy `IntentRecognitionResult` objektum, amely a felismert szándékra vonatkozó információkat tartalmaz. A LUIS JSON-választ kinyerheti a következő kifejezés használatával:
+Az alkalmazás egylépéses módot használ, így meghívja a `RecognizeOnceAsync()` az elismerés megkezdéséhez. Az eredmény egy `IntentRecognitionResult` objektum, amely a felismert szándékra vonatkozó információkat tartalmaz. A LUIS JSON-választ kinyerheti a következő kifejezés használatával:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-Az oktatóanyag-alkalmazás nem elemzi a JSON-eredményt. Csak a JSON-szöveget jeleníti meg a konzol ablakban.
+Az alkalmazás nem elemzi a JSON-eredményt. Csak a JSON-szöveget jeleníti meg a konzol ablakban.
 
 ![Egyetlen LUIS-felismerés eredményei](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>Adja meg a felismerés nyelvét
 
-A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például német nyelven végezhet szándékfelismerést, ha a felismerő létrehozása előtt az oktatóalkalmazáshoz hozzáadja a `config.SpeechRecognitionLanguage = "de-de";` argumentumot. További információ: [támogatott nyelvek](language-support.md#speech-to-text).
+A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például vegyen fel `config.SpeechRecognitionLanguage = "de-de";`t az alkalmazásba, mielőtt létrehozza a felismerést a német nyelvű leképezések felismeréséhez. További információ: [támogatott nyelvek](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Folyamatos felismerés fájlból
 
@@ -196,4 +197,4 @@ Keresse meg a kódot ebből a cikkből a **Samples/csharp/sharedcontent/Console*
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Beszéd felismerése](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Gyors útmutató: beszéd felismerése mikrofonból](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

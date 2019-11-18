@@ -1,7 +1,7 @@
 ---
 title: Lekérdezések küldése a Bing News Search API
 titleSuffix: Azure Cognitive Services
-description: További információ a keresési kérelmeknek a Bing News Search API való elküldéséről.
+description: A Bing News Search API lehetővé teszi a releváns Hírek keresését a weben. Ebből a cikkből megtudhatja, hogyan küldhet keresési lekérdezéseket az API-nak.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: cfa9cd23e19788d847fd9177d70ee2af89c69272
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6be3d95c06862529881be2cbf2e4d74b44908e67
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423825"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111519"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Lekérdezések küldése a Bing News Search API
 

@@ -1,5 +1,5 @@
 ---
-title: A szolgáltatás újdonságai
+title: Új funkció bejelentései
 titleSuffix: Azure Cognitive Search
 description: Új és továbbfejlesztett funkciókkal kapcsolatos bejelentések, beleértve a Azure Search az Azure Cognitive Search-ba történő átnevezését.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e81eaf232e3234ac4de0cfb7412e23709f0c0b99
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: 26f6c651b78099eff80b6af57d2047cc8696f4c2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549096"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112195"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -31,16 +31,18 @@ Az API-verziók, a Nuget-csomagok, a névterek és a végpontok változatlanok. 
 
 2019. november 4. – Ignite konferencia
 
-+ Az előzetes verzióban elérhető [növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md)lehetővé teszi, hogy csak azokat a lépéseket dolgozza fel vagy dolgozza fel újra, amelyek a dúsítási folyamat módosításakor feltétlenül szükségesek. Ez különösen akkor hasznos, ha olyan képtartalommal rendelkezik, amelyet korábban elemezett. A költséges elemzés kimenete tárolva lesz, és a rendszer a további indexelés vagy bővítés alapjául szolgál.
++ A [növekményes indexelés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) lehetővé teszi, hogy csak azokat a lépéseket dolgozza fel vagy dolgozza fel újra, amelyek a dúsítási folyamat módosításakor feltétlenül szükségesek. Ez különösen akkor hasznos, ha olyan képtartalommal rendelkezik, amelyet korábban elemezett. A költséges elemzés kimenete tárolva lesz, és a rendszer a további indexelés vagy bővítés alapjául szolgál.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->
 
-+ A [dokumentumok kinyerése](cognitive-search-skill-document-extraction.md) az indexelés során használt kognitív képesség, amely lehetővé teszi egy fájl tartalmának kicsomagolását egy készségkészlet belülről. Korábban a készségkészlet végrehajtása előtt csak a csinos dokumentum történt. Ennek a képességnek a hozzáadásával ezt a műveletet a készségkészlet végrehajtásán belül is végrehajthatja.
++ A [dokumentumok kinyerése (előzetes verzió)](cognitive-search-skill-document-extraction.md) az indexelés során használt kognitív képesség, amely lehetővé teszi egy fájl tartalmának kicsomagolását egy készségkészlet belülről. Korábban a készségkészlet végrehajtása előtt csak a csinos dokumentum történt. Ennek a képességnek a hozzáadásával ezt a műveletet a készségkészlet végrehajtásán belül is végrehajthatja.
 
-+ A [szöveg fordítása](cognitive-search-skill-text-translation.md) olyan kognitív képesség, amely a szöveget kiértékelő indexelés során használatos, és minden rekord esetében a megadott nyelvre fordított szöveget adja vissza.
++ A [szöveg fordítása (előzetes verzió)](cognitive-search-skill-text-translation.md) a szöveget kiértékelő indexelés során használt kognitív képesség, amely minden egyes rekord esetében a megadott nyelvre fordított szöveget adja vissza.
 
 + A [Power bi-sablonok](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) a Power bi Desktopban található Tudásbázisban megadhatják a gazdagított tartalmak vizualizációit és elemzését. Ez a sablon az [adatimportálás varázsló](knowledge-store-create-portal.md)segítségével létrehozott Azure Table-kivetítésekhez készült.
+
++ A [Azure Data Lake Storage Gen2 (előzetes verzió)](search-howto-index-azure-data-lake-storage.md), a [Cosmos db Gremlin API (előzetes verzió)](search-howto-index-cosmosdb.md)és a [Cosmos db Cassandra API (előzetes verzió)](search-howto-index-cosmosdb.md) mostantól támogatott az indexelő szolgáltatásban. [Az űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)használatával regisztrálhat. Ha elfogadja az előzetes programot, egy visszaigazoló e-mailt fog kapni.
 
 ## <a name="service-updates"></a>Szolgáltatási hírek
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687042"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129699"
 ---
 # <a name="what-is-azure-app-configuration"></a>Mi az Azure app Configuration?
 
@@ -30,7 +30,7 @@ Az alkalmazás konfigurációja jelenleg nyilvános előzetes verzióban érhet�
 
 A felhőalapú alkalmazások gyakran több virtuális gépen vagy tárolón futnak több régióban, és több külső szolgáltatást használnak. A robusztus és skálázható elosztott alkalmazások létrehozása kihívást jelent.
 
-A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének egyre összetettebb bonyolultságával kapcsolatban. A 12 faktoros alkalmazás például számos jól tesztelt építészeti mintát és ajánlott eljárásokat ismertet a felhőalapú alkalmazásokkal való használathoz. Az útmutató egyik kulcsfontosságú javaslata, hogy elkülönítse a konfigurációt a kódból. Ebben az esetben az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és az alkalmazást a futtató környezetből vagy egy külső forrásból kell beolvasni.
+A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének egyre összetettebb bonyolultságával kapcsolatban. A [tizenkét faktoros alkalmazás](https://12factor.net/) például számos jól tesztelt építészeti mintát és ajánlott eljárásokat ismertet a felhőalapú alkalmazásokkal való használathoz. Az útmutató egyik kulcsfontosságú javaslata, hogy elkülönítse a konfigurációt a kódból. Ebben az esetben az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és az alkalmazást a futtató környezetből vagy egy külső forrásból kell beolvasni.
 
 Habár bármely alkalmazás használhatja az alkalmazások konfigurációját, az alábbi példák az alkalmazás használatának előnyeit hasznosító alkalmazások típusai:
 
@@ -65,7 +65,7 @@ Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáad
 | .NET Core and ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
 | .NET és ASP.NET | A .NET-hez készült app Configuration Builder |
 | Java Spring | Alkalmazás-konfigurációs ügyfél a Spring Cloud-hoz |
-| Továbbiak | Alkalmazás-konfiguráció REST API |
+| Egyéb | Alkalmazás-konfiguráció REST API |
 
 ## <a name="next-steps"></a>További lépések
 

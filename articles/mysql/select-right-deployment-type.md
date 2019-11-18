@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: cab67a9a50d8e9d91897c170ef2cb0884f169c64
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606678"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132433"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -31,14 +31,14 @@ A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
 
 A fenti lehetőségek közötti fő különbségek a következő táblázatban láthatók:
 
-|            | A MySQL-hez készült Azure Database | MySQL Azure-beli virtuális gépeken    |
+|            | Azure Database for MySQL | MySQL Azure-beli virtuális gépeken    |
 |:-------------------|:-----------------------------|:--------------------|
 | Szolgáltatásiszint-szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
 | Operációs rendszer javítása        | Automatikus  | Ügyfelek által felügyelt |
 | MySQL-javítás     | Automatikus  | Ügyfelek által felügyelt |
 | Magas rendelkezésre állás | A magas rendelkezésre állású (HA) modell olyan beépített feladatátvételi mechanizmusokon alapul, amelyekben csomópont szintű megszakítás történik. Ilyen esetekben a szolgáltatás automatikusan létrehoz egy új példányt, és csatolja a tárolót ehhez a példányhoz. | Az ügyfelek a magas rendelkezésre állás kialakítását, tesztelését és karbantartását is elismerik. A képességek lehetnek többek között a feladatátvételi fürtszolgáltatás, a folyamatos replikálás, a naplózás vagy a tranzakciós replikáció.|
 | Zóna redundancia | Jelenleg nem támogatott | Az Azure-beli virtuális gépek különböző rendelkezésre állási zónákban való futtatásra állíthatók be. Helyszíni megoldás esetén az ügyfeleknek saját másodlagos adatközpontot kell létrehozniuk, kezelnie és karbantartani.|
-| Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.| Ügyfelek által felügyelt
+| Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.| Ügyfelek által felügyelt
 | Biztonsági mentés és helyreállítás | A automatikusan létrehozza a [kiszolgáló biztonsági másolatait](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) , és tárolja azokat a helyileg redundáns vagy földrajzilag redundáns, felhasználó által konfigurált tárolóban. A szolgáltatás teljes, differenciális és tranzakciónapló-alapú biztonsági mentéseket tart | Ügyfelek által felügyelt |
 | Adatbázis-műveletek figyelése | A lehetővé teszi az ügyfeleknek, hogy [riasztásokat állítsanak be](https://docs.microsoft.com/azure/mysql/concepts-monitoring) az adatbázis-műveletre, és a küszöbértékek elérésekor járjanak. | Ügyfelek által felügyelt |
 | Fejlett fenyegetésvédelem | [Fejlett veszélyforrások elleni védelmet](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)nyújt. Ez a védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. | Az ügyfeleknek saját maguknak kell elkészíteniük ezt a védelmet.

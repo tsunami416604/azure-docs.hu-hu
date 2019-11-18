@@ -4,15 +4,15 @@ description: A táblázatos 1200-es és újabb adatmodellek által támogatott a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572960"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120015"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -35,7 +35,7 @@ A Visual Studióban az adatgyűjtés vagy importálás varázslóban látható a
 <a name="tab1400a">1</a> – táblázatos 1400 és újabb modellek.   
 <a name="azsqlmanaged">2</a> – Azure SQL Database felügyelt példány támogatott. Mivel a felügyelt példány egy magánhálózati IP-címmel rendelkező Azure VNet fut, a példányon engedélyezni kell a nyilvános végpontot. Ha nincs engedélyezve, helyszíni adatátjáró szükséges.    
 <a name="databricks">3</a> – a Spark-összekötőt használó Azure Databricks jelenleg nem támogatott.   
-<a name="gen2">4</a> – ADLS Gen2 jelenleg nem támogatott.
+<a name="gen2">4</a> – ADLS Gen2 összekötő jelenleg nem támogatott, azonban blob Storage-összekötő ADLS Gen2 adatforrással is használható.
 
 
 **Szolgáltató**   
@@ -43,14 +43,14 @@ Az Azure-adatforrásokhoz csatlakozó memóriában tárolt és DirectQuery model
 
 ## <a name="other-data-sources"></a>Egyéb adatforrások
 
-A helyszíni adatforrásokhoz és az Azure AS-kiszolgálóhoz való csatlakozáshoz helyszíni átjáró szükséges. Átjáró használata esetén 64 bites szolgáltatók szükségesek.
+Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatlakozáshoz helyszíni átjáró szükséges. Átjáró használata esetén 64 bites szolgáltatók szükségesek.
 
 ### <a name="in-memory-and-directquery"></a>Memóriában tárolt és DirectQuery
 
 |Adatforrás | Memóriában lévő szolgáltató | DirectQuery-szolgáltató |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11,0, Microsoft OLE DB szolgáltató a SQL Serverhoz, .NET-keretrendszer adatszolgáltatója SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
-| Adattárház SQL Server |SQL Server Native Client 11,0, Microsoft OLE DB szolgáltató a SQL Serverhoz, .NET-keretrendszer adatszolgáltatója SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
+| SQL Server |Microsoft OLE DB illesztőprogram a SQL Server MSOLEDBSQL (ajánlott), SQL Server Native Client 11,0, .NET-keretrendszer adatszolgáltatója a SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
+| Az SQL Server Data Warehouse |Microsoft OLE DB illesztőprogram a SQL Server MSOLEDBSQL (ajánlott), SQL Server Native Client 11,0, .NET-keretrendszer adatszolgáltatója a SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
 | Oracle | OLE DB-szolgáltató Oracle-hez, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez |
 | Teradata |OLE DB szolgáltató a Teradata-hez, Teradata-adatszolgáltató a .NET-hez |Teradata-adatszolgáltató a .NET-hez |
 | | | |

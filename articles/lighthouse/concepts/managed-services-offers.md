@@ -1,18 +1,14 @@
 ---
 title: Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 description: A felügyelt szolgáltatások lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat adjanak az ügyfeleknek az Azure piactéren.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/19/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0f1ba749a5477f0c006e6666b841e82f4eeb193f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155258"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131872"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 
@@ -30,7 +26,7 @@ A felügyelt szolgáltatások minden ajánlata egy vagy több csomagot tartalmaz
 
 Ha korlátozni szeretné az ajánlatát bizonyos ügyfeleknek, közzétehet egy privát csomagot. Ha így tesz, a terv csak az Ön által megadott előfizetés-azonosítók esetében vásárolható meg. További információ: [privát ajánlatok](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-A nyilvános csomagok lehetővé teszik a szolgáltatások új ügyfelekhez való előléptetését. Ezek általában megfelelőbbek, ha csak korlátozott hozzáférésre van szüksége az ügyfél bérlője számára. Ha kapcsolatot létesített egy ügyféllel, ha úgy dönt, hogy további hozzáférést biztosítanak a szervezetnek, akkor ezt akár egy új privát csomag közzétételével is megteheti, akár az [Azure-erőforrás használatával való további hozzáférés érdekében. Manager-sablonok](../how-to/onboard-customer.md).
+A nyilvános csomagok lehetővé teszik a szolgáltatások új ügyfelekhez való előléptetését. Ezek általában megfelelőbbek, ha csak korlátozott hozzáférésre van szüksége az ügyfél bérlője számára. Ha kapcsolatot létesített egy ügyféllel, ha úgy dönt, hogy további hozzáférést biztosítanak a szervezetnek, akkor ezt akár egy új privát csomag közzétételével is megteheti, akár [Azure Resource Manager-sablonok használatával történő további hozzáféréshez](../how-to/onboard-customer.md).
 
 Ne feledje, hogy a csomag nyilvánosként való közzététele után nem módosítható magánjellegűre. Emellett nem korlátozhatja a nyilvános csomag elérhetőségét bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfelet is, de a csomag teljes értékesítését megszüntetheti, ha ezt választja.
 

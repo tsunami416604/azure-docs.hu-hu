@@ -1,48 +1,56 @@
 ---
-title: Fejlesztői ajánlott eljárások – erőforrás-kezelés az Azure Kubernetes-szolgáltatások (AKS)
-description: Az alkalmazás fejlesztői ajánlott eljárások az erőforrás-kezelés az Azure Kubernetes Service (AKS)
+title: Fejlesztői ajánlott eljárások – erőforrás-kezelés az Azure Kubernetes Servicesben (ak)
+description: Ismerje meg az Azure Kubernetes Service (ak) erőforrás-kezelésével kapcsolatos ajánlott eljárásokat az alkalmazások fejlesztéséhez
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073951"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107640"
 ---
-# <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői az Azure Kubernetes Service (AKS)-erőforrások kezeléséhez
+# <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
-Fejlesztés és az Azure Kubernetes Service (AKS) alkalmazásokat futtathat, nincsenek néhány kulcsterületeket kell figyelembe venni. Az alkalmazások központi telepítésének kezelése negatív hatással a szolgáltatás Ön által megadott végfelhasználói élménye. Segítséget nyújtanak a sikeres, tartsa szem előtt ajánlott eljárásokat is követheti fejlesztésére és alkalmazások futtatásához az aks-ben.
+Az Azure Kubernetes szolgáltatásban (ak) futó alkalmazások fejlesztése és futtatása során néhány fontos területet figyelembe kell venni. Az alkalmazások központi telepítésének kezelése negatív hatással lehet az Ön által biztosított szolgáltatások végfelhasználói élményére. A sikeres működés érdekében érdemes figyelembe venni néhány ajánlott gyakorlatot, amelyet követve az AK-ban végezheti el az alkalmazások fejlesztését és futtatását.
 
-Ajánlott eljárások a cikkben a fürt és a számítási feladatok futtatása az alkalmazás fejlesztői szempontból összpontosít. Felügyeleti ajánlott eljárásokkal kapcsolatos további információkért lásd: [operátor ajánlott eljárások az elkülönítési és erőforrás-kezelést az Azure Kubernetes Service (AKS)-fürt][operator-best-practices-isolation]. Ez a cikk bemutatja:
+Ez az ajánlott eljárás a fürt és a számítási feladatok alkalmazások fejlesztői perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation]. Ez a cikk bemutatja:
 
 > [!div class="checklist"]
-> * Mik a pod erőforrás-kérelmek és korlátai
-> * Fejlesztés és üzembe helyezés alkalmazások fejlesztői, szóközök és a Visual Studio Code módjai
-> * Hogyan használható a `kube-advisor` eszközzel ellenőrizze az üzemelő példányok problémáival kapcsolatban
+> * Mik a pod-erőforrásokra vonatkozó kérelmek és korlátozások
+> * Alkalmazások fejlesztésének és üzembe helyezésének módjai a fejlesztői és a Visual Studio Code használatával
+> * Az `kube-advisor` eszköz használata az üzemelő példányokkal kapcsolatos problémák kereséséhez
 
-## <a name="define-pod-resource-requests-and-limits"></a>Adja meg a pod erőforrás-kérelmek és korlátozások
+## <a name="define-pod-resource-requests-and-limits"></a>Pod-erőforrásokra vonatkozó kérelmek és korlátok meghatározása
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – állítsa be a pod kérelmek és a YAML jegyzékek összes podok vonatkozó korlátozások. Ha az AKS-fürt használ *erőforráskvóták*, az üzembe helyezés kell utasítani, ha nem ad meg ezeket az értékeket.
+**Ajánlott eljárási útmutató** – a pod-kérelmek és-korlátozások beállítása a YAML-jegyzékekben található összes hüvelyre. Ha az AK-fürt *erőforrás-kvótákat*használ, előfordulhat, hogy a rendszer elutasítja a telepítést, ha nem adja meg ezeket az értékeket.
 
-Elsődleges lehet kezelni a számítási erőforrások belül egy AKS-fürtöt, hogy pod kérelmek és korlátait. Ezeket a kérelmeket és korlátai lehetővé teszik a Kubernetes-ütemező tudja, Mik a számítási erőforrásokat, hozzá kell rendelni egy pod.
+A számítási erőforrások egy AK-fürtön belüli kezelésének elsődleges módja a pod-kérelmek és-korlátok használata. Ezek a kérelmek és korlátok lehetővé teszik, hogy a Kubernetes Scheduler tudja, milyen számítási erőforrásokat kell hozzárendelni a pod-hoz.
 
-* **Kérelmek pod** Processzor- és a pod igénylő időkereten meghatározása. Ezek a kérelmek kell lennie a pod kell adnia a teljesítmény elfogadható szintű számítási erőforrások mennyisége.
-    * Ha a Kubernetes-ütemező próbál podot helyezze egy csomóponton, a pod kérelmek segítségével meghatározhatja, melyik csomópont van a szükséges erőforrások ténylegesen rendelkezésre.
-    * Állítsa be ezeket a kérelmeket, győződjön meg arról, hogy a teljesítmény elfogadható szintű fenntartásához szükséges kevesebb erőforrást nem ad meg, hogy az alkalmazás teljesítményének figyelése.
-* **A pod korlátok** Processzor és a egy pod használó memória maximális mennyisége is. Ezek a korlátok megakadályozhatja az egy vagy két sorozatos podok túl sok Processzor- és a csomópont a felvételt. Ebben a forgatókönyvben csökkentené a csomópont és az azokon futó egyéb podok teljesítményét.
-    * Nem állít be egy pod korlát magasabb, mint a csomópontok is támogatja. AKS-csomópontok foglal le Processzor- és a Kubernetes alapvető összetevők időkereten. Az alkalmazás próbálja meg más podok, hogy sikeresen futtatni a csomóponton túl sok erőforrást igényelnek.
-    * Újra különböző időpontokban, a nap vagy hét folyamán az alkalmazás teljesítményének figyeléséhez. Határozza meg a megugrása esetén, és az alkalmazások szükségleteihez szükséges erőforrásokat a pod-korlátozások igazítása.
+* A **Pod CPU-/memória-kérések** határozzák meg a processzor és a memória minimálisan szükséges mennyiségét.
+    * Amikor a Kubernetes Scheduler egy Pod-t próbál elhelyezni egy csomóponton, a pod-kérelmek alapján megállapítható, hogy melyik csomópont rendelkezik elegendő erőforrással az ütemezéshez.
+    * Ha nem állít be egy Pod-kérést, a rendszer alapértelmezés szerint a megadott korlátot állítja be.
+    * Nagyon fontos az alkalmazás teljesítményének figyelése a kérések módosításához. Ha nem áll rendelkezésre elegendő kérelem, az alkalmazás csökkentett teljesítményt kaphat a csomópont ütemezése miatt. Ha a kérelmeket túlbecsülik, előfordulhat, hogy az alkalmazás az ütemezettnél nagyobb nehézségekbe ütközik.
+* A **Pod CPU/memória korlátja** a hüvely által használható CPU és memória maximális mennyisége. Ezek a korlátok segítenek meghatározni, hogy mely hüvelyek legyenek leállítva a csomópont instabilitása miatt, mert nincs elegendő erőforrás. A megfelelő korlátok megadása nélkül a hüvelyek leállnak, amíg az erőforrás-nyomást fel nem emelik.
+    * A pod-korlátok segítenek meghatározni, hogy egy Pod elvesztette-e az erőforrás-felhasználást. Ha túllépi a korlátot, a pod prioritást élvez a csomópont állapotának fenntartása és a csomópontot megosztó hüvelyek hatásának csökkentése érdekében.
+    * Ha nem állít be egy Pod-korlátot, a rendszer az adott csomópont legmagasabb rendelkezésre álló értékére állítja be.
+    * Ne állítson be olyan Pod-korlátot, amelyik magasabb, mint a csomópontok támogatása. Az egyes AK-csomópontok az alapvető Kubernetes-összetevők számára fenntartott CPU és memória mennyiségét foglalják magukban. Előfordulhat, hogy az alkalmazás túl sok erőforrást próbál használni a csomóponton más hüvelyek sikeres futtatásához.
+    * A nap vagy a hét folyamán a különböző időpontokban is figyelemmel kísérheti az alkalmazás teljesítményét. Határozza meg, hogy a maximális igény mikor legyen, és a hüvely korlátainak igazítása az alkalmazás maximális igényeinek kielégítéséhez szükséges erőforrásokhoz.
 
-A pod megadott ajánlott ezeket a kérelmeket és korlátokat meghatározásához. Ha nem adja meg ezeket az értékeket, a Kubernetes-ütemező nem ismeri, milyen erőforrásokat van szükség. Az ütemező is ütemezheti a pod nélkül alkalmazás elfogadható teljesítményt biztosítanak elegendő erőforrás a csomóponton. A fürt rendszergazdája állíthatja be *erőforráskvóták* erőforrás-kérelmek és korlátait, szükséges egy névtérhez. További információkért lásd: [erőforráskvóták az AKS-fürtök][resource-quotas].
+A pod-specifikációkban **ajánlott eljárás, és nagyon fontos** , hogy ezeket a kérelmeket és korlátokat a fenti információk alapján határozza meg. Ha nem adja meg ezeket az értékeket, a Kubernetes Scheduler nem tudja figyelembe venni azokat az erőforrásokat, amelyekre az alkalmazásoknak szüksége van az ütemezési döntések támogatásához.
 
-A CPU-kérelem és a korlát meghatározása során a program méri a CPU-egységekben. *1.0-s* CPU-adatbázisnak felel meg egy alapul szolgáló virtuális CPU-magot a csomóponton. Gpu-k azonos mérésére szolgál. Is meghatározhatja a tört kérést vagy korlátot, általában millicpu. Ha például *100m* van *0,1* az alapul szolgáló virtuális Processzormagok.
+Ha az ütemező egy olyan csomóponton helyez el egy Pod-t, amelynek nincs elegendő erőforrása, az alkalmazás teljesítménye csökken. Erősen ajánlott a fürt rendszergazdái számára olyan *erőforrás-kvóták* beállítása olyan névtéren, amelyekhez erőforrás-kérelmeket és korlátozásokat kell beállítani. További információ: erőforrás- [kvóták az AK-fürtökön][resource-quotas].
 
-Az alábbi egyszerű példában az NGINX podot, a pod kérelmek *100m* processzoridőt, és *128 Buszpéldány* memória. A pod az erőforrás korlátai vannak beállítva, hogy *250 millió* CPU és *256 Buszpéldány* memória:
+CPU-kérelem vagy-korlát meghatározásakor a rendszer a CPU-egységekben méri az értéket. 
+* *1,0* a processzor egy mögöttes virtuális CPU-mag felel meg a csomóponton. 
+* A GPU-k ugyanazt a mérést használják.
+* Megadhatja a millicores-ben mért törteket. Például *100m* egy mögöttes vCPU-mag *0,1* .
+
+A következő, az egyetlen NGINX Pod-beli alapszintű példában a pod *100* millió CPU-időt és *128Mi* igényel. A pod erőforrás-korlátai a *250m* CPU és a *256Mi* memória beállítására vannak beállítva:
 
 ```yaml
 kind: Pod
@@ -62,46 +70,46 @@ spec:
         memory: 256Mi
 ```
 
-Erőforrás-mérés és -hozzárendelések kapcsolatos további információkért lásd: [kezelése a számítási erőforrásokat tárolókhoz][k8s-resource-limits].
+További információ az erőforrás-mérésekről és a hozzárendelésekről: [számítási erőforrások kezelése a tárolók számára][k8s-resource-limits].
 
-## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Fejlesztés és hibakeresés alkalmazásokat AKS-fürt
+## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Alkalmazások fejlesztése és hibakeresése egy AK-fürtön
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** -fejlesztői csapatok be kell-e üzembe helyezése és hibakeresése egy AKS-fürt fejlesztési szóközzel ellen. Ez a fejlesztési modell gondoskodik arról, hogy szerepköralapú hozzáférés-vezérlők, hálózati és tárolási igényeinek megfelelően vannak megvalósítva az alkalmazás éles üzembe helyezés előtt.
+Ajánlott **eljárási útmutató** – a fejlesztési csapatoknak egy AK-fürtön kell üzembe helyezniük és hibakeresést végezniük a dev Spaces használatával. Ez a fejlesztői modell gondoskodik arról, hogy a szerepköralapú hozzáférés-vezérlés, a hálózat vagy a tárolási igények az alkalmazás éles környezetben történő üzembe helyezése előtt legyenek implementálva.
 
-Az Azure fejlesztési szóközöket fejlesztése, hibakeresése, és tesztelheti az alkalmazásokat közvetlenül az AKS-fürt szemben. A fejlesztők a csapaton belüli együttműködve összeállításához és teszteléséhez alkalmazás életciklusa során. Továbbra is a meglévő eszközeivel, például a Visual Studio vagy Visual Studio Code. Egy bővítmény futtatása és hibáik keresése az AKS-fürtben az alkalmazás lehetőséget biztosít a fejlesztői tárhelyek van telepítve:
+Az Azure dev Spaces révén közvetlenül egy AK-fürtön fejlesztheti, hibakeresést és tesztelheti az alkalmazásokat. A csapaton belüli fejlesztők együttműködve készítenek és tesztelnek az alkalmazások életciklusa során. Továbbra is használhatja a meglévő eszközöket, például a Visual studiót vagy a Visual Studio Code-ot. A dev Spaces szolgáltatáshoz olyan bővítmény van telepítve, amely lehetőséget ad az alkalmazás futtatására és hibakeresésére egy AK-fürtben:
 
-![Fejlesztői, szóközök egy AKS-fürtöt az alkalmazások hibakeresése](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+![Alkalmazások hibakeresése egy AK-fürtön a dev Spaces szolgáltatással](media/developer-best-practices-resource-management/dev-spaces-debug.png)
 
-Az integrált fejlesztési és tesztelési folyamat fejlesztői, szóközök csökkenti a szükségességét helyi tesztelési környezetek, például [minikube][minikube]. Ehelyett fejleszti és teszteli az AKS-fürt ellen. Ez a fürt biztonságossá tehetők és elkülönített fürt logikailag el névterek használatát az előző szakaszban leírtaknak megfelelően. Amikor az alkalmazásokat telepítésre készek az éles környezetben, ahogy a fejlesztés minden történt egy valódi AKS-fürtön hajtja magabiztosan telepítheti.
+Ez az integrált fejlesztési és tesztelési folyamat a fejlesztői terekkel csökkenti a helyi tesztelési környezetek, például a [minikube][minikube]szükségességét. Ehelyett egy AK-fürtön fejlesztheti és tesztelheti. A fürt biztonságossá tétele és elkülönítése a fürt logikai elkülönítése érdekében a névterek használatáról szóló előző szakaszban látható. Ha alkalmazásai készen állnak az éles környezetbe való üzembe helyezésre, akkor magabiztosan üzembe helyezheti a fejlesztést egy valós AK-fürtön.
 
-Az Azure fejlesztési tárolóhelyek célja a Linux-podok és -csomópontokon futó alkalmazásokhoz való használatra.
+Az Azure dev Spaces szolgáltatás a Linux-hüvelyeken és-csomópontokon futó alkalmazásokkal való használatra készült.
 
-## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>A Kubernetes esetében a Visual Studio Code-bővítmény használata
+## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>A Visual Studio Code bővítmény használata a Kubernetes
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – akkor jelentkezik, telepítése és használata a VS Code-bővítménnyel, a Kubernetes YAML írásakor. A bővítmény használhatja az integrált központi telepítési megoldás, így ritkán kommunikáló alkalmazástulajdonosok az AKS-fürtöt is.
+**Ajánlott eljárási útmutató** – a Kubernetes vs Code-bővítmény telepítése és használata a YAML-jegyzékek írásakor. Használhatja a bővítményt is az integrált üzembe helyezési megoldáshoz, amely segíthet az alkalmazás tulajdonosai számára, hogy az AK-fürttel nem gyakran kommunikálnak.
 
-A [Visual Studio Code-bővítmény a Kubernetes] [ vscode-kubernetes] segítségével fejleszthet és helyezhet üzembe alkalmazásokat az aks-ben. A bővítmény Kubernetes-erőforrást, és a Helm-diagramok és a sablonok az intellisense biztosít. Keresse meg, üzembe helyezése, és szerkessze a VS Code belül a Kubernetes-erőforrásokat. A bővítmény is egy intellisense ellenőrzést biztosít erőforrás-kérelmek, vagy korlátozza a pod-specifikációk lesznek beállítva:
+A [Kubernetes készült Visual Studio Code-bővítmény][vscode-kubernetes] segíti az alkalmazások fejlesztését és üzembe helyezését az AK-ban. A bővítmény IntelliSense-t biztosít a Kubernetes-erőforrásokhoz, valamint a Helm-diagramokhoz és-sablonokhoz. A VS Code-ból a Kubernetes-erőforrások tallózásával, üzembe helyezésével és szerkesztésével is elvégezhető. A bővítmény egy IntelliSense-vizsgálatot is biztosít az erőforrás-kérelmekhez, illetve korlátokat állít be a pod-specifikációkban:
 
-![A VS Code-bővítmény hiányzik a memóriakorlátok Kubernetes figyelmeztetést](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
+![A VS Code bővítmény a hiányzó Kubernetes kapcsolatos figyelmeztetésekről](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
-## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Rendszeresen kube-advisor az alkalmazások hibáinak keresése
+## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Az Kube-Advisor alkalmazással kapcsolatos problémák rendszeres keresése
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – rendszeresen, a legújabb verzióját futtató `kube-advisor` nyílt forráskódú eszköz, a hibák észleléséhez a fürtben. Ha egy meglévő AKS-fürtre erőforráskvóták alkalmaz, futtassa `kube-advisor` először, amelyek nem rendelkeznek, erőforrás-kérelmek és a meghatározott podok kereséséhez.
+**Ajánlott eljárási útmutató** – rendszeresen futtatja `kube-advisor` nyílt forráskódú eszköz legújabb verzióját a fürttel kapcsolatos problémák észlelése érdekében. Ha erőforrás-kvótákat alkalmaz egy meglévő AK-fürtön, akkor először `kube-advisor` futtassa a következőt: az erőforrás-kérelmeket és korlátozásokat nem tartalmazó hüvelyek megtalálásához.
 
-A [kube-advisor] [ kube-advisor] eszköz egy társított AKS nyílt forráskódú projekt, amely megvizsgálja egy Kubernetes-fürtöt, és jelentést készít a talált problémákat. Egy hasznos, ellenőrizze, hogy azonosítsa a podok nem rendelkező erőforrás-kérelmek és korlátozások érvényben.
+A [Kube-Advisor][kube-advisor] eszköz egy kapcsolódó, AK-beli nyílt forráskódú projekt, amely egy Kubernetes-fürtöt és a megtalált problémákkal kapcsolatos jelentéseket keres. Az egyik hasznos lehetőség az, hogy azonosítsa azokat a hüvelyeket, amelyek nem rendelkeznek erőforrás-kérelmekkel és korlátokkal.
 
-A kube-advisor eszköz jelentései erőforrás kérelem és a hiányzó PodSpecs a Windows-alkalmazások, valamint a Linuxos alkalmazások korlátai, de a kube-advisor eszköz magát egy Linux-pod ütemezése. Egy adott operációs rendszer használatával egy csomópont készleten való futtatáshoz podot ütemezhet egy [csomópont választó] [ k8s-node-selector] a pod-konfigurációban.
+Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, valamint a Windows-alkalmazások és a Linux-alkalmazások PodSpecs hiányzó korlátairól, de a Kube-Advisor eszköznek egy linuxos Pod-on kell ütemeznie. Egy Pod-t úgy ütemezhet, hogy egy adott operációs rendszert futtató csomópont-készleten fusson a pod konfigurációjában a [csomópont-választó][k8s-node-selector] használatával.
 
-Az AKS-fürt, amelyen számos fejlesztői csapatok és alkalmazásokat azok visszakövetését, hogy podok nélkül ezeket az erőforrás-kérelmek, és korlátozza a készlet. Ajánlott eljárásként rendszeresen futtassa `kube-advisor` az AKS-fürtökön.
+A sok fejlesztői csapatot és alkalmazást üzemeltető AK-fürtben nehéz lehet a hüvelyek nyomon követése az erőforrás-kérelmek és a korlátok beállítása nélkül. Ajánlott eljárásként rendszeresen futtasson `kube-advisor` az AK-fürtökön.
 
 ## <a name="next-steps"></a>További lépések
 
-Ajánlott eljárások a cikkben a fürt és a számítási feladatok futtatása a fürt operátor szempontjából összpontosít. Felügyeleti ajánlott eljárásokkal kapcsolatos további információkért lásd: [operátor ajánlott eljárások az elkülönítési és erőforrás-kezelést az Azure Kubernetes Service (AKS)-fürt][operator-best-practices-isolation].
+Ez az ajánlott eljárási cikk a fürt és a számítási feladatok fürtözési perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation].
 
-Néhány ajánlott eljárások végrehajtásához a következő cikkekben talál:
+Az ajánlott eljárások némelyikének megvalósításához tekintse meg a következő cikkeket:
 
-* [Fejlesztés a fejlesztési tárolóhelyek használatával][dev-spaces]
-* [Az advisor-kube kapcsolatos problémák ellenőrzése][aks-kubeadvisor]
+* [Fejlesztés a fejlesztői Spaces-szel][dev-spaces]
+* [Az Kube-Advisor problémáinak keresése][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/

@@ -2,16 +2,15 @@
 title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: jgao
-ms.openlocfilehash: 84540543f2b809520ab56df5b3e098018fa0d76e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 117215e7c41ad7f354c9e76f764e9af1f50b74c1
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74015872"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149231"
 ---
 # <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Resource Manager-sablonok üzembe helyezése – mi a művelet (előzetes verzió)
 
@@ -115,7 +114,7 @@ Mivel nincs megadva erőforrás a sablonban, és a telepítési mód a Befejezé
 
 Fontos megjegyezni, hogy mi a teendő, ha nem végez tényleges módosításokat. A Storage-fiók még létezik az erőforráscsoporthoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha az előzetes kiadásban helytelen eredményeket észlel, akkor a következő címen tekintheti meg a problémákat: [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues).
 - A sablonok Azure PowerShell használatával történő üzembe helyezésével kapcsolatban lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure PowerShellokkal](resource-group-template-deploy.md).

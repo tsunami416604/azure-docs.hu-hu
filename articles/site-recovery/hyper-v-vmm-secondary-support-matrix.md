@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 76b34e11bba00105792ac5163c5163184c185e09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039622"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132966"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek másodlagos helyre történő helyreállításának támogatási mátrixa
 
@@ -20,9 +20,6 @@ Ez a cikk összefoglalja, hogy mi támogatott, ha a [Azure site Recovery](site-r
 
 > [!NOTE]
 > Csak másodlagos helyre replikálhat, ha a Hyper-V-gazdagépek kezelése a VMM-felhőkben történik.
-
-> [!WARNING]
-> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](site-to-site-deprecation.md) adatokat.
 
 
 ## <a name="host-servers"></a>Gazdagép-kiszolgálók
@@ -115,7 +112,7 @@ A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
 

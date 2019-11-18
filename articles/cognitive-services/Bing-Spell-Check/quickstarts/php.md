@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel'
+title: 'Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel'
 titleSuffix: Azure Cognitive Services
-description: A Bing Spell Check API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
+description: Ez az egyszerű PHP-alkalmazás egy kérést küld a Bing Spell Check APInak, és a javasolt javítások listáját adja vissza.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 15a550321c28703c7bb4d8155ffeb7791eafedc6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 4437297c99e346209cf1f7a8973ea0f6f81894af
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423486"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110786"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Gyors útmutató: Helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel
 
-Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű Python-alkalmazás kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű PHP-alkalmazás egy kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

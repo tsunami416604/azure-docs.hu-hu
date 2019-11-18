@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94cae186cee099618772f53d2b820e12f20cad64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7069a3c8b266938e974d1b7130a349e0c9b66b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562402"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111829"
 ---
-# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása az Azure térbeli Horgonyokkal, a C++/WinRT és a DirectX szolgáltatásban
+# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure térbeli Horgonyokkal,/WinRT C++és DirectX-ben
 
 Ez a rövid útmutató ismerteti, hogyan hozhat létre HoloLens-alkalmazást az [Azure térbeli](../overview.md) /WinRT és a C++DirectX használatával. Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy HoloLens-alkalmazás fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
 
@@ -42,29 +42,29 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Megnyitás `HoloLens\DirectX\SampleHoloLens.sln` a Visual Studióban.
+Nyissa meg `HoloLens\DirectX\SampleHoloLens.sln` a Visual Studióban.
 
 ## <a name="configure-account-identifier-and-key"></a>Fiók azonosítójának és kulcsának konfigurálása
 
 A következő lépés az alkalmazás konfigurálása a fiók azonosítójának és a fiók kulcsának használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
-Nyissa meg `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`a t.
+Nyissa meg `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a `Set me`t a fiók azonosítójával.
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Az alkalmazás üzembe helyezése a HoloLens
 
-Módosítsa a **megoldás** konfigurációját a kiadásra, módosítsa a megoldási **platformot** **x86**-ra, majd válassza az **eszköz** lehetőséget a telepítési cél beállításai közül.
+Módosítsa a **megoldás konfigurációját** a **kiadásra**, módosítsa a **megoldási platformot** **x86**-ra, majd válassza az **eszköz** lehetőséget a telepítési cél beállításai közül.
 
-Ha a 2. HoloLens használja, az **ARM** -et használja a **megoldási platformként**az **x86**helyett.
+Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként**használhatja az **x86**helyett.
 
 ![Visual Studio-konfiguráció](./media/get-started-hololens/visual-studio-configuration.png)
 
 Kapcsolja be a HoloLens eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez egy USB-kábellel.
 
-Válassza a hibakeresés**indítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.  > 
+Válassza **a hibakeresés > ** a **hibakeresés elindítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.
 
 A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 
@@ -75,4 +75,4 @@ A Visual Studióban állítsa le az alkalmazást úgy, hogy kiválasztja a **hib
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

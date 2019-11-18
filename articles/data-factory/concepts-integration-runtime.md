@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2b90d95d41bb30226d870a74a47327d6492bbd1e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681513"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122945"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -25,7 +25,7 @@ Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által h
 - **Adatfolyam**: [adatfolyamatok](concepts-data-flow-overview.md) végrehajtása felügyelt Azure számítási környezetben.  
 - **Adatáthelyezés**: a nyilvános hálózatban lévő adattárakban és a magánhálózaton (helyszíni vagy virtuális magánhálózat) lévő adattárakban tárolt Adatmásolás. Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
 - **Tevékenység elküldése**: különböző számítási szolgáltatásokon, például az Azure Databrickson, az Azure HDInsight, a Azure Machine Learningon, a Azure SQL Databaseon, a SQL Serveron és egyebeken futó átalakítási tevékenységek elküldése és monitorozása.
-- **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
+- **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services (SSIS) csomagokat egy felügyelt Azure számítási környezetben.
 
 A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás vagy tevékenység hivatkozik rá, és megadja azt a számítási környezetet, ahol a tevékenység vagy a szolgáltatás fut, vagy amelyről elküldi a szolgáltatást. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
 
@@ -48,7 +48,7 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 
 ![Különböző típusú integrációs modulok](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
+## <a name="azure-integration-runtime"></a>Azure integrációs modul
 Egy Azure-beli integrációs modul a következőkre képes:
 
 - Adatfolyamatok futtatása az Azure-ban 
@@ -78,6 +78,9 @@ Egy saját üzemeltetésű IR a következőkre képes:
 
 > [!NOTE] 
 > A saját üzemeltetésű integrációs modult használva olyan adattárakat támogathat, amelyek a saját illesztőprogramot, például az SAP Hana-t vagy a MySQL-t igénylik.  További információ: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+
+> [!NOTE] 
+> A Java Runtime Environment (JRE) a saját üzemeltetésű IR függősége. Győződjön meg arról, hogy a JRE ugyanarra a gazdagépre van telepítve.
 
 ### <a name="self-hosted-ir-network-environment"></a>Saját üzemeltetésű integrációs modul hálózati környezete
 Ha biztonságosan szeretne adatintegrációt végezni egy nyilvános felhőkörnyezetből közvetlenül nem látható magánhálózati környezetben, telepíthet egy saját üzemeltetésű integrációs modult helyszíni környezeten a vállalati tűzfal mögé vagy a virtuális magánhálózaton belülre.  A saját üzemeltetésű integrációs modul csak kimenő HTTP-alapú kapcsolatokat hoz létre az internet megnyitásához.

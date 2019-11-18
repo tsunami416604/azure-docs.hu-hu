@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820803"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114620"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-adatszinkronizálás figyelése Azure Monitor naplókkal 
 
@@ -137,7 +137,7 @@ Azure Monitor naplókat használó riasztás létrehozásához tegye a következ
 
 2.  Hozzon létre egy lekérdezést a hibák és figyelmeztetések kiválasztásához a kiválasztott intervallumon belül a szinkronizálási csoport alapján. Például:
 
-    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
+    `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
 3.  A lekérdezés futtatása után válassza ki azt a harangot, amely a **riasztást**mondja.
 
@@ -206,7 +206,7 @@ További információ az SQL Data Syncről:
     - A PowerShell-lel
         -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
+-   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](sql-database-data-sync-agent.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
 -   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése

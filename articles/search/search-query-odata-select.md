@@ -1,7 +1,7 @@
 ---
 title: OData-hivatkozás kiválasztása
 titleSuffix: Azure Cognitive Search
-description: OData nyelvi referenciája az Azure Cognitive Search lekérdezésekben való kiválasztásához.
+description: Szintaxis és nyelvi hivatkozás az Azure Cognitive Search lekérdezések keresési eredményeiben visszaadott mezők explicit kiválasztásához.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793251"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113104"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure-ban Cognitive Search
 
@@ -108,7 +108,7 @@ Egy példa eredménye a következőképpen néz ki:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

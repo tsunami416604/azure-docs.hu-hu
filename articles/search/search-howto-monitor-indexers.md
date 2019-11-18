@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 699b5a4e5a7f10c883667ca5030dd971855467f5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793798"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112979"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
 
@@ -180,6 +180,6 @@ Ha egy indexelő visszaáll a változás követési állapotának frissítésér
 
 Az állapotkódok és az indexelő figyelési információkkal kapcsolatos további információkért lásd: [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) a REST API.
 
-A dokumentum-specifikus hibákkal és figyelmeztetésekkel kapcsolatos részletek a lista `IndexerExecutionResult.Errors` és `IndexerExecutionResult.Warnings` felsorolásának enumerálásával olvashatók be.
+A dokumentum-specifikus hibákkal és figyelmeztetésekkel kapcsolatos részletek a lista `IndexerExecutionResult.Errors` és `IndexerExecutionResult.Warnings`felsorolásának enumerálásával olvashatók be.
 
 Az indexelő figyeléséhez használt .net SDK-osztályokkal kapcsolatos további információkért lásd: [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) és [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

@@ -1,14 +1,14 @@
 ---
 title: A házirend-definíciós struktúra részletei
-description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Policy által létesíteni az erőforrások konvenciók a szervezetben: Ha a házirend érvényesítve van, és milyen érvénybe léptetéséhez.'
+description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50edf2941aeb24d800752eec1e93f69abf4211ea
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6288a7d013256c39e83ee433e867d15f67c81e57
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960001"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132817"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -599,7 +599,7 @@ A következő példa bemutatja, hogyan hozhat létre a kezdeményezés két cím
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatok hatásainak ismertetése](effects.md).

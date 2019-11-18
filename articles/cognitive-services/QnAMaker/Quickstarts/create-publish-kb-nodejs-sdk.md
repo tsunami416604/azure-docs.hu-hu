@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Node. js-hez készült ügyféloldali kódtár QnA Maker'
+title: 'Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ismerkedés a Node. js-hez készült QnA Maker ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab3fa02f7285fdbde918f9e365d1ee96ba5e71a1
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 7650dce9a3ef494815b8d7a326eb07e1e25f2da2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802990"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123094"
 ---
-# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Gyors útmutató: A Node. js-hez készült ügyféloldali kódtár QnA Maker
+# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár QnA Maker
 
 Ismerkedés a Node. js-hez készült QnA Maker ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. 
 
@@ -27,7 +27,7 @@ A Node. js-hez készült QnA Maker ügyféloldali kódtár a következőhöz has
 * Tudásbázis kezelése
 * Tudásbázis közzététele
 
-[A dokumentációs](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [-csomagjához (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | tartozó[Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -42,7 +42,7 @@ A Node. js-hez készült QnA Maker ügyféloldali kódtár a következőhöz has
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. 
 
-Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `QNAMAKER_HOST`(z) és nevű `QNAMAKER_SUBSCRIPTION_KEY` erőforráshoz. Használja a Azure Portal **erőforrás kulcsainak** és **áttekintő** lapjain található kulcs-és végpont-értékeket.
+Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az erőforráshoz, `QNAMAKER_SUBSCRIPTION_KEY` és `QNAMAKER_HOST`névvel. Használja a Azure Portal **erőforrás kulcsainak** és **áttekintő** lapjain található kulcs-és végpont-értékeket.
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -52,7 +52,7 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init -y` parancsot egy `package.json` Node-alkalmazás fájlhoz való létrehozásához. 
+A `npm init -y` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json`-fájllal. 
 
 ```console
 npm init -y
@@ -60,13 +60,13 @@ npm init -y
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a `ms-rest-azure` és `azure-cognitiveservices-qnamaker` a NPM csomagokat:
+Telepítse a `ms-rest-azure` és `azure-cognitiveservices-qnamaker` NPM csomagokat:
 
 ```console
 npm install azure-cognitiveservices--qnamaker ms-rest-azure --save
 ```
 
-Az alkalmazás `package.json` fájlját a rendszer a függőségekkel frissíti.
+Az alkalmazás `package.json` fájlja a függőségekkel frissül.
 
 
 ## <a name="object-model"></a>Objektummodell
@@ -99,7 +99,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 |Környezeti változó|Node. js-változó|Példa|
 |--|--|--|
 |`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|32 karakteres GUID|
-|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com` – a `your-resource-name` altartomány lecserélése az erőforrás nevének értékére|
+|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com` – a altartomány `your-resource-name` az erőforrás nevének értékét cserélje le.|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]
@@ -123,7 +123,7 @@ Hívja meg a [create](https://docs.microsoft.com/javascript/api/@azure/cognitive
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
-A Tudásbázis sikeres létrehozásához [`wait_for_operation`](#get-status-of-an-operation) győződjön meg arról, hogy a fenti kódban hivatkozott függvény belefoglalása. 
+A Tudásbázis sikeres létrehozásához ellenőrizze, hogy a fenti kódban hivatkozott [`wait_for_operation`](#get-status-of-an-operation) függvény szerepeljen-e. 
 
 ## <a name="update-a-knowledge-base"></a>Tudásbázis frissítése
 
@@ -131,7 +131,7 @@ A tudásbázist a Tudásbázis-azonosító és egy olyan [UpdateKbOperationDTO](
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
 
-Győződjön meg arról, hogy [`wait_for_operation`](#get-status-of-an-operation) a fenti kódban hivatkozott függvény belefoglalása a Tudásbázis sikeres frissítéséhez. 
+A Tudásbázis sikeres frissítéséhez ellenőrizze, hogy a fenti kódban hivatkozott [`wait_for_operation`](#get-status-of-an-operation) függvény szerepeljen-e. 
 
 ## <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
@@ -155,7 +155,7 @@ A következő _setTimeout_ hívásával szimulálható az aszinkron kód. Cseré
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `node index.js` a paranccsal az alkalmazás könyvtárából.
+Futtassa az alkalmazást `node index.js` paranccsal az alkalmazás könyvtárából.
 
 
 A cikkben szereplő kódrészletek mindegyike [elérhető](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) , és egyetlen fájlként is futtatható.
@@ -174,7 +174,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: KB létrehozása és válasza](../tutorials/create-publish-query-in-portal.md)
+>[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)
 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)

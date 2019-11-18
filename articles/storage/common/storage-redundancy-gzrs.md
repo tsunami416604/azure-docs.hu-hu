@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333211"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111836"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -31,6 +31,7 @@ A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő 
 
 - Észak-Európa
 - Nyugat-Európa
+- Az Egyesült Királyság déli régiója
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA középső régiója
@@ -141,14 +142,14 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
     - **Probléma típusa**: válassza **Az adatáttelepítés**lehetőséget.
     - **Kategória**: válassza az **áttelepítés a régión belül (ra-) GZRS**lehetőséget.
     - **Title**: adjon meg egy leíró címet, például **(ra-) GZRS fiók áttelepítése**.
-    - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például "szeretnék áttérni a GZRS-re a (z) [LRS, GRS] webhelyről a \_ @ no__t-3 régióban." vagy "szeretnék áttérni az RA-GZRS-re a (z) [LRS, RA-GRS] webhelyről a \_ @ no__t-1 régióban."
+    - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például "szeretném áttelepíteni a GZRS a (z) [LRS, GRS] webhelyről a \_\_ régióban." vagy "szeretnék áttérni az RA-GZRS-re a (z) [LRS, RA-GRS] címről a \_\_ régióban."
 5. Kattintson a **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Kattintson a **Létrehozás** gombra.
 
 A támogatási képviselő felveszi Önnel a kapcsolatot a segítség biztosításához.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Azure Storage replication (Azure Storage replikáció)](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

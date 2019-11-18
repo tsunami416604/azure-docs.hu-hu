@@ -1,26 +1,19 @@
 ---
 title: 'Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure cache-t a Node. js és a node_redis Redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: 06fddc95-8029-4a8d-83f5-ebd5016891d9
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329826"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122007"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis
 
@@ -29,7 +22,7 @@ Ebben a rövid útmutatóban egy Node. js-alkalmazásba beépítheti az Azure ca
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), amelyet a `npm install redis` paranccsal telepíthet. 
+- [node_redis](https://github.com/mranney/node_redis), amelyet a paranccsal telepíthet a `npm install redis`használatával. 
 
 Az egyéb Node.js-ügyfeleket használó példákért tekintse meg az egyes Node.js-ügyfelek dokumentációját a [Node.js Redis-ügyfeleket](https://redis.io/clients#nodejs) felsoroló weblapon.
 
@@ -48,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>Csatlakozás a gyorsítótárhoz
 
-A [node_redis](https://github.com/mranney/node_redis) legújabb buildek lehetővé teszik az SSL használatával történő Redis az Azure cache-hez való csatlakozást. Az alábbi példa bemutatja, hogyan kapcsolódhat az Azure cache-hez a Redis-hez a 6380-es SSL-végpont használatával. 
+[Node_redis](https://github.com/mranney/node_redis) legújabb buildek TÁMOGATJÁK az SSL-t használó Redis Azure cache-hez való csatlakozásának támogatását. Az alábbi példa bemutatja, hogyan kapcsolódhat az Azure cache-hez a Redis-hez a 6380-es SSL-végpont használatával. 
 
 ```js
 var redis = require("redis");
@@ -135,7 +128,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t a Redis egy Node. js-alkalmazásból. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

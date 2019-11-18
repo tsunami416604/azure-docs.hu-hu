@@ -1,5 +1,5 @@
 ---
-title: AI-gazdagított beviteli mezők leképezése kimeneti mezőkre
+title: Bemenet hozzárendelése a kimeneti mezőkhöz
 titleSuffix: Azure Cognitive Search
 description: Kinyerheti és gazdagíthatja a forrásadatok mezőit, és leképezheti a kimeneti mezőket egy Azure Cognitive Search indexben.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 77f378f4e0c4a8e4827523e244f7b18c2a9ba336
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d2d5e717154d16cc5579c1495aff9c1eebf54b17
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792106"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132376"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-gazdagított mezők leképezése kereshető indexre
 
@@ -69,7 +69,7 @@ Egy sourceFieldName elérési útja egy vagy több elemet is jelenthet. A fenti 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután leképezte a dúsított mezőket a kereshető mezőkre, az [index definíciójának részeként](search-what-is-an-index.md)megadhatja az egyes kereshető mezőkhöz tartozó mezőtulajdonságokat.
 
 További információ a mezők hozzárendeléséről: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.

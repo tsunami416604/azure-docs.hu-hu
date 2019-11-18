@@ -1,7 +1,7 @@
 ---
 title: OData-szűrő referenciája
 titleSuffix: Azure Cognitive Search
-description: OData az Azure Cognitive Search lekérdezésekben használt szűrési szintaxishoz.
+description: A OData az Azure Cognitive Search lekérdezésekben a szűrési kifejezések létrehozásához használt nyelvi referenciát és teljes szintaxist.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793373"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113203"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData $filter szintaxis az Azure-ban Cognitive Search
 
@@ -194,7 +194,7 @@ Itt megtalálhatja azokat a szállodákat, amelyekben a "Hotel" és a "repülőt
 
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

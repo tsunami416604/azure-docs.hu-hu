@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825687"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108590"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő zsugorítása
 
@@ -24,7 +24,8 @@ A CloudSimple rugalmasságot biztosít a privát felhők dinamikus összezsugoro
 A privát felhő zsugorodása után a következő feltételeknek kell teljesülniük.  A privát felhő létrehozásakor létrehozott felügyeleti fürt (első fürt) nem törölhető.
 
 * A vSphere-fürtnek három csomóponttal kell rendelkeznie.  Csak három csomóponttal rendelkező fürt nem lehet összezsugorodni.
-* A felhasznált tárterület teljes mérete nem haladhatja meg a fürt zsugorodása utáni teljes kapacitást. 
+* A felhasznált tárterület teljes mérete nem haladhatja meg a fürt zsugorodása utáni teljes kapacitást.
+* Ellenőrizze, hogy az elosztott erőforrás-ütemező (DRS) szabályai meggátolják-e a virtuális gépek vMotion.  Ha szabályok vannak jelen, tiltsa le vagy törölje a szabályokat.  A DRS-szabályok közé tartozik a virtuális gép az affinitási szabályok üzemeltetéséhez.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -55,7 +56,8 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 A privát felhő zsugorodása megkezdődik.  Nyomon követheti a feladatok előrehaladását.  A zsugorodó folyamat néhány órát is igénybe vehet az adattól függően, amelyet újra kell szinkronizálni a vSAN-on.
 
 > [!NOTE]
-> Ha az adatközpontban az utolsó vagy az egyetlen fürt törlésével csökkenti a privát felhőt, az adatközpont nem lesz törölve.  
+> 1. Ha az adatközpontban az utolsó vagy az egyetlen fürt törlésével csökkenti a privát felhőt, az adatközpont nem lesz törölve.
+> 2. Ha bármely DRS-szabály megsértése történik, a rendszer nem távolítja el a csomópontot a fürtből, és a feladat leírása azt mutatja, hogy a csomópontok eltávolítása megsérti a fürt DRS-szabályait.    
 
 
 ## <a name="next-steps"></a>További lépések

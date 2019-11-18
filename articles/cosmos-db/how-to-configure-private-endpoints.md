@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 826fe1195a142bd0826d6311eab5eb208bbc7e35
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fde8829da3e523ced44143db0dee6b93cf9152bd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007428"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147766"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz (előzetes verzió)
 
@@ -185,7 +185,7 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Privát végpont létrehozása Resource Manager-sablonnal
 
-A magánhálózati kapcsolatot úgy is beállíthatja, hogy létrehoz egy magánhálózati végpontot egy virtuális hálózati alhálózatban. Ezt egy Azure Resource Manager sablon segítségével érheti el. 
+A magánhálózati kapcsolatot úgy is beállíthatja, hogy létrehoz egy magánhálózati végpontot egy virtuális hálózati alhálózatban. Ezt egy Azure Resource Manager sablon segítségével érheti el.
 
 A következő kód használatával hozzon létre egy "PrivateEndpoint_template. JSON" nevű Resource Manager-sablont. Ez a sablon egy meglévő virtuális hálózat meglévő Azure Cosmos SQL API-fiókjához hoz létre privát végpontot.
 
@@ -246,7 +246,7 @@ A következő kód használatával hozzon létre egy "PrivateEndpoint_template. 
 }
 ```
 
-### <a name="define-the-parameters-file-for-the-template"></a>A sablonhoz tartozó Parameters fájl megadása
+**A sablonhoz tartozó Parameters fájl megadása**
 
 Hozzon létre egy paramétereket tartalmazó fájlt a sablonhoz, és nevezze el "PrivateEndpoint_parameters. JSON" néven. Adja hozzá a következő kódot a parameters (paraméterek) fájlhoz:
 
@@ -271,7 +271,7 @@ Hozzon létre egy paramétereket tartalmazó fájlt a sablonhoz, és nevezze el 
 }
 ```
 
-### <a name="deploy-the-template-by-using-a-powershell-script"></a>A sablon üzembe helyezése PowerShell-parancsfájl használatával
+**A sablon üzembe helyezése PowerShell-parancsfájl használatával**
 
 Hozzon létre egy PowerShell-parancsfájlt az alábbi kód használatával. A parancsfájl futtatása előtt cserélje le az előfizetés-azonosítót, az erőforráscsoport nevét és az egyéb változó értékeket a környezet részleteire.
 
@@ -334,6 +334,201 @@ A sablon sikeres üzembe helyezését követően az alábbi képen láthatóhoz 
 ![Üzembe helyezési kimenet a Resource Manager-sablonhoz](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
 A sablon üzembe helyezése után a magánhálózati IP-címek az alhálózaton belül vannak lefoglalva. Az Azure Cosmos-fiók tűzfalszabály úgy van konfigurálva, hogy csak a magánhálózati végpontról fogadjon kapcsolatokat.
+
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>A privát végpont integrálása saját DNS zónával
+
+A következő kód használatával hozzon létre egy "PrivateZone_template. JSON" nevű Resource Manager-sablont. Ez a sablon létrehoz egy magánhálózati DNS-zónát egy meglévő Azure Cosmos SQL API-fiókhoz egy meglévő virtuális hálózaton.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "type": "string"
+        },
+        "VNetId": {
+            "type": "string"
+        }       
+    },
+    "resources": [
+        {
+            "name": "[parameters('privateZoneName')]",
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "location": "global",
+            "properties": {                
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[concat(parameters('privateZoneName'), '/myvnetlink')]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]"
+            ],
+            "properties": {
+                "registrationEnabled": false,
+                "virtualNetwork": {
+                    "id": "[parameters('VNetId')]"
+                }
+            }
+        }       
+    ]
+}
+```
+
+A következő kód használatával hozzon létre egy "PrivateZoneRecords_template. JSON" nevű Resource Manager-sablont.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "DNSRecordName": {
+            "type": "string"
+        },
+        "IPAddress": {
+            "type":"string"
+        }       
+    },
+    "resources": [
+         {
+            "type": "Microsoft.Network/privateDnsZones/A",
+            "apiVersion": "2018-09-01",
+            "name": "[parameters('DNSRecordName')]",
+            "properties": {
+                "ttl": 300,
+                "aRecords": [
+                    {
+                        "ipv4Address": "[parameters('IPAddress')]"
+                    }
+                ]
+            }
+        }   
+    ]
+}
+```
+
+**A sablonhoz tartozó Parameters fájl megadása**
+
+Hozza létre a következő két paraméter-fájlt a sablonhoz. Hozza létre a "PrivateZone_parameters. JSON" fájlt. a következő kóddal:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "value": ""
+        },
+        "VNetId": {
+            "value": ""
+        }
+    }
+}
+```
+
+Hozza létre a "PrivateZoneRecords_parameters. JSON" fájlt. a következő kóddal:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "DNSRecordName": {
+            "value": ""
+        },
+        "IPAddress": {
+            "type":"object"
+        }
+    }
+}
+```
+
+**A sablon üzembe helyezése PowerShell-parancsfájl használatával**
+
+Hozzon létre egy PowerShell-parancsfájlt az alábbi kód használatával. A parancsfájl futtatása előtt cserélje le az előfizetés-azonosítót, az erőforráscsoport nevét és az egyéb változó értékeket a környezet részleteire.
+
+```azurepowershell-interactive
+### This script:
+### - creates a private zone
+### - creates a private endpoint for an existing Cosmos DB account in an existing VNet
+### - maps the private endpoint to the private zone
+
+## Step 1: Fill in these details. Replace the variable values with the details for your environment.
+$SubscriptionId = "<your Azure subscription ID>"
+# Resource group where the Azure Cosmos account and virtual network resources are located
+$ResourceGroupName = "myResourceGroup"
+# Name of the Azure Cosmos account
+$CosmosDbAccountName = "mycosmosaccount"
+# API type of the Azure Cosmos account. It can be one of the following: "Sql", "MongoDB", "Cassandra", "Gremlin", "Table"
+$CosmosDbApiType = "Sql"
+# Name of the existing virtual network
+$VNetName = "myVnet"
+# Name of the target subnet in the virtual network
+$SubnetName = "mySubnet"
+# Name of the private zone to create
+$PrivateZoneName = "myPrivateZone.documents.azure.com"
+# Name of the private endpoint to create
+$PrivateEndpointName = "myPrivateEndpoint"
+
+$cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
+$VNetResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($VNetName)"
+$SubnetResourceId = "$($VNetResourceId)/subnets/$($SubnetName)"
+$PrivateZoneTemplateFilePath = "PrivateZone_template.json"
+$PrivateZoneParametersFilePath = "PrivateZone_parameters.json"
+$PrivateZoneRecordsTemplateFilePath = "PrivateZoneRecords_template.json"
+$PrivateZoneRecordsParametersFilePath = "PrivateZoneRecords_parameters.json"
+$PrivateEndpointTemplateFilePath = "PrivateEndpoint_template.json"
+$PrivateEndpointParametersFilePath = "PrivateEndpoint_parameters.json"
+
+## Step 2: Login your Azure account and select the target subscription
+Login-AzAccount 
+Select-AzSubscription -SubscriptionId $subscriptionId
+
+## Step 3: Make sure private endpoint network policies are disabled in the subnet
+$VirtualNetwork= Get-AzVirtualNetwork -Name "$VNetName" -ResourceGroupName "$ResourceGroupName"
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq "$SubnetName"} ).PrivateEndpointNetworkPolicies = "Disabled"
+$virtualNetwork | Set-AzVirtualNetwork
+
+## Step 4: Create the private zone
+New-AzResourceGroupDeployment -Name "PrivateZoneDeployment" `
+    -ResourceGroupName $ResourceGroupName `
+    -TemplateFile $PrivateZoneTemplateFilePath `
+    -TemplateParameterFile $PrivateZoneParametersFilePath `
+    -PrivateZoneName $PrivateZoneName `
+    -VNetId $VNetResourceId
+
+## Step 5: Create the private endpoint
+Write-Output "Deploying private endpoint on $($resourceGroupName)"
+$deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpointDeployment" `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $PrivateEndpointTemplateFilePath `
+    -TemplateParameterFile $PrivateEndpointParametersFilePath `
+    -SubnetId $SubnetResourceId `
+    -ResourceId $CosmosDbResourceId `
+    -GroupId $CosmosDbApiType `
+    -PrivateEndpointName $PrivateEndpointName
+$deploymentOutput
+
+## Step 6: Map the private endpoint to the private zone
+$networkInterface = Get-AzResource -ResourceId $deploymentOutput.Outputs.privateEndpointNetworkInterface.Value -ApiVersion "2019-04-01"
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
+        $recordName = $fqdn.split('.',2)[0]
+        $dnsZone = $fqdn.split('.',2)[1]
+        Write-Output "Deploying PrivateEndpoint DNS Record $($PrivateZoneName)/$($recordName) Template on $($resourceGroupName)"
+        New-AzResourceGroupDeployment -Name "PrivateEndpointDNSDeployment" `
+            -ResourceGroupName $ResourceGroupName `
+            -TemplateFile $PrivateZoneRecordsTemplateFilePath `
+            -TemplateParameterFile $PrivateZoneRecordsParametersFilePath `
+            -DNSRecordName "$($PrivateZoneName)/$($RecordName)" `
+            -IPAddress $ipconfig.properties.privateIPAddress
+    }
+}
+```
 
 ## <a name="configure-custom-dns"></a>Egyéni DNS konfigurálása
 
@@ -409,7 +604,7 @@ A magánhálózati DNS-zónában lévő DNS-rekordokat a rendszer nem távolítj
 
 Ha nem törli a DNS-rekordokat, előfordulhat, hogy váratlan adatsík-problémák történnek. Ezek a problémák közé tartoznak az adatkimaradások a privát végpont eltávolítása vagy a régió eltávolítása után hozzáadott régiókhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Cosmos DB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

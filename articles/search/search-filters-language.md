@@ -1,5 +1,5 @@
 ---
-title: Nyelvi szűrők a többnyelvű tartalomhoz a keresési indexben
+title: Szűrés nyelv alapján keresési indexben
 titleSuffix: Azure Cognitive Search
 description: Szűrési feltételek a többnyelvű keresés támogatásához, a lekérdezés végrehajtásának hatóköre nyelvspecifikus mezőkhöz.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792871"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112061"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Szűrés nyelv alapján az Azure-ban Cognitive Search 
 
@@ -21,7 +21,7 @@ A többnyelvű keresőalkalmazás egyik kulcsfontosságú követelménye, hogy a
 
 A kérelemben szereplő lekérdezési paraméterek a keresési művelet hatókörére vonatkoznak, majd levágja azokat a mezőket, amelyek nem biztosítanak tartalmat a kézbesíteni kívánt keresési felülettel.
 
-| Paraméterek | Rendeltetés |
+| Paraméterek | Cél |
 |-----------|--------------|
 | **searchFields** | A teljes szöveges keresést a megnevezett mezők listájára korlátozza. |
 | **$select** | Levágja a választ, hogy csak a megadott mezőket foglalja bele. Alapértelmezés szerint a rendszer az összes beolvasható mezőt visszaadja. A **$Select** paraméterrel kiválaszthatja, hogy melyeket kell visszaadnia. |
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > Bár a lekérdezésnek nincs $filter argumentuma, ez a használati eset erősen kapcsolódik a szűrési fogalmakhoz, ezért szűrési forgatókönyvként jelennek meg.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Szűrők az Azure Cognitive Search](search-filters.md)
 + [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)

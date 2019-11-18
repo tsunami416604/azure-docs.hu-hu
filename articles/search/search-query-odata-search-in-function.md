@@ -1,7 +1,7 @@
 ---
 title: OData search.in függvény referenciája
 titleSuffix: Azure Cognitive Search
-description: OData search.in függvény az Azure Cognitive Search lekérdezésekben.
+description: Szintaxis és dokumentáció a search.in függvény Azure Cognitive Search lekérdezésekben való használatáról.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f641e50554e720d273735fd20032e60444cb198a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793280"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113116"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData `search.in` függvény az Azure-ban Cognitive Search
 
@@ -70,7 +70,7 @@ A `search.in` függvénynek két túlterhelése van:
 
 A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Type (Típus) | Leírás |
+| Paraméter neve | Típus | Leírás |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Egy karakterlánc-mező hivatkozása (vagy a karakterlánc-gyűjtési mezőn keresztüli tartomány változója abban az esetben, ha a `search.in` egy `any` vagy `all` kifejezésen belül van használatban). |
 | `valueList` | `Edm.String` | Az `variable` paraméternek megfelelő értékek tagolt listáját tartalmazó karakterlánc. Ha a `delimiters` paraméter nincs megadva, az alapértelmezett határolójelek a szóköz és a vessző. |
@@ -104,7 +104,7 @@ A "Motel" vagy a "cabin'" címke nélküli összes Hotel megkeresése:
 
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

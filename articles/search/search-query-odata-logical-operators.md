@@ -1,7 +1,7 @@
 ---
 title: OData logikai operátor referenciája
 titleSuffix: Azure Cognitive Search
-description: OData logikai operátorok, és, vagy, és nem, az Azure Cognitive Search lekérdezésekben.
+description: Szintaxis és dokumentáció a OData logikai operátorok, valamint, illetve, illetve az Azure Cognitive Search-lekérdezések használata esetén.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793322"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113190"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure Cognitive Search-`and`, `or`, `not`
 
@@ -107,7 +107,7 @@ A következőhöz tartozó dokumentumok egyeztetése: Vancouver, Kanada, ahol va
 
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

@@ -1,18 +1,14 @@
 ---
 title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-author: JnHs
-ms.author: jenhayes
 ms.date: 11/11/2019
 ms.topic: overview
-ms.service: lighthouse
-manager: carmonm
-ms.openlocfilehash: ae8194e6d5764769019ac803a52cd54497a618c1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0551bbcbc9609809b0b28eb56a0a3b848debcaae
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929571"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132193"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
@@ -40,7 +36,7 @@ Az Azure Lighthouse több módszert is kínál az ügyfelek részvételének és
 - **Felügyelt szolgáltatások ajánlatai az Azure Marketplace-** en: magán-vagy nyilvános ajánlatokon keresztül kínál szolgáltatásokat ügyfeleinek, és automatikusan előkészíti azokat az Azure-beli delegált erőforrás-kezelésre, amely a Azure Resource Manager-sablonok használatával történő bevezetéshez is használható. További információ: [felügyelt szolgáltatások ajánlatai az Azure Marketplace-](./concepts/managed-services-offers.md)en.
 - **Azure által felügyelt alkalmazások**: azok az alkalmazások, amelyek megkönnyítik az ügyfelek számára a saját előfizetésekben való üzembe helyezését és használatát. Az alkalmazás üzembe helyezése egy olyan erőforráscsoporthoz történik, amely a bérlőtől fér hozzá, így a szolgáltatás a teljes Azure Lighthouse-élmény részeként kezelhető. További információ: az [Azure által felügyelt alkalmazások áttekintése](https://docs.microsoft.com/azure/managed-applications/overview).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megismerheti az [Azure által delegált erőforrás-kezelés](concepts/azure-delegated-resource-management.md) részleteit.
 - További információ a [bérlők közötti felügyeleti élményekről](concepts/cross-tenant-management-experience.md).

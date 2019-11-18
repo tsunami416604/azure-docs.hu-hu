@@ -1,5 +1,5 @@
 ---
-title: Egyéni útvonalak reklámozása pont – hely VPN-ügyfelek számára | Azure | Microsoft Docs
+title: 'Azure VPN Gateway: egyéni útvonalak meghirdetése P2S VPN-ügyfelek számára'
 description: Az egyéni útvonalaknak a pont-hely típusú ügyfelekhez való reklámozásának lépései
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6678efd04125e6ae0e0b66e8bcc011c0f319c0fb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7a904857b8aa0ed2aa18fc2a1b81fe31541e6f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954306"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151907"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak reklámozása a P2S VPN-ügyfelek számára
 
@@ -59,6 +59,6 @@ Az alábbi példa használatával törölheti az egyéni útvonalakat:
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute @0
   ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További P2S-útválasztási információk: [Tudnivalók a pont – hely útválasztásról](vpn-gateway-about-point-to-site-routing.md).

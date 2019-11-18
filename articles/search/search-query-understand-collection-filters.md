@@ -1,7 +1,7 @@
 ---
 title: A OData-gyűjtési szűrők ismertetése
 titleSuffix: Azure Cognitive Search
-description: A OData-gyűjtési szűrők működésének megértése az Azure Cognitive Search lekérdezésekben.
+description: Megtudhatja, hogyan működnek a OData-gyűjtési szűrők az Azure Cognitive Search lekérdezésekben, beleértve a gyűjtemények egyedi korlátozásait és viselkedését.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a57e1d16b13d822b6f5b541a7f838b0dd3a69ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794395"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113070"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search
 
@@ -86,7 +86,7 @@ A teljes szöveges keresés `Rooms/Type` tárolása:
 
 | Kifejezés `Rooms/Type` | Dokumentumok azonosítói |
 | --- | --- |
-| Deluxe | 1, 2 |
+| deluxe | 1, 2 |
 | standard | 1 |
 
 A teljes szöveges keresés `Rooms/Description` tárolása:
@@ -103,7 +103,7 @@ A teljes szöveges keresés `Rooms/Description` tárolása:
 | Suite | 1 |
 | megtekintés | 1 |
 
-Tehát a fenti szűrővel ellentétben, ami alapvetően azt mondja, hogy "a dokumentumok egyeztetése, amikor egy szoba `Type` a" Deluxe szoba "értékkel, és **ugyanazon a helyen** `BaseRate` kevesebb mint 100", a keresési lekérdezés azt írja le, hogy "megfelel a dokumentumoknak, ahol `Rooms/Type` a" Deluxe "kifejezéssel és `Rooms/Description` a "City View" kifejezéssel rendelkezik. Az egyes helyiségek nem rendelkeznek olyan fogalmakkal, amelyek mezői összekapcsolhatók az utóbbi esetben.
+Tehát a fenti szűrővel ellentétben, ami alapvetően azt mondja, hogy "a dokumentumok egyeztetése, amikor egy szoba `Type` a" Deluxe szoba "értékkel, és **ugyanazon a helyen** `BaseRate` kevesebb mint 100", a keresési lekérdezés azt írja le, hogy "megfelel a dokumentumoknak, ahol `Rooms/Type` a" Deluxe "kifejezéssel, `Rooms/Description` pedig a" City View "kifejezéssel. Az egyes helyiségek nem rendelkeznek olyan fogalmakkal, amelyek mezői összekapcsolhatók az utóbbi esetben.
 
 > [!NOTE]
 > Ha szeretné megtekinteni az Azure Cognitive Searchhoz hozzáadott korrelált keresés támogatását, kérjük, szavazzon [erre a felhasználói hangelemre](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).
@@ -151,7 +151,7 @@ Az esélyegyenlőségből való kiépítés után megvizsgáljuk, hogyan lehet e
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
-egyenértékű a következővel:
+a következő azonos:
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
@@ -159,7 +159,7 @@ a két `any` alkifejezések mindegyike hatékonyan végrehajtható az invertált
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
-egyenértékű a következővel:
+a következő azonos:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 
@@ -186,7 +186,7 @@ A gyakorlatban ezek azok a szűrők típusai, amelyeknek a legvalószínűbb, ho
 
 Adott példákat, amelyek esetében engedélyezett a szűrők típusa, és amelyek nem léteznek, tekintse meg az [érvényes gyűjteményi szűrők írását](search-query-troubleshoot-collection-filters.md#bkmk_examples)ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [OData-gyűjtési szűrők hibaelhárítása Az Azure-ban Cognitive Search](search-query-troubleshoot-collection-filters.md)
 - [Szűrők az Azure Cognitive Search](search-filters.md)

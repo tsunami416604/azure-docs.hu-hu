@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/08/2019
+ms.date: 11/13/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fe8483bd6055acb0a2c741192ec80211b9969a16
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5bfc5e6471d768b89a66610a2618bc1a44cf709d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175880"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145927"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
 
@@ -40,7 +40,7 @@ A csendes vagy az interaktív jogkivonat beszerzése során az alkalmazások hib
 
 A hibák teljes listája a [MSALError enumerálásban](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)szerepel.
 
-A rendszer a MSAL által létrehozott összes hibát `MSALErrorDomain` tartománnyal adja vissza. 
+A rendszer a MSAL által létrehozott összes hibát `MSALErrorDomain` tartománnyal adja vissza.
 
 Rendszerhibák esetén a MSAL az eredeti `NSError` a System API-ból adja vissza. Ha például a jogkivonat-beszerzés sikertelen a hálózati kapcsolat hiánya miatt, a MSAL hibát ad vissza a `NSURLErrorDomain` tartománnyal és `NSURLErrorNotConnectedToInternet` kóddal.
 
@@ -242,6 +242,17 @@ Swift
     application.acquireTokenSilent(with: silentParameters, completionBlock: completionBlock)
 ```
 
+## <a name="msal-for-python-error-handling"></a>MSAL Python-hibák kezelésére
+
+A Pythonhoz készült MSAL a legtöbb hibát az API-hívásból visszaadott értékként továbbítja a rendszer. A hiba a Microsoft Identity platform JSON-válaszát tartalmazó szótárként jelenik meg.
+
+* A sikeres válasz tartalmazza a `"access_token"` kulcsot. A válasz formátumát az OAuth2 protokoll határozza meg. További információ: [5,1 sikeres válasz](https://tools.ietf.org/html/rfc6749#section-5.1)
+* A hiba `"error"` és általában `"error_description"`t tartalmaz. A válasz formátumát az OAuth2 protokoll határozza meg. További információ: 5,2-es [hiba válasza](https://tools.ietf.org/html/rfc6749#section-5.2)
+
+Ha a rendszer hibát ad vissza, a `"error_description"` kulcs egy emberi olvasási üzenetet tartalmaz; Ez általában egy Microsoft Identity platform hibakódot tartalmaz. A különböző hibakódokról a [hitelesítési és engedélyezési hibakódok](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes)című témakörben olvashat bővebben.
+
+A MSAL for Python esetében a kivételek ritkák, mivel a legtöbb hibát egy hibaérték visszaadásával kezeli a rendszer. A `ValueError` kivétel csak akkor fordul elő, ha probléma van azzal, hogy hogyan próbálja használni a kódtárat – például ha az API-paraméter (ek) formátuma helytelen formátumú.
+
 ## <a name="net-exceptions"></a>.NET-kivételek
 
 Kivételek feldolgozásakor használhatja a kivétel típusát és a `ErrorCode` tagot a kivételek megkülönböztetésére. `ErrorCode` értékek a [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet)típusú állandók.
@@ -278,13 +289,13 @@ A MSAL egy `Classification` mezőt tesz elérhetővé, amely lehetővé teszi, h
 | Osztályozás    | Jelentés           | Ajánlott kezelési |
 |-------------------|-------------------|----------------------|
 | BasicAction | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
-| AdditionalAction | A feltételt az interaktív hitelesítési folyamaton kívül további javító interakciók is feloldhatók a rendszerrel. | Hívja meg a AcquireTokenInteractively () egy olyan üzenet megjelenítéséhez, amely ismerteti a javító műveletet. A hívó alkalmazás dönthet úgy, hogy elrejti a additional_action igénylő folyamatokat, ha a felhasználó nem valószínű, hogy elvégzi a javító műveletet. |
+| AdditionalAction | A feltételt az interaktív hitelesítési folyamaton kívül további javító interakciók is feloldhatók a rendszerrel. | Hívja meg a AcquireTokenInteractively () egy olyan üzenet megjelenítéséhez, amely ismerteti a javító műveletet. A hívó alkalmazás dönthet úgy, hogy elrejti a additional_actiont igénylő folyamatokat, ha a felhasználó nem valószínű, hogy elvégzi a javító műveletet. |
 | MessageOnly      | A feltétel jelenleg nem oldható fel. Az interaktív hitelesítési folyamat elindításakor megjelenik egy üzenet, amely ismerteti a feltételt. | A AcquireTokenInteractively () hívásával megjeleníthető egy üzenet, amely ismerteti a feltételt. A AcquireTokenInteractively () UserCanceled-hibát ad vissza, miután a felhasználó beolvasta az üzenetet, és bezárja az ablakot. A hívó alkalmazás dönthet úgy, hogy elrejti a message_only eredményező folyamatokat, ha a felhasználó nem valószínű, hogy kihasználja az üzenetet.|
 | ConsentRequired  | A felhasználói beleegyezés hiányzik vagy vissza lett vonva. | A AcquireTokenInteractively () hívásával adja meg a felhasználót a beleegyezés megadásához. |
 | UserPasswordExpired | A felhasználó jelszava lejárt. | Hívja meg a AcquireTokenInteractively (), hogy a felhasználó alaphelyzetbe állíthatja a jelszavát. |
 | PromptNeverFailed| Az interaktív hitelesítés a következő paraméterrel lett meghívva: prompt = soha, kényszerítve a MSAL, hogy a böngésző cookie-kra támaszkodjon, és ne jelenjen meg a böngésző. Ez nem sikerült. | A AcquireTokenInteractively () hívása prompt nélkül. None |
 | AcquireTokenSilentFailed | A MSAL SDK nem rendelkezik elegendő információval a tokennek a gyorsítótárból való beolvasásához. Ennek oka az lehet, hogy a gyorsítótárban nincsenek tokenek, vagy nem található a fiók. A hibaüzenet további részleteket tartalmaz.  | A AcquireTokenInteractively () hívása. |
-| None    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
+| Nincs    | További részletek nincsenek megadva. A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
 
 ## <a name="code-example"></a>Mintakód
 
@@ -344,7 +355,6 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
  }
 }
 ```
-
 
 ## <a name="javascript-errors"></a>JavaScript-hibák
 

@@ -11,28 +11,28 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825783"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132297"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Általános útmutató a Wingtip jegyek használatához – példa SaaS-alkalmazásokra
 
-Ez a cikk általános útmutatást tartalmaz a Wingtip tickets Azure SQL Database-t használó SaaS-alkalmazások futtatásához. 
+Ez a cikk általános útmutatást tartalmaz a Wingtip tickets Azure SQL Database-t használó SaaS-alkalmazások futtatásához.
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>A Wingtip tickets SaaS-parancsfájlok letöltése és feloldása
 
 A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), ha a ZIP-fájlokat külső forrásból tölti le, és kinyeri. A parancsfájlok zip-fájlból való kibontásakor **kövesse az alábbi lépéseket a. zip fájl zárolásának feloldásához a kicsomagolás előtt**. Ez biztosítja, hogy a parancsfájlok futtatása engedélyezett legyen.
 
-1. Keresse meg a Wingtip tickets SaaS GitHub-tárházat a vizsgálni kívánt adatbázis-bérleti minta alapján: 
+1. Keresse meg a Wingtip tickets SaaS GitHub-tárházat a vizsgálni kívánt adatbázis-bérleti minta alapján:
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Kattintson a **klónozás vagy a letöltés**elemre.
 3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
-4. Kattintson a jobb gombbal a zip-fájlra, és válassza a **Tulajdonságok**lehetőséget. A zip-fájl neve meg fog egyezni a tárház nevével. például. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+4. Kattintson a jobb gombbal a zip-fájlra, és válassza a **Tulajdonságok**lehetőséget. A zip-fájl neve meg fog egyezni a tárház nevével. például. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Az **általános** lapon válassza a **Tiltás feloldása**lehetőséget.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
@@ -42,13 +42,13 @@ A parancsfájlok a *..\\learning modules* mappában találhatók.
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>A Wingtip tickets PowerShell-parancsfájlok használata
 
-Ahhoz, hogy a lehető legtöbbet hozza ki a mintából, el kell sajátítani a megadott szkripteket. Használjon töréspontokat, és hajtsa végre a parancsfájlok végrehajtását, és vizsgálja meg a különböző SaaS-minták megvalósításának módját. Ha a lehető legpontosabban szeretné megismerni a megadott parancsfájlokat és modulokat, javasoljuk, hogy használja a [POWERSHELL ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)-t.
+Ahhoz, hogy a lehető legtöbbet hozza ki a mintából, el kell sajátítani a megadott szkripteket. Használjon töréspontokat, és hajtsa végre a parancsfájlok végrehajtását, és vizsgálja meg a különböző SaaS-minták megvalósításának módját. Ha a lehető legpontosabban szeretné megismerni a megadott parancsfájlokat és modulokat, javasoljuk, hogy használja a [POWERSHELL ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)-t.
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>A központi telepítés konfigurációs fájljának frissítése
 
 Szerkessze a **userconfig. psm1** fájlt az üzembe helyezés során beállított erőforráscsoporthoz és felhasználói értékkel:
 
-1. Nyissa meg a *POWERSHELL ISE* -t, és töltse be...\\learning-modulok\\*userconfig. psm1* 
+1. Nyissa meg a *POWERSHELL ISE* -t, és töltse be...\\learning-modulok\\*userconfig. psm1*
 2. Frissítse a *ResourceGroupName* és a *nevet* az üzemelő példány megadott értékeivel (csak a 10. és a 11. sorban).
 3. Mentse a módosításokat!
 
@@ -76,7 +76,7 @@ Tippek a PowerShell-parancsfájlok vizsgálatához és megerősítéséhez:
 
 A [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) használatával csatlakozhat, és böngészhet az alkalmazás-kiszolgálók és-adatbázisok között.
 
-Az üzembe helyezés kezdetben a bérlők és a katalógus SQL Database-kiszolgálókkal csatlakozik. A kiszolgálók elnevezése az adatbázis-kiosztási mintától függ (lásd alább az egyes sajátosságokat). 
+Az üzembe helyezés kezdetben a bérlők és a katalógus SQL Database-kiszolgálókkal csatlakozik. A kiszolgálók elnevezése az adatbázis-kiosztási mintától függ (lásd alább az egyes sajátosságokat).
 
    - **Önálló alkalmazás:** minden bérlő kiszolgálója (pl. *contosoconcerthall –&lt;user&gt;* Server) és a *Catalog-SA-&lt;felhasználó&gt;*
    - **Adatbázis/bérlő:** *tenants1-DPT-&lt;User&gt;* és *Catalog-DPT-&lt;User&gt;* Servers
@@ -86,19 +86,19 @@ A sikeres bemutató-kapcsolatok biztosítása érdekében minden kiszolgálónak
 
 
 1. Nyissa meg a *SSMS* , és kapcsolódjon a bérlőhöz. A kiszolgáló neve a kiválasztott adatbázis-bérlettől függ (lásd alább az egyes sajátosságokat):
-    - **Önálló alkalmazás:** az egyes bérlők kiszolgálói (pl. *contosoconcerthall –&lt;felhasználó&gt;. database.Windows.net*) 
+    - **Önálló alkalmazás:** az egyes bérlők kiszolgálói (pl. *contosoconcerthall –&lt;felhasználó&gt;. database.Windows.net*)
     - **Adatbázis/bérlő:** *tenants1-DPT-&lt;User&gt;. database.Windows.net*
-    - **Több-bérlős adatbázis:** *tenants1-MT-&lt;User&gt;. database.Windows.net* 
+    - **Több-bérlős adatbázis:** *tenants1-MT-&lt;User&gt;. database.Windows.net*
 2. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :
 
    ![katalóguskiszolgáló elemre](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
 3. A bemutató hitelesítő adatai a következők: login = *fejlesztői*, Password = *P\@ssword1*
 
-    Az alábbi képen látható, hogy az *adatbázisnak a bérlői* minta alapján kell bejelentkeznie. 
-    ![a kapcsolatok](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
-    
-   
+    Az alábbi képen látható, hogy az *adatbázisnak a bérlői* minta alapján kell bejelentkeznie.
+    ![kapcsolat](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+
+
 
 4. Ismételje meg a 2-3 lépést, és kapcsolódjon a katalógus-kiszolgálóhoz (lásd az alábbi, az adatbázis kiválasztási mintája alapján megadott kiszolgálók neveit).
     - **Önálló alkalmazás:** *Catalog-SA-&lt;felhasználó&gt;. database.Windows.net*

@@ -1,5 +1,5 @@
 ---
-title: Szöveg feldolgozása és kinyerése a képekből a dúsítási folyamatban
+title: Szöveg kinyerése a képekből
 titleSuffix: Azure Cognitive Search
 description: Szöveg és egyéb információk feldolgozása és kinyerése az Azure Cognitive Search-folyamatokból származó képekből.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787740"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113853"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
 
@@ -31,7 +31,7 @@ A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek n
 
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
-| imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>Állítsa "generateNormalizedImagePerPage" értékre, ha normalizált képekből álló tömböt hoz létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a képek a *normalized_images* mezőben lesznek elérhetők. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
+| imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>Állítsa "generateNormalizedImagePerPage" értékre, ha normalizált képekből álló tömböt hoz létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a rendszer a képeket a *normalized_images* mezőben teszi elérhetővé. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
 |  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték a 2000. A maximálisan engedélyezett érték 10000. | 
 |  normalizedImageMaxHeight | A generált normalizált képek maximális magassága (képpontban). Az alapértelmezett érték a 2000. A maximálisan engedélyezett érték 10000.|
 
@@ -58,20 +58,20 @@ A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](htt
 }
 ```
 
-Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_images* mező a képek tömbjét fogja tartalmazni. Mindegyik rendszerkép egy összetett típus, amely a következő tagokkal rendelkezik:
+Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_images* mező képek tömbjét fogja tartalmazni. Mindegyik rendszerkép egy összetett típus, amely a következő tagokkal rendelkezik:
 
 | Rendszerkép tagja       | Leírás                             |
 |--------------------|-----------------------------------------|
-| adatok               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
-| Szélessége              | A normalizált képek szélessége képpontban megadva |
-| Magasság             | A normalizált képek magassága képpontban megadva |
+| data               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
+| szélessége              | A normalizált képek szélessége képpontban megadva |
+| magasság             | A normalizált képek magassága képpontban megadva |
 | originalWidth      | A rendszerkép eredeti szélessége a normalizálás előtt. |
 | originalHeight      | A rendszerkép eredeti magassága a normalizálás előtt. |
 | rotationFromOriginal |  A normalizált rendszerkép létrehozásához szükséges fokban lévő óramutató járása. 0 fok és 360 fok közötti érték. Ez a lépés beolvassa a metaadatokat a kamera vagy képolvasó által generált rendszerképből. Általában a 90 fok többszöröse. |
 | contentOffset | Az a tartalom mezőn belüli eltolás, amelyből a képet kinyerték. Ez a mező csak beágyazott rendszerképekkel rendelkező fájlokra alkalmazható. |
 | pageNumber | Ha a képet kibontották vagy PDF-fájlként állították ki, akkor ez a mező tartalmazza a PDF-fájl oldalszámát, amelyet a program kinyert vagy megjelenített, 1-től kezdődően.  Ha a rendszerkép nem PDF-fájlból származik, ez a mező 0 lesz.  |
 
- *Normalized_images*-minta értéke:
+ *Normalized_images*mintájának értéke:
 ```json
 [
   {
@@ -162,7 +162,7 @@ A következő példában a készségkészlet létrehoz egy *merged_text* mezőt,
 }
 ```
 
-Most, hogy már rendelkezik egy merged_text-mezővel, leképezheti azt kereshető mezőként az indexelő definíciójában. A fájlok összes tartalma, beleértve a képek szövegét, kereshetővé válik.
+Most, hogy már rendelkezik egy merged_text mezővel, leképezheti azt kereshető mezőként az indexelő definíciójában. A fájlok összes tartalma, beleértve a képek szövegét, kereshetővé válik.
 
 ## <a name="visualize-bounding-boxes-of-extracted-text"></a>Kinyert szöveg határoló mezőinek megjelenítése
 
@@ -213,7 +213,7 @@ Segítőként, ha a normalizált koordinátákat át kell alakítani az eredeti 
         }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 + [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Képképesség elemzése](cognitive-search-skill-image-analysis.md)
 + [OCR-képesség](cognitive-search-skill-ocr.md)

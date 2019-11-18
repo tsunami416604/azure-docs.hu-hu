@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013469"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132688"
 ---
 # <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez 
 
@@ -26,15 +26,26 @@ Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szer
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>Az entitások létrehozása különbözik az entitások címkézésével
+## <a name="plan-entities-then-create-and-label"></a>Entitások megtervezése, majd létrehozás és címkézés
 
-Először létre kell hoznia egy entitást, mielőtt címkézi az entitást a példában szereplő kifejezéssel. 
+A géppel megtanult entitások létrehozhatók a példa hosszúságú kimondott szöveg, vagy az **entitások** lapról hozhatók létre. 
+
+Általánosságban elmondható, hogy az entitások megtervezésével időt kell fordítani ahhoz, hogy egy géppel megtanult entitást hozzanak létre a portálon. Ezután hozza létre a gép által megtanult entitást a példából, amely az alösszetevőkben és a leírókban és a megkötésekben a lehető legrészletesebben szerepel. A [dekomponálható entitás oktatóanyaga](tutorial-machine-learned-entity.md) bemutatja, hogyan használhatja ezt a módszert. 
+
+Az entitások megtervezésének részeként tudnia kell, hogy szöveg-egyeztetési entitásokra van szüksége (például előre összeépített entitások, reguláris kifejezésű entitások vagy lista entitások). Ezeket az **entitások** lapon hozhatja létre, mielőtt a címkét példaként hosszúságú kimondott szöveg. 
+
+Címkézéskor felcímkézheti az egyes entitásokat, majd felépítheti azt egy szülő géppel megtanult entitásba. Vagy elindíthat egy szülő géppel megtanult entitást, és elvégezheti a gyermek entitások kibontását. 
+
+> [!TIP] 
+>Címkézse az összes olyan szót, amely egy entitást jelezhet, még akkor is, ha a szavakat nem használják az ügyfélalkalmazás kibontásakor. 
+
+## <a name="creating-an-entity-before-or-with-labeling"></a>Entitás létrehozása a címkézés előtt vagy után
 
 Az alábbi táblázat segítségével megtudhatja, hogy mely entitások hozzanak létre vagy adjon hozzá minden entitást az alkalmazáshoz. 
 
 |Entitás típusa|Hol hozható létre entitás a LUIS-portálon|
 |--|--|
-|Gépi megtanult entitás|Entitások vagy leképezés részletei|
+|Gépi tanulással létrejött entitás|Entitások vagy leképezés részletei|
 |Listaentitás|Entitások vagy leképezés részletei|
 |Reguláriskifejezés-entitás|Entitások|
 |Pattern.any entitás|Entitások|
@@ -166,7 +177,7 @@ A LUIS nem engedi, hogy az entitás típusa módosítható, mert ez nem tudja, h
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a mintákról:
 

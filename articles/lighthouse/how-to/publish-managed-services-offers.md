@@ -1,18 +1,14 @@
 ---
 title: Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez irányítja.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: ee8f0f88f1e60c6e8b5da34a165757694f52dcbb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005399"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131287"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -141,6 +137,8 @@ Miután hozzáadta ezt az információt, válassza a **Mentés lehetőséget.**
 
 Miután elvégezte az összes szakaszt, a következő lépés az ajánlat közzététele az Azure Marketplace-en. Válassza a **Közzététel** gombot, hogy elindítsa az ajánlatát élőben. A folyamattal kapcsolatos további információkért lásd: [Azure Marketplace-és AppSource-ajánlatok közzététele](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
+Bármikor [közzéteheti az ajánlat frissített verzióját](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) . Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni egy korábban közzétett ajánlathoz. Ha így tesz, a már hozzáadott ügyfelek egy ikont láthatnak a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján, amely lehetővé teszi, hogy a frissítés elérhető legyen. Minden ügyfél [áttekintheti a módosításokat](view-manage-service-providers.md#update-service-provider-offers) , és eldöntheti, hogy szeretné-e frissíteni az új verzióra. 
+
 ## <a name="the-customer-onboarding-process"></a>Az ügyfél bevezetési folyamata
 
 Miután az ügyfél hozzáadja az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources), amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg.
@@ -153,7 +151,7 @@ Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforrás
 > [!NOTE]
 > Jelenleg az előfizetések (vagy az előfizetésen belüli erőforráscsoportok) nem delegálható, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha egy előfizetést (vagy egy előfizetéshez tartozó erőforráscsoportot) már delegáltak, jelenleg nem lehet Databricks-munkaterületeket létrehozni az előfizetésben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

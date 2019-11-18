@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076897"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123209"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
@@ -56,7 +56,7 @@ További információ a folyamatot a [Modellkezelési](concept-model-management-
 
 Ha bármilyen problémát tapasztal,-e az első teendő a szolgáltatástelepítési feladat felosztania (előző ismertetett) az egyes lépéseket a probléma.
 
-Ha a [webszolgáltatás. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API-t, vagy a [webszolgáltatást. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API-t használja, akkor az üzembe helyezés a feladatok során is hasznos lehet, mivel mindkét függvény egyetlen műveletként hajtja végre a fenti lépéseket. Általában ezek az API-k kényelmesek, de segít megszüntetni az alábbi API-hívásokkal végzett hibaelhárítási lépéseket.
+Ha a [webszolgáltatás. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API-t, vagy a [webszolgáltatást. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API-t használja, akkor az üzembe helyezés a feladatok során is hasznos lehet, mivel mindkét függvény egyetlen műveletként hajtja végre a fenti lépéseket. Általában ezek az API-k kényelmesek, de segít megszüntetni az alábbi API-hívásokkal végzett hibaelhárítási lépéseket.
 
 1. Regisztrálja a modellt. Íme néhány mintakódját:
 

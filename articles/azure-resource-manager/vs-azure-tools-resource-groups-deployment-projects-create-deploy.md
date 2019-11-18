@@ -1,17 +1,14 @@
 ---
-title: Visual Studio Azure-beli erőforráscsoport-projektek létrehozása & üzembe helyezése
+title: Visual Studio Resource Group-projektek létrehozása & üzembe helyezése
 description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-projektet, és telepítse az erőforrásokat az Azure-ba.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 39ee16ac81ee1b163a4ed4c80152a063f7ee619c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597660"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149244"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -23,7 +20,7 @@ Ez a cikk bemutatja, hogyan használható [a Visual Studio 2019-es vagy újabb v
 
 Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webalkalmazás** -sablonnal.
 
-1. A Visual Studióban válassza a **fájl** >**új** >**projekt**lehetőséget.
+1. A Visual Studióban válassza a **fájl**>**új**>**projekt**lehetőséget.
 1. Válassza ki az **Azure erőforráscsoport** -projekt sablonját, és kattintson a **Tovább gombra**.
 
     ![Projekt létrehozása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
@@ -47,8 +44,8 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
    | Fájlnév | Leírás |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |PowerShell-parancsfájl, amely PowerShell-parancsokat futtat az Azure Resource Manager üzembe helyezéséhez. A Visual Studio ezt a PowerShell-parancsfájlt használja a sablon üzembe helyezéséhez. |
-   | Webhely. JSON |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
-   | Webhely. Parameters. JSON |Paraméterfájl, amely a sablonhoz szükséges értékeket tartalmazza. Megadhat paraméterértékeket, amelyekkel testre szabhatóak az egyes telepítések. |
+   | WebSite.json |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
+   | WebSite.parameters.json |Paraméterfájl, amely a sablonhoz szükséges értékeket tartalmazza. Megadhat paraméterértékeket, amelyekkel testre szabhatóak az egyes telepítések. |
 
     Mindegyik erőforráscsoport-telepítési projekt tartalmazza ezeket az alapvető fájlokat. Más projektek további fájlokat is tartalmazhatnak egyéb funkciók támogatásához.
 
@@ -72,7 +69,7 @@ A központi telepítési projektet testreszabhatja úgy, hogy módosítja a tele
 
 1. Válassza ki a **Storage-fiókot** , és adjon meg egy nevet. Olyan nevet adjon meg, amely nem hosszabb 11 karakternél, és csak számokat és kisbetűket tartalmaz.
 
-   ![Tárhely hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
+   ![Tároló hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
 1. Figyelje meg, hogy nem csupán az erőforrás lett hozzáadva, hanem a tárfiók típusának paramétere is, valamint egy változó a tárfiók nevével.
 
@@ -212,7 +209,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
    Mentse a sablont.
 
-1. A sablonban néhány új paraméter szerepel. Ezek az előző lépésben lettek hozzáadva. A **_artifactsLocation** vagy a **_artifactsLocationSasToken** értékeit nem kell megadnia, mert ezek az értékek automatikusan létrejönnek. A mappát és a fájlnevet azonban a központi telepítési csomagot tartalmazó elérési útra kell beállítania. Ezeknek a paramétereknek a nevei a **PackageFolder** és a **PackageFileName**végződéssel rendelkeznek. A név első része a hozzáadott webes üzembe helyezési erőforrás neve. Ebben a cikkben a **ExampleAppPackageFolder** és a **ExampleAppPackageFileName**nevet kapta.
+1. A sablonban néhány új paraméter szerepel. Ezek az előző lépésben lettek hozzáadva. Nem kell megadnia **_artifactsLocation** vagy **_artifactsLocationSasToken** értékét, mivel ezek az értékek automatikusan létrejönnek. A mappát és a fájlnevet azonban a központi telepítési csomagot tartalmazó elérési útra kell beállítania. Ezeknek a paramétereknek a nevei a **PackageFolder** és a **PackageFileName**végződéssel rendelkeznek. A név első része a hozzáadott webes üzembe helyezési erőforrás neve. Ebben a cikkben a **ExampleAppPackageFolder** és a **ExampleAppPackageFileName**nevet kapta.
 
    Nyissa meg a **webhely. Parameters. JSON** fájlt, és állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között megjelenő értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
 
@@ -248,7 +245,7 @@ Ha az az Module parancsfájlt használja, egy kis módosítást kell végeznie a
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Figyelje meg, hogy az előző példában nincs `'/',` **paraméterek ("_artifactsLocation")** és **Parameters ("ExampleAppPackageFolder")** között.
+Figyelje meg az előző példában, hogy a **paraméterek ("_artifactsLocation")** és a **Parameters ("ExampleAppPackageFolder")** között nincs `'/',`.
 
 Hozza létre újra a projektet. A projekt létrehozása biztosítja, hogy a telepíteni kívánt fájlok hozzá legyenek adva az átmeneti mappához.
 
@@ -385,7 +382,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 1. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre és helyezhet üzembe sablonokat a Visual Studio használatával. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 

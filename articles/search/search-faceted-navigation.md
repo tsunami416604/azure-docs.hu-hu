@@ -1,19 +1,19 @@
 ---
-title: Sokoldalú navigáció megvalósítása kategória-hierarchiában
+title: Csiszolt navigációs kategória hierarchiájának hozzáadása
 titleSuffix: Azure Cognitive Search
-description: Vegyen fel egy dimenziós navigálást olyan alkalmazásokba, amelyek integrálva vannak az Azure Cognitive Search, egy felhőalapú keresési szolgáltatással Microsoft Azureon.
+description: Az Azure Cognitive Search-nal integrálható keresési alkalmazásokban az önálló irányított szűréshez hozzáadhat csiszolatlan navigálást.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496514"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112080"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
 
@@ -38,7 +38,7 @@ Ez a cikk a feladatok keresési portálját használja példaként. A példa ASP
 
 -   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 Ha még nem ismeri a fejlesztést, a legjobb módszer a sokoldalú navigálásra, hogy a saját irányított keresés lehetőségeit jelenítse meg. Az előre meghatározott szűrők alapján részletezett keresési élményt nyújt, amely a keresési eredmények gyors, pont-és kattintásos műveletekkel való szűkítéséhez használható. 
 
 ### <a name="interaction-model"></a>Interakciós modell
@@ -67,10 +67,10 @@ Az Azure Cognitive Searchban a kérelem egy vagy több lekérdezési paramétere
 
 A nem releváns találatok kiszűrésének lehetősége a következő kifejezések egyikén vagy mindkettőn keresztül érhető el:
 
--   **Keresés =**  
+-   **search=**  
     A paraméter értéke képezi a keresési kifejezést. Lehet, hogy egyetlen szövegrész vagy egy összetett keresési kifejezés, amely több kifejezést és operátort is tartalmaz. A kiszolgálón a teljes szöveges kereséshez keresési kifejezés használható, kereshető mezők lekérdezése az indexben a megfelelő feltételekhez, az eredmények rangsorban való visszaadása. Ha a `search` NULL értékre állítja, a lekérdezés végrehajtása a teljes index felett van (azaz `search=*`). Ebben az esetben a lekérdezés más elemei, például egy `$filter` vagy pontozási profil, azok az elsődleges tényezők, amelyek hatással vannak a dokumentumok `($filter`ére) és milyen sorrendben (`scoringProfile` vagy `$orderby`).
 
--   **$filter =**  
+-   **$filter=**  
     A szűrők hatékony mechanizmust biztosítanak a keresési eredmények méretének korlátozására az adott dokumentum attribútumainak értékei alapján. Először a rendszer kiértékeli a `$filter`, majd az egyes értékekhez tartozó, a rendelkezésre álló értékeket és a hozzájuk tartozó számokat generáló aspektusokat.
 
 Az összetett keresési kifejezések csökkentik a lekérdezés teljesítményét. Ha lehetséges, használjon jól felépített szűrési kifejezéseket a pontosság növeléséhez és a lekérdezési teljesítmény javításához.

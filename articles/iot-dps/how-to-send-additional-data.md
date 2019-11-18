@@ -7,12 +7,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 1ff06afd363745ae465a8f5b625c27a4a9e4a222
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609605"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123183"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>További adatok átvitele az eszköz és a DPS között
 A DPS-nek esetenként további adatokra van szüksége az eszközről ahhoz, hogy megfelelő módon kiépíthesse azokat a helyes IoT Hubon, az adatokat pedig az eszköznek kell rendelkezésre bocsátania. A DPS azonban visszatérhet az eszközre, hogy az ügyféloldali logikát is megkönnyítse. 
@@ -21,7 +21,7 @@ A DPS-nek esetenként további adatokra van szüksége az eszközről ahhoz, hog
 Ez a funkció az [Egyéni foglalások](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)fejlesztéséhez használható. Például az eszköz modellje alapján szeretné kiosztani az eszközöket az emberi beavatkozás nélkül. Ebben az esetben [Egyéni foglalást](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)fog használni. Beállíthatja, hogy az eszköz bejelentse a modell adatait az [eszköz regisztrálása hívásának](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)részeként. A DPS továbbítja az eszköz adatait az egyéni kiosztási webhookba. A függvény eldöntheti, hogy mely IoT Hub az eszköz fog megjelenni, amikor megkapja az eszköz modelljének adatait. Ehhez hasonlóan ha a webhook adatokat küld vissza az eszköznek, akkor ezeket sztringként adja vissza a webhookválaszban.  
 
 ## <a name="device-sends-data-to-dps"></a>Az eszköz adatokat küld a DPS-nek
-Ha az eszköz [regisztrálja az eszközt, hívja](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice) meg a DPS-t. A regisztrálási hívás növelhető úgy, hogy a törzs többi mezőjét is felhasználhassa. A törzs a következőhöz hasonlóan néz ki: 
+Ha az eszköz [regisztrálja](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice) a DPS-t, a regisztrálási hívás javítható a törzs más mezőinek elvégzéséhez. A törzs a következőhöz hasonlóan néz ki: 
    ```
    { 
        “registrationId”: “mydevice”, 

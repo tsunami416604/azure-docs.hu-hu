@@ -1,25 +1,17 @@
 ---
 title: Ajánlott eljárások az Azure cache Redis-hez
 description: Az ajánlott eljárások követésével megtudhatja, hogyan használhatja hatékonyan az Azure cache-t a Redis.
-services: cache
-documentationcenter: na
 author: joncole
-manager: jhubbard
-editor: tysonn
-ms.assetid: 3e4905e3-89e3-47f7-8cfb-12caf1c6e50e
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: 29e5a81c438a7aa834fc002b916739a952c9a270
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 136c29245c63b2f2feed79a10a09fb57a379736f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785872"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122390"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure cache Redis-hez 
 Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
@@ -67,7 +59,7 @@ A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet
 ## <a name="when-is-it-safe-to-retry"></a>Mikor biztonságos az Újrapróbálkozás?
 Sajnos nincs egyszerű válasz.  Minden alkalmazásnak el kell döntenie, hogy milyen műveleteket lehet újrapróbálni, és nem.  Az egyes műveletek különböző követelményekkel és a kulcsok közötti függőségekkel rendelkeznek.  Íme néhány dolog, amit érdemes figyelembe vennie:
 
- * Az ügyféloldali hibák akkor is beszerezhetők, ha a Redis sikeresen futtatta a futtatni kívánt parancsot.  Példa:
+ * Az ügyféloldali hibák akkor is beszerezhetők, ha a Redis sikeresen futtatta a futtatni kívánt parancsot.  Például:
      - Az időtúllépés egy ügyféloldali fogalom.  Ha a művelet elérte a kiszolgálót, a kiszolgáló akkor is futtatja a parancsot, ha az ügyfél várakozik.  
      - Ha a szoftvercsatorna-kapcsolaton hiba történik, nem lehet tudni, hogy a művelet ténylegesen futott-e a kiszolgálón.  A hiba például akkor fordulhat elő, ha a kiszolgáló feldolgozza a kérést, de az ügyfél nem kapja meg a választ.
  *  Hogyan reagál az alkalmazás, ha véletlenül kétszer ugyanazt a műveletet futtatom?  Mi a teendő, ha az egész számot kétszer szeretném növelni, csak egyszer?  Az alkalmazásom ugyanarra a kulcsra ír több helyről?  Mi a teendő, ha az újrapróbálkozási logika felülírja az alkalmazás egy másik része által beállított értéket?
@@ -89,10 +81,10 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  
 ### <a name="redis-benchmark-examples"></a>Redis – teljesítményteszt-példák
 **Tesztelés előtti beállítás**: ezzel előkészíti a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
 
 **A késés tesztelése**: Ez a Get-kéréseket egy 1k hasznos adat használatával teszteli.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
+> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
 
 **Az átviteli sebesség tesztelése:** Ez egy 1k-adattartalommal rendelkező, folyamatban lévő GET kérelmeket használ.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50

@@ -1,28 +1,20 @@
 ---
-title: ASP.NET-Webalkalmazás létrehozása az Azure cache for Redis | Microsoft Docs
+title: ASP.NET-Webalkalmazás létrehozása az Azure cache Redis
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre ASP.NET-webalkalmazást az Azure cache használatával a Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326501"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122584"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: Az Azure cache használata a Redis egy ASP.NET-webalkalmazással 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: az Azure cache használata a Redis ASP.NET-webalkalmazással 
 
 Ebben a rövid útmutatóban a Visual Studio 2019 segítségével hozhat létre olyan ASP.NET-webalkalmazást, amely az Azure cache-hez csatlakozik a Redis-hoz az adatok tárolásához és lekéréséhez a gyorsítótárból. Ezután központilag telepíti az alkalmazást Azure App Service.
 
@@ -67,7 +59,7 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>A *CacheSecrets.config* fájl módosítása
 
-1. Hozzon létre egy *CacheSecrets.config* nevű fájlt a számítógépén. Helyezze egy olyan helyre, ahonnan a mintaalkalmazás forráskódja nem fogja beolvasni. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
+1. Hozzon létre egy fájlt a *CacheSecrets. config*nevű számítógépen. Helyezze olyan helyre, ahol a minta alkalmazás forráskódja nem lesz bejelentkezve. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
 
 1. Szerkessze a *CacheSecrets.config* fájlt. Ezután adja hozzá a következő tartalmat:
 
@@ -109,7 +101,7 @@ Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alk
 2. A *web.config* fájlban keresse meg az `<appSetting>` elemet. Ezután adja hozzá a következő `file` attribútumot. Ha más fájlnevet vagy helyet használ, cserélje le a példában látható értékeket.
 
 * Előtte: `<appSettings>`
-* Után`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Utána: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Amikor üzembe helyezi a webalkalmazást az Azure-ban, a *CacheSecrets. config* fájl nincs telepítve.
 
@@ -245,9 +237,9 @@ Alapértelmezés szerint a projekt úgy van konfigurálva, hogy helyben üzemelt
 ### <a name="to-run-the-app-locally"></a>Az alkalmazás futtatása helyben
 1. A Visual Studióban válassza a **Debug** (Hibakeresés)  >  **Start Debugging** (Hibakeresés indítása) elemet az alkalmazás teszteléshez és hibakereséshez való létrehozásához és helyi elindításához.
 
-2. A böngészőben válassza az **Azure cache** lehetőséget a Redis teszteléséhez a navigációs sávon.
+2. A böngészőben válassza az **Azure cache lehetőséget a Redis teszteléséhez** a navigációs sávon.
 
-3. A következő példában a `Message` kulcs korábban egy gyorsítótárazott értékkel rendelkezett, amelyet a portálon a Redis-konzol Azure cache szolgáltatásával állítottak be. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
+3. A következő példában a `Message`-kulcs korábban egy gyorsítótárazott értékkel rendelkezett, amelyet a portálon a Redis-konzolhoz készült Azure cache használatával állítottak be. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
     ![Egyszerű teszt eredménye – helyi](./media/cache-web-app-howto/cache-simple-test-complete-local.png)
 

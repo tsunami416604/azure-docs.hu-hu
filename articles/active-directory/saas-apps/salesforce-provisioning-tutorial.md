@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047240"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120549"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -55,7 +55,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 
 ## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-nek a Salesforce felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és Salesforce alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
+Ez a szakasz végigvezeti az Azure AD-nek a [Salesforce felhasználói fiók létesítési API-V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm)való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure ad-ben a felhasználók és csoportok hozzárendelése alapján a Salesforce-ben a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!Tip]
 > Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Salesforce, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
@@ -120,7 +120,16 @@ Ezzel elindítja a felhasználók és csoportok szakaszban Salesforce rendelt fe
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Gyakori problémák
-* A Salesforce való kiépítés alapértelmezett attribútuma a SingleAppRoleAssignments kifejezéssel tartalmazza a felhasználói szerepkörök Salesforce való kiépítését. Győződjön meg arról, hogy a felhasználók nem rendelkeznek több, az alkalmazáshoz hozzárendelt szerepkörrel, mivel az attribútum-hozzárendelés csak az egyik szerepkör kiosztását támogatja. 
+* Ha olyan problémák merülnek fel, amelyek engedélyezik a Salesforce való hozzáférést, ügyeljen a következőkre:
+    * A használt hitelesítő adatoknak rendszergazdai hozzáférése van a Salesforce.
+    * Az Ön által használt Salesforce verziója támogatja a webes hozzáférést (például fejlesztői, vállalati, homokozó és korlátlan számú Salesforce).
+    * A webes API-hozzáférés engedélyezve van a felhasználó számára.
+* Az Azure AD-kiépítési szolgáltatás támogatja a felhasználó számára a kiépítési nyelvet, a területi beállításokat és az időzónát. Ezek az attribútumok az alapértelmezett attribútum-hozzárendelésekben találhatók, de nem rendelkeznek alapértelmezett forrásoldali attribútummal. Győződjön meg arról, hogy az alapértelmezett forrásoldali attribútumot választotta, és hogy a forrás attribútum a SalesForce által várt formátumban van. Például az localeSidKey for English (Egyesült Államok) en_US. Tekintse át az [itt](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) megadott útmutatót a megfelelő localeSidKey-formátum meghatározásához. A languageLocaleKey formátumait [itt](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)találja. A formátum helyességének biztosítása mellett előfordulhat, hogy az [itt](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)leírtak szerint a nyelvnek engedélyezve kell lennie a felhasználók számára. 
+* **SalesforceLicenseLimitExceeded:** A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. További licenceket is megadhat a célalkalmazás számára, vagy áttekintheti a felhasználói hozzárendelések és attribútumok leképezésének konfigurációját, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.
+* **SalesforceDuplicateUserName:** A felhasználót nem lehet kiépíteni, mert egy másik Salesforce.com-bérlőben duplikált "username" Salesforce.com rendelkezik.  A Salesforce.com-ben a "username" attribútum értékének egyedinek kell lennie az összes Salesforce.com-bérlőn.  Alapértelmezés szerint a felhasználó userPrincipalName Azure Active Directory a "username" lesz a Salesforce.com.   Két lehetőség közül választhat.  Az egyik lehetőség, hogy megkeresse és átnevezi a felhasználót a "username" névvel a másik Salesforce.com-bérlőben, ha a másik bérlőt is felügyeli.  A másik lehetőség az Azure Active Directory felhasználó hozzáférésének eltávolítása arra a Salesforce.com-bérlőre, amelyhez a címtár integrálva van. A következő szinkronizálási kísérlet során újra próbálkozunk a művelettel. 
+* **SalesforceRequiredFieldMissing:** A Salesforce használatához bizonyos attribútumoknak jelen kell lennie a felhasználó számára a felhasználó sikeres létrehozásához vagy frissítéséhez. Ez a felhasználó nem rendelkezik a szükséges attribútumok egyikével. Győződjön meg arról, hogy az attribútumok, például az e-mailek és az aliasok fel vannak töltve az összes olyan felhasználóra, akit a Salesforce kíván kiépíteni. Azokat a felhasználókat, akik nem rendelkeznek ezekkel az attribútumokkal, [attribútum-alapú hatóköri szűrőket](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)használnak fel. 
+* A Salesforce való kiépítés alapértelmezett attribútumának leképezése magában foglalja az SingleAppRoleAssignments kifejezést, amely az Azure AD-ben a Salesforce-ben történő appRoleAssignments leképezésére használható. Győződjön meg arról, hogy a felhasználók nem rendelkeznek több alkalmazás-szerepkör-hozzárendeléssel az Azure AD-ben, mivel az attribútumok leképezése csak az egyik szerepkör kiosztását támogatja. 
+
 
 ## <a name="additional-resources"></a>További források
 

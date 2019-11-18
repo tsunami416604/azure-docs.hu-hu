@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686667"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132004"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Ez a kód meghívja a ContainerURL [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) és [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) függvényt a [megszakítási](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) példányok használata nélkül. Ha a rövid útmutatóhoz egyszerűen szeretné megtartani a dolgokat, ez a kód feltételezi, hogy a Storage-fiók létrejött, és engedélyezve van. Az éles kódban a megszakító példány használatával adja hozzá az időtúllépési funkciót.
+Ez a kód meghívja a ContainerURL [create](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) és [delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) függvényt a [megszakítási](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) példányok használata nélkül. Ha a rövid útmutatóhoz egyszerűen szeretné megtartani a dolgokat, ez a kód feltételezi, hogy a Storage-fiók létrejött, és engedélyezve van. Az éles kódban a megszakító példány használatával adja hozzá az időtúllépési funkciót.
 
 ### <a name="list-blobs"></a>Blobok listázása
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Ez a kód meghívja a [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) függvényt egy hurokban, így biztosítva az összes szegmens lekérését. Minden szegmensnél hurkot vesz fel a benne található blob-elemek listáján, és frissíti a **fájlok** listáját.
+Ez a kód meghívja a [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) függvényt egy hurokban, így biztosítva az összes szegmens lekérését. Minden szegmensnél hurkot vesz fel a benne található blob-elemek listáján, és frissíti a **fájlok** listáját.
 
 ### <a name="upload-blobs"></a>Blobok feltöltése
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Ez a kód csatlakoztatja a **fájlok kiválasztása és feltöltése** gombot a rejtett `file-input` elemhez. Így a gomb `click` esemény elindítja a fájl bemeneti `click` eseményét, és megjeleníti a fájl-választót. Miután kiválasztotta a fájlokat, és bezárta a párbeszédpanelt, a `input` esemény bekövetkezik, és a rendszer meghívja a `uploadFiles` függvényt. Ez a függvény meghívja a csak böngészőalapú [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) függvényt minden kiválasztott fájlhoz. Minden hívás egy ígéretet ad vissza, amely egy listához kerül, így egyszerre csak egyszer lehet várni, így a fájlok párhuzamosan tölthetők fel.
+Ez a kód csatlakoztatja a **fájlok kiválasztása és feltöltése** gombot a rejtett `file-input` elemhez. Így a gomb `click` esemény elindítja a fájl bemeneti `click` eseményét, és megjeleníti a fájl-választót. Miután kiválasztotta a fájlokat, és bezárta a párbeszédpanelt, a `input` esemény bekövetkezik, és a rendszer meghívja a `uploadFiles` függvényt. Ez a függvény meghívja a csak böngészőalapú [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) függvényt minden kiválasztott fájlhoz. Minden hívás egy ígéretet ad vissza, amely egy listához kerül, így egyszerre csak egyszer lehet várni, így a fájlok párhuzamosan tölthetők fel.
 
 ### <a name="delete-blobs"></a>Blobok törlése
 

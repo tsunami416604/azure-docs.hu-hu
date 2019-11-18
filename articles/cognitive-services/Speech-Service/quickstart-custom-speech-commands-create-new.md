@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)'
+title: 'Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben egy üzemeltetett egyéni parancsok alkalmazását hozza létre és teszteli.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: bfe871ce6f7cd2fbd6ada4b825e41ebdf5ac3f12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507560"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111372"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)
 
@@ -105,7 +105,7 @@ Most adjon hozzá egy befejezési szabályt, amely arra figyelmezteti a felhaszn
 | Beállítás    | Ajánlott érték                        | Leírás                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Szabály neve  | "ConfirmationResponse"                 | A szabály célját leíró név          |
-| Feltételek | None                                   | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+| Feltételek | Nincs                                   | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
 | Műveletek    | SpeechResponse "ok, bekapcsolás a TÉVÉn" | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
 ## <a name="try-it-out"></a>Próbálja ki!

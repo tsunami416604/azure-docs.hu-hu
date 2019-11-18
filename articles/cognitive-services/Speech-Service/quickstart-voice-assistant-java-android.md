@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504073"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111794"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rövid útmutató: hangsegéd létrehozása Java nyelven Androidon a Speech SDK használatával
 
@@ -30,9 +30,9 @@ Ez az alkalmazás a Speech SDK Maven-csomaggal és Android Studio 3,3-mel kész�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
-* Korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurált robot
-* [Android Studio](https://developer.android.com/studio/) v 3.3-as vagy újabb verzió
+- Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
+- Korábban létrehozott, a [közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurált robot
+- [Android Studio](https://developer.android.com/studio/) v 3.3-as vagy újabb verzió
 
     > [!NOTE]
     > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
@@ -96,9 +96,9 @@ Ezután cserélje le a `activity_main.xml` tartalmát a következő kódra:
 
 Ez az XML egy egyszerű felhasználói felületet határoz meg a robottal való interakcióhoz.
 
-* A `button` elem interakciót kezdeményez, és a rákattintáskor meghívja a `onBotButtonClicked` metódust.
-* A `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal folytatott kommunikáció során.
-* A `activityText` elem megjeleníti a robot legújabb robot-keretrendszer tevékenységéhez tartozó JSON-adattartalmat.
+- A `button` elem interakciót kezdeményez, és a rákattintáskor meghívja a `onBotButtonClicked` metódust.
+- A `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal folytatott kommunikáció során.
+- A `activityText` elem megjeleníti a robot legújabb robot-keretrendszer tevékenységéhez tartozó JSON-adattartalmat.
 
 A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
 

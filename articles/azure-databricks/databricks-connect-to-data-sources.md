@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 932031f545ccc75cb12f368f5c7894c1b5e454cd
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091688"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129386"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Kapcsolódás adatforrásokhoz Azure Databricks
 
@@ -43,7 +43,7 @@ Az alábbi lista az Azure-ban használható adatforrásokat tartalmazza, amelyek
 
     Ez a hivatkozás azt ismerteti, hogyan használható a [Azure Cosmos db Spark-összekötő](https://github.com/Azure/azure-cosmosdb-spark) a Azure Databricksból a Azure Cosmos db lévő adatok eléréséhez.
 
-- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector)
+- [Azure Event Hubs](/azure/event-hubs/event-hubs-spark-connector)
 
     Ez a hivatkozás azt ismerteti, hogyan használható az [azure Event Hubs Spark-összekötő](https://github.com/Azure/azure-event-hubs-spark) Azure Databricks az adatok Azure-beli Event Hubs való eléréséhez.
 
@@ -52,7 +52,7 @@ Az alábbi lista az Azure-ban használható adatforrásokat tartalmazza, amelyek
     Ez a hivatkozás azt ismerteti, hogyan használható az Azure SQL Data Warehouse-összekötő a Azure Databricksból való csatlakozáshoz.
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatok Azure Databricksba való importálásának forrásairól a [Azure Databricks adatforrásaiban](/azure/databricks/data/data-sources/index)talál további információt.
 

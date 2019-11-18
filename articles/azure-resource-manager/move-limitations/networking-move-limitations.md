@@ -1,17 +1,14 @@
 ---
-title: Azure hálózati erőforrások áthelyezése új előfizetésre vagy erőforráscsoporthoz | Microsoft Docs
+title: Azure hálózati erőforrások áthelyezése új előfizetésre vagy erőforráscsoporthoz
 description: A Azure Resource Manager használatával áthelyezheti a virtuális hálózatokat és egyéb hálózati erőforrásokat egy új erőforráscsoporthoz vagy előfizetésbe.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: 14a7cb326a3017b1bdbcad21c8483eaaacd54674
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: c4e6acb52f6342c57fb1db9fc3e83d90d6d01285
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437806"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150823"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Útmutató a hálózati erőforrások áthelyezéséhez
 
@@ -19,7 +16,7 @@ Ez a cikk bemutatja, hogyan helyezhetők át virtuális hálózatok és egyéb h
 
 ## <a name="dependent-resources"></a>Függő erőforrások
 
-Egy virtuális hálózat áthelyezésekor a függő erőforrásokat is át kell helyeznie. A VPN-átjárók esetében át kell helyeznie az IP-címeket, a virtuális hálózati átjárókat és az összes társított kapcsolati erőforrást. A helyi hálózati átjárók egy másik erőforráscsoporthoz is lehetnek.
+Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erőforrások. A VPN-átjárók IP-címek, virtuális hálózati átjárók és minden kapcsolódó kapcsolati erőforrás kell áthelyezni. Helyi hálózati átjárók egy másik erőforráscsoportban található is lehet.
 
 Ha egy virtuális gépet egy hálózati kártyával szeretne áthelyezni egy új előfizetésbe, az összes függő erőforrást át kell helyeznie. Helyezze át a virtuális hálózatot a hálózati adapterhez, a virtuális hálózathoz tartozó összes többi hálózati adaptert és a VPN-átjárókat.
 
@@ -27,12 +24,12 @@ További információ: [forgatókönyv az előfizetések közötti áthelyezésh
 
 ## <a name="peered-virtual-network"></a>Egyenrangú virtuális hálózat
 
-Egy társ virtuális hálózat áthelyezéséhez először le kell tiltania a virtuális hálózat társítását. A letiltást követően áthelyezheti a virtuális hálózatot. Az áthelyezést követően engedélyezze újra a virtuális hálózat társítását.
+Egy virtuális Társhálózat áthelyezni, előbb le kell tiltania a virtuális hálózatok közötti társviszony. Ha le van tiltva, áthelyezheti a virtuális hálózat. Az áthelyezés után a virtuális hálózatok közötti társviszony újraengedélyezni.
 
 ## <a name="subnet-links"></a>Alhálózati kapcsolatok
 
-A virtuális hálózat nem helyezhető át másik előfizetésbe, ha a virtuális hálózat olyan alhálózatot tartalmaz, amely erőforrás-navigációs hivatkozásokkal rendelkezik. Ha például egy Redis erőforráshoz tartozó Azure cache-t egy alhálózatba helyeznek üzembe, az alhálózat erőforrás-navigációs hivatkozással rendelkezik.
+Virtuális hálózat nem helyezhetők át másik előfizetésbe való, ha a virtuális hálózati erőforrás-navigációs hivatkozásaival egy alhálózatot tartalmaz. Például ha az Azure Cache Redis erőforrás egy alhálózatában van üzembe helyezve, az alhálózatra, erőforrás-navigációs hivatkozást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../resource-group-move-resources.md).

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 795ca6f1ee45f11fe44f9c14efda1d3463dc9e7c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076819"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123872"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for PostgreSQL számítási erőforrások számára fenntartott kapacitással
 
@@ -20,7 +20,7 @@ A Azure Database for PostgreSQL mostantól segít pénzt megtakarítani a szám�
 A foglalást nem kell hozzárendelni adott Azure Database for PostgreSQL kiszolgálókhoz. Egy már futó Azure Database for PostgreSQL vagy újonnan üzembe helyezett szolgáltatás automatikusan megkapja a fenntartott díjszabás előnyeit. A foglalás megvásárlásával egy évig előre fizet a számítási költségekért. A foglalás megvásárlása után az Azure Database for PostgreSQL számítási díjait, amelyek megfelelnek a foglalási attribútumoknak, már nem számítjuk fel az utólagos elszámolású díjszabást. A foglalás nem vonatkozik a PostgreSQL-adatbázis-kiszolgálókhoz kapcsolódó szoftverekre, hálózatokra vagy tárolási díjakra. A foglalási időszak végén a számlázási juttatás lejár, a Azure Database for PostgreSQL pedig az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem automatikus megújítást végeznek. A díjszabással kapcsolatos információkért tekintse meg a [Azure Database for PostgreSQL fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> A fenntartott kapacitás díjszabása csak a Azure Database for PostgreSQL [egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) telepítés esetén érhető el, és nem a [nagy kapacitású Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus-preview) telepítéséhez.
+> A fenntartott kapacitás díjszabása csak a Azure Database for PostgreSQL [egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) telepítés esetén érhető el, és nem a [nagy kapacitású Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) telepítéséhez.
 
 A [Azure Portal](https://portal.azure.com/)Azure Database for PostgreSQL fenntartott kapacitást is vásárolhat. A fenntartott kapacitás megvásárlása:
 

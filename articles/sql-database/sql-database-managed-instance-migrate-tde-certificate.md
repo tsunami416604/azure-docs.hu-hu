@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: f0bc66260a0eaa66e71241148591146fa38d4120
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 202267d4fffc7c6f0d99cd2a6ef3bbee82947a81
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821791"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132394"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE-védelemmel ellátott adatbázis tanúsítványának átirányítása Azure SQL Database felügyelt példányra
 
@@ -41,7 +41,7 @@ Alternatív megoldásként használhat egy teljes körűen felügyelt szolgálta
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 - Telepített [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) parancssori eszköz egy helyszíni kiszolgálón vagy egy olyan számítógépen, amely hozzáfér a fájlként exportált tanúsítványhoz. A Pvk2Pfx eszköz az [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) része, amely egy önálló parancssori környezet.
-- Telepített [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell), 5.0-s vagy újabb verzió.
+- Telepített [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell), 5.0-s vagy újabb verzió.
 - Azure PowerShell modul [telepítve és frissítve](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - [Az az. SQL modul](https://www.powershellgallery.com/packages/Az.Sql).
   A PowerShell modul telepítéséhez/frissítéséhez a következő parancsokat kell futtatni a PowerShellben:

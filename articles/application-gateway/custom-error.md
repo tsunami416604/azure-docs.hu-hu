@@ -1,78 +1,78 @@
 ---
-title: Egyéni hibalapok Azure Application Gateway létrehozása
-description: Ez a cikk bemutatja, hogyan hozhat létre az Application Gateway vlastní chybové stránky.
+title: Azure-Application Gateway egyéni hibák lapjainak létrehozása
+description: Ez a cikk bemutatja, hogyan hozhat létre Application Gateway egyéni hibaüzeneteket. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff11f686287498fe12b31d15a630178bb12035ad
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60832040"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129862"
 ---
-# <a name="create-application-gateway-custom-error-pages"></a>Egyéni hibalapok Application Gateway létrehozása
+# <a name="create-application-gateway-custom-error-pages"></a>Egyéni hibaüzenetek Application Gateway létrehozása
 
 Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
 
-Például a saját karbantartás oldalon adhatja meg, ha a webalkalmazás nem érhető el. Vagy egy jogosulatlan hozzáférés oldalt hozhat létre, ha egy rosszindulatú kérelmet küld a webalkalmazást.
+Megadhatja például saját karbantartási oldalát, ha a webalkalmazás nem érhető el. A jogosulatlan hozzáférési lapokat is létrehozhat, ha rosszindulatú kérést küld egy webalkalmazásnak.
 
-Egyéni hibalapok a következő két forgatókönyveket támogatja:
+Az egyéni hibák a következő két forgatókönyv esetén támogatottak:
 
-- **Karbantartás oldalon** -e hibalapot érkezik egy 502 Hibás átjáró lap helyett. Látható, amikor az Application Gateway rendelkezik a forgalom irányítása a háttérrendszer nélküli. Ha például azt, ütemezett karbantartás, illetve ha előre nem látott probléma hatással van a háttérrendszeri készlet hozzáférést.
-- **Jogosulatlan hozzáférés lap** -e hibalapot érkezik egy 403-as jogosulatlan hozzáférési lap helyett. Látható, amikor az Application Gateway WAF rosszindulatú forgalom észleli és blokkolja ezt a műveletet.
+- **Karbantartási lap** – ezt az egyéni hibaüzenetet a rendszer a 502 hibás átjáró oldal helyett elküldi. Akkor jelenik meg, ha Application Gateway nem rendelkezik a forgalom átirányításához szükséges háttérrel. Például, ha ütemezett karbantartást végez, vagy ha egy nem várt probléma a háttérbeli készlethez való hozzáférésre van hatással.
+- **Jogosulatlan hozzáférés lap** – ezt az egyéni hibaüzenetet a rendszer a 403 jogosulatlan hozzáférési oldal helyett elküldi. Akkor jelenik meg, ha a Application Gateway WAF kártékony forgalmat észlel, és blokkolja azt.
 
-Ha hiba történt a háttérkiszolgálók származik, majd átadva mentén, módosítás nélküli vissza a hívónak. Egyéni hibalap nem jelenik meg. Az Application gateway is egy egyéni hibalap megjelenítése, amikor a kérelem nem érhető el a háttérrendszert.
+Ha egy hiba a háttér-kiszolgálókról származik, akkor azt a rendszer visszaadja a hívónak visszaadott vissza. Nem jelenik meg egyéni hiba lap. Az Application Gateway egy egyéni hibaüzenetet jelenít meg, ha egy kérelem nem tudja elérni a háttérrendszer elérését.
 
-Egyéni hibalapok a globális szinten és a figyelő szintjén adható meg:
+Az egyéni hibaüzenetek a globális szinten és a figyelő szintjén is meghatározhatók:
 
-- **Globális szintű** -forgalom számára, hogy az application gateway szolgáltatásban üzembe helyezett összes webes alkalmazások a hibalap utal.
-- **Figyelő szint** -forgalomhoz, a figyelő a hibalap vonatkozik.
-- **Mindkét** – az egyéni hibalap, a figyelő szintjén definiált felülbírálások globális szinten az egy csoport.
+- **Globális szint** – a hiba lap az adott Application Gateway-ben üzembe helyezett webalkalmazások forgalmára vonatkozik.
+- **Figyelő szintje** – a hiba oldal a figyelőn fogadott forgalomra vonatkozik.
+- **Mindkettő** – a figyelő szintjén definiált egyéni hibaüzenet felülbírálja az egy globális szinten beállított készletet.
 
-Hozzon létre egy egyéni Hibaoldal, kell rendelkeznie:
+Egyéni hiba lap létrehozásához a következőket kell tennie:
 
-- a válasz HTTP-állapotkódot.
-- a hibalaphoz tartozó megfelelő hely. 
-- a nyilvánosan elérhető Azure storage blob helyéhez.
-- *.htm vagy *.html kiterjesztés típusú. 
+- egy HTTP-válasz állapotkódot.
+- a hiba oldalának megfelelő hely. 
+- nyilvánosan elérhető Azure Storage-blob a helyhez.
+- egy *. htm vagy *. html kiterjesztés típusa. 
 
-A hibalap méretének 1 MB-nál kisebbnek kell lennie. Ha a hiba lapon társított képek, azok nyilvánosan hozzáférhető abszolút URL-címek vagy az egyéni hibalap a base64-kódolású lemezkép beágyazott kell lennie. Relatív hivatkozásokat képekkel blob ugyanazon a helyen jelenleg nem támogatott. 
+A hiba lap méretének 1 MB-nál kisebbnek kell lennie. Ha a hiba oldalon található képek vannak csatolva, akkor az egyéni hiba lapon a nyilvánosan elérhető abszolút URL-címek vagy Base64-kódolású lemezképek jelennek meg. Az azonos blob-helyen található rendszerképekkel való relatív hivatkozások jelenleg nem támogatottak. 
 
-Miután megadott egy hibalap, az application gateway a tárolási blob helyről, letölti, és menti a helyi application gateway gyorsítótár. Ezután a hibalap biztosítja az application gateway-ről. Egy meglévő egyéni hibalap módosításához az application gateway-konfigurációt egy másik blob pontjára kell mutatnia. Az application gateway nem rendszeres időközönként ellenőrzi a blob helyére beolvasni az új verziók.
+Miután megadta a hibaüzenetet, az Application Gateway letölti a tárolási blob helyéről, és a helyi Application Gateway-gyorsítótárba menti azt. Ezt követően a rendszer közvetlenül az Application gatewayből kézbesíti a hiba lapot. Egy meglévő egyéni hiba lap módosításához az Application Gateway konfigurációjában egy másik blob-helyre kell mutatnia. Az Application Gateway nem ellenőrzi rendszeresen a blob helyét az új verziók beolvasásához.
 
-## <a name="portal-configuration"></a>Portálbeállítások
+## <a name="portal-configuration"></a>Portál konfigurálása
 
-1. Application gatewayhez a portálon keresse meg és válassza ki az application gateway.
+1. Navigáljon Application Gateway a portálon, és válasszon egy Application Gateway-t.
 
-    ![rendelkezésre állási csoport – áttekintés](media/custom-error/ag-overview.png)
-2. Kattintson a **figyelői** , és keresse meg, ahol egy hibalap adja meg szeretné egy adott figyelőt.
+    ![AG – áttekintés](media/custom-error/ag-overview.png)
+2. Kattintson a **figyelők** elemre, és navigáljon egy adott figyelőhöz, ahol egy hibaüzenetet szeretne megadni.
 
     ![Application Gateway figyelők](media/custom-error/ag-listener.png)
-3. A WAF 403-as hibaüzenet egyéni hibalap vagy egy 502 karbantartás oldalon konfigurálja a figyelő szintjén.
+3. Egyéni hibaüzenetet adhat meg egy 403 WAF-hiba vagy egy 502-karbantartási lap számára a figyelő szintjén.
 
     > [!NOTE]
-    > Globális szintű vlastní chybové stránky létrehozása az Azure Portal jelenleg nem támogatott.
+    > A globális szintű egyéni hibák lapjainak létrehozása a Azure Portal jelenleg nem támogatott.
 
-4. Egy adott hiba állapotkód egy nyilvánosan elérhető-e a blob URL-címet, és kattintson a **mentése**. Az Application Gateway mostantól az egyéni hibalap van konfigurálva.
+4. Adja meg az adott hibakódhoz tartozó nyilvánosan elérhető blob URL-címét, majd kattintson a **Mentés**gombra. A Application Gateway mostantól az egyéni hiba lapra van konfigurálva.
 
-   ![Application Gateway-hibakódok](media/custom-error/ag-error-codes.png)
+   ![Application Gateway hibakódok](media/custom-error/ag-error-codes.png)
 
 ## <a name="azure-powershell-configuration"></a>Azure PowerShell-konfigurálás
 
-Azure PowerShell segítségével konfigurálhatja egy egyéni Hibaoldal. Ha például egy globális vlastní chybovou stránku:
+A Azure PowerShell használatával egyéni hibaüzeneteket adhat meg. Például egy globális egyéni hiba lap:
 
 `$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
 
-Vagy egy figyelő hibalap:
+Vagy egy figyelő szintű hiba lapja:
 
 `$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
 
-További információkért lásd: [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) és [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+További információ: [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) és [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
 
 ## <a name="next-steps"></a>További lépések
 
-Application Gateway-diagnosztika kapcsolatos információkért lásd: [háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway](application-gateway-diagnostics.md).
+További információ a Application Gateway diagnosztika használatáról: [a háttér állapota, a diagnosztikai naplók és a Application Gateway metrikái](application-gateway-diagnostics.md).

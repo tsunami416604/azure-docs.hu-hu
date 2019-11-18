@@ -1,32 +1,24 @@
 ---
-title: Oktatóanyag a webalkalmazások Azure cache-sel való létrehozásához a gyorsítótár-feltöltési mintát használó Redis | Microsoft Docs
+title: Oktatóanyag a webalkalmazások Azure cache-sel való létrehozásához a gyorsítótár-feltöltési mintát használó Redis
 description: Ismerje meg, hogyan hozhat létre webalkalmazást az Azure cache használatával a gyorsítótár-feltöltési mintát használó Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834109"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121511"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
 Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.net-webalkalmazást, amely az [Azure cache](cache-web-app-howto.md)-hez készült ASP.net-útmutatóban jön létre a Redis-hez, hogy tartalmazzon egy olyan Leaderboard-t, amely az Azure cache-t használó [gyorsítótár-](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) feltöltési mintát használja Redis A minta alkalmazás megjeleníti a csapat statisztikáit egy adatbázisból, és bemutatja, hogyan használhatja az Azure cache-t a Redis tárolt adatok tárolására és lekérésére a teljesítmény javítása érdekében. Az oktatóanyag elvégzése után egy futó webalkalmazás rendelkezik, amely egy adatbázisba olvas és ír, amely az Azure cache-vel és az Azure-ban üzemeltetett Redis van optimalizálva.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Javítsa az adatok átviteli sebességét, és csökkentse az adatbázis terhelését azáltal, hogy az Azure cache használatával tárolja és beolvassa az Redis.
@@ -728,10 +720,10 @@ Kattintson néhány műveletre, és kísérletezzen az adatok különböző forr
 Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- és erőforrás-takarékosság érdekében törölheti az ott használt Azure-erőforrásokat. Minden erőforrásnak azonos erőforráscsoportban kell szerepelnie, és az erőforráscsoport törlésével egy művelettel, együttesen is törölheti őket. Ebben a témakörben a *TestResources* nevű erőforráscsoportot használtuk.
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen mintát üzemeltető erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, külön-külön törölheti az erőforrásokat a megfelelő panelekről.
+> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen mintát üzemeltető erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, külön-külön törölheti az erőforrásokat a megfelelő panelekről.
 >
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 2. Írja be az erőforráscsoport nevét az **Elemek szűrése...** szövegmezőbe.
 3. Kattintson az erőforráscsoporttól jobbra lévő **...** elemre, majd kattintson az **Erőforráscsoport törlése** parancsra.
 

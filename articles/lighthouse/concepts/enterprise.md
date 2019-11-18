@@ -1,22 +1,18 @@
 ---
-title: Azure Lighthouse nagyvállalati forgatókönyvekben
+title: Az Azure Lighthouse nagyvállalati forgatókönyvekben
 description: Az Azure Lighthouse képességeinek használatával egyszerűsítheti a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure AD-bérlőt használ.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266726"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132503"
 ---
-# <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse nagyvállalati forgatókönyvekben
+# <a name="azure-lighthouse-in-enterprise-scenarios"></a>Az Azure Lighthouse nagyvállalati forgatókönyvekben
 
-Az Azure Lighthouse leggyakoribb forgatókönyve egy olyan szolgáltató, amely az ügyfelek Azure Active Directory (Azure AD) bérlők erőforrásait kezeli. Az Azure Lighthouse képességei azonban a több-bérlős felügyelet egyszerűsítésére is használhatók egy vállalaton belül, amely több Azure AD-bérlőt használ.
+Az [Azure Lighthouse](../overview.md) leggyakoribb forgatókönyve egy olyan szolgáltató, amely az ügyfelek Azure Active Directory (Azure ad) bérlők erőforrásait kezeli. Az Azure Lighthouse képességei azonban a több-bérlős felügyelet egyszerűsítésére is használhatók egy vállalaton belül, amely több Azure AD-bérlőt használ.
 
 ## <a name="single-vs-multiple-tenants"></a>Egyetlen és több bérlő
 

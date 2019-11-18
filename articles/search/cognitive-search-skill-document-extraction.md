@@ -1,5 +1,5 @@
 ---
-title: Dokumentum-extrakciós kognitív keresési képesség (előzetes verzió)
+title: Dokumentum-extrakciós kognitív képesség (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: A tartalom kibontása egy fájlból a dúsítási folyamaton belül. Ez a képesség jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720124"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113340"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Dokumentum-extrakciós kognitív képesség
 
@@ -53,7 +53,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 |--------------------|-------------|
 | file_data | Az a fájl, amelyből a tartalmat ki kell olvasni. |
 
-A "file_data" bemenetnek a következőképpen definiált objektumnak kell lennie:
+A "file_data" bemenetnek az alábbiak szerint definiált objektumnak kell lennie:
 
 ```json
 {
@@ -145,7 +145,7 @@ A fájl hivatkozási objektuma háromféleképpen hozható létre:
 }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

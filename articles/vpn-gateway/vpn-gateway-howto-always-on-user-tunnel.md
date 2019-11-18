@@ -1,5 +1,6 @@
 ---
-title: Always On VPN-felhasználói alagút konfigurálása a VPN-átjáróhoz
+title: Always-On VPN felhasználói alagút konfigurálása
+titleSuffix: Azure VPN Gateway
 description: Ez a cikk bemutatja, hogyan konfigurálhat egy always on VPN-felhasználói alagutat a VPN-átjáróhoz
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9aa1f951add5b79eab12f4957be05a42bbdd4434
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 099ed3c3c0ac2abe034388849385a45b44b32b34
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299922"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145948"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>AlwaysOn VPN felhasználói alagút konfigurálása
 
@@ -166,6 +167,6 @@ A profil eltávolításához tegye a következőket:
 
 ![Felesleges tartalmak törlése](./media/vpn-gateway-howto-always-on-user-tunnel/p2s4..jpg)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az esetlegesen előforduló kapcsolódási problémák elhárításához tekintse meg az [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)című témakört.

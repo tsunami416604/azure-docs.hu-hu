@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673737"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122965"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a SSIS-csomag végrehajtása tevékenységgel Azure Data Factory
 Ez a cikk azt ismerteti, hogyan futtathat egy SQL Server Integration Services-(SSIS-) csomagot egy Azure Data Factory-folyamatban a SSIS-csomag végrehajtása tevékenység használatával. 
@@ -57,7 +57,7 @@ Ebben a lépésben a Data Factory felhasználói felületét vagy az alkalmazás
 
     A Key Vault társított szolgáltatás létrehozásakor vagy szerkesztésekor kiválaszthatja vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat is. Ha még nem tette meg, győződjön meg arról, hogy Data Factory felügyelt identitás-hozzáférést biztosít a kulcstartóhoz. A titkokat közvetlenül a következő formátumban is megadhatja: `<Key vault linked service name>/<secret name>/<secret version>`. Ha a csomag futtatásához 32 bites futtatókörnyezet szükséges, jelölje be a **32 bites futtatókörnyezet** jelölőnégyzetet.
 
-   A **csomag helye**területen válassza a **SSISDB**, a **fájlrendszer (csomag)** vagy a **fájlrendszer (projekt)** elemet. Ha a **SSISDB** lehetőséget választja, amely automatikusan ki van választva, ha a Azure-SSIS IR a Azure SQL Database-kiszolgáló vagy a felügyelt példány által ÜZEMELTETett SSIS-katalógussal (SSISDB) lett kiépítve, akkor adja meg a telepített csomag futtatásának helyét a SSISDB. 
+   A **csomag helye**területen válassza a **SSISDB**, a fájlrendszer **(csomag)** , a **fájlrendszer (projekt)** vagy a **beágyazott csomag**elemet. Ha a **SSISDB** lehetőséget választja, amely automatikusan ki van választva, ha a Azure-SSIS IR a Azure SQL Database-kiszolgáló vagy a felügyelt példány által ÜZEMELTETett SSIS-katalógussal (SSISDB) lett kiépítve, akkor adja meg a telepített csomag futtatásának helyét a SSISDB. 
 
     Ha a Azure-SSIS IR fut, és a **manuális bejegyzések** jelölőnégyzet nincs bejelölve, tallózással keresse meg és válassza ki a meglévő mappákat, projekteket, csomagokat és környezeteket a SSISDB. Válassza a **frissítés** lehetőséget az újonnan hozzáadott mappák, projektek, csomagok vagy KÖRNYEZETek SSISDB való beolvasásához, hogy azok elérhetők legyenek a böngészéshez és a kiválasztáshoz. A csomagok végrehajtásához szükséges környezetek tallózásához vagy kiválasztásához előre be kell állítania a projekteket, hogy a SSISDB alatt található azonos mappák hivatkozásaiként adja hozzá ezeket a környezeteket. További információ: [SSIS-környezetek létrehozása és leképezése](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -82,6 +82,10 @@ Ebben a lépésben a Data Factory felhasználói felületét vagy az alkalmazás
    Ezután adja meg a projekthez, csomaghoz vagy konfigurációs fájlokhoz való hozzáféréshez szükséges hitelesítő adatokat. Ha korábban már megadta a csomag-végrehajtási hitelesítő adatok értékeit (lásd az előzőt), akkor újra felhasználhatja őket úgy, hogy kijelöli a **csomag-végrehajtás hitelesítő adataival megegyező** jelölőnégyzetet. Ellenkező esetben adja meg a csomag hozzáférési hitelesítő adatainak értékét a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben. Ha például a projektet, csomagot vagy konfigurációt Azure Filesban tárolja, a tartomány `Azure`, a Felhasználónév `<storage account name>`, és a jelszó `<storage account key>`. 
 
    Azt is megteheti, hogy a Key vaultban tárolt titkos kódokat értékként használja (lásd az előzőt). Ezekkel a hitelesítő adatokkal érheti el a csomagokat és a gyermek csomagokat a csomag végrehajtása tevékenységben, mindezt a saját elérési úttal vagy ugyanazon projekttel, valamint a csomagokban megadott konfigurációkkal. 
+
+   Ha kijelöli a **beágyazott csomag** lehetőséget a csomag helyeként, húzza a csomagot a futtatásához, vagy **töltse fel** azt egy fájl mappájából a megadott mezőbe. A csomag automatikusan tömörítve és beágyazva lesz a tevékenység hasznos adataiba. A beágyazás után később is **letöltheti** a csomagot szerkesztésre. A beágyazott csomagot úgy is **parametrizálja** , hogy hozzárendeli azt egy olyan folyamat-paraméterhez, amely több tevékenységben is felhasználható, így optimalizálhatja a folyamat adattartalma méretét. Ha a beágyazott csomag nem minden titkosítva van, és a csomag végrehajtása feladatot érzékeljük, akkor a **csomag végrehajtása feladat** jelölőnégyzet automatikusan ki lesz választva, és a rendszer automatikusan hozzáadja a megfelelő, a fájlrendszerre vonatkozó hivatkozásokkal rendelkező gyermek csomagokat is. Ha nem tudjuk felderíteni a csomag végrehajtása feladatot, manuálisan kell kijelölnie a **csomag végrehajtása feladatot** jelölőnégyzetet, és hozzá kell adnia a megfelelő gyermek csomagokat a fájlrendszer hivatkozásával, ha azt is beágyazza. Ha a gyermek csomagok SQL Server referenciákat használnak, győződjön meg arról, hogy a Azure-SSIS IR a SQL Server elérhető.  Jelenleg nem támogatott a projektre vonatkozó hivatkozások használata a gyermek csomagokhoz.
+   
+   ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    Ha a **EncryptAllWithPassword** vagy a **EncryptSensitiveWithPassword** védelmi szintet használta a csomagnak a SQL Server Data Tools használatával történő létrehozásakor, írja be a jelszó értékét a **titkosítási jelszó** mezőbe. Azt is megteheti, hogy a Key vaultban tárolt titkos kulcsot használja értékként (lásd az előzőt). Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta, adja meg a bizalmas értékeket a konfigurációs fájlokban vagy a **SSIS paraméterek**, a **Csatlakozáskezelő**vagy a **tulajdonság felülbírálásai** lapon (lásd: később). 
 
@@ -136,7 +140,7 @@ Ebben a lépésben elindítja a folyamat futtatását.
 
 ### <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-1. Váltson a bal oldali **Monitorozás** lapra. Megtekintheti a folyamat futását és állapotát, valamint egyéb információkat, például a **Futtatás kezdési** idejét. A nézet frissítéséhez válassza a **Frissítés** parancsot.
+1. Váltson a bal oldali **Monitor** (Monitorozás) lapra. Megtekintheti a folyamat futását és állapotát, valamint egyéb információkat, például a **Futtatás kezdési** idejét. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
    ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
@@ -281,7 +285,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    }
    ```
 
-   A fájlrendszerben, fájlmegosztást vagy Azure Filesban tárolt csomagok végrehajtásához adja meg a csomag vagy a naplózási hely tulajdonságainak értékét a következőképpen:
+   A fájlrendszerben, fájlmegosztást vagy Azure Filesban tárolt csomagok végrehajtásához adja meg a csomag és a naplózási hely tulajdonságainak értékét a következőképpen:
 
    ```json
    {
@@ -353,6 +357,31 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Beágyazott csomagok végrehajtásához adja meg a csomag Location tulajdonságának értékeit az alábbiak szerint:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

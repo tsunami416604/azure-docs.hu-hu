@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: a599a7cbb1ceff165d7bde77ba4bf797d66b5026
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 5f812d5fe1b25358a0bf09ebf879569ae29b33f3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048233"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131882"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
@@ -406,7 +406,7 @@ A telemetria inicializálók alapértelmezés szerint jelennek meg. Az összes v
 
 ### <a name="adding-telemetry-processors"></a>Telemetria-processzorok hozzáadása
 
-A `IServiceCollection``AddApplicationInsightsTelemetryProcessor` bővítmény módszerével egyéni telemetria-processzorokat adhat hozzá `TelemetryConfiguration`okhoz. A telemetria processzorok [speciális szűrési forgatókönyvekben](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor) való használata lehetővé teszi, hogy a Application Insights a szolgáltatásnak küldött, a telemetria által befoglalt vagy kizárni kívánt funkciók jobban átirányíthatók legyenek. Használja az alábbi példát.
+A `IServiceCollection``AddApplicationInsightsTelemetryProcessor` bővítmény módszerével egyéni telemetria-processzorokat adhat hozzá `TelemetryConfiguration`okhoz. A telemetria processzorok [speciális szűrési forgatókönyvekben](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer) való használata lehetővé teszi, hogy a Application Insights a szolgáltatásnak küldött, a telemetria által befoglalt vagy kizárni kívánt funkciók jobban átirányíthatók legyenek. Használja az alábbi példát.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -541,7 +541,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [Olvassa el és járuljon hozzá a kódhoz](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az API használatával](../../azure-monitor/app/api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletes áttekintéséhez.
 * A [további függőségek nyomon követése nem történik meg automatikusan](../../azure-monitor/app/auto-collect-dependencies.md).

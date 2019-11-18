@@ -1,28 +1,21 @@
 ---
 title: 'Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan Python-alkalmazást, amely Azure cache-t használ a Redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720384"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122670"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez
 
@@ -61,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Az Azure cache 3,0-es vagy újabb verziójának Redis az SSL-tanúsítvány ellenőrzését érvényesíti. a ssl_ca_certs explicit módon be kell állítani, amikor csatlakozik az Azure cache-hez a Redis. A RedHat Linux esetében a ssl_ca_certs az */etc/PKI/TLS/certs/CA-Bundle.CRT* Certificate modulban találhatók.
+> Az Azure cache 3,0-es vagy újabb verziójának Redis az SSL-tanúsítvány ellenőrzését érvényesíti. a Redis Azure cache-hez való csatlakozáskor explicit módon be kell állítani a ssl_ca_certs. A RedHat Linux esetében ssl_ca_certs az */etc/PKI/TLS/certs/CA-Bundle.CRT* Certificate modulban találhatók.
 
 ## <a name="create-a-python-sample-app"></a>Python-minta alkalmazás létrehozása
 

@@ -1,105 +1,97 @@
 ---
-title: Bevezetés az Azure Cache redis Cache prémium szint |} A Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre és kezelheti a Redis-adatmegőrzés, Redis, fürtözés, és a prémium szintű Azure Cache a Redis-példány a VNET-támogatás
-services: cache
-documentationcenter: ''
+title: A prémium szintű Redis készült Azure cache bemutatása
+description: Ismerje meg, hogyan hozhatja létre és kezelheti a Redis-megőrzést, a Redis-fürtözést és a VNET támogatását a prémium szintű Azure cache-hez Redis-példányok
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786081"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121670"
 ---
-# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Bevezetés az Azure Cache redis Cache prémium szint
-A Redis Azure Cache olyan elosztott, felügyelt gyorsítótár, amely segítséget nyújt az adatok a villámgyors adathozzáférésnek köszönhetően gyors és hatékonyan méretezhető alkalmazások készítését. 
+# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>A prémium szintű Redis készült Azure cache bemutatása
+Az Azure cache for Redis egy elosztott, felügyelt gyorsítótár, amellyel gyorsan méretezhető és rugalmas alkalmazások hozhatók létre az adataihoz való villámgyors hozzáférés biztosításával. 
 
-Az új prémium szintű egy nagyvállalati igényekre szabott szint, amely tartalmazza a Standard csomag összes szolgáltatás és más, például jobb teljesítményt, nagyobb méretű számítási feladatokat, vészhelyreállítás, importálási/exportálási és fokozott biztonságot. További információ a prémium szintű gyorsítótárszint további funkcióit olvassa tovább.
+Az új prémium szint egy nagyvállalati készültségi szint, amely magában foglalja a standard szintű funkciókat és egyebeket, például a jobb teljesítményt, nagyobb méretű számítási feladatokat, vész-helyreállítási, importálási/exportálási és fokozott biztonságot. Folytassa az olvasást, ha többet szeretne megtudni a prémium szintű gyorsítótári szint további funkcióiról.
 
-## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Standard vagy alapszintű csomagra képest jobb teljesítményt
-**Jobb teljesítmény alapszintű vagy Standard szintű.** Gyorsítótárak a prémium szintű vannak üzembe helyezve, amelyet gyorsabb processzorokkal rendelkeznek, és jobb teljesítményt biztosít az alapszintű vagy Standard szintű hardveren. Prémium szintű gyorsítótárak magasabb átviteli sebesség és a kisebb a késésük rendelkezik. 
+## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Jobb teljesítmény a standard vagy az alapszinthez képest
+**Jobb teljesítmény a standard vagy az alapszintnél.** A prémium szintű gyorsítótárak üzembe helyezése olyan hardvereken történik, amelyek gyorsabb processzorokkal rendelkeznek, és jobb teljesítményt biztosítanak az alapszintű vagy a standard szinthez képest. A prémium szintű gyorsítótárak nagyobb átviteli sebességgel és kisebb késéssel rendelkeznek. 
 
-**Az azonos méretű gyorsítótár átviteli sebesség nagyobb a prémium szintű szemben a standard szintű csomag.** Például az átviteli sebességet egy 53 GB-os P4 (prémium szintű) gyorsítótár 250e kérelmek / másodperc, mint a korábban megszokott 150 K az C6 csomag (Standard).
+**Az azonos méretű gyorsítótárhoz tartozó átviteli sebesség a standard szinthez képest magasabb a prémium szinten.** A 53 GB-os (prémium szintű) gyorsítótár átviteli sebessége például 250K-kérelmek másodpercenkénti száma a C6-os (standard) 150K képest.
 
-Méret, teljesítmény és a sávszélesség a prémium gyorsítótárak kapcsolatos további információkért lásd: [Azure Cache a redis Cache – gyakori kérdések](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+További információ a méretről, az átviteli sebességről és a sávszélességről a prémium szintű gyorsítótárak esetében: [Azure cache for REDIS GYIK](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="redis-data-persistence"></a>Redis-adatmegőrzés
-A prémium szintű csomag segítségével megőrizheti a gyorsítótárazza az adatokat egy Azure Storage-fiókot. Az alapszintű és Standard gyorsítótár csak a memóriában tárolt összes adatot. Alapul szolgáló infrastruktúra esetén nincs problémák lehetséges adatvesztéssel is lehet. Azt javasoljuk, hogy a Redis adatmegőrzési funkció használatát a prémium szintű az adatvesztéssel szembeni ellenálló-képesség növelésére. Az Azure Cache redis RDB-fájlba való és (hamarosan) AOF lehetőséget kínál a [Redis-adatmegőrzés](https://redis.io/topics/persistence). 
+A prémium szint lehetővé teszi az Azure Storage-fiókban tárolt gyorsítótár-adatmegőrzést. Alapszintű/standard gyorsítótárban az összes adat tárolása csak a memóriában történik. A mögöttes infrastruktúra okozta problémák esetén lehetséges az adatvesztés. Javasoljuk, hogy a prémium szint Redis adatmegőrzési funkciójának használatával növelje a rugalmasságot az adatvesztéssel szemben. Az Azure cache for Redis RDB és AOF (hamarosan elérhető) lehetőségeket kínál a [Redis megőrzésében](https://redis.io/topics/persistence). 
 
-Útmutatás az adatmegőrzés konfigurálásához: [egy prémium szintű Azure Cache megőrzése a Redis konfigurálása](cache-how-to-premium-persistence.md).
+Az adatmegőrzés konfigurálásával kapcsolatos útmutatásért lásd: az [adatmegőrzés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-persistence.md)-hez.
 
 ## <a name="redis-cluster"></a>Redis-fürt
-Ha azt szeretné, 53 GB-nál nagyobb méretű gyorsítótárak hozhatók létre, vagy szeretné bonthatók az adatok több Redis-csomóponton, használhatja a Redis-fürtözés, azaz prémium tarifacsomagban érhető el. Minden egyes csomópont a magas rendelkezésre állás érdekében az Azure-ban felügyelt elsődleges/replika gyorsítótár pár áll. 
+Ha 53 GB-nál nagyobb gyorsítótárat szeretne létrehozni, vagy több Redis-csomóponton szeretne adatszegmenst használni, használhatja a prémium szinten elérhető Redis-fürtözést. Az egyes csomópontok az Azure által kezelt elsődleges/replika gyorsítótár-párokat tartalmazzák a magas rendelkezésre állás érdekében. 
 
-**A redis-fürtözés biztosít maximális méretezést és teljesítményt.** Átviteli sebesség költségráfordításokkal egyenes arányban növekszik, a fürtben (csomópontok) szegmensei számának növelésével. Eg. Ha 10 szegmens-P4 szintű fürtöt hoz létre, akkor az elérhető átviteli sebesség 250 ezer * 10 = 2,5 millió vonatkozó kérelmek másodpercenkénti száma. Tekintse át a [redis Cache – gyakori kérdések az Azure Cache](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) méret, teljesítmény és a sávszélesség a prémium gyorsítótárak kapcsolatos további részletekért.
+**A Redis fürtözés maximális skálázást és átviteli sebességet biztosít.** Az átviteli sebesség a fürtben lévő szegmensek (csomópontok) számának növelésével lineárisan növekszik. Például Ha 10 szegmensből álló P4-fürtöt hoz létre, akkor a rendelkezésre álló átviteli sebesség 250K * 10 = 2 500 000 kérelem másodpercenként. A prémium szintű gyorsítótárral rendelkező mérettel, átviteli sebességgel és sávszélességgel kapcsolatos további részletekért tekintse meg az [Azure cache for Redis – gyakori kérdések](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) című témakört.
 
-Fürtszolgáltatás használatának megkezdéséhez lásd [egy prémium szintű Azure Cache redis fürtözés konfigurálása](cache-how-to-premium-clustering.md).
+A fürtözés megkezdéséhez tekintse meg a [fürtszolgáltatás konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-clustering.md)-hoz című témakört.
 
 ## <a name="enhanced-security-and-isolation"></a>Nagyobb biztonság és elszigeteltség
-A Basic vagy Standard szintű létrehozott gyorsítótárak elérhetők a nyilvános interneten. A gyorsítótárhoz való hozzáférést korlátozódik a hozzáférési kulcs alapján. A prémium szintű további biztosíthatja, hogy csak az ügyfelek egy adott hálózaton belül hozzáférhet-e a gyorsítótárban. A redis Azure Cache telepíthet egy [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/). Használhatja a VNet összes funkcióját, köztük az alhálózatokat, a hozzáférés-vezérlési házirendeket, és a Redishez való hozzáférést korlátozó többi egyéb funkciókat.
+Az alapszintű vagy standard szinten létrehozott gyorsítótárak elérhetők a nyilvános interneten. A gyorsítótárhoz való hozzáférés korlátozott a hozzáférési kulcs alapján. A prémium szinttel biztosíthatja, hogy csak a megadott hálózatban lévő ügyfelek férhessenek hozzá a gyorsítótárhoz. Az Azure cache-t üzembe helyezheti az [azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/)Redis. Használhatja a VNet összes funkcióját, köztük az alhálózatokat, a hozzáférés-vezérlési házirendeket, és a Redishez való hozzáférést korlátozó többi egyéb funkciókat.
 
-További információkért lásd: [annak a virtuális hálózat támogatásának konfigurálása prémium szintű Azure Cache-gyorsítótárhoz Redis](cache-how-to-premium-vnet.md).
+További információkért lásd: [Virtual Network támogatásának konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-vnet.md)-hez.
 
-## <a name="importexport"></a>Import/Export
-Importálás/exportálás szolgáltatás egy Azure Cache, amely lehetővé teszi, hogy az adatok az Azure Cache által importálása és exportálása az Azure Cache Redis adatbázis (RDB) pillanatkép egy prémium szintű gyorsítótár, a redis Azure Cache redis adatok importálása és exportálása a Redis-felügyeleti művelethez egy lapblob egy Azure Storage-fiókban. Ez lehetővé teszi, hogy migrálása másik Azure Cache a Redis-példány között, vagy töltse fel a gyorsítótárat az adatokat, mielőtt használja.
+## <a name="importexport"></a>Import/Export (Importálás és exportálás)
+Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be az Azure cache for Redis Database (RDB) pillanatképét egy Azure Storage-fiókban található oldal blobba, egy prémium szintű gyorsítótárból. Ez lehetővé teszi, hogy áttelepítse a különböző Azure cache-t a Redis-példányok között, vagy a használat előtt feltöltse a gyorsítótárat az adatokkal.
 
-Importálás ahhoz, hogy a Redis-kompatibilis RDB-fájl(ok) minden bármilyen felhőben vagy a környezetben, beleértve a Linux, Windows vagy bármely más szolgáltatónál, például az Amazon Web Services és a többi futó Redis futó Redis-kiszolgálóról is használható. A rendszer egyszerűen hozzon létre egy gyorsítótárat az adatokkal előre feltöltött adatok importálása. Az importálási folyamat során az Azure Cache redis RDB-fájlba való fájlokat az Azure storage-ból betölti a memóriába, és majd szúrja be a kulcsokat a gyorsítótárba.
+Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgálóról lehet Redis kompatibilis RDB-fájlt használni, beleértve a Linuxon, a Windowson vagy bármely más felhőalapú szolgáltatón, például a Amazon Web Serviceson vagy más felhőben futó Redis. Az adatok importálása egyszerű módszer a gyorsítótár előre feltöltött adatokkal való létrehozására. Az importálási folyamat során az Azure cache for Redis betölti a RDB-fájlokat az Azure Storage-ból a memóriába, majd beszúrja a kulcsokat a gyorsítótárba.
 
-Exportálás lehetővé teszi, hogy a Redis a Redis-kompatibilis RDB-fájl(ok) for Azure Cache-ben tárolt adatok exportálása. Ez a funkció használatával adatok áthelyezése egy másik vagy egy másik Redis-kiszolgáló egy Azure Cache a Redis-példányt. Az exportálási folyamat során egy ideiglenes fájl jön létre a virtuális gépen, amelyen az Azure Cache Redis-server-példányhoz, és a fájlt a kijelölt tárfiók töltenek fel. Az exportálási művelet befejeződik, vagy sikeres állapotú vagy sikertelen, amikor az ideiglenes fájl törlődik.
+Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a Redis-Redis kompatibilis RDB-fájl (ok) hoz. Ezzel a szolgáltatással áthelyezheti az adatok egyik Azure-gyorsítótárból a Redis-példányról egy másikra vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során létrejön egy ideiglenes fájl az Azure cache-t futtató virtuális gépen a Redis Server-példányhoz, és a fájl fel lesz töltve a kijelölt Storage-fiókba. Ha az exportálási művelet sikeres vagy sikertelen állapottal fejeződött be, a rendszer törli az ideiglenes fájlt.
 
-További információkért lásd: [adatok importálása, és az adatok exportálása az Azure Cache redis](cache-how-to-import-export-data.md).
+További információ: [adatok importálása és exportálása az Azure cache-ből a Redis-hez](cache-how-to-import-export-data.md).
 
 ## <a name="reboot"></a>Újraindítás
-A prémium szint lehetővé teszi, hogy a gyorsítótár igény szerinti, egy vagy több csomópont újraindítását. Ez lehetővé teszi, hogy tesztelje az alkalmazást a rugalmassághoz meghibásodása. Az alábbi csomópontok indíthatja újra.
+A prémium szint lehetővé teszi, hogy igény szerint újraindítsa a gyorsítótár egy vagy több csomópontját. Ez lehetővé teszi, hogy meghibásodás esetén tesztelje a rugalmasságot az alkalmazásban. A következő csomópontok is újraindulnak.
 
-* Fő csomóponttal, a gyorsítótár
-* Másodlagos csomópontra, a gyorsítótár
-* A gyorsítótár elsődleges és másodlagos csomópontján
-* Egy prémium szintű gyorsítótár fürtözési használatakor akkor indíthatja újra az elsődleges, másodlagos vagy mindkét csomópontját az egyes szegmensek a gyorsítótárban
+* A gyorsítótár fő csomópontja
+* A gyorsítótár másodlagos csomópontja
+* A gyorsítótár elsődleges és másodlagos csomópontjai
+* Ha prémium szintű gyorsítótárat használ a fürtözéssel, akkor a gyorsítótárban lévő egyes szegmensek esetében újraindíthatja az elsődleges, másodlagos vagy mindkét csomópontot.
 
-További információkért lásd: [újraindítás](cache-administration.md#reboot) és [újraindítás – gyakori kérdések](cache-administration.md#reboot-faq).
+További információ: [Újraindítás](cache-administration.md#reboot) és [újraindítással kapcsolatos gyakori kérdések](cache-administration.md#reboot-faq).
 
 >[!NOTE]
->Újraindítás funkció engedélyezve van az összes Azure Cache Redis-szint esetében.
+>Az újraindítási funkció mostantól engedélyezve van az összes Azure cache-hez a Redis szintjein.
 >
 >
 
 ## <a name="schedule-updates"></a>Frissítések ütemezése
-Az ütemezett frissítések szolgáltatás egy karbantartási időszakot a gyorsítótár megadását teszi lehetővé. Ha a karbantartási időszak van megadva, a Redis-kiszolgáló frissítéseit ezen időszak alatt készülnek el. Karbantartási időszak kijelölni, válassza ki a kívánt napok és adja meg a karbantartási ablak indítási órán keresztül minden nap. Vegye figyelembe, hogy a karbantartási ablak időpontja (UTC). 
+Az ütemezett frissítések funkció lehetővé teszi, hogy kijelölje a gyorsítótár karbantartási ablakát. Ha a karbantartási időszak meg van adva, a rendszer minden Redis-kiszolgáló frissítést végez ebben az ablakban. A karbantartási időszak kijelöléséhez válassza ki a kívánt napokat, és adja meg a karbantartási időszak kezdő óráját minden nap. Vegye figyelembe, hogy a karbantartási időszak időpontja UTC. 
 
-További információkért lásd: [frissítések ütemezése](cache-administration.md#schedule-updates) és [frissítések ütemezése – Gyakori kérdések](cache-administration.md#schedule-updates-faq).
+További információ: [frissítések ütemezett](cache-administration.md#schedule-updates) és [ütemezett frissítései – gyakori kérdések](cache-administration.md#schedule-updates-faq).
 
 > [!NOTE]
-> Csak a Redis-kiszolgáló frissítéseket az ütemezett karbantartási időszakban menjenek végbe. A karbantartási időszak nem vonatkozik az Azure vagy a virtuális gép operációsrendszer-frissítéseket.
+> Az ütemezett karbantartási időszakban csak a Redis-kiszolgáló frissítései lesznek elérhetők. A karbantartási időszak nem vonatkozik az Azure frissítéseire vagy a virtuális gép operációs rendszerének frissítéseire.
 > 
 > 
 
 ## <a name="geo-replication"></a>Georeplikáció
 
-**Georeplikáció** lehetővé teszi a két prémium szintű Azure Cache Redis-példány csatolása. Egy gyorsítótár az elsődleges társított gyorsítótár, a másik pedig a csatolt másodlagos gyorsítótáraként van kijelölve. A másodlagos összekapcsolt gyorsítótár csak olvashatóvá válik, és az elsődleges gyorsítótár írt adatok replikálódnak a másodlagos összekapcsolt gyorsítótár. Ez a funkció segítségével gyorsítótár replikálása az Azure-régiók között.
+A **geo-replikáció** lehetővé teszi két prémium szintű Azure cache összekapcsolását a Redis-példányokhoz. Az egyik gyorsítótár elsődleges csatolt gyorsítótárként van kijelölve, a másik pedig másodlagos csatolt gyorsítótárként. A másodlagos csatolt gyorsítótár írásvédett lesz, és az elsődleges gyorsítótárba írt információk replikálódnak a másodlagos csatolt gyorsítótárba. Ez a funkció a gyorsítótár Azure-régiók közötti replikálására használható.
 
-További információkért lásd: [georeplikáció konfigurálása az Azure Cache Redis](cache-how-to-geo-replication.md).
+További információ: a [geo-replikáció konfigurálása az Azure cache-hez a Redis](cache-how-to-geo-replication.md).
 
 
-## <a name="to-scale-to-the-premium-tier"></a>A prémium szint méretezhető
-Méretezhető, a prémium szintű, egyszerűen egyikén a prémium szinten a **tarifacsomag módosítása** panelen. A gyorsítótár, a prémium szintre, PowerShell és CLI használatával is méretezheti. Lépésenkénti útmutatásért lásd: [How to Scale Azure Cache redis](cache-how-to-scale.md) és [hogyan automatizálhatja a skálázási művelet](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
+## <a name="to-scale-to-the-premium-tier"></a>A prémium szint méretezése
+A prémium szintre való skálázáshoz egyszerűen válassza ki az egyik prémium szintet a **change árképzési szint** panelen. A gyorsítótárat a prémium szintre is méretezheti a PowerShell és a parancssori felület használatával. Részletes útmutatásért lásd: az [Azure cache skálázása Redis](cache-how-to-scale.md) és [a skálázási műveletek automatizálása](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
 ## <a name="next-steps"></a>További lépések
-Hozzon létre egy gyorsítótárat, és ismerje meg az új prémiumszintű funkciókkal.
+Hozzon létre egy gyorsítótárat, és fedezze fel az új prémium szintű funkciókat.
 
-* [Egy prémium szintű Azure Cache megőrzése a Redis konfigurálása](cache-how-to-premium-persistence.md)
-* [Hogyan lehet virtuális hálózat támogatásának konfigurálása prémium szintű Azure Cache-gyorsítótárhoz Redis](cache-how-to-premium-vnet.md)
-* [Egy prémium szintű Azure Cache redis fürtözés konfigurálása](cache-how-to-premium-clustering.md)
-* [Hogyan lehet az adatok importálása és az adatok exportálása az Azure Cache redis](cache-how-to-import-export-data.md)
-* [A Redis Azure Cache felügyelete](cache-administration.md)
+* [Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis](cache-how-to-premium-persistence.md)
+* [A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez](cache-how-to-premium-vnet.md)
+* [Fürtözés konfigurálása prémium szintű Azure cache-hez a Redis-hez](cache-how-to-premium-clustering.md)
+* [Adatok importálása és exportálása az Azure cache-ből a Redis-be](cache-how-to-import-export-data.md)
+* [Az Azure cache felügyelete a Redis-hez](cache-administration.md)
 

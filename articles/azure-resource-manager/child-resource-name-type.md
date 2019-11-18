@@ -1,17 +1,14 @@
 ---
-title: Gyermek erőforrások – Azure Resource Manager sablonok
+title: Gyermekek erőforrásai a sablonokban
 description: Ismerteti, hogyan lehet a Azure Resource Manager sablonban megadhatja a gyermek-erőforrások nevét és típusát.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: tomfitz
-ms.openlocfilehash: 3a90b2155b11d4c12bc1f571af3f15fdbceb12b9
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 2ef20e7c046170a3f73821b878680b46e5a8afea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532299"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147391"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Adja meg a gyermek erőforrások nevét és típusát
 
@@ -133,7 +130,7 @@ Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Azure Resource Manager sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927802"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128778"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -29,7 +29,7 @@ Engedélyeznie kell a partner-integrációt az Azure FarmBeats-példányához. E
 - API-végpont – ez az adatközpont URL-címe, például https://<datahub>. azurewebsites.net
 - Bérlőazonosító
 - Ügyfél-azonosító
-- Ügyfél titka
+- Titkos ügyfélkulcs
 - EventHub-kapcsolatok karakterlánca
 
 Ezek létrehozásához kövesse az alábbi lépéseket:
@@ -74,7 +74,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 - /**szenzor** – az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.  
 
 
-|        Eszköz mód   |  Javaslatok   |
+|        Eszköz modellje   |  Javaslatok   |
 | ------- | -------             |
 |     Típus (csomópont, átjáró)        |          1 csillag      |
 |          Gyártó            |         2 csillag     |
@@ -83,11 +83,11 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |     Name (Név)                 |  Az erőforrást azonosító név. Például: modell neve/terméknév.
       Leírás     | Adjon meg egy értelmes leírást a modellről
 |    Tulajdonságok          |    További tulajdonságok a gyártótól   |
-|    **Eszköz**             |                      |
+|    **Device**             |                      |
 |   DeviceModelId     |     A társított eszköz-modell azonosítója  |
 |  HardwareId          | Az eszköz egyedi azonosítója, például MAC-címe stb.
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc)
-|  Hely            |  Eszköz szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter)   
+|  Földrajzi egység            |  Eszköz szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter)   
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakozó csomópont. A csomópontok átjáróként lesznek parentDeviceId.  |
 |    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
 |     Leírás       |      Adjon meg egy értelmes Leírást  |
@@ -125,7 +125,7 @@ API-kérelem létrehozásához egyesítse a HTTP-(POST-) metódust, az API szolg
 A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelyhez a következő szakaszban létrehozott hitelesítő adatok szükségesek.
 
 - Ügyfél-azonosító
-- Ügyfél titka
+- Titkos ügyfélkulcs
 - Bérlőazonosító  
 
 A fenti hitelesítő adatok használatával a hívó kérhet egy hozzáférési jogkivonatot, amelyet a következő API-kérelmekben kell elküldeni a fejléc szakaszban a következő módon:
@@ -337,6 +337,6 @@ Példa telemetria-üzenetre:
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](references-for-farmbeats.md#rest-api).

@@ -1,5 +1,5 @@
 ---
-title: Hibaelhárítási tippek az AI-bővítéshez
+title: Tippek a mesterséges intelligenciának kialakításához
 titleSuffix: Azure Cognitive Search
 description: Tippek és hibaelhárítás az AI-bővítési folyamatok Azure-Cognitive Search történő beállításához.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787700"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113826"
 ---
-# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Hibaelhárítási tippek az AI-bővítéshez az Azure-ban Cognitive Search
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
 
 Ez a cikk azokat a tippeket és trükköket tartalmazza, amelyek az Azure Cognitive Search AI-bővítési képességeinek megismeréséhez szükségesek. 
 
@@ -103,7 +103,7 @@ A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "F
 [Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több DataSource és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
 További információ: [nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 + [Rövid útmutató: AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: az AI-gazdagítás REST API-k megismerése](cognitive-search-tutorial-blob.md)
 + [Adatforráshoz tartozó hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

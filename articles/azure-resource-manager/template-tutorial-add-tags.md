@@ -1,19 +1,16 @@
 ---
-title: Oktatóanyag – Címkék hozzáadása egy Azure Resource Manager sablon erőforrásaihoz
+title: Oktatóanyag – Címkék hozzáadása a sablon erőforrásaihoz
 description: Címkék hozzáadása a Azure Resource Manager-sablonban üzembe helyezett erőforrásokhoz. Címkék lehetővé teszik az erőforrások logikai rendszerezését.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 663de1e341815eac039c49cee63f8a492b0cb7a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177572"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150187"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Oktatóanyag: Címkék hozzáadása a Resource Manager-sablonban
 
@@ -71,11 +68,11 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Válasszon ki egy erőforrást, például a Storage-fiók erőforrását. Láthatja, hogy most már rendelkezik címkékkel.
@@ -93,7 +90,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban címkéket adott hozzá az erőforrásokhoz. A következő oktatóanyagban megtudhatja, hogyan használhatók a paraméterek a sablonban az értékek átadásának egyszerűbbé tételéhez.
 

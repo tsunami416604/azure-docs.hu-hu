@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Azure Cognitive Search szolgáltatás létrehozása a portálon'
+title: 'Gyors útmutató: keresési szolgáltatás létrehozása a portálon'
 titleSuffix: Azure Cognitive Search
 description: AzureCognitive keresési erőforrás kiépítése a Azure Portalban. Válassza az erőforráscsoportok, a régiók, az SKU vagy az árképzési szintet.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884352"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112122"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search szolgáltatás létrehozása a portálon
 
@@ -33,7 +33,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure-Cognitive Search keresése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a plusz jelre ("+ Create Resource") a bal felső sarokban.
 3. A keresősáv segítségével keresse meg az "Azure Cognitive Search", vagy navigáljon az erőforráshoz a **Web** > **Azure Cognitive Search**használatával.
 

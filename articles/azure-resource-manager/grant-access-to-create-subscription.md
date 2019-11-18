@@ -1,43 +1,41 @@
 ---
-title: Hozzáférést biztosít az Azure Enterprise-előfizetések létrehozása |} A Microsoft Docs
-description: Megtudhatja, hogyan biztosíthat a felhasználónév vagy szolgáltatásnév az Azure Enterprise-előfizetések létrehozása programozott módon.
-services: azure-resource-manager
+title: Hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához
+description: Ismerje meg, hogy a felhasználók vagy az egyszerű szolgáltatások hogyan hozhatnak létre programozott módon Azure Enterprise-előfizetéseket.
 author: jureid
 manager: jureid
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: a7ed7dffd27b51c1314c4293820dc33be4d7e8e0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8f1f7837b6243f1af49d3b5eb0f3632c5e144f6c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206643"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149844"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés engedélyezése az Azure Enterprise-előfizetések (előzetes verzió) létrehozása
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés biztosítása Azure Enterprise-előfizetések létrehozásához (előzetes verzió)
 
-Az Azure ügyfeleként [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), engedélyt adhat egy másik felhasználó vagy szolgáltatás egyszerű hozhatnak létre előfizetéseket a fiók számítunk fel. Ebben a cikkben megismerheti, hogyan használható [szerepköralapú hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-configure.md) képes létrehozni az előfizetések és előfizetés-létrehozás naplózása megosztásához. A tulajdonosi szerepkörrel kell rendelkeznie a megosztani kívánt fiókhoz.
+Ha [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)Azure-ügyfelet használ, megadhat egy másik felhasználói vagy egyszerű szolgáltatást a fiókjához tartozó előfizetések létrehozásához. Ebből a cikkből megtudhatja, hogyan használhatja a [szerepköralapú Access Control (RBAC)](../active-directory/role-based-access-control-configure.md) az előfizetések létrehozására, valamint az előfizetés-létrehozás naplózására. A megosztani kívánt fiók tulajdonosi szerepkörének kell lennie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatically-create-subscription.md), felhasználónak rendelkeznie kell a [RBAC tulajdonosi szerepkör](../role-based-access-control/built-in-roles.md#owner) a fiókban. Biztosíthat egy felhasználó vagy csoport számára az RBAC tulajdonosi szerepkör a regisztrációs fiókhoz az alábbi lépéseket:
+A [beléptetési fiókkal rendelkező előfizetések létrehozásához](programmatically-create-subscription.md)a felhasználóknak a [RBAC tulajdonosi szerepkörrel](../role-based-access-control/built-in-roles.md#owner) kell rendelkezniük az adott fiókon. Az alábbi lépéseket követve adhat meg egy felhasználót vagy felhasználói csoportot a RBAC tulajdonosi szerepkörének beléptetési fiókjához:
 
-1. A regisztrációs fiók hozzáférést biztosítani kívánt objektum Azonosítójának lekéréséhez
+1. Annak a beléptetési fióknak az objektumazonosító beszerzése, amelyhez hozzáférést szeretne biztosítani
 
-    Az RBAC tulajdonosi szerepkör a regisztrációs fiókhoz adni más, a fiók tulajdonosa vagy a fiók az RBAC vagy kell lennie.
+    Ha a RBAC tulajdonosi szerepkörét szeretné megadni egy regisztrációs fiókon, akkor a fiók tulajdonosának vagy RBAC-tulajdonosának kell lennie.
 
     # <a name="resttabrest"></a>[REST](#tab/rest)
 
-    A kérelem hozzáfér az összes regisztrációs fiókok listáját:
+    Az összes olyan regisztrációs fiók listázására vonatkozó kérelem, amelyhez hozzáféréssel rendelkezik:
 
     ```json
     GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
     ```
 
-    Azure válaszol az hozzáfér az összes regisztrációs fiókok listáját:
+    Az Azure válaszol az összes beléptetési fiók listájára:
 
     ```json
     {
@@ -62,17 +60,17 @@ A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatic
     }
     ```
 
-    Használja a `principalName` tulajdonság, amely RBAC tulajdonosi hozzáféréssel biztosítani a fiók azonosításához. Másolás a `name` -fiók. Például, ha az RBAC tulajdonosi hozzáférést szeretne a SignUpEngineering@contoso.com eszközregisztráció-fiókot, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a regisztrációs fiók az objektum Azonosítóját. Illessze be ezt az értéket, valahol, hogy használhatja azt, a következő lépésben `enrollmentAccountObjectId`.
+    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a fiók `name`ét. Ha például RBAC-tulajdonosi hozzáférést szeretne biztosítani az SignUpEngineering@contoso.com beléptetési fiókhoz, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben használja `enrollmentAccountObjectId`ként.
 
     # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    Használja a [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) parancsmag használatával listázhatja az összes regisztrációs fiókok hozzáfér. Válassza ki **kipróbálás** megnyitásához [Azure Cloud Shell](https://shell.azure.com/). Illessze be a kódot, a kattintson a jobb gombbal a rendszerhéj windows, és válassza a **illessze be**.
+    A [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) parancsmag használatával listázhatja az összes olyan regisztrációs fiókot, amelyhez hozzáféréssel rendelkezik. Válassza a **kipróbálás** lehetőséget a [Azure Cloud Shell](https://shell.azure.com/)megnyitásához. A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablakára, majd válassza a **Beillesztés**lehetőséget.
 
     ```azurepowershell-interactive
     Get-AzEnrollmentAccount
     ```
 
-    Azure fűzi hozzá van hozzáférése a regisztrációs fiókok listáját:
+    Az Azure az Ön számára elérhető regisztrációs fiókok listájával válaszol:
 
     ```azurepowershell
     ObjectId                               | PrincipalName
@@ -80,17 +78,17 @@ A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatic
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    Használja a `principalName` tulajdonság RBAC tulajdonosi hozzáféréssel biztosítani a fiók azonosításához. Másolás a `ObjectId` -fiók. Például, ha az RBAC tulajdonosi hozzáférést szeretne a SignUpEngineering@contoso.com eszközregisztráció-fiókot, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Illessze be az Objektumazonosító valahol, hogy a következő lépésben, használhatja a `enrollmentAccountObjectId`.
+    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a fiók `ObjectId`ét. Ha például RBAC-tulajdonosi hozzáférést szeretne biztosítani az SignUpEngineering@contoso.com beléptetési fiókhoz, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Illessze be ezt az objektumazonosítót valahova, hogy a következő lépésben használja a `enrollmentAccountObjectId`.
 
     # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-    Használja a [az számlázási regisztrációs-fióklista](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listát készíthet az összes regisztrációs fiókok hozzáfér. Válassza ki **kipróbálás** megnyitásához [Azure Cloud Shell](https://shell.azure.com/). Illessze be a kódot, a kattintson a jobb gombbal a rendszerhéj windows, és válassza a **illessze be**.
+    Az az [Billing beléptetés-Account List](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listázhatja az összes olyan regisztrációs fiókot, amelyhez hozzáférése van. Válassza a **kipróbálás** lehetőséget a [Azure Cloud Shell](https://shell.azure.com/)megnyitásához. A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablakára, majd válassza a **Beillesztés**lehetőséget.
 
     ```azurecli-interactive
     az billing enrollment-account list
     ```
 
-    Azure fűzi hozzá van hozzáférése a regisztrációs fiókok listáját:
+    Az Azure az Ön számára elérhető regisztrációs fiókok listájával válaszol:
 
     ```json
     [
@@ -111,22 +109,22 @@ A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatic
 
     ---
 
-    Használja a `principalName` tulajdonság, amely RBAC tulajdonosi hozzáféréssel biztosítani a fiók azonosításához. Másolás a `name` -fiók. Például, ha az RBAC tulajdonosi hozzáférést szeretne a SignUpEngineering@contoso.com eszközregisztráció-fiókot, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a regisztrációs fiók az objektum Azonosítóját. Illessze be ezt az értéket, valahol, hogy használhatja azt, a következő lépésben `enrollmentAccountObjectId`.
+    A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyhez RBAC tulajdonosi hozzáférést szeretne biztosítani. Másolja a fiók `name`ét. Ha például RBAC-tulajdonosi hozzáférést szeretne biztosítani az SignUpEngineering@contoso.com beléptetési fiókhoz, akkor másolja ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a beléptetési fiók objektumazonosító. Illessze be ezt az értéket valahova, hogy a következő lépésben használja `enrollmentAccountObjectId`ként.
 
-1. <a id="userObjectId"></a>A felhasználó vagy csoport kíván adni a RBAC tulajdonosi szerepkör objektum Azonosítójának lekéréséhez
+1. <a id="userObjectId"></a>Szerezze be azon felhasználó vagy csoport objektumazonosító-AZONOSÍTÓját, amelyhez a RBAC tulajdonosi szerepkört kívánja adni
 
-    1. Az Azure Portalon, keressen a **Azure Active Directory**.
-    1. Ha egy felhasználó hozzáférést biztosítani szeretné, kattintson a **felhasználók** a bal oldali menüben. Ha szeretne hozzáférést biztosítani egy csoporthoz, kattintson a **csoportok**.
-    1. Válassza ki a felhasználót vagy csoportot, szeretne adni az RBAC tulajdonosi szerepkört.
-    1. Ha egy felhasználó, akkor az objektum azonosítója a profil oldalon találja. Ha egy csoportot, akkor az objektum azonosítója lesz az Áttekintés lapon. Másolás a **ObjectID** a szövegdoboz jobb ikonra kattintva. Illessze be a valahol, hogy használhatja azt, a következő lépésben `userObjectId`.
+    1. A Azure Portal keresse meg a **Azure Active Directory**.
+    1. Ha felhasználói hozzáférést szeretne biztosítani, kattintson a bal oldali menüben a **felhasználók** lehetőségre. Ha hozzáférést szeretne adni egy csoporthoz, kattintson a **csoportok**elemre.
+    1. Válassza ki azt a felhasználót vagy csoportot, amely számára a RBAC tulajdonosi szerepkört kívánja adni.
+    1. Ha kiválasztott egy felhasználót, az objektumazonosító a profil oldalon található. Ha kiválasztott egy csoportot, az objektum azonosítója az Áttekintés oldalon jelenik meg. Másolja a **ObjectId** a szövegmezőtől jobbra található ikonra kattintva. Illessze be ezt valahova, hogy a következő lépésben használja `userObjectId`ként.
 
-1. Adja meg a felhasználónak vagy a csoport az RBAC tulajdonosi szerepkör a regisztrációs fiókhoz
+1. A RBAC tulajdonosi szerepkörének megadása a felhasználónak vagy csoportnak a beléptetési fiókban
 
-    Az első két lépésben összegyűjtött értékeivel, adja meg a felhasználónak, vagy az RBAC tulajdonosi szerepkör a regisztrációs fiókhoz csoportnak.
+    Az első két lépésben összegyűjtött értékek használatával adja meg a felhasználó vagy csoport számára a RBAC tulajdonosi szerepkörét a beléptetési fiókban.
 
     # <a name="resttabrest-2"></a>[REST](#tab/rest-2)
 
-    Futtassa a következő parancsot, és cserélje le ```<enrollmentAccountObjectId>``` együtt a `name` az első lépésben kimásolt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Cserélje le ```<userObjectId>``` a második lépésben kimásolt objektumazonosítójú.
+    Futtassa a következő parancsot, és cserélje le a ```<enrollmentAccountObjectId>```t az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) másolt `name`. Cserélje le a ```<userObjectId>```t a második lépésből másolt objektumazonosító-AZONOSÍTÓra.
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -139,7 +137,7 @@ A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatic
     }
     ```
 
-    A tulajdonosi szerepkör hozzárendelése sikeres volt a regisztrációs fiók hatókörben, amikor Azure fűzi hozzá a szerepkör-hozzárendelés információkat:
+    Ha a tulajdonosi szerepkör sikeresen hozzá van rendelve a beléptetési fiók hatóköréhez, az Azure a szerepkör-hozzárendelés információit válaszolja:
 
     ```json
     {
@@ -160,7 +158,7 @@ A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatic
 
     # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
 
-    Futtassa a következő [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) parancsot, és cserélje le ```<enrollmentAccountObjectId>``` együtt a `ObjectId` gyűjti az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Cserélje le ```<userObjectId>``` az objektum azonosítója a második lépésben gyűjtött.
+    Futtassa a következő [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) parancsot, és cserélje le a ```<enrollmentAccountObjectId>```t az első lépésben összegyűjtött `ObjectId`ra (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Cserélje le a ```<userObjectId>```t a második lépésben összegyűjtött objektum-AZONOSÍTÓra.
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -168,22 +166,22 @@ A [egy eszközregisztráció-fiók-előfizetések létrehozására](programmatic
 
     # <a name="azure-clitabazure-cli-2"></a>[Azure CLI](#tab/azure-cli-2)
 
-    Futtassa a következő [az szerepkör-hozzárendelés létrehozása](../active-directory/role-based-access-control-manage-access-azure-cli.md) parancsot, és cserélje le ```<enrollmentAccountObjectId>``` együtt a `name` az első lépésben kimásolt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Cserélje le ```<userObjectId>``` az objektum azonosítója a második lépésben gyűjtött.
+    Futtassa a következőt az az [szerepkör-hozzárendelés létrehozása](../active-directory/role-based-access-control-manage-access-azure-cli.md) paranccsal, és cserélje le az ```<enrollmentAccountObjectId>```t az első lépésben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) másolt `name`. Cserélje le a ```<userObjectId>```t a második lépésben összegyűjtött objektum-AZONOSÍTÓra.
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Miután egy felhasználó a regisztrációs fiókhoz tartozó RBAC tulajdonosa válik, akkor is [előfizetések létrehozása programozott módon](programmatically-create-subscription.md) alatta. Delegált felhasználó által létrehozott előfizetés még az eredeti fiók tulajdonosa, szolgáltatás-rendszergazda, de azt is a delegált felhasználó RBAC tulajdonosként alapértelmezés szerint.
+    Miután a felhasználó RBAC válik a beléptetési fiókjához, programozott módon [hozhat létre előfizetéseket](programmatically-create-subscription.md) . A delegált felhasználó által létrehozott előfizetés még mindig rendelkezik az eredeti fiók tulajdonosával a szolgáltatás-rendszergazdaként, de alapértelmezés szerint a meghatalmazott felhasználó RBAC tulajdonosa is.
 
     ---
 
-## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Naplózási, aki létrehozta az előfizetéseket Tevékenységnaplók segítségével
+## <a name="audit-who-created-subscriptions-using-activity-logs"></a>A Tevékenységnaplók használatával létrehozott előfizetések naplózása
 
-Az API-n keresztül létrehozott előfizetések nyomon követéséhez használhatja a [bérlői tevékenység Log API](/rest/api/monitor/tenantactivitylogs). Ez jelenleg nem lehetséges a PowerShell, CLI vagy az Azure portal segítségével nyomon követheti az előfizetés létrehozása.
+Az ezen az API-n keresztül létrehozott előfizetések nyomon követéséhez használja a [bérlői tevékenység log API](/rest/api/monitor/tenantactivitylogs)-ját. Az előfizetés létrehozásának nyomon követéséhez jelenleg nem használható a PowerShell, a CLI vagy a Azure Portal.
 
 1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../active-directory/role-based-access-control-tenant-admin-access.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
-1. A naplózási felhasználóként hívja a [bérlői tevékenység Log API](/rest/api/monitor/tenantactivitylogs) előfizetés létrehozása tevékenységek megtekintéséhez. Példa:
+1. A naplózási felhasználóként hívja meg a [bérlői tevékenység naplójának API](/rest/api/monitor/tenantactivitylogs) -ját az előfizetés-létrehozási tevékenységek megtekintéséhez. Példa:
 
     ```
     GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Subscription'"
@@ -193,8 +191,8 @@ Az API-t kényelmesen meghívhatja a parancssorból az [ARMClient](https://githu
 
 ## <a name="next-steps"></a>További lépések
 
-* Most, hogy a felhasználó vagy szolgáltatás-előfizetés létrehozása engedéllyel rendelkezik, használhatja az identitás [Azure Enterprise-előfizetések létrehozása programozott módon](programmatically-create-subscription.md).
-* A .NET használatával előfizetések létrehozása egy példa: [mintát a githubon](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
-* Azure Resource Manager és az API-kkal kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).
-* Nagyszámú felügyeleti csoportok használatával előfizetések kezelésével kapcsolatos további tudnivalókért lásd: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](management-groups-overview.md)
-* Egy átfogó ajánlott eljárásokkal kapcsolatos útmutatás a nagy szervezetek is használnak az előfizetés-irányítás, olvassa el [Azure enterprise scaffold - előíró előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance)
+* Most, hogy a felhasználó vagy az egyszerű szolgáltatás jogosult az előfizetés létrehozására, az identitás használatával [programozott módon hozhat létre Azure Enterprise-előfizetéseket](programmatically-create-subscription.md).
+* Az előfizetések .NET-tel történő létrehozásával kapcsolatos példa: [mintakód a githubon](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
+* Ha többet szeretne megtudni a Azure Resource Manager és az API-król, tekintse meg a [Azure Resource Manager áttekintését](resource-group-overview.md).
+* Ha többet szeretne megtudni a nagy számú előfizetés felügyeleti csoportokkal való kezelésével kapcsolatban, tekintse meg [az erőforrások rendszerezése az Azure felügyeleti csoportok](management-groups-overview.md) segítségével című témakört.
+* Az előfizetési irányítással foglalkozó nagyméretű szervezetek átfogó bevált gyakorlatával kapcsolatos útmutatásért lásd: [Azure Enterprise állvány – előírásos előfizetés szabályozása](/azure/architecture/cloud-adoption-guide/subscription-governance)

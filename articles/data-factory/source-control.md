@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 46c983fcf863c6948c6107b2213879c65396ed39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5f497bd06868d586f8378cb81e870a750b8a1670
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684045"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122894"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 
@@ -76,7 +76,7 @@ A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai
 | **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
 | **Azure Repos-szervezet** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet neve a következő helyen található: `https://{organization name}.visualstudio.com`. Bejelentkezhet az [Azure Repos-szervezetbe](https://www.visualstudio.com/team-services/git/) a Visual Studio-profil eléréséhez, és megtekintheti a tárházait és projektjeit. | `<your organization name>` |
-| **Projektnév** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét a következő helyen találja: `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **ProjectName** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét a következő helyen találja: `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **RepositoryName** | Az Azure Repos-kód tárházának neve. Az Azure Repos-projektek git-adattárakat tartalmaznak, amelyekkel a projekt növekedésével kezelhetők a forráskód. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a projektben. | `<your Azure Repos code repository name>` |
 | **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint a `master`. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch name>` |
 | **Gyökérmappa** | Az Azure Repos együttműködési ág gyökérkönyvtára. | `<your root folder name>` |
@@ -194,7 +194,7 @@ A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok ment
 }
 ```
 
-Új közzétételi ág megadásakor Data Factory nem törli az előző közzétételi ágat. Ha azt szeretné, hogy az előző közzétételi ág távoli legyen, manuálisan törölje azt.
+Új közzétételi ág megadásakor Data Factory nem törli az előző közzétételi ágat. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
 
 > [!NOTE]
 > Data Factory csak a `publish_config.json` fájlt olvassa be, amikor betölti a gyárat. Ha már betöltötte a gyárat a portálon, frissítse a böngészőt a módosítások érvénybe léptetéséhez.

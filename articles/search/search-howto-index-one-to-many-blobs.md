@@ -1,7 +1,7 @@
 ---
-title: Egy blob indexelése számos keresési indexelő dokumentumba az Azure Blob Indexer-ből a teljes szöveges kereséshez
+title: Több dokumentumot tartalmazó Blobok indexelése
 titleSuffix: Azure Cognitive Search
-description: Azure-Blobok bejárása a szöveges tartalomhoz az Azure Cognitive Search blob indexelő használatával. Az egyes Blobok egy vagy több keresési indexelési dokumentumot is tartalmazhatnak.
+description: Azure-Blobok bejárása a szöveges tartalomhoz az Azure Cognitive Search blob indexelő használatával, ahol minden blob egy vagy több keresési indexelési dokumentumot eredményezhet.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818539"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112262"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobok indexelése több keresési dokumentum létrehozásához
 Alapértelmezés szerint a blob indexelő egyetlen keresési dokumentumként fogja kezelni a blob tartalmát. Bizonyos **parsingMode** -értékek olyan forgatókönyveket támogatnak, amelyekben egy adott blob több keresési dokumentumot is eredményezhet. A különböző típusú **parsingMode** , amelyek lehetővé teszik, hogy az indexelő több keresési dokumentumot is kinyerjen a blobból:
@@ -40,12 +40,12 @@ Tegyük fel, hogy az index definíciója a következő mezőkkel rendelkezik:
 
 És a blob-tároló Blobokkal rendelkezik a következő szerkezettel:
 
-_Blob1. JSON_
+_Blob1.json_
 
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
 
-_Blob2. JSON_
+_Blob2.json_
 
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
@@ -71,13 +71,13 @@ Ez a beállítás azt eredményezi, hogy az Azure Cognitive Search index a köve
 
 Ha ugyanazt az index-definíciót szeretné, mint az előző példában, tegyük fel, hogy a blob-tároló blobokat tartalmaz a következő szerkezettel:
 
-_Blob1. JSON_
+_Blob1.json_
 
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
 
-_Blob2. JSON_
+_Blob2.json_
 
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 

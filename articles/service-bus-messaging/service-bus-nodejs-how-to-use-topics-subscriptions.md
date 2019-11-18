@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 40543f55dc0cb56f6bc575f926456faf2d0ae5a3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c82edde98242ffe130c2022c428c86de80e3b034
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719211"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111779"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node. js-sel és az Azure-SB csomaggal
 > [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
@@ -48,7 +48,7 @@ A témakörökkel és az előfizetésekkel kapcsolatos további információkér
     > Ebben a rövid útmutatóban egy **témakört** és egy **előfizetést** fog létrehozni a témakörhöz a **Node. js** használatával. 
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Hozzon létre egy üres Node. js-alkalmazást. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-alkalmazás létrehozása és üzembe helyezése Azure-webhelyen], [Node. js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy webhelyről a WebMatrix.
+Hozzon létre egy üres Node. js-alkalmazást. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre], [Node. js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy webhelyről a WebMatrix.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
 A Service Bus használatához töltse le a Node. js Azure-csomagot. Ez a csomag olyan kódtárakat tartalmaz, amelyek a Service Bus REST-szolgáltatásokkal kommunikálnak.
@@ -150,7 +150,7 @@ A témakör-előfizetések a **ServiceBusService** objektummal is létrejönnek.
 > [!NOTE]
 > Alapértelmezés szerint az előfizetések mindaddig nem állandóak, amíg el nem végzik, sem a hozzájuk társított témakört. Ha az alkalmazás logikát tartalmaz az előfizetés létrehozásához, először ellenőrizze, hogy létezik-e az előfizetés a `getSubscription` metódussal.
 >
-> Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)beállításával automatikusan törölheti.
+> Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)beállításával automatikusan törölheti.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 A **MatchAll** szűrő az előfizetés létrehozásakor használt alapértelmezett szűrő. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példában létrehozunk egy AllMessages nevű előfizetést, és az alapértelmezett **MatchAll** szűrőt használják.
@@ -314,7 +314,7 @@ Az előfizetésen belül zárolt üzenethez is tartozik időtúllépés. Ha az a
 Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, de a `deleteMessage` metódus meghívása előtt, az üzenet újból megjelenik az alkalmazásban az újraindításkor. Ezt a viselkedést gyakran *legalább egyszeri feldolgozásnak*nevezik. Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újból el lesz juttatva. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, akkor a duplikált üzenetek kézbesítésének kezeléséhez adjon hozzá logikát az alkalmazáshoz. Használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-A témakörök és az előfizetések állandóak, kivéve, ha a [autoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) be van állítva, és explicit módon törölni kell őket a [Azure Portalon][Azure portal] vagy programozottan.
+A témakörök és az előfizetések állandóak, kivéve, ha a [autoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) be van állítva, és explicit módon törölni kell őket a [Azure Portalon][Azure portal] vagy programozottan.
 Az alábbi példa bemutatja, hogyan törölheti `MyTopic`nevű témakört:
 
 ```javascript
@@ -351,6 +351,6 @@ Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hiv
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node. js-alkalmazás létrehozása és üzembe helyezése Azure-webhelyen]: ../app-service/app-service-web-get-started-nodejs.md
+[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

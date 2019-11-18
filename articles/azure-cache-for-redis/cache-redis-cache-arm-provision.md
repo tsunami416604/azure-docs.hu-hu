@@ -1,85 +1,78 @@
 ---
-title: A Redis az Azure Resource Manager üzembe helyezhet egy Azure Cache |} A Microsoft Docs
-description: Az Azure Resource Manager-sablon segítségével üzembe helyezése az Azure Cache redis.
+title: Azure cache kiépítése a Redis Azure Resource Manager használatával
+description: Azure Resource Manager sablon használatával helyezzen üzembe egy Azure-gyorsítótárat a Redis.
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
-ms.workload: web
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132808"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121784"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-template"></a>Az Azure Cache létrehozása sablon használatával redis
+# <a name="create-an-azure-cache-for-redis-using-a-template"></a>Azure cache létrehozása Redis sablon használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ebben a témakörben elsajátíthatja, hogyan hozhat létre egy Azure Resource Manager-sablon üzembe helyez egy Azure Cache redis. A gyorsítótár egy meglévő tárfiókot a diagnosztikai adatok is használható. Emellett megismerjük, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ebben a témakörben megtudhatja, hogyan hozhat létre olyan Azure Resource Manager-sablont, amely üzembe helyez egy Azure-gyorsítótárat a Redis. A gyorsítótárat meglévő Storage-fiókkal is használhatja a diagnosztikai adatkezelés érdekében. Azt is megtudhatja, hogyan határozhatja meg, hogy mely erőforrások legyenek telepítve, és hogyan határozhatja meg a központi telepítés végrehajtásakor megadott paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-Diagnosztikai beállítások jelenleg az összes gyorsítótárakhoz ugyanabban a régióban egy előfizetéshez vannak megosztva. Más régióban található összes gyorsítótárak frissítése a régióban egy gyorsítótár van hatással.
+Jelenleg a diagnosztikai beállítások az adott régióban lévő összes gyorsítótárhoz meg vannak osztva egy előfizetéshez. A régió egyik gyorsítótárának frissítése hatással van a régió összes többi gyorsítótárára.
 
-Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md). A JSON-szintaxist és a gyorsítótár erőforrástípusok tulajdonságaival kapcsolatos tudnivalókért lásd: [a Microsoft.Cache erőforrás-típus](/azure/templates/microsoft.cache/allversions).
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
 
-A teljes sablonját, lásd: [Azure Cache Redis-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
+A teljes sablonhoz lásd: az [Azure cache for Redis sablonja](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
 > [!NOTE]
-> Az új Resource Manager-sablonok [prémium szintű](cache-premium-tier-intro.md) érhetők el. 
+> Az új [prémium szinthez](cache-premium-tier-intro.md) Resource Manager-sablonok érhetők el. 
 > 
-> * [Hozzon létre egy prémium szintű Azure Cache redis klaszterezéssel](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [Prémium szintű Azure Cache létrehozása redis-adatmegőrzés](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-> * [Prémium redis Cache gyorsítótár üzembe helyezett virtuális hálózat létrehozása](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
+> * [Prémium szintű Azure cache létrehozása a fürtözést biztosító Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
+> * [Prémium szintű Azure cache létrehozása a Redis adatmegőrzési szolgáltatásával](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [Virtual Network üzembe helyezett prémium szintű Redis Cache létrehozása](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
-> A legújabb sablonokért megtekintéséhez [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) és keressen rá a `Azure Cache for Redis`.
+> A legújabb sablonok kereséséhez tekintse meg az Azure rövid útmutató [sablonjait](https://azure.microsoft.com/documentation/templates/) , és keressen rá `Azure Cache for Redis`.
 > 
 > 
 
-## <a name="what-you-will-deploy"></a>Mit fog üzembe helyezni
-Ez a sablon telepíti az Azure Cache a Redis által egy meglévő tárfiókot a diagnosztikai adatok.
+## <a name="what-you-will-deploy"></a>Üzembe helyezés
+Ebben a sablonban egy Azure cache-t fog telepíteni a Redis, amely egy meglévő Storage-fiókot használ a diagnosztikai szolgáltatásokhoz.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 [![Üzembe helyezés az Azure-ban](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Paraméterek
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz, amely tartalmazza az összes paraméter értékét nevű paraméterek szakaszban.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy paramétert, amely az összes paraméter értékét tartalmazza.
 Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva. 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
-Az Azure Cache redis helye. A legjobb teljesítmény érdekében ugyanazt a helyet használja, az alkalmazás a gyorsítótár használható.
+A Redis tartozó Azure cache helye. A legjobb teljesítmény érdekében használja ugyanazt a helyet, mint amelyet a gyorsítótárhoz használni kíván.
 
     "redisCacheLocation": {
       "type": "string"
     }
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
-A meglévő tárfiókot a diagnosztikai használandó neve. 
+A diagnosztikai célra használandó meglévő Storage-fiók neve. 
 
     "existingDiagnosticsStorageAccountName": {
       "type": "string"
     }
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
-Logikai érték, amely azt jelzi, hogy engedélyezi a hozzáférést a nem SSL portok keresztül.
+Logikai érték, amely azt jelzi, hogy engedélyezi-e a hozzáférést a nem SSL-portokon keresztül.
 
     "enableNonSslPort": {
       "type": "bool"
     }
 
 ### <a name="diagnosticsstatus"></a>diagnosticsStatus
-Egy érték, amely azt jelzi, hogy engedélyezve van-e a diagnosztika. Használat be vagy ki BEÁLLÍTÁST.
+Egy érték, amely jelzi, hogy engedélyezve van-e a diagnosztika. Használat be-és kikapcsolása.
 
     "diagnosticsStatus": {
       "type": "string",
@@ -92,7 +85,7 @@ Egy érték, amely azt jelzi, hogy engedélyezve van-e a diagnosztika. Használa
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Az Azure Cache Redis hoz létre.
+Létrehozza az Azure cache-t a Redis számára.
 
     {
       "apiVersion": "2015-08-01",

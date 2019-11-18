@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: dfbf416c93c78e6ba5e23819084d69e57c47edc8
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fbd595c7de0bde4e8ba8b7aaa9a65aa5880c1165
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273660"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151913"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -19,15 +19,15 @@ Azure Database for MySQL automatikusan létrehozza a kiszolgáló biztonsági m�
 
 ## <a name="backups"></a>Biztonsági másolatok
 
-A Azure Database for MySQL teljes, differenciális és tranzakciós naplóbeli biztonsági másolatokat készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is [beállíthatja](howto-restore-server-portal.md#set-backup-configuration) . Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+Azure Database for MySQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárterülettől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálót) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is [beállíthatja](howto-restore-server-portal.md#set-backup-configuration) . Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-Általánosságban elmondható, hogy a teljes biztonsági mentés hetente, a különbözeti biztonsági mentések naponta kétszer történnek, és a tranzakciónaplók biztonsági mentései öt percenként történnek. Az első teljes biztonsági mentést a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára.
+Általánosságban elmondható, hogy a teljes biztonsági mentések hetente, a különbözeti biztonsági mentések naponta kétszer történnek a 4 TB-os maximális támogatott tárterülettel rendelkező kiszolgálók esetében. A pillanatképes biztonsági mentések naponta legalább egyszer történnek olyan kiszolgálók esetében, amelyek legfeljebb 16 TB tárterületet támogatnak. A tranzakciónapló biztonsági mentései mindkét esetben öt percenként történnek. A teljes biztonsági mentés első pillanatképét a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti teljes biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára. Mivel a pillanatképek instantanious, a legfeljebb 16 TB tárhellyel rendelkező kiszolgálók visszaállíthatók egészen a létrehozási időre.
 
-### <a name="backup-redundancy-options"></a>Biztonsági mentési redundancia beállításai
+### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 
-Azure Database for MySQL rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de [](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)egy párosított adatközpontba is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
+Azure Database for MySQL rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de egy [párosított adatközpontba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
 
 > [!IMPORTANT]
 > A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása.
@@ -62,7 +62,9 @@ Előfordulhat, hogy meg kell várnia a következő tranzakciónapló biztonsági
 
 ### <a name="geo-restore"></a>Georedundáns helyreállítás
 
-A kiszolgálót visszaállíthatja egy másik Azure-régióba, ahol a szolgáltatás elérhető, ha konfigurálta a kiszolgálót a Geo-redundáns biztonsági mentésekhez. A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha a kiszolgáló nem érhető el, mert a kiszolgálót futtató régióban incidens található. Ha egy adott régióban a nagyméretű incidensek nem állnak rendelkezésre az adatbázis-alkalmazás számára, visszaállíthat egy kiszolgálót a Geo-redundáns biztonsági másolatokból egy másik régióban található kiszolgálóra. A biztonsági másolat készítése és más régióba való replikálása között késés történt. Ez a késleltetés akár egy óráig is eltarthat, így ha egy katasztrófa következik be, akár egy órányi adatvesztés is lehet.
+A kiszolgálót visszaállíthatja egy másik Azure-régióba, ahol a szolgáltatás elérhető, ha konfigurálta a kiszolgálót a Geo-redundáns biztonsági mentésekhez. A legfeljebb 16 TB tárterületet támogató kiszolgálók esetében a Geo-biztonsági mentések csak a 16 TB-os kiszolgálót támogató régiókban állíthatók vissza. Tekintse át a támogatott régiók listáját a [Azure Database for MySQL díjszabási szintjein](concepts-pricing-tiers.md) . 
+
+A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha a kiszolgáló nem érhető el, mert a kiszolgálót futtató régióban incidens található. Ha egy adott régióban a nagyméretű incidensek nem állnak rendelkezésre az adatbázis-alkalmazás számára, visszaállíthat egy kiszolgálót a Geo-redundáns biztonsági másolatokból egy másik régióban található kiszolgálóra. A biztonsági másolat készítése és más régióba való replikálása között késés történt. Ez a késleltetés akár egy óráig is eltarthat, így ha egy katasztrófa következik be, akár egy órányi adatvesztés is lehet.
 
 A Geo-visszaállítás során a megváltoztatható kiszolgálói konfigurációk közé tartoznak a számítási generáció, a virtuális mag, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállításai. Az árképzési szint (alapszintű, általános célú vagy memória optimalizálása) vagy a tárolási méret módosítása a Geo-visszaállítás során nem támogatott.
 

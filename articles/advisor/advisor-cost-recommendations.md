@@ -3,17 +3,17 @@ title: A szolgáltatási költségek csökkentése a Azure Advisor használatáv
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.author: sagupt
+ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703034"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145392"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -21,7 +21,7 @@ Az Advisor az inaktív és a kihasználatlan erőforrások azonosításával seg
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>A virtuális gépek a kihasználatlan példányok átméretezésével vagy leállításával optimalizálható 
 
-Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor Advanced értékelési modelljei olyan virtuális gépeket tekintenek meg, amelyek a CPU-kihasználtság maximális értékének maximális értéke P95th kevesebb mint 3%-ot, a hálózati kihasználtság pedig kevesebb, mint 2% a 7 napos időszakban. A virtuális gépek megfelelő méretűek, ha az aktuális terhelést egy kisebb SKU-ban (ugyanabban az SKU-családban) vagy egy kisebb számú példányban szeretné megtekinteni, hogy az aktuális terhelés ne haladja meg a 80%-os kihasználtságot, ha nem a felhasználó felé irányuló munkaterhelések, és nem a felhasználó felé irányuló munkaterhelésnél 40%-kal nagyobb. Itt a számítási feladatok típusát a számítási feladatok CPU-kihasználtsági jellemzőinek elemzésével határozzuk meg.
+Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor Advanced értékelési modelljei olyan virtuális gépeket tekintenek meg, amelyek a CPU-kihasználtság maximális értékének maximális értéke P95th kevesebb mint 3%-ot, a hálózati kihasználtság pedig kevesebb, mint 2% a 7 napos időszakban. A virtuális gépek megfelelő méretűek, ha az aktuális terhelést egy kisebb SKU-ban (ugyanabban az SKU-családban) vagy egy kisebb számú példányon helyezi el, hogy az aktuális terhelés ne haladja meg a 80%-os kihasználtságot, ha a nem felhasználó felé irányuló munkaterhelések, és nem haladják meg a 40%-ot a felhasználó felé irányuló munkaterhelés Itt a számítási feladatok típusát a számítási feladatok CPU-kihasználtsági jellemzőinek elemzésével határozzuk meg.
 
 Az ajánlott műveletek leállnak, és a rendszer a számára ajánlott erőforrásra vonatkozik. Az Advisor a javasolt műveletek becsült költségmegtakarítását jeleníti meg – átméretezheti vagy leállíthatja. Emellett a javasolt művelet átméretezéséhez az Advisor az aktuális és a célként megadott SKU-információkat is biztosítja. 
 
@@ -29,7 +29,7 @@ Ha agresszíven szeretne lenni a kihasználatlan virtuális gépek azonosítás�
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>A költségek csökkentése a nem kiépített ExpressRoute-áramkörök eltávolításával
 
-Az Advisor azokat az ExpressRoute-áramköröket azonosítja, amelyekben a szolgáltató állapota *nem* több mint egy hónapra van kiépítve, és az áramkör törlését javasolja, ha nem tervezi az áramkör kiépítését a kapcsolati szolgáltatóval.
+Az Advisor azokat az ExpressRoute-áramköröket azonosítja, amelyekben a szolgáltató állapota nem több mint egy hónapra van *kiépítve* , és az áramkör törlését javasolja, ha nem tervezi az áramkör kiépítését a kapcsolati szolgáltatóval.
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Csökkentse a költségeket a tétlen virtuális hálózati átjárók törlésével vagy újrakonfigurálásával
 
@@ -66,3 +66,4 @@ Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a k�
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-cost-recommendations.md)
 * [Advisor – magas rendelkezésre állási javaslatok](advisor-cost-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-cost-recommendations.md)
+* [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

@@ -1,14 +1,14 @@
 ---
 title: Az üzembe helyezési sorrend sorrendjének megismerése
-description: Ismerje meg a terv meghatározásának életciklusát, valamint az egyes szakaszok részleteit.
+description: Ismerje meg az alapértelmezett sorrendet, amelyet a tervrajz-összetevők üzembe helyezése a tervrajz-hozzárendelés során és a telepítési sorrend testreszabásával kapcsolatban tartalmaz.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960440"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128822"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az üzembe helyezési folyamat ismertetése az Azure-tervezetekben
 
@@ -139,7 +139,7 @@ A létrehozási folyamat során a rendszer egy topológiai rendezést használ a
 
 Ha olyan összetevő-függőség van deklarálva, amely nem változtatja meg az alapértelmezett sorrendet, akkor nem történt módosítás. Ilyen például egy olyan erőforráscsoport, amely egy előfizetési szint házirendjétől függ. Egy másik példa egy "standard-RG" alárendelt házirend-hozzárendelés, amely az erőforráscsoport "standard-RG" alárendelt szerepkör-hozzárendeléstől függ. A `dependsOn` mindkét esetben nem változtatta meg az alapértelmezett sorrendi sorrendet, és nem történt módosítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).
 - A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.

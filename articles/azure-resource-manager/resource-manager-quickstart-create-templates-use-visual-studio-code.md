@@ -1,24 +1,16 @@
 ---
-title: Azure Resource Manager sablon létrehozása – Visual Studio Code
+title: Sablon létrehozása – Visual Studio Code
 description: A Resource Manager-sablonokon a Visual Studio Code-dal és az Azure Resource Manager-eszközök bővítményeivel dolgozhat.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 3e4707e6c0d2a45c02933a5b6022f5604ca7dbed
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: d768d0e1d430a5c6b9be35b486cd0f200c492d7b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533635"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149522"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
@@ -60,7 +52,7 @@ Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók lé
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-Ha szeretné megtapasztalni, hogyan szerkeszthet egy sablont a Visual Studio Code használatával, adjon hozzá még egy elemet a `outputs` szakaszban a tárolási URI megjelenítéséhez.
+Ha szeretné megtapasztalni, hogyan szerkeszthet egy sablont a Visual Studio Code használatával, adjon hozzá még egy elemet a `outputs` szakaszhoz a tárolási URI megjelenítéséhez.
 
 1. Egy további kimenet felvétele az exportált sablonba:
 
@@ -209,7 +201,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató elsősorban az Azure-gyorssablonok közül egy meglévő sablon a Visual Studio Code-dal történő szerkesztését mutatja be. Azt is megtanulta, hogyan helyezheti üzembe a sablont a parancssori felület vagy a PowerShell használatával az Azure Cloud shellben. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 

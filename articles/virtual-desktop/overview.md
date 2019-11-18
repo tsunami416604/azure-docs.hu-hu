@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013159"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120002"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -35,7 +35,7 @@ Ismerje meg a Windows rendszerű virtuális asztalt, hogy miért egyedi, és mi 
 
 További videók a Windows rendszerű virtuális asztalról: [lejátszási lista](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
-## <a name="key-capabilities"></a>Főbb funkciók
+## <a name="key-capabilities"></a>Főbb képességek
 
 A Windows virtuális asztal használatával méretezhető és rugalmas környezetet állíthat be:
 
@@ -117,8 +117,8 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 
 A Windows rendszerű virtuális asztali szolgáltatás a következő x64 operációsrendszer-lemezképeket támogatja:
 
-* Windows 10 Enterprise multi-session
-* Windows 10 Enterprise
+* Windows 10 Enterprise multi-session, 1809-es vagy újabb verzió
+* Windows 10 Enterprise, 1809-es vagy újabb verzió
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -139,7 +139,7 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Windows Server 2016|Igen|Igen|Igen|Igen|Automatikus|
 |Windows Server 2012 R2|Igen|Igen|Nem|Nem|Automatikus|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
 

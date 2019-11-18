@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575567"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132212"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -26,7 +26,7 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Application Insights erőforrás létrehozása Azure Monitor
 
@@ -109,7 +109,6 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
     tracer = Tracer(
         exporter=AzureExporter(
             connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        ),
         sampler=ProbabilitySampler(1.0),
     )
 
@@ -215,7 +214,7 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
     # TODO: replace the all-zero GUID with your instrumentation key.
     exporter = metrics_exporter.new_metrics_exporter(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+
     view_manager.register_exporter(exporter)
 
     def prompt():
@@ -297,30 +296,6 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
 4. Az exportőr a Azure Monitorba küldi a naplófájlokat. A `traces`alatt található adat.
 
 5. A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
-
-## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
-
-1. Most újra megnyithatja a Azure Portal Application Insights **Áttekintés** paneljét a jelenleg futó alkalmazás részleteinek megtekintéséhez. Válassza a **élő metrikastream**lehetőséget.
-
-   ![Képernyőkép az áttekintő panelről, a "Élő metrikastream" jelölésű piros mezőben](./media/opencensus-python/0005-overview-live-metrics-stream.png)
-
-2. Térjen vissza az **Áttekintés** panelre. Válassza ki az **alkalmazás-hozzárendelést** a függőségi kapcsolatok vizuális elrendezéséhez, és hívja meg az időzítést az alkalmazás-összetevők között.
-
-   ![Képernyőkép egy alapszintű alkalmazás-térképről](./media/opencensus-python/0007-application-map.png)
-
-   Mivel csak egyetlen metódust hívunk meg, az alkalmazás térképe nem érdekes. Az alkalmazás-hozzárendelések azonban méretezhetők a jóval több elosztott alkalmazások megjelenítéséhez:
-
-   ![Alkalmazástérkép](media/opencensus-python/application-map.png)
-
-3. Válassza a **teljesítmény vizsgálata** lehetőséget a teljesítmény elemzéséhez, és állapítsa meg a lassú teljesítmény okát.
-
-   ![A teljesítmény részleteinek képernyőképe](./media/opencensus-python/0008-performance.png)
-
-4. Ha meg szeretné nyitni a tranzakciók részleteinek teljes körű élményét, válassza a **minták**lehetőséget, majd válassza ki a jobb oldali panelen megjelenő mintákat. 
-
-   Habár a minta alkalmazásunk egyetlen eseményt mutat be, egy összetettebb alkalmazás lehetővé teszi, hogy a végpontok közötti tranzakciót egy adott esemény hívási veremének szintjére tárja fel.
-
-   ![Képernyőkép a végpontok közötti tranzakciós felületről](./media/opencensus-python/0009-end-to-end-transaction.png)
 
 ## <a name="view-your-data-with-queries"></a>Az adataikat a lekérdezésekkel tekintheti meg
 

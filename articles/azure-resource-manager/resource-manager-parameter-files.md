@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager paraméter fájljának létrehozása
+title: Paraméterfájl létrehozása
 description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: tomfitz
-ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7333e33af90ff7883b53a24bacdc63b42bf107ee
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983937"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149447"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
 

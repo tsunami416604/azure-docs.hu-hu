@@ -1,5 +1,5 @@
 ---
-title: Modell Hiperparaméterek beállítása hangolása
+title: Modell-hiperparaméterek hangolása
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a Model Hiperparaméterek beállítása modult az optimális paraméterek beállításának meghatározására a modellben.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: fd796297bafeb437b55eca7f38cbd7ae55e19b93
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716722"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131226"
 ---
-# <a name="tune-model-hyperparameters"></a>Modell Hiperparaméterek beállítása hangolása
+# <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
 Ez a cikk azt ismerteti, hogyan használható a Hiperparaméterek beállítása-modul Tune Model Azure Machine Learning Designerben (előzetes verzió). A cél a gépi tanulási modell optimális hiperparaméterek beállítása meghatározása. A modul több modellt is felépít és tesztel a különböző beállítások kombinációjának használatával. Összehasonlítja az összes modell mérőszámait a beállítások kombinációjának lekéréséhez. 
 
@@ -69,7 +69,7 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 
 8.  A **rangsoroláshoz**válassza ki a modellek rangsorolásához használandó egyetlen mérőszámot.
 
-    Ha egy paramétert futtat, a modul a modell összes vonatkozó mérőszámát kiszámítja a **sweep Results** jelentésben. A modul külön mérőszámokat használ a regressziós és besorolási modellekhez.
+    Ha lefuttat egy paramétert, a modul kiszámítja a modell típusához tartozó összes vonatkozó mérőszámot, és visszaadja azokat a **sweep Results** jelentésben. A modul külön mérőszámokat használ a regressziós és besorolási modellekhez.
 
     A kiválasztott metrika azonban meghatározza a modellek rangsorolásának módját. Csak a legfelső szintű modell, amelyet a kiválasztott metrika rangsorol, a kiképzésen alapuló modellként jeleníti meg az eredményt.
 

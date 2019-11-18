@@ -1,7 +1,7 @@
 ---
 title: Videók keresése a Bing Video Search API használatával
 titleSuffix: Azure Cognitive Services
-description: További információ a keresési lekérdezések küldéséről a Bing Video Search API.
+description: A Bing Video Search APIfinds, és visszaadja a kapcsolódó videókat a webről, számos funkciót kínál az intelligens és a célzott videó-lekéréshez a weben.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512415"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111434"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
 

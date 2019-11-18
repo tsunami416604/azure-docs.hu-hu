@@ -1,5 +1,5 @@
 ---
-title: Azure S2S VPN-kapcsolatok létrehozása és felügyelete a PowerShell használatával | Microsoft Docs
+title: 'Azure VPN Gateway: S2S VPN-kapcsolatok létrehozása és kezelése: oktatóanyag'
 description: Oktatóanyag – S2S VPN-kapcsolatok létrehozása és felügyelete az Azure PowerShell-modullal
 services: vpn-gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f2cbe447508ca6939fcdb997a9536ea91a7953f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 64da55c3dba4b617458b68a8b54a509bab4264d2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495633"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152158"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Oktatóanyag: S2S VPN-kapcsolatok létrehozása és kezelése a PowerShell-lel
 
@@ -120,7 +120,7 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
-A kimenet "**Azure\@! b2C3**" lesz a fenti példát követve. Az alábbi parancs használatával módosíthatja az előmegosztott kulcs értékét az "**Azure\@! _b2 = C3**" értékre:
+A kimenet "**Azure\@! b2C3**" lesz a fenti példát követve. Az alábbi parancs használatával módosítsa az előmegosztott kulcs értékét az "**Azure\@! _b2 = C3**" értékre:
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkGatewayConnectionSharedKey `

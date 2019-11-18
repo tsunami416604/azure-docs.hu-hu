@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 25aaad02cf8c90c67e87d49553a02cacf033281f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a9e2a2c20a8de4bed3876f431566b293cbfa4ef5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819476"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109660"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Fürt módosítása a Tanúsítvány ujjlenyomata és köznapi neve között
 Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami lehetővé teszi a fürt tanúsítványainak átváltását vagy felügyeletét. Több tanúsítvány, azonban ugyanaz a köznapi név vagy a tárgy lehet.  Ha egy telepített fürtöt a tanúsítvány ujjlenyomatai megfelelnek használ a tanúsítványok köznapi nevének használatára, a Tanúsítványkezelő sokkal egyszerűbbé válik. Ez a cikk azt ismerteti, hogyan lehet frissíteni egy futó Service Fabric fürtöt, hogy a Tanúsítvány ujjlenyomata helyett a tanúsítvány köznapi nevét használja.
@@ -189,7 +189,7 @@ Ezután nyissa meg a sablonfájlt egy szövegszerkesztőben, és három frissít
         ...
     ```
 
-További információ: [fürt módosítása a tanúsítvány ujjlenyomatáról a köznapi névre.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)
+További információ: [Service Fabric-fürt üzembe helyezése, amely az ujjlenyomat helyett a tanúsítvány köznapi nevét használja.](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)
 
 ## <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
 A módosítások végrehajtása után telepítse újra a frissített sablont.

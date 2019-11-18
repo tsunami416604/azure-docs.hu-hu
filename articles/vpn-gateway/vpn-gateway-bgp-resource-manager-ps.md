@@ -1,5 +1,5 @@
 ---
-title: 'A BGP konfigurálása Azure VPN Gateway-átjárón: Resource Manager: PowerShell | Microsoft Docs'
+title: 'Azure VPN Gateway: a BGP konfigurálása: PowerShell'
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a BGP-t az Azure VPN Gateway Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 195a6887696bbb8681cdd187a4c03df2ade7e2c0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f4c5e3ddb5a7f5c9a21d29aa24fe28e095123836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091931"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151392"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>A BGP konfigurálása Azure VPN Gateway-átjárón a PowerShell használatával
 Ez a cikk bemutatja, hogyan engedélyezheti a BGP-t a telephelyek közötti helyek közötti (S2S) VPN-kapcsolaton, valamint egy VNet és VNet kapcsolaton keresztül a Resource Manager-alapú üzemi modell és a PowerShell használatával.
@@ -320,6 +320,6 @@ Ha befejezte a gyakorlat mindhárom részét, a következő hálózati topológi
 
 ![BGP VNet – VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

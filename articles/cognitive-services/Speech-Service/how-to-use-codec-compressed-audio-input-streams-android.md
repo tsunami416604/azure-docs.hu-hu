@@ -1,5 +1,5 @@
 ---
-title: Stream codec tömörített hang a Speech SDK-val Android-Speech Service-ben
+title: Stream codec tömörített hang az Androidon futó Speech SDK-val
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan továbbíthatja a tömörített hanganyagokat az Azure Speech Servicesbe az Androidon futó Speech SDK-val.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464374"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109902"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>A kodekkel tömörített hangbemenet használata az Androidon futó Speech SDK-val
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Útmutató: a kodekkel tömörített hangbemenet használata az Androidon futó Speech SDK-val
 
 A Speech SDK **tömörített hangbemeneti stream** API-val a PullStream vagy a PushStream segítségével továbbíthatja a tömörített hangokat a beszédfelismerési szolgáltatásba.
 
@@ -25,7 +25,7 @@ A Speech SDK **tömörített hangbemeneti stream** API-val a PullStream vagy a P
 > A streaming tömörített bemeneti hang jelenleg a [ C++, C#a és a Java Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md)támogatott. A Java az iOS platformon is támogatja az Android és [Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) nyelveken.
 > A Speech SDK 1.7.0 vagy újabb verziója szükséges.
 
-A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját.  A WAV/PCM-en kívül a következő codec tömörített bemeneti formátumok támogatottak:
+A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját. A WAV/PCM-en kívül a következő codec tömörített bemeneti formátumok támogatottak:
 
 - MP3
 - OPUS/OGG
@@ -35,7 +35,7 @@ A WAV/PCM esetében tekintse meg a fővonal beszédének dokumentációját.  A 
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>A kodek tömörített hangbemenetének használatának előfeltételei az Androidon
 
-A kodekkel tömörített hang a [GStreamer](https://gstreamer.freedesktop.org)használatával valósítható meg. Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva az SDK-val. Az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
+A kodekkel tömörített hang a [GStreamer](https://gstreamer.freedesktop.org)használatával valósítható meg. Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva az SDK-val. Az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
 `libgstreamer_android.so` megadása kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`van csatolva.
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Lásd: a beszédfelismerés felismerése Java-ban](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

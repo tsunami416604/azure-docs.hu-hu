@@ -1,17 +1,14 @@
 ---
-title: Azure-erőforrások üzembe helyezése Azure Portal használatával | Microsoft Docs
+title: Erőforrások üzembe helyezése Azure Portal
 description: A Azure Portal és az Azure Erőforrás-kezelés használatával az erőforrásokat üzembe helyezheti az előfizetésében található erőforráscsoporthoz.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6a8842a9fbda11bf48d45152c167d7b072f38119
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579013"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150770"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -34,7 +31,7 @@ Ez a cikk mindkét módszert mutatja be.
 
 1. Az erőforráscsoportok területen válassza a **Hozzáadás**lehetőséget.
 
-   ![Erőforráscsoport hozzáadása](./media/resource-group-template-deploy-portal/add-resource-group.png)
+   ![erőforráscsoport hozzáadása](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
 1. Válassza ki vagy adja meg a következő tulajdonságértékek értékét:
 

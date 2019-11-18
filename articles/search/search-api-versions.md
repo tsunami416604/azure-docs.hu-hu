@@ -1,5 +1,5 @@
 ---
-title: API-verziók kezelése a .NET SDK-hoz és a REST API-khoz
+title: API-verziók kezelése a .NET-hez és a REST-hoz
 titleSuffix: Azure Cognitive Search
 description: Az Azure Cognitive Search REST API-khoz és a .NET SDK-hoz készült ügyféloldali kódtár verziójának szabályzata.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a976655d0f634c7026f008d64516a629947e90c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793065"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112149"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Ugyanez a szabály vonatkozik az SDK frissítéseire is. Az Azure Cognitive Sear
 Az alábbiakban az Azure Cognitive Search összes programozási felületének aktuális verzióit tartalmazó pillanatkép látható.
 
 
-| Adapterek | Legújabb főverzió | Állapot |
+| Adapterek | Legújabb főverzió | status |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |Általánosan elérhető, megjelent május 2019 |
 | [.NET SDK – előzetes verzió](https://aka.ms/search-sdk-preview) |8,0 – előzetes verzió |Előzetes verzió, kiadás dátuma április 2019 |

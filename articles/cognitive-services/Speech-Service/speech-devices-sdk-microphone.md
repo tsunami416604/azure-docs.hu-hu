@@ -1,5 +1,5 @@
 ---
-title: Beszédfelismerési eszközök SDK mikrofon tömb ajánlásai – beszédfelismerési szolgáltatás
+title: Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 titleSuffix: Azure Cognitive Services
 description: Beszédfelismerési eszközök SDK mikrofon tömb ajánlásai. Ezek a tömb geometriái ajánlottak a Microsoft audio Stackhez való használatra.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072399"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111663"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 
@@ -41,16 +41,16 @@ A mikrofon-összetevőket úgy kell kiválasztani, hogy pontosan reprodukálni l
 
 A mikrofonok kiválasztásakor a javasolt tulajdonságok a következők:
 
-| Paraméter                     | Ajánlott                                         |
-| ----------------------------- | --------------------------------------------------- |
-| SNR                           | \>= 65 dB (1 kHz jel 94 dBSPL, A-súlyozott zaj) |
-| Amplitúdó egyeztetése            | ± 1 dB @ 1 kHz                                      |
-| Fázis egyeztetése                | ± 2 ° @ 1 kHz                                        |
-| Akusztikai túlterhelés pont (AOP) | \>= 120 dBSPL (THD = 10%)                           |
-| Átviteli sebesség                      | Minimum 24 bites                                      |
-| Mintavételezési frekvencia                 | Minimum 16 kHz\*                                    |
-| Gyakorisági válasz            | ± 3 dB, 200-8000 Hz-es úszó maszk\*                 |
-| Megbízhatóság                   | Tárolási hőmérséklet-tartomány – 40 °C – 70 °C<br />Működési hőmérséklet-tartomány – 20 °C – 55 °C |
+| Paraméter | Ajánlott |
+| --------- | ----------- |
+| SNR | \>= 65 dB (1 kHz jel 94 dBSPL, A-súlyozott zaj) |
+| Amplitúdó egyeztetése | ± 1 dB @ 1 kHz |
+| Fázis egyeztetése | ± 2 ° @ 1 kHz |
+| Akusztikai túlterhelés pont (AOP) | \>= 120 dBSPL (THD = 10%) |
+| Átviteli sebesség | Minimum 24 bites |
+| Mintavételezési frekvencia | Minimum 16 kHz\* |
+| Gyakorisági válasz | ± 3 dB, 200-8000 Hz-es úszó maszk\* |
+| Megbízhatóság | Tárolási hőmérséklet-tartomány – 40 °C – 70 °C<br />Működési hőmérséklet-tartomány – 20 °C – 55 °C |
 
 _a magas színvonalú kommunikációs (VoIP) alkalmazások esetében \*nagyobb mintavételi vagy "szélesebb" frekvenciatartományokra lehet szükség_ .
 
@@ -68,7 +68,7 @@ A mikrofon tömb teljesítménye az eszközbe való integráláskor eltér az ö
 | THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5. sorrend             |
 | Gyakorisági válasz | ± 6 dB, 200-8000 Hz-es úszó maszk\*\*              |
 
-\*_alacsony torzítású hangsugárzó szükséges a THD méréséhez (például Neumann KH120)_
+\*\*_alacsony torzítású hangsugárzó szükséges a THD méréséhez (például Neumann KH120)_
 
 _a nagy teljesítményű kommunikációs (VoIP) alkalmazások esetében \*\*"szélesebb" frekvenciatartományokra is szükség lehet._
 

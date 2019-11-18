@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578387"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132603"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása
 
@@ -41,9 +41,9 @@ A Speech containers használata előtt a következő előfeltételek szükséges
 
 | Kötelező | Cél |
 |--|--|
-| Docker-motor | A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), Windows és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) [rendszereken](https://docs.docker.com/docker-for-windows/). A Docker és a Container alapjairól a [Docker áttekintésében](https://docs.docker.com/engine/docker-overview/)talál további információt.<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br> |
+| Docker-motor | A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), Windows és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) [rendszereken](https://docs.docker.com/docker-for-windows/). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br> |
 | A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók rendszerképeiről, valamint az alapszintű `docker` parancsok megismeréséről. |
-| Beszédfelismerési erőforrás | A tárolók használatához a következőket kell tennie:<br><br>Egy Azure _Speech_ -erőforrás a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain. Mindkettő szükséges a tároló elindításához.<br><br>**{API_KEY}** : a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}** : az **Áttekintés** oldalon megadott végpont |
+| Beszédfelismerési erőforrás | A tárolók használatához a következőket kell tennie:<br><br>Egy Azure _Speech_ -erőforrás a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain. Mindkettő szükséges a tároló elindításához.<br><br>**{API_KEY}** : a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}** : az **Áttekintés** lapon megadott végpont |
 
 ## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
@@ -69,7 +69,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 > [!WARNING]
 > A AVX2 támogatásához a gazdaszámítógép *szükséges* . A tároló *nem fog* megfelelően működni AVX2-támogatás nélkül.
 
-### <a name="container-requirements-and-recommendations"></a>A tárolóra vonatkozó követelmények és javaslatok
+### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
 Az alábbi táblázat az egyes beszédfelismerési tárolók minimális és ajánlott erőforrás-elosztását ismerteti.
 
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> A `latest` címke lekéri a `en-US` területi beállítását és `jessarus` hangot. További területi beállítások: [beszéd – szöveg területi beállítások](#speech-to-text-locales).
+> A `latest` címke lekéri a `en-US` területi beállítást. További területi beállítások: [beszéd – szöveg területi beállítások](#speech-to-text-locales).
 
 #### <a name="speech-to-text-locales"></a>Beszéd – szöveg területi beállítások
 
@@ -167,7 +167,7 @@ A következő címke egy példa a formátumra:
 2.0.0-amd64-en-us-preview
 ```
 
-A **beszéd – szöveg** típusú tároló 2.0.0-verziójában támogatott területi beállítások esetén a bérlet a [beszéd – szöveg nyelvi támogató](language-support.md#speech-to-text) tábla **tárolók támogatása** oszlopában található.
+A **beszéd-szöveg** típusú tároló összes támogatott területi beállítását lásd: [beszéd – szöveg képcímkék](../containers/container-image-tags.md#speech-to-text).
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech – szöveg](#tab/cstt)
 
@@ -209,7 +209,7 @@ A következő címke egy példa a formátumra:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-Az összes támogatott területi beállításhoz és a **szöveg – beszéd** tároló 1.3.0-verziójában található megfelelő hangokhoz tekintse meg a [standard Voices nyelvi támogatási](language-support.md#standard-voices) tábla **tároló-támogatás** oszlopát.
+A **szöveg-beszéd** típusú tároló összes támogatott területi beállítása és a hozzájuk tartozó hangok esetében lásd: [szöveg – beszéd képcímkék](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
 > *Szabványos szöveg-beszéd http-* bejegyzés létrehozásakor a [Speech szintézis MARKUP Language (SSML)](speech-synthesis-markup.md) üzenetéhez `voice` elemnek `name` attribútummal kell rendelkeznie. Az érték a megfelelő tároló területi beállítása és hangja, más néven ["rövid név"](language-support.md#standard-voices). Például a `latest` címke neve `en-US-JessaRUS`.
@@ -367,7 +367,7 @@ Ez a parancs:
 ***
 
 > [!IMPORTANT]
-> A tároló futtatásához meg kell adni a `Eula`, `Billing`és `ApiKey` beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+> A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
@@ -410,7 +410,7 @@ A beszédfelismerési tárolók számlázási adatokat küldenek az Azure-nak az
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-További információ ezekről a beállításokról: [tárolók konfigurálása](speech-container-configuration.md).
+Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](speech-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 
@@ -426,12 +426,12 @@ Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telep
   * *Szövegfelolvasás*
   * *Egyéni szöveg – beszéd*
 * A tároló lemezképeit a rendszer az Azure-beli tároló-beállításjegyzékből tölti le.
-* A tároló lemezképei a Docker-ben futnak.
+* Tárolórendszerképek futtatása a Docker.
 * Használhatja a REST API vagy az SDK-t a műveleteknek a beszédfelismerési tárolókban való meghívásához a tároló gazdagép URI azonosítójának megadásával.
 * A tárolók példányának létrehozásakor számlázási adatokat kell megadnia.
 
 > [!IMPORTANT]
->  Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
+>  Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem (például a lemezkép vagy az elemezni kívánt szöveget) a vásárlói adatokat küldeni a Microsoftnak.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014700"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112310"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Idősorozat-modell Azure Time Series Insights előzetes verzióban
 
@@ -54,7 +54,7 @@ Az **idősorozat-modell kényelmes megoldást kínál** a kitalált példán bel
 * Az adatok továbbra is környezetfüggők, mert a Time Series-modellben megőrzött adatok megőrzik a Time Series lekérdezési számításait változókként, és ezeket a lekérdezési időpontokban használják.
 * Az idősorozat-modell rendszerezi és összesíti az adatokat a jobb vizualizációs és felügyeleti képességekhez.
 
-### <a name="key-capabilities"></a>Főbb funkciók
+### <a name="key-capabilities"></a>Főbb képességek
 
 Azzal a céllal, hogy egyszerű és könnyedebb legyen a Time Series contextualization kezelése, az idősorozat-modell a következő képességeket teszi lehetővé Time Series Insights előzetes verzióban. A következőkkel segíti Önt:
 
@@ -100,10 +100,10 @@ A példányokat a **timeSeriesId**, a **typeId**, a **Name**, a **description**,
 | --- | ---|
 | timeSeriesId | Az idősorozathoz tartozó UUID, amelyhez a példány társítva van. |
 | typeId | Az idősorozat-modell UUID-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva.
-| név | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#preview-well) |
+| név | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#4-time-series-well) |
 | leírás | A példány szöveges leírása. |
 | hierarchyIds | Meghatározza, hogy mely hierarchiák tartoznak a példányhoz. |
-| instanceFields | a **instanceFields** egy példány tulajdonságai, valamint a példányt definiáló statikus adatmennyiségek. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
+| instanceFields | Egy példány tulajdonságai és a példányt definiáló statikus adatmennyiség. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
 
 > [!NOTE]
 > A hierarchiák a példány mezőinek használatával készültek. További **instanceFields** adhatók hozzá további példány-tulajdonságok definíciói.
@@ -386,7 +386,7 @@ A változók megfelelnek a következő JSON-példának:
 
 A változók egy idősorozat-modell definíciójában tárolódnak, és a [lekérdezési API](time-series-insights-update-tsq.md) -kon keresztül is elérhetők a tárolt definíció felülbírálásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: [Azure Time Series Insights előnézeti tároló és bejövő](./time-series-insights-update-storage-ingress.md)forgalom.
 - Ismerkedjen meg a gyakori idősorozat-modellezési műveletekkel [Azure Time Series Insights előzetes](./time-series-insights-update-how-to-tsm.md) verzióban

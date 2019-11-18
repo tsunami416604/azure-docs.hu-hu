@@ -1,18 +1,14 @@
 ---
 title: Ajánlott biztonsági eljárások
 description: Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286195"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132469"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
@@ -32,19 +28,19 @@ Az engedélyezési struktúra létrehozásakor ügyeljen arra, hogy kövesse a l
 
 Előfordulhat például, hogy a következőhöz hasonló struktúrát szeretne használni:
 
-|Csoport neve  |Type (Típus)  |principalId  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
+|Csoport neve  |Típus  |principalId  |Szerepkör-definíció  |Szerepkör-definíció azonosítója  |
 |---------|---------|---------|---------|---------|
-|Építészek     |Felhasználói csoport         |\<principalId @ no__t-1         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Értékelés     |Felhasználói csoport         |\<principalId @ no__t-1         |Olvasó         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM-szakemberek     |Felhasználói csoport         |\<principalId @ no__t-1         |VIRTUÁLIS gépek közreműködője         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Egyszerű szolgáltatásnév (SPN)         |\<principalId @ no__t-1         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Építészek     |Felhasználói csoport         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Értékelés     |Felhasználói csoport         |\<principalId\>         |Olvasó         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|VM-szakemberek     |Felhasználói csoport         |\<principalId\>         |VIRTUÁLIS gépek közreműködője         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automation     |Egyszerű szolgáltatásnév (SPN)         |\<principalId\>         |Közreműködő         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Miután létrehozta ezeket a csoportokat, igény szerint rendelhet hozzá felhasználókat. Csak azokat a felhasználókat adja hozzá, akiknek valóban szükségük van a hozzáférésre. Mindenképpen tekintse át a csoporttagság rendszeres áttekintését, és távolítsa el azokat a felhasználókat, akik már nem megfelelőek vagy szükségesek a belefoglalásához.
 
 Ne feledje, hogy ha az [ügyfeleket nyilvános felügyelt szolgáltatáson keresztül](../how-to/publish-managed-services-offers.md)kívánja bevezetni, az Ön által kínált összes csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkavégzéshez, közzé kell tennie egy külön privát csomagot, amely kizárólag az egyes ügyfelekre vonatkozik, vagy egyénileg, Azure Resource Manager-sablonok használatával készíti elő az ügyfeleket. Közzétehet például egy nagyon korlátozott hozzáféréssel rendelkező nyilvános csomagot, majd a felhasználóval közvetlenül is felhasználhatja az erőforrásait a további hozzáféréshez egy testreszabott Azure-erőforrás-sablon használatával, igény szerint további hozzáférést biztosítva.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az [Azure multi-Factor Authentication üzembe helyezése](../../active-directory/authentication/howto-mfa-getstarted.md).
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).

@@ -10,16 +10,16 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2711127c7bdf58e61f2d688c51e0e639d00cda5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883075"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106941"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -87,7 +87,9 @@ Miután beírta az erdő nevét és a **Címtár hozzáadása** gombra kattintot
 ![Címtár csatlakoztatása](./media/how-to-connect-install-custom/connectdir02.png)
 
 #### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>A vállalati rendszergazda és a tartományi rendszergazdai fiókok nem támogatottak
-A build 1.4. # # #. # alapján már nem támogatott vállalati rendszergazda vagy tartományi rendszergazdai fiók használata AD DS-összekötő fiókként.  Ha olyan fiókot próbál meg megadni, amely vállalati rendszergazda vagy tartományi rendszergazda a **meglévő fiók használatakor**, hibaüzenetet fog kapni.
+A build 1.4.18.0 szerint már nem támogatott vállalati rendszergazda vagy tartományi rendszergazdai fiók használata AD DS-összekötő fiókként.  Ha olyan fiókot próbál meg beírni, amely vállalati rendszergazda vagy tartományi rendszergazda a **meglévő fiók használatakor**, a következő hibaüzenet jelenik meg:
+
+  **"Az AD-erdő fiókjához tartozó vállalati vagy tartományi rendszergazdai fiók használata nem engedélyezett.  Azure AD Connect hozza létre a fiókot, vagy megadhatja a megfelelő engedélyekkel rendelkező szinkronizálási fiókot.  &lt;további információ&gt;"**
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD-bejelentkezés konfigurálása
 Ezen az oldalon áttekintheti a helyszíni AD DS rendszerben jelenlévő és az Azure AD szolgáltatásban ellenőrzött UPN-tartományokat. Az oldalon emellett konfigurálhatja a userPrincipalName tulajdonsághoz használt attribútumot is.
@@ -123,7 +125,7 @@ Ha ilyen figyelmeztető jelölést lát, ellenőrizze, hogy ezek a tartományok 
 #### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Válassza ki, hogyan történjen a felhasználók azonosítása a helyszíni címtárakban
 Az erdők közötti megfeleltetés szolgáltatás segítségével meghatározhatja, hogy az AD DS-erdőkből származó felhasználók miként szerepeljenek az Azure AD szolgáltatásban. A felhasználók vagy egyszer szerepelnek az összes erdőben, vagy engedélyezett és letiltott fiókok kombinációjával rendelkeznek. A felhasználók egyes erdőkben esetleg kapcsolattartóként is szerepelhetnek.
 
-![Egyedi](./media/how-to-connect-install-custom/unique2.png)
+![Unique](./media/how-to-connect-install-custom/unique2.png)
 
 | Beállítás | Leírás |
 | --- | --- |

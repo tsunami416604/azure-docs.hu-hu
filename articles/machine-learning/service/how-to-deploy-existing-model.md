@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 4e82d52428195797fb5cdc7a54e900fff7d37655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b25189eb63961056c7966722dccb6857736d0c35
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671442"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123228"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Meglévő modell használata Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-További információ: [modell. Register ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none-) – hivatkozás.
+További információ: [modell. Register ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) – hivatkozás.
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -250,7 +250,7 @@ A CLI betölti a telepítési konfigurációt egy YAML-fájlból:
 
 Egy másik számítási célra való üzembe helyezés, például az Azure Kubernetes szolgáltatás az Azure-felhőben, olyan egyszerűen, mint a telepítési konfiguráció módosítása. További információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
 
-## <a name="deploy-the-model"></a>A modell rendszerbe állítása
+## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 Az alábbi példa a `sentiment`nevű regisztrált modell adatait tölti be, majd `sentiment`néven telepíti a szolgáltatást. Az üzembe helyezés során a rendszer a következő viszonyítási konfigurációt és telepítési konfigurációt használja a szolgáltatási környezet létrehozásához és konfigurálásához:
 
@@ -265,7 +265,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-További információ: [modell. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-) hivatkozás.
+További információ: [modell. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) hivatkozás.
 
 A modell parancssori felületről történő üzembe helyezéséhez használja a következő parancsot. Ez a parancs a regisztrált modell (`sentiment:1`) 1. verzióját telepíti a `inferenceConfig.json` és `deploymentConfig.json` fájlokban tárolt következtetési és telepítési konfiguráció használatával:
 

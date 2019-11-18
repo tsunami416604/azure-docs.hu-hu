@@ -1,25 +1,17 @@
 ---
-title: Az Azure cache-ben tárolt adatimportálási és-exportálási Redis | Microsoft Docs
+title: Az Azure cache-ben lévő Redis importálása és exportálása
 description: Ismerje meg, hogyan importálhat és exportálhat adatok blob Storage-ba és-ból a prémium szintű Azure cache-Redis-példányok esetében
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: fda366f631e392379bd52b4bba728d0373f3e75e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756674"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122777"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
 Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be Redis vagy exportálja az Azure cache-ből a Redis-be az Azure cache-t egy prémium szintű gyorsítótárból a Redis Database (RDB) pillanatképbe BLOB egy Azure Storage-fiókban. 
@@ -135,7 +127,7 @@ Igen, és a fürtözött gyorsítótár és a nem fürtözött gyorsítótár k�
 Egyes díjszabási csomagok különböző [adatbázis-korlátokkal](cache-configure.md#databases)rendelkeznek, ezért ha egyéni értéket konfigurált `databases` a gyorsítótár létrehozásakor, az importálás néhány szempontot figyelembe kell vennie.
 
 * Az olyan árképzési csomagba való importáláskor, amely alacsonyabb `databases` korláttal rendelkezik, mint az exportált csomagra vonatkozó küszöbérték:
-  * Ha a `databases` alapértelmezett számát használja, amely az összes díjszabási csomag esetében 16, akkor nem vesznek fel adatvesztést.
+  * Ha a `databases`alapértelmezett számát használja, amely az összes díjszabási csomag esetében 16, akkor nem vesznek fel adatvesztést.
   * Ha olyan egyéni `databases` használ, amely az importálandó csomag korlátain belül esik, akkor a rendszer nem vesz fel adatvesztést.
   * Ha az exportált adatok olyan adatbázisban találhatók, amely túllépi az új csomag korlátait, a magasabb adatbázisokból származó adatok nem lesznek importálva.
 
@@ -157,7 +149,7 @@ Ennek megoldásához indítsa el az importálási vagy exportálási műveletet 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Hibaüzenetet kaptam az adataim Azure Blob Storageba való exportálásakor. Mi történt?
 Az Exportálás csak a RDB tárolt fájlok esetében működik. Más blob-típusok jelenleg nem támogatottak, beleértve a gyors és a lassú elérésű csomagokat tartalmazó blob Storage-fiókokat is. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a prémium szintű gyorsítótár-funkciók használatáról.
 
 * [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)

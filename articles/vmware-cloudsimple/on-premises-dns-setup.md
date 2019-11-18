@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 72bf461dc882b9a097e59e8ecf40b0f71b2cc1f2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163138"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108799"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
 
@@ -46,7 +46,7 @@ A konfigurálandó fájl és paraméterek az egyéni DNS-beállítástól függ�
 Az alapértelmezett kötési kiszolgáló konfigurációja esetében például szerkessze a/etc/named.conf-fájlt a DNS-kiszolgálón, és adja hozzá a következő zónával kapcsolatos információkat.
 
 ```
-zone "cloudsimple.io"
+zone "az.cloudsimple.io"
 {
     type stub;
     masters { IP address of DNS servers; };
@@ -87,7 +87,7 @@ A konfigurálandó fájl és paraméterek az egyéni DNS-beállítástól függ�
 Az alapértelmezett kötési kiszolgáló konfigurációja esetében például szerkessze a/etc/named.conf fájlt a DNS-kiszolgálón, és adja hozzá a következő feltételes továbbítási adatokat.
 
 ```
-zone "cloudsimple.io" {
+zone "az.cloudsimple.io" {
     type forward;
     forwarders { IP address of DNS servers; };
 };

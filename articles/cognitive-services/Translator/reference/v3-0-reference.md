@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888081"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123068"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -56,9 +56,9 @@ Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat
 
 |Fejlécek|Leírás|
 |:----|:----|
-|OCP-APIM-előfizetés-kulcs|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+|OCP-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
 |Engedélyezés|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>`.|
-|OCP-APIM-előfizetés-régió|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
+|Ocp-Apim-Subscription-Region|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
 
 ###  <a name="secret-key"></a>Titkos kulcs
 Az első lehetőség a hitelesítés a `Ocp-Apim-Subscription-Key` fejléc használatával. Adja hozzá a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
@@ -163,5 +163,23 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 415000| A Content-Type fejléc hiányzik vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.|
 | 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
-| 503000| A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
+| 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 
+## <a name="metrics"></a>Mérőszámok 
+A metrikák segítségével megtekintheti a Translator használati és rendelkezésre állási adatait Azure Portalban, a metrikák szakaszban, ahogy az alábbi képernyőképen is látható. További információ: [adatok és platform metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+![Fordítói metrikák](../media/translatormetrics.png)
+
+Ez a táblázat a fordítási API-hívások figyelésére szolgáló leírással sorolja fel az elérhető metrikákat.
+
+| Mérőszámok | Leírás |
+|:----|:-----|
+| TotalCalls| Az API-hívások teljes száma.|
+| TotalTokenCalls| A jogkivonat-szolgáltatáson keresztüli API-hívások teljes száma a hitelesítési jogkivonat használatával.|
+| SuccessfulCalls| A sikeres hívások száma.|
+| TotalErrors| A hiba-választal rendelkező hívások száma.|
+| BlockedCalls| Azon hívások száma, amelyek túllépték a sebességet vagy a kvóta korlátját.|
+| Kiszolgálóhibái| A kiszolgálói belső hibával (5XX) rendelkező hívások száma.|
+| ClientErrors| Az ügyféloldali hibával (4XX) rendelkező hívások száma.|
+| Késés| A kérelem elvégzésének időtartama ezredmásodpercben.|
+| CharactersTranslated| A bejövő szöveges kérelemben szereplő karakterek teljes száma.|

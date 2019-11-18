@@ -1,5 +1,5 @@
 ---
-title: Egyéni webes API-képesség egy alkoholtartalom-növelési folyamatban
+title: Egyéni webes API-képesség a szakértelmével-ben
 titleSuffix: Azure Cognitive Search
 description: Kiterjesztheti az Azure Cognitive Search szakértelmével képességeit a webes API-k meghívásával. Egyéni kód integrálásához használja az egyéni webes API-képességet.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466733"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113796"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
 
@@ -28,7 +28,7 @@ A JSON-adattartalom szerkezetét részletesebben ismertetjük ebben a dokumentum
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. Skills. Custom. WebApiSkill
+Microsoft.Skills.Custom.WebApiSkill
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
@@ -41,7 +41,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | httpHeaders | Olyan kulcs-érték párok gyűjteménye, amelyekben a kulcsok fejléc-és értéknek felelnek meg, a webes API-ra és a hasznos adattartalommal együtt küldendő fejléc-értékeket. A következő fejlécek nem engedélyezettek ebben a gyűjteményben: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | Választható Ha meg van adva, az API-hívást készítő http-ügyfél időtúllépését jelzi. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). `PT60S` például 60 másodpercig. Ha nincs beállítva, a rendszer egy alapértelmezett 30 másodperces értéket választ. Az időtúllépés legfeljebb 230 másodpercig és legalább 1 másodpercig állítható be. |
 | batchSize | Választható Azt jelzi, hogy hány "adatrekord" (lásd az alábbi _JSON_ -adattartalom-szerkezetet) egy API-hívás alapján lesz elküldve. Ha nincs beállítva, a rendszer alapértelmezett 1000-as értéket választ. Javasoljuk, hogy használja ezt a paramétert, hogy megfelelő kompromisszumot érjen el az indexelési teljesítmény és az API terhelése között |
-| Analyticsunits | Választható Ha meg van adva, az indexelő által az Ön által megadott végponttal párhuzamosan kezdeményezett hívások számát jelzi. Csökkentheti ezt az értéket, ha a végpont nem a kérelem terhelése alatt túl magas, vagy ha a végpont több kérést is képes fogadni, és az indexelő teljesítményének növelését szeretné.  Ha nincs beállítva, a rendszer az alapértelmezett 5 értéket használja. A Analyticsunits legfeljebb 10 és legalább 1 értékre állítható be. |
+| degreeOfParallelism | Választható Ha meg van adva, az indexelő által az Ön által megadott végponttal párhuzamosan kezdeményezett hívások számát jelzi. Csökkentheti ezt az értéket, ha a végpont nem a kérelem terhelése alatt túl magas, vagy ha a végpont több kérést is képes fogadni, és az indexelő teljesítményének növelését szeretné.  Ha nincs beállítva, a rendszer az alapértelmezett 5 értéket használja. A Analyticsunits legfeljebb 10 és legalább 1 értékre állítható be. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 

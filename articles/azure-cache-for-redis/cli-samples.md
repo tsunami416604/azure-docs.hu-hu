@@ -1,41 +1,34 @@
 ---
-title: Az Azure CLI az Azure Cache Redis-minták |} A Microsoft Docs
-description: Az Azure CLI-minták az Azure Cache redis.
-services: cache
-documentationcenter: ''
+title: Azure CLI Azure cache Redis-mintákhoz
+description: Azure CLI-minták az Azure cache Redis-hez.
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8d2de145-50c0-4f76-bf8f-fdf679f03698
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/14/2017
 ms.author: yegu
-ms.openlocfilehash: eea74e8f1291901fea3c77b70ba3c636f40bd132
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b16b531639c826e0051ff45540fd583fd3869e5
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829752"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121223"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Az Azure CLI-minták az Azure Cache a redis Cache
+# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure CLI-minták az Azure cache Redis-hez
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |---|---|
 |**Gyorsítótár létrehozása**||
-| [Gyorsítótár létrehozása](./scripts/create-cache.md) | Létrehoz egy erőforráscsoportot és a egy alapszintű Azure Cache redis. |
-| [Hozzon létre egy prémium szintű gyorsítótár klaszterezéssel](./scripts/create-premium-cache-cluster.md) | Létrehoz egy erőforráscsoportot és a prémium szintű gyorsítótár fürtözés engedélyezve van.|
-| [Gyorsítótár-részletek](./scripts/show-cache.md) | Részletek az Azure Cache Redis-példányt, beleértve a kiépítési állapot beolvasása. |
-| [A gazdagépnév, portok és kulcsok beolvasása](./scripts/cache-keys-ports.md) | Lekéri a gazdagépnév, portok és kulcsok az Azure Cache a Redis-példányt. |
-|**Webalkalmazás és a gyorsítótár**||
-| [Webes alkalmazás csatlakoztatása az Azure Cache redis](./../app-service/scripts/cli-connect-to-redis.md) | Létrehoz egy Azure-webalkalmazást és a egy Azure Cache redis, majd hozzáadja az alkalmazásbeállításokat a redis-kapcsolat adatai. |
+| [Gyorsítótár létrehozása](./scripts/create-cache.md) | Létrehoz egy erőforráscsoportot és egy alapszintű Azure cache-gyorsítótárat a Redis számára. |
+| [Prémium szintű gyorsítótár létrehozása fürtözéssel](./scripts/create-premium-cache-cluster.md) | Létrehoz egy erőforráscsoportot és egy prémium szintű gyorsítótárat, amely lehetővé teszi a fürtözést.|
+| [Gyorsítótár adatainak beolvasása](./scripts/show-cache.md) | Beolvassa a Redis-példányhoz tartozó Azure cache adatait, beleértve a létesítési állapotot is. |
+| [Állomásnév, portok és kulcsok lekérése](./scripts/cache-keys-ports.md) | Lekéri az Redis-példányhoz tartozó Azure-gyorsítótár állomásneve, portjai és kulcsai. |
+|**Webalkalmazás és gyorsítótár**||
+| [Webalkalmazás összekötése egy Azure cache-Redis](./../app-service/scripts/cli-connect-to-redis.md) | Létrehoz egy Azure-webalkalmazást és egy Azure-gyorsítótárat a Redis, majd hozzáadja a Redis kapcsolati adatait az alkalmazás beállításaihoz. |
 |**Gyorsítótár törlése**||
-| [A gyorsítótár törlése](./scripts/delete-cache.md) | Az Azure Cache Redis-példány törlése  |
+| [Gyorsítótár törlése](./scripts/delete-cache.md) | Egy Azure cache törlése a Redis-példányhoz  |
 | | |
 
-Az Azure CLI-vel kapcsolatos további információkért lásd: [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Az Azure CLI-vel kapcsolatos további információkért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és az [Azure CLI első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).

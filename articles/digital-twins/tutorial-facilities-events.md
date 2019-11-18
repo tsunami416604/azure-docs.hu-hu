@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107692"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129093"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: értesítések fogadása Azure digitális Twins-tárhelyekről Logic Apps használatával
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag feltételezi, hogy már [konfigurálta](tutorial-facilities-s
 - Egy futó Digital Twins-példány.
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - A minta futtatásához [.net Core SDK 2.1.403 vagy újabb verziót](https://www.microsoft.com/net/download) a fejlesztői gépen. A `dotnet --version` futtatásával ellenőrizze, hogy telepítve van-e a megfelelő verzió.
-- Office 365-fiók értesítési e-mailek küldéséhez.
+- [Office 365](https://products.office.com/home) -fiók az értesítő e-mailek küldéséhez.
 
 > [!TIP]
 > Új példány kiépítés esetén használjon egyedi digitális Twins-példány nevét.
@@ -51,7 +51,7 @@ Ebben a szakaszban be kell állítania [Event Grid](../event-grid/overview.md) a
 
 Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet biztosít a felhasználó által definiált függvény által generált események útválasztásához. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet. 
 
@@ -63,7 +63,7 @@ Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet bizto
 
 1. Tallózással keresse meg az Event Grid-témakört az erőforráscsoporthoz, válassza az **Áttekintés**lehetőséget, és másolja a **témakör-végpont** értékét egy ideiglenes fájlba. Ezt az URL-címet a következő szakaszban kell megadnia. 
 
-1. Válassza a **hozzáférési kulcsok**lehetőséget, és másolja **YOUR_KEY_1** és **YOUR_KEY_2** egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz a végpont létrehozásához a következő szakaszban.
+1. Válassza a **hozzáférési kulcsok**lehetőséget, és másolja az **1** . és a **2** . kulcsot egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz a végpont létrehozásához a következő szakaszban.
 
     [Event Grid kulcsok ![](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet bizto
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Cserélje le a helyőrzőt `<Primary connection string for your Event Grid>` **YOUR_KEY_1**értékére.
+1. Cserélje le a helyőrzőt `<Primary connection string for your Event Grid>` az **1. kulcs**értékére.
 
-1. Cserélje le a helyőrzőt `<Secondary connection string for your Event Grid>` **YOUR_KEY_2**értékére.
+1. Cserélje le a helyőrzőt `<Secondary connection string for your Event Grid>` a **2. kulcs**értékére.
 
 1. Cserélje le az **elérési út** helyőrzőjét az Event Grid-témakör elérési útjára. Ezt az elérési utat úgy érheti el, ha eltávolítja a **https://** és a záró erőforrás elérési útját a **témakör végpont** URL-címéből. Ennek a következő formátumhoz hasonlónak kell lennie: *yourEventGridName.yourLocation.eventgrid.azure.net*.
 
@@ -178,7 +178,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
    a. Válassza **a művelet hozzáadása**lehetőséget, és válassza az **Office 365 Outlook**lehetőséget.
 
-   b. A **műveletek** listából válassza az **e-mail küldése**lehetőséget. Válassza a **Bejelentkezés** lehetőséget, és használja az e-mail-fiókja hitelesítő adatait. Ha a rendszer kéri, válassza a **hozzáférés engedélyezése** lehetőséget.
+   b. A **műveletek** listából válassza az **E-mail küldése (v2)** lehetőséget. Válassza a **Bejelentkezés** lehetőséget, és használja az e-mail-fiókja hitelesítő adatait. Ha a rendszer kéri, válassza a **hozzáférés engedélyezése** lehetőséget.
 
    c. A **Címzett** mezőben adja meg az e-mail-azonosítóját az értesítések fogadásához. A **Tárgy**mezőben adja meg a szöveges **digitális ikrek értesítését a térben található gyenge levegőminőség tekintetében**. Ezután válassza a **TopologyObjectId** lehetőséget a **dinamikus tartalmak** listájából a **JSON elemzéséhez**.
 
@@ -207,7 +207,7 @@ Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállít
 
 2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő oktatóanyagban megtudhatja, hogyan jelenítheti meg az érzékelők adatait, elemezheti a trendeket és a helyszíni rendellenességeket:
 

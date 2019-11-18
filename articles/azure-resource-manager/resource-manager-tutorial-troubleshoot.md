@@ -1,24 +1,16 @@
 ---
-title: Resource Manager-alapú üzemelő példányok – problémamegoldás | Microsoft Docs
+title: Üzemelő példányok hibaelhárítása
 description: Megtudhatja, hogyan figyelheti és elháríthatja Azure Resource Manager sablon központi telepítéseit. Megjeleníti a tevékenységek naplóit és az üzembe helyezési előzményeket.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: be390b35a69f44aae38bec100deb2d3c07ad6355
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390208"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149334"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Oktatóanyag: Resource Manager-sablonok központi telepítésének hibakeresése
 
@@ -101,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Az üzembe helyezési hiba a Azure Portal az alábbi eljárással érhető el:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg az erőforráscsoportot az **erőforráscsoportok** , majd az erőforráscsoport neve lehetőség kiválasztásával. Az üzemelő **példányban** **1 sikertelen hiba** jelenik meg.
 
     ![Resource Manager-oktatóanyag – problémamegoldás](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -115,8 +107,8 @@ Az üzembe helyezési hiba a Azure Portal az alábbi eljárással érhető el:
 
 A hibát a tevékenység naplóiból is megtalálhatja:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Válassza a **figyelő** > **tevékenység napló**elemet.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+2. Válassza a **figyelő** > a **tevékenység naplója**lehetőséget.
 3. A szűrők segítségével keresse meg a naplót.
 
     ![Resource Manager-oktatóanyag – problémamegoldás](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
@@ -134,6 +126,6 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan lehet elhárítani a Resource Manager-sablonok telepítési hibáit.  További információ: [Az Azure központi telepítési hibáinak elhárítása Azure Resource Managersal](./resource-manager-common-deployment-errors.md).

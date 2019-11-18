@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: a Speech Devices SDK futtatása a Windows-Speech Service-ben'
+title: 'Rövid útmutató: a Speech Devices SDK futtatása Windows rendszeren'
 titleSuffix: Azure Cognitive Services
 description: Előfeltételek és utasítások a Windows Speech Device SDK használatának megkezdéséhez.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090452"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111670"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Windows rendszeren
 
@@ -105,22 +105,21 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Ha a beszélgetés átírását használja, a beszédfelismerési kulcsra és a régióra vonatkozó információkra is szükség van `Cts.java`ban:
+   Ha a beszélgetés átírását használja, a beszédfelismerési kulcsra és a régióra vonatkozó információkra is szükség van `Cts.java`ban:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. Az alapértelmezett kulcsszó (kulcsszó) a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. A `C:\SDSDK\JRE-Sample-Release\keyword\Computer` például a "számítógép" kulcsszóhoz használt fájlokat tartalmazza.
 
-   > [!TIP]
-   > [Egyéni kulcsszó is létrehozható](speech-devices-sdk-create-kws.md).
+    > [!TIP]
+    > [Egyéni kulcsszó is létrehozható](speech-devices-sdk-create-kws.md).
 
     Új kulcsszó használatához frissítse a következő sort a `FunctionsList.java`ban, és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag `machine.zip`:
 
    * Másolja a zip-csomagból a `kws.table` fájlt a Project Folder **cél/osztályok**mappájába.
-
    * A `FunctionsList.java` frissítése a kulcsszó nevével:
 
      ```java
@@ -143,25 +142,25 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 ## <a name="create-and-run-a-standalone-application"></a>Önálló alkalmazás létrehozása és futtatása
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza az **Exportálás**lehetőséget. 
+1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza az **Exportálás**lehetőséget.
 
 1. Megjelenik az **Exportálás** ablak. Bontsa ki a **javát** , és válassza a **futtatható jar-fájl** lehetőséget, majd kattintson a **tovább**gombra.
 
-   ![Az exportálási ablak képernyőképe](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![Az exportálási ablak képernyőképe](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
- 
+
    ![Képernyőfelvétel a futtatható JAR-fájl exportálásáról](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. A fent kiválasztott célmappában `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` és `Microsoft.CognitiveServices.Speech.extension.pma.dll` helyezhető el, mivel ezek a fájlok az alkalmazáshoz szükségesek.
 
 1. Az önálló alkalmazás futtatása
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tekintse át a kibocsátási megjegyzések](devices-sdk-release-notes.md)

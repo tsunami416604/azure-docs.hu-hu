@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c4c8f123eb8c32362219f21dc70d137f2cc9b4b1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078821"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74119990"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: az Azure AD-Graph API használata
 
@@ -281,7 +281,7 @@ A B2C-bérlőben lévő felhasználókat a következő módokon keresheti meg:
 
 * Hivatkozzon a felhasználó **objektumazonosítóára**.
 * Hivatkozzon a bejelentkezési termékazonosító, a `signInNames` tulajdonságra.
-* Az érvényes OData-paraméterek (például givenName, vezetéknév, displayName stb.) hivatkozása.
+* Hivatkozzon a OData érvényes paraméterek bármelyikére. Például: "givenName", "vezetéknév", "displayName" stb.
 
 Futtassa a következő parancsok egyikét egy felhasználó kereséséhez:
 
@@ -356,7 +356,7 @@ A teljes nevet, például a `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_N
 B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 `B2CGraphClient`használatával olyan szolgáltatásalkalmazás van, amely programozott módon képes kezelni a B2C-bérlői felhasználókat. `B2CGraphClient` a saját alkalmazás identitását használja az Azure AD-Graph API való hitelesítéshez. Emellett a tokeneket is megvásárolja az ügyfél titkos kódjának használatával.
 

@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812684"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120114"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -65,7 +65,7 @@ A hatókör-szűrőnek megfelelően a felhasználóknak meg kell felelniük a k�
 A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési összekötők attribútum-hozzárendeléseinek részeként vannak konfigurálva. Az alábbi eljárás azt feltételezi, hogy már beállította az automatikus kiépítési műveletet az [egyik támogatott alkalmazáshoz](../saas-apps/tutorial-list.md) , és egy hatókör-szűrőt ad hozzá.
 
 ### <a name="create-a-scoping-filter"></a>Hatókör-szűrő létrehozása
-1. A [Azure Portal](https://portal.azure.com)lépjen a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszra.
+1. A [Azure Portal](https://portal.azure.com)lépjen a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszban.
 
 2. Válassza ki azt az alkalmazást, amelyhez az automatikus kiépítés konfigurálva van: például "ServiceNow".
 
@@ -79,7 +79,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 7. Definiáljon egy záradékot úgy, hogy kiválasztja a forrás **attribútum nevét**, egy **operátort**és egy **attribútum-értéket** , amely megfelel a következőnek:. A következő operátorok támogatottak:
 
-   a. **Egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
+   a. **EQUALS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
    b. **nem egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
@@ -110,6 +110,14 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 >[!IMPORTANT] 
 > Egy új hatókör-szűrő mentése új teljes szinkronizálást indít az alkalmazáshoz, ahol a rendszer az új hatókör-szűrővel újra kiértékeli a forrásrendszer összes felhasználóját. Ha az alkalmazás egyik felhasználója korábban a kiépítés hatókörében volt, de a hatókörön kívül esik, a fiókja le van tiltva, vagy az alkalmazás nem lesz kiépítve. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyását](skip-out-of-scope-deletions.md)ismertető témakört.
 
+
+## <a name="common-scoping-filters"></a>Gyakori hatókörű szűrők
+| Cél attribútum| Művelet | Érték | Leírás|
+|----|----|----|----|
+|userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartomány @domain.com userPrincipal, a kiépítés hatóköre lesz|
+|userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartomány @domain.com userPrincipal, a kiépítés hatókörén kívül fog esni|
+|Szervezeti egység|EGYENLŐ|értékesítési|Az értékesítési részleg összes felhasználója a kiépítés hatókörében van|
+|workerID|REGEX EGYEZÉS|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| A 1000000 és 2000000 közötti workerIDs rendelkező alkalmazottak a kiépítés hatókörébe tartoznak.|
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások megszüntetése](user-provisioning.md)

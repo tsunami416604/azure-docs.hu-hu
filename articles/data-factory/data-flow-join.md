@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961839"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122927"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -68,7 +68,7 @@ Ha önmagához szeretne csatlakoztatni egy adatfolyamot, alias egy meglévő str
 
 Az adatelőnézetsel rendelkező illesztési átalakítások hibakeresési módban történő tesztelésekor használjon egy ismert adat kis készletét. Nagy adatkészletből származó mintavételezési sorok esetében nem lehet előre jelezni, hogy mely sorok és kulcsok lesznek beolvasva a teszteléshez. Az eredmény nem determinisztikus, ami azt jelenti, hogy az illesztési feltételek nem adnak vissza egyezést.
 
-## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
+## <a name="data-flow-script"></a>Adatfolyamszkript
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Példa a többhöz való csatlakozásra
 
-Az alábbi példa egy `CartesianProduct` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át. Ez a transzformáció két streamet vesz igénybe, és a soraik Descartes szorzatát adja vissza. Az illesztési feltétel `true()`, mert egy teljes Descartes-szorzatot eredményez. A `cross``joinType`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
+Az alábbi példa egy `CartesianProduct` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át. Ez a transzformáció két streamet vesz igénybe, és a soraik Descartes szorzatát adja vissza. Az illesztési feltétel `true()`, mert egy teljes Descartes-szorzatot eredményez. A `joinType` `cross`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -122,6 +122,6 @@ TripData, TripFare
     )~> CartesianProduct
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adategyesítést követően hozzon létre egy [származtatott oszlopot](data-flow-derived-column.md) [, és az](data-flow-sink.md) adatait egy célhely adattárba.

@@ -1,5 +1,5 @@
 ---
-title: Partíciók és replikák vertikális felskálázása a lekérdezési és indexelési munkaterhelések kapacitásának hozzáadásához
+title: Méretezési kapacitás a lekérdezési és indexelési feladatokhoz
 titleSuffix: Azure Cognitive Search
 description: A partíciós és a replika számítógép erőforrásainak módosítása az Azure Cognitive Searchban, ahol az egyes erőforrások számlázható keresési egységekben vannak.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792500"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112127"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Partíciók és replikák vertikális felskálázása az Azure-beli lekérdezési és indexelési feladatok kapacitásának növeléséhez Cognitive Search
 
@@ -89,10 +89,10 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
-| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
-| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
-| **12 replika** |12 SU |24 SU |36 SU |– |– |– |
+| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
+| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
+| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
+| **12 replika** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
 
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
 
@@ -141,6 +141,6 @@ A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a 
 A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Válasszon árképzési szintet az Azure Cognitive Search](search-sku-tier.md)

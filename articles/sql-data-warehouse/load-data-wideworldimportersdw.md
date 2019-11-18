@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5272d9aa77f78d0cef316f9f227f9e269ab7e186
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f58623ec179965c8f8f165805cb181f8c102e746
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839900"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132365"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse-ba
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW a
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
@@ -45,7 +45,7 @@ Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL Data Warehouse létrehozása
 
-A rendszer létrehoz egy Azure SQL Data Warehouse [számítási erőforrások] memória-Egyidejűség-limits.md) meghatározott készlettel. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
+Egy Azure SQL Data Warehouse [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
 Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse. 
 
@@ -151,13 +151,13 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
     | Kiszolgálónév | A teljes kiszolgálónév | A **sample-svr.database.windows.net** például egy teljes kiszolgálónév. |
-    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
-    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
-    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
+    | Authentication | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
+    | Bejelentkezés | A kiszolgálói rendszergazdafiók | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
+    | Jelszó | A kiszolgálói rendszergazdafiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
 
     ![kapcsolódás a kiszolgálóhoz](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
+4. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
 5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **sampledw adatbázison** elemet az új adatbázisban található objektumok megtekintéséhez.
 
@@ -182,7 +182,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. Kattintson a **Végrehajtás** parancsra.
+3. Kattintson az **Execute** (Végrehajtás) parancsra.
 
 4. Kattintson a jobb gombbal a **SampleDW** elemre, majd válassza a **New Query** (Új lekérdezés) elemet. Megnyílik egy új lekérdezési ablak.  
 
@@ -196,7 +196,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. Kattintson a **Végrehajtás** parancsra.
+6. Kattintson az **Execute** (Végrehajtás) parancsra.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Csatlakozás a kiszolgálóhoz a betöltést végző felhasználóként
 
@@ -208,7 +208,7 @@ Az adatok betöltésének első lépése a LoaderRC60-ként való bejelentkezés
 
 2. Írja be a teljes kiszolgálónevet, és adja meg a **LoaderRC60** felhasználónevet.  Adja meg a LoaderRC60-hoz tartozó jelszót.
 
-3. Kattintson a **Connect** (Csatlakozás) gombra.
+3. Kattintson a **Csatlakozás** gombra.
 
 4. Ha a kapcsolat készen áll, az Object Explorerben két kiszolgálói kapcsolat lesz látható. Az egyik kapcsolat ServerAdmin-ként, a másik pedig LoaderRC60-ként jelenik meg.
 

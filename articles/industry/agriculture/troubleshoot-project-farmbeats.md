@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048278"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131981"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -251,7 +251,7 @@ Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage
 
 **Jelentés**: az Azure ad-alkalmazás regisztrációs konfigurációja nem történt meg megfelelően.  
 
-**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáférésével), hogy az Azure ad-alkalmazás regisztrációjának létrehozásához használja a [szkriptet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) . Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
+**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáférésével) az Azure ad-alkalmazás regisztrációjának létrehozásához használt [parancsfájl](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) használatával. Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
 
 **Hiba**: nem sikerült létrehozni a (z) "dummyname" nevű új Active Directory alkalmazást ebben a bérlőben: már létezik egy azonos értékkel rendelkező objektum az URI azonosítóhoz.
 
@@ -278,6 +278,6 @@ Az erőforráscsoport irányítópultján keresse meg a (datahublogs...) Storage
 2.  Válassza ki az App Service-t.  
 3.  Lépjen a vertikális felskálázás (App Service terv) lehetőségre, és válasszon ki egy megfelelő [árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha továbbra is problémákba ütközik, lépjen kapcsolatba velünk a [támogatási fórumon](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).

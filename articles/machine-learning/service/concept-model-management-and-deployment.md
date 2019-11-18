@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML-modellek kezelése, üzembe helyezése, & monitorozása'
+title: 'MLOps: ML-modell kezelése'
 titleSuffix: Azure Machine Learning
-description: 'Ismerje meg, hogyan használhatók a Azure Machine Learning a MLOps: a modellek üzembe helyezése, kezelése és monitorozása a folyamatos fejlesztés érdekében. A Azure Machine Learning, a helyi gépen vagy más forrásokból betanított modelleket is üzembe helyezhet.'
+description: 'További információ a Azure Machine Learning (MLOps) modellel történő kezeléséről. A modellek üzembe helyezése, kezelése és monitorozása folyamatosan fejleszthető. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716599"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123601"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: modellek kezelése, üzembe helyezése és figyelése Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: modellek kezelése, üzembe helyezés és monitorozás Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learning a modellek életciklusának kezeléséhez. A Azure Machine Learning egy Machine Learning Operations (MLOps) megközelítést használ, amely javítja a gépi tanulási megoldások minőségét és egységességét. 
 
@@ -47,7 +47,7 @@ A modell regisztrációja lehetővé teszi, hogy a saját munkaterületén táro
 > [!TIP]
 > A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a Azure Machine Learning munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
  
-A regisztrált modelleket név és verzió alapján azonosítjuk. Minden alkalommal, amikor ugyanazzal a névvel regisztrál egy modellt, a beállításjegyzék megnöveli a verziót. A regisztráció során további metaadat-címkéket is megadhat, amelyek a modellek keresésekor használhatók. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
+A regisztrált modelleket név és verzió alapján azonosítjuk. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
 
 > [!TIP]
 > A Azure Machine Learningon kívül betanított modelleket is regisztrálhat.

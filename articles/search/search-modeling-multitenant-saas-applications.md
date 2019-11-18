@@ -1,5 +1,5 @@
 ---
-title: A tartalom elkülönítésének modellezése egy szolgáltatásban bérlős
+title: Bérlős és tartalom elkülönítése
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg a több-bérlős SaaS-alkalmazások általános kialakítási mintáit az Azure Cognitive Search használata során.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793520"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113270"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
 Egy több-bérlős alkalmazás az egyik, amely ugyanazokat a szolgáltatásokat és képességeket biztosítja a bérlők számára, akik nem láthatják és nem oszthatják meg más bérlők információit. Ez a dokumentum az Azure Cognitive Search-mel létrehozott több-bérlős alkalmazások bérlői elkülönítési stratégiáit tárgyalja.
@@ -26,7 +26,7 @@ Az Azure Cognitive Search használatakor az egyik a *keresési szolgáltatásra*
 
 A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező*határoz meg. Az Azure Cognitive Search indexbe kerülnek az egyes *dokumentumok*formájában. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor az Azure Cognitive Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kiadva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
 
-### <a name="scalability"></a>Skálázhatóság
+### <a name="scalability"></a>Méretezhetőség
 A standard szintű [díjszabásban](https://azure.microsoft.com/pricing/details/search/) szereplő Azure Cognitive Search-szolgáltatások két dimenzióban méretezhetők: tárterület és rendelkezésre állás.
 
 * A *partíciók* hozzáadhatók a keresési szolgáltatás tárterületének növeléséhez.
@@ -37,7 +37,7 @@ A partíciók és replikák hozzáadásával és eltávolításával lehetővé 
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Szolgáltatások és indexek korlátai az Azure Cognitive Search
 Az Azure Cognitive Search különböző [díjszabási szintjei](https://azure.microsoft.com/pricing/details/search/) vannak, és a rétegek mindegyike különböző [korlátozásokkal és kvótákkal](search-limits-quotas-capacity.md)rendelkezik. A korlátozások némelyike a szolgáltatás szintjén van, néhány pedig az index szintjén, néhány pedig a partíció szintjén.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Alapszintű | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Replikák maximális száma szolgáltatás szerint |3 |12 |12 |12 |12 |
 | Partíciók maximális száma szolgáltatás szerint |1 |12 |12 |12 |3 |
@@ -124,8 +124,8 @@ Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosult
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
-Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) az Azure Cognitive Search legmegfelelőbb igényeire, hogy illeszkedjen az alkalmazások számítási feladataihoz és az architektúrához. .
+## <a name="next-steps"></a>További lépések
+Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb Azure-Cognitive Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.
 
 Az Azure Cognitive Search és a több-bérlős forgatókönyvekkel kapcsolatos kérdések azuresearch_contact@microsoft.comra irányíthatók.
 

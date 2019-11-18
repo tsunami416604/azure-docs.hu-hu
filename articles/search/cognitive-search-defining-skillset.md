@@ -1,5 +1,5 @@
 ---
-title: Készségkészlet létrehozása a dúsítási folyamatban
+title: Képességcsoport létrehozása
 titleSuffix: Azure Cognitive Search
 description: Meghatározhatja az adatok kinyerését, a természetes nyelvi feldolgozást vagy a képelemzési lépéseket az adatokból az Azure-Cognitive Search való használatra szánt strukturált adatok dúsításához és kinyeréséhez.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787471"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114553"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Készségkészlet létrehozása AI-bővítési folyamatokban az Azure-ban Cognitive Search 
 
@@ -36,9 +36,9 @@ Az ajánlott kezdeti lépés azt határozza meg, hogy mely adatok legyenek kinye
 
 Tegyük fel, hogy több pénzügyi elemzői Megjegyzés feldolgozását érdekli. Minden fájlhoz ki kell bontania a vállalatok nevét és a megjegyzések általános hangulatát. Érdemes lehet olyan egyéni dúsítást is írni, amely a Bing Entity Search szolgáltatást használja a vállalattal kapcsolatos további információk megkereséséhez, például arról, hogy a vállalat milyen üzleti tevékenységet folytat. Lényegében a következőhöz hasonló adatokat szeretne kinyerni az egyes dokumentumok indexeléséhez:
 
-| rekord – szöveg | vállalatok | hangulatelemzés | a cég leírása |
+| record-text | vállalatok | hangulatelemzés | a cég leírása |
 |--------|-----|-----|-----|
-|minta – rekord| ["Microsoft", "LinkedIn"] | 0,99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
+|sample-record| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
 
 Az alábbi ábrán egy feltételezett alkoholtartalom-növelési folyamat látható:
 
@@ -163,15 +163,15 @@ Nézzük meg az első szakértelmet, amely a beépített [entitás-felismerési 
     }
 ```
 
-* Minden beépített szakértelem `odata.type`, `input` és `output` tulajdonságokkal rendelkezik. A szaktudás-specifikus tulajdonságok további információkat biztosítanak az adott szakértelmet illetően. Az entitások felismeréséhez `categories` az entitások egy rögzített készlete, amelyet az előre ellátott modell képes felismerni.
+* Minden beépített szakértelem `odata.type`, `input`és `output` tulajdonságokkal rendelkezik. A szaktudás-specifikus tulajdonságok további információkat biztosítanak az adott szakértelmet illetően. Az entitások felismeréséhez `categories` az entitások egy rögzített készlete, amelyet az előre ellátott modell képes felismerni.
 
-* Minden egyes szaktudásnak rendelkeznie kell egy ```"context"```. A környezet a műveletek elvégzésének szintjét jelöli. A fenti szaktudásban a kontextus a teljes dokumentum, ami azt jelenti, hogy az entitás-felismerési képességet dokumentum szerint egyszer kell meghívni. A kimenetek ezen a szinten is előállíthatók. Konkrétabban ```"organizations"``` a ```"/document"``` tagjaként jön létre. Az alárendelt szakismeretekben ezt az újonnan létrehozott információt ```"/document/organizations"``` tekintheti meg.  Ha a ```"context"``` mező nincs explicit módon beállítva, az alapértelmezett környezet a dokumentum.
+* Minden egyes szaktudásnak rendelkeznie kell egy ```"context"```. A környezet a műveletek elvégzésének szintjét jelöli. A fenti szaktudásban a kontextus a teljes dokumentum, ami azt jelenti, hogy az entitás-felismerési képességet dokumentum szerint egyszer kell meghívni. A kimenetek ezen a szinten is előállíthatók. Konkrétabban ```"organizations"``` a ```"/document"```tagjaként jön létre. Az alárendelt szakismeretekben ezt az újonnan létrehozott információt ```"/document/organizations"```tekintheti meg.  Ha a ```"context"``` mező nincs explicit módon beállítva, az alapértelmezett környezet a dokumentum.
 
 * A szakértelem egy "text" nevű bemenettel rendelkezik, és a forrás bemenete ```"/document/content"```ra van beállítva. A skill (Entity Recognition) minden dokumentum *tartalom* mezőjében működik, amely az Azure Blob indexelő által létrehozott szabványos mező. 
 
-* A szakértelem egy ```"organizations"``` nevű kimenettel rendelkezik. A kimenetek csak a feldolgozás során léteznek. Ha a kimenetet egy alsóbb rétegbeli képesség bemenetéhez szeretné felvenni, a kimenetet ```"/document/organizations"```ként kell megadnia.
+* A szakértelem egy ```"organizations"```nevű kimenettel rendelkezik. A kimenetek csak a feldolgozás során léteznek. Ha a kimenetet egy alsóbb rétegbeli képesség bemenetéhez szeretné felvenni, a kimenetet ```"/document/organizations"```ként kell megadnia.
 
-* Egy adott dokumentum esetében ```"/document/organizations"``` értéke a szövegből kinyert szervezetek tömbje. Példa:
+* Egy adott dokumentum esetében ```"/document/organizations"``` értéke a szövegből kinyert szervezetek tömbje. Például:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -179,7 +179,7 @@ Nézzük meg az első szakértelmet, amely a beépített [entitás-felismerési 
 
 Bizonyos helyzetekben a tömb egyes elemeinek külön való hivatkozását kell meghívni. Tegyük fel például, hogy a ```"/document/organizations"``` minden elemét egy másikra szeretné átadni (például az egyéni Bing Entity Search-gazdagabbá). A tömb egyes elemeire úgy tekintheti meg, hogy egy csillagot ad hozzá a következő elérési úthoz: ```"/document/organizations/*"``` 
 
-Az érzelmek kinyerésének második szaktudása ugyanaz a minta, mint az első gazdagabbá. A ```"/document/content"``` bemenetként vesz igénybe, és az egyes tartalom-példányok hangulati pontszámát adja vissza. Mivel a ```"context"``` mezőt explicit módon nem állította be, a kimenet (mySentiment) már ```"/document"``` gyermeke.
+Az érzelmek kinyerésének második szaktudása ugyanaz a minta, mint az első gazdagabbá. A ```"/document/content"``` bemenetként vesz igénybe, és az egyes tartalom-példányok hangulati pontszámát adja vissza. Mivel a ```"context"``` mezőt explicit módon nem állította be, a kimenet (mySentiment) már ```"/document"```gyermeke.
 
 ```json
     {
@@ -229,7 +229,7 @@ Hívja fel az egyéni Bing Entity Search gazdagabbáer struktúráját:
 
 Ez a definíció egy [Egyéni képesség](cognitive-search-custom-skill-web-api.md) , amely webes API-t hív meg a dúsítási folyamat részeként. Az entitások felismerése által azonosított minden szervezet számára ez a képesség meghívja a webes API-t, hogy megkeresse a szervezet leírását. A webes API meghívásának, valamint a kapott információk folyamatának előkészítését a dúsítási motor belsőleg kezeli. Azonban az egyéni API meghívásához szükséges inicializálást meg kell adni a JSON-ban (például URI, httpHeaders és a várt bemenetek). Az egyéni webes API-k bővítési folyamathoz való létrehozásával kapcsolatos útmutatásért lásd: [Egyéni felület definiálása](cognitive-search-custom-skill-interface.md).
 
-Figyelje meg, hogy a "Context" mező úgy van beállítva, hogy az ```"/document/organizations/*"``` csillaggal, ami azt jelenti, hogy a dúsítási lépést a ```"/document/organizations"``` alatt *minden szervezet számára* meghívja. 
+Figyelje meg, hogy a "Context" mező úgy van beállítva, hogy az ```"/document/organizations/*"``` csillaggal, ami azt jelenti, hogy a dúsítási lépést a ```"/document/organizations"```alatt *minden szervezet számára* meghívja. 
 
 A kimenet, ebben az esetben a vállalat leírása minden azonosított szervezethez létrejön. Ha egy alsóbb rétegbeli lépésben (például a Key kifejezés kibontásakor) hivatkozik a leírásra, az elérési utat ```"/document/organizations/*/description"``` erre a célra. 
 
@@ -275,6 +275,6 @@ Dönthet úgy, hogy a dúsított dokumentumokat táblázatként vagy a blob Stor
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md). 

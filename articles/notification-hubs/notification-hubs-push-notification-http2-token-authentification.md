@@ -11,42 +11,39 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213122"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111942"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Jogkivonat-alapú (HTTP/2) hitelesítés a APNS
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk részletesen ismerteti, hogyan használható az új APNS HTTP/2 protokoll a jogkivonat-alapú hitelesítéssel.
+Ez a cikk azt ismerteti, hogyan használható az új APNS HTTP/2 protokoll jogkivonat-alapú hitelesítéssel.
 
 Az új protokoll használatának legfontosabb előnyei a következők:
 
-* A jogkivonat-létrehozás viszonylag ingyenes (a tanúsítványokhoz képest)
+* A jogkivonat létrehozása viszonylag egyszerű (a tanúsítványokhoz képest)
 * Nincs több lejárati dátum – a hitelesítési jogkivonatok és azok visszavonása felett van
 * A hasznos adatok akár 4 KB-os is lehetnek
 * Szinkron visszajelzés
 * Az Apple legújabb protokollját használja – a tanúsítványok továbbra is a bináris protokollt használják, amely elavultként van megjelölve.
 
-Az új mechanizmus használata két lépésben végezhető el néhány perc alatt:
+Ezt az új mechanizmust két lépésben hajthatja végre:
 
-1. Szerezze be a szükséges információkat az Apple fejlesztői fiók portálján
-2. Az értesítési központ konfigurálása az új adatokkal
+* Szerezze be a szükséges információkat az Apple fejlesztői fiók portálról.
+* Konfigurálja az értesítési központot az új adatokkal.
 
-A Notification Hubs mostantól az új hitelesítési rendszer használatára van beállítva a APNS használatával.
+A Notification Hubs most úgy van beállítva, hogy az új hitelesítési rendszer használatára APNS.
 
-Vegye figyelembe, hogy ha a APNS tanúsítvány-hitelesítő adatainak használatával migrálta a tanúsítványt:
-
-* a jogkivonat tulajdonságai felülírják a tanúsítványt a rendszeren,
-* az alkalmazás azonban továbbra is zökkenőmentesen fogadja az értesítéseket.
+Vegye figyelembe, hogy ha a APNS tanúsítvány-hitelesítő adatok használatával migrálta a tanúsítványt, a jogkivonat tulajdonságai felülírják a tanúsítványt a rendszeren, de az alkalmazás zökkenőmentesen fogadja az értesítéseket.
 
 ## <a name="obtaining-authentication-information-from-apple"></a>Hitelesítési adatok beszerzése az Apple-től
 
@@ -54,75 +51,41 @@ A jogkivonat-alapú hitelesítés engedélyezéséhez a következő tulajdonság
 
 ### <a name="key-identifier"></a>Kulcs azonosítója
 
-A kulcs azonosítóját az Apple fejlesztői fiókjának Keys (kulcsok) lapjáról lehet beszerezni
+A kulcs azonosítóját a **tanúsítványok, azonosítók & profilok**elem alatti **kulcsok** lapon érheti el az Apple fejlesztői fiókjában:
+
+![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
-### <a name="application-identifier--application-name"></a>Alkalmazás azonosítója & alkalmazás neve
+### <a name="application-identifier-and-application-name"></a>Alkalmazás azonosítója és az alkalmazás neve
 
-Az alkalmazás neve a fejlesztői fiók alkalmazás-azonosítók lapján érhető el.
+Az alkalmazás neve és azonosítója a fejlesztői fiók **tanúsítványok, azonosítók & profilok** lapján is elérhető:
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-Az alkalmazás azonosítója a fejlesztői fiók tagság részletei lapján érhető el.
+### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Konfigurálás a .NET SDK vagy a Azure Portal használatával
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
+A központot úgy konfigurálhatja, hogy jogkivonat-alapú hitelesítést használjon a [legújabb ÜGYFÉLOLDALI SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)-val vagy a Azure Portal. Ha engedélyezni szeretné a jogkivonat-alapú hitelesítést a portálon, jelentkezzen be a Azure Portalba, és lépjen az értesítési központ **settings > Apple (APNS)** panelre. A **hitelesítési mód** tulajdonságból válassza ki a **tokent** , hogy az összes releváns jogkivonat-tulajdonsággal frissítse a hubot.
 
-### <a name="authentication-token"></a>Hitelesítési jogkivonat
+![Jogkivonat konfigurálása](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-A hitelesítési jogkivonat letölthető, miután létrehozta az alkalmazáshoz tartozó jogkivonatot. A jogkivonat létrehozásával kapcsolatos részletekért tekintse meg az [Apple fejlesztői dokumentációját](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+* Adja meg az Apple Developer-fiókjából beolvasott tulajdonságokat.
+* Válassza ki az alkalmazási módot (**éles** vagy **homokozó**).
+* Kattintson a **Save (Mentés** ) gombra a APNS hitelesítő adatainak frissítéséhez.
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Az értesítési központ konfigurálása jogkivonat-alapú hitelesítés használatára
+A jogkivonat-alapú hitelesítő adatok a következő mezőkből állnak:
 
-### <a name="configure-via-the-azure-portal"></a>Konfigurálás a Azure Portal használatával
-
-Ha engedélyezni szeretné a jogkivonat-alapú hitelesítést a portálon, jelentkezzen be a Azure Portalba, és lépjen az értesítési központ > Notification Services > APNS panelre.
-
-Új tulajdonság – *hitelesítési mód*. A jogkivonat kiválasztásával frissítheti a hubot az összes vonatkozó jogkivonat-tulajdonsággal.
-
-![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
-
-* Adja meg az Apple Developer-fiókból beolvasott tulajdonságokat
-* Válassza ki az alkalmazási módot (éles vagy homokozó)
-* Kattintson a **Save (Mentés** ) gombra a APNS hitelesítő adatainak frissítéséhez
-
-### <a name="configure-via-management-api-rest"></a>Konfigurálás felügyeleti API-n keresztül (REST)
-
-A [felügyeleti API](https://msdn.microsoft.com/library/azure/dn495827.aspx) -k segítségével a jogkivonat-alapú hitelesítés használatára frissítheti az értesítési központot.
-Attól függően, hogy az Ön által konfigurált alkalmazás egy sandbox vagy éles alkalmazás (az Apple fejlesztői fiókjában van megadva), használja a megfelelő végpontok egyikét:
-
-* Homokozó végpontja:[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-* Üzemi végpont:[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
-
-> [!IMPORTANT]
-> A jogkivonat-alapú hitelesítéshez a (z) API-verziója szükséges: **2017-04 vagy újabb**.
-
-Az alábbi példa egy PUT-kérést mutat be, amely jogkivonat-alapú hitelesítéssel frissíti a hubot:
-
-    ```text
-    PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
-      "Properties": {
-        "ApnsCredential": {
-          "Properties": {
-            "KeyId": "<Your Key Id>",
-            "Token": "<Your Authentication Token>",
-            "AppName": "<Your Application Name>",
-            "AppId": "<Your Application Id>",
-            "Endpoint":"<Sandbox/Production Endpoint>"
-          }
-        }
-      }
-    ```
-
-### <a name="configure-via-the-net-sdk"></a>Konfigurálás a .NET SDK használatával
-
-A hub-t beállíthatja a jogkivonat-alapú hitelesítés használatára a [legújabb ÜGYFÉLOLDALI SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8)-val.
+* **Key ID**: az Apple fejlesztői portálon létrehozott titkos kulcs azonosítója; például `2USFGKSKLT`.
+* **Csoport azonosítója**: "előtag" vagy "alkalmazás előtagja". Ez a szervezet azonosítója az Apple fejlesztői portálon; például `S4V3D7CHJR`.
+* **Köteg azonosítója**: "app id" néven is ismert. Ez az alkalmazás köteg-azonosítója; például `com.microsoft.nhubsample2019`. Vegye figyelembe, hogy számos alkalmazáshoz használhat egy kulcsot. Ez az érték leképezi a `apns-topic` HTTP-fejlécet, amikor értesítést küld, és az adott alkalmazás céljára szolgál.
+* **Token**: "Key" vagy "Private Key" néven is ismert. Ez az Apple fejlesztői portálon létrehozott. P8 fájlból szerezhető be. A kulcsnak engedélyezve kell lennie a APNS (amely a kulcs létrehozásakor az Apple fejlesztői portálon van kiválasztva). Az értéknek az NH Portal/API-hoz való megadásakor el kell távolítania a PEM fejlécét vagy láblécét.
+* **Végpont**: ez egy váltógomb a Notification Hubs-portál panelen és egy karakterlánc-mező az API-ban. Az érvényes értékek `https://api.push.apple.com` vagy `https://api.sandbox.push.apple.com`. Az Notification Hubs ezt az értéket használja az éles vagy a homokozó környezethez az értesítések küldéséhez. Ennek meg kell egyeznie az alkalmazás `aps-environment` jogosultságával, ellenkező esetben a generált APNS-eszközök tokenje nem felel meg a környezetnek, és az értesítések nem lesznek elküldve.
 
 A helyes használatot bemutató kód minta:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
-string token = "YOUR TOKEN HERE";
+string token = "YOUR PRIVATE KEY HERE";
 string keyId = "YOUR KEY ID HERE";
 string appName = "YOUR APP NAME HERE";
 string appId = "YOUR APP ID HERE";
@@ -132,6 +95,7 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Visszaállítása tanúsítványalapú hitelesítés használatára
+## <a name="next-steps"></a>További lépések
 
-Bármikor visszaállíthatja a tanúsítványalapú hitelesítést a fenti metódusok használatával, és a jogkivonat tulajdonságai helyett átadhatja a tanúsítványt. Ez a művelet felülírja a korábban tárolt hitelesítő adatokat.
+* [Azure Notification hub létrehozása a Azure Portalban](create-notification-hub-portal.md)
+* [Értesítési központ konfigurálása a Azure Portal](create-notification-hub-portal.md)

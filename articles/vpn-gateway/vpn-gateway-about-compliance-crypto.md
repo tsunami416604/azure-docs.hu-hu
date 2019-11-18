@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók a titkosítási követelményekről és az Azure VPN Gateway-ről | Microsoft Docs
+title: 'Azure VPN Gateway: titkosítási követelmények'
 description: Ez a cikk a titkosítási követelményeket és az Azure VPN-átjárókat ismerteti.
 services: vpn-gateway
 author: yushwang
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f2fd68871a329f7ff04f90d8166cb1fa58a512c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f18e5dbdc257aa1ae647505c323c17f9f197d360
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495850"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150988"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>A titkosítási követelmények és az Azure VPN-átjárók
 
@@ -42,7 +42,7 @@ Az Azure VPN-átjárók IKEv2 alapmódú házirendjei például csak a Diffie-He
 
 Az Azure VPN Gateway mostantól támogatja a kapcsolatonként, az Egyéni IPsec/IKE-házirendet. Helyek közötti vagy VNet kapcsolat esetén az IPsec és az IKE titkosítási algoritmusok adott kombinációját választhatja ki a kívánt VNet, ahogy az alábbi példában is látható:
 
-![IPSec-IKE-Policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 Létrehozhat egy IPsec/IKE-szabályzatot, és alkalmazhatja azt egy új vagy meglévő kapcsolódásra is.
 

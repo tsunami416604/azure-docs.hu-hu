@@ -11,15 +11,16 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 3b50ba8f2c3d21fb5bb0ab2c26cedb6bda0fab16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: df4604560e05899461b11ec0788f72b27241f1b9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503856"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125502"
 ---
 Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) használatával interaktívan felismerheti a mikrofonból rögzített hangadatokból származó beszédet. Néhány előfeltétel kielégítése után a mikrofonból való beszéd felismerése csak négy lépést vesz igénybe:
 > [!div class="checklist"]
+>
 > * Hozzon létre egy ````SpeechConfig```` objektumot az előfizetési kulcsból és régióból.
 > * Hozzon létre egy ````IntentRecognizer```` objektumot a fenti ````SpeechConfig```` objektum használatával.
 > * A ````IntentRecognizer```` objektum használatával a felismerési folyamat elindítható egyetlen kilépéshez.

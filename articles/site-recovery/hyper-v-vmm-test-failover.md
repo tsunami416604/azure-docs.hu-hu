@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039737"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132945"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -20,10 +20,6 @@ ms.locfileid: "74039737"
 Ez a cikk a (z) System Center Virtual Machine Manager V (PP) felhőkben felügyelt Hyper-V virtuális gépek vész-helyreállítási (DR) gyakorlatát ismerteti, [Azure site Recovery](site-recovery-overview.md)használatával.
 
 A replikációs stratégia ellenőrzéséhez futtasson feladatátvételi tesztet, és végezzen el egy DR-részletezést adatvesztés vagy állásidő nélkül. A feladatátvételi teszt nem befolyásolja a folyamatos replikálást, vagy az éles környezetben. 
-
-> [!WARNING]
-> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](site-to-site-deprecation.md) adatokat.
-
 
 ## <a name="how-do-test-failovers-work"></a>Hogyan működnek a feladatátvételi teszt?
 
@@ -147,7 +143,7 @@ Azt javasoljuk, hogy ne futtasson feladatátvételi tesztet a hálózati leképe
 * A teszteléshez hasonlóan az éles környezetbeli alkalmazás leállásához vezet. Kérje meg az alkalmazás felhasználóit, hogy ne használják az alkalmazást, amikor a DR-részletezés folyamatban van.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A DR-részletezés sikeres futtatása után [futtathatja a teljes feladatátvételt](site-recovery-failover.md).
 
 

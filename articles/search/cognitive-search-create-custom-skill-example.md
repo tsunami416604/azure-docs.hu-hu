@@ -1,5 +1,5 @@
 ---
-title: 'Példa: egyéni kognitív képesség létrehozása a Bing Entity Search API'
+title: Egyéni ügyességi példa Bing Entity Search API használatával
 titleSuffix: Azure Cognitive Search
 description: A Bing Entity Search szolgáltatás használatát mutatja be az Cognitive Search Azure-beli mesterséges intelligenciát használó indexelési folyamathoz hozzárendelt egyéni szakértelemben.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466818"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113815"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Példa: egyéni képesség létrehozása a Bing Entity Search API használatával
 

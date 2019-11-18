@@ -1,189 +1,181 @@
 ---
-title: Adatok megőrzését egy prémium szintű Azure Cache Redis konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja és kezelheti az adatmegőrzést a prémium szintű Azure Cache a Redis-példány
-services: cache
-documentationcenter: ''
+title: Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
+description: Ismerje meg, hogyan konfigurálhatja és kezelheti az adatmegőrzést a prémium szintű Azure cache Redis-példányok esetében
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: yegu
-ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543444"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122740"
 ---
-# <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Adatok megőrzését egy prémium szintű Azure Cache Redis konfigurálása
-Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Ez a cikk ismerteti egy prémium szintű Azure Cache Redis-példányt az adatmegőrzés konfigurálása.
+# <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
+A Redis készült Azure cache különböző gyorsítótárazási ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk bemutatja, hogyan konfigurálhatja az adatmegőrzést egy prémium szintű Azure cache-ben a Redis-példány esetében.
 
-Más prémiumszintű gyorsítótár funkcióival kapcsolatos tudnivalókért lásd: [Bevezetés az Azure Cache redis Cache prémium szint](cache-premium-tier-intro.md).
+További információ a prémium szintű gyorsítótár-funkciókról: [Bevezetés az Azure cache for Redis Premium](cache-premium-tier-intro.md)csomagba.
 
 ## <a name="what-is-data-persistence"></a>Mi az adatmegőrzés?
-[Redis-adatmegőrzés](https://redis.io/topics/persistence) segítségével megőrizheti a Redis-ban tárolt adatokkal. Pillanatfelvételt és biztonsági mentése az adatok betölthetők egy hardverhiba. Ez az egy hatalmas használja ki az alapszintű vagy Standard csomag, ahol a memóriában tárolt összes adatot és az esetleges adatvesztés, ahol a gyorsítótár-csomópontok le hiba esetén is lehet. 
+A Redis megőrzése lehetővé teszi a Redis-ben tárolt [adatmegőrzést](https://redis.io/topics/persistence) . Pillanatképeket és biztonsági mentést is készíthet, amelyeket hardverhiba esetén betölthet. Ez óriási előnyt jelent az alapszintű és a standard szint esetében, ahol az összes adat a memóriában tárolódik, és előfordulhat, hogy a gyorsítótár-csomópontok leállításakor hiba történt. 
 
-Az Azure Cache redis kínál a Redis megőrzési funkciója az alábbi minták használatával:
+A Redis-hez készült Azure cache a következő modellek használatával nyújt Redis-megőrzést:
 
-* **RDB-fájlba való megőrzését** – Ha RDB (Redis-adatbázis) adatmegőrzés van konfigurálva, az Azure Cache redis az Azure Cache pillanatképet egy redis-lemezre bináris formátumot egy konfigurálható biztonsági mentési gyakoriság alapján redis továbbra is fennáll. Ha egy katasztrofális esemény történik, amely letiltja az elsődleges és replika gyorsítótár, a gyorsítótár újraépíti a legutóbbi pillanatképből. Tudjon meg többet a [előnyeit](https://redis.io/topics/persistence#rdb-advantages) és [hátrányait](https://redis.io/topics/persistence#rdb-disadvantages) RDB-fájlba való maradandó.
-* **AOF adatmegőrzés** – Ha AOF (csak fájl hozzáfűzése) adatmegőrzés van konfigurálva, Azure Cache redis minden írási művelet menti egy Azure Storage-fiókba másodpercenként legalább egyszer mentett naplóba. Ha egy katasztrofális esemény történik, amely letiltja az elsődleges és replika gyorsítótár, a gyorsítótár újraépíti a tárolt írási műveletek használatával. Tudjon meg többet a [előnyeit](https://redis.io/topics/persistence#aof-advantages) és [hátrányait](https://redis.io/topics/persistence#aof-disadvantages) AOF maradandó.
+* **RDB-megőrzés** – ha a RDB (Redis-adatbázis) megőrzése konfigurálva van, az Azure cache a Redis számára megőrzi az Azure cache-t a Redis bináris formátumból a lemezre egy konfigurálható biztonsági mentési gyakoriság alapján. Ha végzetes esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a rendszer a legutóbbi pillanatkép használatával újraépíti a gyorsítótárat. További információ az RDB megőrzésének [előnyeiről](https://redis.io/topics/persistence#rdb-advantages) és [hátrányairól](https://redis.io/topics/persistence#rdb-disadvantages) .
+* **AOF-megőrzés** – ha a AOF (csak Hozzáfűzés) adatmegőrzés konfigurálva van, az Azure cache for Redis minden írási műveletet egy olyan naplóba ment, amely másodpercenként legalább egyszer ment egy Azure Storage-fiókba. Ha olyan katasztrofális esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a gyorsítótárat a tárolt írási műveletek használatával rekonstruáljuk. További információ az AOF megőrzésének [előnyeiről](https://redis.io/topics/persistence#aof-advantages) és [hátrányairól](https://redis.io/topics/persistence#aof-disadvantages) .
 
-Adatmegőrzés állítható a **új Azure Cache redis** gyorsítótár létrehozása során, majd a panel a **erőforrás menüben** meglévő prémium gyorsítótárazza.
+Az adatmegőrzés a **Redis panel új Azure-gyorsítótárában** , a gyorsítótár létrehozásakor és a meglévő prémium gyorsítótárak **erőforrás menüjében** van konfigurálva.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Amikor prémium tarifacsomag be van jelölve, kattintson a **Redis-adatmegőrzés**.
+A prémium szintű árképzési szint kiválasztása után kattintson a **Redis megőrzése**elemre.
 
-![Redis-adatmegőrzés][redis-cache-persistence]
+![Redis megőrzése][redis-cache-persistence]
 
-A következő szakaszban ismertetett lépések bemutatják, hogyan Redis-adatmegőrzés konfigurálása az új prémium szintű gyorsítótár. Miután a Redis megőrzési funkciója van konfigurálva, kattintson a **létrehozás** az új prémium szintű gyorsítótár létrehozása a Redis megőrzési funkciója.
+A következő szakaszban ismertetett lépések azt ismertetik, hogyan konfigurálható a Redis megőrzése az új prémium szintű gyorsítótárban. Ha a Redis megőrzése beállítás be van állítva, a **Létrehozás** gombra kattintva hozza létre az új prémium gyorsítótárat a Redis-megőrzéssel.
 
-## <a name="enable-redis-persistence"></a>A Redis-adatmegőrzés engedélyezése
+## <a name="enable-redis-persistence"></a>Redis megőrzésének engedélyezése
 
-Redis adatmegőrzés engedélyezve van a **Redis-adatmegőrzés** panelen válassza ki vagy **RDB-fájlba való** vagy **AOF** megőrzését. Az új gyorsítótárakhoz ezen a panelen érhető el a gyorsítótár létrehozása során az előző szakaszban leírtak szerint. Meglévő gyorsítótárak esetében a **Redis-adatmegőrzés** panelen érhető el a **erőforrás menüben** a gyorsítótárhoz.
+A Redis-megőrzés engedélyezve van a **Redis adatmegőrzési** paneljén a **RDB** vagy a **AOF** -megőrzés kiválasztásával. Új gyorsítótárak esetén ez a panel a gyorsítótár-létrehozási folyamat során érhető el az előző szakaszban leírtak szerint. A meglévő gyorsítótárak esetében a **Redis adatmegőrzési** panelje a gyorsítótár **erőforrás menüjéből** érhető el.
 
-![A redis-beállítások][redis-cache-settings]
+![Redis-beállítások][redis-cache-settings]
 
 
-## <a name="configure-rdb-persistence"></a>RDB-fájlba való adatmegőrzés konfigurálása
+## <a name="configure-rdb-persistence"></a>RDB megőrzésének konfigurálása
 
-RDB-fájlba való adatmegőrzés engedélyezéséhez kattintson **RDB-fájlba való**. Az előzőekben engedélyezett prémium gyorsítótár RDB-fájlba való megőrzését letiltásához kattintson **letiltott**.
+A RDB megőrzésének engedélyezéséhez kattintson a **RDB**elemre. Ha le szeretné tiltani a RDB megőrzését egy korábban engedélyezett prémium gyorsítótárban, kattintson a **Letiltva**gombra.
 
-![A redis RDB-fájlba való megőrzése][redis-cache-rdb-persistence]
+![Redis RDB megőrzése][redis-cache-rdb-persistence]
 
-A biztonsági mentési időköz konfigurálásához válasszon egy **biztonsági mentés gyakorisága** a legördülő listából. Választási lehetőségek **15 perc**, **30 perc**, **60 perc**, **6 óra**, **12 óra**, és **24 óra**. Ez az időtartam alatt elindítja a leltár, miután az előző biztonsági mentési művelet sikeresen befejeződött, és eltelt, amikor egy új biztonsági másolatot a rendszer kezdeményezi.
+A biztonsági mentési időköz konfigurálásához válassza ki a **biztonsági mentés gyakoriságát** a legördülő listából. A választható lehetőségek közé tartozik a **15 perc**, **30 perc**, **60 perc**, **6 óra**, **12 óra**és **24 óra**. Ez az intervallum az előző biztonsági mentési művelet sikeres befejezését és az új biztonsági mentés eltelte után kezdődik.
 
-Kattintson a **Tárfiók** , válassza ki a tárfiókot használja, és válassza a **elsődleges kulcs** vagy **másodlagos kulcs** használatát a **Tárkulcs** listából. Ki kell választania a gyorsítótárat, és ugyanabban a régióban a storage-fiók és a egy **prémium szintű Storage** fiók ajánlott, mert a premium storage nagyobb átviteli sebességet. 
-
-> [!IMPORTANT]
-> Ha a tárfiók hívóbetűjét, az adatmegőrzés fiók újragenerálják, újra kell konfigurálnia a kívánt kulcsot a **Tárkulcs** listából.
-> 
-> 
-
-Kattintson a **OK** adatmegőrzési-konfigurációjának mentése.
-
-A biztonsági mentés gyakorisága időtartam után a rendszer kezdeményezi a következő biztonsági mentés (vagy az új gyorsítótárakhoz első biztonsági mentés).
-
-## <a name="configure-aof-persistence"></a>AOF adatmegőrzés konfigurálása
-
-AOF adatmegőrzés engedélyezéséhez kattintson **AOF**. Az előzőekben engedélyezett prémium gyorsítótár AOF adatmegőrzés letiltásához kattintson **letiltott**.
-
-![Redis-adatmegőrzés AOF][redis-cache-aof-persistence]
-
-AOF adatmegőrzés konfigurálása, adjon meg egy **első Tárfiók**. Ez a tárfiók a gyorsítótárat ugyanabban a régióban kell lennie és a egy **prémium szintű Storage** fiók ajánlott, mert a premium storage nagyobb átviteli sebességet. Igény szerint konfigurálható egy tárfiókot nevű **második Tárfiók**. Ha egy második tárfiók van konfigurálva, az írási műveletek a replika gyorsítótár írja a második tárfiók. Válassza minden beállított storage-fiókok a **elsődleges kulcs** vagy **másodlagos kulcs** használatát a **Tárkulcs** listából. 
+Kattintson **a Storage-fiók** lehetőségre a használni kívánt Storage-fiók kiválasztásához, majd válassza ki az **elsődleges kulcsot** vagy a **másodlagos kulcsot** , amelyet a **tárolási kulcs** legördülő listából szeretne használni. Ki kell választania egy Storage-fiókot a gyorsítótárral azonos régióban, és a **Premium Storage** fiók használata javasolt, mivel a Premium Storage nagyobb átviteli sebességgel rendelkezik. 
 
 > [!IMPORTANT]
-> Ha a tárfiók hívóbetűjét, az adatmegőrzés fiók újragenerálják, újra kell konfigurálnia a kívánt kulcsot a **Tárkulcs** listából.
+> Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből.
 > 
 > 
 
-Adatmegőrzés AOF engedélyezve van, ha írási műveletek a gyorsítótárba menti a kijelölt tárfiók (vagy ha egy második tárfiók konfigurált fiókok). Katasztrofális hiba, amely az elsődleges és replika gyorsítótár le a tárolt AOF napló segítségével építse újra a gyorsítótárhoz.
+Az adatmegőrzési konfiguráció mentéséhez kattintson **az OK** gombra.
+
+A következő biztonsági mentés (vagy az új gyorsítótárak első biztonsági mentése) a biztonsági mentés gyakorisági intervallumának eltelte után indul el.
+
+## <a name="configure-aof-persistence"></a>AOF megőrzésének konfigurálása
+
+A AOF megőrzésének engedélyezéséhez kattintson a **AOF**elemre. Ha le szeretné tiltani a AOF megőrzését egy korábban engedélyezett prémium gyorsítótárban, kattintson a **Letiltva**gombra.
+
+![Redis AOF megőrzése][redis-cache-aof-persistence]
+
+A AOF megőrzésének konfigurálásához adja meg az **első Storage-fiókot**. Ennek a Storage-fióknak ugyanabban a régióban kell lennie, mint a gyorsítótárnak, és a **Premium Storage** fiók használata ajánlott, mert a Premium Storage nagyobb átviteli sebességgel rendelkezik. Opcionálisan beállíthat egy **második Storage-fiók**nevű további Storage-fiókot is. Ha egy második Storage-fiók van konfigurálva, a replika gyorsítótárba való írás a második Storage-fiókba kerül. Minden konfigurált Storage-fióknál válassza ki a **Storage-kulcs** legördülő menüjében használni kívánt **elsődleges kulcsot** vagy **másodlagos kulcsot** . 
+
+> [!IMPORTANT]
+> Ha az adatmegőrzési fiók tárolási kulcsa újragenerált, újra kell konfigurálnia a kívánt kulcsot a **tárolási kulcs** legördülő menüjéből.
+> 
+> 
+
+Ha a AOF megőrzése engedélyezve van, a gyorsítótárba való írási műveletek a kijelölt Storage-fiókba lesznek mentve (vagy ha konfigurált egy második Storage-fiókot). Abban az esetben, ha az elsődleges és a replika gyorsítótárat is igénybe vevő végzetes hiba esetén a rendszer a tárolt AOF-naplót használja a gyorsítótár újraépítéséhez.
 
 ## <a name="persistence-faq"></a>Adatmegőrzés – gyakori kérdések
-Az alábbi lista a Redis megőrzési funkciója az Azure Cache kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
+Az alábbi lista az Azure cache Redis-megőrzési szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 
-* [Egy korábban létrehozott gyorsítótár az adatmegőrzés engedélyezése](#can-i-enable-persistence-on-a-previously-created-cache)
-* [Engedélyezheti a egyszerre AOF és RDB-fájlba való megőrzését?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
-* [Adatmegőrzés modellt érdemes választani?](#which-persistence-model-should-i-choose)
-* [Mi történik, ha szeretnék méretezte más méretre és a biztonsági másolat visszaállítása, amely a skálázási művelet előtt történt?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
-
-
-### <a name="rdb-persistence"></a>RDB-fájlba való megőrzése
-* [Módosíthatom a RDB-fájlba való biztonsági mentés gyakoriságát, a gyorsítótár létrehozása után?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
-* [Miért van egy RDB-fájlba való biztonsági mentés gyakorisága 60 perc van-e több mint 60 perc között biztonsági mentések?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
-* [Mi történik a régi RDB-fájlba való biztonsági mentést egy új biztonsági másolat készül?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
-
-### <a name="aof-persistence"></a>AOF adatmegőrzés
-* [Mikor célszerű használni egy második tárfiókot?](#when-should-i-use-a-second-storage-account)
-* [Nem egész AOF adatmegőrzés hatással, várakozási ideje vagy a gyorsítótár teljesítményének?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
-* [Hogyan távolíthatja el a második tárfiók?](#how-can-i-remove-the-second-storage-account)
-* [Mi az, hogy egy újraírást, és hogyan befolyásolja a gyorsítótár?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
-* [Mit kell számítson, ha a gyorsítótár horizontális az AOF engedélyezve van?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
-* [Hogyan rendszerezése a storage AOF adataimat?](#how-is-my-aof-data-organized-in-storage)
+* [Engedélyezhető az adatmegőrzés egy korábban létrehozott gyorsítótárban?](#can-i-enable-persistence-on-a-previously-created-cache)
+* [Egyszerre engedélyezhető a AOF és a RDB megőrzése?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
+* [Milyen adatmegőrzési modellt választok?](#which-persistence-model-should-i-choose)
+* [Mi történik, ha egy másik méretre skálázást végezek, és a rendszer visszaállítja a biztonsági mentést, amely a skálázási művelet előtt történt?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
 
-### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Egy korábban létrehozott gyorsítótár az adatmegőrzés engedélyezése
-Igen, a Redis megőrzési funkciója konfigurálható, mind pedig a gyorsítótár létrehozása a meglévő prémium gyorsítótárak.
+### <a name="rdb-persistence"></a>RDB megőrzése
+* [Módosíthatom a RDB biztonsági mentésének gyakoriságát a gyorsítótár létrehozása után?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
+* [Miért van a RDB biztonsági mentés gyakorisága 60 percnél több, mint 60 perc a biztonsági másolatok között?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
+* [Mi történik a régi RDB biztonsági mentésével, amikor új biztonsági mentés készül?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
 
-### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Engedélyezheti a egyszerre AOF és RDB-fájlba való megőrzését?
-
-Nem, csak RDB-fájlba való vagy AOF, de nem mindkettőt egyszerre is engedélyezheti.
-
-### <a name="which-persistence-model-should-i-choose"></a>Adatmegőrzés modellt érdemes választani?
-
-AOF adatmegőrzés minden írási menti a napló, amely hatással van az átviteli sebesség, RDB-fájlba való megőrzési funkció, amely tárolja a biztonsági mentések teljesítményére gyakorolt minimális hatása mellett a beállított biztonsági mentési időköz alapján képest. AOF adatmegőrzés akkor válassza, ha az elsődleges cél, hogy az adatvesztést, és a gyorsítótár kezelhetik a teljesítmény csökkenését. Válassza ki a RDB-fájlba való megőrzését, ha szeretné a gyorsítótár az optimális átviteli sebesség szinten tartható, de továbbra is szeretné az adat-helyreállítási mechanizmusként.
-
-* Tudjon meg többet a [előnyeit](https://redis.io/topics/persistence#rdb-advantages) és [hátrányait](https://redis.io/topics/persistence#rdb-disadvantages) RDB-fájlba való maradandó.
-* Tudjon meg többet a [előnyeit](https://redis.io/topics/persistence#aof-advantages) és [hátrányait](https://redis.io/topics/persistence#aof-disadvantages) AOF maradandó.
-
-A teljesítmény AOF adatmegőrzés használata esetén további információkért lásd: [Does AOF adatmegőrzés hatással egész, késés és a gyorsítótár teljesítményének?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
-
-### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Mi történik, ha szeretnék méretezte más méretre és a biztonsági másolat visszaállítása, amely a skálázási művelet előtt történt?
-
-Az RDB-fájlba való és a AOF megőrzése:
-
-* Ha méretezte egy nagyobb méretű, ez nincs hatással.
-* Ha méretezte egy kisebb méretű, és a egy egyéni rendelkezik [adatbázisok](cache-configure.md#databases) beállítás értéke nagyobb, mint a [adatbázisok korlát](cache-configure.md#databases) az új méret ezeket az adatbázisokat a adatainak visszaállítása nem. További információkért lásd: [saját egyéni adatbázisok méretezése során érintett beállítás?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Ha méretezte egy kisebb méretű, és nincs elég hely a kisebb méretű az utolsó biztonsági adatok tárolására, kulcsok ki lesz zárva a visszaállítás során, általában a [allkeys-lru](https://redis.io/topics/lru-cache) kiürítési szabályzatot.
-
-### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Módosíthatom a RDB-fájlba való biztonsági mentés gyakoriságát, a gyorsítótár létrehozása után?
-Igen, módosíthatja a biztonsági mentés gyakorisága RDB-fájlba való megőrzésre a **Redis-adatmegőrzés** panelen. Útmutatásért lásd: A redis Cache megőrzése.
-
-### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Miért van egy RDB-fájlba való biztonsági mentés gyakorisága 60 perc van-e több mint 60 perc között biztonsági mentések?
-Az RDB-fájlba való megőrzését biztonsági mentési időköz nem indul el addig, amíg az előző biztonsági mentési folyamat sikeresen befejeződött. Ha a biztonsági mentés gyakorisága 60 perc és egy biztonsági mentési folyamat 15 percet vesz sikeresen befejeződik, a következő biztonsági mentés az előző biztonsági mentés kezdő időpontja után 75 perccel nem indul.
-
-### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Mi történik a régi RDB-fájlba való biztonsági mentést egy új biztonsági másolat készül?
-Legutóbbi kivételével az összes RDB-fájlba való megőrzését biztonsági automatikusan törlődnek. Ez a törlés nem fordulhat elő, azonnal, de a régebbi biztonsági másolatok határozatlan ideig nem rögzíti.
+### <a name="aof-persistence"></a>AOF megőrzése
+* [Mikor érdemes egy második Storage-fiókot használni?](#when-should-i-use-a-second-storage-account)
+* [A AOF-megőrzés a gyorsítótár egészére, késésére vagy teljesítményére is hatással van?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+* [Hogyan lehet eltávolítani a második Storage-fiókot?](#how-can-i-remove-the-second-storage-account)
+* [Mi az az újraírás, és hogyan befolyásolja a gyorsítótárat?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
+* [Mit várhatok a gyorsítótár és a AOF engedélyezése esetén?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
+* [Hogyan történik a AOF-adataim tárolása?](#how-is-my-aof-data-organized-in-storage)
 
 
-### <a name="when-should-i-use-a-second-storage-account"></a>Mikor célszerű használni egy második tárfiókot?
+### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Engedélyezhető az adatmegőrzés egy korábban létrehozott gyorsítótárban?
+Igen, a Redis megőrzése a gyorsítótár létrehozásakor és a meglévő prémium szintű gyorsítótárban is konfigurálható.
 
-AOF megőrzéshez egy második tárfiókot használjon, ha úgy gondolja, hogy a magasabb, mint a gyorsítótár várt halmazműveletek rendelkezik.  A másodlagos tárfiók beállítása biztosíthatja a gyorsítótár nem éri el a storage sávszélességkorláttal rendelkeznek.
+### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Egyszerre engedélyezhető a AOF és a RDB megőrzése?
 
-### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>Nem egész AOF adatmegőrzés hatással, várakozási ideje vagy a gyorsítótár teljesítményének?
+Nem, engedélyezheti csak a RDB vagy a AOF, de egyszerre nem.
 
-AOF adatmegőrzés befolyásolja átviteli sebesség szerint körülbelül 15 – 20 % amikor a gyorsítótár maximális terhelés alatt (Processzor és a kiszolgáló mindkét betölteni a 90 %). Nem kell késési problémák amikor a gyorsítótár ezeken a határokon. Azonban a gyorsítótárban fogják tudni elérni ezeket a korlátokat hamarabb az AOF engedélyezve van.
+### <a name="which-persistence-model-should-i-choose"></a>Milyen adatmegőrzési modellt választok?
 
-### <a name="how-can-i-remove-the-second-storage-account"></a>Hogyan távolíthatja el a második tárfiók?
+A AOF megőrzése minden írást egy naplóba ment, amely hatással van az átviteli sebességre, a RDB-megőrzéssel összehasonlítva, amely a biztonsági mentéseket a beállított biztonsági mentési intervallum alapján menti, és minimális hatással van a teljesítményre. Válassza a AOF megőrzése lehetőséget, ha az elsődleges célja az adatvesztés csökkentése, és az átviteli sebesség csökkentése a gyorsítótárban. Válassza a RDB megőrzése lehetőséget, ha az optimális teljesítményt szeretné fenntartani a gyorsítótárban, de továbbra is szeretne egy mechanizmust használni az adatok helyreállításához.
 
-Eltávolíthatja az AOF adatmegőrzés másodlagos tárfiók ugyanaz, mint az első storage-fiókot kell a második tárfiók beállításával. Útmutatásért lásd: [konfigurálása AOF adatmegőrzés](#configure-aof-persistence).
+* További információ az RDB megőrzésének [előnyeiről](https://redis.io/topics/persistence#rdb-advantages) és [hátrányairól](https://redis.io/topics/persistence#rdb-disadvantages) .
+* További információ az AOF megőrzésének [előnyeiről](https://redis.io/topics/persistence#aof-advantages) és [hátrányairól](https://redis.io/topics/persistence#aof-disadvantages) .
 
-### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Mi az, hogy egy újraírást, és hogyan befolyásolja a gyorsítótár?
+A AOF megőrzése esetén a teljesítményre vonatkozó további információkért lásd: a [AOF megőrzése a gyorsítótár egészére, késésére vagy teljesítményére vonatkozik?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
 
-Az AOF fájl lesz elég nagy, amikor egy újraírási automatikusan várólistára helyezve a gyorsítótárban. Az újraírási átméretezi a AOF-fájlt a minimálisan szükséges az aktuális adatkészlet létrehozásához szükséges műveleteket. Újraírások, során várható teljesítménykorlátok hamarabb elérni, különösen akkor, ha nagy adatkészletekkel. Újraírások elő kisebb gyakran az AOF fájl nagyobb lesz, de eltarthat egy jelentős mennyiségű időt, amikor történik.
+### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Mi történik, ha egy másik méretre skálázást végezek, és a rendszer visszaállítja a biztonsági mentést, amely a skálázási művelet előtt történt?
 
-### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Mit kell számítson, ha a gyorsítótár horizontális az AOF engedélyezve van?
+Mind a RDB, mind a AOF megőrzése esetén:
 
-Skálázás alkalmával AOF fájl esetén jelentősen nagy hatással vannak a skálázási művelet, mert azt fogja betöltődnek a fájl méretezés befejezése után a vártnál több időt vesz igénybe.
+* Ha nagyobb méretre méretezett, nincs hatása.
+* Ha kisebb méretre méretezett, és rendelkezik olyan egyéni [adatbázis](cache-configure.md#databases) -beállítással, amely nagyobb, mint az új mérethez tartozó [adatbázis-korlát](cache-configure.md#databases) , az ezekben az adatbázisokban tárolt adatmennyiség nem lesz visszaállítva. További információ: az [Egyéni adatbázisok beállítása a skálázás során?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
+* Ha kisebb méretre méretezett, és nincs elég hely a kisebb méretekben az utolsó biztonsági mentésből származó összes adatok tárolásához, a kulcsok a visszaállítási folyamat során törlődnek, jellemzően a [allkeys-LRU](https://redis.io/topics/lru-cache) kizárási házirend használatával.
 
-Méretezéssel kapcsolatos további információkért lásd: [mi történik, ha szeretnék méretezte más méretre és a biztonsági másolat visszaállítása, amely a skálázási művelet előtt történt?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Módosíthatom a RDB biztonsági mentésének gyakoriságát a gyorsítótár létrehozása után?
+Igen, a **Redis adatmegőrzési** paneljén módosíthatja a RDB megőrzésének biztonsági mentésének gyakoriságát. Útmutatásért lásd: a Redis megőrzésének konfigurálása.
 
-### <a name="how-is-my-aof-data-organized-in-storage"></a>Hogyan rendszerezése a storage AOF adataimat?
+### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Miért van a RDB biztonsági mentés gyakorisága 60 percnél több, mint 60 perc a biztonsági másolatok között?
+A RDB megőrzése biztonsági mentési gyakorisága nem indul el, amíg az előző biztonsági mentési folyamat sikeresen befejeződött. Ha a biztonsági mentés gyakorisága 60 perc, és a biztonsági mentési folyamat 15 percet vesz igénybe, a következő biztonsági mentés nem indul el, amíg az előző biztonsági mentés kezdési időpontja nem fog megjelenni a 75 percben.
 
-AOF-fájlokban tárolt adatok mentése folyamatban van az adatok tárolási teljesítményének növelése érdekében csomópontonként több lapblobok oszlik. Az alábbi táblázat jeleníti meg, hány lapblobok minden egyes tarifacsomagja használhatók:
+### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Mi történik a régi RDB biztonsági mentésével, amikor új biztonsági mentés készül?
+Az összes RDB-megőrzési biztonsági mentést, kivéve a legutóbbit, automatikusan törlődnek. Előfordulhat, hogy ez a törlés nem azonnal történik, de a régebbi biztonsági mentések határozatlan ideig nem maradnak meg.
+
+
+### <a name="when-should-i-use-a-second-storage-account"></a>Mikor érdemes egy második Storage-fiókot használni?
+
+Ha úgy gondolja, hogy a gyorsítótárban a vártnál több művelet van, használjon egy második Storage-fiókot a AOF megőrzéséhez.  A másodlagos Storage-fiók beállítása segít biztosítani, hogy a gyorsítótár ne érje el a tárolási sávszélesség korlátozásait.
+
+### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>A AOF-megőrzés a gyorsítótár egészére, késésére vagy teljesítményére is hatással van?
+
+A AOF-megőrzés az átviteli sebességet körülbelül 15% – 20%-kal befolyásolja, ha a gyorsítótár a maximális terhelés alatt van (a processzor és a kiszolgáló terhelése egyaránt 90% alatt). A gyorsítótár ezen korlátok között nem lehet késéssel kapcsolatos probléma. A gyorsítótár azonban hamarabb eléri ezeket a korlátokat, ha a AOF engedélyezve van.
+
+### <a name="how-can-i-remove-the-second-storage-account"></a>Hogyan lehet eltávolítani a második Storage-fiókot?
+
+A AOF megőrzése másodlagos Storage-fiókot úgy távolíthatja el, hogy a második Storage-fiókot az első Storage-fiókkal megegyezőre állítja. Útmutatásért lásd: a [AOF megőrzésének konfigurálása](#configure-aof-persistence).
+
+### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Mi az az újraírás, és hogyan befolyásolja a gyorsítótárat?
+
+Ha a AOF-fájl mérete elég nagy, az újraírás automatikusan várólistára kerül a gyorsítótárban. Az újraírás átméretezi a AOF-fájlt az aktuális adathalmaz létrehozásához szükséges minimális műveletek közül. Az újraírások során várhatóan a teljesítményre vonatkozó korlátok hamarabb, különösen a nagyméretű adatkészletek kezelésekor is elérhetők. Az újraírások ritkábban történnek, mert a AOF-fájl nagyobb lesz, de jelentős időt vesz igénybe.
+
+### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Mit várhatok a gyorsítótár és a AOF engedélyezése esetén?
+
+Ha a skálázáskor a AOF-fájl mérete jelentősen nagyobb, akkor a méretezési művelet a vártnál hosszabb időt vesz igénybe, mert a skálázás befejeződése után újra be lesz töltve a fájl.
+
+A skálázással kapcsolatos további információkért lásd: [Mi történik, ha egy másik méretre skálázást végezek, és a rendszer visszaállítja a biztonsági mentést, amely a skálázási művelet előtt történt?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+
+### <a name="how-is-my-aof-data-organized-in-storage"></a>Hogyan történik a AOF-adataim tárolása?
+
+A AOF-fájlokban tárolt adatmennyiségek csomóponton több blobra vannak osztva, így növelhetik az adattárolóba való mentés teljesítményét. Az alábbi táblázat azt mutatja, hogy az egyes díjszabási szintek hány oldal blobot használnak:
 
 | Premium szintű csomag | Blobok |
 |--------------|-------|
-| P1           | 4 partíciónkénti    |
-| P2           | 8 partíciónkénti    |
-| P3           | 16 partíciónkénti   |
-| P4           | 20 partíciónkénti   |
+| P1           | 4/szilánk    |
+| P2           | 8/szilánk    |
+| P3           | 16/szilánk   |
+| P4           | 20/szegmens   |
 
-Ha fürtözés engedélyezve van, minden egyes szegmens a gyorsítótárban rendelkezik a saját lapblobok, az előző táblázatban leírtak szerint. Három szegmensek P2 szintű gyorsítótár például elosztja az AOF fájl 24 lapblobok (a 3 szegmensek partíciónkénti 8 blobokat).
+Ha a fürtözés engedélyezve van, a gyorsítótárban lévő összes szegmens saját blob-készlettel rendelkezik, ahogy azt az előző táblázatban is említettük. Egy három szegmensből álló P2-gyorsítótár például elosztja a AOF-fájlt a 24 oldal Blobok között (8 blob/szilánk, 3 szegmenssel).
 
-Egy újraírási után két készletnyi AOF-fájlokat tároló szerepel. Újraírások a háttérben történik, és első beállítását, hozzáfűzése, amíg a gyorsítótár átírása során küldött halmazműveletek hozzáfűzése a második csoporton. A biztonsági mentés során hiba esetén újraírások ideiglenesen tárolja, de egy újraírási befejezése után azonnal törlődik.
+Az újraírást követően két AOF-fájl létezik a tárolóban. Az újraírások a háttérben történnek, és a rendszer hozzáfűzi a fájlok első készletéhez, míg a gyorsítótárba az újraírás során elküldett műveleteket a második készlethez adja meg. Hiba esetén a rendszer átmenetileg tárolja a biztonsági mentést, de az újraírás befejeződése után azonnal törölve lesz.
 
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan használja a további prémiumszintű gyorsítótár funkcióival.
+További információ a prémium szintű gyorsítótár-funkciók használatáról.
 
-* [Bevezetés az Azure Cache redis Cache prémium szint](cache-premium-tier-intro.md)
+* [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)
 
 <!-- IMAGES -->
 

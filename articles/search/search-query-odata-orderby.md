@@ -1,7 +1,7 @@
 ---
 title: OData rendelés – hivatkozás alapján
 titleSuffix: Azure Cognitive Search
-description: OData nyelvi referenciája az Azure Cognitive Search lekérdezésekben található Order-by szintaxissal.
+description: Szintaxissal és nyelvi dokumentációval az Azure Cognitive Search-lekérdezésekben használt Order by használatával.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793304"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113150"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
 
@@ -78,7 +78,7 @@ A szállodákat csökkenő sorrendbe rendezheti kereséssel. pontszám és ért�
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

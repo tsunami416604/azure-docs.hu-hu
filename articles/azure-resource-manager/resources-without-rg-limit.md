@@ -1,17 +1,14 @@
 ---
-title: Azure-erőforrások 800-os számú korlát nélkül
+title: 800-os korláttal nem rendelkező erőforrások száma
 description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.author: tomfitz
-ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ad0a3d83738a5bd51d9c2833a71d09038bd97116
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795654"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150357"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -20,14 +17,14 @@ Alapértelmezés szerint az egyes erőforráscsoportok esetében akár 800 péld
 Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgálattal, hogy el lehessen távolítani az 800-es példány korlátját. Ezek az erőforrástípusok ebben a cikkben vannak feltüntetve.
 
 
-## <a name="microsoftautomation"></a>Microsoft. Automation
+## <a name="microsoftautomation"></a>Microsoft.Automation
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft. AzureStack
+## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 * regisztrációk
-* regisztrációk/customerSubscriptions
+* registrations/customerSubscriptions
 * regisztrációk/termékek
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
@@ -39,42 +36,42 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * lemezek
 * images
 * pillanatképek
-* VirtualMachines
+* virtualMachines
 
-## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 * containerGroups
 
-## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * kibocsátásiegység-forgalmi jegyzékek/buildTasks
 * kibocsátásiegység-forgalmi jegyzékek/buildTasks/listSourceRepositoryProperties
 * kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések
 * kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések/listBuildArguments
-* kibocsátásiegység-forgalmi jegyzékek/eventGridFilters
+* registries/eventGridFilters
 * kibocsátásiegység-forgalmi jegyzékek/replikálások
 * kibocsátásiegység-forgalmi jegyzékek/feladatok
 * kibocsátásiegység-forgalmi jegyzékek/webhookok
 
-## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 * Kiszolgálók
 
-## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 * Kiszolgálók
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
 * Kiszolgálók
 * serversv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
-## <a name="microsofteventhub"></a>Microsoft. EventHub
+## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 * fürtök
 * névterek
@@ -83,7 +80,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * configurationProfileAssignments
 * guestConfigurationAssignments
@@ -91,12 +88,12 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftlogic"></a>Microsoft. Logic
+## <a name="microsoftlogic"></a>Microsoft.Logic
 
 * integrationAccounts
 * munkafolyamatok
 
-## <a name="microsoftnetapp"></a>Microsoft. NetApp
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 * netAppAccounts
 * netAppAccounts/capacityPools
@@ -122,7 +119,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * dnszones/SRV
 * dnszones/TXT
 * dnszones/mind
-* dnszones/rekordhalmazok
+* dnszones/recordsets
 * networkIntentPolicies
 * networkInterfaces
 * privateDnsZones
@@ -143,19 +140,19 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 * workspaceCollections – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
 
-## <a name="microsoftrelay"></a>Microsoft. Relay
+## <a name="microsoftrelay"></a>Microsoft.Relay
 
 * névterek
 
-## <a name="microsoftscheduler"></a>Microsoft. Scheduler
+## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * feladatgyűjtemények
 
@@ -163,7 +160,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * névterek
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 * alkalmazások
 * containerGroups
@@ -176,9 +173,9 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * storageAccounts
 
-## <a name="microsoftweb"></a>Microsoft. Web
+## <a name="microsoftweb"></a>Microsoft.Web
 
-* apiManagementAccounts/API-k
+* apiManagementAccounts/apis
 * helyek
 
 ## <a name="next-steps"></a>További lépések

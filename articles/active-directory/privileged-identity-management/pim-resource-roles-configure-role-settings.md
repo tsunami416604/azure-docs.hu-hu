@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022940"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144309"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -48,11 +48,19 @@ Az alábbi lépéseket követve megnyithatja egy Azure-erőforrás szerepkör be
 
     ![Szerepkör-beállítás részletei lap, amely több hozzárendelési és aktiválási beállítást listáz](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. A szerepkör-beállítások ablaktábla megnyitásához válassza a **Szerkesztés** lehetőséget.
+1. A **szerepkör-beállítások** ablaktábla megnyitásához válassza a **Szerkesztés** lehetőséget. Az első lapon frissítheti Privileged Identity Management szerepkör-aktiválásának konfigurációját.
 
-    ![Szerepkör-beállítások szerkesztése lap a hozzárendelési és aktiválási beállítások frissítésére szolgáló beállításokkal](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Szerepkör-beállítások szerkesztése lap az aktiválás lapon megnyitva](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    Az egyes szerepkörökhöz tartozó szerepkör-beállítás ablaktáblán több beállítás is konfigurálható.
+1. Válassza ki a **hozzárendelés** lapot vagy a **következő: hozzárendelés** gombot a lap alján a hozzárendelési beállítás lap megnyitásához. Ezek a beállítások vezérlik a szerepkör-hozzárendeléseket az Privileged Identity Management felületen belül.
+
+    ![Szerepkör-hozzárendelés lap a szerepkör-beállítások lapon](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. Az oldal alján található **értesítés** lapon vagy a **következő: aktiválás** gombra kattintva megtekintheti a szerepkör értesítési beállítások lapját. Ezek a beállítások vezérlik az ehhez a szerepkörhöz kapcsolódó e-mail-értesítéseket.
+
+    ![Szerepkör-értesítések lap a szerepkör-beállítások lapon](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. A szerepkör-beállítások frissítéséhez kattintson a **frissítés** gombra.
 
 ## <a name="assignment-duration"></a>Hozzárendelés időtartama
 
@@ -117,7 +125,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
 1. Miután megadta az összes szerepkör-beállítást, válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)
 - [Azure-beli erőforrás-szerepkörökre vonatkozó biztonsági riasztások konfigurálása Privileged Identity Management](pim-resource-roles-configure-alerts.md)

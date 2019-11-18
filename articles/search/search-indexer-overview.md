@@ -1,5 +1,5 @@
 ---
-title: Indexelő adatforrások bejárásához az indexelés során
+title: Indexelő az adatbejárás során az importálás során
 titleSuffix: Azure Cognitive Search
 description: Az Azure SQL Database, Azure Cosmos DB vagy Azure Storage bejárásával kinyerheti a kereshető adatokat, és feltöltheti az Azure Cognitive Search indexét.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5e5d43909dc0e65c12c053515ba534ce5cfa121f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1fd667e14501355f2567712d13b10dd7fbc7ee19
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793665"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112692"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelő az Azure Cognitive Search
 
@@ -123,7 +123,7 @@ A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő)
 
 A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtást tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (így a legutóbbi végrehajtás a válaszban elsőként jelenik meg).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

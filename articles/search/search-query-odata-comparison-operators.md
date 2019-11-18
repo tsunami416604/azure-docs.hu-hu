@@ -1,7 +1,7 @@
 ---
 title: OData-összehasonlító operátor referenciája
 titleSuffix: Azure Cognitive Search
-description: OData összehasonlító operátorok, EQ, ne, gt, lt, GE és le, az Azure Cognitive Search lekérdezésekben.
+description: Szintaxis és dokumentáció a OData összehasonlító operátorok (EQ, ne, gt, lt, GE és le) használatáról az Azure Cognitive Search lekérdezésekben.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793387"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113225"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData összehasonlító operátorok az Azure-ban Cognitive Search-`eq`, `ne`, `gt`, `lt`, `ge`és `le`
 
@@ -39,8 +39,8 @@ Tartomány operátorai:
 
 - `gt`: annak tesztelése, hogy egy mező nagyobb-e, **mint** egy konstans érték
 - `lt`: annak tesztelése, hogy egy mező kisebb-e, **mint** egy konstans érték
-- `ge`: annak tesztelése, hogy egy mező **nagyobb-e vagy egyenlő** -e állandó értékkel
-- `le`: annak tesztelése, hogy egy mező értéke **kisebb vagy egyenlő** -e állandó értékkel
+- `ge`: annak tesztelése, hogy egy mező **nagyobb-e vagy egyenlő-** e egy konstans értékkel
+- `le`: annak tesztelése, hogy egy mező értéke **kisebb vagy egyenlő-** e egy konstans értékkel
 
 A tartomány-operátorokat a [logikai operátorokkal](search-query-odata-logical-operators.md) együtt használva ellenőrizheti, hogy egy adott mező bizonyos tartományon belül van-e. Tekintse meg a jelen cikk későbbi részében található [példákat](#examples) .
 
@@ -154,7 +154,7 @@ A dokumentumok egyeztetése olyan hoteleknél, amelyekben legalább egy szoba "D
 
     Rooms/any(room: room/Type eq 'Deluxe Room')
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

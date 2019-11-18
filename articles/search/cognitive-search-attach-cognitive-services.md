@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services-erőforrás csatolása egy készségkészlet
+title: Cognitive Services csatolása egy készségkészlet
 titleSuffix: Azure Cognitive Search
 description: Útmutató Cognitive Services összes-az-egyhez előfizetéshez az Azure Cognitive Search AI-bővítési folyamatához.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 11ca5f71cb0d08a4bebf72407035a9557c794f9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788033"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113927"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Cognitive Services-erőforrás csatlakoztatása egy készségkészlet az Azure-ban Cognitive Search 
 
-Az AI-algoritmusok a tartalom átalakításához használt [dúsítási folyamatokat](cognitive-search-concept-intro.md) használják az Azure Cognitive Searchban. Ezek az algoritmusok az Azure Cognitive Services-erőforrásokon alapulnak, [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) többek között a képelemzéshez és az optikai karakterfelismeréshez (OCR) és [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismeréséhez, a fő kifejezés kinyeréséhez és egyéb dúsításokhoz. . Ahogy az Azure Cognitive Search a dokumentumok dúsításának céljára szolgál, az algoritmusokat egy *készségkészlet*helyezi *el,* és *egy indexelő az indexelés során* hivatkozik rá.
+Az AI-algoritmusok a tartalom átalakításához használt [dúsítási folyamatokat](cognitive-search-concept-intro.md) használják az Azure Cognitive Searchban. Ezek az algoritmusok az Azure Cognitive Services-erőforrásokon alapulnak, beleértve a képelemzési és optikai karakterfelismerési (OCR), valamint a [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismeréséhez, a fő kifejezés kinyeréséhez és más dúsításhoz szükséges [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) . Ahogy az Azure Cognitive Search a dokumentumok dúsításának céljára szolgál, az algoritmusokat egy *készségkészlet*helyezi *el,* és *egy indexelő az indexelés során* hivatkozik rá.
 
 A korlátozott számú dokumentumot ingyenesen bővítheti. Az is előfordulhat, hogy számlázható Cognitive Services erőforrást is csatolhat egy *készségkészlet* nagyobb és gyakoribb számítási feladatokhoz. Ebből a cikkből megtudhatja, hogyan csatolhat számlázható Cognitive Services-erőforrásokat a dokumentumok az Azure Cognitive Search [indexelése](search-what-is-an-index.md)során történő gazdagítása érdekében.
 
@@ -99,7 +99,7 @@ Ha rendelkezik meglévő készségkészlet, csatolhatja azt egy új vagy egy má
 
 ## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services programozott csatolása
 
-Ha programozott módon határozza meg a készségkészlet, vegyen fel egy `cognitiveServices` szakaszt a készségkészlet. Ebben a szakaszban adja meg a készségkészlet társítandó Cognitive Services erőforrás kulcsát. Ne feledje, hogy az erőforrásnak ugyanabban a régióban kell lennie, mint az Azure Cognitive Search erőforrásnak. Adja meg a `@odata.type` is, és állítsa be `#Microsoft.Azure.Search.CognitiveServicesByKey`re.
+Ha programozott módon határozza meg a készségkészlet, vegyen fel egy `cognitiveServices` szakaszt a készségkészlet. Ebben a szakaszban adja meg a készségkészlet társítandó Cognitive Services erőforrás kulcsát. Ne feledje, hogy az erőforrásnak ugyanabban a régióban kell lennie, mint az Azure Cognitive Search erőforrásnak. Adja meg a `@odata.type`is, és állítsa be `#Microsoft.Azure.Search.CognitiveServicesByKey`re.
 
 A következő példa ezt a mintát mutatja be. Figyelje meg a definíció végén található `cognitiveServices` szakaszt.
 
@@ -158,7 +158,7 @@ A cikkben szereplő díjak feltételezettek. A becslési folyamat szemléltetés
 
 Mindezt együttesen a $57,00-es számú 1 000-es PDF-dokumentumot kell fizetnie a leírt készségkészlet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 + [Az Azure Cognitive Search díjszabási oldala](https://azure.microsoft.com/pricing/details/search/)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

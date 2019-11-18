@@ -1,5 +1,5 @@
 ---
-title: Inaktív titkosítás az ügyfél által felügyelt kulcsokkal Azure Key Vaultban (előzetes verzió)
+title: REST-alapú titkosítás az ügyfél által felügyelt kulcsokkal (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: A kiszolgálóoldali titkosítást az indexek és az Azure Cognitive Search szinonimák használatával kiegészítheti a Azure Key Vaultban létrehozott és felügyelt kulcsokkal. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721755"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112935"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Cognitive Search tartalmának titkosítása az ügyfél által felügyelt kulcsokkal Azure Key Vault
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Cognitive Search-ban található, az ügyfél által felügyelt kulcsokat használó tartalom titkosítása Azure Key Vault
 
 > [!IMPORTANT] 
 > A REST-alapú titkosítás támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) és a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) biztosítja ezt a funkciót. Jelenleg nincs portál-támogatás.

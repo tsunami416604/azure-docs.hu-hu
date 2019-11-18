@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240301"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129849"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -48,17 +48,17 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 
 | **Szükséges csomag** | **Leírás** | **Minimális verzió**|
 |--------------------- | --------------------- | -------------------|
-|Glibc |GNU C könyvtár| 2.5-12 |
+|glibc |GNU C könyvtár| 2.5-12 |
 |Openssl| OpenSSL-kódtárak | 1,0 (a TLS 1,1 és a TLS 1,2 támogatott|
 |Curl | cURL webes ügyfél | 7.15.5|
 |Python – ctypes | A Python 2. x megadása kötelező |
 |PAM | Csatlakoztatható hitelesítési modulok|
 | **Választható csomag** | **Leírás** | **Minimális verzió**|
-| PowerShell Core | A PowerShell-runbookok futtatásához a PowerShellt telepíteni kell, lásd: [a PowerShell Core telepítése Linuxon](/powershell/scripting/setup/installing-powershell-core-on-linux) , hogy megtudja, hogyan telepítheti.  | 6.0.0 |
+| PowerShell Core | A PowerShell-runbookok futtatásához a PowerShellt telepíteni kell, lásd: [a PowerShell Core telepítése Linuxon](/powershell/scripting/install/installing-powershell-core-on-linux) , hogy megtudja, hogyan telepítheti.  | 6.0.0 |
 
 ### <a name="installation"></a>Telepítés
 
-A folytatás előtt jegyezze fel az Automation-fiókhoz kapcsolódó Log Analytics munkaterületet. Jegyezze fel az Automation-fiók elsődleges kulcsát is. A Azure Portal az Automation-fiók kiválasztásával, a munkaterület-azonosító munkaterületének kiválasztásával, valamint az elsődleges kulcs **kulcsainak** kiválasztásával is megtalálhatja. További információ a hibrid Runbook-feldolgozóhoz szükséges portokról és címekről: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
+A folytatás előtt jegyezze fel az Automation-fiókhoz kapcsolódó Log Analytics munkaterületet. Jegyezze fel az Automation-fiók elsődleges kulcsát is. A Azure Portal az Automation-fiók kiválasztásával, a munkaterület-azonosító **munkaterületének** kiválasztásával, valamint az elsődleges kulcs **kulcsainak** kiválasztásával is megtalálhatja. További információ a hibrid Runbook-feldolgozóhoz szükséges portokról és címekről: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
 
 1. Engedélyezze a **Automation Hybrid Worker** megoldást az Azure-ban az alábbi módszerek egyikének használatával:
 
@@ -69,7 +69,7 @@ A folytatás előtt jegyezze fel az Automation-fiókhoz kapcsolódó Log Analyti
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. A következő parancs futtatásával telepítse a Linux rendszerhez készült Log Analytics-ügynököt. Cserélje \<le\> a \<munkaterület azonosítója\> és a WorkspaceKey értéket a munkaterület megfelelő értékeire.
+1. A következő parancs futtatásával telepítse a Linux rendszerhez készült Log Analytics-ügynököt. Cserélje le \<munkaterület azonosítója\> és \<WorkspaceKey\> a munkaterület megfelelő értékeire.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -86,7 +86,7 @@ A folytatás előtt jegyezze fel az Automation-fiókhoz kapcsolódó Log Analyti
 1. A parancs befejezése után a Azure Portal **hibrid feldolgozói csoportok** lapja az új csoportot és a tagok számát jeleníti meg. Ha ez egy meglévő csoport, a tagok száma nő. Válassza ki a csoportot a **hibrid munkavégző csoportok** lapon a listából, és válassza a **hibrid feldolgozók** csempét. A **hibrid dolgozók** oldalon láthatja a csoport egyes tagjait.
 
 > [!NOTE]
-> Ha a Linux rendszerhez készült Azure monitor virtuálisgép-bővítményt használja egy Azure-beli virtuális géphez `autoUpgradeMinorVersion` , azt javasoljuk, hogy a FALSE értéket adja meg, mert a verziók automatikus frissítése problémát okozhat a hibrid Runbook-feldolgozók számára. A bővítmény manuális frissítéséről az [Azure CLI üzembe helyezésével ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)foglalkozó témakörben olvashat bővebben.
+> Ha a Linux rendszerhez készült Azure Monitor virtuálisgép-bővítményt használja egy Azure-beli virtuális GÉPHEZ, javasoljuk, hogy a `autoUpgradeMinorVersion` hamis értékre állítása esetén a verzió automatikus verziófrissítése problémát okozhat a hibrid Runbook-feldolgozók számára. A bővítmény manuális frissítéséről az [Azure CLI üzembe helyezésével ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)foglalkozó témakörben olvashat bővebben.
 
 ## <a name="turning-off-signature-validation"></a>Aláírás-ellenőrzés kikapcsolása
 
@@ -106,7 +106,7 @@ A következő runbook-típusok egy linuxos hibrid feldolgozón működnek:
 * PowerShell
 
   > [!NOTE]
-  > A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/setup/installing-powershell-core-on-linux) .
+  > A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
 A következő runbook-típusok nem működnek linuxos hibrid feldolgozón:
 

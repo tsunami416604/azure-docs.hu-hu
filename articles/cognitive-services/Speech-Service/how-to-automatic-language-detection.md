@@ -1,5 +1,5 @@
 ---
-title: 'Útmutató: az automatikus nyelvfelismerés használata a beszédfelismerési szolgáltatáshoz'
+title: A beszédfelismerés automatikus nyelvfelismerés használata szövegre
 titleSuffix: Azure Cognitive Services
 description: A Speech SDK támogatja a beszédfelismerés automatikus nyelvi észlelését a szöveghez. A szolgáltatás használatakor a rendszer összehasonlítja a megadott hangot a nyelvek egy adott listájával, és a legvalószínűbb egyezést határozza meg. A visszaadott érték Ezután kiválaszthatja a szövegre való beszédfelismeréshez használt nyelvi modellt.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506966"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110175"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Beszédfelismerés automatikus nyelvfelismerés a szöveghez
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan használható a `AutoDetectSourceLanguageC
 
 Az automatikus nyelvfelismerés jelenleg csak két nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást a `AudoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre kell hoznia egy `AutoDetectSourceLanguageConfig`, majd felhasználhatja `SpeechRecognizer`létrehozásához.
 
->[!TIP]
+> [!TIP]
 > Megadhat egy egyéni modellt is, amelyet a beszéd szövegre való elvégzéséhez használhat. További információ: [Egyéni modell használata automatikus nyelvfelismerés esetén](#use-a-custom-model-for-automatic-language-detection).
 
 Az alábbi kódrészletek azt szemléltetik, hogyan használható az automatikus nyelvfelismerés az alkalmazásokban:
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Speech SDK dokumentációja](speech-sdk.md)
+- [A Speech SDK dokumentációja](speech-sdk.md)

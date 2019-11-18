@@ -2,23 +2,17 @@
 title: Webalkalmazás kiépítése az Azure cache Redis
 description: Azure Resource Manager sablonnal üzembe helyezheti a webalkalmazást az Azure cache használatával a Redis.
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: b28ed58159545bca10ec89375b82b9c97ae38630
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098241"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122640"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Webalkalmazás és Azure cache létrehozása a Redis sablon használatával
 
@@ -28,7 +22,7 @@ Ebben a témakörben megtudhatja, hogyan hozhat létre olyan Azure Resource Mana
 
 További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
 
-A teljes sablon: webalkalmazás [Az Azure cache for Redis sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+A teljes sablon: [webalkalmazás az Azure cache for Redis sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
 ## <a name="what-you-will-deploy"></a>Üzembe helyezés
 Ebben a sablonban a következőket fogja telepíteni:

@@ -1,7 +1,7 @@
 ---
-title: A Lucene lekérdezési szintaxisa
+title: Lucene lekérdezési szintaxis
 titleSuffix: Azure Cognitive Search
-description: A teljes Lucene szintaxisának leírása az Azure Cognitive Search használatával.
+description: A teljes Lucene lekérdezési szintaxisra vonatkozó hivatkozás, amelyet az Azure Cognitive Search használhat helyettesítő karakterek, fuzzy keresés, RegEx és egyéb speciális lekérdezési szerkezetek esetében.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1b94a1bbab810345ab222be9e7aba2fef0f52549
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0bb8474b30c05e21a62ded1fa2cb8a6df8e4e321
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786284"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112186"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene lekérdezési szintaxis az Azure Cognitive Search
 
@@ -169,7 +169,7 @@ A következő példa segít illusztrálni a különbségeket. Tegyük fel, hogy 
 >  Nem használhat * vagy? a szimbólum a keresés első karaktere.  
 >  A helyettesítő karakteres keresési lekérdezések nem végeznek szöveges elemzést. A lekérdezési időpontokban a helyettesítő karakteres lekérdezési kifejezések összevetése a keresési indexben és a kibontott kifejezésekkel történik.
 
-## <a name="see-also"></a>Lásd még:  
+## <a name="see-also"></a>Lásd még  
 
 + [Dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [A szűrők és a rendezés OData kifejezésének szintaxisa](query-odata-filter-orderby-syntax.md)   

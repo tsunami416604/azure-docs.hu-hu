@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: e6c9bd18a6ea5975269b96653e47eaf1da462676
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/13/2019
+ms.openlocfilehash: a5632f4b7ca264f6fdeb88dc7f7cf843c73ddf54
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935452"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123397"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -22,14 +22,14 @@ Ismerje meg a Microsoft Azure HDInsight [Apache Hadoop](https://hadoop.apache.or
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Apache Hadoop különböző HDInsight-verziókkal elérhető összetevők
 
-Az Azure HDInsight több Hadoop-fürtöt is támogat, amelyek bármikor üzembe helyezhetők. Mindegyik verzió a HDP-terjesztés egy adott verzióját hozza létre, és az adott disztribúcióban található összetevők készletét. 2017. április 4-én az Azure HDInsight által használt alapértelmezett fürt verziója 3,6, és a HDP 2,6-alapú.
+Az Azure HDInsight több Hadoop-fürtöt is támogat, amelyek bármikor üzembe helyezhetők. 2017. április 4-én az Azure HDInsight által használt alapértelmezett fürt verziója 3,6.
 
 A HDInsight-fürtökhöz társított verziók az alábbi táblázatban láthatók: 
 
 > [!NOTE]  
 > Előfordulhat, hogy a HDInsight szolgáltatás alapértelmezett verziója értesítés nélkül változhat. Ha a verzió-függőséggel rendelkezik, adja meg a HDInsight verzióját, amikor létrehozza a fürtöket a .NET SDK-val a Azure PowerShell és a klasszikus Azure CLI használatával.
 
-| Component (Összetevő) | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett) | HDInsight 3,5 | HDInsight 3,4 | HDInsight 3,3 | HDInsight 3,2 |
+| Összetevő | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett) | HDInsight 3,5 | HDInsight 3,4 | HDInsight 3,3 | HDInsight 3,2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
 | Apache Hadoop és fonal | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache TEZ | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
@@ -42,10 +42,10 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Oozie | 4.3.1 | 4.2.0 | 4.2.0 | 4.2.0 | 4.2.0 | 4.1.0 |
 | Apache Zookeeper | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 |
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
-| Apache Mahout | - | 0.9.0 + | 0.9.0 + | 0.9.0 + | 0.9.0 + | 0.9.0 |
+| Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
 | Apache Spark | 2.3.1, 2,4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2,0 | 1.6.0 | 1.5.2 | 1.3.1 (csak Windows) |
-| Apache Livy | 0,5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0,2 | - |
+| Apache Livy | 0,5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0.2 | - |
 | Apache Kafka | 1.1.1, 2,1 | 1,1, 1,0 * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 | - | - |
 | Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
 | Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
@@ -64,16 +64,16 @@ A HDInsight legújabb verzióiban további kibocsátási megjegyzéseket a [HDIn
 
 ## <a name="supported-hdinsight-versions"></a>Támogatott HDInsight-verziók
 
-A következő táblázat a HDInsight verzióját sorolja fel. Az egyes HDInsight tartozó HDP-verziók a termék kiadási dátumaival együtt jelennek meg. A támogatási lejárati és a nyugdíjazási dátumok is megadhatók, ha ismertek.
+A következő táblázat a HDInsight verzióját sorolja fel. A támogatási lejárati és a nyugdíjazási dátumok is megadhatók, ha ismertek.
 
 ### <a name="available-versions"></a>Elérhető verziók
 
 A következő táblázat felsorolja a Azure Portalban elérhető HDInsight-verziókat, valamint az egyéb központi telepítési módszereket, például a PowerShellt és a .NET SDK-t.
 
-| HDInsight verziója | HDP verziója | VM OPERÁCIÓS RENDSZER | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal | 
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3,0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
-| HDInsight 3,6 |HDP 2,6 |Ubuntu 16.0.4 LTS |2017. április 4. | Június 30., 2020 |December 31., 2020 |Igen |Igen |
+| HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal | 
+| --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4. | Június 30., 2020 |December 31., 2020 |Igen |Igen |
 
 
 > [!NOTE]  
@@ -84,15 +84,15 @@ A következő táblázat felsorolja a Azure Portalban elérhető HDInsight-verzi
 
 A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem** érhetők el a Azure Portalban.
 
-| HDInsight verziója | HDP verziója | VM OPERÁCIÓS RENDSZER | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal | 
+| HDInsight verziója | HDP verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |2018. június 28. |Igen |Nem |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |Március 29., 2016 |December 29., 2016 |2018. január 9. |Igen |Nem |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Igen |Nem |
+| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |December 29., 2016 |2018. január 9. |Igen |Nem |
+| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
+| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Igen |Nem |
 | HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS vagy Windows Server 2012 R2 |Február 18., 2015 |2016. március 1. |2017. április 1. |Igen |Nem |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |Június 24., 2014 |2015. május 18. |Június 30., 2016 |Igen |Nem |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |Február 11., 2014 |Szeptember 17., 2014 |Június 30., 2015 |Igen |Nem |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |Június 24., 2014 |2015. május 18. |2016. június 30. |Igen |Nem |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |Február 11., 2014 |Szeptember 17., 2014 |Június 30., 2015 |Igen |Nem |
 | HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |Október 28., 2013 |2014. május 12. |2015. május 31. |Igen |Nem |
 | HDInsight 1,6 |HDP 1,1 | |Október 28., 2013 |Április 26., 2014 |2015. május 31. |Nem |Nem |
 
@@ -107,7 +107,7 @@ A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-
 
     A múltban csak helyi rendszergazdai felhasználóval és helyi SSH-felhasználóval hozhat létre HDInsight-fürtöket. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package lehetővé teszi a szerepköralapú hozzáférés-vezérlést, ha a HDInsight-fürtöket a saját Active Directoryba integrálja, beleértve a helyszíni Active Directory, Azure Active Directory Domain Services vagy Active Directoryt a IaaS virtuális gép. A fürt tartományi rendszergazdája engedélyezheti a felhasználóknak, hogy a saját vállalati (tartományi) felhasználónevét és jelszavát használják a fürt eléréséhez. 
 
-    További információ eléréséhez lásd:
+    További információkért lásd:
 
     - [Bevezetés a Apache Hadoop biztonságba a tartományhoz csatlakoztatott HDInsight-fürtökkel](./domain-joined/hdinsight-security-overview.md)
     - [Azure-tartományhoz csatlakoztatott Apache Hadoop-fürtök tervezése a HDInsight-ben](./domain-joined/apache-domain-joined-architecture.md)
@@ -119,7 +119,7 @@ A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-
   - Integráció az Apache Ranger-nal a kaptár, a Spark SQL és a fonalas várólisták engedélyezéséhez.
   - Megadhatja a fájlok és mappák hozzáférés-vezérlését.
 
-    További információ eléréséhez lásd:
+    További információkért lásd:
 
   - [Apache Hive házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-run-hive.md)
 
@@ -167,7 +167,7 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
   * [Apache Hive kibocsátási megjegyzések](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) az Apache webhelyén érhetők el.
 * A HDInsight-fürt 3,2-es verziója olyan Hadoop-eloszlást használ, amely a 2,2-es [Hortonworks-Adatplatformon][hdp-2-2]alapul.
 
-  * Az Apache-összetevők kibocsátási megjegyzései a következőképpen érhetők el: [kaptár 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [fonal 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [TEZ 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)és [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Az Apache-összetevők kibocsátási megjegyzései a következőképpen érhetők el [: kaptár 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [fonal 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [TEZ 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)és [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * A HDInsight-fürt 3,1-es verziója a [Hortonworks adatplatform-2.1.7][hdp-2-1-7]alapuló Hadoop-eloszlást használ. A HDInsight 3,1-es, 2014-ig létrehozott fürtök a [Hortonworks adatplatform 2.1.1][hdp-2-1-1]-es változata alapján lettek létrehozva.
 * A HDInsight-fürt 3,0-es verziója olyan Hadoop-eloszlást használ, amely a 2,0-es [Hortonworks-Adatplatformon][hdp-2-0-8]alapul.
 * A HDInsight-fürt 2,1-es verziója olyan Hadoop-eloszlást használ, amely a 1,3-es [Hortonworks-Adatplatformon][hdp-1-3-0]alapul.
@@ -177,7 +177,7 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
 
 További információ arról, hogy mely virtuálisgép-SKU-ket szeretné kijelölni a fürt számára: az [Azure HDInsight-fürt konfigurációjának részletei](hdinsight-supported-node-configuration.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Munkahelyi Apache Hadoop HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL](hdinsight-hadoop-windows-tools.md)
 

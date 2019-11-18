@@ -1,25 +1,17 @@
 ---
-title: Az Azure cache hibaelhárítása Redis-kiszolgálókkal kapcsolatos problémák esetén | Microsoft Docs
+title: Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén
 description: Ismerje meg, Hogyan oldhatók fel a Redis Azure cache szolgáltatással kapcsolatos gyakori kiszolgálóoldali problémák
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 4310c31f2a59ae30b7317d043dc6d92b93fee050
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 22cb4beb3411c617882972e1b91c5f538019fae4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819615"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122575"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén
 
@@ -41,7 +33,7 @@ A kiszolgálóoldali memória-terhelés a kérelmek feldolgozását késleltető
 - A gyorsítótár megtelik a maximális kapacitás közelében lévő adattal.
 - A Redis nagy memória töredezettségét látja. Ezt a töredezettséget leggyakrabban a nagyméretű objektumok tárolása okozza, mivel a Redis kis objektumokra van optimalizálva.
 
-A Redis a "used_memory" és a "used_memory_rss" nevű [info](https://redis.io/commands/info) paranccsal tesz elérhetővé két statisztikát. Ezek a [metrikák](cache-how-to-monitor.md#view-metrics-with-azure-monitor) a portál használatával tekinthetők meg.
+A Redis két statisztikát tesz elérhetővé az [info](https://redis.io/commands/info) paranccsal, amely segíthet a probléma azonosításában: "used_memory" és "used_memory_rss". Ezek a [metrikák](cache-how-to-monitor.md#view-metrics-with-azure-monitor) a portál használatával tekinthetők meg.
 
 Több lehetséges módosítást is végezhet a memóriahasználat kifogástalan megőrzése érdekében:
 
@@ -81,7 +73,7 @@ Az olyan helyzetek enyhítése, amikor a hálózati sávszélesség-használat a
 - [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) olyan mérőszámokon, mint például a gyorsítótár olvasási vagy gyorsítótár-írási lehetősége, hogy korán értesüljön a lehetséges hatásokról.
 - Nagyobb méretű gyorsítótár-méretre [Méretezés](cache-how-to-scale.md) nagyobb hálózati sávszélesség-kapacitással.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - [Az Azure cache hibaelhárítása Redis ügyféloldali problémák esetén](cache-troubleshoot-client.md)
 - [Milyen Azure cache-t használ a Redis-ajánlat és-méret használatához?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)

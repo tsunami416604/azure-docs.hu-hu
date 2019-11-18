@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-val (előzetes verzió)'
+title: 'Rövid útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-Speech Service használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben a Speech SDK ügyfélalkalmazás egyéni parancsokkal fog létrejönni.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507494"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111150"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Gyors útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-val (előzetes verzió)
 
@@ -46,7 +46,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan teheti meg az ügyfélalkalma
 
 1. Nyissa meg a [korábban létrehozott egyéni parancsok alkalmazást](./quickstart-custom-speech-commands-create-new.md) , és válassza a **Közzététel** lehetőséget.
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![alkalmazás közzététele](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Az alkalmazás azonosítójának másolása a közzétételi értesítésből későbbi használatra
@@ -320,7 +320,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban.
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -415,7 +415,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 1. Válassza a **Talk**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
+
 > [!div class="nextstepaction"]
 > [Útmutató: az ügyfél parancsainak teljesítése a SPEECH SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [útmutató: az egyéni parancs paramétereinek érvényesítése (előzetes verzió)](./how-to-custom-speech-commands-validations.md)
-

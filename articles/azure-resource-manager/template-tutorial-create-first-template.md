@@ -1,18 +1,16 @@
 ---
-title: Oktatóanyag – & üzembe helyezése Azure Resource Manager-sablon létrehozása
+title: Oktatóanyag – & üzembe helyezési sablon létrehozása
 description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 961c68ca6d5e0bf6dda95a26a684c3fff60b1d1b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074375"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148011"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése
 

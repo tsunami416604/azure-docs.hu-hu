@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: keresési index létrehozása a C# .net SDK használatával'
+title: 'Gyors útmutató: keresési index létrehozása a C# .NET használatával'
 titleSuffix: Azure Cognitive Search
 description: Ismerteti, hogyan hozhat létre indexet, tölthet be és hogyan futtathat lekérdezéseket az Azure Cognitive Search .NET SDK használatával C# .
 manager: nitinme
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792825"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112023"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a C# .net SDK használatával
 > [!div class="op_single_selector"]
 > * [C#](search-get-started-dotnet.md)
-> * [Portal](search-get-started-portal.md)
+> * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
@@ -48,15 +48,15 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **beállítások** > **kulcsok**területen szerezze be a szolgáltatásra vonatkozó teljes körű jogosultságokat. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
 ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
-Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
 
-## <a name="set-up-your-environment"></a>A környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-on futtatható Console app-projektet.
 
@@ -68,7 +68,7 @@ Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzi
 
 1. Az **eszközök** > **NuGet csomagkezelő**területén válassza a **megoldás NuGet-csomagok kezelése..** . lehetőséget. 
 
-1. Kattintson a **Tallózás** gombra.
+1. Kattintson a **Browse** (Tallózás) gombra.
 
 1. Keresse meg `Microsoft.Azure.Search`, és válassza a 9.0.1 vagy újabb verziót.
 
@@ -192,7 +192,7 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
     }
     ```
 
-    A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. A `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. 
+    A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. A `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell a teljes szöveges keresésben. 
     
     > [!NOTE]
     > A .NET SDK-ban a mezőket explicit módon kell megadni [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)és [`IsFacetable`ként ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). Ez a viselkedés ellentétben áll azzal a REST APItel, amely implicit módon engedélyezi a kiosztást az adattípusok alapján (például az egyszerű karakterlánc mezők automatikusan kereshetők).
@@ -533,9 +533,9 @@ A [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/microsoft.azur
     }
     ```
 
-    A [kifejezéseket kétféleképpen lehet egyeztetni a lekérdezésekben](search-query-overview.md#types-of-queries): teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést keres az index `IsSearchable` mezőiben. A szűrő egy logikai kifejezés, amelyet egy index `IsFilterable` mezőin értékel ki. A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
+    A [kifejezéseket kétféleképpen lehet egyeztetni a lekérdezésekben](search-query-overview.md#types-of-queries): teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést keres az index `IsSearchable` mezőiben. A szűrő egy logikai kifejezés, amelyet egy index `IsFilterable` mezőin értékelnek ki. A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
 
-    A keresések és a szűrések egyaránt a `Documents.Search` módszer használatával vannak végrehajtva. Keresési lekérdezések a `searchText` paraméterben, szűrőkifejezések pedig a `SearchParameters` osztály `Filter` tulajdonságában adhatóak át. A keresés nélküli szűrés végrehajtásához a `searchText` paraméter számára a `"*"` kifejezést adja át. A szűrés nélküli keresés végrehajtásához ne állítsa be a `Filter` tulajdonságot, vagy egyáltalán ne adja át azt egy `SearchParameters`-példányban.
+    A keresések és a szűrések egyaránt a `Documents.Search` módszer használatával vannak végrehajtva. Keresési lekérdezések a `searchText` paraméterben, szűrőkifejezések pedig a `Filter` osztály `SearchParameters` tulajdonságában adhatóak át. A keresés nélküli szűrés végrehajtásához a `"*"` paraméter számára a `searchText` kifejezést adja át. A szűrés nélküli keresés végrehajtásához ne állítsa be a `Filter` tulajdonságot, vagy egyáltalán ne adja át azt egy `SearchParameters`-példányban.
 
 1. A Program.cs-ben a Main (fő) elemben a "3 – keresés" sorok megjegyzését írja vissza. 
 
@@ -556,7 +556,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben C# a rövid útmutatóban számos feladaton keresztül dolgozott egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Az olvashatóság és a megértés érdekében a kód leegyszerűsítése különböző fázisokban volt. Ha Ön az alapvető fogalmakkal is rendelkezik, javasoljuk, hogy a következő cikkből megtudhatja, milyen alternatív megközelítésekre és fogalmakra van szükség, amelyek elmélyítik az Ön ismereteit. 
 

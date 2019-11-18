@@ -1,5 +1,5 @@
 ---
-title: A szakértelmével használata
+title: Készségkészlet-fogalmak és-munkafolyamatok
 titleSuffix: Azure Cognitive Search
 description: A szakértelmével egy mesterséges intelligenciát létrehozó folyamat készítése az Azure Cognitive Searchban. Ismerje meg a készségkészlet-összeállítással kapcsolatos fontos fogalmakat és részleteket.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890164"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113644"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>A szakértelmével használata az Azure Cognitive Searchban
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Készségkészlet-fogalmak és-összeállítás az Azure Cognitive Search
 
 Ez a cikk azoknak a fejlesztőknek szól, akiknek alaposabban meg kell ismerniük, hogyan működik a dúsítási folyamat, és feltételezi, hogy az AI-bővítési folyamat fogalmi ismerete van. Ha új ez a fogalom, kezdje a következővel:
 + [AI-gazdagítás az Azure Cognitive Search](cognitive-search-concept-intro.md)
@@ -43,9 +43,9 @@ Ha egy dokumentum a dúsítási folyamatban van, akkor a rendszer a tartalom és
 
 |AdatSource\Parsing mód|Alapértelmezett|JSON, JSON-sorok & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|N/A |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N/A|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
  A képességek végrehajtásával új csomópontokat vesznek fel a dúsítási fában. Ezek az új csomópontok ezután az alárendelt képességekhez bemenetként, a Knowledge Store-ban való kivetítéssel, vagy az index mezőihez való leképezéssel használhatók. A dúsítások nem változtathatók meg, a csomópontok nem szerkeszthetők. Mivel a szakértelmével összetettebbek, így a dúsítási fában marad, de a dúsítási fában nem minden csomópontnak kell azt az indexbe vagy a tudásbázisba tenni. A dúsítások csak egy részhalmazát különítheti el az indexbe vagy a Knowledge Store-ba.
 

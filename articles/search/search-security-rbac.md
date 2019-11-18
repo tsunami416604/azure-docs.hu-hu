@@ -1,5 +1,5 @@
 ---
-title: Az Azure rendszergazdai hozzáférés RBAC szerepköreinek beállítása a portálon
+title: RBAC-szerepkörök beállítása az Azure rendszergazdai hozzáféréshez
 titleSuffix: Azure Cognitive Search
 description: Szerepköralapú felügyeleti vezérlés (RBAC) az Azure Cognitive Search Management felügyeleti feladatainak vezérlésére és delegálására szolgáló Azure Portal.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794327"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112555"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-szerepkörök beállítása az Azure Cognitive Searchhoz való rendszergazdai hozzáféréshez
 
@@ -35,7 +35,7 @@ Az Azure Cognitive Search esetében a szerepkörök a következő felügyeleti f
 
 A szerepkörök nem biztosítanak hozzáférési jogosultságot a szolgáltatási végpont számára. A keresési szolgáltatási műveleteket, például az indexelést, az indexelést és a keresési adatok lekérdezéseit az API-kulcsok vezérlik, nem pedig a szerepkörök. További információ: az [API-kulcsok kezelése](search-security-api-keys.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Kezelés a PowerShell használatával](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás az Azure Cognitive Search](search-performance-optimization.md)

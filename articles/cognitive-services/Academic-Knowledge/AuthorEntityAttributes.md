@@ -3,37 +3,48 @@ title: Szerzői entitás attribútumai – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
 description: A Academic Knowledge API szerző entitásával használható attribútumok megismerése.
 services: cognitive-services
-author: alch-msft
-manager: nitinme
+author: darrine
+manager: kuansanw
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
-ms.date: 03/23/2017
-ms.author: alch
+ms.date: 11/14/2019
+ms.author: darrine
 ROBOTS: NOINDEX
-ms.openlocfilehash: e63e9d3f8f17a2473caf3d31b83e318ddb132b43
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d5fc770c380397f605f8810fa41d3a8907f2358e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705093"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146492"
 ---
 # <a name="author-entity"></a>Szerzői entitás
-<sub>* A következő attribútumok a szerző entitásra jellemzőek. (Ty = "1")</sub>
 
-Name (Név)    |Leírás                            |Type       | Műveletek
-------- | ------------------------------------- | --------- | ----------------------------
-Id      |Entitásazonosító                              |Int64      |Egyenlő
-AuN     |Normalizált név szerzője                 |Sztring     |Egyenlő
-DAuN    |Szerző megjelenítendő neve                    |Sztring     |nincs
-Másolat      |Szerzői teljes idézetek száma            |Int32      |nincs  
-ECC     |Szerzői teljes becsült idézetek száma  |Int32      |nincs
-E       |Kiterjesztett metaadatok (lásd a "bővített meta attribútumok" táblázatot)  |Karakterlánc     |nincs  
+> [!NOTE]
+> A következő attribútumok a szerző entitásra jellemzőek. (Ty = "1")
 
+Name (Név) | Leírás | Típus | Műveletek
+--- | --- | --- | ---
+Azonosító      | Entitás azonosítója                             |Int64      |Egyenlő
+AuN     | Normalizált név szerzője                    |Sztring     |Egyenlő
+CC      | Szerzői teljes idézetek száma           |Int32      |Nincs  
+DAuN    | Szerző megjelenítendő neve                   |Sztring     |Nincs
+E | Kiterjesztett metaadatok</br></br>**Fontos**: ez az attribútum elavult, és csak örökölt alkalmazások esetében támogatott. Ha ezt az attribútumot külön kéri (például attribútumok = azonosító, ti, E), a rendszer az összes kibővített metaadat-attribútumot visszaadja egy *szerializált JSON-karakterláncban* .</br></br>A kiterjesztett metaadatokban szereplő összes attribútum mostantól legfelső szintű attribútumként érhető el, és a következő módon kérhető le: (pl. attribútumok = azonosító, ti, DOI, IA) | [Kiterjesztett](#extended) | Nincs
+ECC     | Szerzői teljes becsült idézetek száma |Int32      |Nincs
+LKA.AfId | A szerzőhöz tartozó utolsó ismert kapcsolat entitásának azonosítója | Int64 | Nincs
+LKA. AfN | A szerzőhöz tartozó utolsó ismert kapcsolat normalizált neve | Sztring | Nincs
+PC | Szerző teljes példányszáma | Int32 | Nincs
 
-## <a name="extended-metadata-attributes"></a>Bővített metaadatok attribútumai ##
+## <a name="extended"></a>Kiterjesztett
 
-Name (Név)    | Leírás               
---------|---------------------------    
-LKA.Afn     | a szerzőhöz társított kapcsolat megjelenítendő neve  
-LKA.AfId        | a szerzőhöz társított tulajdonosi entitás azonosítója
+> [!IMPORTANT]
+> Ez az attribútum elavult, és csak örökölt alkalmazások esetében támogatott. Ha ezt az attribútumot külön kéri (például attribútumok = azonosító, ti, E), a rendszer az összes kibővített metaadat-attribútumot visszaadja egy *szerializált JSON-karakterláncban* .</br></br>A kiterjesztett metaadatokban szereplő összes attribútum mostantól legfelső szintű attribútumként érhető el, és a következő módon kérhető le: (pl. attribútumok = azonosító, ti, DOI, IA)
+
+> [!IMPORTANT]
+> Egyéni kiterjesztett attribútumok kérésének támogatása az "E" használatával a hatókör, azaz az "E. DN" elavult. Habár ez továbbra is technikailag támogatott, az "E" használatával az egyes kiterjesztett attribútumokat is kéri. a hatókör azt eredményezi, hogy a rendszer az attribútum értékét a JSON-válasz két helyén adja vissza, az "E" objektum és a legfelső szintű attribútum részeként.
+
+Name (Név) | Leírás | Típus | Műveletek
+--- | --- | --- | ---
+LKA.AfId | A szerzőhöz tartozó utolsó ismert kapcsolat entitásának azonosítója | Int64 | Nincs
+LKA. AfN | A szerzőhöz tartozó utolsó ismert kapcsolat normalizált neve | Sztring | Nincs
+PC | Szerző teljes példányszáma | Int32 | Nincs

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 777fe1a62002a765460617cd69f3d518d78ed331
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073902"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150885"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,6 +120,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Módosítási napló
+- 11/15/2019: kisebb változások történtek a [magas rendelkezésre állásban az SAP NetWeaver esetében SUSE Linux Enterprise Server az SAP-alkalmazások Azure NetApp Files](high-availability-guide-suse-netapp-files.md) , az SAP [NetWeaver magas rendelkezésre állása pedig Red Hat Enterprise Linux a Azure NetApp Files SAP-alkalmazásokhoz](high-availability-guide-rhel-netapp-files.md) , a kapacitás-készlet méretére vonatkozó korlátozások tisztázása és a csak NFSv3-verziót támogató utasítás eltávolítása.
 - 11/12/2019: az [SAP NetWeaver magas rendelkezésre állásának kiadása a windowsban Azure NetApp Files (SMB)](high-availability-guide-windows-netapp-files-smb.md)
 - 11/08/2019: a [SAP HANA magas rendelkezésre állásának](sap-hana-high-availability.md)változása az Azure-beli [virtuális gépeken SUSE Linux Enterprise Servereken, SAP HANA rendszerreplikáció beállítása az Azure Virtual Machines szolgáltatásban (VM)](sap-hana-high-availability-rhel.md), az [Azure Virtual Machines magas rendelkezésre állású SAP NetWeaver SUSE Linux Enterprise Server SAP-alkalmazásokhoz](high-availability-guide-suse.md), [Azure Virtual Machines magas rendelkezésre állás az SAP netweaver](high-availability-guide-suse-netapp-files.md)on SUSE Linux Enterprise Server, Azure NETAPP Files, [Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver on Red Hat Enterprise Linux ](high-availability-guide-rhel.md), Az [Azure Virtual Machines magas rendelkezésre állást biztosít az SAP netweaver számára Red Hat Enterprise Linux a Azure NetApp Fileson](high-availability-guide-rhel-netapp-files.md), a [magas rendelkezésre állást biztosítva az NFS](high-availability-guide-suse-nfs.md)-hez az Azure-beli virtuális gépeken, SUSE Linux Enterprise Server GlusterFS az Azure-beli [virtuális gépeken az SAP NetWeaver Red Hat Enterprise Linux](high-availability-guide-rhel-glusterfs.md) az Azure standard  
 - 11/08/2019: az [SAP munkaterhelés tervezési és üzembe helyezési ellenőrzőlistájának](sap-deployment-checklist.md) változásai a titkosítási javaslatok tisztázásához  

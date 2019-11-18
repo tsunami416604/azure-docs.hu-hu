@@ -11,12 +11,12 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685340"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133159"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs-EK)
 
@@ -204,7 +204,7 @@ A DWU változásainak állapotának ellenõrzése:
     ;
     ```
     
-Ez a DMV az SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS, vagy befejeződött.
+Ez a DMV az SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS vagy kész.
 
 ## <a name="the-scaling-workflow"></a>A skálázási munkafolyamat
 
@@ -215,4 +215,4 @@ Amikor elindít egy méretezési műveletet, a rendszer először az összes nyi
 
 ## <a name="next-steps"></a>További lépések
 
-A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) és a [memória és egyidejűségi korlátok] memória – egyidejűség-Limits.MD).
+A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) , valamint a [memória és a Egyidejűség korlátai](memory-concurrency-limits.md).

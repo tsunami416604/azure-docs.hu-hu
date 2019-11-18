@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 05/21/2019
-ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/15/2019
+ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821776"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132420"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrikák és diagnosztikai naplózás
 
@@ -64,6 +64,7 @@ Beállíthatja az Azure SQL Database-adatbázisokat és a példány-adatbázisok
 | Adatbázisok figyelése telemetria | Önálló adatbázis és készletezett adatbázis-támogatás | Példány-adatbázis támogatása |
 | :------------------- | ----- | ----- |
 | [Alapszintű mérőszámok](#basic-metrics): tartalmazza a DTU/CPU-arányt, a DTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási százalékos arányát, a sikeres/sikertelen/letiltott/blokkolt, a munkamenetek százalékos arányát, a feldolgozói százalékos tárolási százalék. | Igen | Nem |
+| [A példány és az alkalmazás speciális](#advanced-metrics): tartalmazza a tempdb rendszeradatbázis-információit és a naplófájlok méretét, valamint a tempdb százalékos naplófájlját. | Igen | Nem |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): a lekérdezési futtatókörnyezet statisztikáit, például a CPU-használat és a lekérdezés időtartamára vonatkozó statisztikai adatokat tartalmazza. | Igen | Igen |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): a lekérdezési várakozási statisztikával kapcsolatos információkat tartalmaz (a lekérdezéseket várta), például a processzort, a naplót és a zárolást. | Igen | Igen |
 | [Hibák](#errors-dataset): az adatbázis SQL-hibáiról tartalmaz információkat. | Igen | Igen |
@@ -214,7 +215,7 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria adatf
 
 A metrikák és a diagnosztika naplózása a PowerShell használatával engedélyezhető.
 
-- A következő parancs használatával engedélyezheti a diagnosztikai naplók tárolását egy Storage-fiókban:
+- Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, használja ezt a parancsot:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -222,31 +223,31 @@ A metrikák és a diagnosztika naplózása a PowerShell használatával engedél
 
    A Storage-fiók azonosítója a cél Storage-fiók erőforrás-azonosítója.
 
-- Ha engedélyezni szeretné a diagnosztikai naplók továbbítását az Event hub-ba, használja a következő parancsot:
+- Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez használja ezt a parancsot:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   A Azure Service Bus szabály azonosítója a következő formátumú karakterlánc:
+   Az Azure Service Bus Szabályazonosító karakterláncnak a következő formátumban:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- A diagnosztikai naplók Log Analytics munkaterületre való küldésének engedélyezéséhez használja a következő parancsot:
+- Ahhoz, hogy a küldő diagnosztikai naplók a Log Analytics-munkaterülethez, használja ezt a parancsot:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- A Log Analytics munkaterület erőforrás-AZONOSÍTÓját a következő paranccsal szerezheti be:
+- A Log Analytics munkaterület erőforrás-Azonosítóját a következő paranccsal szerezheti be:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Ezeket a paramétereket kombinálva több kimeneti beállítást is engedélyezhet.
+Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Több Azure-erőforrás konfigurálása
 
@@ -296,7 +297,7 @@ Az Azure CLI használatával engedélyezheti a metrikákat és a diagnosztikai n
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Ezeket a paramétereket kombinálva több kimeneti beállítást is engedélyezhet.
+Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.
 
 ### <a name="rest-api"></a>REST API
 
@@ -310,7 +311,7 @@ Olvassa el, hogyan [engedélyezheti a diagnosztikai beállításokat az erőforr
 
 A Azure SQL Analytics egy felhőalapú megoldás, amely az Azure SQL Database-adatbázisok, rugalmas készletek és felügyelt példányok teljesítményét figyeli nagy léptékben és több előfizetésen keresztül. Segítséget nyújt Azure SQL Database teljesítmény-mérőszámok gyűjtéséhez és megjelenítéséhez, és beépített intelligenciával rendelkezik a teljesítménnyel kapcsolatos hibaelhárításhoz.
 
-![Azure SQL Analytics áttekintése](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Az Azure SQL Analytics áttekintése](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database metrikák és diagnosztikai naplók adatfolyamként továbbíthatók Azure SQL Analytics a portál diagnosztikai beállítások lapján található beépített **küldés log Analytics** lehetőséggel. A log Analytics a PowerShell-parancsmagok, az Azure CLI vagy a Azure Monitor REST API segítségével is engedélyezhető diagnosztikai beállításokkal.
 
@@ -429,6 +430,16 @@ Az alapszintű mérőszámok erőforrás alapján történő részletes ismertet
 |---|---|
 |Azure SQL-adatbázis|DTU százalék, felhasznált DTU, DTU korlát, CPU-százalék, fizikai adatolvasási százalék, napló írási aránya, sikeres/sikertelen/letiltott a tűzfal kapcsolatai, a munkamenetek aránya, a dolgozók százalékos aránya, tárolás, tárolási százalék, XTP tárolási százalék és holtpontok |
 
+## <a name="advanced-metrics"></a>Speciális mérőszámok
+
+A speciális mérőszámokkal kapcsolatos részletekért tekintse meg a következő táblázatot.
+
+|**Metrika**|**Metrika megjelenítendő neve**|**Leírás**|
+|---|---|---|
+|tempdb_data_size| Tempdb adatfájl mérete (kilobájt) |Tempdb az adatfájl mérete kilobájtban. Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető. |
+|tempdb_log_size| Tempdb-naplófájl mérete (kilobájt) |Tempdb-naplófájl mérete (kilobájt) Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető. |
+|tempdb_log_used_percent| Tempdb százalékos naplója használatban |A tempdb százalékos naplója használatban van. Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető. |
+
 ## <a name="basic-logs"></a>Alapszintű naplók
 
 Az összes naplóhoz elérhető telemetria részletei az alábbi táblázatokban vannak dokumentálva. A [támogatott diagnosztikai naplózással](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) megtudhatja, hogy mely naplók támogatottak egy adott adatbázis-íz esetében – az Azure SQL Single, a készletezett vagy a instance Database.
@@ -441,7 +452,7 @@ Az összes naplóhoz elérhető telemetria részletei az alábbi táblázatokban
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: ResourceUsageStats |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
@@ -466,9 +477,9 @@ Az összes naplóhoz elérhető telemetria részletei az alábbi táblázatokban
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Kategória|A kategória neve. Mindig: QueryStoreRuntimeStatistics |
-|OperationName|A művelet neve. Mindig: QueryStoreRuntimeStatisticsEvent |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
+|Kategória|A kategória neve. Always: QueryStoreRuntimeStatistics |
+|OperationName|A művelet neve. Always: QueryStoreRuntimeStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
 |SubscriptionId|Az adatbázis előfizetési GUID azonosítója |
@@ -517,9 +528,9 @@ További információ a [lekérdezési tár futásidejű statisztikáinak adatai
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: QueryStoreWaitStatistics |
-|OperationName|A művelet neve. Mindig: QueryStoreWaitStatisticsEvent |
+|OperationName|A művelet neve. Always: QueryStoreWaitStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
 |SubscriptionId|Az adatbázis előfizetési GUID azonosítója |
@@ -555,7 +566,7 @@ További információ a [lekérdezési tár várakozási statisztikáinak adatai
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: hibák |
 |OperationName|A művelet neve. Mindig: ErrorEvent |
 |Erőforrás|Az erőforrás neve |
@@ -584,9 +595,9 @@ További információ a [SQL Server hibaüzenetekről](https://docs.microsoft.co
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: DatabaseWaitStatistics |
-|OperationName|A művelet neve. Mindig: DatabaseWaitStatisticsEvent |
+|OperationName|A művelet neve. Always: DatabaseWaitStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
 |SubscriptionId|Az adatbázis előfizetési GUID azonosítója |
@@ -613,7 +624,7 @@ További információ az [adatbázis-várakozási statisztikákról](https://doc
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: időtúllépések |
 |OperationName|A művelet neve. Mindig: TimeoutEvent |
 |Erőforrás|Az erőforrás neve |
@@ -636,7 +647,7 @@ További információ az [adatbázis-várakozási statisztikákról](https://doc
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: blokkok |
 |OperationName|A művelet neve. Mindig: BlockEvent |
 |Erőforrás|Az erőforrás neve |
@@ -660,7 +671,7 @@ További információ az [adatbázis-várakozási statisztikákról](https://doc
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC] |A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: holtpontok |
 |OperationName|A művelet neve. Mindig: DeadlockEvent |
 |Erőforrás|Az erőforrás neve |
@@ -681,7 +692,7 @@ További információ az [adatbázis-várakozási statisztikákról](https://doc
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL |
 |Kategória|A kategória neve. Mindig: AutomaticTuning |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |

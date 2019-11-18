@@ -1,5 +1,5 @@
 ---
-title: Hangbemeneti eszköz kiválasztása a Speech SDK – Speech szolgáltatással
+title: Hangbemeneti eszköz kiválasztása a Speech SDK-val
 titleSuffix: Azure Cognitive Services
 description: Tudnivalók a hangbemeneti eszközök kiválasztásáról a SpeechC++SDK C#-ban (,, Python, Objective-C, Java, JavaScript) a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzésével.
 services: cognitive-services
@@ -10,18 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 967e4fbc5484c152867fe5558040631d21e6c0b3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072436"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109975"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Hangbemeneti eszköz kiválasztása a Speech SDK-val
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Útmutató: hangbemeneti eszköz kiválasztása a Speech SDK-val
 
-A Speech SDK 1.3.0 verziója bevezet egy API-t a hangbemenet kiválasztásához.
-Ez a cikk a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzését ismerteti.
-Ezek ezután a Speech SDK-ban használhatók a hangeszköz `AudioConfig` objektumon keresztüli konfigurálásával:
+A Speech SDK 1.3.0 verziója bevezet egy API-t a hangbemenet kiválasztásához. Ez a cikk a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzését ismerteti. Ezek ezután a Speech SDK-ban használhatók a hangeszköz `AudioConfig` objektumon keresztüli konfigurálásával:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -53,6 +51,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Hangeszközök azonosítói Windows asztali alkalmazásokhoz
 
 Az audioeszköz- [VÉGPONT azonosító sztringek](/windows/desktop/CoreAudio/endpoint-id-strings) a Windows asztali alkalmazásokhoz készült [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) objektumból kérhetők le.
+
 A következő mintakód azt szemlélteti, hogyan használható a hangeszközök enumerálása a ben C++:
 
 ```cpp
@@ -177,6 +176,7 @@ Egy minta-eszköz azonosítója `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414
 ## <a name="audio-device-ids-on-uwp"></a>Hangeszközök azonosítói a UWP
 
 A Univerzális Windows-platform (UWP) hangbeviteli eszközöket a megfelelő [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) objektum `Id()` tulajdonságával lehet beszerezni.
+
 A következő kódrészletek bemutatják, hogyan teheti C#ezt meg a és a alkalmazásban C++ :
 
 ```cpp
@@ -227,13 +227,16 @@ Egy minta-eszköz azonosítója `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-
 ## <a name="audio-device-ids-on-linux"></a>Audio-eszközök azonosítói Linuxon
 
 Az eszközök azonosítói a szabványos ALSA-eszközök azonosítói alapján vannak kiválasztva.
+
 A rendszerhez csatolt bemenetek azonosítói az `arecord -L`parancs kimenetében találhatók.
 Azt is megteheti, hogy az [ALSA C könyvtár](https://www.alsa-project.org/alsa-doc/alsa-lib/)használatával szerzi be őket.
+
 A minták azonosítói `hw:1,0` és `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>Hangeszközök azonosítói macOS rendszeren
 
 Az Objective-C-ben implementált következő függvény a Mac számítógéphez csatlakoztatott hangeszközök neveinek és azonosítóinak listáját hozza létre.
+
 A `deviceUID` sztring a macOS-hez készült Speech SDK-ban található eszköz azonosítására szolgál.
 
 ```objc
@@ -362,8 +365,8 @@ A beépített mikrofonhoz tartozó UID például `BuiltInMicrophoneDevice`.
 
 ## <a name="audio-device-ids-on-ios"></a>Hangeszközök azonosítói az iOS-en
 
-A Speech SDK-val a hangeszköz kiválasztása nem támogatott iOS rendszeren.
-Az SDK-t használó alkalmazások azonban a [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) -keretrendszer segítségével befolyásolhatják a hangútválasztást.
+A Speech SDK-val a hangeszköz kiválasztása nem támogatott iOS rendszeren. Az SDK-t használó alkalmazások azonban a [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) -keretrendszer segítségével befolyásolhatják a hangútválasztást.
+
 Például az utasítás
 
 ```objc

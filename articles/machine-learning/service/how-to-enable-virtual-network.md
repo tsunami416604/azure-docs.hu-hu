@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 10/25/2019
-ms.openlocfilehash: 5ac741579562b41678c4aeb59bb5ebb425d8405c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 11/13/2019
+ms.openlocfilehash: c5d0c517e7a3d4c011d66925b8db0c4d09dd34ca
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932086"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123591"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ Ha Azure Storage-fiókot szeretne használni a virtuális hálózatban lévő mu
 >
 > A munkaterület létrehozásakor a rendszer automatikusan kiépíti az alapértelmezett Storage-fiókot.
 >
-> A nem alapértelmezett Storage-fiókok esetében a [`Workspace.create()` függvény](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) `storage_account` paramétere lehetővé teszi egyéni Storage-fiók megadását az Azure erőforrás-azonosító alapján.
+> A nem alapértelmezett Storage-fiókok esetében a [`Workspace.create()` függvény](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) `storage_account` paramétere lehetővé teszi egyéni Storage-fiók megadását az Azure erőforrás-azonosító alapján.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Key Vault-példány használata a munkaterülettel
 
@@ -120,7 +120,7 @@ Ha egy virtuális hálózatban Azure Machine Learning számítási fürtöt szer
 A Machine Learning számítási fürt automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoporthoz. A szolgáltatás minden számítási fürthöz a következő erőforrásokat foglalja le:
 
 * Egy hálózati biztonsági csoport
-* Egy nyilvános IP-cím
+* One public IP address
 * Egy Load Balancer
 
 Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) vonatkoznak.
@@ -244,8 +244,18 @@ except ComputeTargetException:
 
 A létrehozási folyamat befejeződése után a modellt egy kísérletben a fürt használatával kell betanítani. További információkért lásd: [számítási cél kiválasztása és használata képzéshez](how-to-set-up-training-targets.md).
 
-<a id="vmorhdi"></a>
+## <a name="use-azure-databricks"></a>Azure Databricks használata
 
+Ahhoz, hogy az Azure Azure Databricks a munkaterülettel rendelkező virtuális hálózatban használhassa, a következő követelményeknek kell teljesülniük:
+
+> [!div class="checklist"]
+> * A virtuális hálózatnak ugyanabban az előfizetésben és régióban kell lennie, mint a Azure Machine Learning munkaterületnek.
+> * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Databricks-fürttel megegyező virtuális hálózatban kell lenniük.
+> * Az Azure Databricks által használt __databricks-__ és __databricks-__ alhálózatok mellett a virtuális hálózathoz létrehozott __alapértelmezett__ alhálózat is szükséges.
+
+A Azure Databricks virtuális hálózattal való használatáról a [Azure Databricks üzembe helyezése az Azure-Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)című témakörben olvashat bővebben.
+
+<a id="vmorhdi"></a>
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Virtuális gép vagy HDInsight-fürt használata
 
@@ -364,9 +374,9 @@ A szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és 
 
 A hálózati szabályok konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Képzési környezetek beállítása](how-to-set-up-training-targets.md)
-* [A modellek üzembe helyezésének helye](how-to-deploy-and-where.md)
+* [Az üzembe helyezés modellek](how-to-deploy-and-where.md)
 * [Modellek biztonságos üzembe helyezése SSL használatával](how-to-secure-web-service.md)
 

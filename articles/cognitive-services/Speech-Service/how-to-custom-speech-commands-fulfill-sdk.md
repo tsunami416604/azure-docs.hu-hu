@@ -1,5 +1,5 @@
 ---
-title: 'Útmutató: egyéni parancsok teljesítése az ügyfélen a Speech SDK-val (előzetes verzió)'
+title: Egyéni parancsok teljesítése az ügyfélen a Speech SDK-val
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben az egyéni parancsok tevékenységeit kezeli az ügyfélen a Speech SDK-val
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507021"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110071"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Útmutató: parancsok teljesítése az ügyfélen a Speech SDK-val (előzetes verzió)
 
@@ -30,11 +30,11 @@ Ebben a cikkben a következőket fogja megtekinteni:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Egy Azure-előfizetési kulcs a Speech Serviceshez
-   - [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
+  - [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
 - Egy korábban létrehozott egyéni parancsok alkalmazás
-   - [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
 - Egy Speech SDK-kompatibilis ügyfélalkalmazás
-   - [Rövid útmutató: Kapcsolódás egyéni parancssori alkalmazáshoz a Speech SDK-val (előzetes verzió)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [Rövid útmutató: Kapcsolódás egyéni parancssori alkalmazáshoz a Speech SDK-val (előzetes verzió)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>Opcionális: gyors kezdés
 
@@ -45,14 +45,15 @@ Ez a cikk részletesen ismerteti, hogyan teheti meg az ügyfélalkalmazás az eg
 1. A korábban létrehozott egyéni parancsok alkalmazás megnyitása a [Speech studióból](https://speech.microsoft.com/)
 1. A **befejezési szabályok** szakaszban ellenőrizze, hogy rendelkezik-e a korábban létrehozott szabállyal, amely visszaválaszol a felhasználónak
 1. Ha közvetlenül az ügyfélnek szeretné elküldeni a hasznos adatokat, hozzon létre egy új szabályt egy küldési tevékenység művelettel.
+
    > [!div class="mx-imgBorder"]
    > ![küldési tevékenység befejezési szabálya](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Beállítás    | Ajánlott érték                                  | Leírás                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | Szabály neve  | UpdateDeviceState                                | A szabály célját leíró név          |
-   | Feltételek | Kötelező paraméter – `OnOff` és `SubjectDevice` | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
-   | Műveletek    | `SendActivity` (lásd alább)                        | A szabály feltételének teljesülésekor végrehajtandó művelet |
+   | Beállítás | Ajánlott érték | Leírás |
+   | ------- | --------------- | ----------- |
+   | Szabály neve | UpdateDeviceState | A szabály célját leíró név |
+   | Feltételek | Kötelező paraméter – `OnOff` és `SubjectDevice` | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e |
+   | Műveletek | `SendActivity` (lásd alább) | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
    > [!div class="mx-imgBorder"]
    > ![küldési tevékenység adattartalma](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. A TV vizualizációs állapotának "on" értékre kell váltania
 
 ## <a name="next-steps"></a>További lépések
+
 > [!div class="nextstepaction"]
 > [Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)](./how-to-custom-speech-commands-validations.md)
-

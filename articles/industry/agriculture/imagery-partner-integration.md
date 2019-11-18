@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927795"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132025"
 ---
 # <a name="imagery-partner-integration"></a>Képalkotási partner integrációja
 
@@ -34,7 +34,7 @@ A FarmBeats összekapcsolásához a következő hitelesítő adatokat kell haszn
 - API-végpont
 - Bérlőazonosító
 - Ügyfél-azonosító
-- Ügyfél titka
+- Titkos ügyfélkulcs
 
 ## <a name="api-development"></a>API-fejlesztés
 
@@ -42,14 +42,14 @@ Az API-k a hencegés műszaki dokumentációját tartalmazzák. [Tekintse át az
 
 ## <a name="authentication"></a>Authentication
 
-A FarmBeats Microsoft Azure [Active Directoryt]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))használ. A hitelesítési Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
+A FarmBeats Microsoft Azure [Active Directoryt](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)használ. A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
 
 További információ a használatáról: [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
 
 A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
 
 - Ügyfél-azonosító
-- Ügyfél titka
+- Titkos ügyfélkulcs
 - Bérlőazonosító
 
 A fenti hitelesítő adatok használatával a hívó hozzáférési jogkivonatot kérhet, amelyet a következő API-kérelmekben kell elküldeni, a fejléc szakaszban a következő módon:
@@ -86,7 +86,7 @@ Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni az AP
 --- | ---
 Content-Type  | A kérelem formátuma (Content-Type: Application/<format>) a FarmBeats adatközponti API formátuma JSON. Content-Type: Application/JSON
 Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
-fogadja el  | A válasz formátuma. A FarmBeats adatközponti API-k formátuma a következő: JSON Accept (alkalmazás/JSON)
+Fogadja el  | A válasz formátuma. A FarmBeats adatközponti API-k formátuma a következő: JSON Accept (alkalmazás/JSON)
 
 
 ## <a name="api-requests"></a>API-kérelmek
@@ -486,6 +486,6 @@ API-Válasz:
 A/SceneFile API-hoz intézett post hívása egy SAS-feltöltési URL-címet ad vissza, amellyel feltöltheti a CSV-vagy TIFF-fájlt az Azure Blob Storage ügyfél/könyvtár használatával.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](references-for-farmbeats.md#rest-api).

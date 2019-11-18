@@ -1,5 +1,5 @@
 ---
-title: Bemenetek és kimenetek egy mesterséges intelligencia-bővítési folyamatban
+title: A szakértelmével lévő bemenetek és kimenetek referenciái
 titleSuffix: Azure Cognitive Search
 description: Ismerteti a jegyzet szintaxisát, valamint azt, hogyan lehet egy készségkészlet bemenetében és kimenetében lévő jegyzeteket az Azure Cognitive Search AI-dúsítási folyamatában.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787781"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113868"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Megjegyzések áttekintése egy Azure Cognitive Search készségkészlet
 
@@ -120,7 +120,7 @@ Figyelje meg, hogy `"/document/people/*/lastname"` () a kardinálisa nagyobb, mi
 
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 + [Egyéni szakértelem integrálása a dúsítási folyamatba](cognitive-search-custom-skill-interface.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

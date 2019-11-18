@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3894904575d545aed0dbfce470247afb145b7590
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605670"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129305"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Az Azure Databricks üzembe helyezése virtuális hálózaton
 
@@ -37,7 +37,7 @@ A Azure Portal Azure Databricks munkaterület telepítési felületének haszná
 
 A Azure Databricks munkaterületet üzembe helyező virtuális hálózatnak meg kell felelnie a következő követelményeknek:
 
-### <a name="location"></a>Hely
+### <a name="location"></a>Földrajzi egység
 
 A virtuális hálózatnak a Azure Databricks munkaterülettel azonos helyen kell lennie.
 
@@ -119,7 +119,7 @@ Ha ezt a sablont a hálózati biztonsági csoportok sablonjának használata né
 
 ## <a name="whitelisting-subnet-traffic"></a>Alhálózati forgalom engedélyezési listája
 
-Ha nem használja a hálózati biztonsági csoportok létrehozásához [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) vagy [Azure Resource Manager sablonokat](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , manuálisan kell megadnia a következő forgalmat az alhálózatokon.
+Ha nem használja a hálózati biztonsági csoportok létrehozásához [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) vagy [Azure Resource Manager sablonokat](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-advanced) , manuálisan kell megadnia a következő forgalmat az alhálózatokon.
 
 |Irány|Protokoll|Forrás|Forrásport|Cél|Célport|
 |---------|--------|------|-----------|-----------|----------------|
@@ -141,11 +141,11 @@ Az alhálózati forgalom engedélyezési listája a következő IP-címek haszn�
 |USA középső régiója|Vezérlési sík NAT </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |USA déli középső régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |USA nyugati régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|USA 2. nyugati régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|USA nyugati régiója, 2.|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Közép-Kanada|Vezérlési sík NAT </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
 |Kelet-Kanada|Vezérlési sík NAT </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
 |Az Egyesült Királyság nyugati régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Egyesült Királyság déli régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Az Egyesült Királyság déli régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Nyugat-Európa|Vezérlési sík NAT </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Észak-Európa|Vezérlési sík NAT </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Közép-India|Vezérlési sík NAT </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|

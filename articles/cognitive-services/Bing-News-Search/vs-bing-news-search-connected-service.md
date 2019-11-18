@@ -1,7 +1,7 @@
 ---
-title: Csatlakozni a Bing News Search API-hoz a Visual Studio csatlakoztatott szolgáltatások ésC#
+title: Csatlakozás Bing News Search APIhoz csatlakoztatott szolgáltatásokkal a Visual Studióban ésC#
 titleSuffix: Azure Cognitive Services
-description: Kapcsolódás a Bing News Searchhöz egy ASP.NET Core-webalkalmazással.
+description: A Bing News Search használatával lehetővé teheti, hogy alkalmazásai és szolgáltatásai egy reklámmentes keresőmotorral keressenek a weben.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: ghogen
-ms.openlocfilehash: 85afae087b1b1e572759943142412743744ee806
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203419"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111499"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Oktatóanyag: Csatlakozni a Bing News Search API-hoz a Visual Studio csatlakoztatott szolgáltatások ésC#
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Oktatóanyag: csatlakozás a Bing News Search APIhoz csatlakoztatott szolgáltatásokkal a Visual Studióban ésC#
 
 A Bing News Search használatával lehetővé teheti, hogy alkalmazásai és szolgáltatásai egy reklámmentes keresőmotorral keressenek a weben. A Bing News Search a Cognitive Servicesben elérhető egyik keresési szolgáltatás.
 
@@ -26,16 +26,16 @@ A cikk részletes információkat szolgáltat a Visual Studio Bing News Searchh�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A Visual Studio 2019, a webalkalmazás-fejlesztési számítási feladattal együtt. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- A Visual Studio 2019 és a webfejlesztési számítási feladat telepítve van. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-bing-news-search-api"></a>Projekt kiegészítése a Bing News Search API támogatásával
 
-1. Hozzon létre egy új ASP.NET Core-webprojektet MyWebApplication néven. Használja a **Web Application (Model-View-Controller)** (Webalkalmazás) projektsablont az összes alapértelmezett beállítással. Fontos, hogy a projektnek a MyWebApplication nevet adja, hogy a névtér egyezzen, amikor kódot másol a projektbe. 
+1. Hozzon létre egy új ASP.NET Core-webprojektet MyWebApplication néven. Használja a **Web Application (Model-View-Controller)** (Webalkalmazás) projektsablont az összes alapértelmezett beállítással. Fontos, hogy a projektnek a MyWebApplication nevet adja, hogy a névtér egyezzen, amikor a kódot a projektbe másolja. 
 
-1. A **Megoldáskezelőben** válassza az **Add** (Hozzáadás) > **Connected Service** (Csatlakoztatott szolgáltatás) lehetőséget.
-   Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
+1. A **Megoldáskezelőben** válassza az **Add** > **Connected Service** (Hozzáadás, Csatlakoztatott szolgáltatás) lehetőséget.
+   Megjelenik a projekthez adható szolgáltatásokat mutató Csatlakoztatott szolgáltatás oldal.
 
    ![Az Add Connected Service (Csatlakoztatott szolgáltatás hozzáadása) menüelem képernyőképe](../media/vs-common/Connected-Service-Menu.PNG)
 
@@ -53,7 +53,7 @@ A cikk részletes információkat szolgáltat a Visual Studio Bing News Searchh�
 
    A tarifacsomagokkal kapcsolatos további információért válassza a **Review pricing** (Díjszabás áttekintése) lehetőséget.
 
-1. Az **Add** (Hozzáadás) lehetőség kiválasztásával adja hozzá a csatlakoztatott szolgáltatás támogatását.
+1. Válassza a **Hozzáadás** gombot a csatlakoztatott szolgáltatáshoz támogatás hozzáadásához.
    A Visual Studio módosítja a projektet, és hozzáadja a NuGet-csomagokat, a konfigurációs fájlbejegyzéseket, és a Bing News Search API-kapcsolat támogatása érdekében végrehajtott egyéb módosításokat. A kimenet a projektben történt események naplóját mutatja. Az alábbihoz hasonló kimenet jelenik meg:
 
    ```output

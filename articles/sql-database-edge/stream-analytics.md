@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514991"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108743"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>SQL Database DAC-csomag és Stream Analytics-feladatok használata a SQL Database Edge használatával
 
@@ -37,7 +37,7 @@ Az Azure SQL Database Edge két választható paramétert tesz elérhetővé az 
 |Mező | Leírás |
 |------|-------------|
 | SQLPackage | Az SQL Database DAC-csomagot tartalmazó *. zip fájl Azure Blob Storage URI-ja.
-| ASAJobInfo | Azure Blob Storage URI az ASA Edge-feladatokhoz. Az ASA Edge-feladatok közzétételével kapcsolatos további információkért tekintse meg az [ASA Edge-feladatok közzététele SQL Database Edge]()-ben című témakört.
+| ASAJobInfo | Azure Blob Storage URI az ASA Edge-feladatokhoz. Az ASA Edge-feladatok közzétételével kapcsolatos további információkért tekintse meg az [ASA Edge-feladatok közzététele SQL Database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)-ben című témakört.
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL Database DAC-csomagok használata a SQL Database Edge használatával
 

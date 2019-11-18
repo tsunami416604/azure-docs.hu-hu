@@ -1,18 +1,18 @@
 ---
 title: Hibás átjárókkal kapcsolatos hibák elhárítása – Azure Application Gateway
-description: Tudnivalók a Application Gateway 502 hibák elhárításáról
+description: 'Ismerje meg, hogyan lehet elhárítani a Application Gateway kiszolgálóhiba: 502 – a webkiszolgáló érvénytelen választ kapott az átjáróként vagy proxykiszolgálóként való működés közben.'
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: baf1eccdd6fe910bd98e8b39ef29b7bd8e88a7d5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048160"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130469"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Hibás átjárókkal kapcsolatos hibák elhárítása Application Gateway
 
@@ -192,7 +192,7 @@ Ha a BackendAddressPool összes példánya nem kifogástalan állapotú, akkor a
 
 Ellenőrizze, hogy a példányok állapota Kifogástalan-e, és hogy az alkalmazás megfelelően van-e konfigurálva. Ellenőrizze, hogy a háttérbeli példányok tudnak-e válaszolni a pingelésre egy másik virtuális gépről ugyanabban a VNet. Ha nyilvános végponttal van konfigurálva, győződjön meg arról, hogy a webalkalmazáshoz tartozó böngésző-kérelem szervizelhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).
 
