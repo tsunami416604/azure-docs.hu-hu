@@ -806,10 +806,10 @@
                   href: insights/container-insights-hybrid-setup.md
                 - name: Régióleképezések
                   href: insights/container-insights-region-mapping.md
-            - name: Elemzés
+            - name: Teljesítmény figyelése
               href: insights/container-insights-analyze.md
-            - name: Monitorozás letiltása
-              href: insights/container-insights-optout.md
+            - name: Az állapot monitorozása
+              href: insights/container-insights-health.md
             - name: Élő adatok megtekintése
               items:
                 - name: Élő adatok (előzetes verzió) áttekintése
@@ -832,6 +832,10 @@
               href: insights/container-insights-agent-config.md
             - name: Frissítés a metrikák engedélyezéséhez
               href: insights/container-insights-update-metrics.md
+            - name: Állapotmonitorozás konfigurációja
+              href: insights/container-insights-health-monitors-config.md
+            - name: Monitorozás letiltása
+              href: insights/container-insights-optout.md
             - name: Hibaelhárítás
               href: insights/container-insights-troubleshoot.md
         - name: Docker- és Windows-tárolók monitorozása
@@ -1167,7 +1171,7 @@
               href: platform/autoscale-overview.md
             - name: Útmutatás
               href: platform/autoscale-get-started.md
-            - name: Beállítások
+            - name: Konfigurációs beállítások
               href: platform/autoscale-understanding-settings.md
             - name: Ajánlott eljárások
               href: platform/autoscale-best-practices.md
@@ -1183,6 +1187,10 @@
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: Webhookok és e-mailes értesítések használata
               href: platform/autoscale-webhook-email.md
+            - name: Hibaelhárítás
+              href: platform/autoscale-troubleshoot.md
+            - name: Erőforrásnaplók sémái
+              href: platform/autoscale-resource-log-schema.md
         - name: PowerShell
           items:
             - name: Kezelés a Powershell-lel

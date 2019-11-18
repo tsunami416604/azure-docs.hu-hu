@@ -223,8 +223,6 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Indexelők monitorozása
           href: search-howto-monitor-indexers.md
-        - name: Gyakori problémák megoldása
-          href: search-indexer-troubleshooting.md
     - name: Bővítés mesterséges intelligenciával
       items:
         - name: Cognitive Services-erőforrás csatolása
@@ -249,7 +247,7 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: Példa – Tárolók
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: Hibaelhárítási tippek
+        - name: Tervezési tippek
           href: cognitive-search-concept-troubleshooting.md
         - name: Dokumentációs hivatkozások
           href: cognitive-search-resources-documentation.md
@@ -261,8 +259,6 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Kapcsolódás Power BI-jal
               href: knowledge-store-connect-power-bi.md
-        - name: Bővítéssel kapcsolatos problémák elhárítása
-          href: cognitive-search-common-errors-warnings.md
     - name: Dokumentumok lekérdezése
       items:
         - name: Lekérdezéstípusok és összeállítás
@@ -307,6 +303,12 @@
           href: search-manage-powershell.md
         - name: Tevékenység és naplózás monitorozása
           href: search-monitor-usage.md
+    - name: Hibaelhárítás
+      items:
+        - name: Indexelőkkel kapcsolatos problémák
+          href: search-indexer-troubleshooting.md
+        - name: Indexelőkkel kapcsolatos hibák és figyelmeztetések
+          href: cognitive-search-common-errors-warnings.md
 - name: Referencia
   items:
     - name: Azure CLI

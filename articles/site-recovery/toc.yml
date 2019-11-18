@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Kezelés
           items:
-            - name: Vészhelyreállítás elavulása ügyfél tulajdonában lévő helyek között
-              href: site-to-site-deprecation.md
+            - name: A Site Recovery adattitkosításának elavulása
+              href: encryption-feature-deprecation.md
             - name: Site Recoveryvel konfigurált Windows-kiszolgálók frissítése
               href: upgrade-2012R2-to-2016.md
             - name: Kiszolgálók eltávolítása és a védelem letiltása

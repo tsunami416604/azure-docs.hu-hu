@@ -70,10 +70,10 @@
               href: end-user-experiences.md
     - name: Alkalmazások üzembe helyezése (SCIM)
       items:
-        - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
-          href: use-scim-to-provision-users-and-groups.md
         - name: Automatikus felhasználóátadást használó üzembe helyezés tervezése
           href: plan-auto-user-provisioning.md
+        - name: Manuális és automatikus átadás
+          href: application-provisioning-config-how-to.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy
@@ -227,28 +227,40 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Alkalmazások üzembe helyezése (SCIM)
       items:
-        - name: Felhasználók átadásának konfigurálása
+        - name: Alkalmazások üzembe helyezésének konfigurálása
           items:
-            - name: Manuális és automatikus átadás
-              href: application-provisioning-config-how-to.md
             - name: A felhasználók automatikus átadásának konfigurálása
               href: configure-automatic-user-provisioning-portal.md
+            - name: SCIM használata az automatikus üzembe helyezéshez
+              href: use-scim-to-provision-users-and-groups.md
             - name: Attribútumleképezések testreszabása
               href: Customize-application-attributes.md
+            - name: Kifejezések írása attribútumleképezésekhez
+              href: functions-for-customizing-application-data.md
             - name: Átadásra váró felhasználók vagy csoportok hatókörkezelése
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Hatókörön kívüli felhasználók törlésének mellőzése
               href: skip-out-of-scope-deletions.md
             - name: Átadás állapotának és teljesítményének monitorozása
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Jelentés a felhasználók automatikus átadásáról
+            - name: Jelentés az alkalmazások üzembe helyezéséről
               href: check-status-user-account-provisioning.md
             - name: Konfiguráció exportálása és importálása
               href: export-import-provisioning-configuration.md
+            - name: Automatikus konfigurálás az MS Graph használatával
+              href: application-provisioning-configure-api.md
         - name: A felhasználók átadásának hibaelhárítása
           items:
-            - name: A felhasználók átadásának hibaelhárítása
+            - name: Az alkalmazások üzembe helyezésének hibaelhárítása
               href: application-provisioning-config-problem.md
+            - name: Karantén állapota
+              href: application-provisioning-quarantine-status.md
+            - name: Üzembehelyezési naplók
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Órákat vesz igénybe – katalógusbeli alkalmazás
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Engedélyezési probléma (nem lehet menteni a rendszergazdai hitelesítési adatokat)
               href: application-provisioning-config-problem-storage-limit.md
             - name: A felhasználók átadása nem történik meg

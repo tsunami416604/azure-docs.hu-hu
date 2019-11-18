@@ -216,6 +216,8 @@
         - name: Kubernetes RBAC használata Azure AD-integrációval
           href: azure-ad-rbac.md
           maintainContext: true
+        - name: Tanúsítványok váltása
+          href: certificate-rotation.md
     - name: Monitorozás és naplózás
       items:
         - name: Azure Monitor tárolókhoz

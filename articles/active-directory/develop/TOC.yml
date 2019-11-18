@@ -241,7 +241,9 @@
                   href: migrate-android-adal-msal.md
                 - name: Migrálás MSAL.iOS-re és macOS rendszerre
                   href: migrate-objc-adal-msal.md
-                - name: Migrálás MSAL Javába
+                - name: Migrálás MSAL Pythonba
+                  href: migrate-python-adal-msal.md
+                - name: Migrálás Javához készült MSAL-be
                   href: migrate-adal-msal-java.md
                 - name: Xamarin-alkalmazások migrálása az ADAL.NET és az MSAL.NET közötti közvetítők használatával
                   href: msal-net-migration-ios-broker.md
@@ -452,7 +454,11 @@
                   href: request-custom-claims.md
                 - name: Átirányítási URI konfigurálása
                   href: redirect-uris-ios.md
-            - name: MSAL Java
+            - name: Pythonhoz készült MSAL
+              items:
+                - name: Jogkivonat-gyorsítótár szerializálása
+                  href: msal-python-token-cache-serialization.md
+            - name: Javához készült MSAL
               items:
                 - name: Jogkivonat-gyorsítótár szerializálása
                   href: msal-java-token-cache-serialization.md

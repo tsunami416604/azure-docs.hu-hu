@@ -7,17 +7,17 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: ASP.NET-alkalmazás létrehozása
+    - name: ASP.NET-alkalmazás
       href: cache-web-app-howto.md
-    - name: .NET-alkalmazás létrehozása
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: .NET Core-alkalmazás létrehozása
+    - name: .NET Core-alkalmazás
       href: cache-dotnet-core-quickstart.md
-    - name: Node.js-alkalmazás létrehozása
-      href: cache-nodejs-get-started.md
-    - name: Java-alkalmazás létrehozása
+    - name: .NET-alkalmazás
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Java-alkalmazás
       href: cache-java-get-started.md
-    - name: Python-alkalmazás létrehozása
+    - name: Node.js-alkalmazás
+      href: cache-nodejs-get-started.md
+    - name: Python-alkalmazás
       href: cache-python-get-started.md
 - name: Oktatóanyagok
   items:
@@ -33,10 +33,10 @@
       href: cli-samples.md
 - name: Alapelvek
   items:
-    - name: Ajánlott eljárások
-      href: cache-best-practices.md
     - name: Feladatátvétel és javítás
       href: cache-failover.md
+    - name: Ajánlott eljárások
+      href: cache-best-practices.md
     - name: Architektúra ajánlott eljárásai gyorsítótárazáshoz
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Útmutatók
@@ -45,12 +45,14 @@
       items:
         - name: Gyorsítótárszint kiválasztása
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: A gyorsítótár elosztása klaszterezéssel
+          href: cache-how-to-premium-clustering.md
         - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával
           href: cache-how-to-premium-persistence.md
         - name: A gyorsítótár védelme virtuális hálózattal
           href: cache-how-to-premium-vnet.md
-        - name: A gyorsítótár elosztása klaszterezéssel
-          href: cache-how-to-premium-clustering.md
+        - name: Georeplikáció beállítása
+          href: cache-how-to-geo-replication.md
         - name: Áttelepítés Managed Cache Service szolgáltatásból
           href: cache-migrate-to-redis.md
     - name: Automatizálás
@@ -79,8 +81,6 @@
       items:
         - name: Konfigurálás az Azure Portalon
           href: cache-configure.md
-        - name: Georeplikáció konfigurálása
-          href: cache-how-to-geo-replication.md
         - name: Adatok importálása és exportálása
           href: cache-how-to-import-export-data.md
         - name: Újraindítás

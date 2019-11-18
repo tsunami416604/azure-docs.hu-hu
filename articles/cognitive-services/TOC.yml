@@ -17,6 +17,8 @@
   items:
     - name: Tárolótámogatás
       href: cognitive-services-container-support.md
+    - name: Tárolórendszerképek címkéi
+      href: ./containers/container-image-tags.md
     - name: Tároló – GYIK
       href: ./containers/container-faq.md
     - name: Tárolóreceptek

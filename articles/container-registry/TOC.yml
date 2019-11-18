@@ -1,147 +1,178 @@
-- name: Azure Container Registry
+- name: Azure Container Registry-dokumentáció
   href: ./index.yml
-- name: Áttekintés
-  items:
-    - name: Információk a Container Registry szolgáltatásról
-      href: container-registry-intro.md
-- name: Gyors útmutatók
+- name: Tárolóregisztrációs adatbázisok
   expanded: true
   items:
-    - name: Tárolóregisztrációs adatbázis létrehozása – parancssori felület
-      href: container-registry-get-started-azure-cli.md
-    - name: Tárolóregisztrációs adatbázis létrehozása – portál
-      href: container-registry-get-started-portal.md
-    - name: Tárolóregisztrációs adatbázis létrehozása – PowerShell
-      href: container-registry-get-started-powershell.md
-    - name: Rendszerkép létrehozása és futtatása – parancssori felület
-      href: container-registry-quickstart-task-cli.md
-    - name: Események küldése az Event Gridbe – parancssori felület
-      href: container-registry-event-grid-quickstart.md
-- name: Oktatóanyagok
-  items:
-    - name: Tárolórendszerképek összeállítása
+    - name: Áttekintés
+      expanded: false
       items:
-        - name: 1 – Rendszerképek létrehozása az Azure-ban
-          href: container-registry-tutorial-quick-task.md
-        - name: 2a – Összeállítások automatizálása kódvéglegesítéskor
-          href: container-registry-tutorial-build-task.md
-        - name: 2b – Többlépéses feladatok kódvéglegesítéskor
-          href: container-registry-tutorial-multistep-task.md
-        - name: 3 – Rendszerkép alapszintű frissítésének létrehozása
-          href: container-registry-tutorial-base-image-update.md
-    - name: Regisztrációs adatbázis georeplikálása
+        - name: Információk a Container Registry szolgáltatásról
+          href: container-registry-intro.md
+    - name: Gyors útmutatók
+      expanded: true
       items:
-        - name: 1 – A tárolóregisztrációs adatbázis előkészítése
-          href: container-registry-tutorial-prepare-registry.md
-        - name: 2 – A webalkalmazás üzembe helyezése
-          href: container-registry-tutorial-deploy-app.md
-        - name: 3 – A webalkalmazás frissítése
-          href: container-registry-tutorial-deploy-update.md
-- name: Alapelvek
-  items:
-    - name: Tárolóregisztrációs adatbázis termékváltozatai és korlátai
-      href: container-registry-skus.md
-    - name: 'Beállításjegyzékek, adattárak és rendszerképek'
-      href: container-registry-concepts.md
-    - name: Képtárolás
-      href: container-registry-storage.md
-    - name: Tartalomformátumok
-      href: container-registry-image-formats.md
-    - name: Rendszerképek címkézése és verziószámozása
-      href: container-registry-image-tag-version.md
-    - name: Georeplikáció
-      href: container-registry-geo-replication.md
-    - name: Ajánlott eljárások a beállításjegyzék használatához
-      href: container-registry-best-practices.md
-- name: Útmutatók
-  items:
-    - name: Regisztrációs adatbázis műveletei
+        - name: Tárolóregisztrációs adatbázis létrehozása – Parancssori felület
+          href: container-registry-get-started-azure-cli.md
+        - name: Tárolóregisztrációs adatbázis létrehozása – Portál
+          href: container-registry-get-started-portal.md
+        - name: Tárolóregisztrációs adatbázis létrehozása – PowerShell
+          href: container-registry-get-started-powershell.md
+        - name: Események küldése az Event Gridbe – parancssori felület
+          href: container-registry-event-grid-quickstart.md
+    - name: Oktatóanyagok
+      expanded: false
       items:
-        - name: Rendszerképek küldése és lekérése
-          href: container-registry-get-started-docker-cli.md
-        - name: OCI-összetevő küldése és lekérése
-          href: container-registry-oci-artifacts.md
-        - name: Az adattárak megtekintése
-          href: container-registry-repositories.md
-        - name: Tárolórendszerképek importálása
-          href: container-registry-import-images.md
-        - name: Tárolórendszerképek zárolása
-          href: container-registry-image-lock.md
-        - name: Tárolórendszerképek törlése
+        - name: Regisztrációs adatbázis georeplikálása
           items:
-            - name: Képadatok törlése – parancssori felület
-              href: container-registry-delete.md
-            - name: Adatmegőrzési szabályzat címkézetlen jegyzékekhez (előzetes verzió)
-              href: container-registry-retention-policy.md
-            - name: Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
-              href: container-registry-auto-purge.md
-        - name: ACR-webhookok használata
-          href: container-registry-webhook.md
-        - name: Helm-diagramtárak (előzetes verzió)
-          href: container-registry-helm-repos.md
-    - name: Biztonság és hitelesítés
+            - name: 1 – A tárolóregisztrációs adatbázis előkészítése
+              href: container-registry-tutorial-prepare-registry.md
+            - name: 2 – A webalkalmazás üzembe helyezése
+              href: container-registry-tutorial-deploy-app.md
+            - name: 3 – A webalkalmazás frissítése
+              href: container-registry-tutorial-deploy-update.md
+    - name: Alapelvek
+      expanded: false
       items:
-        - name: Hozzáférés korlátozása virtuális hálózattal (előzetes verzió)
-          href: container-registry-vnet.md
-        - name: Tűzfal mögötti hozzáférés
-          href: container-registry-firewall-access-rules.md
-        - name: Hitelesítés
+        - name: Tárolóregisztrációs adatbázis termékváltozatai és korlátai
+          href: container-registry-skus.md
+        - name: 'Beállításjegyzékek, adattárak és rendszerképek'
+          href: container-registry-concepts.md
+        - name: Képtárolás
+          href: container-registry-storage.md
+        - name: Tartalomformátumok
+          href: container-registry-image-formats.md
+        - name: Rendszerképek címkézése és verziószámozása
+          href: container-registry-image-tag-version.md
+        - name: Georeplikáció
+          href: container-registry-geo-replication.md
+        - name: Ajánlott eljárások a beállításjegyzék használatához
+          href: container-registry-best-practices.md
+    - name: Útmutatók
+      expanded: false
+      items:
+        - name: Regisztrációs adatbázis műveletei
           items:
-            - name: A hitelesítés áttekintése
-              href: container-registry-authentication.md
-            - name: Egyszerű szolgáltatásnév hitelesítése
-              href: container-registry-auth-service-principal.md
-            - name: Felügyelt identitás hitelesítése
-              href: container-registry-authentication-managed-identity.md
-            - name: Hitelesítés az Azure Container Instancesből
-              href: container-registry-auth-aci.md
-            - name: Hitelesítés az Azure Kubernetes Service-ből (AKS)
-              href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-        - name: Szerepköralapú hozzáférés-vezérlés
-          href: container-registry-roles.md
-        - name: Adattárhatókörrel rendelkező engedélyek (előzetes verzió)
-          href: container-registry-repository-scoped-permissions.md
-        - name: Tartalommegbízhatóság
-          href: container-registry-content-trust.md
-        - name: Rendszerképek vizsgálata a Security Centerrel (előzetes verzió)
-          href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-    - name: ACR-feladatok
+            - name: Rendszerképek küldése és lekérése
+              href: container-registry-get-started-docker-cli.md
+            - name: OCI-összetevő küldése és lekérése
+              href: container-registry-oci-artifacts.md
+            - name: Az adattárak megtekintése
+              href: container-registry-repositories.md
+            - name: Tárolórendszerképek importálása
+              href: container-registry-import-images.md
+            - name: Tárolórendszerképek zárolása
+              href: container-registry-image-lock.md
+            - name: Tárolórendszerképek törlése
+              items:
+                - name: Képadatok törlése – parancssori felület
+                  href: container-registry-delete.md
+                - name: Adatmegőrzési szabályzat címkézetlen jegyzékekhez (előzetes verzió)
+                  href: container-registry-retention-policy.md
+                - name: Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
+                  href: container-registry-auto-purge.md
+            - name: ACR-webhookok használata
+              href: container-registry-webhook.md
+            - name: Helm-diagramtárak (előzetes verzió)
+              href: container-registry-helm-repos.md
+        - name: Biztonság és hitelesítés
+          items:
+            - name: Hozzáférés korlátozása virtuális hálózattal (előzetes verzió)
+              href: container-registry-vnet.md
+            - name: Tűzfal mögötti hozzáférés
+              href: container-registry-firewall-access-rules.md
+            - name: Hitelesítés
+              items:
+                - name: A hitelesítés áttekintése
+                  href: container-registry-authentication.md
+                - name: Egyszerű szolgáltatásnév hitelesítése
+                  href: container-registry-auth-service-principal.md
+                - name: Felügyelt identitás hitelesítése
+                  href: container-registry-authentication-managed-identity.md
+                - name: Hitelesítés az Azure Container Instancesből
+                  href: container-registry-auth-aci.md
+                - name: Hitelesítés az Azure Kubernetes Service-ből (AKS)
+                  href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: Szerepköralapú hozzáférés-vezérlés
+              href: container-registry-roles.md
+            - name: Adattárhatókörrel rendelkező engedélyek (előzetes verzió)
+              href: container-registry-repository-scoped-permissions.md
+            - name: Tartalommegbízhatóság
+              href: container-registry-content-trust.md
+            - name: Rendszerképek vizsgálata a Security Centerrel (előzetes verzió)
+              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+        - name: Regisztrációs adatbázisok és más Azure-szolgáltatások
+          expanded: false
+          items:
+            - name: Azure Container Instances
+              href: ../container-instances/container-instances-tutorial-prepare-app.md
+            - name: Azure Kubernetes Service (AKS)
+              href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Service Fabric
+              href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+        - name: Figyelés
+          expanded: false
+          items:
+            - name: Diagnosztikai és auditnaplók (előzetes verzió)
+              href: container-registry-diagnostics-audit-logs.md
+        - name: Hibaelhárítás
+          expanded: false
+          items:
+            - name: Gyakori problémák észlelése
+              href: container-registry-check-health.md
+            - name: GYIK
+              href: container-registry-faq.md
+- name: Feladatok
+  expanded: true
+  items:
+    - name: Áttekintés
+      expanded: false
       items:
-        - name: Az ACR-feladatok áttekintése
+        - name: Tudnivalók az ACR-feladatokról
           href: container-registry-tasks-overview.md
-        - name: Ütemezett feladatok
-          href: container-registry-tasks-scheduled.md
+    - name: Gyors útmutatók
+      expanded: true
+      items:
+        - name: 'Rendszerkép összeállítása, leküldése és futtatása – Parancssori felület'
+          href: container-registry-quickstart-task-cli.md
+    - name: Oktatóanyagok
+      expanded: false
+      items:
+        - name: Tárolórendszerképek összeállításának automatizálása
+          items:
+            - name: Összeállítás a forráskörnyezet alapján
+              href: container-registry-tutorial-quick-task.md
+            - name: Összeállítás kódvéglegesítéskor
+              href: container-registry-tutorial-build-task.md
+            - name: Többlépéses feladatok kódvéglegesítéskor
+              href: container-registry-tutorial-multistep-task.md
+            - name: Összeállítás az alapként szolgáló rendszerképek frissítésekor
+              href: container-registry-tutorial-base-image-update.md
+            - name: Feladat ütemezése
+              href: container-registry-tasks-scheduled.md
+    - name: Példák
+      expanded: false
+      items:
+        - name: YAML és Docker-fájlok
+          href: container-registry-tasks-samples.md
+    - name: Alapelvek
+      items:
         - name: Többlépéses feladatok
           href: container-registry-tasks-multi-step.md
-        - name: Rendszerkép összeállítása buildcsomagokkal (előzetes verzió)
-          href: container-registry-tasks-pack-build.md
+    - name: Útmutatók
+      expanded: false
+      items:
         - name: Hozzáférés biztonságos erőforrásokhoz felügyelt identitások használatával
           items:
             - name: Felügyelt identitás engedélyezése feladathoz
               href: container-registry-tasks-authentication-managed-identity.md
-            - name: Több regisztrációs adatbázisra kiterjedő hitelesítés feladatból
+            - name: Több regisztrációs adatbázisra kiterjedő hitelesítés
               href: container-registry-tasks-cross-registry-authentication.md
             - name: Külső hitelesítés kulcstartó használatával
               href: container-registry-tasks-authentication-key-vault.md
-    - name: Regisztrációs adatbázisok és más Azure-szolgáltatások
-      items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-        - name: Service Fabric
-          href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-    - name: Figyelés
-      items:
-        - name: Diagnosztikai és auditnaplók (előzetes verzió)
-          href: container-registry-diagnostics-audit-logs.md
-    - name: Hibaelhárítás
-      items:
-        - name: Gyakori problémák észlelése
-          href: container-registry-check-health.md
-        - name: GYIK
-          href: container-registry-faq.md
+        - name: Rendszerkép összeállítása buildcsomagokkal (előzetes verzió)
+          href: container-registry-tasks-pack-build.md
 - name: Referencia
+  expanded: false
   items:
     - name: Azure CLI
       href: /cli/azure/acr
@@ -159,19 +190,15 @@
       href: /javascript/api/overview/azure/container-registry
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerregistry/registries
-    - name: ACR-feladatok – YAML
-      href: container-registry-tasks-reference-yaml.md
     - name: Webhookséma
       href: container-registry-webhook-reference.md
     - name: Event Grid-séma
       href: ../event-grid/event-schema-container-registry.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
     - name: Állapotellenőrzés által kiadott hibák
       href: container-registry-health-error-reference.md
-      maintainContext: true
 - name: További források
+  expanded: false
   items:
-    - name: Fejlessze a készségeit a Microsoft Learnnel
-      href: /learn/browse/?products=azure-container-registry
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Díjszabás
