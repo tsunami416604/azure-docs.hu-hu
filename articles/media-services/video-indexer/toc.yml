@@ -15,10 +15,6 @@
   items:
     - name: A Video Indexer API használata
       href: video-indexer-use-apis.md
-- name: Példák
-  items:
-    - name: Élő stream elemzése
-      href: live-stream-analysis.md
 - name: Alapelvek
   items:
     - name: Áttekintés
@@ -29,6 +25,8 @@
       href: manage-multiple-tenants.md
     - name: Nyelvazonosítási modell
       href: language-identification-model.md
+    - name: Élő stream elemzése
+      href: live-stream-analysis.md
     - name: Tartalommodellek testreszabása
       items:
         - name: Áttekintés
