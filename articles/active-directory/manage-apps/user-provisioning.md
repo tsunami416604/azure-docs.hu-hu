@@ -11,46 +11,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2019
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1f661aa67f04de23c7b4871e78d3628c639e7567
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641454"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144541"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>A felhasználók kiépítésének automatizálása és az alkalmazásokkal való kiépítés Azure Active Directory
 
-Azure Active Directory (Azure AD) segítségével automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a Cloud SaaS-alkalmazásokban, például a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)és más rendszerekben. Ez az úgynevezett SaaS-alkalmazások automatikus felhasználó-kiépítés.
+Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez[](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)és még sok más.
 
-> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+![Kiépítés – áttekintés diagram](media/user-provisioning/provisioning-overview.png)
 
 Ez a funkció lehetővé teszi a következőket:
 
-- Új fiókok automatikus létrehozása a megfelelő rendszerekben új személyekhez, amikor csatlakoznak a csapathoz vagy szervezethez.
-- Automatikusan inaktiválja a fiókokat a megfelelő rendszerekben, amikor a felhasználók elhagyják a csapatot vagy a szervezetet.
-- Győződjön meg arról, hogy az alkalmazásokban és rendszerekben lévő identitások naprakészek maradnak a címtár változásai vagy az emberi erőforrások rendszere alapján.
-- Nem felhasználói objektumok, például csoportok kiépítése az azokat támogató alkalmazásokba.
+- A **kiépítés automatizálása**: automatikusan hozzon létre új fiókokat a megfelelő rendszerekben az új személyekhez, amikor csatlakoznak a csapathoz vagy szervezethez.
+- **Kiépítés automatizálása:** Automatikusan inaktiválja a fiókokat a megfelelő rendszerekben, amikor a felhasználók elhagyják a csapatot vagy a szervezetet.
+- **Az adatszinkronizálás a rendszerek között:** Győződjön meg arról, hogy az alkalmazásokban és rendszerekben lévő identitások naprakészek maradnak a címtár vagy az emberi erőforrások rendszerének változásai alapján.
+- **Csoportok kiépítése:** Csoportok kiépítése az azokat támogató alkalmazásokba.
+- **Hozzáférés szabályozása:** Az alkalmazásokban kiépített figyelés és naplózás.
+- **Zökkenőmentes üzembe helyezés a barna mezőkben:** A meglévő identitások egyeztetése a rendszerek között, és az egyszerű integráció lehetővé tétele, még akkor is, ha a felhasználók már léteznek a megcélzott rendszerben.
+- **Gazdag Testreszabás használata:** Kihasználhatja a testreszabható attribútum-hozzárendeléseket, amelyek meghatározzák, hogy a felhasználói adatok milyen mértékben áramlanak a forrásoldali rendszerből a célként megadott rendszerbe.
+- **Riasztások beolvasása kritikus eseményekre:** A kiépítési szolgáltatás riasztásokat biztosít a kritikus fontosságú eseményekhez, és lehetővé teszi Log Analytics integrációt, ahol egyéni riasztásokat adhat meg az üzleti igényeknek megfelelően.
 
-Az automatikus felhasználó-kiépítés magában foglalja a következő funkciókat is:
+## <a name="benefits-of-automatic-provisioning"></a>Az automatikus kiépítés előnyei
 
-- A forrás-és a megcélzott rendszerek közötti meglévő identitások egyeztetésének lehetősége.
-- Testreszabható attribútum-hozzárendelések, amelyek meghatározzák, hogy a rendszer milyen felhasználói adatokból álljon át a forrásrendszer és a cél rendszer között.
-- Nem kötelező e-mail-riasztások kiépítési hibák esetén.
-- Jelentéskészítési és tevékenységi naplók, amelyek segítenek a figyelésben és a hibaelhárításban.
+Mivel a modern szervezeteknél használt alkalmazások száma folyamatosan nő, a rendszergazdák a nagy léptékű hozzáférés-kezeléssel rendelkeznek. Az olyan szabványok, mint például a biztonsági kikötések Markup Language (SAML) vagy a Open ID kapcsolódás (OIDC) lehetővé teszik a rendszergazdáknak, hogy gyorsan állítsanak be egyszeri bejelentkezést (SSO), de a hozzáféréshez az is szükséges, hogy a felhasználók beépítsék az alkalmazást. Számos rendszergazda számára a kiépítés azt jelenti, hogy manuálisan hozza létre az összes felhasználói fiókot, vagy a CSV-fájlokat minden héten feltölti, de ezek a folyamatok időigényesek, költségesek és hibákra hajlamosak. Az SAML-alapú (például JIT) megoldásokat a kiépítés automatizálására is elfogadták, de a vállalatoknak olyan megoldásra is szükségük van, amely a felhasználók kiépítését igényli, amikor a szervezet elhagyja a munkahelyet, vagy már nem igényelnek hozzáférést bizonyos alkalmazásokhoz a szerepkör módosítása alapján.
 
-## <a name="why-use-automated-provisioning"></a>Miért érdemes az automatikus kiépítés használatára?
+Az automatikus kiépítés használatának gyakori indítékai a következők:
 
-A funkció használatának néhány gyakori indítéka a következők:
-
-- A manuális kiépítési folyamatokkal kapcsolatos költségek, eredménytelenség és emberi hibák elkerülése.
-- Az egyedi fejlesztésű üzembe helyezési megoldások és parancsfájlok üzemeltetésével és kezelésével kapcsolatos költségek elkerülése.
+- A kiépítési folyamatok hatékonyságának és pontosságának maximalizálása.
+- Az egyedi fejlesztésű üzembe helyezési megoldások és szkriptek üzemeltetésével és karbantartásával kapcsolatos költségek mentése.
 - A szervezet védelme azáltal, hogy azonnal eltávolítja a felhasználók identitását a Key SaaS-alkalmazásokból, amikor elhagyja a szervezetet.
 - Számos felhasználót egyszerűen importálhat egy adott SaaS-alkalmazásba vagy-rendszerbe.
 - Egyetlen szabályzattal meghatározhatja, hogy ki kiépített és ki tud jelentkezni egy alkalmazásba.
+
+Az Azure AD-felhasználók üzembe helyezése segíthet a problémák megoldásában. Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használják az Azure AD-t, akkor olvassa el a [Asos-esettanulmányt](https://aka.ms/asoscasestudy). Az alábbi videó áttekintést nyújt a felhasználók üzembe helyezéséről az Azure AD-ben:
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Milyen alkalmazásokat és rendszereket használhatok az Azure AD automatikus felhasználói üzembe helyezéséhez?
+
+Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer előre integrált támogatását, valamint általános támogatást nyújt a [SCIM 2,0 standard](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)részét képező alkalmazások számára.
+
+* **Előre integrált alkalmazások (Gallery SaaS-alkalmazások)** . Megtalálhatja az összes olyan alkalmazást, amelyhez az Azure AD támogatja a [felhasználó által kiépített alkalmazás-oktatóanyagokat](../saas-apps/tutorial-list.md)tartalmazó, előre integrált létesítési összekötőt. A katalógusban felsorolt előre integrált alkalmazások általában a SCIM 2,0-alapú felhasználói felügyeleti API-kat használják a kiépítés számára. 
+
+   ![Salesforce embléma](media/user-provisioning/gallery-app-logos.png)
+
+   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
+
+* **Az SCIM 2,0-et támogató alkalmazások**. Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: a [scim használata a felhasználók és csoportok automatikus kiépítéséhez Azure Active Directoryról alkalmazásokba](use-scim-to-provision-users-and-groups.md).
+
+## <a name="what-is-scim"></a>Mi az a SCIM?
+
+A kiépítés és a megszüntetés automatizálása érdekében az alkalmazások tulajdonosi felhasználói és csoportos API-kat tesznek elérhetővé. Azonban bárki, aki több alkalmazásban próbálta felügyelni a felhasználókat, azt fogja tudni, hogy minden alkalmazás ugyanazt az egyszerű műveletet próbálja végrehajtani, például a felhasználók létrehozását és frissítését, a felhasználók csoportokhoz való hozzáadását vagy a felhasználók megszüntetését. Az ilyen egyszerű műveletek azonban a különböző végponti elérési utakkal, a felhasználói adatok megadására szolgáló különböző módszerekkel, valamint egy másik, az egyes elemek ábrázolására szolgáló sémával eltérő módon valósíthatók meg.
+
+A problémák megoldása érdekében a SCIM-specifikáció egy általános felhasználói sémát biztosít, amellyel a felhasználók beléphetnek az alkalmazásba, és onnan is megtalálhatják őket. A SCIM a kiépítés de facto szabványa, és az összevonási szabványok, például az SAML vagy az OpenID Connect együttes használata esetén a rendszergazdák teljes körű, a hozzáférés-vezérlésre vonatkozó szabványokon alapuló megoldást biztosítanak.
+
+A felhasználók és csoportok alkalmazásba való kiépítésének és megszüntetésének automatizálására vonatkozó részletes útmutatásért lásd: a scim-SCIM való [kiépítés a Azure Active Directory](use-scim-to-provision-users-and-groups.md)használatával.
 
 ## <a name="how-does-automatic-provisioning-work"></a>Hogyan működik az automatikus kiépítés?
 
@@ -65,54 +88,13 @@ Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmaz�
 ![bejövő felhasználó kiépítési munkafolyamata](./media/user-provisioning/provisioning2.PNG)
 *3. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból a Azure Active Directory és a Windows serverre Active Directory*
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Milyen alkalmazásokat és rendszereket használhatok az Azure AD automatikus felhasználói üzembe helyezéséhez?
-
-Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer előre integrált támogatását, valamint általános támogatást nyújt a [SCIM 2,0 standard](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)részét képező alkalmazások számára.
-
-### <a name="pre-integrated-applications"></a>Előre integrált alkalmazások
-
-Azon alkalmazások listájáért, amelyekhez az Azure AD támogatja az előre integrált létesítési összekötőt, tekintse meg a felhasználók üzembe helyezéséhez kapcsolódó [alkalmazás-oktatóanyagok listáját](../saas-apps/tutorial-list.md).
-
-Ha az Azure AD mérnöki csapatával szeretne további alkalmazásokat kiépíteni, küldjön egy üzenetet a [Azure Active Directory visszajelzési fórumán](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)keresztül.
-
-> [!NOTE]
-> Ahhoz, hogy egy alkalmazás támogassa az automatikus felhasználói üzembe helyezést, először meg kell adnia a szükséges felhasználói felügyeleti API-kat, amelyek lehetővé teszik, hogy a külső programok automatizálják a felhasználók létrehozását, karbantartását és eltávolítását. Ezért nem minden SaaS-alkalmazás kompatibilis ezzel a szolgáltatással. A felhasználói felügyeleti API-kat támogató alkalmazások esetében az Azure AD mérnöki csapata kiépítheti ezeket az alkalmazásokat, és ezt a munkát az aktuális és a leendő ügyfelek igényei szerint rangsorolhatja.
-
-### <a name="connecting-applications-that-support-scim-20"></a>A SCIM 2,0-et támogató alkalmazások csatlakoztatása
-
-Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: a [scim használata a felhasználók és csoportok automatikus kiépítéséhez Azure Active Directoryról alkalmazásokba](use-scim-to-provision-users-and-groups.md).
-
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hogyan automatikus kiépítés beállítása egy alkalmazáshoz?
+
+A katalógusban felsorolt előre integrált alkalmazások esetében az automatikus kiépítés beállításához lépésenkénti útmutató áll rendelkezésre. Tekintse [meg az integrált katalógus-alkalmazásokhoz tartozó oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/saas-apps/). A következő videó bemutatja, hogyan állíthatja be az automatikus felhasználó-kiépítés SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-A Azure Active Directory portál használatával konfigurálhatja az Azure AD kiépítési szolgáltatást egy kiválasztott alkalmazáshoz.
-
-1. Nyissa meg a **[Azure Active Directory portált](https://aad.portal.azure.com)** .
-1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Az összes konfigurált alkalmazás listája látható.
-1. Alkalmazás hozzáadásához válassza az **+ új alkalmazás** lehetőséget. 
-1. Adja meg a részleteket, és válassza a **Hozzáadás**lehetőséget. A rendszer hozzáadja az új alkalmazást a vállalati alkalmazások listájához, és megnyitja az alkalmazás-kezelés képernyőjét.
-1. A **kiépítés** lehetőség kiválasztásával kezelheti az alkalmazás felhasználói fiókjának kiépítési beállításait.
-
-   ![A kiépítési beállítások képernyő megjelenítése](./media/user-provisioning/provisioning_settings0.PNG)
-
-1. Válassza a **létesítési mód** automatikus beállítását a rendszergazdai hitelesítő adatok, hozzárendelések, Indítás és Leállítás, valamint a szinkronizálás beállításainak megadásához.
-
-   - A **rendszergazdai hitelesítő adatok** kibontásával adja meg azokat a hitelesítő adatokat, amelyek szükségesek ahhoz, hogy az Azure ad csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Ez a szakasz azt is lehetővé teszi, hogy engedélyezze az e-mailes értesítéseket, ha a hitelesítő adatok meghiúsulnak, vagy a kiépítési feladat [karanténba](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)kerül.
-   - A **leképezések** kibontásával megtekintheti és szerkesztheti az Azure ad és a célalkalmazás közötti felhasználói attribútumokat, amikor a felhasználói fiókokat kiépítik vagy frissítik. Ha a célalkalmazás támogatja azt, ez a szakasz lehetővé teszi a csoportok és felhasználói fiókok üzembe helyezésének igény szerinti konfigurálását. Válasszon ki egy leképezést a táblázatban a leképezési szerkesztő jobbra való megnyitásához, ahol megtekintheti és testreszabhatja a felhasználói attribútumokat.
-
-     A **hatóköri szűrők** közlik a kiépítési szolgáltatással, hogy a forrásrendszer mely felhasználói és csoportjai legyenek kiépítve vagy kiépítve a célként megadott rendszerbe. Az **attribútum-hozzárendelés** ablaktáblán válassza ki a **forrásoldali objektum hatókörét** az adott attribútumérték szűréséhez. Például megadhatja, hogy csak a „Department” attribútumhoz „Sales” értékkel rendelkező felhasználók tartozzanak az átadás hatókörébe. További információkért tekintse meg [a hatókörszűrők használatát ismertető cikket](define-conditional-rules-for-provisioning-user-accounts.md).
-
-     További információ: az [attribútumok megfeleltetésének testreszabása](customize-application-attributes.md).
-
-   - A **Beállítások** vezérlik egy alkalmazás kiépítési szolgáltatásának működését, beleértve azt is, hogy jelenleg fut-e. A **hatókör** menü segítségével megadhatja, hogy csak a hozzárendelt felhasználók és csoportok legyenek a kiépítés hatókörében, vagy ha az Azure ad-címtár minden felhasználóját ki kell építeni. A felhasználók és csoportok „hozzárendelésével” kapcsolatos információkért lásd [az Azure Active Directoryban a felhasználók és csoportok vállalati alkalmazásokhoz való hozzárendelését ismertető cikket](assign-user-or-group-access-portal.md).
-
-Az App Management képernyőn válassza ki a **kiépítési naplók (előzetes verzió)** lehetőséget az Azure ad-kiépítési szolgáltatás által futtatott összes művelet rekordjainak megtekintéséhez. További információkért lásd a [kiépítési jelentéskészítési útmutatót](check-status-user-account-provisioning.md).
-
-![Példa: kiépítési naplók képernyője egy alkalmazáshoz](./media/user-provisioning/audit_logs.PNG)
-
-> [!NOTE]
-> Az Azure AD-beli felhasználói kiépítési szolgáltatás a [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)használatával is konfigurálható és kezelhető.
+Az SCIM 2,0-et támogató egyéb alkalmazások esetében kövesse a [scim felhasználó kiépítés a Azure Active Directorytel](use-scim-to-provision-users-and-groups.md)című cikk lépéseit.
 
 ## <a name="what-happens-during-provisioning"></a>Mi történik a kiépítés során?
 

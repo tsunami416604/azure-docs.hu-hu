@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: cce7562c74577f6fd545bcaed3ee3e0968fd40b4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607515"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132910"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban
 
@@ -27,15 +27,17 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Navigáljon a méretezés lapra a Azure Portal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Navigáljon az Azure Spring Cloud **Áttekintés** oldalára.
+
+1. Válassza ki a szolgáltatást tartalmazó erőforráscsoportot.
 
 1. Nyissa meg az **alkalmazások** fület a **Beállítások** fejléc alatt a bal oldali menüben.
 
 1. Válassza ki a méretezni kívánt alkalmazást. Ebben a példában a "Account-Service" nevű alkalmazást fogjuk méretezni. Ekkor el kell végeznie az alkalmazás **Áttekintés** lapját.
 
-1. Lépjen a **skála** lapra a bal oldali menü **Beállítások** fejlécében. Egy olyan űrlapot kell látnia, amely tartalmazza a korábban említett skálázási attribútumok sorait.
+1. Lépjen a **skála** lapra a bal oldali menü **Beállítások** fejlécében. Ekkor meg kell jelennie az alábbi szakaszban látható skálázási attribútumok lehetőségeinek.
 
 ## <a name="scale-your-application"></a>Az alkalmazás méretezése
 
@@ -45,9 +47,11 @@ Módosíthatja a skálázási attribútumokat. Tartsa szem előtt az alábbi meg
 
 * **Memória/GB**: az alkalmazás-példányok maximálisan megengedett mérete 8 GB.  Az alkalmazáshoz tartozó memória teljes mennyisége az itt megadott érték lesz, szorozva az alkalmazás példányainak számával.
 
-* **Példányszám**: akár 20 példányra is kibővítheti a standard szintet. Ez az érték megváltoztatja a Service-alkalmazás különböző futó példányainak számát.
+* **Alkalmazás-példányok száma**: a standard szinten akár 20 példányt is felhasználhat. Ez az érték megváltoztatja a Service-alkalmazás különböző futó példányainak számát.
 
-Ügyeljen rá, hogy a méretezési beállítások alkalmazásához kattintson a **Mentés** gombra.
+Ügyeljen rá, hogy a méretezési beállítások alkalmazásához kattintson a **Save (Mentés** ) gombra.
+
+![Szolgáltatás méretezése Azure Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Néhány másodperc elteltével a végrehajtott módosítások az **Áttekintés** lapon jelennek meg, az **alkalmazás példányai** lapon pedig további részletek érhetők el. a skálázás nem igényli a kód módosítását vagy az újratelepítést.
 

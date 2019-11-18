@@ -1,17 +1,14 @@
 ---
-title: Változók Azure Resource Manager-sablonokban
+title: Változók a sablonokban
 description: Leírja, hogyan határozhat meg változókat egy Azure Resource Manager sablonban.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 5ed6bb58f2f45de557f2127fdc8abd5cdf2ef965
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 5bd7acd759c553e629febdb141aefd63cfa4dd4b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384033"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149088"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Változók Azure Resource Manager sablonban
 

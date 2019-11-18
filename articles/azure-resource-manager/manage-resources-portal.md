@@ -1,19 +1,16 @@
 ---
-title: Azure-erőforrások kezelése a Azure Portal használatával | Microsoft Docs
+title: Erőforrások kezelése – Azure Portal
 description: Az erőforrások kezeléséhez használja a Azure Portal és a Azure Resource Manager. Az erőforrások üzembe helyezésének és törlésének módját mutatja be.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 5c0e09930ee53733b36e987356cef2963416006f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390397"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149820"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-erőforrások kezelése a Azure Portal használatával
 
@@ -36,7 +33,7 @@ Az Azure-erőforrások az Azure-szolgáltatások és az erőforráscsoportok sze
 
 Erőforrás megnyitása a szolgáltatás típusa szerint:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali ablaktáblán válassza ki az Azure-szolgáltatást. Ebben az esetben a **Storage-fiókok**.  Ha nem látja a felsorolt szolgáltatást, válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a szolgáltatás típusát.
 
     ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -51,7 +48,7 @@ Erőforrás megnyitása a szolgáltatás típusa szerint:
 
 Erőforrás megnyitása erőforráscsoport szerint:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali ablaktáblában válassza az **erőforráscsoportok** lehetőséget a csoporton belüli erőforrás listázásához.
 3. Válassza ki a megnyitni kívánt erőforrást. 
 
@@ -119,7 +116,7 @@ A diagram jobb felső sarkában található rögzítés ikont választva rögzí
 
 A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.

@@ -3,17 +3,17 @@ title: Az Azure-alkalmazások teljesítményének javítása a Azure Advisorsal 
 description: Az Advisor használatával optimalizálja az Azure-beli üzemelő példányok teljesítményét.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.author: sagupt
+ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885737"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144150"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 
@@ -125,3 +125,4 @@ Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a k�
 * [Advisor – Cost-javaslatok](advisor-performance-recommendations.md)
 * [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
+* [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

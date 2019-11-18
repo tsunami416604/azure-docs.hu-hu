@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4af238241293f32be296e7a4243b0d2a6fef15dd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931912"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152017"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play előnézeti eszköz (Windows) létrehozásához
 
@@ -46,36 +46,7 @@ A _vállalati modell adattárának kapcsolati karakterláncát_ az [Azure Certif
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
-
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. Ha nem rendelkezik IoT-hubhoz, kövesse az [alábbi utasításokat, és hozzon létre egyet](../iot-hub/iot-hub-create-using-cli.md).
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
-
-A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-A következő parancs futtatásával hozza létre az eszköz identitását az IoT hub-ban. Cserélje le a **YourIoTHubName** és a **YourDevice** helyőrzőket a tényleges nevekre.
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
-```
-
-Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
-
-Futtassa a következő parancsot a hub _IoT hub kapcsolódási karakterláncának_ lekéréséhez:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
@@ -212,11 +183,11 @@ Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közz�
 
 1. Adja meg _IoT hub kapcsolati karakterláncát_ , és válassza a **Csatlakoztatás**lehetőséget.
 
-1. A csatlakoztatása után megjelenik az eszköz áttekintő lapja.
+1. A csatlakoztatása után megjelenik az **eszközök** áttekintése oldal.
 
 1. A vállalati tárház hozzáadásához válassza a **Beállítások**, majd a **modul-definíciós forrás**, majd a **vállalati tárház**lehetőséget. Adja hozzá a vállalati modell adattárának kapcsolati karakterláncát, majd kattintson a **Mentés és a csatlakoztatás**lehetőségre.
 
-1. Az eszköz áttekintése lapon keresse meg a korábban létrehozott eszköz identitását, és válassza ki a további részletek megtekintéséhez.
+1. Az **eszközök** áttekintése lapon keresse meg a korábban létrehozott eszköz identitását. Ha az eszköz még fut a parancssorban, ellenőrizze, hogy az eszköz **kapcsolati állapota** az Azure IoT Explorerben _csatlakoztatva_ van-e (ha nem, nyomja meg a **frissítést** , amíg meg nem történik). Válassza ki az eszközt a további részletek megtekintéséhez.
 
 1. Bontsa ki az **urn: < YOUR_INTERFACE_NAME >: EnvironmentalSensor: 1** azonosítójú felületet, és tekintse meg a IoT Plug and Play primitívek – tulajdonságok, parancsok és telemetria. A megjelenő felület neve a modell készítésekor behelyezett név.
 
@@ -226,7 +197,7 @@ Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közz�
 
 1. Válassza a **Tulajdonságok (írható)** lapot a frissíteni kívánt írható tulajdonságok megtekintéséhez.
 
-1. Bontsa **ki a tulajdonságnév, a**frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget.
+1. Bontsa **ki a tulajdonságnév, a**frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget. 
 
 1. Ha meg szeretné jeleníteni az új nevet a **jelentett tulajdonság** oszlopban, válassza a lap tetején található **frissítés** gombot.
 
@@ -236,7 +207,9 @@ Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közz�
 
 1. Nyissa meg a szimulált eszköz parancssorát, és olvassa el a kinyomtatott megerősítő üzeneteket, és ellenőrizze, hogy a parancsok a várt módon lettek-e végrehajtva.
 
-## <a name="next-steps"></a>Következő lépések
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
+
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre IoT Plug and Play-eszközt DCM használatával.
 

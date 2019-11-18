@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: cb6032938379b632b743827153c61fd3e18c1cfe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721581"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123818"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
@@ -52,8 +52,6 @@ az extension add --name spring-cloud
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Szolgáltatási példány kiépítése a Azure Portal
 
 1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.AppPlatform), és jelentkezzen be a fiókjába.
-
-1. Válassza a **Létrehozás** lehetőséget az **Áttekintés** lapon a létrehozás párbeszédpanel megnyitásához.
 
 1. Adja meg a minta alkalmazás **projekt részleteit** a következőképpen:
 
@@ -101,7 +99,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Válassza ki a modulokat `gateway`, `auth-service` és `account-service`.
+    a. Válassza ki a modulokat `gateway`,`auth-service`és `account-service`.
 
     b. Válassza ki az előfizetését és az Azure Spring Cloud Service-fürtöt.
 

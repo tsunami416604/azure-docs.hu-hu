@@ -1,17 +1,14 @@
 ---
-title: Érvénytelenek az Azure-sablon hibái | Microsoft Docs
+title: Érvénytelenek a sablon hibái
 description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.author: tomfitz
-ms.openlocfilehash: bdf1d66ab345cc0d86206413db6617e9568b4d22
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7b9b8021ad34a7ec7f879ce9413f4ae5d44e2720
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390322"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150573"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablon hibáinak elhárítása
 
@@ -153,8 +150,8 @@ Ha eltávolítja az értékeket a **dependsOn** tulajdonságból, a sablon telep
 
 Ha ez a módszer nem oldja meg a körkörös függőséget, érdemes lehet áthelyezni a telepítési logika egy részét alárendelt erőforrásokra (például bővítményekre vagy konfigurációs beállításokra). Konfigurálja ezeket a alárendelt erőforrásokat úgy, hogy az a körkörös függőségben érintett erőforrások után legyen üzembe helyezhető. Tegyük fel például, hogy két virtuális gépet telepít, de tulajdonságokat kell megadnia, amelyek a másikra hivatkoznak. Ezeket a következő sorrendben helyezheti üzembe:
 
-1. VM1
-2. VM2
+1. vm1
+2. vm2
 3. A VM1 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM1, amelyeket a VM2-ből kap.
 4. A VM2 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM2, amelyeket a VM1-ből kap.
 

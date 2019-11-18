@@ -1,17 +1,14 @@
 ---
-title: Azure-szülő erőforrás-hibák | Microsoft Docs
+title: Szülő-erőforrással kapcsolatos hibák
 description: Ismerteti, Hogyan oldhatók meg a hibák, amikor egy Azure Resource Manager sablonban lévő szülő erőforrással dolgozik.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.author: tomfitz
-ms.openlocfilehash: 197554e16e28b4928cab351838f00e1631c269fd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f6e0eb678c6ebce17f168ac09f0777102aafc3d9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390238"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150562"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>A szülő erőforrások hibáinak elhárítása
 
@@ -28,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Ok
 
-Ha az egyik erőforrás gyermek egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. A gyermek erőforrás neve határozza meg a fölérendelt erőforrással létesített kapcsolatokat. A gyermek erőforrás nevének `<parent-resource-name>/<child-resource-name>` formátumúnak kell lennie. Előfordulhat például, hogy egy SQL Database a következőként van meghatározva:
+Ha az egyik erőforrás gyermek egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. A gyermek erőforrás neve határozza meg a fölérendelt erőforrással létesített kapcsolatokat. A gyermek erőforrás neve `<parent-resource-name>/<child-resource-name>`formátumú. Előfordulhat például, hogy egy SQL Database a következőként van meghatározva:
 
 ```json
 {

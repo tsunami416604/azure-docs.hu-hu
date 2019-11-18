@@ -1,21 +1,18 @@
 ---
-title: Oktatóanyag – sablon-függvények hozzáadása Azure Resource Manager sablonhoz
+title: Oktatóanyag – sablon-függvények hozzáadása
 description: Adja hozzá a Template functions-t a Azure Resource Manager-sablonhoz az értékek létrehozásához.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca6e7f326ba67eac33e4dee5fa844d7676ab864b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fe571c2a0088375feff8351f49a476669461b6aa
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963960"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150249"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Oktatóanyag: Template functions hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Oktatóanyag: template functions hozzáadása a Resource Manager-sablonhoz
 
 Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá [sablon-függvényeket](resource-group-template-functions.md) a sablonhoz. A függvények használatával dinamikusan hozhat létre értékeket. A rendszer által biztosított sablon-függvények mellett létrehozhat [felhasználó által definiált függvényeket](./template-user-defined-functions.md)is. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
 
@@ -73,11 +70,11 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Láthatja, hogy a Storage-fiók erőforrása telepítve van, és ugyanazzal a hellyel rendelkezik, mint az erőforráscsoport.

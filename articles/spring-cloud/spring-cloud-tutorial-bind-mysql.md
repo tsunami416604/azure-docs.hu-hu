@@ -1,21 +1,21 @@
 ---
-title: Az Azure Spring Cloud-alkalmazáshoz való Azure Database for MySQL kötése | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan köthető az Azure MySQL az Azure Spring Cloud-alkalmazáshoz
+title: Azure Database for MySQL-példány kötése az Azure Spring Cloud-alkalmazáshoz | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan köthető egy Azure Database for MySQL-példány az Azure Spring Cloud-alkalmazáshoz
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: b6de5bb3b25c111d1b7775ea9570a4ae2cf45042
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 6c5cd4ac384affaedbd813f9395f997f92eb69c4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607588"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151125"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-database-for-mysql"></a>Oktatóanyag: Azure-szolgáltatások kötése Azure Spring Cloud-alkalmazáshoz: Azure Database for MySQL
+# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Oktatóanyag: Azure Database for MySQL-példány kötése az Azure Spring Cloud-alkalmazáshoz 
 
-Az Azure Spring Cloud lehetővé teszi, hogy az Azure-szolgáltatásokat automatikusan, a Spring boot-alkalmazás manuális konfigurálása helyett az alkalmazásokhoz kösse. Ez az oktatóanyag bemutatja, hogyan köthető az alkalmazás az Azure MySQL-hez.
+Az Azure Spring Cloud-ban az Azure-szolgáltatások automatikus kiválasztását is elvégezheti az alkalmazásaiban, ahelyett, hogy a Spring boot-alkalmazást manuálisan kellene konfigurálnia. Ez az oktatóanyag bemutatja, hogyan köthető az alkalmazás a Azure Database for MySQL-példányhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,13 +23,15 @@ Az Azure Spring Cloud lehetővé teszi, hogy az Azure-szolgáltatásokat automat
 * Egy Azure Database for MySQL fiók
 * Azure CLI
 
-Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebben a rövid útmutatóban ismertetett lépéseket az első Spring [Cloud-alkalmazás](spring-cloud-quickstart-launch-app-portal.md) üzembe helyezéséhez.
+Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse a gyors útmutató [: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md) az első rugós felhőalapú alkalmazás üzembe helyezéséhez.
 
-## <a name="bind-azure-database-for-mysql"></a>Kötés Azure Database for MySQL
+## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>Az alkalmazás kötése az Azure Database for MySQL-példányhoz
 
-1. Jegyezze fel az Azure MySQL-fiókjának rendszergazdai felhasználónevét és jelszavát. Kapcsolódjon a kiszolgálóhoz, és hozzon létre egy `testdb` nevű adatbázist egy MySQL-ügyfélről. Hozzon létre egy új, nem rendszergazdai fiókot.
+1. Jegyezze fel a Azure Database for MySQL fiókjának rendszergazdai felhasználónevét és jelszavát. 
 
-1. Adja hozzá a következő függőséget a projekt `pom.xml`
+1. Kapcsolódjon a kiszolgálóhoz, hozzon létre egy **testdb** nevű adatbázist egy MySQL-ügyfélről, majd hozzon létre egy új, nem rendszergazdai fiókot.
+
+1. A projekt *Pom. XML* fájljában adja hozzá a következő függőséget:
 
     ```xml
     <dependency>
@@ -37,15 +39,19 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebbe
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     ```
-1. Távolítsa el a `spring.datasource.*` tulajdonságokat, ha van ilyen, a `application.properties` fájlban.
+1. Az *Application. properties* fájlban távolítsa el a `spring.datasource.*` tulajdonságokat.
 
-1. Frissítse az aktuális telepítést `az spring-cloud app update` használatával, vagy hozzon létre egy új központi telepítést ehhez a változáshoz a `az spring-cloud app deployment create` használatával.  Ezek a parancsok vagy az új függőséggel frissítik vagy létrehozzák az alkalmazást.
+1. Frissítse az aktuális telepítést `az spring-cloud app update`futtatásával, vagy hozzon létre egy új központi telepítést a módosításhoz a `az spring-cloud app deployment create`futtatásával.  Ezek a parancsok vagy az új függőséggel frissítik vagy létrehozzák az alkalmazást.
 
-1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára. Keresse meg az **alkalmazás irányítópultját** , és válassza ki az alkalmazást, amely az Azure MySQL-hez kötődik.  Ez ugyanaz az alkalmazás, amelyet az előző lépésben frissített vagy telepített. Ezután válassza a `Service binding` elemet, és válassza a `Create service binding` gombot. Töltse ki az űrlapot, és ügyeljen arra, hogy válassza a **kötés típusa** `Azure MySQL`, a korábban használt adatbázis nevét, valamint az első lépésben feljegyzett felhasználónevet és jelszót.
+1. A Azure Portal az **Azure Spring Cloud** Service oldalon keresse meg az **alkalmazás irányítópultját**, majd válassza ki az alkalmazást, amelyet a Azure Database for MySQL-példányhoz szeretne kötni.  Ez ugyanaz az alkalmazás, amelyet az előző lépésben frissített vagy telepített. 
 
-1. Indítsa újra az alkalmazást, és ezt a kötést most már működnie kell.
+1. Válassza ki a **szolgáltatási kötés**elemet, majd kattintson a **szolgáltatás kötésének létrehozása** gombra. 
 
-1. A szolgáltatási kötés helyességének biztosításához válassza ki a kötési nevet, és ellenőrizze annak részleteit. A `property` mezőnek így kell kinéznie:
+1. Töltse ki az űrlapot, és válassza az **Azure MySQL** -t a **kötés típusaként**, és használja ugyanazt az adatbázisnevet, amelyet korábban használt, és használja ugyanazt a felhasználónevet és jelszót, amelyet az első lépésben feljegyzett.
+
+1. Indítsa újra az alkalmazást, és ez a kötés most már működnie kell.
+
+1. A szolgáltatási kötés helyességének biztosításához jelölje ki a kötés nevét, majd ellenőrizze a részleteit. A `property` mezőnek így kell kinéznie:
     ```
     spring.datasource.url=jdbc:mysql://some-server.mysql.database.azure.com:3306/testdb?useSSL=true&requireSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin@some-server
@@ -55,8 +61,8 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebbe
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogy az Azure Spring Cloud-alkalmazást egy MySQL-ADATBÁZIShoz kösse.  Ha többet szeretne megtudni az Azure Spring Cloud-szolgáltatás kezeléséről, olvassa el a következő témakört: a szolgáltatások felderítésének és regisztrálásának megismerése.
+Ebből az oktatóanyagból megtudhatta, hogyan köthető az Azure Spring Cloud-alkalmazás egy Azure Database for MySQL-példányhoz.  Ha többet szeretne megtudni az Azure Spring Cloud-szolgáltatás kezeléséről, tekintse meg a szolgáltatás felderítésével és regisztrálásával foglalkozó cikket.
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan engedélyezheti a szolgáltatás-felderítést és-regisztrációkat a Spring Cloud Service-beállításjegyzék használatával](spring-cloud-service-registration.md).
+> [A Service Discovery és a regisztráció engedélyezése a Spring Cloud Service-beállításjegyzék használatával](spring-cloud-service-registration.md)
 

@@ -1,23 +1,20 @@
 ---
-title: Azure-bővítmények erőforrástípusok
+title: Bővítményerőforrás-típusok
 description: Felsorolja az Azure-erőforrástípusok használatát a más erőforrástípusok képességeinek bővítésére.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 00e8efaaa81ec0ce189d8cfe8a78285ded445c68
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 16dcd4cccea4445b6839ac639094d18e29ed49a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901923"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147039"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Más erőforrások képességeit kiterjesztő erőforrástípusok
 
 A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás képességeihez járul hozzá. Például az erőforrás-zárolás egy bővítmény-erőforrás. Egy erőforrás-zárolást egy másik erőforráshoz alkalmazva megakadályozhatja a törlését vagy módosítását. Nincs értelme létrehozni erőforrás-zárolást önmagában. A bővítmény erőforrásait mindig egy másik erőforrásra alkalmazza a rendszer.
 
-## <a name="extension-resource-types"></a>Kiterjesztési erőforrástípusok
+## <a name="extension-resource-types"></a>Bővítményerőforrás-típusok
 
 - Microsoft. Advisor/konfigurációk
 - Microsoft. Advisor/javaslatok
@@ -75,8 +72,8 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. CostManagement/nézetek
 - Microsoft. CostManagement/showbackRules
 - Microsoft. CustomProviders/társítások
-- Microsoft. EventGrid/eventSubscriptions
-- Microsoft. EventGrid/extensionTopics
+- Microsoft.EventGrid/eventSubscriptions
+- Microsoft.EventGrid/extensionTopics
 - Microsoft. GuestConfiguration/configurationProfileAssignments
 - Microsoft. GuestConfiguration/guestConfigurationAssignments
 - Microsoft. GuestConfiguration/szoftver
@@ -110,7 +107,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. PolicyInsights/policyEvents
 - Microsoft. PolicyInsights/policyStates
 - Microsoft. PolicyInsights/policyTrackedResources
-- Microsoft. PolicyInsights/szervizelések
+- Microsoft.PolicyInsights/remediations
 - Microsoft. Recoveryservices szolgáltatónál/backupProtectedItems
 - Microsoft. ResourceHealth/availabilityStatuses
 - Microsoft. ResourceHealth/childAvailabilityStatuses
@@ -151,7 +148,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. WorkloadMonitor/figyelők
 - Microsoft. WorkloadMonitor/notificationSettings
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha egy Azure Resource Manager-sablonban szeretné lekérni a bővítmény erőforrásának erőforrás-AZONOSÍTÓját, használja a [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid).
 - A bővítmény-erőforrások sablonban való létrehozásával kapcsolatos példát a [Event Grid esemény-előfizetések](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)című témakörben talál.

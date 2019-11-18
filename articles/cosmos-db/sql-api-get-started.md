@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 25846bb7a19d29a3a72146d4046b5205183a247e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720862"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132562"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Oktatóanyag: .NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 > [!div class="checklist"]
 >
-> * Azure Cosmos-fiók létrehozása és csatlakoztatása
+> * Létrehozása és csatlakozás az Azure Cosmos-fiók
 > * A projekt konfigurálása a Visual Studióban
 > * Adatbázis és tároló létrehozása
 > * Elemek hozzáadása a tárolóhoz
@@ -118,7 +118,7 @@ Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásán
    > [!NOTE]
    > Ha már ismeri a .NET SDK korábbi verzióját, akkor előfordulhat, hogy ismeri a feltételek *gyűjteményét* és a *dokumentumot*. Mivel Azure Cosmos DB több API-modellt is támogat, a .NET SDK 3,0-es verziója az általános feltételek *tárolóját* és *elemét*használja. Egy *tároló* lehet gyűjtemény, gráf vagy tábla. Egy *elem* lehet dokumentum, Edge/csúcspont vagy sor, és a tartalom egy tárolón belül van. További információ: [adatbázisok, tárolók és elemek használata Azure Cosmos DBban](databases-containers-items.md).
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com). Keresse meg Azure Cosmos DB-fiókját, majd válassza a **kulcsok**lehetőséget.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg Azure Cosmos DB-fiókját, majd válassza a **kulcsok**lehetőséget.
 
    ![Azure Cosmos DB kulcsok beolvasása Azure Portal](./media/sql-api-get-started/cosmos-getting-started-portal-keys.png)
 
@@ -257,6 +257,16 @@ Az adatbázis a tárolók között particionált elemek logikai tárolója. A [C
     ```
 
 1. Az alkalmazás futtatásához nyomja le az F5 billentyűt.
+
+   > [!NOTE]
+   > Ha "503 szolgáltatás nem érhető el" kivételt kap, akkor lehetséges, hogy a tűzfal blokkolja a szükséges [portokat](performance-tips.md#networking) a közvetlen módban. A probléma megoldásához nyissa meg a szükséges [portokat](performance-tips.md#networking) , vagy próbálja meg használni az átjáró üzemmódot az alább látható módon.
+   ```csharp
+     // Create a new instance of the Cosmos Client in Gateway mode
+     this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
+            {
+                ConnectionMode = ConnectionMode.Gateway
+            });
+   ```
 
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos-adatbázist.  
 

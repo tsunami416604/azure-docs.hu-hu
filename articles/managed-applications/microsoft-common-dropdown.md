@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5784b5df9b522f0489ca1f6087627b45cec5349d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e1db91362d17d9100199f0b30119f8024f00a903
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331746"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151340"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown felhasználói felületi elem
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI element
+
 Egy legördülő listával rendelkező kiválasztási vezérlő.
 
 ## <a name="ui-sample"></a>Felhasználói felület mintája
-![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+
+![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
 ## <a name="schema"></a>Séma
+
 ```json
 {
   "name": "element1",
@@ -51,18 +54,20 @@ Egy legördülő listával rendelkező kiválasztási vezérlő.
 }
 ```
 
-## <a name="remarks"></a>Megjegyzések
-
-- A `constraints.allowedValues` címkéje egy elem megjelenített szövege, és az értéke az elem kimeneti értéke, ha ki van választva.
-- Ha meg van adva, az alapértelmezett értéknek a `constraints.allowedValues` címkének kell lennie. Ha nincs megadva, a `constraints.allowedValues` első eleme van kiválasztva. Az alapértelmezett érték **Null**.
-- a `constraints.allowedValues` értéknek legalább egy elemmel kell rendelkeznie.
-- Ha nem szükséges értéket emulálni, adjon hozzá egy címkével ellátott, `""` (üres karakterlánc) értéket a `constraints.allowedValues` értékhez.
-
 ## <a name="sample-output"></a>Példa kimenet
+
 ```json
 "two"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="remarks"></a>Megjegyzések
+
+- A `constraints.allowedValues` felirata egy elem megjelenített szövege, amelynek értéke az elem kimeneti értéke, ha ki van választva.
+- Ha meg van adva, az alapértelmezett értéknek a `constraints.allowedValues`ban található címkének kell lennie. Ha nincs megadva, a `constraints.allowedValues` első eleme van kiválasztva. Az alapértelmezett érték **Null**.
+- a `constraints.allowedValues`nak legalább egy elemmel kell rendelkeznie.
+- Ha nem szükséges értéket emulálni, adjon hozzá egy címkével ellátott, `""` (üres karakterlánc) értéket a `constraints.allowedValues`hoz.
+
+## <a name="next-steps"></a>További lépések
+
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

@@ -1,19 +1,16 @@
 ---
-title: Azure-erőforrások kezelése Azure PowerShell használatával | Microsoft Docs
+title: Erőforrások kezelése – Azure PowerShell
 description: Az erőforrások kezeléséhez használja a Azure PowerShell és a Azure Resource Manager. Az erőforrások üzembe helyezésének és törlésének módját mutatja be.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: aa215555fdd39e9d756d5fc925282b1eaffc9ebf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d9714c90af326c34a64ac13b0d10e21fbe5469d4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390368"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146517"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure-erőforrások kezelése Azure PowerShell használatával
 
@@ -138,7 +135,7 @@ A címkézés segítségével logikailag rendszerezheti az erőforráscsoportot 
 
 A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információ: a [hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure StorageAccountSelector felhasználói felületi elemben |} A Microsoft Docs
-description: Az Azure portal a Microsoft.Storage.StorageAccountSelector felhasználói felületi elem ismerteti.
+title: Az Azure StorageAccountSelector felhasználói felületének eleme | Microsoft Docs
+description: A Azure Portal Microsoft. Storage. StorageAccountSelector felhasználói felületi elemét ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,25 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c6d4ef50645902aecd57ceb9fc48b7d99bf22d53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1f96b42e58bcb09cfc2836c993626a889669fc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104862"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151460"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI element
-Vezérlő kiválasztásakor egy új vagy meglévő tárfiókot.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
+Egy új vagy meglévő Storage-fiók kiválasztására szolgáló vezérlő.
 
-A vezérlőelem megjeleníti az alapértelmezett érték.
+## <a name="ui-sample"></a>Felhasználói felület mintája
+
+A vezérlő megjeleníti az alapértelmezett értéket.
 
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
 
-A vezérlő lehetővé teszi, hogy a felhasználó hozzon létre egy új tárfiókot, vagy válasszon ki egy meglévő tárfiókot.
+A vezérlő lehetővé teszi, hogy a felhasználó új Storage-fiókot hozzon létre, vagy válasszon ki egy meglévő Storage-fiókot.
 
-![Microsoft.Storage.StorageAccountSelector new](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
+![Microsoft. Storage. StorageAccountSelector új](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
 
 ## <a name="schema"></a>Séma
 
@@ -56,12 +57,6 @@ A vezérlő lehetővé teszi, hogy a felhasználó hozzon létre egy új tárfi�
 }
 ```
 
-## <a name="remarks"></a>Megjegyzések
-- Ha meg van adva, `defaultValue.name` egyedi-e automatikusan érvényesítve. Ha a tárfiók neve nem egyedi, a felhasználó kell adjon meg egy másik nevet vagy válasszon egy meglévő tárfiókot.
-- Az alapértelmezett érték a `defaultValue.type` van **Premium_LRS**.
-- Nincs megadva a bármilyen `constraints.allowedTypes` rejtett, és nincs megadva a bármilyen `constraints.excludedTypes` jelenik meg. `constraints.allowedTypes` és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
-- Ha `options.hideExisting` van **igaz**, a felhasználó nem választhatja ki egy meglévő tárfiókot. Az alapértelmezett érték **hamis**.
-
 ## <a name="sample-output"></a>Példa kimenet
 
 ```json
@@ -73,6 +68,13 @@ A vezérlő lehetővé teszi, hogy a felhasználó hozzon létre egy új tárfi�
 }
 ```
 
+## <a name="remarks"></a>Megjegyzések
+
+- Ha meg van adva, `defaultValue.name` automatikusan érvényesíti az egyediséget. Ha a Storage-fiók neve nem egyedi, a felhasználónak másik nevet kell megadnia, vagy egy meglévő Storage-fiókot kell választania.
+- Az `defaultValue.type` alapértelmezett értéke **Premium_LRS**.
+- A `constraints.allowedTypes`ban nem megadott típusok rejtettek, és a `constraints.excludedTypes`ban nem megadott típusok jelennek meg. `constraints.allowedTypes` és `constraints.excludedTypes` egyaránt választható, de nem használható egyszerre.
+- Ha `options.hideExisting` **igaz**, a felhasználó nem választhat meglévő Storage-fiókot. Az alapértelmezett érték **hamis**.
+
 ## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

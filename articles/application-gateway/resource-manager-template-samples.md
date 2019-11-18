@@ -1,19 +1,19 @@
 ---
 title: Azure Resource Manager-sablonok
 titleSuffix: Azure Application Gateway
-description: Az Azure Application Gateway Azure Resource Manager sablonjai
+description: Ez a cikk Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz, így gyorsan üzembe helyezheti az Azure-Application Gateway különböző módokon.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: sample
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 7353601ac6b624b2adf216d17638fe7b6198eec4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f2ab25b8514032f134e8c901066dc8f5fcffd13b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074508"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129828"
 ---
 # <a name="azure-resource-manager-templates-for-azure-application-gateway"></a>Az Azure Application Gateway Azure Resource Manager sablonjai
 

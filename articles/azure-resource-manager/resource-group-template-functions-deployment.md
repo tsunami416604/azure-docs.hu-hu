@@ -1,31 +1,28 @@
 ---
-title: Azure Resource Manager template functions – üzembe helyezés | Microsoft Docs
+title: Sablon functions – üzembe helyezés
 description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983992"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149643"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok üzembe helyezési funkciói 
 
 A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
 
 * [telepítési](#deployment)
-* [parameters](#parameters)
+* [paraméterek](#parameters)
 * [variables](#variables)
 
 Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekéréséhez lásd: [Resource functions](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>üzembe helyezés
 `deployment()`
 
 A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
@@ -78,7 +75,7 @@ Ha az objektumot hivatkozásként adja át, például ha a **-TemplateUri** para
 }
 ```
 
-Ha egy erőforráscsoport helyett [Azure-előfizetésre végez üzembe helyezést](deploy-to-subscription.md), a Return objektum tartalmaz egy `location` tulajdonságot. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel.
+Ha egy erőforráscsoport helyett [Azure-előfizetésre végez üzembe helyezést](deploy-to-subscription.md), a return objektum `location` tulajdonságot tartalmaz. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel.
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -90,7 +87,7 @@ A központi telepítés () használatával egy másik sablonra lehet hivatkozni 
 }
 ```  
 
-Ha a portálon lévő központi telepítési előzményekből telepít újra egy sablont, a sablon helyi fájlként lesz telepítve. A `templateLink` tulajdonságot a rendszer nem adja vissza a telepítési függvényben. Ha a sablon `templateLink` egy másik sablonra mutató hivatkozást hoz létre, ne használja a portált az újbóli üzembe helyezéshez. Ehelyett használja a sablon eredeti üzembe helyezéséhez használt parancsokat.
+Ha a portálon lévő központi telepítési előzményekből telepít újra egy sablont, a sablon helyi fájlként lesz telepítve. A `templateLink` tulajdonságot a rendszer nem adja vissza a telepítési függvényben. Ha a sablon `templateLink` egy másik sablonra mutató hivatkozás létrehozásához, ne használja a portált az újbóli üzembe helyezéshez. Ehelyett használja a sablon eredeti üzembe helyezéséhez használt parancsokat.
 
 ### <a name="example"></a>Példa
 
@@ -134,20 +131,20 @@ Az előző példa a következő objektumot adja vissza:
 }
 ```
 
-Az üzembe helyezési funkciót használó előfizetési szintű sablonért lásd: [előfizetés üzembe helyezési funkciója](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). A rendszer a `az deployment create` vagy `New-AzDeployment` a parancsot is alkalmazza.
+Az üzembe helyezési funkciót használó előfizetési szintű sablonért lásd: [előfizetés üzembe helyezési funkciója](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Üzembe helyezése `az deployment create` vagy `New-AzDeployment` paranccsal történhet.
 
 <a id="parameters" />
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>paraméterek
 `parameters(parameterName)`
 
 Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adni a sablon paraméterek szakaszában.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |Karakterlánc |A visszaadni kívánt paraméter neve. |
+| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -232,12 +229,12 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | 1\. lehetőség |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"One": "a", "kettő": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
+| objectOutput | Objektum | {"One": "a", "kettő": "b"} |
+| arrayOutput | Tömb | [1, 2, 3] |
 | crossOutput | Sztring | 1\. lehetőség |
 
 További információ a paraméterek használatáról: [Azure Resource Manager sablonban található paraméterek](template-parameters.md).
@@ -251,7 +248,7 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
@@ -325,12 +322,12 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | exampleOutput1 | Sztring | myVariable |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput2 | Tömb | [1, 2, 3, 4] |
 | exampleOutput3 | Sztring | myVariable |
-| exampleOutput4 |  Object | {"Tulajdonság1": "érték1", "property2": "érték2"} |
+| exampleOutput4 |  Objektum | {"Tulajdonság1": "érték1", "property2": "érték2"} |
 
 További információ a változók használatáról: [változók Azure Resource Manager sablonban](template-variables.md).
 

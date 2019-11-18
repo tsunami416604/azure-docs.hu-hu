@@ -1,19 +1,15 @@
 ---
-title: Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása | Microsoft Docs
+title: Gyakori üzembehelyezési hibák elhárítása
 description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrásokat helyez üzembe az Azure-ban Azure Resource Manager használatával.
 tags: top-support-issue
-author: tfitzmac
-keywords: üzembe helyezési hiba, Azure-telepítés, üzembe helyezés az Azure-ban
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 27f3b9db40e00ea0a00e50333fe86248906d8560
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263035"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150646"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Resource Manager
 
@@ -132,7 +128,7 @@ Megjelenik a hibaüzenet és a hibakódok. Figyelje meg, hogy két hibakód lát
 
 ![hiba részletei](./media/resource-manager-common-deployment-errors/error-details.png)
 
-## <a name="enable-debug-logging"></a>Hibakeresési naplózás engedélyezése
+## <a name="enable-debug-logging"></a>A hibakeresési naplózást engedélyező
 
 Időnként további információra van szüksége a kérésről és a válaszról, hogy megtudja, mi volt a baj. Az üzembe helyezés során kérheti, hogy a rendszer az üzembe helyezés során további információkat naplózza.
 
@@ -168,7 +164,7 @@ Vagy a válasz tartalma:
 
 Ez az információ segít megállapítani, hogy a sablon egyik értéke helytelenül van-e beállítva.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az Azure CLI jelenleg nem támogatja a hibakeresési naplózás bekapcsolását, de a hibakeresési naplózást is beolvashatja.
 
@@ -198,7 +194,7 @@ az group deployment operation list \
   --query [].properties.response
 ```
 
-### <a name="nested-template"></a>Beágyazott sablon
+### <a name="nested-template"></a>Beágyazott sablont
 
 Beágyazott sablon hibakeresési információinak naplózásához használja a **debugSetting** elemet.
 
@@ -250,7 +246,7 @@ Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb mód
 Vagy tegyük fel, hogy olyan központi telepítési hibákat észlel, amelyeket úgy gondol, hogy a nem megfelelően beállított függőségekhez kapcsolódik. A sablon teszteléséhez bontsa ki az egyszerűsített sablonokat. Először hozzon létre egy sablont, amely csak egyetlen erőforrást telepít (például egy SQL Server). Ha biztos benne, hogy megfelelően definiálta az erőforrást, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha a két erőforrás megfelelően van definiálva, vegyen fel más függő erőforrásokat (például naplózási házirendeket). Az egyes tesztelési környezetek között törölje az erőforráscsoportot, hogy ellenőrizze a függőségek megfelelő tesztelését.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hibaelhárítással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Resource Manager-sablonok központi telepítésének hibaelhárítása](./resource-manager-tutorial-troubleshoot.md)
 * További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](resource-group-audit.md).

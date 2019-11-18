@@ -1,17 +1,14 @@
 ---
-title: Azure-erőforrások, több előfizetés & erőforráscsoport üzembe helyezése
+title: Erőforrások telepítése több előfizetés & erőforráscsoporthoz
 description: Bemutatja, hogyan célozhat meg több Azure-előfizetést és erőforráscsoportot az üzembe helyezés során.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528327"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149553"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
 
@@ -24,7 +21,7 @@ A sablonban lévő összes erőforrást általában egyetlen [erőforráscsoport
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Előfizetés és erőforráscsoport meghatározása
 
-Egy másik erőforrás megcélzásához használjon beágyazott vagy csatolt sablont. A `Microsoft.Resources/deployments` erőforrástípus a `subscriptionId` és a `resourceGroup` paramétereit adja meg. Ezek a tulajdonságok lehetővé teszik egy másik előfizetés és erőforráscsoport megadását a beágyazott telepítéshez. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt. Ha nem ad meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból.
+Egy másik erőforrás megcélzásához használjon beágyazott vagy csatolt sablont. A `Microsoft.Resources/deployments` erőforrástípus a `subscriptionId` és a `resourceGroup`paramétereit adja meg. Ezek a tulajdonságok lehetővé teszik egy másik előfizetés és erőforráscsoport megadását a beágyazott telepítéshez. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt. Ha nem ad meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból.
 
 A sablon telepítéséhez használt fióknak engedéllyel kell rendelkeznie a megadott előfizetés-AZONOSÍTÓhoz való központi telepítéshez. Ha a megadott előfizetés egy másik Azure Active Directory-bérlőn létezik, a [vendég felhasználókat hozzá kell adnia egy másik címtárból](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
@@ -158,7 +155,7 @@ Ha egy különálló sablonra hivatkozik, a társított sablonban lévő függv�
 }
 ```
 
-## <a name="example-templates"></a>Példák sablonokra
+## <a name="example-templates"></a>Példa sablonok
 
 A következő sablonok több erőforráscsoport-telepítést mutatnak be. A sablonok üzembe helyezéséhez szükséges parancsfájlok a tábla után jelennek meg.
 
@@ -253,7 +250,7 @@ Az előző példában a **parentRG** és a **inlineRG** is megoldódik a **paren
                                              }
 ```
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az Azure CLI esetében két Storage-fiókot helyezzen üzembe két **ugyanabba az előfizetésbe**tartozó erőforráscsoporthoz, használja a következőt:
 
@@ -347,7 +344,7 @@ Az előző példában a **parentRG** és a **inlineRG** is megoldódik a **paren
 ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](resource-group-authoring-templates.md)ismertető témakört.
 * A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](resource-manager-common-deployment-errors.md).

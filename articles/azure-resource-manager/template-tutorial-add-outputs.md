@@ -1,21 +1,18 @@
 ---
-title: Oktatóanyag – kimenetek hozzáadása Azure Resource Manager sablonhoz
+title: Oktatóanyag – kimenetek hozzáadása a sablonhoz
 description: Adja hozzá a kimeneteket a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 0d89c1651e6b897da7538432d183a8ac003a51ac
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001539"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148272"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Oktatóanyag: Kimenetek hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Oktatóanyag: kimenetek hozzáadása a Resource Manager-sablonhoz
 
 Ebből az oktatóanyagból megtudhatja, hogyan adhat vissza egy értéket a sablonból. A kimenetek akkor használhatók, ha egy központilag telepített erőforrásból származó értékre van szüksége. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
 
@@ -97,7 +94,7 @@ Sokat tett az elmúlt hat oktatóanyagban. Szánjon egy kis időt a megtörtént
 
 Most nézzük meg az erőforráscsoportot és az üzembe helyezési előzményeket.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Attól függően, hogy milyen lépések történtek, rendelkeznie kell legalább egy, és talán több Storage-fiókkal az erőforráscsoporthoz.

@@ -1,17 +1,14 @@
 ---
-title: Az áthelyezési hibák elhárítása – Azure Resource Manager
-description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja a Azure Resource Manager.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Áthelyezési hibák elhárítása
+description: Azure Resource Manager segítségével az erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 383098ab227013119bca668b42035c93334c8464
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 46fedeb8b50b19a0adc34b2099e7e76b888821f6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533353"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149112"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Azure-erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezésének hibája
 
@@ -21,10 +18,10 @@ Ez a cikk javaslatokat nyújt az erőforrások áthelyezésekor felmerülő prob
 
 Ha valóban frissíteni szeretné az Azure-előfizetését (például az ingyenesről az utólagos elszámolású váltásra), akkor konvertálnia kell az előfizetést.
 
-* Az ingyenes próbaverzió frissítését lásd: [ingyenes próbaverzió frissítése vagy Microsoft Imagine Azure-előfizetés](../billing/billing-upgrade-azure-subscription.md)utólagos elszámolású.
-* Az utólagos elszámolású fiók módosításához lásd: [Az Azure utólagos elszámolású előfizetés módosítása egy másik ajánlatra](../billing/billing-how-to-switch-azure-offer.md).
+* Ingyenes próbaverzió frissítése, lásd: [az ingyenes próba- vagy a Microsoft Imagine Azure-előfizetés frissítése használatalapú fizetésre](../billing/billing-upgrade-azure-subscription.md).
+* Ha módosítani szeretné egy használatalapú fizetéses fiókra, lásd: [az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra](../billing/billing-how-to-switch-azure-offer.md).
 
-Ha nem tudja konvertálni az előfizetést, [hozzon létre egy Azure-támogatási kérést](../azure-supportability/how-to-create-azure-support-request.md). Válassza az **előfizetés kezelése** lehetőséget a probléma típusához.
+Ha az előfizetést, nem konvertálhatóak [hozzon létre egy Azure-támogatáskérést](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **előfizetés-kezelési** issue type számára.
 
 ## <a name="service-limitations"></a>Szolgáltatási korlátozások
 
@@ -35,11 +32,11 @@ Egyes szolgáltatások az erőforrások áthelyezésekor további szempontokat i
 * [Klasszikus üzemi modell](./move-limitations/classic-model-move-limitations.md)
 * [Hálózat](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-* [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+* [Virtuális gépek](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Nagyméretű kérelmek
 
-Ha lehetséges, a nagy léptékű áthelyezési műveletekre kell váltania. A Resource Manager azonnal hibát jelez, ha több mint 800 erőforrás van egyetlen műveletben. A kevesebb mint 800 erőforrás áthelyezése azonban időtúllépés miatt is meghiúsulhat.
+Ha lehetséges, nagy break helyezi át a külön áthelyezési műveleteket. A Resource Manager azonnal hibát jelez, ha több mint 800 erőforrás van egyetlen műveletben. Azonban legalább 800 erőforrások áthelyezése is meghiúsulhat időtúllépés által.
 
 ## <a name="resource-not-in-succeeded-state"></a>Az erőforrás nem sikeres állapotban van
 
@@ -49,6 +46,6 @@ Ha a forrás vagy a cél erőforráscsoport virtuális hálózatot tartalmaz, a 
 
 Ha ezt a hibaüzenetet kapja, két lehetőség közül választhat. Helyezze át az erőforrásokat olyan erőforráscsoporthoz, amely nem rendelkezik virtuális hálózattal, vagy [forduljon az ügyfélszolgálathoz](../azure-supportability/how-to-create-azure-support-request.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](resource-group-move-resources.md).

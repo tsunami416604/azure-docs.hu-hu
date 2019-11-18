@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub és Event Grid | Microsoft Docs
 description: A Azure Event Grid használatával a folyamatokat a IoT Hubban végrehajtott műveletek alapján aktiválhatja.
-author: kgremban
+author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: robinsh
+ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906776"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151313"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
@@ -33,11 +33,11 @@ IoT Hub közzéteszi a következő eseménytípus-típusokat:
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
-| Microsoft. Devices. DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
-| Microsoft. Devices. DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
-| Microsoft. Devices. DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
-| Microsoft. Devices. DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
+| Microsoft.Devices.DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
+| Microsoft.Devices.DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
+| Microsoft.Devices.DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
+| Microsoft.Devices.DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
+| Microsoft.Devices.DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
 
 A Azure Portal vagy az Azure CLI használatával konfigurálhatja, hogy mely eseményeket kell közzétenni az egyes IoT-központokból. Például próbálja ki az oktatóanyagot az [Azure IoT hub eseményekkel kapcsolatos e-mail-értesítések küldéséhez Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -176,13 +176,21 @@ devices/{deviceId}
 
 A Event Grid az egyes események attribútumain is lehetővé teszi a szűrést, beleértve az adattartalmat is. Így kiválaszthatja, hogy milyen események érkeznek a telemetria üzenet alapján. A példák megtekintéséhez tekintse meg a [speciális szűrést](../event-grid/event-filtering.md#advanced-filtering) ismertető témakört. A telemetria **-** üzenet törzsének szűréséhez a ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket.
 
-A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. Egy alapértelmezett [útvonalat](iot-hub-devguide-messages-d2c.md) hozunk létre IoT hub, az eszköz telemetria Event Grid-előfizetése alapján. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a **contentEncoding értékre** kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
+A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. 
+
+Ha a Event Grid-on keresztül előfizet a telemetria-eseményekre, IoT Hub létrehoz egy alapértelmezett üzenet-útvonalat, amely az eszköz üzeneteinek küldését Event Grid küldi. További információ az üzenetek útválasztásáról: [IoT hub üzenet-útválasztás](iot-hub-devguide-messages-d2c.md). Ez az útvonal a portálon jelenik meg IoT Hub > üzenet-útválasztás alatt. Az telemetria-eseményekhez létrehozott előfizetések számától függetlenül csak egy Event Grid útvonal jön létre. Ha tehát több előfizetésre van szüksége különböző szűrőkkel, a lekérdezésekben szereplő vagy operátort is használhatja ugyanazon az útvonalon. Az útvonal létrehozását és törlését a telemetria-események Event Gridon keresztüli előfizetése vezérli. IoT Hub üzenet-útválasztás használatával nem hozhat létre vagy törölhet Event Grid útvonalat.
+
+Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a **contentEncoding értékre** kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Az eszköz csatlakoztatott és leválasztott eseményeinek korlátai
 
 Az eszköz csatlakoztatott és leválasztott eseményeinek fogadásához meg kell nyitnia az eszköz D2C vagy C2D mutató hivatkozását. Ha az eszköz MQTT protokollt használ, IoT Hub megnyitva marad a C2D hivatkozás. A AMQP a C2D hivatkozást a [fogadási ASZINKRON API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)meghívásával nyithatja meg.
 
-A D2C hivatkozás meg van nyitva, ha telemetria küld. Ha az eszköz kapcsolata vibrál, ami azt jelenti, hogy az eszköz gyakran csatlakozik, és leválasztja a kapcsolatot, a rendszer nem küldi el minden egyes kapcsolati állapotot, de közzéteszi azt a kapcsolati állapotot, amelynek a pillanatképét percenként hozza létre. IoT Hub kimaradás esetén a leállás után azonnal közzé fogjuk tenni az eszköz kapcsolati állapotát. Ha az eszköz bontja a kapcsolatot a leállás során, az eszköz leválasztott eseménye 10 percen belül közzétételre kerül.
+A D2C hivatkozás meg van nyitva, ha telemetria küld. 
+
+Ha az eszköz kapcsolata vibrál, ami azt jelenti, hogy az eszköz gyakran csatlakozik, és leválasztja a kapcsolatot, a rendszer nem küldi el minden egyes kapcsolati állapotot, de az *utolsó* kapcsolódási állapotot is közzéteszi, amely végül konzisztens lesz. Ha például az eszköz kezdetben a csatlakoztatott állapotban van, akkor néhány másodpercig a kapcsolati villogások is megtalálhatók, majd csatlakoztatva állapotba kerül. A kezdeti kapcsolati állapot óta nem lesznek új eszköz-kapcsolati állapotú események közzétéve. 
+
+IoT Hub kimaradás esetén a leállás után azonnal közzé fogjuk tenni az eszköz kapcsolati állapotát. Ha az eszköz bontja a kapcsolatot a leállás során, az eszköz leválasztott eseménye 10 percen belül közzétételre kerül.
 
 ## <a name="tips-for-consuming-events"></a>Tippek az események fogyasztásához
 
@@ -194,7 +202,7 @@ Az IoT Hub eseményeket kezelő alkalmazásoknak a következő ajánlott eljár�
 
 * Az üzenetek megérkeznek a sorrendbe, vagy késés után is. A ETAG mező használatával megtudhatja, hogy az objektumokkal kapcsolatos adatok naprakészek-e az eszköz által létrehozott vagy az eszköz által törölt események esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Próbálja ki a IoT Hub Events oktatóanyagot](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 

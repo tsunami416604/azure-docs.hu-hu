@@ -1,17 +1,14 @@
 ---
-title: Hitelesítés a bérlők között – Azure Resource Manager
+title: Hitelesítés bérlőkön keresztül
 description: Leírja, hogyan kezeli a Azure Resource Manager a különböző bérlők hitelesítési kérelmeit.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300347"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149973"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kérelmek hitelesítése a bérlők között
 
@@ -23,8 +20,8 @@ A kérelem a következő hitelesítési fejléc-értékekkel rendelkezik:
 
 | Fejléc neve | Leírás | Példaérték |
 | ----------- | ----------- | ------------ |
-| Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt;primary-token @ no__t-1 |
-| x-MS-Authorization-kiegészítő | Kiegészítő tokenek | Tulajdonos &lt;auxiliary-token1 @ no__t-1, EncryptedBearer &lt;auxiliary-token2 @ no__t-3, tulajdonos &lt;auxiliary-token3 @ no__t-5 |
+| Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt;elsődleges – token&gt; |
+| x-ms-authorization-auxiliary | Kiegészítő tokenek | Tulajdonosi &lt;kiegészítő – token1&gt;, EncryptedBearer &lt;kiegészítő – token2&gt;, tulajdonos &lt;kiegészítő – token3&gt; |
 
 A kiegészítő fejléc legfeljebb három kiegészítő tokent tud tárolni. 
 
@@ -36,7 +33,7 @@ Amikor az alkalmazás egy kérelmet küld a Resource managernek, a rendszer az e
 
 Ha a kérelem egy másik bérlőtől származó erőforrásra hivatkozik, a Resource Manager ellenőrzi a kisegítő jogkivonatokat annak megállapításához, hogy a kérés feldolgozható-e. A fejlécben szereplő összes kiegészítő tokennek érvényesnek és lejártnak kell lennie. Ha bármelyik jogkivonat lejárt, a Resource Manager egy 401-es választ ad vissza. A válasz tartalmazza az ügyfél-azonosítót és a bérlő AZONOSÍTÓját, amely érvénytelen a jogkivonat esetében. Ha a kiegészítő fejléc érvényes jogkivonatot tartalmaz a bérlőhöz, a rendszer feldolgozza a több-bérlős kérelmet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hitelesítési kérelmekkel kapcsolatos további tudnivalókért lásd: [hitelesítési folyamatok és alkalmazási forgatókönyvek](../active-directory/develop/authentication-flows-app-scenarios.md).
 * További információ a tokenekről: [Azure Active Directory hozzáférési tokenek](../active-directory/develop/access-tokens.md).

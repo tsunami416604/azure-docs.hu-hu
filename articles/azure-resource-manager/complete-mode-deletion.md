@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager teljes üzemmódú törlés
+title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 34e6ee348a6e15e1178f5e7cb65edfb946c1280c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e8e473ba697dd64d2562a2e1efc03f1ba5b384e6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953275"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149924"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -981,7 +978,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Tartományvezérlők | Igen |
+> | tartományvezérlők | Igen |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -2035,6 +2032,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | figyeli | Nem |
 > | notificationSettings | Nem |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Complete-Mode-Deletion. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv)fájlt.

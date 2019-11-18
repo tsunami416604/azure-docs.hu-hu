@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601810"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129315"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks szolgáltatással kapcsolatos gyakori kérdések
 
@@ -34,7 +34,7 @@ Kövesse az alábbi lépéseket:
 1. Rendelje hozzá a szükséges engedélyeket az egyszerű szolgáltatáshoz Data Lake Storageban.
 1. Data Lake Storage található fájl eléréséhez használja az egyszerű szolgáltatás hitelesítő adatait a jegyzetfüzetben.
 
-További információ: [Azure Data Lake Storage használata a Azure Databricks használatával](/azure/databricks/data/data-sources/azure/azure-datalake.html).
+További információ: [Azure Data Lake Storage használata a Azure Databricks használatával](/azure/databricks/data/data-sources/azure/azure-datalake).
 
 ## <a name="fix-common-problems"></a>Gyakori problémák elhárítása
 

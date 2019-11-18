@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN Gateway-átjárók csatlakoztatása több helyszíni, házirend-alapú VPN-eszközhöz: Azure Resource Manager: PowerShell | Microsoft Docs'
+title: 'Azure VPN Gateway: átjárók csatlakoztatása több helyszíni házirend-alapú VPN-eszközhöz'
 description: Konfiguráljon egy Azure Route-alapú VPN-átjárót több házirend alapú VPN-eszközre a Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: c753320b8d525e0c3ac031777bee15ba2050fcc0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495670"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146716"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni, a PowerShell-t használó helyi házirend-alapú VPN-eszközhöz
 
@@ -41,7 +41,7 @@ Jelenleg az Azure a VPN-átjárók mindkét üzemmódját támogatja: Route-alap
 
 |                          | **Házirendalapú VPN Gateway** | **Útvonalalapú VPN Gateway**       |**Útvonalalapú VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Azure Gateway SKU**    | Basic                       | Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
+| **Azure Gateway SKU**    | Alapszintű                       | Alapszintű                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
 | **IKE-verzió**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                                    |
 | **Max. S2S-kapcsolatok** | **1**                       | 10                               |Standard: 10<br> Egyéb SKU-i: 30                     |
 |                          |                             |                                  |                                                    |
@@ -71,7 +71,7 @@ A kapcsolódást engedélyező munkafolyamat:
 3. Alkalmazza a házirendet a S2S vagy a VNet-VNet közötti kapcsolatok létrehozásakor, és **engedélyezze a házirend-alapú forgalom-választókat** a kapcsolatban.
 4. Ha a kapcsolódás már létrejött, a szabályzatot alkalmazhatja vagy frissítheti egy meglévő kapcsolatban.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 

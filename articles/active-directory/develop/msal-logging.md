@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2019
+ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 97ea1c5260d1082619d59a2b8614a0ba7e9181a8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902906"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145166"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -41,6 +41,10 @@ A MSAL számos naplózási részletességi szintet biztosít:
 ## <a name="personal-and-organizational-data"></a>Személyes és szervezeti adatkezelés
 
 Alapértelmezés szerint a MSAL-naplózó nem gyűjt kényes személyes vagy szervezeti adatokat. A könyvtár lehetővé teszi a személyes és szervezeti adatnaplózás engedélyezését, ha úgy dönt, hogy erre van szükség.
+
+Egy adott nyelv MSAL-naplózási adatainak megtekintéséhez válassza a nyelvének megfelelő fület:
+
+## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>Naplózás a MSAL.NET
 
@@ -80,6 +84,8 @@ class Program
   }
  }
  ```
+
+## <a name="androidtabandroid"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>Bejelentkezés a MSAL for Android használatával Javával
 
@@ -123,7 +129,7 @@ Alapértelmezés szerint a logcat naplózása le van tiltva. Engedélyezés:
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="logging-in-msaljs"></a>Naplózás a MSAL. js fájlban
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
  Engedélyezze a naplózást a MSAL. js (JavaScript) alkalmazásban egy `UserAgentApplication`-példány létrehozásakor a konfiguráció során egy naplózó objektum átadásával. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
@@ -155,7 +161,9 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="logging-in-msal-for-ios-and-macos"></a>Bejelentkezés az iOS és a macOS MSAL
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+
+## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL iOS és macOS rendszerű naplózáshoz – ObjC
 
 Állítsa be a visszahívást, hogy rögzítse a MSAL-naplózást, és építse be azt a saját alkalmazás naplózása során. A visszahívás aláírása így néz ki:
 
@@ -176,7 +184,6 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
 
 Például:
 
-Objective-C
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
     {
@@ -190,7 +197,71 @@ Objective-C
     }];
 ```
 
-Swift
+### <a name="personal-data"></a>Személyes adattárolás
+
+A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A `pii.Enabled`bekapcsolásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
+
+```objc
+// By default, the `MSALLogger` doesn't capture any PII
+
+// PII will be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = YES;
+
+// PII will NOT be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = NO;
+```
+
+### <a name="logging-levels"></a>Naplózási szintek
+
+Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
+
+|Szint  |Leírás |
+|---------|---------|
+| `MSALLogLevelNothing`| Az összes naplózás letiltása |
+| `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |
+| `MSALLogLevelWarning` | Figyelmeztetések |
+| `MSALLogLevelInfo` |  A könyvtár belépési pontjai, paraméterekkel és különböző kulcstartó műveletekkel |
+|`MSALLogLevelVerbose`     |  API-nyomkövetés |
+
+Például:
+
+```objc
+MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
+ ```
+
+ ### <a name="log-message-format"></a>Napló üzenetének formátuma
+
+A MSAL üzenetek részének formátuma `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+
+Például:
+
+`TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
+
+A korrelációs azonosítók és időbélyegek megadása a problémák nyomon követéséhez hasznos. Az időbélyeg és a korrelációs azonosító információi elérhetők a napló üzenetében. Az egyetlen megbízható hely a MSAL naplózási üzeneteiből.
+
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL iOS és macOS rendszerű naplózáshoz – Swift
+
+Állítsa be a visszahívást, hogy rögzítse a MSAL-naplózást, és építse be azt a saját alkalmazás naplózása során. A visszahíváshoz tartozó aláírás (az Objective-C-ben) a következőképpen néz ki:
+
+```objc
+/*!
+    The LogCallback block for the MSAL logger
+ 
+    @param  level           The level of the log message
+    @param  message         The message being logged
+    @param  containsPII     If the message might contain Personally Identifiable Information (PII)
+                            this will be true. Log messages possibly containing PII will not be
+                            sent to the callback unless PIllLoggingEnabled is set to YES on the
+                            logger.
+
+ */
+typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
+```
+
+Például:
+
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -207,18 +278,6 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A `pii.Enabled`bekapcsolásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
-Objective-C
-```objc
-// By default, the `MSALLogger` doesn't capture any PII
-
-// PII will be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = YES;
-
-// PII will NOT be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = NO;
-```
-
-Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -243,12 +302,6 @@ Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szi
 
 Például:
 
-Objective-C
-```objc
-MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
- ```
- 
- Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
@@ -263,9 +316,11 @@ Például:
 
 A korrelációs azonosítók és időbélyegek megadása a problémák nyomon követéséhez hasznos. Az időbélyeg és a korrelációs azonosító információi elérhetők a napló üzenetében. Az egyetlen megbízható hely a MSAL naplózási üzeneteiből.
 
-## <a name="logging-in-msal-for-java"></a>Bejelentkezés a Java MSAL
+## <a name="javatabjava"></a>[Java](#tab/java)
 
-A MSAL for Java (MSAL4J) lehetővé teszi az alkalmazással már használt naplózási függvénytár használatát, feltéve, hogy az kompatibilis a SLF4J-mel. A MSAL4j a Java (SLF4J) [egyszerű naplózási homlokzatát](http://www.slf4j.org/) használja egyszerű homlokzatként vagy absztrakcióként a különböző naplózási keretrendszerek, például [a Java. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), a [Logback](http://logback.qos.ch/) és a [Log4j](https://logging.apache.org/log4j/2.x/). A SLF4J lehetővé teszi, hogy a végfelhasználó a központi telepítési időszakban csatlakoztassa a kívánt naplózási keretrendszert.
+## <a name="msal-for-java-logging"></a>MSAL a Java-naplózáshoz
+
+A MSAL for Java (MSAL4J) lehetővé teszi az alkalmazással már használt naplózási függvénytár használatát, feltéve, hogy az kompatibilis a SLF4J-mel. A MSAL4j a Java (SLF4J) [egyszerű naplózási homlokzatát](http://www.slf4j.org/) használja egyszerű homlokzatként vagy absztrakcióként a különböző naplózási keretrendszerek, például [a Java. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), a [Logback](http://logback.qos.ch/) és a [Log4j](https://logging.apache.org/log4j/2.x/). A SLF4J lehetővé teszi a felhasználó számára, hogy a központi telepítési időszakban csatlakoztassa a kívánt naplózási keretrendszert.
 
 Ha például a Logback-t az alkalmazás naplózási keretrendszereként szeretné használni, adja hozzá a Logback függőséget az alkalmazás Maven Pom-fájljához:
 
@@ -310,3 +365,35 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .logPii(true)
         .build();
 ```
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+## <a name="msal-for-python-logging"></a>MSAL Python-naplózáshoz
+
+A MSAL Python-ba való bejelentkezés a szabványos Python-naplózási mechanizmust használja, például `logging.info("msg")` a következőképpen konfigurálhatja a MSAL-naplózást (és megtekintheti működés közben a [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
+
+### <a name="enable-debug-logging-for-all-modules"></a>Hibakeresési naplózás engedélyezése az összes modulhoz
+
+Alapértelmezés szerint a Python-parancsfájlok naplózása ki van kapcsolva. Ha engedélyezni szeretné a hibakeresési naplózást a teljes Python-parancsfájl összes moduljához, használja a következőt:
+
+```python
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### <a name="silence-only-msal-logging"></a>Csak csendben lévő MSAL-naplózás
+
+Ha csak a MSAL szeretné meghallgatni, miközben a Python-szkript összes többi moduljában engedélyezi a hibakeresési naplózást, kapcsolja ki a MSAL Python által használt naplózó:
+
+```Python
+logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="personal-and-organizational-data-in-python"></a>Személyes és szervezeti adatgyűjtés a Pythonban
+
+A MSAL for Python nem naplózza a személyes és a szervezeti adatszolgáltatásokat. Nincs olyan tulajdonság, amely be-vagy kikapcsolja a személyes vagy szervezeti adatnaplózást.
+
+A standard Python-naplózással bármit naplózhat, amit csak szeretne, de Ön felelős a bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
+
+A Pythonban történő naplózással kapcsolatos további információkért tekintse meg a Python [naplózási](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)útmutatóit.
+
+---

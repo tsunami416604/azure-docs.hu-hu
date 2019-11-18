@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479618"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151252"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Rövid útmutató: virtuális gép létrehozása és titkosítása a Azure Portal
 
@@ -23,36 +23,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
-## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra
-1. A keresőmezőbe írja be a **Key Vault** kifejezést.
-1. Az eredmények listából válassza a **Key Vault**lehetőséget.
-1. A Key Vault szakaszban válassza a **Létrehozás**elemet.
-1. A **Key Vault létrehozása** képernyőn válassza ki az új kulcstartó egyedi nevét.
-
-    > [!Important]
-    > Minden Key Vault egyedi névvel kell rendelkeznie. Az alábbi példa egy *myADEKV*nevű Key Vault hoz létre, de a tiéd nevet kell megadnia.
-
-1. Válasszon egy **előfizetést**.
-1.  Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Az előugró ablakban adja meg a *myResourceGroup* sztringet az erőforráscsoport neveként, majd kattintson az **OK** gombra. 
-
-    ![Erőforráscsoport-létrehozási képernyő](./media/disk-encryption/portal-qs-keyvaultcreation.png)
-
-1. A **hely** legördülő menüben válassza az **USA keleti**régiója lehetőséget.
-1. A többi beállítást hagyja az alapértelmezett értéken.
-1. Válassza a "hozzáférési házirendek" lehetőséget, amely egy új képernyőre mutat.
-1. Jelölje be a "hozzáférés engedélyezése Azure Disk Encryption számára a kötetek titkosításához" jelölőnégyzetet.
-
-    ![ResourceGroup-létrehozási képernyő](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
-
-1. A hozzáférési szabályzatok képernyő alján kattintson a "felülvizsgálat + létrehozás" gombra.
-1. A felülvizsgálás után kattintson a "létrehozás" gombra.
-
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
 1. Kattintson az Azure Portal bal felső sarkában az **Erőforrás létrehozása** gombra.
-
 1. Az új lap népszerű területén válassza az **Ubuntu Server 18,04 LTS**elemet.
 1. Az **alapvető beállítások** lap **projekt részletei**területén ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
 1. Az **erőforráscsoport**mezőben válassza ki azt az erőforráscsoportot, amelyet a fenti kulcstartó létrehozásakor hozott létre (például **myResourceGroup**).
@@ -73,15 +46,24 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
 1. A bal oldali oldalsávon válassza a **lemezek**lehetőséget.
 1. A lemezek képernyőn válassza a **titkosítás**lehetőséget. 
 
-    ![lemezek és titkosítás kiválasztása](./media/disk-encryption/portal-qs-disks-to-encryption.png)
+    ![lemezek és titkosítás kiválasztása](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. A titkosítás képernyőn a **titkosítani kívánt lemezek**területen válassza az **operációs rendszer és az adatlemezek**lehetőséget.
-1. A **titkosítási beállítások**területen kattintson a "kulcstartó és kulcs kiválasztása a titkosításhoz" elemre.
-1. A jobb oldali oldalsávon válassza ki a **Key Vault**értékeként korábban létrehozott kulcstartó nevét, majd kattintson a **kiválasztás**gombra.
+1. A **titkosítási beállítások**területen válassza **a Key Vault és a kulcs kiválasztása a titkosításhoz**lehetőséget.
+1. A **válasszon kulcsot Azure Key Vault** képernyőn válassza az **új létrehozása**lehetőséget.
 
-    ![lemezek és titkosítás kiválasztása](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. A titkosítás képernyő felső részén kattintson a Mentés gombra. A felugró ablak figyelmezteti, hogy a virtuális gép újraindul. Kattintson a **Yes** (Igen) gombra.
+    ![lemezek és titkosítás kiválasztása](../media/disk-encryption/portal-qs-keyvault-create.png)
 
+1. A **Key Vault létrehozása** képernyőn győződjön meg arról, hogy az erőforráscsoport megegyezik azzal, amelyet a virtuális gép létrehozásához használt.
+1. Adja meg a kulcstartó nevét.  Minden Azure-beli Key vaultnak egyedi névvel kell rendelkeznie.
+1. A **hozzáférési házirendek** lapon jelölje be a **Azure Disk Encryption a kötet titkosítása** jelölőnégyzetet.
+
+    ![lemezek és titkosítás kiválasztása](../media/disk-encryption/portal-qs-keyvault-enable.png)
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.  
+1. Miután a kulcstartó érvényesítése sikeres volt, válassza a **Létrehozás**lehetőséget. Ezzel a beállítással visszatérhet a **Select kulcsra Azure Key Vault** képernyőről.
+1. Hagyja üresen a **kulcsmező** mezőt, és válassza a **kiválasztás**lehetőséget.
+1. A titkosítás képernyő felső részén kattintson a **Mentés**gombra. A felugró ablak figyelmezteti, hogy a virtuális gép újraindul. Kattintson a **Yes** (Igen) gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

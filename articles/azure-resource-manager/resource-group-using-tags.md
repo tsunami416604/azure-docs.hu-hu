@@ -1,17 +1,14 @@
 ---
-title: Azure-erőforrások címkézése a logikai szervezet számára | Microsoft Docs
+title: Erőforrások címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.author: tomfitz
-ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b332ae86e714d4b642f921d217d80e802fa60572
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199140"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149584"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -21,7 +18,7 @@ Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználóna
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="policies"></a>Irányelvek
+## <a name="policies"></a>Házirendek
 
 A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
 
@@ -151,7 +148,7 @@ Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -409,7 +406,7 @@ A címkékre vonatkozó információkat az [Azure erőforrás-használat és a R
 
 REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
 * A portál használatának bevezetését lásd: [a Azure Portal használata az Azure-erőforrások kezeléséhez](manage-resource-groups-portal.md).  
