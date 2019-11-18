@@ -1,7 +1,7 @@
 ---
 title: OData-gyűjtemény kezelői referenciája
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search-lekérdezésekben az OData-gyűjtemény operátorai, az összes és az összes, valamint lambda kifejezés.
+description: Ha szűrési kifejezéseket hoz létre az Azure Cognitive Search lekérdezésekben, használja a lambda kifejezések "any" és "összes" operátorát, ha a szűrő gyűjtemény vagy összetett gyűjtemény mezőn található.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793405"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113230"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-gyűjtemény operátorok az Azure Cognitive Search-`any` és `all`
 
@@ -92,7 +92,7 @@ A szűrési kifejezések nem minden funkciója érhető el egy lambda kifejezés
 
 További információ ezekről a korlátozásokról és példákról: [gyűjtési szűrők hibaelhárítása Az Azure Cognitive Searchban](search-query-troubleshoot-collection-filters.md). További részletes információk a korlátozások létezéséről: a [gyűjtemény szűrőinek ismertetése az Azure Cognitive Searchban](search-query-understand-collection-filters.md).
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

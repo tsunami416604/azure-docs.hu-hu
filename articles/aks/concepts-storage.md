@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: fb15063e41e83b4c9a9f2e01b6ad18c8afed7f5f
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741001"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120494"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -33,7 +33,7 @@ Az alkalmazásoknak gyakran kell tudniuk tárolni és beolvasni az adatgyűjtés
 
 A hagyományos kötetek tárolására és lekérésére az Azure Storage által támogatott Kubernetes-erőforrások jönnek létre. Manuálisan is létrehozhatja ezeket az adatköteteket, amelyeket közvetlenül a hüvelyekhez rendelhet, vagy Kubernetes automatikusan létrehozhatja őket. Ezek az adatkötetek az Azure-lemezeket és a Azure Files is használhatják:
 
-- Az *Azure-lemezek* használhatók Kubernetes *adatlemez* -erőforrások létrehozásához. A lemezek az Azure Premium Storage-t, a nagy teljesítményű SSD-ket, illetve az Azure standard Storage-t is használhatják, a normál HDD-k által támogatottak. A legtöbb éles és fejlesztési számítási feladathoz használja a Premium Storage-t. Az Azure-lemezek *ReadWriteOnce*-ként vannak csatlakoztatva, így csak egyetlen csomópont számára érhetők el. A több csomóponttal egyidejűleg elérhető tárolási köteteknél használja a Azure Files.
+- Az *Azure-lemezek* használhatók Kubernetes *adatlemez* -erőforrások létrehozásához. A lemezek az Azure Premium Storage-t, a nagy teljesítményű SSD-ket, illetve az Azure standard Storage-t is használhatják, a normál HDD-k által támogatottak. A legtöbb éles és fejlesztési számítási feladathoz használja a Premium Storage-t. Az Azure-lemezek *ReadWriteOnce*-ként vannak csatlakoztatva, így csak egyetlen Pod számára érhető el. A több hüvelyrel egyidejűleg elérhető tárolási kötetek esetében használja a Azure Files.
 - *Azure Files* használható egy Azure Storage-fiók által támogatott SMB 3,0-megosztás csatlakoztatására a hüvelyek számára. A fájlok lehetővé teszik az adatmegosztást több csomóponton és hüvelyen keresztül. A fájlok a normál HDD-k, illetve az Azure Premium Storage által támogatott Azure standard Storage-t is használhatják, nagy teljesítményű SSD-k által támogatottak.
 > [!NOTE] 
 > Azure Files támogatja a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtökben.
@@ -63,7 +63,7 @@ Az AK-ban két kezdeti StorageClasses jön létre:
 - *alapértelmezett* – felügyelt lemez létrehozásához az Azure standard Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó Pod törölve lett.
 - *Managed-Premium* – az Azure Premium Storage használatával felügyelt lemez hozható létre. A visszaigénylési házirend újból azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó Pod törölve lett.
 
-Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. A használatával `kubectl`további igényekhez is létrehozhat StorageClass. Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
+Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. `kubectl`használatával további igényekhez is létrehozhat StorageClass. Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
 
 ```yaml
 kind: StorageClass

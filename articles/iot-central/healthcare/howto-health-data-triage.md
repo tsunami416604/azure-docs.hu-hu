@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0f3a486edb0c650a4a14e5e60b4459f758a64d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499934"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132286"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának összeállítása
 
@@ -29,7 +29,7 @@ Az alapszintű architektúra a következő struktúrát fogja követni:
 >[!div class="mx-imgBorder"] 
 >![Provider osztályozása irányítópult](media/dashboard-architecture.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adatok exportálása az Azure IoT Centralból az Azure-ba Event Hubs
@@ -51,7 +51,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * Egy Power BI szolgáltatás-fiók. Ha még nem rendelkezik ilyennel, [létrehozhat egy ingyenes próbaverziós fiókot Power bi szolgáltatáshoz](https://app.powerbi.com/). Ha még nem használta Power BI korábban, hasznos lehet a [Power bi](https://docs.microsoft.com/power-bi/service-get-started)használatának megkezdéséhez.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Folyamatos adatexportálás beállítása az Azure-ba Event Hubs
-Először be kell állítania egy folyamatos adatexportálást az Azure IoT Central-alkalmazás sablonból az előfizetésében található Azure Event hub-ba. Ezt az Azure IoT Central oktatóanyag lépéseit követve végezheti el [Event Hubs exportálásához](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp). Ehhez az oktatóanyaghoz csak a telemetria kell exportálni.
+Először be kell állítania egy folyamatos adatexportálást az Azure IoT Central-alkalmazás sablonból az előfizetésében található Azure Event hub-ba. Ezt az Azure IoT Central oktatóanyag lépéseit követve végezheti el [Event Hubs exportálásához](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data). Ehhez az oktatóanyaghoz csak a telemetria kell exportálni.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI folyamatos átviteli adatkészlet létrehozása
 
@@ -91,7 +91,7 @@ Ennek a lépésnek a végén a Logic app designernek így kell kinéznie:
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Stream-adatok Power BI a logikai alkalmazásból
 A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a korábban létrehozott Power BI adatkészletekben.
 
-1. A művelet megkezdése előtt meg kell ismernie az eszközről az Event hub-ba küldött JSON-adattartalmat. Ehhez tekintse meg ezt a [minta sémát](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp#telemetry) , és módosítsa úgy, hogy az megfeleljen a sémának, vagy a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) használatával vizsgálja meg az üzeneteket. Ha a folyamatos beteg monitorozási alkalmazásokat használja, az üzenetek a következőképpen fognak kinézni:
+1. A művelet megkezdése előtt meg kell ismernie az eszközről az Event hub-ba küldött JSON-adattartalmat. Ehhez tekintse meg ezt a [minta sémát](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry) , és módosítsa úgy, hogy az megfeleljen a sémának, vagy a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) használatával vizsgálja meg az üzeneteket. Ha a folyamatos beteg monitorozási alkalmazásokat használja, az üzenetek a következőképpen fognak kinézni:
 
 **Smart Vitals – javítási telemetria**
 
@@ -146,7 +146,7 @@ A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a ko
     |Name (Név)|Csatoló neve|
     |Típus|Sztring|
 
-    Kattintson a **Mentés gombra**. 
+    Kattintson a **Mentés** gombra. 
 
 3. Adjon hozzá egy " **Body** " nevű másik változót **karakterláncként**. A logikai alkalmazás a következő műveleteket fogja hozzáadni:
 

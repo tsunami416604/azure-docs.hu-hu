@@ -1,17 +1,14 @@
 ---
-title: Feltételes üzembe helyezés Azure Resource Manager-sablonokkal
+title: Feltételes üzembe helyezés sablonokkal
 description: Ismerteti, hogyan lehet erőforrást feltételesen üzembe helyezni egy Azure Resource Manager-sablonban.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
-ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e3d78f875e39628194ac30310314e59e2ef19fdb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881664"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147168"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Feltételes üzembe helyezés Resource Manager-sablonokban
 
@@ -86,7 +83,7 @@ Az [IF](resource-group-template-functions-logical.md#if) függvény használatá
 
 Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az erőforrás nincs telepítve, mert a feltétel hamis értéket ad vissza, akkor az eredmény attól függ, hogy REST API milyen verziót használ a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. A Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
 * Egy erőforrás több példányának létrehozásához tekintse [meg Azure Resource Manager sablonok erőforrás, tulajdonság vagy változó iterációját](resource-group-create-multiple.md).

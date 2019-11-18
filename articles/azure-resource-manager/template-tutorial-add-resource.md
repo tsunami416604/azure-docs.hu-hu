@@ -1,20 +1,18 @@
 ---
-title: Oktatóanyag – erőforrás hozzáadása Azure Resource Manager sablonhoz
+title: Oktatóanyag – erőforrás hozzáadása sablonhoz
 description: Az első Azure Resource Manager-sablon létrehozásának lépéseit ismerteti. Megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6b8bd73a1248168ff8f434afa0a9317a8fe0c618
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963904"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148189"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Oktatóanyag: Erőforrás hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Oktatóanyag: erőforrás hozzáadása a Resource Manager-sablonhoz
 
 Az [előző oktatóanyagban](template-tutorial-create-first-template.md)megtanulta, hogyan hozhat létre üres sablont, és hogyan telepítheti azt. Most már készen áll egy tényleges erőforrás üzembe helyezésére. Ebben az oktatóanyagban egy Storage-fiókot fog hozzáadni. Az oktatóanyag elvégzése körülbelül **9 percet** vesz igénybe.
 
@@ -34,15 +32,15 @@ Cserélje le a **{ad-Unique-Name}** nevet egy egyedi Storage-fiók nevére. A t�
 
 A Storage-fiókok egyedi nevének kitalálása nem egyszerű, és nem jól működik a nagyméretű központi telepítések automatizálásához. Az oktatóanyag-Sorozat későbbi részében olyan sablon-funkciókat fog használni, amelyek megkönnyítik egy egyedi név létrehozását.
 
-## <a name="resource-properties"></a>Erőforrás-tulajdonságok
+## <a name="resource-properties"></a>Erőforrás tulajdonságai
 
 Lehet, hogy kíváncsi, hogyan lehet megkeresni az egyes erőforrástípusok által használandó tulajdonságokat. A [Resource Manager-sablonok hivatkozásával](/azure/templates/) megkeresheti a telepíteni kívánt erőforrásokat.
 
 Minden üzembe helyezett erőforrás rendelkezik legalább a következő tulajdonságokkal:
 
-- **írja be a következőt**: Az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrás típusának (például a Microsoft. Storage/storageAccounts) a kombinációja.
-- **apiVersion**: Az erőforrás létrehozásához használandó REST API verziója. Minden erőforrás-szolgáltató közzétette saját API-verzióit, így ez az érték a típusra jellemző.
-- **név**: Az erőforrás neve.
+- **típus**: az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrás típusának (például a Microsoft. Storage/storageAccounts) a kombinációja.
+- **apiVersion**: az erőforrás létrehozásához használandó REST API verziója. Minden erőforrás-szolgáltató közzétette saját API-verzióit, így ez az érték a típusra jellemző.
+- **Name (név**): az erőforrás neve.
 
 A legtöbb erőforráshoz tartozik egy **Location** tulajdonság is, amely azt a régiót állítja be, ahol az erőforrás telepítve van.
 
@@ -82,11 +80,11 @@ az group deployment create \
 
 Két lehetséges üzembe helyezési hiba merülhet fel:
 
-- Hiba: Code = AccountNameInvalid; Az üzenet = {adjon meg egyedi nevet} nem érvényes Storage-fióknév. A Storage-fiók nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon.
+- Hiba: code = AccountNameInvalid; Az üzenet = {adjon meg egyedi nevet} nem érvényes Storage-fióknév. A Storage-fiók nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon.
 
     A sablonban cserélje le a **{ad-Unique-Name}** nevet egy egyedi Storage-fiók nevére.  Lásd: [erőforrás hozzáadása](#add-resource).
 
-- Hiba: Code = StorageAccountAlreadyTaken; Üzenet = a store1abc09092019 nevű Storage-fiók már használatban van.
+- Hiba: code = StorageAccountAlreadyTaken; Üzenet = a store1abc09092019 nevű Storage-fiók már használatban van.
 
     A sablonban próbálkozzon egy másik Storage-fiók nevével.
 
@@ -96,11 +94,11 @@ Ez a telepítés hosszabb időt vesz igénybe, mint az üres sablon üzembe hely
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Láthatja, hogy a Storage-fiók telepítve van.
-1. Figyelje meg, hogy az üzembe helyezési címke most már azt mondja: @no__t – 0Deployments: 2 sikeres @ no__t-0.
+1. Figyelje meg, hogy az üzembe helyezési címke most már azt mondja: **központi telepítések: 2 sikeres**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

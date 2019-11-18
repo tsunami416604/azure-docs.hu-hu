@@ -1,17 +1,14 @@
 ---
-title: Felhasználó által definiált függvények Azure Resource Manager sablonban
+title: Felhasználó által definiált függvények a sablonokban
 description: Ismerteti, hogyan lehet felhasználó által definiált függvényeket definiálni és használni egy Azure Resource Manager sablonban.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 227ecb57b125264e7d0eba56e634966d677e0f58
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 94fdf80ffc309645a4bc10109a5e8dd4450731e2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387285"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143703"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Felhasználó által definiált függvények Azure Resource Manager sablonban
 

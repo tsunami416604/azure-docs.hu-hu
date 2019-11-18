@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b0c3487bb77f32483d6d65cd0a4b1f637267eabf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012966"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144352"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure-beli Azure Active Directory használatával API Management
 
@@ -81,12 +81,16 @@ A módosítások mentése után a megadott Azure AD-példányban lévő felhaszn
 
 ## <a name="add-an-external-azure-ad-group"></a>Külső Azure AD-csoport hozzáadása
 
-Miután engedélyezte az Azure AD-példányban lévő felhasználók hozzáférését, hozzáadhat Azure AD-csoportokat API Managementban. Ezután könnyebben kezelheti a csoportba tartozó fejlesztők társítását a kívánt termékekkel.
+Miután engedélyezte az Azure AD-bérlő felhasználóinak hozzáférését, hozzáadhat Azure AD-csoportokat API Managementhoz. Ennek eredményeképpen a termék láthatóságát az Azure AD-csoportok használatával szabályozhatja.
 
- > [!IMPORTANT]
- > Külső Azure AD-csoport hozzáadásához először az előző szakaszban leírt eljárást követve konfigurálnia kell az Azure AD-példányt az **identitások** lapon. Emellett az alkalmazásnak hozzáférést kell biztosítania az Azure AD Graph APIhoz `Directory.Read.All` engedéllyel. 
+Ha külső Azure AD-csoportot szeretne hozzáadni a APIM-hez, először el kell végeznie az előző szakaszt. Emellett a regisztrált alkalmazásnak hozzáférést kell biztosítania a Azure Active Directory Graph APIhoz `Directory.ReadAll` engedéllyel az alábbi lépések végrehajtásával: 
 
-A külső Azure AD-csoportokat a API Management példány **csoportok** lapjáról veheti fel.
+1. Térjen vissza az alkalmazás regisztrálásához, amely az előző szakaszban lett létrehozva
+2. Az API- **engedélyek** lapon kattintson az **+ engedély hozzáadása** gombra. 
+3. A **kérelem API-engedélyek** ablaktáblán válassza a **Microsoft API** -k fület, és görgessen az aljára, és keresse meg a **Azure Active Directory gráf** csempét a támogatott örökölt API-k szakaszban, majd kattintson rá. Ezután kattintson az **alkalmazás engedélyei** gombra, és válassza ki a **Directory. ReadAll** engedélyt, majd adja hozzá az engedélyt az alján található gomb használatával. 
+4. Kattintson a **rendszergazdai jóváhagyás megadása {tenantname}** gombra, hogy hozzáférést biztosítson a címtár összes felhasználója számára. 
+
+Most hozzáadhat külső Azure AD-csoportokat a API Management példány **csoportok** lapjáról.
 
 1. Válassza ki a **Csoportok** lapot.
 2. Kattintson a **HRE hozzáadása** gombra.

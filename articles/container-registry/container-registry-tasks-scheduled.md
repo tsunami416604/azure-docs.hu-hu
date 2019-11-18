@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry feladatok ütemezett végrehajtása
-description: Megtudhatja, hogyan futtathat egy Azure Container Registry feladatot meghatározott ütemterven egy vagy több időzítő-eseményindító beállításával
+description: Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy Azure Container Registry feladatot egy meghatározott ütemterven egy vagy több időzítő-eseményindító beállításával
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,16 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ae36b8d67d02f8cae0007b7b06485932db851af5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931468"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148643"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>ACR-feladat futtatása meghatározott ütemterven
 
-Ebből a cikkből megtudhatja, hogyan futtathat egy [ACR-feladatot](container-registry-tasks-overview.md) ütemterv szerint. Egy vagy több *időzítő-eseményindító*beállításával ütemezhet egy feladatot.
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy [ACR-feladatot](container-registry-tasks-overview.md) ütemterv szerint. Egy vagy több *időzítő-eseményindító*beállításával ütemezhet egy feladatot. Az időzítő eseményindítók önállóan vagy más feladatokkal együtt is használhatók.
+
+Ez az oktatóanyag a feladatok ütemezését és a következőket ismerteti:
+
+> [!div class="checklist"]
+> * Feladat létrehozása időzítő-triggerrel
+> * Időzítő eseményindítók kezelése
 
 A feladatok ütemezése a következőhöz hasonló esetekben hasznos:
 
@@ -197,11 +203,13 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |`"30 9 * Jan Mon"`|Január 9:30-kor, minden hétfőn|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre olyan Azure Container Registry feladatokat, amelyeket egy időzítő automatikusan indít el. 
 
 Ha például egy ütemezett feladatot szeretne használni a beállításjegyzékben lévő adattárak törléséhez, olvassa el a [lemezképek automatikus kitakarítása Azure Container registryből](container-registry-auto-purge.md)című témakört.
 
-A forráskód-végrehajtás vagy az alaprendszerkép frissítései által aktivált feladatok esetében tekintse meg az ACR- [feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
+A forráskód-végrehajtás vagy az alaprendszerkép frissítései által aktivált feladatok esetében tekintse meg az [ACR feladatok oktatóanyag-sorozatának](container-registry-tutorial-quick-task.md)egyéb cikkeit.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure VirtualNetworkCombo felhasználói felületi elemben |} A Microsoft Docs
-description: Az Azure portal a Microsoft.Network.VirtualNetworkCombo felhasználói felületi elem ismerteti.
+title: Az Azure VirtualNetworkCombo felhasználói felületének eleme | Microsoft Docs
+description: A Azure Portal Microsoft. Network. VirtualNetworkCombo felhasználói felületi elemének ismertetése.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,26 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0437338b403ff19761173d08be3938d07f13f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d325230f603be4ccfe4fe42f1b58c6ad892fdb2c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708349"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151479"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
-Vezérlők egy új vagy meglévő virtuális hálózat kiválasztása csoportja.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
-Amikor a felhasználó kiválasztja az új virtuális hálózat, a felhasználó szabhatja testre, minden egyes alhálózat nevét és a cím előtagja. Alhálózatok konfigurálása nem kötelező.
+Új vagy meglévő virtuális hálózat kiválasztására szolgáló vezérlők csoportja.
+
+## <a name="ui-sample"></a>Felhasználói felület mintája
+
+Ha a felhasználó új virtuális hálózatot választ, a felhasználó testreszabhatja az egyes alhálózatok nevét és a hozzá tartozó előtagot. Az alhálózatok konfigurálása nem kötelező.
 
 ![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
 
-Amikor a felhasználó kiválasztja a meglévő virtuális hálózattal, a felhasználó egy létező alhálózathoz képezze le a központi telepítési sablont igényel minden alhálózathoz. Alhálózatok konfigurálása ebben az esetben szükség.
+Ha a felhasználó egy meglévő virtuális hálózatot vesz fel, a felhasználónak le kell képeznie az egyes alhálózatokat, amelyekre a központi telepítési sablonnak szüksége van egy meglévő alhálózathoz. Ebben az esetben szükség van az alhálózatok konfigurálására.
 
 ![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Séma
+
 ```json
 {
   "name": "element1",
@@ -85,16 +88,6 @@ Amikor a felhasználó kiválasztja a meglévő virtuális hálózattal, a felha
 }
 ```
 
-## <a name="remarks"></a>Megjegyzések
-- Ha meg van adva, az első egymást nem átfedő cím előtagja méretű `defaultValue.addressPrefixSize` automatikusan a meglévő virtuális hálózatok, a felhasználói előfizetés alapján határozza meg.
-- Az alapértelmezett érték a `defaultValue.name` és `defaultValue.addressPrefixSize` van **null**.
-- `constraints.minAddressPrefixSize` meg kell adni. Az egy kisebb, mint a megadott érték címtér bármely meglévő virtuális hálózatok nem lehet kiválasztani.
-- `subnets` meg kell adni, és `constraints.minAddressPrefixSize` minden alhálózat számára meg kell adni.
-- Új virtuális hálózat létrehozásakor minden egyes alhálózati cím előtag alapján lesz kiszámítva automatikusan a virtuális hálózat címelőtagjához és a megfelelő `addressPrefixSize`.
-- Ha egy meglévő virtuális hálózat, esetleges olyan alhálózatokra, amelyek kisebb, mint a megfelelő `constraints.minAddressPrefixSize` kijelölés nem érhető el. Emellett ha meg van adva, alhálózatok, amelyek nem rendelkeznek legalább `minAddressCount` elérhető címek nem lehet kiválasztani. Az alapértelmezett érték **0**. Adja meg annak érdekében, hogy az elérhető címek összefüggő, **igaz** a `requireContiguousAddresses`. Az alapértelmezett érték **igaz**.
-- Alhálózatok létrehozása meglévő virtuális hálózatban nem támogatott.
-- Ha `options.hideExisting` van **igaz**, a felhasználó egy meglévő virtuális hálózat nem választható. Az alapértelmezett érték **hamis**.
-
 ## <a name="sample-output"></a>Példa kimenet
 
 ```json
@@ -118,6 +111,18 @@ Amikor a felhasználó kiválasztja a meglévő virtuális hálózattal, a felha
 }
 ```
 
+## <a name="remarks"></a>Megjegyzések
+
+- Ha meg van adva, a rendszer a felhasználó előfizetésének meglévő virtuális hálózatai alapján automatikusan meghatározza a `defaultValue.addressPrefixSize` méretének első nem átfedésben lévő előtagját.
+- A `defaultValue.name` és az `defaultValue.addressPrefixSize` alapértelmezett értéke **Null**.
+- meg kell adni a `constraints.minAddressPrefixSize`. A megadott értéknél kisebb címtartományt tartalmazó meglévő virtuális hálózatok nem választhatók ki a kijelöléshez.
+- `subnets` meg kell adni, és minden alhálózathoz meg kell adni `constraints.minAddressPrefixSize`.
+- Új virtuális hálózat létrehozásakor a rendszer az egyes alhálózatok címének előtagját automatikusan kiszámítja a virtuális hálózat címének előtagja és a megfelelő `addressPrefixSize`alapján.
+- Meglévő virtuális hálózat használata esetén a megfelelő `constraints.minAddressPrefixSize`nál kisebb alhálózatok nem érhetők el a kiválasztáshoz. Emellett, ha meg van adva, az olyan alhálózatok, amelyek nem rendelkeznek legalább `minAddressCount` rendelkezésre álló címmel, nem érhetők el a kijelöléshez. Az alapértelmezett érték a **0**. Ha biztosítani szeretné, hogy az elérhető címek folytonos legyenek, a `requireContiguousAddresses`**igaz** értéket kell megadnia. Az alapértelmezett érték **true (igaz**).
+- Az alhálózatok meglévő virtuális hálózatban való létrehozása nem támogatott.
+- Ha `options.hideExisting` **igaz**, a felhasználó nem választhat meglévő virtuális hálózatot. Az alapértelmezett érték **hamis**.
+
 ## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

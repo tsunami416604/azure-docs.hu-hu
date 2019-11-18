@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936094"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133417"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -28,7 +28,7 @@ Site Recovery a naplók segítségével Azure Monitorheti a következő művelet
 Az **Azure-** ban az Azure-ba való replikáláshoz és a **VMWare virtuális gép/fizikai kiszolgáló Azure** -ba történő replikálásához az Azure monitor-naplók használata támogatott site Recovery használatával.
 
 > [!NOTE]
-> Az adatforgalmi naplók és a feltöltési arány naplói csak másodlagos Azure-régióba replikált Azure-beli virtuális gépek esetében érhetők el.
+> A VMware és a fizikai gépek esetében a forgalom adatnaplóinak és a feltöltési sebesség naplófájljainak beszerzéséhez telepítenie kell egy Microsoft monitoring agentet a Process Serveren. Ez az ügynök elküldi a replikáló gépek naplóit a munkaterületre. Ez a funkció csak a 9,30 mobilitási ügynök verziójában érhető el.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -36,7 +36,7 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [Részletek](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
@@ -54,6 +54,24 @@ Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási ké
     ![Munkaterület kiválasztása](./media/monitoring-log-analytics/select-workspace.png)
 
 A Site Recovery naplók megkezdik a hírcsatornát a kiválasztott munkaterületen lévő táblába (**AzureDiagnostics**).
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>A Microsoft monitoring Agent konfigurálása a Process Serveren a forgalom és a feltöltési arány naplóinak küldéséhez
+
+Az adatváltozási arány adatait és a forrás adatfeltöltési sebességét a helyszíni VMware/fizikai gépekre vonatkozó információk alapján rögzítheti. Ennek engedélyezéséhez szükség van egy Microsoft monitoring Agent telepítésére a Process Serveren.
+
+1. Lépjen a Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre.
+2. Kattintson a **csatlakoztatott források** lapra, és válassza a **Windows-kiszolgálók**lehetőséget.
+3. Töltse le a Windows-ügynököt (64 bites) a Process Serveren. 
+4. [A munkaterület-azonosító és-kulcs beszerzése](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Az ügynök konfigurálása a TLS 1,2 használatára](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. Az [ügynök telepítésének befejezéséhez](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) adja meg a beszerzett munkaterület azonosítóját és kulcsát.
+7. A telepítés befejezése után lépjen Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre. Nyissa meg az **adat** lapot, és kattintson a **Windows-teljesítményszámlálók**elemre. 
+8. A **"+"** gombra kattintva adja hozzá a következő két számlálót a mintavételi időköz 300 másodpercben:
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+Az adatforgalom és a feltöltési arány adatok bekerülnek a munkaterületre.
 
 
 ## <a name="query-the-logs---examples"></a>A naplók lekérdezése – példák
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![Számítógép RPO lekérdezése](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Virtuális gép adatváltozási arányának lekérdezése (forgalom)
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure-beli virtuális gép adatváltozási arányának és feltöltési sebességének lekérdezése
 
-> [!NOTE] 
-> Az adatforgalomra vonatkozó információk csak másodlagos Azure-régióba replikált Azure-beli virtuális gépek esetében érhetők el.
-
-Ez a lekérdezés egy adott Azure-beli virtuális gép (ContosoVM123) számára ábrázol egy trend Graphot, amely nyomon követi az adatváltozási sebességet (írási bájtok másodpercenként) és az adatfeltöltési sebességet. 
+Ez a lekérdezés egy adott Azure-beli virtuális gép (ContosoVM123) egy trend gráfját ábrázolja, amely az adatváltozási sebességet (írási bájtok másodpercenként) és az adatfeltöltési arányt jelöli. 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![Adatváltozások lekérdezése](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Egy VMware-vagy fizikai gép lekérdezési adatváltozási sebessége és feltöltési aránya
+
+> [!Note]
+> Győződjön meg arról, hogy a folyamat-kiszolgálón beállította a figyelési ügynököt a naplók lekéréséhez. Tekintse át [a figyelési ügynök konfigurálásának lépéseit](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+
+Ez a lekérdezés egy trend Graphot ábrázol a replikált elemek **9r7sfh9qlru**, **amely az** adatváltozási sebességet (írási bájt/s) és az adatfeltöltési sebességet jelöli. A lemez neve a Recovery Services-tárolóban található replikált elem **lemezek** paneljén található. A lekérdezésben használni kívánt példánynév a gép DNS-neve, majd az _ és a lemez neve, ahogy az ebben a példában látható.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+A Process Server 5 percenként leküldi ezeket az adatLog Analytics munkaterületre. Ezek az adatpontok a számított 5 perces átlagot jelölik.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Vész-helyreállítási összefoglalás lekérdezése (Azure-ról Azure-ra)
 
@@ -327,6 +359,6 @@ AzureDiagnostics  
 
 A riasztáshoz állítsa 1 **értékre a küszöbértéket** , az utolsó **nap során pedig** az 1440 percet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a](site-recovery-monitor-and-troubleshoot.md) beépített site Recovery figyelésről.

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957843"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123550"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Környezetek újrafelhasználása & üzembe helyezésének betanításához Azure Machine Learningsal.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 Használhat környezeteket webszolgáltatásként való üzembe helyezéskor. Ez lehetővé teszi egy reprodukálható, csatlakoztatott munkafolyamatot, ahol a modell betanítását, tesztelését és üzembe helyezését pontosan ugyanazokkal a könyvtárakkal végezheti el, mint a képzési és következtetési számításokban.
 
-Webszolgáltatások üzembe helyezéséhez egyesítse a környezetet, a következtetéseket, a pontozási parancsfájlokat és a regisztrált modellt a telepítési objektumban [()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). További információ a [webszolgáltatások üzembe helyezéséről](how-to-deploy-and-where.md).
+Webszolgáltatások üzembe helyezéséhez egyesítse a környezetet, a következtetéseket, a pontozási parancsfájlokat és a regisztrált modellt a telepítési objektumban [()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). További információ a [webszolgáltatások üzembe helyezéséről](how-to-deploy-and-where.md).
 
 Ebben a példában feltételezzük, hogy elvégezte a betanítási kísérletet, és ezt a modellt egy Azure Container instance (ACI) szolgáltatásban szeretné üzembe helyezni. A webszolgáltatás létrehozásakor a modell-és pontozási fájlok csatlakoztatva vannak a rendszerképhez, és a Azure Machine Learning következtetési verem bekerül a rendszerképbe.
 
@@ -363,7 +363,7 @@ service = Model.deploy(
 
 Ez a [példa](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) a jelen cikkben ismertetett fogalmakat és metódusokat mutatja be.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).

@@ -1,14 +1,14 @@
 ---
-title: Szabályzat létrehozása az erőforrások naplózásához a portálon – Azure Policy
+title: Szabályzat létrehozása az erőforrások a portálon való naplózásához
 description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására.
 ms.date: 12/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: e517173c74cd3fd37b50d327d32b668422428315
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ef89ea43ff3179877c0ac636083ed68946b6cc91
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960172"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128915"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
@@ -92,7 +92,7 @@ A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépése
 
    ![Hozzárendelés törlése a megfelelőség lapról](./media/assign-policy-portal/delete-assignment.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy hatókörhöz rendelt hozzá egy szabályzatdefiníciót, és kiértékelte annak megfelelőségi jelentését.
 A szabályzatdefiníció ellenőrzi, hogy megfelelő a hatókörben lévő összes erőforrást, és azonosítja a nem.

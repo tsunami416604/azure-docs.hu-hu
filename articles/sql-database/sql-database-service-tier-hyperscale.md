@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c71fb8a7e18439817023874146e22c29a5af3b12
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821106"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123688"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -78,7 +78,7 @@ További információ a nagy kapacitású díjszabásáról: [Azure SQL Database
 
 ## <a name="distributed-functions-architecture"></a>Elosztott függvények architektúrája
 
-Az egy helyen/folyamatban lévő összes adatkezelési függvényt központosító, hagyományos adatbázis-kezelővel ellentétben (még az éles környezetben lévő elosztott adatbázisok esetében is) a nagy kapacitású-adatbázis elkülönül. a lekérdezés-feldolgozó motor, ahol a különböző adatmotorok szemantikaa eltér az adatok hosszú távú tárolását és tartósságát biztosító összetevőktől. Így a tárolási kapacitás igény szerint zökkenőmentesen méretezhető (a kezdeti cél 100 TB). Az írásvédett replikák ugyanazokat a tárolási összetevőket használják, ezért nincs szükség adatmásolásra egy új, olvasható replika kipörgetéséhez. 
+Az egy helyen/folyamatban lévő összes adatkezelési funkciót központosító hagyományos adatbázis-kezelővel ellentétben (még az éles környezetben is megjelenő elosztott adatbázisok több példányban rendelkeznek egy monolitikus adatmotorral), a nagy kapacitású-adatbázis elválasztja a lekérdezés-feldolgozó motort, ahol a különböző adatmotorok szemantikaa az adatok hosszú távú tárolását és tartósságát biztosító összetevőktől eltér. Így a tárolási kapacitás igény szerint zökkenőmentesen méretezhető (a kezdeti cél 100 TB). Az írásvédett replikák ugyanazokat a tárolási összetevőket használják, ezért nincs szükség adatmásolásra egy új, olvasható replika kipörgetéséhez. 
 
 A következő ábra a nagy kapacitású-adatbázisok különböző típusait szemlélteti:
 
@@ -86,7 +86,7 @@ A következő ábra a nagy kapacitású-adatbázisok különböző típusait sze
 
 A nagy kapacitású-adatbázisok a következő különböző típusú összetevőket tartalmazzák:
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Számítás
 
 A számítási csomópont az a hely, ahol a viszonyítási motor él, így minden nyelvi elem, lekérdezés feldolgozása és így tovább történik. A nagy kapacitású-adatbázissal folytatott összes felhasználói interakció ezen számítási csomópontokon keresztül történik. A számítási csomópontok SSD-alapú gyorsítótárral rendelkeznek (az előző ábrán megcímkézett RBPEX-rugalmasságú puffer-bővítmény), így minimálisra csökkenthető az adatoldalak lekéréséhez szükséges hálózati kör-átutazások száma. Létezik egy elsődleges számítási csomópont, amelyben az összes írási és olvasási feladat feldolgozásra kerül. Van egy vagy több olyan másodlagos számítási csomópont, amely gyors készenléti csomópontként működik feladatátvételi célokra, valamint írásvédett számítási csomópontként működik az olvasási feladatok kiszervezéséhez (ha ez a funkció szükséges).
 
@@ -98,7 +98,7 @@ A kiszolgálóoldali kiszolgálók egy kibővített tárolási motort jelképez�
 
 A naplózási szolgáltatás fogadja az elsődleges számítási replika naplófájljait, tartós gyorsítótárban tárolja azokat, és továbbítja a napló rekordjait a többi számítási replikához (a gyorsítótárak frissítéséhez), valamint a kapcsolódó kiszolgálóoldali kiszolgáló (ka) t, hogy az adatok frissíthetők legyenek. nincs. Így az elsődleges számítási replika összes adatváltozása a naplózási szolgáltatáson keresztül továbbítódik a másodlagos számítási replikák és a lapok kiszolgálójára. Végül a naplóbejegyzések a hosszú távú tárolásra kerülnek az Azure Storage-ban, ami gyakorlatilag végtelen tárolóhely. Ez a mechanizmus eltávolítja a gyakori naplózási csonkítás szükségességét. A log szolgáltatás helyi gyorsítótárral is rendelkezik a naplókhoz való hozzáférés felgyorsításához.
 
-### <a name="azure-storage"></a>Azure Storage-tárterület
+### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az Azure Storage egy adatbázis összes adatfájlját tartalmazza. Az oldal-kiszolgálók naprakészen tárolják az adatfájlokat az Azure Storage szolgáltatásban. Ez a tároló biztonsági mentési célokra, valamint az Azure-régiók közötti replikációra szolgál. A biztonsági mentések az adatfájlok tárolási pillanatképei használatával valósíthatók meg. A pillanatképeket használó visszaállítási műveletek gyorsak, függetlenül az adatok méretétől. Az adatok bármikor visszaállíthatók az adatbázis biztonsági másolatának megőrzési időszakán belül bármely időpontra.
 
@@ -114,7 +114,7 @@ A további írásvédett számítási csomópontok gyors üzembe helyezésének 
 
 Nagy kapacitású-adatbázis hozható létre a [Azure Portal](https://portal.azure.com), a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) vagy a [parancssori](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)felület használatával. A nagy kapacitású-adatbázisok csak a [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)használatával érhetők el.
 
-A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. A kiadás és a szolgáltatás célját is meg kell adnia a `CREATE DATABASE` utasításban. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) .
+A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. A kiadás és a szolgáltatás célját is meg kell adnia a `CREATE DATABASE` utasításban. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) .
 
 ```sql
 -- Create a HyperScale Database
@@ -137,7 +137,7 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Kapcsolódás nagy kapacitású-adatbázis egy olvasási léptékű replikához
 
-A nagy kapacitású-adatbázisokban az ügyfél által megadott kapcsolódási karakterlánc `ApplicationIntent` argumentuma azt határozza meg, hogy a Kapcsolódás az írási replikához vagy egy írásvédett másodlagos replikához van-e irányítva. Ha a `ApplicationIntent` `READONLY` értékre van beállítva, és az adatbázis nem rendelkezik másodlagos replikával, a rendszer a kapcsolódást az elsődleges replikához irányítja, és az alapértelmezett érték a `ReadWrite` viselkedés.
+A nagy kapacitású-adatbázisokban az ügyfél által megadott kapcsolódási karakterlánc `ApplicationIntent` argumentuma azt határozza meg, hogy a Kapcsolódás az írási replikához vagy egy írásvédett másodlagos replikához van-e irányítva. Ha a `ApplicationIntent` `READONLY`re van beállítva, és az adatbázis nem rendelkezik másodlagos replikával, a rendszer a kapcsolódást az elsődleges replikához irányítja, és az alapértelmezett érték `ReadWrite` viselkedés.
 
 ```cmd
 -- Connection string with application intent

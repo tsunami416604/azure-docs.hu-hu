@@ -1,35 +1,27 @@
 ---
-title: Cache ASP.NET munkamenetállapot-szolgáltatója |} A Microsoft Docs
-description: 'Útmutató: Azure Cache a Redis használata ASP.NET-munkamenetállapot tárolására'
-services: cache
-documentationcenter: na
+title: Gyorsítótár ASP.NET munkamenet-szolgáltatója
+description: Megtudhatja, hogyan tárolhatja a ASP.NET munkamenet-állapotát az Azure cache for Redis használatával
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: yegu
-ms.openlocfilehash: 7333fa51da1cd5bbd9175d56571ec1d17cbbe33f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfcad48060a3cf33da80c09c3900ce4322b947da
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203933"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122821"
 ---
-# <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Redis Azure Cache for ASP.NET munkamenetállapot-szolgáltatója
+# <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-munkamenet-szolgáltató az Azure cache-hez a Redis
 
-Az Azure Cache redis biztosít egy használó SQL Server-adatbázis helyett tárolni a munkamenet állapota a memóriában az Azure Cache Redis munkamenetállapot-szolgáltatóját. A gyorsítótárazási munkamenetállapot-szolgáltató használatához először konfigurálja a gyorsítótár, és konfigurálja az ASP.NET-alkalmazások gyorsítótár használatával az Azure Cache Redis munkamenet-állapot NuGet-csomagot.
+A Redis készült Azure cache olyan munkamenet-szolgáltatót biztosít, amellyel a memóriában tárolt munkamenet-állapotot SQL Server-adatbázis helyett az Azure cache használatával tárolhatja a Redis. A gyorsítótárazási munkamenet-állapot szolgáltatójának használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET-alkalmazást a gyorsítótárhoz az Azure cache használatával a Redis munkamenet-állapot NuGet csomagjához.
 
-Gyakran nem célszerű egy való életből vett felhőalapú alkalmazás valamilyen állapot tárolásához egy felhasználói munkamenethez tartozó elkerülése érdekében, de néhány olyan módszert hatással van a teljesítmény és méretezhetőség több, mint mások. Ha már állapot tárolására, a legjobb megoldás, maradjon kicsi állapot mennyisége és a cookie-kban tárolja. Amely nem megvalósítható, ha a következő legjobb megoldás, hogy az ASP.NET munkamenet-állapot szolgáltatóval elosztott, memóriában lévő gyorsítótárhoz. A legrosszabb megoldás a teljesítmény- és skálázhatósági szempontból az adatbázis biztonsági munkamenetállapot-szolgáltatóját. Ez a témakör útmutatást nyújt az Azure Cache ASP.NET munkamenetállapot-szolgáltatója a Redis használata. További munkamenet-állapot lehetőségekről további információkért lásd: [ASP.NET munkamenet-állapot beállításai](#aspnet-session-state-options).
+Ez gyakran nem praktikus a valós Felhőbeli alkalmazásokban, így elkerülhető a felhasználói munkamenetek valamilyen állapotának tárolása, de bizonyos módszerek nagyobb mértékben befolyásolják a teljesítményt és a méretezhetőséget, mint mások. Ha meg kell őriznie az állapotot, a legjobb megoldás az, hogy a kis mennyiségű állapotot tárolja, és a cookie-kat tárolja. Ha ez nem valósítható meg, a következő legjobb megoldás a ASP.NET munkamenet-állapotának használata a szolgáltatóval elosztott, memórián belüli gyorsítótárban. A teljesítmény-és skálázhatósági szempontból a legrosszabb megoldás egy adatbázis-alapú munkamenet-szolgáltató használata. Ez a témakör útmutatást nyújt az Azure cache-hez készült ASP.NET-munkamenet-szolgáltató használatához a Redis. További információ a munkamenet-állapottal kapcsolatos egyéb lehetőségekről: [ASP.NET munkamenet-állapotának beállításai](#aspnet-session-state-options).
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Store ASP.NET session state in the cache (ASP.NET munkamenet-állapot tárolása a gyorsítótárban)
 
-Ügyfélalkalmazás konfigurálása az Azure Cache Redis munkamenet-állapot NuGet-csomag használatával a Visual studióban, kattintson a **NuGet-Csomagkezelő**, **Package Manager Console** származó a **eszközök**  menüben.
+Ha a Visual Studióban szeretné konfigurálni az ügyfélalkalmazás-t a Redis munkamenet-állapot NuGet-csomagjának Azure cache szolgáltatásával, kattintson a **NuGet csomagkezelő**, **csomagkezelő konzol** elemre az **eszközök** menüből.
 
 Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
     
@@ -39,18 +31,18 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 ```
 
 > [!IMPORTANT]
-> Ha a prémium szintről a fürtszolgáltatást használ, kell használnia [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 vagy magasabb vagy kivétel lépett fel. Használhatatlanná tévő változást; áthelyezése 2.0.1 vagy újabb rendszer További információkért lásd: [v2.0.0 használhatatlanná tévő változás részletei](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). Ez a cikk a frissítés során ez a csomag aktuális verziója 2.2.3.
+> Ha a prémium szintről használja a fürtözési funkciót, akkor a [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1-es vagy újabb verzióját kell használnia, vagy kivételt kell eldobnia. A csak a 2.0.1-es vagy újabb verzióra való áttérés megszakítási változást mutat be; További információ: [v 2.0.0 Breaking Change details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). A cikk frissítésének időpontjában a csomag aktuális verziója a következő: 2.2.3.
 > 
 > 
 
-A Redis munkamenet állapota szolgáltató NuGet-csomag maga a StackExchange.Redis.StrongName csomagot. Ha a StackExchange.Redis.StrongName csomag nem található a projekt, telepíti a rendszer.
+A Redis munkamenet-szolgáltató NuGet csomagjának függősége van a StackExchange. Redis. StrongName csomagtól. Ha a StackExchange. Redis. StrongName csomag nem szerepel a projektben, az telepítve van.
 
 >[!NOTE]
->Az erős elnevezésű StackExchange.Redis.StrongName csomagon kívül van a StackExchange.Redis nem – erős elnevezésű verzióját. A projekt távolítsa el a nem – erős elnevezésű StackExchange.Redis verzióját használja, ha egyébként, lekérése az elnevezések ütközésének a projektben. Ezek a csomagok kapcsolatos további információkért lásd: [gyorsítótárügyfelek konfigurálása .NET](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Az erős névvel ellátott StackExchange. Redis. StrongName csomag mellett a StackExchange. Redis nem erős nevű verziója is létezik. Ha a projekt a nem erős névvel ellátott StackExchange. Redis verziót használja, akkor el kell távolítania azt, ellenkező esetben az elnevezési ütközések is bekerülnek a projektbe. További információ ezekről a csomagokról: [.net gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 >
 >
 
-A NuGet-csomag letölti és hozzáadja a szükséges szerelvényhivatkozásokat, és hozzáadja az alábbi szakasz a web.config fájl. Ez a szakasz tartalmazza a szükséges konfigurációval, hogy az ASP.NET alkalmazás az Azure Cache redis Cache munkamenetállapot-szolgáltatóját használja.
+A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat, és hozzáadja a következő szakaszt a web. config fájlhoz. Ez a szakasz tartalmazza a ASP.NET alkalmazás szükséges konfigurációját, hogy az Azure cache-t használja a Redis munkamenet-szolgáltatóhoz.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -85,26 +77,26 @@ A NuGet-csomag letölti és hozzáadja a szükséges szerelvényhivatkozásokat,
 </sessionState>
 ```
 
-A megjegyzésekkel szakasz mutatja be az attribútumokat és a minta beállítások minden attribútum.
+A kommentált szakasz az egyes attribútumok attribútumaira és mintái beállításaira mutat példát.
 
-Az attribútumok konfigurálása a Microsoft Azure Portalon a gyorsítótár panelről az értékekkel, és igény szerint állítsa be a más értékeket. Utasítások a fér hozzá a gyorsítótár tulajdonságai: [konfigurálása Azure Cache Redis beállítások](cache-configure.md#configure-azure-cache-for-redis-settings).
+Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
 
 * **gazdagép** – adja meg a gyorsítótár végpontját.
-* **port** – a nem SSL port vagy az SSL-port, attól függően, az ssl-beállítások használatára.
-* **accessKey** – az elsődleges vagy másodlagos kulcsot használja a gyorsítótárat.
-* **az SSL** – igaz, ha biztonságos gyorsítótárügyfél/kommunikáció ssl-lel szeretne; ellenkező esetben hamis. Mindenképpen adja meg a megfelelő portot.
-  * A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg az igaz értékre állítja ezt a beállítást, az SSL-port használatára. A nem SSL port engedélyezésével kapcsolatos további információkért lásd: a [hozzáférési portok](cache-configure.md#access-ports) című rész a [gyorsítótár konfigurálása](cache-configure.md) témakör.
-* **throwOnError** – igaz, ha azt szeretné, hogy kivételt kell fordul elő, ha hiba vagy hamis értéket, ha azt szeretné, hogy a művelet csendes meghiúsul. A statikus Microsoft.Web.Redis.RedisSessionStateProvider.LastException tulajdonság ellenőrzésével hibája ellenőrizheti. Az alapértelmezett érték true.
-* **retryTimeoutInMilliseconds** – műveletek megismétlődnek erre az időszakra, ezredmásodpercben megadva. Az első újrapróbálkozás után 20 ezredmásodperc történik, és az újrapróbálkozások kerül sor, amíg le nem jár a retryTimeoutInMilliseconds időköz másodpercenként. Ez az időtartam után azonnal a művelet végső egyszer rendszer. Ha a művelet továbbra is sikertelen, a kivétel történt vissza a hívónak a throwOnError beállítás függően. Az alapértelmezett értéke 0, ami azt jelenti, hogy nincs újrapróbálkozás.
-* **adatbázis-azonosítóhoz** – Itt adhatja meg a kimeneti adatok gyorsítótárazása használandó adatbázis. Ha nincs megadva, az alapértelmezett érték a 0 használatos.
-* **applicationName** – kulcsok vannak tárolva, a redis `{<Application Name>_<Session ID>}_Data`. Az elnevezési sémája lehetővé teszi több alkalmazás megosztása a Redis-példányt. Ez a paraméter nem kötelező, és ha nem rendelkeznek egy alapértelmezett értéket használja.
-* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout beállítás 5000-es szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout beállítás 1000 szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **redisSerializerType** – ezzel a beállítással adhatja meg az egyéni szerializálás a Redis küldött munkamenet-tartalom. A megadott típus musí implementovat `Microsoft.Web.Redis.ISerializer` és deklarálni kell a nyilvános paraméter nélküli konstruktor. Alapértelmezés szerint `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` szolgál.
+* **port** – az SSL-beállításoktól függően használja a nem SSL-portot vagy az SSL-portot.
+* **accessKey** – használja a gyorsítótár elsődleges vagy másodlagos kulcsát.
+* **SSL** – igaz, ha biztonságos gyorsítótárazást/ügyfél-kommunikációt szeretne biztosítani az SSL használatával; Ellenkező esetben hamis. Ügyeljen arra, hogy a megfelelő portot határozza meg.
+  * A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Ha ezt a beállítást használja az SSL-port használatára, válassza az igaz értéket. A nem SSL port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát.
+* **throwOnError** – igaz, ha egy hiba miatt kivételt szeretne kiváltani, vagy hamis értéket, ha azt szeretné, hogy a művelet csendesen meghiúsuljon. A hiba ellenőrzéséhez ellenőrizze a statikus Microsoft. Web. Redis. RedisSessionStateProvider. LastException tulajdonságot. Az alapértelmezett érték a True (igaz).
+* **retryTimeoutInMilliseconds** – a sikertelen műveleteket a rendszer az adott intervallumban, ezredmásodpercben megadva hajtja végre. Az első újrapróbálkozás 20 ezredmásodperc után történik meg, majd az újrapróbálkozások másodpercenként, amíg a retryTimeoutInMilliseconds időköz lejár. Az intervallum után azonnal újrapróbálkozik a művelettel. Ha a művelet továbbra is sikertelen, a kivétel a throwOnError beállításától függően visszakerül a hívóba. Az alapértelmezett érték 0, ami azt jelenti, hogy nem próbálkozik újra.
+* **databaseId** – megadja, hogy melyik adatbázist kell használni a kimeneti adatokat a gyorsítótárban. Ha nincs megadva, a rendszer az alapértelmezett 0 értéket használja.
+* **applicationName** – a kulcsok a Redis-ben tárolódnak `{<Application Name>_<Session ID>}_Data`. Ez az elnevezési séma lehetővé teszi, hogy több alkalmazás is ugyanazt a Redis-példányt használja. Ez a paraméter nem kötelező, és ha nem adja meg az alapértelmezett értéket, a rendszer nem használja.
+* **connectionTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél connectTimeout-beállítását. Ha nincs megadva, a rendszer a 5000 alapértelmezett connectTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél syncTimeout-beállítását. Ha nincs megadva, a rendszer a 1000 alapértelmezett syncTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **redisSerializerType** – ezzel a beállítással megadhatja a Redis számára eljuttatott munkamenet-tartalmak egyéni szerializálását. A megadott típusnak meg kell valósítania `Microsoft.Web.Redis.ISerializer`, és deklarálnia kell a nyilvános paraméter nélküli konstruktort. Alapértelmezés szerint `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` van használatban.
 
-Ezek a Tulajdonságok kapcsolatos további információkért lásd: az eredeti blogbejegyzés-közleményben, [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+További információ ezekről a tulajdonságokról: az eredeti blogbejegyzés a [Redis ASP.NET munkamenet-szolgáltatójának](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)bejelentése.
 
-Ne felejtse el a szabványos InProc munkamenet állapota szolgáltató szakasz a web.config fájlban tegye megjegyzésbe.
+Ne felejtse el kipróbálni a standard InProc munkamenet-szolgáltató szakaszt a web. config fájlban.
 
 ```xml
 <!-- <sessionState mode="InProc"
@@ -119,21 +111,21 @@ Ne felejtse el a szabványos InProc munkamenet állapota szolgáltató szakasz a
 </sessionState> -->
 ```
 
-Ezek a lépések elvégzése után az alkalmazás van konfigurálva az Azure Cache redis Cache munkamenetállapot-szolgáltatóját használja. Az alkalmazás munkamenet-állapotot használ, tárolja a Redis-példányt az Azure Cache-ben.
+A lépések végrehajtása után az alkalmazás úgy van konfigurálva, hogy az Azure cache-t használja a Redis munkamenet-szolgáltatóhoz. Ha munkamenet-állapotot használ az alkalmazásban, az a Redis-példányhoz tartozó Azure cache-ben tárolódik.
 
 > [!IMPORTANT]
-> A gyorsítótárban tárolt adatokat a szerializálható, ellentétben az alapértelmezett tárolhatja az adatokat a memóriában az ASP.NET munkamenet szolgáltató állapot. A redis munkamenetállapot-szolgáltató használata esetén lehet arra, hogy a munkamenet-állapot az tárolt adattípusokat szerializálható.
+> A gyorsítótárban tárolt adatmennyiségnek szerializálható kell lennie, ellentétben az alapértelmezett memóriabeli ASP.NET munkamenet-szolgáltatóban tárolható adattal. Ha a Redis munkamenet-szolgáltatóját használja, ügyeljen arra, hogy a munkamenet-állapotban tárolt adattípusok szerializálható legyenek.
 > 
 > 
 
-## <a name="aspnet-session-state-options"></a>Az ASP.NET munkamenet-állapot beállításai
+## <a name="aspnet-session-state-options"></a>ASP.NET munkamenet-állapotának beállításai
 
-* Ez a szolgáltató memória munkamenetállapot-szolgáltatója – a munkamenet-állapot, a memóriában tárolja. Ez a szolgáltató használatával előnye, egyszerű és gyors. A Web Apps viszont ha használja a szolgáltató memóriája óta nem elosztott nem skálázhatja.
-* Az SQL Server munkamenetállapot-szolgáltatója – Ez a szolgáltató az Sql Server tárolja a munkamenet-állapot. Ez a szolgáltató használja, ha a munkamenet-állapot tárolásához az állandó tárolóban. Képes méretezni a webalkalmazásokat, de a teljesítmény hatással van az Sql Server használata a munkamenet. Is használhatja ezt a szolgáltató egy [In-Memory OLTP konfigurációs](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) teljesítményének javítása érdekében.
-* Elosztott a memória munkamenetállapot-szolgáltató például az Azure Cache a redis Cache munkamenetállapot-szolgáltató – Ez a szolgáltató biztosítja használja ki mindkét világ előnyeit. A webes alkalmazás lehet egy egyszerű, gyors és méretezhető munkamenetállapot-szolgáltatóját. Ez a szolgáltató gyorsítótárban tárolja a munkamenet-állapot, mert az alkalmazás rendelkezik veszi figyelembe a jellemzők kapcsolódó, ha egy elosztott a gyorsítótárban, például az átmeneti hálózati hibák folytatott kommunikációra. Ajánlott eljárások a gyorsítótár használatával, lásd: [gyorsítótárazási útmutató](../best-practices-caching.md) a Microsoft Patterns & eljárások [Azure felhőalapú alkalmazás tervezési és implementálási segédlet](https://github.com/mspnp/azure-guidance).
+* A memória munkamenet-szolgáltatójában – ez a szolgáltató tárolja a munkamenet-állapotot a memóriában. A szolgáltató használatának előnyei egyszerűek és gyorsak. A Web Apps azonban nem méretezhető, ha a memória-szolgáltatót használja, mivel az nem terjeszthető.
+* SQL Server munkamenet-szolgáltatója – ez a szolgáltató tárolja a munkamenet-állapotot az SQL Serverben. Akkor használja ezt a szolgáltatót, ha a munkamenet-állapotot állandó tárolóban szeretné tárolni. A webalkalmazás méretezése, de az SQL Server használata a munkamenet teljesítményére hatással lehet a webalkalmazásra. Ezt a szolgáltatót a [memóriában tárolt OLTP-konfigurációval](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) is használhatja a teljesítmény javítása érdekében.
+* A memória munkamenet-állapotának szolgáltatója, például az Azure cache a Redis munkamenet-szolgáltató számára – ez a szolgáltató a legjobbat kínálja mindkét világból. A webalkalmazáshoz egyszerű, gyors és méretezhető munkamenet-szolgáltató is tartozhat. Mivel ez a szolgáltató tárolja a munkamenet-állapotot egy gyorsítótárban, az alkalmazásnak figyelembe kell vennie az elosztott memória-gyorsítótárban való kommunikációhoz kapcsolódó összes jellemzőt, például az átmeneti hálózati hibákat. A gyorsítótár használatának ajánlott eljárásaiért lásd: a Microsoft-minták [gyorsítótárazási útmutatója](../best-practices-caching.md) & az [Azure Cloud Application tervezési és megvalósítási útmutatója](https://github.com/mspnp/azure-guidance).
 
-A munkamenet-állapot és más ajánlott eljárásokról kapcsolatos további információkért lásd: [webkiszolgáló alkalmazásfejlesztési gyakorlatok (valós felhőalapú alkalmazások létrehozása az Azure-ral)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos további információkért lásd: [Webfejlesztés – ajánlott eljárások (valós felhőalapú alkalmazások készítése az Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)-ban).
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [ASP.NET kimenetigyorsítótár-szolgáltatója az Azure Cache redis](cache-aspnet-output-cache-provider.md).
+Tekintse meg az [Azure Cache ASP.NET kimeneti gyorsítótár-szolgáltatóját a Redis](cache-aspnet-output-cache-provider.md).

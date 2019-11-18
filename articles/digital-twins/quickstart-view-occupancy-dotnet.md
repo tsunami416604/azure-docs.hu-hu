@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: d9a88a40a85ce4be9222f45d3bce53e91346040b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039368"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123197"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető Teremkeresés Azure digitális Twins használatával
 
@@ -76,7 +76,7 @@ A térbeli graph használatával van kiépítve a [provisionSample.yaml](https:/
 1. Futtassa az `dotnet run ProvisionSample` parancsot.
 
     >[!NOTE]
-    >Az eszköz bejelentkezési Azure parancssori eszköz segítségével hitelesíti a felhasználót az Azure AD. A felhasználónak meg kell adnia, hogy egy adott kód használatával történő hitelesítéshez [a Microsoft bejelentkezési](https://microsoft.com/devicelogin) lapot. Miután a kódot is meg kell adni, lépésekkel hitelesítéséhez. Az eszköz futtatásakor a felhasználónak hitelesítenie kell magát.
+    >Az eszköz bejelentkezési Azure parancssori eszköz segítségével hitelesíti a felhasználót az Azure AD. A felhasználónak meg kell adnia, hogy egy adott kód használatával történő hitelesítéshez [a Microsoft bejelentkezési](https://microsoft.com/devicelogin) lapot. A kód megadása után végezze el a hitelesítés lépéseit. Az eszköz futtatásakor a felhasználónak hitelesítenie kell magát.
 
     >[!TIP]
     > Amikor futtatja ezt a lépést, ellenőrizze, hogy a változók megfelelően lettek másolva, ha a következő hibaüzenet jelenik meg: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
@@ -159,7 +159,7 @@ Továbbra is az oktatóanyagok, hogy ne törölje az erőforrásokat létrehozot
     > [!TIP]
     > Ha korábban már problémát észlelt a digitális Twins-példány törlése során, a rendszer a javítást a javítással együtt kivezette. Ismételje meg a példány törlése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a rövid útmutató egy egyszerű forgatókönyvet és egy példaként szolgáló alkalmazást használt, amely bemutatja, hogyan használhatók a digitális ikrek a megfelelő munkafeltételekkel rendelkező szobák megtalálására. Ez a forgatókönyv részletes elemzéséhez ebben az oktatóanyagban talál:
 

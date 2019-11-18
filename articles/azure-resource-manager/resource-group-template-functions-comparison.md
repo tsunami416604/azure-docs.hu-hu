@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager template functions – összehasonlítás | Microsoft Docs
+title: Sablon functions – összehasonlítás
 description: A Azure Resource Manager-sablonban az értékek összehasonlításához használandó függvényeket ismerteti.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.author: tomfitz
-ms.openlocfilehash: 05e51af62be974f925fefc46ad63c489f27fd163
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c6d58332c9f4a4b811b395999130e56666452851
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194828"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150730"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok összehasonlító funkciói
 
@@ -25,14 +22,14 @@ A Resource Manager számos funkciót biztosít a sablonokban való összehasonl�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="equals"></a>equals
+## <a name="equals"></a>egyenlő
 `equals(arg1, arg2)`
 
 Ellenőrzi, hogy két érték egyenlő-e egymással.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |int, string, array vagy object |Az egyenlőség keresésének első értéke. |
 | arg2 |Igen |int, string, array vagy object |A második érték az egyenlőség kereséséhez. |
@@ -43,7 +40,7 @@ Ellenőrzi, hogy két érték egyenlő-e egymással.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Az Equals függvényt gyakran használják az `condition` elemmel annak teszteléséhez, hogy van-e üzembe helyezett erőforrás.
+Az Equals függvényt gyakran használják a `condition` elemmel annak teszteléséhez, hogy van-e üzembe helyezett erőforrás.
 
 ```json
 {
@@ -127,12 +124,12 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Bool | True |
-| checkStrings | Bool | True |
-| checkArrays | Bool | True |
-| checkObjects | Bool | True |
+| checkInts | Bool | True (Igaz) |
+| checkStrings | Bool | True (Igaz) |
+| checkArrays | Bool | True (Igaz) |
+| checkObjects | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -165,9 +162,9 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | True |
+| checkNotEquals | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -188,7 +185,7 @@ Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |int vagy sztring |A nagyobb összehasonlítás első értéke. |
 | arg2 |Igen |int vagy sztring |A nagyobb összehasonlítás második értéke. |
@@ -240,10 +237,10 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Bool | False (Hamis) |
-| checkStrings | Bool | True |
+| checkStrings | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -264,7 +261,7 @@ Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékke
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
 | arg2 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
@@ -316,10 +313,10 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Bool | False (Hamis) |
-| checkStrings | Bool | True |
+| checkStrings | Bool | True (Igaz) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -333,14 +330,14 @@ Ez a PowerShell használatával például a sablon üzembe helyezéséhez haszn�
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>kevesebb
+## <a name="less"></a>kisebb
 `less(arg1, arg2)`
 
 Ellenőrzi, hogy az első érték kisebb-e a második értéknél.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
 | arg2 |Igen |int vagy sztring |A kisebb összehasonlítás második értéke. |
@@ -392,9 +389,9 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Bool | True |
+| checkInts | Bool | True (Igaz) |
 | checkStrings | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -416,7 +413,7 @@ Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
 | arg2 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
@@ -468,9 +465,9 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Bool | True |
+| checkInts | Bool | True (Igaz) |
 | checkStrings | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:

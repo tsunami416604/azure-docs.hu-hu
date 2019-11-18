@@ -1,19 +1,16 @@
 ---
 title: Erőforráscsoportok kezelése – Azure PowerShell
 description: Az erőforráscsoportok Azure Resource Manager használatával történő kezeléséhez használja a Azure PowerShell. Megjeleníti az erőforráscsoportok létrehozását, listázását és törlését.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 5a9768a3c4f398b3c3f88e2321f6df1a1b6fc8b7
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 5d0d7394de2763c785640b0981de9017cf0a7ae7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532179"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149796"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager erőforráscsoportok kezelése Azure PowerShell használatával
 
@@ -184,7 +181,7 @@ Az erőforrásban a nevet a paraméter használja.
 ]
 ```
 
-Ha a `-IncludeParameterDefaultValue` paramétert használja a sablon exportálásakor, a sablon paraméter egy alapértelmezett értéket tartalmaz, amely az aktuális értékre van beállítva. Ezt az alapértelmezett értéket használhatja, vagy felülírhatja az alapértelmezett értéket egy másik érték megadásával.
+Ha a sablon exportálásakor a `-IncludeParameterDefaultValue` paramétert használja, a Template paraméter egy alapértelmezett értéket tartalmaz, amely az aktuális értékre van beállítva. Ezt az alapértelmezett értéket használhatja, vagy felülírhatja az alapértelmezett értéket egy másik érték megadásával.
 
 ```json
 "parameters": {
@@ -199,7 +196,7 @@ Ha a `-IncludeParameterDefaultValue` paramétert használja a sablon exportálá
 }
 ```
 
-Ha a `-SkipResourceNameParameterization` paramétert használja a sablon exportálásakor, az erőforrásnevek paraméterei nem szerepelnek a sablonban. Ehelyett az erőforrás neve közvetlenül az erőforráson az aktuális értékre van beállítva. A név nem szabható testre a telepítés során.
+Ha a sablon exportálásakor a `-SkipResourceNameParameterization` paramétert használja, az erőforrásnevek paraméterei nem szerepelnek a sablonban. Ehelyett az erőforrás neve közvetlenül az erőforráson az aktuális értékre van beállítva. A név nem szabható testre a telepítés során.
 
 ```json
 "resources": [
@@ -218,7 +215,7 @@ További információkért lásd: [egy-és többerőforrásos exportálás a Azu
 
 A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információ: a [hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.

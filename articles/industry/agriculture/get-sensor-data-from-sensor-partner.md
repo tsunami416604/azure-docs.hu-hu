@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 424df8ac7145129dd70a9a5791648730189b528b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889656"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128842"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -35,7 +35,7 @@ Miután elindította az érzékelők adatátvitelét, elindíthatja az adatgyűj
  - API-végpont  
  - Bérlőazonosító  
  - Ügyfél-azonosító  
- - Ügyfél titka  
+ - Titkos ügyfélkulcs  
  - EventHub-kapcsolatok karakterlánca
 
 A fenti információkat a rendszerintegrátor adja meg. Az eszközök integrációjának engedélyezése során felmerülő problémákért forduljon a rendszerintegrátorhoz.
@@ -72,7 +72,7 @@ A FarmBeats az előző szakaszban létrehozott hitelesítő adatokkal való öss
  - API-végpont  
  - EventHub-kapcsolatok karakterlánca  
  - Ügyfél-azonosító  
- - Ügyfél titka  
+ - Titkos ügyfélkulcs  
  - Bérlőazonosító  
 
  Az eszköz szolgáltatója megerősíti a sikeres integrációt. A megerősítést követően megtekintheti az összes eszközt és érzékelőt az Azure FarmBeats.
@@ -86,7 +86,7 @@ A következő szakasz a farmban található eszközök és érzékelők megtekin
 A FarmBeats jelenleg a következő eszközöket támogatja:
 
 - **Csomópont**: egy eszköz, amelyhez egy vagy több érzékelő csatlakozik.
-- **Átjáró**: egy eszköz, amelyhez egy vagy több érzékelő csatlakozik.
+- **Átjáró**: egy eszköz, amelyhez egy vagy több csomópont csatlakozik.
 
 Ehhez a következő lépések szükségesek:
 

@@ -1,24 +1,14 @@
 ---
-title: Azure-kvóta hibái | Microsoft Docs
+title: Kvóta hibái
 description: Ismerteti, Hogyan oldhatók fel az erőforrás-kvótával kapcsolatos hibák az erőforrások Azure Resource Manager használatával történő telepítésekor.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.author: tomfitz
-ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8760b027d815dfc70000db5aea534bf10f60b759
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390307"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149434"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Erőforrás-kvóták hibáinak elhárítása
 
@@ -50,11 +40,11 @@ please delete some resources of this type before creating a new one.
 A kvóták erőforráscsoportonként, előfizetésenként, fiókonként és egyéb hatókörönként érvényesek. Lehetséges például, hogy az előfizetése úgy van konfigurálva, hogy korlátozza a régiónként elérhető magok számát. Ha olyan virtuális gépet próbál üzembe helyezni, amely a megengedettnél több magot tartalmaz, akkor hibaüzenetet kap a kvóta túllépéséről.
 A kvóta részletes ismertetését az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../azure-subscription-service-limits.md)című témakörben tekintheti meg.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI esetén a `az vm list-usage` paranccsal keresse meg a virtuálisgép-kvótákat.
+Az Azure CLI esetén használja a `az vm list-usage` parancsot a virtuálisgép-kvóták kereséséhez.
 
 ```azurecli
 az vm list-usage --location "South Central US"

@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3efbea7b194da54bc1d9bebd1cc77987bd9dea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7ae388488de32bb106ae29f975302953cfcb2e9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072354"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123022"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedjen meg Azure Cost Management partnerekkel
 
-A Azure Cost Management natív módon elérhető azon partnereink számára, akik Microsoft-ügyféli szerződés keretében vettek fel ügyfeleit, és megvásároltak egy Azure-csomagot. Ez a cikk azt ismerteti, hogyan használják a partnerek a [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) funkciókat. Azt is leírja, hogy a partnerek hogyan engedélyezhetik Cost Management hozzáférését ügyfeleiknek. Az ügyfelek a CSP-partnerük által engedélyezett Cost Management funkciókat is használhatják.
+A Azure Cost Management natív módon elérhető azon partnereink számára, akik Microsoft-ügyféli szerződés keretében vettek fel ügyfeleit, és [megvásároltak egy Azure-csomagot](/partner-center/purchase-azure-plan). Ez a cikk azt ismerteti, hogyan használják a partnerek a [Azure Cost Management](index.yml) funkciókat az Azure-csomagbeli előfizetések költségeinek megtekintéséhez. Azt is leírja, hogy a partnerek hogyan engedélyezhetik Cost Management hozzáférését ügyfeleiknek. Az ügyfelek a CSP-partnerük által engedélyezett Cost Management funkciókat is használhatják.
 
 A CSP-partnerek a következő Cost Management használják:
 
@@ -147,25 +147,81 @@ Az elszámolt nézetek és a fenntartott példányok tényleges költségei a RB
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Költségek elemzése a Cost Analysis szolgáltatásban
 
-A partnerek megvizsgálják és elemezhetik a költségeket a költségek elemzéséhez az ügyfeleken egy adott ügyfélhez vagy egy számlához.
+A partnerek megvizsgálják és elemezhetik a költségeket a költségek elemzéséhez az ügyfeleken egy adott ügyfélhez vagy egy számlához. A [Cost Analysis](quick-acm-cost-analysis.md) nézetben a nézetek és az adatexportálás [CSV-vagy PNG-fájlokba](quick-acm-cost-analysis.md#automation-and-offline-analysis)is [menthetők](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) .
 
-A következő mezők találhatók a használati adatok fájljaiban és a Cost Management API-kon. A Cost Analysis szolgáltatásban a szűrés és csoportosítás funkció segítségével több mező alapján elemezheti a költségeket. A mezők teljes listájának megtekintéséhez lásd: [Cost Management adatmezők](understand-cost-mgt-data.md#cost-management-data-fields).
+A Cost Analysis szolgáltatásban a szűrés és csoportosítás funkció segítségével több mező alapján elemezheti a költségeket. A következő szakaszban a Partner-specifikus mezők láthatók.
 
-| Mező neve | Leírás |
-| --- | --- |
-| CustomerTenantID | Az ügyfél&#39;-előfizetéshez tartozó Azure Active Directory bérlő azonosítója. |
-| Customername ( | Az ügyfél&#39;előfizetéséhez tartozó Azure Active Directory bérlő neve. |
-| CustomerTenantDomainName | Az ügyfél&#39;-előfizetéshez tartozó Azure Active Directory bérlő tartományneve. |
-| PartnerTenantID | A partner&#39;s Azure Active Directory bérlő azonosítója. |
-| PartnerName | A partner Azure Active Directory bérlő neve. |
-| ResellerMPNID | Az előfizetéshez társított viszonteladó MPNID. |
-| costinUSD | Becsült ExtendedCost vagy kevert költségek az adó USD-ben történő megkezdése előtt. |
-| paygCostInBillingCurrency | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. A számlázási pénznemben az utólagos elszámolású díjakat jeleníti meg. Csak RBAC hatóköröknél érhető el. |
-| paygCostInUSD | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. Az utólagos elszámolású árakat az USD értékben jeleníti meg. Csak RBAC hatóköröknél érhető el. |
-| partnerEarnedCreditRate | A partneri rendszergazdai kapcsolat elérésén alapuló partneri kreditek (PEC) alapján alkalmazott kedvezmény mértéke. |
-| partnerEarnedCreditApplied | Azt jelzi, hogy alkalmazva lett-e a partner által létrehozott kredit. |
+## <a name="data-fields"></a>Adatmezők
 
-A [Cost Analysis](quick-acm-cost-analysis.md) nézetben a nézetek és az adatexportálás [CSV-vagy PNG-fájlokba](quick-acm-cost-analysis.md#automation-and-offline-analysis)is [menthetők](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) .
+A következő adatmezők találhatók a használati adatok fájljaiban és a Cost Management API-kon. Ahol elérhető, a partner centerrel egyenértékű információk jelennek meg. A következő félkövér mezők esetében a partnerek a Cost Analysis funkciói alapján a költségeket több mező alapján elemezve használhatják. A félkövér mezők csak a partnerek által támogatott Microsoft-ügyfél-szerződésekre érvényesek.
+
+| **Mező neve** | **Leírás** | **A partner Center egyenértékű** |
+| --- | --- | --- |
+| invoiceId | Az adott tranzakcióhoz tartozó számlán látható FIÓKAZONOSÍTÓ. | A tranzakciót tartalmazó számla száma. |
+| previousInvoiceID | Az eredeti számlára való hivatkozás a visszatérítés (negatív díj). Csak akkor tölthető fel, ha visszatérítés van. | N/A |
+| billingAccountName | A partnert képviselő számlázási fiók neve. A szolgáltatás minden olyan ügyfelet felszámít, akik Microsoft-ügyféli szerződéssel rendelkeznek, és azon CSP-ügyfelek, akik az SaaS-t, az Azure Marketplace-t és a foglalásokat tették elérhetővé. | N/A |
+| billingAccountID | A partnert képviselő számlázási fiók azonosítója. | A MCAPI partner kereskedelmi főtanúsítványának azonosítója. Egy kérelemben használatos, de nem szerepel a válaszban.|
+| billingProfileID | A számlázási profil azonosítója, amely egyetlen számlázási pénznemben csoportosítja a számlákat a Microsoft ügyfél-szerződésben és azon CSP-ügyfeleken, akik az SaaS, az Azure Marketplace és a foglalások. | A MCAPI partner számlázási csoportjának azonosítója. Egy kérelemben használatos, de nem szerepel a válaszban. |
+| billingProfileName | Annak a számlázási profilnak a neve, amely egy számlázási pénznemben csoportosítja a számlákat egy olyan ügyfélen, akik Microsoft-ügyfél szerződéssel rendelkeznek, és azon CSP-ügyfelek számára, akik jogosultságokat vásároltak, például SaaS, Azure Marketplace és foglalások. | N/A |
+| invoiceSectionName | A számlán felszámított projekt neve. Nem alkalmazható a partnerek által bekészített Microsoft-szerződésekre. | N/A |
+| invoiceSectionID | A számlán felszámított projekt azonosítója. Nem alkalmazható a partnerek által bekészített Microsoft-szerződésekre. | N/A |
+| **CustomerTenantID** | Az ügyfél előfizetése Azure Active Directory bérlő azonosítója. | Ügyfél szervezeti azonosítója – az ügyfél Azure Active Directory TenantID. |
+| **Customername (** | Az ügyfél előfizetéséhez tartozó Azure Active Directory bérlő neve. | Az ügyfél szervezetének neve, ahogy az a partner Centerben látható. Fontos: a számla egyeztetése a rendszeradatokkal. |
+| **CustomerTenantDomainName** | Az ügyfél előfizetéséhez tartozó Azure Active Directory bérlő tartományneve. | Ügyfél Azure Active Directory bérlői tartomány. |
+| **PartnerTenantID** | A partner Azure Active Directory bérlő azonosítója. | A partner-AZONOSÍTÓként hívott Azure Active Directory bérlő azonosítója GUID formátumban. |
+| **PartnerName** | A partner Azure Active Directory bérlő neve. | Partner neve. |
+| **ResellerMPNID** | Az előfizetéshez társított viszonteladó MPNID. | Az előfizetéshez tartozó, az előfizetéshez tartozó-viszonteladó MPN-azonosítója. Nem érhető el az aktuális tevékenységhez. |
+| costCenter | Az előfizetéshez társított költséghely. | N/A |
+| billingPeriodStartDate | A számlázási időszak kezdő dátuma, ahogy az a számlán látható. | N/A |
+| billingPeriodEndDate | A számlázási időszak befejezési dátuma, ahogy az a számlán látható. | N/A |
+| servicePeriodStartDate | A minősítési időszak kezdő dátuma, ha a szolgáltatás kihasználtsága díjköteles. Az Azure-szolgáltatások díjszabását a minősítési időszakra vonatkozóan határozzák meg. | ChargeStartDate a partner Centerben. A számlázási ciklus kezdő dátuma, kivéve, ha az előző számlázási ciklusból korábban nem feltöltött látens használati adatokat jelenít meg. Az idő mindig a nap kezdete, 0:00. |
+| servicePeriodEndDate | Az időszak záró dátuma, amikor a szolgáltatás kihasználtsága díjköteles volt. Az Azure-szolgáltatások árai a minősítési időszak alapján vannak meghatározva. | N/A |
+| dátum | Az Azure-beli felhasználással kapcsolatos adatok esetében a minősítési dátum a használati idő szerint jelenik meg. Fenntartott példány esetén a megvásárolt dátumot jeleníti meg. Az ismétlődő költségek és az egyszeri költségek, például a piactér és a támogatás esetében a vásárlás dátuma látható. | N/A |
+| productID | Annak a terméknek az azonosítója, amely felszámított díjakat használ a felhasználás vagy a beszerzés alapján. Ez a termékkód és a SKuID összefűzött kulcsa, ahogy az a partner Centerben is látható. | A termék azonosítója. |
+| product | Annak a terméknek a neve, amely a számlán látható, felhasználás vagy beszerzés alapján felhalmozott díjat tartalmaz. | A termék neve a katalógusban. |
+| serviceFamily | Megjeleníti a megvásárolt vagy felszámított termékhez tartozó szolgáltatási családot. Például tárolás vagy számítás. | N/A |
+| productOrderID | Annak az eszköznek vagy az Azure-csomagnak az azonosítója, amelyhez az előfizetés tartozik. Például: Azure-csomag. | N/A |
+| productOrderName | Annak az Azure-csomagnak a neve, amelyhez az előfizetés tartozik. Például: Azure-csomag. | N/A|
+| consumedService | A régi EA-használati részletekben használt szolgáltatás (örökölt besorolás). | A szolgáltatás a partner Centerben látható. Például: Microsoft. Storage, Microsoft. számítás és Microsoft. operationalinsights. |
+| meterID | A mért használat mért azonosítója. | A felhasznált fogyasztásmérő azonosítója. |
+| meterName | A mért felhasználáshoz tartozó fogyasztásmérő nevét azonosítja. | A felhasznált fogyasztásmérő neve. |
+| meterCategory | A legfelső szintű szolgáltatást azonosítja a használathoz. | A legfelső szintű szolgáltatás a használathoz. |
+| meterSubCategory | Meghatározza az Azure-szolgáltatás típusát vagy alkategóriáját, amely hatással lehet a díjszabásra. | Az Azure-szolgáltatás típusa, amely hatással lehet a díjszabásra.|
+| meterRegion | Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ. | A szolgáltatások adatközpontjának regionális helye, ahol alkalmazható és feltölthető. |
+| subscription ID | Egyedi Microsoft által generált azonosító az Azure-előfizetéshez. | N/A |
+| subscriptionName | Az Azure-előfizetés neve. | N/A |
+| Időtartam | Megjeleníti az ajánlat érvényességi időszakát. A fenntartott példányok például a fenntartott példány éves időszakában 12 hónapot jelenítenek meg. Egyszeri vásárlás vagy ismétlődő vásárlás esetén a kifejezés egy hónapot jelenít meg a SaaS, az Azure Marketplace és a support számára. Nem alkalmazható az Azure-beli felhasználásra. | N/A |
+| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | A közzétevőt az első fél, harmadik féltől származó viszonteladó vagy harmadik féltől származó ügynökségként azonosító közzétevő típusa. | N/A |
+| partNumber | A nem használt fenntartott példány és az Azure Marketplace szolgáltatásainak cikkszám. | N/A |
+| publisherName | A szolgáltatás közzétevője, beleértve a Microsoftot vagy a harmadik féltől származó közzétevőket. | A termék közzétevője neve.|
+| reservationId | A fenntartott példányok vásárlásának azonosítója. | N/A |
+| reservationName | A fenntartott példány neve. | N/A |
+| reservationOrderId | A fenntartott példányhoz tartozó Rendeléskód. | N/A |
+| frequency | Fenntartott példány fizetési gyakorisága. | N/A |
+| resourceGroup | Az életciklus-erőforrások kezeléséhez használt Azure-erőforráscsoport neve. | Az erőforráscsoport neve. |
+| instanceID (vagy) ResourceID | Az erőforrás-példány azonosítója. | A teljes erőforrás-tulajdonságokat tartalmazó ResourceURI jelenik meg. |
+| resourceLocation | Az erőforrás helyének neve. | Az erőforrás helye. |
+| Földrajzi egység | Az erőforrás normalizált helye. | N/A |
+| effectivePrice | A szolgáltatás érvényes egységára, az árképzési pénznemben. A termék, a szolgáltatás családja, a mérő és az ajánlat egyedi. A számlázási fiókhoz tartozó árlista díjszabásával használható. Ha többértékű díjszabás vagy belefoglalt mennyiség szerepel, akkor a rendszer megjeleníti a kevert árat a felhasználáshoz. | Az egység ára a korrekciók után. |
+| Mennyiség | A megvásárolt vagy felhasznált mennyiség mért mennyisége. A számlázási időszak során felhasznált fogyasztásmérő mennyisége. | Egységek száma Egyeztetés közben ellenőrizze, hogy az megfelel-e a számlázási rendszeren található információknak. |
+| unitOfMeasure | Meghatározza azt az egységet, amelyben a szolgáltatás díjköteles. Például GB és óra. | Meghatározza azt az egységet, amelyben a szolgáltatás díjköteles. Például: GB, óra és 10, 10E. |
+| pricingCurrency | Az egység árát meghatározó pénznem. | Az árlista pénzneme.|
+| billingCurrency | A számlázott költségeket meghatározó pénznem. | Az ügyfél földrajzi régiójának pénzneme. |
+| chargeType | Meghatározza, hogy a költségek milyen típusú díjat jelentenek Azure Cost Management például a vásárláshoz és a visszatérítéshez. | A díj vagy a beállítás típusa. Nem érhető el az aktuális tevékenységhez. |
+| costinBillingCurrency | ExtendedCost vagy kevert díj a számlázott pénznemben megadott adózás előtt. | N/A |
+| costinPricingCurrency | ExtendedCost vagy kevert költség az árképzési pénznemben, az árakkal való összekapcsoláshoz. | N/A |
+| **costinUSD** | Becsült ExtendedCost vagy kevert költségek az adó USD-ben történő megkezdése előtt. | N/A |
+| **paygCostInBillingCurrency** | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. A számlázási pénznemben az utólagos elszámolású díjakat jeleníti meg. Csak RBAC hatóköröknél érhető el. | N/A |
+| **paygCostInUSD** | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. Az utólagos elszámolású árakat az USD értékben jeleníti meg. Csak RBAC hatóköröknél érhető el. | N/A |
+| exchangeRate | Az árképzési pénznemről a számlázási pénznemre való áttéréshez használt árfolyam. | A partner Centerben a PCToBCExchangeRate néven is ismert. A díjszabási pénznem a számlázási valuta árfolyama alapján.|
+| exchangeRateDate | Az árképzési pénznemről a számlázási pénznemre való áttéréshez használt Exchange-díj dátuma. | A partner Centerben a PCToBCExchangeRateDat néven is ismert. Az árképzési valuta árfolyama|
+| isAzureCreditEligible | Azt jelzi, hogy a költség jogosult-e az Azure-kreditek fizetésére. | N/A |
+| serviceInfo1 | A nem kötelező szolgáltatás-specifikus metaadatokat rögzítő örökölt mező. | Belső Azure-szolgáltatás metaadatainak. |
+| serviceInfo2 | A nem kötelező szolgáltatás-specifikus metaadatokat rögzítő örökölt mező. | Szolgáltatás adatai. Például egy virtuális gép és az INTERNETSZOLGÁLTATÓ neve ExpressRoute.|
+| additionalInfo | Szolgáltatásspecifikus metaadatok. Például egy virtuális gép rendszerképének típusa. | A többi oszlopban nem szereplő további információk. A szolgáltatásra vonatkozó metaadatok. Például egy virtuális gép rendszerképének típusa.|
+| címkét | A mérőműszerhez hozzárendelt címke. Használjon címkéket a számlázási rekordok csoportosításához. A címkék használatával például a mérőszámot használó részleg a költségeket terjesztheti. | Az ügyfél által hozzáadott címkék.|
+| **partnerEarnedCreditRate** | A partneri rendszergazdai kapcsolat elérésén alapuló partneri kreditek (PEC) alapján alkalmazott kedvezmény mértéke. | A partner által létrehozott kreditek (PEC) aránya. Például: 0% vagy 15%. |
+| **partnerEarnedCreditApplied** | Azt jelzi, hogy alkalmazva lett-e a partner által létrehozott kredit. | N/A |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Partner által létrehozott kredit (PEC) erőforrás-költségek megtekintése
 

@@ -1,25 +1,18 @@
 ---
-title: Az Azure Application Gateway SSL-szabályzatának áttekintése | Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az Azure Application Gateway az SSL-szabályzatok konfigurálását
+title: Az SSL-szabályzat áttekintése az Azure Application Gateway
+description: Ismerje meg, hogyan konfigurálhatja az SSL-szabályzatot az Azure Application Gatewayhoz, és csökkentheti a titkosítási és a visszafejtési terhelést a háttér-kiszolgálófarm használatával.
 services: application gateway
-documentationcenter: na
 author: amsriva
-manager: ''
-editor: ''
-tags: azure resource manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure services
-ms.date: 08/03/2017
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359912"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130408"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway SSL-házirend áttekintése
 
@@ -33,7 +26,7 @@ Application Gateway három előre definiált biztonsági házirenddel rendelkezi
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
-|Tulajdonság  |Value  |
+|Tulajdonság  |Érték  |
 |---|---|
 |Name (Név)     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
@@ -42,7 +35,7 @@ Application Gateway három előre definiált biztonsági házirenddel rendelkezi
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
   
-|Tulajdonság  |Value  |
+|Tulajdonság  |Érték  |
 |   ---      |  ---       |
 |Name (Név)     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
@@ -51,7 +44,7 @@ Application Gateway három előre definiált biztonsági házirenddel rendelkezi
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
 
-|Tulajdonság  |Value  |
+|Tulajdonság  |Érték  |
 |---|---|
 |Name (Név)     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
@@ -66,7 +59,7 @@ Ha előre definiált SSL-szabályzatot kell konfigurálnia a követelményekhez,
 
 * Az SSL 2,0 és a 3,0 alapértelmezés szerint le van tiltva az összes Application Gateway átjáró esetében. A protokollok verziószáma nem konfigurálható.
 * Az egyéni SSL-házirend lehetőséget ad a következő három protokoll valamelyikének kiválasztására az átjáró minimális SSL protokoll-verziójaként: TLSv1_0, TLSv1_1 és TLSv1_2.
-* Ha nincs SSL-házirend meghatározva, mindhárom protokoll (TLSv1_0, TLSv1_1 és TLSv1_2) engedélyezve van.
+* Ha nincs meghatározva SSL-házirend, mindhárom protokoll (TLSv1_0, TLSv1_1 és TLSv1_2) engedélyezve van.
 
 ### <a name="cipher-suites"></a>Titkosítási csomagok
 

@@ -1,7 +1,7 @@
 ---
 title: Alkalmazás betanítása – LUIS
 titleSuffix: Azure Cognitive Services
-description: A képzés a Language Understanding (LUIS) alkalmazás verziójának tanítási folyamata, amely a természetes nyelvi megértést javítja. A modell frissítéseinek elvégzése, például entitások, szándékok vagy hosszúságú kimondott szöveg hozzáadása, szerkesztése, címkézése vagy törlése után a LUIS-alkalmazás betanítása.
+description: Képzési az a folyamat, a Language Understanding (LUIS) Alkalmazásverzió javítása a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,76 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500234"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143694"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás aktív verziójának betanítása 
 
-A képzés a Language Understanding (LUIS) alkalmazás tanításának folyamata, amely a természetes nyelvi megértést javítja. A modell frissítéseinek elvégzése, például entitások, szándékok vagy hosszúságú kimondott szöveg hozzáadása, szerkesztése, címkézése vagy törlése után a LUIS-alkalmazás betanítása. 
+Képzési az a folyamat, a Language Understanding (LUIS) alkalmazásával a beszédfelismerés oktatási. A LUIS-alkalmazás betanításához például hozzáadása, szerkesztése, címkézés vagy entitásokat, a leképezések és a kimondott szöveg törlése a modellhez való frissítés után. 
 
-Az alkalmazások betanítása és [tesztelése](luis-concept-test.md) egy iterációs folyamat. A LUIS-alkalmazás betanítása után tesztelje a mintát hosszúságú kimondott szöveg, és ellenőrizze, hogy a szándékok és entitások felismerése helyesen megtörtént-e. Ha nem, akkor frissítse a LUIS alkalmazást, a betanítást és a tesztelést. 
+Képzés és [tesztelés](luis-concept-test.md) az alkalmazás az iteratív folyamat. Miután a LUIS-alkalmazás betanításához, tesztelje azt az annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri a minta kimondott szöveg. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
 
-A betanítás a LUIS-portál aktív verziójára vonatkozik. 
+Képzési alkalmazza a rendszer az aktív verzió a LUIS-portálon. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+## <a name="how-to-train-interactively"></a>Hogyan interaktív módon betanítása
 
-## <a name="how-to-train-interactively"></a>Interaktív képzés
+A iteratív folyamat a [LUIS portál](https://www.luis.ai), először létre kell legalább egy alkalommal betanítása a LUIS-alkalmazás. Ellenőrizze, hogy minden szándékot képzési előtt legalább egy utterance (kifejezés).
 
-Az iterációs folyamat a [Luis-portálon](https://www.luis.ai)való elindításához először legalább egyszer be kell tanítania a Luis-alkalmazást. A betanítás előtt győződjön meg arról, hogy minden szándéknak legalább egy kimondottnak kell lennie.
+1. Az alkalmazás eléréséhez annak nevét választva a **saját alkalmazások** lapot. 
 
-1. Az alkalmazás eléréséhez válassza ki a saját **alkalmazások** lapján a saját nevét. 
+1. Jelölje be az alkalmazásba, **Train** a az ablak tetején. 
 
-2. Az alkalmazásban válassza a **betanítás** lehetőséget a felső panelen. 
-
-3. A képzés befejezésekor megjelenik egy zöld értesítési sáv a böngésző tetején.
-
-<!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
-
->[!NOTE]
->Ha egy vagy több olyan szándékkal rendelkezik az alkalmazásban, amely nem tartalmaz például hosszúságú kimondott szöveg, nem tudja betanítani az alkalmazást. Adja hozzá a hosszúságú kimondott szöveg az összes szándékához. További információ: [example hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md).
+1. A képzés befejezésekor a böngésző tetején megjelenik egy értesítés.
 
 ## <a name="training-date-and-time"></a>Képzés dátuma és időpontja
 
 A betanítás dátuma és időpontja GMT + 2. 
 
-## <a name="train-with-all-data"></a>Tanítás az összes adattal
+## <a name="train-with-all-data"></a>Az összes adat betanítása
 
-A képzések a negatív mintavételezés kis hányadát használják. 
-
-Ha a kis negatív mintavételezés helyett az összes adatát szeretné használni, használja az [API](#version-settings-api-use-of-usealltrainingdata)-t.
-
-<!--
-
- or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
-
-### LUIS portal setting to use all training data
-
-!!!IGNITE
-
-
--->
+Képzési egy kis csoportja negatív mintavételt használ. Ha a kis negatív mintavételezés helyett az összes adatát szeretné használni, használja az [API](#version-settings-api-use-of-usealltrainingdata)-t.
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>UseAllTrainingData API-k használata
 
 a szolgáltatás kikapcsolásához használja a [Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t a `UseAllTrainingData` True értékre. 
 
-## <a name="unnecessary-training"></a>Szükségtelen képzés
+## <a name="unnecessary-training"></a>A szükségtelen képzés
 
-Minden egyes módosítás után nem kell betanítania. A betanítást a modellre vonatkozó módosítások egy csoportjának alkalmazása után kell elvégezni, a következő lépésként pedig tesztelni vagy közzétenni. Ha nem kell tesztelni vagy közzétennie, a képzés nem szükséges. 
+Nem kell minden egyetlen módosítás után betanításához. Képzési módosítások csoportja érvénybe lépnek a modellt, és szeretné a következő lépés az, hogy tesztelje, vagy közzéteheti után kell elvégezni. Ha nem szeretné tesztelni, vagy közzéteheti, a képzési nem szükséges. 
 
-## <a name="training-with-the-rest-apis"></a>Képzés a REST API-kkal
+## <a name="training-with-the-rest-apis"></a>A REST API-kkal képzés
 
-A LUIS-portálon betanítás egyetlen lépés a **vonat** gomb megnyomására. A REST API-k betanítása egy kétlépéses folyamat. Az első a HTTP POST használatával történő [betanítást kéri](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) . Ezután kérje a [betanítási állapotot](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) a HTTP Get lekérdezéssel. 
+A LUIS portálon képzési nyomja le az egyetlen lépésből áll a **Train** gombra. A REST API-kkal képzési két lépésből áll. Az első [képzési kérelem](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) a HTTP POST. Majd kérik a [képzési állapot](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) az HTTP Get. 
 
-Ha tudni szeretné, hogy a betanítás sikeres-e, le kell kérdezni az állapotot, amíg az összes modellt nem sikerült betanítani. 
+Annak érdekében, hogy ismeri a betanítási befejezésekor, hogy lekérdezik az állapot addig, amíg sikeresen képzett összes modellt. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Címke javasolt hosszúságú kimondott szöveg a LUIS-vel](luis-how-to-review-endpoint-utterances.md) 
-* [Szolgáltatások használata a LUIS-alkalmazás teljesítményének növeléséhez](luis-how-to-add-features.md) 
+* [Interaktív tesztelés](luis-interactive-test.md)
+* [Kötegelt tesztelés](luis-how-to-batch-test.md)

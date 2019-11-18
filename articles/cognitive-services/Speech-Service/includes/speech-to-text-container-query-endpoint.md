@@ -6,14 +6,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: a55cf5ea6aa696d0cf0cdd619dc22839d748d83c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2d96385f2d2d34d161739c55228220cf28871048
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491151"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132625"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>Beszéd – szöveg vagy Custom Speech – szöveg
 
@@ -32,11 +32,11 @@ Váltás az Azure-felhő inicializálási hívásának használatával:
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-Ehhez a híváshoz a tároló [végpontja](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet)használatával:
+Ehhez a híváshoz a Container [Host](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)használatával:
 
 ```csharp
-var config = SpeechConfig.FromEndpoint(
-    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"));
+var config = SpeechConfig.FromHost(
+    new Uri("ws://localhost:5000"));
 ```
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -47,11 +47,11 @@ speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-Ehhez a híváshoz a tároló [végpontja](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)használatával:
+Ehhez a híváshoz a Container [Host](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)használatával:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
-    endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
+    host="ws://localhost:5000")
 ```
 
 ***

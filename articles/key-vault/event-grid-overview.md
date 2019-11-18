@@ -1,21 +1,21 @@
 ---
-title: Key Vault figyelése Azure Event Grid
-description: Azure Event Grid használata Key Vault eseményekre való előfizetéshez
+title: 'Oktatóanyag: Key Vault figyelése Azure Event Grid'
+description: 'Oktatóanyag: Azure Event Grid használata Key Vault eseményekre való előfizetéshez'
 services: media-services
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: tutorial
+ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1fa554e03188c4d8d6227a6d2c0a560c3080b0fe
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033497"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133344"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault figyelése Azure Event Grid (előzetes verzió)
+# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Oktatóanyag: Key Vault figyelése Azure Event Grid (előzetes verzió)
 
 Key Vault a Event Grid-integráció jelenleg előzetes verzióban érhető el. Lehetővé teszi a felhasználók számára, hogy értesítést kapjanak, ha a Key vaultban tárolt titkos kód állapota megváltozott. Az állapotváltozás olyan titokként van definiálva, amely hamarosan lejár (a lejárat napjától számított 30 napon belül), egy lejárt titkos kulcsot vagy egy új verziót tartalmazó titkos kulcsot. Az értesítések mind a három titkos típus (kulcs, tanúsítvány és titkos) esetében támogatottak.
 
@@ -41,10 +41,11 @@ Az Key Vault eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlato
 * Figyelmen kívül hagyhatja a nem értelmezhető mezőket.  Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
 * Az események adott eseményre való korlátozásához használja a "tárgy" előtagot és utótagot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Key Vault áttekintése](key-vault-overview.md)
 - [Azure Event Grid áttekintése](../event-grid/overview.md)
-- [Útmutató: Key Vault-események átirányítása az Automation Runbook (előzetes verzió)](event-grid-tutorial.md).
+- Útmutató: [Key Vault-események átirányítása az Automation Runbook (előzetes verzió)](event-grid-tutorial.md).
+- Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](event-grid-logicapps.md)
 - [Azure Key Vault Azure Event Gridi esemény sémája (előzetes verzió)](../event-grid/event-schema-key-vault.md)
 - [Az Azure Automation áttekintése](../automation/index.yml)

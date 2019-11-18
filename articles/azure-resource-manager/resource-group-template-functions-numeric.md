@@ -1,23 +1,20 @@
 ---
-title: Azure Resource Manager template functions – numerikus | Microsoft Docs
+title: Sablon függvények – numerikus
 description: A Azure Resource Manager-sablonban a számokkal való munkához használandó függvényeket ismerteti.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 3ec5477ca6ea1731f18b09d6393bdde6261e0c32
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b663f27d48e3ee4e7ee2a96794015555417b3608
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194327"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149618"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok numerikus függvények
 
 A Resource Manager a következő függvényeket biztosítja az egész számokkal való használathoz:
 
-* [hozzáadása](#add)
+* [add](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
@@ -32,14 +29,14 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>hozzáadás
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
 A két megadott egész szám összegét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- | 
 |operand1 |Igen |int |A hozzáadandó első szám. |
 |operand2 |Igen |int |A hozzáadandó második szám. |
@@ -85,7 +82,7 @@ Az alábbi [sablon](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -110,9 +107,9 @@ Egy iterációs hurok indexét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | Nem | Karakterlánc | Az iteráció megszerzéséhez használt hurok neve. |
+| loopName | Nem | sztring | Az iteráció megszerzéséhez használt hurok neve. |
 | offset |Nem |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
 
 ### <a name="remarks"></a>Megjegyzések
@@ -156,7 +153,7 @@ A két megadott egész szám egészének osztását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | operand1 |Igen |int |A felosztott szám. |
 | operand2 |Igen |int |A felosztáshoz használt szám. Nem lehet 0. |
@@ -202,7 +199,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -220,14 +217,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="float" />
 
-## <a name="float"></a>float
+## <a name="float"></a>lebegőpontos
 `float(arg1)`
 
 Az értéket egy lebegőpontos számra konvertálja. Ezt a függvényt csak akkor használja, ha egyéni paramétereket adunk át egy alkalmazásnak, például egy logikai alkalmazásnak.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
 
@@ -261,7 +258,7 @@ Egy egész számra konvertálja a megadott értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Igen |karakterlánc vagy int |Az egész számra konvertálandó érték. |
 
@@ -296,7 +293,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -314,14 +311,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>max.
+## <a name="max"></a>Max
 `max (arg1)`
 
 A maximális értéket adja vissza egész számok tömbje vagy az egész számok vesszővel tagolt listája alapján.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
@@ -359,7 +356,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -385,7 +382,7 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
@@ -423,7 +420,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -449,7 +446,7 @@ Az egész szám többit adja vissza a két megadott egész szám használatával
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | operand1 |Igen |int |A felosztott szám. |
 | operand2 |Igen |int |A felosztáshoz használt szám nem lehet 0. |
@@ -494,7 +491,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
@@ -519,7 +516,7 @@ A két megadott egész szám szorzását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | operand1 |Igen |int |A szorzáshoz használandó első szám. |
 | operand2 |Igen |int |A szorzáshoz használt második szám. |
@@ -565,7 +562,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
@@ -590,7 +587,7 @@ A két megadott egész szám kivonását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | operand1 |Igen |int |A következőből kivont szám. |
 | operand2 |Igen |int |A kivonni kívánt szám. |
@@ -635,7 +632,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Value |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | aleredmény | Int | 4 |
 

@@ -1,5 +1,5 @@
 ---
-title: 'VPN-ügyfél konfigurálása az OpenVPN protokoll P2S kapcsolataihoz: Azure AD-hitelesítés | Microsoft Docs'
+title: 'VPN Gateway: VPN-ügyfél az OpenVPN protokoll P2S kapcsolataihoz: Azure AD-hitelesítés'
 description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
 services: vpn-gateway
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: alzam
-ms.openlocfilehash: 714cabc204c9ec9a0c3bbc93be287957c91d1936
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932337"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151403"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés (előzetes verzió)
 
@@ -112,19 +112,19 @@ Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan k
 
 1. A VPN-ügyfél kezdőlapján válassza a **VPN-beállítások**lehetőséget.
 
-    ![Automatikus](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![automatikus](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Válassza az **Igen** lehetőséget az alkalmazások váltása párbeszédablakban.
 
-    ![Automatikus](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![automatikus](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Győződjön meg arról, hogy a beállítani kívánt kapcsolat még nincs csatlakoztatva, majd jelölje ki a profilt, majd jelölje be az **Automatikus csatlakozás** jelölőnégyzetet.
 
-    ![Automatikus](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![automatikus](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. A VPN-kapcsolat indításához válassza a **Csatlakozás** lehetőséget.
 
-    ![Automatikus](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![automatikus](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>Kapcsolatok problémáinak diagnosztizálása
 
@@ -144,6 +144,6 @@ Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan k
 
     ![diagnosztizálása](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

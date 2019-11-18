@@ -1,25 +1,17 @@
 ---
-title: Az Azure Resource Manager sablonreferenciája igénybevételéhez |} A Microsoft Docs
+title: A sablonreferencia felhasználása
 description: Sablon üzembe helyezéséhez titkosított tárfiókban létrehozása Azure Resource Manager sablonreferenciája használatára.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 81c02c5e39e23b49291561821b0732227feb5c05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103646"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149375"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Oktatóanyag: Az Azure Resource Manager sablonreferenciája vételéhez
 
@@ -27,7 +19,7 @@ Megtudhatja, hogyan keresheti meg a sablonséma-információkat és használhatj
 
 Ebben az oktatóanyagban egy alapszintű sablont fog használni az Azure-gyorssablonok közül. A sablon referenciadokumentációjával testreszabja a sablont egy titkosított tárfiók létrehozásához.
 
-![Resource Manager sablonreferenciája titkosított storage-fiók üzembe helyezése](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Resource Manager-sablon referenciája titkosított Storage-fiók üzembe helyezése](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -78,9 +70,9 @@ Az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/) a Res
 
 ## <a name="find-the-template-reference"></a>A sablonreferencia megkeresése
 
-1. Keresse meg a [Azure sablonreferenciája](https://docs.microsoft.com/azure/templates/).
-2. Az a **szűrés cím szerint** mezőbe írja be **tárfiókok**.
-3. Válassza ki **referencia/sablon referencia/Storage/&lt;verzió > / Storage-fiókok** az alábbi képernyőképen látható módon:
+1. Tallózással keresse meg az [Azure-sablonok referenciáját](https://docs.microsoft.com/azure/templates/).
+2. A **szűrés cím szerint** mezőben adja meg a **Storage-fiókokat**.
+3. Válassza a **hivatkozás/sablon hivatkozás/Storage/&lt;verzió >/Storage-fiókok** lehetőséget az alábbi képernyőképen látható módon:
 
     ![Resource Manager-sablonreferencia – tárfiók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 

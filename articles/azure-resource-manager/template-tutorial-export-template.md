@@ -1,19 +1,16 @@
 ---
-title: Oktatóanyag – Azure Resource Manager sablon exportálása a Azure Portalból
+title: Oktatóanyag – sablon exportálása a Azure Portalból
 description: Megtudhatja, hogyan használhatja az exportált sablont a sablon fejlesztésének befejezéséhez.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6dae5d494ac71ace41586e89de5aab745962cc90
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243205"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147915"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -35,8 +32,8 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
 ## <a name="create-app-service-plan"></a>App Service-csomag létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Válassza **az erőforrás létrehozása**lehetőséget.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki **erőforrás létrehozása**.
 1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
 1. Kattintson a **Létrehozás** gombra.
 1. Be
@@ -45,7 +42,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
     - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet a jelen oktatóanyag-sorozatban használt.
     - **Név**: adja meg az App Service-csomag nevét.
     - **Operációs rendszer**: válassza a **Linux**lehetőséget.
-    - **Régió**: válasszon ki egy Azure-helyet. Például az **USA középső**régiója.
+    - **Régió**: válasszon ki egy Azure-helyet. Ha például **USA középső RÉGIÓJA**.
     - **Árképzési szint**: a költségek megtakarításához módosítsa a SKU-t az **alapszintű B1** -re (fejlesztés/tesztelés).
 
     ![Resource Manager-sablon exportálása sablon portál](./media/template-tutorial-export-template/resource-manager-template-export.png)
@@ -114,7 +111,7 @@ az group deployment create \
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Az erőforráscsoport egy Storage-fiókot és egy App Service tervet tartalmaz.
@@ -130,7 +127,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtanulta, hogyan exportálhat sablont a Azure Portalból, és hogyan használhatja az exportált sablont a sablon fejlesztéséhez. Az Azure rövid útmutató sablonjait is használhatja a sablonok fejlesztésének egyszerűbbé tételéhez.
 

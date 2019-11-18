@@ -1,29 +1,28 @@
 ---
-title: Központi telepítési sorrendet, az Azure-erőforrások |} A Microsoft Docs
-description: Ismerteti, hogyan állíthatja be egy erőforrást egy másik erőforrástól függ-e, győződjön meg arról, hogy üzembe helyezett erőforrások a megfelelő sorrendben történő üzembe helyezés során.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Erőforrások telepítési sorrendjének beállítása
+description: Ismerteti, hogyan lehet egy erőforrást egy másik erőforrástól függőként beállítani az üzembe helyezés során, hogy az erőforrások megfelelően legyenek telepítve a megfelelő sorrendben.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: tomfitz
-ms.openlocfilehash: 32b2b41e47fe089da70d82e6049d0139795df88a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 6b608111f2fe24a0b426e5697ceb07349f2d4693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204220"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149726"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>A rendelés üzembe erőforrásokat az Azure Resource Manager-sablonok meghatározása
-Egy adott erőforráshoz lehet más erőforrások, amelyek már léteznie kell az erőforrás üzembe van helyezve. Például egy SQL server léteznie kell az SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot definiálhat egy erőforrást, mint a többi erőforrástól függ-e megjelölésével. A függőséget határoz meg a **dependsOn** elem, vagy a **referencia** függvény. 
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Erőforrások üzembe helyezési sorrendjének meghatározása Azure Resource Manager-sablonokban
 
-A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. Csak kell határozhat meg telepített erőforrások függőségeinek ugyanazt a sablont. 
+Egy adott erőforrás esetében más erőforrások is lehetnek, amelyeknek az erőforrás üzembe helyezése előtt léteznie kell. Például egy SQL Servernek léteznie kell egy SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot úgy definiálhatja, hogy a másik erőforrástól függőként megjelöl egy erőforrást. A **dependsOn** elemmel vagy a **hivatkozási** függvénnyel határozhatja meg a függőséget. 
 
-Foglalkozó oktatóanyagért lásd: [oktatóanyag: Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. Csak az ugyanabban a sablonban üzembe helyezett erőforrások függőségeit kell meghatároznia. 
+
+Oktatóanyagért lásd [: oktatóanyag: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
 
 ## <a name="dependson"></a>dependsOn
-A sablonon belül a dependsOn elem lehetővé teszi egy erőforrás egy függő egy vagy több erőforrást kell definiálni. Az érték lehet egy kívánt erőforrás nevét tartalmazó vesszővel tagolt lista. 
 
-Az alábbi példa bemutatja egy virtuális gép méretezési csoportot, amely egy terheléselosztót, virtuális hálózat és több tárfiókot hoz létre, hurkot függ. A többi erőforrás nem jelennek meg az alábbi példában, de lenne szükségük a sablon megtalálható.
+A sablonon belül a dependsOn elem lehetővé teszi, hogy egy erőforrást egy vagy több erőforrástól függőként definiáljon. Az érték az erőforrásnevek vesszővel tagolt listája lehet. 
+
+Az alábbi példa egy virtuálisgép-méretezési készletet mutat be, amely egy terheléselosztó, egy virtuális hálózat és egy több Storage-fiókot létrehozó hurok alapján van függőben. Ezek a más erőforrások nem jelennek meg a következő példában, de a sablonban máshol is léteznie kell.
 
 ```json
 {
@@ -43,9 +42,9 @@ Az alábbi példa bemutatja egy virtuális gép méretezési csoportot, amely eg
 }
 ```
 
-Az előző példában egy függőségi szerepel-e az erőforrásokat, a másolási ciklust nevű keresztül létrehozott **storageLoop**. Egy vonatkozó példáért lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+Az előző példában egy **storageLoop**nevű másolási hurokon keresztül létrehozott erőforrások függősége szerepel. Példaként tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](resource-group-create-multiple.md)című témakört.
 
-Függőségek definiálása, amikor az erőforrás-szolgáltató névtere és a félreérthetőség elkerülése érdekében erőforrástípus is megadhat. Például azzal a pontosítással, egy terheléselosztó és a virtuális hálózatot, amely előfordulhat, hogy ugyanazokat a neveket, mint más erőforrások, használja a következő formátumot:
+A függőségek meghatározásakor belefoglalhatja az erőforrás-szolgáltatói névteret és az erőforrástípust is a kétértelműség elkerülése érdekében. Például egy olyan terheléselosztó és virtuális hálózat tisztázásához, amelynek neve azonos a többi erőforrás nevével, használja a következő formátumot:
 
 ```json
 "dependsOn": [
@@ -54,14 +53,14 @@ Függőségek definiálása, amikor az erőforrás-szolgáltató névtere és a 
 ]
 ``` 
 
-Bár előfordulhat, hogy kódolni, dependsOn segítségével az erőforrások közötti kapcsolatok leképezése, fontos tudni, miért végez. Dokumentálása, hogyan vannak összekapcsolva erőforrások, például a dependsOn nem a megfelelő módszer. Nem lehet lekérdezni, mely erőforrásokat üzembe helyezés után a dependsOn elemben meghatározott. DependsOn használatával, potenciálisan hatással üzembe helyezési időt, mert a párhuzamos két erőforrások, amelyek nem üzembe helyezni a Resource Manager. 
+Habár előfordulhat, hogy a dependsOn használatával leképezi az erőforrások közötti kapcsolatokat, fontos tisztában lennie azzal, hogy miért csinálja. Ha például szeretné dokumentálni, hogy az erőforrások hogyan kapcsolódnak egymáshoz, a dependsOn nem a megfelelő megközelítés. Az üzembe helyezés után nem lehet lekérdezni, hogy mely erőforrások lettek meghatározva a dependsOn elemben. A dependsOn használatával lehetséges a telepítési idő, mivel a Resource Manager párhuzamosan két, függőséggel rendelkező erőforrásban üzemel. 
 
-## <a name="child-resources"></a>Gyermek-erőforrás
-Az erőforrás-tulajdonság az erőforrás definiált kapcsolódó gyermekerőforrásait megadását teszi lehetővé. Gyermekerőforrásait meghatározott öt szintnél mélyebb csak lehet. Fontos megjegyezni, hogy a nem egy gyermek-erőforrás és a szülő erőforrás között jön létre az implicit telepítési függ. A gyermek-erőforrás után a szülő erőforrás üzembe helyezni van szüksége, a dependsOn tulajdonság függőséget explicit módon meg kell adni. 
+## <a name="child-resources"></a>Gyermek erőforrások
+Az erőforrások tulajdonság lehetővé teszi a definiált erőforráshoz kapcsolódó alárendelt erőforrások megadását. A gyermek erőforrások csak öt szint mélységben adhatók meg. Fontos megjegyezni, hogy egy implicit telepítési függőség nem jön létre egy alárendelt erőforrás és a fölérendelt erőforrás között. Ha a szülő erőforrás után telepíteni kell a gyermek erőforrást, explicit módon meg kell határoznia, hogy a dependsOn tulajdonságtól függ. 
 
-Minden egyes szülőerőforrás csak bizonyos erőforrástípusok gyermek erőforrásként fogad el. Az elfogadott erőforrástípusok vannak megadva a [sablonséma](https://github.com/Azure/azure-resource-manager-schemas) a szülő erőforrás. A gyermek erőforrástípus neve szerepel a szülő erőforrástípus neve például **Microsoft.Web/sites/config** és **Microsoft.Web/sites/extensions** forrásanyag mindkét a gyermek**Microsoft.Web/sites**.
+Minden szülő erőforrás csak bizonyos típusú erőforrásokat fogad el alárendelt erőforrásként. Az elfogadott erőforrástípusok a szülő erőforrás [sablon sémájában](https://github.com/Azure/azure-resource-manager-schemas) vannak megadva. A gyermek erőforrástípus neve tartalmazza a szülő erőforrástípus nevét, például a **Microsoft. Web/Sites/config** és a **Microsoft. Web/Sites/Extensions** is a **Microsoft. Web/Sites**alárendelt erőforrásai.
 
-Az alábbi példa bemutatja egy SQL server és SQL database. Figyelje meg, hogy az explicit függ az SQL database és SQL server között van definiálva, annak ellenére, hogy az adatbázis egy alárendelt kiszolgáló.
+Az alábbi példa egy SQL Servert és egy SQL-adatbázist mutat be. Figyelje meg, hogy az SQL-adatbázis és az SQL Server között explicit függőség van meghatározva annak ellenére, hogy az adatbázis a kiszolgáló gyermeke.
 
 ```json
 "resources": [
@@ -101,22 +100,22 @@ Az alábbi példa bemutatja egy SQL server és SQL database. Figyelje meg, hogy 
 ]
 ```
 
-## <a name="reference-and-list-functions"></a>referencia- és funkciók
-A [függvényre](resource-group-template-functions-resource.md#reference) lehetővé teszi, hogy egy kifejezés az értékét más JSON név-érték párokból vagy a futásidejű erőforrások származtassa. A [lista * funkciók](resource-group-template-functions-resource.md#list) erőforrás értékek visszaadásához a list művelet.  Referencia- és kifejezések implicit módon deklarálja, hogy egy erőforrás függ egy másik, vagy ha a hivatkozott erőforrás üzembe van helyezve, az ugyanazt a sablont, és a nevét (nem erőforrás-azonosító) által hivatkozott. Ha a referencia- vagy függvényeket az erőforrás-azonosító, az egy implicit hivatkozás nem jön létre.
+## <a name="reference-and-list-functions"></a>hivatkozás és lista függvények
+A [Reference függvény](resource-group-template-functions-resource.md#reference) lehetővé teszi, hogy egy kifejezés más JSON-nevekből és-érték párokból vagy futásidejű erőforrásokból származtatsa az értékét. A [lista * függvények](resource-group-template-functions-resource.md#list) egy adott erőforráshoz adnak vissza értékeket egy list műveletből.  A hivatkozás és a lista kifejezések implicit módon deklarálják, hogy egy erőforrás egy másiktól függ, ha a hivatkozott erőforrás ugyanabban a sablonban van telepítve, és a neve (nem erőforrás-azonosító). Ha az erőforrás-azonosítót a hivatkozás vagy a lista függvénybe adja át, az implicit hivatkozás nem jön létre.
 
-A referencia-függvény általános formátuma:
+A Reference függvény általános formátuma:
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-A listkeys műveletének függvény általános formátuma:
+A Listkeys műveletének beolvasása függvény általános formátuma:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
-A következő példában a CDN-végpont explicit módon függ, hogy a CDN-profil, és implicit módon függ a webes alkalmazás.
+A következő példában egy CDN-végpont kifejezetten a CDN-profiltól függ, és implicit módon egy webalkalmazástól függ.
 
 ```json
 {
@@ -133,26 +132,26 @@ A következő példában a CDN-végpont explicit módon függ, hogy a CDN-profil
     }
 ```
 
-Ez az elem vagy a dependsOn elem is használható függőségeinek megadása, de nem szeretné használni mindkét függő ugyanarra az erőforrásra vonatkozó. Amikor csak lehetséges, kerülje a szükségtelen függőség hozzáadása egy implicit hivatkozás használatával.
+A függőségek megadásához használhatja ezt az elemet vagy az dependsOn elemet is, de nem kell mindkettőt használnia ugyanahhoz a függő erőforráshoz. Ha lehetséges, használjon egy implicit hivatkozást, hogy elkerülje a szükségtelen függőségek hozzáadását.
 
-További tudnivalókért lásd: [függvényre](resource-group-template-functions-resource.md#reference).
+További információért lásd a [Reference függvényt](resource-group-template-functions-resource.md#reference).
 
-## <a name="circular-dependencies"></a>Körkörös függőségi viszony
+## <a name="circular-dependencies"></a>Körkörös függőségek
 
-Erőforrás-kezelő körkörös függőségi azonosítja a sablon érvényesítése során. Ha hibaüzenet jelenik meg, amely megállapítja, hogy létezik-e körkörös függőséget, értékelje ki a sablont, hogy függőségek nem szükségesek, és el kell távolítani. Ha eltávolítja a függőségek nem működik, elkerülheti a körkörös függőségi szerint bizonyos üzembe helyezési műveletek helyezi át az erőforrásokat, a rendszer körkörös függőséget után üzembe helyezett gyermekerőforrásait. Tegyük fel például, hogy két virtuális gépet telepít, de a tulajdonságai az egyes hivatkozni, a másik be kell. A következő sorrendben telepíthetők:
+A Resource Manager körkörös függőségeket azonosít a sablon érvényesítése során. Ha olyan hibaüzenetet kap, amely szerint a körkörös függőség létezik, értékelje ki a sablont, és ellenőrizze, hogy nincs-e szükség függőségre, és hogy el lehet-e távolítani. Ha a függőségek eltávolítása nem működik, elkerülheti a körkörös függőségeket úgy, hogy áthelyez néhány központi telepítési műveletet a körkörös függőséggel rendelkező erőforrások után üzembe helyezett alárendelt erőforrásokra. Tegyük fel például, hogy két virtuális gépet telepít, de tulajdonságokat kell megadnia, amelyek a másikra hivatkoznak. Ezeket a következő sorrendben helyezheti üzembe:
 
 1. vm1
 2. vm2
-3. A vm1 futtatására szolgáló bővítmény a vm1, vm2 és függ. A bővítmény a vm1, vm2 olvas, adja meg az értékeket.
-4. A vm2 bővítmény a vm1, vm2 és függ. A bővítmény lekéri a vm1, vm2 értékek beállítása.
+3. A VM1 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM1, amelyeket a VM2-ből kap.
+4. A VM2 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM2, amelyeket a VM1-ből kap.
 
-További információ a értékelése a telepítési sorrendet, és a függőségi hibák megoldása: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
+További információ a telepítési sorrend kiértékeléséről és a függőségi hibák megoldásáról: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](resource-manager-common-deployment-errors.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* Go-oktatóanyagot, tekintse meg [oktatóanyag: Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
-* Javaslatok függőségek beállításakor, lásd: [gyakorlati tanácsok az Azure Resource Manager-sablon](template-best-practices.md).
-* Üzembe helyezés során függőségek hibaelhárítással kapcsolatos tudnivalókért lásd: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Az Azure Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
-* A sablonban rendelkezésre álló függvények listája: [sablonfüggvények](resource-group-template-functions.md).
+* Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](./resource-manager-tutorial-create-templates-with-dependent-resources.md)című témakört.
+* A függőségek beállításával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
+* Az üzembe helyezés során felmerülő hibák elhárításáról további információt [Az Azure telepítési hibáinak elhárítása a Azure Resource Manager](resource-manager-common-deployment-errors.md)használatával című témakörben talál.
+* Azure Resource Manager sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
+* A sablonban elérhető függvények listáját itt tekintheti meg: [sablon függvények](resource-group-template-functions.md).
 

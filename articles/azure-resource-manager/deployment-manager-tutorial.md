@@ -1,19 +1,16 @@
 ---
 title: Az Azure Deployment Manager Resource Manager-sablonokkal való használata | Microsoft Docs
 description: Az Azure Deployment Managerben használhat Resource Manager-sablonokat az Azure-erőforrások üzembe helyezéséhez.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 6a05e45c5dc60cf26b2fb4f50cb4699c0fde142a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285876"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147417"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
 
@@ -37,7 +34,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A szolgáltatástopológia-sablon létrehozása
 > * A bevezetési sablon létrehozása
 > * A sablonok üzembe helyezése
-> * Az üzemelő példány ellenőrzése
+> * A telepítés ellenőrzése
 > * Az újabb verzió üzembe helyezése
 > * Az erőforrások eltávolítása
 
@@ -192,7 +189,7 @@ Létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást
 > [!IMPORTANT]
 > A felhasználó által hozzárendelt felügyelt identitás helyének meg kell egyeznie a [bevezetés](#create-the-rollout-template) helyével. A Deployment Manager-erőforrások, a bevezetést is beleértve, csak az USA középső és 2. keleti régiójában hozhatók létre. Ez azonban csak a telepítéskezelő erőforrásokra vonatkozik (például a szolgáltatás topológiája, a szolgáltatások, a szolgáltatási egységek, a bevezetés és a lépések). A cél erőforrásai bármely támogatott Azure-régióban üzembe helyezhetők. Ebben az oktatóanyagban például a telepítéskezelő-erőforrások üzembe helyezése az USA középső régiójában történik, de a szolgáltatások az USA keleti régiójában és az USA nyugati régiójában vannak telepítve. Ez a korlátozás a jövőben megszűnik.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Hozzon létre egy [felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. A portál bal oldali menüjében válassza az **Előfizetések** lehetőséget, majd válassza ki az előfizetést.
 4. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
@@ -340,7 +337,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
     Ha ezt a parancsfájlt egy másik PowerShell-munkamenetből futtatja, amelyből az összetevők [előkészítése](#prepare-the-artifacts) parancsfájlt futtatta, először újra fel kell töltenie a változókat, köztük a **$resourceGroupName** és a **$filepath**.
 
     > [!NOTE]
-    > a `New-AzResourceGroupDeployment` aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez tekintse meg az eljárás 2. és 4. lépését.
+    > `New-AzResourceGroupDeployment` egy aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez tekintse meg az eljárás 2. és 4. lépését.
 
 2. Ellenőrizze, hogy a szolgáltatástopológia és az alapjául szolgáló erőforrások sikeresen létrejöttek-e az Azure Portal használatával:
 
@@ -431,9 +428,9 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     A bevezetés sikeres üzembe helyezése után két további erőforráscsoport (szolgáltatásonként egy-egy) létrehozása is látható.
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.
 3. Nyissa meg a webalkalmazást egy webböngészőben. Ellenőrizze a helyet és a verziót az index.html fájlban.
 
@@ -453,14 +450,14 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezővel szűkítse a keresést az oktatóanyagban létrehozott erőforráscsoportokra. 3–4 erőforrásnak kell lennie:
 
-    * **&lt;projectName > RG**: a telepítéskezelő erőforrásait tartalmazza.
-    * **&lt;projectName > ServiceWUSrg**: a ServiceWUS által definiált erőforrásokat tartalmazza.
-    * **&lt;projectName > ServiceEUSrg**: a ServiceEUS által definiált erőforrásokat tartalmazza.
+    * **&lt;projektnév > RG**: a telepítéskezelő erőforrásait tartalmazza.
+    * **&lt;projektnév > ServiceWUSrg**: a ServiceWUS által meghatározott erőforrásokat tartalmazza.
+    * **&lt;projektnév > ServiceEUSrg**: a ServiceEUS által meghatározott erőforrásokat tartalmazza.
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag az Azure Deployment Manager használatát mutatta be. Az Azure telepítéskezelő állapotának monitorozásához lásd [: oktatóanyag: az állapot-ellenőrzés használata az azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).

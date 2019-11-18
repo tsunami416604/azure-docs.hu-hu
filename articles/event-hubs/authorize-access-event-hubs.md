@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: f01758c70e52f96fcd22a94e9b83f910cbf200c9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035871"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123466"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
 Minden alkalommal, amikor egy Event hub-ből tesz közzé vagy használ eseményeket/információkat, az ügyfél megpróbál hozzáférni Event Hubs erőforrásokhoz. A biztonságos erőforrásokra vonatkozó minden kérést engedélyezni kell, hogy a szolgáltatás biztosítsa, hogy az ügyfél rendelkezik a szükséges engedélyekkel az adatközzétételhez/felhasználáshoz. 
@@ -28,7 +28,7 @@ Az Azure AD-vel történő hitelesítéssel kapcsolatos további információké
 - [Az Azure Event Hubs-kérelmek hitelesítése a Azure Active Directory használatával](authenticate-application.md)
 - [Azure Active Directory használatával engedélyezze a hozzáférést Event Hubs erőforrásokhoz](authorize-access-azure-active-directory.md).
 
-## <a name="share-access-signatures"></a>Hozzáférési aláírások megosztása 
+## <a name="shared-access-signatures"></a>Közös hozzáférésű aláírások 
 A Event Hubs erőforrásokhoz tartozó közös hozzáférésű aláírások (SAS) korlátozott delegált hozzáférést biztosítanak Event Hubs erőforrásaihoz. Megkötések hozzáadása olyan időintervallumhoz, amely esetében az aláírás érvényes, vagy az általa nyújtott engedélyekkel az erőforrások kezelése rugalmasságot biztosít. További információ: a [hitelesítés közös hozzáférésű aláírásokkal (SAS)](authenticate-shared-access-signature.md). 
 
 Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a közös hozzáférésű aláírások (SAS) számára. Az Azure AD-ben nem kell a hozzáférési jogkivonatokat a kóddal és a potenciális biztonsági rések használatával tárolni. Habár továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Event Hubs erőforrások részletes elérésének biztosításához, az Azure AD hasonló képességeket kínál anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban. 

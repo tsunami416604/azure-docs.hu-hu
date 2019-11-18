@@ -1,17 +1,14 @@
 ---
-title: Key Vault titkos kód Azure Resource Manager sablonnal | Microsoft Docs
+title: Titok Key Vault sablonnal
 description: Bemutatja, hogyan lehet átadni egy titkos kulcsot a Key vaultból paraméterként az üzembe helyezés során.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 37d21e295eca2b40e91f92d65d6e927ee6857d0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998891"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149487"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>A Azure Key Vault használata a biztonságos paraméterek értékének átadására az üzembe helyezés során
 
@@ -19,7 +16,7 @@ Ahelyett, hogy egy biztonságos értéket (például a jelszót) közvetlenül a
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Kulcstartók és titkos kulcsok üzembe helyezése
 
-Egy kulcstartó eléréséhez a sablon üzembe helyezése során `enabledForTemplateDeployment` állítsa be a Key `true`vaultot a következőre:.
+Ha egy kulcstartót szeretne elérni a sablon telepítése során, állítsa be a `enabledForTemplateDeployment`t a Key vaulton `true`.
 
 A következő Azure CLI és Azure PowerShell minták bemutatják, hogyan hozhatja létre a kulcstartót, és hogyan adhat hozzá egy titkos kulcsot.
 
@@ -72,7 +69,7 @@ A kulcstartók létrehozásával és a titkok hozzáadásával kapcsolatos tová
 
 ## <a name="grant-access-to-the-secrets"></a>Hozzáférés biztosítása a titkokhoz
 
-A sablont telepítő felhasználónak `Microsoft.KeyVault/vaults/deploy/action` engedéllyel kell rendelkeznie az erőforráscsoport és a kulcstartó hatóköréhez. A [tulajdonos](../role-based-access-control/built-in-roles.md#owner) és a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt megadja ezt a hozzáférést. Ha létrehozta a kulcstartót, akkor Ön a tulajdonosa, hogy Ön rendelkezik az engedélyekkel.
+A sablont telepítő felhasználónak rendelkeznie kell a `Microsoft.KeyVault/vaults/deploy/action` engedéllyel az erőforráscsoport és a kulcstartó hatóköréhez. A [tulajdonos](../role-based-access-control/built-in-roles.md#owner) és a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt megadja ezt a hozzáférést. Ha létrehozta a kulcstartót, akkor Ön a tulajdonosa, hogy Ön rendelkezik az engedélyekkel.
 
 A következő eljárás azt mutatja be, hogyan hozható létre egy szerepkör a minimális engedélyekkel, és hogyan rendelhető hozzá a felhasználó
 
@@ -116,7 +113,7 @@ A következő eljárás azt mutatja be, hogyan hozható létre egy szerepkör a 
 
     A minták hozzárendelik az egyéni szerepkört a felhasználóhoz az erőforráscsoport szintjén.  
 
-Ha egy felügyelt alkalmazáshoz tartozó sablonnal Key Vault [](../managed-applications/overview.md)használ, hozzáférést kell biztosítania a **készülék erőforrás** -szolgáltatói egyszerű szolgáltatásához. További információ: [hozzáférés Key Vault secret Azure Managed Applications telepítésekor](../managed-applications/key-vault-access.md).
+Ha egy [felügyelt alkalmazáshoz](../managed-applications/overview.md)tartozó sablonnal Key Vault használ, hozzáférést kell biztosítania a **készülék erőforrás-szolgáltatói** egyszerű szolgáltatásához. További információ: [hozzáférés Key Vault secret Azure Managed Applications telepítésekor](../managed-applications/key-vault-access.md).
 
 ## <a name="reference-secrets-with-static-id"></a>Hivatkozási titkok statikus AZONOSÍTÓval
 
@@ -124,7 +121,7 @@ Ezzel a módszerrel a Key vaultra hivatkozik a paraméter fájljában, nem pedig
 
 ![Resource Manager Key Vault-integráció – statikus azonosító diagramja](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[Oktatóanyag: A Azure Key Vault integrálása a Resource](./resource-manager-tutorial-use-key-vault.md) Manager template Deployment ezt a metódust használja.
+[Oktatóanyag: a Azure Key Vault integrálása a Resource managerben template Deployment](./resource-manager-tutorial-use-key-vault.md) ezt a módszert használja.
 
 A következő sablon olyan SQL Servert telepít, amely rendszergazdai jelszót tartalmaz. A Password paraméter egy biztonságos karakterláncra van beállítva. A sablon azonban nem határozza meg, hogy az adott érték honnan származik.
 

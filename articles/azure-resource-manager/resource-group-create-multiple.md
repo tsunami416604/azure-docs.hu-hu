@@ -1,18 +1,14 @@
 ---
-title: Az Azure-erőforrások több példányának üzembe helyezése | Microsoft Docs
+title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban több alkalommal is megismételhető az erőforrások telepítésekor.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675089"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150802"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció Azure Resource Manager-sablonokban
 
@@ -110,7 +106,7 @@ A következő neveket hozza létre:
 * storage2
 * storage3
 
-A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a tömb `length` függvényét az iterációk számának megadásához, és `copyIndex` értéket a tömb aktuális indexének lekéréséhez. Tehát a következő példa:
+A másolási művelet hasznos lehet a tömbök használatakor, mert a tömb minden elemén megismételhető. Használja a tömb `length` függvényét az iterációk számának megadásához, és `copyIndex` a tömb aktuális indexének lekéréséhez. Tehát a következő példa:
 
 ```json
 "parameters": {
@@ -143,7 +139,7 @@ A következő neveket hozza létre:
 
 Alapértelmezés szerint a Resource Manager párhuzamosan hozza létre az erőforrásokat. Nem korlátozza a párhuzamosan üzembe helyezett erőforrások számát, kivéve a sablonban lévő 800-erőforrások teljes korlátját. A létrehozásuk sorrendje nem garantált.
 
-Azonban érdemes megadnia, hogy az erőforrások sorba legyenek telepítve. Ha például éles környezetet frissít, érdemes lehet megosztani a frissítéseket, hogy csak egy adott szám legyen frissítve egyszerre. Egy erőforrás több példányának soros üzembe helyezéséhez állítsa a `mode` értéket **sorosra** és `batchSize` értékre az egyszerre telepítendő példányok számának megadásához. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
+Azonban érdemes megadnia, hogy az erőforrások sorba legyenek telepítve. Ha például éles környezetet frissít, érdemes lehet megosztani a frissítéseket, hogy csak egy adott szám legyen frissítve egyszerre. Egy erőforrás egynél több példányának soros üzembe helyezéséhez állítsa a `mode` értéket **sorosra** , és `batchSize` az egyszerre telepítendő példányok számára. A soros módban a Resource Manager egy függőséget hoz létre a hurok korábbi példányain, így nem indít el egy köteget, amíg az előző köteg be nem fejeződik.
 
 Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, használja a következőt:
 
@@ -174,7 +170,7 @@ Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, has
 }
 ```
 
-A Mode (mód)tulajdonság szintén párhuzamosan fogadja el az alapértelmezett értéket.
+A Mode (mód) tulajdonság szintén **párhuzamosan**fogadja el az alapértelmezett értéket.
 
 További információ a másolás beágyazott sablonokkal történő használatáról: [a másolás használata](resource-group-linked-templates.md#using-copy).
 
@@ -186,7 +182,7 @@ Ha egynél több értéket szeretne létrehozni egy erőforrás egy tulajdonság
 * Darabszám – a létrehozandó értékek száma.
 * bemenet – egy objektum, amely a tulajdonsághoz rendelendő értékeket tartalmazza.
 
-Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy` értéket a virtuális gép dataDisks tulajdonságára:
+Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy`t a virtuális gép dataDisks tulajdonságára:
 
 ```json
 {
@@ -207,9 +203,9 @@ Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy` értéket a virtuáli
       ...
 ```
 
-Figyelje meg, hogy ha `copyIndex` értéket használ egy tulajdonság iterációjában, meg kell adnia az iteráció nevét. A nevet nem kell megadnia az erőforrás-iterációval való használathoz.
+Figyelje meg, hogy amikor `copyIndex` használ a tulajdonságok iterációjában, meg kell adnia az iteráció nevét. A nevet nem kell megadnia az erőforrás-iterációval való használathoz.
 
-A Resource Manager kibontja a `copy` tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
+A Resource Manager kibővíti a `copy` tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
 
 ```json
 {
@@ -302,7 +298,7 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 
 ## <a name="variable-iteration"></a>Változó iteráció
 
-Egy változó több példányának létrehozásához használja a `copy` tulajdonságot a változók szakaszban. A `input` tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre. Az `copy` tulajdonságot egy változón belül, illetve a változók szakasz legfelső szintjén is használhatja. Változó iterációban található `copyIndex` használatakor meg kell adnia az iteráció nevét.
+Egy változó több példányának létrehozásához használja a változók szakaszban található `copy` tulajdonságot. A `input` tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre. Használhatja a `copy` tulajdonságot egy változón belül, vagy a változók szakasz legfelső szintjén. Ha a `copyIndex` változót használ egy iterációban, meg kell adnia az iteráció nevét.
 
 A karakterlánc-értékek tömbje létrehozásának egyszerű példáját lásd: [Array sablon másolása](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 
@@ -426,7 +422,7 @@ A létrehozott változó típusa a bemeneti objektumtól függ. Például az el�
 
 ## <a name="depend-on-resources-in-a-loop"></a>Egy hurok erőforrásaitól függ
 
-Azt határozza meg, hogy egy erőforrás központi telepítése egy másik erőforrás után történik a `dependsOn` elem használatával. Ha olyan erőforrást szeretne üzembe helyezni, amely egy hurokban lévő erőforrások gyűjteményéből függ, adja meg a másolási hurok nevét a dependsOn elemben. Az alábbi példa bemutatja, hogyan helyezhet üzembe három Storage-fiókot a virtuális gép telepítése előtt. A virtuális gép teljes definíciója nem jelenik meg. Figyelje meg, hogy a másolási elem neve `storagecopy` értékre van beállítva, és a Virtual Machines dependsOn eleme is `storagecopy` értékre van állítva.
+Azt határozza meg, hogy egy erőforrás központi telepítése egy másik erőforrás után történik a `dependsOn` elem használatával. Ha olyan erőforrást szeretne üzembe helyezni, amely egy hurokban lévő erőforrások gyűjteményéből függ, adja meg a másolási hurok nevét a dependsOn elemben. Az alábbi példa bemutatja, hogyan helyezhet üzembe három Storage-fiókot a virtuális gép telepítése előtt. A virtuális gép teljes definíciója nem jelenik meg. Figyelje meg, hogy a másolási elem neve `storagecopy`, és a Virtual Machines dependsOn eleme is `storagecopy`értékre van állítva.
 
 ```json
 {
@@ -486,9 +482,9 @@ Tegyük fel például, hogy az adatkészletet általában alárendelt erőforrá
   ]
 ```
 
-Egynél több adathalmaz létrehozásához helyezze át azt az adatelőállítón kívülre. Az adatkészletnek a adat-előállítóval megegyező szinten kell lennie, de még mindig az adat-előállító alárendelt erőforrása. Az adatkészletek és a adatfeldolgozók közötti kapcsolatot a típus és a név tulajdonságon keresztül megőrizheti. Mivel a típus már nem következtethető ki a sablonban lévő pozícióból, a teljes típust a következő formátumban kell megadnia: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Egynél több adathalmaz létrehozásához helyezze át azt az adatelőállítón kívülre. Az adatkészletnek a adat-előállítóval megegyező szinten kell lennie, de még mindig az adat-előállító alárendelt erőforrása. Az adatkészletek és a adatfeldolgozók közötti kapcsolatot a típus és a név tulajdonságon keresztül megőrizheti. Mivel a típus már nem következtethető ki a sablonban lévő pozícióból, meg kell adnia a teljes típust a következő formátumban: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Ha szülő/gyermek kapcsolatot szeretne létesíteni az adatelőállító egy példányával, adja meg a szülő erőforrás nevét tartalmazó adatkészlet nevét. A formátumot használja: `{parent-resource-name}/{child-resource-name}`.
+Ha szülő/gyermek kapcsolatot szeretne létesíteni az adatelőállító egy példányával, adja meg a szülő erőforrás nevét tartalmazó adatkészlet nevét. Használja a formátumot: `{parent-resource-name}/{child-resource-name}`.
 
 A következő példa a megvalósítást mutatja be:
 

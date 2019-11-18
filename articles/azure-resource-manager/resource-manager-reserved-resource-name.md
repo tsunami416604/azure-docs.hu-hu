@@ -1,32 +1,22 @@
 ---
-title: Fenntartott Azure-erőforrás neve hibák |} A Microsoft Docs
-description: Ismerteti, hogyan lehet javítsa ki a hibákat, ha egy erőforrás-nevet, amely tartalmaz egy fenntartott szó.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Lefoglalt erőforrás neve hibák
+description: Ismerteti, Hogyan oldhatók fel hibák a fenntartott szót tartalmazó erőforrások nevének megadásakor.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683935"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150461"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Fenntartott erőforrás neve ki a hibákat
+# <a name="resolve-reserved-resource-name-errors"></a>Lefoglalt erőforrás-nevek feloldási hibáinak elhárítása
 
-Ez a cikk ismerteti a hibát tapasztal egy erőforrást a név egy fenntartott szó tartalmazó telepítésekor.
+Ez a cikk azt a hibát ismerteti, amikor olyan erőforrást telepít, amely tartalmaz egy fenntartott szót a nevében.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
-Egy erőforrás, amely elérhető egy nyilvános végpontot üzembe helyezésekor, a következő hiba jelenhet meg:
+Nyilvános végponton keresztül elérhető erőforrás telepítésekor a következő hibaüzenetet kaphatja:
 
 ```
 Code=ReservedResourceName;
@@ -35,12 +25,12 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Ok
 
-Egy nyilvános végponttal rendelkező erőforrások a név nem használható célra fenntartott szavakat vagy védjegyei.
+A nyilvános végponttal rendelkező erőforrások nem használhatják a névben foglalt szavakat vagy védjegyeket.
 
 A következő szavak vannak fenntartva:
 
 * HOZZÁFÉRÉS
-* AZ AZURE
+* AZURE
 * BING
 * BIZSPARK
 * BIZTALK
@@ -49,7 +39,7 @@ A következő szavak vannak fenntartva:
 * DOTNET
 * DYNAMICS
 * EXCEL
-* AZ EXCHANGE
+* EXCHANGE
 * FOREFRONT
 * GROOVE
 * HOLOLENS
@@ -61,15 +51,15 @@ A következő szavak vannak fenntartva:
 * OFFICE
 * OFFICE365
 * ONEDRIVE
-* ONENOTE-BAN
+* ONENOTE
 * OUTLOOK
-* A POWERPOINT
-* A SHAREPOINT
+* POWERPOINT
+* SHAREPOINT
 * SKYPE
 * VISIO
 * VISUALSTUDIO
 
-A következő szöveg teljes szavankénti vagy a név egy karakterláncrészletet nem használható:
+A következő szavak nem használhatók teljes kifejezésként vagy alsztringként a névben:
 
 * LOGIN
 * MICROSOFT
@@ -78,4 +68,4 @@ A következő szöveg teljes szavankénti vagy a név egy karakterláncrészlete
 
 ## <a name="solution"></a>Megoldás
 
-Adjon meg egy nevet, amely nem használ egy fenntartott szó.
+Olyan nevet adjon meg, amely nem használja a fenntartott szavak egyikét.

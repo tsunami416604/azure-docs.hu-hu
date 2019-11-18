@@ -1,24 +1,16 @@
 ---
-title: Folyamatos integráció az Azure-folyamatokkal | Microsoft Docs
+title: Folyamatos integráció az Azure Pipelinesszal
 description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azure Resource Manager-sablonokat.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 73ab01b5e4ea923b990932986a938f8c1fb25629
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052201"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149304"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -126,7 +118,7 @@ A azuredeploy. JSON hozzá lett adva a helyi tárházhoz. Ezután töltse fel a 
     ```
 
     Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
-1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . A mappában a **CreateAzureStorage** mappát és a **Azuredeploy. JSON** fájlt kell látnia.
+1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím **https://github.com/[YourAccountName]/[YourGitHubRepository]** . A mappában a **CreateAzureStorage** mappát és a **Azuredeploy. JSON** fájlt kell látnia.
 
 Eddig létrehozott egy GitHub-tárházat, és feltöltött egy sablont az adattárba.
 
@@ -218,9 +210,9 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
     ![Azure DevOps Azure-YAML Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. A nevet a folyamat YAML fájlban megadott név határozza meg.  Ekkor létrejön egy Storage-fiók.  A Storage-fiók neve a **tárolóval**kezdődik.
 1. Válassza ki a Storage-fiók nevét a megnyitásához.
 1. Válassza ki a **Tulajdonságok** elemet. Figyelje meg, hogy a **replikáció** **helyileg redundáns tárolást (LRS)** .
@@ -232,7 +224,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba, a folyamat automatikusan frissíti az erőforrásokat, a Storage-fiókot ebben az esetben.
 
 1. Nyissa meg a **azuredeploy. JSON** fájlt a helyi adattárból a Visual Studio Code-ban.
-1. Frissítse a **Tárfióktípus** **defaultValue** értékeit a **Standard_GRS**értékre. Tekintse meg a következő képernyőképet:
+1. Frissítse a **Tárfióktípus** **defaultValue** értékét **Standard_GRSra**. Tekintse meg a következő képernyőképet:
 
     ![Azure-DevOps Azure-YAML frissítésének Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 
@@ -263,7 +255,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehoz egy Azure DevOps-folyamatot egy Azure Resource Manager-sablon üzembe helyezéséhez. Annak megismeréséhez, hogyan lehet Azure-erőforrásokat több régióban üzembe helyezni, és hogyan alkalmazhat biztonságos üzembehelyezési gyakorlatokat, tekintse meg a következőt:
 

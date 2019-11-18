@@ -2,16 +2,15 @@
 title: A Visual Studio sablon-telepítési parancsfájljának frissítése az az PowerShell használatával
 description: A Visual Studio sablon üzembe helyezési parancsfájljának frissítése a AzureRM-ből az PowerShell-be
 author: cweining
-ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: cweining
-ms.openlocfilehash: 483b20f0003994f88ec35cc9f31a77cf571804f3
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: c34cde5593b48c301826be3dd2641dc2490ee88d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695847"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149062"
 ---
 # <a name="updating-the-visual-studio-template-deployment-script-to-use-az-powershell"></a>A Visual Studio-sablon telepítési parancsfájljának frissítése az az PowerShell használatával
 

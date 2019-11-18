@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070460"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130603"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
 
@@ -27,7 +27,7 @@ Ez a cikk ajánlásokat tartalmaz Azure Resource Manager sablonok létrehozásá
 A Web Apps függőségeinek definiálásához meg kell ismernie, hogyan hatnak a webalkalmazások erőforrásai. Ha nem megfelelő sorrendben adta meg a függőségeket, a telepítési hibák merülhetnek fel, vagy létrehozhat egy olyan versenyhelyzet-feltételt, amely megtartja a telepítést.
 
 > [!WARNING]
-> Ha a sablonban MSDeploy-bővítményt is tartalmaz, a MSDeploy erőforrástól függőként kell beállítania a konfigurációs erőforrásokat. A konfigurációs módosítások a hely aszinkron újraindítását okozzák. Azáltal, hogy a konfigurációs erőforrások MSDeploy függenek, gondoskodni kell arról, hogy a MSDeploy a hely újraindítása előtt véget ér. Ezen függőségek nélkül a hely a MSDeploy üzembe helyezési folyamata során újraindulhat. Példa sablonra: WordPress- [sablon a web Deploy](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)-függőséggel.
+> Ha a sablonban MSDeploy-bővítményt is tartalmaz, a MSDeploy erőforrástól függőként kell beállítania a konfigurációs erőforrásokat. A konfigurációs módosítások a hely aszinkron újraindítását okozzák. Azáltal, hogy a konfigurációs erőforrások MSDeploy függenek, gondoskodni kell arról, hogy a MSDeploy a hely újraindítása előtt véget ér. Ezen függőségek nélkül a hely a MSDeploy üzembe helyezési folyamata során újraindulhat. Példa sablonra: WordPress- [sablon a web Deploy-függőséggel](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
 
 A következő képen a különböző App Service erőforrások függőségi sorrendje látható:
 
@@ -46,7 +46,7 @@ Az erőforrásokat a következő sorrendben helyezheti üzembe:
 **3. szintű**
 * Verziókövetés – a webalkalmazástól függ.
 * MSDeploy – a webalkalmazástól függ.
-* A kiszolgálófarmot tároló Application Insights példány – a webalkalmazástól függ.
+* Az Azure Application Insights-példány, amely a webalkalmazást célozza meg – a webalkalmazástól függ.
 
 **4. szintű**
 * App Service tanúsítvány – függ a forrás vezérlőelemtől vagy a MSDeploy, ha van ilyen. Ellenkező esetben a webalkalmazástól függ.
@@ -87,13 +87,13 @@ A következő példa egy sablon részét mutatja be. A kapcsolatok karakterlánc
 }
 ```
 
-A fenti kódot használó, [használatra kész minta: sablon: Hozzon létre egy egyszerű árnyék](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)-webalkalmazást.
+A fenti kódot használó, használatra kész minta [: sablon: egyszerű árnyék-webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)létrehozása.
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy-hibákkal kapcsolatos információk keresése
 
 Ha a Resource Manager-sablon MSDeploy használ, a telepítési hibaüzenetek nehezen érthetők. Ha további információt szeretne kapni egy sikertelen telepítés után, próbálkozzon a következő lépésekkel:
 
-1. Nyissa meg a hely [kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)-konzolját.
+1. Nyissa meg a hely [kudu-konzolját](https://github.com/projectkudu/kudu/wiki/Kudu-console).
 2. Tallózással keresse meg a mappát a következő címen: D:\home\LogFiles\SiteExtensions\MSDeploy.
 3. Keresse meg a appManagerStatus. XML és a appManagerLog. xml fájlt. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a fórumon.
 
@@ -132,9 +132,9 @@ A tanúsítvány feltöltéséhez a Key Vault válassza a **tanúsítványok** ,
 
 ![Tanúsítvány importálása](media/web-sites-rm-template-guidance/import-certificate.png)
 
-A sablonban adja meg a tanúsítvány `keyVaultSecretName`nevét.
+A sablonban adja meg a `keyVaultSecretName`tanúsítványának nevét.
 
-Példaként lásd: webalkalmazás [-tanúsítvány üzembe helyezése Key Vault titkos kulcsból, és az SSL-kötés létrehozásához használja](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
+Példaként lásd: [webalkalmazás-tanúsítvány üzembe helyezése Key Vault titkos kulcsból, és az SSL-kötés létrehozásához használja](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 
 ## <a name="next-steps"></a>További lépések
 

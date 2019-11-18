@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609566"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132869"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Machine Learning Azure Event Gridi esemény sémája
 
@@ -155,11 +155,11 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
-| Tulajdonos | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
-| EventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
+| subject | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | BLOB Storage-események |
+| data | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
 | metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 
@@ -180,7 +180,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | -------- | ---- | ----------- |
 | ServiceName | sztring | A telepített szolgáltatás neve. |
 | ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
-| ModelIds | sztring | A modell-azonosítók közös tagolt listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
+  | ModelIds | sztring | A modell-azonosítók vesszővel tagolt listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
 | ServiceTags | objektum | A telepített szolgáltatás címkéi. |
 | ServiceProperties | objektum | A telepített szolgáltatás tulajdonságai. |
 
@@ -189,7 +189,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
-| experimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
 | RunId | sztring | A befejezett Futtatás azonosítója. |
 | RunType | sztring | A befejezett Futtatás típusa. |
 | RunTags | objektum | A befejezett futtatások címkéi. |
@@ -214,4 +214,4 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)
 * A Azure Event Grid és a Azure Machine Learning használatának bemutatása: [Azure Machine learning események felhasználása](/azure/machine-learning/service/concept-event-grid-integration)
-* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](/azure/machine-learning/service/event-schema-machine-learning) című témakörben talál.
+* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](/azure/machine-learning/service/how-to-use-event-grid) című témakörben talál.

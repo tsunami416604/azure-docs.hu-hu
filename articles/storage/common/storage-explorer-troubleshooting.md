@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694698"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74124006"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
@@ -29,7 +29,7 @@ A szerepköralapú hozzáférés-vezérlési [RBAC](https://docs.microsoft.com/a
 
 Ha problémába ütközik a tárolási erőforrások RBAC keresztüli elérésekor, előfordulhat, hogy a megfelelő szerepkörök nem lettek hozzárendelve. A következő szakaszok ismertetik azokat az engedélyeket, Storage Explorer jelenleg a tárolási erőforrásokhoz való hozzáférésre van szükség. Ha nem biztos benne, hogy rendelkezik a megfelelő szerepkörökkel vagy engedélyekkel, forduljon az Azure-fiók rendszergazdájához.
 
-#### <a name="read-listget-storage-accounts-permissions-issue"></a>Olvasni A Storage-fiók (ok) engedélyeinek listázása/beolvasása
+#### <a name="read-listget-storage-accounts-permissions-issue"></a>"Olvasási: a Storage-fiók (ok) engedélyeinek listázása/beolvasása" engedélyekkel kapcsolatos probléma
 
 Rendelkeznie kell engedéllyel a Storage-fiókok listázásához. Az engedély beszerzéséhez hozzá kell rendelnie az _olvasó_ szerepkört.
 
@@ -58,9 +58,9 @@ Ha nincs olyan szerepköre, amely felügyeleti rétegbeli engedélyeket biztosí
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Mi a teendő, ha nem tudom beolvasni a felügyeleti réteghez szükséges engedélyeket a rendszergazdától?
 
-Jelenleg nincs RBAC kapcsolatos megoldás ehhez a problémához. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
+Jelenleg nincs RBAC kapcsolatos megoldás ehhez a problémához. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: Önaláírt tanúsítvány a tanúsítványláncot (és hasonló hibák)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: önaláírt tanúsítvány a tanúsítványláncot (és hasonló hibák)
 
 A tanúsítványok hibái általában az alábbi helyzetekben fordulnak elő:
 
@@ -70,22 +70,22 @@ A tanúsítványok hibái általában az alábbi helyzetekben fordulnak elő:
 Ha Storage Explorer egy önaláírt vagy nem megbízható tanúsítványt lát, már nem tudja, hogy megváltozott-e a kapott HTTPS-üzenet. Ha rendelkezik az önaláírt tanúsítvány egy példányával, akkor a következő lépések végrehajtásával utasíthatja Storage Explorer megbízni:
 
 1. Szerezze be a tanúsítvány Base-64 kódolású X. 509 (. cer) másolatát.
-2.  > Nyissa meg az SSL-tanúsítványok importálása tanúsítványokat, majd a file Picker használatával keresse meg, válassza ki és nyissa meg a. cer fájlt. > 
+2. Lépjen az > **SSL-tanúsítványok** **szerkesztése** > **tanúsítványok importálása**elemre, majd a file Picker használatával keresse meg, válassza ki és nyissa meg a. cer fájlt.
 
 Ez a probléma akkor is előfordulhat, ha több tanúsítvány van (root és Intermediate). A hiba kijavításához mindkét tanúsítványt hozzá kell adni.
 
 Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alábbi lépéseket a kereséséhez:
 
 1. Telepítse az OpenSSL-t.
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): A fényváltozatok bármelyikének elegendőnek kell lennie.
-    * Mac és Linux: Az operációs rendszer részét képezi.
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): a fényváltozatok bármelyikének elegendőnek kell lennie.
+    * Mac és Linux: az operációs rendszer részét képezi.
 2. Futtassa az OpenSSL-t.
     * Windows: Nyissa meg a telepítési könyvtárat, válassza a **/bin/** lehetőséget, majd kattintson duplán az **OpenSSL. exe fájlra**.
-    * Mac és Linux: Futtatás `openssl` terminálról.
+    * Mac és Linux: `openssl` futtatása egy terminálról.
 3. Futtassa az `s_client -showcerts -connect microsoft.com:443` parancsot.
-4. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy mely tanúsítványok önaláírtak, jegyezze fel a tárgyat `("s:")` és a `("i:")` kiállítót bárhol.
-5. Ha önaláírt tanúsítványokat talál, mindegyikhez másolja ki és illessze be a (és a (többek `-----BEGIN CERTIFICATE-----` között `-----END CERTIFICATE-----` ) új. cer kiterjesztésű fájlba.
-6. Nyissa meg Storage Explorer, **és kattintson az** > **SSL-tanúsítványok** > **importálása tanúsítványok importálása**gombra. Ezután a file Picker használatával megkeresheti, kiválaszthatja és megnyithatja a létrehozott. cer fájlokat.
+4. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy mely tanúsítványok önaláírtak, jegyezze fel a tulajdonos `("s:")` és a kiállító `("i:")`ét.
+5. Ha önaláírt tanúsítványokat talál, minden egyes esetében másolja és illessze be a (és a (`-----BEGIN CERTIFICATE-----`), valamint a `-----END CERTIFICATE-----` egy új. cer fájlba.
+6. Nyissa meg Storage Explorer, és válassza a > **SSL-tanúsítványok** **szerkesztése** > a **tanúsítványok importálása**lehetőséget. Ezután a file Picker használatával megkeresheti, kiválaszthatja és megnyithatja a létrehozott. cer fájlokat.
 
 Ha a fenti lépések követésével nem talál önaláírt tanúsítványokat, lépjen kapcsolatba velünk a visszajelzési eszköz használatával. Storage Explorer a parancssorból is megnyithatja a `--ignore-certificate-errors` jelző használatával. Ezzel a jelzővel megnyitva Storage Explorer figyelmen kívül hagyja a tanúsítvány hibáit.
 
@@ -95,7 +95,7 @@ Ha a fenti lépések követésével nem talál önaláírt tanúsítványokat, l
 
 Az üres bejelentkezési párbeszédpanelek leggyakrabban akkor fordulnak elő, ha a Active Directory összevonási szolgáltatások (AD FS) (AD FS) az elektron által nem támogatott átirányítás elvégzésére kéri Storage Explorer. A probléma megkerüléséhez próbálja meg a bejelentkezéshez használni az eszköz kódjának folyamatát. Ehhez kövesse az alábbi lépéseket:
 
-1. A menüben keresse > meg az**eszköz kódja bejelentkezés használata**lehetőséget.
+1. A menüben válassza az **előnézet** > az **eszköz kódjának használata bejelentkezés**lehetőséget.
 2. Nyissa meg a **Csatlakoztatás** párbeszédpanelt (vagy a bal oldali függőleges sávban a dugó ikonra kattintva vagy a fiók **hozzáadása** a fiók paneljén).
 3. Válassza ki azt a környezetet, amelyre be szeretné jelentkezni.
 4. Válassza **a bejelentkezés**lehetőséget.
@@ -111,7 +111,7 @@ Ha nem tud bejelentkezni a használni kívánt fiókba, mert az alapértelmezett
 Ha újrahitelesítési hurkot használ, vagy módosította valamelyik fiók UPN-azonosítóját, kövesse az alábbi lépéseket:
 
 1. Távolítsa el az összes fiókot, majd zárjunk be Storage Explorer.
-2. Törölje a t. IdentityService mappát a számítógépről. Windows rendszeren a mappa a következő helyen található `C:\users\<username>\AppData\Local`:. Mac és Linux rendszereken a felhasználói könyvtár gyökerében található mappát találja.
+2. Törölje a t. IdentityService mappát a számítógépről. Windows rendszeren a mappa a következő helyen található: `C:\users\<username>\AppData\Local`. Mac és Linux rendszereken a felhasználói könyvtár gyökerében található mappát találja.
 3. Ha Mac vagy Linux rendszert futtat, akkor törölnie kell a Microsoft. Developer. IdentityService bejegyzést az operációs rendszer főtárolójából is. A Mac gépen a-tároló a *GNOME kulcstartó* alkalmazás. A Linux rendszerben az alkalmazást általában _kulcstartónak_nevezik, de a név a disztribúciótól függően eltérő lehet.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
@@ -165,7 +165,7 @@ Ha nem távolíthat el egy csatolt fiókot vagy tárolási erőforrást a felhas
 > A mappák törlése előtt Storage Explorer bezárásához.
 
 > [!NOTE]
-> Ha valaha is importált SSL-tanúsítványokat, biztonsági mentést készíthet a `certs` könyvtár tartalmáról. Később a biztonsági mentés használatával újraimportálhatja az SSL-tanúsítványokat.
+> Ha valaha is importált SSL-tanúsítványokat, biztonsági másolatot készíthet a `certs` könyvtár tartalmáról. Később a biztonsági mentés használatával újraimportálhatja az SSL-tanúsítványokat.
 
 ## <a name="proxy-issues"></a>Proxyval kapcsolatos problémák
 
@@ -193,7 +193,7 @@ Ha van hálózati eszköze, például a Hegedűs a Windowshoz, akkor a következ
 
 * Ha a proxyn keresztül kell dolgoznia, előfordulhat, hogy a hálózati eszközt úgy kell konfigurálnia, hogy a proxyn keresztül csatlakozhasson.
 * Keresse meg a hálózati eszköz által használt portszámot.
-* Adja meg a helyi gazdagép URL-címét és a hálózati eszköz portszámát a Storage Explorer proxybeállításait. Ha ezt a lehetőséget választja, a hálózati eszköz elindítja a Storage Explorer által a felügyeleti és szolgáltatási végpontoknak küldött hálózati kérések naplózását. Adja meg `https://cawablobgrs.blob.core.windows.net/` például a blob-végpontot egy böngészőben, és egy olyan választ fog kapni, amely a következőhöz hasonló:
+* Adja meg a helyi gazdagép URL-címét és a hálózati eszköz portszámát a Storage Explorer proxybeállításait. Ha ezt a lehetőséget választja, a hálózati eszköz elindítja a Storage Explorer által a felügyeleti és szolgáltatási végpontoknak küldött hálózati kérések naplózását. Írja be például, hogy a blob-végpont `https://cawablobgrs.blob.core.windows.net/` a böngészőben, és egy olyan választ kapjon, amely a következőhöz hasonló:
 
   ![Kódminta](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
@@ -216,11 +216,11 @@ Ha ez a hibaüzenet jelenik meg, lehetséges, hogy nem rendelkezik a szükséges
 
 Ha látja a fiók kulcsait, akkor a GitHubon a probléma megoldásához segítséget nyújthat.
 
-## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Hiba történt az új kapcsolatok hozzáadásakor: TypeError: Nem definiált "version" tulajdonság nem olvasható
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Hiba történt az új kapcsolódás hozzáadásakor: TypeError: nem olvasható a (z) nem definiált "version" tulajdonság.
 
 Ha ezt a hibaüzenetet kapja, amikor egyéni csatlakozást próbál hozzáadni, előfordulhat, hogy a helyi hitelesítőadat-kezelőben tárolt kapcsolódási adatok sérültek. A probléma megkerüléséhez próbálkozzon a sérült helyi kapcsolatok törlésével, majd adja hozzá újra a következőt:
 
-1. Storage Explorer elindítása. A menüből válassza a **Súgó** > **váltógomb fejlesztői eszközök**lehetőséget.
+1. Storage Explorer elindítása. A menüben lépjen a **súgó** > **fejlesztői eszközök váltása**elemre.
 2. A megnyitott ablak **alkalmazás** lapján lépjen a **helyi tároló** (bal oldalon) > **file://** elemre.
 3. Attól függően, hogy milyen típusú kapcsolatra van probléma, keresse meg a kulcsát, majd másolja az értékét egy szövegszerkesztőbe. Az érték az egyéni nevek tömbje, a következőhöz hasonlóan:
     * Tárfiókok
@@ -234,7 +234,7 @@ Ha ezt a hibaüzenetet kapja, amikor egyéni csatlakozást próbál hozzáadni, 
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Táblák
         * `StorageExplorer_CustomConnections_Tables_v1`
-4. Az aktuális kapcsolatok nevének mentése után állítsa be Fejlesztői eszközök `[]`értékét a következőre:.
+4. Miután mentette a jelenlegi kapcsolatok nevét, állítsa `[]`értékre a Fejlesztői eszközök értéket.
 
 Ha meg szeretné őrizni a nem sérült kapcsolatokat, a következő lépésekkel megkeresheti a sérült kapcsolatokat. Ha nem veszik figyelembe az összes meglévő kapcsolat elvesztését, kihagyhatja ezeket a lépéseket, és követheti a platformra vonatkozó utasításokat a kapcsolati adatai törléséhez.
 
@@ -248,13 +248,13 @@ Miután az összes kapcsolaton áthaladt, az összes nem hozzáadott kapcsolat n
 
 1. A **Start** menüben keresse meg a **hitelesítőadat-kezelőt** , és nyissa meg.
 2. Nyissa meg a **Windows rendszerbeli hitelesítő adatokat**.
-3. Az **általános hitelesítő adatok**területen keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket `StorageExplorer_CustomConnections_Accounts_v1/account1`(például:).
+3. Az **általános hitelesítő adatok**területen keresse meg azokat a bejegyzéseket, amelyek rendelkeznek a `<connection_type_key>/<corrupted_connection_name>` kulccsal (például `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macOS)
 
 1. Nyisson meg egy reflektorfényt (Command + szóköz), és keressen rá a **kulcstartó-hozzáférés**kifejezésre.
-2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket ( `StorageExplorer_CustomConnections_Accounts_v1/account1`például:).
+2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket (például `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/Linux)
@@ -262,7 +262,7 @@ Miután az összes kapcsolaton áthaladt, az összes nem hozzáadott kapcsolat n
 A helyi hitelesítő adatok kezelése a Linux-disztribúciótól függően változhat. Ha a Linux-disztribúció nem biztosít beépített GUI-eszközt a helyi hitelesítő adatok kezeléséhez, telepíthet egy külső gyártótól származó eszközt a helyi hitelesítő adatok kezeléséhez. Használhatja például a [csikóhalat](https://wiki.gnome.org/Apps/Seahorse/), amely egy nyílt forráskódú GUI-eszköz a Linux helyi hitelesítő adatainak kezeléséhez.
 
 1. Nyissa meg a helyi Hitelesítőadat-kezelő eszközt, és keresse meg a mentett hitelesítő adatokat.
-2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket ( `StorageExplorer_CustomConnections_Accounts_v1/account1`például:).
+2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket (például `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 ---
 
@@ -279,8 +279,8 @@ Ha SAS URL-címen keresztül csatlakozik egy szolgáltatáshoz, és hibát észl
 Ha véletlenül csatolva van egy érvénytelen SAS URL-cím használatával, és most nem tud leválasztani, kövesse az alábbi lépéseket:
 
 1. Storage Explorer futtatásakor nyomja meg az F12 billentyűt a Fejlesztői eszközök ablak megnyitásához.
-2. Az **alkalmazás** lapon válassza a **helyi tároló** > **file://** a bal oldali fában.
-3. Keresse meg a problémás SAS URI-azonosító szolgáltatás típusához társított kulcsot. Ha például a hibás SAS URI egy blob-tárolóhoz tartozik, keresse meg a nevű `StorageExplorer_AddStorageServiceSAS_v1_blob`kulcsot.
+2. Az **alkalmazás** lapon válassza a **helyi tároló** > **file://** elemet a bal oldali fában.
+3. Keresse meg a problémás SAS URI-azonosító szolgáltatás típusához társított kulcsot. Ha például a hibás SAS URI egy blob-tárolóhoz tartozik, keresse meg a `StorageExplorer_AddStorageServiceSAS_v1_blob`nevű kulcsot.
 4. A kulcs értékének JSON-tömbnek kell lennie. Keresse meg a rossz URI-hoz társított objektumot, majd törölje.
 5. Nyomja le a CTRL + R billentyűkombinációt Storage Explorer újratöltéséhez.
 
@@ -313,7 +313,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
-3. Futtassa a következő parancsot:
+3. Futtassa az alábbi parancsot:
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
@@ -322,7 +322,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
-3. Futtassa a következő parancsot:
+3. Futtassa az alábbi parancsot:
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
@@ -331,7 +331,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
-3. Futtassa a következő parancsot:
+3. Futtassa az alábbi parancsot:
    ```bash
    sudo apt install libgnome-keyring-dev
    ```
@@ -340,7 +340,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
-3. Futtassa a következő parancsot:
+3. Futtassa az alábbi parancsot:
    ```bash
    sudo apt install libgnome-keyring-dev
    ```
@@ -351,10 +351,10 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 Storage Explorer 1.7.0 vagy korábbi verzió esetén előfordulhat, hogy a Storage Explorer által használt .NET Core-verziót kell megjavítania:
 
 1. Töltse le a StreamJsonRpc 1.5.43 verzióját a [NuGet-](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)ból. Keresse meg a "csomag letöltése" hivatkozást az oldal jobb oldalán.
-2. A csomag letöltése után módosítsa a fájl kiterjesztését `.nupkg` a verzióról a `.zip`verzióra.
+2. A csomag letöltése után módosítsa a fájlkiterjesztés `.nupkg`ról `.zip`ra.
 3. Bontsa ki a csomagot.
 4. Nyissa meg a `streamjsonrpc.1.5.43/lib/netstandard1.1/` mappát.
-5. Másolja `StreamJsonRpc.dll` a következő helyszínekre a Storage Explorer mappában:
+5. Másolja `StreamJsonRpc.dll` a Storage Explorer mappa következő helyeire:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 

@@ -1,21 +1,18 @@
 ---
-title: Oktatóanyag – paraméterek hozzáadása Azure Resource Manager sablonhoz
+title: Oktatóanyag – paraméterek hozzáadása a sablonhoz
 description: Adja hozzá a paramétereket a Azure Resource Manager-sablonhoz, hogy az újrafelhasználható legyen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7a4d8db57167bc82d13b4d46be1abc3518c340e4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001498"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150237"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Oktatóanyag: Paraméterek hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Oktatóanyag: paraméterek hozzáadása a Resource Manager-sablonhoz
 
 Az [előző oktatóanyagban](template-tutorial-add-resource.md)megtanulta, hogyan adhat hozzá Storage-fiókot a sablonhoz, és hogyan telepítheti azt. Ebből az oktatóanyagból megtudhatja, hogyan javíthatja a sablont paraméterek hozzáadásával. Ez az oktatóanyag körülbelül **14 percet** vesz igénybe.
 
@@ -81,7 +78,7 @@ A frissítések kezelési módja azt jelenti, hogy a sablon tartalmazhatja az Az
 
 Paraméterek megadásával testreszabhatja az üzemelő példányt úgy, hogy az adott környezetnek megfelelő értékeket ad meg. Például különböző értékeket adhat át, attól függően, hogy fejlesztési, tesztelési és éles környezetben végzi-e a telepítést.
 
-Az előző sablon mindig üzembe helyezett egy Standard_LRS-Storage-fiókot. A környezettől függően előfordulhat, hogy a rugalmasságot a különböző SKU-ket érdemes telepíteni. Az alábbi példa bemutatja, hogyan adhat hozzá egy paramétert az SKU-hoz. Másolja a teljes fájlt, és illessze be a sablont.
+Az előző sablon mindig Standard_LRS Storage-fiókot telepített. A környezettől függően előfordulhat, hogy a rugalmasságot a különböző SKU-ket érdemes telepíteni. Az alábbi példa bemutatja, hogyan adhat hozzá egy paramétert az SKU-hoz. Másolja a teljes fájlt, és illessze be a sablont.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 
@@ -113,7 +110,7 @@ az group deployment create \
 
 ---
 
-A sablon rugalmasságának megtekintéséhez próbálkozzon újra a telepítéssel. Ezúttal állítsa az SKU paramétert **Standard_GRS**értékre. Átadhat egy új nevet egy másik Storage-fiók létrehozásához, vagy használhatja ugyanazt a nevet a meglévő Storage-fiók frissítéséhez. Mindkét beállítás működik.
+A sablon rugalmasságának megtekintéséhez próbálkozzon újra a telepítéssel. Ezúttal állítsa az SKU paramétert **Standard_GRSra**. Átadhat egy új nevet egy másik Storage-fiók létrehozásához, vagy használhatja ugyanazt a nevet a meglévő Storage-fiók frissítéséhez. Mindkét beállítás működik.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

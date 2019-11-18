@@ -1,80 +1,81 @@
 ---
-title: Bevezetés az Azure Advisor |} A Microsoft Docs
-description: Az Azure Advisor használata az Azure-környezetek optimalizálására.
+title: Bevezetés a Azure Advisorba | Microsoft Docs
+description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sagupt
+ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069688"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145373"
 ---
-# <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
+# <a name="introduction-to-azure-advisor"></a>Bevezetés a Azure Advisorba
 
-További tudnivalók az Azure Advisor rejlő lehetőségeket, és gyakran feltett kérdésekre adott válaszok.
+Ismerkedjen meg Azure Advisor főbb képességeivel, és választ kaphat a gyakori kérdésekre.
 
 ## <a name="what-is-advisor"></a>Mi az Advisor?
-Az Advisor egy személyre szabott felhőalapú tanácsadó, amely segítséget nyújt az Azure-környezetek optimalizálására vonatkozó ajánlott eljárásokat. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
+Az Advisor egy személyre szabott felhőalapú tanácsadó, amely az Azure-beli üzembe helyezések optimalizálására szolgáló ajánlott eljárások követésében nyújt segítséget. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
-Az Advisor szolgáltatással a következőket teheti:
-* Proaktív, gyakorlatban hasznosítható lekérése, és személyre szabott ajánlott eljárások. 
-* Javíthatja a teljesítményt, biztonsági és az erőforrások magas rendelkezésre állású meghatározása a teljes Azure csökkentésére költségek.
-* A javasolt műveleteket beágyazott javaslatokat kaphat.
+Az Advisor használatával a következőket teheti:
+* Proaktív, végrehajtható és személyre szabott ajánlott eljárások beszerzése. 
+* Az erőforrások teljesítményének, biztonságának és magas rendelkezésre állásának javítása a teljes Azure-kiadások csökkentése érdekében.
+* Javaslatok beszerzése a javasolt műveletekkel beágyazottan.
 
-Az Advisor keresztül érheti el a [az Azure portal](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portál](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keressen rá a a **minden szolgáltatás** menü.
+Az Advisor a [Azure Portal](https://aka.ms/azureadvisordashboard)keresztül érhető el. Jelentkezzen be a [portálra](https://portal.azure.com), keresse meg az **Advisor** parancsot a navigációs menüben, vagy keresse meg a **minden szolgáltatás** menüben.
 
-Az Advisor irányítópult személyre szabott ajánlatokat az összes előfizetés jeleníti meg.  Az adott előfizetésekre és -erőforrástípusok javaslatok megjelenítése szűrőket is alkalmazhat.  A javaslatok négy kategóriába tartoznak: 
+Az Advisor irányítópultja személyre szabott javaslatokat jelenít meg az összes előfizetéséhez.  Szűrőket alkalmazhat az egyes előfizetésekhez és erőforrástípusokhöz tartozó javaslatok megjelenítéséhez.  A javaslatok négy kategóriába tartoznak: 
 
-* **Magas rendelkezésre állású**: Győződjön meg arról, és javíthatja az üzleti szempontból kritikus fontosságú alkalmazások folytonosságát. További információkért lásd: [Advisor magas rendelkezésre állás – javaslatok](advisor-high-availability-recommendations.md).
-* **Biztonság**: Olyan fenyegetések és biztonsági rések észlelése érdekében, amelyek biztonsági problémákhoz vezethetnek. További információkért lásd: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
-* **Teljesítmény**: A cél az alkalmazások sebességének növelése. További információkért lásd: [Advisor teljesítményajánlásainak](advisor-performance-recommendations.md).
-* **Költségek**: A cél az Azure költségeinek optimalizálása és csökkentése. További információkért lásd: [Advisor díjakkal kapcsolatos ajánlások](advisor-cost-recommendations.md).
+* **Magas rendelkezésre állás**: az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosítása és javítása. További információ: [Advisor magas rendelkezésre állási javaslatai](advisor-high-availability-recommendations.md).
+* **Biztonság**: az olyan fenyegetések és biztonsági rések észlelése, amelyek biztonsági réseket okozhatnak. További információ: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
+* **Teljesítmény**: az alkalmazások sebességének növelése érdekében. További információ: [Advisor Performance javaslatok](advisor-performance-recommendations.md).
+* **Költségek**: a teljes Azure-kiadások optimalizálása és csökkentése. További információ: [Advisor Cost javaslatok](advisor-cost-recommendations.md).
+* **Működési kiválóság**: a folyamatok és a munkafolyamatok hatékonyságának, az erőforrás-kezelhetőség és az üzembe helyezés ajánlott eljárásainak a megvalósításához nyújt segítséget. . További információ: [Advisor Operational Excellence ajánlásai](advisor-operational-excellence-recommendations.md).
 
-  ![Advisor-ajánlást típusok](./media/advisor-overview/advisor-dashboard.png)
+  ![Advisor-javaslatok típusai](./media/advisor-overview/advisor-dashboard.png)
 
-Azt a kategóriát, az adott kategórián belül a javaslatok listájának megjelenítéséhez kattintson, és válasszon ki egy javaslatot, ha többet szeretne.  Emellett tudhat meg azokról a műveletekről, kihasználhatja a lehetőséget, vagy a probléma megoldásához hajthat végre.
+Egy kategóriára kattintva megjelenítheti az adott kategórián belüli javaslatok listáját, és kiválaszthat egy javaslatot, amely további információkat tartalmaz.  Azt is megtudhatja, hogy milyen műveleteket hajthat végre a lehetőségek kihasználásához vagy a probléma megoldásához.
 
-![Az Advisor-ajánlást kategória](./media/advisor-overview/advisor-ha-category-example.png) 
+![Advisor-javaslat kategóriája](./media/advisor-overview/advisor-ha-category-example.png) 
 
-Válassza ki egy javaslatot a javaslat megvalósítása a javasolt műveletet.  Egy egyszerű felületen nyílik meg, amely lehetővé teszi a javaslat megvalósítása, vagy tekintse meg, dokumentáció, amely segítséget nyújt végrehajtása.  A javaslat megvalósítása, miután, akár is igénybe vehet az Advisor ismeri fel, amely naponta.
+A javaslat megvalósításához Válassza ki a javasolt műveletet.  Megnyílik egy egyszerű felület, amely lehetővé teszi a javaslat megvalósítását, vagy olyan dokumentációra hivatkozik, amely segítséget nyújt a megvalósításában.  A javaslat megvalósítása után akár egy napot is igénybe vehet, hogy az Advisor felismerje ezt.
 
-Ha nem szeretne azonnal cselekedni ajánlása, egy adott időtartamra elhalaszthatja azt, vagy zárja be azt.  Ha nem szeretne egy adott előfizetésen vagy erőforráscsoporton vonatkozó javaslatokat kapni, konfigurálhatja az Advisor csak a megadott előfizetésekhez és erőforráscsoportokhoz vonatkozó ajánlások előállításához.
+Ha nem szeretne azonnali műveletet végrehajtani egy javaslaton, elhalaszthatja azt egy adott időszakra, vagy elvetheti azt.  Ha nem szeretne javaslatokat kapni egy adott előfizetéshez vagy erőforráscsoporthoz, úgy is beállíthatja az Advisorot, hogy csak a megadott előfizetésekre és erőforrás-csoportokra vonatkozó ajánlásokat állítson elő.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="how-do-i-access-advisor"></a>Hogyan érhetem el az Advisor?
-Az Advisor keresztül érheti el a [az Azure portal](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portál](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keressen rá a a **minden szolgáltatás** menü.
+### <a name="how-do-i-access-advisor"></a>Hogyan érhetem el az Advisort?
+Az Advisor a [Azure Portal](https://aka.ms/azureadvisordashboard)keresztül érhető el. Jelentkezzen be a [portálra](https://portal.azure.com), keresse meg az **Advisor** parancsot a navigációs menüben, vagy keresse meg a **minden szolgáltatás** menüben.
 
-A virtuális gép erőforrás-felületen keresztül is megtekintheti az Advisor-javaslatok. Válassza ki a virtuális gép, és görgessen a menüben az Advisor-javaslatok. 
+Az Advisor javaslatait a virtuális gép erőforrás-felületén is megtekintheti. Válasszon ki egy virtuális gépet, majd görgessen az Advisor javaslataihoz a menüben. 
 
-### <a name="what-permissions-do-i-need-to-access-advisor"></a>Milyen engedélyekkel van szükségem az Advisor eléréséhez?
+### <a name="what-permissions-do-i-need-to-access-advisor"></a>Milyen engedélyek szükségesek az Advisor eléréséhez?
  
-Advisor-javaslatok, elérheti *tulajdonosa*, *közreműködői*, vagy *olvasó* előfizetés.
+Az Advisor-ajánlásokat *tulajdonosként*, *közreműködőként*vagy az előfizetés *olvasójának* is elérheti.
 
-### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrások Advisor nyújt ajánlásokat?
+### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrásokra vonatkozó ajánlásokat biztosít az Advisor?
 
-Az Advisor ajánlásokkal az Application Gateway, alkalmazásszolgáltatások, rendelkezésre állási csoportok az Azure nyilvános, Azure Cache, az Azure Data Factory áttekintése, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, az Azure ExpressRoute, az Azure Cosmos dB-ben IP-címek, az SQL Data Warehouse, SQL Server-kiszolgálók, a storage-fiókok, Traffic Manager-profilok és a virtuális gépek.
+Az Advisor ajánlásokat nyújt Application Gateway, App Services, rendelkezésre állási csoportok, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure Public IP-címek, SQL Data Warehouse, SQL-kiszolgálók, Storage-fiókok, Traffic Manager-profilok és virtuális gépek.
 
-Az Azure Advisor is magában foglalja a javaslatainak [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) előfordulhat, hogy többek között további erőforrástípusok vonatkozó javaslatokat.
+A Azure Advisor a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) javaslataival is rendelkezik, amelyek további erőforrástípusok esetén javaslatokat is tartalmazhatnak.
 
-### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Halassza el vagy elvetheti a javaslatot?
+### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Elhalasztottam vagy Elvetem a javaslatot?
 
-Halassza el, vagy hagyja figyelmen kívül a javaslatot, kattintson a **elhalasztás** hivatkozásra. Megadhat egy időszak, vagy válassza elhalasztás **soha** elvetése a javaslat.
+A javaslatok elhalasztásához vagy elvetéséhez kattintson az **elhalasztás** hivatkozásra. Megadhat egy elhalasztási időszakot, vagy kiválaszthatja, hogy **Soha ne** utasítsa el a javaslatot.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Advisor-javaslatok kapcsolatos további információkért lásd:
+Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Az Advisor magas rendelkezésre állás – javaslatok](advisor-high-availability-recommendations.md)
-* [Az Advisor biztonsági javaslatok](advisor-security-recommendations.md)
-* [Advisor-teljesítményajánlások](advisor-performance-recommendations.md)
-* [Az Advisor díjakkal kapcsolatos ajánlások](advisor-cost-recommendations.md)
+* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
+* [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
+* [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
+* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)

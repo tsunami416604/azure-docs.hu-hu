@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249112"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120965"
 ---
 # <a name="networking-limit-increase"></a>Hálózatkezelési korlát növelése
 
@@ -20,11 +20,14 @@ Ha meg szeretné tekinteni a jelenlegi hálózatkezelési használatot és kvót
 
 A portálon a **Súgó + támogatás** panel vagy a **használat + kvóta** panel használatával növelheti a növekedést.
 
+> [!Note]
+> A nyilvános IP-előtag alapértelmezett méretének módosításához a legördülő listából válassza a "minimális nyilvános IP-cím összetett előtag hossza" lehetőséget.
+
 ## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Hálózati kvóta növelésének kérése az előfizetés szintjén a **Súgó + támogatás** panelen
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el. 
 
-1. @No__t – 0 értéknél válassza a **Súgó + támogatás**lehetőséget.
+1. https://portal.azure.comválassza a **Súgó + támogatás**lehetőséget.
 
     ![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -61,7 +64,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen. 
 
-1. @No__t – 0 közül válassza az **előfizetések**lehetőséget.
+1. https://portal.azure.comválassza az **előfizetések**lehetőséget.
 
     ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
 

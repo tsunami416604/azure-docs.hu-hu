@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database tartalom összekötése és indexelése indexelő használatával
+title: Keresés az Azure SQL-on keresztül
 titleSuffix: Azure Cognitive Search
 description: Adatok importálása Azure SQL Database az indexelő használatával az Azure Cognitive Search teljes szöveges kereséséhez. Ez a cikk a kapcsolatokat, az indexelő konfigurációját és az adatfeldolgozást ismerteti.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792196"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113310"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Azure SQL Database tartalomhoz való kapcsolódás és indexelés az Azure Cognitive Search indexelő használatával
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
 Az [Azure Cognitive Search indexek](search-what-is-an-index.md)lekérdezéséhez fel kell töltenie azt az adataival. Ha az adatmennyiség egy Azure SQL Database-adatbázisban található, akkor az **azure Cognitive Search indexelő Azure SQL Database** (vagy az **Azure SQL indexelő** esetében) automatizálhatja az indexelési folyamatot, ami azt jelenti, hogy kevesebb kód írható és kevésbé fontos az infrastruktúra.
 
@@ -271,25 +271,25 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Az SQL és az Azure Cognitive Search adattípusok közötti leképezés
 | SQL-adattípus | Engedélyezett cél index mezők típusai | Megjegyzések |
 | --- | --- | --- |
-| bites |EDM. Boolean, EDM. String | |
-| int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
-| bigint |EDM. Int64, EDM. String | |
-| valós, lebegőpontos |EDM. Double, EDM. String | |
+| bit |Edm.Boolean, Edm.String | |
+| int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
+| bigint |Edm.Int64, Edm.String | |
+| valós, lebegőpontos |Edm.Double, Edm.String | |
 | túlcsordulási, pénzes decimális szám |Edm.String |Az Azure Cognitive Search nem támogatja a decimális típusok konvertálását a EDM. Double formátumba, mivel ez a pontosságot elveszíti |
-| char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Egy SQL-karakterlánc használatával feltölthető egy gyűjtemény (EDM. String) mező, ha a karakterlánc a karakterláncok JSON-tömbjét jelöli: `["red", "white", "blue"]` |
-| idő adattípusúra, datetime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
+| char, nchar, varchar, nvarchar |Edm.String<br/>Gyűjtemény (Edm.String) |Egy SQL-karakterlánc használatával feltölthető egy gyűjtemény (EDM. String) mező, ha a karakterlánc a karakterláncok JSON-tömbjét jelöli: `["red", "white", "blue"]` |
+| idő adattípusúra, datetime, datetime2, Date, DateTimeOffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | földrajz |Edm.GeographyPoint |Csak a SRID 4326 (amely az alapértelmezett) típusú földrajzi példányok támogatottak |
-| ROWVERSION |– |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
-| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |– |Nem támogatott |
+| rowversion |N/A |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
+| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N/A |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Data type | Rendeltetés | Alapértelmezett érték |
+| Beállítás | Data type | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
-| disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |
+| disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |false |
 
 Ezek a beállítások az indexelő definíciójában lévő `parameters.configuration` objektumban használatosak. Ha például a lekérdezés időtúllépését 10 percre szeretné beállítani, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
 
@@ -299,7 +299,7 @@ Ezek a beállítások az indexelő definíciójában lévő `parameters.configur
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **K: használhatom az Azure SQL indexelő szolgáltatást IaaS virtuális gépeken futó SQL-adatbázisokkal az Azure-ban?**
 
@@ -307,7 +307,7 @@ Igen. Azonban engedélyeznie kell a keresési szolgáltatásnak az adatbázishoz
 
 **K: használhatom az Azure SQL indexelő a helyszínen futó SQL-adatbázisokkal?**
 
-Nem közvetlenül. Nem ajánlunk és nem támogatunk közvetlen kapcsolatot, mert ehhez az szükséges, hogy az adatbázisokat az internetes forgalomhoz nyissa meg. Ennek a forgatókönyvnek a használata sikeres volt az ügyfelek számára, például Azure Data Factory. További információ: [adatok leküldése Azure Cognitive Search indexbe Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Közvetlenül nem. Nem ajánlunk és nem támogatunk közvetlen kapcsolatot, mert ehhez az szükséges, hogy az adatbázisokat az internetes forgalomhoz nyissa meg. Ennek a forgatókönyvnek a használata sikeres volt az ügyfelek számára, például Azure Data Factory. További információ: [adatok leküldése Azure Cognitive Search indexbe Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
 **K: használhatom az Azure SQL Indexer-t az Azure-ban futó IaaS-től eltérő adatbázisokon SQL Server?**
 

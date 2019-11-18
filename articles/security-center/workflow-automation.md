@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 74a33edb358f9b9bf9322c652c0696ef87182725
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521578"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151693"
 ---
 # <a name="workflow-automation-preview"></a>Munkafolyamat-automatizálás (előzetes verzió)
 
@@ -76,7 +76,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási funkcióját (e
 
     ![Frissítés](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Válassza ki a logikai alkalmazást, és mentse az automatizálást.
+1. Válassza ki a logikai alkalmazást, és mentse az automatizálást. Vegye figyelembe, hogy a logikai alkalmazás legördülő lista csak a fent említett Security Center-összekötőket mutatja Logic Apps.
 
 
 ## <a name="manually-trigger-a-logic-app"></a>Logikai alkalmazás manuális elindítása

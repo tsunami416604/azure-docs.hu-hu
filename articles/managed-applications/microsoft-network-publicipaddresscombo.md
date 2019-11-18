@@ -1,6 +1,6 @@
 ---
 title: Azure PublicIpAddressCombo UI element | Microsoft Docs
-description: Az Azure portal a Microsoft.Network.PublicIpAddressCombo felhasználói felületi elem ismerteti.
+description: A Azure Portal Microsoft. Network. PublicIpAddressCombo felhasználói felületi elemének ismertetése.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,24 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c3e8c99f6648f0f4927140f3215978566afb9eb8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 069a8ee1f019d1b21be996084e4902f94076fbf7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60251096"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151491"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
-Funkciók kiválasztása egy új vagy meglévő nyilvános IP-cím csoportja.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
+Új vagy meglévő nyilvános IP-cím kiválasztására szolgáló vezérlők csoportja.
+
+## <a name="ui-sample"></a>Felhasználói felület mintája
+
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- Ha a felhasználó kiválasztja a "Nincs" nyilvános IP-cím, a tartomány neve felirat szövegmező rejtve marad.
-- Ha a felhasználó kiválaszt egy meglévő nyilvános IP-címet, a tartomány neve felirat szövegmező le van tiltva. Its value is the domain name label of the selected IP address.
-- A tartomány neve (például westus.cloudapp.azure.com) utótag frissítések automatikusan a kiválasztott hely alapján.
+- Ha a felhasználó a "nincs" lehetőséget választja a nyilvános IP-címhez, a tartománynév feliratának szövegmezője rejtett.
+- Ha a felhasználó kiválaszt egy meglévő nyilvános IP-címet, a tartománynév felirat szövegmező le lesz tiltva. Értéke a kijelölt IP-cím tartománynév-címkéje.
+- A tartománynév utótagja (például westus.cloudapp.azure.com) automatikusan frissül a kiválasztott hely alapján.
 
 ## <a name="schema"></a>Séma
+
 ```json
 {
   "name": "element1",
@@ -62,15 +65,9 @@ Funkciók kiválasztása egy új vagy meglévő nyilvános IP-cím csoportja.
 }
 ```
 
-## <a name="remarks"></a>Megjegyzések
-- Ha `constraints.required.domainNameLabel` értékre van állítva **igaz**, a felhasználónak kell megadnia egy tartománynévcímkét, amikor új nyilvános IP-címet hoz létre. Meglévő nyilvános IP-címek nélkül a címke nem érhetők el lehet kiválasztani.
-- Ha `options.hideNone` értékre van állítva **igaz**, majd válassza ki a lehetőséget **None** a nyilvános IP-cím van-e rejtve. Az alapértelmezett érték **hamis**.
-- Ha `options.hideDomainNameLabel` értékre van állítva **igaz**, majd szolgáló tartománynévcímke van-e rejtve. Az alapértelmezett érték **hamis**.
-- Ha `options.hideExisting` értéke igaz, a felhasználó nem tud egy meglévő nyilvános IP-cím kiválasztása. Az alapértelmezett érték **hamis**.
-- A `zone`, csak nyilvános IP-cím a megadott zóna vagy zóna rugalmas nyilvános IP-címek érhetők el.
-
 ## <a name="sample-output"></a>Példa kimenet
-Ha a felhasználó nincs nyilvános IP-cím, a vezérlő a következő kimenetet ad vissza:
+
+Ha a felhasználó nem választ nyilvános IP-címet, a vezérlő a következő kimenetet adja vissza:
 
 ```json
 {
@@ -78,7 +75,7 @@ Ha a felhasználó nincs nyilvános IP-cím, a vezérlő a következő kimenetet
 }
 ```
 
-Ha a felhasználó egy új vagy meglévő IP-címet, a vezérlő a következő kimenetet ad vissza:
+Ha a felhasználó új vagy meglévő IP-címet választ, a vezérlő a következő kimenetet adja vissza:
 
 ```json
 {
@@ -91,9 +88,18 @@ Ha a felhasználó egy új vagy meglévő IP-címet, a vezérlő a következő k
 }
 ```
 
-- Amikor `options.hideNone` megadott **igaz**, `newOrExistingOrNone` érték csak van **új** vagy **meglévő**.
-- Amikor `options.hideDomainNameLabel` megadott **igaz**, `domainNameLabel` nincs deklarálva.
+- Ha `options.hideNone` értéke TRUE ( **igaz**), `newOrExistingOrNone` csak az **új** vagy a **meglévő**értéket fogja tartalmazni.
+- Ha `options.hideDomainNameLabel` **igaz**értékre van beállítva, `domainNameLabel` nem deklarált.
+
+## <a name="remarks"></a>Megjegyzések
+
+- Ha a `constraints.required.domainNameLabel` értéke **true (igaz**), a felhasználónak meg kell adnia egy tartománynév címkét új nyilvános IP-cím létrehozásakor. Egy címke nélküli meglévő nyilvános IP-címek nem választhatók ki a kijelöléshez.
+- Ha `options.hideNone` értéke TRUE ( **igaz**), akkor a nyilvános IP-cím **egyikének** kiválasztására szolgáló beállítás rejtett. Az alapértelmezett érték **hamis**.
+- Ha `options.hideDomainNameLabel` értéke TRUE ( **igaz**), akkor a tartománynév feliratának szövegmezője rejtett. Az alapértelmezett érték **hamis**.
+- Ha a `options.hideExisting` értéke igaz, a felhasználó nem választhat meglévő nyilvános IP-címet. Az alapértelmezett érték **hamis**.
+- `zone`esetében csak a megadott zónához vagy zónához tartozó nyilvános IP-címek érhetők el.
 
 ## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

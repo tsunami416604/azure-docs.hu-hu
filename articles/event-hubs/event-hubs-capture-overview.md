@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 442ceab68851dc108d327cdf212dcf58d5b31084
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 17906a7d0953d8b320301d74cda81d14c9ad340f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008565"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123429"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Az Azure Event Hubs az Azure Blob Storage vagy az Azure Data Lake Storage keresztül események rögzítése
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítheti a streamelt adatokat az Event hubs- [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) hozzáadott rugalmasságával a kiválasztott fiók Adjon meg egy idő- vagy méretbeli intervallumokat. Rögzítés beállítása a gyors, nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-scalability.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
@@ -81,7 +81,7 @@ Az [Apache Drill][Apache Drill] egy "nyílt forráskódú SQL-lekérdezési moto
 
 Az Azure Blob Storage natív támogatása elérhető, amely megkönnyíti az adatlekérdezést egy Avro-fájlban a dokumentációban leírtak szerint:
 
-[Apache-részletezés: Azure Blob Storage beépülő modul][Apache Drill: Azure Blob Storage Plugin]
+[Apache Drill: Azure Blob Storage beépülő modul][Apache Drill: Azure Blob Storage Plugin]
 
 A rögzített fájlok lekéréséhez létrehozhat és futtathat egy virtuális gépet, amely az Apache-részletezés használatával engedélyezhető egy tárolón keresztül az Azure Blob Storage eléréséhez:
 
@@ -89,13 +89,13 @@ https://github.com/yorek/apache-drill-azure-blob
 
 Teljes körű minta érhető el a streaming on Scale repositoryban:
 
-[Folyamatos átvitel a skálán: Event Hubs rögzítés]
+[Streaming on Scale: Event Hubs Capture]
 
 ### <a name="use-apache-spark"></a>Apache Spark használata
 
 A [Apache Spark][Apache Spark] egy "egységes analitikai motor a nagyméretű adatfeldolgozáshoz". Más nyelveket is támogat, beleértve az SQL-t, és könnyen elérheti az Azure Blob Storage-t. Az Azure-ban két lehetőség van Apache Spark futtatására, és mindkettő egyszerű hozzáférést biztosít az Azure Blob Storage-hoz:
 
-- [HDInsight: Címlisták az Azure Storage-ban][HDInsight: Address files in Azure storage]
+- [HDInsight: az Azure Storage-ban tárolt fájlok címei][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Azure Blob Storage][Azure Databricks: Azure Blob Storage]
 
 ### <a name="use-avro-tools"></a>Avro-eszközök használata
@@ -139,7 +139,7 @@ Vegye figyelembe, hogy a rögzítés nem használja fel a kimenő forgalomra von
 
 ## <a name="integration-with-event-grid"></a>Event Grid-integráció 
 
-Létrehozhat Azure Event Grid-előfizetés az Event Hubs-névtér forrásként. A következő oktatóanyag bemutatja, hogyan hozhat létre Event Grid-előfizetést egy Event hub forrásként és egy Azure Functions alkalmazásként fogadóként: Rögzített Event Hubs-adatfeldolgozások [feldolgozása és migrálása egy SQL Data Warehouse Event Grid és Azure functions használatával](store-captured-data-data-warehouse.md).
+Létrehozhat Azure Event Grid-előfizetés az Event Hubs-névtér forrásként. A következő oktatóanyag bemutatja, hogyan hozhat létre egy Event Grid-előfizetést egy eseményközpontba forrásként és fogadóként egy Azure Functions-alkalmazás: [folyamat és a egy SQL Data Warehouse használatával az Event Grid és az Azure FunctionsrögzítettazEventHubs-adatokáttelepítése](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -160,7 +160,7 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
+[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Folyamatos átvitel a skálán: Event Hubs rögzítés]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming on Scale: Event Hubs Capture]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

@@ -1,106 +1,105 @@
 ---
-title: Az Azure Application Gateway állapotfigyelés – áttekintés
-description: A figyelési képességek az Azure Application Gateway ismertetése
+title: Az Azure Application Gateway állapot-figyelésének áttekintése
+description: Az Azure Application Gateway figyeli a háttér-készlet összes erőforrásának állapotát, és automatikusan eltávolítja a készletből a nem megfelelőnek ítélt erőforrásokat.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135196"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130684"
 ---
-# <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapotfigyelés – áttekintés
+# <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapot figyelésének áttekintése
 
-Az Azure Application Gateway alapértelmezés szerint a háttérkészlet összes erőforrásának állapotát figyeli, és automatikusan eltávolítja az összes erőforrást a készletből sérültnek. Az Application Gateway továbbra is figyeli a nem megfelelő állapotú példányokat, és hozzáadja őket a megfelelő háttér-készlet számára, elérhetővé válnak, és a állapotadat-mintavételek válaszolni. Az Application gateway küld az állapotadat-mintavételek a definiált a háttér-HTTP-beállítások ugyanazt a portot. Ez a konfiguráció biztosítja, hogy a mintavétel ellenőrzi, hogy az ügyfelek szokott használni a háttérrendszerhez való csatlakozáshoz ugyanazt a portot.
+Az Azure Application Gateway alapértelmezés szerint a háttér-készlet összes erőforrásának állapotát figyeli, és automatikusan eltávolítja a készletből a nem megfelelőnek ítélt erőforrásokat. Application Gateway folytatja a nem kifogástalan állapotú példányok figyelését, és visszaadja azokat az egészséges háttér-készlethez, amint elérhetővé válnak, és reagálnak az állapotra. Az Application Gateway az állapot-mintavételt ugyanazzal a porttal küldi el, mint amely a háttérbeli HTTP-beállításokban van meghatározva. Ez a konfiguráció biztosítja, hogy a mintavétel ugyanazt a portot vizsgálja, amelyet az ügyfelek a háttérhez való csatlakozáshoz használnak.
 
-![Application gateway értékként megadhat például][1]
+![Application Gateway mintavételi példa][1]
 
-Alapértelmezett mintavételi állapotfigyelés használatán is testreszabhatja az állapotminta az alkalmazás követelményeinek megfelelően. Ebben a cikkben alapértelmezett és egyéni állapotmintákat is vonatkozik.
+Amellett, hogy az alapértelmezett állapot mintavételi figyelését is használja, testre is szabhatja az állapot-mintavételt az alkalmazás követelményeinek megfelelően. Ebben a cikkben az alapértelmezett és az egyéni állapot-mintavétel is szerepel.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="default-health-probe"></a>Alapértelmezett állapotadat-mintavétel
+## <a name="default-health-probe"></a>Alapértelmezett állapot mintavétele
 
-Egy application gateway automatikusan úgy konfigurálja az alapértelmezett állapotvizsgálat, konfigurálásakor kell minden olyan egyéni mintavétel konfigurálása nem. A figyelési viselkedését, így egy HTTP-kérelem a háttér-készlet konfigurált IP-címek működik. Az alapértelmezett mintavételek a http-háttérbeállítások vannak konfigurálva, HTTPS, ha a mintavétel HTTPS PROTOKOLLT használ, valamint a háttérrendszerek állapotának ellenőrzéséhez.
+Az Application Gateway automatikusan beállítja az alapértelmezett állapot-mintavételt, ha nem állít be egyéni mintavételi konfigurációt. A figyelési viselkedés úgy működik, hogy HTTP-kérést küld a háttér-készlethez konfigurált IP-címekre. Az alapértelmezett mintavétel esetén, ha a háttérbeli http-beállítások HTTPS-re vannak konfigurálva, a mintavétel HTTPS-t használ, valamint a háttérrendszer állapotának teszteléséhez.
 
-Példa: Konfigurálja az application gateway 80-as port HTTP-hálózati forgalom fogadására A, B és C háttér-kiszolgálók használatával. A három kiszolgáló az alapértelmezett állapotfigyelés teszteli a megfelelő HTTP-válasz 30 másodpercenként. Rendelkezik megfelelő HTTP-válasz egy [állapotkód](https://msdn.microsoft.com/library/aa287675.aspx) 200-as és 399 között.
+Például: úgy konfigurálhatja az Application Gatewayt, hogy az A, B és C háttér-kiszolgálókat használja a HTTP hálózati forgalom fogadásához a 80-es porton. Az alapértelmezett állapot-figyelés a három kiszolgálót 30 másodpercenként teszteli a kifogástalan HTTP-válaszhoz. Egy kifogástalan HTTP-válasz 200 és 399 közötti [állapotkódot](https://msdn.microsoft.com/library/aa287675.aspx) tartalmaz.
 
-Ha a kiszolgáló az alapértelmezett mintavétel-ellenőrzés sikertelen, az application gateway automatikusan eltávolítja a háttérkészlet, és a hálózati forgalom megakadályozza, hogy elérjék a ezen a kiszolgálón. Az alapértelmezett mintavétel továbbra is keresni a kiszolgáló egy 30 másodpercenként továbbra is. Ha a kiszolgáló válaszol sikeresen egy kérést az alapértelmezett állapotvizsgálat, hozzáadódik ismét kifogástalan állapotú a háttérkészlet, és adatforgalom megindul a kiszolgálón újra.
+Ha az A kiszolgáló esetében az alapértelmezett mintavétel sikertelen, az Application Gateway eltávolítja azt a háttér-készletből, és a hálózati forgalom leáll a kiszolgálón. Az alapértelmezett mintavétel továbbra is mindig 30 másodpercenként ellenőrzi a kiszolgálót. Ha az A kiszolgáló sikeresen válaszol az egyik alapértelmezett állapot-mintavételi kérelemre, akkor a rendszer a háttérbeli készletbe kerül vissza, és a forgalom újra áramlik a kiszolgálóra.
 
-### <a name="probe-matching"></a>Mintavételi egyeztetése
+### <a name="probe-matching"></a>Mintavétel egyeztetése
 
-Alapértelmezés szerint HTTP (S) választ, állapotkód: 200-as és 399 közötti megfelelő számít. Egyéni állapot-mintavételei emellett támogatja a két folyamatmegfeleltetési feltételek. Megadott feltételeknek megfelelő segítségével szükség esetén módosítsa az alapértelmezett értelmezésének mi számít egy megfelelő választ.
+Alapértelmezés szerint a 200 és 399 közötti állapotkódot biztosító HTTP (S) válaszok kifogástalannak számítanak. Az egyéni állapotú mintavételek emellett két megfelelő feltételt is támogatnak. Az egyeztetési feltételekkel opcionálisan módosítható az az alapértelmezett értelmezés, hogy mit jelent az egészséges válasz.
 
-A következő vannak egyező feltételek: 
+Az alábbi feltételeknek megfelelő feltételek: 
 
-- **HTTP válasz állapota kód egyezés** - mintavétel megfelelő elfogadására vonatkozó feltétel a felhasználó által meghatározott http válasz kódja vagy válasz állapotkód-tartományok. Az egyes vesszővel elválasztott állapotkódok vagy állapotkód számos támogatott.
-- **HTTP válasz törzsében egyezés** - mintavétel megfelelő feltétel, hogy megállapítja, hogy a HTTP-válasz törzsében és a egy felhasználó-egyezések a megadott karakterlánc. A match csak megkeresi a megadott felhasználó jelenléte karakterlánc-válasz törzsében, és nem egy teljes reguláris kifejezés egyeztetése.
+- **Http-válasz állapotkód egyeztetése** – mintavétel egyeztetési feltétele a felhasználó által megadott http-válasz kód vagy válasz kód tartományának elfogadásához. A vesszővel elválasztott válaszokhoz tartozó állapotkódok vagy az állapotkód egy tartománya támogatott.
+- **Http-válasz törzsének egyeztetése** – a mintavételi egyeztetési feltétel, amely a http-válasz törzsét keresi, és megegyezik egy felhasználó által megadott karakterlánccal. Az egyeztetés csak a felhasználó által megadott karakterlánc jelenlétét keresi a válasz törzsében, és nem teljes reguláris kifejezésnek felel meg.
 
-Egyezés kritériumok adhatók meg a `New-AzApplicationGatewayProbeHealthResponseMatch` parancsmagot.
+Az egyeztetési feltételek a `New-AzApplicationGatewayProbeHealthResponseMatch` parancsmag használatával adhatók meg.
 
-Példa:
+Például:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
-Után az egyezési feltételek meg van adva, akkor lehet csatolni, mintavételi konfiguráció használatával, egy `-Match` paraméter a PowerShellben.
+Miután megadta a megfeleltetési feltételeket, a PowerShellben `-Match` paraméterrel lehet csatolni a mintavételi konfigurációhoz.
 
-### <a name="default-health-probe-settings"></a>Alapértelmezett állapot mintavételi beállítások
+### <a name="default-health-probe-settings"></a>Alapértelmezett állapot mintavételi beállításai
 
-| Mintavétel tulajdonság | Érték | Leírás |
+| Mintavételi tulajdonság | Érték | Leírás |
 | --- | --- | --- |
-| Teszt URL-címe |http://127.0.0.1:\<port\>/ |URL-cím |
-| Interval |30 |Mennyi ideig várjon a következő állapotadat-mintavétel előtt zajlik.|
-| Időtúllépés |30 |Idő másodpercben az application gateway probe válaszra vár a mintavétel nem kifogástalanként való megjelölése előtt. Mintavétel kifogástalan állapotúként adja vissza, ha a megfelelő háttér azonnal van megjelölve kifogástalan.|
-| Nem kifogástalan állapot küszöbértéke |3 |Szabályozza, hogy hány mintavételek küldése abban az esetben az rendszeres állapotminta hiba történik. Ezek további állapotadat-mintavételek meghatározni a a háttérrendszer gyorsan egymás után gyorsan küldik, és nem várja meg a mintavételi időköz. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
+| Mintavételi URL-cím |http://127.0.0.1:\<port\>/ |URL-cím elérési útja |
+| Intervallum |30 |Az az időtartam másodpercben, ameddig a következő állapotú mintavétel elküldése előtt várni kell.|
+| Időtúllépés |30 |Az az időtartam másodpercben, ameddig az Application Gateway megvárja a mintavételi választ, mielőtt a mintavételt nem Kifogástalan állapotba kívánja megjelölni. Ha a mintavétel kifogástalan állapotot ad vissza, a megfelelő háttér azonnal kifogástalan állapotú lesz.|
+| Nem Kifogástalan állapot küszöbértéke |3 |Azt szabályozza, hogy hány mintavételt kell elküldeni, ha hiba történt a normál állapotú mintavétel során. Ezeket a további állapot-mintavételeket gyors egymásutánban kell elküldeni a háttér állapotának meghatározásához, és nem kell megvárni a mintavételi időközt. A háttér-kiszolgáló az egymást követő mintavételi hibák számának elérésekor a nem megfelelő állapotú küszöbértéket éri el. |
 
 > [!NOTE]
-> A port, a háttér-HTTP-beállítások ugyanazt a portot.
+> A port ugyanaz a port, mint a háttérbeli HTTP-beállítások.
 
-Az alapértelmezett mintavétel csak http megvizsgálja:\//127.0.0.1:\<port\> állapot meghatározásához. Az állapotminta nyissa meg egy egyéni URL-címet, vagy módosíthatja a további beállításokat konfigurálni kell, ha az egyéni minták kell használnia.
+Az alapértelmezett mintavétel csak a http:\//127.0.0.1:\<port\> használatával határozható meg az állapot állapotának meghatározásához. Ha az állapot-mintavételt úgy kell konfigurálnia, hogy az egyéni URL-címre váltson, vagy más beállításokat módosítson, egyéni mintavételt kell használnia.
 
-### <a name="probe-intervals"></a>Mintavételi időköz
+### <a name="probe-intervals"></a>Mintavételi időközök
 
-Az Application Gateway összes példányát a egymástól független háttérrendszerhez mintavételi. Ugyanaz a mintavételi konfiguráció minden egyes Application Gateway-példányra vonatkozik. Például ha a mintavételi konfigurációban küldése állapotadat-mintavételek 30 másodpercenként, és az application gateway két példánnyal rendelkezik, majd példány is küldhet az állapotminta Ez lehet 30 másodperc.
+Application Gateway mintavétel minden példánya egymástól független. Ugyanaz a mintavételi konfiguráció az egyes Application Gateway példányokra vonatkozik. Ha például a mintavételi konfiguráció 30 másodpercenként elküldi az állapot-mintavételt, és az Application Gateway két példányban van, akkor mindkét példány 30 másodpercenként elküldi az állapot-mintavételt.
 
-Is ha több kérésfigyelőt, majd minden egyes figyelő mintavételek a háttérrendszer egymástól független. Például ha a két különböző porttal (két http-háttérbeállítások által konfigurált) ugyanazon háttérkészletéhez mutató két figyelői majd minden egyes figyelő mintavételek ugyanarra a háttérrendszerre egymástól függetlenül. Ebben az esetben a két figyelők esetében minden egyes alkalmazásátjárókhoz két mintavételezői vannak. Ha az application gateway ebben a forgatókönyvben két példánya, a háttérbeli virtuális gép jelennének meg négy mintavételek száma a konfigurált mintavételi időköz.
+Ha több figyelő is van, akkor minden figyelő a háttértől függetlenül ellenőrzi a hátteret. Ha például két figyelő ugyanarra a háttér-készletre mutat két különböző porton (két háttérbeli http-beállítással konfigurálva), akkor minden figyelő egymástól függetlenül ellenőrzi a hátteret. Ebben az esetben a két figyelő mindegyik Application Gateway-példánya két mintavételt biztosít. Ha ebben az esetben az Application Gateway két példányban szerepel, a háttérbeli virtuális gép a beállított mintavételi intervallumban négy mintavételt fog látni.
 
-## <a name="custom-health-probe"></a>Egyéni állapotadat-mintavétel
+## <a name="custom-health-probe"></a>Egyéni állapot mintavétele
 
-Az egyéni minták lehetővé teszik egy részletesebb felügyelheti a Szolgáltatásállapot-figyelést. Egyéni mintavétel használata esetén konfigurálhatja úgy a mintavételi időköz, az URL-cím és teszteléséhez elérési út és a háttérkészlet-példány állapota nem megfelelőként jelölés elfogadásának hány sikertelen válaszokat.
+Az egyéni mintavételek segítségével részletesebben szabályozhatja az állapot figyelését. Egyéni mintavételek használatakor beállíthatja a mintavételi intervallumot, a teszt URL-címét és elérési útját, valamint azt, hogy hány sikertelen választ fogadjon el a háttérbeli készlet példányának nem megfelelőként való megjelölése előtt.
 
-### <a name="custom-health-probe-settings"></a>Egyéni állapot-mintavételi beállítások
+### <a name="custom-health-probe-settings"></a>Egyéni állapot mintavételi beállításai
 
-Az alábbi táblázat biztosít jelentésdefiníciókat egyéni állapotmintát tulajdonságait.
+Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatkozó definíciókat tartalmazza.
 
-| Mintavétel tulajdonság | Leírás |
+| Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Name (Név) |A mintavétel neve. Ez a név segítségével tekintse meg a mintavétel a háttér-HTTP-beállítások. |
-| Protocol |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások meghatározott protokollt használ. |
-| Gazdagép |Állomásnév küldeni a Hálózatfigyelő. Alkalmazható csak akkor, ha a többhelyes konfigurálva van az Application Gatewayen, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét. |
-| Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési utat indul (/). |
-| Interval |Mintavétel gyakorisága másodpercben. Ez az érték két egymást követő mintavételek közötti időintervallum. |
-| Időtúllépés |Mintavétel időkorlátja másodpercben. Ha az időkorláton belül nem érkezik meg egy érvényes válasz, a mintavétel van megjelölve nem sikerült.  |
-| Nem kifogástalan állapot küszöbértéke |Mintavételi újrapróbálkozások számát. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
+| Name (Név) |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
+| Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
+| Gazdagép |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha a többhelyes Application Gateway van konfigurálva, ellenkező esetben a "127.0.0.1"-t használja. Ez az érték különbözik a virtuális gép gazdagépének nevétől. |
+| Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. |
+| Intervallum |Mintavételi időköz másodpercben. Ez az érték a két egymást követő mintavétel közötti időtartam. |
+| Időtúllépés |Mintavétel időtúllépése másodpercben. Ha az időkorláton belül nem érkezik érvényes válasz, a mintavétel sikertelenként van megjelölve.  |
+| Nem Kifogástalan állapot küszöbértéke |Újrapróbálkozások száma. A háttér-kiszolgáló az egymást követő mintavételi hibák számának elérésekor a nem megfelelő állapotú küszöbértéket éri el. |
 
 > [!IMPORTANT]
-> Application Gateway egy adott hely van konfigurálva, ha a gazdagépen alapértelmezés szerint nevét kell megadni, "127.0.0.1", kivéve, ha más módon konfigurált egyéni mintavétel.
-> Referencia az egyéni mintavétel küldendő \<protokoll\>://\<gazdagép\>:\<port\>\<elérési út\>. Használt port lesz ugyanazt a portot, ahogyan az a háttér-HTTP-beállítások.
+> Ha a Application Gateway egyetlen helyhez van konfigurálva, alapértelmezés szerint az állomásnevet "127.0.0.1"-ként kell megadni, kivéve, ha az egyéni mintavétel másként van konfigurálva.
+> A hivatkozáshoz egyéni mintavételt kell elküldeni a \<protokollnak\>://\<gazdagép\>:\<port\>\<Path\>. A használt port a háttérbeli HTTP-beállításokban definiált port lesz.
 
-## <a name="nsg-considerations"></a>NSG-t kapcsolatos szempontok
+## <a name="nsg-considerations"></a>NSG szempontok
 
-Alkalmazásátjáró-alhálózat egy hálózati biztonsági csoport (NSG) van, ha alkalmazásport-tartományok 65503 – 65534 kell megnyitni a bejövő forgalom az application gateway alhálózatának. Ezek a portok szükségesek a háttérkiszolgáló állapotadatainak API-t.
+Ha van hálózati biztonsági csoport (NSG) egy Application Gateway-alhálózaton, a 65503-65534-es porttartomány megnyitva kell lennie az Application Gateway-alhálózatban a bejövő forgalom számára. Ezek a portok szükségesek a backend Health API működéséhez.
 
-Ezenkívül nem blokkolja a kimenő internetkapcsolat, és engedélyezni kell az AzureLoadBalancer címkét érkező bejövő forgalmat.
+Emellett a kimenő internetkapcsolatot nem lehet letiltani, a AzureLoadBalancer címkétől érkező bejövő forgalmat pedig engedélyezni kell.
 
 ## <a name="next-steps"></a>További lépések
-Miután megismerkedett az Application Gateway-állapotfigyelés, konfigurálhat egy [egyéni állapotadat-mintavétel](application-gateway-create-probe-portal.md) az Azure Portalon, vagy egy [egyéni állapotadat-mintavétel](application-gateway-create-probe-ps.md) PowerShell és az Azure Resource Manager használatával üzembe helyezési modell.
+Miután megtanulta Application Gateway Health monitoringot, beállíthatja az [Egyéni állapot](application-gateway-create-probe-portal.md) -mintavételt a Azure Portalban vagy egy [Egyéni állapot](application-gateway-create-probe-ps.md) -mintavételt a PowerShell és a Azure Resource Manager üzembe helyezési modell használatával.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

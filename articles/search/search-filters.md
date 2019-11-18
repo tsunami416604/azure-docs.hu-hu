@@ -1,5 +1,5 @@
 ---
-title: Keresési eredmények hatókörének szűrése indexben
+title: Keresési eredmények szűrése
 titleSuffix: Azure Cognitive Search
 description: Szűrés felhasználói biztonsági identitás, nyelv, földrajzi hely vagy numerikus értékek alapján, amelyekkel csökkenthető a keresési eredmények az Azure Cognitive Search-on futó felhőalapú keresési szolgáltatásban Microsoft Azureeken.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792862"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132927"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
 
 A *szűrők* az Azure Cognitive Search-lekérdezésekben használt dokumentumok kiválasztására vonatkozó feltételeket biztosítanak. A szűretlen keresés az index összes dokumentumát tartalmazza. A szűrési hatókörök a keresési lekérdezések a dokumentumok egy részhalmazára vonatkoznak. Egy szűrő például korlátozhatja a teljes szöveges keresést arra, hogy csak az adott márkával vagy színnel rendelkező termékek legyenek egy adott küszöbérték felett.
 
-Egyes keresési funkciók a megvalósítás részeként határozzák meg a szűrési követelményeket, de a szűrőket bármikor használhatja, ha az *érték-alapú feltételek alapján* szeretné korlátozni a keresést (a "könyvek" kifejezésre a "nem fikció" kategória " Simon & Schuster ").
+Egyes keresési funkciók a megvalósítás részeként határozzák meg a szűrési követelményeket, de a szűrőket bármikor használhatja, ha az *érték-alapú feltételek alapján* szeretné korlátozni a keresést (a "könyvekben" a "Simon & Schuster" kategóriába tartozó "nem fikció" kategóriájú "könyvek" kifejezésre való kereséssel).
 
 Ha a cél az adott *adatstruktúrákra* irányuló célzott keresés (egy ügyfél-visszajelzési mezőben való keresés), akkor az alább ismertetett alternatív módszerek érhetők el.
 
@@ -157,7 +157,7 @@ A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. Nem létezi
 
 ### <a name="approaches-for-filtering-on-text"></a>A szöveg szűrésének módszerei
 
-| Megközelítés | Leírás | When to use |
+| A módszer | Leírás | A következő esetekben használja |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény a sebességhez lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összevetése az egyes sztringekkel `eq` és `or`használatával. | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresési műveleteket szigorúan logikai szűrési műveletekkel keverje ugyanabban a szűrő kifejezésben. | Használja a **Search. ismatch** (vagy annak pontozási egyenértéke, **Search. ismatchscoring**) kifejezést, ha egy kérelemben több keresési kombinációt szeretne használni. Azt is megteheti, hogy egy olyan szűrőt *tartalmaz* , amely egy nagyobb sztringen belüli részleges karakterláncot szűr. |
@@ -169,7 +169,7 @@ A numerikus mezők nem `searchable` a teljes szöveges keresés kontextusában. 
 
 A numerikus mezőket (ár, méret, SKU, ID) tartalmazó dokumentumok a keresési eredményekben biztosítják ezeket az értékeket, ha a mező `retrievable`van megjelölve. Itt az a pont, hogy a teljes szöveges keresés önmagában nem vonatkozik a numerikus mezők típusára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Először a portálon keresse meg a **keresési Explorert** , hogy **$Filter** paraméterekkel küldje el a lekérdezéseket. A [Real-Estate-Sample index](search-get-started-portal.md) érdekes eredményeket biztosít a következő szűrt lekérdezésekhez, amikor beilleszti őket a keresősávba:
 
@@ -196,7 +196,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search](search-lucene-query-architecture.md)
 + [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

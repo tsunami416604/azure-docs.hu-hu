@@ -1,25 +1,17 @@
 ---
 title: ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
 description: Ismerje meg, hogyan gyorsítótárazhatja a ASP.NET az Azure cache használatával a Redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 78469a66-0829-484f-8660-b2598ec60fbf
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 04/22/2018
 ms.author: yegu
-ms.openlocfilehash: d3babb213f633586786c0015c27fae50e44369df
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 5d7099779f330bc0a92f0c8f305ac534ab385119
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815662"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122466"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
 
@@ -59,22 +51,22 @@ A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat
 
 Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
 
-| Attribútum | Type | Alapértelmezett | Leírás |
+| Attribútum | Típus | Alapértelmezett | Leírás |
 | --------- | ---- | ------- | ----------- |
-| *host* | Karakterlánc | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
+| *host* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
 | *port* | pozitív egész szám | 6379 (non-SSL)<br/>6380 (SSL) | Redis-kiszolgáló portja |
-| *accessKey* | Karakterlánc | "" | Redis-kiszolgáló jelszavának engedélyezése, ha engedélyezve van a Redis engedélyezése. Alapértelmezés szerint az érték üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló nyilvánosan elérhető hálózatban (például Azure Redis Cache) található, ügyeljen arra, hogy a biztonság növelése érdekében engedélyezze a Redis-engedélyezést, és adjon meg egy biztonságos jelszót.** |
-| *SSL* | boolean | **hamis** | Azt jelzi, hogy SSL-kapcsolaton keresztül kapcsolódik-e a Redis-kiszolgálóhoz. Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja az SSL használatát a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Ha ezt a beállítást használja az SSL-port használatára, válassza az **igaz** értéket. A nem SSL port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
+| *accessKey* | sztring | "" | Redis-kiszolgáló jelszavának engedélyezése, ha engedélyezve van a Redis engedélyezése. Alapértelmezés szerint az érték üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló nyilvánosan elérhető hálózatban (például Azure Redis Cache) található, ügyeljen arra, hogy a biztonság növelése érdekében engedélyezze a Redis-engedélyezést, és adjon meg egy biztonságos jelszót.** |
+| *SSL* | logikai | **hamis** | Azt jelzi, hogy SSL-kapcsolaton keresztül kapcsolódik-e a Redis-kiszolgálóhoz. Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja az SSL használatát a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Ha ezt a beállítást használja az SSL-port használatára, válassza az **igaz** értéket. A nem SSL port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
 | *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Határozza meg, hogy melyik Redis-adatbázist kívánja használni. |
 | *connectionTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *ConnectTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
 | *operationTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *SyncTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
-| *ConnectionString* (érvényes StackExchange. Redis kapcsolati sztring) | Karakterlánc | *n/a* | A AppSettings vagy a web. config fájlra, vagy egy érvényes StackExchange. Redis kapcsolati sztringre mutató hivatkozás. Ez az attribútum a *gazdagép*, a *port*, az *accessKey*, az *SSL*és más StackExchange. Redis attribútumok értékeit biztosítja. A *ConnectionString*részletesebb ismertetését lásd: a [ConnectionString beállítása](#setting-connectionstring) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
-| *settingsClassName*<br/>*settingsMethodName* | Karakterlánc<br/>Karakterlánc | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal adhat meg egy kapcsolódási karakterláncot. a *settingsClassName* a *settingsMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *settingsMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **karakterlánc**visszatérési típusával. Ez a metódus a tényleges kapcsolatok karakterláncát adja vissza. |
-| *loggingClassName*<br/>*loggingMethodName* | Karakterlánc<br/>Karakterlánc | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal hibakeresést végezhet az alkalmazásban, ha naplókat biztosít a munkamenet-állapot/kimeneti gyorsítótárból, valamint a StackExchange. Redis naplókat. a *loggingClassName* a *loggingMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *loggingMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **System. IO. TextWriter**visszatérési típusával. |
-| *applicationName* | Karakterlánc | Az aktuális folyamat moduljának neve vagy "/" | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>A Redis cache-ben használandó alkalmazásnév-előtag. Az ügyfél különböző célokra használhatja ugyanazt a Redis cache-gyorsítótárat. Annak biztosításához, hogy a munkamenetkulcsok ne ütköznek, az alkalmazás neve előtaggal megadható. |
-| *throwOnError* | boolean | true | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError*: [Megjegyzések a *ThrowOnError* ](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
+| *ConnectionString* (érvényes StackExchange. Redis kapcsolati sztring) | sztring | *n/a* | A AppSettings vagy a web. config fájlra, vagy egy érvényes StackExchange. Redis kapcsolati sztringre mutató hivatkozás. Ez az attribútum a *gazdagép*, a *port*, az *accessKey*, az *SSL*és más StackExchange. Redis attribútumok értékeit biztosítja. A *ConnectionString*részletesebb ismertetését lásd: a [ConnectionString beállítása](#setting-connectionstring) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
+| *settingsClassName*<br/>*settingsMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal adhat meg egy kapcsolódási karakterláncot. a *settingsClassName* a *settingsMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *settingsMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **karakterlánc**visszatérési típusával. Ez a metódus a tényleges kapcsolatok karakterláncát adja vissza. |
+| *loggingClassName*<br/>*loggingMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal hibakeresést végezhet az alkalmazásban, ha naplókat biztosít a munkamenet-állapot/kimeneti gyorsítótárból, valamint a StackExchange. Redis naplókat. a *loggingClassName* a *loggingMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *loggingMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **System. IO. TextWriter**visszatérési típusával. |
+| *applicationName* | sztring | Az aktuális folyamat moduljának neve vagy "/" | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>A Redis cache-ben használandó alkalmazásnév-előtag. Az ügyfél különböző célokra használhatja ugyanazt a Redis cache-gyorsítótárat. Annak biztosításához, hogy a munkamenetkulcsok ne ütköznek, az alkalmazás neve előtaggal megadható. |
+| *throwOnError* | logikai | true | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError*: [Megjegyzések a *ThrowOnError* ](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
 | *retryTimeoutInMilliseconds* | pozitív egész szám | 5000 | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Ennyi ideig próbálkozzon újra egy művelet sikertelensége esetén. Ha ez az érték kisebb, mint a *operationTimeoutInMilliseconds*, akkor a szolgáltató nem próbálkozik újra.<br/><br/>További információ a *retryTimeoutInMilliseconds*: [Megjegyzések a *RetryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
-| *redisSerializerType* | Karakterlánc | *n/a* | Meghatározza a Microsoft. Web. Redis által megvalósított osztály szerelvényének minősített típusának nevét. ISerializer, amely az értékek szerializálására és deszerializálására szolgáló egyéni logikát tartalmazza. További információ: a [ *redisSerializerType* ismertetése](#about-redisserializertype) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
+| *redisSerializerType* | sztring | *n/a* | Meghatározza a Microsoft. Web. Redis által megvalósított osztály szerelvényének minősített típusának nevét. ISerializer, amely az értékek szerializálására és deszerializálására szolgáló egyéni logikát tartalmazza. További információ: a [ *redisSerializerType* ismertetése](#about-redisserializertype) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
 |
 
 ## <a name="attribute-notes"></a>Attribútumok megjegyzései
@@ -93,7 +85,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </connectionStrings>
 ```
 
-@No__t – 0 értéknél használja a fenti kulcs paraméter értékét a tényleges érték helyett.
+`web.config`a tényleges érték helyett használja a fenti kulcs paraméter értékét.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -113,7 +105,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </appSettings>
 ```
 
-@No__t – 0 értéknél használja a fenti kulcs paraméter értékét a tényleges érték helyett.
+`web.config`a tényleges érték helyett használja a fenti kulcs paraméter értékét.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">

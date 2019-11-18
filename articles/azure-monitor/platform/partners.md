@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827458"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144473"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -35,12 +35,6 @@ A riasztási Logic log Manager a virtuális gépek, az alkalmazások és az Azur
 A AppDynamics Application Performance Management (APM) lehetővé teszi, hogy az alkalmazások tulajdonosai gyorsan hárítsa el a teljesítménnyel kapcsolatos szűk keresztmetszeteket, és optimalizálják az Azure-környezetben futó alkalmazásaikat. Képes figyelni az Azure Cloud Services (Pásti), a webes & feldolgozói szerepköröket, a Virtual Machines (IaaS), a távoli szolgáltatások észlelését (Microsoft Azure Service Bus), Microsoft Azure üzenetsor, Microsoft Azure távoli szolgáltatások (Azure Blob), Azure üzenetsor (Microsoft Service Bus), adat Storage és Microsoft Azure Blob Storage. Az AppDynamics APM az Azure piactéren érhető el.
 
 [Nyissa meg a dokumentációt.][appdynamics-doc]
-
-## <a name="microfocus-arcsight"></a>Fókusz ArcSight
-
-A ArcSight rendelkezik egy intelligens összekötővel Azure Monitor Event hubok számára.
-
-[Részletek][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 
@@ -69,7 +63,7 @@ A Circonus egy helyszíni vagy SaaS-alapú üzembe helyezéshez készült, a Ser
 
 A felhőt egyesítheti és automatizálhatja egy olyan platformmal, amely időt és pénzt takarít meg. A CloudHealth láthatóságot, intuitív optimalizálást és sziklaszilárd irányítási eljárásokat biztosít a felhőalapú felügyelethez. A CloudHealth platform lehetővé teszi a vállalatok és a MSP számára, hogy maximalizálják a Felhőbeli beruházások megtérülését. A költségeket, a használatot, a teljesítményt és a biztonságot érintő döntéseket hozhat.
 
-[További információ.][cloudhealth-doc]
+[Részletek][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -127,6 +121,31 @@ A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platform
 A LogicMonitor® a vezető SaaS-alapú, teljesítmény-figyelési platform az összetett informatikai infrastruktúrához. A LogicMonitor több ezer technológiával rendelkezik, és részletes láthatóságot biztosít az infrastruktúra és az alkalmazások teljesítményében. Az LM-felhő átfogó Azure-figyelése lehetővé teszi a felhasználók számára az Azure-felhő, a helyszíni és a hibrid Felhőbeli erőforrások teljesítményének összekapcsolását – mindezt egyetlen platformról. Az automatizált erőforrás-felderítés, beépített figyelési sablonok, előre konfigurált riasztási küszöbértékek és testreszabható irányítópultok kombinálva lehetővé teszik a sikerhez szükséges sebességet, rugalmasságot és láthatóságot.
 
 [Nyissa meg a dokumentációt.][logicmonitor-doc]
+
+## <a name="logrhythm"></a>LogRhythm
+
+![LogRhythm embléma](./media/partners/logrhythm.png)
+
+A LogRhythm, amely a NextGen SIEM egyik vezetője, a hat kontinensen lévő szervezeteket arra hatalmazza fel, hogy a előforduló kiberfenyegetésekkel kapcsolatban gyors észlelésével, megválaszolásával és semlegesítéseával mérhetően csökkentse a kockázatot. A LogRhythm veszélyforrások életciklus-kezelési (TLM) munkafolyamata a biztonsági operatív központok alapja, amely segít az ügyfeleknek a Felhőbeli, fizikai és virtuális infrastruktúrájuk, valamint az OT-környezetek biztonságában. Ha Ön LogRhythm-ügyfél, és készen áll az Azure-utazás elindítására, telepítenie és konfigurálnia kell a LogRhythm Open Collector és a EventHub integrációját. További részletek, beleértve a Azure Monitor konfigurálásának és a nyílt gyűjtőnek a dokumentációját is [itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találja. 
+
+
+
+## <a name="microfocus"></a>Fókusz
+
+![Fókusz emblémája](./media/partners/microfocus.png)     
+
+A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor Event hubokhoz.
+
+[Részletek](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "A ArcSight dokumentációja.")
+
+A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
+
+Részletek
+- [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
+- A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
+
+
 
 ## <a name="moogsoft"></a>Moogsoft
 
@@ -243,7 +262,6 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 <!--Partner Documentation-->
 [alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "A AlertLogic dokumentációja."
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "A AppDynamics dokumentációja."
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "A ArcSight dokumentációja."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric-bevezetés."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 

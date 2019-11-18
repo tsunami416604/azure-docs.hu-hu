@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 480c4c65f1bc0abe81114a2b898696e6d6b153fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039629"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133336"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)
 
@@ -120,7 +120,7 @@ Hozzon létre egy webhookot az újonnan létrehozott runbook elindításához.
 
 Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com)használatával.
 
-1.  Nyissa meg az [Azure portált](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
+1.  Nyissa meg az [Azure Portalt](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
 
 1.  Nyissa meg a Key vaultot, és válassza az **események** lapot. Ha nem látja, ellenőrizze, hogy a [portál előzetes verzióját](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)használja-e.
 
@@ -186,7 +186,7 @@ Ellenőrizze, hogy a Event Grid-előfizetés megfelelően van-e konfigurálva. E
 
 Regisztrálja újra Event Grid és a Key Vault-szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Ha helyesen követte ezeket a lépéseket, most már készen áll arra, hogy programozott módon válaszoljon a Key vaultban tárolt titkos kódok állapotának változásaira.
 
@@ -194,8 +194,10 @@ Ha egy lekérdezésen alapuló rendszert használ a titkos kulcsok állapotának
 
 További információ:
 
+
+- Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)
+- Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](event-grid-logicapps.md)
+- [Azure Key Vault Azure Event Gridi esemény sémája (előzetes verzió)](../event-grid/event-schema-key-vault.md)
 - [Azure Key Vault áttekintése](key-vault-overview.md)
 - [Azure Event Grid áttekintése](../event-grid/overview.md)
-- [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)
-- [Azure Key Vault Azure Event Gridi esemény sémája (előzetes verzió)](../event-grid/event-schema-key-vault.md)
 - [Az Azure Automation áttekintése](../automation/index.yml)

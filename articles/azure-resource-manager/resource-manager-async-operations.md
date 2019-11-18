@@ -1,18 +1,15 @@
 ---
-title: Aszinkron műveletek – Azure Resource Manager állapota
+title: Aszinkron műveletek állapota
 description: Ismerteti, hogyan lehet az Azure-beli aszinkron műveletek követése. Megjelenít egy hosszú ideig futó művelet állapotának lekéréséhez használt értékek.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/09/2018
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 39174010e5d5c71e1b9f09827f92a2c540d98e78
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206298"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149541"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Az Azure aszinkron műveletek követése
 Néhány Azure REST-művelet aszinkron módon futtatható, mert a művelet nem hajtható végre gyorsan. Ez a cikk ismerteti, a válaszban visszaadott értékek aszinkron műveletek állapotának nyomon követését.  

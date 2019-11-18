@@ -2,18 +2,18 @@
 title: Hozzáférés korlátozása közös hozzáférési aláírások használatával – Azure HDInsight
 description: Megtudhatja, hogyan használhatja a közös hozzáférési aláírásokat az Azure Storage-blobokban tárolt HDInsight való hozzáférés korlátozására.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 031498119eb4f9feb92046d7d7a86cfd77f8f368
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/13/2019
+ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498128"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148223"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférésű aláírásainak használata a HDInsight tárolt adathozzáférések korlátozására
 
@@ -234,7 +234,6 @@ Ha közös hozzáférésű aláírást szeretne használni a tárolóhoz való h
 Cserélje le a `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`és `TOKEN` értékeket a megfelelő értékekre. Adja meg a PowerShell-parancsokat:
 
 ```powershell
-
 $clusterName = 'CLUSTERNAME'
 $resourceGroupName = 'RESOURCEGROUP'
 
@@ -285,11 +284,10 @@ $defaultStorageContext = New-AzStorageContext `
                                 -StorageAccountName $defaultStorageAccountName `
                                 -StorageAccountKey $defaultStorageAccountKey
 
-
 # Create a blob container. This holds the default data store for the cluster.
 New-AzStorageContainer `
     -Name $clusterName `
-    -Context $defaultStorageContext 
+    -Context $defaultStorageContext
 
 # Cluster login is used to secure HTTPS services hosted on the cluster
 $httpCredential = Get-Credential `
@@ -302,9 +300,9 @@ $sshCredential = Get-Credential `
     -UserName "sshuser"
 
 # Create the configuration for the cluster
-$config = New-AzHDInsightClusterConfig 
+$config = New-AzHDInsightClusterConfig
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.windows.net"=$SASToken}
 
@@ -358,29 +356,29 @@ Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az 
 
 1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. A lap címe `https://YOURCLUSTERNAME.azurehdinsight.net`. Ha a rendszer kéri, végezzen hitelesítést a fürtön a fürt létrehozásakor használt rendszergazdai név (rendszergazda) és jelszó használatával.
 
-2. A Ambari webes felhasználói felületének bal oldalán válassza a **HDFS** elemet, majd kattintson a lap közepén található **konfigurációk** fülre.
+1. Navigáljon a **HDFS** > **konfigurációk** > **Advanced** > **Egyéni Core-site**.
 
-3. Válassza a **speciális** fület, majd görgessen addig, amíg meg nem találja az **Egyéni Core-site** szakaszt.
+1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..** . lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez**:
 
-4. Bontsa ki az **Egyéni Core-site** szakaszt, majd görgessen a végére, és válassza a **tulajdonság hozzáadása...** hivatkozást. Használja a következő értékeket a **kulcs** és **érték** mezőkhöz:
+    * **Kulcs**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
 
-   * **Kulcs**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
+    Cserélje le a `CONTAINERNAME`t a C# vagy sas-alkalmazással használt tároló nevére. Cserélje le a `STORAGEACCOUNTNAME`t a használt Storage-fiók nevére.
 
-     Cserélje le a `CONTAINERNAME`t a C# vagy sas-alkalmazással használt tároló nevére. Cserélje le a `STORAGEACCOUNTNAME`t a használt Storage-fiók nevére.
+    A kulcs és az érték mentéséhez válassza a **Hozzáadás** lehetőséget.
 
-5. Kattintson a **Hozzáadás** gombra a kulcs és az érték mentéséhez, majd kattintson a **Save (Mentés** ) gombra a konfigurációs módosítások mentéséhez. Ha a rendszer kéri, adja meg a módosítás leírását (például "SAS-tároló-hozzáférés hozzáadása"), majd kattintson a **Mentés**gombra.
+1. A konfigurációs módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. Ha a rendszer kéri, adja meg a módosítás leírását (például "SAS-tároló elérésének hozzáadása"), majd válassza a **Mentés**lehetőséget.
 
     A módosítások befejeződése után kattintson **az OK gombra** .
 
    > [!IMPORTANT]  
    > A módosítás érvénybe léptetéséhez több szolgáltatást is újra kell indítania.
 
-6. A Ambari webes FELÜLETén válassza a bal oldali listából a **HDFS** elemet, majd kattintson a jobb oldalon található **szolgáltatási műveletek** legördülő listából az **összes érintett újraindítása** elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
+1. Ekkor megjelenik egy **Újraindítási** legördülő lista. Válassza az **összes érintett újraindítása** elemet a legördülő listából, majd __erősítse meg az összes újraindítását__.
 
-    Ismételje meg ezt a folyamatot a MapReduce2 és a fonal esetében.
+    Ismételje meg ezt a folyamatot a **MapReduce2** és a **fonal**esetében.
 
-7. A szolgáltatások újraindítása után válassza ki mindegyiket, és tiltsa le a karbantartási módot a **szolgáltatási műveletek** legördülő listából.
+1. A szolgáltatások újraindítása után válassza ki mindegyiket, és tiltsa le a karbantartási módot a **szolgáltatási műveletek** legördülő listából.
 
 ## <a name="test-restricted-access"></a>Korlátozott hozzáférés tesztelése
 
@@ -405,7 +403,7 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
 3. A következő parancs használatával ellenőrizheti, hogy el tudja-e olvasni a fájl tartalmát. Cserélje le a `SASCONTAINER`t, és `SASACCOUNTNAME` az előző lépésben. Cserélje le a `sample.log`t az előző parancsban megjelenő fájl nevére:
 
     ```bash
-    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
+    hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
     Ez a parancs felsorolja a fájl tartalmát.
@@ -438,9 +436,7 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan adhat hozzá korlátozott hozzáférésű tárolót a HDInsight-fürthöz, megismerheti a fürtön tárolt adatkezelés egyéb módjait:
+Most, hogy megismerte, hogyan adhat hozzá korlátozott hozzáférésű tárolót a HDInsight-fürthöz, megismerheti a fürtön tárolt adatkezelés egyéb módjait:
 
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [Az Apache Pig és a HDInsight használata](hadoop/hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
-

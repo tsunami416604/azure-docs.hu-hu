@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing Web Search SDK használata a node.js-ben'
+title: 'Rövid útmutató: A Node.js-hez készült Bing Web Search SDK használata'
 titleSuffix: Azure Cognitive Services
 description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Node.js-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498916"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132739"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Gyors útmutató: A Bing Web Search SDK használata a node.js-ben
+# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rövid útmutató: A Node.js-hez készült Bing Web Search SDK használata
 
 A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Node.js-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
@@ -111,4 +111,4 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Node SDK-referencia](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)
+* [Azure Node SDK-referencia](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

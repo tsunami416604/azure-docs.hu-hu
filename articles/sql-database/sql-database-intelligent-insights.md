@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810183"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151431"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez
 
@@ -65,6 +65,17 @@ A Intelligent Insights és a Azure SQL Analytics használatának gyakorlati átt
 >
 
 Intelligent Insights a SQL Database teljesítménnyel kapcsolatos problémák felderítésében és hibaelhárításában. A Intelligent Insights a SQL Database és a felügyelt példányok adatbázisával kapcsolatos hibák elhárításához tekintse meg [a Azure SQL Database teljesítményével kapcsolatos hibák elhárítása a Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)használatával című témakört.
+
+## <a name="intelligent-insights-options"></a>Intelligent Insights beállítások
+
+A Azure SQL Databaseban elérhető Intelligent Insights lehetőségek a következők:
+
+| Intelligent Insights lehetőség | Önálló adatbázis és készletezett adatbázis-támogatás | Példány-adatbázis támogatása |
+| :----------------------------- | ----- | ----- |
+| **Intelligent Insights konfigurálása** – az adatbázisok Intelligent Insights elemzésének konfigurálása. | Igen | Igen | 
+| Az **Azure SQL Analytics** – stream-bepillantást nyerhet a Azure SQL Database Azure SQL Analytics monitorozási megoldására. | Igen | Igen | 
+| A további egyéni integrációk érdekében adatfolyam-bepillantást **nyerhet az Event hub** -Event Hubsba. | Igen | Igen | 
+| Az **Azure Storage bepillantást nyerhet** az Azure Storage-ba, ahol további elemzést és hosszú távú archiválást végezhet. | Igen | Igen |
 
 ## <a name="configure-intelligent-insights"></a>Intelligent Insights konfigurálása
 
