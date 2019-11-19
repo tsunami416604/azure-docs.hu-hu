@@ -1,19 +1,15 @@
 ---
-title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése az Azure Backup szolgáltatással
+title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése
 description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuális gépek biztonsági mentéseit a Azure Backup szolgáltatás használatával.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: 800acb622a54ae922300d4c1b188f7ec19f5a95f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074255"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172976"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -171,7 +167,7 @@ A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölhet
 * Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam alapján törlődnek.
 * A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mivel az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a biztonsági mentés díjszabása szerint számítjuk fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
 * Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).

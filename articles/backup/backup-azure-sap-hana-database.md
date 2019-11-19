@@ -1,18 +1,14 @@
 ---
-title: SAP HANA-adatbázis biztonsági mentése az Azure-ba Azure Backup használatával | Microsoft Docs
+title: SAP HANA-adatbázis biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag azt ismerteti, hogyan lehet biztonsági másolatot készíteni egy SAP HANA-adatbázisról az Azure-ba a Azure Backup szolgáltatással.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 519e47c6b6793c638e64c4e4bcc4fafdb678c9fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931801"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172727"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA-adatbázis biztonsági mentése az Azure-ba
 
@@ -40,7 +36,7 @@ A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonság
 - Az adatbázis-naplók biztonsági mentését 15 percenként végezheti el. A naplók biztonsági mentései csak az adatbázis sikeres teljes biztonsági mentésének befejeződése után kezdődnek.
 - Teljes és különbözeti biztonsági másolatokat készíthet. A növekményes biztonsági mentés jelenleg nem támogatott.
 - A biztonsági mentési szabályzatot a SAP HANA biztonsági mentések alkalmazása után nem módosíthatja. Ha más beállításokkal szeretne biztonsági mentést készíteni, hozzon létre egy új szabályzatot, vagy rendeljen hozzá egy másik szabályzatot.
-  - Új szabályzat létrehozásához a tárolóban kattintson a **házirendek** > **biztonsági mentési házirendek** >  **+**  > **SAP HANA hozzáadása az Azure virtuális gépen**lehetőségre, és adja meg a házirend-beállításokat.
+  - Új szabályzat létrehozásához a tárolóban kattintson a **házirendek** > **biztonsági mentési házirendek** elemre > + > SAP HANA **hozzáadása** **Az Azure-beli virtuális gépen**, majd adja meg a házirend-beállításokat.
   - Egy másik szabályzat hozzárendeléséhez az adatbázist futtató virtuális gép tulajdonságainál kattintson a jelenlegi házirend nevére. Ezután a **biztonsági mentési szabályzat** lapon kiválaszthat egy másik, a biztonsági mentéshez használni kívánt szabályzatot.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -170,14 +166,14 @@ Ha egy olyan adatbázis helyi biztonsági másolatát kívánja használni, amel
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Győződjön meg arról, hogy az állapota SAP HANA Studióban.
 2. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
-3. Ehhez kattintson duplán a **systemdb** > **konfiguráció** >  Válassza az**adatbázis** > **Filter (napló)** elemet.
+3. Ehhez kattintson duplán a **systemdb** > **konfiguráció** > válassza az **adatbázis** > **szűrő (napló)** lehetőséget.
 4. A **enable_auto_log_backup** beállítása **nem**értékre.
-5. Állítsa a log_backup_using_backint **hamis**értékre.
+5. **Log_backup_using_backint** beállítása **hamis**értékre.
 6. Készítsen ad hoc teljes biztonsági mentést az adatbázisról.
 7. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
 8. A korábbi beállítások visszaállítása az Azure-ba:
-    - A **enable_auto_log_backup** beállítása **Igen**.
-    - Állítsa a log_backup_using_backint **igaz**értékre.
+    - Állítsa a Enable_auto_log_backup **értéket igen**értékre.
+    - A **log_backup_using_backint** beállítása **igaz**értékre.
 
 
 ## <a name="upgrading-protected-10-dbs-to-20"></a>Védett 1,0-adatbázisok frissítése 2,0-re

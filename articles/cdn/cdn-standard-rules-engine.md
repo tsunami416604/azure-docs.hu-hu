@@ -1,67 +1,79 @@
 ---
-title: HTTPS kikényszerítés a Azure CDN Standard Rules Engine használatával | Microsoft Docs
-description: A Standard Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását a Microsoft Azure CDN, például bizonyos tartalomtípusok kézbesítésének blokkolását, a gyorsítótárazási házirend meghatározását és a HTTP-fejlécek módosítását.
+title: A standard Azure CDNban a HTTPS kikényszeríthető szabályokkal rendelkező motor használatával | Microsoft Docs
+description: A Microsoft standard Azure Content Delivery Network (Azure CDN) szabályainak motorja segítségével testre Azure CDN szabhatja a HTTP-kérések kezelését, például bizonyos tartalomtípusok kézbesítésének blokkolását, a gyorsítótárazási házirend meghatározását és a HTTP-fejlécek módosítását. Ebből a cikkből megtudhatja, hogyan hozhat létre egy szabályt a felhasználók HTTPS-re való átirányításához.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: b24c4a04e0c02258a918ee075066d90c22ea0c75
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615922"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171574"
 ---
-# <a name="azure-cdn-standard-rules-engine"></a>Azure CDN Standard Rules Engine
+# <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>A Standard Rules Engine beállítása Azure CDN
+
+Ez a cikk bemutatja, hogyan állíthatja be és használhatja az Azure Content Delivery Network (Azure CDN) szabványos szabályok motorját.
+
+## <a name="standard-rules-engine"></a>Standard szintű szabályok motorja
+
+A Standard Rules Engine for Azure CDN a HTTP-kérések kezelésének testreszabására használható. Például a szabályok motor használatával kényszerítheti ki a tartalmak kézbesítését adott protokollok használatára, a gyorsítótárazási házirend meghatározására, vagy egy HTTP-fejléc módosítására. Ez a cikk bemutatja, hogyan hozhat létre olyan szabályt, amely automatikusan átirányítja a felhasználókat a HTTPS-re. 
 
 > [!NOTE]
-> A standard szintű szabályok motorja csak a Microsoft Azure CDN számára érhető el. 
+> A jelen cikkben ismertetett szabályok motorja csak a Microsoft szabványos Azure CDN számára érhető el. 
 
-A Azure CDN Standard Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását. Például a tartalom továbbításának kényszerítése adott protokollokon keresztül, a gyorsítótárazási házirend meghatározása vagy egy HTTP-fejléc módosítása. Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan szabályt, amely automatikusan átirányítja a felhasználókat a HTTPS-re. 
+## <a name="redirect-users-to-https"></a>Felhasználók átirányítása HTTPS-re
 
+1. A Microsoft-profilokban lépjen az Azure Content Delivery Networkra.
 
-## <a name="tutorial"></a>Oktatóanyag
-
-1. A Microsoft-profilok Azure CDN a **CDN-profil** lapon válassza ki azt a végpontot, amelynek a szabályait konfigurálni kívánja.
+1. A **CDN-profil** lapon válassza ki azt a végpontot, amelyhez szabályokat kíván létrehozni.
   
-2. Válassza a **szabályok motor** fület a bal oldalon.
+1. Válassza a **szabályok motor** fület.
    
-    Megjelenik a szabályok motor panelje, a globális szabállyal együtt. 
+    Megnyílik a **szabályok motor** panel, és megjeleníti az elérhető globális szabályok listáját. 
    
-    [![CDN új szabályok lap](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
-   
-   > [!IMPORTANT]
-   > A különböző szabályok listájának sorrendje befolyásolja a kezelésük módját. Egy későbbi szabály felülbírálhatja egy korábbi szabály által megadott műveleteket.
-   >
-
-3. Kattintson a **szabály hozzáadása** gombra, és adja meg a szabály nevét. A szabályok nevének betűvel kell kezdődnie, és csak számokból és betűkből állhat.
-
-4. Azon kérelmek típusának meghatározása, amelyekre a szabály vonatkozik. A legördülő listából válassza ki a **kérelem protokolljának** egyeztetése feltételt, és használja a **http** **értéket.**
-   
-   [![CDN-szabály egyeztetési feltétele](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
-   
-   > [!NOTE]
-   > A legördülő listában több egyezési feltétel is elérhető. Az egyeztetési feltételek részletes listáját lásd: a [szabályok motorjának egyeztetési feltételei](cdn-standard-rules-engine-match-conditions.md).
-   
-5. Válassza ki azt a műveletet, amely az azonosított kérelmekre lesz alkalmazva. A legördülő listából válassza ki az **URL-átirányítási** műveletet, és használja a **(302)** értéket a típushoz, a **https** protokollhoz pedig a következőt:. A bejövő értékek használatához hagyja üresen az összes többi mezőt.
-   
-   [![CDN-szabály művelete](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
-   
-   > [!NOTE]
-   > Több művelet is elérhető a legördülő listában. A műveletek részletes listáját lásd: a [szabályok motorjának műveletei](cdn-standard-rules-engine-actions.md).
-
-6. Az új szabály mentéséhez válassza a **Mentés** lehetőséget.  Az új szabály most már telepítve lesz.
+    [![Azure CDN új szabályok lap](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
    
    > [!IMPORTANT]
-   > A szabályok változásai akár 15 percet is igénybe vehetnek Azure CDN.
+   > A különböző szabályok listájának sorrendje befolyásolja a szabályok kezelését. Előfordulhat, hogy egy szabályban megadott műveleteket egy későbbi szabály felülírja.
+   >
+
+1. Válassza a **szabály hozzáadása** lehetőséget, és írja be a szabály nevét. A szabályok nevének betűvel kell kezdődnie, és csak számokból és betűkből állhat.
+
+1. A szabály által érintett kérelmek típusának megállapításához hozzon létre egy egyeztetési feltételt:
+    1. Válassza a **feltétel hozzáadása**lehetőséget, majd válassza a **kérelem protokolljának** egyeztetése feltételt.
+    1. Az **operátor**beállításnál válassza az **egyenlő**lehetőséget.
+    1. Az **érték**mezőben válassza a **http**lehetőséget.
+   
+   [![Azure CDN szabály egyeztetési feltétele](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
+   
+   > [!NOTE]
+   > A **feltétel hozzáadása** legördülő listában több egyezési feltétel közül választhat. Az egyeztetési feltételek részletes listáját lásd: [feltételek egyeztetése a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md).
+   
+1. Válassza ki az egyeztetési feltételnek megfelelő kérelmekre alkalmazni kívánt műveletet:
+   1. Válassza a **művelet hozzáadása**lehetőséget, majd az **URL-átirányítás**elemet.
+   1. A **Típus mezőben**válassza a **Found (302)** elemet.
+   1. A **protokoll**területen válassza a **https**lehetőséget.
+   1. A bejövő értékek használatához hagyja üresen az összes többi mezőt.
+   
+   [![Azure CDN szabály művelete](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
+   
+   > [!NOTE]
+   > A **művelet hozzáadása** legördülő listában több művelet közül választhat. A műveletek részletes listáját lásd: [műveletek a standard szabályok motorban](cdn-standard-rules-engine-actions.md).
+
+6. Az új szabály mentéséhez válassza a **Mentés** lehetőséget. A szabály most már használható.
+   
+   > [!IMPORTANT]
+   > A szabály módosításai akár 15 percet is igénybe vehetnek Azure CDN.
    >
    
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [Szabványos szabályok – motor referenciája](cdn-standard-rules-engine-reference.md)
-- [Szabványos szabályok motorjának egyeztetési feltételei](cdn-standard-rules-engine-match-conditions.md)
-- [Szabványos szabályok motor műveletei](cdn-standard-rules-engine-actions.md)
+- [Egyeztetési feltételek a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md)
+- [Műveletek a standard szabályok motorban](cdn-standard-rules-engine-actions.md)

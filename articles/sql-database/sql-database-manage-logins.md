@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822831"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159149"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Adatbázis-hozzáférés szabályozása és biztosítása SQL Database és SQL Data Warehouse számára
 
@@ -54,6 +54,9 @@ A **kiszolgálói rendszergazda** és az **Azure ad-rendszergazdai** fiókok jel
 - Adatbázisok, bejelentkezések, főkiszolgálók és kiszolgálói szintű IP-tűzfalszabályok létrehozására, módosítására és eldobására is képes.
 - Tagokat adhat hozzá és távolíthat el a `dbmanager` és `loginmanager` szerepkörökhöz.
 - Megtekintheti a `sys.sql_logins` rendszertáblát.
+- Nem nevezhető át.
+- Az Azure AD-beli rendszergazdai fiók módosításához használja a portált vagy az Azure CLI-t.
+- Ezt követően a kiszolgáló-rendszergazdai fiók nem módosítható.
 
 ### <a name="configuring-the-firewall"></a>A tűzfal konfigurálása
 
@@ -216,7 +219,7 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 - Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba akkor következik be, ha a felhasználó a tulajdonos számára nem látható. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A tűzfalszabályokkal kapcsolatos további információk: [Azure SQL Database-tűzfal](sql-database-firewall-configure.md).
 - Az SQL Database összes biztonsági szolgáltatásáról [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít áttekintést.

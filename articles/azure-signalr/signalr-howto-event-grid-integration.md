@@ -5,14 +5,14 @@ services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839299"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158217"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Események küldése az Azure Signaler szolgáltatásból a Event Gridba
 
@@ -26,7 +26,7 @@ A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak form�
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa `RESOURCE_GROUP_NAME` egy másik értékre.
+Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa a `RESOURCE_GROUP_NAME` egy másik értékre.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -75,7 +75,7 @@ A jelző szolgáltatás létrehozása után az Azure CLI a következőhöz hason
 
 Ebben a szakaszban egy GitHub-tárházban található Resource Manager-sablont használ egy előre elkészített minta webalkalmazás üzembe helyezéséhez Azure App Service. Később előfizet a beállításjegyzék Event Grid eseményeire, és megadhatja az alkalmazást, mint az eseményeket küldő végpontot.
 
-A minta alkalmazás üzembe helyezéséhez állítson be `SITE_NAME` egy egyedi nevet a webalkalmazás számára, és hajtsa végre a következő parancsokat. A hely nevének egyedinek kell lennie az Azure-ban, mivel az a webalkalmazás teljes tartománynevének (FQDN) részét képezi. Egy későbbi szakaszban navigáljon az alkalmazás teljes tartománynevéhez egy böngészőben a beállításjegyzék eseményeinek megtekintéséhez.
+A minta alkalmazás üzembe helyezéséhez állítsa `SITE_NAME` a webalkalmazás egyedi nevére, és hajtsa végre a következő parancsokat. A hely nevének egyedinek kell lennie az Azure-ban, mivel az a webalkalmazás teljes tartománynevének (FQDN) részét képezi. Egy későbbi szakaszban navigáljon az alkalmazás teljes tartománynevéhez egy böngészőben a beállításjegyzék eseményeinek megtekintéséhez.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +141,7 @@ Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjel
 
 ## <a name="trigger-registry-events"></a>Beállításjegyzék-események kiváltása
 
-Váltson a szolgáltatás módba `Serverless Mode` , és állítson be egy ügyfélkapcsolatot a signaler szolgáltatáshoz. A kiszolgáló nélküli [mintát](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) hivatkozásként is elvégezheti.
+Váltson a szolgáltatási módra, hogy `Serverless Mode` és beállítson egy ügyfélkapcsolatot a Signaler szolgáltatáshoz. A kiszolgáló nélküli [mintát](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) hivatkozásként is elvégezheti.
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése
 
-Ezzel csatlakoztatta a-ügyfelet a Signaler szolgáltatáshoz. Navigáljon a Event Grid Viewer webalkalmazáshoz, és egy `ClientConnectionConnected` eseményt kell megjelennie. Ha leállítja az ügyfelet, akkor egy `ClientConnectionDisconnected` eseményt is láthat.
+Ezzel csatlakoztatta a-ügyfelet a Signaler szolgáltatáshoz. Navigáljon a Event Grid Viewer webalkalmazáshoz, és egy `ClientConnectionConnected` eseményt kell megjelennie. Ha megszakítja az ügyfelet, akkor egy `ClientConnectionDisconnected` eseményt is megtekintheti.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

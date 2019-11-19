@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715512"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158648"
 ---
 # <a name="assess-servers-using-imported-data"></a>Kiszolgálók felmérése importált adatszolgáltatásokkal
 
-> [!NOTE]
-> Ha még nem látja ezt a funkciót a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fog megjelenni.
-
-Ez a cikk bemutatja, hogyan értékelheti a helyszíni kiszolgálókat a [Azure Migrate: kiszolgáló-értékeléssel](migrate-services-overview.md#azure-migrate-server-assessment-tool), a kiszolgálói metaadatok CSV használatával történő importálásával. Ezzel az értékelési módszersel nem kell beállítania a Azure Migrate berendezést az értékelés létrehozásához. Ez a következő esetekben hasznos: 
+Ez a cikk bemutatja, hogyan értékelheti a helyszíni kiszolgálókat a [Azure Migrate: kiszolgáló-értékeléssel](migrate-services-overview.md#azure-migrate-server-assessment-tool), a kiszolgálói metaadatok CSV használatával történő importálásával. Ezzel az értékelési módszersel nem kell beállítania a Azure Migrate berendezést az értékelés létrehozásához. Ez a következő esetekben hasznos:
 
 - A berendezés üzembe helyezése előtt létre szeretne hozni egy gyors kezdeti értékelést.
 - A Azure Migrate berendezés nem helyezhető üzembe a szervezetében.
@@ -36,7 +33,7 @@ Vegye figyelembe:
 - A kiszolgálói adatok több alkalommal is feltölthetők a CSV használatával Azure Migrate kiszolgáló értékeléséhez.
 - Bár az alkalmazásadatok összegyűjtése hasznos lehet a helyszíni környezet áttelepítésre való kiértékelése során, Azure Migrate Server Assessment jelenleg nem hajtja végre az alkalmazás szintű értékelést, és nem veszi figyelembe az alkalmazásokat, ha Értékelés létrehozása.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Töltsön ki egy CSV-fájlt a kiszolgáló adataival.
@@ -49,7 +46,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-engedélyek beállítása Azure Migratehoz 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-engedélyek beállítása Azure Migratehoz
 
 Az Azure-fióknak engedélyre van szüksége Azure Migrate projekt létrehozásához.
 
@@ -80,7 +77,7 @@ Az Azure-fióknak engedélyre van szüksége Azure Migrate projekt létrehozás�
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/migrate-project.png)
 
 
-7. Kattintson a **Tovább** gombra.
+7. Kattintson a **Tovább**gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/assessment-tool.png)
@@ -116,7 +113,7 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket.
 
 **Mező neve** | **Kötelező** | **Részletek**
 --- | --- | ---
-**Kiszolgálónév** | Igen | A teljes tartománynév megadását javasoljuk. 
+**Kiszolgálónév** | Igen | A teljes tartománynév megadását javasoljuk.
 **IP-cím** | Nem | Kiszolgáló címe.
 **Magok száma** | Igen | A kiszolgálóhoz lefoglalt processzor-magok száma.
 **Memória** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
@@ -144,7 +141,7 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket.
 **Virtual Machine Manager-azonosító** | Nem | Ez a VMWare vCenter **értékű** . Nem szükséges a Hyper-V-hez.
 **MAC-címe**| Nem | Kiszolgáló MAC-címe.
 **BIOS-AZONOSÍTÓ** | Nem | Kiszolgáló BIOS-azonosítója.
-**Egyéni kiszolgáló azonosítója**| Nem | Helyi egyedi kiszolgálói azonosítók a helyszínen. <br/> Hasznos az importált kiszolgáló helyi AZONOSÍTÓval való nyomon követéséhez. 
+**Egyéni kiszolgáló azonosítója**| Nem | Helyi egyedi kiszolgálói azonosítók a helyszínen. <br/> Hasznos az importált kiszolgáló helyi AZONOSÍTÓval való nyomon követéséhez.
 **1. alkalmazás neve** | Nem | A kiszolgálón futó munkaterhelések neve.<br/> További alkalmazásokhoz további adatokat is hozzáadhat, ha [oszlopokat ad](#add-multiple-applications) hozzá a sablonhoz. Legfeljebb öt alkalmazást adhat hozzá.
 **1. alkalmazás típusa** | Nem | A kiszolgálón futó munkaterhelés típusa
 **1. alkalmazás verziója** | Nem | A kiszolgálón futó munkaterhelés verziója.
@@ -162,7 +159,7 @@ Az értékelés felismeri az operációs rendszerek bizonyos neveit. A megadott 
 
 ### <a name="add-multiple-disks"></a>Több lemez hozzáadása
 
-A sablon alapértelmezett mezőket biztosít az első lemezhez.  Akár 8 lemezhez is hozzáadhat hasonló oszlopokat. 
+A sablon alapértelmezett mezőket biztosít az első lemezhez.  Akár 8 lemezhez is hozzáadhat hasonló oszlopokat.
 
 Például egy második lemez összes mezőjének megadásához adja hozzá az oszlopokat:
 
@@ -191,11 +188,11 @@ Opcionálisan hozzáadhat konkrét mezőket csak az alkalmazásokhoz.
 Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat Azure Migrateba: Server Assessment.
 
 1. A Azure Migrate > **gépek felderítése**területen keresse meg a kitöltött sablont.
-2. Kattintson az **Importálás** gombra.
-3. Megjelenik az importálás állapota. 
+2. Kattintson a **importálás**.
+3. Megjelenik az importálás állapota.
     - Ha figyelmeztetések jelennek meg az állapotában, megjavíthatja őket, vagy folytathatja a kezelés nélkül.
     - A kiszolgálói információk javítása a figyelmeztetések által javasolt módon javítja az értékelési pontosságot.
-    - Ha meg szeretné tekinteni és elhárítani a figyelmeztetéseket, kattintson a **Figyelmeztetés részleteinek letöltése elemre. CSV**. Ezzel letölti a CSV-fájlt, és figyelmeztetéseket adott hozzá. Megtekintheti a figyelmeztetéseket, és szükség szerint kijavíthatja a problémákat. 
+    - Ha meg szeretné tekinteni és elhárítani a figyelmeztetéseket, kattintson a **Figyelmeztetés részleteinek letöltése elemre. CSV**. Ezzel letölti a CSV-fájlt, és figyelmeztetéseket adott hozzá. Megtekintheti a figyelmeztetéseket, és szükség szerint kijavíthatja a problémákat.
     Ha a hibák megjelennek az állapotban (az importálás állapota **sikertelen**), az importálás folytatása előtt ki kell javítania ezeket. Ehhez töltse le a CSV-fájlt, amely mostantól a hiba részleteivel bővült. Szükség szerint tekintse át és oldja meg a hibákat. Ezután töltse fel újra a módosított fájlt.
 4. Az importálási állapot **befejezése után**a rendszer importálja a kiszolgáló adatait.
 
@@ -205,7 +202,7 @@ Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat Az
 
 ## <a name="updating-server-information"></a>Kiszolgáló adatainak frissítése
 
-A kiszolgáló adatainak frissítéséhez töltse fel újra a kiszolgáló adatait ugyanazzal a **kiszolgálónévvel**. A **kiszolgáló neve** mező nem módosítható. 
+A kiszolgáló adatainak frissítéséhez töltse fel újra a kiszolgáló adatait ugyanazzal a **kiszolgálónévvel**. A **kiszolgáló neve** mező nem módosítható.
 
 A kiszolgálók törlése jelenleg nem támogatott.
 
@@ -298,27 +295,27 @@ Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és táro
 
 ## <a name="supported-operating-system-names"></a>Támogatott operációs rendszerek nevei
 
-Név | Név
+Name (Név) | Name (Név)
 --- | ---
-**A – H** | 
+**A – H** |
 Apple Mac OS X 10 | 3\. Asianux<br/>4\. Asianux<br/>5\. Asianux
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I-R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I-R** |
 IBM OS/2 | MS-DOS |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity Systems eComStation 1<br/>Serenity Systems eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
 Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server küszöbértéke<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
-    
 
-## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+## <a name="next-steps"></a>Következő lépések
+
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Importált kiszolgálók Azure Migrate: a kiszolgáló értékelése CSV használatával.

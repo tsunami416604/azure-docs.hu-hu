@@ -6,16 +6,23 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: 7dc3934f486b205febd5be3c0b484dfd2c97bb8f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6a3a62053a488f95e22cae13ef9d0714a7b5dd05
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755544"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173742"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Törölt App Service-alkalmazás visszaállítása a PowerShell használatával
 
 Ha véletlenül törölte az alkalmazást Azure App Serviceban, visszaállíthatja az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)parancsainak használatával.
+
+## <a name="re-register-app-service-resource-provider"></a>App Service erőforrás-szolgáltató újbóli regisztrálása
+Egyes ügyfelek olyan problémákba ütközhet, amikor a törölt alkalmazások listájának beolvasása sikertelen. A probléma megoldásához futtassa a következő parancsot:
+
+```powershell
+ Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
+```
 
 ## <a name="list-deleted-apps"></a>Törölt alkalmazások listázása
 
@@ -24,7 +31,7 @@ A törölt alkalmazások gyűjteményének beszerzéséhez használhatja a `Get-
 A következő használható egy adott törölt alkalmazás részletei:
 
 ```powershell
-Get-AzDeletedWebApp -Name <your_deleted_app>
+Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_location> 
 ```
 
 A részletes információk a következők:
@@ -39,7 +46,7 @@ A részletes információk a következők:
 
 ## <a name="restore-deleted-app"></a>Törölt alkalmazás visszaállítása
 
-Miután azonosította a visszaállítani kívánt alkalmazást, `Restore-AzDeletedWebApp` használatával visszaállíthatja.
+Miután azonosította a visszaállítani kívánt alkalmazást, `Restore-AzDeletedWebApp`használatával visszaállíthatja.
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>

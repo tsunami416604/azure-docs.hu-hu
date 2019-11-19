@@ -1,18 +1,14 @@
 ---
-title: Azure Backup architektúra
+title: Architektúra – áttekintés
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074352"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173521"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -48,8 +44,8 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
@@ -96,7 +92,7 @@ A tárterület-használat, a helyreállítási időre vonatkozó célkitűzés (
 
 A következő táblázat összefoglalja a különböző típusú biztonsági másolatok támogatott funkcióit:
 
-**Funkció** | **Helyszíni Windows Server-gépek (Direct)** | **Azure-beli virtuális gépek** | **Gépek vagy alkalmazások DPM/MABS**
+**Funkció** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
 Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green]
 Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green]
@@ -106,7 +102,7 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 
 ![Tábla kulcsa](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektúra: Azure-beli virtuális gépek közvetlen biztonsági mentése
+## <a name="architecture-built-in-azure-vm-backup"></a>Architektúra: beépített Azure-beli virtuális gépek biztonsági mentése
 
 1. Ha engedélyezi egy Azure-beli virtuális gép biztonsági mentését, a biztonsági mentés a megadott ütemterv szerint fut.
 1. Az első biztonsági mentés során a rendszer egy biztonsági mentési bővítményt telepít a virtuális gépre, ha a virtuális gép fut.
@@ -178,7 +174,7 @@ A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival
 Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a Azure Backup használatával végezheti el:
 
 - A Premium Storage *-alapú*virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
-- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [További információ](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
+- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [Részletek](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
 - A biztonsági mentési feladatok befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/windows/disks-types.md#billing).
 
@@ -197,7 +193,7 @@ Ha felügyelt lemezekkel állítja vissza a virtuális gépeket, visszaállítha
 - A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Ha a Storage-fiók lehetőséget használja, akkor a visszaállítási folyamat során létrehozott Storage-fiókot kell kezelnie.
 - Ha egy titkosított felügyelt virtuális gépet állít vissza, akkor a visszaállítási folyamat megkezdése előtt győződjön meg arról, hogy a virtuális gép kulcsainak és titkos kulcsai léteznek a kulcstartóban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a támogatási mátrixot, [ahol megismerheti a biztonsági mentési forgatókönyvek támogatott funkcióit és korlátozásait](backup-support-matrix.md).
 - Állítsa be a biztonsági mentést az alábbi forgatókönyvek egyikére:

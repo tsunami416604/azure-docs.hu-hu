@@ -1,20 +1,15 @@
 ---
 title: A Microsoft Azure Backup Server v3 kibocsátási megjegyzései
 description: Ez a cikk a Microsoft Azure Backup Server (MABS) v3 ismert problémáit és megkerülő megoldásait ismerteti.
-ms.reviewer: v-jysur
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/22/2018
-ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 6f00b51cc5ac23aa8d1d39202ca79a9f5d762cbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074810"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172280"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
 
@@ -76,6 +71,6 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 
 9. Indítsa el a MSDPM szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az MABS v3 újdonságai](backup-mabs-whats-new-mabs.md)

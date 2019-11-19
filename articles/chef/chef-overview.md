@@ -1,47 +1,43 @@
 ---
-title: A Chef az Azure-ral
-description: Bevezetés a Chef segítségével az Azure-infrastruktúra tesztelése és konfigurálása
-ms.service: virtual-machines-linux
-keywords: az Azure, a chef, a devops, a virtuális gépek, a áttekintése, automatizálása
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: A Chef használata az Azure-ban
+description: Bevezetés a Chef használatára az Azure-infrastruktúra konfigurálásához és teszteléséhez
+keywords: Azure, Chef, devops, Virtual Machines, áttekintés, automatizálás
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656574"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158009"
 ---
-# <a name="using-chef-with-azure"></a>A Chef az Azure-ral
-[Chef](https://www.chef.io) egy hatékony automatizálási platform, amely Azure-beli virtuális gép infrastruktúra alakítja a kódot. Chef automatizálja hogyan infrastruktúra van konfigurálva, telepítheti és kezelheti a hálózatba, függetlenül attól, hogy annak méretét.
+# <a name="using-chef-with-azure"></a>A Chef használata az Azure-ban
+A [Chef](https://www.chef.io) egy hatékony automatizálási platform, amely átalakítja a virtuális gépek infrastruktúráját az Azure-ba programkódba. A Chef automatizálja az infrastruktúra konfigurálását, üzembe helyezését és felügyeletét a hálózaton keresztül, függetlenül attól, hogy mekkora a mérete.
 
-Ez a cikk ismerteti a Chef segítségével kezelheti az Azure előnyeit.
+Ez a cikk a Chef Azure-infrastruktúra kezelésére való használatának előnyeit ismerteti.
 
-## <a name="chef-extension-on-azure"></a>Chef kiterjesztése az Azure-ban
-A Chef-ügyfél a háttérben szolgáltatásként futó virtuális gép kiépítése a [Chef bővítmény](https://docs.microsoft.com/azure/chef/chef-extension-portal) az Azure Portal webhelyen. Miután kiépített, ezek a virtuális gépek készen áll a Chef-kiszolgáló által kezelt.
+## <a name="chef-extension-on-azure"></a>Chef-bővítmény az Azure-ban
+Hozzon létre egy, az Azure Portalon a [Chef bővítménnyel](https://docs.microsoft.com/azure/chef/chef-extension-portal) rendelkező Chef-ügyféllel rendelkező virtuális gépet. A kiépítés után ezek a virtuális gépek készen állnak a Chef-kiszolgálók általi felügyeletre.
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
-Közvetlenül az Azure Cloud Shellben munkaállomás használata Chef! Futtassa a Chef segédprogramok és az InSpec megfelelő Cloud Shellben. A Chef parancsokat használhat:
+Chef-munkaállomás használata közvetlenül a Azure Cloud Shellban! Futtassa az összes Chef-segédprogramot és az Inspect Cloud Shellból. A Chef parancsait a következő helyekről használhatja:
 
 * [chef](https://docs.chef.io/ctl_chef.html)
-* [megjelenítő kijelzőket a konyhai](https://docs.chef.io/ctl_kitchen.html)
+* [konyhai](https://docs.chef.io/ctl_kitchen.html)
 * [inspec](https://www.inspec.io/docs/reference/cli/)
 * [knife](https://docs.chef.io/knife.html)
 * [cookstyle](https://docs.chef.io/cookstyle.html)
 * [foodcritic](https://docs.chef.io/foodcritic.html)
 * [chef-run](https://www.chef.sh/docs/chef-workstation/getting-started/)
 
-A parancssori segédprogramok kombinálva a Cloud shellben elérhető eszközök például `git`, `az-cli`, és `terraform`, és az infrastruktúra és a megfelelőség automation írhat a böngészőben.
+A parancssori segédprogramokat kombinálhatja a Cloud Shellban elérhető egyéb eszközökkel, például a `git`, a `az-cli`és a `terraform`, valamint az infrastruktúra és a megfelelőségi automatizálás megírásával a böngészőből.
 
-## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Infrastruktúra, alkalmazások és platformfüggetlen megfelelés automatizálása
-Vállalatok sebességét, a sebesség és a jelenlegi versenyének helyszíne a digital marketplace biztonság van szükség. Együtt a Chef és a Microsoft segítségével a felhasználók, csoportok és vállalatok ezekről az összes elvégzéséhez. Egyetlen platform révén a Chef Automate, mostantól automatizálhatja és folyamatos elérhetővé tétele az infrastruktúra, alkalmazások és megfelelőség a Microsoft hagyatéki között.
+## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Infrastruktúra, alkalmazások és megfelelőség automatizálása egy platformmal
+A vállalatoknak sebességet, sebességet és biztonságot kell megkövetelniük a digitális piactéren való versenyzéshez. A Chef és a Microsoft segítséget nyújt a felhasználóknak, a csapatoknak és a vállalatoknak az összes ilyen dolog megvalósításában. Az egyik platformon a Chef automatizálható, így automatizálhatja és folyamatosan továbbíthatja infrastruktúráját, alkalmazásait és megfelelőségét a Microsoft-birtokon.
 
-## <a name="test-drive-chef-automate-on-azure"></a>Próbálja ki a Chef Automate az Azure-ban
-Támogatja a Chef, a [Chef automatizálása az Azure piactér megoldást](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) lehetővé teszi, hogy elkészítheti, telepítheti és kezelheti az infrastruktúra és alkalmazások elősegítése érdekében. Egyetlen kattintással azonnal hozzáférhet a Chef Automate; össze kereskedelmi funkciójához veheti teljes körű áttekintést kaphat az egész flottájáról, folyamatos megfelelőséget, és felügyelheti az összes változást egy egységes munkafolyamat.
+## <a name="test-drive-chef-automate-on-azure"></a>Az Azure-beli Chef-automatizálás tesztelése
+A Chef által támogatott [Chef Azure Marketplace megoldás](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) lehetővé teszi az infrastruktúra és az alkalmazások közös fejlesztését, üzembe helyezését és kezelését. Egyetlen kattintással azonnali hozzáférést kap a Chef automatizálható összes kereskedelmi szolgáltatásához; teljes körű láthatóságot nyerhet a teljes flottában, engedélyezheti a folyamatos megfelelőséget, és kezelheti az összes változást egy egyesített munkafolyamattal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Windows virtuális gép létrehozása Chef használatával Azure-ban](/azure/virtual-machines/windows/chef-automation)
+* [Windows rendszerű virtuális gép létrehozása az Azure-ban Chef használatával](/azure/virtual-machines/windows/chef-automation)

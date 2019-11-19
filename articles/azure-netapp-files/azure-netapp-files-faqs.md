@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298474"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173602"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -105,14 +105,7 @@ A Azure NetApp Files a kötetek teljesítményének mérőszámait biztosítja. 
 
 Ahhoz, hogy egy NFS-kötet automatikusan csatlakoztatható legyen a virtuális gép indításakor vagy újraindításakor, adjon hozzá egy bejegyzést a gazdagépen lévő `/etc/fstab` fájlhoz. 
 
-Például:`$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
-
-- $ANFIP  
-    A kötet tulajdonságai panelen található Azure NetApp Files kötet IP-címe
-- $FILEPATH  
-    A Azure NetApp Files kötet exportálási útvonala
-- $MOUNTPOINT  
-    Az NFS-exportálás csatlakoztatásához használt Linux-gazdagépen létrehozott könyvtár
+A részletekért lásd: [kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .  
 
 ### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Miért nem jelenik meg az NFS-ügyfél DF-parancsa a kiosztott kötet méretének?
 
@@ -123,7 +116,7 @@ A DF által jelentett kötet mérete a maximális méret, amelyet a Azure NetApp
 Azure NetApp Files támogatja a NFSv3 és a NFSv 4.1-es verziója. A köteteket az NFS-verzióval is létrehozhatja. 
 
 > [!IMPORTANT] 
-> A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a kérelmet <anffeedback@microsoft.com> értékre. 
+> A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a <anffeedback@microsoft.com>. 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hogyan engedélyezi a gyökér leverését?
@@ -144,7 +137,7 @@ A Azure NetApp Files jelenleg egy Active Directory-kapcsolatban támogatja az el
 
 A [Azure Active Directory (ad) tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/overview) és a [Active Directory tartományi szolgáltatások (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként, illetve ExpressRoute vagy S2S VPN-en keresztül is megtalálhatók a helyszínen. A Azure NetApp Files jelenleg nem támogatja az AD Joint [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Ha a Azure NetApp Filest használja Azure Active Directory Domain Services, akkor a szervezeti egység elérési útja `OU=AADDC Computers`, ha a NetApp-fiókhoz Active Directory konfigurál.
+Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési útja `OU=AADDC Computers` a NetApp-fiókhoz tartozó Active Directory konfigurálásakor.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>A Windows Server Active Directory mely verziói támogatottak?
 

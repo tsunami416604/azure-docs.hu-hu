@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120319"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167862"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: a G Suite konfigurálása automatikus felhasználók kiépítési feladatokhoz
 
@@ -32,7 +32,7 @@ Ennek az oktatóanyagnak a célja, hogy bemutassa a G Suite-ban végrehajtandó 
 > [!NOTE]
 > A G Suite-összekötőt nemrég, október 2019-én frissítették. A G Suite-összekötőn végrehajtott módosítások a következők:
 - További támogatás a G Suite-felhasználók és-csoportok további attribútumaihoz. 
-- A G Suite-cél attribútumainak neve megegyezik az [itt](/azure/active-directory/manage-apps/customize-application-attributes)definiált értékekkel.
+- A G Suite-cél attribútumainak neve megegyezik az [itt](https://developers.google.com/admin-sdk/directory)definiált értékekkel.
 - Az alapértelmezett attribútum-hozzárendelések frissítve.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -129,6 +129,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 > [!TIP]
 > Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a G Suite-hoz, a [g Suite egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
+> [!NOTE]
+> A G Suite címtár API-végpontjának megismeréséhez tekintse meg a [Directory API](https://developers.google.com/admin-sdk/directory)-t.
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>A G Suite automatikus felhasználói üzembe helyezésének konfigurálása az Azure AD-ben:
 
 1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
@@ -197,21 +200,12 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
-> [!NOTE]
-> A G Suite-hoz való felhasználói üzembe helyezés automatizálására egy másik lehetőség áll a [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en)használatára. Ez a beállítás a G Suite-hoz a helyszíni Active Directory identitásait adja meg.
-
-## <a name="common-issues"></a>Gyakori problémák
-* A G Suite megköveteli, hogy minden kiépített felhasználó ellenőrzött tartományba kerüljön. Győződjön meg arról, hogy a kiépíteni kívánt összes felhasználónak van egy egyszerű felhasználóneve a G Suite-ban ellenőrzött tartományból. Ha egy nem ellenőrzött tartományból álló felhasználó a kiépítés hatókörében van, hibaüzenet jelenik meg a [kiépítési naplókban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) (például "GoogleAppsInvalidDomain"). Meggátolhatja ezeket a hibákat, és a nem ellenőrzött tartományokból származó felhasználók hatókörét egy hatóköri [szűrő](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)használatával megakadályozhatja.
-    * Cél attribútum: userPrincipalName
-    * Operátor: REGEX egyezés vagy nem REGEX egyezés
-    * Érték:. *@domain.com
-
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
 

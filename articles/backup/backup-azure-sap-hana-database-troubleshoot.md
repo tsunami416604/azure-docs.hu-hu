@@ -1,19 +1,14 @@
 ---
-title: SAP HANA adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása – Azure Backup
+title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása SAP HANA
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968453"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172751"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -49,8 +44,8 @@ Az Előregisztráció szkriptje:
 Miután kiválasztott egy adatbázist a biztonsági mentéshez, a Azure Backup szolgáltatás az backInt-paramétereket az adatbázis szintjén konfigurálja:
 
 - [catalog_backup_using_backint: true]
-- [enable_accumulated_catalog_backup: FALSE]
-- [parallel_data_backup_backint_channels: 1]
+- [enable_accumulated_catalog_backup:false]
+- [parallel_data_backup_backint_channels:1]
 - [log_backup_timeout_s: 900)]
 - [backint_response_timeout: 7200]
 
@@ -82,7 +77,7 @@ A HANA-hoz készült több Container Database-ben a standard konfiguráció SYST
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-adatok| Hibaüzenet | Lehetséges okok | Javasolt művelet |
+data| Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Nem sikerült csatlakozni a HANA rendszerhez. Ellenőrizze, hogy a rendszer működik-e.| A Azure Backup szolgáltatás nem tud csatlakozni a HANA-hoz, mert a HANA-adatbázis nem működik. Vagy a HANA fut, de nem engedélyezi a Azure Backup szolgáltatás kapcsolódását. | Győződjön meg arról, hogy a HANA-adatbázis vagy-szolgáltatás nem áll le. Ha a HANA-adatbázis vagy-szolgáltatás fut, ellenőrizze, hogy az [összes engedély be](#setting-up-permissions)van-e állítva. Ha a kulcs hiányzik, futtassa újra az előregisztrációi parancsfájlt egy új kulcs létrehozásához. |
 

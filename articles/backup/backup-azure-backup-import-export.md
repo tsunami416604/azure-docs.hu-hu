@@ -1,19 +1,15 @@
 ---
-title: Offline biztonsági mentés a Azure Backup importálási/exportálási szolgáltatással
+title: Offline biztonsági mentés az importálási/exportálási szolgáltatással
 description: Ismerje meg, hogy a Azure Backup lehetővé teszi, hogy az Azure import/export szolgáltatással a hálózatról küldjön adatküldést. Ez a cikk ismerteti a kezdeti biztonsági mentési információknak az Azure import export szolgáltatással történő offline előkészítését.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: dacurwin
-ms.openlocfilehash: 15a5a67209552134969c01220e8412d0c9dace15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968520"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173292"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 
@@ -40,7 +36,7 @@ A következő Azure Backup szolgáltatások vagy munkaterhelések támogatják a
 > * Fájlok és mappák biztonsági mentése a Microsoft Azure Recovery Services-(MARS-) ügynökkel, más néven Azure Backup ügynök.
 > * Összes munkaterhelés és fájl biztonsági mentése a System Center Data Protection Manager (SC DPM) szolgáltatással
 > * Az összes számítási feladat és fájl biztonsági mentése Microsoft Azure Backup-kiszolgálóval
-
+ 
    > [!NOTE]
    > Az offline biztonsági mentés nem támogatott a rendszerállapot biztonsági mentéséhez a Azure Backup ügynök használatával.
 
@@ -109,7 +105,7 @@ Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az 
 
 A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure-adatközpontba küldendő SATA-meghajtókat. Ez a segédprogram a Azure Backup Agent telepítési könyvtárában érhető el (a következő elérési úton):
 
-   *\Microsoft Azure Recovery Services Agent\Utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. Nyissa meg a könyvtárat, és másolja a **AzureOfflineBackupDiskPrep** könyvtárat egy másik számítógépre, AMELYEN a SATA-meghajtók csatlakoznak. A csatlakoztatott SATA meghajtókkal rendelkező számítógépen ügyeljen a következőre:
 

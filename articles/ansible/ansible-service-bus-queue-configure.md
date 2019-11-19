@@ -3,17 +3,13 @@ title: Oktatóanyag – várólisták konfigurálása Azure Service Bus Ansible 
 description: Útmutató Azure Service Bus üzenetsor létrehozásához a Ansible használatával
 keywords: Ansible, Azure, devops, bash, ötletekbõl, Service Bus, üzenetsor
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9903419a52be61cd7ec74214858bce81df7e727e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241396"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155813"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Oktatóanyag: várólisták konfigurálása Azure Service Bus Ansible használatával
 
@@ -107,7 +103,7 @@ Mentse a következő forgatókönyvet `servicebus_queue_policy.yml` néven:
 ```
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A `rights` érték azt a jogosultságot jelöli, amellyel a felhasználó rendelkezik a várólistával. A következő értékek egyikét kell megadnia: `manage`, `listen`, `send` vagy `listen_send`.
+- A `rights` érték azt a jogosultságot jelöli, amelyet a felhasználó a várólistával rendelkezik. A következő értékek egyikét kell megadnia: `manage`, `listen`, `send`vagy `listen_send`.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -140,7 +136,7 @@ Mentse a következő forgatókönyvet `servicebus_namespace_info.yml` néven:
 ```
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A @no__t 0 érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott névtérben. Alapértelmezés szerint az érték `False` a további hálózati terhelés elkerülése érdekében.
+- A `show_sas_policies` érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott névtérben. Alapértelmezés szerint az érték `False` a további hálózati terhelés elkerülése érdekében.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -175,7 +171,7 @@ Mentse a következő forgatókönyvet `servicebus_queue_info.yml` néven:
 ```
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A @no__t 0 érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott várólistán. Alapértelmezés szerint ez az érték `False` értékűre van állítva a további hálózati terhelés elkerülése érdekében.
+- A `show_sas_policies` érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott várólistában. Alapértelmezés szerint ez az érték `False`re van állítva a további hálózati terhelés elkerülése érdekében.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -216,7 +212,7 @@ ansible-playbook servicebus_queue_policy_delete.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 ---

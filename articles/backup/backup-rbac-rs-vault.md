@@ -1,19 +1,15 @@
 ---
-title: Biztonsági másolatok kezelése az Azure szerepköralapú Access Controlával
+title: Biztonsági másolatok kezelése szerepköralapú Access Control
 description: Szerepköralapú Access Control segítségével kezelheti a biztonsági mentési felügyeleti műveletekhez való hozzáférést Recovery Services-tárolóban.
 ms.reviewer: utraghuv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8ba28829d3ee18b441227e537cb0a7ca97fb7638
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: afb8067f2547e3a26a505bb5ec8063dd340e8500
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074037"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172182"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez
 
@@ -79,7 +75,7 @@ Az alábbi táblázat rögzíti az Azure fájlmegosztás művelet végrehajtás�
 | Storage-fiók regisztrációjának törlése a tárból |Biztonsági mentési közreműködő | Recovery Services-tároló |
 | |Storage-fiók közreműködői | Storage-fiók erőforrása|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md): bevezetés a Azure Portal RBAC használatába.
 * Ismerje meg, hogyan kezelheti a hozzáférést a következővel:

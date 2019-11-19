@@ -1,19 +1,14 @@
 ---
-title: Azure Backup adatmodellje
+title: Power BI adatmodell
 description: Ez a cikk a Azure Backup-jelentésekhez Power BI adatmodell részleteiről beszél.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: dacurwin
-ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2f06da16280070448d7b42dc5e1dcfc46354cfa
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074897"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172804"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Adatmodell az Azure Backup-jelentésekhez
 
@@ -198,7 +193,7 @@ Ez a tábla alapszintű mezőket és összesítéseket biztosít különböző t
 | vaultName |Szöveg |A tároló neve |
 | VaultTags |Szöveg |A tárolóhoz társított Címkék |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután áttekintette a Azure Backup-jelentések létrehozásához szükséges adatmodellt, további részleteket a következő cikkekben talál a jelentések létrehozásával és megtekintésével kapcsolatban Power BIban.
 

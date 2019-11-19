@@ -1,19 +1,15 @@
 ---
-title: Azure Backup – offline biztonsági mentés a DPM és a Azure Backup Server
+title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup lehetővé teszi, hogy az Azure import/export szolgáltatással a hálózaton kívülről küldjön adatküldést. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti (MABS).
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074308"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173250"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offline – a DPM és a Azure Backup Server biztonsági mentési munkafolyamata
 
@@ -108,7 +104,7 @@ Az ebben a szakaszban található információk segítségével elvégezheti az 
 
 A *AzureOfflineBackupDiskPrep* segédprogram a legközelebbi Azure-adatközpontba eljuttatott SATA-meghajtók előkészítésére szolgál. Ez a segédprogram a Recovery Services ügynök telepítési könyvtárában érhető el a következő elérési úton:
 
-*\\Microsoft Azure Recovery Services ügynök\\utils\\*
+    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. Nyissa meg a könyvtárat, és másolja a **AzureOfflineBackupDiskPrep** könyvtárat arra a másolási számítógépre, amelyen az előkészíteni kívánt SATA-meghajtók csatlakoztatva vannak. Ügyeljen a következőkre a másolási számítógép tekintetében:
 
@@ -219,7 +215,7 @@ Az importálási feladatok befejeződése után a kezdeti biztonsági mentési a
 
 A következő ütemezett biztonsági mentés időpontjában a Azure Backup növekményes biztonsági mentést hajt végre a kezdeti biztonsági másolaton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure importálási/exportálási munkafolyamatával kapcsolatos bármilyen kérdés esetén tekintse át az [adatok blob Storage-ba való átvitelére szolgáló Microsoft Azure import/export szolgáltatás használatát](../storage/common/storage-import-export-service.md)ismertető témakört.
 * A munkafolyamattal kapcsolatos kérdésekért tekintse meg a Azure Backup- [GYIK](backup-azure-backup-faq.md) offline biztonsági mentését ismertető szakaszt.

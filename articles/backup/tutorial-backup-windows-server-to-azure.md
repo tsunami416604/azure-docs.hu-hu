@@ -1,20 +1,15 @@
 ---
-title: Windows Server biztonsági mentése az Azure-ba
+title: Oktatóanyag – a Windows Server biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését.
-author: dcurwin
-manager: carmonm
-keywords: windows server biztonsági másolat; windows server biztonsági mentése; biztonsági mentés és vészhelyreállítás
-ms.service: backup
 ms.topic: tutorial
 ms.date: 08/22/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d57d25eff9548bea9d29f8aa908e9e1721495bd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073951"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171835"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
@@ -138,7 +133,7 @@ Létrehozta a biztonsági mentési feladatok futtatásának ütemezését. A kis
 4. A varázsló bezárásához kattintson a **Bezárás** gombra. Ha bezárja a varázslót a biztonsági mentési folyamat befejezése előtt, a varázsló továbbra is fut a háttérben.
 5. A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot jelenik meg a MARS-ügynökkonzol **Feladatok** ablaktáblájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 

@@ -3,17 +3,13 @@ title: Oktatóanyag – virtuálisgép-méretezési csoportok kiosztása az Azur
 description: Ismerje meg, hogyan méretezheti a Ansible a virtuálisgép-méretezési csoportok méretezésére az Azure-ban az autoscale használatával
 keywords: Ansible, Azure, devops, bash, ötletekbõl, skála, automata méretezés, virtuális gép, virtuálisgép-méretezési csoport, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 784cb532c11b16c820336ceeaf8d38f0225c832f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242109"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156813"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: virtuálisgép-méretezési csoportok autoskálázása az Azure-ban a Ansible használatával
 
@@ -183,7 +179,7 @@ ansible-playbook vmss-auto-scale-metrics.yml
 
 ## <a name="get-autoscale-settings-information"></a>Az autoskálázási beállítások adatainak beolvasása 
 
-Az ebben a szakaszban található forgatókönyv-kód a `azure_rm_autoscale_facts` modullal kéri le az autoskálázási beállítás részleteit.
+Az ebben a szakaszban található forgatókönyv-kód a `azure_rm_autoscale_facts` modul használatával kéri le az autoskálázási beállítás részleteit.
 
 Mentse a következő forgatókönyvet `vmss-auto-scale-get-settings.yml` néven:
 
@@ -211,7 +207,7 @@ ansible-playbook vmss-auto-scale-get-settings.yml
 
 ## <a name="disable-autoscale-settings"></a>Az autoskálázási beállítások letiltása
 
-Az autoscale-beállítások letiltása kétféleképpen lehetséges. Az egyik módszer, ha a `enabled` kulcsot a `true` értékről a `false` értékre módosítja. A második módszer a beállítás törlése.
+Az autoscale-beállítások letiltása kétféleképpen lehetséges. Az egyik módszer a `enabled` kulcs módosítása `true`ról `false`ra. A második módszer a beállítás törlése.
 
 Az ebben a szakaszban található forgatókönyv-kód törli az autoskálázási beállítást. 
 

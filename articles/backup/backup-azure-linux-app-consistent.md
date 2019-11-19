@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: a Linux rendszerű virtuális gépek alkalmazással konzisztens biztonsági mentései'
+title: A Linux rendszerű virtuális gépek alkalmazás-konzisztens biztonsági mentései
 description: A Linux rendszerű virtuális gépek alkalmazás-konzisztens biztonsági másolatait az Azure-ba hozhatja létre. Ez a cikk a parancsfájl-keretrendszer konfigurálását ismerteti az Azure-ban üzembe helyezett Linux virtuális gépek biztonsági mentéséhez. Ez a cikk hibaelhárítási információkat is tartalmaz.
 ms.reviewer: anuragm
-author: dcurwin
-manager: carmonm
-keywords: alkalmazás-konzisztens biztonsági mentés; alkalmazás-konzisztens Azure-beli virtuális gépek biztonsági mentése; Linuxos virtuális gép biztonsági mentése; Azure Backup
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: dacurwin
-ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375951"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173007"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Az Azure Linux rendszerű virtuális gépek alkalmazásának konzisztens biztonsági mentése
 
@@ -72,22 +67,22 @@ A parancsfájl-előkészítők natív Application API-kat indítanak, amelyek fo
 
 6. A parancsfájl-keretrendszer konfigurálva van. Ha a virtuális gép biztonsági mentése már be van állítva, a következő biztonsági mentés elindítja a parancsfájlokat, és elindítja az alkalmazás-konzisztens biztonsági mentést. Ha a virtuális gép biztonsági mentése nincs konfigurálva, állítsa be úgy, hogy az [Azure-beli virtuális gépek biztonsági](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm) mentését Recovery Services tárolók használatára konfigurálja.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Győződjön meg arról, hogy a megfelelő naplózást adja hozzá a parancsfájl előtti és utáni parancsfájl írásakor, majd tekintse át a parancsfájl-naplókat a parancsfájlokkal kapcsolatos problémák megoldásához. Ha továbbra is problémákat tapasztal a parancsfájlok futtatásakor, további információért tekintse meg a következő táblázatot.
 
 | Hiba | Hibaüzenet | Javasolt művelet |
 | ------------------------ | -------------- | ------------------ |
-| Előzetes ScriptExecutionFailed |Az előzetes parancsfájl hibát adott vissza, ezért előfordulhat, hogy a biztonsági mentés nem alkalmazás-konzisztens.| A probléma megoldásához tekintse meg a parancsfájlhoz tartozó hibák naplóit.|  
-|ScriptExecutionFailed utáni |A post-script olyan hibát adott vissza, amely hatással lehet az alkalmazás állapotára. |A probléma megoldásához és az alkalmazás állapotának megtekintéséhez tekintse meg a parancsfájlhoz tartozó hibák naplóit. |
-| Előzetes ScriptNotFound |Az előzetes parancsfájl nem található a **VMSnapshotScriptPluginConfig. JSON** konfigurációs fájlban megadott helyen. |Győződjön meg arról, hogy a konfigurációs fájlban megadott elérési úton lévő előzetes parancsfájl szerepel az alkalmazás-konzisztens biztonsági mentés biztosításához.|
-| ScriptNotFound utáni |A parancsfájl nem található a **VMSnapshotScriptPluginConfig. JSON** konfigurációs fájlban megadott helyen. |Győződjön meg arról, hogy a parancsfájl a konfigurációs fájlban megadott elérési úton van, hogy biztosítsa az alkalmazás-konzisztens biztonsági mentést.|
+| Pre-ScriptExecutionFailed |Az előzetes parancsfájl hibát adott vissza, ezért előfordulhat, hogy a biztonsági mentés nem alkalmazás-konzisztens.| A probléma megoldásához tekintse meg a parancsfájlhoz tartozó hibák naplóit.|  
+|Post-ScriptExecutionFailed |A post-script olyan hibát adott vissza, amely hatással lehet az alkalmazás állapotára. |A probléma megoldásához és az alkalmazás állapotának megtekintéséhez tekintse meg a parancsfájlhoz tartozó hibák naplóit. |
+| Pre-ScriptNotFound |Az előzetes parancsfájl nem található a **VMSnapshotScriptPluginConfig. JSON** konfigurációs fájlban megadott helyen. |Győződjön meg arról, hogy a konfigurációs fájlban megadott elérési úton lévő előzetes parancsfájl szerepel az alkalmazás-konzisztens biztonsági mentés biztosításához.|
+| Post-ScriptNotFound |A parancsfájl nem található a **VMSnapshotScriptPluginConfig. JSON** konfigurációs fájlban megadott helyen. |Győződjön meg arról, hogy a parancsfájl a konfigurációs fájlban megadott elérési úton van, hogy biztosítsa az alkalmazás-konzisztens biztonsági mentést.|
 | IncorrectPluginhostFile |A VmSnapshotLinux-bővítményhez tartozó **pluginhost fájlja** -fájl sérült, ezért a parancsfájl előtti és utáni parancsfájl nem futtatható, és a biztonsági mentés nem lesz alkalmazás-konzisztens.| Távolítsa el a **VmSnapshotLinux** bővítményt, és a rendszer automatikusan újratelepíti a következő biztonsági mentéssel a probléma megoldásához. |
 | IncorrectJSONConfigFile | A **VMSnapshotScriptPluginConfig. JSON** fájl helytelen, ezért a parancsfájl előtti és utáni parancsfájl nem futtatható, és a biztonsági mentés nem lesz az alkalmazás-konzisztens. | Töltse le a másolatot a [githubról](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) , és konfigurálja újra. |
 | InsufficientPermissionforPre – parancsfájl | A parancsfájlok futtatásához a "root" felhasználónak a fájl tulajdonosának kell lennie, és a fájlnak "700" engedélyekkel kell rendelkeznie (azaz csak a "tulajdonos" legyen "READ", "Write" és "EXECUTE" engedélyekkel). | Győződjön meg arról, hogy a "root" felhasználó a parancsfájl tulajdonosa, és hogy csak a "tulajdonos" rendelkezik "READ", "Write" és "EXECUTE" engedélyekkel. |
 | InsufficientPermissionforPost – parancsfájl | A parancsfájlok futtatásához a legfelső szintű felhasználónak a fájl tulajdonosának kell lennie, és a fájlnak "700" engedélyekkel kell rendelkeznie (azaz csak a "tulajdonos" legyen "READ", "Write" és "EXECUTE" engedélyekkel). | Győződjön meg arról, hogy a "root" felhasználó a parancsfájl tulajdonosa, és hogy csak a "tulajdonos" rendelkezik "READ", "Write" és "EXECUTE" engedélyekkel. |
-| Előzetes ScriptTimeout | Az alkalmazás-konzisztens biztonsági mentés előzetes parancsfájljának végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje az időtúllépést a **VMSnapshotScriptPluginConfig. JSON** fájlban, amely a következő helyen található: **/etc/Azure**. |
-| ScriptTimeout utáni | Az alkalmazás-konzisztens biztonsági mentési parancsfájl végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje az időtúllépést a **VMSnapshotScriptPluginConfig. JSON** fájlban, amely a következő helyen található: **/etc/Azure**. |
+| Pre-ScriptTimeout | Az alkalmazás-konzisztens biztonsági mentés előzetes parancsfájljának végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje az időtúllépést a **VMSnapshotScriptPluginConfig. JSON** fájlban, amely a következő helyen található: **/etc/Azure**. |
+| Post-ScriptTimeout | Az alkalmazás-konzisztens biztonsági mentési parancsfájl végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje az időtúllépést a **VMSnapshotScriptPluginConfig. JSON** fájlban, amely a következő helyen található: **/etc/Azure**. |
 
 ## <a name="next-steps"></a>Következő lépések
 

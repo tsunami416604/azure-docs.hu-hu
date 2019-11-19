@@ -3,17 +3,13 @@ title: Oktatóanyag – Azure Route-táblák konfigurálása a Ansible használa
 description: Ismerje meg, hogyan hozhat létre, kezelhet és törölhet Azure Route-táblákat a Ansible használatával. Azt is megtudhatja, hogyan hozhat létre és törölhet útvonalakat.
 keywords: Ansible, Azure, devops, bash, ötletekbõl, hálózatkezelés, útvonal, útválasztási táblázat
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 0ffc00606eac4cf57cdf19072986373f5602aafa
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d1e44a98405bc1009f6f3d56d90fc1fd655d77d5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614345"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156490"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Oktatóanyag: az Azure Route-táblázatok konfigurálása a Ansible használatával
 
@@ -259,6 +255,6 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook route_table_delete.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

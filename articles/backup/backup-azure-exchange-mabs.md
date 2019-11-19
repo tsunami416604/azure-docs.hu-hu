@@ -1,19 +1,15 @@
 ---
-title: Exchange-kiszolgáló biztonsági mentése a Azure Backupra Azure Backup Server
+title: Exchange-kiszolgáló biztonsági mentése Azure Backup Server
 description: Megtudhatja, hogyan készíthet biztonsági mentést egy Exchange-kiszolgálóról Azure Backup használatával Azure Backup Server
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: dacurwin
-ms.openlocfilehash: ed88f069c110795c2c5561196c41d3d75640bd53
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968468"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173128"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
 
@@ -51,7 +47,7 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
 
    * Rövid távú védelmet szeretnék a lemezzel.
    * Online védelmet szeretnék.
-6. Kattintson a **Tovább** gombra.
+6. Kattintson a **Tovább**gombra.
 7. Jelölje be az **eseutil futtatása az adatok sértetlenségének ellenőrzése** lehetőséget, ha szeretné megtekinteni az Exchange Server-adatbázisok integritását.
 
     Ha ezt a beállítást választja, a biztonsági mentés konzisztencia-ellenőrzése a MABS-on fut, hogy elkerülje az **eseutil** parancsnak az Exchange Serveren való futtatásával generált I/O-forgalmat.
@@ -61,7 +57,7 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
    > ![Eseutil-hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Kattintson a **Tovább** gombra.
+8. Kattintson a **Tovább**gombra.
 9. Válassza ki a **másolási biztonsági mentés**adatbázisát, majd kattintson a **tovább**gombra.
 
    > [!NOTE]
@@ -72,10 +68,10 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
 11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább**gombra.
 12. Válassza ki azt az időpontot, amikor a Mohácsi-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább**gombra.
 13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd kattintson a **tovább**gombra.
-14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd kattintson a **tovább**gombra. Példa:
+14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd kattintson a **tovább**gombra. Például:
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Példa:
+15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Például:
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

@@ -40,6 +40,8 @@
   items:
     - name: Támogatási jegy megnyitása
       href: hpc-cache-support-ticket.md
+    - name: A Blob Storage-fiók tűzfalbeállításainak kikerülése
+      href: hpc-cache-blob-firewall-fix.md
     - name: Helyreállítás regionális kimaradás után
       href: hpc-region-recovery.md
     - name: Az Azure NetApp Files használata az Azure HPC Cache-sel

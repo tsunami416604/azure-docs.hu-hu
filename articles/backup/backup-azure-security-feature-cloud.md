@@ -1,18 +1,14 @@
 ---
-title: Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
+title: Biztonsági funkciók a Felhőbeli munkaterhelések védelme érdekében
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622011"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172724"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
 
@@ -95,7 +91,7 @@ A Soft delete letiltásához győződjön meg arról, hogy teljesülnek az előf
 
 ## <a name="other-security-features"></a>Egyéb biztonsági funkciók
 
-### <a name="storage-side-encryption"></a>Tárolási oldal titkosítása
+### <a name="storage-side-encryption"></a>Storage ügyféloldali titkosítása
 
 Az Azure Storage automatikusan titkosítja az adatait a felhőben való megőrzés során. A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure Storage-ban tárolt adatai a 256 bites AES-titkosítással vannak titkosítva és visszafejtve, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás hasonló a Windows rendszeren a BitLocker-titkosításhoz. A Azure Backup a tárolása előtt automatikusan titkosítja az adattitkosítást. Az Azure Storage visszafejti az adatok beolvasása előtt.  
 
@@ -157,6 +153,6 @@ Nem, a PowerShell vagy a parancssori felület támogatása jelenleg nem érhető
 
 Nem. Jelenleg az Azure Virtual Machines szolgáltatásban csak a Soft delete használata támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Backup biztonsági vezérlőinek](backup-security-controls.md).

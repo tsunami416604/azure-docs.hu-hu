@@ -1,19 +1,14 @@
 ---
-title: Azure Backup – a PowerShell használatával biztonsági mentést készíthet a DPM-munkaterhelésekről
+title: A DPM-munkaterhelések biztonsági mentése a PowerShell használatával
 description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protection Manager (DPM) Azure Backup a PowerShell használatával
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: dacurwin
-ms.openlocfilehash: ef20de40433542c1ed0780f198b10d6a1fb78789
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3a8b2ff95957b69bab4932ce8a7e5a1ab4bfa44
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162137"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172406"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 
@@ -106,7 +101,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 ## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>A Azure Backup-ügynök telepítése DPM-kiszolgálóra
 
 A Azure Backup ügynök telepítése előtt le kell töltenie a telepítőt, és be kell jelentkeznie a Windows Serveren. A telepítő legújabb verzióját a [Microsoft letöltőközpontból](https://aka.ms/azurebackup_agent) vagy a Recovery Services-tároló irányítópult-lapjáról szerezheti be. Mentse a telepítőt egy könnyen elérhető helyre, például * letöltések\*.
@@ -125,7 +119,7 @@ Az ügynök megjelenik a telepített programok listájában. A telepített progr
 
 ### <a name="installation-options"></a>Telepítési beállítások
 
-A parancssoron keresztül elérhető összes lehetőség megtekintéséhez használja a következő parancsot:
+A parancssorban elérhető összes lehetőség megtekintéséhez használja a következő parancsot:
 
 ```powershell
 MARSAgentInstaller.exe /?
@@ -133,7 +127,7 @@ MARSAgentInstaller.exe /?
 
 Az elérhető lehetőségek a következők:
 
-| Lehetőség | Részletek | Alapértelmezett |
+| Beállítás | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
 | /p: "location" |A Azure Backup ügynök telepítési mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services ügynök |
@@ -189,7 +183,7 @@ A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon ```$set
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer```és a ```-ProxyPort```, a ```-ProxyUsername``` és a ```ProxyPassword``` paraméterekkel végezheti el a [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) parancsmag használatával. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
 
@@ -346,7 +340,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM-replika méretének módosítása & helyreállítási pont kötete
 
-A DPM-replika kötetét és az árnyékmásolat-kötet méretét a [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) parancsmaggal is módosíthatja, ahogy az alábbi példában is látható: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS- ProtectionGroup $MPG-kézi-ReplicaArea (2GB) – ShadowCopyArea (2GB)
+A DPM-replika kötetét és az árnyékmásolat-kötet méretét a [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) parancsmaggal is módosíthatja a következő példában látható módon: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-ProtectionGroup $mpg-Manual-ReplicaArea (2GB) – ShadowCopyArea (2GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>A védelmi csoport módosításainak véglegesítése
 

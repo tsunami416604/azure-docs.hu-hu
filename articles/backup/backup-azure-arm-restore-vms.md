@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: virtuális gépek visszaállítása a Azure Portal használatával'
+title: Virtuális gépek visszaállítása a Azure Portal használatával
 description: Azure-beli virtuális gép visszaállítása helyreállítási pontról a Azure Portal használatával
 ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-keywords: biztonsági másolat visszaállítása; visszaállítás; helyreállítási pont;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: 16017f00282729361a0489214c941e824042060e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 8b84c7f89c88b54e90a8e1af1236bf205e12cfe6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044150"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173457"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -31,7 +26,7 @@ A Azure Backup számos módszert biztosít a virtuális gépek visszaállítás�
 **Meglévő cseréje** | Visszaállíthat egy lemezt, és lecserélheti a meglévő virtuális gép lemezét.<br/><br/> Az aktuális virtuális gépnek léteznie kell. Ha törölték, ez a beállítás nem használható.<br/><br/> Azure Backup a lemez cseréje előtt pillanatképet készít a meglévő virtuális gépről, és a megadott átmeneti helyen tárolja azt. A virtuális géphez csatlakoztatott meglévő lemezeket a rendszer a kijelölt visszaállítási pontra cseréli.<br/><br/> A rendszer átmásolja a pillanatképet a tárolóba, és megőrzi a megőrzési szabályzatnak megfelelően. <br/><br/> A meglévő cseréje a nem titkosított felügyelt virtuális gépek esetében támogatott. Nem felügyelt lemezek, [általánosított virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)vagy [Egyéni lemezképek használatával létrehozott](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)virtuális gépek esetén nem támogatott.<br/><br/> Ha a visszaállítási pont több vagy kevesebb lemezzel rendelkezik, mint az aktuális virtuális gép, akkor a visszaállítási pontban lévő lemezek száma csak a virtuális gép konfigurációját fogja tükrözni.<br/><br/>
 
 > [!NOTE]
-> Az Azure-beli virtuális gépeken meghatározott fájlokat és mappákat is helyreállíthatja. [További információk](backup-azure-restore-files-from-vm.md).
+> Az Azure-beli virtuális gépeken meghatározott fájlokat és mappákat is helyreállíthatja. [Részletek](backup-azure-restore-files-from-vm.md).
 >
 > Ha az Azure-beli virtuális gépek (azaz azonnali visszaállítás) Azure Backup [legújabb verzióját](backup-instant-restore-capability.md) futtatja, a pillanatképek akár hét napig is megmaradnak, és a biztonsági mentési adatoknak a tárolóba történő elküldése előtt visszaállíthatja a virtuális gépet a pillanatképekről. Ha az elmúlt hét nap biztonsági másolatából szeretné visszaállítani a virtuális gépet, akkor a pillanatképből való visszaállítás gyorsabb, és nem a tárból.
 
@@ -79,11 +74,11 @@ Ha nem rendelkezik megfelelő engedélyekkel, [visszaállíthat egy lemezt](#res
 
 A [visszaállítási lehetőségek](#restore-options)egyike gyorsan létrehozhat egy virtuális gépet egy visszaállítási pont alapbeállításaival.
 
-1. A **konfiguráció visszaállítása** > **új** > **visszaállítási típus**létrehozása területen válassza **a virtuális gép létrehozása**lehetőséget.
+1. A **konfiguráció visszaállítása** > **új** > - **visszaállítási típus**létrehozása területen válassza **a virtuális gép létrehozása**lehetőséget.
 2. A **virtuális gép neve**mezőben adjon meg egy olyan virtuális gépet, amely nem létezik az előfizetésben.
 3. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot az új virtuális géphez, vagy hozzon létre egy újat globálisan egyedi névvel. Ha már létező nevet rendel, az Azure a virtuális géppel megegyező nevű csoportot rendeli hozzá.
 4. A **Virtual Network (virtuális hálózat**) területen válassza ki azt a VNet, amelyben a virtuális gép el lesz helyezve. Megjelenik az előfizetéshez társított összes virtuális hálózatok. Válassza ki az alhálózatot. Alapértelmezés szerint az első alhálózat van kiválasztva.
-5. A **tárolási hely**mezőben határozza meg a virtuális gép Storage-fiókját. [További információk](#storage-accounts).
+5. A **tárolási hely**mezőben határozza meg a virtuális gép Storage-fiókját. [Részletek](#storage-accounts).
 
     ![Konfiguráció visszaállítása varázsló](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
@@ -97,9 +92,9 @@ Az egyik [visszaállítási lehetőségként](#restore-options)létrehozhat egy 
 - [Visszaállított lemezek csatolása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) egy meglévő virtuális géphez.
 - [Hozzon létre egy új virtuális gépet](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) a helyreállított lemezekről a PowerShell használatával.
 
-1. A **konfiguráció visszaállítása** > **új** > **visszaállítási típus**létrehozása lapon válassza a **lemezek visszaállítása**lehetőséget.
+1. A **konfiguráció visszaállítása** > **új** > - **visszaállítási típus**létrehozása területen válassza a **lemezek visszaállítása**lehetőséget.
 2. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot a visszaállított lemezekhez, vagy hozzon létre egy újat globálisan egyedi névvel.
-3. A **Storage-fiók**területen válassza ki azt a fiókot, ahová a virtuális merevlemezeket másolni szeretné. [További információk](#storage-accounts).
+3. A **Storage-fiók**területen válassza ki azt a fiókot, ahová a virtuális merevlemezeket másolni szeretné. [Részletek](#storage-accounts).
 
     ![A helyreállítási konfiguráció befejeződött](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
@@ -134,7 +129,7 @@ A [visszaállítási lehetőségek](#restore-options)egyike lecserélheti a megl
 
 1. A **visszaállítási konfiguráció**területen kattintson a **meglévő cseréje**elemre.
 2. A **visszaállítás típusa**területen válassza a **lemez/mp cseréje**lehetőséget. Ez az a visszaállítási pont, amelyet a rendszer a meglévő VM-lemezek cseréjére használ.
-3. Az **előkészítési hely**területen adja meg, hogy az aktuális felügyelt lemezek pillanatképei a visszaállítási folyamat során legyenek mentve. [További információk](#storage-accounts).
+3. Az **előkészítési hely**területen adja meg, hogy az aktuális felügyelt lemezek pillanatképei a visszaállítási folyamat során legyenek mentve. [Részletek](#storage-accounts).
 
    ![Konfiguráció visszaállítása varázsló meglévő cseréje](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -144,15 +139,15 @@ Számos gyakori forgatókönyv létezik, amelyekben szükség lehet a virtuális
 
 **Forgatókönyv** | **Útmutatás**
 --- | ---
-**Virtuális gépek visszaállítása Hybrid use Benefit használatával** | Ha egy Windows rendszerű virtuális gép a [hibrid használati juttatás (hub) licencelését](../virtual-machines/windows/hybrid-use-benefit-licensing.md)használja, állítsa vissza a lemezeket, és hozzon létre egy új virtuális gépet **a megadott sablonnal** (a **Windows_Server**beállítással) vagy a PowerShell-lel.  Ezt a beállítást a virtuális gép létrehozása után is lehet alkalmazni.
+**Virtuális gépek visszaállítása Hybrid use Benefit használatával** | Ha egy Windows rendszerű virtuális gép a [hibrid használati juttatás (hub) licencelését](../virtual-machines/windows/hybrid-use-benefit-licensing.md)használja, állítsa vissza a lemezeket, és hozzon létre egy új virtuális gépet a megadott sablonnal (a **licenc típusa** **Windows_Server**) vagy a PowerShell.  Ezt a beállítást a virtuális gép létrehozása után is lehet alkalmazni.
 **Virtuális gépek visszaállítása Azure-adatközponti katasztrófa esetén** | Ha a tároló a GRS-t használja, és a virtuális gép elsődleges adatközpontja leáll, a Azure Backup támogatja a biztonsági másolatban lévő virtuális gépeknek a párosított adatközpontba történő visszaállítását. Válasszon egy Storage-fiókot a párosított adatközpontban, és állítsa vissza a szokásos módon. A Azure Backup a párosított régió számítási szolgáltatását használja a visszaállított virtuális gép létrehozásához. [További](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md) információ az adatközpont rugalmasságáról.
 **Önálló tartományvezérlő virtuális gép visszaállítása egyetlen tartományból** | Állítsa vissza a virtuális gépet, mint bármely más virtuális gépet. Vegye figyelembe:<br/><br/> Egy Active Directory perspektívából az Azure-beli virtuális gép olyan, mint bármely más virtuális gép.<br/><br/> A Címtárszolgáltatások helyreállító módja (címtárszolgáltatás-javító mód) is elérhető, így az összes Active Directory-helyreállítási forgatókönyv életképes. [További](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) információ a virtualizált tartományvezérlők biztonsági mentési és visszaállítási szempontjairól.
 **Több tartományvezérlőt tartalmazó virtuális gép visszaállítása egyetlen tartományból** | Ha ugyanabban a tartományban más tartományvezérlők is elérhetők a hálózaton keresztül, akkor a tartományvezérlőt bármely virtuális géphez hasonlóan vissza lehet állítani. Ha a tartomány utolsó fennmaradó tartományvezérlője, vagy egy elszigetelt hálózatban lévő helyreállítást hajt végre, használjon [erdő-helyreállítást](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Több tartomány visszaállítása egy erdőben** | Az [erdő helyreállítását](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)javasoljuk.
 **Operációs rendszer nélküli helyreállítás** | Az Azure-beli virtuális gépek és a helyszíni hypervisorok közötti legnagyobb különbség az, hogy nincs elérhető virtuálisgép-konzol az Azure-ban. Bizonyos helyzetekben szükség van egy konzolra, például egy operációs rendszer nélküli helyreállítás (BMR) típusú biztonsági mentés használatával történő helyreállításra. Azonban a virtuális gépek visszaállítása a tárolóból teljes mértékben helyettesíti a BMR.
-**Virtuális gépek visszaállítása speciális hálózati konfigurációkkal** | A speciális hálózati konfigurációk belső vagy külső terheléselosztást használó virtuális gépeket tartalmaznak, több hálózati adapter vagy több fenntartott IP-cím használatával. Ezeket a virtuális gépeket a [lemez visszaállítása lehetőség](#restore-disks)használatával állíthatja vissza. Ez a beállítás lehetővé teszi a virtuális merevlemezek másolatát a megadott Storage-fiókba, és létrehozhat egy [belső](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) vagy [külső](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) terheléselosztó, [több hálózati adapter](../virtual-machines/windows/multiple-nics.md)vagy [több fenntartott IP-cím](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)használatával létrehozott virtuális gépet, a következővel összhangban: Configuration.
+**Virtuális gépek visszaállítása speciális hálózati konfigurációkkal** | A speciális hálózati konfigurációk belső vagy külső terheléselosztást használó virtuális gépeket tartalmaznak, több hálózati adapter vagy több fenntartott IP-cím használatával. Ezeket a virtuális gépeket a [lemez visszaállítása lehetőség](#restore-disks)használatával állíthatja vissza. Ez a beállítás lehetővé teszi a virtuális merevlemezek másolatát a megadott Storage-fiókba, és ezután létrehozhat egy [belső](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) vagy [külső](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) terheléselosztó, [több hálózati adapter](../virtual-machines/windows/multiple-nics.md)vagy [több fenntartott IP-cím](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)használatával létrehozott virtuális gépet a konfigurációnak megfelelően.
 **Hálózati biztonsági csoport (NSG) hálózati ADAPTERen/alhálózaton** | Az Azure virtuális gép biztonsági mentése támogatja a NSG-adatok biztonsági mentését és visszaállítását a vnet, az alhálózat és a NIC szintjén.
-**Zónában rögzített virtuális gépek** | Azure Backup támogatja a zónázott rögzített virtuális gépek biztonsági mentését és visszaállítását. [További információ](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**Zónában rögzített virtuális gépek** | Azure Backup támogatja a zónázott rögzített virtuális gépek biztonsági mentését és visszaállítását. [Részletek](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>A visszaállítási művelet nyomon követése
 

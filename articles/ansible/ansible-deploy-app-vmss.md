@@ -3,17 +3,13 @@ title: Oktatóanyag – alkalmazások üzembe helyezése virtuálisgép-méretez
 description: Ismerje meg, hogyan konfigurálhatja az Azure virtuálisgép-méretezési csoportokat az Ansible használatával, és hogyan helyezhet üzembe alkalmazást a méretezési csoporton
 keywords: ansible, azure, devops, bash, forgatókönyv, virtuális gép, virtuálisgép-méretezési csoport, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7c54790a3d988341caa65bdf0ce33c240f0580fb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241753"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156394"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban a Ansible használatával
 
@@ -37,11 +33,11 @@ ms.locfileid: "72241753"
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 - **git** - A [git](https://git-scm.com) segítségével letölthető az ebben az oktatóanyagban használt Java-minta.
 - **Java SE Development Kit (JDK)** – A [JDK](https://aka.ms/azure-jdks) a Java-mintaprojekt létrehozásához szükséges.
-- Az **Apache maven** - [Apache Maven](https://maven.apache.org/download.cgi) használatával felépíthető a minta Java-projekt.
+- Az **Apache maven** - [Apache Maven](https://maven.apache.org/download.cgi) használatával felépítheti a minta Java-projektet.
 
 ## <a name="get-host-information"></a>Gazdagép információinak lekérése
 
-Az ebben a szakaszban található forgatókönyv-kód lekéri a gazdagép adatait a virtuális gépek egy csoportjára. A kód beolvassa a nyilvános IP-címeket és a Load balancert egy adott erőforráscsoport belül, és létrehoz egy `scalesethosts` nevű gazdagép-csoportot a leltárban.
+Az ebben a szakaszban található forgatókönyv-kód lekéri a gazdagép adatait a virtuális gépek egy csoportjára. A kód beolvassa a nyilvános IP-címeket és a terheléselosztó egy megadott erőforráscsoporthoz való betöltését, és létrehoz egy `scalesethosts` nevű számítógépcsoportot a leltárban.
 
 Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven:
 
@@ -71,7 +67,7 @@ Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven:
 
 ## <a name="prepare-an-application-for-deployment"></a>Alkalmazás előkészítése üzembe helyezéshez
 
-Az ebben a szakaszban szereplő forgatókönyv-kód `git` használatával klónozott Java-minta projektet a GitHubról, és létrehozza a projektet. 
+Az ebben a szakaszban található forgatókönyv-kód `git`t használ egy Java-minta projekt a GitHubról történő klónozásához, és létrehozza a projektet. 
 
 Mentse a következő forgatókönyvet `app.yml` néven:
 
@@ -125,7 +121,7 @@ Az ebben a szakaszban szereplő forgatókönyv-kód a következőhöz használha
 
 A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) forgatókönyvet, és mentse a `vmss-setup-deploy.yml` értékre.
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) forgatókönyvet, és mentse a `vmss-setup-deploy.yml`ba.
 * Hozzon létre egy `vmss-setup-deploy.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -170,7 +166,7 @@ A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 * A `vars` szakaszban cserélje le a `{{ admin_password }}` helyőrzőt a saját jelszavára.
 * Az SSH-kapcsolattípus jelszavakkal való használatához telepítse a sshpass programot:
 
-    Ubuntu
+    Ubuntu rendszeren:
 
     ```bash
     apt-get install sshpass
@@ -182,7 +178,7 @@ A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
     yum install sshpass
     ```
 
-* Bizonyos környezetekben előfordulhat, hogy a kulcs helyett egy SSH-jelszó használatával kapcsolatos hibaüzenet jelenik meg. Ha ezt a hibaüzenetet kapja, letilthatja a gazdagép kulcsának ellenőrzését úgy, hogy hozzáadja a következő sort `/etc/ansible/ansible.cfg` vagy `~/.ansible.cfg` értékhez:
+* Bizonyos környezetekben előfordulhat, hogy a kulcs helyett egy SSH-jelszó használatával kapcsolatos hibaüzenet jelenik meg. Ha ezt a hibaüzenetet kapja, letilthatja a gazdagép kulcsának ellenőrzését úgy, hogy hozzáadja a következő sort `/etc/ansible/ansible.cfg` vagy `~/.ansible.cfg`:
 
     ```bash
     [defaults]

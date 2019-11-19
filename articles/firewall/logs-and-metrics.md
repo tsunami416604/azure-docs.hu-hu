@@ -1,20 +1,20 @@
 ---
 title: Azure Firewall naplók és mérőszámok áttekintése
-description: Ez a cikk a Azure Firewall diagnosztikai naplók és metrikák áttekintését ismerteti.
+description: Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876559"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166997"
 ---
-# <a name="azure-firewall-logs-and-metrics"></a>Naplók és mérőszámok Azure Firewall
+# <a name="azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplói és metrikái
 
 Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók.
 
@@ -75,9 +75,9 @@ A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén has
 
 A naplók tárolásához három lehetőség közül választhat:
 
-* **Storage-fiók**: A Storage-fiókokat a rendszer a legjobb naplókhoz használja, ha a naplók hosszabb időtartamra vannak tárolva, és szükség esetén felül vannak értékelve.
-* **Event hubok**: Az Event hubok nagyszerű lehetőséget biztosít a más biztonsági információkkal és eseménykezelő (SEIM) eszközökkel való integrációra, hogy riasztásokat kapjon az erőforrásaihoz.
-* **Naplók Azure monitor**: Azure Monitor naplók használata ajánlott az alkalmazás általános valós idejű figyeléséhez vagy trendek kereséséhez.
+* **Storage-fiók**: A Storage-fiókok akkor a legmegfelelőbbek a naplók tárolására, ha a naplókat hosszabb ideig tárolják, és szükség esetén áttekintik őket.
+* **Event Hubs-eseményközpont**: Az eseményközpontok ideális megoldások egyéb biztonsági információkkal és eseménykezelési (SEIM) eszközökkel való integrációhoz, amelyekkel az erőforrásokra vonatkozó riasztásokat kaphat.
+* **Azure monitor naplók**: a rendszer a Azure monitor naplókat az alkalmazás általános valós idejű figyelésére, vagy trendek keresésére használja.
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
@@ -91,7 +91,7 @@ A Azure Monitor mérőszámai olyan numerikus értékek, amelyek egy adott rends
 
 A Azure Firewall a következő metrikák érhetők el:
 
-- **Alkalmazási szabályok** – találatok száma – az alkalmazás szabályának megtalálása.
+- **Alkalmazási szabályok – találatok** száma – az alkalmazás szabályának megtalálása.
 
     Egység: darabszám
 
@@ -108,8 +108,8 @@ A Azure Firewall a következő metrikák érhetők el:
     Egység: százalék
 
    Ez a metrika két dimenzióval rendelkezik:
-  - **Állapot**: A lehetséges értékek: *kifogástalan*, *csökkentett teljesítményű*, *sérült*.
-  - **OK**: Megadja a tűzfal megfelelő állapotának okát. Például jelezheti a *SNAT portokat* , ha a tűzfal állapota csökkentett vagy nem megfelelő.
+  - **Állapot**: a lehetséges értékek állapota *kifogástalan*, *csökkentett teljesítményű*, *sérült*.
+  - **OK**: a tűzfal megfelelő állapotának okát jelzi. Például jelezheti a *SNAT portokat* , ha a tűzfal állapota csökkentett vagy nem megfelelő.
 
 
 
@@ -122,8 +122,8 @@ A Azure Firewall a következő metrikák érhetők el:
    Ha több nyilvános IP-címet ad hozzá a tűzfalhoz, további SNAT portok érhetők el, ami csökkenti a SNAT-portok kihasználtságát. Emellett, ha a tűzfal a különböző okokból (például CPU vagy átviteli sebesség) is kibővíthető, további SNAT-portok is elérhetővé válnak. Így gyakorlatilag a SNAT-portok kihasználtságának adott százaléka lemerülhet anélkül, hogy nyilvános IP-címeket adna hozzá, csak azért, mert a szolgáltatás ki van bővítve. A tűzfalon elérhető portok növeléséhez a rendelkezésre álló nyilvános IP-címek számát közvetlenül is szabályozhatja. Azonban nem vezérelheti közvetlenül a tűzfal skálázását. A SNAT-portok jelenleg csak az első öt nyilvános IP-címhez lesznek hozzáadva.   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse [meg az oktatóanyag: Figyelje Azure Firewall naplókat](tutorial-diagnostics.md).
+- A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](tutorial-diagnostics.md)című témakört.
 
 - Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md).

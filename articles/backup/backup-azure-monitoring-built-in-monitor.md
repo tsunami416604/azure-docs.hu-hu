@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: a Azure Backup védett munkaterhelések figyelése'
+title: Azure Backup védett munkaterhelések figyelése
 description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup munkaterhelések figyelési és értesítési képességei a Azure Portal használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; Riasztások
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090958"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172864"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -63,7 +57,7 @@ A riasztások nem jelennek meg a hibák miatt, ezért a következő kivételek �
 
 A fenti kivételek úgy lettek kialakítva, hogy a műveletek eredménye (elsősorban a felhasználó által aktivált) azonnal megjelenik a portálon/PS/CLI-ügyfeleken. Ezért a felhasználó azonnal tisztában van, és nem igényel értesítést.
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Az alábbi Azure Backup-megoldások riasztásai itt láthatók:
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Itt jelennek meg a következő Azure Backup-megoldások riasztásai
 
 - Azure-beli virtuális gép biztonsági mentései
 - Azure File biztonsági mentései

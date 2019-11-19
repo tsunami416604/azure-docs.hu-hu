@@ -1,18 +1,14 @@
 ---
 title: Azure Backup Server v2 csendes telepítése
 description: Használjon PowerShell-szkriptet a Azure Backup Server v2 csendes telepítéséhez. Ezt a telepítési típust felügyelet nélküli telepítésnek is nevezik.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: dacurwin
-ms.openlocfilehash: a02d9f42242b9a762c58ef65a798ff6ab8f53914
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074796"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172246"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server felügyelet nélküli telepítésének futtatása
 
@@ -59,7 +55,7 @@ Az alábbi jelzőket használhatja a telepítéshez:</br>
 **/i**: telepítési útvonal</br>
 **/x**: eltávolítási útvonal</br>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 

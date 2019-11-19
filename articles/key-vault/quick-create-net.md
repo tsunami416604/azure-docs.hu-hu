@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b91554269ab7ddf15458545715e7a3a40cc1ceb6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646925"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158700"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v4)
 
@@ -25,7 +25,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API-referenciák dokumentációja](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [csomag (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API-referenciák dokumentációja](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [csomag (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,10 +39,7 @@ Ez a rövid útmutató azt feltételezi, hogy `dotnet`, [Azure CLI](/cli/azure/i
 
 ### <a name="create-new-net-console-app"></a>Új .NET Console-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
-
-A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, `akv-dotnet`nevű Console-alkalmazást.
-
+A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, `akv-dotnet`nevű .NET-konzol alkalmazást.
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -260,7 +257,7 @@ namespace key_vault_console_app
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 

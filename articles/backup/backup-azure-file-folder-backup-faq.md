@@ -1,18 +1,14 @@
 ---
-title: Fájlok és mappák biztonsági mentése Azure Backup – gyakori kérdések
+title: Fájlok és mappák biztonsági mentése – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: dacurwin
-ms.openlocfilehash: c65c04a67b92642d3664293dd666236919142f12
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074193"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173064"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
@@ -70,7 +66,7 @@ Windows rendszerű gép átnevezése esetén az összes jelenleg konfigurált bi
 
 * Regisztrálnia kell az új gép nevét a Backup-tárolóban.
 * Amikor regisztrálja az új nevet a tárolóban, az első művelet egy *teljes* biztonsági mentés.
-* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [További információ](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [Részletek](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Mi a fájl elérési útjának maximális hossza a biztonsági mentéshez?
 
@@ -153,7 +149,7 @@ Sem a gyorsítótármappa, sem a metaadatok virtuális merevlemez-meghajtója ne
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Be lehet állítani a biztonsági mentéshez használt sávszélesség mennyiségét?
 
-Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információ](backup-configure-vault.md#enable-network-throttling).
+Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [Részletek](backup-configure-vault.md#enable-network-throttling).
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -161,6 +157,6 @@ Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állít
 
 Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a visszaállítási folyamat leáll. A lemondás előtt visszaállított összes fájl a megadott célhelyen (eredeti vagy másodlagos helyen), a visszaállítások nélkül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók](tutorial-backup-windows-server-to-azure.md) a Windows rendszerű gépek biztonsági mentéséről.

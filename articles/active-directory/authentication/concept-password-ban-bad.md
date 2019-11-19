@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032876"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168092"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>A szervezet helytelen jelszavainak eltávolítása
 
@@ -39,7 +39,7 @@ Valahányszor új jelszót módosítanak vagy állítanak alaphelyzetbe bármely
 > [!NOTE]
 > A Cyber-bűnözők hasonló stratégiákat is használnak a támadások során. Ezért a Microsoft nem teszi közzé nyilvánosan a lista tartalmát.
 
-## <a name="custom-banned-password-list"></a>Letiltott jelszavak egyéni listája
+## <a name="custom-banned-password-list"></a>Egyéni tiltott jelszavak listája
 
 Előfordulhat, hogy egyes szervezetek még tovább szeretnék javítani a biztonságot azáltal, hogy hozzáadják a saját testreszabásokat a globálisan tiltott jelszavak listájához, amit a Microsoft meghívja az egyéni tiltott jelszavak listáját. A Microsoft azt javasolja, hogy a listához hozzáadott feltételek elsősorban a szervezeti feltételekre összpontosítanak, például a következőkre:
 
@@ -57,7 +57,7 @@ Miután hozzáadta a feltételeket az egyéni tiltott jelszavak listájához, a 
 Példa: Vegyünk például egy "contoso" nevű ügyfelet, amely Londonban található, és ez egy "widget" nevű terméket tesz elérhetővé. Az ilyen ügyfelek esetében a feleslegesség, valamint a kevésbé biztonságos, hogy megpróbálja letiltani a jelen feltételek adott változatát, például:
 
 - "Contoso! 1"
-- "Contoso@London"
+- „Contoso@London”
 - "ContosoWidget"
 - "!Contoso"
 - "LondonHQ"
@@ -98,7 +98,7 @@ Amikor egy felhasználó megváltoztatja vagy visszaállítja a jelszavát, az �
 
 Ha a felhasználó jelszava tiltott jelszót tartalmaz, akkor a jelszó továbbra is elfogadható, ha a teljes jelszó elég erős, ellenkező esetben. Az újonnan konfigurált jelszavak az alábbi lépések végrehajtásával vizsgálják meg, hogy a rendszer elfogadja vagy elutasítja-e a teljes erősségét.
 
-### <a name="step-1-normalization"></a>1\. lépés: Normalizálás
+### <a name="step-1-normalization"></a>1\. lépés: normalizálás
 
 Az új jelszó először a normalizálás folyamatán halad át. Ez a módszer lehetővé teszi, hogy a tiltott jelszavak kisebb halmaza legyen leképezve a potenciálisan gyenge jelszavak sokkal nagyobb készletére.
 
@@ -111,7 +111,7 @@ A normalizálás két részből áll.  Első lépésként az összes nagybetűt 
 | '$'  | képgalériája |
 | '\@'  | egy |
 
-Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni aBl@nKjelszavát a "" értékre. Bár a "Bl@nk" nem kifejezetten tiltott, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
+Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni a jelszavát a "Bl@nK" értékre. Bár a "Bl@nk" nincs kifejezetten kitiltva, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>2\. lépés: Ellenőrizze, hogy a jelszó betiltottnak minősül-e
 
@@ -121,7 +121,7 @@ A rendszer a normalizált jelszóval azonosítja a fuzzy megfeleltetést, hogy a
 
 Példa: tegyük fel, hogy a "ABCDEF" jelszó tiltott, és a felhasználó megpróbálja módosítani a jelszavát a következők egyikére:
 
-"abcdeg" *(az utolsó karakter módosult "f" értékről "g"-re)* "abcdefg" *(g* ) "ABCDE" (a záró *"f"* a végéről törölve)
+"abcdeg" *(az utolsó karakter módosult "f" értékről "g"-re)* "abcdefg" *(g* ) "ABCDE" (a záró *"f" a végéről törölve* )
 
 A fenti jelszavak mindegyike nem felel meg kifejezetten a betiltott "ABCDEF" jelszónak. Mivel azonban mindegyik példa a "ABCDEF" betiltott kifejezés 1. részén található, a "ABCDEF" értéknek megfelelőnek számít.
 
@@ -133,7 +133,7 @@ Példa: tegyük fel, hogy van egy felhasználónk, a pol, aki szeretné visszaá
 
 #### <a name="score-calculation"></a>Pontszám kiszámítása
 
-A következő lépés a betiltott jelszavak összes példányának azonosítása a felhasználó normalizált új jelszavában. Majd
+A következő lépés a betiltott jelszavak összes példányának azonosítása a felhasználó normalizált új jelszavában. Ezután:
 
 1. A felhasználó jelszavában található összes betiltott jelszó egy pontot kap.
 2. Minden fennmaradó egyedi karakter egy pontot kap.
@@ -147,7 +147,7 @@ A normalizálás után a jelszó "contosoblank12" lesz. A megfelelő folyamat me
 
 [contoso] + [blank] + [1] + [2] = 4 pont, mivel a jelszó öt (5) pont alatt van, a rendszer elutasítja.
 
-Példa: a felhasználó a "ContoS0Bl@nkf9!" értékre módosítja a jelszavát.
+Példa: a felhasználó módosítja a jelszavát a "ContoS0Bl@nkf9!" értékre.
 
 A normalizálás után ez a jelszó "contosoblankf9!" lesz. A megfelelő folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ezt a jelszót a rendszer a következő pontszámmal adja meg:
 
@@ -164,7 +164,7 @@ A normalizálás után ez a jelszó "contosoblankf9!" lesz. A megfelelő folyama
 | Helyi Windows Server-Active Directoryról szinkronizált felhasználók | prémium szintű Azure AD P1 vagy P2 | prémium szintű Azure AD P1 vagy P2 |
 
 > [!NOTE]
-> A helyszíni Windows Server Active Directory azon felhasználók, akik nem szinkronizálhatók, Azure Active Directory az Azure AD jelszavas védelem előnyeit is kihasználhatják a szinkronizált felhasználók meglévő licencelése alapján.
+> A helyszíni Windows Server Active Directory felhasználók, akik nincsenek szinkronizálva Azure Active Directory az Azure AD jelszavas védelem előnyeit is kihasználják a szinkronizált felhasználók meglévő licencelése alapján.
 
 További licencelési információk, beleértve a költségeket is, a [Azure Active Directory díjszabási oldalon](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
@@ -174,7 +174,7 @@ Amikor egy felhasználó megpróbál visszaállítani egy jelszót a betiltott v
 
 Sajnos a jelszó olyan szót, kifejezést vagy mintát tartalmaz, amely könnyen kitalálhatja a jelszavát. Próbálkozzon újra egy másik jelszóval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni tiltott jelszavak listájának konfigurálása](howto-password-ban-bad.md)
 - [Azure AD-beli jelszavas védelmi ügynökök engedélyezése a helyszínen](howto-password-ban-bad-on-premises-deploy.md)

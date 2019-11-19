@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: Recovery Services-tárolók létrehozása'
+title: Recovery Services-tárolók létrehozása
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre Recovery Services-tárolókat, amelyek a biztonsági mentéseket és a helyreállítási pontokat tárolják.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-keywords: Recovery Services-tároló; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 30e2f8812b14f27b57ef22e30aea89f19fa56e58
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c678452cd65d0b03d923659e380c1dcef3540ce1
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074879"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172432"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -78,7 +73,7 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
 > [!NOTE]
 > A **Storage replikálási típusának** (helyileg redundáns/geo-redundáns) módosítását a helyreállítási tár számára a biztonsági mentések a tárolóban való konfigurálása előtt kell elvégezni. A biztonsági mentés konfigurálása után a módosítás lehetőség le van tiltva, és nem módosíthatja a **tárolási replikálás típusát**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](backup-azure-recovery-services-vault-overview.md) információ Recovery Services-tárolók.
 [További](backup-azure-delete-vault.md) információ Recovery Services tárolók törlése.

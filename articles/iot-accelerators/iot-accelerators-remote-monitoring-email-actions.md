@@ -1,177 +1,177 @@
 ---
-title: E-mail-művelet belül távoli figyelés – Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, hogyan e-mail-művelet hozzáadása egy új vagy meglévő szabályt.
-author: asdonald
+title: E-mail-művelet a távoli figyelésen belül – Azure | Microsoft Docs
+description: Ez a útmutató bemutatja, hogyan adhat hozzá e-mail-műveleteket egy új vagy meglévő szabályhoz.
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65466936"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168367"
 ---
-# <a name="add-an-email-action"></a>E-mail-művelet hozzáadása
+# <a name="add-an-email-action"></a>E-mail művelet hozzáadása
 
-E-mail műveletek segítségével ellenőrizze, hogy ne maradjon le riasztásokat. E-mail-művelet adhat hozzá, a meglévő szabályokat, vagy ha létrehoz egy új szabályt.
+Az e-mail-műveletek segítenek meggyőződni arról, hogy soha nem hiányzik a riasztás. Hozzáadhat egy e-mail-műveletet egy meglévő szabályhoz, vagy új szabályt is létrehozhat.
 
-Ez az útmutató a lépések elvégzéséhez, a távoli figyelési megoldásgyorsító telepített példányát az Azure-előfizetésben kell.
+A jelen útmutató lépéseinek végrehajtásához a távoli figyelési megoldás gyorsító üzembe helyezett példányára van szükség az Azure-előfizetésében.
 
-Hozzon létre vagy módosítsa egy szabályt, rendelkeznie kell egy [ **rendszergazdai**, vagy rendelkezik megfelelő engedélyekkel a](iot-accelerators-remote-monitoring-rbac.md).
+Szabály létrehozásához vagy módosításához [ **rendszergazdának**kell lennie, vagy rendelkeznie kell a megfelelő engedélyekkel](iot-accelerators-remote-monitoring-rbac.md).
 
 ## <a name="edit-an-existing-rule"></a>Meglévő szabály szerkesztése
 
-Kövesse az alábbi lépéseket egy e-mail-művelet hozzáadása egy meglévő szabály:
+Az alábbi lépéseket követve adhat hozzá egy e-mail-műveletet egy meglévő szabályhoz:
 
-1. Keresse meg a távoli figyelési megoldás.
+1. Navigáljon a távoli figyelési megoldáshoz.
 
-1. Az a **irányítópult**, keresse meg a **szabályok** oldalon:
+1. Az **irányítópulton**navigáljon a **szabályok** lapra:
 
     ![Szabályok lap](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. A jelölőnégyzet bejelölésével módosíthatja, és kattintson a meglévő szabály mellett **szerkesztése** tetején. Egy szerkeszthető **szabály** panel jelenik meg.
+1. Kattintson a meglévő szabály melletti jelölőnégyzetre, majd kattintson a felül található **Szerkesztés** gombra. Megjelenik egy szerkeszthető **szabály** panel.
 
-1. Az a **művelet** szakaszban, a ritkáról **engedélyezett E-mail** való **a**.
+1. A **művelet** szakaszban kapcsolja be az **e-maileket engedélyezve** **a következőre:.**
 
-1. Az első alkalommal e-mail-művelet a megoldásgyorsító engedélyeznie kell [jelentkezzen be az Outlook](#outlook).
+1. Amikor először engedélyez egy e-mail-műveletet a megoldás-gyorsító alkalmazásban, be kell [jelentkeznie az Outlookba](#outlook).
 
-1. Adjon meg egy e-mail-címet a címzett mezőbe, és nyomja le az **Enter** kulcs minden e-mail-cím hozzáadása:
+1. Írjon be egy e-mail-címet a Címzett mezőbe, és nyomja le az **ENTER** billentyűt minden olyan e-mail cím esetében, amelyet hozzá szeretne adni:
 
-    ![Cím bejegyzés](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
+    ![Címterület](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Adja meg az e-mail tárgyát.
 
-1. Egyszerű szövegként adja meg az e-mail címzettjeit további megjegyzéseket. Használhatja a HTML-formázását, ha Ön [e-mailt sablon szerkesztése](#htmledit).
+1. Adja meg az e-mail-címzettek további megjegyzéseit egyszerű szövegként. Ha [szerkeszti az e-mail-sablont](#htmledit), HTML-formázást is használhat.
 
-1. Győződjön meg arról, hogy a **szabály állapota** értékre van állítva **engedélyezve**.
+1. Győződjön meg arról, hogy a **szabály állapota** **engedélyezve**értékre van állítva.
 
 1. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-new-rule"></a>Új szabály létrehozása
 
-E-mail-művelet hozzáadása, ha létrehoz egy új szabályt az alábbi lépéseket követve:
+Új szabály létrehozásakor kövesse az alábbi lépéseket egy e-mail-művelet hozzáadásához:
 
-1. Keresse meg a távoli figyelési megoldás.
+1. Navigáljon a távoli figyelési megoldáshoz.
 
-1. Az a **irányítópult**, keresse meg a **szabályok** oldalon:
+1. Az **irányítópulton**navigáljon a **szabályok** lapra:
 
     ![Szabályok lap](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Kövesse a [hozzon létre egy szabályt szakaszt](iot-accelerators-remote-monitoring-automate.md#create-a-rule). A következő lépéseit a [egy olyan speciális szabályt](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) szakasz addig a pontig, ahol beállíthat egy **súlyossági szintet**. Ne kattintson **alkalmaz** még.
+1. Kövesse a [szabály létrehozása szakasz](iot-accelerators-remote-monitoring-automate.md#create-a-rule)lépéseit. Kövesse a [speciális szabály létrehozása](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) című szakasz lépéseit egészen addig a pontig, ahol a **súlyossági szintet**beállította. Az **alkalmazás** még nem kattint.
 
-1. Az a **művelet** szakaszban, a ritkáról **engedélyezett E-mail** való **a**.
+1. A **művelet** szakaszban kapcsolja be az **e-maileket engedélyezve** **a következőre:.**
 
-1. Az első alkalommal e-mail-művelet a megoldásgyorsító engedélyeznie kell [jelentkezzen be az Outlook](#outlook).
+1. Amikor először engedélyez egy e-mail-műveletet a megoldás-gyorsító alkalmazásban, be kell [jelentkeznie az Outlookba](#outlook).
 
-1. Adjon meg egy e-mail-címet a címzett mezőbe, és nyomja le az **Enter** kulcs minden e-mail-cím hozzáadása:
+1. Írjon be egy e-mail-címet a Címzett mezőbe, és nyomja le az **ENTER** billentyűt minden olyan e-mail cím esetében, amelyet hozzá szeretne adni:
 
-    ![Cím bejegyzés](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
+    ![Címterület](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Adja meg az e-mail tárgyát.
 
-1. Egyszerű szövegként adja meg az e-mail címzettjeit további megjegyzéseket. Használhatja a HTML-formázását, ha Ön [e-mailt sablon szerkesztése](#htmledit).
+1. Adja meg az e-mail-címzettek további megjegyzéseit egyszerű szövegként. Ha [szerkeszti az e-mail-sablont](#htmledit), HTML-formázást is használhat.
 
-1. Győződjön meg arról, hogy a **szabály állapota** értékre van állítva **engedélyezve**.
+1. Győződjön meg arról, hogy a **szabály állapota** **engedélyezve**értékre van állítva.
 
 1. Kattintson az **Alkalmaz** gombra.
 
-Az e-mail-művelet a szabály engedélyezve van. A művelet akkor aktiválódik, amikor új e-mail küldése a címzetteknek.
+Az e-mail-művelettel rendelkező szabály már engedélyezve van. A művelet minden indításakor új e-mailt küld a címzetteknek.
 
-## Jelentkezzen be az Outlook <a name="outlook"></a>
+## Bejelentkezés az Outlookba<a name="outlook"></a>
 
-Az e-mail-művelet engedélyezi a megoldásgyorsító az első alkalommal, be kell jelentkeznie az Outlook. Ez a művelet állítja be az e-mail-fiók, amely az e-mailben értesítést küld.
+Amikor első alkalommal engedélyez egy e-mail-műveletet a megoldás-gyorsító alkalmazásban, be kell jelentkeznie az Outlookba. Ez a művelet beállítja az e-mail-értesítéseket küldő e-mail-fiókot.
 
 > [!NOTE]
-> Hozzon létre egy adott Outlook-fiókot csak a megoldás gyorsító értesítések kell, és ezt a fiókot használja, amikor engedélyezi az első e-mail-művelet.
+> Hozzon létre egy adott Outlook-fiókot csak a megoldás-gyorsító értesítéseire, és használja ezt a fiókot az első e-mail-művelet engedélyezésekor.
 
-### <a name="contributor-role-outlook-setup"></a>Közreműködői szerepkör Outlook beállítása
+### <a name="contributor-role-outlook-setup"></a>Közreműködői szerepkör Outlook telepítője
 
-Ha valaki van a **közreműködői** szerepkör az előfizetésben a megoldásgyorsító üzembe helyezve, az alkalmazás nem rendelkezik megfelelő engedélyekkel, állítsa be, és ellenőrzi az e-mailes műveletek a webes felhasználói felületen.
+Ha az előfizetés **közreműködői** szerepkörében valaki a megoldás-gyorsító üzembe helyezését állította be, akkor az alkalmazás nem rendelkezik megfelelő engedélyekkel az e-mail-műveletek beállításához és ellenőrzéséhez a webes felhasználói felületen.
 
-A Kezdés előtt hozzon létre egy Outlook-e-mail-értesítések küldése a megoldásgyorsító használandó fiókot.
+Mielőtt elkezdené, hozzon létre egy Outlook-fiókot, amellyel e-mailes értesítéseket küldhet a megoldás-gyorsító szolgáltatásból.
 
-A következő lépések bemutatják, hogyan állíthatja be, és manuálisan ellenőrizze az e-mail-műveletek:
+Az alábbi lépések bemutatják, hogyan állíthatja be és ellenőrizheti az e-mail műveleteket manuálisan:
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a megoldásgyorsító erőforráscsoportját.
+1. Navigáljon a megoldás-gyorsító erőforráscsoporthoz.
 
-1. Kattintson a **Office 365-összekötő**:
+1. Kattintson a **Office 365-összekötőre**:
 
-    ![API-kapcsolat](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
+    ![API-kapcsolatok](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
-1. Kattintson a szalagcímre az engedélyezési folyamat megkezdéséhez:
+1. Az engedélyezési folyamat megkezdéséhez kattintson a szalagcímre:
 
-    ![engedélyezés](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
+    ![engedélyezik](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
-1. Kattintson a **engedélyezése**. Kéri, hogy jelentkezzen be. A bejelentkezéshez használt fióknak kell lennie az e-mail-cím az alkalmazás használatával küldjön értesítő:
+1. Kattintson az **Engedélyezés**gombra. A rendszer felszólítja, hogy jelentkezzen be. A bejelentkezéshez használt fióknak annak az e-mail-címnek kell lennie, amelyet az alkalmazás az e-mailes értesítések küldéséhez használ:
 
-    ![Gomb engedélyezése](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
+    ![Engedélyezés gomb](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
 
-1. Kattintson a **mentése** alján. Az engedélyezési lesz sikeres, ha a fejléc olyan szűnt.
+1. Kattintson a **Save (Mentés** ) gombra a lap alján. Az engedélyezés sikeres lesz, ha a szalagcím eltűnik.
 
-1. Az e-mail-cím, amelyről az értesítéseket küldeni a módosításához kattintson **szerkesztése API-kapcsolat**.
+1. Ha módosítani szeretné az e-mail-címet, amelyről az értesítéseket küldik, kattintson az **API-kapcsolatok szerkesztése**lehetőségre.
 
-    ![e-mail-cím módosítása](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
+    ![e-mail módosítása](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
-### <a name="owner-role-outlook-setup"></a>Tulajdonosi szerepkör Outlook beállítása
+### <a name="owner-role-outlook-setup"></a>Tulajdonosi szerepkör Outlook telepítője
 
-Ha valaki van a **tulajdonosa** szerepkör az előfizetésben a megoldásgyorsító üzembe helyezve, az alkalmazás ellenőrizheti az e-mailes műveletek megfelelően be van állítva a webes felhasználói felületen.
+Ha az előfizetésben lévő **tulajdonosi** szerepkörben valaki a megoldás-gyorsító üzembe helyezését állította be, az alkalmazás ellenőrizheti, hogy az e-mail-műveletek helyesen lettek-e beállítva a webes felhasználói felületen.
 
-A Kezdés előtt hozzon létre egy Outlook-e-mail-értesítések küldése a megoldásgyorsító használandó fiókot.
+Mielőtt elkezdené, hozzon létre egy Outlook-fiókot, amellyel e-mailes értesítéseket küldhet a megoldás-gyorsító szolgáltatásból.
 
-A következő lépések segítségével jelentkezzen be, és állítsa be az e-mail-műveletek:
+A következő lépések segítséget nyújtanak a bejelentkezéshez és az e-mail-műveletek beállításához:
 
-1. Ide kattintva jelentkezzen be az Outlook. Ekkor átkerül az Azure Portalon:
+1. Kattintson ide az Outlookba való bejelentkezéshez. A Azure Portal:
 
-   ![Jelentkezzen be az Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
+   ![Bejelentkezés az Outlookba](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
-1. Kattintson a **engedélyezése**. Kéri, hogy jelentkezzen be. A bejelentkezéshez használt fióknak kell lennie az e-mail-cím az alkalmazás használatával küldjön értesítő:
+1. Kattintson az **Engedélyezés**gombra. A rendszer felszólítja, hogy jelentkezzen be. A bejelentkezéshez használt fióknak annak az e-mail-címnek kell lennie, amelyet az alkalmazás az e-mailes értesítések küldéséhez használ:
 
-1. Kattintson a **Save** (Mentés) gombra. Térjen vissza a megoldásgyorsító, és frissítse az oldalt.
+1. Kattintson a **Save** (Mentés) gombra. Térjen vissza a megoldás-gyorsító oldalára, és frissítse az oldalt.
 
-1. Az e-mail-értesítés sikeresen konfigurálta, a következő üzenet jelenik meg:
+1. Ha sikeresen konfigurálta az e-mail-értesítést, a következő üzenet jelenik meg:
 
-   ![A sikeres Outlook jelentkezzen be](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
+   ![Sikeres Outlook-bejelentkezés](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## Testre szabhatja az e-mail HTML <a name="htmledit"></a>
+## Az e-mail HTML testreszabása<a name="htmledit"></a>
 
-A-beépített, a távoli figyelési megoldásgyorsító biztosít egy alapszintű HTML-sablont a művelet e-maileket. Az e-mail-sablont az e-mail-művelet beállítások értékeit használja. Íme egy példa e-mailt:
+A távoli figyelési megoldás gyorsítása beépített, alapszintű HTML-sablont biztosít a műveleti e-mailekhez. Az e-mail sablon az e-mail művelet beállításaiban szereplő értékeket használja. Íme egy példa e-mailben:
 
-![e-mail-példa](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
+![e-mail példa](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
-A következő lépések bemutatják, hogyan HTML formátumú e-mailt sablon szerkesztéséhez. Például további információval, vagy adja hozzá az egyéni lemezképek:
+A következő lépések bemutatják, hogyan szerkesztheti a HTML e-mail-sablont. Például több információt is megadhat, vagy hozzáadhat egyéni lemezképeket:
 
-1. Klónozza a Java vagy a számítógép távoli figyelés .NET GitHub-adattárát:
+1. Klón vagy a Java vagy a .NET távoli monitorozási GitHub-tárháza:
 
-1. Keresse meg az e-mail sablont helyére:
+1. Navigáljon az e-mail sablon helyéhez:
   
     `Dotnet: device-telemetry\ActionsAgent\data\EmailTemplate.html`
   
     `Java device-telemetry/app/resources/data/EmailTemplate.html`
 
-1. Adja hozzá, vagy távolítsa el a paramétereket a sablonban, hogy testre szabta az üzenetet. Adja hozzá, távolítsa el, vagy igény szerint cserélje le a hívást:
+1. Az üzenet testreszabásához hozzáadhat vagy eltávolíthat bármilyen paramétert ebben a sablonban. A hívásokat igény szerint is hozzáadhatja, eltávolíthatja vagy lecserélheti:
 
-    Például a .NET-kódot:  `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Például a .NET-kódban: `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Például a Java kódban:  `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Például a Java-kódban: `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. A sablonban szereplő paraméterekkel formájában `${...}`. Egy paraméter törléséhez törölje a kért sor. Adjon hozzá egy paramétert, adjon hozzá egy sort beszúrni a értékkel.
+1. A sablonban szereplő paraméterek `${...}`formáját alkotják. Egy paraméter törléséhez törölje a szükséges sort. Paraméter hozzáadásához adjon hozzá egy sort a beszúrandó értékkel.
 
-1. Képek vagy egyéni szöveg hozzáadása, frissítése közvetlenül a EmailTemplate.HTML fájlt.
+1. Képek vagy egyéni szöveg hozzáadásához közvetlenül frissítse a EmailTemplate. HTML fájlt.
 
-## <a name="throttling"></a>Throttling
+## <a name="throttling"></a>Szabályozás
 
-A távoli figyelési megoldásgyorsító Outlook használatával e-mail értesítések küldéséhez. Az Outlook korlátozza az e-mailekhez [30 e-mailek száma 1 percenként](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). Fogadásakor az e-mail-ügyfélprogramokat is előfordulhat, hogy szabályozás küldött e-mailekben percenkénti számát. Ellenőrizze a megadott levelezési ügyfeléről korlátozások. E-mail értesítési szabály beállításakor a szabály kiszámítsa átlagos értékek, legalább egy perces időszak alatt, és nem azonnali értékeket használja:
+A távoli figyelési megoldás gyorsítása az Outlook használatával küld e-mail-értesítéseket. Az Outlook az e-mailek számát [1 percenként 30 e-mail](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)-címre korlátozza. Az e-maileket fogadó e-mail-ügyfélprogramok a percenként fogadott e-mailek számát is szabályozhatja. A korlátozásokkal kapcsolatban érdeklődjön az e-mail ügyfélprogramban. Ha e-mail-értesítést állít be egy szabályhoz, a szabálynak legalább egy percen belül ki kell számítania az átlagos értékeket, és nem kell azonnali értékeket használnia:
 
-![Átlagszámítás](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
+![Átlagos számítás](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az útmutató az e-mail-művelet hozzáadása a távoli figyelési megoldás egy új vagy meglévő szabály mutatott. Az útmutató is kimutatta, és a HTML-kódot, amely meghatározza az üzenet formátuma szerkesztése.
+Ez az útmutató bemutatja, hogyan adhat hozzá e-mail-műveleteket egy új vagy egy meglévő szabályhoz egy távoli figyelési megoldáson belül. Az útmutató emellett azt is bemutatja, hogyan szerkesztheti az üzenet formátumát meghatározó HTML-kódot.
 
-A javasolt következő lépésre további [riasztások és segítése az Eszközproblémák](iot-accelerators-remote-monitoring-maintain.md).
+A javasolt következő lépés a [riasztások használatának és az eszközök problémáinak elhárítása](iot-accelerators-remote-monitoring-maintain.md).

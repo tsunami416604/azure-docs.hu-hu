@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929139"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171406"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
-Ha az Azure Kubernetes szolgáltatásban (ak) kíván hozzáférést biztosítani az alkalmazásaihoz, létrehozhat és használhat egy Azure Load Balancer. Az AK-on futó Load Balancer belső vagy külső terheléselosztóként is használható. A belső terheléselosztó csak az AK-fürttel azonos virtuális hálózaton futó alkalmazások számára teszi elérhetővé a Kubernetes szolgáltatást. A külső terheléselosztó egy vagy több nyilvános IP-címet kap a bejövő forgalom számára, és a nyilvános IP-címek használatával a Kubernetes szolgáltatás kívülről is elérhetővé válik.
+Ha az Azure Kubernetes Service-ben (ak) `LoadBalancer` típusú Kubernetes Services-szolgáltatásokon keresztül szeretne hozzáférést biztosítani az alkalmazásokhoz, használhat egy Azure Load Balancer. Az AK-on futó Load Balancer belső vagy külső terheléselosztóként is használható. A belső terheléselosztó csak az AK-fürttel azonos virtuális hálózaton futó alkalmazások számára teszi elérhetővé a Kubernetes szolgáltatást. A külső terheléselosztó egy vagy több nyilvános IP-címet kap a bejövő forgalom számára, és a nyilvános IP-címek használatával a Kubernetes szolgáltatás kívülről is elérhetővé válik.
 
-Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a *standard* SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre. A *standard* SKU Load Balancer használata további funkciókat és funkciókat kínál, például nagyobb méretű háttérrendszer-készletet és Availability Zones. Fontos, hogy megértse a *standard* és az *alapszintű* terheléselosztó közötti különbségeket, mielőtt kiválasztja, hogy melyiket kívánja használni. Ha egy AK-fürtöt hoz létre, az adott fürthöz tartozó terheléselosztó SKU nem módosítható. Az *alapszintű* és a *standard* SKU-ról további információt az [Azure Load Balancer SKU-összehasonlítását][azure-lb-comparison]ismertető témakörben talál.
+Azure Load Balancer két SKU-ban érhető el – *Alapszintű* és *standard*. Alapértelmezés szerint a *standard* SKU-t használja a rendszer, amikor egy AK-fürtöt hoz létre. A *standard* SKU Load Balancer használata további funkciókat és funkciókat kínál, például nagyobb méretű háttér-készletet és Availability Zones. Fontos, hogy megértse a *standard* és az *alapszintű* terheléselosztó közötti különbségeket, mielőtt kiválasztja, hogy melyiket kívánja használni. Ha egy AK-fürtöt hoz létre, az adott fürthöz tartozó terheléselosztó SKU nem módosítható. Az *alapszintű* és a *standard* SKU-ról további információt az [Azure Load Balancer SKU-összehasonlítását][azure-lb-comparison]ismertető témakörben talál.
 
 Ez a cikk a Kubernetes és a Azure Load Balancer fogalmak alapszintű megismerését feltételezi. További információ: a [Kubernetes alapvető fogalmai az Azure Kubernetes Service-ben (ak)][kubernetes-concepts] és [Mi az Azure Load Balancer?][azure-lb]
 
@@ -29,9 +29,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Előkészületek
+
 Ez a cikk azt feltételezi, hogy van egy AK-fürt a *standard* SKU Azure Load Balancer. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
 Ha meglévő alhálózatot vagy erőforráscsoportot használ, az AK-fürt egyszerű szolgáltatása a hálózati erőforrások kezeléséhez is szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
+
+### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Alapszintű SKU-Load Balancerról standard SKU-ra való áttérés
+
+Ha rendelkezik egy meglévő, alapszintű SKU-Load Balancer rendelkező fürttel, akkor fontos, hogy a rendszer az áttelepítés során vegye figyelembe, hogy mikor kell a standard SKU-Load Balancer használatával fürtöt használni.
+
+Tegyük fel például, hogy a fürtök áttelepítésére szolgáló kék/zöld központi telepítések gyakran előfordulnak, mivel a fürt `load-balancer-sku` típusa csak a fürt létrehozási ideje alatt határozható meg. Az *alapszintű SKU* -terheléselosztó azonban olyan *alapszintű SKU* IP-címeket használ, amelyek nem kompatibilisek a *standard* SKU-beli Load balancerekkel, mivel *szabványos SKU* IP-címeket igényelnek. Amikor a fürtöket áttelepíti Load Balancer SKU-ra, egy kompatibilis IP-címmel rendelkező új IP-címet kell megadni.
+
+A fürtök áttelepítésével kapcsolatos további szempontokért tekintse meg a [dokumentációt az áttelepítési megfontolásokból](acs-aks-migration.md) , és tekintse meg az áttelepítés során megfontolandó fontos témakörök listáját. Az alábbi korlátozások szintén fontos viselkedési különbségeket is figyelembe vesznek, ha standard SKU Load Balancert használ az AK-ban.
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -41,9 +50,10 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
     * Adja meg saját nyilvános IP-címeit.
     * Adja meg saját nyilvános IP-előtagjait.
     * 100-ig terjedő számot kell megadnia, amely lehetővé teszi, hogy az AK-fürt számos *szabványos* SKU-beli nyilvános IP-címet hozzon létre ugyanabban az erőforráscsoporthoz, amely az AK-fürthöz lett létrehozva, amelyet általában a *MC_* elején neveznek el. Az AK a nyilvános IP-címet a *standard* SKU Load Balancerhez rendeli. Alapértelmezés szerint a rendszer automatikusan létrehoz egy nyilvános IP-címet ugyanabban az erőforráscsoportban, mint az AK-fürtöt, ha nincs megadva nyilvános IP-cím, nyilvános IP-előtag vagy IP-címek száma. Emellett engedélyeznie kell a nyilvános címeket, és el kell kerülnie az IP-létrehozást megtiltó Azure Policy létrehozását.
-* A terheléselosztó *szabványos* SKU-jának használatakor a 1,13-es vagy újabb Kubernetes-verziót kell használnia.
+* A terheléselosztó *szabványos* SKU-jának használatakor a *1,13-es vagy újabb*Kubernetes-verziót kell használnia.
 * A terheléselosztó SKU definiálása csak akkor hajtható végre, ha AK-fürtöt hoz létre. Egy AK-fürt létrehozása után nem módosíthatja a terheléselosztó SKU-t.
-* Egyetlen fürtben csak egy terheléselosztó SKU-t használhat.
+* Egyetlen fürtben csak egyetlen típusú terheléselosztó SKU-t (alapszintű vagy standard) használhat.
+* *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>A terheléselosztó belső beállítása
 

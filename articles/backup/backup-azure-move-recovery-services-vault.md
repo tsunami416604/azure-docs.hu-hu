@@ -2,18 +2,14 @@
 title: Azure Backup Recovery Services-tárolók áthelyezése
 description: Útmutató a Recovery Services-tároló Azure-előfizetések és-erőforráscsoportok közötti áthelyezéséhez.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: dacurwin
-ms.openlocfilehash: fb98ba8c393d28e7cdfb0b53cdd9ba11c171726f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7d0a6c47fa08774161d3a2b7507cdfecaf8c7197
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969155"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172895"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -48,7 +44,7 @@ A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália, Kelet-
 
 A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése más erőforráscsoport-csoportba
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg **Recovery Services** -tárolók listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor megnyílik a tároló irányítópultja, az a következő képen látható módon jelenik meg.
 
    ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +73,7 @@ A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése m
 
 Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik előfizetésbe helyezheti át
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg Recovery Services-tárolók listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor megnyílik a tároló irányítópultja, az a következő képen látható módon jelenik meg.
 
     ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -132,7 +128,7 @@ Recovery Services-tároló másik erőforráscsoporthoz való áthelyezéséhez 
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Új előfizetésre való áttéréshez adja meg a `--destination-subscription-id` paramétert.
+Szeretne áthelyezni egy új előfizetést, adja meg a `--destination-subscription-id` paraméter.
 
 ## <a name="post-migration"></a>Áttelepítés utáni
 

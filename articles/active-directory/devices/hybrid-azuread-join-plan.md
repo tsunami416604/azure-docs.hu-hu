@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a188349e15c5e4c486d37daed9f8b611a325dcf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882817"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167331"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -93,7 +93,8 @@ Ha a Windows 10 tartományhoz csatlakoztatott eszközök az Azure AD-t a bérlő
 - Megakadályozhatja, hogy a tartományhoz csatlakoztatott eszköz regisztrálva legyen az Azure AD-ben a következő beállításkulcs hozzáadásával: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = DWORD: 00000001.
 - Windows 10 1803 rendszerben, ha a vállalati Windows Hello konfigurálva van, a felhasználónak újra kell telepítenie a Windows Hello for businesst a kettős állapot törlése után. Ez a probléma a KB4512509-mel foglalkozott
 
-
+> [!NOTE]
+> Az Azure AD-beli regisztrált eszköz nem lesz automatikusan eltávolítva, ha az Intune felügyeli.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzésének áttekintése
 
@@ -149,10 +150,10 @@ Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Window
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |
-| Irányítható | Managed | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
-| Nem irányítható | Managed | Nem támogatott | |
+| Irányítható | Kezelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
+| Nem irányítható | Kezelt | Nem támogatott | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)

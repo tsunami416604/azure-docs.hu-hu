@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: rohogue
-ms.openlocfilehash: 757fbc166687110b9061ab95e96b0182e0ad3774
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622767"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168513"
 ---
-# <a name="edit-storage-targets"></a>Tárolási célok szerkesztése
+# <a name="edit-storage-targets"></a>Céltárolók szerkesztése
 
 Szerkesztheti a tárolási célokat, hogy módosítsa a tulajdonságait. A különböző tulajdonságok a különböző típusú tárolók számára szerkeszthetők:
 
@@ -47,13 +47,13 @@ A módosítások végrehajtása után kattintson **az OK** gombra a tárolási c
 
 ## <a name="update-an-azure-blob-storage-target"></a>Azure Blob Storage-tároló frissítése
 
-A blob Storage-tároló részletek lapja lehetővé teszi a virtuális névtér elérési útjának módosítását. 
+A blob Storage-tároló részletek lapja lehetővé teszi a virtuális névtér elérési útjának módosítását.
 
 ![a blob Storage-tároló szerkesztési oldalának képernyőképe](media/hpc-cache-edit-storage-blob.png)
 
 Ha elkészült, kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A beállításokkal kapcsolatos további információkért olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
 * A virtuális elérési utak használatával kapcsolatos további tippekért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című cikkét.

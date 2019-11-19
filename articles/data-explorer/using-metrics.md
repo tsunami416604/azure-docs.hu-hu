@@ -1,71 +1,72 @@
 ---
-title: Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal
-description: Ismerje meg, hogy a fürt teljesítmény, állapotának és használatának monitorozása az Azure Data Explorer metrikák használatával.
+title: Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal
+description: Ismerje meg, hogyan használhatja az Azure Adatkezelő mérőszámait a fürt teljesítményének, állapotának és használatának figyelésére.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569279"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173789"
 ---
-# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal
+# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Az Azure Data Explorer metrikák adja meg a legfontosabb mutatók állapotának és teljesítményének a fürterőforrások esetleges szabályozási hiányosságok elhárítását. A metrikák figyelése az Azure Data Explorer fürt állapotát és teljesítményét az adott önálló mérőszámokként ebben a cikkben részletes használja. Metrikák alapjaként is használhatja működési [Azure-irányítópultok](/azure/azure-portal/azure-portal-dashboards) és [Azure Alerts](/azure/azure-monitor/platform/alerts-metric-overview).
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Az Azure Adatkezelő mérőszámai a fürterőforrások állapotára és teljesítményére vonatkozó kulcsfontosságú mutatókat biztosítanak. Az ebben a cikkben részletezett metrikák használatával az Azure Adatkezelő a fürt állapotát és teljesítményét az önálló mérőszámok alapján figyelheti meg az adott forgatókönyvben. A mérőszámokat az operatív [Azure-irányítópultok](/azure/azure-portal/azure-portal-dashboards) és az [Azure-riasztások](/azure/azure-monitor/platform/alerts-metric-overview)alapjául is használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/).
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
 
-* Hozzon létre egy [fürt és adatbázis](create-cluster-database-portal.md).
+* Hozzon létre egy [fürtöt és egy adatbázist](create-cluster-database-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="using-metrics"></a>Mérőszámok segítségével
+## <a name="using-metrics"></a>Metrikák használata
 
-Válassza ki az Azure Data Explorer fürt **metrikák** a metrika panel megnyitásához, és a fürtön elemzésének indításához.
+Az Azure Adatkezelő-fürtben válassza a **metrikák** lehetőséget a metrikák ablaktábla megnyitásához és a fürt elemzésének megkezdéséhez.
 
 ![Metrikák kiválasztása](media/using-metrics/select-metrics.png)
 
-A metrikák panelen:
+A metrikák ablaktáblán:
 
-![Metrika panel](media/using-metrics/metrics-pane.png)
+![Metrikák ablaktábla](media/using-metrics/metrics-pane.png)
 
-1. Metrika diagram létrehozásához válassza **metrika** nevét és a megfelelő **összesítési** metrikánként leírtaknak megfelelően az alábbi. A **erőforrás** és **metrika Namespace** színválasztó előre kiválasztott az Azure Data Explorer fürthöz.
+1. Metrikai diagram létrehozásához válassza a **metrika** neve és a megfelelő **Összesítés** /metrika lehetőséget az alább részletezett módon. Az **erőforrás** -és **metrikus névterek** választói előre ki vannak választva az Azure adatkezelő-fürtön.
 
     **Metrika** | **Egység** | **Összesítés** | **Metrika leírása**
     |---|---|---|---|
-    | Gyorsítótár-kihasználtság | Percent | Avg, Max, Min | A fürt által használt lefoglalt gyorsítótár erőforrások százaléka. Gyorsítótár felhasználói tevékenységet a megadott gyorsítótár-szabályzatnak megfelelően számára lefoglalt SSD méretét jelenti. Egy gyorsítótár átlagos kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Ha a gyorsítótár átlagos kihasználtság meghaladja a 80 %-os, a fürt kell [vertikálisan](manage-cluster-vertical-scaling.md) egy Storage-tarifacsomag optimalizált vagy [horizontálisan felskálázott](manage-cluster-horizontal-scaling.md) több példányra. Másik lehetőségként alkalmazkodik a gyorsítótár-szabályzat (kevesebb napig a gyorsítótárban). Ha több mint 100 %-os gyorsítótár-kihasználtság, az adatok gyorsítótárazását, a gyorsítótárazási házirend szerint mérete nagyobb, amelyek a fürtön a gyorsítótár teljes mérete. |
-    | CPU | Percent | Avg, Max, Min | Jelenleg a gépek a fürt által használt lefoglalt számítási erőforrások százaléka. Az átlagos Processzorhasználat 80 %-os vagy még kevesebb fenntartható egy fürthöz. CPU maximális értéke 100 %, ami azt jelenti, hogy nincsenek további számítási erőforrások fel adatokat. Amikor a fürt nem teljesít jól, ellenőrizze a CPU-határozza meg, hogy vannak-e le vannak tiltva adott processzorok maximális értéke. |
-    | (Az Event Hubs) feldolgozott események | Count | Sum, Min, max | Események száma összesen event hubs szolgáltatásból, és a fürt által feldolgozott. Az események elutasított és fogadja el a fürt motor események vannak felosztva. |
-    | Adatbetöltési késés | másodperc | Avg, Max, Min | Betöltött, kezdve az adatok mindaddig, amíg készen áll a lekérdezés érkezett a fürtben lévő adatok késését. Az Adatbetöltési késés időszak az adatfeldolgozási forgatókönyvtől függ. |
-    | Adatbetöltési eredménye | Count | Count | Sikertelen volt, és sikerült Adatbetöltési műveletek teljes száma. Használat **alkalmazni a felosztás** és hozhat létre gyűjtők a sikeres és sikertelen eredményt a dimenziók elemzése (**érték** > **állapota**).|
-    | Adatbetöltési kihasználtsága | Percent | Avg, Max, Min | Gyűjthet adatokat a lefoglalt erőforrások teljes mennyisége, a kapacitás házirendben Adatbetöltési végrehajtásához használt tényleges erőforrások százaléka. Az alapértelmezett kapacitás házirend nem több, mint 512 egyidejű Adatbetöltési műveletek vagy 75 %-a fürt feldolgozó erőforrásaikat. Átlagos betöltési kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Maximális betöltési kihasználtsági értéke 100 %-os, ami azt jelenti, hogy minden fürt feldolgozási képessége szolgál, és a egy Adatbetöltési üzenetsor vonhat maga után. |
-    | Adatbetöltési kötet (megabájtban) | Count | Sum, Min, max | A tömörítés előtti (megabájtban) a fürthöz betöltött adatok teljes mérete. |
-    | Életben tartási | Count | Avg | A fürt rendelkezésre állását követi nyomon. Egy teljes mértékben rugalmas fürt 1 értéket ad vissza, és a letiltott vagy leválasztott fürt 0 értéket adja vissza. |
-    | Lekérdezés időtartama | másodperc | Száma, Avg, Min., max. és összeg | Teljes idő, amíg a lekérdezés eredményeit a rendszer küldjön (nem tartalmazza a hálózati késés). |
+    | Gyorsítótár kihasználtsága | Százalék | Avg, Max, Min | A fürt által jelenleg használt lefoglalt gyorsítótár-erőforrások százalékos aránya. A gyorsítótár a megadott gyorsítótár-házirend alapján a felhasználói tevékenység számára lefoglalt SSD méretére utal. A gyorsítótár átlagos kihasználtsága 80%-os vagy annál kevesebb a fürt fenntartható állapota. Ha az átlagos gyorsítótár kihasználtsága 80% fölé esik, a fürtöt egy tárterületre optimalizált díjszabási [szinten kell méretezni](manage-cluster-vertical-scaling.md) , vagy több példányra kell [méretezni](manage-cluster-horizontal-scaling.md) . Azt is megteheti, hogy a gyorsítótár-szabályzatot (kevesebb nap a gyorsítótárban) módosítja. Ha a gyorsítótár kihasználtsága meghaladja a 100%-ot, a gyorsítótárazási házirendnek megfelelően a gyorsítótárazott adat mérete nagyobb, mint a fürt gyorsítótárának teljes mérete. |
+    | CPU | Százalék | Avg, Max, Min | A fürtben lévő gépek által jelenleg használt lefoglalt számítási erőforrások százalékos aránya. Egy fürt számára a 80%-os vagy annál kisebb átlagos CPU-érték fenntartható. A CPU maximális értéke 100%, ami azt jelenti, hogy nincs további számítási erőforrás az adatok feldolgozásához. Ha egy fürt nem jól teljesítő, ellenőrizze a CPU maximális értékét annak megállapításához, hogy vannak-e letiltott processzorok. |
+    | Feldolgozott események (Event Hubs) | Darabszám | Max., min. összeg | Az Event hubokból beolvasott és a fürt által feldolgozott események teljes száma. Az események az elutasított eseményekre oszlanak, és a fürt motorja által elfogadott eseményeket. |
+    | Betöltési késés | másodperc | Avg, Max, Min | A betöltött adatok késése, az adatoknak a fürtön való kézhezvételének időpontjáig, amíg a lekérdezésre készen áll. A betöltési késés időtartama a betöltési forgatókönyvtől függ. |
+    | Betöltés eredménye | Darabszám | Darabszám | A meghiúsult és sikeres betöltési műveletek teljes száma. A **felosztás alkalmazása** paranccsal hozhat létre sikereket, és nem végezheti el az eredményeket, és elemezheti a dimenziókat (**érték** > **állapot**).|
+    | Betöltés kihasználtsága | Százalék | Avg, Max, Min | A rendelkezésre álló erőforrások százalékos aránya a kapacitási szabályzatban a betöltés végrehajtásához felhasznált összes erőforrásból. Az alapértelmezett kapacitási szabályzat nem több mint 512 egyidejű betöltési művelet, vagy a betöltésbe fektetett fürterőforrások 75%-a. A betöltés átlagos kihasználtsága 80% vagy kevesebb a fürt fenntartható állapota. A betöltés kihasználtságának maximális értéke 100%, ami azt jelenti, hogy az összes fürtön lévő betöltési képesség használatos, és a betöltési várólista is eredményezhet. |
+    | Betöltési mennyiség (MB) | Darabszám | Max., min. összeg | A fürtbe betöltött adatmennyiség teljes mérete (MB) a tömörítés előtt. |
+    | Életben tartása | Darabszám | AVG | Nyomon követi a fürt érzékenységét. A teljes mértékben válaszoló fürt 1 értéket ad vissza, a letiltott vagy leválasztott fürt pedig 0 értéket ad vissza. |
+    | Lekérdezés időtartama | másodperc | Darabszám, átlag, min, Max, Sum | A lekérdezési eredmények fogadásának teljes ideje (nem tartalmazza a hálózati késést). |
     | | | |
 
-    További információk kapcsolatos [támogatott az Azure Data Explorer fürtmetrikák](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
+    További információ a [támogatott Azure adatkezelő-fürt metrikákkal](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters) kapcsolatban
 
-2. Válassza ki a **metrika hozzáadása** gombra a diagram ugyanaz megjelennek több metrikák megtekintéséhez.
-3. Válassza ki a **+ új diagram** gombra kattintva egyetlen nézetben több diagramok megjelenítéséhez.
-4. Az időtartomány módosításához használja a időválasztó (alapértelmezett: elmúlt 24 óra).
-5. Használja [ **szűrő hozzáadása** és **alkalmazni a felosztás** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) dimenziók rendelkező metrikák.
-6. Válassza ki **rögzítés az irányítópulton** irányítópultokra történő felvételéhez a diagram konfigurációját az, hogy újra megtekintéséhez.
-7. Állítsa be **Új riasztási szabály** megjelenítése a metrikákat, a set-feltétel használatával. Az Új riasztási szabály a célként megadott erőforrás, metrika, felosztását és szűrő dimenziók a diagram tartalmazza. Ezek a beállítások módosításához a [riasztási szabály létrehozása panel](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
+2. A **metrika hozzáadása** gomb kiválasztásával több, ugyanabban a diagramban ábrázolt metrika látható.
+3. Kattintson az **+ új diagram** gombra, ha több diagramot szeretne látni egy nézetben.
+4. A Time Picker használatával módosíthatja az időtartományt (alapértelmezés: az elmúlt 24 óra).
+5. Használja a [ **szűrő hozzáadása** és a **felosztás alkalmazása** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) a dimenziókkal rendelkező mérőszámokhoz.
+6. Válassza a **rögzítés az irányítópulton** lehetőséget, hogy hozzáadja a diagram konfigurációját az irányítópultokhoz, hogy megtekintse azt újra.
+7. Az **új riasztási szabály** beállításával jelenítheti meg a mérőszámokat a set feltételek használatával. Az új riasztási szabály a diagramon a cél erőforrás, metrika, felosztás és szűrés dimenziókat fogja tartalmazni. Módosítsa ezeket a beállításokat a [riasztási szabály létrehozása ablaktáblán](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
-További tájékoztatást a [Metrikaböngésző](/azure/azure-monitor/platform/metrics-getting-started).
+További információ a [Metrikaböngésző](/azure/azure-monitor/platform/metrics-getting-started)használatáról.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+* [Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő](/azure/data-explorer/ingest-data-no-code)
+* [Azure Adatkezelő-betöltési műveletek figyelése diagnosztikai naplók használatával](/azure/data-explorer/using-diagnostic-logs)
+* [Rövid útmutató: Adatok lekérdezése az Azure Data Explorerben](web-query-data.md)

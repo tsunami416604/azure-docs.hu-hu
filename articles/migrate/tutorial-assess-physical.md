@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7f840a99ab76548c16389955cf49791036cc63a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123507"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158362"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fizikai kiszolgálók értékelése a Azure Migratekel: kiszolgáló értékelése
-
-> [!NOTE]
-> Ha még nem látja ezt a funkciót a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fog megjelenni.
- 
 
 Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálókat a Azure Migrate: Server Assessment Tool használatával.
 
@@ -112,7 +108,8 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
   **Algoritmus** | **Kivonat értéke**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
 
@@ -120,7 +117,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [Részletek](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -135,7 +132,7 @@ Futtassa a szkriptet a következő módon:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-A szkript a készülék webalkalmazásának sikeres befejeződése után elindítja a készüléket. 
+A szkript a készülék webalkalmazásának sikeres befejeződése után elindítja a készüléket.
 
 Ha bármilyen probléma merül fel, a parancsfájl-naplókat a C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log naplófájlban érheti el a hibaelhárításhoz.
 
@@ -166,7 +163,7 @@ Győződjön meg arról, hogy a készülék tud csatlakozni az [Azure URL-címek
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
 1. Kattintson **a bejelentkezés**elemre. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
-2. Az új lapon jelentkezzen be az Azure-beli hitelesítő adataival. 
+2. Az új lapon jelentkezzen be az Azure-beli hitelesítő adataival.
     - Jelentkezzen be a felhasználónevével és jelszavával.
     - A PIN-kóddal való bejelentkezés nem támogatott.
 3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
@@ -188,7 +185,7 @@ A Windows-és Linux-kiszolgálókhoz is hozzáadhat egy hitelesítő adatot.
     - Kiszolgáló eltávolításához válassza a > **Törlés**lehetőséget.
 4. Az ellenőrzés után kattintson a Mentés gombra, **és indítsa** el a felderítést a felderítési folyamat elindításához.
 
-Ez elindítja a felderítést. Kiszolgálónként körülbelül 1,5 percet vesz igénybe, hogy a felderített kiszolgáló metaadatai megjelenjenek a Azure Portalban. 
+Ez elindítja a felderítést. Kiszolgálónként körülbelül 1,5 percet vesz igénybe, hogy a felderített kiszolgáló metaadatai megjelenjenek a Azure Portalban.
 
 ### <a name="verify-servers-in-the-portal"></a>Kiszolgálók ellenőrzése a portálon
 
@@ -297,9 +294,9 @@ Az értékelés megbízhatósági minősítése a következő.
 [További](best-practices-assessment.md#best-practices-for-confidence-ratings) információ a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokról.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Azure Migrate berendezés beállítása

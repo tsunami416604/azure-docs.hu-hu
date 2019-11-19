@@ -1,18 +1,14 @@
 ---
 title: Oktatóanyag – SQL Server adatbázisok biztonsági mentése az Azure-ba
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépen futó SQL Server-adatbázisról egy Azure Backup Recovery Services-tárolóra.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074662"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171886"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>SQL Server-adatbázis biztonsági mentése Azure-beli virtuális gépen
 
@@ -68,7 +64,7 @@ A következő nevek elkerülnek az adatbázis neveként:
 * Szögletes zárójel "]"
 * A "F:\" kezdetű adatbázisok nevei
 
-Az Azure Table nem támogatott karakterekhez aliast adunk, de javasoljuk, hogy ne legyenek elkerülve. [További információ](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Az Azure Table nem támogatott karakterekhez aliast adunk, de javasoljuk, hogy ne legyenek elkerülve. [Részletek](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -224,7 +220,7 @@ Biztonsági mentési szabályzat létrehozásához:
 5. A biztonsági mentés elindításához kattintson az OK gombra.
 6. A biztonsági mentési feladat figyeléséhez lépjen a Recovery Services-tárolóra, és válassza a "biztonsági mentési feladatok" lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 

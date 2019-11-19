@@ -1,19 +1,19 @@
 ---
-title: Azure CLI parancsfájl-minta – a Signaler szolgáltatás létrehozása App Service
-description: Azure CLI-példaszkript – SignalR szolgáltatási erőforrás létrehozása App Service-szel
+title: Szignáló szolgáltatás létrehozása App Service az Azure CLI használatával
+description: Használja az Azure CLI-t a Signal Service App Service használatával történő létrehozásához. Az Azure Signaler szolgáltatás összes CLI-parancsának megismerése.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 09855c45f0a621ef1f51ba7c87443c40b02e00bd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578853"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158017"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>SignalR szolgáltatási erőforrás létrehozása App Service-szel
 
@@ -87,7 +87,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | Létrehoz egy Azure-webalkalmazást az App Service futtatási csomaggal. |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Hozzáad egy új alkalmazásbeállítást a webalkalmazáshoz. Ez az alkalmazásbeállítás a SignalR kapcsolati sztring tárolására szolgál. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

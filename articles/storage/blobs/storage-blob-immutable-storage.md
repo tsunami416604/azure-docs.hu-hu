@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2019
+ms.date: 11/16/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 0c7e178d520084dbf963c4c7ebaf9b8873a36938
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9caa63972c58defe2e8e2b33b6c2d29b15c7ce84
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521059"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168383"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Üzleti szempontból kritikus fontosságú adattárolás tárolása az Azure Blob Storage-immutably 
 
@@ -44,7 +44,7 @@ A nem változtatható tároló a következőket támogatja:
 
 - **Naplózási naplózás támogatása**: minden tároló tartalmaz egy házirend-naplót. Legfeljebb hét időalapú adatmegőrzési parancsot jelenít meg a zárolt időalapú adatmegőrzési házirendek esetében, és tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegzőket és a megőrzési időt. A jogcímek esetében a napló tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi megtartási címkéket. Ezt a naplót a házirend élettartama érdekében a SEC 17a-4 (f) szabályozási irányelveknek megfelelően megőrzi a rendszer. Az [Azure-tevékenység naplója](../../azure-monitor/platform/activity-logs-overview.md) az összes vezérlő síkja tevékenységének átfogóbb naplóját jeleníti meg; az [Azure diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) engedélyezése és az adatsík-műveletek megtartása és megjelenítése. A felhasználók felelőssége, hogy ezeket a naplókat tartósan tárolják, mivel ezek a szabályok vagy egyéb célokra szükségesek.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Az Azure Blob Storage-hoz nem módosítható tárolók két típusú férget vagy nem módosítható szabályzatot támogatnak: az időalapú adatmegőrzést és a jogi tárolást. Ha egy tárolón időalapú adatmegőrzési szabályzatot vagy jogi megtartást alkalmaz, az összes meglévő blob nem módosítható féreg állapotba kerül 30 másodpercnél kevesebb ideig. A tárolóba feltöltött összes új blob is a nem módosítható állapotba kerül. Ha az összes blobot áthelyezte a megváltoztathatatlan állapotba, a rendszer megerősíti a megváltoztathatatlan házirendet, és a nem módosítható tárolóban lévő meglévő és új objektumok összes felülírási vagy törlési művelete nem engedélyezett.
 
@@ -76,7 +76,7 @@ Egy tároló egyszerre rendelkezhet jogi és időalapú adatmegőrzési háziren
 
 A következő táblázat a különböző változtathatatlan forgatókönyvek esetében letiltott blob-típusokat tartalmazza. További információt az [Azure Blob Service API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentációjában talál.
 
-|Alkalmazási helyzet  |BLOB állapota  |A blob-műveletek nem engedélyezettek  |
+|Forgatókönyv  |BLOB állapota  |A blob-műveletek nem engedélyezettek  |
 |---------|---------|---------|
 |A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         | Helyezze az<sup>1. blobot</sup>, helyezze<sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a Letiltás         |
 |A blobon beállított tényleges megőrzési időtartam lejárt     |Csak írásvédett (a törlési műveletek engedélyezettek)         |Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a blokk hozzáfűzése         |
@@ -169,7 +169,7 @@ A következő ügyféloldali kódtárak támogatják az Azure Blob Storage nem m
 - [Python ügyféloldali kódtár verziója 2.0.0 Release Candidate 2 és újabb verziók](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
 - [Java ügyféloldali kódtár](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **Megadhatja a féreg megfelelőségének dokumentációját?**
 
@@ -238,47 +238,28 @@ $container = "<Enter your container name>"
 $container2 = "<Enter another container name>”
 $location = "<Enter the storage account location>"
 
-# Log in to the Azure Resource Manager account
-Login-AzAccount
+# Log in to Azure
+Connect-AzAccount
 Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 
 # Create your Azure resource group
 New-AzResourceGroup -Name $ResourceGroup -Location $location
 
 # Create your Azure storage account
-New-AzStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
+$account = New-AzStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
     $StorageAccount -SkuName Standard_LRS -Location $location -Kind StorageV2
 
-# Create a new container
-New-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container
-
-# Create Container 2 with a storage account object
-$accountObject = Get-AzStorageAccount -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount
-New-AzStorageContainer -StorageAccount $accountObject -Name $container2
+# Create a new container using the context
+New-AzStorageContainer -Name $container -Context $account.Context
 
 # Get a container
-Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container
-
-# Get a container with an account object
-$containerObject = Get-AzStorageContainer -StorageAccount $accountObject -Name $container
+$container = Get-AzStorageContainer -Name $container -Context $account.Context
 
 # List containers
-Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount
+Get-AzStorageContainer -Context $account.Context
 
-# Remove a container (add -Force to dismiss the prompt)
-Remove-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container2
-
-# Remove a container with an account object
-Remove-AzStorageContainer -StorageAccount $accountObject -Name $container2
-
-# Remove a container with a container object
-$containerObject2 = Get-AzStorageContainer -StorageAccount $accountObject -Name $container2
-Remove-AzStorageContainer -InputObject $containerObject2
+# Remove a container
+Remove-AzStorageContainer -Name $container -Context $account.Context
 ```
 
 Jogi tartalékok beállítása és törlése:

@@ -10,20 +10,26 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: e369067a3ff61ffefe1758f6fa8b4acdce4bb2e2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134436"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173637"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>A Kubernetes-fürt állapotának megértése a tárolók Azure Monitorével
 
 A tárolók Azure Monitorával figyeli és jelenti a felügyelt infrastruktúra összetevőinek, valamint a Azure Monitor által a tárolók által támogatott Kubernetes-fürtökön futó összes csomópontnak az állapotát. Ez a felület a fürt állapotának kiszámításához és a [több fürtre vonatkozó nézeten](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)jelentett állapotához is kiterjed, ahol most már megtudhatja, hogy a fürt egy vagy több csomópontja rendelkezik-e erőforrás-korlátozással, vagy egy csomópont vagy pod nem érhető el, amely hatással lehet egy futó alkalmazásra a fürtben, a kurátori mérőszámok alapján. 
 
 További információ a tárolók Azure Monitorének engedélyezéséről: [Azure monitor a tárolók számára](container-insights-onboard.md).
+
+>[!NOTE]
+>Az AK-alapú motor-fürtök támogatásához ellenőrizze, hogy az megfelel-e a következőknek:
+>- A [Helm-ügyfél](https://helm.sh/docs/using_helm/)legújabb verzióját használja.
+>- A tároló ügynök verziója a *Microsoft/OMS: ciprod11012019*. Az ügynök frissítését lásd: az [ügynök frissítése a Kubernetes-fürtön](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>
 
 ## <a name="overview"></a>Áttekintés
 
@@ -99,6 +105,6 @@ A Tulajdonságok ablaktáblán a következőket sajátíthatja el:
 
 Az ezen a lapon lévő figyelési adatok nem frissülnek automatikusan, és az oldal tetején lévő **frissítés** lehetőség kiválasztásával megtekintheti a fürttől kapott legutóbbi állapotot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásához, megjelenítéséhez vagy elemzéséhez.

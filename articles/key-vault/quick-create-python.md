@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3be246402c4acd63aee3518f2333d50ec307e9c0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b8a6099bb4beb7a3c3b6b132584dcb397f69ead5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648222"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158694"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rövid útmutató: Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
 
@@ -53,7 +53,7 @@ pip install azure.identity
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
 
-Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](quick-create-portal.md)a gyors üzembe helyezést. Azt is megteheti, hogy az alábbi Azure CLI-parancsokat egyszerűen futtatja.
+Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](quick-create-portal.md)a gyors üzembe helyezést. Azt is megteheti, hogy az alábbi Azure CLI-parancsokat is futtatja.
 
 > [!Important]
 > Minden kulcstartónak egyedi névvel kell rendelkeznie. A következő példákban cserélje le a < az egyedi-kulcstartó-Name > a Key Vault nevét.
@@ -103,7 +103,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`és `AZURE_TENANT_ID`. Állítsa be ezeket a változókat a clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben jegyezte fel a `export VARNAME=VALUE` formátum használatával. (Ez a beállítás csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, szerkessze `/etc/environment `-fájlját.) 
+Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`és `AZURE_TENANT_ID`. Állítsa be ezeket a változókat a clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben jegyezte fel a `export VARNAME=VALUE` formátum használatával. (Ez a módszer csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, szerkessze `/etc/environment `-fájlját.) 
 
 A kulcstároló nevét a `KEY_VAULT_NAME`nevű környezeti változóként is menteni kell.
 
@@ -147,7 +147,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, egy titkos kulcsot is hozzáadhat a kulcstartóhoz az [ügyfél használatával. SetSecret-metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) ehhez a mintában a "keresési kifejezésként" nevet kell használni a titkos kulcshoz.  
+Most, hogy az alkalmazás hitelesítése megtörtént, egy titkos kulcsot is hozzáadhat a kulcstartóhoz az ügyfél használatával. SetSecret metódus] (/DotNet/API/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) ehhez a "keresési kifejezésként" kifejezést kell használnia ebben a mintában.  
 
 ```python
 client.set_secret(secretName, secretValue);
@@ -237,7 +237,7 @@ client.delete_secret(secretName);
 print(" done.");
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 

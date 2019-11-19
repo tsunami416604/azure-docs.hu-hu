@@ -1,18 +1,18 @@
 ---
 title: Az Azure Firewall FQDN-címkék áttekintése
-description: Tudnivalók a Azure Firewall FQDN-címkékkel kapcsolatban
+description: Az FQDN címke a jól ismert Microsoft-szolgáltatásokhoz társított teljes tartománynevek (FQDN-EK) csoportját jelöli.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/23/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665562"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169041"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN-címkék – áttekintés
 
@@ -33,13 +33,13 @@ A következő táblázat a jelenleg használható FQDN-címkéket mutatja. A Mic
 |Windows Update     |A Microsoft Update kimenő hozzáférésének engedélyezése a [tűzfal konfigurálása a szoftverfrissítések számára](https://technet.microsoft.com/library/bb693717.aspx)című témakörben leírtak szerint.|
 |Windows diagnosztika|Engedélyezze a kimenő hozzáférést az összes [Windows diagnosztikai végponthoz](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
 |Microsoft Active Protection Service (MAPS)|A [Maps](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)-hez való kimenő hozzáférés engedélyezése.|
-|App Service Environment (bemutató)|Lehetővé teszi a kimenő hozzáférést a beadási platform forgalmához. Ez a címke nem fedi le a beszállító által létrehozott ügyfél-specifikus tárterületet és SQL-végpontokat. Ezeket a [szolgáltatás-végpontokon](../virtual-network/tutorial-restrict-network-access-to-resources.md) keresztül kell engedélyezni, vagy manuálisan kell hozzáadni.<br><br>További információ a Azure Firewall beépítéséről a bevonással: [app Service Environment zárolása](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
+|App Service Environment (ASE)|Lehetővé teszi a kimenő hozzáférést a beadási platform forgalmához. Ez a címke nem fedi le a beszállító által létrehozott ügyfél-specifikus tárterületet és SQL-végpontokat. Ezeket a [szolgáltatás-végpontokon](../virtual-network/tutorial-restrict-network-access-to-resources.md) keresztül kell engedélyezni, vagy manuálisan kell hozzáadni.<br><br>További információ a Azure Firewall beépítéséről a bevonással: [app Service Environment zárolása](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Engedélyezi a kimenő hozzáférést a Azure Backup szolgáltatásokhoz.|
 |Azure HDInsight|Engedélyezi a kimenő hozzáférést a HDInsight-platform forgalmához. Ez a címke nem fedi le az ügyfél-specifikus tárterületet vagy az HDInsight-ből származó SQL-forgalmat. Engedélyezze ezeket a [szolgáltatás-végpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) használatával, vagy manuálisan adja hozzá őket.|
 
 > [!NOTE]
 > Ha egy alkalmazási szabályban kijelöli a teljes tartománynevet, a port mezőt a **https**értékre kell beállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Firewall telepítésének megismeréséhez tekintse meg [az oktatóanyag: Azure Firewall telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md)című témakört.

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132562"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173908"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Oktatóanyag: .NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 
@@ -259,7 +259,7 @@ Az adatbázis a tárolók között particionált elemek logikai tárolója. A [C
 1. Az alkalmazás futtatásához nyomja le az F5 billentyűt.
 
    > [!NOTE]
-   > Ha "503 szolgáltatás nem érhető el" kivételt kap, akkor lehetséges, hogy a tűzfal blokkolja a szükséges [portokat](performance-tips.md#networking) a közvetlen módban. A probléma megoldásához nyissa meg a szükséges [portokat](performance-tips.md#networking) , vagy próbálja meg használni az átjáró üzemmódot az alább látható módon.
+   > Ha "503 szolgáltatás nem érhető el" hibaüzenetet kap, lehetséges, hogy a tűzfal blokkolja a szükséges [portokat](performance-tips.md#networking) a közvetlen csatlakozási módhoz. A probléma megoldásához nyissa meg a szükséges portokat, vagy használja az átjáró módú kapcsolatot az alábbi kódban látható módon:
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
@@ -490,7 +490,7 @@ Ha vissza szeretné állítani a Azure Cosmos DB .NET SDK-ra mutató hivatkozás
 
 Ennyi az egész, hogy létrejöjjön, és Ön így van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Lásd [: oktatóanyag: ASP.net Core MVC-webalkalmazás fejlesztése a Azure Cosmos db a .net SDK használatával](sql-api-dotnet-application.md).
 * Szeretné elvégezni a méretezést és a teljesítmény tesztelését Azure Cosmos DB? Lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md).

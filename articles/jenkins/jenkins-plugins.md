@@ -1,36 +1,32 @@
 ---
-title: Az Azure-ban a Jenkins beépülő modulok
-description: Ismerje meg a Jenkins beépülő használható az Azure-ral
-ms.service: jenkins
-keywords: a jenkins plugis, azure, fejlesztés és üzemeltetés
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Jenkins beépülő modulok az Azure-hoz
+description: Az Azure-ban használható Jenkins beépülő modul ismertetése
+keywords: Jenkins, plugis, Azure, devops
 ms.date: 03/22/2019
 ms.topic: article
-ms.openlocfilehash: c103bc0a314f1e5a4a0afef3f7969f53b6a0dccd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ecc8f7f7435cbb0dbc80f334f27aaca7f4cd1ed7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640973"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158795"
 ---
-# <a name="jenkins-plugins-for-azure"></a>Az Azure-ban a Jenkins beépülő modulok
+# <a name="jenkins-plugins-for-azure"></a>Jenkins beépülő modulok az Azure-hoz
 
-A következő Jenkins beépülő modulok használata az Azure-ral különféle funkciókat támogatja.
+A következő Jenkins beépülő modulok támogatják az Azure-hoz való használat különböző funkcióit.
   
-| A Jenkins beépülő modul | Leírás                                   |
+| Jenkins beépülő modul | Leírás                                   |
 |------------------------------------------------------------------------------|
-| [Az Azure App Service beépülő modul](https://plugins.jenkins.io/azure-app-service)     | Az Azure App Service üzembe helyezése a Jenkins beépülő modult (jelenleg csak a webes alkalmazás is támogatja). | 
-| [Az Azure AD beépülő modulja](https://plugins.jenkins.io/azure-ad)                       | A Jenkins beépülő modul, amely támogatja a hitelesítés és engedélyezés az Azure Active Directory segítségével. | 
-| [Az Azure összetevő-kezelője beépülő modulja](https://plugins.jenkins.io/azure-artifact-manager) | Azure összetevő-kezelője beépülő modul egy összetevő-kezelő, amely lehetővé teszi, hogy az összetevőkhöz tárolja az Azure Blob Storage-bA. A Jenkins és a feladatok számára transzparens módon működik az Azure összetevő-kezelője beépülő modulja, azt olyan, mint az alapértelmezett összetevő-kezelője. | 
-| [Az Azure-tárolóügynök beépülő modulja](https://plugins.jenkins.io/azure-container-agents) | Azure-Tárolóügynök beépülő modulja segítségével is futtathatja egy tárolót az ügynök a Jenkinsben | 
-| [Az Azure Container Registry feladat beépülő modulja](https://plugins.jenkins.io/azure-container-registry-tasks)       | A docker-build vonatkozó kérés küldése a Jenkins beépülő moduljának [Azure Container Registry](/azure/container-registry/container-registry-tasks-overview). |
-| [Azure Container Service beépülő modul](https://plugins.jenkins.io/azure-acs)       | A Jenkins beépülő moduljának telepítése konfigurációk az Azure Container Service (AKS). | 
-| [Az Azure-beli hitelesítő adatok beépülő modulja](https://plugins.jenkins.io/azure-credentials)      | A Jenkins beépülő modul használatával Azure hitelesítő adatok kezelése. | 
-| [Az Azure-függvények beépülő modulja](https://plugins.jenkins.io/azure-function)           | A Jenkins beépülő modul egy Azure-függvény üzembe helyezése. | 
-| [Az Azure IoT Edge beépülő modulja](https://plugins.jenkins.io/azure-iot-edge)           | Az Azure IoT Edge-modul megkönnyíti a fejlesztéséhez egy IoT Edge-megoldást a Jenkins CI/CD-folyamat beállítása. | 
-| [Az Azure Service Fabric beépülő modulja](https://plugins.jenkins.io/service-fabric)     | Projektek Linux-alapú Azure Service Fabric Jenkins beépülő modul. |
-| [Az Azure Storage beépülő modulja](https://plugins.jenkins.io/windows-azure-storage)     | beépülő modul feltöltése a build-összetevőket, vagy letöltés build-függőségeket, a Microsoft Azure Blob storage-ból. | 
-| [Az Azure Virtuálisgép-ügynökök beépülő modulja](https://plugins.jenkins.io/azure-vm-agents)         | A Jenkins beépülő modul használatával a Jenkins-ügynököket hoz létre az Azure virtual machines (keresztül az Azure Resource Manager-sablon). | 
-| [Azure virtuális gépek méretezési csoportjainak beépülő modulja](https://plugins.jenkins.io/azure-vmss)           | Az Azure virtuálisgép-méretezési csoport Virtuálisgép-rendszerképek üzembe helyezése a Jenkins beépülő moduljának állítja be. | 
+| [Azure App Service beépülő modul](https://plugins.jenkins.io/azure-app-service)     | Jenkins beépülő modul egy Azure App Service üzembe helyezéséhez (jelenleg csak a webalkalmazást támogatja). | 
+| [Azure AD beépülő modul](https://plugins.jenkins.io/azure-ad)                       | A Jenkins beépülő modul, amely támogatja a hitelesítési & engedélyezését Azure Active Directoryon keresztül. | 
+| [Azure-összetevő-kezelő beépülő modul](https://plugins.jenkins.io/azure-artifact-manager) | Az Azure-összetevők kezelő beépülő modulja egy olyan összetevő-kezelő, amely lehetővé teszi az összetevők Azure Blob Storageba való tárolását. Az Azure-beli összetevők kezelő beépülő modulja transzparens módon működik a Jenkins és a feladatok esetében, mint az alapértelmezett összetevő-kezelő. | 
+| [Az Azure-tárolóügynök beépülő modulja](https://plugins.jenkins.io/azure-container-agents) | Az Azure Container Agents beépülő modul segítségével a tárolókat ügynökként futtathatja a Jenkinsben | 
+| [Azure Container Registry feladat beépülő modul](https://plugins.jenkins.io/azure-container-registry-tasks)       | Jenkins beépülő modul, amely egy Docker-Build kérést küld [Azure Container Registryra](/azure/container-registry/container-registry-tasks-overview). |
+| [Azure Container Service beépülő modul](https://plugins.jenkins.io/azure-acs)       | Jenkins beépülő modul a konfigurációk üzembe helyezéséhez Azure Container Service (ak). | 
+| [Az Azure-beli hitelesítő adatok beépülő modulja](https://plugins.jenkins.io/azure-credentials)      | Jenkins beépülő modul az Azure-beli hitelesítő adatok kezeléséhez. | 
+| [Az Azure-függvények beépülő modulja](https://plugins.jenkins.io/azure-function)           | Jenkins beépülő modul egy Azure-függvény üzembe helyezéséhez. | 
+| [Azure IoT Edge beépülő modul](https://plugins.jenkins.io/azure-iot-edge)           | Azure IoT Edge beépülő modul megkönnyíti egy CI/CD-folyamat beállítását a Jenkins-IoT Edge megoldás fejlesztéséhez. | 
+| [Azure Service Fabric beépülő modul](https://plugins.jenkins.io/service-fabric)     | Jenkins beépülő modul Linux Azure Service Fabric-projektekhez. |
+| [Az Azure Storage beépülő modulja](https://plugins.jenkins.io/windows-azure-storage)     | beépülő modul létrehozási összetevőinek feltöltéséhez vagy a Microsoft Azure Blob Storage-ból származó Build-függőségek letöltéséhez. | 
+| [Azure VM-ügynökök beépülő modul](https://plugins.jenkins.io/azure-vm-agents)         | Jenkins beépülő modul a Jenkins-ügynökök létrehozásához az Azure Virtual Machines szolgáltatásban (Azure Resource Manager sablonon keresztül). | 
+| [Azure virtuálisgép-méretezési csoport beépülő modulja](https://plugins.jenkins.io/azure-vmss)           | Jenkins beépülő modul virtuálisgép-lemezképek üzembe helyezéséhez az Azure-beli virtuálisgép-méretezési csoportokban. | 

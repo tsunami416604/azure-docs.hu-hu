@@ -1,19 +1,15 @@
 ---
 title: Oktatóanyag – Labs konfigurálása Azure DevTest Labs Ansible használatával
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs Ansible használatával
-ms.service: ansible
 keywords: Ansible, Azure, devops, bash, ötletekbõl, devtest Labs
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241657"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156274"
 ---
 # <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Oktatóanyag: a laborok konfigurálása Azure DevTest Labs Ansible használatával
 
@@ -73,14 +69,14 @@ A következő feladat létrehozza a minta labort.
 
 Beállíthatja a tesztkörnyezet házirend-beállításait. A következő értékek állíthatók be:
 
-- @no__t – 0 – a felhasználó által birtokolható virtuális gépek száma
-- a `user_owned_lab_premium_vm_count` a felhasználó által birtokolható prémium szintű virtuális gépek száma
-- a `lab_vm_count` a labor virtuális gépek maximális száma
-- a `lab_premium_vm_count` a labor Premium virtuális gépek maximális száma
-- a `lab_vm_size` a laboratóriumi virtuális gépek megengedett mérete (i)
-- a `gallery_image` az engedélyezett katalógus-rendszerkép (ek)
-- a `user_owned_lab_vm_count_in_subnet` a felhasználó virtuális gépei maximális száma egy alhálózaton belül
-- a `lab_target_cost` a tesztkörnyezet célja
+- `user_owned_lab_vm_count` a felhasználó által birtokolható virtuális gépek száma
+- `user_owned_lab_premium_vm_count` a felhasználó által birtokolható prémium szintű virtuális gépek száma
+- `lab_vm_count` a labor virtuális gépek maximális száma
+- `lab_premium_vm_count` a labor Premium virtuális gépek maximális száma
+- `lab_vm_size` a laboratóriumi virtuális gépek megengedett mérete (i)
+- `gallery_image` az engedélyezett katalógus-rendszerkép (ek)
+- `user_owned_lab_vm_count_in_subnet` az alhálózaton lévő felhasználók maximális száma
+- `lab_target_cost` a labor célja
 
 ```yml
 - name: Set the lab policies
@@ -97,7 +93,7 @@ Beállíthatja a tesztkörnyezet házirend-beállításait. A következő érté
 
 Az ebben a szakaszban szereplő minta feladat konfigurálja a labor-ütemtervet. 
 
-A következő kódrészletben a virtuális gép indítási idejének megadásához a `lab_vms_startup` értéket használja a rendszer. Hasonlóképpen, a `lab_vms_shutdown` érték beállítása határozza meg a labor virtuális gép leállítási idejét.
+A következő kódrészletben a virtuális gép indítási idejének megadásához a `lab_vms_startup` értéket kell használni. Hasonlóképpen, a `lab_vms_shutdown` érték beállítása a labor virtuális gép leállítási idejét is meghatározza.
 
 ```yml
 - name: Set the lab schedule
@@ -202,7 +198,7 @@ A következő feladat felsorolja az összes összetevőt:
 
 ## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Az összetevő-források Azure Resource Manager adatainak beolvasása
 
-Az `public environment repository` összes Azure Resource Manager-sablonjának listázásához az előre definiált adattár sablonokkal:
+A `public environment repository`összes Azure Resource Manager sablonjának listázásához az előre definiált adattár sablonokkal:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -278,7 +274,7 @@ A labor törléséhez használja a következő feladatot:
 ## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
 A teljes példa a következő két módon szerezhető be:
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) forgatókönyvet, és mentse a `devtestlab-create.yml` értékre.
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) forgatókönyvet, és mentse a `devtestlab-create.yml`ba.
 - Hozzon létre egy `devtestlab-create.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -449,8 +445,8 @@ A teljes példa a következő két módon szerezhető be:
 Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
 
 A forgatókönyv futtatása előtt végezze el a következő módosításokat:
-- A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
-- Tárolja a GitHub-tokent `GITHUB_ACCESS_TOKEN` nevű környezeti változóként.
+- A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+- Tárolja a GitHub-tokent egy `GITHUB_ACCESS_TOKEN`nevű környezeti változóként.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -462,7 +458,7 @@ ansible-playbook devtestlab-create.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 - hosts: localhost

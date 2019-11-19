@@ -1,20 +1,14 @@
 ---
-title: A Azure Backup Server telepítése Azure Stackon | Microsoft Docs
+title: Azure Backup Server telepítése az Azure Stacken
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a munkaterhelések védeleméhez vagy biztonsági mentéséhez Azure Stackban.
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: dacurwin
-ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 396621b43db2500ca9107979fca9d4d2c0646e6d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012936"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172391"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -223,7 +217,7 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Azure Backup Server – Üdvözöljük és Előfeltételek ellenőrzése](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Ha a környezet rendelkezik a szükséges előfeltételekkel, akkor megjelenik egy üzenet, amely jelzi, hogy a gép megfelel a követelményeknek. Kattintson a **Tovább** gombra.  
+    Ha a környezet rendelkezik a szükséges előfeltételekkel, akkor megjelenik egy üzenet, amely jelzi, hogy a gép megfelel a követelményeknek. Kattintson a **Tovább**gombra.  
 
     ![Azure Backup Server – az Előfeltételek ellenőrzése sikeres volt](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 

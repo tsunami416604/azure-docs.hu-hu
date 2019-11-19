@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927119"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167795"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
@@ -148,7 +148,7 @@ Ez az attribútum azt eredményezi, hogy a ASP.NET a felhasználó identitását
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Hogyan delegál egy webalkalmazás az Azure AD-ba való bejelentkezést, és jogkivonatot szerez be
 
 A felhasználó hitelesítése a böngészőn keresztül történik. Az OpenID protokoll szabványos HTTP protokoll-üzeneteket használ.
-- A webalkalmazás HTTP 202 (átirányítás) üzenetet küld a böngészőnek az Azure AD használatához.
+- A webalkalmazás HTTP 302 (átirányítás) üzenetet küld a böngészőnek az Azure AD használatához.
 - A felhasználó hitelesítése után az Azure AD elküldi a jogkivonatot a webalkalmazásnak a böngészőn keresztüli átirányítás használatával.
 - Az átirányítást a webalkalmazás egy átirányítási URI formájában kapja meg. Ez az átirányítási URI regisztrálva van az Azure AD Application objektumban. Több átirányítási URI is lehet, mert az alkalmazás több URL-címen is üzembe helyezhető. Így a webalkalmazásnak is meg kell adnia a használandó átirányítási URi-t.
 - Az Azure AD ellenőrzi, hogy a webalkalmazás által eljuttatott átirányítási URI a regisztrált átirányítási URI-k egyike az alkalmazáshoz.
@@ -159,7 +159,7 @@ A fent ismertetett folyamat enyhe eltérésekkel, asztali és mobil alkalmazáso
 
 Az asztali és a mobil alkalmazások a hitelesítéshez használhatnak beágyazott webes vezérlőt vagy rendszerböngészőt. Az alábbi ábra azt szemlélteti, hogy egy asztali vagy mobil alkalmazás hogyan használja a Microsoft Authentication Library (MSAL) szolgáltatást a hozzáférési jogkivonatok beszerzéséhez és a webes API-k meghívásához.
 
-![Az asztali alkalmazás megjelenése](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![Az asztali alkalmazás megjelenése](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 A MSAL egy böngésző használatával kapja meg a jogkivonatokat, és a webalkalmazásokhoz hasonlóan az Azure AD-be delegálja a hitelesítést.
 

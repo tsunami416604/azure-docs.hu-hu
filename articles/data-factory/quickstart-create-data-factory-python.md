@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: afe6ae001712db6d2a0dfa676daf847a2c4cf86e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e63892962802d38ac7337a99a9a33f3770785ad2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438686"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170267"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Azure Data Factory és folyamat létrehozása a Python használatával
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ### <a name="create-and-upload-an-input-file"></a>Bemeneti fájl létrehozása és feltöltése
 
-1. Nyissa meg a Jegyzettömböt. Másolja be az alábbi szöveget, és mentse egy **input.txt** nevű fájlként a lemezen.
+1. Indítsa el a Jegyzettömböt. Másolja be az alábbi szöveget, és mentse egy **input.txt** nevű fájlként a lemezen.
 
     ```text
     John|Doe
@@ -351,7 +351,7 @@ def main():
 
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
-    ds_ls = LinkedServiceReference(ls_name)
+    ds_ls = LinkedServiceReference(reference_name=ls_name)
     blob_path = 'adfv2tutorial/input'
     blob_filename = 'input.txt'
     ds_azure_blob = AzureBlobDataset(

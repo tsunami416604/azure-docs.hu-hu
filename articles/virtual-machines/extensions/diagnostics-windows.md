@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d43859de71b6e41d5df444716b5504ca6b78400b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073144"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158943"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Az Azure Diagnostics használatának engedélyezése a PowerShell-lel virtual windowsos virtuális gépen
 
@@ -71,9 +71,9 @@ A [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module
 
 Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a klasszikus üzemi modellel lett létrehozva, először használja a [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) parancsmagot a virtuális gép konfigurációjának beszerzéséhez. Ezután frissítse a virtuális gép konfigurációját, hogy tartalmazza a diagnosztikai bővítményt a [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmag használatával. Végül alkalmazza a frissített konfigurációt a virtuális gépre az [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)használatával.
 
-    $VM = Get-AzVM -ServiceName $Service_Name -Name $VM_Name
-    $VM_Update = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    Update-AzVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+    $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
+    $VM_Update = Set-AzureVMDiagnosticsExtension  -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="sample-diagnostics-configuration"></a>Példa diagnosztikai konfigurációra
 A következő XML-kód használható a diagnosztikai nyilvános konfigurációhoz a fenti szkriptek használatával. Ez a minta-konfiguráció különböző teljesítményszámlálókat továbbít a diagnosztika Storage-fiókba, valamint az alkalmazásból, a biztonságból és a rendszercsatornákból származó hibákat a Windows eseménynaplókban, valamint a diagnosztikai infrastruktúra naplófájljaiban előforduló hibákat.
@@ -195,7 +195,7 @@ A konfigurációt frissíteni kell, hogy tartalmazza a következőket:
     </PublicConfig>
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Diagnostics képesség és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: a [diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
 * A [diagnosztikai konfigurációk sémája](https://msdn.microsoft.com/library/azure/mt634524.aspx) a diagnosztikai bővítmény különböző XML-konfigurációs beállításait ismerteti.
 

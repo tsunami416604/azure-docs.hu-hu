@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120015"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170665"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -91,7 +91,7 @@ Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatl
 
 ## <a name="specifying-a-different-provider"></a>Másik szolgáltató meghatározása
 
-Egyes adatforrásokhoz való kapcsolódáskor a Azure Analysis Services adatmodelljei eltérő adatszolgáltatót igényelhetnek. Bizonyos esetekben a natív szolgáltatók, például a SQL Server Native Client (SQLNCLI11) használatával az adatforrásokhoz csatlakozó táblázatos modellek hibát adhatnak vissza. Ha a SQLOLEDB-től eltérő natív szolgáltatókat használ, hibaüzenet jelenik meg: **a (z) "sqlncli 11.1" szolgáltató nincs regisztrálva**. Ha a helyszíni adatforrásokhoz kapcsolódó DirectQuery-modellel rendelkezik, és natív szolgáltatókat használ, a következő hibaüzenet jelenhet meg: **hiba OLE DB sor létrehozásakor. Helytelen szintaxis a "LIMIT" közelében**.
+Egyes adatforrásokhoz való kapcsolódáskor a Azure Analysis Services adatmodelljei eltérő adatszolgáltatót igényelhetnek. Bizonyos esetekben a natív szolgáltatók, például a SQL Server Native Client (SQLNCLI11) használatával az adatforrásokhoz csatlakozó táblázatos modellek hibát adhatnak vissza. Ha a MSOLEDBSQL-től eltérő natív szolgáltatókat használ, hibaüzenet jelenik meg: **a (z) "sqlncli 11.1" szolgáltató nincs regisztrálva**. Ha a helyszíni adatforrásokhoz kapcsolódó DirectQuery-modellel rendelkezik, és natív szolgáltatókat használ, a következő hibaüzenet jelenhet meg: **hiba OLE DB sor létrehozásakor. Helytelen szintaxis a "LIMIT" közelében**.
 
 Ha helyszíni SQL Server Analysis Services táblázatos modellt telepít át Azure Analysis Servicesre, akkor szükség lehet a szolgáltató módosítására.
 
@@ -117,7 +117,7 @@ Felhőbeli adatforrások esetén:
 
 A 1400-es és újabb kompatibilitási szinten található táblázatos modellek esetében a Azure SQL Database, a Azure SQL Data Warehouse, a Dynamics 365 és a SharePoint-lista támogatja a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Helyszíni [átjáró](analysis-services-gateway.md)   
 [A kiszolgáló kezelése](analysis-services-manage.md)   
 

@@ -3,23 +3,19 @@ title: Oktatóanyag – webes forgalom kezelése az Azure Application Gateway a 
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Application Gatewayt a webes forgalom kezeléséhez az Ansible használatával
 keywords: Ansible, Azure, devops, bash, ötletekbõl, Application Gateway, Load Balancer, webes forgalom
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1dd547fb59a41a90de18d595a392b64ef518023a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 07f75e39b8c6f592ecd4c48697527493b1109bb9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241889"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156606"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Oktatóanyag: webes forgalom kezelése az Azure Application Gateway a Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-Az [Azure Application Gateway](/azure/application-gateway/overview) egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát. A forrás IP-címe és portja alapján a hagyományos Load Balancer irányítja a forgalmat egy cél IP-címhez és porthoz. Application Gateway olyan finomabb szintű szabályozást biztosít, ahol a forgalom az URL-cím alapján irányítható. Megadhatja például, hogy ha `images`, az URL-cím elérési útja, a rendszer átirányítja a forgalmat a rendszerképekhez beállított adott kiszolgálókhoz (azaz készlethez).
+Az [Azure Application Gateway](/azure/application-gateway/overview) egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát. A forrás IP-címe és portja alapján a hagyományos Load Balancer irányítja a forgalmat egy cél IP-címhez és porthoz. Application Gateway olyan finomabb szintű szabályozást biztosít, ahol a forgalom az URL-cím alapján irányítható. Meghatározhatja például, hogy ha a `images` URL-cím elérési útja, a rendszer a forgalmat a rendszerképekhez konfigurált kiszolgálók (azaz készlet) meghatározott készletére irányítja.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -34,7 +30,7 @@ Az [Azure Application Gateway](/azure/application-gateway/overview) egy webes fo
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az ebben a szakaszban található forgatókönyv-kód egy Azure-erőforráscsoportot hoz létre. Az erőforráscsoport egy olyan logikai tároló, amelyben az Azure-erőforrások konfigurálva vannak.  
 
@@ -171,7 +167,7 @@ ansible-playbook aci_create.yml
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az ebben a szakaszban szereplő forgatókönyv-kód egy `myAppGateway` nevű Application Gateway-t hoz létre.  
+Az ebben a szakaszban szereplő forgatókönyv-kód egy `myAppGateway`nevű Application Gateway-t hoz létre.  
 
 Mentse a következő forgatókönyvet `appgw_create.yml` néven:
 
@@ -292,7 +288,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat.
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 - hosts: localhost

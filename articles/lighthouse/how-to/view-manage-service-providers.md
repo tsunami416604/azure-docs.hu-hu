@@ -3,12 +3,12 @@ title: Szolgáltatók megtekintése és kezelése
 description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
 ms.date: 11/15/2019
 ms.topic: overview
-ms.openlocfilehash: baa5a77b481779ab511ff473aacda5d40e0d771c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 12ddafe1d1e425ed1c1f1188be1377a584e03936
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132180"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169639"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
@@ -49,7 +49,9 @@ Ha az ügyfél el szeretné távolítani a szolgáltatói ajánlatot, kiválaszt
 
 ## <a name="update-service-provider-offers"></a>A szolgáltatói ajánlatok frissítése
 
-Miután egy ügyfél hozzáadott egy ajánlatot, a szolgáltató közzéteheti az Azure Marketplace-re vonatkozó ajánlat frissített verzióját. Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni. Ha közzétette az ajánlat új verzióját, a szolgáltató által kínált **ajánlatok** lapon megjelenik az ajánlat sorában látható "frissítés" ikon. Az ügyfél kiválaszthatja ezt az ikont az ajánlat aktuális verziója és az új verzió közötti különbségek megtekintéséhez. 
+Miután egy ügyfél hozzáadott egy ajánlatot, a szolgáltató közzéteheti az Azure Marketplace-re vonatkozó ajánlat frissített verzióját. Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni. Ha közzétette az ajánlat új verzióját, a szolgáltató által kínált **ajánlatok** lapon megjelenik az ajánlat sorában látható "frissítés" ikon. Az ügyfél kiválaszthatja ezt az ikont az ajánlat aktuális verziója és az új verzió közötti különbségek megtekintéséhez.
+
+ ![Ajánlat frissítése ikon](../media/update-offer.jpg)
 
 A módosítások áttekintése után az ügyfél dönthet úgy, hogy frissíti az új verzióra. Ha ezt megtette, az új verzióban megadott engedélyek és egyéb beállítások az adott ajánlathoz delegált előfizetésekre és/vagy erőforráscsoportok érvényesek lesznek.
 
@@ -59,7 +61,7 @@ A delegálások azokat a szerepkör-hozzárendeléseket jelölik, amelyek enged�
 
 Az oldal tetején lévő szűrők segítségével rendezheti és csoportosíthatja a delegálási adatokat, illetve szűrheti az egyes ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Lighthouse](../overview.md)-ról.
 - Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) , ha a Azure Portal **ügyfeleit** szeretnék megtekinteni.

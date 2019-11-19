@@ -1,19 +1,15 @@
 ---
-title: SharePoint-farm Azure-ba való DPM/Azure Backupának védelme
+title: SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való DPM/Azure Backup kiszolgáló védelméről
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: dacurwin
-ms.openlocfilehash: 830dc313ea321f74c495f46c7c2d4ea5f9d4e5b5
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968545"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173322"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 
@@ -23,9 +19,9 @@ A SharePoint-farmról biztonsági mentést készíthet a System Center Data Prot
 
 A DPM Azure Backup a következő forgatókönyveket támogatja:
 
-| Számítási feladat | Verzió | SharePoint-telepítés | DPM központi telepítési típus | DPM – System Center 2012 R2 | Védelem és helyreállítás |
+| Számítási feladat | Verzió | SharePoint-telepítés | DPM központi telepítési típus | DPM - System Center 2012 R2 | Védelem és helyreállítás |
 | --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |Fizikai kiszolgálóként vagy Hyper-V/VMware virtuális gépen üzembe helyezett SharePoint <br> -------------- <br> SQL-AlwaysOn |Fizikai kiszolgáló vagy helyszíni Hyper-V virtuális gép |Támogatja az Azure-ba történő biztonsági mentést az 5. kumulatív frissítéssel |A SharePoint-farm helyreállítási lehetőségeinek biztosítása: helyreállítási Farm, adatbázis, valamint fájl-vagy listaelemek a lemezes helyreállítási pontokból.  Farm-és adatbázis-helyreállítás az Azure helyreállítási pontjairól. |
+| SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |Fizikai kiszolgálóként vagy Hyper-V/VMware virtuális gépen üzembe helyezett SharePoint <br> -------------- <br> SQL AlwaysOn |Fizikai kiszolgáló vagy helyszíni Hyper-V virtuális gép |Támogatja az Azure-ba történő biztonsági mentést az 5. kumulatív frissítéssel |A SharePoint-farm helyreállítási lehetőségeinek biztosítása: helyreállítási Farm, adatbázis, valamint fájl-vagy listaelemek a lemezes helyreállítási pontokból.  Farm-és adatbázis-helyreállítás az Azure helyreállítási pontjairól. |
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -74,8 +70,8 @@ A **ConfigureSharePoint. exe** a [DPM telepítési útvonala] \bin mappában tal
 1. A WFE-kiszolgálón a parancssorban lépjen a [DPM telepítési hely] \bin\ mappát
 2. Adja meg a ConfigureSharePoint-EnableSharePointProtection értéket.
 3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, a következő engedélyeket kell megadnia a WFE-kiszolgálón:
-   * Adja meg a WSS_Admin_WPG csoport teljes hozzáférését a DPM mappához (% Program Files%\Microsoft adatvédelem Manager\DPM).
-   * Adjon olvasási hozzáférést a WSS_Admin_WPG csoportnak a DPM beállításkulcs (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) számára.
+   * Adja meg az WSS_Admin_WPG csoport teljes hozzáférését a DPM mappához (% Program Files%\Microsoft adatvédelem Manager\DPM).
+   * Adjon olvasási hozzáférést a WSS_Admin_WPG csoportnak a DPM beállításkulcs (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager) számára.
 
 > [!NOTE]
 > Ha a SharePoint-farm rendszergazdai hitelesítő adatai módosulnak, újra kell futtatnia a ConfigureSharePoint. exe fájlt.
@@ -101,7 +97,7 @@ Miután a korábban ismertetett módon konfigurálta a DPM-t és a SharePoint-fa
    > Ha a DPM-ügynök telepítve van, akkor a kiszolgáló a varázslóban látható. A DPM a szerkezetét is megjeleníti. Mivel a ConfigureSharePoint. exe fájlt futtatta, a DPM kommunikál a SharePoint VSS-író szolgáltatással és a hozzá tartozó SQL Server adatbázisokkal, és felismeri a SharePoint-farm struktúráját, a társított tartalom-adatbázisokat és a hozzájuk tartozó elemeket.
    >
    >
-4. Az **adatvédelmi módszer kiválasztása** lapon adja meg a **védelmi csoport**nevét, és válassza ki az előnyben részesített *védelmi módszereket*. Kattintson a **Tovább** gombra.
+4. Az **adatvédelmi módszer kiválasztása** lapon adja meg a **védelmi csoport**nevét, és válassza ki az előnyben részesített *védelmi módszereket*. Kattintson a **Tovább**gombra.
 
     ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -153,7 +149,7 @@ Miután a korábban ismertetett módon konfigurálta a DPM-t és a SharePoint-fa
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a kiválasztott beállításokat az **Összefoglalás** lapon, majd kattintson a **csoport létrehozása**elemre. A védelmi csoport létrehozása után sikert jelző üzenet jelenik meg.
 
-    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>SharePoint-elem visszaállítása a lemezről a DPM használatával
 
@@ -173,7 +169,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 5. A helyreállításhoz különböző helyreállítási pontokat is megkereshet, és kiválaszthatja a helyreállítani kívánt adatbázist vagy elemet. Válassza a **dátum > a helyreállítási idő**lehetőséget, majd válassza ki a megfelelő **adatbázist > SharePoint-farm > helyreállítási pont > elem**.
 
     ![DPM SharePoint-Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kattintson a jobb gombbal az elemre, majd **válassza a helyreállítás elemet** a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább** gombra.
+6. Kattintson a jobb gombbal az elemre, majd **válassza a helyreállítás elemet** a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább**gombra.
 
     ![Visszaállítási kijelölés áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Válassza ki a végrehajtani kívánt helyreállítás típusát, majd kattintson a **tovább**gombra.
@@ -197,7 +193,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     A DPM csatolja a SharePoint-elemeket futtató tartalom-adatbázist az ideiglenes SQL Server példányhoz. A tartalom-adatbázisból a DPM-kiszolgáló helyreállítja az elemet, és a DPM-kiszolgálón elhelyezi az átmeneti fájl helyét. A DPM-kiszolgáló átmeneti helyén található helyreállított elemnek most exportálva kell lennie az átmeneti helyre a SharePoint-farmon.
 
     ![Előkészítési Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Válassza a **helyreállítási beállítások megadása lehetőséget**, majd alkalmazza a biztonsági beállításokat a SharePoint-farmra, vagy alkalmazza a helyreállítási pont biztonsági beállításait. Kattintson a **Tovább** gombra.
+10. Válassza a **helyreállítási beállítások megadása lehetőséget**, majd alkalmazza a biztonsági beállításokat a SharePoint-farmra, vagy alkalmazza a helyreállítási pont biztonsági beállításait. Kattintson a **Tovább**gombra.
 
     ![Helyreállítási beállítások](./media/backup-azure-backup-sharepoint/recovery-options.png)
 

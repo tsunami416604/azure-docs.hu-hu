@@ -1,20 +1,15 @@
 ---
-title: Azure-beli virtuális gépek nagy léptékű biztonsági mentése
+title: Oktatóanyag – Azure-beli virtuális gépek nagy léptékű biztonsági mentése
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Recovery Services-tárolót, hogyan határozhat meg biztonsági mentési házirendet, és hogyan készíthet egyszerre több virtuális gép biztonsági mentését.
-keywords: virtuális gép biztonsági mentése; vm biztonsági mentése; Azure-beli virtuális gép biztonsági mentése; biztonsági mentés és vészhelyreállítás
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747017"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171853"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
@@ -29,7 +24,7 @@ Amikor adatok biztonsági mentését végzi az Azure-ban, egy Recovery Services-
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -37,7 +32,7 @@ A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a véde
 
 1. A bal oldali menüben válassza a **Minden szolgáltatás** elemet, és a szolgáltatások listájába írja be a *Recovery Services* kifejezést. A gépelés során a rendszer szűri az erőforrások listáját. Amikor meglátja a Recovery Services-tárolók elemet a listában, kattintson rá a Recovery Services-tárolók menü megnyitásához.
 
-    ![A Recovery Services-tárolók menü megnyitása](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![A Recovery Services-tárolók menü megnyitása](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** gombra a helyreállítási tárok menüjének megnyitásához.
 
@@ -171,7 +166,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
     A tároló törlése után újra a helyreállítási tárak listája jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 

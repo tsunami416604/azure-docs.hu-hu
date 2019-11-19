@@ -1,18 +1,14 @@
 ---
 title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5adcf252fed4ac94ae4261886b24eb087424bdbe
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533144"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172068"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -121,7 +117,7 @@ A Azure Backup támogatja a titkosítást az átvitel közbeni és a nyugalmi ad
 **Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek DPM-mel** | ![Igen][green] | ![Igen][green]
 **Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek MABS-mel** | ![Igen][green] | ![Igen][green]
 
-## <a name="compression-support"></a>Tömörítés támogatása
+## <a name="compression-support"></a>A tömörítés támogatása
 
 A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom tömörítését támogatja.
 
@@ -130,8 +126,8 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 
 **Gép** | **Tömörítés a MABS/DPM (TCP)** | **Tömörítés a tárolóba (HTTPS)**
 --- | --- | ---
-**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | n/a | ![Igen][green]
-**Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | n/a | n/a
+**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | NA | ![Igen][green]
+**Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | NA | NA
 **Biztonsági mentés helyszíni/Azure-alapú gépeken a MABS/DPM használatával** | ![Igen][green] | ![Igen][green]
 
 ## <a name="retention-limits"></a>Megőrzési korlátok

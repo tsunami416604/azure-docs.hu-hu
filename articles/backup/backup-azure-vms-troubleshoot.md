@@ -1,19 +1,15 @@
 ---
-title: Az Azure Virtual Machines szolgáltatással kapcsolatos biztonsági mentési hibák elhárítása
+title: Azure-beli virtuális gépek biztonsági mentésével kapcsolatos hibák elhárítása
 description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével és visszaállításával kapcsolatos hibák elhárítását ismerteti.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 0be9973aed1aaf5074c3b61d6249b95e8fd45a64
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e5ee0e06d444db809ce3e168f8883048eaf45e27
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090906"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172465"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 

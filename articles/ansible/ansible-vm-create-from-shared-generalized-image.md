@@ -3,17 +3,13 @@ title: Oktatóanyag – virtuális gép vagy virtuálisgép-méretezési csoport
 description: Ismerje meg, hogyan hozhat létre virtuális gépeket vagy virtuálisgép-méretezési csoportokat a Ansible használatával a megosztott képtárban lévő általánosított rendszerkép alapján.
 keywords: Ansible, Azure, devops, bash, ötletekbõl, virtuális gép, virtuálisgép-méretezési csoport, megosztott képgyűjtemény
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808948"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155836"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Oktatóanyag: virtuális gép vagy virtuálisgép-méretezési csoport létrehozása az Azure megosztott rendszerkép-katalógusból a Ansible használatával
 
@@ -46,7 +42,7 @@ A minta-forgatókönyvek teljes készletét kétféleképpen szerezheti be:
 
 A `vars.yml` fájl tartalmazza az oktatóanyaghoz tartozó összes minta forgatókönyv által használt változókat. A fájl szerkesztésével egyedi neveket és értékeket adhat meg.
 
-Az első példaként szolgáló `00-prerequisites.yml` az oktatóanyag elvégzéséhez szükséges tudnivalókat hozza létre:
+Az első példaként szolgáló forgatókönyv `00-prerequisites.yml` létrehozza az oktatóanyag elvégzéséhez szükséges tudnivalókat:
 - Egy erőforráscsoport, amely egy olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik.
 - Egy virtuális hálózat; alhálózat a virtuális gép nyilvános IP-címe és hálózati adaptere.
 - A forrásként szolgáló virtuális gép, amely az általánosított rendszerkép létrehozásához használatos.
@@ -110,7 +106,7 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook 00-prerequisites.yml
 ```
 
-A [Azure Portal](https://portal.azure.com)ellenőrizze a `vars.yml` mezőben megadott erőforráscsoportot az új virtuális gép és a létrehozott különböző erőforrások megtekintéséhez.
+A [Azure Portal](https://portal.azure.com)ellenőrizze a `vars.yml`ban megadott erőforráscsoportot az új virtuális gép és a létrehozott különböző erőforrások megtekintéséhez.
 
 ## <a name="generalize-the-vm-and-create-a-custom-image"></a>A virtuális gép általánosítása és egyéni rendszerkép létrehozása
 
@@ -146,7 +142,7 @@ Ellenőrizze az erőforráscsoportot, és ellenőrizze, hogy `testimagea` megjel
 
 ## <a name="create-the-shared-image-gallery"></a>A megosztott Képtár létrehozása
 
-A képkatalógus a lemezképek megosztására és kezelésére szolgáló tárház. A `02-create-shared-image-gallery.yml` forgatókönyvben szereplő forgatókönyv-kód egy megosztott képtárat hoz létre az erőforráscsoporthoz.
+A képkatalógus a lemezképek megosztására és kezelésére szolgáló tárház. A `02-create-shared-image-gallery.yml` példaként szolgáló forgatókönyv-programkódja létrehoz egy megosztott képtárat az erőforráscsoporthoz.
 
 ```yml
 - hosts: localhost
@@ -169,11 +165,11 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-Ekkor megjelenik egy új katalógus, `myGallery`, az erőforráscsoporthoz.
+Ekkor megjelenik egy új katalógus, `myGallery`az erőforráscsoporthoz.
 
 ## <a name="create-a-shared-image-and-image-version"></a>Megosztott rendszerkép és rendszerkép-verzió létrehozása
 
-A következő forgatókönyvben a `03a-create-shared-image-generalized.yml` egy rendszerkép-definíciót és egy rendszerkép-verziót hoz létre.
+A következő forgatókönyvben `03a-create-shared-image-generalized.yml` létrehoz egy rendszerkép-definíciót és egy rendszerkép-verziót.
 
 A képdefiníciók közé tartoznak a rendszerképek típusa (Windows vagy Linux), a kibocsátási megjegyzések, valamint a minimális és a maximális memória-követelmények. A rendszerkép verziója a rendszerkép verziója. A katalógus, a kép definíciója és a lemezkép verziója segít a logikai csoportokba tartozó képek rendszerezésében. 
 
@@ -264,7 +260,7 @@ ansible-playbook 04a-create-vm-using-generalized-image.yml
 
 ## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Virtuálisgép-méretezési csoport létrehozása az általánosított rendszerkép alapján
 
-Egy virtuálisgép-méretezési csoport is létrehozható az általánosított rendszerkép alapján. Ehhez futtassa a `05a-create-vmss-using-generalized-image.yml` parancsot.
+Egy virtuálisgép-méretezési csoport is létrehozható az általánosított rendszerkép alapján. Ehhez futtassa `05a-create-vmss-using-generalized-image.yml`.
 
 ```yml
 - hosts: localhost
@@ -297,7 +293,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>A katalógussal kapcsolatos információk beolvasása
 
-A katalógussal, a képdefinícióval és a verzióval kapcsolatos információkat a `06-get-info.yml` futtatásával érheti el.
+A katalógussal, a képdefinícióval és a verzióval kapcsolatos információkat a `06-get-info.yml`futtatásával kérheti le.
 
 ```yml
 - hosts: localhost
@@ -331,7 +327,7 @@ ansible-playbook 06-get-info.yml
 
 ## <a name="delete-the-shared-image"></a>Megosztott rendszerkép törlése
 
-A katalógus erőforrásainak törléséhez tekintse meg a következőt: példa forgatókönyv `07-delete-gallery.yml`. Erőforrások törlése fordított sorrendben. Először törölje a rendszerkép verzióját. Az összes rendszerkép-verzió törlése után törölheti a rendszerkép definícióját. Az összes rendszerkép-definíció törlését követően törölheti a katalógust.
+A katalógus erőforrásainak törléséhez tekintse meg a példa forgatókönyvek `07-delete-gallery.yml`. Erőforrások törlése fordított sorrendben. Először törölje a rendszerkép verzióját. Az összes rendszerkép-verzió törlése után törölheti a rendszerkép definícióját. Az összes rendszerkép-definíció törlését követően törölheti a katalógust.
 
 ```yml
 - hosts: localhost

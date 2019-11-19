@@ -1,18 +1,14 @@
 ---
 title: SQL Server adatbázisok biztonsági mentése az Azure-ba
-description: Ez az oktatóanyag a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.topic: tutorial
+description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
+ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 811f04edb4d5f0326d0af629146b7cee10424df8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162200"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172651"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -22,9 +18,9 @@ SQL Server adatbázisok olyan kritikus fontosságú munkaterhelések, amelyek al
 
 Ez a megoldás kihasználja az SQL natív API-kat az SQL-adatbázisok biztonsági mentésének elvégzéséhez.
 
-* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi azokat az adatbázisokban, Azure Backup a szolgáltatás a számítási feladatok biztonsági mentési bővítményét a virtuális gépen a `AzureBackupWindowsWorkload` kiterjesztéssel telepíti.
+* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi azokat az adatbázisokban, Azure Backup a szolgáltatás a munkaterhelési biztonsági mentési bővítményt telepíti a virtuális gépen a `AzureBackupWindowsWorkload` bővítmény nevével.
 * Ez a bővítmény egy koordinátorból és egy SQL-beépülő modulból áll. Míg a koordinátor felelős a munkafolyamatok különböző műveletekhez, például a biztonsági mentés konfigurálásához, a biztonsági mentéshez és a visszaállításhoz, a beépülő modul felelős a tényleges adatforgalomért.
-* A virtuális gépen lévő adatbázisok felderítéséhez Azure Backup létrehozza a (z) `NT SERVICE\AzureWLBackupPluginSvc` fiókot. Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. A `NT SERVICE\AzureWLBackupPluginSvc` fiók egy [virtuális szolgáltatásfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), ezért nem igényel jelszavas kezelést. Azure Backup kihasználja az adatbázis-felderítési/-lekérdezési `NT AUTHORITY\SYSTEM` fiókot, így ennek a fióknak nyilvános bejelentkezésnek kell lennie az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](#set-vm-permissions).
+* A virtuális gépen lévő adatbázisok felderítéséhez Azure Backup létrehozza a fiókot `NT SERVICE\AzureWLBackupPluginSvc`. Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. A `NT SERVICE\AzureWLBackupPluginSvc` fiók egy [virtuális szolgáltatásfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), ezért nem igényel jelszavas kezelést. Azure Backup kihasználja az adatbázis-felderítés/-lekérdezés `NT AUTHORITY\SYSTEM`-fiókját, így ennek a fióknak nyilvános bejelentkezésnek kell lennie az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](#set-vm-permissions).
 * Miután elindította a védelem konfigurálását a kiválasztott adatbázisokon, a Backup szolgáltatás beállítja a koordinátort a biztonsági mentési ütemtervekkel és egyéb házirend-adatokkal, amelyeket a bővítmény a virtuális gépen helyileg gyorsítótáraz.
 * Az ütemezett időpontban a koordinátor kommunikál a beépülő modullal, és elindítja a biztonsági mentési adatok továbbítását az SQL Serverről a VDI használatával.  
 * A beépülő modul közvetlenül a Recovery Services-tárolóba küldi az adatokat, így nincs szükség átmeneti helyre. Az adattitkosítás és a Azure Backup szolgáltatás tárolja a Storage-fiókokban.
@@ -47,7 +43,7 @@ Mielőtt elkezdené, ellenőrizze az alábbiakat:
 **Támogatott központi telepítések** | Az SQL Marketplace Azure-beli virtuális gépek és a nem piactér (SQL Server manuálisan telepített) virtuális gépek támogatottak.
 **Támogatott térségek** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br> Észak-Svájc, Nyugat-Svájc <br> Közép-Franciaország <br> Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2
 **Támogatott operációs rendszerek** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> A Linux jelenleg nem támogatott.
-**Támogatott SQL Server verziók** | SQL Server 2019, SQL Server 2017 a [termék életciklusának keresése lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS a [termék életciklusa lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, standard, web, Developer, Express.
+**Támogatott SQL Server verziók** | SQL Server 2019, SQL Server 2017 a [termék életciklusának keresése lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS a [termék életciklusa lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve a virtuális gépen
 
 ## <a name="feature-consideration-and-limitations"></a>Funkciókkal kapcsolatos szempontok és korlátozások
@@ -64,7 +60,7 @@ Mielőtt elkezdené, ellenőrizze az alábbiakat:
 * Egy tárolóban akár **2000** SQL Server adatbázisra is készíthet biztonsági mentést. Több tárolót is létrehozhat abban az esetben, ha nagyobb számú adatbázisra van szüksége.
 * A biztonsági mentést akár **50** adatbázisra is konfigurálhatja egy menet közben. Ez a korlátozás segít optimalizálni a biztonsági mentési terheléseket.
 * Az adatbázisok akár **2 TB** -os méretekben is támogatottak; ennél nagyobb méretek esetén a teljesítménnyel kapcsolatos problémák merülhetnek fel.
-* Ahhoz, hogy a kiszolgálókon hány adatbázis védhető védelemmel, olyan tényezőket kell figyelembe venni, mint például a sávszélesség, a virtuális gép mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [töltse le](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-tervezőt, amely a rendelkezésre álló adatbázisok hozzávetőleges számát adja meg a virtuális gép erőforrásai és a biztonsági mentési szabályzat alapján.
+* Ahhoz, hogy a kiszolgálókon hány adatbázis védhető védelemmel, olyan tényezőket kell figyelembe vennie, mint például a sávszélesség, a virtuális gépek mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [töltse le](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-Plannert, amely a virtuálisgép-erőforrások és a biztonsági mentési szabályzat alapján a kiszolgálón elérhető adatbázisok hozzávetőleges számát adja meg.
 * Rendelkezésre állási csoportok esetén a biztonsági mentések a különböző csomópontokból származnak, néhány tényező alapján. A rendelkezésre állási csoport biztonsági mentési viselkedését az alábbiakban összegzi.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Az Always On rendelkezésre állási csoportok esetén a működés biztonsági mentése
@@ -180,7 +176,7 @@ Adja hozzá az **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc**
 
 7. Kattintson az OK gombra.
 8. Ismételje meg ugyanezeket a lépéseket (1-7 fent) a SQL Server-példányhoz tartozó NT Service\AzureWLBackupPluginSvc-bejelentkezés hozzáadásához. Ha a bejelentkezés már létezik, győződjön meg róla, hogy a rendszergazda kiszolgálói szerepkörrel rendelkezik, és az állapota területen a jogosultsággal rendelkezik az adatbázismotor és a bejelentkezés engedélyezettként való bekapcsolásához.
-9. Az engedély megadását követően **újra felfedezheti** a-t a portálon: tár **->** biztonsági mentési infrastruktúra **->** számítási feladat az Azure virtuális gépen:
+9. Az engedélyek megadása után a portálon **újra felfedezheti** a virtuális gépeket: tár **->** biztonsági mentési infrastruktúra **->** munkaterhelés az Azure VM-ben:
 
     ![A Azure Portalban lévő adatbázisok újbóli felderítése](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

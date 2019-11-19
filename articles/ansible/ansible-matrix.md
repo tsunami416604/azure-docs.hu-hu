@@ -3,17 +3,13 @@ title: Ansible modul és Version Matrix az Azure-hoz | Microsoft Docs
 description: Az Azure-hoz készült Ansible modul és Version Matrix
 keywords: Ansible, szerepkörök, mátrix, verzió, Azure, devops
 ms.topic: reference
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 275dca40ab20c222da2b9115f9a5dc141228c766
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385470"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155984"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és a verziómátrix
 
@@ -26,7 +22,7 @@ A következő modulok közvetlenül a távoli gazdagépeken vagy a forgatóköny
 Ezek a modulok a Ansible hivatalos kiadásában és a következő Microsoft forgatókönyv-szerepkörökben érhetők el.
 
 > [!NOTE]
-> A Ansible 2,9-től kezdődően az összes * _facts modult átnevezték * _info, hogy megfeleljenek a Ansible elnevezési konvenciónak. A régi és az átnevezett modulok úgy vannak összekapcsolva, hogy elavult figyelmeztetést jelenítenek meg, az összes modul pedig a korábban leírtaknak megfelelően működik.
+> A Ansible 2,9-től kezdődően az összes * _facts modult átnevezték * _infora, hogy megfeleljenek a Ansible elnevezési konvenciónak. A régi és az átnevezett modulok úgy vannak összekapcsolva, hogy elavult figyelmeztetést jelenítenek meg, az összes modul pedig a korábban leírtaknak megfelelően működik.
 
 | Ansible modul az Azure-hoz                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible 2,9 | Ansible szerepkör | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
@@ -98,7 +94,7 @@ Ezek a modulok a Ansible hivatalos kiadásában és a következő Microsoft forg
 | azure_rm_virtualnetworkgateway              | -            | -                         | -          | -            | Igen          | Igen          | Igen          |
 | azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Igen          | Igen          | Igen          |
 | azure_rm_virtualnetworkpeering_info         | -            | -                         | -          | -            | -            | Igen          | Igen          |
-| **Storage**                    |           |                          |                          |                            |           |           |         |
+| **Tárolás**                    |           |                          |                          |                            |           |           |         |
 | azure_rm_manageddisk                        | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_manageddisk_info                  | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_storageaccount                     | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          | Igen          |
@@ -110,7 +106,7 @@ Ezek a modulok a Ansible hivatalos kiadásában és a következő Microsoft forg
 | azure_rm_webapp                             | -            | -                         | -          | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_webapp_info                       | -            | -                         | -          | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_webappslot                         | -            | -                         | -          | -            | Igen          | Igen          | Igen          |
-| **Containers**                    |           |                          |                          |                            |           |           |          |
+| **Tárolók**                    |           |                          |                          |                            |           |           |          |
 | azure_rm_acs                                | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_aks                                | -            | -                           | Igen          | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_aks_info                          | -            | -                           | Igen          | Igen          | Igen          | Igen          | Igen          |
@@ -223,7 +219,7 @@ Ezek a modulok a Ansible hivatalos kiadásában és a következő Microsoft forg
 
 A [azure_preview_module](https://galaxy.ansible.com/Azure/azure_preview_modules/) forgatókönyv-szerepkör tartalmazza az összes legújabb Azure-modult. A frissítések és a hibajavítások a hivatalos Ansible-kiadásnál jobban megvalósíthatók. Ha Ansible-t használ az Azure Resource kiépítési célokra, javasoljuk, hogy telepítse a `azure_preview_module` forgatókönyv-szerepkört.
 
-A `azure_preview_module` forgatókönyv-szerepkör három hetente jelenik meg.
+A `azure_preview_module` forgatókönyvek szerepköre három hetente jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

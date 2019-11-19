@@ -1,19 +1,15 @@
 ---
-title: Az Azure-ban tárolt adatvisszaállítás Windows Server-Azure Backup
+title: Az Azure-ban tárolt adatvisszaállítás Windows Serverre
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.author: dacurwin
-ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012198"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172788"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windowsba az Azure Resource Manager üzemi modell használatával
 

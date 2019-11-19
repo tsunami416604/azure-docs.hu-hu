@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970395"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158310"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -36,7 +36,7 @@ Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhat
 
 A főkiszolgáló bármely [Azure Database for MySQL régióban](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)elérhető.  A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replika régiók érhetők el a fő régiótól függően.
 
-[@no__t – 1Read replikák régiói](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![olvasási replika régiói](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiók bármelyikében létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. A támogatott univerzális replika-régiók a következők:
@@ -51,9 +51,9 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 
 Azonban a következő szempontokat kell figyelembe venni: 
 
-* Regionális elérhetőség: Azure Database for MySQL az USA 2. nyugati régiójában, Közép-Franciaországban, Észak-Egyesült Arab Emírségekben és Közép-Németországban érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Azure Database for MySQL az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
     
-* UNI-irányú párok: Egyes Azure-régiók csak egy irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
+* Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
    Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
 
 
@@ -69,7 +69,7 @@ Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-
 
 ## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
 
-Replika létrehozásakor nem örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
+A létrehozáskor a replika örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezt követően ezek a szabályok függetlenek a főkiszolgálótól.
 
 A replika örökli a rendszergazdai fiókot a főkiszolgálóról. A főkiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
 
@@ -85,7 +85,7 @@ A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
 A Azure Database for MySQL a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
 
-Ez a metrika a MySQL `SHOW SLAVE STATUS` parancsában elérhető `seconds_behind_master` metrika használatával számítható ki.
+Ezt a metrikát a MySQL `SHOW SLAVE STATUS` parancsában elérhető `seconds_behind_master` metrika használatával számítjuk ki.
 
 Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
 
@@ -122,6 +122,8 @@ A replikát ugyanazzal a kiszolgáló-konfigurációval hozza létre a rendszer,
 > [!IMPORTANT]
 > Mielőtt a főkiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
+A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai a főkiszolgálóról a replikára öröklődnek a replika létrehozásakor. Ezt követően a replika szabályai függetlenek.
+
 ### <a name="stopped-replicas"></a>Leállított replikák
 
 Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.
@@ -152,7 +154,7 @@ A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-vari
 - Győződjön meg arról, hogy a fő kiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a fő és a replikák között.
 - A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: biztonsági mentési szabályzatok létrehozása a REST API használatával'
+title: Biztonsági mentési szabályzatok létrehozása REST API használatával
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet biztonsági mentési házirendeket a REST API használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747592"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173437"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
 
@@ -50,7 +44,7 @@ A `{policyName}` és a `{vaultName}` az URI-ban található. A kérés törzséb
 
 Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
 
-|Név  |Kötelező  |Típus  |Leírás  |
+|Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
 |címkét     |         | Objektum        |  Erőforráscímkék       |
@@ -158,7 +152,7 @@ A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művele
 
 Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [Védelem PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadott    |
@@ -281,7 +275,7 @@ A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsé
 
 Ha egy házirend már használatban van egy elem védelmére, a házirendben szereplő összes frissítés az összes kapcsolódó elem [védelmét is módosítja](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Védelem engedélyezése a nem védett Azure](backup-azure-arm-userestapi-backupazurevms.md)-beli virtuális gépek számára.
 

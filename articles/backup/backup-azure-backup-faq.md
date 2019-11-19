@@ -1,18 +1,14 @@
 ---
-title: Válaszok a Azure Backup funkcióival kapcsolatos gyakori kérdésekre
+title: Válaszok a gyakori kérdésekre
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: efd2959547e13872bfa73a0a8e4b9fda62ea5728
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074321"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173229"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – gyakran ismételt kérdések
 
@@ -96,6 +92,8 @@ Windows Storage Server 2012 R2 64 bit | Standard, Workgroup, Essential | A legú
 Windows Storage Server 2012 64 bit | Standard, Workgroup | A legújabb szervizcsomagokkal/frissítésekkel.
 Windows Server 2008 R2 SP1 64 bites | Standard, Enterprise, Datacenter, Foundation | A legújabb frissítésekkel.
 Windows Server 2008 64 bit | Standard, Enterprise, Datacenter | A legújabb frissítésekkel.
+
+A Azure Backup nem támogatja a 32 bites operációs rendszereket.
 
 Az Azure VM Linux biztonsági mentések esetén [a Azure Backup támogatja az Azure által támogatott disztribúciók listáját](../virtual-machines/linux/endorsed-distros.md), kivéve a Core os Linux és a 32 bites operációs rendszert. Más, saját linuxos disztribúciók is működhetnek, amíg a virtuálisgép-ügynök elérhető a virtuális gépen, és a Python támogatása is létezik.
 
@@ -218,7 +216,7 @@ Az Azure Backup-ügynök használatakor a titkosítási kulcsnak legalább 16 ka
 
 A biztonsági másolatok titkosításához használt kulcs csak a webhelyen van. A Microsoft nem tárol másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha rossz helyre állítja a kulcsot, a Microsoft nem tudja helyreállítani a biztonsági mentési adatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdések:
 

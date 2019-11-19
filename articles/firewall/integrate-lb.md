@@ -1,64 +1,64 @@
 ---
-title: Az Azure tűzfal integrálása az Azure Standard Load Balancer
-description: 'Útmutató: Azure tűzfal integrálása az Azure Standard Load Balancer'
+title: Az Azure Firewall integrálása az Azure Standard Load Balancerrel
+description: Egy Azure Firewall integrálhat egy virtuális hálózatba egy Azure-standard Load Balancer (nyilvános vagy belső).
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/1/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193775"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167077"
 ---
-# <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure tűzfal integrálása az Azure Standard Load Balancer
+# <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure Firewall integrálása az Azure Standard Load Balancerrel
 
-Az Azure-tűzfalak integrálható az Azure Standard Load Balancerhez (nyilvános vagy belső) rendelkező virtuális hálózatban. 
+Egy Azure Firewall integrálhat egy virtuális hálózatba egy Azure-standard Load Balancer (nyilvános vagy belső). 
 
-Az előnyben részesített terv, hogy a belső terheléselosztó integrálása az Azure tűzfal, mivel ez egy sokkal egyszerűbb Tervező. Nyilvános load balancer is használhatja, ha már rendelkezik egy telepített, és tartsa helyen szeretne. Azonban szüksége, vegye figyelembe, hogy a nyilvános load balancer forgatókönyv funkciókat, azzal aszimmetrikus útválasztási problémát.
+Az előnyben részesített kialakítás egy belső terheléselosztó integrálása az Azure-tűzfallal, mivel ez sokkal egyszerűbb kialakítás. Ha már rendelkezik egy központilag telepített szolgáltatással, és meg szeretné őrizni a helyet, használhat nyilvános Load balancert is. Azonban tisztában kell lennie egy olyan aszimmetrikus útválasztási problémával, amely képes a nyilvános terheléselosztó-forgatókönyvvel való működés megszakítására.
 
-Az Azure Load Balancer kapcsolatos további információkért lásd: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
+További információ a Azure Load Balancerről: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
-## <a name="public-load-balancer"></a>Nyilvános load balancer
+## <a name="public-load-balancer"></a>Nyilvános Load Balancer
 
-Nyilvános load balancer, az a load balancer nyilvános előtérbeli IP-címmel van telepítve.
+Nyilvános terheléselosztó esetén a terheléselosztó nyilvános előtérbeli IP-címmel van üzembe helyezve.
 
 ### <a name="asymmetric-routing"></a>Aszimmetrikus útválasztás
 
-Az aszimmetrikus útválasztás, ahol egy csomag vesz igénybe egy elérési útvonalat a cél és a egy másik elérési utat vesz igénybe, amikor visszatér a forrás. Ez a probléma akkor fordul elő, ha egy alhálózathoz van a tűzfal magánhálózati IP-címet fog az alapértelmezett útvonal és a egy nyilvános terheléselosztó használ. Ebben az esetben a load balancer bejövő forgalmat a nyilvános IP-címének keresztül érkezik, de a visszatérési elérési halad végig a tűzfal magánhálózati IP-címet. Mivel a tűzfal állapotalapú, a visszatérő csomag eldobja, mert a tűzfalon még nem ismeri az ilyen munkamenetet létesítenek.
+Az aszimmetrikus útválasztás azt adja meg, hogy egy csomag hogyan fogadja a célhelyet, és a forráshoz való visszatéréskor egy másik elérési utat vesz fel. Ez a probléma akkor fordul elő, ha egy alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére kerül, és nyilvános Load balancert használ. Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó jellegű, a rendszer eldobja a visszaadott csomagot, mert a tűzfal nem ismeri az adott munkamenetet.
 
-### <a name="fix-the-routing-issue"></a>Az útválasztási problémát
+### <a name="fix-the-routing-issue"></a>Az útválasztási probléma megoldása
 
-Egy alhálózathoz, az Azure-tűzfalak telepítésekor egy lépéssel az alapértelmezett útvonal keresztül a tűzfal található a AzureFirewallSubnet a privát IP-alhálózat irányítható át csomagok létrehozása. További információkért lásd: [oktatóanyag: Telepítse és konfigurálja az Azure portal segítségével Azure tűzfal](tutorial-firewall-deploy-portal.md#create-a-default-route).
+Ha egy alhálózaton helyez üzembe egy Azure Firewall, az egyik lépés egy alapértelmezett útvonal létrehozása az alhálózathoz, amely a AzureFirewallSubnet található tűzfal magánhálózati IP-címén keresztül irányítja a csomagokat. További információ: [oktatóanyag: Azure Firewall telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md#create-a-default-route).
 
-A tűzfal töltsünk a terheléselosztói forgatókönyv, ha azt szeretné, az internetes forgalmat eljussanak a tűzfal nyilvános IP-címet. Itt a tűzfalon a terheléselosztó nyilvános IP-címet a tűzfal-szabályok és NAT a csomagok vonatkozik. Ez az, ha a probléma akkor fordul elő. Csomagok nyilvános IP-címet a tűzfalon az ügyfélszámítógépekre érkeznek, de térjen vissza a tűzfalon keresztül a magánhálózati IP-cím (az alapértelmezett útvonal használatával).
-A probléma elkerülése érdekében a tűzfala nyilvános IP-cím további gazdagépcsoport útvonal létrehozása. A tűzfal nyilvános IP-cím küldött csomagok az interneten keresztül továbbítódnak. Ezzel elkerülhető, hogy az alapértelmezett útvonal véve a tűzfal magánhálózati IP-címet.
+Amikor bevezeti a tűzfalat a terheléselosztó-forgatókönyvbe, azt szeretné, hogy az internetes forgalom a tűzfal nyilvános IP-címén legyen elérhető. Innen a tűzfal alkalmazza a tűzfal szabályait, és a csomagokat a terheléselosztó nyilvános IP-címére NAT. A probléma oka. A csomagok a tűzfal nyilvános IP-címére érkeznek, de a magánhálózati IP-címmel térnek vissza a tűzfalra (az alapértelmezett útvonal használatával).
+A probléma elkerüléséhez hozzon létre egy további gazdagépi útvonalat a tűzfal nyilvános IP-címéhez. A tűzfal nyilvános IP-címére irányuló csomagok irányítása az interneten keresztül történik. Ezzel elkerülheti az alapértelmezett útvonalat a tűzfal magánhálózati IP-címére.
 
 ![Aszimmetrikus útválasztás](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-Például a következő útvonalakat a nyilvános IP-cím 13.86.122.41 és magánhálózati IP-cím 10.3.1.4 tűzfalak vannak.
+Az alábbi útvonalak például a nyilvános IP-13.86.122.41 és a magánhálózati IP-10.3.1.4 tartozó tűzfalakra vonatkoznak.
 
 ![Útválasztási táblázat](media/integrate-lb/route-table.png)
 
 ## <a name="internal-load-balancer"></a>Belső terheléselosztó
 
-A belső terheléselosztót a terheléselosztó magánhálózati előtérbeli IP-címmel van telepítve.
+Belső terheléselosztó esetén a terheléselosztó saját előtérbeli IP-címmel van üzembe helyezve.
 
-Ebben a forgatókönyvben az aszimmetrikus útválasztás probléma van. A bejövő csomagok érkeznek a nyilvános IP-címet a tűzfal, első fordítja le a terheléselosztó magánhálózati IP-címet, és adja vissza a tűzfal magánhálózati IP-cím az ugyanazon visszatérési elérési út alapján.
+Ez a forgatókönyv nem rendelkezik aszimmetrikus útválasztási problémával. A bejövő csomagok a tűzfal nyilvános IP-címére érkeznek, lefordítva a terheléselosztó magánhálózati IP-címére, majd visszatérnek a tűzfal magánhálózati IP-címére ugyanazzal a visszatérési útvonallal.
 
-Tehát ebben a forgatókönyvben a nyilvános terheléselosztói forgatókönyv hasonló telepíthet, de nincs szükség a tűzfal nyilvános IP-cím gazdaútvonalat.
+Így a nyilvános terheléselosztó-forgatókönyvhöz hasonlóan telepítheti ezt a forgatókönyvet, de nincs szükség a tűzfal nyilvános IP-címének elérési útjára.
 
-## <a name="additional-security"></a>Fokozott biztonság
+## <a name="additional-security"></a>További biztonság
 
-A fokozott biztonsága érdekében az elosztott terhelésű forgatókönyvben, használhatja a hálózati biztonsági csoportok (NSG-k).
+Az elosztott terhelésű forgatókönyvek biztonságának növelése érdekében használhat hálózati biztonsági csoportokat (NSG).
 
-Például létrehozhat egy NSG-t a háttérrendszer alhálózatát, ahol az elosztott terhelésű virtuális gépek találhatók meg. Lehetővé teszik a tűzfal IP-cím és port érkező bejövő forgalmat.
+Létrehozhat például egy NSG a háttérbeli alhálózaton, ahol a terheléselosztásos virtuális gépek találhatók. A tűzfal IP-címéről/portjáról származó bejövő forgalom engedélyezése.
 
-NSG-kkel kapcsolatos további információkért lásd: [biztonsági csoportok](../virtual-network/security-overview.md).
+További információ a NSG: [biztonsági csoportok](../virtual-network/security-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan [üzembe helyezése és konfigurálása az Azure-tűzfalak](tutorial-firewall-deploy-portal.md).
+- Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

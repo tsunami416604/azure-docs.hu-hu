@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall GYIK
-description: Azure Firewall gyakori kérdések
+description: Azure Firewall kapcsolatos gyakori kérdések. Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 418fafdec9bd44fa3682e33cc53bbca9c716dcf2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596781"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167035"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -88,7 +88,7 @@ Lásd: [Azure Firewall díjszabása](https://azure.microsoft.com/pricing/details
 
 Használhatja Azure PowerShell felszabadítási és *lefoglalási* metódusokat.
 
-Példa:
+Például:
 
 ```azurepowershell
 # Stop an existing firewall

@@ -1,20 +1,20 @@
 ---
 title: Mi az Azure Firewall?
-description: Az Azure Firewall szolgáltatásainak ismertetése.
+description: Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi.
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 11/19/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5be1a673ac456b0896ce83afcb469e4ac6b8b40a
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7b44597b24adce05498eed273c9494cae3360ed6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001327"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168798"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -65,7 +65,7 @@ Az FQDN-címkékkel egyszerűen engedélyezheti a jól ismert Azure-szolgáltat�
 
 A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatási címkét, és nem adhatja meg, hogy mely IP-címek szerepeljenek a címkén belül. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
-## <a name="threat-intelligence"></a>Fenyegetések felderítése
+## <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
 
 Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy azokba irányuló adatforgalomról való riasztáshoz és annak letiltásához. Az IP-címek és a tartományok a Microsoft Threat Intelligence hírcsatornájáról származnak.
 
@@ -94,7 +94,7 @@ A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a
 
 Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC) és a Nemzetközi Szabványügyi Szervezet (ISO) szabványnak megfelelő. Jelenleg a következőt támogatja: SOC 1 Type 2, SOC 2 Type 2, SOC 3, PCI DSS és ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
 
-További információ: a [Microsoft megfelelőségi útmutatója](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
+További információ: [Microsoft megfelelőségi útmutató](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -116,8 +116,8 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az SQL FQDN szűrése csak proxy módban támogatott (1433-es port)|Azure SQL Database, Azure SQL Data Warehouse és Azure SQL felügyelt példány esetén:<br><br>Az előzetes verzióban az SQL FQDN-szűrés csak proxy módban támogatott (1433-es port).<br><br>Azure SQL-IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazási szabályokban.|Az SQL átirányítási módban, amely az alapértelmezett, ha az Azure-on keresztül csatlakozik, ehelyett a Azure Firewall hálózati szabályok részeként használhatja az SQL-szolgáltatás címkéjét.
 |A 25-ös TCP-porton nem engedélyezett a kimenő forgalom| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös port elsődlegesen a nem hitelesített e-mailek kézbesítéséhez használatos. Ez a virtuális gépek alapértelmezett platform-viselkedése. További információ: [a kimenő SMTP-kapcsolatokkal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). A virtuális gépektől eltérően azonban jelenleg nem lehet engedélyezni ezt a funkciót Azure Firewallon.|Kövesse a javasolt módszert az e-mailek küldéséhez az SMTP hibaelhárítási cikkében leírtak szerint. Másik lehetőségként zárja ki azt a virtuális gépet, amelynek a kimenő SMTP-hozzáférésre van szüksége az alapértelmezett útvonalról a tűzfalra, ehelyett konfigurálja a kimenő hozzáférést közvetlenül az internethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása a Azure Portal @ no__t-0 használatával
+- [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)
 - [Azure Firewall-tesztkörnyezet létrehozása](scripts/sample-create-firewall-test.md)

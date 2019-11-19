@@ -1,17 +1,17 @@
 ---
-title: Valós idejű alkalmazások létrehozása a Azure Functions és az Azure Signaler szolgáltatással
-description: Az Azure Signaler szolgáltatás kiszolgáló nélküli alkalmazásokban való használatának áttekintése.
+title: Valós idejű app-Azure Functions & Azure Signaler szolgáltatás létrehozása
+description: Megtudhatja, hogyan fejleszthet valós idejű kiszolgáló nélküli webalkalmazásokat az Azure Signaler szolgáltatással az alábbi példa alapján.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639927"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157622"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Valós idejű alkalmazások létrehozása a Azure Functions és az Azure Signaler szolgáltatással
 
@@ -62,7 +62,7 @@ A SignalR szolgáltatáskötések használatának egyik példája az Azure Funct
 
 A SignalR szolgáltatás lehetővé teszi, hogy üzeneteket továbbítson az összes ügyfélnek, vagy csak egy részüknek, például egy adott felhasználóhoz tartózó ügyfeleknek. A SignalR szolgáltatás Azure Functionshöz készült kötéseit kombinálni lehet az App Service-hitelesítéssel az olyan szolgáltatókkal rendelkező ügyfelek hitelesítésére, mint az Azure Active Directory, a Facebook és a Twitter. Ezután közvetlenül küldhet üzeneteket ezeknek a hitelesített felhasználóknak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk áttekintést nyújtott arról, hogyan használható az Azure Functions és a SignalR szolgáltatás számos különböző kiszolgáló nélküli, valós idejű üzenetküldési forgatókönyv engedélyezésére.
 

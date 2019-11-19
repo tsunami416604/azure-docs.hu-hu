@@ -3,17 +3,13 @@ title: Oktatóanyag – adatbázisok konfigurálása Azure Database for MySQL An
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Database for MySQL-kiszolgálót az Ansible használatával
 keywords: ansible, azure, devops, bash, forgatókönyv, mysql, adatbázis
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1b6c9a9aa3abbda7ffd72db0ecb137b3c9da1a6c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241827"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156529"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Oktatóanyag: adatbázisok konfigurálása Azure Database for MySQL Ansible használatával
 
@@ -37,7 +33,7 @@ A [Azure Database for MySQL](/azure/mysql/overview) egy, a MySQL Community Editi
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az ebben a szakaszban található forgatókönyv-kód egy Azure-erőforráscsoportot hoz létre. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
@@ -106,8 +102,8 @@ Mentse a következő forgatókönyvet `mysql_create.yml` néven:
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-* A `vars` szakaszban `mysqlserver_name` értékének egyedinek kell lennie.
-* A `vars` szakaszban cserélje le a `<server_admin_password>` jelszót a jelszóval.
+* A `vars` szakaszban a `mysqlserver_name` értékének egyedinek kell lennie.
+* A `vars` szakaszban cserélje le a `<server_admin_password>` jelszót.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -119,7 +115,7 @@ ansible-playbook mysql_create.yml
 
 A kiszolgálói szintű tűzfalszabály lehetővé teszi, hogy egy külső alkalmazás az Azure MySQL szolgáltatás tűzfala segítségével csatlakozhasson a kiszolgálóhoz. Külső alkalmazások például a `mysql` parancssori eszköz és a MySQL Workbench.
 
-Az ebben a szakaszban található forgatókönyv-kód egy `extenalaccess` nevű tűzfalszabály létrehozása, amely bármely külső IP-címről engedélyezi a kapcsolódást. 
+Az ebben a szakaszban szereplő forgatókönyv-kód egy `extenalaccess` nevű tűzfalszabály létrehozása, amely bármely külső IP-címről engedélyezi a kapcsolatokat. 
 
 Mentse a következő forgatókönyvet `mysql_firewall.yml` néven:
 
@@ -147,7 +143,7 @@ Mentse a következő forgatókönyvet `mysql_firewall.yml` néven:
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-* Az var szakaszban cserélje le a `startIpAddress` és a `endIpAddress` értéket. Használja azon IP-címek tartományát, amelyek a csatlakozáshoz használt tartománynak felelnek meg.
+* Az var szakaszban cserélje le a `startIpAddress` és a `endIpAddress`. Használja azon IP-címek tartományát, amelyek a csatlakozáshoz használt tartománynak felelnek meg.
 * A MySQL-hez készült Azure-adatbázis kapcsolatai a 3306-os porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy nem engedélyezett a kimenő forgalom a 3306-as porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja az 3306-os portot.
 * A forgatókönyv a `azure_rm_resource` modult használja, amely lehetővé teszi a REST API közvetlen használatát.
 
@@ -217,7 +213,7 @@ Ebben a szakaszban az Azure Cloud Shell használatával kapcsolódhat a korábba
     
 ## <a name="query-mysql-servers"></a>MySQL-kiszolgálók lekérdezése
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a MySQL-kiszolgálókat kérdezi le @no__t – 0, és felsorolja a talált kiszolgálók adatbázisait.
+Az ebben a szakaszban szereplő forgatókönyv-kód a MySQL-kiszolgálókat kérdezi le `myResourceGroup` és felsorolja a talált kiszolgálók adatbázisait.
 
 Mentse a következő forgatókönyvet `mysql_query.yml` néven:
 

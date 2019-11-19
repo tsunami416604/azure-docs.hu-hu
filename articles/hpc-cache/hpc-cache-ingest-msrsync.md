@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582276"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168420"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache-adatfeldolgozás – msrsync metódus
 
 Ez a cikk részletes útmutatást nyújt a ``msrsync`` segédprogram használatával történő adatmásoláshoz az Azure-beli blob Storage-tárolóba az Azure HPC cache használatával történő használathoz.
 
-Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan helyezi át az adatátvitelt a blob Storage-ba, olvassa el az [adatáthelyezés Azure-beli blob Storage](hpc-cache-ingest.md)-ba Azure
+Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan helyezi át az adatátvitelt a blob Storage-ba, olvassa el az [Azure Blob Storage](hpc-cache-ingest.md)-ba
 
 Az ``msrsync`` eszköz használatával az Azure HPC cache-re helyezheti át az adatháttérbeli tárolási célhelyre. Ez az eszköz úgy lett kialakítva, hogy optimalizálja a sávszélesség-használatot több párhuzamos ``rsync`` folyamat futtatásával. A GitHubról https://github.com/jbd/msrsynccímen érhető el.
 

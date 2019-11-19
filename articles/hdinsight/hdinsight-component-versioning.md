@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: a5632f4b7ca264f6fdeb88dc7f7cf843c73ddf54
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 598f423bdb15b1d4975633db19c28b399fde484b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123397"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166800"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -29,27 +29,27 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 > [!NOTE]  
 > Előfordulhat, hogy a HDInsight szolgáltatás alapértelmezett verziója értesítés nélkül változhat. Ha a verzió-függőséggel rendelkezik, adja meg a HDInsight verzióját, amikor létrehozza a fürtöket a .NET SDK-val a Azure PowerShell és a klasszikus Azure CLI használatával.
 
-| Összetevő | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett) | HDInsight 3,5 | HDInsight 3,4 | HDInsight 3,3 | HDInsight 3,2 |
-|---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Apache Hadoop és fonal | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
-| Apache TEZ | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
-| Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
-| Apache Hive | 3.1.0 | 2.1.0, 1.2.1 | - | - | - | - |
-| Apache TEZ Hive2 | - | 0.8.4 | - | - | - | - |
-| Apache Ranger | 1.1.0 | 0.7.0 | 0.6.0 | - | - | - |
-| Apache HBase | 2.0.1 | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
-| Apache Sqoop | 1.4.7 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.5 |
-| Apache Oozie | 4.3.1 | 4.2.0 | 4.2.0 | 4.2.0 | 4.2.0 | 4.1.0 |
-| Apache Zookeeper | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 |
-| Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
-| Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
-| Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1, 2,4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2,0 | 1.6.0 | 1.5.2 | 1.3.1 (csak Windows) |
-| Apache Livy | 0,5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0.2 | - |
-| Apache Kafka | 1.1.1, 2,1 | 1,1, 1,0 * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 | - | - |
-| Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
-| Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
-| Monó | 4.2.1 | 4.2.1 | 4.2.1 | 3.2.8 | - | - |
+| Összetevő              | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett)     |
+|------------------------|---------------|-----------------------------|
+| Apache Hadoop és fonal | 3.1.1         | 2.7.3                       |
+| Apache TEZ             | 0.9.1         | 0.7.0                       |
+| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
+| Apache TEZ Hive2       | -             | 0.8.4                       |
+| Apache Ranger          | 1.1.0         | 0.7.0                       |
+| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache Sqoop           | 1.4.7         | 1.4.6                       |
+| Apache Oozie           | 4.3.1         | 4.2.0                       |
+| Apache Zookeeper       | 3.4.6         | 3.4.6                       |
+| Apache Storm           | -             | 1.1.0                       |
+| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Phoenix         | 5             | 4.7.0                       |
+| Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
+| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (lásd az alábbi megjegyzést) |
+| Apache Ambari          | 2.7.0         | 2.6.0                       |
+| Apache Zeppelin        | 0.8.0         | 0.7.0                       |
+| Monó                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
 > A rendszer teljesítményével kapcsolatos megfontolások miatt a Kafka 0,10-es verziójának támogatása 2019 márciusában lejár.
@@ -177,7 +177,7 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
 
 További információ arról, hogy mely virtuálisgép-SKU-ket szeretné kijelölni a fürt számára: az [Azure HDInsight-fürt konfigurációjának részletei](hdinsight-supported-node-configuration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Munkahelyi Apache Hadoop HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL](hdinsight-hadoop-windows-tools.md)
 

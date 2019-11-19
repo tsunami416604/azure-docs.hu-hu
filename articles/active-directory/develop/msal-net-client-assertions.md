@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 66ff02e4c95594f0155ab31e3c99a0eb269626d9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802849"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168123"
 ---
 # <a name="confidential-client-assertions"></a>Bizalmas ügyfél-kijelentések
+
 Személyazonosságuk igazolása érdekében a bizalmas ügyfélalkalmazások az Azure AD-vel titkos kulcsot cserélnek. A titok a következőket teheti:
 - Az ügyfél titkos kulcsa (alkalmazás jelszava).
 - Egy tanúsítvány, amely egy standard jogcímeket tartalmazó aláírt jogcím összeállítására szolgál.
@@ -37,6 +38,9 @@ A MSAL.NET négy módszerrel biztosíthatja a bizalmas ügyfélalkalmazás szám
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
+
+> [!NOTE]
+> Habár lehetséges, hogy a `WithClientAssertion()` API-t használja a bizalmas ügyfélhez tartozó jogkivonatok beszerzéséhez, azt nem javasoljuk, hogy alapértelmezés szerint ne használja, mert ez fejlettebb, és a nagyon konkrét, nem gyakori forgatókönyvek kezelésére szolgál. A `.WithCertificate()` API használata lehetővé teszi, hogy a MSAL.NET kezelje ezt. Ez az API lehetővé teszi, hogy szükség esetén testre szabja a hitelesítési kérelmet, de a `.WithCertificate()` által létrehozott alapértelmezett állítások a legtöbb hitelesítési forgatókönyv esetén elegendőek lesznek. Ez az API megkerülő megoldásként is használható olyan helyzetekben, ahol a MSAL.NET nem tudja belsőleg végrehajtani az aláírási műveletet.
 
 ### <a name="signed-assertions"></a>Aláírt kijelentések
 
@@ -51,14 +55,14 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Az Azure AD által várt jogcímek a következők:
 
-Jogcím típusa | Value (Díj) | Leírás
+Jogcím típusa | Érték | Leírás
 ---------- | ---------- | ----------
-AUD | https://login.microsoftonline.com/{tenantId}/v2.0 | Az "AUD" (célközönség) jogcím azonosítja azokat a címzetteket, amelyeket a JWT szántak (itt az Azure AD) lásd: [RFC 7519, 4.1.3. szakasz].
-Exp | Thu Jun 27 2019 15:04:17 GMT + 0200 (romantikus nyári idő) | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Lásd: [RFC 7519, 4.1.4. szakasz]
+aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Az "AUD" (célközönség) jogcím azonosítja azokat a címzetteket, amelyeket a JWT szántak (itt az Azure AD) lásd: [RFC 7519, 4.1.3. szakasz].
+exp | Thu Jun 27 2019 15:04:17 GMT + 0200 (romantikus nyári idő) | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Lásd: [RFC 7519, 4.1.4. szakasz]
 ISS | ClientID | Az "ISS" (kibocsátói) jogcím azonosítja a JWT kiállító rendszerbiztonsági tag. A jogcím feldolgozása alkalmazásspecifikus. Az "ISS" érték egy kis-és nagybetűket megkülönböztető karakterlánc, amely egy StringOrURI értéket tartalmaz. [RFC 7519, 4.1.1. szakasz]
 JTI | (GUID) | A "kezdeményezés" (JWT ID) jogcím egyedi azonosítót biztosít a JWT számára. Az azonosító értékét olyan módon kell hozzárendelni, amely biztosítja, hogy az adott érték egy másik adatobjektumhoz is legyen véletlenül hozzárendelve. Ha az alkalmazás több kiállítót használ, az ütközéseket meg kell akadályozni a különböző kibocsátók által előállított értékek között. A "kezdeményezés" jogcímet arra használhatja, hogy megakadályozza a JWT lejátszását. A "kezdeményezés" érték kis-és nagybetűket megkülönböztető karakterlánc. [RFC 7519, szakasz 4.1.7]
-NBF | Thu Jun 27 2019 14:54:17 GMT + 0200 (romantikus nyári idő) | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. [RFC 7519, szakasz 4.1.5]
-Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát. A JWT lévő jogcímek általában a tárgyra vonatkozó utasítások. A tulajdonos értékének hatóköre csak helyileg egyedi lehet a kiállító kontextusában, vagy globálisan egyedinek kell lennie. A lásd: [RFC 7519, 4.1.2. szakasz]
+nbf | Thu Jun 27 2019 14:54:17 GMT + 0200 (romantikus nyári idő) | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. [RFC 7519, szakasz 4.1.5]
+sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát. A JWT lévő jogcímek általában a tárgyra vonatkozó utasítások. A tulajdonos értékének hatóköre csak helyileg egyedi lehet a kiállító kontextusában, vagy globálisan egyedinek kell lennie. A lásd: [RFC 7519, 4.1.2. szakasz]
 
 Íme egy példa a jogcímek kiépítésére:
 
@@ -66,9 +70,9 @@ Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát. A JWT lé
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
-      string aud = "https://login.microsoftonline.com/72f988bf-86f1-41af-hd4m-2d7cd011db47/v2.0";
+      string aud = $"https://login.microsoftonline.com/{tenantId}/v2.0";
 
-      string ConfidentialClientID = "61dab2ba-145d-4b1b-8569-bf4b9aed5dhb" //client id
+      string ConfidentialClientID = "00000000-0000-0000-0000-000000000000" //client id
       const uint JwtToAadLifetimeInSeconds = 60 * 10; // Ten minutes
       DateTime validFrom = DateTime.UtcNow;
       var nbf = ConvertToTimeT(validFrom);
@@ -105,11 +109,11 @@ string Encode(byte[] arg)
     return s;
 }
 
-string GetAssertion()
+string GetSignedClientAssertion()
 {
     //Signing with SHA-256
     string rsaSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
-    X509Certificate2 certificate = ReadCertificate(config.CertificateName);
+     X509Certificate2 certificate = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
 
     //Create RSACryptoServiceProvider
     var x509Key = new X509AsymmetricSecurityKey(certificate);
@@ -129,9 +133,55 @@ string GetAssertion()
     string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims())));
 
     string signature = Encode(rsa.SignData(Encoding.UTF8.GetBytes(token), new SHA256Cng()));
-    string SignedAssertion = string.Concat(token, ".", signature);
-    return SignedAssertion;
+    string signedClientAssertion = string.Concat(token, ".", signature);
+    return signedClientAssertion;
 }
+```
+
+### <a name="alternative-method"></a>Alternatív módszer
+
+Lehetősége van arra is, hogy a [Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) használatával hozza létre az állítást. A kód az alábbi példában látható módon elegáns lesz:
+
+```CSharp
+        string GetSignedClientAssertion()
+        {
+            var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
+
+            //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
+            string aud = $"https://login.microsoftonline.com/{tenantID}/v2.0";
+
+            // client_id
+            string confidentialClientID = "00000000-0000-0000-0000-000000000000";
+
+            // no need to add exp, nbf as JsonWebTokenHandler will add them by default.
+            var claims = new Dictionary<string, object>()
+            {
+                { "aud", aud },
+                { "iss", confidentialClientID },
+                { "jti", Guid.NewGuid().ToString() },
+                { "sub", confidentialClientID }
+            };
+
+            var securityTokenDescriptor = new SecurityTokenDescriptor
+            {
+                Claims = claims,
+                SigningCredentials = new X509SigningCredentials(cert)
+            };
+
+            var handler = new JsonWebTokenHandler();
+            var signedClientAssertion = handler.CreateToken(securityTokenDescriptor);
+        }
+```
+
+Ha már rendelkezik az aláírt ügyfél-állítással, használhatja a MSAL API-kkal az alább látható módon.
+
+```CSharp
+            string signedClientAssertion = GetSignedClientAssertion();
+
+            var confidentialApp = ConfidentialClientApplicationBuilder
+                .Create(ConfidentialClientID)
+                .WithClientAssertion(signedClientAssertion)
+                .Build();
 ```
 
 ### <a name="withclientclaims"></a>WithClientClaims

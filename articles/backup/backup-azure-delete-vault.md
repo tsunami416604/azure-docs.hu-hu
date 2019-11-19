@@ -1,18 +1,14 @@
 ---
-title: Microsoft Azure Backup Recovery Services-tároló törlése
+title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Microsoft Azure Backup Recovery Services-(MARS-) tárat.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.author: dacurwin
-ms.openlocfilehash: 469d6532449df8327389b8117904b078d9340e5b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747577"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173174"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -351,7 +347,7 @@ További információ a ARMClient parancsról: [ARMCLIENT readme](https://github
 
 3. Győződjön meg arról, hogy a Azure Portal törli a tárolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További tudnivalók a Recovery Services-tárolók](backup-azure-recovery-services-vault-overview.md)<br/>
 [Tudnivalók a Recovery Services-tárolók monitorozásáról és kezeléséről](backup-azure-manage-windows-server.md)

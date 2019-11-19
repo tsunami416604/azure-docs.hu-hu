@@ -3,17 +3,13 @@ title: Oktatóanyag – gyorsítótárak konfigurálása az Azure cache-ben a Re
 description: Ismerje meg, hogyan használhatja a Ansible a Redis Azure cache-hez készült tűzfalszabály létrehozására, méretezésére, újraindítására és hozzáadására
 keywords: Ansible, Azure, devops, bash, ötletekbõl, cache, Redis
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614360"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156508"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Oktatóanyag: gyorsítótárak konfigurálása az Azure cache-ben a Redis-hez a Ansible használatával
 
@@ -349,7 +345,7 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](https://docs.microsoft.com/azure/ansible/)

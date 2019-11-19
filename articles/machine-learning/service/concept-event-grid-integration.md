@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 888d294634078d2fe7737426f6cf025ae9948b0a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 2fe2d07b29b8799712d59cdf21aeb3ce989ca3b2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609345"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158471"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>Azure Machine Learning események felhasználása (előzetes verzió)
 
@@ -81,7 +81,7 @@ A szűrők alkalmazásával kapcsolatos további információkért lásd: [Esem�
 Az Machine Learning eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlatot követniük kell:
 
 > [!div class="checklist"]
-> * Mivel több előfizetést is konfigurálhat az események ugyanahhoz az eseménykezelőhöz való átirányításához, fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak, de az üzenet témakörének ellenőrzésével győződjön meg arról, hogy a várt Storage-fiókból származik.
+> * Mivel több előfizetést is konfigurálhat az események ugyanahhoz az eseménykezelőhöz való továbbításához, fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak, de az üzenet témakörének ellenőrzésével győződjön meg róla, hogy a várt Machine learning-munkaterületről származik.
 > * Hasonlóképpen győződjön meg arról, hogy a eventType az egyik készen áll a feldolgozásra, és nem feltételezi, hogy az összes kapott esemény lesz a várt típus.
 > * Mivel az üzenetek nem érkeznek meg a sorrendbe, és némi késés után a ETAG mezőkből megtudhatja, hogy az objektumokkal kapcsolatos információk továbbra is naprakészek-e.  Emellett a Sequencer mezőket is használhatja az események sorrendjének megismeréséhez egy adott objektumra vonatkozóan.
 > * Figyelmen kívül hagyhatja a nem értelmezhető mezőket. Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
@@ -94,7 +94,7 @@ Azure Event Grid lehetővé teszi, hogy az ügyfelek olyan, de egymással össze
 * Azure Data Factory folyamat
 * Általános webhookok, amelyek az Azure platformon vagy máshol is üzemeltethető
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Event Gridről és a Azure Machine Learning események megadásáról:
 

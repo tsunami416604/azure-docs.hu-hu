@@ -133,11 +133,13 @@
             - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
               href: point-to-site-vpn-client-configuration-radius.md
             - name: P2S VPN RADIUS-hitelesítés integrálása az NPS-kiszolgálóval
-              href: vpn-gateway-radiuis-mfa-nsp.md
+              href: vpn-gateway-radius-mfa-nsp.md
         - name: Azure AD-hitelesítés
           items:
             - name: Bérlő konfigurálása
               href: openvpn-azure-ad-tenant.md
+            - name: 'Többtényezős hitelesítés (Multi-Factor Authentication, MFA) konfigurálása'
+              href: openvpn-azure-ad-mfa.md
             - name: VPN-ügyfél konfigurálása
               href: openvpn-azure-ad-client.md
         - name: OpenVPN

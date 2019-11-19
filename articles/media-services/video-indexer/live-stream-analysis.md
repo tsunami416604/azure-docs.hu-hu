@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0f34aad4a8590c71f926d12d201f9a614afaa127
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
+ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114928"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74153555"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Élő stream-elemzés Video Indexer
 
-A Azure Media Services Video Indexer egy Azure-szolgáltatás, amely a videó-és hangfájlok kapcsolat nélküli kinyerésére szolgál. Ez egy korábban már létrehozott adott médiafájl elemzése. Bizonyos felhasználási esetekben azonban fontos, hogy az élő hírcsatornából származó adathordozó-megállapítások minél gyorsabbak legyenek az operatív és egyéb használati esetek időben történő megnyomásával. Az élő streamek ilyen gazdag metaadatait például a tartalmi gyártók használhatják a TV-termelés automatizálására. Például a [Endemol Shine Group](https://customers.microsoft.com/story/esg-media-telecommunications-azure), ahol a Sajtószoba újságírói keresték az élő hírcsatornákat, hogy a tartalom alapján hozzanak létre értesítési szolgáltatásokat.
+A Azure Media Services Video Indexer egy Azure-szolgáltatás, amely a videó-és hangfájlok kapcsolat nélküli kinyerésére szolgál. Ez egy korábban már létrehozott adott médiafájl elemzése. Bizonyos felhasználási esetekben azonban fontos, hogy az élő hírcsatornából származó adathordozó-megállapítások minél gyorsabbak legyenek az operatív és egyéb használati esetek időben történő megnyomásával. Az élő streamek ilyen gazdag metaadatait például a tartalmi gyártók használhatják a TV-termelés automatizálására.
 
 A cikkben ismertetett megoldás lehetővé teszi, hogy az ügyfelek az élő hírcsatornák közel valós idejű határozataiban Video Indexer használják. Az indexelés késése akár négy perc is lehet a megoldás használatával, az indexelt adattömböktől, a bemeneti felbontástól, a tartalom típusától és a folyamathoz használt számítási feladatoktól függően.
 
@@ -41,6 +41,6 @@ A minta lejátszó az élő streamet játssza le, és beolvassa a Azure Cosmos D
 
 Az eredmények üzembe helyezéséhez szükséges teljes kód és lépésenkénti útmutató a [GitHub Project for Live Media Analytics](https://aka.ms/livestreamanalysis)szolgáltatásban video Indexer használatával érhető el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

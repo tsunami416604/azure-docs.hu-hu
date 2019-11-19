@@ -3,17 +3,13 @@ title: Oktatóanyag – kubenet hálózatkezelés konfigurálása az Azure Kuber
 description: Ismerje meg, hogyan konfigurálhatja a kubenet hálózatkezelést az Azure Kubernetes Service (ak) fürtben a Ansible használatával
 keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881519"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156891"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: a kubenet hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
 
@@ -127,7 +123,7 @@ Mentse a következő forgatókönyvet `aks.yml` néven:
 
 AK-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és egy útválasztási tábla. Ezeket az erőforrásokat az AK felügyeli, és frissülnek a szolgáltatások létrehozásakor és közzétételekor. A következőképpen társítsa a hálózati biztonsági csoportot és az útválasztási táblázatot a virtuális hálózati alhálózatához. 
 
-Mentse a következő forgatókönyvet `associate.yml` néven.
+Mentse a következő forgatókönyvet `associate.yml`ként.
 
 ```yml
 - name: Get route table
@@ -210,11 +206,11 @@ Mentse a következő forgatókönyvet `aks-kubenet.yml` néven:
            var: output.aks[0]
 ```
 
-A `vars` szakaszban hajtsa végre a következő módosításokat:
+A `vars` szakaszban végezze el a következő módosításokat:
 
 - A `resource_group` kulcsnál módosítsa a `aksansibletest` értéket az erőforráscsoport nevére.
-- A `name` kulcs esetében módosítsa a `aksansibletest` értéket az AK-névre.
-- A `Location` kulcs esetében módosítsa a `eastus` értéket az erőforráscsoport helyére.
+- A `name` kulcsnál módosítsa a `aksansibletest` értéket az AK-névre.
+- A `Location` kulcsnál módosítsa a `eastus` értéket az erőforráscsoport helyére.
 
 Futtassa a teljes forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -331,7 +327,7 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 ---

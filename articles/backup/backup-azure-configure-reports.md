@@ -1,19 +1,14 @@
 ---
-title: Azure Backup-jelentések konfigurálása
+title: A Power BI-jelentések konfigurálása
 description: Recovery Services-tároló használatával konfigurálhatja Azure Backup Power BI jelentéseit.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: dacurwin
-ms.openlocfilehash: 757e12f97f95ef856643820e47113521d840f10d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074978"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173191"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -124,7 +119,7 @@ Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkat
 | Miután beállította a Storage-fiókot a biztonsági mentési jelentésekhez, a **Storage-fiók** továbbra **sincs konfigurálva**. | Ha sikeresen konfigurálta a Storage-fiókot, a jelentéskészítési folyamat a probléma ellenére meghalad. A probléma megoldásához nyissa meg a Azure Portal, és válassza a **minden szolgáltatás** > **diagnosztikai beállítások** > **Recovery Services** tároló > **szerkesztési beállítás**elemet. Törölje az előzőleg konfigurált beállítást, és hozzon létre egy új beállítást ugyanazon a panelen. Ezúttal a **név** mezőben válassza a **szolgáltatás**elemet. Ekkor megjelenik a konfigurált Storage-fiók. |
 |A Azure Backup sablon alkalmazásnak a Power BIban való importálása után a "404-Container nem található" hibaüzenet jelenik meg. | Ahogy azt korábban említettük, 24 órát kell várnia, miután konfigurálta a jelentéseket a Recovery Services-tárolóban, hogy megfelelően megjelenjenek a Power BIban. Ha 24 óra előtt próbál hozzáférni a jelentésekhez, ez a hibaüzenet jelenik meg, mivel a teljes adathalmazok még nem jelennek meg az érvényes jelentések megjelenítéséhez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Storage-fiók konfigurálása és a Azure Backup sablon alkalmazás importálása után a következő lépés a jelentések testreszabása és a jelentéskészítési adatmodell használata jelentések létrehozásához. További információt a következő cikkekben talál.
 

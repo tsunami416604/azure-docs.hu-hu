@@ -2,18 +2,14 @@
 title: Azure azonnali visszaállítási képesség
 description: Azure azonnali visszaállítási képesség és gyakori kérdések a virtuális gépek biztonsági mentési vereméhez, Resource Manager-alapú üzemi modell
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: dacurwin
-ms.openlocfilehash: 1faa8efc5cbb39f94a390a0cf32dd2cd1ef0793c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c87dc98ddd1d5799f3363d7574063ef752fd8239
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012109"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172350"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 

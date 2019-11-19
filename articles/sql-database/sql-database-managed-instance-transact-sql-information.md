@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823319"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158294"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -48,7 +48,7 @@ A [magas rendelkezésre állás](sql-database-high-availability.md) a felügyelt
 - [RENDELKEZÉSRE ÁLLÁSI CSOPORT ELDOBÁSA](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql) utasítás [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) záradéka
 
-### <a name="backup"></a>Biztonsági mentés
+### <a name="backup"></a>Backup
 
 A felügyelt példányok automatikus biztonsági mentéssel rendelkeznek, így a felhasználók létrehozhatnak teljes adatbázis-`COPY_ONLY` biztonsági mentést. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
 
@@ -191,7 +191,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
 - A [puffer-készlet kiterjesztése](/sql/database-engine/configure-windows/buffer-pool-extension) nem támogatott.
 - a `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` nem támogatott. Lásd: a [kiszolgáló konfigurációjának módosítása](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Egybevetés
+### <a name="collation"></a>Rendezés
 
 A példányok alapértelmezett rendezése `SQL_Latin1_General_CP1_CI_AS`, és megadható létrehozási paraméterként. Lásd: [rendezések](/sql/t-sql/statements/collations).
 
@@ -565,16 +565,6 @@ A folyamatban lévő `RESTORE` utasítás, az adatáttelepítési szolgáltatás
 
 **Áthidaló megoldás**: Várjon, amíg a visszaállítási folyamat befejeződik, vagy szakítsa meg a visszaállítási folyamatot, ha a Service-réteg létrehozása vagy frissítése magasabb prioritással rendelkezik.
 
-### <a name="missing-validations-in-restore-process"></a>Hiányzó érvényességek a visszaállítási folyamatban
-
-**Dátum:** Sep 2019
-
-a `RESTORE` utasítás és a beépített időponthoz tartozó visszaállítás nem hajt végre bizonyos nessecary-ellenőrzéseket a visszaállított adatbázison:
-- **DBCC checkdb utasítást** - `RESTORE` utasítás nem hajt végre `DBCC CHECKDB` a visszaállított adatbázison. Ha egy eredeti adatbázis sérült, vagy sérült a biztonságimásolat-fájl az Azure Blob Storage-ba való másoláskor, az automatikus biztonsági mentések nem lesznek elvégezve, és az Azure-támogatás kapcsolatba lép az ügyféllel. 
-- A beépített időponthoz tartozó visszaállítási folyamat nem jelöli meg, hogy az üzletileg kritikus példány automatikus biztonsági mentése tartalmazza [-e a memóriában lévő OLTP objektumokat](sql-database-in-memory.md#in-memory-oltp). 
-
-**Megkerülő megoldás**: Győződjön meg arról, hogy a biztonsági mentés megkezdése előtt `DBCC CHECKDB`t hajt végre a forrás-adatbázison, és a biztonsági mentés `WITH CHECKSUM` lehetőséggel elkerülheti a felügyelt példányon visszaállítható esetleges sérüléseket. Győződjön meg róla, hogy a forrásadatbázis nem tartalmaz [memóriában tárolt OLTP objektumokat](sql-database-in-memory.md#in-memory-oltp) , ha általános célú szinten állítja vissza.
-
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Előfordulhat, hogy a üzletileg kritikus szolgáltatási szinten újra kell konfigurálni a Resource Governor a feladatátvétel után
 
 **Dátum:** Sep 2019
@@ -697,7 +687,7 @@ A felügyelt példányba helyezett CLR-modulok, valamint az aktuális példányr
 
 **Áthidaló megoldás:** Ha lehetséges, használjon egy CLR-modul környezeti kapcsolatait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felügyelt példányokkal kapcsolatos további információkért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: [Azure SQL Database szolgáltatások összehasonlítása](sql-database-features.md).

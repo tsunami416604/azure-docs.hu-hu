@@ -3,17 +3,13 @@ title: Oktatóanyag – az Azure CNI hálózatkezelés konfigurálása az Azure 
 description: Ismerje meg, hogyan konfigurálhatja a kubenet hálózatkezelést az Azure Kubernetes Service (ak) fürtben a Ansible használatával
 keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 04da0e8fb06d0a32c8e8bdc39d7722fc1c3fcdba
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242033"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156897"
 ---
 # <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
 
@@ -110,8 +106,8 @@ Mentse a következő forgatókönyvet `aks.yml` néven:
 
 - A támogatott verzió megkereséséhez használja a `azure_rm_aks_version` modult.
 - A `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
-- A forgatókönyv betölti a `ssh_key` `~/.ssh/id_rsa.pub` értéket. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
-- A `client_id` és a `client_secret` érték betöltődik a `~/.azure/credentials` típusból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
+- A forgatókönyv betölti `ssh_key`t a `~/.ssh/id_rsa.pub`ból. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
+- A `client_id` és `client_secret` értékek betöltődik a `~/.azure/credentials`ból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -271,7 +267,7 @@ Mentse a következő forgatókönyvet `cleanup.yml` néven:
 
 Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- Cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+- Cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 - A megadott erőforráscsoport összes erőforrása törölve lesz.
 
 Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:

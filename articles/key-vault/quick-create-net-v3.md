@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 7546d5c6089a7867b1f8b5bf45d23c81bddd0da9
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 660235331c2c2d800b52f6e29d0011b9616a748c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648229"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158480"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v3)
 
@@ -46,9 +46,7 @@ Ez a rövid útmutató azt feltételezi, hogy `dotnet`, [Azure CLI](/cli/azure/i
 
 ### <a name="create-new-net-console-app"></a>Új .NET Console-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
-
-A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, `akv-dotnet`nevű Console-alkalmazást.
+A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, `akv-dotnet`nevű .NET-konzol alkalmazást.
 
 
 ```console
@@ -169,7 +167,7 @@ Rendelje hozzá ezeket a környezeti változókat a kódban szereplő karakterl�
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, a [SetSecretAsync metódussal](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) a kulcstartóba helyezheti a titkos kulcsot, amely a Key Vault URL-címét igényli, amely a `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`formában van. Emellett a titkos kulcs nevét is megköveteli – "keresési kifejezésként"-t használunk.  Előfordulhat, hogy ezeket a karakterláncokat újra kell rendelni egy változóhoz.
+Most, hogy az alkalmazás hitelesítése megtörtént, a [SetSecretAsync metódussal](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) a kulcstartóba helyezheti a titkos kulcsot, amely a Key Vault URL-címét igényli, amely a `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`formában van. Emellett a titkos kulcs nevét is megköveteli – "keresési kifejezésként"-t használunk. 
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 
@@ -199,7 +197,7 @@ az group delete -g "myResourceGroup" -l "EastUS"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet).
 

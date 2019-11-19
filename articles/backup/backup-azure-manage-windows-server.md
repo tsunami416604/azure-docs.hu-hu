@@ -1,18 +1,14 @@
 ---
 title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: dacurwin
-ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091125"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173048"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -233,7 +229,7 @@ Az összes állapotot vagy egyet megtekintheti. Két vagy három állapotot nem 
 * Minden állapot
 * Befejezve
 * Folyamatban
-* Meghiúsult
+* Sikertelen
 * Megszakítva
 * Figyelmeztetésekkel fejeződött be
 

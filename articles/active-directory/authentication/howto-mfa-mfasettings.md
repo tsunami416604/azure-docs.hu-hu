@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4932089b7315f2756f3760b252c7257868f640fa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26744791dd3abe732f56f69ca05dd7c781755e9b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066037"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167973"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -371,7 +371,7 @@ Amikor a felhasználók regisztrálják a fiókjaikat az Azure Multi-Factor Auth
 | Módszer | Leírás |
 |:--- |:--- |
 | Telefonos hívás |Automatikus hanghívást helyez el. A felhasználó megválaszolja a hívást, majd a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot. A telefonszám nincs szinkronizálva a helyszíni Active Directory. |
-| SMS-üzenet a telefonra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. A rendszer felszólítja a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen. Ezt a folyamatot egy egyirányú SMS-nek nevezzük. A kétirányú SMS azt jelenti, hogy a felhasználónak egy adott kódot kell visszaadnia. A kétirányú SMS elavult, és 2018 november 14. után nem támogatott. A kétirányú SMS-re konfigurált felhasználók automatikusan átváltanak a telefonos ellenőrzés _meghívására_ .|
+| SMS-üzenet a telefonra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. A rendszer felszólítja a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen. Ezt a folyamatot egy egyirányú SMS-nek nevezzük. A kétirányú SMS azt jelenti, hogy a felhasználónak egy adott kódot kell visszaadnia. A kétirányú SMS elavult, és 2018 november 14. után nem támogatott. A rendszergazdáknak engedélyezniük kell egy másik módszert azon felhasználók számára, akik korábban a kétirányú SMS-t használták.|
 | Értesítés a Mobile App használatával |Leküldéses értesítést küld a telefonra vagy a regisztrált eszközre. A felhasználó megtekinti az értesítést, **és kiválasztja az ellenőrzés** befejezését. A Microsoft Authenticator alkalmazás [Windows Phone-telefon](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)rendszerhez érhető el. |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből |A Microsoft Authenticator alkalmazás 30 másodpercenként létrehoz egy új eskü-ellenőrző kódot. A felhasználó beírja az ellenőrző kódot a bejelentkezési felületre. A Microsoft Authenticator alkalmazás [Windows Phone-telefon](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)rendszerhez érhető el. |
 
@@ -425,6 +425,6 @@ A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, a
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha a **ne Kérdezzen rá ismét**lehetőségre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure AD bejelentkezési oldalának arculatának módosítása](../fundamentals/customize-branding.md)

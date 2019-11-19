@@ -1,18 +1,14 @@
 ---
-title: SQL Server-adatbázisok visszaállítása Azure Backup használatával egy Azure-beli virtuális gépen
+title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: dacurwin
-ms.openlocfilehash: 878658135bdb8844c5c86bc207db580ccd7ff63f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903600"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171907"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 

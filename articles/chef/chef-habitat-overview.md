@@ -1,37 +1,33 @@
 ---
-title: Az alkalmazás telepítése az Azure a Habitat használatával
-description: Ismerje meg, hogyan következetesen az alkalmazás telepítése az Azure-beli virtuális gépek és tárolók
-keywords: az Azure, a chef, a devops, a virtuális gépek, a áttekintése, automatizálás, a habitat használatával
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Az alkalmazás üzembe helyezése az Azure-ban az Habitat használatával
+description: Ismerje meg, hogyan helyezheti üzembe az alkalmazást az Azure Virtual Machines és a containers szolgáltatásban
+keywords: Azure, Chef, devops, Virtual Machines, áttekintés, automatizálás, Habitat
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388811"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158056"
 ---
-# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Az alkalmazás telepítése az Azure a Habitat használatával
-[Habitat](https://www.habitat.sh/) az alkalmazás csomagolás és a futtatókörnyezet rendszer, amely az alkalmazás és az automation együtt üzembe helyezési egységként bundles. Ezzel létrehozza az alkalmazás, így lehetővé teszi egy újraírási nélkül telepíthetők tárolók, virtuális gépek, operációs rendszer nélküli vagy PaaS, vagy újracsomagolás ultimate hordozhatóságát.
+# <a name="use-habitat-to-deploy-your-application-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban az Habitat használatával
+Az [Habitat](https://www.habitat.sh/) egy alkalmazás csomagolási és futtatókörnyezeti rendszere, amely az alkalmazást és annak automatizálását az üzembe helyezési egységként együtt csomagolja. Ez létrehoz egy végső hordozhatóságot az alkalmazás számára, amely lehetővé teszi, hogy a tárolók, a virtuális gépek, az operációs rendszer nélküli vagy a Pásti, újraírás vagy újracsomagolás nélkül legyen üzembe helyezhető.
 
-Ez a cikk ismerteti a Habitat használatával fő előnyei.
+Ez a cikk az Habitat használatának legfőbb előnyeit ismerteti.
 
-## <a name="modernize-and-move-legacy-applications"></a>Végezzen modernizálást és örökölt alkalmazások áthelyezése
-Ingyenes örökölt alkalmazások a régebbi operációs rendszereket és közbenső szoftver által újracsomagolás őket a habitat használatával. Az eredményül kapott összetevőben hordozható, és könnyedén replatforms újabb infrastruktúra-kiszolgálóra, például virtuális gépeket vagy a felhőben futó tárolók.
+## <a name="modernize-and-move-legacy-applications"></a>Örökölt alkalmazások modernizálása és áthelyezése
+A régebbi operációs rendszerekről és a middleware-ből származó örökölt alkalmazásokat az élőhelyekkel való újracsomagolással távolíthatja el. Az eredményül kapott összetevő hordozható, és az új infrastruktúrára, például a felhőben futó virtuális gépekre vagy tárolóra is könnyen újraplatformra kerül.
 
-## <a name="accelerate-container-adoption"></a>Gyorsabb tároló elfogadása
-Habitat megoldja a folyamatos üzembe helyezés, az összetett, mikroszolgáltatás-alapú alkalmazások pontosan jelölő futtatókörnyezeti függőségek szerint. Túl az egyes összetevők kék vagy zöld üzembe helyezni és bonyolult összehangolásra folyamatok létrehozása nélkül kifinomult központi telepítés működése tervezhet.
+## <a name="accelerate-container-adoption"></a>A Container bevezetésének gyorsítása
+Az élőhely megoldja a komplex, a Service-orientált alkalmazások folyamatos üzembe helyezését azáltal, hogy pontosan a futásidejű függőségeket jelképezi. Az egyszerű kék/zöld üzembe helyezést az egyes összetevők és az építész kifinomult telepítési viselkedése nélkül helyezheti el anélkül, hogy bonyolult előkészítési folyamatokat kellene létrehozni.
 
-## <a name="run-any-application-anywhere"></a>Alkalmazások futtatása bárhol
-A habitat használatával nem módosított semmilyen futtatókörnyezetben futtatható alkalmazások. Ez mindent tartalmaz, az operációs rendszer nélküli és virtuális gépek tárolók (például a Dockert), fürt-kezelő rendszerek (például a Mesosphere vagy Kubernetes) és PaaS rendszereket (ilyen például a Pivotal Cloud Foundry-hoz).
+## <a name="run-any-application-anywhere"></a>Tetszőleges alkalmazás futtatása bárhol
+Az élőhelyek esetében az alkalmazások bármely futásidejű környezetben futtathatják a módosítást. Ez magában foglalja az operációs rendszer nélküli számítógépekről és a virtuális gépekről a tárolók (például a Docker), a fürt-felügyeleti rendszerek (például a Mesosphere vagy a Kubernetes) és a Péter rendszerek (például a Pivotal Cloud Foundry) összes elemét.
 
-## <a name="integrate-into-the-chef-devops-workflow"></a>A Chef DevOps-munkafolyamatban integrálása
-A Habitat-projektet az egyik egy nyílt forráskódú projektje, a Chef szoftverhez, egy erős közösségi támogatás. Habitat kihasználja a Chef's tapasztalattal az infrastruktúra-automatizálást ahhoz, hogy alkalmazásokat páratlan automatizálási képességeivel. Chef kereskedelmi támogatja a Habitat és összeállít egy zökkenőmentes integráció a Habitat és a Chef Automate automatizálásához a fejlesztéstől az üzembe helyezés az alkalmazás kiadási ciklus között.
+## <a name="integrate-into-the-chef-devops-workflow"></a>Integrálás a Chef DevOps-munkafolyamatba
+Az Habitat projekt a Chef Software egyik nyílt forráskódú projektje, amely erős Közösség támogatásával rendelkezik. Az élőhely kihasználja a Chef mély tapasztalatát az infrastruktúra automatizálásával, hogy példátlan automatizálási képességeket hozzon az alkalmazások számára. A Chef kereskedelmi támogatást nyújt az élőhelyekhez, és zökkenőmentes integrációt biztosít az élőhelyek és a Chef automatizálása között, így teljes mértékben automatizálhatja az alkalmazás kiadási ciklusát a fejlesztéstől a üzembe helyezésig
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Próbálja ki a habitat használatával](https://www.habitat.sh/learn/)
+* [Az élőhely kipróbálása](https://www.habitat.sh/learn/)

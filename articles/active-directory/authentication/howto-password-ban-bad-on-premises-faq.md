@@ -4,19 +4,19 @@ description: Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 473fe43bb4cf18c61f30d9b7e057da888dc6da62
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71268639"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167903"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 
@@ -101,7 +101,7 @@ Nem. Mivel a proxykiszolgáló állapota nem megfelelő, nem fontos, hogy a rend
 
 Igen. Az Azure AD jelszavas védelmi proxy szolgáltatás és Azure AD Connect soha nem ütköznek közvetlenül egymással.
 
-Sajnos a rendszer inkompatibilitást észlelt az Azure AD jelszavas védelmi proxy szoftverrel és az Azure Active által telepített szolgáltatás által telepített Microsoft Azure AD összekapcsoló ügynök-frissítési szolgáltatás verziója között. [ Alkalmazásspecifikus alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) szoftver. Ez a kompatibilitási megoldás azt eredményezheti, hogy az ügynök-frissítési szolgáltatás nem tud kapcsolódni az Azure-hoz a szoftverfrissítésekért. Az Azure AD jelszavas védelmi proxy és a Azure Active Directory Application Proxy ugyanarra a gépre való telepítése nem ajánlott.
+Sajnos inkompatibilitás található az Azure AD jelszavas védelmi proxy szoftverrel és a [Azure Active Directory Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) szoftver által telepített szolgáltatás által telepített Microsoft Azure ad összekapcsoló ügynök-frissítési szolgáltatás verziójával. Ez a kompatibilitási megoldás azt eredményezheti, hogy az ügynök-frissítési szolgáltatás nem tud kapcsolódni az Azure-hoz a szoftverfrissítésekért. Az Azure AD jelszavas védelmi proxy és a Azure Active Directory Application Proxy ugyanarra a gépre való telepítése nem ajánlott.
 
 **K: milyen sorrendben kell telepíteni és regisztrálni a DC-ügynököket és-proxykat?**
 
@@ -113,7 +113,7 @@ Az Azure AD jelszavas védelem-tartományvezérlő ügynöke nem befolyásolja j
 
 A legtöbb Active Directory központi telepítéshez tartozó jelszó-módosítási művelet a teljes munkaterhelés kis hányada az adott tartományvezérlőn. Tegyük fel például, hogy egy Active Directory tartomány 10000 felhasználói fiókkal és egy 30 napos MaxPasswordAge-házirenddel van beállítva. Ez a tartomány átlagosan 10 000/30 = ~ 333 jelszó-módosítási műveletet lát el naponta, ami egy kis számú művelet akár egyetlen tartományvezérlő esetében is. Tekintse át a lehetséges legrosszabb esetet: tegyük fel, hogy a ~ 333 jelszó módosításait egyetlen TARTOMÁNYVEZÉRLŐn hajtották végre egy órán belül. Ez a forgatókönyv például akkor fordulhat elő, ha sok alkalmazott dolgozik hétfőn reggel. Még ebben az esetben is a ~ 333/60 perc = hat jelszó módosítása percenként, ami nem jelentős terhelés.
 
-Ha azonban az aktuális tartományvezérlők már csak teljesítmény-korlátozott szinten futnak (például maxed a CPU-ra, lemezterületre, lemezes I/O-re stb.), ajánlatos további tartományvezérlőket hozzáadni vagy bővíteni a rendelkezésre álló lemezterületet. a szolgáltatás telepítése. Lásd még a fenti, SYSVOL lemezterület-használatról szóló kérdést.
+Ha azonban az aktuális tartományvezérlők már csak teljesítmény-korlátozott szinten futnak (például maxed a CPU-ra, lemezterületre, lemezes I/O-re stb.), ajánlott további tartományvezérlőket hozzáadni vagy kibővíteni a rendelkezésre álló lemezterületet a szolgáltatás telepítése előtt. Lásd még a fenti, SYSVOL lemezterület-használatról szóló kérdést.
 
 **K: szeretném tesztelni az Azure AD jelszavas védelmet a saját tartományában található néhány tartományvezérlőn. Lehetséges a felhasználói jelszó módosításának kényszerítése az adott tartományvezérlők használatára?**
 

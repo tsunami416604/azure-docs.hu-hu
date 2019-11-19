@@ -1,19 +1,14 @@
 ---
-title: A számítási feladatok biztonsági mentésének Azure Backup Server használata az Azure-ba
+title: A munkaterhelések biztonsági mentésének Azure Backup Server használata
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: dacurwin
-ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012928"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172992"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -335,8 +330,6 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
    > [!NOTE]
    >
    > Ne lépjen ki az SQL-példány frissítésekor, a kilépés eltávolítja az SQL Reporting-példányt, ezért a MABS újrafrissítésére tett kísérlet sikertelen lesz.
-
-
 
    > [!IMPORTANT]
    >

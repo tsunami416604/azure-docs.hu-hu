@@ -3,17 +3,13 @@ title: Oktatóanyag – Azure Cosmos DB fiókok konfigurálása a Ansible haszn�
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy Azure Cosmos DB a Ansible használatával
 keywords: Ansible, Azure, devops, bash, ötletekbõl, Cosmo db, adatbázis
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242069"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156470"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Oktatóanyag: Azure Cosmos DB-fiókok konfigurálása a Ansible használatával
 
@@ -144,7 +140,7 @@ Végül az utolsó kódrészletből megtudhatja, hogyan törölhet egy Azure Cos
 ## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
 A teljes példa a következő két módon szerezhető be:
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) forgatókönyvet, és mentse a `cosmosdb.yml` értékre.
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) forgatókönyvet, és mentse a `cosmosdb.yml`ba.
 - Hozzon létre egy `cosmosdb.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -234,8 +230,8 @@ A teljes példa a következő két módon szerezhető be:
 Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
 
 A forgatókönyv futtatása előtt végezze el a következő módosításokat:
-- A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
-- Győződjön meg arról, hogy a cosmosdbaccount_name csak kisbetűket tartalmaz, és globálisan egyedi.
+- A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+- Győződjön meg arról, hogy a "cosmosdbaccount_name csak kisbetűket tartalmaz, és globálisan egyedi.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -247,7 +243,7 @@ ansible-playbook cosmosdb.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 - hosts: localhost

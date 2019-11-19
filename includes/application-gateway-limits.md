@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70130090"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74174961"
 ---
-| Resource | Alapértelmezett/maximális korlát | Megjegyzés |
+| Erőforrás | Alapértelmezett/maximális korlát | Megjegyzés |
 | --- | --- | --- |
 | Azure Application Gateway |1 000/előfizetés | |
 | Előtér-IP-konfigurációk |2 |1 nyilvános és 1 magán |
@@ -28,12 +28,13 @@ ms.locfileid: "70130090"
 | Megbízható legfelső szintű tanúsítványok |100 | |
 | Kérelem időkorlátja (minimum) |1 másodperc | |
 | Kérelem időtúllépésének maximális száma |24 óra | |
-| Webhelyek száma |100<sup>1</sup> |1/HTTP-figyelők |
+| Helyek száma |100<sup>1</sup> |1/HTTP-figyelők |
 | URL-térképek/figyelő |1 | |
 | Elérésiút-alapú szabályok maximális elérési útja egy URL-címen|100||
 | Átirányítási konfigurációk |100<sup>1</sup>| |
 | Egyidejű WebSocket-kapcsolatok |Közepes átjárók 20000<br> Nagyméretű átjárók 50k| |
-| URL-cím maximális hossza|8,000||
+| URL-cím maximális hossza|32KB| |
+| A fejléc maximális mérete HTTP/2 esetén |4KB| |
 | Maximális fájlfeltöltés mérete, standard |2 GB | |
 | Maximális fájlfeltöltés mérete WAF |Közepes WAF-átjárók, 100 MB<br>Nagyméretű WAF-átjárók, 500 MB| |
 | WAF-törzs mérete, fájlok nélkül|128 KB||

@@ -8,22 +8,22 @@ manager: jeconnoc
 keywords: Azure functions, functions, Event Processing, dinamikus számítás, kiszolgáló nélküli architektúra, kubernetes
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0b77946b24bcc2e329a5c4480e9bd5ef055ef82b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900070"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173689"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
 
-A Azure Functions futtatókörnyezet rugalmasságot biztosít a üzemeltetésben, ahol és így tovább.  A [KEDA](https://github.com/kedacore/kore) (Kubernetes-alapú eseményvezérelt automatikus skálázás) párok zökkenőmentesen használhatók a Azure functions futtatókörnyezettel és az Kubernetes-alapú eseményvezérelt méretezés biztosításához.
+A Azure Functions futtatókörnyezet rugalmasságot biztosít a üzemeltetésben, ahol és így tovább.  A [KEDA](https://keda.sh) (Kubernetes-alapú eseményvezérelt automatikus skálázás) párok zökkenőmentesen használhatók a Azure functions futtatókörnyezettel és az Kubernetes-alapú eseményvezérelt méretezés biztosításához.
 
 ## <a name="how-kubernetes-based-functions-work"></a>A Kubernetes-alapú függvények működése
 
-A Azure Functions szolgáltatás két kulcsfontosságú összetevőből áll: egy futtatókörnyezetből és egy méretezési vezérlőből.  A functions futtatókörnyezet futtatja és végrehajtja a kódot.  A futtatókörnyezet logikát tartalmaz a függvények végrehajtásának elindításához, naplózásához és kezeléséhez.  A másik összetevő egy méretezési vezérlő.  A skálázási vezérlő figyeli a függvényt célzó események arányát, és proaktív módon méretezi az alkalmazást futtató példányok számát.  További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md).
+A Azure Functions szolgáltatás két kulcsfontosságú összetevőből áll: egy futtatókörnyezetből és egy méretezési vezérlőből.  A functions futtatókörnyezet futtatja és végrehajtja a kódot.  A futtatókörnyezet logikát tartalmaz a függvények végrehajtásának elindításához, naplózásához és kezeléséhez.  A Azure Functions futtatókörnyezet *bárhol*futhat.  A másik összetevő egy méretezési vezérlő.  A skálázási vezérlő figyeli a függvényt célzó események arányát, és proaktív módon méretezi az alkalmazást futtató példányok számát.  További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md).
 
 A Kubernetes-alapú függvények egy [Docker-tárolóban](functions-create-function-linux-custom-image.md) lévő functions futtatókörnyezetet biztosítanak eseményvezérelt skálázással az KEDA-on keresztül.  A KEDA 0 példányra (ha nincs esemény) és legfeljebb *n* példányra méretezhető. Ezt a Kubernetes autoscaleer (horizontális Pod autoskálázás) egyéni metrikáinak kiosztásával teszi meg.  A functions-tárolók és a KEDA lehetővé teszi a kiszolgáló nélküli függvények replikálását bármely Kubernetes-fürtön.  Ezek a függvények az [Azure Kubernetes Services (ak) virtuális csomópontok](../aks/virtual-nodes-cli.md) szolgáltatásával is üzembe helyezhetők a kiszolgáló nélküli infrastruktúra számára.
 
@@ -86,14 +86,19 @@ func kubernetes remove --namespace keda
 
 ## <a name="supported-triggers-in-keda"></a>Támogatott eseményindítók a KEDA-ben
 
-A KEDA jelenleg béta verzióban érhető el a következő Azure Function triggerek támogatásával:
+A KEDA a következő Azure Function triggereket támogatja:
 
 * [Azure Storage-várólisták](functions-bindings-storage-queue.md)
 * [Azure Service Bus várólisták](functions-bindings-service-bus.md)
-* [HTTP](functions-bindings-http-webhook.md)
+* [Azure Event/IoT hubok](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
+* [RabbitMQ-várólista](https://github.com/azure/azure-functions-rabbitmq-extension)
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="http-trigger-support"></a>HTTP-trigger támogatása
+
+Használhatja a HTTP-eseményindítókat közzétevő Azure Functionsokat, de a KEDA nem kezeli közvetlenül.  A Azure Functions Core Tools egy kapcsolódó projektet telepít, amely lehetővé teszi a HTTP-végpontok 0 és 1 közötti skálázását.  Az 1 és *n* közötti skálázás a hagyományos Kubernetes skálázási szabályzatokra támaszkodik.
+
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 * [Függvény létrehozása egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md)

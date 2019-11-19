@@ -1,19 +1,15 @@
 ---
 title: Üzembe helyezés az Azure Kubernetes Service-ben a Jenkins és a kék/zöld üzembe helyezési minta használatával
 description: Útmutató az Azure Kubernetes Service-be (AKS) való üzembe helyezéshez a Jenkins és a kék/zöld üzembehelyezési minta használatával.
-ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, kék zöld üzembehelyezés, folyamatos kézbesítés, cd
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882090"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158553"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
@@ -272,7 +268,7 @@ A nyilvános és a kék teszt végpontok ugyanazzal a frissítéssel rendelkezne
 
 Ha többször futtatja le a buildet, váltakozva használja a kék és zöld üzemelő példányt. Vagyis ha az aktuális környezet a kék, a feladat a zöld környezetben lesz üzembe helyezve és tesztelve. Ezután ha a tesztek jól sikerültek, a feladat frissíti az alkalmazás nyilvános végpontját, hogy a forgalmat a zöld környezetbe irányítsa.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 Az állásidő nélküli üzembe helyezésről további információkat ebben a [rövid útmutató sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment) találhat. 
 
@@ -284,7 +280,7 @@ Ha már nincs szüksége az ezen oktatóanyagban létrehozott erőforrásokra, t
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 

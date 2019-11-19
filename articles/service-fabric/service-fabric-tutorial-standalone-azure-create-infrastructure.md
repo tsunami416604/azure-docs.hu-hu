@@ -3,7 +3,7 @@ title: Oktatóanyag az Azure-beli virtuális gépeken futó Service Fabric-fürt
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuálisgép-infrastruktúrát egy Service Fabric-fürt futtatásához.
 services: service-fabric
 documentationcenter: .net
-author: v-vasuke
+author: jpconnock
 manager: jpconnock
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: v-vasuke
+ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177726"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166274"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Azure VM-infrastruktúra létrehozása Service Fabric-fürt üzemeltetéséhez
 
@@ -72,7 +72,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
 
 9. Adjon hozzá egy másik szabályt. Állítsa a forrást a **szolgáltatás címkére** , és állítsa a forrás szolgáltatás címkéjét **VirtualNetwork**értékre. Service Fabric a következő portok megnyitását igényli a fürtön belüli kommunikációhoz: 135137-139, 445, 20001-20031, 20606-20861.
 
-   ![vnet – bejövő][vnet-inbound]
+   ![vnet-inbound][vnet-inbound]
 
 10. A többi lehetőség is elfogadható az alapértelmezett állapotukban. Ha szeretné, tekintse át őket, majd indítsa el a virtuális gépet.
 
@@ -90,12 +90,18 @@ Indítsa el a két további **Virtual Machines**, és ügyeljen rá, hogy az el�
  
 4. Nyissa meg az RDP-fájlt, és amikor a rendszer kéri, adja meg a virtuális gép beállításában megadott felhasználónevet és jelszót.
 
-5. Miután kapcsolódott egy példányhoz, ellenőriznie kell, hogy a távoli beállításjegyzék fut-e, majd nyissa meg a szükséges portokat.
+5. Miután kapcsolódott egy példányhoz, ellenőriznie kell, hogy fut-e a távoli beállításjegyzék, engedélyezze az SMB-t, majd nyissa meg a szükséges portokat az SMB és a távoli beállításjegyzék számára.
+
+   Az SMB engedélyezéséhez ez a PowerShell-parancs:
+
+   ```powershell
+   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+   ```
 
 6. A tűzfalban lévő portok megnyitására ez a PowerShell-parancs szolgál:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
 7. Ismételje meg ezt a folyamatot a többi példány esetében, és a magánhálózati IP-címeket is megjegyezve.
@@ -111,6 +117,15 @@ Indítsa el a két további **Virtual Machines**, és ügyeljen rá, hogy az el�
    ```
 
    Ha a kimenetben a `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` szöveg ismétlődik négyszer, akkor a példányok közötti kapcsolat működik.
+
+3. Most ellenőrizze az SMB-megosztás működését a következő paranccsal:
+
+   ```
+   net use * \\172.31.20.163\c$
+   ```
+
+   A parancs kimenetének a következőnek kell lennie: `Drive Z: is now connected to \\172.31.20.163\c$.`.
+
 
    A példányok most már készen állnak a Service Fabricra.
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a66b7389df64a776cdecb45c41de56d7d258e4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606363"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169321"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Eseménykezelők a Azure Event Gridban
 
@@ -36,6 +36,7 @@ Ha az Azure Functionst használja kezelőként, használja az Event Grid-trigger
 
 |Cím  |Leírás  |
 |---------|---------|
+| [Gyors útmutató: események kezelése a függvénnyel](custom-event-to-function.md) | Egyéni eseményt küld egy függvénynek feldolgozásra. |
 | [Azure Functions Event Grid trigger](../azure-functions/functions-bindings-event-grid.md) | Az Event Grid trigger használatának áttekintése a functions szolgáltatásban. |
 | [Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával](resize-images-on-storage-blob-upload-event.md) | A felhasználók képeket töltenek fel a webalkalmazásból a Storage-fiókba. Storage-blob létrehozásakor Event Grid egy eseményt küld a Function alkalmazásnak, amely átméretezi a feltöltött képet. |
 | [Oktatóanyag: stream big data adattárházba](event-grid-event-hubs-integration.md) | Amikor Event Hubs létrehoz egy rögzítési fájlt, Event Grid küld egy eseményt egy Function alkalmazásnak. Az alkalmazás lekéri a rögzítési fájlt, és áttelepíti az adattárházba. |
@@ -72,10 +73,15 @@ A Logic Apps segítségével automatizálhatja az üzleti folyamatokat az esemé
 | [Oktatóanyag: az Azure IoT Hub eseményekre vonatkozó e-mailes értesítések küldése Logic Apps használatával](publish-iot-hub-events-to-logic-apps.md) | A logikai alkalmazások minden alkalommal elküldenek egy értesítő e-mailt, amikor egy eszköz bekerül az IoT hubhoz. |
 | [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
 
-## <a name="service-bus-queue"></a>Service Bus-üzenetsor 
+## <a name="service-bus"></a>Service Bus
+
+### <a name="service-bus-queues"></a>Service Bus-üzenetsorok
+
 A Event Gridban lévő eseményeket közvetlenül átirányíthatja Service Bus várólistákba a pufferelés vagy parancs & a vállalati alkalmazásokban való használathoz.
 
-### <a name="using-cli-to-add-a-service-bus-handler"></a>Service Bus kezelő hozzáadása a CLI használatával
+A Azure Portal egy esemény-előfizetés létrehozásakor válassza a "Service Bus üzenetsor" lehetőséget a végpont típusaként, majd kattintson a "kiválasztás és végpont" elemre Service Bus üzenetsor kiválasztásához.
+
+#### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Service Bus üzenetsor-kezelő hozzáadása a CLI használatával
 
 Az Azure CLI esetében az alábbi példa egy Event Grid-témakör előfizetését és összekapcsolása Service Bus üzenetsor:
 
@@ -89,6 +95,28 @@ az eventgrid event-subscription create \
     --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
     --endpoint-type servicebusqueue \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
+```
+
+### <a name="service-bus-topics"></a>Service Bus-témák
+
+Event Grid közvetlenül Service Bus témakörökre irányíthatja az eseményeket, hogy az Azure rendszereseményeit Service Bus témakörökkel vagy a parancs & vezérlő üzenetkezelési forgatókönyvek kezelésére lehessen használni.
+
+A Azure Portal egy esemény-előfizetés létrehozásakor válassza a "Service Bus témakör" lehetőséget a végpont típusaként, majd kattintson a "kiválasztás és végpont" elemre Service Bus témakör kiválasztásához.
+
+#### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Service Bus témakör-kezelő hozzáadása a CLI használatával
+
+Az Azure CLI esetében az alábbi példa egy Event Grid-témakör előfizetését és összekapcsolása Service Bus üzenetsor:
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+    --name <my-event-subscription> \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
+    --endpoint-type servicebustopic \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
 ## <a name="queue-storage"></a>Queue Storage
@@ -110,7 +138,7 @@ Webhookok használata az eseményekre reagáló testreszabható végpontokhoz.
 | [Gyors útmutató: tárolói beállításjegyzékbeli események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet Container Registry eseményeket az Azure CLI használatával. |
 | [Áttekintés: események fogadása HTTP-végpontra](receive-events.md) | Leírja, hogyan lehet érvényesíteni egy HTTP-végpontot események fogadására, valamint események fogadására és deszerializálására. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
-* Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.
+* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
+* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

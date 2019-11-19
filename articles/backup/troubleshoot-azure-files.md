@@ -1,18 +1,14 @@
 ---
 title: Az Azure-fájlmegosztások biztonsági mentésének hibaelhárítása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
-ms.service: backup
-author: dcurwin
-ms.author: dacurwin
 ms.date: 08/20/2019
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.topic: conceptual
+ms.openlocfilehash: 62a4f83c93230c150a7c406d0614dbee3d125e9c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091495"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171765"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
 
@@ -37,7 +33,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 
 | Hibaüzenetek | Megkerülő vagy megoldási tippek |
 | ------------------ | ----------------------------- |
-| Nem találom a tárfiókom az Azure-fájlmegosztás biztonsági mentésének konfigurálásához | <ul><li>Várjon, amíg a felderítés befejeződik. <li>Ellenőrizze, hogy egy másik helyreállítási tár védi-e már bármelyik fájlmegosztást a tárfiókból. **Megjegyzés**: A tárfiókban lévő összes fájlmegosztás védelme biztosítható egyetlen helyreállítási tárral. <li>Győződjön meg arról, hogy a fájlmegosztás nincs jelen egyik nem támogatott tárfiókban sem.|
+| Nem találom a tárfiókom az Azure-fájlmegosztás biztonsági mentésének konfigurálásához | <ul><li>Várjon, amíg a felderítés befejeződik. <li>Ellenőrizze, hogy egy másik helyreállítási tár védi-e már bármelyik fájlmegosztást a tárfiókból. **Megjegyzés**: A tárfiókban lévő összes fájlmegosztás védelme biztosítható egyetlen helyreállítási tárral. <li>Győződjön meg arról, hogy a fájlmegosztás nincs jelen egyik nem támogatott tárfiókban sem.<li> Győződjön meg arról, hogy a **megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz** jelölőnégyzet be van jelölve a Storage-fiókban. [További információ.](../storage/common/storage-network-security.md)|
 | A portál hibája azt jelenti, hogy a tárfiókok felderítése sikertelen volt. | Ha az előfizetése partneri (CSP-engedélyezett), hagyja figyelmen kívül a hibát. Ha az előfizetés nem engedélyezi a CSP-t, a tárfiókok pedig nem deríthetők fel, forduljon az ügyfélszolgálathoz.|
 | A kiválasztott tárfiók érvényesítése vagy regisztrációja sikertelen.| Próbálkozzon újra a művelettel. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.|
 | A kiválasztott tárfiókban nem listázható vagy nem található fájlmegosztás. | <ul><li> Győződjön meg arról, hogy a tárfiók létezik az erőforráscsoportban (és nem törölték vagy helyezték át a tárolóban az utolsó ellenőrzés/regisztráció után).<li>Ellenőrizze, hogy a védeni kívánt fájlmegosztás nem lett-e törölve. <li>Ellenőrizze, hogy a tárfiók támogatott-e fájlmegosztásokról való biztonsági másolat készítéséhez.<li>Ellenőrizze, hogy a fájlmegosztás már védve van-e ugyanabban a helyreállítási tárban.|

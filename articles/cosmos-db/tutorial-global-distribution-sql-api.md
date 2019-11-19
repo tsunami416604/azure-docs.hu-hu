@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b76fee17b64d50831d5bceca9d8512e7b7498d73
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7c7ea4ca8fc28ef47e60d5010c804223c3cfab3b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720766"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173835"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -80,12 +80,6 @@ await docClient.OpenAsync().ConfigureAwait(false);
 
 ## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
-Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
-
-Az SDK-k 1.8-as és újabb verziójában a DocumentClient konstruktor ConnectionPolicy paramétere egy új DocumentClient.ConnectionPolicy.PreferredLocations nevű tulajdonsággal rendelkezik. Ez a paraméter egy sztringtömb, amely a régiónevek listáját használja. A nevek a régió neve oszlop szerint vannak formázva az [Azure-régiók][regions] lapon. Az AzureDocuments.Regions objektumban található előre definiált konstansokat is használhatja
-
-Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoint és a DocumentClient.getReadEndpoint tulajdonság tartalmazza.
-
 > [!NOTE]
 > A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
@@ -94,17 +88,14 @@ Az aktuális írási és olvasási végpontokat a DocumentClient.getWriteEndpoin
 Alább látható egy példa a Node. js-hez vagy a Javascripthez.
 
 ```JavaScript
-// Creating a ConnectionPolicy object
-var connectionPolicy = new DocumentBase.ConnectionPolicy();
-
 // Setting read region selection preference, in the following order -
 // 1 - West US
 // 2 - East US
 // 3 - North Europe
-connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
+const preferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
-var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLocations } });
 ```
 
 ## <a name="python-sdk"></a>Python SDK
@@ -184,7 +175,7 @@ Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, 
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

@@ -3,17 +3,13 @@ title: Gyors útmutató – Ansible forgatókönyvek futtatása bash használat�
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthat végre különböző Ansible-feladatokat a bash használatával Azure Cloud Shell
 keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, bash
 ms.topic: quickstart
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 10f71d5bcb7134ca0560e4fac617e6835cb3d48c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d04708be82a704c2ce20a928380fca1d325493da
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241525"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155976"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Gyors útmutató: Ansible forgatókönyvek futtatása bash használatával Azure Cloud Shell
 
@@ -29,7 +25,7 @@ A Azure Cloud Shell egy interaktív, böngészővel elérhető rendszerhéj az A
 
 Ha bejelentkezett a Cloud Shellba, a Ansible a hitelesítést az Azure-ban az infrastruktúra kezeléséhez, további konfiguráció nélkül. 
 
-Több előfizetés használata esetén a `AZURE_SUBSCRIPTION_ID` környezeti változó exportálásával határozza meg az előfizetés Ansible. 
+Több előfizetés használata esetén a `AZURE_SUBSCRIPTION_ID` környezeti változó exportálásával adhatja meg az előfizetés Ansible. 
 
 Az összes Azure-előfizetésének listázásához futtassa a következő parancsot:
 
@@ -37,7 +33,7 @@ Az összes Azure-előfizetésének listázásához futtassa a következő paranc
 az account list
 ```
 
-Az Azure-előfizetési AZONOSÍTÓjának használatával állítsa be a `AZURE_SUBSCRIPTION_ID` értéket a következőképpen:
+Az Azure-előfizetési AZONOSÍTÓjának használatával állítsa be a `AZURE_SUBSCRIPTION_ID` a következőképpen:
 
 ```azurecli-interactive
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>

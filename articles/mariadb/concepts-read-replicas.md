@@ -1,21 +1,21 @@
 ---
-title: Replikák olvasása a Azure Database for MariaDBban
+title: Olvasási replikák az Azure Database for MariaDB-ben
 description: 'Ismerkedjen meg a Azure Database for MariaDB olvasási replikákkal: régiók kiválasztása, replikák létrehozása, replikák csatlakoztatása, replikáció figyelése és replikáció leállítása.'
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: f761cb1c4e895cd0960a0a07033e609acf9ef601
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973592"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158413"
 ---
-# <a name="read-replicas-in-azure-database-for-mariadb"></a>Replikák olvasása a Azure Database for MariaDBban
+# <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvasási replikák az Azure Database for MariaDB-ben
 
-Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MariaDB-kiszolgálóról egy írásvédett kiszolgálóra. A főkiszolgálóról legfeljebb öt replikára másolhatja az adatokat. A replikákat a rendszer aszinkron módon frissíti a MariaDB motor bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával globális tranzakciós AZONOSÍTÓval (GTID). A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
+Az olvasási replikával adatokat replikálhat egy Azure Database for MariaDB-kiszolgálóról egy csak olvasható kiszolgálóra. A főkiszolgálóról legfeljebb öt replikára másolhatja az adatokat. A replikákat a rendszer aszinkron módon frissíti a MariaDB motor bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával globális tranzakciós AZONOSÍTÓval (GTID). A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
 
 A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for MariaDB-kiszolgálókhoz hasonló módon kezel. Az egyes olvasási replikák esetében a virtuális mag és a Storage szolgáltatásban a kiépített számítási kapacitást a GB/hó értékben számítjuk fel.
 
@@ -40,7 +40,7 @@ Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhat
 
 A főkiszolgáló bármely [Azure Database for MariaDB régióban](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)elérhető.  A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replika régiók érhetők el a fő régiótól függően.
 
-[@no__t – 1Read replikák régiói](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![olvasási replika régiói](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiók bármelyikében létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. A támogatott univerzális replika-régiók a következők:
@@ -55,9 +55,9 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 
 Azonban a következő szempontokat kell figyelembe venni: 
 
-* Regionális elérhetőség: Azure Database for MariaDB az USA 2. nyugati régiójában, Közép-Franciaországban, Észak-Egyesült Arab Emírségekben és Közép-Németországban érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Azure Database for MariaDB az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
     
-* UNI-irányú párok: Egyes Azure-régiók csak egy irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
+* Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
    Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
 
 
@@ -74,7 +74,7 @@ Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-
 
 ## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
 
-Replika létrehozásakor nem örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
+A létrehozáskor a replika örökli a főkiszolgáló tűzfalszabályok vagy VNet szolgáltatási végpontját. Ezt követően ezek a szabályok függetlenek a főkiszolgálótól.
 
 A replika örökli a rendszergazdai fiókot a főkiszolgálóról. A főkiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a főkiszolgálón elérhető felhasználói fiókok használatával.
 
@@ -127,6 +127,8 @@ A replikát ugyanazzal a kiszolgáló-konfigurációval hozza létre a rendszer,
 > [!IMPORTANT]
 > Mielőtt a főkiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
+A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai a főkiszolgálóról a replikára öröklődnek a replika létrehozásakor. Ezt követően a replika szabályai függetlenek.
+
 ### <a name="stopped-replicas"></a>Leállított replikák
 
 Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.
@@ -155,7 +157,7 @@ A [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/
 - A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MariaDB replikációs technológia korlátozása.
 - Győződjön meg arról, hogy a fő kiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a fő és a replikák között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

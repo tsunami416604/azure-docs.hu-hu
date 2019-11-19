@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Recovery Services-tárolók létrehozása a REST API használatával'
+title: Recovery Services-tárolók létrehozása REST API használatával
 description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtuális gépek biztonsági mentési és visszaállítási műveleteit REST API használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747565"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173419"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
@@ -44,12 +38,12 @@ További információ a kérelem létrehozásáról: [REST API kérelem/válasz 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-|Név  |Kötelező  |Típus  |Leírás  |
+|Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
-|location     |  igaz       |Sztring         |   Erőforrás helye      |
+|location     |  true       |Sztring         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
-|SKU     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
+|sku     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
 |címkét     |         | Objektum        |     Erőforráscímkék    |
 
 Vegye figyelembe, hogy a tár neve és az erőforráscsoport neve a PUT URI-ban van megadva. A kérelem törzse határozza meg a helyet.
@@ -72,7 +66,7 @@ A következő példában egy tárolót hoz létre a "West US"-ben. Itt adhatja m
 
 Két sikeres válasz van a művelethez egy Recovery Services-tároló létrehozásához vagy frissítéséhez:
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [Tároló](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 létrehozva     | [Tároló](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |
@@ -98,7 +92,7 @@ Az előző példában szereplő kérelem törzsében létrehozott, sűrített *2
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben a tárolóban](backup-azure-arm-userestapi-createorupdatepolicy.md).
 

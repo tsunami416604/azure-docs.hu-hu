@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: a Azure Backup figyelése Azure Monitor'
+title: Azure Backup figyelése Azure Monitor
 description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni riasztásokat Azure Monitor használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Log Analytics; Azure Backup; Riasztások Diagnosztikai beállítások; Műveleti csoportok
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e8f162b9dc84b863c54d92313307ef4abca76ebb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 65bab1a6d6d424c90b38a3bdf99b6bf5bd8ded09
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074236"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172907"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -252,6 +246,6 @@ Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, h
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni lekérdezések létrehozásához tekintse meg az [log Analytics adatmodellt](backup-azure-log-analytics-data-model.md).

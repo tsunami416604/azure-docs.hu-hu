@@ -1,19 +1,15 @@
 ---
-title: Fájlok visszaállítása egy virtuális gépre az Azure Backuppal
+title: Oktatóanyag – fájlok visszaállítása egy virtuális gépre Azure Backup
 description: Megtudhatja, hogyan végezhet fájlszintű helyreállítást egy Azure-beli virtuális gépen a Backup és a Recovery Services használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 8d23eb5c177464642ffcafec8877fd2649c0d4f7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073994"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171739"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
 
@@ -193,7 +189,7 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy helyreállítási pontot csatlakoztatott egy virtuális géphez, és visszaállította egy webkiszolgáló fájljait. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

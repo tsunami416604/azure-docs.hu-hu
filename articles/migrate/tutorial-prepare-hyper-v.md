@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 2a70472518b72052f8338d6f14ea64fed6c6d4f1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010306"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158339"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
 Ez a cikk bemutatja, hogyan lehet felkészülni a helyszíni Hyper-V virtuális gépeknek az Azure-ba [Azure Migrate](migrate-services-overview.md)használatával történő értékelésére és áttelepítésére.
 
-[Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
+[Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
 
-Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
@@ -42,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Be kell állítania a Azure Migrate telepítéséhez szükséges engedélyeket.
 
-- Az Azure-fiók engedélyei egy Azure Migrate projekt létrehozásához. 
+- Az Azure-fiók engedélyei egy Azure Migrate projekt létrehozásához.
 - A fiókra vonatkozó engedélyek a Azure Migrate berendezés regisztrálásához. A készülék a Hyper-V felderítésére és áttelepítésére szolgál. A készülék regisztrálása során Azure Migrate két Azure Active Directory (Azure AD) alkalmazást hoz létre, amelyek egyedileg azonosítják a készüléket:
     - Az első alkalmazás a Azure Migrate szolgáltatási végpontokkal kommunikál.
     - A második alkalmazás a regisztráció során létrehozott Azure Key Vault fér hozzá az Azure AD-alkalmazás adatainak és a készülék konfigurációs beállításainak tárolásához.
@@ -55,7 +55,7 @@ Győződjön meg arról, hogy rendelkezik Azure Migrate-projekt létrehozásáho
 
 1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
-3. **Közreműködői** vagy tulajdonosi engedélyekkel kell rendelkeznie.
+3. **Közreműködői** vagy **tulajdonosi** engedélyekkel kell rendelkeznie.
     - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
@@ -70,26 +70,26 @@ A következő módszerek egyikével hozhat létre engedélyeket a Azure Migrate 
 Érdemes megjegyezni, hogy:
 
 - Az alkalmazások nem rendelkeznek más hozzáférési engedélyekkel az előfizetéshez a fent leírtak kivételével.
-- Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el. 
+- Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el.
 
 
 #### <a name="grant-account-permissions"></a>Fiók engedélyeinek megadása
 
 A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket:
 
-1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory** > **felhasználók** > **felhasználói beállításait**.
+1. Az Azure AD-ben a bérlői/globális rendszergazdának **Azure Active Directory** > **felhasználó** > **felhasználói beállításokat**kell megkeresnie.
 2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** .
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Ez egy alapértelmezett beállítás, amely nem érzékeny. [Részletek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
-#### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása 
+#### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása
 
-A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információk](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [Részletek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
 ## <a name="prepare-for-hyper-v-assessment"></a>Felkészülés a Hyper-V értékelésére
@@ -98,7 +98,7 @@ A Hyper-V értékelésének előkészítéséhez tegye a következőket:
 
 1. A Hyper-V gazdagép beállításainak ellenőrzése.
 2. Állítsa be a PowerShell-távelérést minden gazdagépen, hogy az Azure Migrate készülék PowerShell-parancsokat futtasson a gazdagépen egy WinRM-kapcsolaton keresztül.
-3. Ha a VM-lemezek távoli SMB-tárolóban találhatók, a hitelesítő adatok delegálása szükséges. 
+3. Ha a VM-lemezek távoli SMB-tárolóban találhatók, a hitelesítő adatok delegálása szükséges.
     - Engedélyezze az CredSSP delegálást, hogy az Azure Migrate készülék ügyfélként működhet, hitelesítő adatokat delegáljon egy gazdagépre.
     - Az alábbi módon engedélyezheti, hogy mindegyik gazdagép meghatalmazottként működjön a berendezésben.
     - Később, amikor beállítja a készüléket, engedélyezni fogja a delegálást a berendezésen.
@@ -122,7 +122,7 @@ A parancsfájl ellenőrzi a Hyper-V-gazdagépeket, és konfigurálja a Hyper-V v
 - Ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.
 - Engedélyezi a WinRM szolgáltatást, és megnyitja a 5985 (HTTP) és a 5986 (HTTPS) portot a gazdagépen (a metaadat-gyűjteményhez szükséges).
 - Engedélyezi a PowerShell távelérést a gazdagépen.
-- Ellenőrzi, hogy a Hyper-V integrációs szolgáltatás engedélyezve van-e a gazdagép által kezelt összes virtuális gépen. 
+- Ellenőrzi, hogy a Hyper-V integrációs szolgáltatás engedélyezve van-e a gazdagép által kezelt összes virtuális gépen.
 - Szükség esetén engedélyezi a CredSSP a gazdagépen.
 
 Futtassa a szkriptet a következő módon:
@@ -133,7 +133,7 @@ Futtassa a szkriptet a következő módon:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
-    Példa használata: 
+    Példa használata:
     ```
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
@@ -215,7 +215,7 @@ Azure Migrate a helyszíni virtuális gépek felderítéséhez szükséges enged
 
 Az integrációs szolgáltatásokat minden virtuális gépen engedélyezni kell, hogy Azure Migrate az operációs rendszer adatait rögzítse a virtuális gépen.
 
-A felderíteni és értékelni kívánt virtuális gépeken engedélyezze a [Hyper-V integrációs szolgáltatásokat](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) minden egyes virtuális gépen. 
+A felderíteni és értékelni kívánt virtuális gépeken engedélyezze a [Hyper-V integrációs szolgáltatásokat](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) minden egyes virtuális gépen.
 
 ## <a name="prepare-for-hyper-v-migration"></a>Felkészülés a Hyper-V áttelepítésére
 
@@ -223,15 +223,15 @@ A felderíteni és értékelni kívánt virtuális gépeken engedélyezze a [Hyp
 2. [Tekintse át](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
 3. [Jegyezze](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) fel azokat az Azure URL-címeket, amelyekhez a Hyper-V-gazdagépeknek és-fürtöknek hozzá kell férniük a virtuális gépek
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
- 
-> [!div class="checklist"] 
+Ebben az oktatóanyagban az alábbiakat végezte el:
+
+> [!div class="checklist"]
 > * Azure-fiók engedélyeinek beállítása.
 > * Előkészített Hyper-V-gazdagépek és virtuális gépek az értékeléshez és az áttelepítéshez.
 
 Folytassa a következő oktatóanyaggal, amely létrehoz egy Azure Migrate projektet, és felméri a Hyper-V virtuális gépeket az Azure-ba való áttelepítésre
 
-> [!div class="nextstepaction"] 
-> [Hyper-V virtuális gépek felmérése](./tutorial-assess-hyper-v.md) 
+> [!div class="nextstepaction"]
+> [Hyper-V virtuális gépek felmérése](./tutorial-assess-hyper-v.md)

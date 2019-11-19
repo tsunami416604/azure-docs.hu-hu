@@ -1,18 +1,14 @@
 ---
-title: SQL Server adatbázisok kezelése és figyelése egy Azure-beli virtuális gépen – Azure Backup
+title: SQL Server adatbázisok kezelése és figyelése Azure-beli virtuális gépen
 description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok felügyeletét és figyelését ismerteti.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 1aba8777a5b0f5851922e292004a74d74065eabf
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090533"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172157"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>SQL Server adatbázisok biztonsági mentésének kezelése és figyelése
 

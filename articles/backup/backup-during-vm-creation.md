@@ -1,18 +1,14 @@
 ---
-title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor Azure Backup
+title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-beli virtuális gépet hoz létre Azure Backup használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: e873980ce7aab1c5454a28e88df24bdb189c4860
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f34c5dd8cfdc94775b9bd9a896b4cfbe4154ecf8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074848"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172354"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -70,7 +66,7 @@ A virtuális gép létrehozása után tegye a következőket:
 
 Az előző lépések azt ismertetik, hogyan használható a Azure Portal egy virtuális gép létrehozásához és egy Recovery Services-tárolóban való megvédéséhez. Egy vagy több virtuális gép gyors üzembe helyezéséhez és Recovery Services-tárolóban való védeleméhez tekintse meg a [Windows rendszerű virtuális gép üzembe helyezése és a biztonsági mentés engedélyezése](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megvédte a virtuális gépet, megtudhatja, hogyan kezelheti és állíthatja vissza őket.
 

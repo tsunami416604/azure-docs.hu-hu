@@ -4,14 +4,14 @@ description: Ismerteti, hogyan állíthat be egy készüléket a VMware virtuál
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 086d5bf2e0e2bd1e4c1db5960d402a8e1b129e94
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467121"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158600"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
 
@@ -48,11 +48,12 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
 2. Futtassa a következő parancsot a petesejtek kivonatának létrehozásához:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A készülék verziójának 1.0.0.5 a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
+3. A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
 
   **Algoritmus** | **Kivonat értéke**
   --- | ---
-  MD5 | ddfdf21c64af02a222ed517ce300c977
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
@@ -126,12 +127,12 @@ Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint
 2. Válassza ki az **operációs rendszert**.
 3. Adjon meg egy rövid nevet a hitelesítő adatokhoz.
 4. A **Felhasználónév** és a **jelszó**mezőben olyan fiókot válasszon, amely legalább vendég hozzáféréssel rendelkezik a virtuális gépeken.
-5. Kattintson az **Add** (Hozzáadás) parancsra.
+5. Kattintson az **Hozzáadás** parancsra.
 
 Miután megadta a vCenter Server és a virtuális gép hitelesítő adatait (nem kötelező), kattintson a Save (Mentés) gombra, **és indítsa el a felderítést** a helyszíni környezet felderítésének megkezdéséhez.
 
 Körülbelül 15 percet vesz igénybe, hogy a felderített virtuális gépek metaadatai megjelenjenek a portálon. A telepített alkalmazások, szerepkörök és szolgáltatások felderítése hosszabb időt vesz igénybe, az időtartam a felderített virtuális gépek számától függ. 500 virtuális gépek esetében körülbelül 1 órát vesz igénybe, hogy az alkalmazás leltára megjelenjen a Azure Migrate-portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [VMware Assessment](tutorial-assess-vmware.md) és az [ügynök nélküli áttelepítés](tutorial-migrate-vmware.md)oktatóanyagait.

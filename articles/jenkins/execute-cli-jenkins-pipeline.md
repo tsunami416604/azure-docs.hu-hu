@@ -1,19 +1,15 @@
 ---
 title: Az Azure CLI végrehajtása Jenkins használatával
 description: Megtudhatja, hogyan használhatja az Azure CLI-t egy Java-webalkalmazás üzembe helyezéséhez az Azure-ban Jenkins-folyamat részeként
-ms.service: jenkins
 keywords: jenkins, azure, devops, app service, cli
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882118"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158818"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Üzembe helyezés az Azure App Service-ben a Jenkinsszel és az Azure CLI használatával
 Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI-t egy [Jenkins-folyamatban](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
@@ -26,7 +22,7 @@ Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI
 > * Jenkins-folyamat létrehozása
 > * A folyamat futtatása és a webalkalmazás ellenőrzése
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt.
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,13 +46,13 @@ sudo apt-get install -y maven
 Az Azure CLI végrehajtásához Azure-beli hitelesítő adatok szükségesek.
 
 * A Jenkins irányítópultján kattintson a **Credentials (Hitelesítő adatok) -> System (Rendszer)** lehetőségre. Kattintson a **Global credentials (unrestricted) (Globális hitelesítő adatok (korlátlan))** elemre.
-* [Microsoft Azure-szolgáltatásnév](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) hozzáadásához kattintson az **Add Credentials (Hitelesítő adatok hozzáadása)** lehetőségre, és töltse ki a következő mezőket: Subscription ID (Előfizetés azonosítója), Client ID (Ügyfél-azonosító), Client Secret (Titkos ügyfélkód) és OAuth 2.0 Token Endpoint (Jogkivonatcserélő OAuth 2.0-végpont). Adjon meg egy azonosítót a következő lépésekben történő használathoz.
+* **Microsoft Azure-szolgáltatásnév** hozzáadásához kattintson az [Add Credentials (Hitelesítő adatok hozzáadása)](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) lehetőségre, és töltse ki a következő mezőket: Subscription ID (Előfizetés azonosítója), Client ID (Ügyfél-azonosító), Client Secret (Titkos ügyfélkód) és OAuth 2.0 Token Endpoint (Jogkivonatcserélő OAuth 2.0-végpont). Adjon meg egy azonosítót a következő lépésekben történő használathoz.
 
 ![Hitelesítő adatok hozzáadása](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Azure App Service létrehozása Java-webalkalmazás üzembe helyezéséhez
 
-Az [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) parancssori felületi paranccsal hozzon létre egy Azure App Service-csomagot az **INGYENES** tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek. 
+Az **az appservice plan create** parancssori felületi paranccsal hozzon létre egy Azure App Service-csomagot az [INGYENES](/cli/azure/appservice/plan#az-appservice-plan-create) tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek. 
 
 ```azurecli-interactive
 az appservice plan create \

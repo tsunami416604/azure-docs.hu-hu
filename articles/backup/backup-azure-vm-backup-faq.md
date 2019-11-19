@@ -1,25 +1,21 @@
 ---
-title: Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése Azure Backup
+title: GYIK – Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: ad5e715de2f3467d4530759cbb2acec0358e5597
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747276"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172563"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
 Ez a cikk az Azure-beli virtuális gépek [Azure Backup](backup-introduction-to-azure-backup.md) szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Milyen virtuálisgép-rendszerképeket lehet engedélyezni a biztonsági mentéshez, amikor létrehozom őket?
 
@@ -33,15 +29,15 @@ Nem. A biztonsági mentési költségek elkülönül a virtuális gép költség
 
 Ha Ön virtuálisgép-közreműködő, akkor engedélyezheti a biztonsági mentést a virtuális gépen. Ha egyéni szerepkört használ, a következő engedélyekkel engedélyezheti a biztonsági mentést a virtuális gépen:
 
-- Microsoft. Recoveryservices szolgáltatónál/tárolók/írás
-- Microsoft. Recoveryservices szolgáltatónál/tárolók/olvasás
-- Microsoft. Recoveryservices szolgáltatónál/Locations/*
-- Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/*/READ
-- Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/READ
-- Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/Write
-- Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/Write
-- Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/READ
-- Microsoft. Recoveryservices szolgáltatónál/tárolók/backupPolicies/írás
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
 
 Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokat tartalmaz, győződjön meg arról, hogy rendelkezik írási engedéllyel a Recovery Services-tároló erőforráscsoporthoz.  
 

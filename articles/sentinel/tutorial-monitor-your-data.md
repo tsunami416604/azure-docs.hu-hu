@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3f5e01a0ceebac092084e339994161763a11c49b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240421"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158857"
 ---
-# <a name="tutorial-monitor-your-data"></a>Oktatóanyag: Monitorozza az adatcsatornákat,
+# <a name="tutorial-monitor-your-data"></a>Oktatóanyag: az adatai monitorozása
 
 
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure sentinelhez, az Azure Sentinel-integrációval Azure monitor munkafüzetek használatával figyelheti az adatait, amely sokoldalúan használható az egyéni irányítópultok létrehozásához. Míg a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
+Miután az [adatforrásokat](quickstart-onboard.md) az Azure Sentinel szolgáltatáshoz csatlakoztatta, az Azure Sentinel-integrációval Azure monitor-munkafüzetek segítségével figyelheti az adatait, ami sokoldalúan használható az egyéni irányítópultok létrehozásához. Míg a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
 
 
 Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai figyeléséhez.
@@ -56,7 +56,7 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai figye
 ![munkafüzetek megtekintése](./media/tutorial-monitor-data/workbook-graph.png)
 1. A módosítások elvégzése után mentheti a munkafüzetet. 
 
-1. A munkafüzet klónozása is megtehető: Válassza a **Szerkesztés** , majd a **Mentés másként**lehetőséget, hogy egy másik néven mentse azt egy előfizetéshez és az erőforráscsoporthoz. Ezek a munkafüzetek a **saját munkafüzetek** lapon jelennek meg.
+1. A munkafüzet klónozása is megtehető: válassza a **Szerkesztés** , majd a **Mentés másként**lehetőséget, hogy egy másik névvel mentse azt az előfizetéshez és az erőforráscsoporthoz. Ezek a munkafüzetek a **saját munkafüzetek** lapon jelennek meg.
 
 
 ## <a name="create-new-workbook"></a>Új munkafüzet létrehozása
@@ -72,7 +72,7 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai figye
 
 1. Ha azt szeretné, hogy a szervezeten belül mások is használhassák a munkafüzetet, a **Mentés** lehetőség alatt válassza a **megosztott jelentések**lehetőséget. Ha azt szeretné, hogy ez a munkafüzet csak Ön számára legyen elérhető, válassza **a saját jelentések**lehetőséget.
 
-1. A munkaterületen lévő munkafüzetek **közötti váltáshoz** ![a munkafüzetek felső ablaktábláján válassza a](./media/tutorial-monitor-data/switch.png)váltás a munkafüzetben lehetőséget. A jobb oldalon megnyíló ablakban váltson a munkafüzetek között.
+1. A munkaterületen lévő munkafüzetek közötti váltáshoz a munkafüzetek felső ablaktábláján válassza a **megnyitás** ![váltás munkafüzetek](./media/tutorial-monitor-data/switch.png)lehetőséget. A jobb oldalon megnyíló ablakban váltson a munkafüzetek között.
 
    ![Munkafüzetek váltása](./media/tutorial-monitor-data/switch-workbooks.png)
 
@@ -81,15 +81,12 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai figye
 
 Az Azure Sentinel-sablonból létrehozott munkafüzetek törölhetők. 
 
-Testreszabott munkafüzet törlése:
-1.  Válassza a **munkafüzet megtekintése**lehetőséget.
-2.  Válassza a felső **Megnyitás** elemet.
-3.  A munkafüzeteket felsoroló táblázatban a törölni kívánt munkafüzet sorában válassza a sor végén található három pontot... a menü megnyitásához válassza a **Törlés**lehetőséget. Ezzel törli a mentett munkafüzetet.
+Testreszabott munkafüzet törléséhez a munkafüzetek lapon válassza ki a törölni kívánt mentett munkafüzetet, és válassza a **Törlés**lehetőséget. Ezzel törli a mentett munkafüzetet.
 
 > [!NOTE]
 > Ezzel eltávolítja az erőforrást, valamint a sablonon végrehajtott módosításokat is. Az eredeti sablon továbbra is elérhető marad.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg adatait az Azure Sentinelben.
 

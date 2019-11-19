@@ -1,21 +1,17 @@
 ---
-title: '& Figyelő kezelése Microsoft Azure Recovery Services ügynök biztonsági mentései'
-description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recovery Services ügynök biztonsági másolatait a Azure Backup szolgáltatás használatával.
+title: A MARS-ügynök biztonsági másolatainak kezelése és figyelése
+description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recovery Services (MARS) ügynök biztonsági másolatait a Azure Backup szolgáltatás használatával.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074999"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173068"
 ---
-# <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
 Ez a cikk azt ismerteti, hogyan kezelhetők a Microsoft Azure Recovery Services ügynökkel biztonsági mentés alatt álló fájlok és mappák.
 
@@ -206,7 +202,7 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 1. A **megőrzési szabály kiválasztása**területen adja meg a megőrzési időtartamot, majd kattintson a **tovább**gombra.
 1. Végül a **megfelelőség** képernyőn tekintse át a szabályzat részleteit, és kattintson a **Befejezés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
 - További információ az [igény szerinti biztonsági mentési szabályzat megőrzési viselkedéséről](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

@@ -1,19 +1,14 @@
 ---
-title: A számítási SQL Server-feladatok Azure Backup-alapú biztonsági mentése a DPM használatával
+title: SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure Backup szolgáltatás használatával
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 069d1e7cb81fe8d3528b27e676886710f57ea5f1
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074274"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173267"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 
@@ -156,6 +151,6 @@ A következő lépések szükségesek egy védett entitás (SQL Server adatbázi
 
     A helyreállítás befejeződése után a visszaállított adatbázis az alkalmazás konzisztens.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Backup GYIK](backup-azure-backup-faq.md)

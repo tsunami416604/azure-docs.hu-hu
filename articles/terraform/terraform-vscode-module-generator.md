@@ -1,17 +1,14 @@
 ---
 title: Oktatóanyag – Terraform alapsablon létrehozása az Azure-ban a Yeoman használatával
 description: Megtudhatja, hogyan hozhat létre Terraform alapszintű sablont az Azure-ban a Yeoman használatával.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 2f8cbc495a4b46255e7eb31bc1ff8b04fffcad15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969271"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159169"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Oktatóanyag: Terraform-alapú alapsablon létrehozása az Azure-ban a Yeoman használatával
 
@@ -37,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő feladatokat
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
-### <a name="install-nodejs"></a>Node.js telepítése
+### <a name="install-nodejs"></a>A Node.js telepítése
 
 A Terraform Cloud Shellben való használatához [telepítenie kell a Node.js](https://nodejs.org/en/download/) 6.0-s vagy újabb verzióját.
 
@@ -127,7 +124,7 @@ Ezt az üres könyvtárat a $GOPATH/src alatt kell elhelyeznie. Az elérési út
 
 1. A menüsávon kattintson a **Fájl > Mappa megnyitása** elemre, majd válassza ki a létrehozott könyvtárat.
 
-    ![Visual Studio-kód](media/terraform-vscode-module-generator/ymg-open-in-vscode.png)
+    ![Visual Studio Code](media/terraform-vscode-module-generator/ymg-open-in-vscode.png)
 
 A Yeoman modul létrehozója a következő fájlokat hozta létre. További információ ezekről a fájlokról és azok használatáról: [Terratest a Terraform-modulokban.](https://mseng.visualstudio.com/VSJava/_git/Terraform?path=%2FTerratest%20Introduction.md&version=GBmaster)
 
@@ -167,7 +164,7 @@ Arról, hogy a Docker valóban fut, a `docker info` paranccsal győződhet meg.
 
 1. Egy parancssorba írja be a következőt:
 
-    `docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID= --build-arg BUILD_ARM_CLIENT_ID= --build-arg BUILD_ARM_CLIENT_SECRET= --build-arg BUILD_ARM_TENANT_ID= -t terra-mod-example .` kérdésre adott válaszban foglalt lépéseket.
+    `docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID= --build-arg BUILD_ARM_CLIENT_ID= --build-arg BUILD_ARM_CLIENT_SECRET= --build-arg BUILD_ARM_TENANT_ID= -t terra-mod-example .`.
 
     Megjelenik a fordítás sikeres befejezését jelentő **Successfully built** üzenet.
 

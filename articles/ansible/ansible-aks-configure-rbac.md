@@ -3,17 +3,13 @@ title: Oktatóanyag – szerepköralapú hozzáférés-vezérlési (RBAC) szerep
 description: Ismerje meg, hogyan konfigurálhatja a RBAC az Azure Kubernetes Service (ak) fürtön a Ansible használatával
 keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 36a6f5ade7a60a989d2e80f2405aaa2d1d50b756
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242335"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156872"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
 
@@ -35,7 +31,7 @@ Az AK konfigurálható úgy, hogy [Azure Active Directory (ad)](/azure/active-di
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **A RedHat OpenShift-könyvtár telepítése** -  @ no__t-2
+- **A RedHat OpenShift-könyvtár - telepítése** `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Az Azure AD konfigurálása az AK-hitelesítéshez
 
@@ -56,8 +52,8 @@ Ebben a szakaszban létrehoz egy AK-t az [Azure ad-alkalmazással](#configure-az
 
 Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- A forgatókönyv betölti a `ssh_key` `~/.ssh/id_rsa.pub` értéket. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
-- A `client_id` és a `client_secret` érték betöltődik a `~/.azure/credentials` típusból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
+- A forgatókönyv betölti `ssh_key`t a `~/.ssh/id_rsa.pub`ból. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
+- A `client_id` és `client_secret` értékek betöltődik a `~/.azure/credentials`ból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -123,9 +119,9 @@ Mentse a következő forgatókönyvet `aks-create.yml` néven:
 
 RBAC-kötés létrehozásához először le kell kérnie az Azure AD-objektum AZONOSÍTÓját. 
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. A lap tetején található Keresés mezőben adja meg a következőt: `Azure Active Directory`. 
+1. A lap tetején található Keresés mezőben adja meg a `Azure Active Directory`. 
 
 1. Kattintson a `Enter` gombra.
 
@@ -160,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-Cserélje le a `&lt;your-aad-account>` helyőrzőt az Azure AD-bérlői [objektum azonosítójával](#get-the-azure-ad-object-id).
+Cserélje le az `&lt;your-aad-account>` helyőrzőt az Azure AD-bérlői [objektum azonosítójával](#get-the-azure-ad-object-id).
 
 Mentse a következő ötletekbõl-t, amely üzembe helyezi az új szerepkört az AK-ban – `aks-kube-deploy.yml`:
 
@@ -241,7 +237,7 @@ aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 ---

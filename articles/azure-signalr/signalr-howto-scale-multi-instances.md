@@ -1,22 +1,22 @@
 ---
-title: Az Azure Signaler szolgáltatás több példányának méretezése
+title: Skálázás több példányban – Azure Signaler szolgáltatás
 description: Számos skálázási helyzetben a vásárlónak gyakran több példányt kell kiépítenie, és úgy kell konfigurálnia, hogy együtt használja őket a nagyméretű központi telepítés létrehozásához. A horizontális skálázás például több példány támogatását igényli.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672338"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158161"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezheti a Signaler szolgáltatást több példányon?
 A legújabb Signaler Service SDK támogatja a Signaler szolgáltatás példányainak több végpontját. Ezzel a szolgáltatással méretezheti az egyidejű kapcsolatokat, vagy felhasználhatja a régiók közötti üzenetkezeléshez.
 
-## <a name="for-aspnet-core"></a>ASP.NET Core
+## <a name="for-aspnet-core"></a>For ASP.NET Core
 
 ### <a name="how-to-add-multiple-endpoints-from-config"></a>Hogyan lehet több végpontot felvenni a konfigurációból?
 
@@ -64,7 +64,7 @@ Alapértelmezés szerint az SDK a [DefaultEndpointRouter](https://github.com/Azu
 
 2. Kiszolgálói üzenet útválasztása
 
-    Ha * üzenet küldése egy adott * * kapcsolat * * * felé, és a célként megadott kapcsolat az aktuális kiszolgálóra van irányítva, az üzenet közvetlenül erre a csatlakoztatott végpontra kerül. Ellenkező esetben az üzenetek az összes Azure Signaler-végpontra továbbítva lesznek.
+    Ha a *üzenetet küld egy adott **kapcsolat*** x és a cél kapcsolat továbbítja a rendszer az aktuális kiszolgáló, az üzenet közvetlenül csatlakoztatott, hogy a végpont kerül. Ellenkező esetben az üzenetek az összes Azure Signaler-végpontra továbbítva lesznek.
 
 #### <a name="customize-routing-algorithm"></a>Útválasztási algoritmus testreszabása
 Saját útválasztót is létrehozhat, ha speciális ismeretekkel rendelkezik annak azonosításához, hogy mely végpontoknak kell megjelenniük.
@@ -235,7 +235,7 @@ Ha az összes `primary` végpont nem érhető el, az ügyfél `/negotiate` a ren
 
 ![Feladatátvétel](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az útmutatóból megtudhatta, hogyan konfigurálhat több példányt ugyanabban az alkalmazásban a méretezés, a horizontális skálázás és a régiók közötti helyzetekhez.
 

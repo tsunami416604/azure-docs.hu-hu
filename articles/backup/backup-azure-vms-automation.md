@@ -1,18 +1,14 @@
 ---
-title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a PowerShell-lel Azure Backup használatával
+title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a PowerShell-lel
 description: Az Azure-beli virtuális gépek biztonsági mentését és helyreállítását ismerteti a PowerShell-lel Azure Backup használatával
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7afa791c4a98ca5e40c0ee3983ba8650268c00ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969062"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172547"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -21,6 +17,7 @@ Ez a cikk az Azure-beli virtuális gépek biztonsági mentését és visszaáll�
 Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Hozzon létre egy Recovery Services-tárolót, és állítsa be a tár környezetét.
 > * Biztonsági mentési szabályzat meghatározása
 > * A biztonsági mentési szabályzat alkalmazása több virtuális gép védelme érdekében
@@ -29,7 +26,7 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 ## <a name="before-you-start"></a>Előkészületek
 
 * [További](backup-azure-recovery-services-vault-overview.md) információ a Recovery Services-tárolókkal kapcsolatban.
-* [Tekintse át](backup-architecture.md#architecture-direct-backup-of-azure-vms) az Azure-beli virtuális gépek biztonsági mentésének architektúráját, [Ismerkedjen meg](backup-azure-vms-introduction.md) a biztonsági mentési folyamattal, és [tekintse át](backup-support-matrix-iaas.md) a támogatás, a korlátozások és az Előfeltételek
+* [Tekintse át](backup-architecture.md#architecture-built-in-azure-vm-backup) az Azure-beli virtuális gépek biztonsági mentésének architektúráját, [Ismerkedjen meg](backup-azure-vms-introduction.md) a biztonsági mentési folyamattal, és [tekintse át](backup-support-matrix-iaas.md) a támogatás, a korlátozások és az Előfeltételek
 * Tekintse át Recovery Services PowerShell-objektumának hierarchiáját.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services objektum-hierarchia
@@ -44,7 +41,7 @@ Tekintse át az az **. recoveryservices szolgáltatónál** [parancsmag](https:/
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Kezdés:
+A kezdéshez:
 
 1. [A PowerShell legújabb verziójának letöltése](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
@@ -152,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-vagy
+Vagy
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -605,7 +602,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
      }
       ```
 
-   * **Nem felügyelt és titkosított virtuális gépek az Azure ad nélkül (csak BEK esetén)** – nem felügyelt, Azure ad nélküli titkosított virtuális gépek esetében (csak a BEK használatával), ha a forrás kulcstartója **/titkos kulcsa nem érhető el** a Key Vault számára a következő eljárás használatával: [ Nem titkosított virtuális gép visszaállítása Azure Backup helyreállítási pontról](backup-azure-restore-key-secret.md). Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-blob titkosítási adatainak beállításához (ez a lépés nem szükséges az adatblobhoz). A $dekurl a visszaállított kulcstartóból hívható le.<br>
+   * **Nem felügyelt és titkosított virtuális gépek az Azure ad nélkül (csak BEK esetén)** – nem felügyelt, az Azure ad-t nem használó, titkosított virtuális gépek esetében (csak BEK használatával), ha a forrás kulcstartója **/titkos kulcsa nem érhető el** a kulcsok a Key vaultba való visszaállításához, a [nem titkosított virtuális gépek Azure Backup helyreállítási pontról történő visszaállításának](backup-azure-restore-key-secret.md)eljárása alapján. Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-blob titkosítási adatainak beállításához (ez a lépés nem szükséges az adatblobhoz). A $dekurl a visszaállított kulcstartóból hívható le.<br>
 
    Az alábbi szkriptet csak akkor kell végrehajtani, ha a forrás kulcstartó/titkos kulcs nem érhető el.
 
@@ -632,7 +629,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       }
       ```
 
-   * **Nem felügyelt és titkosított virtuális gépek Azure ad nélkül (BEK és KEK)** – nem felügyelt, titkosított virtuális gépekhez az Azure ad nélkül (a BEK & KEK használatával titkosított) – Ha a forrás kulcstartó **/kulcs/titkos kód nem érhető el** , állítsa vissza a Key Vault kulcsát és titkait a következővel: a [nem titkosított virtuális gépek Azure Backup helyreállítási pontról történő visszaállításának](backup-azure-restore-key-secret.md)eljárása. Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-blob titkosítási adatainak beállításához (ez a lépés nem szükséges az adatblobhoz). A $dekurl és $kekurl a visszaállított kulcstartóból hívható le.
+   * **Nem felügyelt és titkosított virtuális gépek az Azure ad nélkül (BEK és KEK)** – nem felügyelt, titkosított virtuális gépekhez az Azure ad nélkül (a BEK & KEK használatával titkosított) – Ha a forrás kulcstartó **/kulcs/titok nem érhető el** , állítsa vissza a kulcsot és a titkos kulcsokat a key vaultba egy [Azure Backup helyreállítási pontról](backup-azure-restore-key-secret.md). Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-blob titkosítási adatainak beállításához (ez a lépés nem szükséges az adatblobhoz). A $dekurl és $kekurl a visszaállított kulcstartóból hívható le.
 
    Az alábbi szkriptet csak akkor kell végrehajtani, ha a forrás kulcstartó/kulcs/titok nem érhető el.
 
@@ -666,7 +663,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
 
    * **Felügyelt és titkosított virtuális gépek az Azure ad-vel (BEK és KEK)** – felügyelt titkosított virtuális gépekhez az Azure ad-vel (a BEK és a KEK használatával titkosítva) csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információk: [adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Felügyelt és titkosított virtuális gépek az Azure ad nélkül (csak BEK)** – felügyelt, titkosított virtuális gépek Azure ad nélkül (csak BEK-vel titkosítva), ha a forrás kulcstartója **/titkos kulcsa nem érhető el** a Key vaulthoz való visszaállítási eljárás használatával. [ nem titkosított virtuális gép Azure Backup helyreállítási pontból](backup-azure-restore-key-secret.md). Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-lemez titkosítási adatainak beállításához (ez a lépés nem szükséges az adatlemezhez). A $dekurl a visszaállított kulcstartóból hívható le.
+   * **Felügyelt és titkosított virtuális gépek az Azure ad nélkül (csak BEK)** – felügyelt, titkosított virtuális gépek Azure ad nélkül (csak BEK-vel titkosítva), ha a forrás kulcstartója **/titkos kulcsa nem érhető el** a Key Vault számára a [nem titkosított virtuális gépek visszaállítása Azure Backup helyreállítási pontról](backup-azure-restore-key-secret.md)című eljárásban leírtak szerint. Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-lemez titkosítási adatainak beállításához (ez a lépés nem szükséges az adatlemezhez). A $dekurl a visszaállított kulcstartóból hívható le.
 
      Az alábbi szkriptet csak akkor kell végrehajtani, ha a forrás kulcstartó/titkos kulcs nem érhető el.  
 
@@ -680,7 +677,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
 
      Ha a titkok elérhetők, és a titkosítási adatok az operációsrendszer-lemezen vannak beállítva, a visszaállított felügyelt lemezek csatlakoztatásáról lásd: [adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Felügyelt és titkosított virtuális gépek az Azure ad nélkül (BEK és KEK)** – felügyelt, titkosított virtuális gépekhez az Azure ad nélkül (a BEK & KEK használatával titkosított), ha a forrás kulcstartó **/kulcs/titkos kód nem érhető el** a Key vaulthoz tartozó kulcs és titkok visszaállítása a következő eljárás használatával: [Nem titkosított virtuális gép visszaállítása Azure Backup helyreállítási pontról](backup-azure-restore-key-secret.md). Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-lemez titkosítási adatainak beállításához (ez a lépés nem szükséges az adatlemezhez). A $dekurl és $kekurl a visszaállított kulcstartóból hívható le.
+   * **Felügyelt és titkosított virtuális gépek az Azure ad nélkül (BEK és KEK)** – felügyelt, titkosított virtuális gépekhez az Azure ad nélkül (a BEK & KEK használatával titkosított) – Ha a forrás kulcstartó **/kulcs/titkos kód nem érhető el** , állítsa vissza a kulcsot és a titkokat a Key vaultba a [nem titkosított virtuális gép helyreállítása egy Azure Backup helyreállítási pontról](backup-azure-restore-key-secret.md)című eljárás segítségével. Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-lemez titkosítási adatainak beállításához (ez a lépés nem szükséges az adatlemezhez). A $dekurl és $kekurl a visszaállított kulcstartóból hívható le.
 
    Az alábbi szkriptet csak akkor kell végrehajtani, ha a forrás kulcstartó/kulcs/titok nem érhető el.
 

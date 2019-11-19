@@ -1,18 +1,14 @@
 ---
-title: Azure Backup támogatási mátrix az Azure virtuális gépek biztonsági mentéséhez
+title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: f699315855dc27fd70fdb60574414ef87037671f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 8f84d7fefd2affc3a3c47227ab6f2a2d0b325f4e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953246"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172089"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -65,6 +61,8 @@ A következő táblázat összefoglalja a Windows Azure virtuális gépek bizton
 Biztonsági mentés az Azure VM Agent bővítménnyel | – Windows 10-ügyfél (csak 64 bites) <br/><br/>– Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
 Biztonsági mentés a MARS-ügynökkel | [Támogatott](backup-support-matrix-mars-agent.md#support-for-direct-backups) operációs rendszerek.
 Biztonsági mentés a DPM/MABS | A [MABS](backup-mabs-protection-matrix.md) és [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)biztonsági mentéshez támogatott operációs rendszerek.
+
+A Azure Backup nem támogatja a 32 bites operációs rendszereket.
 
 ## <a name="support-for-linux-backup"></a>Linux biztonsági mentés támogatása
 
@@ -159,7 +157,7 @@ Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtu�
 Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel.
 Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 Tárolási típus | Standard HDD, standard SSD, prémium SSD.
-Felügyelt lemezek | Támogatott.
+Managed Disks | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
 írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> Az Azure Backup automatikusan kizárja a lemezeket, amelyeken engedélyezve van a írásgyorsító a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem tudja visszaállítani ezeket a lemezeket a virtuális gép helyreállítási pontjairól.
 Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure Backup nem duplikálja a Recovery Services-tárolóban lévő virtuális gépek között <br/> <br/>  – Ha a visszaállítás során a rendszer lemásolja a virtuális gépeket, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot.

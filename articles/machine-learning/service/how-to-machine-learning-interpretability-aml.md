@@ -1,7 +1,7 @@
 ---
 title: A helyi és távoli futtatások modellezési értelmezése
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy a modell miért teszi a jóslatokat az Azure Machine Learning SDK használatával. A képzés során felhasználható, hogy megtudja, hogyan határozza meg a modell a funkciók fontosságát, és előrejelzéseket készít.
+description: Ismerje meg, hogyan állapíthatja meg, hogy a gépi tanulási modell hogyan határozza meg a funkció fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,29 +10,31 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: a2b71a10606b7cd20f06b2497515b758426833a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ffb9e0547c44ee47a43de00e51933ce7d0584759
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515303"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158726"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>A helyi és távoli futtatások modellezési értelmezése
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogy a modell miért hozta létre az előrejelzéseket a Azure Machine Learning Python SDK értelmező csomagjával. A következő feladatokat ismerheti meg:
+Ebből a cikkből megtudhatja, hogyan használja a Azure Machine Learning Python SDK értelmező csomagját, hogy megtudja, miért hozta létre a modell az előrejelzéseit. Az alábbiak végrehajtásának módját ismerheti meg:
 
-* A helyileg és távoli számítási erőforrásokon egyaránt betanított gépi tanulási modellek értelmezése
-* Helyi és globális magyarázatok tárolása az Azure-beli futtatási előzményekben
-* Értelmező vizualizációk megtekintése a [Azure Machine learning Studióban](https://ml.azure.com)
-* Pontozási-magyarázat üzembe helyezése a modellel
+* A helyileg és távoli számítási erőforrásokon egyaránt betanított gépi tanulási modellek értelmezése.
+* Helyi és globális magyarázatok tárolása az Azure-beli futtatási előzményekben.
+* Tekintse meg a [Azure Machine learning Studio](https://ml.azure.com)értelmezési vizualizációit.
+* Pontozási-magyarázatot helyezhet üzembe a modellel.
 
-Ha többet szeretne megtudni a modell értelmezéséről, tekintse meg a [koncepciót ismertető cikket](how-to-machine-learning-interpretability.md).
+További információ: [a modell értelmezése Azure Machine learning szolgáltatásban](how-to-machine-learning-interpretability.md).
 
 ## <a name="local-interpretability"></a>Helyi értelmezés
 
-Az alábbi példa bemutatja, hogyan használhatja helyileg a tolmácsolási csomagot az Azure-szolgáltatásokkal való kapcsolatfelvétel nélkül. `pip install azureml-interpret` futtatása az értelmező csomag beszerzéséhez.
+Az alábbi példa bemutatja, hogyan használhatja helyileg a értelmező csomagot az Azure-szolgáltatásokkal való kapcsolatfelvétel nélkül.
+
+1. Ha szükséges, használja a `pip install azureml-interpret` az értelmező csomag beszerzéséhez.
 
 1. Egy minta modell betanítása egy helyi Jupyter jegyzetfüzetbe.
 
@@ -54,7 +56,13 @@ Az alábbi példa bemutatja, hogyan használhatja helyileg a tolmácsolási csom
     model = clf.fit(x_train, y_train)
     ```
 
-2. A magyarázó meghívása helyileg: egy magyarázó objektum inicializálásához át kell adnia a modelljét és a betanítási adatait az elmagyarázó konstruktorának. Igény szerint átadhatja a szolgáltatások nevét és a kimeneti osztály nevét (ha ez a besorolás), amelyet a rendszer a magyarázatok és a vizualizációk további tájékoztatása érdekében használ. Az alábbiakban bemutatjuk, hogyan hozhat létre egy magyarázó objektumot `TabularExplainer`, `MimicExplainer`és helyileg `PFIExplainer` használatával. `TabularExplainer` a három SHAP-magyarázat egyikét hívja meg (`TreeExplainer`, `DeepExplainer`vagy `KernelExplainer`), és automatikusan kiválasztja a legmegfelelőbbet a használati esethez. A három mögöttes magyarázatot azonban közvetlenül is meghívhatja.
+1. A magyarázatot helyileg hívja meg.
+   * Egy magyarázó objektum inicializálásához adja át a modelljét és a betanítási adatait az elmagyarázó konstruktorának.
+   * Annak érdekében, hogy a magyarázatokat és a vizualizációkat részletesebben is elvégezze, dönthet úgy, hogy a szolgáltatás nevét és a kimeneti osztály nevét adja meg, ha a besorolást végzi.
+
+   A következő kódrészletek bemutatják, hogyan hozható létre egy magyarázó objektum a `TabularExplainer`, a `MimicExplainer`és a `PFIExplainer` helyileg.
+   * `TabularExplainer` a három SHAP-magyarázat egyikét hívja meg (`TreeExplainer`, `DeepExplainer`vagy `KernelExplainer`).
+   * `TabularExplainer` automatikusan kiválasztja a legmegfelelőbbet a használati esethez, de a három mögöttes magyarázatot közvetlenül is meghívhatja.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -80,7 +88,7 @@ Az alábbi példa bemutatja, hogyan használhatja helyileg a tolmácsolási csom
     from interpret.ext.glassbox import DecisionTreeExplainableModel
 
     # "features" and "classes" fields are optional
-    # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns. 
+    # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns.
     # max_num_of_augmentations is optional and defines max number of times we can increase the input data size.
     # LGBMExplainableModel can be replaced with LinearExplainableModel, SGDExplainableModel, or DecisionTreeExplainableModel
     explainer = MimicExplainer(model, 
@@ -91,21 +99,22 @@ Az alábbi példa bemutatja, hogyan használhatja helyileg a tolmácsolási csom
                                features=breast_cancer_data.feature_names, 
                                classes=classes)
     ```
-   vagy
+
+    vagy
 
     ```python
-    from interpret.ext.blackbox import PFIExplainer 
-    
+    from interpret.ext.blackbox import PFIExplainer
+
     # "features" and "classes" fields are optional
-    explainer = PFIExplainer(model, 
+    explainer = PFIExplainer(model,
                              features=breast_cancer_data.feature_names, 
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>Általános (globális) funkciók fontossági értékei
+### <a name="overall-global-feature-importance-values"></a>Általános, globális funkciók fontossági értékei
 
-A globális funkciók fontossági értékeinek beolvasása.
-    
+Tekintse át a következő példát, amely segítséget nyújt a globális funkciók fontossági értékeinek beszerzésében.
+
 ```python
 
 # you can use the training data or the test data here
@@ -123,12 +132,14 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="instance-level-local-feature-importance-values"></a>A példány-szint (helyi) szolgáltatás fontossági értékei
+### <a name="instance-level-local-feature-importance-values"></a>Példány-szint, a helyi funkció fontossági értékei
 
-A helyi funkció fontossági értékeinek beolvasása: az alábbi függvény hívásával ismertesse az egyes példányokat vagy a példányok egy csoportját. Vegye figyelembe, hogy a PFIExplainer nem támogatja a helyi magyarázatokat.
+A helyi funkció fontossági értékeinek lekérése egy adott példány vagy példányok egy csoportjára vonatkozó magyarázatok meghívásával.
+> [!NOTE]
+> a `PFIExplainer` nem támogatja a helyi magyarázatokat.
 
 ```python
-# explain the first data point in the test set
+# get explanation for the first data point in the test set
 local_explanation = explainer.explain_local(x_test[0:5])
 
 # sorted feature importance values and feature names
@@ -138,9 +149,14 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ## <a name="interpretability-for-remote-runs"></a>Távoli futtatások értelmezése
 
-Ez a példa bemutatja, hogyan használható a `ExplanationClient` osztály a modell-értelmezés távoli futtatásokhoz való engedélyezéséhez. A koncepció hasonló az előző szakaszhoz, de a távoli Futtatás `ExplanationClient` használatával feltöltheti a értelmező környezetet, majd később letöltheti a környezetet egy helyi környezetben. A szükséges csomag beszerzéséhez használja a `pip install azureml-contrib-interpret`.
+Az alábbi példa bemutatja, hogyan használható a `ExplanationClient` osztály a modell-értelmezés távoli futtatásokhoz való engedélyezéséhez. Elméletileg a helyi folyamathoz hasonlít, a következők kivételével:
 
-1. Hozzon létre egy betanítási szkriptet egy helyi Jupyter-jegyzetfüzetben (például train_explain.).
+* Használja a távoli Futtatás `ExplanationClient` a értelmező környezet feltöltéséhez.
+* A környezet későbbi letöltése helyi környezetben.
+
+1. Ha szükséges, használja a `pip install azureml-contrib-interpret` a szükséges csomag beszerzéséhez.
+
+1. Helyi Jupyter notebook létrehozása egy tanítási szkriptet. Például: `train_explain.py`.
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -171,7 +187,7 @@ Ez a példa bemutatja, hogyan használható a `ExplanationClient` osztály a mod
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. A [modell betanításához szükséges számítási célok beállításával](how-to-set-up-training-targets.md#amlcompute) kapcsolatos útmutatást követve megtudhatja, hogyan állíthat be Azure Machine learning számítási célt, és hogyan küldhet betanítási kísérleteket. Láthatja a [példaként szolgáló jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)is.
+1. Állítson be Azure Machine Learning számítást számítási célként, és küldje be a betanítási futtatást. Útmutatásért lásd: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md#amlcompute) . A [példaként használható jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) is hasznosak lehetnek.
 
 1. Töltse le a magyarázatot a helyi Jupyter notebookon.
 
@@ -193,12 +209,11 @@ Ez a példa bemutatja, hogyan használható a `ExplanationClient` osztály a mod
 
 ## <a name="raw-feature-transformations"></a>Nyers funkciók átalakítása
 
-Lehetőség van arra is, hogy átadja a funkció átalakítási folyamatát a magyarázó elemnek (a train_explain. a.........), hogy az átalakítás előtt (a megtervezett funkciók helyett) magyarázatokat kapjon a nyers funkciók tekintetében. Ha kihagyja ezt a lehetőséget, a magyarázat a megfogalmazott funkciókra vonatkozó magyarázatokat tartalmaz.
+Megadhatja, hogy a mesterséges funkciók helyett a nyers, nem átalakított funkciókra vonatkozó magyarázatokat kapjon. Ennél a lehetőségnél a szolgáltatás átalakítási folyamatát átadja a `train_explain.py`ban található magyarázatnak. Ellenkező esetben a magyarázó elemek a megfogalmazott funkciókra vonatkozó magyarázatokat biztosítanak.
 
-A támogatott átalakítások formátuma ugyanaz, mint az [sklearn-pandák](https://github.com/scikit-learn-contrib/sklearn-pandas)című rész. Általánosságban elmondható, hogy az átalakítások csak akkor támogatottak, ha egyetlen oszlopon működnek, és így egyértelműen egy-sok. 
+A támogatott átalakítások formátuma megegyezik a [sklearn-pandák](https://github.com/scikit-learn-contrib/sklearn-pandas)című témakörben leírtak szerint. Általánosságban elmondható, hogy az átalakítások csak akkor támogatottak, ha egyetlen oszlopon működnek, így egyértelmű, hogy egy-a-többhöz.
 
-A nyers funkciókat a `sklearn.compose.ColumnTransformer` vagy a beszerelt transzformátor-rekordok listáját használva magyarázza el. Az alábbi kód a `sklearn.compose.ColumnTransformer`t használja. 
-
+Olvassa el a nyers funkciók leírását `sklearn.compose.ColumnTransformer` vagy a beszerelt transzformátor-rekordok listáját használva. Az alábbi példa `sklearn.compose.ColumnTransformer`t használ.
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -232,7 +247,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=preprocessor)
 ```
 
-Ha szeretné futtatni a példát a beszerelt transzformátor-rekordok listájával, használja a következő kódot.
+Ha szeretné futtatni a példát a beszerelt transzformátor-rekordok listájával, használja a következő kódot:
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -276,22 +291,22 @@ A következő mintaterületek globális képet nyújtanak a betanított modellr�
 
 |Telek|Leírás|
 |----|-----------|
-|Adatelemzés| Az adatkészlet áttekintése az előrejelzési értékekkel együtt.|
-|Globális fontosság|Megjeleníti a legfontosabb szolgáltatásokat globálisan (konfigurálható K). Ez a diagram hasznos lehet az alapul szolgáló modell globális viselkedésének megismeréséhez.|
-|Magyarázat feltárása|Azt mutatja be, hogyan felelős a szolgáltatás a modell előrejelzési értékeinek (vagy az előrejelzési értékek valószínűségének) megváltoztatásához. Azt is bemutatja, hogy a két funkció hogyan befolyásolja az előrejelzéseket.|
-|Összefoglalás fontossága| Az az összes adatpontnál az aláírt helyi szolgáltatás fontossági értékeit használja az egyes szolgáltatások által az előrejelzési értékre gyakorolt hatás eloszlásának megjelenítéséhez.|
+|Adatelemzés| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
+|Globális fontosság|A fő K (konfigurálható K) funkcióit jeleníti meg globálisan. Segít megérteni az alapul szolgáló modell globális viselkedését.|
+|Magyarázat feltárása|Azt mutatja be, hogy a szolgáltatás hogyan befolyásolja a modell előrejelzési értékeinek változását, vagy az előrejelzési értékek valószínűségét. A funkciók interakciójának hatását mutatja.|
+|Összefoglalás fontossága|A a helyi és a szolgáltatás fontossági értékeit használja az összes adatpontnál, hogy megjelenjenek az egyes szolgáltatások az előrejelzési értékre gyakorolt hatásának eloszlása.|
 
 [![vizualizációs irányítópult globális](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
 
 ### <a name="local-visualizations"></a>Helyi vizualizációk
 
-Az előző mintaterületeken bármikor az egyes adatpontokra kattintva betöltheti a helyi funkció fontossági területét az adott adatponthoz.
+Az adatpontok helyi, szolgáltatásbeli fontossági területének betöltéséhez válassza ki az egyes adatpontokat a parcellán.
 
 |Telek|Leírás|
 |----|-----------|
-|Helyi fontosság|Megjeleníti a legfontosabb szolgáltatásokat globálisan (konfigurálható K). Ez a diagram hasznos lehet az alapul szolgáló modell helyi viselkedésének megismerésére egy adott adatponton.|
-|Perturbáció feltárása|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti, hogy ezek a változások milyen hatással lesznek az előrejelzési értékre.|
-|Egyéni feltételes várakozás (ICE)| Lehetővé teszi egy szolgáltatás értékének a minimális értékről a maximális értékre való módosítását, amely azt mutatja, hogy az adatpontok előrejelzése hogyan változik meg egy szolgáltatás változásakor.|
+|Helyi fontosság|Megjeleníti a legfontosabb szolgáltatásokat globálisan (konfigurálható K). Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
+|Perturbáció feltárása|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzés értékének változásait.|
+|Egyéni feltételes várakozás (ICE)| Lehetővé teszi a szolgáltatás értékének a minimális értékről a maximális értékre való módosítását. Segít bemutatni, hogy az adatpont előrejelzése hogyan változik meg egy szolgáltatás módosításakor.|
 
 [![vizualizációs irányítópult helyi funkciójának fontossága](./media/machine-learning-interpretability-explainability/local-charts.png)](./media/machine-learning-interpretability-explainability/local-charts.png#lightbox)
 
@@ -301,7 +316,8 @@ Az előző mintaterületeken bármikor az egyes adatpontokra kattintva betölthe
 
 [![vizualizációs irányítópult jég ábrázolása](./media/machine-learning-interpretability-explainability/ice-plot.png)](./media/machine-learning-interpretability-explainability/ice-plot.png#lightbox)
 
-Vegye figyelembe, hogy a Jupyter-kernel elindítása előtt engedélyeznie kell a vizualizációs irányítópult widget-bővítményeit.
+> [!NOTE]
+> A Jupyter-kernel elindítása előtt győződjön meg róla, hogy engedélyezi a vizualizációk irányítópultjának widget-bővítményeit.
 
 * Jupyter-notebookok
 
@@ -310,16 +326,14 @@ Vegye figyelembe, hogy a Jupyter-kernel elindítása előtt engedélyeznie kell 
     jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
     ```
 
-
-
-* Jupyter Labs
+* JupyterLab
 
     ```shell
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install microsoft-mli-widget
     ```
 
-A vizualizációs irányítópult betöltéséhez használja a következő kódot.
+A vizualizációs irányítópult betöltéséhez használja a következő kódot:
 
 ```python
 from azureml.contrib.interpret.visualize import ExplanationDashboard
@@ -329,31 +343,33 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizáció a Azure Machine Learning Studióban
 
-A [távoli értelmezési](how-to-machine-learning-interpretability-aml.md#interpretability-for-remote-runs) szakaszban leírt lépések végrehajtásával ellenőrizheti a vizualizáció irányítópultját [Azure Machine learning Studióban](https://ml.azure.com). A Azure Machine Learning Studióban megjelenő irányítópult a vizualizációs irányítópult egyszerűbb verziója, és csak a következő két lapot támogatja.
+A [távoli értelmezési](#interpretability-for-remote-runs) lépések elvégzése után megtekintheti a vizualizációs irányítópultot [Azure Machine learning Studióban](https://ml.azure.com). Ez az irányítópult a vizualizációk irányítópultjának a fent ismertetett egyszerűbb verziója. Csak két lapot támogat:
 
 |Telek|Leírás|
 |----|-----------|
-|Globális fontosság|Megjeleníti a legfontosabb szolgáltatásokat globálisan (konfigurálható K). Ez a diagram hasznos lehet az alapul szolgáló modell globális viselkedésének megismeréséhez.|
-|Összefoglalás fontossága| Az az összes adatpontnál az aláírt helyi szolgáltatás fontossági értékeit használja az egyes szolgáltatások által az előrejelzési értékre gyakorolt hatás eloszlásának megjelenítéséhez.|
+|Globális fontosság|A fő K (konfigurálható K) funkcióit jeleníti meg globálisan. Segít megérteni az alapul szolgáló modell globális viselkedését.|
+|Összefoglalás fontossága|A a helyi és a szolgáltatás fontossági értékeit használja az összes adatpontnál, hogy megjelenjenek az egyes szolgáltatások az előrejelzési értékre gyakorolt hatásának eloszlása.|
 
-Ha a globális és a helyi magyarázat is elérhető, a rendszer mindkét lapot feltölti az adatokkal. Ha csak a globális magyarázat érhető el, a második lap le lesz tiltva.
+Ha a globális és a helyi magyarázat is elérhető, az adatok mindkét lapot kitöltik. Ha csak globális magyarázat áll rendelkezésre, az összefoglalás fontossága lap le van tiltva.
 
-Ha Azure Machine Learning Studióban szeretné elérni a vizualizációs irányítópultot, a következő elérési utak egyikét teheti elérhetővé:
+Kövesse az alábbi elérési utakat a vizualizációs irányítópult eléréséhez Azure Machine Learning Studióban:
 
-1. Kísérletek lap (előzetes verzió): Ha a "kísérletek" lapra kattint, megjelenik a Azure Machine Learning szolgáltatásban futtatott kísérletek listája. A listából kiválaszthatja az átirányítani kívánt kísérletet egy olyan oldalra, amelyen az összes Futtatás a kiválasztott kísérlet neve alatt található. Az egyes futtatások és a "magyarázatok" lapon a magyarázó vizualizáció irányítópultja jelenik meg.
+* **Kísérletek** panel (előzetes verzió)
+  1. Válassza a **kísérletek** lehetőséget a bal oldali ablaktáblán a Azure Machine learning szolgáltatáson futtatott kísérletek listájának megjelenítéséhez.
+  1. Válasszon ki egy adott kísérletet a kísérlet összes futtatásának megtekintéséhez.
+  1. Válasszon egy futtatást, majd a **magyarázatok lapot a** magyarázatok vizualizációs irányítópultján.
 
+   [![vizualizációs irányítópult helyi funkciójának fontossága](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png)](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png#lightbox)
 
-[![vizualizációs irányítópult helyi funkciójának fontossága](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png)](./media/machine-learning-interpretability-explainability/amlstudio-experiments.png#lightbox)
-
-
-2. Modellek lap: abban az esetben, ha regisztrálta az eredeti modelljét a [modellek üzembe helyezése a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)használatával című rész lépéseit követve, a modell a "modellek" lap listájában jelenik meg. Ha az egyes modellekre és a "magyarázatok" lapra kattint, megjelenik a magyarázó vizualizáció irányítópultja.
+* **Modellek** panel
+  1. Ha regisztrálta az eredeti modelljét a [modellek Azure Machine learning használatával történő üzembe helyezésének](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)lépéseivel, a bal oldali ablaktáblán kiválaszthatja a **modelleket** , és megtekintheti.
+  1. Válasszon ki egy modellt, majd a **magyarázatok** lapon tekintse meg a magyarázó vizualizáció irányítópultját.
 
 ## <a name="interpretability-at-inference-time"></a>Tolmácsolás a következtetés időpontjában
 
-A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magyarázó információk megadására is használható. A következtetések alapján könnyebben kimutatjuk, hogy milyen teljesítményt biztosít a tolmácsolás a következtetések idején. A könnyebb súlyozású pontozási elmagyarázó üzembe helyezésének folyamata hasonló a modellek üzembe helyezéséhez, és a következő lépéseket tartalmazza:
+A magyarázatot az eredeti modellel együtt üzembe helyezheti, és a helyi magyarázó információk megadásához használja a következtetést. A könnyebb súlyú pontozási magyarázatokat is kínáljuk, amelyekkel javítható az értelmező teljesítmény a következtetések idején. A könnyebb súlyozású pontozási elmagyarázó üzembe helyezésének folyamata hasonló a modellek üzembe helyezéséhez, és a következő lépéseket tartalmazza:
 
-
-1. Hozzon létre egy magyarázat objektumot (például a TabularExplainer használatával):
+1. Hozzon létre egy magyarázat objektumot. Használhatja például a `TabularExplainer`:
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -366,7 +382,7 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magya
                                 transformations=transformations)
    ```
 
-1. Pontozási magyarázat létrehozása a magyarázat objektum használatával:
+1. Hozzon létre egy pontozási magyarázatot a magyarázat objektummal.
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
@@ -392,7 +408,7 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magya
    print(scoring_explainer_model.name, scoring_explainer_model.id, scoring_explainer_model.version, sep = '\t')
    ```
 
-1. Választható A pontozási magyarázat beolvasása a felhőből és az indoklások tesztelése
+1. Választható lépésként lekérheti a pontozási magyarázatot a felhőből, és tesztelheti a magyarázatokat.
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import load
@@ -409,26 +425,28 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magya
    print(preds)
    ```
 
-1. A rendszerkép üzembe helyezése számítási célra:
+1. Telepítse a lemezképet egy számítási célra a következő lépésekkel:
 
-   1. Hozzon létre egy pontozási fájlt (ehhez a lépéshez kövesse a [modellek üzembe helyezése a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) használatával című részt az eredeti előrejelzési modell regisztrálásához)
+   1. Ha szükséges, regisztrálja az eredeti előrejelzési modellt a [modellek üzembe helyezése Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)használatával című témakörben ismertetett lépéseket követve.
 
-        ```python
-        %%writefile score.py
-        import json
-        import numpy as np
-        import pandas as pd
-        import os
-        import pickle
-        from sklearn.externals import joblib
-        from sklearn.linear_model import LogisticRegression
-        from azureml.core.model import Model
+   1. Hozzon létre egy pontozási fájlt.
 
-        def init():
-
+         ```python
+         %%writefile score.py
+         import json
+         import numpy as np
+         import pandas as pd
+         import os
+         import pickle
+         from sklearn.externals import joblib
+         from sklearn.linear_model import LogisticRegression
+         from azureml.core.model import Model
+          
+         def init():
+         
             global original_model
             global scoring_model
-
+             
             # retrieve the path to the model file using the model name
             # assume original model is named original_prediction_model
             original_model_path = Model.get_model_path('original_prediction_model')
@@ -437,7 +455,7 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magya
             original_model = joblib.load(original_model_path)
             scoring_explainer = joblib.load(scoring_explainer_path)
 
-        def run(raw_data):
+         def run(raw_data):
             # get predictions and explanations for each data point
             data = pd.read_json(raw_data)
             # make prediction
@@ -446,73 +464,76 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magya
             local_importance_values = scoring_explainer.explain(data)
             # you can return any data type as long as it is JSON-serializable
             return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
-        ```
+         ```
+   1. Adja meg a telepítési konfigurációt.
 
-   1. Adja meg a központi telepítési konfigurációt (ez a konfiguráció a modell követelményeitől függ. Az alábbi példa olyan konfigurációt határoz meg, amely egy CPU-mag és 1 GB memóriát használ.
+         Ez a konfiguráció a modell követelményeitől függ. A következő példa egy olyan konfigurációt határoz meg, amely egy CPU-mag és egy GB memóriát használ.
 
-        ```python
-        from azureml.core.webservice import AciWebservice
+         ```python
+         from azureml.core.webservice import AciWebservice
 
-        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
-                                                       memory_gb=1,
-                                                       tags={"data": "NAME_OF_THE_DATASET",
-                                                             "method" : "local_explanation"},
-                                                       description='Get local explanations for NAME_OF_THE_PROBLEM')
-        ```
+          aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
+                                                    memory_gb=1,
+                                                    tags={"data": "NAME_OF_THE_DATASET",
+                                                          "method" : "local_explanation"},
+                                                    description='Get local explanations for NAME_OF_THE_PROBLEM')
+         ```
 
-   1. Környezeti függőségekkel rendelkező fájl létrehozása
+   1. Hozzon létre egy fájlt környezeti függőségekkel.
 
-        ```python
-        from azureml.core.conda_dependencies import CondaDependencies
+         ```python
+         from azureml.core.conda_dependencies import CondaDependencies
 
-        # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
+         # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
-        azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
+         azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
  
 
-        # specify CondaDependencies obj
-        myenv = CondaDependencies.create(conda_packages=['scikit-learn', 'pandas'],
-                                         pip_packages=['sklearn-pandas'] + azureml_pip_packages,
-                                         pin_sdk_version=False)
+         # specify CondaDependencies obj
+         myenv = CondaDependencies.create(conda_packages=['scikit-learn', 'pandas'],
+                                          pip_packages=['sklearn-pandas'] + azureml_pip_packages,
+                                          pin_sdk_version=False)
 
 
-        with open("myenv.yml","w") as f:
+         with open("myenv.yml","w") as f:
             f.write(myenv.serialize_to_string())
 
-        with open("myenv.yml","r") as f:
+         with open("myenv.yml","r") as f:
             print(f.read())
-        ```
+         ```
 
-   1. Hozzon létre egy egyéni Docker, amelynek a g + + telepítve van
+   1. Hozzon létre egy egyéni Docker, amelynek a g + + telepítve van.
 
-        ```python
-        %%writefile dockerfile
-        RUN apt-get update && apt-get install -y g++
-        ```
+         ```python
+         %%writefile dockerfile
+         RUN apt-get update && apt-get install -y g++
+         ```
 
-   1. A létrehozott rendszerkép üzembe helyezése (becsült idő: 5 perc)
+   1. A létrehozott rendszerkép üzembe helyezése.
+   
+         Ez a folyamat körülbelül öt percet vesz igénybe.
 
-        ```python
-        from azureml.core.webservice import Webservice
-        from azureml.core.image import ContainerImage
+         ```python
+         from azureml.core.webservice import Webservice
+         from azureml.core.image import ContainerImage
 
-        # use the custom scoring, docker, and conda files we created above
-        image_config = ContainerImage.image_configuration(execution_script="score.py",
-                                                        docker_file="dockerfile",
-                                                        runtime="python",
-                                                        conda_file="myenv.yml")
+         # use the custom scoring, docker, and conda files we created above
+         image_config = ContainerImage.image_configuration(execution_script="score.py",
+                                                         docker_file="dockerfile",
+                                                         runtime="python",
+                                                         conda_file="myenv.yml")
 
-        # use configs and models generated above
-        service = Webservice.deploy_from_model(workspace=ws,
-                                            name='model-scoring-service',
-                                            deployment_config=aciconfig,
-                                            models=[scoring_explainer_model, original_model],
-                                            image_config=image_config)
+         # use configs and models generated above
+         service = Webservice.deploy_from_model(workspace=ws,
+                                             name='model-scoring-service',
+                                             deployment_config=aciconfig,
+                                             models=[scoring_explainer_model, original_model],
+                                             image_config=image_config)
 
-        service.wait_for_deployment(show_output=True)
-        ```
+         service.wait_for_deployment(show_output=True)
+         ```
 
-1. Az üzemelő példány tesztelése
+1. Tesztelje az üzemelő példányt.
 
     ```python
     import requests
@@ -531,8 +552,10 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és a helyi magya
     print("prediction:", resp.text)
     ```
 
-1. Karbantartás: üzembe helyezett webszolgáltatás törléséhez használja a `service.delete()`.
+1. Karbantartás.
 
-## <a name="next-steps"></a>További lépések
+   Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
 
-Ha többet szeretne megtudni a modell értelmezéséről, tekintse meg a [fogalmi cikket](how-to-machine-learning-interpretability.md).
+## <a name="next-steps"></a>Következő lépések
+
+[További információ a modell értelmezéséről](how-to-machine-learning-interpretability.md)

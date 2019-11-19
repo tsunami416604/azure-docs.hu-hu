@@ -2,13 +2,13 @@
 title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: c0f36568bbbf824285cfaa3385d2225e0a989639
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/18/2019
+ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149208"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173554"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](resource-group-using-tags.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek.
@@ -1364,14 +1364,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Igen | Igen |
-> | netAppAccounts/backupPolicies | Igen | Igen |
-> | netAppAccounts/capacityPools | Igen | Igen |
-> | netAppAccounts/capacityPools/kötetek | Igen | Igen |
-> | netAppAccounts/capacityPools/kötetek/biztonsági másolatok | Nem | Nem |
-> | netAppAccounts/capacityPools/kötetek/mountTargets | Igen | Igen |
-> | netAppAccounts/capacityPools/kötetek/Pillanatképek | Igen | Igen |
-> | netAppAccounts/-tárolók | Nem | Nem |
+> | netAppAccounts | Igen | Nem |
+> | netAppAccounts/capacityPools | Igen | Nem |
+> | netAppAccounts/capacityPools/kötetek | Igen | Nem |
+> | netAppAccounts/capacityPools/kötetek/mountTargets | Igen | Nem |
+> | netAppAccounts/capacityPools/kötetek/Pillanatképek | Igen | Nem |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -2041,6 +2039,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | figyeli | Nem | Nem |
 > | notificationSettings | Nem | Nem |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan alkalmazhat címkéket az erőforrásokra, tekintse meg [a címkék használata az Azure-erőforrások rendszerezéséhez](resource-group-using-tags.md)című témakört.

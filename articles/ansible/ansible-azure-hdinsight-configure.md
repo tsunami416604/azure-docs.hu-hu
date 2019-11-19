@@ -1,19 +1,15 @@
 ---
 title: Oktatóanyag – fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
 description: Útmutató az Azure HDInsight-fürtök konfigurálásához, átméretezéséhez és törléséhez a Ansible használatával
-keywords: Ansible, Azure, devops, bash, ötletekbõl, Apache Hadoop, hdinsight
+keywords: ansible, azure, devops, bash, playbook, apache hadoop, hdinsight
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ce4723a9dbe952f0112b7e24c3e361fd2f414374
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 2281c9683583e1def034b79809829a068ef9f3e6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614407"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156671"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Oktatóanyag: fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
 
@@ -385,7 +381,7 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

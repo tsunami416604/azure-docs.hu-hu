@@ -1,21 +1,16 @@
 ---
-title: Azure rövid útmutató – virtuális gép biztonsági mentése az Azure CLI-vel
+title: Rövid útmutató – virtuális gép biztonsági mentése az Azure CLI-vel
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Recovery Services-tárolót, hogyan engedélyezheti a védelmet a virtuális gépen, és hogyan hozhatja létre a kezdeti helyreállítási pontot az Azure CLI-vel.
-author: dcurwin
-manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0d16237e0d5dc0e2176a2a9f600ca0be96328717
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747145"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171991"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Virtuális gép biztonsági mentése az Azure-ban a parancssori felület (CLI) használatával
 
@@ -140,7 +135,7 @@ az backup vault delete \
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

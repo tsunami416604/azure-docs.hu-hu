@@ -1,18 +1,14 @@
 ---
 title: A Jenkins Azure dev Spaces beépülő moduljának használata az Azure Kubernetes Service használatával
 description: Ismerje meg, hogyan használható az Azure dev Spaces beépülő modul a folyamatos integrációs folyamatokban.
-author: tomarchermsft
-ms.author: tarcher
-ms.service: jenkins
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 10/23/2019
-ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 42d732cda26f0c34f0a54fffc0b1b9c54def94ad
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881885"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158735"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Oktatóanyag: a Jenkins Azure dev Spaces beépülő moduljának használata az Azure Kubernetes Service használatával 
 
@@ -86,7 +82,7 @@ Ebben a szakaszban egy fejlesztői területet állít be, és üzembe helyez egy
 
 Az Azure dev Spaces és a többszolgáltatásos fejlesztés Azure dev Spaces használatával történő használatáról további információért lásd: az [Azure dev Spaces használatának első lépései a Javával](https://docs.microsoft.com/azure/dev-spaces/get-started-java)és [Az Azure dev Spaces szolgáltatással történő többfunkciós fejlesztés](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Ezek az oktatóanyagok további háttér-információkat is biztosítanak itt.
 
-1. Töltse le az https://github.com/Azure/dev-spaces -tárházat a GitHubról.
+1. Töltse le az https://github.com/Azure/dev-spaces-tárházat a GitHubról.
 
 2. Nyissa meg a `samples/java/getting-started/webfrontend` mappát a VS Code-ban. (Figyelmen kívül hagyhat minden olyan alapértelmezett kérést, amely az objektumok hibakeresésére vagy a projekt visszaállítására vonatkozik.)
 
@@ -131,7 +127,7 @@ Az Azure dev Spaces és a többszolgáltatásos fejlesztés Azure dev Spaces has
     A dev Spaces CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker-és Kubernetes-eszközöket. Ezek a fájlok továbbra is a projekt élettartama alatt maradnak, és testre szabhatók:
 
     * `./Dockerfile` és `./Dockerfile.develop` leírja az alkalmazás tárolójának képét, valamint azt, hogy a forráskód hogyan épül fel és fut a tárolón belül.
-    * A `./charts/webfrontend` alatt található [Helm-diagram](https://helm.sh/docs/developing_charts/) ismerteti a konténer Kubernetesben történő üzembe helyezését.
+    * A [ alatt található ](https://helm.sh/docs/developing_charts/)Helm-diagram`./charts/webfrontend` ismerteti a konténer Kubernetesben történő üzembe helyezését.
     * `./azds.yaml` az Azure dev Spaces konfigurációs fájlja.
 
     További információ: [Az Azure dev Spaces működése és konfigurálása](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
@@ -153,13 +149,13 @@ Az Azure dev Spaces és a többszolgáltatásos fejlesztés Azure dev Spaces has
 
     1. `dev-spaces/samples/java/getting-started/mywebapi` könyvtárának módosítása
 
-    2. Futtatás
+    2. Futtassa a következőt:
 
         ```bash
         azds prep
         ```
 
-    3. Futtatás
+    3. Futtassa a következőt:
 
         ```bash
         azds up -d
@@ -259,7 +255,7 @@ A minta folyamat Helm és kubectl használatával helyezi üzembe a fejlesztői 
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
-   A hitelesítő adat **azonosítója** a következő szakaszban szereplő KUBE_CONFIG_ID értéke.
+   A hitelesítő adat **azonosítójának** értéke KUBE_CONFIG_ID a következő szakaszban.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
@@ -337,7 +333,7 @@ A jelen szakasz 3. lépésének végrehajtásához meg kell adnia a Jenkinsfile 
     }
 ```
 
-1. Módosítsa `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`, majd hozzon létre egy lekéréses kérelmet. Példa:
+1. Módosítsa `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`, majd hozzon létre egy lekéréses kérelmet. Például:
 
     ```java
     public String index() {
@@ -351,7 +347,7 @@ A jelen szakasz 3. lépésének végrehajtásához meg kell adnia a Jenkinsfile 
 
 3. A jelenlegi megosztott verzió változásainak összehasonlítása:
 
-    1. Nyissa meg a böngészőt, és navigáljon a megosztott verzió `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. A TEST_ENDPOINT tartalmazza az URL-címet.
+    1. Nyissa meg a böngészőt, és navigáljon a megosztott verzió `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT tartalmazza az URL-címet.
 
     2. Nyisson meg egy másik fület, majd adja meg a PR-fejlesztői terület URL-címét. A `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`hasonló lesz. A > < Build History (létrehozási előzmények) elemre mutató hivatkozást a Jenkins-feladatokhoz tartozó **> > konzol kimenetében** találja. Keresse meg a `aksapp`oldalon, vagy csak az előtagot, keresse meg a `azdsprefix`.
 

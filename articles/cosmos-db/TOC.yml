@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: Élettartam – MongoDB
               href: mongodb-time-to-live.md
+            - name: Streamek módosítása
+              href: mongodb-change-streams.md
             - name: Adatindexelés felügyelete
               href: mongodb-indexing.md
             - name: A Spring Data tárolása és kezelése

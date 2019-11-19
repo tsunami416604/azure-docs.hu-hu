@@ -1,19 +1,14 @@
 ---
 title: SharePoint-farm biztonsági mentése Azure Stack
 description: A Azure Backup Server használatával biztonsági mentést készíthet a SharePoint-adatairól, és visszaállíthatja azokat Azure Stackeken. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: c15f3f899b856cb715406bf0e2f95914cd58cca0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 06d64be4f09c6fb6ed9dee34a0c7ba0b1bd785e6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091671"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172496"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
 
@@ -144,7 +139,7 @@ Miután a korábban ismertetett módon konfigurálta a MABS-t és a SharePoint-f
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a kiválasztott beállításokat az **Összefoglalás** lapon, majd kattintson a **csoport létrehozása**elemre. A védelmi csoport létrehozása után sikert jelző üzenet jelenik meg.
 
-    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>SharePoint-elem visszaállítása a lemezről a MABS használatával
 

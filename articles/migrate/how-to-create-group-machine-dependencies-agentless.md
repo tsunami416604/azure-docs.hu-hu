@@ -4,27 +4,25 @@ description: Leírja, hogyan hozhatók létre csoportok ügynök nélküli módo
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720268"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158431"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Az ügynök nélküli függőségi vizualizáció beállítása az értékeléshez
-
-> [!NOTE]
-> Ha még nem látja ezt a funkciót a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fog megjelenni.
 
 Ez a cikk azt ismerteti, hogyan állítható be az ügynök nélküli függőségi leképezés a Azure Migrateban: kiszolgáló értékelése. Ez a funkció jelenleg előzetes verzióban érhető el a Azure Migrate készülék használatával felderített VMware-gépekhez. 
 
 > [!IMPORTANT]
 > Az ügynök nélküli függőségi vizualizáció jelenleg előzetes verzióban érhető el egy Azure Migrate berendezés használatával felderített Azure VMware virtuális gépek számára.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="about-dependency-mapping"></a>Függőségek leképezése 
+## <a name="about-dependency-mapping"></a>Függőségek leképezése
 
 A függőségek leképezése segítséget nyújt a függőségek megjelenítéséhez a felmérni és áttelepíteni kívánt gépek között. Jellemzően függőségi leképezést használ, ha a magasabb szintű megbízhatóságú gépeket szeretné felmérni.
 
@@ -46,7 +44,7 @@ Az ügynök nélküli függőségi vizualizációk nem igénylik a gépeken lév
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Az ügynök nélküli függőségi vizualizáció jelenleg csak a VMware virtuális gépek számára érhető el.
-- Mostantól nem adhat hozzá és nem távolíthat el kiszolgálót egy csoportból a függőség elemzése nézetben. 
+- Mostantól nem adhat hozzá és nem távolíthat el kiszolgálót egy csoportból a függőség elemzése nézetben.
 - A kiszolgálók csoportjának függőségi térképe jelenleg nem érhető el.
 - Jelenleg a függőségi adatokat táblázatos formátumban nem lehet letölteni.
 
@@ -60,12 +58,12 @@ Az ügynök nélküli függőségi vizualizációk nem igénylik a gépeken lév
 
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
- 
+
 Az ügynök nélküli függőségi vizualizációk által támogatott operációs rendszerek a következők.
 
 **Típus** | **Támogatott operációs rendszerek**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 bites) 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 bites)
 **Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
@@ -84,7 +82,7 @@ Adja hozzá a fiókot a következő módon:
 
 1. Nyissa meg a berendezés-kezelő alkalmazást. Navigáljon az **adja meg a vCenter részletei** panelt.
 2. Az **alkalmazás és a virtuális gépek függőségeinek felderítése** szakaszban kattintson a **hitelesítő adatok hozzáadása** elemre.
-3. Válassza ki az **operációs rendszert**. 
+3. Válassza ki az **operációs rendszert**.
 4. Adja meg a fiók rövid nevét.
 5. Adja meg a **felhasználónevet** és a **jelszót**
 6. Kattintson a **Save** (Mentés) gombra.
@@ -113,8 +111,8 @@ A függőségi felderítés megkezdése után 6 órával is megjelenítheti a f�
 2. Keresse meg azt a gépet, amelyre vonatkozóan meg szeretné tekinteni a függőségi térképet.
 3. A **függőségek** oszlopban kattintson a **függőségek megtekintése** elemre.
 4. Módosítsa azt az időtartamot, ameddig a térképet meg szeretné **tekinteni az időtartam legördülő lista** használatával.
-5. Bontsa ki az **ügyféloldali** csoportot a kiválasztott gépen függőséggel rendelkező gépek listázásához. 
-6. Bontsa ki a **port** csoportot a kiválasztott gépről függőséggel rendelkező gépek listázásához. 
+5. Bontsa ki az **ügyféloldali** csoportot a kiválasztott gépen függőséggel rendelkező gépek listázásához.
+6. Bontsa ki a **port** csoportot a kiválasztott gépről függőséggel rendelkező gépek listázásához.
 7. Ha bármelyik függő gép Térkép nézetére szeretne navigálni, kattintson a gép nevére, majd a **kiszolgáló Térkép betöltése** elemre.
 
     ![A kiszolgáló portszámának kibontása és a kiszolgálói Térkép betöltése](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
@@ -140,6 +138,6 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 5. Kattintson a **függőségi felderítés leállítása** elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gépek csoportosítása](how-to-create-a-group.md)

@@ -1,18 +1,14 @@
 ---
-title: A Microsoft Azure Recovery Services-ügynök támogatási mátrixa
+title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090550"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172059"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -54,7 +50,7 @@ Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállít
 
 ## <a name="networking-and-access-support"></a>Hálózatkezelés és hozzáférés támogatása
 
-### <a name="url-access"></a>URL-hozzáférés
+### <a name="url-and-ip-access"></a>URL-cím és IP-hozzáférés
 
 A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 
@@ -63,6 +59,11 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+És az alábbi IP-címekre:
+
+- 20.190.128.0/18
+- 40.126.0.0/18
 
 ### <a name="throttling-support"></a>Szabályozás támogatása
 
@@ -76,7 +77,12 @@ Hálózati sávszélesség-szabályozás | Nem érhető el a Windows Server 2008
 >[!NOTE]
 > A MARS-ügynök nem támogatja a Windows Server Core SKU-t.
 
-A MARS-ügynök használatával biztonsági mentést készíthet közvetlenül az Azure-ba a helyszíni gépeken és az Azure-beli virtuális gépeken futó egyes operációs rendszereken. Az operációs rendszernek 64 bitesnek kell lennie, és a legújabb szervizcsomagokat és frissítéseket kell futtatnia. A következő táblázat összefoglalja ezeket az operációs rendszereket:
+A MARS-ügynök használatával biztonsági mentést készíthet közvetlenül az Azure-ra az alább felsorolt operációs rendszereken:
+
+1. Helyszíni Windows-kiszolgálók
+2. Windows rendszerű Azure-beli virtuális gépek
+
+Az operációs rendszernek 64 bitesnek kell lennie, és a legújabb szervizcsomagokat és frissítéseket kell futtatnia. A következő táblázat összefoglalja ezeket az operációs rendszereket:
 
 **Operációs rendszer** | **Fájlok/mappák** | **Rendszerállapot** | **Szoftver/modulra vonatkozó követelmények**
 --- | --- | --- | ---
@@ -128,7 +134,7 @@ OneDrive (a szinkronizált fájlok ritka adatfolyamok)| Nem támogatott.
 Írásvédett kötetek| Nem támogatott | A kötet másolási árnyékmásolata szolgáltatás (VSS) csak akkor működik, ha a kötet írható.
 Offline kötetek| Nem támogatott |A VSS csak akkor működik, ha a kötet online állapotban van.
 Hálózati megosztás| Nem támogatott |A kötetnek helyinek kell lennie a kiszolgálón.
-BitLocker által védett kötetek| Nem támogatott |A biztonsági mentés megkezdése előtt a kötetet fel kell oldani.
+BitLocker által zárolt kötetek| Nem támogatott |A biztonsági mentés megkezdése előtt a kötetet fel kell oldani.
 Fájlrendszer azonosítása| Nem támogatott |Csak az NTFS használata támogatott.
 Cserélhető adathordozó| Nem támogatott |Az összes biztonságimásolat-tétel forrásának *rögzített* állapottal kell rendelkeznie.
 Deduplikált meghajtók | Támogatott | Azure Backup a deduplikált adatmennyiséget a normál adatértékre konvertálja. Optimalizálja, titkosítja, tárolja és elküldi az adatokat a tárolónak.

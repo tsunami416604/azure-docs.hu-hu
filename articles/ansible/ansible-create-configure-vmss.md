@@ -3,17 +3,13 @@ title: Oktatóanyag – virtuálisgép-méretezési csoportok konfigurálása az
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat virtuálisgép-méretezési csoportokat az Azure-ban a Ansible használatával
 keywords: ansible, azure, devops, bash, forgatókönyv, virtuális gép, virtuálisgép-méretezési csoport, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1d9b8cd207596aefa01af852627f11cb9b4ce5dc
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241732"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156548"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: virtuálisgép-méretezési csoportok konfigurálása az Azure-ban a Ansible használatával
 
@@ -48,7 +44,7 @@ Az ebben a szakaszban szereplő forgatókönyv-kód a következő erőforrásoka
 
 A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) forgatókönyvet, és mentse a `vmss-create.yml` értékre.
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) forgatókönyvet, és mentse a `vmss-create.yml`ba.
 * Hozzon létre egy `vmss-create.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -193,11 +189,11 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 A [konfigurált méretezési csoportnak](#configure-a-scale-set) jelenleg két példánya van. A következő lépések segítségével ellenőrizheti, hogy az érték:
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Navigáljon a beállított méretezési csoporthoz.
 
-1. A méretezési csoport neve a zárójelben lévő példányok számával együtt jelenik meg: `Standard_DS1_v2 (2 instances)`
+1. A méretezési csoport neve a zárójelben lévő példányok száma szerint jelenik meg: `Standard_DS1_v2 (2 instances)`
 
 1. A következő parancs futtatásával ellenőrizheti a [Azure Cloud Shell](https://shell.azure.com/) példányainak számát is:
 
@@ -219,7 +215,7 @@ Az ebben a szakaszban található forgatókönyv-kód beolvassa a méretezési c
 
 A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) forgatókönyvet, és mentse a `vmss-scale-out.yml` értékre.
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) forgatókönyvet, és mentse a `vmss-scale-out.yml`ba.
 * Hozzon létre egy `vmss-scale-out.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -293,11 +289,11 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 Ellenőrizze a munkájának eredményeit a Azure Portal használatával:
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Navigáljon a beállított méretezési csoporthoz.
 
-1. A méretezési csoport neve a zárójelben lévő példányok számával együtt jelenik meg: `Standard_DS1_v2 (3 instances)` 
+1. A méretezési csoport neve a zárójelben lévő példányok száma szerint jelenik meg: `Standard_DS1_v2 (3 instances)` 
 
 1. A változásokat ellenőrizheti az [Azure Cloud Shell-lel](https://shell.azure.com/), ha futtatja az alábbi parancsot:
 

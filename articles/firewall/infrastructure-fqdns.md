@@ -1,18 +1,18 @@
 ---
 title: Infrastruktúra teljes tartományneve Azure Firewall
-description: Tudnivalók a Azure Firewall infrastruktúra teljes tartománynevéről
+description: Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastruktúra alapértelmezés szerint engedélyezett teljes tartományneveiről.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: d4de81bad1ddda2f5b54f47c1be78925ad4cdbf3
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130206"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168982"
 ---
 # <a name="infrastructure-fqdns"></a>Infrastruktúra FQDN-jei
 
@@ -28,6 +28,6 @@ A beépített szabály gyűjtemény a következő szolgáltatásokat tartalmazza
 
 A beépített infrastruktúra-szabálygyűjtemény felülbírálásához hozzon létre egy megtagadva az összes feldolgozott alkalmazás-szabály gyűjteményt. Ez mindig az infrastruktúra szabálygyűjteménye előtt lesz feldolgozva. Az infrastruktúra szabálygyűjteményében nem szereplő elemeket a rendszer alapértelmezés szerint elutasítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

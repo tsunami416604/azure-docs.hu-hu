@@ -3,17 +3,13 @@ title: Oktatóanyag – Azure Kubernetes Service (ak) fürtök konfigurálása a
 description: Megtudhatja, hogyan hozhat létre és felügyelhet Azure Kubernetes Service-fürtöket az Azure-ban az Ansible segítségével.
 keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 11/04/2019
-ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6672c3fac1c5d546a61622e3fd6df6c5397f87a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614376"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156685"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Oktatóanyag: Azure Kubernetes Service (ak) fürtök konfigurálása az Azure-ban a Ansible használatával
 
@@ -216,7 +212,7 @@ PLAY RECAP
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes Service-ben (AKS)](/azure/aks/tutorial-kubernetes-scale)

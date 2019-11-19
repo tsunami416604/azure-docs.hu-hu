@@ -1,19 +1,15 @@
 ---
-title: Exchange-kiszolgáló biztonsági mentése Azure Backup a System Center DPM használatával
+title: Exchange-kiszolgáló biztonsági mentése a System Center DPM
 description: Ismerje meg, hogyan készíthet biztonsági mentést egy Exchange-kiszolgálóról a System Center 2012 R2 DPM használatával Azure Backup
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: dacurwin
-ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968510"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173286"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 
@@ -66,7 +62,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
 
    * Rövid távú védelmet szeretnék a lemezzel.
    * Online védelmet szeretnék.
-6. Kattintson a **Tovább** gombra.
+6. Kattintson a **Tovább**gombra.
 7. Jelölje be az **eseutil futtatása az adatok sértetlenségének ellenőrzése** lehetőséget, ha szeretné megtekinteni az Exchange Server-adatbázisok integritását.
 
     Ha ezt a beállítást választja, a biztonsági mentés konzisztencia-ellenőrzése a DPM-kiszolgálón fog futni, hogy elkerülje az **eseutil** parancsnak az Exchange-kiszolgálón való futtatásával generált I/O-forgalmat.
@@ -76,7 +72,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
    > ![Eseutil-hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Kattintson a **Tovább** gombra.
+8. Kattintson a **Tovább**gombra.
 9. Válassza ki a **másolási biztonsági mentés**adatbázisát, majd kattintson a **tovább**gombra.
 
    > [!NOTE]
@@ -87,10 +83,10 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
 11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább**gombra.
 12. Válassza ki azt az időpontot, amikor a DPM-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább**gombra.
 13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd kattintson a **tovább**gombra.
-14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd kattintson a **tovább**gombra. Példa:
+14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd kattintson a **tovább**gombra. Például:
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Példa:
+15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Például:
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

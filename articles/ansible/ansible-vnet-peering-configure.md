@@ -3,17 +3,13 @@ title: Oktatóanyag – Azure-beli virtuális hálózatok társításának konfi
 description: Ismerje meg, hogyan csatlakoztathatók a virtuális hálózatok a virtuális hálózatokkal a Ansible használatával.
 keywords: Ansible, Azure, devops, bash, ötletekbõl, hálózatkezelés, peering
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241238"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155732"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Oktatóanyag: Azure-beli virtuális hálózati társítás konfigurálása a Ansible használatával
 
@@ -147,7 +143,7 @@ Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz 
 
 A teljes példa a következő két módon szerezhető be:
 
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) forgatókönyvet, és mentse a `vnet_peering.yml` értékre.
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) forgatókönyvet, és mentse a `vnet_peering.yml`ba.
 - Hozzon létre egy `vnet_peering.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -235,7 +231,7 @@ Az ebben a szakaszban ismertetett példa az oktatóanyagban bemutatott különb�
 
 Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+- A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
 Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:
 
@@ -321,8 +317,8 @@ Mentse a következő forgatókönyvet `cleanup.yml` néven:
 
 Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- Cserélje le a `{{ resource_group_name-1 }}` helyőrzőt az elsőként létrehozott erőforráscsoport nevére.
-- Cserélje le a `{{ resource_group_name-2 }}` helyőrzőt a létrehozott második erőforráscsoport nevére.
+- Cserélje le az `{{ resource_group_name-1 }}` helyőrzőt az elsőként létrehozott erőforráscsoport nevére.
+- Az `{{ resource_group_name-2 }}` helyőrzőt cserélje le a létrehozott második erőforráscsoport nevére.
 - A két megadott erőforráscsoport összes erőforrása törölve lesz.
 
 Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:

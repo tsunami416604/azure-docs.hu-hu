@@ -1,21 +1,17 @@
 ---
-title: Több Azure-beli virtuális gép biztonsági mentése a PowerShell-lel
+title: 'Oktatóanyag: több Azure-beli virtuális gép biztonsági mentése a PowerShell-lel'
 description: Ez az oktatóanyag részletesen ismerteti a több Azure-beli virtuális gép egy Recovery Services-tárolóba való biztonsági mentését Azure PowerShell használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074711"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171784"
 ---
-# <a name="back-up-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése a PowerShell-lel
+# <a name="back-up-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése PowerShell-lel
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -117,7 +113,7 @@ Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
 Remove-AzRecoveryServicesVault -Vault $vault1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tekintse át](backup-azure-vms-automation.md) az Azure-beli virtuális gépek PowerShell-lel történő biztonsági mentésének és visszaállításának részletes ismertetését.
 * [Azure-beli virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md)

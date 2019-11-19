@@ -1,19 +1,14 @@
 ---
 title: A Windows Server biztonsági mentése a PowerShell használatával az Azure-ba
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
-ms.reviewer: shivamg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.author: dacurwin
-ms.openlocfilehash: bf79957bec4b330ca9acce3f8b92aab1a0944440
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074859"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172447"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -772,7 +767,7 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Windows Server/Client Azure Backupról:
 

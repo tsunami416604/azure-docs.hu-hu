@@ -1,71 +1,71 @@
 ---
 title: Az Azure SignalR szolgáltatás belső elemei
-description: Az Azure SignalR Service internals áttekintése.
+description: Ismerje meg az Azure Signaler szolgáltatás belső adatait, az architektúrát, a kapcsolatokat és az adatok továbbításának módját.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cbcdfccfdca1dbed3b766b3f50295b1d355b3478
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401753"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157597"
 ---
 # <a name="azure-signalr-service-internals"></a>Az Azure SignalR szolgáltatás belső elemei
 
-Az Azure SignalR Service ASP.NET Core SignalR keretrendszer épül. Ezen kívül támogatja az ASP.NET SignalR előzetes verzióként.
+Az Azure Signaler szolgáltatás a ASP.NET Core-Signal-keretrendszerre épül. Emellett a ASP.NET-jelzőt is támogatja előzetes verziójú szolgáltatásként.
 
-> Az ASP.NET SignalR támogatása érdekében az Azure SignalR Service reimplements adatprotokoll ASP.NET SignalR az ASP.NET Core lehet létrehozni
+> A ASP.NET-jelző támogatásához az Azure Signaler szolgáltatás újraimplementálja a ASP.NET-jelző adatprotokollját a ASP.NET Core-keretrendszeren felül
 
-Egyszerűen áttelepítheti egy helyi ASP.NET Core SignalR szolgáltatásalkalmazás alkalmassá tétele a SignalR Service, néhány sornyi kód megváltoztatására.
+A Signaler szolgáltatással való együttműködéshez könnyedén áttelepítheti a helyi ASP.NET Core jelző alkalmazást, néhány sornyi kóddal.
 
-Az alábbi ábrán a SignalR Service használata az alkalmazáskiszolgáló a tipikus architektúrát ismerteti.
+Az alábbi ábra a jellemző architektúrát ismerteti, amikor a Signaler szolgáltatást az alkalmazáskiszolgáló használatával használja.
 
-Saját üzemeltetésű a SignalR az ASP.NET Core-alkalmazás közötti különbségeket, valamint ismertetik.
+A rendszer a saját üzemeltetésű ASP.NET Core Signaler-alkalmazással kapcsolatban is tárgyalja a különbségeket.
 
 ![Architektúra](./media/signalr-concept-internals/arch.png)
 
-## <a name="server-connections"></a>Kiszolgálókapcsolatok
+## <a name="server-connections"></a>Kiszolgáló kapcsolatai
 
-Helyi ASP.NET Core SignalR-alkalmazáskiszolgáló figyel, és az ügyfelek közvetlenül kapcsolódik.
+A saját üzemeltetésű ASP.NET Core jelző alkalmazás-kiszolgáló közvetlenül figyeli és csatlakoztatja az ügyfeleket.
 
-A SignalR Service a kiszolgáló nem fogad állandó ügyfélkapcsolatokat, ehelyett:
+A Signaler szolgáltatással az alkalmazáskiszolgáló már nem fogad állandó ügyfélkapcsolatokat, hanem a következőket:
 
-1. A `negotiate` végpont Azure SignalR Service SDK-t tesz elérhetővé minden egyes hub.
-1. Ez a végpont ügyfél egyeztetési kérésekre válaszol, és a SignalR Service irányítani az ügyfeleket.
-1. Végül az ügyfelek csatlakoznak SignalR Service.
+1. A `negotiate` végpontokat az Azure Signaler Service SDK teszi elérhetővé minden egyes hubhoz.
+1. Ez a végpont válaszol az ügyfél egyeztetési kéréseire, és átirányítja az ügyfeleket a jelző szolgáltatásba.
+1. Végül az ügyfelek csatlakozni fognak a Signaler szolgáltatáshoz.
 
-További információkért lásd: [ügyfélkapcsolatok](#client-connections).
+További információ: [ügyfélkapcsolatok](#client-connections).
 
-Miután elindult a kiszolgáló, 
-- ASP.NET Core SignalR, az Azure SignalR Service SDK SignalR Service hub 5 WebSocket-nként nyílik meg. 
-- Az ASP.NET SignalR Azure SignalR Service SDK-t a SignalR Service hub 5 WebSocket-nként, és a egy alkalmazás WebSocket kapcsolaton egy nyílik meg.
+Az alkalmazáskiszolgáló elindítása után 
+- ASP.NET Core-jelző esetében az Azure Signaler Service SDK 5 WebSocket-kapcsolatot nyit meg a Signaler szolgáltatáshoz. 
+- A ASP.NET-jelző esetében az Azure Signaler Service SDK 5 WebSocket-kapcsolatot nyit meg a Signaler szolgáltatáshoz, és egy alkalmazás-WebSocket-kapcsolaton keresztül.
 
-5 WebSocket kapcsolatot alapértelmezett értéke, amely módosítható [konfigurációs](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount).
+5 a WebSocket-kapcsolatok az alapértelmezett érték, amely a [konfigurációban](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)módosítható.
 
-Az ügyfelek üzeneteket fogja kell multiplexed be ezeket a kapcsolatokat.
+Az ügyfelek felé irányuló és onnan érkező üzenetek a következő kapcsolatokba lesznek felépítve.
 
-Ezek a kapcsolatok marad kapcsolatban a SignalR Service folyamatosan. Ha egy kiszolgáló kapcsolat le van választva, a hálózati probléma,
-- a kiszolgálókapcsolat kapcsolat által üzemeltetett összes ügyfélszámítógép (kapcsolatos további információkért lásd: [adatokat továbbít az ügyfél és kiszolgáló közötti](#data-transmit-between-client-and-server));
-- a kiszolgálókapcsolat elindul az automatikus újracsatlakozás.
+Ezek a kapcsolatok továbbra is csatlakoztatva lesznek a Signaler szolgáltatáshoz. Ha a kiszolgáló kapcsolata le van választva hálózati hiba esetén,
+- a kiszolgálói kapcsolat által kiszolgált összes ügyfél leválasztása (További információ: az [ügyfél és a kiszolgáló közötti adatátvitelek](#data-transmit-between-client-and-server));
+- a kiszolgáló kapcsolata automatikusan újracsatlakozik.
 
 ## <a name="client-connections"></a>Ügyfélkapcsolatok
 
-A SignalR Service használata esetén az ügyfelek csatlakozni SignalR Service alkalmazáskiszolgáló helyett.
-Az ügyfél és a SignalR Service között állandó kapcsolatot két lépésből áll.
+A Signaler szolgáltatás használatakor az ügyfelek az alkalmazáskiszolgáló helyett a Signal szolgáltatáshoz csatlakoznak.
+Az ügyfél és a jelző szolgáltatás közötti állandó kapcsolatok létrehozásához két lépés szükséges.
 
-1. Ügyfél-egyeztetés kérést küld a kiszolgáló. Az Azure SignalR Service SDK-kiszolgáló egy átirányítási válaszban SignalR Service URL-cím és a hozzáférési jogkivonat adja vissza.
+1. Az ügyfél egyeztető kérelmet küld az alkalmazáskiszolgáló számára. Az Azure Signaler Service SDK-val az alkalmazáskiszolgáló átirányítási választ ad vissza a Signaler szolgáltatás URL-címével és hozzáférési jogkivonatával.
 
-- Az ASP.NET Core SignalR egy tipikus átirányítási válasz a következőhöz hasonló:
+- A ASP.NET Core jelző esetében egy tipikus átirányítási válasz a következőképpen néz ki:
     ```
     {
         "url":"https://test.service.signalr.net/client/?hub=chat&...",
         "accessToken":"<a typical JWT token>"
     }
     ```
-- Az ASP.NET SignalR egy tipikus átirányítási válasz a következőhöz hasonló:
+- A ASP.NET-jelző esetében egy tipikus átirányítási válasz a következőképpen néz ki:
     ```
     {
         "ProtocolVersion":"2.0",
@@ -74,19 +74,19 @@ Az ügyfél és a SignalR Service között állandó kapcsolatot két lépésbő
     }
     ```
 
-1. Ügyfél a SignalR-szolgáltatáshoz való csatlakozáshoz a normál folyamat elindításához az átirányítási válaszban megjelenését követően használja az új URL-címet és a hozzáférési jogkivonatot.
+1. Az átirányítási válasz kézhezvétele után az ügyfél az új URL-cím és a hozzáférési jogkivonat használatával elindítja a normál folyamatot a Signal Service-hez való kapcsolódáshoz.
 
-További információ az ASP.NET Core SignalR [átviteli protokollok](https://github.com/aspnet/SignalR/blob/release/2.2/specs/TransportProtocols.md).
+További információ a ASP.NET Core jelző [átviteli protokolljairól](https://github.com/aspnet/SignalR/blob/release/2.2/specs/TransportProtocols.md).
 
-## <a name="data-transmit-between-client-and-server"></a>Ügyfél és kiszolgáló közötti átviteli adatok
+## <a name="data-transmit-between-client-and-server"></a>Az ügyfél és a kiszolgáló közötti adatküldés
 
-Amikor egy ügyfél csatlakozik a SignalR Service, futtatókörnyezet megtalálja az ügyfél kiszolgálására kiszolgálói kapcsolat
-- Ez a lépés csak egyszer történik, és a egy az egyhez típusú hozzárendelés az ügyfél és kiszolgáló kapcsolatok között.
-- A leképezés megőrződik a SignalR Service, amíg az ügyfél vagy kiszolgáló bontja a kapcsolatot.
+Amikor egy ügyfél csatlakozik a Signaler szolgáltatáshoz, a szolgáltatási futtatókörnyezet az ügyfél kiszolgálására szolgáló kiszolgálói kapcsolatot fog találni
+- Ez a lépés csak egyszer fordul elő, és az ügyfél és a kiszolgáló kapcsolatai között egy az egyhez típusú hozzárendelés.
+- A leképezés a Signaler szolgáltatásban marad, amíg az ügyfél vagy a kiszolgáló nem bontja a kapcsolatot.
 
-Ezen a ponton az alkalmazáskiszolgáló adatokkal egy eseményt kap az új ügyfél. A kiszolgáló az ügyfélnek logikai kapcsolat jön létre. Az adatcsatorna alkalmazáskiszolgáló keresztül a SignalR Service ügyfélről jön létre.
+Ezen a ponton az alkalmazáskiszolgáló egy eseményt kap az új ügyféltől származó információkkal. A rendszer létrehoz egy logikai kapcsolódást az ügyfélhez az alkalmazáskiszolgáló használatával. Az adatcsatorna az ügyfél és az alkalmazáskiszolgáló között, a Signaler szolgáltatáson keresztül van létrehozva.
 
-SignalR service küld a párosítási-kiszolgáló az ügyféltől érkező adatokat. És a csatlakoztatott ügyfelek küld a kiszolgáló adatait.
+A signaler szolgáltatás adatokat küld az ügyféltől a párosítási alkalmazáskiszolgáló felé. Az alkalmazás-kiszolgálóról származó adatok a leképezett ügyfelek számára lesznek elküldve.
 
-Ahogy láthatjuk, az Azure SignalR Service egy, amely lényegében logikai átviteli alkalmazáskiszolgáló és az ügyfelek között. Összes állandó kapcsolat kiszervezett SignalR Service.
-Alkalmazáskiszolgáló csak kell kezelni az üzleti logika hub osztály, nem kell bajlódnunk ügyfélkapcsolatok.
+Amint láthatja, az Azure Signaler szolgáltatás lényegében logikai szállítási réteg az alkalmazáskiszolgáló és az ügyfelek között. Az összes állandó kapcsolat kiszervezése a Signaler szolgáltatásba történik.
+Az alkalmazáskiszolgáló csak az üzleti logikát kell kezelnie a hub osztályban, anélkül, hogy az ügyfélkapcsolatokkal kellene foglalkoznia.

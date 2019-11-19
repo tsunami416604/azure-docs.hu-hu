@@ -1,19 +1,15 @@
 ---
 title: A Jenkins üzemelő példányainak skálázása azure-os virtuálisgép-ügynökökkel
 description: A Jenkins Azure VM Agents beépülő modul segítségével Azure-beli virtuális gépekkel növelheti Jenkins-folyamatai kapacitását.
-ms.service: jenkins
 keywords: jenkins, azure, devops, virtuális gép, ügynökök
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641361"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158533"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>A Jenkins üzemelő példányainak igény szerinti skálázása Azure VM-ügynökökkel
 
@@ -144,7 +140,7 @@ A **Verify Template** (Sablon ellenőrzése) elemre kattintva ellenőrizze a kon
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Folyamatos integráció/üzembe helyezés az Azure App Service-be](java-deploy-webapp-tutorial.md)

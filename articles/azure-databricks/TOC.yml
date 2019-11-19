@@ -714,9 +714,9 @@
             - name: Speciális MLlib-példa
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: Automatikus gépi tanulás
+        - name: Auto ML
           items:
-            - name: Az automatikus gépi tanulás áttekintése
+            - name: Az Auto ML áttekintése
               href: /azure/databricks/applications/machine-learning/automl/index
               maintainContext: true
             - name: Hyperopt
@@ -1609,6 +1609,12 @@
               items:
                 - name: Támogatott futtatókörnyezet-kiadások
                   href: /azure/databricks/release-notes/runtime/supported
+                  maintainContext: true
+                - name: Databricks Runtime 6.2
+                  href: /azure/databricks/release-notes/runtime/6.2
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 ML
+                  href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

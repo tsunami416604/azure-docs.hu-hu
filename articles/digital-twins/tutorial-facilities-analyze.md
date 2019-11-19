@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 96238da73a0bf6816635a71d13ea2ae6762d1955
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107683"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170445"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Oktatóanyag: az Azure Digital Twins eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
@@ -48,11 +48,13 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **Erőforrás létrehozása** elemet.
 
 1. Keressen rá és válassza ki az **Event Hubs** elemet. Kattintson a **Létrehozás** gombra.
+
+    [Event Hubs névtér létrehozása ![](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
 1. Adja meg a Event Hubs névtér **nevét** . Válassza a **standard** lehetőséget az **árképzési szint**, az **előfizetés**, a digitális Twins-példányhoz használt **erőforráscsoport** , valamint a **hely**számára. Kattintson a **Létrehozás** gombra.
 
@@ -77,7 +79,10 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
     [az Event hub kapcsolati karakterláncának ![](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. Nyissa meg a létrehozott ManageSend-szabályzatot, és másolja a **kapcsolódási karakterláncot – elsődleges kulcs** és a **kapcsolódási karakterlánc – másodlagos kulcs** értékét egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz az Event hub végpontjának létrehozásához a következő szakaszban.
+    > [!TIP]
+    > Győződjön meg arról, hogy a névtér helyett a SAS-szabályzatot hozza létre az Event hub-példányhoz.
+
+1. Nyissa meg az imént létrehozott **ManageSend** szabályzatot, és másolja a **Kapcsolati sztring – elsődleges kulcs** és a **Kapcsolati sztring – másodlagos kulcs** értékeit egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz az Event hub végpontjának létrehozásához a következő szakaszban.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Végpont létrehozása az Event hub számára
 
@@ -105,13 +110,13 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. Cserélje le a helyőrzőket `Primary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értékére – elsődleges kulcs** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő:
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értéke – másodlagos kulcs** értékére. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 

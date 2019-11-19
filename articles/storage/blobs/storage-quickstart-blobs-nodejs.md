@@ -3,16 +3,16 @@ title: 'Gyors útmutató: Azure Blob Storage Library V12 – JavaScript'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtár 12-es verzióját a JavaScripthez a tárolók és Blobok blob (Object) tárolóban történő létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 2e5a5f2a4de4e01d2e4fa66f819e55839959afd0
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 23cd292162a4c16c4b2b5b1f297d23eb2682013f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130696"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168279"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a JavaScripthez
 
@@ -105,7 +105,7 @@ A projekt könyvtárából:
     const uuidv1 = require('uuid/v1');
     
     async function main() {
-        console.log('Azure Blob storage v12 - Javascript quickstart sample');
+        console.log('Azure Blob storage v12 - JavaScript quickstart sample');
         // Quick start code goes here
     }
     
@@ -211,7 +211,7 @@ Adja hozzá ezt a kódot a `main` függvény végéhez:
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await new BlobServiceClient.fromConnectionString(CONNECT_STR);
+const blobServiceClient = await BlobServiceClient.fromConnectionString(CONNECT_STR);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -223,7 +223,8 @@ console.log('\t', containerName);
 const containerClient = await blobServiceClient.getContainerClient(containerName);
 
 // Create the container
-await containerClient.create();
+const createContainerResponse = await containerClient.create();
+console.log("Container was created successfully. requestId: ", createContainerResponse.requestId);
 ```
 
 ### <a name="upload-blobs-to-a-container"></a>Blobok feltöltése tárolóba
@@ -243,11 +244,12 @@ const blobName = 'quickstart' + uuidv1() + '.txt';
 // Get a block blob client
 const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
-console.log('\nUploading to Azure Storage as blob:\n\t', blobName);
+console.log('\nUploading to Azure storage as blob:\n\t', blobName);
 
 // Upload data to the blob
 const data = 'Hello, World!';
-await blockBlobClient.upload(data, data.length);
+const uploadBlobResponse = await blockBlobClient.upload(data, data.length);
+console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.requestId);
 ```
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
@@ -308,7 +310,8 @@ Adja hozzá ezt a kódot a `main` függvény végéhez:
 console.log('\nDeleting container...');
 
 // Delete container
-await containerClient.delete();
+const deleteContainerResponse = await containerClient.delete();
+console.log("Container was deleted successfully. requestId: ", deleteContainerResponse.requestId);
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása
@@ -344,7 +347,7 @@ Done
 
 Lépjen be a hibakeresőbe, és vizsgálja meg a Azure Portal a folyamat során. Ellenőrizze, hogy a tároló létrehozása folyamatban van-e. A blobot megnyithatja a tárolón belül, és megtekintheti a tartalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a JavaScript használatával.
 

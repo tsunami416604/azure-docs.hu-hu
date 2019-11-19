@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006421"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167601"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rövid útmutató: Ismerkedés az Azure Time Series Insightsszal
 
@@ -38,45 +38,47 @@ Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető
 
 1. Megjelenik a Time Series Insights gyors bemutató oldal. A gyors bemutató elindításához kattintson a **tovább** gombra.
 
-   [![válassza a tovább lehetőséget](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![rövid útmutató – válassza a tovább lehetőséget](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>Ismerkedés a bemutató környezettel
 
 1. Ekkor megjelenik az **időkijelölés panel** . Ezen a panelen választhatja ki a megjeleníteni kívánt időkeretet.
 
-   [![idő kiválasztása panel](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [![idő kiválasztása panel](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. Válasszon ki egy időkeretet, és húzza a régióba. Ezután válassza a **Keresés**lehetőséget.
 
-   [![válasszon ki egy időkeretet](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![válasszon ki egy időkeretet](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    A Time Series Insights megjelenít egy diagramot a megadott időkerethez. A vonalas diagramon különböző műveleteket végezhet el. Például szűrheti, rögzítheti, rendezheti és halmozhatja fel.
 
    Az **időkijelölési panelre**való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
 
-   [![diagram](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [![diagram](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. Új keresési kifejezés hozzáadásához a **feltételek panelen** válassza a **Hozzáadás** lehetőséget.
 
-   [elem hozzáadása ![](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![keresési feltételek hozzáadása panel](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. A diagramon válasszon ki egy régiót, kattintson rá a jobb gombbal, majd válassza az **Explore Events** (Események áttekintése) elemet.
 
-   [![események megismerése](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![események megismerése](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    A nyers adatok egy rácsa jelenik meg a feltárt régióból.
 
-   [![Grid nézet](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [az események megismerése – a rács adatnézete ![](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Az adatszűrő kiválasztása és szűrése
 
 1. Szerkessze a használati feltételeket a diagram értékeinek módosításához. Adjon hozzá egy másik kifejezést a különböző típusú értékek kereszthivatkozásához.
 
-   [![kifejezés hozzáadása](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![kifejezés hozzáadása](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. Adjon meg egy szűrési kifejezést a **szűrő** adatsorozat mezőjében az improvizált adatsorozat-szűréshez. A rövid útmutatóhoz adja meg a **Station5** értéket az állomásra jellemző hőmérséklet és nyomás összevetéséhez.
+1. Hagyja üresen a **szűrő adatsorozat** mezőt az összes kijelölt keresési kifejezés megjelenítéséhez, vagy adjon meg egy szűrési **kifejezést az improvizált** adatsorozat-szűréshez.
 
-   [![szűrő sorozat](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![szűrő sorozat](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   A rövid útmutatóhoz adja meg a **Station5** értéket az állomásra jellemző hőmérséklet és nyomás összevetéséhez.
 
 A rövid útmutató befejezése után a mintaadatokkal kísérletezve különböző vizualizációkat hozhat létre.
 

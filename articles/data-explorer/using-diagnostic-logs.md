@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124005"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173802"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Azure Adatkezelő-betöltési műveletek figyelése diagnosztikai naplók használatával (előzetes verzió)
 
@@ -25,13 +25,13 @@ Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szol
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Diagnosztikai naplók beállítása Azure Adatkezelő-fürthöz
 
 A diagnosztikai naplók használatával konfigurálhatja a következő naplózási adatkészletek gyűjteményét:
-* Sikeres betöltési műveletek: Ezek a naplók a sikeresen befejezett betöltési műveletekkel kapcsolatos információkkal rendelkeznek.
-* Sikertelen betöltési műveletek: Ezek a naplók részletes információkat tartalmaznak a sikertelen betöltési műveletekről, beleértve a hibák részleteit. 
+* Sikeres betöltési műveletek: ezek a naplók információkkal szolgálnak a sikeresen befejezett betöltési műveletekről.
+* Sikertelen betöltési műveletek: ezek a naplók részletes információkat tartalmaznak a sikertelen betöltési műveletekről, beleértve a hibák részleteit. 
 
 Az adatok ezután archiválva lesznek egy Storage-fiókba, egy Event hub streambe áramlanak, vagy az Ön által megadott specifikációknak megfelelően a Log Analyticsba lesznek küldve.
 
@@ -51,7 +51,7 @@ Alapértelmezés szerint le vannak tiltva a diagnosztikai naplók. A diagnosztik
 
     1. Válassza ki a diagnosztikai beállítás **nevét** .
     1. Válasszon ki egy vagy több célt: egy Storage-fiókot, egy Event hubot vagy egy Log Analytics.
-    1. Válassza ki a gyűjteni kívánt naplókat `FailedIngestion`: `SucceededIngestion` vagy.
+    1. Válassza ki a gyűjteni kívánt naplókat: `SucceededIngestion` vagy `FailedIngestion`.
     1. Válassza ki a gyűjteni kívánt [metrikákat](using-metrics.md) (nem kötelező).   
     1. Válassza a **Mentés** lehetőséget az új diagnosztikai naplók beállításainak és metrikáinak mentéséhez.
     1. Hozzon létre egy **új támogatási kérelmet** a Azure Portal a diagnosztikai naplók aktiválásának kérelmezéséhez.
@@ -70,14 +70,14 @@ A JSON-karakterláncok naplózása a következő táblázatban felsorolt elemeke
 |---                |---
 |time               |A jelentés időpontja
 |resourceId         |Erőforrás-azonosító Azure Resource Manager
-|operationName      |A művelet neve: MICROSOFT. KUSTO/FÜRTÖK/BETÖLTÉS/MŰVELET
+|operationName      |A művelet neve: "MICROSOFT. KUSTO/FÜRTÖK/BETÖLTÉS/MŰVELET
 |operationVersion   |Séma verziója: "1,0" 
-|category           |A művelet kategóriája. `SucceededIngestion`vagy `FailedIngestion`. A tulajdonságok a [sikeres művelet](#successful-ingestion-operation-log) vagy a [sikertelen művelet](#failed-ingestion-operation-log)esetében különböznek.
+|category           |A művelet kategóriája. `SucceededIngestion` vagy `FailedIngestion`. A tulajdonságok a [sikeres művelet](#successful-ingestion-operation-log) vagy a [sikertelen művelet](#failed-ingestion-operation-log)esetében különböznek.
 |properties         |A művelet részletes információi.
 
 #### <a name="successful-ingestion-operation-log"></a>Sikeres betöltési műveleti napló
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -112,7 +112,7 @@ A JSON-karakterláncok naplózása a következő táblázatban felsorolt elemeke
 
 #### <a name="failed-ingestion-operation-log"></a>Sikertelen betöltési műveleti napló
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -152,10 +152,12 @@ A JSON-karakterláncok naplózása a következő táblázatban felsorolt elemeke
 |rootActivityId     |Tevékenységazonosító
 |details            |A hiba és a hibaüzenet részletes leírása
 |errorCode          |Hibakód 
-|failureStatus      |`Permanent`vagy `Transient`. Egy átmeneti hiba esetén az Újrapróbálkozás sikeres lehet.
+|failureStatus      |`Permanent` vagy `Transient`. Egy átmeneti hiba esetén az Újrapróbálkozás sikeres lehet.
 |originatesFromUpdatePolicy|Igaz, ha a hiba egy frissítési házirendből származik
 |shouldRetry        |Igaz, ha az Újrapróbálkozás sikeres lehet
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Metrikák használata a fürt állapotának figyeléséhez](using-metrics.md)
+* [Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő](ingest-data-no-code.md)
+* [Metrikák használata a fürt állapotának figyeléséhez](using-metrics.md)
+

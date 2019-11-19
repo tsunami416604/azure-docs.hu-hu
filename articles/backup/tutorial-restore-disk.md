@@ -1,19 +1,15 @@
 ---
-title: Virtuálisgép-lemez visszaállítása az Azure Backuppal
+title: Oktatóanyag – virtuális gép lemezének visszaállítása Azure Backup
 description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan hozhat létre és állíthat helyre egy virtuális gépet az Azure-ban a Backup és a Recovery Services használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 4dcf1e8a0ba9fd7c1e8d02ee8c8307dc63d9e231
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9b2048d8683ba2dde00a874445eb936cfb775cf1
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074668"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171740"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
 
@@ -165,7 +161,7 @@ Az utolsó lépésben egy virtuális gépet hoz létre a felügyelt lemezről.
     az vm list --resource-group myResourceGroup --output table
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban visszaállított egy lemezt a helyreállítási pontról, és létrehozott egy virtuális gépet a lemezről. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

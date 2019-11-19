@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Azure-beli virtuális gépek biztonsági mentése REST API használatával'
+title: Azure-beli virtuális gépek biztonsági mentése REST API használatával
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja, kezdeményezheti és kezelheti az Azure-beli virtuális gépek biztonsági mentési műveleteit REST API használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c929f820862f5d041b4a63a1ca9c083abf1a1e4c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929168"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173446"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -447,7 +441,7 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|204 tartalom     |         |  Nincs tartalom       |
+|204 tartalom     |         |  NoContent       |
 |202 elfogadva     |         |     Elfogadott    |
 
 ## <a name="next-steps"></a>Következő lépések

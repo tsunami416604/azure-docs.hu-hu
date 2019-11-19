@@ -331,6 +331,14 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Szabályzatdefiníciók
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK for Python
+      items:
+        - name: Szabályzat
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: Szabályzatügyfél
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: Policy Insights
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: Események

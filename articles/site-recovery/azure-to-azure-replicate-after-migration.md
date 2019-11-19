@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cd15b562c3707a28b54bc59166d54871120909e2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084938"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159112"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után 
 
@@ -30,7 +30,7 @@ A vész-helyreállítás beállítása előtt győződjön meg arról, hogy az �
 
 Minden egyes Azure-beli virtuális gépnek telepítve kell lennie az Azure virtuálisgép- [ügynöknek](../virtual-machines/extensions/agent-windows.md) . Az Azure-beli virtuális gépek replikálásához Site Recovery telepít egy bővítményt az ügynökön.
 
-- Ha a gép a Site Recovery mobilitási szolgáltatás 9.7.0.0 vagy újabb verzióját futtatja, a mobilitási szolgáltatás automatikusan telepíti az Azure-beli virtuálisgép-ügynököt a Windows rendszerű virtuális gépeken. A mobilitási szolgáltatás korábbi verzióiban manuálisan kell telepítenie az ügynököt.
+- Ha a gép a Site Recovery mobilitási szolgáltatás 9.7.0.0 vagy újabb verzióját futtatja, a mobilitási szolgáltatás automatikusan telepíti az Azure-beli virtuálisgép-ügynököt a Windows rendszerű virtuális gépeken. A mobilitási szolgáltatás korábbi verzióiban az ügynököt manuálisan kell telepíteni.
 - Linux rendszerű virtuális gépek esetén manuálisan kell telepítenie az Azure virtuálisgép-ügynököt. Csak akkor kell telepítenie az Azure virtuálisgép-ügynököt, ha az áttelepített gépen telepített mobilitási szolgáltatás a v 9.6 vagy régebbi verzió.
 
 

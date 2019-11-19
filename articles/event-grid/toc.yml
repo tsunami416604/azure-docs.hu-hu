@@ -27,6 +27,8 @@
           href: custom-event-quickstart-powershell.md
         - name: Portál
           href: custom-event-quickstart-portal.md
+    - name: Az Azure Functions használata eseménykezelőként
+      href: custom-event-to-function.md
     - name: A Queue Storage használata eseménykezelőként
       href: custom-event-to-queue-storage.md
     - name: Az Event Hubs használata eseménykezelőként
@@ -111,6 +113,8 @@
       href: post-to-custom-topic.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
+    - name: Biztonságos webhook AAD-vel
+      href: secure-webhook-delivery.md
     - name: Kézbesíthetetlen üzenet és újrapróbálkozás
       href: manage-event-delivery.md
     - name: Események szűrése

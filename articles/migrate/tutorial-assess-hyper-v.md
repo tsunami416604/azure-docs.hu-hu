@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 08/11/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1ff46ec437de671d5804eeb31a5d1fb0284a8946
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123521"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158380"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>A Hyper-V virtuális gépek felmérése Azure Migrate kiszolgáló értékelésével
 
@@ -119,10 +119,8 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
   **Algoritmus** | **Kivonat értéke**
   --- | ---
-  MD5 | d0a68e76ea24ba4e4a494c0dab95e90e
-  SHA256 | 0551221d2a9de75c352c201ccc88f7f10e87e5df1ecda42bfd4ec6c8defc57c0
-
-
+  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
+  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 ### <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
 
@@ -223,7 +221,7 @@ Kapcsolódjon a készülékről a Hyper-V-gazdagépekhez vagy-fürtökhöz, és 
     - Hozzáadhat egy fürtöt, még akkor is, ha a fürt adott gazdagépével problémák léptek fel.
 4. Az ellenőrzés után kattintson a Mentés gombra, **és indítsa** el a felderítést a felderítési folyamat elindításához.
 
-Ez elindítja a felderítést. Gazdagépen körülbelül 1,5 percet vesz igénybe, hogy a felderített kiszolgálók metaadatai megjelenjenek a Azure Portalban. 
+Ez elindítja a felderítést. Gazdagépen körülbelül 1,5 percet vesz igénybe, hogy a felderített kiszolgálók metaadatai megjelenjenek a Azure Portalban.
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
@@ -335,9 +333,9 @@ Az értékelés megbízhatósági minősítése a következő.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Azure Migrate berendezés beállítása

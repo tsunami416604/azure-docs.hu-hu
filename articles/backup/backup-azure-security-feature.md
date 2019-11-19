@@ -1,19 +1,15 @@
 ---
-title: Biztonsági funkciók, amelyek a hibrid biztonsági mentéseket védik Azure Backup
+title: A hibrid biztonsági mentéseket védő biztonsági funkciók
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével
 ms.reviewer: utraghuv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: dacurwin
-ms.openlocfilehash: a72e43d068f9fc6cf06a4786d511bbc6c25e85d4
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968436"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172681"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
@@ -114,11 +110,11 @@ A cikkben említett biztonsági funkciók védelmi mechanizmusokat biztosítanak
 
 ## <a name="troubleshooting-errors"></a>Hibaelhárítás
 
-| Művelet | A hiba részletei | Felbontás |
+| Művelet | A hiba részletei | Megoldás: |
 | --- | --- | --- |
 | Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi várakozás után próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához. |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, ezért a fent megadott minimális értékeknél kevesebb megőrzési tartományt próbál meg csökkenteni (a támogatott verziók a cikk első megjegyzésében vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben meg kell határoznia a megőrzési időtartamot a megadott minimális megőrzési időtartam (napi hét nap, heti, hetente három hét, havi vagy egy év esetében évente), a szabályzatokkal kapcsolatos frissítések folytatásához. Ha szeretné, az előnyben részesített módszer a Backup ügynök, a Azure Backup Server és/vagy a DPM frissítése az összes biztonsági frissítés kihasználása érdekében. |
 | Hozzáférési kód módosítása |A megadott biztonsági PIN-kód helytelen. (AZONOSÍTÓ: 100130) A művelet végrehajtásához adja meg a helyes biztonsági PIN-kódot. |**Okozhat**<br/> Ez a hiba akkor jelenik meg, ha a kritikus művelet végrehajtása közben érvénytelen vagy lejárt biztonsági PIN-kódot ad meg (például a jelszó módosítása). <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
-| Hozzáférési kód módosítása |A művelet sikertelen volt. AZONOSÍTÓ: 120002 |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A hozzáférési kód módosításához először frissítenie kell a Backup ügynököt a minimálisan szükséges minimális 2.0.9052, Azure Backup-kiszolgálóval az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
+| Hozzáférési kód módosítása |A művelet sikertelen volt. ID: 120002 |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A hozzáférési kód módosításához először frissítenie kell a Backup ügynököt a minimálisan szükséges minimális 2.0.9052, Azure Backup-kiszolgálóval az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
 
 ## <a name="next-steps"></a>Következő lépések
 

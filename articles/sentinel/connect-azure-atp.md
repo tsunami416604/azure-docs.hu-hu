@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fb8f4de3b3b24d1eba372600c817627771ef0ef6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261847"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158877"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Adatok összekapcsolása az Azure komplex veszélyforrások elleni védelemből (ATP)
 
@@ -32,7 +32,7 @@ Egyetlen kattintással továbbíthatja a naplókat az Azure-beli komplex [veszé
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Globális rendszergazdai vagy biztonsági rendszergazdai engedélyekkel rendelkező felhasználó
-- Az Azure ATP előzetes verziójú ügyfelének kell lennie
+- Az Azure ATP előzetes verziójú ügyfelének kell lennie, és engedélyeznie kell az Azure ATP és a Microsoft Cloud App Security közötti integrációt. További információ: [Azure Advanced Protection Integration](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
 ## <a name="connect-to-azure-atp"></a>Kapcsolódás az Azure ATP-hez
 
@@ -53,7 +53,7 @@ Ha az Azure ATP üzembe helyezése és az adatai betöltése történik, a gyan�
 > [!NOTE]
 > Ha a riasztások 30 KB-nál nagyobbak, az Azure Sentinel nem jeleníti meg az entitások mezőt a riasztásokban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az Azure Advanced Threat Protection az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

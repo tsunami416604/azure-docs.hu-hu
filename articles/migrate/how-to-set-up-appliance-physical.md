@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
-ms.translationtype: MT
+ms.openlocfilehash: 1e67c36753239940b15e3cb47b5b75820ea43689
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907162"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158349"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Berendezés beállítása fizikai kiszolgálókhoz
 
@@ -55,20 +55,21 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 2. Futtassa a következő parancsot a virtuális merevlemez kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  A készülék verziójának 1.19.05.10 a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
+3.  A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
 
   **Algoritmus** | **Kivonat értéke**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 
-  
+
 ## <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
 = A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [Részletek](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -110,7 +111,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe csatlakozni tud a s
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
 1. Kattintson **a bejelentkezés**elemre. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
-2. Az új lapon jelentkezzen be az Azure-beli hitelesítő adataival. 
+2. Az új lapon jelentkezzen be az Azure-beli hitelesítő adataival.
     - Jelentkezzen be a felhasználónevével és jelszavával.
     - A PIN-kóddal való bejelentkezés nem támogatott.
 3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
@@ -132,14 +133,14 @@ A Windows-és Linux-kiszolgálókhoz is hozzáadhat egy hitelesítő adatot.
     - Kiszolgáló eltávolításához válassza a > **Törlés**lehetőséget.
 4. Az ellenőrzés után kattintson a Mentés gombra, **és indítsa** el a felderítést a felderítési folyamat elindításához.
 
-Ez elindítja a felderítést. Körülbelül 15 percet vesz igénybe, hogy a felderített virtuális gépek metaadatai megjelenjenek a Azure Portalban. 
+Ez elindítja a felderítést. Körülbelül 15 percet vesz igénybe, hogy a felderített virtuális gépek metaadatai megjelenjenek a Azure Portalban.
 
 ## <a name="verify-servers-in-the-portal"></a>Kiszolgálók ellenőrzése a portálon
 
 A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
 1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát. 
+2. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
 
 ## <a name="next-steps"></a>Következő lépések

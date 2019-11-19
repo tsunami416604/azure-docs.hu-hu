@@ -1,18 +1,14 @@
 ---
 title: VMware virtuális gépek visszaállítása az Azure Backup Server használatával
 description: A VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek visszaállításához használja a Azure Backup Server (MABS) szolgáltatást.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: 909274fc9b30d5d6a4caf8d2019bbcecddf2a3c7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7c93c3100d8756fd9faf8cf02152a870bd0c106c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073963"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171920"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware virtuális gépek visszaállítása
 
@@ -78,6 +74,6 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 9. A **helyreállítási beállítások megadása** képernyőn válassza ki, hogy melyik biztonsági beállítást kívánja alkalmazni. Dönthet úgy, hogy módosítja a hálózati sávszélesség-használat szabályozását, de alapértelmezés szerint le van tiltva a szabályozás. Továbbá a **Tárolóhálózati helyreállítás** és az **értesítés** nincs engedélyezve.
 10. Az **Összefoglalás** képernyőn tekintse át a beállításokat, majd **kattintson a helyreállítás** elemre a helyreállítási folyamat elindításához. A **helyreállítás állapota** képernyőn a helyreállítási művelet előrehaladása látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Backup Server használata során felmerülő problémák elhárításához tekintse át [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

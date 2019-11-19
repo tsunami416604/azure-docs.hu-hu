@@ -1,198 +1,216 @@
 ---
-title: Azure CDN a Microsoft Standard Rules Engine Match feltételekkel | Microsoft Docs
-description: Az Azure Content Delivery Network dokumentációja a Microsoft Standard Rules Engine Matching feltételeiről.
+title: A Azure CDN Standard Rules Engine feltételeinek egyeztetése | Microsoft Docs
+description: Dokumentáció az Azure Content Delivery Network (Azure CDN) Standard Rules Engine feltételeinek egyeztetéséhez.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: a72452d37b152a9463a5aee0e199fd42ea852236
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615961"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171609"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-match-conditions"></a>Azure CDN a Microsoft szabványos szabályainak motorjának egyeztetési feltételei
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>A standard szintű szabályok motorjában szereplő feltételek egyeztetése Azure CDN
 
-Ez a cikk részletes leírást nyújt az Azure Content Delivery Network (CDN) a Microsoft [Standard Rules Engine](cdn-standard-rules-engine.md)szolgáltatásban elérhető megfelelő feltételeiről.
+Az Azure Content Delivery Network (Azure CDN) [szabványos szabályok motorjában](cdn-standard-rules-engine.md) a szabály egy vagy több egyeztetési feltételből és egy műveletből áll. Ez a cikk részletes leírást tartalmaz a Azure CDN szabványos szabályok motorjában használható egyezési feltételekről.
 
-A szabály első része az egyeztetési feltételek halmaza. Mindegyik szabály legfeljebb 4 egyezési feltételsel rendelkezhet. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez a szabályban meghatározott műveletek lesznek végrehajtva. Ha több egyeztetési feltételt használ, a rendszer a és a Logic együttes használatával csoportosítja őket.
+A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. A Azure CDN Standard Rules (alapszabályok) motorjában minden szabály legfeljebb négy egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez definiált műveletek vannak végrehajtva. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva.
 
 Az egyeztetési feltételt például a következőre használhatja:
 
-- Egy adott IP-címről vagy országból/régióból generált kérelmek szűrése.
+- Kérelmek szűrése adott IP-cím, ország vagy régió alapján.
 - Kérelmek szűrése fejléc-információk alapján.
-- A mobil-vagy asztali eszközökről érkező kérések szűrése.
+- A mobileszközök vagy asztali eszközök kéréseinek szűrése.
 
 ## <a name="match-conditions"></a>Egyezési feltételek
 
-A következő egyeztetési feltételek használhatók. 
+A következő egyeztetési feltételek használhatók a standard szabályok motorjában a Azure CDN számára. 
 
 ### <a name="device-type"></a>Eszköz típusa 
 
-Az eszköz típusa egyeztetési feltétel azonosítja a mobil vagy az asztali eszköz által a tulajdonságok alapján küldött kérelmeket.  
+A mobileszköz vagy asztali eszköz által küldött kérelmeket azonosítja.  
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott érték
+Művelet | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | Mobil, asztali
 
-
 ### <a name="http-version"></a>HTTP-verzió
 
-A HTTP-verzió egyeztetése feltétel azonosítja a kérések HTTP-verziója alapján megjelenő kérelmeket.
+A kérések HTTP-verziója alapján azonosítja a kérelmeket.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Támogatott érték
+Művelet | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | 2,0, 1,1, 1,0, 0,9, összes
 
-
 ### <a name="request-cookies"></a>Cookie-k kérése
 
-A kérelem cookie-k egyeztetése feltétel azonosítja a kérelmeket a bejövő kérelemben található cookie-információk alapján.
+A kérelmeket a bejövő kérelemben található cookie-információk alapján azonosítja.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
 Cookie neve | Művelet | Cookie értéke | Eset átalakítása
 ------------|----------|--------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-Legfontosabb információk
-- A helyettesítő karakterek, beleértve a csillagokat (*), nem támogatottak a cookie-nevek megadásakor, csak a pontos cookie-nevek felelnek meg az összehasonlításhoz.
-- Ennek a megfeleltetési feltételnek a példányain csak egyetlen cookie-nevet lehet megadni.
+#### <a name="key-information"></a>Legfontosabb információk
+
+- A cookie-nevek megadásakor nem használhat helyettesítő karaktereket (beleértve a csillagokat (\*)). a múzsa pontosan a cookie nevét használja.
+- Ennek a egyeztetési feltételnek a példánya esetében csak egyetlen cookie-nevet adhat meg.
 - A cookie-nevek összehasonlítása a kis-és nagybetűk megkülönböztetése nélkül történik.
-- Több cookie-értéket is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni. 
+- Több cookie-érték megadásához használjon egyetlen helyet az egyes cookie-értékek között. 
 - A cookie-értékek kihasználhatják a helyettesítő karakteres értékeket.
-- Ha nem ad meg helyettesítő karaktert, csak a pontos egyezés felel meg ennek a megfelelési feltételnek. Például az "érték" megadásakor a "value" értéknek kell megegyeznie, de nem "érték1". 
+- Ha nincs megadva helyettesítő karakter, a rendszer csak a pontos egyezést elégíti ki az egyeztetési feltételnek. Például az "érték" a "value" kifejezésnek felel meg, de nem "érték1". 
 
 ### <a name="post-argument"></a>Bejegyzés argumentuma
 
-**Kötelező mezők**
+A kérésben használt POST kérelem metódusa által megadott argumentumok alapján azonosítja a kérelmeket. 
+
+#### <a name="required-fields"></a>Kötelező mezők
 
 Argumentum neve | Művelet | Argumentum értéke | Eset átalakítása
 --------------|----------|----------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-### <a name="query-string"></a>Lekérdezési sztring
+### <a name="query-string"></a>Lekérdezési karakterlánc
 
-A lekérdezési karakterlánc egyeztetési feltételei a megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azonosítják. Ez a paraméter olyan értékre van beállítva, amely megfelel egy megadott mintának. A kérelem URL-címében szereplő lekérdezési karakterlánc paraméterei (például paraméter = érték) határozzák meg, hogy ez a feltétel teljesül-e. Ez a megfeleltetési feltétel a lekérdezési karakterlánc paraméterét azonosítja a nevével, és egy vagy több értéket fogad el a paraméter értékeként.
+A megadott lekérdezési karakterlánc paramétert tartalmazó kérelmeket azonosítja. Ez a paraméter olyan értékre van beállítva, amely megfelel egy adott mintának. A kérelem URL-címében szereplő lekérdezési karakterlánc paraméterei (például **paraméter = érték**) határozzák meg, hogy ez a feltétel teljesül-e. Ez a megfeleltetési feltétel a lekérdezési karakterlánc paraméterét azonosítja a nevével, és egy vagy több értéket fogad el a paraméter értékeként.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Lekérdezési sztring | Eset átalakítása
+Művelet | Lekérdezési karakterlánc | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
 ### <a name="remote-address"></a>Távoli címek
 
-A távoli cím megegyezik a kérelmező helye vagy IP-címe alapján a kérelmeket azonosító feltételekkel.
+A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
 Művelet | Támogatott értékek
 ---------|-----------------
 Bármelyik | N/A
-Földrajzi egyezés | Országkódok
-IP-egyeztetés | IP-címek (szóközzel elválasztva)
+Földrajzi egyezés | Országkód
+IP-egyeztetés | IP-cím (szóközzel tagolt)
 Nem | N/A
-Nem földrajzi egyezés | Országkódok
-Nem IP-egyeztetés | IP-címek (szóközzel elválasztva)
+Nem földrajzi egyezés | Országkód
+Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
 
-Legfontosabb információk:
+#### <a name="key-information"></a>Legfontosabb információk
 
 - CIDR-jelölés használata.
-- Több IP-címet és/vagy IP-címtartományt is megadhat, ha mindegyiket egyetlen szóközzel kell korlátozni. Például:
-  - **IPv4-példa**: a 1.2.3.4 10.20.30.40 a 1.2.3.4 vagy a 10.20.30.40 címről érkező összes kérésnek megfelel.
-  - **IPv6-példa**: a 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező kérelmekre illeszkedik.
+- Több IP-cím és IP-címterület megadásához használjon egyetlen helyet az értékek között:
+  - **IPv4-példa**: a *1.2.3.4 10.20.30.40* a 1.2.3.4 vagy a 10.20.30.40 címről érkező összes kérésnek megfelel.
+  - **IPv6-példa**: a *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező kérelmekre illeszkedik.
 - Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
-  - **IPv4-példa**: a 5.5.5.64/26 a 5.5.5.64-en keresztül a 5.5.5.127-on keresztül érkező kérésekre illeszkedik.
-  - **IPv6-példa**: a 1:2:3:/48 a 1:2:3:0:0:0:0:0 – 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF címen megjelenő kérelmekre illeszkedik.
+  - **IPv4-példa**: a *5.5.5.64/26* a 5.5.5.64-en keresztül a 5.5.5.127-on keresztül érkező kérésekre illeszkedik.
+  - **IPv6-példa**: a *1:2:3:/48* a 1:2:3:0:0:0:0:0 – 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF címen megjelenő kérelmekre illeszkedik.
 
-### <a name="request-body"></a>A kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
-**Kötelező mezők**
+A kérések törzsében megjelenő megadott szöveg alapján azonosítja a kérelmeket.
 
-Művelet | A kérelem törzse | Eset átalakítása
+#### <a name="required-fields"></a>Kötelező mezők
+
+Művelet | A kérés törzse | Eset átalakítása
 ---------|--------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
 ### <a name="request-header"></a>Kérelem fejléce
 
-**Kötelező mezők**
+A kérelemben megadott fejlécet használó kérelmeket azonosítja.
+
+#### <a name="required-fields"></a>Kötelező mezők
+
 Fejléc neve | Művelet | Fejléc értéke | Eset átalakítása
 ------------|----------|--------------|---------------
 Sztring | [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
 ### <a name="request-method"></a>Kérelem metódusa
 
-**Kötelező mezők**
+A megadott kérési módszert használó kérelmeket azonosítja.
 
-Művelet | Támogatott érték
+#### <a name="required-fields"></a>Kötelező mezők
+
+Művelet | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | LETÖLTÉS, KÖZZÉTÉTEL, PUT, TÖRLÉS, FEJ, BEÁLLÍTÁSOK, NYOMKÖVETÉS
 
-Legfontosabb információk:
+#### <a name="key-information"></a>Legfontosabb információk
 
-- A CDN-ben csak a GET kérelem metódusa hozhatja fel a gyorsítótárazott tartalmat. Minden más kérelmezési módszer a hálózaton keresztül történik. 
+- A Azure CDNban csak a GET Request metódus hozhatja meg a gyorsítótárazott tartalmat. Minden más kérelmezési módszer a hálózaton keresztül történik. 
 
 ### <a name="request-protocol"></a>Kérelem protokollja
 
-**Kötelező mezők**
+Azokat a kérelmeket azonosítja, amelyek a megadott protokollt használják.
 
-Művelet | Támogatott érték
+#### <a name="required-fields"></a>Kötelező mezők
+
+Művelet | Támogatott értékek
 ---------|----------------
 Egyenlő, nem egyenlő | HTTP, HTTPS
 
 ### <a name="request-url"></a>Kérés URL-címe
 
-**Kötelező mezők**
+A megadott URL-címnek megfelelő kérelmeket azonosítja.
+
+#### <a name="required-fields"></a>Kötelező mezők
 
 Művelet | Kérés URL-címe | Eset átalakítása
 ---------|-------------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-Legfontosabb információk:
+#### <a name="key-information"></a>Legfontosabb információk
 
-- A kérelem URL-címének beírásakor győződjön meg róla, hogy a protokoll adatait tartalmazza. Például: "https://www. [SajátTartomány]. com "
+- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: *https://www.\<yourdomain\>.com* .
 
 ### <a name="url-file-extension"></a>URL-fájlkiterjesztés
 
-**Kötelező mezők**
+Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlkiterjesztést a kérelem URL-címében található fájlnévben.
+
+#### <a name="required-fields"></a>Kötelező mezők
 
 Művelet | Mellék | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-Legfontosabb információk:
+#### <a name="key-information"></a>Legfontosabb információk
 
-- A bővítmények esetében ne tartalmazzon bevezető időszakot; a. html helyett például HTML-t használjon.
+- A bővítményhez ne adjon meg egy kezdő időszakot; a *. html*helyett például *HTML* -t használjon.
 
 ### <a name="url-file-name"></a>URL-fájl neve
 
-**Kötelező mezők**
+Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlnevet a kérelmező URL-címében.
+
+#### <a name="required-fields"></a>Kötelező mezők
 
 Művelet | Fájlnév | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-Legfontosabb információk:
+#### <a name="key-information"></a>Legfontosabb információk
 
 - Több fájl nevének megadásához külön szóközzel válassza el az egyes fájlneveket. 
 
-### <a name="url-path"></a>URL-cím
+### <a name="url-path"></a>URL-cím elérési útja
 
-**Kötelező mezők**
+Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott elérési utat a kérelem URL-címében.
+
+#### <a name="required-fields"></a>Kötelező mezők
 
 Művelet | Érték | Eset átalakítása
 ---------|-------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 
-Legfontosabb információk:
+#### <a name="key-information"></a>Legfontosabb információk
 
 - A fájlnév érték kihasználhatja a helyettesítő karakteres értékeket. Például az egyes fájlnevek mintázata egy vagy több csillagból (*) állhat, ahol minden csillag egy vagy több karakterből áll.
 
@@ -200,14 +218,14 @@ Legfontosabb információk:
 
 ### <a name="standard-operator-list"></a>Szabványos operátorok listája
 
-A normál operátorok listáját tartalmazó szabályok esetében a következő operátorok érvényesek:
+Azok a szabályok, amelyek a normál operátorok listájából fogadnak értékeket, a következő operátorok érvényesek:
 
 - Bármelyik
 - Egyenlő 
 - Contains 
 - Kezdete 
-- Végződik 
-- Kisebb mint
+- végződik 
+- Kisebb, mint
 - Kisebb vagy egyenlő
 - Nagyobb, mint
 - Nagyobb vagy egyenlő
@@ -220,17 +238,11 @@ A normál operátorok listáját tartalmazó szabályok esetében a következő 
 - Nem nagyobb, mint
 - Nem nagyobb vagy egyenlő
 
-A numerikus operátorok (például a "kevesebb mint" vagy "nagyobb vagy egyenlő") esetében a felhasznált összehasonlítás a hossz alapján történik. Ebben az esetben az egyeztetési feltételben szereplő értéknek egész számnak kell lennie, és meg kell egyeznie az összehasonlítani kívánt hosszával. 
+A (z) *vagy*annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Ebben az esetben az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amelynek meg kell egyeznie az összehasonlítani kívánt hosszsal. 
 
----
+## <a name="next-steps"></a>Következő lépések
 
-[Vissza a tetejére](#match-conditions)
-
-</br>
-
-## <a name="next-steps"></a>További lépések
-
-- [Az Azure Content Delivery Network áttekintése](cdn-overview.md)
-- [Szabálymotor-referencia](cdn-standard-rules-engine-reference.md)
-- [Szabályok Engine-műveletek](cdn-standard-rules-engine-actions.md)
+- [Azure CDN áttekintése](cdn-overview.md)
+- [Szabványos szabályok – motor referenciája](cdn-standard-rules-engine-reference.md)
+- [Műveletek a standard szabályok motorban](cdn-standard-rules-engine-actions.md)
 - [HTTPS kikényszerítés a standard szabályok motor használatával](cdn-standard-rules-engine.md)

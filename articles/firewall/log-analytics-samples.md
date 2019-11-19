@@ -1,18 +1,18 @@
 ---
 title: Log Analytics-minták Azure Firewall
-description: Log Analytics-minták Azure Firewall
+description: Azure Monitor naplók a Azure Firewall elemzéséhez használhatók. Egy minta-fájl a Azure Monitor Tervező nézetében van felépítve.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033981"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168886"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Log Analytics-minták Azure Firewall
 
@@ -26,9 +26,9 @@ A következőképpen konfigurálhatja például a naplók vizualizációját Azu
 
 A nézet a Log Analytics munkaterülethez való hozzáadásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az Log Analytics munkaterületet az Azure Portalon.
+1. Nyissa meg a Log Analytics munkaterületet a Azure Portalban.
 2. Nyissa meg az **általános** **nézet tervezőjét** .
-3. Kattintson az **Importálás** elemre.
+3. Kattintson a **importálás**.
 4. Tallózással keresse meg és válassza ki a letöltött **AzureFirewall. omsview** fájlt.
 5. Kattintson a **Save** (Mentés) gombra.
 
@@ -40,7 +40,7 @@ A nézet az alkalmazási szabály naplózási információit keresi:
 
 ![Hálózati szabály naplójának adatkészlete]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure Firewall a AzureDiagnostics alatti adatnaplókat a **AzureFirewallApplicationRule** vagy a **AzureFirewallNetworkRule**kategóriába. A részleteket tartalmazó adatokat a msg_s mezőben tárolja a rendszer. Az [elemzési](https://docs.microsoft.com/azure/kusto/query/parseoperator) operátor használatával kinyerhetjük a különböző érdekes tulajdonságokat a msg_s mezőből. Az alábbi lekérdezések mindkét kategóriához kinyerik az adatokat.
+Azure Firewall a AzureDiagnostics alatti adatnaplókat a **AzureFirewallApplicationRule** vagy a **AzureFirewallNetworkRule**kategóriába. A részleteket tartalmazó adatokat a msg_s mezőben tárolja a rendszer. Az [elemzési](https://docs.microsoft.com/azure/kusto/query/parseoperator) operátor használatával kinyerheti a különböző érdekes tulajdonságokat a msg_s mezőből. Az alábbi lekérdezések mindkét kategóriához kinyerik az adatokat.
 
 ## <a name="application-rules-log-data-query"></a>Az alkalmazás-szabályok naplójának adatlekérdezése
 
@@ -166,6 +166,6 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Azure Firewall monitorozási és diagnosztikai funkcióinak megismeréséhez tekintse [meg az oktatóanyag: Azure Firewall naplók és metrikák](tutorial-diagnostics.md)figyelése.
+A Azure Firewall monitorozási és diagnosztikai funkcióinak megismeréséhez tekintse meg a következő [oktatóanyagot: Azure Firewall naplók és metrikák figyelése](tutorial-diagnostics.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid üzenetkézbesítése figyelése
-description: Az Azure Event Grid üzenetek kézbesítésének felügyeletének módját ismerteti.
+title: Figyelő Azure Event Grid üzenet kézbesítése
+description: Útmutató Azure Event Grid üzenetek kézbesítésének figyeléséhez.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,76 +8,82 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824166"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170011"
 ---
-# <a name="monitor-event-grid-message-delivery"></a>Event Grid üzenetkézbesítése figyelése 
+# <a name="monitor-event-grid-message-delivery"></a>Figyelő Event Grid üzenet kézbesítése 
 
-Ez a cikk ismerteti a portál használatával esemény kézbesítések állapotának megtekintéséhez.
+Ez a cikk azt ismerteti, hogyan használható a portál az események kézbesítési állapotának megtekintéséhez.
 
-Event Grid biztosít a tartós kézbesítési. Minden üzenet legalább egyszer minden egyes előfizetés esetén kínál. Az események küldhetők a regisztrált webhook-előfizetések azonnal. Ha a webhook nem igazolhatom egy eseményt az első kézbesítési kísérlet 60 másodpercen belül, az Event Grid kézbesítési esemény újrapróbálkozik.
+Event Grid tartós kézbesítést biztosít. Minden egyes előfizetéshez legalább egyszer kézbesít minden üzenetet. Az eseményeket azonnal elküldi az egyes előfizetések regisztrált webhookjának. Ha egy webhook nem igazolja az esemény kézhezvételét az első kézbesítési kísérlet 60 másodpercén belül, Event Grid újrapróbálkozik az esemény kézbesítésével.
 
 Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
 
 ## <a name="delivery-metrics"></a>Kézbesítési metrikák
 
-A portál megjeleníti az eseményt üzenetek kézbesítése állapotára vonatkozó metrikákat.
+A portál megjeleníti az események kézbesítésének állapotára vonatkozó metrikákat.
 
-A témaköröket a metrikák a következők:
+Témakörök esetén a metrikák a következők:
 
-* **Sikeres közzététel**: Sikeresen eseményt a témakörbe küldött, és feldolgozása és a egy 2xx választ.
-* **Nem sikerült a közzététel**: Eseményt a témakörbe küldött, de egy hibakódot elutasították.
-* **Páratlan**: Esemény sikeresen közzétette a témakörre, de nem felel meg egy esemény-előfizetést. Az eseményt eldobta.
+* **Sikeres közzététel**: az esemény sikeresen elküldött a témakörbe, és 2xx-válaszsal lett feldolgozva.
+* A **Közzététel sikertelen**: az esemény a témakörbe lett küldve, de hibakódtal elutasította.
+* Nem **egyező**: az esemény sikeresen közzé lett téve a témakörben, de nem felel meg az esemény-előfizetésnek. Az esemény el lett dobva.
 
-Az előfizetések a metrikák a következők:
+Az előfizetések esetében a metrikák a következők:
 
-* **Sikeres kézbesítés**: Esemény sikeresen kézbesíteni az előfizetési végpont, és a 2xx válasz érkezett.
-* **Sikertelen kézbesítés**: Esemény az előfizetéshez tartozó végpontra küldött, de a 4xx vagy 5xx válasz érkezett.
-* **Lejárt események**: Esemény nem lett kézbesítve, és az összes újrapróbálkozás le lett elküldve. Az eseményt eldobta.
-* **Egyeztetett események**: A témakör az esemény megfelelést váltott ki. az esemény-előfizetés.
+* **Sikeres kézbesítés**: az esemény sikeresen kézbesítve lett az előfizetés végpontjának, és 2xx választ kapott.
+* A **kézbesítés sikertelen volt**: az előfizetés végpontjának küldött esemény, de 4xx vagy 5xx-válasz érkezett.
+* **Lejárt események**: az esemény nem lett kézbesítve, és az összes újrapróbálkozási kísérlet elküldése megtörtént. Az esemény el lett dobva.
+* **Egyeztetett események**: az esemény-előfizetés megfelelt a témakörben szereplő eseménynek.
 
 ## <a name="event-subscription-status"></a>Esemény-előfizetés állapota
 
-Egy esemény-előfizetés metrikáinak megtekintéséhez, vagy kereshet előfizetéssel rendelkezik, vagy egy adott erőforráshoz tartozó előfizetések.
+Ha szeretné megtekinteni az esemény-előfizetés mérőszámait, kereshet az előfizetés típusa vagy egy adott erőforrás előfizetése alapján.
 
-Az esemény-előfizetés típusa alapján keres, válassza ki a **minden szolgáltatás**.
+Ha az esemény-előfizetés típusa szerint szeretne keresni, válassza a **minden szolgáltatás**lehetőséget.
 
 ![Válassza ki az összes szolgáltatás](./media/monitor-event-delivery/all-services.png)
 
-Keresse meg **event grid** válassza **Event Grid-előfizetések** az elérhető lehetőségek közül.
+Keressen az **Event Grid** kifejezésre, és válassza ki **Event Grid előfizetéseket** az elérhető lehetőségek közül.
 
 ![Esemény-előfizetések keresése](./media/monitor-event-delivery/search-and-select.png)
 
-Szűrés adott esemény, az előfizetésben és helyen. Válassza ki **metrikák** az előfizetés megtekintéséhez.
+Szűrés az esemény típusa, az előfizetés és a hely alapján. Válassza ki a megtekinteni kívánt előfizetéshez tartozó **metrikákat** .
 
 ![Esemény-előfizetések szűrése](./media/monitor-event-delivery/filter-events.png)
 
-Az esemény témakör és az előfizetés a metrikákat tekinthet meg.
+Tekintse meg az esemény témakörének és előfizetésének mérőszámait.
 
-![Esemény-metrikák megtekintése](./media/monitor-event-delivery/subscription-metrics.png)
+![Esemény metrikáinak megtekintése](./media/monitor-event-delivery/subscription-metrics.png)
 
-A metrikák található adott erőforrásra vonatkozóan, válassza ki az adott erőforráshoz. Ezután válassza ki **események**.
+Egy adott erőforrás metrikáinak megkereséséhez válassza ki az erőforrást. Ezután válassza az **események**lehetőséget.
 
-![Egy erőforráscsoport eseményeire kiválasztása](./media/monitor-event-delivery/select-events.png)
+![Erőforrások eseményeinek kiválasztása](./media/monitor-event-delivery/select-events.png)
 
-Láthatja, az előfizetéseket az adott erőforrás metrikáit.
+Megjelenik az adott erőforráshoz tartozó előfizetések metrikái.
 
 ## <a name="custom-event-status"></a>Egyéni esemény állapota
 
-Ha egy egyéni témakör tettük közzé, megtekintheti a metrikákat. Válassza ki a témakör az erőforráscsoportot, és jelölje ki a témakört.
+Ha közzétett egy egyéni témakört, megtekintheti a metrikákat. Válassza ki a témakörhöz tartozó erőforráscsoportot, és válassza ki a témakört.
 
 ![Egyéni témakör kiválasztása](./media/monitor-event-delivery/select-custom-topic.png)
 
-Az egyéni esemény témakör a metrikákat tekinthet meg.
+Tekintse meg az egyéni esemény témakör mérőszámait.
 
-![Esemény-metrikák megtekintése](./media/monitor-event-delivery/custom-topic-metrics.png)
+![Esemény metrikáinak megtekintése](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="set-alerts"></a>Riasztások beállítása
+
+Megadhatja a riasztásokat a témakörben és a tartományi szintű mérőszámokban az egyéni témakörökhöz és az esemény-tartományokhoz. Az Áttekintés panelen válassza a bal oldali erőforrás menü **riasztások** elemét a riasztási szabályok megtekintéséhez, kezeléséhez és létrehozásához. [További információ a Azure Monitor riasztásokról](../azure-monitor/platform/alerts-overview.md)
+
+![Esemény metrikáinak megtekintése](./media/monitor-event-delivery/select-alerts.png)
+
+## <a name="next-steps"></a>Következő lépések
 
 * Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
-* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
+* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
 * Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).

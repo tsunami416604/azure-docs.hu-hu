@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332835"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167428"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -106,13 +106,13 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Ezután lépjen **log Analytics munkaterületek** elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 3. A **Beállítások** szakaszban válassza a **Speciális beállítások**lehetőséget.
-4. Ezt követően navigáljon az adat  > **Windows** -teljesítményszámlálók **elemre**, és adja hozzá a következő számlálókat:
+4. Ezt követően navigáljon az adat > **Windows-teljesítményszámlálók** **elemre** , és adja hozzá a következő számlálókat:
 
-    -   LogicalDisk (\*) @no__t – 1Free terület
-    -   LogicalDisk (C:) \\Avg. Disk várólista hossza
-    -   Memória (\*) \\Available MB-ban
-    -   Processzor adatai (\*) @no__t – 1Processor idő
-    -   Felhasználói bemeneti késleltetés/munkamenet (\*) @no__t – 1Max bemeneti késleltetése
+    -   LogicalDisk (\*)\\szabad terület%-ban
+    -   LogicalDisk (C:)\\átlagos Lemezvezérlő-várólista hossza
+    -   Memória (\*)\\elérhető MB-ban
+    -   Processzor adatai (\*)\\processzoridő
+    -   Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés
 
 További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -139,14 +139,14 @@ Győződjön meg arról, hogy a Log Analytics munkaterület előre konfigurált 
 
 1. A [Azure Portal](https://portal.azure.com/)válassza a **log Analytics munkaterületek** lehetőséget a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 2. A **Beállítások**területen válassza a **Speciális beállítások**lehetőséget.
-3. Ezután lépjen az adat  >  Windows-**teljesítményszámlálók** **elemre**.
+3. Ezután lépjen az adat > Windows- **teljesítményszámlálók** **elemre** .
 4. Győződjön meg arról, hogy a következő számlálók előre vannak konfigurálva:
 
-   - LogicalDisk (\*) @no__t – 1Free terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
-   - LogicalDisk (C:) \\Avg. Disk várólista hossza: a C meghajtóhoz tartozó fájlátviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
-   - Memória (\*) \\Available MB-ban: a rendszer számára rendelkezésre álló memória megabájtban.
-   - Processzor adatai (\*) @no__t – 1Processor idő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
-   - Felhasználói bemeneti késleltetés/munkamenet (\*) @no__t – 1Max bemeneti késleltetése
+   - LogicalDisk (\*)\\% szabad terület: a lemezen lévő teljes felhasználható terület szabad területét jeleníti meg százalékos értékként.
+   - LogicalDisk (C:)\\átlagos Lemezvezérlő-várólista hossza: a C meghajtóhoz tartozó lemezes átviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
+   - Memória (\*)\\elérhető MB-ban: a rendszer számára rendelkezésre álló memória megabájtban.
+   - Processzor adatai (\*)\\processzoridő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
+   - Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Kapcsolódás virtuális gépekhez a Log Analytics munkaterületen
 
@@ -234,25 +234,25 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows teljesítményszámláló küszöbértékei
 
-- LogicalDisk (\*) \|% szabad terület:
+- LogicalDisk (\*)\\% szabad terület:
 
     - A logikai lemez szabad területének teljes felhasználható területének százalékos arányát jeleníti meg.
     - Küszöbérték: a 20%-nál kevesebb érték van megjelölve sérültként.
 
-- LogicalDisk (C:) \\Avg. Disk várólista hossza:
+- LogicalDisk (C:)\\átlagos Lemezvezérlő-várólista hossza:
 
     - A tárolási rendszerfeltételeket jelöli.
     - Küszöbérték: az 5-nél nagyobb érték van megjelölve sérültként.
 
-- Memória (\*) @no__t 1Available MB-ban:
+- Memória (\*)\\elérhető MB-ban:
 
     - A rendszer számára rendelkezésre álló memória.
     - Küszöbérték: nem kifogástalanként megjelölt 500 megabájtnál kisebb.
 
-- Processzor adatai (\*) @no__t 1Processor idő:
+- Processzor adatai (\*)\\processzoridő:
 
     - Küszöbérték: a 80%-nál nagyobb érték van megjelölve sérültként.
 
-- [Felhasználói bemeneti késleltetés/munkamenet (\*) \\Max bemeneti késleltetése](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.

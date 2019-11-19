@@ -1,29 +1,29 @@
 ---
-title: Azure-tűzfal szolgáltatáscímkék áttekintése
-description: Ez a cikk az Azure-tűzfal szolgáltatáscímkék áttekintést.
+title: A Azure Firewall Service-címkék áttekintése
+description: A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d0ac36e415c056dffc9c75d00968ff74c2156e63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450170"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168689"
 ---
-# <a name="azure-firewall-service-tags"></a>Az Azure tűzfal szolgáltatáscímkék
+# <a name="azure-firewall-service-tags"></a>Azure Firewall szolgáltatás címkéi
 
 A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatáscímkéket, és nem határozhatja meg, hogy melyik IP-címeket jelöljék az egyes címkék. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
-A hálózati szabályok célmező Azure tűzfal szolgáltatáscímkék is használható. Adott IP-címek helyett használhatja őket.
+Azure Firewall szolgáltatás címkéi a hálózati szabályok célhely mezőjében használhatók. Azokat meghatározott IP-címek helyett használhatja.
 
-## <a name="supported-service-tags"></a>Támogatott szolgáltatáscímkék
+## <a name="supported-service-tags"></a>Támogatott szolgáltatási Címkék
 
-Lásd: [biztonsági csoportok](../virtual-network/security-overview.md#service-tags) , amely használható az Azure hálózati tűzfalszabályok szolgáltatáscímkék listáját.
+Az Azure tűzfal hálózati szabályaiban használható szolgáltatási címkék listáját a [biztonsági csoportok](../virtual-network/security-overview.md#service-tags) részben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Azure tűzfalszabályokkal kapcsolatos további tudnivalókért lásd: [Azure tűzfalszabály feldolgozó logika](rule-processing.md).
+További információ a Azure Firewall szabályokról: [Azure Firewall szabály-feldolgozási logika](rule-processing.md).

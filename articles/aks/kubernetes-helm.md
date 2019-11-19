@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: fc808fee66dee573aecd423e375d30bf3f5b696a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305280"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170708"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -56,7 +56,7 @@ subjects:
     namespace: kube-system
 ```
 
-Hozza létre a szolgáltatásfiók és a szerepkör kötését `kubectl apply` a paranccsal:
+Hozzon létre egy szolgáltatásfiókot és egy szerepkör-kötést a `kubectl apply` paranccsal:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -70,15 +70,15 @@ Egy RBAC-kompatibilis Kubernetes-fürt segítségével szabályozhatja a hozzáf
 
 ## <a name="configure-helm"></a>A Helm konfigurálása
 
-Alapszintű kormányrúd egy AK-fürtbe történő üzembe helyezéséhez használja a [Helm init][helm-init] parancsot. Ha a fürt nincs engedélyezve RBAC, távolítsa el `--service-account` az argumentumot és az értéket. Az alábbi példákban az [Előzmények – max][helm-history-max] 200 érték is megadható.
+Alapszintű kormányrúd egy AK-fürtbe történő üzembe helyezéséhez használja a [Helm init][helm-init] parancsot. Ha a fürt nincs engedélyezve RBAC, távolítsa el a `--service-account` argumentumot és az értéket. Az alábbi példákban az [Előzmények – max][helm-history-max] 200 érték is megadható.
 
-Ha a TLS/SSL-t a kormányrúd és a Helm használatára konfigurálta, ugorja át ezt az alapszintű inicializálási lépést, és adja meg a szükséges `--tiller-tls-` értéket a következő példában látható módon.
+Ha a TLS/SSL-t a kormányrúd és a Helm használatára konfigurálta, ugorja át ezt az alapszintű inicializálási lépést, és adja meg a szükséges `--tiller-tls-` a következő példában látható módon.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Ha a következő példában látható módon konfigurálta a TLS/SSL- `--tiller-tls-*` t a Helm és a kormányrúd között, adja meg a saját tanúsítványok paramétereit és nevét:
+Ha a következő példában látható módon konfigurálta a TLS/SSL-t a Helm és a kormányrúd között, adja meg a saját tanúsítványok `--tiller-tls-*` paramétereit és nevét:
 
 ```console
 helm init \
@@ -148,7 +148,7 @@ Update Complete.
 
 ## <a name="run-helm-charts"></a>Helm-diagramok futtatása
 
-Ha a diagramokat a Helm használatával szeretné telepíteni, használja a [Helm install][helm-install] parancsot, és adja meg a telepítendő diagram nevét. A Helm-diagramok működés közbeni telepítésének megtekintéséhez telepítsen egy alapszintű Nginx-telepítést egy Helm-diagram használatával. Ha a TLS/SSL-t konfigurálta `--tls` , adja hozzá a paramétert a Helm-ügyféltanúsítvány használatához.
+Ha a diagramokat a Helm használatával szeretné telepíteni, használja a [Helm install][helm-install] parancsot, és adja meg a telepítendő diagram nevét. A Helm-diagramok működés közbeni telepítésének megtekintéséhez telepítsen egy alapszintű Nginx-telepítést egy Helm-diagram használatával. Ha a TLS/SSL-t konfigurálta, adja hozzá a `--tls` paramétert a Helm-ügyféltanúsítvány használatához.
 
 ```console
 helm install stable/nginx-ingress \
@@ -187,7 +187,7 @@ Az Nginx-beáramló-Controller szolgáltatás *külső IP-* címéhez egy-két p
 
 ## <a name="list-helm-releases"></a>Helm-kiadások listázása
 
-A fürtön telepített kiadások listájának megtekintéséhez használja a [Helm List][helm-list] parancsot. Az alábbi példa az Nginx-beléptetési kiadást mutatja be az előző lépésben üzembe helyezett változatban. Ha a TLS/SSL-t konfigurálta `--tls` , adja hozzá a paramétert a Helm-ügyféltanúsítvány használatához.
+A fürtön telepített kiadások listájának megtekintéséhez használja a [Helm List][helm-list] parancsot. Az alábbi példa az Nginx-beléptetési kiadást mutatja be az előző lépésben üzembe helyezett változatban. Ha a TLS/SSL-t konfigurálta, adja hozzá a `--tls` paramétert a Helm-ügyféltanúsítvány használatához.
 
 ```console
 $ helm list
@@ -206,7 +206,7 @@ $ helm delete flailing-alpaca
 release "flailing-alpaca" deleted
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes-alkalmazások Helmtel történő kezeléséről: a Helm dokumentációja.
 
@@ -215,18 +215,18 @@ További információ a Kubernetes-alkalmazások Helmtel történő kezelésér�
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/
-[helm-documentation]: https://docs.helm.sh/
-[helm-init]: https://docs.helm.sh/helm/#helm-init
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
+[helm-documentation]: https://v2.helm.sh/docs/
+[helm-init]: https://v2.helm.sh/docs/helm/#helm-init
+[helm-install]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[helm-list]: https://docs.helm.sh/helm/#helm-list
-[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
-[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
-[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
-[helm-search]: https://docs.helm.sh/helm/#helm-search
-[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
-[helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
-
+[helm-list]: https://v2.helm.sh/docs/helm/#helm-list
+[helm-history-max]: https://v2.helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
+[helm-rbac]: https://v2.helm.sh/docs/using_helm/#role-based-access-control
+[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-search]: https://v2.helm.sh/docs/helm/#helm-search
+[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
+[helm-ssl]: https://v2.helm.sh/docs/using_helm/#using-ssl-between-helm-and-tiller
+            
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md

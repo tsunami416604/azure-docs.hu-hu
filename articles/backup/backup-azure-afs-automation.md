@@ -1,25 +1,20 @@
 ---
-title: Azure Files biztonsági mentése és visszaállítása a Azure Backup és a PowerShell használatával
+title: Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést és visszaállítást Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.author: dacurwin
-ms.reviewer: pullabhk
-ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 18c7340d1cb782ba41c472156259170f37139a74
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903612"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173483"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
 
 Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy Azure Files fájlmegosztás biztonsági mentésére és helyreállítására egy [Azure Backup](backup-overview.md) Recovery Services-tároló használatával.
 
-Ez az oktatóanyag a következőket ismerteti:
+Ez a cikk a következőket ismerteti:
 
 > [!div class="checklist"]
 >

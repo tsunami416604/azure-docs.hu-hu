@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Azure-beli virtuális gépek visszaállítása REST API használatával'
+title: Azure-beli virtuális gépek visszaállítása REST API használatával
 description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtuális gépek biztonsági mentésének visszaállítási műveleteit REST API használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eecee01ffc78ec8cc0e60b517e9d5b4f0e6baa25
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929148"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173384"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 

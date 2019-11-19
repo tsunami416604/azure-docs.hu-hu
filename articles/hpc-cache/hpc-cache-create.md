@@ -4,14 +4,14 @@ description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582711"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168570"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -64,10 +64,11 @@ A gyorsítótár létrehozása körülbelül 10 percet vesz igénybe. A folyamat
 ![képernyőkép a gyorsítótár létrehozásáról "üzembe helyezés folyamatban" és "értesítések" oldalain a portálon](media/hpc-cache-deploy-status.png)
 
 A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HPC cache-példányra mutató hivatkozással, a gyorsítótár pedig megjelenik az előfizetés **erőforrások** listájában.
+<!-- double check on notification -->
 
 ![képernyőkép az Azure HPC cache-példányról Azure Portal](media/hpc-cache-new-overview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután a gyorsítótár megjelenik az **erőforrások** listában, adja meg a tárolási célokat, hogy a gyorsítótár hozzáférjen az adatforrásokhoz.
 

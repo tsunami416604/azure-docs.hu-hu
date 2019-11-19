@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 56830e20b190958c1c411f5daa1d2a7e928f0f3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821194"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166253"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kibocsátási megjegyzések
 
@@ -24,7 +24,7 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető SQL Database-szo
 
 ### <a name="single-databasetabsingle-database"></a>[Önálló adatbázis](#tab/single-database)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | Új Fsv2 és M-sorozatú hardveres generációk| További információ: [Hardware Generations](sql-database-service-tiers-vcore.md#hardware-generations).|
 | [Azure Private-hivatkozás](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Azáltal, hogy az adatokat az Azure-hálózaton belül tartja, és nem teszi elérhetővé az internet felé, a privát kapcsolat egyszerűbbé teszi a hálózati architektúrát és biztonságossá teszi a kapcsolatot az Azure-beli végpontok között. Privát kapcsolat segítségével saját szolgáltatást is létrehozhat és nyújthat az Azure-ban. |
@@ -38,13 +38,13 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető SQL Database-szo
 |Memória-engedélyezési visszajelzés (sor mód) (a 150-es kompatibilitási szint alatt)|További információ: [memória-engedélyezési visszajelzés (sor mód)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | A Azure Portal lekérdezés-szerkesztője |További információ: [a Azure Portal SQL Query Editor használata az adatok összekapcsolásához és lekérdezéséhez](sql-database-connect-query-portal.md).|
 | R-szolgáltatások/gépi tanulás önálló adatbázisokkal és rugalmas készletekkel |További információ: [Machine Learning Services Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
-|SQL-elemzés|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
+|SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Táblázat változó késleltetett fordítása (a 150-es kompatibilitási szint alatt)|További információ: [Table változó késleltetett fordítása](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
 
 ### <a name="managed-instancetabmanaged-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">Szolgáltatással segített alhálózat konfigurációja</a> | Biztonságos és kényelmes mód az alhálózati konfiguráció kezelésére. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példányok készletei</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
@@ -79,6 +79,8 @@ A következő funkciók engedélyezve vannak a felügyelt példány üzembe hely
 ## <a name="fixed-known-issues"></a>Rögzített ismert problémák
 
 - Az **augusztus 2019** -ben foglalt adatbázisok teljes mértékben támogatottak a felügyelt példányokban.
+- **Tot 2019** – a üzletileg kritikus rétegből általános célú rétegbe való beépített időponthoz tartozó adatbázis-visszaállítás nem fog sikerülni, ha a forrásadatbázis memóriában tárolt OLTP objektumokat tartalmaz.
+- **November 2019** – az adatbázis-konzisztencia ellenőrzése `DBCC CHECKDB` az Azure Blob Storage visszaállítási adatbázisának használatával.
 
 ## <a name="updates"></a>Frissítések
 

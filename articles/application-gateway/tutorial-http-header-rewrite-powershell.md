@@ -1,40 +1,40 @@
 ---
-title: Az Azure Application Gateway HTTP-fejlécek újraírása
-description: Ez a cikk információt nyújt az Azure Application Gateway létrehozása, és írja újra az Azure PowerShell-lel HTTP-fejlécek
+title: Azure-Application Gateway létrehozása & a HTTP-fejlécek újraírása
+description: Ez a cikk az Azure-Application Gateway létrehozásával és a HTTP-fejlécek újraírásával kapcsolatos információkat tartalmaz a Azure PowerShell használatával
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947091"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173715"
 ---
-# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application gateway létrehozása, és a HTTP-fejlécek újraírása
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application Gateway létrehozása és a HTTP-fejlécek újraírása
 
-Azure PowerShell-lel való konfigurálásához használható [HTTP-kérelmek és válaszfejlécek újraírási szabályok](rewrite-http-headers.md) létrehozásakor, az új [automatikus skálázást és zónaredundáns application gateway Termékváltozat](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+Az új automatikus [skálázás és a Zone-redundáns Application Gateway SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) létrehozásakor az Azure PowerShell használatával KONFIGURÁLHATÓK a [HTTP-kérések és a válaszok fejlécének újraírására szolgáló szabályok](rewrite-http-headers.md) .
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 >
-> * Az automatikus skálázási virtuális hálózat létrehozása
+> * Autoscale virtuális hálózat létrehozása
 > * Fenntartott nyilvános IP-cím létrehozása
-> * Az application gateway infrastruktúra beállítása
-> * Adja meg a http-fejléc újraírási szabálykonfiguráció
+> * Az Application Gateway-infrastruktúra beállítása
+> * Adja meg a HTTP-fejléc Újraírási szabályának konfigurációját
 > * Automatikus méretezés megadása
 > * Application Gateway létrehozása
-> * Az alkalmazásátjáró tesztelése
+> * Az Application Gateway tesztelése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a cikkhez az Azure PowerShell helyi futtatása. Rendelkeznie kell Az 1.0.0-s verziójának modul, vagy újabb verziója van telepítve. Futtatás `Import-Module Az` , majd`Get-Module Az` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez a cikkhez Azure PowerShell helyileg kell futtatnia. Az az modul Version 1.0.0 vagy újabb verziójának telepítve kell lennie. Futtassa `Import-Module Az`, majd`Get-Module Az` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -56,7 +56,7 @@ New-AzResourceGroup -Name $rg -Location $location
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az automatikus skálázás application Gateway egy kijelölt alhálózatot a virtuális hálózat létrehozása. Jelenleg az egyes dedikált alhálózatokon csak egy automatikus skálázású Application Gateway helyezhető üzembe.
+Hozzon létre egy dedikált alhálózattal rendelkező virtuális hálózatot egy automatikus skálázási Application Gateway számára. Jelenleg az egyes dedikált alhálózatokon csak egy automatikus skálázású Application Gateway helyezhető üzembe.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -68,7 +68,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Fenntartott nyilvános IP-cím létrehozása
 
-Adja meg a nyilvános IP-címre, a kiosztási módszert **statikus**. Az automatikus skálázású Application Gateway virtuális IP-címe csak statikus lehet. A dinamikus IP-címek nem használhatók. Csak a standard PublicIPAddress termékváltozat támogatott.
+A PublicIPAddress kiosztási módszerének meghatározása **statikusként**. Az automatikus skálázású Application Gateway virtuális IP-címe csak statikus lehet. A dinamikus IP-címek nem használhatók. Csak a standard PublicIPAddress termékváltozat támogatott.
 
 ```azurepowershell
 #Create static public IP
@@ -78,7 +78,7 @@ $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Részletek beolvasása
 
-Kérje le az IP-konfiguráció részleteit az application Gateway létrehozása egy helyi objektumban, az erőforráscsoport, alhálózatot és IP-adatait.
+Egy helyi objektumban található erőforráscsoport, alhálózat és IP adatainak beolvasása az Application Gateway IP-konfigurációs adatainak létrehozásához.
 
 ```azurepowershell
 $resourceGroup = Get-AzResourceGroup -Name $rg
@@ -89,7 +89,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork
 
 ## <a name="configure-the-infrastructure"></a>Az infrastruktúra konfigurálása
 
-Konfigurálja az IP config, előtér-IP-config, háttérkészlet-, HTTP beállítások, tanúsítvány, port és figyelő meglévő Standard application Gateway egy azonos formátumban. Az új termékváltozat a standard termékváltozattal megegyező objektummodellt követi.
+Konfigurálja az IP-konfigurációt, az előtér-IP-konfigurációt, a háttér-készletet, a HTTP-beállításokat, a tanúsítványt, a portot és a figyelőt azonos formátumban a meglévő standard Application Gateway-átjáróhoz. Az új termékváltozat a standard termékváltozattal megegyező objektummodellt követi.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -105,15 +105,15 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
           -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Adja meg a HTTP-fejléc újraírási szabálykonfiguráció
+## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Adja meg a HTTP-fejléc Újraírási szabályának konfigurációját
 
-Adja meg a szükséges a http-fejlécek újraírási új objektumok:
+Konfigurálja a HTTP-fejlécek újraírásához szükséges új objektumokat:
 
-- **RequestHeaderConfiguration**: Ez az objektum az eredeti fejlécek kell írni az új érték pedig a kérés üzenetfejlécének mezői újraírási kívánt meghatározására szolgál.
-- **ResponseHeaderConfiguration**: Ez az objektum az eredeti fejlécek kell írni az új érték pedig a válasz üzenetfejlécének mezői újraírási kívánt meghatározására szolgál.
-- **ActionSet**: Ez az objektum tartalmaz a kérelmek és válaszfejlécek, a fentiekben ismertetett konfigurációit. 
-- **RewriteRule**: Ez az objektum tartalmazza az összes a *actionSets* fent megadott. 
-- **RewriteRuleSet**– Ez az objektum tartalmazza az összes a *rewriteRules* és a egy kérés útválasztási szabály – alap- vagy -alapú csatlakoztatni kell.
+- **RequestHeaderConfiguration**: ezzel az objektummal megadhatja az újraírni kívánt kérelem fejlécének mezőit, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
+- **ResponseHeaderConfiguration**: ezzel az objektummal megadhatja az újraírni kívánt válasz fejléc-mezőket, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
+- **ActionSet**: ez az objektum tartalmazza a fent megadott kérelem és válasz fejlécek konfigurációit. 
+- **RewriteRule**: ez az objektum tartalmazza a fent megadott összes *actionSets* . 
+- **RewriteRuleSet**– ez az objektum tartalmazza az összes *rewriteRules* , és csatolni kell egy kérelem útválasztási szabályához – alapszintű vagy elérésiút-alapú.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -123,9 +123,9 @@ Adja meg a szükséges a http-fejlécek újraírási új objektumok:
    $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -RewriteRule $rewriteRule
    ```
 
-## <a name="specify-the-routing-rule"></a>Adja meg az útválasztási szabályt
+## <a name="specify-the-routing-rule"></a>Útválasztási szabály meghatározása
 
-Hozzon létre egy kérelem-útválasztási szabály. Létrehozása után ezt írja újra a konfigurációt a forrás figyelőt az útválasztási szabály van csatolva. Egy alapszintű útválasztási szabályt használatakor a fejléc újraírási konfigurációs társítva a forrás-figyelő és egy globális fejléce módosítsa úgy. -Alapú útválasztási szabály használata esetén a fejléc újraírási konfiguráció az URL-Címtérkép van definiálva. Ezért csak vonatkozik egy helyet a megadott elérési út területéhez. Az alábbiakban jön létre egy alapszintű útválasztási szabályt, és a újraírási szabálykészlet van csatolva.
+Hozzon létre egy kérelem-útválasztási szabályt. A létrehozást követően az Újraírási konfiguráció a forrás-figyelőhöz az útválasztási szabály használatával van csatolva. Alapszintű útválasztási szabály használatakor a fejléc-Újraírási konfiguráció egy forrás-figyelőhöz van társítva, és a globális fejléc újraírása. Elérésiút-alapú útválasztási szabály használatakor a rendszer a fejléc-Újraírási konfigurációt az URL elérési útja alapján határozza meg. Tehát csak a helyek adott elérési útjára vonatkozik. Az alábbiakban egy alapszintű útválasztási szabály jön létre, és a rendszer csatolja az Újraírási szabályt.
 
 ```azurepowershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType basic `
@@ -134,7 +134,7 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 ## <a name="specify-autoscale"></a>Automatikus méretezés megadása
 
-Most már adhatja meg az application gateway az automatikus skálázási konfigurációját. Az Application Gateway két automatikus skálázási típust támogat:
+Most megadhatja az Application Gateway automatikus skálázási konfigurációját. Az Application Gateway két automatikus skálázási típust támogat:
 
 * **Rögzített kapacitású mód**. Ebben a módban az Application Gateway nem automatikus skálázású, és rögzített skálázásiegység-kapacitással működik.
 
@@ -151,15 +151,15 @@ Most már adhatja meg az application gateway az automatikus skálázási konfigu
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az application gateway létrehozása és a redundancia zónák és az automatikus skálázási konfigurációját.
+Hozza létre az Application Gatewayt, és tartalmazzon redundancia-zónákat és az automatikus skálázási konfigurációt.
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 -ResourceGroupName $rg -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $setting -GatewayIpConfigurations $ipconfig -FrontendIpConfigurations $fip -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -RewriteRuleSet $rewriteRuleSet
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
-Az application Gateway nyilvános IP-címének lekéréséhez használja a Get-AzPublicIPAddress. Másolja a nyilvános IP-címet vagy a DNS nevét, majd illessze be a böngésző címsorába.
+Az Application Gateway nyilvános IP-címének lekéréséhez használja a Get-AzPublicIPAddress. Másolja a nyilvános IP-címet vagy a DNS nevét, majd illessze be a böngésző címsorába.
 
 ```azurepowershell
 Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
@@ -169,10 +169,10 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Először Fedezze fel az erőforrásokat, az application gateway-ekkel hozta létre. Ezután, amikor szükség van rájuk már nem, használhatja a `Remove-AzResourceGroup` paranccsal törölheti az erőforráscsoportot, az application gateway és az összes kapcsolódó erőforrás.
+Először vizsgálja meg az Application Gateway használatával létrehozott erőforrásokat. Ha már nincs rájuk szükség, a `Remove-AzResourceGroup` paranccsal távolíthatja el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást.
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

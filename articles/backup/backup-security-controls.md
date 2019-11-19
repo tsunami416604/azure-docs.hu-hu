@@ -1,19 +1,14 @@
 ---
-title: A Azure Backup biztonsági vezérlői
+title: Biztonsági vezérlők
 description: Tudnivalók a Azure Backup szolgáltatásban használt biztonsági ellenőrzésekről. Ezek a vezérlők segítik a szolgáltatást a biztonsági rések megelőzésében, észlelésében és megválaszolásában.
-ms.reviewer: mbaldwin
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: dacurwin
-ms.openlocfilehash: 9d7bb2e9ea2d2cf9cce6c4f6d3b4f3346e7ce363
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e3f5ce942ea8aef9bf5eb98883ae1e72a7ab239
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747147"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172137"
 ---
 # <a name="security-controls-for-azure-backup"></a>A Azure Backup biztonsági vezérlői
 
@@ -61,6 +56,6 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen|  |  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

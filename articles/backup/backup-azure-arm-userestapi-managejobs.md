@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: biztonsági mentési feladatok kezelése REST API használatával'
+title: Biztonsági mentési feladatok kezelése REST API használatával
 description: Ebből a cikkből megtudhatja, hogyan nyomon követheti és kezelheti Azure Backup biztonsági mentési és visszaállítási feladatait REST API használatával.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure-beli virtuális gép biztonsági mentése; Azure-beli virtuális gép visszaállítása;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: 5fe0255a8f304061dc970907c651261832fee614
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929106"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173394"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
 

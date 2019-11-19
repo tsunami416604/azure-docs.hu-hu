@@ -1,121 +1,116 @@
 ---
-title: Azure CDN a Microsoft Standard Rules Engine műveleteiből | Microsoft Docs
-description: Dokumentáció a Microsoft Standard Rules Engine műveleteinek Azure CDN.
+title: Műveletek a standard szintű szabályok motorjában a Azure CDNhoz | Microsoft Docs
+description: Az Azure Content Delivery Network (Azure CDN) Standard Rules Engine műveleteit ismertető dokumentáció.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: dbde93cc7ffd21e341653407e6e4f910e4620974
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615987"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171631"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-actions"></a>Azure CDN a Microsoft Standard Rules Engine műveleteiből
+# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Műveletek a standard szabályok motorban Azure CDN
 
-Ez a cikk felsorolja az Azure Content Delivery Network (CDN) számára elérhető műveletek részletes leírásait a Microsoft [Standard Rules Engine](cdn-standard-rules-engine.md)-től.
+Az Azure Content Delivery Network (Azure CDN) [szabványos szabályok motorjában](cdn-standard-rules-engine.md) a szabály egy vagy több egyeztetési feltételből és egy műveletből áll. Ez a cikk részletesen ismerteti a Azure CDN standard szabályok motorjában használható műveleteket.
 
-A szabály második része egy művelet. Egy művelet határozza meg, hogy milyen viselkedést alkalmaz a rendszer az egyeztetési feltételek alapján azonosított kérelem típusára.
+A szabály második része egy művelet. Egy művelet határozza meg, hogy milyen viselkedést alkalmaz a rendszer az egyeztetési feltétel vagy az egyeztetési feltételek alapján azonosított kérelem típusára.
 
 ## <a name="actions"></a>Műveletek
 
-A következő műveletek használhatók. 
+A következő műveletek használhatók a szabványos szabályok motorjában a Azure CDNhoz. 
 
-## <a name="cache-expiration"></a>Gyorsítótár lejárata
+### <a name="cache-expiration"></a>Gyorsítótár lejárata
 
-Ez a művelet lehetővé teszi, hogy felülírja a végpont ÉLETTARTAMát a szabályoknak megfelelő feltételekkel megadott kérelmek esetében.
+Ezzel a művelettel írhatja felül a végpont élettartam (TTL) értékét azon kérelmek esetében, amelyekre a szabályok megfelelnek a feltételeknek.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
-Gyorsítótár viselkedése |                
+Gyorsítótár viselkedése |  Leírás              
 ---------------|----------------
 Gyorsítótár megkerülése | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer nem gyorsítótárazza a tartalmat.
-Felülbírálás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer felülírja a forrásból visszaadott TTL-értéket a műveletben megadott értékkel.
-Ha hiányzik, állítsa be | Ha ez a beállítás be van jelölve, és a szabály megfelel a forrástól, akkor a szabály az élettartam értéket a műveletben megadott értékre állítja be.
+Felülbírálás | Ha ez a beállítás be van jelölve, és a szabály egyezést ad meg, a rendszer felülírja a forrásból visszaadott TTL-értéket a műveletben megadott értékkel.
+Ha hiányzik, állítsa be | Ha ez a beállítás be van jelölve, és a szabály egyezik, ha a forrástól nem tért vissza TTL-érték, a szabály az ÉLETTARTAMot a műveletben megadott értékre állítja be.
 
-**További mezők**
+#### <a name="additional-fields"></a>További mezők
 
 Nap | Óra | perc | másodperc
 -----|-------|---------|--------
-int | int | int | int 
+Int | Int | Int | Int 
 
-## <a name="cache-key-query-string"></a>Gyorsítótár-kulcs lekérdezési karakterlánca
+### <a name="cache-key-query-string"></a>Gyorsítótár-kulcs lekérdezési karakterlánca
 
-Ez a művelet lehetővé teszi a gyorsítótár-kulcs módosítását a lekérdezési karakterláncok alapján.
+Ezzel a művelettel módosíthatja a gyorsítótár-kulcsot a lekérdezési karakterláncok alapján.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
 Viselkedés | Leírás
 ---------|------------
-tartalmazza | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok szerepelni fognak a gyorsítótár kulcsának létrehozásakor. 
-Minden egyedi URL gyorsítótárazása | Ha ez a beállítás be van jelölve, és a szabály megfelel, minden egyedi URL-cím saját gyorsítótár-kulccsal fog rendelkezni. 
+tartalmazza | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok a gyorsítótár kulcsának létrehozásakor is szerepelni tudnak. 
+Minden egyedi URL gyorsítótárazása | Ha ez a beállítás be van jelölve, és a szabály megfelel, minden egyedi URL-cím saját gyorsítótár-kulccsal rendelkezik. 
 Exclude | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok ki lesznek zárva a gyorsítótár-kulcs létrehozásakor.
-Lekérdezési sztringek figyelmen kívül hagyása | Ha ez a beállítás be van jelölve, és a szabály egyezik, a rendszer nem veszi figyelembe a lekérdezési karakterláncokat a gyorsítótár kulcsának létrehozásakor. 
+Lekérdezési sztringek figyelmen kívül hagyása | Ha ez a beállítás be van jelölve, és a szabály megfelel, a lekérdezési karakterláncok nem tekintendők a gyorsítótár kulcsának létrehozásakor. 
 
-## <a name="modify-request-header"></a>Kérelem fejlécének módosítása
+### <a name="modify-request-header"></a>Kérelem fejlécének módosítása
 
-Ez a művelet lehetővé teszi a forrásnak küldött kérésekben lévő fejlécek módosítását.
+Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek a forrásnak küldött kérésekben szerepelnek.
 
-**Kötelező mezők**
-
-Műveletek | HTTP-fejléc neve | Érték
--------|------------------|------
-Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer hozzáadja a fejlécben megadott fejlécet a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
-Felülírja | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer hozzáadja a fejlécben megadott fejlécet a kérelemhez a megadott értékkel. Ha a fejléc már létezik, akkor az érték felülírja a meglévő értéket. | Sztring
-Törlés | Ha ez a beállítás be van jelölve, és a szabály egyezik, és a szabályban megadott fejléc található, akkor a rendszer törli a kérésből. | Sztring
-
-## <a name="modify-response-header"></a>Válasz fejlécének módosítása
-
-Ez a művelet lehetővé teszi a végfelhasználóknak visszaadott válaszokban lévő fejlécek módosítását
-
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
 Műveletek | HTTP-fejléc neve | Érték
 -------|------------------|------
-Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a fejlécben megadott fejléc a megadott értékkel lesz hozzáadva a válaszhoz. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
-Felülírja | Ha ez a beállítás be van jelölve, és a szabály megfelel, a fejlécben megadott fejléc a megadott értékkel lesz hozzáadva a válaszhoz. Ha a fejléc már létezik, akkor az érték felülírja a meglévő értéket. | Sztring
-Törlés | Ha ez a beállítás be van jelölve, és a szabály egyezik, és a szabályban megadott fejléc található, akkor a válaszból törlődik. | Sztring
+Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
+Írja felül | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
+Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a kérelemből. | Sztring
 
-## <a name="url-redirect"></a>URL-átirányítás
+### <a name="modify-response-header"></a>Válasz fejlécének módosítása
 
-Ez a művelet lehetővé teszi a végső ügyfelek átirányítását egy új URL-címre. 
+Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek küldött válaszokban szerepelnek.
 
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
-Mező | Leírás 
-------|------------
-Típus | Válassza ki azt a választ, amelyet a kérelmezőnek vissza fog adni. A következő lehetőségek közül választhat:-302 found, 301 mozgott, 307 ideiglenes átirányítás és 308 végleges átirányítás
-Protokoll | Egyeztetési kérelem, HTTP vagy HTTPS
-Gazdanév | Válassza ki azt a gazdagépet, amelyre a rendszer átirányítja a kérést. Hagyja üresen a bejövő gazdagép megőrzését.
-Útvonal | Az átirányítás során használandó elérési út megadása. Hagyja üresen a bejövő elérési út megőrzését.  
-Lekérdezési sztring | Adja meg az átirányítás során használt lekérdezési karakterláncot. Hagyja üresen a bejövő lekérdezési karakterlánc megőrzését. 
-Töredék | Adja meg az átirányítás során használandó töredéket. Hagyja üresen a bejövő töredék megőrzése érdekében. 
+Műveletek | HTTP-fejléc neve | Érték
+-------|------------------|------
+Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
+Írja felül | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
+Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a válaszból. | Sztring
 
-Erősen ajánlott abszolút URL-címet használni. A relatív URL-cím használata a CDN URL-címek érvénytelen elérési útra való átirányítására használható. 
+### <a name="url-redirect"></a>URL-átirányítás
 
-## <a name="url-rewrite"></a>URL-átírás
+Ezzel a művelettel átirányíthatja az ügyfeleket egy új URL-címre. 
 
-Ez a művelet lehetővé teszi, hogy újraírja a kérelem elérési útját a forráshoz.
-
-**Kötelező mezők**
+#### <a name="required-fields"></a>Kötelező mezők
 
 Mező | Leírás 
 ------|------------
-Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvonalon. Jelenleg a forrás minta előtag-alapú egyezést használ. Az összes URL-elérési út megfeleltetéséhez használja a "/" értéket a forrás mintázat értékeként.
-Cél | Adja meg az újraíráshoz használandó célhely elérési útját. Ez felülírja a forrás mintát
-Páratlan elérési út megőrzése | Ha igen, a forrás minta után megmaradó elérési út az új célhelyhez lesz hozzáfűzve. 
+Típus | Válassza ki a kérelmezőnek visszatérni kívánt választ: talált (302), áthelyezett (301), ideiglenes átirányítás (307) és végleges átirányítás (308).
+Protokoll | Egyeztetési kérelem, HTTP, HTTPS.
+Gazdanév | Válassza ki annak az állomásnak a nevét, amelyre át szeretné irányítani a kérést. Hagyja üresen a bejövő gazdagép megőrzését.
+Útvonal | Adja meg az átirányításhoz használandó elérési utat. Hagyja üresen a bejövő elérési út megőrzését.  
+Lekérdezési karakterlánc | Adja meg az átirányítás során használt lekérdezési karakterláncot. Hagyja üresen a bejövő lekérdezési karakterlánc megőrzését. 
+Fragment | Adja meg az átirányítás során használandó kódrészletet. Hagyja üresen a bejövő töredék megőrzése érdekében. 
 
+Kifejezetten ajánlott abszolút URL-címet használni. Egy relatív URL-cím használatával átirányíthatja Azure CDN URL-címeket egy érvénytelen elérési útra. 
 
-[Vissza a tetejére](#actions)
+### <a name="url-rewrite"></a>URL-átírás
 
-</br>
+Ezzel a művelettel átírhatja egy olyan kérelem elérési útját, amely útban van a forrásához.
 
-## <a name="next-steps"></a>További lépések
+#### <a name="required-fields"></a>Kötelező mezők
 
-- [Az Azure Content Delivery Network áttekintése](cdn-overview.md)
-- [Szabálymotor-referencia](cdn-standard-rules-engine-reference.md)
-- [Szabálymotor egyezési feltételei](cdn-standard-rules-engine-match-conditions.md)
+Mező | Leírás 
+------|------------
+Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvonalon. Jelenleg a forrás minta előtag-alapú egyezést használ. Az összes URL-elérési út megfeleltetéséhez használjon egy perjelet ( **/** ) a forrás mintázat értékeként.
+Cél | Adja meg az újraíráshoz használandó célhely elérési útját. A cél elérési útja felülírja a forrás mintát.
+Páratlan elérési út megőrzése | Ha az **Igen**értékre van állítva, a rendszer a forrás minta után hátralévő elérési utat hozzáfűzi az új cél elérési úthoz. 
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Azure CDN áttekintése](cdn-overview.md)
+- [Szabványos szabályok – motor referenciája](cdn-standard-rules-engine-reference.md)
+- [Egyeztetési feltételek a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md)
 - [HTTPS kikényszerítés a standard szabályok motor használatával](cdn-standard-rules-engine.md)

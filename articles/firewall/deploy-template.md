@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall üzembe helyezése sablon használatával
-description: Azure Firewall üzembe helyezése sablon használatával
+description: Azure Firewall üzembe helyezése sablon használatával. A létrehozott hálózat egy VNet rendelkezik három alhálózattal. Két, kétmagos Windows Server rendszerű virtuális gép van telepítve.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/9/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: c0a6cda54a58e3cc03ba31e221fb57fc725dd779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b9e82998283bf44eede88148a12d88aae521b1ca
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839389"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169200"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Azure Firewall üzembe helyezése sablon használatával
 
@@ -65,7 +65,7 @@ Remove-AzResourceGroup -Name MyResourceGroup
 ```
 Ne távolítsa el az erőforráscsoportot és a tűzfalat, ha azt tervezi, hogy folytatja a tűzfal-figyelési oktatóanyagot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután nyomon követheti a Azure Firewall naplókat:
 

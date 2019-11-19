@@ -1,45 +1,41 @@
 ---
-title: Használja az InSpec megfelelőségi automatizálása az Azure-infrastruktúra
-description: Megtudhatja, hogyan észlelheti a problémákat az Azure-környezetek InSpec használatával
-keywords: az Azure, a chef, a devops, a virtuális gépek, a áttekintése, automatizálás, inspec
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Az Azure-infrastruktúra megfelelőségi automatizálásához használja az Inspect
+description: Ismerje meg, hogyan használhatja az Inspect az Azure-beli üzemelő példányokkal kapcsolatos problémák észleléséhez
+keywords: Azure, Chef, devops, Virtual Machines, áttekintés, automatizálás, Inspect
 ms.date: 03/19/2019
 ms.topic: article
-ms.openlocfilehash: bdfa30b48c79a8910d503bb9e54a42c30e5adba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629798"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158226"
 ---
-# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Használja az InSpec megfelelőségi automatizálása az Azure-infrastruktúra
+# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Az Azure-infrastruktúra megfelelőségi automatizálásához használja az Inspect
 
-[InSpec](https://www.chef.io/inspec/) Chef's nyílt forráskódú nyelv a biztonsági és megfelelőségi szabályok szoftverfejlesztő, a műveletek és a biztonsági mérnökökből között megosztható leíró. InSpec működik, az infrastruktúra aktuális állapotával együtt a kívánt állapotban, amely könnyen olvasható és könnyen írási InSpec kódban, express összehasonlításával. InSpec szabálysértések észleli és jelentések formájában jeleníti meg csapatával az eredményeket, de helyezi, szervizelés irányítását.
+Az [Inspec](https://www.chef.io/inspec/) a Chef nyílt forráskódú nyelve, amely leírja a biztonsági & megfelelőségi szabályokat, amelyek megoszthatók a szoftverfejlesztők, a műveletek és a biztonsági mérnökök között. Az Inspect úgy működik, hogy összehasonlítja az infrastruktúra aktuális állapotát a kívánt állapottal, amelyet könnyen olvasható és könnyen írható inspec-kódban használhat. Az inspec észleli a szabálysértéseket, és egy jelentés formájában jeleníti meg az eredményeket, de a szervizelés irányítását is lehetővé teszi.
 
-Használhatja az InSpec erőforrásra és erőforráscsoportra található egy előfizetésben, beleértve a virtuális gépek, a hálózati konfigurációk, az Azure Active Directory-beállítások és további állapotának ellenőrzéséhez.
+Az Inspect használhatja az erőforrások és erőforráscsoportok állapotának ellenőrzéséhez egy előfizetésben, beleértve a virtuális gépeket, a hálózati konfigurációkat, a Azure Active Directory beállításokat és egyebeket.
 
-Ez a cikk ismerteti, hogy egyszerűbb biztonság és megfelelőség az Azure-ban InSpec használatának előnyei.
+Ez a cikk a inspec használatának előnyeit ismerteti az Azure-ban az adatvédelem és a megfelelőség egyszerűbbé tétele érdekében.
 
-## <a name="make-compliance-easy-to-understand-and-assess"></a>Győződjön meg arról, megfelelőségi így könnyen megismerhető és értékelése
+## <a name="make-compliance-easy-to-understand-and-assess"></a>A megfelelőség egyszerű megismerése és értékelése
 
-Megfelelőségi dokumentáció számolótáblákban vagy a Word-dokumentumok írása követelmények nyitva hagyja értelmezést. Az InSpec alakítsa át a rendszerverzióval ellátott, végrehajtható, emberek számára olvasható kód követelményeket. Kód beszélgetések kapcsolatos mit kell értékelni egyértelmű leképezés a képzés résztvevői hasznos képességekkel tesztek értéke váltja fel.
+A táblázatokban vagy a Word-dokumentumokban írt megfelelőségi dokumentáció a követelményeket az értelmezésnek megfelelően megnyitva hagyja. Az inspec-val a követelményeket verzióra, végrehajtható, emberi olvashatóságú kódra alakíthatja át. A kód lecseréli a beszélgetéseket arról, hogy mit kell értékelni a világos szándékkal rendelkező kézzelfogható tesztek mellett.
 
-## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Flotta kiterjedő a hibák észlelése és azok javítási rangsorolása
+## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>A teljes flottára kiterjedő problémák észlelése és szervizelésük rangsorolása
 
-Ügynök nélküli kivételfigyelés által az InSpec észlelési üzemmód segítségével mérheti fel gyorsan – nagy mennyiségű - a kitettség szint. Hatás/súlyossági pontozó beépített metaadatok alapján határozható meg fókusz, milyen területeken a szervizelési. Olyan szabályok írhatók gyorsan új biztonsági réseket, és a szabályzat adott válaszként, és azokat azonnal megkezdik is.
+Az inspec ügynök nélküli észlelési módja lehetővé teszi, hogy gyorsan mérje fel – az expozíciós szintet. A Impact/súlyossági pontozáshoz beépített metaadatok segítenek meghatározni, hogy mely területeken kell összpontosítani a szervizelésre. Az új biztonsági rések vagy rendeletek alapján gyorsan és azonnal is írhat szabályokat.
 
-## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Vendég Szabályzatkonfiguráció-beli virtuális gépek naplózása
+## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Azure-beli virtuális gépek naplózása házirend vendég konfigurációval
 
-Az Azure közvetlenül támogatja a Chef InSpec definíciók naplózása keresztül az Azure virtual machines használatának [Azure Vendég Szabályzatkonfiguráció](/azure/governance/policy/concepts/guest-configuration). Vendég konfigurációs egy Linuxos virtuális gép egy megadott Chef InSpec definíció- és jelentések megfelelőség vissza az Azure Policy kiértékeli. Ezek a naplók eredményeit is jelentett keresztül az Azure Monitor naplóira; riasztások és a más automation-forgatókönyvek engedélyezése.
+Az Azure közvetlenül támogatja a Chef inspec-definíciók használatát az Azure-beli virtuális gépek [Azure Policy vendég konfiguráción](/azure/governance/policy/concepts/guest-configuration)keresztüli naplózásához. A vendég konfigurációja kiértékel egy linuxos virtuális gépet egy megadott Chef inspec-definícióra, és visszaküldi a megfelelőségi jelentést Azure Policy. A naplózások eredményeit Azure Monitor naplókon keresztül is jelenteni kell; riasztások és egyéb automatizálási forgatókönyvek engedélyezése.
 
-## <a name="satisfy-audits"></a>Felel meg a naplók
+## <a name="satisfy-audits"></a>Megfelel a naplózásoknak
 
-Az InSpec reagálhat kérdések naplózása bármikor - nemcsak, például a negyedéves és éves előre meghatározott időközönként. A folyamatosan futó InSpec teszteket, egy a pontos megfelelőségi állapotáról és az előzmények auditált meg ahelyett, hogy hatóságának felügyelete alatt áll egy auditor megállapításokat.
+Az Inspect használatával bármikor válaszolhat a naplózási kérdésekre – nem csak előre meghatározott időközönként, például negyedévente vagy évente. Ha folyamatosan futtatja az inspec-teszteket, akkor egy auditálási ciklust kell megadnia, amely ismeri a megfelelőségi testtartást és az előzményeket, nem pedig a könyvvizsgáló megállapításai alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
-> [Próbálja ki az Azure Cloud shellben InSpec](https://shell.azure.com)
+> [Az Inspect kipróbálása a Azure Cloud Shellban](https://shell.azure.com)

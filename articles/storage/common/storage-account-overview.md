@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882562"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74174009"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure Storage-fiók áttekintése
 
@@ -30,6 +30,7 @@ Az Azure Storage-fiókok létrehozásával kapcsolatos további információkér
 Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb funkcióit, és az általános célú v1-és blob Storage-fiókok összes funkcióját beépítik. Az általános célú v2-fiókok az Azure Storage-ban a legalacsonyabb/GB-os kapacitást biztosítják, valamint az iparágban versenyképes tranzakciós árakat. Az általános célú v2 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
+- Data Lake Gen2
 - Fájlok
 - Lemezek
 - Üzenetsorok

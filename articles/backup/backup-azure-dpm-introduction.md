@@ -1,19 +1,14 @@
 ---
-title: A DPM-kiszolgáló előkészítése a számítási feladatok biztonsági mentésére az Azure-ba
+title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági mentésére
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5c89dc8b5c8ee420c94d61763770cd37e763f2df
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747510"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173135"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -51,7 +46,7 @@ DPM VMware virtuális gépen | System Center 2012 R2 az 5. vagy újabb kumulatí
 Támogatott alkalmazások | [Ismerje meg](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) , hogy milyen DPM tud biztonsági másolatot készíteni.
 Támogatott fájltípusok | Ezek a fájltípusok biztonsági másolat készíthető Azure Backup: titkosított (csak teljes biztonsági mentések esetén). Tömörített (növekményes biztonsági másolatok támogatottak); Ritka (növekményes biztonsági másolatok támogatottak); Tömörítve és ritka (Ritkaként kezelve).
 Nem támogatott fájltípusok | Kis-és nagybetűket megkülönböztető fájlrendszereket tartalmazó kiszolgálók; rögzített hivatkozások (kihagyva); újraelemzési pontok (kihagyva); titkosított és tömörített (kihagyva); titkosított és ritka (kihagyott); Tömörített Stream; adatfolyam elemzése.
-Helyi tároló | Minden olyan gépnek, amelyről biztonsági másolatot szeretne készíteni, rendelkeznie kell helyi szabad tárterülettel, amely a biztonsági mentés alatt álló adatmennyiség legalább 5%-a. Például a 100 GB adat biztonsági mentéséhez legalább 5 GB szabad terület szükséges a semmiből.
+Helyi tárhely | Minden olyan gépnek, amelyről biztonsági másolatot szeretne készíteni, rendelkeznie kell helyi szabad tárterülettel, amely a biztonsági mentés alatt álló adatmennyiség legalább 5%-a. Például a 100 GB adat biztonsági mentéséhez legalább 5 GB szabad terület szükséges a semmiből.
 Tár tárolója | A Azure Backup-tárolóba felhasználható adatmennyiségnek nincs korlátja, de az adatforrások (például virtuális gépek vagy adatbázisok) mérete nem haladhatja meg a 54 400 GB-ot.
 Azure ExpressRoute | Ha az Azure ExpressRoute magánhálózati vagy Microsoft-társítással van konfigurálva, nem használható az Azure-ba történő biztonsági mentéshez.<br/><br/> Ha az Azure ExpressRoute nyilvános összevonással van konfigurálva, az Azure-ba történő biztonsági mentését is felhasználhatja.<br/><br/> **Megjegyzés:** Az új áramkörök esetében a nyilvános társítás elavult.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2. vagy újabb kumulatív frissítést a DPM SP1 verzióhoz. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk bemutatja, hogyan helyezheti üzembe a Azure Backup-ügynök legújabb verzióját, más néven a Microsoft Azure Recovery Service (MARS) ügynököt. Ha a korábbi verziót telepítette, frissítsen a legújabb verzióra, és győződjön meg arról, hogy a biztonsági mentés a várt módon működik-e.
@@ -102,7 +97,7 @@ A hitelesítő adatok beszerzéséhez töltse le a tároló hitelesítőadat-fá
 
 Töltse le a tároló hitelesítő adatait tartalmazó fájlt egy helyi gépre a következő módon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg azt a tárolót, amelyben regisztrálni szeretné a DPM-kiszolgálót.
 3. A **Beállítások**területen kattintson a **Tulajdonságok**elemre.
 

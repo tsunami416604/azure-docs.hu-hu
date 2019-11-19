@@ -1,17 +1,14 @@
 ---
 title: Rövid útmutató – Terraform-konfiguráció létrehozása az Azure-hoz
 description: Ismerkedjen meg a Terraform az Azure-ban egy Azure Cosmos DB és Azure Container Instances üzembe helyezésével.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 07c1839afcc29c7089540c587a3a32eae14944ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969860"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159311"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Gyors útmutató: Terraform-konfiguráció létrehozása az Azure-hoz
 
@@ -26,7 +23,7 @@ Ebben a rövid útmutatóban Azure-erőforrásokat hoz létre a Terraform haszn�
 
 Ebben a szakaszban egy Azure Cosmos DB-példány konfigurációját hozza létre.
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Nyissa meg a Azure Cloud Shell.
 
@@ -69,7 +66,7 @@ Ebben a szakaszban egy Azure Cosmos DB-példány konfigurációját hozza létre
     }
     ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="run-the-configuration"></a>A konfiguráció futtatása
 
@@ -141,7 +138,7 @@ Ez a szakasz bemutatja, hogyan frissítheti a konfigurációt, hogy tartalmazza 
     }
     ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 1. Ahogy az előző szakaszban is tette, futtassa a következő parancsot a szükséges módosítások megjelenítéséhez:
 

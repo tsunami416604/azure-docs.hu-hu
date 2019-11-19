@@ -4,14 +4,14 @@ description: Az Azure HPC cache kezelése és frissítése a Azure Portal haszn�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/18/2019
 ms.author: rohogue
-ms.openlocfilehash: 62b54bfe120acdde1fd22c4a0d04165ea7243b50
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582203"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166714"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
@@ -19,7 +19,7 @@ A gyorsítótár Áttekintés lapja a Azure Portal megjeleníti a projekt részl
 
 Az Áttekintés lap megnyitásához válassza ki a gyorsítótár-erőforrást a Azure Portal. Töltse be például a **minden erőforrás** lapot, és kattintson a gyorsítótár nevére.
 
-![Az Azure HPC cache-példány áttekintési oldalának képernyőképe](media/hpc-cache-overview.png) <!-- placeholder is identical to hpc-cache-new-overview.png; replace with better image (showing graphs, full sidebar) when available -->
+![Az Azure HPC cache-példány áttekintési oldalának képernyőképe](media/hpc-cache-overview.png)
 
 A lap tetején található gombok segítenek a gyorsítótár kezelésében:
 
@@ -37,15 +37,17 @@ Az áttekintő lap **kiürítés** gombja azt jelzi, hogy a gyorsítótár azonn
 > [!NOTE]
 > A kiürítési folyamat során a gyorsítótár nem tudja kiszolgálni az ügyfelek kérelmeit. A gyorsítótár-hozzáférés fel van függesztve, és a művelet befejeződése után folytatódik.
 
+![képernyőkép a felső gombokról és a flush kiemeléséről, valamint egy előugró üzenet, amely leírja a kiürítési műveletet, és megkérdezi, hogy szeretné-e folytatni? Igen (alapértelmezett) és nincs gomb](media/hpc-cache-flush.png)
+
 Ha elindítja a gyorsítótár kiürítési műveletét, a gyorsítótár leáll az ügyfelek kéréseinek fogadása után, és a gyorsítótár állapota az Áttekintés oldalon a **Kiürítésre**változik.
 
-A gyorsítótárban tárolt adattárolók a megfelelő tárolási célokba lesznek mentve. A folyamat eltarthat néhány percig, vagy akár több órát is igénybe vehet, attól függően, hogy a gyorsítótárban milyen mennyiségű adat van a közelmúltban.
+A gyorsítótárban tárolt adattárolók a megfelelő tárolási célokba lesznek mentve. Attól függően, hogy mennyi adatra van szükség a kiürítéshez, a folyamat eltarthat néhány percig, vagy akár egy óráig is.
 
 Miután az összes adatmentést a tárolási célokba menti, a gyorsítótár automatikusan elindul az ügyfelek kéréseinek megkezdése után. A gyorsítótár állapota **kifogástalanra**vált.
 
 ## <a name="upgrade-cache-software"></a>A cache szoftver frissítése
 
-Ha elérhetővé vált egy új szoftververzió, a **frissítés** gomb aktívvá válik. A szoftver frissítésével kapcsolatos üzenet a lap tetején is megjelenhet.
+Ha elérhetővé vált egy új szoftververzió, a **frissítés** gomb aktívvá válik. A szoftver frissítésével kapcsolatos üzenet a lap tetején is megjelenik.
 
 ![képernyőfelvétel a gombok felső soráról a frissítés gomb engedélyezésével](media/hpc-cache-upgrade-button.png)
 
@@ -53,7 +55,7 @@ A szoftverfrissítés során az ügyfél-hozzáférés nem szakad meg, a gyorsí
 
 A szoftverfrissítés több órát is igénybe vehet. A magasabb átviteli sebességgel konfigurált gyorsítótárak hosszabb ideig tartanak, mint a kisebb csúcsérték-értékekkel rendelkező gyorsítótárak.
 
-Ha egy szoftverfrissítés elérhető, több napot is alkalmazhat manuálisan. A befejezési dátum a frissítési üzenetben jelenik meg. Ha ez idő alatt nem végez frissítést, az Azure automatikusan alkalmazza a frissítést a gyorsítótárba. Az automatikus frissítés ütemezése nem konfigurálható. Ha aggódik a gyorsítótár teljesítményének hatásával kapcsolatban, a szoftvert saját kezűleg kell frissítenie az időszak lejárta előtt.
+Ha egy szoftverfrissítés elérhető, akkor a rendszer hetente vagy manuálisan alkalmazza azt. A befejezési dátum a frissítési üzenetben jelenik meg. Ha ez idő alatt nem végez frissítést, az Azure automatikusan alkalmazza a frissítést a gyorsítótárba. Az automatikus frissítés ütemezése nem konfigurálható. Ha aggódik a gyorsítótár teljesítményére gyakorolt hatás miatt, a szoftvert saját kezűleg kell frissítenie az időtartam lejárta előtt.
 
 A szoftverfrissítés megkezdéséhez kattintson a **frissítés** gombra. A gyorsítótár állapota a **frissítésig** változik, amíg a művelet be nem fejeződik.
 
@@ -73,7 +75,7 @@ Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gy
 
 Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 <!-- * Learn more about metrics and statistics for hpc cache -->
 * További információ az [Azure mérőszámok és statisztikai eszközökről](../azure-monitor/index.yml)

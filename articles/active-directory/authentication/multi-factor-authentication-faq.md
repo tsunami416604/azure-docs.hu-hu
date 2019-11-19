@@ -4,19 +4,19 @@ description: Az Azure Multi-Factor Authentication kapcsolatos gyakori kérdések
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081550"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167771"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure Multi-Factor Authentication
 
@@ -142,13 +142,11 @@ Ha a szervezet nem rendelkezik örökölt ügyfelekkel, ne engedélyezze a felha
 >
 > Az alkalmazás jelszavai csak a modern hitelesítést nem támogató alkalmazásokhoz szükségesek. Az Office 2013-ügyfelek támogatják a modern hitelesítési protokollokat, de konfigurálni kell őket. A modern hitelesítés mostantól minden olyan ügyfél számára elérhető, amely az Office 2013 2015 márciusi vagy újabb frissítését futtatja. További információkért tekintse meg a [frissített Office 365 modern hitelesítés](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)című blogbejegyzést.
 
-**K: a felhasználók azt mondják, hogy néha nem kapják meg a szöveges üzenetet, vagy választ adnak a kétirányú szöveges üzenetekre, de a hitelesítés időtúllépést mutat.**
+**K: a felhasználók azt mondják, hogy néha nem kapják meg a szöveges üzenetet, vagy a hitelesítés időtúllépést mutat.**
 
-A szöveges üzenetek kézbesítése és a válaszok fogadása kétirányú SMS-ben nem garantált, mert olyan nem ellenőrizhető tényezők vannak, amelyek hatással lehetnek a szolgáltatás megbízhatóságára. Ezek a tényezők közé tartoznak a rendeltetés országa/régiója, a mobiltelefon-szolgáltató és a jel erőssége.
+Az SMS-üzenetek kézbesítése nem garantált, mert nem ellenőrizhető tényezők befolyásolják a szolgáltatás megbízhatóságát. Ezek a tényezők közé tartoznak a rendeltetés országa/régiója, a mobiltelefon-szolgáltató és a jel erőssége.
 
 Ha a felhasználók gyakran problémákba ütköznek a szöveges üzenetek megbízható fogadásával, kérje a Mobile App vagy a telefonhívás módszer használatát. A Mobile alkalmazás a mobil-és Wi-Fi-kapcsolatokon keresztül is fogadhat értesítéseket. Emellett a Mobile alkalmazás akkor is létrehozhat ellenőrző kódokat, ha az eszközön nincs jel. Az Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)és [Windows Phone-telefon](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)rendszerekhez érhető el.
-
-Ha szöveges üzeneteket kell használnia, javasoljuk, hogy használjon egyirányú SMS-t, nem pedig kétirányú SMS-t, ha lehetséges. Az egyirányú SMS megbízhatóbb, és megakadályozza, hogy a felhasználók egy másik országból vagy régióból küldött szöveges üzenetre válaszoljanak a globális SMS-ben.
 
 **K: Megváltoztathatom azt az időtartamot, ameddig a felhasználóknak meg kell adniuk az ellenőrző kódot egy szöveges üzenetből a rendszer időtúllépése előtt?**
 
@@ -162,7 +160,7 @@ Az Azure MFA Server 7.0-s vagy újabb verziójával rendelkező egyirányú SMS-
 >[!TIP] 
 >Ha több MFA-kiszolgálóval rendelkezik, csak az eredeti hitelesítési kérelem feldolgozását végző felhasználó ismeri a felhasználónak továbbított ellenőrző kódot. Ha a felhasználó megadja a kódot, az érvényesítéséhez szükséges hitelesítési kérést ugyanarra a kiszolgálóra kell elküldeni. Ha a kód érvényesítését egy másik kiszolgálóra küldik, a rendszer megtagadja a hitelesítést. 
 
-Az Azure MFA-kiszolgálóval való kétirányú SMS-ben beállíthatja az MFA-felügyeleti portál időtúllépési beállítását. Ha a felhasználók nem válaszolnak az SMS-re a megadott időtúllépési időtartamon belül, a hitelesítés megtagadva. 
+Ha a felhasználók nem válaszolnak az SMS-re a megadott időtúllépési időtartamon belül, a hitelesítés megtagadva. 
 
 Az Azure MFA-t a felhőben (beleértve a AD FS adaptert vagy a hálózati házirend-kiszolgáló bővítményt) egyirányú SMS-ek esetében nem konfigurálhatja az időtúllépési beállítást. Az Azure AD 180 másodpercig tárolja az ellenőrző kódot. 
 

@@ -3,17 +3,13 @@ title: Oktatóanyag – témakörök konfigurálása Azure Service Bus a Ansible
 description: Megtudhatja, hogyan hozhat létre Azure Service Bus témakört a Ansible használatával
 keywords: Ansible, Azure, devops, bash, ötletekbõl, Service Bus, témakörök, előfizetések
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 952779db582f9437f10608bf86b0b80560ded2c0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241216"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155798"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Oktatóanyag: témakörök konfigurálása Azure Service Bus Ansible használatával
 
@@ -174,7 +170,7 @@ Mentse a következő forgatókönyvet `servicebus_namespace_info.yml` néven:
 ```
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A @no__t 0 érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott névtérben. Alapértelmezés szerint az érték `False` a további hálózati terhelés elkerülése érdekében.
+- A `show_sas_policies` érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott névtérben. Alapértelmezés szerint az érték `False` a további hálózati terhelés elkerülése érdekében.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -221,7 +217,7 @@ Mentse a következő forgatókönyvet `servicebus_list.yml` néven:
 ```
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A @no__t 0 érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott várólistán. Alapértelmezés szerint ez az érték `False` értékűre van állítva a további hálózati terhelés elkerülése érdekében.
+- A `show_sas_policies` érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott várólistában. Alapértelmezés szerint ez az érték `False`re van állítva a további hálózati terhelés elkerülése érdekében.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -262,7 +258,7 @@ ansible-playbook servicebus_topic_policy_delete.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 ---
