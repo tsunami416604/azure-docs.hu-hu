@@ -100,7 +100,7 @@
             - name: Speciális konfiguráció az NPS-bővítményhez
               href: howto-mfa-nps-extension-advanced.md
             - name: Az Azure VPN és az Azure MFA
-              href: ../../vpn-gateway/vpn-gateway-radiuis-mfa-nsp.md
+              href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Távoli asztali átjáró
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN

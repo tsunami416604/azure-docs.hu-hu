@@ -173,6 +173,9 @@
           href: howto-add-prebuilt-models.md
         - name: Entitás címkézése beszédelemben
           href: label-entity-example-utterance.md
+        - name: Leíró hozzáadása
+          displayName: 'synonym, interchange, phrase list, descriptor'
+          href: luis-how-to-add-features.md
         - name: REST API-kkal
           items:
             - name: Alkalmazás létrehozása programozott módon a Node.js használatával
@@ -190,9 +193,6 @@
         - name: Az irányítópult használata
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: Leíró hozzáadása
-          displayName: 'synonym, interchange, phrase list, descriptor'
-          href: luis-how-to-add-features.md
         - name: A végpont beszédmódjainak áttekintése
           displayName: active learning
           href: luis-how-to-review-endpoint-utterances.md
