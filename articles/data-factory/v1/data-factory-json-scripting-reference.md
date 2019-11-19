@@ -3326,8 +3326,8 @@ Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **
 
 | Forgatókönyv | Gazdagép a társított szolgáltatás definíciójában | folderPath az adatkészlet definíciójában |
 | --- | --- | --- |
-| Helyi mappa adatkezelés átjáró számítógépén: <br/><br/>Példák: D:\\\* vagy D:\folder\subfolder\\* |D:\\\\ (adatkezelés átjáró 2,0-es és újabb verzióihoz) <br/><br/> localhost (a adatkezelés Gateway 2,0-es verziójánál korábbi verziók esetében) |.\\\\ vagy mappa\\\\almappában (adatkezelés átjáró 2,0-es és újabb verzióihoz) <br/><br/>D:\\\\ vagy D:\\\\mappa\\\\almappa (2,0-es átjáró-verzió esetén) |
-| Távoli megosztott mappa: <br/><br/>Példák: \\\\MyServer\\megosztás\\\* vagy \\\\MyServer\\megosztás\\mappa\\almappa\\* |\\\\\\\\MyServer\\\\megosztás |.\\\\ vagy mappa\\\\almappát |
+| Helyi mappa adatkezelés átjáró számítógépén: <br/><br/>Példák: D:\\\* vagy D:\folder\subfolder\\\* |D:\\\\ (adatkezelés átjáró 2,0-es és újabb verzióihoz) <br/><br/> localhost (a adatkezelés Gateway 2,0-es verziójánál korábbi verziók esetében) |.\\\\ vagy mappa\\\\almappában (adatkezelés átjáró 2,0-es és újabb verzióihoz) <br/><br/>D:\\\\ vagy D:\\\\mappa\\\\almappa (2,0-es átjáró-verzió esetén) |
+| Távoli megosztott mappa: <br/><br/>Példák: \\\\MyServer\\megosztás\\\* vagy \\\\MyServer\\megosztás\\mappa\\almappa\\\* |\\\\\\\\MyServer\\\\megosztás |.\\\\ vagy mappa\\\\almappát |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Példa: Felhasználónév és jelszó használata egyszerű szövegben
