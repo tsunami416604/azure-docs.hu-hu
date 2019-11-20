@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: b6647c1b850b7678944edbc899f0727f8e10db08
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076924"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184345"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -27,6 +27,8 @@ ms.locfileid: "74076924"
 Ez az oldal a gyakori Azure Load Balancer kérdésekre vonatkozó hibaelhárítási információkat tartalmaz. Ha a Load Balancer kapcsolat nem érhető el, a leggyakoribb tünetek a következők: 
 - A Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre 
 - A Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált porton lévő forgalomra
+
+Amikor a külső ügyfelek a háttérbeli virtuális gépeken haladnak végig a terheléselosztóon, a rendszer az ügyfelek IP-címét fogja használni a kommunikációhoz. Győződjön meg arról, hogy az ügyfelek IP-címe a NSG engedélyezési listába kerül. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Tünet: a Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre
 Ahhoz, hogy a háttér-kiszolgálók részt vegyenek a terheléselosztó készletében, át kell adni a mintavétel-ellenőrzést. További információ az állapot-mintavételekről: Load Balancer mintavételek [ismertetése](load-balancer-custom-probe-overview.md). 
@@ -96,18 +98,20 @@ Ha egy virtuális gép nem válaszol az adatforgalomra, annak oka az lehet, hogy
 1. Jelentkezzen be a háttérbeli virtuális gépre. 
 2. Nyisson meg egy parancssort, és futtassa a következő parancsot annak ellenőrzéséhez, hogy az alkalmazás figyeli-e az adatportot:  netstat-an 
 3. Ha a port nem szerepel a "LISTENing" állapotú állapotban, konfigurálja a megfelelő figyelő portot. 
-4. Ha a port figyelt van megjelölve, akkor bármely lehetséges probléma esetén ellenőrizze az adott porton található célalkalmazás használatát. 
+4. Ha a port figyelt van megjelölve, akkor bármely lehetséges probléma esetén ellenőrizze az adott porton található célalkalmazás használatát.
 
 ### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>2\. ok: a hálózati biztonsági csoport blokkolja a portot a Load Balancer háttérrendszer-készlet virtuális gépén.  
 
 Ha az alhálózaton vagy a virtuális gépen konfigurált egy vagy több hálózati biztonsági csoport blokkolja a forrás IP-címet vagy portot, akkor a virtuális gép nem tud válaszolni.
 
-* A háttérbeli virtuális gépen konfigurált hálózati biztonsági csoportok listázása. További információ: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md).
-* A hálózati biztonsági csoportok listájából ellenőrizze, hogy:
+A nyilvános terheléselosztó esetében az internetes ügyfelek IP-címe az ügyfelek és a terheléselosztó háttérbeli virtuális gépek közötti kommunikációhoz lesz használva. Győződjön meg arról, hogy az ügyfelek IP-címe engedélyezett a háttérbeli virtuális gép hálózati biztonsági csoportjában.
+
+1. A háttérbeli virtuális gépen konfigurált hálózati biztonsági csoportok listázása. További információ: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md)
+1. A hálózati biztonsági csoportok listájából ellenőrizze, hogy:
     - az adatporton bejövő vagy kimenő forgalom interferenciát okoz. 
-    - az összes hálózati biztonsági csoport **megtagadása** a virtuális gép hálózati adapterén vagy az alhálózaton, amelynek nagyobb a prioritása, hogy az Load Balancer-mintavételt és-forgalmat engedélyező alapértelmezett szabály (a hálózati biztonsági csoportoknak engedélyezniük kell a 168.63.129.16 Load Balancer IP-címét, azaz a mintavételi portot) 
-* Ha a szabályok bármelyike blokkolja a forgalmat, távolítsa el és konfigurálja újra ezeket a szabályokat az adatforgalom engedélyezéséhez.  
-* Tesztelje, hogy a virtuális gép most már elindult-e az állapotra.
+    - az összes hálózati biztonsági csoport **megtagadása** a virtuális gép hálózati adapterén vagy az alhálózaton, amelynek nagyobb a prioritása, hogy az Load Balancer-mintavételt és-forgalmat engedélyező alapértelmezett szabály (a hálózati biztonsági csoportoknak engedélyezniük kell a 168.63.129.16 Load Balancer IP-címét, azaz a mintavételi portot)
+1. Ha a szabályok bármelyike blokkolja a forgalmat, távolítsa el és konfigurálja újra ezeket a szabályokat az adatforgalom engedélyezéséhez.  
+1. Tesztelje, hogy a virtuális gép most már elindult-e az állapotra.
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>3\. ok: a Load Balancer elérése ugyanarról a virtuális gépről és hálózati adapterről 
 
@@ -128,7 +132,7 @@ Ha úgy dönt, hogy megnyit egy támogatási esetet, a következő információk
 - A VNet belül található egyik háttérbeli virtuális gép Psping használatával tesztelheti a mintavételi port válaszát (például: Psping 10.0.0.4:3389), és rögzíthet eredményeket. 
 - Ha nem érkezik válasz ezen pingelési tesztekben, futtasson egyidejű netsh-nyomkövetést a háttérbeli virtuális gépen és a VNet teszt virtuális gépen a PsPing futtatásakor, majd állítsa le a netsh nyomkövetést. 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).
 
