@@ -1,18 +1,18 @@
 ---
-title: A Azure Migrate korábbi verziójának használata | Microsoft Docs
-description: Összefoglalást biztosít a Azure Migrate korábbi verziójával való munkához
+title: A Azure Migrate korábbi verziójának használata
+description: Leírja, hogyan használható a Azure Migrate korábbi verziója.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162458"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186542"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -21,8 +21,8 @@ Ez a cikk a Azure Migrate korábbi verziójának használatáról nyújt inform�
 
 A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: Ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
-- **Előző verzió**: Ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMware virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Ha továbbra is az előző verzióban létrehozott Azure Migrate projekteket kell használnia, akkor ez a következő lehet:
+- **Aktuális verzió**: ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
+- **Előző verzió**: ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Ha továbbra is az előző verzióban létrehozott Azure Migrate projekteket kell használnia, akkor ez a következő lehet:
     - Már nem hozhat létre áttelepítési projekteket.
     - Javasoljuk, hogy ne végezzen új felfedezéseket.
     - Továbbra is hozzáférhet a meglévő projektekhez.
@@ -78,7 +78,7 @@ Az értékelésben az Azure használatához szükséges állapotnézet az egyes 
 
 **Készenlét** | **Állapot** | **Részletek**
 --- | --- | ---
-Azure-beli használatra kész | Nincsenek kompatibilitási problémák. A gép telepíthető át az Azure-ba, és az Azure-ban teljes körű Azure-támogatással indul el. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
+Készen áll az Azure-beli használatra | Nincsenek kompatibilitási problémák. A gép telepíthető át az Azure-ba, és az Azure-ban teljes körű Azure-támogatással indul el. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
 Feltételesen készen áll az Azure-beli használatra | Előfordulhat, hogy a gép az Azure-ban indul el, de nem rendelkezik teljes körű Azure-támogatással. Például egy olyan gép, amelyen az Azure nem támogatja a Windows Server régebbi verzióját. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
 Nem áll készen az Azure-beli használatra |  A virtuális gép nem indul el az Azure-ban. Ha például egy virtuális gépen 4 TB-nál több lemez található, az nem üzemeltethető az Azure-ban. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
 A kompatibilitás ismeretlen | Azure Migrate nem tudja azonosítani az Azure-felkészültséget, általában azért, mert az adatforrások nem érhetők el.
@@ -92,7 +92,7 @@ A készültség számos virtuálisgép-tulajdonságot figyelembe vesz, hogy megt
 --- | --- | ---
 **Rendszerindítás típusa** | A BIOS támogatott. Az UEFI nem támogatott. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Mag** | A Machines Core < = az Azure-beli virtuális gépek számára támogatott magok maximális száma (128).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate figyelembe veszi a felhasznált magokat.<br/>Ha az értékelési beállításokban meg van adva egy kényelmi tényező, a kihasználatlan magok számát a Comfort faktor megszorozza.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat használja a komfort tényező alkalmazása nélkül. | Ha a korlát értéke kisebb vagy egyenlő, akkor készen áll.
-**Memória** | A számítógép memóriájának mérete < = a maximális memória (3892 GB az Azure M Series&nbsp;Standard_M128m<sup>2</sup>) egy Azure-beli virtuális gépen. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
+**Memória** | A számítógép memóriájának mérete < = a maximális memória (3892 GB az Azure M sorozat Standard_M128m&nbsp;<sup>2</sup>) egy Azure-beli virtuális gépen. [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
 **Storage-lemez** | A lemez lefoglalt méretének 4 TB (4096 GB) vagy kevesebbnek kell lennie.<br/><br/> A géphez csatolt lemezek számának 65 vagy annál kisebbnek kell lennie, beleértve az operációsrendszer-lemezt is. | A határértékeken belül készen áll.
 **Hálózat** | A számítógépnek 32 vagy annál kevesebb hálózati adapterrel kell rendelkeznie. | A határértékeken belül készen áll.
 
@@ -107,19 +107,19 @@ A rendszer a következő logikát használja.
 
 **Operációs rendszer** | **Részletek** | **Készenlét**
 --- | --- | ---
-Windows Server 2016 és minden SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
-Windows Server 2012 R2 és minden SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
-Windows Server 2012 és minden SPs | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
-Windows Server 2008 R2 és minden SPs | Az Azure teljes körű támogatást biztosít.| Azure-beli használatra kész
-Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Azure-beli használatra kész
+Windows Server 2016 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
+Windows Server 2012 R2 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
+Windows Server 2012 és minden SPs | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
+Windows Server 2008 R2 és minden SPs | Az Azure teljes körű támogatást biztosít.| Készen áll az Azure-beli használatra
+Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
 Windows Server 2003, 2003 R2 | Támogatás nélkül, és az Azure-támogatáshoz [egyéni támogatási szerződés (CSA)](https://aka.ms/WSosstatement) szükséges. | Feltételesen készen áll az Azure használatára, érdemes lehet frissíteni az operációs rendszert az Azure-ba való Migrálás előtt.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
-Windows-ügyfél 7, 8 és 10 | Az Azure csak a [Visual Studio](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) -előfizetéshez nyújt támogatást. | Feltételesen készen áll az Azure-beli használatra
+Windows-ügyfél 7, 8 és 10 | Az Azure csak a [Visual Studio-előfizetéshez](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) nyújt támogatást. | Feltételesen készen áll az Azure-beli használatra
 Windows 10 Pro asztali verzió | Az Azure támogatást nyújt a több- [bérlős üzemeltetési jogosultságokhoz.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Feltételesen készen áll az Azure-beli használatra
 Windows Vista, XP Professional | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
 Linux | Az Azure támogatja ezeket a [Linux operációs rendszereket](../virtual-machines/linux/endorsed-distros.md). Más Linux operációs rendszerek is elindíthatók az Azure-ban, de javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert egy támogatott verzióra. | Készen áll az Azure-ra, ha a verziót jóváhagyták.<br/><br/>Feltételesen üzemkész, ha a verzió nincs támogatva.
 Egyéb operációs rendszerek<br/><br/> Például: Oracle Solaris, Apple Mac OS stb., FreeBSD stb. | Az Azure nem támogatja ezeket az operációs rendszereket. A gép elindítható az Azure-ban, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ban feltételesen készen áll arra, hogy az Azure-ba való Migrálás előtt telepítsen egy támogatott operációs rendszert.  
-Az operációs rendszer vCenter Serverként van megadva | A Azure Migrate ebben az esetben nem tudja azonosítani az operációs rendszert. | Ismeretlen készültség. Győződjön meg arról, hogy a virtuális gépen futó operációs rendszer támogatott az Azure-ban.
+Az operációs rendszer **vCenter Serverként van megadva** | A Azure Migrate ebben az esetben nem tudja azonosítani az operációs rendszert. | Ismeretlen készültség. Győződjön meg arról, hogy a virtuális gépen futó operációs rendszer támogatott az Azure-ban.
 32 bites operációs rendszerek | Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem nyújt teljes körű támogatást. | Feltételesen készen áll az Azure használatára, érdemes lehet a gép operációs rendszerét 32 bites operációs rendszerről 64 bites operációs rendszerre frissíteni az Azure-ba való Migrálás előtt.
 
 
@@ -160,10 +160,10 @@ Az elérhető adatpontok százalékos arányának függvényében a lehetséges 
 **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
 --- | ---
 0%–20% | 1 csillag
-21%-40% | 2 csillag
-41%-60% | 3 csillag
-61%-80% | 4 csillag
-81%-100% | 5 csillag
+21%–40% | 2 csillag
+41%–60% | 3 csillag
+61%–80% | 4 csillag
+81%–100% | 5 csillag
 
 
 #### <a name="assessment-issues-affecting-confidence-ratings"></a>A megbízhatósági minősítéseket érintő értékelési problémák
@@ -200,7 +200,7 @@ A függőségi vizualizáció használatához egy Log Analytics munkaterületet 
 
 1. Ha Log Analytics munkaterületet szeretne csatolni egy projekthez, az **áttekintés**> **Essentials**szolgáltatásban kattintson a **Konfigurálás szükséges**elemre.
 2. Létrehozhat egy új munkaterületet, vagy csatolhat egy meglévőt:
-  - Új munkaterület létrehozásához adjon meg egy nevet. A munkaterület ugyanabban az [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -földrajzbeli régióban jön létre, mint az áttelepítési projekt.
+  - Új munkaterület létrehozásához adjon meg egy nevet. A munkaterület ugyanabban az [Azure-földrajzbeli](https://azure.microsoft.com/global-infrastructure/geographies/) régióban jön létre, mint az áttelepítési projekt.
   - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Csak azok a munkaterületek jelennek meg, amelyek egy [támogatott Service Map régióban](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)lettek létrehozva. Munkaterület csatolásához ellenőrizze, hogy van-e "olvasó" hozzáférése a munkaterülethez.
 
 > [!NOTE]
@@ -208,9 +208,9 @@ A függőségi vizualizáció használatához egy Log Analytics munkaterületet 
 
 ### <a name="download-and-install-vm-agents"></a>VM-ügynökök letöltése és telepítése
 
-A munkaterület konfigurálása után le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni. Továbbá, ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell [log Analytics](../azure-monitor/platform/gateway.md) -átjárót.
+A munkaterület konfigurálása után le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni. Továbbá, ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell [log Analytics-átjárót](../azure-monitor/platform/gateway.md) .
 
-1. Az **Áttekintés**lapon kattintson a**gépek** **kezelése** > lehetőségre, és válassza ki a szükséges gépet.
+1. Az **Áttekintés**lapon kattintson a > **gépek** **kezelése** lehetőségre, és válassza ki a szükséges gépet.
 2. A **függőségek** oszlopban kattintson az **ügynökök telepítése**elemre.
 3. A **függőségek** lapon töltse le és telepítse a Microsoft monitoring Agent (MMA) és a függőségi ügynököt minden olyan virtuális gépen, amelyet fel szeretne mérni.
 4. Másolja ki a munkaterület-azonosítót és -kulcsot. Ezekre akkor van szükség, amikor telepíti az MMA-t a helyszíni gépre.
@@ -226,7 +226,7 @@ Az ügynök telepítése Windows rendszerű gépre:
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3. A **célmappában**tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
-4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics** > **tovább**lehetőséget.
+4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics** > **Next (tovább**) lehetőséget.
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
 Az ügynököt a parancssorból vagy egy automatizált módszerrel, például System Center Configuration Manager is telepítheti. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
@@ -244,7 +244,7 @@ Az ügynök telepítése Linux rendszerű gépre:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Az MMA-ügynök telepítése Operations Manager által figyelt gépre
 
-A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információk](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). A függőségi ügynököt telepíteni kell.
+A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [Részletek](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). A függőségi ügynököt telepíteni kell.
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 
@@ -261,9 +261,9 @@ A System Center Operations Manager 2012 R2 vagy újabb verziói által monitoroz
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Függőségi leképezést tartalmazó csoport létrehozása
 
-1. Az ügynökök telepítése után lépjen a portálra, és kattintson a**gépek** **kezelése** > lehetőségre.
+1. Az ügynökök telepítése után lépjen a portálra, és kattintson a > **gépek** **kezelése** elemre.
 2. Keresse meg azt a gépet, amelyre az ügynököket telepítette.
-3. A gép függőségek oszlopának ekkor a következőnek kell megjelennie: **View függőségei**. Az oszlopra kattintva megtekintheti a gép függőségeit.
+3. A gép **függőségek** oszlopának ekkor a következőnek kell megjelennie: **View függőségei**. Az oszlopra kattintva megtekintheti a gép függőségeit.
 4. A gép függőségi térképe a következő adatokat jeleníti meg:
     - Bejövő (ügyfelek) és kimenő (kiszolgálók) TCP-kapcsolatok a gépről/számítógépről
         - Azok a függő gépek, amelyeken nincs telepítve az MMA és a függőségi ügynök, a portszámok szerint vannak csoportosítva.
@@ -295,7 +295,7 @@ A Kusto-lekérdezések futtatása:
 
 1. Az ügynökök telepítése után lépjen a portálra, és kattintson az **Áttekintés**elemre.
 2. Az **Áttekintés**területen nyissa meg a projekt **Essentials (alapok** ) szakaszát, és kattintson a **OMS munkaterület**melletti munkaterület neve elemre.
-3. A log Analytics munkaterület lapon kattintson az **általános** > **naplók**elemre.
+3. A Log Analytics munkaterület lapon kattintson az **általános** > **naplók**elemre.
 4. A függőségi adatok Azure Monitor naplók használatával történő gyűjtésének megírása a lekérdezésbe. Keresse meg a következő szakaszban szereplő lekérdezéseket.
 5. Futtassa a lekérdezést a Futtatás gombra kattintva. 
 
@@ -340,5 +340,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További](migrate-services-overview.md) információ a Azure Migrate legújabb verziójáról.

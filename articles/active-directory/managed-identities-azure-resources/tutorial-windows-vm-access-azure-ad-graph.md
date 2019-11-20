@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
+title: Oktatóanyag`:`Windowsos virtuális gépek felügyelt identitásának használata az Azure AD Graph eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure AD Graph API-hoz egy Windows rendszerű virtuális gép rendszer által hozzárendelt felügyelt identitásával.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307794"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183021"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-Az oktatóanyag bemutatja, hogyan érheti el az Azure AD Graph API beolvasni a csoporttagságok alapértelmezett felügyelt identitás Windows virtuális gép (VM) használatával. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  Ebben az oktatóanyagban a virtuális gép identitásának Azure AD-csoportbeli tagságát kérdezi le. A csoportadatokra gyakran szükség van, például engedélyezési döntések során. A virtuális gép felügyelt identitása a háttérben **szolgáltatásnévként** jelenik meg az Azure AD-ben. Mielőtt elvégzi a csoportlekérdezést, adja hozzá a virtuális gép identitását jelölő szolgáltatásnevet egy Azure AD-beli csoporthoz. Ezt megteheti az Azure PowerShell, az Azure AD PowerShell vagy az Azure CLI segítségével is.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a rendszerszintű felügyelt identitást egy Windows rendszerű virtuális géphez (VM), hogy hozzáférjen az Azure AD Graph API a csoporttagság lekéréséhez. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  Ebben az oktatóanyagban a virtuális gép identitásának Azure AD-csoportbeli tagságát kérdezi le. A csoportadatokra gyakran szükség van, például engedélyezési döntések során. A virtuális gép felügyelt identitása a háttérben **szolgáltatásnévként** jelenik meg az Azure AD-ben. Mielőtt elvégzi a csoportlekérdezést, adja hozzá a virtuális gép identitását jelölő szolgáltatásnevet egy Azure AD-beli csoporthoz. Ezt megteheti az Azure PowerShell, az Azure AD PowerShell vagy az Azure CLI segítségével is.
 
 > [!div class="checklist"]
 > * Csatlakozás az Azure AD szolgáltatáshoz
@@ -39,11 +39,11 @@ Az oktatóanyag bemutatja, hogyan érheti el az Azure AD Graph API beolvasni a c
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - Annak érdekében, hogy hozzáférést tudjon biztosítani az Azure AD Graph-hoz a virtuális gép identitása számára, a fiókjához hozzá kell rendelnie a **globális rendszergazda** szerepkört az Azure AD-ben.
-- Telepítse a legújabb [az Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) Ha még nem tette. 
+- Ha még nem tette meg, telepítse a legújabb [Azure ad PowerShellt](/powershell/azure/active-directory/install-adv2) . 
 
 ## <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz
 
-Ahhoz, hogy hozzá tudja rendelni a virtuális gépet egy csoporthoz, illetve engedélyezni tudja a csoporttagságok lekérését a virtuális gép számára, csatlakoznia kell az Azure AD-hez. Connect-AzureAD parancsmagot használhatja közvetlenül, vagy a TenantId paraméter az abban az esetben, ha több bérlő.
+Ahhoz, hogy hozzá tudja rendelni a virtuális gépet egy csoporthoz, illetve engedélyezni tudja a csoporttagságok lekérését a virtuális gép számára, csatlakoznia kell az Azure AD-hez. A AzureAD parancsmagot közvetlenül vagy a TenantId paraméterének használhatja, ha több bérlő is van.
 
 ```powershell
 Connect-AzureAD
@@ -70,9 +70,9 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 Ebben az oktatóanyagban a ```Directory.Read.All``` alkalmazásengedély használatával teszi lehetővé a virtuális gép identitása számára a csoporttagságok lekérdezését. Az engedély megadásához szüksége lesz egy olyan felhasználói fiókra, amely globális rendszergazdai szerepkörrel rendelkezik az Azure AD-ben. Az alkalmazásengedély megadásához általában az Azure Portalon kell megkeresi az alkalmazás regisztrációját, és ott hozzáadni az engedélyt. Az Azure-erőforrások felügyelt identitásai azonban nem alkalmazásobjektumokat regisztrálnak az Azure AD-ben, hanem csak szolgáltatásneveket. Az alkalmazásengedély regisztrálása az Azure AD PowerShell parancssori eszközével történik. 
 
 Azure AD Graph:
-- Egyszerű szolgáltatás alkalmazásazonosítója (használja az alkalmazásengedély megadása): 00000002-0000-0000-c000-000000000000
+- Szolgáltatásnév alkalmazásazonosítója (alkalmazásengedély biztosításakor): 00000002-0000-0000-c000-000000000000
 - Erőforrás-azonosító (hozzáférési jogkivonat az Azure-erőforrások felügyelt identitásaiból történő lekérésekor): https://graph.windows.net
-- Engedély hatókör-hivatkozást: [Az Azure AD Graph-engedélyek referencia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Engedélyhatókör-referencia: [Azure AD Graph-engedélyek referenciája](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Alkalmazásengedélyek biztosítása az Azure AD PowerShell használatával
 
@@ -83,7 +83,7 @@ A lehetőség használatához szüksége lesz Azure AD PowerShellre. Ha nincs te
    ```powershell
    Connect-AzureAD
    ```
-   Egy adott Azure Active Directory csatlakozni, használja a _TenantId_ paramétert a következők szerint:
+   Egy adott Azure Active Directoryhoz való kapcsolódáshoz használja a _TenantId_ paramétert az alábbiak szerint:
 
    ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
@@ -165,7 +165,7 @@ Ha a virtuális gép rendszer által hozzárendelt felügyelt identitását az A
    $AccessToken = $content.access_token
    ```
 
-5. A virtuális gép identitása szolgáltatásnevéhez tartozó objektumazonosítót használva (ezt az értéket lekérheti az előző lépésekben deklarált változóból: ``$ManagedIdentitiesServicePrincipal.ObjectId``) kérdezze le az Azure AD Graph API-t a csoporttagságok lekéréséhez. Cserélje le `<OBJECT ID>` az előző lépésben objektumazonosítójú és <`ACCESS-TOKEN>` a korábban kapott hozzáférési jogkivonattal:
+5. A virtuális gép identitása szolgáltatásnevéhez tartozó objektumazonosítót használva (ezt az értéket lekérheti az előző lépésekben deklarált változóból: ``$ManagedIdentitiesServicePrincipal.ObjectId``) kérdezze le az Azure AD Graph API-t a csoporttagságok lekéréséhez. Cserélje le az `<OBJECT ID>` az előző lépésben szereplő objektumazonosító alapján, és <`ACCESS-TOKEN>` a korábban beszerzett hozzáférési jogkivonattal:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"
@@ -179,7 +179,7 @@ Ha a virtuális gép rendszer által hozzárendelt felügyelt identitását az A
    Content : {"odata.metadata":"https://graph.windows.net/<Tenant ID>/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan érhető el Azure AD Graph a windowsos virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával.  További információ az AD Graph szolgáltatásról:
 

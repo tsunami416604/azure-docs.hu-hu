@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029792"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184906"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának létrehozása
 
@@ -76,11 +76,11 @@ Ez a szkript a következő parancsokat használja egy új erőforráscsoport és
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az appconfig Create](/cli/azure/ext/appconfig/appconfig) | Létrehoz egy alkalmazás-konfigurációs tároló erőforrást. |
-| [az appconfig Key List](/cli/azure/ext/appconfig/appconfig/kv) | Az alkalmazás-konfigurációs tárolóban tárolt kulcsok listázása. |
+| [az appconfig Create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Létrehoz egy alkalmazás-konfigurációs tároló erőforrást. |
+| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Az alkalmazás-konfigurációs tárolóban tárolt kulcsok listázása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure-alkalmazás konfigurációs dokumentációjában](../cli-samples.md)találhatók.
+Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure app CONFIGURATION CLI-mintákban](../cli-samples.md)találhatók.

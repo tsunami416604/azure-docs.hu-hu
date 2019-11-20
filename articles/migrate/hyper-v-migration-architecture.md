@@ -1,31 +1,31 @@
 ---
-title: Hogyan működik a Hyper-V áttelepítése az Azure Migrate-kiszolgáló áttelepítése? | Microsoft Docs
-description: Az Azure Migrate-kiszolgáló áttelepítése a Hyper-V áttelepítés áttekintése
+title: Hogyan működik a Hyper-V áttelepítés Azure Migrate?
+description: A Hyper-V áttelepítésének ismertetése Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 9148e76a9f2abd369ae595422d785a347e58dfab
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811712"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185881"
 ---
-# <a name="how-does-hyper-v-replication-work"></a>Hogyan működik a Hyper-V-replikáció?
+# <a name="how-does-hyper-v-replication-work"></a>Hogyan működik a Hyper-V replikáció?
 
-Ez a cikk az architektúra és az Azure Migrate Server áttelepítési eszköz a Hyper-V virtuális gépek áttelepítésekor használt folyamatok áttekintést nyújt.
+Ez a cikk áttekintést nyújt a Hyper-V virtuális gépek Azure Migrate Server áttelepítési eszközzel történő áttelepítésekor használt architektúráról és folyamatokról.
 
-[Az Azure Migrate](migrate-services-overview.md) kínál egy központi agyhoz felderítési, felmérési és a helyszíni alkalmazások és a számítási feladatok és a privát és nyilvános felhőbeli VM-eken, az Azure-ba való migrálásának nyomon követéséhez. A hub felmérés és migrálás, valamint a külső független szoftverszállítók (ISV) szállító ajánlatok az Azure Migrate eszközöket biztosít.
+[Azure Migrate](migrate-services-overview.md) egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatokhoz.
 
-## <a name="agentless-migration"></a>Ügynök nélküli migrálást
+## <a name="agentless-migration"></a>Ügynök nélküli áttelepítés
 
-Az Azure Migrate Server áttelepítési eszköz a Hyper-V-hoz optimalizált migrálási munkafolyamat használatával a helyszíni Hyper-V virtuális gépek, ügynök nélküli kivételfigyelés replikációt biztosít. Csak a Hyper-V-gazdagépek vagy a fürt csomópontjai telepítenie kell egy szoftverfrissítési ügynököt. Semmit nem kell a Hyper-V virtuális gépeken telepíthető.
+A Azure Migrate Server áttelepítési eszköz ügynök nélküli replikációt biztosít a helyszíni Hyper-V virtuális gépek számára a Hyper-V-re optimalizált áttelepítési munkafolyamat használatával. A szoftveres ügynököt csak Hyper-V-gazdagépekre vagy fürtcsomópontokre telepítheti. Semmit nem kell telepíteni a Hyper-V virtuális gépekre.
 
-## <a name="server-migration-and-azure-site-recovery"></a>Az Azure Site Recovery és a kiszolgáló áttelepítése
+## <a name="server-migration-and-azure-site-recovery"></a>Kiszolgáló áttelepítése és Azure Site Recovery
 
-Az Azure Migrate kiszolgáló áttelepítése egy olyan eszköz áttelepítése a helyszíni számítási feladatokat, és a felhő alapú virtuális gépek, az Azure-bA. Site Recovery szolgáltatás a vész-helyreállítási eszköze. Az eszközök néhány gyakori technológia összetevők adatreplikációt megosztani, de különböző célokat szolgálnak. 
+A Azure Migrate kiszolgáló áttelepítése egy eszköz a helyszíni számítási feladatok és a felhőalapú virtuális gépek Azure-ba történő áttelepítéséhez. Site Recovery vész-helyreállítási eszköz. Az eszközök osztoznak az adatreplikáláshoz használt közös technológiai összetevőkben, de különböző célokra szolgálnak. 
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
@@ -36,56 +36,56 @@ Az Azure Migrate kiszolgáló áttelepítése egy olyan eszköz áttelepítése 
 
 **Összetevő** | **Üzembe helyezés** | 
 --- | --- 
-**Replikációs szolgáltató** | A Microsoft Azure Site Recovery provider telepítve a Hyper-V-gazdagépek, és regisztrálja az Azure Migrálási kiszolgáló áttelepítése.<br/> A szolgáltató Hyper-V virtuális gépek replikálását koordinálja.
-**Recovery Services-ügynök** | A Microsoft Azure Recovery Services ügynök kezeli az adatreplikációt. A szolgáltató Hyper-V virtuális gépekről az adatok replikálása az Azure-ba is működik.<br/> A replikált adatokat töltenek fel egy storage-fiókot az Azure-előfizetésében. A kiszolgáló-áttelepítési eszköz a folyamatok a replikált adatok, és alkalmazza azt az előfizetésben található replika lemezek. A replika lemezek segítségével hozzon létre az Azure virtuális gépek áttelepítésekor.
+**Replikációs szolgáltató** | A Microsoft Azure Site Recovery-szolgáltató a Hyper-V-gazdagépekre van telepítve, és regisztrálva van az Azure Migration Server áttelepítésével.<br/> A szolgáltató a Hyper-V virtuális gépek replikálását koordinálja.
+**Recovery Services ügynök** | A Microsoft Azure Recovery szolgáltatás ügynöke kezeli az adatreplikációt. Együttműködik a szolgáltatóval, hogy a Hyper-V virtuális gépekről az Azure-ba replikálja az adatait.<br/> A replikált adatait a rendszer feltölti az Azure-előfizetésében lévő Storage-fiókba. A kiszolgáló áttelepítési eszköze a replikált adatfeldolgozást végez, és az előfizetésben lévő replika lemezekre alkalmazza. A replika lemezek az áttelepítés során az Azure-beli virtuális gépek létrehozásához használatosak.
 
-- Ezeket az összetevőket, a telepítő egyetlen fájl által letöltött Azure Migrate-kiszolgáló áttelepítése a portálon.
-- A szolgáltató és a készülék kimenő HTTPS port 443-as kapcsolatok használatával kommunikálni az Azure Migrate-kiszolgáló áttelepítése.
-- A provider és az ügynök kommunikációját olyan biztonságos, titkosított csatornákon történik.
+- Az összetevőket egyetlen telepítési fájl telepíti, amely a portálon Azure Migrate-kiszolgáló áttelepítéséről tölthető le.
+- A szolgáltató és berendezés a 443-as kimenő HTTPS-portot használja a Azure Migrate-kiszolgáló áttelepítésével való kommunikációhoz.
+- A szolgáltató és az ügynök közötti kommunikáció biztonságos és titkosított.
 
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. Ha engedélyezi a Hyper-V virtuális gép replikációját, megkezdődik a kezdeti replikálás.
-2. A Hyper-V virtuális gép pillanatkép készítésének időpontjában.
-3. A virtuális gép virtuális merevlemezei replikált-– egy olyan, amíg átmásolja ezeket az Azure-bA. Kezdeti replikáció ideje a virtuális gép méretét, és a hálózati sávszélesség függ.
-4. Hyper-V replika segítségével, és a naplófájlok (hrl fájlokat) tárolja a kezdeti replikáció során felmerülő lemezen változások nyomon követése.
-    - A naplófájlok ugyanabban a mappában található, mint a lemezek.
-    - Minden lemezhez tartozik egy társított hrl fájlt a másodlagos tárterületre küldött.
+1. Ha engedélyezi a replikációt egy Hyper-V virtuális gép számára, a kezdeti replikálás megkezdődik.
+2. Hyper-V virtuális gép pillanatképe készül.
+3. A virtuális merevlemezek replikálása egyenként történik, amíg az összes Azure-ba nem másolódik. A kezdeti replikálási idő a virtuális gép méretétől és a hálózati sávszélességtől függ.
+4. A kezdeti replikáció során végrehajtott lemezes változások a Hyper-V replikával vannak nyomon követve, és naplófájlokban (HRL-fájlokban) tárolódnak.
+    - A naplófájlok ugyanabban a mappában találhatók, mint a lemezek.
+    - Minden lemezhez tartozik egy társított HRL-fájl, amelyet a rendszer a másodlagos tárolóba továbbít.
     - A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
-4. Kezdeti replikálás befejezése után a rendszer törli a virtuális gép pillanatképét, és változásreplikációhoz kezdődik.
-5. Növekményes lemezmódosításokat hrl fájlok követi nyomon. Replikációs naplók rendszeres időközönként a Recovery Services-ügynök által feltöltött Azure storage-fiókba.
+4. A kezdeti replikálás befejeződése után a rendszer törli a virtuális gép pillanatképét, és megkezdi a különbözeti replikációt.
+5. A növekményes lemezek változásai a HRL-fájlokban vannak nyomon követve. A replikációs naplókat a Recovery Services ügynök rendszeresen feltölti egy Azure Storage-fiókba.
 
 
 ## <a name="performance-and-scaling"></a>Teljesítmény és skálázás
 
-A Hyper-V replikációs teljesítményt befolyásolja tényezők befolyásolják, beleértve az Azure-beli Virtuálisgép-méret, az adatok adatváltozási sebesség (forgalom), a virtuális gépek, a log file storage, a replikációs adatok feltöltési sávszélesség és a céloldali tárolóra a Hyper-V gazdagépen rendelkezésre álló területet.
+A Hyper-V replikálási teljesítményét a virtuálisgép-méretet, a virtuális gépek adatváltozási sebességét (adatváltozási sebessége), a Hyper-V-gazdagépen rendelkezésre álló lemezterületet a naplófájlok tárolásához, a replikálási adatok sávszélességének feltöltéséhez és az Azure-beli cél tárolóhoz tartozó tényezők befolyásolják.
 
-- Ha egyszerre több gépet replikál, használja a [Azure Site Recovery Deployment Planner](../site-recovery/hyper-v-deployment-planner-overview.md) Hyper-v replikáció optimalizálásához.
-- A Hyper-V replikációjának megtervezéséhez, és a replikációs elosztása az Azure storage-fiókok esetében kapacitás megfelelően.
+- Ha egyszerre több gépet replikál, használja a Hyper-V [Azure site Recovery Deployment Planner](../site-recovery/hyper-v-deployment-planner-overview.md) a replikáció optimalizálásához.
+- Tervezze meg a Hyper-V-replikációt, és ossza el az Azure Storage-fiókokon keresztüli replikálást a kapacitásnak megfelelően.
 
-### <a name="control-upload-throughput"></a>Vezérlő feltöltési sebessége
+### <a name="control-upload-throughput"></a>A feltöltési sebesség szabályozása
 
-Adatok feltöltése az Azure-ban minden egyes Hyper-V gazdagépen használt sávszélesség is korlátozza. légy óvatos. Ha túl alacsony értékek negatívan befolyásolja replikáció és a késleltetés migrálása.
+A Hyper-V-gazdagépeken az adatok Azure-ba való feltöltéséhez használt sávszélesség korlátozható. légy óvatos. Ha túl alacsonyra állítja az értékeket, az negatív hatással lesz a replikációra, és késlelteti az áttelepítést.
 
 
-1. Jelentkezzen be a Hyper-V gazdagép vagy -fürt csomópontja.
-2. Futtatás **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**, a Windows Azure Backup szolgáltatás MMC beépülő modul megnyitásához.
-3. A beépülő modulban, válassza ki a **tulajdonságainak módosítása**.
-4. A **sávszélesség-szabályozási**válassza **szabályozása a biztonsági mentési műveletek internetes sávszélességének**. Állítsa be a munkaórákra és a munkaórákon kívüli. 512 KB/s a 1,023 Mbps érvényes tartományok származnak.
+1. Jelentkezzen be a Hyper-V-gazdagépre vagy-fürt csomópontjára.
+2. A **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**futtatásával nyissa meg a Windows Azure Backup MMC beépülő modult.
+3. A beépülő modulban válassza a **Tulajdonságok módosítása**lehetőséget.
+4. A **szabályozás**alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése**jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 I
 
-### <a name="influence-upload-efficiency"></a>Befolyásoló feltöltési hatékonyságát
+### <a name="influence-upload-efficiency"></a>A feltöltés hatékonyságának befolyásolása
 
-Ha rendelkezik a replikáció tartalékolt sávszélesség, és szeretné növelni a feltöltések, növelheti a következőképpen a feltöltési feladathoz lefoglalt szálak száma:
+Ha van tartalék sávszélesség a replikáláshoz, és szeretné megnövelni a feltöltéseket, növelheti a feltöltési feladathoz lefoglalt szálak számát a következőképpen:
 
-1. Nyissa meg a beállításjegyzékben a Regedit.
-2. Keresse meg a kulcs HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
-3. Növelje az adatfeltöltés replikáló virtuális gépek használt szálak számát. Az alapértelmezett értéke 4, maximális értéke pedig 32. 
-
-
+1. Nyissa meg a beállításjegyzéket a regedit szolgáltatással.
+2. Navigáljon a Key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+3. Növelje az adatfeltöltéshez használt szálak számát az egyes replikáló virtuális gépek esetében. Az alapértelmezett érték 4, a maximális érték 32. 
 
 
-## <a name="next-steps"></a>További lépések
 
-Próbálja ki [Hyper-V áttelepítés](tutorial-migrate-hyper-v.md) Azure Migrate-áttelepítés használatával.
+
+## <a name="next-steps"></a>Következő lépések
+
+Próbálja ki a [Hyper-V áttelepítését](tutorial-migrate-hyper-v.md) Azure Migrate kiszolgáló áttelepítésével.

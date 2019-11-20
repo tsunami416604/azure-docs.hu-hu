@@ -1,25 +1,22 @@
 ---
-title: A Reservations szoftverköltségei az Azure-ban | Microsoft Docs
+title: A Reservations szoftverköltségei az Azure-ban
 description: Megtudhatja, hogy mely szoftverek használatát nem tartalmazzák az Azure-beli fenntartott VM-példányok költségei.
-services: billing
-documentationcenter: ''
 author: yashar
 manager: yashar
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 11/14/2019
 ms.author: banders
-ms.openlocfilehash: e74765ec09fb9cd2d219ceb3d784b4030c83e028
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 82a3dfa9534d58d425b15a433a69a224235e027f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719638"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111533"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure-beli fenntartott VM-példányok által nem tartalmazott szoftverköltségek
 
@@ -64,7 +61,7 @@ A virtuális gép fenntartott példánya és az SQL számára fenntartott kapaci
 |dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|Cloud Services 64 vCPU License|
 |7a803026-244c-4659-834c-11e6b2d6b76f|Cloud Services 80 vCPU License|
 
-## <a name="rates-for-azure-meters"></a>Az Azure-beli mérők díjai
+## <a name="get-rates-for-azure-meters"></a>Az Azure-beli mérők díjainak lekérése
 
 Az Azure RateCard API-n keresztül minden mérő díját lekérheti. Az Azure-beli mérők díjainak lekéréséhez szükséges információkért lásd az [Azure-előfizetésben használt erőforrások ár- és metaadat-információinak lekérése](/previous-versions/azure/reference/mt219004(v=azure.100)) részben.
 

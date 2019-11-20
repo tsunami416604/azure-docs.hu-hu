@@ -1,5 +1,5 @@
 ---
-title: Egyéni válasz konfigurálása a webalkalmazási tűzfalhoz az Azure bejárati ajtaján
+title: Egyéni válasz beállítása WAF az Azure bejárati ajtóval
 description: Megtudhatja, hogyan konfigurálhat egyéni hibakódot és üzenetet, ha a webalkalmazási tűzfal (WAF) egy kérést blokkol.
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: ae3099373bbaece57c2896eb0fb4e7d59d817f25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517149"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185348"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Egyéni válasz konfigurálása az Azure webalkalmazási tűzfalhoz
 
@@ -83,5 +83,5 @@ Update-AzFrontDoorFireWallPolicy `
 -CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [webalkalmazási tűzfalról az Azure bejárati ajtóval](../afds/afds-overview.md)

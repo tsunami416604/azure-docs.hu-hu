@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate berendezés architektúrája | Microsoft Docs
-description: Áttekintést nyújt a Azure Migrate készülékről
+title: Azure Migrate berendezés architektúrája
+description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: bdc81820b1ac9867d45fd26e26d24c65e20641e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685092"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185819"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -25,7 +25,7 @@ Ez a cikk a Azure Migrate berendezést ismerteti. Ha Azure Migrate felmérési �
 
 A Azure Migrate berendezés típusai és használata a következő.
 
-**Központilag telepítve** | **Használatban** | **Részletek**
+**Központilag telepítve** | **Használt** | **Részletek**
 --- | --- |  ---
 VMware virtuális gép | VMware virtuális gép értékelése a Azure Migrate Assessment Tool eszközzel.<br/><br/> VMware VM ügynök nélküli áttelepítés a Azure Migrate Server áttelepítési eszközzel | Töltse le a petesejtek sablonját, és importálja vCenter Serverre a készülék virtuális gépe létrehozásához.
 Hyper-V virtuális gép | A Hyper-V virtuális gép értékelése a Azure Migrate Assessment Tool eszközzel. | Töltse le a tömörített VHD-t, és importálja a Hyper-V-be a készülék virtuális gépe létrehozásához.
@@ -60,12 +60,12 @@ Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készü
 
 **Adatok** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-CPU-kihasználtság | CPU. használat. átlag | Ajánlott virtuális gép mérete/díja
-Memória kihasználtsága | mem. használat. átlag | Ajánlott virtuális gép mérete/díja
-Lemez olvasási sebessége (MB/s) | virtualDisk. Read. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez írási sebessége (MB/s) | virtualDisk. Write. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez olvasási műveletei másodpercenként | virtualDisk. numberReadAveraged. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez írási műveletei másodpercenként | virtualDisk. numberWriteAveraged. Average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Processzorkihasználtság | cpu.usage.average | Ajánlott virtuális gép mérete/díja
+Memória kihasználtsága | mem.usage.average | Ajánlott virtuális gép mérete/díja
+Lemez olvasási sebessége (MB/s) | virtualDisk.read.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási sebessége (MB/s) | virtualDisk.write.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez olvasási műveletei másodpercenként | virtualDisk.numberReadAveraged.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási műveletei másodpercenként | virtualDisk.numberWriteAveraged.average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
 Hálózati adapter olvasási sebessége (MB/s) | net. Received. Average | A virtuális gép méretének kiszámítása
 Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |A virtuális gép méretének kiszámítása
 
@@ -80,45 +80,45 @@ Itt találja a készülék által gyűjtött és az Azure-ba küldött VMware VM
 **Adatok** | **Számláló**
 --- | --- 
 **Gép részletei** | 
-VIRTUÁLIS GÉP AZONOSÍTÓJA | VM. Config. értékű 
-a virtuális gép neve | VM. Config.Name
+VIRTUÁLIS GÉP AZONOSÍTÓJA | vm.Config.InstanceUuid 
+a virtuális gép neve | vm.Config.Name
 vCenter Server azonosítója | VMwareClient.Instance.Uuid
-Virtuális gép leírása | VM. Summary. config. Megjegyzés
-Licenc terméknév | VM. Client. ServiceContent. about. LicenseProductName
+Virtuális gép leírása | vm.Summary.Config.Annotation
+Licenc terméknév | vm.Client.ServiceContent.About.LicenseProductName
 Operációs rendszer típusa | vm.SummaryConfig.GuestFullName
-Rendszerindítás típusa | VM. Config. firmware
-Magok száma | VM. Config. Hardware. NumCPU
-Memória (MB) | VM. Config. Hardware. MemoryMB
+Rendszerindítás típusa | vm.Config.Firmware
+Magok száma | vm.Config.Hardware.NumCPU
+Memória (MB) | vm.Config.Hardware.MemoryMB
 Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). darabszám
 Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualEthernet). darabszám
-CPU-kihasználtság | CPU. használat. átlag
-Memória kihasználtsága |mem. használat. átlag
+Processzorkihasználtság | cpu.usage.average
+Memória kihasználtsága |mem.usage.average
 **/Lemez adatai** | 
 Lemez kulcsának értéke | lemez. Kulcs
-Dikunit száma | lemez. UnitNumber
-Lemezvezérlő-kulcs értéke | lemez. ControllerKey. Value
-Kiépített gigabájt | virtualDisk. DeviceInfo. Summary
+Dikunit száma | disk.UnitNumber
+Lemezvezérlő-kulcs értéke | disk.ControllerKey.Value
+Kiépített gigabájt | virtualDisk.DeviceInfo.Summary
 Lemez neve | A lemez használatával generált érték. UnitNumber, lemez. Kulcs, lemez. ControllerKey. VAlue
-Olvasási műveletek másodpercenként | virtualDisk. numberReadAveraged. Average
-Írási műveletek másodpercenként | virtualDisk. numberWriteAveraged. Average
-Olvasási sebesség (MB/s) | virtualDisk. Read. Average
-Írási sebesség (MB/s) | virtualDisk. Write. Average
+Olvasási műveletek másodpercenként | virtualDisk.numberReadAveraged.average
+Írási műveletek másodpercenként | virtualDisk.numberWriteAveraged.average
+Olvasási sebesség (MB/s) | virtualDisk.read.average
+Írási sebesség (MB/s) | virtualDisk.write.average
 **Hálózati adapter adatai** | 
 Hálózati adapter neve | hálózati. Kulcs
-MAC-címe | ((VirtualEthernetCard) NIC). MacAddress
+MAC-címe | ((VirtualEthernetCard)nic).MacAddress
 IPv4-címek | VM. Guest.Net
 IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Name (Név) | tároló. GetType (). név
+Name (Név) | container.GetType().Name
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
-Mappa részletei virtuális gépenként | ((Mappa) tároló). ChildEntity. Type
-Adatközpont részletei virtuális gépenként | (Datacenter) tároló. VmFolder
-Az adatközpont részletei egy gazdagép mappájában | (Datacenter) tároló. HostFolder
+Mappa részletei virtuális gépenként | ((Folder)container).ChildEntity.Type
+Adatközpont részletei virtuális gépenként | ((Datacenter)container).VmFolder
+Az adatközpont részletei egy gazdagép mappájában | ((Datacenter)container).HostFolder
 Fürt adatai egy gazdagépen | ((ClusterComputeResource)container).Host
 Gazdagép adatai virtuális gépenként | ((HostSystem)container).VM
 
@@ -151,7 +151,7 @@ Az alábbi lista tartalmazza a Hyper-V VM-metaadatok teljes listáját, amelyeke
 **Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
 --- | --- | ---
 **Gép részletei** | 
-BIOS _ Msvm_BIOSElement sorozatszáma | BIOSSerialNumber
+A BIOS sorozatszáma _ Msvm_BIOSElement | BIOSSerialNumber
 Virtuális gép típusa (1. vagy 2. generációs) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
 Virtuális gép megjelenítendő neve | Msvm_VirtualSystemSettingData | ElementName
 VM-verzió | Msvm_ProcessorSettingData | VirtualQuantity
@@ -206,13 +206,13 @@ A készülék frissítve lett, mivel a készüléken futó Azure Migrate-ügynö
 
 - Ez automatikusan megtörténik, mert alapértelmezés szerint engedélyezve van az automatikus frissítés a készüléken.
 - Az alapértelmezett beállítás módosításával manuálisan is frissítheti az ügynököket.
-- Az automatikus frissítés letiltásához nyissa meg a Beállításszerkesztőt > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance, és állítsa az "AutoUpdate" beállításkulcsot 0-ra (DWORD).
+- Az automatikus frissítés letiltásához nyissa meg a Beállításszerkesztőt > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance, és állítsa az "AutoUpdate" beállításkulcsot 0-ra (DWORD).
  
 ### <a name="set-agent-updates-to-manual"></a>Az ügynökök frissítésének beállítása kézire
 
 Manuális frissítés esetén győződjön meg arról, hogy a készüléken lévő összes ügynököt egy időben frissíti, a készüléken lévő összes elavult ügynök **frissítés** gombjával. A frissítési beállítás bármikor visszaváltható az automatikus frissítésekre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan](tutorial-assess-vmware.md#set-up-the-appliance-vm) állíthatja be a készüléket a VMware rendszerhez.
 [Ismerje meg, hogyan](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) állíthatja be a készüléket a Hyper-V-hez.

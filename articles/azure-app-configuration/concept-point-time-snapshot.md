@@ -1,6 +1,6 @@
 ---
-title: Az Azure App konfigurációs időponthoz pillanatkép |} A Microsoft Docs
-description: Hogyan-időponthoz pillanatkép áttekintést működéséről az Azure-alkalmazások konfigurálása
+title: Azure-alkalmazás konfigurációs időponthoz tartozó pillanatképe | Microsoft Docs
+description: Áttekintés arról, hogy az adott időponthoz tartozó pillanatkép hogyan működik az Azure app Configuration szolgáltatásban
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,27 +12,27 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 83770e8c5f415670855b5cf2502d02c4d6919440
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdbe4846700c690261dbc734063f4420478666a8
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741138"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185202"
 ---
 # <a name="point-in-time-snapshot"></a>Adott időpontban készült pillanatképek
 
-Az Azure App konfigurálása a pontos alkalommal, amikor egy új kulcs-érték pár létrehozott, és ezután a módosított nyilvántartást vezet. Ezeket a rekordokat egy teljes ütemterv alkotnak, kulcs-érték megváltozik. Egy alkalmazás a konfigurációs adattároló is hozza az összes kulcsérték előzményeit, és az elmúlt értékét visszajátszani bármely adott pillanatban, akár a jelenlegi. Ezzel a funkcióval is "idő utazási" hátra, és egy régi kulcs értékét a vizualizációhoz. Tegnapi konfigurációs beállításokat, a legutóbbi telepítés előtt helyreállítása egy korábbi konfigurációt, és állítsa vissza az alkalmazás például kaphat.
+Az Azure-alkalmazás konfigurációja rögzíti a pontos időpontokat, amikor létrejön egy új kulcs-érték pár, majd módosul. Ezek a rekordok teljes idővonalat alkotnak a kulcs-érték változásaiban. Az alkalmazás-konfigurációs tárolók újraállíthatják a kulcsok előzményeit, és egy adott pillanatban újra visszajátszják a korábbi értékeket, akár a jelenre. Ezzel a funkcióval a "Time-Travel" visszafelé, a régi kulcs értékét pedig lekérheti. A tegnapi konfigurációs beállításokat például közvetlenül a legutóbbi üzembe helyezés előtt is beolvashatja, hogy helyreállítsa az előző konfigurációt, és visszaállítsa az alkalmazást.
 
-## <a name="key-value-retrieval"></a>Kulcs-érték lekéréséhez
+## <a name="key-value-retrieval"></a>Kulcs-érték lekérése
 
-Elmúlt kulcsérték lekéréséhez időpontnak a megadása kulcsérték pillanatképet HTTP REST API-hívás fejlécében. Példa:
+A korábbi kulcsok értékének lekéréséhez adja meg azt az időpontot, amikor a kulcs értéke pillanatkép egy REST API hívás HTTP-fejlécében. Például:
 
         GET /kv HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
 
-Jelenleg az alkalmazáskonfiguráció hét nap, az előzmények megőrzi.
+Az alkalmazás konfigurációja jelenleg hét nappal korábbi változási előzményeket tart fenn.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core Webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  

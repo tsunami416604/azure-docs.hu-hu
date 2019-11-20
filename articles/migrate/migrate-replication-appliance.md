@@ -1,73 +1,73 @@
 ---
-title: Az Azure Migrate replikációs készülék architektúrája |} A Microsoft Docs
-description: A replikáció az Azure Migrate berendezés áttekintése
+title: Azure Migrate replikációs berendezés architektúrája
+description: Áttekintést nyújt az ügynök-alapú áttelepítés Azure Migrate replikációs berendezéséről.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4f4dc307bee4190a0e94ace493053e0cfd01150e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811439"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186553"
 ---
-# <a name="replication-appliance"></a>Replikációs készülék
+# <a name="replication-appliance"></a>Replikációs berendezés
 
-Ez a cikk ismerteti az Azure Migrate által használt replikációs készülék: Server Assessment át a VMware virtuális gépek, a fizikai gépek és a privát és nyilvános felhőbeli virtuális géphez az Azure-bA egy ügynök-alapú áttelepítés használatával. 
+Ez a cikk ismerteti a Azure Migrate által használt replikációs berendezést: a kiszolgáló értékelése a VMware virtuális gépek, fizikai gépek és magán-vagy nyilvános Felhőbeli virtuális gépek Azure-ba történő áttelepítésekor az ügynökön alapuló Migrálás használatával. 
 
-Az eszköz megtalálható a [Azure Migrate](migrate-overview.md) hub. A hub natív szabási eszközzel elemzésekhez és migráláshoz, valamint az egyéb Azure-szolgáltatások, illetve külső független szoftvergyártók (ISV-k) az eszközök.
+Az eszköz az [Azure Migrate](migrate-overview.md) hub-ban érhető el. A központ natív eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint az egyéb Azure-szolgáltatásokból és a független szoftvergyártók származó eszközökről.
 
 
-## <a name="appliance-overview"></a>Készülék – áttekintés
+## <a name="appliance-overview"></a>Berendezések áttekintése
 
-A replikációs berendezés helyezünk üzembe egy a helyszíni gépen, vagy egy VMware virtuális gép vagy fizikai kiszolgálóként. Fut:
-- **Replikációs berendezés**: A replikációs berendezés kommunikáció koordinálását, valamint felügyeli az adatreplikációt, a helyszíni VMware virtuális gépek és fizikai kiszolgálók replikációja az Azure-bA.
-- **Folyamatkiszolgáló**: A folyamatkiszolgáló, amely a replikáció berendezésen alapértelmezés szerint telepítve van, és a következő:
-    - **Replikációs átjáró**: Azt a replikációs átjáróként üzemel. Engedélyezve van a replikáció gépekről kap replikációs adatokat. Optimalizálja a gyorsítótárazás, tömörítés és titkosítás a replikációs adatokat, és elküldi azt az Azure-bA.
-    - **Ügynököt telepítő**: A mobilitási szolgáltatás leküldéses telepítést hajt végre. A szolgáltatásnak telepítve kell lennie, és az egyes futó helyszíni áttelepítés replikálni kívánt gépen.
+A replikációs berendezés egyetlen helyszíni gépen van üzembe helyezve VMware virtuális gépként vagy fizikai kiszolgálóként. A következőket futtatja:
+- **Replikációs berendezés**: a replikációs berendezés koordinálja a kommunikációt, és felügyeli az adatreplikációt a helyszíni VMWare virtuális gépek és az Azure-ba replikált fizikai kiszolgálók esetében.
+- **Process Server**: a folyamat kiszolgálója, amely alapértelmezés szerint telepítve van a replikációs berendezésen, és a következő műveleteket végzi el:
+    - **Replikációs átjáró**: replikációs átjáróként működik. Replikációs adatok fogadása a replikációhoz engedélyezett gépekről. A replikációs adatokat a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és elküldi az Azure-nak.
+    - **Ügynök telepítője**: a mobilitási szolgáltatás leküldéses telepítését végzi. Ezt a szolgáltatást minden olyan helyszíni gépen telepíteni és futtatni kell, amelyet át szeretne replikálni az áttelepítéshez.
 
-## <a name="appliance-deployment"></a>Berendezés üzembe helyezés
+## <a name="appliance-deployment"></a>Berendezések üzembe helyezése
 
-**Üzembe helyezése** | **Használt** | **Részletek**
+**Üzembe helyezés mint** | **Használt** | **Részletek**
 --- | --- |  ---
-VMware virtuális gép | Általában akkor használatos, ha az Azure Migrate áttelepítési eszköz használata ügynök-alapú áttelepítés VMware virtuális gépek áttelepítése. | Töltse le az OVA sablont az Azure Migrate hubról, és importálása a vCenter-kiszolgáló a berendezés virtuális gép létrehozásához.
-Fizikai gép | A helyszíni fizikai kiszolgálóknak áttelepítésekor, ha nem rendelkezik egy VMware-infrastruktúra, vagy ha nem sikerül egy OVA-sablon használatával a VMware virtuális gép létrehozásához használt. | Töltse le a szoftver az Azure Migrate hubról, és futtassa a készülék gép.
+VMware virtuális gép | Általában a VMware virtuális gépek áttelepítésekor használatos a Azure Migrate áttelepítési eszközzel az ügynök-alapú áttelepítés használatával. | A Azure Migrate központból letöltheti a petesejtek sablonját, és importálhatja a vCenter Serverba a készülék virtuális gépe létrehozásához.
+Fizikai gép | Helyszíni fizikai kiszolgálók áttelepítésekor használatos, ha nem rendelkezik VMware-infrastruktúrával, vagy ha nem tud létrehozni VMware virtuális gépet egy PETESEJT-sablonnal. | A szoftver telepítőjének letöltése a Azure Migrate központból, és a berendezés számítógépének beállításához futtassa.
 
-## <a name="appliance-deployment-requirements"></a>Készülék központi telepítésére vonatkozó követelmények
+## <a name="appliance-deployment-requirements"></a>Berendezések telepítési követelményei
 
-[Felülvizsgálat](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) a telepítési követelményeknek.
+[Tekintse át](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) a központi telepítésre vonatkozó követelményeket.
 
 
 
-## <a name="appliance-license"></a>Készülék-licenc
-A berendezés tartalmaz egy Windows Server 2016 próbalicencre, amely 180 napig érvényes. Ha a próbaidőszak lejártakor közelében van, ajánlott töltse le, és a egy új berendezések üzembe helyezése vagy aktiválni a készülék virtuális Gépet az operációsrendszer-licenccel.
+## <a name="appliance-license"></a>Készülék licence
+A készülékhez tartozik egy Windows Server 2016 próbaverziós licenc, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. Amikor engedélyezi egy virtuális gép replikációját, megkezdődik a kezdeti replikálás az Azure storage, a megadott replikációs házirenddel. 
-2. Forgalom replikálja az Azure storage nyilvános végpontokat az interneten keresztül. Forgalom a helyek közötti virtuális magánhálózati (VPN) keresztül egy helyszíni hely Azure-ba történő nem támogatott.
-3. Kezdeti replikálás befejezése után kezdődik a változásreplikációhoz. A gépek nyomon követett módosításait a rendszer naplózza.
-4. Kommunikáció a következőképpen történik:
-    - Virtuális gépek a replikációs berendezéssel HTTPS a 443-as porton bejövő kommunikációt, a replikáció kezelését.
-    - A replikációs berendezés koordinálja a replikálás az Azure-ral HTTPS 443-as kimenő porton keresztül.
-    - Virtuális gépek a replikációs adatokat a folyamatkiszolgálónak (a replikáció berendezés fut) a HTTPS 9443-as porton bejövő küldése. Ez a port módosítható.
-    - A folyamatkiszolgáló fogadja a replikált adatokat, optimalizálja a és titkosítja azokat, és elküldi azt az Azure storage 443-as porton keresztüli kimenő.
-5. A replikációs adatok első föld bejelentkezik egy gyorsítótárfiókot, az Azure-ban. Ezek a naplófájlok feldolgozásának és az adatokat az Azure-ban tárolt felügyelt lemez.
+1. Amikor engedélyezi a replikációt egy virtuális géphez, a kezdeti replikáció az Azure Storage-ba megkezdődik a megadott replikációs házirend használatával. 
+2. A forgalom az Azure Storage nyilvános végpontjait az interneten keresztül replikálja. A helyek közötti virtuális magánhálózati (VPN) kapcsolaton keresztüli replikálása nem támogatott a helyszíni helyről az Azure-ba.
+3. A kezdeti replikálás befejeződése után a különbözeti replikáció megkezdődik. A rendszer naplózza a gép nyomon követett módosításait.
+4. A kommunikáció a következőképpen történik:
+    - A virtuális gépek a replikálás kezeléséhez a HTTPS 443 bejövő porton keresztül kommunikálnak a replikációs berendezéssel.
+    - A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
+    - A virtuális gépek replikációs adatküldést küldenek a (replikációs berendezésen futó) folyamat-kiszolgálónak a HTTPS 9443 bejövő porton. Ez a port módosítható.
+    - A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.
+5. A replikációs adatnaplók először egy gyorsítótárbeli Storage-fiókba helyezik az Azure-ban. A rendszer feldolgozza ezeket a naplókat, és az adattárolást egy Azure-beli felügyelt lemez tárolja.
 
 ![Architektúra](./media/migrate-replication-appliance/architecture.png)
 
-## <a name="appliance-upgrades"></a>Készülék-frissítések
+## <a name="appliance-upgrades"></a>Berendezések frissítése
 
-A berendezés manuálisan frissíteni az Azure Migrate hubról. Azt javasoljuk, hogy mindig a legújabb verzióra.
+A készüléket manuálisan frissítheti az Azure Migrate hub-ból. Javasoljuk, hogy mindig futtassa a legújabb verziót.
 
-1. Az Azure Migrate > kiszolgáló > az Azure Migrate: Server Assessment, infrastruktúra-kiszolgálók lapon kattintson a **konfigurációs kiszolgálók**.
-2. A **konfigurációs kiszolgálók**, megjelenik egy hivatkozás **Ügynökverzió** amikor a replikáció berendezés új verziója érhető el. 
-3. A replikációs készülék gépre töltse le a telepítőt, és telepítse a frissítést. A telepítő észleli, hogy az aktuális verzióját a készüléken.
+1. Azure Migrate > kiszolgálók > Azure Migrate: kiszolgáló-értékelés, infrastruktúra-kiszolgálók, kattintson a **konfigurációs kiszolgálók**elemre.
+2. A **konfigurációs kiszolgálók**területen megjelenik egy hivatkozás az **ügynök verziójában** , ha a replikációs berendezés új verziója érhető el. 
+3. Töltse le a telepítőt a replikációs berendezést végző gépre, és telepítse a frissítést. A telepítő észleli a készüléken futó aktuális verziót.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Ismerje meg, hogyan](tutorial-assess-vmware.md#set-up-the-appliance-vm) a berendezés beállítása VMware-ről.
-[Ismerje meg, hogyan](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) a berendezés beállítása a Hyper-V.
+[Ismerje meg, hogyan](tutorial-assess-vmware.md#set-up-the-appliance-vm) állíthatja be a készüléket a VMware rendszerhez.
+[Ismerje meg, hogyan](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) állíthatja be a készüléket a Hyper-V-hez.
 

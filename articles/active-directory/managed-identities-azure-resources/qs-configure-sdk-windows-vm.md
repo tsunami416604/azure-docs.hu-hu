@@ -1,5 +1,5 @@
 ---
-title: Azure SDK használata felügyelt identitásokkal rendelkező virtuális gép konfigurálásához Azure-erőforrásokhoz
+title: SDK használata felügyelt identitások konfigurálásához egy virtuális gépen – Azure AD
 description: Részletes útmutató az Azure-beli virtuális gépeken az Azure-erőforrások felügyelt identitásának konfigurálásához és használatához az Azure SDK használatával.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b4f5a26f240656911fb9627d273de8b69edff6a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d11cd51984f82bc20c02669e796d9ba21b9ed5d7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809166"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183475"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure-erőforrások felügyelt identitással rendelkező virtuális gépek konfigurálása Azure SDK használatával
 
@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti és távolíthatja el az A
 
 Az Azure több programozási platformot is támogat az [Azure SDK](https://azure.microsoft.com/downloads)-k sorozatán keresztül. Ezek közül több frissítve lett az Azure-erőforrások felügyelt identitásának támogatásához, és megfelelő mintákat biztosít a használat bemutatásához. A lista további támogatásként való hozzáadásakor frissül:
 
-| SDK | Minta |
+| SDK | Sample |
 | --- | ------ | 
 | .NET   | [Erőforrás kezelése egy olyan virtuális gépről, amelyen engedélyezve van a felügyelt identitások használata az Azure-erőforrások számára](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [Felügyelt identitással rendelkező virtuális gépek tárterületének kezelése Azure-erőforrásokhoz](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|

@@ -8,135 +8,86 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945029"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185602"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [HDInsight verziószámozási cikk](hdinsight-component-versioning.md).
-
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Apache Hadoop és az Azure-beli Apache Spark-elemzések terén.
 
-## <a name="new-features"></a>Új funkciók
+## <a name="release-date-11072019"></a>Kiadás dátuma: 11/07/2019
 
-A HDInsight 4,0-es verzióval kapcsolatos fontos változásokkal kapcsolatos további információkért lásd: a [HDI 4,0 újdonságai?](../hdinsight/hdinsight-version-release.md).
+Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes.
 
-## <a name="component-versions"></a>Összetevő-verziók
+> [!IMPORTANT]  
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [HDInsight verziószámozási cikk](hdinsight-component-versioning.md).
 
-Az összes HDInsight 4,0-összetevő hivatalos Apache-verziója alább található. A felsorolt összetevők a legújabb stabil verziók kiadásait tartalmazzák.
 
-- Apache Ambari 2.7.1
-- Apache Hadoop 3.1.1
-- Apache HBase 2.0.0
-- Apache Hive 3.1.0
-- Apache Kafka 1.1.1, 2.1.0
-- Apache Mahout 0.9.0 +
-- Apache Oozie 4.2.0
-- Apache Phoenix 4.7.0
-- Apache Pig 0.16.0
-- Apache Ranger 0.7.0
-- Apache Slider 0.92.0
-- Apache Spark 2.3.1, 2.4.0
-- Apache Sqoop 1.4.7
-- Apache TEZ 0.9.1
-- Apache Zeppelin 0.8.0
-- Apache ZooKeeper 3.4.6
+## <a name="new-features"></a>ÚJ funkciók
 
-Az Apache-összetevők újabb verziói néha a HDP eloszlásba vannak csomagolva, a fent felsorolt verziók mellett. Ebben az esetben ezek a későbbi verziók a Technical Previews táblában vannak felsorolva, és nem helyettesíthetik a fenti lista Apache összetevő-verzióit éles környezetben.
+### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity Broker (HIB) (előzetes verzió)
 
-## <a name="apache-patch-information"></a>Apache-javítási információk
+A HDInsight Identity Broker (HIB) lehetővé teszi a felhasználók számára, hogy a többtényezős hitelesítés (MFA) használatával bejelentkezzenek az Apache Ambari, és lekérik a szükséges Kerberos-jegyeket anélkül, hogy jelszó-kivonatokat kellene Azure Active Directory Domain Services (HRE-DS). Jelenleg a HIB csak ARM-sablonnal üzembe helyezett fürtök esetében érhető el.
 
-A HDInsight 4,0-ben elérhető javításokról további információt az alábbi táblázatban talál az egyes termékekhez tartozó patch-lista.
+### <a name="kafka-rest-api-proxy-preview"></a>Kafka REST API-proxy (előzetes verzió)
 
-| Terméknév | Javítási információk |
-|---|---|
-| Ambari | [Ambari-javítási információk](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Hadoop-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBase-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | Ez a kiadás további Apache-javítások nélkül biztosít kaptár-3.1.0.  |
-| Kafka | Ebben a kiadásban a Kafka 1.1.1-es verziója további Apache-javítások nélkül elérhető. |
-| Oozie | [Oozie-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [A Phoenix javításával kapcsolatos információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Pig-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Ranger-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| Spark | [Spark-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | Ez a kiadás további Apache-javítások nélkül biztosít Sqoop 1.4.7. |
-| Tez | Ez a kiadás további Apache-javítások nélkül biztosít TEZ 0.9.1. |
-| Zeppelin | Ez a kiadás a Zeppelin 0.8.0 további Apache-javítások nélkül nyújtja. |
-| Zookeeper | [Zookeeper-javítási információk](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+A Kafka REST API proxy a biztonságos HRE-engedélyezési és OAuth protokollon keresztül egykattintásos üzembe helyezést biztosít a Kafka-fürtön keresztül. 
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>Rögzített gyakori sebezhetőségek és kitettségek
+### <a name="auto-scale"></a>Automatikus méretezés
 
-További információ az ebben a kiadásban megoldott biztonsági problémákról: Hortonworks ' a [HDP 3.0.1 rögzített gyakori biztonsági rései és a kitettségek](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
+Az Azure HDInsight-ra való autoskálázás mostantól általánosan elérhető minden régióban Apache Spark és Hadoop. Ez a funkció lehetővé teszi a big data elemzési számítási feladatok költséghatékony és hatékonyabb kezelését. Most már optimalizálhatja a HDInsight-fürtök használatát, és csak azért kell fizetnie, amire szüksége van.
 
-## <a name="known-issues"></a>Ismert problémák
+A követelményektől függően választhat a terhelésalapú és az ütemezésalapú automatikus skálázás között. A terhelésen alapuló automatikus méretezés a fürt méretét az aktuális erőforrás-igényeknek megfelelően méretezheti, míg az ütemezett automatikus skálázás a fürt méretét előre meghatározott ütemterv alapján módosíthatja. 
 
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>A biztonságos HBase a replikáció alapértelmezett telepítéssel megszakadt
+A HBase és a LLAP számítási feladatának funkciói a nyilvános előzetes verzióban is elérhetők. További információ: az [Azure HDInsight-fürtök automatikus méretezése](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
 
-A HDInsight 4,0 esetében hajtsa végre a következő lépéseket:
+### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>HDInsight gyorsított írások az Apache HBase 
 
-1. Fürt közötti kommunikáció engedélyezése.
-1. Jelentkezzen be az aktív átjárócsomóponthoz.
-1. Töltsön le egy parancsfájlt a replikáció engedélyezéséhez a következő paranccsal:
+A Gyorsított írási műveletek az Azure prémium szintű felügyelt SSD lemezeit használja az Apache HBase Előre írt napló (WAL) szolgáltatásához. További információ: [Azure HDInsight gyorsított írások az Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)-hoz.
 
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. Írja be a `sudo kinit <domainuser>`parancsot.
-1. A parancsfájl futtatásához írja be a következő parancsot:
+### <a name="custom-ambari-db"></a>Egyéni Ambari-adatbázis
 
-    ```
-    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-A HDInsight 3,6 esetében tegye a következőket:
+A HDInsight mostantól új kapacitást kínál, amely lehetővé teszi, hogy az ügyfelek a saját SQL-ADATBÁZISát használják a Ambari. Mostantól az ügyfelek kiválaszthatják a megfelelő SQL-adatbázist a Ambari, és a saját üzleti növekedési követelményük alapján egyszerűen frissíthetik azt. Az üzembe helyezés egy Azure Resource Manager sablonnal történik. További információ: HDInsight- [fürtök beállítása egyéni Ambari-adatbázissal](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
 
-1. Jelentkezzen be az aktív HMaster ZK.
-1. Töltsön le egy parancsfájlt a replikáció engedélyezéséhez a következő paranccsal:
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. Írja be a `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`parancsot.
-1. Írja be a következő parancsot:
+### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>Az F sorozatú virtuális gépek mostantól elérhetők a HDInsight
 
-    ```bash
-    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>A Phoenix az sqlline használata a HBase-fürt HDInsight 4,0-re való áttelepítése után leáll
-
-Hajtsa végre a következő lépéseket:
-
-1. Dobja el a következő Phoenix-táblákat:
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.MUTEX`
-    1. `SYSTEM.CATALOG`
-1. Ha nem tudja törölni a táblák bármelyikét, indítsa újra a HBase a táblák kapcsolatainak törléséhez.
-1. Futtassa ismét az `sqlline.py` parancsot. A Phoenix újra létrehozza az 1. lépésben törölt összes táblát.
-1. A HBase-adataihoz tartozó Phoenix-táblák és-nézetek újbóli előállítása.
-
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>A Phoenix az sqlline használata a HBase Phoenix metaadatainak replikálását követően leáll a HDInsight 3,6 – 4,0
-
-Hajtsa végre a következő lépéseket:
-
-1. A replikáció előtt lépjen a cél 4,0 fürtre, és hajtsa `sqlline.py`végre a műveletet. Ez a parancs olyan Phoenix- `SYSTEM.MUTEX` táblákat `SYSTEM.LOG` hoz majd, amelyek csak a 4,0-es verzióban léteznek.
-1. Dobja el a következő táblázatokat:
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.CATALOG`
-1. A HBase-replikáció elindítása
+Az F-sorozatú virtuális gépek (VM-EK) jó választást kapnak a HDInsight és a könnyű feldolgozási követelményekkel való ismerkedéshez. Az alacsonyabb óránkénti listaáron elérhető F-sorozat képviseli a legjobb ár–teljesítmény arányt az Azure-portfólióban az egy vCPU-ra jutó Azure-alapú számítási egységek (Azure Compute Unit, ACU) alapján. További információ: [a megfelelő virtuálisgép-méret kiválasztása az Azure HDInsight-fürthöz](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size).
 
 ## <a name="deprecation"></a>Elavulás
 
-A Apache Storm és a ML szolgáltatás nem érhető el a HDInsight 4,0-ben.
+### <a name="g-series-virtual-machine-deprecation"></a>A G sorozatú virtuális gép elavult
+Ebből a kiadásból a G sorozatú virtuális gépeket már nem ajánljuk fel a HDInsight.
+
+### <a name="dv1-virtual-machine-deprecation"></a>Dv1 virtuális gép elavult
+Ettől a kiadástól kezdve a Dv1 virtuális gépek HDInsight-mel való használata elavult. A Dv1-hez tartozó összes ügyfél-kérelem automatikusan a Dv2 lesz kézbesítve. A Dv1 és a Dv2 virtuális gépek között nincs árkülönbség.
+
+## <a name="behavior-changes"></a>Viselkedési változások
+
+### <a name="cluster-managed-disk-size-change"></a>Fürtözött felügyelt lemez méretének változása
+A HDInsight felügyelt lemezterületet biztosít a fürt számára. Ebből a kiadásból az új létrehozott fürt egyes csomópontjainak felügyelt lemez mérete 128 GB-ra módosul.
+
+## <a name="upcoming-changes"></a>Közelgő változások
+A következő módosítások a közelgő kiadásokban fognak történni. 
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
+A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Decembertől kezdődően a HDInsight az Azure virtuálisgép-méretezési csoportokat fogja használni helyette. További információ az [Azure-beli virtuálisgép-méretezési csoportokról](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+
+### <a name="hbase-20-to-21"></a>HBase 2,0 – 2,1
+A közelgő HDInsight 4,0-es kiadásban a HBase verziója a 2,0-es verzióról 2,1-ra lesz frissítve.
+
+### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>Az a sorozatú virtuális gépek elavulása ESP-fürt esetén
+Az A sorozatú virtuális gépek az ESP-fürtökkel kapcsolatos problémákat okozhatnak viszonylag alacsony CPU-és memória-kapacitás miatt. A következő kiadásban az A sorozatú virtuális gépek elavultak lesznek az új ESP-fürtök létrehozásához.
+
+## <a name="bug-fixes"></a>Hibajavítások
+A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
+
+## <a name="component-version-change"></a>Összetevő verziójának módosítása
+Ehhez a kiadáshoz nem módosítható összetevő-verzió. A HDInsight 4,0 ad HDInsight 3,6 aktuális összetevő-verzióit [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)találja.

@@ -17,16 +17,19 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 322e0e5f740bd416c7831f32e0d74f9290335fe3
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295395"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195750"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>A Microsoft Identity platform és a OAuth 2,0 erőforrás-tulajdonos jelszava hitelesítő adatai
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>A Microsoft Identity platform és a OAuth 2,0 erőforrás-tulajdonos jelszava hitelesítő adatai
 
-A Microsoft Identity platform támogatja az [erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), amely lehetővé teszi, hogy az alkalmazás közvetlenül a jelszavuk kezelésével jelentkezzen be a felhasználóba. A ROPC folyamat magas fokú megbízhatóságot és felhasználói expozíciót igényel, és csak akkor használja ezt a folyamatot, ha más, biztonságosabb, a folyamatok nem használhatók.
+A Microsoft Identity platform támogatja a [OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), amely lehetővé teszi, hogy az alkalmazás közvetlenül a jelszavának kezelésével jelentkezzen be a felhasználóba.
+
+> [!WARNING]
+> A Microsoft azt javasolja, hogy _ne használja a_ ROPC folyamatot. A legtöbb esetben biztonságosabb alternatívák érhetők el és ajánlottak. Ennek a folyamatnak nagyon nagyfokú megbízhatóságra van szüksége az alkalmazásban, és olyan kockázatokat hordoz, amelyek nem jelennek meg más folyamatokban. Ezt a folyamatot csak akkor használja, ha a többi biztonságosabb folyamat nem használható.
 
 > [!IMPORTANT]
 >
@@ -48,7 +51,7 @@ A ROPC folyamat egyetlen kérelem: elküldi az ügyfél-azonosítót és a felha
 
 > [!TIP]
 > Próbálja meg végrehajtani a kérelmet postán!
-> [@no__t – ezt a kérelmet Poster-1Try futtatja](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -67,14 +70,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy `consumers` értékre, de a következő lehet: `organizations`. |
-| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. | 
-| `grant_type` | Szükséges | @No__t-0 értékre kell állítani. |
-| `username` | Szükséges | A felhasználó e-mail-címe. |
-| `password` | Szükséges | A felhasználó jelszava. |
+| `tenant` | Kötelező | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy `consumers`értékre, de az `organizations`ra állítható be. |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. | 
+| `grant_type` | Kötelező | Meg kell `password`. |
+| `username` | Kötelező | A felhasználó e-mail-címe. |
+| `password` | Kötelező | A felhasználó jelszava. |
 | `scope` | Ajánlott | Az alkalmazás által igényelt [hatókörök](v2-permissions-and-consent.md)vagy engedélyek szóközzel tagolt listája. Egy interaktív folyamat során a rendszergazdának vagy a felhasználónak meg kell adnia a hatókörét az idő előtt. |
-| `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, akkor a `client_secret` vagy a `client_assertion` nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. | 
-| `client_assertion` | Néha szükséges | A `client_secret` másik formája, amely tanúsítvány használatával lett létrehozva.  További részletekért tekintse meg a [tanúsítvány hitelesítő adatait](active-directory-certificate-credentials.md) . | 
+| `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, akkor a `client_secret` vagy `client_assertion` nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. | 
+| `client_assertion` | Néha szükséges | A `client_secret`egy másik formája, amely tanúsítvány használatával lett létrehozva.  További részletekért tekintse meg a [tanúsítvány hitelesítő adatait](active-directory-certificate-credentials.md) . | 
 
 ### <a name="successful-authentication-response"></a>Sikeres hitelesítési válasz
 
@@ -93,12 +96,12 @@ A következő példa egy sikeres jogkivonat-választ mutat be:
 
 | Paraméter | Formátum | Leírás |
 | --------- | ------ | ----------- |
-| `token_type` | Sztring | Mindig a következőre van beállítva: `Bearer`. |
+| `token_type` | Sztring | Mindig `Bearer`re van állítva. |
 | `scope` | Szóközzel tagolt karakterláncok | Ha egy hozzáférési jogkivonatot adott vissza, akkor ez a paraméter felsorolja azokat a hatóköröket, amelyekhez a hozzáférési jogkivonat érvényes. |
 | `expires_in`| int | Azon másodpercek száma, ameddig a tartalmazott hozzáférési jogkivonat érvényes. |
 | `access_token`| Átlátszatlan karakterlánc | A kért [hatókörökhöz](v2-permissions-and-consent.md) lett kiállítva. |
-| `id_token` | JWT | Kiadva, ha az eredeti `scope` paraméter tartalmazza a `openid` hatókört. |
-| `refresh_token` | Átlátszatlan karakterlánc | Kiadva, ha az eredeti `scope` paraméter `offline_access` értéket tartalmaz. |
+| `id_token` | JWT | Kiadva, ha az eredeti `scope` paraméter tartalmazza a `openid` hatókörét. |
+| `refresh_token` | Átlátszatlan karakterlánc | Kiadva, ha az eredeti `scope` paraméter `offline_access`tartalmaz. |
 
 A frissítési jogkivonattal új hozzáférési jogkivonatok szerezhetők be, és a tokenek frissítése a [OAuth-programkód dokumentációjában](v2-oauth2-auth-code-flow.md#refresh-the-access-token)ismertetett folyamattal megegyező folyamat használatával végezhető el.
 
@@ -109,9 +112,9 @@ Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy 
 | Hiba | Leírás | Ügyfél művelete |
 |------ | ----------- | -------------|
 | `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva, a rendszer `consent_required` hibát ad vissza. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
-| `invalid_request` | A kérés nem megfelelően lett kiépítve | A Grant típus nem támogatott a `/common` vagy a `/consumers` hitelesítési környezetekben.  Ehelyett használja a `/organizations` vagy a bérlői azonosítót. |
+| `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a `/common` vagy `/consumers` hitelesítési környezetekben.  Ehelyett használjon `/organizations` vagy egy bérlői azonosítót. |
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 
 * Próbálja ki a ROPC a [minta konzol alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)használatával.
 * Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.

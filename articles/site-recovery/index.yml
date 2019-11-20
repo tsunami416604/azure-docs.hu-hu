@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Az Azure Site Recovery dokumentációja
-summary: Az Azure Site Recovery használatával elvégezheti a helyszíni gépek és számítási feladatok vészhelyreállítását az Azure-ba, az Azure-beli virtuális gépekét pedig egy másodlagos Azure-régióba. Az Azure-ba végzett replikáció megvalósításával szolgáltatáskimaradás esetén levezényelheti a feladatátvételt, és az Azure-ban továbbra is elérheti a számítási feladatok és alkalmazásokat. Amint az elsődleges hely megint elérhetővé válik, szükség esetén visszaadhatja a feladatokat.
+summary: Az Azure Site Recovery használata a helyszíni számítási feladatok és az Azure-beli virtuális gépek vészhelyreállításához.
 metadata:
   title: Az Azure Site Recovery dokumentációja
-  description: Az Azure Site Recovery használatával elvégezheti a helyszíni gépek és számítási feladatok vészhelyreállítását az Azure-ba, az Azure-beli virtuális gépekét pedig egy másodlagos Azure-régióba. Az Azure-ba végzett replikáció megvalósításával szolgáltatáskimaradás esetén levezényelheti a feladatátvételt, és az Azure-ban továbbra is elérheti a számítási feladatok és alkalmazásokat. Amint az elsődleges hely megint elérhetővé válik, szükség esetén visszaadhatja a feladatokat.
+  description: Helyszíni számítási feladatok és Azure-beli virtuális gépek Azure-ba történő vészhelyreállításának beállítása.
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001097"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186582"
 landingContent:
 - title: Tudnivalók a Site Recovery szolgáltatásról
   linkLists:

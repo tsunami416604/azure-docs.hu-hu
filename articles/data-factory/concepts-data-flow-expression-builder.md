@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388054"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184675"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Adatforgalmi kifejezés-szerkesztő leképezése
 
@@ -53,7 +53,7 @@ Megjegyzések hozzáadása a kifejezésekhez az egysoros és a többsoros Megjeg
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 
-A Azure Data Factory adatáramlás kifejezésének nyelve, a [teljes referenciák dokumentációja itt](https://aka.ms/dataflowexpressions)lehetővé teszi a reguláris kifejezések szintaxisát tartalmazó függvények használatát. Reguláris kifejezések funkcióinak használatakor a Kifejezésszerkesztő a fordított perjelet (\\) fogja értelmezni Escape-karakteres sorozatként. Ha a reguláris kifejezésben fordított perjeleket használ, zárja be a teljes regexet a kullancsokban (\`), vagy használjon dupla fordított perjelet.
+A Azure Data Factory adatáramlás kifejezésének nyelve, a [teljes referenciák dokumentációja itt](https://aka.ms/dataflowexpressions)lehetővé teszi a reguláris kifejezések szintaxisát tartalmazó függvények használatát. Reguláris kifejezések funkcióinak használatakor a Kifejezésszerkesztő a fordított perjelet (\\) fogja értelmezni Escape-karakteres sorozatot használva. Ha a reguláris kifejezésben fordított perjeleket használ, zárja be a teljes regexet a kullancsokban (\`), vagy használjon dupla fordított perjelet.
 
 Példa a ticks használatával
 
@@ -77,6 +77,40 @@ A tömböket visszaadó Expression függvények a szögletes zárójelek ([]) ha
 
 Ha speciális karaktereket vagy szóközöket tartalmazó oszlopnevek vannak, a nevet kapcsos zárójelekkel kell megadnia.
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>Billentyűparancsok
+
+* ```Ctrl-K Ctrl-C```: megjegyzések teljes sora
+* ```Ctrl-K Ctrl-U```: Megjegyzés kifűzése
+* ```F1```: a szerkesztő Súgó parancsainak megadása
+* ```Alt-Down Arrow```: az aktuális sor áthelyezése lefelé
+* ```Alt-Up Arrow```: az aktuális vonal feljebb helyezése
+* ```Cntrl-Space```: a kontextus súgójának megjelenítése
+
+## <a name="manual-comments"></a>Manuális megjegyzések
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+Ha a kifejezés tetején lévő megjegyzést helyez el, az átalakítás szövegmezőben megjelenik az átalakítási kifejezések dokumentálására:
+
+![Megjegyzések](media/data-flow/comments2.png "Megjegyzések")
+
+## <a name="convert-to-dates-or-timestamps"></a>Konvertálás dátumokra vagy időbélyegekre
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+Vegye figyelembe, hogy ha karakterlánc-konstansokat szeretne szerepeltetni az időbélyegző kimenetében, be kell csomagolnia az átalakítást egy toString () belül.
+
+## <a name="handling-column-names-with-special-characters"></a>Oszlopnevek speciális karakterekkel való kezelésére
+
+Ha speciális karaktereket vagy szóközöket tartalmazó oszlopnevek vannak, a nevet kapcsos zárójelekkel kell megadnia.
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Következő lépések
 

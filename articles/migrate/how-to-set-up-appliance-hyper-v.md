@@ -1,17 +1,17 @@
 ---
-title: Berendezés beállítása Azure Migrate Server Assessment/Migration for Hyper-V virtuális gépek számára | Microsoft Docs
-description: Ismerteti, hogyan állíthat be egy készüléket a Hyper-V virtuális gépek felderítéséhez, értékeléséhez és ügynök nélküli áttelepítéséhez Azure Migrate Server Assessment/Migration használatával.
+title: Azure Migrate berendezés beállítása a Hyper-V-hez
+description: Ismerje meg, hogyan állíthat be egy Azure Migrate berendezést a Hyper-V virtuális gépek felméréséhez és áttelepítéséhez.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158624"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185934"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Berendezés beállítása Hyper-V virtuális gépekhez
 
@@ -73,8 +73,8 @@ Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
 3. A **mappában keresse**meg a kibontott virtuális merevlemezt tartalmazó mappát. Ezután kattintson a **Next** (Tovább) gombra.
 1. A **virtuális gép kiválasztása lapon**kattintson a **tovább**gombra.
 2. Az **importálási típus kiválasztása**területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Ezután kattintson a **Next** (Tovább) gombra.
-3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább**gombra.
-4. A **tárolási mappák**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább**gombra.
+3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
+4. A **tárolási mappák**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
 5. A **hálózat kiválasztása**területen adja meg azt a virtuális kapcsolót, amelyet a virtuális gép használni fog. A kapcsolónak internetkapcsolattal kell rendelkeznie az Azure-ba való adatküldéshez.
 6. Az **Összefoglalás**területen tekintse át a beállításokat. Ezután kattintson a **Befejezés**gombra.
 7. A Hyper-V kezelőjében > **Virtual Machines**indítsa el a virtuális gépet.

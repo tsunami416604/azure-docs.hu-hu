@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512898"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184259"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer – gyakori kérdések (előzetes verzió)
 
@@ -78,7 +78,7 @@ Az előzetes verzióban az alábbi előre konfigurált végpontok érhetők el:
     * Az Egyesült Királyság nyugati régiója  
     * Nyugat-Európa
     * USA nyugati régiója
-    * USA 2. nyugati régiója
+    * USA nyugati régiója, 2.
 * **Több Azure-régió kombinációja**
     * USA keleti régiója, Dél-Brazília
     * USA keleti régiója, Kelet-Ázsia
@@ -99,6 +99,10 @@ Az előzetes verzióban az alábbi előre konfigurált végpontok érhetők el:
 
 Az Internet Analyzer segítségével megismerheti a végfelhasználók teljesítményét, és segítheti a döntések meghozatalát a teljesítményük javítása érdekében. Míg más Azure monitoring-eszközök betekintést nyújtanak az Azure-szolgáltatásba, az Internet Analyzer a felhasználók teljes körű internetes teljesítményének mérésére koncentrál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Hogyan történik az Internet Analyzer által kezelt mérési adatfeldolgozás?
+
+Az Azure [erős biztonsági folyamatokkal rendelkezik, és megfelel a megfelelőségi szabványok széles skálájának](https://azure.microsoft.com/support/trust-center/). Csak Ön és a kijelölt csapat férhet hozzá az adataihoz. A Microsoft munkatársai csak bizonyos korlátozott körülmények között érhetik el a hozzáférést az Ön számára. Az átvitel és a nyugalmi állapotban is titkosítva van.
+
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse meg az [Internet Analyzer áttekintése](internet-analyzer-overview.md)című témakört.

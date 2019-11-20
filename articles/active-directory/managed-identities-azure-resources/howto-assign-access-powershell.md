@@ -1,5 +1,5 @@
 ---
-title: Egy felügyelt identitás hozzáférés hozzárendelése egy Azure-erőforrást PowerShell használatával
+title: Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz a PowerShell használatával – Azure AD
 description: Részletes utasításokat egy erőforráson, egy felügyelt identitás hozzárendelése egy másik erőforrás, a PowerShell használatával való hozzáférést.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82fa5019e740d16d0b97111fcf8dbc4f6c91d57b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290688"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183999"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Egy felügyelt identitás hozzáférés hozzárendelése egy erőforrást PowerShell használatával
 
@@ -45,14 +45,14 @@ Miután engedélyezte az Azure-erőforrás, felügyelt identitás [például egy
    ```powershell
    Connect-AzAccount
    ```
-2. Ebben a példában azt egy Azure-beli Virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először használjuk [Get-azvm parancsmag](/powershell/module/az.compute/get-azvm) beolvasni az egyszerű szolgáltatás nevű virtuális gép `myVM`, amely jött létre, amikor lehetővé tettük felügyelt identitás. Ezután használja [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) biztosíthat a virtuális gép **olvasó** nevű tárfiókot hozzáférést `myStorageAcct`:
+2. Ebben a példában azt egy Azure-beli Virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először a [Get-AzVM](/powershell/module/az.compute/get-azvm) használatával szerezheti be a `myVM`nevű virtuális gép egyszerű szolgáltatását, amely akkor jött létre, amikor engedélyezte a felügyelt identitást. Ezután a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg a virtuális gép **olvasójának** a `myStorageAcct`nevű Storage-fiókhoz való hozzáférést:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
 - Engedélyezheti a felügyelt identitás-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások PowerShell-lel, egy Azure virtuális Gépen található](qs-configure-powershell-windows-vm.md).

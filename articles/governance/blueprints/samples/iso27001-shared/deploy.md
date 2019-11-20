@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 megosztott szolgáltatások tervezetének mintája – üzembe helyezési lépések
 description: Az ISO 27001 megosztott szolgáltatások tervezetének üzembe helyezési mintája, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 54f53e13e6d4561cb46f62318203c41c504ee60b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3f6928666dc098de81e20555cc1164338331fa90
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037334"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184393"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Shared Services Blueprint minta üzembe helyezése
 

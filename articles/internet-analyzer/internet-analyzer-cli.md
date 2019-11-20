@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839529"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184271"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Internet Analyzer-teszt létrehozása a parancssori felület használatával (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Internet Analyzer erőforrásait kétféleképpen lehet létrehozni – a [Az
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A nyilvános előzetes verzió globálisan használható; az adattárolás azonban az *USA 2. nyugati* régiójára korlátozódik az előzetes verzióban.
 
@@ -130,7 +130,8 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az [Internet Analyzer gyakori kérdéseinek](internet-analyzer-faq.md) beolvasása
+* A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) .
+* Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt.
 * További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról. 

@@ -1,5 +1,5 @@
 ---
-title: Igényelhető virtuális gépek létrehozása és kezelése a laborban Azure DevTest Labsban | Microsoft Docs
+title: Igényelhető virtuális gépek létrehozása és kezelése a Azure DevTest Labsban | Microsoft Docs
 description: Megtudhatja, hogyan adhat hozzá igényelhető virtuális gépet egy laborhoz Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ad10a1763b4882aa3bb6aec7447f57ebaf07369
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a3b8085a4dd2ece384ece72578ffafbd0e2e0b9d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123704"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184288"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Igényelhető virtuális gépek létrehozása és kezelése Azure DevTest Labs
 Az igény szerinti virtuális gépeket hasonló módon veheti fel a laborba úgy, hogy hogyan [vegyen fel egy szabványos virtuális gépet](devtest-lab-add-vm.md) – egy olyan *alapból* , amely [Egyéni rendszerkép](devtest-lab-create-template.md), [képlet](devtest-lab-manage-formulas.md)vagy [piactér-rendszerkép](devtest-lab-configure-marketplace-images.md). Ez az oktatóanyag végigvezeti a Azure Portal használatával, hogy a DevTest Labs szolgáltatásban egy, az igénylést használó virtuális gépet felvegyen egy laborba, és megjeleníti a felhasználó által a virtuális gép igénylésére és visszaigénylésére vonatkozó folyamatokat.
@@ -97,6 +97,6 @@ Ez az úgynevezett "adatlemez átvitele". Az adatlemez ezután elérhetővé vá
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A létrehozást követően csatlakozhat a virtuális géphez a felügyeleti paneljén a **Kapcsolódás** lehetőség kiválasztásával.
 * Ismerkedjen meg a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067779"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196672"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Mi az IP-168.63.129.16?
 
@@ -35,12 +35,13 @@ Az IP-168.63.129.16 egy virtuális nyilvános IP-cím, amely az Azure platform e
 ## <a name="scope-of-ip-address-1686312916"></a>IP-168.63.129.16 hatóköre
 
 A nyilvános IP-168.63.129.16 minden régióban és minden nemzeti felhőben használatos. Ez a speciális nyilvános IP-cím a Microsoft tulajdonában van, és nem fog változni. Ezt az alapértelmezett hálózati biztonsági csoport szabálya engedélyezi. Azt javasoljuk, hogy engedélyezze ezt az IP-címet bármely helyi tűzfal-házirendben a bejövő és kimenő irányban is. A speciális IP-cím és az erőforrások közötti kommunikáció biztonságos, mert csak a belső Azure-platform tud üzenetet kiszolgálni ebből az IP-címről. Ha ez a címe le van tiltva, a váratlan viselkedés különböző helyzetekben fordulhat elő.
+Legalább a következő portokat kell megnyitni a WireServer: 80, 443 és 32526 közötti kommunikáció engedélyezéséhez.
 
 [Azure Load Balancer állapot](../load-balancer/load-balancer-custom-probe-overview.md) -mintavétel ebből az IP-címről származik. Ha letiltja ezt az IP-címet, a mintavétel sikertelen lesz.
 
 A nem virtuális hálózati forgatókönyvek (klasszikus) esetében az állapot-mintavétel egy magánhálózati IP-címről származik, és a rendszer nem használja a 168.63.129.16.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Biztonsági csoportok](security-overview.md)
 - [Hálózati biztonsági csoport létrehozása, módosítása vagy törlése](manage-network-security-group.md)

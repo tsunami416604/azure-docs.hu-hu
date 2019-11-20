@@ -1,5 +1,5 @@
 ---
-title: Virtuális gép (klasszikus) vagy Cloud Services szerepkör-példány áthelyezése másik alhálózatra – Azure PowerShell | Microsoft Docs
+title: Azure-beli virtuális gép (klasszikus) vagy Cloud Services szerepkör-példányok áthelyezése másik alhálózatra
 description: Megtudhatja, hogyan helyezhet át virtuális gépeket (klasszikus) és Cloud Services szerepkör-példányokat egy másik alhálózatra a PowerShell használatával.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 275d59a7bddd8b2b609169218afcd15e9a0ce913
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: e2a92355632ef0d7059c9e5294448de0ca591b82
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058375"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196686"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Virtuális gép (klasszikus) vagy Cloud Services szerepkör-példány áthelyezése másik alhálózatra a PowerShell használatával
 A PowerShell használatával áthelyezheti a virtuális gépeket (klasszikus) az egyik alhálózatból egy másikba ugyanazon a virtuális hálózaton (VNet). A szerepkör-példányok a PowerShell használata helyett a CSCFG fájl szerkesztésével helyezhetők át.

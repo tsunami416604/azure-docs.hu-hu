@@ -18,7 +18,7 @@
         - name: .NET-keretrendszer
           href: quickstart-dotnet-app.md
         - name: Azure Functions a .NET Core-ban
-          href: quickstart-azure-function-csharp.md
+          href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
     - name: Funkciókezelés
@@ -37,6 +37,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: Dinamikus konfiguráció engedélyezése a .NET-keretrendszerben
       href: enable-dynamic-configuration-dotnet.md
+    - name: Dinamikus konfiguráció engedélyezése az Azure Functionsben
+      href: enable-dynamic-configuration-azure-functions-csharp.md
     - name: Funkciójelölők használata .NET Core-alkalmazásokban
       href: use-feature-flags-dotnet-core.md
     - name: Funkciójelölők használata Spring Boot-alkalmazásokban
@@ -67,7 +69,7 @@
           href: concept-disaster-recovery.md
 - name: Útmutatók
   items:
-    - name: Integráció az Azure Managed Service Identityvel
+    - name: Integráció az Azure Managed Identityvel
       href: howto-integrate-azure-managed-service-identity.md
     - name: Konfigurációs adatok importálása vagy exportálása
       href: howto-import-export-data.md

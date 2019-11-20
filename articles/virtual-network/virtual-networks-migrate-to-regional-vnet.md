@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális hálózat (klasszikus) migrálása az affinitási csoportból egy régióba | Microsoft Docs
+title: Azure-beli virtuális hálózat (klasszikus) migrálása az affinitási csoportból a régióba
 description: Megtudhatja, hogyan telepíthet át egy virtuális hálózatot (klasszikus) egy affinitási csoportból egy régióba.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058398"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196700"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Virtuális hálózat (klasszikus) áttelepítése egy affinitási csoportból egy régióba
 
@@ -50,9 +50,9 @@ Azt javasoljuk, hogy ne használjon affinitási csoportokat általánosságban. 
    
     Szerkessze a következő sorokat a hálózati konfigurációs fájlban, és cserélje le az értékeket a saját értékeire: 
    
-    **Régi érték:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **Régi érték:** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
    
-    **Új érték:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
+    **Új érték:** \<VirtualNetworkSitename = "VNetUSWest" location = "West US"\>
 3. Mentse a módosításokat, és [importálja](virtual-networks-using-network-configuration-file.md#import) a hálózati konfigurációt az Azure-ba.
 
 > [!NOTE]

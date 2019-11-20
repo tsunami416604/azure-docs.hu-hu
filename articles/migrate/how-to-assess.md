@@ -1,17 +1,18 @@
 ---
-title: Assessment Tools hozzáadása a Azure Migrateban | Microsoft Docs
-description: Ismerteti, hogyan adhat hozzá értékelési eszközöket az Azure Migrate hub-ban.
+title: Assessment Tools hozzáadása a Azure Migrate
+description: Megtudhatja, hogyan adhat hozzá értékelési eszközöket a Azure Migrateban.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/04/2019
+ms.manager: carmonm
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8d13222ec05fc97fa591ac67d636a1f8c5c88845
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715868"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185914"
 ---
 # <a name="add-assessment-tools"></a>Felmérőeszközök hozzáadása
 
@@ -67,6 +68,6 @@ Ha a kiértékeléshez nem Azure Migrate eszközt választ, kezdje a licenc besz
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [VMware](tutorial-prepare-vmware.md) virtuális gépek, a [Hyper-V](tutorial-prepare-hyper-v.md)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md) Azure Migrate Server Assessment használatával történő értékelésének kipróbálása

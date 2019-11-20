@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: webalkalmazási tűzfal-házirend létrehozása az Azure-beli előtérben a Azure Portal használatával'
+title: 'Oktatóanyag: WAF-szabályzat létrehozása az Azure bejárati ajtóhoz – Azure Portal'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre webalkalmazási tűzfal-(WAF-) szabályzatot a Azure Portal használatával.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,18 +7,18 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/07/2019
 ms.author: victorh
-ms.openlocfilehash: 602a8620ef35ea247c5865d97495ea43a7d7d93c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501112"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186728"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Oktatóanyag: webalkalmazási tűzfal szabályzatának létrehozása az Azure-beli előtérben a Azure Portal használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy alapszintű Azure webalkalmazási tűzfal-(WAF-) szabályzatot, és hogyan alkalmazhatja azt egy előtér-gazdagépen az Azure bejárati ajtón.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * WAF szabályzat létrehozása
@@ -38,7 +38,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot a felügyelt alapérte
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés            |Válassza ki a bejárati ajtó előfizetés nevét.|
+    | Előfizetést            |Válassza ki a bejárati ajtó előfizetés nevét.|
     | Erőforráscsoport          |Válassza ki az első ajtóhoz tartozó erőforráscsoport nevét.|
     | Szabályzat neve             |Adja meg a WAF szabályzat egyedi nevét.|
 
@@ -76,7 +76,7 @@ Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés sz
 
  ![WAF-szabálykészlet módosítása](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-webalkalmazási tűzfal](../overview.md)

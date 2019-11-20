@@ -1,5 +1,5 @@
 ---
-title: A bot Protection konfigurálása a webalkalmazási tűzfalhoz az Azure bejárati ajtaján (előzetes verzió)
+title: A bot Protection beállítása a WAF az Azure bejárati ajtóval (előzetes verzió)
 description: A webalkalmazási tűzfal (WAF) megismerése.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8901e3763b10b7ee00c10f4eec08a8325d7dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512469"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186715"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>A webalkalmazási tűzfal robot-védelmének konfigurálása (előzetes verzió)
 Ez a cikk bemutatja, hogyan konfigurálhatja a bot Protection-szabályt az Azure Web Application Firewall (WAF) szolgáltatásban az Azure CLI, Azure PowerShell vagy Azure Resource Manager sablon használatával.
@@ -33,6 +33,6 @@ Hozzon létre egy alapszintű WAF-szabályzatot a bejárati ajtóhoz a [Azure Po
     
    ![Robot védelmi szabály](.././media/waf-front-door-configure-bot-protection/botprotect2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [figyelheti a WAF](waf-front-door-monitor.md).

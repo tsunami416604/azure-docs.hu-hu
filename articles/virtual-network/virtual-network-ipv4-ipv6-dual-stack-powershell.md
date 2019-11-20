@@ -1,11 +1,11 @@
 ---
-title: IPv6 Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer használatával az Azure-ban – PowerShell
+title: IPv6 Dual stack-alkalmazás üzembe helyezése – alapszintű Load Balancer – PowerShell
 titlesuffix: Azure Virtual Network
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú Dual stack-alkalmazást az Azure Virtual Networkben az Azure PowerShell használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0b7f7a9198664693819143c306eeb1a020d22b7c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011431"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185489"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer-PowerShell használatával (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy alapszintű Load Balancerú Dual stack-(IPv4-és IPv6-) alkalmazást az Azure CLI-vel, amely egy kettős veremből álló virtuális hálózatot és alhálózatot tartalmaz, egy alapszintű Load Balancer kettős (IPv4 + IPv6) előtér-konfigurációval, a kettős IP-konfiguráció, hálózati biztonsági csoport és nyilvános IP-címek.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy alapszintű Load Balancert tartalmazó kettős verem-(IPv4-és IPv6-) alkalmazást egy olyan Azure PowerShell használatával, amely kettős verembeli virtuális hálózatot és alhálózatot tartalmaz, egy alapszintű Load Balancer kettős (IPv4 + IPv6) előtér-konfigurációval kettős IP-konfigurációval, hálózati biztonsági csoporttal és nyilvános IP-címekkel rendelkezik.
 
 A kettős verem (IPV4 + IPv6) alkalmazás standard Load Balancer használatával történő üzembe helyezésével kapcsolatban lásd: [IPv6-alapú kettős verem-alkalmazás üzembe helyezése standard Load Balancer használatával Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 
@@ -42,7 +42,7 @@ Regisztráljon a következőképpen:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure PowerShell parancs futtatásával tekintheti meg: A regisztrációt a következőképpen tekintheti meg:
+A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztráció állapotát a következő Azure PowerShell parancs futtatásával tekintheti meg: a regisztrációt a következőképpen tekintheti meg:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
@@ -64,7 +64,7 @@ A kettős veremből álló virtuális hálózat létrehozása előtt létre kell
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>IPv4-és IPv6-alapú nyilvános IP-címek létrehozása
-A virtuális gépek internetről való eléréséhez IPv4-és IPv6-alapú nyilvános IP-címekre van szükség a terheléselosztó számára. Hozzon létre nyilvános IP [-címeket a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Az alábbi példa a *dsPublicIP_v4* és a *dsPublicIP_v6* nevű IPv4-és IPv6-alapú nyilvános IP-címet hozza létre a *dsRG1* erőforráscsoporthoz:
+A virtuális gépek internetről való eléréséhez IPv4-és IPv6-alapú nyilvános IP-címekre van szükség a terheléselosztó számára. Hozzon létre nyilvános IP [-címeket a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Az alábbi példa létrehoz egy *dsPublicIP_v4* nevű IPv4-és IPv6 nyilvános IP-címet, és *dsPublicIP_v6* a *dsRG1* erőforráscsoporthoz:
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -105,7 +105,7 @@ Ebben a szakaszban két előtérbeli IP-címet (IPv4 és IPv6) és a terhelésel
 
 ### <a name="create-front-end-ip"></a>Előtér-IP-cím létrehozása
 
-Hozzon létre egy előtér-IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Az alábbi példa a *dsLbFrontEnd_v4* és a *dsLbFrontEnd_v6*nevű IPv4-és IPv6-előtérbeli IP-konfigurációkat hozza létre:
+Hozzon létre egy előtér-IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Az alábbi példa a *dsLbFrontEnd_v4* és *dsLbFrontEnd_v6*nevű IPv4-és IPv6-előtérbeli IP-konfigurációkat hozza létre:
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -120,7 +120,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>Háttérbeli címkészlet konfigurálása
 
-Hozzon létre egy háttér-címkészletet a [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). A virtuális gépek ehhez a háttér-készlethez csatlakoznak a hátralévő lépésekben. Az alábbi példa a *dsLbBackEndPool_v4* és a *dsLbBackEndPool_v6* nevű háttér-címkészletet hozza létre a virtuális gépeket IPv4-és IPv6-alapú NIC-konfigurációval is:
+Hozzon létre egy háttér-címkészletet a [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). A virtuális gépek ehhez a háttér-készlethez csatlakoznak a hátralévő lépésekben. Az alábbi példa létrehoz egy *dsLbBackEndPool_v4* nevű háttér-címkészletet, és *dsLbBackEndPool_v6* , hogy az IPv4-és IPv6-alapú NIC-konfigurációval rendelkező virtuális gépeket is tartalmazza:
 
 ```azurepowershell-interactive
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -134,7 +134,7 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 
 A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Annak érdekében, hogy csak az egészséges virtuális gépek kapnak forgalmat, meghatározhat egy állapot-mintavételt is. Az alapszintű Load Balancer IPv4-alapú mintavételt használ az IPv4-és IPv6-végpontok állapotának felmérésére a virtuális gépeken. A standard Load Balancer támogatja a explicit IPv6 Health-mintavételeket.
 
-Hozzon létre egy terheléselosztó-szabályt az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Az alábbi példa a *dsLBrule_v4* és a *dsLBrule_v6* nevű terheléselosztó-szabályokat hozza létre, és a *80* -es *TCP* -porton az IPv4-és IPv6-előtérbeli IP-konfigurációkhoz tartozó forgalmat kiegyensúlyozza:
+Hozzon létre egy terheléselosztó-szabályt az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Az alábbi példa létrehozza a *dsLBrule_v4* nevű terheléselosztó-szabályokat, és *dsLBrule_v6* és kiegyensúlyozza az *80* -as *TCP* -port forgalmát az IPv4-és IPv6-előtérbeli IP-konfigurációkhoz:
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -322,7 +322,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>Az IPv4-és IPv6-végpontok IP-címeinek meghatározása
-Az erőforráscsoport összes hálózati adapter-objektumának lekérésével összesítheti az üzemelő példányban `get-AzNetworkInterface`használt IP-címet. Emellett szerezze be a Load Balancer az IPv4-és IPv6-végpontok a-vel `get-AzpublicIpAddress`való használatát.
+Az erőforráscsoport összes hálózati adapter-objektumának lekérésével összesítheti az üzemelő példányban használt IP-címet `get-AzNetworkInterface`. Emellett szerezze be a Load Balancer az IPv4-és IPv6-végpontok `get-AzpublicIpAddress`.
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"
@@ -378,6 +378,6 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 Remove-AzResourceGroup -Name dsRG1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy alapszintű Load Balancer hozott létre egy kettős előtér-IP-konfigurációval (IPv4 és IPv6). Létrehozott két virtuális gépet is, amelyek a terheléselosztó háttér-készletéhez hozzáadott kettős IP-konfigurációval (IPV4 + IPv6) rendelkező hálózati adaptereket tartalmaznak. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

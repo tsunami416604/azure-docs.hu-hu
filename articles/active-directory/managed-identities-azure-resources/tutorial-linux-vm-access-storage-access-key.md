@@ -1,5 +1,5 @@
 ---
-title: Az Azure Storage elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
+title: Oktatóanyag`:` felügyelt identitás használata az Azure Storage – Linux – Azure AD eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d53f625cec6aee980155711ddeb4d1e1761b91d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35c31fbf8c7c1aa37134a1808cd3f54a559833c1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236149"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183419"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Az Azure Storage elérése hozzáférési kulcs használatával egy Linux rendszerű virtuális gép alapértelmezett felügyelt identitás használata
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag bemutatja, hogyan kérheti le a tárfiókok hozzáférési ku
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
+## <a name="create-a-storage-account"></a>Create a storage account 
 
 Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt a lépést, és a VM rendszer által hozzárendelt felügyelt identitása számára biztosíthat hozzáférést egy meglévő tárfiók kulcsaihoz. 
 
@@ -45,7 +45,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt
 3. Adjon meg egy nevet a tárfiók számára a **Név** mezőben, amelyet később használ majd.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -66,7 +66,7 @@ Ebben a lépésben hozzáférést biztosít a VM rendszer által hozzárendelt f
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** az oldalra egy új szerepkör-hozzárendelés hozzáadása a virtuális gép felett
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez
 4. A lap jobb oldalán a **Szerepkör** értékeként adja meg a „Storage Account Key Operator Service Role” (Tárfiókkulcs-kezelési szolgáltatás szerepkör) értéket. 
 5. A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a „Virtuális gép” értéket.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a „Minden erőforráscsoport” értékre.  
@@ -194,7 +194,7 @@ Válasz:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan használhat Linux VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Storage hozzáférési kulcsokkal való eléréséhez.  További információ az Azure Storage tárelérési kulcsairól:
 

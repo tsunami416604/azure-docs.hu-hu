@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e0dedb13bf7365e011eb3403fb7ec110a4290ec9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012898"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74179333"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Application Gateway létrehozása belső terheléselosztó (ILB) használatával
 
@@ -259,8 +259,6 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ## <a name="next-steps"></a>Következő lépések
 
 Ha SSL-alapú kiszervezést szeretne konfigurálni: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](application-gateway-ssl.md).
-
-Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
 
 Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
 

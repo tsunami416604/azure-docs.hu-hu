@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD Graph API elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
+title: Oktatóanyag`:` Linux rendszerű virtuális gép által felügyelt identitás használata az Azure AD-hez való hozzáféréshez Graph API
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure AD Graph API-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307505"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183648"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Az Azure AD Graph API elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
@@ -65,9 +65,9 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 Ebben az oktatóanyagban a `Directory.Read.All` alkalmazásengedély használatával teszi lehetővé a virtuális gép identitása számára a csoporttagságok lekérdezését. Az engedély megadásához szüksége lesz egy olyan felhasználói fiókra, amely globális rendszergazdai szerepkörrel rendelkezik az Azure AD-ben. Az alkalmazásengedély megadásához általában az Azure Portalon kell megkeresi az alkalmazás regisztrációját, és ott hozzáadni az engedélyt. Az Azure-erőforrások felügyelt identitásai azonban nem alkalmazásobjektumokat regisztrálnak az Azure AD-ben, hanem csak szolgáltatásneveket. Az alkalmazásengedély regisztrálása az Azure AD PowerShell parancssori eszközével történik. 
 
 Azure AD Graph:
-- Egyszerű szolgáltatás alkalmazásazonosítója (használja az alkalmazásengedély megadása): 00000002-0000-0000-c000-000000000000
+- Szolgáltatásnév alkalmazásazonosítója (alkalmazásengedély biztosításakor): 00000002-0000-0000-c000-000000000000
 - Erőforrás-azonosító (hozzáférési jogkivonat az Azure-erőforrások felügyelt identitásaiból történő lekérésekor): https://graph.windows.net
-- Engedély hatókör-hivatkozást: [Az Azure AD Graph-engedélyek referencia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Engedélyhatókör-referencia: [Azure AD Graph-engedélyek referenciája](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-curl"></a>Alkalmazásengedélyek biztosítása a CURL használatával
 
@@ -83,7 +83,7 @@ Azure AD Graph:
    curl 'https://graph.windows.net/myorganization/servicePrincipals?$filter=startswith%28displayName%2C%27myVM%27%29&api-version=1.6' -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
-3. Az Azure AD Graph alkalmazásazonosítóját (00000002-0000-0000-c000-000000000000) használva kérdezze le és jegyezze fel az `odata.type: Microsoft.DirectoryServices.ServicePrincipal` `objectId` azonosítóját és a `Directory.Read.All` alkalmazásszerepkör-engedély `id` azonosítóját.  A(z) `<ACCESS TOKEN>` jogkivonatot cserélje le a korábban lekért hozzáférési jogkivonatra.
+3. Az Azure AD Graph alkalmazásazonosítóját (00000002-0000-0000-c000-000000000000) használva kérdezze le és jegyezze fel az `objectId` `odata.type: Microsoft.DirectoryServices.ServicePrincipal` azonosítóját és a `id` alkalmazásszerepkör-engedély `Directory.Read.All` azonosítóját.  A(z) `<ACCESS TOKEN>` jogkivonatot cserélje le a korábban lekért hozzáférési jogkivonatra.
 
    ```bash
    curl "https://graph.windows.net/myorganization/servicePrincipals?api-version=1.6&%24filter=appId%20eq%20'00000002-0000-0000-c000-000000000000'" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -124,7 +124,7 @@ Azure AD Graph:
             }
    ``` 
 
-4. Ezután az Azure AD Graph API használatával adjon a virtuális gép szolgáltatásnevének olvasási hozzáférést az Azure AD-címtár objektumaihoz.  Az `id` érték a `Directory.Read.All` alkalmazásszerepkör-engedély értéke, a `resourceId` pedig az `odata.type:Microsoft.DirectoryServices.ServicePrincipal` szolgáltatásnév `objectId` azonosítója (az előző lépésben feljegyzett értékek).
+4. Ezután az Azure AD Graph API használatával adjon a virtuális gép szolgáltatásnevének olvasási hozzáférést az Azure AD-címtár objektumaihoz.  Az `id` érték a `Directory.Read.All` alkalmazásszerepkör-engedély értéke, a `resourceId` pedig az `objectId` szolgáltatásnév `odata.type:Microsoft.DirectoryServices.ServicePrincipal` azonosítója (az előző lépésben feljegyzett értékek).
 
    ```bash
    curl "https://graph.windows.net/myorganization/servicePrincipals/<VM Object ID>/appRoleAssignments?api-version=1.6" -X POST -d '{"id":"5778995a-e1bf-45b8-affa-663a9f3f4d04","principalId":"<VM Object ID>","resourceId":"81789304-ff96-402b-ae73-07ec0db26721"}'-H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -136,7 +136,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
 
 1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra.  
 2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
-3. A terminálablakban a CURL, használatával indítson egy Azure-erőforrások végpont a hozzáférési jogkivonat beszerzése az Azure AD Graph helyi felügyelt identitások.  
+3. A Terminal (fürt) ablakban a CURL használatával hozzon végre egy kérést az Azure-erőforrások végpontjának helyi felügyelt identitásai számára az Azure AD Graph hozzáférési jogkivonatának beszerzéséhez.  
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://graph.windows.net' -H Metadata:true
@@ -156,7 +156,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
    }
    ```
 
-4. A virtuális gép szolgáltatásnevének objektumazonosítóját használva (ezt az értéket kérte le a korábbi lépésekben) lekérheti az Azure AD Graph API-ból annak csoporttagságait. Cserélje le `<OBJECT-ID>` a virtuális gép egyszerű szolgáltatás objektumazonosítójú és `<ACCESS-TOKEN>` a korábban kapott hozzáférési jogkivonattal:
+4. A virtuális gép szolgáltatásnevének objektumazonosítóját használva (ezt az értéket kérte le a korábbi lépésekben) lekérheti az Azure AD Graph API-ból annak csoporttagságait. Cserélje le a `<OBJECT-ID>`t a virtuális gép egyszerű szolgáltatásnév azonosítójával, és `<ACCESS-TOKEN>` a korábban beszerzett hozzáférési jogkivonattal:
 
    ```bash
    curl 'https://graph.windows.net/myorganization/servicePrincipals/<OBJECT-ID>/getMemberGroups?api-version=1.6' -X POST -d "{\"securityEnabledOnly\": false}" -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS-TOKEN>"
@@ -168,7 +168,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
    Content : {"odata.metadata":"https://graph.windows.net/myorganization/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan érhető el Azure AD Graph a Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.  További információ az AD Graph szolgáltatásról:
 

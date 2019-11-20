@@ -1,5 +1,5 @@
 ---
-title: Egy felügyelt identitás hozzáférés hozzárendelése egy Azure-erőforrást az Azure portal használatával
+title: Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz a Azure Portal-Azure AD használatával
 description: Részletes útmutató egy felügyelt identitás, az erőforrás-hozzáférés hozzárendelése egy másik erőforráshoz, az Azure portal használatával.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8660d5539d9cfc218667bc7bb077f9f6d1191eec
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112918"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184142"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Egy felügyelt identitás hozzáférés hozzárendelése egy erőforrást az Azure portal használatával
 
@@ -45,7 +45,7 @@ Engedélyezését követően felügyelt identitás egy Azure-erőforrás, péld�
 
    ![Hozzáférés-vezérlés (IAM) képernyőképe](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
 - Engedélyezheti a felügyelt identitás-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md).

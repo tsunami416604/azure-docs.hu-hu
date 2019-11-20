@@ -1,70 +1,72 @@
 ---
-title: Nagy számú virtuális gép az Azure-ba való migrálásának automatizálása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet áttelepíteni a virtuális gépek Azure Site Recovery használatával nagy számú szkriptek használatával
+title: Áttelepítési gép áttelepítésének automatizálása Azure Migrate
+description: Ismerteti, hogyan használhatók a parancsfájlok nagy számú gép áttelepítésére Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808021"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196360"
 ---
-# <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Méretezési csoport áttelepítése a virtuális gépek Azure Site Recovery használatával
+# <a name="scale-migration-of-vms"></a>Virtuális gépek áttelepítésének méretezése 
 
-Ez a cikk segít megérteni a parancsfájlok használata áttelepítése nagy számú virtuális gép Azure Site Recovery használatával. Ezek a szkriptek érhetők el a letölthető innen [Azure PowerShell-minták](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) adattárat a Githubon. A parancsfájlok VMware, AWS, GCP virtuális gépek és fizikai kiszolgálók áttelepítése az Azure-ban felügyelt lemezekkel használható. Ezek a parancsfájlok segítségével a Hyper-V virtuális gépek migrálása, ha telepít át, hogy a virtuális gépek, mint a fizikai kiszolgálókat. A parancsfájlok, az Azure Site Recovery PowerShell vannak dokumentálva [Itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Ebből a cikkből megtudhatja, hogyan használhatók a parancsfájlok a nagy számú virtuális gép (VM) áttelepítéséhez. Az áttelepítés méretezéséhez használja a [Azure site Recovery](../site-recovery/site-recovery-overview.md). 
 
-## <a name="current-limitations"></a>Aktuális korlátozások:
-- Támogatja a csak az a cél virtuális gép az elsődleges hálózati adapter statikus IP-címének megadása
-- A parancsfájlok nem lép az Azure Hybrid Benefittel kapcsolatos bemenetekben, akkor manuálisan kell frissíteni a portálon a replikált virtuális gép tulajdonságait
+Site Recovery szkriptek letölthetők a GitHubon található [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) -tárházban. A parancsfájlok használatával a VMware, az AWS, a GCP-alapú virtuális gépek és a fizikai kiszolgálók áttelepíthetők az Azure-ban felügyelt lemezekre. Ezeket a parancsfájlokat használhatja a Hyper-V virtuális gépek áttelepítéséhez is, ha fizikai kiszolgálóként telepíti át a virtuális gépeket. A Azure Site Recovery PowerShellt használó [parancsfájlok dokumentálva](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)vannak.
+
+## <a name="current-limitations"></a>Aktuális korlátozások
+- Támogatás csak a statikus IP-cím megadása a célként megadott virtuális gép elsődleges hálózati adapteréhez
+- A parancsfájlok nem tesznek Azure Hybrid Benefit kapcsolódó bemeneteket, manuálisan frissítenie kell a replikált virtuális gép tulajdonságait a portálon.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
 ### <a name="prerequisites"></a>Előfeltételek
-Mielőtt elkezdené, tegye a következőket kell:
-- Győződjön meg arról, hogy a Site Recovery-tároló létrehozása az Azure-előfizetésben
-- Ellenőrizze, hogy a konfigurációs kiszolgáló és a Folyamatkiszolgáló telepítve van a forrás környezetében, és a tároló találják meg a környezet
-- Győződjön meg arról, hogy egy replikációs házirend létrehozása és a konfigurációs kiszolgálóhoz társított
-- Győződjön meg arról, hogy hozzáadta a virtuális gép rendszergazdai fiók a konfigurációs kiszolgáló (azaz a rendszer replikálja a helyszíni virtuális gépek)
-- Győződjön meg arról, hogy jönnek létre a cél-összetevők az Azure-ban
-    - Céloldali erőforráscsoport
-    - Céloldali Tárfiók (és az erőforráscsoport) – hozzon létre egy prémium szintű storage-fiókot, ha a prémium szintű managed Disks szolgáltatásba áttelepíteni kívánt
-    - A gyorsítótár Tárfiókja (és az erőforráscsoport) – standard storage-fiók létrehozása és a tárolónak ugyanabban a régióban
-    - A feladatátvételi virtuális hálózat (és az erőforráscsoport)
-    - Cél alhálózat
-    - Virtuális hálózat feladatátvételi teszthez (és az erőforráscsoport)
+A Kezdés előtt a következő lépéseket kell elvégeznie:
+- Győződjön meg arról, hogy a Site Recovery-tároló létre lett hozva az Azure-előfizetésében
+- Győződjön meg arról, hogy a konfigurációs kiszolgáló és a folyamat kiszolgálója telepítve van a forrás környezetében, és a tár képes felderíteni a környezetet
+- Győződjön meg arról, hogy a konfigurációs kiszolgáló létrehoz és társít egy replikációs házirendet
+- Győződjön meg arról, hogy a virtuális gép rendszergazdai fiókját adta hozzá a konfigurációs kiszolgálóhoz (amelyet a helyszíni virtuális gépek replikálásához fog használni)
+- Győződjön meg arról, hogy a cél-összetevők az Azure-ban jönnek létre
+    - Cél erőforráscsoport
+    - Cél Storage-fiók (és az erőforráscsoport) – hozzon létre egy Premium Storage-fiókot, ha prémium szintű felügyelt lemezekre kíván áttérni
+    - Cache Storage-fiók (és az erőforráscsoport) – hozzon létre egy szabványos Storage-fiókot ugyanabban a régióban, ahol a tároló található.
+    - Cél Virtual Network a feladatátvételhez (és az erőforráscsoport)
+    - Célként megadott alhálózat
+    - Cél Virtual Network a feladatátvételi teszthez (és az erőforráscsoporthoz)
     - Rendelkezésre állási csoport (ha szükséges)
-    - Céloldali hálózati biztonsági csoport és az erőforráscsoport
-- Győződjön meg arról, hogy a cél virtuális gép tulajdonságainak döntött
+    - Célként megadott hálózati biztonsági csoport és az erőforráscsoport
+- Győződjön meg arról, hogy a cél virtuális gép tulajdonságairól döntött
     - Cél virtuális gép neve
-    - Cél virtuális gép méretét az Azure-ban (születhet értékelése az Azure Migrate használatával)
-    - Az elsődleges hálózati Adaptert a virtuális gép magánhálózati IP-címe
-- Töltse le a parancsfájlok [Azure PowerShell-minták](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) adattárat a Githubon
+    - Cél virtuális gép mérete az Azure-ban (Azure Migrate Assessment használatával is megadható)
+    - A virtuális gépen lévő elsődleges hálózati adapter magánhálózati IP-címe
+- A szkriptek letöltése [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) -tárházból a githubon
 
-### <a name="csv-input-file"></a>Fürt megosztott kötetei szolgáltatás bemeneti fájl
-Miután befejeződött az összes előfeltételeket, létre kell hozzon létre egy CSV-fájl, amely minden egyes forrásgép áttelepíteni kívánt adatokat tartalmaz. A fürt megosztott kötetei szolgáltatás bemeneti rendelkeznie kell egy fejlécsort a bemeneti adatokkal és a egy sort, át kell minden egyes gépek adataival. Az összes parancsfájl dolgozhat ugyanazon a CSV-fájl lettek kialakítva. Fürt megosztott kötetei szolgáltatás mintasablon, hogy a parancsfájlok mappában érhető el.
+### <a name="csv-input-file"></a>CSV bemeneti fájl
+Az összes előfeltétel befejezését követően létre kell hoznia egy CSV-fájlt, amely az összes áttelepíteni kívánt forrásoldali gépre vonatkozó adattal rendelkezik. A bemeneti CSV-fájlnak tartalmaznia kell egy fejlécet a bemeneti adatokkal és egy olyan sorral, amely az összes áttelepíteni kívánt gép részleteit ismerteti. Minden parancsfájl úgy van kialakítva, hogy ugyanazon a CSV-fájlon működjön. A minta CSV-sablon a hivatkozáshoz tartozó Scripts mappában érhető el.
 
-### <a name="script-execution"></a>Szkript végrehajtása
-Ha a fürt megosztott kötetei szolgáltatás készen áll, a helyszíni virtuális gépek áttelepítése a következő lépéseket hajthat végre:
+### <a name="script-execution"></a>Parancsfájl-végrehajtás
+Miután a CSV elkészült, végrehajthatja a következő lépéseket a helyszíni virtuális gépek áttelepítésének elvégzéséhez:
 
-**# Lépés** | **Szkript neve** | **Leírás**
+**. Lépés #** | **Parancsfájl neve** | **Leírás**
 --- | --- | ---
-1 | asr_startmigration.ps1 | A virtuális gépek replikációjának engedélyezése a fürt megosztott kötetei szolgáltatás szerepel, a szkriptet hoz létre egy CSV-kimenetben a feladat részleteit az egyes virtuális Gépekhez
-2 | asr_replicationstatus.ps1 | Ellenőrizze a replikáció állapotát, a parancsfájl hoz létre a fürt megosztott kötetei szolgáltatás állapotát az egyes virtuális Gépekhez
-3 | asr_updateproperties.ps1 | Miután a virtuális gépek replikálása/védett, a szkript használatával frissítse a célkiszolgáló tulajdonságait a virtuális gép (számítási és hálózati tulajdonságok)
-4 | asr_propertiescheck.ps1 | Győződjön meg arról, ha megfelelően frissíti a tulajdonságai
-5 | asr_testmigration.ps1 |  Indítsa el a feladatátvételi tesztet a virtuális gépek a fürt megosztott kötetei szolgáltatás szerepel, a szkriptet hoz létre egy CSV-kimenetben a feladat részleteit az egyes virtuális Gépekhez
-6 | asr_cleanuptestmigration.ps1 | Után manuálisan ellenőrizze, hogy a virtuális gépet a feladatátvételi tesztelése, a szkript használatával virtuális gépek feladatátvételi teszt karbantartása
-7 | asr_migration.ps1 | A virtuális gépek a fürt megosztott kötetei szolgáltatás szerepel egy nem tervezett feladatátvétel végrehajtásához, a szkriptet hoz létre egy CSV-kimenetben a feladat részleteit az egyes virtuális Gépekhez. A parancsfájl nem áll le a helyszíni virtuális gépek, a kérelem konzisztencia érdekében a feladatátvétel indítása előtt javasoljuk, hogy manuálisan leállítja a virtuális gépek előtt hajtsa végre a parancsprogramot.
-8 | asr_completemigration.ps1 | A véglegesítési művelet, a virtuális gépeken, és az Azure Site Recovery-entitások törlése
-9 | asr_postmigration.ps1 | Ha azt tervezi, a hálózati biztonsági csoportok hozzárendelése a hálózati adapterek feladatátvételen átesett, ezt a parancsfájlt használhatja valósítható meg. Egy NSG-t rendel minden, a cél virtuális Gépen több hálózati Adapterrel.
+1 | asr_startmigration.ps1 | Engedélyezze a replikálást a CSV-ben felsorolt összes virtuális gépen, a parancsfájl CSV-kimenetet hoz létre az egyes virtuális gépekhez tartozó feladatok részleteivel.
+2 | asr_replicationstatus.ps1 | A replikáció állapotának ellenőrzését, a parancsfájl létrehoz egy CSV-t az egyes virtuális gépek állapotával.
+3 | asr_updateproperties.ps1 | Ha a virtuális gépek replikálása/védelme megtörtént, a parancsfájl használatával frissítse a virtuális gép céljának tulajdonságait (számítási és hálózati tulajdonságok)
+4 | asr_propertiescheck.ps1 | Annak ellenőrzése, hogy a tulajdonságok megfelelően frissültek-e
+5 | asr_testmigration. ps1 |  Indítsa el a CSV-ben felsorolt virtuális gépek feladatátvételi tesztjét, a parancsfájl CSV-kimenetet hoz létre az egyes virtuális gépekhez tartozó feladatok részleteivel.
+6 | asr_cleanuptestmigration.ps1 | Ha manuálisan ellenőrzi azokat a virtuális gépeket, amelyek feladatátvétele sikertelen volt, ezt a parancsfájlt használhatja a feladatátvételi teszt virtuális gépek karbantartásához.
+7 | asr_migration.ps1 | Végezzen el nem tervezett feladatátvételt a CSV-fájlban felsorolt virtuális gépeken, a szkript CSV-kimenetet hoz létre az egyes virtuális gépekhez tartozó feladatok részleteivel. A parancsfájl nem állítja le a helyszíni virtuális gépeket a feladatátvétel elindítása előtt, az alkalmazás konzisztenciája érdekében ajánlott manuálisan leállítani a virtuális gépeket a parancsfájl végrehajtása előtt.
+8 | asr_completemigration.ps1 | A véglegesítő művelet végrehajtása a virtuális gépeken és a Azure Site Recovery entitások törlése
+9 | asr_postmigration.ps1 | Ha hálózati biztonsági csoportokat kíván hozzárendelni a hálózati adapterek feladatátvétele után, ezt a parancsfájlt használhatja. Hozzárendel egy NSG a célként megadott virtuális gépen lévő egyik hálózati adapterhez.
 
-## <a name="how-to-migrate-to-managed-disks"></a>A felügyelt lemezek migrálása?
-A parancsfájl alapértelmezés szerint áttelepíti a virtuális gépek felügyelt lemezeket az Azure-ban. Ha a megadott célként megadott tárfiók premium storage-fiók, prémium szintű felügyelt lemezek jönnek létre post áttelepítés. A gyorsítótárfiók továbbra is a standard szintű fiók is lehet. Ha a célként megadott tárfiók standard szintű tárfiókot, a standard szintű lemezek jönnek létre a migrálás után. 
+## <a name="how-to-migrate-to-managed-disks"></a>Migrálás a Managed Disks szolgáltatásba
+Alapértelmezés szerint a parancsfájl áttelepíti a virtuális gépeket a felügyelt lemezekre az Azure-ban. Ha a megadott Storage-fiók egy Premium Storage-fiók, a prémium szintű felügyelt lemezek az áttelepítés után jönnek létre. A cache Storage-fiók továbbra is szabványos fiók lehet. Ha a célként megadott Storage-fiók egy szabványos Storage-fiók, a standard lemezeket az áttelepítés után hozza létre a rendszer. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[További](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) információ kiszolgálók áttelepítése az Azure-bA az Azure Site Recoveryvel
+[További](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) információ a kiszolgálók Azure-ba való áttelepítéséről Azure site Recovery használatával

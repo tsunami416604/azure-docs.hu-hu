@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172059"
+ms.locfileid: "74195004"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -64,6 +64,8 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 
 - 20.190.128.0/18
 - 40.126.0.0/18
+
+A fentiekben felsorolt URL-címek és IP-címek elérése a HTTPS protokollt használja a 443-es porton.
 
 ### <a name="throttling-support"></a>Szabályozás támogatása
 

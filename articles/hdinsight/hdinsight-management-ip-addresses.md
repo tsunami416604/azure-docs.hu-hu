@@ -7,15 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/22/2019
+ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076632"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185656"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-felügyeleti IP-címek
+
+> [!Important]
+> A hálózati biztonsági csoportokhoz tartozó [szolgáltatási címke](hdinsight-service-tags.md) funkció használata. Az új régiók csak a szolgáltatási címkékhez lesznek hozzáadva, és a statikus IP-címek végül elavultak lesznek.
 
 Ha hálózati biztonsági csoportokat (NSG) vagy felhasználó által megadott útvonalakat (UDR) használ a HDInsight-fürt bejövő forgalmának vezérlésére, akkor biztosítania kell, hogy a fürt képes legyen kommunikálni a kritikus Azure-beli állapot-és felügyeleti szolgáltatásokkal.  A szolgáltatások egyes IP-címei a régióra jellemzőek, és némelyikük az összes Azure-régióra vonatkozik. Ha nem egyéni DNS-t használ, akkor engedélyeznie kell az Azure DNS szolgáltatástól érkező forgalmat is.
 
@@ -25,25 +28,25 @@ A következő fejezetek a megadott IP-címeket tárgyalják, amelyeket engedély
 
 Ha az Azure által biztosított DNS-szolgáltatást használja, engedélyezze a hozzáférést a __168.63.129.16__ a 53-es porton. További információ: a [virtuális gépek és a szerepkör példányainak névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Ha egyéni DNS-t használ, ugorja át ezt a lépést.
 
-## <a name="health-and-management-services-all-regions"></a>Állapot-és felügyeleti szolgáltatások: Minden régió
+## <a name="health-and-management-services-all-regions"></a>Állapot-és felügyeleti szolgáltatások: minden régió
 
 A következő IP-címekről érkező forgalom engedélyezése az Azure HDInsight Health and Management Services esetében, amely az összes Azure-régióra érvényes:
 
-| Forrás IP-címe | Destination  | Direction |
+| Forrás IP-címe | Cél  | Irány |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | Bejövő |
 | 23.99.5.239 | \*:443 | Bejövő |
 | 168.61.48.131 | \*:443 | Bejövő |
 | 138.91.141.162 | \*:443 | Bejövő |
 
-## <a name="health-and-management-services-specific-regions"></a>Állapot-és felügyeleti szolgáltatások: Adott régiók
+## <a name="health-and-management-services-specific-regions"></a>Állapot-és kezelési szolgáltatások: adott régiók
 
 Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP-címekről érkező forgalom engedélyezése az adott Azure-régióban, ahol az erőforrások találhatók:
 
 > [!IMPORTANT]  
-> Ha az Ön által használt Azure-régió nem szerepel a listáján, akkor csak az előző szakasz négy IP-címét használja.
+> Ha az Ön által használt Azure-régió nem szerepel a listáján, akkor használja a hálózati biztonsági csoportok [szolgáltatási címke](hdinsight-service-tags.md) szolgáltatását.
 
-| Country | Régió | Engedélyezett forrás IP-címek | Engedélyezett célhely | Direction |
+| Ország | Régió | Engedélyezett forrás IP-címek | Engedélyezett célhely | Irány |
 | ---- | ---- | ---- | ---- | ----- |
 | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | \*:443 | Bejövő |
 | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | \*:443 | Bejövő |
@@ -54,8 +57,8 @@ Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP
 | &nbsp; | Közép-Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Bejövő |
 | Kína | Észak-Kína | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*:443 | Bejövő |
 | &nbsp; | Kelet-Kína | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | Bejövő |
-| &nbsp; | Észak-Kína 2 | 40.73.37.141</br>40.73.38.172 | \*:443 | Bejövő |
-| &nbsp; | Kelet-Kína 2 | 139.217.227.106</br>139.217.228.187 | \*:443 | Bejövő |
+| &nbsp; | Kína 2. északi régiója | 40.73.37.141</br>40.73.38.172 | \*:443 | Bejövő |
+| &nbsp; | Kína 2. keleti régiója | 139.217.227.106</br>139.217.228.187 | \*:443 | Bejövő |
 | Európa | Észak-Európa | 52.164.210.96</br>13.74.153.132 | \*:443 | Bejövő |
 | &nbsp; | Nyugat-Európa| 52.166.243.90</br>52.174.36.244 | \*:443 | Bejövő |
 | Franciaország | Közép-Franciaország| 20.188.39.64</br>40.89.157.135 | \*:443 | Bejövő |
@@ -70,7 +73,7 @@ Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP
 | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*:443 | Bejövő |
 | &nbsp; | Az Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*:443 | Bejövő |
 | Egyesült Államok | USA középső régiója | 13.89.171.122</br>13.89.171.124 | \*:443 | Bejövő |
-| &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
+| &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
 | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | \*:443 | Bejövő |
 | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | \*:443 | Bejövő |
 | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | \*:443 | Bejövő |
@@ -82,6 +85,6 @@ További információ: a [hálózati forgalom szabályozása](hdinsight-plan-vir
 
 Ha felhasználó által megadott útvonalakat (UDR) használ, meg kell adnia egy útvonalat, és engedélyeznie kell a kimenő forgalmat a VNET a fenti IP-címekre a következő ugrás "Internet" értékre állításával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)

@@ -1,19 +1,19 @@
 ---
-title: Helyszíni VMware virtuális gépek migrálása az Azure-ba ügynök-alapú Azure Migrate kiszolgáló áttelepítésével | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan hajtható végre a helyszíni gépek ügynök alapú áttelepítése az Azure-ba Azure Migrate kiszolgáló áttelepítése
+title: VMware virtuális gépek migrálása ügynökön alapuló Azure Migrate kiszolgáló áttelepítése
+description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök-alapú áttelepítését Azure Migrate használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720170"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196301"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan telepítheti át a helyszíni VMware virtuális gép
 A [Azure Migrate](migrate-services-overview.md) egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint az AWS/GCP virtuálisgép-példányok felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatokhoz.
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Állítsa be a forrás-környezetet, és helyezzen üzembe egy Azure Migrate replikációs berendezést az ügynök-alapú áttelepítéshez.
 > * Állítsa be a célként megadott környezetet az áttelepítéshez.
@@ -165,7 +165,7 @@ A mobilitási szolgáltatásnak telepítve kell lennie a replikálni kívánt g�
 Készítse elő a fiókot az alábbiak szerint:
 
 1. Készítsen elő egy tartományi vagy helyi fiókot, amely rendelkezik a virtuális gépre való telepítéshez szükséges engedélyekkel.
-2. Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen a **LOCALACCOUNTTOKENFILTERPOLICY**DWORD-bejegyzés hozzáadásával, a beállításjegyzékben a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ alatt.  **Windows\CurrentVersion\Policies\System**
+2. Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen a **LOCALACCOUNTTOKENFILTERPOLICY**DWORD-bejegyzés hozzáadásával a beállításjegyzékben, a **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**
 3. Linux rendszerű virtuális gépek esetében készítse elő a root fiókot a forrás Linux-kiszolgálón.
 
 
@@ -450,6 +450,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 
 
 
- ## <a name="next-steps"></a>További lépések
+ ## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

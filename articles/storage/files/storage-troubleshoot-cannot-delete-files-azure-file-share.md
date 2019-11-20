@@ -4,15 +4,18 @@ description: Azonosíthatja és elháríthatja az Azure-fájlmegosztás fájljai
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
+manager: dcscontentpm
 ms.date: 10/25/2019
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: b535578328e7ca77f1071187b6ac761bc7076ac1
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+services: storage
+tags: ''
+ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73065976"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196483"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-fájlmegosztás – nem sikerült törölni az Azure-fájlmegosztás fájljait
 
@@ -33,7 +36,7 @@ Nem áll rendelkezésre elegendő kvóta a parancs feldolgozásához
 
 1816-as hiba történik, amikor eléri a fájlhoz engedélyezett egyidejű nyitott kezelők felső korlátját azon a számítógépen, amelyen a fájlmegosztás csatlakoztatva van. További információ: az [Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
 Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezárásával.
 
@@ -69,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>Példa eredménye:
 
-|HandleId|Útvonal|Ügyfélip|clientPort|OpenTime|LastReconnectTime|FileId|ParentId|sessionId|
+|HandleId|Útvonal|Ügyfélip|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|

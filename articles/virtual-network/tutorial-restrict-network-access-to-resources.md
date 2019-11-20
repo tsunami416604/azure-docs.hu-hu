@@ -1,10 +1,10 @@
 ---
-title: A PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása – oktatóanyag – Azure Portal | Microsoft Docs
+title: A Pásti-erőforrásokhoz való hozzáférés korlátozása – oktatóanyag – Azure Portal
 description: Ebben az oktatóanyagban megtanulhatja, hogyan korlátozható az Azure-erőforrásokhoz – például az Azure Storage-hoz és az Azure SQL Database-hez – való hálózati hozzáférés virtuális hálózati szolgáltatásvégpontokkal az Azure Portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 34cb2b6c5a770aa9ec38ce02a97d976fe28251ac
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638740"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186371"
 ---
-# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása a Azure Portal használatával
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása virtuális hálózati szolgáltatásvégpontokkal az Azure Portal használatával
 
-Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózati alhálózatra korlátozható az egyes Azure-szolgáltatási erőforrásokhoz való hálózati hozzáférés. Emellett teljesen le is tiltható az internetes hozzáférés az erőforrásokhoz. A szolgáltatásvégpontok közvetlen csatlakozást biztosítanak a virtuális hálózat és a támogatott Azure-szolgáltatások között, így lehetővé teszik a virtuális hálózat magáncímterének használatát az Azure-szolgáltatások eléréséhez. A szolgáltatásvégpontokon keresztül az Azure-erőforrások felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán marad. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózati alhálózatra korlátozható az egyes Azure-szolgáltatási erőforrásokhoz való hálózati hozzáférés. Emellett teljesen le is tiltható az internetes hozzáférés az erőforrásokhoz. A szolgáltatásvégpontok közvetlen csatlakozást biztosítanak a virtuális hálózat és a támogatott Azure-szolgáltatások között, így lehetővé teszik a virtuális hálózat magáncímterének használatát az Azure-szolgáltatások eléréséhez. A szolgáltatásvégpontokon keresztül az Azure-erőforrások felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán marad. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális hálózat létrehozása egyetlen alhálózattal
@@ -53,12 +53,12 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
    |----|----|
    |Name (Név)| myVirtualNetwork |
    |Címtér| 10.0.0.0/16|
-   |Subscription| Válassza ki előfizetését.|
-   |Resource group | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-   |Location| Válassza az **USA keleti régiója** lehetőséget. |
+   |Előfizetést| Válassza ki előfizetését.|
+   |Erőforráscsoport | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
+   |Hely| Válassza az **USA keleti régiója** lehetőséget. |
    |Alhálózat neve| Nyilvános|
    |Alhálózat címtartománya| 10.0.0.0/24|
-   |DDoS elleni védelem| Alapszintű|
+   |DDoS Protection| Alapszintű|
    |Szolgáltatásvégpontok| Letiltva|
    |Tűzfal| Letiltva|
 
@@ -68,16 +68,16 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 A szolgáltatásvégpontok szolgáltatásonként és alhálózatonként engedélyezhetők. Hozzon létre egy alhálózatot, és engedélyezzen egy szolgáltatásvégpontot az alhálózat számára.
 
-1. Írja be a *myVirtualNetwork* kifejezést portál tetején található **Erőforrások, szolgáltatások és dokumentumok keresése** mezőbe. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki.
+1. Írja be a **myVirtualNetwork** kifejezést portál tetején található *Erőforrások, szolgáltatások és dokumentumok keresése* mezőbe. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki.
 2. Adjon hozzá egy alhálózatot a virtuális hálózathoz. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok**, majd az **+ Alhálózat** lehetőséget, ahogyan az a következő képen látható:
 
-    ![Alhálózat felvétele](./media/tutorial-restrict-network-access-to-resources/add-subnet.png) 
+    ![Alhálózat hozzáadása](./media/tutorial-restrict-network-access-to-resources/add-subnet.png) 
 
 3. Az **Alhálózat hozzáadása** alatt válassza ki vagy adja meg a következő adatokat, és kattintson az **OK** gombra:
 
     |Beállítás|Érték|
     |----|----|
-    |Name (Név)| Magánjellegű |
+    |Name (Név)| Privát |
     |Címtartomány| 10.0.1.0/24|
     |Szolgáltatásvégpontok| A **Szolgáltatások** területen válassza a **Microsoft.Storage** elemet.|
 
@@ -95,54 +95,54 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
     |Beállítás|Érték|
     |----|----|
     |Name (Név)| myNsgPrivate |
-    |Subscription| Válassza ki előfizetését.|
-    |Resource group | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
-    |Location| Válassza az **USA keleti régiója** lehetőséget. |
+    |Előfizetést| Válassza ki előfizetését.|
+    |Erőforráscsoport | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
+    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
 
 4. Miután a hálózati biztonsági csoport létrejött, írja be a *myNsgPrivate* kifejezést a portál tetején található **Erőforrások, szolgáltatások és dokumentumok keresése** mezőbe. Amikor a **myNsgPrivate** megjelenik a keresési eredmények között, válassza ki.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Kimenő biztonsági szabályok** elemet.
 6. Válassza a **+ Hozzáadás** lehetőséget.
 7. Hozzon létre egy szabályt, amely engedélyezi a kimenő kommunikációt az Azure Storage szolgáltatás felé. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Hozzáadás**  lehetőséget:
 
-    |Beállítás|Value|
+    |Beállítás|Érték|
     |----|----|
-    |Source| Válassza a **VirtualNetwork** lehetőséget. |
-    |Source port ranges| * |
+    |Forrás| Válassza a **VirtualNetwork** lehetőséget. |
+    |Forrásporttartományok| * |
     |Cél | Válassza a **Service Tag** lehetőséget.|
     |Cél szolgáltatáscímkéje | Válassza a **Storage** lehetőséget.|
     |Célporttartományok| * |
-    |Protocol|Any|
-    |Action|Allow|
-    |Priority|100|
+    |Protokoll|Bármelyik|
+    |Műveletek|Engedélyezés|
+    |Prioritás|100|
     |Name (Név)|Allow-Storage-All|
 
 8. Hozzon létre még egy kimenő biztonsági szabályt, amely letiltja az internetes kommunikációt. Ez a szabály felülírja az összes hálózati biztonsági csoportra érvényes alapértelmezett szabályt, amely engedélyezi a kimenő internetes kommunikációt. Hajtsa végre ismét az 5–7. lépést az alábbi értékekkel:
 
-    |Beállítás|Value|
+    |Beállítás|Érték|
     |----|----|
-    |Source| Válassza a **VirtualNetwork** lehetőséget. |
-    |Source port ranges| * |
+    |Forrás| Válassza a **VirtualNetwork** lehetőséget. |
+    |Forrásporttartományok| * |
     |Cél | Válassza a **Service Tag** lehetőséget.|
     |Cél szolgáltatáscímkéje| Válassza az **Internet** lehetőséget.|
     |Célporttartományok| * |
-    |Protocol|Any|
-    |Action|Megtagadás|
-    |Priority|110|
+    |Protokoll|Bármelyik|
+    |Műveletek|Megtagadás|
+    |Prioritás|110|
     |Name (Név)|Deny-Internet-All|
 
 9. A **BEÁLLÍTÁSOK** területen válassza a **Bejövő biztonsági szabályok** elemet.
 10. Válassza a **+ Hozzáadás** lehetőséget.
 11. Hozzon létre egy bejövő biztonsági szabályt, amely engedélyezi az alhálózatra bárhonnan bejövő RDP-forgalmat. Ez a szabály felülbírálja azon alapértelmezett biztonsági szabályokat, amelyek elutasítanak minden bejövő forgalmat az internetről. A távoli asztali kapcsolatok engedélyezettek az alhálózathoz, hogy a kapcsolat egy későbbi lépésben tesztelhető legyen. A **BEÁLLÍTÁSOK** területen válassza a **Bejövő biztonsági szabályok**, majd a **+Hozzáadás** elemet, adja meg a következő adatokat, és válassza a **Hozzáadás** lehetőséget:
 
-    |Beállítás|Value|
+    |Beállítás|Érték|
     |----|----|
-    |Source| Any |
-    |Source port ranges| * |
+    |Forrás| Bármelyik |
+    |Forrásporttartományok| * |
     |Cél | Válassza a **VirtualNetwork** lehetőséget.|
     |Célporttartományok| 3389 |
-    |Protocol|Any|
-    |Action|Allow|
-    |Priority|120|
+    |Protokoll|Bármelyik|
+    |Műveletek|Engedélyezés|
+    |Prioritás|120|
     |Name (Név)|Allow-RDP-All|
 
 12. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok** elemet.
@@ -154,7 +154,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
 
 A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létrehozott erőforrásokhoz való hálózati hozzáférés korlátozásának lépései szolgáltatásonként eltérőek. Az egyes szolgáltatásokhoz szükséges lépéseket az adott szolgáltatások dokumentációja tartalmazza. Az oktatóanyag a továbbiakban egy Azure Storage-tárfiók hálózati hozzáférésének korlátozásához szükséges lépéseket ismerteti példaként.
 
-### <a name="create-a-storage-account"></a>Tárfiók létrehozása
+### <a name="create-a-storage-account"></a>Create a storage account
 
 1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
@@ -163,11 +163,11 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
     |Beállítás|Érték|
     |----|----|
     |Name (Név)| Olyan nevet adjon meg, amely az összes Azure-helyen egyedi, 3–24 karakter hosszú, és csak számokat és kisbetűket tartalmaz.|
-    |Fiók típusa|StorageV2 (általános célú v2)|
-    |Location| Válassza az **USA keleti régiója** lehetőséget. |
-    |Replikálás| Helyileg redundáns tárolás (LRS)|
-    |Subscription| Válassza ki előfizetését.|
-    |Resource group | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
+    |Fióktípus|StorageV2 (általános célú v2)|
+    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
+    |Replikáció| Helyileg redundáns tárolás (LRS)|
+    |Előfizetést| Válassza ki előfizetését.|
+    |Erőforráscsoport | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Fájlmegosztás létrehozása a tárfiókban
 
@@ -189,9 +189,9 @@ Alapértelmezés szerint a tárfiókok bármilyen hálózatban található ügyf
 3. Válassza a **+Meglévő virtuális hálózat hozzáadása** lehetőséget.
 4. A **Hálózatok hozzáadása** területen válassza ki a következő értékeket, majd kattintson a **Hozzáadás** gombra:
 
-    |Beállítás|Value|
+    |Beállítás|Érték|
     |----|----|
-    |Subscription| Válassza ki előfizetését.|
+    |Előfizetést| Válassza ki előfizetését.|
     |Virtuális hálózatok|A **Virtuális hálózatok** területen válassza a **myVirtualNetwork** lehetőséget.|
     |Alhálózatok| Az **Alhálózatok** területen válassza a **Magánjellegű** lehetőséget.|
 
@@ -220,15 +220,15 @@ Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe eg
    |Name (Név)| myVmPublic|
    |Felhasználónév|Adjon meg egy tetszőleges felhasználónevet.|
    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-   |Subscription| Válassza ki előfizetését.|
-   |Resource group| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-   |Location| Válassza az **USA keleti régiója** lehetőséget.|
+   |Előfizetést| Válassza ki előfizetését.|
+   |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
+   |Hely| Válassza az **USA keleti régiója** lehetőséget.|
 
    ![Virtuális gép alapvető információinak megadása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen válassza a **Hálózat**, majd a **myVirtualNetwork** lehetőséget. Ezután válassza az **Alhálózat**, majd a **Nyilvános** lehetőséget, ahogyan az a következő képen látható:
 
-   ![Válasszon virtuális hálózatot](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
+   ![Virtuális hálózat kiválasztása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
 
 6. A **Hálózati biztonsági csoport** területen válassza a **Speciális** lehetőséget. A portál automatikusan létrehoz egy hálózati biztonsági csoportot, amely engedélyezi a 3389-es portot. Egy későbbi lépésben meg kell nyitnia ezt a portot a virtuális géphez való csatlakozáshoz. A **Beállítások** lapon válassza az **OK** lehetőséget.
 7. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez. A virtuális gép üzembe helyezése néhány percig eltart, de közben folytathatja a következő lépéssel.
@@ -304,7 +304,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezett egy szolgáltatásvégpontot egy virtuális hálózat alhálózatához. Megtudta, hogy a több Azure-szolgáltatásból üzembe helyezett erőforrások számára szolgáltatásvégpontokat engedélyezhet. Létrehozott egy Azure Storage-fiókot, és egy adott virtuális hálózati alhálózat erőforrásaira korlátozta a tárfiók felé irányuló hálózati hozzáférést. További információkat a szolgáltatásvégpontokról a [szolgáltatásvégpontok áttekintését](virtual-network-service-endpoints-overview.md) és az [alhálózatok kezelését](virtual-network-manage-subnet.md) ismertető cikkekben olvashat.
 

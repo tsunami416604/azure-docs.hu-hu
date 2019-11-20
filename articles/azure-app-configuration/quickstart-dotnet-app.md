@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329794"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185060"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
 
@@ -37,19 +37,19 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |---|---|
-    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
-1. Indítsa el a Visual studiót, és válassza a **fájl**@no__t – 1**új** > **projektet**.
+1. Indítsa el a Visual studiót, és válassza a **fájl** > **új** > **projekt**lehetőséget.
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a  **Create** (Létrehozás) gombra.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a **Létrehozás** gombra.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -81,9 +81,9 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
     </appSettings>
     ```
 
-   Az alkalmazás konfigurációs tárolójának a (`ConnectionString` környezeti változóból való beolvasása során a rendszer a A `appSettings` szakasz `configBuilders` tulajdonságában adja hozzá a `Environment` konfigurációs szerkesztőt a `MyConfigStore` értékhez.
+   Az alkalmazás konfigurációs tárolójának a `ConnectionString`környezeti változóból való beolvasása. Adja hozzá a `Environment` Configuration Builder-t, mielőtt a `MyConfigStore` a `appSettings` szakasz `configBuilders` tulajdonságában.
 
-1. Nyissa meg a *program.cs*, és frissítse az `Main` metódust úgy, hogy az `ConfigurationManager` hívásával használja az alkalmazás konfigurációját.
+1. Nyissa meg a *program.cs*, és frissítse a `Main` metódust az alkalmazás konfigurációjának használatára a `ConfigurationManager`meghívásával.
 
     ```csharp
     static void Main(string[] args)
@@ -112,7 +112,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta azt egy .NET Framework Console alkalmazással. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja a hitelesítést.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta azt egy .NET Framework Console alkalmazással. A `ConfiguratoinManager` `AppSettings` értéke nem változik az alkalmazás elindítása után. Az App Configuration .NET Standard konfigurációs szolgáltatói könyvtára azonban .NET-keretrendszerbeli alkalmazásokban is használható. Ha szeretné megtudni, hogyan engedélyezheti a .NET-keretrendszer alkalmazását a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)
+> [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-dotnet.md)

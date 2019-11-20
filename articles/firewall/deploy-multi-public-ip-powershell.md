@@ -1,18 +1,18 @@
 ---
-title: Azure Firewall üzembe helyezése több nyilvános IP-címmel a Azure PowerShell használatával
+title: Azure Firewall üzembe helyezése több nyilvános IP-címmel a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy Azure Firewall több nyilvános IP-címmel a Azure PowerShell használatával.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: ba2736ae69d0bf7feff5f852da2446bfa7a722a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad54b60d8f15e36636f887015d97967740123669
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325233"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195860"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Azure Firewall üzembe helyezése több nyilvános IP-címmel Azure PowerShell használatával
 
@@ -100,6 +100,6 @@ $azFw.RemovePublicIpAddress($pip)
 $azFw | Set-AzFirewall
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)
+* [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

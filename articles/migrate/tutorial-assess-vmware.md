@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158668"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196449"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése Azure Migrateekkel: kiszolgáló értékelése
 
@@ -66,7 +66,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-vmware/migrate-project.png)
 
 
-7. Kattintson a **Tovább**gombra.
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -172,7 +172,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 
 ### <a name="specify-vcenter-server-details"></a>A vCenter Server adatainak megadása
 1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen a vCenter Server figyeli.
-2. A **Felhasználónév** és a **jelszó**mezőben adja meg a írásvédett fiók hitelesítő adatait, amelyet a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. Győződjön meg arról, hogy a fiók rendelkezik a [felderítéshez szükséges engedélyekkel](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). A felderítés hatókörét a vCenter-fiókhoz való hozzáférés korlátozásával teheti meg. További információk a hatókör-felderítésről [itt](tutorial-assess-vmware.md#scoping-discovery).
+2. A **Felhasználónév** és a **jelszó**mezőben adja meg azokat a vCenter Server fiók hitelesítő adatait, amelyeket a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. Győződjön meg arról, hogy a fiók rendelkezik a [felderítéshez szükséges engedélyekkel](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). A felderítés hatókörét a vCenter-fiókhoz való hozzáférés korlátozásával teheti meg. További információk a hatókör-felderítésről [itt](tutorial-assess-vmware.md#scoping-discovery).
 3. Kattintson a **kapcsolat ellenőrzése** elemre, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása
@@ -222,7 +222,7 @@ A vCenter lévő leltári objektumokra vonatkozóan 2 megközelítés rendelhet�
 
     A kiszolgálók áttelepítéséhez hasonlóan a felhasználó által definiált ( <em>Azure _Migrate</em>nevű) szerepkört is [](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) alkalmazni kell az összes olyan szülőobjektum vCenter felhasználói fiókjához, ahol az áttelepíteni kívánt virtuális gépek futnak.
 
-![Engedélyek kiosztása](./media/tutorial-assess-vmware/assign-perms.png)
+  ![Engedélyek kiosztása](./media/tutorial-assess-vmware/assign-perms.png)
 
 - A másik megoldás, ha a felhasználói fiókot és szerepkört az adatközpont szintjén rendeli hozzá, és propagálja azokat a gyermekobjektumok számára. Ezután adja meg a fióknak, hogy ne legyen **hozzáférési** szerepkör minden olyan objektumhoz (például virtuális gépekhez), amelyet nem szeretne felderíteni vagy áttelepíteni. Ez a konfiguráció nehézkes. Lehetővé teszi a véletlen hozzáférés-vezérlést, mivel minden új gyermekobjektum automatikusan megkapja a szülőtől örökölt hozzáférést is. Ezért javasoljuk, hogy az első módszert használja.
 

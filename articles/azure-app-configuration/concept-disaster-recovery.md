@@ -1,6 +1,6 @@
 ---
-title: Az Azure Alkalmazáskonfiguráció rugalmasság és a vész helyreállítási |} A Microsoft Docs
-description: Rugalmasság és a katasztrófa utáni helyreállítás az Azure-alkalmazások konfigurálása megvalósításának áttekintése.
+title: Az Azure-alkalmazások konfigurációjának rugalmassága és a vész-helyreállítási szolgáltatás | Microsoft Docs
+description: Áttekintés arról, hogyan valósítható meg a rugalmasság és a vész-helyreállítás az Azure-alkalmazások konfigurációjával.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,28 +12,28 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 05/29/2019
 ms.author: yegu
-ms.openlocfilehash: c05957cda16c96b841433483a90429aab2b4d22d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 291f6fe48d81397d293ab54a73e777831e25f6ea
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706510"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185282"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
 
-Alkalmazások konfigurálása az Azure jelenleg egy regionális szolgáltatás. Minden egyes konfigurációs tár egy adott Azure-régióban jön létre. Egy régióra kiterjedő szolgáltatáskimaradás hatással van minden, az adott régióban tárolja. Alkalmazás konfigurációja nem biztosít automatikus feladatátvételt egy másik régióba. Ez a cikk nyújt általános útmutatást használatát több konfigurációs tároló Azure-régióban a geo-ellenálló-képesség az alkalmazás növelésére.
+Az Azure app Configuration jelenleg egy regionális szolgáltatás. Az egyes konfigurációs tárolók egy adott Azure-régióban jönnek létre. Az egész régióra kiterjedő leállás hatással van az adott régióban lévő összes tárolóra. Az alkalmazás konfigurációja nem biztosít automatikus feladatátvételt egy másik régióba. Ez a cikk általános útmutatást nyújt arról, hogy miként használható több konfigurációs tároló az Azure-régiókban az alkalmazás földrajzi rugalmasságának növelésére.
 
-## <a name="high-availability-architecture"></a>Magas rendelkezésre állású architektúrával
+## <a name="high-availability-architecture"></a>Magas rendelkezésre állású architektúra
 
-Vegye figyelembe a régiók közötti redundancia, szüksége különböző régiókban lévő több alkalmazás konfigurációs tároló létrehozásához. Ezzel a beállítással az alkalmazás rendelkezik legalább egy további konfigurációs adattároló tud visszatérni, ha az elsődleges tároló elérhetetlenné válik. A következő ábra szemlélteti a topológia az alkalmazás és az elsődleges és másodlagos configuration tárolók között:
+A régiók közötti redundancia megvalósításához több alkalmazás-konfigurációs tárolót kell létrehoznia különböző régiókban. Ezzel a beállítással az alkalmazásnak legalább egy további konfigurációs tárolóval kell visszaesnie, ha az elsődleges tároló elérhetetlenné válik. Az alábbi ábra az alkalmazás és az elsődleges és másodlagos konfigurációs tárolók közötti topológiát szemlélteti:
 
-![Georedundáns tárolók](./media/geo-redundant-app-configuration-stores.png)
+![Geo-redundáns tárolók](./media/geo-redundant-app-configuration-stores.png)
 
-Az alkalmazás mind az elsődleges és másodlagos tárolt párhuzamosan tölt be a konfigurációját. Ez növeli az esélye, hogy a konfigurációs adatok sikeresen első. Ön felelős a egyaránt az áruházakban az adatok szinkronban tartja. Az alábbi szakaszok azt ismertetik, hogyan hozhat létre geo-rugalmasság az alkalmazásba.
+Az alkalmazás az elsődleges és a másodlagos tárolóból is betölti a konfigurációját párhuzamosan. Ez növeli a konfigurációs adatmennyiség sikeres beolvasásának esélyét. Ön felelős az adattárakban tárolt Adattárolásért. A következő szakaszokból megtudhatja, hogyan hozhat létre geo-rugalmasságot az alkalmazásba.
 
-## <a name="failover-between-configuration-stores"></a>Feladatátvétel konfigurációs adattárak között
+## <a name="failover-between-configuration-stores"></a>A konfigurációs tárolók közötti feladatátvétel
 
-Az alkalmazás technikailag nem végrehajtásakor a feladatátvételt. Ugyanazokat a konfigurációs adatokat beolvasni a két alkalmazás konfigurációját áruházakból származó egyszerre megpróbálja. Rendezze el úgy a kódot, hogy előbb betölti a másodlagos tárolóból, és ezután az elsődleges tárolja. Ez a megközelítés biztosítja, hogy a konfigurációs adatait az elsődleges tároló lép érvénybe, amikor érhető el. A következő kódrészlet azt mutatja be, hogyan implementálható ezzel az elrendezéssel fokozott a .NET Core-CLI-ben:
+Technikailag az alkalmazás nem hajt végre feladatátvételt. Ugyanazon konfigurációs adatok egyidejű lekérését kísérli meg egyszerre két alkalmazás-konfigurációs tárolóból. Rendezze a kódot úgy, hogy az a másodlagos tárolóból, majd az elsődleges tárolóból betöltődik. Ez a megközelítés biztosítja, hogy az elsődleges tárolóban lévő konfigurációs adatközpont elsőbbséget élvez, ha elérhető. A következő kódrészlet bemutatja, hogyan implementálhatja ezt a megállapodást a a .NET Core parancssori felületeban:
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -48,27 +48,27 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     }
 ```
 
-Figyelje meg a `optional` átadott paraméter a `AddAzureAppConfiguration` függvény. Ha a beállítása `true`, ez a paraméter megakadályozza, hogy az alkalmazás hibás továbbra is, ha a függvény nem tudja betölteni a konfigurációs adatokat.
+Figyelje meg a `AddAzureAppConfiguration` függvénynek átadott `optional` paramétert. Ha `true`értékre van állítva, ez a paraméter megakadályozza, hogy az alkalmazás folytassa a műveletet, ha a függvény nem tudja betölteni a konfigurációs adatait.
 
-## <a name="synchronization-between-configuration-stores"></a>Szinkronizálási konfiguráció adattárak között
+## <a name="synchronization-between-configuration-stores"></a>A konfigurációs tárolók közötti szinkronizálás
 
-Fontos, hogy az összes georedundáns konfigurációs tárolók ugyanazokat az adatokat. Használhatja a **exportálása** alkalmazások konfigurálása az elsődleges tároló másolhat adatokat a másodlagos igény szerinti függvényt. Ez a funkció az Azure portal és a parancssori felület keresztül érhető el.
+Fontos, hogy a Geo-redundáns konfiguráció tárolja az összes azonos adathalmazt. Az alkalmazás konfigurációja az **Exportálás** funkcióval az adatok az elsődleges tárolóból a másodlagos igény szerinti másolására használhatók. Ez a függvény a Azure Portal és a parancssori felületen egyaránt elérhető.
 
-Az Azure Portalról akkor is küldjön egy módosítást egy másik a konfigurációs adattárolónál az alábbi lépéseket.
+A Azure Portal az alábbi lépéseket követve elküldheti egy másik konfigurációs tároló módosítását.
 
-1. Nyissa meg a **Import/Export** lapot, majd **exportálása** > **Alkalmazáskonfiguráció** > **cél**  >  **Válasszon ki egy erőforrást**.
+1. Nyissa meg az **Importálás/exportálás** lapot, majd válassza az **Exportálás** > az **alkalmazás konfigurációja** > a **cél** > **válasszon ki egy erőforrást**.
 
-2. A megnyíló új panelen adja meg az előfizetés, erőforráscsoport és a másodlagos tároló erőforrás neve, és válassza ki **alkalmaz**.
+2. A megnyíló új panelen adja meg a másodlagos tároló előfizetés, erőforráscsoport és erőforrás nevét, majd kattintson az **alkalmaz**gombra.
 
-3. A felhasználói felület frissül, így választhat, hogy milyen konfigurációs adatokat szeretne exportálni a másodlagos tárolójában. Hagyhatja az alapértelmezett idő értéket, és állítsa mind **címkéről** és **címkére** ugyanarra az értékre. Kattintson az **Alkalmaz** gombra.
+3. A felhasználói felület frissül, így kiválaszthatja, hogy milyen konfigurációs adatait szeretné exportálni a másodlagos tárolóba. Az alapértelmezett időértéket meghagyhatja, és a **címkéből** és a **címkéből** is megadhatja ugyanazt az értéket. Kattintson az **Alkalmaz** gombra.
 
-4. Ismételje meg az előző lépést az összes konfigurációs módosítást.
+4. Ismételje meg az előző lépéseket az összes konfigurációs módosításnál.
 
-Ez az exportálási folyamat automatizálása, az Azure CLI használatával. A következő parancsot az elsődleges tár egyetlen konfigurációmódosítás exportálása a másodlagos mutatja be:
+Az exportálási folyamat automatizálásához használja az Azure CLI-t. A következő parancs bemutatja, hogyan exportálhat egyetlen konfigurációs változást az elsődleges tárolóból a másodlagosra:
 
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan, mivel megvédi a rugalmasság geo-futtatás ideje alatt az Alkalmazáskonfigurációhoz alkalmazását. Konfigurációs adatok konfigurálása a build és a központi telepítési időpontban is beágyazható. További információkért lásd: [integrálás a CI/CD-folyamat](./integrate-ci-cd-pipeline.md).
+Ebből a cikkből megtudhatta, hogyan növelhető az alkalmazás a földrajzi rugalmasság eléréséhez az alkalmazás konfigurálásakor. A konfigurációs adatok beágyazási vagy központi telepítési idő alatt is beágyazható az alkalmazás konfigurációjától. További információ: [integrálás CI/CD-folyamattal](./integrate-ci-cd-pipeline.md).
 

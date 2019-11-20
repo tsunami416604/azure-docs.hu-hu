@@ -1,25 +1,23 @@
 ---
-title: Azure Migrate támogatási mátrix a fizikai kiszolgálók értékeléséhez és áttelepítéséhez
-description: A Azure Migrate szolgáltatás használatával összegzi a fizikai kiszolgálók értékelésére és áttelepítésére vonatkozó beállításokat és korlátozásokat.
+title: A fizikai kiszolgáló értékelésének és áttelepítésének támogatása Azure Migrate
+description: Összefoglalja a fizikai kiszolgálók értékelésének/áttelepítésének támogatását Azure Migrateokkal.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091897"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196336"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>A fizikai kiszolgálók felmérésének és migrálásának támogatási mátrixa
 
 A [Azure Migrate szolgáltatással](migrate-overview.md) a gépeket kivizsgálhatja és áttelepítheti a Microsoft Azure felhőbe. Ez a cikk a helyszíni fizikai kiszolgálók értékelésére és áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze.
 
-> [!NOTE]
-> Ha olyan funkciókat talál itt, amelyek még nem láthatók a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fognak megjelenni.
 
 
 ## <a name="physical-server-scenarios"></a>Fizikai kiszolgálói forgatókönyvek

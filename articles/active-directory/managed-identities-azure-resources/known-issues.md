@@ -1,5 +1,5 @@
 ---
-title: Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
+title: A felügyelt identitásokkal kapcsolatos gyakori kérdések és ismert problémák – Azure AD
 description: Ismert problémák az Azure-erőforrások felügyelt identitásával kapcsolatban.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983437"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183888"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -68,7 +68,7 @@ A virtuálisgép-bővítmény végpontjának használatának egyes korlátai a k
 - Csak 32 felhasználó által hozzárendelt felügyelt identitás rendelhető hozzá a virtuális géphez.
 
 
-Megjegyzés: Az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásai a 2019-es januári támogatásban lesznek elérhetők. 
+Megjegyzés: az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásai a 2019 januárjában lesznek támogatottak. 
 
 Az Azure Instance Metadata Service-ról további információt a [IMDS dokumentációjában](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) talál.
 
@@ -84,8 +84,8 @@ Nem. A felügyelt identitások jelenleg nem támogatják a könyvtárak között
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Milyen Azure RBAC-engedélyekre van szükség egy erőforrás felügyelt identitásához? 
 
-- Rendszer által hozzárendelt felügyelt identitás: Írási engedélyekre van szüksége az erőforráson. A virtuális gépek esetében például Microsoft. számítás/virtualMachines/írás szükséges. Ez a művelet az erőforrás-specifikus beépített szerepkörök, például a [virtuális gépek közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)része.
-- Felhasználó által hozzárendelt felügyelt identitás: Írási engedélyekre van szüksége az erőforráson. A virtuális gépek esetében például Microsoft. számítás/virtualMachines/írás szükséges. A felügyelt identitás- [kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendelésen felül a felügyelt identitáson kívül is.
+- Rendszer által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. A virtuális gépek esetében például Microsoft. számítás/virtualMachines/írás szükséges. Ez a művelet az erőforrás-specifikus beépített szerepkörök, például a [virtuális gépek közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)része.
+- Felhasználó által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. A virtuális gépek esetében például Microsoft. számítás/virtualMachines/írás szükséges. A felügyelt identitás- [kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendelésen felül a felügyelt identitáson kívül is.
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Hogyan indítja újra az Azure-erőforrások bővítmény felügyelt identitásait?
 Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a következő parancsmag használható a manuális újraindításhoz:
@@ -94,9 +94,9 @@ Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a k�
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Helyszín: 
+Az elemek magyarázata: 
 - A Windows-bővítmény neve és típusa: ManagedIdentityExtensionForWindows
-- A Linux-bővítmény neve és típusa: ManagedIdentityExtensionForLinux
+- Kiterjesztés neve és típusa Linux esetén: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -114,7 +114,7 @@ Ha a séma-exportálási funkció elérhetővé válik a felügyelt identitások
 
 Ha a virtuális gépet futó állapotba helyezi, az áthelyezés során továbbra is futni fog. Az áthelyezést követően azonban, ha a virtuális gép leáll és újraindul, nem fog elindulni. Ez a probléma azért fordul elő, mert a virtuális gép nem frissíti az Azure-erőforrások identitásához tartozó felügyelt identitásokra mutató hivatkozást, és továbbra is a régi erőforráscsoporthoz mutat.
 
-**Megkerülő megoldás** 
+**Áthidaló megoldás** 
  
 Indítson el egy frissítést a virtuális gépen, hogy helyes értékeket kapjon az Azure-erőforrások felügyelt identitásai számára. A virtuális gép tulajdonságainak módosításával frissítheti az Azure-erőforrások identitásához tartozó felügyelt identitásokra mutató hivatkozást. Beállíthat például egy új címke értéket a virtuális gépen a következő paranccsal:
 

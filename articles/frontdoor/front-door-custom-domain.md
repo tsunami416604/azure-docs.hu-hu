@@ -1,5 +1,5 @@
 ---
-title: Útmutató – Egyéni tartomány hozzáadása az Azure Front Door-konfigurációhoz | Microsoft Docs
+title: Oktatóanyag – egyéni tartomány hozzáadása az Azure-beli bejárati ajtó konfigurációjához
 description: Ebből az oktatóanyagból megtudhatja, hogyan regisztrálható egyéni tartomány az Azure Front Door szolgáltatásban.
 services: frontdoor
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3c98359950bd9539ea75f5a031ac1ce9f2ebe812
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb9e369bbba72cd3a1dd7fcc864e2845e3a979e9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736700"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184624"
 ---
-# <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a bejárati ajtóhoz
+# <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
 Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartományt a Front Doorhoz. Amikor az Azure Front Door Service-t használja az alkalmazások szállítására, és azt szeretné, hogy a saját tartományneve látható legyen a végfelhasználói kérelemben, akkor egy egyéni tartománynévre van szükség. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is.
 
 A Front Door létrehozása után az alapértelmezett előtérbeli gazdagép, amely az `azurefd.net` altartománya, alapértelmezés szerint belekerül az URL-címbe a Front Door-tartalom háttéralkalmazásból való szállításához (például https:\//contoso.azurefd.net/activeusers.htm). A kényelmes használat érdekében az Azure Front Door lehetőséget ad arra, hogy egyéni tartományt társítson az alapértelmezett gazdagéphez. Ezzel a lehetőséggel a tartalom továbbításakor az egyéni tartomány neve lesz az URL-címben a Front Door tulajdonában lévő tartománynév helyett (például https:\//www.contoso.com/photo.png). 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > - CNAME DNS-rekord létrehozása.
 > - Az egyéni tartomány társítása a Front Doorral.
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy Front Doort. További információkért lásd: [a rövid útmutató: Hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
+Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy Front Doort. További információkért lásd a [Rövid útmutató: Front Door létrehozása](quickstart-create-front-door.md) szakaszt.
 
 Ha nem rendelkezik egyéni tartománnyal, először vásároljon egyet egy tartományszolgáltatótól. Példákért lásd az [egyéni tartománynév vásárlásáról](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain) szóló részt.
 
@@ -43,7 +43,7 @@ Ha az Azure-t használja a [DNS-tartományai](https://docs.microsoft.com/azure/d
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS-rekord létrehozása
 
-Egy egyéni tartományt a bejárati ajtó a használata előtt, tartományszolgáltatója átirányítása a bejárati ajtajának alapértelmezett előtérbeli állomás (pl. contoso.azurefd.net) először létre kell hoznia egy kanonikusnév-(CNAME) rekordot. A CNAME rekord egy olyan DNS-rekordtípus, amellyel egy forrástartománynév leképezhető egy céltartománynévre. Az Azure Front Door Service esetében a forrástartománynév az Ön egyéni tartományneve, a céltartománynév pedig a Front Door alapértelmezett gazdagépneve. Miután bejárati ajtajának ellenőrzi, hogy a CNAME REKORDOT, amely rögzíti hoz létre, az egyéni forrástartomány címzett forgalom (például a www\.contoso.com) irányítja a rendszer a megadott célpartícióra bejárati ajtajának alapértelmezett előtérbeli gazdagép (például contoso.azurefd.net). 
+Ahhoz, hogy egyéni tartományt lehessen használni a bejárati ajtóhoz, először létre kell hoznia egy kanonikus név (CNAME) rekordot a tartományi szolgáltatóval, hogy az a bejárati ajtó alapértelmezett előtér-gazdagépére mutasson (például contoso.azurefd.net). A CNAME rekord egy olyan DNS-rekordtípus, amellyel egy forrástartománynév leképezhető egy céltartománynévre. Az Azure Front Door Service esetében a forrástartománynév az Ön egyéni tartományneve, a céltartománynév pedig a Front Door alapértelmezett gazdagépneve. Miután a bejárati ajtó ellenőrizte a létrehozott CNAME-rekordot, a forrásként szolgáló egyéni tartományhoz (például a www\.contoso.com) irányuló forgalmat a rendszer átirányítja a megadott célhelyre az alapértelmezett előtér-gazdagéphez (például contoso.azurefd.net). 
 
 Egy egyéni tartomány és annak altartománya egyszerre csak egy Front Doorral társítható. Azonban lehetséges egy egyéni tartomány több altartományának használata különböző Front Doorokhoz több CNAME rekord használatával. Emellett leképezhet egy különböző altartományokkal rendelkező egyéni tartományt is ugyanarra a Front Doorra.
 
@@ -66,11 +66,11 @@ CNAME rekord létrehozása az afdverify altartománnyal:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - Forrás: Adja meg az egyéni tartomány nevét, a afdverify együtt, beleértve a következő formátumban: afdverify.  _&lt;egyéni tartománynév&gt;_. Például: afdverify.www.contoso.com.
+    - Forrás: Adja meg az egyéni tartománya nevét az afdverify altartománnyal együtt, a következő formátumban: afdverify. _&lt;egyéni tartomány neve&gt;_ . Például: afdverify.www.contoso.com.
 
-    - Típus: Adja meg *CNAME*.
+    - Típus: Írja be a *CNAME* szöveget.
 
-    - Cél: Adja meg az alapértelmezett bejárati ajtajának előtérbeli gazdagép, a afdverify együtt, beleértve a következő formátumban: afdverify.  _&lt;végpontnév&gt;_. azurefd.net. Például: afdverify.contoso.azurefd.net.
+    - Cél: Adja meg az alapértelmezett Front Door előtérbeli gazdagépet az afdverify altartománnyal együtt a következő formátumban: afdverify. _&lt;végpontnév&gt;_ .azurefd.net. Például: afdverify.contoso.azurefd.net.
 
 4. Mentse a módosításokat.
 
@@ -86,13 +86,13 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
 5. Töltse ki a következő mezőket a CNAME bejegyzéshez:
 
-    - Típus: Hagyja *CNAME* kiválasztott.
+    - Típus: Hagyja kijelölve a *CNAME* elemet.
 
-    - Gazdagép: Adja meg az egyéni tartományt szeretne használni, a afdverify altartomány nevével együtt. Például: afdverify.www.
+    - Gazdagép: Adja meg az egyéni tartománya altartományát az afdverify altartomány nevével együtt. Például: afdverify.www.
 
-    - Points to: Adja meg az alapértelmezett bejárati ajtajának előtérbeli gazdagép, a afdverify altartomány nevével együtt. Például: afdverify.contoso.azurefd.net. 
+    - Erre mutat: Adja meg az alapértelmezett előtérbeli Front Door-gazdagépet az afdverify altartománnyal együtt. Például: afdverify.contoso.azurefd.net. 
 
-    - TTL: Hagyja *1 óra* kiválasztott.
+    - Élettartam: Hagyja kiválasztva az *1 óra* lehetőséget.
 
 6. Kattintson a **Mentés** gombra.
  
@@ -109,7 +109,7 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a Front Doorho
     
 3. Adjon meg az **Egyéni tartomány** értékét. 
 
-4. Az **Előtérbeli gazdagép** mezőben előre ki van töltve a CNAME rekordhoz céltartományként használt előtérbeli gazdagép neve, amely a Front Doorból van származtatva: *&lt;alapértelmezett gazdagépnév&gt;*.azurefd.net. A név nem módosítható.
+4. Az **Előtérbeli gazdagép** mezőben előre ki van töltve a CNAME rekordhoz céltartományként használt előtérbeli gazdagép neve, amely a Front Doorból van származtatva: *&lt;alapértelmezett gazdagépnév&gt;* .azurefd.net. A név nem módosítható.
 
 5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például: www\.contoso.com vagy cdn.contoso.com. Ne használja az afdverify altartománynevet.
 
@@ -118,13 +118,13 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a Front Doorho
    Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz.
 
 >[!WARNING]
-> **Kötelező** gondoskodnia róla, hogy a Front Doorban az összes előtérbeli gazdagép (beleértve az egyéni tartományokat) rendelkezzen útválasztási szabállyal, hozzá társított alapértelmezett elérési úttal („/\*”). Ez azt jelenti, hogy minden útválasztási szabály között lennie kell legalább egy útválasztási szabálynak az alapértelmezett elérési úton („/\*”) meghatározott minden előtérbeli gazdagéphez. Ennek hiányában előfordulhat, hogy a végfelhasználói adatforgalom nem lesz megfelelően átirányítva.
+> **Kötelező** gondoskodnia róla, hogy a Front Doorban az összes előtérbeli gazdagép (beleértve az egyéni tartományokat) rendelkezzen útválasztási szabállyal, hozzá társított alapértelmezett elérési úttal („/\*”). Vagyis minden egyes előtérbeli gazdagépnek rendelkeznie kell legalább egy olyan útválasztási szabállyal, amely az alapértelmezett útvonalat (\*) használja. Ha ez a feltétel nem teljesül, akkor a végfelhasználói forgalom útvonalválasztása nem lesz megfelelő.
 
 ## <a name="verify-the-custom-domain"></a>Az egyéni tartomány ellenőrzése
 
 Az egyéni tartomány regisztrálása után ellenőrizze, hogy az egyéni tartomány az alapértelmezett előtérbeli Front Door-gazdagépre hivatkozik-e.
  
-A böngészőjében navigáljon a fájl címére az egyéni tartomány használatával. Ha például az egyéni tartománya a robotics.contoso.com, a gyorsítótárazott fájl URL-címe a következő URL-címre fog hasonlítani: http:\//robotics.contoso.com/my-public-container/my-file.jpg. Ellenőrizze, hogy az eredmény ugyanaz-e, mint amikor a Front Doort közvetlenül a *&lt;Front Door gazdagépneve&gt;*.azurefd.net címen éri el.
+A böngészőjében navigáljon a fájl címére az egyéni tartomány használatával. Ha például az egyéni tartománya a robotics.contoso.com, a gyorsítótárazott fájl URL-címe a következő URL-címre fog hasonlítani: http:\//robotics.contoso.com/my-public-container/my-file.jpg. Ellenőrizze, hogy az eredmény ugyanaz-e, mint amikor a Front Doort közvetlenül a *&lt;Front Door gazdagépneve&gt;* .azurefd.net címen éri el.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Az állandó egyéni tartomány leképezése
@@ -141,13 +141,13 @@ CNAME rekord létrehozása az egyéni tartományhoz:
 
     | Forrás          | Típus  | Cél           |
     |-----------------|-------|-----------------------|
-    | <www.contoso.com> | CNAME | contoso.azurefd.net |
+    | < a www. contoso. com > | CNAME | contoso.azurefd.net |
 
-   - Forrás: Adja meg az egyéni tartomány nevét (például: www\.contoso.com).
+   - Forrás: adja meg az egyéni tartománynevet (például: www\.contoso.com).
 
-   - Típus: Adja meg *CNAME*.
+   - Típus: Írja be a *CNAME* szöveget.
 
-   - Cél: Adja meg az alapértelmezett bejárati ajtajának előtérbeli állomás. Ennek az alábbi formátumúnak kell lennie:_&lt;gazdagépnév&gt;_.azurefd.net. Például: contoso.azurefd.net.
+   - Cél: Adja meg az alapértelmezett előtérbeli Front Door-gazdagépnevet. Ennek az alábbi formátumúnak kell lennie: _&lt;gazdagépnév&gt;_ .azurefd.net. Például: contoso.azurefd.net.
 
 4. Mentse a módosításokat.
 
@@ -167,13 +167,13 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
 5. Töltse ki a CNAME bejegyzés mezőit:
 
-    - Típus: Hagyja *CNAME* kiválasztott.
+    - Típus: Hagyja kijelölve a *CNAME* elemet.
 
-    - Gazdagép: Adja meg az egyéni tartománya altartományát. Például: www vagy profile.
+    - Gazdagép: Adja meg a használandó egyéni tartománya altartományát. Például: www vagy profile.
 
-    - Points to: Adja meg a bejárati ajtajának alapértelmezett gazdagép nevét. Például: contoso.azurefd.net. 
+    - A következő helyre mutat: Adja meg a Front Door alapértelmezett gazdagépnevét. Például: contoso.azurefd.net. 
 
-    - TTL: Hagyja *1 óra* kiválasztott.
+    - Élettartam: Hagyja kiválasztva az *1 óra* lehetőséget.
 
 6. Kattintson a **Mentés** gombra.
  
@@ -195,7 +195,7 @@ Az előző lépésekben hozzáadott egy egyéni tartományt egy Front Doorhoz. H
    Az egyéni tartomány társítása a végponttal ekkor megszűnik.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

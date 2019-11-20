@@ -1,10 +1,10 @@
 ---
-title: PaaS-erőforrásokhoz – Azure CLI-vel való hálózati hozzáférés korlátozása |} A Microsoft Docs
-description: Ebben a cikkben megismerheti, hogyan korlátozható az Azure-erőforrások, például az Azure Storage és Azure SQL Database-hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával.
+title: A hálózati hozzáférés korlátozása a Pásti-erőforrásokhoz – Azure CLI
+description: Ebből a cikkből megtudhatja, hogyan korlátozhatja és korlátozhatja az Azure-erőforrások, például az Azure Storage és a Azure SQL Database hálózati hozzáférését az Azure CLI-t használó virtuális hálózati szolgáltatás-végpontokkal.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e52829723b41f9274251ebe7432aa659251c0da4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695118"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186405"
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
+# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása az Azure CLI használatával
 
 Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózati alhálózatra korlátozható az egyes Azure-szolgáltatási erőforrásokhoz való hálózati hozzáférés. Emellett teljesen le is tiltható az internetes hozzáférés az erőforrásokhoz. A szolgáltatásvégpontok közvetlen csatlakozást biztosítanak a virtuális hálózat és a támogatott Azure-szolgáltatások között, így lehetővé teszik a virtuális hálózat magáncímterének használatát az Azure-szolgáltatások eléréséhez. A szolgáltatásvégpontokon keresztül az Azure-erőforrások felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán marad. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -43,7 +43,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Előtt egy virtuális hálózatot hoz létre, akkor hozzon létre egy erőforráscsoportot a virtuális hálózatot és más ebben a cikkben létrehozott összes erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózathoz, és az ebben a cikkben létrehozott összes többi erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot egyetlen alhálózattal rendelkező [az network vnet létrehozása](/cli/azure/network/vnet).
+Hozzon létre egy alhálózattal rendelkező virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet)paranccsal.
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Szolgáltatásvégpont engedélyezése 
 
-Engedélyezheti a szolgáltatásvégpontokat csak a szolgáltatások, amelyek támogatják a Szolgáltatásvégpontok. Szolgáltatási végpont engedélyezve van elérhető szolgáltatások megtekintése az Azure-helyen [az network vnet--végpontszolgáltatások listázásához](/cli/azure/network/vnet). Az alábbi példa az elérhető szolgáltatások service-végpont engedélyezve van egy listáját adja vissza a *eastus* régióban. Visszaadott szolgáltatások listájában, idővel növekszik, ahogy további Azure-szolgáltatások válnak a szolgáltatásvégpont engedélyezve van.
+A szolgáltatási végpontokat csak olyan szolgáltatások esetében engedélyezheti, amelyek támogatják a szolgáltatási végpontokat. Azure-helyen elérhető szolgáltatás-végpontok által használható szolgáltatások megtekintése az [az Network vnet List-Endpoint-Services](/cli/azure/network/vnet). A következő példa a *eastus* régióban elérhető szolgáltatás-végpontok számára engedélyezett szolgáltatások listáját adja vissza. A visszaadott szolgáltatások listája idővel növekszik, mivel egyre több Azure-szolgáltatás lesz engedélyezve a szolgáltatás végpontja.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-Hozzon létre egy további alhálózatot a virtuális hálózaton [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet). Ebben a példában egy szolgáltatásvégpontot *Microsoft.Storage* jön létre az alhálózatot: 
+Hozzon létre egy további alhálózatot a virtuális hálózatban az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet)paranccsal. Ebben a példában a *Microsoft. Storage* szolgáltatáshoz tartozó szolgáltatási végpont jön létre az alhálózathoz: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Alhálózat hálózati hozzáférésének korlátozása
 
-Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](/cli/azure/network/nsg). A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNsgPrivate*.
+Hozzon létre egy hálózati biztonsági csoportot az [az Network NSG Create](/cli/azure/network/nsg)paranccsal. A következő példa egy *myNsgPrivate*nevű hálózati biztonsági csoportot hoz létre.
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-A hálózati biztonsági csoport társítása a *privát* alhálózat [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet). Az alábbi példa hozzárendeli a *myNsgPrivate* hálózati biztonsági csoportot, amely a *privát* alhálózat:
+Társítsa a hálózati biztonsági csoportot a *privát* alhálózathoz az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet). A következő példa a *myNsgPrivate* hálózati biztonsági csoportot társítja a *privát* alhálózathoz:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-A biztonsági szabályok létrehozása [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule). A következő szabály lehetővé teszi, hogy a kimenő hozzáférést az Azure Storage szolgáltatáshoz rendelt nyilvános IP-címek: 
+Hozzon létre biztonsági szabályokat az [az Network NSG Rule Create](/cli/azure/network/nsg/rule)paranccsal. Az alábbi szabály lehetővé teszi a kimenő hozzáférést az Azure Storage szolgáltatáshoz rendelt nyilvános IP-címekhez: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Minden egyes hálózati biztonsági csoport több tartalmaz [alapértelmezett biztonsági szabályokat](security-overview.md#default-security-rules). A következő szabály felülbírálja az összes nyilvános IP-címet a kimenő hozzáférést engedélyező alapértelmezett biztonsági szabály. A `destination-address-prefix "Internet"` beállítás megtagadja a kimenő hozzáférést az összes nyilvános IP-címek. Az előző szabályban, a magasabb prioritású, amely lehetővé teszi a hozzáférést a nyilvános IP-címek az Azure Storage miatt ez a szabály felülbírálja.
+Minden hálózati biztonsági csoport több [alapértelmezett biztonsági szabályt](security-overview.md#default-security-rules)tartalmaz. Az alábbi szabály felülbírál egy alapértelmezett biztonsági szabályt, amely lehetővé teszi a kimenő hozzáférést az összes nyilvános IP-címhez. Az `destination-address-prefix "Internet"` beállítás megtagadja a kimenő hozzáférést az összes nyilvános IP-címhez. Az előző szabály felülbírálja ezt a szabályt a magasabb prioritás miatt, ami lehetővé teszi az Azure Storage nyilvános IP-címeinek elérését.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -137,7 +137,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-A következő szabály lehetővé teszi, hogy az SSH-forgalmat bárhonnan az alhálózatra bejövő. Ez a szabály felülbírálja azon alapértelmezett biztonsági szabályokat, amelyek elutasítanak minden bejövő forgalmat az internetről. SSH engedélyezett az alhálózathoz, hogy a kapcsolat egy későbbi lépésben tesztelhető legyen.
+A következő szabály lehetővé teszi, hogy bárhonnan bejövő SSH-forgalom legyen az alhálózatra. Ez a szabály felülbírálja azon alapértelmezett biztonsági szabályokat, amelyek elutasítanak minden bejövő forgalmat az internetről. Az SSH engedélyezve van az alhálózat számára, hogy a kapcsolat tesztelhető legyen egy későbbi lépésben.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -156,11 +156,11 @@ az network nsg rule create \
 
 ## <a name="restrict-network-access-to-a-resource"></a>Erőforráshoz való hálózati hozzáférés korlátozása
 
-A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létrehozott erőforrásokhoz való hálózati hozzáférés korlátozásának lépései szolgáltatásonként eltérőek. Az egyes szolgáltatásokhoz szükséges lépéseket az adott szolgáltatások dokumentációja tartalmazza. Ez a cikk további része az Azure Storage-fiókot, például a hálózati hozzáférés korlátozásához szükséges lépéseket tartalmazza.
+A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létrehozott erőforrásokhoz való hálózati hozzáférés korlátozásának lépései szolgáltatásonként eltérőek. Az egyes szolgáltatásokhoz szükséges lépéseket az adott szolgáltatások dokumentációja tartalmazza. A cikk további része egy Azure Storage-fiók hálózati hozzáférésének korlátozására szolgáló lépéseket mutat be példaként.
 
-### <a name="create-a-storage-account"></a>Tárfiók létrehozása
+### <a name="create-a-storage-account"></a>Create a storage account
 
-Hozzon létre egy Azure storage-fiókkal [az tárfiók létrehozása](/cli/azure/storage/account). Cserélje le `<replace-with-your-unique-storage-account-name>` , egyedi el az összes Azure-helyen 3 – 24 karakter közötti hosszúságú, melynek neve használatával csak számokból és kisbetűkből állhat.
+Hozzon létre egy Azure Storage-fiókot az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Cserélje le a `<replace-with-your-unique-storage-account-name>`t olyan névre, amely az összes Azure-helyen egyedi, de 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -172,7 +172,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-A tárfiók létrehozása után a tárfiók kapcsolati karakterlánca olvasson be egy változót [az storage account show-connection-string](/cli/azure/storage/account). A kapcsolati karakterlánc segítségével hozzon létre fájlmegosztást egy későbbi lépésben.
+A Storage-fiók létrehozása után a Storage-fiókhoz tartozó kapcsolati karakterláncot az [az Storage Account show-kapcsolat-string](/cli/azure/storage/account)értékkel rendelkező változóba kell beolvasni. A kapcsolódási karakterlánc a fájlmegosztás egy későbbi lépésben való létrehozására szolgál.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -182,7 +182,7 @@ saConnectionString=$(az storage account show-connection-string \
   --out tsv)
 ```
 
-<a name="account-key"></a>Megtekintheti a változó tartalmát, és jegyezze fel az értékét a **AccountKey** adja vissza a kimenetben, mert használatban van egy későbbi lépésben.
+<a name="account-key"></a>Tekintse meg a változó tartalmát, és jegyezze fel a kimenetben visszaadott **AccountKey** értékét, mert azt egy későbbi lépésben használják.
 
 ```azurecli-interactive
 echo $saConnectionString
@@ -190,7 +190,7 @@ echo $saConnectionString
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Fájlmegosztás létrehozása a tárfiókban
 
-Hozzon létre fájlmegosztást a storage-fiókban [az tárolási fájlmegosztás létrehozása](/cli/azure/storage/share). Egy későbbi lépésben a fájlmegosztás csatlakoztatva van, győződjön meg arról, hogy a hálózati hozzáférés.
+Hozzon létre egy fájlmegosztást a Storage-fiókban az [az Storage Share Create](/cli/azure/storage/share)paranccsal. Egy későbbi lépésben a rendszer csatlakoztatja a fájlmegosztást a hálózati hozzáférés megerősítéséhez.
 
 ```azurecli-interactive
 az storage share create \
@@ -199,9 +199,9 @@ az storage share create \
   --connection-string $saConnectionString > /dev/null
 ```
 
-### <a name="deny-all-network-access-to-a-storage-account"></a>Storage-fiók összes hálózati hozzáférés megtagadása
+### <a name="deny-all-network-access-to-a-storage-account"></a>Minden hálózati hozzáférés megtagadása egy Storage-fiókhoz
 
-Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől érkező hálózati kapcsolatokat elfogadnak. Kijelölt hálózatok való hozzáférés korlátozására, módosítsa az alapértelmezett művelet *Megtagadás* a [storage-fiók frissítése az](/cli/azure/storage/account). Hálózati hozzáférés megtagadva, miután a tárfiók nem érhető egyetlen hálózathoz sem.
+Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől érkező hálózati kapcsolatokat elfogadnak. Ha korlátozni szeretné a hozzáférést a kiválasztott hálózatokra, módosítsa az alapértelmezett műveletet az az [Storage Account Update](/cli/azure/storage/account) *utasítással* . Ha a hálózati hozzáférés meg lett tagadva, a Storage-fiók nem érhető el egyetlen hálózatról sem.
 
 ```azurecli-interactive
 az storage account update \
@@ -212,7 +212,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>Hálózati hozzáférés engedélyezése alhálózatról
 
-Hálózati hozzáférés engedélyezése a storage-fiókjában az *privát* alhálózat [az tárolási fiók hálózati-szabály hozzáadása](/cli/azure/storage/account/network-rule).
+Engedélyezze a hálózati hozzáférést a Storage-fiókhoz a *magánhálózati* alhálózatról az [az Storage Account Network-Rule Add](/cli/azure/storage/account/network-rule)paranccsal.
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -227,7 +227,7 @@ Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe eg
 
 ### <a name="create-the-first-virtual-machine"></a>Az első virtuális gép létrehozása
 
-A virtuális gép létrehozása a *nyilvános* alhálózat [az virtuális gép létrehozása](/cli/azure/vm). Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+Hozzon létre egy virtuális gépet a *nyilvános* alhálózaton az [az VM Create](/cli/azure/vm)paranccsal. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 ```azurecli-interactive
 az vm create \
@@ -239,7 +239,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az Azure CLI információkat jelenít meg az alábbi példához hasonló: 
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg: 
 
 ```azurecli 
 {
@@ -254,7 +254,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális
 }
 ```
 
-Jegyezze fel a **publicIpAddress** visszaadott kimenet. Ezzel a címmel eléri a virtuális Gépet egy későbbi lépésben az internetről.
+Jegyezze fel a visszaadott kimenet **publicIpAddress** . Ez a címe egy későbbi lépésben a virtuális gép internetről való elérésére szolgál.
 
 ### <a name="create-the-second-virtual-machine"></a>A második virtuális gép létrehozása
 
@@ -268,31 +268,31 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A létrehozás után jegyezze fel a **publicIpAddress** a kimenetben adja vissza. Ezzel a címmel eléri a virtuális Gépet egy későbbi lépésben az internetről.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A létrehozás után jegyezze fel a visszaadott kimenet **publicIpAddress** . Ez a címe egy későbbi lépésben a virtuális gép internetről való elérésére szolgál.
 
 ## <a name="confirm-access-to-storage-account"></a>Tárfiókhoz való hozzáférés ellenőrzése
 
-SSH-t a *myVmPrivate* virtuális Gépet. Cserélje le  *\<publicIpAddress >* a nyilvános IP-címét a *myVmPrivate* virtuális Gépet.
+SSH-t a *myVmPrivate* virtuális gépre. Cserélje le *\<publicIpAddress >t* a *myVmPrivate* virtuális gép nyilvános IP-címére.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-Hozzon létre egy mappát a csatlakoztatási pont:
+Mappa létrehozása csatlakoztatási ponthoz:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Csatlakoztassa az Azure-fájlmegosztás létrehozott könyvtárba. A következő parancs futtatása előtt cserélje le a `<storage-account-name>` a fiók nevére és `<storage-account-key>` lekért kulccsal [hozzon létre egy tárfiókot](#create-a-storage-account).
+Csatlakoztassa az Azure-fájlmegosztást a létrehozott címtárhoz. A következő parancs futtatása előtt cserélje le a `<storage-account-name>`t a fiók nevére, és `<storage-account-key>` a [Storage-fiók létrehozása](#create-a-storage-account)során lekért kulccsal.
 
 ```bash
 sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Kap a `user@myVmPrivate:~$` parancssort. Az Azure-fájlmegosztás sikeresen csatlakoztatva */mnt/MyAzureFileShare*.
+A `user@myVmPrivate:~$` promptot kapja meg. Az Azure-fájlmegosztás sikeresen csatlakoztatva lett a */mnt/MyAzureFileShare*-hez.
 
-Győződjön meg arról, hogy a virtuális gép nem rendelkezik kimenő kapcsolattal bármely nyilvános IP-címek:
+Győződjön meg arról, hogy a virtuális gép nem rendelkezik kimenő kapcsolattal más nyilvános IP-címekhez:
 
 ```bash
 ping bing.com -c 4
@@ -300,33 +300,33 @@ ping bing.com -c 4
 
 Nem kap választ, mert a *Magánjellegű* alhálózathoz rendelt hálózati biztonsági csoport nem engedélyezi a kimenő hozzáférést olyan nyilvános IP-címekhez, amelyek nem az Azure Storage szolgáltatáshoz rendelt címek.
 
-Az SSH-munkamenetből történő kilépéshez a *myVmPrivate* virtuális Gépet.
+Lépjen ki az SSH-munkamenetből a *myVmPrivate* virtuális gépre.
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Tárfiókhoz való hozzáférés letiltásának ellenőrzése
 
-A következő paranccsal hozhat létre az SSH-munkamenetből a *myVmPublic* virtuális Gépet. Cserélje le `<publicIpAddress>` a nyilvános IP-címét a *myVmPublic* virtuális Géphez: 
+A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVmPublic* virtuális géppel. Cserélje le a `<publicIpAddress>`t a *myVmPublic* virtuális gép nyilvános IP-címére: 
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-Hozzon létre egy könyvtárat a csatlakoztatási pont:
+Könyvtár létrehozása csatlakoztatási ponthoz:
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Próbálja meg csatlakoztatni az Azure-fájlmegosztás létrehozott könyvtárba. Ez a cikk feltételezi, hogy Ubuntu legújabb verzióját telepítette. Ha a korábbi Ubuntu használ, tekintse meg [csatlakoztatás linuxon](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) további útmutatás a fájlmegosztások csatlakoztatására. A következő parancs futtatása előtt cserélje le a `<storage-account-name>` a fiók nevére és `<storage-account-key>` lekért kulccsal [hozzon létre egy tárfiókot](#create-a-storage-account):
+Kísérelje meg az Azure-fájlmegosztás csatlakoztatását a létrehozott könyvtárba. Ez a cikk azt feltételezi, hogy telepítette az Ubuntu legújabb verzióját. Ha az Ubuntu korábbi verzióit használja, tekintse [meg a Linux csatlakoztatása](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört, amely további utasításokat tartalmaz a fájlmegosztás csatlakoztatásával kapcsolatban. A következő parancs futtatása előtt cserélje le a `<storage-account-name>`t a fiók nevére, és `<storage-account-key>` a [Storage-fiók létrehozása](#create-a-storage-account)során lekért kulccsal:
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A hozzáférés megtagadva, és a egy `mount error(13): Permission denied` hiba történt, mert a *myVmPublic* belül a virtuális gép üzemel a *nyilvános* alhálózat. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal, és a tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
+A hozzáférés megtagadva, és `mount error(13): Permission denied` hibaüzenetet kap, mivel a *myVmPublic* virtuális gép a *nyilvános* alhálózaton belül van telepítve. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal, és a tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
 
-Az SSH-munkamenetből történő kilépéshez a *myVmPublic* virtuális Gépet.
+Lépjen ki az SSH-munkamenetből a *myVmPublic* virtuális gépre.
 
-A számítógépről kísérlet megtekintéséhez a megosztásokat a tárfiókban található [az tárolási megosztási listán](/cli/azure/storage/share?view=azure-cli-latest). Cserélje le `<account-name>` és `<account-key>` a tárfiók nevét és kulcsát, [hozzon létre egy tárfiókot](#create-a-storage-account):
+A számítógépről próbálja meg megtekinteni a Storage-fiókban lévő megosztásokat az [az Storage Share List](/cli/azure/storage/share?view=azure-cli-latest)paranccsal. Cserélje le `<account-name>` és `<account-key>` a Storage-fiók nevére és kulcsára a [Storage-fiók létrehozásakor](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \
@@ -334,18 +334,18 @@ az storage share list \
   --account-key <account-key>
 ```
 
-A hozzáférés megtagadva, és megjelenik egy *a kérelem nem jogosult e művelet elvégzéséhez* hiba, mert a számítógép nem szerepel a következőben a *privát* alhálózatának a *MyVirtualNetwork* virtuális hálózatot.
+A hozzáférés megtagadva, és a *kérelem nem jogosult a művelet elvégzésére* , mert a számítógép nem a *MyVirtualNetwork* virtuális hálózat *privát* alhálózatán található.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [az csoport törlése](/cli/azure) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
+Ha már nincs rá szükség, az [az Group delete](/cli/azure) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben engedélyezett egy szolgáltatásvégpontot egy virtuális hálózat alhálózatához. Megismerte, hogy az Azure-szolgáltatásokkal üzembe helyezett erőforrásokhoz szolgáltatásvégpontok engedélyezhetők. Létrehozott egy Azure Storage-fiókot, és egy adott virtuális hálózati alhálózat erőforrásaira korlátozta a fiók felé irányuló hálózati hozzáférést. További információkat a szolgáltatásvégpontokról a [szolgáltatásvégpontok áttekintését](virtual-network-service-endpoints-overview.md) és az [alhálózatok kezelését](virtual-network-manage-subnet.md) ismertető cikkekben olvashat.
+Ebben a cikkben egy virtuális hálózati alhálózat szolgáltatási végpontját engedélyezte. Megismerte, hogy az Azure-szolgáltatásokkal üzembe helyezett erőforrásokhoz szolgáltatásvégpontok engedélyezhetők. Létrehozott egy Azure Storage-fiókot, és egy adott virtuális hálózati alhálózat erőforrásaira korlátozta a fiók felé irányuló hálózati hozzáférést. További információkat a szolgáltatásvégpontokról a [szolgáltatásvégpontok áttekintését](virtual-network-service-endpoints-overview.md) és az [alhálózatok kezelését](virtual-network-manage-subnet.md) ismertető cikkekben olvashat.
 
-Ha több virtuális hálózat található a fiókjában, érdemes lehet összekapcsolni két virtuális hálózatot, hogy az egyes virtuális hálózatokban található erőforrások kommunikálhassanak egymással. További információ [virtuális hálózatok összekapcsolása](tutorial-connect-virtual-networks-cli.md).
+Ha több virtuális hálózat található a fiókjában, érdemes lehet összekapcsolni két virtuális hálózatot, hogy az egyes virtuális hálózatokban található erőforrások kommunikálhassanak egymással. További információt a [virtuális hálózatok összekapcsolásával](tutorial-connect-virtual-networks-cli.md)foglalkozó témakörben talál.

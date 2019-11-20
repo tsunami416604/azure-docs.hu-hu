@@ -1,5 +1,5 @@
 ---
-title: Hibaelhárítás – az Azure bejárati ajtó szolgáltatás konfigurációjával kapcsolatos problémák elhárítása | Microsoft Docs
+title: Az Azure bejárati ajtó szolgáltatás konfigurációs problémáinak elhárítása
 description: Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a bejárati ajtóhoz kapcsolódó gyakori problémák némelyikét.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335883"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184565"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Gyakori útválasztási problémák elhárítása
 Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure bejárati szolgáltatásának konfigurációjában esetlegesen előforduló gyakori útválasztási problémákat. 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure bejárati szolgálta
 ## <a name="hostname-not-routing-to-backend-and-returns-400-status-code"></a>A gazdagép nem irányítja át a háttérbe, és 400 állapotkódot ad vissza.
 
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 - Létrehozott egy bejárati ajtót, de a előtér-gazdagépre irányuló kérelem HTTP 400-as állapotkódot ad vissza.
 
   - Létrehozott egy DNS-hozzárendelést egy egyéni tartományból a konfigurált előtér-gazdagépre. Az egyéni tartományhoz tartozó állomásnév küldése azonban egy HTTP 400 állapotkódot ad vissza, és nem úgy tűnik, hogy a konfigurált háttér (ek) ra irányítja az útvonalat.
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure bejárati szolgálta
 
 ## <a name="request-to-frontend-hostname-returns-404-status-code"></a>A előtér-gazdagépre irányuló kérelem a 404 állapotkódot adja vissza.
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 - Létrehozta a bejárati ajtót, és konfigurált egy előtér-gazdagépet, egy háttér-készletet legalább egy háttérrel, valamint egy útválasztási szabályt, amely összekapcsolja a frontend-gazdagépet a háttér-készlettel. Úgy tűnik, hogy a tartalom nem érhető el a konfigurált előtér-gazdagépre irányuló kérelem küldésekor, mert a rendszer HTTP 404 állapotkódot ad vissza.
 
 ### <a name="cause"></a>Ok
@@ -58,7 +58,7 @@ A tünet több lehetséges oka is lehet:
 
    - Keresse meg a HTTP-és HTTPS-portokat. A legtöbb esetben a 80-es és a 443-as (ill.) érték helyes, és nincs szükség módosításra. Van azonban esély arra, hogy a háttérrendszer ne legyen így konfigurálva, és egy másik portot figyel.
 
-     - Győződjön meg arról, hogy a háttérrendszer azon hátteréhez _van konfigurálva_ , amelyhez a előtér-gazdagépnek útválasztási művelettel kell rendelkeznie. A legtöbb esetben ez a fejléc nem egyezhet meg a háttér- _gazdagép nevével_. A helytelen érték azonban különféle HTTP-4xx okozhat, ha a háttérrendszer más értéket vár el. Ha a háttér IP-címét adja meg, lehetséges, hogy a háttérbeli _állomásfejléc_ -fejlécet be kell állítania a háttér állomásneve számára.
+     - Győződjön meg arról, hogy _a háttérrendszer_ azon hátteréhez van konfigurálva, amelyhez a előtér-gazdagépnek útválasztási művelettel kell rendelkeznie. A legtöbb esetben ez a fejléc nem egyezhet meg a háttér- _gazdagép nevével_. A helytelen érték azonban különféle HTTP-4xx okozhat, ha a háttérrendszer más értéket vár el. Ha a háttér IP-címét adja meg, lehetséges, hogy a háttérbeli _állomásfejléc-fejlécet_ be kell állítania a háttér állomásneve számára.
 
 
 3. Az útválasztási szabály beállításainak megtekintése
@@ -68,5 +68,5 @@ A tünet több lehetséges oka is lehet:
 
                - Az _elfogadott protokollok_ a http. A _továbbítási protokoll_ vagy egyeztetési kérelem vagy HTTPS.
 
-   - Az _URL-cím_ újraírása alapértelmezés szerint le van tiltva, és csak akkor használja ezt a mezőt, ha le szeretné szűkíteni az elérhetővé tenni kívánt háttérbeli erőforrások hatókörét. Ha le van tiltva, a bejárati ajtó továbbítja ugyanazt a kérési útvonalat, amelyet a rendszer kap. Lehetséges, hogy ez a mező helytelenül van konfigurálva, és a bejárati ajtó olyan erőforrást kér a háttérből, amely nem érhető el, így HTTP 404 állapotkódot ad vissza.
+   - Az _URL-cím újraírása_ alapértelmezés szerint le van tiltva, és csak akkor használja ezt a mezőt, ha le szeretné szűkíteni az elérhetővé tenni kívánt háttérbeli erőforrások hatókörét. Ha le van tiltva, a bejárati ajtó továbbítja ugyanazt a kérési útvonalat, amelyet a rendszer kap. Lehetséges, hogy ez a mező helytelenül van konfigurálva, és a bejárati ajtó olyan erőforrást kér a háttérből, amely nem érhető el, így HTTP 404 állapotkódot ad vissza.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809253"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184194"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -119,7 +119,7 @@ A műveletek kijavításának menetét alább találja.
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>K: a Windows 10-es eszközök regisztrálása az Azure AD-ben TPM FIPS módban?
 
-**A:** Nem, jelenleg a Windows 10-es eszközök regisztrálása az összes eszköz állapotához – hibrid Azure AD-csatlakozás, Azure AD-csatlakozás és Azure AD-regisztráció – nem támogatja a TPM FIPS módban. Az Azure AD-hez való sikeres csatlakozáshoz vagy regisztráláshoz az FIPS-módot ki kell kapcsolni az eszközök TPM.
+**A:** A Windows 10-es eszközök regisztrációja csak a FIPS-kompatibilis TPM 2,0-es verzióban támogatott, és a TPM 1,2-es verziója nem támogatott. Ha az eszközei rendelkeznek FIPS-kompatibilis TPM 1,2-mel, le kell tiltania azokat az Azure AD JOIN vagy a Hybrid Azure AD JOIN szolgáltatással való továbblépés előtt. Vegye figyelembe, hogy a Microsoft nem biztosít olyan eszközöket, amelyekkel letiltható a TPM FIPS üzemmódja, mert a TPM-gyártótól függ. Támogatásért forduljon a hardver OEM-hez. 
 
 ---
 

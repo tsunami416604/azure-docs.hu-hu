@@ -1,17 +1,17 @@
 ---
-title: Ajánlott eljárások az értékelés létrehozásához Azure Migrate Server Assessment alapján
-description: Tippek az értékelések létrehozásához Azure Migrate Server Assessment segítségével.
+title: Az Azure Migrate Server Assessment bevált eljárásainak értékelése
+description: Tippek az értékelések létrehozásához Azure Migrate Server Assessment alapján.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466945"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185982"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -96,7 +96,7 @@ Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes ad
 - Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ](concepts-assessment-calculation.md) az értékelések kiszámításáról.
 - [Megtudhatja](how-to-modify-assessment.md) , hogyan szabhatja testre az értékeléseket.

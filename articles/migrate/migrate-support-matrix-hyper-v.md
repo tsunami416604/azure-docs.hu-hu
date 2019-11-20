@@ -1,18 +1,18 @@
 ---
-title: Azure Migrate támogatási mátrix a Hyper-V felméréséhez és áttelepítéséhez
-description: Összefoglalja a Hyper-V felmérés és a Azure Migrate szolgáltatás használatával végzett áttelepítés beállításait és korlátozásait.
+title: A Hyper-V felmérésének/áttelepítésének támogatása Azure Migrate
+description: Ismerkedjen meg a Hyper-V Assessment/Migration támogatásával Azure Migrateokkal.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498699"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186659"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -86,7 +86,7 @@ A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapc
 --- | ---
 *.portal.azure.com | Navigálás a Azure Portal
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 management.azure.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 dc.services.visualstudio.com | Naplózás és figyelés
 *.vault.azure.net | Azure Key Vault titkok kezelése a készülék és a szolgáltatás közötti kommunikáció során.
@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | A letölthető fájlok letöltése a
 
 A következő táblázat összefoglalja az értékeléshez szükséges portokra vonatkozó követelményeket.
 
-**Eszköz** | **Kapcsolat**
+**Device** | **kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
 **Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek konfigurációjának és teljesítményének lekéréséhez CIM (CIM) munkamenet használatával.
@@ -159,13 +159,13 @@ time.windows.com | Ellenőrzi a rendszerek és a globális idő közötti idősz
 
 A következő táblázat összefoglalja a Hyper-V-gazdagépeken és virtuális gépeken a VM-Migrálás portokra vonatkozó követelményeit.
 
-**Eszköz** | **Kapcsolat**
+**Device** | **kapcsolat**
 --- | ---
 Hyper-V-gazdagépek/virtuális gépek | Kimenő kapcsolatok a 443-es HTTPS-porton, hogy a virtuális gép replikációs szolgáltatásait Azure Migrate küldje el.
 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felkészülés a Hyper-V virtuális](tutorial-prepare-hyper-v.md) gépek áttelepítésre való értékelésére.

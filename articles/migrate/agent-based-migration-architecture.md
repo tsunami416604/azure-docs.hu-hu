@@ -1,17 +1,17 @@
 ---
-title: Ügynök-alapú áttelepítési architektúra Azure Migrate kiszolgáló áttelepítésekor
+title: Ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésekor
 description: Áttekintést nyújt az ügynök-alapú VMware VM-Migrálás Azure Migrate kiszolgáló áttelepítésével.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232578"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186102"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
 
@@ -28,7 +28,7 @@ A VMware-áttelepítéshez a Azure Migrate Server áttelepítési eszköz több 
 - Az ügynök-alapú replikáció használatával történő áttelepítés a jelen cikkben leírtak szerint.
 - Ügynök nélküli replikáció, a virtuális gépek áttelepítése anélkül, hogy bármit telepíteni kellene.
 
-További információ a [VMware-hez](server-migrate-overview.md)készült áttelepítési módszer kiválasztásáról.
+További információ a [VMware-hez készült áttelepítési módszer kiválasztásáról](server-migrate-overview.md).
 
 ## <a name="server-migration-and-azure-site-recovery"></a>Kiszolgáló áttelepítése és Azure Site Recovery
 
@@ -42,15 +42,15 @@ A tábla összegzi az ügynök alapú áttelepítéshez használt összetevőket
 
 **Összetevő** | **Részletek** | **Telepítés**
 --- | --- | ---
-**Replikációs berendezés** | A replikációs berendezés (konfigurációs kiszolgáló) egy helyszíni gép, amely hidat képez a helyszíni környezet és a Azure Migrate Server áttelepítési eszköz között. A készülék felfedi a helyszíni virtuális gépek leltárát, így az Azure-kiszolgáló áttelepítése képes a replikáció és az áttelepítés koordinálására. A készülék két összetevőből áll:<br/><br/> **Konfigurációs kiszolgáló**: Csatlakozik Azure Migrate kiszolgáló áttelepítéséhez és a replikáció koordinálásához.<br/> **Folyamatkiszolgáló**: Kezeli az adatreplikációt. A virtuális gép adatokat fogad, tömöríti és titkosítja, és elküldi az Azure-előfizetésnek. A kiszolgáló áttelepítése a felügyelt lemezekre írja az adatot. | Alapértelmezés szerint a Process Server a replikációs berendezés konfigurációs kiszolgálójával együtt települ.
+**Replikációs berendezés** | A replikációs berendezés (konfigurációs kiszolgáló) egy helyszíni gép, amely hidat képez a helyszíni környezet és a Azure Migrate Server áttelepítési eszköz között. A készülék felfedi a helyszíni virtuális gépek leltárát, így az Azure-kiszolgáló áttelepítése képes a replikáció és az áttelepítés koordinálására. A készülék két összetevőből áll:<br/><br/> **Konfigurációs kiszolgáló**: csatlakozás Azure Migrate kiszolgáló áttelepítéséhez és a replikáció koordinálásához.<br/> **Process Server**: kezeli az adatreplikációt. A virtuális gép adatokat fogad, tömöríti és titkosítja, és elküldi az Azure-előfizetésnek. A kiszolgáló áttelepítése a felügyelt lemezekre írja az adatot. | Alapértelmezés szerint a Process Server a replikációs berendezés konfigurációs kiszolgálójával együtt települ.
 **Mobilitási szolgáltatás** | A mobilitási szolgáltatás egy olyan ügynök, amely minden replikálni és áttelepíteni kívánt gépre telepítve van. Replikációs adatokat küld a gépről a Process Server rendszernek. Számos különböző mobilitási szolgáltatási ügynök érhető el. | A mobilitási szolgáltatás telepítési fájljai a replikációs berendezésen találhatók. Töltse le és telepítse a szükséges ügynököt a replikálni kívánt gép operációs rendszerének és verziójának megfelelően.
 
 ### <a name="mobility-service-installation"></a>A mobilitási szolgáltatás telepítése
 
 A mobilitási szolgáltatást a következő módszerekkel telepítheti:
 
-- **Leküldéses telepítés**: A folyamat-kiszolgáló a mobilitási szolgáltatást a számítógép védelmének engedélyezésekor telepíti. 
-- **Telepítés manuálisan**: A mobilitási szolgáltatást manuálisan is telepítheti az egyes gépeken a felhasználói felületen vagy a parancssorban.
+- **Leküldéses telepítés**: a folyamat-kiszolgáló telepíti a mobilitási szolgáltatást, ha engedélyezi a gép védelmét. 
+- **Manuális telepítés**: a mobilitási szolgáltatást manuálisan is telepítheti az egyes gépeken a felhasználói felületen vagy a parancssorban.
 
 A mobilitási szolgáltatás kommunikál a replikációs berendezéssel és a replikált számítógépekkel. Ha a replikációs berendezésen fut a víruskereső szoftver, a kiszolgálókat vagy a replikált gépeket, a következő mappákat ki kell zárni a vizsgálatból:
 
@@ -77,9 +77,9 @@ A mobilitási szolgáltatás kommunikál a replikációs berendezéssel és a re
 
 **Device** | **kapcsolat**
 --- | --- 
-VM | A virtuális gépeken futó mobilitási szolgáltatás a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel a replikálás kezeléséhez.<br/><br/> A virtuális gépek replikációs adatküldést küldenek a Process kiszolgálónak (alapértelmezés szerint a replikációs berendezésen futnak) a HTTPS 9443 bejövő porton. Ez a port módosítható.
+Virtuális gépek | A virtuális gépeken futó mobilitási szolgáltatás a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel a replikálás kezeléséhez.<br/><br/> A virtuális gépek replikációs adatküldést küldenek a Process kiszolgálónak (alapértelmezés szerint a replikációs berendezésen futnak) a HTTPS 9443 bejövő porton. Ez a port módosítható.
 Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
-Folyamatkiszolgáló | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.
+Kiszolgáló feldolgozása | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.
 
 
 ## <a name="performance-and-scaling"></a>Teljesítmény és skálázás
@@ -118,7 +118,7 @@ Ha egy kibővíthető folyamat-kiszolgálót kell üzembe helyeznie, a tábláza
 
  Az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad át. A feltöltési sebességet korlátozhatja a folyamat-kiszolgálóként futó gépek sávszélességének szabályozásával. A következő beállításkulcs használatával befolyásolhatja a sávszélességet:
 
-- A HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM beállításazonosító meghatározza, hogy hány szálat kell használni a lemez adatátviteléhez (a kezdeti vagy a különbözeti replikációhoz). A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet. Az alapértelmezett érték négy. A maximális érték 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
+- A HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\Replication\UploadThreadsPerVM beállításazonosító megadja a lemez adatátviteli (kezdeti vagy különbözeti replikációja) által használt szálak számát. A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet. Az alapértelmezett érték négy. A maximális érték 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
 - Emellett a következő módon szabályozhatja a sávszélességet a Process Server-gépen:
 
     1. A Process Server gépen nyissa meg az Azure Backup MMC beépülő modult. Parancsikon található az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
@@ -126,6 +126,6 @@ Ha egy kibővíthető folyamat-kiszolgálót kell üzembe helyeznie, a tábláza
     3. A **szabályozás**alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése**jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Próbálja ki az ügynök-alapú [VMWare virtuális](tutorial-migrate-vmware-agent.md) gépek áttelepítését Azure Migrate kiszolgáló áttelepítésével.
+Próbálja ki az ügynök-alapú [VMWare virtuális gépek áttelepítését](tutorial-migrate-vmware-agent.md) Azure Migrate kiszolgáló áttelepítésével.

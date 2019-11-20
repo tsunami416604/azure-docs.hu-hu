@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: hitelkockázat előrejelzése (a Cost szenzitív)'
+title: 'Tervező: hitelkockázat előrejelzése – példa'
 titleSuffix: Azure Machine Learning
-description: Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot a Designer (előzetes verzió) használatával. Megtudhatja, hogyan implementálhat egyéni Python-parancsfájlokat, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
+description: Osztályozó készítése és egyéni Python-parancsfájlok használata a hitelkockázat előrejelzéséhez Azure Machine Learning Designer használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647989"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196092"
 ---
-# <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>4\. minta – egyéni Python-parancsfájllal való besorolás: hitelkockázat előrejelzése
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Osztályozó & létrehozása Python-parancsfájlok használatával a hitelkockázat előrejelzéséhez Azure Machine Learning Designer használatával
+
+**Designer (előzetes verzió) 4. minta**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot a Designer (előzetes verzió) használatával. Megismerheti, hogyan hozhat létre egyéni logikát Python-szkriptek használatával, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
@@ -155,7 +158,7 @@ Ezekből az eredményekből láthatja, hogy a legjobb pontosságot a **kétoszt�
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező számára elérhető egyéb mintákat:
 

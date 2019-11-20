@@ -11,21 +11,21 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 11/18/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094279"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194969"
 ---
 > [!NOTE] 
 > A cikkben tárgyalt felhasználói fiókok nem különböznek a RDP protokoll (RDP) vagy a Secure Shell (SSH) számára biztonsági okokból használt felhasználói fióktól. 
 >
 > Ha SSH-n keresztül szeretne csatlakozni egy linuxos virtuálisgép-konfigurációt futtató csomóponthoz, tekintse meg a Távoli asztal használata Linux rendszerű virtuális gépre [Az Azure-ban](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)című témakört. Ha RDP-n keresztül szeretne csatlakozni a Windows-csomópontokhoz, tekintse meg [a Kapcsolódás Windows Server rendszerű virtuális géphez](../virtual-machines/windows/connect-logon.md)című témakört.<br /><br />
-> Ha a felhőalapú szolgáltatás konfigurációját RDP protokollon keresztül futtató csomóponthoz szeretne csatlakozni, tekintse meg a [Távoli asztali kapcsolat engedélyezése az Cloud Services Azure-](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)beli szerepkörökhöz című témakört.
+> Ha a felhőalapú szolgáltatás konfigurációját RDP protokollon keresztül futtató csomóponthoz szeretne csatlakozni, tekintse meg a [Távoli asztali kapcsolat engedélyezése az Cloud Services Azure-beli szerepkörökhöz](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)című témakört.
 >
 >
 
@@ -59,8 +59,8 @@ A fájlok és könyvtárak egy feladatból való elérésével kapcsolatos tová
 
 A felhasználói fiók jogosultságszint-emelési szintje azt jelzi, hogy egy feladat emelt szintű hozzáféréssel fut-e. Egy automatikus felhasználói fiók és egy nevesített felhasználói fiók is futtatható emelt szintű hozzáféréssel. A jogosultságszint-emelési szint két lehetősége a következő:
 
-- **NonAdmin** A feladat emelt szintű hozzáférés nélküli általános jogú felhasználóként fut. Egy batch felhasználói fiók alapértelmezett jogosultságszint-emelési szintje mindig nem **rendszergazda**.
-- **Rendszergazdai:** A feladat emelt szintű hozzáféréssel rendelkező felhasználóként fut, és teljes körű rendszergazdai engedélyekkel működik. 
+- Nem **rendszergazda:** A feladat emelt szintű hozzáférés nélküli általános jogú felhasználóként fut. Egy batch felhasználói fiók alapértelmezett jogosultságszint-emelési szintje mindig nem **rendszergazda**.
+- **Rendszergazda:** A feladat emelt szintű hozzáféréssel rendelkező felhasználóként fut, és teljes körű rendszergazdai engedélyekkel működik. 
 
 ## <a name="auto-user-accounts"></a>Automatikus felhasználói fiókok
 
@@ -94,7 +94,7 @@ Ha emelt szintű hozzáféréssel rendelkező feladatot szeretne futtatni, konfi
 >
 >
 
-Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint `Admin` -emelési szintet és a `Task`hatókört határozzák meg. A feladat hatóköre az alapértelmezett beállítás, de a példa kedvéért itt is szerepel.
+Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint-emelési szintet `Admin`re, a hatókört pedig `Task`re állítja be. A feladat hatóköre az alapértelmezett beállítás, de a példa kedvéért itt is szerepel.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -159,7 +159,7 @@ Az elnevezett felhasználói fiókok akkor hasznosak, ha egy adott feladat össz
 
 Elnevezett felhasználói fiókot is használhat egy olyan feladat futtatásához, amely a külső erőforrásokra, például a fájlmegosztás engedélyeit állítja be. Egy névvel ellátott felhasználói fiókkal szabályozhatja a felhasználói identitást, és az adott felhasználói identitást használhatja az engedélyek beállításához.  
 
-A nevesített felhasználói fiókok lehetővé teszik a jelszó nélküli SSH-t a Linux-csomópontok között. A többpéldányos feladatokat futtató Linux-csomópontokkal ellátott felhasználói fiókokat is használhat. A készlet minden csomópontja a teljes készletben definiált felhasználói fiókkal futtathat feladatokat. A többpéldányos feladatokkal kapcsolatos további információkért lásd: [\-többpéldányos feladatok használata MPI-alkalmazások futtatásához](batch-mpi.md).
+A nevesített felhasználói fiókok lehetővé teszik a jelszó nélküli SSH-t a Linux-csomópontok között. A többpéldányos feladatokat futtató Linux-csomópontokkal ellátott felhasználói fiókokat is használhat. A készlet minden csomópontja a teljes készletben definiált felhasználói fiókkal futtathat feladatokat. A többpéldányos feladatokkal kapcsolatos további információkért lásd: [több\--példány feladatainak használata MPI-alkalmazások futtatásához](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Elnevezett felhasználói fiókok létrehozása
 
@@ -280,7 +280,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -295,7 +295,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Feladat futtatása elnevezett felhasználói fiókkal emelt szintű hozzáféréssel
 
-Ha emelt szintű felhasználóként szeretne futtatni egy feladatot, állítsa a feladat **UserIdentity** tulajdonságát egy elnevezett felhasználói fiókra, amelyet a **ElevationLevel** `Admin`tulajdonsággal hoztak létre.
+Ha emelt szintű felhasználóként szeretne futtatni egy feladatot, állítsa a feladat **UserIdentity** tulajdonságát egy elnevezett felhasználói fiókra, amelyet a **ElevationLevel** tulajdonsággal hoztak létre a `Admin`értékre.
 
 Ez a kódrészlet azt adja meg, hogy a feladatnak egy elnevezett felhasználói fiók alatt kell futnia. Ez az elnevezett felhasználói fiók definiálva lett a készletben a készlet létrehozásakor. Ebben az esetben az elnevezett felhasználói fiók rendszergazdai engedélyekkel lett létrehozva:
 
@@ -314,7 +314,7 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`nincs megadva | Nincs szükség frissítésre                                                                                               |
+| nincs megadva `CloudTask.RunElevated` | Nincs szükség frissítésre                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -322,17 +322,17 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`nincs megadva | Nincs szükség frissítésre                                                                                                                     |
+| nincs megadva `CloudTask.withRunElevated` | Nincs szükség frissítésre                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
 | Ha a kód használja...                      | Frissítés a következőre:....                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `run_elevated=True`                       | `user_identity=user`, hol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`, hol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
-| `run_elevated`nincs megadva | Nincs szükség frissítésre                                                                                                                                  |
+| `run_elevated=True`                       | `user_identity=user`, ahol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
+| `run_elevated=False`                      | `user_identity=user`, ahol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| nincs megadva `run_elevated` | Nincs szükség frissítésre                                                                                                                                  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).

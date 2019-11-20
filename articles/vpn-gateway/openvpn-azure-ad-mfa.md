@@ -7,18 +7,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: alzam
-ms.openlocfilehash: 3f407ecfcbfdff72b79bfe6b5bc3e6b7606b1cf0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1b506f8439deabd110daaefab36442140e20d0d4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174628"
+ms.locfileid: "74185357"
 ---
 # <a name="enable-multi-factor-authentication-mfa-for-vpn-users"></a>Multi-Factor Authentication (MFA) engedélyezése a VPN-felhasználók számára
 
 Engedélyezheti az MFA-t az Azure AD-bérlőben lévő felhasználók számára, így a felhasználók a hozzáférés megadását megelőzően egy második tényezős hitelesítést kapnak.
 
-> [! Előfeltételek] az Azure AD-bérlőt a "bérlő konfigurálása" dokumentumban leírtak szerint konfigurálta.
+> [!NOTE]
+> Előfeltétel: konfigurált egy Azure AD-bérlőt a "bérlő konfigurálása" című dokumentumban leírtak szerint.
 >
 
 ### <a name="tenant"></a>1. Jelentkezzen be a Azure Portalba, és navigáljon a **Azure Active Directoryhoz** , **minden felhasználóhoz** , és kattintson a **multi-Factor Authentication**

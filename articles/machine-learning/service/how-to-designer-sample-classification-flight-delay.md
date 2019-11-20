@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: besorolás, repülési késések előrejelzése'
+title: 'Tervező: példa a repülési késleltetés előrejelzésére'
 titleSuffix: Azure Machine Learning
-description: Ez a cikk bemutatja, hogyan hozhat létre egy gépi tanulási modellt a repülési késések előrejelzésére a drag-and-drop Designer és az egyéni R-kód használatával.
+description: Osztályozó létrehozása és egyéni R-kód használata a repülési késések előrejelzésére Azure Machine Learning Designer használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 06d158fb228ea82e61e785407fc0c59d66c2de15
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647200"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196026"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>6\. példa – besorolás: repülési késések előrejelzése R használatával
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Osztályozó & létrehozása az R használatával a repülési késések előrejelzéséhez Azure Machine Learning Designerben
+
+**Designer (előzetes verzió) 6. minta**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ez a folyamat a korábbi repülési és időjárási adatszolgáltatások alapján Jósolja meg, hogy egy ütemezett utasszállító járat késése több mint 15 percet vesz igénybe. Ez a probléma besorolási problémaként is megközelíthető, amely két osztályt jósol: késleltetve vagy időben.
@@ -113,7 +116,7 @@ A logisztikai regressziós modell 0,631 AUC rendelkezik a tesztelési készleten
 
  ![értékelés](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező számára elérhető egyéb mintákat:
 

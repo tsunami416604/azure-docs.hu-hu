@@ -1,11 +1,11 @@
 ---
-title: Hálózati biztonsági csoport eseményeinek és szabályának számlálója Azure diagnosztikai naplók
+title: Hálózati biztonsági csoport diagnosztikai naplózása
 titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan engedélyezheti az események és szabályok számlálójának diagnosztikai naplóit egy Azure-beli hálózati biztonsági csoport számára.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972768"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196732"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Hálózati biztonsági csoport diagnosztikai naplózása
 
 A hálózati biztonsági csoport (NSG) olyan szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat egy virtuális hálózati alhálózatra, hálózati adapterre vagy mindkettőre. Ha engedélyezi a diagnosztikai naplózást egy NSG, a következő kategóriákba foglalhat adatokat:
 
-* **Esemény** A rendszer naplózza azokat a bejegyzéseket, amelyek NSG-szabályait a rendszer MAC-címe alapján alkalmazza a virtuális gépekre.
+* **Esemény:** A rendszer naplózza azokat a bejegyzéseket, amelyek NSG-szabályait a rendszer MAC-címe alapján alkalmazza a virtuális gépekre.
 * **Szabály számlálója:** Azokat a bejegyzéseket tartalmazza, amelyekkel az egyes NSG-szabályok a forgalom megtagadására vagy engedélyezésére vonatkoznak. A szabályok állapotát 60 másodpercenként gyűjti a rendszer.
 
 A diagnosztikai naplók csak a Azure Resource Manager üzembe helyezési modellen keresztül üzembe helyezett NSG érhetők el. Nem engedélyezheti a diagnosztikai naplózást a klasszikus üzemi modellen keresztül telepített NSG. A két modell jobb megismeréséhez tekintse meg az [Azure üzembe helyezési modelljeinek ismertetése](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
@@ -35,7 +35,7 @@ A diagnosztikai naplózás *minden* olyan NSG külön engedélyezve van, amelyhe
 
 A diagnosztikai naplózás engedélyezéséhez használhatja az [Azure Portalt](#azure-portal), a [PowerShellt](#powershell)vagy az [Azure CLI](#azure-cli) -t is.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. Jelentkezzen be a [portálra](https://portal.azure.com).
 2. Válassza **a minden szolgáltatás**lehetőséget, majd írja be a *hálózati biztonsági csoportok*elemet. Ha a **hálózati biztonsági csoportok** megjelennek a keresési eredmények között, válassza ki.
@@ -57,7 +57,7 @@ A diagnosztikai naplózás engedélyezéséhez használhatja az [Azure Portalt](
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa a `Get-Module -ListAvailable Az` értéket a számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions)rendelkező fiókkal `Connect-AzAccount` futtatásával is bejelentkezhet az Azure-ba.
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa `Get-Module -ListAvailable Az` a számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, az Azure-ba való bejelentkezéshez is `Connect-AzAccount` kell futtatnia egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
 A diagnosztikai naplózás engedélyezéséhez egy meglévő NSG azonosítójának kell lennie. Ha nem rendelkezik meglévő NSG, létrehozhat egyet a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)használatával.
 
@@ -88,13 +88,13 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Ha a kettő helyett egyetlen kategóriához vagy a másikhoz kívánja naplózni az adatnaplózást, adja hozzá a `-Categories` kapcsolót az előző parancshoz, amelyet a *NetworkSecurityGroupEvent* vagy a *NetworkSecurityGroupRuleCounter*követ. Ha Log Analytics munkaterülettől eltérő [célra](#log-destinations) szeretne bejelentkezni, használja az Azure [Storage-fiók](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy az [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)megfelelő paramétereit.
+Ha a kettő helyett egyetlen kategóriához vagy a másikhoz kívánja naplózni az adatnaplózást, adja hozzá a `-Categories` lehetőséget az előző parancshoz, amelyet a *NetworkSecurityGroupEvent* vagy a *NetworkSecurityGroupRuleCounter*követ. Ha Log Analytics munkaterülettől eltérő [célra](#log-destinations) szeretne bejelentkezni, használja az Azure [Storage-fiók](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy az [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)megfelelő paramétereit.
 
 Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure CLI-t a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a parancssori felületet a számítógépről futtatja, akkor a 2.0.38 vagy újabb verzióra van szükség. Futtassa a `az --version` értéket a számítógépen, és keresse meg a telepített verziót. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört. Ha helyileg futtatja a CLI-t, `az login` futtatásával be kell jelentkeznie az Azure-ba egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure CLI-t a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a parancssori felületet a számítógépről futtatja, akkor a 2.0.38 vagy újabb verzióra van szükség. Futtassa `az --version` a számítógépen, és keresse meg a telepített verziót. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört. Ha helyileg futtatja a parancssori felületet, `az login` kell futtatnia, hogy bejelentkezzen az Azure-ba egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
 A diagnosztikai naplózás engedélyezéséhez egy meglévő NSG azonosítójának kell lennie. Ha nem rendelkezik meglévő NSG, létrehozhat egyet az [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)paranccsal.
 
@@ -134,7 +134,7 @@ A diagnosztikai adatait a következőket teheti:
 - Egy harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás (például PowerBI) általi betöltésre [továbbítva egy Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) számára.
 - [Azure monitor naplókba írva](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="log-categories"></a>Naplókategóriák
+## <a name="log-categories"></a>Naplók kategóriái
 
 A JSON formátumú adat a következő naplózási kategóriákba van írva:
 
@@ -199,12 +199,13 @@ A szabály számlálójának naplója az erőforrásokra alkalmazott szabályokr
 ## <a name="view-and-analyze-logs"></a>Naplók megtekintése és elemzése
 
 A diagnosztikai naplózási információk megtekintésével kapcsolatos további információkért lásd: az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha diagnosztikai adatait küldi el a következőnek:
-- **Naplók Azure monitor**: A továbbfejlesztett elemzésekhez használhatja a [network biztonsági csoport Analytics @ no__t-1 megoldását. A megoldás olyan vizualizációkat biztosít a NSG-szabályokhoz, amelyek engedélyezik vagy megtagadják a virtuális gép hálózati adapterének forgalmát, MAC-címként.
-- **Azure Storage-fiók**: Az PT1H. JSON fájlba íródik az adatgyűjtés. A következőket találja:
+- **Azure monitor naplók**: a [hálózati biztonsági csoport elemzési](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
+) megoldásával továbbfejlesztett elemzéseket készíthet. A megoldás olyan vizualizációkat biztosít a NSG-szabályokhoz, amelyek engedélyezik vagy megtagadják a virtuális gép hálózati adapterének forgalmát, MAC-címként.
+- **Azure Storage-fiók**: az PT1H. JSON fájlba íródik az adatfájlok. A következőket találja:
   - Eseménynapló a következő elérési úton: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
   - Szabály számlálójának naplója a következő elérési úton: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [tevékenységek naplózásáról](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), korábbi nevén naplózási vagy operatív naplók. A tevékenységek naplózása alapértelmezés szerint engedélyezve van az Azure-alapú üzemi modellel létrehozott NSG. Annak megállapításához, hogy mely műveletek befejeződtek a NSG a tevékenység naplójában, keresse meg a következő típusú erőforrásokat tartalmazó bejegyzéseket:
   - Microsoft.ClassicNetwork/networkSecurityGroups

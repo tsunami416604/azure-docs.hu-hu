@@ -3,12 +3,12 @@ title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: MT
+ms.openlocfilehash: 2799784ad449304a7790ad5f83d8ed1c94dd3547
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173554"
+ms.locfileid: "74194983"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](resource-group-using-tags.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek.
@@ -1818,7 +1818,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Igen | Igen |
-> | managedInstances/adatbázisok | Igen (lásd az [alábbi megjegyzést](#sqlnote)) | Igen |
+> | managedInstances/adatbázisok | Nem | Nem |
 > | managedInstances/databases/backupShortTermRetentionPolicies | Nem | Nem |
 > | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nem | Nem |
 > | managedInstances/databases/vulnerabilityAssessments | Nem | Nem |

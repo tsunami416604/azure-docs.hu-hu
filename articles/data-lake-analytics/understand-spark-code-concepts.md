@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3d15afc26c876c6e4d2d7244e26f0b13ced59a58
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648466"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184742"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>A U-SQL-fejlesztők Apache Spark kódjának megismerése
 
@@ -143,13 +143,13 @@ A Sparkban NULL azt jelzi, hogy az érték ismeretlen. A Spark NULL érték elt�
 
 Ez a viselkedés különbözik a U-SQL-től C# , amely a szemantikat követi, amelyben a `null` eltérő az értéktől, de önmagával egyenlő.  
 
-Így a `WHERE column_name = NULL`t használó SparkSQL `SELECT`-utasítások nulla sorokat adnak vissza, még akkor is, ha a `column_name`ban NULL értékek vannak, míg a U-SQL esetében a `column_name` `null`értékre van állítva. Hasonlóképpen, A `WHERE column_name != NULL`t használó Spark `SELECT`-utasítások nulla sorokat adnak vissza, akkor is, ha nem null érték szerepel a `column_name`ban, míg U-SQL esetén a nem null értékű sorokat adja vissza. Így ha azt szeretné, hogy a U-SQL null-ellenőrzési szemantikai, használja a [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)-t és a [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (vagy a DSL-egyenértékét).
+Így a `WHERE column_name = NULL`t használó SparkSQL `SELECT`-utasítások nulla sorokat adnak vissza, még akkor is, ha a `column_name`ban NULL értékek vannak, míg a U-SQL esetében a `column_name` `null`értékre van állítva. Hasonlóképpen, A `WHERE column_name != NULL`t használó Spark `SELECT`-utasítások nulla sorokat adnak vissza, akkor is, ha nem null érték szerepel a `column_name`ban, míg U-SQL esetén a nem null értékű sorokat adja vissza. Így ha azt szeretné, hogy a U-SQL null-ellenőrzési szemantikaa legyen, használja a [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) és a [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (vagy a DSL-egyenértékét).
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL-katalógus objektumainak átalakítása
 
 Az egyik legnagyobb különbség az, hogy a U-SQL-parancsfájlok használhatják a katalógus-objektumaikat, amelyek közül sok nem rendelkezik közvetlen Spark-jogosultsággal.
 
-A Spark támogatást nyújt a kaptár meta Store-fogalmakhoz, elsősorban adatbázisokhoz és táblákhoz, így az U-SQL-adatbázisokat és-sémákat a kaptár-adatbázisokhoz, valamint U-SQL-táblákat használhat a Spark-táblázatokhoz (lásd: [az u-SQL-táblákban tárolt adatáthelyezés](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)), de nem támogatja a nézeteket, táblázat értékű függvények (TVFs), tárolt eljárások, U-SQL-szerelvények, külső adatforrások stb.
+A Spark támogatást nyújt a kaptár meta Store-fogalmakhoz, elsősorban adatbázisok és táblák, így az U-SQL-adatbázisokat és-sémákat feltérképezheti a kaptár-adatbázisokba és U-SQL-táblákat a Spark-táblákba (lásd: [az u-SQL-táblákban tárolt adatok áthelyezése](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables), de nem támogatja a nézetek, a táblázat értékű függvények (TVFs), tárolt eljárások, U-SQL-szerelvények, külső adatforrások
 
 Az U-SQL Code-objektumok, például a nézetek, a TVFs, a tárolt eljárások és a szerelvények a Sparkban és a gazdagép nyelvének függvényében és eljárási absztrakt mechanizmusaiban (például importálással) is megtekinthetők. Python-modulok vagy a Scala-funkciókra hivatkozik).
 
@@ -213,7 +213,7 @@ Az U-SQL számos szintaktikai módszert kínál a lekérdezés-optimalizáló é
 
 A Spark költséghatékony lekérdezés-optimalizáló funkciója lehetővé teszi a javaslatok és a lekérdezési teljesítmény finomhangolását. Tekintse meg a vonatkozó dokumentációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Spark-adatformátumok megismerése U-SQL-fejlesztőknek](understand-spark-data-formats.md)
 - [.NET Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)

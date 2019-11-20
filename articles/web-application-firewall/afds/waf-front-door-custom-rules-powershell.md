@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazási tűzfal (WAF) házirend konfigurálása egyéni szabályokkal és alapértelmezett Ruse-készlettel a bejárati ajtóhoz – Azure PowerShell
+title: Egyéni WAF-szabályok konfigurálása az Azure bejárati ajtóhoz & alapértelmezett szabálykészlet
 description: Megtudhatja, hogyan konfigurálhat egy WAF házirendet egy meglévő bejárati végpontra vonatkozó egyéni és felügyelt szabályokból.
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512547"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186632"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Webalkalmazási tűzfal házirend konfigurálása Azure PowerShell használatával
 
@@ -110,7 +110,7 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 > [!NOTE]
 > A *WebApplicationFirewallPolicyLink* tulajdonságot csak egyszer kell beállítania, hogy egy biztonsági szabályzatot egy előtér-előtérben csatoljon. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md) 
 - További információ a [WAF a bejárati ajtóval](afds-overview.md)

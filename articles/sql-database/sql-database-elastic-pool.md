@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823838"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186469"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
@@ -143,7 +143,7 @@ A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az 
 
   Az időponthoz való visszaállítás az adatbázis automatikus biztonsági mentését használja a készletben lévő adatbázisok egy adott időpontra történő helyreállításához. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-visszaállítás**
+- **Geo-restore**
 
   A Geo-visszaállítás az alapértelmezett helyreállítási beállítást adja meg, ha egy adatbázis nem érhető el, mert az adatbázist futtató régióban egy incidens található. Lásd: [Az Azure SQL-adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
 
@@ -220,9 +220,10 @@ További információ: [SQL Database riasztások létrehozása Azure Portalokban
 
    A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Rugalmas készletek méretezése: [rugalmas készletek skálázása](sql-database-elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - A videókkal kapcsolatban lásd: [a Microsoft Virtual Academy videós kurzusa Azure SQL Database rugalmas képességek](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 - A rugalmas készleteket használó SaaS-oktatóanyagért tekintse [meg a Wingtip SaaS-alkalmazás bemutatása](sql-database-wtp-overview.md)című témakört.
+- A sok adatbázissal rendelkező rugalmas készletek erőforrás-kezelésével kapcsolatos további információkért lásd: [Erőforrás-kezelés sűrű rugalmas készletekben](sql-database-elastic-pool-resource-management.md).

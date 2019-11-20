@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazási tűzfal díjszabási szabályának konfigurálása a bejárati ajtók számára – Azure PowerShell
+title: WAF-korlátozási szabály konfigurálása a bejárati ajtóhoz – Azure PowerShell
 description: Megtudhatja, hogyan konfigurálhat egy kamatláb-korlátozási szabályt egy meglévő bejárati végponthoz.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517136"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186630"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webalkalmazási tűzfal sebességének korlátozási szabályának konfigurálása Azure PowerShell használatával
 Az Azure-beli Azure webalkalmazási tűzfal (WAF) díjszabási szabálya az Azure-beli bejárati ajtónál az egyperces időtartam alatt egyetlen ügyfél-IP-címről engedélyezett kérelmek számát szabályozza.
@@ -102,7 +102,7 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 > [!NOTE]
 > A *WebApplicationFirewallPolicyLink* tulajdonságot csak egyszer kell beállítania, hogy egy biztonsági szabályzatot egy előtér-előtérben csatoljon. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bejárati ajtóról](../../frontdoor/front-door-overview.md). 
 

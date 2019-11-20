@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: cae16430ce933b8d071696377b22f10c15b5eae5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145392"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180584"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -58,12 +58,12 @@ A 60%-os megtakarítás érdekében javasoljuk, hogy a pillanatképeket a normá
 
 2.  Az Advisor Irányítópultján kattintson a **Cost (Cost** ) fülre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Első lépések](advisor-get-started.md)
-* [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-cost-recommendations.md)
-* [Advisor – magas rendelkezésre állási javaslatok](advisor-cost-recommendations.md)
-* [Advisor biztonsági javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
+* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
+* [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

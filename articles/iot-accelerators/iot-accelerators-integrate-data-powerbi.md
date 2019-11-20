@@ -1,6 +1,6 @@
 ---
 title: Távoli figyelési adatmegjelenítés a Power BI használatával – Azure | Microsoft Docs
-description: Ez az oktatóanyag Power BI Desktop és Cosmos DB használatával integerate az adatok egy távoli figyelési megoldásból egy testreszabott vizualizációba. Így a felhasználók saját egyéni irányítópultokat hozhatnak létre, és megoszthatják őket a megoldásban nem szereplő felhasználók számára.
+description: Ez az oktatóanyag Power BI Desktop és Cosmos DB használatával integrálja a távoli figyelési megoldásból származó adatok testreszabott vizualizációba való integrálását. Így a felhasználók saját egyéni irányítópultokat hozhatnak létre, és megoszthatják őket a megoldásban nem szereplő felhasználók számára.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166299"
+ms.locfileid: "74184246"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Távoli figyelési adatmegjelenítés Power BI használatával
 
@@ -22,13 +22,13 @@ Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatainak a Cosmo
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A jelenleg futó távoli figyelési megoldásnak kell lennie
-- Rendelkeznie kell hozzáféréssel az [Azure Portalhoz](https://portal.azure.com) és az előfizetéséhez, amelyen a IoT hub és a megoldás fut
+- A IoT Hub és a megoldás futtatásához hozzáféréssel kell rendelkeznie [Azure Portal](https://portal.azure.com) és az előfizetéséhez
 - Telepítenie kell [Power bi Desktopot](https://powerbi.microsoft.com) , a bármely verziót
 
 
-## <a name="information-needed-from-azure-portal"></a>Az Azure Portalon szükséges információk
+## <a name="information-needed-from-azure-portal"></a>A Azure Portal szükséges információk
 
-1. Navigáljon az [Azure Portalra](https://portal.azure.com) , és szükség esetén jelentkezzen be
+1. Ha szükséges, navigáljon [Azure Portal](https://portal.azure.com) és jelentkezzen be
 
 2. A bal oldali panelen kattintson az erőforráscsoportok elemre.
 

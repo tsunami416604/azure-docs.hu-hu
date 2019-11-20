@@ -974,21 +974,19 @@
       items:
         - name: Adatok visszaállítása biztonsági mentésből
           href: how-to-backup-and-restore.md
-    - name: Naplózás
+    - name: Figyelés
       items:
-        - name: Diagnosztikai naplózás
-          href: logging.md
+        - name: A Cosmos DB monitorozása
+          href: monitor-cosmos-db.md
+        - name: Azure Monitor a Cosmoshoz (előzetes verzió)
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
+          href: use-metrics.md
         - name: Alkalmazásnaplózás a Logic Apps használatával
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Monitorozás mérőszámokkal
-      items:
-        - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
-          href: use-metrics.md
-        - name: Azure Monitor-metrikák megtekintése
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: SLA-k figyelése
-          href: monitor-accounts.md
+        - name: Adatreferencia monitorozása
+          href: monitor-cosmos-db-reference.md
     - name: Helyi fejlesztés
       items:
         - name: Az emulátor használata

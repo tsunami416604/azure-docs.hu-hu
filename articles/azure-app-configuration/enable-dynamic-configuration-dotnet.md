@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821710"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185237"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Oktatóanyag: dinamikus konfiguráció használata .NET-keretrendszerbeli alkalmazásokban
 
@@ -28,12 +28,11 @@ A beállítások frissítésének megtartásához és a konfigurációs tároló
 
 Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfigurációs frissítések a kódban. Ez a gyors üzembe helyezési útmutatóban bemutatott alkalmazásra épül. A folytatás előtt fejezze be [a .net-keretrendszerbeli alkalmazás létrehozását az alkalmazás konfigurálásával](./quickstart-dotnet-app.md) először.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Beállíthatja, hogy az alkalmazás a konfigurációját egy igény szerinti alkalmazás-konfigurációs tárolóval frissítse.
-> * Adja meg a legújabb konfigurációt az alkalmazás vezérlői között.
-
+> * Állítsa be a .NET-keretrendszerbeli alkalmazást, hogy frissítse a konfigurációját az alkalmazás konfigurációs tárolójában történt változásokra reagálva.
+> * Adja meg a legújabb konfigurációt az alkalmazásban.
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
@@ -46,19 +45,19 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |---|---|
-    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
+## <a name="create-a-net-framework-console-app"></a>.NET-keretrendszer Console-alkalmazás létrehozása
 
 1. Indítsa el a Visual studiót, és válassza a **fájl** > **új** > **projekt**lehetőséget.
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a  **Create** (Létrehozás) gombra.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a **Létrehozás** gombra.
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a *Microsoft. Extensions. Configuration. AzureAppConfiguration* NuGet-csomagot a projekthez. Ha nem találja, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
@@ -135,20 +134,20 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     ![Alkalmazás elindítása helyi](./media/dotnet-app-run.png)
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 1. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcsok értékeit:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |---|---|
-    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjában – frissítve |
+    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjában – frissítve |
 
 1. A futó alkalmazásban lépjen vissza az ENTER billentyűt a frissítés elindításához, és nyomtassa ki a frissített értéket a parancssorban vagy a PowerShell-ablakban.
 
     ![Alkalmazás helyi frissítése](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Mivel a gyorsítótár lejárati ideje 10 másodpercre van állítva a `SetCacheExpiration` metódus használatával a frissítési művelethez megadott konfiguráció megadásakor, a konfigurációs beállítás értéke csak akkor frissül, ha a legutóbbi frissítés óta legalább 10 másodperc eltelt. ezt a beállítást.
+    > Mivel a gyorsítótár lejárati ideje 10 másodpercre van állítva a `SetCacheExpiration` metódus használatával a frissítési művelethez megadott konfiguráció megadásakor, a konfigurációs beállítás értéke csak akkor frissül, ha a beállítás utolsó frissítése óta legalább 10 másodperc eltelt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -156,7 +155,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy Azure által felügyelt szolgáltatás-identitást adott hozzá, amellyel egyszerűbbé válik az alkalmazások konfigurációjának elérése, és javítható a hitelesítő adatok kezelése az alkalmazáshoz. Ha meg szeretné tudni, hogyan adhat hozzá olyan Azure által felügyelt szolgáltatás-identitást, amely megkönnyíti az alkalmazás-konfiguráció elérését, folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban engedélyezte a .NET-keretrendszer alkalmazását, hogy dinamikusan frissítse a konfigurációs beállításokat az alkalmazás konfigurációjában. Ha meg szeretné tudni, hogyan használható az Azure felügyelt identitása az alkalmazás-konfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)

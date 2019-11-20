@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555450"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195021"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Riasztások beállítása a Azure Monitor a tárolók teljesítményével kapcsolatos problémákhoz
 A tárolók Azure Monitor figyelik az Azure Kubernetes szolgáltatásban (ak) üzemeltetett, Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét.
@@ -102,7 +102,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->A következő lekérdezések a helyőrző értékeket használják \<your-cluster-Name > és \<your-Controller-Name > a fürt és a vezérlő jelölésére. A riasztások beállításakor cserélje le őket a környezetre jellemző értékekre.
+>A következő lekérdezések a helyőrző értékeket használják \<a-cluster-Name > és \<a-Controller-Name > a fürt és a vezérlő jelölésére. A riasztások beállításakor cserélje le őket a környezetre jellemző értékekre.
 
 A következő lekérdezés kiszámítja a vezérlőben lévő összes tároló átlagos CPU-kihasználtságát a vezérlő minden tároló példányának átlagos CPU-kihasználtsága alapján percenként. A mérték a tárolóhoz beállított korlát százalékát adja meg.
 
@@ -284,12 +284,12 @@ Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure M
 >A tárolók erőforrás-felhasználására vonatkozó riasztási szabály létrehozásához a következő eljárással kell váltania egy új naplózási riasztási API-ra, amelyet a [váltás API-beállítások a naplók számára](../platform/alerts-log-api-switch.md)című témakörben talál.
 >
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali ablaktáblán válassza a **figyelő** elemet. Az **Áttekintés**területen válassza a **tárolók**lehetőséget.
 3. A **figyelt fürtök** lapon válasszon ki egy fürtöt a listából.
 4. A **figyelés**területen a bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezen a lapon Azure Log Analytics-lekérdezéseket írhat és futtathat.
 5. A **naplók** lapon válassza az **+ új riasztási szabály**lehetőséget.
-6. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni naplók keresése \<logic nem definiált >** előre definiált egyéni napló feltétele. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
+6. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni naplók keresése \<logika nem definiált >** előre definiált egyéni napló feltétele. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
 7. Illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe.
 8. A riasztást a következőképpen állíthatja be:
 
@@ -308,4 +308,4 @@ Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure M
 ## <a name="next-steps"></a>Következő lépések
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
-- Ha többet szeretne megtudni a Azure Monitorről és az AK-fürt egyéb szempontjainak figyeléséről, tekintse meg az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md)című témakört.
+- Ha többet szeretne megtudni a Azure Monitorről és a Kubernetes-fürt egyéb szempontjainak figyeléséről, tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md) és a [Kubernetes-fürt állapotának megtekintése](container-insights-health.md)című témakört

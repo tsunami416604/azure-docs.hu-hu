@@ -125,6 +125,8 @@
       href: serial-console-power-options.md
     - name: A soros konzol gyakori hibái
       href: serial-console-errors.md
+    - name: Soros konzol proaktív GRUB-konfigurációja
+      href: serial-console-grub-proactive-configuration.md
 - name: Tárerőforrások törlésekor jelentkező hibák
   href: storage-resource-deletion-errors.md
 - name: Klasszikus tárerőforrások törlésekor jelentkező hibák

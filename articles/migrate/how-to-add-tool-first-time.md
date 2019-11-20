@@ -1,17 +1,17 @@
 ---
-title: Felmérési/áttelepítési eszköz hozzáadása a Azure Migrate első alkalommal | Microsoft Docs
+title: Felmérési/áttelepítési eszköz hozzáadása Azure Migrate
 description: Útmutató Azure Migrate projekt létrehozásához és egy Assessment/Migration eszköz hozzáadásához.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/06/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720247"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185939"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Felmérési/migrálási eszköz hozzáadása első alkalommal
 
@@ -81,6 +81,6 @@ Bizonyos esetekben előfordulhat, hogy további Azure Migrate projekteket kell l
 3. A **Beállítások**területen válassza az **új projekt létrehozásához kattintson ide**.
 4. Hozzon létre egy új projektet, és adjon hozzá egy új eszközt az előző eljárásban leírtak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

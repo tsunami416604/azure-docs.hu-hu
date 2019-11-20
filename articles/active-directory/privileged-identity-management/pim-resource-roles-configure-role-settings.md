@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144309"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74182705"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -57,6 +57,9 @@ Az alábbi lépéseket követve megnyithatja egy Azure-erőforrás szerepkör be
     ![Szerepkör-hozzárendelés lap a szerepkör-beállítások lapon](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
 1. Az oldal alján található **értesítés** lapon vagy a **következő: aktiválás** gombra kattintva megtekintheti a szerepkör értesítési beállítások lapját. Ezek a beállítások vezérlik az ehhez a szerepkörhöz kapcsolódó e-mail-értesítéseket.
+
+    > [!NOTE]
+    > Ez az értesítési felület jelenleg az Azure-régiók és-előfizetések között zajlik. Ha nem tudja konfigurálni ezeket a szemcsés értesítéseket, térjen vissza egy vagy két nap alatt.
 
     ![Szerepkör-értesítések lap a szerepkör-beállítások lapon](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 
@@ -125,7 +128,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
 1. Miután megadta az összes szerepkör-beállítást, válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)
 - [Azure-beli erőforrás-szerepkörökre vonatkozó biztonsági riasztások konfigurálása Privileged Identity Management](pim-resource-roles-configure-alerts.md)

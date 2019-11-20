@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2019
+ms.date: 11/18/2019
 ms.author: atsenthi
-ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1eb8e5893d93ef0261d68df4629b072876096711
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333073"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185678"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Az [Azure Service Fabric-alkalmazások][1] a Windows fejlesztői gépen való l�
 ### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
 A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
-* Windows 7 rendszeren
+* Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
@@ -69,11 +69,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 * [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.4.676
-* Service Fabric futtatókörnyezet 6.5.676
-* Service Fabric Tools for Visual Studio 2015 2.5.20615.1
-* A Visual Studio 2017 15,9 Service Fabric Tools for Visual Studio 2.4.11024.1 tartalmaz 
-* A Visual Studio 2019 16,1 Service Fabric Tools for Visual Studio 2.5.20423.3 tartalmaz
+* Service Fabric SDK és eszközök 4.0.457
+* Service Fabric futtatókörnyezet 7.0.457
 
 A támogatott verziók listáját lásd: [Service Fabric verziók](service-fabric-versions.md)
 

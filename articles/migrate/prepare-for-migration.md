@@ -1,19 +1,19 @@
 ---
-title: Helyszíni gépek előkészítése az Azure-ba való Migrálás Azure Migrate
-description: Ez a cikk azt ismerteti, hogyan lehet előkészíteni a helyszíni gépeket az Azure-ba való Migrálás Azure Migrate használatával.
+title: Gépek előkészítése a Azure Migrate való áttelepítéshez
+description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure Migrate való áttelepítéshez.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480123"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196422"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -46,8 +46,7 @@ Ebben a cikkben:
 
 - A VMware virtuális gépek esetében Azure Migrate kiszolgáló áttelepítése az [ügynök nélküli vagy az ügynökön alapuló áttelepítést](server-migrate-overview.md)támogatja. Ellenőrizze a VMware virtuális gépekre vonatkozó követelményeket/támogatást az [ügynök](migrate-support-matrix-vmware.md#migration---limitations) nélküli és az [ügynökön alapuló](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) áttelepítéshez.
 - Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) a Hyper-V virtuális gépek támogatását.
-- Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) a helyszíni fizikai gépek vagy más virtualizált kiszolgálók támogatását. Ezek a követelmények hasonlók a VMware virtuális gépek követelményeihez.
-
+- Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-physical.md) a helyszíni fizikai gépek vagy más virtualizált kiszolgálók támogatását. 
 
 
 
@@ -145,6 +144,6 @@ Az áttelepítés után tegye a következőket a létrehozott Azure-beli virtuá
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Döntse el, hogy melyik módszert szeretné használni a [VMWare virtuális gépek Azure-ba való áttelepítéséhez](server-migrate-overview.md) , vagy a [Hyper-V virtuális gépek](tutorial-migrate-hyper-v.md) vagy [fizikai kiszolgálók vagy virtualizált/Felhőbeli virtuális gépek](tutorial-migrate-physical-virtual-machines.md)áttelepítésének megkezdéséhez.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
+title: A Azure Firewall konfigurálása a hibrid hálózaton & a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálhatja a Azure Firewallt a Azure PowerShell használatával.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a5a008a795b88dbcb72ed9fba869e5251fd93567
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163534"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195767"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -464,7 +464,7 @@ Az Azure Portalról csatlakozzon a **VM-Onprem** virtuális géphez.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse meg a http://\<VM-küllő-01 magánhálózati IP-\>.
+Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse meg a http://\<VM-küllős-01 magánhálózati IP-\>.
 
 Az Internet Information Services alapértelmezett oldalának kell megjelennie.
 

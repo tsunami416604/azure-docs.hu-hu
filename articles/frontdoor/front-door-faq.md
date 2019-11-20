@@ -1,5 +1,5 @@
 ---
-title: Azure bejárati szolgáltatás – gyakran ismételt kérdések a bejárati ajtóhoz | Microsoft Docs
+title: Azure bejárati ajtó szolgáltatás – gyakori kérdések
 description: Ez a lap az Azure bejárati szolgáltatásával kapcsolatos gyakori kérdésekre ad választ.
 services: frontdoor
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: c8f95a1de85fd2eb00b0525fca8e62ade87dd57f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809737"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184642"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Gyakori kérdések az Azure-előtérben szolgáltatásról
 
@@ -26,7 +26,7 @@ Ez a cikk az Azure bejárati szolgáltatás funkcióit és funkcióit érintő g
 2. [Azure bejárati ajtó szolgáltatás UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
 3. **Microsoft ügyfélszolgálata:** Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-azure-front-door-service"></a>Mi az az Azure Front Door Service?
 
@@ -213,5 +213,5 @@ Igen, az Azure bejárati ajtó szolgáltatás támogatja a riasztásokat. A rias
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A [Front Door létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

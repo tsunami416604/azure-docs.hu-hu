@@ -1,6 +1,6 @@
 ---
-title: Konfigurálása felügyelt identitások egy virtuálisgép-méretezési csoportot az Azure-erőforrások
-description: Részletes utasításokat a felügyelt identitások az Azure-erőforrások egy virtuális gép méretezési csoportban az Azure portal használatával.
+title: Felügyelt identitások konfigurálása az Azure VMSS-ben – Azure AD
+description: Részletes útmutató az Azure-erőforrások felügyelt identitásának konfigurálásához egy virtuálisgép-méretezési csoporton a Azure Portal használatával.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,95 +15,95 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f0ec91bd5c72b593d9b28f7d47f691181a6a0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32d8944b55794412eb322697469933030e2fbb56
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290616"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184039"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuális gép méretezési csoportban az Azure portal használatával
+# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások konfigurálása egy virtuálisgép-méretezési csoport Azure-erőforrásaihoz a Azure Portal használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
+Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat a Azure Active Directory automatikusan felügyelt identitással biztosítják. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
 
-Ebben a cikkben PowerShell-lel, megismerheti, hogyan hajthat végre a következő felügyelt identitások egy virtuálisgép-méretezési csoportot az Azure-erőforrások műveletek:
+Ebben a cikkben a PowerShell használatával megtudhatja, hogyan hajthatja végre a következő felügyelt identitásokat az Azure-erőforrások műveleteihez egy virtuálisgép-méretezési csoporton:
 
 - Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md).
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi Azure szerepkör-alapú access control-hozzárendelések van szüksége:
+- A cikkben szereplő felügyeleti műveletek végrehajtásához a fióknak a következő Azure-beli szerepköralapú hozzáférés-vezérlési hozzárendelésekre van szüksége:
 
     > [!NOTE]
-    > Nincsenek további Azure AD directory szerepkör-hozzárendelések megadása kötelező.
+    > Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) engedélyezése és a rendszer által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoportot.
+    - A virtuálisgép-méretezési csoportokból a rendszer által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához a [virtuális gép közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
-Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le az Azure portal használatával felügyelt rendszer által hozzárendelt identitások lesz.
+Ebből a szakaszból megtudhatja, hogyan engedélyezheti és tilthatja le a rendszerhez rendelt felügyelt identitást a Azure Portal használatával.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-a-virtual-machine-scale-set"></a>Rendszer által hozzárendelt felügyelt identitás engedélyezése egy virtuálisgép-méretezési készlet létrehozása során
+### <a name="enable-system-assigned-managed-identity-during-creation-of-a-virtual-machine-scale-set"></a>A rendszer által hozzárendelt felügyelt identitás engedélyezése virtuálisgép-méretezési csoport létrehozása során
 
-Jelenleg az Azure portal nem támogatja a felügyelt identitás alapértelmezett engedélyezése egy virtuálisgép-méretezési készlet létrehozása során. Ehelyett tekintse meg a következő virtuálisgép-méretezési készlet létrehozási rövid útmutató cikket, először hozzon létre egy virtuálisgép-méretezési csoportot, és folytathatja a következő szakasszal egy virtuálisgép-méretezési csoportot a felügyelt identitás alapértelmezett engedélyezése részleteiért:
+A Azure Portal jelenleg nem támogatja a rendszerhez rendelt felügyelt identitás engedélyezését egy virtuálisgép-méretezési csoport létrehozása során. Ehelyett a következő virtuálisgép-méretezési csoport létrehozási rövid útmutatója című cikkből megtudhatja, hogyan hozhat létre először virtuálisgép-méretezési készletet, majd folytassa a következő szakasszal, amely részletesen ismerteti a rendszerhez rendelt felügyelt identitást a virtuálisgép-méretezési csoportokban:
 
-- [Hozzon létre egy virtuálisgép-méretezési csoportban az Azure Portalon](../../virtual-machine-scale-sets/quick-create-portal.md)  
+- [Virtuálisgép-méretezési csoport létrehozása a Azure Portalban](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-### <a name="enable-system-assigned-managed-identity-on-an-existing-virtual-machine-scale-set"></a>Egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás alapértelmezett engedélyezése
+### <a name="enable-system-assigned-managed-identity-on-an-existing-virtual-machine-scale-set"></a>A rendszerhez rendelt felügyelt identitás engedélyezése meglévő virtuálisgép-méretezési csoportokon
 
-A rendszer által hozzárendelt felügyelt identitás eredetileg anélkül, hogy üzembe helyezett virtuális gép méretezési engedélyezése:
+A rendszer által hozzárendelt felügyelt identitás engedélyezése egy olyan virtuálisgép-méretezési csoporton, amely eredetileg nélkül lett kiépítve:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoporthoz tartozó fiókkal.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez társított fiók használatával.
 
-2. Keresse meg a kívánt virtuálisgép-méretezési csoportot.
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz.
 
-3. Alatt **rendszerhez rendelt**, **állapot**, jelölje be **a** majd **mentése**:
+3. A **rendszer által hozzárendelt**, **állapot**területen válassza a be lehetőséget, majd kattintson **a** **Mentés**gombra:
 
    ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
-### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Felügyelt identitás alapértelmezett eltávolítása egy virtuálisgép-méretezési csoportot
+### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Rendszerhez rendelt felügyelt identitás eltávolítása virtuálisgép-méretezési csoportból
 
-Ha egy virtuális gép méretezési csoportot, amely egy rendszer által hozzárendelt felügyelt identitás már nincs szüksége van:
+Ha olyan virtuálisgép-méretezési csoporttal rendelkezik, amelynek már nincs szüksége a rendszerhez rendelt felügyelt identitásra:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoporthoz tartozó fiókkal. Ügyeljen arra, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuálisgép-méretezési csoportot írási engedéllyel.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez társított fiók használatával. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási jogosultságot biztosít a virtuálisgép-méretezési csoport számára.
 
-2. Keresse meg a kívánt virtuálisgép-méretezési csoportot.
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz.
 
-3. Alatt **rendszerhez rendelt**, **állapot**, jelölje be **ki** majd **mentése**:
+3. A **rendszer által hozzárendelt**, állapot **területen válassza ki** , majd kattintson a **Mentés**gombra:
 
    ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
-Ebben a szakaszban megismerheti, hogyan adhat hozzá, és a egy felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoportba, az Azure portal használatával.
+Ebből a szakaszból megtudhatja, hogyan adhat hozzá és távolíthat el egy felhasználóhoz rendelt felügyelt identitást egy virtuálisgép-méretezési csoportból a Azure Portal használatával.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy virtuálisgép-méretezési készlet létrehozása során
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás hozzárendelése virtuálisgép-méretezési csoport létrehozása során
 
-Jelenleg az Azure portal nem támogatja a felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy virtuálisgép-méretezési készlet létrehozása során. Ehelyett tekintse meg a következő virtuálisgép-méretezési készlet létrehozási rövid útmutató cikket, először hozzon létre egy virtuálisgép-méretezési csoportot, és folytathatja a következő szakasszal egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése részleteiért:
+A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt felügyelt identitások hozzárendelését egy virtuálisgép-méretezési csoport létrehozása során. Ehelyett a következő virtuálisgép-méretezési csoport létrehozási rövid útmutatója című cikkből megtudhatja, hogyan hozhat létre először virtuálisgép-méretezési készletet, majd folytassa a következő szakasszal, amely részletesen ismerteti a felhasználóhoz rendelt felügyelt identitás hozzárendelésének részleteit:
 
-- [Hozzon létre egy virtuálisgép-méretezési csoportban az Azure Portalon](../../virtual-machine-scale-sets/quick-create-portal.md)
+- [Virtuálisgép-méretezési csoport létrehozása a Azure Portalban](../../virtual-machine-scale-sets/quick-create-portal.md)
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy meglévő virtuálisgép-méretezési csoportot
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése meglévő virtuálisgép-méretezési csoportokhoz
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoporthoz tartozó fiókkal.
-2. Keresse meg a kívánt virtuálisgép-méretezési csoportot, és kattintson a **identitás**, **felhasználóhoz hozzárendelt** , majd  **\+Hozzáadás**.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez társított fiók használatával.
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a Hozzáadás lehetőségre **\+** .
 
-   ![Adja hozzá a felhasználó által hozzárendelt identitás vmss-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![Felhasználó által hozzárendelt identitás hozzáadása a VMSS-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
-3. Kattintson a felhasználó által hozzárendelt identitását, adja hozzá a virtuálisgép-méretezési csoporthoz, és kattintson a kívánt **Hozzáadás**.
+3. Kattintson arra a felhasználó által hozzárendelt identitásra, amelyet hozzá szeretne adni a virtuálisgép-méretezési csoporthoz, majd kattintson a **Hozzáadás**gombra.
    
-   ![Adja hozzá a felhasználó által hozzárendelt identitás vmss-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
+   ![Felhasználó által hozzárendelt identitás hozzáadása a VMSS-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 
-### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési csoportot egy felhasználó által hozzárendelt felügyelt identitás eltávolítása
+### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása virtuálisgép-méretezési csoportból
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely tartalmazza a virtuális gép Azure-előfizetés társítva.
-2. Keresse meg a kívánt virtuálisgép-méretezési csoportot, és kattintson a **identitás**, **felhasználóhoz hozzárendelt**, nevét a felhasználó által hozzárendelt felügyelt identitás törlése, és kattintson a kívánt **eltávolítása** (kattintson **Igen** a megerősítési panelen).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) egy olyan fiókkal, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelése**elemre, a törölni kívánt, felhasználóhoz rendelt felügyelt identitás nevére, majd kattintson az **Eltávolítás** gombra (a megerősítő ablaktáblán kattintson az **Igen** gombra).
 
-   ![Távolítsa el a felhasználó által hozzárendelt identitás-ből](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
+   ![Felhasználó által hozzárendelt identitás eltávolítása egy VMSS](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az Azure Portallal, adja meg az Azure virtuálisgép-méretezési csoport felügyelt identitás beállításához [egy másik Azure-erőforrásokhoz való hozzáférés](howto-assign-access-portal.md).
+- A Azure Portal használatával adjon meg egy Azure-beli virtuálisgép-méretezési csoport felügyelt identitás [-hozzáférését egy másik Azure-erőforráshoz](howto-assign-access-portal.md).
 
 

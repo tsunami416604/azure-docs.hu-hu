@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577983"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195939"
 ---
 # <a name="about-voice-assistants"></a>A hangsegédek ismertetése
 
@@ -39,7 +39,8 @@ A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. 
 Javasoljuk, hogy a [közvetlen vonalas beszédfelismerést](direct-line-speech.md) a legjobb alapértelmezett beállításként válassza, ha még nem biztos benne, hogy mit szeretne kezelni. Integrálja az eszközöket és a szerzői támogatást, például a [virtuális asszisztensi megoldást és a vállalati sablont](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , valamint a [QnA Maker szolgáltatást](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) , hogy közös mintákon építsen, és a meglévő tudásbázisokat használja.
 
 Az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy egyszerűsített szerzői és üzemeltetési élményt biztosítanak, amelyet kifejezetten a természetes nyelvi parancsok és a vezérlési forgatókönyvek számára alakítottak ki.
-   ![Asszisztensi megoldások összehasonlítása](media/voice-assistants/assistant-solution-comparison.png "CompArison ")
+
+   ![Asszisztensi megoldások összehasonlítása](media/voice-assistants/assistant-solution-comparison.png "Asszisztensi megoldások összehasonlítása")
 
 ## <a name="core-features"></a>Alapvető funkciók
 
@@ -55,7 +56,7 @@ Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni par
 
 Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a hangsegéd-gyors üzembe helyezések listáját tartalmazza, nyelv szerint rendezve.
 
-| Gyors útmutató | Platform | API-referencia |
+| Első lépések | Platform | API-referencia |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
@@ -84,7 +85,7 @@ Az Azure Speech Services használatával készített hangsegédek teljes körű 
 * [Beszéd SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)
 * [A Speech SDK beszerzése](speech-sdk.md)

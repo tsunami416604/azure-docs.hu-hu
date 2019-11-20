@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: besorolás, prediktív bevétel'
+title: 'Tervező: osztályozás, prediktív jövedelem – példa'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a Designer (előzetes verzió) használatával.
+description: Ezt a példát követve hozzon létre egy kód nélküli besorolást a bevétel előrejelzéséhez Azure Machine Learning Designer használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647961"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196058"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>3\. minta – besorolás a szolgáltatás kiválasztásával: bevétel előrejelzése
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Osztályozó & felépítése a szolgáltatás kiválasztásával előre jelezheti a bevételt Azure Machine Learning Designer használatával
+
+**Designer (előzetes verzió) 3. minta**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a Designer (előzetes verzió) használatával. Ez a példa egy **kétosztályos, megnövelt döntési fát** mutat be a felnőtt népszámlálások jövedelmének előrejelzéséhez (> = 50k vagy < = 50k).
@@ -70,7 +73,7 @@ A kiértékelés eredményeiben láthatja, hogy a görbék, például a ROC, a P
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező számára elérhető egyéb mintákat:
 

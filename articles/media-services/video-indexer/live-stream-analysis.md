@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
-ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
-ms.translationtype: HT
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74153555"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185997"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Élő stream-elemzés Video Indexer
 
@@ -27,7 +27,7 @@ A cikkben ismertetett megoldás lehetővé teszi, hogy az ügyfelek az élő hí
 
 *1. ábra – a Video Indexer metaadatokat megjelenítő minta lejátszó az élő streamen*
 
-A [stream Analysis Solution megoldás](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md) a Azure functions és két Logic Apps használatával dolgozza fel az élő programot egy élő csatornáról a video Indexer Azure Media Services, és megjeleníti az eredményt a közel valós idejű, eredményül kapott adatfolyamot ábrázoló Azure Media Player.
+A [stream Analysis Solution megoldás](https://aka.ms/livestreamanalysis) a Azure functions és két Logic Apps használatával dolgozza fel az élő programot egy élő csatornáról a video Indexer Azure Media Services, és megjeleníti az eredményt a közel valós idejű, eredményül kapott adatfolyamot ábrázoló Azure Media Player.
 
 Magas szinten a két fő lépésből áll. Az első lépés 60 másodpercen belül fut, és az utolsó 60 másodpercből álló alklipet hoz létre, amely létrehoz egy objektumot, és indexeli azt Video Indexer használatával. Ezt követően a második lépést az indexelés befejezése után hívja meg a rendszer. A rendszer feldolgozza a rögzített észleléseket, elküldje Azure Cosmos DB, és az indexelt alklipet is törli.
 

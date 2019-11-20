@@ -1,5 +1,5 @@
 ---
-title: Útválasztás vezérlése Azure-beli Virtual Network – PowerShell – klasszikus | Microsoft Docs
+title: Útválasztás vezérlése Azure-VNet – klasszikus PowerShell
 description: Megtudhatja, hogyan vezérelheti az útválasztást a virtuális hálózatok a PowerShell használatával | Klasszikus
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058774"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186356"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Az Útválasztás és a virtuális berendezések használata (klasszikus) a PowerShell használatával
 
@@ -33,7 +33,7 @@ ms.locfileid: "71058774"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Az Azure-erőforrásokkal való munka előtt fontos tisztában lennie azzal, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik: Azure Resource Manager és klasszikus. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../azure-resource-manager/resource-manager-deployment-model.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. A különböző eszközök dokumentációját a cikk tetején lévő egyik lehetőség kiválasztásával tekintheti meg. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
+> Az Azure-erőforrásokkal való munka megkezdése előtt fontos megérteni, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik, a Resource Managerrel és a klasszikussal. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../azure-resource-manager/resource-manager-deployment-model.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. A különböző eszközök dokumentációját a cikk tetején lévő egyik lehetőség kiválasztásával tekintheti meg. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
@@ -61,7 +61,7 @@ A fenti forgatókönyv alapján az előtér-alhálózathoz szükséges útválas
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Futtassa az alábbi parancsot az útválasztási táblázat az előtér-alhálózathoz való hozzárendeléséhez:
+3. Futtassa az alábbi parancsot az útválasztási táblázat az előtér- **alhálózathoz** való hozzárendeléséhez:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `

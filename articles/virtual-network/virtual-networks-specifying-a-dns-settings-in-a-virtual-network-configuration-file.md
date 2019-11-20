@@ -1,5 +1,5 @@
 ---
-title: DNS-beállítások megadása egy virtuális hálózat konfigurációs fájljában | Microsoft Docs
+title: DNS-beállítások megadása az Azure VNet konfigurációs fájlban
 description: A DNS-kiszolgáló beállításainak módosítása virtuális hálózatban a klasszikus üzemi modellben található virtuális hálózati konfigurációs fájl használatával
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059091"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196657"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>DNS-beállítások megadása egy virtuális hálózat konfigurációs fájljában
 A hálózati konfigurációs fájl két elemet tartalmaz, amelyek segítségével megadhatja a tartománynévrendszer (DNS) beállításait: **DnsServers** és **DnsServerRef**. A DNS-kiszolgálók listáját a **DnsServers** elemhez tartozó IP-címek és hivatkozási nevek megadásával veheti fel. Ezután egy **DnsServerRef** elem használatával megadhatja, hogy a rendszer mely DNS-kiszolgáló bejegyzéseket használja a DnsServers elemben a virtuális hálózaton belüli különböző hálózati helyekhez.
@@ -64,7 +64,7 @@ A hálózati konfigurációs fájl a következő elemeket tartalmazza. Az egyes 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az [Azure Virtual Network konfigurációs sémájának](https://go.microsoft.com/fwlink/?LinkId=248093)ismertetése.
 * Az [Azure szolgáltatás konfigurációs sémájának](https://msdn.microsoft.com/library/windowsazure/ee758710)ismertetése.
 * [Virtuális hálózat konfigurálása hálózati konfigurációs fájlok használatával](virtual-networks-using-network-configuration-file.md).

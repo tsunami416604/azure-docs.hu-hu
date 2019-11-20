@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: osztályozás, forgalom előrejelzése'
+title: 'Tervező: példa a forgalom előrejelzésére'
 titleSuffix: Azure Machine Learning
-description: Ez a tervező (előzetes verzió) mintavételi folyamat a forgalom bináris besorolási előrejelzését jeleníti meg, amely az Ügyfélkapcsolat-kezelés (CRM) általános feladata.
+description: Ezt a besorolási példát követve előre megjósolhatja a Azure Machine Learning Designer & megnövelt döntési fákat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647181"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196038"
 ---
-# <a name="sample-5---classification-predict-churn"></a>5\. példa – besorolás: forgalom előrejelzése
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>A megnövelt döntési fa használata a forgalom előrejelzésére Azure Machine Learning Designer használatával
+
+**Designer (előzetes verzió) 5. minta**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Megtudhatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot anélkül, hogy a Designer (előzetes verzió) használatával egyetlen sor kódot kellene írnia.
@@ -74,7 +77,7 @@ Jelenítse meg a **modell kiértékelése** modul kimenetét a modell teljesítm
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező számára elérhető egyéb mintákat:
 

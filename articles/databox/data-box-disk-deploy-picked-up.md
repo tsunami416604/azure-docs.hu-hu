@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128682"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092085"
 ---
 ::: zone target="chromeless"
 
@@ -137,11 +137,25 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
     - Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra, és töltsön le egy visszaküldési címkét.
     - Ragassza a címkét az eszközre. Győződjön meg arról, hogy a címke jól látható.
 
-2. Csomagfelvétel kérése:
-    - Hívja a **SingPostot** a **6845 6485** telefonszámon munkaidőben (hétfőtől péntekig 9:00 és 17:00 között).  
-    - Hivatkozzon a *Microsoft Azure-csomagfelvételre*, és adja meg a szolgáltatáskérelem számát (a visszaküldési címkén lévő nyomkövetési számot) az átvétel egyeztetéséhez. 
-    - Szóbeli megerősítést kap a csomagátvételi ütemtervről. 
-    - Ha a futár nem érkezik meg a csomagfelvételért, hívja a **SingPostot** a **6845 6485** telefonszámon alternatív megoldásokért. 
+2. Csomagfelvétel kéréséhez írjon e-mailt a SingPost ügyfélszolgálatának a következő sablonnal, és adja meg a nyomkövetési számot (ez a kézbesített csomagban található visszaküldési címkén van feltüntetve).
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > A munkanapokon fogadott foglalási kérelmek esetében:
+   > - 15 óra előtt a csomagfelvétel a következő munkanapon 9 és 13 óra között lesz.
+   > - 15 óra előtt a csomagfelvétel a következő munkanapon 14 és 18 óra között lesz.
+
+   Ha bármilyen probléma merülne fel, forduljon a Data Box ázsiai részlegéhez a következő címen: adbo@microsoft.com. Adja meg a feladat nevét a tárgy fejlécében, valamint az észlelt problémát.
+
 3. Adja át a csomagot a futárnak. 
 
 

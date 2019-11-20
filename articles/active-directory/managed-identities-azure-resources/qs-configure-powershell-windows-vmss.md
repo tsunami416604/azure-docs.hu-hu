@@ -1,5 +1,5 @@
 ---
-title: Az Azure-erőforrások felügyelt identitásának konfigurálása virtuálisgép-méretezési csoportokon a PowerShell használatával
+title: Felügyelt identitások konfigurálása virtuálisgép-méretezési csoportokon a PowerShell használatával – Azure AD
 description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálásához egy virtuálisgép-méretezési csoporton a PowerShell használatával.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a09780ae117beb1a8d601b8fd88d43191321854f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309998"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183983"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuálisgép-méretezési csoportokban a PowerShell használatával
 
@@ -56,7 +56,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti és távolíthatja el a
 
 Virtuálisgép-méretezési csoport létrehozása a rendszerhez rendelt felügyelt identitás engedélyezésével:
 
-1. A rendszer által hozzárendelt felügyelt identitással rendelkező virtuálisgép-méretezési csoport létrehozásához tekintse meg az *1. példát* a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancsmag-dokumentációban.  Adja hozzá a `-IdentityType SystemAssigned` paramétert `New-AzVmssConfig` a parancsmaghoz:
+1. A rendszer által hozzárendelt felügyelt identitással rendelkező virtuálisgép-méretezési csoport létrehozásához tekintse meg az *1. példát* a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancsmag-dokumentációban.  Adja hozzá a `-IdentityType SystemAssigned` paramétert a `New-AzVmssConfig` parancsmaghoz:
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
@@ -68,13 +68,13 @@ Virtuálisgép-méretezési csoport létrehozása a rendszerhez rendelt felügye
 
 Ha egy meglévő Azure virtuálisgép-méretezési csoporton kell engedélyeznie a rendszer által hozzárendelt felügyelt identitást:
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Olyan fiókot használjon, amely a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez van társítva. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási engedélyeket ad a virtuálisgép-méretezési csoportnak, például a "virtuális gép közreműködői":
+1. Jelentkezzen be az Azure-ba `Connect-AzAccount`használatával. Olyan fiókot használjon, amely a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez van társítva. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási engedélyeket ad a virtuálisgép-méretezési csoportnak, például a "virtuális gép közreműködői":
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Először kérje le a virtuálisgép-méretezési csoport tulajdonságait [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) a parancsmag használatával. Ezután a rendszerhez rendelt felügyelt identitás engedélyezéséhez használja az `-IdentityType` [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag kapcsolóját:
+2. Először kérje le a virtuálisgép-méretezési csoport tulajdonságait a [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) parancsmag használatával. Ezután a rendszerhez rendelt felügyelt identitás engedélyezéséhez használja a `-IdentityType` kapcsolót az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmagon:
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
@@ -86,7 +86,7 @@ Ha egy meglévő Azure virtuálisgép-méretezési csoporton kell engedélyeznie
 
 Ha olyan virtuálisgép-méretezési csoporttal rendelkezik, amelynek már nincs szüksége a rendszer által hozzárendelt felügyelt identitásra, de továbbra is a felhasználó által hozzárendelt felügyelt identitásokra van szüksége, használja a következő parancsmagot:
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási engedélyeket ad a virtuálisgép-méretezési csoportnak, például a "virtuális gép közreműködői":
+1. Jelentkezzen be az Azure-ba `Connect-AzAccount`használatával. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási engedélyeket ad a virtuálisgép-méretezési csoportnak, például a "virtuális gép közreműködői":
 
 2. Futtassa a következő parancsmagot:
 
@@ -112,13 +112,13 @@ A felhasználó által hozzárendelt felügyelt identitással rendelkező új vi
 
 Felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy meglévő Azure virtuálisgép-méretezési csoporthoz:
 
-1. Jelentkezzen be az Azure `Connect-AzAccount`-ba a használatával. Olyan fiókot használjon, amely a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez van társítva. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási engedélyeket ad a virtuálisgép-méretezési csoportnak, például a "virtuális gép közreműködői":
+1. Jelentkezzen be az Azure-ba `Connect-AzAccount`használatával. Olyan fiókot használjon, amely a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez van társítva. Győződjön meg arról is, hogy a fiókja olyan szerepkörhöz tartozik, amely írási engedélyeket ad a virtuálisgép-méretezési csoportnak, például a "virtuális gép közreműködői":
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Először kérje le a virtuálisgép-méretezési csoport tulajdonságait `Get-AzVM` a parancsmag használatával. Ezután rendeljen hozzá egy felhasználóhoz rendelt felügyelt identitást a virtuálisgép-méretezési csoporthoz `-IdentityID` , használja az `-IdentityType` and kapcsolót az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmaggal. `<VM NAME>` Cseréljele`<USER ASSIGNED ID1>`a,, ,,`USER ASSIGNED ID2` értéket a saját értékeire. `<RESROURCE GROUP>` `<SUBSCRIPTION ID>`
+2. Először kérje le a virtuálisgép-méretezési csoport tulajdonságait a `Get-AzVM` parancsmag használatával. Ezután rendeljen hozzá egy felhasználóhoz rendelt felügyelt identitást a virtuálisgép-méretezési csoporthoz, használja a `-IdentityType` és `-IdentityID` kapcsolót az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmagon. Cserélje le `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` a saját értékeire.
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -128,7 +128,7 @@ Felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy me
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása egy Azure virtuálisgép-méretezési csoportból
 
-Ha a virtuálisgép-méretezési csoport több felhasználó által hozzárendelt felügyelt identitással rendelkezik, a következő parancsokkal távolíthatja el az összeset, de az utolsót is. Ne felejtse el a `<RESOURCE GROUP>` és `<VIRTUAL MACHINE SCALE SET NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY NAME>` a felhasználó által hozzárendelt felügyelt identitás neve tulajdonság, amely a virtuálisgép-méretezési csoporton marad. Ezek az információk a virtuálisgép-méretezési csoport identitás szakaszában találhatók a következő használatával `az vmss show`:
+Ha a virtuálisgép-méretezési csoport több felhasználó által hozzárendelt felügyelt identitással rendelkezik, a következő parancsokkal távolíthatja el az összeset, de az utolsót is. Ne felejtse el a `<RESOURCE GROUP>` és `<VIRTUAL MACHINE SCALE SET NAME>` paraméterek értékeit a saját értékeire cserélni. A `<USER ASSIGNED IDENTITY NAME>` a felhasználó által hozzárendelt felügyelt identitás Name tulajdonsága, amely a virtuálisgép-méretezési csoporton marad. Ezek az információk a virtuálisgép-méretezési csoport Identity (identitás) szakaszában találhatók `az vmss show`használatával:
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"
@@ -144,7 +144,7 @@ Ha a virtuálisgép-méretezési csoporthoz a rendszerhez hozzárendelt és a fe
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:

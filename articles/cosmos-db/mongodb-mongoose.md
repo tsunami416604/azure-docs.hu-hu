@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 11/18/2019
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 3955b84df401e5832668fa091274caea9af2466e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: be3fd42f33fd66fe2bf5a773eafafba5d6982706
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876605"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184784"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Egy Node.js Mongoose alkalmazást az Azure Cosmos DB csatlakoztatása
 
@@ -61,21 +61,25 @@ Hozzunk létre egy Cosmos-fiókot. Ha már rendelkezik egy használni kívánt f
 
 1. Importálja a függőségeket az index.js fájljába.
     ```JavaScript
-    var mongoose = require('mongoose');
-    var env = require('dotenv').load();    //Use the .env file to load the variables
+   var mongoose = require('mongoose');
+   var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
 1. Vegye fel a Cosmos DB kapcsolati sztringjét és a Cosmos DB-nevet a ```.env``` fájlba. Cserélje le a {Cosmos-Account-Name} és a {dbname} helyőrzőket a saját Cosmos-fiókja nevére és az adatbázis nevére a kapcsos zárójelek nélküli szimbólumok nélkül.
 
     ```JavaScript
-    COSMOSDB_CONNSTR=mongodb://{cosmos-account-name}.documents.azure.com:10255/{dbname}
-    COSMODDB_USER=cosmos-account-name
-    COSMOSDB_PASSWORD=cosmos-secret
+   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+
+   COSMODDB_USER = "<Azure Cosmos account's user name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
+   COSMOSDB_DBNAME = "<Azure Cosmos database name>"
+   COSMOSDB_HOST= "<Azure Cosmos Host name>"
+   COSMOSDB_PORT=10255
     ```
 
 1. Kapcsolódjon Cosmos DB a mongúz-keretrendszer használatával, és adja hozzá az alábbi kódot az index. js végéhez.
     ```JavaScript
-    mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
+   mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
         user: process.env.COSMODDB_USER,
         password: process.env.COSMOSDB_PASSWORD
@@ -214,7 +218,7 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
     const commonModel = mongoose.model('Common', new mongoose.Schema({}, baseConfig));
     ```
 
-1. Most meghatározzuk a „Family” (Család) modellt. Vegye észre, hogy a ```mongoose.model``` helyett a ```commonModel.discriminator``` elemet használjuk. Ezen felül hozzáadjuk az alapszintű konfigurációt is a Mongoose sémához. Itt a discriminatorKey (diszkriminátorkulcs) tehát ```FamilyType```.
+1. Most meghatározzuk a „Family” (Család) modellt. Vegye észre, hogy a ```commonModel.discriminator``` helyett a ```mongoose.model``` elemet használjuk. Ezen felül hozzáadjuk az alapszintű konfigurációt is a Mongoose sémához. Itt a discriminatorKey (diszkriminátorkulcs) tehát ```FamilyType```.
 
     ```JavaScript
     const Family_common = commonModel.discriminator('FamilyType', new     mongoose.Schema({
@@ -306,11 +310,11 @@ Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát ha
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
-- Ismerkedjen [](mongodb-samples.md) meg a MongoDB-mintákkal Azure Cosmos db API-val a MongoDB.
+- Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

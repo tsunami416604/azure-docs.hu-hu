@@ -225,9 +225,9 @@
           items:
             - name: A HDInsight 4.0 újdonságai
               href: ./hdinsight-version-release.md
-            - name: A HDInsight 4.0 teljes kibocsátási megjegyzései
+            - name: Kibocsátási megjegyzések
               href: ./hdinsight-release-notes.md
-            - name: A HDInsight 3.6 teljes kibocsátási megjegyzései
+            - name: Archivált kibocsátási megjegyzések az Azure HDInsighthoz
               href: ./hdinsight-release-notes-archive.md
         - name: Gyakori kérdések (GYIK)
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: NSG-khez és UDR-ekhez szükséges IP-címek
           href: ./hdinsight-management-ip-addresses.md
+        - name: Az Azure Firewall szolgáltatáscímkéi
+          href: ./hdinsight-service-tags.md
     - name: Útmutató
       items:
         - name: ESP-fürtök létrehozása és szinkronizálás a helyszíni rendszerrel

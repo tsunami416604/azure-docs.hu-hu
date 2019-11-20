@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 8d89031a3b27742149d450ab79c9febf0aaef1ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498173"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185624"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -69,7 +69,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
     
     A meglévő biztonsági beállítások megkereséséhez használja a következő Azure PowerShell vagy Azure CLI-parancsokat:
 
-    * Hálózati biztonsági csoportok
+    * Network security groups (Hálózati biztonsági csoportok)
 
         Cserélje le a `RESOURCEGROUP`t a virtuális hálózatot tartalmazó erőforráscsoport nevére, majd írja be a parancsot:
     
@@ -221,7 +221,7 @@ Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgal
 
 1. Azonosítsa az HDInsight használni kívánt Azure-régiót.
 
-2. Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight kezelése – IP-címek](hdinsight-management-ip-addresses.md).
+2. Azonosítsa a HDInsight által a régiója számára szükséges szolgáltatási címkéket. További információ: [hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight](hdinsight-service-tags.md).
 
 3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
 
@@ -253,7 +253,7 @@ A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetés
 
 HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/load-balancer-overview.md#skus) van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).

@@ -1,11 +1,11 @@
 ---
-title: IPv6 Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer használatával az Azure-ban – parancssori felület
+title: IPv6 Dual stack-alkalmazás üzembe helyezése – alapszintű Load Balancer – parancssori felület
 titlesuffix: Azure Virtual Network
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy IPv6-alapú Dual stack-alkalmazást az Azure Virtual Networkben az Azure CLI használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: d4ca26606eb8be5b9092f40b70b57b9d5d85385c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b8440efa08e47685d21b0222861f749e8bdffbc9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804003"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186380"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az alapszintű Load Balancer-CLI (előzetes verzió) használatával
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.49 vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version` parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.49 vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version`. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az IPv6 az Azure Virtual Network szolgáltatáshoz való használatához az előfizetést az Azure CLI használatával kell konfigurálnia az alábbiak szerint:
@@ -53,7 +53,7 @@ A regisztráció befejeződése után futtassa a következő parancsot:
 ```azurelci
 az provider register --namespace Microsoft.Network
 ```
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A kettős veremből álló virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal. A következő példában létrehozunk egy *DsResourceGroup01* nevű erőforráscsoportot a *eastus* helyen:
 
@@ -64,7 +64,7 @@ az group create \
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>IPv4-és IPv6-alapú nyilvános IP-címek létrehozása a Load Balancerhez
-Az IPv4-és IPv6-végpontok internetre való eléréséhez IPv4-és IPv6-alapú nyilvános IP-címek szükségesek a terheléselosztó számára. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. Az alábbi példa a *dsPublicIP_v4* és a *dsPublicIP_v6* nevű IPv4-és IPv6-alapú nyilvános IP-címet hozza létre a *DsResourceGroup01* erőforráscsoporthoz:
+Az IPv4-és IPv6-végpontok internetre való eléréséhez IPv4-és IPv6-alapú nyilvános IP-címek szükségesek a terheléselosztó számára. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. Az alábbi példa létrehoz egy *dsPublicIP_v4* nevű IPv4-és IPv6 nyilvános IP-címet, és *dsPublicIP_v6* a *DsResourceGroup01* erőforráscsoporthoz:
 
 ```azurecli
 # Create an IPV4 IP address
@@ -115,7 +115,7 @@ Ebben a szakaszban két előtérbeli IP-címet (IPv4 és IPv6) és a terhelésel
 
 ### <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
-Hozza létre az alapszintű Load Balancer az az [Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **dsLB** , amely tartalmaz egy **dsLbFrontEnd_v4**nevű előtér-készletet, amely egy **dsLbBackEndPool_v4** nevű háttér-készlet, amely az IPv4 nyilvános IP-címhez **van társítva.** az előző lépésben létrehozott dsPublicIP_v4. 
+Hozza létre az alapszintű Load Balancer az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **dsLB** , amely tartalmaz egy **dsLbFrontEnd_v4**nevű előtér-készletet, amely az előző lépésben létrehozott IPv4 nyilvános IP-címhez **dsPublicIP_v4** **dsLbBackEndPool_v4** nevű háttér-készlet. 
 
 ```azurecli
 az network lb create \
@@ -130,7 +130,7 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>IPv6-előtérbeli felület létrehozása
 
-Hozzon létre egy IPV6-előtérbeli IP-címet az [az Network LB frontend-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)paranccsal. A következő példa létrehoz egy *dsLbFrontEnd_v6* nevű előtérbeli IP-konfigurációt, és csatolja a *dsPublicIP_v6* -címet:
+Hozzon létre egy IPV6-előtérbeli IP-címet az [az Network LB frontend-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)paranccsal. A következő példa létrehoz egy *dsLbFrontEnd_v6* nevű ELŐTÉRBELI IP-konfigurációt, és csatolja a *dsPublicIP_v6* címet:
 
 ```azurecli
 az network lb frontend-ip create \
@@ -143,7 +143,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>IPv6-alapú háttérbeli címkészlet konfigurálása
 
-Hozzon létre egy IPv6-alapú háttér-címkészletet az [az Network LB cím-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)paranccsal. Az alábbi példa létrehoz egy *dsLbBackEndPool_v6* nevű háttér-címkészletet a virtuális gépeket IPv6 NIC-konfigurációk használatával:
+Hozzon létre egy IPv6-alapú háttér-címkészletet az [az Network LB cím-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)paranccsal. Az alábbi példa egy *dsLbBackEndPool_v6* nevű háttér-címkészletet hoz létre, amely IPv6 hálózati adapter-konfigurációval rendelkező virtuális gépeket tartalmaz:
 
 ```azurecli
 az network lb address-pool create \
@@ -156,7 +156,7 @@ az network lb address-pool create \
 
 A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. 
 
-Hozzon létre egy terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) paranccsal. Az alábbi példa a *dsLBrule_v4* és a *dsLBrule_v6* nevű terheléselosztó-szabályokat hozza létre, és a *80* -es *TCP* -porton az IPv4-és IPv6-előtérbeli IP-konfigurációkhoz tartozó forgalmat kiegyensúlyozza:
+Hozzon létre egy terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) paranccsal. Az alábbi példa létrehozza a *dsLBrule_v4* nevű terheléselosztó-szabályokat, és *dsLBrule_v6* és kiegyensúlyozza az *80* -as *TCP* -port forgalmát az IPv4-és IPv6-előtérbeli IP-konfigurációkhoz:
 
 ```azurecli
 az network lb rule create \
@@ -270,7 +270,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. A következő példában létrehozunk egy *dsVNET* nevű virtuális hálózatot az alhálózatok *dsSubNET_v4* és *dsSubNET_v6*:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. Az alábbi példa egy *dsVNET* nevű virtuális hálózatot hoz létre alhálózatokkal *dsSubNET_v4* és *dsSubNET_v6*:
 
 ```azurecli
 # Create the virtual network

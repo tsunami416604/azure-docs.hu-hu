@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon'
+title: 'Oktatóanyag: a Azure Firewall & konfigurálása a Azure Portal használatával'
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és konfigurálhatja az Azure Firewallt az Azure Portalon.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468452"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195778"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban az üzembe helyezés érdekében egyetlen egyszerű vir
 
 ![Az oktatóanyag hálózati infrastruktúrája](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Tesztelési hálózati környezet beállítása
@@ -104,7 +104,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Erőforráscsoport     |**Teszt – FW-RG**|
+   |Erőforráscsoport     |**Test-FW-RG**|
    |Virtuális gép neve     |**SRV – ugrás**|
    |Régió     |Ugyanaz, mint az előző|
    |Rendszergazda felhasználóneve     |**azureuser**|
@@ -126,8 +126,8 @@ A következő táblázatban található információk segítségével konfigurá
 |Beállítás  |Érték  |
 |---------|---------|
 |Alhálózat|**Munkaterhelés – SN**|
-|Nyilvános IP-cím|**NEz egy**|
-|Nyilvános bejövő portok|**NEz egy**|
+|Nyilvános IP-cím|**Nincsenek**|
+|Nyilvános bejövő portok|**Nincsenek**|
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
@@ -140,10 +140,10 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Előfizetés     |\<az Ön előfizetése\>|
-   |Erőforráscsoport     |**Teszt – FW-RG** |
-   |Name (Név)     |**Teszt – FW01**|
-   |Földrajzi egység     |Válassza a korábban használt helyet|
+   |Előfizetést     |\<az Ön előfizetése\>|
+   |Erőforráscsoport     |**Test-FW-RG** |
+   |Name (Név)     |**Test-FW01**|
+   |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **test-FW-vn**|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
@@ -254,7 +254,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

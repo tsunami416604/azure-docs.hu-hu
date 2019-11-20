@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 7fc7bd6fa0067857bde64d43be5799bd50712490
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469684"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185268"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfiguráci
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) egy kiváló lehetőség, amely a Windows, MacOS és Linux platformokon érhető el.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Állítsa be úgy az alkalmazást, hogy frissítse a konfigurációját az alkalmazás konfigurációs tárolójában történt változásokra reagálva.
@@ -191,7 +191,7 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 
         dotnet run
 
-3. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000` lapra, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+3. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
@@ -199,11 +199,11 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 
 5. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcsok értékeit:
 
-    | Jelmagyarázat | Érték |
+    | Paraméter | Érték |
     |---|---|
-    | TestApp: beállítások: BackgroundColor | zöld |
-    | TestApp: beállítások: FontColor | lightGray |
-    | TestApp: beállítások: üzenet | Adatok az Azure app Configuration szolgáltatásból – mostantól élő frissítésekkel! |
+    | TestApp:Settings:BackgroundColor | zöld |
+    | TestApp:Settings:FontColor | lightGray |
+    | TestApp:Settings:Message | Adatok az Azure app Configuration szolgáltatásból – mostantól élő frissítésekkel! |
 
 6. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat. A változtatások megjelenítéséhez a böngésző lapja több frissítése is szükséges lehet.
 
@@ -216,9 +216,9 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy Azure által felügyelt szolgáltatás-identitást adott hozzá, amellyel egyszerűbbé válik az alkalmazások konfigurációjának elérése, és javítható a hitelesítő adatok kezelése az alkalmazáshoz. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
+Ebben az oktatóanyagban engedélyezte a ASP.NET Core webalkalmazásának, hogy dinamikusan frissítse a konfigurációs beállításokat az alkalmazás konfigurációjában. Ha meg szeretné tudni, hogyan használható az Azure felügyelt identitása az alkalmazás-konfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [CLI-minták](./cli-samples.md)
+> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)

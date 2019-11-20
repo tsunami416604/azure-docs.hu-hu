@@ -1,5 +1,5 @@
 ---
-title: Azure rövid útmutató – Front Door-profil létrehozása az Azure Portal használatával az alkalmazások magas rendelkezésre állásának biztosításához
+title: 'Rövid útmutató: a bejárati profil létrehozása az alkalmazások magas rendelkezésre állásához'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Front Doort a magas rendelkezésre állású, nagy teljesítményű globális webalkalmazása számára.
 services: front-door
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461986"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184517"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Gyors útmutató: Magas rendelkezésre állású globális webalkalmazás számára a bejárati ajtajának létrehozása
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazásokhoz
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Front Door-profilt, amely magas rendelkezésre állást és nagy teljesítményt biztosít globális webalkalmazása számára. 
 
@@ -42,7 +42,7 @@ A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példány�
      | Name (Név)           | Adja meg a webalkalmazás egyedi nevét.  |
      | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD1* nevet. |
      | App Service-csomag/hely         | Válassza az **Új** lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanEastUS* nevet, majd kattintson az **OK** gombra. 
-     |      Location egység  |   USA keleti régiója        |
+     |      Hely  |   USA keleti régiója        |
     |||
 
 3. Kattintson a **Létrehozás** gombra.
@@ -54,7 +54,7 @@ A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példány�
      | Name (Név)           | Adja meg a webalkalmazás egyedi nevét.  |
      | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD2* nevet. |
      | App Service-csomag/hely         | Válassza az **Új** lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanWestEurope* nevet, majd kattintson az **OK** gombra. 
-     |      Location egység  |   Nyugat-Európa      |
+     |      Hely  |   Nyugat-Európa      |
     |||
 
 
@@ -75,14 +75,14 @@ Ezután az alkalmazás háttérrendszerét/háttérrendszereit kell konfiguráln
 3. A **Cél gazdagép típusa** beállításhoz adja meg az App Service értéket. Válassza ki az előfizetést, amelyben létrehozta a webhelyet, majd a **Cél gazdagép neve** listából válassza ki az első webhelyet, amely ebben az esetben *myAppServicePlanEastUS.azurewebsites.net*.
 4. A többi mezőt egyelőre hagyja érintetlenül, és kattintson a **Hozzáadás** gombra.
 5. Ismételje meg a 2–4. lépést a másik webhely, vagyis a *myAppServicePlanWestEurope.azurewebsites.net* hozzáadásához.
-6. Szükség esetén frissítheti a háttérkészlet Állapotadat-mintavételek és Terheléselosztás beállításait, de az alapértelmezett értékek is megfelelnek. Kattintson a **Hozzáadás** parancsra.
+6. Szükség esetén frissítheti a háttérkészlet Állapotadat-mintavételek és Terheléselosztás beállításait, de az alapértelmezett értékek is megfelelnek. Kattintson az **Hozzáadás** parancsra.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Útválasztási szabály hozzáadása
 Végül kattintson a „+” ikonra az Útválasztási szabályok területen egy útválasztási szabály létrehozásához. Ez az előtérbeli gazdagépnek a háttérkészletre való leképezéséhez szükséges, ami gyakorlatilag azt jelenti, hogy a gazdagéphez (`myappfrontend.azurefd.net`) érkező kéréseket a háttérkészlethez (`myBackendPool`) irányítja át a rendszer. A **Hozzáadás** gombra kattintva adhatja hozzá az útválasztási szabályt a Front Doorhoz. Ezzel készen áll a Front Door létrehozására, úgyhogy kattintson az **Ellenőrzés és létrehozás** elemre.
 
 >[!WARNING]
-> **Mindenképpen** gondoskodjon arról, hogy a Front Door minden előtérbeli gazdagépe rendelkezzen egy társított alapértelmezett útvonalat (\*) használó útválasztási szabállyal. Vagyis minden egyes előtérbeli gazdagépnek rendelkeznie kell legalább egy olyan útválasztási szabállyal, amely az alapértelmezett útvonalat (\*) használja. Ennek hiányában előfordulhat, hogy a végfelhasználói adatforgalom nem lesz megfelelően átirányítva.
+> **Mindenképpen** gondoskodjon arról, hogy a Front Door minden előtérbeli gazdagépe rendelkezzen egy társított alapértelmezett útvonalat (\*) használó útválasztási szabállyal. Vagyis minden egyes előtérbeli gazdagépnek rendelkeznie kell legalább egy olyan útválasztási szabállyal, amely az alapértelmezett útvonalat (\*) használja. Ha ez a feltétel nem teljesül, akkor a végfelhasználói forgalom útvonalválasztása nem lesz megfelelő.
 
 ## <a name="view-front-door-in-action"></a>A Front Door megtekintése működés közben
 A Front Door létrehozása után néhány percet vesz igénybe a konfiguráció globális telepítése. Ha befejeződött a folyamat, indítsa el a létrehozott előtérbeli gazdagépet, vagyis a webböngészőben nyissa meg a `myappfrontend.azurefd.net` URL-címet. A kérés automatikusan át lesz irányítva a háttérkészlet Önhöz legközelebbi háttérrendszerére. 
@@ -93,5 +93,5 @@ Ha a gyakorlatban is látni szeretné a Front Door azonnali globális feladatát
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rájuk szüksége, törölje az erőforráscsoportokat, a webalkalmazásokat és az összes kapcsolódó erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy Front Door-profilt hoztunk létre, amellyel átirányíthattuk egy magas rendelkezésre állást és maximális teljesítményt igénylő webalkalmazás adatforgalmát. Az adatforgalom átirányításáról a Front Door által használt [Útválasztási módszereket](front-door-routing-methods.md) ismertető dokumentumban olvashat.

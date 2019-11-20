@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a53f2a0e5927a75c4d22ada5837da26bd8deeda
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc9565f44fdb868bc45d2f99de1d4036e1d5d123
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028284"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181147"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -51,9 +51,14 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 Az ebben a szerepkörben lévő felhasználók a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát hozhatják létre és kezelhetik. Vegye figyelembe, hogy az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
-> [!IMPORTANT]
-> Ez a szerepkör lehetővé teszi az alkalmazás hitelesítő adatainak kezelését. Az ehhez a szerepkörhöz hozzárendelt felhasználók hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és ezekkel a hitelesítő adatokkal megszemélyesítheti az alkalmazás identitását. Ha az alkalmazás identitása hozzáférést kapott a Azure Active Directoryhoz, például felhasználói vagy más objektumok létrehozására vagy frissítésére, akkor a szerepkörhöz hozzárendelt felhasználó elvégezheti ezeket a műveleteket az alkalmazás megszemélyesítése közben. Előfordulhat, hogy az alkalmazás identitásának megszemélyesítése megemelő jogosultságot jelent a felhasználó számára az Azure AD-beli szerepkör-hozzárendelésein keresztül. Fontos tisztában lenni azzal, hogy egy felhasználó az alkalmazás-rendszergazdai szerepkörhöz való hozzárendelésével megszemélyesítheti az alkalmazás identitását.
+Az alkalmazás-rendszergazdák kezelhetik az alkalmazás hitelesítő adatait, amelyek lehetővé teszik az alkalmazás megszemélyesítését. Így az ehhez a szerepkörhöz hozzárendelt felhasználók csak azon alkalmazások hitelesítő adatait kezelhetik, amelyek nincsenek Azure AD-szerepkörökhöz rendelve, vagy csak a következő rendszergazdai szerepkörökhöz vannak rendelve:
+* Alkalmazás-rendszergazda
+* Alkalmazás-fejlesztő
+* Cloud Application Administrator
+* Directory-olvasók
 
+Ha egy alkalmazás minden olyan szerepkörhöz hozzá van rendelve, amely nem szerepel a fentiekben, akkor az alkalmazás rendszergazdája nem tudja kezelni az adott alkalmazás hitelesítő adatait. 
+ 
 Ez a szerepkör lehetővé teszi a delegált engedélyek _és az alkalmazás_ engedélyeinek megadását is, kivéve a Microsoft Graph és az Azure ad Graph engedélyeit.
 
 > [!IMPORTANT]
@@ -122,8 +127,12 @@ Megvásárolja, kezeli az előfizetéseket, kezeli a támogatási jegyeket, és 
 
 Az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, az alkalmazásproxy felügyeletének lehetősége nélkül. Ez a szerepkör lehetővé teszi a vállalati alkalmazások és az alkalmazások regisztrálásának minden aspektusának létrehozását és felügyeletét. Ez a szerepkör lehetővé teszi a delegált engedélyekhez való hozzájárulást, valamint az Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kizárását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
-> [!IMPORTANT]
-> Ez a szerepkör lehetővé teszi az alkalmazás hitelesítő adatainak kezelését. Az ehhez a szerepkörhöz hozzárendelt felhasználók hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és ezekkel a hitelesítő adatokkal megszemélyesítheti az alkalmazás identitását. Ha az alkalmazás identitása hozzáférést kapott a Azure Active Directoryhoz, például felhasználói vagy más objektumok létrehozására vagy frissítésére, akkor a szerepkörhöz hozzárendelt felhasználó elvégezheti ezeket a műveleteket az alkalmazás megszemélyesítése közben. Előfordulhat, hogy az alkalmazás identitásának megszemélyesítése megemelő jogosultságot jelent a felhasználó számára az Azure AD-beli szerepkör-hozzárendelésein keresztül. Fontos tisztában lenni azzal, hogy egy felhasználó a Cloud Application Administrator szerepkörhöz való hozzárendelésével lehetővé válik az alkalmazás identitásának megszemélyesítése.
+A felhőalapú alkalmazás-rendszergazdák kezelhetik az alkalmazás hitelesítő adatait, amelyek lehetővé teszik az alkalmazás megszemélyesítését. Így az ehhez a szerepkörhöz hozzárendelt felhasználók csak azon alkalmazások hitelesítő adatait kezelhetik, amelyek nincsenek Azure AD-szerepkörökhöz rendelve, vagy csak a következő rendszergazdai szerepkörökhöz vannak rendelve:
+* Alkalmazás-fejlesztő
+* Cloud Application Administrator
+* Directory-olvasók
+
+Ha egy alkalmazás minden olyan szerepkörhöz hozzá van rendelve, amely nem szerepel a fentiekben, akkor a Cloud Application Administrator nem tudja kezelni az adott alkalmazás hitelesítő adatait.
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[Felhőalapú eszköz rendszergazdája](#cloud-device-administrator-permissions)
 

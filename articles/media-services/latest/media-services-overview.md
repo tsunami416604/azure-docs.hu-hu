@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 61ffd4857ca9a330a4cb0eeace89791fc0973f70
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575093"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186061"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 – áttekintés
 
@@ -54,6 +54,10 @@ Megtudhatja, hogyan kódolhat és csomagolhat tartalmakat, közvetítheti a vide
 > [!TIP]
 > A fejlesztés megkezdése előtt tekintse át a következőt:<br/>* [alapvető fogalmakat](concepts-overview.md) (incudes a fontos fogalmakat, például a csomagolást, a kódolást és a védelmet)<br/>* [fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (az API-k elérésére, elnevezési konvenciók stb.)
 
+### <a name="sdks"></a>SDK-k
+
+Kezdje el a fejlesztést [Azure Media Services v3 ügyféloldali SDK](media-services-apis-overview.md#sdks)-val.
+
 ### <a name="quickstarts"></a>Gyors útmutatók  
 
 A gyors üzembe helyezési útmutatóban az új ügyfelek gyorsan kipróbálhatják a Media Services.
@@ -62,7 +66,7 @@ A gyors üzembe helyezési útmutatóban az új ügyfelek gyorsan kipróbálhatj
 * [Videofájlok továbbítása – parancssori felület](stream-files-cli-quickstart.md)
 * [Stream video Files – Node. js](stream-files-nodejs-quickstart.md)
 
-### <a name="tutorials"></a>oktatóanyagokat
+### <a name="tutorials"></a>Oktatóanyagok
 
 Az oktatóanyagok a leggyakoribb Media Services feladatokhoz tartozó forgatókönyv-alapú eljárásokat mutatják be.
 
@@ -91,7 +95,7 @@ A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a fela
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók az alapvető fogalmakról](concepts-overview.md)
 

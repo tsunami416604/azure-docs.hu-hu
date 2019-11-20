@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
+title: Gyors útmutató`:` felügyelt identitás használata a Azure Resource Manager eléréséhez – Azure AD
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b9e42da3ae4510c217cb29c211557e28a30074
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a322a32a2ac0f875d81e9c8400653afb0a99435
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236203"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183435"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Hozzáférés az Azure Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -56,16 +56,16 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
 
 1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra.  
 2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
-3. A terminálablakban használatával `curl`, indítson egy Azure-erőforrások végpont a hozzáférési jogkivonat beszerzése az Azure Resource Manager helyi felügyelt identitások.  
+3. A terminál ablakban `curl`használatával tegyen fel egy kérést az Azure-erőforrások végpontjának helyi felügyelt identitására, hogy hozzáférési jogkivonatot kapjon Azure Resource Managerhoz.  
  
-    A `curl` kérelmet, a hozzáférési jogkivonat nem éri el.  
+    A hozzáférési jogkivonat `curl`-kérelme alább látható.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel.  Az Azure Resource Manager erőforrás-azonosítójának használatakor a záró perjelet is szerepeltetni kell az URI-ban. 
+    > A „resource” paraméter értékének pontosan egyeznie kell az Azure AD által várt értékkel.  A Resource Manager erőforrás-azonosítója esetén a záró perjelet is meg kell adnia az URI-n. 
     
     A válasz tartalmazza az Azure Resource Manager eléréséhez szükséges hozzáférési jogkivonatot. 
     
@@ -81,7 +81,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
     "token_type":"Bearer"} 
     ```
     
-    A jogkivonat segítségével elérheti az Azure Resource Managert, például hogy elolvassa annak az erőforráscsoportnak a részleteit, amelyhez korábban engedélyezte hozzáférést ennek a virtuális gépnek. Cserélje le a \<SUBSCRIPTION ID\>, a \<RESOURCE GROUP\> és az \<ACCESS TOKEN\> változók értékeit a korábban létrehozottakra. 
+    A jogkivonat segítségével elérheti az Azure Resource Managert, például hogy elolvassa annak az erőforráscsoportnak a részleteit, amelyhez korábban engedélyezte hozzáférést ennek a virtuális gépnek. Cserélje le \<előfizetés-azonosító\>, \<ERŐFORRÁSCSOPORT\>, és \<hozzáférési JOGKIVONAT\> a korábban létrehozott értékekre. 
     
     > [!NOTE]
     > Az URL-cím megkülönbözteti a kis-és nagybetűket, ezért pontosan ugyanúgy adja meg, mint ahogy az erőforráscsoportot elnevezte, illetve ügyeljen a „resourceGroup” sztringben a nagy G betű használatára is.  
@@ -95,7 +95,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan használható a rendszer által hozzárendelt felügyelt identitás az Azure Resource Manager API-hoz való hozzáféréshez.  További információ az Azure Resource Managerről:
 

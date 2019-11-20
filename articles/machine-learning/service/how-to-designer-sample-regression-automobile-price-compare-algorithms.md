@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: az autó árának előrejelzése (regresszió)'
+title: 'Tervező: az autós árak előrejelzése (speciális) példa'
 titleSuffix: Azure Machine Learning
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot anélkül, hogy a Designer (előzetes verzió) használatával egyetlen sor kódot kellene írnia. Ismerje meg, hogyan lehet több regressziós modellt betanítani és összehasonlítani, hogy az autó árát a technikai funkciók alapján Jósolja meg
+description: '& Összevetésével több ML regressziós modellt is összehasonlíthat, hogy a Azure Machine Learning Designer technikai szolgáltatásai alapján előre megjósolja az autó árát.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647958"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196066"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>2\. minta – regresszió: előrejelzési ár és összehasonlítási algoritmusok
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>A Train & több regressziós modellt hasonlít össze az autók árának előrejelzéséhez Azure Machine Learning Designer használatával
+
+**Designer (előzetes verzió) 2. minta**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Megtudhatja, hogyan hozhat létre egy gépi tanulási folyamatot anélkül, hogy a Designer (előzetes verzió) használatával egyetlen sor kódot kellene írnia. Ez a minta a több regressziós modellt is összehasonlítja, hogy az autó árát a technikai jellemzői alapján Jósolja meg. Biztosítjuk az ebben a folyamatban meghozott döntések indoklását, így kezelheti a gépi tanulási problémák megoldását.
@@ -85,7 +88,7 @@ Mindkét algoritmus alacsonyabb hibával rendelkezik a betanítási adatkészlet
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező számára elérhető egyéb mintákat:
 

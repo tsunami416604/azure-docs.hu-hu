@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037871"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186185"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -63,7 +63,7 @@ A továbbítás **élő eseményének**használatakor a helyszíni élő kódol�
 
 Ha Media Services használatával Felhőbeli kódolást használ, a helyszíni élő kódolót úgy kell konfigurálnia, hogy egyetlen bitráta-videót küldjön az élő eseményhez (az RTMP vagy a darabolt MP4 bemeneti protokoll használatával). Az élő esemény átkódolja a bejövő egyszeri sávszélességű adatfolyamot [több bitrátás videó streamre](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) , különböző felbontások mellett, és így elérhetővé teszi a lejátszási eszközök számára az iparági szabványnak megfelelő protokollok, például az MPEG-Dash, az Apple http Live Streaming (HLS) és a Microsoft Smooth streaming használatával. 
 
-### <a name="live-transcription"></a>Élő átirat
+### <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
 Az élő átírás egy olyan szolgáltatás, amellyel áteresztő vagy élő kódolású élő eseményeket lehet használni. További információ: [élő átírás](live-transcription.md). Ha ez a szolgáltatás engedélyezve van, a szolgáltatás a Cognitive Services [beszéd-szöveg](../../cognitive-services/speech-service/speech-to-text.md) funkciója segítségével átmásolja a beérkező szövegben szereplő szóbeli szavakat. Ezt a szöveget ezután elérhetővé kell tenni a videóval és hanggal együtt az MPEG-DASH és a HLS protokollok esetében.
 

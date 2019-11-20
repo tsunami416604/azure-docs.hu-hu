@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
 ms.date: 09/26/2019
 ms.author: mametcal
-ms.openlocfilehash: fe943913f9d33923438efb91630c5a85c4d1b748
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687184"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184952"
 ---
-# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: Szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
+# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
 Ebben a rövid útmutatóban beépítheti az Azure-alkalmazások konfigurációját egy Spring boot-webalkalmazásba, amely a szolgáltatások felügyeletének teljes körű megvalósítását hozza létre. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat.
 
@@ -37,11 +37,11 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **szolgáltatás-kezelő** >  **+ Létrehozás** lehetőséget a következő funkció-jelzők hozzáadásához:
+6. Válassza a **szolgáltatások kezelője** >  **+ Létrehozás** lehetőséget a következő funkció-jelzők hozzáadásához:
 
-    | Kulcs | State |
+    | Paraméter | Állapot |
     |---|---|
-    | Bétaverzió | Ki |
+    | Beta | Ki |
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
@@ -62,7 +62,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. XML* fájlt az alkalmazás gyökérkönyvtárában.
 
-2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter és a features Management szolgáltatást a `<dependencies>` listájához:
+2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter és a features Management szolgáltatást a `<dependencies>`listájához:
 
     ```xml
     <dependency>
@@ -92,9 +92,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon nyissa meg a hozzáférési kulcsokat. Válassza a csak olvasható kulcsok lapot. Ezen a lapon másolja át a kapcsolatok egyik karakterláncának értékét, és vegye fel új környezeti változóként `APP_CONFIGURATION_CONNECTION_STRING` nevű változóval.
+2. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon nyissa meg a hozzáférési kulcsokat. Válassza a csak olvasható kulcsok lapot. Ezen a lapon másolja át a kapcsolatok egyik karakterláncának értékét, és vegye fel új környezeti változóként `APP_CONFIGURATION_CONNECTION_STRING`változó nevével.
 
-3. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá `@EnableConfigurationProperties` a szolgáltatást a funkció engedélyezéséhez.
+3. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
 
     ```java
     @SpringBootApplication
@@ -226,15 +226,15 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     mvn spring-boot:run
     ```
 
-2. Nyisson meg egy böngészőablakot, és `https://localhost:8080`nyissa meg a következőt:, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+2. Nyisson meg egy böngészőablakot, és lépjen a `https://localhost:8080`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 3. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
-    | Kulcs | State |
+    | Paraméter | Állapot |
     |---|---|
-    | Bétaverzió | Bekapcsolva |
+    | Beta | Bekapcsolva |
 
 4. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
@@ -244,7 +244,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](https://go.microsoft.com/fwlink/?linkid=2074664)használatával.
 

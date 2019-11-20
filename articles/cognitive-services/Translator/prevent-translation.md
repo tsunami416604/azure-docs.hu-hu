@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/18/2019
 ms.author: swmachan
-ms.openlocfilehash: f3bf784898f7f51beea890d8d2a8401af1403fbc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dd3684cbd7c03851bfcc75293a9690f77b4652b2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888121"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184814"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>A tartalom fordításának megakadályozása a Translator Text API
 
 A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva. Előfordulhat például, hogy meg szeretné címkézni a kódot, a márkanevet vagy egy olyan szót vagy kifejezést, amely nincs értelme a honosított értéknél.
 
 ## <a name="methods-for-preventing-translation"></a>A fordítás megakadályozásának módszerei
-1. Escape to a Twitter-címke @somethingtopassthrough vagy #somethingtopassthrough. Kilépés a fordítás után.
+1. Escape to a Twitter-címke @somethingtopassthrough vagy #somethingtopassthrough. Kilépés a fordítás után. Érvényes Twitter-címkék esetén ez a reguláris kifejezés: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A címkének "@" jellel kell kezdődnie, amelyet egy karakter követ, majd egy vagy több karaktert, számjegyet vagy aláhúzást kell követnie. Javasoljuk, hogy rövid idő alatt tartsa meg a címkéket, és a nyitó címkét szóköz előtt kell megadni.
 
 2. A tartalom címkézése `notranslate`.
 
@@ -40,6 +40,6 @@ A Translator Text API lehetővé teszi a tartalom címkézését, hogy az ne leg
 5. Egyéni fordító: használjon egy [szótárt az egyéni fordítóban](custom-translator/what-is-dictionary.md) egy kifejezés fordításának megírásához 100%-os valószínűséggel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Kerülje a fordítást a Translator API-hívásban](reference/v3-0-translate.md)

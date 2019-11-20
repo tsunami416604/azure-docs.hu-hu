@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure SQL eléréséhez
+title: Oktatóanyag`:` felügyelt identitás használata az Azure SQL-Windows-Azure AD eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433171"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181172"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 

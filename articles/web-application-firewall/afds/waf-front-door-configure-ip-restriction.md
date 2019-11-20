@@ -1,5 +1,5 @@
 ---
-title: IP-korlátozási szabály konfigurálása webalkalmazási tűzfalszabály használatával az Azure bejárati szolgáltatásához
+title: IP-korlátozási WAF szabály konfigurálása az Azure bejárati ajtó szolgáltatásához
 description: Megtudhatja, hogyan konfigurálhat egy webalkalmazási tűzfalszabály az IP-címek korlátozására egy meglévő Azure bejárati ajtó szolgáltatási végpontján.
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: d0a32c4d59d580cb82ad6174c57ebbf677ac75b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2917b2f04e7c5a4896c52861ab7eab4e0eb00b5d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517162"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186685"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>IP-korlátozási szabály konfigurálása a webalkalmazási tűzfallal az Azure bejárati ajtó szolgáltatáshoz
 Ez a cikk bemutatja, hogyan konfigurálhat IP-korlátozási szabályokat egy webalkalmazási tűzfalban (WAF) az Azure bejárati ajtó szolgáltatásához az Azure CLI, Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
@@ -182,6 +182,6 @@ WAF házirend-objektum csatolása meglévő előtér-gazdagéphez és az Azure e
 Ha meg szeretné tekinteni azt a sablont, amely létrehoz egy Azure bejárati ajtót, valamint egy WAF szabályzatot egyéni IP-korlátozási szabályokkal, lépjen a [githubra](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre Azure-beli bejárati profilt](../../frontdoor/quickstart-create-front-door.md).

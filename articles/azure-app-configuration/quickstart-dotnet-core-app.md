@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 986bda4ab95985820e61c93bbe82431fb50c983b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709417"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185016"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Paraméter | Érték |
     |---|---|
     | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
 
@@ -69,7 +69,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Frissítse a `Main` metódust az alkalmazás konfigurációjának használatára a `builder.AddAzureAppConfiguration()` metódus meghívásával.
+4. A `builder.AddAzureAppConfiguration()` metódus meghívásával frissítse a `Main` metódust az alkalmazás konfigurációjának használatához.
 
     ```csharp
     static void Main(string[] args)
@@ -108,9 +108,9 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja a hitelesítést.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a .NET Core-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)
+> [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-dotnet-core.md)

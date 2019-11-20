@@ -6,16 +6,16 @@ author: rothja
 manager: jeffreyg
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
-ms.service: billing
+ms.service: azure-policy
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: b6ce20196b6ffdcd6699611998260dc981cc4f44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818357"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185047"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
@@ -25,7 +25,7 @@ További információ az Azure díjszabásáról: az [Azure díjszabásának át
 > [!NOTE]
 > Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, [Nyisson meg egy online ügyfélszolgálati kérést díjmentesen](azure-resource-manager/resource-manager-quota-errors.md). A határértékek nem állíthatók fel az alábbi táblázatokban látható maximális határérték fölé. Ha nincs maximális korlát oszlop, az erőforrás nem rendelkezik állítható korlátokkal.
 >
-> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha rendelkezik egy [ingyenes próba-előfizetésre](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Korlátok és Azure Resource Manager
@@ -92,7 +92,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Load Balancer](#load-balancer)
   * [Network Watcher](#network-watcher-limits)
   * [Nyilvános IP-cím](#publicip-address)
-  * [Privát hivatkozás](#private-link-limits)
+  * [Privát kapcsolat](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtuális hálózat](#networking-limits)
   * [Virtuális WAN](#virtual-wan-limits)
@@ -108,7 +108,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [StorSimple-rendszeren](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
-* [Virtual Machines](#virtual-machines-limits)
+* [Virtuális gépek](#virtual-machines-limits)
 * [Virtuálisgép-méretezési csoportok](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
@@ -402,7 +402,7 @@ SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Dat
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse korlátok
 SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-korlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 - [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Az Azure Cloud Services mérete](cloud-services/cloud-services-sizes-specs.md)

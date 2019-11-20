@@ -1,5 +1,5 @@
 ---
-title: Az Azure Storage elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
+title: Oktatóanyag`:` felügyelt identitás használata az Azure Storage – Linux – Azure AD eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 815e1a811d16e4c630e455e9c684c2b6b094a5d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236166"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183408"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Az Azure Storage elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy Linux rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Tárfiók létrehozása
+> * Create a storage account
 > * Blobtároló létrehozása egy tárfiókban
 > * Hozzáférés engedélyezése a Linux rendszerű virtuális gép felügyelt identitása számára egy Azure Storage-tárolóhoz
 > * Hozzáférési jogkivonat lekérése, majd azzal az Azure Storage meghívása
@@ -46,7 +46,7 @@ A jelen oktatóanyagban a parancssori példaszkriptek futtatása kétféleképpe
 - Az [Azure Cloud Shell](~/articles/cloud-shell/overview.md) használatával az Azure Portalon vagy a minden egyes kódblokk jobb felső sarkában megtalálható **Kipróbálom** gombbal.
 - Ha inkább a helyi parancssori konzolt kívánja használni, [telepítse a CLI 2.0 legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb).
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
+## <a name="create-a-storage-account"></a>Create a storage account 
 
 Ebben a szakaszban egy új tárfiókot fog létrehozni. 
 
@@ -55,7 +55,7 @@ Ebben a szakaszban egy új tárfiókot fog létrehozni.
 3. A **Név** mezőben adja meg a tárfiók nevét.  
 4. A **Telepítési modell** mezőben a **Resource Manager**, a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -83,8 +83,8 @@ A VM felügyelt identitásával lekérheti az Azure-tárolóblob adatait.
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.  
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** az oldalra egy új szerepkör-hozzárendelés hozzáadása a virtuális gép felett.
-4. A **szerepkör**, a legördülő listából válassza ki a **Storage-Blobadatok olvasója**. 
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez.
+4. A **szerepkör**alatt a legördülő listából válassza a **Storage blob-Adatolvasó**lehetőséget. 
 5. A következő legördülő menüben, a **Hozzáférés hozzárendelése** területen válassza ki a **Virtuális gép** elemet.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a **Minden erőforráscsoport** értékre.  
 7. A **Kiválasztás** mezőben válassza ki a virtuális gépet, majd kattintson a **Mentés** gombra.
@@ -116,7 +116,7 @@ Az alábbi lépések elvégzéséhez a korábban létrehozott virtuális géprő
    Hello world! :)
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan gondoskodhat róla, hogy egy Linux rendszerű virtuális gép rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni az Azure Storage-hoz.  További információ az Azure Storage-ról:
 

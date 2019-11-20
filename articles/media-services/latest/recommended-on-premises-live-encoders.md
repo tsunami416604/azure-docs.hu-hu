@@ -6,15 +6,15 @@ keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300943"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186037"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő adatfolyam-kódolók
 
@@ -31,7 +31,7 @@ A Media Services élő kódolásával kapcsolatos részletes információkért l
 
 ## <a name="live-encoders-that-output-rtmp"></a>Az RTMP kimenetét futtató élő kódolók
 
-A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák a következők: `rtmp://` vagy `rtmps://`.
+A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák `rtmp://` vagy `rtmps://`.
 
 > [!NOTE]
 > Amikor RTMP-vel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy az 1935-ös és az 1936-os kimenő TCP-portok nyitva vannak-e.
@@ -49,10 +49,13 @@ A Media Services a következő, RTMP kimenetű élő kódolók használatát jav
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) 7. hős és Hero 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Feldarabolt MP4 kimenetű élő kódolók
 
-Media Services javasolja a következő élő kódolók egyikének használatát, amelyekben a többszörös sávszélességű Smooth Streaming (töredékes MP4) kimenetként van használatban. A támogatott URL-sémák a következők: `http://` vagy `https://`.
+Media Services javasolja a következő élő kódolók egyikének használatát, amelyekben a többszörös sávszélességű Smooth Streaming (töredékes MP4) kimenetként van használatban. A támogatott URL-sémák `http://` vagy `https://`.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
@@ -60,9 +63,11 @@ Media Services javasolja a következő élő kódolók egyikének használatát,
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live és Hero 4K (UHD/HEVC)
+- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Ha több nyelven végez élő eseményeket (például egy angol hangsávot és egy spanyol hangsávot), akkor ezt a Media Excel Live encoderben állíthatja be úgy, hogy az élő hírcsatornát továbbítsa egy átmenő élő eseményre.
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Helyszíni élő kódoló beállításainak konfigurálása
 
@@ -74,9 +79,9 @@ A tartalom lejátszásához a hang-és video streamnek is jelen kell lennie. A c
 
 ### <a name="configuration-tips"></a>Konfigurációs tippek
 
-- Ha lehetséges, használjon vezetékes internetkapcsolatot.
+- Amikor csak lehetséges, hardveresen rögzített beállítású internet kapcsolat használatára.
 - A sávszélesség-követelmények meghatározásakor a továbbítási bitrátát dupla értékre kell kiszámítani. Bár nem kötelező, ez az egyszerű szabály segít csökkenteni a hálózati torlódás hatását.
-- A szoftveres alapú kódolók használatakor zárjunk be minden szükségtelen programot.
+- Szoftveralapú kódolók használatáról, amikor el minden felesleges programot zárja be.
 - A kódoló konfigurációjának a megkezdése után történő módosítása negatív hatással van az eseményre. A konfigurációs változások hatására az esemény instabillá válhat. 
 - Győződjön meg arról, hogy elegendő időt ad az esemény beállítására. A nagy léptékű események esetében javasoljuk, hogy a telepítőt egy órával az esemény előtt indítsa el.
 
@@ -128,7 +133,7 @@ Kövesse az [élő esemény ellenőrzésének](#pass-through-live-event-verifica
 
 ### <a name="email-your-recorded-settings"></a>A rögzített beállítások elküldése e-mailben
 
-Végezetül adja meg a rögzített beállításokat és az élő archiválási paramétereket, hogy a rendszer a amshelp@microsoft.com címen Azure Media Services értesítést, amely szerint az összes önellenőrzési ellenőrzés eltelt. Adja meg a kapcsolattartási adatait is a követő feladatokhoz. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Azure Media Services csapatával.
+Végezetül, a rögzített beállítások és az élő archiválási paraméterek elküldése e-mailben Azure Media Services a amshelp@microsoft.com értesítésként, hogy az összes önellenőrzési ellenőrzés el lett-e adva. Adja meg a kapcsolattartási adatait is a követő feladatokhoz. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Azure Media Services csapatával.
 
 ## <a name="next-steps"></a>Következő lépések
 

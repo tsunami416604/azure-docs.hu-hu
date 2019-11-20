@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299937"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185091"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -36,12 +36,12 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |---|---|
-    | TestApp: beállítások: BackgroundColor | Fehér |
-    | TestApp: beállítások: FontSize | 24 |
-    | TestApp: beállítások: FontColor | Fekete |
-    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp:Settings:BackgroundColor | Fehér |
+    | TestApp:Settings:FontSize | 24 |
+    | TestApp:Settings:FontColor | Fekete |
+    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
@@ -104,7 +104,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     ```
 
     > [!IMPORTANT]
-    > Egyes rendszerhéjak megcsonkítják a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets` parancs kimenete a teljes hálózati karakterláncot jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
+    > Egyes rendszerhéjak megcsonkítják a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy az `dotnet user-secrets` parancs kimenete a teljes hálózati karakterláncot jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
 
     A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Ha az alkalmazás üzembe helyezése [Azure app Servicere](https://azure.microsoft.com/services/app-service/web)történik, például egy alkalmazás-beállítási **karakterláncot** használ app Service helyett a Secret Managerrel a kapcsolódási karakterlánc tárolásához.
 
@@ -119,9 +119,9 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 5. A `config.AddAzureAppConfiguration()` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához.
     
     > [!IMPORTANT]
-    > a `CreateHostBuilder` a `CreateWebHostBuilder` értéket helyettesíti a .NET Core 3,0-ben.  Válassza ki a megfelelő szintaxist a környezet alapján.
+    > a `CreateHostBuilder` a .NET Core 3,0 `CreateWebHostBuilder` helyettesíti.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>@No__t-0 frissítése a .NET Core 2. x verzióhoz
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>A .NET Core 2. x `CreateWebHostBuilder` frissítése
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -134,7 +134,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>A .NET Core 3. x verziójának `CreateHostBuilder` frissítése
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>A .NET Core 3. x `CreateHostBuilder` frissítése
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -167,7 +167,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. Nyissa meg a *_Layout. cshtml* mappát a megosztott könyvtár > nézeteiben, és cserélje le a tartalmát a következő kódra:
+7. Nyissa meg a *_Layout. cshtml* mappát a megosztott könyvtár nézeteiben >, és cserélje le a tartalmát a következő kódra:
 
     ```HTML
     <!DOCTYPE html>
@@ -208,7 +208,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
         dotnet run
     ```
 
-3. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000` lapra, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+3. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -216,7 +216,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja, hogyan konfigurálhatja a webalkalmazást a konfigurációs beállítások dinamikus frissítéséhez.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a ASP.NET Core alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban](./enable-dynamic-configuration-aspnet-core.md)
+> [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-aspnet-core.md)

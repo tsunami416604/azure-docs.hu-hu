@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: előrejelzési ár (regresszió)'
+title: 'Tervező: az autós árak előrejelzése (alapszintű) példa'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hozhat létre gépi tanulási modellt az autó árának előrejelzéséhez egyetlen sor kód írása nélkül.
+description: Hozzon létre egy ML regressziós modellt az autó árának előrejelzéséhez anélkül, hogy egyetlen sor kódot kellene írnia Azure Machine Learning Designer használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: ab922733133856409e7c91ee7b216fdc5a341c06
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647153"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196138"
 ---
-# <a name="sample-1---regression-predict-price"></a>1\. példa – regresszió: előrejelzési ár
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>A regresszió használata az autók árának előrejelzéséhez Azure Machine Learning Designer használatával
+
+**Designer (előzetes verzió) 1. minta**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Megtudhatja, hogyan hozhat létre egy gépi tanulási regressziós modellt anélkül, hogy egyetlen sor kódot kellene írnia a tervező (előzetes verzió) használatával.
@@ -80,7 +83,7 @@ A **score Model** a betanított modell használatával generál előrejelzéseke
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a tervező számára elérhető egyéb mintákat:
 

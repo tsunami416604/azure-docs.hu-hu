@@ -1,6 +1,6 @@
 ---
-title: Rendszer- és felhasználó által hozzárendelt felügyelt identitások konfigurálása az Azure VMSS REST használatával
-description: Részletes utasításokat a rendszer és felhasználó által hozzárendelt felügyelt identitások a CURL használatával, hogy a REST API-t egy Azure-VMSS-hívás.
+title: Felügyelt identitások konfigurálása az Azure VMSS a REST-Azure AD használatával
+description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások Azure-VMSS való konfigurálásához a CURL használatával REST API-hívások létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,70 +15,70 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5721879ee78a694c90e607d15f30f99394e49fc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308280"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183615"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuálisgép-méretezési csoportot a REST API-hívások
+# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások konfigurálása virtuálisgép-méretezési csoportba tartozó Azure-erőforrásokhoz REST API-hívások használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban a rendszer automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
+Az Azure-erőforrások felügyelt identitásai Azure-szolgáltatásokat biztosítanak a Azure Active Directory automatikusan felügyelt rendszeridentitással. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban. 
 
-Ebben a cikkben az Azure Resource Manager REST-végponthoz, hívásokat a CURL használatával mutatja a következő felügyelt identitások egy virtuálisgép-méretezési csoportot az Azure-erőforrások műveletek végrehajtásához:
+Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő felügyelt identitásokat az Azure-erőforrások műveleteihez egy virtuálisgép-méretezési csoporton a CURL használatával a Azure Resource Manager REST-végpontra irányuló hívásokhoz:
 
-- Engedélyezheti és tilthatja le a rendszer által hozzárendelt felügyelt identitás egy Azure-beli virtuálisgép-méretezési csoportot
-- Hozzáadhat és eltávolíthat egy felhasználó által hozzárendelt felügyelt identitás egy Azure-beli virtuálisgép-méretezési csoportot
+- A rendszer által hozzárendelt felügyelt identitás engedélyezése és letiltása egy Azure virtuálisgép-méretezési csoporton
+- Felhasználó által hozzárendelt felügyelt identitás hozzáadása és eltávolítása egy Azure-beli virtuálisgép-méretezési csoporton
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi Azure szerepkör-alapú access control-hozzárendelések van szüksége:
+- A cikkben szereplő felügyeleti műveletek végrehajtásához a fióknak a következő Azure-beli szerepköralapú hozzáférés-vezérlési hozzárendelésekre van szüksége:
 
     > [!NOTE]
-    > Nincsenek további Azure AD directory szerepkör-hozzárendelések megadása kötelező.
+    > Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-    - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) egy virtuálisgép-méretezési csoport létrehozása és engedélyezése és rendszer-és/vagy felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoportot.
-    - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) hozhat létre felhasználó által hozzárendelt szerepkör felügyelt identitás.
-    - [Felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör hozzárendelése és a egy felhasználó által hozzárendelt identitással eltávolítása a kezdő és a egy virtuálisgép-méretezési csoportot.
-- Ha Windows használ, telepítse a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy használja a [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon.
-- [A helyi Azure CLI-konzol telepítése](/cli/azure/install-azure-cli), ha a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy egy [linuxos](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-- Ha a helyi Azure CLI-konzolt használ, jelentkezzen be Azure-bA `az login` egy olyan fiókkal, amely az Azure-előfizetés társítva van, a rendszer vagy felhasználó által hozzárendelt felügyelt identitások kezelése szeretné.
+    - Virtuálisgép-méretezési csoport létrehozásához, illetve a virtuálisgép-méretezési csoportból származó rendszer-és/vagy felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához a [virtuális gépek közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
+    - [Felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör felhasználó által hozzárendelt felügyelt identitás létrehozásához.
+    - [Felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör egy felhasználó által hozzárendelt identitás hozzárendeléséhez és eltávolításához egy virtuálisgép-méretezési csoportba.
+- Ha Windows rendszert használ, telepítse a [Linux Windows alrendszerét](https://msdn.microsoft.com/commandline/wsl/about) , vagy használja a Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) .
+- [Telepítse az Azure CLI helyi konzolját](/cli/azure/install-azure-cli), ha a [Windows alrendszert](https://msdn.microsoft.com/commandline/wsl/about) használja a Linux vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+- Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure-ba a `az login` használatával egy olyan fiókkal, amely a rendszer vagy a felhasználó által hozzárendelt felügyelt identitások kezeléséhez használni kívánt Azure-előfizetéshez van társítva.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
 
-Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le a rendszer által hozzárendelt felügyelt identitás a CURL használatával az Azure Resource Manager REST-végponton való meghíváshoz virtuálisgép-méretezési csoportot.
+Ebből a szakaszból megtudhatja, hogyan engedélyezheti és tilthatja le a rendszerhez rendelt felügyelt identitást egy virtuálisgép-méretezési csoporton a CURL használatával, hogy hívásokat hajtson végre a Azure Resource Manager REST-végpontra.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-a-virtual-machine-scale-set"></a>Rendszer által hozzárendelt felügyelt identitás engedélyezése egy virtuálisgép-méretezési készlet létrehozása során
+### <a name="enable-system-assigned-managed-identity-during-creation-of-a-virtual-machine-scale-set"></a>A rendszer által hozzárendelt felügyelt identitás engedélyezése virtuálisgép-méretezési csoport létrehozása során
 
-A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuális gép méretezési csoport létrehozása, kell hozzon létre egy virtuálisgép-méretezési csoportot, és lekér egy hozzáférési jogkivonatot a CURL használatával a Resource Manager-végpontot a rendszer által hozzárendelt felügyelt identitás típusú értékkel hívja.
+A rendszerhez rendelt felügyelt identitású virtuálisgép-méretezési csoport létrehozásához létre kell hoznia egy virtuálisgép-méretezési készletet, és be kell szereznie egy hozzáférési jogkivonatot, hogy a CURL használatával hívja meg a Resource Manager-végpontot a rendszerhez rendelt felügyelt identitás típusú értékkel.
 
-1. Hozzon létre egy [erőforráscsoport](../../azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a virtuálisgép-méretezési csoportot és az összes kapcsolódó erőforrás, használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
+1. Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#terminology) a virtuálisgép-méretezési csoport és a kapcsolódó erőforrások tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Hozzon létre egy [hálózati adapter](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) a virtuálisgép-méretezési csoport beállítása:
+2. Hozzon létre egy [hálózati adaptert](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) a virtuálisgép-méretezési csoport számára:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+3. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Hozzon létre egy virtuálisgép-méretezési csoportba a CURL használatával az Azure Resource Manager REST-végpont meghívására. Az alábbi példa létrehoz egy virtuálisgép-méretezési csoport nevű *myVMSS* a a *myResourceGroup* a rendszer által hozzárendelt felügyelt identitást, a kérelem törzsében szereplő értéke által meghatározott `"identity":{"type":"SystemAssigned"}`. Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+4. Hozzon létre egy virtuálisgép-méretezési készletet a CURL használatával a Azure Resource Manager REST-végpont meghívásához. A következő példa létrehoz egy *myVMSS* nevű virtuálisgép-méretezési készletet a *myResourceGroup* egy rendszerhez rendelt felügyelt identitással, amelyet a kérés törzse az `"identity":{"type":"SystemAssigned"}`értékkel azonosít. Cserélje le a `<ACCESS TOKEN>` értéket az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és a `<SUBSCRIPTION ID>` értékét az adott környezetnek megfelelőnek kérte.
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -88,12 +88,12 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -160,20 +160,20 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
     }  
    ```  
 
-### <a name="enable-system-assigned-managed-identity-on-an-existing-virtual-machine-scale-set"></a>Egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás alapértelmezett engedélyezése
+### <a name="enable-system-assigned-managed-identity-on-an-existing-virtual-machine-scale-set"></a>A rendszerhez rendelt felügyelt identitás engedélyezése meglévő virtuálisgép-méretezési csoportokon
 
-Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás rendszer által hozzárendelt, meg kell hozzáférési jogkivonat beszerzése és a CURL használatával a Resource Manager REST-végpont frissítése a identitástípus hívja.
+Ha a rendszer által hozzárendelt felügyelt identitást szeretné engedélyezni egy meglévő virtuálisgép-méretezési csoporton, meg kell adnia egy hozzáférési jogkivonatot, majd a CURL használatával meg kell hívnia a Resource Manager REST-végpontot az identitás típusának frissítéséhez.
 
-1. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+1. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Használja a következő CURL-parancs az Azure Resource Manager REST-végpont engedélyezni a rendszer által hozzárendelt felügyelt identitást, a virtuálisgép-méretezési hívja be, mert az a kérelem törzsében szereplő értéke által azonosított `{"identity":{"type":"SystemAssigned"}` a virtuálisgép-méretezési csoportot nevű *myVMSS*.  Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+2. A következő CURL-paranccsal hívhatja meg a Azure Resource Manager REST-végpontot, hogy engedélyezze a rendszerhez rendelt felügyelt identitást a virtuálisgép-méretezési csoporton a kérelem törzsében, a *myVMSS*nevű virtuálisgép-méretezési csoport értékével `{"identity":{"type":"SystemAssigned"}`ve.  Cserélje le a `<ACCESS TOKEN>` értéket az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és a `<SUBSCRIPTION ID>` értékét az adott környezetnek megfelelőnek kérte.
    
    > [!IMPORTANT]
-   > Annak érdekében, ne törölje a meglévő felhasználó által hozzárendelt felügyelt identitást a virtuálisgép-méretezési csoporthoz rendelt, fel kell felügyelt felhasználó által hozzárendelt identitások a következő CURL-paranccsal: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Ha rendelkezik ilyennel a felhasználó által hozzárendelt felügyelt-e a virtuálisgép-méretezési a hozzárendelt identitások a `identity` értéke a válaszban, folytassa a 3. lépés, amely bemutatja, miközben a rendszer által hozzárendelt felhasználó által hozzárendelt felügyelt identitások megőrzése a virtuálisgép-méretezési felügyelt identitás.
+   > Annak biztosítása érdekében, hogy ne törölje a virtuálisgép-méretezési csoporthoz rendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt felügyelt identitásokat: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Ha a virtuálisgép-méretezési csoporthoz a válasz `identity` értékében azonosított, felhasználó által hozzárendelt felügyelt identitások vannak rendelve, ugorjon a 3. lépésre, amely bemutatja, hogyan őrizze meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben engedélyezi a rendszerhez rendelt felügyelt identitást a virtuálisgép-méretezési csoporton.
 
    ```bash
     curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -183,12 +183,12 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -200,11 +200,11 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
     }
    ```
 
-3. Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás egy meglévő felhasználó által hozzárendelt felügyelt identitások virtuális gép méretezési, hozzá kell `SystemAssigned` , a `type` értéket.  
+3. Ha a rendszer által hozzárendelt felügyelt identitást szeretné engedélyezni egy virtuálisgép-méretezési csoporton meglévő, felhasználó által hozzárendelt felügyelt identitásokkal, hozzá kell adnia `SystemAssigned` a `type` értékhez.  
    
-   Például, ha a virtuális gép méretezési a felhasználó által hozzárendelt felügyelt identitások `ID1` és `ID2` rendelve, és szeretné a rendszer által hozzárendelt felügyelt identitás hozzáadni a virtuálisgép-méretezési csoportot, a következő CURL-hívást használja. Cserélje le `<ACCESS TOKEN>` és `<SUBSCRIPTION ID>` a környezetnek megfelelő értékekkel.
+   Ha például a virtuálisgép-méretezési csoport a felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik `ID1` és `ID2` hozzájuk rendelve, és a rendszerhez rendelt felügyelt identitást szeretné hozzáadni a virtuálisgép-méretezési csoporthoz, használja a következő CURL-hívást. Cserélje le a `<ACCESS TOKEN>` és a `<SUBSCRIPTION ID>` értéket a környezetének megfelelő értékekkel.
 
-   API-verzió `2018-06-01` tárolja a felhasználó által hozzárendelt felügyelt identitások a `userAssignedIdentities` értéke egy szótár formátumú, nem pedig a `identityIds` értéke egy tömb formátumú API-verzióban használt `2017-12-01`.
+   Az API-verzió `2018-06-01` a felhasználó által hozzárendelt felügyelt identitásokat a szótár formátuma `userAssignedIdentities` értékében tárolja, szemben az API-verzió `2017-12-01`használt tömb formátumában lévő `identityIds` értékkel.
    
    **API-VERZIÓ 2018-06-01**
 
@@ -216,12 +216,12 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. |
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. |
  
    **Kérelem törzse**
 
@@ -250,12 +250,12 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -271,20 +271,20 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
     }
    ```
 
-### <a name="disable-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>A felügyelt identitás tiltsa le a rendszer által hozzárendelt virtuálisgép-méretezési csoportot
+### <a name="disable-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Rendszer által hozzárendelt felügyelt identitás letiltása virtuálisgép-méretezési csoportból
 
-Egy rendszer által hozzárendelt identitással egy meglévő virtuálisgép-méretezési csoportot a letiltásához a hozzáférési jogkivonat beszerzése és a CURL használatával frissíteni az azonosító típusát a Resource Manager REST-végpont meghívása szeretne `None`.
+Egy meglévő virtuálisgép-méretezési csoporton a rendszer által hozzárendelt identitás letiltásához hozzáférési jogkivonatot kell beszerezni, majd a CURL használatával meg kell hívnia a Resource Manager REST-végpontot, hogy frissítse az identitás típusát `None`re.
 
-1. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+1. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Állítsa be a CURL használatával az Azure Resource Manager REST-végpont meghívására alapértelmezett felügyelt identitás letiltása a virtuálisgép-méretezési csoport frissítése.  A következő példa letiltja a rendszer által hozzárendelt felügyelt identitás, a kérelem törzsében szereplő értéke által meghatározott `{"identity":{"type":"None"}}` nevű virtuálisgép-méretezési csoportot a *myVMSS*.  Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+2. Frissítse a virtuálisgép-méretezési csoportját a CURL használatával, hogy meghívja a Azure Resource Manager REST-végpontot a rendszer által hozzárendelt felügyelt identitás letiltásához.  A következő példa letiltja a rendszer által hozzárendelt felügyelt identitást a kérelem törzsében azonosított módon, a *myVMSS*nevű virtuálisgép-méretezési csoport értéke `{"identity":{"type":"None"}}`.  Cserélje le a `<ACCESS TOKEN>` értéket az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és a `<SUBSCRIPTION ID>` értékét az adott környezetnek megfelelőnek kérte.
 
    > [!IMPORTANT]
-   > Annak érdekében, ne törölje a meglévő felhasználó által hozzárendelt felügyelt identitást a virtuálisgép-méretezési csoporthoz rendelt, fel kell felügyelt felhasználó által hozzárendelt identitások a következő CURL-paranccsal: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Ha bármely a virtuálisgép-méretezési csoporthoz rendelt felügyelt felhasználó által hozzárendelt identitások, ugorjon a 3. lépés, amely bemutatja, hogyan felügyelt felhasználó által hozzárendelt identitások megőrzi során a rendszer által hozzárendelt felügyelt identitás eltávolítását a virtuálisgép-méretezési csoportot.
+   > Annak biztosítása érdekében, hogy ne törölje a virtuálisgép-méretezési csoporthoz rendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt felügyelt identitásokat: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Ha rendelkezik egy, a virtuálisgép-méretezési csoporthoz rendelt, felhasználó által hozzárendelt felügyelt identitással, ugorjon a 3. lépésre, amely bemutatja, hogyan őrzi meg a felhasználó által hozzárendelt identitásokat, miközben eltávolítja a rendszer által hozzárendelt felügyelt identitást a virtuálisgép-méretezési csoportból.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -294,12 +294,12 @@ Egy rendszer által hozzárendelt identitással egy meglévő virtuálisgép-mé
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -311,35 +311,35 @@ Egy rendszer által hozzárendelt identitással egy meglévő virtuálisgép-mé
     }
    ```
 
-   Egy virtuális gép méretezési csoportot, amelynek a felhasználó által hozzárendelt felügyelt identitások felügyelt identitás alapértelmezett eltávolításához távolítsa el `SystemAssigned` származó a `{"identity":{"type:" "}}` értéket, miközben megtartja a `UserAssigned` érték és a `userAssignedIdentities` szótár értékkel, használ **API-verzió a 2018-06-01**. Ha használ **API 2017-12-01-es verzió** vagy korábbi, hagyja a `identityIds` tömb.
+   Ha a rendszer által hozzárendelt felügyelt identitást egy olyan virtuálisgép-méretezési csoportból szeretné eltávolítani, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa el `SystemAssigned` a `{"identity":{"type:" "}}` értékről, miközben a `UserAssigned` értéket és a `userAssignedIdentities` szótár értékét használja, ha az **API 2018-06-01**-es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, tartsa meg a `identityIds` tömböt.
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
-Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhasználó által hozzárendelt felügyelt identitás a CURL használatával az Azure Resource Manager REST-végponton való meghíváshoz virtuálisgép-méretezési csoportot.
+Ebből a szakaszból megtudhatja, hogyan adhat hozzá és távolíthat el felhasználó által hozzárendelt felügyelt identitást egy virtuálisgép-méretezési csoporton a CURL használatával, hogy hívásokat hajtson végre a Azure Resource Manager REST-végponton.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy virtuálisgép-méretezési készlet létrehozása során
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás hozzárendelése virtuálisgép-méretezési csoport létrehozása során
 
-1. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+1. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Hozzon létre egy [hálózati adapter](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) a virtuálisgép-méretezési csoport beállítása:
+2. Hozzon létre egy [hálózati adaptert](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) a virtuálisgép-méretezési csoport számára:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+3. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Az itt található utasításokat követve felügyelt felhasználó által hozzárendelt identitás létrehozása: [Hozzon létre egy felhasználó által hozzárendelt felügyelt identitás](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az itt található utasítások segítségével: [hozzon létre egy felhasználó által hozzárendelt felügyelt identitást](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Hozzon létre egy virtuálisgép-méretezési csoportba a CURL használatával az Azure Resource Manager REST-végpont meghívására. Az alábbi példa létrehoz egy virtuálisgép-méretezési csoport nevű *myVMSS* erőforráscsoportban *myResourceGroup* felügyelt felhasználó által hozzárendelt identitással `ID1`, ahogy az a kérelem törzsében szereplő az érték `"identity":{"type":"UserAssigned"}`. Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+5. Hozzon létre egy virtuálisgép-méretezési készletet a CURL használatával a Azure Resource Manager REST-végpont meghívásához. A következő példa egy *myVMSS* nevű virtuálisgép-méretezési csoportot hoz létre az erőforráscsoport *myResourceGroup* egy felhasználó által hozzárendelt felügyelt identitással `ID1`, a kérelem törzsében a `"identity":{"type":"UserAssigned"}`érték alapján azonosítva. Cserélje le a `<ACCESS TOKEN>` értéket az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és a `<SUBSCRIPTION ID>` értékét az adott környezetnek megfelelőnek kérte.
  
    **API-VERZIÓ 2018-06-01**
 
@@ -351,12 +351,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -438,12 +438,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. |
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. |
  
    **Kérelem törzse**
 
@@ -513,17 +513,17 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
     }
    ```
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-virtual-machine-scale-set"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy meglévő Azure-beli virtuálisgép-méretezési csoportot
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-virtual-machine-scale-set"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése meglévő Azure virtuálisgép-méretezési csoporthoz
 
-1. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+1. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2.  Az itt található utasításokat követve felügyelt felhasználó által hozzárendelt identitás létrehozása [felügyelt felhasználó által hozzárendelt identitás létrehozása](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+2.  Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az itt található utasítások alapján, [hozzon létre egy felhasználó által hozzárendelt felügyelt identitást](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. Annak érdekében, ne törölje a meglévő felhasználói vagy rendszer által hozzárendelt felügyelt identitások a virtuálisgép-méretezési csoporthoz rendelt, fel kell az identitást, a virtuálisgép-méretezési csoport rendelt típusok beállítása a következő CURL-parancs használatával. A virtuálisgép-méretezési csoporthoz hozzárendelt identitások rendelkezik felügyelt, ha szerepelnek a `identity` értéket.
+3. Annak biztosítása érdekében, hogy ne törölje a virtuálisgép-méretezési csoporthoz rendelt meglévő felhasználó vagy rendszer által hozzárendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a virtuálisgép-méretezési csoporthoz rendelt identitási típusokat. Ha felügyelt identitások vannak hozzárendelve a virtuálisgép-méretezési csoporthoz, azok szerepelnek a `identity` értékben.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -533,16 +533,16 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. |   
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. |   
  
 
-4. Ha nem kell minden olyan felhasználó vagy a rendszer által hozzárendelt felügyelt a virtuálisgép-méretezési csoport hozzárendelt identitások állított, akkor a következő CURL-parancs használatával az első felhasználóhoz felügyelt identitásnak hozzárendelése a virtuális gép az Azure Resource Manager REST-végpont meghívása méretezési csoportot.  Ha egy felhasználó vagy rendszer által kiosztott, felügyelt identity(s) a virtuálisgép-méretezési csoporthoz rendelt, hagyja ki az 5. lépés, amely bemutatja, hogyan több felhasználó által hozzárendelt felügyelt identitás hozzáadása egy virtuálisgép-méretezési csoportot is a rendszer által hozzárendelt felügyelt fenntartásához identitás.
+4. Ha nem rendelkezik a virtuálisgép-méretezési csoporthoz hozzárendelt felhasználó-vagy rendszerhez rendelt felügyelt identitásokkal, a következő CURL-paranccsal hívja meg az Azure Resource Manager REST-végpontot, hogy az első felhasználóhoz rendelt felügyelt identitást hozzárendelje a virtuális géphez. méretezési csoport.  Ha a virtuálisgép-méretezési csoporthoz hozzárendelt felhasználó vagy rendszer által hozzárendelt felügyelt identitás (ok) van, ugorjon az 5. lépésre, amely bemutatja, hogyan adhat hozzá több felhasználó által hozzárendelt felügyelt identitást egy virtuálisgép-méretezési csoporthoz, miközben a rendszer által hozzárendelt felügyelt identitás.
 
-   Az alábbi példa hozzárendeli a felhasználóhoz felügyelt identitásnak, `ID1` nevű virtuálisgép-méretezési *myVMSS* erőforráscsoportban *myResourceGroup*.  Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+   A következő példa egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá, `ID1` egy *myVMSS* nevű virtuálisgép-méretezési csoporthoz az erőforráscsoport *myResourceGroup*.  Cserélje le a `<ACCESS TOKEN>` értéket az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és a `<SUBSCRIPTION ID>` értékét az adott környezetnek megfelelőnek kérte.
 
    **API-VERZIÓ 2018-06-01**
 
@@ -554,12 +554,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -586,12 +586,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -606,13 +606,13 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
     }
    ```  
 
-5. Ha rendelkezik egy meglévő felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitás hozzárendelni a virtuálisgép-méretezési csoporthoz:
+5. Ha rendelkezik a virtuálisgép-méretezési csoporthoz rendelt, felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitással:
    
    **API-VERZIÓ 2018-06-01**
 
-   Adja hozzá a felhasználóhoz felügyelt identitásnak a `userAssignedIdentities` szótár értéket.
+   Adja hozzá a felhasználó által hozzárendelt felügyelt identitást a `userAssignedIdentities` szótár értékéhez.
 
-   Például, ha a rendszer által hozzárendelt felügyelt identitás és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuálisgép-méretezési csoport rendelve, és szeretne hozzáadni a felhasználóhoz felügyelt identitásnak `ID2` hozzá:
+   Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuálisgép-méretezéshez van rendelve, és hozzá szeretné adni a felhasználó által hozzárendelt felügyelt identitást `ID2`hoz:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -622,12 +622,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -649,9 +649,9 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
 
    **API-VERZIÓ 2017-12-01**
 
-   Felügyelt felhasználó által hozzárendelt identitások ne szeretné megőrizni a `identityIds` tömb értéket az új felhasználóhoz felügyelt identitásnak hozzáadása során.
+   Tartsa meg a felhasználó által hozzárendelt felügyelt identitásokat, amelyeket meg szeretne őrizni a `identityIds` Array értékben az új felhasználó által hozzárendelt felügyelt identitás hozzáadásakor.
 
-   Például, ha a rendszer által hozzárendelt identitás- és a felhasználó által hozzárendelt felügyelt identitás rendelkezik `ID1` jelenleg a virtuálisgép-méretezési csoporthoz hozzárendelve, és szeretne hozzáadni a felhasználóhoz felügyelt identitásnak `ID2` hozzá:
+   Ha például a rendszerhez hozzárendelt identitás és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuálisgép-méretezési csoporthoz van rendelve, és hozzá szeretné adni a felhasználó által hozzárendelt felügyelt identitást `ID2`hoz:
 
     ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -661,12 +661,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-    **Kérelem fejlécei**
+    **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -682,15 +682,15 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
     }
    ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési csoportot egy felhasználó által hozzárendelt felügyelt identitás eltávolítása
+### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása virtuálisgép-méretezési csoportból
 
-1. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+1. Kérje le a tulajdonos hozzáférési jogkivonatát, amelyet az engedélyezési fejléc következő lépésében fog használni a virtuálisgép-méretezési csoport létrehozásához a rendszerhez rendelt felügyelt identitással.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Annak érdekében, ne törölje a meglévő felhasználó által hozzárendelt felügyelt identitást, amely a szeretné megtartani a virtuálisgép-méretezési csoporthoz hozzárendelt, vagy távolítsa el a rendszer által hozzárendelt felügyelt identitás, fel kell a felügyelt identitásokból a következő CURL-parancs használatával :
+2. Annak biztosítása érdekében, hogy ne töröljön olyan meglévő, felhasználó által hozzárendelt felügyelt identitásokat, amelyeket meg szeretne őrizni a virtuálisgép-méretezési csoport számára, vagy távolítsa el a rendszer által hozzárendelt felügyelt identitást, a következő CURL-parancs használatával kell kilistáznia a felügyelt identitásokat: :
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -700,19 +700,19 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. |
    
-   Ha a virtuális géphez hozzárendelt identitások rendelkezik felügyelt, ezek a válaszban szereplő jelennek az `identity` érték. 
+   Ha felügyelt identitások vannak hozzárendelve a virtuális géphez, azok a `identity` érték válaszában vannak felsorolva. 
     
-   Például, ha a felhasználó által hozzárendelt felügyelt identitások rendelkezik `ID1` és `ID2` a virtuálisgép-méretezési csoporthoz hozzárendelve, és csak szeretné megőrizni `ID1` hozzárendelve, és a rendszer által hozzárendelt felügyelt identitás megőrzése:
+   Ha például a felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik `ID1` és `ID2` hozzá van rendelve a virtuálisgép-méretezési csoporthoz, és csak azt szeretné megőrizni `ID1` hozzárendelve és megőrizni a rendszer által hozzárendelt felügyelt identitást:
 
    **API-VERZIÓ 2018-06-01**
 
-   Adjon hozzá `null` felügyelt identitás, amelyet szeretne eltávolítani a felhasználó által hozzárendelt:
+   `null` hozzáadása a felhasználó által hozzárendelt felügyelt identitáshoz, amelyet el szeretne távolítani:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -722,12 +722,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -744,7 +744,7 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
 
    **API-VERZIÓ 2017-12-01**
 
-   Csak a felhasználó által hozzárendelt identity(s) szeretné tartani felügyelt megőrizni a `identityIds` tömb:
+   Csak azokat a felhasználó által hozzárendelt felügyelt identitásokat őrizze meg, amelyeket meg szeretne őrizni a `identityIds` tömbben:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -754,12 +754,12 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérések fejlécei**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
    **Kérelem törzse**
 
@@ -774,7 +774,7 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
     }
    ```
 
-Ha a virtuálisgép-méretezési rendelkezik, mindkét rendszer által hozzárendelt, és a felügyelt identitások felhasználó által hozzárendelt is eltávolítja az összes felhasználó által hozzárendelt felügyelt identitások használata között csak alapértelmezett a következő paranccsal:
+Ha a virtuálisgép-méretezési csoporthoz a rendszerhez hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás is tartozik, akkor az összes felhasználó által hozzárendelt felügyelt identitást eltávolíthatja úgy, hogy csak a rendszer által hozzárendelt beállításokat használja a következő paranccsal:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -784,12 +784,12 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérelem fejlécei**
+**Kérések fejlécei**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-|*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+|*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
 **Kérelem törzse**
 
@@ -801,7 +801,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
     
-Ha a virtuálisgép-méretezési rendelkezik felügyelt identitások csak felhasználó által hozzárendelt, és szeretné őket az összes eltávolításához használja a következő parancsot:
+Ha a virtuálisgép-méretezési csoport csak a felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, és az összeset el szeretné távolítani, használja a következő parancsot:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -811,12 +811,12 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérelem fejlécei**
+**Kérések fejlécei**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-|*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+|*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési tokenre van állítva. | 
 
 **Kérelem törzse**
 
@@ -828,8 +828,8 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Létrehozása, listázása és törlése a felhasználó által hozzárendelt felügyelt identitások REST használatával kapcsolatos információkért lásd:
+A felhasználó által hozzárendelt felügyelt identitások REST használatával történő létrehozásával, listázásával vagy törlésével kapcsolatos információkért lásd:
 
-- [Lista létrehozása, vagy egy REST API-hívások segítségével felügyelt felhasználó által hozzárendelt Identitások törlése](how-to-manage-ua-identity-rest.md)
+- [Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése REST API-hívások használatával](how-to-manage-ua-identity-rest.md)

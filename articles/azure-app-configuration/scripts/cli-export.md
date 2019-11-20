@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-Példaszkript – egy Azure-alkalmazás konfigurációja Store exportálás |} A Microsoft Docs
-description: Információk és a minta parancsprogramok biztosít az alkalmazások konfigurálása az Azure áruházból exportálása
+title: Azure CLI-parancsfájl mintája – exportálás Azure-alkalmazás konfigurációs tárolójából | Microsoft Docs
+description: Információkat és példákat biztosít az Azure app Configuration Store-ból való exportáláshoz
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,16 +14,16 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239089"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184888"
 ---
-# <a name="export-from-an-azure-app-configuration-store"></a>Alkalmazások konfigurálása az Azure áruházban exportálása
+# <a name="export-from-an-azure-app-configuration-store"></a>Exportálás Azure app Configuration Store-ból
 
-Ez a példaszkript egy Azure-alkalmazások konfigurálása áruházból kulcs-értékeket exportálja.
+Ez a minta parancsfájl exportálja a kulcs-értékeket egy Azure-alkalmazás konfigurációs tárolójából.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Ez a példaszkript egy Azure-alkalmazások konfigurálása áruházból kulcs-é
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Az Azure App konfigurációs CLI-bővítmény a következő parancs végrehajtásával először telepítenie kell:
+Először telepítenie kell az Azure app Configuration CLI bővítményt a következő parancs végrehajtásával:
 
         az extension add -n appconfig
 
@@ -48,14 +48,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy alkalmazás a konfigurációs adattároló exportálása. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja az alkalmazás-konfigurációs tárolóból való exportáláshoz. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig export](/cli/azure/ext/appconfig/appconfig) | Export-alkalmazások konfigurálása az erőforrás tárolásához. |
+| [az appconfig kV export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | Exportálás az alkalmazás konfigurációs tárolójának erőforrásaiból. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További App konfigurációs CLI-példaszkripteket megtalálható a [alkalmazások konfigurálása az Azure dokumentációs](../cli-samples.md).
+Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure app CONFIGURATION CLI-mintákban](../cli-samples.md)találhatók.

@@ -1,17 +1,17 @@
 ---
-title: Berendezés beállítása a fizikai kiszolgálók értékeléséhez Azure Migrate Server Assessment
-description: Ismerteti, hogyan állíthat be egy készüléket a fizikai kiszolgálók értékeléséhez Azure Migrate Server Assessment használatával.
+title: Azure Migrate berendezés beállítása fizikai kiszolgálókhoz
+description: Megtudhatja, hogyan állíthat be Azure Migrate készüléket a fizikai kiszolgáló értékeléséhez.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1e67c36753239940b15e3cb47b5b75820ea43689
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: ade2a76c168002e573a6504e31769b83f0c6eb37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158349"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185892"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Berendezés beállítása fizikai kiszolgálókhoz
 

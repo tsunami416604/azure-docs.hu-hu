@@ -8,18 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5432c794c26e350b23fe47aa1574422143ca4b2
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d1ef8852916e598373c104fb98a1c09ab656fbaf
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521955"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196209"
 ---
 # <a name="using-custom-security-policies-preview"></a>Egyéni biztonsági házirendek használata (előzetes verzió)
 
 A rendszerek és a környezet biztonságossá tételéhez Azure Security Center biztonsági javaslatokat hoz létre. Ezek a javaslatok az iparági ajánlott eljárásokon alapulnak, amelyek az összes ügyfél számára biztosított általános, alapértelmezett biztonsági szabályzatba vannak beépítve. Security Center az iparági és a szabályozási szabványok ismeretében is származhatnak.
 
-Ezzel az előzetes verziójú funkcióval saját *Egyéni* kezdeményezéseket adhat hozzá. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket.
+Ezzel az előzetes verziójú funkcióval saját *Egyéni* kezdeményezéseket adhat hozzá. Ezután javaslatokat fog kapni, ha a környezet nem követi a létrehozott házirendeket.
+
+Az Azure Policy [dokumentációjában ismertetett](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) módon, ha az egyéni kezdeményezéshez ad meg egy helyet, akkor azt felügyeleti csoportnak vagy előfizetésnek kell lennie. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Egyéni kezdeményezés hozzáadása az előfizetéshez 
 
@@ -55,12 +57,12 @@ Ezzel az előzetes verziójú funkcióval saját *Egyéni* kezdeményezéseket a
     > [!NOTE]
     > Az új kezdeményezések létrehozásához előfizetés-tulajdonosi hitelesítő adatokra van szükség. Az Azure-szerepkörökkel kapcsolatos további információkért tekintse [meg a Azure Security Center engedélyeit](security-center-permissions.md).
 
-1. A Szabályzathoz kapcsolódó javaslatok megtekintéséhez kattintson a **javaslatok** elemre az oldalsávon, és nyissa meg a javaslatok lapot. A javaslatok az "egyéni" címkével jelennek meg, és legfeljebb 30 percig elérhetők.
+1. A Szabályzathoz kapcsolódó javaslatok megtekintéséhez kattintson a **javaslatok** elemre az oldalsávon, és nyissa meg a javaslatok lapot. A javaslatok az "egyéni" címkével jelennek meg, és körülbelül egy órán belül elérhetők lesznek.
 
     [Egyéni javaslatok ![](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági házirendeket. 
 

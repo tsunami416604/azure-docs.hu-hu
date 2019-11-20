@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687022"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184939"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Gyors útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
 Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját egy Java Spring-alkalmazásba, hogy központilag központosítsa az alkalmazás-beállítások tárolási és kezelési beállításait a kódból.
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Paraméter | Érték |
     |---|---|
     | /application/config.message | Üdvözöljük! |
 
@@ -62,13 +62,13 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. XML* fájlt az alkalmazás gyökérkönyvtárában.
 
-2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter- `<dependencies>`t a következő listához:
+2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter-t a `<dependencies>`listájához:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0.M5</version>
     </dependency>
     ```
 
@@ -107,7 +107,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     }
     ```
 
-5. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá `@EnableConfigurationProperties` a szolgáltatást a funkció engedélyezéséhez.
+5. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
 
     ```java
     @SpringBootApplication
@@ -119,7 +119,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     }
     ```
 
-6. Hozzon létre egy nevű `bootstrap.properties` új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
+6. Hozzon létre egy `bootstrap.properties` nevű új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
@@ -144,11 +144,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, amelyet egy Java Spring-alkalmazással használt. További információ: [Spring on Azure](https://docs.microsoft.com/java/azure/spring-framework/).
-
-Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja a hitelesítést.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, amelyet egy Java Spring-alkalmazással használt. További információ: [Spring on Azure](https://docs.microsoft.com/java/azure/spring-framework/). Ha szeretné megtudni, hogyan használható az Azure felügyelt identitása az alkalmazás-konfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)

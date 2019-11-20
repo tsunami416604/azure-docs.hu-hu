@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 8b1a4a8a6c808348ca17a9eebac17c5821ceefe5
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: a4090172e926f21db01a8e374d8c4bb1c80402c7
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530081"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74197363"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Töltse le és telepítse a Linkerd Linkerd-ügyfél bináris fájlját
 
@@ -22,10 +22,10 @@ LINKERD_VERSION=stable-2.6.0
 curl -sLO "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-darwin"
 ```
 
-A `linkerd`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Linkerd szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Linkerd `linkerd`-ügyfél bináris fájlját egy bash-alapú rendszerhéjba MacOS rendszeren. Ezek a parancsok a `linkerd` ügyfél bináris fájljait a `PATH` normál felhasználói program mappájába másolják.
+A `linkerd`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Linkerd szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Linkerd `linkerd`-ügyfél bináris fájlját egy bash-alapú rendszerhéjba MacOS rendszeren. Ezek a parancsok a `linkerd` ügyfél bináris fájljait a `PATH`normál felhasználói program mappájába másolják.
 
 ```bash
-sudo cp ./linkerd2-cli-$LINKERD_VERSION-linux /usr/local/bin/linkerd
+sudo cp ./linkerd2-cli-$LINKERD_VERSION-darwin /usr/local/bin/linkerd
 sudo chmod +x /usr/local/bin/linkerd
 ```
 

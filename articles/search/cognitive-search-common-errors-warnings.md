@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b51581b5a8f94419dba60eee72669a3e1261b24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151572"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185709"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -29,6 +29,16 @@ Ha azt szeretné, hogy az indexelő figyelmen kívül hagyják ezeket a hibákat
 A cikkben szereplő hibaüzenetek segíthetnek a hibák megoldásában, így az indexelés a folytatáshoz is használható.
 
 A figyelmeztetések nem állíthatják le az indexelést, de olyan feltételeket jeleznek, amelyek váratlan eredményekhez vezethetnek. Függetlenül attól, hogy végrehajtja-e a műveletet, vagy nem függ az adatoktól és a forgatókönyvtől.
+
+Az API-verziótól kezdődően a `2019-05-06`az elemszintű indexelő hibái és a figyelmeztetések strukturálva vannak, így az okok és a következő lépések nagyobb átláthatóságot biztosítanak. A következő tulajdonságokat tartalmazzák:
+
+| Tulajdonság | Leírás | Példa |
+| --- | --- | --- |
+| kulcs | A hibát vagy figyelmeztetést érintő dokumentum azonosítóját. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| név | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName Vetület. KnowledgeStore. table. myTableName |
+| message | A hiba vagy figyelmeztetés magas szintű leírása. | A képesség nem hajtható végre, mert a webes API-kérelem sikertelen volt. |
+| details | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... fennmaradó verem nyomkövetése... |
+| documentationLink | A kapcsolódó dokumentációra mutató hivatkozás, amely részletes információkat tartalmaz a hibakereséshez és a probléma megoldásához. Ez a hivatkozás gyakran a lap alábbi részeinek egyikére mutat. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
 
@@ -73,8 +83,6 @@ Az indexelő nem tudott futtatni egy képességet a készségkészlet.
 
 | Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
-| Egy mező túl nagy kifejezést tartalmaz | A dokumentum egy kifejezése nagyobb az [32 KB-os korlátnál](search-limits-quotas-capacity.md#api-request-limits) | Ezt a korlátozást elkerülheti, ha úgy látja, hogy a mező nem szűrhető, sokoldalú vagy rendezhető.
-| A dokumentum túl nagy az indexeléshez | A dokumentum nagyobb, mint az [API-kérelmek maximális mérete](search-limits-quotas-capacity.md#api-request-limits) | [Nagyméretű adathalmazok indexelése](search-howto-large-index.md)
 | Átmeneti kapcsolódási problémák | Átmeneti hiba történt. Később próbálja meg újra. | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
 | Lehetséges termék hibája | Váratlan hiba történt. | Ez ismeretlen osztályt jelez, és a termék meghibásodását is jelentheti. Kérjen segítséget a [támogatási jegyen](https://ms.portal.azure.com/#create/Microsoft.Support) . |
 | A rendszer hibát észlelt a végrehajtás során | (Egyesítési képességből) Egy vagy több eltolási érték érvénytelen, és nem elemezhető. Elemek beszúrása a szöveg végére | A probléma megoldásához használja a hibaüzenetben található információkat. Ilyen hiba esetén a megoldáshoz beavatkozás szükséges. |
@@ -96,6 +104,8 @@ Ez a hibaüzenet két esetben fordulhat elő, amelyek mindegyikét másképp kel
 
 ### <a name="built-in-cognitive-service-skills"></a>Beépített kognitív szolgáltatásokkal kapcsolatos ismeretek
 Számos beépített kognitív képesség, például a nyelvfelismerés, az entitások felismerése vagy az OCR, a kognitív szolgáltatás API-végpontja támogatja. Időnként átmeneti problémák léptek fel ezekkel a végpontokkal, és a kérés időtúllépést eredményez. Átmeneti problémák esetén nincs szükség jogorvoslatra, kivéve a várakozást, és próbálkozzon újra. Enyhítő megoldásként érdemes lehet úgy beállítani az indexelő, hogy [menetrend szerint fusson](search-howto-schedule-indexers.md). Az ütemezett indexelés megkeresi, hogy hol maradt. Az átmeneti problémák megoldása érdekében az indexelést és a kognitív képességek feldolgozását folytatni kell a következő ütemezett futtatáskor.
+
+Ha továbbra is ezt a hibát látja egy beépített kognitív szakértelmet tartalmazó dokumentumon, egy [támogatási jegyet](https://ms.portal.azure.com/#create/Microsoft.Support) kell benyújtania a segítség kéréséhez, mivel ez nem várható.
 
 ### <a name="custom-skills"></a>Egyéni készségek
 Ha az Ön által létrehozott egyéni szakértelem időtúllépési hibába ütközik, néhány dolog kipróbálható. Először tekintse át az egyéni szaktudást, és győződjön meg arról, hogy nem ragadt meg egy végtelen hurokban, és hogy az eredmény következetesen tér vissza. Miután meggyőződött róla, hogy a helyzet megtörtént, állapítsa meg, hogy milyen végrehajtási idő van a szakértelemben. Ha nem adott meg explicit módon egy `timeout` értéket az egyéni szakértelem definíciójában, akkor az alapértelmezett `timeout` 30 másodperc. Ha 30 másodperc nem elég hosszú a szaktudás végrehajtásához, akkor magasabb `timeout` értéket adhat meg az egyéni képesség definíciójában. Íme egy példa egy egyéni képesség-definícióra, amelyben az időtúllépés 90 másodpercre van állítva:
@@ -132,8 +142,8 @@ A dokumentum olvasása és feldolgozása megtörtént, de az indexelő nem tudja
 
 | Ok | Részletek/példa | Megoldás: |
 | --- | --- | --- |
-| A dokumentum egy kifejezése nagyobb az [32 KB-os korlátnál](search-limits-quotas-capacity.md#api-request-limits) | Egy mező túl nagy kifejezést tartalmaz | Ezt a korlátozást elkerülheti, ha úgy látja, hogy a mező nem szűrhető, sokoldalú vagy rendezhető.
-| A dokumentum nagyobb, mint az [API-kérelmek maximális mérete](search-limits-quotas-capacity.md#api-request-limits) | A dokumentum túl nagy az indexeléshez | [Nagyméretű adathalmazok indexelése](search-howto-large-index.md)
+| Egy mező túl nagy kifejezést tartalmaz | A dokumentum egy kifejezése nagyobb az [32 KB-os korlátnál](search-limits-quotas-capacity.md#api-request-limits) | Ezt a korlátozást elkerülheti, ha úgy látja, hogy a mező nem szűrhető, sokoldalú vagy rendezhető.
+| A dokumentum túl nagy az indexeléshez | A dokumentum nagyobb, mint az [API-kérelmek maximális mérete](search-limits-quotas-capacity.md#api-request-limits) | [Nagyméretű adathalmazok indexelése](search-howto-large-index.md)
 | A dokumentum túl sok objektumot tartalmaz a gyűjteményben | A dokumentum egy gyűjteménye meghaladja a [maximális elemeket az összes összetett gyűjtemény korlátján belül](search-limits-quotas-capacity.md#index-limits) | Javasoljuk, hogy csökkentse a dokumentum összetett gyűjteményének méretét a korlát alá, és elkerülje a nagy tárterület-kihasználtságot.
 | Hiba történt a célként megadott indexhez való kapcsolódáskor (amely az újrapróbálkozások után is fennmarad), mert a szolgáltatás más terhelés alá esik, például lekérdezés vagy indexelés. | Nem sikerült kapcsolatot létesíteni az index frissítésével. A Search szolgáltatás nagy terhelés alatt áll. | [A keresési szolgáltatás vertikális felskálázása](search-capacity-planning.md)
 | A keresési szolgáltatás javítás alatt áll a szolgáltatás frissítésére, vagy a topológia újrakonfigurálásának közepén található. | Nem sikerült kapcsolatot létesíteni az index frissítésével. A keresési szolgáltatás jelenleg nem érhető el, a keresési szolgáltatás pedig átmeneti állapotba kerül. | Állítsa be a szolgáltatást legalább 3 replikával az 99,9%-os rendelkezésre álláshoz az [SLA dokumentációjában](https://azure.microsoft.com/support/legal/sla/search/v1_0/)

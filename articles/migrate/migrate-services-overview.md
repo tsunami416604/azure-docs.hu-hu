@@ -1,18 +1,18 @@
 ---
-title: Az Azure Migrate bemutatása | Microsoft Docs
-description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
+title: Az Azure Migrate bemutatása
+description: Ismerkedjen meg a kiszolgáló értékelésével és a Azure Migrate szolgáltatással való áttelepítéssel.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748001"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185790"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -130,9 +130,9 @@ A Azure Migrate a Azure App Service Migration Assistant integrálódik. Az Azure
 
 ## <a name="offline-data-migration"></a>Offline adatáttelepítés
 
-A Azure Data Box termékek használatával a nagy mennyiségű adatmennyiséget az Azure-ba helyezheti át. [Részletek](https://docs.microsoft.com/azure/databox/)
+A Azure Data Box termékek használatával a nagy mennyiségű adatmennyiséget az Azure-ba helyezheti át. [További információ](https://docs.microsoft.com/azure/databox/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Próbálja ki az oktatóanyagokat a [VMWare virtuális gépek](tutorial-assess-vmware.md) és a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)értékeléséhez.
 - [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.

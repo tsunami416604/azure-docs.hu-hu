@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158294"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186437"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -48,7 +48,7 @@ A [magas rendelkezésre állás](sql-database-high-availability.md) a felügyelt
 - [RENDELKEZÉSRE ÁLLÁSI CSOPORT ELDOBÁSA](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql) utasítás [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) záradéka
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Biztonsági mentés
 
 A felügyelt példányok automatikus biztonsági mentéssel rendelkeznek, így a felhasználók létrehozhatnak teljes adatbázis-`COPY_ONLY` biztonsági mentést. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
 
@@ -572,14 +572,6 @@ A folyamatban lévő `RESTORE` utasítás, az adatáttelepítési szolgáltatás
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) funkció, amely lehetővé teszi a felhasználói munkaterheléshez rendelt erőforrások korlátozását, a feladatátvétel vagy a felhasználó által kezdeményezett változás (például a maximális virtuális mag vagy a maximális példány) módosítása után helytelenül osztályozhatja a felhasználói munkaterheléseket. a tárterület mérete).
 
 **Megkerülő megoldás**: futtasson `ALTER RESOURCE GOVERNOR RECONFIGURE` rendszeresen vagy SQL Agent-feladat részeként, amely végrehajtja az SQL-feladatot, amikor a példány elindul, ha [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)használ.
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Biztonságos kapcsolat (SSL) használatával nem végezhető el a hitelesítés a külső levelezési kiszolgálókon
-
-**Dátum:** Augusztus 2019
-
-A [biztonságos kapcsolat (SSL) használatával konfigurált](/sql/relational-databases/database-mail/configure-database-mail) adatbázis-levelezés nem tud hitelesíteni az Azure-on kívüli e-mail-kiszolgálókon. Ez a biztonsági konfigurációs probléma hamarosan megoldódik.
-
-**Áthidaló megoldás:** Ideiglenesen távolítsa el a biztonságos kapcsolatokat (SSL) az adatbázis levelezési konfigurációjától, amíg a probléma meg nem oldódik. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.
 

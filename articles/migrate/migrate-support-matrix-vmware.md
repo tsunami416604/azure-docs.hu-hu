@@ -1,19 +1,18 @@
 ---
-title: Azure Migrate támogatási mátrix a VMware értékeléséhez és áttelepítéséhez
-description: Összefoglalja a VMware virtuális gépek Azure-ba történő értékelésére és áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat az Azure Migrate szolgáltatással.
-services: backup
+title: A VMware értékelésének és áttelepítésének támogatása Azure Migrate
+description: Ismerje meg, hogyan támogatja a VMware virtuális gépek felmérését és áttelepítését Azure Migrateban.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838918"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196276"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>A VMware felmérésének és migrálásának támogatási mátrixa
 
@@ -27,7 +26,7 @@ A táblázat összefoglalja a VMware virtuális gépek támogatott forgatóköny
 **Üzembe helyezés** | **Részletek**
 --- | ---
 **Helyszíni VMware virtuális gépek felmérése** | [Állítsa be](tutorial-prepare-vmware.md) az első értékelést.<br/><br/> Nagy léptékű értékelés [futtatása](scale-vmware-assessment.md) .
-**VMware virtuális gépek migrálása** | Az áttelepítést ügynök nélküli áttelepítés használatával vagy ügynök-alapú áttelepítés használatával végezheti el. [Részletek](server-migrate-overview.md)
+**VMware virtuális gépek migrálása** | Az áttelepítést ügynök nélküli áttelepítés használatával vagy ügynök-alapú áttelepítés használatával végezheti el. [További információ](server-migrate-overview.md)
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projektek
@@ -49,7 +48,7 @@ Európa | Észak-Európa vagy Nyugat-Európa
 Franciaország | Közép-Franciaország
 India | Közép-India vagy Dél-India
 Japán |  Kelet-japán vagy Nyugat-Japán
-Dél-Korea | Korea középső régiója vagy Dél-Korea
+Korea | Korea középső régiója vagy Dél-Korea
 Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
 Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -79,7 +78,13 @@ Ez a táblázat összefoglalja a VMware virtualizációs kiszolgálók értékel
 
 ## <a name="assessment-vcenter-server-permissions"></a>Értékelés – vCenter Server engedélyek
 
-Az értékeléshez csak olvasható fiókra van szükség a vCenter Server.
+Azure Migrate el kell érnie a vCenter Server, hogy felderítse a virtuális gépeket az értékeléshez és az ügynök nélküli áttelepítéshez.
+
+- Ha ügynök nélküli módon szeretné felderíteni az alkalmazásokat, vagy a függőséget szeretné megjeleníteni, hozzon létre egy vCenter Server fiókot csak olvasási hozzáféréssel, valamint a **virtuális gépekhez** > **vendég műveletekhez**engedélyezett jogosultságokkal.
+
+  ![vCenter Server fiók jogosultságai](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- Ha nem tervezi az alkalmazások felderítését és az ügynök nélküli függőségek megjelenítését, állítson be írásvédett fiókot a vCenter Server számára.
 
 ## <a name="assessment-appliance-requirements"></a>Felmérés – készülékre vonatkozó követelmények
 
@@ -105,7 +110,7 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 --- | --- |
 *.portal.azure.com  | Navigáljon a Azure Portal Azure Migrate.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésébe.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *.vault.azure.net | A Azure Key Vault titkainak kezelése.
@@ -116,7 +121,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="assessment-port-requirements"></a>Értékelés – portra vonatkozó követelmények
 
-**Eszköz** | **Kapcsolat**
+**Device** | **kapcsolat**
 --- | ---
 Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ```https://<appliance-ip-or-name>:44368``` <br/><br/>A 443-es, 5671-as és 5672-es porton kimenő kapcsolatok a felderítési és a teljesítménybeli metaadatok küldésére Azure Migrate.
 vCenter-kiszolgáló | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
@@ -208,7 +213,7 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége az internethe
 --- | ---
 *.portal.azure.com | Navigáljon a Azure Portal Azure Migrate.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *.vault.azure.net | A Azure Key Vault titkainak kezelése.
@@ -220,7 +225,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 ## <a name="agentless-migration-port-requirements"></a>Ügynök nélküli áttelepítés – portra vonatkozó követelmények
 
-**Eszköz** | **Kapcsolat**
+**Device** | **kapcsolat**
 --- | ---
 Berendezés | Az 443-as porton kimenő kapcsolatok a replikált adatok az Azure-ba való feltöltéséhez, valamint a replikáció és az áttelepítés összehangolása Azure Migrate szolgáltatásokkal való kommunikációhoz.
 vCenter-kiszolgáló | Bejövő kapcsolatok a 443-as porton, hogy a készülék koordinálja a replikációt – pillanatképek létrehozása, Adatmásolás, kiadási Pillanatképek
@@ -268,7 +273,7 @@ TLS | A TLS 1,2-et engedélyezni kell.
 MySQL | A MySQL-t telepíteni kell a készülékre.<br/> Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti a készülék telepítése során.
 Egyéb alkalmazások | Ne futtasson más alkalmazásokat a replikációs berendezésen.
 Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V
-Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése
 **Hálózati beállítások** |
 IP-cím típusa | Statikus
@@ -324,7 +329,7 @@ Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a r
 **Független lemezek** | Támogatott.
 **Továbbító lemezek** | Támogatott.
 **NFS** | A virtuális gépeken kötetként csatlakoztatott NFS-kötetek nem lesznek replikálva.
-iSCSI-tárolók | Az iSCSI-tárolókkal rendelkező virtuális gépek nem támogatottak az ügynök nélküli Migrálás esetén.
+**iSCSI-tárolók** | Az iSCSI-tárolókkal rendelkező virtuális gépek nem támogatottak az ügynök nélküli Migrálás esetén.
 **Többutas IO** | Nem támogatott.
 **Tárolási vMotion** | Támogatott
 **Összevont hálózati adapterek** | Nem támogatott.
@@ -354,7 +359,7 @@ dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-napl�
 
 ## <a name="agent-based-migration-port-requirements"></a>Ügynök-alapú áttelepítés – portra vonatkozó követelmények
 
-**Eszköz** | **Kapcsolat**
+**Device** | **kapcsolat**
 --- | ---
 Virtuális gépek | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
 Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
@@ -381,6 +386,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van. Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez. |  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felkészülés a VMware](tutorial-prepare-vmware.md) értékelésére és áttelepítésére.

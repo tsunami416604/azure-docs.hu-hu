@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011486"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180693"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -97,7 +97,7 @@ Az új fejlesztői portál nem támogatja az *alkalmazásokat* és a *problémá
 
 ### <a name="has-the-old-portal-been-deprecated"></a>Elavult a régi portál?
 
-A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új szolgáltatások csak az új fejlesztői portálon lesznek implementálva.
+A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új funkciókat kizárólag az új fejlesztői portálon tesszük elérhetővé.
 
 Az örökölt portálok elavulása külön lesz bejelentve. Ha kérdése, problémája vagy megjegyzése van, emelje fel őket [egy dedikált GitHub-problémával](https://github.com/Azure/api-management-developer-portal/issues/121).
 
@@ -142,6 +142,14 @@ Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngész
     </expose-headers>
 </cors>
 ```
+
+> [!NOTE]
+> 
+> Ha a CORS szabályzatot a termék hatókörében alkalmazza, az API-k hatóköre helyett, és az API az előfizetés-kulcs hitelesítését használja egy fejlécen keresztül, a konzol nem fog működni.
+>
+> A böngésző automatikusan kiadja a beállítások HTTP-kérését, amely nem tartalmaz az előfizetési kulccsal rendelkező fejlécet. A hiányzó előfizetési kulcs miatt API Management nem tudja hozzárendelni a beállításokat a termékhez, így nem tudja alkalmazni a CORS házirendet.
+>
+> Megkerülő megoldásként átadhatja az előfizetési kulcsot egy lekérdezési paraméterben.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Egy felügyelt identitás hozzáférés hozzárendelése egy Azure-erőforrás Azure CLI használatával
+title: Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz az Azure CLI-vel – Azure AD
 description: Részletes utasításokat egy erőforráson, egy felügyelt identitás hozzárendelése egy másik erőforrás, Azure CLI-vel való hozzáférést.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb16b1762f1e5330cf058c37a6b7e0f008eb447
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4153e038228d7ec4631fc5fec81303966a12b01b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290978"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184085"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Egy felügyelt identitás hozzáférések hozzárendelése az Azure CLI-vel erőforrás
 
@@ -66,7 +66,7 @@ Engedélyezését követően felügyelt identitás egy Azure-erőforrás, péld�
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások Azure-erőforrások – áttekintés](overview.md)
 - Engedélyezheti a felügyelt identitás-beli virtuális gépen [konfigurálása felügyelt identitások az Azure-erőforrások egy Azure virtuális gépen az Azure CLI-vel](qs-configure-cli-windows-vm.md).

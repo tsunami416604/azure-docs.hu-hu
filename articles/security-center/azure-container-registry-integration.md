@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center és Azure Container Registry | Microsoft Docs
+title: Azure Security Center és Azure Container Registry
 description: Ismerje meg a Azure Security Center integrációját Azure Container Registry
 services: security-center
 documentationcenter: na
@@ -10,22 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f0de56f968488f0e5d551ad705cc6f8ca6e7bc47
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: MT
+ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521864"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196383"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integráció a Security Center (előzetes verzió)
 
 A Azure Container Registry (ACR) egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely egy központi beállításjegyzékben tárolja és kezeli az Azure-beli központi telepítésekhez tartozó tároló lemezképeit. Ez a nyílt forráskódú Docker beállításjegyzék 2,0-es adatbázisán alapul.
 
-Ha az ACR-t a Azure Security Center Standard szintjével együtt használja (lásd a [díjszabást](security-center-pricing.md)), akkor mélyebben megtekintheti a beállításjegyzék és a lemezképek biztonsági réseit.
+A beállításjegyzék és a lemezképek biztonsági réseinak mélyebb láthatósága érdekében a Azure Security Center Standard csomagjának felhasználói lehetővé teszik a választható tárolói kibocsátásiegység-forgalmi csomagokat. További információt a [díjszabás](security-center-pricing.md) tartalmaz. Ha a köteg engedélyezve van, Security Center automatikusan megvizsgálja az ACR-szolgáltatásban lévő képeket, amikor egy rendszerképet küld a beállításjegyzékbe. Ha a vizsgálat befejeződik (általában körülbelül 10 percet követően), az eredmények a következőhöz hasonló javaslatok Security Center érhetők el:
 
-[![Azure Container Registry (ACR) javaslatai a Azure Security Center](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![minta Azure Security Center a Azure Container Registry (ACR) tárolt rendszerképben felderített biztonsági réseket](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>Az integráció előnyei
 
@@ -37,7 +37,7 @@ Security Center az ACR-jegyzékeket az előfizetésében, és zökkenőmentesen 
 
 ![Azure Security Center és Azure Container Registry (ACR) – magas szintű áttekintés](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
 

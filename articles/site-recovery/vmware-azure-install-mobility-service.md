@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016370"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186454"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
 
@@ -24,15 +24,15 @@ Minden olyan Windows-gépen, amelyet védelemmel szeretne ellátni, tegye a köv
 1. Ellenőrizze, hogy van-e hálózati kapcsolat a számítógép és a folyamat-kiszolgáló között. Ha nem állított be külön folyamat-kiszolgálót, akkor alapértelmezés szerint a konfigurációs kiszolgálón fut.
 1. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak rendszergazdai jogosultságokkal kell rendelkeznie a helyi vagy a tartományhoz. Ezt a fiókot csak a leküldéses telepítéshez és az ügynök frissítéseihez használhatja.
 2. Ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen a következő módon:
-    - A HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs területen adjon hozzá egy új DWORD-t: **LocalAccountTokenFilterPolicy**. Állítsa az értéket **1-re**.
+    - A HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs alatt adjon hozzá egy új DWORD: **LocalAccountTokenFilterPolicy**. Állítsa az értéket **1-re**.
     -  Ehhez futtassa a következő parancsot a parancssorban:  
-   ' REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+   "REG ADD HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
 3. A védelemmel ellátni kívánt gépen a Windows tűzfalon válassza az **alkalmazás vagy szolgáltatás engedélyezése a tűzfalon keresztül**lehetőséget. Engedélyezze a **fájl-és nyomtatómegosztás** , valamint a **Windows Management Instrumentation (WMI)** szolgáltatást. Tartományhoz tartozó számítógépek esetén Csoportházirend objektum (GPO) használatával konfigurálhatja a tűzfalbeállítások beállításait.
 
    ![Tűzfalbeállítások](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Adja hozzá a CSPSConfigtool eszközben létrehozott fiókot. Ehhez jelentkezzen be a konfigurációs kiszolgálóra.
-5. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonként érhető el az asztalon és a%ProgramData%\home\svsystems\bin mappában.
+5. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonként érhető el az asztalon és a%ProgramData%\ASR\home\svsystems\bin mappában.
 6. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
 7. Adja hozzá a létrehozott fiókot.
 8. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
@@ -47,7 +47,7 @@ Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 4. Telepítse a legfrissebb openssh, openssh-server és openssl csomagokat a replikálni kívánt számítógépen.
 5. Ügyeljen arra, hogy a Secure Shell (SSH) engedélyezve legyen, és a 22-es porton fusson.
 4. Engedélyezze az SFTP alrendszer és a jelszó-hitelesítés használatát a sshd_config fájlban. Ehhez jelentkezzen be **root**-ként.
-5. A **/etc/ssh/sshd_config** fájlban keresse meg a **PasswordAuthentication**kezdetű sort.
+5. A **/etc/ssh/sshd_config** fájlban keresse meg a sort, amely a **PasswordAuthentication**kezdődik.
 6. Állítsa vissza a sort, és módosítsa az értéket **Igen**értékre.
 7. Keresse meg az **alrendszer**kezdetű sorát, és a sor megjegyzését.
 
@@ -64,7 +64,7 @@ Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 
 Ha a replikálni kívánt gépeken aktív víruskereső szoftver fut, akkor győződjön meg róla, hogy kizárja a mobilitási szolgáltatás telepítési mappáját a víruskereső műveleteiből (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció a várt módon működjön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A mobilitási szolgáltatás telepítése után a Azure Portal válassza a **+ replikálás** lehetőséget a virtuális gépek védelmének megkezdéséhez. További információ a [VMWare virtuális gépek](vmware-azure-enable-replication.md) és [fizikai kiszolgálók](physical-azure-disaster-recovery.md#enable-replication)replikálásának engedélyezéséről.
 

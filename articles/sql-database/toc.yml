@@ -278,6 +278,8 @@
                   href: sql-database-xevent-code-ring-buffer.md
         - name: Rugalmas skálázás teljesítménydiagnosztikája
           href: sql-database-hyperscale-performance-diagnostics.md
+        - name: Erőforrás-kezelés sűrű rugalmas készletekben
+          href: sql-database-elastic-pool-resource-management.md
     - name: Méretezhetőség
       items:
         - name: Skálázhatósági dokumentáció

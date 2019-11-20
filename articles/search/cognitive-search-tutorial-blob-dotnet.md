@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111749"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185690"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Oktatóanyag: AI-dúsítási folyamat létrehozása a C# és a .net SDK használatával
 
@@ -103,7 +103,7 @@ Ha a Visual Studióban szeretné telepíteni a `Microsoft.Extensions.Configurati
 
 Az Azure Cognitive Search szolgáltatáshoz való kapcsolódáshoz hozzá kell adnia a keresési szolgáltatás információit a projekthez. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a > **új elem** **hozzáadása** ... lehetőséget. Nevezze el a fájlt `appsettings.json` és válassza a **Hozzáadás**lehetőséget. 
 
-A fájlnak szerepelnie kell a kimeneti könyvtárban. Ehhez kattintson a jobb gombbal a `appsettings.json` elemre, és válassza a **Tulajdonságok**lehetőséget. Módosítsa a másolás értékét a **kimeneti könyvtárba** az **újabb másolatként**.
+A fájlnak szerepelnie kell a kimeneti könyvtárban. Ehhez kattintson a jobb gombbal a `appsettings.json` elemre, és válassza a **Tulajdonságok**lehetőséget. Módosítsa a másolás értékét a **kimeneti könyvtárba** a **másoláshoz, ha újabb**.
 
 Másolja az alábbi JSON-t az új JSON-fájlba.
 
@@ -691,7 +691,7 @@ Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja
 
 Az oktatóanyag elvégzésének leggyorsabb módja az Azure Cognitive Search Service és az Azure Blob servicet tartalmazó erőforráscsoport törlése. Feltéve, hogy mindkét szolgáltatást ugyanabban a csoportban helyezte üzembe, törölje az erőforráscsoportot, amellyel véglegesen eltávolíthatja annak teljes tartalmát, a rövid útmutató során létrehozott összes szolgáltatást és tárolt tartalmat is beleértve. A portálon az erőforráscsoport neve az egyes szolgáltatások Áttekintés lapján szerepel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat.
 

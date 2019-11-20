@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357015"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185109"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 
@@ -33,7 +33,7 @@ Előfordulhat, hogy az alkalmazás nem futtatható, ha az az Azure-alkalmazás k
 
 Az Azure-alkalmazások konfigurációjának [Exportálás](./howto-import-export-data.md#export-data) funkciója segítségével automatizálhatja az aktuális konfigurációs adatok egyetlen fájlként történő beolvasásának folyamatát. Ezt követően ágyazza be ezt a fájlt a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatának összeállítási vagy telepítési lépéseként.
 
-Az alábbi példa bemutatja, hogyan lehet az alkalmazás konfigurációs információit felépíteni a gyors útmutatókban bemutatott webalkalmazáshoz. A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alkalmazás](./quickstart-aspnet-core-app.md) -konfigurációval először.
+Az alábbi példa bemutatja, hogyan lehet az alkalmazás konfigurációs információit felépíteni a gyors útmutatókban bemutatott webalkalmazáshoz. A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alkalmazás-konfigurációval](./quickstart-aspnet-core-app.md) először.
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, MacOS és Linux platformokon.
 
@@ -56,7 +56,7 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
 
     Adja hozzá az alkalmazás konfigurációs tárolójához társított *ConnectionString* környezeti változóként.
 
-2. Nyissa meg a *program.cs*, `CreateWebHostBuilder` és frissítse a metódust az exportált JSON- `config.AddJsonFile()` fájl használatára a metódus meghívásával.
+2. Nyissa meg a *program.cs*, és frissítse a `CreateWebHostBuilder` metódust az exportált JSON-fájl használatára az `config.AddJsonFile()` metódus meghívásával.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -94,11 +94,11 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
 
         dotnet run
 
-4. Nyisson meg egy böngészőablakot `http://localhost:5000`, és nyissa meg a következőt:, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+4. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban exportálta az Azure-alkalmazás konfigurációs szolgáltatásait egy központi telepítési folyamat során. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 

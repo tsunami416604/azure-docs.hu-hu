@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Az Azure Migrate dokumentációja
-summary: Az Azure Migrate használatával az Azure-felhőbe migrálhat. Az Azure Migrate-ben egyetlen központi helyen végezhető el a helyszíni számítási feladatok felderítése, felmérése és Azure-ba való migrálása. Ezen a központi helyen elérhetőek Azure Migrate-eszközök, valamint független szoftverszállítók beépített eszközei is.
+summary: Az Azure Migrate-ben egyetlen központi helyen végezhető el a helyszíni számítási feladatok felderítése, felmérése és Azure-ba való migrálása.
 metadata:
   title: Az Azure Migrate dokumentációja
-  description: Az Azure Migrate használatával az Azure-felhőbe migrálhat. Az Azure Migrate-ben egyetlen központi helyen végezhető el a helyszíni számítási feladatok felderítése, felmérése és Azure-ba való migrálása. Ezen a központi helyen elérhetőek Azure Migrate-eszközök, valamint független szoftverszállítók beépített eszközei is.
+  description: Az Azure Migrate használatával az Azure-ba migrálhatók a helyszíni számítási feladatok.
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001141"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74185836"
 landingContent:
 - title: Az Azure Migrate bemutatása
   linkLists:
@@ -35,6 +35,10 @@ landingContent:
       url: ./tutorial-prepare-vmware.md
     - text: Hyper-V virtuális gépek értékelése a Server Assessmenttel
       url: ./tutorial-prepare-hyper-v.md
+    - text: Fizikai kiszolgálók értékelése a Server Assessmenttel
+      url: ./tutorial-prepare-physical.md
+    - text: Kiszolgálók értékelése importált adatokkal
+      url: tutorial-assess-import.md
     - text: VMware virtuális gépek migrálása a Server Migrationnel
       url: ./server-migrate-overview.md
     - text: Hyper-V virtuális gépek migrálása a Server Migrationnel
@@ -52,13 +56,19 @@ landingContent:
     - text: Az Azure Migrate támogatási mátrix áttekintése
       url: migrate-support-matrix.md
     - text: A VMware támogatási mátrix áttekintése
-      url: migrate-support-matrix-vmware.md
+      url: ./migrate-support-matrix-vmware.md
     - text: A Hyper-V támogatási mátrix áttekintése
-      url: migrate-support-matrix-hyper-v.md
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: A fizikai kiszolgáló támogatási mátrixának áttekintése
+      url: ./migrate-support-matrix-physical.md
 - title: Kezelés
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Felmérőeszközök hozzáadása
+      url: ./how-to-assess.md
+    - text: Alkalmazásleltár felderítése
+      url: ./how-to-discover-applications.md
     - text: Migrálási eszközök hozzáadása
       url: ./how-to-migrate.md
     - text: VMware-felmérés skálázása
@@ -71,9 +81,9 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: VMware ügynökalapú migrálási architektúra
+    - text: Tudnivalók a VMware-beli/fizikai ügynökalapú migrálásról
       url: ./agent-based-migration-architecture.md
-    - text: A Hyper-V migrálási architektúrája
+    - text: Tudnivalók a Hyper-V-migrálásról
       url: ./hyper-v-migration-architecture.md
     - text: A felmérések ismertetése
       url: ./concepts-assessment-calculation.md
