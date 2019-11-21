@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Learningpool törvénnyel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Learningpool-szabály között.
+title: 'Tutorial: Azure Active Directory integration with Learningpool Act | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Learningpool Act.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,99 +16,99 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6f5b2b67ec38ef690f932e189bd2fd9f0dd6da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159584"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229276"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Oktatóanyag: Azure Active Directory integráció a Learningpool törvénnyel
+# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Tutorial: Azure Active Directory integration with Learningpool Act
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Learningpool-jogi Azure Active Directory (Azure AD) szolgáltatással.
-A Learningpool és az Azure AD integrálásával a következő előnyökkel jár:
+In this tutorial, you learn how to integrate Learningpool Act with Azure Active Directory (Azure AD).
+Integrating Learningpool Act with Azure AD provides you with the following benefits:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Learningpool-jogszabályhoz.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Learningpool (egyszeri bejelentkezés) az Azure AD-fiókokkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* You can control in Azure AD who has access to Learningpool Act.
+* You can enable your users to be automatically signed-in to Learningpool Act (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Learningpool-törvénnyel való konfigurálásához a következő elemek szükségesek:
+To configure Azure AD integration with Learningpool Act, you need the following items:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Learningpool – egyszeri bejelentkezésre engedélyezett előfizetés
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* Learningpool Act single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* A Learningpool-szabály támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Learningpool Act supports **SP** initiated SSO
 
-## <a name="adding-learningpool-act-from-the-gallery"></a>Learningpool-művelet hozzáadása a katalógusból
+## <a name="adding-learningpool-act-from-the-gallery"></a>Adding Learningpool Act from the gallery
 
-A Learningpool-művelet Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Learningpool a katalógusból a felügyelt SaaS-alkalmazások listájához.
+To configure the integration of Learningpool Act into Azure AD, you need to add Learningpool Act from the gallery to your list of managed SaaS apps.
 
-**A Learningpool-művelet a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**To add Learningpool Act from the gallery, perform the following steps:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Learningpool-szabály**kifejezést, válassza a **Learningpool** művelet elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. In the search box, type **Learningpool Act**, select **Learningpool Act** from result panel then click **Add** button to add the application.
 
-     ![Learningpool-művelet az eredmények listájában](common/search-new-app.png)
+     ![Learningpool Act in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Learningpool törvénnyel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Learningpool-szabályban található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+In this section, you configure and test Azure AD single sign-on with Learningpool Act based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Learningpool Act needs to be established.
 
-Az Azure AD egyszeri bejelentkezés a Learningpool törvénnyel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+To configure and test Azure AD single sign-on with Learningpool Act, you need to complete the following building blocks:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Learningpool-szabály konfigurálása egyszeri bejelentkezés](#configure-learningpool-act-single-sign-on)** – az egyszeri bejelentkezési beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre egy Learningpool](#create-learningpool-act-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó, a Learningpool-ban található Britta Simon partnere.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Learningpool Act Single Sign-On](#configure-learningpool-act-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Learningpool Act test user](#create-learningpool-act-test-user)** - to have a counterpart of Britta Simon in Learningpool Act that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Az Azure AD egyszeri bejelentkezés a Learningpool törvénnyel való konfigurálásához hajtsa végre a következő lépéseket:
+To configure Azure AD single sign-on with Learningpool Act, perform the following steps:
 
-1. A [Azure Portal](https://portal.azure.com/) **Learningpool-szabály** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. In the [Azure portal](https://portal.azure.com/), on the **Learningpool Act** application integration page, select **Single sign-on**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![A Learningpool-tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
+    ![Learningpool Act Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következő URL-címet: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. In the **Sign on URL** text box, type the URL: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern:
     
     | |
     |--|
@@ -117,130 +117,130 @@ Az Azure AD egyszeri bejelentkezés a Learningpool törvénnyel való konfigurá
     | | |
 
     > [!NOTE]
-    > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval. Az érték beszerzéséhez lépjen kapcsolatba a [Learningpool jogi szolgálatával](https://www.learningpool.com/support) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > The Identifier value is not real. Update this value with the actual Identifier. Contact [Learningpool Act Client support team](https://www.learningpool.com/support) to get this value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. A Learningpool-szabály alkalmazása az SAML-jogcímeket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+5. Your Learningpool Act application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows the list of default attributes. Click **Edit** icon to open User Attributes dialog.
 
     ![image](common/edit-attribute.png)
 
-6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
+6. In the **User Claims** section on the **User Attributes** dialog, edit the claims by using **Edit icon** or add the claims by using **Add new claim** to configure SAML token attribute as shown in the image above and perform the following steps: 
 
-    | Név | Forrás attribútum|
+    | Név | Source Attribute|
     | ------------------- | -------------------- |
-    | urn: OID: 1.2.840.113556.1.4.221 | User. userPrincipalName |
-    | urn: OID: 2.5.4.42 | User. givenName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | User. mail |
-    | urn: OID: 2.5.4.4 | felhasználó. vezetéknév |
+    | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
+    | urn:oid:2.5.4.42 | user.givenname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
+    | urn:oid:2.5.4.4 | user.surname |
     | | |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Click **Add new claim** to open the **Manage user claims** dialog.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+    b. In the **Name** textbox, type the attribute name shown for that row.
 
-    c. Hagyja üresen a **névteret** .
+    c. Leave the **Namespace** blank.
 
-    d. Válassza a forrás **attribútumként**lehetőséget.
+    d. Select Source as **Attribute**.
 
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+    e. From the **Source attribute** list, type the attribute value shown for that row.
 
-    f. Kattintson **az OK** gombra
+    f. Click **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+7. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![The Certificate download link](common/metadataxml.png)
 
-8. A **Learningpool-szabály beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+8. On the **Set up Learningpool Act** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Login URL
 
-    b. Azure ad-azonosító
+    b. Azure Ad Identifier
 
-    c. Kijelentkezési URL-cím
+    c. Logout URL
 
-### <a name="configure-learningpool-act-single-sign-on"></a>A Learningpool-szabály egyszeri bejelentkezésének konfigurálása
+### <a name="configure-learningpool-act-single-sign-on"></a>Configure Learningpool Act Single Sign-On
 
-Ha az egyszeri bejelentkezést szeretné beállítani a **Learningpool-jogszabályban** , el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a Learningpool- [támogatási csapatnak](https://www.learningpool.com/support). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+To configure single sign-on on **Learningpool Act** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Learningpool Act support team](https://www.learningpool.com/support). They set this setting to have the SAML SSO connection set properly on both sides.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Learningpool-jogszabályhoz.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Learningpool Act.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Learningpool-szabály**lehetőséget.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Learningpool Act**.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Learningpool-szabály**lehetőséget.
+2. In the applications list, select **Learningpool Act**.
 
-    ![Az Learningpool-szabály hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![The Learningpool Act link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-learningpool-act-test-user"></a>Learningpool-szabály tesztelése felhasználó létrehozása
+### <a name="create-learningpool-act-test-user"></a>Create Learningpool Act test user
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Learningpool-jogszabályba, a Learningpool-törvénnyel kell kiépíteni őket.
+To enable Azure AD users to log in to Learningpool Act, they must be provisioned into Learningpool Act.
 
-Nincs olyan műveleti tétel, amellyel a felhasználó kiépíthető a Learningpool.  
-A felhasználóknak létre kell hozniuk a [Learningpool-jogi támogatási csapatot](https://www.Learningpool.com/support).
+There is no action item for you to configure user provisioning to Learningpool Act.  
+Users need to be created by your [Learningpool Act support team](https://www.Learningpool.com/support).
 
 > [!NOTE]
-> A Learningpool által biztosított más Learningpool-műveletek felhasználói fiók létrehozási eszközei vagy API-jai a HRE felhasználói fiókjainak kiépítéséhez használhatók.
+> You can use any other Learningpool Act user account creation tools or APIs provided by Learningpool Act to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Ha a hozzáférési panelen a Learningpool-szabály csempére kattint, automatikusan be kell jelentkeznie arra a Learningpool-szabályra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Learningpool Act tile in the Access Panel, you should be automatically signed in to the Learningpool Act for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

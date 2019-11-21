@@ -8,44 +8,44 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7e9e36f75d0b0638fadbf92e713a924e816807d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: adc4a894f4617f681cefbc8049e453d004ce417e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012401"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260757"
 ---
-A növekményes Pillanatképek (előzetes verzió) olyan felügyelt lemezek időpontra vonatkozó biztonsági mentései, amelyek az utolsó pillanatkép óta csak az összes változást tartalmazzák. Ha egy növekményes pillanatkép letöltését vagy más módon történő használatát kísérli meg, a rendszer a teljes VHD-t használja. Ez az új képesség a felügyelt lemezek pillanatképei számára potenciálisan költséghatékony lehet, mivel már nem szükséges a teljes lemez tárolása az egyes Pillanatképek esetében, hacsak nem választja. A normál pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemezek létrehozásához, vagy rendszeres pillanatkép készítéséhez.
+Incremental snapshots (preview) are point in time backups for managed disks that, when taken, consist only of all the changes since the last snapshot. When you attempt to download or otherwise use an incremental snapshot, the full VHD is used. This new capability for managed disk snapshots can potentially allow them to be more cost effective, since you are no longer required to store the entire disk with each individual snapshot, unless you choose to. Just like regular snapshots, incremental snapshots can be used to create a full managed disk or, to make a regular snapshot.
 
-A növekményes pillanatfelvétel és a rendszeres Pillanatképek között néhány különbség van. A növekményes Pillanatképek mindig a standard HDD-tárolót használják, a lemez tárolási típusától függetlenül, míg a rendszeres Pillanatképek a prémium SSD-ket használhatják. Ha a virtuális gépek központi telepítésének vertikális felskálázásához Premium Storage rendszeresen pillanatképeket használ, javasoljuk, hogy egyéni rendszerképeket használjon a [megosztott lemezképek](../articles/virtual-machines/linux/shared-image-galleries.md)katalógusában a standard szintű tárolóban. Ezzel a megoldással nagyobb léptékben érhet el alacsonyabb költségeket. Emellett a növekményes Pillanatképek is jobb megbízhatóságot biztosítanak a [Zone-redundáns tárolással](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). Ha a ZRS elérhető a kiválasztott régióban, a növekményes pillanatkép automatikusan a ZRS-t fogja használni. Ha a ZRS nem érhető el a régióban, akkor a pillanatkép alapértelmezett értéke [helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md) (LRS). Felülbírálhatja ezt a viselkedést, és kiválaszthat egyet manuálisan, de nem ajánlott.
+There are a few differences between an incremental snapshot and a regular snapshot. Incremental snapshots will always use standard HDDs storage, irrespective of the storage type of the disk, whereas regular snapshots can use premium SSDs. If you are using regular snapshots on Premium Storage to scale up VM deployments, we recommend you use custom images on standard storage in the [Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md). It will help you to achieve a more massive scale with lower cost. Additionally, incremental snapshots potentially offer better reliability with [zone-redundant storage](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). If ZRS is available in the selected region, an incremental snapshot will use ZRS automatically. If ZRS is not available in the region, then the snapshot will default to [locally-redundant storage](../articles/storage/common/storage-redundancy-lrs.md) (LRS). You can override this behavior and select one manually but, we do not recommend that.
 
-A növekményes Pillanatképek egy különbözeti képességet is biztosítanak, amely egyedi módon elérhető a felügyelt lemezeken. Lehetővé teszik az azonos felügyelt lemezek két növekményes pillanatképének változását a blokk szintjére. Ezzel a képességgel csökkentheti az adatlábnyomot a pillanatképek régiók közötti másolásakor.
+Incremental snapshots also offer a differential capability, which is uniquely available to managed disks. They enable you to get the changes between two incremental snapshots of the same managed disks, down to the block level. You can use this capability to reduce your data footprint when copying snapshots across regions.
 
-Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldje el nekünk a AzureDisks@microsoft.com a nyilvános előzetes verzió eléréséhez.
+If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview.
 
 ## <a name="restrictions"></a>Korlátozások
 
-- A növekményes Pillanatképek jelenleg csak az USA nyugati középső régiójában és Észak-Európában érhetők el.
-- A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után.
-- A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
-- Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
-- Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez.
-- A lemezenként legfeljebb hét növekményes pillanatkép hozható létre 5 percenként.
-- Egyetlen lemezhez összesen 200 növekményes pillanatkép hozható létre.
+- Incremental snapshots are currently only available in West Central US and North Europe.
+- Incremental snapshots currently cannot be created after you've changed the size of a disk.
+- Incremental snapshots currently cannot be moved between subscriptions.
+- You can currently only generate SAS URIs of up to five snapshots of a particular snapshot family at any given time.
+- You cannot create an incremental snapshot for a particular disk outside of that disk's subscription.
+- Up to seven incremental snapshots per disk can be created every five minutes.
+- A total of 200 incremental snapshots can be created for a single disk.
 
 ## <a name="powershell"></a>PowerShell
 
-Növekményes pillanatkép létrehozásához használhatja a Azure PowerShellt is. A Azure PowerShell legújabb verziójára lesz szüksége, a következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
+You can use Azure PowerShell to create an incremental snapshot. You will need the latest version of Azure PowerShell, the following command will either install it or update your existing installation to latest:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-A telepítését követően jelentkezzen be a PowerShell-munkamenetbe `az login`használatával.
+Once that is installed, login to your PowerShell session with `az login`.
 
-Ha Azure PowerShell használatával szeretne növekményes pillanatképet létrehozni, állítsa a konfigurációt a [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) értékre a `-Incremental` paraméterrel, majd adja át ezt változóként a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) a `-Snapshot` paraméterrel.
+To create an incremental snapshot with Azure PowerShell, set the configuration with [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) with the `-Incremental` parameter and then pass that as a variable to [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) through the `-Snapshot` parameter.
 
-Cserélje le a `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`és `<yourDesiredSnapShotNameHere>` értékeket az értékekkel, majd a következő parancsfájllal hozzon létre növekményes pillanatképet:
+Replace `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, and `<yourDesiredSnapShotNameHere>` with your values, then you can use the following script to create an incremental snapshot:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -56,9 +56,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-Az azonos lemezről származó növekményes pillanatképeket a `SourceResourceId` és a pillanatképek `SourceUniqueId` tulajdonságaival is azonosíthatja. `SourceResourceId` a szülő lemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId` a lemez `UniqueId` tulajdonságában örökölt érték. Ha töröl egy lemezt, majd létrehoz egy azonos nevű új lemezt, akkor a `UniqueId` tulajdonság értéke megváltozik.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
 
-A `SourceResourceId` és a `SourceUniqueId` használatával létrehozhat egy adott lemezhez társított összes pillanatképet tartalmazó listát. Cserélje le a `<yourResourceGroupNameHere>` értéket az értékre, majd a következő példa használatával sorolja fel a meglévő növekményes pillanatképeket:
+You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. Replace `<yourResourceGroupNameHere>` with your value and then you can use the following example to list your existing incremental snapshots:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -76,17 +76,17 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>parancssori felület
+## <a name="cli"></a>CLI
 
-Növekményes pillanatképet is létrehozhat az Azure CLI-vel, az Azure CLI legújabb verziójára lesz szüksége. A következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
+You can create an incremental snapshot with the Azure CLI, you will need the latest version of Azure CLI. The following command will either install or update your existing installation to the latest version:
 
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
 
-Növekményes pillanatkép létrehozásához használja az [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) és a `--incremental` paramétert.
+To create an incremental snapshot, use [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) with the `--incremental` parameter.
 
-Az alábbi példa egy növekményes pillanatképet hoz létre, és lecseréli `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`és `<exampleLocation>` a saját értékeire, majd futtatja a példát:
+The following example creates an incremental snapshot, replace `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`, and `<exampleLocation>` with your own values, then run the example:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -98,13 +98,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-Az azonos lemezről származó növekményes pillanatképeket a `SourceResourceId` és a pillanatképek `SourceUniqueId` tulajdonságaival is azonosíthatja. `SourceResourceId` a szülő lemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId` a lemez `UniqueId` tulajdonságában örökölt érték. Ha töröl egy lemezt, majd létrehoz egy azonos nevű új lemezt, akkor a `UniqueId` tulajdonság értéke megváltozik.
+You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
 
-A `SourceResourceId` és a `SourceUniqueId` használatával létrehozhat egy adott lemezhez társított összes pillanatképet tartalmazó listát. Az alábbi példa felsorolja az adott lemezzel kapcsolatos összes növekményes pillanatképet, de szükség van rá néhány beállításra.
+You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. The following example will list all incremental snapshots associated with a particular disk but, it requires some setup.
 
-Ez a példa jQ használ az adatlekérdezéshez. A példa futtatásához [telepítenie](https://stedolan.github.io/jq/download/)kell a jQ.
+This example uses jq for querying the data. To run the example, you must [install jq](https://stedolan.github.io/jq/download/).
 
-Cserélje le a `<yourResourceGroupNameHere>` és a `<exampleDiskName>` értékeket az értékekre, majd a következő példa használatával listázhatja a meglévő növekményes pillanatképeket, feltéve, hogy a jQ is telepítette:
+Replace `<yourResourceGroupNameHere>` and `<exampleDiskName>` with your values, then you can use the following example to list your existing incremental snapshots, as long as you've also installed jq:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -118,7 +118,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
 
-Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat is használhat. Győződjön meg arról, hogy a apiVersion értéke **2019-03-01** , és hogy a növekményes tulajdonság értéke TRUE (igaz) is. A következő kódrészlet egy példa arra, hogyan hozhat létre növekményes pillanatképet Resource Manager-sablonokkal:
+You can also use Azure Resource Manager templates to create an incremental snapshot. You'll need to make sure the apiVersion is set to **2019-03-01** and that the incremental property is also set to true. The following snippet is an example of how to create an incremental snapshot with Resource Manager templates:
 
 ```json
 {
@@ -154,4 +154,8 @@ Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat i
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldje el nekünk a AzureDisks@microsoft.com a nyilvános előzetes verzió eléréséhez.
+1. If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview. 
+
+2. Explore the following samples for cross-region copy of incremental snapshots using differential capability   
+
+    - [Using Azure .Net SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
