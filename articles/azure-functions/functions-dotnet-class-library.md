@@ -1,48 +1,40 @@
 ---
-title: Azure Functions C# fejlesztői dokumentáció
-description: Ismerje meg, hogyan fejlesztheti C#Azure functions a használatával.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
-ms.service: azure-functions
-ms.devlang: dotnet
+title: Azure Functions C# developer reference
+description: Understand how to develop Azure Functions using C#.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.author: glenga
-ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 20bbf31bc92e49106a94e7a85d3b1541aaa2a34b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293866"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230606"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# fejlesztői dokumentáció
+# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-Ez a cikk bevezetést mutat be a .NET C# -es kódtárak használatával történő Azure functions fejlesztéséhez.
+This article is an introduction to developing Azure Functions by using C# in .NET class libraries.
 
-Azure Functions támogatja C# és C# parancsfájl-programozási nyelveket támogat. Ha [a Azure Portal használatával C# ](functions-create-function-app-portal.md)kapcsolatos útmutatást keres, tekintse [ C# meg a script (. CSX) fejlesztői referenciáját](functions-reference-csharp.md).
+Azure Functions supports C# and C# script programming languages. If you're looking for guidance on [using C# in the Azure portal](functions-create-function-app-portal.md), see [C# script (.csx) developer reference](functions-reference-csharp.md).
 
-Ez a cikk azt feltételezi, hogy már elolvasta a következő cikkeket:
+This article assumes that you've already read the following articles:
 
-* [Azure Functions fejlesztői útmutató](functions-reference.md)
-* [Azure Functions Visual Studio 2019-eszközök](functions-develop-vs.md)
+* [Azure Functions developers guide](functions-reference.md)
+* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Támogatott verziók
 
-A Azure Functions 2. x futtatókörnyezet a .NET Core 2,2-as verzióját használja. A függvény kódja a Visual Studio-projekt beállításainak frissítésével a .NET Core 2,2 API-kat is használhatja. A Function templates nem alapértelmezett a .NET Core 2,2-re, hogy elkerülje hátrányosan az olyan ügyfeleket, amelyek nem rendelkeznek a .NET Core 2,2-tel.
+The Azure Functions 2.x runtime uses .NET Core 2.2. Your function code can use .NET Core 2.2 APIs by updating the Visual Studio project settings. The Function templates do not default to .NET Core 2.2 to avoid adversely affecting customers that do not have .NET Core 2.2 installed.
 
-## <a name="functions-class-library-project"></a>Functions Class Library-projekt
+## <a name="functions-class-library-project"></a>Functions class library project
 
-A Visual Studióban a **Azure functions** Project sablon egy olyan C# osztály-függvénytár-projektet hoz létre, amely a következő fájlokat tartalmazza:
+In Visual Studio, the **Azure Functions** project template creates a C# class library project that contains the following files:
 
-* a [Host. JSON](functions-host-json.md) – olyan konfigurációs beállításokat tárol, amelyek a projekt összes funkcióját érintik helyileg vagy az Azure-ban való futtatáskor.
-* [Local. Settings. JSON](functions-run-local.md#local-settings-file) – a helyileg futtatott Alkalmazásbeállítások és kapcsolódási karakterláncok tárolására szolgál. Ez a fájl titkokat tartalmaz, és nincs közzétéve az Azure-beli Function alkalmazásban. Ehelyett [adja hozzá az alkalmazás beállításait a Function alkalmazáshoz](functions-develop-vs.md#function-app-settings).
+* [host.json](functions-host-json.md) - stores configuration settings that affect all functions in the project when running locally or in Azure.
+* [local.settings.json](functions-run-local.md#local-settings-file) - stores app settings and connection strings that are used when running locally. This file contains secrets and isn't published to your function app in Azure. Instead, [add app settings to your function app](functions-develop-vs.md#function-app-settings).
 
-A projekt létrehozásakor a következő példához hasonló mappastruktúrát jön létre a Build kimeneti könyvtárában:
+When you build the project, a folder structure that looks like the following example is generated in the build output directory:
 
 ```
 <framework.version>
@@ -54,15 +46,15 @@ A projekt létrehozásakor a következő példához hasonló mappastruktúrát j
  | - host.json
 ```
 
-Ez a könyvtár az Azure-beli Function alkalmazás üzembe helyezése. A functions futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési bővítmények a [projekthez NuGet csomagokként lesznek hozzáadva](./functions-bindings-register.md#vs).
+This directory is what gets deployed to your function app in Azure. The binding extensions required in [version 2.x](functions-versions.md) of the Functions runtime are [added to the project as NuGet packages](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> A build folyamat minden függvényhez létrehoz egy *function. JSON* fájlt. A *function. JSON* fájlt nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. A függvények letiltásával kapcsolatos további információkért lásd a [függvények letiltását](disable-function.md#functions-2x---c-class-libraries)ismertető témakört.
+> The build process creates a *function.json* file for each function. This *function.json* file is not meant to be edited directly. You can't change binding configuration or disable the function by editing this file. To learn how to disable a function, see [How to disable functions](disable-function.md#functions-2x---c-class-libraries).
 
 
-## <a name="methods-recognized-as-functions"></a>Függvényekként felismert metódusok
+## <a name="methods-recognized-as-functions"></a>Methods recognized as functions
 
-Egy eszközosztály esetében a függvény egy statikus metódus `FunctionName` és egy trigger attribútummal, az alábbi példában látható módon:
+In a class library, a function is a static method with a `FunctionName` and a trigger attribute, as shown in the following example:
 
 ```csharp
 public static class SimpleExample
@@ -77,24 +69,24 @@ public static class SimpleExample
 } 
 ```
 
-A `FunctionName` attribútum függvény belépési pontként jelöli meg a metódust. A névnek egyedinek kell lennie a projekten belül, betűvel kell kezdődnie, és csak betűket, számokat, `_` és `-` karaktert tartalmazhat, legfeljebb 127 karakter hosszú lehet. A Project templates gyakran létrehoz egy `Run` nevű metódust, de a metódus neve lehet C# bármely érvényes metódus neve.
+The `FunctionName` attribute marks the method as a function entry point. The name must be unique within a project, start with a letter and only contain letters, numbers, `_`, and `-`, up to 127 characters in length. Project templates often create a method named `Run`, but the method name can be any valid C# method name.
 
-Az trigger attribútum meghatározza az trigger típusát, és a bemeneti adatokat egy metódus paraméteréhez köti. A példa függvényt egy üzenetsor-üzenet indítja el, és a várólista-üzenetet a `myQueueItem` paraméter metódusának adja át.
+The trigger attribute specifies the trigger type and binds input data to a method parameter. The example function is triggered by a queue message, and the queue message is passed to the method in the `myQueueItem` parameter.
 
-## <a name="method-signature-parameters"></a>Metódus-aláírás paraméterei
+## <a name="method-signature-parameters"></a>Method signature parameters
 
-A metódus aláírása nem az trigger attribútummal használt paramétereket tartalmazhat. Íme néhány további paraméter, amelyet felvehet:
+The method signature may contain parameters other than the one used with the trigger attribute. Here are some of the additional parameters that you can include:
 
-* A [bemeneti és kimeneti kötések](functions-triggers-bindings.md) úgy vannak megjelölve, hogy az attribútumokkal díszítsék őket.  
-* Egy `ILogger` vagy `TraceWriter` ([1. x-only](functions-versions.md#creating-1x-apps)) paraméter a [naplózáshoz](#logging).
-* Egy `CancellationToken` paraméter a [kecses leállításhoz](#cancellation-tokens).
-* A [kötési kifejezések](./functions-bindings-expressions-patterns.md) paraméterei trigger-metaadatok beszerzéséhez.
+* [Input and output bindings](functions-triggers-bindings.md) marked as such by decorating them with attributes.  
+* An `ILogger` or `TraceWriter` ([version 1.x-only](functions-versions.md#creating-1x-apps)) parameter for [logging](#logging).
+* A `CancellationToken` parameter for [graceful shutdown](#cancellation-tokens).
+* [Binding expressions](./functions-bindings-expressions-patterns.md) parameters to get trigger metadata.
 
-A függvények aláírásában szereplő paraméterek sorrendje nem számít. Például az aktiválási paramétereket más kötések előtt vagy után is elhelyezheti, és a naplózó paramétert trigger vagy kötési paraméterek előtt vagy után is elhelyezheti.
+The order of parameters in the function signature does not matter. For example, you can put trigger parameters before or after other bindings, and you can put the logger parameter before or after trigger or binding parameters.
 
-### <a name="output-binding-example"></a>Kimeneti kötési példa
+### <a name="output-binding-example"></a>Output binding example
 
-A következő példa egy kimeneti várólista-kötés hozzáadásával módosítja az előzőt. A függvény az üzenetsor-üzenetet írja, amely egy másik várólistában lévő új üzenetsor-üzenetre indítja a függvényt.
+The following example modifies the preceding one by adding an output queue binding. The function writes the queue message that triggers the function to a new queue message in a different queue.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -111,11 +103,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-A kötési útmutató cikkei (például a[tárolási várólisták](functions-bindings-storage-queue.md)) megmutatják, hogy milyen típusú paramétereket használhat trigger-, bemeneti vagy kimeneti kötési attribútumokkal.
+The binding reference articles ([Storage queues](functions-bindings-storage-queue.md), for example) explain which parameter types you can use with trigger, input, or output binding attributes.
 
-### <a name="binding-expressions-example"></a>Példa kötési kifejezésekre
+### <a name="binding-expressions-example"></a>Binding expressions example
 
-A következő kód beolvassa az Alkalmazásbeállítások által figyelt várólista nevét, és a várólista-üzenet létrehozási idejét a `insertionTime` paraméterben kapja meg.
+The following code gets the name of the queue to monitor from an app setting, and it gets the queue message creation time in the `insertionTime` parameter.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -132,13 +124,13 @@ public static class BindingExpressionsExample
 }
 ```
 
-## <a name="autogenerated-functionjson"></a>Automatikusan generált function. JSON
+## <a name="autogenerated-functionjson"></a>Autogenerated function.json
 
-A build folyamat létrehoz egy *function. JSON* fájlt a Build mappában található Function mappában. Amint azt korábban említettük, a fájlt nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. 
+The build process creates a *function.json* file in a function folder in the build folder. As noted earlier, this file is not meant to be edited directly. You can't change binding configuration or disable the function by editing this file. 
 
-Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
+The purpose of this file is to provide information to the scale controller to use for [scaling decisions on the consumption plan](functions-scale.md#how-the-consumption-and-premium-plans-work). For this reason, the file only has trigger info, not input or output bindings.
 
-A generált *function. JSON* fájl egy `configurationSource` tulajdonságot tartalmaz, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function. JSON* -konfigurációt alkalmazzon. Például:
+The generated *function.json* file includes a `configurationSource` property that tells the runtime to use .NET attributes for bindings, rather than *function.json* configuration. Például:
 
 ```json
 {
@@ -157,13 +149,13 @@ A generált *function. JSON* fájl egy `configurationSource` tulajdonságot tart
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-A *function. JSON* -fájl létrehozását a [Microsoft @ no__t-2NET @ no__t-3Sdk @ No__t-4Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)NuGet-csomag hajtja végre. 
+The *function.json* file generation is performed by the NuGet package [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is használható. A cél-keretrendszer az 1. x projekt megkülönböztetése egy 2. x projektből. Az alábbiakban láthatók a *. csproj* -fájlok azon részei, amelyek különböző cél-keretrendszereket és azonos `Sdk` csomagot mutatnak:
+The same package is used for both version 1.x and 2.x of the Functions runtime. The target framework is what differentiates a 1.x project from a 2.x project. Here are the relevant parts of *.csproj* files, showing different target frameworks and the same `Sdk` package:
 
-**Függvények 1. x**
+**Functions 1.x**
 
 ```xml
 <PropertyGroup>
@@ -174,7 +166,7 @@ Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is ha
 </ItemGroup>
 ```
 
-**Függvények 2. x**
+**Functions 2.x**
 
 ```xml
 <PropertyGroup>
@@ -186,39 +178,39 @@ Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is ha
 </ItemGroup>
 ```
 
-A `Sdk` csomag függőségei közé tartozik az eseményindítók és a kötések. Egy 1. x projekt egy 1. x eseményindítóra és kötésre hivatkozik, mivel ezek az eseményindítók és kötések a .NET-keretrendszert célozzák meg, a 2. x eseményindítók és kötések pedig a .NET Core-t célozzák meg.
+Among the `Sdk` package dependencies are triggers and bindings. A 1.x project refers to 1.x triggers and bindings because those triggers and bindings target the .NET Framework, while 2.x triggers and bindings target .NET Core.
 
-A `Sdk` csomag a [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json)fájltól és közvetve a [WindowsAzure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage)szolgáltatástól is függ. Ezek a függőségek gondoskodnak arról, hogy a projekt azokat a csomagokat használja, amelyek a projekt által megcélzott functions futtatókörnyezet-verzióval működnek. Például a `Newtonsoft.Json` a .NET-keretrendszer 4.6.1-es verziójának 11-es verziójával rendelkezik, de a .NET-keretrendszer 4.6.1-es verzióját tároló functions futtatókörnyezet csak `Newtonsoft.Json` 9.0.1 kompatibilis. Így a projekt kódjának a `Newtonsoft.Json` 9.0.1 is használnia kell.
+The `Sdk` package also depends on [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), and indirectly on [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). These dependencies make sure that your project uses the versions of those packages that work with the Functions runtime version that the project targets. For example, `Newtonsoft.Json` has version 11 for .NET Framework 4.6.1, but the Functions runtime that targets .NET Framework 4.6.1 is only compatible with `Newtonsoft.Json` 9.0.1. So your function code in that project also has to use `Newtonsoft.Json` 9.0.1.
 
-A `Microsoft.NET.Sdk.Functions` forráskódja elérhető a GitHub-tárházban az [Azure @ no__t-2functions @ no__t-3vs @ no__t-4build @ no__t-5sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+The source code for `Microsoft.NET.Sdk.Functions` is available in the GitHub repo [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
-## <a name="runtime-version"></a>Futtatókörnyezet verziója
+## <a name="runtime-version"></a>Runtime version
 
-A Visual Studio a [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) használatával futtatja a functions-projekteket. A Core Tools a functions futtatókörnyezet parancssori felülete.
+Visual Studio uses the [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) to run Functions projects. The Core Tools is a command-line interface for the Functions runtime.
 
-Ha a NPM használatával telepíti az alapvető eszközöket, amelyek nem érintik a Visual Studio által használt alapvető eszközök verzióját. A functions Runtime 1. x verziójában a Visual Studio a *%USERPROFILE%\AppData\Local\Azure.functions.CLI* alapeszközök verzióját tárolja, és az ott tárolt legújabb verziót használja. A 2. x függvények esetében az alapvető eszközök a **Azure functions és a web Jobs Tools** bővítmény részét képezik. Az 1. x és a 2. x esetében egyaránt megtekintheti, hogy a konzol kimenetében milyen verzió van használatban a functions projekt futtatásakor:
+If you install the Core Tools by using npm, that doesn't affect the Core Tools version used by Visual Studio. For the Functions runtime version 1.x, Visual Studio stores Core Tools versions in *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* and uses the latest version stored there. For Functions 2.x, the Core Tools are included in the **Azure Functions and Web Jobs Tools** extension. For both 1.x and 2.x, you can see what version is being used in the console output when you run a Functions project:
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
-## <a name="supported-types-for-bindings"></a>A kötések támogatott típusai
+## <a name="supported-types-for-bindings"></a>Supported types for bindings
 
-Minden kötés saját támogatott típusokkal rendelkezik; például egy blob trigger attribútumot lehet alkalmazni egy karakterlánc-paraméterre, egy POCO paraméterre, egy `CloudBlockBlob` paraméterre vagy számos más támogatott típusra. A [blob-kötések kötési útmutatója](functions-bindings-storage-blob.md#trigger---usage) felsorolja az összes támogatott paraméter-típust. További információ: [triggerek és kötések](functions-triggers-bindings.md) , valamint az [egyes kötési típusok kötési dokumentációja](functions-triggers-bindings.md#next-steps).
+Each binding has its own supported types; for instance, a blob trigger attribute can be applied to a string parameter, a POCO parameter, a `CloudBlockBlob` parameter, or any of several other supported types. The [binding reference article for blob bindings](functions-bindings-storage-blob.md#trigger---usage) lists all supported parameter types. For more information, see [Triggers and bindings](functions-triggers-bindings.md) and the [binding reference docs for each binding type](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="binding-to-method-return-value"></a>Kötés a metódus visszatérési értékéhez
+## <a name="binding-to-method-return-value"></a>Binding to method return value
 
-A metódus visszatérési értékét egy kimeneti kötéshez is használhatja, ha az attribútumot a metódus visszatérési értékére alkalmazza. Példákat az [Eseményindítók és kötések](./functions-bindings-return-value.md)című témakörben talál. 
+You can use a method return value for an output binding, by applying the attribute to the method return value. For examples, see [Triggers and bindings](./functions-bindings-return-value.md). 
 
-Csak akkor használja a visszaadott értéket, ha egy sikeres függvény végrehajtása mindig visszatérési értéket ad eredményül a kimeneti kötésnek. Ellenkező esetben használja a `ICollector` vagy a `IAsyncCollector` értéket, ahogy az a következő szakaszban látható.
+Use the return value only if a successful function execution always results in a return value to pass to the output binding. Otherwise, use `ICollector` or `IAsyncCollector`, as shown in the following section.
 
-## <a name="writing-multiple-output-values"></a>Több kimeneti érték írása
+## <a name="writing-multiple-output-values"></a>Writing multiple output values
 
-Ha több értéket szeretne írni egy kimeneti kötésbe, vagy ha egy sikeres függvény meghívása nem eredményez semmit a kimeneti kötéshez, használja a [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy a [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típust. Ezek a típusok olyan írásvédett gyűjtemények, amelyek a metódus befejeződése után a kimeneti kötésbe íródnak.
+To write multiple values to an output binding, or if a successful function invocation might not result in anything to pass to the output binding, use the [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) types. These types are write-only collections that are written to the output binding when the method completes.
 
-Ez a példa több üzenetsor-üzenetet ír ugyanabba a várólistába `ICollector` használatával:
+This example writes multiple queue messages into the same queue using `ICollector`:
 
 ```csharp
 public static class ICollectorExample
@@ -238,7 +230,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Naplózás
 
-Ha a kimenetét be szeretné jelentkezni a C#folyamatos átviteli naplókba, vegyen fel egy [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy `log` nevet adjon meg, ahogy az alábbi példában is látható:  
+To log output to your streaming logs in C#, include an argument of type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). We recommend that you name it `log`, as in the following example:  
 
 ```csharp
 public static class SimpleExample
@@ -253,11 +245,11 @@ public static class SimpleExample
 } 
 ```
 
-Kerülje a Azure Functions `Console.Write` használatát. További információ: a [naplók írása a C# functions](functions-monitoring.md#write-logs-in-c-functions) szolgáltatásban a **figyelő Azure functions** cikkben.
+Avoid using `Console.Write` in Azure Functions. For more information, see [Write logs in C# functions](functions-monitoring.md#write-logs-in-c-functions) in the **Monitor Azure Functions** article.
 
-## <a name="async"></a>Aszinkron
+## <a name="async"></a>Async
 
-A függvények [aszinkron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)végrehajtásához használja az `async` kulcsszót, és egy `Task` objektumot ad vissza.
+To make a function [asynchronous](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), use the `async` keyword and return a `Task` object.
 
 ```csharp
 public static class AsyncExample
@@ -275,13 +267,13 @@ public static class AsyncExample
 }
 ```
 
-Az aszinkron függvények nem használhatnak `out` paramétereket. Kimeneti kötések esetén használja helyette a [függvény visszatérési értékét](#binding-to-method-return-value) vagy egy [gyűjtő objektumot](#writing-multiple-output-values) .
+You can't use `out` parameters in async functions. For output bindings, use the [function return value](#binding-to-method-return-value) or a [collector object](#writing-multiple-output-values) instead.
 
-## <a name="cancellation-tokens"></a>Visszavonási tokenek
+## <a name="cancellation-tokens"></a>Cancellation tokens
 
-A függvények elfogadják a [CancellationToken](/dotnet/api/system.threading.cancellationtoken) paramétert, amely lehetővé teszi, hogy az operációs rendszer értesítse a kódot, ha a függvény hamarosan leáll. Ezzel az értesítéssel meggyőződhet arról, hogy a függvény váratlanul leáll olyan módon, amely inkonzisztens állapotban hagyja az adatvesztést.
+A function can accept a [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parameter, which enables the operating system to notify your code when the function is about to be terminated. You can use this notification to make sure the function doesn't terminate unexpectedly in a way that leaves data in an inconsistent state.
 
-Az alábbi példa bemutatja, hogyan ellenőrizhető a közelgő függvények leállítása.
+The following example shows how to check for impending function termination.
 
 ```csharp
 public static class CancellationTokenExample
@@ -307,7 +299,7 @@ public static class CancellationTokenExample
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-Környezeti változó vagy Alkalmazásbeállítások értékének beszerzéséhez használja a `System.Environment.GetEnvironmentVariable` értéket, ahogy az alábbi példában látható:
+To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, as shown in the following code example:
 
 ```csharp
 public static class EnvironmentVariablesExample
@@ -328,19 +320,19 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-Az Alkalmazásbeállítások a helyi fejlesztésekor és az Azure-ban való futtatáskor is beolvashatók környezeti változókból. Helyi fejlesztés esetén az Alkalmazásbeállítások a *Local. Settings. JSON* fájlban található `Values` gyűjteményből származnak. Mindkét környezetben, a helyi és az Azure-ban a `GetEnvironmentVariable("<app setting name>")` lekéri az elnevezett alkalmazás értékét. Ha például helyileg fut, a "saját hely neve" értéket adja vissza, ha a *Local. Settings. JSON* fájl `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` értéket tartalmaz.
+App settings can be read from environment variables both when developing locally and when running in Azure. When developing locally, app settings come from the `Values` collection in the *local.settings.json* file. In both environments, local and Azure, `GetEnvironmentVariable("<app setting name>")` retrieves the value of the named app setting. For instance, when you're running locally, "My Site Name" would be returned if your *local.settings.json* file contains `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
 
-A [System. Configuration. ConfigurationManager. appSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) tulajdonság egy alternatív API az Alkalmazásbeállítások értékének beolvasásához, de javasoljuk, hogy az itt látható módon használja a `GetEnvironmentVariable`-et.
+The [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) property is an alternative API for getting app setting values, but we recommend that you use `GetEnvironmentVariable` as shown here.
 
-## <a name="binding-at-runtime"></a>Kötés futásidőben
+## <a name="binding-at-runtime"></a>Binding at runtime
 
-A C# -ben és más .net nyelveken a kötelező [kötési mintát](https://en.wikipedia.org/wiki/Imperative_programming) is használhatja, az attribútumok [*deklaratív*](https://en.wikipedia.org/wiki/Declarative_programming) kötéseivel szemben. A kényszerített kötés akkor hasznos, ha a kötési paramétereket nem a tervezési idő, hanem futásidőben kell kiszámítani. Ezzel a mintával a függvény kódjában a támogatott bemeneti és kimeneti kötésekhez köthető.
+In C# and other .NET languages, you can use an [imperative](https://en.wikipedia.org/wiki/Imperative_programming) binding pattern, as opposed to the [*declarative*](https://en.wikipedia.org/wiki/Declarative_programming) bindings in attributes. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. With this pattern, you can bind to supported input and output bindings on-the-fly in your function code.
 
-A következő módon adjon meg egy kötelező kötést:
+Define an imperative binding as follows:
 
-- **Ne tartalmazzon** attribútumot a függvény aláírásában a kívánt kényszerített kötésekhez.
-- Adjon át egy [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) vagy [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)bemeneti paramétert.
-- Az adatkötés C# végrehajtásához használja a következő mintát.
+- **Do not** include an attribute in the function signature for your desired imperative bindings.
+- Pass in an input parameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) or [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
+- Use the following C# pattern to perform the data binding.
 
   ```cs
   using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -349,11 +341,11 @@ A következő módon adjon meg egy kötelező kötést:
   }
   ```
 
-  a `BindingTypeAttribute` a kötést definiáló .NET-attribútum, a `T` pedig az adott kötési típus által támogatott bemeneti vagy kimeneti típus. a `T` nem lehet `out` paraméter típusa (például `out JObject`). A Mobile Apps tábla kimeneti kötése például [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de a [ICollector @ no__t-2t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy a [IAsyncCollector @ no__t-4T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) csak a kényszerített kötéssel használható.
+  `BindingTypeAttribute` is the .NET attribute that defines your binding, and `T` is an input or output type that's supported by that binding type. `T` cannot be an `out` parameter type (such as `out JObject`). For example, the Mobile Apps table output binding supports [six output types](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), but you can only use [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) with imperative binding.
 
-### <a name="single-attribute-example"></a>Példa egyetlen attribútumra
+### <a name="single-attribute-example"></a>Single attribute example
 
-A következő mintakód létrehoz egy [tárolási blob kimeneti kötést](functions-bindings-storage-blob.md#output) a futási időben definiált blob elérési úttal, majd karakterláncot ír a blobba.
+The following example code creates a [Storage blob output binding](functions-bindings-storage-blob.md#output) with blob path that's defined at run time, then writes a string to the blob.
 
 ```cs
 public static class IBinderExample
@@ -374,11 +366,11 @@ public static class IBinderExample
 }
 ```
 
-A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) meghatározza a [Storage blob](functions-bindings-storage-blob.md) bemeneti vagy kimeneti kötését, és a [TextWriter](/dotnet/api/system.io.textwriter) egy támogatott kimeneti kötési típus.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) defines the [Storage blob](functions-bindings-storage-blob.md) input or output binding, and [TextWriter](/dotnet/api/system.io.textwriter) is a supported output binding type.
 
-### <a name="multiple-attribute-example"></a>Több attribútum – példa
+### <a name="multiple-attribute-example"></a>Multiple attribute example
 
-Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának a (`AzureWebJobsStorage`) alkalmazásra vonatkozó beállításait. A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömb `BindAsync<T>()` értékre való átadásával adhat meg egyéni alkalmazást. Használjon `Binder` paramétert, nem `IBinder`.  Példa:
+The preceding example gets the app setting for the function app's main Storage account connection string (which is `AzureWebJobsStorage`). You can specify a custom app setting to use for the Storage account by adding the [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) and passing the attribute array into `BindAsync<T>()`. Use a `Binder` parameter, not `IBinder`.  Példa:
 
 ```cs
 public static class IBinderExampleMultipleAttributes
@@ -410,7 +402,7 @@ public static class IBinderExampleMultipleAttributes
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)
+> [Learn more about triggers and bindings](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [További információ a Azure Functions ajánlott eljárásairól](functions-best-practices.md)
+> [Learn more about best practices for Azure Functions](functions-best-practices.md)

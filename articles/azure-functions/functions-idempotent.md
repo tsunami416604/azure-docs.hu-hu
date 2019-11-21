@@ -1,47 +1,45 @@
 ---
-title: Azure Functions megtervezése azonos bevitelhez
-description: A idempotens Azure Functions kiépítése
+title: Designing Azure Functions for identical input
+description: Building Azure Functions to be idempotent
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 9/12/2019
 ms.topic: article
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: 39e785a1ca7a158ddb90a3e6ba914582c405612a
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 15af60ac5a862e6fb20e65ba6fbb92482420b7c0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997392"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226861"
 ---
-# <a name="designing-azure-functions-for-identical-input"></a>Azure Functions megtervezése azonos bevitelhez
+# <a name="designing-azure-functions-for-identical-input"></a>Designing Azure Functions for identical input
 
-Az eseményvezérelt és az üzenetsor-alapú architektúra valósága azt diktálja, hogy az adatok integritásának és a rendszer stabilitásának megőrzése mellett azonos kérelmeket is el kell fogadnia.
+The reality of event-driven and message-based architecture dictates the need to accept identical requests while preserving data integrity and system stability.
 
-A bemutatóhoz vegye fontolóra egy lift hívási gombját. A gomb megnyomásakor a rendszer kigyullad és egy liftet kap a padlóra. Néhány pillanat múlva valaki más csatlakozik a lobbyban. Ez a személy mosolyog Önnel, és másodszor is megnyomja a megvilágított gombot. Mosolyogjon újra, és ne feledje, hogy a idempotens meghívására szolgáló parancs.
+To illustrate, consider an elevator call button. As you press the button, it lights up and an elevator is sent to your floor. A few moments later, someone else joins you in the lobby. This person smiles at you and presses the illuminated button a second time. You smile back and chuckle to yourself as you're reminded that the command to call an elevator is idempotent.
 
-Egy lift hívási gombjának megnyomásakor a második, a harmadik vagy a negyedik időpont nem veszi figyelembe a végeredményt. Amikor megnyomja a gombot, az időpontok számától függetlenül a rendszer elküldje a liftet a padlóra. A idempotens rendszerek, mint például a lift, ugyanazt az eredményt eredményezik, függetlenül attól, hogy hányszor adtak ki azonos parancsokat.
+Pressing an elevator call button a second, third, or fourth time has no bearing on the final result. When you press the button, regardless of the number of times, the elevator is sent to your floor. Idempotent systems, like the elevator, result in the same outcome no matter how many times identical commands are issued.
 
-Az alkalmazások létrehozásához vegye figyelembe a következő forgatókönyveket:
+When it comes to building applications, consider the following scenarios:
 
-- Mi történik, ha a leltár-ellenőrzési alkalmazás többször is megpróbálja törölni ugyanazt a terméket?
-- Hogyan viselkedik az emberi erőforrás alkalmazása, ha több kérelem is létezik egy alkalmazotti rekord létrehozásához ugyanahhoz a személyhez?
-- Hová kerül a pénz abban az esetben, ha a banki alkalmazás 100 kérést kap, hogy ugyanazt a kivonást végezze el?
+- What happens if your inventory control application tries to delete the same product more than once?
+- How does your human resource application behave if there is more than one request to create an employee record for the same person?
+- Where does the money go if your banking app gets 100 requests to make the same withdrawal?
 
-Számos kontextusban előfordulhat, hogy a függvények kérései azonos parancsokat fogadnak. Bizonyos helyzetek például a következők:
+There are many contexts where requests to a function may receive identical commands. Some situations include:
 
-- Újrapróbálkozási szabályzatok többször is elküldik ugyanazt a kérést
-- Az alkalmazás visszajátszotta a gyorsítótárazott parancsokat
-- Több azonos kérést küldő alkalmazáshiba
+- Retry policies sending the same request many times
+- Cached commands replayed to the application
+- Application errors sending multiple identical requests
 
-Az adatok integritásának és a rendszerállapotának védelme érdekében egy idempotens-alkalmazás olyan logikát tartalmaz, amely a következő viselkedéseket tartalmazhatja:
+To protect data integrity and system health, an idempotent application contains logic that may contain the following behaviors:
 
-- Az adatlétezés ellenőrzése a törlési kísérlet végrehajtása előtt
-- Annak ellenőrzése, hogy a létrehozási művelet végrehajtása előtt már léteznek-e az adathalmazok
-- A végleges konzisztenciát létrehozó logika összeegyeztetése
-- Egyidejűségi vezérlők
-- Ismétlődések észlelése
-- Az adatfrissesség ellenőrzése
-- Őr logikája a bemeneti adatok ellenőrzéséhez
+- Verifying of the existence of data before trying to execute a delete
+- Checking to see if data already exists before trying to execute a create action
+- Reconciling logic that creates eventual consistency in data
+- Concurrency controls
+- Duplication detection
+- Data freshness validation
+- Guard logic to verify input data
 
-Végső soron a idempotencia egy adott művelet lehetséges, és csak egyszer kell végrehajtani.
+Ultimately idempotency is achieved by ensuring a given action is possible and is only executed once.

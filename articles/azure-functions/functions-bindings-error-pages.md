@@ -1,36 +1,30 @@
 ---
-title: Azure Functions hibakezelés – útmutató
-description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functionsban, és meghatározott kötési hibákra mutató hivatkozásokat.
-services: functions
-cloud: ''
-documentationcenter: ''
+title: Azure Functions error handling guidance
+description: Learn to handle errors in Azure Functions with links to specific binding errors.
 author: craigshoemaker
-manager: gwallace
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: d301940998175adb6469e46cff2de918b5cae9df
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 06dc4c5c1713ee10f263e573a698e9ea36ca2662
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155284"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227318"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Functions hibakezelés
+# <a name="azure-functions-error-handling"></a>Azure Functions error handling
 
-A Azure Functions hibák elhárítása fontos az elveszett adat, a kihagyott események és az alkalmazás állapotának figyelése érdekében.
+Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
 
-Ez a cikk a hibák kezelésére vonatkozó általános stratégiákat, valamint a kötésekre vonatkozó hibákra mutató hivatkozásokat ismerteti.
+This article describes general strategies for error handling along with links to binding-specific errors.
 
-## <a name="handling-errors"></a>Kezelési hibák
+## <a name="handling-errors"></a>Handling errors
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Kötési hibakódok
+## <a name="binding-error-codes"></a>Binding error codes
 
-Az Azure-szolgáltatásokkal való integráció során a hibák a mögöttes szolgáltatások API-jai alapján származhatnak. A kötési hibákkal kapcsolatos információk a következő cikkek **kivételek és visszatérési kódok** szakaszában érhetők el:
+When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
@@ -42,6 +36,6 @@ Az Azure-szolgáltatásokkal való integráció során a hibák a mögöttes szo
 
 + [Queue Storage](functions-bindings-storage-queue.md#exceptions-and-return-codes)
 
-+ [Szolgáltatásbusz](functions-bindings-service-bus.md#exceptions-and-return-codes)
++ [Service Bus](functions-bindings-service-bus.md#exceptions-and-return-codes)
 
 + [Table Storage](functions-bindings-storage-table.md#exceptions-and-return-codes)

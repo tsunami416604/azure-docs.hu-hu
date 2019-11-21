@@ -1,207 +1,207 @@
 ---
-title: Understanding Cloudyn cost jelentések az Azure-ban |} A Microsoft Docs
-description: Ez a cikk segítségével megismerheti a Cloudyn cost management jelentések alapszintű struktúrát és funkciók.
+title: Understanding Cloudyn cost management reports in Azure | Microsoft Docs
+description: This article helps you understand Cloudyn cost management reports basic structure and functions.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d847b78ba9623f3543a3cb1e45b5187605deb550
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969076"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229767"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management jelentések
+# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management reports
 
-Ez a cikk segítségével megismerheti a Cloudyn cost management jelentések alapszintű struktúrát és funkciók. A legtöbb Cloudyn-jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. Miután ez a cikk a cost management jelentésekre készen áll. A különböző jelentéseket, így egyszerűen nyissa meg a jelentések teljes számos standard funkciók érhetők el. Jelentésekhez testre szabható, és alapján számítja ki, és az eredmények megjelenítése több lehetőség közül választhat.
+This article helps you understand Cloudyn cost management reports basic structure and functions. Most Cloudyn reports are intuitive and have a uniform look and feel. After you read this article, are ready to use all the cost management reports. Many standard features are available throughout the various reports, allowing you to navigate the reports with ease. Reports are customizable, and you can select from several options to calculate and display results.
 
-## <a name="report-fields-and-options"></a>Jelentésmezők és beállítások
+## <a name="report-fields-and-options"></a>Report fields and options
 
-Íme egy példa az időalapú költségeket tartalmazó jelentést egy pillantást. A legtöbb a Cloudyn jelentésekben hasonló elrendezés rendelkezik.
+Here's a look at an example of the Cost Over Time report. Most Cloudyn reports have a similar layout.
 
-![A leírások megfelelő számozott területeket időalapú költségeket tartalmazó jelentést – példa](./media/understanding-cost-reports/sample-report.png)
+![Example of the Cost Over Time report with numbered areas corresponding to descriptions](./media/understanding-cost-reports/sample-report.png)
 
-Minden egyes számozott terület az előző képen leírt részletei a következő információkat:
+Each numbered area in the preceding image is described in detail in the following information:
 
-1. **Dátumtartomány**
+1. **Date Range**
 
-    A dátumtartomány lista használatával adja meg az előre definiált vagy egyéni jelentés időközt.
-2. **Mentett szűrő**
+    Use the Date Range list to define a report time interval using a preset or custom.
+2. **Saved Filter**
 
-    A mentett lista használatával az aktuális csoportok és a jelentésben alkalmazott szűrők mentése. Költség- és jelentéseket, beleértve a különböző mentett szűrők közül választhat:
+    Use the Saved Filter list to save the current groups and filters that are applied to the report. Saved filters are available across cost and performance reports, including:
 
-      - Költségelemzés
-      - Felosztás
+      - Cost Analysis
+      - Allocation
       - Eszközgazdálkodás
       - Optimalizálás
 
-   Írja be a szűrő nevét, és kattintson a **mentése**.
+   Type a filter name and the click **Save**.
 
 3. **Címkék**
 
-    Használja a címkék területen csoporthoz címke kategóriák szerint. A menüben szereplő címkék Azure részleg vagy költség center címkéket és azok a Cloudyn költség entitás- és előfizetés-címkék. Válassza ki a címkékkel szűrheti az eredményeket. Írja be a címke neve (kulcsszó) szűrheti az eredményeket is.
+    Use the Tags area to group by tag categories. Tags listed in the menu are Azure department or cost center tags or they are Cloudyn's cost entity and subscription tags. Select tags to filter results. You can also type a tag name (keyword) to filter results.
 
-    ![Példa a szűrheti az eredményeket a címkék listája](./media/understanding-cost-reports/select-options.png)
+    ![Example of a list of tags to filter results by](./media/understanding-cost-reports/select-options.png)
 
-    Kattintson a **Hozzáadás** új szűrő hozzáadásához.
+    Click **Add** to add a new filter.
 
-    ![Beállítások és a feltételek szerinti szűrést, a Szűrő mezőbe hozzáadása](./media/understanding-cost-reports/add-filter.png)
+    ![Add filter box showing options and conditions to filter by](./media/understanding-cost-reports/add-filter.png)
 
-    Címkét, csoportosítást, vagy a szűrés nem vonatkozik Azure-erőforrások vagy erőforrás-csoport címkék.
+    Tag grouping or filtering does not relate to Azure resources or resource group tags.
 
-    A költséglefoglalás címke csoportosítás és a szűrés érhető el a **csoportok** menüpont.
+    Cost allocation tag grouping and filtering are available in the **Groups** menu option.
 
-4. **Csoportokkal a jelentésekben**
+4. **Groups in reports**
 
-    Csoportok használata költségelemzést a standard szintű, hogy a jelentések részletezett kategóriák a számlázás a jelentésben.  A Költséglefoglalási jelentések megjelenítése a csoportokat azonban címke-alapú kategóriák megtekintéséhez. Címke-alapú kategóriák a költséglefoglalási modell és a standard tételes kategóriák az elszámolási adatok vannak definiálva.
+    Use groups in Cost Analysis reports to show standard, itemized categories from billing data in your report.  However, groups in Cost Allocation reports show view tag-based categories. Tag-based categories are defined in the cost allocation model and standard itemized categories from billing data.
 
-    ![Címkék szerint példa listája](./media/understanding-cost-reports/groups-tags01.png)
+    ![First example list of tags that you can group by](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Második példa címkelista, amely szerint](./media/understanding-cost-reports/groups-tags02.png)
+    ![Second example list of tags that you can group by](./media/understanding-cost-reports/groups-tags02.png)
 
-    Költségek felosztási jelentésekben csoportok csoporthoz címke-alapú kategóriák a következők lehetnek:
+    In Cost Allocation Reports, groups in tag-based group categories might include:
       - Címkék
-      - erőforráscímkék csoport
-      - A Cloudyn-entitáscímkék költség
-      - Előfizetés címke kategóriák költségek felosztási célokra
+      - resource group tags
+      - Cloudyn cost entity tags
+      - Subscription tag categories for cost allocation purposes
 
-   Példák a következők lehetnek:
+   Examples might include:
    - Költséghely
    - Részleg
-   - Alkalmazás
+   - Jelentkezés
    - Környezet
-   - A Cost kód
+   - Cost code
 
-     Íme a jelentésekben elérhető beépített csoportok listája:
+     Here's a list of built-in groups available in reports:
 
-     - **Költségtípus**
-     - Válassza ki a költségek típus vagy több költségtípusok, vagy válassza ki az összes. A Cost típusok a következők:
-       - Egyszeri
+     - **Cost Type**
+     - Select a cost type or multiple cost types, or select all. Cost types include:
+       - One-Time Fee
        - Támogatás
-       - Használatért díjat kell fizetni
-     - **Ügyfél**
-       - Jelöljön ki egy adott ügyfél több ügyfelet, vagy minden ügyfélnek.
-     - **Fiók neve**
-       - A fiók vagy előfizetés nevét. Az Azure-ban az Azure-előfizetés neve.
-     - **Fiók nélkül**
-       - Válasszon egy fiókot, több fiókot, vagy minden fiók. Az Azure-ban akkor az Azure-előfizetés GUID.
-     - **Szülő-fiók**
-       - Válassza ki a fölérendelt, több fiókot, vagy válassza ki minden.
+       - Usage Cost
+     - **Customer**
+       - Select a specific customer, multiple customers, or select all customers.
+     - **Account Name**
+       - The account or subscription name. In Azure, it is the name of the Azure subscription.
+     - **Account No**
+       - Select an account, multiple accounts, or all accounts. In Azure, it is the Azure subscription’s GUID.
+     - **Parent Account**
+       - Select the parent account, multiple accounts, or select all.
      - **Szolgáltatás**
-       - Jelöljön ki egy szolgáltatást, több szolgáltatást, vagy az összes szolgáltatás.
+       - Select a service, multiple services, or select all services.
      - **Szolgáltató**
-       - A felhőszolgáltató, ahol a eszközök és a költségek tartoznak.
+       - The cloud provider where assets and expenses are associated.
      - **Régió**
-       - Régió, amelyen az erőforrás található.
-     - **Rendelkezésre állási zónában**
-       - Az AWS elkülönített helyek egy adott régión belül.
+       - Region where the resource is hosted.
+     - **Availability Zone**
+       - AWS isolated locations within a region.
      - **Erőforrás típusa**
-       - A használatban lévő erőforrás típusát.
+       - The type of resource in use.
      - **Sub-Type**
-       - Válassza ki a altípusa.
+       - Select the sub-type.
      - **Művelet**
-       - Válassza ki a műveletet, vagy **az összes megjelenítése**.
-     - **Díjszabási modell**
-       - Összes előre
-       - Előre nem.
-       - Részlegesen előre
+       - Select the operation or **Show all**.
+     - **Price Model**
+       - All Upfront
+       - No Upfront
+       - Partial Upfront
        - Igény szerinti
        - Foglalás
-       - Helyszíni
-     - **Díj típusa**
-       - Válassza ki a negatív és pozitív díj típus vagy mindkettőt.
-     - **Bérleti**
-       - Egy gép van futtat-e egy dedikált géppel.
-     - **Használat típusa**
-       - Használati típus lehet egyszeri díjak vagy ismétlődő díjak.
+       - Spot
+     - **Charge Type**
+       - Select Negative or Positive charge type or both.
+     - **Tenancy**
+       - Whether a machine is running as a dedicated machine.
+     - **Usage Type**
+       - Usage type can be one-time fees or recurring fees.
 
-5. **Szűrők**
+5. **Filters**
 
-    Tartományok megadása a kiválasztott értékek egyetlen vagy többszörös kiválasztási szűrőit használhatja. Állítson be egy szűrőt, kattintson a **Hozzáadás** , majd a szűrés kategóriákat és az értékeket.
+    Use single or multi-select filters to set ranges to selected values. To set a filter, click **Add** and then select filter categories and values.
 
-6. **A Cost modell**
+6. **Cost Model**
 
-    Költségmodell segítségével válassza ki a Cost Allocation 360 korábban létrehozott költségmodellt. Lehetséges, hogy a Cloudyn cost több modell, a költségek felosztási követelményeitől függően. Előfordulhat, hogy a szervezeti csoportok némelyike költség foglalási követelményeknek, amelyek eltérnek a mások. Minden egyes csapat rendelkezhet saját dedikált költségmodellt.
+    Use Cost Model to select a cost model that you previously created with Cost Allocation 360. You might have multiple Cloudyn cost models, depending on your cost allocation requirements. Some of your organizational teams might have cost allocation requirements that differ from others. Each team can have their own dedicated cost model.
 
-    Foglalási költség modell definícióját létrehozásával kapcsolatos információkért lásd: [költségek lefoglalása egyéni címkék használatával](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    For information about creating a cost allocation model definition, see [Use custom tags to allocate costs](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-7. **Amortizáció**
+7. **Amortization**
 
-    Nem használati adatok megtekintéséhez a Költséglefoglalási jelentésekben használható amortizációs szolgáltatás költség vagy egyszeri fizetendő alapulnak, és azok költségei eloszlatva egyenletesen azok élettartama során. Példák egyszeri díjak a következők lehetnek:
-    - Éves támogatási díjak
-    - Éves biztonsági összetevők díjak
-    - Fenntartott példányok vásárlására díjak
-    - Néhány Azure Marketplace-elemek.
+    Use Amortization in Cost Allocation reports to view non-usage based service fees or one-time payable costs and spread their cost over time evenly during their lifespan. Examples of one-time fees might include:
+    - Annual support fees
+    - Annual security components fees
+    - Reserved instances purchase fees
+    - Some Azure Marketplace items.
 
-   Amortizáció, válassza a **amortizált költségek** vagy **tényleges költségek**.
+   Under Amortization, select **Amortized cost** or **Actual Cost**.
 
-8. **Felbontás**
+8. **Resolution**
 
-    Megoldás segítségével válassza ki a alkalommal feloldási belül a kijelölt dátumtartományban. A alkalommal feloldási határozza meg, hogyan egységek jelennek meg a jelentést, és lehet:
+    Use Resolution to select the time resolution within the selected date range. Your time resolution determines how units are displayed in the report and can be:
     - Napi
     - Hetente
     - Havi
-    - Negyedévente
+    - Quarterly
     - Éves
 
-9. **Lefoglalási szabályokat**
+9. **Allocation rules**
 
-    Foglalási szabályok segítségével a alkalmazni, vagy tiltsa le a költségek felosztási költségek újraszámítása. Engedélyezheti vagy letilthatja a költségek felosztási újraszámítás számlázási adatok. A jelentés a kiválasztott kategóriákra az újraszámítás vonatkozik. Lehetővé teszi a költségek felosztási újraszámítás hatásának nyers számlázási adatok.
+    Use Allocation Rules to apply or disable the cost allocation cost recalculation. You can enable or disable the cost allocation recalculation for billing data. The recalculation applies to the selected categories in the report. It allows you to assess the cost allocation recalculation impact against raw billing data.
 
-10. **Kategorizálatlan**
+10. **Uncategorized**
 
-    Kategorizálatlan használatával bevonhat vagy kizárhat a jelentésben szereplő Kategorizálatlan költségeket.
+    Use Uncategorized to include or exclude uncategorized costs in the report.
 
-11. **Mezők megjelenítése/elrejtése**
+11. **Show/hide fields**
 
-    A megjelenítése/elrejtése beállítás nincs hatással a jelentésekben.
+    The Show/hide option does not have any effect in reports.
 
-12. **Megjelenítési formátum**
+12. **Display formats**
 
-    Megjelenítési formátum segítségével válassza ki a különböző graph vagy tábla nézetek.
+    Use Display formats to select various graph or table views.
 
-    ![Megjelenítési formátum kiválasztható, szimbólumok](./media/understanding-cost-reports/display-formats.png)
+    ![Symbols of display formats that you can select](./media/understanding-cost-reports/display-formats.png)
 
 13. **Multi-color**
 
-    Több szín használatával a jelentésben szereplő diagramok színének beállítását.
+    Use Multi-color to set the color of charts in your report.
 
 14. **Műveletek**
 
-    Mentse, exportálását és a jelentés ütemezése műveletek használata.
+    Use Actions to save, export, or schedule the report.
 
 15. **Szabályzat**
 
-    Nem szerepel, bár egyes jelentések plánované náklady számítási szabályzat közé tartozik. A jelentésekben a **konszolidált** házirend az összes fiók és -előfizetések az aktuális entitás, például a Microsoft regisztrációs vagy AWS fizető javaslatait mutatja be. A **önálló** házirend egy fiók vagy előfizetés javaslatait mutatja be, mint ha nincs más előfizetés. A szabályzat kiválasztott függ attól, a szervezet által használt optimalizálási stratégia. A Cost leképezések az elmúlt 30 nap használati alapulnak.
+    Although not pictured, some reports include a projected cost calculation policy. In those reports, the **Consolidated** policy shows recommendations for all accounts and subscriptions under the current entity such as Microsoft enrollment or AWS payer. The **Standalone** policy shows recommendations for one account or subscription as if no other subscriptions exist. The policy that you select varies on the optimization strategy used by your organization. Cost projections are based on the last 30 days of usage.
 
-## <a name="save-and-schedule-reports"></a>Mentés és a jelentések ütemezése
+## <a name="save-and-schedule-reports"></a>Save and schedule reports
 
-Miután létrehozott egy jelentést, mentheti későbbi használatra. Mentett jelentések érhetők el a **saját eszközök** > **jelentések mappa**. Ha módosítja egy meglévő jelentés, és mentheti, a jelentés mentése új verzióként. Vagy új jelentésként is mentheti.
+After you create a report, you can save it for future use. Saved reports are available in **My Tools** > **My Reports**. If you make changes to an existing report and save it, the report is saved as a new version. Or, you can save it as a new report.
 
-### <a name="save-a-report-to-the-cloudyn-portal"></a>A Cloudyn portálhoz a jelentés mentése
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Save a report to the Cloudyn portal
 
-Kattintson bármely jelentés megtekintésekor **műveletek** majd **saját jelentések mentése**. Nevezze el a jelentést, és ezután adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Igény szerint is **megosztása** nyilvánosan másokkal a szervezetben, vagy a jelentést megoszthatja azt az entitást. Ha nem oszt meg a jelentést, személyes jelentést is marad, és megtekintheti, hogy csak. Mentse a jelentést.
+While viewing any report, click **Actions** and then select **Save to my reports**. Name the report and then either add a your own URL or use the automatically created URL. You can optionally **Share** the report publicly with others in your organization or you can share it to your entity. If you do not share the report, it remains a personal report and that only you can view. Save the report.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>A felhőalapú tárolási szolgáltató jelentés mentése
+### <a name="save-a-report-to-cloud-provider-storage"></a>Save a report to cloud provider storage
 
-Annak érdekében, hogy a jelentés mentése a felhőszolgáltatóhoz, már konfigurálnia kell egy storage-fiókot. Kattintson bármely jelentés megtekintésekor **műveletek** majd **jelentés ütemezése**. Nevezze el a jelentést, és ezután adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Válassza ki **Storage mentése** majd válassza ki a tárfiókot, vagy vegyen fel egy másikat. Adja meg, amely lekérdezi a jelentés fájlnév fűzött előtagot. Válassza ki a CSV vagy JSON-fájl formátumát, és mentse a jelentést.
+In order to save a report to your cloud service provider, you must have already configured a storage account. While viewing any report, click **Actions** and then select **Schedule report**. Name the report and then either add a your own URL or use the automatically created URL. Select **Save to storage** and then select the storage account or add a new one. Enter a prefix that gets appended to the report file name. Select a CSV or JSON file format and then save the report.
 
-### <a name="schedule-a-report"></a>Jelentés ütemezése
+### <a name="schedule-a-report"></a>Schedule a report
 
-Rendszeres időközönként jelentéseket futtathat, és képes címzett lista vagy a cloud service provider tárfiók küldött. Kattintson bármely jelentés megtekintésekor **műveletek** majd **jelentés ütemezése**. A jelentés elküldése e-mailben, és mentse egy tárfiókba. A **ütemezés**, válassza ki az időköz (naponta, hetente vagy havonta). A heti és havi válassza ki a nap vagy dátumokat elküldésére, és válassza ki az időpontot. Mentse az ütemezett jelentést. Ha az Excel-jelentés formátuma választja, a jelentést küld mellékletként. E-mail formátum tartalmak kiválasztásakor a diagram formájában jelenik meg a jelentés eredményeket gráfként érkeznek.
+You can run reports at scheduled intervals and you can sent them to a recipient list or cloud service provider storage account. While viewing any report, click **Actions** and then select **Schedule report**. You can send the report by email and save to a storage account. Under **Schedule**, select the interval (daily, weekly or monthly). For weekly and monthly, select the day or dates to deliver and select the time. Mentse az ütemezett jelentést. If you select the Excel report format, the report is sent as an attachment. When you select email content format, report results that are displayed in chart format are delivered as a graph.
 
-### <a name="export-a-report-as-a-csv-file"></a>Jelentések exportálása CSV-fájlként
+### <a name="export-a-report-as-a-csv-file"></a>Export a report as a CSV file
 
-Kattintson bármely jelentés megtekintésekor **műveletek** , majd **összes jelentések adatainak exportálása**. Ekkor megjelenik egy előugró ablak, és a egy CSV-fájl letöltése.
+While viewing any report, click **Actions** and then select **Export all report data**. A pop-up window appears and a CSV file is downloaded.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg a jelentéseket, amelyek szerepelnek a Cloudyn [használja a Cloudyn-jelentések](use-reports.md).
-- Megtudhatja, hogyan hozhat létre a jelentések segítségével [irányítópultok](dashboards.md).
+- Learn about the reports that are included in Cloudyn at [Use Cloudyn reports](use-reports.md).
+- Learn about how to use reports to create [dashboards](dashboards.md).

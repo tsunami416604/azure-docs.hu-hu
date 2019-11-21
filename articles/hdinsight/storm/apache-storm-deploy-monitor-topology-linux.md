@@ -1,235 +1,275 @@
 ---
-title: Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
-description: Megtudhatja, hogyan helyezhet üzembe, figyelheti és felügyelheti Apache Storm topológiákat a Linux-alapú HDInsight található Storm irányítópult használatával. A Visual studióhoz készült Hadoop Tools használata.
+title: Deploy and manage Apache Storm topologies on Azure HDInsight
+description: Learn how to deploy, monitor, and manage Apache Storm topologies using the Storm Dashboard on Linux-based HDInsight. Use Hadoop tools for Visual Studio.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/22/2018
-ms.openlocfilehash: 1c219c85836eb4730fa90918385555c433a12449
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 11/07/2019
+ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915102"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228937"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Deploy and manage Apache Storm topologies on Azure HDInsight 
 
-Ebből a dokumentumból megtudhatja, hogyan kezelheti és figyelheti [Apache Storm](https://storm.apache.org/) a Storm on HDInsight-fürtökön futó topológiákat.
+In this document, learn the basics of managing and monitoring [Apache Storm](https://storm.apache.org/) topologies running on Storm on HDInsight clusters.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
+* An Apache Storm cluster on HDInsight. See [Create Apache Hadoop clusters using the Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) and select **Storm** for **Cluster type**.
 
+* (Optional) Familiarity with Secure Shell (SSH) and Secure Copy (SCP). For more information, see [Connect to HDInsight (Apache Hadoop) using SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Választható Az SSH és az SCP ismerete: További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* (Optional) Visual Studio, Azure SDK 2.5.1 or newer, and the Data Lake Tools for Visual Studio. For more information, see [Apache Hadoop & Visual Studio Data Lake Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-* Választható Visual Studio: Az Azure SDK 2.5.1-es vagy újabb verziója, valamint a Visual studióhoz készült Data Lake Tools. További információ: a [Data Lake Tools for Visual Studio használatának első lépései](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+## <a name="submit-a-topology-using-visual-studio"></a>Submit a topology using Visual Studio
 
-    A Visual Studio következő verzióinak egyike:
+You can use the Data Lake Tools for Visual Studio to submit C# or hybrid topologies to your Storm cluster. The following steps use a sample application. For information about topology creation using the Data Lake Tools, see [Apache Storm topologies with Visual Studio and C#](apache-storm-develop-csharp-visual-studio-topology.md).
 
-  * Visual Studio 2012 a 4. frissítéssel
-
-  * Visual Studio 2013 a 4. frissítéssel vagy a [Visual studio 2013 Közösséggel](https://go.microsoft.com/fwlink/?LinkId=517284)
-  * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
-
-  * Visual Studio 2015 (bármely kiadás)
-
-  * Visual Studio 2017 (bármely kiadás). A Visual Studio 2017 Data Lake eszközei az Azure munkaterhelés részeként települnek.
-
-## <a name="submit-a-topology-visual-studio"></a>Topológia elküldése: Visual Studio
-
-A HDInsight-eszközök segítségével elküldheti C# vagy hibrid topológiákat a Storm-fürthöz. A következő lépések egy minta alkalmazást használnak. A HDInsight-eszközök használatával történő létrehozásával kapcsolatos információkért lásd [: C# topológiák fejlesztése a HDInsight Tools for Visual Studio használatával](apache-storm-develop-csharp-visual-studio-topology.md).
-
-1. Ha még nem telepítette a Visual studióhoz készült Data Lake Tools legújabb verzióját, tekintse meg a [Data Lake Tools for Visual Studio használatának első lépéseit](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)ismertető témakört.
+1. If you haven't already installed the latest version of the Data Lake tools for Visual Studio, see [Use Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > A Visual studióhoz készült Data Lake-eszközöket korábban a Visual studióhoz készült HDInsight-eszközök hívták.
+    > The Data Lake Tools for Visual Studio were formerly called the HDInsight Tools for Visual Studio.
     >
-    > A Visual studióhoz készült Data Lake Tools a Visual Studio 2017 __Azure__ -beli számítási feladatának részét képezi.
+    > Data Lake Tools for Visual Studio are included in the **Azure Workload** for Visual Studio 2019.
 
-2. Nyissa meg a Visual studiót, válassza a **fájl** > **új** > **projekt**lehetőséget.
+2. Nyissa meg a Visual Studiót.
 
-3. Az **új projekt** párbeszédpanelen bontsa ki a **telepített** > **sablonok**csomópontot, majd válassza a **HDInsight**lehetőséget. A sablonok listájában válassza a **Storm Sample**elemet. A párbeszédpanel alján adja meg az alkalmazás nevét.
+3. In the **Start** window, select **Create a new project**.
 
-    ![image](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+4. In the **Create a new project** window, select the search box, and enter *Storm*. Then choose **Storm Sample** from the result list and select **Next**.
 
-4. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
+5. In the **Configure your new project** window, enter a **Project name**, and go to or create a **Location** to save the new project in. Ezután kattintson a **Létrehozás** elemre.
 
-   > [!NOTE]  
-   > Ha a rendszer kéri, adja meg az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokat. Ha egynél több előfizetéssel rendelkezik, jelentkezzen be a HDInsight-fürtön található Stormot tartalmazóba.
+    ![Configure your new project window, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-5. Válassza ki a Storm on HDInsight-fürtöt a **Storm-fürt** legördülő listából, majd válassza a **Küldés**lehetőséget. A **kimeneti** ablak segítségével figyelheti, hogy a Küldés sikeres volt-e.
+6. In **Solution Explorer**, right-click the project, and choose **Submit to Storm on HDInsight**.
 
-## <a name="submit-a-topology-ssh-and-the-storm-command"></a>Topológia elküldése: SSH és a Storm parancs
+    > [!NOTE]  
+    > If prompted, enter the login credentials for your Azure subscription. If you have more than one subscription, sign in to the one that contains your Storm on HDInsight cluster.
 
-1. Az SSH használatával csatlakozzon a HDInsight-fürthöz. A **Felhasználónév** helyére írja be az ssh-bejelentkezés nevét. Cserélje le a **CLUSTERNAME** -t a HDInsight-fürt nevére:
+7. In the **Submit Topology** dialog box, under the **Storm Cluster** drop-down list, choose your Storm on HDInsight cluster, and then select **Submit**. You can monitor whether the submission is successful by viewing the **Output** pane.
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Submit a topology using SSH and the Storm command
 
-    Az SSH HDInsight-fürthöz való kapcsolódásával kapcsolatos további információkért lásd: az [SSH használata a HDInsight használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+To submit a topology to Storm using SSH:
 
-2. Használja az alábbi parancsot példatopológia indításához:
+1. Use SSH to connect to the HDInsight cluster. Replace `USERNAME` with the name of your SSH user name (such as *sshuser*). Replace `CLUSTERNAME` with your HDInsight cluster name.
 
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
+    ```shell
+    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-    Ez a parancs elindítja a fürtön a WordCount példatopológiát. Ez a topológia véletlenszerűen generál mondatokat, majd megszámolja az egyes szavak előfordulását a mondatokban.
+    For more information on using SSH to connect to your HDInsight cluster, see [Connect to HDInsight (Apache Hadoop) using SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-   > [!NOTE]  
-   > A topológia a fürtre történő elküldésekor a fürtöt tartalmazó jar-fájlt a `storm` parancs használata előtt kell másolnia. A fájlnak a fürtbe való másolásához használhatja az `scp` parancsot. Például: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
-   >
-   > A WordCount-példa és egyéb Storm Starter-példák megtalálhatóak a fürtön a következő helyen: `/usr/hdp/current/storm-client/contrib/storm-starter/`.
+2. Use the following command to start the *WordCount* example topology:
 
-## <a name="submit-a-topology-programmatically"></a>Topológia beküldése: programozott módon
+    ```ssh
+    storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
+    ```
 
-A Nimbus szolgáltatás használatával programozott módon helyezhet üzembe egy topológiát. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology)egy példás Java-alkalmazást biztosít, amely bemutatja, hogyan helyezhet üzembe és indíthat el topológiát a Nimbus szolgáltatáson keresztül.
+    Ez a parancs elindítja a fürtön a WordCount példatopológiát. This topology randomly generates sentences, and then counts the occurrence of each word in the sentences.
 
-## <a name="monitor-and-manage-visual-studio"></a>Figyelés és kezelés: Visual Studio
+    > [!NOTE]  
+    > When submitting topology to the cluster, you must first copy the .jar file containing the cluster before using the `storm` command. To copy the file to the cluster, you can use the `scp` command. Adja meg például a következőt: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
+    >
+    > The *WordCount* example, and other storm starter examples, are already included on your cluster at `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-Amikor a rendszer a Visual Studióval küldi el a topológiát, megjelenik a **Storm-topológiák** nézet. Válassza ki a topológiát a listából a futó topológiával kapcsolatos információk megtekintéséhez.
+## <a name="submit-a-topology-programmatically"></a>Submit a topology programmatically
 
-![Visual Studio-figyelő](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+You can programmatically deploy a topology using the Nimbus service. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) provides an example Java application that demonstrates how to deploy and start a topology through the Nimbus service.
+
+## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Monitor and manage a topology in Visual Studio
+
+When you submit a topology using Visual Studio, the **Storm Topologies View** window appears. Select the topology from the list to view information about the running topology.
+
+![Monitor topology, Storm Topologies View window, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> A **Storm-topológiákat** a **Server Explorerben** is megtekintheti **Az Azure** > -**HDInsight**kibontásával, majd a jobb gombbal a HDInsight-fürtön található Storm elemre kattintva, majd a **Storm-topológiák megtekintése**lehetőség kiválasztásával.
+> You can also view **Storm Topologies** from **Server Explorer**. Expand **Azure** > **HDInsight**, right-click a Storm on HDInsight cluster, and then select **View Storm Topologies**.
 
-Válassza ki a kiöntő vagy a bolt alakzatát, és tekintse meg az ezen összetevőkre vonatkozó információkat. Megnyílik egy új ablak minden kijelölt elemmel.
+Select the shape for the spouts or bolts to view information about these components. A tooltip with component information appears for the item selected.
 
-### <a name="deactivate-and-reactivate"></a>Inaktiválás és újraaktiválás
+### <a name="deactivate-and-reactivate-a-topology"></a>Deactivate and reactivate a topology
 
-A topológia inaktiválása szünetelteti a felfüggesztést, amíg a rendszer nem távolítja el vagy nem aktiválja újra. Ezeknek a műveleteknek a végrehajtásához használja a __topológia összefoglalásának__tetején található __inaktiválás__ és __újraaktiválás__ gombokat.
+Deactivating a topology pauses it until the topology is killed or reactivated. To do these operations, use the **Deactivate** and **Reactivate** buttons in the **Actions** area at the top of the **Storm Topologies View** window.
 
-### <a name="rebalance"></a>Újra egyensúlyba hozni
+### <a name="rebalance-a-topology"></a>Rebalance a topology
 
-A topológia újraelosztása lehetővé teszi a rendszer számára a topológia párhuzamosságának módosítását. Ha például úgy méretezi át a fürtöt, hogy további megjegyzéseket adjon hozzá, a kiegyenlítő lehetővé teszi, hogy az új csomópontok láthassák a topológiát.
+Rebalancing a topology allows the system to revise the parallelism of the topology. For example, if you've resized the cluster to add more notes, rebalancing allows a topology to see the new nodes.
 
-A topológia újraelosztásához használja a __topológia összegzésének__felső részén található __újraelosztás__ gombot.
+To rebalance a topology, use the **Rebalance** button in the **Actions** area of the **Storm Topologies View** window.
 
 > [!WARNING]  
-> A topológia újraelosztása először inaktiválja a topológiát, majd egyenletesen osztja el a feldolgozókat a fürtön, majd végül visszaadja a topológiát arra az állapotra, amely az újrakiegyensúlyozás előtt volt. Tehát ha a topológia aktív volt, akkor ismét aktívvá válik. Ha inaktiválva van, inaktiválva marad.
+> Rebalancing a topology deactivates the topology, redistributes workers evenly across the cluster, and then returns the topology to the state it was in before rebalancing occurred. If the topology was active, it becomes active again. If the topology was deactivated, it remains deactivated.
 
-### <a name="kill-a-topology"></a>Topológia leölése
+### <a name="kill-a-running-topology"></a>Kill a running topology
 
-A Storm-topológiák addig futnak, amíg le nem állnak, vagy a fürt törlődik. A topológia leállításához használja a __topológia összegzésének__tetején található __kill (ölés__ ) gombot.
+Storm topologies continue running until they're stopped or the cluster is deleted. To stop a topology, use the **Kill** button in the **Actions** area.
 
-## <a name="monitor-and-manage-ssh-and-the-storm-command"></a>Figyelés és kezelés: SSH és a Storm parancs
+## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>Monitor and manage a topology using SSH and the Storm command
 
-A `storm` segédprogram lehetővé teszi, hogy a parancssorból futtassa a futó topológiákat. A `storm -h` parancsok teljes listáját használja.
+The `storm` utility allows you to work with running topologies from the command line. Use `storm -h` for a full list of commands.
 
-### <a name="list-topologies"></a>Topológiák listázása
+### <a name="list-topologies"></a>List topologies
 
-A következő parancs használatával listázhatja az összes futó topológiát:
+Use the following command to list all running topologies:
 
-    storm list
+```shell
+storm list
+```
 
 Ez a parancs az alábbi szöveghez hasonló információt ad vissza:
 
-    Topology_name        Status     Num_tasks  Num_workers  Uptime_secs
-    -------------------------------------------------------------------
-    WordCount            ACTIVE     29         2            263
+```shell
+Topology_name        Status     Num_tasks  Num_workers  Uptime_secs
+-------------------------------------------------------------------
+WordCount            ACTIVE     29         2            263
+```
 
-### <a name="deactivate-and-reactivate"></a>Inaktiválás és újraaktiválás
+### <a name="deactivate-and-reactivate-a-topology"></a>Deactivate and reactivate a topology
 
-A topológia inaktiválása szünetelteti a felfüggesztést, amíg a rendszer nem távolítja el vagy nem aktiválja újra. Az alábbi paranccsal inaktiválhatja és újraaktiválhatja a következő parancsot:
+Deactivating a topology pauses it until the topology is killed or reactivated. Use the following commands to deactivate or reactivate:
 
-    storm Deactivate TOPOLOGYNAME
+```shell
+storm Deactivate TOPOLOGYNAME
+```
 
-    storm Activate TOPOLOGYNAME
+```shell
+storm Activate TOPOLOGYNAME
+```
 
-### <a name="kill-a-running-topology"></a>Futó topológia leölése
+### <a name="kill-a-running-topology"></a>Kill a running topology
 
-Storm-topológiák – az indítás után folytassa a futtatást a Leállításig. A topológia leállításához használja a következő parancsot:
+Storm topologies, once started, continue running until stopped. To stop a topology, use the following command:
 
-    storm kill TOPOLOGYNAME
+```shell
+storm kill TOPOLOGYNAME
+```
 
-### <a name="rebalance"></a>Újra egyensúlyba hozni
+### <a name="rebalance-a-topology"></a>Rebalance a topology
 
-A topológia újraelosztása lehetővé teszi a rendszer számára a topológia párhuzamosságának módosítását. Ha például úgy méretezi át a fürtöt, hogy további megjegyzéseket adjon hozzá, a kiegyenlítő lehetővé teszi, hogy az új csomópontok láthassák a topológiát.
+Rebalancing a topology allows the system to revise the parallelism of the topology. For example, if you've resized the cluster to add more notes, rebalancing allows a topology to see the new nodes.
 
 > [!WARNING]  
-> A topológia újraelosztása először inaktiválja a topológiát, majd egyenletesen osztja el a feldolgozókat a fürtön, majd végül visszaadja a topológiát arra az állapotra, amely az újrakiegyensúlyozás előtt volt. Tehát ha a topológia aktív volt, akkor ismét aktívvá válik. Ha inaktiválva van, inaktiválva marad.
+> Rebalancing a topology deactivates the topology, redistributes workers evenly across the cluster, and then returns the topology to the state it was in before rebalancing occurred. If the topology was active, it becomes active again. If it was deactivated, it remains deactivated.
 
-    storm rebalance TOPOLOGYNAME
+```shell
+storm rebalance TOPOLOGYNAME
+```
 
-## <a name="monitor-and-manage-storm-ui"></a>Figyelés és kezelés: Storm felhasználói felület
+## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Monitor and manage a topology using the Storm UI
 
-A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít a futó topológiákkal való munkavégzéshez. A Storm felhasználói felületének megtekintéséhez nyisson meg **https://CLUSTERNAME.azurehdinsight.net/stormui** egy böngészőt, ahol a **CLUSTERNAME** a fürt neve.
+The Storm UI provides a web interface for working with running topologies, and it's included on your HDInsight cluster. To view the Storm UI, use a web browser to open `https://CLUSTERNAME.azurehdinsight.net/stormui`, where *CLUSTERNAME* is the name of your cluster.
 
 > [!NOTE]  
-> Ha a rendszer felkéri a felhasználónév és a jelszó megadására, a fürt létrehozásakor használt fürtrendszergazda (rendszergazda) nevét és jelszavát adja meg.
+> If you're asked to provide a user name and password, enter the cluster administrator username and password that you used when creating the cluster.
 
-### <a name="main-page"></a>Kezdőlap
+### <a name="storm-ui-main-page"></a>Storm UI main page
 
-A Storm felhasználói felületének fő lapja a következő információkat tartalmazza:
+The main page of the Storm UI provides the following information:
 
-* **Fürt összegzése**: Alapszintű információk a Storm-fürtről.
-* **Topológia összegzése**: A futó topológiák listája. Az ebben a szakaszban található hivatkozásokra kattintva további információkat jeleníthet meg az adott topológiákkal kapcsolatban.
-* **Felügyelői összefoglalás**: A Storm felettesének információi.
-* **Nimbus-konfiguráció**: Nimbus-konfiguráció a fürthöz.
+| Section | Leírás |
+| --- | --- |
+| **Cluster summary** | Basic information about the Storm cluster. |
+| **Nimbus summary** | A list of basic Nimbus information. |
+| **Topology summary** | A list of running topologies. To view more information about a specific topology, select its link in the **Name** column. |
+| **Supervisor summary** | Information about the Storm supervisor. To see the worker resources associated with a specific supervisor, select its link in the **Host** or **Id** column. |
+| **Nimbus configuration** | Nimbus configuration for the cluster. |
 
-### <a name="topology-summary"></a>Topológia összegzése
+The Storm UI main page looks similar to this web page:
 
-A **topológia összegzése** szakasz egy hivatkozásának kiválasztásával az alábbi információk jelennek meg a topológiával kapcsolatban:
+![Main page, Storm UI, Apache Storm topologies, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
-* **Topológia összegzése**: A topológiával kapcsolatos alapvető információk.
-* **Topológiai műveletek**: A topológia számára végrehajtható felügyeleti műveletek.
+#### <a name="topology-summary"></a>Topology summary
 
-  * **Aktiválás**: Folytatja a deaktivált topológia feldolgozását.
-  * **Inaktiválás**: Szünetelteti a futó topológiát.
-  * **Újraelosztás**: A topológia párhuzamosságának módosítása. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Ez a művelet lehetővé teszi, hogy a topológia a párhuzamosságot a fürtben lévő csomópontok megnövekedett vagy csökkenő számának kompenzálására kényszerítse.
+Selecting a link from the **Topology summary** section displays the following information about the topology:
 
-    További információ: <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topológia párhuzamosságának megismerése</a>.
-  * **Kill**: A megadott időkorlát után leállítja a Storm-topológiát.
-* **Topológiai statisztikák**: A topológiával kapcsolatos statisztikák. Az oldalon található többi bejegyzés időkeretének megadásához használja az **ablak** oszlopban található hivatkozásokat.
-* **Kiöntő**: A topológia által használt kiöntők. Az ebben a szakaszban található hivatkozásokra kattintva további információkat jeleníthet meg a kiöntő szolgáltatásról.
-* **Csavarok**: A topológia által használt csavarok. Az ebben a szakaszban található hivatkozásokra kattintva további információkat jeleníthet meg az adott csavarokról.
-* **Topológia konfigurációja**: A kiválasztott topológia konfigurációja.
+| Section | Leírás |
+| --- | --- |
+| **Topology summary** | Basic information about the topology. |
+| **Topology actions** | Management actions that you can do for the topology. The available actions are described later in this section. |
+| **Topology stats** | Statistics about the topology. To set the time frame for an entry in this section, select its link in the **Window** column. |
+| **Spouts** *(time frame)* | The spouts used by the topology. To view more information about a specific spout, select its link in the **Id** column. |
+| **Bolts** *(time frame)* | The bolts used by the topology. To view more information about a specific bolt, select its link in the **Id** column. |
+| **Worker resources** | A list of worker resources. To view more information about a specific worker resource, select its link in the **Host** column. |
+| **Topology visualization** | A **Show Visualization** button that displays a visualization of the topology. |
+| **Topology configuration** | The configuration of the selected topology. |
 
-### <a name="spout-and-bolt-summary"></a>Kiöntő és bolt összefoglalása
+The Storm topology summary page looks similar to this web page:
 
-**A kiöntő vagy a** **boltokból** származó kiöntő kiválasztásakor az alábbi információk jelennek meg a kijelölt elemről:
+![Topology summary page, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
-* **Összetevő összegzése**: Alapszintű információk a kiöntő vagy a boltról.
-* **Kiöntő/bolt statisztikái**: A kiöntő vagy a bolt statisztikája. Az oldalon található többi bejegyzés időkeretének megadásához használja az **ablak** oszlopban található hivatkozásokat.
-* **Bemeneti statisztika** (csak bolt): A bolt által felhasznált bemeneti adatfolyamokra vonatkozó információk.
-* **Kimeneti statisztika**: Információk a kiöntő vagy a bolt által kibocsátott adatfolyamokról.
-* **Végrehajtók**: Információk a kiöntő vagy a bolt példányairól. Egy adott végrehajtó **portjának** kiválasztásával megtekintheti az ehhez a példányhoz létrehozott diagnosztikai információk naplóját.
-* **Hibák**: A kiöntő vagy a boltra vonatkozó bármilyen hiba.
+In the **Topology actions** section, you can select the following buttons to do an action:
 
-## <a name="monitor-and-manage-rest-api"></a>Figyelés és kezelés: REST API
+| Button | Leírás |
+| --- | --- |
+| **Aktiválás** | Resumes processing of a deactivated topology. |
+| **Deactivate** | Pauses a running topology. |
+| **Rebalance** | Adjusts the parallelism of the topology. You should rebalance running topologies after you've changed the number of nodes in the cluster. This operation allows the topology to adjust parallelism to compensate for the additional or reduced number of nodes in the cluster.<br/><br/>For more information, see <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of an Apache Storm topology</a>.
+| **Kill** | Terminates a Storm topology after the specified timeout. |
+| **Hibakeresés** | Begins a debugging session for the running topology. |
+| **Stop Debug** | Ends the debugging session for the running topology. |
+| **Change Log Level** | Modifies the debugging log level. |
 
-A Storm felhasználói felülete a REST APIra épül, így a REST API segítségével hasonló felügyeleti és figyelési funkciókat is elvégezhet. A REST API használatával egyéni eszközöket hozhat létre a Storm-topológiák kezeléséhez és figyeléséhez.
+##### <a name="spout-and-bolt-summary"></a>Spout and bolt summary
 
-További információ: [Apache Storm felhasználói felület REST API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). Az alábbi információk a REST API Apache Storm HDInsight való használatára vonatkoznak.
+Selecting a spout from the **Spouts** or **Bolts** sections displays the following information about the selected item:
+
+| Section | Leírás |
+| --- | --- |
+| **Component summary** | Basic information about the spout or bolt. |
+| **Component actions** | **Debug** and **Stop Debug** buttons. |
+| **Spout stats** or **Bolt stats** | Statistics about the spout or bolt. To set the time frame for an entry in this section, select its link in the **Window** column. |
+| (Bolt-only)<br/>**Input stats** *(time frame)* | Information about the input streams consumed by the bolt. |
+| **Output stats** *(time frame)* | Information about the streams emitted by the spout or bolt. |
+| **Profiling and debugging** | Controls for profiling and debugging the components on this page. You can set the **Status / Timeout (Minutes)** value, and you can select buttons for **JStack**, **Restart Worker**, and **Heap**. |
+| **Executors** *(time frame)* | Information about the instances of the spout or bolt. To view a log of diagnostic information produced for this instance, select the **Port** entry for a specific executor. You can also see the worker resources associated with a specific executor by selecting its link in the **Host** column. |
+| **Errors** | Any error information for the spout or bolt. |
+
+The Storm bolt summary page looks similar to this web page:
+
+![Bolt summary page, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+
+## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Monitor and manage the topology using the REST API
+
+The Storm UI is built on top of the REST API, so you can do similar management and monitoring tasks by using the REST API. You can use the REST API to create custom tools for managing and monitoring Storm topologies.
+
+For more information, see [Apache Storm UI REST API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html). The following information is specific to using the REST API with Apache Storm on HDInsight.
 
 > [!IMPORTANT]  
-> A Storm REST API nem nyilvánosan elérhető az interneten keresztül, és SSH-alagúton keresztül kell elérnie a HDInsight-fürt fő csomópontja számára. Az SSH-alagutak létrehozásával és használatával kapcsolatos információkért lásd: az [SSH-bújtatás használata az Apache Ambari webes felhasználói felület, a erőforráskezelő, a JobHistory, a NameNode, az Apache Oozie és más webes felület eléréséhez](../hdinsight-linux-ambari-ssh-tunnel.md).
+> The Storm REST API is not publicly available over the internet. It must be accessed using an SSH tunnel to the HDInsight cluster head node. For information on creating and using an SSH tunnel, see [Use SSH tunneling to access Azure HDInsight](../hdinsight-linux-ambari-ssh-tunnel.md).
 
-### <a name="base-uri"></a>Alap URI
+### <a name="base-uri"></a>Base URI
 
-A Linux-alapú HDInsight-fürtökön a REST API alap URI-ja elérhető a következő helyen: **https:\//HEADNODEFQDN: 8744/API/v1/** . A fő csomópont tartományneve a fürt létrehozása során jön létre, és nem statikus.
+The base URI for the REST API on Linux-based HDInsight clusters is available at URL address `https://HEADNODEFQDN:8744/api/v1/`, where you replace *HEADNODEFQDN* with the head node. The domain name of the head node is generated during cluster creation and isn't static.
 
-A fürt fő csomópontjának teljes tartományneve (FQDN) több különböző módon is megkereshető:
+You can find the fully qualified domain name (FQDN) for the cluster head node in several ways:
 
-* **Egy SSH-munkamenetből**: Használja a parancsot `headnode -f` egy SSH-munkamenetből a fürtre.
-* **A Ambari web**: Válassza a **szolgáltatások** lehetőséget az oldal tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg.
-* **A Ambari REST API**: A paranccsal `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` információkat kérhet le arról a csomópontról, amelyen a Storm kezelőfelülete és REST API fut. Cserélje le az **CLUSTERNAME** -t a fürt nevére. Ha a rendszer kéri, adja meg a bejelentkezési (rendszergazdai) fiók jelszavát. A válaszban a "host_name" bejegyzés tartalmazza a csomópont teljes tartománynevét.
+| FQDN discovery method | Leírás |
+| --- | --- |
+| SSH session | Use the command `headnode -f` from an SSH session to the cluster. |
+| Ambari Web | On the Ambari cluster web page (`https://CLUSTERNAME.azurehdinsight.net`), select **Services** from the top of the page, then select **Storm**. From the **Summary** tab, select **Storm UI Server**. The FQDN of the node that hosts the Storm UI and REST API is displayed at the top of the page. |
+| Ambari REST API | Use the command `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` to retrieve information about the node that the Storm UI and REST API are running on. Replace the two instances of *CLUSTERNAME* with the cluster name. When you're prompted, enter the password for the user (admin) account. In the response, the "host_name" entry of the JSON output contains the FQDN of the node. |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
-A REST APIra irányuló kérelmeknek **alapszintű hitelesítést**kell használniuk, ezért a HDInsight-fürt rendszergazdájának nevét és jelszavát kell használnia.
+Requests to the REST API must use *basic authentication*, so you have to use the administrator name and password for the HDInsight cluster.
 
 > [!NOTE]  
-> Mivel az egyszerű hitelesítés titkosítatlan szöveggel van ellátva, **mindig** a HTTPS protokollt használja a fürttel folytatott kommunikáció biztonságossá tételéhez.
+> Because basic authentication is sent by using clear text, you should *always* use HTTPS to secure communications with the cluster.
 
-### <a name="return-values"></a>Visszatérési értékek
+### <a name="return-values"></a>Return values
 
-A REST API által visszaadott adatok csak a fürtön belül használhatók. A [Apache ZooKeeper](https://zookeeper.apache.org/) -kiszolgálók által visszaadott teljes tartománynév (FQDN) például nem érhető el az internetről.
+Information that is returned from the REST API may only be usable from within the cluster. For example, the fully qualified domain name (FQDN) returned for [Apache ZooKeeper](https://zookeeper.apache.org/) servers isn't accessible from the internet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [fejleszthet Java-alapú topológiákat az Apache Maven használatával](apache-storm-develop-java-topology.md).
+Learn how to [Develop Java-based topologies using Apache Maven](apache-storm-develop-java-topology.md).
 
-A több példás topológiák listáját itt tekintheti [meg: példa topológiák Apache Storm a HDInsight](apache-storm-example-topology.md).
+For a list of more example topologies, see [Example Apache Storm topologies in Azure HDInsight](apache-storm-example-topology.md).

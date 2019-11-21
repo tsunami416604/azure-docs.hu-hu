@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: az autós árak előrejelzése (alapszintű) példa'
+title: 'Designer: Predict car prices (basic) example'
 titleSuffix: Azure Machine Learning
-description: Hozzon létre egy ML regressziós modellt az autó árának előrejelzéséhez anélkül, hogy egyetlen sor kódot kellene írnia Azure Machine Learning Designer használatával.
+description: Build an ML regression model to predict an automobile's price without writing a single line of code with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,74 +10,74 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: ab922733133856409e7c91ee7b216fdc5a341c06
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 4dfcc76c31452d93d30cd9f2e4c649924b68c203
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196138"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213820"
 ---
-# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>A regresszió használata az autók árának előrejelzéséhez Azure Machine Learning Designer használatával
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Use regression to predict car prices with Azure Machine Learning designer
 
-**Designer (előzetes verzió) 1. minta**
+**Designer (preview) sample 1**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Megtudhatja, hogyan hozhat létre egy gépi tanulási regressziós modellt anélkül, hogy egyetlen sor kódot kellene írnia a tervező (előzetes verzió) használatával.
+Learn how to build a machine learning regression model without writing a single line of code using the designer (preview).
 
-Ez a folyamat egy **döntési erdő regressor** az autó árának előrejelzésére olyan technikai funkciók alapján, mint például a gyártmány, a modell, a lóerő és a méret. Mivel a "mennyit?" kérdésre próbál válaszolni? ezt regressziós problémának nevezzük. Ebben a példában azonban ugyanazok az alapvető lépések alkalmazhatók, hogy bármilyen típusú gépi tanulási probléma feloldható legyen a regresszió, a besorolás, a fürtözés és így tovább.
+This pipeline trains a **decision forest regressor** to predict a car's price based on technical features such as make, model, horsepower, and size. Because you're trying to answer the question "How much?" this is called a regression problem. However, you can apply the same fundamental steps in this example to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
 
-A képzési gépi tanulási modell alapvető lépései a következők:
+The fundamental steps of a training machine learning model are:
 
 1. Az adatok lekérése
-1. Az adatfeldolgozás előkezelése
-1. A modell betanítása
+1. Pre-process the data
+1. A modell tanítása
 1. A modell értékelése
 
-Itt látható a folyamat utolsó, befejezett gráfja. Ez a cikk az összes modul indoklását tartalmazza, így a hasonló döntéseket saját maga is megteheti.
+Here's the final, completed graph of the pipeline. This article provides the rationale for all the modules so you can make similar decisions on your own.
 
-![A folyamat gráfja](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![Graph of the pipeline](media/how-to-designer-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Kattintson az 1. mintára a 。 megnyitásához
+4. Click the sample 1 to open it。
 
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Ez a példa az **Automobile Price (nyers)** adatkészletet használja, amely az UCI Machine learning adattárból származik. Az adatkészlet 26 oszlopot tartalmaz, amely az autókkal kapcsolatos információkat tartalmaz, beleértve a make, a Model, a Price, a jármű funkcióit (például a hengerek számát), az MPG és a biztosítási kockázati pontszámot. A minta célja az autó árának előrejelzése.
+This sample uses the **Automobile price data (Raw)** dataset, which is from the UCI Machine Learning Repository. The dataset contains 26 columns that contain information about automobiles, including make, model, price, vehicle features (like the number of cylinders), MPG, and an insurance risk score. The goal of this sample is to predict the price of the car.
 
-## <a name="pre-process-the-data"></a>Az adatfeldolgozás előkezelése
+## <a name="pre-process-the-data"></a>Pre-process the data
 
-A fő adat-előkészítési feladatok közé tartozik az adatok tisztítása, az integráció, az átalakítás, a csökkentés és a diszkretizálási vagy a kvantálás. A tervezőben megtalálhatja azokat a modulokat, amelyek végrehajtják ezeket a műveleteket, valamint az egyéb adat-előkészítő feladatokat a bal oldali panelen található **Adatátalakítási** csoportban.
+The main data preparation tasks include data cleaning, integration, transformation, reduction, and discretization or quantization. In the designer, you can find modules to perform these operations and other data pre-processing tasks in the **Data Transformation** group in the left panel.
 
-A sok hiányzó értékkel rendelkező normalizált veszteségek kizárásához használja az **adatkészlethez tartozó oszlopok kiválasztása** modult. Ezután a hiányzó **adatok** törlésével távolítsa el a hiányzó értékeket tartalmazó sorokat. Ez segít a betanítási adathalmazok tiszta készletének létrehozásában.
+Use the **Select Columns in Dataset** module to exclude normalized-losses that have many missing values. Then use **Clean Missing Data** to remove the rows that have missing values. This helps to create a clean set of training data.
 
-![Adatfeldolgozás előtti](./media/how-to-ui-sample-regression-predict-automobile-price-basic/data-processing.png)
+![Data pre-processing](./media/how-to-designer-sample-regression-predict-automobile-price-basic/data-processing.png)
 
-## <a name="train-the-model"></a>A modell betanítása
+## <a name="train-the-model"></a>A modell tanítása
 
-A gépi tanulási problémák változhatnak. Az általános gépi tanulási feladatok közé tartoznak a besorolási, fürtözési, regressziós és ajánlott rendszerek, amelyek mindegyike más algoritmust igényelhet. Az Ön által választott algoritmus gyakran a használati eset követelményeitől függ. Az algoritmus kiválasztása után a paramétereket a pontosabb modell betanításához kell hangolnia. Ezután ki kell értékelnie az összes modellt, például a pontosságot, az érthetőséget és a hatékonyságot mutató mérőszámok alapján.
+Machine learning problems vary. Common machine learning tasks include classification, clustering, regression, and recommender systems, each of which might require a different algorithm. Your choice of algorithm often depends on the requirements of the use case. After you pick an algorithm, you need to tune its parameters to train a more accurate model. You then need to evaluate all models based on metrics like accuracy, intelligibility, and efficiency.
 
-Mivel a minta célja a személygépkocsik árának előrejelzése, és mivel a Label (ár) oszlop valós számokat tartalmaz, a regressziós modell jó választás. Figyelembe véve, hogy a szolgáltatások száma viszonylag kicsi (kevesebb, mint 100), és ezek a funkciók nem ritkák, a döntési határ valószínűleg nem lineáris. Ezért ehhez a folyamathoz a **döntési erdő regresszióját** használjuk.
+Since the goal of this sample is to predict automobile prices, and because the label column (price) contains real numbers, a regression model is a good choice. Considering that the number of features is relatively small (less than 100) and these features aren't sparse, the decision boundary is likely to be nonlinear. So we use **Decision Forest Regression** for this pipeline.
 
-Az **adatok felosztása** modul használatával véletlenszerűen oszthatja meg a bemeneti adatokat, így a betanítási adatkészlet az eredeti adatok 70%-át, a tesztelési adatkészlet pedig az eredeti adatok 30%-át tartalmazza.
+Use the **Split Data** module to randomly divide the input data so that the training dataset contains 70% of the original data and the testing dataset contains 30% of the original data.
 
-## <a name="test-evaluate-and-compare"></a>Tesztelés, kiértékelés és összehasonlítás
+## <a name="test-evaluate-and-compare"></a>Test, evaluate, and compare
 
-Ossza fel az adatkészletet, és használjon különböző adatkészleteket a modell betanításához és teszteléséhez, hogy a modell kiértékelése még nagyobb legyen.
+Split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
 
-A modell betanítása után használhatja a **pontszám modellt** , és **kiértékelheti a modell** moduljait az előre jelzett eredmények létrehozásához és a modellek kiértékeléséhez.
+After the model is trained, you can use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models.
 
-A **score Model** a betanított modell használatával generál előrejelzéseket a teszt adatkészlethez. Az eredmény ellenőrzéséhez válassza ki a **pontszám modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
+**Score Model** generates predictions for the test dataset by using the trained model. To check the result, select the output port of **Score Model** and then select **Visualize**.
 
-![Pontszám eredménye](./media/how-to-ui-sample-regression-predict-automobile-price-basic/score-result.png)
+![Score result](./media/how-to-designer-sample-regression-predict-automobile-price-basic/score-result.png)
 
-Értékelje ki a pontszámokat a **modell kiértékelése** modulban értékelési mérőszámok létrehozásához. Az eredmény ellenőrzéséhez válassza ki a **kiértékelési modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
+Pass the scores to the **Evaluate Model** module to generate evaluation metrics. To check the result, select the output port of the **Evaluate Model** and then select **Visualize**.
 
-![Eredmény kiértékelése](./media/how-to-ui-sample-regression-predict-automobile-price-basic/evaluate-result.png)
+![Evaluate result](./media/how-to-designer-sample-regression-predict-automobile-price-basic/evaluate-result.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -85,11 +85,11 @@ A **score Model** a betanított modell használatával generál előrejelzéseke
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg a tervező számára elérhető egyéb mintákat:
+Explore the other samples available for the designer:
 
-- [2. minta – regresszió: algoritmusok összehasonlítása az autó árának előrejelzéséhez](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [3. minta – besorolás a szolgáltatás kiválasztásával: bevétel előrejelzése](how-to-designer-sample-classification-predict-income.md)
-- [4. minta – besorolás: a hitelkockázat előrejelzése (a Cost szenzitív)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [5. példa – besorolás: forgalom előrejelzése](how-to-designer-sample-classification-churn.md)
-- [6. példa – besorolás: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)
-- [7. minta – szöveges besorolás: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

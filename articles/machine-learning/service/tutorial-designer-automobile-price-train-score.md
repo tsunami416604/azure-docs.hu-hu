@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: az autó árának előrejelzése a tervezővel'
+title: 'Tutorial: Predict automobile price with the designer'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan lehet a gépi tanulási modellt betanítani, bemutatni és üzembe helyezni egy drag-and-drop interfész használatával. Ez az oktatóanyag egy kétrészes sorozat első része, amely az autó árát lineáris regresszió használatával Jósolja meg.
+description: Learn how to train, score, and deploy a machine learning model by using a drag-and-drop interface. This tutorial is part one of a two-part series on predicting automobile prices by using linear regression.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,214 +9,214 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929652"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228412"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Predict automobile price with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ebben a kétrészes oktatóanyagban megtudhatja, hogyan hozhat létre és helyezhet üzembe egy prediktív elemzési megoldást a Azure Machine Learning Designer használatával, amely előre jelezheti a személygépkocsik árát. 
+In this two-part tutorial, you learn how to use the Azure Machine Learning designer to develop and deploy a predictive analytics solution that predicts the price of any car. 
 
-Az első részen beállíthatja a környezetet, a modulokat egy interaktív vászonra húzhatja, és összekapcsolhatja őket egy Azure Machine Learning folyamat létrehozásához.
+In part one, you set up your environment, drag modules onto an interactive canvas, and connect them together to create an Azure Machine Learning pipeline.
 
-Az oktatóanyag első részében az alábbiakkal fog elsajátítani:
+In part one of the tutorial, you'll learn how to:
 
 > [!div class="checklist"]
-> * Hozzon létre egy új folyamatot.
-> * Importálja az adatimportálást.
-> * Készítse elő az adatfeldolgozást.
-> * Gépi tanulási modell betanítása.
-> * A Machine learning-modell kiértékelése.
+> * Create a new pipeline.
+> * Import data.
+> * Prepare data.
+> * Train a machine learning model.
+> * Evaluate a machine learning model.
 
-Az oktatóanyag [második részében](tutorial-designer-automobile-price-deploy.md) megtudhatja, hogyan helyezheti üzembe a prediktív modelljét valós idejű következtetési végpontként, hogy az Ön által elküldött technikai specifikációk alapján előre megjósolja az autó árát. 
+In [part two](tutorial-designer-automobile-price-deploy.md) of the tutorial, you'll learn how to deploy your predictive model as a real-time inferencing endpoint to predict the price of any car based on technical specifications you send it. 
 
 > [!NOTE]
->Az oktatóanyag befejezett verziója minta folyamatként érhető el.
+>A completed version of this tutorial is available as a sample pipeline.
 >
->A kereséshez nyissa meg a tervezőt a munkaterületen. Az **új folyamat** szakaszban válassza az **1. minta – regresszió: autó árának előrejelzése (alapszintű)** lehetőséget.
+>To find it, go to the designer in your workspace. In the **New pipeline** section, select **Sample 1 - Regression: Automobile Price Prediction(Basic)** .
 
-## <a name="create-a-new-pipeline"></a>Új folyamat létrehozása
+## <a name="create-a-new-pipeline"></a>Create a new pipeline
 
-Azure Machine Learning folyamatok több, függő gépi tanulási és adatfeldolgozási lépést szerveznek egyetlen erőforrásba. A folyamatok segítségével összetett gépi tanulási munkafolyamatokat szervezheti, kezelheti és használhatja fel a projektek és a felhasználók számára. Azure Machine Learning folyamat létrehozásához Azure Machine Learning munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
+Azure Machine Learning pipelines organize multiple, dependent machine learning and data processing steps into a single resource. Pipelines help you organize, manage, and reuse complex machine learning workflows across projects and users. To create an Azure Machine Learning pipeline, you need an Azure Machine Learning workspace. In this section, you learn how to create both these resources.
 
-### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
+### <a name="create-a-new-workspace"></a>Create a new workspace
 
-Ha vállalati kiadással rendelkező Azure Machine Learning munkaterülettel rendelkezik, [ugorjon a következő szakaszra](#create-the-pipeline).
+If you have an Azure Machine Learning workspace with an Enterprise edition, [skip to the next section](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>A folyamat létrehozása
 
-1. Jelentkezzen be a [ml.Azure.com](https://ml.azure.com)-be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
+1. Sign in to [ml.azure.com](https://ml.azure.com), and select the workspace you want to work with.
 
-1. Válassza a **tervező**lehetőséget.
+1. Select **Designer**.
 
-    ![A tervező elérését bemutató vizualizációs munkaterület képernyőképe](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
+    ![Screenshot of the visual workspace showing how to access the designer](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
-1. Válassza **a könnyen használható előre elkészített modulok**elemet.
+1. Select **Easy-to-use prebuilt modules**.
 
-1. Válassza ki a vászon tetején **lévő alapértelmezett folyamat neve folyamatot** . Nevezze át valami értelmesre. Ilyen például az *autó árának előrejelzése*. A névnek nem kell egyedinek lennie.
+1. Select the default pipeline name **Pipeline-Created-on** at the top of the canvas. Rename it to something meaningful. An example is *Automobile price prediction*. A névnek nem kell egyedinek lennie.
 
 ## <a name="import-data"></a>Adatok importálása
 
-A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben az oktatóanyagban használja az **Automobile Price (nyers) adatkészletet**. 
+There are several sample datasets included in the designer for you to experiment with. For this tutorial, use **Automobile price data (Raw)** . 
 
-1. Az adatkészletek és modulok palettájának bal oldalán található. Válassza az **adatkészletek**lehetőséget, majd tekintse meg a **minták** szakaszt az elérhető minta-adatkészletek megtekintéséhez.
+1. To the left of the pipeline canvas is a palette of datasets and modules. Select **Datasets**, and then view the **Samples** section to view the available sample datasets.
 
-1. Válassza ki az adatkészlet **Automobile Price (nyers) adatokat**, és húzza rá a vászonra.
+1. Select the dataset **Automobile price data (Raw)** , and drag it onto the canvas.
 
-   ![Az adathúzás vászonra](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
+   ![Drag data to canvas](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>Az adatok vizualizációja
 
-Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet.
+You can visualize the data to understand the dataset that you'll use.
 
-1. Válassza ki a **személygépkocsi-árlista (RAW)** modult.
+1. Select the **Automobile price data (Raw)** module.
 
-1. A vászontól jobbra található Tulajdonságok ablaktáblán válassza a **kimenetek**lehetőséget.
+1. In the properties pane to the right of the canvas, select **Outputs**.
 
-1. Válassza ki a Graph ikont az adatmegjelenítéshez.
+1. Select the graph icon to visualize the data.
 
-    ![Az adatok vizualizációja](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
+    ![Az adatok vizualizációja](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
-1. Válassza ki az adatablak különböző oszlopait az egyes adatok megtekintéséhez.
+1. Select the different columns in the data window to view information about each one.
 
-    Minden sor egy személygépkocsit jelöl, és az egyes autókhoz társított változók oszlopként jelennek meg. Ebben az adatkészletben 205 sor és 26 oszlop található.
+    Each row represents an automobile, and the variables associated with each automobile appear as columns. There are 205 rows and 26 columns in this dataset.
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 
-Az adatkészletek általában némi előfeldolgozást igényelnek az elemzés előtt. Előfordulhat, hogy néhány hiányzó értéket észlelt az adatkészlet vizsgálata során. Ezeket a hiányzó értékeket meg kell tisztítani, hogy a modell helyesen elemezze az adatok elemzését.
+Datasets typically require some preprocessing before analysis. You might have noticed some missing values when you inspected the dataset. These missing values must be cleaned so that the model can analyze the data correctly.
 
 ### <a name="remove-a-column"></a>Oszlop eltávolítása
 
-A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az adatkészletben a **normalizált veszteségek** oszlop sok értéket tartalmaz, ezért a modellből kizárhatja az adott oszlopot.
+When you train a model, you have to do something about the data that's missing. In this dataset, the **normalized-losses** column is missing many values, so you exclude that column from the model altogether.
 
-1. A paletta tetején található keresőmezőbe írja be a **Kiválasztás elemet** , hogy megtalálja a **Select Columns elemet az adatkészlet** modulban.
+1. Enter **Select** in the search box at the top of the palette to find the **Select Columns in Dataset** module.
 
-1. Húzza az **Oszlopok kiválasztása az adatkészlet** modulban elemet a vászonra. Dobja el a modult az adatkészlet modul alatt.
+1. Drag the **Select Columns in Dataset** module onto the canvas. Drop the module below the dataset module.
 
-1. Csatlakoztassuk az **Automobile Price (nyers)** adatkészletet az **adathalmaz-modul Select oszlopaihoz** . Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása**bemeneti portjára, amely a modul tetején lévő kis kör.
+1. Connect the **Automobile price data (Raw)** dataset to the **Select Columns in Dataset** module. Drag from the dataset's output port, which is the small circle at the bottom of the dataset on the canvas, to the input port of **Select Columns in Dataset**, which is the small circle at the top of the module.
 
     > [!TIP]
-    > Az adatáramlás a folyamaton keresztül jön létre, amikor egy modul kimeneti portját egy másik bemeneti porthoz kapcsolja.
+    > You create a flow of data through your pipeline when you connect the output port of one module to an input port of another.
     >
 
-    ![Modulok összekapcsolása](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+    ![Connect modules](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
+1. Select the **Select Columns in Dataset** module.
 
-1. A vászontól jobbra található Tulajdonságok ablaktáblán válassza a **paraméterek** > **oszlop szerkesztése**lehetőséget.
+1. In the properties pane to the right of the canvas, select **Parameters** > **Edit column**.
 
-1. Új szabály hozzáadásához válassza ki a **+** .
+1. Select the **+** to add a new rule.
 
-1. A legördülő menüben válassza a **kizárás** és **oszlopnevek**lehetőséget.
+1. From the drop-down menu, select **Exclude** and **Column names**.
     
-1. Adja meg a *normalizált – veszteségeket* a szövegmezőben.
+1. Enter *normalized-losses* in the text box.
 
-1. A jobb alsó sarokban kattintson a **Mentés** gombra az oszlop választójának bezárásához.
+1. In the lower right, select **Save** to close the column selector.
 
-    ![Oszlop kizárása](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Exclude a column](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
-    A Tulajdonságok panelen látható, hogy a **normalizált veszteségek** oszlop ki van zárva.
+    The properties pane shows that the **normalized-losses** column is excluded.
 
-1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget. 
+1. Select the **Select Columns in Dataset** module. 
 
-1. A Tulajdonságok ablaktáblán válassza a **paraméterek** > a **Megjegyzés** lehetőséget, és adja meg a *normalizált veszteségek kizárása*beállítást.
+1. In the properties pane, select **Parameters** > **Comment** and enter *Exclude normalized losses*.
 
-### <a name="clean-missing-data"></a>Hiányzó adatértékek törlése
+### <a name="clean-missing-data"></a>Clean missing data
 
-A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet továbbra is hiányzó értékeket tartalmaz. A fennmaradó hiányzó adatelemet a **tiszta hiányzó** adatmodul használatával távolíthatja el.
+Your dataset still has missing values after you remove the **normalized-losses** column. You can remove the remaining missing data by using the **Clean Missing Data** module.
 
 > [!TIP]
-> A bemeneti adatokból hiányzó értékek tisztítása előfeltétel a legtöbb modul a Designerben való használatához.
+> Cleaning the missing values from input data is a prerequisite for using most of the modules in the designer.
 
-1. A **tiszta hiányzó** adatmodul megtalálásához a keresőmezőbe írja be a **tisztítás** kifejezést.
+1. Enter **Clean** in the search box to find the **Clean Missing Data** module.
 
-1. Húzza a **tiszta hiányzó** adatmodult a folyamat vászonra. Kapcsolódjon az **adathalmaz-modul Select oszlopaihoz** . 
+1. Drag the **Clean Missing Data** module to the pipeline canvas. Connect it to the **Select Columns in Dataset** module. 
 
-1. A Tulajdonságok panelen válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
+1. In the properties pane, select **Remove entire row** under **Cleaning mode**.
 
-1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be a *hiányzó érték sorok eltávolítása értéket*. 
+1. In the properties pane **Comment** box, enter *Remove missing value rows*. 
 
-    A folyamatnak ekkor a következőhöz hasonlóan kell kinéznie:
+    Your pipeline should now look something like this:
     
-    ![oszlop kijelölése](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
+    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
-## <a name="train-a-machine-learning-model"></a>Gépi tanulási modell betanítása
+## <a name="train-a-machine-learning-model"></a>Train a machine learning model
 
-Most, hogy feldolgozta az adatfeldolgozást, elvégezheti a prediktív modell betanítását.
+Now that the data is processed, you can train a predictive model.
 
 ### <a name="select-an-algorithm"></a>Algoritmus kiválasztása
 
-A *besorolás* és a *regresszió* két algoritmus, amelynek segítségével felügyelt gépi tanítás valósítható meg. A besorolás egy adott kategóriába tartozó, például piros, kék vagy zöld színű választ ad meg. A rendszer a számok előrejelzésére regressziós módszert használ.
+A *besorolás* és a *regresszió* két algoritmus, amelynek segítségével felügyelt gépi tanítás valósítható meg. Classification predicts an answer from a defined set of categories, such as a color like red, blue, or green. A rendszer a számok előrejelzésére regressziós módszert használ.
 
-Mivel előre jelezni szeretné az árat, ami egy szám, regressziós algoritmust is használhat. Ebben a példában egy lineáris regressziós modellt használunk.
+Because you want to predict price, which is a number, you can use a regression algorithm. For this example, you use a linear regression model.
 
-### <a name="split-the-data"></a>Az adatfelosztás
+### <a name="split-the-data"></a>Split the data
 
-Ossza meg az adatait két külön adatkészletbe a modell betanításához és teszteléséhez.
+Split your data into two separate datasets for training the model and testing it.
 
-1. Az **Adatfelosztási** modul megkereséséhez írja be a **feldarabolt** adatelemet a keresőmezőbe. Csatlakozás a **tiszta hiányzó** adatmodul bal oldali portjához.
+1. Enter **split data** in the search box to find the **Split Data** module. Connect it to the left port of the **Clean Missing Data** module.
 
-1. Válassza ki az **Adatfelosztási** modult.
+1. Select the **Split Data** module.
 
-1. A Tulajdonságok ablaktáblában állítsa az **első kimeneti adatkészletben lévő sorok töredékét** 0,7-re.
+1. In the properties pane, set the **Fraction of rows in the first output dataset** to 0.7.
 
-    Ez a beállítás az adatmennyiség 70 százalékát felbontja a modell betanításához, valamint 30 százalékot a teszteléshez.
+    This option splits 70 percent of the data to train the model and 30 percent for testing it.
 
-1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be *az adatkészlet felosztása betanítási készletbe (0,7) és a test set (0,3)* értéket.
+1. In the properties pane **Comment** box, enter *Split the dataset into training set (0.7) and test set (0.3)* .
 
-### <a name="train-the-model"></a>A modell betanítása
+### <a name="train-the-model"></a>A modell tanítása
 
-A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az árat. A modell megkeresi az adatforrásokat, és összefüggéseket keres az autó funkciói és a modell kiépítése között.
+Train the model by giving it a set of data that includes the price. The model scans through the data and looks for correlations between a car's features and its price to construct a model.
 
-1. A tanulási algoritmus kiválasztásához törölje a modul-paletta keresési mezőjét.
+1. To select the learning algorithm, clear your module palette search box.
 
-1. **Machine learning algoritmusok**kibontása.
+1. Expand **Machine Learning Algorithms**.
     
-    Ez a beállítás számos, a tanulási algoritmusok inicializálására használható modul-kategóriát jelenít meg.
+    This option displays several categories of modules that you can use to initialize learning algorithms.
 
-1. Válassza a **regresszió** > a **lineáris regresszió**lehetőséget, majd húzza a folyamat vászonra.
+1. Select **Regression** > **Linear Regression**, and drag it to the pipeline canvas.
 
-1. Keresse meg és húzza a **Train Model** modult a folyamat vászonra. 
+1. Find and drag the **Train Model** module to the pipeline canvas. 
 
-1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
+1. Connect the output of the **Linear Regression** module to the left input of the **Train Model** module.
 
-1. Kapcsolja össze az **adatok felosztása** modul betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
+1. Connect the training data output (left port) of the **Split Data** module to the right input of the **Train Model** module.
 
-    ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
+    ![Screenshot showing the correct configuration of the Train Model module. The Linear Regression module connects to left port of Train Model module and the Split Data module connects to right port of Train Model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Válassza ki a **Train Model** modult.
+1. Select the **Train Model** module.
 
-1. A Tulajdonságok ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
+1. In the properties pane, select **Edit column** selector.
 
-1. Az **oszlop felirata** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. 
+1. In the **Label column** dialog box, expand the drop-down menu and select **Column names**. 
 
-1. A szövegmezőbe írja be az *Ár*értéket. Az ár az az érték, amelyet a modell előre meg fog jósolni.
+1. In the text box, enter *price*. Price is the value that your model is going to predict.
 
-    A folyamatnak így kell kinéznie:
+    Your pipeline should look like this:
 
-    ![Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
+    ![Screenshot showing the correct configuration of the pipeline after adding the Train Model module.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Gépi tanulási modell kiértékelése
+## <a name="evaluate-a-machine-learning-model"></a>Evaluate a machine learning model
 
-Miután az adatok 70 százalékával betanítja a modellt, a másik 30 százalékra kiterjedően megtekintheti, hogy a modell milyen jól működik.
+After you train your model by using 70 percent of the data, you can use it to score the other 30 percent to see how well your model functions.
 
-1. A **pontszám modell** modul megkereséséhez írja be a *score Model* kifejezést a keresőmezőbe. Húzza a modult a folyamat vászonra. 
+1. Enter *score model* in the search box to find the **Score Model** module. Drag the module to the pipeline canvas. 
 
-1. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az **adatforráshoz** tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
+1. Connect the output of the **Train Model** module to the left input port of **Score Model**. Connect the test data output (right port) of the **Split Data** module to the right input port of **Score Model**.
 
-1. A **modell kiértékelése** modul megkereséséhez írja be a *kiértékelés* kifejezést a keresőmezőbe. Húzza a modult a folyamat vászonra. 
+1. Enter *evaluate* in the search box to find the **Evaluate Model** module. Drag the module to the pipeline canvas. 
 
-1. A **pontszám modell** modul kimenetének összekötése a **modell kiértékelésének**bal oldali bemenetével. 
+1. Connect the output of the **Score Model** module to the left input of **Evaluate Model**. 
 
-    Az utolsó folyamatnak a következőképpen kell kinéznie:
+    The final pipeline should look something like this:
 
-    ![A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+    ![Screenshot showing the correct configuration of the pipeline.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>A folyamat futtatása
 
@@ -224,29 +224,29 @@ Miután az adatok 70 százalékával betanítja a modellt, a másik 30 százalé
 
 ### <a name="view-results"></a>Eredmények megtekintése
 
-A Futtatás után megtekintheti a folyamat futtatásának eredményét. 
+After the run completes, you can view the results of the pipeline run. 
 
-1. A **pontszám modell** modul kiválasztásával megtekintheti a kimenetét.
+1. Select the **Score Model** module to view its output.
 
-1. A Tulajdonságok ablaktáblán válassza a **kimenetek** > **Megjelenítés**elemet.
+1. In the properties pane, select **Outputs** > **Visualize**.
 
-    Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
+    Here you can see the predicted prices and the actual prices from the testing data.
 
-    ![Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![Screenshot of the output visualization highlighting the Scored Label column](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
-1. Válassza ki a **modell kiértékelése** modult a kimenet megtekintéséhez.
+1. Select the **Evaluate Model** module to view its output.
 
-1. A Tulajdonságok ablaktáblán válassza a **kimenet** > **Megjelenítés**elemet.
+1. In the properties pane, select **Output** > **Visualize**.
 
-A modellhez a következő statisztikák láthatók:
+The following statistics are shown for your model:
 
-* Átlagos **abszolút hiba (Mae)** : az abszolút hibák átlaga. Hiba a várt érték és a tényleges érték közötti különbség.
-* **Legfelső szintű, négyzetes hiba (gyökátlagos)** : a tesztelési adatkészleten végrehajtott jóslatok átlagának négyzetes gyökere.
+* **Mean Absolute Error (MAE)** : The average of absolute errors. An error is the difference between the predicted value and the actual value.
+* **Root Mean Squared Error (RMSE)** : The square root of the average of squared errors of predictions made on the test dataset.
 * **Relative Absolute Error** (relatív abszolút eltérés): a tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
 * **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.
-* **Meghatározási együttható**: az R négyzetes értékként is ismert, ez a statisztikai metrika azt jelzi, hogy milyen jól illeszkedik a modell az adatokhoz.
+* **Coefficient of Determination**: Also known as the R squared value, this statistical metric indicates how well a model fits the data.
 
-Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb érték azt jelzi, hogy a jóslatok közelebb vannak a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
+Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A smaller value indicates that the predictions are closer to the actual values. For the coefficient of determination, the closer its value is to one (1.0), the better the predictions.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -254,14 +254,14 @@ Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag első részében a következő feladatokat végezte el:
+In part one of this tutorial, you completed the following tasks:
 
 * Folyamat létrehozása
 * Az adatok előkészítése
-* A modell betanítása
-* A modell pontszáma és kiértékelése
+* A modell tanítása
+* Score and evaluate the model
 
-A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
+In part two, you'll learn how to deploy your model as a real-time endpoint.
 
 > [!div class="nextstepaction"]
-> [Modellek üzembe helyezésének folytatása](tutorial-designer-automobile-price-deploy.md)
+> [Continue to deploying models](tutorial-designer-automobile-price-deploy.md)

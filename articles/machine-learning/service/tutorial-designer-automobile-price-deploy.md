@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel'
+title: 'Tutorial: Deploy a machine learning model with the designer'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben (előzetes verzió). A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
+description: Learn how to build a predictive analytics solution in Azure Machine Learning designer (preview). Train, score, and deploy a machine learning model by using drag-and-drop modules.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,112 +9,112 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 50ee0ad78ae0e54071d90c8118a1989f306b59e6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932042"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224921"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Deploy a machine learning model with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az első részben betanított egy modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
+You can deploy the predictive model developed in [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to give others a chance to use it. In part one, you trained your model. Now, it's time to generate new predictions based on user input. In this part of the tutorial, you will:
 
 > [!div class="checklist"]
-> * Valós idejű következtetési folyamat létrehozása.
-> * Hozzon létre egy következtetésben lévő fürtöt.
-> * A valós idejű végpont üzembe helyezése.
-> * Tesztelje a valós idejű végpontot.
+> * Create a real-time inference pipeline.
+> * Create an inferencing cluster.
+> * Deploy the real-time endpoint.
+> * Test the real-time endpoint.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Az oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) megismerheti, hogyan végezheti el a gépi tanulási modellek betanítását és kiértékelését a tervezőben.
+Complete [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to learn how to train and score a machine learning model in the designer.
 
-## <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
+## <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-A folyamat üzembe helyezéséhez először át kell alakítania a betanítási folyamatot egy valós idejű következtetési folyamatba. Ez a folyamat eltávolítja a betanítási modulokat, és bemeneteket és kimeneteket ad a következtetésekhez.
+To deploy your pipeline, you must first convert the training pipeline into a real-time inference pipeline. This process removes training modules and adds inputs and outputs for inferencing requests.
 
-### <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
+### <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-1. A csővezeték fölött válassza a **következtetési folyamat létrehozása** > a **valós idejű következtetések folyamata**lehetőséget.
+1. Above the pipeline canvas, select **Create inference pipeline** > **Real-time inference pipeline**.
 
-    A folyamatnak most így kell kinéznie: 
+    Your pipeline should now look like this: 
 
-   ![Képernyőfelvétel a folyamat várható konfigurációjának megjelenítéséről az üzembe helyezés előkészítése után](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Screenshot showing the expected configuration of the pipeline after preparing it for deployment](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Amikor kiválasztja a **következtetési folyamat létrehozása**lehetőséget, több dolog történik:
+    When you select **Create inference pipeline**, several things happen:
     
-    * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
-    * A képzési modulok, például a **betanítási modell** és a **felosztott adategységek** törlődnek.
-    * A rendszer visszaadja a mentett betanított modellt a folyamatba.
-    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok azt mutatják be, hogy a felhasználói adattípusok hol kerülnek be a modellbe, és hol adja vissza az
+    * The trained model is stored as a **Dataset** module in the module palette. You can find it under **My Datasets**.
+    * Training modules like **Train Model** and **Split Data** are removed.
+    * The saved trained model is added back into the pipeline.
+    * **Web Service Input** and **Web Service Output** modules are added. These modules show where user data enters the model and where data is returned.
 
     > [!NOTE]
-    > A *betanítási folyamat* a folyamat vászonjának tetején található új lapon lesz mentve. A tervezőben közzétett folyamatként is megtalálhatók.
+    > The *training pipeline* is saved under the new tab at the top of the pipeline canvas. It can also be found as a published pipeline in the designer.
     >
 
-1. Válassza a **Futtatás**lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
+1. Select **Run**, and use the same compute target and experiment that you used in part one.
 
-1. Válassza ki a **pontszám modell** modult.
+1. Select the **Score Model** module.
 
-1. A Tulajdonságok ablaktáblán válassza a **kimenetek** > **Megjelenítés** elemet annak ellenőrzéséhez, hogy a modell továbbra is működik-e. Láthatja, hogy az eredeti adatértékek az előre jelzett árral ("pontozásos címkék") együtt jelennek meg.
+1. In the properties pane, select **Outputs** > **Visualize** to verify the model is still working. You can see the original data is displayed along with the predicted price ("Scored Labels").
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
-## <a name="create-an-inferencing-cluster"></a>Következtetési fürt létrehozása
+## <a name="create-an-inferencing-cluster"></a>Create an inferencing cluster
 
-A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(ak-) fürtből kiválaszthatja a modell üzembe helyezését. Ha nem rendelkezik AK-fürttel, a következő lépésekkel hozhat létre egyet.
+In the dialog box that appears, you can select from any existing Azure Kubernetes Service (AKS) clusters to deploy your model to. If you don't have an AKS cluster, use the following steps to create one.
 
-1. A **számítási** lapon megjelenő párbeszédpanelen kattintson a **számítás** elemre.
+1. Select **Compute** in the dialog box that appears to go to the **Compute** page.
 
-1. A navigációs menüszalagon válassza a **következtetési fürtök** >  **+ új**lehetőséget.
+1. On the navigation ribbon, select **Inference Clusters** >  **+ New**.
 
-    ![Az új következtetési fürt ablaktábla beszerzését bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![Screenshot showing how to get to the new inference cluster pane](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
-1. A következtetési fürt ablaktáblán konfigurálja az új Kubernetes szolgáltatást.
+1. In the inference cluster pane, configure a new Kubernetes Service.
 
-1. Írja be a következőt: *Kaba-számítás* a **számítási névhez**.
+1. Enter *aks-compute* for the **Compute name**.
     
-1. Válasszon egy közeli régiót, amely elérhető a **régió**számára.
+1. Select a nearby region that's available for the **Region**.
 
 1. Kattintson a **Létrehozás** gombra.
 
     > [!NOTE]
-    > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot megtekintheti a **következtetési fürtök** oldalon.
+    > It takes approximately 15 minutes to create a new AKS service. You can check the provisioning state on the **Inference Clusters** page.
     >
 
-## <a name="deploy-the-real-time-endpoint"></a>A valós idejű végpont üzembe helyezése
+## <a name="deploy-the-real-time-endpoint"></a>Deploy the real-time endpoint
 
-Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós idejű következtetési folyamatra az üzembe helyezés befejezéséhez.
+After your AKS service has finished provisioning, return to the real-time inferencing pipeline to complete deployment.
 
-1. Válassza a vászon fölötti **üzembe helyezés** lehetőséget.
+1. Select **Deploy** above the canvas.
 
-1. Válassza az **új valós idejű végpont telepítése**lehetőséget. 
+1. Select **Deploy new real-time endpoint**. 
 
-1. Válassza ki a létrehozott AK-fürtöt.
+1. Select the AKS cluster you created.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
-    ![Az új valós idejű végpont beállítását bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Screenshot showing how to set up a new real-time endpoint](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
-    Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
+    A success notification above the canvas appears after deployment finishes. It might take a few minutes.
 
-## <a name="test-the-real-time-endpoint"></a>A valós idejű végpont tesztelése
+## <a name="test-the-real-time-endpoint"></a>Test the real-time endpoint
 
-Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti a valós idejű végpontot.
+After deployment finishes, you can test your real-time endpoint by going to the **Endpoints** page.
 
-1. A **végpontok** lapon válassza ki a telepített végpontot.
+1. On the **Endpoints** page, select the endpoint you deployed.
 
-    ![Képernyőfelvétel: a valós idejű végpontok lap, amely a legutóbb létrehozott végpontot mutatja](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![Screenshot showing the real-time endpoints tab with the recently created endpoint highlighted](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
-1. Válassza a **teszt**lehetőséget.
+1. Select **Test**.
 
-1. Manuálisan is beírhatja a tesztelési adatokat, vagy használhatja az autofilled Sample-adatokat, és kiválaszthatja a **teszt**lehetőséget.
+1. You can manually input testing data or use the autofilled sample data, and select **Test**.
 
-    A portál egy teszt kérelmet küld a végpontnak, és megjeleníti az eredményeket. Bár a bemeneti adatokhoz érték jön létre, a rendszer nem használja fel az előrejelzési érték generálására.
+    The portal submits a test request to the endpoint and shows the results. Although a price value is generated for the input data, it isn't used to generate the prediction value.
 
-    ![Képernyőfelvétel: a valós idejű végpont és az emelt szintű címke tesztelése](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![Screenshot showing how to test the real-time endpoint with the scored label for price highlighted](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -122,7 +122,7 @@ Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
+In this tutorial, you learned the key steps in how to create, deploy, and consume a machine learning model in the designer. To learn more about how you can use the designer to solve other types of problems, see our other sample pipelines.
 
 > [!div class="nextstepaction"]
-> [Hitelkockázat besorolási minta](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [Credit risk classification sample](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)

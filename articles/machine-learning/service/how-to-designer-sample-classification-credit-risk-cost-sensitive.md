@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: hitelkockázat előrejelzése – példa'
+title: 'Designer: Predict credit risk example'
 titleSuffix: Azure Machine Learning
-description: Osztályozó készítése és egyéni Python-parancsfájlok használata a hitelkockázat előrejelzéséhez Azure Machine Learning Designer használatával.
+description: Build a classifier and use custom Python scripts to predict credit risk using Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: f174ed995b043ef99d22a0a292e9b5be394029a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196092"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214288"
 ---
-# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Osztályozó & létrehozása Python-parancsfájlok használatával a hitelkockázat előrejelzéséhez Azure Machine Learning Designer használatával
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Build a classifier & use Python scripts to predict credit risk using Azure Machine Learning designer
 
-**Designer (előzetes verzió) 4. minta**
+**Designer (preview) sample 4**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot a Designer (előzetes verzió) használatával. Megismerheti, hogyan hozhat létre egyéni logikát Python-szkriptek használatával, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
+This article shows you how to build a complex machine learning pipeline using the designer (preview). You'll learn how to implement custom logic using Python scripts and compare multiple models to choose the best option.
 
-Ez a példa egy osztályozó beosztásával Jósolja meg a hitelkockázat-használati adatokat, például a kreditek előzményeit, az életkort és a hitelkártyák számát. A cikkben szereplő fogalmakat azonban a saját gépi tanulási problémák megoldására is alkalmazhatja.
+This sample trains a classifier to predict credit risk using credit application information such as credit history, age, and number of credit cards. However, you can apply the concepts in this article to tackle your own machine learning problems.
 
-Itt látható a folyamathoz tartozó befejezett gráf:
+Here's the completed graph for this pipeline:
 
-[a folyamat ![gráfja](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. A megnyitásához kattintson a 4. minta elemre.
+4. Click sample 4 to open it.
 
 ## <a name="data"></a>Adatok
 
-Ez a példa a németországi hitelkártya-adatkészletet használja az UC Irvine adattárból. 1 000 mintát tartalmaz 20 funkcióval és egy címkével. Mindegyik minta egy személyt jelöl. A 20 funkció számszerű és kategorikus funkciókat tartalmaz. Az adatkészletről az [UCI webhelyén](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)talál további információt. Az utolsó oszlop a címkéje, amely a hitelkockázat kialakulását jelöli, és csak két lehetséges értékkel rendelkezik: magas hitelkockázati kockázat = 2, és alacsony hitelkockázat = 1.
+This sample uses the German Credit Card dataset from the UC Irvine repository. It contains 1,000 samples with 20 features and one label. Each sample represents a person. The 20 features include numerical and categorical features. For more information about the dataset, see the [UCI website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). The last column is the label, which denotes the credit risk and has only two possible values: high credit risk = 2, and low credit risk = 1.
 
-## <a name="pipeline-summary"></a>Folyamat összegzése
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Ebben a folyamatban a probléma megoldásához két különböző megközelítést hasonlít össze a modellek létrehozásához:
+In this pipeline, you compare two different approaches for generating models to solve this problem:
 
-- Képzés az eredeti adatkészlettel.
-- Betanítás replikált adatkészlettel.
+- Training with the original dataset.
+- Training with a replicated dataset.
 
-Mindkét megközelítéssel kiértékeli a modelleket úgy, hogy a tesztelési adatkészletet használja a replikációval, így biztosítva, hogy az eredmények összhangban legyenek a Cost függvénnyel. Tesztelje a két osztályt mindkét módszerrel: **kétosztályos támogatású vektoros gép** és **kétosztályos, megnövelt döntési fa**.
+With both approaches, you evaluate the models by using the test dataset with replication to ensure that results are aligned with the cost function. Test two classifiers with both approaches: **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
 
-Az alacsony kockázatú példa magas szintű beosztályozásának díja 1, a magas kockázatú példa pedig alacsony érték esetén pedig az 5. Ezt a helytelen besorolási költségeket a **Python-szkriptek** futtatására szolgáló modul segítségével vesszük figyelembe.
+The cost of misclassifying a low-risk example as high is 1, and the cost of misclassifying a high-risk example as low is 5. We use an **Execute Python Script** module to account for this misclassification cost.
 
-Itt látható a folyamat gráfja:
+Here's the graph of the pipeline:
 
-[a folyamat ![gráfja](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Adatfeldolgozás
 
-A **metaadatok szerkesztő** moduljának használatával megkezdheti az oszlopnevek hozzáadását az alapértelmezett oszlopnevek és az UCI-beli adatkészlet leírásában beszerzett, pontosabb nevek helyett. Adja meg az új oszlopnevek vesszővel elválasztott értékként a **metaadat-szerkesztő** **új oszlop** neve mezőjében.
+Start by using the **Metadata Editor** module to add column names to replace the default column names with more meaningful names, obtained from the dataset description on the UCI site. Provide the new column names as comma-separated values in the **New column** name field of the **Metadata Editor**.
 
-Ezután hozza létre a kockázati előrejelzési modell fejlesztéséhez használt képzési és tesztelési csoportokat. Az **Adatfelosztási** modul használatával Ossza szét az eredeti adatkészletet a betanítási és tesztelési készletekbe. Az egyenlő méretű készletek létrehozásához állítsa a **sorok töredékét az első kimeneti adatkészletben** a 0,7 értékre.
+Next, generate the training and test sets used to develop the risk prediction model. Split the original dataset into training and test sets of the same size by using the **Split Data** module. To create sets of equal size, set the **Fraction of rows in the first output dataset** option to 0.7.
 
-### <a name="generate-the-new-dataset"></a>Az új adatkészlet előállítása
+### <a name="generate-the-new-dataset"></a>Generate the new dataset
 
-Mivel a kockázatok kiszámításának díja magas, a következőhöz hasonló módon állíthatja be a téves besorolás költségeit:
+Because the cost of underestimating risk is high, set the cost of misclassification like this:
 
-- Magas kockázatú esetekben az alacsony kockázatnak minősülő esetek: 5
-- Alacsony kockázatú esetekben a nagy kockázatú esetek: 1
+- For high-risk cases misclassified as low risk: 5
+- For low-risk cases misclassified as high risk: 1
 
-Ahhoz, hogy tükrözze ezt a Cost függvényt, egy új adatkészletet állítson elő. Az új adatkészletben az egyes magas kockázatú példák öt alkalommal replikálódnak, de az alacsony kockázatú példák száma nem változik. A replikáció előtt Ossza szét az adatokat képzésre és tesztelési adatkészletekre, hogy ne kelljen mindkét készletben azonos sort kialakítani.
+To reflect this cost function, generate a new dataset. In the new dataset, each high-risk example is replicated five times, but the number of low-risk examples doesn't change. Split the data into training and test datasets before replication to prevent the same row from being in both sets.
 
-A magas kockázatú adatforrások replikálásához helyezze ezt a Python-kódot egy **Execute Python parancsfájl** -modulba:
+To replicate the high-risk data, put this Python code into an **Execute Python Script** module:
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-A **Python-szkript végrehajtása** modul a betanítási és tesztelési adatkészleteket is replikálja.
+The **Execute Python Script** module replicates both the training and test datasets.
 
 ### <a name="feature-engineering"></a>Jellemzőkiemelés
 
-A **kétosztályos támogatás vektoros gépi** algoritmusához Normalizált érték szükséges. Ezért a **normalizálás** adatmodul használatával normalizálja az összes numerikus funkció tartományát egy `tanh` átalakítással. A `tanh` átalakítás az összes numerikus funkciót egy 0 és 1 tartományba eső értékre konvertálja, miközben az értékek teljes eloszlását megőrzi.
+The **Two-Class Support Vector Machine** algorithm requires normalized data. So use the **Normalize Data** module to normalize the ranges of all numeric features with a `tanh` transformation. A `tanh` transformation converts all numeric features to values within a range of 0 and 1 while preserving the overall distribution of values.
 
-A **kétosztályos támogatású vektoros gépi** modul kezeli a karakterlánc-funkciókat, átalakítja azokat a kategorikus funkciókra, majd a bináris funkciókra, amelyek értéke nulla vagy egy. Így nem szükséges a funkciók normalizálása.
+The **Two-Class Support Vector Machine** module handles string features, converting them to categorical features and then to binary features with a value of zero or one. So you don't need to normalize these features.
 
 ## <a name="models"></a>Modellek
 
-Mivel két besorolást alkalmazott, a **kétosztályos támogató vektoros gép** (SVM) és a **kétosztályos kibővített döntési fa**, valamint két adatkészlet összesen négy modellt hoz majd ki:
+Because you applied two classifiers, **Two-Class Support Vector Machine** (SVM) and **Two-Class Boosted Decision Tree**, and two datasets, you generate a total of four models:
 
-- A SVM az eredeti adattal van kiképezve.
-- A replikált SVM betanítva.
-- Megnövelt döntési fa, amely az eredeti adattal lett kiképezve.
-- A megerősített döntési fa replikált adattal van kiképezve.
+- SVM trained with original data.
+- SVM trained with replicated data.
+- Boosted Decision Tree trained with original data.
+- Boosted Decision Tree trained with replicated data.
 
-Ez a példa a szabványos adatelemzési munkafolyamatot használja a modellek létrehozásához, betanításához és teszteléséhez:
+This sample uses the standard data science workflow to create, train, and test the models:
 
-1. Inicializálja a tanulási algoritmusokat a **kétosztályos támogatású vektoros gép** és a **kétosztályos kibővített döntési fa**használatával.
-1. A **Train Model** használatával alkalmazza az algoritmust az adatokra, és hozza létre a tényleges modellt.
-1. A **pontszám modell** használatával pontszámokat hozhat létre a tesztelési példák alapján.
+1. Initialize the learning algorithms, using **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
+1. Use **Train Model** to apply the algorithm to the data and create the actual model.
+1. Use **Score Model** to produce scores by using the test examples.
 
-Az alábbi ábrán a folyamat egy része látható, amelyben az eredeti és a replikált betanítási készletek két különböző SVM-modell betanítására szolgálnak. A betanítási **modell** a betanítási készlethez csatlakozik, és a **pontszám modell** a tesztelési készlethez van csatlakoztatva.
+The following diagram shows a portion of this pipeline, in which the original and replicated training sets are used to train two different SVM models. **Train Model** is connected to the training set, and **Score Model** is connected to the test set.
 
-![Folyamat gráf](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Pipeline graph](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-A folyamat kiértékelési szakaszában a négy modell pontosságát számítja ki. Ehhez a folyamathoz a **kiértékelési modell** használatával hasonlítsa össze azokat a példákat, amelyeknek azonos a téves besorolási díja.
+In the evaluation stage of the pipeline, you compute the accuracy of each of the four models. For this pipeline, use **Evaluate Model** to compare examples that have the same misclassification cost.
 
-A **modell kiértékelése** modul a teljesítmény mérőszámait akár két gólt is kiszámíthatja. Így a **modell kiértékelésének** egyik példányával kiértékelheti a két SVM modellt és a **modell** egy másik példányát, hogy kiértékelje a két Kiemelt döntési fa modelljét.
+The **Evaluate Model** module can compute the performance metrics for as many as two scored models. So you can use one instance of **Evaluate Model** to evaluate the two SVM models and another instance of **Evaluate Model** to evaluate the two Boosted Decision Tree models.
 
-Figyelje meg, hogy a rendszer a replikált tesztelési adatkészletet használja a **pontszám modell**bemenetként. Más szóval a végső pontossági pontszámok tartalmazzák a címkék hibás beolvasásának költségeit.
+Notice that the replicated test dataset is used as the input for **Score Model**. In other words, the final accuracy scores include the cost for getting the labels wrong.
 
-## <a name="combine-multiple-results"></a>Több eredmény egyesítése
+## <a name="combine-multiple-results"></a>Combine multiple results
 
-A **modell kiértékelése** modul olyan táblázatot hoz létre, amely egy sor különböző metrikákat tartalmaz. A pontossági eredmények egyetlen készletének létrehozásához először a **sorok hozzáadása** lehetőséget használjuk az eredmények egyetlen táblába való összevonásához. Ezután az alábbi Python-szkriptet használjuk a **Python szkript végrehajtása** modulban a modell nevének és a betanítási módszernek a táblázat minden egyes sorához való hozzáadásához:
+The **Evaluate Model** module produces a table with a single row that contains various metrics. To create a single set of accuracy results, we first use **Add Rows** to combine the results into a single table. We then use the following Python script in the **Execute Python Script** module to add the model name and training approach for each row in the table of results:
 
 ```Python
 import pandas as pd
@@ -140,19 +140,19 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
-A folyamat eredményének megtekintéséhez kattintson a jobb gombbal az adatkészlet modul utolsó **Select oszlopának** vizualizáció kimenetére.
+To view the results of the pipeline, you can right-click the Visualize output of the last **Select Columns in Dataset** module.
 
-![Kimenet megjelenítése](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Visualize output](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-Az első oszlop felsorolja a modell létrehozásához használt gépi tanulási algoritmust.
+The first column lists the machine learning algorithm used to generate the model.
 
-A második oszlop a betanítási készlet típusát jelöli.
+The second column indicates the type of the training set.
 
-A harmadik oszlop a költséghatékony pontossági értéket tartalmazza.
+The third column contains the cost-sensitive accuracy value.
 
-Ezekből az eredményekből láthatja, hogy a legjobb pontosságot a **kétosztályos támogatású vektoros géppel** létrehozott modell adta meg, és a replikált betanítási adatkészletre van kiképezve.
+From these results, you can see that the best accuracy is provided by the model that was created with **Two-Class Support Vector Machine** and trained on the replicated training dataset.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -160,11 +160,11 @@ Ezekből az eredményekből láthatja, hogy a legjobb pontosságot a **kétoszt�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg a tervező számára elérhető egyéb mintákat:
+Explore the other samples available for the designer:
 
-- [1. példa – regresszió: az autó árának előrejelzése](how-to-designer-sample-regression-automobile-price-basic.md)
-- [2. minta – regresszió: algoritmusok összehasonlítása az autó árának előrejelzéséhez](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [3. minta – besorolás a szolgáltatás kiválasztásával: bevétel előrejelzése](how-to-designer-sample-classification-predict-income.md)
-- [5. példa – besorolás: forgalom előrejelzése](how-to-designer-sample-classification-churn.md)
-- [6. példa – besorolás: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)
-- [7. minta – szöveges besorolás: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

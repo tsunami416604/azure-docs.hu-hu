@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Hibaelhárítási hibák a szinkronizálás során | Microsoft Docs'
-description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure AD Connect használatával végzett szinkronizálás során fellépő hibákat.
+title: 'Azure AD Connect: Troubleshooting Errors during synchronization | Microsoft Docs'
+description: Explains how to troubleshoot errors encountered during synchronization with Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,40 +15,40 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fc25cffde264a5c9c9e9627bbf4b72ccda60673
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290865"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213030"
 ---
-# <a name="troubleshooting-errors-during-synchronization"></a>Hibaelhárítási hibák a szinkronizálás során
-Hibák merülhetnek fel, ha a rendszer a Windows Server Active Directory (AD DS) identitási adatait szinkronizálja a Azure Active Directory (Azure AD) szolgáltatásba. Ez a cikk áttekintést nyújt a különböző típusú szinkronizálási hibákról, a hibákat okozó lehetséges forgatókönyvekről és a hibák kijavításának lehetséges módjairól. Ez a cikk a gyakori hibákat tartalmazza, és nem feltétlenül fedi le az összes lehetséges hibát.
+# <a name="troubleshooting-errors-during-synchronization"></a>Troubleshooting Errors during synchronization
+Errors could occur when identity data is synchronized from Windows Server Active Directory (AD DS) to Azure Active Directory (Azure AD). This article provides an overview of different types of sync errors, some of the possible scenarios that cause those errors and potential ways to fix the errors. This article includes the common error types and may not cover all the possible errors.
 
- Ez a cikk azt feltételezi, hogy az olvasó ismeri az [Azure ad és a Azure ad Connect alapjául szolgáló tervezési fogalmakat](plan-connect-design-concepts.md).
+ This article assumes the reader is familiar with the underlying [design concepts of Azure AD and Azure AD Connect](plan-connect-design-concepts.md).
 
-A Azure ad Connect \(augusztus 2016-es vagy újabb\)verziójának legújabb verziójával a szinkronizálási hibákról szóló jelentés a Azure ad Connect Health szinkronizálásának részeként érhető el a [Azure Portal](https://aka.ms/aadconnecthealth) .
+With the latest version of Azure AD Connect \(August 2016 or higher\), a report of Synchronization Errors is available in the [Azure portal](https://aka.ms/aadconnecthealth) as part of Azure AD Connect Health for sync.
 
-2016. szeptember 1-től a [Azure Active Directory duplikált attribútum rugalmassági](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkciója alapértelmezés szerint engedélyezve lesz az összes *új* Azure Active Directory-bérlő esetében. A szolgáltatás a következő hónapokban automatikusan engedélyezve lesz a meglévő bérlők számára.
+Starting September 1, 2016 [Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) feature will be enabled by default for all the *new* Azure Active Directory Tenants. This feature will be automatically enabled for existing tenants in the upcoming months.
 
-A Azure AD Connect három típusú műveletet hajt végre a szinkronizált könyvtárakból: Importálás, szinkronizálás és exportálás. A hibák az összes művelet során elhelyezhetők. Ez a cikk elsősorban az Azure AD-ba való exportálás során felmerülő hibákra koncentrál.
+Azure AD Connect performs three types of operations from the directories it keeps in sync: Import, Synchronization, and Export. Errors can take place in all the operations. This article mainly focuses on errors during Export to Azure AD.
 
-## <a name="errors-during-export-to-azure-ad"></a>Hibák az Azure AD-ba való exportálás során
-A következő szakasz az Azure ad-összekötő használatával az exportálási művelet során fellépő különböző típusú szinkronizálási hibákat ismerteti. Ezt az összekötőt a "contoso" néven lehet azonosítani. *onmicrosoft.com*".
-Az Azure ad-ba való exportálás során felmerülő hibák azt jelzik, hogy \(a művelet a Azure Active Directory nem tudta\) felvenni, frissíteni, törölni stb.\) kísérletet tett Azure ad Connect \(szinkronizálási motor.
+## <a name="errors-during-export-to-azure-ad"></a>Errors during Export to Azure AD
+Following section describes different types of synchronization errors that can occur during the export operation to Azure AD using the Azure AD connector. This connector can be identified by the name format being "contoso.*onmicrosoft.com*".
+Errors during Export to Azure AD indicate that the operation \(add, update, delete etc.\) attempted by Azure AD Connect \(Sync Engine\) on Azure Active Directory failed.
 
-![Exportálási hibák áttekintése](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
+![Export Errors Overview](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
 
-## <a name="data-mismatch-errors"></a>Az adateltérési hibák
+## <a name="data-mismatch-errors"></a>Data Mismatch Errors
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
 #### <a name="description"></a>Leírás
-* Ha Azure ad Connect \(szinkronizáló motor\) arra utasítja a Azure Active Directory, hogy objektumokat adjon hozzá vagy frissít, az Azure ad a **sourceAnchor** attribútumot használja az Azure-beli objektumok **immutableId** attribútumához. AD. Ezt a megfeleltetést **nehéz egyezésnek**nevezzük.
-* Ha az Azure AD nem **talál** olyan objektumot, amely megfelel a **immutableId** attribútumnak a bejövő objektum **sourceAnchor** attribútumával, az új objektum kiépítés előtt visszaesik a ProxyAddresses és a userPrincipalName használatára. a találatok keresésére szolgáló attribútumok. Ezt a megfeleltetést **lágy egyezésnek**nevezzük. A puha egyezés úgy van kialakítva, hogy megfeleljen az Azure AD-ben már meglévő objektumoknak (amelyek az Azure AD-ben vannak kiadva) a szinkronizálás során hozzáadott/frissített objektumok, amelyek ugyanazt az entitást (felhasználókat, csoportokat) képviselik a helyszínen.
-* **InvalidSoftMatch** hiba történik, ha a rögzített egyezés nem talál egyező objektumot **, és** a Soft Match megkeresi a megfelelő objektumot, de az objektum a *immutableId* eltérő értékkel rendelkezik, mint a bejövő objektum *SourceAnchor*, arra utal, hogy a megfelelő objektum szinkronizálása a helyszíni Active Directory egy másik objektumával történik.
+* When Azure AD Connect \(sync engine\) instructs Azure Active Directory to add or update objects, Azure AD matches the incoming object using the **sourceAnchor** attribute to the **immutableId** attribute of objects in Azure AD. This match is called a **Hard Match**.
+* When Azure AD **does not find** any object that matches the **immutableId** attribute with the **sourceAnchor** attribute of the incoming object, before provisioning a new object, it falls back to use the ProxyAddresses and UserPrincipalName attributes to find a match. This match is called a **Soft Match**. The Soft Match is designed to match objects already present in Azure AD (that are sourced in Azure AD) with the new objects being added/updated during synchronization that represent the same entity (users, groups) on premises.
+* **InvalidSoftMatch** error occurs when the hard match does not find any matching object **AND** soft match finds a matching object but that object has a different value of *immutableId* than the incoming object's *SourceAnchor*, suggesting that the matching object was synchronized with another object from on premises Active Directory.
 
-Vagyis ahhoz, hogy a Soft Match működjön, a nem megfelelő értéknek kell lennie a *immutableId*. Ha bármely olyan objektum, amelynél *immutableId* van beállítva, akkor a művelet InvalidSoftMatch szinkronizációs hibát eredményezhet, ha nem felel meg a rögzített feltételeknek.
+In other words, in order for the soft match to work, the object to be soft-matched with should not have any value for the *immutableId*. If any object with *immutableId* set with a value is failing the hard-match but satisfying the soft-match criteria, the operation would result in an InvalidSoftMatch synchronization error.
 
-Azure Active Directory séma nem teszi lehetővé két vagy több objektum számára a következő attribútumok azonos értékét. \(Ez nem kimerítő lista.\)
+Azure Active Directory schema does not allow two or more objects to have the same value of the following attributes. \(This is not an exhaustive list.\)
 
 * ProxyAddresses
 * UserPrincipalName
@@ -56,195 +56,195 @@ Azure Active Directory séma nem teszi lehetővé két vagy több objektum szám
 * ObjectId
 
 > [!NOTE]
-> Az [Azure ad attribútum duplikált attribútumának rugalmassági](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkcióját a Azure Active Directory alapértelmezett viselkedése is kivezeti.  Ez csökkenti a Azure AD Connect (és más szinkronizálási ügyfelek) által látott szinkronizálási hibák számát azáltal, hogy az Azure AD-t rugalmasabban kezeli a helyszíni AD-környezetekben található duplikált ProxyAddresses és UserPrincipalName attribútumok kezelése során. Ez a funkció nem javítja az ismétlődési hibákat. Így továbbra is rögzíteni kell az adatmennyiséget. Lehetővé teszi azonban az olyan új objektumok kiépített kihelyezését, amelyek egyébként le vannak tiltva az Azure AD-ben duplikált értékek miatt. Ez a művelet csökkenti a szinkronizációs ügyfélnek visszaküldött szinkronizálási hibák számát is.
-> Ha ez a funkció engedélyezve van a bérlő számára, nem fogja látni az új objektumok kiépítés során észlelt InvalidSoftMatch szinkronizálási hibákat.
+> [Azure AD Attribute Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) feature is also being rolled out as the default behavior of Azure Active Directory.  This will reduce the number of synchronization errors seen by Azure AD Connect (as well as other sync clients) by making Azure AD more resilient in the way it handles duplicated ProxyAddresses and UserPrincipalName attributes present in on premises AD environments. This feature does not fix the duplication errors. So the data still needs to be fixed. But it allows provisioning of new objects which are otherwise blocked from being provisioned due to duplicated values in Azure AD. This will also reduce the number of synchronization errors returned to the synchronization client.
+> If this feature is enabled for your Tenant, you will not see the InvalidSoftMatch synchronization errors seen during provisioning of new objects.
 >
 >
 
-#### <a name="example-scenarios-for-invalidsoftmatch"></a>Példák a InvalidSoftMatch
-1. Két vagy több, a ProxyAddresses attribútummal megegyező értékkel rendelkező objektum létezik a helyszíni Active Directoryban. Csak egy van kiépítve az Azure AD-ben.
-2. Két vagy több, a userPrincipalName attribútummal azonos értékkel rendelkező objektum létezik a helyszíni Active Directoryban. Csak egy van kiépítve az Azure AD-ben.
-3. Egy objektum lett hozzáadva a helyszíni Active Directory a ProxyAddresses attribútummal megegyező értékkel, mint a Azure Active Directory egy meglévő objektuma. A helyszínen hozzáadott objektum nem lesz kiépítve a Azure Active Directoryban.
-4. Egy objektum lett hozzáadva a helyszíni Active Directory a userPrincipalName attribútummal megegyező értékkel, mint a Azure Active Directory-fiókban. Az objektum nem lesz kiépítve a Azure Active Directoryban.
-5. Egy szinkronizált fiók lett áthelyezve az A erdőből a B erdőbe. Azure AD Connect (szinkronizáló motor) a ObjectGUID attribútum használatával számítja ki a SourceAnchor. Az erdő áthelyezése után a SourceAnchor értéke eltér. Az új objektum (a B erdőből) nem tud szinkronizálni az Azure AD-ben meglévő objektummal.
-6. Egy szinkronizált objektum véletlenül törölve lett a helyszíni Active Directoryból, és egy új objektum lett létrehozva a Active Directoryban ugyanahhoz az entitáshoz (például a felhasználóhoz), a fiók törlése nélkül Azure Active Directory. Az új fiók nem tud szinkronizálni a meglévő Azure AD-objektummal.
-7. A Azure AD Connect el lett távolítva és újratelepítette. Az újratelepítés során egy másik attribútum lett kiválasztva SourceAnchor. A korábban szinkronizált összes objektum leállt a InvalidSoftMatch hibával való szinkronizálással.
+#### <a name="example-scenarios-for-invalidsoftmatch"></a>Example Scenarios for InvalidSoftMatch
+1. Two or more objects with the same value for the ProxyAddresses attribute exist in on-premises Active Directory. Only one is getting provisioned in Azure AD.
+2. Two or more objects with the same value for the userPrincipalName attribute exists in on-premises Active Directory. Only one is getting provisioned in Azure AD.
+3. An object was added in the on premises Active Directory with the same value of ProxyAddresses attribute as that of an existing object in Azure Active Directory. The object added on premises is not getting provisioned in Azure Active Directory.
+4. An object was added in on premises Active Directory with the same value of userPrincipalName attribute as that of an account in Azure Active Directory. The object is not getting provisioned in Azure Active Directory.
+5. A synced account was moved from Forest A to Forest B. Azure AD Connect (sync engine) was using ObjectGUID attribute to compute the SourceAnchor. After the forest move, the value of the SourceAnchor is different. The new object (from Forest B) is failing to sync with the existing object in Azure AD.
+6. A synced object got accidentally deleted from on premises Active Directory and a new object was created in Active Directory for the same entity (such as user) without deleting the account in Azure Active Directory. The new account fails to sync with the existing Azure AD object.
+7. Azure AD Connect was uninstalled and reinstalled. During the reinstallation, a different attribute was chosen as the SourceAnchor. All the objects that had previously synced stopped syncing with InvalidSoftMatch error.
 
-#### <a name="example-case"></a>Példa:
-1. **Bob Smith** egy szinkronizált felhasználó Azure Active Directory a helyszíni Active Directory *contoso.com*
-2. Bob Smith **userPrincipalName** a **bobot\@contoso.com**van beállítva.
-3. a **"abcdefghijklmnopqrstuv = ="** a Azure ad Connect által kiszámított **SourceAnchor** , amelyet Bob Smith **ObjectGUID** használ a helyszíni Active Directory, amely a Azure Active Directoryban található Bob Smith **immutableId** .
-4. Bob a következő értékeket is tartalmazta a **ProxyAddresses** attribútumhoz:
-   * SMTP-bobs@contoso.com
-   * SMTP-bob.smith@contoso.com
-   * **SMTP: Bob\@contoso.com**
-5. Egy új felhasználó, **Bob Taylor**, hozzá lesz adva a helyszíni Active Directoryhoz.
-6. Bob Taylor **userPrincipalName** **bobt\@contoso.com**van beállítva.
-7. a **"abcdefghijkl0123456789 = ="** "a Azure ad Connect által kiszámított **SourceAnchor** , amelyet Bob Taylor **ObjectGUID** használ a helyszíni Active Directory. Bob Taylor objektuma még nem lett szinkronizálva Azure Active Directory.
-8. A Bob Taylor a következő értékeket tartalmazta a proxyAddresses attribútumhoz:
-   * SMTP-bobt@contoso.com
-   * SMTP-bob.taylor@contoso.com
-   * **SMTP: Bob\@contoso.com**
-9. A szinkronizálás során Azure AD Connect felismeri a Bob Taylor hozzáadását a helyszíni Active Directory, és megkéri az Azure AD-t, hogy végezze el ugyanezt a módosítást.
-10. Az Azure AD először a rögzített egyezést fogja végrehajtani. Ez azt eredményezi, hogy megkeresi, hogy van-e olyan objektum, amelynek immutableId egyenlő a "abcdefghijkl0123456789 = =" értékkel. A rögzített egyezés sikertelen lesz, mert az Azure AD-ben nincs más objektum a immutableId.
-11. Az Azure AD ezután megkísérli a Soft-Match Bob Taylor-egyeztetést. Ez azt eredményezi, hogy megkeresi, hogy van-e olyan objektum, amely proxyAddresses egyenlő a három értékkel, beleértve az SMTP-t:bob@contoso.com
-12. Az Azure AD megkeresi a Bob Smith objektumát, hogy megfeleljen a Soft-Match feltételnek. Ez az objektum azonban a immutableId = "abcdefghijklmnopqrstuv = =" értékkel rendelkezik. Ez azt jelzi, hogy ez az objektum a helyszíni Active Directory egy másik objektumáról lett szinkronizálva. Az Azure AD ezért nem képes az ilyen objektumok **InvalidSoftMatch** , és egy szinkronizálási hibát eredményez.
+#### <a name="example-case"></a>Example case:
+1. **Bob Smith** is a synced user in Azure Active Directory from on premises Active Directory of *contoso.com*
+2. Bob Smith's **UserPrincipalName** is set as **bobs\@contoso.com**.
+3. **"abcdefghijklmnopqrstuv=="** is the **SourceAnchor** calculated by Azure AD Connect using Bob Smith's **objectGUID** from on premises Active Directory, which is the **immutableId** for Bob Smith in Azure Active Directory.
+4. Bob also has following values for the **proxyAddresses** attribute:
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
+   * **smtp: bob\@contoso.com**
+5. A new user, **Bob Taylor**, is added to the on premises Active Directory.
+6. Bob Taylor's **UserPrincipalName** is set as **bobt\@contoso.com**.
+7. **"abcdefghijkl0123456789==""** is the **sourceAnchor** calculated by Azure AD Connect using Bob Taylor's **objectGUID** from on premises Active Directory. Bob Taylor's object has NOT synced to Azure Active Directory yet.
+8. Bob Taylor has the following values for the proxyAddresses attribute
+   * smtp: bobt@contoso.com
+   * smtp: bob.taylor@contoso.com
+   * **smtp: bob\@contoso.com**
+9. During sync, Azure AD Connect will recognize the addition of Bob Taylor in on premises Active Directory and ask Azure AD to make the same change.
+10. Azure AD will first perform hard match. That is, it will search if there is any object with the immutableId equal to "abcdefghijkl0123456789==". Hard Match will fail as no other object in Azure AD will have that immutableId.
+11. Azure AD will then attempt to soft-match Bob Taylor. That is, it will search if there is any object with proxyAddresses equal to the three values, including smtp: bob@contoso.com
+12. Azure AD will find Bob Smith's object to match the soft-match criteria. But this object has the value of immutableId = "abcdefghijklmnopqrstuv==". which indicates this object was synced from another object from on premises Active Directory. Thus, Azure AD cannot soft-match these objects and results in an **InvalidSoftMatch** sync error.
 
-#### <a name="how-to-fix-invalidsoftmatch-error"></a>InvalidSoftMatch-hiba elhárítása
-A InvalidSoftMatch hibájának leggyakoribb oka, hogy két, eltérő SourceAnchor \(immutableId\) objektum értéke megegyezik a ProxyAddresses és/vagy a userPrincipalName attribútumok értékével, amelyeket a rendszer a Soft matchnél használ. folyamat az Azure AD-ben. Az érvénytelen lágy egyezés kijavításához
+#### <a name="how-to-fix-invalidsoftmatch-error"></a>How to fix InvalidSoftMatch error
+The most common reason for the InvalidSoftMatch error is two objects with different SourceAnchor \(immutableId\) have the same value for the ProxyAddresses and/or UserPrincipalName attributes, which are used during the soft-match process on Azure AD. In order to fix the Invalid Soft Match
 
-1. Azonosítsa a hibát okozó duplikált proxyAddresses, userPrincipalName vagy más attribútumérték értékét. Határozza meg azt is \(, hogy\) mely két vagy több objektum vesz részt az ütközésben. A Azure AD Connect Health által a [szinkronizáláshoz](https://aka.ms/aadchsyncerrors) létrehozott jelentés segít azonosítani a két objektumot.
-2. Azonosítsa, hogy az objektumnak továbbra is legyen a duplikált értéke, és hogy melyik objektum ne legyen.
-3. Távolítsa el a duplikált értéket abból az objektumból, amely nem rendelkezhet ezzel az értékkel. Végezze el a módosítást abban a könyvtárban, ahol az objektum forrása származik. Bizonyos esetekben előfordulhat, hogy törölnie kell az egyik objektumot az ütközésben.
-4. Ha a helyszíni AD-ben végzett módosítást hajtotta végre, Azure AD Connect szinkronizálja a változást.
+1. Identify the duplicated proxyAddresses, userPrincipalName, or other attribute value that's causing the error. Also identify which two \(or more\) objects are involved in the conflict. The report generated by [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) can help you identify the two objects.
+2. Identify which object should continue to have the duplicated value and which object should not.
+3. Remove the duplicated value from the object that should NOT have that value. You should make the change in the directory where the object is sourced from. In some cases, you may need to delete one of the objects in conflict.
+4. If you made the change in the on premises AD, let Azure AD Connect sync the change.
 
-A szinkronizálási hibajelentések Azure AD Connect Healthon belüli szinkronizálása 30 percenként frissül, és tartalmazza a legutóbbi szinkronizálási kísérlet hibáit.
+Sync error reports within Azure AD Connect Health for sync are updated every 30 minutes and include the errors from the latest synchronization attempt.
 
 > [!NOTE]
-> A ImmutableId definíció szerint nem változhatnak az objektum élettartamában. Ha Azure AD Connect nem a fenti listán szereplő forgatókönyvekkel lett konfigurálva, akkor előfordulhat, hogy a Azure AD Connect kiszámítja az adott entitást jelképező AD-objektum SourceAnchor eltérő értékét (ugyanaz a felhasználó/csoport/ kapcsolattartási stb.), amely egy meglévő Azure AD-objektummal rendelkezik, amelyet továbbra is használni kíván.
+> ImmutableId, by definition, should not change in the lifetime of the object. If Azure AD Connect was not configured with some of the scenarios in mind from the above list, you could end up in a situation where Azure AD Connect calculates a different value of the SourceAnchor for the AD object that represents the same entity (same user/group/contact etc) that has an existing Azure AD Object that you wish to continue using.
 >
 >
 
-#### <a name="related-articles"></a>Kapcsolódó cikkek
-* [Ismétlődő vagy érvénytelen attribútumok akadályozzák meg a címtár-szinkronizálást az Office 365-ben](https://support.microsoft.com/kb/2647098)
+#### <a name="related-articles"></a>Related Articles
+* [Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
 #### <a name="description"></a>Leírás
-Ha az Azure AD két objektumra kísérli meg a műveletet, lehetséges, hogy a különböző "objektumtípus" (például a felhasználó, a csoport, a kapcsolattartó stb.) két objektumának ugyanazokkal az értékekkel kell rendelkeznie a puha egyezés végrehajtásához használt attribútumoknál. Mivel az attribútumok ismétlődése nem engedélyezett az Azure AD-ben, a művelet "ObjectTypeMismatch" szinkronizálási hibát eredményezhet.
+When Azure AD attempts to soft match two objects, it is possible that two objects of different "object type" (such as User, Group, Contact etc.) have the same values for the attributes used to perform the soft match. As duplication of these attributes is not permitted in Azure AD, the operation can result in "ObjectTypeMismatch" synchronization error.
 
-#### <a name="example-scenarios-for-objecttypemismatch-error"></a>Példa ObjectTypeMismatch-hiba esetére
-* Az Office 365-ben létrejön egy levelezésre alkalmas biztonsági csoport. A rendszergazda új felhasználót vagy kapcsolattartót ad hozzá a helyszíni AD-ben (ez még nincs szinkronizálva az Azure AD-vel), és ugyanazzal az értékkel rendelkezik a ProxyAddresses attribútumhoz, mint az Office 365-csoport.
+#### <a name="example-scenarios-for-objecttypemismatch-error"></a>Example Scenarios for ObjectTypeMismatch error
+* A mail enabled security group is created in Office 365. Admin adds a new user or contact in on premises AD (that's not synchronized to Azure AD yet) with the same value for the ProxyAddresses attribute as that of the Office 365 group.
 
-#### <a name="example-case"></a>Példa esetre
-1. A rendszergazda létrehoz egy új, levelezési szolgáltatást engedélyező biztonsági csoportot az Office 365-ben az adózási részleg tax@contoso.comszámára, és e-mail-címet biztosít. Ez a csoport a proxyAddresses attribútum értékét rendeli hozzá az **SMTP\@: Tax contoso.com**
-2. Egy új felhasználó csatlakozik a contoso.com-hez, és létrehoz egy fiókot a felhasználó számára a proxyAddress SMTP-ként **:\@Tax contoso.com**
-3. Ha Azure AD Connect szinkronizálja az új felhasználói fiókot, az "ObjectTypeMismatch" hibaüzenetet kapja.
+#### <a name="example-case"></a>Example case
+1. Admin creates a new mail enabled security group in Office 365 for the Tax department and provides an email address as tax@contoso.com. This group  is assigned the ProxyAddresses attribute value of **smtp: tax\@contoso.com**
+2. A new user joins Contoso.com and an account is created for the user on premises with the proxyAddress as **smtp: tax\@contoso.com**
+3. When Azure AD Connect will sync the new user account, it will get the "ObjectTypeMismatch" error.
 
-#### <a name="how-to-fix-objecttypemismatch-error"></a>ObjectTypeMismatch-hiba elhárítása
-A ObjectTypeMismatch hibájának leggyakoribb oka, hogy a különböző típusú (felhasználó, csoport, kapcsolattartó stb.) objektumoknak ugyanaz az értéke a ProxyAddresses attribútumhoz. A ObjectTypeMismatch kijavítása érdekében:
+#### <a name="how-to-fix-objecttypemismatch-error"></a>How to fix ObjectTypeMismatch error
+The most common reason for the ObjectTypeMismatch error is two objects of different type (User, Group, Contact etc.) have the same value for the ProxyAddresses attribute. In order to fix the ObjectTypeMismatch:
 
-1. Azonosítsa a hibát okozó duplikált proxyAddresses (vagy más attribútum) értékét. Határozza meg azt is \(, hogy\) mely két vagy több objektum vesz részt az ütközésben. A Azure AD Connect Health által a [szinkronizáláshoz](https://aka.ms/aadchsyncerrors) létrehozott jelentés segít azonosítani a két objektumot.
-2. Azonosítsa, hogy az objektumnak továbbra is legyen a duplikált értéke, és hogy melyik objektum ne legyen.
-3. Távolítsa el a duplikált értéket abból az objektumból, amely nem rendelkezhet ezzel az értékkel. Vegye figyelembe, hogy a módosítást arra a könyvtárba kell tenni, amelyben az objektum forrása származik. Bizonyos esetekben előfordulhat, hogy törölnie kell az egyik objektumot az ütközésben.
-4. Ha a helyszíni AD-ben végzett módosítást hajtotta végre, Azure AD Connect szinkronizálja a változást. A szinkronizálási hibajelentés Azure AD Connect Healthn belüli szinkronizálása 30 percenként frissül, és a legutóbbi szinkronizálási kísérlet során fellépő hibákat is tartalmazza.
+1. Identify the duplicated proxyAddresses (or other attribute) value that's causing the error. Also identify which two \(or more\) objects are involved in the conflict. The report generated by [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) can help you identify the two objects.
+2. Identify which object should continue to have the duplicated value and which object should not.
+3. Remove the duplicated value from the object that should NOT have that value. Note that you should make the change in the directory where the object is sourced from. In some cases, you may need to delete one of the objects in conflict.
+4. If you made the change in the on premises AD, let Azure AD Connect sync the change. Sync error report within Azure AD Connect Health for sync gets updated every 30 minutes and includes the errors from the latest synchronization attempt.
 
-## <a name="duplicate-attributes"></a>Ismétlődő attribútumok
+## <a name="duplicate-attributes"></a>Duplicate Attributes
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
 #### <a name="description"></a>Leírás
-Azure Active Directory séma nem teszi lehetővé két vagy több objektum számára a következő attribútumok azonos értékét. Az Azure AD-ben minden objektumnak egyedi értékkel kell rendelkeznie ezeknek az attribútumoknak egy adott példánynál.
+Azure Active Directory schema does not allow two or more objects to have the same value of the following attributes. That is each object in Azure AD is forced to have a unique value of these attributes at a given instance.
 
 * ProxyAddresses
 * UserPrincipalName
 
-Ha Azure AD Connect új objektum hozzáadását vagy egy meglévő objektum frissítését kísérli meg a fenti attribútumokhoz, amelyek már hozzá vannak rendelve a Azure Active Directory egy másik objektumához, a művelet "AttributeValueMustBeUnique" szinkronizálási hibát eredményez.
+If Azure AD Connect attempts to add a new object or update an existing object with a value for the above attributes that is already assigned to another object in Azure Active Directory, the operation results in the "AttributeValueMustBeUnique" sync error.
 
-#### <a name="possible-scenarios"></a>Lehetséges forgatókönyvek:
-1. Ismétlődő érték van hozzárendelve egy már szinkronizált objektumhoz, amely ütközik egy másik szinkronizált objektummal.
+#### <a name="possible-scenarios"></a>Possible Scenarios:
+1. Duplicate value is assigned to an already synced object, which conflicts with another synced object.
 
-#### <a name="example-case"></a>Példa:
-1. **Bob Smith** egy szinkronizált felhasználó Azure Active Directory a helyszíni Active Directory contoso.com
-2. Bob Smith **userPrincipalName** a helyszínen **bobot\@contoso.com**van beállítva.
-3. Bob a következő értékeket is tartalmazta a **ProxyAddresses** attribútumhoz:
-   * SMTP-bobs@contoso.com
-   * SMTP-bob.smith@contoso.com
-   * **SMTP: Bob\@contoso.com**
-4. Egy új felhasználó, **Bob Taylor**, hozzá lesz adva a helyszíni Active Directoryhoz.
-5. Bob Taylor **userPrincipalName** **bobt\@contoso.com**van beállítva.
-6. **Bob Taylor** a következő értékekkel rendelkezik a **ProxyAddresses** attribútumhoz: i. SMTP: bobt@contoso.com II. SMTP-bob.taylor@contoso.com
-7. A Bob Taylor objektuma sikeresen szinkronizálva van az Azure AD-vel.
-8. A rendszergazda úgy döntött, hogy Bob Taylor **ProxyAddresses** attribútumát a következő értékkel frissítette: i. **SMTP: Bob\@contoso.com**
-9. Az Azure AD megpróbálja frissíteni Bob Taylor objektumát az Azure AD-ben a fenti értékkel, de a művelet sikertelen lesz, mivel a ProxyAddresses érték már hozzá van rendelve Bob Smith-hez, ami "AttributeValueMustBeUnique" hibát eredményez.
+#### <a name="example-case"></a>Example case:
+1. **Bob Smith** is a synced user in Azure Active Directory from on premises Active Directory of contoso.com
+2. Bob Smith's **UserPrincipalName** on premises is set as **bobs\@contoso.com**.
+3. Bob also has following values for the **proxyAddresses** attribute:
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
+   * **smtp: bob\@contoso.com**
+4. A new user, **Bob Taylor**, is added to the on premises Active Directory.
+5. Bob Taylor's **UserPrincipalName** is set as **bobt\@contoso.com**.
+6. **Bob Taylor** has the following values for the **ProxyAddresses** attribute i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
+7. Bob Taylor's object is synchronized with Azure AD successfully.
+8. Admin decided to update Bob Taylor's **ProxyAddresses** attribute with the following value: i. **smtp: bob\@contoso.com**
+9. Azure AD will attempt to update Bob Taylor's object in Azure AD with the above value, but that operation will fail as that ProxyAddresses value is already assigned to Bob Smith, resulting in "AttributeValueMustBeUnique" error.
 
-#### <a name="how-to-fix-attributevaluemustbeunique-error"></a>AttributeValueMustBeUnique-hiba elhárítása
-A AttributeValueMustBeUnique hibájának leggyakoribb oka, hogy a ProxyAddresses és/vagy userPrincipalName \(attribútumok\) esetében a két objektumnak ugyanaz a értéke, mint a különböző SourceAnchor-immutableId. AttributeValueMustBeUnique-hiba javítása érdekében
+#### <a name="how-to-fix-attributevaluemustbeunique-error"></a>How to fix AttributeValueMustBeUnique error
+The most common reason for the AttributeValueMustBeUnique error is two objects with different SourceAnchor \(immutableId\) have the same value for the ProxyAddresses and/or UserPrincipalName attributes. In order to fix AttributeValueMustBeUnique error
 
-1. Azonosítsa a hibát okozó duplikált proxyAddresses, userPrincipalName vagy más attribútumérték értékét. Határozza meg azt is \(, hogy\) mely két vagy több objektum vesz részt az ütközésben. A Azure AD Connect Health által a [szinkronizáláshoz](https://aka.ms/aadchsyncerrors) létrehozott jelentés segít azonosítani a két objektumot.
-2. Azonosítsa, hogy az objektumnak továbbra is legyen a duplikált értéke, és hogy melyik objektum ne legyen.
-3. Távolítsa el a duplikált értéket abból az objektumból, amely nem rendelkezhet ezzel az értékkel. Vegye figyelembe, hogy a módosítást arra a könyvtárba kell tenni, amelyben az objektum forrása származik. Bizonyos esetekben előfordulhat, hogy törölnie kell az egyik objektumot az ütközésben.
-4. Ha a helyszíni AD-ben végzett módosítást hajtotta végre, Azure AD Connect szinkronizálni a hiba változását, hogy kijavítva legyen.
+1. Identify the duplicated proxyAddresses, userPrincipalName or other attribute value that's causing the error. Also identify which two \(or more\) objects are involved in the conflict. The report generated by [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) can help you identify the two objects.
+2. Identify which object should continue to have the duplicated value and which object should not.
+3. Remove the duplicated value from the object that should NOT have that value. Note that you should make the change in the directory where the object is sourced from. In some cases, you may need to delete one of the objects in conflict.
+4. If you made the change in the on premises AD, let Azure AD Connect sync the change for the error to get fixed.
 
-#### <a name="related-articles"></a>Kapcsolódó cikkek
--[Ismétlődő vagy érvénytelen attribútumok akadályozzák meg a címtár-szinkronizálást az Office 365-ben](https://support.microsoft.com/kb/2647098)
+#### <a name="related-articles"></a>Related Articles
+-[Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/kb/2647098)
 
-## <a name="data-validation-failures"></a>Adatérvényesítési hibák
+## <a name="data-validation-failures"></a>Data Validation Failures
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
 #### <a name="description"></a>Leírás
-Azure Active Directory a különböző korlátozásokat kényszeríti az adatvédelemre, mielőtt engedélyezi, hogy a rendszer beírja az adott adatlemezt a könyvtárba. Ezek a korlátozások biztosítják, hogy a végfelhasználók a lehető legjobb élményt nyújtsanak az adatoktól függő alkalmazások használatakor.
+Azure Active Directory enforces various restrictions on the data itself before allowing that data to be written into the directory. These restrictions are to ensure that end users get the best possible experiences while using the applications that depend on this data.
 
-#### <a name="scenarios"></a>Forgatókönyvek
-a. A UserPrincipalName attribútum értéke érvénytelen/nem támogatott karaktereket tartalmaz.
-b. A UserPrincipalName attribútum nem követi a szükséges formátumot.
+#### <a name="scenarios"></a>Alkalmazási helyzetek
+a. The UserPrincipalName attribute value has invalid/unsupported characters.
+b. The UserPrincipalName attribute does not follow the required format.
 
-#### <a name="how-to-fix-identitydatavalidationfailed-error"></a>IdentityDataValidationFailed-hiba elhárítása
-a. Győződjön meg arról, hogy a userPrincipalName attribútumnak támogatott karakterek és a szükséges formátuma van.
+#### <a name="how-to-fix-identitydatavalidationfailed-error"></a>How to fix IdentityDataValidationFailed error
+a. Ensure that the userPrincipalName attribute has supported characters and required format.
 
-#### <a name="related-articles"></a>Kapcsolódó cikkek
-* [Felkészülés a felhasználók címtár-szinkronizálással való kiépítésére az Office 365-be](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+#### <a name="related-articles"></a>Related Articles
+* [Prepare to provision users through directory synchronization to Office 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>Leírás
-Ez az eset **"FederatedDomainChangeError"** szinkronizálási hibát eredményez, ha egy felhasználó userPrincipalName utótagja egy összevont tartományból egy másik összevont tartományba módosul.
+This case results in a **"FederatedDomainChangeError"** sync error when the suffix of a user's UserPrincipalName is changed from one federated domain to another federated domain.
 
-#### <a name="scenarios"></a>Forgatókönyvek
-Szinkronizált felhasználó esetén a UserPrincipalName utótagot az egyik összevont tartományból egy másik összevont tartományra módosították a helyszínen. A *userPrincipalName = Bob\@contoso.com* például a következőre változott: *userPrincipalName =\@Bob fabrikam.com*.
+#### <a name="scenarios"></a>Alkalmazási helyzetek
+For a synchronized user, the UserPrincipalName suffix was changed from one federated domain to another federated domain on premises. For example, *UserPrincipalName = bob\@contoso.com* was changed to *UserPrincipalName = bob\@fabrikam.com*.
 
 #### <a name="example"></a>Példa
-1. Bob Smith, a Contoso.com fiókja új felhasználóként lesz hozzáadva Active Directory a UserPrincipalNamebob@contoso.com
-2. Bob a Fabrikam.com nevű másik Contoso.com kerül át, és a UserPrincipalName a következőre módosultbob@fabrikam.com
-3. A contoso.com és a fabrikam.com tartományok összevont tartományok Azure Active Directorykal.
-4. Bob userPrincipalName nem frissül, és "FederatedDomainChangeError" szinkronizálási hibát eredményez.
+1. Bob Smith, an account for Contoso.com, gets added as a new user in Active Directory with the UserPrincipalName bob@contoso.com
+2. Bob moves to a different division of Contoso.com called Fabrikam.com and their UserPrincipalName is changed to bob@fabrikam.com
+3. Both contoso.com and fabrikam.com domains are federated domains with Azure Active Directory.
+4. Bob's userPrincipalName does not get updated and results in a "FederatedDomainChangeError" sync error.
 
-#### <a name="how-to-fix"></a>A javítás módja
-Ha a felhasználó userPrincipalName-utótagját frissítették a Bob @**contoso.com** -ből\@Bob**fabrikam.com**-ra, ahol a **contoso.com** és a **fabrikam.com** is **összevont tartományok**, akkor a szinkronizálás kijavításához kövesse az alábbi lépéseket. hiba
+#### <a name="how-to-fix"></a>How to fix
+If a user's UserPrincipalName suffix was updated from bob@**contoso.com** to bob\@**fabrikam.com**, where both **contoso.com** and **fabrikam.com** are **federated domains**, then follow these steps to fix the sync error
 
-1. Frissítse a felhasználó userPrincipalName az Azure ad-ból bob@contoso.com a bob@contoso.onmicrosoft.comverzióra. Az Azure AD PowerShell-modullal a következő PowerShell-parancs használható:`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. A szinkronizálás megkezdéséhez engedélyezze a következő szinkronizálási ciklust. Az idő szinkronizálása sikeres lesz, és a userPrincipalName a várt módon frissíti a bob@fabrikam.com Bob-t.
+1. Update the user's UserPrincipalName in Azure AD from bob@contoso.com to bob@contoso.onmicrosoft.com. You can use the following PowerShell command with the Azure AD PowerShell Module: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+2. Allow the next sync cycle to attempt synchronization. This time synchronization will be successful and it will update the UserPrincipalName of Bob to bob@fabrikam.com as expected.
 
-#### <a name="related-articles"></a>Kapcsolódó cikkek
-* [A Azure Active Directory Sync Tool nem szinkronizálja a módosításokat, miután a felhasználói fiók egyszerű felhasználónevét más összevont tartomány használatára változtatta](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+#### <a name="related-articles"></a>Related Articles
+* [Changes aren't synced by the Azure Active Directory Sync tool after you change the UPN of a user account to use a different federated domain](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>Leírás
-Ha egy attribútum túllépi a megengedett mérethatárt, a hosszúsági korlátot vagy a Azure Active Directory sémában beállított korlátot, akkor a szinkronizálási művelet a **LargeObject** vagy a **ExceededAllowedLength** szinkronizálási hibát eredményezi. Ez a hiba általában a következő attribútumok esetén fordul elő
+When an attribute exceeds the allowed size limit, length limit or count limit set by Azure Active Directory schema, the synchronization operation results in the **LargeObject** or **ExceededAllowedLength** sync error. Typically this error occurs for the following attributes
 
 * userCertificate
 * userSMIMECertificate
 * thumbnailPhoto
 * proxyAddresses
 
-### <a name="possible-scenarios"></a>Lehetséges forgatókönyvek
-1. Bob userCertificate attribútuma túl sok olyan tanúsítványt tárol, amely hozzá van rendelve a Bob-hoz. Ilyenek lehetnek a régebbi, lejárt tanúsítványok. A rögzített korlát 15 tanúsítvány. A LargeObject hibák userCertificate attribútummal való kezelésével kapcsolatos további információkért tekintse meg a [userCertificate attribútum által okozott LargeObject hibák kezelése](tshoot-connect-largeobjecterror-usercertificate.md)című cikket.
-2. Bob userSMIMECertificate attribútuma túl sok olyan tanúsítványt tárol, amely hozzá van rendelve a Bob-hoz. Ilyenek lehetnek a régebbi, lejárt tanúsítványok. A rögzített korlát 15 tanúsítvány.
-3. A Active Directory Bob thumbnailPhoto-készlete túl nagy az Azure AD-ben való szinkronizáláshoz.
-4. A Active Directory ProxyAddresses attribútumának automatikus populációja során az objektum túl sok ProxyAddresses van hozzárendelve.
+### <a name="possible-scenarios"></a>Possible Scenarios
+1. Bob's userCertificate attribute is storing too many certificates assigned to Bob. These may include older, expired certificates. The hard limit is 15 certificates. For more information on how to handle LargeObject errors with userCertificate attribute, please refer to article [Handling LargeObject errors caused by userCertificate attribute](tshoot-connect-largeobjecterror-usercertificate.md).
+2. Bob's userSMIMECertificate attribute is storing too many certificates assigned to Bob. These may include older, expired certificates. The hard limit is 15 certificates.
+3. Bob's thumbnailPhoto set in Active Directory is too large to be synced in Azure AD.
+4. During automatic population of the ProxyAddresses attribute in Active Directory, an object has too many ProxyAddresses assigned.
 
-### <a name="how-to-fix"></a>A javítás módja
-1. Győződjön meg arról, hogy a hibát okozó attribútum a megengedett korlátozáson belül van.
+### <a name="how-to-fix"></a>How to fix
+1. Ensure that the attribute causing the error is within the allowed limitation.
 
-## <a name="existing-admin-role-conflict"></a>Meglévő rendszergazdai szerepkör-ütközés
+## <a name="existing-admin-role-conflict"></a>Existing Admin Role Conflict
 
 ### <a name="description"></a>Leírás
-Egy **meglévő rendszergazdai szerepkör ütközik** egy felhasználói objektumon a szinkronizálás során, amikor a felhasználói objektum:
+An **Existing Admin Role Conflict** will occur on a user object during synchronization when that user object has:
 
-- rendszergazdai engedélyek és
-- a meglévő Azure AD-objektummal megegyező UserPrincipalName
+- administrative permissions and
+- the same UserPrincipalName as an existing Azure AD object
 
-A Azure AD Connect nem lehet a helyszíni AD-ből származó felhasználói objektumhoz tartozó, az Azure AD-ben egy olyan felhasználói objektummal, amely rendszergazdai szerepkörrel rendelkezik.  További információ: [Azure ad userPrincipalName-populáció](plan-connect-userprincipalname.md)
+Azure AD Connect is not allowed to soft match a user object from on-premises AD with a user object in Azure AD that has an administrative role assigned to it.  For more information see [Azure AD UserPrincipalName population](plan-connect-userprincipalname.md)
 
-![Meglévő rendszergazda](media/tshoot-connect-sync-errors/existingadmin.png)
+![Existing Admin](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>A javítás módja
-A probléma megoldásához tegye a következők egyikét:
+### <a name="how-to-fix"></a>How to fix
+To resolve this issue do one of the following:
 
- - Távolítsa el az Azure AD-fiókot (tulajdonos) az összes rendszergazdai szerepkörből. 
- - **Törölje** a karanténba helyezett objektumot a felhőben. 
- - A következő szinkronizálási ciklus gondoskodik a helyi felhasználó Felhőbeli fiókkal való zökkenőmentes megfeleltetéséről (mivel a Felhőbeli felhasználó már nem globális GA). 
- - Állítsa vissza a tulajdonos szerepkör-tagságait. 
+ - Remove the Azure AD account (owner) from all admin roles. 
+ - **Hard Delete** the Quarantined object in the cloud. 
+ - The next sync cycle will take care of soft-matching the on-premises user to the cloud account (since the cloud user is now no longer a global GA). 
+ - Restore the role memberships for the owner. 
 
 >[!NOTE]
->A rendszergazdai szerepkört a meglévő felhasználói objektumhoz is hozzárendelheti, miután a helyi felhasználói objektum és az Azure AD felhasználói objektum közötti lágy egyezés befejeződött.
+>You can assign the administrative role to the existing user object again after the soft match between the on-premises user object and the Azure AD user object has completed.
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Active Directory objektumok megkeresése Active Directory felügyeleti központ](https://technet.microsoft.com/library/dd560661.aspx)
-* [Azure Active Directory lekérdezése egy objektumhoz Azure Active Directory PowerShell használatával](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+* [Locate Active Directory Objects in Active Directory Administrative Center](https://technet.microsoft.com/library/dd560661.aspx)
+* [How to query Azure Active Directory for an object using Azure Active Directory PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)

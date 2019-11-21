@@ -1,7 +1,7 @@
 ---
-title: 'Tervező: példa a repülési késleltetés előrejelzésére'
+title: 'Designer: Predict flight delay example'
 titleSuffix: Azure Machine Learning
-description: Osztályozó létrehozása és egyéni R-kód használata a repülési késések előrejelzésére Azure Machine Learning Designer használatával.
+description: Build a classifier and use custom R code to predict flight delays with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,119 +10,119 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06d158fb228ea82e61e785407fc0c59d66c2de15
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 23b763a69fc0ea3191150c6255cf358d69bc4b73
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196026"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213989"
 ---
-# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Osztályozó & létrehozása az R használatával a repülési késések előrejelzéséhez Azure Machine Learning Designerben
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Build a classifier & use R to predict flight delays with Azure Machine Learning designer
 
-**Designer (előzetes verzió) 6. minta**
+**Designer (preview) sample 6**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ez a folyamat a korábbi repülési és időjárási adatszolgáltatások alapján Jósolja meg, hogy egy ütemezett utasszállító járat késése több mint 15 percet vesz igénybe. Ez a probléma besorolási problémaként is megközelíthető, amely két osztályt jósol: késleltetve vagy időben.
+This pipeline uses historical flight and weather data to predict if a scheduled passenger flight will be delayed by more than 15 minutes. This problem can be approached as a classification problem, predicting two classes: delayed, or on time.
 
-A minta utolsó folyamat gráfja a következő:
+Here's the final pipeline graph for this sample:
 
-[a folyamat ![gráfja](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. A megnyitásához kattintson a 6. minta elemre.
+4. Click sample 6 to open it.
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Ez a példa a **repülési késések** adatkészletét használja. Része az Egyesült államokbeli Közlekedési Minisztérium TranStats-adatgyűjtési szolgáltatásának. Az adatkészlet az áprilistól október 2013-ig terjedő repülési késleltetési adatokat tartalmaz. Az adatkészlet a következőképpen lett előre feldolgozva:
+This sample uses the **Flight Delays Data** dataset. It's part of the TranStats data collection from the U.S. Department of Transportation. The dataset contains flight delay information from April to October 2013. The dataset has been pre-processed as follows:
 
-* Szűrve, hogy tartalmazza a 70 legforgalmasabb repülőteret a kontinentális Egyesült Államok.
-* A megszakított járatok újracímkézve 15 percnél hosszabb ideig késleltetve.
-* Kiszűrt fordított járatok.
-* Kiválasztott 14 oszlop.
+* Filtered to include the 70 busiest airports in the continental United States.
+* Relabeled canceled flights as delayed by more than 15 mins.
+* Filtered out diverted flights.
+* Selected 14 columns.
 
-A repülési adatokat a rendszer az **időjárási adatkészlet** használatával egészíti ki. Az időjárási adatok óránként, szárazföldön alapuló időjárási megfigyeléseket tartalmaznak a NOAA-tól, és a repülőtéri meteorológiai állomások észrevételeit jelölik, amelyek a járatok adatkészletével megegyező időszakra vonatkoznak. A következőképpen lett előre feldolgozva:
+To supplement the flight data, the **Weather Dataset** is used. The weather data contains hourly, land-based weather observations from NOAA, and represents observations from airport weather stations, covering the same time period as the flights dataset. It has been pre-processed as follows:
 
-* A meteorológiai állomás azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve.
-* Az 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások el lettek távolítva.
-* A Date (dátum) oszlopot különálló oszlopokra osztottuk: év, hónap és nap.
-* Kiválasztott 26 oszlop.
+* Weather station IDs were mapped to corresponding airport IDs.
+* Weather stations not associated with the 70 busiest airports were removed.
+* The Date column was split into separate columns: Year, Month, and Day.
+* Selected 26 columns.
 
-## <a name="pre-process-the-data"></a>Az adatfeldolgozás előkezelése
+## <a name="pre-process-the-data"></a>Pre-process the data
 
-Az adatkészletek általában valamilyen előzetes feldolgozást igényelnek, mielőtt elemezni lehetne őket.
+A dataset usually requires some pre-processing before it can be analyzed.
 
-![adatfeldolgozás](media/how-to-ui-sample-classification-predict-flight-delay/data-process.png)
+![data-process](media/how-to-designer-sample-classification-predict-flight-delay/data-process.png)
 
-### <a name="flight-data"></a>Repülési adatcsatorna
+### <a name="flight-data"></a>Flight data
 
-A **Carrier**, a **OriginAirportID**és a **DestAirportID** oszlopok egész számként lesznek mentve. Azonban kategorikus attribútumok, a **metaadatok szerkesztése** modullal alakítsa át azokat a kategorikusba.
+The columns **Carrier**, **OriginAirportID**, and **DestAirportID** are saved as integers. However, they're  categorical attributes, use the **Edit Metadata** module to convert them to categorical.
 
-![metaadatok szerkesztése](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-designer-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Ezután az adathalmazok **kijelölése** az adatkészlet modulban lehetőséggel kizárhatja azokat az adatkészlet-oszlopokat, amelyek lehetséges célja a szivárgás: **DepDelay**, **DepDel15**, **ArrDelay**, **megszakított**, **év**. 
+Then use the **Select Columns** in Dataset module to exclude from the dataset columns that are possible target leakers: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **Year**. 
 
-Ha a repülési rekordokat az óránkénti időjárási adatokkal szeretné csatlakoztatni, használja az ütemezett indulási időt az illesztési kulcsok egyikének megfelelően. Az illesztés végrehajtásához a CSRDepTime oszlopot a legközelebbi órára kell kerekíteni, amelyet az **R-parancsfájl végrehajtása modul hajt** végre. 
+To join the flight records with the hourly weather records, use the scheduled departure time as one of the join keys. To do the join, the CSRDepTime column must be rounded down to the nearest hour, which is done by in the **Execute R Script** module. 
 
-### <a name="weather-data"></a>Időjárási adatszolgáltatások
+### <a name="weather-data"></a>Weather data
 
-A hiányzó értékek nagy hányadát tartalmazó oszlopok ki vannak zárva a **Project Columns** modul használatával. Ezek az oszlopok az összes karakterlánc értékű oszlopot tartalmazzák: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**és **StationPressure** .
+Columns that have a large proportion of missing values are excluded using the **Project Columns** module. These columns include all string-valued columns: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**, and **StationPressure**.
 
-Ekkor a rendszer a hiányzó oszlopokra alkalmazza a **tiszta hiányzó** adatmodult, hogy eltávolítsa a hiányzó adatsorokat.
+The **Clean Missing Data** module is then applied to the remaining columns to remove rows with missing data.
 
-Az időjárási megfigyelési idők a legközelebbi teljes órára vannak kerekítve. Az ütemezett repülési időpontok és az időjárási megfigyelések időpontját az ellenkező irányba kerekítjük, így biztosítva, hogy a modell csak a repülési idő előtti időjárási időt használja. 
+Weather observation times are rounded up to the nearest full hour. Scheduled flight times and the weather observation times are rounded in opposite directions to ensure the model uses only weather before the flight time. 
 
-Mivel az időjárási adatok helyi időben kerülnek jelentésre, az időzóna-különbségek az ütemezett indulási idő és az időjárási megfigyelési idő kivonásával vannak elszámolva. Ezek a műveletek az **R szkript végrehajtása** modul használatával hajthatók végre.
+Since weather data is reported in local time, time zone differences are accounted for by subtracting the time zone columns from the scheduled departure time and the weather observation time. These operations are done using the **Execute R Script** module.
 
-### <a name="joining-datasets"></a>Adatkészletek csatlakoztatása
+### <a name="joining-datasets"></a>Joining Datasets
 
-A repülési rekordok a beléptetési **adatok** modul használatával a Flight (**OriginAirportID**) által használt időjárási adatokkal vannak csatlakoztatva.
+Flight records are joined with weather data at origin of the flight (**OriginAirportID**) using the **Join Data** module.
 
- ![Csatlakozás a repüléshez és az időjáráshoz forrás szerint](media/how-to-ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![join flight and weather by origin](media/how-to-designer-sample-classification-predict-flight-delay/join-origin.png)
 
 
-A repülési rekordok időjárási adatokkal vannak összekapcsolva a repülési cél (**DestAirportID**) használatával.
+Flight records are joined with weather data using the destination of the flight (**DestAirportID**).
 
- ![Csatlakozás a repüléshez és az időjáráshoz célhoz](media/how-to-ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![Join flight and weather by destination](media/how-to-designer-sample-classification-predict-flight-delay/join-destination.png)
 
-### <a name="preparing-training-and-test-samples"></a>Képzések és tesztelési minták előkészítése
+### <a name="preparing-training-and-test-samples"></a>Preparing Training and Test Samples
 
-Az **adatok felosztása** modul a betanítási és a tesztelési feladatokra vonatkozó októberi rekordokra osztja fel az adatokat.
+The **Split Data** module splits the data into April through September records for training, and October records for test.
 
- ![A képzési és tesztelési célú megosztások](media/how-to-ui-sample-classification-predict-flight-delay/split.png)
+ ![Split training and test data](media/how-to-designer-sample-classification-predict-flight-delay/split.png)
 
-Az év, hónap és timezone oszlop törlődik a betanítási adatkészletből az Oszlopok kiválasztása modul használatával.
+Year, month, and timezone columns are removed from the training dataset using the Select Columns module.
 
-## <a name="define-features"></a>Funkciók definiálása
+## <a name="define-features"></a>Define features
 
-A gépi tanulásban a funkciók a érdeklik egyes, mérhető tulajdonságai. Erős funkciók megkeresése kísérletezést és tartományi ismereteket igényel. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Emellett előfordulhat, hogy egyes funkciók erős korrelációt mutatnak más funkciókkal, és nem vesznek fel új adatokat a modellbe. Ezek a funkciók eltávolíthatók.
+In machine learning, features are individual measurable properties of something you’re interested in. Finding a strong set of features requires experimentation and domain knowledge. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Also, some features may have a strong correlation with other features, and won't add new information to the model. These features can be removed.
 
-Modell létrehozásához használhatja az összes elérhető funkciót, vagy kiválaszthatja a szolgáltatások egy részhalmazát.
+To build a model, you can use all the features available, or select a subset of the features.
 
-## <a name="choose-and-apply-a-learning-algorithm"></a>Tanulási algoritmus kiválasztása és alkalmazása
+## <a name="choose-and-apply-a-learning-algorithm"></a>Choose and apply a learning algorithm
 
-Hozzon létre egy modellt a **kétosztályos logisztikai regressziós** modullal, és tanítsa be azt a betanítási adatkészleten. 
+Create a model using the **Two-Class Logistic Regression** module and train it on the training dataset. 
 
-A **betanítási modell** modul eredménye egy betanított besorolási modell, amely az előrejelzések készítéséhez használható új minták kiértékelésére. A test (teszt) beállítással pontokat hozhat létre a betanított modellből. Ezután használja a **modell kiértékelése** modult a modellek minőségének elemzéséhez és összehasonlításához.
-a folyamat futtatása után a folyamat után megtekintheti a **pontszám modell** modul kimenetét. ehhez kattintson a kimeneti portra, és válassza a **Megjelenítés**lehetőséget. A kimenet tartalmazza a pontszámmal ellátható címkéket és a címkék valószínűségét.
+The result of the **Train Model** module is a trained classification model that can be used to score new samples to make predictions. Use the test set to generate scores from the trained models. Then use the **Evaluate Model** module to analyze and compare the quality of the models.
+pipeline After you run the pipeline, you can view the output from the **Score Model** module by clicking the output port and selecting **Visualize**. The output includes the scored labels and the probabilities for the labels.
 
-Végül az eredmények minőségének teszteléséhez adja hozzá a **modell kiértékelése** modult a folyamat vászonhoz, és a bal oldali bemeneti portot a pontszám modell modul kimenetéhez kapcsolja. Futtassa a folyamatot, és tekintse meg a **modell kiértékelése** modul kimenetét a kimeneti portra kattintva, és válassza a **Megjelenítés**lehetőséget.
+Finally, to test the quality of the results, add the **Evaluate Model** module to the pipeline canvas, and connect the left input port to the output of the Score Model module. Run the pipeline and view the output of the **Evaluate Model** module, by clicking the output port and selecting **Visualize**.
 
-## <a name="evaluate"></a>Értékelés
-A logisztikai regressziós modell 0,631 AUC rendelkezik a tesztelési készleten.
+## <a name="evaluate"></a>Kiértékelés
+The logistic regression model has AUC of 0.631 on the test set.
 
- ![értékelés](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
+ ![értékelés](media/how-to-designer-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg a tervező számára elérhető egyéb mintákat:
+Explore the other samples available for the designer:
 
-- [1. példa – regresszió: az autó árának előrejelzése](how-to-designer-sample-regression-automobile-price-basic.md)
-- [2. minta – regresszió: algoritmusok összehasonlítása az autó árának előrejelzéséhez](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [3. minta – besorolás a szolgáltatás kiválasztásával: bevétel előrejelzése](how-to-designer-sample-classification-predict-income.md)
-- [4. minta – besorolás: a hitelkockázat előrejelzése (a Cost szenzitív)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [5. példa – besorolás: forgalom előrejelzése](how-to-designer-sample-classification-churn.md)
-- [7. minta – szöveges besorolás: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

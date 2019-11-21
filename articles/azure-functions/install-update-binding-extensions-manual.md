@@ -1,53 +1,46 @@
 ---
-title: Azure Functions kötési bővítmények manuális telepítése vagy frissítése
-description: Megtudhatja, hogyan telepíthet vagy frissíthet Azure Functions kötési bővítményeket a telepített functions-alkalmazásokhoz.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure functions, functions, kötési bővítmények, NuGet, frissítések
-ms.service: azure-functions
+title: Manually install or update Azure Functions binding extensions
+description: Learn how to install or update Azure Functions binding extensions for deployed function apps.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.author: glenga
-ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085049"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226512"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions kötési bővítmények manuális telepítése vagy frissítése a portálról
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manually install or update Azure Functions binding extensions from the portal
 
-A Azure Functions 2. x verziójú futtatókörnyezet kötési kiterjesztéseket használ az eseményindítók és kötések kódjának megvalósításához. A kötési bővítmények a NuGet-csomagokban vannak megadva. A bővítmények regisztrálásához lényegében telepítenie kell egy csomagot. A függvények fejlesztésekor a kötési bővítmények telepítésének módja a fejlesztési környezettől függ. További információ: [kötési bővítmények regisztrálása](./functions-bindings-register.md) az eseményindítók és a kötések cikkben.
+The Azure Functions version 2.x runtime uses binding extensions to implement code for triggers and bindings. Binding extensions are provided in NuGet packages. To register an extension, you essentially install a package. When developing functions, the way that you install binding extensions depends on the development environment. For more information, see [Register binding extensions](./functions-bindings-register.md) in the triggers and bindings article.
 
-Időnként manuálisan kell telepítenie vagy frissítenie a kötési bővítményeket a Azure Portal. Előfordulhat például, hogy frissítenie kell egy regisztrált kötést egy újabb verzióra. Előfordulhat, hogy regisztrálnia kell egy olyan támogatott kötést is, amely nem telepíthető a portál **integrálás** lapján.
+Sometimes you need to manually install or update your binding extensions in the Azure portal. For example, you may need to update a registered binding to a newer version. You may also need to register a supported binding that can't be installed in the **Integrate** tab in the portal.
 
-## <a name="install-a-binding-extension"></a>Kötési bővítmény telepítése
+## <a name="install-a-binding-extension"></a>Install a binding extension
 
-A bővítmények a portálról történő manuális telepítéséhez és frissítéséhez kövesse az alábbi lépéseket.
+Use the following steps to manually install or update extensions from the portal.
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a Function alkalmazást, és válassza ki. Válassza az **Áttekintés** lapot, és válassza a **Leállítás**lehetőséget.  A Function alkalmazás leállítása a fájlok zárolásának feloldása, hogy a módosítások elvégezhető legyen.
+1. In the [Azure portal](https://portal.azure.com), locate your function app and select it. Choose the **Overview** tab and select **Stop**.  Stopping the function app unlocks files so that changes can be made.
 
-1. Válassza a **platform szolgáltatásai** lapot, és a **fejlesztői eszközök** területen válassza a **speciális eszközök (kudu)** lehetőséget. A kudu-végpont`https://<APP_NAME>.scm.azurewebsites.net/`() új ablakban van megnyitva.
+1. Choose the **Platform features** tab and under **Development tools** select **Advanced Tools (Kudu)** . THe Kudu endpoint (`https://<APP_NAME>.scm.azurewebsites.net/`) is opened in a new window.
 
-1. A kudu ablakban válassza a **Debug konzol** > **cmd**elemet.  
+1. In the Kudu window, select **Debug console** > **CMD**.  
 
-1. A parancssorablakban navigáljon `D:\home\site\wwwroot` a `bin` következőre, és válassza a törlés ikont a mappa törléséhez. A törlés megerősítéséhez kattintson **az OK gombra** .
+1. In the command window, navigate to `D:\home\site\wwwroot` and choose the delete icon next to `bin` to delete the folder. Select **OK** to confirm the deletion.
 
-1. Válassza a `extensions.csproj` fájl melletti Szerkesztés ikont, amely meghatározza a Function alkalmazás kötési bővítményeit. A projektfájl az online szerkesztőben nyílik meg.
+1. Choose the edit icon next to the `extensions.csproj` file, which defines the binding extensions for the function app. The project file is opened in the online editor.
 
-1. Végezze el a **PackageReference** elemek szükséges kiegészítéseit és frissítéseit a **ItemGroup**, majd válassza a **Mentés**lehetőséget. A támogatott csomag-verziók aktuális listája megtalálható a [Mi szükséges csomagok?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki-cikkben. Mindhárom Azure Storage-kötéshez a Microsoft. Azure. webjobs. Extensions. Storage csomag szükséges.
+1. Make the required additions and updates of **PackageReference** items in the **ItemGroup**, then select **Save**. The current list of supported package versions can be found in the [What packages do I need?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki article. All three Azure Storage bindings require the Microsoft.Azure.WebJobs.Extensions.Storage package.
 
-1. A mappából futtassa a következő parancsot a hivatkozott szerelvények újraépítéséhez a `bin` mappában. `wwwroot`
+1. From the `wwwroot` folder, run the following command to rebuild the referenced assemblies in the `bin` folder.
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. A portál **Áttekintés** lapján kattintson a **Start** gombra a Function alkalmazás újraindításához.
+1. Back in the **Overview** tab in the portal, choose **Start** to restart the function app.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)

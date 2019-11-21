@@ -7,17 +7,17 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/14/2019
 ms.topic: overview
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 8b989e5cf5b66d21c19d58f2f64fbba1927f5d69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70951bfdafb9e54a63c2645d4993233fc4b8446c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792802"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230020"
 ---
-# <a name="what-is-the-cloudyn-service"></a>Mi a Cloudyn szolgáltatás?
+# <a name="what-is-the-cloudyn-service"></a>What is the Cloudyn service?
 
 A Microsoft leányvállalata, a Cloudyn lehetővé teszi az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatának és költségeinek követését, az AWS-t és a Google-t is beleértve. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cloudyn segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
 
@@ -25,42 +25,42 @@ Bevezető videó: [Az Azure Cloudyn bemutatása](https://azure.microsoft.com/res
 
 Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
 
-Tekintse meg a [Azure Cost Management és a Cloudyn videó](https://www.youtube.com/watch?v=PmwFWwSluh8) javaslatok megtekintéséhez, mikor használja az Azure Cost Management vagy a Cloudyn, a üzleti igények alapján.
+Watch the [Azure Cost Management and Cloudyn video](https://www.youtube.com/watch?v=PmwFWwSluh8) to see recommendations when you should use either Azure Cost Management or Cloudyn, based on your business needs.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
-## <a name="cloudyn-features-moving-to-azure-cost-management"></a>A Cloudyn funkciókat áthelyezi az Azure Cost Management
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Cloudyn features moving to Azure Cost Management
 
-A Microsoft Cloudyn megszerzett, és áttelepíti a cost management funkcióit a Cloudyn portálon a natív módon az Azure-bA. Az új funkciók használatához jelentkezzen be az Azure Portalon, és navigáljon a [Cost Management és számlázás](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) Azure-szolgáltatások listájában. A Cloudyn képest, a natív felhasználói élményt kínál javítja a teljesítményt és kisebb adatkésések körülbelül nyolc óra.
+Microsoft acquired Cloudyn and is migrating its cost management features from the Cloudyn portal natively into Azure. To use the new features, sign-in to the Azure portal and navigate to [Cost Management and Billing](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) in the list of Azure services. Compared to Cloudyn, the native experience offers improved performance and lower data latency of about eight hours.
 
-Nagyvállalati szerződés, a használatalapú fizetés és az MSDN, az Azure Cost Management ajánlat kategóriák kulcsa történő áttelepítés akkor fejeződött be. CSP-előfizetésekben van a migrálása folyamatban van keresztül az Azure Cost Management.
+Key feature migration for Enterprise Agreement, Pay-As-You-Go, and MSDN offer categories to Azure Cost Management is complete. CSP subscriptions are in the process of being migrated over to Azure Cost Management.
 
-Ha még nincs áttelepítve az ajánlat kategóriája, a Cloudyn portálon kell továbbra is. Mindenki más használhatja az Azure Cost Managementbe.
+If you have an offer category not yet migrated, you should continue to use the Cloudyn portal. Everyone else can use Azure Cost Management.
 
-| A Microsoft Azure-ajánlatok és szolgáltatások | Ajánlott cost management szolgáltatás |
+| Microsoft Azure offers and features | Recommended cost management service |
 | --- | --- |
-| Az Azure nagyvállalati szerződéssel | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Enterprise Agreement | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure Web Direct (PAYG/MSDN) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure Government | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
-| A felhőbe irányuló cost analysis támogatása az AWS (az előzetes verzió) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| AWS – javaslatok | [Cloudyn](https://azure.cloudyn.com) |
+| Cross-cloud cost analysis support for AWS (in preview) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| AWS recommendations | [Cloudyn](https://azure.cloudyn.com) |
 
-A következő funkciók némelyike érhetők el a Cloudyn, de ezek mindegyike már elérhető az Azure Cost Managementben.
+Some of the following features are available in Cloudyn, but all of them are available now in Azure Cost Management.
 
 - API-k
-- Az Azure compute-javaslatok
-- Az Azure foglalás javaslatok
-- Költségvetések
+- Azure compute recommendations
+- Azure Reservation recommendations
+- Költségkeret
 - Költségelemzés
-- Adatok exportálása az Azure storage-fiókba
+- Export data to an Azure storage account
 - Kisebb késés
-- A Power BI-tartalomcsomag és -összekötő
-- Erőforrás-címkék támogatása
+- Power BI content pack and connector
+- Resource tag support
 
 ## <a name="monitor-usage-and-spending"></a>Használat és költségek monitorozása
 
-A használat és a költségek monitorozása kritikus fontosságú a felhőalapú infrastruktúrákhoz, mert a szervezetek fizetnek az általuk használt erőforrásokért. Amikor a használat túllép a szerződés küszöbértékeken, gyorsan váratlan többletköltségek léphetnek fel. Néhány fontos tényező is megnehezítik alkalmi figyelése. Először is az átlagos használaton alapuló költségkivetítés feltételezi, hogy a fogyasztása állandó marad egy adott számlázási időszak egészében. Másodszor, amikor a költségek a költségvetés közelében vannak vagy túllépik azt, fontos proaktív módon fogadni az értesítéseket, hogy módosíthassa a kiadásokat. előfordulhat az is, hogy a felhőszolgáltatók nem biztosítják a költségek kivetítését és a küszöbértékeket összehasonlító vagy az időszakokat összehasonlító jelentéseket.
+A használat és a költségek monitorozása kritikus fontosságú a felhőalapú infrastruktúrákhoz, mert a szervezetek fizetnek az általuk használt erőforrásokért. Amikor a használat túllép a szerződés küszöbértékeken, gyorsan váratlan többletköltségek léphetnek fel. A few important factors can make ad hoc monitoring difficult. Először is az átlagos használaton alapuló költségkivetítés feltételezi, hogy a fogyasztása állandó marad egy adott számlázási időszak egészében. Másodszor, amikor a költségek a költségvetés közelében vannak vagy túllépik azt, fontos proaktív módon fogadni az értesítéseket, hogy módosíthassa a kiadásokat. előfordulhat az is, hogy a felhőszolgáltatók nem biztosítják a költségek kivetítését és a küszöbértékeket összehasonlító vagy az időszakokat összehasonlító jelentéseket.
 
 A jelentések segítenek a kiadások monitorozásában a felhőhasználat, a költségek és trendek elemzése és megfigyelése érdekében. Az időalapú jelentésekkel észlelheti a normál trendektől eltérő rendellenességeket. A felhőben üzemelő szolgáltatások kis hatékonysága jól látható az optimalizálási jelentésekben. A költségelemzési jelentésekben is észreveheti a nem hatékony felhasználást.
 
@@ -81,7 +81,7 @@ A Cloudyn segítségével meghatározhatja az optimális virtuálisgép-használ
 Ha AWS lefoglalt példányokat helyezett üzembe, az optimalizálási jelentésekkel javíthatja a lefoglalt példányok kihasználtságát, mert ezekben megtekintheti a vásárlással kapcsolatos javaslatokat, módosíthatja a nem használt lefoglalásokat, és megtervezheti az üzembe helyezést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a Cloudynt, a következő lépés a felhőalapú környezet regisztrálása és az adatok megismerése.
 

@@ -1,300 +1,300 @@
 ---
-title: A Cloudyn irányítópultjain fontos metrikákat jeleníthet meg az Azure-ban |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan irányítópultokat a fő mérőszámokat megtekintheti a Cloudyn.
+title: View key metrics with Cloudyn dashboards in Azure | Microsoft Docs
+description: This article describes how you can view key metrics with dashboards in Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: b83368b913bf1303b49e3a56e3a15248af222cbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0651dd006585e4ed5b8b888d6e55974c5c45a1d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002054"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230075"
 ---
-# <a name="view-key-cost-metrics-with-dashboards"></a>Költségeket az irányítópultok metrikák nézet kulcs
+# <a name="view-key-cost-metrics-with-dashboards"></a>View key cost metrics with dashboards
 
-A Cloudyn irányítópultjain jelentések magas szintű áttekintést nyújt. Az irányítópultok lehetővé teszi kulcs költség metrikákat tekinthet meg egyetlen nézetben. Ezenkívül tartalmaznak üzleti trend kiemeli annak érdekében, hogy fontos üzleti döntéseket hozhasson.
+Dashboards in Cloudyn provide a high-level view of reports. Dashboards allow you to view key cost metrics in a single view. They also provide business trend highlights to help you make important business decisions.
 
-Az irányítópultok is használják nézeteket hozhat létre a különböző személyek a szervezetben, többek között előfordulhat, hogy:
+Dashboards are also used to create views for people with different responsibilities in your organization, which might include:
 
-- Pénzügyi vezérlő
-- Alkalmazás- vagy projekt tulajdonosa
-- DevOps-mérnök
-- A vezetők
+- Financial controller
+- Application or project owner
+- DevOps engineer
+- Executives
 
-Az irányítópultok widgetek épülnek fel, és minden widget lényegében egy jelentés miniatűr. Kattintson egy widget nyissa meg a jelentést. Jelentések testreszabása, mentse azokat a jelentések mappa, és a rendszer hozzáadja az irányítópultot.
+Dashboards are made up of widgets and each widget is essentially a report thumbnail. Click a widget to open its report. When you customize reports, you save them to My Reports and they're added to the dashboard.
 
-Irányítópult-verziók kezelése (MSP), Enterprise és prémium szintű Cloudyn felhasználók esetében eltérőek. A különbségek entitások hozzáférési szintjeit határozzák meg. Hozzáférési szintekkel kapcsolatos további információkért lásd: [entitások hozzáférési szintjeit](tutorial-user-access.md#entity-access-levels).
+Dashboard versions differ for Management (MSP), Enterprise, and Premium Cloudyn users. The differences are determined by entity access levels. For more information about access levels, see [Entity access levels](tutorial-user-access.md#entity-access-levels).
 
-Irányítópult rendelkezésre állási attól függ, hogy a cloud service provider használt fiók irányítópultok megtekintésekor típusát. Elérhető és a Cloudyn által összegyűjtött információ típusa hatással van a jelentések az irányítópultokkal. Például ha AWS-fiók nem rendelkezik majd meg nem jelenik meg az S3-követő irányítópultot. Ehhez hasonlóan ha nem engedélyezi az Azure Resource Manager hozzáférhetnek, majd meg nem jelenik meg az irányítópult widgetek optimalizáló bármely Azure-ra vonatkozó információkat.
+Dashboard availability depends on the type of cloud service provider account that is used when viewing dashboards. The type of information available and collected by Cloudyn affects reports in dashboards. For example, if you don't have an AWS account then you won't see the S3 Tracker dashboard. Similarly, if you don't enable Azure Resource Manager access to Cloudyn then you won't see any Azure-specific information in Optimizer dashboard widgets.
 
-Az előzetesen irányítópultok bármelyikét használhatja, vagy testre szabott jelentéseket hozhat létre saját irányítópultját. Ha még nem ismeri a Cloudyn-jelentések, [használja a Cloudyn-jelentések](use-reports.md).
+You can use any of the premade dashboards or you can create your own dashboard with customized reports. If you're unfamiliar with Cloudyn reports, see [Use Cloudyn reports](use-reports.md).
 
-## <a name="create-a-custom-dashboard"></a>Egyéni irányítópult létrehozása
+## <a name="create-a-custom-dashboard"></a>Create a custom dashboard
 
-A használatának gyors megkezdése egy egyéni irányítópult, duplikálhatja tulajdonságainak használata egy meglévő. Majd módosíthatja azt, hogy illeszkedjen az igényeihez. A másolni kívánt irányítópultján kattintson **Mentés másként**. Személyre szabott irányítópultok csak duplikálhatja – az irányítópultok, a Cloudyn, nem ismétlődő.
+To quickly get started with a custom dashboard, you can duplicate an existing one to use its properties. Then you can modify it to suit your needs. On the dashboard you want to copy, click **Save As**. You can only duplicate customized dashboards — you can't duplicate the dashboards that are included with Cloudyn.
 
-Egyéni irányítópult létrehozása:
+To create a custom dashboard:
 
-1. A kezdőlapon kattintson **új hozzáadása +** . Saját irányítópult-oldalon jelenik meg.  
-    ![Saját irányítópult-oldalon, ahol hozzáadhat új jelentések](./media/dashboards/my-dashboard.png)
-2. Kattintson a **adja hozzá az új jelentés**. A jelentés hozzáadása jelenik meg.
-3. Válassza ki a jelentést, az irányítópult-widgethez hozzáadni kívánt. A widget hozzá van adva az irányítópulthoz.
-4. Ismételje meg a fenti lépéseket, mindaddig, amíg befejeződik az irányítópulton.
-5. Ha módosítani szeretné az irányítópult nevét, az az irányítópult nevét, az irányítópult kezdőlapján kattintson, és írja be az új nevet.
+1. On the homepage, click **Add New +** . The My Dashboard page is displayed.  
+    ![My dashboard page where you add new reports](./media/dashboards/my-dashboard.png)
+2. Click **Add New Report**. The Add Report box is displayed.
+3. Select the report that you want to add to the dashboard widget. The widget is added to the dashboard.
+4. Repeat the preceding steps until the dashboard is complete.
+5. To change the name of the dashboard, click the name of the dashboard on the Dashboard home page and type the new name.
 
-## <a name="modify-a-custom-dashboard"></a>Egyéni irányítópult módosítása
+## <a name="modify-a-custom-dashboard"></a>Modify a custom dashboard
 
-Egyéni irányítópult létrehozása, például a cloudyn foglalt irányítópultokon nem módosíthatja. Egyéni irányítópult jelentés módosítása:
+Like creating a custom dashboard, you can't modify the dashboards included with Cloudyn. To modify a custom dashboard report:
 
-1. Az irányítópulton, keresse meg a jelentés módosítása, és kattintson a kívánt **szerkesztése**. A jelentés jelenik meg.
-2. Végezze el a jelentést szeretne készíteni, és kattintson a módosításokat **mentése**. A jelentés frissül, és megjeleníti a módosításokat.
+1. In the dashboard, find the report you want to modify and click **Edit**. The report is displayed.
+2. Make any changes that you want to the report and click **Save**. The report is updated and displays your changes.
 
-## <a name="share-a-custom-dashboard"></a>Egyéni irányítópult megosztása
+## <a name="share-a-custom-dashboard"></a>Share a custom dashboard
 
-Egyéni irányítópult megoszthatja másokkal, _nyilvános_ vagy _saját entitás_. Nyilvánosan megosztott a minden felhasználó megtekintheti az irányítópulton. Csak az aktuális entitás hozzáféréssel rendelkező felhasználók megtekinthetik az irányítópultot saját entitáshoz megosztásakor. Egyéni irányítópult megosztása a nyilvános és a saját entitás lépései hasonlóak.
+You can share a custom dashboard with others to _Public_ or _My Entity_. When you share to Public, all users can view the dashboard. Only users with access to the current entity can view the dashboard when you share to My Entity. The steps to share a custom dashboard with Public and My Entity are similar.
 
-A nyilvános egyéni irányítópult megosztása:
+To share a custom dashboard to Public:
 
-1. Az irányítópulton kattintson **irányítópult beállításai**. Az irányítópult beállításai jelenik meg.  
-    ![egyéni irányítópult irányítópult beállításai](./media/dashboards/dashboard-options.png)
-2. Az irányítópult beállításai a boxban, kattintson a nyílra, és kattintson a **nyilvános**. A nyilvános irányítópult megerősítő párbeszédpanel jelenik meg.
-3. Kattintson a **Igen**. Az irányítópult már másoknak is elérhető.
+1. In a dashboard, click **Dashboard Settings**. The Dashboard Settings box is displayed.  
+    ![dashboard settings for a custom dashboard](./media/dashboards/dashboard-options.png)
+2. In the Dashboard Settings box, click the arrow symbol and then click **Public**. The Public Dashboard confirmation dialog box is displayed.
+3. Click  **Yes**. The dashboard is now available to others.
 
-## <a name="delete-a-custom-dashboard-report"></a>Egyéni irányítópult jelentés törlése
+## <a name="delete-a-custom-dashboard-report"></a>Delete a custom dashboard report
 
-Egy egyéni jelentés összetevő törölheti az irányítópultról. A jelentés az irányítópulton nem törlése a jelentés a jelentések listából. Ehelyett a jelentés törlésével eltávolítja azt az csak az irányítópulton.
+You can delete a custom report component from the dashboard. Deleting the report from the dashboard doesn't delete the report from the reports list. Instead, deleting the report removes it from the dashboard only.
 
-Egy irányítópult-összetevő, az irányítópult összetevőre törléséhez kattintson **törlése**. Kattintson a **törlése** azonnal törli az irányítópult összetevő.
+To delete a dashboard component, on the dashboard component, click **Delete**. Clicking **Delete**  immediately deletes the dashboard component.
 
-## <a name="share-a-dashboard-enterprise"></a>(Enterprise) irányítópult megosztása
+## <a name="share-a-dashboard-enterprise"></a>Share a dashboard (Enterprise)
 
-Minden felhasználó egyéni irányítópultokat megoszthatja a munkahelyén vagy az aktuális entitás felhasználóival. Irányítópult megosztásának teheti másoknak a KPI gyors magas szintű áttekintést. Ha megoszt egy irányítópultot, azt automatikusan replikálja az irányítópult összes Cloudyn entitásokat és ügyfeleinek. A megosztott irányítópultra mutató változtatások automatikusan frissülnek.
+You can share custom dashboards to all users in your organization or with the users of the current entity. Sharing a dashboard can give others a quick high-level view of your KPI. When you share a dashboard, it automatically replicates the dashboard to all your Cloudyn entities/customers. Changes to the shared dashboard are automatically updated.
 
-Irányítópult megosztása minden felhasználó subentities is:
+To share a dashboard with all users including subentities:
 
-1. Az irányítópult kezdőlapján kattintson **szerkesztése**.
-2. Kattintson a **megosztás** majd **nyilvános**.
-3. A globális nyilvános irányítópult a megerősítést kérő párbeszédpanelen jelenik meg.
-4. Kattintson a **Igen** beállítása az irányítópult egy globális nyilvános irányítópultként.
+1. On the dashboard home page, click **Edit**.
+2. Click **Share** and then select **Public**.
+3. The Global Public Dashboard confirmation box is displayed.
+4. Click **Yes** to set the dashboard as a global public dashboard.
 
-Aktuális entitás minden felhasználó megosztani Önnel egy irányítópultot:
+To share a dashboard with all users of a current entity:
 
-1. Az irányítópult kezdőlapján kattintson **szerkesztése**.
-2. Kattintson a **megosztás** majd **saját entitás**.
-3. Kattintson a **Igen** nyilvános irányítópultként beállítani a az irányítópulton.
+1. From the Dashboard home page, click **Edit**.
+2. Click **Share** and then select **My Entity**.
+3. Click **Yes** to set the dashboard as a public dashboard.
 
-## <a name="duplicate-a-custom-dashboard"></a>Egyéni irányítópult megkettőzése
+## <a name="duplicate-a-custom-dashboard"></a>Duplicate a custom dashboard
 
-Amikor létrehoz egy új irányítópultot, érdemes használni egy meglévő irányítópultot hasonló tulajdonságait. Másolhatja az irányítópulton, hozzon létre egy újat.
+When you create a new dashboard, you might want to use similar properties from an existing dashboard. You can duplicate the dashboard to create a new one.
 
-Csak egyéni irányítópultokat készíthet másolatot. Standard szintű irányítópultok nem ismétlődő.
+You can only duplicate custom dashboards. You can't duplicate standard dashboards.
 
-A (Klónozás) egyéni irányítópult megkettőzése:
+To duplicate (clone) a custom dashboard:
 
-1. Az ismétlődő kívánt irányítópultján kattintson **Mentés másként**. Ugyanazzal a névvel és a egy szám megnyílik egy új irányítópultot.
-2. Az ismétlődő irányítópult átnevezése, és tetszés szerint módosíthatja azt.
-
-– Vagy –
-
-1. Kattintson az irányítópult-beállítások **Mentés másként** az irányítópult megkettőzése kívánt sorában.
-2. Az ismétlődő irányítópult nyílik meg.
-3. Átnevezheti az irányítópultot, és tetszés szerint módosíthatja azt.
-
-## <a name="set-a-default-dashboard"></a>Alapértelmezett irányítópult beállítása
-
-Az alapértelmezett állítható bármelyik irányítópult. Az alapértelmezett értékre állítaná teszi, hogy az irányítópult-lapok listája a bal szélső lapján jelennek meg. Az alapértelmezett irányítópulton jeleníti meg, ha a Cloudyn portál megnyitása.
-
-- Kattintson az alapértelmezett, majd kattintson a kívánt irányítópult fület **alapértelmezett** a jobb oldalon.
+1. On the Dashboard that you want to duplicate, click **Save As**. A new dashboard opens with the same name and a number.
+2. Rename the duplicated dashboard and modify it as you like.
 
 – Vagy –
 
-1. Kattintson a **irányítópult beállításai** elérhető irányítópultok listáját, és válassza ki az alapértelmezettként használni kívánt irányítópultot.  
-    ![egy alapértelmezett irányítópultot az irányítópult beállításai](./media/dashboards/dashboard-options.png)
-2. Kattintson a **alapértelmezett** az irányítópult a sorban. Az alapértelmezett irányítópult a megerősítést kérő párbeszédpanelen jelenik meg.
-3. Kattintson a **Yes** (Igen) gombra. Az Irányítópult alapértelmezett értéke.
+1. In Dashboard Settings, click **Save As**  on the line of the dashboard that you want to duplicate.
+2. The duplicated dashboard opens.
+3. Rename the dashboard and modify it as you like.
+
+## <a name="set-a-default-dashboard"></a>Set a default dashboard
+
+You can set any dashboard as your default. Setting it to your default makes it appear as the left-most tab in the dashboard tab list. The default dashboard displays when open the Cloudyn portal.
+
+- Click the dashboard tab you would like to set as default, then click **Default** on the right.
+
+– Vagy –
+
+1. Click **Dashboard Settings** to see the list of available dashboards and select the dashboard that you want to set as the default.  
+    ![dashboard options for a default dashboard](./media/dashboards/dashboard-options.png)
+2. Click **Default** in the line of the dashboard. The Default Dashboard confirmation box is displayed.
+3. Kattintson a **Yes** (Igen) gombra. The dashboard is set to default.
 
 ## <a name="management-dashboard"></a>Kezelési irányítópult
-A Management (vagy MSP-irányítópult MSP-felhasználók) irányítópultot tartalmazza a fő típusú emeli ki.  
-![Felügyeleti irányítópultja, amelyen különböző jelentéseket](./media/dashboards/management-dash.png)
+The Management (or MSP dashboard for MSP users) dashboard includes highlights of the main report types.  
+![Management dashboard showing various reports](./media/dashboards/management-dash.png)
 
-### <a name="cost-entity-summary-enterprise-only"></a>Költségelem összegzése (csak Enterprise)
-A widget a felügyelt költség entitásokkal, többek között, az entitások és fiókok számát foglalja össze.
-- Kattintson a widget nyissa meg a vállalati részletei jelentést.
+### <a name="cost-entity-summary-enterprise-only"></a>Cost Entity Summary (Enterprise only)
+This widget summarizes the managed cost entities, including the number of entities and number of accounts.
+- Click the widget to open the Enterprise Details report.
 
-### <a name="cost-over-time"></a>Költségek időbeli alakulása
-A widget segíthetnek a költségek trendek felismerése. Kiemeli a költségek az utolsó napjára, a trend az elmúlt 30 nap alapján.
-- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést megtekintéséhez és szűrheti a további részleteket.
+### <a name="cost-over-time"></a>Cost Over Time
+This widget can help you spot cost trends. It highlights the cost for the last day, based on the trend of the last 30 days.
+- Click the widget to open the Actual Cost Over Time report to view and filter additional details.
 
-### <a name="asset-controller"></a>Adategység-vezérlő
-A widget kiemeli a futó példányok az előző nap, a használati trend az elmúlt 30 napban fent száma.
-- Kattintson a widget az adategység-vezérlő irányítópult megnyitásához.
+### <a name="asset-controller"></a>Asset Controller
+This widget highlights the number of running instances from the previous day, above the usage trend over the last 30 days.
+- Click the widget to open the Asset Controller dashboard.
 
-### <a name="unused-ri-detector"></a>A fel nem használt fenntartott példányok detector használatával
-A widget kiemeli az Amazon EC2-é száma nem használt foglalások.
-- Kattintson a widget nyissa meg a jelenleg nem használt foglalások jelentést, ahol megtekintheti a fel nem használt foglalások módosíthatja.
+### <a name="unused-ri-detector"></a>Unused RI Detector
+This widget highlights the number of Amazon EC2 unused reservations.
+- Click the widget to open the Currently Unused Reservations report where you can view the unused reservations you can modify.
 
-### <a name="cost-by-service"></a>Díj szolgáltatás szerint
-A widget amortizált költségek kiemeli a szolgáltatás az elmúlt 30 napra vonatkozóan. A tortadiagram a költségeket a szolgáltatás megtekintéséhez mutasson.
-- Kattintson a widget nyissa meg a tényleges költségek elemzése jelentést.
+### <a name="cost-by-service"></a>Cost by Service
+This widget highlights amortized costs by service for the last 30 days. Hover over the pie chart to see the costs per service.
+- Click the widget to open the Actual Cost Analysis report.
 
-### <a name="potential-savings"></a>Lehetséges megtakarítás
-A widget díjszabása az Amazon EC2-é és az Amazon RDS javaslatok példány típusát jeleníti meg.
-- Kattintson a widget nyissa meg a megtakarítások elemző jelentés. Felsorolja a példányok típusai lehetséges megtakarítás a költségeket.
+### <a name="potential-savings"></a>Potential savings
+This widget shows instance type pricing recommendations for Amazon EC2 and Amazon RDS.
+- Click the widget open the Savings Analysis report. It lists your costs by instance types with potential savings.
 
-### <a name="compute-instances---daily-trend"></a>Számítási példányok – napi Trend
-A widget jeleníti meg az aktív példány típusát, az elmúlt 30 napra vonatkozóan.
-- Kattintson a widget nyissa meg a példányok időalapú jelentést, ahol megtekintheti az elmúlt 30 napban példányai egy bontása.
+### <a name="compute-instances---daily-trend"></a>Compute Instances - Daily Trend
+This widget displays the active instances by type, for the last 30 days.
+- Click the widget to open the Instances Over Time report, where you can view a breakdown of all instances running during the last 30 days.
 
-### <a name="storage-by-department"></a>Tárterület részlegenként
-A widget részlegek által használt tárolási szolgáltatások jeleníti meg. A tortadiagram tekintse meg a tárhelyhasználat részleg fölé.
-- Kattintson a widget az S3-követő irányítópult megnyitásához.
+### <a name="storage-by-department"></a>Storage by department
+This widget displays the storage services used by departments. Hover over the pie chart to see your storage consumption by department.
+- Click the widget to open the S3 Tracker dashboard.
 
-## <a name="cost-controller-dashboard"></a>Vezérlő irányítópultja költség
-A költségek vezérlő irányítópult jeleníti meg előre beállított költségek felosztási emeli ki.  
-![Vezérlő irányítópultjáról és különböző jelentéseket költség](./media/dashboards/cost-controller-dashboard.png)
+## <a name="cost-controller-dashboard"></a>Cost Controller dashboard
+The Cost Controller dashboard shows pre-set cost allocation highlights.  
+![Cost Controller dashboard showing various reports](./media/dashboards/cost-controller-dashboard.png)
 
-### <a name="cost-over-time"></a>Költségek időbeli alakulása
-A widget segít a költségek trendek felismerése. Kiemeli a költségek az utolsó napjára, a trend az elmúlt 30 nap alapján.
-- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést megtekintéséhez és szűrheti a további részleteket.
+### <a name="cost-over-time"></a>Cost Over Time
+This widget helps you spot cost trends. It highlights the cost for the last day, based on the trend of the last 30 days.
+- Click the widget to open the Actual Cost Over Time report to view and filter additional details.
 
-### <a name="monthly-cost-trends"></a>Havi költség trendek
-A widget kiemeli a tervezett amortizált összegű költségkeretet, és a tényleges csak a hónap kezdete óta.
-- Kattintson a widget megnyitása az aktuális havi előre jelzett költségről szóló jelentés, amelyet összefoglaló hónap elejétől számított költséget biztosít.
+### <a name="monthly-cost-trends"></a>Monthly Cost Trends
+This widget highlights projected amortized spending and your actual spend since the beginning of the month.
+- Click the widget to open the Current Month Projected Cost report, which provides a month-to-date cost summary.
 
-Ez a jelentés tartalmazza a költség, hónap, a költség az előző hónap és az aktuális havi előre jelzett költség kezdetétől fogva. Az aktuális havi előre jelzett költséget a naprakész havi költség és leképezés hozzáadása számolható ki. A leképezés a költségek figyelemmel kísérni az elmúlt 30 napban alapul.
+This report shows the cost from the beginning of month, the cost of previous month, and the current month projected cost. The current month projected cost is calculated by adding the up-to-date monthly cost and projection. The projection is based on the cost monitored over the last 30 days.
 
-### <a name="12-month-planner"></a>12 hónapos Planner
-A widget a következő 12 hónapban, és a lehetséges megtakarítás kiemeli a a tervezett költségeket.
-- Kattintson a widget az éves előre jelzett költségről szóló jelentés megnyitásához.
+### <a name="12-month-planner"></a>12 Month Planner
+This widget highlights the projected costs over the next 12 months and the potential savings.
+- Click the widget to open the Annual Projected Cost report.
 
-### <a name="cost-by-service"></a>Díj szolgáltatás szerint
-A widget amortizált költségek kiemeli a szolgáltatás az elmúlt 30 napra vonatkozóan.
-- A tortadiagram a költségeket a szolgáltatás megtekintéséhez mutasson.
-- Kattintson a widget nyissa meg a tényleges költségek elemzése jelentést.
+### <a name="cost-by-service"></a>Cost by Service
+This widget highlights amortized costs by service for the last 30 days.
+- Hover over the pie chart to see the costs per service.
+- Click the widget to open the Actual Cost Analysis report.
 
-### <a name="cost-by-account"></a>Költség-fiók használatával
-A widget emeli ki, az elmúlt 30 napban az amortizált költségek fiók használatával.
-- A tortadiagram a költségek fiókonként megtekintéséhez mutasson.
-- Kattintson a widget nyissa meg a tényleges költségek elemzése jelentést.
+### <a name="cost-by-account"></a>Cost by Account
+This widget highlights amortized costs by account for the last 30 days.
+- Hover over the pie chart to see the costs per account.
+- Click the widget to open the Actual Cost Analysis report.
 
-### <a name="cost-trend-by-day"></a>Költségtrend naponta
-A widget az elmúlt 30 napban költségek emeli ki.
-- Az oszlopdiagram megtekintéséhez költség / nap fölé.
-- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést.
+### <a name="cost-trend-by-day"></a>Cost Trend by Day
+This widget highlights spend over the last 30 days.
+- Hover over the bar graph to see costs per day.
+- Click the widget to open the Actual Cost Over Time report.
 
-### <a name="cost-trend-by-month---last-6-months"></a>Költségtrend hónap – elmúlt 6 hónap szerint
+### <a name="cost-trend-by-month---last-6-months"></a>Cost Trend by Month - Last 6 months
 
-A widget az elmúlt hat hónapban költségek emeli ki.
-- A kurzort az oszlopdiagramot, tekintse meg a havi költségeket.
-- Kattintson a widget nyissa meg a tényleges időalapú költségeket tartalmazó jelentést.
+This widget highlights spend over the last six months.
+- Hover over the bar graph to see costs per month.
+- Click the widget to open the Actual Cost Over Time report.
 
-## <a name="asset-controller-dashboard"></a>Adategység-vezérlő irányítópultja
+## <a name="asset-controller-dashboard"></a>Asset Controller dashboard
 
-Ez az irányítópult futó példányok, elérhető és a használatban lévő lemezek, a példányok típusai és a tároló terjesztési számát jeleníti meg.  
-![Az eszközintelligencia vezérlő irányítópultjáról különböző jelentéseket](./media/dashboards/asset-controller-dashboard.png)
+This dashboard displays the number of running instances, available and in-use disks, distribution of instance types, and storage information.  
+![Asset Controller dashboard showing various reports](./media/dashboards/asset-controller-dashboard.png)
 
-### <a name="compute-instances"></a>Számítási példányok
-A widget az elmúlt 30 napban a használati trendek alapján futó számát jeleníti meg.
-- Kattintson a widget nyissa meg a példányok időalapú jelentést.
+### <a name="compute-instances"></a>Compute Instances
+This widget displays the number of running instances based on the usage trend over the last 30 days.
+- Click the widget to open the Instances Over Time report.
 
 ### <a name="disks"></a>Lemezek
-A widget emeli ki, a teljes számát és a lemezek használatban és elérhető kötet.
-- Kattintson a widget az aktív lemezek jelentés megnyitásához.
+This widget highlights the total number and volume of disks, that are in-use and available.
+- Click the widget to open the Active Disks report.
 
-### <a name="instance-type-distribution"></a>Példány információtípus terjesztése
-A widget a tortadiagram a példányok típusai emeli ki.
-- Kattintson a widgeten nyissa meg a példány terjesztési jelentést, amely az aktív üzemelő példányok bontásban a kiválasztott összesítési.
+### <a name="instance-type-distribution"></a>Instance Type Distribution
+This widget highlights the instance types in a pie chart.
+- Click on the widget to open the Instance Distribution report, which provides a breakdown of your active instances by the selected aggregation.
 
-### <a name="compute-instances---daily-trend"></a>Számítási példányok – napi Trend
-A widget kiemeli a számítási példányok (helyszíni, fenntartott, és igény szerinti) naponta az elmúlt 30 napra vonatkozóan.
-- A kurzort a diagram a napi típus szerint a számítási példányok számának megtekintéséhez.
-- Kattintson a widget nyissa meg a példányok időalapú jelentést.
+### <a name="compute-instances---daily-trend"></a>Compute Instances - Daily Trend
+This widget highlights the compute instances (spot, reserved, and on-demand) per day for the last 30 days.
+- Hover over the graph to view the number of compute instances, per type per day.
+- Click the widget to open the Instances Over Time report.
 
-### <a name="all-buckets-s3"></a>Az összes gyűjtők (S3 esetén)
-A widget emeli ki, az S3 szintű tárterület teljes és a tárolt objektumok száma.
-- Kattintson a widget az S3-követő irányítópult megnyitásához. Az Irányítópult segítségével keresse meg, elemzése és megjelenítése az aktuális storage használati és a trendeket.
+### <a name="all-buckets-s3"></a>All Buckets (S3)
+This widget highlights the total S3 storage and number of objects stored.
+- Click the widget to open the S3 Tracker Dashboard. The dashboard helps you find, analyze, and display your current storage usage and trends.
 
-### <a name="sql-db-instances-rds"></a>SQL DB-példányok (RDS)
-A widget kiemeli a futó a trend az elmúlt 30 nap alapján Amazon RDS-példányok számát.
-- Kattintson a widget nyissa meg a távoli asztali szolgáltatások példány időalapú jelentést.
+### <a name="sql-db-instances-rds"></a>SQL DB Instances (RDS)
+This widget highlights the number of running Amazon RDS instances based on the trend of the last 30 days.
+- Click the widget to open the RDS Instance Over Time report.
 
-## <a name="optimizer-dashboard"></a>Optimalizáló irányítópult
-Ez az irányítópult downsizing javaslatokat, a fel nem használt erőforrások és a lehetséges megtakarítás jeleníti meg.  
-![Optimalizáló irányítópultjáról és különböző jelentéseket](./media/dashboards/optimizer-dashboard.png)
+## <a name="optimizer-dashboard"></a>Optimizer Dashboard
+This dashboard displays downsizing recommendations, unused resources, and potential savings.  
+![Optimizer dashboard showing various reports](./media/dashboards/optimizer-dashboard.png)
 
-### <a name="ri-calculator"></a>A fenntartott példányok Kalkulátor
-A widget fenntartott példány vásárlására vonatkozó javaslat számát jeleníti meg, és kiemeli az éves szinten lehetséges megtakarításokat.
-- Kattintson a widget, nyissa meg a fenntartott példány Számológép, ahol megadhatja, hogy mikor érdemes használni az igény szerinti és fenntartott díjszabási csomagokat.
+### <a name="ri-calculator"></a>RI Calculator
+This widget displays the number of RI buying recommendations and highlights the potential annual savings.
+- Click the widget to open the Reserved Instance Calculator where you can determine when to use on-demand vs. reserved pricing plans.
 
 ### <a name="sizing"></a>Méretezés
-A widget az ajánlott méretezése és a lehetséges megtakarítás emeli ki, ha implementálva.
-- Kattintson a widget az EC2-é költséghatékony méretezési javaslatokat tartalmazó jelentés megnyitásához.
+This widget highlights the sizing recommended and potential savings, if implemented.
+- Click the widget to open the EC2 Cost Effective Sizing Recommendations report.
 
-### <a name="unused-ri-detector"></a>A fel nem használt fenntartott példányok detector használatával
-A widget kiemeli az Amazon EC2-é száma nem használt foglalások.
-- Kattintson a widget nyissa meg a jelenleg nem használt foglalások jelentést, ahol megtekintheti a nem használt foglalások, amelyek módosíthatók.
+### <a name="unused-ri-detector"></a>Unused RI Detector
+This widget highlights the number of Amazon EC2 unused reservations.
+- Click the widget to open the Currently Unused Reservations report where you can view the unused reservations that you can modify.
 
-###  <a name="available-disks"></a>Rendelkezésre álló lemezek
-A widget rávilágít arra, hogy a telepítés nem csatlakoztatott lemezek számát.
-- Kattintson a widget nyissa meg a leválasztott lemezeket jelentést.
+###  <a name="available-disks"></a>Available Disks
+This widget highlights the number of unattached disks in your deployment.
+- Click the widget to open the Unattached Disks report.
 
-### <a name="rds-ri-calculator"></a>A távoli asztali szolgáltatások a fenntartott példányok Kalkulátor
-A widget kiemeli az Amazon RDS-példány és a lehetséges megtakarítás foglalás javaslatok száma.
-- Kattintson a widget nyissa meg a távoli asztali szolgáltatások fenntartott példány vásárlására vonatkozó javaslatok jelentést, ahol megtekintheti a Cloudyn javaslatok a fenntartott példányok használata helyett az igény szerinti példányok.
+### <a name="rds-ri-calculator"></a>RDS RI Calculator
+This widget highlights the number of reservation recommendations for your Amazon RDS instances and the potential savings.
+- Click the widget to open the RDS RI Buying Recommendations report where you can see Cloudyn recommendations to use reserved instances instead of on-demand Instances.
 
-### <a name="rds-sizing"></a>A távoli asztali szolgáltatások méretezése
-A widget méretezési javaslatok és a lehetséges megtakarítás számát jeleníti meg.
-- Kattintson a widget nyissa meg a távoli asztali szolgáltatások méretezési javaslatok jelentést, részletes méretezési javaslatok Amazon RDS melyik jeleníti meg.
+### <a name="rds-sizing"></a>RDS Sizing
+This widget shows the number of sizing recommendations and the potential savings.
+- Click the widget to open the RDS Sizing Recommendations report, which displays detailed Amazon RDS sizing recommendations.
 
-Az optimalizálási javaslatokat vannak adatok alapján történő használatának és teljesítményének figyelemmel kísérni az elmúlt hónapban.
+The optimization recommendations are based on the usage and performance data monitored in the last month.
 
-## <a name="s3-tracker-dashboard"></a>S3-követő irányítópult
-Az S3-követő Irányítópult segítségével keresse meg, elemzése és megjelenítése az aktuális storage használati és a trendek.  
-![S3-követő irányítópultjáról és különböző jelentéseket](./media/dashboards/s3-tracker-dashboard.png)
+## <a name="s3-tracker-dashboard"></a>S3 Tracker dashboard
+The S3 Tracker dashboard helps you find, analyze, and display your current storage usage and trends.  
+![S3 Tracker dashboard showing various reports](./media/dashboards/s3-tracker-dashboard.png)
 
-### <a name="all-buckets"></a>Az összes gyűjtők
-A widget rávilágít arra, hogy minden a gyűjtők GB-ban, és a gyűjtők lévő objektumok teljes száma a teljes méretét.
-- Kattintson a widget az S3 mérete terjesztési jelentés megnyitásához. A jelentés segítségével elemezheti az S3 méretet gyűjtőbe, a legfelső szintű mappát, a tárolási osztály és a verziószámozási állapotát.
+### <a name="all-buckets"></a>All Buckets
+This widget highlights the total size of all your buckets, in GB, and the total number of objects in your buckets.
+- Click the widget to open the Distribution of S3 Size report. The report helps you analyze your S3 size by bucket, top-level folder, storage class, and versioning state.
 
-### <a name="bucket-properties"></a>Gyűjtő tulajdonságai
-A widget kiemeli a storage gyűjtők száma összesen.
-- A widget az S3 gyűjtő tulajdonságairól szóló jelentés megtekintése gombra.
+### <a name="bucket-properties"></a>Bucket Properties
+This widget highlights the total number of storage buckets.
+- Click the widget to view the S3 Bucket Properties report.
 
-### <a name="scan-status"></a>Vizsgálat állapota
-A widget emeli ki, amikor az utolsó S3 vizsgálat megtörtént, és elindítja a következő.
-- Kattintson a widget az S3 vizsgálat állapota jelentés megnyitásához.
+### <a name="scan-status"></a>Scan Status
+This widget highlights when the last S3 scan was done and when the next one will start.
+- Click the widget to open the S3 Scan Status report.
 
-### <a name="storage-by-bucket"></a>Storage-gyűjtő által
-A widget egyes gyűjtőbe tárolási osztály által használt százalékos emeli ki.
-- Kattintson a widget az S3 mérete terjesztési jelentés megnyitásához. A jelentés segítségével elemezheti az S3 méretet gyűjtőbe, a legfelső szintű mappát, a tárolási osztály és a verziószámozási állapotát.
+### <a name="storage-by-bucket"></a>Storage by Bucket
+This widget highlights the percentage that each bucket storage class is using.
+- Click the widget to open the Distribution of S3 Size report. The report helps you analyze your S3 size by bucket, top-level folder, storage class, and versioning state.
 
-### <a name="number-of-objects-by-bucket"></a>A gyűjtő objektumok száma
-A widget kiemeli a gyűjtőhöz a tényleges száma és százalékos aránya szerint objektumok száma. A kurzort a gyűjtőhöz, a teljes objektumok megtekintéséhez.
-- Kattintson a widget nyissa meg a S3 mérete terjesztési jelentést (vizsgálat alapján).
+### <a name="number-of-objects-by-bucket"></a>Number of Objects by Bucket
+This widget highlights the number of objects per bucket in actual number and percentage. Hover over the bucket to see the total objects.
+- Click the widget to open the Distribution of S3 Size report (Scan based).
 
-## <a name="cloud-comparison-dashboard"></a>A cloud összehasonlító irányítópultja
-A felhő összehasonlító Irányítópult segítségével összehasonlíthatja a költségek a különböző felhőszolgáltatók, díjszabás, a Processzor típusa és a RAM mérete alapján.  
-![A felhő összehasonlító irányítópultjáról és különböző jelentéseket](./media/dashboards/cloud-comparison-dashboard.png)
+## <a name="cloud-comparison-dashboard"></a>Cloud Comparison Dashboard
+The Cloud Comparison dashboard helps you compare costs from different cloud providers based on pricing, CPU type, and RAM size.  
+![Cloud Comparison dashboard showing various reports](./media/dashboards/cloud-comparison-dashboard.png)
 
-### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Az Azure-ban, a példány típusának költség
-A widget kiemeli az elmúlt 30 nap használati az igény szerinti díjszabás. Összehasonlítja a költségek és a jelenlegi Amazon EC2-é cost vs az esetleges költségeket az Azure-ban.
-- Költség / példánytípus összehasonlítani a sávok fölé.
-- Kattintson a widget az portolása az üzembe helyezés – költségek elemzése – jelentés megnyitásához.
+### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Cost in Azure by Instance Type
+This widget highlights the last 30 days of usage in on-demand rates. It compares the cost with the current Amazon EC2 cost vs the potential cost in Azure.
+- Hover over the bars to compare costs per instance type.
+- Click the widget to open the Porting Your Deployment – Cost Analysis report.
 
-### <a name="ec2-cost-in-azure"></a>EC2 Az Azure-ban költség
-A widget jeleníti meg az aktuális Amazon EC2-é költségekkel, és összehasonlítja azokat az Azure-bA. Az összehasonlítás az elmúlt 30 nap használati az igény szerinti díjszabás alapján történik.
-- Kattintson a widget az portolása az üzembe helyezés – költségek elemzése – jelentés megnyitásához.
+### <a name="ec2-cost-in-azure"></a>EC2 Cost in Azure
+This widget shows your current Amazon EC2 costs and compares them to Azure. The comparison is based on the last 30 days of usage in on-demand rates.
+- Click the widget to open the Porting Your Deployment - Cost Analysis report.
 
-### <a name="ec2azure-instance-type-mapping"></a>Adattípus-leképezés EC2-vagy az Azure-példány
-A widget rávilágít arra, hogy a legjobb leképezést, rugalmas számítási egységek Amazon EC2-é és az Azure között.
-- Kattintson a widget nyissa meg a példányok adattípus-hozzárendelése jelentést.
+### <a name="ec2azure-instance-type-mapping"></a>EC2/Azure Instance Type Mapping
+This widget highlights the best mapping of elastic compute units between Amazon EC2 and Azure.
+- Click the widget to open the Instances Type Mapping report.
 
-## <a name="next-steps"></a>További lépések
-- Olvassa el a [használja a Cloudyn-jelentések](use-reports.md) további jelentésekkel kapcsolatos cikket.
+## <a name="next-steps"></a>Következő lépések
+- Read the [Use Cloudyn reports](use-reports.md) article to learn more about reports.

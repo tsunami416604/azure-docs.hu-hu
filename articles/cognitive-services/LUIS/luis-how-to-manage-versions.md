@@ -1,7 +1,7 @@
 ---
-title: Verziók kezelése – LUIS
+title: Manage versions - LUIS
 titleSuffix: Azure Cognitive Services
-description: A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik verziójára.
+description: Versions allow you to build and publish different models. A good practice is to clone the current active model to a different version of the app before making changes to the model.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,65 +9,67 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: aa1cbd08bdf8d92653a8f30ae67ecd813e563999
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467514"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221927"
 ---
-# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verziók használata az átmeneti vagy éles alkalmazások befolyásolása nélkül
+# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Use versions to edit and test without impacting staging or production apps
 
-A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik [verziójára](luis-concept-version.md) . 
+Versions allow you to build and publish different models. A good practice is to clone the current active model to a different [version](luis-concept-version.md) of the app before making changes to the model. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+To work with versions, open your app by selecting its name on **My Apps** page, and then select **Manage** in the top bar, then select **Versions** in the left navigation. 
 
-A verziókhoz való munkavégzéshez nyissa meg az alkalmazást a saját **alkalmazások** lapján, majd válassza a **kezelés** lehetőséget a felső sávon, majd válassza a **verziók** elemet a bal oldali navigációs felületen. 
+The list of versions shows which versions are published, where they are published, and which version is currently active. 
 
-A verziók listája megjeleníti a közzétett verziókat, a közzétételük helyét, valamint a jelenleg aktív verziót. 
+> [!div class="mx-imgBorder"]
+> [![Manage section, versions page](./media/luis-how-to-manage-versions/versions-import.png "Manage section, versions page")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
-[![Kezelés szakasz, verziók lap](./media/luis-how-to-manage-versions/versions-import.png "Kezelés szakasz, verziók lap")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+## <a name="clone-a-version"></a>Clone a version
 
-## <a name="clone-a-version"></a>Verzió klónozása
+1. Select the version you want to clone then select **Clone** from the toolbar. 
 
-1. Válassza ki a klónozott verziót, majd válassza a **klónozás** lehetőséget az eszköztáron. 
+2. In the **Clone version** dialog box, type a name for the new version such as "0.2".
 
-2. A **klón verziója** párbeszédpanelen írja be az új verzió nevét, például: "0,2".
-
-   ![Verzió klónozása párbeszédpanel](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
+   ![Clone Version dialog box](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
      > [!NOTE]
-     > A verzióazonosító csak karakterből, számjegyből vagy "." állhat, és nem lehet hosszabb 10 karakternél.
+     > Version ID can consist only of characters, digits or '.' and cannot be longer than 10 characters.
  
-   A rendszer létrehoz egy új, a megadott névvel ellátott verziót, és beállítja az aktív verziót.
+   A new version with the specified name is created and set as the active version.
 
-## <a name="set-active-version"></a>Aktív verzió beállítása
+## <a name="set-active-version"></a>Set active version
 
-Válasszon egy verziót a listából, majd válassza az **aktív** lehetőséget az eszköztárból. 
+Select a version from the list, then select **Activate** from the toolbar. 
 
-[![A szakasz, a verziók lap, a verzióra vonatkozó művelet kezelése](./media/luis-how-to-manage-versions/versions-other.png "A szakasz, a verziók lap, a verzióra vonatkozó művelet kezelése")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![Manage section, versions page, make a version action](./media/luis-how-to-manage-versions/versions-other.png "Manage section, versions page, make a version action")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
-## <a name="import-version"></a>Importálási verzió
+## <a name="import-version"></a>Import version
 
-1. Válassza a **verzió importálása** elemet az eszköztárból. 
+You can import a `.json` or a `.lu` version of your application.
 
-2. Az **új verzió importálása** előugró ablakban adja meg az új tíz karakteres verzió nevét. Ha a JSON-fájl verziója már létezik az alkalmazásban, akkor csak a verzió AZONOSÍTÓját kell beállítania.
+1. Select **Import** from the toolbar, then select the format. 
 
-    ![Szakasz, verziók lap, új verzió importálása](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+2. In the **Import new version** pop-up window, enter the new ten character version name. You only need to set a version ID if the version in the file already exists in the app.
 
-    A verzió importálása után az új verzió lesz az aktív verzió.
+    ![Manage section, versions page, importing new version](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-### <a name="import-errors"></a>Importálási hibák
+    Once you import a version, the new version becomes the active version.
 
-* Tokenizer hibák: Ha az importálás során **Tokenizer hibaüzenetet** kap, egy olyan verziót próbál importálni, amely a jelenleg használt alkalmazástól eltérő [Tokenizer](luis-language-support.md#custom-tokenizer-versions) használ. A probléma megoldásához tekintse meg az [áttelepítés a tokenizer-verziók között](luis-language-support.md#migrating-between-tokenizer-versions)című témakört.
+### <a name="import-errors"></a>Import errors
+
+* Tokenizer errors: If you get a **tokenizer error** when importing, you are trying to import a version that uses a different [tokenizer](luis-language-support.md#custom-tokenizer-versions) than the app currently uses. To fix this, see [Migrating between tokenizer versions](luis-language-support.md#migrating-between-tokenizer-versions).
 
 <a name = "export-version"></a>
 
-## <a name="other-actions"></a>Egyéb műveletek
+## <a name="other-actions"></a>Other actions
 
-* Ha **törölni** szeretne egy verziót, válasszon ki egy verziót a listából, majd válassza a **Törlés** lehetőséget az eszköztárból. Kattintson az **OK** gombra. 
-* Egy verzió **átnevezéséhez** válasszon egy verziót a listából, majd válassza az **Átnevezés** lehetőséget az eszköztárból. Adja meg az új nevet, és válassza a **kész**lehetőséget. 
-* Egy verzió **exportálásához** válasszon ki egy verziót a listából, majd válassza az **alkalmazás exportálása** lehetőséget az eszköztárból. Válassza ki a JSON-t a biztonsági mentéshez való exportáláshoz, majd válassza az **Exportálás tárolóként** lehetőséget az [alkalmazás egy Luis-tárolóban való használatához](luis-container-howto.md).  
+* To **delete** a version, select a version from the list, then select **Delete** from the toolbar. Kattintson az **OK** gombra. 
+* To **rename** a version, select a version from the list, then select **Rename** from the toolbar. Enter new name and select **Done**. 
+* To **export** a version, select a version from the list, then select **Export app** from the toolbar. Choose JSON to export for backup, choose **Export for container** to [use this app in a LUIS container](luis-container-howto.md).  
 

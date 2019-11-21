@@ -1,6 +1,6 @@
 ---
-title: Eszközök beléptetésének kezelése az Azure Portalon |} A Microsoft Docs
-description: Az Azure Portalon a Device Provisioning Service eszközök beléptetésének kezelése
+title: Manage device enrollments for Azure IoT Hub Device Provisioning Service in the Azure portal
+description: How to manage device enrollments for your Device Provisioning Service in the Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -8,69 +8,69 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03559183e46182c4f80fe3d16ec542add9b1692b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122783"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229716"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Hogyan eszközök beléptetésének kezelése az Azure Portalon
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>How to manage device enrollments with Azure Portal
 
-A *eszközregisztráció* létrehoz egy rekordot egy adott eszköz vagy egy csoport, az eszközről, bármikor előfordulhat, hogy regisztrálja az Azure IoT Hub Device Provisioning Service szolgáltatással. A regisztrációs rekord az regisztrálása, beleértve a kívánt IoT-központ részeként (ök) höz kezdeti kívánt beállításait tartalmazza. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás.
+A *device enrollment* creates a record of a single device or a group of devices that may at some point register with the Azure IoT Hub Device Provisioning Service. The enrollment record contains the initial desired configuration for the device(s) as part of that enrollment, including the desired IoT hub. This article shows you how to manage device enrollments for your provisioning service.
 
 
-## <a name="create-a-device-enrollment"></a>Hozzon létre egy eszközregisztrációs
+## <a name="create-a-device-enrollment"></a>Create a device enrollment
 
-Regisztrálhatja az eszközöket a kiépítési szolgáltatás két módja van:
+There are two ways you can enroll your devices with the provisioning service:
 
-* Egy **regisztrációs csoportot** , amelyek egy közös igazolási mechanizmus az ugyanazon aláíró tanúsítványnak, amely lehet által aláírt X.509-tanúsítványok az eszközök egy csoportját egy bejegyzés az [főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítványt](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)előállításához eszközre tanúsítvány fizikai eszközön szolgál. Javasoljuk egy regisztrációs csoportnak eszközök, amelyek a megosztani kívánt kezdeti konfigurációval nagy számú, vagy eszközök célzó ugyanazt bérlőhöz. Vegye figyelembe, hogy csak regisztrálhat eszközöket, amelyek az X.509-igazolási mechanizmus, *regisztrációs csoportok*. 
+* An **Enrollment group** is an entry for a group of devices that share a common attestation mechanism of X.509 certificates, signed by the same signing certificate, which can be the [root certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) or the [intermediate certificate](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), used to produce device certificate on physical device. We recommend using an enrollment group for a large number of devices which share a desired initial configuration, or for devices all going to the same tenant. Note that you can only enroll devices that use the X.509 attestation mechanism as *enrollment groups*. 
 
-    A portálon az alábbi lépéseket követve eszközök egy csoportját, egy regisztrációs csoportot hozhat létre:
+    You can create an enrollment group in the portal for a group of devices using the following steps:
 
-  1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.  
-  1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.  
-  1. A kiépítési szolgáltatás:  
-     a. Kattintson a **beléptetések kezelése**, majd válassza ki a **regisztrációs csoportok** fülre.  
+  1. Log in to the Azure portal and click **All resources** from the left-hand menu.  
+  1. Click the Device Provisioning service you want to enroll your device to from the list of resources.  
+  1. In your provisioning service:  
+     a. Click **Manage enrollments**, then select the **Enrollment Groups** tab.  
      b. Kattintson a felül lévő **Hozzáadás** gombra.  
-     c. Ha az "A regisztrációs csoport hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait.  **Csoport neve** megadása kötelező. Kiválaszthatja a "CA vagy a köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** eszközök csoportja.  
-     d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozás esetén kell megjelennie a csoport neve meg fog jelenni a **regisztrációs csoportok** fülre.  
+     c. When the "Add Enrollment Group" panel appears, enter the information for the enrollment list entry.  **Group name** is required. Also select "CA or Intermediate" for **Certificate type**, and upload the root **Primary certificate** for the group of devices.  
+     d. Kattintson a **Save** (Mentés) gombra. On successful creation of your enrollment group, you should see the group name appear under the **Enrollment Groups** tab.  
 
-     [![Regisztrációs csoportot a portálon](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![Enrollment group in the portal](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
-* Egy **egyéni regisztráció** regisztrálható egyetlen eszközhöz tartozó bejegyzés. Egyéni regisztrációk használhatja bármelyik x509 tanúsítványokat vagy SAS-tokeneket (az egy fizikai vagy virtuális TPM-ben) igazolási mechanizmusként. Azt javasoljuk, hogy egyéni regisztrációk használatát, eszközök, az egyedi kezdeti konfigurációt igénylő vagy az eszközök, amelyek a TPM-eszköz vagy virtuális TPM-n keresztül SAS-tokeneket csak használhatja az igazolási mechanizmusként. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
+* An **Individual enrollment** is an entry for a single device that may register. Individual enrollments may use either x509 certificates or SAS tokens (from a physical or virtual TPM) as attestation mechanisms. We recommend using individual enrollments for devices which require unique initial configurations, or for devices which can only use SAS tokens via TPM or virtual TPM as the attestation mechanism. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
 
-    A portálon az alábbi lépésekkel hozhat létre egyéni regisztrációt:
+    You can create an individual enrollment in the portal using the following steps:
 
-    1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.
-    1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.
-    1. A kiépítési szolgáltatás:  
-       a. Kattintson a **beléptetések kezelése**, majd válassza ki a **egyéni regisztrációk** fülre.  
+    1. Log in to the Azure portal and click **All resources** from the left-hand menu.
+    1. Click the Device Provisioning service you want to enroll your device to from the list of resources.
+    1. In your provisioning service:  
+       a. Click **Manage enrollments**, then select the **Individual Enrollments** tab.  
        b. Kattintson a felül lévő **Hozzáadás** gombra.   
-       c. Ha a "Regisztráció hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait. Először válassza ki az igazolási **mechanizmus** az eszköz (X.509 vagy TPM). X.509-igazoláshoz kötelező feltölteni a levél **elsődleges tanúsítvány** az eszközhöz. TPM kell adnia a **igazolási kulcs** és **regisztrációs azonosító** az eszközhöz.  
-       d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozás esetén kell megjelennie az eszköz meg fog jelenni a **egyéni regisztrációk** fülre.  
+       c. When the "Add Enrollment" panel appears, enter the information for the enrollment list entry. First select the attestation **Mechanism** for the device (X.509 or TPM). X.509 attestation requires you to upload the leaf **Primary certificate** for the device. TPM requires you to enter the **Attestation Key** and **Registration ID** for the device.  
+       d. Kattintson a **Save** (Mentés) gombra. On successful creation of your enrollment group, you should see your device appear under the **Individual Enrollments** tab.  
 
-       [![Egyéni regisztráció a portálon](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+       [![Individual enrollment in the portal](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
-## <a name="update-an-enrollment-entry"></a>Regisztrációs bejegyzés frissítése
-Egy meglévő eszközregisztrációs bejegyzés a portálon az alábbi lépéseket követve frissítheti:
+## <a name="update-an-enrollment-entry"></a>Update an enrollment entry
+You can update an existing enrollment entry in the portal using the following steps:
 
-1. Nyissa meg a Device Provisioning service az Azure Portalon, és kattintson a **regisztrációk kezelése**. 
-1. Keresse meg a módosítani kívánt regisztrációs bejegyzés. Kattintson a bejegyzésre, amely megnyit egy eszközök regisztrálásával kapcsolatos összegző információkat. 
-1. Ezen az oldalon módosíthatja a biztonsági típus eltérő elemek, és a hitelesítő adatokat, például az IoT hubhoz az eszközt össze kell kapcsolni, valamint az eszköz azonosítójával. Az ikereszköz kezdeti állapota is módosíthatja. 
-1. Ha befejeződött, kattintson a **mentése** az eszközregisztráció frissítéséhez. 
+1. Open your Device Provisioning service in the Azure portal and click **Manage Enrollments**. 
+1. Navigate to the enrollment entry you want to modify. Click the entry, which opens a summary information about your device enrollment. 
+1. On this page, you can modify items other than the security type and credentials, such as the IoT hub the device should be linked to, as well as the device ID. You may also modify the initial device twin state. 
+1. Once completed, click **Save** to update your device enrollment. 
 
-    ![Regisztráció a portálon frissítése](./media/how-to-manage-enrollments/update-enrollment.png)
+    ![Update enrollment in the portal](./media/how-to-manage-enrollments/update-enrollment.png)
 
-## <a name="remove-a-device-enrollment"></a>Távolítsa el a eszközök regisztrálása
-Azokban az esetekben, ahol az eszköz nem kell lennie minden olyan IoT hubon építette ki akkor a kapcsolódó regisztrációs bejegyzést a portálon az alábbi lépéseket követve távolíthatja el:
+## <a name="remove-a-device-enrollment"></a>Remove a device enrollment
+In cases where your device(s) do not need to be provisioned to any IoT hub, you can remove the related enrollment entry in the portal using the following steps:
 
-1. Nyissa meg a Device Provisioning service az Azure Portalon, és kattintson a **regisztrációk kezelése**. 
-1. Keresse meg és válassza ki az eltávolítani kívánt regisztrációs bejegyzés. 
-1. Kattintson a **törlése** gombra az oldal tetején, majd **Igen** megerősítéséhez. 
-1. A művelet befejezése után az eszközök regisztrációját a listából eltávolított bejegyzést fog látni. 
+1. Open your Device Provisioning service in the Azure portal and click **Manage Enrollments**. 
+1. Navigate to and select the enrollment entry you want to remove. 
+1. Click the **Delete** button at the top and then select **Yes** when prompted to confirm. 
+1. Once the action is completed, you will see your entry removed from the list of device enrollments. 
  
-    ![Regisztráció a portálon eltávolítása](./media/how-to-manage-enrollments/remove-enrollment.png)
+    ![Remove enrollment in the portal](./media/how-to-manage-enrollments/remove-enrollment.png)
 
 

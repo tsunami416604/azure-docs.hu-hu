@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az internetes forgalom terheléselosztása virtuális gépekre – Azure Portal'
-titlesuffix: Azure Load Balancer
+title: 'Tutorial: Load balance internet traffic to VMs - Azure portal'
+titleSuffix: Azure Load Balancer
 description: Ez a rövid útmutató ismerteti, hogyan hozhat létre és felügyelhet egy Standard Load Balancert az Azure Portalon.
 services: load-balancer
 documentationcenter: na
@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a0887a66b6cb886419f86d93973b991151141e0a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327205"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225184"
 ---
-# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: A virtuális gépek internetes forgalmának terheléselosztása a Azure Portal használatával
+# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Load balance internet traffic to VMs using the Azure portal
 
-A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerheti az Azure-standard Load Balancer különböző összetevőit, amelyek az internetes forgalmat virtuális gépekre osztják szét, és magas rendelkezésre állást biztosítanak. Az alábbiak végrehajtásának módját ismerheti meg:
+A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. In this tutorial, you learn about the different components of the Azure Standard Load Balancer that distribute internet traffic to VMs and provide high availability. Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 > [!div class="checklist"]
-> * Azure Load Balancer létrehozása
-> * Load Balancer erőforrások létrehozása
+> * Create an Azure Load Balancer
+> * Create Load Balancer resources
 > * Virtuális gépek létrehozása és IIS-kiszolgáló telepítése
-> * Load Balancer megtekintése működés közben
-> * Virtuális gépek hozzáadása és eltávolítása Load Balancer
+> * View Load Balancer in action
+> * Add and remove VMs from a Load Balancer
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -42,135 +42,135 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
 
-Ebben a szakaszban egy olyan standard Load Balancer hoz létre, amely a virtuális gépek terheléselosztását segíti. A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Amikor létrehoz egy Standard Load Balancert, létre kell hoznia egy új standard nyilvános IP-címet is, amely a Standard Load Balancer előtereként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). 
+In this section, you create a Standard Load Balancer that helps load balance virtual machines. A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Amikor létrehoz egy Standard Load Balancert, létre kell hoznia egy új standard nyilvános IP-címet is, amely a Standard Load Balancer előtereként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). 
 
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
-2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
+2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
 
-    | Beállítás                 | Value                                              |
+    | Beállítás                 | Value (Díj)                                              |
     | ---                     | ---                                                |
-    | Subscription               | Válassza ki előfizetését.    |    
-    | Resource group         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegroupslb erőforráscsoportban* szöveget a szövegmezőbe.|
-    | Name (Név)                   | *myLoadBalancer*                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Type          | Válassza a **nyilvános**lehetőséget.                                        |
-    | SKU           | Válassza a **standard**lehetőséget.                          |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Select **Create new** and type *myResourceGroupSLB* in the text box.|
+    | Név                   | *myLoadBalancer*                                   |
+    | Region (Régió)         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Type (Típus)          | Select **Public**.                                        |
+    | SKU (Cikkszám)           | Select **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
-    | Nyilvános IP-cím neve              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
-    |Rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
+    | Public IP address name              | Type *myPublicIP* in the text box.   |
+    |Availability zone| Select **Zone redundant**.    |
 
-3. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás**gombra.
+3. In the **Review + create** tab, click **Create**.
 
    ![Standard Load Balancer létrehozása](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
 
-## <a name="create-load-balancer-resources"></a>Load Balancer erőforrások létrehozása
+## <a name="create-load-balancer-resources"></a>Create Load Balancer resources
 
-Ebben a szakaszban a háttérbeli címkészlet Load Balancer beállításait, az állapot-mintavételt és a Balancer-szabályt adja meg.
+In this section, you configure Load Balancer settings for a backend address pool, a health probe, and specify a balancer rule.
 
 ### <a name="create-a-backend-address-pool"></a>Hátércímkészlet létrehozása
 
-A virtuális gépek felé irányuló forgalom elosztásához a háttérbeli címkészlet tartalmazza a Load Balancerhoz csatlakozó virtuális hálózati adapterek IP-címeit. Hozza létre a háttér-címkészlet *myBackendPool* , hogy a virtuális gépeket a terheléselosztási internetes forgalom számára is tartalmazza.
+To distribute traffic to the VMs, a backend address pool contains the IP addresses of the virtual (NICs) connected to the Load Balancer. Create the backend address pool *myBackendPool* to include virtual machines for load-balancing internet traffic.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd kattintson a **myLoadBalancer** elemre az erőforrások listából.
+1. Select **All services** in the left-hand menu, select **All resources**, and then click **myLoadBalancer** from the resources list.
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a **Hozzáadás** gombra.
-3. A **háttérbeli készlet hozzáadása** lapon a név mezőbe írja be a *myBackendPool*nevet a háttérbeli készlet neveként, majd válassza a **Hozzáadás**lehetőséget.
+3. On the **Add a backend pool** page, for name, type *myBackendPool*, as the name for your backend pool, and then select **Add**.
 
 ### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
-Ha engedélyezni szeretné a Load Balancer számára az alkalmazás állapotának figyelését, az állapot-mintavételt kell használnia. Az állapotfigyelő szolgáltatás dinamikusan adja hozzá vagy távolítja el a virtuális gépeket az Load Balancer forgásból az állapot-ellenőrzésekre adott válasz alapján. Hozzon létre egy *myHealthProbe* nevű állapotmintát a virtuális gépek állapotának felügyeletéhez.
+To allow the Load Balancer to monitor the status of your app, you use a health probe. The health probe dynamically adds or removes VMs from the Load Balancer rotation based on their response to health checks. Hozzon létre egy *myHealthProbe* nevű állapotmintát a virtuális gépek állapotának felügyeletéhez.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd kattintson a **myLoadBalancer** elemre az erőforrások listából.
+1. Select **All services** in the left-hand menu, select **All resources**, and then click **myLoadBalancer** from the resources list.
 2. A **Beállítások** területen kattintson az **Állapotminták** elemre, majd a **Hozzáadás** gombra.
 3. Használja az alábbi értékeket az állapotminta létrehozásához:
      
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *myHealthProbe*. |
-    | Protocol | Válassza a **http**lehetőséget. |
-    | Port | Adja meg a *80*értéket.|
-    | Interval | A mintavételi kísérletek közötti **időtartam** másodpercben megadott számú intervallumában adja meg a *15* értéket. |
-    | Nem kifogástalan állapot küszöbértéke | Válassza a *2* értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
+    | Név | Enter *myHealthProbe*. |
+    | Protocol (Protokoll) | Select **HTTP**. |
+    | Port | Enter *80*.|
+    | Intervallum | Enter *15* for number of **Interval** in seconds between probe attempts. |
+    | Unhealthy threshold | Select *2* for number of **Unhealthy threshold** or consecutive probe failures that must occur before a VM is considered unhealthy.|
     
 4. Kattintson az **OK** gombra.
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy Load Balancer szabályt, amely a 80-es portot figyeli a *myloadbalancerruleweb nevű terheléselosztási* , és a *myBackEndPool* -porton keresztül az 80-es portot használja a háttérbeli *FrontendLoadBalancer* .
+A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Create a Load Balancer rule *myLoadBalancerRuleWeb* for listening to port 80 in the frontend *FrontendLoadBalancer* and sending load-balanced network traffic to the backend address pool *myBackEndPool* also using port 80.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd kattintson a **myLoadBalancer** elemre az erőforrások listából.
+1. Select **All services** in the left-hand menu, select **All resources**, and then click **myLoadBalancer** from the resources list.
 2. A **Beállítások** területen kattintson a **Terheléselosztási szabályok** elemre, majd a **Hozzáadás** gombra.
-3. Használja ezeket az értékeket a terheléselosztási szabály konfigurálásához:
+3. Use these values to configure the load-balancing rule:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *: myhttprule*. |
-    | Protocol | Válassza a **TCP**lehetőséget. |
-    | Port | Adja meg a *80*értéket.|
-    | Háttérport | Adja meg a *80*értéket. |
-    | Háttérkészlet | Válassza a *myBackendPool*lehetőséget.|
-    | Állapotadat-mintavétel | Válassza a *myHealthProbe*lehetőséget. |
+    | Név | Enter *myHTTPRule*. |
+    | Protocol (Protokoll) | Select **TCP**. |
+    | Port | Enter *80*.|
+    | Backend port | Enter *80*. |
+    | Backend pool | Select *myBackendPool*.|
+    | Állapotadat-mintavétel | Select *myHealthProbe*. |
     
 4. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a szakaszban létrehoz egy virtuális hálózatot, három virtuális gépet hoz létre a Load Balancer háttér-készletéhez, majd az IIS-t telepíti a virtuális gépekre a Load Balancer teszteléséhez.
+In this section, you create a virtual network, create three virtual machines for the backend pool of the Load Balancer, and then install IIS on the virtual machines to help test the Load Balancer.
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **virtuális hálózat**lehetőséget.
-2. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
+2. In **Create virtual network**, enter or select this information:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *myVNet* értéket. |
-    | Címtartomány | Adja meg a *10.1.0.0/16*értéket. |
-    | Subscription | Válassza ki előfizetését.|
-    | Resource group | Válasszon ki egy meglévő erőforrás- *myresourcegroupslb erőforráscsoportban*. |
-    | Location | Válassza a **Nyugat-Európa** régiót.|
-    | Alhálózat – név | Adja meg a *myBackendSubnet* értéket. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
+    | Név | Adja meg a *myVNet* értéket. |
+    | Címtér | Enter *10.1.0.0/16*. |
+    | Előfizetés | Válassza ki előfizetését.|
+    | Erőforráscsoport | Select existing resource - *myResourceGroupSLB*. |
+    | Földrajzi egység | Válassza a **Nyugat-Európa** régiót.|
+    | Subnet - Name | Adja meg a *myBackendSubnet* értéket. |
+    | Alhálózat – címtartomány | Enter *10.1.0.0/24*. |
     
-3. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Létrehozás**lehetőséget.
+3. Leave the rest of the defaults and select **Create**.
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-A standard Load Balancer csak a standard IP-címmel rendelkező virtuális gépeket támogatja a háttér-készletben. Ebben a szakaszban három virtuális gépet hoz létre (*myVM1*, *myVM2*és *myVM3*) egy szabványos nyilvános IP-címmel három különböző zónában (*1. zóna*, *2. zóna*és *3. zóna*), amelyet a standard szintű háttérbeli készlethez adnak hozzá. A korábban létrehozott Load Balancer.
+Standard Load Balancer only supports VMs with Standard IP addresses in the backend pool. In this section, you will create three VMs (*myVM1*, *myVM2*, and *myVM3*) with a Standard public IP address in three different zones (*Zone 1*, *Zone 2*, and *Zone 3*) that are added to the backend pool of the Standard Load Balancer that was created earlier.
 
-1. A portál bal felső oldalán válassza **erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter**. 
+1. On the upper-left side of the portal, select **Create a resource** > **Compute** > **Windows Server 2016 Datacenter**. 
    
-1. A **hozzon létre egy virtuális gépet**adja meg a következő értékeket a **alapjai** lapon:
-   - **Előfizetési** > **erőforráscsoport**: Válassza a **myresourcegroupslb erőforráscsoportban**lehetőséget.
-   - **Példány részletei** > –**virtuális gép neve**: Írja be a következőt: *myVM1*.
-   - **Példány részletei** > **régió** > válassza a **Nyugat-Európa**lehetőséget.
-   - **A példány részletei** > **rendelkezésre állási lehetőségek** > válassza a **rendelkezésre állási zónák**lehetőséget. 
-   - **A példány részletei** > **rendelkezésre állási zónában** > válassza az **1**elemet.
+1. In **Create a virtual machine**, type or select the following values in the **Basics** tab:
+   - **Subscription** > **Resource Group**: Select **myResourceGroupSLB**.
+   - **Instance Details** > **Virtual machine name**: Type *myVM1*.
+   - **Instance Details** > **Region** > select **West Europe**.
+   - **Instance Details** > **Availability Options** > Select **Availability zones**. 
+   - **Instance Details** > **Availability zone** > Select **1**.
   
-1. Válassza a **hálózatkezelés** lapot, vagy válassza **a Next (tovább) lehetőséget: Lemezek**, majd **tovább: Hálózatkezelés**. 
+1. Select the **Networking** tab, or select **Next: Disks**, then **Next: Networking**. 
    
-   - Győződjön meg arról, hogy a következő kijelölt:
-       - **Virtuális hálózat**: **myVnet**
-       - **Alhálózat**: **myBackendSubnet**
-       - **Nyilvános IP-** > válassza az **új létrehozása**lehetőséget, majd a **nyilvános IP-cím létrehozása** ablakban az **SKU**, a **standard**és a **rendelkezésre állási zóna**elemet, válassza a **zóna – redundáns** lehetőséget.
+   - Make sure the following are selected:
+       - **Virtual network**: **myVnet**
+       - **Subnet**: **myBackendSubnet**
+       - **Public IP** > select **Create new**, and in the **Create public IP address** window, for **SKU**, select **Standard**, and for **Availability zone**, select **Zone-redundant**
       
-   - Alatt létrehozni egy új hálózati biztonsági csoport (NSG), egy tűzfal, típusú **hálózati biztonsági csoport**válassza **speciális**. 
-       1. Az a **konfigurálása a hálózati biztonsági csoport** mezőben válassza **új létrehozása**. 
-       1. Írja be a *myNetworkSecurityGroup*, majd kattintson **az OK gombra**.
+   - To create a new network security group (NSG), a type of firewall, under **Network Security Group**, select **Advanced**. 
+       1. In the **Configure network security group** field, select **Create new**. 
+       1. Type *myNetworkSecurityGroup*, and select **OK**.
 
-   - Ha a virtuális gépet a Load Balancer backend-készletének részévé szeretné tenni, hajtsa végre a következő lépéseket:
-        - A **terheléselosztásban**a **virtuális gép egy meglévő terheléselosztási megoldás mögé**való helyezéséhez válassza az **Igen**lehetőséget.
-        - A terheléselosztási **Beállítások**között aterheléselosztási beállítások területen válassza az **Azure Load Balancer**elemet.
-        - A **Load Balancer**kiválasztásához *myLoadBalancer*. 
-1. Válassza ki a **felügyeleti** lapon, vagy válasszon **tovább** > **felügyeleti**. A **figyelés**állítsa be **rendszerindítási diagnosztika** való **ki**. 
+   - To make the VM a part of the Load Balancer's backend pool, complete the following steps:
+        - In **Load Balancing**, for **Place this virtual machine behind an existing load balancing solution?** , select **Yes**.
+        - In **Load balancing settings**, for **Load balancing options**, select **Azure load balancer**.
+        - For **Select a load balancer**, *myLoadBalancer*. 
+1. Select the **Management** tab, or select **Next** > **Management**. Under **Monitoring**, set **Boot diagnostics** to **Off**. 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.   
-1. Tekintse át a beállításokat, és válassza ki **létrehozás**.
-1. A lépéseket követve hozzon létre két további virtuális gépet – *myVM2* és *MYVM3*, standard SKU nyilvános IP-címmel a **2** . és **3** . **rendelkezésre állási zónában** , és az összes többi beállítás ugyanaz, mint a *myVM1*.  
+1. Review the settings, and then select **Create**.
+1. Follow the steps to create two additional VMs - *myVM2* and *myVM3*, with a Standard SKU public IP address in **Availability zone** **2** and **3** respectively, and all the other settings the same as *myVM1*.  
 
 ### <a name="create-network-security-group-rule"></a>Hálózati biztonsági csoportszabály létrehozása
 
-Ebben a szakaszban egy hálózati biztonsági csoportra vonatkozó szabályt hoz létre, amely engedélyezi a bejövő kapcsolatokat a HTTP használatával.
+In this section, you create a network security group rule to allow inbound connections using HTTP.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myNetworkSecurityGroup** , amely a **myresourcegroupslb erőforráscsoportban** erőforráscsoport területén található.
+1. Select **All services** in the left-hand menu, select **All resources**, and then from the resources list click **myNetworkSecurityGroup** that is located in the **myResourceGroupSLB** resource group.
 2. A **Beállítások** területen kattintson a **Bejövő biztonsági szabályok** lehetőségre, majd a **Hozzáadás** gombra.
 3. Adja meg az alábbi értékeket a *myHTTPRule* nevű bejövő biztonsági szabály számára a 80-as portot használó, bejövő HTTP-kapcsolatok engedélyezése érdekében:
     - **Forrás**: *Szolgáltatáscímke*.
@@ -185,7 +185,7 @@ Ebben a szakaszban egy hálózati biztonsági csoportra vonatkozó szabályt hoz
 
 ### <a name="install-iis-on-vms"></a>Az IIS telepítése virtuális gépekre
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myVM1** , amely a *myresourcegroupslb erőforráscsoportban* erőforráscsoport területén található.
+1. Select **All services** in the left-hand menu, select **All resources**, and then from the resources list click **myVM1** that is located in the *myResourceGroupSLB* resource group.
 2. Az **Áttekintés** oldalon a **Csatlakozás** gombra kattintva hozzon létre RDP-kapcsolatot a virtuális géppel.
 3. A **Csatlakozás virtuális géphez** előugró ablakban válassza az **RDP-fájl letöltése** lehetőséget, majd nyissa meg a letöltött RDP-fájlt.
 4. A **Távoli asztali kapcsolat** ablakban kattintson a **Csatlakozás** gombra.
@@ -207,45 +207,45 @@ Ebben a szakaszban egy hálózati biztonsági csoportra vonatkozó szabályt hoz
 6. Szüntesse meg a távoli asztali munkamenetet a *myVM1*-gyel.
 7. Az 1–6. lépés megismétlésével telepítse az IIS-t és a frissített iisstart.htm fájlt a *myVM2* és *myVM3* gépeken.
 
-## <a name="test-the-load-balancer"></a>A Load Balancer tesztelése
-1. Keresse meg a Load Balancer nyilvános IP-címét az **Áttekintés** képernyőn. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd kattintson a **myPublicIP**elemre.
+## <a name="test-the-load-balancer"></a>Test the Load Balancer
+1. Keresse meg a Load Balancer nyilvános IP-címét az **Áttekintés** képernyőn. Select **All services** in the left-hand menu, select **All resources**, and then click **myPublicIP**.
 
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
       ![IIS-webkiszolgáló](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Ha szeretné megtekinteni a Load Balancer forgalmat az alkalmazást futtató három virtuális gép között, akkor kényszerítheti a webböngésző frissítését.
+To see the Load Balancer distribute traffic across the three VMs running your app, you can force-refresh your web browser.
 
 ## <a name="remove-or-add-vms-from-the-backend-pool"></a>Virtuális gépek háttérkészletből való eltávolítása vagy hozzáadása
-Előfordulhat, hogy karbantartás kell végeznie az alkalmazást futtató virtuális gépeken (például operációsrendszer-frissítést kell telepítenie). Az alkalmazás megnövekedett forgalmának kezeléséhez szükség lehet további virtuális gépek hozzáadására. Ebből a szakaszból megtudhatja, hogyan távolíthat el vagy adhat hozzá virtuális gépeket (*myVM1*) a Load Balancer.
+Előfordulhat, hogy karbantartás kell végeznie az alkalmazást futtató virtuális gépeken (például operációsrendszer-frissítést kell telepítenie). Az alkalmazás megnövekedett forgalmának kezeléséhez szükség lehet további virtuális gépek hozzáadására. This section shows you how to remove or add a VM (*myVM1*) from the Load Balancer.
 
-### <a name="remove-vm-from-a-backend-pool"></a>Virtuális gép eltávolítása egy háttér-készletből
-A *myVM1* a háttér-készletből való eltávolításához hajtsa végre a következő lépéseket:
+### <a name="remove-vm-from-a-backend-pool"></a>Remove VM from a backend pool
+To remove *myVM1* from the backend pool, complete the following steps:
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd kattintson a **myLoadBalancer** elemre az erőforrások listából.
+1. Select **All services** in the left-hand menu, select **All resources**, and then click **myLoadBalancer** from the resources list.
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a háttérkészlet listájában kattintson a **myBackendPool** elemre.
-3. A **myBackendPool** lapon a *VM1* eltávolításához jelölje ki a *myVM1*megjelenítő sor végén található törlés ikont, majd kattintson a **Mentés**gombra.
+3. On the **myBackendPool** page, to remove *VM1* select the delete icon at the end of the row that displays *myVM1*, and then click **Save**.
 
-Most, hogy a *myVM1* már nincs a címkészletben, bármilyen karbantartási feladatot elvégezhet a *myVM1* gépen, például telepíthet szoftverfrissítéseket. A *VM1*hiányában a terhelés most már a *MyVM2* és a *myVM3*között egyensúlyban van. 
+Most, hogy a *myVM1* már nincs a címkészletben, bármilyen karbantartási feladatot elvégezhet a *myVM1* gépen, például telepíthet szoftverfrissítéseket. In the absence of *VM1*, the load is now balanced across *myVM2* and *myVM3*. 
 
-### <a name="add-vm-to-a-backend-pool"></a>Virtuális gép hozzáadása egy háttérbeli készlethez
-Ha vissza szeretné adni a *myVM1* a háttér-készlethez, hajtsa végre a következő lépéseket:
+### <a name="add-vm-to-a-backend-pool"></a>Add VM to a backend pool
+To add *myVM1* back to the backend pool, complete the following steps:
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myVM1** lehetőséget.
-2. A **VM1** lap **Beállítások**területén válassza a **hálózatkezelés**lehetőséget.
-3. A **hálózatkezelés** lapon válassza a terheléselosztás fület, majd kattintson a **terheléselosztás hozzáadása**lehetőségre.
-4. A **terheléselosztás hozzáadása** lapon tegye a következőket:
-   1. Aterheléselosztási beállításoknál válassza az **Azure Load Balancer**lehetőséget.
-   2. A **Load Balancer kiválasztásához**válassza a *myLoadBalancer*lehetőséget.
-   3. A **háttérbeli készlet kiválasztásához**válassza a *myBackendPool*lehetőséget. 
+1. Select **All services** in the left-hand menu, select **All resources**, and then select **myVM1** from the resources list.
+2. In the **VM1** page, under **Settings**, select **Networking**.
+3. In the **Networking** page, select the **Load balancing** tab, and then select **Add load balancing**.
+4. In the **Add load balancing** page, do the following:
+   1. For **Load balancing options**, select **Azure load balancer**.
+   2. For **Select a load balancer**, select *myLoadBalancer*.
+   3. For **Select a backend pool**, select *myBackendPool*. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölje az erőforráscsoportot, Load Balancer és az összes kapcsolódó erőforrást. Ehhez válassza ki a Load Balancer tartalmazó *myResouceGroupSLB* erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
+When they are no longer needed, delete the resource group, Load Balancer, and all related resources. To do so, select the *myResouceGroupSLB* resource group that contains the Load Balancer, and then select  **Delete**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Emellett eltávolított egy virtuális gépet az elosztott terhelésű készletből, és hozzáadta a virtuális gépet a háttércímkészlethez. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
+In this tutorial, you created a Standard Load Balancer, attached VMs to it, configured the Load Balancer traffic rule, health probe, and then tested the Load Balancer. Emellett eltávolított egy virtuális gépet az elosztott terhelésű készletből, és hozzáadta a virtuális gépet a háttércímkészlethez. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-oktatóanyagok](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

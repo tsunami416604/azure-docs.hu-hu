@@ -1,7 +1,7 @@
 ---
 title: Kimenő kapcsolatok az Azure-ban
-titlesuffix: Azure Load Balancer
-description: Ez a cikk azt ismerteti, hogyan teszi lehetővé az Azure a virtuális gépek számára a nyilvános internetes szolgáltatásokkal való kommunikációt.
+titleSuffix: Azure Load Balancer
+description: This article explains how Azure enables VMs to communicate with public internet services.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,89 +13,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881074"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225282"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
-Az Azure számos különböző mechanizmuson keresztül biztosít kimenő kapcsolatot az ügyfelek központi telepítéséhez. Ez a cikk a forgatókönyvek, a működésük és a kezelésük módját ismerteti.
+Azure provides outbound connectivity for customer deployments through several different mechanisms. This article describes what the scenarios are, when they apply, how they work, and how to manage them.
 
 >[!NOTE] 
->Ez a cikk csak a Resource Manager-alapú üzemelő példányokat ismerteti. Tekintse át az Azure-beli klasszikus üzembe helyezési forgatókönyvek [kimenő kapcsolatait (klasszikus)](load-balancer-outbound-connections-classic.md) .
+>This article covers Resource Manager deployments only. Review [Outbound connections (Classic)](load-balancer-outbound-connections-classic.md) for all Classic deployment scenarios in Azure.
 
-Az Azure-beli üzemelő példányok az Azure-on kívüli végpontokkal kommunikálhatnak a nyilvános IP-címtartomány használatával. Ha egy példány kimenő folyamatot kezdeményez a nyilvános IP-címtartomány egy céljára, az Azure dinamikusan leképezi a magánhálózati IP-címet egy nyilvános IP-címhez. Ennek a leképezésnek a létrehozása után a kimenő forgalomtól érkező forgalom visszaadott értéke elérheti azt a magánhálózati IP-címet is, ahol a folyamat származik.
+A deployment in Azure can communicate with endpoints outside Azure in the public IP address space. When an instance initiates an outbound flow to a destination in the public IP address space, Azure dynamically maps the private IP address to a public IP address. After this mapping is created, return traffic for this outbound originated flow can also reach the private IP address where the flow originated.
 
-Az Azure a forrás hálózati címfordítás (SNAT) használatával hajtja végre ezt a funkciót. Ha egy nyilvános IP-cím mögé több magánhálózati IP-cím is fel van használva, akkor az Azure a címfordítás [(Pat)](#pat) használatával álcázza a magánhálózati IP-címeket. A rendszer ideiglenes portokat használ a PAT [](#preallocatedports) számára, és a készlet mérete alapján van előfoglalva.
+Azure uses source network address translation (SNAT) to perform this function. When multiple private IP addresses are masquerading behind a single public IP address, Azure uses [port address translation (PAT)](#pat) to masquerade private IP addresses. Ephemeral ports are used for PAT and are [preallocated](#preallocatedports) based on pool size.
 
-Több [kimenő forgatókönyv](#scenarios)is létezik. Ezeket a forgatókönyveket igény szerint kombinálhatja. Alaposan tekintse át ezeket a képességeket, megkötéseket és mintákat, ahogyan azok az üzemi modellre és az alkalmazásokra vonatkoznak. Tekintse át az [ilyen forgatókönyvek kezelésével](#snatexhaust)kapcsolatos útmutatást.
+There are multiple [outbound scenarios](#scenarios). You can combine these scenarios as needed. Review them carefully to understand the capabilities, constraints, and patterns as they apply to your deployment model and application scenario. Review guidance for [managing these scenarios](#snatexhaust).
 
 >[!IMPORTANT] 
->A standard Load Balancer és a standard nyilvános IP-címek új képességeket és különböző viselkedéseket vezetnek be a kimenő kapcsolatokhoz.  Ezek nem azonosak az alapszintű SKU-kal.  Ha standard SKU-kal dolgozik a kimenő kapcsolaton, explicit módon meg kell határoznia a standard nyilvános IP-címeket vagy a standard nyilvános Load Balancer.  Ez magában foglalja a kimenő kapcsolatok létrehozását belső standard Load Balancer használata esetén.  Javasoljuk, hogy mindig használjon kimenő szabályokat egy standard nyilvános Load Balanceron.  A [3. forgatókönyv](#defaultsnat) nem érhető el a standard SKU-val.  Ez azt jelenti, hogy ha belső standard Load Balancer használ, meg kell tennie a kimenő kapcsolatok létrehozásához szükséges lépéseket a háttér-készletben lévő virtuális gépekhez, ha kimenő kapcsolatra van szükség.  A kimenő kapcsolat kontextusában egyetlen önálló virtuális gép, a rendelkezésre állási csoportban lévő összes virtuális gép a VMSS összes példánya csoportként viselkedik. Ez azt jelenti, hogy ha egy rendelkezésre állási csoport egyetlen virtuális gépe egy szabványos SKU-hoz van társítva, akkor a rendelkezésre állási csoportba tartozó összes virtuálisgép-példány ugyanúgy viselkedik, mintha a standard SKU-hoz társítva van, még akkor is, ha egy adott példány nincs közvetlenül társítva.  Körültekintően tekintse át a teljes dokumentumot, hogy megismerje az általános fogalmakat, tekintse át [standard Load Balancer](load-balancer-standard-overview.md) az SKU-ket és a [kimenő szabályokat](load-balancer-outbound-rules-overview.md).  A kimenő szabályok használata lehetővé teszi a kimenő kapcsolatok összes aspektusának részletes szabályozását.
+>Standard Load Balancer and Standard Public IP introduce new abilities and different behaviors to outbound connectivity.  They are not the same as Basic SKUs.  If you want outbound connectivity when working with Standard SKUs, you must explicitly define it either with Standard Public IP addresses or Standard public Load Balancer.  This includes creating outbound connectivity when using an internal Standard Load Balancer.  We recommend you always use outbound rules on a Standard public Load Balancer.  [Scenario 3](#defaultsnat) is not available with Standard SKU.  That means when an internal Standard Load Balancer is used, you need to take steps to create outbound connectivity for the VMs in the backend pool if outbound connectivity is desired.  In the context of outbound connectivity, a single standalone VM, all the VM's in an Availability Set, all the instances in a VMSS behave as a group. This means, if a single VM in an Availability Set is associated with a Standard SKU, all VM instances within this Availability Set now behave by the same rules as if they are associated with Standard SKU, even if an individual instance is not directly associated with it.  Carefully review this entire document to understand the overall concepts, review [Standard Load Balancer](load-balancer-standard-overview.md) for differences between SKUs, and review [outbound rules](load-balancer-outbound-rules-overview.md).  Using outbound rules allows you fine grained control over all aspects of outbound connectivity.
 
-## <a name="scenarios"></a>Forgatókönyv áttekintése
+## <a name="scenarios"></a>Scenario overview
 
-A Azure Load Balancer és a kapcsolódó erőforrások explicit módon vannak meghatározva a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használatakor.  Az Azure jelenleg három különböző módszert biztosít a kimenő kapcsolatok eléréséhez Azure Resource Manager erőforrásokhoz. 
+Azure Load Balancer and related resources are explicitly defined when you're using [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Azure currently provides three different methods to achieve outbound connectivity for Azure Resource Manager resources. 
 
-| Termékváltozatok | Forgatókönyv | Módszer | IP-protokollok | Leírás |
+| SKUs | Alkalmazási helyzet | Módszer | IP protocols | Leírás |
 | --- | --- | --- | --- | --- |
-| Standard, alapszintű | [1. Nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. A standard Load Balancer használatakor a kimenő kapcsolatok explicit módon történő megadásakor a [kimeneti szabályokat](load-balancer-outbound-rules-overview.md) kell használni |
-| Standard, alapszintű | [2. Virtuális géphez társított nyilvános Load Balancer (nincs nyilvános IP-cím a példányon)](#lb) | SNAT a Load Balancer előtérrel (PAT) rendelkező portokkal | TCP, UDP |Az Azure megosztja a nyilvános Load Balancer a több magánhálózati IP-címmel rendelkező előtér nyilvános IP-címét. Az Azure a frontendek ideiglenes portjait használja a PAT számára. |
-| none vagy alapszintű | [3. Különálló virtuális gép (nincs Load Balancer, nincs nyilvános IP-cím)](#defaultsnat) | SNAT a port maszkolásával (PAT) | TCP, UDP | Az Azure automatikusan kijelöl egy nyilvános IP-címet a SNAT számára, megosztja ezt a nyilvános IP-címet a rendelkezésre állási csoport több magánhálózati IP-címével, és a nyilvános IP-cím ideiglenes portjait használja. Ez a forgatókönyv az előző forgatókönyvek tartaléka. Ha láthatóságra és vezérlésre van szüksége, nem ajánlott. |
+| Standard, Basic | [1. VM with Public IP address (with or without Load Balancer)](#ilpip) | SNAT, port masquerading not used | TCP, UDP, ICMP, ESP | Azure uses the public IP assigned to the IP configuration of the instance's NIC. The instance has all ephemeral ports available. When using Standard Load Balancer, you should use [outbound rules](load-balancer-outbound-rules-overview.md) to explicitly define outbound connectivity |
+| Standard, Basic | [2. Public Load Balancer associated with a VM (no Public IP address on the instance)](#lb) | SNAT with port masquerading (PAT) using the Load Balancer frontends | TCP, UDP |Azure shares the public IP address of the public Load Balancer frontends with multiple private IP addresses. Azure uses ephemeral ports of the frontends to PAT. |
+| none or Basic | [3. Standalone VM (no Load Balancer, no Public IP address)](#defaultsnat) | SNAT with port masquerading (PAT) | TCP, UDP | Azure automatically designates a public IP address for SNAT, shares this public IP address with multiple private IP addresses of the availability set, and uses ephemeral ports of this public IP address. This scenario is a fallback for the preceding scenarios. We don't recommend it if you need visibility and control. |
 
-Ha nem szeretné, hogy a virtuális gép kommunikáljon az Azure-on kívüli végpontokkal a nyilvános IP-címtartomány területén, a hálózati biztonsági csoportok (NSG) használatával letilthatja a hozzáférést igény szerint. A [Kimenő kapcsolatok megakadályozása](#preventoutbound) című szakasz részletesebben tárgyalja a NSG. A virtuális hálózatok kimenő hozzáférés nélküli kialakításával, megvalósításával és kezelésével kapcsolatos útmutató a jelen cikk hatókörén kívül esik.
+If you don't want a VM to communicate with endpoints outside Azure in public IP address space, you can use network security groups (NSGs) to block access as needed. The section [Preventing outbound connectivity](#preventoutbound) discusses NSGs in more detail. Guidance on designing, implementing, and managing a virtual network without any outbound access is outside the scope of this article.
 
-### <a name="ilpip"></a>1. forgatókönyv: Virtuális gép nyilvános IP-címmel
+### <a name="ilpip"></a>Scenario 1: VM with Public IP address
 
-Ebben az esetben a virtuális gépnek hozzá van rendelve egy nyilvános IP-címe. A kimenő kapcsolatok tekintetében nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. Nyilvános IP-cím használata esetén a virtuális gép az összes kimenő folyamathoz a nyilvános IP-címet használja.  
+In this scenario, the VM has a Public IP assigned to it. As far as outbound connections are concerned, it doesn't matter whether the VM is load balanced or not. This scenario takes precedence over the others. When a Public IP address is used, the VM uses the Public IP address for all outbound flows.  
 
-Egy virtuális géphez hozzárendelt nyilvános IP-cím 1:1-kapcsolat (nem 1: sok), és állapot nélküli 1:1 NAT-ként lett megvalósítva.  A rendszer nem használja az álcázott portot (PAT), és a virtuális gép számára elérhető minden ideiglenes port.
+A public IP assigned to a VM is a 1:1 relationship (rather than 1: many) and implemented as a stateless 1:1 NAT.  Port masquerading (PAT) is not used, and the VM has all ephemeral ports available for use.
 
-Ha az alkalmazás sok kimenő folyamatot kezdeményez, és SNAT-portok kimerülését tapasztalja, érdemes lehet egy [nyilvános IP-címet hozzárendelni a SNAT-](#assignilpip)megkötések enyhítéséhez. Tekintse át a [SNAT-kimerültség kezelését](#snatexhaust) teljes egészében.
+If your application initiates many outbound flows and you experience SNAT port exhaustion, consider assigning a [Public IP address to mitigate SNAT constraints](#assignilpip). Review [Managing SNAT exhaustion](#snatexhaust) in its entirety.
 
-### <a name="lb"></a>2. forgatókönyv: Elosztott terhelésű virtuális gép nyilvános IP-cím nélkül
+### <a name="lb"></a>Scenario 2: Load-balanced VM without a Public IP address
 
-Ebben az esetben a virtuális gép egy nyilvános Load Balancer backend-készlet része. A virtuális gépnek nincs hozzárendelve nyilvános IP-címe. A Load Balancer erőforrást egy terheléselosztó-szabállyal kell konfigurálni, hogy kapcsolatot hozzon létre a nyilvános IP-frontend és a háttér-készlet között.
+In this scenario, the VM is part of a public Load Balancer backend pool. The VM does not have a public IP address assigned to it. The Load Balancer resource must be configured with a load balancer rule to create a link between the public IP frontend with the backend pool.
 
-Ha nem fejezi be ezt a szabályt, a viselkedést a [nyilvános IP-cím nélküli önálló virtuális gép](#defaultsnat)forgatókönyve írja le. Nincs szükség ahhoz, hogy a szabály a háttérrendszer munkafolyamati készletében működő figyelővel rendelkezzen a sikeres állapothoz.
+If you do not complete this rule configuration, the behavior is as described in the scenario for [Standalone VM with no Public IP](#defaultsnat). It is not necessary for the rule to have a working listener in the backend pool for the health probe to succeed.
 
-Ha a terheléselosztásos virtuális gép kimenő folyamatot hoz létre, az Azure lefordítja a kimenő folyamat privát forrás IP-címét a nyilvános Load Balancer előtér nyilvános IP-címére. Az Azure a SNAT használatával hajtja végre ezt a funkciót. Az Azure a [Pat](#pat) használatával több magánhálózati IP-címet is maszkolást használ egy nyilvános IP-cím mögé. 
+When the load-balanced VM creates an outbound flow, Azure translates the private source IP address of the outbound flow to the public IP address of the public Load Balancer frontend. Azure uses SNAT to perform this function. Azure also uses [PAT](#pat) to masquerade multiple private IP addresses behind a public IP address. 
 
-A terheléselosztó nyilvános IP-címének ideiglenes portjai a virtuális gép által kezdeményezett egyes folyamatok megkülönböztetésére szolgálnak. A SNAT dinamikusan használja az [előlefoglalt ideiglenes portokat](#preallocatedports) a kimenő folyamatok létrehozásakor. Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok.
+Ephemeral ports of the load balancer's public IP address frontend are used to distinguish individual flows originated by the VM. SNAT dynamically uses [preallocated ephemeral ports](#preallocatedports) when outbound flows are created. In this context, the ephemeral ports used for SNAT are called SNAT ports.
 
-A SNAT-portok előre le vannak foglalva a [SNAT és a Pat](#snat) című szakaszban leírtak szerint. Egy véges erőforrás, amely kimeríthető. Fontos megérteni a használatuk módját. [](#pat) Ha szeretné megtudni, hogyan tervezze meg ezt a felhasználást, és szükség esetén enyhítse a megoldást, tekintse át a [SNAT-kimerülés kezelését](#snatexhaust)ismertető
+SNAT ports are pre-allocated as described in the [Understanding SNAT and PAT](#snat) section. They're a finite resource that can be exhausted. It's important to understand how they are [consumed](#pat). To understand how to design for this consumption and mitigate as necessary, review [Managing SNAT exhaustion](#snatexhaust).
 
-Ha az alapszintű [Load Balancer több nyilvános IP-cím van társítva](load-balancer-multivip-overview.md), akkor ezek közül bármelyik nyilvános IP-cím a kimenő forgalomra jelölt, az egyik pedig véletlenszerűen van kiválasztva.  
+When [multiple public IP addresses are associated with Load Balancer Basic](load-balancer-multivip-overview.md), any of these public IP addresses are a candidate for outbound flows, and one is selected at random.  
 
-Load Balancer alapszintű kimenő kapcsolatok állapotának figyeléséhez Azure Monitor naplókat használhat [Load Balancer](load-balancer-monitor-log.md) és [riasztási eseménynaplók](load-balancer-monitor-log.md#alert-event-log) számára a SNAT-portok kimerülési üzeneteinek figyeléséhez.
+To monitor the health of outbound connections with Load Balancer Basic, you can use [Azure Monitor logs for Load Balancer](load-balancer-monitor-log.md) and [alert event logs](load-balancer-monitor-log.md#alert-event-log) to monitor for SNAT port exhaustion messages.
 
-### <a name="defaultsnat"></a>3. forgatókönyv: Önálló virtuális gép nyilvános IP-cím nélkül
+### <a name="defaultsnat"></a>Scenario 3: Standalone VM without a Public IP address
 
-Ebben az esetben a virtuális gép nem része egy nyilvános Load Balancer-készletnek (és nem része egy belső standard Load Balancer készletnek), és nincs hozzárendelve nyilvános IP-cím. Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a kimenő folyamat privát forrás IP-címét egy nyilvános forrás IP-címére. Az ehhez a kimenő folyamathoz használt nyilvános IP-cím nem konfigurálható, és nem számít bele az előfizetés nyilvános IP-erőforrásának korlátba. Ez a nyilvános IP-cím nem tartozik Önnek, és nem foglalható le. Ha újra telepíti a virtuális gépet vagy a rendelkezésre állási készletet vagy a virtuálisgép-méretezési készletet, akkor ez a nyilvános IP-cím fel lesz szabadítva, és egy új nyilvános IP-címet igényel. Ne használja ezt a forgatókönyvet az IP-címek engedélyezési listájának engedélyezéséhez. Ehelyett használja a másik két forgatókönyv egyikét, ha explicit módon deklarálja a kimenő és a kimenő kapcsolathoz használandó nyilvános IP-címet.
+In this scenario, the VM is not part of a public Load Balancer pool (and not part of an internal Standard Load Balancer pool) and does not have a Public IP address assigned to it. When the VM creates an outbound flow, Azure translates the private source IP address of the outbound flow to a public source IP address. The public IP address used for this outbound flow is not configurable and does not count against the subscription's public IP resource limit. This public IP address does not belong to you and cannot be reserved. If you redeploy the VM or Availability Set or virtual machine scale set, this public IP address will be released and a new public IP address requested. Do not use this scenario for whitelisting IP addresses. Instead, use one of the other two scenarios where you explicitly declare the outbound scenario and the public IP address to be used for outbound connectivity.
 
 >[!IMPORTANT] 
->Ez a forgatókönyv akkor is érvényes, ha __csak__ belső alapszintű Load Balancer van csatolva. A 3. forgatókönyv __nem érhető el__ , ha egy belső standard Load Balancer egy virtuális géphez van csatolva.  Belső standard Load Balancer használata mellett explicit módon létre kell hoznia az [1](#ilpip) . vagy a [2](#lb) . forgatókönyvet.
+>This scenario also applies when __only__ an internal Basic Load Balancer is attached. Scenario 3 is __not available__ when an internal Standard Load Balancer is attached to a VM.  You must explicitly create [scenario 1](#ilpip) or [scenario 2](#lb) in addition to using an internal Standard Load Balancer.
 
-Az Azure a SNAT-t használja a port maszkolásával ([Pat](#pat)) a függvény végrehajtásához. Ez a forgatókönyv hasonló a [2](#lb). forgatókönyvhöz, de a használt IP-cím nem szabályozható. Ez egy tartalék forgatókönyv, ha az 1. és a 2. forgatókönyvek nem léteznek. Ezt a forgatókönyvet nem javasoljuk, ha a kimenő címet szeretné szabályozni. Ha a kimenő kapcsolatok az alkalmazás kritikus részét képezik, válasszon másik forgatókönyvet.
+Azure uses SNAT with port masquerading ([PAT](#pat)) to perform this function. This scenario is similar to [scenario 2](#lb), except there is no control over the IP address used. This is a fallback scenario for when scenarios 1 and 2 do not exist. We don't recommend this scenario if you want control over the outbound address. If outbound connections are a critical part of your application, you should choose another scenario.
 
-Az SNAT-portok a [SNAT és a Pat](#snat) című szakaszban leírtak szerint vannak kiosztva.  A rendelkezésre állási készletet megosztó virtuális gépek száma határozza meg, hogy melyik előfoglalási szintet alkalmazza a rendszer.  A rendelkezésre állási csoport nélküli önálló virtuális gépek gyakorlatilag 1-es készletet hoznak létre az előfoglalások (1024 SNAT-portok) meghatározása céljából. A SNAT-portok olyan véges erőforrás, amely kimeríthető. Fontos megérteni a használatuk módját. [](#pat) Ha szeretné megtudni, hogyan tervezze meg ezt a felhasználást, és szükség esetén enyhítse a megoldást, tekintse át a [SNAT-kimerülés kezelését](#snatexhaust)ismertető
+SNAT ports are preallocated as described in the [Understanding SNAT and PAT](#snat) section.  The number of VMs sharing an Availability Set determines which preallocation tier applies.  A standalone VM without an Availability Set is effectively a pool of 1 for the purposes of determining preallocation (1024 SNAT ports). SNAT ports are a finite resource that can be exhausted. It's important to understand how they are [consumed](#pat). To understand how to design for this consumption and mitigate as necessary, review [Managing SNAT exhaustion](#snatexhaust).
 
-### <a name="combinations"></a>Több, kombinált forgatókönyv
+### <a name="combinations"></a>Multiple, combined scenarios
 
-Az előző szakaszokban leírt forgatókönyvek egy adott eredmény eléréséhez kombinálhatók. Ha több forgatókönyv is létezik, a rendszer elsőbbségi sorrendet alkalmaz: az [1. forgatókönyv](#ilpip) elsőbbséget élvez a [2](#lb) . és a [3](#defaultsnat). forgatókönyvvel szemben. [2. forgatókönyv](#lb) felülbírálja a [3. forgatókönyvet](#defaultsnat).
+You can combine the scenarios described in the preceding sections to achieve a particular outcome. When multiple scenarios are present, an order of precedence applies: [scenario 1](#ilpip) takes precedence over [scenario 2](#lb) and [3](#defaultsnat). [Scenario 2](#lb) overrides [scenario 3](#defaultsnat).
 
-Ilyen például egy Azure Resource Manager üzemelő példány, amelyben az alkalmazás nagymértékben támaszkodik a kimenő kapcsolatokra korlátozott számú célhelyre, de a bejövő folyamatokat is fogadja egy Load Balancer-előtérben. Ebben az esetben az 1. és a 2. forgatókönyvet kombinálhatja a támogatáshoz. További mintákért tekintse át a [SNAT-kimerültség kezelését](#snatexhaust)ismertetőt.
+An example is an Azure Resource Manager deployment where the application relies heavily on outbound connections to a limited number of destinations but also receives inbound flows over a Load Balancer frontend. In this case, you can combine scenarios 1 and 2 for relief. For additional patterns, review [Managing SNAT exhaustion](#snatexhaust).
 
-### <a name="multife"></a>Több előtér a kimenő folyamatokhoz
+### <a name="multife"></a> Multiple frontends for outbound flows
 
 #### <a name="standard-load-balancer"></a>Standard Load Balancer
 
-Standard Load Balancer az összes jelöltet a kimenő folyamatokhoz használja egyszerre, ha [több (nyilvános) IP-frontend](load-balancer-multivip-overview.md) van jelen. Minden előtér megszorozza a rendelkezésre álló előre lefoglalt SNAT-portok számát, ha engedélyezve van a kimenő kapcsolatok terheléselosztási szabálya.
+Standard Load Balancer uses all candidates for outbound flows at the same time when [multiple (public) IP frontends](load-balancer-multivip-overview.md) is present. Each frontend multiplies the number of available preallocated SNAT ports if a load balancing rule is enabled for outbound connections.
 
-Dönthet úgy, hogy letiltja a előtér-IP-címet a kimenő kapcsolatokhoz egy új terheléselosztási szabály beállítással:
+You can choose to suppress a frontend IP address from being used for outbound connections with a new load balancing rule option:
 
 ```json    
       "loadBalancingRules": [
@@ -105,164 +105,164 @@ Dönthet úgy, hogy letiltja a előtér-IP-címet a kimenő kapcsolatokhoz egy �
       ]
 ```
 
-Általában a `disableOutboundSnat` beállítás alapértelmezett _értéke false (hamis_ ), és azt jelzi, hogy ez a szabály a társított virtuális gépek kimenő SNAT a terheléselosztási szabály backend-készletében található. A `disableOutboundSnat` tulajdonság _értéke TRUE (igaz_ ) értékre módosítható, hogy a rendszer Load Balancer ne használja az adott terheléselosztási szabály háttér-készletében lévő virtuális gépekhez tartozó kimenő kapcsolatok társított előtéri IP-címét.  Emellett továbbra is kijelölhet egy adott IP-címet a kimenő folyamatokhoz a [több, kombinált forgatókönyvekben](#combinations) is leírtak szerint.
+Normally, the `disableOutboundSnat` option defaults to _false_ and signifies that this rule programs outbound SNAT for the associated VMs in the backend pool of the load balancing rule. The `disableOutboundSnat` can be changed to _true_ to prevent Load Balancer from using the associated frontend IP address for outbound connections for the VMs in the backend pool of this load balancing rule.  And you can also still designate a specific IP address for outbound flows as described in [Multiple, combined scenarios](#combinations) as well.
 
-#### <a name="load-balancer-basic"></a>Alapszintű Load Balancer
+#### <a name="load-balancer-basic"></a>Load Balancer Basic
 
-Load Balancer Basic (alapszintű) beállítás egyetlen előtér-felületet választ ki a kimenő folyamatokhoz, ha a kimenő folyamatok esetében [több (nyilvános) IP-frontend](load-balancer-multivip-overview.md) szerepel. Ez a kijelölés nem konfigurálható, és a kiválasztási algoritmust véletlenszerűen kell figyelembe venni. Kijelölheti a kimenő folyamatok adott IP-címét [több, kombinált forgatókönyvben](#combinations)leírtak szerint.
+Load Balancer Basic chooses a single frontend to be used for outbound flows when [multiple (public) IP frontends](load-balancer-multivip-overview.md) are candidates for outbound flows. This selection is not configurable, and you should consider the selection algorithm to be random. You can designate a specific IP address for outbound flows as described in [Multiple, combined scenarios](#combinations).
 
-### <a name="az"></a>Availability Zones
+### <a name="az"></a> Availability Zones
 
-[A standard Load Balancer és a Availability Zones](load-balancer-standard-availability-zones.md)használata esetén a Zone-redundáns előtérben a zóna-REDUNDÁNS kimenő SNAT-kapcsolatok biztosíthatók, és a SNAT programozása megtartja a zóna meghibásodását.  Ha a rendszer a zóna-előtérbeli felületeket használja, a kimenő SNAT-kapcsolatok megosztják a sorsot azzal a zónával, amelyhez tartoznak.
+When using [Standard Load Balancer with Availability Zones](load-balancer-standard-availability-zones.md), zone-redundant frontends can provide zone-redundant outbound SNAT connections and SNAT programming survives zone failure.  When zonal frontends are used, outbound SNAT connections share fate with the zone they belong to.
 
-## <a name="snat"></a>A SNAT és a PAT ismertetése
+## <a name="snat"></a>Understanding SNAT and PAT
 
-### <a name="pat"></a>Port maszkolása SNAT (PAT)
+### <a name="pat"></a>Port masquerading SNAT (PAT)
 
-Ha egy nyilvános Load Balancer erőforrás virtuálisgép-példányokhoz van társítva, minden kimenő kapcsolódási forrás újraírásra kerül. A forrás a virtuális hálózat magánhálózati IP-címéről a terheléselosztó nyilvános IP-címére íródik újra. A nyilvános IP-címtartomány területen a folyamat 5 rekordjának (forrás IP-címe, forrásport, IP-átviteli protokoll, cél IP-címe, célport) egyedinek kell lennie.  A maszkolási SNAT TCP-vagy UDP-protokollal is használható.
+When a public Load Balancer resource is associated with VM instances, each outbound connection source is rewritten. The source is rewritten from the virtual network private IP address space to the frontend Public IP address of the load balancer. In the public IP address space, the 5-tuple of the flow (source IP address, source port, IP transport protocol, destination IP address, destination port) must be unique.  Port masquerading SNAT can be used with either TCP or UDP IP protocols.
 
-Az ideiglenes portok (SNAT-portok) a magánhálózati forrás IP-címének újraírása után érhetők el, mert több folyamat egyetlen nyilvános IP-címről származik. A SNAT algoritmusú port az UDP és a TCP protokollal eltérő SNAT-portokat foglal le.
+Ephemeral ports (SNAT ports) are used to achieve this after rewriting the private source IP address, because multiple flows originate from a single public IP address. The port masquerading SNAT algorithm allocates SNAT ports differently for UDP versus TCP.
 
-#### <a name="tcp"></a>TCP SNAT portok
+#### <a name="tcp"></a>TCP SNAT Ports
 
-A rendszer egy SNAT-portot használ egy adott cél IP-címhez, porthoz. Ha több TCP-folyamat ugyanarra a cél IP-címére, portra és protokollra vonatkozik, az egyes TCP-folyamatok egyetlen SNAT-portot használnak. Ez biztosítja, hogy a folyamatok egyediek legyenek, amikor ugyanabból a nyilvános IP-címről származnak, és ugyanarra a cél IP-címére, portra és protokollra mutatnak. 
+One SNAT port is consumed per flow to a single destination IP address, port. For multiple TCP flows to the same destination IP address, port, and protocol, each TCP flow consumes a single SNAT port. This ensures that the flows are unique when they originate from the same public IP address and go to the same destination IP address, port, and protocol. 
 
-Több folyamat, amelyek mindegyike egy másik cél IP-címére, portra és protokollra vonatkozik, egyetlen SNAT-portot kell megosztania. A cél IP-címe, portja és protokollja egyedivé teszi a folyamatokat anélkül, hogy további forrásport szükségesek a nyilvános IP-címtartomány forgalmának megkülönböztetéséhez.
+Multiple flows, each to a different destination IP address, port, and protocol, share a single SNAT port. The destination IP address, port, and protocol make flows unique without the need for additional source ports to distinguish flows in the public IP address space.
 
-#### <a name="udp"></a>UDP SNAT portok
+#### <a name="udp"></a> UDP SNAT Ports
 
-Az UDP-SNAT portjait egy másik algoritmus kezeli, mint a TCP SNAT-portok.  A Load Balancer az UDP protokollhoz "Port-korlátozott kúp NAT" néven ismert algoritmust használ.  A rendszer egy SNAT-portot használ minden egyes folyamathoz, a cél IP-címétől, a porttól függetlenül.
+UDP SNAT ports are managed by a different algorithm than TCP SNAT ports.  Load Balancer uses an algorithm known as "port-restricted cone NAT" for UDP.  One SNAT port is consumed for each flow, irrespective of destination IP address, port.
 
-#### <a name="snat-port-reuse"></a>SNAT-port újrafelhasználása
+#### <a name="snat-port-reuse"></a>SNAT port reuse
 
-A portok felszabadítása után a port igény szerint újra felhasználható.  Egy adott forgatókönyv esetében úgy gondolhatja, hogy a SNAT-portok a legalacsonyabb és a legmagasabb rendelkezésre állási sorba kerülnek, és az első elérhető SNAT-portot használja az új kapcsolatokhoz. 
+Once a port has been released, the port is available for reuse as needed.  You can think of SNAT ports as a sequence from lowest to highest available for a given scenario, and the first available SNAT port is used for new connections. 
  
-#### <a name="exhaustion"></a>Fogyási
+#### <a name="exhaustion"></a>Exhaustion
 
-A SNAT-portok erőforrásainak kimerítése esetén a kimenő folyamatok meghiúsulnak, amíg a meglévő folyamatok SNAT-portokat nem szabadítanak fel. Load Balancer visszaállítja a SNAT-portokat, amikor a folyamat lezárult, és [4 perces üresjárati](#idletimeout) időkorlátot használ a SNAT-portok üresjárati forgalomból való visszaigényléséhez.
+When SNAT port resources are exhausted, outbound flows fail until existing flows release SNAT ports. Load Balancer reclaims SNAT ports when the flow closes and uses a [4-minute idle timeout](#idletimeout) for reclaiming SNAT ports from idle flows.
 
-Az UDP-SNAT portok általában sokkal gyorsabbak, mint a TCP SNAT-portok, a használt algoritmus különbsége miatt. Ezeket a különbségeket figyelembe véve kell megterveznie és méreteznie a tesztet.
+UDP SNAT ports generally exhaust much faster than TCP SNAT ports due to the difference in algorithm used. You must design and scale test with this difference in mind.
 
-A SNAT-portok kimerüléséhez gyakran vezető feltételek enyhítéséhez tekintse át a [SNAT kezelése](#snatexhaust) szakaszt.
+For patterns to mitigate conditions that commonly lead to SNAT port exhaustion, review the [Managing SNAT](#snatexhaust) section.
 
-### <a name="preallocatedports"></a>Ideiglenes port előfoglalása a port maszkolása SNAT (PAT)
+### <a name="preallocatedports"></a>Ephemeral port preallocation for port masquerading SNAT (PAT)
 
-Az Azure egy algoritmus használatával határozza meg, hogy hány előre lefoglalt SNAT-port áll rendelkezésre a háttérrendszer-készlet mérete alapján a SNAT ([Pat](#pat)) port használatakor. A SNAT-portok egy adott nyilvános IP-forráscím számára elérhető ideiglenes portok.
+Azure uses an algorithm to determine the number of preallocated SNAT ports available based on the size of the backend pool when using port masquerading SNAT ([PAT](#pat)). SNAT ports are ephemeral ports available for a particular public IP source address.
 
-Az UDP és a TCP számára a SNAT-portok száma azonos, és az IP-átviteli protokolltól függetlenül használatos.  A SNAT-port használata azonban eltérő attól függően, hogy a folyamat UDP vagy TCP.
+The same number of SNAT ports are preallocated for UDP and TCP respectively and consumed independently per IP transport protocol.  However, the SNAT port usage is different depending on whether the flow is UDP or TCP.
 
 >[!IMPORTANT]
->A standard SKU SNAT programozása IP-átviteli protokollon alapul, és a terheléselosztási szabályból származik.  Ha csak egy TCP-terheléselosztási szabály létezik, a SNAT csak a TCP protokollhoz érhető el. Ha csak TCP-terheléselosztási szabályra van szüksége, és kimenő SNAT van szükség az UDP-hez, hozzon létre egy UDP-terheléselosztási szabályt ugyanabból a előtér-készletből ugyanahhoz a háttér-készlethez.  Ez elindítja az UDP SNAT-programozását.  Nincs szükség munkaszabályra vagy állapot-mintavételi módszerre.  Az alapszintű SKU-SNAT a terheléselosztási szabályban megadott átviteli protokolltól függetlenül mindig programok SNAT mind az IP átviteli protokollhoz.
+>Standard SKU SNAT programming is per IP transport protocol and derived from the load balancing rule.  If only a TCP load balancing rule exists, SNAT is only available for TCP. If you have only a TCP load balancing rule and need outbound SNAT for UDP, create a UDP load balancing rule from the same frontend to the same backend pool.  This will trigger SNAT programming for UDP.  A working rule or health probe is not required.  Basic SKU SNAT always programs SNAT for both IP transport protocol, irrespective of the transport protocol specified in the load balancing rule.
 
-Az Azure az egyes virtuális gépek hálózati adapterének IP-konfigurációjához SNAT-portokat szabadít fel. Ha egy IP-konfigurációt ad hozzá a készlethez, a rendszer az IP-konfigurációhoz az SNAT-portokat a háttérrendszer-készlet mérete alapján osztja ki. A kimenő folyamatok létrehozásakor a [Pat](#pat) dinamikusan felhasználja (az előlefoglalt korlátig), és felszabadítja ezeket a portokat, amikor a folyamat lezárul vagy [üresjáratban időtúllépés](#idletimeout) történik.
+Azure preallocates SNAT ports to the IP configuration of the NIC of each VM. When an IP configuration is added to the pool, the SNAT ports are preallocated for this IP configuration based on the backend pool size. When outbound flows are created, [PAT](#pat) dynamically consumes (up to the preallocated limit) and releases these ports when the flow closes or [idle timeouts](#idletimeout) happen.
 
-A következő táblázat a SNAT portok előfoglalásait mutatja be a háttérbeli készlet méreteihez:
+The following table shows the SNAT port preallocations for tiers of backend pool sizes:
 
-| Készlet mérete (VM-példányok) | Az előlefoglalt SNAT-portok száma IP-konfiguráció alapján|
+| Pool size (VM instances) | Preallocated SNAT ports per IP configuration|
 | --- | --- |
 | 1-50 | 1,024 |
-| 51-100 | 512 |
-| 101-200 | 256 |
-| 201-400 | 128 |
+| 51–100 | 512 |
+| 101–200 | 256 |
+| 201–400 | 128 |
 | 401-800 | 64 |
-| 801-1000 | 32 |
+| 801-1,000 | 32 |
 
 >[!NOTE]
-> Ha [több](load-balancer-multivip-overview.md)előtérrel standard Load Balancer használ, minden ELŐTÉRI IP-cím szorozza meg a rendelkezésre álló SNAT-portok számát az előző táblázatban. Például egy 50-es virtuális gép 2. terheléselosztási szabálya, amelyek mindegyike külön előtér-IP-címmel rendelkezik, az 2048 (2x 1024) SNAT-portokat fogja használni IP-konfiguráció alapján. Több előtér- [felület](#multife)részleteinek megtekintése.
+> When using Standard Load Balancer with [multiple frontends](load-balancer-multivip-overview.md), each frontend IP address multiplies the number of available SNAT ports in the previous table. For example, a backend pool of 50 VM's with 2 load balancing rules, each with a separate frontend IP address, will use 2048 (2x 1024) SNAT ports per IP configuration. See details for [multiple frontends](#multife).
 
-Ne feledje, hogy az elérhető SNAT-portok száma nem közvetlenül a folyamatok számára van lefordítva. Egyetlen SNAT-port többször is felhasználható több egyedi célhelyre. A portok csak akkor lesznek felhasználva, ha a folyamatokat egyedivé kell tenni. A tervezéssel és a mérsékléssel kapcsolatos útmutatásért tekintse meg a kimerített [erőforrás kezelésével](#snatexhaust) és a [Pat](#pat)leírásával foglalkozó szakaszt.
+Remember that the number of SNAT ports available does not translate directly to number of flows. A single SNAT port can be reused for multiple unique destinations. Ports are consumed only if it's necessary to make flows unique. For design and mitigation guidance, refer to the section about [how to manage this exhaustible resource](#snatexhaust) and the section that describes [PAT](#pat).
 
-Előfordulhat, hogy a háttérbeli készlet méretének módosítása hatással lehet a már meglévő folyamatokra. Ha a háttérbeli készlet mérete nő, és a következő szintjére vált, az előlefoglalt SNAT-portok fele a következő nagyobb háttér-készletre való áttérés során visszaigényelve lesz. A visszaigényelt SNAT-porthoz társított folyamatok időtúllépést okoznak, és újra kell létrehozni. Ha új folyamatra van kísérlet, a folyamat azonnal sikeres lesz, amíg az előlefoglalt portok elérhetők lesznek.
+Changing the size of your backend pool might affect some of your established flows. If the backend pool size increases and transitions into the next tier, half of your preallocated SNAT ports are reclaimed during the transition to the next larger backend pool tier. Flows that are associated with a reclaimed SNAT port will time out and must be reestablished. If a new flow is attempted, the flow will succeed immediately as long as preallocated ports are available.
 
-Ha a háttérbeli készlet mérete csökken, és az átmenetek alacsonyabb szinten vannak, a rendelkezésre álló SNAT-portok száma növekszik. Ebben az esetben a meglévő lefoglalt SNAT-portok és a hozzájuk tartozó folyamatok nem érintettek.
+If the backend pool size decreases and transitions into a lower tier, the number of available SNAT ports increases. In this case, existing allocated SNAT ports and their respective flows are not affected.
 
-A SNAT portok kiosztása IP-átviteli protokoll specifikus (a TCP és az UDP külön van karbantartva), és a következő feltételekkel szabadítható fel:
+SNAT ports allocations are IP transport protocol specific (TCP and UDP are maintained separately) and are released under the following conditions:
 
-### <a name="tcp-snat-port-release"></a>TCP SNAT-port kiadása
+### <a name="tcp-snat-port-release"></a>TCP SNAT port release
 
-- Ha bármelyik kiszolgáló/ügyfél elküldi a FINACK, a SNAT-port 240 másodperc után lesz felszabadítva.
-- Ha az első látható, a SNAT-port 15 másodperc elteltével fog megjelenni.
-- Ha elérte az üresjárati időtúllépést, a rendszer a portot szabadítja fel.
+- If either server/client sends FINACK, SNAT port will be released after 240 seconds.
+- If a RST is seen, SNAT port will be released after 15 seconds.
+- If idle timeout has been reached, port is released.
 
-### <a name="udp-snat-port-release"></a>UDP SNAT-port kiadása
+### <a name="udp-snat-port-release"></a>UDP SNAT port release
 
-- Ha elérte az üresjárati időtúllépést, a rendszer a portot szabadítja fel.
+- If idle timeout has been reached, port is released.
 
-## <a name="problemsolving"></a>Problémamegoldás 
+## <a name="problemsolving"></a> Problem solving 
 
-Ez a szakasz a SNAT-kimerültség enyhítését, valamint az Azure-beli kimenő kapcsolatok esetén felmerülő megoldásokat ismerteti.
+This section is intended to help mitigate SNAT exhaustion and that can occur with outbound connections in Azure.
 
-### <a name="snatexhaust"></a>A SNAT (PAT) portjának kimerülésének kezelése
-A Pathoz használt [](#pat) [ideiglenes portok](#preallocatedports) kimeríthető erőforrások, amelyeket az [önálló virtuális gép nyilvános IP-cím nélküli](#defaultsnat) és [elosztott terhelésű virtuális gép nyilvános IP-cím](#lb)nélkül című része ismertet.
+### <a name="snatexhaust"></a> Managing SNAT (PAT) port exhaustion
+[Ephemeral ports](#preallocatedports) used for [PAT](#pat) are an exhaustible resource, as described in [Standalone VM without a Public IP address](#defaultsnat) and [Load-balanced VM without a Public IP address](#lb).
 
-Ha tudja, hogy több kimenő TCP-vagy UDP-kapcsolatra van szüksége ugyanahhoz a cél IP-címhez és porthoz, és megfigyelheti a sikertelen kimenő kapcsolatokat, vagy ha támogatja a SNAT-portok kimerítésének támogatását (az előzetesen lefoglalt [ideiglenes portok](#preallocatedports) a [Pat](#pat)által használt) számos általános kockázatcsökkentő lehetőséggel rendelkezik. Tekintse át ezeket a beállításokat, és döntse el, hogy mi az elérhető és melyik a legmegfelelőbb a forgatókönyvhöz. Lehetséges, hogy egy vagy több segíthet a forgatókönyv kezelésében.
+If you know that you're initiating many outbound TCP or UDP connections to the same destination IP address and port, and you observe failing outbound connections or are advised by support that you're exhausting SNAT ports (preallocated [ephemeral ports](#preallocatedports) used by [PAT](#pat)), you have several general mitigation options. Review these options and decide what is available and best for your scenario. It's possible that one or more can help manage this scenario.
 
-Ha nem sikerül megismerni a kimenő kapcsolatok viselkedését, használhatja az IP-verem statisztikáit (netstat). Vagy hasznos lehet a kapcsolatok viselkedésének figyelésére a csomagok rögzítései használatával. Ezeket a csomagokat a példány vendég operációs rendszerében hajthatja végre, vagy Network Watcher is használhatja a [csomagok rögzítéséhez](../network-watcher/network-watcher-packet-capture-manage-portal.md).
+If you are having trouble understanding the outbound connection behavior, you can use IP stack statistics (netstat). Or it can be helpful to observe connection behaviors by using packet captures. You can perform these packet captures in the guest OS of your instance or use [Network Watcher for packet capture](../network-watcher/network-watcher-packet-capture-manage-portal.md).
 
-#### <a name="connectionreuse"></a>Az alkalmazás módosítása a kapcsolatok újrafelhasználásához 
-A SNAT használt ideiglenes portok igényét csökkentheti az alkalmazásban található kapcsolatok újrafelhasználásával. Ez különösen az olyan protokollok esetében igaz, mint a HTTP/1.1, ahol az alapértelmezett a kapcsolatok újrafelhasználása. Továbbá a HTTP protokollt használó más protokollok (például a REST) is hasznosak lehetnek. 
+#### <a name="connectionreuse"></a>Modify the application to reuse connections 
+You can reduce demand for ephemeral ports that are used for SNAT by reusing connections in your application. This is especially true for protocols like HTTP/1.1, where connection reuse is the default. And other protocols that use HTTP as their transport (for example, REST) can benefit in turn. 
 
-Az újrafelhasználás mindig jobb, mint az egyes kérések egyéni, atomi TCP-kapcsolatai. A több teljesítményű, nagyon hatékony TCP-tranzakció eredményeit is újra felhasználhatja.
+Reuse is always better than individual, atomic TCP connections for each request. Reuse results in more performant, very efficient TCP transactions.
 
-#### <a name="connection pooling"></a>Az alkalmazás módosítása a kapcsolatok készletezésének használatára
-Az alkalmazásban létrehozhat egy kapcsolati készletezési sémát, ahol a kérések belsőleg oszlanak meg egy rögzített kapcsolaton belül (az összes újrafelhasználás, ahol lehetséges). Ez a séma korlátozza a használatban lévő ideiglenes portok számát, és egy előre jelezhető környezetet hoz létre. Ez a séma növelheti a kérések átviteli sebességét azáltal, hogy lehetővé teszi több egyidejű művelet engedélyezését, ha egyetlen kapcsolódás blokkolja a művelet válaszát.  
+#### <a name="connection pooling"></a>Modify the application to use connection pooling
+You can employ a connection pooling scheme in your application, where requests are internally distributed across a fixed set of connections (each reusing where possible). This scheme constrains the number of ephemeral ports in use and creates a more predictable environment. This scheme can also increase the throughput of requests by allowing multiple simultaneous operations when a single connection is blocking on the reply of an operation.  
 
-Előfordulhat, hogy a kapcsolatok készletezése már létezik azon a keretrendszeren belül, amelyet az alkalmazás fejlesztéséhez vagy az alkalmazás konfigurációs beállításaihoz használ. Összekapcsolhatja a kapcsolatok készletezését a kapcsolatok újbóli használatával. A többszörös kérelmek ezután egy rögzített, kiszámítható számú portot használnak ugyanahhoz a cél IP-címhez és porthoz. A kérések kihasználják a TCP-tranzakciók hatékony használatát a késés és az erőforrások kihasználtságának csökkentése érdekében. Az UDP-tranzakciók is hasznosak lehetnek, mivel az UDP-folyamatok számának kezelése a kimerülési feltételek elkerülésével és a SNAT-portok kihasználtságának kezelésével is jár.
+Connection pooling might already exist within the framework that you're using to develop your application or the configuration settings for your application. You can combine connection pooling with connection reuse. Your multiple requests then consume a fixed, predictable number of ports to the same destination IP address and port. The requests also benefit from efficient use of TCP transactions reducing latency and resource utilization. UDP transactions can also benefit, because managing the number of UDP flows can in turn avoid exhaust conditions and manage the SNAT port utilization.
 
-#### <a name="retry logic"></a>Az alkalmazás módosítása kevésbé agresszív újrapróbálkozási logika használatára
-Ha a [pathoz](#pat) használt, előlefoglalt időszakos [portok](#preallocatedports) kimerülése vagy az alkalmazások meghibásodása esetén az agresszív vagy találgatásos kényszerített újrapróbálkozások a romlás és a leállítási logikája miatt kimerítik vagy megtartják a fáradtságot. Az ideiglenes portok igényét kevésbé agresszív újrapróbálkozási logika használatával csökkentheti. 
+#### <a name="retry logic"></a>Modify the application to use less aggressive retry logic
+When [preallocated ephemeral ports](#preallocatedports) used for [PAT](#pat) are exhausted or application failures occur, aggressive or brute force retries without decay and backoff logic cause exhaustion to occur or persist. You can reduce demand for ephemeral ports by using a less aggressive retry logic. 
 
-Az ideiglenes portok 4 perces üresjárati időkorláttal rendelkeznek (nem állítható be). Ha az újrapróbálkozások túl agresszívek, a kimerültségnek nincs lehetősége a saját törlésére. Ezért figyelembe véve, hogy a--és milyen gyakran – az alkalmazás újrapróbálkozási tranzakciói a terv kritikus részét képezik.
+Ephemeral ports have a 4-minute idle timeout (not adjustable). If the retries are too aggressive, the exhaustion has no opportunity to clear up on its own. Therefore, considering how--and how often--your application retries transactions is a critical part of the design.
 
-#### <a name="assignilpip"></a>Nyilvános IP-cím kiosztása minden virtuális géphez
-Egy nyilvános IP-cím hozzárendelésével a forgatókönyv a [nyilvános IP-címekre változik egy virtuális gépen](#ilpip). Az egyes virtuális gépekhez használt nyilvános IP-címek minden ideiglenes portja elérhető a virtuális gép számára. (Azon forgatókönyvek esetében, amelyekben a nyilvános IP-címek ideiglenes portjai meg vannak osztva a megfelelő háttér-készlethez társított összes virtuális géppel.) Kompromisszumok merülnek fel, mint például a nyilvános IP-címek további díja, valamint a nagy számú egyedi IP-cím engedélyezési lehetséges következményei.
+#### <a name="assignilpip"></a>Assign a Public IP to each VM
+Assigning a Public IP address changes your scenario to [Public IP to a VM](#ilpip). All ephemeral ports of the public IP that are used for each VM are available to the VM. (As opposed to scenarios where ephemeral ports of a public IP are shared with all the VMs associated with the respective backend pool.) There are trade-offs to consider, such as the additional cost of public IP addresses and the potential impact of whitelisting a large number of individual IP addresses.
 
 >[!NOTE] 
->Ez a beállítás webes feldolgozói szerepkörök esetén nem érhető el.
+>This option is not available for web worker roles.
 
-#### <a name="multifesnat"></a>Több előtér-felület használata
+#### <a name="multifesnat"></a>Use multiple frontends
 
-Nyilvános standard Load Balancer használata esetén [több előtér-IP-címet kell hozzárendelni a kimenő kapcsolatokhoz](#multife) , és meg kell [szorozni a rendelkezésre álló SNAT-portok számát](#preallocatedports).  Hozzon létre egy előtérbeli IP-konfigurációt, szabályt és háttér-készletet a SNAT programozásának elindításához a frontend nyilvános IP-címére.  A szabálynak nem kell működnie, és az állapot-mintavételnek nem kell sikeresnek lennie.  Ha több előtérbeli felületet is használ a bejövő (nem csak a kimenő) előtérben, akkor a megbízhatóság biztosításához használja az egyéni állapotú mintavételt is.
+When using public Standard Load Balancer, you assign [multiple frontend IP addresses for outbound connections](#multife) and [multiply the number of SNAT ports available](#preallocatedports).  Create a frontend IP configuration, rule, and backend pool to trigger the programming of SNAT to the public IP of the frontend.  The rule does not need to function and a health probe does not need to succeed.  If you do use multiple frontends for inbound as well (rather than just for outbound), you should use custom health probes well to ensure reliability.
 
 >[!NOTE]
->A legtöbb esetben a SNAT-portok kimerítése hibás kialakítás jele.  Győződjön meg arról, hogy a portok kimerítésének okát érdemes megismerni, mielőtt SNAT-portok hozzáadására több felületet használ.  Előfordulhat, hogy olyan problémát takar, amely később hibát okozhat.
+>In most cases, exhaustion of SNAT ports is a sign of bad design.  Make sure you understand why you are exhausting ports before using more frontends to add SNAT ports.  You may be masking a problem which can lead to failure later.
 
-#### <a name="scaleout"></a>Vertikális felskálázás
+#### <a name="scaleout"></a>Scale out
 
-Az [előlefoglalt portok](#preallocatedports) a háttérrendszer-készlet mérete alapján vannak hozzárendelve, és rétegekbe vannak csoportosítva, hogy kis mennyiségű portot lehessen megszakítani, ha a portok némelyikét újra kell osztani a háttérrendszer következő méretének növeléséhez.  Lehetséges, hogy egy adott előtérben a SNAT-portok kihasználtságának intenzitását növelheti, ha a háttér-készletet egy adott réteg maximális méretére szeretné méretezni.  Ehhez az szükséges, hogy az alkalmazás hatékonyan felskálázásra kerüljön.
+[Preallocated ports](#preallocatedports) are assigned based on the backend pool size and grouped into tiers to minimize disruption when some of the ports have to be reallocated to accommodate the next larger backend pool size tier.  You may have an option to increase the intensity of SNAT port utilization for a given frontend by scaling your backend pool to the maximum size for a given tier.  This requires for the application to scale out efficiently.
 
-A háttér-készletben lévő két virtuális gép esetében például IP-konfiguráció esetén 1024 SNAT-port érhető el, ami lehetővé teszi, hogy összesen 2048 SNAT portot engedélyezzen a telepítéshez.  Ha az üzembe helyezést 50 virtuális gépre szeretné növelni, bár az előre lefoglalt portok száma virtuális gépenként állandó marad, akkor az üzemelő példány összesen 51 200 (50 x 1024) SNAT-portot használhat.  Ha ki szeretné bővíteni az üzemelő példányt, ellenőrizze az [előlefoglalt portok](#preallocatedports) számát egy szinten, hogy a méretezést a maximális értékre alakítsa ki a megfelelő szintjére.  Ha az előző példában úgy döntött, hogy 50-példány helyett 51-ra szeretné felskálázást végezni, akkor a következő szintet kell végrehajtania, és a végén a virtuális gép kevesebb SNAT-portja, valamint összesen szerepel.
+For example, two virtual machines in the backend pool would have 1024 SNAT ports available per IP configuration, allowing a total of 2048 SNAT ports for the deployment.  If the deployment were to be increased to 50 virtual machines, even though the number of preallocated ports remains constant per virtual machine, a total of 51,200 (50 x 1024) SNAT ports can be used by the deployment.  If you wish to scale out your deployment, check the number of [preallocated ports](#preallocatedports) per tier to make sure you shape your scale out to the maximum for the respective tier.  In the preceding example, if you had chosen to scale out to 51 instead of 50 instances, you would progress to the next tier and end up with fewer SNAT ports per VM as well as in total.
 
-Ha felskálázást végez a következő nagyobb háttérrendszer-készlet méretével, előfordulhat, hogy a kimenő kapcsolatok némelyike időtúllépést okoz, ha a lefoglalt portok újra le lesznek foglalva.  Ha csak néhány SNAT-portot használ, a következő nagyobb méretű háttér-készlet méretének horizontális felskálázása lényegtelen.  A meglévő portok felét a rendszer minden alkalommal újra lefoglalja, amikor a következő háttérbeli készletre lép.  Ha nem szeretné, hogy ez megtörténjen, az üzembe helyezést a rétegek méretére kell alakítania.  Vagy ellenőrizze, hogy az alkalmazás képes-e az észlelésre, és szükség esetén próbálkozzon újra.  A TCP-Keepalives segítséget nyújthat az észlelésben, ha a SNAT-portok már nem működnek az újrafoglalás miatt.
+If you scale out to the next larger backend pool size tier, there is potential for some of your outbound connections to time out if allocated ports have to be reallocated.  If you are only using some of your SNAT ports, scaling out across the next larger backend pool size is inconsequential.  Half the existing ports will be reallocated each time you move to the next backend pool tier.  If you don't want this to take place, you need to shape your deployment to the tier size.  Or make sure your application can detect and retry as necessary.  TCP keepalives can assist in detect when SNAT ports no longer function due to being reallocated.
 
-### <a name="idletimeout"></a>A kimenő Üresjárati időkorlát alaphelyzetbe állítása a Keepalives használatával
+### <a name="idletimeout"></a>Use keepalives to reset the outbound idle timeout
 
-A kimenő kapcsolatok 4 perces üresjárati időkorláttal rendelkeznek. Ez az időkorlát nem állítható be. Azonban a Transport (például a TCP Keepalives) vagy az alkalmazás-réteg Keepalives segítségével frissítheti az üresjárati folyamatokat, és szükség esetén visszaállíthatja ezt az üresjárati időkorlátot.  
+Outbound connections have a 4-minute idle timeout. This timeout is not adjustable. However, you can use transport (for example, TCP keepalives) or application-layer keepalives to refresh an idle flow and reset this idle timeout if necessary.  
 
-A TCP-Keepalives használata esetén elegendő a csatlakozás egyik oldalán való engedélyezése. Például elegendő, ha csak a kiszolgáló oldalon engedélyezi őket, hogy alaphelyzetbe állítsa a folyamat üresjárati időzítőjét, és nem szükséges mindkét fél számára a TCP-Keepalives kezdeményezni.  Hasonló fogalmak léteznek az alkalmazási réteghez, beleértve az adatbázis-ügyfél-kiszolgáló konfigurációkat is.  Tekintse meg a kiszolgáló oldalát, hogy milyen lehetőségek léteznek az alkalmazás-specifikus Keepalives.
+When using TCP keepalives, it is sufficient to enable them on one side of the connection. For example, it is sufficient to enable them on the server side only to reset the idle timer of the flow and it is not necessary for both sides to initiated TCP keepalives.  Similar concepts exist for application layer, including database client-server configurations.  Check the server side for what options exist for application specific keepalives.
 
-## <a name="discoveroutbound"></a>A virtuális gép által használt nyilvános IP-cím feltárása
-A kimenő kapcsolatok nyilvános forrás IP-címének meghatározása számos módon megtörténik. A nyit egy olyan szolgáltatást biztosít, amely a virtuális gép nyilvános IP-címét jeleníti meg. 
+## <a name="discoveroutbound"></a>Discovering the public IP that a VM uses
+There are many ways to determine the public source IP address of an outbound connection. OpenDNS provides a service that can show you the public IP address of your VM. 
 
-Az nslookup parancs használatával DNS-lekérdezést küldhet a myip.opendns.com név számára a nyit feloldójának. A szolgáltatás visszaadja a lekérdezés küldéséhez használt forrás IP-címet. Ha a következő lekérdezést futtatja a virtuális gépről, a válasz az adott virtuális géphez használt nyilvános IP-cím:
+By using the nslookup command, you can send a DNS query for the name myip.opendns.com to the OpenDNS resolver. The service returns the source IP address that was used to send the query. When you run the following query from your VM, the response is the public IP used for that VM:
 
     nslookup myip.opendns.com resolver1.opendns.com
 
-## <a name="preventoutbound"></a>Kimenő kapcsolat megakadályozása
-Időnként előfordulhat, hogy a virtuális gép számára engedélyezni kell a kimenő folyamat létrehozását. Vagy előfordulhat, hogy meg kell adni egy követelményt, amely azt a célt szolgálhatja, hogy mely célhelyek érhetők el a kimenő folyamatokkal, vagy hogy mely célhelyek kezdhetik meg Ebben az esetben [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával felügyelheti a virtuális gép által elérhető célhelyeket. A NSG használatával is kezelheti, hogy mely nyilvános célhelyek indíthatnak bejövő folyamatokat.
+## <a name="preventoutbound"></a>Preventing outbound connectivity
+Sometimes it's undesirable for a VM to be allowed to create an outbound flow. Or there might be a requirement to manage which destinations can be reached with outbound flows, or which destinations can begin inbound flows. In this case, you can use [network security groups](../virtual-network/security-overview.md) to manage the destinations that the VM can reach. You can also use NSGs to manage which public destination can initiate inbound flows.
 
-Ha NSG alkalmaz egy elosztott terhelésű virtuális gépre, ügyeljen a [szolgáltatás](../virtual-network/security-overview.md#service-tags) -címkékre és az [alapértelmezett biztonsági szabályokra](../virtual-network/security-overview.md#default-security-rules). Gondoskodnia kell arról, hogy a virtuális gép Azure Load Balancertól kapjon állapot-mintavételi kérelmeket. 
+When you apply an NSG to a load-balanced VM, pay attention to the [service tags](../virtual-network/security-overview.md#service-tags) and [default security rules](../virtual-network/security-overview.md#default-security-rules). You must ensure that the VM can receive health probe requests from Azure Load Balancer. 
 
-Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER alapértelmezett címkéjétől, a virtuális gép állapotának mintavétele meghiúsul, és a virtuális gép meg van jelölve. Load Balancer leállítja az új folyamatok küldését a virtuális gépre.
+If an NSG blocks health probe requests from the AZURE_LOADBALANCER default tag, your VM health probe fails and the VM is marked down. Load Balancer stops sending new flows to that VM.
 
 ## <a name="limitations"></a>Korlátozások
-- A új választható disableoutboundsnat nem érhető el a terheléselosztási szabályok a portálon való konfigurálásakor.  Ehelyett használja a REST, a Template vagy az ügyféleszközök eszközt.
-- A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök csak akkor érhetők el, ha csak belső standard Load Balancer van használatban, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkciójának mellékhatása. Ne támaszkodjon erre a mellékhatásra, mert maga a saját szolgáltatás, vagy az alapul szolgáló platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a kimenő kapcsolatot explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges. A cikkben ismertetett [alapértelmezett SNAT](#defaultsnat) -forgatókönyv 3. esete nem érhető el.
+- DisableOutboundSnat is not available as an option when configuring a load balancing rule in the portal.  Use REST, template, or client tools instead.
+- Web Worker Roles without a VNet and other Microsoft platform services can be accessible when only an internal Standard Load Balancer is used due to a side effect from how pre-VNet services and other platform services function. Do not rely on this side effect as the respective service itself or the underlying platform may change without notice. You must always assume you need to create outbound connectivity explicitly if desired when using an internal Standard Load Balancer only. The [default SNAT](#defaultsnat) scenario 3 described in this article is not available.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
-- További információ a szabványos nyilvános Load Balancer [kimenő szabályairól](load-balancer-outbound-rules-overview.md) .
-- További információ a [Load Balancerról](load-balancer-overview.md).
-- További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
-- Ismerje meg az Azure egyéb fontos [hálózati funkcióit](../networking/networking-overview.md) .
+- Learn more about [outbound rules](load-balancer-outbound-rules-overview.md) for Standard public Load Balancer.
+- Learn more about [Load Balancer](load-balancer-overview.md).
+- Learn more about [network security groups](../virtual-network/security-overview.md).
+- Learn about some of the other key [networking capabilities](../networking/networking-overview.md) in Azure.

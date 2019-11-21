@@ -1,520 +1,520 @@
 ---
-title: A Cloudyn-jelentések használata az Azure-ban |} A Microsoft Docs
-description: Ez a cikk ismerteti a Cloudyn-jelentések, amelyek szerepelnek a Cloudyn portál segítségével hatékonyan használja őket célját.
+title: Use Cloudyn reports in Azure | Microsoft Docs
+description: This article describes the purpose of the Cloudyn reports that are included in the Cloudyn portal to help you effectively use them.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: f056515e87d01d0a30fec7f792fcb6e5e91c0c89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f838091f4b4cdcb0535f58926a724074ef080463
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969046"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218857"
 ---
-# <a name="reports-available-in-the-cloudyn-portal"></a>A Cloudyn portálon elérhető jelentések
+# <a name="reports-available-in-the-cloudyn-portal"></a>Reports available in the Cloudyn portal
 
-Ez a cikk ismerteti a Cloudyn-jelentések, amelyek szerepelnek a Cloudyn portálon célját. Azt is ismerteti, hogyan hatékonyan használhatja a jelentéseket. A legtöbb jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. A legtöbb művelet elvégezhető egy jelentésben, műveletek végezhetők az egyéb jelentésekben. A Cloudyn jelentésekben, beleértve az testreszabásához, és mentse vagy ütemezett jelentéseket, használatáról lásd [ismertetése költségjelentéseket](understanding-cost-reports.md).
+This article describes the purpose of the Cloudyn reports that are included in the Cloudyn portal. It also describes how you can effectively use the reports. Most reports are intuitive and have a uniform look and feel. Most of the actions that you can do in one report, you can also do in other reports. For an overview about how to use Cloudyn reports, including how to customize and save or to schedule reports, see [Understanding cost reports](understanding-cost-reports.md).
 
 Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
 
-## <a name="report-types"></a>Jelentéstípusok
+## <a name="report-types"></a>Report types
 
-A Cloudyn jelentésekben három típusa van:
+There are three types of Cloudyn reports:
 
-- Többlet idő jelentéseket. Ha például az időalapú költségeket tartalmazó jelentést. Többlet idő a jelentések egy idősorozat-adatok megjelenítése egy kiválasztott időszakban előre meghatározott megoldást, és heti felbontása megjelenítése az utolsó két hónapig. Csoportosítás és szűrés segítségével különböző adatpontok nagyítás.
-  - Többlet idő jelentések segítségével megtekinthessék a szalagfelhasználási tendenciákat, és a csúcsok és a rendellenességek észlelését.
-- Problémaelemző jelentések. Ha például a Költségelemzési jelentést. Ezek a jelentések összesített adatok megjelenítése a időszakban határozza meg, és a csoportosítási és az adatok szűrésének engedélyezése.
-  - Elemzési jelentés segítségével megtekintheti az adatforgalmi csúcsokhoz és döntse el, anomáliadetektálási kiváltó okokat, és jelenítse meg egy részletes break ki az adatokat.
-- Táblázatos jelentéseket. Megtekintheti a jelentést egy táblát, de egyes jelentések csak táblaként tekinthetők meg. Ezek a jelentések adja meg a részletes elemek listája.
-  - Az ajánlások táblázatos jelentések – nincsenek javaslatok egyetlen vizualizációja sincs. Azonban jelenítheti meg az ajánlás eredményeket. Ha például megtakarítások idővel.
-  - Táblázatos jelentések hasznosak, listák, műveletek, illetve az adatok exportálása további feldolgozás céljából. Ha például a jóváírási jelentések.
+- Over-time reports. For example, the Cost Over Time report. Over-time reports show a time series of data over a selected interval with a predefined resolution and show a weekly resolution for last two months. You can use grouping and filtering to zoom in to various data points.
+  - Over-time reports can help you view trends and detect spikes or anomalies.
+- Analysis reports. For example, the Cost Analysis report. These reports show aggregated data over a period that you define and allow grouping and filtering on the data.
+  - Analysis reports can help you view spikes and determine anomaly root-causes and to show you a granular break-down of your data.
+- Tabular reports. You can view any report as a table, but some reports are viewed only as a table. These reports provide you detailed lists of items.
+  - Recommendations are tabular reports—there are no visualizations for recommendations. However, you can visualize recommendation results. For example, savings over time.
+  - Tabular reports are useful as lists of actions or for data export for further processing. For example, a chargeback report.
 
-A Cost szóló jelentésekben megtekintheti, vagy _tényleges_ vagy _amortizált_ költségeket.
+Cost reports show either _actual_ or _amortized_ costs.
 
-Tényleges költségek jelentéseiben jelennek meg a kifizetések a kijelölt időszakban. Például minden egyszeri díjak, mint például (RI). a fenntartott példányok vásárlása jelennek meg a tényleges költségek jelentéseiben, költség kiugrások.
+Actual cost reports display the payments made during the selected time frame. For example, all one-time fees such as reserved instance (RI) purchases are shown in actual cost reports as spikes in cost.
 
-Amortizált költségek jelentései egyszeri díjak, amelyekre érvényes keresztül terjednek. Például egyszeri díjak fenntartott példány vásárlására oszlik el a Foglalás időtartama és ugrásszerű nem jelennek meg. Az amortizált nézet az egyetlen módja igaz trendeket és költség leképezések.
+Amortized cost reports spread one-time fees over a period to which they apply. For example, one-time fees for RI purchases are spread over the reservation term and are not shown as a spike. The amortized view is the only way to see true trends and make cost projections.
 
-Bizonyos esetekben a törlesztési külön jelentésként jelennek meg. Ilyenek például a költségek elemzése és az amortizált költségek elemzése jelentéseket. Más esetekben a törlesztési egy olyan jelentés szabályzat, például a Költséglefoglalási és költségelemzés jelentéseket.
+In some cases, the amortization is presented as a separate report. Examples include the Cost Analysis and Amortized Cost Analysis reports. In other cases, amortization is a report policy such as the Cost Allocation and Cost Analysis reports.
 
-Bármely jelentés rendszeres kézbesítésre ütemezheti. Költségek jelentései lehetővé teszik egy küszöbértéket beállítását úgy is hasznos, ha a riasztásokat.
+You can schedule any report for periodic delivery. Cost reports allow setting a threshold, so they're useful for alerts.
 
-## <a name="cost-analysis-vs-cost-allocation"></a>A költséglefoglalási és költségelemzés
+## <a name="cost-analysis-vs-cost-allocation"></a>Cost analysis vs. cost allocation
 
-_Elemzés_ jelentések jelenítik meg a felhőszolgáltatók számlázási adatokat. A jelentések segítségével, csoport és a számlázási fájlból részletezett különböző adatok szegmensek részletesen. A jelentések lehetővé a pontos költségeket a felhő gyártója által biztosított nyers számlázási adatok.
+_Cost analysis_ reports display billing data from your cloud providers. Using the reports, you can group and drill into various data segments itemized from the billing file. The reports enable granular cost navigation across your cloud vendor's raw billing data.
 
-Néhány _költségelemzés_ jelentések költségeket az erőforráscímkék nem csoportosítás. És a számlázási adatokat címke-alapú csak akkor jelenik meg a jelentésekben, hozzon létre egy költség modell használatával költségek lefoglalása után [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+Some _cost analysis_ reports don't group costs by resource tags. And, tag-based billing information only appears in reports after you allocate costs by creating a cost model using [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-_Foglalási költség_ jelentés érhető el, miután létrehozott egy költség modell használatával [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). A Cloudyn költség- és számlázási adatokat feldolgozó és _megegyezik_ cloud-fiókok használatát, és a címke adatait az adatokat. Az adatok megfelelő, a Cloudyn a használati adatok hozzáférésre van szüksége. Ha fiókok, amelyekről frissítések hiányoznak a hitelesítő adatokat, azok van jelölve _Kategorizálatlan erőforrások_.
+_Cost allocation_ reports are available after you create a cost model using [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn processes cost and billing data and _matches_ the data to the usage and tag data of your cloud accounts. To match the data, Cloudyn requires access to your usage data. If you have accounts that are missing credentials, they are labeled as _uncategorized resources_.
 
 ## <a name="dashboards"></a>Irányítópultok
 
-Irányítópultok Cloudy a jelentések magas szintű áttekintést biztosítanak. Az irányítópultok widgetek épülnek fel, és minden widget lényegében egy jelentés miniatűr. Ha Ön [jelentések testreszabásával](understanding-cost-reports.md#save-and-schedule-reports), mentse azokat a jelentések mappa és a rendszer hozzáadja az irányítópultot. Az irányítópultok kapcsolatos további információkért lásd: [irányítópultokkal kulcs költség metrikákat tekinthet meg](dashboards.md).
+Dashboards in Cloudy provide a high-level view of reports. Dashboards are made up of widgets and each widget is essentially a report thumbnail. When you [customize reports](understanding-cost-reports.md#save-and-schedule-reports), you save them to My Reports and they're added to the dashboard. For more information about dashboards, see [View key cost metrics with dashboards](dashboards.md).
 
-## <a name="budget-information-in-reports"></a>A jelentésekben költségvetési információk
+## <a name="budget-information-in-reports"></a>Budget information in reports
 
-Cloudyn-jelentések megjelenítése a költségvetési információk után manuálisan létrehozott egy. Így a jelentések nem jelennek meg a költségvetési információk költségvetési létrehozásáig. További információkért lásd: [költségvetés beállítások](#budget-management-settings).
+Many Cloudyn reports show budget information after you've manually created one. So reports won't show budget information until you create a budget. For more information, see [Budget Management settings](#budget-management-settings).
 
-## <a name="reports-and-reporting-features"></a>Jelentések és a jelentéskészítési szolgáltatások
+## <a name="reports-and-reporting-features"></a>Reports and reporting features
 
-A cloudyn az alábbi jelentések és jelentéskészítési funkciókat.
+Cloudyn includes the following reports and reporting features.
 
-### <a name="cost-navigator-report"></a>A kezelő jelentést költség
+### <a name="cost-navigator-report"></a>Cost Navigator report
 
-A költségeket a kezelő jelentést gyors módja egy irányítópult-nézet használata a számlázási fogyasztás megtekintéséhez. Szűrők és a szervezet költségeinek összesített nézetét mutatja azonnal az alapszintű nézetek egy része van. Költségek dátum szerint jelennek meg. A jelentés kezdeti képet a költségeket jelent, mert nincs olyan rugalmas, vagy, átfogó, mint sok más jelentések vagy egyéni irányítópultokat, Ön hozza létre.
+The Cost Navigator report is a quick way to view your billing consumption using a dashboard view. It has a subset of filters and basic views to immediately show a summarized view of organization's costs. Costs are shown by date. Because the report is intended as an initial view of your costs, it's not as flexible or as comprehensive as many other reports or custom dashboards that you create yourself.
 
-Alapértelmezés szerint a jelentés főbb nézetek megjelenítése:
+By default, major views in the report show:
 
-- Egy munkahét sáv diagram nézet megjelenítése időalapú költségek. Módosíthatja a **dátumtartomány** dátum tartomány sávdiagram módosításához.
-- Szolgáltatás használata a kördiagram kiadásai.
-- Erőforrás kategorizálási címkék, kördiagram alapján.
-- Költség költségelemek kördiagram szerint.
-- Költség összesen dátum szerint a lista nézetben.
-
-### <a name="cost-analysis-report"></a>Költségelemzési jelentés
-
-A Költségelemzési jelentést egy számítási, költséghelyi visszacsatolási és költséghelyi elszámolási, a házirend alapján. Gyűjti a kiválasztott időtartam alatt, a költség az összes lefoglalási szabályokat alkalmazását követően a felhőbeli fogyasztást. Például, számítja ki a költségeket címkék alapján, ismét kiosztja a címkézetlen erőforrások költségeit és szükség esetén osztja ki a fenntartott példányok kihasználtságát.
-
-A szabályzatok beállítása [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) szolgálnak a költségek elemzése az jelentés és az eredmények majd mostantól a nyers adatoktól a felhő gyártója által biztosított információkkal.
-
-Hogyan számítják az ebben a jelentésben? A Cloudyn szolgáltatás biztosítja, hogy foglalási megőrzi minden társított fiók biztonságának alkalmazásával _affinitás fiók_. Affinitás biztosítja, hogy egy fiókot, amely nem használja egy adott szolgáltatás nem rendelkezik a szolgáltatás számára lefoglalt költségek. A költségek abban, hogy a fiók továbbra is az adott fiókban, és nem számítja ki a foglalási szabályzatok által elhatárolt. Előfordulhat például, hogy öt összekapcsolt fiókok. Ha csak a tárolási szolgáltatások használatához három a majd csak a tárolási szolgáltatások költsége van lefoglalva a három fiókot a címkék között.
-
-A költségelemzés jelentésben használja:
-
-- A szervezet jóváírás és költséghelyi visszacsatolási kiszámítása
-- Az összes a költségek kategorizálása
-- Jeleníti meg a teljes telepítés a egy megadott időkereten összesített nézetet.
-- A költségmodell létrehozott szabályzatok alapján címke kategóriák nézet költségeket.
-
-A Költségelemzési jelentést használata:
-
-1. A dátumtartományok kijelölésével.
-2. Adja hozzá a címkéket, igény szerint.
-3. Csoportok hozzáadása.
-4. Válassza ki a korábban létrehozott költségmodellt.
-
-### <a name="cost-over-time-report"></a>Időalapú költségek jelentése
-
-Idő a jelentés felett költségeit a költséglefoglalási eredmények a time series jeleníti meg. Lehetővé teszi, hogy látni fogja a trendeket, és a szabálytalanságok észleléséhez a központi telepítésben. Lényegében egy meghatározott időszakban elosztott költségeit jeleníti meg. A jelentés tartalmazza a fő közreműködőkkel, beleértve a folyamatos költségeket és a egy kiválasztott időszakban fordított fenntartott példány egyszeri díjak. Házirendek beállítása [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) ebben a jelentésben szerepel.
-
-Az időalapú költségeket tartalmazó jelentés használja:
-
-- Módosítások megtekintéséhez az idő függvényében, és milyen hatású módosítja egy napig (vagy dátumtartomány) a következő.
-- Költségek elemzése egy adott példányt az idő függvényében.
-- Megismerheti miért volt egy adott példányt egy költség növelését.
-
-Az időalapú költségeket tartalmazó jelentés használata:
-
-1. A dátumtartományok kijelölésével.
-2. Adja hozzá a címkéket, igény szerint.
-3. Csoportok hozzáadása.
-4. Válassza ki a korábban létrehozott költségmodellt.
-5. Válassza ki a tényleges költségek vagy az amortizált költségek.
-6. Döntse el, hogy foglalási szabályok alkalmazása a nyers adatok nézete számlázási nézetre, vagy a újraszámítja a költségek nézet.
-
-### <a name="actual-cost-analysis-report"></a>Tényleges költségek elemzése – jelentés
-
-A tényleges költségelemzés jelentésben szolgáltató költségeket a nem módosított előfizetésekben. A fő közreműködőkkel, beleértve a folyamatos költségeket és egyszeri díjak jeleníti meg.
-
-A jelentés segítségével az előfizetések költségadatok megtekintéséhez. A jelentésben, az Azure-előfizetések jelennek meg **fióknév** és **fiók száma**. **Kapcsolódó fiókok** AWS előfizetések megjelenítése. A nézetben per előfizetés költségeit, az egyes fiókok számára egy bontása a **csoportok**, válassza ki az előfizetést, amely rendelkezik típusát.
-
-A tényleges költségelemzés jelentésben használja:
-
-- Elemezheti és a egy megadott időszakban töltött nyers szolgáltató költségek figyelése.
-- Egy küszöbérték-értesítés ütemezése.
-- Elemezheti a fiókokat és entitásokat, módosítás nélküli költségeit.
-
-### <a name="actual-cost-over-time-report"></a>Tényleges időalapú költségek jelentése
-
-A tényleges időalapú költségeket tartalmazó jelentés egy standard szintű elemzési jelentés költség terjesztése egy meghatározott alkalommal feloldási keresztül. A jelentés megjeleníti a költségkeret-beállítási is látni fogja a trendeket, valamint a költségkeret szabálytalanságok észleléséhez az idő függvényében. Ez a jelentés tartalmazza a fő közreműködőkkel, beleértve a folyamatos költségeket és a egy kiválasztott időszakban fordított fenntartott példány egyszeri díjak.
-
-A tényleges időalapú költségeket tartalmazó jelentés használja:
-
-- Tekintse meg a energiaköltségi trendjeinek időbeli alakulása.
-- Szabálytalanságok található költség.
-- Keresse meg a felhőszolgáltatók kapcsolatos összes költséget kapcsolatos kérdések.
-
-### <a name="amortized-cost-reports"></a>Amortizált költségek jelentései
-
-Amortizált költség jelentések linearizált mutat be nem-használat egy készlete alapján, vagy szolgáltatási díjak egyszeri fizetendő költségeket, és azok költségei eloszlatva egyenletesen azok élettartama során. Ha például egyszeri díjak a következők lehetnek:
-
-- Éves támogatási díjak
-- Éves biztonsági összetevő díjak
-- Fenntartott példányok vásárlására díjak
-- Néhány Azure Marketplace-elemek
-
-A számlázási fájlban egyszeri díjak jellemző, ha a szolgáltatás használatalapú kezdő és záró dátum (timestamp) egyenlő értékek találhatók. A Cloudyn szolgáltatás majd felismeri, hogy a rendszer amortizált például egyszeri díjak. Egyéb fogyasztásalapú szolgáltatások igény szerinti használat költségei nem amortizált vannak.
-
-Amortizált költségek jelentései a következők:
-
-- Amortizált költségek elemzése
-- Amortizált költségek időbeli alakulása
+- Cost over time showing a work week bar chart view. You can change the **Date Range** to change date range bar chart.
+- Expenditures by service, using a pie chart.
+- Resource categorization by tags, using a pie chart.
+- Expenditures by cost entities, using a pie chart.
+- Cost total, per date in a list view.
 
 ### <a name="cost-analysis-report"></a>Költségelemzési jelentés
 
-A Költségelemzési jelentést biztosít a felhőbeli fogyasztást és a egy kiválasztott időszakban költségeit. A szabályzatok beállítása a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) használatban vannak a Költségelemzési jelentést.
+The Cost Analysis report is a calculation of showback and chargeback, based on your policy. It aggregates your cloud consumption during a selected time frame, after having applied all allocation rules to your cost. For example, it calculates the costs by tags, reassigns the costs of untagged resources and optionally allocates the utilization of reserved instances.
 
-Hogyan Cloudyn Ez a jelentés kiszámítása?
+The policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in the Cost Analysis report and results are then combined with information from your cloud vendor's raw data.
 
-A Cloudyn biztosítja, hogy a kiosztási integritását, egyes társított fiók megőrzi alkalmazásával _affinitás fiók_. Affinitás biztosítja, hogy egy fiókot, amely egy adott szolgáltatás nem használja még nem rendelkezik a szolgáltatás számára lefoglalt költségek. A költségek azt, hogy a fiók továbbra is az adott fiókban a foglalási szabályzatok nem számítja ki. Előfordulhat például, hogy öt összekapcsolt fiókok. Ha csak a tárolási szolgáltatások használatához három a majd csak a tárolási szolgáltatások költsége van lefoglalva a három fiókot a címkék között.
+How is this report calculated? The Cloudyn service ensures allocation retains the integrity of each linked account by applying _account affinity_. Affinity ensures an account that doesn't use a specific service doesn't have any costs of this service allocated to it. The costs accrued in that account remain in that account and are not calculated by the allocation policies. For example, you might have five linked accounts. If only three of them use storage services, then the cost of storage services is only allocated across tags in the three accounts.
 
-A költségelemzés jelentésben használja:
+Use the Cost Analysis report to:
 
-- Jeleníti meg a teljes telepítés a egy megadott időkereten összesített nézetet.
-- A költségmodell létrehozott szabályzatok alapján címke kategóriák nézet költségeket.
+- Calculate your organization chargeback/showback
+- Categorize all your costs
+- Display an aggregated view of your entire deployment for a specific time frame.
+- View costs by tag categories based on policies created in the cost model.
+
+To use the Cost Analysis report:
+
+1. Select a date range.
+2. Add tags, as needed.
+3. Add groups.
+4. Choose a cost model that you created previously.
 
 ### <a name="cost-over-time-report"></a>Időalapú költségek jelentése
 
-Az időalapú költségeket tartalmazó jelentést a költségkeret-beállítási idővel felismerése érdekében trendek és a szabálytalanságok figyelje meg a központi telepítésben jeleníti meg. Lényegében egy meghatározott időszakban elosztott költségeit jeleníti meg. A jelentés tartalmazza a fő közreműködőkkel, beleértve a folyamatos költségeket és a egy kiválasztott időszakban fordított fenntartott példány egyszeri díjak. Házirendek beállítása [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) ebben a jelentésben szerepel.
+The Cost over Time report displays the results of cost allocation as time series. It allows you to observe trends and detect irregularities in your deployment. It essentially shows costs distributed over a defined period. The report includes your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame. Policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in this report.
 
-Az időalapú költségeket tartalmazó jelentés használja:
+Use the Cost Over Time report to:
 
-- Módosítások megtekintéséhez az idő függvényében, és milyen hatású módosítja egy napig (vagy dátumtartomány) a következő.
-- Költségek elemzése egy adott példányt az idő függvényében.
-- Megismerheti miért volt egy adott példányt egy költség növelését.
+- See changes over time and which influences change from one day (or date range) to the next.
+- Analyze costs over time for a specific instance.
+- Understand why there was a cost increase for a specific instance.
 
-### <a name="custom-charges-report"></a>Egyéni díjak jelentés
+To use the Cost Over Time report:
 
-Vállalati és a CSP-felhasználók gyakran tapasztalhatja magukat a hozzáadott szolgáltatásokat biztosító külső vagy belső ügyfeleiknek, a saját felhő erőforrás-használat mellett. Megadhat új szolgáltatások és az esetleges kedvezményeket, az ügyfél számlázási vagy költséghelyi elszámolási jelentések egyéni sorként hozzáadott egyéni kell fizetni.
+1. Select a date range.
+2. Add tags, as needed.
+3. Add groups.
+4. Choose a cost model that you created previously.
+5. Select actual costs or amortized costs.
+6. Choose whether to apply allocation rules to view raw billing data view or to recalculated cost view.
 
-Egyéni szolgáltatási díjak szolgáltatásokat, amelyek normál esetben nem jelennek meg, szerepel a számlán jelenik meg. Az Ön által létrehozott egyéni díjak ezután költségjelentésben megjelennek.
+### <a name="actual-cost-analysis-report"></a>Actual Cost Analysis report
 
-*Egyéni díjak nem az egyéni díjszabás*. Egyéni díjak listája nem jelenik meg a különböző díjszabás, akkor előfordulhat, hogy lehet díjszabási. Az AWS díjfizetést például jelennek meg ugyanúgy, mint azok díjat számítunk fel.
+The Actual Cost Analysis report shows provider costs with no modifications. It shows your main cost contributors, including ongoing costs and one-time fees.
 
-Egyéni díj létrehozása:
+You can use the report to view cost information for your subscriptions. In the report, Azure subscriptions are shown as **account name** and **account number**. **Linked accounts** show AWS subscriptions. To view per subscription costs, a breakdown for each account, under **Groups**, select the type of subscription that you have.
 
-1. A **egyéni díjak**, kattintson a **új hozzáadása**. A _adjon hozzá új egyéni díj_ párbeszédpanel jelenik meg.
-2. A **szolgáltatónevet**, adja meg a szolgáltató nevét.
-3. A **szolgáltatásnév**, írja be azt a szolgáltatás.
-4. A **leírás**, adjon meg egy leírást a egyéni költség.
-5. A **típus**, adja meg a select **százalékos** és szolgáltatások legördülő menüben válassza ki a szolgáltatások közé tartozik egy egyéni díjak a költségek jelentéseiben.
-6. A **fizetési**válassza, ha egy egyszeri díjat vagy ismétlődő díj a díjat. Egy ismétlődő díjat kell fizetni a díjat, ha Amortized válassza, ha azt szeretné, hogy a díj amortizált kell, és válassza ki a hónapok száma.
-7. A **dátumok**, ha egyszeri van kiválasztva, a **hatályba lépés dátuma**, adja meg a dátumot, a díjat. Ha díjból ismétlődő be van jelölve, adja meg a dátumtartományt, beleértve a kezdő dátum és záró dátumát a díjat.
-8. Az a **entitások fa**, válassza ki az entitásokat, a díj a alkalmazni, és válassza ki a kívánt **a**.
+Use the Actual Cost Analysis report to:
 
-_Egy entitás történő hozzárendelése esetén a díjak, felhasználók nem módosíthatják azokat. Egy rendszergazdának egy fölérendelt entitásba hozzáadott költségek írásvédettek._
+- Analyze and monitor raw provider costs spent during a specified time frame.
+- Schedule a threshold alert.
+- Analyze unmodified costs incurred by your accounts and entities.
 
-Egyéni díjak megtekintése:
+### <a name="actual-cost-over-time-report"></a>Actual Cost Over Time report
 
-Egyéni díjak költségjelentésben megjelennek. A tényleges költségelemzés jelentésben például nyisson meg ezután alatt **bővített szűrők**válassza **önálló**. Ezután szűrjön azokra **egyéni díjak**.
+The Actual Cost Over Time report is a standard cost analysis report distributing cost over a defined time resolution. The report displays spending over time to allow you to observe trends and detect spending irregularities. This report shows your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame.
 
-### <a name="cost-allocation-360"></a>A Cost Allocation 360
+Use the Actual Cost Over Time report to:
 
-Cost Allocation 360 használatával egyéni foglalási modelljeinek költségek hozzárendelése felhasznált felhőalapú erőforrásokhoz. Számos jelentést az egyéni modellek létrehozott egyéni modellek adatainak megjelenítése. És egyes jelentések csak adatok megjelenítése egyéni költségmodell a költséglefoglalási a létrehozása után.
+- See cost trends over time.
+- Find irregularities in cost.
+- Find all cost-related questions related to cloud providers.
 
-Egyéni modellek létrehozásával kapcsolatos további információkért lásd: [oktatóanyag: Költségek kezelése az Cloudyn](tutorial-manage-costs.md).
+### <a name="amortized-cost-reports"></a>Amortized cost reports
 
-### <a name="cost-vs-budget-over-time-report"></a>A Cost vs. Költségvetés időalapú jelentés
+This set of amortized cost reports shows linearized non-usage based service fees, or one-time payable costs and spread their cost over time evenly during their lifespan. For example, one-time fees might include:
 
-A Cost vs. Költségvetés időalapú a jelentés lehetővé teszi a fő közreműködőkkel előirányzott költségvetéssel összehasonlítását. A hozzárendelt költségvetés jelenik meg a jelentésben, hogy a költségvetés (felett vagy alatt/par) használat idővel tekintheti meg. Megjelenítése/elrejtése mezővel, amely a jelentés tetején választhat nézet költség, a költségvetés, a összesített költségeit és a teljes fennmaradó.
+- Annual support fees
+- Annual security component fees
+- Reserved Instances purchase fees
+- Some Azure Marketplace items
 
-### <a name="current-month-projected-cost-report"></a>Aktuális havi előre jelzett költségről szóló jelentés
+In the billing file, one-time fees are characterized when the service consumption start and end dates (timestamp) have equal values. The Cloudyn service then recognizes them as one-time fees that are amortized. Other consumption-based services with on-demand usage costs are not amortized.
 
-Az aktuális havi előre jelzett költségről szóló jelentés az aktuális hónap elejétől számított költség összegzése betekintést nyújt. Ez a jelentés megjeleníti az előző hónap a hónap kezdetétől fogva a költségeket, és az összes az aktuális hónapra előre jelzett költsége. Az aktuális havi előre jelzett költség, hogy a naprakész havi díja, és a egy leképezés a költségek figyelemmel kísérni az elmúlt 30 napban alapján számítjuk.
+Amortized cost reports include:
 
-Az aktuális havi előre jelzett költségről szóló jelentés használja:
+- Amortized cost analysis
+- Amortized cost over time
 
-- Projekt havi díjak szolgáltatás szerint
-- Havi projektköltségek fiók használatával
+### <a name="cost-analysis-report"></a>Költségelemzési jelentés
 
-### <a name="annual-projected-cost-report"></a>Éves előre jelzett költségről szóló jelentés
+The Cost Analysis report provides insight into your cloud consumption and spending during a selected time frame. The policies set in the [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in the Cost Analysis report.
 
-Az éves előre jelzett költségek jelentés éves előre jelzett költségek előző költési trendek alapján megtekintését teszi lehetővé. A következő 12 hónapra előre jelzett költségek átfogó jeleníti meg. A leképezések jönnek létre a következő 12 hónapban extrapolálni alapján a költségeket az elmúlt 30 nap használati trend függvény használatával.
+How does Cloudyn calculate this report?
 
-### <a name="budget-management-settings"></a>Költségvetés felügyeleti beállítások
+Cloudyn ensures that allocation retains the integrity of each linked account by applying _account affinity_. Affinity ensures an account that doesn't use a specific service also doesn't have any costs of this service allocated to it. The costs accrued in that account remain in that account and aren't calculated by the allocation policies. For example, you might have five linked accounts. If only three of them use storage services, then the cost of storage services is only allocated across tags in the three accounts.
 
-Költségvetés felügyeleti a pénzügyi év költségvetési megadását teszi lehetővé.
+Use the Cost Analysis report to:
 
-Egy entitás költségvetési hozzáadása:
+- Display an aggregated view of your entire deployment for a specific time frame.
+- View costs by tag categories based on policies created in the cost model.
 
-1. A költségvetés felügyelet lapon alatt **entitások**, válassza ki az entitást, ahol szeretné létrehozni a költségvetést.
-2. A költségvetési évben válassza ki az év, ahol szeretné létrehozni a költségvetést.
-3. Minden hónapban a költségvetés beállítását majd **mentése**.
+### <a name="cost-over-time-report"></a>Időalapú költségek jelentése
 
-Az éves költségvetés-fájl importálása:
+The Cost Over Time report displays spending over time so you can spot trends and notice irregularities in your deployment. It essentially shows costs distributed over a defined period. The report includes your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame. Policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in this report.
 
-1. Alatt **műveletek**válassza **exportálása** letölteni egy üres CSV-sablont a költségvetés a alapjaként használni.
-2. Töltse ki a költségvetés és a CSV-fájlt, és mentse helyileg.
-3. A **műveletek**válassza **importálás**.
-4. Válassza ki a mentett fájlt, és kattintson a **OK**.
+Use the Cost Over Time report to:
 
-Az elkészült költségvetés alatt exportálhatja egy CSV-fájl **műveletek**válassza **exportálása** letölteni a fájlt.
+- See changes over time and which influences change from one day (or date range) to the next.
+- Analyze costs over time for a specific instance.
+- Understand why there was a cost increase for a specific instance.
 
-Amikor elkészült, költségelemzés jelentésekben és a költségek és az a költségvetés jelenik meg. Költségvetés időalapú jelentést. Költségvetés küszöbértékek alapján jelentéseket is ütemezheti.
+### <a name="custom-charges-report"></a>Custom Charges report
 
-### <a name="azure-resource-explorer-report"></a>Az Azure erőforrás-kezelő jelentés
+Enterprise and CSP users often find themselves providing added services to their external or internal customers, in addition to their own cloud resource consumption. You define custom charges for added services or discounts that are added to customer's billing or chargeback reports as custom line items.
 
-Az Azure Resource Explorer jelentés az Azure-erőforrások rendelkezésre a Cloudyn tömeges listáját jeleníti meg. A hatékony használatot a jelentést, az Azure-fiókokhoz kell bővítette a metrikák engedélyezve. Kiterjesztett metrikák Cloudyn-hozzáférést biztosít az Azure-beli virtuális gépek. További információkért lásd: [kiterjesztett metrikák az Azure-beli virtuális gépek hozzáadása](azure-vm-extended-metrics.md).
+Custom service charges reflect services that aren't normally shown in a bill. The custom charges that you create are then shown in Cost reports.
 
-### <a name="azure-resources-over-time-report"></a>Az Azure erőforrások időalapú jelentés
+*Custom charges aren't custom pricing*. The list of custom charges doesn't show the different rates that you may be charging. For example, AWS billing charges are displayed just as they are charged.
 
-Az Azure erőforrások időalapú jelentés egy adott időszak alatt futó összes erőforrás bontását mutatja. A hatékony használatot a jelentést, az Azure-fiókokhoz kell bővítette a metrikák engedélyezve. Kiterjesztett metrikák Cloudyn-hozzáférést biztosít az Azure-beli virtuális gépek. További információkért lásd: [kiterjesztett metrikák az Azure-beli virtuális gépek hozzáadása](azure-vm-extended-metrics.md).
+To create a custom charge:
 
-### <a name="instance-explorer-report"></a>Példány Explorer jelentés
+1. In **Custom Charges**, click  **Add New**. The _Add New Custom Charge_ dialog box is displayed.
+2. In **Provider Name**, enter the name of the provider.
+3. In **Service Name**, enter the type of service.
+4. In **Description**, add a description for the custom charge.
+5. In **Type**, enter the select  **Percentage** and then in Services dropdown, select the services to include as custom charges in the cost reports.
+6. In **Payment**, select if the charge is a One-Time Fee or Recurring Fee. If the charge is a Recurring Fee, select Amortized if you want the charge to be amortized and select the number of months.
+7. In **Dates**, if a one-time fee is selected, in **Effective Date**, enter the date the charge is paid. If Recurring Fee is selected, enter the date range including start date and the end date for the charge.
+8. In the **Entities tree**, select the entities that you want to apply the charge to and then select **On**.
 
-A példány Explorer jelentés segítségével az eszközök a virtuális gépek különböző metrikákat tekinthet meg. Feltárás konkrét példányok információk megtekintéséhez, mint például a következőket teheti:
-- Példány időközönként fut
-- A kiválasztott időszakban életciklusa
-- Processzorkihasználtság
-- Hálózati bemenet
-- Kimenő adatforgalom
-- Aktív lemezek
+_When charges are assigned to an entity, users can't change them. Charges that are added by an administrator to a parent entity are read-only._
 
-A példány Explorer jelentés a megadott dátumtartományban minden futó időközönként gyűjt, és ennek megfelelően összesíti az adatokat. Megtekintheti a futó időszakok dátumtartományban, bontsa ki a példány. Az egyes példányok költségének kiszámításához a tartomány alapján AWS és az Azure lista díjszabása kiválasztott dátum. Kedvezmények nem. További mezőket adhat hozzá a jelentés megjelenítése/elrejtése mezőkkel.
+To view custom charges:
 
-Példány Explorer jelentés használja:
+Custom charges are shown in Cost reports. For example, open the Actual Cost Analysis report, then under **Extended Filters**, select **Standalone**. Then filter to show **Custom Charges**.
 
-- Gépenként becsült költségek kiszámításához.
-- Hozzon létre teljes listáját, beleértve az összesített futó óra, minden olyan számítógép, amely során egy időtartományt volt aktív.
-- Hozzon létre egy listát felhőszolgáltató vagy a fiók.
-- Számítógépek megtekintése során egy időtartományt leállt, vagy hozza létre.
-- Az összes jelenleg leállított gépek megtekintéséhez.
-- A címkék az egyes gépek megtekintéséhez.
+### <a name="cost-allocation-360"></a>Cost Allocation 360
 
-### <a name="instances-over-time-report"></a>Példányok időalapú jelentés
+You use Cost Allocation 360 to create custom cost allocation models to assign costs to consumed cloud resources. Many reports show information from custom cost models that you've created with custom cost models. And, some reports only show information after you've created a custom cost model with cost allocation.
 
-A példányok időalapú jelentés segítségével láthatja aktív gépek maximális száma minden, a kijelölt időtartományban. Ha a megadott feloldási week vagy month, az eredmények olyan túllépése bármelyik nap a hónapban aktív gépek maximális száma. Válassza ki a jelentésben megjeleníteni kívánt szűrőket a dátumtartományok kijelölésével.
+For more information about creating custom cost models, see [Tutorial: Manage costs by using Cloudyn](tutorial-manage-costs.md).
 
-### <a name="instance-utilization-over-time-report"></a>Példány időalapú felhasználási jelentés
+### <a name="cost-vs-budget-over-time-report"></a>Cost vs. Budget Over Time report
 
-Ez a jelentés az összes példány idővel CPU és memória használata egy bontását mutatja.
+The Cost vs. Budget Over Time report allows you to compare the main cost contributors against your budget. The assigned budget appears in the report so that you can view your (over/under/par) budget consumption over time. Using Show/Hide Fields at the top of the report, you can select to view cost, budget, accumulated cost, and total budget.
 
-### <a name="compute-power-cost-over-time-report"></a>Számítási teljesítmény időalapú költségeket tartalmazó jelentést
+### <a name="current-month-projected-cost-report"></a>Current Month Projected Cost report
 
-A számítási teljesítmény Over Time jelentés alkalmazásonkénti bontásban számítási teljesítményt a megadott dátumtartományban. Más jelentések megjelenítése a gépek vagy a futásidejű órák számát, bár ez a jelentés tartalmazza a processzor-üzemóra, számítási egységek használati óráinak száma vagy GB RAM-MAL óra.
+The Current Month Projected Cost report provides insight into your current month-to-date cost summary. This report displays your costs from the beginning of month, from the previous month, and the total projected cost for the current month. The current month projected cost is calculated as sum of the up-to-date monthly cost and a projection based on the cost monitored in the last 30 days.
 
-A jelentés használja:
+Use the Current Month Projected Cost report to:
 
-- Ellenőrizze a számítási teljesítmény belül egy adott dátumtartományon belül.
-- Nézet a számítási költségek felosztási modellek időpontokat.
+- Project monthly costs by service
+- Project monthly costs by account
 
-Ez a jelentés a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) a meghatározott címkézés és a házirendek a kiválasztott házirend alapján szabályzatokat, az eredmények jelennek meg. Ha nem rendelkezik egy létrehozott házirend, majd eredmények nem jelennek meg.
+### <a name="annual-projected-cost-report"></a>Annual Projected Cost report
 
-### <a name="compute-power-average-cost-over-time-report"></a>Számítási teljesítmény átlagos időalapú költségek jelentése
+The Annual Projected Costs report allows you to view annual projected costs based on previous spending trends. It shows the next 12 months of overall projected costs. The projections are made using a trend function extrapolated over the next 12 months, based on the costs associated with the last 30 days of usage.
 
-Több mint csak az egyes futó gépek költsége megtekintéséhez használhatja a számítási teljesítmény átlagos időalapú költségeket tartalmazó jelentést. A jelentésben a átlagköltség óra. példány, a processzor-üzemóra, a számítási üzemideje (óra) és a GB RAM-MAL óra. A jelentés a hatékonyság érdekében az üzembe helyezés betekintést nyújt.
+### <a name="budget-management-settings"></a>Budget Management settings
 
-Ez a jelentés a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) a meghatározott címkézés és a házirendek a kiválasztott házirend alapján szabályzatokat, az eredmények jelennek meg. Ha nem rendelkezik egy létrehozott házirend, majd eredmények nem jelennek meg.
+Budget Management allows you to set a budget for your fiscal year.
 
-### <a name="s3-cost-over-time-report"></a>S3 időalapú költségeket tartalmazó jelentést
+To add a budget to an entity:
 
-Az S3 időalapú költségeket tartalmazó jelentést bontásban megmutatja az Amazon Simple Storage Service (S3) költség / gyűjtőbe egy adott időszakban az idő függvényében. A jelentés segít a keresse meg a gyűjtőket, amelyek a fő költség-illesztőprogramokat, és megjeleníti a trendek az S3 használat és költségek.
+1. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
+2. In the budget year, select the year where you want to create the budget.
+3. In each month, set your budget and then and click **Save**.
 
-### <a name="s3-distribution-of-cost-report"></a>S3 terjesztési szóló jelentés
+To import a file for the annual budget:
 
-A jelentés segítségével elemezheti a S3 költségeit az elmúlt hónapban a gyűjtőbe, valamint a tárolási osztály alapján. A diagram nézet segítségével állítsa be a láthatósági küszöbérték. Vagy használhatja a táblázatos nézetre részösszegek megtekintéséhez.
+1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
+2. Fill in the CSV file with your budget entries and save it locally.
+3. Under **Actions**, select **Import**.
+4. Select your saved file and then click  **OK**.
 
-### <a name="s3-bucket-properties-report"></a>S3 gyűjtő tulajdonságairól szóló jelentés
+To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
 
-A jelentés segítségével S3 gyűjtő tulajdonságainak megtekintése. A diagram nézet segítségével állítsa be a láthatósági küszöbérték. Vagy használhatja a táblázatos nézetre részösszegek megtekintéséhez.
+When completed, your budget is shown in Cost Analysis reports and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds.
 
-### <a name="rds-instances-over-time-report"></a>A távoli asztali szolgáltatások példányok időalapú jelentés
+### <a name="azure-resource-explorer-report"></a>Azure Resource Explorer report
 
-A jelentés segítségével megtekintheti az összes Amazon relációs adatbázis-szolgáltatás (RDS) példányai a megadott időszakban egy bontása.
+The Azure Resource Explorer report shows a bulk list of all the Azure resources available in Cloudyn. To effectively use the report, your Azure accounts should have extended metrics enabled. Extended metrics provide Cloudyn access to your Azure VMs. For more information, see [Add extended metrics for Azure virtual machines](azure-vm-extended-metrics.md).
 
-### <a name="rds-active-instances-report"></a>A távoli asztali szolgáltatások aktív példány jelentés
+### <a name="azure-resources-over-time-report"></a>Azure Resources Over Time report
 
-A jelentés segítségével elemezheti a távoli asztali szolgáltatások aktív példány. A jelentést bontsa ki a sortételt a további információk megjelenítéséhez.
+The Azure Resources Over Time report shows a breakdown of all resources running over a specific period. To effectively use the report, your Azure accounts should have extended metrics enabled. Extended metrics provide Cloudyn access to your Azure VMs. For more information, see [Add extended metrics for Azure virtual machines](azure-vm-extended-metrics.md).
 
-### <a name="azure-reserved-instances-report"></a>Az Azure fenntartott példányok jelentés
+### <a name="instance-explorer-report"></a>Instance Explorer report
 
-Az Azure Reserved Instances jelentés nyújt minden Azure fenntartott példányok egyetlen nézetben. Ez a jelentés megjeleníti minden egyes, a saját sortételt. A jelentés az adott vásárlás, például a fiókot, amelyet vásárolta, a vásárlás és a példány típusa, és így tovább hátralévő napok száma típus adatait is mutatja. Megjelenítheti vagy elrejtheti a jelentés adatainak megjelenítése/elrejtése mezőkkel.
+The Instance Explorer report is used to view various metrics for assets of your virtual machines. You can drill-into specific instances to view information such as:
+- Instance running intervals
+- Life cycle in the selected period
+- CPU utilization
+- Network input
+- Output traffic
+- Active disks
 
-Használja az Azure Reserved Instances jelentés megtekintése:
+The Instance Explorer report collects all running intervals within the defined date range and aggregates data accordingly. To view each of the running intervals during the date range, expand the instance. The cost of each instance is calculated for the date range selected based on AWS and Azure list prices. No discounts are applied. You can add additional fields to the report using Show/Hide Fields.
 
-- Beszerzés dátuma szerint minden foglalást listája.
-- Amíg le nem jár a fenntartott példányok fennmaradó idő.
-- Egyszeri díjak.
-- A fiókot, amelyet a megvásárolt fenntartott példányokkal, és mikor.
+Use Instance Explorer report to:
 
-### <a name="aws-reserved-instances-report"></a>Az AWS Reserved Instances jelentés
+- Calculate the estimated cost per machine.
+- Create a full list, including aggregated running hours, of all machines that were active during a time range.
+- Create a list by cloud service provider or account.
+- View machines created or terminated during a time range.
+- View all currently stopped machines.
+- View the tags of each machine.
 
-Az AWS Reserved Instances jelentésben egyetlen nézetben mutatja az összes AWS lefoglalt példányokat. Ez a jelentés megjeleníti minden egyes saját sortételt és az adott vásárlás, például a fiókot, amelyet vásárolta, a vásárlás és a példány típusa, és így tovább hátralévő napok száma típus részleteit. Megjelenítheti vagy elrejtheti a jelentés adatainak megjelenítése/elrejtése mezőkkel.
+### <a name="instances-over-time-report"></a>Instances Over Time report
 
-Használja az AWS Reserved Instances jelentés megtekintése:
+Using the Instances Over Time report, you can see the maximum number of machines that were active each during the selected time range. If the defined resolution is by week or month, results are the maximum number of machines active on any given day during that month. Select a date range to select the filters that you want displayed in the report.
 
-- Beszerzés dátuma szerint minden foglalást listája.
-- Amíg le nem jár a fenntartott példányok fennmaradó idő.
-- Egyszeri díjak.
-- Az eredeti vásárlás azonosítója (foglalás azonosítója).
-- A fiókot, amelyet a megvásárolt fenntartott példányokkal és mikor.
+### <a name="instance-utilization-over-time-report"></a>Instance Utilization Over Time report
 
-### <a name="ec2-ri-buying-recommendations-report"></a>A jelentés EC2 fenntartott példány vásárlására vonatkozó javaslatok
+This report shows a breakdown of CPU or memory use over time for all your instances.
 
-Az erőforrás-felhasználás felhő alapját az igény szerinti modellje, ahol erőforrásokat csak akkor, ha a használt használatáért számítunk fel. Nincsenek előzetes kötelezettségvállalás – hogy csak azért fizet, amit ténylegesen használ, amikor ezzel.
+### <a name="compute-power-cost-over-time-report"></a>Compute Power Cost Over Time report
 
-Az AWS-díjszabási modell, a rugalmas számítási (EC2) felhőszolgáltatások alternatívát nyújt – a fenntartott példány (RI). Erről a díjszabási modellről garantálja a felhasználók a kapacitást, amikor szükségük van rá a fenntartott példányok időtartamára. A fenntartott példányok igény szerinti áraihoz képest jelentős kedvezményeket kínál. Cserébe felhasználók hajthatnak végre egy virtuális példány használatára vonatkozó előzetes kötelezettségvállalást. Az előzetes kötelezettségvállalást van kötve egy megadott termékcsalád, a mérete, a rendelkezésre állási zónában (AZ) és az operációs rendszer, a időszakban kötelezettségvállalás (egy vagy három év). A fenntartott példányok lehetővé teszi, hogy hatékonyan jövőbeli kapacitásának megtervezése, valamint parancs számára, így a szolgáltatások használatával kapcsolatos AWS.
+The Compute Power Over Time report provides a breakdown of compute power over a specified date range. Although other reports show the number of running machines or the runtime hours, this report shows Core hours, Compute unit hours, or GB RAM hours.
 
-A fenntartott példányok, amelyek minden előzetes három fizetési beállítások:
+Use the report to:
 
-- Tömeges sum nap 0, a legnagyobb kedvezményeket kínál
-- Nincs előre - található, amely a fenntartott példányok költségeinek fizetős havi részletben a fenntartott példányok időtartama alatt, a legalacsonyabb kedvezményeket kínál
-- Részlegesen előre, mely ¼ –, akkor az ár ½ fizetni meghozni, és a többi havi részletben, és a kedvezményes díjszabás alacsonyabb, de zárja be, minden előzetes díjaival
+- Check compute power within a specified date range.
+- View compute times based on cost allocation models.
 
-A Cloudyn hasznos üzemidejének az egyes gépek kiértékeli az elmúlt 30 napra vonatkozóan. A Cloudyn azt javasolja, hogy a fenntartott példányok vásárlása, ha a gép futtatásához a Hónapjánál az aktuális szinten üzemidő helyett.
+This report is linked to your [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) policies so results are shown based on the defined tagging and policies your selected cost policy. When you don't have a policy created, then results aren't shown.
 
-A jelentés megjeleníti a javaslatokat, a legtöbb pénzt takaríthat meg az évben indoklásának a következőt tartalmazza. A javaslatok javasolni, és cserélje le a fenntartott példányok igény szerinti példányok. A fenntartott példányok közvetlenül a jelentés vásárolhat.
+### <a name="compute-power-average-cost-over-time-report"></a>Compute Power Average Cost Over Time report
 
-Minden lapon teljes jelentésként nyitja meg. Lapok jelentős szakaszai a következők:
+You use the Compute Power Average Cost Over Time report to view more than just the cost of each running machine. The report shows your average cost per instance hour, core hour, compute unit hour, and GB RAM hour. The report provides insight into the efficiency of your deployment.
 
-- **EC2 fenntartott példányok vásárlásának hatását ismertető** – Ez a szakasz szimulálja a különbség a fenntartott példányok igény szerinti vs. Kattintson a **nagyítás**, a teljes EC2 fenntartott példányok vásárlásának hatását ismertető jelentés megtekintéséhez, a szűrők már meg van adva, a javaslat. Ez a jelentés tartalmazza az összes lehetséges a fenntartott példányok vásárlási beszerzési hatását. Módosíthatja a várható átlagos üzemidő megtekintéséhez a mentése való EC2 fenntartott példány megvásárlása lehetséges.
+This report is linked to your [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) policies so results are displayed based on the defined tagging and policies your selected cost policy. When you don't have a policy created, then results aren't shown.
 
-- **Elemzés mentése** – Ez a szakasz tartalmazza a lehetséges megtakarítás érhető el, és a hónap, a megtakarítások actualized vannak, akkor a Cloudyn, ajánlások. A tényleges megtakarítások és a százalékérték mentett pirossal ki vannak emelve.
+### <a name="s3-cost-over-time-report"></a>S3 Cost Over Time report
 
-- **EC2 fenntartott példány típusok összehasonlítása** – Ez a szakasz a megtérülési ráta főbb újdonságai a Cloudyn által ajánlott üzembe helyezési, például az összes releváns lehetőségeit emeli ki. Ebben a jelentésben az eredmények azt feltételezik, hogy a gép fut-e a 100 %-os üzemidő. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
+The S3 Cost Over Time report provides a breakdown of Amazon Simple Storage Service (S3) costs per bucket over time for a specified time frame. The report helps you find the buckets that are your main cost drivers and it shows you trends in your S3 usage and spending.
 
-- **Példányok időalapú** – ebben a szakaszban egy a javaslat, az OnDemand, a fenntartott példányok és a helyszíni társított összes példány áttekintését jeleníti meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
-- **Breakeven pontok** – Ez a szakasz az összes lehetséges ajánlott központi telepítések és a megtérülés és a hónap, a befektetési megtérülés bekövetkezésekor táblázatot jelenít meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
+### <a name="s3-distribution-of-cost-report"></a>S3 Distribution of Cost report
 
-### <a name="ec2-reservations-over-time-report"></a>Időalapú foglalások EC2-jelentés
+Use the report to analyze your S3 cost for the last month by bucket and storage class. You can use the pie chart view to set the visibility threshold. Or, you can use the table view to see subtotals.
 
-A foglalások EC2-é az időalapú jelentés a megvásárolt fenntartott EC2-példányok használatát az állapotát követi nyomon. Beállíthatja a jelentés a feloldás óra, nap vagy hét.
+### <a name="s3-bucket-properties-report"></a>S3 Bucket Properties report
 
-A jelentés használja:
+Use the report to view S3 bucket properties. You can use the pie chart view to set the visibility threshold. Or, you can use the table view to see subtotals.
 
-- Vásárolt használt és nem használt foglalások jelennek meg.
-- Jelenítse meg a megoldás a fenntartott példányok használatának óránként megtekintéséhez óra.
+### <a name="rds-instances-over-time-report"></a>RDS Instances Over Time report
 
-### <a name="savings-over-time-report"></a>Megtakarítás időalapú jelentés
+Use the report to view a breakdown of all Amazon Relational Database Service (RDS) instances running during the specified period.
 
-A megtakarítások időalapú jelentés segítségével megtekintheti a fenntartott példányok, valamint a helyszíni példányok használatával elért megtakarítások. A jelentésben a megtérülési RÁTÁRA, a fenntartott példányok vásárlási eredő idővel érhető el.
+### <a name="rds-active-instances-report"></a>RDS Active Instances report
 
-Szeretné megtekinteni a fenntartott példányok a megtakarítás mértéke, csoport szerint **díjszabási modell** válassza **foglalás**. A fenntartott példányok megtakarítás érhető el, hogy egy adott partner vagy példánytípus megtekintéséhez adja hozzá a megfelelő csoportosítási és a szűrő a fiók vagy a példány típusát.
+Use the report to analyze RDS active instances. In the report, expand the line item to view additional information.
 
-Tekintse meg a helyszíni példányát használja a megtakarítás mértéke, a szűrőt a **díjszabási modell** való **helyszíni**. A jelentés az alapértelmezett szűrő, a fenntartott példányok és kihasználatlan példányoknak.
+### <a name="azure-reserved-instances-report"></a>Azure Reserved Instances report
 
-### <a name="rds-ri-buying-recommendations-report"></a>A távoli asztali szolgáltatások a fenntartott példányok vásárlási javaslatok jelentésében
+The Azure Reserved Instances report provides you with a single view of all your Azure reserved instances. This report displays each purchase as is its own line item. The report also shows details about that purchase such as the account that purchased it, the type of purchase and instance type, days remaining and so on. You can show or hide report data using Show/Hide Fields.
 
-A távoli asztali szolgáltatások a fenntartott példányok vásárlási javaslatok jelentésében a távoli asztali szolgáltatások fenntartott példányok használata helyett az igény szerinti példányok használatát javasolja.
+Use the Azure Reserved Instances report to view:
 
-Minden lapon teljes jelentésként nyitja meg. Lapok jelentős szakaszai a következők:
+- A list of all reservations by purchase date.
+- Time remaining until the RI expires.
+- One-time fees.
+- The account that purchased RIs, and when.
 
-- **A távoli asztali szolgáltatások a fenntartott példányok vásárlásának hatását ismertető** – Ez a szakasz tartalmazza a szimuláció közötti különbség az igény szerinti és a fenntartott példányok. Kattintson a **nagyítás** a teljes a távoli asztali szolgáltatások a fenntartott példányok vásárlásának hatását ismertető jelentés megtekintéséhez, a szűrők már meg van adva, a javaslat. Ez a jelentés lehetővé teszi, hogy az összes lehetséges a fenntartott példányok vásárlási vásárlásának hatását ismertető témakörben talál.  Állítsa be a várt átlagos rendelkezésre állását, és tekintse meg a fenntartott példányok vásárlásával mentése lehetséges.
-- **Elemzés mentése** – Ez a szakasz tartalmazza a lehetséges megtakarítás érhető el, és a hónap, a megtakarítások actualized vannak, akkor a Cloudyn, ajánlások. A tényleges megtakarítások és a százalékérték mentett pirossal ki vannak emelve.
+### <a name="aws-reserved-instances-report"></a>AWS Reserved Instances report
 
-- **A távoli asztali szolgáltatások a fenntartott példányok típusok összehasonlítása** – Ez a szakasz a megtérülési ráta emeli ki, beleértve a vonatkozó beállítások az összes ajánlott üzembe helyezési emeli ki. Ebben a jelentésben az eredmények azt feltételezik, hogy a gép fut-e a 100 %-os üzemidő. Kattintson a **nagyítás** nyissa meg a részletes jelentést a kiválasztott gép.
-- **Példányok időalapú** – ebben a szakaszban egy a javaslat, az OnDemand, a fenntartott példányok és a helyszíni társított összes példány áttekintését jeleníti meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
+The AWS Reserved Instances report provides you with a single view of all AWS reserved instances. This report displays each purchase is its own line item and details about that purchase such as the account that purchased it, the type of purchase and instance type, days remaining and so on. You can show or hide report data using Show/Hide Fields.
 
-- **Breakeven pontok** – Ez a szakasz az összes lehetséges ajánlott központi telepítések és a megtérülés és a hónap, a befektetési megtérülés bekövetkezésekor táblázatot jelenít meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
+Use the AWS Reserved Instances report to view:
 
-### <a name="rds-reservations-over-time-report"></a>A távoli asztali szolgáltatások foglalások időalapú jelentés
+- A list of all reservations by purchase date.
+- Time remaining until the RI expires.
+- One-time fees.
+- Original purchase ID (reservation ID).
+- The account that purchased RIs and when.
 
-A távoli asztali szolgáltatások foglalás időalapú jelentés segítségével a használt és a fel nem használt foglalások egy bontása megtekintheti a megadott időszakban.
+### <a name="ec2-ri-buying-recommendations-report"></a>EC2 RI Buying Recommendations report
 
-### <a name="reserved-instance-purchase-impact-report"></a>Fenntartott példányok vásárlásának hatását ismertető jelentés
+The foundation of cloud resource consumption is the on-demand model, where resources incur cost only when used. There are no up-front commitments — you pay only for what you use, when you use it.
 
-Az EC2-beli fenntartott példányok vásárlásának hatását ismertető jelentés szimulálása a fenntartott példányok költségei és igény szerinti költségek időbeli alakulása teszi lehetővé. Ez segíthet a beszerzési jobb döntéseket hozhat. Állítsa be a szűrőket, például átlagos futtatási ideje, időszak, platform és másokat, hogy tájékozott döntéseket hozhat a fenntartott példányok vásárlási meghatározásakor.
+AWS offers an alternative pricing model for its Elastic Compute Cloud (EC2) services — the reserved instance (RI). This pricing model guarantees users the capacity whenever they need it for the duration of the RI. The RI offers significant price discounts over on-demand pricing. In return, users make an upfront commitment for the use of a virtual instance. The commitment is bound to a specific family, size, availability zone (AZ), and operating system, over the period of commitment (one or three years). The RI allows AWS to efficiently plan future capacity, as well as to gain customer commitment to using its services.
 
-### <a name="cost-effective-sizing-recommendations-report"></a>Költséghatékony méretezési javaslatokat tartalmazó jelentés
+Three payment options for RIs, which are all-upfront:
 
-A Futtatás költséghatékony méretezési javaslatokat tartalmazó jelentés eredményét mutatja az AWS és az Azure. Az AWS-felhasználók esetén a fenntartott példányok vásárlási kell figyelembe venni, és az eredmények nem tartalmazzák a fenntartott példány futtató gépek. Ez a jelentés azokat az alacsony kihasználtságú érdemes becsléseim-példányok listáját tartalmazza. Az elmúlt 30 nap használatának és teljesítményének adatait ajánlásokat alapul. Az egyes javaslatok becsléseim a jelöltek az indoklást becsléseim, és megtekintheti a részleteket mutató hivatkozást listáját és a teljesítmény-mérőszámokat a példány van. És amikor vonatkozó javaslatok javasolja újabb generációs példánytípusok módosításával.
+- Bulk sum at day 0, offering the highest discount
+- No upfront - in which the cost of RI is paid in monthly installments over the duration of the RI, offering the lowest discount
+- Partial upfront, in which ¼ - ½ of the price is paid up front, and the rest in monthly installments, with a discount rate that is lower, but close, to the all-upfront rate
 
-Példány azonosítóját, amely ebből a jelentésből becsléseim javasolt listája nem tölthető le. A Példányazonosítók letöltéséhez használja az összes méretezési javaslatokat tartalmazó jelentés.
+Cloudyn evaluates the uptime of each machine for the last 30 days. Cloudyn recommends buying RIs when it is more cost-effective to run the machine with an RI at the current uptime level.
 
-Vegye figyelembe a következő downsizing példa:
+The report shows the justification for its recommendations to save the most money over the year. The recommendations suggest replacing on-demand instances with RIs. You can purchase RIs directly from the report.
 
-Hogy hat m3.xlarge futó példányát tekintve. A Cloudyn elemzés azt mutatja, hogy azokat az öt CPU-kihasználtság alacsony. Javasolt csökkenteni őket.
+Each tab opens as a full report. Notable sections in tabs include:
 
-A költségekre gyakorolt hatás a költségekre gyakorolt hatás számítja. Ebben a példában a vonal elem kibontásával láthatja az aktuális egy m3.xlarge példány (Linux/Unix) díjszabása a költségeket az óránkénti egységszám és a egy m3.large példány (Linux/Unix) költségek 0.266 $0.133 $ / óra. Tehát éves költsége, 100 %-ot futtató öt m3.xlarge példányok 11,651 $. Az éves költség, 100 %-ot futtató öt m3.large példányok 5,825 $. A lehetséges megtakarítás $5,825.
+- **EC2 RI Purchase Impact** - This section provides a simulation of the difference between on-demand vs reserved instances. Click  **Zoom in**, to see the full EC2 RI Purchase Impact report with the filters already defined to your recommendation. This report shows the purchase impact of all potential RI purchases. You can adjust the expected average uptime to see the potential saving when you purchase EC2 Reserved Instances.
 
-A költséghatékony méretezési a indoklások megtekintéséhez kattintson a + bontsa ki a sortételt. A **részletek**:
+- **Saving Analysis** - This section provides the potential savings achieved and the month the savings are actualized when following Cloudyn recommendations. The actual savings and the percent saved are highlighted in red.
 
-- A **javaslat indoklása** szakasz jelenít meg a jelenlegi üzemelő példány és ajánlott, hogy becsléseim példányainak számát.
-- A **költségekre gyakorolt hatás** szakasz azt határozza meg, lehetséges megtakarítás kiszámítása jelenít meg.
-- A **éves szinten lehetséges megtakarításokat** szakasz éves szinten lehetséges megtakarításokat jelenik meg, ha a Cloudyn ajánlás szerint downsizing.
+- **EC2 RI Type Comparison** - This section emphasizes the ROI highlights of Cloudyn's recommended deployment, including all relevant options. The results in this report assume that the machine is running at 100% uptime. Click **Zoom In**  to open the detailed report.
 
-### <a name="all-sizing-recommendations-report"></a>Az összes méretezési javaslatokat tartalmazó jelentés
+- **Instances Over Time** - This section displays a breakdown of all instances associated with the recommendation, OnDemand, Reserved Instances, and Spot. Click  **Zoom In**  to open the detailed report.
+- **Breakeven Points** - This section displays a table of all the possible recommended deployments and the ROI and the month when the ROI occurs. Click  **Zoom In** to open the detailed report.
 
-Ez a jelentés azokat az alacsony kihasználtságú érdemes becsléseim-példányok listáját tartalmazza. A javaslatok az elmúlt 30 nap használatának és teljesítményének adatait alapulnak. Az egyes javaslatok megtekintheti a részleteket és a példány teljesítmény-mérőszámait.
+### <a name="ec2-reservations-over-time-report"></a>EC2 Reservations Over Time report
 
-Ha AWS lefoglalt példányokat vásárolt, ez a jelentés tartalmazza az összes futó példányát, többek között a fenntartott példányok futtató példányok eredményeket.
+The EC2 Reservations Over Time report tracks the status of your usage of your purchased EC2 RIs. You can set the resolution of the report to hour, day, or week.
 
-Az összes méretezési javaslatok jelentés használja:
+Use the report to:
 
-- A deduplikációra becsléseim összes példány listája.
-- Exportálja a példány nevét és azonosítóját tartalmazó jelentés listáját.
+- Display reservations purchased that are used and not used.
+- Drill in to the resolution by hour to see RI usage per hour.
 
-Egy adott példányt a javaslat részleteinek megtekintéséhez kattintson a **+** részleteinek kibontásához. A javaslat részletei szakaszban kínál a javaslat áttekintése.
+### <a name="savings-over-time-report"></a>Savings Over Time report
 
-A **címkék** szakasz a címke kulcsok és értékek listáját jeleníti meg a kijelölt példányhoz. A bal oldali panelen címkék segítségével szűrheti a szakaszt.
+Use the Savings Over Time report to view the savings achieved using reserved instances as well as spot instances. The report shows the ROI achieved over time resulting from RI purchases.
 
-A **CPU-kihasználtság** a témakör a Processzor kihasználtsága az elmúlt hónapban, a példány naponta.
+To view savings from RIs, group the results by **Price Model** and select **Reservation**. To view RI savings achieved by a specific account or instance type, add the relevant grouping and filter to the account or instance type.
 
-Kattintson a diagramra a részletes elemzést, és nyissa meg a példány CPU keresztül idő a jelentés a példányok kibontásának megtekintéséhez.
+To see savings from Spot instance use, filter the **Price Model** to **Spot**. The default filter for this report is RI and Spot Instances.
 
-- Használat **mezők megjelenítése/elrejtése** hozzáadni vagy eltávolítani mezőket: Időbélyeg, átlagos CPU, minimális Processzor, a CPU maximális száma.
-- Használat **dátumtartomány** adjon meg egy dátum vagy dátumtartomány és a egy adott InstanceID részletesen.
-- Használat **bővített szűrők** megjelenítése az összes vagy egy adott példány azonosítója
-- Kattintson a **nagyítás** nyissa meg a CPU-kihasználtság jelentést
+### <a name="rds-ri-buying-recommendations-report"></a>RDS RI Buying Recommendations report
 
-Ha a példány nem lett figyelt 30 napig, hiányos adatok jelenik meg.
+RDS RI Buying Recommendations report recommends when to use RDS RIs instead of on-demand instances.
 
-A **memória kihasználtsága (GB)** szakasz ismerteti a felhasznált memória. AWS – a felhasználóknak memória metrikák nem érhetők el automatikusan, és hozzá kell adni egy példány AWS keresztül. Az AWS EC2-példányok memória metrikáinak engedélyezheti költségek.
+Each tab opens as a full report. Notable sections in tabs include:
 
-A **memória kihasználtsága (%)** szakasz a használt memória százalékos jelenít meg.
+- **RDS RI Purchase Impact** - This section provides a simulation of the difference between on demand vs reserved instances. Click  **Zoom in** to see the full RDS RI Purchase Impact report with the filters already defined to your recommendation. This report allows you to see the purchase impact of all potential RI purchases.  You can adjust the expected average uptime and see the potential saving by purchasing RIs.
+- **Saving Analysis** – This section provides the potential savings achieved and the month the savings are actualized when following Cloudyn recommendations. The actual savings and the percent saved are highlighted in red.
 
-A **bemeneti adatforgalmát** szakasz a kiválasztott példány a hálózati forgalmat, átlagos és maximális, idővel jelenít meg egy pillanatkép. Tekintse meg a dátumot és a maximális forgalom arra az időpontra a sorok fölé. Kattintson a **nagyítás** bemeneti a hálózati forgalom jelentés megnyitásához.
+- **RDS RI Type Comparison** - This section emphasizes the ROI highlights of the recommended deployment, including all relevant options. The results in this report assume that the machine is running at 100% uptime. Click **Zoom In** to open the detailed report for the selected machine.
+- **Instances Over Time** – This section displays a breakdown of all instances associated with the recommendation, OnDemand, Reserved Instances, and Spot. Click **Zoom In** to open the detailed report.
 
-A **hálózati kimenő forgalom** szakasz a hálózati kimenő forgalom a kiválasztott példány pillanatképét jeleníti meg. Tekintse meg a dátumot és a maximális forgalom arra az időpontra a sorok fölé. Kattintson a **nagyítás** nyissa meg a hálózati kimenő forgalom jelentést.
+- **Breakeven Points** – This section displays a table of all the possible recommended deployments and the ROI and the month when the ROI occurs. Click **Zoom In** to open the detailed report.
 
-### <a name="instance-metrics-explorer-report"></a>Példány Metrikaböngésző jelentés
+### <a name="rds-reservations-over-time-report"></a>RDS Reservations Over Time report
 
-A példány Metrikaböngésző jelentés a több felhőre kiterjedő teljesítmény metrikákat példányonként jeleníti meg. Használja a jelentés megtekintéséhez, amelyek vagy kevésbé használt Processzor, memória és hálózati mérőszám küszöbértékén alapuló.
+Use the RDS Reservation Over Time report to view a breakdown of both your used and unused reservations during the specified period.
 
-Egy példány a több felhőre kiterjedő teljesítmény megtekintése:
+### <a name="reserved-instance-purchase-impact-report"></a>Reserved Instance Purchase Impact report
 
-1. A **dátumtartomány**, amelyekhez teljesítményét szeretné megtekinteni a dátumtartományok kijelölésével.
-2. A **címkék**, válassza ki a megtekinteni kívánt címkéket.
-3. A **szűrők**, válassza ki a jelentésben megjeleníteni kívánt szűrőket.
-4. A **bővített szűrők**, módosítsa a jelentés küszöbértékeinek:
-    - Átlagos CPU
-    - CPU maximális száma
-    - Átlagos memória
-    - Maximális memória
-5. A **bővített szűrők**, kattintson a **megjelenítése** majd válassza ki a példányok megjelenítéséhez.
+The EC2 RI Purchase Impact report allows you to simulate reserved instance cost versus on-demand cost over time. It can help you make better purchasing decisions. Adjust the filters such as average runtime, term, platform, and others to make informed decisions when you consider RI purchases.
 
-Egy adott példányt metrikák megtekintése idővel:
+### <a name="cost-effective-sizing-recommendations-report"></a>Cost-Effective Sizing Recommendations report
 
-- Nyissa meg a példány Metrikaböngésző, jelentést, és kattintson a **+** részletek megtekintéséhez.
+The Cost-Effective Sizing Recommendations report provides results for AWS and Azure. For AWS users, your RI purchases are taken into consideration and the results don't include machines running as RI's. This report provides a list of underutilized instances that are candidates to downsize. Recommendations are based on your usage and performance data from the last 30 days. In each recommendation is a list of candidates to downsize, the justification to downsize, and a link to view complete details and performance metrics of the instance. And when relevant recommendations advise changing to newer generation instance types.
 
-### <a name="rds-sizing-recommendations-report"></a>A távoli asztali szolgáltatások méretezési javaslatokat tartalmazó jelentés
+You can't download the list of instance IDs that are recommended to downsize from this report. To download Instance IDs, use the All Sizing Recommendations report.
 
-A távoli asztali szolgáltatások méretezési javaslatokat tartalmazó jelentés a távoli asztali szolgáltatások méretezésének javaslatokkal optimalizálhatja a felhőbeli használati biztosít. Azt a deduplikációra becsléseim kihasználatlan példányok listáját jeleníti meg. A Cloudyn, ajánlások az elmúlt 30 napban használatának és teljesítményének adatait alapulnak. Javaslatok fióknév, régió, példánytípus és állapot szerint szűrheti.
+Consider the following downsizing example:
 
-### <a name="sizing-threshold-manager-report"></a>Méretezési küszöbérték Manager-jelentés
+You have six m3.xlarge running instances. Cloudyn analysis shows that five of them have low CPU utilization. Consider downsizing them.
 
-A Cloudyn beépített méretezési javaslatok pontos méretezési javaslatokat biztosít egy összetett algoritmus használatával számítjuk ki. Módosíthatja a küszöbértékek downsizing javaslatokat.
+In Cost Impact, the cost impact is calculated. In this example, by expanding the line item, you can see the current price for one m3.xlarge instance (Linux/Unix) costs $0.266 per hour and one m3.large instance (Linux/Unix) costs $0.133 per hour. So, the annual cost is $11,651 for five m3.xlarge instances running at 100% utilization. The annual cost is $5,825 for five m3.large instances running at 100% utilization. The potential savings are $5,825.
 
-Manuálisan módosíthatja a küszöbérték méretezési javaslatok:
+To view cost-effective sizing justifications, click + to expand the line item. In **Details**:
 
-1. A méretezési küszöbértéket kezelő állítsa be az alábbi küszöbértékek, tetszés szerint:
-    - Átlagos CPU %
-    - Maximális százalékos processzorhasználatról
-    - Átlagos memória %-át
-    - Maximális memória %-át
-3. Kattintson a **alkalmaz** módosítások mentéséhez.
-4. Módosítások azonnal érvénybe lépnek az összes javaslatot.
+- The **Recommendation Justification** section displays the current deployment and the number of instances recommended to downsize.
+- The **Cost Impact** section displays the calculation used to determine potential savings.
+- The **Potential Annual Savings** section displays the potential annual savings when downsizing per Cloudyn's recommendation.
 
-Visszaállítása az alapértelmezett küszöbértékek:
+### <a name="all-sizing-recommendations-report"></a>All Sizing Recommendations report
 
-- A méretezési küszöbérték Managerben, kattintson a **alapértelmezett értékek visszaállítása**.
+This report provides a list of underutilized instances that are candidates to downsize. The recommendations are based on your usage and performance data from the last 30 days. In each recommendation, you can view complete details and performance metrics of the instance.
 
-### <a name="compute-instance-types-report"></a>Számítási példányok típusai jelentés
+If you've purchased AWS reserved instances, this report contains results for all running instances, including instances running as RIs.
 
-A példányok típusai jelentés használja:
+Use the All Sizing Recommendations report to:
 
-- Példány nézettípusok szolgáltatás, család, API-név és nevét.
-- Megtekintheti például a Processzor, a ECU, RAM, és a hálózati.
+- See a list of all your instances that are candidates to downsize.
+- Export a report list containing Instance Names and IDs.
 
-Használhat **keresési** konkrét elemek kereséséhez.
+To view recommendation details for a specific Instance, click **+** to expand the details. The Recommendation Details section provides an overview of the recommendation.
 
-## <a name="next-steps"></a>További lépések
+The **Tags** section provides the list of the tag keys and values for the selected instance. Use Tags in the left pane to filter the section.
 
-- Megtudhatja, hogyan kell használnia, beleértve a testreszabása vagy mentéséhez és a jelentések ütemezése, olvassa el a [ismertetése költségjelentéseket](understanding-cost-reports.md).
-- Ismerje meg a Cloudyn foglalt irányítópultokon és a saját egyéni irányítópultokat hozhat létre, lásd: hogyan [irányítópultokkal kulcs költség metrikákat tekinthet meg](dashboards.md).
+The **CPU Utilization** section provides the CPU utilization for the instance over the last month, by day.
+
+Click the graph to drill down and open the Instance CPU Over Time Report to see a breakdown of the instances.
+
+- Use **Show/Hide Fields** to add or remove fields: Timestamp, Avg CPU, Min CPU, Max CPU.
+- Use **Date Range** to enter a date or date range and drill into a specific InstanceID.
+- Use **Extended Filters** to show all or a specific Instance ID
+- Click **Zoom in** to open the CPU Utilization Report
+
+If the instance hasn't been monitored for 30 days, incomplete data is shown.
+
+The **Memory Utilization (GB)** section provides information about the memory utilized. For AWS users, memory metrics are not automatically available and need to be added per instance through AWS. AWS charges you to enable memory metrics for EC2 instances.
+
+The **Memory Utilization (%)** section displays the percent of memory used.
+
+The **Network Input Traffic** section displays a snapshot over time of the network traffic, average, and maximum, for the selected instance. Hover over the lines to see the date and maximum traffic for that time. Click **Zoom In** to open the Network Input Traffic Report.
+
+The **Network Output Traffic** section displays a snapshot of the network output traffic for the selected instance. Hover over the lines to see the date and maximum traffic for that time. Click **Zoom In** to open the Network Output Traffic report.
+
+### <a name="instance-metrics-explorer-report"></a>Instance Metrics Explorer report
+
+The Instance Metrics Explorer report shows cross-cloud performance metrics per instance. Use the report to view instances that are over or under-utilized based on CPU, memory, and network metric thresholds.
+
+To view cross-cloud performance per instance:
+
+1. In **Date Range**, select a date range for which you want to view performance.
+2. In **Tags**, select any tags that you want to view.
+3. In **Filters**, select the filters you want to display in the report.
+4. In **Extended Filters**, adjust the report thresholds for:
+    - Avg CPU
+    - Max CPU
+    - Avg Memory
+    - Max Memory
+5. In **Extended Filters**, click **Show** and then select the type of instances to display.
+
+To view a specific instance's metrics over time:
+
+- Go to the Instance Metrics Explorer report and click **+** to view details.
+
+### <a name="rds-sizing-recommendations-report"></a>RDS Sizing Recommendations report
+
+The RDS Sizing Recommendations report provides RDS sizing recommendations to optimize your cloud usage. It provides a list of underutilized instances that are candidates to downsize. Cloudyn recommendations are based on the usage and performance data of the last 30 days. You can filter recommendations by Account Name, Region, Instance Type, and Status.
+
+### <a name="sizing-threshold-manager-report"></a>Sizing Threshold Manager report
+
+Cloudyn's built-in sizing recommendations are calculated using a complex algorithm to provide accurate sizing suggestions. You can adjust the thresholds for downsizing recommendations.
+
+To manually adjust threshold sizing recommendations:
+
+1. In Sizing Threshold Manager, adjust the following thresholds as you like:
+    - Average CPU %
+    - Maximum CPU %
+    - Average Memory %
+    - Maximum Memory %
+3. Click **Apply** to save changes.
+4. Changes apply immediately to all your recommendations.
+
+To restore default thresholds:
+
+- In Sizing Threshold Manager, click **Restore Defaults**.
+
+### <a name="compute-instance-types-report"></a>Compute Instance Types report
+
+Use the Instance Types report to:
+
+- View instance types by Service, Family, API Name, and Name.
+- View details such as CPU, ECU, RAM, and Network.
+
+You can use **Search** to find specific line items.
+
+## <a name="next-steps"></a>Következő lépések
+
+- Learn about how to use reports, including how to customize or save and schedule reports, see [Understanding cost reports](understanding-cost-reports.md).
+- Learn about the dashboards included in Cloudyn and about how to create your own custom dashboards, see [View key cost metrics with dashboards](dashboards.md).

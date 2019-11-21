@@ -1,149 +1,149 @@
 ---
-title: Migrálás Nagyvállalati Szerződésról a Microsoft Customer Agreement API-khoz – Azure | Microsoft Docs
-description: Ez a cikk segít megérteni a Microsoft Nagyvállalati Szerződés (EA) Microsoft-ügyféli szerződésre való áttelepítésének következményeit.
+title: Migrate from Enterprise Agreement to Microsoft Customer Agreement APIs - Azure | Microsoft Docs
+description: This article helps you understand the consequences of migrating a Microsoft Enterprise Agreement (EA) to a Microsoft Customer Agreement.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: ee4b2196240ceff1351b7ea310d9660ed613d075
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8ecb00800d017c771375189c4719ba05b1934e76
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152076"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230068"
 ---
-# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrálás Nagyvállalati Szerződésról a Microsoft Customer Agreement API-khoz
+# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrate from Enterprise Agreement to Microsoft Customer Agreement APIs
 
-Ez a cikk segítséget nyújt az adatstruktúra, az API és az egyéb rendszerintegrációs különbségek megismeréséhez Nagyvállalati Szerződés (EA) és a Microsoft Customer Agreement (MCA) fiókok között. A Azure Cost Management mindkét fióktípus esetében támogatja az API-kat. A folytatás előtt tekintse át a Microsoft ügyfél-szerződés beállítása című cikk [telepítési számlázási fiókját](../billing/mca-setup-account.md) .
+This article helps you understand the data structure, API, and other system integration differences between Enterprise Agreement (EA) and Microsoft Customer Agreement (MCA) accounts. Azure Cost Management supports APIs for both account types. Review the [Setup billing account for](../billing/mca-setup-account.md) Microsoft Customer Agreement article before continuing.
 
-A meglévő EA-fiókkal rendelkező szervezeteknek az MCA-fiók beállításával együtt kell áttekinteniük ezt a cikket. Korábban egy EA-fiók megújításához szükséges néhány minimális munka, amely egy régi regisztrációból egy újat helyez át. Az MCA-fiókra való Migrálás azonban további erőfeszítést igényel. A további erőfeszítés az alapul szolgáló számlázási alrendszer változásai miatt történik, ami hatással van az összes Cost-related API-ra és szolgáltatási ajánlatra.
+Organizations with an existing EA account should review this article in conjunction with setting up an MCA account. Previously, renewing an EA account required some minimal work to move from an old enrollment to a new one. However, migrating to an MCA account requires additional effort. Additional effort is because of changes in the underlying billing subsystem, which affect all cost-related APIs and service offerings.
 
-## <a name="mca-apis-and-integration"></a>MCA API-k és integráció
+## <a name="mca-apis-and-integration"></a>MCA APIs and integration
 
-Az MCA API-k és az új integráció lehetővé teszi a következőket:
+MCA APIs and new integration allow you to:
 
-- Az API-k teljes rendelkezésre állása natív Azure API-kkal.
-- Több számla konfigurálása egyetlen számlázási fiókban.
-- Egy kombinált API-t érhet el az Azure-szolgáltatások használatáról, a harmadik féltől származó piactér használatáról és a piactéren vásárolt szolgáltatásokról.
-- Az Azure Cost Management használatával megtekintheti a számlázási profilok (ugyanazokat a regisztrációkat) közötti költségeket.
-- Hozzáférés az új API-khoz a költségek megjelenítéséhez, értesítést kaphat, ha a költségek meghaladják az előre meghatározott küszöbértékeket, és automatikusan exportálják a nyers
+- Have complete API availability through native Azure APIs.
+- Configure multiple invoices in a single billing account.
+- Access a combined API with Azure service usage, third-party Marketplace usage, and Marketplace purchases.
+- View costs across billing profiles (the same as enrollments) using Azure Cost Management.
+- Access new APIs to show costs, get notified when costs exceed predefined thresholds, and export raw data automatically.
 
-## <a name="migration-checklist"></a>Áttelepítési ellenőrzőlista
+## <a name="migration-checklist"></a>Migration checklist
 
-A következő elemek segítenek az MCA API-kra való áttérésben.
+The following items help you transition to MCA APIs.
 
-- Ismerkedjen meg az új [Microsoft ügyfél-szerződés számlázási fiókjával](../billing/billing-mca-overview.md).
-- Határozza meg, hogy mely API-kat használja, és hogy melyek a következő szakaszban vannak lecserélve.
-- Ismerkedjen meg [Azure Resource Manager REST API](/rest/api/azure)-kkal.
-- Ha még nem használ Azure Resource Manager API-kat, [regisztrálja az ügyfélalkalmazás az Azure ad](/rest/api/azure/#register-your-client-application-with-azure-ad)-ben.
-- Frissítse a programozási kódokat az [Azure ad-hitelesítés használatára](/rest/api/azure/#create-the-request).
-- Bármely programozási kód frissítése az EA API-hívások MCA API-hívásokkal való lecseréléséhez.
-- A hibakezelés frissítése új hibakódok használatára.
-- További szükséges műveletekhez tekintse át a további integrációs ajánlatokat, például a Cloudyn és a Power BI.
+- Familiarize yourself with the new [Microsoft Customer Agreement billing account](../billing/billing-mca-overview.md).
+- Determine which APIs you use and see which ones are replaced in the following section.
+- Familiarize yourself with [Azure Resource Manager REST APIs](/rest/api/azure).
+- If you're not already using Azure Resource Manager APIs, [register your client app with Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad).
+- Update any programming code to [use Azure AD authentication](/rest/api/azure/#create-the-request).
+- Update any programming code to replace EA API calls with MCA API calls.
+- Update error handling to use new error codes.
+- Review additional integration offerings, like Cloudyn and Power BI, for other needed action.
 
-## <a name="ea-apis-replaced-with-mca-apis"></a>Az EA API-k az MCA API-kkal helyettesíthetők
+## <a name="ea-apis-replaced-with-mca-apis"></a>EA APIs replaced with MCA APIs
 
-Az EA API-k egy API-kulcsot használnak a hitelesítéshez és az engedélyezéshez. Az MCA API-k az Azure AD-hitelesítést használják.
+EA APIs use an API key for authentication and authorization. MCA APIs use Azure AD authentication.
 
 | Rendeltetés | EA API | MCA API |
 | --- | --- | --- |
-| Egyenleg és kreditek | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft. Billing/billingAccounts/billingProfiles/availableBalanceussae |
-| Használat (JSON) | [/UsageDetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft. fogyasztás/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Használat (CSV) | [/UsageDetails/Download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/UsageDetails/Submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft. fogyasztás/usageDetails/1. Letöltés](/rest/api/consumption/usagedetails)<sup></sup> |
-| Marketplace-használat (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft. fogyasztás/usageDetails/1. Letöltés](/rest/api/consumption/usagedetails)<sup></sup> |
-| Számlázási időszakok | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft. Billing/billingAccounts/billingProfiles/számlák |
-| Árlista | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft. Billing/billingAccounts/billingProfiles/árlista/alapértelmezett/letöltési formátum = JSON|CSV Microsoft. Billing/billingAccounts/.../billingProfiles/.../számlák/... /pricesheet/default/Download formátum = JSON|CSV Microsoft. Billing/billingAccounts/.. /billingProfiles/.. /providers/Microsoft.Consumption/pricesheets/download  |
-| Foglalásvásárlások | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft. Billing/billingAccounts/billingProfiles/Transactions |
-| Foglalási javaslatok | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations) [/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) [SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft. fogyasztás/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| Foglalás használata | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft. fogyasztás/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft. fogyasztás/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Balance and credits | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
+| Usage (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Usage (CSV) | [/usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Marketplace Usage (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Billing periods | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
+| Árlista | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
+| Foglalásvásárlások | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
+| Reservation recommendations | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
+| Reservation usage | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
-<sup>1</sup> az Azure szolgáltatás és a harmadik féltől származó piactér használata a [használati adatok API](/rest/api/consumption/usagedetails)-val érhető el.
+<sup>1</sup> Azure service and third-party Marketplace usage are available with the [Usage Details API](/rest/api/consumption/usagedetails).
 
-A következő API-k érhetők el az MCA számlázási fiókjaihoz:
+The following APIs are available to MCA billing accounts:
 
 | Rendeltetés | Microsoft Customer Agreement (MCA) API |
 | --- | --- |
-| Számlázási fiókok<sup>2</sup> | Microsoft. Billing/billingAccounts |
-| <sup>2</sup> . számlázási profilok | Microsoft. Billing/billingAccounts/billingProfiles |
-| Számla<sup>2</sup> . szakaszában | Microsoft. Billing/billingAccounts/invoiceSections |
-| Számlák | Microsoft. Billing/billingAccounts/billingProfiles/számlák |
-| Számlázási előfizetések | {scope}/billingSubscriptions |
+| Billing accounts<sup>2</sup> | Microsoft.Billing/billingAccounts |
+| Billing profiles<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
+| Invoice sections<sup>2</sup> | Microsoft.Billing/billingAccounts/invoiceSections |
+| Számlák | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
+| Billing subscriptions | {scope}/billingSubscriptions |
 
-<sup>2</sup> API-k olyan objektumok listáját adják vissza, amelyek hatókörök, ahol a Azure Portal és az API-k Cost Management tapasztalatai működnek. További információ a Cost Management hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
+<sup>2</sup> APIs return lists of objects, which are scopes, where Cost Management experiences in the Azure portal and APIs operate. For more information about Cost Management scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-Ha a meglévő EA API-kat használja, frissítenie kell őket az MCA számlázási fiókjainak támogatásához. Az alábbi táblázat más integrációs változásokat mutat be:
+If you use any existing EA APIs, you need to update them to support MCA billing accounts. The following table shows other integration changes:
 
-| Rendeltetés | Régi ajánlat | Új ajánlat |
+| Rendeltetés | Old offering | New offering |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft-fogyasztási bepillantást](/power-bi/desktop-connect-azure-consumption-insights) tartalmazó tartalomkezelő csomag és összekötő | [Microsoft Azure Consumption Insights Power bi alkalmazás](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) -és [Azure consumption Insights-összekötő](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) content pack and connector | [Microsoft Azure Consumption Insights Power BI app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) and [Azure Consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
-## <a name="apis-to-get-balance-and-credits"></a>API-k egyenleg és kreditek beszerzéséhez
+## <a name="apis-to-get-balance-and-credits"></a>APIs to get balance and credits
 
-A [Get Balance Summary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) API havi összegzést biztosít:
+The [Get Balance Summary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) API gives you a monthly summary of:
 
 - Egyenlegek
-- Új vásárlások
-- Az Azure Marketplace szolgáltatási díjai
+- New purchases
+- Azure Marketplace service charges
 - Adjustments (Módosító tételek)
-- Szolgáltatási kereten túli díjak
+- Service overage charges
 
-Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request).
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-A Get Balance Summary API-t a Microsoft. Billing/billingAccounts/billingProfiles/availableBalance API váltja fel.
+The Get Balance Summary API is replaced by the Microsoft.Billing/billingAccounts/billingProfiles/availableBalance API.
 
-A rendelkezésre álló egyenleg API-val elérhető egyenlegek lekérése:
+To get available balances with the Available Balance API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
 
-## <a name="apis-to-get-cost-and-usage"></a>A költségeket és a használatot szolgáló API-k
+## <a name="apis-to-get-cost-and-usage"></a>APIs to get cost and usage
 
-A következő API-kkal napi bontásban veheti igénybe az Azure-szolgáltatások használatát, a harmadik féltől származó piactér-használatot és az egyéb piactér-vásárlási költségeket. A következő különálló API-kat egyesítjük az Azure-szolgáltatások és a harmadik féltől származó piactér-használat tekintetében. A régi API-kat a [Microsoft. fogyasztás/usageDetails](/rest/api/consumption/usagedetails) API váltja fel. Hozzáadja a Piactéri vásárlásokat, amelyek korábban csak a egyenleg összegzése dátumig voltak láthatók.
+Get a daily breakdown of costs from Azure service usage, third-party Marketplace usage, and other Marketplace purchases with the following APIs. The following separate APIs were merged for Azure services and third-party Marketplace usage. The old APIs are replaced by the [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails) API. It adds Marketplace purchases, which were previously only shown in the balance summary to date.
 
-- [Használati adatok lekérése/Letöltés](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [Használat részleteinek/elküldésének lekérése](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [Használat részleteinek/UsageDetails beolvasása](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [Használat részleteinek/usagedetailsbycustomdate beolvasása](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [Marketplace áruházbeli díj/marketplacecharges beolvasása](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
-- [Marketplace áruházbeli díj/marketplacechargesbycustomdate beolvasása](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Get usage detail/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Get usage detail/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Get usage detail/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Get usage detail/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Get marketplace store charge/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Get marketplace store charge/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
 
-Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request).
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-Az összes korábbi API-t a felhasználási/használati adatok API váltja fel.
+All the preceding APIs are replaced by the Consumption/Usage Details API.
 
-A használati adatok API-val történő beszerzése:
+To get usage details with the Usage Details API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
 
-A használati adatok API, mint az összes Cost Management API, több hatókörben is elérhető. A számlázott költségek esetében, ahogyan azt hagyományosan a regisztrációs szinten kapja, használja a számlázási profil hatókörét.  További információ a Cost Management hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
+The Usage Details API, as with all Cost Management APIs, is available at multiple scopes. For invoiced costs, as you would traditionally receive at an enrollment level, use the billing profile scope.  For more information about Cost Management scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-| Type (Típus) | AZONOSÍTÓ formátuma |
+| Type (Típus) | ID format |
 | --- | --- |
 | Számlázási fiók | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Számlázási profil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
 | Előfizetés | `/subscriptions/{subscriptionId}` |
 | Erőforráscsoport | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
-A következő querystring paraméterek használatával frissítheti a programozási kódokat.
+Use the following querystring parameters to update any programming code.
 
-| Régi paraméterek | Új paraméterek |
+| Old parameters | New parameters |
 | --- | --- |
 | `billingPeriod={billingPeriod}` | Nem támogatott |
 | `endTime=yyyy-MM-dd` | `endDate=yyyy-MM-dd` |
 | `startTime=yyyy-MM-dd` | `startDate=yyyy-MM-dd` |
 
-A válasz törzse is megváltozott.
+The body of the response also changed.
 
-Régi válasz törzse:
+Old response body:
 
 ```
 {
@@ -153,7 +153,7 @@ Régi válasz törzse:
 }
 ```
 
-Új válasz törzse:
+New response body:
 
 ```
 {
@@ -168,144 +168,144 @@ Régi válasz törzse:
 }
 ```
 
-A használati rekordok tömbjét tartalmazó tulajdonságnév módosult az adatokról az _értékekre_. Minden olyan rekord, amely a részletes tulajdonságok egyszerű listáját használja. Azonban minden rekord mostantól minden részletet a _Tulajdonságok_nevű beágyazott tulajdonságban, a címkék kivételével. Az új struktúra konzisztens más Azure API-kkal. Egyes tulajdonságok nevei módosultak. A következő táblázat a megfelelő tulajdonságokat tartalmazza.
+The property name containing the array of usage records changed from data to _values_. Each record used to have a flat list of detailed properties. However, each record now all details are now in a nested property named _properties_, except for tags. The new structure is consistent with other Azure APIs. Some property names have changed. The following table shows corresponding properties.
 
-| Régi tulajdonság | Új tulajdonság | Megjegyzések |
+| Old property | New property | Megjegyzések |
 | --- | --- | --- |
-| accountId | – | Az előfizetés létrehozója nincs nyomon követve. Használja a invoiceSectionId (ugyanaz, mint a departmentId). |
-| AccountNameAccountOwnerId és AccountOwnerEmail | – | Az előfizetés létrehozója nincs nyomon követve. Használja a invoiceSectionName (ugyanaz, mint a departmentName). |
+| AccountId | – | The subscription creator isn't tracked. Use invoiceSectionId (same as departmentId). |
+| AccountNameAccountOwnerId and AccountOwnerEmail | – | The subscription creator isn't tracked. Use invoiceSectionName (same as departmentName). |
 | AdditionalInfo | additionalInfo | &nbsp;  |
-| ChargesBilledSeparately | isAzureCreditEligible | Vegye figyelembe, hogy ezek a tulajdonságok ellentétekkel rendelkeznek. Ha a isAzureCreditEnabled értéke igaz, a ChargesBilledSeparately hamis lenne. |
+| ChargesBilledSeparately | isAzureCreditEligible | Note that these properties are opposites. If isAzureCreditEnabled is true, ChargesBilledSeparately would be false. |
 | ConsumedQuantity | quantity | &nbsp; |
-| ConsumedService | consumedService | A pontos karakterlánc-értékek eltérőek lehetnek. |
+| ConsumedService | consumedService | Exact string values might differ. |
 | ConsumedServiceId | None | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
-| Dátum-és usageStartDate | dátum | &nbsp;  |
-| Nap | None | A nap elemzése a dátumtól kezdve. |
-| DepartmentId | invoiceSectionId | A pontos értékek eltérnek. |
-| DepartmentName | invoiceSectionName | A pontos karakterlánc-értékek eltérőek lehetnek. Szükség esetén adja meg a számlázási szakaszokat a részlegek egyeztetéséhez. |
-| ExtendedCost és Cost | costInBillingCurrency | &nbsp;  |
+| Date and usageStartDate | dátum | &nbsp;  |
+| Nap | None | Parses day from date. |
+| DepartmentId | invoiceSectionId | Exact values differ. |
+| DepartmentName | invoiceSectionName | Exact string values might differ. Configure invoice sections to match departments, if needed. |
+| ExtendedCost and Cost | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| Ismétlődő díj | None | &nbsp;  |
+| Is Recurring Charge | None | &nbsp;  |
 | Földrajzi egység | location | &nbsp;  |
-| MeterCategory | meterCategory | A pontos karakterlánc-értékek eltérőek lehetnek. |
-| MeterId | meterId | A karakterláncok pontos értékei eltérnek. |
-| MeterName | meterName | A pontos karakterlánc-értékek eltérőek lehetnek. |
-| MeterRegion | meterRegion | A pontos karakterlánc-értékek eltérőek lehetnek. |
-| MeterSubCategory | meterSubCategory | A pontos karakterlánc-értékek eltérőek lehetnek. |
-| Hónap | None | A hónap elemzése az aktuális dátumtól. |
-| Csomag neve | None | Használja a közzétevő neve és a productOrderName. |
+| MeterCategory | meterCategory | Exact string values might differ. |
+| MeterId | meterId | Exact string values differ. |
+| MeterName | meterName | Exact string values might differ. |
+| MeterRegion | meterRegion | Exact string values might differ. |
+| MeterSubCategory | meterSubCategory | Exact string values might differ. |
+| Hónap | None | Parses month from date. |
+| Csomag neve | None | Use publisherName and productOrderName. |
 | OfferId | None | &nbsp;  |
 | Order Number | None | &nbsp;  |
-| PartNumber | None | Az árak egyedi azonosításához használja a meterId és a productOrderName. |
+| PartNumber | None | Use meterId and productOrderName to uniquely identify prices. |
 | Plan Name | productOrderName | &nbsp;  |
 | Termék | Termék |   |
-| ProductId | productId | A karakterláncok pontos értékei eltérnek. |
+| ProductId | productId | Exact string values differ. |
 | Publisher Name | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |
-| Erőforrás GUID azonosítója | meterId | A karakterláncok pontos értékei eltérnek. |
+| ResourceGuid | meterId | Exact string values differ. |
 | ResourceLocation | resourceLocation | &nbsp;  |
 | ResourceLocationId | None | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
 | ServiceAdministratorId | – | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
 | ServiceInfo2 | serviceInfo2 | &nbsp;  |
-| ServiceName | meterCategory | A pontos karakterlánc-értékek eltérőek lehetnek. |
-| ServiceTier | meterSubCategory | A pontos karakterlánc-értékek eltérőek lehetnek. |
+| ServiceName | meterCategory | Exact string values might differ. |
+| ServiceTier | meterSubCategory | Exact string values might differ. |
 | StoreServiceIdentifier | – | &nbsp;  |
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
-| Címkék | tags | A címkék tulajdonság a gyökérszintű objektumra vonatkozik, nem a beágyazott tulajdonságok tulajdonságra. |
-| UnitOfMeasure | unitOfMeasure | A karakterláncok pontos értékei eltérnek. |
+| Címkék | tags | The tags property applies to root object, not to the nested properties property. |
+| UnitOfMeasure | unitOfMeasure | Exact string values differ. |
 | usageEndDate | dátum | &nbsp;  |
-| Év | None | Az év elemzésének dátuma. |
-| új | billingCurrency | A díjszabáshoz használt pénznem. |
-| új | billingProfileId | A számlázási profil egyedi azonosítója (megegyezik a beléptetéssel). |
-| új | billingProfileName | A számlázási profil neve (megegyezik a beléptetéssel). |
-| új | chargeType | Az Azure-szolgáltatások használatának, a piactér használatának és a vásárlásoknak az elkülönítésére szolgál. |
-| új | invoiceId | A számla egyedi azonosítója. Üres a jelenlegi, a nyitott hónapban. |
-| új | publisherType | A beszerzésekhez tartozó közzétevő típusa. Üres a használathoz. |
-| új | serviceFamily | A vásárlás típusa. Üres a használathoz. |
-| új | servicePeriodEndDate | A megvásárolt szolgáltatás befejező dátuma. |
-| új | servicePeriodStartDate | A megvásárolt szolgáltatás kezdő dátuma. |
+| Év | None | Parses year from date. |
+| (new) | billingCurrency | Currency used for the charge. |
+| (new) | billingProfileId | Unique ID for the billing profile (same as enrollment). |
+| (new) | billingProfileName | Name of the billing profile (same as enrollment). |
+| (new) | chargeType | Use to differentiate Azure service usage, Marketplace usage, and purchases. |
+| (new) | invoiceId | Unique ID for the invoice. Empty for the current, open month. |
+| (new) | publisherType | Type of publisher for purchases. Empty for usage. |
+| (new) | serviceFamily | Type of purchase. Empty for usage. |
+| (new) | servicePeriodEndDate | End date for the purchased service. |
+| (new) | servicePeriodStartDate | Start date for the purchased service. |
 
-## <a name="billing-periods-api-replaced-by-invoices-api"></a>Számlázási időszakok API lecserélve a számlák API-val
+## <a name="billing-periods-api-replaced-by-invoices-api"></a>Billing Periods API replaced by Invoices API
 
-Az MCA számlázási fiókjai nem használnak számlázási időszakokat. Ehelyett a számlákon a költségek hatókörét használják meghatározott számlázási időszakokra. A [Számlázási időszakok API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) -t a számlák API váltja fel. Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request).
+MCA billing accounts don't use billing periods. Instead, they use invoices to scope costs to specific billing periods. The [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) is replaced by the Invoices API. All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-Számlák beszerzése a számlák API-val:
+To get invoices with the Invoices API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
 
-## <a name="price-sheet-apis"></a>Árlista API-k
+## <a name="price-sheet-apis"></a>Price Sheet APIs
 
-Ez a szakasz a meglévő árlista-API-kat ismerteti, és javaslatokat tartalmaz a Microsoft Customer-szerződések árlista API-jának áthelyezéséhez. Emellett ismerteti a Microsoft Customer-szerződések díjszabási API-ját, valamint az árlista mezőinek leírását. A [vállalati beszerzési árlista](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) és a [nagyvállalati számlázási időszakok](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) API-k helyébe a Microsoft Customer-szerződések (Microsoft. Billing/billingAccounts/BillingProfiles/árlista) árlista-API-jának helyére kerül. Az új API a JSON-és CSV-formátumokat is támogatja aszinkron REST-formátumokban. Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request).
+This section discusses existing Price Sheet APIs and provides recommendations to move to the Price Sheet API for Microsoft Customer Agreements. It also discusses the Price Sheet API for Microsoft Customer Agreements and explains fields in the price sheets. The [Enterprise Get price sheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) and [Enterprise Get billing periods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) APIs are replaced by the Price Sheet API for Microsoft Customer Agreements (Microsoft.Billing/billingAccounts/billingProfiles/pricesheet). The new API supports both JSON and CSV formats, in asynchronous REST formats. All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-### <a name="billing-enterprise-apis"></a>Számlázási vállalati API-k
+### <a name="billing-enterprise-apis"></a>Billing Enterprise APIs
 
-A számlázási vállalati API-k vállalati beléptetéssel lettek felhasználva, hogy árat és számlázási időszakot kapjanak. A hitelesítés és az engedélyezés Azure Active Directory webes jogkivonatok használatával.
+You used Billing Enterprise APIs with Enterprise enrollments to get price and billing period information. Authentication and authorization used Azure Active Directory web tokens.
 
-A megadott nagyvállalati beléptetésre vonatkozó díjszabás és a számlázási időszak API-k beszerzése:
+To get applicable prices for the specified Enterprise Enrollment with the Price Sheet and Billing Period APIs:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
 
-### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>A Microsoft Customer-szerződések árlista API-je
+### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>Price Sheet API for Microsoft Customer Agreements
 
-A Microsoft ügyfél-szerződések árlista API-jával az összes Azure-és piactér-használati szolgáltatás árát megtekintheti. A számlázási profilhoz tartozó díjak a számlázási profilhoz tartozó összes előfizetésre érvényesek.
+Use the Price Sheet API for Microsoft Customer Agreements to view prices for all Azure Consumption and Marketplace consumption services. The prices shown for the billing profile apply to all subscriptions that belong to the billing profile.
 
-Az árlista API-val az összes Azure-beli felhasználási szolgáltatás árlista-adatai CSV formátumban jeleníthetők meg:
+Use the Price Sheet API to view all Azure Consumption services Price Sheet data in CSV format:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
-| UTÁNI | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
+| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
 
-A árlista API-val az összes Azure-beli használati árlista JSON-formátumú adatai megtekinthetők:
+Use the Price Sheet API to view all Azure Consumption services Price Sheet data in JSON format:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
-| UTÁNI | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
+| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-Az API használatával visszaadja a teljes fiók árlista értékét. Ugyanakkor PDF formátumban is lekérheti az árlista tömörített verzióját. Az összefoglalás magában foglalja az Azure-beli felhasználást és a piactér használati szolgáltatásait, amelyek számlázása egy adott számla esetében történik. A számlát a ({invoiceId}) azonosítja, amely megegyezik a számla összefoglaló PDF-fájlokban megjelenő **számla számával** . Íme egy példa.
+Using the API returns the price sheet for the entire account. However, you can also get a condensed version of the price sheet in PDF format. The summary includes Azure Consumption and Marketplace consumption services that are billed for a specific invoice. The invoice is identified by the {invoiceId}, which is the same as the **Invoice Number** shown in the Invoice Summary PDF files. Here's an example.
 
-![Példa a InvoiceId megfelelő számla számát ábrázoló képre](./media/migrate-cost-management-api/invoicesummary.png)
+![Example image showing the Invoice Number that corresponds to the InvoiceId](./media/migrate-cost-management-api/invoicesummary.png)
 
-A számlázási adatok megtekintése az árlista API-val CSV formátumban:
+To view invoice information with the Price Sheet API in CSV format:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
-| UTÁNI | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
+| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-A számlázási adatok megtekintése az árlista API-val JSON formátumban:
+To view invoice information with the Price Sheet API in JSON Format:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
-| UTÁNI | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
+| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-Az aktuálisan nyitott számlázási ciklusban vagy szolgáltatási időszakban a becsült árakat is megtekintheti bármely Azure-beli fogyasztási vagy piactér-használati szolgáltatáshoz.
+You can also see estimated prices for any Azure Consumption or Marketplace consumption service in the current open billing cycle or service period.
 
-A fogyasztói szolgáltatások becsült árainak az árlista API-val való megtekintése CSV formátumban:
+To view estimated prices for consumption services with the Price Sheet API in CSV format:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
-| UTÁNI | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
+| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-A fogyasztási szolgáltatások becsült árának megtekintése az árlista API-val JSON formátumban:
+To view estimated prices for consumption services with the Price Sheet API in JSON format:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
-| UTÁNI | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
+| POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-A Microsoft Customer Agreement árlista API-jai *ASZINKRON REST API*-k. Az API-k válaszai megváltoztak a régebbi szinkron API-kkal. Az API-válasz törzse is megváltozott.
+The Microsoft Customer Agreement Price Sheet APIs are *asynchronous REST APIs*. The responses for the APIs changed from the older synchronous APIs. The body of the API response also changed.
 
-#### <a name="old-response-body"></a>Régi válasz törzse
+#### <a name="old-response-body"></a>Old response body
 
-Példa a szinkron REST API válaszra:
+Here's an example of the synchronous REST API response:
 
 ```
 [
@@ -324,9 +324,9 @@ Példa a szinkron REST API válaszra:
     ]
 ```
 
-#### <a name="new-response-body"></a>Új válasz törzse
+#### <a name="new-response-body"></a>New response body
 
-Az API-k támogatják az [Azure Rest aszinkron](../azure-resource-manager/resource-manager-async-operations.md) formátumot. Hívja meg az API-t a GET használatával, és a következő választ kapja:
+The APIs support the [Azure REST asynchronous](../azure-resource-manager/resource-manager-async-operations.md) format. Call the API using GET and you receive the following response:
 
 ```
 No Response Body
@@ -334,7 +334,7 @@ No Response Body
 HTTP Status 202 Accepted
 ```
 
-A rendszer a következő fejléceket küldi el a kimenet helyére:
+The following headers are sent with the location of the output:
 
 ```
 Location:https://management.azure.com/providers/Microsoft.Consumption/operationresults/{operationId}?sessiontoken=XZDFSnvdkbkdsb==
@@ -347,7 +347,7 @@ OData-EntityId: {operationId}
 
 ```
 
-Kérjen meg egy másik hívást a helyhez. A GET hívásra adott válasz ugyanaz, amíg a művelet el nem éri a befejezési vagy a meghibásodási állapotot. Ha elkészült, a GET Call (hívás fogadása) helyre küldött válasz a letöltési URL-címet adja vissza. Ugyanúgy, mint a művelet végrehajtásakor. Például:
+Make another GET call to the location. The response to the GET call is the same until the operation reaches a completion or failure state. When completed, the response to the GET call location returns the download URL. Just as if the operation was executed at the same time. Például:
 
 ```
 HTTP Status 200
@@ -363,188 +363,188 @@ HTTP Status 200
 }
 ```
 
-Az ügyfél lekéréses hívást is végezhet a `Azure-AsyncOperation` értékkel. A végpont a művelet állapotát adja vissza.
+The client can also make a GET call for the `Azure-AsyncOperation`. The endpoint returns the status for the operation.
 
-Az alábbi táblázat a régebbi Enterprise Get árlista API mezőit mutatja be. Magában foglalja a Microsoft Customer-szerződések új árlista megfelelő mezőit:
+The following table shows fields in the older Enterprise Get price sheet API. It includes corresponding fields in the new price sheet for Microsoft Customer Agreements:
 
-| Régi tulajdonság | Új tulajdonság | Megjegyzések |
+| Old property | New property | Megjegyzések |
 | --- | --- | --- |
-| billingPeriodId  | _Nem alkalmazható_ | Nem alkalmazható. A Microsoft Customer-szerződések esetében a számla és a hozzá tartozó árlista a billingPeriodId fogalmát váltotta fel. |
+| billingPeriodId  | _Not applicable_ | Not applicable. For Microsoft Customer Agreements, the invoice and associated price sheet replaced the concept of billingPeriodId. |
 | meterId  | meterId | &nbsp;  |
-| unitOfMeasure  | unitOfMeasure | A pontos karakterlánc-értékek eltérőek lehetnek. |
-| includedQuantity  | includedQuantity | Nem alkalmazható a Microsoft ügyfél-szerződések szolgáltatásaira. |
-| PartNumber  | _Nem alkalmazható_ | Ehelyett használja a productOrderName (ugyanaz, mint a offerId) és a meterid kombinációját. |
-| unitPrice  | unitPrice | Az egység ára a Microsoft ügyfél-szerződésekben felhasznált szolgáltatásokra vonatkozik. |
-| currencyCode  | pricingCurrency | A Microsoft ügyfél-szerződések díjszabása az árképzési pénznemben és a számlázási pénznemben történik. A currencyCode megfelel a Microsoft pricingCurrency. |
-| OfferId | productOrderName | A OfferId helyett használhatja a productOrderName, de nem ugyanaz, mint a OfferId. A productOrderName és a mérő azonban meghatározza a meterId és a OfferID-hez kapcsolódó Microsoft-ügyfél-szerződések díjszabását a régi regisztrációk során. |
+| unitOfMeasure  | unitOfMeasure | Exact string values might differ. |
+| includedQuantity  | includedQuantity | Not applicable for services in Microsoft Customer Agreements. |
+| partNumber  | _Not applicable_ | Instead, use a combination of productOrderName (same as offerId) and meterid. |
+| unitPrice  | unitPrice | Unit price is applicable for services consumed in Microsoft Customer Agreements. |
+| currencyCode  | pricingCurrency | Microsoft Customer Agreements have price representations in pricing currency and billing currency. The currencyCode corresponds to the pricingCurrency in Microsoft Customer Agreements. |
+| offerId | productOrderName | Instead of OfferId, you can use productOrderName but isn't the same as OfferId. However, productOrderName and meter determine pricing in Microsoft Customer Agreements related to meterId and Offerid in legacy enrollments. |
 
-## <a name="consumption-price-sheet-api-operations"></a>Felhasználási árlista API-műveletei
+## <a name="consumption-price-sheet-api-operations"></a>Consumption Price Sheet API operations
 
-Nagyvállalati szerződések esetében a subscriptionId vagy számlázási időszak alapján a használati árlista API-t [lekérdezheti](/rest/api/consumption/pricesheet/get) és [lekérheti számlázási időszakra](/rest/api/consumption/pricesheet/getbybillingperiod) vonatkozó műveletek alapján. Az API Azure Resource Management-hitelesítést használ.
+For Enterprise Agreements, you used the Consumption Price Sheet API [Get](/rest/api/consumption/pricesheet/get) and [Get By Billing Period](/rest/api/consumption/pricesheet/getbybillingperiod) operations for a scope by subscriptionId or a billing period. The API uses Azure Resource Management authentication.
 
-Az árlista API-val rendelkező hatókörhöz tartozó árlista-információk lekérése:
+To get the Price Sheet information for a scope with the Price Sheet API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-Az árlista-információk számlázási időszakonkénti beszerzése az árlista API-val:
+To get Price Sheet information by billing period with the Price Sheet API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-A fenti API-végpontok helyett használja a következőt a Microsoft ügyfél-szerződésekhez:
+Instead of the above API endpoints, use the following ones for Microsoft Customer Agreements:
 
-**Árlista API a Microsoft Customer-szerződésekhez (aszinkron REST API)**
+**Price Sheet API for Microsoft Customer Agreements (asynchronous REST API)**
 
-Ez az API a Microsoft ügyfél-szerződésekhez kapcsolódik, és további attribútumokat is biztosít.
+This API is for Microsoft Customer Agreements and it provides additional attributes.
 
-**Számlázási profil hatóköréhez tartozó árlista egy számlázási fiókban**
+**Price Sheet for a Billing Profile scope in a Billing Account**
 
-Ez az API a meglévő API. Frissítve lett a számlázási profilhoz tartozó árlista megadására egy számlázási fiókban.
+This API is the existing API. It was updated to provide the price sheet for a billing profile in a billing account.
 
-## <a name="price-sheet-for-a-scope-by-billing-account"></a>Egy hatókörre vonatkozó árlista számlázási fiók alapján
+## <a name="price-sheet-for-a-scope-by-billing-account"></a>Price Sheet for a scope by billing account
 
-Azure Resource Manager hitelesítést akkor használja a rendszer, amikor a regisztrációs hatókörbe beolvassa az árlistát a számlázási fiókban.
+Azure Resource Manager authentication is used when you get the Price Sheet at the enrollment scope in a billing account.
 
-Az árlista beszerzése egy számlázási fiókban a beléptetési fiókban:
+To get the Price Sheet at the enrollment account in a billing account:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-Microsoft-ügyfél szerződés esetén használja a következő szakaszban található információkat. Ez biztosítja a Microsoft ügyfél-szerződésekhez használt mezőtulajdonságokat.
+For a Microsoft Customer Agreement, use the information in the following section. It provides the field properties used for Microsoft Customer agreements.
 
-### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Számlázási profil hatóköréhez tartozó árlista egy számlázási fiókban
+### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Price Sheet for a billing profile scope in a billing account
 
-A frissített árlista a Számlázási fiók API-val CSV formátumban kapja meg az árlistát. Az MCA számlázási profiljának hatókörében lévő árlista beszerzése:
+The updated Price Sheet by billing account API gets the Price Sheet in CSV format. To get the Price Sheet at the billing profile scope for an MCA:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-Az EA regisztrációs hatókörében az API-válasz és a tulajdonságok azonosak. A tulajdonságok ugyanahhoz az MCA-tulajdonsághoz tartoznak.
+At the EA's enrollment scope, the API response and properties are identical. The properties correspond to the same MCA properties.
 
-A [Azure Resource Manager árlista API](/rest/api/consumption/pricesheet) -k régebbi tulajdonságai és ugyanazok az új tulajdonságok a következő táblázatban találhatók.
+The older properties for [Azure Resource Manager Price Sheet APIs](/rest/api/consumption/pricesheet) and the same new properties are in the following table.
 
-| A régi Azure Resource Manager árlista API-tulajdonsága  | Új Microsoft Customer Agreement árlista API-tulajdonság   | Leírás |
+| Old Azure Resource Manager Price Sheet API Property  | New Microsoft Customer Agreement Price Sheet API property   | Leírás |
 | --- | --- | --- |
-| Meter ID (Mérési azonosító) | _meterId_ | A fogyasztásmérő egyedi azonosítója. Ugyanaz, mint a meterId. |
-| Fogyasztásmérő neve | meterName | A fogyasztásmérő neve. A mérő az Azure szolgáltatás üzembe helyezhető erőforrását jelöli. |
-| Fogyasztásmérő kategóriája  | szolgáltatás | A fogyasztásmérő osztályozási kategóriájának neve. Ugyanaz, mint a Microsoft ügyfél-szerződés árlista szolgáltatásában. A karakterláncok pontos értékei eltérnek. |
-| Fogyasztásmérő alkategóriája | meterSubCategory | A fogyasztásmérő osztályozási alkategóriájának neve. A magas szintű szolgáltatáskészlet besorolása alapján a szolgáltatás megkülönbözteti a szolgáltatást. Például: alapszintű SQL DB vs standard SQL DB. |
-| Mérési régió | meterRegion | &nbsp;  |
-| Unit (Egység) | _Nem alkalmazható_ | A unitOfMeasure-ből elemezhető. |
+| Meter ID (Mérési azonosító) | _meterId_ | A fogyasztásmérő egyedi azonosítója. Same as meterId. |
+| Meter name | meterName | A fogyasztásmérő neve. Meter represents the Azure service deployable resource. |
+| Meter category  | szolgáltatás | A fogyasztásmérő osztályozási kategóriájának neve. Same as the service in the Microsoft Customer Agreement Price Sheet. Exact string values differ. |
+| Meter subcategory | meterSubCategory | A fogyasztásmérő osztályozási alkategóriájának neve. Based on the classification of high-level feature set differentiation in the service. For example, Basic SQL DB vs Standard SQL DB. |
+| Meter region | meterRegion | &nbsp;  |
+| Unit (Egység) | _Not applicable_ | Can be parsed from unitOfMeasure. |
 | Mértékegység | unitOfMeasure | &nbsp;  |
-| Cikkszám | _Nem alkalmazható_ | A partNumber helyett a productOrderName és a MeterId használatával egyedileg azonosíthatja a számlázási profil árát. A mezők az MCA-számlán jelennek meg az MCA-számlákon lévő partNumber helyett. |
-| Egységár | unitPrice | Microsoft ügyfél-szerződési egység díja. |
-| Pénznemkód | pricingCurrency | A Microsoft ügyfél-szerződések a díjszabási pénznemben és a számlázási pénznemben is érvényesek. A Pénznemkód ugyanaz, mint a Microsoft ügyfél-szerződések pricingCurrency. |
-| Included quantity (Bennefoglalt mennyiség) | includedQuantity | Nem alkalmazható a Microsoft ügyfél-szerződések szolgáltatásaira. Megjelenítés nulla értékkel. |
-|  Ajánlat azonosítója  | productOrderName | A OfferId helyett használja a productOrderName. Nem ugyanaz, mint a OfferId, azonban a productOrderName és a mérőszám határozza meg a Microsoft ügyfél-szerződések díjszabását. Az örökölt regisztrációk meterId és OfferID kapcsolatos. |
+| Part number | _Not applicable_ | Instead of partNumber, use productOrderName and MeterId to uniquely identify the price for a billing profile. Fields are listed on the MCA invoice instead of the partNumber in MCA invoices. |
+| Egységár | unitPrice | Microsoft Customer Agreement unit price. |
+| Currency code | pricingCurrency | Microsoft Customer Agreements represent prices in pricing currency and billing currency. Currency code is the same as the pricingCurrency in Microsoft Customer Agreements. |
+| Included quantity (Bennefoglalt mennyiség) | includedQuantity | Not applicable to services in Microsoft Customer Agreements. Show with values of zero. |
+|  Offer Id  | productOrderName | Instead of OfferId, use productOrderName. Not the same as OfferId, however the productOrderName and meter determine pricing in Microsoft Customer Agreements. Related to meterId and Offerid in legacy enrollments. |
 
-A Microsoft ügyfél-szerződések díja a nagyvállalati szerződéseknek eltérően van definiálva. A nagyvállalati beléptetéssel kapcsolatos szolgáltatások díja egyedi a termékre, a PartNumber, a mérőre és az ajánlatra vonatkozóan. A PartNumber nincs használatban a Microsoft ügyfél-szerződésekben.
+The price for Microsoft Customer Agreements is defined differently than Enterprise agreements. The price for services in the Enterprise enrollment is unique for product, PartNumber, meter, and offer. The PartNumber isn't used in Microsoft Customer Agreements.
 
-A Microsoft ügyfél-szerződés részét képező Azure-használati díj egyedi a productOrderName és a meterId. Ők képviselik a szolgáltatási mérőszámot és a termék tervét.
+The Azure Consumption service price that's part of a Microsoft Customer Agreement is unique for productOrderName and meterId. They represent the service meter and the product plan.
 
-Az árlista és a használat részleteit tartalmazó API használatának egyeztetéséhez használhatja a productOrderName és a meterId.
+To reconcile between the price sheet and the usage in the Usage Details API, you can use the productOrderName and meterId.
 
-A számlázási profil tulajdonosával, közreműködővel, olvasóval és a számlafogadó-kezelő jogosultsággal rendelkező felhasználók letöltheti az árlistát.
+Users that have billing profile owner, contributor, reader, and invoice manager rights can download the price sheet.
 
-Az árlista azon szolgáltatások árait tartalmazza, amelyek díjszabása a használat alapján történik. A szolgáltatások közé tartozik az Azure-felhasználás és a piactér-használat. Az egyes szolgáltatási időszakok végén a legutolsó díj zárolva van, és a rendszer egyetlen szolgáltatási időszakban alkalmazza a használatot. Az Azure-beli felhasználási szolgáltatások esetében a szolgáltatási időszak általában naptári hónap.
+The price sheet includes prices for services whose price is based on usage. The services include Azure consumption and Marketplace consumption. The latest price at the end of each service period is locked and applied to usage in a single service period. For Azure consumption services, the service period is usually a calendar month.
 
-### <a name="retired-price-sheet-api-fields"></a>Kivont árlista API-mezői
+### <a name="retired-price-sheet-api-fields"></a>Retired Price Sheet API fields
 
-A következő mezők vagy nem érhetők el a Microsoft Customer Agreement árlista API-jai vagy azonos mezőkkel.
+The following fields are either not available in Microsoft Customer Agreement Price Sheet APIs or have the same fields.
 
-|Kivont mező| Leírás|
+|Retired field| Leírás|
 |---|---|
-| billingPeriodId | Nem alkalmazható. Az MCA InvoiceId felel meg. |
-| OfferId | Nem alkalmazható. Az MCA productOrderName felel meg. |
-| meterCategory  | Nem alkalmazható. Az MCA szolgáltatásnak felel meg. |
-| egység | Nem alkalmazható. A unitOfMeasure-ből elemezhető. |
-| currencyCode | Ugyanaz, mint a pricingCurrency az MCA-ben. |
-| meterLocation | Ugyanaz, mint a meterRegion az MCA-ben. |
-| partNumber partnumber | Nem alkalmazható, mert a cikkszám nem szerepel az MCA-számlákon. A partnumber helyett használja a meterId és a productOrderName kombinációt az árak egyedi azonosításához. |
-| totalIncludedQuantity | Nem alkalmazható. |
-| pretaxStandardRate  | Nem alkalmazható. |
+| billingPeriodId | No applicable. Corresponds to InvoiceId for MCA. |
+| offerId | Not applicable. Corresponds to productOrderName in MCA. |
+| meterCategory  | Not applicable. Corresponds to Service in MCA. |
+| unit | Not applicable. Can be parsed from unitOfMeasure. |
+| currencyCode | Same as the pricingCurrency in MCA. |
+| meterLocation | Same as the meterRegion in MCA. |
+| partNumber partnumber | Not applicable because part number isn't listed in MCA invoices. Instead of partnumber, use the meterId and productOrderName combination to uniquely identify prices. |
+| totalIncludedQuantity | Not applicable. |
+| pretaxStandardRate  | Not applicable. |
 
-## <a name="reservation-instance-charge-api-replaced"></a>Lecserélt foglalási példány díja (API)
+## <a name="reservation-instance-charge-api-replaced"></a>Reservation Instance Charge API replaced
 
-A foglalási beszerzésekhez tartozó számlázási tranzakciókat a [fenntartott példány díja API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges)-val érheti el. Az új API magában foglalja az összes vásárlást, beleértve a harmadik féltől származó Piactéri ajánlatokat is. Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request). A fenntartott példány díjszabási API-ját a Transactions API váltja fel.
+You can get billing transactions for reservation purchases with the [Reserved Instance Charge API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). The new API includes all purchases, including third-party Marketplace offerings. All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request). The Reserved Instance Charge API is replaced by the Transactions API.
 
-A foglalások beszerzési tranzakcióinak beszerzése a Transactions API-val:
+To get reservation purchase transactions with the Transactions API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
 
-## <a name="recommendations-apis-replaced"></a>Javaslatok API-k lecserélve
+## <a name="recommendations-apis-replaced"></a>Recommendations APIs replaced
 
-A fenntartott példányok vásárlására vonatkozó javaslatok API-k biztosítják a virtuális gépek használatát az elmúlt 7, 30 vagy 60 napon belül. Az API-k foglalási vásárlási javaslatokat is biztosítanak. Ezek például az alábbi jelentések lehetnek:
+Reserved Instance Purchase Recommendations APIs provide virtual machine usage over the last 7, 30, or 60 days. APIs also provide reservation purchase recommendations. Ezek például az alábbi jelentések lehetnek:
 
-- [Megosztott fenntartott példányokra vonatkozó javaslat API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
-- [Egy fenntartott példány Recommendations API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
+- [Shared Reserved Instance Recommendation API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
+- [Single Reserved Instance Recommendations API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
 
-Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request). A korábban felsorolt foglalási javaslatok API-kat a [Microsoft. fogyasztás/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) API váltja fel.
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request). The reservation recommendations APIs listed previously are replaced by the [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) API.
 
-Foglalási javaslatok beszerzése a foglalási Recommendations API:
+To get reservation recommendations with the Reservation Recommendations API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
 
-## <a name="reservation-usage-apis-replaced"></a>Lecserélt foglalási használati API-k
+## <a name="reservation-usage-apis-replaced"></a>Reservation Usage APIs replaced
 
-A foglalási használatot a Fenntartott példány használata API-val való regisztráció során kérheti le. Ha egynél több fenntartott példány van regisztrálva egy beléptetéshez, az API-val az összes fenntartott példány vásárlásának használatát is lekérheti.
+You can get reservation usage in an enrollment with the Reserved Instance Usage API. If there's more than one reserved instance in an enrollment, you can also get the usage of all the reserved instance purchases using this API.
 
 Ezek például az alábbi jelentések lehetnek:
 
-- [Fenntartott példány használata részletei](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
-- [Fenntartott példány használata összegzése](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
+- [Reserved Instance Usage Details](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
+- [Reserved Instance Usage Summary](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
-Az összes felhasználási API-t az Azure AD-t használó natív Azure API-k váltották fel hitelesítéshez és engedélyezéshez. Az Azure REST API-k meghívásával kapcsolatos további információkért lásd: [Bevezetés a REST használatába](/rest/api/azure/#create-the-request). A korábban felsorolt foglalási javaslatok API-k helyébe a [Microsoft. fogyasztás/reservationDetails](/rest/api/consumption/reservationsdetails) és a [Microsoft. fogyasztás/reservationSummaries](/rest/api/consumption/reservationssummaries) API-k tartoznak.
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request). The reservation recommendations APIs listed previously are replaced by the [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) and [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) APIs.
 
-A foglalás részleteit a foglalás részletei API-val szerezheti be:
+To get reservation details with the Reservation Details API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
 
-A foglalási összefoglalók beszerzése a foglalási összesítő API-val:
+To get reservation summaries with the Reservation Summaries API:
 
-| Módszer | Kérelem URI-ja |
+| Módszer | Request URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
 
 
 
-## <a name="move-from-cloudyn-to-cost-management"></a>Áthelyezés a Cloudyn a Cost Managementba
+## <a name="move-from-cloudyn-to-cost-management"></a>Move from Cloudyn to Cost Management
 
-A [Cloudyn](https://cloudyn.com) használó szervezeteknek meg kell kezdeniük [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) használatát a Cost Management igényeihez. Cost Management a bevezetést és a nyolc órás késést nem tartalmazó Azure Portal érhető el. További információ: [Cost Management dokumentáció](index.yml).
+Organizations using [Cloudyn](https://cloudyn.com) should start using [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) for any cost management needs. Cost Management is available in the Azure portal with no onboarding and an eight-hour latency. For more information, see the [Cost Management documentation](index.yml).
 
-A Azure Cost Management a következőket teheti:
+Az Azure Cost Managementtel az alábbiakat végezheti:
 
-- Megtekintheti az előre meghatározott költségvetést érintő költségeket. A napi költségek elemzésével azonosíthatja és leállíthatja a kiadások rendellenességeit. A költségek kibontása címkék, Erőforráscsoport, szolgáltatás és hely szerint.
-- Hozzon létre költségvetéseket a használat és a költségek korlátainak megadásához, és kapjon értesítést, ha fontos küszöbértékek vannak megközelítve. Hozzon létre automatizálást műveleti csoportokkal az egyéni események elindításához és a rögzített korlátok kikényszerített feltételeihez.
-- A költségeket és a használatot a Azure Advisor ajánlásai alapján optimalizálhatja. Fedezze fel a vásárlási optimalizálásokat foglalásokkal, csökkentse a felhasznált virtuális gépeket, és törölje a használaton kívüli erőforrásokat, hogy a költségvetéseken belül maradjon.
-- A Cost és a használati adatok exportálásának megadásával napi rendszerességgel közzétehet egy CSV-fájlt a Storage-fiókjában. A külső rendszerekkel való integráció automatizálása a számlázási adatok szinkronizálásban és naprakészen tartásához.
+- View costs over time against a predefined budget. Napi költségminták elemzése a kiadási anomáliák azonosítása és megszüntetése érdekében. Break down costs by tags, resource group, service, and location.
+- Create budgets to set limits on usage and costs and get notified when important thresholds are approached. Automatizálás beállítása a műveletcsoportokhoz egyéni események kiváltásához és a feltételek szigorú korlátjainak kényszerítéséhez.
+- Optimize cost and usage with recommendations from Azure Advisor. Discover purchase optimizations with reservations, downsize underused virtual machines, and delete unused resources to stay within budgets.
+- Schedule a cost and usage data export to publish a CSV file to your storage account daily. Automate integration with external systems to keep billing data in sync and up to date.
 
 ## <a name="power-bi-integration"></a>Power BI-integráció
 
-Ha Power BIt használ a Cost Reporting szolgáltatáshoz, át kell térnie a következőre:
+If you use Power BI for cost reporting, you need to transition to the following:
 
-- Microsoft Azure Consumption Insights Power BI alkalmazás
-- Azure Consumption Insights asztali összekötő
+- Microsoft Azure Consumption Insights Power BI app
+- Azure Consumption Insights desktop connector
 
 
-Az összekötő ajánlott olyan szervezetek számára, akik a legrugalmasabbak. Azonban a Power BI alkalmazás is elérhető a gyors üzembe helyezéshez.
+The connector is recommended for organizations wanting the most flexibility. However, the Power BI app is also available for quick set-up.
 
-- A [Microsoft Azure Consumption Insights Power bi alkalmazás](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) telepítése
-- [Csatlakozás az Azure Consumption Insights-összekötővel](/power-bi/desktop-connect-azure-consumption-insights)
+- Install the [Microsoft Azure Consumption Insights Power BI app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)
+- [Connect with the Azure Consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights)
 
-A régebbi felhasználású adatellenőrzési tartalom csomagja és összekötője regisztrációs szinten működött. Legalább olvasási hozzáféréssel kell rendelkeznie. A számlázási profil felhasználói számára elérhető az új felhasználási információk Power BI alkalmazás és az új Azure Consumption Insights-összekötő. Azok a csapatok, amelyeknek további beállításokra van szükségük a költségek áttekintéséhez vagy a számlázási profilok költségeinek megtekintéséhez, a Azure Portal [költség elemzésében](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) kell használniuk.
+The older Consumption Insights content pack and connector worked at an enrollment level. It required at least read access. The new Consumption Insights Power BI app and the new Azure Consumption Insights connector are available for billing profile users. Teams that need additional options for reviewing costs or to view costs across billing profiles should use in [Cost analysis](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) the Azure portal.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Olvassa el a [Cost Management dokumentációját](index.yml) , amelyből megtudhatja, hogyan figyelheti és vezérelheti az Azure-kiadásokat. Vagy ha az erőforrás-használatot Cost Management használatával szeretné optimalizálni.
+- Read the [Cost Management documentation](index.yml) to learn how to monitor and control Azure spending. Or, if you want to optimize resource use with Cost Management.

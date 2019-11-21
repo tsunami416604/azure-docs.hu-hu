@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a Node. js használata a lekérdezéshez'
-description: A Node. js használata olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le.
+title: 'Quickstart: Use Node.js to query data from an Azure SQL database'
+description: How to use Node.js to create a program that connects to an Azure SQL database and query it using T-SQL statements.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,152 +11,149 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b996b380195b8b339424c8d716c139072a98303f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: bf63cd1fb81dace477b7d9062831f0b563314f8b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827023"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228009"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rövid útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
-Ez a rövid útmutató bemutatja, hogyan használható a [Node. js](https://nodejs.org) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
+This quickstart demonstrates how to use [Node.js](https://nodejs.org) to connect to an Azure SQL database. You can then use T-SQL statements to query data.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
+To complete this sample, make sure you have the following prerequisites:
 
-- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
+- Azure SQL-adatbázis. You can use one of these quickstarts to create and then configure a database in Azure SQL Database:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
-  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurálás | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md)| [Connectivity from a VM](sql-database-managed-instance-configure-vm.md)|
+  |||[Connectivity from on-site](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Adventure Works loaded per quickstart|[Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
+  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
 
 
-- Node. js-hez kapcsolódó szoftver az operációs rendszerhez:
+- Node.js-related software for your operating system:
 
-  - **MacOS**, install Homebrew és Node. js, majd telepítse az ODBC-illesztőt és a Sqlcmd. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
+  - **MacOS**, install Homebrew and Node.js, then install the ODBC driver and SQLCMD. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
   
-  - **Ubuntu**, telepítse a Node. js-t, majd telepítse az ODBC-illesztőt és a Sqlcmd. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  - **Ubuntu**, install Node.js, then install the ODBC driver and SQLCMD. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
   
-  - **Windows**, telepítse a chocolatey és Node. js fájlt, majd telepítse az ODBC-illesztőt és a Sqlcmd. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  - **Windows**, install Chocolatey and Node.js, then install the ODBC driver and SQLCMD. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
+## <a name="get-sql-server-connection-information"></a>Get SQL server connection information
 
-Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
+Get the connection information you need to connect to the Azure SQL database. You'll need the fully qualified server name or host name, database name, and login information for the upcoming procedures.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
+2. Go to the **SQL databases**  or **SQL managed instances** page.
 
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont. 
+3. On the **Overview** page, review the fully qualified server name next to **Server name** for a single database or the fully qualified server name next to **Host** for a managed instance. To copy the server name or host name, hover over it and select the **Copy** icon. 
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
-Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyissa meg a létrehozott mappát, és futtassa a következő parancsot:
+Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Open the folder you created and run the following command:
 
   ```bash
   npm init -y
-  npm install tedious@5.0.3
-  npm install async@2.6.2
+  npm install tedious
   ```
 
-## <a name="add-code-to-query-database"></a>Kód hozzáadása az adatbázis lekérdezéséhez
+## <a name="add-code-to-query-database"></a>Add code to query database
 
-1. A kedvenc szövegszerkesztőben hozzon létre egy új, *sqltest. js*fájlt.
+1. In your favorite text editor, create a new file, *sqltest.js*.
 
-1. Cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
+1. Replace its contents with the following code. Then add the appropriate values for your server, database, user, and password.
 
     ```js
-    var Connection = require('tedious').Connection;
-    var Request = require('tedious').Request;
+    const Connection = require("tedious").Connection;
+    const Request = require("tedious").Request;
 
     // Create connection to database
-    var config =
-    {
-        authentication: {
-            options: {
-                userName: 'userName', // update me
-                password: 'password' // update me
-            },
-            type: 'default'
+    const config = {
+      authentication: {
+        options: {
+          userName: "username", // update me
+          password: "password" // update me
         },
-        server: 'your_server.database.windows.net', // update me
-        options:
-        {
-            database: 'your_database', //update me
-            encrypt: true
-        }
-    }
-    var connection = new Connection(config);
+        type: "default"
+      },
+      server: "your_server.database.windows.net", // update me
+      options: {
+        database: "your_database", //update me
+        encrypt: true
+      }
+    };
+
+    const connection = new Connection(config);
 
     // Attempt to connect and execute queries if connection goes through
-    connection.on('connect', function(err)
-        {
-            if (err)
-            {
-                console.log(err)
-            }
-            else
-            {
-                queryDatabase()
-            }
+    connection.on("connect", err => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        queryDatabase();
+      }
+    });
+
+    function queryDatabase() {
+      console.log("Reading rows from the Table...");
+
+      // Read all rows from table
+      const request = new Request(
+        `SELECT TOP 20 pc.Name as CategoryName,
+                       p.name as ProductName
+         FROM [SalesLT].[ProductCategory] pc
+         JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid`,
+        (err, rowCount) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            console.log(`${rowCount} row(s) returned`);
+          }
         }
-    );
+      );
 
-    function queryDatabase()
-    {
-        console.log('Reading rows from the Table...');
-
-        // Read all rows from table
-        var request = new Request(
-            "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc "
-                + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid",
-            function(err, rowCount, rows)
-            {
-                console.log(rowCount + ' row(s) returned');
-                process.exit();
-            }
-        );
-
-        request.on('row', function(columns) {
-            columns.forEach(function(column) {
-                console.log("%s\t%s", column.metadata.colName, column.value);
-            });
+      request.on("row", columns => {
+        columns.forEach(column => {
+          console.log("%s\t%s", column.metadata.colName, column.value);
         });
-        connection.execSql(request);
+      });
+      
+      connection.execSql(request);
     }
     ```
 
 > [!NOTE]
-> A Code példa az Azure SQL-hoz készült **AdventureWorksLT** mintaadatbázis használatával működik.
+> The code example uses the **AdventureWorksLT** sample database for Azure SQL.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. A parancssorban futtassa a programot.
+1. At the command prompt, run the program.
 
     ```bash
     node sqltest.js
     ```
 
-1. Ellenőrizze, hogy az első 20 sor vissza lett-e jelenítve, és az alkalmazás ablakának lezárása.
+1. Verify the top 20 rows are returned and close the application window.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Microsoft Node.js illesztőprogram az SQL Serverhez](/sql/connect/node-js/node-js-driver-for-sql-server)
 
-- Kapcsolat és lekérdezés Windows/Linux/macOS rendszeren [.net Core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md)vagy [SSMS](sql-database-connect-query-ssms.md) (csak Windows rendszeren)
+- Connect and query on Windows/Linux/macOS with [.NET core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md), or [SSMS](sql-database-connect-query-ssms.md) (Windows only)
 
-- [A .NET Core használatának első lépései Windows/Linux/macOS rendszeren a parancssor használatával](/dotnet/core/tutorials/using-with-xplat-cli)
+- [Get started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli)
 
-- Az első Azure SQL-adatbázis megtervezése [.net](sql-database-design-first-database-csharp.md) vagy [SSMS](sql-database-design-first-database.md) használatával
+- Design your first Azure SQL database using [.NET](sql-database-design-first-database-csharp.md) or [SSMS](sql-database-design-first-database.md)

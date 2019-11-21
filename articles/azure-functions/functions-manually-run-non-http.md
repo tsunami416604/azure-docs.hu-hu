@@ -1,83 +1,79 @@
 ---
-title: Egy nem HTTP által aktivált Azure Functions manuális futtatása
-description: Használata egy HTTP-kérelem futtatásához egy nem HTTP által aktivált Azure Functions
-services: functions
-keywords: ''
+title: Manually run a non HTTP-triggered Azure Functions
+description: Use an HTTP request to run a non-HTTP triggered Azure Functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479822"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230479"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
-Ez a cikk bemutatja, hogyan futtathatja manuálisan egy nem HTTP által aktivált függvény speciálisan formázott HTTP-kérelem használatával.
+This article demonstrates how to manually run a non HTTP-triggered function via specially formatted HTTP request.
 
-Bizonyos környezetekben, szükség lehet "igény" futtathat egy Azure-függvény, amely a közvetett módon aktiválódik.  Például közvetett eseményindítók [ütemezés szerint funkciók](./functions-create-scheduled-function.md) eseményeit és körülményeit rögzítő eredményeképp futtatott [egy másik erőforrás-művelet](./functions-create-storage-blob-triggered-function.md). 
+In some contexts, you may need to run "on-demand" an Azure Function that is indirectly triggered.  Examples of indirect triggers include [functions on a schedule](./functions-create-scheduled-function.md) or functions that run as the result of [another resource's action](./functions-create-storage-blob-triggered-function.md). 
 
-[Postman](https://www.getpostman.com/) szerepel a következő példában, de használhatja [cURL](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) vagy bármely más hasonló eszköz a HTTP-kérelmeket küldjön.
+[Postman](https://www.getpostman.com/) is used in the following example, but you may use [cURL](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) or any other like tool to send HTTP requests.
 
-## <a name="define-the-request-location"></a>Határozza meg a kérelem helyet
+## <a name="define-the-request-location"></a>Define the request location
 
-Nem HTTP-eseményindítóval aktivált függvény futtatására oly módon, egy kérelem küldése az Azure-ba való futtatásához szükséges a függvényt. Az URL-címet, hogy a kérelem egy adott űrlapon vesz igénybe.
+To run a non HTTP-triggered function, you need to a way to send a request to Azure to run the function. The URL used to make this request takes a specific form.
 
-![Kérelem helyének meghatározásához: gazdagép neve + a mappa elérési útja + a függvény neve](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
+![Define the request location: host name + folder path + function name](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Állomásnév:** A függvényalkalmazás nyilvános helyre a függvényalkalmazás neve plusz végzett navigáció *azurewebsites.net* vagy az egyéni tartomány.
-- **Mappa elérési útja:** A kérelem elküldéséhez a mappák között rendelkezik via HTTP-kérést nem HTTP által aktivált függvények eléréséhez *rendszergazdai a functions*.
-- **Függvény neve:** A futtatni kívánt függvény neve.
+- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
+- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
+- **Function name:** The name of the function you want to run.
 
-A kérelem hely együtt főkulcs a függvény az Azure-bA a kérelem Postman használatával futtassa a funkciót.
+You use this request location in Postman along with the function's master key in the request to Azure to run the function.
 
 > [!NOTE]
-> Ha helyileg futtatja, a függvény főkulcs nem kötelező. Közvetlenül is [függvény](#call-the-function) felsorolhatja az `x-functions-key` fejléc.
+> When running locally, the function's master key is not required. You can directly [call the function](#call-the-function) omitting the `x-functions-key` header.
 
-## <a name="get-the-functions-master-key"></a>A funkció fő kulcs lekérése
+## <a name="get-the-functions-master-key"></a>Get the function's master key
 
-Keresse meg a függvényt az Azure Portalon, majd kattintson a **kezelés** , és keresse meg a **Gazdakulcsok** szakaszban. Kattintson a **másolási** gombra a *_master* sort, hogy a fő kulcsot másolja a vágólapra.
+Navigate to your function in the Azure portal and click on **Manage** and find the **Host Keys** section. Click on the **Copy** button in the *_master* row to copy the master key to your clipboard.
 
-![Másolja a főkulcs függvény felügyeleti képernyőről](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+![Copy master key from Function Management screen](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Miután átmásolta a fő kulcsot, kattintson a függvény nevét, térjen vissza a kód ablak. Ezután kattintson a **naplók** fülre. Látni fogja a függvény ide kerül, ha manuálisan futtatja a függvény a Postman üzeneteit.
+After copying the master key, click on the function name to return to the code file window. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
 
 > [!CAUTION]  
-> Az emelt szintű engedélyekkel a főkulcs által nyújtott a függvényalkalmazásban, mert nem kell ezt a kulcsot megoszthatja harmadik felek vagy osztja el az alkalmazások.
+> Due to the elevated permissions in your function app granted by the master key, you should not share this key with third parties or distribute it in an application.
 
-## <a name="call-the-function"></a>A függvény meghívása
+## <a name="call-the-function"></a>Call the function
 
-Nyissa meg a Postmant, és kövesse az alábbi lépéseket:
+Open Postman and follow these steps:
 
-1. Adja meg a **kérnek az URL-címe szövegmezőbe helyet**.
-2. Ellenőrizze a HTTP-metódus beállítása **POST**.
-3. **Kattintson a** a a **fejlécek** fülre.
-4. Adja meg **x-functions-key** az első is **kulcs** , és illessze be a master key (a vágólapról) a **érték** mezőbe.
-5. Adja meg **Content-Type** , a második **kulcs** , és adja meg **application/json** , a **érték**.
+1. Enter the **request location in the URL text box**.
+2. Ensure the HTTP method is set to **POST**.
+3. **Click** on the **Headers** tab.
+4. Enter **x-functions-key** as the first **key** and paste the master key (from the clipboard) into the **value** box.
+5. Enter **Content-Type** as the second **key** and enter **application/json** as the **value**.
 
-    ![Postman-fejlécek beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    ![Postman headers settings](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-6. **Kattintson a** a a **törzs** fülre.
-7. Adja meg **{"bemeneti": "teszt"}** a kérelem törzsében.
+6. **Click** on the **Body** tab.
+7. Enter **{ "input": "test" }** as the body for the request.
 
-    ![Postman-törzs beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    ![Postman body settings](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. Kattintson a **küldése**.
+8. Click **Send**.
 
-    ![A postman használatával egy kérelem küldése](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    ![Sending a request with Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
-Postman majd jelenti az állapotot **202-es elfogadva**.
+Postman then reports a status of **202 Accepted**.
 
-Ezután térjen vissza a függvény az Azure Portalon. Keresse meg a *naplók* ablakot, és megjelenik a manuális meghívja a függvényt a beérkező üzeneteket.
+Next, return to your function in the Azure portal. Locate the *Logs* window and you'll see messages coming from the manual call to the function.
 
-![Függvény napló manuális hívás eredménye](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+![Function log results from manual call](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A kódot tesztelés az Azure Functions stratégiák](./functions-test-a-function.md)
-- [Azure-függvény Event Grid eseményindító helyi hibakeresés](./functions-debug-event-grid-trigger-local.md)
+- [Strategies for testing your code in Azure Functions](./functions-test-a-function.md)
+- [Azure Function Event Grid Trigger Local Debugging](./functions-debug-event-grid-trigger-local.md)

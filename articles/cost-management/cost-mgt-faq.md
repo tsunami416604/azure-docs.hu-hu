@@ -1,33 +1,33 @@
 ---
-title: Gyakori kérdések az Azure a Cloudyn |} A Microsoft Docs
-description: Ez a cikk ismerteti a Cloudyn kapcsolatos gyakori kérdésekre adott válaszokat.
+title: Frequently asked questions for Cloudyn in Azure | Microsoft Docs
+description: This article provides answers to some of the common questions about Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: troubleshooting
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: faa7181ebc7b886fbe06e4ac01c704016d4b0c51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002031"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230100"
 ---
-# <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-for-cloudyn"></a>Frequently asked questions for Cloudyn
 
-Ez a cikk foglalkozik a Cloudyn kapcsolatos gyakori kérdésekre. Ha kérdései vannak a Cloudyn, megkérheti csatlakoztatásukról [– gyakori kérdések a Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+This article addresses some common questions about Cloudyn. If you have questions about Cloudyn, you can ask them at [FAQs for Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
 
-## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Hogyan oldhatom fel a közvetett nagyvállalati telepítő kapcsolatos gyakori problémák?
+## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>How can I resolve common indirect enterprise setup problems?
 
 Amikor először használja a Cloudyn portálját, a következő üzenetek jelenhetnek meg, ha Ön Nagyvállalati szerződést kötött, vagy egy felhőszolgáltató felhasználója:
 
-- "A megadott API-kulcs nem legfelső szintű regisztrációs kulcs" megjelennek a **Cloudyn beállítása** varázsló.
-- "A közvetlen regisztráció – nem" a nagyvállalati szerződés portálon jelenik meg.
-- "Nem használati adatok az elmúlt 30 napban nem található. A Cloudyn portálon lépjen kapcsolatba a terjesztőt, hogy ellenőrizze, hogy jelölőnyelvi engedélyezve lett, az Azure-fiók"jelenik meg.
+- "The specified API key is not a top level enrollment key" displayed in the **Set Up Cloudyn** wizard.
+- "Direct Enrollment – No" displayed in the Enterprise Agreement portal.
+- "No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account" displayed in the Cloudyn portal.
 
 Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. A viszonteladónak vagy a felhőszolgáltatónak kell engedélyeznie a _korrektúrát_ az Azure-fiókjában, mielőtt Ön megtekinthetné az adatait a Cloudyn szolgáltatásban.
 
@@ -35,7 +35,7 @@ A problémák megoldása:
 
 1. A viszonteladónak engedélyeznie kell a _korrektúrát_ a fiókjában. Útmutatás: [Közvetett ügyfeleknek szóló előkészítési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Létre kell hoznia egy kulcsot az Azure Nagyvállalati Szerződésben, amelyet a Cloudynnel használhat. Útmutatásért lásd: [hozzáadása az Azure nagyvállalati szerződéssel rendelkező](quick-register-ea.md#register-with-cloudyn) vagy [keresse meg az EA regisztrációs azonosító és API-kulcs](https://youtu.be/u_phLs_udig).
+2. Létre kell hoznia egy kulcsot az Azure Nagyvállalati Szerződésben, amelyet a Cloudynnel használhat. For instructions, see [Adding Your Azure EA](quick-register-ea.md#register-with-cloudyn) or [How to Find Your EA Enrollment ID and API Key](https://youtu.be/u_phLs_udig).
 
 A Cloudyn szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő.
 
@@ -47,115 +47,115 @@ A Cloudyn beállításához az Azure Nagyvállalati Szerződés API-kulcsának l
 
 Előfordulhat, hogy a részlegek rendszergazdáinak, a fióktulajdonosoknak és a nagyvállalati rendszergazdáknak is engedélyt kell adnia a _díjak megtekintéséhez_ a számlázási API segítségével.
 
-## <a name="why-dont-i-see-optimizer-recommendations"></a>Miért nem látom, hogy optimalizáló javaslatok?
+## <a name="why-dont-i-see-optimizer-recommendations"></a>Why don’t I see Optimizer recommendations?
 
-Az ajánlás információk csak aktív fiókok érhetők el. Nem jelenik meg minden javaslat információ **optimalizáló** kategóriák fiókok, amelyek jelentést *időközét adja meg*, többek között:
+Recommendation information is only available for accounts that are activated. You will not see any recommendation information in **Optimizer** report categories for accounts that are *unactivated*, including:
 
-- Optimalizálás Manager
-- Méretezés optimalizálása
-- Hatékonysági
+- Optimization Manager
+- Sizing Optimization
+- Inefficiencies
 
-Ha bármely optimalizáló javaslat adatai nem tekinthetők meg, akkor nagy valószínűséggel rendelkezik fiókok, amelyek időközét adja meg. Egy fiók aktiválásához szüksége regisztrálja az Azure hitelesítő adatait.
+If you cannot view any Optimizer recommendation data, then most likely, you have accounts that are unactivated. To activate an account, you need to register it with your Azure credentials.
 
-Egy fiók aktiválása:
+To activate an account:
 
 1.  A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
-2.  A Microsoft Azure-fiókok lapon keresse meg a fiókokat, amelyeket egy **aktivált** előfizetés.
-3.  Kattintson a jobb oldalán egy aktivált fiókhoz, a **szerkesztése** szimbólum, amely hasonlít egy ceruza.
-4.  A bérlő azonosítója és sebessége azonosítója automatikusan észleli. Kattintson a **Tovább**gombra.
-5.  A program átirányítja az Azure Portalon. Jelentkezzen be a portálra, és engedélyezze a Cloudyn gyűjtő el az Azure-beli adatait.
-6.  Ezután a program átirányítja a Cloudyn-fiókok kezelése lapon, és az előfizetésben **aktív** fiók állapota. Egy zöld pipa szimbólumot jeleníti meg.
-7.  Ha egy zöld pipa szimbólumot egy vagy több előfizetés nem jelenik meg, az azt jelenti, hogy egy levélolvasó alkalmazás (CloudynCollector) az előfizetés létrehozásához szükséges engedélyek nem rendelkeznek. Egy magasabb szintű jogosultságokkal rendelkező felhasználónak kell ismételje meg a 3. és 4.  
+2.  On the Microsoft Azure Accounts tab, look for accounts that have an **unactivated** subscription.
+3.  To the right of an unactivated account, click the **edit** symbol that resembles a pencil.
+4.  Your tenant ID and rate ID is automatically detected. Kattintson a **Tovább** gombra.
+5.  You’re redirected to the Azure portal. Sign in to the portal and authorize Cloudyn Collector to access your Azure data.
+6.  Next, you’re redirected to the Cloudyn Accounts management page and your subscription is updated with **active** Account Status. It shows a green check mark symbol.
+7.  If you don’t see a green checkmark symbol for one or more of the subscriptions, it means that you do not have permissions to create a reader app (the CloudynCollector) for the subscription. A user with higher permissions for the subscription needs to repeat steps 3 and 4.  
 
-Miután elvégezte az előző lépéseket, megtekintheti a optimalizáló javaslatok egy-két napon belül. Azonban mielőtt érhető el teljes optimalizálási adatok legfeljebb öt nappal is igénybe vehet.
+After you complete the preceding steps, you can view Optimizer recommendations within one to two days. However, it can take up to five days before full optimization data is available.
 
 
-## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Hogyan engedélyezhetem a felfüggesztett vagy zárolt felhasználók?
+## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>How do I enable suspended or locked-out users?
 
-Először tekintsük át azokat a leggyakoribb forgatókönyvet, amelynek hatására a felhasználói fiókok beolvasásához *initiallySuspended*.
+First, let's look at the most common scenario that causes user accounts to get *initiallySuspended*.
 
-> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A vállalat készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. A személy, aki a Cloudyn szolgáltatás és a tünetek regisztrálja a Cloudyn portált, mint rendszergazda1 válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portál használata esetén azokat az Azure-fiókok létrehozásához, és egy entitáshierarchiára beállítása. Rendszergazda1 Admin2, egy Bérlői rendszergazda, a regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portál tájékoztatja.
+> Admin1 might be a Microsoft Cloud Solution Provider or Enterprise Agreement user. Their organization is ready to start using Cloudyn.  He registers through the Azure portal and signs into the Cloudyn portal. As the person who registers the Cloudyn service and signs into the Cloudyn portal, Admin1 becomes the *primary administrator*. Admin1 does not create any user accounts. However, using the Cloudyn portal, they do create Azure accounts and set up an entity hierarchy. Admin1 informs Admin2, a tenant administrator, that they need to register with Cloudyn and sign in to the Cloudyn portal.
 >
-> Admin2 regisztrálja az Azure Portalon keresztül. Azonban a Cloudyn portál bejelentkezni próbál, ha azok hibaüzenet fiókjuk próbálnak **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
+> Admin2 registers through the Azure portal. However when they try to sign in to the Cloudyn portal, they get an error saying their account is **suspended**. The primary administrator, Admin1, is notified of the account suspension. Admin1 needs to activate Admin2’s account and grant *admin entity access* for the appropriate entities and allows user management access and active the user account.
 
 
-Riasztás, hozzáférés engedélyezése egy felhasználó kérést kap, ha a felhasználói fiók aktiválásához szüksége.
+If you receive an alert with a request to allow access for a user, you need to activate the user account.
 
-A felhasználói fiók aktiválása:
+To activate the user account:
 
-1. Jelentkezzen be a Cloudyn, amellyel a Cloudyn beállítása az Azure rendszergazdai felhasználói fiók használatával. Vagy jelentkezzen be egy felhasználói fiókot, amely rendszergazdai hozzáférést.
-2. Válassza a fogaskerék ikonra a jobb felső sarokban, és válassza ki **felhasználókezelés**.
-3. Keresse meg a felhasználót, és válassza ki a ceruzaikonra szerkesztheti a felhasználó.
-4. Alatt **felhasználói állapot**, módosítsa az állapot **felfüggesztett** való **aktív**.
+1. Sign in to Cloudyn by using the Azure administrative user account that you used to set up Cloudyn. Or, sign in with a user account that was granted administrator access.
+2. Select the gear symbol in the upper right, and select **User Management**.
+3. Find the user, select the pencil symbol, and then edit the user.
+4. Under **User status**, change the status from **Suspended** to **Active**.
 
-A Cloudyn felhasználói fiókokat létesíthetnek egyszeri bejelentkezés az Azure-ból. Ha egy felhasználó mistypes a jelszavát, akkor előfordulhat, hogy zárja ki magát a Cloudyn, annak ellenére, hogy továbbra is hozzáférhet az Azure.
+Cloudyn user accounts connect by using single sign-on from Azure. If a user mistypes their password, they might get locked out of Cloudyn, even though they can still access Azure.
 
-Ha módosítja az alapértelmezett cím, az Azure-ban az e-mail-címét a Cloudyn, a fiók kizárva is. Ez előfordulhat, hogy megjelenítése "állapot initiallySuspended." Ha a felhasználói fiók zárolva van, forduljon a alaphelyzetbe állítja a fiók egy másik rendszergazda.
+If you change your e-mail address in Cloudyn from the default address in Azure, your account can get locked out. It might show "status initiallySuspended." If your user account is locked out, contact an alternate administrator to reset your account.
 
-Azt javasoljuk, hogy legalább két Cloudyn rendszergazdai fiókokat hozhat létre abban az esetben az egyik fiók lekérdezi zárolva.
+We recommend that you create at least two Cloudyn administrator accounts in case one of the accounts gets locked out.
 
-Ha nem tud bejelentkezni a Cloudyn portált, győződjön meg arról, hogy a helyes URL-címet használ a Cloudyn bejelentkezni. Használat [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+If you can't sign in to the Cloudyn portal, ensure that you're using the correct URL to sign in to Cloudyn. Use [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Kerülje a Cloudyn közvetlen URL-cím https://app.cloudyn.com.
+Avoid using the Cloudyn direct URL https://app.cloudyn.com.
 
-## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Hogyan lehet aktiválni az Azure-beli hitelesítő időközét adja meg fiókokat?
+## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>How do I activate unactivated accounts with Azure credentials?
 
-Amint az Azure-fiókok a Cloudyn által felfedezett költségadatok azonnal nyújtott költség-alapú jelentésekhez. Azonban a Cloudyn használati és teljesítményadatokat biztosít, akkor regisztrálnia kell a fiókok Azure hitelesítő adatait. Útmutatásért lásd: [vegyen fel egy fiókot, vagy egy előfizetés frissítése](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
+As soon as your Azure accounts are discovered by Cloudyn, cost data is immediately provided in cost-based reports. However, for Cloudyn to provide usage and performance data, you need to register your Azure credentials for the accounts. For instructions, see [Add an account or update a subscription](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
-Az Azure a hitelesítő adatait, a Cloudyn portálon hozzáadásához válassza a Szerkesztés szimbólum jobb oldalán a fiók neve, nem az előfizetés.
+To add Azure credentials for an account, in the Cloudyn portal, select the edit symbol to the right of the account name, not the subscription.
 
-Az Azure-beli hitelesítő hozzá vannak adva a Cloudyn, amíg a fiók megjelenik _nem aktivált_.
+Until your Azure credentials are added to Cloudyn, the account appears as _un-activated_.
 
-## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Hogyan adhatok hozzá több fiókhoz és entitások egy meglévő előfizetéshez?
+## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>How do I add multiple accounts and entities to an existing subscription?
 
-További entitásokat segítségével további nagyvállalati szerződések hozzáadása a Cloudyn-előfizetéshez. További információkért lásd: [létrehozása és kezelése az entitások](tutorial-user-access.md#create-and-manage-entities).
+Additional entities are used to add additional Enterprise Agreements to a Cloudyn subscription. For more information, see [Create and manage entities](tutorial-user-access.md#create-and-manage-entities).
 
-A CSP-k:
+For CSPs:
 
-Egy entitás további CSP-fiókok hozzáadásához válassza **MSP hozzáférés** helyett **vállalati** az új entitás létrehozásakor. Ha a fiók regisztrálva van, a nagyvállalati szerződés, és szeretne hozzáadni a CSP hitelesítő adatokat, a Cloudyn támogatási csoporthoz előfordulhat, hogy módosítania kell a fiók beállításait. Ha Ön egy fizetős Azure-előfizető, létrehozhat egy új támogatási kérelmet az Azure Portalon. Válassza ki **súgó + támogatás**, majd válassza ki **új támogatási kérelem**.
+To add additional CSP accounts to an entity, select **MSP Access** instead of **Enterprise** when you create the new entity. If your account is registered as an Enterprise Agreement and you want to add CSP credentials, Cloudyn support personnel might need to modify your account settings. If you're a paid Azure subscriber, you can create a new support request in the Azure portal. Select **Help + support**, and then select **New support request**.
 
-## <a name="currency-symbols-in-cloudyn-reports"></a>A Cloudyn jelentésekben pénznemszimbólum
+## <a name="currency-symbols-in-cloudyn-reports"></a>Currency symbols in Cloudyn reports
 
-Előfordulhat, hogy különböző pénznemek használatával több Azure-fiókokon. A Cloudyn cost jelentések azonban ne jelenjen meg egynél több pénznem típusa jelentésenként.
+You might have multiple Azure accounts using different currencies. However, cost reports in Cloudyn do not show more than one currency type per report.
 
-Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek USD-ben jelennek **$** . A javasolt ajánlott eljárás, hogy kerülje a különböző pénznemek entitás ugyanabban a hierarchiában. Más szóval egy entitás struktúrájából összes előfizetés az adott pénznemben kell használnia.
+If you have multiple subscriptions using different currencies, a parent entity and its child entity currencies are displayed in USD **$** . Our suggested best practice is to avoid using different currencies in the same entity hierarchy. In other words, all your subscriptions organized in an entity structure should use the same currency.
 
-A Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutat be megfelelően a jelentésekben.  Azonban a Cloudyn csak jeleníti USD **$** CSP és az Azure web-direct-fiókok esetében.
+Cloudyn automatically detects your Enterprise Agreement subscription currency and presents it properly in reports.  However, Cloudyn only displays USD **$** for CSP and web-direct Azure accounts.
 
-## <a name="what-are-cloudyn-data-refresh-timelines"></a>Mik a Cloudyn adatok frissítése az ütemtervek?
+## <a name="what-are-cloudyn-data-refresh-timelines"></a>What are Cloudyn data refresh timelines?
 
-A Cloudyn rendelkezik a következő adatok frissítési ütemtervet:
+Cloudyn has the following data refresh timelines:
 
-- **Kezdeti**: Miután beállítása költségadatok megtekintéséhez a Cloudyn akár 24 órát is igénybe vehet. A Cloudyn elegendő adatgyűjtéshez méretezési javaslatok megjelenítése akár 10 nap is is igénybe vehet.
-- **Napi**: A tizedik naponta vagy minden hónap végén a Cloudyn jelenít meg az adatokat az előző nap után UTC + 3 kapcsolatban a következő nap naprakész.
-- **Havi**: A tizedik nap minden hónap első napjától kezdve a Cloudyn megjelenítése előfordulhat, hogy az adatok csak az előző hónap végéig.
+- **Initial**: After you set up, it can take up to 24 hours to view cost data in Cloudyn. It can also take up to 10 days for Cloudyn to collect enough data to display sizing recommendations.
+- **Daily**: From the tenth day to the end of each month, Cloudyn should show your data up to date from the previous day after about UTC+3 the next day.
+- **Monthly**: From the first day to the tenth day of each month, Cloudyn might show your data only through the end of the previous month.
 
-A Cloudyn feldolgozza az adatokat az előző napi, amikor az előző nap adatainak teljes elérhetőnek kell lennie. Az előző nap adatainak a Cloudyn által kapcsolatos UTC + 3 általában érhető el minden nap. Egyes adatok, például címkék, feldolgozni további 24 órát is igénybe vehet.
+Cloudyn processes data for the previous day when full data from the previous day is available. The previous day's data is usually available in Cloudyn by about UTC+3 each day. Some data, such as tags, can take an additional 24 hours to process.
 
-Az aktuális hónaphoz adatok nem érhető el minden hónap elején a gyűjteményhez. Az időszakban a szolgáltatók azok az előző havi használati díjának felszámolása véglegesítése. Az előző hónap adatai jelennek meg a Cloudyn 5-10 nappal minden hónap kezdete után. Ebben az időszakban az előző hónap csak amortizált költségek merülhetnek fel. Ön nem láthatja a napi számlázási és használati adatokat. Amikor elérhetővé válik az adatok a Cloudyn, a feldolgozásuk visszamenőlegesen. A feldolgozás után a havi adatok között az ötödik és a tizedik minden hónap napja jelenik meg.
+Data for the current month isn't available for collection at the beginning of every month. During the period, service providers finalize their billing for the previous month. The previous month's data appears in Cloudyn 5 to 10 days after the start of each month. During this time, you might see only amortized costs from the previous month. You might not see daily billing or usage data. When the data becomes available, Cloudyn processes it retroactively. After processing, all the monthly data is displayed between the fifth day and the tenth day of each month.
 
-Ha az Azure-ból történő adatküldés a Cloudyn késés, adatok továbbra is keletkezik az Azure-ban. Az adatok átkerülnek a Cloudyn, ha a kapcsolat helyreáll.
+If there is a delay sending data from Azure to Cloudyn, data is still recorded in Azure. The data is transferred to Cloudyn when the connection is restored.
 
-## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn-Költségjelentésekben ingadozása költség
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cost fluctuations in Cloudyn Cost Reports
 
-Költségjelentésben költség ingadozások által megkövetelt jeleníti meg, amikor a felhőszolgáltatók számlázási frissített fájlok küldése. Változó költségű fordulhat elő, ha új fájlokat a felhőszolgáltató a szokásos módon kívül a napi és havi ütemezés reporting érkezik. A Cost módosítások Cloudyn újraszámítás nem eredménye.
+Cost reports can show cost fluctuations whenever cloud service providers send updated billing files. Fluctuating costs occur when new files are received from a cloud service provider outside of the usual daily or monthly reporting schedule. Cost changes don't result from Cloudyn recalculation.
 
-A hónap során a felhőszolgáltató által küldött minden elszámolási fájlok a napi költségek becslése. Néha adatok gyakran frissülő – alkalmanként többször naponta. Frissítések állnak az AWS üzemezésnél gyakoribb Azure. Költség tekintetében stabil maradjon, ha az előző havi számlázási kiszámítása befejeződött, és a végső számlázási fájl érkezik. Általában a hónap 10.
+Throughout the month, all billing files sent by your cloud service provider are an estimation of your daily costs. Sometimes data is updated frequently — occasionally multiple times per day. Updates are more frequent with AWS than Azure. Cost totals should remain stable when the billing calculation for the previous month is complete and the final billing file is received. Usually, by the 10th of the month.
 
-Változások történnek, amikor költség korrekciók kapott a felhőszolgáltató. Egy példa a kreditek fogadására. Módosítások hónapok fordulhat elő a releváns hónap volt bezárása után. Módosítások jelennek meg, ha az újraszámítást végezni a felhőszolgáltató által. A Cloudyn frissíti az előzményadatok, győződjön meg arról, hogy újraszámít minden módosítását. Azt is ellenőrzi, hogy a költségeket pontosan a jelentést készít.
+Changes occur when you receive cost adjustments from your cloud service provider. Receiving credits is one example. Changes can occur months after the relevant month was closed. Changes are shown whenever a recalculation is made by your cloud service provider. Cloudyn updates its historical data to make sure that all adjustments are recalculated. It also verifies that the costs are shown accurately in it reports.
 
-## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Hogyan egy közvetlen CSP konfigurálja a Cloudyn hozzáférést közvetett CSP-ügyfelek és partnerek számára?
+## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>How can a direct CSP configure Cloudyn access for indirect CSP customers or partners?
 
-Útmutatásért lásd: [közvetett CSP-hozzáférés konfigurálása a Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
+For instructions, see [Configure indirect CSP access in Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
 
-## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Az optimalizáló menüpont jelennek meg, mi okozza?
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>What causes the Optimizer menu item to appear?
 
-Miután hozzáadta az Azure Resource Manager-hozzáférés és a gyűjtött, kell megjelennie a **optimalizáló** lehetőséget. Tekintse meg az Azure Resource Manager-hozzáférésének aktiválásához [hogyan lehet aktiválni az Azure-beli hitelesítő időközét adja meg fiókokat?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+After you add Azure Resource Manager access and data is collected, you should see the **Optimizer** option. To activate Azure Resource Manager access, see [How do I activate unactivated accounts with Azure credentials?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cloudyn-agent-based"></a>A Cloudyn ügynök alapján?
+## <a name="is-cloudyn-agent-based"></a>Is Cloudyn agent based?
 
-Nem. Ügynökök nem használ. A Microsoft insights-beli API-beli virtuális gépek az Azure virtuális gép metrikaadatok összegyűjtött. Ha azt szeretné, az Azure virtuális gépek metrikai adatok gyűjtését, szükségük a diagnosztikai beállítások engedélyezve van.
+Nem. Agents are not used. Azure virtual machine metric data for VMs is gathered from the Microsoft Insights API. If you want to gather metric data from Azure VMs, they need to have diagnostics settings enabled.
 
-## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Hajtsa végre a Cloudyn jelentésekben meg a jelentés egynél több AD-bérlő?
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Do Cloudyn reports show more than one AD tenant per report?
 
-Igen. Is [hozzon létre egy megfelelő felhő entitással](tutorial-user-access.md#create-and-manage-entities) minden AD-bérlő, amely rendelkezik. Majd megtekintheti az összes Azure AD-bérlő adatait és más platform felhőszolgáltatók, például az Amazon Web Services és a Google Cloud Platform.
+Igen. You can [create a corresponding cloud account entity](tutorial-user-access.md#create-and-manage-entities) for each AD tenant that you have. Then you can view all of your Azure AD tenant data and other cloud platform providers including Amazon Web Services and Google Cloud Platform.

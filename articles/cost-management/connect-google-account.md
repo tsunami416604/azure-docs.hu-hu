@@ -1,78 +1,78 @@
 ---
-title: A Google Cloud Platform fiók csatlakozhat az Azure-ban a Cloudyn |} A Microsoft Docs
-description: Költség- és használati adatok megtekintéséhez a Cloudyn jelentésekben a Google Cloud Platform-fiók csatlakoztatásához.
+title: Connect a Google Cloud Platform account to Cloudyn in Azure | Microsoft Docs
+description: Connect a Google Cloud Platform account to view cost and usage data in Cloudyn reports.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 247d959abadc92d70bdd60555a090986743e9322
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937d1b6e0bc9ece0507821538fafb0f5d8c0ef99
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002079"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230128"
 ---
-# <a name="connect-a-google-cloud-platform-account"></a>A Google Cloud Platform-fiók csatlakoztatása
+# <a name="connect-a-google-cloud-platform-account"></a>Connect a Google Cloud Platform account
 
-A Cloudyn csatlakozhat a Google Cloud Platform-fiókját. Miután csatlakozott a fiók a Cloudyn, Cloudyn jelentésekben költség- és használati adatok érhető el. Ez a cikk segít beállítása és csatlakozása a Google-fiókját a Cloudynre.
+You can connect your existing Google Cloud Platform account to Cloudyn. After you connect your account to Cloudyn, cost and usage data is available in Cloudyn reports. This article helps you to configure and connect your Google account with Cloudyn.
 
 
-## <a name="collect-project-information"></a>Projekt adatainak gyűjtése
+## <a name="collect-project-information"></a>Collect project information
 
-Első lépésként a projekttel kapcsolatos információk összegyűjtéséhez.
+You start by gathering information about your project.
 
-1. Jelentkezzen be a Google Cloud Platform kezelőpultját [ https://console.cloud.google.com ](https://console.cloud.google.com).
-2. Tekintse át a Cloudyn, és jegyezze fel a bevezetni kívánt projekt adatokat a **projektnév** és a **Projektazonosító**. Biztosíthatja az adatok későbbi lépéseire praktikus.  
-    ![Projekt nevét és a Google Cloud Platform-konzolon látható a projekt Azonosítóját](./media/connect-google-account/gcp-console01.png)
-3. Ha a számlázás nincs engedélyezve, és a projekthez kapcsolódó, számlázási fiók létrehozása. További információkért lásd: [hozzon létre egy új számlázási fiók](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
+1. Sign in to the Google Cloud Platform console at [https://console.cloud.google.com](https://console.cloud.google.com).
+2. Review the project information that you want to onboard to Cloudyn and note the **Project name** and the **Project ID**. Keep the information handy for later steps.  
+    ![Project name and Project ID shown in the Google Cloud Platform console](./media/connect-google-account/gcp-console01.png)
+3. If billing is not enabled and linked to your project, create a billing account. For more information, see [Create a new billing account](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
-## <a name="enable-storage-bucket-billing-export"></a>Tárolási gyűjtőbe számlázási Exportálás engedélyezése
+## <a name="enable-storage-bucket-billing-export"></a>Enable storage bucket billing export
 
-A Cloudyn lekérdezi a Google-számlázási adatok tárolási kérelemegységeket. Tartsa a **gyűjtőbe neve** és **jelentés előtag** információ hasznos későbbi használatra a Cloudyn-regisztráció során.
+Cloudyn retrieves your Google billing data from a storage bucket. Keep the **Bucket name** and **Report prefix** information handy for later use during Cloudyn registration.
 
-Google Cloud Storage segítségével tárolja a használati jelentések tekintetében a minimális díjak. További információkért lásd: [Cloud Storage díjszabása](https://cloud.google.com/storage/pricing).
+Using Google Cloud Storage to store usage reports incurs minimal fees. For more information, see [Cloud Storage Pricing](https://cloud.google.com/storage/pricing).
 
-1. Ha nem engedélyezte a számlázási exportálása fájlba, kövesse az utasításokat, [egy számlázási Exportálás engedélyezése](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Használhatja a JSON és a fürt megosztott kötetei szolgáltatás számlázási exportálási formátumát.
-2. Ellenkező esetben a Google Cloud Platform-konzolon lépjen **számlázási** > **számlázási exportálási**. Vegye figyelembe a számlázási **gyűjtőbe neve** és **jelentés előtag**.  
-    ![A számlázás exportálási oldalán látható exportálási számlaadatok](./media/connect-google-account/billing-export.png)
+1. If you have not enabled billing export to a file, follow the instructions at [How to enable billing export to a file](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). You can use either JSON or CSV billing export format.
+2. Otherwise, in the Google Cloud Platform console, navigate to **Billing** > **Billing export**. Note your billing **Bucket name** and **Report prefix**.  
+    ![Billing export information shown on the Billing export page](./media/connect-google-account/billing-export.png)
 
-## <a name="enable-google-cloud-platform-apis"></a>A Google Cloud Platform API-k engedélyezése
+## <a name="enable-google-cloud-platform-apis"></a>Enable Google Cloud Platform APIs
 
-Szoftverleltárazási és használati adatokat gyűjthet, a Cloudyn a következő Google Cloud Platform API-k engedélyezve van szüksége:
+To collect usage and asset information, Cloudyn needs the following Google Cloud Platform APIs enabled:
 
 - BigQuery API
 - Google Cloud SQL
-- A Google Cloud Datastore API
+- Google Cloud Datastore API
 - Google Cloud Storage
-- A Google Cloud Storage JSON API
+- Google Cloud Storage JSON API
 - Google Compute Engine API
 
-### <a name="enable-or-verify-apis"></a>Engedélyezi, vagy ellenőrizze az API-k
+### <a name="enable-or-verify-apis"></a>Enable or verify APIs
 
-1. A Google Cloud Platform-konzolon válassza ki a projektet, a Cloudyn regisztrálni kívánt.
-2. Navigáljon a **API-k és szolgáltatások** > **könyvtár**.
-3. Keresés segítségével megkeresheti a korábban felsorolt minden egyes API-t.
-4. Minden API-hoz, ellenőrizze, hogy **API engedélyezve** jelenik meg. Ellenkező esetben kattintson a **engedélyezése**.
+1. In the Google Cloud Platform console, select the project that you want to register with Cloudyn.
+2. Navigate to **APIs & Services** > **Library**.
+3. Use search to find each previously listed API.
+4. For each API, verify that **API enabled** is shown. Otherwise, click **ENABLE**.
 
-## <a name="add-a-google-cloud-account-to-cloudyn"></a>Adjon hozzá egy Google Cloud Cloudyn
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Add a Google Cloud account to Cloudyn
 
-1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) , és jelentkezzen be.
-2. Kattintson a **beállítások** (fogaskerék szimbólum), majd **Felhőfiókok**.
-3. A **fiókkezelés**, jelölje be a **Google-fiókok** fülre, majd **új hozzáadása +** .
-4. A **Google-fiók neve**, adja meg a számlázási fiók e-mail címét, majd kattintson a **tovább**.
-5. A Google-hitelesítési párbeszédpanelen válassza ki, vagy adjon meg egy Google-fiókot, majd **engedélyezése** cloudyn.com hozzáférést a fiókjához.
-6. Adja meg a kérelem projekt információkat, hogy Ön volt-e korábbi feljegyzett. Tartalmazzák **Projektazonosító**, **projekt** neve, **számlázási** gyűjtőbe nevét, és **számlázási fájl** előtag jelentést, majd kattintson a  **Mentés**.  
-    ![Google-projekt hozzáadása a Cloudyn-fiókjába](./media/connect-google-account/add-project.png)
+1. Open the Cloudyn portal from the Azure portal or navigate to [https://azure.cloudyn.com](https://azure.cloudyn.com/) and sign in.
+2. Click **Settings** (cog symbol) and then select **Cloud Accounts**.
+3. In **Accounts Management**, select the **Google Accounts** tab and then click **Add new +** .
+4. In **Google Account Name**, enter the email address for the billing account then click **Next**.
+5. In the Google authentication dialog, select or enter a Google account and then **ALLOW** cloudyn.com access to your account.
+6. Add the request project information that you had previous noted. They include **Project ID**, **Project** name, **billing** bucket name, and **billing file** Report prefix then click **Save**.  
+    ![Add Google project to Cloudyn account](./media/connect-google-account/add-project.png)
 
-A Google-fiók megjelenik a fiókok listáját, és üzenetnek kell megjelennie **hitelesített**. Azt a Google-projekt neve és azonosítója kell jelennek meg, és rendelkezik egy zöld pipa szimbólumot. Fiók állapota a következő: **befejezve**.
+Your Google account appears in the list of accounts and it should say **Authenticated**. Under it, your Google project name and ID should appear and have a green check mark symbol. Account Status should say **Completed**.
 
-Néhány órán belül a Cloudyn-jelentések megjelenítése a Google költség- és használati adatok.
+Within a few hours, Cloudyn reports show Google cost and usage information.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A Cloudyn kapcsolatos további információkért folytassa az [tekintse át a használat és költségek](./tutorial-review-usage.md) Cloudyn oktatóanyagot.
+- To learn more about Cloudyn, continue to the [Review usage and costs](./tutorial-review-usage.md) tutorial for Cloudyn.

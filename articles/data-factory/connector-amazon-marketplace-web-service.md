@@ -1,61 +1,59 @@
 ---
-title: Adatok másolása az Amazon Marketplace webszolgáltatásból Azure Data Factory használatával
-description: Megtudhatja, hogyan másolhat adatokat az Amazon Marketplace webszolgáltatásból egy Azure Data Factory-folyamat másolási tevékenységének használatával.
+title: Copy data from Amazon Marketplace Web Service
+description: Learn how to copy data from Amazon Marketplace Web Service to supported sink data stores by using a copy activity in an Azure Data Factory pipeline.
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 8613b52ff8d04b578342a34fe24d6e9e12a8a98c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.date: 08/01/2018
+ms.openlocfilehash: 24e0de3efec4e2d442f746e19f4c30363f0b4bfa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681413"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218757"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Adatok másolása az Amazon Marketplace webszolgáltatásból Azure Data Factory használatával
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Copy data from Amazon Marketplace Web Service using Azure Data Factory
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok az Amazon Marketplace webszolgáltatásból való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+This article outlines how to use the Copy Activity in Azure Data Factory to copy data from Amazon Marketplace Web Service. It builds on the [copy activity overview](copy-activity-overview.md) article that presents a general overview of copy activity.
 
-## <a name="supported-capabilities"></a>Támogatott képességek
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Ez az Amazon Marketplace webszolgáltatás-összekötő a következő tevékenységek esetében támogatott:
+This Amazon Marketplace Web Service connector is supported for the following activities:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az Amazon Marketplace Web Service-ből bármilyen támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+You can copy data from Amazon Marketplace Web Service to any supported sink data store. For a list of data stores that are supported as sources/sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
+Azure Data Factory provides a built-in driver to enable connectivity, therefore you don't need to manually install any driver using this connector.
 
 ## <a name="getting-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek az Amazon Marketplace webszolgáltatás-összekötőhöz tartozó Data Factory-entitások definiálására szolgálnak.
+The following sections provide details about properties that are used to define Data Factory entities specific to Amazon Marketplace Web Service connector.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Linked service properties
 
-Az Amazon Marketplace webszolgáltatás társított szolgáltatása a következő tulajdonságokat támogatja:
+The following properties are supported for Amazon Marketplace Web Service linked service:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AmazonMWS** | Igen |
-| endpoint | Az Amazon MWS-kiszolgáló végpontja (azaz mws.amazonservices.com)  | Igen |
-| marketplaceID | Az Amazon Marketplace-azonosító, amelyről le szeretné kérni az adatok beolvasását. Az adatok több piactér-azonosítóból való lekéréséhez vesszővel (`,`) válassza el őket. (A2EUQ1WTGCTBG2)  | Igen |
-| sellerID | Az Amazon Seller azonosítója.  | Igen |
-| mwsAuthToken | Az Amazon MWS hitelesítési jogkivonat. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| accessKeyId | Az adateléréshez használt hozzáférési kulcs azonosítója.  | Igen |
-| secretKey | Az adateléréshez használt titkos kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték TRUE (igaz).  | Nem |
-| useHostVerification | Azt adja meg, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték TRUE (igaz).  | Nem |
-| usePeerVerification | Meghatározza, hogy az SSL protokollon keresztüli kapcsolódáskor ellenőrizni kell-e a kiszolgáló identitását. Az alapértelmezett érték TRUE (igaz).  | Nem |
+| type | The type property must be set to: **AmazonMWS** | Igen |
+| endpoint | The endpoint of the Amazon MWS server, (that is, mws.amazonservices.com)  | Igen |
+| marketplaceID | The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple Marketplace IDs, separate them with a comma (`,`). (that is, A2EUQ1WTGCTBG2)  | Igen |
+| sellerID | The Amazon seller ID.  | Igen |
+| mwsAuthToken | The Amazon MWS authentication token. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Igen |
+| accessKeyId | The access key ID used to access data.  | Igen |
+| secretKey | The secret key used to access data. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Igen |
+| useEncryptedEndpoints | Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.  | Nem |
+| useHostVerification | Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.  | Nem |
+| usePeerVerification | Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.  | Nem |
 
 **Példa**
 
@@ -82,16 +80,16 @@ Az Amazon Marketplace webszolgáltatás társított szolgáltatása a következ�
 }
 ```
 
-## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
+## <a name="dataset-properties"></a>Dataset properties
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az Amazon Marketplace webszolgáltatás-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+For a full list of sections and properties available for defining datasets, see the [datasets](concepts-datasets-linked-services.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service dataset.
 
-Az adatok az Amazon Marketplace webszolgáltatásból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **AmazonMWSObject**értékre. A következő tulajdonságok támogatottak:
+To copy data from Amazon Marketplace Web Service, set the type property of the dataset to **AmazonMWSObject**. The following properties are supported:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonMWSObject** | Igen |
-| tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| type | The type property of the dataset must be set to: **AmazonMWSObject** | Igen |
+| tableName | Name of the table. | No (if "query" in activity source is specified) |
 
 **Példa**
 
@@ -113,16 +111,16 @@ Az adatok az Amazon Marketplace webszolgáltatásból való másolásához áll�
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz az Amazon Marketplace webszolgáltatás-forrás által támogatott tulajdonságok listáját tartalmazza.
+For a full list of sections and properties available for defining activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service source.
 
-### <a name="amazon-mws-as-source"></a>Amazon MWS forrásként
+### <a name="amazon-mws-as-source"></a>Amazon MWS as source
 
-Az adatok az Amazon Marketplace webszolgáltatásból való másolásához állítsa a forrás típusát a másolás tevékenység **AmazonMWSSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+To copy data from Amazon Marketplace Web Service, set the source type in the copy activity to **AmazonMWSSource**. The following properties are supported in the copy activity **source** section:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonMWSSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| type | The type property of the copy activity source must be set to: **AmazonMWSSource** | Igen |
+| lekérdezés | Use the custom SQL query to read data. Például: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | No (if "tableName" in dataset is specified) |
 
 **Példa**
 
@@ -156,9 +154,9 @@ Az adatok az Amazon Marketplace webszolgáltatásból való másolásához áll�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Következő lépések
+For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).

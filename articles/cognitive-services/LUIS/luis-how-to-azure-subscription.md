@@ -1,7 +1,7 @@
 ---
-title: Szerzői és futtatókörnyezeti kulcsok használata – LUIS
+title: How to use authoring and runtime keys - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ha először használja a Language Understanding (LUIS), nem kell létrehoznia authoring-kulcsot. Ha közzé szeretné tenni az alkalmazást, majd használja a futásidejű végpontját, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
+description: When you first use Language Understanding (LUIS), you do not need to create an authoring key. When you intend to publish the app, then use your runtime endpoint, you need to create and assign the runtime key to the app.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,214 +9,212 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 957b12ad00f53a5aed7ff2a1ecd4afd21e58eb93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467447"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225558"
 ---
-# <a name="using-authoring-and-runtime-resource-keys"></a>Szerzői és futtatókörnyezeti erőforrás-kulcsok használata
+# <a name="using-authoring-and-runtime-resource-keys"></a>Using authoring and runtime resource keys
 
-A szerzői és futtatókörnyezeti erőforrások hitelesítést biztosítanak a LUIS-alkalmazás és az előrejelzési végpont számára.
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+Authoring and runtime resources provide authentication to your LUIS app and prediction endpoint.
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-Amikor bejelentkezik a LUIS-portálra, a következő lépések közül választhat:
+When you sign in to the LUIS portal, you can choose to continue with:
 
-* ingyenes [próbaverzió](#trial-key) , amely lehetővé teszi a szerzői műveletek és néhány előrejelzési végpont lekérdezését.
-* egy Azure [Luis authoring](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) -erőforrás. 
+* a free [trial key](#trial-key) - providing authoring and a few prediction endpoint queries.
+* an Azure [LUIS authoring](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) resource. 
 
 
 <a name="starter-key"></a>
 
-## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Jelentkezzen be a LUIS Portalra, és kezdje el a szerzői műveletek
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Sign in to LUIS portal and begin authoring
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai) , és fogadja el a használati feltételeket.
-1. Indítsa el a LUIS alkalmazást úgy, hogy kiválasztja a használni kívánt LUIS authoring-kulcs típusát: ingyenes próbaverziós kulcs vagy új Azure LUIS authoring Key. 
+1. Sign in to [LUIS portal](https://www.luis.ai) and agree to the terms of use.
+1. Begin your LUIS app by choosing which type of LUIS authoring key you would like to use: free trial key, or new Azure LUIS authoring key. 
 
-    ![Language Understanding szerzői erőforrás típusának kiválasztása](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    ![Choose a type of Language Understanding authoring resource](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-1. Ha elkészült az erőforrás-kiválasztási folyamattal, [hozzon létre egy új alkalmazást](luis-how-to-start-new-app.md#create-new-app-in-luis). 
+1. When you are done with your resource selection process, [create a new app](luis-how-to-start-new-app.md#create-new-app-in-luis). 
 
-## <a name="trial-key"></a>Próbaverziós kulcs
+## <a name="trial-key"></a>Trial key
 
-A próbaverzió (kezdő) kulcsát Önnek kell megadnia. A hitelesítési kulcsként szolgál az előrejelzési végpont futtatókörnyezetének lekérdezéséhez, havonta akár 1000 lekérdezéssel. 
+The trial (starter) key is provided for you. It is used as your authentication key to query the prediction endpoint runtime, up to 1000 queries a month. 
 
-A **felhasználói beállítások** lapon és a " **Manage-> Azure-erőforrások** " oldalon is látható a Luis-portálon. 
+It is visible on both the **User Settings** page and the **Manage -> Azure resources** pages in the LUIS portal. 
 
-Ha készen áll az előrejelzési végpont közzétételére, hozzon létre és rendeljen hozzá létrehozási és előrejelzési futtatókörnyezeti kulcsokat az alapszintű kulcs funkcióinak cseréjéhez. 
+When you are ready to publish your prediction endpoint, create and assign authoring and prediction runtime keys, to replace the starter key functionality. 
 
-## <a name="create-resources-in-the-azure-portal"></a>Erőforrások létrehozása a Azure Portalban
+## <a name="create-resources-in-the-azure-portal"></a>Create resources in the Azure portal
 
-1. [Ezzel a hivatkozással](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) megnyithatja a Azure Portalt az erőforrás-létrehozáshoz.
-1. Válassza **mindkettőt** a szerzői műveletek és az előrejelzési végpont futtatókörnyezeti kulcsának létrehozásához. 
-1. Adja meg az erőforrás létrehozásához szükséges adatokat, majd válassza a **Létrehozás** lehetőséget a folyamat befejezéséhez.
+1. Use [this link](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) to open the Azure portal at for resource creation.
+1. Select **Both** to create an authoring and a prediction endpoint runtime key. 
+1. Enter the information required to create the resource then select **Create** to finish the process.
 
-    ![A Language Understanding-erőforrás létrehozása](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
+    ![Create the language understanding resource](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Name (Név)|Cél|
+    |Név|Rendeltetés|
     |--|--|
-    |Erőforrás neve| Egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használ.|
-    |Előfizetés neve| az erőforrásért fizetendő előfizetés.|
-    |Erőforráscsoport| Egy kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik, hogy az Azure-erőforrásokat az adott régióban való hozzáféréshez és felügyelethez csoportosítsa.|
-    |Szerzői hely|A modellhez társított régió.|
-    |A szerzői díjak szintjei|Az árképzési szint meghatározza a másodpercenkénti maximális tranzakciót és a havi értéket.|
-    |Futtatókörnyezet helye|A közzétett előrejelzési végpont futtatókörnyezetéhez társított régió.|
-    |Futtatókörnyezet árképzési szintje|Az árképzési szint meghatározza a másodpercenkénti maximális tranzakciót és a havi értéket.|
+    |Erőforrás neve| A custom name you choose, used as part of the URL for your authoring and prediction endpoint queries.|
+    |Subscription name| the subscription that will be billed for the resource.|
+    |Erőforráscsoport| A custom resource group name you choose or create. Resource groups allow you to group Azure resources for access and management in the same region.|
+    |Authoring location|The region associated with your model.|
+    |Authoring pricing tier|The pricing tier determines the maximum transaction per second and month.|
+    |Runtime location|The region associated with your published prediction endpoint runtime.|
+    |Runtime pricing tier|The pricing tier determines the maximum transaction per second and month.|
 
-    Ha mindkét erőforrás létrejött, rendelje hozzá az erőforrásokat a LUIS-portálhoz.
+    Once both resources are created, assign the resources in the LUIS portal.
 
-## <a name="create-resources-in-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
+## <a name="create-resources-in-azure-cli"></a>Create resources in Azure CLI
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat. 
+Use the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) to create each resource individually. 
 
-Erőforrás-`kind`:
+Resource `kind`:
 
-* Szerzői műveletek: `LUIS.Authoring`
-* Előrejelzés: `LUIS` 
+* Authoring: `LUIS.Authoring`
+* Prediction: `LUIS` 
 
-1. Jelentkezzen be az Azure CLI-be:
+1. Sign in to the Azure CLI:
 
     ```console
     az login
     ```
 
-    Ekkor megnyílik egy böngésző, amely lehetővé teszi a megfelelő fiók kiválasztását és a hitelesítés megadását.
+    This opens a browser to allow you to select the correct account and provide authentication.
 
-1. Hozzon létre egy `my-luis-authoring-resource` nevű **Luis authoring-erőforrást**a `westus` régióhoz `my-resource-group` nevű _meglévő_ erőforráscsoport `LUIS.Authoring`. 
+1. Create a **LUIS authoring resource**, of kind `LUIS.Authoring`, named `my-luis-authoring-resource` in the _existing_ resource group named `my-resource-group` for the `westus` region. 
 
     ```console
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Hozzon létre egy **Luis előrejelzési végpont-erőforrást**, amely a `westus` régióhoz `my-resource-group` nevű _meglévő_ erőforráscsoport `my-luis-prediction-resource` nevű `LUIS`. Ha az ingyenes szintjénél nagyobb átviteli sebességet szeretne, módosítsa `F0`t `S0`re. További információ a [díjszabási szintekről és az átviteli sebességről](luis-boundaries.md#key-limits).
+1. Create a **LUIS prediction endpoint resource**, of kind `LUIS`, named `my-luis-prediction-resource` in the _existing_ resource group named `my-resource-group` for the `westus` region. If you want a higher throughput than the free tier, change `F0` to `S0`. Learn more about [pricing tiers and throughput](luis-boundaries.md#key-limits).
 
     ```console
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note] 
-    > A LUIS portál **nem** használja ezeket a kulcsokat, amíg hozzá nem rendelik a Luis portálon a **> Azure-erőforrások kezeléséhez**.
+    > This keys are **not** used by the LUIS portal until they are assigned in the LUIS portal on the **Manage -> Azure resources**.
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Szerzői erőforrás kiosztása a LUIS-portálon az összes alkalmazáshoz
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Assign an authoring resource in the LUIS portal for all apps
 
-Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS összes alkalmazásához. Az alábbi eljárás az összes alkalmazást egyetlen szerzői erőforráshoz rendeli.
+You can assign an authoring resource for a single app or for all apps in LUIS. The following procedure assigns all apps to a single authoring resource.
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
-1. A felső navigációs sávon kattintson a jobb szélre, válassza ki a felhasználói fiókját, majd válassza a **Beállítások**lehetőséget.
-1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Kattintson a **Mentés** gombra. 
+1. Sign in to the [LUIS portal](https://www.luis.ai).
+1. At the top navigation bar, to the far right, select your user account, then select **Settings**.
+1. On the **User Settings** page, select **Add authoring resource** then select an existing authoring resource. Kattintson a **Mentés** gombra. 
 
-## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
+## <a name="assign-a-resource-to-an-app"></a>Assign a resource to an app
 
-A következő eljárással hozzárendelhet egyetlen erőforrást, szerzői vagy előrejelzési végponti futtatókörnyezetet az alkalmazáshoz.
+You can assign a single resource, authoring or prediction endpoint runtime, to an app with the following procedure.
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Navigáljon a **Manage-> Azure-erőforrások** lapra.
+1. Sign in to the [LUIS portal](https://www.luis.ai), then select an app from the **My apps** list.
+1. Navigate to the **Manage -> Azure resources** page.
 
-    ![A LUIS-portálon kattintson a Manage-> Azure-erőforrások elemre, és rendeljen hozzá egy erőforrást az alkalmazáshoz.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+    ![Select the Manage -> Azure resources in the LUIS portal to assign a resource to the app.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd jelölje be az **előrejelzési erőforrás hozzáadása** vagy a **szerzői erőforrás hozzáadása** gomb. 
-1. A megfelelő erőforrás megkereséséhez válassza ki a mezőket az űrlapon, majd válassza a **Mentés**lehetőséget.  
+1. Select the Prediction or Authoring resource tab then select the **Add prediction resource** or **Add authoring resource** button. 
+1. Select the fields in the form to find the correct resource, then select **Save**.  
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>Futásidejű erőforrás kiosztása a LUIS-portál használata nélkül
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>Assign runtime resource without using LUIS portal
 
-Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes automatizálni egy LUIS Runtime-erőforrás hozzárendelését egy LUIS-alkalmazásba. Ehhez a következő lépéseket kell elvégeznie:
+For automation purposes such as a CI/CD pipeline, you may want to automate the assignment of a LUIS runtime resource to a LUIS app. In order to do that, you need to perform the following steps:
 
-1. Azure Resource Manager jogkivonat beszerzése a [webhelyről](https://resources.azure.com/api/token?plaintext=true). Ez a jogkivonat a lejárat után azonnal használatba kerül. A kérelem Azure Resource Manager tokent ad vissza.
+1. Get an Azure Resource Manager token from this [website](https://resources.azure.com/api/token?plaintext=true). This token does expire so use it immediately. The request returns an Azure Resource Manager token.
 
-    ![Azure Resource Manager jogkivonat igénylése és Azure Resource Manager token fogadása](./media/luis-manage-keys/get-arm-token.png)
+    ![Request Azure Resource Manager token and receive Azure Resource Manager token](./media/luis-manage-keys/get-arm-token.png)
 
-1. A token használatával kérheti a LUIS Runtime erőforrásait az előfizetések között, a [Get Luis Azure accounts API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)-ból, amelyhez a felhasználói fiókja hozzáfér. 
+1. Use the token to request the LUIS runtime resources across subscriptions, from the [Get LUIS azure accounts API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), which your user account has access to. 
 
-    A POST API-nak a következő beállításokat kell megadnia:
+    This POST API requires the following settings:
 
-    |Fejléc|Érték|
+    |Fejléc|Value (Díj)|
     |--|--|
-    |`Authorization`|A `Authorization` értéke `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szó `Bearer` és egy szóköznek.| 
-    |`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
+    |`Authorization`|The value of `Authorization` is `Bearer {token}`. Notice that the token value must be preceded by the word `Bearer` and a space.| 
+    |`Ocp-Apim-Subscription-Key`|Your authoring key.|
 
-    Ez az API a LUIS-előfizetések JSON-objektumainak egy tömbjét adja vissza, beleértve az előfizetés-azonosítót, az erőforráscsoportot és az erőforrás nevét, amelyet a rendszer a fiók neveként adott vissza. Keresse meg a tömb egy olyan elemét, amely a LUIS-alkalmazáshoz rendelendő LUIS-erőforrás. 
+    This API returns an array of JSON objects of your LUIS subscriptions including subscription ID, resource group, and resource name, returned as account name. Find the one item in the array that is the LUIS resource to assign to the LUIS app. 
 
-1. Rendelje hozzá a tokent a LUIS-erőforráshoz a [Luis Azure-fiókok egy Application API-hoz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) való hozzárendelésével. 
+1. Assign the token to the LUIS resource with the [Assign a LUIS azure accounts to an application](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API. 
 
-    A POST API-nak a következő beállításokat kell megadnia:
+    This POST API requires the following settings:
 
-    |Típus|Beállítás|Érték|
+    |Type (Típus)|Beállítás|Value (Díj)|
     |--|--|--|
-    |Fejléc|`Authorization`|A `Authorization` értéke `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szó `Bearer` és egy szóköznek.|
-    |Fejléc|`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
+    |Fejléc|`Authorization`|The value of `Authorization` is `Bearer {token}`. Notice that the token value must be preceded by the word `Bearer` and a space.|
+    |Fejléc|`Ocp-Apim-Subscription-Key`|Your authoring key.|
     |Fejléc|`Content-type`|`application/json`|
-    |QueryString|`appid`|A LUIS-app azonosítója. 
-    |Törzs||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "ResourceGroup-2",<br>"AccountName": "Luis-USWest-S0-2"}|
+    |Querystring|`appid`|A LUIS-app azonosítója. 
+    |Törzs||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
-    Ha ez az API sikeres, egy 201 által létrehozott állapotot ad vissza. 
+    When this API is successful, it returns a 201 - created status. 
 
-## <a name="unassign-resource"></a>Erőforrás hozzárendelésének megszüntetése
+## <a name="unassign-resource"></a>Unassign resource
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Navigáljon a **Manage-> Azure-erőforrások** lapra.
-1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd válassza az erőforrás **hozzárendelésének megszüntetése** gombot. 
+1. Sign in to the [LUIS portal](https://www.luis.ai), then select an app from the **My apps** list.
+1. Navigate to the **Manage -> Azure resources** page.
+1. Select the Prediction or Authoring resource tab then select the **Unassign resource** button for the resource. 
 
-Ha törli az erőforrás hozzárendelését, az nem törlődik az Azure-ból. Csak a LUIS-ról van csatolva. 
+When you unassign a resource, it is not deleted from Azure. It is only unlinked from LUIS. 
 
-## <a name="reset-authoring-key"></a>Szerzői kulcs alaphelyzetbe állítása
+## <a name="reset-authoring-key"></a>Reset authoring key
 
-**Az [áttelepített erőforrás-alkalmazások létrehozásához](luis-migration-authoring.md)** : Ha a szerzői kulcs biztonsága sérül, állítsa alaphelyzetbe a kulcsot a Azure Portal az adott authoring Resource **kulcsok** lapján. 
+**For [authoring resource migrated](luis-migration-authoring.md) apps**: if your authoring key is compromised, reset the key in the Azure portal on the **Keys** page for that authoring resource. 
 
-**Még nem telepített alkalmazások esetén**: a kulcs alaphelyzetbe áll a Luis-portál összes alkalmazásán. Ha a szerzői API-kon keresztül készíti el az alkalmazásokat, a OCP-APIM-Subscription-Key értékét az új kulcsra kell módosítania.
+**For apps that have not migrated yet**: the key is reset on all your apps in the LUIS portal. If you author your apps via the authoring APIs, you need to change the value of Ocp-Apim-Subscription-Key to the new key.
 
-## <a name="regenerate-azure-key"></a>Azure-kulcs újrakészítése
+## <a name="regenerate-azure-key"></a>Regenerate Azure key
 
-Az Azure-kulcsok újragenerálása a Azure Portal a **kulcsok** lapon.
+Regenerate the Azure keys from the Azure portal, on the **Keys** page.
 
-## <a name="delete-account"></a>Fiók törlése
+## <a name="delete-account"></a>Delete account
 
-Az adatok [tárolásával és eltávolításával](luis-concept-data-storage.md#accounts) kapcsolatos információkért tekintse meg a fiók törlése után megjelenő adatokat.
+See [Data storage and removal](luis-concept-data-storage.md#accounts) for information about what data is deleted when you delete your account.
 
 ## <a name="change-pricing-tier"></a>A tarifacsomag módosítása
 
-1.  Az [Azure](https://portal.azure.com)-ban keresse meg a Luis-előfizetését. Válassza ki a LUIS-előfizetést.
-    ![a LUIS-előfizetés megkeresése](./media/luis-usage-tiers/find.png)
-1.  A rendelkezésre álló díjszabási szintek megtekintéséhez válassza az **árképzési szintet** . 
-    ![tekintse meg az árképzési szinteket](./media/luis-usage-tiers/subscription.png)
-1.  Válassza ki a díjszabási szintet, és válassza a **kiválasztás** lehetőséget a módosítás mentéséhez. 
-    ![megváltoztathatja a LUIS fizetési szintet](./media/luis-usage-tiers/plans.png)
-1.  A díjszabás megváltozása után egy előugró ablak ellenőrzi az új díjszabási szintet. 
-    ![a LUIS fizetési szintet](./media/luis-usage-tiers/updated.png)
-1. Ne felejtse el [hozzárendelni ezt a végponti kulcsot](#assign-a-resource-to-an-app) a **közzétételi** lapon, és használja azt az összes végponti lekérdezésben. 
+1.  In [Azure](https://portal.azure.com), find your LUIS subscription. Select the LUIS subscription.
+    ![Find your LUIS subscription](./media/luis-usage-tiers/find.png)
+1.  Select **Pricing tier** in order to see the available pricing tiers. 
+    ![View pricing tiers](./media/luis-usage-tiers/subscription.png)
+1.  Select the pricing tier and select **Select** to save your change. 
+    ![Change your LUIS payment tier](./media/luis-usage-tiers/plans.png)
+1.  When the pricing change is complete, a pop-up window verifies the new pricing tier. 
+    ![Verify your LUIS payment tier](./media/luis-usage-tiers/updated.png)
+1. Remember to [assign this endpoint key](#assign-a-resource-to-an-app) on the **Publish** page and use it in all endpoint queries. 
 
-## <a name="viewing-azure-resource-metrics"></a>Azure-erőforrás metrikáinak megtekintése
+## <a name="viewing-azure-resource-metrics"></a>Viewing Azure resource metrics
 
-### <a name="viewing-azure-resource-summary-usage"></a>Az Azure-erőforrások összegző használatának megtekintése
-A LUIS használati adatait az Azure-ban tekintheti meg. Az **Áttekintés** oldalon a legutóbbi összefoglaló információk, például a hívások és a hibák láthatók. Ha LUIS-végponti kérelmet hoz létre, azonnal tekintse meg az **Áttekintés lapot**, és akár öt percet is igénybe vehet, hogy a használat megjelenjen.
+### <a name="viewing-azure-resource-summary-usage"></a>Viewing Azure resource summary usage
+You can view LUIS usage information in Azure. The **Overview** page shows recent summary information including calls and errors. If you make a LUIS endpoint request, then immediately watch the **Overview page**, allow up to five minutes for the usage to show up.
 
-![Összefoglaló használat megtekintése](./media/luis-usage-tiers/overview.png)
+![Viewing summary usage](./media/luis-usage-tiers/overview.png)
 
-### <a name="customizing-azure-resource-usage-charts"></a>Azure-Erőforrás-használati diagramok testreszabása
-A metrikák részletesebb áttekintést nyújtanak az adatokról.
+### <a name="customizing-azure-resource-usage-charts"></a>Customizing Azure resource usage charts
+Metrics provides a more detailed view into the data.
 
-![Alapértelmezett metrikák](./media/luis-usage-tiers/metrics-default.png)
+![Default metrics](./media/luis-usage-tiers/metrics-default.png)
 
-A metrikák diagramjait az időszak és a metrika típusára állíthatja be. 
+You can configure your metrics charts for time period and metric type. 
 
 ![Egyéni metrikák](./media/luis-usage-tiers/metrics-custom.png)
 
-### <a name="total-transactions-threshold-alert"></a>Tranzakciók teljes küszöbértékének riasztása
-Ha szeretné tudni, hogy mikor ért el egy bizonyos tranzakciós küszöbértéket, például 10 000 tranzakciót, létrehozhat egy riasztást. 
+### <a name="total-transactions-threshold-alert"></a>Total transactions threshold alert
+If you would like to know when you have reached a certain transaction threshold, for example 10,000 transactions, you can create an alert. 
 
-![Alapértelmezett riasztások](./media/luis-usage-tiers/alert-default.png)
+![Default alerts](./media/luis-usage-tiers/alert-default.png)
 
-Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akinek meg kell kapnia a riasztást. Webhookok hozzáadása a riasztást fogadó összes rendszerhez. Egy logikai alkalmazást is futtathat a riasztás elindítása után. 
+Add a metric alert for the **total calls** metric for a certain time period. Add email addresses of all people that should receive the alert. Add webhooks for all systems that should receive the alert. You can also run a logic app when the alert is triggered. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
-* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
-* Útmutató szerzői és futtatókörnyezeti erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
-* Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md) 
+* Learn [how to use versions](luis-how-to-manage-versions.md) to control your app life cycle.
+* Understand the concepts including the [authoring resource](luis-concept-keys.md#authoring-key) and [contributors](luis-concept-keys.md#contributions-from-other-authors) on that resource.
+* Learn [how to create](luis-how-to-azure-subscription.md) authoring and runtime resources
+* Migrate to the new [authoring resource](luis-migration-authoring.md) 

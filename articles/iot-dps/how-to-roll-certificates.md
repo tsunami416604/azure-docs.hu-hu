@@ -1,217 +1,216 @@
 ---
-title: Hogyan szeretné visszaállítani az X.509-tanúsítványok az Azure IoT Hub Device Provisioning Service |} A Microsoft Docs
-description: Hogyan szeretné visszaállítani a Device Provisioning service-példányt az X.509-tanúsítványok
+title: Roll X.509 certificates in Azure IoT Hub Device Provisioning Service
+description: How to roll X.509 certificates with your Device Provisioning service instance
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626955"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228758"
 ---
-# <a name="how-to-roll-x509-device-certificates"></a>Hogyan szeretné visszaállítani az X.509 tanúsítványok
+# <a name="how-to-roll-x509-device-certificates"></a>How to roll X.509 device certificates
 
-Az IoT-megoldás élettartama során kell visszaállítani a tanúsítványokat. Két fő oka a működés közbeni tanúsítványok lenne a biztonsági incidensek és a tanúsítvány lejárhat. 
+During the lifecycle of your IoT solution, you'll need to roll certificates. Two of the main reasons for rolling certificates would be a security breach, and certificate expirations. 
 
-Biztonsági szempontból ajánlott a rendszer biztonságának megsértése esetén a működés közbeni tanúsítványok. Részeként [tegyük fel, illetéktelen behatolás módszertan](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft szakemberekkel, reaktív jellegű biztonsági folyamatok kellene helyen költségének kiszámítására együtt van szükség. A működés közbeni az eszköztanúsítványok biztonsági folyamat része lehet. A vállalati biztonsági igényeket, hogy a megoldás a gyakoriságot, amelyben a tanúsítvány forgassa függ. Szigorúan bizalmas adatokhoz is érintő megoldások rendelkező ügyfelek bevezetése tanúsítvány naponta, míg mások állítja a tanúsítványok minden néhány évben.
+Rolling certificates is a security best practice to help secure your system in the event of a breach. As part of [Assume Breach Methodology](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft advocates the need for having reactive security processes in place along with preventative measures. Rolling your device certificates should be included as part of these security processes. The frequency in which you roll your certificates will depend on the security needs of your solution. Customers with solutions involving highly sensitive data may roll certificate daily, while others roll their certificates every couple years.
 
-A működés közbeni eszköztanúsítványok magában foglalja az eszközön, és az IoT hubon tárolt tanúsítvány frissítése. Ezt követően az eszköz segítségével építse ki újra a magát az IoT hub használata szokásos [automatikus kiépítés](concepts-auto-provisioning.md) a Device Provisioning Service szolgáltatással.
+Rolling device certificates will involve updating the certificate stored on the device and the IoT hub. Afterwards, the device can reprovision itself with the IoT hub using normal [auto-provisioning](concepts-auto-provisioning.md) with the Device Provisioning Service.
 
 
-## <a name="obtain-new-certificates"></a>Új tanúsítvány beszerzése
+## <a name="obtain-new-certificates"></a>Obtain new certificates
 
-Számos módon az IoT-eszközök új tanúsítványokat szerezzenek be. Ezek közé tartozik a tanúsítványok beszerzése az eszköz gyári, a saját tanúsítványok létrehozásához, és hozzon létre egy külső gyártótól származó tanúsítvány létrehozása, kezelése. 
+There are many ways to obtain new certificates for your IoT devices. These include obtaining certificates from the device factory, generating your own certificates, and having a third party manage certificate creation for you. 
 
-Tanúsítványok alá van írva egymással egy, a legfelső szintű Hitelesítésszolgáltatói tanúsítvány megbízhatósági láncában alkotnak egy [levéltanúsítványt](concepts-security.md#end-entity-leaf-certificate). Aláíró tanúsítvány az a megbízhatósági lánc végén levéltanúsítványt aláírásához használt tanúsítvány. Aláíró tanúsítvány egy legfelső szintű Hitelesítésszolgáltatói tanúsítványt, és a egy közbenső tanúsítvány megbízhatósági láncában is lehetnek. További információkért lásd: [X.509 tanúsítványok](concepts-security.md#x509-certificates).
+Certificates are signed by each other to form a chain of trust from a root CA certificate to a [leaf certificate](concepts-security.md#end-entity-leaf-certificate). A signing certificate is the certificate used to sign the leaf certificate at the end of the chain of trust. A signing certificate can be a root CA certificate, or an intermediate certificate in chain of trust. For more information, see [X.509 certificates](concepts-security.md#x509-certificates).
  
-Aláíró tanúsítvány beszerzése két különböző módja van. Az első lehetőség, amelyhez használata javasolt éles rendszerek esetén, az aláíró tanúsítvány legfelső szintű hitelesítésszolgáltatótól (CA) vásárolhat. Ezzel a módszerrel kapcsolódik a biztonsági le egy megbízható forrásból. 
+There are two different ways to obtain a signing certificate. The first way, which is recommended for production systems, is to purchase a signing certificate from a root certificate authority (CA). This way chains security down to a trusted source. 
 
-A második módja, ha saját X.509-tanúsítványokat OpenSSL hasonló eszköz használatával. Ez a megközelítés kiválóan alkalmazható az X.509-tanúsítványokat tesztelése, de néhány, körül biztonsági garanciákat nyújt. Azt javasoljuk, hogy csak ezt a módszert használja, ha a saját hitelesítésszolgáltató-szolgáltató segítségével előkészített tesztelési.
+The second way is to create your own X.509 certificates using a tool like OpenSSL. This approach is great for testing X.509 certificates but provides few guarantees around security. We recommend you only use this approach for testing unless you prepared to act as your own CA provider.
  
 
-## <a name="roll-the-certificate-on-the-device"></a>A tanúsítvány visszaállítani az eszközt
+## <a name="roll-the-certificate-on-the-device"></a>Roll the certificate on the device
 
-Tanúsítványokat az eszközön mindig például biztonságos helyen kell tárolni egy [hardveres biztonsági modul (HSM)](concepts-device.md#hardware-security-module). A bevezetés során fokozatosan eszköztanúsítványok módja hogyan létrehozott és az eszközök az elsőként telepített függ. 
+Certificates on a device should always be stored in a safe place like a [hardware security module (HSM)](concepts-device.md#hardware-security-module). The way you roll device certificates will depend on how they were created and installed in the devices in the first place. 
 
-Ha a tanúsítványok kapott egy harmadik féltől származó, meg kell megvizsgáljuk hogyan állítja, a tanúsítványaikat. A folyamat szerepelni fog a megállapodás velük, vagy lehet egy külön szolgáltatás kínálnak. 
+If you got your certificates from a third party, you must look into how they roll their certificates. The process may be included in your arrangement with them, or it may be a separate service they offer. 
 
-Ha a saját tanúsítványok felügyeli, kell a saját folyamatát, a tanúsítványok frissítése. Ellenőrizze, hogy mindkét korábbi és új levél tanúsítványának rendelkeznie kell az azonos köznapi név (CN). Az azonos CN azzal az eszköz is építse ki újra a magát egy ismétlődő regisztrációs bejegyzés létrehozása nélkül. 
+If you're managing your own device certificates, you'll have to build your own pipeline for updating certificates. Make sure both old and new leaf certificates have the same common name (CN). By having the same CN, the device can reprovision itself without creating a duplicate registration record. 
 
 
-## <a name="roll-the-certificate-in-the-iot-hub"></a>A tanúsítvány állítsa az IoT hubban
+## <a name="roll-the-certificate-in-the-iot-hub"></a>Roll the certificate in the IoT hub
 
-Az eszköz tanúsítványát manuálisan felveheti egy IoT hubra. A tanúsítvány Device Provisioning service-példány használatával is automatizálható. Ebben a cikkben fogja feltételezzük a Device Provisioning service-példány automatikus kiépítés támogatásához használja.
+The device certificate can be manually added to an IoT hub. The certificate can also be automated using a Device Provisioning service instance. In this article, we'll assume a Device Provisioning service instance is being used to support auto-provisioning.
 
-Amikor egy eszköz kezdetben kiépítése keresztül az Automatikus kiépítés, a rendszerindítás-fel, és kapcsolatba lép a kiépítési szolgáltatás. A kiépítési szolgáltatás által az IoT hub, az eszköz levél tanúsítványt használ, a hitelesítő adatokat az eszközidentitás létrehozása előtt egy identitás-ellenőrzést végrehajtó válaszol. A kiépítési szolgáltatás majd arra utasítja az eszközt, mely az IoT hub hozzá van rendelve, és az eszköz ezután használja a levéltanúsítvány hitelesítéséhez és csatlakoztatása az IoT hubhoz. 
+When a device is initially provisioned through auto-provisioning, it boots-up, and contacts the provisioning service. The provisioning service responds by performing an identity check before creating a device identity in an IoT hub using the device’s leaf certificate as the credential. The provisioning service then tells the device which IoT hub it's assigned to, and the device then uses its leaf certificate to authenticate and connect to the IoT hub. 
 
-Miután egy új levél tanúsítványt az eszközre lett állítva, hogy már nem kapcsolódni az IoT hub mert csatlakozni egy új tanúsítványt használ. Az IoT hub csak felismeri a régi tanúsítványt az eszközre. Az eszköz kapcsolódási kísérlet eredménye "nem engedélyezett" kapcsolati hiba lesz. Ez a hiba elhárításához frissítenie kell az eszközt, hogy figyelembe vegye az eszköz új levél tanúsítvány beléptetési bejegyzésében. Ezután a kiépítési szolgáltatás frissítheti az IoT Hub eszköz beállításjegyzék-információk szerint van szükség, amikor az eszköz van-e kiépíteni. 
+Once a new leaf certificate has been rolled to the device, it can no longer connect to the IoT hub because it’s using a new certificate to connect. The IoT hub only recognizes the device with the old certificate. The result of the device's connection attempt will be an "unauthorized" connection error. To resolve this error, you must update the enrollment entry for the device to account for the device's new leaf certificate. Then the provisioning service can update the IoT Hub device registry information as needed when the device is reprovisioned. 
 
-Az ilyen csatlakozási hibát egyetlen lehetséges kivétel lenne egy olyan forgatókönyvet, ahol létrehozta egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközt a kiépítési szolgáltatáshoz. Ebben az esetben ha a tanúsítvány megbízhatósági láncában az eszköz nem működés közbeni a legfelső szintű vagy köztes tanúsítványt, majd az eszköz felismer Ha az új tanúsítványt a regisztrációs csoport meghatározott megbízhatósági lánc része. Ebben a forgatókönyvben a biztonsági incidensek adott válaszként merül fel, ha legalább az adott eszköz tanúsítványokat a csoportban kell megsértették tekintendő tiltólistára kell. További információkért lásd: [adott eszközökre egy regisztrációs csoportnak tiltólistára](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+One possible exception to this connection failure would be a scenario where you've created an [Enrollment Group](concepts-service.md#enrollment-group) for your device in the provisioning service. In this case, if you aren't rolling the root or intermediate certificates in the device's certificate chain of trust, then the device will be recognized if the new certificate is part of the chain of trust defined in the enrollment group. If this scenario arises as a reaction to a security breach, you should at least blacklist the specific device certificates in the group that are considered to be breached. For more information, see [Blacklist specific devices in an enrollment group](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
 
-A tételek frissítése a listákban összesített tanúsítványok történik a **beléptetések kezelése** lapot. Az oldal eléréséhez kövesse az alábbi lépéseket:
+Updating enrollment entries for rolled certificates is accomplished on the **Manage enrollments** page. To access that page, follow these steps:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT Hub Device Provisioning Service-példányhoz, amelyen az eszköz beléptetési bejegyzésében.
+1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to the IoT Hub Device Provisioning Service instance that has the enrollment entry for your device.
 
 2. Kattintson a **Regisztrációk kezelése** elemre.
 
-    ![Regisztrációk kezelése](./media/how-to-roll-certificates/manage-enrollments-portal.png)
+    ![Manage enrollments](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
 
-Hogyan kezeli a regisztrációs bejegyzés frissítése függ, hogy egyéni regisztrációk vagy csoportos beléptetések használ. Is az ajánlott eljárások különböznek attól függően, hogy is elérhetőek tanúsítványokat a biztonsági szabályzat megsértése vagy a tanúsítvány lejárta miatt. A következő szakaszok ismertetik, hogyan kezelje ezeket a frissítéseket.
+How you handle updating the enrollment entry will depend on whether you're using individual enrollments, or group enrollments. Also the recommended procedures differ depending on whether you're rolling certificates because of a security breach, or certificate expiration. The following sections describe how to handle these updates.
 
 
-## <a name="individual-enrollments-and-security-breaches"></a>Egyéni regisztrációk és biztonsági résekkel szemben
+## <a name="individual-enrollments-and-security-breaches"></a>Individual enrollments and security breaches
 
-Ha tanúsítványokat a biztonsági incidensek válaszul is elérhetőek, a következő módon, hogy azonnal törli az aktuális tanúsítványt kell használnia:
+If you're rolling certificates in response to a security breach, you should use the following approach that deletes the current certificate immediately:
 
-1. Kattintson a **egyéni regisztrációk**, majd kattintson a regisztrációs azonosító bejegyzést a listában. 
+1. Click **Individual Enrollments**, and click the registration ID entry in the list. 
 
-2. Kattintson a **Delete jelenlegi tanúsítvány** gombra, majd kattintson a mappa ikonra, válassza ki az új regisztrációs bejegyzés feltöltött tanúsítványt. Kattintson a **mentése** befejezésekor.
+2. Click the **Delete current certificate** button and then, click the folder icon to select the new certificate to be uploaded for the enrollment entry. Click **Save** when finished.
 
-    Ezeket a lépéseket kell elvégezni a az elsődleges és másodlagos tanúsítvány, ha mindkét integritása sérül.
+    These steps should be completed for the primary and secondary certificate, if both are compromised.
 
-    ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Manage individual enrollments](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. A feltört tanúsítvány el lett távolítva a kiépítési szolgáltatást, miután a tanúsítvány továbbra is használható, amennyiben létezik egy eszközregisztráció, az IoT hub eszköz kapcsolatok létrehozására. Meg lehet oldani ezt két módon: 
+3. Once the compromised certificate has been removed from the provisioning service, the certificate can still be used to make device connections to the IoT hub as long as a device registration for it exists there. You can address this two ways: 
 
-    Az első módszer lehet manuálisan keresse meg az IoT hubhoz, és azonnal törli az eszköz regisztrációját, a feltört tanúsítványhoz. Majd az eszköz újra egy frissített tanúsítvánnyal látja el, amikor létrejön egy új eszköz regisztrálása.     
+    The first way would be to manually navigate to your IoT hub and immediately remove the device registration associated with the compromised certificate. Then when the device provisions again with an updated certificate, a new device registration will be created.     
 
-    ![IoT hub-eszköz regisztrációjának törlése](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![Remove IoT hub device registration](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    A második módja lehet a reprovisioning támogatási használatával építse ki újra ugyanazt az IoT hubon az eszközön. Ez a módszer használható cserélje le a tanúsítványt az eszköz regisztrációját, és az IoT hub számára. További információkért lásd: [építenie az eszközök hogyan](how-to-reprovision.md).
+    The second way would be to use reprovisioning support to reprovision the device to the same IoT hub. This approach can be used to replace the certificate for the device registration on the IoT hub. For more information, see [How to reprovision devices](how-to-reprovision.md).
 
-## <a name="individual-enrollments-and-certificate-expiration"></a>Egyéni regisztrációk és a tanúsítvány lejárata
+## <a name="individual-enrollments-and-certificate-expiration"></a>Individual enrollments and certificate expiration
 
-Ha a tanúsítványok tanúsítvány lejárhat kezelésére is elérhetőek, kell használnia a másodlagos tanúsítvány konfigurálását a következő csökkenthető a leállások eszközök kiépítése próbál.
+If you're rolling certificates to handle certificate expirations, you should use the secondary certificate configuration as follows to reduce downtime for devices attempting to provision.
 
-Később esetén a másodlagos is tanúsítvány lejár, és konfigurálni kell, elforgathat az elsődleges konfigurációt használja. Elforgatás között az elsődleges és másodlagos tanúsítványát, így csökken az állásidő a megfelelő eszközök kiépítése.
+Later when the secondary certificate also nears expiration, and needs to be rolled, you can rotate to using the primary configuration. Rotating between the primary and secondary certificates in this way reduces downtime for devices attempting to provision.
 
 
-1. Kattintson a **egyéni regisztrációk**, majd kattintson a regisztrációs azonosító bejegyzést a listában. 
+1. Click **Individual Enrollments**, and click the registration ID entry in the list. 
 
-2. Kattintson a **másodlagos tanúsítvány** majd kattintson a mappa ikonra, válassza ki az új regisztrációs bejegyzés feltöltött tanúsítványt. Kattintson a **Save** (Mentés) gombra.
+2. Click **Secondary Certificate** and then, click the folder icon to select the new certificate to be uploaded for the enrollment entry. Kattintson a **Save** (Mentés) gombra.
 
-    ![Másodlagos tanúsítvány használatával egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![Manage individual enrollments using the secondary certificate](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
-3. Később az elsődleges tanúsítvány lejárt, térjen vissza, és törölje az elsődleges tanúsítvány kattintva a **Delete jelenlegi tanúsítvány** gombra.
+3. Later when the primary certificate has expired, come back and delete that primary certificate by clicking the **Delete current certificate** button.
 
-## <a name="enrollment-groups-and-security-breaches"></a>Regisztrációs csoportok és a biztonsági szabályok megsértése esetén alkalmazandók.
+## <a name="enrollment-groups-and-security-breaches"></a>Enrollment groups and security breaches
 
-Biztonsági incidensek válaszul egy csoportos regisztráció frissítése, használjon, amely törli a jelenlegi gyökér szintű vagy köztes tanúsítványt közvetlenül a következő megközelítések egyikét.
+To update a group enrollment in response to a security breach, you should use one of the following approaches that will delete the current root CA, or intermediate certificate immediately.
 
-#### <a name="update-compromised-root-ca-certificates"></a>Sérült biztonságú legfelső szintű Hitelesítésszolgáltatói tanúsítványok frissítése
+#### <a name="update-compromised-root-ca-certificates"></a>Update compromised root CA certificates
 
-1. Kattintson a **tanúsítványok** lapon találja a Device Provisioning service-példányt.
+1. Click the **Certificates** tab for your Device Provisioning service instance.
 
-2. Kattintson a listában a feltört tanúsítványra, és kattintson a **törlése** gombra. A törlés megerősítéséhez írja be a tanúsítvány nevét, és kattintson a **OK**. Ismételje meg ezt a folyamatot minden veszélyeztetett tanúsítványokkal.
+2. Click the compromised certificate in the list, and then click the **Delete** button. Confirm the delete by entering the certificate name and click **OK**. Repeat this process for all compromised certificates.
 
-    ![Legfelső szintű hitelesítésszolgáltató-tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
+    ![Delete root CA certificate](./media/how-to-roll-certificates/delete-root-cert.png)
 
-3. Kövesse az ismertetett lépéseket [konfigurálása ellenőrzött Hitelesítésszolgáltatói tanúsítványok](how-to-verify-certificates.md) hozzáadásának és hitelesítésének új legfelső szintű Hitelesítésszolgáltatói tanúsítványokat.
+3. Follow steps outlined in [Configure verified CA certificates](how-to-verify-certificates.md) to add and verify new root CA certificates.
 
-4. Kattintson a **beléptetések kezelése** a Device Provisioning service-példányt a lapra, majd kattintson a **regisztrációs csoportok** listája. Kattintson a regisztrációs csoport nevét a listában.
+4. Click the **Manage enrollments** tab for your Device Provisioning service instance, and click the **Enrollment Groups** list. Click your enrollment group name in the list.
 
-5. Kattintson a **Hitelesítésszolgáltatói tanúsítvány**, és válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítvány. Ezután kattintson a **Save** (Mentés) gombra. 
+5. Click **CA Certificate**, and select your new root CA certificate. Ezután kattintson a **Save** (Mentés) gombra. 
 
-    ![Válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítvány](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![Select the new root CA certificate](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. A feltört tanúsítvány el lett távolítva a kiépítési szolgáltatást, miután a tanúsítvány továbbra is használható, hogy az IoT hub eszköz kapcsolatokat, amíg az eszköz regisztrálása, létezik. Meg lehet oldani ezt két módon: 
+6. Once the compromised certificate has been removed from the provisioning service, the certificate can still be used to make device connections to the IoT hub as long as device registrations for it exists there. You can address this two ways: 
 
-    Az első módszer lehet manuálisan keresse meg az IoT hubhoz, és azonnal törli az eszköz regisztrációját, a feltört tanúsítványhoz. Ezután az eszközök újra üzembe a frissített tanúsítványokkal, egy új eszköz regisztrálása az minden egyes létrejön.     
+    The first way would be to manually navigate to your IoT hub and immediately remove the device registration associated with the compromised certificate. Then when your devices provision again with updated certificates, a new device registration will be created for each one.     
 
-    ![IoT hub-eszköz regisztrációjának törlése](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![Remove IoT hub device registration](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    A második módszer reprovisioning támogatási használatával építse ki újra ugyanazt az IoT hubon az eszközök lenne. Ez a megközelítés cserélje le a tanúsítványokat az eszköz regisztrálása az IoT hub is használható. További információkért lásd: [építenie az eszközök hogyan](how-to-reprovision.md).
+    The second way would be to use reprovisioning support to reprovision your devices to the same IoT hub. This approach can be used to replace certificates for device registrations on the IoT hub. For more information, see [How to reprovision devices](how-to-reprovision.md).
 
 
 
-#### <a name="update-compromised-intermediate-certificates"></a>Sérült biztonságú köztes tanúsítványok frissítése
+#### <a name="update-compromised-intermediate-certificates"></a>Update compromised intermediate certificates
 
-1. Kattintson a **regisztrációs csoportok**, majd kattintson a csoport nevét a listában. 
+1. Click **Enrollment Groups**, and then click the group name in the list. 
 
-2. Kattintson a **köztes tanúsítványt**, és **Delete jelenlegi tanúsítvány**. Kattintson a mappa ikonra kattintva nyissa meg az új köztes tanúsítványt kell feltölteni a regisztrációs csoport számára. Kattintson a **mentése** befejezésekor. Ezeket a lépéseket kell elvégezni a mind az elsődleges és másodlagos tanúsítvány, ha mindkét integritása sérül.
+2. Click **Intermediate Certificate**, and **Delete current certificate**. Click the folder icon to navigate to the new intermediate certificate to be uploaded for the enrollment group. Click **Save** when you're finished. These steps should be completed for both the primary and secondary certificate, if both are compromised.
 
-    Új köztes tanúsítvány által ellenőrzött Hitelesítésszolgáltatói főtanúsítványhoz, amely már korábban be kiépítési szolgáltatás alá kell írni. További információkért lásd: [X.509 tanúsítványok](concepts-security.md#x509-certificates).
+    This new intermediate certificate should be signed by a verified root CA certificate that has already been added into provisioning service. For more information, see [X.509 certificates](concepts-security.md#x509-certificates).
 
-    ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![Manage individual enrollments](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. A feltört tanúsítvány el lett távolítva a kiépítési szolgáltatást, miután a tanúsítvány továbbra is használható, hogy az IoT hub eszköz kapcsolatokat, amíg az eszköz regisztrálása, létezik. Meg lehet oldani ezt két módon: 
+3. Once the compromised certificate has been removed from the provisioning service, the certificate can still be used to make device connections to the IoT hub as long as device registrations for it exists there. You can address this two ways: 
 
-    Az első módszer lehet manuálisan keresse meg az IoT hubhoz, és azonnal törli az eszköz regisztrációját, a feltört tanúsítványhoz. Ezután az eszközök újra üzembe a frissített tanúsítványokkal, egy új eszköz regisztrálása az minden egyes létrejön.     
+    The first way would be to manually navigate to your IoT hub and immediately remove the device registration associated with the compromised certificate. Then when your devices provision again with updated certificates, a new device registration will be created for each one.     
 
-    ![IoT hub-eszköz regisztrációjának törlése](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![Remove IoT hub device registration](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    A második módszer reprovisioning támogatási használatával építse ki újra ugyanazt az IoT hubon az eszközök lenne. Ez a megközelítés cserélje le a tanúsítványokat az eszköz regisztrálása az IoT hub is használható. További információkért lásd: [építenie az eszközök hogyan](how-to-reprovision.md).
+    The second way would be to use reprovisioning support to reprovision your devices to the same IoT hub. This approach can be used to replace certificates for device registrations on the IoT hub. For more information, see [How to reprovision devices](how-to-reprovision.md).
 
 
-## <a name="enrollment-groups-and-certificate-expiration"></a>Regisztrációs csoportok és a tanúsítvány lejárata
+## <a name="enrollment-groups-and-certificate-expiration"></a>Enrollment groups and certificate expiration
 
-Ha a tanúsítványok kezeléséhez tanúsítványok lejárata működés közbeni, használjon a másodlagos tanúsítvány konfigurálását módon annak biztosítása érdekében a megfelelő eszközök kiépítése állásidő nélkül.
+If you are rolling certificates to handle certificate expirations, you should use the secondary certificate configuration as follows to ensure no downtime for devices attempting to provision.
 
-Később esetén a másodlagos is tanúsítvány lejár, és konfigurálni kell, elforgathat az elsődleges konfigurációt használja. Elforgatás között az elsődleges és másodlagos tanúsítványát, így biztosítja, hogy a megfelelő eszközök kiépítése állásidő nélkül. 
+Later when the secondary certificate also nears expiration, and needs to be rolled, you can rotate to using the primary configuration. Rotating between the primary and secondary certificates in this way ensures no downtime for devices attempting to provision. 
 
-#### <a name="update-expiring-root-ca-certificates"></a>Lejáró legfelső szintű Hitelesítésszolgáltatói tanúsítványok frissítése
+#### <a name="update-expiring-root-ca-certificates"></a>Update expiring root CA certificates
 
-1. Kövesse az ismertetett lépéseket [konfigurálása ellenőrzött Hitelesítésszolgáltatói tanúsítványok](how-to-verify-certificates.md) hozzáadásának és hitelesítésének új legfelső szintű Hitelesítésszolgáltatói tanúsítványokat.
+1. Follow steps outlined in [Configure verified CA certificates](how-to-verify-certificates.md) to add and verify new root CA certificates.
 
-2. Kattintson a **beléptetések kezelése** a Device Provisioning service-példányt a lapra, majd kattintson a **regisztrációs csoportok** listája. Kattintson a regisztrációs csoport nevét a listában.
+2. Click the **Manage enrollments** tab for your Device Provisioning service instance, and click the **Enrollment Groups** list. Click your enrollment group name in the list.
 
-3. Kattintson a **Hitelesítésszolgáltatói tanúsítvány**, és válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurációja. Ezután kattintson a **Save** (Mentés) gombra. 
+3. Click **CA Certificate**, and select your new root CA certificate under the **Secondary Certificate** configuration. Ezután kattintson a **Save** (Mentés) gombra. 
 
-    ![Válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítvány](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Select the new root CA certificate](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Később amikor elsődleges tanúsítvány lejárt, kattintson a **tanúsítványok** lapon találja a Device Provisioning service-példányt. Kattintson a listában a lejárt tanúsítvány, és kattintson a **törlése** gombra. A törlés megerősítéséhez írja be a tanúsítvány nevét, és kattintson a **OK**.
+4. Later when the primary certificate has expired, click the **Certificates** tab for your Device Provisioning service instance. Click the expired certificate in the list, and then click the **Delete** button. Confirm the delete by entering the certificate name, and click **OK**.
 
-    ![Legfelső szintű hitelesítésszolgáltató-tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
+    ![Delete root CA certificate](./media/how-to-roll-certificates/delete-root-cert.png)
 
 
 
-#### <a name="update-expiring-intermediate-certificates"></a>Lejáró köztes tanúsítványok frissítése
+#### <a name="update-expiring-intermediate-certificates"></a>Update expiring intermediate certificates
 
 
-1. Kattintson a **regisztrációs csoportok**, majd kattintson a csoport nevét a listában. 
+1. Click **Enrollment Groups**, and click the group name in the list. 
 
-2. Kattintson a **másodlagos tanúsítvány** majd kattintson a mappa ikonra, válassza ki az új regisztrációs bejegyzés feltöltött tanúsítványt. Kattintson a **Save** (Mentés) gombra.
+2. Click **Secondary Certificate** and then, click the folder icon to select the new certificate to be uploaded for the enrollment entry. Kattintson a **Save** (Mentés) gombra.
 
-    Új köztes tanúsítvány által ellenőrzött Hitelesítésszolgáltatói főtanúsítványhoz, amely már korábban be kiépítési szolgáltatás alá kell írni. További információkért lásd: [X.509 tanúsítványok](concepts-security.md#x509-certificates).
+    This new intermediate certificate should be signed by a verified root CA certificate that has already been added into provisioning service. For more information, see [X.509 certificates](concepts-security.md#x509-certificates).
 
-   ![Másodlagos tanúsítvány használatával egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![Manage individual enrollments using the secondary certificate](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
-3. Később az elsődleges tanúsítvány lejárt, térjen vissza, és törölje az elsődleges tanúsítvány kattintva a **Delete jelenlegi tanúsítvány** gombra.
+3. Later when the primary certificate has expired, come back and delete that primary certificate by clicking the **Delete current certificate** button.
 
 
-## <a name="reprovision-the-device"></a>Építse ki újra az eszközt
+## <a name="reprovision-the-device"></a>Reprovision the device
 
-Miután a tanúsítvány a Device Provisioning Service és az eszközhöz be lesz állítva, az eszköz is építse ki újra a saját maga kapcsolatba lép a Device Provisioning service. 
+Once the certificate is rolled on both the device and the Device Provisioning Service, the device can reprovision itself by contacting the Device Provisioning service. 
 
-Egy könnyedén programozási eszközöket építenie az, hogy kapcsolatba kell áthaladnia az üzembe helyezési folyamatban, ha az eszköz "nem engedélyezett" hibaüzenetet kap szeretne csatlakozni az IoT hub eszközkiépítési szolgáltatás az eszközt.
+One easy way of programming devices to reprovision is to program the device to contact the provisioning service to go through the provisioning flow if the device receives an “unauthorized” error from attempting to connect to the IoT hub.
 
-Egy másik módja a régi és az új tanúsítványok rövid átfedés érvényes, és az IoT hub használatával parancsot küldhet eszközökre azok regisztrálja újra a regisztrációs szolgáltatás keresztül azok az IoT Hub kapcsolati adatok frissítése. Minden egyes eszköz eltérően parancsok képes feldolgozni, mert el tudják, mi a teendő, ha a parancs meghívása az eszközt a program. Többféleképpen is parancsot a az eszközt az IoT Hub-n keresztül, és azt javasoljuk, [közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md) vagy [feladatok](../iot-hub/iot-hub-devguide-jobs.md) , elindítja a folyamatot.
+Another way is for both the old and the new certificates to be valid for a short overlap, and use the IoT hub to send a command to devices to have them re-register via the provisioning service to update their IoT Hub connection information. Because each device can process commands differently, you will have to program your device to know what to do when the command is invoked. There are several ways you can command your device via IoT Hub, and we recommend using [direct methods](../iot-hub/iot-hub-devguide-direct-methods.md) or [jobs](../iot-hub/iot-hub-devguide-jobs.md) to initiate the process.
 
-Reprovisioning befejeződése után tud csatlakozni az IoT Hub, az új tanúsítványok használatával fogja eszközöket.
+Once reprovisioning is complete, devices will be able to connect to IoT Hub using their new certificates.
 
 
-## <a name="blacklist-certificates"></a>Blacklist tanúsítványok
+## <a name="blacklist-certificates"></a>Blacklist certificates
 
-Biztonsági incidensek válaszul szükség lehet egy eszköz tanúsítványt tiltólistára kell helyezni. Egy eszköz tanúsítványt tiltólistára, tiltsa le a célként megadott eszköz vagy tanúsítvány regisztrációs bejegyzés. További információkért lásd: az eszközök áruházat a [kezelés regisztráció megszüntetésének](how-to-revoke-device-access-portal.md) cikk.
+In response to a security breach, you may need to blacklist a device certificate. To blacklist a device certificate, disable the enrollment entry for the target device/certificate. For more information, see blacklisting devices in the [Manage disenrollment](how-to-revoke-device-access-portal.md) article.
 
-Ha egy letiltott regisztrációs bejegyzés, Regisztrálás az IoT hub használatával tett bármilyen kísérlet része, amely a tanúsítványok sikertelen lesz, még akkor is, ha engedélyezve van egy másik regisztrációs bejegyzés részeként lehetőség része egy tanúsítványt.
+Once a certificate is included as part of a disabled enrollment entry, any attempts to register with an IoT hub using that certificates will fail even if it is enabled as part of another enrollment entry.
  
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A Device Provisioning Service az X.509-tanúsítványokkal kapcsolatos további tudnivalókért lásd: [biztonsági](concepts-security.md) 
-- Hogyan teheti a koncepció-az-birtokában x.509-es Hitelesítésszolgáltatói tanúsítványok az Azure IoT Hub Device Provisioning Service szolgáltatással kapcsolatos további információkért lásd: [tanúsítványok ellenőrzése](how-to-verify-certificates.md)
-- Egy regisztrációs csoport létrehozása a portál használatával kapcsolatos tudnivalókért lásd: [az Azure portal-eszközök beléptetésének kezelése](how-to-manage-enrollments.md).
+- To learn more about X.509 certificates in the Device Provisioning Service, see [Security](concepts-security.md) 
+- To learn about how to do proof-of-possession for X.509 CA certificates with the Azure IoT Hub Device Provisioning Service, see [How to verify certificates](how-to-verify-certificates.md)
+- To learn about how to use the portal to create an enrollment group, see [Managing device enrollments with Azure portal](how-to-manage-enrollments.md).
 
 
 

@@ -1,63 +1,59 @@
 ---
-title: Függvények összekötése az Azure Storage-ba a Visual Studióval
-description: Megtudhatja, hogyan adhat hozzá kimeneti kötést C# az osztály könyvtára funkcióinak Azure Storage-várólistákhoz való összekapcsolásához a Visual Studióval.
-author: ggailey777
-ms.author: glenga
+title: Connect functions to Azure Storage using Visual Studio
+description: Learn how to add an output binding to connect your C# class library functions to an Azure Storage queue using Visual Studio.
 ms.date: 07/22/2019
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 383401c1486bcbebc39b64d5794f8bdc660d2778
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329637"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227426"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Függvények összekötése az Azure Storage-ba a Visual Studióval
+# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Connect functions to Azure Storage using Visual Studio
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Ez a cikk bemutatja, hogyan használhatja a Visual studiót az [előző] rövid útmutatóban létrehozott funkció Azure Storage-ba való összekapcsolásához. Az ehhez a függvényhez hozzáadott kimeneti kötés adatokat ír a HTTP-kérelemből egy Azure üzenetsor-tárolási várólistán lévő üzenetbe. 
+This article shows you how to use Visual Studio to connect the function you created in the [previous quickstart article] to Azure Storage. The output binding that you add to this function writes data from the HTTP request to a message in an Azure Queue storage queue. 
 
-A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A könnyebb kezelhetőség érdekében használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy `AzureWebJobsStorage` nevű alkalmazás-beállításban van tárolva.  
+Most bindings require a stored connection string that Functions uses to access the bound service. To make it easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk elindítása előtt a következőket kell tennie: 
+Before you start this article, you must: 
 
- - [./Functions-Create-First-Function-vs-code.MD] [a Visual Studio gyors üzembe helyezésének 1. része]. 
+ - Complete [part 1 of the Visual Studio quickstart][./functions-create-first-function-vs-code.md]. 
 
-- Jelentkezzen be az Azure-előfizetésbe a Visual studióból.
+- Sign in to your Azure subscription from Visual Studio.
 
-## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
+## <a name="download-the-function-app-settings"></a>Download the function app settings
 
-Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az Alkalmazásbeállítások a *Local. Settings. JSON* fájlra. 
+In the [previous quickstart article](functions-create-first-function-vs-code.md), you created a function app in Azure along with the required Storage account. The connection string for this account is stored securely in app settings in Azure. In this article, you write messages to a Storage queue in the same account. To connect to your Storage account when running the function locally, you must download app settings to the *local.settings.json* file. 
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. 
 
-1. A **műveletek**területen válassza a **Azure app Service beállítások szerkesztése**lehetőséget. 
+1. Under **Actions**, select **Edit Azure App Service Settings**. 
 
-    ![Az Alkalmazásbeállítások szerkesztése](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
+    ![Edit the application settings](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. A **AzureWebJobsStorage**alatt másolja a **távoli** karakterlánc értéket a **helyi**értékre, majd kattintson **az OK gombra**. 
+1. Under **AzureWebJobsStorage**, copy the **Remote** string value to **Local**, and then select **OK**. 
 
-A kapcsolat `AzureWebJobsStorage` beállítását használó tárolási kötések mostantól helyileg is csatlakozhatnak a várólista-tárolóhoz.
+The storage binding, which uses the `AzureWebJobsStorage` setting for the connection, can now connect to your Queue storage when running locally.
 
 ## <a name="register-binding-extensions"></a>Kötési bővítmények regisztrálása
 
-Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatása előtt telepítenie kell a Storage-kötések bővítményt. A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. 
+Because you're using a Queue storage output binding, you need the Storage bindings extension installed before you run the project. Except for HTTP and timer triggers, bindings are implemented as extension packages. 
 
-1. Az **eszközök** menüben válassza a **NuGet Package Manager** > **csomagkezelő konzolt**. 
+1. From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**. 
 
-1. A-konzolon futtassa a következő [Install-Package](/nuget/tools/ps-ref-install-package) parancsot a tárolási bővítmények telepítéséhez:
+1. In the console, run the following [Install-Package](/nuget/tools/ps-ref-install-package) command to install the Storage extensions:
 
     ```Command
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
     ````
 
-Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
+Now, you can add the storage output binding to your project.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
@@ -65,7 +61,7 @@ Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-A kötés meghatározása után a kötés `name` értékkel férhet hozzá a függvény aláírása attribútumként. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
+After the binding is defined, you can use the `name` of the binding to access it as an attribute in the function signature. By using an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -73,31 +69,31 @@ A kötés meghatározása után a kötés `name` értékkel férhet hozzá a fü
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-A rendszer létrehoz egy új, `outqueue` nevű várólistát a Storage-fiókban a functions futtatókörnyezetben a kimeneti kötés első használatakor. A Cloud Explorer használatával ellenőrizheti, hogy a várólista létrejött-e az új üzenettel együtt.
+A new queue named `outqueue` is created in your storage account by the Functions runtime when the output binding is first used. You'll use Cloud Explorer to verify that the queue was created along with the new message.
 
 ## <a name="examine-the-output-queue"></a>A kimeneti üzenetsor vizsgálata
 
-1. A Visual Studióban a **nézet** menüben válassza a **Cloud Explorer**lehetőséget.
+1. In Visual Studio from the **View** menu, select **Cloud Explorer**.
 
-1. A **Cloud Explorerben**bontsa ki az Azure-előfizetések és a **Storage-fiókok**csomópontot, majd bontsa ki a függvény által használt Storage-fiókot. Ha nem emlékszik a Storage-fiók nevére, ellenőrizze a *helyi. Settings. JSON* fájlban található `AzureWebJobsStorage` kapcsolatok karakterlánc beállítását.  
+1. In **Cloud Explorer**, expand your Azure subscription and **Storage Accounts**, then expand the storage account used by your function. If you can't remember the storage account name, check the `AzureWebJobsStorage` connection string setting in the *local.settings.json* file.  
 
-1. Bontsa ki a **várólisták** csomópontot, majd kattintson duplán a " **Dequeue** " nevű várólistára a várólista tartalmának megtekintéséhez a Visual Studióban. 
+1. Expand the **Queues** node, and then double-click the queue named **outqueue** to view the contents of the queue in Visual Studio. 
 
    Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett *Azure* `name` értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
 
-    ![Üzenetsor-üzenet látható Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
+    ![Queue message shown in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
-1. Futtassa újra a függvényt, küldjön egy másik kérést, és megjelenik egy új üzenet a várólistában.  
+1. Run the function again, send another request, and you'll see a new message appear in the queue.  
 
-Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmazást az Azure-ban.
+Now, it's time to republish the updated function app to Azure.
 
-## <a name="redeploy-and-verify-the-updated-app"></a>A frissített alkalmazás újbóli üzembe helyezése és ellenőrzése
+## <a name="redeploy-and-verify-the-updated-app"></a>Redeploy and verify the updated app
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Közzététel**lehetőséget, majd válassza a **Közzététel** lehetőséget a projekt újbóli közzétételéhez az Azure-ban.
+1. In **Solution Explorer**, right-click the project and select **Publish**, then choose **Publish** to republish the project to Azure.
 
-1. Az üzembe helyezés befejezése után újra használhatja a böngészőt az újratelepített függvény teszteléséhez. Ahogy korábban is, fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-címhez.
+1. After deployment completes, you can again use the browser to test the redeployed function. As before, append the query string `&name=<yourname>` to the URL.
 
-1. Ismét [tekintse meg az üzenetet a Storage-várólistán](#examine-the-output-queue) annak ellenőrzéséhez, hogy a kimeneti kötés ismét létrehoz egy új üzenetet a várólistában.
+1. Again [view the message in the storage queue](#examine-the-output-queue) to verify that the output binding again generates a new message in the queue.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -105,12 +101,12 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. További információ a függvények fejlesztéséről: [Azure functions fejlesztése a Visual Studióval](functions-develop-vs.md).
+You've updated your HTTP triggered function to write data to a Storage queue. To learn more about developing Functions, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md).
 
-Ezután engedélyezze Application Insights figyelését a Function alkalmazáshoz:
+Next, you should enable Application Insights monitoring for your function app:
 
 > [!div class="nextstepaction"]
 > [Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
-[előző]: functions-create-your-first-function-visual-studio.md
+[previous quickstart article]: functions-create-your-first-function-visual-studio.md

@@ -1,7 +1,7 @@
 ---
-title: Magas rendelkezésre állású portok konfigurálása az Azure Load Balancerhez
-titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan használható a magas rendelkezésre állású portok terheléselosztási belső forgalmat az összes porton
+title: Configure High Availability Ports for Azure Load Balancer
+titleSuffix: Azure Load Balancer
+description: Learn how to use High Availability Ports for load balancing internal traffic on all ports
 services: load-balancer
 documentationcenter: na
 author: rdhillon
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: allensu
-ms.openlocfilehash: c0cf1eb62c8e01988c9014478ff72816e45ea64c
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c2e787a1f81d9f3d31b981c31a0249dd362b7bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275620"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225408"
 ---
-# <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Magas rendelkezésre állású portok konfigurálása belső terheléselosztó
+# <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Configure High Availability Ports for an internal load balancer
 
-Ez a cikk magas rendelkezésre állású portok telepítését bemutató példát biztosít egy belső terheléselosztón. Konfigurációk hálózati virtuális berendezések (nva-k) vonatkozó további információkért tekintse meg a megfelelő szolgáltató webhelyeket.
+This article provides an example deployment of High Availability Ports on an internal load balancer. For more information on configurations specific to network virtual appliances (NVAs), see the corresponding provider websites.
 
 >[!NOTE]
->Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk ismerteti a Standard Load Balancer. Alapszintű Load Balancer kapcsolatos további információkért lásd: [Load Balancer áttekintése](load-balancer-overview.md).
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. This article discusses Standard Load Balancer. For more information about Basic Load Balancer, see [Load Balancer overview](load-balancer-overview.md).
 
-Az ábrán látható az ebben a cikkben leírt üzembe helyezési példában a következő konfigurációt:
+The illustration shows the following configuration of the deployment example described in this article:
 
-- Az nva-k egy mögött a magas rendelkezésre állású portok konfigurálása belső load balancer háttérkészlethez vannak üzembe helyezve. 
-- A felhasználó által megadott útvonal (UDR) alkalmazza a DMZ alhálózat útvonalak minden forgalmat az nva-k azáltal, hogy a következő ugrás a belső terheléselosztói virtuális IP. 
-- A belső terheléselosztó osztja el a forgalmat az egyik az aktív nva-k a load balancer algoritmus alapján.
-- Az nva-t a forgalom feldolgozza, és továbbítja azokat a háttérbeli alhálózat az eredeti helyre.
-- A visszatérési elérési út is igénybe vehet az azonos útvonal, ha egy megfelelő UDR van konfigurálva, a háttérbeli alhálózat. 
+- The NVAs are deployed in the back-end pool of an internal load balancer behind the High Availability Ports configuration. 
+- The user-defined route (UDR) applied on the DMZ subnet routes all traffic to the NVAs by making the next hop as the internal load balancer virtual IP. 
+- The internal load balancer distributes the traffic to one of the active NVAs according to the load balancer algorithm.
+- The NVA processes the traffic and forwards it to the original destination in the back-end subnet.
+- The return path can take the same route if a corresponding UDR is configured in the back-end subnet. 
 
-![Magas rendelkezésre állású portok a központi telepítési példa](./media/load-balancer-configure-ha-ports/haports.png)
+![High Availability Ports example deployment](./media/load-balancer-configure-ha-ports/haports.png)
 
-## <a name="configure-high-availability-ports"></a>Magas rendelkezésre állású portok konfigurálása
+## <a name="configure-high-availability-ports"></a>Configure High Availability Ports
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Magas rendelkezésre állású portok konfigurálása, állítsa be az nva-k a belső terheléselosztó a háttér-készletben. Állítsa be a megfelelő terheléselosztó egészségügyi mintavétel konfigurálásához NVA állapotát és a terheléselosztó-szabályt magas rendelkezésre állású portok az észleléséhez. Az általános terhelésétől konfigurációs foglalkozik [Ismerkedés](load-balancer-get-started-ilb-arm-portal.md). Ez a cikk a magas rendelkezésre állású portok konfigurációs emeli ki.
+To configure High Availability Ports, set up an internal load balancer with the NVAs in the back-end pool. Set up a corresponding load balancer health probe configuration to detect NVA health and the load balancer rule with High Availability Ports. The general load balancer-related configuration is covered in [Get started](load-balancer-get-started-ilb-arm-portal.md). This article highlights the High Availability Ports configuration.
 
-A konfigurációt igényli az előtérbeli portot és a háttér-port értékének beállítása **0**. A protokoll értékét állítsa **összes**. Ez a cikk ismerteti, hogyan lehet magas rendelkezésre állású portok konfigurálása az Azure portal, PowerShell és az Azure CLI használatával.
+The configuration essentially involves setting the front-end port and the back-end port value to **0**. Set the protocol value to **All**. This article describes how to configure High Availability Ports by using the Azure portal, PowerShell, and Azure CLI.
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Magas rendelkezésre állású portok terheléselosztási szabály konfigurálása az Azure portal használatával
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Configure a High Availability Ports load balancer rule with the Azure portal
 
-Magas rendelkezésre állású portok konfigurálása az Azure portal használatával, válassza ki a **magas rendelkezésre ÁLLÁSÚ portok** jelölőnégyzetet. Kiválasztásakor a rendszer automatikusan kitölti a port és protokoll konfigurációs. 
+To configure High Availability Ports by using the Azure portal, select the **HA Ports** check box. When selected, the related port and protocol configuration is automatically populated. 
 
-![Magas rendelkezésre állású portok konfigurálása az Azure Portalon](./media/load-balancer-configure-ha-ports/haports-portal.png)
+![High Availability Ports configuration via the Azure portal](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
-### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>A Resource Manager-sablon használatával magas rendelkezésre állású portok terheléselosztási szabály konfigurálása
+### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Configure a High Availability Ports load-balancing rule via the Resource Manager template
 
-Konfigurálhatja magas rendelkezésre állású portok a 2017-08-01-es API-verzió használatával Microsoft.Network/loadBalancers a terheléselosztó erőforrás. A következő JSON-kódrészletben a terheléselosztói konfigurációban magas rendelkezésre állású portok a REST API-n keresztül változásokat mutatja be:
+You can configure High Availability Ports by using the 2017-08-01 API version for Microsoft.Network/loadBalancers in the Load Balancer resource. The following JSON snippet illustrates the changes in the load balancer configuration for High Availability Ports via the REST API:
 
 ```json
     {
@@ -85,22 +85,22 @@ Konfigurálhatja magas rendelkezésre állású portok a 2017-08-01-es API-verzi
     }
 ```
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-powershell"></a>Magas rendelkezésre állású portok terheléselosztási szabály konfigurálása a PowerShell-lel
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-powershell"></a>Configure a High Availability Ports load balancer rule with PowerShell
 
-A következő paranccsal hozzon létre a magas rendelkezésre állású portok terheléselosztási szabályt, amíg a belső terheléselosztó létrehozása a PowerShell használatával:
+Use the following command to create the High Availability Ports load balancer rule while you create the internal load balancer with PowerShell:
 
 ```powershell
 lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Magas rendelkezésre állású portok terheléselosztási szabály konfigurálása az Azure CLI-vel
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Configure a High Availability Ports load balancer rule with Azure CLI
 
-A 4. lépésben [hozzon létre egy belső terheléselosztó készletet](load-balancer-get-started-ilb-arm-cli.md), a magas rendelkezésre állású portok terheléselosztási szabály létrehozása a következő paranccsal:
+In step 4 of [Create an internal load balancer set](load-balancer-get-started-ilb-arm-cli.md), use the following command to create the High Availability Ports load balancer rule:
 
 ```azurecli
 azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tudjon meg többet [magas rendelkezésre állású portok](load-balancer-ha-ports-overview.md).
+Learn more about [High Availability Ports](load-balancer-ha-ports-overview.md).

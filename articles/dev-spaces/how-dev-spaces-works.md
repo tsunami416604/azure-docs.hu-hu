@@ -1,5 +1,5 @@
 ---
-title: Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
+title: How Azure Dev Spaces works and is configured
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,146 +7,146 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
-description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
-keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
-ms.translationtype: MT
+description: Describes the processes that power Azure Dev Spaces and how they are configured in the azds.yaml configuration file
+keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: 74a95af18556a7f95f8784ee67ad8d8240bb2df0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670821"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229081"
 ---
-# <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
+# <a name="how-azure-dev-spaces-works-and-is-configured"></a>How Azure Dev Spaces works and is configured
 
-A Kubernetes-alkalmazás fejlesztése kihívást jelenthet. Szüksége lesz a Docker és a Kubernetes konfigurációs fájlok. Döntse el, az alkalmazás helyi tesztelése, és más függő szolgáltatásokkal interakcióba kell. Szüksége lehet kezelni a fejlesztés és tesztelés egyszerre több szolgáltatást és a egy fejlesztői csapat.
+Developing a Kubernetes application can be challenging. You need Docker and Kubernetes configuration files. You need to figure out how to test your application locally and interact with other dependent services. You might need to handle developing and testing on multiple services at once and with a team of developers.
 
-Az Azure fejlesztési tárolóhelyek segítségével fejlesztése, üzembe helyezése és hibakeresése a Kubernetes-alkalmazások közvetlenül az Azure Kubernetes Service (aks) Szolgáltatásban. Azure fejlesztői tárolóhelyek lehetővé teszi egy adható meg a fejlesztői csapat. Fejlesztői szóközzel elosztását a csapat lehetővé teszi, hogy egyes csapattagok fejlesztéshez elkülönítési replikálása és függőségekkel vagy más alkalmazásokat a fürt utánzása nélkül.
+Azure Dev Spaces helps you develop, deploy, and debug Kubernetes applications directly in Azure Kubernetes Service (AKS). Azure Dev Spaces also allows a team to share a dev space. Sharing a dev space across a team allows individual team members to develop in isolation without having to replicate or mock up dependencies or other applications in the cluster.
 
-Azure fejlesztői tárolóhelyek hoz létre, és üzembe helyezése, futtatása és az aks-ben a Kubernetes-alkalmazások hibakeresése egy konfigurációs fájlt használja. Ezt a konfigurációs fájlt a az alkalmazás kódjában található, és lehet hozzáadni a verziókezelő rendszer.
+Azure Dev Spaces creates and uses a configuration file for deploying, running, and debugging your Kubernetes applications in AKS. This configuration file resides with your application's code and can be added to your version control system.
 
-Ez a cikk ismerteti a folyamatok, a power Azure fejlesztési területek és a folyamatok konfigurációjától az Azure fejlesztési tárolóhelyek konfigurációs fájlban. Azure fejlesztői tárolóhelyek gyorsan, és a gyakorlatban látja, hajtsa végre a rövid útmutató:
+This article describes the processes that power Azure Dev Spaces and how those processes are configured in the Azure Dev Spaces configuration file. To get Azure Dev Spaces running quickly and see it in practice, complete one of the quickstarts:
 
-* [Java és a CLI és Visual Studio Code-ot](quickstart-java.md)
-* [.NET core és a CLI és Visual Studio Code-ot](quickstart-netcore.md)
-* [A .NET core Visual studióval](quickstart-netcore-visualstudio.md)
-* [NODE.js és a CLI és Visual Studio Code-ot](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-## <a name="how-azure-dev-spaces-works"></a>Azure fejlesztői tárolóhelyek működése
+## <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
 
-Az Azure fejlesztési tárolóhelyek két összetevőből különböző, amely dolgozhat: a tartományvezérlő és az ügyféloldali eszközök.
+Azure Dev Spaces has two distinct components that you interact with: the controller and the client-side tooling.
 
-![Az Azure fejlesztői, szóközök összetevők](media/how-dev-spaces-works/components.svg)
+![Azure Dev Spaces components](media/how-dev-spaces-works/components.svg)
 
-A vezérlő a következő műveleteket hajtja végre:
+The controller performs the following actions:
 
-* Kezeli a fejlesztési terület létrehozását és a kijelölés.
-* Az alkalmazás által létrehozott Helm-diagramhoz telepíti, és a Kubernetes-objektumokat hoz létre.
-* Az alkalmazás tárolórendszerképet hoz létre.
-* Telepíti az alkalmazást, az aks-ben.
-* Növekményes buildek nem, és újraindul, ha a forráskód-változásokat.
-* A naplók és nyomkövetések HTTP kezeli.
-* Az stdout és stderr, az ügyféloldali eszközök továbbítja.
-* Lehetővé teszi, hogy a csapat tagjai hozhatnak létre gyermek fejlesztési tárolóhelyek szülő fejlesztési szóközzel származik.
-* Konfigurálja az útválasztást alkalmazások belül egy szóközt, valamint a szülő és gyermek tárolóhelyek között.
+* Manages dev space creation and selection.
+* Installs your application's Helm chart and creates Kubernetes objects.
+* Builds your application's container image.
+* Deploys your application to AKS.
+* Does incremental builds and restarts when your source code changes.
+* Manages logs and HTTP traces.
+* Forwards stdout and stderr to the client-side tooling.
+* Allows team members to create child dev spaces derived from a parent dev space.
+* Configures routing for applications within a space as well as across parent and child spaces.
 
-A vezérlő AKS kívül helyezkedik el. Az ügyféloldali eszközök és az AKS-fürt között, meghajtók viselkedését és kommunikációt. A vezérlő engedélyezve van az Azure CLI használatával, amikor előkészíti a fürt Azure fejlesztési szóköz használatára. Ha engedélyezve van, használhatja az ügyféloldali eszközök használatával.
+The controller resides outside AKS. It drives the behavior and communication between the client-side tooling and the AKS cluster. The controller is enabled using the Azure CLI when you prepare your cluster to use Azure Dev Spaces. Once it is enabled, you can interact with it using the client-side tooling.
 
-Az ügyféloldali eszközök lehetővé teszi, hogy a felhasználó számára:
-* Hozzon létre egy docker-fájlban, Helm-diagramot, és az Azure fejlesztési tárolóhelyek konfigurációs fájlt az alkalmazás.
-* Szülő és gyermek fejlesztési tárolóhelyek létrehozásához.
-* Ossza meg a vezérlő felépítéséhez és az alkalmazás elindításához.
+The client-side tooling allows the user to:
+* Generate a Dockerfile, Helm chart, and Azure Dev Spaces configuration file for the application.
+* Create parent and child dev spaces.
+* Tell the controller to build and start your application.
 
-Az alkalmazás futása közben, az ügyféloldali eszközök is:
-* Fogadja, és az stdout és stderr az alkalmazásból, az aks-ben futó jeleníti meg.
-* Használja a [port-továbbító](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) webes férhessenek hozzá az alkalmazás http-vel:\//localhost.
-* Csatolja a hibakeresőt a futó alkalmazás az aks-ben.
-* Szinkronizálások forráskódját a fejlesztési tárhelyre növekményes buildek, lehetővé téve a gyors ismétlését a változás észlelésekor.
+While your application is running, the client-side tooling also:
+* Receives and displays stdout and stderr from your application running in AKS.
+* Uses [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to allow web access to your application using http:\//localhost.
+* Attaches a debugger to your running application in AKS.
+* Syncs source code to your dev space when a change is detected for incremental builds, allowing for rapid iteration.
 
-Az ügyféloldali részeként parancssori eszközöket is használhat a `azds` parancsot. Az ügyféloldali rendelkező eszközök is használhatja:
+You can use the client-side tooling from the command line as part of the `azds` command. You can also use the client-side tooling with:
 
-* A Visual Studio Code használatával a [Azure fejlesztési tárolóhelyek bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* A Visual Studio [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+* Visual Studio Code using the [Azure Dev Spaces extension](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
+* Visual Studio with [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
-A következő használt alapvető folyamat beállítása és használata az Azure fejlesztési tárolóhelyek:
-1. Az AKS-fürt előkészítése az Azure fejlesztési tárolóhelyek
-1. A kód az Azure fejlesztési tárolóhelyek futtatásának előkészítése
-1. Futtathatja a kódot a fejlesztési szóközt
-1. A kód a fejlesztési adhatja hibaelhárítása
-1. Egy fejlesztői terület megosztása
+Here's the basic flow for setting up and using Azure Dev Spaces:
+1. Prepare your AKS cluster for Azure Dev Spaces
+1. Prepare your code for running on Azure Dev Spaces
+1. Run your code on a dev space
+1. Debug your code on a dev space
+1. Share a dev space
 
-Ismertetjük, hogy az egyes Azure-fejlesztési tárolóhelyek működéséről további részleteket az alábbi szakaszokban.
+We'll cover more details of how Azure Dev Spaces works in each of the below sections.
 
-## <a name="prepare-your-aks-cluster"></a>Az AKS-fürt előkészítése
+## <a name="prepare-your-aks-cluster"></a>Prepare your AKS cluster
 
-Az AKS-fürt előkészítése foglalja magában:
-* Az AKS ellenőrzése fürt régióban van [támogatott Azure-fejlesztési szóközökkel][supported-regions].
-* Kubernetes 1.10.3 futtatja ellenőrzése vagy újabb.
-* Azure fejlesztői tárolóhelyek engedélyezésével a fürt használatával `az aks use-dev-spaces`
+Preparing your AKS cluster involves:
+* Verifying your AKS cluster is in a region [supported by Azure Dev Spaces][supported-regions].
+* Verifying you are running Kubernetes 1.10.3 or later.
+* Enabling Azure Dev Spaces on your cluster using `az aks use-dev-spaces`
 
-Hogyan hozhat létre, és a egy AKS-fürtöt az Azure fejlesztési tárolóhelyek konfigurálása a további információkért tekintse meg az első lépésekhez útmutatókat:
-* [Az Azure Dev tárolóhelyek és a Java együttes használatának első lépései](get-started-java.md)
-* [Az Azure fejlesztési szóközöket a .NET Core és a Visual Studio használatának első lépései](get-started-netcore-visualstudio.md)
-* [Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával](get-started-netcore.md)
-* [Bevezetés az Azure fejlesztési szóközöket a node.js használatával](get-started-nodejs.md)
+For more information on how to create and configure an AKS cluster for Azure Dev Spaces, see one of the getting started guides:
+* [Get Started on Azure Dev Spaces with Java](get-started-java.md)
+* [Get Started on Azure Dev Spaces with .NET Core and Visual Studio](get-started-netcore-visualstudio.md)
+* [Get Started on Azure Dev Spaces with .NET Core](get-started-netcore.md)
+* [Get Started on Azure Dev Spaces with Node.js](get-started-nodejs.md)
 
-Az AKS-fürt Azure fejlesztési tárolóhelyek engedélyezve van, amikor telepíti a vezérlő a fürt számára. A vezérlő egy külön Azure-erőforrás a fürtön kívüli, és a fürtön, a következőket:
+When Azure Dev Spaces is enabled on your AKS cluster, it installs the controller for your cluster. The controller is a separate Azure resource outside of your cluster and does the following to resources in your cluster:
 
-* Létrehozza vagy egy Kubernetes-névtér adatokként fejlesztési szóközzel jelöli meg.
-* Eltávolítja az összes nevű Kubernetes-névtér *azds*, ha létezik, és létrehoz egy újat.
-* Üzembe helyez egy Kubernetes-webhook konfigurációját.
-* Üzembe helyez egy webhook már a betegfelvétel kiszolgálót.
+* Creates or designates a Kubernetes namespace to use as a dev space.
+* Removes any Kubernetes namespace named *azds*, if it exists, and creates a new one.
+* Deploys a Kubernetes webhook configuration.
+* Deploys a webhook admission server.
     
 
-Használja az ugyanazon egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is.
+It also uses the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Az Azure fejlesztési tárolóhelyek fürt előkészítése](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure Dev Spaces prepare cluster](media/how-dev-spaces-works/prepare-cluster.svg)
 
-Azure fejlesztői tárolóhelyek használatához legalább egy fejlesztési területet kell lennie. Az Azure fejlesztési tárolóhelyek fejlesztési tárolóhelyek Kubernetes névtereihez az AKS-fürt használja. A tartományvezérlő telepítésekor felszólítja, hogy hozzon létre egy új Kubernetes-névteret, vagy válasszon egy meglévő névtér vagy az első fejlesztési terület adatokként. Ha egy névtér fejlesztési tárhelyként ki van jelölve, a vezérlő hozzáad a *azds.io/space=true* fejlesztési tárhelyként azonosításához névtéren címkét. A kezdeti fejlesztési helyet hoz létre, vagy kijelölése alapértelmezés szerint be van jelölve, a fürt előkészítése után. Amikor egy hely van kiválasztva, használatos Azure fejlesztési szóközökkel új számítási feladatok létrehozásához.
+In order to use Azure Dev Spaces, there must be at least one dev space. Azure Dev Spaces uses Kubernetes namespaces within your AKS cluster for dev spaces. When a controller is being installed, it prompts you to create a new Kubernetes namespace or choose an existing namespace to use as your first dev space. When a namespace is designated as a dev space, the controller adds the *azds.io/space=true* label to that namespace to identify it as a dev space. The initial dev space you create or designate is selected by default after you prepare your cluster. When a space is selected, it is used by Azure Dev Spaces for creating new workloads.
 
-Alapértelmezés szerint a vezérlő hoz létre egy fejlesztési terület nevű *alapértelmezett* frissítse a meglévő *alapértelmezett* Kubernetes-névtér. Az ügyféloldali eszközök segítségével hozzon létre új fejlesztői szóközöket, és távolítsa el a meglévő fejlesztési szóközöket. A Kubernetes, a korlátozás miatt a *alapértelmezett* fejlesztési terület nem távolítható el. A vezérlő eltávolít minden meglévő Kubernetes-névterek nevű *azds* való ütközések elkerülése érdekében a `azds` az ügyféloldali eszközök által használt parancsot.
+By default, the controller creates a dev space named *default* by upgrading the existing *default* Kubernetes namespace. You can use the client-side tooling to create new dev spaces and remove existing dev spaces. Due to a limitation in Kubernetes, the *default* dev space cannot be removed. The controller also removes any existing Kubernetes namespaces named *azds* to avoid conflicts with the `azds` command used by the client-side tooling.
 
-A Kubernetes webhook már a betegfelvétel kiszolgáló podok el három tárolót Instrumentation üzembe helyezés során használatos: devspaces-proxy tároló, a proxy-inicializálás devspaces tároló és a egy devspaces-build tárolót. **Ezek a tárolók mindhárom az AKS-fürt legfelső szintű hozzáféréssel rendelkező futtassa.** Az azonos egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is használják.
+The Kubernetes webhook admission server is used to inject pods with three containers during deployment for instrumentation: a devspaces-proxy container, a devspaces-proxy-init container, and a devspaces-build container. **All three of these containers run with root access on your AKS cluster.** They also use the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Az Azure fejlesztői, szóközök Kubernetes webhook már a betegfelvétel server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Azure Dev Spaces Kubernetes webhook admission server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-A devspaces proxy tároló egy oldalkocsi tároló, amely az összes TCP-forgalmat kezeli, és az alkalmazástárolók kimenő, és segít végre útválasztást. A devspaces proxy tároló reroutes HTTP-üzenetek, ha bizonyos szóközök vannak használatban. Például segíthet irányíthatja a HTTP-üzenetek a szülő és gyermek tárolóhelyek alkalmazások között. Az összes-HTTP adatforgalom áthalad devspaces proxy kívánja módosítani. A devspaces proxy tárolót is naplózza az összes bejövő és kimenő HTTP-üzenetek, és elküldi őket az ügyféloldali eszközök nyomkövetésként. A nyomkövetések megtekinthető a fejlesztő vizsgálhatja meg az alkalmazás viselkedését.
+The devspaces-proxy container is a sidecar container that handles all TCP traffic into and out of the application container and helps perform routing. The devspaces-proxy container reroutes HTTP messages if certain spaces are being used. For example, it can help route HTTP messages between applications in parent and child spaces. All non-HTTP traffic passes through devspaces-proxy unmodified. The devspaces-proxy container also logs all inbound and outbound HTTP messages and sends them to the client-side tooling as traces. These traces can then be viewed by the developer to inspect the behavior of the application.
 
-A proxy-inicializálás devspaces tároló egy [init tároló](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) , amely alapján a hely hierarchiában, az alkalmazás tárolóba további útválasztási szabályokat ad. Útválasztási szabályok hozzáadja az alkalmazástárolók frissítésével */etc/resolv.conf* fájlt, és engedélyezze az iptables konfigurációs megkezdése előtt. A frissítések */etc/resolv.conf* lehetővé teszik a szülő tárolóhelyek szolgáltatások DNS-feloldását. A engedélyezze az iptables konfigurációfrissítések győződjön meg, hogy az összes TCP-forgalom és az alkalmazástárolók kívül legyenek átirányítva, ha devspaces-proxy. A proxy-inicializálás devspaces minden frissítés fordulhat elő, Kubernetes hozzáadja szabályok mellett.
+The devspaces-proxy-init container is an [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that adds additional routing rules based on the space hierarchy to your application's container. It adds routing rules by updating the application container's */etc/resolv.conf* file and iptables configuration before it starts. The updates to */etc/resolv.conf* allow for DNS resolution of services in parent spaces. The iptables configuration updates ensure all TCP traffic into and out of the application's container are routed though devspaces-proxy. All updates from devspaces-proxy-init happen in addition to the rules that Kubernetes adds.
 
-A devspaces-build-tárolót egy init tároló és a projekt forráskód és a Docker-szoftvercsatorna csatlakoztatása. A projekt forráskód és a Docker való hozzáférés lehetővé teszi, hogy az alkalmazás tárolót közvetlenül a pod hozott létre.
+The devspaces-build container is an init container and has the project source code and Docker socket mounted. The project source code and access to Docker allows the application container to be built directly by the pod.
 
 > [!NOTE]
-> Az Azure fejlesztési tárolóhelyek az alkalmazás-tároló létrehozása és futtatása, ugyanazon a csomóponton használ. Ennek eredményeképpen az Azure fejlesztési tárolóhelyek nem kell kialakításához és futtatásához az alkalmazás egy külső container registry.
+> Azure Dev Spaces uses the same node to build your application's container and run it. As a result, Azure Dev Spaces does not need an external container registry for building and running your application.
 
-A Kubernetes webhook már a betegfelvétel figyeli a bármely új pod, amely jön létre az AKS-fürtöt. Ha a pod telepítve van minden olyan névtér a *azds.io/space=true* címke, azt, hogy a pod kódtárba a további tárolókkal. Ha az alkalmazás tárolóban fut, az ügyféloldali eszközök használata csak szúrhatja be a devspaces-build-tárolót.
+The Kubernetes webhook admission server listens for any new pod that's created in the AKS cluster. If that pod is deployed to any namespace with the *azds.io/space=true* label, it injects that pod with the additional containers. The devspaces-build container is only injected if the application's container is run using the client-side tooling.
 
-Miután előkészítette az AKS-fürt, az ügyféloldali eszközök segítségével készítheti elő, és futtathatja a kódot a fejlesztési tárhely.
+Once you have prepared your AKS cluster, you can use the client-side tooling to prepare and run your code in your dev space.
 
-## <a name="prepare-your-code"></a>A kód előkészítése
+## <a name="prepare-your-code"></a>Prepare your code
 
-Annak érdekében, hogy futtassa az alkalmazást a fejlesztési szóközzel, konténeralapú lehet szükséges, és meg kell határoznia, hogy telepítési módját a Kubernetes. Igény szerint tárolóalapúvá alakíthatja az alkalmazást, szüksége van egy docker-fájlban. Határozza meg, hogy a Kubernetes, hogyan helyezi üzembe az alkalmazást, szüksége egy [Helm-diagram](https://docs.helm.sh/). Segítség a docker-fájl és a Helm-diagram az alkalmazás létrehozása, az ügyféloldali eszközök biztosítanak a `prep` parancsot:
+In order to run your application in a dev space, it needs to be containerized, and you need to define how it should be deployed to Kubernetes. To containerize your application, you need a Dockerfile. To define how your application is deployed to Kubernetes, you need a [Helm chart](https://docs.helm.sh/). To assist in creating both the Dockerfile and Helm chart for your application, the client-side tools provide the `prep` command:
 
 ```cmd
 azds prep --public
 ```
 
-A `prep` parancsot a fájlok a projekt ellenőriz, és próbálja meg létrehozni a docker-fájl és a Helm diagramot az alkalmazás futtatása a Kubernetesben. Jelenleg a `prep` parancs létrehoz egy docker-fájl és a Helm diagramot a következő nyelvek valamelyikével:
+The `prep` command will look at the files in your project and try to create the Dockerfile and Helm chart for running your application in Kubernetes. Currently, the `prep` command will generate a Dockerfile and Helm chart with the following languages:
 
 * Java
 * Node.js
 * .NET Core
 
-Ön *kell* futtassa a `prep` parancsot a forráskódot tartalmazó könyvtár. Fut a `prep` parancsot a megfelelő címtár lehetővé teszi, hogy az ügyféloldali eszközök, azonosíthatja a nyelvet, és igény szerint tárolóalapúvá alakíthatja az alkalmazás egy megfelelő docker-fájl létrehozása. Is futtathatja a `prep` parancsot egy könyvtárat, amely tartalmazza a egy *pom.xml* Java-projektek fájlt.
+You *must* run the `prep` command from a directory that contains source code. Running the `prep` command from the correct directory allows the client-side tooling to identify the language and create an appropriate Dockerfile to containerize your application. You can also run the `prep` command from a directory that contains a *pom.xml* file for Java projects.
 
-Ha futtatja a `prep` parancsot, amely nem tartalmazza a forráskódot, az ügyféloldali eszközök könyvtárból nem hoz létre egy docker-fájlban. Megjeleníti egy hiba üzenettel is: *A docker-fájl nem hozható létre, nem támogatott nyelvet miatt*. A hiba is fellép, ha az ügyféloldali eszközök nem ismeri fel a projekt típusa.
+If you run the `prep` command from directory that does not contain source code, the client-side tooling will not generate a Dockerfile. It will also display an error saying: *Dockerfile could not be generated due to unsupported language*. This error also occurs if the client-side tooling does not recognize the project type.
 
-Ha futtatja a `prep` parancsot, lehetősége van megadni a `--public` jelzőt. Ez a jelző arra utasítja a vezérlő ezt a szolgáltatást egy internetről elérhető végpont létrehozására. Ha ez a jelző nincs megadva, a szolgáltatás csak a fürtön belül elérhető, vagy az ügyféloldali eszközök által létrehozott a localhost-alagút használatával. Engedélyezheti vagy letilthatja ezt a viselkedést futtatása után a `prep` parancsot a létrehozott Helm-diagram frissítésével.
+When you run the `prep` command, you have the option of specifying the `--public` flag. This flag tells the controller to create an internet-accessible endpoint for this service. If you do not specify this flag, the service is only accessible from within the cluster or using the localhost tunnel created by the client-side tooling. You can enable or disable this behavior after running the `prep` command by updating the generated Helm chart.
 
-A `prep` parancs minden olyan meglévő docker-fájlok vagy a Helm diagramok rendelkezik a projekt nem helyettesíti. Ha meglévő docker-fájlban vagy a Helm-diagramot használja ugyanazt az elnevezési konvenciót által előállított fájlokat a `prep` parancs, a `prep` parancs kihagyja ezeket a fájlokat létrehozása. Ellenkező esetben a `prep` parancsot fog létrehozni a saját docker-fájlban vagy a Helm diagram jelentésvászon oldalán a meglévő fájlokat.
+The `prep` command will not replace any existing Dockerfiles or Helm charts you have in your project. If an existing Dockerfile or Helm chart uses the same naming convention as the files generated by the `prep` command, the `prep` command will skip generating those files. Otherwise, the `prep` command will generate its own Dockerfile or Helm chart along side the existing files.
 
-A `prep` parancsot is generál egy `azds.yaml` fájlt a projekt gyökerében. Az Azure fejlesztési tárolóhelyek létrehozása, telepítése, konfigurálása és futtassa az alkalmazást ezt a fájlt használja. A konfigurációs fájl a docker-fájl és a Helm-diagram helyét sorolja fel, és további konfigurációs felül ezek az összetevők is biztosít.
+The `prep` command will also generate a `azds.yaml` file at the root of your project. Azure Dev Spaces uses this file to build, install, configure, and run your application. This configuration file lists the location of your Dockerfile and Helm chart and also provides additional configuration on top of those artifacts.
 
-Íme egy példa azds.yaml fájl használatával létrehozott [.NET Core-mintaalkalmazás](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
+Here is an example azds.yaml file created using [.NET Core sample application](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
 
 ```yaml
 kind: helm-release
@@ -193,114 +193,114 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-A `azds.yaml` által létrehozott fájlt a `prep` parancs egy egyszerű, egyetlen projekt fejlesztési forgatókönyvre vonatkozó jól működik. Ha az adott projekt növekedett összetettségét, szükség lehet frissíteni a fájl futtatása után a `prep` parancsot. A projekt például igényelnek bizonyos mértékű finomhangolásra annak a build vagy a fejlesztési alapján vagy hibakeresés igények folyamat elindításához. Előfordulhat, hogy akkor is a projektben, több alkalmazás, amelyek több összeállítási folyamatairól vagy egy másik build tartalmat igényelnek.
+The `azds.yaml` file generated by the `prep` command should work fine for a simple, single project development scenario. If your specific project has increased complexity, you may need to update this file after running the `prep` command. For example, your project may require some tweaking to your build or launch process based on your development or debugging needs. You also might have multiple applications in your project, which require multiple build processes or a different build content.
 
-## <a name="run-your-code"></a>A kód futtatása
+## <a name="run-your-code"></a>Run your code
 
-Futtathatja a kódot a fejlesztési szóközzel, adja ki a `up` könyvtárába parancsot a `azds.yaml` fájlt:
+To run your code in a dev space, issue the `up` command in the same directory as your `azds.yaml` file:
 
 ```cmd
 azds up
 ```
 
-A `up` parancs feltölti az alkalmazás forrásfájljait és más összetevőket hozhat létre és futtassa a projektet a fejlesztési terület szükséges. Itt a vezérlő a fejlesztési területen:
+The `up` command uploads your application source files and other artifacts needed to build and run your project to the dev space. From there, the controller in your dev space:
 
-1. Az alkalmazás üzembe helyezéséhez a Kubernetes-objektumokat hoz létre.
-1. Az alkalmazás a tárolót hoz létre.
-1. Telepíti az alkalmazást a fejlesztési területet.
-1. Létrehoz egy nyilvánosan elérhető-e DNS-nevet az alkalmazás-végpont, ha konfigurálva.
-1. Használja a *port-továbbító* biztosíthat hozzáférést az alkalmazás-végpontot a http://localhost.
-1. Az stdout és stderr, az ügyféloldali eszközök továbbítja.
+1. Creates the Kubernetes objects to deploy your application.
+1. Builds the container for your application.
+1. Deploys your application to the dev space.
+1. Creates a publicly accessible DNS name for your application endpoint if configured.
+1. Uses *port-forward* to provide access to your application endpoint using http://localhost.
+1. Forwards stdout and stderr to the client-side tooling.
 
 
-### <a name="starting-a-service"></a>A szolgáltatás indítása
+### <a name="starting-a-service"></a>Starting a service
 
-Amikor egy szolgáltatást fejlesztési szóközzel, az ügyféloldali eszközök és a tartományvezérlő működjön a forrás-fájlok szinkronizálása, a tároló és a Kubernetes-objektumokat hozzon létre és futtassa az alkalmazást.
+When you start a service in a dev space, the client-side tooling and controller work in coordination to synchronize your source files, create your container and Kubernetes objects, and run your application.
 
-A részletes szintű, ez történik futtatásakor `azds up`:
+At a more granular level, here is what happens when you run `azds up`:
 
-1. Szinkronizálják a felhasználó gépről egy AKS-fürtöt a felhasználó egyedi az Azure file Storage. A forráskód, a Helm-diagramot és a konfigurációs fájlok lesznek feltöltve. További részleteket a szinkronizálási folyamat a következő szakaszban érhetők el.
-1. A vezérlő új munkamenet indításához kérést hoz létre. A kérelem több tulajdonságát, beleértve az egyedi azonosító, a címtér neve, a forráskód elérési útja és a hibakeresési jelző tartalmazza.
-1. A vezérlő lecseréli a *$(tag)* egyedi munkamenet-azonosító és a Helm-diagram a szolgáltatás telepíti a Helm-diagramot a helyőrző. Az egyedi munkamenet-azonosító, a Helm-diagramot a hivatkozás lehetővé teszi, hogy a tároló hozzáadása az AKS-fürtöt, illetve a munkamenet-kérelmet vissza a meghatározott munkamenet központi telepítése, és a kapcsolódó adatokat.
-1. A Helm-diagramot a telepítés során a Kubernetes webhook már a betegfelvétel kiszolgáló további tárolókat hozzáadja az alkalmazáspodot rendszerállapot és a projekt forráskód elérését. Adja meg a HTTP-nyomkövetés és a hely útválasztás a devspaces-proxy és a proxy-inicializálás devspaces tárolók kerülnek. A pod, amellyel az alkalmazás-tárolót a Docker-példány és a projekt forráskód hozzáférést biztosíthat a devspaces-build tároló kerül.
-1. Az alkalmazáspodot indításakor a devspaces-build-tároló és a proxy-inicializálás devspaces tároló szolgálnak az alkalmazástárolók hozhat létre. Az alkalmazástárolók és devspaces-proxy tárolók majd el lesz indítva.
-1. Miután elindult az alkalmazástárolók, az ügyféloldali funkciókat használja a Kubernetes *port-továbbító* keresztül biztosít a HTTP-hozzáférését az alkalmazásához, http://localhost. Ez porttovábbítást a fejlesztői gépén csatlakozik a szolgáltatás a fejlesztési tárhelyre.
-1. Amikor megkezdte a pod az összes tárolót, a szolgáltatás fut-e. Az ügyféloldali funkció ezen a ponton a HTTP nyomkövetési stdout és stderr streamelésére kezdődik. Ez az információ az ügyféloldali funkciók szerint jelenik meg a fejlesztők számára.
+1. Files are synchronized from the user’s machine to an Azure file storage that is unique to the user’s AKS cluster. The source code, Helm chart, and configuration files are uploaded. More details on the synchronization process are available in the next section.
+1. The controller creates a request to start a new session. This request contains several properties, including a unique ID, space name, path to source code, and a debugging flag.
+1. The controller replaces the *$(tag)* placeholder in the Helm chart with the unique session ID and installs the Helm chart for your service. Adding a reference to the unique session ID to the Helm chart allows the container deployed to the AKS cluster for this specific session to be tied back to the session request and associated information.
+1. During the installation of the Helm chart, the Kubernetes webhook admission server adds additional containers to your application's pod for instrumentation and access to your project's source code. The devspaces-proxy and devspaces-proxy-init containers are added to provide HTTP tracing and space routing. The devspaces-build container is added to provide the pod with access to the Docker instance and project source code for building your application's container.
+1. When the application's pod is started, the devspaces-build container and devspaces-proxy-init container are used to build the application container. The application container and devspaces-proxy containers are then started.
+1. After the application container has started, the client-side functionality uses the Kubernetes *port-forward* functionality to provide HTTP access to your application over http://localhost. This port forwarding connects your development machine to the service in your dev space.
+1. When all containers in the pod have started, the service is running. At this point, the client-side functionality begins to stream the HTTP traces, stdout, and stderr. This information is displayed by the client-side functionality for the developer.
 
-### <a name="updating-a-running-service"></a>A futó szolgáltatás frissítése
+### <a name="updating-a-running-service"></a>Updating a running service
 
-A szolgáltatás futása Azure fejlesztési tárolóhelyek képes, hogy a szolgáltatás frissítéséhez, ha a projekt forrásfájlok módosítását. Fejlesztői tárolóhelyek kezelésére is alkalmas eltérően a fájl módosított típusától függően a szolgáltatás frissítése. Fejlesztői, szóközök frissítheti a futó szolgáltatás három módja van:
+While a service is running, Azure Dev Spaces has the ability to update that service if any of the project source files change. Dev Spaces also handles updating the service differently depending on the type of file that is changed. There are three ways Dev Spaces can update a running service:
 
-* Közvetlenül a fájl frissítése
-* Újraépítését, és a futó alkalmazás tárolóban az alkalmazás újraindítása
-* Újraépítése és újratelepítése az alkalmazástárolók
+* Directly updating a file
+* Rebuilding and restarting the application's process inside the running application's container
+* Rebuilding and redeploying the application's container
 
-![Az Azure fejlesztői, szóközök file sync](media/how-dev-spaces-works/file-sync.svg)
+![Azure Dev Spaces file sync](media/how-dev-spaces-works/file-sync.svg)
 
-Bizonyos projekt-fájlok, amelyek statikus objektumokat, például a html, css és cshtml fájlt, bármi újraindítása nélkül frissíthetők közvetlenül az alkalmazás tárolóban. Ha módosul egy statikus eszközt, az új fájl a fejlesztési terület szinkronizálva és a futó tárolót használja majd.
+Certain project files that are static assets, such as html, css, and cshtml files, can be updated directly in the application's container without restarting anything. If a static asset changes, the new file is synchronized to the dev space and then used by the running container.
 
-Fájlok, például a forráskód vagy az alkalmazás konfigurációs fájljaiban módosításai az alkalmazás folyamata belül a futó tároló újraindításával alkalmazhatók. Szinkronizált ezeket a fájlokat, miután az alkalmazás folyamata újraindul belül a futó tárolót használ a *devhostagent* folyamat. Amikor először hoz létre az alkalmazást tároló, a vezérlő az alkalmazás az indítási parancs lecseréli egy másik folyamat nevű *devhostagent*. Egy alárendelt folyamat alatt, majd futtassa a az alkalmazás tényleges folyamata *devhostagent*, és a kimenetét használja ki az adatcsatornán *devhostagent*kimenetének. A *devhostagent* folyamat része is fejlesztői, szóközök és is végre lehet hajtani parancsokat a futó tároló nevében fejlesztési szóközöket. Újraindítás végrehajtásakor *devhostagent*:
+Changes to files such as source code or application configuration files can be applied by restarting the application's process within the running container. Once these files are synchronized, the application's process is restarted within the running container using the *devhostagent* process. When initially creating the application's container, the controller replaces the startup command for the application with a different process called *devhostagent*. The application's actual process is then run as a child process under *devhostagent*, and its output is piped out using *devhostagent*'s output. The *devhostagent* process is also part of Dev Spaces and can execute commands in the running container on behalf of Dev Spaces. When performing a restart, *devhostagent*:
 
-* Leállítja az aktuális folyamat vagy az alkalmazáshoz társított folyamatokat
-* Az alkalmazás újbóli létrehozása
-* Újraindítja a folyamatot, vagy az alkalmazáshoz társított folyamatokat
+* Stops the current process or processes associated with the application
+* Rebuilds the application
+* Restarts the process or processes associated with the application
 
-Módja *devhostagent* végrehajtja az előző lépések konfigurálva van a `azds.yaml` konfigurációs fájlt. Ez a konfiguráció részleteit egy későbbi szakaszban olvashat.
+The way *devhostagent* executes the preceding steps is configured in the `azds.yaml` configuration file. This configuration is detailed in a later section.
 
-A projekt fájlokban, például a docker-fájlok, átírja csproj fájlokká vagy a Helm-diagram bármely része az alkalmazástárolók újraépítése és újratelepítése szükséges. Amikor több ilyen fájllal szinkronizálja a fejlesztési felület, a vezérlő fut-e a [helm-frissítés](https://helm.sh/docs/helm/#helm-upgrade) parancs, és az alkalmazástárolók újraépítése és újratelepítése.
+Updates to project files such as Dockerfiles, csproj files, or any part of the Helm chart require the application's container to be rebuilt and redeployed. When one of these files is synchronized to the dev space, the controller runs the [helm upgrade](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure) command and the application's container is rebuilt and redeployed.
 
-### <a name="file-synchronization"></a>Fájlszinkronizálás
+### <a name="file-synchronization"></a>File Synchronization
 
-Az első az alkalmazás indításakor fejlesztési szóközzel, az alkalmazás forrásfájljait lesznek feltöltve. Az alkalmazás futása közben és a későbbi újraindítást, csak a módosított fájlok feltöltése. Két fájlt működnie, ez a folyamat használ: egy ügyféloldali és a tartományvezérlő-oldali fájlt.
+The first time an application is started in a dev space, all the application's source files are uploaded. While the application is running and on later restarts, only the changed files are uploaded. Two files are used to coordinate this process: a client-side file and a controller-side file.
 
-Az ügyféloldali fájlt egy ideiglenes könyvtárba tárolja, és a projekt könyvtárában fejlesztési tárolóhelyek fut kivonata alapján neve. Ha például a Windows, lenne egy fájl a szokott módon *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* a projekthez. A Linux, az ügyféloldali fájl tárolva van a *ügynökszámítógépen* könyvtár. Annak a könyvtár macOS rendszeren futtassa a `echo $TMPDIR` parancsot.
+The client-side file is stored in a temporary directory and is named based on a hash of the project directory you are running in Dev Spaces. For example, on Windows you would have a file like *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* for your project. On Linux, the client-side file is stored in the */tmp* directory. You can find the directory on macOS by running the `echo $TMPDIR` command.
 
-Ez a fájl JSON formátumban vannak, és tartalmazza:
+This file is in JSON format and contains:
 
-* Minden projektfájl, amely a fejlesztési területtel rendelkező szinkronizálva van egy bejegyzés
-* A szinkronizálás ID
-* Az utolsó szinkronizálási művelet történő küldés időbélyegzője
+* An entry for each project file that is synchronized with the dev space
+* A synchronization ID
+* The timestamp of the last sync operation
 
-Minden egyes projektbejegyzés fájl elérési útját a fájl- és az időbélyegző tartalmazza.
+Each project file entry contains a path to the file and its timestamp.
 
-A tartományvezérlő-oldali fájlt az AKS-fürtön tárolja. A szinkronizálás Azonosítóját és a legutóbbi szinkronizálás történő küldés időbélyegzője tartalmazza.
+The controller-side file is stored on the AKS cluster. It contains the synchronization ID and the timestamp of the last synchronization.
 
-A szinkronizálás történik, ha a szinkronizálás időbélyegei nem egyeznek az ügyféloldali és a tartományvezérlő-oldali fájlok között. Szinkronizálás során az ügyféloldali eszközök a bejegyzéseket az ügyféloldali fájlban ismétel. Ha a fájl időbélyegzője történő küldés időbélyegzője legyen szinkronizálás után, ezt a fájlt a fejlesztési területre van szinkronizálva. A szinkronizálás befejeződése után a szinkronizálási időbélyegeket frissülnek az ügyféloldali és a tartományvezérlő-oldali fájlok.
+A sync happens when the synchronization timestamps do not match between the client-side and the controller-side files. During a sync, the client-side tooling iterates over the file entries in the client-side file. If the file's timestamp is after the sync timestamp, that file is synced to the dev space. Once the sync is complete, the sync timestamps are updated on both the client-side and controller-side files.
 
-Az összes projekt fájl szinkronizálva lesznek, ha az ügyféloldali fájl nem található. Ez a viselkedés lehetővé teszi, hogy az ügyféloldali fájlt törlésével a teljes szinkronizálás kényszerítése.
+All of the project files are synced if the client-side file is not present. This behavior allows you to force a full sync by deleting the client-side file.
 
-### <a name="how-routing-works"></a>Útválasztás működése
+### <a name="how-routing-works"></a>How routing works
 
-Egy fejlesztői terület AKS épül, és ugyanazokkal a [hálózatkezelési fogalmai](../aks/concepts-network.md). Az Azure fejlesztési szóközöket is rendelkezik egy központosított *ingressmanager* szolgáltatást, és az AKS-fürtöt helyezünk üzembe a saját Bejövőforgalom-vezérlőt. A *ingressmanager* szolgáltatás figyeli az AKS-fürt a fejlesztői, szóközök és úgy bővíti az Azure fejlesztési tárolóhelyek Bejövőforgalom-vezérlőt a bejövő forgalom objektumokat alkalmazás felskálázzuk az Útválasztás a fürtben. Az egyes pod devspaces-proxy tároló hozzáadja egy `azds-route-as` HTTP-fejlécet a HTTP-forgalom egy fejlesztési terület URL-címe alapján. Például egy URL-kérelmet *http://azureuser.s.default.serviceA.fedcba09...azds.io* kap a HTTP-fejlécben `azds-route-as: azureuser`. A devspaces proxy tároló nem fog hozzáadni egy `azds-route-as` fejléc, ha már ilyen.
+A dev space is built on top of AKS and uses the same [networking concepts](../aks/concepts-network.md). Azure Dev Spaces also has a centralized *ingressmanager* service and deploys its own Ingress Controller to the AKS cluster. The *ingressmanager* service monitors AKS clusters with dev spaces and augments the Azure Dev Spaces Ingress Controller in the cluster with Ingress objects for routing to application pods. The devspaces-proxy container in each pod adds an `azds-route-as` HTTP header for HTTP traffic to a dev space based on the URL. For example, a request to the URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* would get an HTTP header with `azds-route-as: azureuser`. The devspaces-proxy container will not add an `azds-route-as` header if one is already present.
 
-Amikor egy szolgáltatást a fürtön kívülről HTTP-kérelemmel történik, a kérelem a Bejövőforgalom-vezérlőjéhez kerül. A Bejövőforgalom-vezérlőjéhez irányítja a kérést közvetlenül a bejövő forgalom objektumok és a szabályok alapján a megfelelő pod. A devspaces proxy a pod-tárolóba a kérelmet kap, hozzáadja a `azds-route-as` fejlécet az URL-cím alapján, valamint a kérelmet az alkalmazástárolók irányítja majd.
+When an HTTP request is made to a service from outside the cluster, the request goes to the Ingress controller. The Ingress controller routes the request directly to the appropriate pod based on its Ingress objects and rules. The devspaces-proxy container in the pod receives the request, adds the `azds-route-as` header based on the URL, and then routes the request to the application container.
 
-HTTP-kérést a szolgáltatás egy olyan másik szolgáltatás a fürtön belül történik, amikor a kérést először végighalad a hívó service devspaces-proxy-tárolóban. A devspaces proxy tároló megvizsgálja a HTTP-kérés és ellenőrzi a `azds-route-as` fejléc. A fejléc alapján, a devspaces proxy tárolót fog keresni a fejléc értéke társított szolgáltatás IP-címét. Ha IP-cím található, a devspaces proxy tároló reroutes a kérés IP-címre. Ha IP-cím nem található, a devspaces proxy tároló a kérelmet a szülőtároló irányítja.
+When an HTTP request is made to a service from another service within the cluster, the request first goes through the calling service's devspaces-proxy container. The devspaces-proxy container looks at the HTTP request and checks the `azds-route-as` header. Based on the header, the devspaces-proxy container will look up the IP address of the service associated with the header value. If an IP address is found, the devspaces-proxy container reroutes the request to that IP address. If an IP address is not found, the devspaces-proxy container routes the request to the parent application container.
 
-Ha például az alkalmazások *serviceA* és *serviceB* nevű szülő fejlesztési szóközzel vannak telepítve *alapértelmezett*. *serviceA* támaszkodik *serviceB* és azt a HTTP-hívást hajt végre. Azure-felhasználó egy gyermek fejlesztési hely alapján hoz létre a *alapértelmezett* nevű terület *azureuser*. Azure-felhasználó is üzembe helyezi a saját verzióját *serviceA* a gyermek területre. Amikor egy kérés érkezik *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
+For example, the applications *serviceA* and *serviceB* are deployed to a parent dev space called *default*. *serviceA* relies on *serviceB* and makes HTTP calls to it. Azure User creates a child dev space based on the *default* space called *azureuser*. Azure User also deploys their own version of *serviceA* to their child space. When a request is made to *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
-![Az Azure fejlesztési tárolóhelyek Útválasztás](media/how-dev-spaces-works/routing.svg)
+![Azure Dev Spaces routing](media/how-dev-spaces-works/routing.svg)
 
-1. Az IP-címeként a pod az URL-címhez társított, amely kikeresi a Bejövőforgalom-vezérlőjéhez *serviceA.azureuser*.
-1. A Bejövőforgalom-vezérlőt a IP-cím megkeresése az Azure felhasználói fejlesztői terület a pod, és átirányítja a kérést a *serviceA.azureuser* pod.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod a kérelmet kap, és hozzáad `azds-route-as: azureuser` , HTTP-fejléc.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod irányítja a kérést a *serviceA* az alkalmazástárolók a *serviceA.azureuser* pod.
-1. A *serviceA* az alkalmazás a *serviceA.azureuser* pod hívást indít *serviceB*. A *serviceA* is tartalmazó kódot, hogy megőrizze a meglévő alkalmazás `azds-route-as` fejlécet, amely ebben az esetben `azds-route-as: azureuser`.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod fogadja a kéréseket, és megkeresi az IP-címe *serviceB* értéke alapján a `azds-route-as` fejléc.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod nem talál egy IP-címeként *serviceB.azureuser*.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod kikeresi az IP-címeként *serviceB* a szülő helyre, vagyis *serviceB.default*.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod megkeresi az IP-címeként *serviceB.default* , és továbbítja a kérést a *serviceB.default* pod.
-1. A devspaces proxy tárolóba a *serviceB.default* pod fogadja a kéréseket, és átirányítja a kérést a *serviceB* az alkalmazástárolók a *serviceB.default*pod.
-1. A *serviceB* az alkalmazás a *serviceB.default* pod választ küld a *serviceA.azureuser* pod.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod a válasz fogadása és válasz irányítja a *serviceA* az alkalmazástárolók a *serviceA.azureuser* pod.
-1. A *serviceA* alkalmazás megkapja a választ, és majd a saját választ ad vissza.
-1. A devspaces proxy tárolóba a *serviceA.azureuser* pod kapott választ kap a *serviceA* alkalmazástárolók, és továbbítja a választ az eredeti hívó a fürtön kívüli.
+1. The Ingress controller looks up the IP for the pod associated with the URL, which is *serviceA.azureuser*.
+1. The Ingress controller finds the IP for the pod in Azure User's dev space and routes the request to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and adds `azds-route-as: azureuser` as an HTTP header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod routes the request to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application in the *serviceA.azureuser* pod makes a call to *serviceB*. The *serviceA* application also contains code to preserve the existing `azds-route-as` header, which in this case is `azds-route-as: azureuser`.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and looks up the IP of *serviceB* based on the value of the `azds-route-as` header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod does not find an IP for *serviceB.azureuser*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod looks up the IP for *serviceB* in the parent space, which is *serviceB.default*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod finds the IP for *serviceB.default* and routes the request to the *serviceB.default* pod.
+1. The devspaces-proxy container in the *serviceB.default* pod receives the request and routes the request to the *serviceB* application container in the *serviceB.default* pod.
+1. The *serviceB* application in the *serviceB.default* pod returns a response to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response and routes the response to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application receives the response and then returns its own response.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response from the *serviceA* application container and routes the response to the original caller outside of the cluster.
 
-Minden más TCP-forgalmat, amely nem HTTP haladnak keresztül a Bejövőforgalom-vezérlőt és devspaces-proxy tárolók kívánja módosítani.
+All other TCP traffic that is not HTTP passes through the Ingress controller and devspaces-proxy containers unmodified.
 
-### <a name="how-running-your-code-is-configured"></a>Hogyan történik a kódja fut.
+### <a name="how-running-your-code-is-configured"></a>How running your code is configured
 
-Az Azure fejlesztési szóközt használja a `azds.yaml` fájl telepítése és konfigurálása a szolgáltatáshoz. A tartományvezérlő által használt a `install` tulajdonságot a `azds.yaml` fájl telepítése a Helm-diagramot, és a Kubernetes-objektumokat létrehozni:
+Azure Dev Spaces uses the `azds.yaml` file to install and configure your service. The controller uses the `install` property in the `azds.yaml` file to install the Helm chart and create the Kubernetes objects:
 
 ```yaml
 ...
@@ -326,25 +326,25 @@ install:
 ...
 ```
 
-Alapértelmezés szerint a `prep` parancs a Helm-diagramot hoz létre. Azt állítja be a *install.chart* tulajdonság a Helm-diagram könyvtárába. Ha szeretne egy Helm-diagramot használja egy másik helyen található, frissítheti ezt a tulajdonságot, hogy helyet.
+By default, the `prep` command will generate the Helm chart. It also sets the *install.chart* property to the directory of the Helm chart. If you wanted to use a Helm chart in a different location, you can update this property to use that location.
 
-A Helm-diagramok telepítésekor Azure fejlesztési tárolóhelyek szolgáltatásával felülbírálási értékeket a Helm-diagram. Az alapértelmezett értékek, a Helm-diagram `charts/APP_NAME/values.yaml`.
+When installing the Helm charts, Azure Dev Spaces provides a way to override values in the Helm chart. The default values for the Helm chart are in `charts/APP_NAME/values.yaml`.
 
-Használatával a *install.values* tulajdonság, egy vagy több olyan fájlok, amelyek meghatározzák a kívánt értékeket kicserélt a Helm-diagram listázhatja. Például ha egy állomásnév vagy az adatbázis konfigurációs kifejezetten futtatásakor az alkalmazás fejlesztői szóközzel, használhatja a felülbírálási funkció. Azt is megteheti egy *?* a fájlnevek való beállításához választható bármelyikének végén.
+Using the *install.values* property, you can list one or more files that define values you want replaced in the Helm chart. For example, if you wanted a hostname or database configuration specifically when running your application in a dev space, you can use this override functionality. You can also add a *?* at the end of any of the file names to set it as optional.
 
-A *install.set* tulajdonság lehetővé teszi, hogy egy vagy több értéket szeretne kicserélt a Helm-diagram konfigurálása. A konfigurált értéket *install.set* konfigurált fájlokban szereplő értékek felülírják *install.values*. (Erőforráscsoport) részen *install.set* sem függ, a Helm-diagram értékeit, majd a létrehozott Helm-diagram függően eltérő lehet.
+The *install.set* property allows you to configure one or more values you want replaced in the Helm chart. Any values configured in *install.set* will override values configured in files listed in *install.values*. The properties under *install.set* are dependent on the values in the Helm chart and may be different depending on the generated Helm chart.
 
-A fenti példában a *install.set.replicaCount* tulajdonság arra utasítja a vezérlő hány példányt az alkalmazás futtatása a fejlesztési tárhelyre. A forgatókönyvtől függően megnövelheti ezt az értéket, de azt a hibakeresést az alkalmazáspodot hatással lesz. További információkért lásd: a [hibaelhárításról szóló cikk](troubleshooting.md).
+In the above example, the *install.set.replicaCount* property tells the controller how many instances of your application to run in your dev space. Depending on your scenario, you can increase this value, but it will have an impact on attaching a debugger to your application's pod. For more information, see the [troubleshooting article](troubleshooting.md).
 
-A létrehozott Helm-diagramot a tárolórendszerkép értéke *{{. Values.Image.Repository}} :{{. Values.Image.tag}}* . A `azds.yaml` fájl határozza meg *install.set.image.tag* tulajdonság *$(tag)* alapértelmezés szerint, amely használatos értékeként *{{. Values.Image.tag}}* . Beállításával a *install.set.image.tag* tulajdonság ezzel a módszerrel, lehetővé teszi, hogy az alkalmazás kell futtatásakor az Azure fejlesztési tárolóhelyek címkézett eltérő módon a tároló rendszerképét. Ebben az esetben, a lemezkép címkével  *\<image.repository értéket >: $(tag)* . Kell használnia a *$(tag)* változó értékeként *install.set.image.tag* ahhoz, hogy a fejlesztői, szóközök ismeri fel, és keresse meg a tároló az AKS-fürtöt.
+In the generated Helm chart, the container image is set to *{{ .Values.image.repository }}:{{ .Values.image.tag }}* . The `azds.yaml` file defines *install.set.image.tag* property as *$(tag)* by default, which is used as the value for *{{ .Values.image.tag }}* . By setting the *install.set.image.tag* property in this way, it allows the container image for your application to be tagged in a distinct way when running Azure Dev Spaces. In this specific case, the image is tagged as *\<value from image.repository>:$(tag)* . You must use the *$(tag)* variable as the value of   *install.set.image.tag* in order for Dev Spaces recognize and locate the container in the AKS cluster.
 
-A fenti példában `azds.yaml` meghatározása *install.set.ingress.hosts*. A *install.set.ingress.hosts* tulajdonság határozza meg a gazdagép nevének formátumát a nyilvános végpontokat. Ez a tulajdonság is használ *$(spacePrefix)* , *$(rootSpacePrefix)* , és *$(hostSuffix)* , melyek a vezérlő által megadott értékek. 
+In the above example, `azds.yaml` defines *install.set.ingress.hosts*. The *install.set.ingress.hosts* property defines a host name format for public endpoints. This property also uses *$(spacePrefix)* , *$(rootSpacePrefix)* , and *$(hostSuffix)* , which are values provided by the controller. 
 
-A *$(spacePrefix)* neve, a gyermek fejlesztési területet, amely formájában *SPACENAME.s*. A *$(rootSpacePrefix)* a szülő hely neve. Például ha *azureuser* olyan az alárendelt hely *alapértelmezett*, értéke *$(rootSpacePrefix)* van *alapértelmezett* és értékét *$(spacePrefix)* van *azureuser.s*. Ha a hely nem egy alárendelt hely *$(spacePrefix)* üres. Például ha a *alapértelmezett* terület nem rendelkezik szülő lemezterülettel, értéke *$(rootSpacePrefix)* van *alapértelmezett* és értékének *$(spacePrefix)* üres. A *$(hostSuffix)* mutat, az Azure fejlesztési tárolóhelyek Bejövőforgalom-vezérlőt az AKS-fürt futtató DNS-utótag van. Ez a DNS-utótag felel meg egy helyettesítő karaktert tartalmazó DNS-bejegyzést, például  *\*. RANDOM_VALUE.eus.azds.IO*, amely hozott létre az Azure fejlesztési tárolóhelyek vezérlő az AKS-fürt hozzá lett adva.
+The *$(spacePrefix)* is the name of the child dev space, which takes the form of *SPACENAME.s*. The *$(rootSpacePrefix)* is the name of the parent space. For example, if *azureuser* is a child space of *default*, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is *azureuser.s*. If the space is not a child space, *$(spacePrefix)* is blank. For example, if the *default* space has no parent space, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is blank. The *$(hostSuffix)* is a DNS suffix that points to the Azure Dev Spaces Ingress Controller that runs in your AKS cluster. This DNS suffix corresponds to a wildcard DNS entry, for example *\*.RANDOM_VALUE.eus.azds.io*, that was created when the Azure Dev Spaces controller was added to your AKS cluster.
 
-A fenti `azds.yaml` fájlt sikerült is frissítenie *install.set.ingress.hosts* az alkalmazás gazdagép nevének módosításához. Például, ha az alkalmazás állomásnevét leegyszerűsítése érdekében a *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* való *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
+In the above `azds.yaml` file, you could also update *install.set.ingress.hosts* to change the host name of your application. For example, if you wanted to simplify the hostname of your application from *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* to *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
-Az alkalmazás a tároló létrehozásához, a vezérlő használja az alábbi szakaszait a `azds.yaml` konfigurációs fájlban:
+To build the container for your application, the controller uses the below sections of the `azds.yaml` configuration file:
 
 ```yaml
 build:
@@ -361,13 +361,13 @@ configurations:
 ...
 ```
 
-A vezérlő hozhat létre és futtassa az alkalmazást egy docker-fájl használatával.
+The controller uses a Dockerfile to build and run your application.
 
-A *build.context* tulajdonság tartalmazza a könyvtárban, ahol a docker-fájlok léteznek. A *build.dockerfile* tulajdonság határozza meg, amellyel az alkalmazás üzemi verziójához a docker-fájl nevét. A *configurations.develop.build.dockerfile* tulajdonság a docker-fájl nevét az alkalmazás fejlesztői verziójának konfigurálja.
+The *build.context* property lists the directory where the Dockerfiles exist. The *build.dockerfile* property defines the name of the Dockerfile for building the production version of the application. The *configurations.develop.build.dockerfile* property configures the name of the Dockerfile for the development version of the application.
 
-Fejlesztési és termelési célra másik docker-fájlok lehetővé teszi, hogy bizonyos dolgokat engedélyezése a fejlesztés során, és azok az elemek éles környezetekben üzemelő példányok letiltása. Ha például engedélyezheti a hibakeresési vagy a részletesebb naplózás, fejlesztési és éles környezetben letiltása közben. Ezeket a tulajdonságokat is frissítheti, ha a docker-fájlok más néven, vagy egy másik helyen található.
+Having different Dockerfiles for development and production allows you to enable certain things during development and disable those items for production deployments. For example, you can enable debugging or more verbose logging during development and disable in a production environment. You can also update these properties if your Dockerfiles are named differently or are in a different location.
 
-Könnyebben gyors ismételt futtatásával a fejlesztés során, Azure fejlesztői szóközöket a helyi projektből minden olyan módosítás szinkronizálása, és fokozatosan frissítheti az alkalmazást. Az alábbi szakasz a `azds.yaml` konfigurációs fájl segítségével konfigurálja a szinkronizálási és frissítése:
+To help you rapidly iterate during development, Azure Dev Spaces will sync changes from your local project and incrementally update your application. The below section in the `azds.yaml` configuration file is used to configure the sync and update:
 
 ```yaml
 ...
@@ -388,59 +388,59 @@ configurations:
 ...
 ```
 
-A fájlok és könyvtárak, amelyek szinkronizálják a módosításokat szerepelnek a *configurations.develop.container.sync* tulajdonság. Ezek a könyvtárak futtatásakor kezdetben szinkronizálva lesznek az `up` parancsot, valamint ha észlel. Ha további vagy eltérő címtárak szeretné a fejlesztési tárhelyre szinkronizálva van, módosíthatja ezt a tulajdonságot.
+The files and directories that will sync changes are listed in the *configurations.develop.container.sync* property. These directories are synced initially when you run the `up` command as well as when changes are detected. If there are additional or different directories you would like synced to your dev space, you can change this property.
 
-A *configurations.develop.container.iterate.buildCommands* tulajdonság határozza meg, hogyan hozhat létre az alkalmazást a fejlesztési forgatókönyvek esetében. A *configurations.develop.container.command* tulajdonság biztosítja a parancs a fejlesztési forgatókönyvek esetében az alkalmazás futtatásához. Érdemes frissíteni ezen tulajdonságok valamelyikét, ha nincsenek további build és a futtatókörnyezet jelzők vagy paramétereket szeretne használni a fejlesztés során.
+The *configurations.develop.container.iterate.buildCommands* property specifies how to build the application in a development scenario. The *configurations.develop.container.command* property provides the command for running the application in a development scenario. You may want to update either of these properties if there are additional build or runtime flags or parameters you would like to use during development.
 
-A *configurations.develop.container.iterate.processesToKill* állítsa le az alkalmazást a kill folyamatok sorolja fel. Előfordulhat, hogy szeretné frissíteni ezt a tulajdonságot, ha meg szeretné változtatni az alkalmazás fejlesztése során újraindítási viselkedését. Például, ha frissítette a *configurations.develop.container.iterate.buildCommands* vagy *configurations.develop.container.command* tulajdonságainak módosítása, hogy az alkalmazást a létrehozása vagy elindítva, előfordulhat, hogy módosítania milyen folyamatokat le lesz állítva.
+The *configurations.develop.container.iterate.processesToKill* lists the processes to kill to stop the application. You may want to update this property if you want to change the restart behavior of your application during development. For example, if you updated the *configurations.develop.container.iterate.buildCommands* or *configurations.develop.container.command* properties to change how the application is built or started, you may need to change what processes are stopped.
 
-A kód használatával előkészítésekor a `azds prep` parancs hozzáadásának lehetősége van a `--public` jelzőt. Hozzáadás a `--public` jelző létrehoz egy nyilvánosan elérhető-e az alkalmazás URL-címet. Ha kihagyja ezt a jelzőt, az alkalmazás csak érhető el a fürt vagy a localhost-alagút használatával. Futtatása után a `azds prep` parancsot, ez a beállítás módosításával módosíthatja a *ingress.enabled* tulajdonság `charts/APPNAME/values.yaml`:
+When preparing your code using the `azds prep` command, you have the option of adding the `--public` flag. Adding the `--public` flag creates a publicly accessible URL for your application. If you omit this flag, the application is only accessible within the cluster or using the localhost tunnel. After you run the `azds prep` command, you can change this setting modifying the *ingress.enabled* property in `charts/APPNAME/values.yaml`:
 
 ```yaml
 ingress:
   enabled: true
 ```
 
-## <a name="debug-your-code"></a>A kód hibakeresése
+## <a name="debug-your-code"></a>Debug your code
 
-Java, .NET és Node.js alkalmazások hibakeresése is közvetlenül a Visual Studio Code-ot vagy a Visual Studio dev tárhely futtató alkalmazás. A Visual Studio Code és a Visual Studio adja meg azokat az eszközöket a fejlesztési tárhely csatlakozni, az alkalmazás indításához és csatoljon egy hibakeresőt. Futtatás után `azds prep`, megnyithatja a projekt a Visual Studio Code-ot vagy a Visual Studióban. A Visual Studio Code-ot vagy a Visual Studio hoz létre a saját konfigurációs fájlok csatlakozás lehetőségét, amely elkülönül futó `azds prep`. A Visual Studio Code-ot vagy a Visual Studióban is állítson be töréspontokat és indítsa el az alkalmazást a fejlesztési tárhelyre.
+For Java, .NET and Node.js applications, you can debug your application running directly in your dev space using Visual Studio Code or Visual Studio. Visual Studio Code and Visual Studio provide tooling to connect to your dev space, launch your application, and attach a debugger. After running `azds prep`, you can open your project in Visual Studio Code or Visual Studio. Visual Studio Code or Visual Studio will generate their own configuration files for connecting which is separate from running `azds prep`. From within Visual Studio Code or Visual Studio, you can set breakpoints and launch your application to your dev space.
 
-![A kód hibakeresése](media/get-started-node/debug-configuration-nodejs2.png)
+![Debugging your code](media/get-started-node/debug-configuration-nodejs2.png)
 
-Ha elindítja az alkalmazás hibakeresés a Visual Studio Code-ot vagy a Visual Studio használatával, kezelni nyisson meg, és ugyanúgy fut, a fejlesztői tárhely csatlakozik `azds up`. Az ügyféloldali eszközök a Visual Studio Code és a Visual Studio hibakeresési információkat egy kiegészítő paraméterrel is biztosítanak. A paraméter tartalmazza a hibakeresőt lemezkép, a hibakereső belül ladicího programu lemezkép helyét, és a célhelyen, az alkalmazás tárolóban csatlakoztatása a hibakeresőt mappa nevét.
+When you launch your application using Visual Studio Code or Visual Studio for debugging, they handle launching and connecting to your dev space in the same way as running `azds up`. The client-side tooling in Visual Studio Code and Visual Studio also provide an additional parameter with specific information for debugging. The parameter contains the name of debugger image, the location of the debugger within in the debugger's image, and the destination location within the application's container to mount the debugger folder.
 
-A hibakereső kép automatikusan határozza meg az ügyféloldali eszközök. Hasonló a docker-fájlban során használt módszert használ, és a Helm-diagramot hoz létre, futtatásakor `azds prep`. A hibakereső van csatlakoztatva, az alkalmazás-lemezkép, miután használatával fut `azds exec`.
+The debugger image is automatically determined by the client-side tooling. It uses a method similar to the one used during Dockerfile and Helm chart generate when running `azds prep`. After the debugger is mounted in the application's image, it is run using `azds exec`.
 
-## <a name="sharing-a-dev-space"></a>Egy fejlesztői terület megosztása
+## <a name="sharing-a-dev-space"></a>Sharing a dev space
 
-Ha egy csapat dolgozik, [fejlesztési szóközzel megosztása az egész csoport](how-to/share-dev-spaces.md) és származtatott fejlesztési tárolóhelyek létrehozásához. Fejlesztői szóközzel közreműködői hozzáférés szükséges a fejlesztési terület erőforráscsoport bárki által használható.
+When working with a team, you can [share a dev space across an entire team](how-to/share-dev-spaces.md) and create derived dev spaces. A dev space can be used by anyone with contributor access to the dev space's resource group.
 
-Egy másik fejlesztési terület származtatott új fejlesztői tárhely is létrehozhat. Amikor létrehoz egy származtatott fejlesztési szóközt, a *azds.io/szülő-tárhely SZÜLŐ-terület-NAME =* címke hozzáadásakor a származtatott fejlesztési terület névtérhez. Minden alkalmazás a szülő fejlesztési területről is, a származtatott fejlesztési területtel rendelkező vannak megosztva. A származtatott fejlesztési területre egy alkalmazás frissített verziójának telepítésekor csak lesz megtalálható az a származtatott fejlesztési terület, és a szülő fejlesztési terület marad nem érinti. Legfeljebb három szintje származtatott fejlesztési tárolóhelyek rendelkezhet vagy *nagyszülő* szóközöket.
+You can also create a new dev space that is derived from another dev space. When you create a derived dev space, the *azds.io/parent-space=PARENT-SPACE-NAME* label is added to the derived dev space's namespace. Also, all applications from the parent dev space are shared with the derived dev space. If you deploy an updated version of an application to the derived dev space, it will only exist in the derived dev space and the parent dev space will remain unaffected. You can have a maximum of three levels of derived dev spaces or *grandparent* spaces.
 
-A származtatott fejlesztési terület intelligensen is irányítja a kérelmeket a saját alkalmazások és a szülőtől megosztott alkalmazások közötti. Az útválasztási útvonalat kiválasztani a kérés a származtatott fejlesztési terület az alkalmazások próbál, és visszatér a megosztott alkalmazás a szülő fejlesztési területről működik. Az Útválasztás fog térhet vissza a megosztott alkalmazás nagyszülő rendelkezésre álló helyen, ha az alkalmazás nem szerepel a szülő hely.
+The derived dev space will also intelligently route requests between its own applications and the applications shared from its parent. The routing works by attempting to route request to an application in the derived dev space and falling back to the shared application from the parent dev space. The routing will fall back to the shared application in the grandparent space if the application is not in the parent space.
 
 Példa:
-* A fejlesztési terület *alapértelmezett* alkalmazások *serviceA* és *serviceB* .
-* A fejlesztési terület *azureuser* van származtatva *alapértelmezett*.
-* Frissített verziójának *serviceA* üzemel *azureuser*.
+* The dev space *default* has applications *serviceA* and *serviceB* .
+* The dev space *azureuser* is derived from *default*.
+* An updated version of *serviceA* is deployed to *azureuser*.
 
-Használata esetén *azureuser*, minden kérelemhez *serviceA* lesznek átirányítva a frissített verziót *azureuser*. Kérelem *serviceB* először megpróbálja ilyenkor úgy irányítja a *azureuser* verziója *serviceB*. Mivel az nem létezik, akkor a rendszer átirányítja a *alapértelmezett* verziója *serviceB*. Ha a *azureuser* verziója *serviceA* távolítja el, minden kérelemhez *serviceA* azt használja a *alapértelmezett* verziója *serviceA*.
+When using *azureuser*, all requests to *serviceA* will be routed to the updated version in *azureuser*. A request to *serviceB* will first try to be routed to the *azureuser* version of *serviceB*. Since it does not exist, it will be routed to the *default* version of *serviceB*. If the *azureuser* version of *serviceA* is removed, all requests to *serviceA* will fall back to using the *default* version of *serviceA*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerkedés az Azure-fejlesztési szóközzel, tekintse meg az alábbi rövid útmutatókat:
+To get started using Azure Dev Spaces, see the following quickstarts:
 
-* [Java és a CLI és Visual Studio Code-ot](quickstart-java.md)
-* [.NET core és a CLI és Visual Studio Code-ot](quickstart-netcore.md)
-* [A .NET core Visual studióval](quickstart-netcore-visualstudio.md)
-* [NODE.js és a CLI és Visual Studio Code-ot](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-Első lépések a fejlesztési csapat, tekintse meg az alábbi útmutatók:
+To get started with team development, see the following how-to articles:
 
-* [Csoportos fejlesztése – Java és a CLI és Visual Studio Code-ot](team-development-java.md)
-* [Csoportos fejlesztése – .NET Core és a CLI és Visual Studio Code-ot](team-development-netcore.md)
-* [Csoportos fejlesztése – .NET Core Visual studióval](team-development-netcore-visualstudio.md)
-* [Csoportos fejlesztése – Node.js és a CLI és Visual Studio Code-ot](team-development-nodejs.md)
+* [Team Development - Java with CLI and Visual Studio Code](team-development-java.md)
+* [Team Development - .NET Core with CLI and Visual Studio Code](team-development-netcore.md)
+* [Team Development - .NET Core with Visual Studio](team-development-netcore-visualstudio.md)
+* [Team Development - Node.js with CLI and Visual Studio Code](team-development-nodejs.md)
 
 
 

@@ -1,107 +1,106 @@
 ---
-title: Az Azure IoT Hub Device Provisioning Service biztonsággal kapcsolatos fogalmait |} A Microsoft Docs
-description: Provisioning alapfogalmai és az IoT Hub Device Provisioning Service-eszközökre vonatkozó biztonsági ismerteti
+title: Azure IoT Hub Device Provisioning Service - Security concepts
+description: Describes security provisioning concepts specific to devices with Device Provisioning Service and IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775117"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228827"
 ---
-# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service biztonsággal kapcsolatos fogalmait 
+# <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service security concepts 
 
-IoT Hub Device Provisioning Service, amellyel egy adott IoT hub használatával beavatkozás nélküli eszközök konfigurálása IoT hub segítő szolgáltatása. A Device Provisioning Service szolgáltatással is [automatikus üzembe](concepts-auto-provisioning.md) eszközök, biztonságos és méretezhető módon. Ez a cikk áttekintést nyújt a *biztonsági* fogalmak vesz részt az eszközök kiépítését. Ez a cikk az összes személyek részt vevő első eszközök készen állnak a használatra vonatkozó.
+IoT Hub Device Provisioning Service is a helper service for IoT Hub that you use to configure zero-touch device provisioning to a specified IoT hub. With the Device Provisioning Service, you can [auto-provision](concepts-auto-provisioning.md) millions of devices in a secure and scalable manner. This article gives an overview of the *security* concepts involved in device provisioning. This article is relevant to all personas involved in getting a device ready for deployment.
 
-## <a name="attestation-mechanism"></a>Igazolási mechanizmus
+## <a name="attestation-mechanism"></a>Attestation mechanism
 
-Az igazolási mechanizmus a megerősítő egy eszközidentitást használt módszer. Az igazolási mechanizmust is fontos a regisztrációs listához, amely arra kéri a kiépítési szolgáltatás, mely metódus igazolási egy adott eszköz használata.
+The attestation mechanism is the method used for confirming a device's identity. The attestation mechanism is also relevant to the enrollment list, which tells the provisioning service which method of attestation to use with a given device.
 
 > [!NOTE]
-> Az IoT Hub egy hasonló fogalom a szolgáltatás "hitelesítési séma" használ.
+> IoT Hub uses "authentication scheme" for a similar concept in that service.
 
-Device Provisioning Service-állapotigazolási következő formáját támogatja:
-* **X.509-tanúsítványokat** X.509 tanúsítványt a szabványos hitelesítési folyamat alapján.
-* **Platformmegbízhatósági modul (TPM) megbízható** nonce problémásnak bizonyulhatnak, a TPM szabvány a kulcsok használatával nyújtjuk egy közös hozzáférésű Jogosultságkód (SAS) aláírt jogkivonat alapján. Az űrlap igazolási nincs szükség a fizikai TPM az eszközön, de a szolgáltatás használatával az ellenőrzőkulcs kiszolgálónként auditokkal vár a [TPM specifikáció](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Szimmetrikus kulcs** közös hozzáférésű jogosultságkód (SAS) alapuló [biztonsági jogkivonatokat](../iot-hub/iot-hub-devguide-security.md#security-tokens), többek között a kivonatolt aláírás és a egy beágyazott lejárati. További információkért lásd: [szimmetrikus kulcsát a kulcsigazoláshoz](concepts-symmetric-key-attestation.md).
+Device Provisioning Service supports the following forms of attestation:
+* **X.509 certificates** based on the standard X.509 certificate authentication flow.
+* **Trusted Platform Module (TPM)** based on a nonce challenge, using the TPM standard for keys to present a signed Shared Access Signature (SAS) token. This form of attestation does not require a physical TPM on the device, but the service expects to attest using the endorsement key per the [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symmetric Key**  based on shared access signature (SAS) [Security tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens), which include a hashed signature and an embedded expiration. For more information, see [Symmetric key attestation](concepts-symmetric-key-attestation.md).
 
 
-## <a name="hardware-security-module"></a>Hardveres biztonsági modul
+## <a name="hardware-security-module"></a>Hardware security module
 
-A hardveres biztonsági modul vagy a HSM-be, biztonságos, a hardveres eszköz titkos kulcsok tárolására szolgál, és a titkos tárolási legbiztonságosabb formája. X.509-tanúsítványokat és a SAS-tokeneket is tárolható a HSM-ben. HSM-EK is lehet használni mindkét igazolási mechanizmusok az üzembe helyezési támogatja.
+The hardware security module, or HSM, is used for secure, hardware-based storage of device secrets, and is the most secure form of secret storage. Both X.509 certificates and SAS tokens can be stored in the HSM. HSMs can be used with both attestation mechanisms the provisioning supports.
 
 > [!TIP]
-> Javasoljuk, hogy az eszközök HSM használata az eszközök titkos kulcsok biztonságos tárolása.
+> We strongly recommend using an HSM with devices to securely store secrets on your devices.
 
-Eszköz titkos kulcsokat is tárolhatók a szoftver (memória), de kevésbé biztonságos űrlap tárhelyet, mint a hardveres biztonsági MODULT.
+Device secrets may also be stored in software (memory), but it is a less secure form of storage than an HSM.
 
-## <a name="trusted-platform-module"></a>Platformmegbízhatósági modul
+## <a name="trusted-platform-module"></a>Trusted Platform Module
 
-TPM-eszköz hivatkozhat a standard szintű, biztonságos tárolásához a platform hitelesítéséhez használt kulcsokat, vagy olvassa el a i/o-felület, a modulok, a standard végrehajtási folytatott kommunikációhoz használható. TPM diszkrét hardverként integrált hardverek, a belső vezérlőprogram-alapú vagy szoftveres létezhet. Tudjon meg többet [TPM és a TPM-eszköz igazolási](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service csak a TPM 2.0 támogatja.
+TPM can refer to a standard for securely storing keys used to authenticate the platform, or it can refer to the I/O interface used to interact with the modules implementing the standard. TPMs can exist as discrete hardware, integrated hardware, firmware-based, or software-based. Learn more about [TPMs and TPM attestation](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service only supports TPM 2.0.
 
-TPM-igazolást nonce problémásnak bizonyulhatnak, ami az ellenőrzőkulcs és a tárolási legfelső szintű kulcsait használja a egy aláírt közös hozzáférésű Jogosultságkód (SAS) tokent alapul.
+TPM attestation is based on a nonce challenge, which uses the endorsement and storage root keys to present a signed Shared Access Signature (SAS) token.
 
-### <a name="endorsement-key"></a>Ellenőrzőkulcs
+### <a name="endorsement-key"></a>Endorsement key
 
-Az ellenőrzőkulcs a TPM-eszköz, amely belsőleg generált, vagy kártevő program férkőzik, gyártási idő részletsorában aszimmetrikus kulccsal, és minden TPM esetében egyedi legyen. Az ellenőrzőkulcs nem lehet módosítani vagy eltávolítani. Az ellenőrzőkulcs titkos része a TPM-en kívül soha nem lesz kiadva, közben az ellenőrzőkulcs nyilvános részét eredeti TPM felismerni. Tudjon meg többet a [ellenőrzőkulcsot](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+The endorsement key is an asymmetric key contained inside the TPM, which was internally generated or injected at manufacturing time and is unique for every TPM. The endorsement key cannot be changed or removed. The private portion of the endorsement key is never released outside of the TPM, while the public portion of the endorsement key is used to recognize a genuine TPM. Learn more about the [endorsement key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-### <a name="storage-root-key"></a>Tároló-gyökérkulcs
+### <a name="storage-root-key"></a>Storage root key
 
-A storage legfelső szintű kulcsot a TPM-ben tárolt, és az alkalmazások által létrehozott TPM-kulcsok védelme, hogy ezek a kulcsok nem használható a TPM nélküli használatos. A tároló-gyökérkulcs jön létre, a platformmegbízhatósági modul; Ha Új felhasználó saját tulajdonba vételére, törölje a jelet a TPM-be, amikor egy új tároló-gyökérkulcs jön létre. Tudjon meg többet a [tároló-gyökérkulcs](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
+The storage root key is stored in the TPM and is used to protect TPM keys created by applications, so that these keys cannot be used without the TPM. The storage root key is generated when you take ownership of the TPM; when you clear the TPM so a new user can take ownership, a new storage root key is generated. Learn more about the [storage root key](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>X.509-tanúsítványok
+## <a name="x509-certificates"></a>X.509 certificates
 
-X.509-tanúsítványokat használ az igazolási mechanizmusként szolgáltatás kiváló éles és egyszerűsítheti az eszközök kiépítését. X.509-tanúsítványokat általában egy tanúsítványlánc bizalmi kapcsolat, amelyben a lánc minden tanúsítvány aláírásával rendelkezik a titkos kulcsot a következő nagyobb tanúsítványt, és így tovább, egy önaláírt főtanúsítványt a megszakítást okozó vannak elrendezve. Ezzel az elrendezéssel fokozott egy meghatalmazott a megbízható legfelső szintű hitelesítésszolgáltató (CA) le segítségével telepítve az eszközön, a végfelhasználói "levél" tanúsítványt minden közbenső hitelesítésszolgáltató által létrehozott főtanúsítványból megbízhatósági láncot létesít. További tudnivalókért lásd: [X.509 Hitelesítésszolgáltatói tanúsítványok használatával Eszközhitelesítés](/azure/iot-hub/iot-hub-x509ca-overview). 
+Using X.509 certificates as an attestation mechanism is an excellent way to scale production and simplify device provisioning. X.509 certificates are typically arranged in a certificate chain of trust in which each certificate in the chain is signed by the private key of the next higher certificate, and so on, terminating in a self-signed root certificate. This arrangement establishes a delegated chain of trust from the root certificate generated by a trusted root certificate authority (CA) down through each intermediate CA to the end-entity "leaf" certificate installed on a device. To learn more, see [Device Authentication using X.509 CA Certificates](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Gyakran a tanúsítványlánc egy bizonyos eszközök társított logikai és fizikai hierarchia. Ha például egy gyártó is:
-- egy önaláírt legfelső szintű hitelesítésszolgáltató-tanúsítvány kiállításához
-- a legfelső szintű tanúsítvány használatával létrehozhat egy minden factory egyedi köztes Hitelesítésszolgáltatói tanúsítvány
-- minden egyes gyári tanúsítvány használatára el létrehozni az egyes gyártósor egyedi köztes Hitelesítésszolgáltatói tanúsítvány
-- és végül a gyártósor tanúsítvány használatával hozzon létre minden egyes eszközhöz a sor gyártott (végfelhasználói) eszköz egyedi tanúsítványt. 
+Often the certificate chain represents some logical or physical hierarchy associated with devices. For example, a manufacturer may:
+- issue a self-signed root CA certificate
+- use the root certificate to generate a unique intermediate CA certificate for each factory
+- use each factory's certificate to generate a unique intermediate CA certificate for each production line in the plant
+- and finally use the production line certificate, to generate a unique device (end-entity) certificate for each device manufactured on the line. 
 
-További tudnivalókért lásd: [x.509-es Hitelesítésszolgáltatói tanúsítványok az IoT-iparág fogalmi ismeretekkel](/azure/iot-hub/iot-hub-x509ca-concept). 
+To learn more, see [Conceptual understanding of X.509 CA certificates in the IoT industry](/azure/iot-hub/iot-hub-x509ca-concept). 
 
-### <a name="root-certificate"></a>Főtanúsítvány
+### <a name="root-certificate"></a>Root certificate
 
-A legfelső szintű tanúsítvány egy önaláírt X.509-tanúsítvány egy hitelesítésszolgáltató (CA) jelölő. A pontjáig, vagy megbízhatósági kapcsolati alap, a tanúsítványlánc. Legfelső szintű tanúsítványok saját szervezet által kibocsátott, vagy egy legfelső szintű hitelesítésszolgáltatótól származó is. További tudnivalókért lásd: [első x.509-es Hitelesítésszolgáltatói tanúsítványok](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). A legfelső szintű tanúsítvány is lehet néven egy legfelső szintű Hitelesítésszolgáltatói tanúsítványt.
+A root certificate is a self-signed X.509 certificate representing a certificate authority (CA). It is the terminus, or trust anchor, of the certificate chain. Root certificates can be self-issued by an organization or purchased from a root certificate authority. To learn more, see [Get X.509 CA certificates](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). The root certificate can also be referred to as a root CA certificate.
 
-### <a name="intermediate-certificate"></a>Köztes tanúsítványt
+### <a name="intermediate-certificate"></a>Intermediate certificate
 
-Egy közbenső tanúsítvány egy X.509 tanúsítvány, amely a főtanúsítványt (vagy egy másik köztes tanúsítványt a legfelső szintű tanúsítvány láncában) aláírta. A lánc utolsó köztes tanúsítványt a levél tanúsítvány aláírására használatos. Egy közbenső tanúsítvány is lehet néven egy köztes Hitelesítésszolgáltatói tanúsítványhoz.
+An intermediate certificate is an X.509 certificate, which has been signed by the root certificate (or by another intermediate certificate with the root certificate in its chain). The last intermediate certificate in a chain is used to sign the leaf certificate. An intermediate certificate can also be referred to as an intermediate CA certificate.
 
-### <a name="end-entity-leaf-certificate"></a>Végfelhasználói "levél" tanúsítvány
+### <a name="end-entity-leaf-certificate"></a>End-entity "leaf" certificate
 
-A levél tanúsítványt, vagy a végfelhasználói tanúsítványt, azonosítja a tanúsítvány tulajdonosa. Rendelkezik a legfelső szintű tanúsítványt a tanúsítványlánc, valamint nulla vagy több köztes tanúsítványok. A levéltanúsítvány nem használatos bármely egyéb tanúsítványok aláírásához. Egyedileg azonosítja az eszközt a kiépítési szolgáltatáshoz, és az eszköz-tanúsítványt is hívják. A hitelesítés során az eszköz használja a ennek a tanúsítványnak társított titkos kulcs birtokában challenge megvalósíthatósági válaszolni a szolgáltatásból.
+The leaf certificate, or end-entity certificate, identifies the certificate holder. It has the root certificate in its certificate chain as well as zero or more intermediate certificates. The leaf certificate is not used to sign any other certificates. It uniquely identifies the device to the provisioning service and is sometimes referred to as the device certificate. During authentication, the device uses the private key associated with this certificate to respond to a proof of possession challenge from the service.
 
-A használt tanúsítványok levél- [egyéni regisztráció](./concepts-service.md#individual-enrollment) bejegyzés korlátozza, amely a **tulajdonos neve** állítson be az egyéni regisztrációs bejegyzés regisztrációs azonosítójaként. A használt tanúsítványok levél egy [regisztrációs csoportot](./concepts-service.md#enrollment-group) bejegyzést kell rendelkeznie a **tulajdonos neve** állítsa be a kívánt eszköz azonosítója, amely jelenik meg, a **regisztrációs rekord** a a hitelesített eszköz beléptetési csoportnak.
+Leaf certificates used with an [Individual enrollment](./concepts-service.md#individual-enrollment) entry have a requirement that the **Subject Name** must be set to the registration ID of the Individual Enrollment entry. Leaf certificates used with an [Enrollment group](./concepts-service.md#enrollment-group) entry should have the **Subject Name** set to the desired device ID which will be shown in the **Registration Records** for the authenticated device in the enrollment group.
 
-További tudnivalókért lásd: [eszközök hitelesítése aláírt x.509-es Hitelesítésszolgáltatói tanúsítványok](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+To learn more, see [Authenticating devices signed with X.509 CA certificates](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
-## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Eszköz X.509-tanúsítványokat az eszközkiépítési szolgáltatás hozzáférés szabályozása
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Controlling device access to the provisioning service with X.509 certificates
 
-A kiépítési szolgáltatás két típusú regisztrációs bejegyzésnek, amely segítségével hozzáférésének szabályozása érdekében az X.509-igazolási mechanizmusán támogató eszközöket tesz elérhetővé:  
+The provisioning service exposes two types of enrollment entry that you can use to control access for devices that use the X.509 attestation mechanism:  
 
-- [Egyéni regisztráció](./concepts-service.md#individual-enrollment) bejegyzés egy adott eszközhöz társított eszköz tanúsítvány van konfigurálva. Ezek a bejegyzések ellenőrzés regisztrációk az egyes eszközöktől.
-- [Regisztrációs csoportot](./concepts-service.md#enrollment-group) bejegyzések társítva egy adott köztes vagy a legfelső szintű Hitelesítésszolgáltatói tanúsítvány. Ezek a bejegyzések összes eszköz, amely rendelkezik, amely köztes tanúsítványt a tanúsítványlánc legfelső szintű regisztrációk szabályozza. 
+- [Individual enrollment](./concepts-service.md#individual-enrollment) entries are configured with the device certificate associated with a specific device. These entries control enrollments for specific devices.
+- [Enrollment group](./concepts-service.md#enrollment-group) entries are associated with a specific intermediate or root CA certificate. These entries control enrollments for all devices that have that intermediate or root certificate in their certificate chain. 
 
-Amikor egy eszköz csatlakozik a kiépítési szolgáltatáshoz, a szolgáltatás rangsorolja pontosabb regisztrációs bejegyzés keresztül kevésbé specifikus regisztrációs bejegyzéseket. Azt jelenti Ha az eszköz egyéni regisztrációt, a kiépítési szolgáltatás vonatkozik rá. Ha az eszköz nincs egyéni regisztrációt, és az első köztes tanúsítvány, tanúsítványlánc a eszközt regisztrációs csoportot létezik, a szolgáltatás vonatkozik a bejegyzést, és így tovább, fel a lánc a legfelső szintű. A szolgáltatás az első megfelelő bejegyzést talál, vonatkozik, hogy:
+When a device connects to the provisioning service, the service prioritizes more specific enrollment entries over less specific enrollment entries. That is, if an individual enrollment for the device exists, the provisioning service applies that entry. If there is no individual enrollment for the device and an enrollment group for the first intermediate certificate in the device's certificate chain exists, the service applies that entry, and so on, up the chain to the root. The service applies the first applicable entry that it finds, such that:
 
-- Ha az első regisztrációs bejegyzés található engedélyezve van, a szolgáltatás látja el az eszközt.
-- Az első regisztrációs bejegyzés található le van tiltva, ha a szolgáltatás nem biztosítja az eszköz.  
-- Ha bármely, a tanúsítványok a tanúsítványláncokban az eszköz nincs regisztrációs bejegyzés található, a szolgáltatás nem biztosítja az eszköz. 
+- If the first enrollment entry found is enabled, the service provisions the device.
+- If the first enrollment entry found is disabled, the service does not provision the device.  
+- If no enrollment entry is found for any of the certificates in the device's certificate chain, the service does not provision the device. 
 
-Ez a mechanizmus és a hierarchikus tanúsítványláncok hogyan szabályozhatja a hozzáférést, mint az eszközcsoportok egyes eszközöket, valamint a nagy teljesítményű rugalmasságot biztosít. Képzeljünk el például a következő tanúsítványláncok öt eszközöket: 
+This mechanism and the hierarchical structure of certificate chains provides powerful flexibility in how you can control access for individual devices as well as for groups of devices. For example, imagine five devices with the following certificate chains: 
 
-- *1 eszköz*: főtanúsítvány A -> 1 eszköz tanúsítvány tanúsítvány ->
-- *Az eszköz 2*: főtanúsítvány A -> eszköz – 2. tanúsítvány tanúsítvány ->
-- *Eszköz 3*: főtanúsítvány A -> eszköz 3 tanúsítvány tanúsítvány ->
-- *Eszköz 4*: főtanúsítvány B -> 4 eszköz tanúsítvány tanúsítvány ->
-- *5 eszköz*: főtanúsítvány B -> 5 eszköz tanúsítvány tanúsítvány ->
+- *Device 1*: root certificate -> certificate A -> device 1 certificate
+- *Device 2*: root certificate -> certificate A -> device 2 certificate
+- *Device 3*: root certificate -> certificate A -> device 3 certificate
+- *Device 4*: root certificate -> certificate B -> device 4 certificate
+- *Device 5*: root certificate -> certificate B -> device 5 certificate
 
-Kezdetben az összes öt eszköz-hozzáférés engedélyezése a legfelső szintű tanúsítvány egy engedélyezett csoport egyetlen regisztrációs bejegyzés is létrehozhat. B tanúsítvány későbbi lesz sérül, ha egy letiltott regisztrációscsoport-bejegyzést tanúsítvány B megakadályozására létrehozhat *eszköz 4* és *eszköz 5* regisztrációját. Ha még mindig újabb *eszköz 3* válik megsérül, létrehozhat egy letiltott egyéni regisztrációs bejegyzést a tanúsítványt. Ez a hozzáférés visszavonása *eszköz 3*, azonban továbbra is lehetővé teszi, hogy *eszköz 1* és *eszköz 2* regisztrálásához.
+Initially, you can create a single enabled group enrollment entry for the root certificate to enable access for all five devices. If certificate B later becomes compromised, you can create a disabled enrollment group entry for certificate B to prevent *Device 4* and *Device 5* from enrolling. If still later *Device 3* becomes compromised, you can create a disabled individual enrollment entry for its certificate. This revokes access for *Device 3*, but still allows *Device 1* and *Device 2* to enroll.
