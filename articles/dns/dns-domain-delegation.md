@@ -1,18 +1,18 @@
 ---
-title: Az Azure DNS-delegálás áttekintése
+title: Azure DNS delegation overview
 description: Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.date: 2/19/2019
-ms.author: victorh
+ms.author: allensu
 ms.topic: conceptual
-ms.openlocfilehash: 70c1c1ab0dd5d1998054cf0c68325022803dff06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d8a87e199736bf51fcdc051c17c2fded3402b79
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563145"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212100"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>DNS-zónák delegálása az Azure DNS-sel
 
@@ -24,11 +24,11 @@ Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartom
 
 A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „ **.** ”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  A legfelső szintű tartományok alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”.  És így tovább. A DNS-hierarchia tartományait különálló DNS-zónák üzemeltetik. A zónák globálisan fel vannak osztva, és a világ különböző pontjain található DNS-névkiszolgálók üzemeltetik őket.
 
-**DNS-zóna** – A tartományok egyedi nevek a tartománynévrendszerben, például „contoso.com”. Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A „contoso.com” tartomány például számos DNS-rekordot tartalmazhat: „mail.contoso.com” (levelezési kiszolgálóhoz) és „www.contoso.com” (webhelyhez).
+**DNS-zóna** – A tartományok egyedi nevek a tartománynévrendszerben, például „contoso.com”. A DNS-zóna egy adott tartomány DNS-rekordjainak üzemeltetésére szolgál. A „contoso.com” tartomány például számos DNS-rekordot tartalmazhat: „mail.contoso.com” (levelezési kiszolgálóhoz) és „www.contoso.com” (webhelyhez).
 
 **Tartományregisztráló** – A tartományregisztráló egy olyan cég, amely internetes tartományneveket biztosít. Ezek a cégek ellenőrzik, hogy a használni kívánt internetes tartomány elérhető-e, és ők engedélyezik azok megvásárlását. A tartománynév regisztrálása után Ön annak a jogos tulajdonosa. Ha már van internetes tartománya, az aktuális tartományregisztrálóval delegálhat az Azure DNS-be.
 
-Az akkreditált tartomány regisztráló szervezetek kapcsolatos további információkért lásd: [ICANN-Accredited regisztráló szervezetek](https://www.icann.org/registrar-reports/accredited-list.html).
+For more information about accredited domain registrars, see [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ### <a name="resolution-and-delegation"></a>Feloldás és delegálás
 
@@ -54,18 +54,18 @@ Az alábbi képen egy példa DNS-lekérdezés látható. A contoso.net és a par
 1. Az ügyfél lekéri a `www.partners.contoso.net` címet a helyi DNS-kiszolgálóról.
 2. A helyi DNS-kiszolgálón nem található meg a rekord, így lekéri azt a gyökér-névkiszolgálótól.
 3. A gyökér-névkiszolgálón sem található meg a rekord, azonban ismeri a `.net`-névkiszolgáló címét, és megadja azt a DNS-kiszolgálónak.
-4. A helyi DNS-kiszolgáló a kérést küld a `.net` kiszolgáló nevét.
-5. A `.net` kiszolgáló neve nem található a rekord, de tudja címét a `contoso.net` kiszolgáló nevét. Ebben az esetben reagáljon az Azure DNS Szolgáltatásban üzemeltetett DNS-zóna számára a névkiszolgáló címét.
-6. A helyi DNS-kiszolgáló elküldi a kérelmet a névkiszolgálóját a `contoso.net` az Azure DNS-ben üzemeltetett zónában.
-7. A zóna `contoso.net` nem található a rekord, de a névkiszolgálója `partners.contoso.net` és fűzi hozzá a címet. Ebben az esetben érdemes az Azure DNS Szolgáltatásban üzemeltetett DNS-zónában.
-8. A helyi DNS-kiszolgáló elküldi a kérelmet a névkiszolgálóját a `partners.contoso.net` zóna.
-9. A `partners.contoso.net` zóna a-rekordra van, és az IP-cím válaszol.
-10. A helyi DNS-kiszolgáló biztosítja az IP-címet az ügyfélnek
+4. The local DNS server sends the request to the `.net` name server.
+5. The `.net` name server does not have the record but does know the address of the `contoso.net` name server. In this case, it responds with the address of the name server for the DNS zone hosted in Azure DNS.
+6. The local DNS server sends the request to the name server for the `contoso.net` zone hosted in Azure DNS.
+7. The zone `contoso.net` does not have the record but knows the name server for `partners.contoso.net` and responds with the address. In this case, it is a DNS zone hosted in Azure DNS.
+8. The local DNS server sends the request to the name server for the `partners.contoso.net` zone.
+9. The `partners.contoso.net` zone has the A record and responds with the IP address.
+10. The local DNS server provides the IP address to the client
 11. Az ügyfél csatlakozik a `www.partners.contoso.net` webhelyhez.
 
 A delegálások a névkiszolgálói rekordok két példányával rendelkeznek: egy a gyermekzónára mutató szülőzónában, egy pedig magában a gyermekzónában található. A „contoso.net” zóna a „net” névkiszolgálói rekordjai mellett a „contoso.net” névkiszolgálói rekordjait is tartalmazza. Ezek a rekordok az úgynevezett mérvadó névkiszolgálói rekordok, és a gyermekzóna tetején találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [delegálhat tartományokat az Azure DNS-be](dns-delegate-domain-azure-dns.md).
 

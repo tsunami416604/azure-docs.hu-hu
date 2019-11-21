@@ -4,14 +4,14 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 34de38e91d47457d215c7ebf65d04ed2dbae5324
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083737"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224418"
 ---
-A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgáltatási szintjeihez társított korlátokat. További információ az egyes *egységek* költségéről: [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
+The following table lists the limits associated with the different service tiers S1, S2, S3, and F1. For information about the cost of each *unit* in each tier, see [Azure IoT Hub pricing](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Erőforrás | S1 – Standard | S2 – Standard | S3 – Standard | F1 – Ingyenes |
 | --- | --- | --- | --- | --- |
@@ -19,58 +19,59 @@ A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgált
 | Egységek maximális száma |200 |200 |10 |1 |
 
 > [!NOTE]
-> Ha várhatóan több mint 200 egységet kíván használni S1 vagy S2 szintű hubhoz, vagy 10 egység S3 szintű hubhoz, forduljon a Microsoft ügyfélszolgálatahoz.
+> If you anticipate using more than 200 units with an S1 or S2 tier hub or 10 units with an S3 tier hub, contact Microsoft Support.
 > 
 > 
 
-A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlátozásokat.
+The following table lists the limits that apply to IoT Hub resources.
 
 | Erőforrás | Korlát |
 | --- | --- |
 | Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |100 |
 | Azure-előfizetésenkénti ingyenes IoT Hubok maximális száma |1 |
-| Az eszköz AZONOSÍTÓjában szereplő karakterek maximális száma | 128 |
+| Maximum number of characters in a device ID | 128 |
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1,000 |
 | Egy eszközről a felhőbe irányuló IoT Hub-üzenetek maximális megőrzési ideje |7 nap |
 | Egy eszközről a felhőbe irányuló üzenet maximális mérete |256 KB |
-| Egy eszközről a felhőbe irányuló köteg maximális mérete |AMQP és HTTP: 256 KB a teljes köteghez <br/>MQTT: 256 KB minden üzenethez |
+| Egy eszközről a felhőbe irányuló köteg maximális mérete |AMQP and HTTP: 256 KB for the entire batch <br/>MQTT: 256 KB for each message |
 | Egy eszközről a felhőbe irányuló kötegben található üzenetek maximális száma |500 |
 | A felhőből egy eszközre irányuló üzenet maximális mérete |64 KB |
 | A felhőből egy eszközre irányuló üzenetek maximális élettartama |2 nap |
 | A felhőből egy eszközre történő kézbesítések maximális száma <br/> üzenet |100 |
-| A felhőből az eszközre irányuló üzenetsor maximális mélysége eszközönként |50 |
+| Maximum cloud-to-device queue depth per device |50 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális kézbesítésszáma |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális élettartama |2 nap |
-| [Az eszközök maximális mérete (Twin)](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |
-| Az ikereszköz sztringértékének maximális mérete | 4 KB |
-| [Az objektum maximális mélysége az eszköz ikerén](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
+| [Maximum size of device twin](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) | 8 KB for tags section, and 32 KB for desired and reported properties sections each |
+| Maximum length of device twin string key | 1 KB |
+| Maximum length of device twin string value | 4 KB |
+| [Maximum depth of object in device twin](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 10 |
 | A közvetlen metódus hasznos adatainak maximális mérete | 128 KB |
 | Feladatelőzmények maximális megőrzési ideje | 30 nap |
 | Egyidejű feladatok maximális száma | 10 (S3 esetén), 5 (S2 esetén), 1 (S1 esetén) |
-| További végpontok maximális száma | 10 (S1, S2 és S3 esetén) |
-| Üzenet-útválasztási szabályok maximális száma | 100 (S1, S2 és S3 esetén) |
-| Egyidejűleg csatlakoztatott adatfolyamok maximális száma | 50 (csak S1, S2, S3 és F1 esetén) |
-| Az eszköz adatfolyamának maximális adatátvitele | 300 MB/nap (csak S1, S2, S3 és F1 esetén) |
+| További végpontok maximális száma | 10 (for S1, S2, and S3) |
+| Üzenet-útválasztási szabályok maximális száma | 100 (for S1, S2, and S3) |
+| Maximum number of concurrently connected device streams | 50 (for S1, S2, S3, and F1 only) |
+| Maximum device stream data transfer | 300 MB per day (for S1, S2, S3, and F1 only) |
 
 > [!NOTE]
-> Ha egy Azure-előfizetésben több mint 100 fizetős IoT-hubhoz van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
+> If you need more than 100 paid IoT hubs in an Azure subscription, contact Microsoft Support.
 
 > [!NOTE]
-> Jelenleg az egyetlen IoT-hubhoz regisztrálható eszközök és modulok száma 1 000 000. Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
+> Currently, the total number of devices plus modules that can be registered to a single IoT hub is capped at 1,000,000. If you want to increase this limit, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
-A IoT Hub szabályozza a kérelmeket, ha túllépi a következő kvótákat.
+IoT Hub throttles requests when the following quotas are exceeded.
 
 | Szabályozás | Kötegenkénti érték |
 | --- | --- |
-| Identitásjegyzék műveletei <br/> (létrehozás, lekérés, Listázás, frissítés és törlés), <br/> egyéni vagy tömeges importálás/exportálás |83.33/mp/egység (5000/perc/egység) (S3 esetén). <br/> 1.67/mp/egység (100/perc/egység) (S1 és S2 esetén). |
-| Eszközkapcsolatok |6000/mp/egység (S3 esetén), 120/mp/egység (S2 esetén), 12/MP/egység (S1 esetén). <br/>Legalább 100/mp. |
-| Az eszközről a felhőbe irányuló küldések |6000/mp/egység (S3 esetén), 120/mp/egység (S2 esetén), 12/MP/egység (S1 esetén). <br/>Legalább 100/mp. |
-| Küldések a felhőből az eszközökre | 83.33/mp/egység (5000/perc/egység) (S3 esetén), 1.67/mp/egység (100/perc/egység) (S1 és S2 esetén). |
-| Fogadások a felhőből az eszközökön |833.33/mp/egység (50000/perc/egység) (S3 esetén), 16.67/s/egység (1000/perc/egység) (S1 és S2 esetén). |
-| Fájlfeltöltési műveletek |83,33 fájlfeltöltés-kezdeményezés/mp/egység (5000/perc/egység) (S3 esetén), 1,67 fájlfeltöltés-kezdeményezés/mp/egység (100/perc/egység) (S1 és S2 esetén). <br/> 10 000 SAS URI-k egyszerre egy Azure Storage-fiókhoz is kiállíthatók.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
-| Közvetlen metódusok | 24 MB/s/egység (S3 esetén), 480 KB/s/egység (S2 esetén), 160 KB/s/egység (S1 esetén).<br/> 8 KB-os szabályozási mérési méret alapján. |
-| Ikereszköz-olvasások | 500/mp/egység (S3 esetén), legfeljebb 100/mp vagy 10/mp/egység (S2 esetén), 100/mp (S1 esetén) |
-| Ikereszköz-frissítések | 250/mp/egység (S3 esetén), legfeljebb 50/mp vagy 5/MP/egység (S2 esetén), 50/mp (S1 esetén) |
-| Feladatműveletek <br/> (létrehozás, frissítés, Listázás és törlés) | 83.33/mp/egység (5000/perc/egység) (S3 esetén), 1.67/s/egység (100/perc/egység) (S2 esetén), 1.67/mp/egység (100/perc/egység) (S1 esetén). |
-| Feladatok eszközönkénti műveleti teljesítménye | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/MP/egység (S2 esetén), 10/mp (S1 esetén). |
-| Az eszköz stream-kezdeményezési sebessége | 5 új stream/mp (csak S1, S2, S3 és F1 esetén). |
+| Identitásjegyzék műveletei <br/> (create, retrieve, list, update, and delete), <br/> egyéni vagy tömeges importálás/exportálás |83.33/sec/unit (5,000/min/unit) (for S3). <br/> 1.67/sec/unit (100/min/unit) (for S1 and S2). |
+| Eszközkapcsolatok |6,000/sec/unit (for S3), 120/sec/unit (for S2), 12/sec/unit (for S1). <br/>Legalább 100/mp. |
+| Az eszközről a felhőbe irányuló küldések |6,000/sec/unit (for S3), 120/sec/unit (for S2), 12/sec/unit (for S1). <br/>Legalább 100/mp. |
+| Küldések a felhőből az eszközökre | 83.33/sec/unit (5,000/min/unit) (for S3), 1.67/sec/unit (100/min/unit) (for S1 and S2). |
+| Fogadások a felhőből az eszközökön |833.33/sec/unit (50,000/min/unit) (for S3), 16.67/sec/unit (1,000/min/unit) (for S1 and S2). |
+| Fájlfeltöltési műveletek |83.33 file upload initiations/sec/unit (5,000/min/unit) (for S3), 1.67 file upload initiations/sec/unit (100/min/unit) (for S1 and S2). <br/> 10,000 SAS URIs can be out for an Azure Storage account at one time.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
+| Közvetlen metódusok | 24 MB/sec/unit (for S3), 480 KB/sec/unit (for S2), 160 KB/sec/unit (for S1).<br/> Based on 8-KB throttling meter size. |
+| Ikereszköz-olvasások | 500/sec/unit (for S3), Maximum of 100/sec or 10/sec/unit (for S2), 100/sec (for S1) |
+| Ikereszköz-frissítések | 250/sec/unit (for S3), Maximum of 50/sec or 5/sec/unit (for S2), 50/sec (for S1) |
+| Feladatműveletek <br/> (create, update, list, and delete) | 83.33/sec/unit (5,000/min/unit) (for S3), 1.67/sec/unit (100/min/unit) (for S2), 1.67/sec/unit (100/min/unit) (for S1). |
+| Feladatok eszközönkénti műveleti teljesítménye | 50/sec/unit (for S3), maximum of 10/sec or 1/sec/unit (for S2), 10/sec (for S1). |
+| Device stream initiation rate | 5 new streams/sec (for S1, S2, S3, and F1 only). |

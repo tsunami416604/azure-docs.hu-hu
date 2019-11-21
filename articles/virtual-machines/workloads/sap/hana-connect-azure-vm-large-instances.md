@@ -1,6 +1,6 @@
 ---
-title: Kapcsolat beállítása virtuális gépekről az Azure-ba SAP HANA (nagyméretű példányok) | Microsoft Docs
-description: Kapcsolat beállítása virtuális gépekről az Azure-beli SAP HANA használatára (nagyméretű példányok).
+title: Connectivity setup from virtual machines to SAP HANA on Azure (Large Instances) | Microsoft Docs
+description: Connectivity setup from virtual machines for using SAP HANA on Azure (Large Instances).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -15,137 +15,137 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 919e253b6d9ddf8d65f86897a299416e93f3e660
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099913"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224729"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
 
-Mi a [SAP HANA az Azure-ban (nagyméretű példányok)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) megemlíti, hogy a HANA nagyméretű példányainak az Azure-beli SAP-alkalmazási réteggel való minimális üzembe helyezése a következőhöz hasonlít:
+The article [What is SAP HANA on Azure (Large Instances)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) mentions that the minimal deployment of HANA Large Instances with the SAP application layer in Azure looks like the following:
 
-![Azure-VNet az Azure-ban (nagyméretű példányok) és a helyszíni SAP HANAhoz csatlakoztatva](./media/hana-overview-architecture/image1-architecture.png)
+![Azure VNet connected to SAP HANA on Azure (Large Instances) and on-premises](./media/hana-overview-architecture/image1-architecture.png)
 
-Az Azure Virtual Network oldalának alaposabban megkeresve a következőkre van szükség:
+Looking closer at the Azure virtual network side, there is a need for:
 
-- Annak az Azure-beli virtuális hálózatnak a definíciója, amelyre telepíteni fogja az SAP-alkalmazás rétegében lévő virtuális gépeket.
-- Egy alapértelmezett alhálózat definíciója az Azure Virtual Networkben, amely valójában a virtuális gépek üzembe helyezésének egyike.
-- A létrehozott Azure-beli virtuális hálózatnak rendelkeznie kell legalább egy virtuálisgép-alhálózattal és egy Azure ExpressRoute virtuális hálózati átjáró-alhálózattal. Ezeket az alhálózatokat az IP-címtartományok a következő szakaszokban meghatározott módon kell kiosztani.
+- The definition of an Azure virtual network into which you're going to deploy the VMs of the SAP application layer.
+- The definition of a default subnet in the Azure virtual network that is really the one into which the VMs are deployed.
+- The Azure virtual network that's created needs to have at least one VM subnet and one Azure ExpressRoute virtual network gateway subnet. These subnets should be assigned the IP address ranges as specified and discussed in the following sections.
 
 
-## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Azure-beli virtuális hálózat létrehozása a HANA nagyméretű példányaihoz
+## <a name="create-the-azure-virtual-network-for-hana-large-instances"></a>Create the Azure virtual network for HANA Large Instances
 
 >[!Note]
->A HANA nagyméretű példányok Azure-beli virtuális hálózatát a Azure Resource Manager üzemi modell használatával kell létrehozni. A HANA nagyméretű példány megoldás nem támogatja a régebbi Azure-alapú üzemi modellt, amelyet gyakran a klasszikus üzemi modellnek is nevezünk.
+>The Azure virtual network for HANA Large Instances must be created by using the Azure Resource Manager deployment model. The older Azure deployment model, commonly known as the classic deployment model, isn't  supported by the HANA Large Instance solution.
 
-A virtuális hálózat létrehozásához használhatja a Azure Portal, a PowerShell, az Azure-sablon vagy az Azure CLI-t. (További információ: [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). Az alábbi példában a Azure Portal használatával létrehozott virtuális hálózatot tekintjük át.
+You can use the Azure portal, PowerShell, an Azure template, or the Azure CLI to create the virtual network. (For more information, see [Create a virtual network using the Azure portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). In the following example, we look at a virtual network that's created by using the Azure portal.
 
-Ha a jelen dokumentációban található **címterület** hivatkozik arra, hogy az Azure-beli virtuális hálózat által használt címtartomány engedélyezve legyen. Ez a Címterület azt a címtartományt is használja, amelyet a virtuális hálózat a BGP-útvonal propagálásához használ. Ez a **címterület** itt látható:
+When referring to the **address space** in this documentation, to the address space that the Azure virtual network is allowed to use. This address space is also the address range that the virtual network uses for BGP route propagation. This **address space** can be seen here:
 
-![A Azure Portalban megjelenített Azure-beli virtuális hálózat címterület](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
+![Address space of an Azure virtual network displayed in the Azure portal](./media/hana-overview-connectivity/image1-azure-vnet-address-space.png)
 
-Az előző példában a 10.16.0.0/16 esetében az Azure-beli virtuális hálózat a használathoz meglehetősen nagy és széles körű IP-címtartományt kapott. Ezért az ezen a virtuális hálózaton belüli további alhálózatok összes IP-címének tartománya az adott címtartomány tartományán belül lehet. Az Azure-beli virtuális hálózatok esetében általában nem ajánlott egy ilyen nagy címtartomány használata. Nézzük meg az Azure Virtual Networkben definiált alhálózatokat:
+In the previous example, with 10.16.0.0/16, the Azure virtual network was given a rather large and wide IP address range to use. Therefore, all the IP address ranges of subsequent subnets within this virtual network can have their ranges within that address space. We  don't usually  recommend such a large address range for single virtual network in Azure. But let's look into the subnets that are defined in the Azure virtual network:
 
-![Azure-beli virtuális hálózati alhálózatok és azok IP-címtartományok](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
+![Azure virtual network subnets and their IP address ranges](./media/hana-overview-connectivity/image2b-vnet-subnets.png)
 
-Megvizsgálunk egy virtuális hálózatot az első virtuálisgép-alhálózattal (itt az "alapértelmezett") és egy "GatewaySubnet" nevű alhálózatot.
+We look at a virtual network with a first VM subnet (here called "default") and a subnet called "GatewaySubnet".
 
-A két előző ábrán a **virtuális hálózati címtartomány** az Azure virtuális gép és a virtuális hálózati átjáró ALHÁLÓZATI **IP-címének tartományát** is tartalmazza.
+In the two previous graphics, the **virtual network address space** covers both **the subnet IP address range of the Azure VM** and that of the virtual network gateway.
 
-A **virtuális hálózati címtartomány** az egyes alhálózatok által használt meghatározott tartományokra korlátozható. A virtuális hálózatok virtuális hálózati **címterület** több megadott tartományként is definiálható, ahogy az itt látható:
+You can restrict the **virtual network address space** to the specific ranges used by each subnet. You can also define the **virtual network address space** of a virtual network as multiple specific ranges, as shown here:
 
-![Azure-beli virtuális hálózati címtartomány két szóközzel](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
+![Azure virtual network address space with two spaces](./media/hana-overview-connectivity/image3-azure-vnet-address-space_alternate.png)
 
-Ebben az esetben a **virtuális hálózati címtartomány** két szóközzel van definiálva. Ugyanazok, mint az Azure-beli virtuális gép és a virtuális hálózati átjáró alhálózat IP-címének tartományában definiált IP-címtartományok. 
+In this case, the **virtual network address space** has two spaces defined. They are the same as the IP address ranges that are defined for the subnet IP address range of the Azure VM and the virtual network gateway. 
 
-Bármely, a bérlői alhálózathoz (VM-alhálózatokhoz) hasonló elnevezési szabványt használhat. Az Azure-beli (nagyméretű példányok) ExpressRoute áramkörön lévő SAP HANAhoz **tartozó virtuális hálózatok esetében azonban mindig csak egy, és csak egy átjáró-alhálózat tartozhat** . Az **átjáró-alhálózat neve "GatewaySubnet" kell legyen** , hogy a ExpressRoute-átjáró megfelelően legyen elhelyezve.
+You can use any naming standard you like for these tenant subnets (VM subnets). However, **there must always be one, and only one, gateway subnet for each virtual network** that connects to the SAP HANA on Azure (Large Instances) ExpressRoute circuit. **This gateway subnet has to be named "GatewaySubnet"** to make sure that the ExpressRoute gateway is properly placed.
 
 > [!WARNING] 
-> Fontos, hogy az átjáró alhálózatának neve mindig "GatewaySubnet" legyen.
+> It's critical that the gateway subnet always be named "GatewaySubnet".
 
-Több virtuálisgép-alhálózatot és nem folytonos címtartományt is használhat. Ezeket a címtartományt a virtuális hálózat **virtuális hálózati címterület** fedi le. Lehetnek aggregált formában. Emellett a virtuálisgép-alhálózatok és az átjáró-alhálózatok pontos tartományának listáját is megtekinthetik.
+You can use multiple VM subnets and non-contiguous address ranges. These address ranges must be covered by the **virtual network address space** of the virtual network. They can be in an aggregated form. They can also be in a list of the exact ranges of the VM subnets and the gateway subnet.
 
-Az alábbiakban összefoglaljuk a HANA nagyméretű példányokhoz csatlakozó Azure-beli virtuális hálózat fontos tényeit:
+Following is a summary of the important facts about an Azure virtual network that connects to HANA Large Instances:
 
-- Ha a HANA nagyméretű példányainak kezdeti üzembe helyezését végzi, a **virtuális hálózati címtartomány** elküldését a Microsoftnak kell elküldenie. 
-- A **virtuális hálózati címtartomány** egy nagyobb tartomány, amely az Azure virtuális gép és a virtuális hálózati átjáró ALHÁLÓZATI IP-címeinek tartományait fedi le.
-- Vagy több olyan tartományt is elküldhet, amely a virtuálisgép-alhálózatok IP-címeinek és a virtuális hálózati átjáró IP-címének különböző IP-címtartományok körét fedi le.
-- A **virtuális hálózati címtartomány** definiálása a BGP-útválasztás propagálásához használatos.
-- Az átjáró-alhálózat nevének a következőket kell tennie: **"GatewaySubnet"** .
-- A címtartomány a HANA nagyméretű példányának szűrője, amely engedélyezi vagy letiltja az Azure-ból származó HANA nagyméretű példány-egységek forgalmát. Az Azure-beli virtuális hálózat BGP-útválasztási információi, valamint a HANA nagyméretű példányának szűrésére konfigurált IP-címtartományok egyezniük kell egymással. Ellenkező esetben csatlakozási problémák léphetnek fel.
-- A későbbiekben tárgyalt átjáró-alhálózatról a **virtuális hálózat a HANA nagyméretű példány ExpressRoute** való csatlakoztatásáról szóló szakaszban olvashat bővebben.
+- You must submit the **virtual network address space** to Microsoft  when you're performing an initial deployment of HANA Large Instances. 
+- The **virtual network address space** can be one larger range that covers the ranges for both the subnet IP address range of the Azure VM and the virtual network gateway.
+- Or you can submit multiple ranges that cover the different IP address ranges of VM subnet IP address range(s) and the virtual network gateway IP address range.
+- The defined **virtual network address space** is used for BGP routing propagation.
+- The name of the gateway subnet must be: **"GatewaySubnet"** .
+- The  address space is used as a filter on the HANA Large Instance side to allow or disallow traffic to the HANA Large Instance units from Azure. The BGP routing information of the Azure virtual network and the IP address ranges that are configured for filtering on the HANA Large Instance side should match. Otherwise, connectivity issues can occur.
+- There are some details about the gateway subnet that are discussed later, in the section **Connecting a virtual network to HANA Large Instance ExpressRoute.**
 
 
 
-## <a name="different-ip-address-ranges-to-be-defined"></a>Különböző IP-címtartományok definiálása 
+## <a name="different-ip-address-ranges-to-be-defined"></a>Different IP address ranges to be defined 
 
-A HANA nagyméretű példányok üzembe helyezéséhez szükséges IP-címtartományok némelyike már be lett vezetve. Azonban további IP-címtartományok is fontosak. A következő IP-címtartományok egyikét sem kell elküldenie a Microsoftnak. Azonban a kezdeti központi telepítésre vonatkozó kérelem elküldése előtt meg kell határoznia őket:
+Some of the IP address ranges that are necessary for deploying HANA Large Instances got introduced already. But there are more IP address ranges that are also important. Not all of the following IP address ranges need to be submitted to Microsoft. However, you do need to define them before sending a request for initial deployment:
 
-- **Virtuális hálózati címtartomány**: A **virtuális hálózati címtartomány** az Azure-beli virtuális hálózatok címtartomány-paraméteréhez hozzárendelt IP-címtartományok. Ezek a hálózatok a SAP HANA nagyméretű példány-környezethez csatlakoznak. Javasoljuk, hogy ez a Címterület-paraméter többsoros érték legyen. Tartalmaznia kell az Azure-beli virtuális gép alhálózati tartományát és az Azure-átjáró alhálózatának tartományát. Ez az alhálózat-tartomány az előző ábrán látható. NEM lehet átfedésben a helyszíni vagy a kiszolgáló IP-készletével vagy az ER-P2P címtartományok. Hogyan érheti el ezeket az IP-címtartományt (ka) t? A vállalati hálózati csapatának vagy szolgáltatójának egy vagy több olyan IP-címtartományt kell megadnia, amely nem használatos a hálózaton belül. Az Azure-beli virtuális gép alhálózata például 10.0.1.0/24, az Azure Gateway-alhálózat alhálózata pedig 10.0.2.0/28.  Javasoljuk, hogy az Azure-beli virtuális hálózati címtartomány a következőképpen legyen definiálva: 10.0.1.0/24 és 10.0.2.0/28. Bár a címtartomány értéke összesíthető, javasoljuk, hogy az alhálózati tartományokhoz egyeztesse őket. Így véletlenül elkerülhető a nem használt IP-címtartományok újrafelhasználása a hálózatban máshol lévő nagyobb címeken belül. **A virtuális hálózati címtartomány egy IP-címtartomány. A kezdeti telepítés**megkezdése előtt el kell küldeni a Microsoftnak.
-- **Azure virtuális gép alhálózatának IP-címtartomány:** Ezt az IP-címtartományt az Azure Virtual Network alhálózati paraméterhez rendeli. Ez a paraméter az Azure Virtual Networkben található, és a SAP HANA nagyméretű példány-környezethez csatlakozik. Ez az IP-címtartomány az IP-címek Azure-beli virtuális gépekhez való hozzárendelésére szolgál. A tartományon kívüli IP-címek csatlakozhatnak a SAP HANA nagyméretű példány-kiszolgáló (k) hoz. Ha szükséges, több Azure VM-alhálózatot is használhat. Az egyes Azure-beli virtuálisgép-alhálózatokhoz egy/24 CIDR-blokkot ajánlunk. Ez a címtartomány az Azure-beli virtuális hálózati címtartomány által használt értékek részét képezi. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amely nincs használatban a hálózaton belül.
-- **Virtuális hálózati átjáró alhálózati IP-címtartomány:** A használni kívánt funkcióktól függően az ajánlott méret a következő:
-   - Ultra-Performance ExpressRoute Gateway:/26 címterület – az SKU-i típushoz szükséges.
-   - A VPN és a ExpressRoute együttes használata nagy teljesítményű ExpressRoute virtuális hálózati átjáró (vagy kisebb) használatával:/27 címterület.
-   - Minden más helyzet:/28 címterület. Ez a címtartomány a "VNet címtartomány" értékeiben használt értékek részét képezi. Ez a címtartomány a Microsoft számára elküldött Azure virtuális hálózati címtartomány-értékekben használt értékek részét képezi. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amelyet jelenleg nem használ a hálózaton belül. 
-- **Címtartomány az ER-P2P kapcsolathoz:** Ez a tartomány a SAP HANA nagyméretű példányú ExpressRoute (ER) P2P-kapcsolatok IP-tartománya. Az IP-címtartományok ezen tartományának egy/29 CIDR IP-címtartomány kell lennie. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címtartományok. Ez az IP-címtartomány a ExpressRoute virtuális átjáróról a SAP HANA nagyméretű példány-kiszolgálókhoz való kapcsolat beállítására szolgál. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amelyet jelenleg nem használ a hálózaton belül. **Ez a tartomány egy IP-címtartomány. A kezdeti telepítés**megkezdése előtt el kell küldeni a Microsoftnak.  
-- **Kiszolgálói IP-címkészlet címtartomány:** Ez az IP-címtartomány az egyedi IP-cím és a HANA nagyméretű példány-kiszolgálók hozzárendelésére szolgál. Az ajánlott alhálózat mérete egy/24 CIDR blokk. Ha szükséges, kisebb lehet, mindössze 64 IP-címmel. Ebből a tartományból az első 30 IP-cím a Microsoft számára van fenntartva. A tartomány méretének kiválasztásakor győződjön meg arról, hogy ezt a tényt veszi figyelembe. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címekkel. Hogyan érheti el ezt az IP-címtartományt? A vállalati hálózati csapatának vagy szolgáltatójának olyan IP-címtartományt kell megadnia, amelyet jelenleg nem használ a hálózaton belül.  **Ez a tartomány egy IP-címtartomány, amelyet a Microsoftnak kell elküldenie, amikor egy kezdeti telepítést kér**.
+- **Virtual network address space**: The **virtual network address space** is the IP address ranges that you assign to your address space parameter in the Azure virtual networks. These networks connect to the SAP HANA Large Instance environment. We recommend that this address space parameter is a multi-line value. It should consist of the subnet range of the Azure VM and the subnet range(s) of the Azure gateway. This subnet range was shown in the previous graphics. It must NOT overlap with your on-premises or server IP pool or ER-P2P address ranges. How do you get these IP address range(s)? Your corporate network team or service provider should provide one or multiple IP address range(s) that aren't used inside your network. For example, the subnet of your Azure VM  is 10.0.1.0/24, and the subnet of your Azure gateway subnet is 10.0.2.0/28.  We recommend that your Azure virtual network address space is defined as: 10.0.1.0/24 and 10.0.2.0/28. Although the  address space values can be aggregated, we recommend matching them to the subnet ranges. This way you can accidentally avoid reusing unused IP address ranges within larger address spaces elsewhere in your network. **The virtual network address space is an IP address range. It needs to be submitted to Microsoft when you ask for an initial deployment**.
+- **Azure VM subnet IP address range:** This IP address range is the one you assign to the Azure virtual network subnet parameter. This parameter is in your Azure virtual network and connects to the SAP HANA Large Instance environment. This IP address range is used to assign IP addresses to your Azure VMs. The IP addresses out of this range are allowed to connect to your SAP HANA Large Instance server(s). If needed, you can use multiple Azure VM subnets. We recommend a /24 CIDR block for each Azure VM subnet. This address range must be a part of the values that are used in the Azure virtual network address space. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that isn't being used inside your network.
+- **Virtual network gateway subnet IP address range:** Depending on the features that you plan to use, the recommended size is:
+   - Ultra-performance ExpressRoute gateway: /26 address block--required for Type II class of SKUs.
+   - Coexistence with VPN and ExpressRoute using a high-performance ExpressRoute virtual network gateway (or smaller): /27 address block.
+   - All other situations: /28 address block. This address range must be a part of the values used in the "VNet address space" values. This address range must be a part of the values that are used in the Azure virtual network address space values that you submit to Microsoft. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network. 
+- **Address range for ER-P2P connectivity:** This range is the IP range for your SAP HANA Large Instance ExpressRoute (ER) P2P connection. This range of IP addresses must be a /29 CIDR IP address range. This range must NOT overlap with your on-premises or other Azure IP address ranges. This IP address range is used to set up the ER connectivity from your ExpressRoute virtual gateway to the SAP HANA Large Instance servers. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network. **This range is an IP address range. It needs to be submitted to Microsoft when you ask for an initial deployment**.  
+- **Server IP pool address range:** This IP address range is used to assign the individual IP address to HANA large instance servers. The recommended subnet size is a /24 CIDR block. If needed, it can be smaller, with as few as  64 IP addresses. From this range, the first 30 IP addresses are reserved for use by Microsoft. Make sure that you account for this fact when you choose the size of the range. This range must NOT overlap with your on-premises or other Azure IP addresses. How do you get this IP address range? Your corporate network team or service provider should provide an IP address range that's not currently being used inside your network.  **This range is an IP address range, which needs to be submitted to Microsoft when asking for an initial deployment**.
 
-Választható IP-címtartományok, amelyeket végül el kell küldeni a Microsoftnak:
+Optional IP address ranges that eventually need to be submitted to Microsoft:
 
-- Ha úgy dönt, hogy a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi a közvetlen útválasztást a helyszíni rendszerből a nagyméretű példányok számára, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
-- Ha úgy dönt, hogy a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi az egyik Azure-régióban található Hana nagyméretű példány-bérlőtől egy másik Azure-régióban lévő másik Hana nagyméretű példány bérlőhöz való közvetlen útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+- If you choose to use [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from on-premises to HANA Large Instance units, you need to reserve another /29 IP address range. This range may not overlap with any of the other IP address ranges you defined before.
+- If you choose to use [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from a HANA Large Instance tenant in one Azure region to another HANA Large Instance tenant in another Azure region, you need to reserve another /29 IP address range. This range may not overlap with any of the other IP address ranges you defined before.
 
-A ExpressRoute Global Reach és a HANA nagyméretű példányok használatáról a következő dokumentumokban talál további információt:
+For more information about ExpressRoute Global Reach and usage around HANA large instances, check the documents:
 
-- [SAP HANA (nagyméretű példányok) hálózati architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA (Large Instances) network architecture](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
+- [Connect a virtual network to HANA large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
  
-Meg kell határoznia és meg kell terveznie a korábban ismertetett IP-címtartományt. Azonban nem kell továbbítania őket a Microsoftnak. A Microsoft számára a következő IP-címtartományok szükségesek:
+You need to define and plan the IP address ranges that were described previously. However, you don't need to transmit all of them to Microsoft. The IP address ranges that you are required to name to Microsoft are:
 
-- Azure-beli virtuális hálózati címtartomány (ok)
-- Címtartomány az ER-P2P kapcsolathoz
-- Kiszolgálói IP-címkészlet címtartomány
+- Azure virtual network address space(s)
+- Address range for ER-P2P connectivity
+- Server IP pool address range
 
-Ha további virtuális hálózatokat ad hozzá, amelyeknek a HANA nagyméretű példányaihoz kell csatlakozniuk, el kell küldenie a Microsoft számára hozzáadott új Azure-beli virtuális hálózati címtartományt. 
+If you add additional virtual networks that need to connect to HANA Large Instances, you have to submit the new Azure virtual network address space that you're adding to Microsoft. 
 
-A következőkben egy példa látható a különböző tartományokra és néhány olyan tartományra, amelyet a Microsoft számára kell konfigurálnia és végül nyújtani. Az Azure-beli virtuális hálózati címtartomány értéke nincs összesítve az első példában. Ez azonban az első Azure virtuálisgép-alhálózat IP-címtartomány és a virtuális hálózati átjáró alhálózati IP-címtartomány tartományában van meghatározva. 
+Following is an example of the different ranges and some example ranges as you need to configure and eventually provide  to Microsoft. The value for the Azure virtual network address space isn't aggregated in the first example. However, it is defined from the ranges of the first Azure VM subnet IP address range and the virtual network gateway subnet IP address range. 
 
-Az Azure virtuális hálózatban több virtuálisgép-alhálózatot is használhat, ha a további virtuálisgép-alhálózatok további IP-címeinek konfigurálását és elküldését az Azure virtuális hálózati címtartomány részeként konfigurálja és elküldi.
+You can use multiple VM subnets within the Azure virtual network when you configure and submit the additional IP address ranges of the additional VM subnet(s) as part of the Azure virtual network address space.
 
-![Az Azure-ban SAP HANA szükséges IP-címtartományok (nagyméretű példányok) minimális üzembe helyezés](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
+![IP address ranges required in SAP HANA on Azure (Large Instances) minimal deployment](./media/hana-overview-connectivity/image4b-ip-addres-ranges-necessary.png)
 
-A kép nem jeleníti meg azokat a további IP-címtartományt, amelyek szükségesek a ExpressRoute Global Reach opcionális használatához.
+The graphic does not show the additional IP address range(s) that are required for the optional use of ExpressRoute Global Reach.
 
-Összesítheti a Microsoftnak elküldött adatokat is. Ebben az esetben az Azure-beli virtuális hálózat címterület csak egy szóközt tartalmaz. A korábbi példában szereplő IP-címtartományok használatával az összesített virtuális hálózati címtartomány a következő képhez hasonlóan néz ki:
+You can also aggregate the data that you submit to Microsoft. In that case, the address space of the Azure virtual network only includes one space. Using the IP address ranges from the earlier example, the aggregated virtual network address space could look like the following image:
 
-![A SAP HANA az Azure-ban (nagyméretű példányok) a minimális üzembe helyezéshez szükséges IP-címtartományok második lehetősége](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
+![Second possibility of IP address ranges required in SAP HANA on Azure (Large Instances) minimal deployment](./media/hana-overview-connectivity/image5b-ip-addres-ranges-necessary-one-value.png)
 
-A példában két kisebb tartomány helyett, amely az Azure-beli virtuális hálózat címterületet definiálta, egy nagyobb tartományunk van, amely 4096 IP-címet foglal magában. A Címterület ilyen nagy meghatározása a nem használt, hanem a nagy tartományokat is elhagyja. Mivel a virtuális hálózati címtartomány értéke (i) a BGP-útvonal propagálásához használatos, a használaton kívüli tartományok vagy a hálózat más részei útválasztási problémákhoz vezethetnek. A kép nem jeleníti meg azokat a további IP-címtartományt, amelyek szükségesek a ExpressRoute Global Reach opcionális használatához.
+In the example, instead of two smaller ranges that defined the address space of the Azure virtual network, we have one larger range that covers 4096 IP addresses. Such a large definition of the address space leaves some rather large ranges unused. Since the virtual network address space value(s) are used for BGP route propagation, usage of the unused ranges on-premises or elsewhere in your network can cause routing issues. The graphic does not show the additional IP address range(s) that are required for the optional use of ExpressRoute Global Reach.
 
-Javasoljuk, hogy a címtartomány szorosan illeszkedjen az Ön által használt alhálózati címtartomány-területhez. Ha szükséges, anélkül, hogy állásidőt kellene felvennie a virtuális hálózaton, később bármikor hozzáadhat új címterület-értékeket.
+We recommend that you keep the address space tightly aligned with the actual subnet address space that you use. If needed, without incurring downtime on the virtual network, you can always add new address space values later.
  
 > [!IMPORTANT] 
-> Az ER-P2P, a kiszolgálói IP-címkészlet és az Azure virtuális hálózati címtartomány minden IP-címtartomány **nem** lehet átfedésben egymással, sem a hálózatban használt többi tartománnyal. Mindegyiknek különállónak kell lennie. Ahogy a két előző ábrán is látható, nem lehet más tartomány alhálózata is. Ha átfedések történnek a tartományok között, előfordulhat, hogy az Azure-beli virtuális hálózat nem csatlakozik a ExpressRoute áramkörhöz.
+> Each IP address range in ER-P2P, the server IP pool, and the Azure virtual network address space must **NOT** overlap with one another or with any other range that's used in your network. Each must be discrete. As the two previous graphics show, they also can't be a subnet of any other range. If overlaps occur between ranges, the Azure virtual network might not connect to the ExpressRoute circuit.
 
-## <a name="next-steps-after-address-ranges-have-been-defined"></a>A címtartomány meghatározása utáni következő lépések
-Az IP-címtartományok meghatározása után a következő lépések szükségesek:
+## <a name="next-steps-after-address-ranges-have-been-defined"></a>Next steps after address ranges have been defined
+After the IP address ranges have been defined, the following things need to happen:
 
-1. Küldje el az IP-címtartományt az Azure-beli virtuális hálózati címtartomány, az ER-P2P kapcsolat és a kiszolgáló IP-címkészlet címtartomány, valamint a dokumentum elején felsorolt egyéb adatmennyiségek között. Ezen a ponton a virtuális hálózat és a virtuálisgép-alhálózatok létrehozását is megkezdheti. 
-2. A Microsoft létrehoz egy ExpressRoute áramkört az Azure-előfizetés és a HANA nagyméretű példány bélyegzője között.
-3. A Microsoft a nagy példányszámú bélyegzőn hozza létre a bérlői hálózatot.
-4. A Microsoft az Azure-beli (nagyméretű példányok) infrastruktúra SAP HANA konfigurálja a hálózatkezelést, hogy fogadja az Azure-beli virtuális hálózati címtartomány IP-címeit, amelyek a HANA nagyméretű példányaival kommunikálnak.
-5. A vásárolt Azure-beli (nagyméretű példányok) SKU-ra vonatkozó SAP HANA függően a Microsoft egy számítási egységet rendel a bérlői hálózathoz. Emellett lefoglalja és csatlakoztatja a tárolót, és telepíti az operációs rendszert (SUSE vagy Red Hat Linux). Az ezen egységek IP-címei kikerülnek a Microsoft számára elküldött kiszolgáló IP-címkészlet címtartományból.
+1. Submit the IP address ranges for the Azure virtual network address space, the ER-P2P connectivity, and server IP pool address range, together with other data that has been listed at the beginning of the document. At this point, you could also start to create the virtual network and the VM subnets. 
+2. An ExpressRoute circuit is created by Microsoft between your Azure subscription and the HANA Large Instance stamp.
+3. A tenant network is created on the Large Instance stamp by Microsoft.
+4. Microsoft configures networking in the SAP HANA on Azure (Large Instances) infrastructure to accept IP addresses from your Azure virtual network address space that communicates with HANA Large Instances.
+5. Depending on the specific SAP HANA on Azure (Large Instances) SKU that you bought, Microsoft assigns a compute unit in a tenant network. It also allocates and mounts storage, and installs the operating system (SUSE or Red Hat Linux). IP addresses for these units are taken out of the Server IP Pool address range that you submitted to Microsoft.
 
-A telepítési folyamat végén a Microsoft a következő adatforrásokat biztosítja Önnek:
-- Az Azure-beli virtuális hálózatoknak a ExpressRoute-áramkörhöz való csatlakoztatásához szükséges információk, amelyek az Azure-beli virtuális hálózatokat a HANA nagyméretű példányokhoz csatlakoztatják:
-     - Engedélyezési kulcs (ok)
+At the end of the deployment process, Microsoft delivers the following data to you:
+- Information that's needed to connect your Azure virtual network(s) to the ExpressRoute circuit that connects Azure virtual networks to HANA Large Instances:
+     - Authorization key(s)
      - ExpressRoute PeerID
-- A HANA nagyméretű példányainak a ExpressRoute-áramkör és az Azure-beli virtuális hálózat létrehozása után történő elérésére vonatkozó adatok.
+- Data for accessing HANA Large Instances after you establish ExpressRoute circuit and Azure virtual network.
 
-Megtalálhatja a HANA nagyméretű példányok összekapcsolásának sorozatát is az Azure-beli [(nagyméretű példányok) telepítő SAP HANA](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Az alábbi lépések többsége az adott dokumentumban található központi telepítésben látható. 
+You can also find the sequence of connecting HANA Large Instances in the document [SAP HANA on Azure (Large Instances) Setup](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/). Many of the following steps are shown in an example deployment in that document. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át [a virtuális hálózat csatlakoztatása a HANA nagyméretű példány ExpressRoute](hana-connect-vnet-express-route.md)című témakört.
+- Refer to [Connecting a virtual network to HANA Large Instance ExpressRoute](hana-connect-vnet-express-route.md).

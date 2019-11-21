@@ -1,22 +1,22 @@
 ---
 author: mdgattuso
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 04/29/2019
 ms.author: magattus
-ms.openlocfilehash: 0c989aa32c4f4defc9d22a2e510d85d7583ed1c8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: f5cef027dfa38bfb68f24c990047719e540ff0a1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67179507"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224460"
 ---
-| Resource | Alapértelmezett korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Azure Content Delivery Network-profilok |25 |
-| Content Delivery Network végpontok száma |25 |
-| Egyéni tartományok/végpont |25 |
+| Azure Content Delivery Network profiles |25 |
+| Content Delivery Network endpoints per profile |25 |
+| Custom domains per endpoint |25 |
 
-A Content Delivery Network-előfizetés egy vagy több Content Delivery Network profilt is tartalmazhat. Egy Content Delivery Network profil egy vagy több Content Delivery Network végpontot tartalmazhat. Előfordulhat, hogy több profilt szeretne használni az Content Delivery Network-végpontok internetes tartomány, webalkalmazás vagy más feltétel alapján történő rendszerezéséhez. 
+A Content Delivery Network subscription can contain one or more Content Delivery Network profiles. A Content Delivery Network profile can contain one or more Content Delivery Network endpoints. You might want to use multiple profiles to organize your Content Delivery Network endpoints by internet domain, web application, or some other criteria. 
 
 

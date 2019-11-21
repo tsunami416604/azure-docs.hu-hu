@@ -1,129 +1,128 @@
 ---
-title: 'Modell kiértékelése: modul-hivatkozás'
+title: 'Evaluate Model: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning modell kiértékelése modult a betanított modell pontosságának méréséhez.
+description: Learn how to use the Evaluate Model module in Azure Machine Learning to measure the accuracy of a trained model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497919"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214570"
 ---
-# <a name="evaluate-model-module"></a>Modell modul kiértékelése
+# <a name="evaluate-model-module"></a>Evaluate Model module
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+This article describes a module in Azure Machine Learning designer (preview).
 
-Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészletet ad meg, amely egy modellből generált pontszámokat tartalmaz, és a **modell kiértékelése** modul az iparági szabványnak megfelelő értékelési metrikákat számítja ki.
+Use this module to measure the accuracy of a trained model. You provide a dataset containing scores generated from a model, and the **Evaluate Model** module computes a set of industry-standard evaluation metrics.
   
- A **kiértékelési modell** által visszaadott mérőszámok az Ön által kiértékelt modell típusától függenek:  
+ The metrics returned by **Evaluate Model** depend on the type of model that you are evaluating:  
   
--   **Besorolási modellek**    
--   **Regressziós modellek**    
-
+-   **Classification Models**    
+-   **Regression Models**    
 
 
 > [!TIP]
-> Ha még nem ismeri a modell értékelését, javasoljuk, hogy Dr. Stephen Elston a videó sorozatot a EdX [Machine learning tanfolyamának](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) részeként. 
+> If you are new to model evaluation, we recommend the video series by Dr. Stephen Elston, as part of the [machine learning course](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) from EdX. 
 
 
-Háromféle módon használhatja a **modell kiértékelése** modult:
+There are three ways to use the **Evaluate Model** module:
 
-+ Pontszámok előállítása a betanítási adataival, és a modell kiértékelése a pontszámok alapján
-+ Pontszámok létrehozása a modellhez, de a pontszámok összevetése egy foglalt tesztelési csoport pontszámai alapján
-+ A pontszámok összehasonlítása két különböző, de kapcsolódó modell esetében ugyanazon adathalmaz használatával
++ Generate scores over your training data, and evaluate the model based on these scores
++ Generate scores on the model, but compare those scores to scores on a reserved testing set
++ Compare scores for two different but related models, using the same set of data
 
-## <a name="use-the-training-data"></a>A betanítási adatkészletek használata
+## <a name="use-the-training-data"></a>Use the training data
 
-A modellek kiértékeléséhez össze kell kapcsolni egy adatkészletet, amely tartalmazza a bemeneti oszlopokat és a pontszámokat.  Ha nem áll rendelkezésre más adat, használhatja az eredeti adatkészletet.
+To evaluate a model, you must connect a dataset that contains a set of input columns and scores.  If no other data is available, you can use your original dataset.
 
-1. Kapcsolja össze a [pontszám modell](./score-model.md) **pontszám** -kimenetét a **modell kiértékelésének**bemenetével. 
-2. Kattintson a **modell kiértékelése** elemre, és futtassa a folyamatot a kiértékelési pontszámok létrehozásához.
+1. Connect the **Scored dataset** output of the [Score Model](./score-model.md) to the input of **Evaluate Model**. 
+2. Click **Evaluate Model** module, and run the pipeline to generate the evaluation scores.
 
-## <a name="use-testing-data"></a>Tesztelési célú adatfeldolgozás
+## <a name="use-testing-data"></a>Use testing data
 
-A gépi tanulás gyakori forgatókönyve, hogy elkülöníti az eredeti adatkészletet képzési és tesztelési adatkészletekben, [a felosztott modul vagy](./split-data.md) a [partíció és a minta](./partition-and-sample.md) modul használatával. 
+A common scenario in machine learning is to separate your original data set into training and testing datasets, using the [Split](./split-data.md) module, or the [Partition and Sample](./partition-and-sample.md) module. 
 
-1. Kapcsolja össze a [pontszám modell](score-model.md) **pontszám** -kimenetét a **modell kiértékelésének**bemenetével. 
-2. Kösse össze a **kiértékelési modell**jobb oldali bemenetének tesztelési adatokat tartalmazó felosztott adat-modul kimenetét.
-2. Kattintson a **modell kiértékelése** elemre, és válassza a **kijelölt futtatása** lehetőséget a próbaverziók létrehozásához.
+1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
+2. Connect the output of the Split Data module that contains the testing data to the right-hand input of **Evaluate Model**.
+2. Click **Evaluate Model** module, and select **Run selected** to generate the evaluation scores.
 
-## <a name="compare-scores-from-two-models"></a>Pontszámok összehasonlítása két modellből
+## <a name="compare-scores-from-two-models"></a>Compare scores from two models
 
-A **modell kiértékeléséhez**a pontszámok második készletét is összekapcsolhatjuk.  Előfordulhat, hogy a pontszámok olyan közös értékelési készletek, amelyek ismert eredményekkel rendelkeznek, vagy egy másik modellből származó eredmények egy részét ugyanarra az adatokra vonatkozóan.
+You can also connect a second set of scores to **Evaluate Model**.  The scores might be a shared evaluation set that has known results, or a set of results from a different model for the same data.
 
-Ez a funkció azért hasznos, mert egyszerűen össze lehet hasonlítani két különböző modell eredményeit ugyanazon adatokon. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
+This feature is useful because you can easily compare results from two different models on the same data. Or, you might compare scores from two different runs over the same data with different parameters.
 
-1. Kapcsolja össze a [pontszám modell](score-model.md) **pontszám** -kimenetét a **modell kiértékelésének**bemenetével. 
-2. Kapcsolja össze a pontszám modell modul kimenetét a második modellhez a **modell kiértékelése**jobb oldali bemenetével.
-3. Kattintson a jobb gombbal a **modell kiértékelése**lehetőségre, és válassza a **kijelölt futtatása** lehetőséget a próbaverziók létrehozásához.
+1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
+2. Connect the output of the Score Model module for the second model to the right-hand input of **Evaluate Model**.
+3. Right-click **Evaluate Model**, and select **Run selected** to generate the evaluation scores.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
-A **kiértékelési modell**futtatása után kattintson a jobb gombbal a modulra, és válassza a **kiértékelési eredmények** lehetőséget az eredmények megtekintéséhez. A következőket teheti:
+After you run **Evaluate Model**, right-click the module and select **Evaluation results** to see the results. Előnyök:
 
-+ Az eredmények mentése adatkészletként, így könnyebben elemezhető más eszközökkel
-+ Vizualizáció létrehozása a tervezőben
++ Save the results as a dataset, for easier analysis with other tools
++ Generate a visualization in the designer
 
-Ha adatkészleteket hoz létre a **kiértékelési modell**mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
-A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben kell megjelenni, amelyet a DataSet adatkészlethez tartozó metrikák, illetve a jobb oldali porthoz csatolt modell mutat.  
+If you connect datasets to both inputs of **Evaluate Model**, the results will contain metrics for both set of data, or both models.
+The model or data attached to the left port is presented first in the report, followed by the metrics for the dataset, or model attached on the right port.  
 
-Az alábbi ábrán például az azonos adatokra épülő két fürtözött modell eredményeinek összehasonlítása, de különböző paraméterekkel.  
+For example, the following image represents a comparison of results from two clustering models that were built on the same data, but with different parameters.  
 
-![PÉNZMOSÁS&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
 
-Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
+Because this is a clustering model, the evaluation results are different than if you compared scores from two regression models, or compared two classification models. However, the overall presentation is the same. 
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
-Ez a szakasz a **kiértékelési modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
+This section describes the metrics returned for the specific types of models supported for use with **Evaluate Model**:
 
-+ [besorolási modellek](#bkmk_classification)
-+ [regressziós modellek](#bkmk_regression)
++ [classification models](#bkmk_classification)
++ [regression models](#bkmk_regression)
 
-###  <a name="bkmk_classification"></a>Besorolási modellek metrikái
+###  <a name="bkmk_classification"></a> Metrics for classification models
 
-A következő metrikákat kell jelenteni a besorolási modellek kiértékelése során. Ha összehasonlítja a modelleket, azokat a kiértékeléshez kiválasztott metrika rangsorolja.  
+The following metrics are reported when evaluating classification models. If you compare models, they are ranked by the metric you select for evaluation.  
   
--   A **pontosság** a besorolási modell jóságát méri az igaz eredményeknek az összes esethez viszonyított arányában.  
+-   **Accuracy** measures the goodness of a classification model as the proportion of true results to total cases.  
   
--   A **pontosság** a valódi eredmények aránya az összes pozitív eredménynél.  
+-   **Precision** is the proportion of true results over all positive results.  
   
--   A **visszahívás** a modell által visszaadott összes helyes eredmény hányada.  
+-   **Recall** is the fraction of all correct results returned by the model.  
   
--   Az **f-score** kiszámítása a pontosság súlyozott átlagát és a 0 és 1 közötti visszahívást, ahol az ideális F-score értéke 1.  
+-   **F-score** is computed as the weighted average of precision and recall between 0 and 1, where the ideal F-score value is 1.  
   
--   A **AUC** méri a görbe alatti terület kirajzolását az y tengelyen található igaz pozitív értékkel, az x tengelyen pedig téves pozitív értéket. Ez a metrika azért hasznos, mert egyetlen számot biztosít, amely lehetővé teszi különböző típusú modellek összehasonlítását.  
+-   **AUC** measures the area under the curve plotted with true positives on the y axis and false positives on the x axis. This metric is useful because it provides a single number that lets you compare models of different types.  
   
-- Az **átlagos napló elvesztése** egy olyan pontszám, amely a helytelen eredményekre vonatkozó büntetés kiértékelésére szolgál. A számítás a két valószínűségi eloszlás közötti különbség – igaz, és a modellben szereplő egyik.  
+- **Average log loss** is a single score used to express the penalty for wrong results. It is calculated as the difference between two probability distributions – the true one, and the one in the model.  
   
-- A **betanítási naplók elvesztésének** egyetlen pontszáma, amely az osztályozó előnyeit jelöli véletlenszerű előrejelzéssel. A napló elvesztése a modell bizonytalanságát méri, ha összehasonlítja az általa az ismert értékekre (a talajjal igaz) vonatkozó valószínűségeket a címkékben. A modell egészére vonatkozóan szeretné csökkenteni a napló elvesztését.
+- **Training log loss** is a single score that represents the advantage of the classifier over a random prediction. The log loss measures the uncertainty of your model by comparing the probabilities it outputs to the known values (ground truth) in the labels. You want to minimize log loss for the model as a whole.
 
-##  <a name="bkmk_regression"></a>Regressziós modellek metrikái
+##  <a name="bkmk_regression"></a> Metrics for regression models
  
-A regressziós modellekhez visszaadott metrikák általában a hibák mennyiségének becslésére lettek kialakítva.  A modell akkor tekinthető megfelelőnek, ha a megfigyelt és az előre jelzett értékek közötti különbség kicsi. A maradékok mintázatának (az egy előre jelzett pont és a hozzá tartozó tényleges érték közötti különbség) megvizsgálása azonban sokat jelenthet a modell lehetséges torzításával kapcsolatban.  
+The metrics returned for regression models are designed to estimate the amount of error.  A model is considered to fit the data well if the difference between observed and predicted values is small. However, looking at the pattern of the residuals (the difference between any one predicted point and its corresponding actual value) can tell you a lot about potential bias in the model.  
   
- A regressziós modellek kiértékeléséhez a következő metrikákat kell jelenteni. A modellek összehasonlításakor a rendszer a kiértékeléshez kiválasztott mérőszám alapján rangsorolja azokat.  
+ The following metrics are reported for evaluating regression models. When you compare models, they are ranked by the metric you select for evaluation.  
   
-- Az **átlagos abszolút hiba (Mae)** méri, hogy az előrejelzések hogyan zárulnak le a tényleges eredményekhez képest. így jobb az alacsonyabb pontszám.  
+- **Mean absolute error (MAE)** measures how close the predictions are to the actual outcomes; thus, a lower score is better.  
   
-- A **legfelső szintű középre állított hiba (gyökátlagos)** egyetlen értéket hoz létre, amely összegzi a modellben található hibát. A különbség négyszögesítése a metrika figyelmen kívül hagyja a túlzott előrejelzés és az előrejelzés közötti különbséget.  
+- **Root mean squared error (RMSE)** creates a single value that summarizes the error in the model. By squaring the difference, the metric disregards the difference between over-prediction and under-prediction.  
   
-- **Relatív abszolút hiba (Rae)** a várt és a tényleges értékek közötti relatív abszolút különbség; relatív, mert az átlagos különbség a számtani középérték alapján oszlik meg.  
+- **Relative absolute error (RAE)** is the relative absolute difference between expected and actual values; relative because the mean difference is divided by the arithmetic mean.  
   
-- A **relatív négyzetes hiba (RSE)** hasonló módon normalizálja az előre jelzett értékek teljes négyzetes hibáját azáltal, hogy a tényleges értékek teljes négyzetes hibáját választja.  
+- **Relative squared error (RSE)** similarly normalizes the total squared error of the predicted values by dividing by the total squared error of the actual values.  
   
-- **Nulla egy hiba (MZOE)** azt jelzi, hogy az előrejelzés helyes-e vagy sem.  Más szóval: `ZeroOneLoss(x,y) = 1`, ha `x!=y`; Ellenkező esetben `0`.
+- **Mean Zero One Error (MZOE)** indicates whether the prediction was correct or not.  In other words: `ZeroOneLoss(x,y) = 1` when `x!=y`; otherwise `0`.
   
-- A **meghatározási együttható**(más néven R<sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
+- **Coefficient of determination**, often referred to as R<sup>2</sup>, represents the predictive power of the model as a value between 0 and 1. Zero means the model is random (explains nothing); 1 means there is a perfect fit. However, caution should be used in interpreting  R<sup>2</sup> values, as low values can be entirely normal and high values can be suspect.
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+See the [set of modules available](module-reference.md) to Azure Machine Learning. 

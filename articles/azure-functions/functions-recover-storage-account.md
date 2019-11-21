@@ -1,95 +1,89 @@
 ---
-title: A Azure Functions-futtatókörnyezet hibáinak megoldása nem érhető el.
-description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fiókot.
-services: functions
-documentationcenter: ''
+title: How to troubleshoot Azure Functions Runtime is unreachable.
+description: Learn how to troubleshoot an invalid storage account.
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
-ms.service: azure-functions
-ms.workload: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: d5959acc7719e2b02d529bca8261bc09d5b93634
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085327"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226761"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>A "functions Runtime nem érhető el" hibáinak megoldása
+# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>How to troubleshoot "functions runtime is unreachable"
 
 
-## <a name="error-text"></a>Hiba szövege
-Ez a dokumentum a functions portálon megjelenő következő hiba megoldására szolgál.
+## <a name="error-text"></a>Error text
+This doc is intended to troubleshoot the following error when displayed in the Functions portal.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>Összegzés
-Ez a probléma akkor fordul elő, ha a Azure Functions-futtatókörnyezet nem indítható el. Ennek a hibának a leggyakoribb oka az, hogy a Function alkalmazás elveszíti a hozzáférést a Storage-fiókjához. [A Storage-fiókra vonatkozó követelményekről itt olvashat bővebben](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+### <a name="summary"></a>Összefoglalás
+This issue occurs when the Azure Functions Runtime cannot start. The most common reason for this error to occur is the function app losing access to its storage account. [Read more about the storage account requirements here](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
-### <a name="troubleshooting"></a>Hibaelhárítás
-Elsajátítjuk a négy leggyakoribb hibát, az egyes esetek azonosítását és megoldását.
+### <a name="troubleshooting"></a>Hibakeresés
+We'll walk through the four most common error cases, how to identify, and how to resolve each case.
 
-1. Storage-fiók törölve
-1. A Storage-fiók alkalmazásának beállításai törölve
-1. A Storage-fiók hitelesítő adatai érvénytelenek
-1. A Storage-fiók nem érhető el
-1. Napi végrehajtási kvóta megtelt
+1. Storage Account deleted
+1. Storage Account application settings deleted
+1. Storage Account credentials invalid
+1. Storage Account Inaccessible
+1. Daily Execution Quota Full
 
-## <a name="storage-account-deleted"></a>Storage-fiók törölve
+## <a name="storage-account-deleted"></a>Storage account deleted
 
-Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törölve lett, a függvény nem fog működni.
+Every function app requires a storage account to operate. If that account is deleted your Function will not work.
 
-### <a name="how-to-find-your-storage-account"></a>A Storage-fiók megkeresése
+### <a name="how-to-find-your-storage-account"></a>How to find your storage account
 
-Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage` Vagy`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a tartalmazni fogja a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További részletek az [Alkalmazásbeállítások referenciájában itt](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage) olvashatók
+Start by looking up your storage account name in your Application Settings. Either `AzureWebJobsStorage` or `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` will contain the name of your storage account wrapped up in a connection string. Read more specifics at the [application setting reference here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 
-Keresse meg a Storage-fiókját a Azure Portalban, és ellenőrizze, hogy még létezik-e. Ha törölték, újra létre kell hoznia egy Storage-fiókot, és cserélnie kell a Storage-kapcsolódási karakterláncokat. A függvény kódja elveszett, és újra kell telepíteni újra.
+Search for your storage account in the Azure portal to see if it still exists. If it has been deleted, you will need to recreate a storage account and replace your storage connection strings. Your function code is lost and you will need to redeploy it again.
 
-## <a name="storage-account-application-settings-deleted"></a>A Storage-fiók alkalmazásának beállításai törölve
+## <a name="storage-account-application-settings-deleted"></a>Storage account application settings deleted
 
-Az előző lépésben, ha nem rendelkezik a Storage-fiókhoz tartozó kapcsolatok karakterláncával, valószínűleg törölték vagy felülírták őket. Az Alkalmazásbeállítások törlésére leggyakrabban az üzembehelyezési pontok használatakor vagy Azure Resource Manager parancsfájlokban van szükség az alkalmazás beállításainak megadásához.
+In the previous step, if you did not have a storage account connection string they were likely deleted or overwritten. Deleting app settings is most commonly done when using deployment slots or Azure Resource Manager scripts to set application settings.
 
-### <a name="required-application-settings"></a>Szükséges Alkalmazásbeállítások
+### <a name="required-application-settings"></a>Required application settings
 
-* Kötelező
+* Szükséges
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* A felhasználási terv funkcióihoz szükséges
+* Required for Consumption Plan Functions
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Az Alkalmazásbeállítások itt olvashatók](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Read about these application settings here](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Útmutatás
+### <a name="guidance"></a>Segédletek
 
-* Ezen beállítások bármelyike esetében ne a "tárolóhely beállítása" beállítást. Az üzembe helyezési pontok cseréjekor a függvény megtöri.
-* Ezeket a beállításokat ne módosítsa automatikus központi telepítések részeként.
-* Ezeket a beállításokat meg kell adni, és érvényesnek kell lenniük a létrehozáskor. Egy automatikus központi telepítés, amely nem tartalmazza ezeket a beállításokat, nem működőképes alkalmazást eredményez, még akkor is, ha a beállításokat a tény után adja hozzá a rendszer.
+* Do not check "slot setting" for any of these settings. When you swap deployment slots the Function will break.
+* Do not modify these settings as part of automated deployments.
+* These settings must be provided and valid at creation time. An automated deployment that does not contain these settings will result in a non-functional App, even if the settings are added after the fact.
 
-## <a name="storage-account-credentials-invalid"></a>A Storage-fiók hitelesítő adatai érvénytelenek
+## <a name="storage-account-credentials-invalid"></a>Storage account credentials invalid
 
-A tárolási kulcsok újragenerálása esetén frissíteni kell a fenti Storage-fiókhoz tartozó kapcsolatok karakterláncait. [További információ a Storage Key managementről](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+The above Storage Account connection strings must be updated if you regenerate storage keys. [Read more about storage key management here](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
-## <a name="storage-account-inaccessible"></a>A Storage-fiók nem érhető el
+## <a name="storage-account-inaccessible"></a>Storage account inaccessible
 
-A függvényalkalmazásnak képesnek kell lennie hozzáférni a Storage-fiókhoz. A Storage-fiókhoz való hozzáférést blokkoló gyakori problémák a következők:
+Your Function App must be able to access the storage account. Common issues that block a Functions access to a storage account are:
 
-* A App Service környezetekben üzembe helyezett alkalmazások a megfelelő hálózati szabályok nélkül, a Storage-fiók felé irányuló és onnan érkező forgalom engedélyezéséhez.
-* A Storage-fiók tűzfala engedélyezve van, és nincs konfigurálva a függvények felé irányuló és onnan érkező forgalom engedélyezéséhez. [További információ a Storage-fiók tűzfalának konfigurálásáról](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Function Apps deployed to App Service Environments without the correct network rules to allow traffic to and from the storage account
+* The storage account firewall is enabled and not configured to allow traffic to and from Functions. [Read more about storage account firewall configuration here](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
-## <a name="daily-execution-quota-full"></a>Napi végrehajtási kvóta megtelt
+## <a name="daily-execution-quota-full"></a>Daily Execution Quota Full
 
-Ha a napi végrehajtási kvóta konfigurálva van, a függvényalkalmazás átmenetileg le lesz tiltva, és számos portál vezérlő elérhetetlenné válik. 
+If you have a Daily Execution Quota configured, your Function App will be temporarily disabled and many of the portal controls will become unavailable. 
 
-* Az ellenőrzéshez jelölje be a platform szolgáltatásai > függvényalkalmazás beállítások a portálon című részt. A következő üzenet jelenik meg, ha túllépi a kvótát
+* To verify, check open Platform Features > Function App Settings in the portal. You will see the following message if you are over quota
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Távolítsa el a kvótát, és indítsa újra az alkalmazást a probléma megoldásához.
+* Remove the quota and restart your app to resolve the issue.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy a függvényalkalmazás visszatért és működőképes, tekintse át a gyors üzembe helyezést és a fejlesztői referenciákat, amelyekkel újra megkezdheti a munkát.
+Now that your Function App is back and operational take a look at our quickstarts and developer references to get up and running again!
 
 * [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)  
   Lásson azonnal munkához, és hozza létre az első függvényét az Azure Functions gyorsindítójával. 

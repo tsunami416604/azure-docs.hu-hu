@@ -1,20 +1,20 @@
 ---
 title: Sablonfüggvények
-description: A Azure Resource Manager-sablonban az értékek beolvasására, a karakterláncok és a numerikus karakterek használatára, valamint az üzembe helyezési adatok lekérésére használt függvények leírását ismerteti.
+description: Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: a9501517672d3ea80a29979ce6b1439c4cc0010e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/19/2019
+ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150656"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224178"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager sablon függvények
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
 
-Ez a cikk a Azure Resource Manager-sablonokban használható összes funkciót ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](template-expressions.md).
+This article describes all the functions you can use in an Azure Resource Manager template. For information about using functions in your template, see [template syntax](template-expressions.md).
 
-Saját függvények létrehozásához tekintse meg a [felhasználó által definiált függvények](resource-group-authoring-templates.md#functions)című témakört.
+To create your own functions, see [User-defined functions](resource-group-authoring-templates.md#functions).
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,7 +35,7 @@ Saját függvények létrehozásához tekintse meg a [felhasználó által defin
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Tömb- és objektumfüggvények
-A Resource Manager számos funkciót biztosít a tömbök és objektumok használatához.
+Resource Manager provides several functions for working with arrays and objects.
 
 * [array](resource-group-template-functions-array.md#array)
 * [coalesce](resource-group-template-functions-array.md#coalesce)
@@ -47,7 +47,7 @@ A Resource Manager számos funkciót biztosít a tömbök és objektumok haszná
 * [intersection](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
-* [Hossza](resource-group-template-functions-array.md#length)
+* [length](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [range](resource-group-template-functions-array.md#range)
@@ -62,10 +62,10 @@ A Resource Manager számos funkciót biztosít a tömbök és objektumok haszná
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Összehasonlító függvények
-A Resource Manager számos funkciót biztosít a sablonokban való összehasonlításhoz.
+Resource Manager provides several functions for making comparisons in your templates.
 
 * [equals](resource-group-template-functions-comparison.md#equals)
-* [kisebb](resource-group-template-functions-comparison.md#less)
+* [less](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
 * [greater](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
@@ -74,10 +74,11 @@ A Resource Manager számos funkciót biztosít a sablonokban való összehasonl�
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Központi telepítési érték függvények
-A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
+## <a name="deployment-value-functions"></a>Deployment value functions
+Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
 
-* [telepítési](resource-group-template-functions-deployment.md#deployment)
+* [deployment](resource-group-template-functions-deployment.md#deployment)
+* [environment](resource-group-template-functions-deployment.md#environment)
 * [paraméterek](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 
@@ -88,7 +89,7 @@ A Resource Manager a következő függvényeket biztosítja a sablon és a telep
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Logikai függvények
-A Resource Manager a következő funkciókat biztosítja a logikai feltételekkel való együttműködéshez:
+Resource Manager provides the following functions for working with logical conditions:
 
 * [and](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
@@ -108,7 +109,7 @@ A Resource Manager a következő funkciókat biztosítja a logikai feltételekke
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Numerikus függvények
-A Resource Manager a következő függvényeket biztosítja az egész számokkal való használathoz:
+Resource Manager provides the following functions for working with integers:
 
 * [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
@@ -133,14 +134,14 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Erőforrásfüggvények
-Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolvasása:
+Resource Manager provides the following functions for getting resource values:
 
 * [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [listkeys műveletének](resource-group-template-functions-resource.md#listkeys)
+* [listKeys](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [lista *](resource-group-template-functions-resource.md#list)
-* [Szolgáltatók](resource-group-template-functions-resource.md#providers)
+* [list*](resource-group-template-functions-resource.md#list)
+* [providers](resource-group-template-functions-resource.md#providers)
 * [reference](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
 * [resourceId](resource-group-template-functions-resource.md#resourceid)
@@ -180,7 +181,7 @@ Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolv
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Sztringfüggvények
-A Resource Manager a következő függvényeket biztosítja a karakterláncok használatához:
+Resource Manager provides the following functions for working with strings:
 
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
@@ -197,12 +198,12 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [Hossza](resource-group-template-functions-string.md#length)
+* [length](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
-* [split](resource-group-template-functions-string.md#split)
+* [felosztás](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
 * [string](resource-group-template-functions-string.md#string)
 * [substring](resource-group-template-functions-string.md#substring)
@@ -216,9 +217,9 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Azure Resource Manager sablonban található részekről a következő témakörben talál leírást: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md)
-* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](resource-group-linked-templates.md) című témakört.
-* Ha meg szeretné ismételni a megadott számú alkalommal egy erőforrás-típus létrehozásakor, tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](resource-group-create-multiple.md) című témakört.
-* A létrehozott sablon üzembe helyezéséről lásd: [alkalmazás központi telepítése Azure Resource Manager sablonnal](resource-group-template-deploy.md)
+* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
+* To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
+* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
+* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)

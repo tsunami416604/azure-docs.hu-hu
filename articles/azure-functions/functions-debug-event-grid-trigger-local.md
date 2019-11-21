@@ -1,116 +1,111 @@
 ---
-title: Azure Functions Event Grid helyi hibakeresés
-description: Ismerkedjen meg a Event Grid esemény által aktivált Azure-függvények hibakeresésével
-services: functions
-documentationcenter: na
+title: Azure Functions Event Grid local debugging
+description: Learn to locally debug Azure functions triggered by an Event Grid event
 author: craigshoemaker
-manager: gwallace
-keywords: Azure functions, functions, kiszolgáló nélküli architektúra
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: e28abbe8d44094d8599545479f4611a84e9d9bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085694"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227068"
 ---
-# <a name="azure-function-event-grid-trigger-local-debugging"></a>Az Azure Function Event Grid helyi hibakeresést indít
+# <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Function Event Grid Trigger Local Debugging
 
-Ez a cikk bemutatja, hogyan lehet hibakeresést végezni egy helyi függvényben, amely egy Storage-fiók által kiváltott Azure Event Grid eseményt kezeli. 
+This article demonstrates how to debug a local function that handles an Azure Event Grid event raised by a storage account. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Meglévő Function-alkalmazás létrehozása vagy használata
-- Meglévő Storage-fiók létrehozása vagy használata
-- A [ngrok](https://ngrok.com/) letöltése lehetővé teszi, hogy az Azure meghívja a helyi függvényt
+- Create or use an existing function app
+- Create or use an existing storage account
+- Download [ngrok](https://ngrok.com/) to allow Azure to call your local function
 
 ## <a name="create-a-new-function"></a>Új függvény létrehozása
 
-Nyissa meg a Function alkalmazást a Visual Studióban, majd kattintson a jobb gombbal a projekt nevére a Megoldáskezelő, majd kattintson a **> új Azure-függvény hozzáadása**lehetőségre.
+Open your function app in Visual Studio and, right-click on the project name in the Solution Explorer and click **Add > New Azure Function**.
 
-Az *új Azure-függvény* ablakban válassza ki **Event Grid triggert** , majd kattintson **az OK**gombra.
+In the *New Azure Function* window, select **Event Grid trigger** and click **OK**.
 
 ![Új függvény létrehozása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
-A függvény létrehozása után nyissa meg a fájlt, és másolja ki a fájl elejére írt URL-címet. Ez a hely a Event Grid trigger konfigurálásakor használatos.
+Once the function is created, open the code file and copy the URL commented out at the top of the file. This location is used when configuring the Event Grid trigger.
 
-![Másolás helye](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
+![Copy location](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Ezután állítson be egy töréspontot a kezdetű `log.LogInformation`sorban.
+Then, set a breakpoint on the line that begins with `log.LogInformation`.
 
-![Töréspont beállítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
+![Set breakpoint](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
 
-Ezután **nyomja le az F5** billentyűt a hibakeresési munkamenet elindításához.
+Next, **press F5** to start a debugging session.
 
-## <a name="allow-azure-to-call-your-local-function"></a>A helyi függvény meghívásának engedélyezése az Azure számára
+## <a name="allow-azure-to-call-your-local-function"></a>Allow Azure to call your local function
 
-Ha egy, a gépen fellépő függvényt szeretne áttörni, engedélyeznie kell az Azure-nak, hogy kommunikáljon a helyi függvénnyel a felhőből.
+To break into a function being debugged on your machine, you must enable a way for Azure to communicate with your local function from the cloud.
 
-A [ngrok](https://ngrok.com/) segédprogram lehetővé teszi az Azure számára a gépen futó függvény meghívását. Indítsa el a *ngrok* a következő parancs használatával:
+The [ngrok](https://ngrok.com/) utility provides a way for Azure to call the function running on your machine. Start *ngrok* using the following command:
 
 ```bash
 ngrok http -host-header=localhost 7071
 ```
-A segédprogram beállításakor a parancsablakban a következő képernyőképhez hasonlóan kell kinéznie:
+As the utility is set up, the command window should look similar to the following screenshot:
 
-![Ngrok elindítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Start ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
-Másolja a *ngrok* futtatásakor generált **https** URL-címet. Ez az érték az Event Grid-esemény végpontjának konfigurálásakor használatos.
+Copy the **HTTPS** URL generated when *ngrok* is run. This value is used when configuring the event grid event endpoint.
 
-## <a name="add-a-storage-event"></a>Tárolási esemény hozzáadása
+## <a name="add-a-storage-event"></a>Add a storage event
 
-Nyissa meg a Azure Portal, és navigáljon egy Storage-fiókhoz, és kattintson az **események** lehetőségre.
+Open the Azure portal and navigate to a storage account and click on the **Events** option.
 
-![Storage-fiók eseményének hozzáadása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
+![Add storage account event](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-Az *események* ablakban kattintson az **esemény-előfizetés** gombra. A *páros előfizetés* ablakban kattintson a *végpont típusa* legördülő menüre, és válassza a **web Hook**elemet.
+In the *Events* window, click on the **Event Subscription** button. In the *Even Subscription* window, click on the *Endpoint Type* dropdown and select **Web Hook**.
 
-![Előfizetés típusának kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
+![Select subscription type](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
-A végpont típusának konfigurálása után kattintson a végpont **kiválasztása** lehetőségre a végpont értékének konfigurálásához.
+Once the endpoint type is configured, click on **Select an endpoint** to configure the endpoint value.
 
-![Végpont típusának kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
+![Select endpoint type](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-Az *előfizetői végpont* értéke három különböző értékből áll. Az előtag a *ngrok*által generált HTTPS URL-cím. Az URL-cím hátralévő része a függvény kódlapja fájljában található URL-címről származik, és a függvény neve a végén van hozzáadva. A függvény kódjának URL-címétől kezdve a *ngrok* URL-címe `http://localhost:7071` és `{functionname}`a függvény neve lecserélve.
+The *Subscriber Endpoint* value is made up from three different values. The prefix is the HTTPS URL generated by *ngrok*. The  remainder of the URL comes from the URL found in the function code file, with the function name added at the end. Starting with the URL from the function code file, the *ngrok* URL replaces `http://localhost:7071` and the function name replaces `{functionname}`.
 
-A következő képernyőképen a végső URL-cím jelenik meg:
+The following screenshot shows how the final URL should look:
 
-![Végpont kiválasztása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
+![Endpoint selection](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-Miután megadta a megfelelő értéket, kattintson a **kijelölés megerősítése**gombra.
+Once you've entered the appropriate value, click **Confirm Selection**.
 
 > [!IMPORTANT]
-> A *ngrok*minden indításakor újra LÉTREJÖN a HTTPS URL-cím, és megváltozik az érték. Ezért minden alkalommal létre kell hoznia egy új esemény-előfizetést, amikor a *ngrok*-on keresztül teszi elérhetővé az Azure-t.
+> Every time you start *ngrok*, the HTTPS URL is regenerated and the value changes. Therefore you must create a new Event Subscription each time you expose your function to Azure via *ngrok*.
 
 ## <a name="upload-a-file"></a>Fájl feltöltése
 
-Most feltölthet egy fájlt a Storage-fiókjába, hogy elindítson egy Event Grid eseményt a helyi függvénynek a kezeléséhez. 
+Now you can upload a file to your storage account to trigger an Event Grid event for your local function to handle. 
 
-Nyissa meg [Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) , és kapcsolódjon a Storage-fiókjához. 
+Open [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) and connect to the your storage account. 
 
-- **Blob** -tárolók kibontása 
-- Kattintson a jobb gombbal, majd válassza a **blob-tároló létrehozása**lehetőséget.
-- A tároló **tesztelésének** neve
-- Válassza ki a *teszt* tárolót
-- Kattintson a **feltöltés** gombra
-- Kattintson a **fájlok feltöltése** elemre.
-- Válasszon ki egy fájlt, és töltse fel a blob-tárolóba.
+- Expand **Blob Containers** 
+- Right-click and select **Create Blob Container**.
+- Name the container **test**
+- Select the *test* container
+- Click the **Upload** button
+- Click **Upload Files**
+- Select a file and upload it to the blob container
 
-## <a name="debug-the-function"></a>A függvény hibakeresése
+## <a name="debug-the-function"></a>Debug the function
 
-Miután a Event Grid felismerte, hogy a rendszer feltölt egy új fájlt a Storage-tárolóba, a rendszer a helyi függvényben megnyomja a töréspontot.
+Once the Event Grid recognizes a new file is uploaded to the storage container, the break point is hit in your local function.
 
-![Ngrok elindítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
+![Start ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A cikkben létrehozott erőforrások törléséhez törölje a tároló-fiókban található **teszt** tárolót.
+To clean up the resources created in this article, delete the **test** container in your storage account.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md)
-- [Azure Functions Event Grid trigger](./functions-bindings-event-grid.md)
+- [Event Grid trigger for Azure Functions](./functions-bindings-event-grid.md)
