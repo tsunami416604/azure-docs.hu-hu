@@ -1,41 +1,37 @@
 ---
-title: Fejlesztői útmutató a tartós entitásokhoz a .NET-Azure Functions
-description: A tartós entitások használata a .NET-ben a Azure Functions Durable Functions bővítménnyel.
-services: functions
+title: Developer's Guide to Durable Entities in .NET - Azure Functions
+description: How to work with durable entities in .NET with the Durable Functions extension for Azure Functions.
 author: sebastianburckhardt
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 74b013c9953974371957cc4d88439d20770d78a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904065"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231431"
 ---
-# <a name="developers-guide-to-durable-entities-in-net"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben
+# <a name="developers-guide-to-durable-entities-in-net"></a>Developer's guide to durable entities in .NET
 
-Ebben a cikkben a tartós entitások .NET-tel való fejlesztéséhez rendelkezésre álló interfészeket ismertetjük részletesen, például példákat és általános tanácsokat. 
+In this article, we describe the available interfaces for developing durable entities with .NET in detail, including examples and general advice. 
 
-Az Entity functions lehetővé teszi a kiszolgáló nélküli alkalmazások fejlesztői számára, hogy az alkalmazás állapotát részletes entitások gyűjteményének megfelelően szervezze. A mögöttes fogalmakkal kapcsolatos további információkért tekintse meg a [tartós entitások: fogalmakat](durable-functions-entities.md) ismertető cikket.
+Entity functions provide serverless application developers with a convenient way to organize application state as a collection of fine-grained entities. For more detail about the underlying concepts, see the [Durable Entities: Concepts](durable-functions-entities.md) article.
 
-Jelenleg két API-t kínálunk az entitások definiálásához:
+We currently offer two APIs for defining entities:
 
-- Az **osztály-alapú szintaxis** az entitásokat és a műveleteket osztályként és metódusként jelöli. Ez a szintaxis egyszerűen olvasható kódot hoz létre, és lehetővé teszi, hogy a műveletek típussal ellenőrzött módon legyenek meghívva az interfészeken keresztül. 
+- The **class-based syntax** represents entities and operations as classes and methods. This syntax produces easily readable code and allows operations to be invoked in a type-checked manner through interfaces. 
 
-- A **függvény-alapú szintaxis** egy alacsonyabb szintű felület, amely függvényekként jelöli meg az entitásokat. Részletesen szabályozhatja az entitások műveleteinek elküldését, valamint az entitás állapotának kezelését.  
+- The **function-based syntax** is a lower-level interface that represents entities as functions. It provides precise control over how the entity operations are dispatched, and how the entity state is managed.  
 
-Ez a cikk elsősorban az osztályon alapuló szintaxisra összpontosít, mivel a legtöbb alkalmazáshoz jobban alkalmazkodik. A [függvény-alapú szintaxis](#function-based-syntax) azonban megfelelő lehet azon alkalmazások esetében, amelyek az entitás állapotának és műveleteinek saját absztrakcióit szeretnék meghatározni vagy kezelni. Emellett érdemes lehet olyan kódtárakat megvalósítani, amelyek a Class-alapú szintaxis által jelenleg nem támogatott általános feltételt igényelnek. 
+This article focuses primarily on the class-based syntax, as we expect it to be better suited for most applications. However, the [function-based syntax](#function-based-syntax) may be appropriate for applications that wish to define or manage their own abstractions for entity state and operations. Also, it may be appropriate for implementing libraries that require genericity not currently supported by the class-based syntax. 
 
 > [!NOTE]
-> Az osztály-alapú szintaxis csak a függvény-alapú szintaxison felüli réteg, így mindkét változat egyszerre használható ugyanazon az alkalmazásban. 
+> The class-based syntax is just a layer on top of the function-based syntax, so both variants can be used interchangeably in the same application. 
  
-## <a name="defining-entity-classes"></a>Entitás-osztályok definiálása
+## <a name="defining-entity-classes"></a>Defining entity classes
 
-Az alábbi példa egy olyan `Counter` entitás implementációja, amely egyetlen, egész típusú értéket tárol, és négy műveletet biztosít `Add`, `Reset`, `Get`és `Delete`.
+The following example is an implementation of a `Counter` entity that stores a single value of type integer, and offers four operations `Add`, `Reset`, `Get`, and `Delete`.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -71,38 +67,38 @@ public class Counter
 }
 ```
 
-A `Run` függvény tartalmazza az osztály-alapú szintaxis használatához szükséges kiírást. *Statikus* Azure-függvénynek kell lennie. Egyszer végrehajtja az entitás által feldolgozott összes műveleti üzenet esetében. Ha `DispatchAsync<T>`, és az entitás még nincs a memóriában, egy `T` típusú objektumot hoz létre, és feltölti a mezőket a tárolóban található utolsó megőrzött JSON-ből (ha van ilyen). Ezután meghívja a metódust a megfelelő névvel.
+The `Run` function contains the boilerplate required for using the class-based syntax. It must be a *static* Azure Function. It executes once for each operation message that is processed by the entity. When `DispatchAsync<T>` is called and the entity isn't already in memory, it constructs an object of type `T` and populates its fields from the last persisted JSON found in storage (if any). Then it invokes the method with the matching name.
 
 > [!NOTE]
-> Az osztály alapú entitások állapota **implicit módon jön létre** , mielőtt az entitás feldolgoz egy műveletet, és a `Entity.Current.DeleteState()`meghívásával **explicit módon törölhető** egy műveletben.
+> The state of a class-based entity is **created implicitly** before the entity processes an operation, and can be **deleted explicitly** in an operation by calling `Entity.Current.DeleteState()`.
 
-### <a name="class-requirements"></a>Osztályra vonatkozó követelmények
+### <a name="class-requirements"></a>Class Requirements
  
-Az entitás-osztályok a POCOs (egyszerű CLR-objektumok), amelyek nem igényelnek különleges szuperosztály, illesztőfelület vagy attribútum használatát. Azonban
+Entity classes are POCOs (plain old CLR objects) that require no special superclasses, interfaces, or attributes. However:
 
-- Az osztálynak szerkeszthető kell lennie (lásd: [entitások építése](#entity-construction)).
-- Az osztálynak JSON-szerializálható kell lennie (lásd: [entitás szerializálása](#entity-serialization)).
+- The class must be constructible (see [Entity construction](#entity-construction)).
+- The class must be JSON-serializable (see [Entity serialization](#entity-serialization)).
 
-Emellett a műveletnek meghívott bármely módszernek meg kell felelnie a további követelményeknek:
+Also, any method that is intended to be invoked as an operation must satisfy additional requirements:
 
-- Egy műveletnek legfeljebb egy argumentummal kell rendelkeznie, és nem tartalmazhat túlterhelést vagy általános típusú argumentumot.
-- Egy illesztőfelületet használó munkafolyamatnak `Task` vagy `Task<T>`kell visszaadnia.
-- Az argumentumoknak és a visszatérési értékeknek szerializálható értékeknek vagy objektumoknak kell lenniük.
+- An operation must have at most one argument, and must not have any overloads or generic type arguments.
+- An operation meant to be called from an orchestration using an interface must return `Task` or `Task<T>`.
+- Arguments and return values must be serializable values or objects.
 
-### <a name="what-can-operations-do"></a>Milyen műveleteket végezhetnek el?
+### <a name="what-can-operations-do"></a>What can operations do?
 
-Az entitások összes művelete képes olvasni és frissíteni az entitás állapotát, és az állapot változásai automatikusan megmaradnak a tárolóban. Emellett a műveletek külső I/O-vagy egyéb számításokat is végezhetnek az általános korlátokon belül az összes Azure Functions.
+All entity operations can read and update the entity state, and changes to the state are automatically persisted to storage. Moreover, operations can perform external I/O or other computations, within the general limits common to all Azure Functions.
 
-A műveletek a `Entity.Current` környezet által biztosított funkciókhoz is hozzáférhetnek:
+Operations also have access to functionality provided by the `Entity.Current` context:
 
-* `EntityName`: az aktuálisan végrehajtó entitás neve.
-* `EntityKey`: a jelenleg végrehajtó entitás kulcsa.
-* `EntityId`: a jelenleg végrehajtó entitás azonosítója (tartalmazza a nevet és a kulcsot).
-* `SignalEntity`: egyirányú üzenet küldése egy entitásnak.
-* `CreateNewOrchestration`: új előkészítést indít el.
-* `DeleteState`: törli az entitás állapotát.
+* `EntityName`: the name of the currently executing entity.
+* `EntityKey`: the key of the currently executing entity.
+* `EntityId`: the ID of the currently executing entity (includes name and key).
+* `SignalEntity`: sends a one-way message to an entity.
+* `CreateNewOrchestration`: starts a new orchestration.
+* `DeleteState`: deletes the state of this entity.
 
-Például módosíthatjuk a számláló entitást, hogy elindítson egy előkészítést, amikor a számláló eléri a 100-et, és bemeneti argumentumként továbbítja az entitás AZONOSÍTÓját:
+For example, we can modify the counter entity so it starts an orchestration when the counter reaches 100 and passes the entity ID as an input argument:
 
 ```csharp
     public void Add(int amount) 
@@ -115,16 +111,16 @@ Például módosíthatjuk a számláló entitást, hogy elindítson egy előkés
     }
 ```
 
-## <a name="accessing-entities-directly"></a>Entitások közvetlen elérése
+## <a name="accessing-entities-directly"></a>Accessing entities directly
 
-Az osztály-alapú entitások közvetlenül, az entitáshoz és annak műveleteihez explicit karakterlánc-nevek használatával érhetők el. Alább néhány példát láthatunk. az alapul szolgáló fogalmak (például a jelek és hívások) mélyebb magyarázatát lásd: az [Access-entitások](durable-functions-entities.md#access-entities)vitafóruma. 
+Class-based entities can be accessed directly, using explicit string names for the entity and its operations. We provide some examples below; for a deeper explanation of the underlying concepts (such as signals vs. calls) see the discussion in [Access entities](durable-functions-entities.md#access-entities). 
 
 > [!NOTE]
-> Ha lehetséges, az [entitások felületeken keresztüli elérését](#accessing-entities-through-interfaces)javasoljuk, mert több típusú ellenőrzést is biztosít.
+> Where possible, we recommend [Accessing entities through interfaces](#accessing-entities-through-interfaces), because it provides more type checking.
 
-### <a name="example-client-signals-entity"></a>Példa: ügyfél-jelzési entitás
+### <a name="example-client-signals-entity"></a>Example: client signals entity
 
-A következő Azure http-függvény REST-konvenciók használatával valósítja meg a TÖRLÉSi műveletet. Törlési jelet küld a számláló entitásnak, amelynek a kulcsa az URL-cím elérési útja.
+The following Azure Http Function implements a DELETE operation using REST conventions. It sends a delete signal to the counter entity whose key is passed in the URL path.
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -139,9 +135,9 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-### <a name="example-client-reads-entity-state"></a>Példa: ügyfél olvasási entitásának állapota
+### <a name="example-client-reads-entity-state"></a>Example: client reads entity state
 
-A következő Azure http-függvény REST-konvenciók használatával valósítja meg a GET műveletet. Beolvassa a számláló entitás aktuális állapotát, amelynek a kulcsa az URL-cím elérési útja.
+The following Azure Http Function implements a GET operation using REST conventions. It reads the current state of the counter entity whose key is passed in the URL path.
 
 ```csharp
 [FunctionName("GetCounter")]
@@ -157,11 +153,11 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> `ReadEntityStateAsync` által visszaadott objektum csak egy helyi másolat, azaz az entitás állapotának pillanatképe néhány korábbi időpontból. Különösen előfordulhat, hogy elavult, és ennek az objektumnak a módosítása nem befolyásolja az aktuális entitást. 
+> The object returned by `ReadEntityStateAsync` is just a local copy, that is, a snapshot of the entity state from some earlier point in time. In particular, it may be stale, and modifying this object has no effect on the actual entity. 
 
-### <a name="example-orchestration-first-signals-then-calls-entity"></a>Példa: első jelek, majd az entitás meghívása
+### <a name="example-orchestration-first-signals-then-calls-entity"></a>Example: orchestration first signals, then calls entity
 
-A következő összehangolás egy számláló entitást jelöl meg a növeléshez, majd meghívja ugyanazt az entitást a legutóbbi érték beolvasásához.
+The following orchestration signals a counter entity to increment it, and then calls the same entity to read its latest value.
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -180,11 +176,11 @@ public static async Task<int> Run(
 }
 ```
 
-## <a name="accessing-entities-through-interfaces"></a>Entitások elérése felületeken keresztül
+## <a name="accessing-entities-through-interfaces"></a>Accessing entities through interfaces
 
-A illesztőfelületek az entitások generált proxy objektumokon keresztül való elérésére használhatók. Ez a módszer biztosítja, hogy egy művelet neve és argumentuma megfelel a megvalósított értékeknek. Ha lehetséges, javasoljuk, hogy használjon felületeket az entitásokhoz való hozzáféréshez.
+Interfaces can be used for accessing entities via generated proxy objects. This approach ensures that the name and argument type of an operation matches what is implemented. We recommend using interfaces for accessing entities whenever possible.
 
-A számláló példáját például a következőképpen módosíthatja:
+For example, we can modify the counter example as follows:
 
 ```csharp
 public interface ICounter
@@ -201,13 +197,13 @@ public class Counter : ICounter
 }
 ```
 
-Az entitás-osztályok és az entitás-illesztőfelületek hasonlóak az [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)által népszerű gabona-és gabona-illesztőfelületekhez. A tartós entitások és a Orleans közötti hasonlóságokkal és különbségekkel kapcsolatos további információkért lásd: [összehasonlítás a virtuális szereplőkkel](durable-functions-entities.md#comparison-with-virtual-actors).
+Entity classes and entity interfaces are similar to the grains and grain interfaces popularized by [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). For a more information about similarities and differences between Durable Entities and Orleans, see [Comparison with virtual actors](durable-functions-entities.md#comparison-with-virtual-actors).
 
-A típusok ellenőrzésének biztosításán kívül a felületek hasznosak lehetnek az alkalmazáson belüli problémáinak jobb elkülönítéséhez. Mivel például egy entitás több felületet is megvalósíthat, egyetlen entitás több szerepkört is kiszolgálhat. Mivel a felületet több entitás is megvalósíthatja, az általános kommunikációs minták újrafelhasználható könyvtárakként is végrehajthatók.
+Besides providing type checking, interfaces are useful for a better separation of concerns within the application. For example, since an entity may implement multiple interfaces, a single entity can serve multiple roles. Also, since an interface may be implemented by multiple entities, general communication patterns can be implemented as reusable libraries.
 
-### <a name="example-client-signals-entity-through-interface"></a>Példa: ügyfél-jeleket kezelő entitás kapcsolaton keresztül
+### <a name="example-client-signals-entity-through-interface"></a>Example: client signals entity through interface
 
-Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` használatával jeleket küldhet a `TEntityInterface`t megvalósító entitásoknak. Például:
+Client code can use `SignalEntityAsync<TEntityInterface>` to send signals to entities that implement `TEntityInterface`. Példa:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -222,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-Ebben a példában a `proxy` paraméter a `ICounter`dinamikusan generált példánya, amely belsőleg lefordítja a hívást, hogy `Delete` egy jel.
+In this example, the `proxy` parameter is a dynamically generated instance of `ICounter`, which internally translates the call to `Delete` into a signal.
 
 > [!NOTE]
-> A `SignalEntityAsync` API-kat csak egyirányú műveletekhez lehet használni. Akkor is, ha egy művelet `Task<T>`ad vissza, a `T` paraméter értéke mindig null vagy `default`lesz, nem pedig a tényleges eredmény.
-Nem érdemes például a `Get` műveletet jelezni, mivel a rendszer nem ad vissza értéket. Ehelyett az ügyfelek a `ReadStateAsync` használatával közvetlenül érhetik el a számláló állapotát, vagy elindíthatnak egy Orchestrator-függvényt, amely meghívja a `Get` műveletet. 
+> The `SignalEntityAsync` APIs can be used only for one-way operations. Even if an operation returns `Task<T>`, the value of the `T` parameter will always be null or `default`, not the actual result.
+For example, it doesn't make sense to signal the `Get` operation, as no value is returned. Instead, clients can use either `ReadStateAsync` to access the counter state directly, or can start an orchestrator function that calls the `Get` operation. 
 
-### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Példa: első jelek, majd az entitás meghívása proxyn keresztül
+### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Example: orchestration first signals, then calls entity through proxy
 
-Ha egy entitást egy előkészítésből szeretne meghívni vagy jelezni, `CreateEntityProxy` használható a csatoló típusával együtt az entitáshoz tartozó proxy létrehozásához. Ez a proxy ezután a következő műveletekkel hívható meg vagy jelezheti a műveleteket:
+To call or signal an entity from within an orchestration, `CreateEntityProxy` can be used, along with the interface type, to generate a proxy for the entity. This proxy can then be used to call or signal operations:
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -250,39 +246,39 @@ public static async Task<int> Run(
 }
 ```
 
-Implicit módon minden `void`t visszaadó művelet jelezve lesz, és minden olyan művelet meghívásra kerül, amely `Task` vagy `Task<T>` ad vissza. Az egyik megváltoztathatja ezt az alapértelmezett viselkedést, és a műveleteket még akkor is megadhatja, ha a `SignalEntity<IInterfaceType>` módszert explicit módon használja.
+Implicitly, any operations that return `void` are signaled, and any operations that return `Task` or `Task<T>` are called. One can change this default behavior, and signal operations even if they return Task, by using the `SignalEntity<IInterfaceType>` method explicitly.
 
-### <a name="shorter-option-for-specifying-the-target"></a>A cél megadásának rövidebb beállítása
+### <a name="shorter-option-for-specifying-the-target"></a>Shorter option for specifying the target
 
-Ha felületet használó entitást hív vagy jelez, az első argumentumnak meg kell adnia a célként megadott entitást. A cél megadható az entitás AZONOSÍTÓjának megadásával, vagy olyan esetekben, amikor csak egy osztály valósítja meg az entitást, csak az Entity (entitás) kulcsot:
+When calling or signaling an entity using an interface, the first argument must specify the target entity. The target can be specified either by specifying the entity ID, or, in cases where there's just one class that implements the entity, just the entity key:
 
 ```csharp
 context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-Ha csak az Entity kulcs van megadva, és a futtatókörnyezetben nem található egyedi implementáció, `InvalidOperationException`. 
+If only the entity key is specified and a unique implementation can't be found at runtime, `InvalidOperationException` is thrown. 
 
-### <a name="restrictions-on-entity-interfaces"></a>Entitás-illesztőfelületek korlátozásai
+### <a name="restrictions-on-entity-interfaces"></a>Restrictions on entity interfaces
 
-A szokásos módon minden paraméter-és visszatérési típusnak JSON-szerializálható kell lennie. Ellenkező esetben a szerializálási kivételeket a rendszer futásidőben kidobja.
+As usual, all parameter and return types must be JSON-serializable. Otherwise, serialization exceptions are thrown at runtime.
 
-Néhány további szabályt is érvénybe léptetett:
-* Az entitás-illesztőfelületeknek csak metódusokat kell meghatározniuk.
-* Az entitás-illesztőfelületek nem tartalmazhatnak általános paramétereket.
-* Az entitás-illesztőfelületi metódusok nem rendelkezhetnek egynél több paraméterrel.
-* Az entitás-illesztőfelületi módszereknek `void`, `Task`vagy `Task<T>` kell visszaadniuk 
+We also enforce some additional rules:
+* Entity interfaces must only define methods.
+* Entity interfaces must not contain generic parameters.
+* Entity interface methods must not have more than one parameter.
+* Entity interface methods must return `void`, `Task`, or `Task<T>` 
 
-Ha a szabályok bármelyike meg van sértve, akkor a rendszer futási időpontot használ, ha a felületet `SignalEntity` vagy `CreateProxy`típusú argumentumként használja `InvalidOperationException`. A kivételt jelző üzenet ismerteti, hogy melyik szabály lett megszakítva.
+If any of these rules are violated, an `InvalidOperationException` is thrown at runtime when the interface is used as a type argument to `SignalEntity` or `CreateProxy`. The exception message explains which rule was broken.
 
 > [!NOTE]
-> `void` visszaadott illesztőfelület-metódusok csak a következő módon szerepelhetnek (egyirányú), nem nevezhető (kétirányú). A `Task` vagy `Task<T>` visszaadó illesztőfelület-metódusok meghívhatók vagy megadhatók. Ha a hívása megtörténik, a művelet eredményét visszaállítják, vagy a művelet által eldobott kivételeket. Ha azonban a jelezve van, nem adják vissza a művelet tényleges eredményét vagy kivételét, de csak az alapértelmezett értéket.
+> Interface methods returning `void` can only be signaled (one-way), not called (two-way). Interface methods returning `Task` or `Task<T>` can be either called or signalled. If called, they return the result of the operation, or re-throw exceptions thrown by the operation. However, when signalled, they do not return the actual result or exception from the operation, but just the default value.
 
-## <a name="entity-serialization"></a>Entitás szerializálása
+## <a name="entity-serialization"></a>Entity serialization
 
-Mivel az entitások állapota tartósan marad, az Entity osztálynak szerializálható kell lennie. Az Durable Functions Runtime erre a célra használja a [JSON.net](https://www.newtonsoft.com/json) könyvtárat, amely számos házirendet és attribútumot támogat a szerializálási és a deszerializálási folyamat szabályozásához. A leggyakrabban használt C# adattípusok (beleértve a tömböket és a gyűjtemény típusát) már szerializálható, és könnyen használhatók a tartós entitások állapotának meghatározásához.
+Since the state of an entity is durably persisted, the entity class must be serializable. The Durable Functions runtime uses the [Json.NET](https://www.newtonsoft.com/json) library for this purpose, which supports a number of policies and attributes to control the serialization and deserialization process. Most commonly used C# data types (including arrays and collection types) are already serializable, and can easily be used for defining the state of durable entities.
 
-A Json.NET például egyszerűen szerializálhatja és deszerializálhatja a következő osztályt:
+For example, Json.NET can easily serialize and deserialize the following class:
 
 ```csharp
 [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -311,13 +307,13 @@ public class User
 }
 ```
 
-### <a name="serialization-attributes"></a>Szerializálási attribútumok
+### <a name="serialization-attributes"></a>Serialization Attributes
 
-A fenti példában úgy döntöttünk, hogy több attribútumot is tartalmaz, amelyek láthatóvá teszik a mögöttes szerializálást:
-- A osztályt megjegyzésekkel láthatjuk `[JsonObject(MemberSerialization.OptIn)]`, hogy emlékeztessen arra, hogy az osztálynak szerializálható kell lennie, és csak olyan tagokat kell megőriznie, amelyek kifejezetten JSON-tulajdonságokkal vannak megjelölve.
--  A megőrzött `[JsonProperty("name")]` mezőket megjegyzésekkel láthatjuk, hogy egy mező a megőrzött entitások állapotának részét képezi, és meg kell határozni a JSON-ábrázolásban használandó tulajdonságnév nevét.
+In the example above, we chose to include several attributes to make the underlying serialization more visible:
+- We annotate the class with `[JsonObject(MemberSerialization.OptIn)]` to remind us that the class must be serializable, and to persist only members that are explicitly marked as JSON properties.
+-  We annotate the fields to be persisted with `[JsonProperty("name")]` to remind us that a field is part of the persisted entity state, and to specify the property name to be used in the JSON representation.
 
-Ezek az attribútumok azonban nem szükségesek; más konvenciók vagy attribútumok akkor is engedélyezettek, ha a Json.NET-mel működnek. Előfordulhat például, hogy az egyik `[DataContract]` attribútumot vagy egyáltalán nem attribútumot használ:
+However, these attributes aren't required; other conventions or attributes are permitted as long as they work with Json.NET. For example, one may use `[DataContract]` attributes, or no attributes at all:
 
 ```csharp
 [DataContract]
@@ -335,29 +331,29 @@ public class Counter
 }
 ```
 
-Alapértelmezés szerint az osztály neve *nem* a JSON-ábrázolás részeként van tárolva: vagyis az alapértelmezett beállításként a `TypeNameHandling.None` használjuk. Ez az alapértelmezett viselkedés felülbírálható `JsonObject` vagy `JsonProperty` attribútumok használatával.
+By default, the name of the class is *not* stored as part of the JSON representation: that is, we use `TypeNameHandling.None` as the default setting. This default behavior can be overridden using `JsonObject` or `JsonProperty` attributes.
 
-### <a name="making-changes-to-class-definitions"></a>Az osztályok definícióinak módosítása
+### <a name="making-changes-to-class-definitions"></a>Making changes to class definitions
 
-Némi gondra van szükség, amikor egy alkalmazás futtatása után módosítja az osztály definícióját, mert a tárolt JSON-objektum már nem felel meg az új osztály definíciójának. Az adatformátumok módosítása azonban gyakran lehetséges, feltéve, hogy az egyik ismeri a `JsonConvert.PopulateObject`által használt deszerializálási folyamatot.
+Some care is required when making changes to a class definition after an application has been run, because the stored JSON object may no longer match the new class definition. Still, it is often possible to deal correctly with changing data formats as long as one understands the deserialization process used by `JsonConvert.PopulateObject`.
 
-Íme néhány példa a változásokra és azok hatására:
+For example, here are some examples of changes and their effect:
 
-1. Ha új tulajdonságot ad hozzá, amely nem szerepel a tárolt JSON-fájlban, akkor a rendszer az alapértelmezett értéket feltételezi.
-1. Ha eltávolít egy tulajdonságot, amely megtalálható a tárolt JSON-fájlban, az előző tartalom elvész.
-1. Ha egy tulajdonságot átneveznek, a hatás ugyanúgy történik, mint ha eltávolítja a régit, és hozzáad egy újat.
-1. Ha a tulajdonság típusa módosítva lett, és a rendszer már nem tudja deszerializálni a tárolt JSON-ből, kivétel keletkezik.
-1. Ha a tulajdonság típusa módosítva van, de továbbra is deszerializálható a tárolt JSON-ból, akkor azt.
+1. If a new property is added, which is not present in the stored JSON, it assumes its default value.
+1. If a property is removed, which is present in the stored JSON, the previous content is lost.
+1. If a property is renamed, the effect is as if removing the old one and adding a new one.
+1. If the type of a property is changed so it can no longer be deserialized from the stored JSON, an exception is thrown.
+1. If the type of a property is changed, but it can still be deserialized from the stored JSON, it will do so.
 
-Számos lehetőség áll rendelkezésre a Json.NET viselkedésének testreszabásához. Ha például egy kivételt szeretne kényszeríteni, ha a tárolt JSON olyan mezőt tartalmaz, amely nem szerepel az osztályban, akkor a `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`attribútumot kell megadnia. Egyéni kódot is írhat a deszerializálás számára, amely tetszőleges formátumban tárolhatja a JSON-t.
+There are many options available for customizing the behavior of Json.NET. For example, to force an exception if the stored JSON contains a field that is not present in the class, specify the attribute `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`. It is also possible to write custom code for deserialization that can read JSON stored in arbitrary formats.
 
-## <a name="entity-construction"></a>Entitások kialakítása
+## <a name="entity-construction"></a>Entity construction
 
-Néha azt szeretnénk, hogy jobban szabályozzák az entitás-objektumok kialakításának módját. Az entitás-objektumok létrehozásakor az alapértelmezett viselkedés módosításának számos beállítását ismertetjük. 
+Sometimes we want to exert more control over how entity objects are constructed. We now describe several options for changing the default behavior when constructing entity objects. 
 
-### <a name="custom-initialization-on-first-access"></a>Egyéni inicializálás az első hozzáféréskor
+### <a name="custom-initialization-on-first-access"></a>Custom initialization on first access
 
-Időnként néhány speciális inicializálást kell végrehajtania, mielőtt egy műveletet egy soha nem elért vagy törölt entitásra hajtanak végre. Ennek a viselkedésnek a megadásához egy feltételt adhat hozzá a `DispatchAsync`előtt:
+Occasionally we need to perform some special initialization before dispatching an operation to an entity that has never been accessed, or that has been deleted. To specify this behavior, one can add a conditional before the `DispatchAsync`:
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -371,11 +367,11 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-### <a name="bindings-in-entity-classes"></a>Kötések az Entity classs szolgáltatásban
+### <a name="bindings-in-entity-classes"></a>Bindings in entity classes
 
-A normál függvényektől eltérően az Entity Class metódusok nem rendelkeznek közvetlen hozzáféréssel a bemeneti és kimeneti kötésekhez. Ehelyett a kötési adatrögzítést a belépési pont függvény deklarációjában kell rögzíteni, majd át kell adni a `DispatchAsync<T>` metódusnak. A rendszer a `DispatchAsync<T>` átadott objektumokat argumentumként automatikusan átadja az entitás osztály konstruktorának.
+Unlike regular functions, entity class methods don't have direct access to input and output bindings. Instead, binding data must be captured in the entry-point function declaration and then passed to the `DispatchAsync<T>` method. Any objects passed to `DispatchAsync<T>` will be automatically passed into the entity class constructor as an argument.
 
-Az alábbi példa azt szemlélteti, hogyan lehet elérhetővé tenni egy `CloudBlobContainer` hivatkozást a [blob bemeneti kötésből](../functions-bindings-storage-blob.md#input) egy osztály alapú entitás számára.
+The following example shows how a `CloudBlobContainer` reference from the [blob input binding](../functions-bindings-storage-blob.md#input) can be made available to a class-based entity.
 
 ```csharp
 public class BlobBackedEntity
@@ -402,11 +398,11 @@ public class BlobBackedEntity
 }
 ```
 
-A Azure Functions-kötésekkel kapcsolatos további információkért tekintse meg a [Azure functions triggerek és kötések](../functions-triggers-bindings.md) dokumentációját.
+For more information on bindings in Azure Functions, see the [Azure Functions Triggers and Bindings](../functions-triggers-bindings.md) documentation.
 
-### <a name="dependency-injection-in-entity-classes"></a>Függőség injekció az Entity classs szolgáltatásban
+### <a name="dependency-injection-in-entity-classes"></a>Dependency injection in entity classes
 
-Az entitás osztályok támogatják [Azure functions függőségi injekciót](../functions-dotnet-dependency-injection.md). Az alábbi példa bemutatja, hogyan regisztrálhat egy `IHttpClientFactory` szolgáltatást egy osztály alapú entitásba.
+Entity classes support [Azure Functions Dependency Injection](../functions-dotnet-dependency-injection.md). The following example demonstrates how to register an `IHttpClientFactory` service into a class-based entity.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -423,7 +419,7 @@ namespace MyNamespace
 }
 ```
 
-Az alábbi kódrészlet bemutatja, hogyan építheti be a befecskendezett szolgáltatást az Entity osztályba.
+The following snippet demonstrates how to incorporate the injected service into your entity class.
 
 ```csharp
 public class HttpEntity
@@ -451,16 +447,16 @@ public class HttpEntity
 ```
 
 > [!NOTE]
-> A szerializálással kapcsolatos problémák elkerülése érdekében ügyeljen arra, hogy kizárjon mezőket a befecskendezett értékek tárolásához a szerializálásból.
+> To avoid issues with serialization, make sure to exclude fields meant to store injected values from the serialization.
 
 > [!NOTE]
-> A normál .NET-Azure Functions konstruktor-injektálásával ellentétben a Class- *alapú entitások* functions belépési pontjának metódusát `static`nak kell deklarálnia. A nem statikus függvény belépési pontjának deklarálása ütközést okozhat a normál Azure Functions objektum-inicializáló és a tartós entitások objektum-inicializáló között.
+> Unlike when using constructor injection in regular .NET Azure Functions, the functions entry point method for class-based entities *must* be declared `static`. Declaring a non-static function entry point may cause conflicts between the normal Azure Functions object initializer and the Durable Entities object initializer.
 
-## <a name="function-based-syntax"></a>Függvény-alapú szintaxis
+## <a name="function-based-syntax"></a>Function-based syntax
 
-Eddig az osztály-alapú szintaxisra koncentrálunk, ahogy azt várjuk, hogy jobban alkalmazkodjon a legtöbb alkalmazáshoz. A függvény-alapú szintaxis azonban olyan alkalmazások esetében lehet megfelelő, amelyek az entitás állapotának és műveleteinek saját absztrakcióit szeretnék meghatározni vagy kezelni. Emellett célszerű lehet olyan könyvtárak megvalósítása is, amelyek az osztály-alapú szintaxis által jelenleg nem támogatott általános feltételt igényelnek. 
+So far we have focused on the class-based syntax, as we expect it to be better suited for most applications. However, the function-based syntax can be appropriate for applications that wish to define or manage their own abstractions for entity state and operations. Also, it may be appropriate when implementing libraries that require genericity not currently supported by the class-based syntax. 
 
-A függvény-alapú szintaxissal az Entity függvény explicit módon kezeli a művelet elküldését, és explicit módon kezeli az entitás állapotát. Az alábbi kód például a függvény-alapú szintaxis használatával megvalósított *számláló* entitást mutatja.  
+With the function-based syntax, the Entity Function explicitly handles the operation dispatch, and explicitly manages the state of the entity. For example, the following code shows the *Counter* entity implemented using the function-based syntax.  
 
 ```csharp
 [FunctionName("Counter")]
@@ -484,34 +480,34 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-### <a name="the-entity-context-object"></a>Az entitás környezeti objektuma
+### <a name="the-entity-context-object"></a>The entity context object
 
-Az entitás-specifikus funkciók `IDurableEntityContext`típusú környezeti objektumon keresztül érhetők el. Ez a környezeti objektum az Entity függvény paramétereként érhető el, és az aszinkron helyi tulajdonságon keresztül `Entity.Current`.
+Entity-specific functionality can be accessed via a context object of type `IDurableEntityContext`. This context object is available as a parameter to the entity function, and via the async-local property `Entity.Current`.
 
-A következő tagok információt nyújtanak az aktuális műveletről, és lehetővé teszik a visszatérési érték megadását. 
+The following members provide information about the current operation, and allow us to specify a return value. 
 
-* `EntityName`: az aktuálisan végrehajtó entitás neve.
-* `EntityKey`: a jelenleg végrehajtó entitás kulcsa.
-* `EntityId`: a jelenleg végrehajtó entitás azonosítója (tartalmazza a nevet és a kulcsot).
-* `OperationName`: az aktuális művelet neve.
-* `GetInput<TInput>()`: az aktuális művelet bemenetének beolvasása.
-* `Return(arg)`: egy értéket ad vissza a műveletnek nevezett eljáráshoz.
+* `EntityName`: the name of the currently executing entity.
+* `EntityKey`: the key of the currently executing entity.
+* `EntityId`: the ID of the currently executing entity (includes name and key).
+* `OperationName`: the name of the current operation.
+* `GetInput<TInput>()`: gets the input for the current operation.
+* `Return(arg)`: returns a value to the orchestration that called the operation.
 
-A következő tagok kezelik az entitás állapotát (létrehozás, olvasás, frissítés, törlés). 
+The following members manage the state of the entity (create, read, update, delete). 
 
-* `HasState`: az entitás létezik, azaz van-e valamilyen állapota. 
-* `GetState<TState>()`: az entitás aktuális állapotát kapja meg. Ha még nem létezik, a rendszer létrehozza.
-* `SetState(arg)`: az entitás állapotát hozza létre vagy frissíti.
-* `DeleteState()`: törli az entitás állapotát, ha az létezik. 
+* `HasState`: whether the entity exists, that is, has some state. 
+* `GetState<TState>()`: gets the current state of the entity. If it does not already exist, it is created.
+* `SetState(arg)`: creates or updates the state of the entity.
+* `DeleteState()`: deletes the state of the entity, if it exists. 
 
-Ha az `GetState` által visszaadott állapot egy objektum, akkor közvetlenül módosítható az alkalmazás kódjával. A végén nem kell meghívnia `SetState`t (de nem árt). Ha `GetState<TState>` többször is meghívva van, ugyanazt a típust kell használni.
+If the state returned by `GetState` is an object, it can be directly modified by the application code. There is no need to call `SetState` again at the end (but also no harm). If `GetState<TState>` is called multiple times, the same type must be used.
 
-Végezetül a következő tagok más entitások jelzésére vagy új összehangolás indítására használhatók:
+Finally, the following members are used to signal other entities, or start new orchestrations:
 
-* `SignalEntity(EntityId, operation, input)`: egyirányú üzenet küldése egy entitásnak.
-* `CreateNewOrchestration(orchestratorFunctionName, input)`: új előkészítést indít el.
+* `SignalEntity(EntityId, operation, input)`: sends a one-way message to an entity.
+* `CreateNewOrchestration(orchestratorFunctionName, input)`: starts a new orchestration.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Tudnivalók az entitásokkal kapcsolatos fogalmakról](durable-functions-entities.md)
+> [Learn about entity concepts](durable-functions-entities.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A terheléselosztó virtuális gépek betöltése az Azure portal – zónán belül'
-titlesuffix: Azure Load Balancer
+title: 'Tutorial: Load Balancer VMs within a zone--Azure portal'
+titleSuffix: Azure Load Balancer
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy standard Load Balancert zónaszintű előtérrel a rendelkezésre állási zónában lévő virtuális gépek Azure Portal használatával történő terheléselosztásához
 services: load-balancer
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273386"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225171"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónában belül a Standard Load Balancer az Azure portal használatával
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Rendelkezésre állási zónán belüli virtuális gépek terheléselosztása standard Load Balancerrel az Azure Portal használatával
 
 Az oktatóanyag egy nyilvános [Azure Standard Load Balancer-példányt](https://aka.ms/azureloadbalancerstandard) hoz létre zónaszintű előtérrel, amely nyilvános, szabványos IP-címet használ az Azure Portal használatával. Ennek a forgatókönyvnek a követésével megadhat egy adott zónát az előtér- és háttérpéldányokhoz, hogy hozzáigazíthassa az adatútvonalat és az erőforrásokat a meghatározott zónához. A következő függvények végrehajtásának módját ismerheti meg:
 
@@ -48,20 +48,20 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. Ha a terheléselosztó létrehozása során létrehoz egy új standard IP-címet, akkor az automatikusan standard termékváltozatként lesz konfigurálva. Ezenkívül automatikusan zónaredundánssá is válik.
 
 1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Load Balancer** elemre.
-2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
+2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value (Díj)                                              |
     | ---                     | ---                                                |
-    | Subscription               | Válassza ki előfizetését.    |    
-    | Resource group         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupZLB* a szövegmezőben.|
-    | Name (Név)                   | *myLoadBalancer*                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Type          | Válassza ki **nyilvános**.                                        |
-    | SKU           | Válassza ki **Standard**.                          |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Select **Create new** and type *MyResourceGroupZLB* in the text box.|
+    | Név                   | *myLoadBalancer*                                   |
+    | Region (Régió)         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Type (Típus)          | Select **Public**.                                        |
+    | SKU (Cikkszám)           | Select **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
-    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
-    |Rendelkezésre állási zónában| Válassza az **1** lehetőséget.    |
-3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
+    | Public IP address name              | Type *myPublicIP* in the text box.   |
+    |Availability zone| Válassza az **1** lehetőséget.    |
+3. In the **Review + create** tab, click **Create**.   
 
    ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
@@ -220,7 +220,7 @@ A terheléselosztási szabály megadja, hogy a rendszer hogyan ossza el a forgal
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Válassza ki az erőforrásokat tartalmazó erőforráscsoport. Ezután válassza a **Törlés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
 - [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

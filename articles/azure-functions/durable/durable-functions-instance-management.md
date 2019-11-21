@@ -1,47 +1,43 @@
 ---
-title: Példányok kezelése a Durable Functionsban – Azure
-description: Megtudhatja, hogyan kezelheti a példányokat a Azure Functions Durable Functions bővítményében.
-services: functions
+title: Manage instances in Durable Functions - Azure
+description: Learn how to manage instances in the Durable Functions extension for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6053303f292bc96b904447aa9beb0d5602871970
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ab9cc9b093008730d175fa3fde4391f9de236a84
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614806"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231380"
 ---
-# <a name="manage-instances-in-durable-functions-in-azure"></a>Durable Functions-példányok kezelése az Azure-ban
+# <a name="manage-instances-in-durable-functions-in-azure"></a>Manage instances in Durable Functions in Azure
 
-Ha a [Durable functions](durable-functions-overview.md) -bővítményt használja a Azure Functionshoz, vagy szeretné elindítani, győződjön meg róla, hogy a lehető leghatékonyabban használja ki. A Durable Functions-előkészítési példányok optimalizálásával további információkat tudhat meg a kezeléséről. Ez a cikk az egyes példányok kezelési műveleteinek részleteit ismerteti.
+If you're using the [Durable Functions](durable-functions-overview.md) extension for Azure Functions, or want to start doing so, make sure you're getting the best use out of it. You can optimize your Durable Functions orchestration instances by learning more about how to manage them. This article goes into the details of each instance management operation.
 
-Elindíthatja és leállíthatja például a példányokat, és lekérdezheti a példányokat, beleértve az összes példány és a lekérdezési példányok lekérdezési lehetőségeit. Emellett elküldheti az eseményeket a példányokra, megvárhatja az előkészítési befejezést, és lekérheti a HTTP-kezelés webhook URL-címét. Ez a cikk más felügyeleti műveletekre is kiterjed, például a példányok újratekercselését, a példányok előzményeinek törlését és egy adott feladat központi törlését.
+You can start and terminate instances, for example, and you can query instances, including the ability to query all instances and query instances with filters. Additionally, you can send events to instances, wait for orchestration completion, and retrieve HTTP management webhook URLs. This article covers other management operations, too, including rewinding instances, purging instance history, and deleting a task hub.
 
-A Durable Functionsban lehetősége van arra, hogy hogyan kívánja megvalósítani ezeket a kezelési műveleteket. Ez a cikk példákat tartalmaz a [](../functions-run-local.md) .net (C#) és a JavaScript Azure functions Core Tools használatára.
+In Durable Functions, you have options for how you want to implement each of these management operations. This article provides examples that use the [Azure Functions Core Tools](../functions-run-local.md) for both .NET (C#) and JavaScript.
 
-## <a name="start-instances"></a>Példányok indítása
+## <a name="start-instances"></a>Start instances
 
-Fontos, hogy el tudja indítani a előkészítési példányát. Ez általában akkor történik, ha Durable Functions kötést használ egy másik függvény triggerében.
+It's important to be able to start an instance of orchestration. This is commonly done when you are using a Durable Functions binding in another function's trigger.
 
-A koordinációs [ügyfél-kötés](durable-functions-bindings.md#orchestration-client) `StartNewAsync` (.net) vagy `startNew` (JavaScript) metódusa új példányt indít el. Belsőleg ez a metódus enqueues egy üzenetet a vezérlési várólistába, amely ezután elindítja egy függvény indítását a megadott névvel, amely a koordinációs [eseményindító kötését](durable-functions-bindings.md#orchestration-trigger)használja.
+The `StartNewAsync` (.NET) or `startNew` (JavaScript) method on the [orchestration client binding](durable-functions-bindings.md#orchestration-client) starts a new instance. Internally, this method enqueues a message into the control queue, which then triggers the start of a function with the specified name that uses the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger).
 
-Ez az aszinkron művelet akkor fejeződik be, amikor a koordináló folyamat sikeresen ütemezve van.
+This async operation completes when the orchestration process is successfully scheduled.
 
-Az új előkészítési példányok elindításának paraméterei a következők:
+The parameters for starting a new orchestration instance are as follows:
 
-* **Name (név**): az ütemezni kívánt Orchestrator-függvény neve.
-* **Bemenet**: minden olyan JSON-szerializálható adat, amelyet át kell adni a Orchestrator függvény bemenetének.
-* **InstanceId**: (nem kötelező) a példány egyedi azonosítója. Ha nem megadja ezt a paramétert, a metódus véletlenszerű azonosítót használ.
+* **Name**: The name of the orchestrator function to schedule.
+* **Input**: Any JSON-serializable data that should be passed as the input to the orchestrator function.
+* **InstanceId**: (Optional) The unique ID of the instance. If you don't specify this parameter, the method uses a random ID.
 
 > [!TIP]
-> Használjon véletlenszerű azonosítót a példány-AZONOSÍTÓhoz. A véletlenszerű példányok azonosítói lehetővé teszik, hogy a Orchestrator függvények több virtuális gépen való skálázásakor egyenlő terhelési eloszlást biztosítson. A nem véletlenszerű példány-azonosítók használatának megfelelő ideje az, ha az AZONOSÍTÓnak külső forrásból kell származnia, vagy ha az [egyszeres Orchestrator](durable-functions-singletons.md) mintát alkalmazza.
+> Use a random identifier for the instance ID. Random instance IDs help ensure an equal load distribution when you're scaling orchestrator functions across multiple VMs. The proper time to use non-random instance IDs is when the ID must come from an external source, or when you're implementing the [singleton orchestrator](durable-functions-singletons.md) pattern.
 
-A következő kód egy példaként szolgáló függvény, amely egy új összehangoló példányt indít el:
+The following code is an example function that starts a new orchestration instance:
 
 ### <a name="c"></a>C#
 
@@ -58,7 +54,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -75,54 +71,54 @@ module.exports = async function(context, input) {
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A példányokat közvetlenül is elindíthatja a [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` parancs használatával. A következő paramétereket veszi figyelembe:
+You can also start an instance directly by using the [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` command. It takes the following parameters:
 
-* **`function-name` (kötelező)** : az elindítani kívánt függvény neve.
-* **`input` (nem kötelező)** : bemenet a függvénybe, vagy beágyazott, vagy egy JSON-fájlon keresztül. A fájlok esetében adjon hozzá egy előtagot a fájl elérési útjához `@`, például `@path/to/file.json`.
-* **`id` (nem kötelező)** : a koordináló példány azonosítója. Ha nem megadja ezt a paramétert, a parancs véletlenszerű GUID azonosítót használ.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. Az alapértelmezett érték a AzureWebJobsStorage.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. Az alapértelmezett érték a DurableFunctionsHub. Ezt a [Host. JSON](durable-functions-bindings.md#host-json) fájlban is megadhatja a DurableTask: HubName használatával.
+* **`function-name` (required)** : Name of the function to start.
+* **`input` (optional)** : Input to the function, either inline or through a JSON file. For files, add a prefix to the path to the file with `@`, such as `@path/to/file.json`.
+* **`id` (optional)** : ID of the orchestration instance. If you don't specify this parameter, the command uses a random GUID.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. The default is AzureWebJobsStorage.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. The default is DurableFunctionsHub. You can also set this in [host.json](durable-functions-bindings.md#host-json) by using durableTask:HubName.
 
 > [!NOTE]
-> A Core Tools parancsai feltételezik, hogy egy Function alkalmazás gyökérkönyvtárában futtatja őket. Ha explicit módon megadja a `connection-string-setting` és `task-hub-name` paramétereket, bármelyik címtárból futtathatja a parancsokat. Habár futtathatja ezeket a parancsokat egy futó Function app-gazdagép nélkül, előfordulhat, hogy bizonyos effektusok nem figyelhetők meg, kivéve, ha a gazdagép fut. Például az `start-new` parancs enqueues a cél feladatsorba, de a rendszer valójában nem futtatja a folyamatot, kivéve, ha van olyan Function app Host-folyamat, amely képes feldolgozni az üzenetet.
+> Core Tools commands assume you are running them from the root directory of a function app. If you explicitly provide the `connection-string-setting` and `task-hub-name` parameters, you can run the commands from any directory. Although you can run these commands without a function app host running, you might find that you can't observe some effects unless the host is running. For example, the `start-new` command enqueues a start message into the target task hub, but the orchestration doesn't actually run unless there is a function app host process running that can process the message.
 
-A következő parancs elindítja a HelloWorld nevű függvényt, és átadja a fájl tartalmát `counter-data.json`:
+The following command starts the function named HelloWorld, and passes the contents of the file `counter-data.json` to it:
 
 ```bash
 func durable start-new --function-name HelloWorld --input @counter-data.json --task-hub-name TestTaskHub
 ```
 
-## <a name="query-instances"></a>Lekérdezési példányok
+## <a name="query-instances"></a>Query instances
 
-A munkafolyamatok kezelésének részeként legvalószínűbb, hogy adatokat kell gyűjtenie egy összehangoló példány állapotáról (például azt, hogy az megfelelően fejeződött-e be vagy sikertelen volt-e).
+As part of your effort to manage your orchestrations, you'll most likely need to gather information about the status of an orchestration instance (for example, whether it has completed normally or failed).
 
-A `GetStatusAsync` (.NET) vagy a `getStatus` (JavaScript) metódust a koordinációs [ügyfél kötése](durable-functions-bindings.md#orchestration-client) lekérdezi egy összehangoló példány állapotát.
+The `GetStatusAsync` (.NET) or the `getStatus` (JavaScript) method on the [orchestration client binding](durable-functions-bindings.md#orchestration-client) queries the status of an orchestration instance.
 
-`instanceId` (kötelező), `showHistory` (nem kötelező), `showHistoryOutput` (opcionális) és `showInput` (opcionális) paraméterként is igénybe vesz.
+It takes an `instanceId` (required), `showHistory` (optional), `showHistoryOutput` (optional), and `showInput` (optional) as parameters.
 
-* **`showHistory`** : ha a `true`értékre van állítva, a válasz a végrehajtási előzményeket tartalmazza.
-* **`showHistoryOutput`** : ha a `true`értékre van állítva, a végrehajtási előzmények tevékenységek kimenetét tartalmazzák.
-* **`showInput`** : ha a `false`értékre van állítva, a válasz nem tartalmazza a függvény bemenetét. Az alapértelmezett érték `true`.
+* **`showHistory`** : If set to `true`, the response contains the execution history.
+* **`showHistoryOutput`** : If set to `true`, the execution history contains activity outputs.
+* **`showInput`** : If set to `false`, the response won't contain the input of the function. The default value is `true`.
 
-A metódus egy olyan objektumot ad vissza, amely a következő tulajdonságokkal rendelkezik:
+The method returns an object with the following properties:
 
-* **Name (név**): a Orchestrator függvény neve.
-* **InstanceId**: a folyamat példányának azonosítója (a `instanceId` bemenetével megegyezőnek kell lennie).
-* **CreatedTime**: az az idő, amikor a Orchestrator-függvény futása megkezdődött.
-* **LastUpdatedTime**: a folyamat utolsó ellenőrzőpontjának időpontja.
-* **Bemenet**: a függvény BEMENETe JSON-értékként. Ez a mező nincs feltöltve, ha `showInput` hamis.
-* **CustomStatus**: egyéni előkészítési állapot JSON formátumban.
-* **Kimenet**: a függvény kimenete JSON-értékként (ha a függvény befejeződött). Ha a Orchestrator függvény nem sikerült, ez a tulajdonság tartalmazza a hiba részleteit. Ha a Orchestrator függvény meg lett szakítva, ez a tulajdonság tartalmazza a megszakítás okát (ha van ilyen).
-* **RuntimeStatus**: az alábbi értékek egyike:
-  * **Függőben**: a példány ütemezve van, de még nem indult el.
-  * **Fut**: a példány elindult.
-  * **Befejezett**: a példány szokásos módon befejeződött.
-  * **ContinuedAsNew**: a példány újraindult egy új előzménysel. Ez az állapot átmeneti állapot.
-  * **Sikertelen**: a példány hibával meghiúsult.
-  * Leállítva: a példány leállítása váratlanul **megszakadt**.
-* **Előzmények**: a folyamat végrehajtási előzményei. Ez a mező csak akkor van feltöltve, ha `showHistory` `true`értékre van állítva.
+* **Name**: The name of the orchestrator function.
+* **InstanceId**: The instance ID of the orchestration (should be the same as the `instanceId` input).
+* **CreatedTime**: The time at which the orchestrator function started running.
+* **LastUpdatedTime**: The time at which the orchestration last checkpointed.
+* **Input**: The input of the function as a JSON value. This field isn't populated if `showInput` is false.
+* **CustomStatus**: Custom orchestration status in JSON format.
+* **Output**: The output of the function as a JSON value (if the function has completed). If the orchestrator function failed, this property includes the failure details. If the orchestrator function was terminated, this property includes the reason for the termination (if any).
+* **RuntimeStatus**: One of the following values:
+  * **Pending**: The instance has been scheduled but has not yet started running.
+  * **Running**: The instance has started running.
+  * **Completed**: The instance has completed normally.
+  * **ContinuedAsNew**: The instance has restarted itself with a new history. This state is a transient state.
+  * **Failed**: The instance failed with an error.
+  * **Terminated**: The instance was stopped abruptly.
+* **History**: The execution history of the orchestration. This field is only populated if `showHistory` is set to `true`.
 
-Ez a metódus `null` (.NET) vagy `undefined` (JavaScript) értéket ad vissza, ha a példány nem létezik.
+This method returns `null` (.NET) or `undefined` (JavaScript) if the instance doesn't exist.
 
 ### <a name="c"></a>C#
 
@@ -138,9 +134,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -155,35 +151,35 @@ module.exports = async function(context, instanceId) {
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Az [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` paranccsal közvetlenül is lekérheti egy összehangoló példány állapotát. A következő paramétereket veszi figyelembe:
+It's also possible to get the status of an orchestration instance directly, by using the [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` command. It takes the following parameters:
 
-* **`id` (kötelező)** : a koordináló példány azonosítója.
-* **`show-input` (nem kötelező)** : ha a `true`értékre van állítva, a válasz tartalmazza a függvény bemenetét. Az alapértelmezett érték `false`.
-* **`show-output` (nem kötelező)** : ha a `true`értékre van állítva, a válasz tartalmazza a függvény kimenetét. Az alapértelmezett érték `false`.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. A [Host. JSON](durable-functions-bindings.md#host-json)fájlban is megadható a DurableTask: HubName használatával.
+* **`id` (required)** : ID of the orchestration instance.
+* **`show-input` (optional)** : If set to `true`, the response contains the input of the function. The default value is `false`.
+* **`show-output` (optional)** : If set to `true`, the response contains the output of the function. The default value is `false`.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. A mező alapértelmezett értéke: `DurableFunctionsHub`. It can also be set in [host.json](durable-functions-bindings.md#host-json), by using durableTask:HubName.
 
-A következő parancs lekérdezi egy példány állapotát (beleértve a bemenetet és a kimenetet is), amely egy 0ab8c55a66644d68a3a8b220b12d209c-es előkészítési példány azonosítója. Feltételezi, hogy a `func` parancsot a Function alkalmazás gyökérkönyvtárában futtatja:
+The following command retrieves the status (including input and output) of an instance with an orchestration instance ID of 0ab8c55a66644d68a3a8b220b12d209c. It assumes that you are running the `func` command from the root directory of the function app:
 
 ```bash
 func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-input true --show-output true
 ```
 
-A `durable get-history` parancs használatával lekérheti egy előkészítési példány előzményeit. A következő paramétereket veszi figyelembe:
+You can use the `durable get-history` command to retrieve the history of an orchestration instance. It takes the following parameters:
 
-* **`id` (kötelező)** : a koordináló példány azonosítója.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. A Host. JSON fájlban is megadható a durableTask: HubName használatával.
+* **`id` (required)** : ID of the orchestration instance.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. A mező alapértelmezett értéke: `DurableFunctionsHub`. It can also be set in host.json, by using durableTask:HubName.
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 ```
 
-## <a name="query-all-instances"></a>Összes példány lekérdezése
+## <a name="query-all-instances"></a>Query all instances
 
-Ahelyett, hogy egyszerre egy példányt kelljen lekérdezni, érdemes lehet hatékonyabban lekérdezni őket egyszerre.
+Rather than query one instance in your orchestration at a time, you might find it more efficient to query all of them at once.
 
-A `GetStatusAsync` (.NET) vagy a `getStatusAll` (JavaScript) metódus használatával kérdezheti le az összes összeszerelési példány állapotát. A .NET-ben átadhat egy `CancellationToken` objektumot arra az esetre, ha meg szeretné szakítani. A metódus azokat az objektumokat adja vissza, amelyek ugyanazokkal a tulajdonságokkal rendelkeznek, mint a paraméterekkel rendelkező `GetStatusAsync` metódus.
+You can use the `GetStatusAsync` (.NET) or `getStatusAll` (JavaScript) method to query the statuses of all orchestration instances. In .NET, you can pass a `CancellationToken` object in case you want to cancel it. The method returns objects with the same properties as the `GetStatusAsync` method with parameters.
 
 ### <a name="c"></a>C#
 
@@ -203,9 +199,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -222,22 +218,22 @@ module.exports = async function(context, req) {
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A példányokat közvetlenül is lekérdezheti az [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` parancs használatával. A következő paramétereket veszi figyelembe:
+It's also possible to query instances directly, by using the [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` command. It takes the following parameters:
 
-* **`top` (nem kötelező)** : Ez a parancs támogatja a lapozást. Ez a paraméter a beolvasott példányok számának felel meg. Az alapértelmezett érték 10.
-* **`continuation-token` (nem kötelező)** : a lekérdezni kívánt példányok oldalát vagy szakaszát jelző token. Minden `get-instances` végrehajtás egy jogkivonatot ad vissza a következő példányoknak.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. A [Host. JSON](durable-functions-bindings.md#host-json)fájlban is megadható a DurableTask: HubName használatával.
+* **`top` (optional)** : This command supports paging. This parameter corresponds to the number of instances retrieved per request. The default is 10.
+* **`continuation-token` (optional)** : A token to indicate which page or section of instances to retrieve. Each `get-instances` execution returns a token to the next set of instances.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. A mező alapértelmezett értéke: `DurableFunctionsHub`. It can also be set in [host.json](durable-functions-bindings.md#host-json), by using durableTask:HubName.
 
 ```bash
 func durable get-instances
 ```
 
-## <a name="query-instances-with-filters"></a>Példányok lekérdezése szűrőkkel
+## <a name="query-instances-with-filters"></a>Query instances with filters
 
-Mi a teendő, ha nem igazán szükséges minden olyan információ, amelyet egy standard példány lekérdezése tud biztosítani? Tegyük fel például, hogy mi a helyzet, ha éppen csak a előkészítési időt vagy a koordináló futásidejű állapotát keresi? A lekérdezést a szűrők alkalmazásával szűkítheti.
+What if you don't really need all the information that a standard instance query can provide? For example, what if you're just looking for the orchestration creation time, or the orchestration runtime status? You can narrow your query by applying filters.
 
-A `GetStatusAsync` (.NET) vagy a `getStatusBy` (JavaScript) metódussal lekérheti az előre definiált szűrők készletének megfelelő összehangoló példányok listáját.
+Use the `GetStatusAsync` (.NET) or `getStatusBy` (JavaScript) method to get a list of orchestration instances that match a set of predefined filters.
 
 ### <a name="c"></a>C#
 
@@ -265,9 +261,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,27 +288,27 @@ module.exports = async function(context, req) {
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A Azure Functions Core Tools az `durable get-instances` parancsot is használhatja szűrőkkel. A fenti `top`, `continuation-token`, `connection-string-setting`és `task-hub-name` paraméterek mellett három szűrési paramétert is használhat (`created-after`, `created-before`és `runtime-status`).
+In the Azure Functions Core Tools, you can also use the `durable get-instances` command with filters. In addition to the aforementioned `top`, `continuation-token`, `connection-string-setting`, and `task-hub-name` parameters, you can use three filter parameters (`created-after`, `created-before`, and `runtime-status`).
 
-* **`created-after` (nem kötelező)** : a dátum/idő (UTC) után létrehozott példányok beolvasása. ISO 8601 formázott dátum/idő.
-* **`created-before` (nem kötelező)** : az ezen dátum/idő (UTC) előtt létrehozott példányok beolvasása. ISO 8601 formázott dátum/idő.
-* **`runtime-status` (nem kötelező)** : a példányok beolvasása adott állapottal (például futó vagy befejezett). Több (szóközzel tagolt) állapotot is biztosíthat.
-* **`top` (nem kötelező)** : a beolvasott példányok száma kérelem alapján. Az alapértelmezett érték 10.
-* **`continuation-token` (nem kötelező)** : a lekérdezni kívánt példányok oldalát vagy szakaszát jelző token. Minden `get-instances` végrehajtás egy jogkivonatot ad vissza a következő példányoknak.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. A [Host. JSON](durable-functions-bindings.md#host-json)fájlban is megadható a DurableTask: HubName használatával.
+* **`created-after` (optional)** : Retrieve the instances created after this date/time (UTC). ISO 8601 formatted datetimes accepted.
+* **`created-before` (optional)** : Retrieve the instances created before this date/time (UTC). ISO 8601 formatted datetimes accepted.
+* **`runtime-status` (optional)** : Retrieve the instances with a particular status (for example, running or completed). Can provide multiple (space separated) statuses.
+* **`top` (optional)** : Number of instances retrieved per request. The default is 10.
+* **`continuation-token` (optional)** : A token to indicate which page or section of instances to retrieve. Each `get-instances` execution returns a token to the next set of instances.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. A mező alapértelmezett értéke: `DurableFunctionsHub`. It can also be set in [host.json](durable-functions-bindings.md#host-json), by using durableTask:HubName.
 
-Ha nem ad meg szűrőket (`created-after`, `created-before`vagy `runtime-status`), a parancs egyszerűen lekéri `top` példányokat, és nem tekinti a futásidejű állapotot vagy a létrehozási időt.
+If you don't provide any filters (`created-after`, `created-before`, or `runtime-status`), the command simply retrieves `top` instances, with no regard to runtime status or creation time.
 
 ```bash
 func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before  2018-03-10T23:59Z --top 15
 ```
 
-## <a name="terminate-instances"></a>Példányok leállítása
+## <a name="terminate-instances"></a>Terminate instances
 
-Ha olyan előkészítési példánnyal rendelkezik, amely túl sokáig tart, vagy csak le kell állítania, mielőtt bármilyen okból befejeződik, lehetősége van lemondani.
+If you have an orchestration instance that is taking too long to run, or you just need to stop it before it completes for any reason, you have the option to terminate it.
 
-A példányok leállításához használhatja a koordinációs [ügyfél kötésének](durable-functions-bindings.md#orchestration-client) `TerminateAsync` (.net) vagy `terminate` (JavaScript) metódusát. A két paraméter egy `instanceId` és egy `reason` karakterlánc, amely a naplókba és a példányok állapotára van írva. A leállított példányok azonnal leállnak, amint eléri a következő `await` (.NET) vagy `yield` (JavaScript) pontot, vagy ha már egy `await` vagy `yield`.
+You can use the `TerminateAsync` (.NET) or the `terminate` (JavaScript) method of the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to terminate instances. The two parameters are an `instanceId` and a `reason` string, which are written to logs and to the instance status. A terminated instance stops running as soon as it reaches the next `await` (.NET) or `yield` (JavaScript) point, or it terminates immediately if it's already on an `await` or `yield`.
 
 ### <a name="c"></a>C#
 
@@ -328,9 +324,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -344,34 +340,34 @@ module.exports = async function(context, instanceId) {
 ```
 
 > [!NOTE]
-> A példányok megszakítása jelenleg nem terjed ki. A tevékenység-és alfolyamatok a befejezésig futnak, függetlenül attól, hogy megszakította-e a hívó példányát.
+> Instance termination doesn't currently propagate. Activity functions and sub-orchestrations run to completion, regardless of whether you've terminated the orchestration instance that called them.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` parancs használatával közvetlenül is leállíthatja az előkészítési példányt. A következő paramétereket veszi figyelembe:
+You can also terminate an orchestration instance directly, by using the [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` command. It takes the following parameters:
 
-* **`id` (kötelező)** : a leállítani kívánt összehangoló példány azonosítója.
-* **`reason` (nem kötelező)** : a megszakítás oka.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. A [Host. JSON](durable-functions-bindings.md#host-json)fájlban is megadható a DurableTask: HubName használatával.
+* **`id` (required)** : ID of the orchestration instance to terminate.
+* **`reason` (optional)** : Reason for termination.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. A mező alapértelmezett értéke: `DurableFunctionsHub`. It can also be set in [host.json](durable-functions-bindings.md#host-json), by using durableTask:HubName.
 
-A következő parancs leállítja a 0ab8c55a66644d68a3a8b220b12d209c AZONOSÍTÓval rendelkező előkészítési példányt:
+The following command terminates an orchestration instance with an ID of 0ab8c55a66644d68a3a8b220b12d209c:
 
 ```bash
 func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was time to be done."
 ```
 
-## <a name="send-events-to-instances"></a>Események küldése példányoknak
+## <a name="send-events-to-instances"></a>Send events to instances
 
-Bizonyos helyzetekben fontos, hogy a Orchestrator függvények várni tudják a külső események figyelését. Ez magában foglalja az [emberi interakcióra](durable-functions-overview.md#human)váró [figyelési funkciókat](durable-functions-overview.md#monitoring) és függvényeket.
+In some scenarios, it's important for your orchestrator functions to be able to wait and listen for external events. This includes [monitor functions](durable-functions-overview.md#monitoring) and functions that are waiting for [human interaction](durable-functions-overview.md#human).
 
-Értesítéseket küldhet a példányok futtatásához a `RaiseEventAsync` (.NET) metódus vagy a koordinációs [ügyfél](durable-functions-bindings.md#orchestration-client)`raiseEvent` (JavaScript) metódusának használatával. Az ilyen eseményeket kezelő példányok olyanok, amelyek a `WaitForExternalEvent` (.NET) hívására várnak, vagy egy `waitForExternalEvent` (JavaScript-) hívást eredményeznek.
+Send event notifications to running instances by using the `RaiseEventAsync` (.NET) method or the `raiseEvent` (JavaScript) method of the [orchestration client binding](durable-functions-bindings.md#orchestration-client). Instances that can handle these events are those that are awaiting a call to `WaitForExternalEvent` (.NET) or yielding to a `waitForExternalEvent` (JavaScript) call.
 
-A `RaiseEventAsync` (.NET) és `raiseEvent` (JavaScript) paraméterek a következők:
+The parameters to `RaiseEventAsync` (.NET) and `raiseEvent` (JavaScript) are as follows:
 
-* **InstanceId**: a példány egyedi azonosítója.
-* **EventName**: a küldendő esemény neve.
-* **EventData**: a példányba küldendő JSON-szerializálható hasznos adat.
+* **InstanceId**: The unique ID of the instance.
+* **EventName**: The name of the event to send.
+* **EventData**: A JSON-serializable payload to send to the instance.
 
 ### <a name="c"></a>C#
 
@@ -387,9 +383,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -403,17 +399,17 @@ module.exports = async function(context, instanceId) {
 ```
 
 > [!NOTE]
-> Ha nincs a megadott példány-AZONOSÍTÓval rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti. Ha egy példány létezik, de még nem vár az eseményre, az esemény a példány állapotban lesz tárolva, amíg készen nem áll a fogadásra és a feldolgozásra.
+> If there is no orchestration instance with the specified instance ID, the event message is discarded. If an instance exists but it is not yet waiting for the event, the event will be stored in the instance state until it is ready to be received and processed.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` parancs használatával közvetlenül is felvehet egy eseményt egy előkészítési példányra. A következő paramétereket veszi figyelembe:
+You can also raise an event to an orchestration instance directly, by using the [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` command. It takes the following parameters:
 
-* **`id` (kötelező)** : a koordináló példány azonosítója.
-* **`event-name`** : a felvenni kívánt esemény neve.
-* **`event-data` (nem kötelező)** : az előkészítési példánynak küldendő adatértékek. Ez lehet egy JSON-fájl elérési útja, vagy közvetlenül a parancssorban is megadható az információ.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. A [Host. JSON](durable-functions-bindings.md#host-json)fájlban is megadható a DurableTask: HubName használatával.
+* **`id` (required)** : ID of the orchestration instance.
+* **`event-name`** : Name of the event to raise.
+* **`event-data` (optional)** : Data to send to the orchestration instance. This can be the path to a JSON file, or you can provide the data directly on the command line.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. A mező alapértelmezett értéke: `DurableFunctionsHub`. It can also be set in [host.json](durable-functions-bindings.md#host-json), by using durableTask:HubName.
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -423,27 +419,27 @@ func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEv
 func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 ```
 
-## <a name="wait-for-orchestration-completion"></a>Várakozás a koordinálás befejezésére
+## <a name="wait-for-orchestration-completion"></a>Wait for orchestration completion
 
-A hosszan futó előkészítésekben érdemes lehet megvárni, és beolvasni egy előkészítés eredményeit. Ezekben az esetekben hasznos lehet az időtúllépési időszak definiálása is az előkészítés során. Ha túllépi az időtúllépést, a rendszer az eredmények helyett visszaadja az előkészítési állapotot.
+In long-running orchestrations, you may want to wait and get the results of an orchestration. In these cases, it's also useful to be able to define a timeout period on the orchestration. If the timeout is exceeded, the state of the orchestration should be returned instead of the results.
 
-A `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) vagy a `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) metódussal lehet lekérni a tényleges kimenetet egy előkészítési példányból. Alapértelmezés szerint ezek a módszerek a `timeout`esetében 10 másodpercet, a `retryInterval`pedig 1 másodpercet használnak.  
+The `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) or the `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) method can be used to get the actual output from an orchestration instance synchronously. By default, these methods use a default value of 10 seconds for `timeout`, and 1 second for `retryInterval`.  
 
-Az alábbi példa egy HTTP-trigger függvényt mutat be, amely bemutatja, hogyan használhatja ezt az API-t:
+Here is an example HTTP-trigger function that demonstrates how to use this API:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
-Hívja meg a függvényt a következő sorral. Az újrapróbálkozási időköz 2 másodpercét használja az időtúllépéshez és a 0,5 másodperchez:
+Call the function with the following line. Use 2 seconds for the timeout and 0.5 seconds for the retry interval:
 
 ```bash
     http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
 ```
 
-Attól függően, hogy milyen időre van szükség a hanghívási példány válaszának beszerzéséhez, két eset létezik:
+Depending on the time required to get the response from the orchestration instance, there are two cases:
 
-* A előkészítési példányok a megadott időkorláton belül (ebben az esetben 2 másodpercben) befejeződik, és a válasz a tényleges előkészítési példány kimenete, amely szinkron módon történik:
+* The orchestration instances complete within the defined timeout (in this case 2 seconds), and the response is the actual orchestration instance output, delivered synchronously:
 
     ```http
         HTTP/1.1 200 OK
@@ -458,7 +454,7 @@ Attól függően, hogy milyen időre van szükség a hanghívási példány vál
         ]
     ```
 
-* A előkészítési példányok nem hajthatók végre a megadott időkorláton belül, és a válasz az alapértelmezett érték a [http API URL-címének felderítése](durable-functions-http-api.md)című témakörben:
+* The orchestration instances can't complete within the defined timeout, and the response is the default one described in [HTTP API URL discovery](durable-functions-http-api.md):
 
     ```http
         HTTP/1.1 202 Accepted
@@ -477,25 +473,25 @@ Attól függően, hogy milyen időre van szükség a hanghívási példány vál
     ```
 
 > [!NOTE]
-> A webhook URL-címeinek formátuma eltérő lehet attól függően, hogy a Azure Functions gazdagép melyik verzióját futtatja. Az előző példa a Azure Functions 2,0 gazdagépre mutat.
+> The format of the webhook URLs might differ, depending on which version of the Azure Functions host you are running. The preceding example is for the Azure Functions 2.0 host.
 
-## <a name="retrieve-http-management-webhook-urls"></a>HTTP-felügyelet webhook URL-címeinek lekérése
+## <a name="retrieve-http-management-webhook-urls"></a>Retrieve HTTP management webhook URLs
 
-Egy külső rendszer használatával figyelheti vagy kiemelheti az eseményeket egy előkészítési folyamatba. A külső rendszerek a [http API URL-címének felderítése](durable-functions-http-features.md#http-api-url-discovery)részben ismertetett alapértelmezett válasz részét képező Webhook URL-címeken keresztül kommunikálhatnak a Durable Functionsokkal. A webhook URL-címei elérhetővé tehetik programozott módon a koordináló [ügyfél kötésének](durable-functions-bindings.md#orchestration-client)használatával. A `CreateHttpManagementPayload` (.NET) vagy a `createHttpManagementPayload` (JavaScript) metódusok használhatók egy olyan szerializálható objektum lekérésére, amely tartalmazza ezeket a webhook URL-címeket.
+You can use an external system to monitor or to raise events to an orchestration. External systems can communicate with Durable Functions through the webhook URLs that are part of the default response described in [HTTP API URL discovery](durable-functions-http-features.md#http-api-url-discovery). The webhook URLs can alternatively be accessed programmatically using the [orchestration client binding](durable-functions-bindings.md#orchestration-client). The `CreateHttpManagementPayload` (.NET) or the `createHttpManagementPayload` (JavaScript) methods can be used to get a serializable object that contains these webhook URLs.
 
-A `CreateHttpManagementPayload` (.NET) és a `createHttpManagementPayload` (JavaScript) metódusoknak egyetlen paramétere van:
+The `CreateHttpManagementPayload` (.NET) and `createHttpManagementPayload` (JavaScript) methods have one parameter:
 
-* **instanceId**: a példány egyedi azonosítója.
+* **instanceId**: The unique ID of the instance.
 
-A metódusok egy objektumot adnak vissza a következő sztring tulajdonságokkal:
+The methods return an object with the following string properties:
 
-* **Azonosító**: a (z) összehangoló példány azonosítója (a `InstanceId` bemenettel megegyezőnek kell lennie).
-* **StatusQueryGetUri**: a koordináló példány állapotának URL-címe.
-* **SendEventPostUri**: az "esemény előléptetése" URL-cím az előkészítési példányhoz.
-* **TerminatePostUri**: a megszakító példány URL-címe.
-* **PurgeHistoryDeleteUri**: a előkészítési példány "törlési előzmények" URL-címe.
+* **Id**: The instance ID of the orchestration (should be the same as the `InstanceId` input).
+* **StatusQueryGetUri**: The status URL of the orchestration instance.
+* **SendEventPostUri**: The "raise event" URL of the orchestration instance.
+* **TerminatePostUri**: The "terminate" URL of the orchestration instance.
+* **PurgeHistoryDeleteUri**: The "purge history" URL of the orchestration instance.
 
-A függvények ezeket az objektumokat külső rendszerekre is elküldhetik, hogy az alábbi példákban látható módon figyelik vagy emeljék az eseményeket.
+Functions can send instances of these objects to external systems to monitor or raise events on the corresponding orchestrations, as shown in the following examples:
 
 ### <a name="c"></a>C#
 
@@ -517,9 +513,9 @@ public static void SendInstanceInfo(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `IDurableActivityContext`helyett a `DurableActivityContext`t kell használnia, a `DurableClient` attribútum helyett a `OrchestrationClient` attribútumot kell használnia, és `DurableOrchestrationClient` helyett a `IDurableOrchestrationClient`paramétert kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableActivityContext` instead of `IDurableActivityContext`, you must use the `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -537,19 +533,19 @@ modules.exports = async function(context, ctx) {
 };
 ```
 
-## <a name="rewind-instances-preview"></a>Példányok visszatekerése (előzetes verzió)
+## <a name="rewind-instances-preview"></a>Rewind instances (preview)
 
-Ha nem várt okból végez előkészítési hibát *, a példányt* visszahelyezheti egy korábban Kifogástalan állapotba egy erre a célra létrehozott API használatával.
-
-> [!NOTE]
-> Ez az API nem helyettesíti a megfelelő hibakezelés és újrapróbálkozási házirendeket. Ehelyett csak olyan esetekben javasolt használni, ahol a hangszerelési példányok váratlan okok miatt sikertelenek. A hibakezelés és az újrapróbálkozási szabályzatokkal kapcsolatos további információkért tekintse meg [a hibakezelés című cikket.](durable-functions-error-handling.md)
-
-A koordinációs [ügyfél-kötés](durable-functions-bindings.md#orchestration-client) `RewindAsync` (.net) vagy `rewind` (JavaScript) metódusának használatával állítsa vissza a koordinációt a *futó* állapotba. Ezzel a módszerrel a rendszer Újrafuttatja a tevékenység-vagy alfolyamatok végrehajtásával kapcsolatos hibákat is, amelyek az eljárási hibát okozták.
-
-Tegyük fel például, hogy van egy munkafolyamata, amely egy sor [emberi jóváhagyást](durable-functions-overview.md#human)tartalmaz. Tegyük fel, hogy van olyan tevékenységi függvény, amely értesíti valakit, hogy jóváhagyása szükséges, és várjon a valós idejű válaszra. Ha az összes jóváhagyási tevékenység kapott választ vagy időtúllépés történt, tegyük fel, hogy egy másik tevékenység meghiúsul az alkalmazások helytelen konfigurációja miatt, például érvénytelen adatbázis-kapcsolati karakterlánc. Ennek eredményeképpen a munkafolyamat mélyen bekerül a munkafolyamatba. Ha a `RewindAsync` (.NET) vagy a `rewind` (JavaScript) API-t futtatja, az alkalmazás rendszergazdája kijavíthatja a konfigurációs hibát, és közvetlenül a hiba előtt visszatekerheti a sikertelen előkészítést az állapotba. Az emberi beavatkozást nem igénylő lépések egyikét sem kell újra jóváhagyni, és a folyamat sikeresen elvégezhető.
+If you have an orchestration failure for an unexpected reason, you can *rewind* the instance to a previously healthy state by using an API built for that purpose.
 
 > [!NOTE]
-> A *visszatekerés* funkció nem támogatja a tartós időzítőket használó előkészítési példányok használatát.
+> This API is not intended to be a replacement for proper error handling and retry policies. Rather, it is intended to be used only in cases where orchestration instances fail for unexpected reasons. For more information on error handling and retry policies, see the [Error handling](durable-functions-error-handling.md) article.
+
+Use the `RewindAsync` (.NET) or `rewind` (JavaScript) method of the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to put the orchestration back into the *Running* state. This method will also rerun the activity or sub-orchestration execution failures that caused the orchestration failure.
+
+For example, let's say you have a workflow involving a series of [human approvals](durable-functions-overview.md#human). Suppose there are a series of activity functions that notify someone that their approval is needed, and wait out the real-time response. After all of the approval activities have received responses or timed out, suppose that another activity fails due to an application misconfiguration, such as an invalid database connection string. The result is an orchestration failure deep into the workflow. With the `RewindAsync` (.NET) or `rewind` (JavaScript) API, an application administrator can fix the configuration error, and rewind the failed orchestration back to the state immediately before the failure. None of the human-interaction steps need to be re-approved, and the orchestration can now complete successfully.
+
+> [!NOTE]
+> The *rewind* feature doesn't support rewinding orchestration instances that use durable timers.
 
 ### <a name="c"></a>C#
 
@@ -565,9 +561,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
 
 ```javascript
 const df = require("durable-functions");
@@ -582,22 +578,22 @@ module.exports = async function(context, instanceId) {
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` parancs használatával közvetlenül is visszahelyezheti a összehangoló példányokat. A következő paramétereket veszi figyelembe:
+You can also rewind an orchestration instance directly by using the [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` command. It takes the following parameters:
 
-* **`id` (kötelező)** : a koordináló példány azonosítója.
-* **`reason` (nem kötelező)** : az előkészítési példány visszatekerésének oka.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. Alapértelmezés szerint a rendszer a (z [) Host. JSON](durable-functions-bindings.md#host-json) fájlban lévő Task hub-nevet használja.
+* **`id` (required)** : ID of the orchestration instance.
+* **`reason` (optional)** : Reason for rewinding the orchestration instance.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. By default, the task hub name in the [host.json](durable-functions-bindings.md#host-json) file is used.
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
 ```
 
-## <a name="purge-instance-history"></a>Példányok előzményeinek kiürítése
+## <a name="purge-instance-history"></a>Purge instance history
 
-Ha el szeretné távolítani a folyamathoz társított összes adatmennyiséget, törölheti a példányok előzményeit. Előfordulhat például, hogy törölni szeretné a befejezett példányhoz társított összes Azure Table sort és nagyméretű üzenet-blobot. Ehhez használja a koordinációs [ügyfél kötésének](durable-functions-bindings.md#orchestration-client)`PurgeInstanceHistoryAsync` (.net) vagy `purgeInstanceHistory` (JavaScript) metódusát.
+To remove all the data associated with an orchestration, you can purge the instance history. For example, you might want to delete any Azure Table rows and large message blobs associated with a completed instance. To do so, use the `PurgeInstanceHistoryAsync` (.NET) or `purgeInstanceHistory` (JavaScript) method of the [orchestration client binding](durable-functions-bindings.md#orchestration-client).
 
-Ez a metódus két túlterheléssel rendelkezik. Az első túlterhelési kiüríti az előzményeket a koordináló példány azonosítója szerint:
+This method has two overloads. The first overload purges history by the ID of the orchestration instance:
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -618,7 +614,7 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-A következő példa egy időzítő által aktivált függvényt mutat be, amely kiüríti az összes olyan előkészítési példány előzményeit, amely a megadott időintervallum után fejeződött be. Ebben az esetben az összes példányhoz tartozó, 30 vagy több nappal ezelőtt befejezett összes példányra vonatkozó adatvesztést távolítja el. Napi egyszeri futtatásra van ütemezve, 12 ÓRAKOR:
+The next example shows a timer-triggered function that purges the history for all orchestration instances that completed after the specified time interval. In this case, it removes data for all instances completed 30 or more days ago. It's scheduled to run once per day, at 12 AM:
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -637,46 +633,46 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-**JavaScript** A `purgeInstanceHistoryBy` módszer használatával több példány esetében feltételesen törölheti a példányok előzményeit.
+**JavaScript** The `purgeInstanceHistoryBy` method can be used to conditionally purge instance history for multiple instances.
 
 > [!NOTE]
-> Ahhoz, hogy a törlési előzmények sikeresek legyenek, a célként megadott példány futásidejű állapotát be kell **fejezni**, meg kell **szakítani**, vagy **sikertelennek**kell lennie.
+> For the purge history operation to succeed, the runtime status of the target instance must be **Completed**, **Terminated**, or **Failed**.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` parancs használatával törölheti az előkészítési példány előzményeit. Az előző szakaszban szereplő C# második példához hasonlóan az a megadott időintervallumban létrehozott összes összehangoló példány előzményeit is törli. A kitörölhető példányok tovább szűrhetők futtatókörnyezeti állapot alapján. A parancsnak több paramétere van:
+You can purge an orchestration instance's history by using the [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` command. Similar to the second C# example in the preceding section, it purges the history for all orchestration instances created during a specified time interval. You can further filter purged instances by runtime status. The command has several parameters:
 
-* **`created-after` (nem kötelező)** : a dátum/idő (UTC) után létrehozott példányok előzményeinek kiürítése. ISO 8601 formázott dátum/idő.
-* **`created-before` (nem kötelező)** : az ezen dátum/idő (UTC) előtt létrehozott példányok előzményeinek kiürítése. ISO 8601 formázott dátum/idő.
-* **`runtime-status` (nem kötelező)** : a példányok előzményeinek kiürítése adott állapottal (például futó vagy befejezett). Több (szóközzel tagolt) állapotot is biztosíthat.
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. Alapértelmezés szerint a rendszer a (z [) Host. JSON](durable-functions-bindings.md#host-json) fájlban lévő Task hub-nevet használja.
+* **`created-after` (optional)** : Purge the history of instances created after this date/time (UTC). ISO 8601 formatted datetimes accepted.
+* **`created-before` (optional)** : Purge the history of instances created before this date/time (UTC). ISO 8601 formatted datetimes accepted.
+* **`runtime-status` (optional)** : Purge the history of instances with a particular status (for example, running or completed). Can provide multiple (space separated) statuses.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. By default, the task hub name in the [host.json](durable-functions-bindings.md#host-json) file is used.
 
-A következő parancs törli a 2018 november 14. előtt létrehozott összes sikertelen példány előzményeit az 7:35 PM (UTC) időpontban.
+The following command deletes the history of all failed instances created before November 14, 2018 at 7:35 PM (UTC).
 
 ```bash
 func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runtime-status failed
 ```
 
-## <a name="delete-a-task-hub"></a>Feladat központ törlése
+## <a name="delete-a-task-hub"></a>Delete a task hub
 
-A [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` parancs használatával törölheti az adott feladathoz társított összes tárolási összetevőt, beleértve az Azure Storage-táblákat, a várólistákat és a blobokat is. A parancsnak két paramétere van:
+Using the [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` command, you can delete all storage artifacts associated with a particular task hub, including Azure storage tables, queues, and blobs. The command has two parameters:
 
-* **`connection-string-setting` (nem kötelező)** : a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* **`task-hub-name` (nem kötelező)** : a használni kívánt Durable functions Task hub neve. Alapértelmezés szerint a rendszer a (z [) Host. JSON](durable-functions-bindings.md#host-json) fájlban lévő Task hub-nevet használja.
+* **`connection-string-setting` (optional)** : Name of the application setting containing the storage connection string to use. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
+* **`task-hub-name` (optional)** : Name of the Durable Functions task hub to use. By default, the task hub name in the [host.json](durable-functions-bindings.md#host-json) file is used.
 
-A következő parancs törli az `UserTest` Task hub-hoz társított összes Azure Storage-adatát.
+The following command deletes all Azure storage data associated with the `UserTest` task hub.
 
 ```bash
 func durable delete-task-hub --task-hub-name UserTest
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Útmutató a verziószámozás kezeléséhez](durable-functions-versioning.md)
+> [Learn how to handle versioning](durable-functions-versioning.md)
 
 > [!div class="nextstepaction"]
-> [Beépített HTTP API-referenciák a példányok kezeléséhez](durable-functions-http-api.md)
+> [Built-in HTTP API reference for instance management](durable-functions-http-api.md)

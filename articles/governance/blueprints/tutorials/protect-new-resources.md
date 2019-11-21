@@ -1,61 +1,61 @@
 ---
-title: Új erőforrások megvédése tervrajzok zárolásával
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervrajzok erőforrás-zárolási beállításait csak olvasható módon, és ne törölje az újonnan telepített erőforrások elleni védelemhez.
+title: 'Tutorial: Protect new resources with locks'
+description: In this tutorial, you use the Azure Blueprints resource locks options Read Only and Do Not Delete to protect newly deployed resources.
 ms.date: 03/28/2019
 ms.topic: tutorial
-ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5be8834e7d598e1d6a98ff7b46184ac0781190f5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960255"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210177"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Protect new resources with Azure Blueprints resource locks
 
-Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Resource Manager-sablon által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá.
+With Azure Blueprints [resource locks](../concepts/resource-locking.md), you can protect newly deployed resources from being tampered with, even by an account with the _Owner_ role. You can add this protection in the blueprint definitions of resources created by a Resource Manager template artifact.
 
-Ebben az oktatóanyagban a következő lépéseket hajtja végre:
+In this tutorial, you'll complete these steps:
 
 > [!div class="checklist"]
-> - Terv definíciójának létrehozása
-> - A terv definíciójának megjelölése **közzétettként**
-> - A terv definíciójának társítása meglévő előfizetéshez
-> - Az új erőforráscsoport vizsgálata
-> - A terv hozzárendelésének megszüntetése a zárolások eltávolításához
+> - Create a blueprint definition
+> - Mark your blueprint definition as **Published**
+> - Assign your blueprint definition to an existing subscription
+> - Inspect the new resource group
+> - Unassign the blueprint to remove the locks
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-blueprint-definition"></a>Terv definíciójának létrehozása
+## <a name="create-a-blueprint-definition"></a>Create a blueprint definition
 
-Először hozza létre a terv definícióját.
+First, create the blueprint definition.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Az **első lépések** oldalon, a bal oldalon válassza a **Létrehozás** **a terv létrehozása**alatt lehetőséget.
+1. On the **Getting started** page on the left, select **Create** under **Create a blueprint**.
 
-1. Keresse meg az oldal tetején található **üres terv** tervezetét. Válassza **az indítás üres tervtel**lehetőséget.
+1. Find the **Blank Blueprint** blueprint sample at the top of the page. Select **Start with blank blueprint**.
 
-1. Adja meg ezt az információt az **alapok** lapon:
+1. Enter this information on the **Basics** tab:
 
-   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a **zárolt storageaccount**nevet fogjuk használni.
-   - **Terv leírása**: adja meg a terv definíciójának leírását. **Az üzembe helyezett erőforrásokra vonatkozó terv-erőforrás-zárolás tesztelésére**használható.
-   - **Definíció helye**: kattintson a három pontot ábrázoló gombra (...), majd válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a terv definícióját.
+   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name **locked-storageaccount**.
+   - **Blueprint description**: Add a description for the blueprint definition. Use **For testing blueprint resource locking on deployed resources**.
+   - **Definition location**: Select the ellipsis button (...) and then select the management group or subscription to save your blueprint definition to.
 
-1. Válassza ki az oldal tetején található **összetevők fület** , vagy válassza a Next (tovább) gombot **:** az oldal alján található összetevők.
+1. Select the **Artifacts** tab at the top of the page, or select **Next: Artifacts** at the bottom of the page.
 
-1. Erőforráscsoport hozzáadása az előfizetési szinten:
-   1. Válassza ki az összetevő **hozzáadása** sort az **előfizetés**alatt.
-   1. Válassza az **erőforráscsoport** elemet az összetevő **típusa**területen.
-   1. Állítsa az összetevő **megjelenítendő nevét** **RGtoLock**értékre.
-   1. Hagyja üresen az **erőforráscsoport neve** és **helye** mezőket, de győződjön meg arról, hogy az egyes tulajdonságokon a jelölőnégyzet be van jelölve, hogy **dinamikus paramétereket**lehessen használni.
-   1. A **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
+1. Add a resource group at the subscription level:
+   1. Select the **Add artifact** row under **Subscription**.
+   1. Select **Resource Group** under **Artifact type**.
+   1. Set the **Artifact display name** to **RGtoLock**.
+   1. Leave the **Resource Group Name** and **Location** boxes blank, but make sure the check box is selected on each property to make them **dynamic parameters**.
+   1. Select **Add** to add the artifact to the blueprint.
 
-1. Sablon hozzáadása az erőforráscsoport alatt:
-   1. Válassza a **RGtoLock** bejegyzés alatt az összetevők **hozzáadása** sort. 
-   1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusa**területen, állítsa a **lelet megjelenítendő nevét** **StorageAccount**értékre, és hagyja üresen a **leírást** . 
-   1. A **sablon** lapon illessze be az alábbi Resource Manager-sablont a szerkesztő mezőbe. A sablon beillesztése után a **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
+1. Add a template under the resource group:
+   1. Select the **Add artifact** row under the **RGtoLock** entry. 
+   1. Select **Azure Resource Manager template** under **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank. 
+   1. On the **Template** tab, paste the following Resource Manager template into the editor box. After you paste in the template, select **Add** to add the artifact to the blueprint.
 
    ```json
    {
@@ -99,134 +99,134 @@ Először hozza létre a terv definícióját.
    }
    ```
 
-1. Válassza a lap alján található **Piszkozat mentése** elemet.
+1. Select **Save Draft** at the bottom of the page.
 
-Ez a lépés létrehozza a terv definícióját a kiválasztott felügyeleti csoportban vagy előfizetésben.
+This step creates the blueprint definition in the selected management group or subscription.
 
-A **terv mentése sikeres** portál értesítése után lépjen a következő lépésre.
+After the **Saving blueprint definition succeeded** portal notification appears, go to the next step.
 
-## <a name="publish-the-blueprint-definition"></a>A terv definíciójának közzététele
+## <a name="publish-the-blueprint-definition"></a>Publish the blueprint definition
 
-A terv definíciója már létre lett hozva a környezetben. A rendszer **Piszkozat** módban jön létre, és közzé kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen.
+Your blueprint definition has now been created in your environment. It's created in **Draft** mode and must be published before it can be assigned and deployed.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők segítségével keresse meg a **zárolt storageaccount** terv definícióját, majd jelölje ki.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
 
-1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldali új ablaktáblán adja meg a **1,0** -as **verziót**. Ez a tulajdonság akkor hasznos, ha később módosítja a módosításokat. Adja meg a **módosítási megjegyzéseket**, például az **első verziót, amelyet a tervbe helyezett erőforrások zárolásához kell közzétenni**. Ezután válassza a **Közzététel** elemet az oldal alján.
+1. Select **Publish blueprint** at the top of the page. In the new pane on the right, enter **1.0** as the **Version**. This property is useful if you make a change later. Enter **Change notes**, such as **First version published for locking blueprint deployed resources**. Then select **Publish** at the bottom of the page.
 
-Ez a lépés lehetővé teszi a terv hozzárendelését egy előfizetéshez. A terv definíciójának közzététele után továbbra is végezhet módosításokat. Ha módosítja a módosításokat, közzé kell tennie a definíciót egy új verzió értékkel, hogy nyomon követhesse az azonos terv definíciójának verziói közötti különbségeket.
+This step makes it possible to assign the blueprint to a subscription. After the blueprint definition is published, you can still make changes. If you make changes, you need to publish the definition with a new version value to track differences between versions of the same blueprint definition.
 
-Ha megjelenik a **közzétételi terv definíciója sikeres** portál értesítése, lépjen a következő lépésre.
+After the **Publishing blueprint definition succeeded** portal notification appears, go to the next step.
 
-## <a name="assign-the-blueprint-definition"></a>A terv definíciójának kiosztása
+## <a name="assign-the-blueprint-definition"></a>Assign the blueprint definition
 
-A terv definíciójának közzététele után hozzárendelheti azt egy előfizetéshez a felügyeleti csoporton belül, ahol mentette. Ebben a lépésben paramétereket biztosít a tervrajz-definíció egyedi telepítésének elvégzéséhez.
+After the blueprint definition is published, you can assign it to a subscription within the management group where you saved it. In this step, you provide parameters to make each deployment of the blueprint definition unique.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők segítségével keresse meg a **zárolt storageaccount** terv definícióját, majd jelölje ki.
+1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
 
-1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
+1. Select **Assign blueprint** at the top of the blueprint definition page.
 
-1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
+1. Provide the parameter values for the blueprint assignment:
 
    - **Alapvető beállítások**
 
-     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban található, ahol a terv definícióját mentette. Ha egynél több előfizetést választ ki, az egyes előfizetésekhez hozzárendelés jön létre a beírt paraméterek használatával.
-     - **Hozzárendelés neve**: a név előre fel van töltve a terv definíciójának neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviseljék, ezért módosítsa a hozzárendelés nevét a **hozzárendelés-zárolt-storageaccount-TestingBPLocks**értékre.
-     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Ebben az oktatóanyagban válassza az **USA 2. keleti**régióját.
-     - **Terv definíciójának verziója**: válassza ki a közzétett **1,0** -es verziót a terv definíciójában.
+     - **Subscriptions**: Select one or more of the subscriptions that are in the management group where you saved your blueprint definition. If you select more than one subscription, an assignment will be created for each subscription, using the parameters you enter.
+     - **Assignment name**: The name is pre-populated based on the name of the blueprint definition. We want this assignment to represent locking the new resource group, so change the assignment name to **assignment-locked-storageaccount-TestingBPLocks**.
+     - **Location**: Select a region in which to create the managed identity. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
+       For this tutorial, select **East US 2**.
+     - **Blueprint definition version**: Select the published version **1.0** of the blueprint definition.
 
-   - **Hozzárendelés zárolása**
+   - **Lock Assignment**
 
-     Válassza a **csak olvasható** terv zárolási módot. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+     Select the **Read Only** blueprint lock mode. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
-   - **Felügyelt identitás**
+   - **Managed Identity**
 
-     Használja az alapértelmezett beállítást: **rendszer rendelve**. További információ: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Use the default option: **System assigned**. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - **Összetevő paramétereinek**
+   - **Artifact parameters**
 
-     Az ebben a szakaszban meghatározott paraméterek arra a tárgyra vonatkoznak, amelyben definiálva vannak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az **érték** oszlopban látható értékre.
+     The parameters defined in this section apply to the artifact under which they're defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) because they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what you see in the **Value** column.
 
-     |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
+     |Artifact name|Artifact type|Paraméter neve|Value (Díj)|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Name (Név)|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
-     |StorageAccount|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték _Standard_LRS_.|
+     |RGtoLock resource group|Erőforráscsoport|Név|TestingBPLocks|Defines the name of the new resource group to apply blueprint locks to.|
+     |RGtoLock resource group|Erőforráscsoport|Földrajzi egység|USA 2. nyugati régiója|Defines the location of the new resource group to apply blueprint locks to.|
+     |StorageAccount|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|The storage SKU. The default value is _Standard_LRS_.|
 
-1. Miután megadta az összes paramétert, válassza az oldal alján található **hozzárendelés** elemet.
+1. After you've entered all parameters, select **Assign** at the bottom of the page.
 
-Ez a lépés telepíti a definiált erőforrásokat, és konfigurálja a kiválasztott **zárolási hozzárendelést**. A tervbeli zárolások alkalmazása akár 30 percet is igénybe vehet.
+This step deploys the defined resources and configures the selected **Lock Assignment**. It can take up to 30 minutes to apply blueprint locks.
 
-A **terv kiosztásának meghatározása sikeres** portál értesítése után lépjen a következő lépésre.
+After the **Assigning blueprint definition succeeded** portal notification appears, go to the next step.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>A hozzárendelés által üzembe helyezett erőforrások vizsgálata
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
 
-A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és a Resource Manager-sablon összetevő által üzembe helyezett Storage-fiókot. Az új erőforráscsoport és a kiválasztott zárolási állapot a hozzárendelés részletei lapon látható.
+The assignment creates the resource group _TestingBPLocks_ and the storage account deployed by the Resource Manager template artifact. The new resource group and the selected lock state are shown on the assignment details page.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** terv-hozzárendelést, majd jelölje ki.
+1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
 
-   Ebből a lapról láthatjuk, hogy a hozzárendelés sikeres volt, és az erőforrások az új terv zárolási állapotával lettek telepítve. Ha a hozzárendelés frissül, a **hozzárendelési művelet** legördülő lista az egyes definíciós verziók telepítésének részleteit jeleníti meg. A tulajdonságlap megnyitásához kiválaszthatja az erőforráscsoportot.
+   From this page, we can see that the assignment succeeded and that the resources were deployed with the new blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. You can select the resource group to open the property page.
 
-1. Válassza ki a **TestingBPLocks** erőforráscsoportot.
+1. Select the **TestingBPLocks** resource group.
 
-1. Válassza a bal oldali **hozzáférés-vezérlés (iam)** lapot. Ezután válassza ki a **szerepkör-hozzárendelések** lapot.
+1. Select the **Access control (IAM)** page on the left. Then select the **Role assignments** tab.
 
-   Itt láthatjuk, hogy a _hozzárendelés-zárolt-storageaccount-TestingBPLocks_ terv-hozzárendelés _tulajdonosi_ szerepkörrel rendelkezik. Ez a szerepkör azért van, mert ez a szerepkör az erőforráscsoport üzembe helyezésére és zárolására szolgál.
+   Here we see that the _assignment-locked-storageaccount-TestingBPLocks_ blueprint assignment has the _Owner_ role. It has this role because this role was used to deploy and lock the resource group.
 
-1. Jelölje be a **megtagadási hozzárendelések** lapot.
+1. Select the **Deny assignments** tab.
 
-   A terv-hozzárendelés [megtagadási hozzárendelést](../../../role-based-access-control/deny-assignments.md) hozott létre a központilag telepített erőforráscsoporthoz, hogy kikényszerítse az **írásvédett** terv zárolási módját. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogokkal rendelkezik a **szerepkör-hozzárendelések** lapon bizonyos műveletek elvégzéséhez. A Megtagadás hozzárendelés az _összes rendszerbiztonsági tagra_hatással van.
+   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the **Read Only** blueprint lock mode. The deny assignment prevents someone with appropriate rights on the **Role assignments** tab from taking specific actions. The deny assignment affects _All principals_.
 
-   További információ a megtagadási hozzárendelésből származó rendszerbiztonsági tag kizárásáról: [tervrajzok erőforrás-zárolás](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+   For information about excluding a principal from a deny assignment, see [blueprints resource locking](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
 
-1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza ki a **megtagadott engedélyek** lapot.
+1. Select the deny assignment, and then select the **Denied Permissions** page on the left.
 
-   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de az olvasási hozzáférés engedélyezése a **\*/Read** kizárásával **.**
+   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but it allows read access by excluding **\*/read** via **NotActions**.
 
-1. A Azure Portal navigációs menüben válassza a **TestingBPLocks-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a **TestingBPLocks** nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
+1. In the Azure portal breadcrumb, select **TestingBPLocks - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name **TestingBPLocks** to confirm the delete and then select **Delete** at the bottom of the pane.
 
-   A portál értesítésének **törlési erőforráscsoport-TestingBPLocks sikertelen** . A hiba azt jelzi, hogy a fióknak van engedélye az erőforráscsoport törlésére, a hozzáférés megtagadva a terv-hozzárendeléssel. Ne feledje, hogy a terv hozzárendelése során a **csak olvasható** terv zárolási módot jelöltük ki. A terv zárolása megakadályozza, hogy egy olyan fiók, amely nem rendelkezik engedéllyel, akár _tulajdonossal_is, törölheti az erőforrást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+   The portal notification **Delete resource group TestingBPLocks failed** appears. The error states that although your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the **Read Only** blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
-Ezek a lépések bemutatják, hogy a telepített erőforrások mostantól a nem kívánt törlést megakadályozó, olyan fiókkal is védve vannak, amelyik jogosult az erőforrások törlésére.
+These steps show that our deployed resources are now protected with blueprint locks that prevent unwanted deletion, even from an account that has permission to delete the resources.
 
-## <a name="unassign-the-blueprint"></a>A terv hozzárendelésének megszüntetése
+## <a name="unassign-the-blueprint"></a>Unassign the blueprint
 
-Az utolsó lépés a terv definíciójának hozzárendelésének eltávolítása. A hozzárendelés eltávolítása nem távolítja el a társított összetevőket.
+The last step is to remove the assignment of the blueprint definition. Removing the assignment doesn't remove the associated artifacts.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. Select **All services** in the left pane. Search for and select **Blueprints**.
 
-1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** terv-hozzárendelést, majd jelölje ki.
+1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
 
-1. Válassza az oldal tetején található **terv megszüntetése** elemet. Olvassa el a figyelmeztetést a megerősítő párbeszédpanelen, majd kattintson az **OK gombra**.
+1. Select **Unassign blueprint** at the top of the page. Read the warning in the confirmation dialog box, and then select **OK**.
 
-   A terv-hozzárendelés eltávolításakor a terv zárolásait is eltávolítja a rendszer. Az erőforrásokat újra törölheti egy megfelelő engedélyekkel rendelkező fiókkal.
+   When the blueprint assignment is removed, the blueprint locks are also removed. The resources can once again be deleted by an account with appropriate permissions.
 
-1. Az Azure menüben válassza az **erőforráscsoportok** lehetőséget, majd válassza a **TestingBPLocks**lehetőséget.
+1. Select **Resource groups** from the Azure menu, and then select **TestingBPLocks**.
 
-1. Válassza a bal oldali **hozzáférés-vezérlés (iam)** lapot, majd válassza ki a **szerepkör-hozzárendelések** lapot.
+1. Select the **Access control (IAM)** page on the left and then select the **Role assignments** tab.
 
-Az erőforráscsoport biztonsága azt mutatja, hogy a terv hozzárendelése már nem rendelkezik _tulajdonosi_ hozzáféréssel.
+The security for the resource group shows that the blueprint assignment no longer has _Owner_ access.
 
-Ha a **terv-hozzárendelés eltávolítása sikeres** portál értesítés jelenik meg, lépjen a következő lépésre.
+After the **Removing blueprint assignment succeeded** portal notification appears, go to the next step.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
+When you're finished with this tutorial, delete these resources:
 
-- Erőforráscsoport _TestingBPLocks_
-- Terv definíciója _zárolva – storageaccount_
+- Resource group _TestingBPLocks_
+- Blueprint definition _locked-storageaccount_
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
-- Ismerje meg, hogyan használható a [terv erőforrás-zárolása](../concepts/resource-locking.md).
+- Find out how to use [blueprint resource locking](../concepts/resource-locking.md).
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
-- A tervrajzok hozzárendelése során [felmerülő problémák elhárítása](../troubleshoot/general.md) .
+- [Troubleshoot issues](../troubleshoot/general.md) during the assignment of a blueprint.

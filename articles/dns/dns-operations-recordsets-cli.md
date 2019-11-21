@@ -1,9 +1,9 @@
 ---
-title: Az Azure CLI használatával az Azure DNS a DNS-rekordok kezelése |} A Microsoft Docs
-description: Az Azure DNS-tartomány üzemeltetése esetén kezelése a DNS-rekordhalmazok és rekordok az Azure DNS szolgáltatásra.
+title: Manage DNS records in Azure DNS using the Azure CLI | Microsoft Docs
+description: Managing DNS record sets and records on Azure DNS when hosting your domain on Azure DNS.
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
@@ -13,26 +13,26 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
-ms.author: victorh
-ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: a0316710f78afc8810f5f65e108638b08fae3da2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293354"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211638"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS az Azure CLI használatával
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Manage DNS records and recordsets in Azure DNS using the Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Ez a cikk bemutatja, hogyan kezelheti a DNS-zóna DNS-rekordok használatával a platformfüggetlen Azure parancssori felület, amely Windows, Mac és Linux rendszereken érhető el. DNS-rekordjait is kezelhetők [Azure PowerShell-lel](dns-operations-recordsets.md) vagy a [az Azure portal](dns-operations-recordsets-portal.md).
+This article shows you how to manage DNS records for your DNS zone by using the cross-platform Azure CLI, which is available for Windows, Mac and Linux. You can also manage your DNS records using [Azure PowerShell](dns-operations-recordsets.md) or the [Azure portal](dns-operations-recordsets-portal.md).
 
-Ebben a cikkben szereplő példák feltételezik, hogy már [telepítve van az Azure CLI-jelentkezett be, és létrehozott egy DNS-zónát](dns-operations-dnszones-cli.md).
+The examples in this article assume you have already [installed the Azure CLI, signed in, and created a DNS zone](dns-operations-dnszones-cli.md).
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Mielőtt létrehozná a DNS-rekordokat Azure DNS-ben, tisztában kell lennie azzal, hogyan rendezi az Azure DNS DNS-rekordhalmazokba a DNS-rekordokat.
 
@@ -42,13 +42,13 @@ Az Azure DNS DNS-rekordjaival kapcsolatos további információért tekintse meg
 
 ## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
-DNS-rekord létrehozásához használja a `az network dns record-set <record-type> add-record` parancsot (ahol `<record-type>` a típusú rekordot, azaz egy, srv, txt stb.) További segítségért lásd: `az network dns record-set --help`.
+To create a DNS record, use the `az network dns record-set <record-type> add-record` command (where `<record-type>` is the type of record, i.e a, srv, txt, etc.) For help, see `az network dns record-set --help`.
 
-Egy rekord létrehozásakor meg kell adni az erőforráscsoport, a zóna és a rekordhalmaz nevét, a rekordtípust és a létrehozandó rekord részletes adatait. A megadott rekordhalmaz nevének kell lennie egy *relatív* neve, ami azt jelenti, azt kell zárnia a zóna nevét.
+Egy rekord létrehozásakor meg kell adni az erőforráscsoport, a zóna és a rekordhalmaz nevét, a rekordtípust és a létrehozandó rekord részletes adatait. The record set name given must be a *relative* name, meaning it must exclude the zone name.
 
 Ha a rekordhalmaz még nem létezik, akkor a parancs létrehozza. Ha az adott rekordhalmaz már létezik, a parancs felveszi a megadott rekordot a meglévő rekordhalmazba.
 
-Új rekordhalmaz létrehozásakor az alapértelmezett élettartam (time-to-live, TTL) értéke 3600 lesz. A különböző TTLs használatát útmutatásért lásd: [hozzon létre egy DNS-rekordhalmaz](#create-a-dns-record-set).
+Új rekordhalmaz létrehozásakor az alapértelmezett élettartam (time-to-live, TTL) értéke 3600 lesz. For instructions on how to use different TTLs, see [Create a DNS record set](#create-a-dns-record-set).
 
 Az alábbi példaparancs a *MyResourceGroup* erőforráscsoport *contoso.com* zónájában egy *www* nevű, „A” típusú rekordot hoz létre. Az „A” rekord IP-címe: *1.2.3.4*.
 
@@ -56,51 +56,51 @@ Az alábbi példaparancs a *MyResourceGroup* erőforráscsoport *contoso.com* z�
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-Hozzon létre egy rekordot a zóna tetején található rekordokra való (ebben az esetben "contoso.com"), használja a "\@", az idézőjelekkel együtt:
+To create a record set in the apex of the zone (in this case, "contoso.com"), use the record name "\@", including the quotation marks:
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
 ```
 
-## <a name="create-a-dns-record-set"></a>A DNS-rekordhalmaz létrehozása
+## <a name="create-a-dns-record-set"></a>Create a DNS record set
 
-A fenti példákban a DNS-rekord vagy hozzáadni egy meglévő rekordhalmazhoz vagy a beállított rekord létrehozásának *implicit módon*. A rekordhalmaz is létrehozhat *explicit módon* rekordok hozzáadása előtt. Az Azure DNS támogatja a "empty" rekordhalmazok, amely működhet-e fenn a DNS-név DNS-rekordok létrehozása előtt helyettesíti. Üres rekordhalmazok az Azure DNS vezérlősík láthatók, de nem jelennek meg az Azure DNS névkiszolgálóit.
+In the above examples, the DNS record was either added to an existing record set, or the record set was created *implicitly*. You can also create the record set *explicitly* before adding records to it. Azure DNS supports 'empty' record sets, which can act as a placeholder to reserve a DNS name before creating DNS records. Empty record sets are visible in the Azure DNS control plane, but do not appear on the Azure DNS name servers.
 
-Rekordhalmazok használatával jön létre a `az network dns record-set <record-type> create` parancsot. További segítségért lásd: `az network dns record-set <record-type> create --help`.
+Record sets are created using the `az network dns record-set <record-type> create` command. További segítségért lásd: `az network dns record-set <record-type> create --help`.
 
-Explicit módon a rekordhalmaz létrehozása lehetővé teszi annak megadását, a rekordhalmaz tulajdonságai például a [idő – Élettartam (TTL)](dns-zones-records.md#time-to-live) és azok metaadatait. [A rekordhalmaz metaadatainak](dns-zones-records.md#tags-and-metadata) minden rekordhalmaz kulcs-érték párok, alkalmazás-specifikus adatok társítása is használható.
+Creating the record set explicitly allows you to specify record set properties such as the [Time-To-Live (TTL)](dns-zones-records.md#time-to-live) and metadata. [Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs.
 
-Az alábbi példa létrehoz egy üres rekordhalmaz 60 másodperc TTL, "A" típusú használatával a `--ttl` paraméter (krátká forma `-l`):
+The following example creates an empty record set of type 'A' with a 60-second TTL, by using the `--ttl` parameter (short form `-l`):
 
 ```azurecli
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --ttl 60
 ```
 
-Az alábbi példa létrehoz egy rekordot a két metaadat-bejegyzéseket, "részleg = pénzügyi" és "környezet éles =", használatával a `--metadata` paramétert:
+The following example creates a record set with two metadata entries, "dept=finance" and "environment=production", by using the `--metadata` parameter :
 
 ```azurecli
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
-Létrehozott egy üres rekordhalmaz kellene rekordokat is hozzáadhatók használatával `azure network dns record-set <record-type> add-record` leírtak szerint [DNS-rekord létrehozása](#create-a-dns-record).
+Having created an empty record set, records can be added using `azure network dns record-set <record-type> add-record` as described in [Create a DNS record](#create-a-dns-record).
 
-## <a name="create-records-of-other-types"></a>Más típusú rekordok létrehozása
+## <a name="create-records-of-other-types"></a>Create records of other types
 
-Kellene látható részletesebben "A" rekordok létrehozása, a következő példák bemutatják az Azure DNS által támogatott további rekordtípusok rekord létrehozása.
+Having seen in detail how to create 'A' records, the following examples show how to create record of other record types supported by Azure DNS.
 
-A rekordadatok megadásához használt paraméterek a rekord típusától függnek. Az „A” típusú rekordok esetén például a `--ipv4-address <IPv4 address>` paraméterrel lehet megadni az IPv4-címet. Az egyes rekordtípusokra a paraméterek használatával is megadható `az network dns record-set <record-type> add-record --help`.
+A rekordadatok megadásához használt paraméterek a rekord típusától függnek. Az „A” típusú rekordok esetén például a `--ipv4-address <IPv4 address>` paraméterrel lehet megadni az IPv4-címet. The parameters for each record type can be listed using `az network dns record-set <record-type> add-record --help`.
 
-Minden esetben bemutatjuk, hogyan hozhat létre egy rekordot. A bejegyzés kerül a meglévő rekordhalmazt, vagy implicit módon létrehozott rekordhalmaz. További tájékoztatást a rekordhalmazok létrehozásához, és bejegyzést meghatározó paraméter explicit módon, olvassa el [hozzon létre egy DNS-rekordhalmaz](#create-a-dns-record-set).
+In each case, we show how to create a single record. The record is added to the existing record set, or a record set created implicitly. For more information on creating record sets and defining record set parameter explicitly, see [Create a DNS record set](#create-a-dns-record-set).
 
-Nem biztosítunk lehet például egy SOA típusú rekordhalmaz létrehozása, mivel SOAs jönnek létre, és törölni minden DNS-zónát, és nem hozható létre vagy külön-külön törölve. Azonban [módosíthatja a SOA típusú, újabb példában látható módon](#to-modify-an-soa-record).
+We do not give an example to create an SOA record set, since SOAs are created and deleted with each DNS zone and cannot be created or deleted separately. However, [the SOA can be modified, as shown in a later example](#to-modify-an-soa-record).
 
-### <a name="create-an-aaaa-record"></a>Hozzon létre egy AAAA típusú rekordot
+### <a name="create-an-aaaa-record"></a>Create an AAAA record
 
 ```azurecli
 az network dns record-set aaaa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
 ```
 
-### <a name="create-an-caa-record"></a>A CAA-rekord létrehozása
+### <a name="create-an-caa-record"></a>Create an CAA record
 
 ```azurecli
 az network dns record-set caa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-caa --flags 0 --tag "issue" --value "ca1.contoso.com"
@@ -109,9 +109,9 @@ az network dns record-set caa add-record --resource-group myresourcegroup --zone
 ### <a name="create-a-cname-record"></a>Create a CNAME record
 
 > [!NOTE]
-> A DNS-szabványok nem engedélyeznek CNAME-rekordokat a zóna tetején található rekordokra (`--Name "@"`), és nem teszik egynél több rekordot tartalmazó rekordhalmazok.
+> The DNS standards do not permit CNAME records at the apex of a zone (`--Name "@"`), nor do they permit record sets containing more than one record.
 > 
-> További információkért lásd: [CNAME-rekordokat](dns-zones-records.md#cname-records).
+> For more information, see [CNAME records](dns-zones-records.md#cname-records).
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
@@ -119,182 +119,182 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 
 ### <a name="create-an-mx-record"></a>Create an MX record
 
-Ebben a példában a rekordhalmaznevet használjuk "\@" hozhat létre az MX-rekord a zóna legfelső pontján (ebben az esetben "contoso.com").
+In this example, we use the record set name "\@" to create the MX record at the zone apex (in this case, "contoso.com").
 
 ```azurecli
 az network dns record-set mx add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
 ```
 
-### <a name="create-an-ns-record"></a>NS-rekord létrehozása
+### <a name="create-an-ns-record"></a>Create an NS record
 
 ```azurecli
 az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
 ```
 
-### <a name="create-a-ptr-record"></a>PTR típusú rekord létrehozása
+### <a name="create-a-ptr-record"></a>Create a PTR record
 
-Ebben az esetben "my-arpa-zone.com" a az IP-címtartományt képviselő ARPA-zónát jelöli. A zóna minden PTR típusú rekordhalmaza az IP-címtartomány egyik IP-címének felel meg.  A rekord neve "10" az utolsó oktettet IP-cím az IP-címtartomány, ez a bejegyzés által képviselt belül.
+In this case, 'my-arpa-zone.com' represents the ARPA zone representing your IP range. A zóna minden PTR típusú rekordhalmaza az IP-címtartomány egyik IP-címének felel meg.  The record name '10' is the last octet of the IP address within this IP range represented by this record.
 
 ```azurecli
 az network dns record-set ptr add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
 ```
 
-### <a name="create-an-srv-record"></a>Hozzon létre egy SRV-rekordot
+### <a name="create-an-srv-record"></a>Create an SRV record
 
-Létrehozásakor egy [SRV rekordhalmaz](dns-zones-records.md#srv-records), adja meg a  *\_szolgáltatás* és  *\_protokoll* a rekordhalmaz-neve. Nem kell felvenni "\@" a rekordhalmaz nevét, ha létrehozása egy SRV-rekordot a zóna legfelső pontján.
+When creating an [SRV record set](dns-zones-records.md#srv-records), specify the *\_service* and *\_protocol* in the record set name. There is no need to include "\@" in the record set name when creating an SRV record set at the zone apex.
 
 ```azurecli
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
-### <a name="create-a-txt-record"></a>Hozzon létre egy txt típusú rekordot
+### <a name="create-a-txt-record"></a>Create a TXT record
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy txt típusú rekordot. További információ a támogatott txt típusú rekordok a karakterlánc maximális hossza: [txt típusú rekordok](dns-zones-records.md#txt-records).
+The following example shows how to create a TXT record. For more information about the maximum string length supported in TXT records, see [TXT records](dns-zones-records.md#txt-records).
 
 ```azurecli
 az network dns record-set txt add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
 ```
 
-## <a name="get-a-record-set"></a>Rekordhalmaz beolvasása
+## <a name="get-a-record-set"></a>Get a record set
 
-Egy meglévő rekordhalmaz kérheti `az network dns record-set <record-type> show`. További segítségért lásd: `az network dns record-set <record-type> show --help`.
+To retrieve an existing record set, use `az network dns record-set <record-type> show`. További segítségért lásd: `az network dns record-set <record-type> show --help`.
 
-Egy rekord vagy egy rekordhalmaz létrehozásakor, a rekordhalmaz nevének megadott kell lenniük egy *relatív* neve, ami azt jelenti, azt kell zárnia a zóna nevét. Emellett szüksége határozza meg a rekord típusát, a zóna, a rekordhalmaz és az erőforráscsoport, amely tartalmazza a zóna tartalmazó.
+As when creating a record or record set, the record set name given must be a *relative* name, meaning it must exclude the zone name. You also need to specify the record type, the zone containing the record set, and the resource group containing the zone.
 
-Az alábbi példa lekéri a rekord *www* , adjon meg egy zónából *contoso.com* erőforráscsoportban *MyResourceGroup*:
+The following example retrieves the record *www* of type A from zone *contoso.com* in resource group *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a show --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 
-## <a name="list-record-sets"></a>Lista rekordhalmazok
+## <a name="list-record-sets"></a>List record sets
 
-Használatával listázhatja az összes rekordot a DNS-zóna az `az network dns record-set list` parancsot. További segítségért lásd: `az network dns record-set list --help`.
+You can list all records in a DNS zone by using the `az network dns record-set list` command. További segítségért lásd: `az network dns record-set list --help`.
 
-Ebben a példában adja vissza az összes rekordot a zónában beállítja *contoso.com*, erőforráscsoportban *MyResourceGroup*, nevét és a rekordtípus függetlenül:
+This example returns all record sets in the zone *contoso.com*, in resource group *MyResourceGroup*, regardless of name or record type:
 
 ```azurecli
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
 ```
 
-Ebben a példában minden rekordhalmazok, amelyek megfelelnek a megadott rekordtípus (ebben az esetben az "A" rekordok) adja vissza:
+This example returns all record sets that match the given record type (in this case, 'A' records):
 
 ```azurecli
 az network dns record-set a list --resource-group myresourcegroup --zone-name contoso.com 
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Adjon hozzá egy rekordot egy meglévő rekordhalmazhoz
+## <a name="add-a-record-to-an-existing-record-set"></a>Add a record to an existing record set
 
-Használhat `az network dns record-set <record-type> add-record` mindkét rekordot hozhat létre egy új rekordhalmazt, vagy adjon hozzá egy rekordot egy meglévő rekordhalmaz.
+You can use `az network dns record-set <record-type> add-record` both to create a record in a new record set, or to add a record to an existing record set.
 
-További információkért lásd: [DNS-rekord létrehozása](#create-a-dns-record) és [más típusú rekordok létrehozása](#create-records-of-other-types) felett.
+For more information, see [Create a DNS record](#create-a-dns-record) and [Create records of other types](#create-records-of-other-types) above.
 
-## <a name="remove-a-record-from-an-existing-record-set"></a>Távolítsa el egy rekordot egy meglévő rekordhalmazt.
+## <a name="remove-a-record-from-an-existing-record-set"></a>Remove a record from an existing record set.
 
-Egy meglévő rekordhalmaz DNS-rekord eltávolításához használja `az network dns record-set <record-type> remove-record`. További segítségért lásd: `az network dns record-set <record-type> remove-record -h`.
+To remove a DNS record from an existing record set, use `az network dns record-set <record-type> remove-record`. További segítségért lásd: `az network dns record-set <record-type> remove-record -h`.
 
-Ez a parancs egy DNS-rekord törlése egy rekordhalmaz. A legutóbbi bejegyzést a rekordhalmaz törlése esetén a rekordot maga is törlődik. Tartsa meg helyette üres rekordhalmazt, használja a `--keep-empty-record-set` lehetőséget.
+This command deletes a DNS record from a record set. If the last record in a record set is deleted, the record set itself is also deleted. To keep the empty record set instead, use the `--keep-empty-record-set` option.
 
-Meg kell adni a törölni kívánt rekord, és a zóna törölni kell, ugyanazokat a paramétereket, használatával, egy a rekord létrehozásakor `az network dns record-set <record-type> add-record`. Ezek a paraméterek leírását [DNS-rekord létrehozása](#create-a-dns-record) és [más típusú rekordok létrehozása](#create-records-of-other-types) felett.
+You need to specify the record to be deleted and the zone it should be deleted from, using the same parameters as when creating a record using `az network dns record-set <record-type> add-record`. These parameters are described in [Create a DNS record](#create-a-dns-record) and [Create records of other types](#create-records-of-other-types) above.
 
-A következő példa törli az A rekord "1.2.3.4" a rekordból nevű értékkel *www* zónában *contoso.com*, az erőforráscsoport *MyResourceGroup*.
+The following example deletes the A record with value '1.2.3.4' from the record set named *www* in the zone *contoso.com*, in the resource group *MyResourceGroup*.
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
 ```
 
-## <a name="modify-an-existing-record-set"></a>Módosíthatja egy meglévő rekordhalmaz
+## <a name="modify-an-existing-record-set"></a>Modify an existing record set
 
-Minden rekordhalmaz tartalmaz egy [idő – Élettartam (TTL)](dns-zones-records.md#time-to-live), [metaadatok](dns-zones-records.md#tags-and-metadata), és a DNS-rekordjait. Az alábbi szakaszok azt ismertetik, hogyan módosíthatja a ezeket a tulajdonságokat.
+Each record set contains a [time-to-live (TTL)](dns-zones-records.md#time-to-live), [metadata](dns-zones-records.md#tags-and-metadata), and DNS records. The following sections explain how to modify each of these properties.
 
 ### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>To modify an A, AAAA, CAA, MX, NS, PTR, SRV, or TXT record
 
-Egy már létező rekord nevével írja be A, AAAA, CAA, MX, NS, PTR, SRV vagy TXT módosításához kell először adjon hozzá egy új rekordot, és ezután törölje a meglévő rekord. A Törlés és a rekordok hozzáadása részletes utasításokért lásd: Ez a cikk korábbi szakaszait.
+To modify an existing record of type A, AAAA, CAA, MX, NS, PTR, SRV, or TXT, you should first add a new record and then delete the existing record. For detailed instructions on how to delete and add records, see the earlier sections of this article.
 
-Az alábbi példa bemutatja, hogyan lehet módosítani az "A" rekord, IP-címről 1.2.3.4 5.6.7.8 IP-címre:
+The following example shows how to modify an 'A' record, from IP address 1.2.3.4 to IP address 5.6.7.8:
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-Nem hozzáadása, eltávolítása vagy módosítása a rekordokat az automatikusan létrehozott NS-rekord a zóna legfelső pontján állítsa (`--Name "@"`, ajánlat együtt). A rekordhalmaz az engedélyezett csak történt változások, a rekord módosításához állítsa a TTL és azok metaadatait.
+You cannot add, remove, or modify the records in the automatically created NS record set at the zone apex (`--Name "@"`, including quote marks). For this record set, the only changes permitted are to modify the record set TTL and metadata.
 
-### <a name="to-modify-a-cname-record"></a>Egy CNAME rekord módosítása
+### <a name="to-modify-a-cname-record"></a>To modify a CNAME record
 
-Ellentétben a legtöbb más rekordtípusok egy CNAME-rekordhalmazok csak egy rekordot tartalmazhatnak.  Új rekord hozzáadásával és eltávolításával a meglévő rekord, mint a többi rekordtípusokat, ezért nem cserélje le a jelenlegi érték.
+Unlike most other record types, a CNAME record set can only contain a single record.  Therefore, you cannot replace the current value by adding a new record and removing the existing record, as for other record types.
 
-Ehelyett egy CNAME rekord módosításához használja `az network dns record-set cname set-record`. További segítségért lásd: `az network dns record-set cname set-record --help`
+Instead, to modify a CNAME record, use `az network dns record-set cname set-record`. For help, see `az network dns record-set cname set-record --help`
 
-A példa módosítja a beállított CNAME rekord *www* zónában *contoso.com*, erőforráscsoportban *MyResourceGroup*, mutasson az "www.fabrikam.net" helyett a meglévő érték:
+The example modifies the CNAME record set *www* in the zone *contoso.com*, in resource group *MyResourceGroup*, to point to 'www.fabrikam.net' instead of its existing value:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net
 ``` 
 
-### <a name="to-modify-an-soa-record"></a>SOA-rekord módosítása
+### <a name="to-modify-an-soa-record"></a>To modify an SOA record
 
-Ellentétben a legtöbb más rekordtípusok egy CNAME-rekordhalmazok csak egy rekordot tartalmazhatnak.  Új rekord hozzáadásával és eltávolításával a meglévő rekord, mint a többi rekordtípusokat, ezért nem cserélje le a jelenlegi érték.
+Unlike most other record types, a CNAME record set can only contain a single record.  Therefore, you cannot replace the current value by adding a new record and removing the existing record, as for other record types.
 
-A SOA típusú rekordját módosításához használjon inkább `az network dns record-set soa update`. További segítségért lásd: `az network dns record-set soa update --help`.
+Instead, to modify the SOA record, use `az network dns record-set soa update`. További segítségért lásd: `az network dns record-set soa update --help`.
 
-Az alábbi példa bemutatja, hogyan állítsa be a "e-mail" tulajdonságot a SOA típusú rekord a zóna *contoso.com* erőforráscsoportban *MyResourceGroup*:
+The following example shows how to set the 'email' property of the SOA record for the zone *contoso.com* in the resource group *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set soa update --resource-group myresourcegroup --zone-name contoso.com --email admin.contoso.com
 ```
 
-### <a name="to-modify-ns-records-at-the-zone-apex"></a>Módosíthatja a Névkiszolgálói rekordokat a zóna legfelső pontján
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>To modify NS records at the zone apex
 
-Az NS-rekord a zóna legfelső pontján állítsa be a rendszer automatikusan létrehoz minden DNS-zónát. Az Azure DNS névkiszolgálóit, a zóna nevét tartalmazza.
+The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
 
-Hozzáadhat további névhez e NS-rekord-kiszolgálókat, támogatja a közös üzemeltetési tartomány több DNS-szolgáltatónál. Az élettartam és a rekordhalmaz metaadatait is módosíthatja. Azonban nem távolítsa el vagy módosítsa az ki van töltve az Azure DNS névkiszolgálóit.
+You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
 
-Vegye figyelembe, hogy ez csak érvényes az NS-rekord a zóna legfelső pontján állítsa be. Más Névkiszolgálói rekordhalmazt a zónában (a használt gyermek zónák delegálása) korlátozás nélkül módosíthatók.
+Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
 
-Az alábbi példa bemutatja, hogyan az NS-rekord a zóna legfelső pontján állítsa be a további neve kiszolgáló hozzáadása:
+The following example shows how to add an additional name server to the NS record set at the zone apex:
 
 ```azurecli
 az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
-### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>Az élettartam egy meglévő rekordhalmazra módosítása
+### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>To modify the TTL of an existing record set
 
-Az élettartam egy meglévő rekordhalmazra módosításához használjon `azure network dns record-set <record-type> update`. További segítségért lásd: `azure network dns record-set <record-type> update --help`.
+To modify the TTL of an existing record set, use `azure network dns record-set <record-type> update`. További segítségért lásd: `azure network dns record-set <record-type> update --help`.
 
-Az alábbi példa egy rekordhalmazra TTL, ebben az esetben módosítani szeretne 60 másodperc mutatja be:
+The following example shows how to modify a record set TTL, in this case to 60 seconds:
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set ttl=60
 ```
 
-### <a name="to-modify-the-metadata-of-an-existing-record-set"></a>Módosíthatja egy meglévő rekordhalmaz metaadatait
+### <a name="to-modify-the-metadata-of-an-existing-record-set"></a>To modify the metadata of an existing record set
 
-[A rekordhalmaz metaadatainak](dns-zones-records.md#tags-and-metadata) minden rekordhalmaz kulcs-érték párok, alkalmazás-specifikus adatok társítása is használható. Egy meglévő rekordhalmaz metaadatait módosításához használjon `az network dns record-set <record-type> update`. További segítségért lásd: `az network dns record-set <record-type> update --help`.
+[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs. To modify the metadata of an existing record set, use `az network dns record-set <record-type> update`. További segítségért lásd: `az network dns record-set <record-type> update --help`.
 
-Az alábbi példa bemutatja, hogyan lehet módosítani egy rekordot a két metaadat-bejegyzéseket, "részleg = pénzügyi" és "környezet éles =". Vegye figyelembe, hogy a meglévő metaadatokat *cserélni* megadott értékekkel.
+The following example shows how to modify a record set with two metadata entries, "dept=finance" and "environment=production". Note that any existing metadata is *replaced* by the values given.
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set metadata.dept=finance metadata.environment=production
 ```
 
-## <a name="delete-a-record-set"></a>A rekordhalmaz törlése
+## <a name="delete-a-record-set"></a>Delete a record set
 
-Rekordhalmazok használatával törölhetők a `az network dns record-set <record-type> delete` parancsot. További segítségért lásd: `azure network dns record-set <record-type> delete --help`. Rekordhalmaz törlése is törli a beállított rekord összes rekordján.
+Record sets can be deleted by using the `az network dns record-set <record-type> delete` command. További segítségért lásd: `azure network dns record-set <record-type> delete --help`. Deleting a record set also deletes all records within the record set.
 
 > [!NOTE]
-> Nem lehet törölni a SOA és NS-rekord zóna felső pontjánál állítja be (`--name "@"`).  Ezek automatikusan jönnek létre a zónát amikor lett létrehozva, és a zóna törlésekor automatikusan törlődnek.
+> You cannot delete the SOA and NS record sets at the zone apex (`--name "@"`).  These are created automatically when the zone was created, and are deleted automatically when the zone is deleted.
 
-Az alábbi példával törölhet nevű rekordhalmaz *www* , adja meg a zónából *contoso.com* erőforráscsoportban *MyResourceGroup*:
+The following example deletes the record set named *www* of type A from the zone *contoso.com* in resource group *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 
-A törlési művelet megerősítését kéri. Ez a kérdés mellőzése, használja a `--yes` váltani.
+You are prompted to confirm the delete operation. To suppress this prompt, use the `--yes` switch.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tudjon meg többet [zónák és -rekordok az Azure DNS](dns-zones-records.md).
+Learn more about [zones and records in Azure DNS](dns-zones-records.md).
 <br>
-Ismerje meg, hogyan [a zónák és -rekordok védelme](dns-protect-zones-recordsets.md) Azure DNS használata esetén.
+Learn how to [protect your zones and records](dns-protect-zones-recordsets.md) when using Azure DNS.

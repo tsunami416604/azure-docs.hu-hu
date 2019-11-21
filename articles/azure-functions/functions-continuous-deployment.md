@@ -1,88 +1,84 @@
 ---
 title: Azure Functions – folyamatos üzembe helyezés
-description: A függvények közzétételéhez használja a Azure App Service folyamatos üzembe helyezési funkcióit.
-author: ggailey777
-manager: gwallace
+description: Use the continuous deployment features of Azure App Service to publish your functions.
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: glenga
-ms.openlocfilehash: dae75153cffbf2f0e836e1a28b78a9f05f54e6e0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091181"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230900"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 
-A Azure Functions segítségével folyamatosan üzembe helyezheti a kódot a [verziókövetés integrációjának](functions-deployment-technologies.md#source-control)használatával. A verziókövetés integrációja lehetővé teszi egy olyan munkafolyamat használatát, amelyben a kód frissítése elindítja az Azure-ba történő üzembe helyezést. Ha még nem Azure Functions, az első lépésekhez tekintse át az [Azure functions áttekintését](functions-overview.md).
+You can use Azure Functions to deploy your code continuously by using [source control integration](functions-deployment-technologies.md#source-control). Source control integration enables a workflow in which a code update triggers deployment to Azure. If you're new to Azure Functions, get started by reviewing the [Azure Functions overview](functions-overview.md).
 
-A folyamatos üzembe helyezés jó választás olyan projektekhez, ahol több és gyakori hozzájárulásokat is integrálhat. Ha folyamatos üzembe helyezést használ, a kód egyetlen forrását őrzi meg, amely lehetővé teszi a csapatok számára, hogy egyszerűen működjenek együtt. A folyamatos üzembe helyezést Azure Functions a következő forráskód-helyekről állíthatja be:
+Continuous deployment is a good option for projects where you integrate multiple and frequent contributions. When you use continuous deployment, you maintain a single source of truth for your code, which allows teams to easily collaborate. You can configure continuous deployment in Azure Functions from the following source code locations:
 
-* [Azure-repók](https://azure.microsoft.com/services/devops/repos/)
+* [Azure Repos](https://azure.microsoft.com/services/devops/repos/)
 * [GitHub](https://github.com)
 * [Bitbucket](https://bitbucket.org/)
 
-Az Azure-beli függvények üzembe helyezési egysége a Function alkalmazás. Egy Function alkalmazás összes funkciója egyszerre van üzembe helyezve. Miután engedélyezte a folyamatos üzembe helyezést, a Azure Portalhoz való hozzáférés *csak olvashatóként* van konfigurálva, mert az igazság forrása máshol van beállítva.
+The unit of deployment for functions in Azure is the function app. All functions in a function app are deployed at the same time. After you enable continuous deployment, access to function code in the Azure portal is configured as *read-only* because the source of truth is set to be elsewhere.
 
-## <a name="requirements-for-continuous-deployment"></a>A folyamatos üzembe helyezésre vonatkozó követelmények
+## <a name="requirements-for-continuous-deployment"></a>Requirements for continuous deployment
 
-A sikeres üzembe helyezéshez a címtár struktúrájának kompatibilisnek kell lennie a Azure Functions várt alapszintű mappastruktúrát.
+For continuous deployment to succeed, your directory structure must be compatible with the basic folder structure that Azure Functions expects.
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 >[!NOTE]  
-> A folyamatos üzembe helyezés még nem támogatott a használati terveken futó Linux-alkalmazások esetében. 
+> Continuous deployment is not yet supported for Linux apps running on a Consumption plan. 
 
-## <a name="credentials"></a>Folyamatos üzembe helyezés beállítása
+## <a name="credentials"></a>Set up continuous deployment
 
-Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurálásához végezze el a következő lépéseket. A lépések bemutatják a GitHub-adattárral való integrációt, de a hasonló lépések érvényesek az Azure Repos vagy más forráskód-Tárházak esetében.
+To configure continuous deployment for an existing function app, complete these steps. The steps demonstrate integration with a GitHub repository, but similar steps apply for Azure Repos or other source code repositories.
 
-1. A [Azure Portal](https://portal.azure.com)a Function alkalmazásban válassza a **Platform-funkciók** > **központi telepítési központ**elemet.
+1. In your function app in the [Azure portal](https://portal.azure.com), select **Platform features** > **Deployment Center**.
 
-    ![Központi telepítési központ megnyitása](./media/functions-continuous-deployment/platform-features.png)
+    ![Open Deployment Center](./media/functions-continuous-deployment/platform-features.png)
 
-2. A **központi telepítési központban**válassza a **GitHub**lehetőséget, majd válassza az **Engedélyezés**lehetőséget. Ha már engedélyezte a GitHubot, válassza a **Folytatás**lehetőséget. 
+2. In **Deployment Center**, select **GitHub**, and then select **Authorize**. If you've already authorized GitHub, select **Continue**. 
 
-    ![Azure App Service központi telepítési központ](./media/functions-continuous-deployment/github.png)
+    ![Azure App Service Deployment Center](./media/functions-continuous-deployment/github.png)
 
-3. A GitHubon kattintson a **AzureAppService engedélyezése** gombra. 
+3. In GitHub, select the **Authorize AzureAppService** button. 
 
-    ![Engedélyezés Azure App Service](./media/functions-continuous-deployment/authorize.png)
+    ![Authorize Azure App Service](./media/functions-continuous-deployment/authorize.png)
     
-    A Azure Portal **központi telepítési központjában** válassza a **Folytatás**lehetőséget.
+    In **Deployment Center** in the Azure portal, select **Continue**.
 
-4. Válasszon egyet a következő Build-szolgáltatók közül:
+4. Select one of the following build providers:
 
-    * **App Service Build szolgáltatás**: a legjobb, ha nincs szüksége buildre, vagy ha általános buildre van szüksége.
-    * **Azure-folyamatok (előzetes verzió)** : a legjobb, ha nagyobb mértékű vezérlésre van szüksége a builden. Ez a szolgáltató jelenleg előzetes verzióban érhető el.
+    * **App Service build service**: Best when you don't need a build or if you need a generic build.
+    * **Azure Pipelines (Preview)** : Best when you need more control over the build. This provider currently is in preview.
 
-    ![Build szolgáltató kiválasztása](./media/functions-continuous-deployment/build.png)
+    ![Select a build provider](./media/functions-continuous-deployment/build.png)
 
-5. Konfigurálja a megadott verziókövetés-beállításra vonatkozó adatokat. A GitHub esetében meg kell adnia vagy ki kell választania a **szervezet**, a **tárház**és az **ág**értékeit. Az értékek a kód helyétől függenek. Ezután válassza a **Folytatás**lehetőséget.
+5. Configure information specific to the source control option you specified. For GitHub, you must enter or select values for **Organization**, **Repository**, and **Branch**. The values are based on the location of your code. Then, select **Continue**.
 
-    ![GitHub konfigurálása](./media/functions-continuous-deployment/github-specifics.png)
+    ![Configure GitHub](./media/functions-continuous-deployment/github-specifics.png)
 
-6. Tekintse át az összes adatot, majd a **Befejezés** gombra kattintva fejezze be a telepítési konfigurációt.
+6. Review all details, and then select **Finish** to complete your deployment configuration.
 
     ![Összefoglalás](./media/functions-continuous-deployment/summary.png)
 
-A folyamat befejezésekor a rendszer a megadott forrásból származó összes kódot telepíti az alkalmazásba. Ezen a ponton a központi telepítési forrás változásai elindítják ezeket a módosításokat az Azure-beli Function alkalmazásban.
+When the process is finished, all code from the specified source is deployed to your app. At that point, changes in the deployment source trigger a deployment of those changes to your function app in Azure.
 
-## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
+## <a name="deployment-scenarios"></a>Üzembe helyezési helyzetek
 
 <a name="existing"></a>
 
-### <a name="move-existing-functions-to-continuous-deployment"></a>Meglévő függvények áthelyezése a folyamatos üzembe helyezéshez
+### <a name="move-existing-functions-to-continuous-deployment"></a>Move existing functions to continuous deployment
 
-Ha már írt függvényeket a [Azure Portalban](https://portal.azure.com) , és szeretné letölteni az alkalmazás tartalmát, mielőtt a folyamatos üzembe helyezésre vált, lépjen a Function alkalmazás **Áttekintés** lapjára. Válassza az **alkalmazás tartalmának letöltése** gombot.
+If you've already written functions in the [Azure portal](https://portal.azure.com) and you want to download the contents of your app before you switch to continuous deployment, go to the **Overview** tab of your function app. Select the **Download app content** button.
 
-![Alkalmazás tartalmának letöltése](./media/functions-continuous-deployment/download.png)
+![Download app content](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
-> A folyamatos integráció konfigurálása után már nem szerkesztheti a forrásfájlokat a functions portálon.
+> After you configure continuous integration, you can no longer edit your source files in the Functions portal.
 
 ## <a name="next-steps"></a>Következő lépések
 

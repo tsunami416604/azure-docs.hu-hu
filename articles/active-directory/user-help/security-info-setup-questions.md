@@ -1,6 +1,6 @@
 ---
-title: Biztonsági kérdések (előzetes verzió) beállítása biztonsági kérdésekre – Azure AD
-description: A biztonsági adatok beállítása a személyazonosság ellenőrzéséhez előre definiált biztonsági kérdések használatával.
+title: Set up security questions as your authentication method - Azure AD
+description: How to set up your Security info to verify your identity using pre-defined security questions as your authentication method.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,88 +12,88 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2513b52c347db428b5ac0236a2561e5d4f1cdd2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 78e660163d3cc728f9ffe49e23a5c6cc2baa25eb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820308"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231772"
 ---
-# <a name="set-up-security-info-preview-to-use-security-questions"></a>Biztonsági kérdések (előzetes verzió) beállítása biztonsági kérdések használatára
+# <a name="set-up-security-questions-as-your-authentication-method-from-the-security-info-preview-page"></a>Set up security questions as your authentication method from the Security info (preview) page
 
-A jelszó-visszaállítási módszer hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
+You can follow these steps to add your password reset method. After you've set this up the first time, you can return to the **Security info** page to add, update, or delete your security information.
 
-A jelszó-visszaállítási módszer beállítása után a kétfaktoros ellenőrzési módszert is be kell állítania a [hitelesítő alkalmazás](security-info-setup-auth-app.md), a [szöveges üzenetküldés](security-info-setup-text-msg.md)vagy egy [telefonhívás](security-info-setup-phone-number.md)használatával.
+After you set up your password reset method, you must also set up your two-factor verification method, using an [authenticator app](security-info-setup-auth-app.md), [text messaging](security-info-setup-text-msg.md), or a [phone call](security-info-setup-phone-number.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Biztonsági kérdések beállítása a biztonsági adatok lapról
+## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Set up your security questions from the Security info page
 
-A szervezet beállításaitól függően lehetséges, hogy néhány biztonsági kérdést választ ki és válaszol a biztonsági adatok egyik módszerei közül. A rendszergazda beállítja a kiválasztáshoz és a válaszadáshoz szükséges biztonsági kérdések számát.
+Depending on your organization’s settings, you might be able to choose and answer a few security questions as one of your security info methods. Your administrator sets up the number of security questions you're required to choose and answer.
 
-Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel együtt használja őket. A biztonsági kérdések kevésbé biztonságosak, mint a többi módszer, mert egyesek tudomásul veszik a kérdéseire adott válaszokat.
+If you use security questions, we recommend using them in conjunction with another method. Security questions can be less secure than other methods because some people might know the answers to your questions.
 
 > [!Note]
-> A biztonsági kérdéseket a címtárban lévő felhasználói objektumon tárolja a rendszer, és a szolgáltatás csak a regisztráció során válaszol. A rendszergazda semmilyen módon nem tudja elolvasni vagy módosítani a kérdéseit és válaszait.
+> Security questions are stored privately and securely on a user object in the directory and can only be answered by you during registration. There is no way for your administrator to read or modify your questions or answers.
 >
-> Ha nem jelenik meg a biztonsági kérdések lehetőség, akkor előfordulhat, hogy a szervezet nem teszi lehetővé biztonsági kérdések használatát az ellenőrzéshez. Ebben az esetben másik módszert kell választania, vagy további segítségért forduljon a rendszergazdához.
+> If you don't see the security questions option, it's possible that your organization doesn't allow you to use security questions for verification. If this is the case, you'll need to choose another method or contact your administrator for more help.
 >
-> A rendszergazdai fiókok nem jogosultak biztonsági kérdések használatára jelszó-visszaállítási módszerként. Ha rendszergazdai szintű fiókkal jelentkezett be, ezeket a beállításokat nem fogja látni.
+> Administrator accounts are not allowed to use Security Questions as a password reset method. If you are logged in as an admin level account you will not see these options.
 
-### <a name="to-set-up-your-security-questions"></a>Biztonsági kérdések beállítása
+### <a name="to-set-up-your-security-questions"></a>To set up your security questions
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-    ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
+    ![My Profile page, showing highlighted Security info links](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
+2. Select **Security info** from the left navigation pane or from the link in the **Security info** block, and then select **Add method** from the **Security info** page.
 
-    ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Security info page with highlighted Add method option](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza a **biztonsági kérdések** elemet a legördülő listából, majd válassza a **Hozzáadás**lehetőséget.
+3. On the **Add a method** page, select **Security questions** from the drop-down list, and then select **Add**.
 
-    ![Hozzáadás a Method Box-hoz, biztonsági kérdésekkel kiválasztva](media/security-info/securityinfo-myprofile-addquestions.png)
+    ![Add method box, with security questions selected](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. A **biztonsági kérdések** lapon válassza ki és válaszolja meg a biztonsági kérdéseit, majd válassza a **Mentés**lehetőséget.
+4. On the **Security questions** page, choose and answer your security questions, and then select **Save**.
 
-    ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-securityquestions.png)
+    ![Add phone number and choose phone calls](media/security-info/securityinfo-myprofile-securityquestions.png)
 
-    A biztonsági adatai frissülnek, és biztonsági kérdéseivel ellenőrizheti, hogy a jelszó-visszaállítást használja-e.
+    Your security info is updated and you can use your security questions to verify your identity when using password reset.
 
-## <a name="delete-security-questions-from-your-security-info-methods"></a>Biztonsági kérdések törlése a biztonsági adatok módszereiből
+## <a name="delete-security-questions-from-your-security-info-methods"></a>Delete security questions from your security info methods
 
-Ha a biztonsági kérdéseket már nem szeretné biztonsági információs módszerként használni, távolítsa el őket a **biztonsági adatok** lapról.
+If you no longer want to use your security questions as a security info method, you can remove them from the **Security info** page.
 
 >[!Important]
->Ha tévedésből törli a biztonsági kérdéseket, a visszavonás nem vonható vissza. A módszert újra fel kell vennie a jelen cikk [biztonsági kérdések beállítása](#set-up-your-security-questions-from-the-security-info-page) című szakaszának lépéseit követve.
+>If you delete your security questions by mistake, there's no way to undo it. You'll have to add the method again, following the steps in the [Set up your security questions](#set-up-your-security-questions-from-the-security-info-page) section of this article.
 
-### <a name="to-delete-your-security-questions"></a>Biztonsági kérdések törlése
+### <a name="to-delete-your-security-questions"></a>To delete your security questions
 
-1. A **biztonsági adatok** lapon válassza a **Törlés** hivatkozást a **biztonsági kérdések** lehetőség mellett.
+1. On the **Security info** page, select the **Delete** link next to the **Security questions** option.
 
-    ![Hivatkozás a telefonos módszer törlésére a biztonsági adatokból](media/security-info/securityinfo-myprofile-questionsdelete.png)
+    ![Link to delete the phone method from security info](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. A **biztonsági kérdések**törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A biztonsági kérdések törlése után a rendszer eltávolítja a metódust a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
+2. Select **Yes** from the confirmation box to delete your **Security questions**. After your security questions are deleted, the method is removed from your security info and it disappears from the **Security info** page.
 
-## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
+## <a name="additional-security-info-methods"></a>Additional security info methods
 
-További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a személyazonosságának ellenőrzéséhez a you're alapján. A lehetőségek a következők:
+You have additional options for how your organization contacts you to verify your identity, based on what's you're trying to do. A lehetőségek a következők:
 
-- **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
+- **Authenticator app.** Download and use an authenticator app to get either an approval notification or a randomly generated approval code for two-step verification or password reset. For step-by-step instructions about how to set up and use the Microsoft Authenticator app, see [Set up security info to use an authenticator app](security-info-setup-auth-app.md).
 
-- **Mobileszköz szövege.** Adja meg a mobileszköz számát, és szerezzen be egy, a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz használni kívánt kódot. Az identitás szöveges üzenettel (SMS) való ellenőrzésével kapcsolatos részletes utasításokért lásd: [biztonsági információk beállítása szöveges üzenetküldés (SMS) használatára](security-info-setup-text-msg.md).
+- **Mobile device text.** Enter your mobile device number and get a text a code you'll use for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a text message (SMS), see [Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md).
 
-- **Mobileszköz vagy munkahelyi telefonhívás.** Adja meg a mobileszköz számát, és telefonhívást kap a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Az identitás telefonszámmal történő ellenőrzésével kapcsolatos részletes útmutatásért lásd: [biztonsági információk beállítása telefonhívások használatához](security-info-setup-phone-number.md).
+- **Mobile device or work phone call.** Enter your mobile device number and get a phone call for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a phone number, see [Set up security info to use phone calls](security-info-setup-phone-number.md).
 
-- **Biztonsági kulcs.** Regisztrálja Microsoft-kompatibilis biztonsági kulcsát, és használja PIN-kóddal a kétlépéses ellenőrzéshez vagy a jelszó alaphelyzetbe állításához. Ha részletes útmutatást szeretne arról, hogyan ellenőrizheti személyazonosságát egy biztonsági kulccsal, tekintse meg a biztonsági [adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)című témakört.
+- **Security key.** Register your Microsoft-compatible security key and use it along with a PIN for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a security key, see [Set up security info to use a security key](security-info-setup-security-key.md).
 
-- **E-mail-cím.** Adja meg a munkahelyi vagy iskolai e-mail-címét, hogy e-mailt kapjon a jelszó alaphelyzetbe állításához. Ez a beállítás kétlépéses ellenőrzés esetén nem érhető el. Az e-mailek beállításával kapcsolatos részletes útmutatásért lásd: [biztonsági adatok beállítása e-mailek használatára](security-info-setup-email.md).
+- **Email address.** Enter your work or school email address to get an email for password reset. This option isn't available for two-step verification. For step-by-step instructions about how to set up your email, see [Set up security info to use email](security-info-setup-email.md).
 
     >[!Note]
-    >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
+    >If some of these options are missing, it's most likely because your organization doesn't allow those methods. If this is the case, you'll need to choose an available method or contact your administrator for more help.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
+- Reset your password if you've lost or forgotten it, from the [Password reset portal](https://passwordreset.microsoftonline.com/) or follow the steps in the [Reset your work or school password](active-directory-passwords-update-your-own-password.md) article.
 
-- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
+- Get troubleshooting tips and help for sign-in problems in the [Can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.

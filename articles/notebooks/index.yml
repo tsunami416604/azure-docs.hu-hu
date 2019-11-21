@@ -4,14 +4,8 @@ title: Az Azure Notebooks dokumentációja
 metadata:
   title: Az Azure Notebooks dokumentációja
   description: 'Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett Azure Notebooks-szolgáltatással.'
-  services: notebooks
-  author: kraigb
-  manager: barbkess
-  ms.service: azure-notebooks
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 12/04/2018
-  ms.author: kraigb
 abstract:
   description: 'Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A Jupyter (korábbi nevén IPython) egy nyílt forráskódú projekt, amellyel egyetlen megosztható vásznon – más néven egy notebookon – egyesítheti a Markdown-szövegeket, a végrehajtható kódot (Python, R és F#), valamint az állandó adatokat, grafikákat és vizualizációkat.'
 sections:

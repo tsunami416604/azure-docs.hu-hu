@@ -1,5 +1,5 @@
 ---
-title: Azure útmutató – Különböző igazolási mechanizmusok használata a Device Provisioning Service ügyféloldali SDK-jával az Azure-ban
+title: Use different attestation mechanisms with the Azure IoT Hub Device Provisioning Service Client SDK
 description: Azure útmutató – Különböző igazolási mechanizmusok használata a Device Provisioning Service ügyféloldali SDK-jával az Azure-ban
 author: robinsh
 ms.author: robinsh
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: fd974ad81a641afb1c93fffb0a12a147c55b3a73
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 0cde591d2ec8c6f2f51c83b3f263c188c8cf2605
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951898"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228273"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Különböző igazolási mechanizmusok használata a Device Provisioning Service C-hez készült ügyféloldali SDK-jával
 
-Ez a cikk bemutatja, hogyan használhat különböző [igazolási mechanizmusokat](concepts-security.md#attestation-mechanism) a Device Provisioning Service C-hez készült ügyféloldali SDK-jával. Fizikai eszközt vagy szimulátort is használhat. A kiépítési szolgáltatás két típusú igazolási mechanizmus esetében támogatja a hitelesítést: X. 509 és platformmegbízhatósági modul (TPM).
+Ez a cikk bemutatja, hogyan használhat különböző [igazolási mechanizmusokat](concepts-security.md#attestation-mechanism) a Device Provisioning Service C-hez készült ügyféloldali SDK-jával. Fizikai eszközt vagy szimulátort is használhat. The provisioning service supports authentication for two types of attestation mechanisms: X.509 and Trusted Platform Module (TPM).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,19 +27,19 @@ A [szimulált eszköz létrehozását és üzembe helyezését](./quick-create-s
 
 Eszközgyártóként először az egyik támogatott típuson alapuló igazolási mechanizmust kell kiválasztania. A [Device Provisioning Service C-hez készült ügyféloldali SDK-ja](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) jelenleg a következő igazolási mechanizmusokat támogatja: 
 
-- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): A TPM a legtöbb Windows-alapú eszköz platformhoz, valamint néhány Linux-/Ubuntu-alapú eszközhöz is megalapozott szabvány. Eszközgyártóként akkor választhatja ezt az igazolási mechanizmust, ha az eszközökön ezeknek az operációs rendszereknek az egyike fut, és egy bevett szabványt kíván használni. TPM-lapkák esetén csak külön-külön regisztrálhatja az eszközöket a Device Provisioning Service-ben. A TPM-szimulátort használhatja fejlesztési célokra Windows- vagy Linux-alapú fejlesztői gépeken.
+- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): A TPM bevett szabvány a legtöbb Windows-alapú eszközplatformhoz, valamint néhány Linux-/Ubuntu-alapú eszközhöz. Eszközgyártóként akkor választhatja ezt az igazolási mechanizmust, ha az eszközökön ezeknek az operációs rendszereknek az egyike fut, és egy bevett szabványt kíván használni. TPM-lapkák esetén csak külön-külön regisztrálhatja az eszközöket a Device Provisioning Service-ben. A TPM-szimulátort használhatja fejlesztési célokra Windows- vagy Linux-alapú fejlesztői gépeken.
 
-- [X. 509](https://cryptography.io/en/latest/x509/): Az X. 509 tanúsítványokat a [hardveres biztonsági modulok (HSM)](concepts-security.md#hardware-security-module)nevű viszonylag újabb zsetonokban lehet tárolni. A Microsoft dolgozik a RIoT- és a DICE-lapkákon, amelyek az X.509-tanúsítványokat használják. Az X.509-lapkákkal kötegelt eszközregisztrációt végezhet a portálon. Ez egyes nem Windows operációs rendszereket is támogat, például az embedOS rendszert. A Device Provisioning Service ügyféloldali SDK-ja támogatja egy X.509-eszközszimulátor használatát fejlesztési célokra. 
+- [X.509](https://cryptography.io/en/latest/x509/): Az X.509-tanúsítványok tárolhatók a [hardveres biztonsági modul (HSM)](concepts-security.md#hardware-security-module) néven ismert, viszonylag új lapkákon. A Microsoft dolgozik a RIoT- és a DICE-lapkákon, amelyek az X.509-tanúsítványokat használják. Az X.509-lapkákkal kötegelt eszközregisztrációt végezhet a portálon. Ez egyes nem Windows operációs rendszereket is támogat, például az embedOS rendszert. A Device Provisioning Service ügyféloldali SDK-ja támogatja egy X.509-eszközszimulátor használatát fejlesztési célokra. 
 
 További információt az IoT Hub Device Provisioning Service [biztonsági](concepts-security.md) és [automatikus regisztrációval kapcsolatos fogalmait](/azure/iot-dps/concepts-auto-provisioning) ismertető témakörben talál.
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Támogatott igazolási mechanizmusok hitelesítésének engedélyezése
 
-Az SDK-hitelesítési módot (X. 509 vagy TPM) engedélyezni kell a fizikai eszközön vagy a szimulátoron, mielőtt regisztrálni tudnák a Azure Portalba. Először lépjen az azure-iot-sdk-c gyökérmappájába. Ezután futtassa a megadott parancsot a választott hitelesítési módnak megfelelően:
+The SDK authentication mode (X.509 or TPM) must be enabled for the physical device or simulator before they can be enrolled in the Azure portal. Először lépjen az azure-iot-sdk-c gyökérmappájába. Ezután futtassa a megadott parancsot a választott hitelesítési módnak megfelelően:
 
-### <a name="use-x509-with-simulator"></a>Az X. 509 használata szimulátorral
+### <a name="use-x509-with-simulator"></a>Use X.509 with simulator
 
-A kiépítési szolgáltatás az eszköz Identity kompozíciós motor (DICE) emulátorával rendelkezik, amely létrehoz egy **X. 509** tanúsítványt az eszköz hitelesítéséhez. Az **X. 509** hitelesítés engedélyezéséhez futtassa a következő parancsot: 
+The provisioning service ships with a Device Identity Composition Engine (DICE) emulator that generates an **X.509** certificate for authenticating the device. To enable **X.509** authentication, run the following command: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -47,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 A DICE-szal rendelkező hardverekkel kapcsolatban [itt](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) talál további információkat.
 
-### <a name="use-x509-with-hardware"></a>Az X. 509 használata hardverrel
+### <a name="use-x509-with-hardware"></a>Use X.509 with hardware
 
-A kiépítési szolgáltatás az **X. 509** használatával más hardvereken is használható. A kapcsolat kiépítéséhez egy interfész szükséges a hardver és az SDK között. Az interfészre vonatkozó információkkal kapcsolatban forduljon a HSM gyártójához.
+The provisioning service can be used with **X.509** on other hardware. A kapcsolat kiépítéséhez egy interfész szükséges a hardver és az SDK között. Az interfészre vonatkozó információkkal kapcsolatban forduljon a HSM gyártójához.
 
 ### <a name="use-tpm"></a>TPM használata
 
@@ -148,8 +148,8 @@ TPM használata esetén kövesse a [szimulált eszköz az IoT Hub Device Provisi
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t.
-   - **X. 509 egyéni regisztráció**: A kiépítési szolgáltatás összegzése panelen válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni beléptetések** fület, és kattintson a felül lévő **Hozzáadás** gombra. Válassza az **X. 509** elemet az identitás-igazolási mechanizmusként, töltse fel a levél tanúsítványát a panel által megkövetelt módon. Ha végzett, kattintson a **Mentés** gombra. 
-   - **X. 509 csoportos regisztráció**: A kiépítési szolgáltatás összegzése panelen válassza a **regisztrációk kezelése**lehetőséget. Válassza a **Csoportos beléptetések** lapot, és kattintson a felül lévő **Hozzáadás** gombra. Válassza az **X. 509** elemet az identitás-igazolási mechanizmusként, adja meg a csoport nevét és a tanúsítvány nevét, töltse fel a CA/Intermediate tanúsítványt a panel által megkövetelt módon. Ha végzett, kattintson a **Mentés** gombra. 
+   - **X.509 Individual Enrollment**: On the provisioning service summary blade, select **Manage enrollments**. Válassza az **Egyéni beléptetések** fület, és kattintson a felül lévő **Hozzáadás** gombra. Select **X.509** as the identity attestation *Mechanism*, upload the leaf certificate as required by the blade. Ha végzett, kattintson a **Mentés** gombra. 
+   - **X.509 Group Enrollment**: On the provisioning service  summary blade, select **Manage enrollments**. Válassza a **Csoportos beléptetések** lapot, és kattintson a felül lévő **Hozzáadás** gombra. Select **X.509** as the identity attestation *Mechanism*, enter a group name and certification name, upload the CA/Intermediate certificate as required by the blade. Ha végzett, kattintson a **Mentés** gombra. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Eszközök hitelesítésének engedélyezése egyéni igazolási mechanizmussal (opcionális)
 
@@ -181,7 +181,7 @@ Miután a kódtár sikeresen létrejött önállóan, integrálnia kell azt a De
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Csatlakozás az IoT Hubhoz a kiépítés után
 
-Miután az eszközt kiépítte a kiépítési szolgáltatással, ez az API a megadott hitelesítési móddal (**X. 509** vagy TPM) használja a IoT hubhoz való kapcsolódáshoz: 
+Once the device has been provisioned with the provisioning service, this API uses the specified authentication mode (**X.509** or TPM) to connect with IoT Hub: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

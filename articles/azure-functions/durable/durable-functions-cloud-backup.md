@@ -1,24 +1,19 @@
 ---
-title: Kiugró/ventilátor-forgatókönyvek Durable Functions-Azure-ban
-description: Megtudhatja, hogyan valósítható meg a ventilátorok által kipróbálható forgatókönyv a Azure Functions Durable Functions-bővítményében.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Fan-out/fan-in scenarios in Durable Functions - Azure
+description: Learn how to implement a fan-out-fan-in scenario in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e2f1042fe1210fe51ae79b1152e51191e7fb066a
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: a87a4edd544c2f7d8ff9c6415df2f2dda125f2bf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615030"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232997"
 ---
-# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/ventilátor – forgatókönyv Durable Functions – Felhőbeli biztonsági mentési példa
+# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/fan-in scenario in Durable Functions - Cloud backup example
 
-A *ventilátor ki-* és bekapcsolása a több függvény egyidejű végrehajtásával, majd az eredmények összesítésének végrehajtásával kapcsolatos mintázatra utal. Ez a cikk egy olyan mintát ismertet, amely [Durable Functionst](durable-functions-overview.md) használ egy ventilátor-vagy ventilátor-kijelentkezési forgatókönyv megvalósításához. A minta egy olyan tartós funkció, amely egy alkalmazás összes vagy néhány oldalának tartalmát az Azure Storage-ba készíti.
+*Fan-out/fan-in* refers to the pattern of executing multiple functions concurrently and then performing some aggregation on the results. This article explains a sample that uses [Durable Functions](durable-functions-overview.md) to implement a fan-in/fan-out scenario. The sample is a durable function that backs up all or some of an app's site content into Azure Storage.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -26,100 +21,100 @@ A *ventilátor ki-* és bekapcsolása a több függvény egyidejű végrehajtás
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-Ebben a példában a függvények a megadott könyvtár összes fájlját feltöltik rekurzív módon a blob Storage-ba. A feltöltött bájtok teljes számát is megszámolják.
+In this sample, the functions upload all files under a specified directory recursively into blob storage. They also count the total number of bytes that were uploaded.
 
-Egyetlen függvényt is írhat, amely mindenről gondoskodik. A futtatásának fő problémája a **méretezhetőség**. Egyetlen függvény végrehajtása csak egyetlen virtuális gépen futtatható, így az átviteli sebességet az adott virtuális gép átviteli sebessége fogja korlátozni. Egy másik probléma a **megbízhatóság**. Ha a művelet félúton, vagy ha a teljes folyamat 5 percnél hosszabb időt vesz igénybe, akkor a biztonsági mentés részben befejezett állapotba kerülhet. Ezt követően újra kell indítani.
+It's possible to write a single function that takes care of everything. The main problem you would run into is **scalability**. A single function execution can only run on a single VM, so the throughput will be limited by the throughput of that single VM. Another problem is **reliability**. If there's a failure midway through, or if the entire process takes more than 5 minutes, the backup could fail in a partially completed state. It would then need to be restarted.
 
-A robusztusabb megközelítés két normál függvény írásához szükséges: az egyik a fájlok enumerálása és a fájlnevek hozzáadása egy várólistához, a másik pedig a várólistából, és a fájlok feltöltése a blob Storage-ba. Ez a megközelítés jobb az átviteli sebesség és a megbízhatóság szempontjából, de a várólista üzembe helyezéséhez és kezeléséhez szükséges. Ennél is fontosabb, hogy az **állami felügyelet** és a **koordináció** szempontjából jelentős bonyolultságot jelent, ha többet szeretne tenni, például a feltöltött bájtok teljes számát.
+A more robust approach would be to write two regular functions: one would enumerate the files and add the file names to a queue, and another would read from the queue and upload the files to blob storage. This approach is better in terms of throughput and reliability, but it requires you to provision and manage a queue. More importantly, significant complexity is introduced in terms of **state management** and **coordination** if you want to do anything more, like report the total number of bytes uploaded.
 
-A Durable Functions megközelítéssel az összes említett előnyt nagyon alacsony terheléssel ruházhatja fel.
+A Durable Functions approach gives you all of the mentioned benefits with very low overhead.
 
-## <a name="the-functions"></a>A függvények
+## <a name="the-functions"></a>The functions
 
-Ez a cikk a minta alkalmazás következő funkcióit ismerteti:
+This article explains the following functions in the sample app:
 
 * `E2_BackupSiteContent`
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-A következő szakasz ismerteti a C# parancsfájlok futtatásához használt konfigurációt és kódot. A Visual Studio-fejlesztés kódja a cikk végén látható.
+The following sections explain the configuration and code that is used for C# scripting. The code for Visual Studio development is shown at the end of the article.
 
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>A Cloud Backup-előkészítés (Visual Studio Code és Azure Portal mintakód)
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The cloud backup orchestration (Visual Studio Code and Azure portal sample code)
 
-A `E2_BackupSiteContent` függvény a standard *function. JSON* fájlt használja a Orchestrator függvényekhez.
+The `E2_BackupSiteContent` function uses the standard *function.json* for orchestrator functions.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
 
-Itt látható a Orchestrator függvényt megvalósító kód:
+Here is the code that implements the orchestrator function:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Ez a Orchestrator-függvény lényegében a következő műveleteket végzi el:
+This orchestrator function essentially does the following:
 
-1. Bemeneti paraméterként `rootDirectory` értéket vesz fel.
-2. Meghív egy függvényt a fájlok rekurzív listájának beolvasásához a `rootDirectory`alatt.
-3. Több párhuzamos függvényt hív meg az egyes fájlok Azure Blob Storageba való feltöltéséhez.
-4. Megvárja, amíg az összes feltöltés befejeződik.
-5. Az Azure Blob Storageba feltöltött összes bájt összegét adja vissza.
+1. Takes a `rootDirectory` value as an input parameter.
+2. Calls a function to get a recursive list of files under `rootDirectory`.
+3. Makes multiple parallel function calls to upload each file into Azure Blob Storage.
+4. Waits for all uploads to complete.
+5. Returns the sum total bytes that were uploaded to Azure Blob Storage.
 
-Figyelje meg a `await Task.WhenAll(tasks);`C#() és a `yield context.df.Task.all(tasks);` (JavaScript) sorokat. A `E2_CopyFileToBlob` függvény összes egyedi hívása *nem* várt, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét `Task.WhenAll` (C#) vagy `context.df.Task.all` (JavaScript) értékre adja át, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet*be nem fejeződik. Ha ismeri a .NET-ben vagy a [`Promise.all`ban](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) a JavaScriptben a feladat Parallel Library-t (tpl), akkor ez nem új az Ön számára. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
+Notice the `await Task.WhenAll(tasks);` (C#) and `yield context.df.Task.all(tasks);` (JavaScript) lines. All the individual calls to the `E2_CopyFileToBlob` function were *not* awaited, which allows them to run in parallel. When we pass this array of tasks to `Task.WhenAll` (C#) or `context.df.Task.all` (JavaScript), we get back a task that won't complete *until all the copy operations have completed*. If you're familiar with the Task Parallel Library (TPL) in .NET or [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript, then this is not new to you. The difference is that these tasks could be running on multiple VMs concurrently, and the Durable Functions extension ensures that the end-to-end execution is resilient to process recycling.
 
 > [!NOTE]
-> Habár a feladatok fogalmi hasonlóságot mutatnak a JavaScript-ígéretekhez, a Orchestrator függvények a `context.df.Task.all` és a `context.df.Task.any` helyett a `Promise.all` és a `Promise.race`t használják a feladatok párhuzamos kezeléséhez.
+> Although tasks are conceptually similar to JavaScript promises, orchestrator functions should use `context.df.Task.all` and `context.df.Task.any` instead of `Promise.all` and `Promise.race` to manage task parallelization.
 
-A `Task.WhenAll`tól való várakozást követően (vagy a `context.df.Task.all`ból való betöltés után) tudjuk, hogy az összes függvény hívása befejeződött, és visszaadott értékeket vissza hozzánk. A `E2_CopyFileToBlob` minden hívása a feltöltött bájtok számát adja vissza, így a teljes bájtok számának kiszámítása az összes visszaadott érték együttes hozzáadására szolgál.
+After awaiting from `Task.WhenAll` (or yielding from `context.df.Task.all`), we know that all function calls have completed and have returned values back to us. Each call to `E2_CopyFileToBlob` returns the number of bytes uploaded, so calculating the sum total byte count is a matter of adding all those return values together.
 
-## <a name="helper-activity-functions"></a>Segítő tevékenység functions
+## <a name="helper-activity-functions"></a>Helper activity functions
 
-A segítő tevékenység más mintákhoz hasonlóan csak olyan rendszeres függvények, amelyek a `activityTrigger` trigger kötést használják. A `E2_GetFileList` a *function. JSON* fájl például a következőhöz hasonlóan néz ki:
+The helper activity functions, as with other samples, are just regular functions that use the `activityTrigger` trigger binding. For example, the *function.json* file for `E2_GetFileList` looks like the following:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
-És itt a megvalósítás:
+And here is the implementation:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-A `E2_GetFileList` JavaScript-implementációja a `readdirp` modul használatával rekurzív módon olvassa be a címtár-struktúrát.
+The JavaScript implementation of `E2_GetFileList` uses the `readdirp` module to recursively read the directory structure.
 
 > [!NOTE]
-> Lehet, hogy kíváncsi, miért nem tudta közvetlenül a kódot a Orchestrator függvénybe helyezni. Előfordulhat, hogy ez a Orchestrator functions egyik alapvető szabálya, ami azt eredményezi, hogy soha nem végeznek I/O-t, beleértve a helyi fájlrendszer elérését.
+> You might be wondering why you couldn't just put this code directly into the orchestrator function. You could, but this would break one of the fundamental rules of orchestrator functions, which is that they should never do I/O, including local file system access.
 
-A `E2_CopyFileToBlob` *function. JSON* fájlja hasonlóan egyszerű:
+The *function.json* file for `E2_CopyFileToBlob` is similarly simple:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-A C# megvalósítás is egyszerű. A Azure Functions kötések (azaz a `Binder` paraméter használata) speciális funkcióinak használata történik, de nem kell aggódnia a jelen útmutatóban szereplő adatokkal kapcsolatban.
+The C# implementation is also straightforward. It happens to use some advanced features of Azure Functions bindings (that is, the use of the `Binder` parameter), but you don't need to worry about those details for the purpose of this walkthrough.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
-A JavaScript-implementáció nem fér hozzá a Azure Functions `Binder` szolgáltatásához, ezért a [csomóponthoz tartozó Azure Storage SDK](https://github.com/Azure/azure-storage-node) -t veszi igénybe.
+The JavaScript implementation does not have access to the `Binder` feature of Azure Functions, so the [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) takes its place.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
-A megvalósítás betölti a fájlt a lemezről, és aszinkron módon továbbítja a tartalmat egy azonos nevű blobba a "Backups" tárolóban. A visszaadott érték a tárterületre másolt bájtok száma, amelyet a Orchestrator függvény használ az összesített összeg kiszámításához.
+The implementation loads the file from disk and asynchronously streams the contents into a blob of the same name in the "backups" container. The return value is the number of bytes copied to storage, that is then used by the orchestrator function to compute the aggregate sum.
 
 > [!NOTE]
-> Ez egy tökéletes példa arra, hogy az I/O-műveletek egy `activityTrigger` függvénybe legyenek áthelyezve. A munka nem csupán a különböző virtuális gépek között terjeszthető, de a folyamat ellenőrzőpontjának előnyeit is kihasználhatja. Ha a gazdagép folyamata valamilyen okból leáll, tudja, hogy mely feltöltések lettek végrehajtva.
+> This is a perfect example of moving I/O operations into an `activityTrigger` function. Not only can the work be distributed across many different VMs, but you also get the benefits of checkpointing the progress. If the host process gets terminated for any reason, you know which uploads have already completed.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-A következő HTTP POST-kérelem elküldésével indíthatja el a koordinálást.
+You can start the orchestration by sending the following HTTP POST request.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -130,9 +125,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> A csak a JSON-formátumú tartalommal rendelkező `HttpStart` függvény. Emiatt a `Content-Type: application/json` fejléc szükséges, és a könyvtár elérési útja JSON-karakterláncként van kódolva. Emellett a HTTP-kódrészlet feltételezi, hogy van egy bejegyzés a `host.json` fájlban, amely eltávolítja az alapértelmezett `api/` előtagot az összes HTTP-trigger függvény URL-címéből. A konfigurációhoz tartozó jelölést a minták `host.json` fájljában találja.
+> The `HttpStart` function that you are invoking only works with JSON-formatted content. For this reason, the `Content-Type: application/json` header is required and the directory path is encoded as a JSON string. Moreover, HTTP snippet assumes there is an entry in the `host.json` file which removes the default `api/` prefix from all HTTP trigger functions URLs. You can find the markup for this configuration in the `host.json` file in the samples.
 
-Ez a HTTP-kérelem elindítja a `E2_BackupSiteContent` Orchestrator, és paraméterként továbbítja a karakterláncot `D:\home\LogFiles`. A válasz egy hivatkozást tartalmaz a biztonsági mentési művelet állapotának lekéréséhez:
+This HTTP request triggers the `E2_BackupSiteContent` orchestrator and passes the string `D:\home\LogFiles` as a parameter. The response provides a link to get the status of the backup operation:
 
 ```
 HTTP/1.1 202 Accepted
@@ -143,7 +138,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 (...trimmed...)
 ```
 
-A függvény alkalmazásban található naplófájlok számától függően a művelet végrehajtása több percet is igénybe vehet. A legutóbbi állapotot a korábbi HTTP 202-válasz `Location` fejlécében található URL-cím lekérdezésével szerezheti be.
+Depending on how many log files you have in your function app, this operation could take several minutes to complete. You can get the latest status by querying the URL in the `Location` header of the previous HTTP 202 response.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -158,7 +153,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
-Ebben az esetben a függvény még fut. Megtekintheti a Orchestrator-állapotba mentett bemenetet és az utolsó frissítés időpontját. Továbbra is használhatja a `Location` fejléc értékeit a lekérdezés befejezéséhez. Ha az állapot "befejezett", a következőhöz hasonló HTTP-válaszüzenet jelenik meg:
+In this case, the function is still running. You are able to see the input that was saved into the orchestrator state and the last updated time. You can continue to use the `Location` header values to poll for completion. When the status is "Completed", you see an HTTP response value similar to the following:
 
 ```
 HTTP/1.1 200 OK
@@ -168,20 +163,20 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
-Most láthatja, hogy a folyamat elkészült, és körülbelül mennyi időt vett igénybe. A `output` mező értékét is megtekintheti, ami azt jelzi, hogy a naplók körülbelül 450 KB-át lettek feltöltve.
+Now you can see that the orchestration is complete and approximately how much time it took to complete. You also see a value for the `output` field, which indicates that around 450 KB of logs were uploaded.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio-mintakód
+## <a name="visual-studio-sample-code"></a>Visual Studio sample code
 
-Íme egy Visual Studio-projekt egyetlen C# fájlja:
+Here is the orchestration as a single C# file in a Visual Studio project:
 
 > [!NOTE]
-> Az alábbi mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet csomagot.
+> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet package to run the sample code below.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a példa azt mutatja, hogyan lehet megvalósítani a ventilátor-out/Fan-in mintát. A következő minta bemutatja, hogyan valósítható meg a figyelő minta [tartós időzítők](durable-functions-timers.md)használatával.
+This sample has shown how to implement the fan-out/fan-in pattern. The next sample shows how to implement the monitor pattern using [durable timers](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [A figyelő minta futtatása](durable-functions-monitor.md)
+> [Run the monitor sample](durable-functions-monitor.md)

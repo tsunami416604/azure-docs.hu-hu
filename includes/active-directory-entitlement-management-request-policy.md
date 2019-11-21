@@ -5,163 +5,197 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73412976"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260750"
 ---
-## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
+## <a name="for-users-in-your-directory"></a>For users in your directory
 
-Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő felhasználók számára a hozzáférési csomag igénylését. A kérelem szabályzatának meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal**.  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
+Follow these steps if you want to allow users in your directory to be able to request this access package. When defining the request policy, you can specify individual users, or more commonly groups of users. For example, your organization may already have a group such as **All employees**.  If that group is added in the policy for users who can request access, then any member of that group can then request access.
 
-1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban lévő felhasználók**elemre.
+1. In the **Users who can request access** section, click **For users in your directory**.
 
-    Ha ezt a beállítást választja, az új beállítások úgy jelennek meg, hogy tovább pontosítsa, hogy kik a címtárban is igényelhetik ezt a hozzáférési csomagot.
+    When you select this option, new options appear to further refine who in your directory can request this access package.
 
-    ![Hozzáférési csomag – kérelmek – a címtárban lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Access package - Requests - For users in your directory](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Válasszon egyet a következő lehetőségek közül:
+1. Select one of the following options:
 
     |  |  |
     | --- | --- |
-    | **Adott felhasználók és csoportok** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy csak a címtárban lévő felhasználók és csoportok férhessenek hozzá a hozzáférési csomaghoz. |
-    | **Minden tag (a vendégek kivételével)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtárban lévő összes tag felhasználó kérje ezt a hozzáférési csomagot. Ez a beállítás nem tartalmazza a címtárban esetleg meghívott vendég felhasználókat. |
-    | **Minden felhasználó (beleértve a vendégeket is)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtár összes tagja és vendég felhasználója hozzáférhessen a hozzáférési csomaghoz. |
+    | **Specific users and groups** | Choose this option if you want only the users and groups in your directory that you specify to be able to request this access package. |
+    | **All members (excluding guests)** | Choose this option if you want all member users in your directory to be able to request this access package. This option doesn't include any guest users you might have invited into your directory. |
+    | **All users (including guests)** | Choose this option if you want all member users and guest users in your directory to be able to request this access package. |
 
-    A vendég felhasználók a címtárban az [Azure ad B2B](../articles/active-directory/b2b/what-is-b2b.md)használatával meghívott külső felhasználókra vonatkoznak. A felhasználók és a vendég felhasználók közötti különbségekről a [Mi az alapértelmezett felhasználói engedélyek a Azure Active Directoryban?](../articles/active-directory/fundamentals/users-default-permissions.md)című témakörben talál további információt.
+    Guest users refer to external users that have been invited into your directory with [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). For more information about the differences between member users and guest users, see [What are the default user permissions in Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
-1. Ha **meghatározott felhasználókat és csoportokat adott**meg, kattintson a **felhasználók és csoportok hozzáadása**lehetőségre.
+1. If you selected **Specific users and groups**, click **Add users and groups**.
 
-1. A felhasználók és csoportok kiválasztása panelen válassza ki a hozzáadni kívánt felhasználókat és csoportokat.
+1. In the Select users and groups pane, select the users and groups you want to add.
 
-    ![Hozzáférési csomag – kérelmek – felhasználók és csoportok kiválasztása](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Access package - Requests - Select users and groups](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. A felhasználók és csoportok hozzáadásához kattintson a **kiválasztás** gombra.
+1. Click **Select** to add the users and groups.
 
-1. Ugorjon a [jóváhagyás](#approval) szakaszra.
+1. Skip down to the [Approval](#approval) section.
 
-## <a name="for-users-not-in-your-directory"></a>A címtárban nem szereplő felhasználók számára
+## <a name="for-users-not-in-your-directory"></a>For users not in your directory
 
-Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő felhasználók számára a hozzáférési csomag kérését. A **címtárban lévő felhasználók** egy másik Azure ad-címtárban vagy-tartományban lévő felhasználókra hivatkoznak, és előfordulhat, hogy még nem kérték fel a címtárba. Az Azure AD-címtárakat úgy kell konfigurálni, hogy az **együttműködési korlátozásokban**engedélyezze a meghívásokat. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../articles/active-directory/b2b/delegate-invitations.md)című témakört.
+ **Users not in your directory** refers to users who are in another Azure AD directory or domain. These users may not have yet been invited into your directory. Azure AD directories must be configured to be allow invitations in **Collaboration restrictions**. For more information, see [Enable B2B external collaboration and manage who can invite guests](../articles/active-directory/b2b/delegate-invitations.md).
 
 > [!NOTE]
-> Egy vendég felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait. További információ a vendég felhasználói objektumról: [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../articles/active-directory/b2b/user-properties.md).
+> A guest user account will be created for a user not yet in your directory whose request is approved or auto-approved. The guest will be invited, but will not receive an invite email. Instead, they will receive an email when their access package assignment is delivered. By default, later when that guest user no longer has any access package assignments, because their last assignment has expired or been cancelled, that guest user account will be blocked from sign in and subsequently deleted. If you want to have guest users remain in your directory indefinitely, even if they have no access package assignments, you can change the settings for your entitlement management configuration. For more information about the guest user object, see [Properties of an Azure Active Directory B2B collaboration user](../articles/active-directory/b2b/user-properties.md).
 
-1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban nem szereplő felhasználók**elemre.
+Follow these steps if you want to allow users not in your directory to request this access package:
 
-    Ha ezt a beállítást választja, az új beállítások jelennek meg.
+1. In the **Users who can request access** section, click **For users not in your directory**.
 
-    ![Hozzáférési csomag – kérelmek – a címtárban nem szereplő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    When you select this option, new options appear.
 
-1. Válasszon egyet a következő lehetőségek közül:
+    ![Access package - Requests - For users not in your directory](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+
+1. Select one of the following options:
 
     |  |  |
     | --- | --- |
-    | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. |
-    | **Minden csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy az összes csatlakoztatott szervezet összes felhasználója hozzáférhessen a hozzáférési csomaghoz. |
+    | **Specific connected organizations** | Choose this option if you want to select from a list of organizations that your administrator previously added. All users from the selected organizations can request this access package. |
+    | **All connected organizations** | Choose this option if all users from all your connected organizations can request this access package. |
 
-    A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
+    A connected organization is an external Azure AD directory or domain that you have a relationship with.
 
-1. Ha az **adott csatlakoztatott szervezetek**lehetőséget választotta, kattintson a **címtárak hozzáadása** lehetőségre a rendszergazda által korábban hozzáadott csatlakoztatott szervezetek listájából való kiválasztáshoz.
+1. If you selected **Specific connected organizations**, click **Add directories** to select from a list of connected organizations that your administrator previously added.
 
-1. A korábban csatlakoztatott szervezet kereséséhez írja be a név vagy a tartomány nevét.
+1. Type the name or domain name to search for a previously connected organization.
 
-    ![Hozzáférési csomag – kérelmek – könyvtárak kiválasztása](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Access package - Requests - Select directories](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Ha a szervezet, amely együttműködik a-val, nem szerepel a listában, megkérheti a rendszergazdát, hogy a hozzá csatlakoztatott szervezetként vegye fel. További információt a [csatlakoztatott szervezet hozzáadása](../articles/active-directory/governance/entitlement-management-organization.md)című témakörben talál.
+    If the organization you want to collaborate with isn't in the list, you can ask your administrator to add it as a connected organization. For more information, see [Add a connected organization](../articles/active-directory/governance/entitlement-management-organization.md).
 
-1. Miután kiválasztotta az összes csatlakoztatott szervezetet, kattintson a **kiválasztás**elemre.
+1. Once you've selected all your connected organizations, click **Select**.
 
     > [!NOTE]
-    > A kiválasztott csatlakoztatott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a szervezethez társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási listája blokkolja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../articles/active-directory/b2b/allow-deny-list.md).
+    > All users from the selected connected organizations will be able to request this access package. This includes users in Azure AD from all subdomains associated with the organization, unless those domains are blocked by the Azure B2B allow or deny list. For more information, see [Allow or block invitations to B2B users from specific organizations](../articles/active-directory/b2b/allow-deny-list.md).
 
-1. Ugorjon a [jóváhagyás](#approval) szakaszra.
+1. Skip down to the [Approval](#approval) section.
 
-## <a name="none-administrator-direct-assignments-only"></a>Nincs (csak a rendszergazdai közvetlen hozzárendelések)
+## <a name="none-administrator-direct-assignments-only"></a>None (administrator direct assignments only)
 
-Kövesse az alábbi lépéseket, ha szeretné megkerülni a hozzáférési kérelmeket, és lehetővé teszi, hogy a rendszergazdák közvetlenül rendeljenek hozzá konkrét felhasználókat a hozzáférési csomaghoz. A felhasználóknak nem kell a hozzáférési csomagot igényelnie. Továbbra is beállíthatja az életciklus-beállításokat, de nincsenek a kérelmek beállításai.
+Follow these steps if you want to bypass access requests and allow administrators to directly assign specific users to this access package. Users won't have to request the access package. You can still set lifecycle settings, but there are no request settings.
 
-1. A **hozzáférést kérő felhasználók** részen kattintson a **nincs (csak rendszergazdai közvetlen hozzárendelések**elemre.
+1. In the **Users who can request access** section, click **None (administrator direct assignments only**.
 
-    ![Hozzáférési csomag – kérelmek – nincsenek rendszergazdai közvetlen hozzárendelések](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Access package - Requests - None administrator direct assignments only](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    A hozzáférési csomag létrehozása után közvetlenül rendelhet hozzá konkrét belső és külső felhasználókat a hozzáférési csomaghoz. Ha külső felhasználót ad meg, a rendszer létrehoz egy vendég felhasználói fiókot a címtárban. A felhasználók közvetlen hozzárendelésével kapcsolatos információkért tekintse meg a [hozzáférési csomag hozzárendelésének megtekintése, hozzáadása és eltávolítása](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)című témakört.
+    After you create the access package, you can directly assign specific internal and external users to the access package. If you specify an external user, a guest user account will be created in your directory. For information about directly assigning a user, see [View, add, and remove assignments for an access package](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
-1. Ugorjon le a [kérelmek engedélyezése](#enable-requests) szakaszra.
+1. Skip down to the [Enable requests](#enable-requests) section.
 
 ## <a name="approval"></a>Jóváhagyás
 
-A jóváhagyás szakaszban megadhatja, hogy szükség van-e jóváhagyásra, ha a felhasználók ezt a hozzáférési csomagot kérik. A jóváhagyási beállítások a következő módon működnek:
+In the Approval section, you specify whether an approval is required when users request this access package. The approval settings work in the following way:
 
-- Csak az egyik kiválasztott jóváhagyó vagy tartalék jóváhagyónak kell jóváhagynia a kérelmet. Az összes jóváhagyó jóváhagyása nem szükséges.
-- A jóváhagyási döntés azon alapul, hogy bármelyik jóváhagyó megtekinti-e először a kérést.
+- Only one of the selected approvers or fallback approvers needs to approve a request for single-stage approval. 
+- Only one of the selected approvers from each stage needs to approve a request for 2-stage approval.
+- The approver can be a Manager, Internal sponsor, or External sponsor depending on who the policy is governing access.
+- Approval from every selected approver isn't required for single or 2-stage approval.
+- The approval decision is based on whichever approver reviews the request first.
 
-Kövesse az alábbi lépéseket a korábban kiválasztott felhasználók jóváhagyási beállításainak megadásához.
+Follow these steps to specify the approval settings for requests for the access package:
 
-1. A kiválasztott felhasználóktól érkező kérések jóváhagyásának megköveteléséhez állítsa az **Igen**értékre a **jóváhagyás megkövetelése** kapcsolót. Ha szeretné, hogy a rendszer automatikusan jóváhagyja a kéréseket, állítsa a kapcsolót a **nem**értékre.
+1. To require approval for requests from the selected users, set the **Require approval** toggle to **Yes**. Or, to have requests automatically approved, set the toggle to **No**.
 
-1. Ha szeretné megkövetelni, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, állítsa a **kérelmező indoklásának megkövetelése** **beállítást igen**értékre.
+1. To require users to provide a justification to request the access package, set the **Require requestor justification** toggle to **Yes**.
+    
+1. Now determine if requests will require single or 2-stage approval. Set the **How many stages** toggle to **1** for single stage approval or set the toggle to **2** for 2-stage approval.
 
-    ![Hozzáférési csomag – kérelmek – jóváhagyási beállítások](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Access package - Requests - Approval settings](./media/active-directory-entitlement-management-request-policy/approval.png)
 
-### <a name="single-stage-approval"></a>Egyfázisú jóváhagyás
 
-1. Jóváhagyók esetében válassza a **felettes jóváhagyása** lehetőséget, vagy **válassza a megadott jóváhagyók lehetőséget**.
+Use the following steps to add approvers after selecting how many stages you require: 
 
-    ![Hozzáférési csomag – kérelmek – egyfázisú beállítások](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
+### <a name="single-stage-approval"></a>Single-stage approval
 
-1. Ha a kezelő mint jóváhagyó lehetőséget választotta, kattintson a **tartalék hozzáadása** lehetőségre, ha egy vagy több felhasználót vagy csoportot kíván kijelölni a címtárban, hogy tartalék jóváhagyó legyen abban az esetben, ha a jogosultságok kezelése nem találja a kezelőt.
+1. Add the **First Approver**:
+    
+    If the policy is set to govern access for users in your directory, you can select **Manager as approver**. Or, add a specific user by clicking **Add approvers** after selecting Choose specific approvers from the dropdown menu.
+    
+    ![Access package - Requests - For users in directory - First Approver](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    A kezelőt az Azure AD felhasználói profiljának **Manager** attribútuma határozza meg. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    If this policy is set to govern access for users not in your directory, you can select **External sponsor** or **Internal sponsor**. Or, add a specific user by clicking **Add approvers** or groups under Choose specific approvers.
+    
+    ![Access package - Requests - For users out of directory - First Approver](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    
+1. If you selected **Manager** as the first approver, click **Add fallback** to select one or more users or groups in your directory to be a fallback approver. Fallback approvers receive the request if entitlement management can't find the manager for the user requesting access.
 
-1. Ha az egyes jóváhagyók kiválasztása lehetőséget választotta, kattintson a **Jóváhagyók hozzáadása** lehetőségre a címtárban lévő felhasználók vagy csoportok jóváhagyásának kiválasztásához.
+    The manager is found by entitlement management using the **Manager** attribute. The attribute is in the user's profile in Azure AD. For more information, see [Add or update a user's profile information using Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. A **döntésben**meg kell határozni, hogy hány nap múlva kell megadnia, hogy a jóváhagyónak hány napig kell áttekintenie a hozzáférési csomagra vonatkozó kérelmet.
+1. If you selected **Choose specific approvers**, click **Add approvers** to select one or more users or groups in your directory to be approvers.
 
-    Ha egy kérelem nem lett jóváhagyva ezen az időtartamon belül, a rendszer automatikusan letiltja. A felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz.
+1. In the box under **Decision must be made in how many days?** , specify the number of days that an approver has to review a request for this access package.
 
-1. Ahhoz, hogy a felhasználók indoklást szolgáltassanak a hozzáférési csomag igényléséhez, az **Igen**értékre kell állítani a **jóváhagyó indoklását** .
+    If a request isn't approved within this time period, it will be automatically denied. The user will have to submit another request for the access package.
 
-    Egy indoklás látható a többi jóváhagyó és a kérelmező számára.
+1. To require approvers to provide a justification for their decision, set Require approver justification to **Yes**.
 
-### <a name="alternate-approvers"></a>Alternatív jóváhagyók
+    The justification is visible to other approvers and the requestor.
 
-A kérelmeket jóváhagyó elsődleges jóváhagyók megadása mellett alternatív jóváhagyókat is megadhat. Ezzel biztosíthatja, hogy a rendszer a kérelmeket a lejárat előtt jóváhagyja vagy megtagadja (időtúllépés).
+### <a name="2-stage-approval-preview"></a>2-stage approval (Preview)
 
-Ha alternatív jóváhagyó (ka) t ad meg, abban az esetben, ha az elsődleges jóváhagyó (k) nem tudta jóváhagyni vagy megtagadni a kérést, a függőben lévő kérést a rendszer a házirend beállításakor megadott továbbítási ütemterv szerint továbbítja a másodlagos jóváhagyó (k) nek. E-mailt kapnak a függőben lévő kérelem jóváhagyásához vagy elutasításához.
+If you selected a 2-stage approval, you'll need to add a second approver.
 
-Miután a kérést továbbították a másodlagos jóváhagyóknak, az elsődleges jóváhagyók továbbra is jóváhagyják vagy eltagadhatják a kérést. A másodlagos jóváhagyók ugyanazt a saját hozzáférési helyet használják, mint az elsődleges jóváhagyó, a függőben lévő kérelem jóváhagyásához vagy elutasításához.
+1. Add the **Second Approver**: 
+    
+    If the users are in your directory, add a specific user as the second approver by clicking **Add approvers** under Choose specific approvers.
 
-Listázhat személyeket vagy csoportokat, akik az elsődleges jóváhagyók és az alternatív jóváhagyók. Győződjön meg arról, hogy az elsődleges jóváhagyóként és a másodlagos jóváhagyóként különböző személyek listáját sorolja fel.
-Ha például az Alice és a Bob elsődleges jóváhagyó (k), a Carol és a Dave listázása az alternatív jóváhagyó (k). A következő lépésekkel adhat hozzá alternatív jóváhagyókat egy hozzáférési csomaghoz:
+    ![Access package - Requests - For users in directory - Second Approver](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-1. Kattintson a **speciális kérelmek beállításainak megjelenítése**lehetőségre.
+    If the users aren't in your directory, select **Internal sponsor** or **External sponsor** as the second approver. After selecting the approver, add the fallback approvers.
 
-    ![Hozzáférési csomag – szabályzat – speciális kérelmek beállításainak megjelenítése](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Access package - Requests - For users out of directory - Second Approver](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Állítsa be **, hogy nem történt-e művelet, továbbítsa a másodlagos jóváhagyóknak?** váltás az **Igen**értékre.
+1. Specify the number of days the second approver has to approve the request in the box under **Decision must be made in how many days?** . 
 
-1. Kattintson az **alternatív Jóváhagyók hozzáadása** lehetőségre, és válassza ki a listából a másodlagos jóváhagyó (ka) t.
+1. Set the Require approver justification toggle to **Yes** or **No**.
 
-    ![Hozzáférési csomag – házirend – alternatív Jóváhagyók hozzáadása](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+### <a name="alternate-approvers"></a>Alternate approvers
 
-1. A **továbbítás a másodlagos jóváhagyó (ok)** hoz a napok száma után, hogy a jóváhagyóknak hány napig kell jóváhagyni vagy megtagadni a kérést. Ha a kérelem időtartama előtt egyetlen jóváhagyó sem hagyta jóvá vagy nem utasította el a kérelmet, a kérelem lejár (időtúllépés), és a felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz. 
+You can specify alternate approvers, similar to specifying the first and second approvers who can approve requests. Having alternate approvers will help ensure that the requests are approved or denied before they expire (timeout). You can list alternate approvers the first approver and second approver for 2-stage approval. 
 
-    A kérések továbbítása csak a kérés időtartamát követő nap után lehetséges a másodlagos jóváhagyóknak. Ebben a példában a kérelem időtartama 14 nap. Ez azt jelenti, hogy a kérelem időtartama a 7. napon eléri a felezési időt. Így a kérést nem lehet a 8. nap elején továbbítani. A kérések időtartamának utolsó napján a kérelmeket nem lehet továbbítani a másodlagos jóváhagyónak. Így a példában a legutóbbi kérelem továbbítása a 13. nap.
+By specifying alternate approvers, in the event that the first or second approvers were unable to approve or deny the request, the pending request gets forwarded to the alternate approvers, per the forwarding schedule you specified during policy setup. They receive an email to approve or deny the pending request.
 
-## <a name="enable-requests"></a>Kérelmek engedélyezése
+After the request is forwarded to the alternate approvers, the first or second approvers can still approve or deny the request. Alternate approvers use the same My Access site to approve or deny the pending request.
 
-1. Ha azt szeretné, hogy a hozzáférési csomag azonnal elérhető legyen a kérési házirendben szereplő felhasználók számára, kattintson az **Igen** gombra az engedélyezéshez.
+We can list people or groups of people to be approvers and alternate approvers. Please ensure that you list different sets of people to be the first, second, and alternate approvers.
+For example, if you listed Alice and Bob as the First Approver(s), list Carol and Dave as the alternate approvers. Use the following steps to add alternate approvers to an access package:
 
-    A jövőben bármikor engedélyezheti azt a hozzáférési csomag létrehozása után.
+1. Under the First Approver, Second Approver, or both, click **Show advanced request settings**.
 
-    Ha a **nincs (csak rendszergazda közvetlen hozzárendelések)** lehetőséget választotta, és az engedélyezés a **nem**értékre van állítva, akkor a rendszergazdák nem tudják közvetlenül hozzárendelni ezt a hozzáférési csomagot.
+    ![Access package - Policy - Show advanced request settings](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-    ![Hozzáférési csomag – házirend – házirend-beállítás engedélyezése](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+1. Set **If no action taken, forward to alternate approvers?** toggle to **Yes**.
+
+1. Click **Add alternate approvers** and select the alternate approver(s) from the list.
+
+    ![Access package - Policy - Add Alternate Approvers](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. In the **Forward to alternate approver(s) after how many days** box, put in the number of days the approvers have to approve or deny a request. If no approvers have approved or denied the request before the request duration, the request expires (timeout), and the user will have to submit another request for the access package. 
+
+    Requests can only be forwarded to alternate approvers a day after the request duration reaches half-life. In this example, the duration of the request is 14 days. So, the request duration reaches half-life at day 7. So the request can't be forwarded earlier than day 8. Also, requests can't be forwarded on the last day of the request duration. So in the example, the latest the request can be forwarded is day 13.
+
+## <a name="enable-requests"></a>Enable requests
+
+1. If you want the access package to be made immediately available for users in the request policy to request, click **Yes** to enable.
+
+    You can always enable it in the future after you have finished creating the access package.
+
+    If you selected **None (administrator direct assignments only)** and you set enable to **No**, then administrators can't directly assign this access package.
+
+    ![Access package - Policy- Enable policy setting](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Kattintson a **Tovább** gombra.

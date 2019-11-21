@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció a uservoice-on |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a UserVoice között.
+title: 'Tutorial: Azure Active Directory integration with UserVoice | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and UserVoice.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,241 +15,241 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087638"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232009"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Oktatóanyag: Az Azure Active Directory-integráció a uservoice-on
+# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Tutorial: Azure Active Directory integration with UserVoice
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan UserVoice integrálása az Azure Active Directory (Azure AD).
-UserVoice integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+In this tutorial, you learn how to integrate UserVoice with Azure Active Directory (Azure AD).
+Integrating UserVoice with Azure AD provides you with the following benefits:
 
-* Szabályozhatja, ki férhet hozzá a uservoice-on Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a uservoice-hoz (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* You can control in Azure AD who has access to UserVoice.
+* You can enable your users to be automatically signed-in to UserVoice (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a uservoice-on, a következőkre van szükség:
+To configure Azure AD integration with UserVoice, you need the following items:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* UserVoice egyszeri bejelentkezés engedélyezve van az előfizetés
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* UserVoice single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Támogatja a UserVoice **SP** által kezdeményezett egyszeri bejelentkezés
+* UserVoice supports **SP** initiated SSO
 
-## <a name="adding-uservoice-from-the-gallery"></a>UserVoice hozzáadása a katalógusból
+## <a name="adding-uservoice-from-the-gallery"></a>Adding UserVoice from the gallery
 
-Konfigurálhatja az Azure AD integrálása a uservoice-on, hozzá kell uservoice-on a galériából a felügyelt SaaS-alkalmazások listájára.
+To configure the integration of UserVoice into Azure AD, you need to add UserVoice from the gallery to your list of managed SaaS apps.
 
-**UserVoice hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**To add UserVoice from the gallery, perform the following steps:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **UserVoice**, jelölje be **UserVoice** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. In the search box, type **UserVoice**, select **UserVoice** from result panel then click **Add** button to add the application.
 
-     ![Az eredmények listájában a uservoice-on](common/search-new-app.png)
+     ![UserVoice in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a uservoice-on alapuló nevű tesztfelhasználó **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó uservoice hivatkozás kapcsolata kell hozható létre.
+In this section, you configure and test Azure AD single sign-on with UserVoice based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in UserVoice needs to be established.
 
-Az Azure AD egyszeri bejelentkezés a UserVoice tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+To configure and test Azure AD single sign-on with UserVoice, you need to complete the following building blocks:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[UserVoice egyszeri bejelentkezés konfigurálása](#configure-uservoice-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre UserVoice tesztfelhasználót](#create-uservoice-test-user)**  – van egy Britta Simon megfelelője a uservoice-on, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure UserVoice Single Sign-On](#configure-uservoice-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create UserVoice test user](#create-uservoice-test-user)** - to have a counterpart of Britta Simon in UserVoice that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés a uservoice-on, hajtsa végre az alábbi lépéseket:
+To configure Azure AD single sign-on with UserVoice, perform the following steps:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **UserVoice** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. In the [Azure portal](https://portal.azure.com/), on the **UserVoice** application integration page, select **Single sign-on**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![UserVoice-tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![UserVoice Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<tenantname>.UserVoice.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenantname>.UserVoice.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<tenantname>.UserVoice.com`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<tenantname>.UserVoice.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [UserVoice ügyfél-támogatási csapatának](https://www.uservoice.com/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [UserVoice Client support team](https://www.uservoice.com/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![SAML-aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. Az a **SAML-aláíró tanúsítvány** területén másolja a **ujjlenyomat** , és mentse a számítógépre.
+6. In the **SAML Signing Certificate** section, copy the **Thumbprint** and save it on your computer.
 
-    ![Másolja ki az ujjlenyomat értéket](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. Az a **állítsa be a UserVoice** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. On the **Set up UserVoice** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Login URL
 
-    b. Azure AD-azonosító
+    b. Azure AD Identifier
 
-    c. Kijelentkezési URL
+    c. Logout URL
 
 ### <a name="configure-uservoice-single-sign-on"></a>Configure UserVoice Single Sign-On
 
-1. Egy másik böngészőablakban jelentkezzen be a UserVoice vállalati hely rendszergazdaként.
+1. In a different web browser window, sign in to your UserVoice company site as an administrator.
 
-2. A felső eszköztáron kattintson **beállítások**, majd válassza ki **webportál** a menüből.
+2. In the toolbar on the top, click **Settings**, and then select **Web portal** from the menu.
    
-    ![Beállítások szakaszban az alkalmazás oldalán](./media/uservoice-tutorial/ic777519.png "beállításai")
+    ![Settings Section On App Side](./media/uservoice-tutorial/ic777519.png "Beállítások")
 
-3. Az a **webes portálon** lap a **felhasználói hitelesítés** területén kattintson **szerkesztése** megnyitásához a **felhasználói hitelesítés szerkesztése** párbeszédpanel lap.
+3. On the **Web portal** tab, in the **User authentication** section, click **Edit** to open the **Edit User Authentication** dialog page.
    
-    ![Webes portál lapon](./media/uservoice-tutorial/ic777520.png "webes portálon")
+    ![Web portal Tab](./media/uservoice-tutorial/ic777520.png "Web portal")
 
-4. Az a **felhasználói hitelesítés szerkesztése** párbeszédpanel lapon, a következő lépésekkel:
+4. On the **Edit User Authentication** dialog page, perform the following steps:
    
-    ![Felhasználói hitelesítés szerkesztése](./media/uservoice-tutorial/ic777521.png "felhasználói hitelesítés szerkesztése")
+    ![Edit user authentication](./media/uservoice-tutorial/ic777521.png "Edit user authentication")
    
-    a. Kattintson a **egyszeri bejelentkezés (SSO)** .
+    a. Click **Single Sign-On (SSO)** .
  
-    b. Illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról történő másolta a **SSO távoli bejelentkezési** szövegmezőbe.
+    b. Paste the **Login URL** value, which you have copied from the Azure portal into the **SSO Remote Sign-In** textbox.
 
-    c. Illessze be a **kijelentkezési URL-címe** érték, amely az Azure Portalról történő másolta a **SSO távoli kijelentkezéses szövegmező**.
+    c. Paste the **Logout URL** value, which you have copied from the Azure portal into the **SSO Remote Sign-Out textbox**.
  
-    d. Illessze be a **ujjlenyomat** érték, amely az Azure Portalról másolta a **jelenlegi tanúsítvány SHA1-ujjlenyomatot** szövegmezőbe.
+    d. Paste the **Thumbprint** value , which you have copied from Azure portal  into the **Current certificate SHA1 fingerprint** textbox.
     
-    e. Kattintson a **hitelesítési beállítások mentése**.
+    e. Click **Save authentication settings**.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. In the **User name** field type brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezés a uservoice-hoz a hozzáférés biztosításával.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to UserVoice.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **UserVoice**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **UserVoice**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **UserVoice**.
+2. In the applications list, select **UserVoice**.
 
-    ![A UserVoice-hivatkozás alkalmazásainak listájában](common/all-applications.png)
+    ![The UserVoice link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-uservoice-test-user"></a>UserVoice tesztfelhasználó létrehozása
+### <a name="create-uservoice-test-user"></a>Create UserVoice test user
 
-Ahhoz, hogy jelentkezzen be a uservoice-hoz az Azure AD-felhasználók, akkor ki kell építeni UserVoice-bA. Uservoice-on, esetén kiépítése a manuális feladat.
+To enable Azure AD users to sign in to UserVoice, they must be provisioned into UserVoice. In the case of UserVoice, provisioning is a manual task.
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:
+### <a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
 
-1. Jelentkezzen be a **UserVoice** bérlő.
+1. Sign in to your **UserVoice** tenant.
 
-2. Lépjen a **beállítások**.
+2. Go to **Settings**.
    
-    ![Beállítások](./media/uservoice-tutorial/ic777811.png "beállításai")
+    ![Beállítások](./media/uservoice-tutorial/ic777811.png "Beállítások")
 
-3. Kattintson a **általános**.
+3. Click **General**.
 
-4. Kattintson a **az ügynökök és az engedélyek**.
+4. Click **Agents and permissions**.
    
-    ![Az ügynökök és az engedélyek](./media/uservoice-tutorial/ic777812.png "az ügynökök és engedélyek")
+    ![Agents and permissions](./media/uservoice-tutorial/ic777812.png "Agents and permissions")
 
-5. Kattintson a **rendszergazdai**.
+5. Click **Add admins**.
    
-    ![Adja hozzá a rendszergazdák](./media/uservoice-tutorial/ic777813.png "rendszergazdák hozzáadása")
+    ![Add admins](./media/uservoice-tutorial/ic777813.png "Add admins")
 
-6. Az a **rendszergazdák meghívása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+6. On the **Invite admins** dialog, perform the following steps:
    
-    ![A rendszergazdák meghívása](./media/uservoice-tutorial/ic777814.png "rendszergazdák meghívása")
+    ![Invite admins](./media/uservoice-tutorial/ic777814.png "Invite admins")
    
-    a. Az e-mailek szövegmezőbe írja be kíván üzembe helyezni, és kattintson a fiók e-mail-címe **Hozzáadás**.
+    a. In the Emails textbox, type the email address of the account you want to provision, and then click **Add**.
    
-    b. Kattintson a **meghívása**.
+    b. Click **Invite**.
 
 > [!NOTE]
-> Bármely más UserVoice felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését UserVoice által biztosított API-k.
+> You can use any other UserVoice user account creation tools or APIs provided by UserVoice to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Kattintva a UserVoice-csempét, a hozzáférési panelen, meg kell lehet automatikusan bejelentkezett a uservoice-on, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the UserVoice tile in the Access Panel, you should be automatically signed in to the UserVoice for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

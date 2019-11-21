@@ -1,7 +1,7 @@
 ---
-title: Alkalmazás közzététele – LUIS
+title: Publish app - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ha befejezte az aktív LUIS-alkalmazás létrehozását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végpontra való közzétételsel.
+description: When you finish building and testing your active LUIS app, make it available to your client application by publishing it to the endpoint.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,89 +9,90 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3a413249cb9058e4098f2836131494670a1727
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f213c1d43930075c78cf81de345f612e46bbfb1c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491322"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221722"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publish your active, trained app to a staging or production endpoint
 
-Ha befejezte az aktív LUIS-alkalmazás létrehozását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végpontra való közzétételsel. 
+When you finish building, training, and testing your active LUIS app, make it available to your client application by publishing it to the endpoint. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
-<a name="publish-your-trained-app-to-an-http-endpoint"></a>
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Közzététel
 
-1. A végponton való közzétételhez kattintson a jobb oldali panelen a **Közzététel** elemre. 
+1. To publish to the endpoint, select **Publish** in the top, right panel. 
 
-    ![Közzététel gomb a fent, jobb oldali navigációs sávon](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![Publish button in top, right nav bar](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Válassza ki a közzétett előrejelzési végpont beállításait, majd válassza a **Közzététel**lehetőséget.
+1. Select your settings for the published prediction endpoint, then select **Publish**.
 
-    ![Válassza a közzétételi beállítások lehetőséget, majd válassza a közzététel gombot](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Select publish settings then select Publish button](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Közzétételi résidők
+### <a name="publishing-slots"></a>Publishing slots
 
-Válassza ki a megfelelő tárolóhelyet, amikor megjelenik az előugró ablak: 
+Select the correct slot when the pop-up window displays: 
 
-* Átmeneti.
-* Éles. 
+* Előkészítés
+* Éles üzem 
 
-Ha mindkét közzétételi tárolóhelyet használja, ez lehetővé teszi, hogy az alkalmazás két különböző verzióját elérhetővé tegye a közzétett végpontokon vagy ugyanazon a verzión két különböző végponton. 
+By using both publishing slots, this allows you to have two different versions of your app available at the published endpoints or the same version on two different endpoints. 
 
-### <a name="publishing-regions"></a>Közzétételi régiók
+### <a name="publishing-regions"></a>Publishing regions
 
-Az alkalmazás közzé van téve a Luis-előrejelzési végpont erőforrásaihoz társított összes régióban a LUIS-portálon. 
+The app is published to all regions associated with the LUIS prediction endpoint resources added in the LUIS portal from the **Manage** ->  **[Azure Resources](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** page. 
 
-Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmazáshoz létrehoz egy Luis-erőforrást két régióban, a **westus** és a **eastus**, és hozzáadja ezeket az alkalmazáshoz erőforrásként, az alkalmazás mindkét régióban közzé lesz téve. A LUIS régiókkal kapcsolatos további információkért lásd: [régiók](luis-reference-regions.md).
+For example, for an app created on [www.luis.ai](https://www.luis.ai), if you create a LUIS resource in two regions, **westus** and **eastus**, and add these to the app as resources, the app is published in both regions. For more information about LUIS regions, see [Regions](luis-reference-regions.md).
+
+> [!TIP]
+> There are 3 authoring regions. You must author in the region you intend to publish to. If you need to publish to all regions, you need to manage your authoring process and the resulting trained model in all 3 authoring regions. 
 
 
-## <a name="configuring-publish-settings"></a>Közzétételi beállítások konfigurálása
+## <a name="configuring-publish-settings"></a>Configuring publish settings
 
-Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
+After you select the slot, configure the publish settings for:
 
-* Hangulatelemzés
-* Helyesírás-javítás
-* Beszéd alapozó 
+* Véleményelemzés
+* Spelling correction - v2 prediction endpoint only
+* Speech priming 
 
-A közzététel után ezek a beállítások a **kezelés** szakasz **közzétételi beállítások** lapján érhetők el. A beállításokat minden közzététel lehetőséggel módosíthatja. Ha megszakít egy közzétételt, a közzététel során végrehajtott módosítások is megszakadnak. 
+After you publish, these settings are available for review from the **Manage** section's **Publish settings** page. You can change the settings with every publish. If you cancel a publish, any changes you made during the publish are also canceled. 
 
-### <a name="when-your-app-is-published"></a>Az alkalmazás közzétételekor
+### <a name="when-your-app-is-published"></a>When your app is published
 
-Az alkalmazás sikeres közzétételekor a böngésző tetején megjelenik egy zöld sikert jelző értesítés. A zöld értesítési sáv a végpontokra mutató hivatkozást is tartalmaz. 
+When your app is successfully published, a success notification appears at the top of the browser. The notification also includes a link to the endpoints. 
 
-![Előugró ablak közzététele a végpontra mutató hivatkozással](./media/luis-how-to-publish-app/publish-success.png)
+If you need the endpoint URL, select the link. You can also get to the endpoint URLs by selecting **Manage** in the top menu, then select **Azure Resources** in the left menu. 
 
-Ha a végpont URL-címére van szüksége, válassza ki a hivatkozást. A végpont URL-címeihez a felső menüben a **kezelés** lehetőségre kattintva, majd a bal oldali menüben válassza az **Azure-erőforrások** lehetőséget. 
-
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 
 <a name="enable-sentiment-analysis"></a>
 
-A hangulat elemzése lehetővé teszi a LUIS számára a [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) integrálását az érzelmek és a kulcsfontosságú kifejezések elemzésének biztosítása érdekében. 
+Sentiment analysis allows LUIS to integrate with [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) to provide sentiment and key phrase analysis. 
 
-Nem kell megadnia Text Analytics kulcsot, és a szolgáltatáshoz nem tartozik számlázási díj az Azure-fiókhoz. 
+You do not have to provide a Text Analytics key and there is no billing charge for this service to your Azure account. 
 
-Az érzelmi adatmennyiség egy 1 és 0 közötti pontszám, amely az adatmennyiség pozitív (közelebbről 1) vagy negatív (közelebbről 0) hangulatát jelzi. A `positive`, `neutral`és `negative` hangulati címkéje támogatott kultúrán alapul. Jelenleg csak az angol támogatja a hangulati címkéket. 
+Sentiment data is a score between 1 and 0 indicating the positive (closer to 1) or negative (closer to 0) sentiment of the data. The sentiment label of `positive`, `neutral`, and `negative` is per supported culture. Currently, only English supports sentiment labels. 
 
-A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-concept-data-extraction.md#sentiment-analysis) talál további információt.
+For more information about the JSON endpoint response with sentiment analysis, see [Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)
 
-## <a name="spelling-correction"></a>Helyesírás-javítás
+## <a name="spelling-correction"></a>Spelling correction
 
-A helyesírási javítások a LUIS-felhasználó teljes előrejelzése előtt történnek. A válaszban megtekintheti az eredeti szöveg összes módosítását, beleértve a helyesírást is.
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-## <a name="speech-priming"></a>Beszéd alapozó
+Corrections to spelling are made before the LUIS user utterance prediction. You can see any changes to the original utterance, including spelling, in the response.
 
-A beszédfelismerési folyamat célja a LUIS modell elküldése a beszédfelismerési szolgáltatásoknak a szöveg beszédbe való átalakítása előtt. Ez lehetővé teszi, hogy a beszédfelismerési szolgáltatás pontosabban biztosítson beszédfelismerési konverziót a modell számára. Ez lehetővé teszi, hogy a bot beszédét és a LUIS kérelmeit és válaszait egy hívással egy beszédes hívást indítson, és egy LUIS-választ kérjen vissza. Összességében kevesebb késést biztosít.
+## <a name="speech-priming"></a>Speech priming
 
-## <a name="next-steps"></a>További lépések
+Speech priming is the process of using sending the LUIS model to Speech services prior to conversion of text to speech. This allows the speech service to provide speech conversion more accurately for your model. This allows bot Speech and LUIS requests and responses in one call by making one speech call and getting back a LUIS response. It provides less latency overall.
 
-* Lásd: [kulcsok kezelése](./luis-how-to-azure-subscription.md) az Azure-előfizetési kulcshoz való hozzáadásához a Luis-hez, valamint a Bing Spell Check kulcs beállításához, és az összes leképezést az eredmények között.
-* A közzétett alkalmazás tesztelési konzolon történő tesztelésével kapcsolatos útmutatásért lásd: [az alkalmazás betanítása és tesztelése](luis-interactive-test.md) .
+## <a name="next-steps"></a>Következő lépések
+
+* See [Manage keys](./luis-how-to-azure-subscription.md) to add keys to Azure subscription key to LUIS and how to set the Bing Spell Check key and include all intents in results.
+* See [Train and test your app](luis-interactive-test.md) for instructions on how to test your published app in the test console.
 

@@ -1,6 +1,6 @@
 ---
-title: Válassza ki a megfelelő összevonási protokollt a több-bérlős alkalmazáshoz
-description: Útmutató független szoftvergyártók számára a Azure Active Directory integrálásához
+title: Choose right federation protocol for multi-tenant application
+description: Guidance for independent software vendors on integrating with Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,55 +12,55 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ede458e7d4c1cb1a8d7e3f2e2c9df54d5925d6d8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175982"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232297"
 ---
-# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Válassza ki a megfelelő összevonási protokollt a több-bérlős alkalmazáshoz
+# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Choose the right federation protocol for your multi-tenant application
 
-A szolgáltatott szoftver (SaaS) alkalmazás fejlesztésekor ki kell választania azt az összevonási protokollt, amely a legjobban megfelel az Ön és az ügyfelek igényeinek. Ez a döntés a fejlesztési platformon alapul, és az ügyfelek Office 365-és Azure AD-ökoszisztémájában elérhető adatszolgáltatásokkal való integrációt kívánja elérni.
+When you develop your software as a service (SaaS) application, you must select the federation protocol that best meets your and your customers’ needs. This decision is based on your development platform, and your desire to integrate with data available within your customers’ Office 365 and Azure AD ecosystem.
 
-Tekintse [meg az egyszeri bejelentkezéses integrációhoz elérhető protokollok](what-is-single-sign-on.md) teljes listáját Azure Active Directory.
-A következő táblázat összehasonlítja a 
-* Nyílt hitelesítés 2,0 (OAuth 2,0)
-* Open ID-kapcsolat (OIDC)
+See the complete list of [protocols available for SSO integrations](what-is-single-sign-on.md) with Azure Active Directory.
+The following table compares 
+* Open Authentication 2.0 (OAuth 2.0)
+* Open ID Connect (OIDC)
 * Security Assertion Markup Language (SAML)
-* Web Services-összevonás (WSFed)
+* Web Services Federation (WSFed)
 
-| Szolgáltatás| OAuth/OIDC| SAML/WSFed |
+| Szolgáltatás| OAuth / OIDC| SAML / WSFed |
 | - |-|-|
-| Webalapú egyszeri bejelentkezés| √| √ |
-| Webalapú egyszeri kijelentkezés| √| √ |
-| Mobile-alapú egyszeri bejelentkezés| √| √ |
-| Mobile-alapú egyszeri kijelentkezés| √| √ |
-| A mobil alkalmazások feltételes hozzáférési szabályzatai| √| X |
-| Zökkenőmentes MFA-élmény a Mobile Applications szolgáltatáshoz| √| X |
-| Hozzáférés Microsoft Graph| √| X |
+| Web-based Single sign-on| √| √ |
+| Web-based Single sign-out| √| √ |
+| Mobile-based Single sign-on| √| √* |
+| Mobile-based Single sign-out| √| √* |
+| Conditional Access policies for mobile applications| √| X |
+| Seamless MFA experience for mobile applications| √| X |
+| Access Microsoft Graph| √| X |
 
-\* Lehetséges, de a Microsoft nem ad meg mintákat vagy útmutatást.
+*Possible, but Microsoft doesn't provide samples or guidance.
 
-## <a name="oauth-20-and-open-id-connect"></a>OAuth 2,0 és Open ID-kapcsolat
+## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 and Open ID Connect
 
-A OAuth 2,0 egy [iparági szabványnak](https://oauth.net/2/) megfelelő protokoll az engedélyezéshez. A OIDC (OpenID Connect) egy [iparági szabványnak](https://openid.net/connect/) megfelelő identitás-hitelesítési réteg, amely az 2,0 protokollra épül.
+OAuth 2.0 is an [industry-standard](https://oauth.net/2/) protocol for authorization. OIDC (OpenID Connect) is an [industry standard](https://openid.net/connect/) identity authentication layer built on top of the Oath 2.0 protocol.
 
 ### <a name="benefits"></a>Előnyök
 
-A Microsoft azt javasolja, hogy a OIDC/OAuth 2,0-et használja, mivel azok hitelesítéssel és engedélyezéssel rendelkeznek a protokollok számára. Az SAML használatával emellett az engedélyezést is végre kell hajtania.
+Microsoft recommends using OIDC/OAuth 2.0 as they have authentication and authorization built in to the protocols. With SAML, you must additionally implement authorization.
 
-Az ezekben a protokollokban rejlő engedély lehetővé teszi, hogy az alkalmazás a Microsoft Graph API-n keresztül hozzáférjen és integrálható legyen a gazdag felhasználói és szervezeti adataival.
+The authorization inherent in these protocols enables your application to access and integrate with rich user and organizational data through the Microsoft Graph API.
 
-A OAuth 2,0 és a OIDC használata leegyszerűsíti az ügyfelek végfelhasználói élményét az alkalmazáshoz tartozó egyszeri bejelentkezés bevezetésekor. Egyszerűen meghatározhatja a szükséges engedélyeket, amelyeket a rendszer automatikusan a rendszergazda vagy a végfelhasználó beleegyezésével jelöl.
+Using OAuth 2.0 and OIDC simplifies your customers’ end-user experience when adopting SSO for your application. You can easily define the permission sets necessary, which are then automatically represented to the administrator or end user consenting.
 
-Ezen protokollok használata lehetővé teszi, hogy az ügyfelek feltételes hozzáférési és MFA-szabályzatokat használjanak az alkalmazásokhoz való hozzáférés szabályozásához. A Microsoft [több technológiai platformon](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) biztosít könyvtárakat és kódrészleteket a fejlesztés támogatásához.  
+Additionally, using these protocols enables your customers to use Conditional Access and MFA policies to control access to the applications. Microsoft provides libraries and [code samples across multiple technology platforms](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) to aid your development.  
 
 ### <a name="implementation"></a>Megvalósítás
 
-Az alkalmazás regisztrálása a Microsoft Identity szolgáltatásban történik, amely egy OAuth 2,0-szolgáltató. Ezután regisztrálhat a OAuth 2,0-alapú alkalmazást bármely más, a-nal integrálni kívánt identitás-szolgáltatóval. 
+You register your application with Microsoft Identity, which is an OAuth 2.0 provider. You could then also register your OAuth 2.0-based application with any other Identity Provider that you wish to integrate with. 
 
-További információ az alkalmazás regisztrálásáról és a protokollok az egyszeri bejelentkezésről a Web Apps szolgáltatásban történő megvalósításáról: [hozzáférés engedélyezése webalkalmazásokhoz OpenID Connect és Azure Active Directory használatával](../develop/sample-v2-code.md).  A protokollok a Mobile apps szolgáltatásban való bevezetésével kapcsolatos további információkért tekintse meg a következőket: 
+For information on how to register your application and implement these protocols for SSO to web apps, see [Authorize access to web applications using OpenID Connect and Azure Active Directory](../develop/sample-v2-code.md).  For information on how to implement these protocols for SSO in mobile apps, see the following: 
 
 * [Android](../develop/quickstart-v2-android.md)
 
@@ -68,34 +68,34 @@ További információ az alkalmazás regisztrálásáról és a protokollok az e
 
 * [Univerzális Windows-platform](../develop/quickstart-v2-uwp.md)
 
-## <a name="saml-20-and-wsfed"></a>SAML 2,0 és WSFed
+## <a name="saml-20-and-wsfed"></a>SAML 2.0 and WSFed
 
-A Security Assertion Markup Language (SAML) általában webes alkalmazásokhoz használatos. Tekintse meg, [hogyan használja az Azure az SAML protokollt](../develop/active-directory-saml-protocol-reference.md) az áttekintéshez. 
+Security Assertion Markup Language (SAML) is usually used for web applications. See [How Azure uses the SAML protocol](../develop/active-directory-saml-protocol-reference.md) for an overview. 
 
-A webszolgáltatások összevonása (WSFed) a .NET platformmal kifejlesztett webalkalmazásokhoz általánosan használt [iparági szabvány](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) .
+Web Services Federation (WSFed) is an [industry standard](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) generally used for web applications that are developed using the .Net platform.
 
 ### <a name="benefits"></a>Előnyök
 
-Az SAML 2,0 egy érett standard és a legtöbb technológiai platform, amely az SAML 2,0 nyílt forráskódú kódtárait támogatja. Az SAML SSO konfigurálásához adminisztrációs felületet biztosíthat ügyfeleinek. Konfigurálhatja az SAML SSO-t a Microsoft Azure ADhoz és bármely más, az SAML 2-et támogató identitás-szolgáltatóhoz.
+SAML 2.0 is a mature standard and most technology platforms support open-source libraries for SAML 2.0. You can provide your customers an administration interface to configure SAML SSO. They can configure SAML SSO for Microsoft Azure AD,  and any other identity provider that supports SAML 2
 
 ### <a name="trade-offs"></a>Kompromisszumok
 
-Ha SAML 2,0-vagy WSFed-protokollt használ a mobileszközök számára, bizonyos feltételes hozzáférési szabályzatok, többek között a többtényezős hitelesítés (MFA), csökkentett teljesítményű élményt nyújtanak. Emellett, ha el szeretné érni a Microsoft Graph, a szükséges tokenek létrehozásához a OAuth 2,0-es kiadást kell végrehajtania. 
+When using SAML 2.0 or WSFed protocols for mobile applications, certain Conditional Access policies including Multi-factor Authentication (MFA) will have a degraded experience. Additionally, if you want to access the Microsoft Graph, you will need to implement authorization through OAuth 2.0 to generate necessary tokens. 
 
 ### <a name="implementation"></a>Megvalósítás
 
-A Microsoft nem biztosít könyvtárakat az SAML megvalósításához, vagy konkrét könyvtárakat javasol. Számos nyílt forráskódú függvénytár érhető el.
+Microsoft does not provide libraries for SAML implementation or recommend specific libraries. There are many open-source libraries available.
 
-## <a name="sso-and-using-microsoft-graph-rest-api"></a>Egyszeri bejelentkezés és Microsoft Graph REST API használata 
+## <a name="sso-and-using-microsoft-graph-rest-api"></a>SSO and Using Microsoft Graph Rest API 
 
-Microsoft Graph az adatháló az összes Microsoft 365, beleértve az Office 365, a Windows 10 és a nagyvállalati mobilitást és biztonságot, valamint további termékek, például a Dynamics 365. Ez magában foglalja az entitások alapvető sémáit, például a felhasználókat, a csoportokat, a naptárat, a levelezést, a fájlokat és egyebeket, amelyek a felhasználók termelékenységét segítik. A Microsoft Graph három felületet biztosít a fejlesztők számára REST-alapú API-k, Microsoft Graph adatkapcsolatok és összekötők számára, amelyek lehetővé teszik a fejlesztők számára a saját adatok hozzáadását a Microsoft Graph.  
+Microsoft Graph is the data fabric across all of Microsoft 365, including Office 365, Windows 10 and Enterprise Mobility and Security, and additional products such as Dynamics 365. This includes the core schemas of the entities such as Users, Groups, Calendar, Mail, Files, and more, that drive user productivity. Microsoft Graph offers three interfaces for developers a REST based API, Microsoft Graph data connect, and Connectors that allow developers to add their own data into the Microsoft Graph.  
 
-Az egyszeri bejelentkezéshez a fenti protokollok bármelyikének használata lehetővé teszi, hogy az alkalmazás hozzáférjen a Microsoft Graph REST APIon keresztül elérhető gazdag adatmennyiségekhez. Ez lehetővé teszi, hogy az ügyfelek nagyobb értéket kapjanak a befektetésük Microsoft 365. Az alkalmazás például meghívja a Microsoft Graph API-t, hogy integrálható legyen az ügyfelek Office 365-példányával és a felszíni felhasználók Microsoft Office és a SharePoint-elemekkel az alkalmazáson belül. 
+Using any of the above protocols for SSO enables your application’s access to the rich data available through the Microsoft Graph REST API. This  enables your customers  to get more value from their investment in Microsoft 365. For example,  your application can call the Microsoft Graph API to integrate with your customers’ Office 365 instance and surface users’ Microsoft Office and SharePoint items within your application. 
 
-Ha Open ID-csatlakozást használ a hitelesítéshez, akkor a fejlesztési élmény zökkenőmentes, mivel a OAuth2-t, a nyitott AZONOSÍTÓk összekapcsolásának alapját fogja használni a tokenek beszerzéséhez Microsoft Graph API-k meghívásához. Ha az alkalmazás SAML-vagy WSFed-t használ, az alkalmazásban további kódokat kell hozzáadnia ahhoz, hogy a OAuth2 megszerezze a Microsoft Graph API-k meghívásához szükséges jogkivonatokat. 
+If you are using Open ID Connect  to authenticate, then your development experience is seamless  because you will use OAuth2, the foundation of Open ID Connect, to acquire tokens can be used for invoking Microsoft Graph APIs. If your application is using SAML or WSFed, you must add additional code within your application to get these OAuth2 to acquire the tokens  required to  invoking Microsoft Graph APIs. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Egyszeri bejelentkezés engedélyezése a több-bérlős alkalmazáshoz](isv-sso-content.md)
+[Enable SSO for your multi-tenant application](isv-sso-content.md)
 
-[Dokumentáció létrehozása a több-bérlős alkalmazáshoz](isv-create-sso-documentation.md)
+[Create documentation for your multi-tenant application](isv-create-sso-documentation.md)

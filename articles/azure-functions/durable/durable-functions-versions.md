@@ -1,82 +1,80 @@
 ---
-title: Durable Functions verziók áttekintése – Azure Functions
-description: További információ a Durable Functions verziókról.
+title: Durable Functions versions overview - Azure Functions
+description: Learn about Durable Functions versions.
 author: cgillum
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5d6c8bcf610bfc8900e0f2a5237228208cd633ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614551"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231192"
 ---
-# <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
+# <a name="durable-functions-versions-overview"></a>Durable Functions versions overview
 
-A *Durable Functions* [Azure functions](../functions-overview.md) és [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) bővítménye, amely lehetővé teszi az állapot-nyilvántartó függvények írását kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat. Ha még nem ismeri a Durable Functionst, tekintse meg az [Áttekintés dokumentációját](durable-functions-overview.md).
+*Durable Functions* is an extension of [Azure Functions](../functions-overview.md) and [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) that lets you write stateful functions in a serverless environment. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat. If you are not already familiar with Durable Functions, see the [overview documentation](durable-functions-overview.md).
 
-## <a name="new-features-in-2x"></a>Új funkciók a 2. x-ben
+## <a name="new-features-in-2x"></a>New features in 2.x
 
-Ez a szakasz a 2. x verzióban hozzáadott Durable Functions funkcióit ismerteti.
+This section describes the features of Durable Functions that are added in version 2.x.
 
-### <a name="durable-entities"></a>Tartós entitások
+### <a name="durable-entities"></a>Durable entities
 
-Durable Functions 2. x verzióban egy új [Entity functions](durable-functions-entities.md) koncepciót vezettünk be.
+In Durable Functions 2.x, we introduced a new [entity functions](durable-functions-entities.md) concept.
 
-Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű állapotok olvasására és frissítésére szolgálnak, amelyek *tartós entitások*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitások triggerével*működik. A Orchestrator függvényektől eltérően az Entity functions nem rendelkezik konkrét kód megkötésekkel. Az Entity functions emellett explicit módon kezeli az állapotot, nem pedig implicit módon jelképezi az állapotot a vezérlési folyamaton keresztül.
+Entity functions define operations for reading and updating small pieces of state, known as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, *entity trigger*. Unlike orchestrator functions, entity functions do not have any specific code constraints. Entity functions also manage state explicitly rather than implicitly representing state via control flow.
 
-További információt a [tartós entitások](durable-functions-entities.md) című cikkben talál.
+To learn more, see the [durable entities](durable-functions-entities.md) article.
 
-### <a name="durable-http"></a>Tartós HTTP
+### <a name="durable-http"></a>Durable HTTP
 
-Durable Functions 2. x verzióban egy új, [tartós http](durable-functions-http-features.md#consuming-http-apis) -funkciót vezettünk be, amely a következőket teszi lehetővé:
+In Durable Functions 2.x, we introduced a new [Durable HTTP](durable-functions-http-features.md#consuming-http-apis) feature that allows you to:
 
-* HTTP API-k hívása közvetlenül a hangkezelő függvényektől (néhány dokumentált korlátozással).
-* Automatikus ügyféloldali HTTP 202-állapot lekérdezésének implementálása.
-* Beépített támogatás az Azure által [felügyelt identitásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
+* Call HTTP APIs directly from orchestration functions (with some documented limitations).
+* Implement automatic client-side HTTP 202 status polling.
+* Built-in support for [Azure Managed Identities](../../active-directory/managed-identities-azure-resources/overview.md).
 
-További információt a [http-szolgáltatások](durable-functions-http-features.md#consuming-http-apis) című cikkben talál.
+To learn more, see the [HTTP features](durable-functions-http-features.md#consuming-http-apis) article.
 
-## <a name="migrate-from-1x-to-2x"></a>Migrálás 1. x és 2. x között
+## <a name="migrate-from-1x-to-2x"></a>Migrate from 1.x to 2.x
 
-Ez a szakasz azt ismerteti, hogyan telepítheti át a meglévő 1. x verziójú Durable Functions a 2. x verzióra, hogy kihasználhassa az új funkciókat.
+This section describes how to migrate your existing version 1.x Durable Functions to version 2.x to take advantage of the new features.
 
-### <a name="upgrade-the-extension"></a>A bővítmény frissítése
+### <a name="upgrade-the-extension"></a>Upgrade the extension
 
-Telepítse a projektben a [Durable functions kötések bővítmény](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 2. x verzióját. További információért lásd: [Azure functions kötési bővítmények regisztrálása](../functions-bindings-register.md) .
+Install version 2.x of the [Durable Functions bindings extension](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in your project. See [Register Azure Functions binding extensions](../functions-bindings-register.md) for more information.
 
-### <a name="update-your-code"></a>A kód frissítése
+### <a name="update-your-code"></a>Update your code
 
-Durable Functions 2. x több feltörési változást vezet be. Durable Functions 1. x alkalmazások kód módosítása nélkül nem kompatibilisek a 2. x Durable Functions. Ez a szakasz azokat a módosításokat sorolja fel, amelyeket az 1. x függvények 2. x verzióra való frissítésekor kell végeznie.
+Durable Functions 2.x introduces several breaking changes. Durable Functions 1.x applications are not compatible with Durable Functions 2.x without code changes. This section lists some of the changes you must make when upgrading your version 1.x functions to 2.x.
 
-#### <a name="hostjson-schema"></a>Host. JSON séma
+#### <a name="hostjson-schema"></a>Host.json schema
 
-Durable Functions 2. x egy új Host. JSON sémát használ. Az 1. x fő változásai a következők:
+Durable Functions 2.x uses a new host.json schema. The main changes from 1.x include:
 
-* `"storageProvider"` (és a `"azureStorage"` alszakasz) a Storage-specifikus konfigurációhoz.
-* `"tracking"` a konfiguráció nyomon követéséhez és naplózásához.
-* `"notifications"` (és az `"eventGrid"` alszakasz) az Event Grid-értesítési konfigurációhoz.
+* `"storageProvider"` (and the `"azureStorage"` subsection) for storage-specific configuration.
+* `"tracking"` for tracking and logging configuration.
+* `"notifications"` (and the `"eventGrid"` subsection) for event grid notification configuration.
 
-A részletekért tekintse meg a [Durable functions Host. JSON dokumentációját](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+See the [Durable Functions host.json reference documentation](durable-functions-bindings.md#durable-functions-2-0-host-json) for details.
 
-#### <a name="public-interface-changes-net-only"></a>Nyilvános interfész módosításai (csak .NET)
+#### <a name="public-interface-changes-net-only"></a>Public interface changes (.NET only)
 
-Az 1. x verzióban a Durable Functions által támogatott különböző _környezeti_ objektumok absztrakt alaposztályokkal rendelkeznek, amelyek az egység tesztelése során használhatók. Durable Functions 2. x részeként ezeket az absztrakt alaposztályokat a rendszer az illesztőfelületekkel helyettesíti.
+In version 1.x, the various _context_ objects supported by Durable Functions have abstract base classes intended for use in unit testing. As part of Durable Functions 2.x, these abstract base classes are replaced with interfaces.
 
-A fő módosításokat a következő táblázat mutatja be:
+The following table represents the main changes:
 
-| 1. x | 2. x |
+| 1.x | 2.x |
 |----------|----------|
 | `DurableOrchestrationClientBase` | `IDurableOrchestrationClient` vagy `IDurableClient` |
 | `DurableOrchestrationContext` vagy `DurableOrchestrationContextBase` | `IDurableOrchestrationContext` |
 | `DurableActivityContext` vagy `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-Abban az esetben, ha egy absztrakt alaposztály virtuális metódusokat tartalmaz, ezeket a virtuális metódusokat a `DurableContextExtensions`ban definiált bővítményi módszerek váltották fel.
+In the case where an abstract base class contained virtual methods, these virtual methods have been replaced by extension methods defined in `DurableContextExtensions`.
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>function. JSON-változások (JavaScript C# és szkript)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.json changes (JavaScript and C# Script)
 
-Durable Functions 1. x esetén a koordináló ügyfél-kötés a `orchestrationClient``type`ét használja. A 2. x verzió `durableClient` használja helyette.
+In Durable Functions 1.x, the orchestration client binding uses a `type` of `orchestrationClient`. Version 2.x uses `durableClient` instead.

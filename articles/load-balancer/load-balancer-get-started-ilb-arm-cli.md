@@ -1,7 +1,7 @@
 ---
-title: Egy belső alapszintű terheléselosztó létrehozása – Azure CLI-vel
-titlesuffix: Azure Load Balancer
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre belső Load balancert az Azure CLI használatával
+title: Create an internal Basic Load Balancer - Azure CLI
+titleSuffix: Azure Load Balancer
+description: In this article, learn how to create an internal load balancer using Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: 8492ce820a31183b0b3078b1fb366c25a39b7639
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076066"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215319"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre belső terheléselosztót a 
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -41,7 +41,7 @@ A következő példa létrehoz egy *myResourceGroupILB* nevű erőforráscsoport
 ```
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az *az network vnet create* paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) nevű alhálózattal.
+Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
 
 ```azurecli-interactive
   az network vnet create \
@@ -60,7 +60,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy belső Load Balancer az [az Network LB Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű **myLoadBalancer** , amely tartalmaz egy **myFrontEnd**nevű előtérbeli IP-konfigurációt, egy **myBackEndPool** nevű háttér-készletet, amely egy magánhálózati IP-címhez * * 10.0.0.7 van társítva.
+Create an internal Load Balancer with [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named **myLoadBalancer** that includes a frontend IP configuration named **myFrontEnd**, a back-end pool named **myBackEndPool** that is associated with a private IP address **10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \
@@ -233,5 +233,5 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-dele
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben létrehozott egy belső alapszintű terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmának szabályát, az állapotmintát, majd tesztelte a terheléselosztót. Ha további információra van szüksége a terheléselosztókkal és a kapcsolódó erőforrásokkal kapcsolatban, lépjen tovább az útmutató cikkekre.

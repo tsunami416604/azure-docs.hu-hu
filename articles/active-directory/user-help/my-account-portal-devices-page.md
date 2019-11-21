@@ -1,6 +1,6 @@
 ---
-title: Csatlakoztatott eszközök kezelése a saját fiók portálon – Azure AD
-description: A csatlakoztatott eszközök megtekintése és letiltása a saját fiók portál eszközök lapján.
+title: Manage your connected devices from the My Account portal - Azure AD
+description: How to view and disable devices connected to your work or school account from the Devices page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0eb691abaabf09ae8f89354e1fdb6f18cf8e5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804255"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233215"
 ---
-# <a name="manage-your-connected-devices-from-the-my-account-portal"></a>A csatlakoztatott eszközök kezelése a saját fiók portálján
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Manage devices connected to your work or school account from the Devices page
 
-A **saját fiók** portál **eszközök** lapján a következőket teheti:
+From the **Devices** page of the **My Account** portal, you can:
 
-- Munkahelyi vagy iskolai fiókhoz csatlakoztatott eszközök megtekintése.
+- View your work or school account-connected devices.
 
-- Tiltsa le az összes olyan eszközt, amely már nem tulajdonosa, elveszett vagy ellopták.
+- Disable any devices you no longer own, have lost, or that have been stolen.
 
-## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
+## <a name="view-your-connected-devices"></a>View your connected devices
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. Válassza az **eszközök** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza az eszközök **blokk eszközök** **kezelése** hivatkozását.
+2. Select **Devices** from the left navigation pane or select the **Manage devices** link from the **Devices** block.
 
-    ![Fiókom oldal, a Kiemelt eszközök hivatkozásainak megjelenítése](media/my-account-portal/my-account-portal-devices.png)
+    ![My Account page, showing highlighted Devices links](media/my-account-portal/my-account-portal-devices.png)
 
-3. Tekintse át a csatlakoztatott eszközökre vonatkozó információkat, és ügyeljen rá, hogy mindegyiket felismerje.
+3. Review the information for your connected devices, making sure you recognize them all.
 
-    ![Eszköz lap, csatlakoztatott eszközök megjelenítése](media/my-account-portal/my-account-portal-devices-page.png)
+    ![Device page, showing connected devices](media/my-account-portal/my-account-portal-devices-page.png)
 
-## <a name="disable-a-device"></a>Eszköz letiltása
+## <a name="disable-a-device"></a>Disable a device
 
-Bármikor letilthatja a csatlakoztatott eszközök bármelyikét. Ez különösen akkor fontos, ha egy eszköz nem ismeri Önt, vagy ha az eszköz elveszett vagy ellopták. Az eszköz letiltását követően a szervezete már nem tudja hitelesíteni az eszközt, és nem fog tudni hozzáférni a szervezet erőforrásaihoz.
+You can disable any of your connected devices at any time. This is especially important if a device isn't familiar to you or if a device is lost or stolen. After you disable a device, it can no longer be authenticated by your organization, and will be unable to access any of your organization's resources.
 
 >[!Important]
->Ha hiba esetén letiltja az eszközt, nem vonható vissza. Az eszköz újbóli hozzáadásához kapcsolatba kell lépnie a szervezet rendszergazdájával.
+>If you disable a device by mistake, there's no way to undo it. You'll have to contact your organization's administrator to add the device again.
 
-1. Válassza a **Letiltás** lehetőséget az eltávolítani kívánt eszközről.
+1. Select **Disable** from the device you want to remove.
 
-    ![Eszköz lap Kiemelt letiltás hivatkozással](media/my-account-portal/my-account-portal-devices-disable.png)
+    ![Device page with highlighted Disable link](media/my-account-portal/my-account-portal-devices-disable.png)
 
-2. Az **Igen** gombra kattintva erősítse meg, hogy le kívánja tiltani az eszközt.
+2. Select **Yes** to confirm you want to disable the device.
 
-## <a name="view-a-bitlocker-key"></a>BitLocker-kulcs megtekintése
+## <a name="view-a-bitlocker-key"></a>View a BitLocker key
 
-Ha kizárta az eszközét, vagy végzetes hibát észlel, lépjen egy másik eszközre, és tekintse meg a BitLocker-kulcsot a **saját fiók** portálon.
+If you're locked out of your device or have a fatal error, you can go to another device and view your BitLocker key from the **My Account** portal.
 
-1. Egy másik eszközön, ahol nincs kizárva, lépjen a **saját fiók** portál **eszközök** lapjára.
+1. On another device, where you're not locked out, go to the **Devices** page of the **My Account** portal.
 
-    ![Eszköz oldal BitLocker-kulccsal lehetőséggel](media/my-account-portal/my-account-portal-devices-bitlocker.png)
+    ![Device page with BitLocker key option](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. Válassza a **BitLocker-kulcsok megtekintése** a zárolt eszközhöz lehetőséget, és jegyezze fel a zárolt eszköz BitLocker-kulcsát.
+2. Select **View Bitlocker Keys** for the locked out device and write down the BitLocker key for your locked device.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A csatlakoztatott eszközök megtekintése után a következőket teheti:
+After viewing your connected devices, you can:
 
-- A [biztonsági adatok](user-help-security-info-overview.md)megtekintéséhez vagy kezeléséhez válassza a lehetőséget.
+- Select to view or manage your [security info](user-help-security-info-overview.md).
 
-- Megtekintheti és kezelheti a [szervezeteit](my-account-portal-organizations-page.md).
+- View and manage your [organizations](my-account-portal-organizations-page.md).
 
-- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

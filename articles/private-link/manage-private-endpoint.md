@@ -1,91 +1,91 @@
 ---
-title: Privát végponti kapcsolatok kezelése az Azure-ban
-description: Ismerje meg, hogyan kezelheti a privát végponti kapcsolatokat az Azure-ban
+title: Manage a Private Endpoint connection in Azure
+description: Learn how to manage private endpoint connections in Azure
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104632"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232540"
 ---
-# <a name="manage-a-private-endpoint-connection"></a>Privát végponti kapcsolatok kezelése
-Az Azure Private link egy jóváhagyási hívási folyamat modelljén működik, amelyben a privát kapcsolati szolgáltatás fogyasztója kapcsolatot igényelhet a szolgáltatóval a szolgáltatás felhasználásához. A szolgáltató eldöntheti, hogy engedélyezi-e a fogyasztó számára a kapcsolódást. Az Azure Private link lehetővé teszi, hogy a szolgáltatók felügyelni tudják a magánhálózati végponti kapcsolatot az erőforrásokon. Ez a cikk útmutatást nyújt a magánhálózati végpontok kapcsolatainak kezeléséhez.
+# <a name="manage-a-private-endpoint-connection"></a>Manage a Private Endpoint connection
+Azure Private Link works on an approval call flow model wherein the Private Link service consumer can request a connection to the service provider for consuming the service. The service provider can then decide whether to allow the consumer to connect or not. Azure Private Link enables the service providers to manage the private endpoint connection on their resources. This article provides instructions about how to manage the Private Endpoint connections.
 
-![Privát végpontok kezelése](media/manage-private-endpoint/manage-private-endpoint.png)
+![Manage Private Endpoints](media/manage-private-endpoint/manage-private-endpoint.png)
 
-Két kapcsolat-jóváhagyási módszer van, amelyet a privát kapcsolati szolgáltatás fogyasztó választhat:
-- **Automatikus**: Ha a szolgáltatás felhasználója RBAC engedélyekkel rendelkezik a szolgáltatói erőforráson, a fogyasztó kiválaszthatja az automatikus jóváhagyási módszert. Ebben az esetben, ha a kérelem eléri a szolgáltatói erőforrást, nincs szükség beavatkozásra a szolgáltatótól, és a rendszer automatikusan jóváhagyja a kapcsolódást. 
-- **Manuális**: Ellenkező esetben, ha a szolgáltatás fogyasztója nem rendelkezik RBAC-engedélyekkel a szolgáltatói erőforráson, a fogyasztó választhatja a manuális jóváhagyási módszert. Ebben az esetben a kapcsolatkérelem a szolgáltatási erőforrásokon **függőben**jelenik meg. A szolgáltatónak manuálisan jóvá kell hagynia a kérést a kapcsolatok létrehozása előtt. Manuális esetekben a szolgáltatás fogyasztója olyan üzenetet is megadhat, amely a kéréssel több kontextust biztosít a szolgáltató számára. A szolgáltató a következő lehetőségek közül választhat az összes privát végpont-kapcsolat közül: **Jóváhagyás**, **elutasítás**, **Eltávolítás**.
+There are two connection approval methods that a Private Link service consumer can choose from:
+- **Automatic**: If the service consumer has RBAC permissions on the service provider resource, the consumer can choose the automatic approval method. In this case, when the request reaches the service provider resource, no action is required from the service provider and the connection is automatically approved. 
+- **Manual**: On the contrary, if the service consumer doesn’t have RBAC permissions on the service provider resource, the consumer can choose the manual approval method. In this case, the connection request appears on the service resources as **Pending**. The service provider has to manually approve the request before connections can be established. In manual cases, service consumer can also specify a message with the request to provide more context to the service provider. The service provider has following options to choose from for all Private Endpoint connections: **Approved**, **Reject**, **Remove**.
 
-Az alábbi táblázatban láthatók a különböző szolgáltatói műveletek, valamint a magánhálózati végpontok számára létrejövő kapcsolatok állapota.  A szolgáltató a privát végpontok kapcsolatainak egy későbbi időpontban is megváltoztathatja a fogyasztó beavatkozása nélkül. A művelet frissíti a végpont állapotát a felhasználói oldalon. 
+The below table shows the various service provider actions and the resulting connection states for Private Endpoints.  The service provider can also change the connection state of private endpoint connection at a later time without consumer intervention. The action will update the state of the endpoint on the consumer side. 
 
 
-|Szolgáltatói művelet   |A szolgáltatás fogyasztói magánhálózati végpontjának állapota   |Leírás   |
+|Service Provider Action   |Service Consumer Private Endpoint State   |Leírás   |
 |---------|---------|---------|
-|Nincsenek    |    Függőben lévő     |    A kapcsolat manuálisan jön létre, és függőben van a privát hivatkozás erőforrás-tulajdonosa általi jóváhagyásra.       |
-|Jóváhagyás    |  Jóváhagyva       |  A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.     |
-|Elutasítás     | Elutasítva        | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.        |
-|Eltávolítás    |  Leválasztva       | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a karbantartást.        |
+|None    |    Függőben     |    Connection is created manually and is pending for approval by the Private Link resource owner.       |
+|Jóváhagyás    |  Approved       |  Connection was automatically or manually approved and is ready to be used.     |
+|Elutasítás     | Rejected        | Connection was rejected by the private link resource owner.        |
+|Eltávolítás    |  Disconnected       | Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean up.        |
 |   |         |         |
    
-## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Privát végpontok kapcsolatainak kezelése az Azure Pásti-erőforrásokon
-A portál a privát végponti kapcsolatok Azure Pásti-erőforrásokon való felügyeletének előnyben részesített módszere. Jelenleg nem érhető el a PowerShell/parancssori felület támogatása az Azure Pásti-erőforrások kapcsolatainak kezeléséhez.
+## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Manage Private Endpoint Connections on Azure PaaS resources
+Portal is the preferred method for managing private endpoint connections on Azure PaaS resources. Currently, we don’t have PowerShell/CLI support for managing connections on Azure PaaS resources.
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-2. Navigáljon a privát kapcsolati központhoz.
-3. Az **erőforrások**területen válassza ki azt az erőforrástípust, amelyet a privát végponti kapcsolatok kezeléséhez használni kíván.
-4. Az egyes erőforrástípusok esetében megtekintheti a hozzá társított privát végpont-kapcsolatok számát. Igény szerint szűrheti az erőforrásokat.
-5. Válassza ki a magánhálózati végpontok kapcsolatait.  A felsorolt kapcsolatok alatt válassza ki a kezelni kívánt kapcsolatot. 
-6. A kapcsolatok állapotát a felül található beállítások közül választva módosíthatja.
+2. Navigate to Private Link Center.
+3. Under **Resources**, select the resource type you want to manage the private endpoint connections.
+4. For each of your resource type, you can view the number of Private Endpoint Connections associated with it. You can filter the resources as needed.
+5. Select the private endpoint connections.  Under the connections listed, select the connection that you want to manage. 
+6. You can change the state of the connection by selecting from the options at the top.
 
-## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Privát végpontok kapcsolatainak kezelése egy ügyfél/partner tulajdonában lévő Private link Service-ben
+## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Manage Private Endpoint connections on a customer/partner owned Private Link service
 
-A Azure PowerShell és az Azure CLI a Microsoft partner Services vagy az ügyfél tulajdonában lévő szolgáltatások privát végponti kapcsolatainak kezeléséhez javasolt módszer. Jelenleg nincs olyan portál-támogatás, amely a kapcsolatok egy privát kapcsolaton keresztüli kezelésére szolgál.  
+Azure PowerShell and Azure CLI are the preferred methods for managing Private Endpoint connections on Microsoft Partner Services or customer owned services. Currently, we don’t have any portal support for managing connections on a Private Link service.  
  
 ### <a name="powershell"></a>PowerShell 
   
-A magánhálózati végpontok kapcsolatainak kezeléséhez használja az alábbi PowerShell-parancsokat.  
-#### <a name="get-private-link-connection-states"></a>Magánhálózati kapcsolati állapotok beolvasása 
-Használja a `Get-AzPrivateLinkService` parancsmagot a privát végponti kapcsolatok és azok állapotának lekéréséhez.  
+Use the following PowerShell commands to manage private endpoint connections.  
+#### <a name="get-private-link-connection-states"></a>Get Private Link connection states 
+Use the `Get-AzPrivateLinkService` cmdlet to get the Private Endpoint connections and their states.  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
-#### <a name="approve-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása 
+#### <a name="approve-a-private-endpoint-connection"></a>Approve a Private Endpoint connection 
  
-A `Approve-AzPrivateEndpointConnection` parancsmag használatával hagyja jóvá a magánhálózati végponti kapcsolatokat. 
+Use the `Approve-AzPrivateEndpointConnection` cmdlet to approve a Private Endpoint connection. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
 ```
  
-#### <a name="deny-private-endpoint-connection"></a>Magánhálózati végponti kapcsolatok megtagadása 
+#### <a name="deny-private-endpoint-connection"></a>Deny Private Endpoint connection 
  
-A `Deny-AzPrivateEndpointConnection` parancsmag használatával utasítsa el a privát végponti kapcsolatokat. 
+Use the `Deny-AzPrivateEndpointConnection` cmdlet to reject a Private Endpoint connection. 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
-#### <a name="remove-private-endpoint-connection"></a>Privát végponti kapcsolatok eltávolítása 
+#### <a name="remove-private-endpoint-connection"></a>Remove Private Endpoint Connection 
  
-A `Remove-AzPrivateEndpointConnection` parancsmag használatával távolítsa el a magánhálózati végponti kapcsolatokat. 
+Use the `Remove-AzPrivateEndpointConnection` cmdlet to remove a Private Endpoint connection. 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
-### <a name="azure-cli"></a>Azure CLI 
+### <a name="azure-cli"></a>Azure parancssori felület (CLI) 
  
-A `az network private-link-service update` saját végpont kapcsolatainak kezelésére használható. A (z) ```azurecli connection-status``` paraméterben meg van adva a kapcsolási állapot. 
+Use `az network private-link-service update` for managing your Private Endpoint connections. The connection state is specified in the ```azurecli connection-status``` parameter. 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```
 
    
 
-## <a name="next-steps"></a>További lépések
-- [További tudnivalók a privát végpontokról](private-endpoint-overview.md)
+## <a name="next-steps"></a>Következő lépések
+- [Learn about Private Endpoints](private-endpoint-overview.md)
  

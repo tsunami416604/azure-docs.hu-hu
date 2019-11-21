@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SpringCM |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és SpringCM között.
+title: 'Tutorial: Azure Active Directory integration with SpringCM | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SpringCM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,228 +16,228 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d1973dd51068e6f3e0746ee988a51f375899f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588016"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233384"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SpringCM
+# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Tutorial: Azure Active Directory integration with SpringCM
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan SpringCM integrálása az Azure Active Directory (Azure AD).
-SpringCM integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+In this tutorial, you learn how to integrate SpringCM with Azure Active Directory (Azure AD).
+Integrating SpringCM with Azure AD provides you with the following benefits:
 
-* Szabályozhatja, ki férhet hozzá SpringCM Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve SpringCM (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* You can control in Azure AD who has access to SpringCM.
+* You can enable your users to be automatically signed-in to SpringCM (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-SpringCM az Azure AD-integráció konfigurálásához a következőkre van szükség:
+To configure Azure AD integration with SpringCM, you need the following items:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* SpringCM egyszeri bejelentkezés engedélyezve van az előfizetés
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* SpringCM single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Támogatja a SpringCM **SP** által kezdeményezett egyszeri bejelentkezés
+* SpringCM supports **SP** initiated SSO
 
-## <a name="adding-springcm-from-the-gallery"></a>SpringCM hozzáadása a katalógusból
+## <a name="adding-springcm-from-the-gallery"></a>Adding SpringCM from the gallery
 
-Az Azure AD integrálása a SpringCM konfigurálásához hozzá kell SpringCM a katalógusból a felügyelt SaaS-alkalmazások listájára.
+To configure the integration of SpringCM into Azure AD, you need to add SpringCM from the gallery to your list of managed SaaS apps.
 
-**SpringCM hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**To add SpringCM from the gallery, perform the following steps:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click the **Azure Active Directory** icon.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. To add a new application, click the **New application** button at the top of the dialog.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **SpringCM**, jelölje be **SpringCM** az eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. In the search box, type **SpringCM**, select **SpringCM** from the result panel then click the **Add** button to add the application.
 
-    ![Az eredmények listájában SpringCM](common/search-new-app.png)
+    ![SpringCM in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SpringCM nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó SpringCM hivatkozás kapcsolata kell létrehozni.
+In this section, you configure and test Azure AD single sign-on with SpringCM based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SpringCM needs to be established.
 
-Az Azure AD egyszeri bejelentkezés az SpringCM tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+To configure and test Azure AD single sign-on with SpringCM, you need to complete the following building blocks:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[SpringCM egyszeri bejelentkezés konfigurálása](#configure-springcm-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre SpringCM tesztfelhasználót](#create-springcm-test-user)**  – egy megfelelője a Britta Simon SpringCM, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure SpringCM Single Sign-On](#configure-springcm-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create SpringCM test user](#create-springcm-test-user)** - to have a counterpart of Britta Simon in SpringCM that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SpringCM, hajtsa végre az alábbi lépéseket:
+To configure Azure AD single sign-on with SpringCM, perform the following steps:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **SpringCM** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SpringCM** application integration page, select **Single sign-on**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![SpringCM tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
+    ![SpringCM Domain and URLs single sign-on information](common/sp-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
+    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [SpringCM ügyfél-támogatási csapatának](https://knowledge.springcm.com/support) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > The value is not real. Update the value with the actual Sign-On URL. Contact [SpringCM Client support team](https://knowledge.springcm.com/support) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **(Raw)tanúsítvány** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Raw)** from the given options as per your requirement and save it on your computer.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
+    ![The Certificate download link](common/certificateraw.png)
 
-6. Az a **SpringCM beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. On the **Set up SpringCM** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Login URL
 
-    b. Azure AD-azonosító
+    b. Azure AD Identifier
 
-    c. Kijelentkezési URL
+    c. Logout URL
 
-### <a name="configure-springcm-single-sign-on"></a>SpringCM egyszeri bejelentkezés konfigurálása
+### <a name="configure-springcm-single-sign-on"></a>Configure SpringCM Single Sign-On
 
-1. Egy másik böngészőablakban, jelentkezzen be a **SpringCM** rendszergazdaként a vállalati webhely.
+1. In a different web browser window, sign on to your **SpringCM** company site as administrator.
 
-1. A felső menüben kattintson **Ugrás**, kattintson a **beállítások**, majd a **fiók beállítások** területén kattintson **SAML SSO**.
+1. In the menu on the top, click **GO TO**, click **Preferences**, and then, in the **Account Preferences** section, click **SAML SSO**.
    
     ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
-1. Az Identity Provider konfigurációs szakaszban hajtsa végre az alábbi lépéseket:
+1. In the Identity Provider Configuration section, perform the following steps:
    
-    ![Identitás-szolgáltató konfigurációjának](./media/spring-cm-tutorial/ic797052.png "identitás szolgáltató konfigurációja")
+    ![Identity Provider Configuration](./media/spring-cm-tutorial/ic797052.png "Identity Provider Configuration")
     
-    a. A letöltött Azure Active Directory-tanúsítvány feltöltéséhez kattintson **válassza ki a tanúsítványt kibocsátó** vagy **kibocsátói tanúsítvány módosítása**.
+    a. To upload your downloaded Azure Active Directory certificate, click **Select Issuer Certificate** or **Change Issuer Certificate**.
     
-    b. Az a **kibocsátó** szövegmezőjébe illessze be **az Azure AD-azonosító** érték, amely az Azure Portalról másolta.
+    b. In the **Issuer** textbox, paste **Azure AD Identifier** value, which you have copied from Azure portal.
     
-    c. Az a **Service Provider (SP) kezdeményezett végpont** szövegmezőjébe illessze be **bejelentkezési URL-cím** érték, amely az Azure Portalról másolta.
+    c. In the **Service Provider (SP) Initiated Endpoint** textbox, paste **Login URL** value, which you have copied from the Azure portal.
             
-    d. Válassza ki **SAML engedélyezett** , **engedélyezése**.
+    d. Select **SAML Enabled** as **Enable**.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés SpringCM Azure egyszeri bejelentkezés használatára.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SpringCM.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **SpringCM**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SpringCM**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **SpringCM**.
+2. In the applications list, select **SpringCM**.
 
-    ![Az alkalmazások listáját a SpringCM hivatkozásra](common/all-applications.png)
+    ![The SpringCM link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-springcm-test-user"></a>SpringCM tesztfelhasználó létrehozása
+### <a name="create-springcm-test-user"></a>Create SpringCM test user
 
-Ahhoz, hogy az Azure Active Directory-felhasználók a SpringCM bejelentkezni, akkor ki kell építeni SpringCM be. SpringCM, esetén kiépítése a manuális feladat.
+To enable Azure Active Directory users to sign in to SpringCM, they must be provisioned into SpringCM. In the case of SpringCM, provisioning is a manual task.
 
 > [!NOTE]
-> További információkért lásd: [hozhat létre és módosíthat egy SpringCM felhasználó](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+> For more information, see [Create and Edit a SpringCM User](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
 
-**Üzembe helyez egy felhasználói fiókot SpringCM, hajtsa végre az alábbi lépéseket:**
+**To provision a user account to SpringCM, perform the following steps:**
 
-1. Jelentkezzen be a **SpringCM** rendszergazdaként a vállalati webhely.
+1. Sign in to your **SpringCM** company site as administrator.
 
-1. Kattintson a **GOTO**, és kattintson a **CÍMJEGYZÉK**.
+1. Click **GOTO**, and then click **ADDRESS BOOK**.
    
-    ![Felhasználó létrehozása](./media/spring-cm-tutorial/ic797054.png "felhasználó létrehozása")
+    ![Create User](./media/spring-cm-tutorial/ic797054.png "Create User")
 
-1. Kattintson a **felhasználó létrehozása**.
+1. Click **Create User**.
 
-1. Válassza ki a **felhasználói szerepkör**.
+1. Select a **User Role**.
 
-1. Válassza ki **aktiválási e-mailt**.
+1. Select **Send Activation Email**.
 
-1. Írja be az Utónév, Vezetéknév és egy érvényes Azure Active Directory felhasználói fiók, a kapcsolódó szövegmezőkben kiépítendő e-mail-címe.
+1. Type the first name, last name, and email address of a valid Azure Active Directory user account you want to provision into the related textboxes.
 
-1. Adja hozzá a felhasználót egy **biztonsági csoport**.
+1. Add the user to a **Security group**.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
    > [!NOTE]
-   > Bármely más SpringCM felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését SpringCM által biztosított API-k.
+   > You can use any other SpringCM user account creation tools or APIs provided by SpringCM to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Ha a hozzáférési panelen a SpringCM csempére kattint, meg kell lehet automatikusan bejelentkezett a SpringCM, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the SpringCM tile in the Access Panel, you should be automatically signed in to the SpringCM for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

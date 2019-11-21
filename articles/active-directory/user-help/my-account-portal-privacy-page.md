@@ -1,6 +1,6 @@
 ---
-title: Adatvédelem kapcsolatos információk megtekintése a saját fiók portálon – Azure AD
-description: Az adatvédelmi információk megtekinthetők a fiókom portál adatvédelem lapján.
+title: View privacy-related info from the My Account portal - Azure AD
+description: Learn how your organization uses your privacy-related information from the Privacy page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,41 +12,41 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb05bdb3aa2cf89328051b196475338eb5a3b3b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820370"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231821"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-account-portal"></a>Az adatvédelemmel kapcsolatos információk megtekintése a fiókom portálján
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>View how your organization uses your privacy-related data
 
-Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** **Adatvédelem** oldaláról.
+You can view how your organization uses your data from the **Privacy** page of the **My Account** portal.
 
 ## <a name="view-your-privacy-related-info"></a>Adatvédelemmel kapcsolatos információk megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. Válassza az **Adatvédelem** lehetőséget a bal oldali navigációs ablaktáblán, **vagy az adatvédelmi blokkban** válassza az adatvédelem **áttekintése** hivatkozást.
+2. Select **Privacy** from the left navigation pane or select the **Review privacy** link from the **Privacy** block.
 
-    ![Fiókom oldal, Kiemelt adatvédelmi hivatkozások megjelenítése](media/my-account-portal/my-account-portal-privacy.png)
+    ![My Account page, showing highlighted Privacy links](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Tekintse át az információkat, beleértve a következőket:
+3. Review the information, including:
 
-    - **Szolgáltatások.** A munkahelyi vagy iskolai fiókkal összekapcsolt online szolgáltatások listája.
+    - **Services.** A list of online services you're connected to using your work or school account.
 
-    - **Használati feltételek**. A szervezet használati feltételei.
+    - **Terms of use**. Your organization's terms of use.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután megtekintette, hogy a szervezet hogyan használja az adatait, a következőket teheti:
+After viewing how your organization uses your data, you can:
 
-- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
+- View or manage your [organizations](my-account-portal-organizations-page.md).
 
-- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- A Microsoft Office kapcsolatos kapcsolattartási és adatvédelmi tudnivalókat az [Office portálon, a biztonsági & adatvédelmi oldalon](https://portal.office.com/account/#security)is megtekintheti.
+- You can also view your Microsoft Office-related contact preferences and privacy information from the [Office portal, Security & privacy page](https://portal.office.com/account/#security).

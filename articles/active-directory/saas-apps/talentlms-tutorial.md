@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TalentLMS |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és TalentLMS között.
+title: 'Tutorial: Azure Active Directory integration with TalentLMS | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and TalentLMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,243 +16,243 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089165"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233362"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TalentLMS
+# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Tutorial: Azure Active Directory integration with TalentLMS
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan TalentLMS integrálása az Azure Active Directory (Azure AD).
-TalentLMS integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+In this tutorial, you learn how to integrate TalentLMS with Azure Active Directory (Azure AD).
+Integrating TalentLMS with Azure AD provides you with the following benefits:
 
-* Szabályozhatja, ki férhet hozzá TalentLMS Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve TalentLMS (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* You can control in Azure AD who has access to TalentLMS.
+* You can enable your users to be automatically signed-in to TalentLMS (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-TalentLMS az Azure AD-integráció konfigurálásához a következőkre van szükség:
+To configure Azure AD integration with TalentLMS, you need the following items:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* TalentLMS egyszeri bejelentkezéses engedélyezett előfizetés
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* TalentLMS single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Támogatja a TalentLMS **SP** által kezdeményezett egyszeri bejelentkezés
+* TalentLMS supports **SP** initiated SSO
 
-## <a name="adding-talentlms-from-the-gallery"></a>TalentLMS hozzáadása a katalógusból
+## <a name="adding-talentlms-from-the-gallery"></a>Adding TalentLMS from the gallery
 
-Az Azure AD integrálása a TalentLMS konfigurálásához hozzá kell TalentLMS a katalógusból a felügyelt SaaS-alkalmazások listájára.
+To configure the integration of TalentLMS into Azure AD, you need to add TalentLMS from the gallery to your list of managed SaaS apps.
 
-**TalentLMS hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**To add TalentLMS from the gallery, perform the following steps:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **TalentLMS**válassza **TalentLMS** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. In the search box, type **TalentLMS**, select **TalentLMS** from result panel then click **Add** button to add the application.
 
-    ![Az eredmények listájában TalentLMS](common/search-new-app.png)
+    ![TalentLMS in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az TalentLMS nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó TalentLMS hivatkozás kapcsolata kell létrehozni.
+In this section, you configure and test Azure AD single sign-on with TalentLMS based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in TalentLMS needs to be established.
 
-Az Azure AD egyszeri bejelentkezés az TalentLMS tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+To configure and test Azure AD single sign-on with TalentLMS, you need to complete the following building blocks:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[TalentLMS egyszeri bejelentkezés konfigurálása](#configure-talentlms-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre TalentLMS tesztfelhasználót](#create-talentlms-test-user)**  – egy megfelelője a Britta Simon TalentLMS, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure TalentLMS Single Sign-On](#configure-talentlms-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create TalentLMS test user](#create-talentlms-test-user)** - to have a counterpart of Britta Simon in TalentLMS that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TalentLMS, hajtsa végre az alábbi lépéseket:
+To configure Azure AD single sign-on with TalentLMS, perform the following steps:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **TalentLMS** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. In the [Azure portal](https://portal.azure.com/), on the **TalentLMS** application integration page, select **Single sign-on**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![TalentLMS tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![TalentLMS Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<tenant-name>.TalentLMSapp.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<tenant-name>.TalentLMSapp.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `http://<tenant-name>.talentlms.com`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `http://<tenant-name>.talentlms.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [TalentLMS ügyfél-támogatási csapatának](https://www.talentlms.com/contact) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [TalentLMS Client support team](https://www.talentlms.com/contact) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![SAML-aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** , és mentse a számítógépre.
+6. In the **SAML Signing Certificate** section, copy the **THUMBPRINT** and save it on your computer.
 
-    ![Másolja ki az ujjlenyomat értéket](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. Az a **TalentLMS beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. On the **Set up TalentLMS** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Login URL
 
-    b. Azure AD-azonosító
+    b. Azure AD Identifier
 
-    c. Kijelentkezési URL
+    c. Logout URL
 
-### <a name="configure-talentlms-single-sign-on"></a>TalentLMS egyszeri bejelentkezés konfigurálása
+### <a name="configure-talentlms-single-sign-on"></a>Configure TalentLMS Single Sign-On
 
-1. Egy másik böngészőablakban jelentkezzen be a TalentLMS vállalati hely rendszergazdaként.
+1. In a different web browser window, sign in to your TalentLMS company site as an administrator.
 
-1. Az a **fiók & beállítások** területén kattintson a **felhasználók** fülre.
+1. In the **Account & Settings** section, click the **Users** tab.
 
-    ![Fiók & beállítások](./media/talentlms-tutorial/IC777296.png "fiók & beállításai")
+    ![Account & Settings](./media/talentlms-tutorial/IC777296.png "Account & Settings")
 
-1. Kattintson a **egyszeri bejelentkezés (SSO)** ,
+1. Click **Single Sign-On (SSO)** ,
 
-1. Az egyszeri bejelentkezés szakaszban hajtsa végre az alábbi lépéseket:
+1. In the Single Sign-On section, perform the following steps:
 
-    ![Egyszeri bejelentkezés](./media/talentlms-tutorial/IC777297.png "egyszeri bejelentkezés")
+    ![Single Sign-On](./media/talentlms-tutorial/IC777297.png "Single Sign-On")
 
-    a. Az a **SSO integrációs típus** listáról válassza ki **SAML 2.0**.
+    a. From the **SSO integration type** list, select **SAML 2.0**.
 
-    b. A a **identitásszolgáltató (IDP)** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, az Azure Portalról másolt.
+    b. In the **Identity provider (IDP)** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
 
-    c. Illessze be a **ujjlenyomat** értéket az Azure Portalról a **tanúsítvány-ujjlenyomat** szövegmezőbe.
+    c. Paste the **Thumbprint** value from Azure portal into the **Certificate fingerprint** textbox.
 
-    d.  Az a **távoli bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    d.  In the **Remote sign-in URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    e. Az a **távoli kijelentkezési URL-cím** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, az Azure Portalról másolt.
+    e. In the **Remote sign-out URL** textbox, paste the value of **Logout URL**, which you have copied from Azure portal.
 
-    f. Töltse ki a következőket:
+    f. Fill in the following:
 
-    * Az a **TargetedID** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+    * In the **TargetedID** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    * Az a **Utónév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    * In the **First name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    * Az a **Vezetéknév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    * In the **Last name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    * Az a **E-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * In the **Email** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés TalentLMS Azure egyszeri bejelentkezés használatára.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to TalentLMS.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **TalentLMS**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **TalentLMS**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **TalentLMS**.
+2. In the applications list, select **TalentLMS**.
 
-    ![Az alkalmazások listáját a TalentLMS hivatkozásra](common/all-applications.png)
+    ![The TalentLMS link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-talentlms-test-user"></a>TalentLMS tesztfelhasználó létrehozása
+### <a name="create-talentlms-test-user"></a>Create TalentLMS test user
 
-Ahhoz, hogy az Azure AD-felhasználók TalentLMS bejelentkezni, akkor ki kell építeni TalentLMS be. TalentLMS, esetén kiépítése a manuális feladat.
+To enable Azure AD users to sign in to TalentLMS, they must be provisioned into TalentLMS. In the case of TalentLMS, provisioning is a manual task.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**To provision a user account, perform the following steps:**
 
-1. Jelentkezzen be a **TalentLMS** bérlő.
+1. Sign in to your **TalentLMS** tenant.
 
-1. Kattintson a **felhasználók**, és kattintson a **felhasználó hozzáadása**.
+1. Click **Users**, and then click **Add User**.
 
-1. Az a **felhasználó hozzáadása** párbeszédpanel lapon, a következő lépésekkel:
+1. On the **Add user** dialog page, perform the following steps:
 
-    ![Felhasználó hozzáadása](./media/talentlms-tutorial/IC777299.png "felhasználó hozzáadása")  
+    ![Add User](./media/talentlms-tutorial/IC777299.png "Felhasználó hozzáadása")  
 
-    a. Az a **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
+    a. In the **First name** textbox, enter the first name of user like **Britta**.
 
-    b. Az a **Vezetéknév** szövegmezőbe írja be például a felhasználó vezetékneve **Simon**.
+    b. In the **Last name** textbox, enter the last name of user like **Simon**.
  
-    c. Az a **E-mail-cím** szövegmezőben adja meg az e-mail címét, például a felhasználó `brittasimon\@contoso.com`.
+    c. In the **Email address** textbox, enter the email of user like `brittasimon\@contoso.com`.
 
-    d. Kattintson a **felhasználó hozzáadása**.
+    d. Click **Add User**.
 
 > [!NOTE]
-> Bármely más TalentLMS felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését TalentLMS által biztosított API-k.
+> You can use any other TalentLMS user account creation tools or APIs provided by TalentLMS to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Ha a hozzáférési panelen a TalentLMS csempére kattint, meg kell lehet automatikusan bejelentkezett a TalentLMS, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the TalentLMS tile in the Access Panel, you should be automatically signed in to the TalentLMS for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

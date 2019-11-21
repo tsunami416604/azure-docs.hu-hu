@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Syncplicity |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Syncplicity között.
+title: 'Tutorial: Azure Active Directory integration with Syncplicity | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Syncplicity.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,182 +15,182 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a8a25e88d4193562c818f30efd5eb017c372fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089291"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233287"
 ---
-# <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Oktatóanyag: Syncplicity integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Tutorial: Integrate Syncplicity with Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a Syncplicity integrálása az Azure Active Directory (Azure AD) lesz. Syncplicity integrálása az Azure ad-vel, akkor a következőket teheti:
+In this tutorial, you'll learn how to integrate Syncplicity with Azure Active Directory (Azure AD). When you integrate Syncplicity with Azure AD, you can:
 
-* Szabályozza, ki férhet hozzá Syncplicity Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Syncplicity az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Control in Azure AD who has access to Syncplicity.
+* Enable your users to be automatically signed-in to Syncplicity with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+To get started, you need the following items:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* Syncplicity egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* An Azure AD subscription. If you don't have a subscription, you can get one-month free trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* Syncplicity single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Syncplicity **SP** által kezdeményezett egyszeri bejelentkezés.
+In this tutorial, you configure and test Azure AD SSO in a test environment. Syncplicity supports **SP** initiated SSO.
 
-## <a name="adding-syncplicity-from-the-gallery"></a>Syncplicity hozzáadása a katalógusból
+## <a name="adding-syncplicity-from-the-gallery"></a>Adding Syncplicity from the gallery
 
-Az Azure AD integrálása a Syncplicity konfigurálásához hozzá kell Syncplicity a katalógusból a felügyelt SaaS-alkalmazások listájára.
+To configure the integration of Syncplicity into Azure AD, you need to add Syncplicity from the gallery to your list of managed SaaS apps.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **Syncplicity** kifejezést a keresőmezőbe.
-1. Válassza ki **Syncplicity** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **Syncplicity** in the search box.
+1. Select **Syncplicity** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-sso"></a>Configure and test Azure AD SSO
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Syncplicity **B.Simon**. Az SSO működjön kell Syncplicity az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Configure and test Azure AD SSO with Syncplicity using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Syncplicity.
 
-Az Azure AD SSO Syncplicity tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+To configure and test Azure AD SSO with Syncplicity, complete the following building blocks:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Syncplicity egyszeri bejelentkezést](#configure-syncplicity-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az B.Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – B.Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Syncplicity tesztfelhasználót](#create-syncplicity-test-user)**  - a-megfelelője a B.Simon szerepel, amely kapcsolódik az Azure AD felhasználói ábrázolása Syncplicity.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+2. **[Configure Syncplicity SSO](#configure-syncplicity-sso)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
+5. **[Create Syncplicity test user](#create-syncplicity-test-user)** - to have a counterpart of B.Simon in Syncplicity that is linked to the Azure AD representation of user.
+6. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Syncplicity** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. In the [Azure portal](https://portal.azure.com/), on the **Syncplicity** application integration page, find the **Manage** section and select **Single sign-on**.
+1. On the **Select a Single sign-on method** page, select **SAML**.
+1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
+1. On the **Basic SAML Configuration** page, enter the values for the following fields:
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.syncplicity.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<companyname>.syncplicity.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.syncplicity.com/sp`
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Syncplicity ügyfél-támogatási csapatának](https://www.syncplicity.com/contact-us) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Syncplicity Client support team](https://www.syncplicity.com/contact-us) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+   ![The Certificate download link](common/certificatebase64.png)
 
-1. Az a **Syncplicity beállítása** területén másolja a megfelelő URL-címe szerint.
+1. On the **Set up Syncplicity** section, copy the appropriate URL(s) based on your requirement.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-### <a name="configure-syncplicity-sso"></a>Syncplicity egyszeri bejelentkezés konfigurálása
+### <a name="configure-syncplicity-sso"></a>Configure Syncplicity SSO
 
-1. Jelentkezzen be a **Syncplicity** bérlő.
+1. Sign in to your **Syncplicity** tenant.
 
-1. A felső menüben kattintson **rendszergazdai**válassza **beállítások**, és kattintson a **egyéni tartomány és az egyszeri bejelentkezés**.
+1. In the menu on the top, click **admin**, select **settings**, and then click **Custom domain and single sign-on**.
 
     ![Syncplicity](./media/syncplicity-tutorial/ic769545.png "Syncplicity")
 
-1. Az a **egyszeri bejelentkezéses (SSO)** párbeszédpanel lapon, a következő lépésekkel:
+1. On the **Single Sign-On (SSO)** dialog page, perform the following steps:
 
-    ![Egyszeri bejelentkezés \(egyszeri bejelentkezés\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![Single Sign-On \(SSO\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
-    a. Az a **Custom Domain** szövegmezőbe írja be annak a tartománynak a nevét.
+    a. In the **Custom Domain** textbox, type the name of your domain.
   
-    b. Válassza ki **engedélyezve** , **egyszeri bejelentkezés állapotát**.
+    b. Select **Enabled** as **Single Sign-On Status**.
 
-    c. Az a **entitásazonosító** szövegmezőjébe illessze be a **azonosító (entityid)** érték, amely már használtak a **alapszintű SAML-konfigurációja** az Azure Portalon.
+    c. In the **Entity Id** textbox, Paste the **Identifier (Entity ID)** value, which you have used in the **Basic SAML Configuration** in the Azure portal.
 
-    d. Az a **lap URL-címe be** szövegmezőjébe illessze be a **bejelentkezési URL-cím** Azure Portalról másolt.
+    d. In the **Sign-in page URL** textbox, Paste the **Login URL** which you have copied from Azure portal.
 
-    e. Az a **kijelentkezési URL-címe** szövegmezőjébe illessze be a **kijelentkezési URL-címe** Azure Portalról másolt.
+    e. In the **Logout page URL** textbox, Paste the **Logout URL** which you have copied from Azure portal.
 
-    f. A **szolgáltató Identitástanúsítványt**, kattintson a **fájl kiválasztása**, majd töltse fel a tanúsítványt, amely az Azure Portalról letöltött.
+    f. In **Identity Provider Certificate**, click **Choose file**, and then upload the certificate which you have downloaded from the Azure portal.
 
-    g. Kattintson a **MENTSE a MÓDOSÍTÁSOKAT**.
+    g. Click **SAVE CHANGES**.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. In the **User name** field, enter the username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban B.Simon által biztosított hozzáférés Syncplicity Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Syncplicity.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **Syncplicity**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **Syncplicity**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-### <a name="create-syncplicity-test-user"></a>Syncplicity tesztfelhasználó létrehozása
+### <a name="create-syncplicity-test-user"></a>Create Syncplicity test user
 
-AAD-felhasználók számára jelentkezhetnek be akkor ki kell építeni Syncplicity alkalmazáshoz. Ez a szakasz ismerteti a Syncplicity az AAD felhasználói fiókokat hozhat létre.
+For Azure AD users to be able to sign in, they must be provisioned to Syncplicity application. This section describes how to create Azure AD user accounts in Syncplicity.
 
-**Üzembe helyez egy felhasználói fiókot Syncplicity, hajtsa végre az alábbi lépéseket:**
+**To provision a user account to Syncplicity, perform the following steps:**
 
-1. Jelentkezzen be a **Syncplicity** bérlő (például: `https://company.Syncplicity.com`).
+1. Sign in to your **Syncplicity** tenant (for example: `https://company.Syncplicity.com`).
 
-1. Kattintson a **rendszergazdai** , és válassza ki **felhasználói fiókok** majd **A felhasználó hozzáadása**.
+1. Click **admin** and select **user accounts** and then click **ADD A USER**.
 
-    ![Felhasználók kezelése](./media/syncplicity-tutorial/ic769764.png "felhasználók kezelése")
+    ![Manage Users](./media/syncplicity-tutorial/ic769764.png "Manage Users")
 
-1. Írja be a **E-mail-címek** egy kíván üzembe helyezni az Azure AD-fiók, jelölje be a **felhasználói** , **szerepkör**, és kattintson a **tovább**.
+1. Type the **Email addresses** of an Azure AD account you want to provision, select **User** as **Role**, and then click **NEXT**.
 
-    ![Fiókadatok](./media/syncplicity-tutorial/ic769765.png "fiókadatok")
-
-    > [!NOTE]
-    > Az AAD fióktulajdonos beolvasása egy e-mailt és a telepítőre mutató erősítse meg, és a fiók aktiválásához.
-
-1. Válasszon ki egy csoportot, amely az új felhasználót kell tagjává válik, és kattintson a vállalata **tovább**.
-
-    ![Csoporttagság](./media/syncplicity-tutorial/ic769772.png "csoporttagság")
+    ![Account Information](./media/syncplicity-tutorial/ic769765.png "Account Information")
 
     > [!NOTE]
-    > Ha nincsenek felsorolva csoportok, kattintson a **tovább**.
+    > The Azure AD account holder  gets an email including a link to confirm and activate the account.
 
-1. Válassza ki a felhasználó számítógépén Syncplicity a vezérlő alá helyezni, és kattintson a kívánt mappákat **tovább**.
+1. Select a group in your company that your new user should become a member of, and then click **NEXT**.
 
-    ![Syncplicity mappák](./media/syncplicity-tutorial/ic769773.png "Syncplicity mappák")
+    ![Group Membership](./media/syncplicity-tutorial/ic769772.png "Group Membership")
+
+    > [!NOTE]
+    > If there are no groups listed, click **NEXT**.
+
+1. Select the folders you would like to place under Syncplicity’s control on the user’s computer, and then click **NEXT**.
+
+    ![Syncplicity Folders](./media/syncplicity-tutorial/ic769773.png "Syncplicity Folders")
 
 > [!NOTE]
-> Bármely más Syncplicity felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Syncplicity által biztosított API-k.
+> You can use any other Syncplicity user account creation tools or APIs provided by Syncplicity to provision Azure AD user accounts.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Test SSO
 
-A Syncplicity csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Syncplicity, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you select the Syncplicity tile in the Access Panel, you should be automatically signed in to the Syncplicity for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

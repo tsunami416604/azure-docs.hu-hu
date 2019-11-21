@@ -1,52 +1,47 @@
 ---
-title: Twilio-kötés Azure Functions
-description: Ismerje meg, hogyan használhatók a Twilio-kötések Azure Functions használatával.
-services: functions
-documentationcenter: na
+title: Azure Functions Twilio binding
+description: Understand how to use Twilio bindings with Azure Functions.
 author: craigshoemaker
-manager: gwallace
-keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32f987caed915aff8c581b974dec7689fc90b007
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ee78234b43e94a5c537161556410ee6246e625ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114362"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230946"
 ---
-# <a name="twilio-binding-for-azure-functions"></a>Azure Functions Twilio kötése
+# <a name="twilio-binding-for-azure-functions"></a>Twilio binding for Azure Functions
 
-Ez a cikk azt ismerteti, hogyan küldhet szöveges üzeneteket a Azure Functions [Twilio](https://www.twilio.com/) kötéseinek használatával. Azure Functions támogatja a Twilio kimeneti kötéseit.
+This article explains how to send text messages by using [Twilio](https://www.twilio.com/) bindings in Azure Functions. Azure Functions supports output bindings for Twilio.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
+## <a name="packages---functions-1x"></a>Packages - Functions 1.x
 
-A Twilio-kötések a [Microsoft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomagban, az 1. x verzióban érhetők el. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub-adattárban.
+The Twilio bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub repository.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
+## <a name="packages---functions-2x"></a>Packages - Functions 2.x
 
-A Twilio-kötések a [Microsoft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet csomagban, 3. x verzióban találhatók. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub-adattárban.
+The Twilio bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet package, version 3.x. Source code for the package is in the [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub repository.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example---functions-1x"></a>Példa – 1. x függvények
+## <a name="example---functions-1x"></a>Example - Functions 1.x
 
-Tekintse meg az adott nyelvű példa:
+See the language-specific example:
 
 * [C#](#c-example)
 * [C# script (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
-### <a name="c-example"></a>C#például
+### <a name="c-example"></a>C# example
 
-Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely szöveges üzenetet küld, amikor egy üzenetsor-üzenet aktiválja.
+The following example shows a [C# function](functions-dotnet-class-library.md) that sends a text message when triggered by a queue message.
 
 ```cs
 [FunctionName("QueueTwilio")]
@@ -67,15 +62,15 @@ public static SMSMessage Run(
 }
 ```
 
-Ez a példa az `TwilioSms` attribútumot használja a metódus visszatérési értékével. Egy másik lehetőség, hogy az attribútumot `out SMSMessage` paraméterrel `ICollector<SMSMessage>` vagy `IAsyncCollector<SMSMessage>` paraméterrel használja.
+This example uses the `TwilioSms` attribute with the method return value. An alternative is to use the attribute with an `out SMSMessage` parameter or an `ICollector<SMSMessage>` or `IAsyncCollector<SMSMessage>` parameter.
 
-### <a name="c-script-example"></a>C#parancsfájl – példa
+### <a name="c-script-example"></a>C# script example
 
-Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl](functions-reference-csharp.md) -függvényt, amely a kötést használja. A függvény egy `out` paramétert használ szöveges üzenet küldéséhez.
+The following example shows a Twilio output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function uses an `out` parameter to send a text message.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Here's binding data in the *function.json* file:
 
-Példa a function. JSON fájlra:
+Example function.json:
 
 ```json
 {
@@ -90,7 +85,7 @@ Példa a function. JSON fájlra:
 }
 ```
 
-Itt a C# szkript kódja:
+Here's C# script code:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -121,7 +116,7 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 }
 ```
 
-Aszinkron kódban nem használhatók paraméterek. Példa egy aszinkron C# parancsfájl-kódra:
+You can't use out parameters in asynchronous code. Here's an asynchronous C# script code example:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -155,13 +150,13 @@ public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> mes
 }
 ```
 
-### <a name="javascript-example"></a>JavaScript-példa
+### <a name="javascript-example"></a>JavaScript example
 
-Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötést használja.
+The following example shows a Twilio output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Here's binding data in the *function.json* file:
 
-Példa a function. JSON fájlra:
+Example function.json:
 
 ```json
 {
@@ -176,7 +171,7 @@ Példa a function. JSON fájlra:
 }
 ```
 
-A következő JavaScript-kódot:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -202,17 +197,17 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="example---functions-2x"></a>Példa – 2. x függvények
+## <a name="example---functions-2x"></a>Example - Functions 2.x
 
-Tekintse meg az adott nyelvű példa:
+See the language-specific example:
 
-* [2. xC#](#2x-c-example)
-* [2. x C# parancsfájl (. CSX)](#2x-c-script-example)
-* [2. x JavaScript](#2x-javascript-example)
+* [2.x C#](#2x-c-example)
+* [2.x C# script (.csx)](#2x-c-script-example)
+* [2.x JavaScript](#2x-javascript-example)
 
-### <a name="2x-c-example"></a>2. x C# példa
+### <a name="2x-c-example"></a>2.x C# example
 
-Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely szöveges üzenetet küld, amikor egy üzenetsor-üzenet aktiválja.
+The following example shows a [C# function](functions-dotnet-class-library.md) that sends a text message when triggered by a queue message.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -243,15 +238,15 @@ namespace TwilioQueueOutput
 }
 ```
 
-Ez a példa az `TwilioSms` attribútumot használja a metódus visszatérési értékével. Egy másik lehetőség, hogy az attribútumot `out CreateMessageOptions` paraméterrel `ICollector<CreateMessageOptions>` vagy `IAsyncCollector<CreateMessageOptions>` paraméterrel használja.
+This example uses the `TwilioSms` attribute with the method return value. An alternative is to use the attribute with an `out CreateMessageOptions` parameter or an `ICollector<CreateMessageOptions>` or `IAsyncCollector<CreateMessageOptions>` parameter.
 
-### <a name="2x-c-script-example"></a>2. x C# parancsfájl – példa
+### <a name="2x-c-script-example"></a>2.x C# script example
 
-Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl](functions-reference-csharp.md) -függvényt, amely a kötést használja. A függvény egy `out` paramétert használ szöveges üzenet küldéséhez.
+The following example shows a Twilio output binding in a *function.json* file and a [C# script function](functions-reference-csharp.md) that uses the binding. The function uses an `out` parameter to send a text message.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Here's binding data in the *function.json* file:
 
-Példa a function. JSON fájlra:
+Example function.json:
 
 ```json
 {
@@ -265,7 +260,7 @@ Példa a function. JSON fájlra:
 }
 ```
 
-Itt a C# szkript kódja:
+Here's C# script code:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -297,7 +292,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
 }
 ```
 
-Aszinkron kódban nem használhatók paraméterek. Példa egy aszinkron C# parancsfájl-kódra:
+You can't use out parameters in asynchronous code. Here's an asynchronous C# script code example:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -331,13 +326,13 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-### <a name="2x-javascript-example"></a>2. x JavaScript-példa
+### <a name="2x-javascript-example"></a>2.x JavaScript example
 
-Az alábbi példa egy Twilio kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötést használja.
+The following example shows a Twilio output binding in a *function.json* file and a [JavaScript function](functions-reference-node.md) that uses the binding.
 
-Itt a *function. JSON* fájlban található kötési adat:
+Here's binding data in the *function.json* file:
 
-Példa a function. JSON fájlra:
+Example function.json:
 
 ```json
 {
@@ -351,7 +346,7 @@ Példa a function. JSON fájlra:
 }
 ```
 
-A következő JavaScript-kódot:
+Here's the JavaScript code:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -378,9 +373,9 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>Attribútumok
 
-Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribútumot.
+In [C# class libraries](functions-dotnet-class-library.md), use the [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribute.
 
-További információ a konfigurálható attribútumok tulajdonságairól: [konfiguráció](#configuration). Íme egy `TwilioSms` attribútum példa egy podpis metody:
+For information about attribute properties that you can configure, see [Configuration](#configuration). Here's a `TwilioSms` attribute example in a method signature:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -392,26 +387,26 @@ public static CreateMessageOptions Run(
 }
  ```
 
-Teljes példa: [ C# példa](#c-example).
+For a complete example, see [C# example](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `TwilioSms` attribútum.
+The following table explains the binding configuration properties that you set in the *function.json* file and the `TwilioSms` attribute.
 
-| v1 function. JSON tulajdonság | v2 function. JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+| v1 function.json property | v2 function.json property | Attribute property |Leírás|
 |---------|---------|---------|----------------------|
-|**type**|**type**| értékre kell állítani `twilioSms`.|
-|**direction**|**direction**| értékre kell állítani `out`.|
-|**name**|**name**| A Twilio SMS szöveges üzenethez tartozó Function Code-ban használt változó neve. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók biztonsági azonosítóját (például TwilioAccountSid) tárolja. Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio hitelesítési tokent (például TwilioAccountAuthToken) tárolja. Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAuthToken". |
-|**to**| N/A – megadás a kódban | **To**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
-|**a**|**a** | **From**| Ez az érték arra a telefonszámra van beállítva, amelyet az SMS-szöveg elküldésére használt.|
-|**body**|**body** | **Törzs**| Ez az érték használható az SMS szöveges üzenet kódolására, ha nem kell dinamikusan beállítania a függvény kódjában. |  
+|**type**|**type**| must be set to `twilioSms`.|
+|**direction**|**direction**| must be set to `out`.|
+|**name**|**name**| Variable name used in function code for the Twilio SMS text message. |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| This value must be set to the name of an app setting that holds your Twilio Account Sid e.g. TwilioAccountSid. If not set, the default app setting name is "AzureWebJobsTwilioAccountSid". |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| This value must be set to the name of an app setting that holds your Twilio authentication token e.g. TwilioAccountAuthToken. If not set, the default app setting name is "AzureWebJobsTwilioAuthToken". |
+|**to**| N/A - specify in code | **Címzett**| This value is set to the phone number that the SMS text is sent to.|
+|**from**|**from** | **From**| This value is set to the phone number that the SMS text is sent from.|
+|**body**|**body** | **Törzs**| This value can be used to hard code the SMS text message if you don't need to set it dynamically in the code for your function. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)

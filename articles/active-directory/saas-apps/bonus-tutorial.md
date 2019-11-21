@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bonusly |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Bonusly között.
+title: 'Tutorial: Azure Active Directory integration with Bonusly | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Bonusly.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,244 +16,244 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442776"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232066"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bonusly
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Tutorial: Azure Active Directory integration with Bonusly
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Bonusly integrálása az Azure Active Directory (Azure AD).
-Bonusly integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+In this tutorial, you learn how to integrate Bonusly with Azure Active Directory (Azure AD).
+Integrating Bonusly with Azure AD provides you with the following benefits:
 
-* Szabályozhatja, ki férhet hozzá Bonusly Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Bonusly (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* You can control in Azure AD who has access to Bonusly.
+* You can enable your users to be automatically signed-in to Bonusly (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Bonusly az Azure AD-integráció konfigurálásához a következőkre van szükség:
+To configure Azure AD integration with Bonusly, you need the following items:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Bonusly egyszeri bejelentkezés engedélyezve van az előfizetés
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* Bonusly single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* Bonusly támogatja **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Bonusly supports **IDP** initiated SSO
 
-## <a name="adding-bonusly-from-the-gallery"></a>Bonusly hozzáadása a katalógusból
+## <a name="adding-bonusly-from-the-gallery"></a>Adding Bonusly from the gallery
 
-Az Azure AD integrálása a Bonusly konfigurálásához hozzá kell Bonusly a katalógusból a felügyelt SaaS-alkalmazások listájára.
+To configure the integration of Bonusly into Azure AD, you need to add Bonusly from the gallery to your list of managed SaaS apps.
 
-**Bonusly hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**To add Bonusly from the gallery, perform the following steps:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Bonusly**válassza **Bonusly** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. In the search box, type **Bonusly**, select **Bonusly** from result panel then click **Add** button to add the application.
 
-    ![Az eredmények listájában Bonusly](common/search-new-app.png)
+    ![Bonusly in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Bonusly nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Bonusly hivatkozás kapcsolata kell létrehozni.
+In this section, you configure and test Azure AD single sign-on with Bonusly based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Bonusly needs to be established.
 
-Az Azure AD egyszeri bejelentkezés az Bonusly tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+To configure and test Azure AD single sign-on with Bonusly, you need to complete the following building blocks:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Bonusly egyszeri bejelentkezés konfigurálása](#configure-bonusly-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Bonusly tesztfelhasználót](#create-bonusly-test-user)**  – egy megfelelője a Britta Simon Bonusly, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure Bonusly Single Sign-On](#configure-bonusly-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create Bonusly test user](#create-bonusly-test-user)** - to have a counterpart of Britta Simon in Bonusly that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Bonusly, hajtsa végre az alábbi lépéseket:
+To configure Azure AD single sign-on with Bonusly, perform the following steps:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Bonusly** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Bonusly** application integration page, select **Single sign-on**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![Bonusly tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-reply.png)
+    ![Bonusly Domain and URLs single sign-on information](common/idp-reply.png)
 
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://Bonus.ly/saml/<tenant-name>`
+    In the **Reply URL** text box, type a URL using the following pattern:  `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-cím. Kapcsolattartó [Bonusly ügyfél-támogatási csapatának](https://bonus.ly/contact) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > The value is not real. Update the value with the actual Reply URL. Contact [Bonusly Client support team](https://bonus.ly/contact) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
+5. In the **SAML Signing Certificate** section, click **Edit** button to open **SAML Signing Certificate** dialog.
 
-    ![SAML-aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
+    ![Edit SAML Signing Certificate](common/edit-certificate.png)
 
-6. Az a **SAML-aláíró tanúsítvány** területén másolja a **UJJLENYOMAT** , és mentse a számítógépre.
+6. In the **SAML Signing Certificate** section, copy the **THUMBPRINT** and save it on your computer.
 
-    ![Másolja ki az ujjlenyomat értéket](common/copy-thumbprint.png)
+    ![Copy Thumbprint value](common/copy-thumbprint.png)
 
-7. Az a **Bonusly beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. On the **Set up Bonusly** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Login URL
 
-    b. Azure AD-azonosító
+    b. Azure AD Identifier
 
-    c. Kijelentkezési URL
+    c. Logout URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Bonusly egyszeri bejelentkezés konfigurálása
+### <a name="configure-bonusly-single-sign-on"></a>Configure Bonusly Single Sign-On
 
-1. Egy másik böngészőablakban jelentkezzen be a **Bonusly** bérlő.
+1. In a different browser window, sign in to your **Bonusly** tenant.
 
-1. A felső eszköztáron kattintson **beállítások** majd **Integrációk és az alkalmazások**.
+1. In the toolbar on the top, click **Settings** and then select **Integrations and apps**.
 
-    ![Bonusly közösségi szakasz](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. A **egyszeri bejelentkezés**válassza **SAML**.
+    ![Bonusly Social Section](./media/bonus-tutorial/ic773686.png "Bonusly")
+1. Under **Single Sign-On**, select **SAML**.
 
-1. Az a **SAML** párbeszédpanel lapon, a következő lépésekkel:
+1. On the **SAML** dialog page, perform the following steps:
 
-    ![Bonusly Saml párbeszédpanel lap](./media/bonus-tutorial/ic773687.png "Bonusly")
+    ![Bonusly Saml Dialog page](./media/bonus-tutorial/ic773687.png "Bonusly")
 
-    a. Az a **identitásszolgáltató SSO cél URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    a. In the **IdP SSO target URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    b. Az a **identitásszolgáltató bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    b. In the **IdP Login URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    c. A a **identitásszolgáltató kibocsátója** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, az Azure Portalról másolt.
+    c. In the **IdP Issuer** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
     
-    d. Illessze be a **ujjlenyomat** az Azure Portalról másolt érték a **tanúsítvány-ujjlenyomat** szövegmezőbe.
+    d. Paste the **Thumbprint** value copied from Azure portal into the **Cert Fingerprint** textbox.
     
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Bonusly Azure egyszeri bejelentkezés használatára.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Bonusly.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Bonusly**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Bonusly**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Bonusly**.
+2. In the applications list, select **Bonusly**.
 
-    ![Az alkalmazások listáját a Bonusly hivatkozásra](common/all-applications.png)
+    ![The Bonusly link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-bonusly-test-user"></a>Bonusly tesztfelhasználó létrehozása
+### <a name="create-bonusly-test-user"></a>Create Bonusly test user
 
-Ahhoz, hogy az Azure AD-felhasználók Bonusly bejelentkezni, akkor ki kell építeni Bonusly be. Bonusly, esetén kiépítése a manuális feladat.
+In order to enable Azure AD users to sign in to Bonusly, they must be provisioned into Bonusly. In the case of Bonusly, provisioning is a manual task.
 
 > [!NOTE]
-> Bármely más Bonusly felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Bonusly által biztosított API-k. 
+> You can use any other Bonusly user account creation tools or APIs provided by Bonusly to provision Azure AD user accounts. 
 
-**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
+**To configure user provisioning, perform the following steps:**
 
-1. Egy böngészőablakban jelentkezzen be a Bonusly bérlő.
+1. In a web browser window, sign in to your Bonusly tenant.
 
-1. Kattintson a **beállítások**.
+1. Click **Settings**.
 
-    ![Beállítások](./media/bonus-tutorial/ic781041.png "beállításai")
+    ![Beállítások](./media/bonus-tutorial/ic781041.png "Beállítások")
 
-1. Kattintson a **felhasználók és a prémium** fülre.
+1. Click the **Users and bonuses** tab.
 
-    ![Felhasználók és a prémium](./media/bonus-tutorial/ic781042.png "felhasználók és a prémium")
+    ![Users and bonuses](./media/bonus-tutorial/ic781042.png "Users and bonuses")
 
-1. Kattintson a **felhasználók kezelése**.
+1. Click **Manage Users**.
 
-    ![Felhasználók kezelése](./media/bonus-tutorial/ic781043.png "felhasználók kezelése")
+    ![Manage Users](./media/bonus-tutorial/ic781043.png "Manage Users")
 
-1. Kattintson a **felhasználó hozzáadása**.
+1. Click **Add User**.
 
-    ![Felhasználó hozzáadása](./media/bonus-tutorial/ic781044.png "felhasználó hozzáadása")
+    ![Add User](./media/bonus-tutorial/ic781044.png "Felhasználó hozzáadása")
 
-1. Az a **felhasználó hozzáadása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. On the **Add User** dialog, perform the following steps:
 
-    ![Felhasználó hozzáadása](./media/bonus-tutorial/ic781045.png "felhasználó hozzáadása")  
+    ![Add User](./media/bonus-tutorial/ic781045.png "Felhasználó hozzáadása")  
 
-    a. Az a **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
+    a. In the **First name** textbox, enter the first name of user like **Britta**.
 
-    b. Az a **Vezetéknév** szövegmezőbe írja be például a felhasználó vezetékneve **Simon**.
+    b. In the **Last name** textbox, enter the last name of user like **Simon**.
 
-    c. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó `brittasimon\@contoso.com`.
+    c. In the **Email** textbox, enter the email of user like `brittasimon\@contoso.com`.
 
     d. Kattintson a **Save** (Mentés) gombra.
 
     > [!NOTE]
-    > Az Azure ad-ben fióktulajdonos kap egy e-mailt, amelyben a hivatkozást a fiók megerősítéséhez, mielőtt aktívvá válik.  
+    > The Azure AD account holder receives an email that includes a link to confirm the account before it becomes active.  
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-A Bonusly csempére kattintva a hozzáférési panelen, meg kell automatikusan jelentkeznie a Bonusly, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Bonusly tile in the Access Panel, you should be automatically signed in to the Bonusly for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

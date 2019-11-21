@@ -1,60 +1,56 @@
 ---
-title: Tartós függvények számlázása – Azure Functions
-description: Ismerje meg a Durable Functions belső viselkedését, valamint azt, hogy azok hogyan hatnak a Azure Functions számlázására.
+title: Durable functions billing - Azure Functions
+description: Learn about the internal behaviors of Durable Functions and how they affect billing for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: f2de6bdf24aa1a0a11349c8f0ec9b3995b026a47
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694887"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233015"
 ---
-# <a name="durable-functions-billing"></a>Durable Functions számlázás
+# <a name="durable-functions-billing"></a>Durable Functions billing
 
-[Durable functions](durable-functions-overview.md) számlázása ugyanúgy történik, mint Azure functions. További információkért lásd: [Azure Functions árképzése](https://azure.microsoft.com/pricing/details/functions/).
+[Durable Functions](durable-functions-overview.md) is billed the same way as Azure Functions. For more information, see [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
 
-Azure Functions használati [tervben](../functions-scale.md#consumption-plan)szereplő Orchestrator-függvények végrehajtásakor figyelembe kell venni néhány számlázási viselkedést. A következő szakaszok részletesen ismertetik ezeket a viselkedéseket és azok hatását.
+When executing orchestrator functions in Azure Functions [Consumption plan](../functions-scale.md#consumption-plan), you need to be aware of some billing behaviors. The following sections describe these behaviors and their effect in more detail.
 
-## <a name="orchestrator-function-replay-billing"></a>Orchestrator függvény újrajátszása számlázás
+## <a name="orchestrator-function-replay-billing"></a>Orchestrator function replay billing
 
-A [Orchestrator függvények](durable-functions-orchestrations.md) többször is visszaállhatnak egy előkészítési időszak alatt. A rendszer minden egyes visszajátszás esetében az Azure Functions futtatókörnyezetet tekinti meg külön függvény meghívásakor. Emiatt a Azure Functions fogyasztási tervben egy Orchestrator-függvény minden újrajátszása után számítunk fel díjat. Az egyéb Orchestrator nem számítanak fel díjat a funkció újrajátszása esetén.
+[Orchestrator functions](durable-functions-orchestrations.md) might replay several times throughout the lifetime of an orchestration. Each replay is viewed by the Azure Functions runtime as a distinct function invocation. For this reason, in the Azure Functions Consumption plan you're billed for each replay of an orchestrator function. Other plan types don't charge for orchestrator function replay.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Várakozás és hozam a Orchestrator functions szolgáltatásban
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Awaiting and yielding in orchestrator functions
 
-Ha egy Orchestrator-függvény megvárja, amíg egy aszinkron művelet befejeződik a JavaScriptben való **várakozás** C# vagy **hozam** használatával, a futtatókörnyezet úgy véli, hogy az adott végrehajtás befejeződött. A Orchestrator függvény számlázása ezen a ponton leáll. Ez a művelet csak a következő Orchestrator függvény újrajátszása után folytatódik. Nem számítunk fel díjat a Orchestrator-függvény várakozási ideje vagy hozamának elköltése során.
+When an orchestrator function waits for an asynchronous action to finish by using **await** in C# or **yield** in JavaScript, the runtime considers that particular execution to be finished. The billing for the orchestrator function stops at that point. It doesn't resume until the next orchestrator function replay. You aren't billed for any time spent awaiting or yielding in an orchestrator function.
 
 > [!NOTE]
-> A más függvényeket meghívó függvényeket a rendszer úgy tekinti, hogy egy minta. Ennek oka a _kettős számlázási_megoldás. Ha egy függvény közvetlenül hív meg egy másik függvényt, akkor mindkettő egyszerre fut. A hívott függvény aktívan fut a kódban, miközben a hívó függvény választ vár. Ebben az esetben meg kell fizetnie, hogy a hívási függvény Mikor vár a meghívott függvény futtatására.
+> Functions calling other functions is considered by some to be an antipattern. This is because of a problem known as _double billing_. When a function calls another function directly, both run at the same time. The called function is actively running code while the calling function is waiting for a response. In this case, you must pay for the time the calling function spends waiting for the called function to run.
 >
-> A Orchestrator függvények nem rendelkeznek dupla számlázással. A Orchestrator függvény számlázása leáll, miközben egy tevékenységi függvény vagy alfolyamat eredményét várja.
+> There is no double billing in orchestrator functions. An orchestrator function's billing stops while it waits for the result of an activity function or sub-orchestration.
 
-## <a name="durable-http-polling"></a>Tartós HTTP-lekérdezés
+## <a name="durable-http-polling"></a>Durable HTTP polling
 
-A Orchestrator függvények a [http-szolgáltatások című cikkben](durable-functions-http-features.md)leírtak szerint hosszan futó http-hívásokat végezhetnek külső végpontokra. A **CallHttpAsync** metódusa C# és a JavaScript **callHttp** metódusa BELSŐLEG is lekérdezheti a HTTP-végpontot az [aszinkron 202-mintázatot](durable-functions-http-features.md#http-202-handling)követve.
+Orchestrator functions can make long-running HTTP calls to external endpoints as described in the [HTTP features article](durable-functions-http-features.md). The **CallHttpAsync** method in C# and the **callHttp** method in JavaScript might internally poll an HTTP endpoint while following the [asynchronous 202 pattern](durable-functions-http-features.md#http-202-handling).
 
-Jelenleg nincs közvetlen számlázás a belső HTTP-lekérdezési műveletekhez. A belső lekérdezés azonban azt eredményezheti, hogy a Orchestrator függvény rendszeresen újrajátszható. Ezeknek a belső függvényeknek a díjait a standard díjszabás szerint számítjuk fel.
+There currently isn't direct billing for internal HTTP polling operations. However, internal polling might cause the orchestrator function to periodically replay. You'll be billed standard charges for these internal function replays.
 
-## <a name="azure-storage-transactions"></a>Azure Storage-tranzakciók
+## <a name="azure-storage-transactions"></a>Azure Storage transactions
 
-Az Durable Functions alapértelmezés szerint az Azure Storage-t használja az állapot állandó, az üzenetek feldolgozásához és a partíciók blob-bérleteken keresztüli kezeléséhez. Mivel Ön a Storage-fiók tulajdonosa, az Azure-előfizetésében minden tranzakciós költséget számlázunk. Az Durable Functions által használt Azure Storage-összetevőkkel kapcsolatos további információkért tekintse meg a [feladatok hubok című cikket](durable-functions-task-hubs.md).
+Durable Functions uses Azure Storage by default to keep state persistent, process messages, and manage partitions via blob leases. Because you own this storage account, any transaction costs are billed to your Azure subscription. For more information about the Azure Storage artifacts used by Durable Functions, see the [Task hubs article](durable-functions-task-hubs.md).
 
-Számos tényező járul hozzá a Durable Functions-alkalmazásban felmerülő tényleges Azure Storage-költségekhez:
+Several factors contribute to the actual Azure Storage costs incurred by your Durable Functions app:
 
-* Egyetlen Function-alkalmazás van társítva egyetlen feladati hubhoz, amely az Azure Storage-erőforrások készletét osztja meg. Ezeket az erőforrásokat a Function app összes tartós funkciója használja. A Function alkalmazásban a függvények tényleges száma nem befolyásolja az Azure Storage tranzakciós költségeit.
-* Minden Function App-példány belsőleg több várólistát kérdez le a Storage-fiókban egy exponenciális leállítási lekérdezési algoritmus használatával. Az inaktív alkalmazások példányai ritkábban kérdezik le a várólistákat, mint az aktív alkalmazások, ami kevesebb tranzakciós költséget eredményez. A Durable Functions üzenetsor – lekérdezési viselkedéssel kapcsolatos további információkért tekintse meg a [teljesítmény-és méretezési cikk üzenetsor-lekérdezési szakaszát](durable-functions-perf-and-scale.md#queue-polling).
-* A Azure Functions-használat vagy a prémium csomagok futtatásakor a [Azure functions skálázási vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) rendszeresen lekérdezi a háttérben lévő összes Task hub-várólistát. Ha a Function alkalmazás enyhe és közepes méretű, akkor csak egyetlen méretezési vezérlő példány fogja lekérdezni ezeket a várólistákat. Ha a Function alkalmazás nagy mennyiségű példányra méretezhető, több méretezési vezérlő példány is felvehető. Ezek a további skálázási vezérlő-példányok növelhetik az összes üzenetsor-tranzakciós költségeket.
-* Minden Function App-példány blob-bérletek egy készletére verseng. Ezek a példányok rendszeresen kezdeményezik az Azure Blob service a megújított bérletek megújítására vagy új bérletek megvásárlására. A Task hub konfigurált partícióinak száma határozza meg a blob bérletek számát. A nagyobb számú Function app-példányra való horizontális felskálázás valószínűleg megnöveli az Azure Storage-tranzakcióhoz kapcsolódó, a bérleti műveletekkel kapcsolatos költségeket.
+* A single function app is associated with a single task hub, which shares a set of Azure Storage resources. These resources are used by all durable functions in a function app. The actual number of functions in the function app has no effect on Azure Storage transaction costs.
+* Each function app instance internally polls multiple queues in the storage account by using an exponential-backoff polling algorithm. An idle app instance polls the queues less often than does an active app, which results in fewer transaction costs. For more information about Durable Functions queue-polling behavior, see the [queue-polling section of the Performance and Scale article](durable-functions-perf-and-scale.md#queue-polling).
+* When running in the Azure Functions Consumption or Premium plans, the [Azure Functions scale controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regularly polls all task-hub queues in the background. If a function app is under light to moderate scale, only a single scale controller instance will poll these queues. If the function app scales out to a large number of instances, more scale controller instances might be added. These additional scale controller instances can increase the total queue-transaction costs.
+* Each function app instance competes for a set of blob leases. These instances will periodically make calls to the Azure Blob service either to renew held leases or to attempt to acquire new leases. The task hub's configured partition count determines the number of blob leases. Scaling out to a larger number of function app instances likely increases the Azure Storage transaction costs associated with these lease operations.
 
-Az Azure Storage díjszabásával kapcsolatos további információkért tekintse meg az [Azure Storage díjszabási](https://azure.microsoft.com/pricing/details/storage/) dokumentációját. 
+You can find more information on Azure Storage pricing in the [Azure Storage pricing](https://azure.microsoft.com/pricing/details/storage/) documentation. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További információ a Azure Functions díjszabásáról](https://azure.microsoft.com/pricing/details/functions/)
+> [Learn more about Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/)

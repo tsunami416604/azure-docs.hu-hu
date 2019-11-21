@@ -1,6 +1,6 @@
 ---
-title: Azure Automation-modulok kezelése
-description: Ez a cikk a Azure Automation moduljainak kezelését ismerteti
+title: Manage Modules in Azure Automation
+description: This article describes how to manage modules in Azure Automation
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -8,27 +8,27 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82f02f0ac11c80161f709b3b493306bc8aafc8bd
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435467"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231577"
 ---
-# <a name="manage-modules-in-azure-automation"></a>Azure Automation-modulok kezelése
+# <a name="manage-modules-in-azure-automation"></a>Manage Modules in Azure Automation
 
-A Azure Automation lehetővé teszi PowerShell-modulok importálását az Automation-fiókjába a PowerShell-alapú runbookok használatával. Ezek a modulok lehetnek a létrehozott egyéni modulok, a PowerShell-galéria, illetve a AzureRM és az az Azure-hoz készült modulok. Amikor létrehoz egy Automation-fiókot, a rendszer alapértelmezés szerint egyes modulokat importál.
+Azure Automation provides the ability to import PowerShell modules into your Automation Account to be used by the PowerShell based runbooks. These modules can be custom modules you've created, from the PowerShell Gallery, or the AzureRM and Az modules for Azure. When you create an Automation Account, some modules are imported by default.
 
 ## <a name="import-modules"></a>Modulok importálása
 
-Több módon is importálhat modulokat az Automation-fiókjába. A következő fejezetek a modulok importálásának különböző módjait mutatják be.
+There are multiple ways that you can import a module into your Automation Account. The following sections show the different ways to import a module.
 
 > [!NOTE]
-> A modulban Azure Automationként használandó fájl maximális elérési útja 140 karakter. Az 140 karakternél hosszabb útvonalak nem importálhatók a PowerShell-munkamenetbe `Import-Module` használatával.
+> The max path of a file in a module to be used in Azure Automation is 140 characters. Any path over 140 characters will not be able to be imported into the PowerShell session with `Import-Module`.
 
 ### <a name="powershell"></a>PowerShell
 
-A [New-AzureRmAutomationModule](/powershell/module/azurerm.automation/new-azurermautomationmodule) használatával modult importálhat az Automation-fiókjába. A parancsmag egy modul ZIP-csomagjának URL-címét veszi át.
+You can use the [New-AzureRmAutomationModule](/powershell/module/azurerm.automation/new-azurermautomationmodule) to import a module into your Automation Account. The cmdlet takes a url to a module zip package.
 
 ```azurepowershell-interactive
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -36,39 +36,39 @@ New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -Reso
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok** elemet a **megosztott erőforrások**területen. Kattintson **a + modul hozzáadása**lehetőségre. Válassza ki a modult tartalmazó **. zip** fájlt, és kattintson **az OK** gombra az importálási folyamat megkezdéséhez.
+In the Azure portal, navigate to your Automation Account and select **Modules** under **Shared Resources**. Click **+ Add a module**. Select a **.zip** file that contains your module and click **Ok** to start to import process.
 
 ### <a name="powershell-gallery"></a>PowerShell-galéria
 
-A PowerShell-galériából származó modulok közvetlenül a [PowerShell-Galéria](https://www.powershellgallery.com) importálhatók, vagy az Automation-fiókjából.
+Modules from the PowerShell gallery can either be imported from the [PowerShell Gallery](https://www.powershellgallery.com) directly or from your Automation Account.
 
-Ha egy modult szeretne importálni a PowerShell-galériaból, lépjen a https://www.powershellgallery.com elemre, és keressen rá az importálni kívánt modulra. Kattintson a telepítés gombra a **Azure Automation** lapon a **telepítési beállítások**alatt **Azure Automation** . Ez a művelet megnyitja a Azure Portal. Az **Importálás** lapon válassza ki az Automation-fiókját, és kattintson az **OK**gombra.
+To import a module from the PowerShell Gallery, go to https://www.powershellgallery.com and search for the module you want to import. Click **Deploy to Azure Automation** on the **Azure Automation** tab under **Installation Options**. This action opens up the Azure portal. On the **Import** page, select your Automation Account and click **OK**.
 
-![PowerShell-galéria importálási modul](../media/modules/powershell-gallery.png)
+![PowerShell Gallery import module](../media/modules/powershell-gallery.png)
 
-A PowerShell-galéria modulokat közvetlenül az Automation-fiókjából is importálhatja. Az Automation-fiókban válassza a **megosztott erőforrások**alatt található **modulok** elemet. A modulok lapon kattintson a **Tallózás**katalógus lehetőségre, majd keresse meg a modul PowerShell-Galéria. Válassza ki az importálni kívánt modult, és kattintson az **Importálás**gombra. **Az importálás lapon kattintson** az **OK** gombra az importálási folyamat elindításához.
+You can also import modules from the PowerShell Gallery directly from your Automation Account. In your Automation Account, select **Modules** under **Shared Resources**. On the modules page click **Browse gallery**, then search the PowerShell Gallery for a module. Select the module you want to import and click **Import**. On the **Import** page, click **OK** to start the import process.
 
-![PowerShell-galéria importálás Azure Portal](../media/modules/gallery-azure-portal.png)
+![PowerShell Gallery import from Azure portal](../media/modules/gallery-azure-portal.png)
 
-## <a name="delete-modules"></a>Modulok törlése
+## <a name="delete-modules"></a>Delete modules
 
-Ha problémája van egy modullal, vagy vissza kell állítania egy modul egy korábbi verzióját, akkor törölheti az Automation-fiókjából. Az Automation-fiók létrehozásakor importált [alapértelmezett modulok](#default-modules) eredeti verzióját nem lehet törölni. Ha a törölni kívánt modul a telepített [alapértelmezett modulok](#default-modules) egyikének újabb verziója, az Automation-fiókkal telepített verzióra visszakerül. Ellenkező esetben az Automation-fiókból törölt modulok el lesznek távolítva.
+If you have issues with a module or you need to roll back to a previous version of a module, you can delete it from your Automation Account. You can not delete the original version of the [default modules](#default-modules) that are imported when you create an Automation Account. If the module you want to delete is a newer version of one of the [default modules](#default-modules) installed, it will roll-back to the version that was installed with your Automation Account. Otherwise, any module you delete from your Automation Account will be removed.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok** elemet a **megosztott erőforrások**területen. Válassza ki az eltávolítani kívánt modult. A modul lapon clcick a **delete (Törlés**) **elemre** . Ha ez a modul az egyik [alapértelmezett modul](#default-modules), a rendszer visszaállítja az Automation-fiók létrehozásakor megjelenő verzióra.
+In the Azure portal, navigate to your Automation Account and select **Modules** under **Shared Resources**. Select the module you want to remove. On the **Module** page, clcick **Delete**. If this module is one of the [default modules](#default-modules), it will be rolled back to the version that was present when the Automation Account was created.
 
 ### <a name="powershell"></a>PowerShell
 
-Modul a PowerShell használatával történő eltávolításához futtassa a következő parancsot:
+To remove a module through PowerShell, run the following command:
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
 ```
 
-## <a name="internal-cmdlets"></a>Belső parancsmagok
+## <a name="internal-cmdlets"></a>Internal cmdlets
 
-A következő lista felsorolja az összes Automation-fiókba importált belső `Orchestrator.AssetManagement.Cmdlets` modulban lévő parancsmagokat. Ezek a parancsmagok elérhetők a runbookok és a DSC-konfigurációkban, és lehetővé teszik, hogy az Automation-fiókján belül kommunikáljon az eszközeivel. Emellett a belső parancsmagok lehetővé teszik a titkos **változók** , a **hitelesítő adatok**és a titkosított **kapcsolódási** mezők titkainak beolvasását. A Azure PowerShell-parancsmagok nem tudják beolvasni ezeket a titkokat. Ezek a parancsmagok nem igénylik az Azure-hoz való implicit csatlakozást a használatakor, például futtató fiók használatával az Azure-ban való hitelesítéshez.
+The following is a listing of cmdlets in the internal `Orchestrator.AssetManagement.Cmdlets` module that is imported into every Automation Account. These cmdlets are accessible in your runbooks and DSC configurations and allow you to interact with your assets within your Automation Account. Additionally, the internal cmdlets allow you to retrieve secrets from encrypted **Variable** values, **Credentials**, and encrypted **Connection** fields. The Azure PowerShell cmdlets are not able to retrieve these secrets. These cmdlets do not require you to implicitly connect to Azure when using them, such as using a Run As Account to authenticate to Azure.
 
 |Név|Leírás|
 |---|---|
@@ -77,16 +77,16 @@ A következő lista felsorolja az összes Automation-fiókba importált belső `
 |Get-AutomationPSCredential|`Get-AutomationPSCredential [-Name] <string> [<CommonParameters>]` |
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
-|Start – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Várakozás – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
-## <a name="add-a-connection-type-to-your-module"></a>Kapcsolattípus hozzáadása a modulhoz
+## <a name="add-a-connection-type-to-your-module"></a>Add a connection type to your module
 
-Az Automation-fiókban egyéni [kapcsolattípust](../automation-connections.md) is megadhat, ha egy opcionális fájlt ad hozzá a modulhoz. Ez a fájl egy metaadat-fájl, amely egy Azure Automation kapcsolattípus megadását adja meg az Automation-fiókjában található modul parancsmagokkal való használathoz. Ennek eléréséhez először tudnia kell, hogyan kell létrehozni egy PowerShell-modult. További információ a modulok létrehozásáról: [PowerShell parancsfájl-modul írása](/powershell/developer/module/how-to-write-a-powershell-script-module).
+You can provide a custom [connection type](../automation-connections.md) for you to use in your Automation Account by adding an optional file to your module. This file is a metadata file specifying an Azure Automation connection type to be used with the module's cmdlets in your Automation Account. To achieve this, you must first know how to author a PowerShell module. For more information on module authoring, see [How to Write a PowerShell Script Module](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module).
 
-![Egyéni kapcsolatok használata a Azure Portal](../media/modules/connection-create-new.png)
+![Use a custom connection in the Azure portal](../media/modules/connection-create-new.png)
 
-Azure Automation kapcsolattípus hozzáadásához a modulnak tartalmaznia kell egy `<ModuleName>-Automation.json` nevű fájlt, amely megadja a kapcsolattípus tulajdonságait. A rendszer a tömörített ZIP-fájl modul mappájába helyezi a JSON-fájlt. Ez a fájl tartalmazza a kapcsolat azon mezőit, amelyek szükségesek a modul által reprezentált rendszerhez vagy szolgáltatáshoz való kapcsolódáshoz. A konfiguráció a Azure Automationban létesített kapcsolattípus létrehozásával fejeződik be. Ezzel a fájllal beállíthatja a mezők nevét, típusát, valamint azt, hogy a mezőket titkosítva vagy opcionálisan kell-e használni a modul kapcsolattípus esetén. A következő példa egy JSON-fájlformátumban található sablon, amely a Felhasználónév és a jelszó tulajdonságot definiálja:
+To add an Azure Automation connection type, your module must contain a file with the name `<ModuleName>-Automation.json` that specifies the connection type properties. The json file is placed within the module folder of your compressed .zip file. This file contains the fields of a connection that is required to connect to the system or service the module represents. The configuration ends up creating a connection type in Azure Automation. Using this file you can set the field names, types, and whether the fields should be encrypted or optional, for the connection type of the module. The following example is a template in the json file format that defines a username and password property:
 
 ```json
 {
@@ -109,13 +109,13 @@ Azure Automation kapcsolattípus hozzáadásához a modulnak tartalmaznia kell e
 }
 ```
 
-## <a name="module-best-practices"></a>Modul – ajánlott eljárások
+## <a name="module-best-practices"></a>Module best practices
 
-A PowerShell-modulok a Azure Automationba importálhatók, hogy a parancsmagok elérhetők legyenek a runbookok-on belüli használatra, és a DSC-erőforrásokon belül elérhetők legyenek a DSC-konfigurációkon. A színfalak mögött Azure Automation tárolja ezeket a modulokat, valamint a runbook és a DSC-fordítási feladatok végrehajtási idejét, betölti azokat a Azure Automation-munkaterületekre, ahol a runbookok-végrehajtás és a DSC-konfigurációk fordítása megtörtént. A modulok DSC-erőforrásai is automatikusan a Automation DSC lekérési kiszolgálóra kerülnek. A gépek a DSC-konfigurációk alkalmazása esetén is lehívhatják őket.
+PowerShell modules can be imported into Azure Automation to make their cmdlets available for use within runbooks and their DSC resources available for use within DSC configurations. Behind the scenes, Azure Automation stores these modules, and at runbook job and DSC compilation job execution time, loads them into the Azure Automation sandboxes where runbooks execute and DSC configurations compile. Any DSC resources in modules are also automatically placed on the Automation DSC pull server. They can be pulled by machines when they apply DSC configurations.
 
-Javasoljuk, hogy vegye figyelembe az alábbiakat, amikor létrehoz egy PowerShell-modult Azure Automationban való használatra:
+We recommend you consider the following when you author a PowerShell module for use in Azure Automation:
 
-* Ne tartalmazzon a. zip csomagban található Version mappát.  Ez a probléma kevésbé fontos a runbookok, de az állapot-konfigurációs szolgáltatással kapcsolatos problémát okoz.  Azure Automation automatikusan létrehozza a verzió mappát, ha a modult a DSC által felügyelt csomópontok számára terjesztik, és ha létezik, akkor két példánnyal kell végződnie.  Példa a DSC-modulhoz tartozó mappastruktúrát:
+* Do NOT include a version folder within the .zip package.  This issue is less of a concern for runbooks but will cause an issue with the State Configuration service.  Azure Automation will create the version folder automatically when the module is distributed to nodes managed by DSC, and if a version folder exists you will end up with two instances.  Example folder structure for a  DSC module:
 
 ```powershell
 myModule
@@ -126,7 +126,7 @@ myModule
   myModuleManifest.psd1
 ```
 
-* A modul összes parancsmagjáról mellékeljen egy szinopszist, egy leírást és egy súgó URI-t. A PowerShellben meghatározhat bizonyos súgóinformációkat a parancsmagokhoz, hogy a felhasználó segítséget kapjon a **Get-Help** parancsmaggal való használatukkor. Az alábbi példa bemutatja, hogyan határozhat meg egy szinopszist és egy Súgó URI-t egy. psm1-modul fájljában:
+* A modul összes parancsmagjáról mellékeljen egy szinopszist, egy leírást és egy súgó URI-t. A PowerShellben meghatározhat bizonyos súgóinformációkat a parancsmagokhoz, hogy a felhasználó segítséget kapjon a **Get-Help** parancsmaggal való használatukkor. The following example shows how to define a synopsis and help URI for in a .psm1 module file:
 
   ```powershell
   <#
@@ -166,13 +166,13 @@ myModule
   }
   ```
 
-  Ez az információ azt mutatja be, hogy ez a Súgó a **Get-Help** parancsmag használatával jelenik meg a PowerShell-konzolon. Ez a leírás a Azure Portalban is megjelenik.
+  Providing this info shows this help using the **Get-Help** cmdlet in the PowerShell console. This description is also displayed in the Azure portal.
 
   ![Integrációs modul súgó](../media/modules/module-activity-description.png)
 
-* Ha a modul egy külső szolgáltatáshoz csatlakozik, a [kapcsolat típusát](#add-a-connection-type-to-your-module)is tartalmaznia kell. A modul minden egyes parancsmagjának képesnek kell lennie egy kapcsolat objektum (az adott kapcsolattípus egy példánya) befogadására paraméterként. A felhasználók a kapcsolódási eszköz paramétereit a parancsmaghoz tartozó paraméterekhez rendelik a parancsmag meghívásakor. A fenti runbook példa alapján egy ContosoConnection nevű contoso-kapcsolati eszközt használ a contoso-erőforrások eléréséhez és a külső szolgáltatás adatainak visszaküldéséhez.
+* If the module connects to an external service, it should contain a [connection type](#add-a-connection-type-to-your-module). A modul minden egyes parancsmagjának képesnek kell lennie egy kapcsolat objektum (az adott kapcsolattípus egy példánya) befogadására paraméterként. Users map parameters of the connection asset to the cmdlet's corresponding parameters each time they call a cmdlet. Based on the runbook example above, it uses an example Contoso connection asset called ContosoConnection to access Contoso resources and return data from the external service.
 
-  A következő példában a mezők a `PSCredential` objektum Felhasználónév és jelszó tulajdonságaira vannak leképezve, majd átadásra kerülnek a parancsmagnak.
+  In the following example, the fields are mapped to the UserName and Password properties of a `PSCredential` object and then passed to the cmdlet.
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -182,7 +182,7 @@ myModule
   }
   ```
 
-  Ennek a viselkedésnek a könnyebb és hatékonyabb megközelítése közvetlenül a következő parancsmagra továbbítja a kapcsolódási objektumot:
+  An easier and better way to approach this behavior is directly passing the connection object to the cmdlet:
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -191,11 +191,11 @@ myModule
   }
   ```
 
-  Az előző példához hasonló viselkedést engedélyezheti a parancsmagok számára azáltal, hogy a paramétereket közvetlenül a kapcsolódási mezők helyett paraméterként fogadja el. Általában mindegyikhez meg kell határozni egy paramétert, így a Azure Automationt nem használó felhasználók a szórótábla létrehozása nélkül hívhatják meg a parancsmagokat. A `UserAccount` paraméter beállítása a kapcsolódási mező tulajdonságainak továbbítására szolgál. a `ConnectionObject` lehetővé teszi a kapcsolatok közvetlen továbbítását.
+  You can enable behavior like the preceding example for your cmdlets by allowing them to accept a connection object directly as a parameter, instead of just connection fields for parameters. Usually you want a parameter set for each, so that a user not using Azure Automation can call your cmdlets without constructing a hashtable to act as the connection object. The parameter set `UserAccount`, is used to pass the connection field properties. `ConnectionObject` lets you pass the connection straight through.
 
-* Adja meg a modul összes parancsmagjának kimeneti típusát. Egy parancsmag kimenettípusának megadása lehetővé teszi a tervezés közben az IntelliSense használatát, amely segít meghatározni egy parancsmag kimenetének tulajdonságait a megírásuk támogatására. Ez különösen hasznos az Automation runbook grafikus készítése során, ahol a tervezési idő ismerete kulcsfontosságú a modul egyszerű felhasználói élménye érdekében.
+* Define the output type for all cmdlets in the module. Egy parancsmag kimenettípusának megadása lehetővé teszi a tervezés közben az IntelliSense használatát, amely segít meghatározni egy parancsmag kimenetének tulajdonságait a megírásuk támogatására. It's especially helpful during Automation runbook graphical authoring, where design time knowledge is key to an easy user experience with your module.
 
-Adja hozzá a `[OutputType([<MyOutputType>])]` értéket, ahol a MyOutputType érvényes típus. További információ a OutputType: [About functions OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). A következő kód egy példa a `OutputType` parancsmaghoz való hozzáadására:
+Add `[OutputType([<MyOutputType>])]` where MyOutputType is a valid type. To learn more about OutputType, see [About Functions OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). The following code is an example of adding `OutputType` to a cmdlet:
 
   ```powershell
   function Get-ContosoUser {
@@ -210,11 +210,11 @@ Adja hozzá a `[OutputType([<MyOutputType>])]` értéket, ahol a MyOutputType é
 
   ![Grafikus forgatókönyv kimenettípusa](../media/modules/runbook-graphical-module-output-type.png)
 
-  Ez a viselkedés hasonló a parancsmag kimenetének "type Ahead" funkcióhoz a PowerShell ISE-ben anélkül, hogy futtatni kellene.
+  This behavior is similar to the "type ahead" functionality of a cmdlet's output in PowerShell ISE without having to run it.
 
   ![POSH IntelliSense](../media/modules/automation-posh-ise-intellisense.png)
 
-* A modul egyik parancsmagjának se legyen állapota. Egyszerre több runbook-feladat is futtatható ugyanabban a alkalmazástartomány, és ugyanazzal a folyamattal és homokozóval. Ha az ilyen szinteken bármilyen állapot van megosztva, a feladatok hatással lehetnek egymásra. Ez a viselkedés időszakos és nehéz problémákat okozhat a problémák diagnosztizálásában.  Az alábbi példa bemutatja, mit ne tegyen.
+* A modul egyik parancsmagjának se legyen állapota. Multiple runbook jobs can simultaneously run in the same AppDomain and the same process and sandbox. If there is any state shared on those levels, jobs can affect each other. This behavior can lead to intermittent and hard to diagnose issues.  Az alábbi példa bemutatja, mit ne tegyen.
 
   ```powershell
   $globalNum = 0
@@ -232,15 +232,15 @@ Adja hozzá a `[OutputType([<MyOutputType>])]` értéket, ahol a MyOutputType é
   }
   ```
 
-* A modult teljes egészében egy xcopy-képes csomagban kell tartalmaznia. Azure Automation modulokat a rendszer az Automation-munkaterületekre terjeszti, amikor a runbookok végre kell hajtania. A moduloknak a rendszeren futó gazdagéptől függetlenül kell dolgozniuk. Képesnek kell lennie arra, hogy elhelyezze a modult, és áthelyezzen egy modul-csomagot, és a szokásos módon működjön, ha egy másik gazdagép PowerShell-környezetébe importálja. Ahhoz, hogy ez megtörténjen, a modul nem függ a modul mappáján kívüli fájlokkal. Ez a mappa az a mappa, amely a modulnak a Azure Automationba való importálásakor bekerül a tömörített mappába. A modulnak szintén nem kell a gazdagép egyedi beállításjegyzék-beállításaitól függ, például a termék telepítésekor beállított beállításoktól. A modulban lévő összes fájlnak 140 karakternél rövidebb elérési úttal kell rendelkeznie. Az 140 karakternél hosszabb útvonalak a runbook importálásával kapcsolatos problémákat okozhatnak. Ha ez az ajánlott eljárás nem következik be, a modul nem lesz használható Azure Automationban.  
+* The module should be fully contained in an xcopy-able package. Azure Automation modules are distributed to the Automation sandboxes when runbooks need to execute. The modules need to work independently of the host they're running on. You should be able to Zip up and move a module package and have it function as normal when imported into another host's PowerShell environment. In order for that to happen, the module shouldn't depend on any files outside the module folder. This folder is the folder that gets zipped up when the module is imported into Azure Automation. The module should also not depend on any unique registry settings on a host, such as those settings set when a product is installed. All files in the module should have a path fewer than 140 characters. Any paths over 140 characters will cause issues importing your runbook. If this best practice isn't followed, the module won't be usable in Azure Automation.  
 
-* Ha a modulban az [Azure powershellre](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) hivatkozik, győződjön meg róla, hogy nem hivatkozik `AzureRM`-re. A `Az` modul nem használható a `AzureRM` modulokkal együtt. a `Az` támogatott a runbookok-ben, de alapértelmezés szerint nem importálható. Ha szeretne többet megtudni a `Az` modulokról és szempontokról, tekintse meg a következő témakört: az [modul support in Azure Automation](../az-modules.md).
+* If referencing [Azure Powershell Az modules](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) in your module, ensure you aren't also referencing `AzureRM`. The `Az` module can't be used in conjunction with the `AzureRM` modules. `Az` is supported in runbooks but aren't imported by default. To learn about the `Az` modules and considerations to take into account, see [Az module support in Azure Automation](../az-modules.md).
 
-## <a name="default-modules"></a>Alapértelmezett modulok
+## <a name="default-modules"></a>Default modules
 
-A következő táblázat felsorolja az Automation-fiók létrehozásakor alapértelmezés szerint importált modulokat. Az alább felsorolt modulok importálhatók újabb verziókkal, de az eredeti verzió nem távolítható el az Automation-fiókjából, még akkor is, ha töröl egy újabb verziót is.
+The following table lists the modules that are imported by default when an Automation Account is created. The modules listed below can have newer versions of them imported, but the original version can not be removed from your Automation Account even if you delete a newer version of them.
 
-|Modul neve|Verzió|
+|Module name|Verzió|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
@@ -252,14 +252,14 @@ A következő táblázat felsorolja az Automation-fiók létrehozásakor alapér
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
-| Microsoft. PowerShell. Core | 0 |
-| Microsoft. PowerShell. Diagnostics |  |
-| Microsoft. PowerShell. Management |  |
-| Microsoft. PowerShell. Security |  |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
-| Microsoft. WSMan. Management |  |
-| Orchestrator. AssetManagement. parancsmagok | 1 |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |

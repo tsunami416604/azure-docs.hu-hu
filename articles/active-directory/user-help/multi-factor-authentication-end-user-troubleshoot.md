@@ -1,6 +1,6 @@
 ---
-title: A kétfaktoros ellenőrzési problémák gyakori elhárítása – Azure AD
-description: Ismerje meg a leggyakoribb kétfaktoros ellenőrzési problémák lehetséges megoldásait.
+title: Common problems & solutions with account authentication - Azure AD
+description: Learn about potential problems and solutions for some of the more common two-factor verification problems and your work or school account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,101 +13,101 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9d998fafbf6b3ba0547991de6c3a8e71b66d91f7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805303"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231893"
 ---
-# <a name="troubleshoot-common-two-factor-verification-problems"></a>A kétfaktoros ellenőrzés gyakori problémáinak elhárítása
+# <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>Common problems and solutions with two-factor verification and your work or school account
 
-A szervezet bekapcsolta a kétfaktoros ellenőrzést, ami azt jelenti, hogy a munkahelyi vagy iskolai fiókja most már a Felhasználónév, a jelszó, valamint a mobileszköz vagy telefon kombinációját igényli. A szervezet bekapcsolta ezt az extra ellenőrzést, mert az sokkal biztonságosabb, mint a jelszó, és a hitelesítés két formájára támaszkodik. A kétfaktoros ellenőrzés segít megakadályozni, hogy a rosszindulatú hackerek az Ön számára legyenek, mert még ha a jelszavuk is van, az esélye, hogy nem rendelkezik az eszközzel.
+Your organization has turned on two-factor verification, meaning that your work or school account sign-in now requires a combination of your user name, your password, and a mobile device or phone. Your organization turned on this extra verification because it's more secure than just a password, relying on two forms of authentication: something you know and something you have with you. Two-factor verification can help to stop malicious hackers from pretending to be you, because even if they have your password, odds are that they don't have your device, too.
 
-Vannak olyan gyakori kétfaktoros ellenőrzési problémák, amelyek gyakrabban fordulnak elő, mint bármelyikünk. Ebben a cikkben a leggyakoribb problémákkal és néhány lehetséges javítással foglalkozunk.
+There are some common two-factor verification problems that seem to happen more frequently than any of us would like. We've put together this article hoping to address the most common problems and some possible fixes.
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 >
->Ez a tartalom csak a munkahelyi vagy iskolai fiókjával, a szervezet által megadott fiókkal (például alain@contoso.com) való használatra szolgál. Ha problémái vannak a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, akkor a saját maga által beállított fiókkal (például danielle@outlook.com) kapcsolatban lásd: a [kétfaktoros ellenőrzés bekapcsolása a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>This content is also only intended for use with your work or school account, the account provided to you by your organization (for example, alain@contoso.com). If you're having problems with two-factor verification and your personal Microsoft account, the account you set up for yourself (for example, danielle@outlook.com), see [Turning two-factor verification on or off for your Microsoft account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-## <a name="i-forgot-my-mobile-device-at-home"></a>Elfelejtettem a mobileszközom otthon
+## <a name="i-forgot-my-mobile-device-at-home"></a>I forgot my mobile device at home
 
-Ez történik. Meghagyta a mobileszköz otthonát, és most már nem használhatja a telefont annak ellenőrzéséhez, hogy ki mondta. Ha korábban már hozzáadott egy másik módszert a fiókjába való bejelentkezéshez, például az irodai telefonhoz, akkor ezt a metódust kell használnia. Ha soha nem adott meg további ellenőrzési módszert, akkor kapcsolatba kell lépnie az ügyfélszolgálattal, és segítségre van szüksége a fiókhoz való visszatéréshez.
+It happens. You left your mobile device at home and now you can't use your phone to verify you are who you say you are. If you previously added another method to sign in to your account, such as your office phone, you should be able to use that method now. If you never added an additional verification method, you'll have to contact your Help desk and have them help you get back into your account.
 
-### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>Bejelentkezés munkahelyi vagy iskolai fiókba más ellenőrzési módszer használatával
+### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>To sign in to your work or school account using another verification method
 
-1. Normál bejelentkezéssel jelentkezzen be a fiókjába, és a **kétfaktoros ellenőrző** lapon válassza a **bejelentkezés másik módon** hivatkozását.
+1. Sign in to your account normally and choose the **Sign in another way** link on the **Two-factor verification** page.
 
-    ![Bejelentkezés ellenőrzési módszerének módosítása](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
+    ![Change sign in verification method](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 
     >[!Note]
-    >Ha nem látja a **Bejelentkezés más módon** hivatkozást, az azt jelenti, hogy nem állított be semmilyen más ellenőrzési módszert. Kérje meg a rendszergazdát, hogy jelentkezzen be a fiókjába.
+    >If you don't see the **Sign in another way** link, it means that you haven't set up any other verification methods. You'll have to contact your administrator for help signing into your account.
 
-2. Válassza ki az alternatív ellenőrzési módszert, és folytassa a kétfaktoros ellenőrzési folyamattal.
+2. Choose your alternative verification method, and continue with the two-factor verification process.
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Elveszett a mobileszköz, vagy ellopták
+## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>I lost my mobile device or it was stolen
 
-Ha elvesztette vagy megkapta a mobileszköz ellopását, más módszerrel is bejelentkezhet, vagy megkérheti az ügyfélszolgálatot, hogy törölje a beállításait. Határozottan javasoljuk, hogy tájékoztassa az ügyfélszolgálatot arról, hogy a telefonja elveszett vagy ellopták, így a megfelelő frissítések elhelyezhetők a fiókjával. A beállítások törlése után a rendszer felszólítja, hogy regisztráljon a [kétfaktoros ellenőrzésre](multi-factor-authentication-end-user-first-time.md) a következő bejelentkezés alkalmával.
+If you've lost or had your mobile device stolen, you can either sign in using a different method or you can ask your Help desk to clear your settings. We strongly recommend letting your Help desk know if your phone was lost or stolen, so the appropriate updates can be made to your account. After your settings are cleared, you'll be prompted to [register for two-factor verification](multi-factor-authentication-end-user-first-time.md) the next time you sign in.
 
-## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Nem kapok a mobileszközön eljuttatott ellenőrző kódot
+## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>I'm not getting the verification code sent to my mobile device
 
-Az ellenőrző kód beszerzése nem gyakori probléma, és általában a mobileszköz és a hozzá tartozó beállításokhoz kapcsolódik. Néhány lehetséges dolog a kipróbáláshoz:
+Not getting your verification code is a common problem and it's typically related to your mobile device and its settings. Some possible things to try:
 
-- **Indítsa újra a mobileszköz-eszközt.** Előfordulhat, hogy az eszköz csak a frissítésre van szüksége. Az eszköz újraindítása véget ér minden olyan háttérben futó folyamatnak vagy szolgáltatásnak, amely éppen fut, és problémákat okozhat, valamint az eszköz alapvető összetevőinek frissítését, újraindítását, ha egy bizonyos ponton összeomlott.
+- **Restart your mobile device.** Sometimes your device just needs a refresh. Restarting your device ends any background processes or services that are currently running and could cause problems, along with refreshing your device's core components, restarting them in case they crashed at some point.
 
-- **Ellenőrizze, hogy helyesek-e a biztonsági adatok.** Győződjön meg arról, hogy a biztonsági ellenőrzési módszer adatai pontosak, különösen a telefonszámok. Ha helytelen telefonszámot helyez üzembe, az összes riasztás nem megfelelő számú. Szerencsére a felhasználó nem fog tudni bármit megtenni a riasztásokkal, de nem segít bejelentkezni a fiókjába. Az adatok helyességének biztosításához tekintse meg a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikket.
+- **Verify your security information is correct.** Make sure your security verification method information is accurate, especially your phone numbers. If you put in the wrong phone number, all of your alerts will go to that incorrect number. Fortunately, that user won't be able to do anything with the alerts, but it also won't help you sign in to your account. To make sure your information is correct, see the instructions in the [Manage your two-factor verification method settings](multi-factor-authentication-end-user-manage-settings.md) article.
 
-- **Ellenőrizze, hogy az értesítések be vannak-e kapcsolva.** Győződjön meg arról, hogy a mobileszköz értesítések be vannak kapcsolva, és hogy olyan értesítési módszert jelölt ki, amely lehetővé teszi a telefonhívásokat, a hitelesítési alkalmazást és az üzenetkezelési alkalmazást (szöveges üzenetek esetén), hogy látható riasztási értesítéseket küldjön a mobileszközön.
+- **Verify your notifications are turned on.** Make sure your mobile device has notifications turned on and that you've selected a notification method that allows phone calls, your authentication app, and your messaging app (for text messages) to send visible alert notifications to your mobile device.
 
-- **Győződjön meg arról, hogy rendelkezik egy eszköz-és internetkapcsolattal.** Győződjön meg arról, hogy a telefonhívások és a szöveges üzenetek bekerülnek a mobileszközön. Ismerőse van, és SMS-üzenetet küld Önnek, hogy mindkét fél megkapja. Ha nem, először ellenőrizze, hogy a mobileszköz be van-e kapcsolva. Ha az eszköz be van kapcsolva, de még nem kérdezi le a hívást vagy a szöveget, valószínűleg probléma van a hálózattal, és a szolgáltatóval kell kommunikálnia. Ha gyakran vannak jelekkel kapcsolatos problémák, javasoljuk, hogy telepítse és használja a [Microsoft Authenticator alkalmazást](user-help-auth-app-download-install.md) a mobileszközön. A hitelesítő alkalmazás véletlenszerű biztonsági kódokat tud létrehozni a bejelentkezéshez, és nem igényel semmilyen cellahivatkozást vagy internetkapcsolatot.
+- **Make sure you have a device signal and Internet connection.** Make sure your phone calls and text messages are getting through to your mobile device. Have a friend call you and send you a text message to make sure you receive both. If you don't, first check to make sure your mobile device is turned on. If your device is turned on, but you're still not getting the call or text, it's most likely a problem with your network and you'll need to talk to your provider. If you often have signal-related problems, we recommend you install and use the [Microsoft Authenticator app](user-help-auth-app-download-install.md) on your mobile device. The authenticator app can generate random security codes for sign-in, without requiring any cell signal or Internet connection.
 
-- **A kikapcsolás nem zavarja.** Győződjön meg arról, hogy nincs bekapcsolva a mobileszköz **ne zavarja** a funkcióját. Ha ez a funkció be van kapcsolva, az értesítések nem kaphatnak riasztást a mobileszközön. A szolgáltatás kikapcsolásával kapcsolatos útmutatásért tekintse meg a mobileszköz kézikönyvét.
+- **Turn off Do not disturb.** Make sure you haven't turned on the **Do not disturb** feature for your mobile device. When this feature is turned on, notifications aren't allowed to alert you on your mobile device. Refer to your mobile device's manual for instructions about how to turn off this feature.
 
-- **Telefonszámok feloldásának feloldása** A Egyesült Államok a Microsoft hanghívásai a következő számokból származnak: + 1 (866) 539 4191, + 1 (855) 330 8653 és + 1 (877) 668 6536.
+- **Unblock phone numbers** In the United States, voice calls from Microsoft come from the following numbers: +1 (866) 539 4191, +1 (855) 330 8653, and +1 (877) 668 6536.
 
-- **Az akkumulátorral kapcsolatos beállítások megkeresése.** Ez úgy tűnik, hogy egy kicsit furcsa a felületen, de ha úgy állította be az akkumulátor-optimalizálást, hogy leállítsa a kevésbé használt alkalmazásokat a háttérben, akkor az értesítési rendszer valószínűleg érintett. A probléma megoldásához kapcsolja ki az akkumulátor-optimalizálást a hitelesítési alkalmazáshoz és az üzenetkezelési alkalmazáshoz, majd próbálkozzon újra a fiókba való bejelentkezéssel.
+- **Check your battery-related settings.** This one seems a bit odd on the surface, but if you've set up your battery optimization to stop lesser-used apps from remaining active in the background, your notification system has most-likely been affected. To try to fix this problem, turn off battery optimization for your authentication app and your messaging app, and then try signing in to your account again.
 
-## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Nem kapok Rákérdezés a második ellenőrzési információra
+## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>I'm not getting prompted for my second verification information
 
-Ha a felhasználónevével és jelszavával jelentkezett be a munkahelyi vagy az iskolai fiókjába, de nem kérték a további biztonsági ellenőrzési információk megadását, előfordulhat, hogy még nem állította be az eszközt. A mobileszköznek kifejezetten be kell állítania, hogy működjön a további biztonsági ellenőrzési módszerekkel. Győződjön meg arról, hogy bekapcsolta a mobileszköz használatát, és hogy az elérhető az ellenőrzési módszerhez. a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikkben talál további információt. Ha tudja, hogy nem állította be az eszközt vagy a fiókját, a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben ismertetett lépéseket követve teheti meg.
+If you've signed in to your work or school account using your user name and password, but haven't been prompted about your additional security verification information, it might be that you haven't set up your device yet. Your mobile device must specifically be set up to work with your additional security verification method. To make sure you've turned on your mobile device and that it's available to use with your verification method, see the [Manage your two-factor verification method settings](multi-factor-authentication-end-user-manage-settings.md) article. If you know you haven't set up your device or your account, you can do it now by following the steps in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
 
-## <a name="i-got-a-new-phone-number-how-do-i-change-it-for-two-factor-verification"></a>Új telefonszámom van, hogyan változtathatom meg a kétfaktoros ellenőrzéshez?
+## <a name="i-got-a-new-phone-number-how-do-i-change-it-for-two-factor-verification"></a>I got a new phone number, how do I change it for two-factor verification?
 
-Ha új telefonszámot kaptunk, frissítenie kell a biztonsági ellenőrzési módszer részleteit, hogy az ellenőrző kérések a megfelelő helyre lépjenek. Az ellenőrzési módszer frissítéséhez kövesse a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) című cikk a **telefonszám hozzáadása vagy módosítása** című szakaszának lépéseit.
+If you've gotten a new phone number, you'll need to update your security verification method details so your verification prompts go to the right location. To do update your verification method, follow the steps in the **Add or change your phone number** section of the [Manage your two-factor verification method settings](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) article.
 
-## <a name="i-got-a-new-mobile-device-how-do-i-add-it"></a>Új mobileszköz van, Hogyan adhatom hozzá?
+## <a name="i-got-a-new-mobile-device-how-do-i-add-it"></a>I got a new mobile device, how do I add it?
 
-Ha új mobileszköz van, akkor be kell állítania, hogy működjön a kétfaktoros ellenőrzéssel. Ez egy több lépésből álló megoldás:
+If you've gotten a new mobile device, you'll need to set it up to work with two-factor verification. This is a multi-step solution:
 
-1. Állítsa be az eszközt a munkahelyi vagy iskolai fiókjával való együttműködéshez a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben ismertetett lépéseket követve.
+1. Set up your device to work with your work or school account by following the steps in the [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md) article.
 
-2. Frissítse a fiókját és az eszköz adatait a **további biztonsági ellenőrzés** oldalon, törölje a régi eszközt, és adja hozzá az újat. További információt a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikkben talál.
+2. Update your account and device information in the **Additional security verification** page, deleting your old device and adding your new one. For more information, see the [Manage your two-factor verification method settings](multi-factor-authentication-end-user-manage-settings.md) article.
 
-3. Választható. Töltse le, telepítse és állítsa be a Microsoft Authenticator alkalmazást a mobileszközön a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikkben ismertetett lépéseket követve.
+3. Választható. Download, install, and set up the Microsoft Authenticator app on your mobile device by following the steps in the [Download and install the Microsoft Authenticator app](user-help-auth-app-download-install.md) article.
 
-4. Választható. Kapcsolja be a kétfaktoros ellenőrzést a megbízható eszközökhöz a kétfaktoros [ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) című cikk a kéttényezős ellenőrzési **kérések megbízható eszközön** című részében ismertetett lépéseket követve.
+4. Választható. Turn on two-factor verification for your trusted devices by following the steps in the **Turn on two-factor verification prompts on a trusted device** section of the [Manage your two-factor verification method settings](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) article.
 
-## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Problémák léptek fel a mobil eszközön való bejelentkezés közben
+## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>I'm having problems signing in on my mobile device while traveling
 
-Előfordulhat, hogy a mobileszköz-alapú ellenőrzési módszer (például szöveges üzenetküldés) használata még nehezebbé válik, miközben nemzetközi helyen dolgozik. Azt is megteheti, hogy a mobileszköz barangoló díjat von maga után. Ebben az esetben javasoljuk, hogy használja a Microsoft Authenticator alkalmazást a Wi-Fi elérési ponthoz való csatlakozás lehetőségével. A Microsoft Authenticator alkalmazás mobileszközön való letöltésével, telepítésével és beállításával kapcsolatos további információkért tekintse meg a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikket.
+You might find it more difficult to use a mobile device-related verification method, like a text messaging, while you're in an international location. It's also possible that your mobile device can cause you to incur roaming charges. For this situation, we recommend you use the Microsoft Authenticator app, with the option to connect to a Wi-Fi hotspot. For more information about how to download, install, and set up the Microsoft Authenticator app on your mobile device, see the [Download and install the Microsoft Authenticator app](user-help-auth-app-download-install.md) article.
 
-## <a name="i-cant-get-my-app-passwords-to-work"></a>Nem tudom beolvasni az alkalmazás jelszavait
+## <a name="i-cant-get-my-app-passwords-to-work"></a>I can't get my app passwords to work
 
-Az alkalmazás jelszavai lecserélik a normál jelszót a régebbi asztali alkalmazások esetében, amelyek nem támogatják a kétfaktoros ellenőrzést. Először ellenőrizze, hogy helyesen írta-e be a jelszót. Ha ez nem oldja meg, akkor az alkalmazás jelszavainak [kezelése a kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) című cikkben ismertetett lépéseket követve hozzon létre egy új alkalmazást az alkalmazás jelszavának létrehozásához **és törléséhez** .
+App passwords replace your normal password for older desktop applications that don't support two-factor verification. First, make sure you typed the password correctly. If that doesn't fix it, try creating a new app password for the app by following the steps in the **Create and delete app passwords using the My Apps portal** section of the [Manage app passwords for two-step verification](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) article.
 
-## <a name="why-cant-i-turn-two-factor-verification-off"></a>Miért nem kapcsolhatom ki a kétfaktoros ellenőrzést?
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>Why can't I turn two-factor verification off?
 
-Ha kétfaktoros ellenőrzést használ munkahelyi vagy iskolai fiókjával (például alain@contoso.com), az valószínűleg azt jelenti, hogy a szervezet úgy döntött, hogy ezt a hozzáadott biztonsági szolgáltatást kell használnia. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja. Ha azonban a kéttényezős ellenőrzést személyes fiókkal (például alain@outlook.com) használja, lehetősége van a funkció be-és kikapcsolására. A személyes Microsoft-fiókok kétfaktoros ellenőrzésének vezérlésével kapcsolatos útmutatásért lásd: [kétfaktoros ellenőrzés bekapcsolása vagy kikapcsolása a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+If you're using two-factor verification with your work or school account (for example, alain@contoso.com), it most likely means that your organization has decided you must use this added security feature. Because your organization has decided you must use this feature, there is no way for you to individually turn it off. If, however, you're using two-factor verification with a personal account, like alain@outlook.com, you have the ability to turn the feature on and off. For instructions about how to control two-factor verification for your personal Microsoft accounts, see [Turning two-factor verification on or off for your Microsoft account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nem találok választ a problémára
+## <a name="i-didnt-find-an-answer-to-my-problem"></a>I didn't find an answer to my problem
 
-Ha kipróbálta ezeket a lépéseket, de továbbra is problémákat tapasztal, segítségért forduljon az ügyfélszolgálathoz.
+If you've tried these steps but are still running into problems, contact your Help desk for assistance.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [A kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md)
+- [Manage your two-factor verification method settings](multi-factor-authentication-end-user-manage-settings.md)
 
-- [Saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md)
+- [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md)
 
 - [A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések](user-help-auth-app-faq.md)

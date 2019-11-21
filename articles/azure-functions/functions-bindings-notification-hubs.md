@@ -1,59 +1,54 @@
 ---
-title: Azure Functions-kötések Notification Hubs
-description: Ismerje meg, hogyan használhatja az Azure Notification hub-kötést Azure Functionsban.
-services: functions
-documentationcenter: na
+title: Notification Hubs bindings for Azure Functions
+description: Understand how to use Azure Notification Hub binding in Azure Functions.
 author: craigshoemaker
-manager: gwallace
-keywords: Azure functions, functions, Event Processing, dinamikus számítás, kiszolgáló nélküli architektúra
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: cde565fbafec7f1209d0c65d6f3ebc121f38e6f5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8bc7f879a2c2e8b1e0e2d82216241704a466ad60
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991378"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231136"
 ---
-# <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions Notification Hubs kimeneti kötése
+# <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs output binding for Azure Functions
 
-Ez a cikk azt ismerteti, hogyan küldhet leküldéses értesítéseket az [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) -kötések használatával Azure Functionsban. Azure Functions támogatja a Notification Hubs kimeneti kötéseit.
+This article explains how to send push notifications by using [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) bindings in Azure Functions. Azure Functions supports output bindings for Notification Hubs.
 
-Az Azure Notification Hubs-t konfigurálni kell a használni kívánt platform Notifications szolgáltatáshoz (PNS). Ha meg szeretné tudni, hogyan kérhet le leküldéses értesítéseket az ügyfélalkalmazás Notification Hubsről, tekintse meg a [Notification Hubs első lépéseivel foglalkozó](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) témakört, és válassza ki a cél ügyféloldali platformot a lap tetején található legördülő listából.
+Azure Notification Hubs must be configured for the Platform Notifications Service (PNS) you want to use. To learn how to get push notifications in your client app from Notification Hubs, see [Getting started with Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) and select your target client platform from the drop-down list near the top of the page.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> A Google [elavult Google Cloud Messaging (GCM) a Firebase Cloud Messaging (FCM) javára](https://developers.google.com/cloud-messaging/faq). Ez a kimeneti kötés nem támogatja az FCM-et. Ha az FCM használatával szeretne értesítéseket küldeni, használja a [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) -t közvetlenül a függvényében, vagy használja a [sablonra vonatkozó értesítéseket](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+> Google has [deprecated Google Cloud Messaging (GCM) in favor of Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). This output binding doesn't support FCM. To send notifications using FCM, use the [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) directly in your function or use [template notifications](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
+## <a name="packages---functions-1x"></a>Packages - Functions 1.x
 
-A Notification Hubs kötések a [Microsoft. Azure. webjobs. Extensions. NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet csomagban találhatók, 1. x verzióban. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) tárházban található.
+The Notification Hubs bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet package, version 1.x. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) GitHub repository.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2. x függvények
+## <a name="packages---functions-2x"></a>Packages - Functions 2.x
 
-Ez a kötés nem érhető el a 2. x függvényben.
+This binding is not available in Functions 2.x.
 
-## <a name="example---template"></a>Példa – sablon
+## <a name="example---template"></a>Example - template
 
-Az Ön által küldött értesítések lehetnek natív értesítések vagy [sablon-értesítések](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). A natív értesítések a kimeneti kötés `platform` tulajdonságában megadott ügyféloldali platformot céloznak meg. A sablonokkal kapcsolatos értesítések több platform megcélzására is használhatók.   
+The notifications you send can be native notifications or [template notifications](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Native notifications target a specific client platform as configured in the `platform` property of the output binding. A template notification can be used to target multiple platforms.   
 
-Tekintse meg a nyelvspecifikus példát:
+See the language-specific example:
 
-* [C#parancsfájl-kilépési paraméter](#c-script-template-example---out-parameter)
-* [C#parancsfájl – aszinkron](#c-script-template-example---asynchronous)
-* [C#parancsfájl – JSON](#c-script-template-example---json)
-* [C#parancsfájl-függvénytárak típusai](#c-script-template-example---library-types)
+* [C# script - out parameter](#c-script-template-example---out-parameter)
+* [C# script - asynchronous](#c-script-template-example---asynchronous)
+* [C# script - JSON](#c-script-template-example---json)
+* [C# script - library types](#c-script-template-example---library-types)
 * [F#](#f-template-example)
 * [JavaScript](#javascript-template-example)
 
-### <a name="c-script-template-example---out-parameter"></a>C#parancsfájl-sablon – példa – kimenő paraméter
+### <a name="c-script-template-example---out-parameter"></a>C# script template example - out parameter
 
-Ez a példa egy olyan sablon- [regisztrációra](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) vonatkozó értesítést küld, amely `message` helyőrzőt tartalmaz a sablonban.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains a `message` placeholder in the template.
 
 ```cs
 using System;
@@ -74,9 +69,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---asynchronous"></a>C#Példa parancsfájl-sablonra – aszinkron
+### <a name="c-script-template-example---asynchronous"></a>C# script template example - asynchronous
 
-Aszinkron kód használata esetén a kimenő paraméterek nem engedélyezettek. Ebben az esetben a `IAsyncCollector` használatával adja vissza a sablon értesítését. A következő kód egy aszinkron példa a fenti kódra. 
+If you are using asynchronous code, out parameters are not allowed. In this case use `IAsyncCollector` to return your template notification. The following code is an asynchronous example of the code above. 
 
 ```cs
 using System;
@@ -99,9 +94,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---json"></a>C#Példa a parancsfájl sablonra – JSON
+### <a name="c-script-template-example---json"></a>C# script template example - JSON
 
-Ez a példa egy olyan sablon- [regisztrációra](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) vonatkozó értesítést küld, amely egy érvényes JSON-karakterlánc használatával `message` helyőrzőt tartalmaz a sablonban.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains a `message` placeholder in the template using a valid JSON string.
 
 ```cs
 using System;
@@ -113,9 +108,9 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 }
 ```
 
-### <a name="c-script-template-example---library-types"></a>C#parancsfájl-sablon – példa – típustár-típusok
+### <a name="c-script-template-example---library-types"></a>C# script template example - library types
 
-Ez a példa bemutatja, hogyan használhatók a [Microsoft Azure Notification Hubs könyvtárban](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)definiált típusok. 
+This example shows how to use types defined in the [Microsoft Azure Notification Hubs Library](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -138,18 +133,18 @@ private static TemplateNotification GetTemplateNotification(string message)
 }
 ```
 
-### <a name="f-template-example"></a>F#Példa sablonra
+### <a name="f-template-example"></a>F# template example
 
-Ez a példa egy `location` és `message`tartalmazó [sablon-regisztrációra](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) vonatkozó értesítést küld.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains `location` and `message`.
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
     notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
 ```
 
-### <a name="javascript-template-example"></a>Példa JavaScript-sablonra
+### <a name="javascript-template-example"></a>JavaScript template example
 
-Ez a példa egy `location` és `message`tartalmazó [sablon-regisztrációra](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) vonatkozó értesítést küld.
+This example sends a notification for a [template registration](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) that contains `location` and `message`.
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -168,9 +163,9 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="example---apns-native"></a>Példa – natív APNS
+## <a name="example---apns-native"></a>Example - APNS native
 
-Ez C# a szkript bemutatja, hogyan küldhet egy natív APNS-értesítést. 
+This C# script example shows how to send a native APNS notification. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -199,9 +194,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---wns-native"></a>Példa – natív WNS
+## <a name="example---wns-native"></a>Example - WNS native
 
-Ez C# a szkript bemutatja, hogyan használhatók a [Microsoft Azure Notification Hubs könyvtárban](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) definiált típusok egy natív WNS-bejelentési értesítés küldéséhez. 
+This C# script example shows how to use types defined in the [Microsoft Azure Notification Hubs Library](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) to send a native WNS toast notification. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -244,29 +239,29 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="attributes"></a>Attribútumok
 
-Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) attribútumot.
+In [C# class libraries](functions-dotnet-class-library.md), use the [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) attribute.
 
-Az attribútum konstruktorának paraméterei és tulajdonságai a [konfiguráció](#configuration) szakaszban olvashatók.
+The attribute's constructor parameters and properties are described in the [configuration](#configuration) section.
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő táblázat ismerteti a *function. JSON* fájlban és a `NotificationHub` attribútumban beállított kötési konfigurációs tulajdonságokat:
+The following table explains the binding configuration properties that you set in the *function.json* file and the `NotificationHub` attribute:
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.json property | Attribute property |Leírás|
 |---------|---------|----------------------|
-|**type** |–| `notificationHub`értékre kell állítani. |
-|**direction** |–| `out`értékre kell állítani. | 
-|**név** |–| Az értesítési központ üzenetének függvény kódjában használt változó neve. |
-|**tagExpression** |**TagExpression** | A címkézési kifejezések lehetővé teszik annak megadását, hogy a rendszer az értesítéseket a címkével megegyező értesítések fogadására regisztrált eszközök egy csoportjának adja meg.  További információ: [útválasztási és címkézési kifejezések](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
-|**hubName** | **HubName** | Az értesítési központ erőforrásának neve a Azure Portalban. |
-|**kapcsolat** | **ConnectionStringSetting** | Egy Notification Hubs-kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve.  A kapcsolódási karakterláncot az értesítési központ *DefaultFullSharedAccessSignature* értékére kell beállítani. A jelen cikk későbbi, a [kapcsolatok karakterláncának beállítása](#connection-string-setup) című szakaszban talál.|
-|**platform** | **Platform** | A platform tulajdonság az értesítési célokhoz tartozó ügyféloldali platformot jelzi. Alapértelmezés szerint, ha a platform tulajdonságot kihagyja a kimeneti kötésből, a sablonok értesítései az Azure Notification hub-ban konfigurált platformok célzására használhatók. Ha többet szeretne megtudni arról, hogyan használhatók a sablonok a platformfüggetlen értesítések Azure Notification hub használatával történő küldéséhez, tekintse meg a [sablonok](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)című témakört. Ha be van állítva, a **platformnak** a következő értékek egyikének kell lennie: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. A APNS értesítési központjának konfigurálásával és az értesítés egy ügyfélalkalmazásba való fogadásával kapcsolatos további információkért lásd: [leküldéses értesítések küldése iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)-re az Azure Notification Hubs.</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Az ADM-hez készült értesítési központ konfigurálásával és az értesítés egy Kindle-alkalmazásban való fogadásával kapcsolatos további információkért lásd: [Első lépések Notification Hubs for Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)-alkalmazásokhoz.</li><li><code>wns</code>&mdash;[Windows-Leküldéses Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) a Windows platformokat célozza meg. A WNS a Windows Phone-telefon 8,1-es és újabb verzióját is támogatja. További információ: [Bevezetés a Notification Hubs használatába a Windows Universal platform alkalmazásaihoz](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;a [Microsoft leküldéses értesítési szolgáltatását](/previous-versions/windows/apps/ff402558(v=vs.105)). Ez a platform a Windows Phone-telefon 8 és korábbi Windows Phone-telefon platformokat támogatja. További információ: [leküldéses értesítések küldése az Azure Notification Hubs on Windows Phone-telefon](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**type** |–| Must be set to `notificationHub`. |
+|**direction** |–| Must be set to `out`. | 
+|**name** |–| Variable name used in function code for the notification hub message. |
+|**tagExpression** |**TagExpression** | Tag expressions allow you to specify that notifications be delivered to a set of devices that have registered to receive notifications that match the tag expression.  For more information, see [Routing and tag expressions](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
+|**hubName** | **HubName** | Name of the notification hub resource in the Azure portal. |
+|**connection** | **ConnectionStringSetting** | The name of an app setting that contains a Notification Hubs connection string.  The connection string must be set to the *DefaultFullSharedAccessSignature* value for your notification hub. See [Connection string setup](#connection-string-setup) later in this article.|
+|**platform** | **Platform** | The platform property indicates the client platform your notification targets. By default, if the platform property is omitted from the output binding, template notifications can be used to target any platform configured on the Azure Notification Hub. For more information on using templates in general to send cross platform notifications with an Azure Notification Hub, see [Templates](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). When set, **platform** must be one of the following values: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. For more information on configuring the notification hub for APNS and receiving the notification in a client app, see [Sending push notifications to iOS with Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). For more information on configuring the notification hub for ADM and receiving the notification in a Kindle app, see [Getting Started with Notification Hubs for Kindle apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Windows Push Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) targeting Windows platforms. Windows Phone 8.1 and later is also supported by WNS. For more information, see [Getting started with Notification Hubs for Windows Universal Platform Apps](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](/previous-versions/windows/apps/ff402558(v=vs.105)). This platform supports Windows Phone 8 and earlier Windows Phone platforms. For more information, see [Sending push notifications with Azure Notification Hubs on Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-### <a name="functionjson-file-example"></a>Példa a function. JSON fájlra
+### <a name="functionjson-file-example"></a>function.json file example
 
-Íme egy példa egy Notification Hubs kötésre egy *function. JSON* fájlban.
+Here's an example of a Notification Hubs binding in a *function.json* file.
 
 ```json
 {
@@ -285,28 +280,28 @@ A következő táblázat ismerteti a *function. JSON* fájlban és a `Notificati
 }
 ```
 
-### <a name="connection-string-setup"></a>A kapcsolatok karakterláncának beállítása
+### <a name="connection-string-setup"></a>Connection string setup
 
-Az értesítési központ kimeneti kötésének használatához konfigurálnia kell a hub kapcsolati karakterláncát. Kiválaszthat egy meglévő értesítési központot, vagy létrehozhat egy újat közvetlenül a Azure Portal *integrálás* lapján. A kapcsolatok karakterláncát manuálisan is konfigurálhatja. 
+To use a notification hub output binding, you must configure the connection string for the hub. You can select an existing notification hub or create a new one right from the *Integrate* tab in the Azure portal. You can also configure the connection string manually. 
 
-A kapcsolódási karakterlánc konfigurálása meglévő értesítési központhoz:
+To configure the connection string to an existing notification hub:
 
-1. Nyissa meg az értesítési központot a [Azure Portalban](https://portal.azure.com), válassza a **hozzáférési szabályzatok**lehetőséget, és kattintson a **DefaultFullSharedAccessSignature** szabályzat melletti Másolás gombra. Ezzel átmásolja a *DefaultFullSharedAccessSignature* szabályzathoz tartozó kapcsolódási karakterláncot az értesítési központba. Ez a kapcsolódási karakterlánc lehetővé teszi, hogy a függvény értesítési üzeneteket küldjön a hubhoz.
-    ![az értesítési központ kapcsolatok karakterláncának másolása](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Keresse meg a Function alkalmazást a Azure Portalban, válassza az **Alkalmazásbeállítások**lehetőséget, adjon hozzá egy kulcsot, például a **MyHubConnectionString**, illessze be az értesítési központ átmásolt *DefaultFullSharedAccessSignature* az értékként, majd kattintson **a Mentés**.
+1. Navigate to your notification hub in the [Azure portal](https://portal.azure.com), choose **Access policies**, and select the copy button next to the **DefaultFullSharedAccessSignature** policy. This copies the connection string for the *DefaultFullSharedAccessSignature* policy to your notification hub. This connection string lets your function send notification messages to the hub.
+    ![Copy the notification hub connection string](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. Navigate to your function app in the Azure portal, choose **Application settings**, add a key such as **MyHubConnectionString**, paste the copied *DefaultFullSharedAccessSignature*  for your notification hub as the value, and then click **Save**.
 
-Ennek az alkalmazásnak a neve a *function. JSON* vagy a .NET attribútum kimeneti kötési kapcsolatának beállítása. Tekintse meg a jelen cikk korábbi, [konfigurációs szakaszát](#configuration) .
+The name of this application setting is what goes in the output binding connection setting in *function.json* or the .NET attribute. See the [Configuration section](#configuration) earlier in this article.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
+## <a name="exceptions-and-return-codes"></a>Exceptions and return codes
 
-| Kötés | Leírások |
+| Binding | Leírások |
 |---|---|
-| Notification Hub (Értesítési központ) | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/notificationhubs/) |
+| Notification Hub (Értesítési központ) | [Operations Guide](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)
+> [Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
 

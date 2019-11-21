@@ -1,6 +1,6 @@
 ---
-title: Rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálása a REST használata Azure virtuális gép
-description: Részletes utasításokat a rendszer és felhasználó által hozzárendelt felügyelt identitások-beli virtuális gépen, hogy a REST API-t a CURL használatával meghívja.
+title: Configure managed identities on Azure VM using REST - Azure AD
+description: Step by step instructions for configuring a system and user-assigned managed identities on an Azure VM using CURL to make REST API calls.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,41 +15,41 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18350337ba44d969173d518a4bc8dfe40185de21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2eadbad5332147add9a1b30a25b9ad2403f1a108
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112711"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224592"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása a REST API hívásait használja, az Azure virtuális Gépekhez
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Configure Managed identities for Azure resources on an Azure VM using REST API calls
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban a rendszer automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
+Managed identities for Azure resources provides Azure services with an automatically managed system identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
 
-Ebben a cikkben az Azure Resource Manager REST-végponthoz, hívásokat a CURL használatával mutatja a következő felügyelt identitások végrehajtani az Azure-erőforrások operations-beli virtuális gépen:
+In this article, using CURL to make calls to the Azure Resource Manager REST endpoint, you learn how to perform the following managed identities for Azure resources operations on an Azure VM:
 
-- Engedélyezheti és tilthatja le a rendszer által hozzárendelt felügyelt identitás-beli virtuális gépen
-- Hozzáadhat és eltávolíthat a felhasználó által hozzárendelt felügyelt identitás-beli virtuális gépen
+- Enable and disable the system-assigned managed identity on an Azure VM
+- Add and remove a user-assigned managed identity on an Azure VM
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)** .
+- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Ha Windows használ, telepítse a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy használja a [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon.
-- [A helyi Azure CLI-konzol telepítése](/cli/azure/install-azure-cli), ha a [a Linux Windows alrendszere](https://msdn.microsoft.com/commandline/wsl/about) vagy egy [linuxos](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-- Ha a helyi Azure CLI-konzolt használ, jelentkezzen be Azure-bA `az login` egy olyan fiókkal, amely az Azure-előfizetés társítva van, a rendszer vagy felhasználó által hozzárendelt felügyelt identitások kezelése szeretné.
+- If you are using Windows, install the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal.
+- [Install the Azure CLI local console](/cli/azure/install-azure-cli), if you use the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or a [Linux distribution OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+- If you are using Azure CLI local console, sign in to Azure using `az login` with an account that is associated with the Azure subscription you would like to manage system or user-assigned managed identities.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
+## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
 
-Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le a rendszer által hozzárendelt felügyelt identitás-beli virtuális gépen az Azure Resource Manager REST-végponton való meghíváshoz a CURL használatával.
+In this section, you learn how to enable and disable system-assigned managed identity on an Azure VM using CURL to make calls to the Azure Resource Manager REST endpoint.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Rendszer által hozzárendelt felügyelt identitás engedélyezése egy Azure virtuális gép létrehozása során
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Enable system-assigned managed identity during creation of an Azure VM
 
-Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással engedélyezve van, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés.  Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
+To create an Azure VM with the system-assigned managed identity enabled,your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
 
 1. Az [az group create](/cli/azure/group/#az-group-create) paranccsal hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#terminology) a virtuális gép és az ahhoz kapcsolódó erőforrások elkülönítéséhez és üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
 
@@ -57,19 +57,19 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
    az group create --name myResourceGroup --location westus
    ```
 
-2. Hozzon létre egy [hálózati adapter](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) a virtuális géphez:
+2. Create a [network interface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) for your VM:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+3. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Hozzon létre egy virtuális Gépet a CURL használatával az Azure Resource Manager REST-végpont meghívására. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* a rendszer által hozzárendelt felügyelt identitást, a kérelem törzsében szereplő értéke által meghatározott `"identity":{"type":"SystemAssigned"}`. Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+4. Create a VM using CURL to call the Azure Resource Manager REST endpoint. The following example creates a VM named *myVM* with a system-assigned managed identity, as identified in the request body by the value `"identity":{"type":"SystemAssigned"}`. Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -79,14 +79,14 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Kérelem fejlécei**
+   **Request headers**
    
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
    
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
      {
@@ -146,20 +146,20 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
     }  
    ```
 
-### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Egy meglévő Azure virtuális gépen, rendszer által hozzárendelt identitás engedélyezése
+### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Enable system-assigned identity on an existing Azure VM
 
-Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg anélkül, hogy üzembe helyezett virtuális gépen, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés.  Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
+To enable system-assigned managed identity on a VM that was originally provisioned without it, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
 
-1. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. A következő CURL-parancs használatával hívja meg az Azure Resource Manager REST-végpont engedélyezéséhez a rendszer által hozzárendelt felügyelt identitás, a virtuális Gépen, a kérelem törzsében szereplő értéke által meghatározott `{"identity":{"type":"SystemAssigned"}` nevű virtuális gép *myVM*.  Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+2. Use the following CURL command to call the Azure Resource Manager REST endpoint to enable system-assigned managed identity on your VM as identified in the request body by the value `{"identity":{"type":"SystemAssigned"}` for a VM named *myVM*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
    
    > [!IMPORTANT]
-   > Annak érdekében, ne törölje az összes meglévő, felhasználó által hozzárendelt felügyelt identitások, a virtuális géphez hozzárendelt, fel kell felügyelt felhasználó által hozzárendelt identitások a következő CURL-paranccsal: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Ha rendelkezik ilyennel a felhasználó által hozzárendelt felügyelt-e a virtuális géphez hozzárendelt identitások a `identity` értéke a válaszban, folytassa a 3. lépés, amely bemutatja, hogyan megőrizheti a felhasználó által hozzárendelt felügyelt identitások miközben a rendszer által hozzárendelt felügyelt identitás, a virtuális Gépen.
+   > To ensure you don't delete any existing user-assigned managed identities that are assigned to the VM, you need to list the user-assigned managed identities by using this CURL command: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. If you have any user-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 3 that shows you how to retain user-assigned managed identities while enabling system-assigned managed identity on your VM.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -168,14 +168,14 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
    
-   **Kérelem törzse**
+   **Request body**
     
    ```JSON
     {  
@@ -185,13 +185,13 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
     }
    ```
 
-3. Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás a virtuális gép a meglévő felügyelt identitások felhasználó által hozzárendelt, hozzá kell `SystemAssigned` , a `type` értéket.  
+3. To enable system-assigned managed identity on a VM with existing user-assigned managed identities, you need to add `SystemAssigned` to the `type` value.  
    
-   Például, ha a virtuális gép rendelkezik a felügyelt felhasználó által hozzárendelt identitások `ID1` és `ID2` rendelve, és szeretne felügyelt identitás alapértelmezett hozzáadni a virtuális Gépet, a következő CURL-hívást használja. Cserélje le `<ACCESS TOKEN>` és `<SUBSCRIPTION ID>` a környezetnek megfelelő értékekkel.
+   For example, if your VM has the user-assigned managed identities `ID1` and `ID2` assigned to it, and you would like to add system-assigned managed identity to the VM, use the following CURL call. Replace `<ACCESS TOKEN>` and `<SUBSCRIPTION ID>` with values appropriate to your environment.
 
-   API-verzió `2018-06-01` tárolja a felhasználó által hozzárendelt felügyelt identitások a `userAssignedIdentities` értéke egy szótár formátumú, nem pedig a `identityIds` értéke egy tömb formátumú API-verzióban használt `2017-12-01`.
+   API version `2018-06-01` stores user-assigned managed identities in the `userAssignedIdentities` value in a dictionary format as opposed to the `identityIds` value in an array format used in API version `2017-12-01`.
    
-   **API-VERZIÓ 2018-06-01**
+   **API VERSION 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -200,14 +200,14 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {  
@@ -225,7 +225,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
     }
    ```
 
-   **API-VERZIÓ 2017-12-01**
+   **API VERSION 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -235,14 +235,14 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
     
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {  
@@ -256,20 +256,20 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
     }
    ```   
 
-### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Tiltsa le a rendszer által hozzárendelt felügyelt identitás Azure virtuális gépből
+### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Disable system-assigned managed identity from an Azure VM
 
-A virtuális gép felügyelt identitás alapértelmezett letiltásához a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés.  Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
+To disable system-assigned managed identity on a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
 
-1. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Frissítse a virtuális Gépet az Azure Resource Manager REST-végpont hívja a CURL használatával felügyelt identitás alapértelmezett letiltása.  A következő példa letiltja a rendszer által hozzárendelt felügyelt identitás, a kérelem törzsében szereplő értéke által meghatározott `{"identity":{"type":"None"}}` nevű virtuális gépből *myVM*.  Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+2. Update the VM using CURL to call the Azure Resource Manager REST endpoint to disable system-assigned managed identity.  The following example disables system-assigned managed identity as identified in the request body by the value `{"identity":{"type":"None"}}` from a VM named *myVM*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
 
    > [!IMPORTANT]
-   > Annak érdekében, ne törölje az összes meglévő, felhasználó által hozzárendelt felügyelt identitások, a virtuális géphez hozzárendelt, fel kell felügyelt felhasználó által hozzárendelt identitások a következő CURL-paranccsal: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Ha rendelkezik ilyennel a felhasználó által hozzárendelt felügyelt-e a virtuális géphez hozzárendelt identitások a `identity` értéke a válaszban, folytassa a 3. lépés, amely bemutatja a felügyelt identitásokból felhasználó által hozzárendelt megőrzése a virtuális gép felügyelt identitás alapértelmezett letiltása közben.
+   > To ensure you don't delete any existing user-assigned managed identities that are assigned to the VM, you need to list the user-assigned managed identities by using this CURL command: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. If you have any user-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 3 that shows you how to retain user-assigned managed identities while disabling system-assigned managed identity on your VM.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -278,14 +278,14 @@ A virtuális gép felügyelt identitás alapértelmezett letiltásához a fiókn
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {  
@@ -295,39 +295,39 @@ A virtuális gép felügyelt identitás alapértelmezett letiltásához a fiókn
     }
    ```
 
-   Egy virtuális gépet, amely felhasználó által hozzárendelt felügyelt identitások felügyelt identitás alapértelmezett eltávolításához távolítsa el `SystemAssigned` származó a `{"identity":{"type:" "}}` értéket, miközben megtartja a `UserAssigned` érték és a `userAssignedIdentities` szótár értékek használata **API-verzió a 2018-06-01**. Ha használ **API 2017-12-01-es verzió** vagy korábbi, hagyja a `identityIds` tömb.
+   To remove system-assigned managed identity from a virtual machine that has user-assigned managed identities, remove `SystemAssigned` from the `{"identity":{"type:" "}}` value while keeping the `UserAssigned` value and the `userAssignedIdentities` dictionary values if you are using **API version 2018-06-01**. If you are using **API version 2017-12-01** or earlier, keep the `identityIds` array.
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>User-assigned managed identity
 
-Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhasználó által hozzárendelt felügyelt identitás-beli virtuális gépen az Azure Resource Manager REST-végponton való meghíváshoz a CURL használatával.
+In this section, you learn how to add and remove user-assigned managed identity on an Azure VM using CURL to make calls to the Azure Resource Manager REST endpoint.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy Azure virtuális gép létrehozása során
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Assign a user-assigned managed identity during the creation of an Azure VM
 
-A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális Gépet, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseket. Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
+To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
 
-1. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Hozzon létre egy [hálózati adapter](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) a virtuális géphez:
+2. Create a [network interface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) for your VM:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+3. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Az itt található utasításokat követve felügyelt felhasználó által hozzárendelt identitás létrehozása: [Hozzon létre egy felhasználó által hozzárendelt felügyelt identitás](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Create a user-assigned managed identity using the instructions found here: [Create a user-assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Hozzon létre egy virtuális Gépet a CURL használatával az Azure Resource Manager REST-végpont meghívására. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* erőforráscsoportban *myResourceGroup* felügyelt felhasználó által hozzárendelt identitással `ID1`, a kérelem törzsében szereplő értékeáltalmeghatározott`"identity":{"type":"UserAssigned"}`. Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+5. Create a VM using CURL to call the Azure Resource Manager REST endpoint. The following example creates a VM named *myVM* in the resource group *myResourceGroup* with a user-assigned managed identity `ID1`, as identified in the request body by the value `"identity":{"type":"UserAssigned"}`. Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
  
-   **API-VERZIÓ 2018-06-01**
+   **API VERSION 2018-06-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -337,14 +337,14 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {  
@@ -408,7 +408,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 
    ```
   
-   **API-VERZIÓ 2017-12-01**
+   **API VERSION 2017-12-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -418,14 +418,14 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -488,19 +488,19 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     }
    ```
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy meglévő Azure virtuális Gépen
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Assign a user-assigned managed identity to an existing Azure VM
 
-A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális Gépet, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseket. Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
+To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
 
-1. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2.  Az itt található utasításokat követve felügyelt felhasználó által hozzárendelt identitás létrehozása [felügyelt felhasználó által hozzárendelt identitás létrehozása](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+2.  Create a user-assigned managed identity using the instructions found here, [Create a user-assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. Annak érdekében, ne törölje a meglévő felhasználói vagy rendszer által hozzárendelt felügyelt identitások a virtuális géphez hozzárendelt, fel kell a következő CURL-parancs használatával a virtuális géphez hozzárendelt identitás típusát. A virtuálisgép-méretezési csoporthoz hozzárendelt identitások rendelkezik felügyelt, ha szerepelnek a a `identity` értéket.
+3. To ensure you don't delete existing user or system-assigned managed identities that are assigned to the VM, you need to list the identity types assigned to the VM by using the following CURL command. If you have managed identities assigned to the virtual machine scale set, they are listed under in the `identity` value.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -509,19 +509,19 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    ```HTTP
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.
 
-    Ha a felhasználó vagy a virtuális géphez hozzárendelt, a rendszer által hozzárendelt felügyelt identitások a `identity` értéke a válaszban, ugorjon az 5. lépés, amely bemutatja, hogyan a rendszer által hozzárendelt felügyelt identitás megőrzéséhez a felhasználó által hozzárendelt felügyelt identitás hozzáadása során a virtuális gép.
+    If you have any user or system-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 5 that shows you how to retain the system-assigned managed identity while adding a user-assigned managed identity on your VM.
 
-4. Ha nem rendelkezik a virtuális Géphez rendelt felügyelt felhasználó által hozzárendelt identitások, az első felhasználóhoz felügyelt identitásnak hozzárendelése a virtuális gép az Azure Resource Manager REST-végpont meghívása a következő CURL-parancs használatával.
+4. If you don't have any user-assigned managed identities assigned to your VM, use the following CURL command to call the Azure Resource Manager REST endpoint to assign the first user-assigned managed identity to the VM.
 
-   Az alábbi példák rendeli hozzá a felhasználó által hozzárendelt felügyelt identitást, `ID1` nevű virtuális géphez *myVM* erőforráscsoportban *myResourceGroup*.  Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
+   The following examples assigns a user-assigned managed identity, `ID1` to a VM named *myVM* in the resource group *myResourceGroup*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
 
-   **API-VERZIÓ 2018-06-01**
+   **API VERSION 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -530,14 +530,14 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        |
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        |
  
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -552,7 +552,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     }
    ```
 
-   **API-VERZIÓ 2017-12-01**
+   **API VERSION 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -562,14 +562,14 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
    
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -582,13 +582,13 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     }
    ```
 
-5. Ha rendelkezik egy meglévő felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitás a virtuális Géphez rendelt:
+5. If you have an existing user-assigned or system-assigned managed identity assigned to your VM:
    
-   **API-VERZIÓ 2018-06-01**
+   **API VERSION 2018-06-01**
 
-   Adja hozzá a felhasználóhoz felügyelt identitásnak a `userAssignedIdentities` szótár értéket.
+   Add the user-assigned managed identity to the `userAssignedIdentities` dictionary value.
     
-   Például, ha a rendszer által hozzárendelt felügyelt identitás és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez hozzárendelt, és szeretne hozzáadni a felhasználóhoz felügyelt identitásnak `ID2` hozzá:
+   For example, if you have system-assigned managed identity and the user-assigned managed identity `ID1` currently assigned to your VM and would like to add the user-assigned managed identity `ID2` to it:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -598,14 +598,14 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -623,11 +623,11 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     }
    ```
 
-   **API-VERZIÓ 2017-12-01**
+   **API VERSION 2017-12-01**
 
-   Felügyelt felhasználó által hozzárendelt identitások ne szeretné megőrizni a `identityIds` tömb értéket az új felhasználóhoz felügyelt identitásnak hozzáadása során.
+   Retain the user-assigned managed identities you would like to keep in the `identityIds` array value while adding the new user-assigned managed identity.
 
-   Például, ha a rendszer által hozzárendelt felügyelt identitás és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez hozzárendelt, és szeretne hozzáadni a felhasználóhoz felügyelt identitásnak `ID2` hozzá: 
+   For example, if you have system-assigned managed identity and the user-assigned managed identity `ID1` currently assigned to your VM and would like to add the user-assigned managed identity `ID2` to it: 
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -637,14 +637,14 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -658,17 +658,17 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     }
    ```   
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Távolítsa el a felhasználó által hozzárendelt felügyelt identitás Azure virtuális gépből
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Remove a user-assigned managed identity from an Azure VM
 
-Egy felhasználó által hozzárendelt identitással virtuális Géphez való eltávolításához a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés.
+To remove a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.
 
-1. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Annak érdekében, ne törölje a meglévő felhasználó által hozzárendelt felügyelt identitást, adja meg a virtuális géphez hozzárendelt megtartani, vagy távolítsa el a rendszer által hozzárendelt felügyelt identitás, fel kell a felügyelt identitások használatával a következő CURL-parancsot: 
+2. To ensure you don't delete any existing user-assigned managed identities that you would like to keep assigned to the VM or remove the system-assigned managed identity, you need to list the managed identities by using the following CURL command: 
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -678,20 +678,20 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.
  
-   Ha a virtuális géphez hozzárendelt identitások rendelkezik felügyelt, ezek a válaszban szereplő jelennek az `identity` érték.
+   If you have managed identities assigned to the VM, they are listed in the response in the `identity` value.
 
-   Például, ha a felhasználó által hozzárendelt felügyelt identitások rendelkezik `ID1` és `ID2` a virtuális géphez hozzárendelt, és csak szeretné megőrizni `ID1` hozzárendelve, és a rendszer által hozzárendelt identitás megőrzése:
+   For example, if you have user-assigned managed identities `ID1` and `ID2` assigned to your VM, and you only want to keep `ID1` assigned and retain the system-assigned identity:
    
-   **API-VERZIÓ 2018-06-01**
+   **API VERSION 2018-06-01**
 
-   Adjon hozzá `null` felügyelt identitás, amelyet szeretne eltávolítani a felhasználó által hozzárendelt:
+   Add `null` to the user-assigned managed identity you would like to remove:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -701,14 +701,14 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -721,9 +721,9 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
     }
    ```
 
-   **API-VERZIÓ 2017-12-01**
+   **API VERSION 2017-12-01**
 
-   Csak a felhasználó által hozzárendelt identity(s) szeretné tartani felügyelt megőrizni a `identityIds` tömb:
+   Retain only the user-assigned managed identity(s) you would like to keep in the `identityIds` array:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -733,14 +733,14 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Request headers**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+   |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+   |*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.        | 
 
-   **Kérelem törzse**
+   **Request body**
 
    ```JSON
     {
@@ -753,7 +753,7 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
     }
    ```
 
-Ha a virtuális gép rendelkezik, mindkét rendszer által hozzárendelt, és a felügyelt identitásokból felhasználó által hozzárendelt, eltávolíthatja az összes felhasználó által hozzárendelt felügyelt identitások közötti váltás csak alapértelmezett felügyelt identitás használatára a következő paranccsal:
+If your VM has both system-assigned and user-assigned managed identities, you can remove all the user-assigned managed identities by switching to use only system-assigned managed identity using the following command:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -763,14 +763,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérelem fejlécei**
+**Request headers**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-|*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+|*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+|*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token. | 
 
-**Kérelem törzse**
+**Request body**
 
 ```JSON
 {
@@ -780,7 +780,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
     
-Ha a virtuális gép rendelkezik felügyelt identitások csak felhasználó által hozzárendelt, és szeretné eltávolítani az összes, a következő paranccsal:
+If your VM has only user-assigned managed identities and you would like to remove them all, use the following command:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -790,14 +790,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérelem fejlécei**
+**Request headers**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-|*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.| 
+|*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
+|*Engedélyezés*     | Kötelező. Set to a valid `Bearer` access token.| 
 
-**Kérelem törzse**
+**Request body**
 
 ```JSON
 {
@@ -807,8 +807,8 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Létrehozása, listázása és törlése a felhasználó által hozzárendelt felügyelt identitások REST használatával kapcsolatos információkért lásd:
+For information on how to create, list, or delete user-assigned managed identities using REST see:
 
-- [Lista létrehozása, vagy egy REST API-hívások segítségével felügyelt felhasználó által hozzárendelt Identitások törlése](how-to-manage-ua-identity-rest.md)
+- [Create, list or delete a user-assigned managed identities using REST API calls](how-to-manage-ua-identity-rest.md)

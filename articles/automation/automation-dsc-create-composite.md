@@ -1,7 +1,7 @@
 ---
-title: Konfigurációk konvertálása összetett erőforrásokra az állapot konfigurálásához – Azure Automation
-description: Megtudhatja, hogyan alakíthatja át a konfigurációkat összetett erőforrásokra az Azure Automation állapotának konfigurálásához.
-keywords: DSC, PowerShell, konfigurálás, beállítás
+title: Convert configurations to composite resources for state configuration - Azure Automation
+description: Learn how to convert configurations to composite resources for state configuration in Azure Automation.
+keywords: dsc,powershell,configuration,setup
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,53 +10,53 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d830b8e27bb6f66a533b8106cbec53eeca4ca139
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 85c13a7175bca015ab24c8b09500b47e3ea846ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970719"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231653"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Konfigurációk átalakítása összetett erőforrásokká
 
-> A következőkre vonatkozik: Windows PowerShell 5,1
+> Applies To: Windows PowerShell 5.1
 
-A konfigurációk létrehozási lépéseinek megkezdése után gyorsan létrehozhat olyan "forgatókönyveket", amelyek a beállítások csoportjait kezelik.
-Ilyenek például a következők:
+Once you get started authoring configurations, you can quickly create "scenarios" that manage groups of settings.
+Examples would be:
 
-- webkiszolgáló létrehozása
-- DNS-kiszolgáló létrehozása
-- SharePoint-kiszolgáló létrehozása
-- SQL-fürt konfigurálása
-- tűzfalbeállítások kezelése
-- jelszavas beállítások kezelése
+- create a web server
+- create a DNS server
+- create a SharePoint server
+- configure a SQL cluster
+- manage firewall settings
+- manage password settings
 
-Ha szeretné megosztani másokkal a munkát, a legjobb megoldás a konfiguráció [összetett erőforrásként](/powershell/dsc/resources/authoringresourcecomposite)való csomagolása.
-Az összetett erőforrások első alkalommal történő létrehozása rendkívül nagy lehet.
+If you are interested in sharing this work with others, the best option is to package the configuration as a [Composite Resource](/powershell/scripting/dsc/resources/authoringresourcecomposite).
+Creating composite resources for the first time can be overwhelming.
 
 > [!NOTE]
-> Ez a cikk egy olyan megoldásra utal, amelyet a nyílt forráskódú közösség tart fenn.
-> A támogatás csak GitHub-együttműködés formájában érhető el, nem a Microsofttól.
+> This article refers to a solution that is maintained by the Open Source community.
+> Support is only available in the form of GitHub collaboration, not from Microsoft.
 
-## <a name="community-project-compositeresource"></a>Közösségi projekt: CompositeResource
+## <a name="community-project-compositeresource"></a>Community project: CompositeResource
 
-A probléma megoldásához létrehozott egy [CompositeResource](https://github.com/microsoft/compositeresource) nevű közösségi karbantartó megoldást.
+A community maintained solution named [CompositeResource](https://github.com/microsoft/compositeresource) has been created to resolve this challenge.
 
-A CompositeResource automatizálja a konfigurációban egy új modul létrehozásának folyamatát.
-Első lépésként [](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) a (z) (vagy Build kiszolgáló) konfigurációs parancsfájl beszerzése a munkaállomáson, hogy be legyen töltve a memóriában.
-Ezután ahelyett, hogy a konfigurációt futtatja egy MOF-fájl létrehozásához, használja a CompositeResource modul által biztosított funkciót az átalakítás automatizálásához.
-A parancsmag betölti a konfiguráció tartalmát, lekéri a paraméterek listáját, és létrehoz egy új modult, amire szüksége van.
+CompositeResource automates the process of creating a new module from your configuration.
+You start by [dot sourcing](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) the configuration script on your workstation (or build server) so it is loaded in memory.
+Next, rather than running the configuration to generate a MOF file, use the function provided by the CompositeResource module to automate a conversion.
+The cmdlet will load the contents of your configuration, get the list of parameters, and generate a new module with everything you need.
 
-Miután létrehozta a modult, megnövelheti a verziót, és hozzáadhat kibocsátási megjegyzéseket minden alkalommal, amikor módosításokat végez, és közzéteszi azt a saját [PowerShellGet](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)-adattárában.
+Once you have generated a module, you can increment the version and add release notes each time you make changes and publish it to your own [PowerShellGet repository](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
 
-Miután létrehozta a konfigurációját (vagy több konfigurációját) tartalmazó összetett erőforrás-modult, használhatja azokat az Azure-ban a készíthető [authoring Experience](/azure/automation/compose-configurationwithcompositeresources) -ben, vagy hozzáadhatja őket a [DSC konfigurációs PARANCSFÁJLJAIhoz](/powershell/dsc/configurations/configurations) a MOF-fájlok létrehozásához és [töltse fel a MOF-fájlokat](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)a Azure Automationba.
-Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekéréséhez.
-A projekt legújabb frissítése [runbookok](https://www.powershellgallery.com/packages?q=DscGallerySamples) is közzétett a Azure Automation számára, hogy automatizálja a konfigurációk importálásának folyamatát a PowerShell-galériaból.
+Once you have create a composite resource module containing your configuration (or multiple configurations), you can use them in the [Composable Authoring Experience](/azure/automation/compose-configurationwithcompositeresources) in Azure, or add them to [DSC Configuration scripts](/powershell/scripting/dsc/configurations/configurations) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
+The latest update to the project has also published [runbooks](https://www.powershellgallery.com/packages?q=DscGallerySamples) for Azure Automation to automate the process of importing configurations from the PowerShell Gallery.
 
-A DSC-hez készült összetett erőforrások létrehozásának automatizálásához látogasson el a [PowerShell-galériare](https://www.powershellgallery.com/packages/compositeresource/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/compositeresource)megtekintéséhez.
+To try out automating creation of composite resources for DSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/compositeresource/) and download the solution or click "Project Site" to view the [documentation](https://github.com/microsoft/compositeresource).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/dsc/overview/overview)
-- [DSC-erőforrások](/powershell/dsc/resources/resources)
-- [A helyi Configuration Manager konfigurálása](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration Overview](/powershell/scripting/dsc/overview/overview)
+- [DSC Resources](/powershell/scripting/dsc/resources/resources)
+- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)

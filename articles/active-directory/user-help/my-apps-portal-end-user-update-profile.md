@@ -1,6 +1,6 @@
 ---
-title: Profil és fiók frissítése a saját alkalmazások portálon – Azure AD
-description: Megtudhatja, hogyan frissítheti a profilját és munkahelyi vagy iskolai fiókjának adatait, beleértve a jelszó módosítását, a jelszó-visszaállítás bekapcsolását, a biztonsági ellenőrzési módszerek frissítését, a szervezet használati feltételeinek megállapítását, és kijelentkezését bárhol bejelentkezett munkahelyi vagy iskolai fiókjával.
+title: Update profile & account info from the My Apps portal - Azure AD
+description: Learn how to update your profile and your work or school account information, including changing your password, turning on password reset, updating your security verification methods, viewing your organization's terms of use statement, and signing out of everywhere you've signed in using your work or school account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,131 +13,131 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820382"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233170"
 ---
-# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
+# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Update your profile and work or school account information on the My Apps portal
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **: alkalmazások és csoportok hozzáférési felülvizsgálatai** . Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+You can use your work or school account with the web-based **My Apps** portal, to view and start many of your organization’s cloud-based apps, to update some of your profile and account information, to see your **Groups** information, and to perform **access reviews** for your apps and groups. If you don’t have access to the **My Apps** portal, you must contact your Helpdesk for permission.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ezek az anyagok felhasználók számára készültek. If you're an administrator, you can find more information about how to set up and manage your cloud-based apps in the [Application Management Documentation](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="view-your-organization-related-profile-information"></a>A szervezettel kapcsolatos profil adatainak megtekintése
+## <a name="view-your-organization-related-profile-information"></a>View your organization-related profile information
 
-Attól függően, hogy a szervezet mit választott a **saját alkalmazások** portál **profil** oldalán, megtekintheti az adott munkával kapcsolatos részleteket, valamint az eszközöket és a tevékenységeket, valamint minden további szervezetet, amelyhez Ön is tartozik.
+Depending on what your organization has chosen to include on your **Profile** page of the **My Apps** portal, you might see your specific work-related details, along with your devices and activity, and any additional organizations to which you belong.
 
-### <a name="to-view-your-profile-information"></a>A profil adatainak megtekintése
+### <a name="to-view-your-profile-information"></a>To view your profile information
 
-1. Jelentkezzen be munkahelyi vagy iskolai fiókjába, [lépjen a **saját alkalmazások** portálra](my-apps-portal-end-user-access.md).
+1. Sign in to your work or school account, [go to the **My Apps** portal](my-apps-portal-end-user-access.md).
 
-2. Az **alkalmazások** lapon válassza ki a profil képét a jobb felső sarokban, ahol a nevét és a szervezetét, majd válassza a **profil**lehetőséget.
+2. From the **Apps** page, select your profile picture from the upper-right corner, where it says your name and your organization, and then select **Profile**.
 
-    Megjelenik a **profil lap, amely megjeleníti a profil** adatait.
+    The **Profile** page appears, showing your profile information.
 
-    ![Profil lap, amely az összes rendelkezésre álló információt megjeleníti](media/my-apps-portal/my-apps-portal-profile-page.png)
+    ![Profile page, showing all of the available information](media/my-apps-portal/my-apps-portal-profile-page.png)
 
-3. A **profil** lapon a következőket teheti:
+3. From the **Profile** page, you can:
 
-    - **Tekintse át a szervezettel kapcsolatos részleteket.** Megtekintheti a fényképet, a nevet, a címet, a társított e-mail-címeket és az Office-információkat. Ezeket az információkat a szervezet felügyeli, és nem fogja tudni módosítani. Ha hibát tapasztal, forduljon az ügyfélszolgálathoz.
+    - **Review your organization-related details.** View your photo, name, title, associated email addresses, and office information. This information is managed by your organization and you won't be able to change it. If you see an error, contact your Helpdesk.
 
-    - **Tekintse át az eszközöket & tevékenységgel**. Győződjön meg arról, hogy minden eszköz ismerős és megfelelően van csatlakoztatva a szervezethez. Ha nem ismeri fel az eszközt, válassza az **eszköz letiltása** elemet a fiókkal való társítás eltávolításához. Miután letiltotta az eszközt, a rendszer eltávolítja az oldalról.
+    - **Review your Devices & activity**. Make sure each device is familiar and properly connected to your organization. If you don’t recognize a device, select **Disable device** to remove the association with your account. After you disable a device, it’s removed from this page.
 
-    - **Tekintse át a szervezeteket.** Győződjön meg arról, hogy továbbra is együttműködik a megadott szervezetekkel. Ha már nem dolgozik szervezettel, javasoljuk, hogy válassza a **bejelentkezés lehetőséget a szervezet elhagyásához**. A szervezet elhagyása után a rendszer eltávolítja az oldalról.
+    - **Review your Organizations.** Make sure that you still work with each of the specified organizations. If you no longer work with an organization, we highly recommend that you select **Sign in to leave organization**. After you leave the organization, it’s removed from this page.
 
-## <a name="manage-your-work-or-school-account-information"></a>Munkahelyi vagy iskolai fiók adatainak kezelése
+## <a name="manage-your-work-or-school-account-information"></a>Manage your work or school account information
 
-Frissítse és kezelje munkahelyi vagy iskolai fiókja adatait a **saját alkalmazások** portál **profil** lapján. Ez az oldal a következőket segíti:
+Update and manage your work or school account information from the **Profile** page of the **My Apps** portal. This page helps you to:
 
-- Módosítsa munkahelyi vagy iskolai fiókja jelszavát.
+- Change your work or school account password.
 
-- Jelszó-visszaállítás bekapcsolása (ha a rendszergazda bekapcsolta ezt a funkciót).
+- Turn on password reset (if your administrator has turned on this feature).
 
-- További biztonsági ellenőrzési információk megadása.
+- Provide additional security verification information.
 
-- Tekintse át a szervezet használati feltételeit.
+- Review your organization’s terms of use.
 
-- Jelentkezzen ki mindenhol.
+- Sign out of everywhere.
 
 ## <a name="change-your-password"></a>Jelszó módosítása
 
-Ha módosítani szeretné a munkahelyi vagy iskolai fiókjához tartozó jelszót, akkor a **profil** **kezelése lap fiók** területén válassza a **jelszó módosítása** lehetőséget.
+If you want to change the password for your work or school account, you can select **Change password** from the **Manage account** area of the **Profile** page.
 
-### <a name="to-change-your-password"></a>A jelszó módosítása
+### <a name="to-change-your-password"></a>To change your password
 
-1. A profil **kezelése lap fiók** területén válassza a **jelszó módosítása**lehetőséget.
+1. From the **Manage account** area of the **Profile** page, select **Change password**.
 
-2. A **jelszó módosítása** lapon ellenőrizze, hogy helyes-e a felhasználói azonosító, majd írja be a régi jelszót és az új jelszót a mezőkbe.
+2. On the **Change password** page, make sure your User ID is correct, and then type your old password and your new password into the boxes.
 
-    ![Jelszó módosítása lap](media/my-apps-portal/my-apps-portal-change-password-page.png)
+    ![Change password page](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Válassza a **Küldés**lehetőséget.
+3. Select **Submit**.
 
-    A jelszó módosítása megtörténik. Be kell jelentkeznie minden olyan alkalmazásba, amelyre korábban bejelentkezett a munkahelyi vagy iskolai fiókjával.
+    Your password is changed. You’ll be required to sign-in to any apps you’ve previously signed in to using your work or school account.
 
-## <a name="set-up-and-use-password-reset"></a>Jelszó-visszaállítás beállítása és használata
+## <a name="set-up-and-use-password-reset"></a>Set up and use password reset
 
-Ha elfelejtette a jelszavát, soha nem kapta meg a cég informatikai támogatási szolgálatát, vagy a fiókját kizárták, visszaállíthatja a saját jelszavát.
+If you forgot your password, never got one from your company support, or have been locked out of your account, you can reset your own password.
 
 >[!Important]
->A rendszergazdának be kell kapcsolnia ezt a funkciót, és regisztrálnia kell a részvételhez. A jelszó regisztrálásával és alaphelyzetbe állításával kapcsolatos további információkért lásd: [regisztráció az önkiszolgáló jelszó-visszaállításhoz](active-directory-passwords-reset-register.md) és [a munkahelyi vagy iskolai jelszavának alaphelyzetbe](active-directory-passwords-update-your-own-password.md)állítása.
+>Your administrator must turn on this feature and you must register to participate. For details about how to register and how to reset your password, see [Register for self-service password reset](active-directory-passwords-reset-register.md) and [Reset your work or school password](active-directory-passwords-update-your-own-password.md).
 
-## <a name="change-your-security-verification-information"></a>Biztonsági ellenőrzési információk módosítása
+## <a name="change-your-security-verification-information"></a>Change your security verification information
 
-Ha a szervezete megköveteli a kétfaktoros ellenőrzés használatát, a **további biztonsági ellenőrzés** lapon hozzáadhatja, frissítheti és törölheti a kapcsolódó biztonsági információkat.
+If your organization requires you to use two-factor verification, you can add, update, and delete your associated security information from the **Additional security verification** page.
 
-A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és PIN-kódot kell használnia, mielőtt beolvassa a fiókját vagy a szervezete adatait. A kétfaktoros ellenőrzéssel kapcsolatos további információkért lásd: [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md).
+Two-factor verification requires you to use two pieces of verification info, like a password and a PIN, before you can get to your account or to your organization’s information. For more information about two-factor verification, see [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md).
 
-### <a name="to-change-your-security-information"></a>Biztonsági adatok módosítása
+### <a name="to-change-your-security-information"></a>To change your security information
 
-1. A **profil** lapon a **kezelés fiók** területen válassza a **további biztonsági ellenőrzés**lehetőséget.
+1. From the **Manage account** area of the **Profile** page, select **Additional security verification**.
 
-    ![További biztonsági ellenőrzés oldal](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
+    ![Additional security verification page](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
 
-2. A **további biztonsági ellenőrzés** oldalon a következő információkat adhatja hozzá, módosíthatja vagy törölheti:
+2. On the **Additional security verification** page, you can add, change, or delete the following information:
 
-    - **Alapértelmezett ellenőrzési beállítás.** Válassza ki a kétfaktoros ellenőrzéshez használandó alapértelmezett másodlagos módszert. Ezt a módszert automatikusan használja a rendszer, amikor a Felhasználónév és a jelszó megadását követően a kétfaktoros ellenőrzésre van szükség.
+    - **Default verification option.** Select the default secondary method to use for two-factor verification. This method is automatically used any time two-factor verification is required after you enter your username and password.
 
-    - **Ellenőrzési módszerek hozzáadása, frissítése vagy eltávolítása.** Hozzáadhat új, meglévő frissítést, vagy törölhet régi adatokat, amelyek már nem érvényesek.
+    - **Add, update, or remove verification methods.** You can add new, update existing, or delete old information that no longer applies.
 
-    - **A Microsoft Authenticator alkalmazás beállítása.** Beállíthatja, hogy a Microsoft Authenticator alkalmazás az ellenőrzési módszerként működjön. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md)
+    - **Set up the Microsoft Authenticator app.** You can choose to set up the Microsoft Authenticator app to work as your verification method. For more information about the Microsoft Authenticator app, see [What is the Microsoft Authenticator app?](user-help-auth-app-overview.md)
 
-3. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+3. Select **Save** to save your changes.
 
-## <a name="review-your-organizations-terms-of-use-statement"></a>Tekintse át a szervezet használati feltételeinek utasításait
+## <a name="review-your-organizations-terms-of-use-statement"></a>Review your organization’s terms of use statement
 
-Dönthet úgy, hogy megtekinti a szervezet használati feltételeinek nyilatkozatát, ha az elérhető.
+You can choose to review your organization’s terms of use statement, if it’s available.
 
-1. A profil **kezelése lap fiók** területén válassza a **használati feltételek áttekintése**elemet.
+1. From the **Manage account** area of the **Profile** page, select **Review terms of use**.
 
-2. Tekintse át a szervezet használati feltételeit, és válassza az **elfogadás** lehetőséget, és erősítse meg, hogy elolvasta és megértette a szervezet használati feltételeit.
+2. Review your organization's terms of use and select **Accept** to confirm that you've read and understood the terms of use for your organization.
 
-    ![Használati feltételek lap a saját alkalmazások portálján](media/my-apps-portal/my-apps-portal-tou-page.png)
+    ![Terms of use page from the My Apps portal](media/my-apps-portal/my-apps-portal-tou-page.png)
 
-    Ha a szervezet nem rendelkezik használati feltételekkel, akkor a **kész** gombra kattintva térhet vissza a **profil** laphoz.
+    If your organization doesn't have a terms of use, you can select **Done** to return to the **Profile** page.
 
-## <a name="sign-out-of-everywhere"></a>Kijelentkezés mindenhol
+## <a name="sign-out-of-everywhere"></a>Sign out of everywhere
 
-Dönthet úgy is, hogy kijelentkezik a saját munkahelyi vagy iskolai fiókjával. Ebbe beletartozik az összes alkalmazás és eszköz.
+You can choose to sign out of everywhere you’re currently signed in to using your work or school account. This includes all apps and devices.
 
-### <a name="to-sign-out-of-everywhere"></a>Kijelentkezés mindenhol
+### <a name="to-sign-out-of-everywhere"></a>To sign out of everywhere
 
-1. A **profil** lap **kezelés fiók** területén válassza a **kijelentkezés mindenhol**lehetőséget.
+1. From the **Manage account** area of the **Profile** page, select **Sign out everywhere**.
 
-2. A **kijelentkezés bárhová** megerősítő mezőben válassza az **Igen** lehetőséget annak megerősítéséhez, hogy ki szeretné jelentkezni az összes munkamenetből és eszközről. Ha meggondolja magát, válassza a **nem** lehetőséget.
+2. In the **Sign out everywhere** confirmation box, select **Yes** to confirm that you want to sign out of all your sessions and devices. Select **No** if you change your mind.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután befejezte a frissítéseket a **profil** lapon, a következőket teheti:
+After you finish your updates on the **Profile** page, you can:
 
-- [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
+- [Access and use apps on the My Apps portal](my-apps-portal-end-user-access.md).
 
-- [A csoportok kapcsolódó információinak megtekintése és frissítése](my-apps-portal-end-user-groups.md).
+- [View and update your groups-related information](my-apps-portal-end-user-groups.md).
 
-- [Saját hozzáférési felülvizsgálatok végrehajtása](my-apps-portal-end-user-access-reviews.md).
+- [Perform your own access reviews](my-apps-portal-end-user-access-reviews.md).

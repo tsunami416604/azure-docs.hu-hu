@@ -69,6 +69,8 @@
       href: ddos-protection-overview.md
     - name: Alhálózati bővítmény
       href: subnet-extension.md
+    - name: Alhálózat delegálása
+      href: subnet-delegation-overview.md
     - name: Háttérkapcsolat együttműködési lehetőségei
       items:
         - name: Előtag- és tesztbeállítások

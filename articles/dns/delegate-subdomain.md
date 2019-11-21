@@ -1,73 +1,73 @@
 ---
-title: Az Azure DNS-altartomány delegálása
-description: Learn how to delegate an Azure DNS subdomain.
+title: Delegate a subdomain - Azure DNS
+description: With this learning path, get started delegating an Azure DNS subdomain.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 462282e9674e7a253f61c96338b54174c80fb03f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790810"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212376"
 ---
-# <a name="delegate-an-azure-dns-subdomain"></a>Az Azure DNS-altartomány delegálása
+# <a name="delegate-an-azure-dns-subdomain"></a>Delegate an Azure DNS subdomain
 
-Az Azure portal segítségével egy DNS-altartomány delegálása. Például ha Ön a tulajdonosa a contoso.com tartományhoz, akkor is engedélyezheti – delegálja nevű altartomány *mérnöki* , egy másik zónához, amely a contoso.com zóna a külön-külön felügyelheti.
+You can use the Azure portal to delegate a DNS subdomain. For example, if you own the contoso.com domain, you can delegate a subdomain called *engineering* to another, separate zone that you can administer separately from the contoso.com zone.
 
-Igény szerint egy altartományt az delegálhatja [Azure PowerShell-lel](delegate-subdomain-ps.md).
+If you prefer, you can delegate a subdomain using [Azure PowerShell](delegate-subdomain-ps.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure DNS altartományában delegálni, először delegálnia kell az Azure DNS nyilvános tartományát. Lásd: [tartomány delegálása az Azure DNS](./dns-delegate-domain-azure-dns.md) vonatkozó utasításokat a névkiszolgálókat a delegálás konfigurálása. Az Azure DNS-zónabeli tartományához delegált, miután az altartomány delegálhat.
+To delegate an Azure DNS subdomain, you must first delegate your public domain to Azure DNS. See [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
 
 > [!NOTE]
-> A contoso.com egész cikkben példaként szolgál. A contoso.com helyére írja be a saját tartománynevét.
+> Contoso.com is used as an example throughout this article. A contoso.com helyére írja be a saját tartománynevét.
 
 ## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
 
-Először hozza létre a zónát a **mérnöki** altartományt.
+First, create the zone for the **engineering** subdomain.
 
-1. Az Azure Portalon, válassza ki a **erőforrás létrehozása**.
-2. A Keresés mezőbe írja be a **DNS**, és válassza ki **DNS-zóna**.
+1. From the Azure portal, select **Create a resource**.
+2. In the search box, type **DNS**, and select **DNS zone**.
 3. Kattintson a **Létrehozás** gombra.
-4. Az a **DNS-zóna létrehozása** ablak, írja be **engineering.contoso.com** a a **neve** szövegmezőben.
-5. Válassza ki az erőforráscsoportot a zóna. Érdemes ugyanazt az erőforráscsoportot használja a szülőzónában hasonló erőforrások maradjon.
-6. Kattintson a **Create** (Létrehozás) gombra.
-7. Miután az üzembe helyezés sikeres, nyissa meg az új zóna.
+4. In the **Create DNS zone** pane, type **engineering.contoso.com** in the **Name** text box.
+5. Select the resource group for your zone. You might want to use the same resource group as the parent zone to keep similar resources together.
+6. Kattintson a  **Create** (Létrehozás) gombra.
+7. After the deployment succeeds, go to the new zone.
 
-## <a name="note-the-name-servers"></a>Vegye figyelembe a Névkiszolgálók
+## <a name="note-the-name-servers"></a>Note the name servers
 
 Next, note the four name servers for the engineering subdomain.
 
-Az a **mérnöki** zóna panelen jegyezze fel a négy névkiszolgálói nevet a zóna. Ezektől a névkiszolgálóktól később fogja használni.
+On the **engineering** zone pane, note the four name servers for the zone. You will use these name servers later.
 
-## <a name="create-a-test-record"></a>Test-rekord létrehozása
+## <a name="create-a-test-record"></a>Create a test record
 
-Hozzon létre egy **A** teszteléshez használni kívánt rekord. Hozzon létre például egy **www** A jegyezze fel, és állítsa be úgy a egy **10.10.10.10** IP-címet.
+Create an **A** record to use for testing. For example, create a **www** A record and configure it with a **10.10.10.10** IP address.
 
-## <a name="create-an-ns-record"></a>NS-rekord létrehozása
+## <a name="create-an-ns-record"></a>Create an NS record
 
-Ezután hozzon létre egy név névkiszolgáló (NS) rekordot a **mérnöki** zóna.
+Next, create a name server (NS) record  for the **engineering** zone.
 
-1. Keresse meg a szülő tartomány zónáját.
+1. Navigate to the zone for the parent domain.
 2. Kattintson a **+ Rekordhalmaz** gombra.
-3. Az a **rekordhalmaz hozzáadása** ablak, írja be **mérnöki** a a **neve** szövegmezőben.
-4. A **típus**válassza **NS**.
-5. A **névkiszolgáló**, írja be a négy névkiszolgálói nevet, amely a korábban rögzített a **mérnöki** zóna.
+3. On the **Add record set** pane, type **engineering** in the **Name** text box.
+4. For **Type**, select **NS**.
+5. Under **Name server**, enter the four name servers that you recorded previously from the **engineering** zone.
 6. Kattintson az **OK** gombra.
 
-## <a name="test-the-delegation"></a>A delegálás tesztelése
+## <a name="test-the-delegation"></a>Test the delegation
 
-Az nslookup követve tesztelheti a delegálást.
+Use nslookup to test the delegation.
 
-1. Nyisson meg egy PowerShell-ablakot.
-2. Írja be a parancssorba `nslookup www.engineering.contoso.com.`
-3. Ekkor kap egy nem mérvadó válasz, a cím megjelenítése **10.10.10.10**.
+1. Open a PowerShell window.
+2. At command prompt, type `nslookup www.engineering.contoso.com.`
+3. You should receive a non-authoritative answer showing the address **10.10.10.10**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [fordított DNS az Azure-ban üzemeltetett szolgáltatások konfigurálása](dns-reverse-dns-for-azure-services.md).
+Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).

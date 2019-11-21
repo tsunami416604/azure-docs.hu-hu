@@ -448,12 +448,12 @@
           href: control-flow-get-metadata-activity.md
         - name: If Condition tevékenység
           href: control-flow-if-condition-activity.md
-        - name: Tevékenységváltás
-          href: control-flow-switch-activity.md
         - name: Keresési tevékenység
           href: control-flow-lookup-activity.md
         - name: Változó tevékenység beállítása
           href: control-flow-set-variable-activity.md
+        - name: Tevékenységváltás
+          href: control-flow-switch-activity.md
         - name: Until tevékenység
           href: control-flow-until-activity.md
         - name: Érvényesítési tevékenység

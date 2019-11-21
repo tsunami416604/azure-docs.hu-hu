@@ -1,6 +1,6 @@
 ---
-title: Jelszó módosítása a saját fiók portálról – Azure Active Directory | Microsoft Docs
-description: Munkahelyi vagy iskolai fiók jelszavának módosítása a saját fiók portál jelszó módosítása lapján.
+title: Change your work or school account password - Azure AD
+description: Learn to change your work or school account password from the Change Password page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,48 +12,48 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4716ef932debe50bfe0aee6519b53e3a19e8d51
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587861"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231872"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a saját fiók portálján
+# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Change your work or school account password from the My Account portal
 
-A **saját fiók** portál **jelszó módosítása** lapján frissítheti a munkahelyi vagy iskolai fiók jelszavát. Ez csak akkor működik, ha ismeri a meglévő jelszavát, és ha nem zárja ki a fiókját.
+From the **Change password** page of the **My Account** portal, you can update your work or school account password. This will only work if you know your existing password and if you aren't locked out of your account.
 
-Ha nem emlékszik a jelszavára, ha már kizárta a fiókját, vagy ha soha nem kapott jelszót a céges támogatási csapattól, akkor a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a jelszót. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+If you don't remember your password, if you've been locked out of your account, or if you never got a password from your company support team, you can use your security info and your mobile device to reset your password. For more information, see [Reset your work or school password](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
 
 >[!Note]
->Ha olyan személyes fiókkal próbál visszakapni, mint például az Xbox, a hotmail.com vagy a outlook.com, próbálja meg a javaslatait, ha [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
+>If you're trying to get back into a personal account like for Xbox, hotmail.com, or outlook.com, try the suggestions in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>A saját fiók portál jelszavának módosítása
+## <a name="to-change-your-password-from-the-my-account-portal"></a>To change your password from the My Account portal
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába meglévő jelszava használatával, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Sign in to your work or school account, using your existing password, and then go to your https://myprofile.microsoft.com/ page.
 
-2. A bal oldali navigációs ablaktáblán válassza a **jelszó** lehetőséget, vagy kattintson a jelszó **módosítása** hivatkozásra a **jelszó** blokkban.
+2. Select **Password** from the left navigation pane or select the **Change password** link from the **Password** block.
 
-    ![Fiókom oldal, amely a Kiemelt jelszó hivatkozását mutatja](media/my-account-portal/my-account-portal-change-password.png)
+    ![My Account page, showing highlighted Change password link](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Írja be a régi jelszót, majd hozza létre és erősítse meg az új jelszót.
+3. Type your old password, and then create and confirm your new password.
 
-    ![Jelszó módosítása lap, amely megjeleníti a jelszó mezőket](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Change password page, showing password fields](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Válassza a **Küldés**lehetőséget.
+4. Select **Submit**.
 
-    A jelszó módosítva lesz, és a rendszer kérni fogja, hogy jelentkezzen be újra a munkahelyi vagy iskolai fiókjába.
+    Your password will be changed and you'll be asked to sign in to your work or school account again.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A jelszó módosítása után a következőket teheti:
+After changing your password, you can:
 
-- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
+- View or manage your [organizations](my-account-portal-organizations-page.md).
 
-- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

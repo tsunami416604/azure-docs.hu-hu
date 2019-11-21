@@ -1,6 +1,6 @@
 ---
-title: Létrehozása és közzététele az egyszeri bejelentkezés az alkalmazás dokumentációját
-description: Független szoftverszállítók, Azure Active Directoryval való integrálását ismertető útmutató
+title: Create & publish single sign-on documentation for your application
+description: Guidance for independent software vendors on integrating with Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,53 +12,53 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53221343ac606b6076cc9cc3cff6e0f96c1a3ac3
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659592"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232282"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Létrehozása és közzététele az egyszeri bejelentkezés az alkalmazás dokumentációját   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Create and publish single sign-on documentation for your application   
 
-## <a name="documentation-on-your-site"></a>A hely – dokumentáció
+## <a name="documentation-on-your-site"></a>Documentation on your site
 
-Bevezetési könnyű a nagyvállalati szoftverek döntések jelentős tényező. Törölje a jelet könnyen követhető dokumentációja a bevezetési folyamata az ügyfelek támogat, és csökkenti a támogatási költségeket. Több ezer olyan szoftvergyártók dolgozik, a Microsoft már eddig is mi működik.
+Ease of adoption is a significant factor in enterprise software decisions. Clear easy-to-follow documentation supports your customers in their adoption journey and reduces support costs. Working with thousands of software vendors, Microsoft has seen what works.
 
-Azt javasoljuk, hogy a hely minimális meg a dokumentációt tartalmazza-e a következő elemeket.
+We recommend that your documentation on your site at a minimum include the following items.
 
-* Az egyszeri bejelentkezés funkció bemutatása
+* Introduction to your SSO functionality
 
-  * Támogatott protokollok
+  * Protocols supported
 
-  * Verzió és a Termékváltozat
+  * Version and SKU
 
-  * Támogatott Identitásszolgáltatók listája a dokumentációra mutató hivatkozások
+  * Supported Identity Providers list with documentation links
 
-* Az alkalmazás licencelési információk
+* Licensing information for your application
 
-* Szerepköralapú hozzáférés-vezérlés egyszeri bejelentkezés konfigurálása
+* Role-based access control for configuring SSO
 
-* Egyszeri bejelentkezés konfigurációs lépések
+* SSO Configuration Steps
 
-  * A szolgáltató a várt értékekkel SAML felhasználói felületi konfigurációs elemek
+  * UI configuration elements for SAML with expected values from the provider
 
-  * Szolgáltató adatainak átadandó Identitásszolgáltatók
+  * Service provider information to be passed to identity providers
 
-* Ha OIDC/OAuth
+* If OIDC/OAuth
 
-  * Üzleti indoklással beleegyezés szükséges engedélyek listája
+  * List of permissions required for consent with business justifications
 
-* Próbaüzem felhasználóinak vizsgálati lépések
+* Testing steps for pilot users
 
-* Hibaelhárítási információkat, többek között a hibakódok és üzenetek
+* Troubleshooting information, including error codes and messages
 
-* Mechanizmusokat támogatja az ügyfelek számára
+* Support mechanisms for customers
 
-## <a name="documentation-on-the-microsoft-site"></a>Dokumentáció a Microsoft webhelyen
+## <a name="documentation-on-the-microsoft-site"></a>Documentation on the Microsoft Site
 
-Az Azure Active Directory Alkalmazáskatalógusában, is tesz közzé az alkalmazást az Azure piactéren, az alkalmazás listázásakor Microsoft generál elmagyarázza a részletes folyamat legteljesebb ügyfél dokumentációját. Egy példa látható [Itt](https://aka.ms/appstutorial). Ez a dokumentáció a Küldés a katalógusba alapján jön létre, és egyszerűen frissíthető, ha módosítja az alkalmazást, a GitHub-fiók használatával.
+When you list your application with the Azure Active Directory Application Gallery, which also publishes your application in the Azure Marketplace, Microsoft will generate documentation for our mutual customers explaining the step-by-step process. You can see an example [here](https://aka.ms/appstutorial). This documentation is created based on your submission to the gallery, and you can easily update it if you make changes to your application using your GitHub account.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az alkalmazás szerepeltetése az Azure AD Alkalmazáskatalógusában](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[List your application in the Azure AD Application Gallery](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

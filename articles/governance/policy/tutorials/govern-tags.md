@@ -1,49 +1,49 @@
 ---
-title: Címkeszabályozás kezelése
-description: A Azure Policy módosításának effektusával létrehozhat és kikényszerítheti a címke irányítási modelljét az új és a meglévő erőforrásokon.
+title: 'Tutorial: Manage tag governance'
+description: In this tutorial, you use the Modify effect of Azure Policy to create and enforce a tag governance model on new and existing resources.
 ms.date: 11/04/2019
 ms.topic: tutorial
-ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 59de9d6ff03e160f83e2f2ad8b8b697109f31cd7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069654"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216685"
 ---
-# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: a címke szabályozásának kezelése a Azure Policy
+# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Manage tag governance with Azure Policy
 
-A [címkék](../../../azure-resource-manager/resource-group-using-tags.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
-Függetlenül attól, hogy hogyan vagy miért használja a címkéket, fontos, hogy gyorsan hozzá lehessen adni, módosítani és eltávolítani ezeket a címkéket az Azure-erőforrásokon.
+[Tags](../../../azure-resource-manager/resource-group-using-tags.md) are a crucial part of organizing your Azure resources into a taxonomy. When following [best practices for tag management](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources), tags can be the basis for applying your business policies with Azure Policy or [tracking costs with Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+No matter how or why you use tags, it's important that you can quickly add, change, and remove those tags on your Azure resources.
 
-Azure Policy [módosításának](../concepts/effects.md#modify) hatása úgy van kialakítva, hogy segítse a címkék irányítását, függetlenül attól, hogy az erőforrás-szabályozás milyen szakaszában van. A **módosítás** a következőkhöz nyújt segítséget:
+Azure Policy's [Modify](../concepts/effects.md#modify) effect is designed to aid in the governance of tags no matter what stage of resource governance you are in. **Modify** helps when:
 
-- Most ismerkedik a felhővel, és nincs címkézési szabályozása
-- Már több ezer erőforrása van a címke szabályozása nélkül
-- Már van olyan meglévő Taxonómia, amelyet módosítania kell
+- You're new to the cloud and have no tag governance
+- Already have thousands of resources with no tag governance
+- Already have an existing taxonomy that you need changed
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="identify-requirements"></a>Követelmények azonosítása
+## <a name="identify-requirements"></a>Identify requirements
 
-Az irányítási szabályozások megfelelő megvalósításához hasonlóan a követelményeknek az üzleti igényektől kell származnia, és a technikai szabályozások létrehozása előtt jól érthetőnek kell lenniük. Ebben az oktatóanyagban a következő elemek az üzleti követelmények:
+Like any good implementation of governance controls, the requirements should come from your business needs and be well understood before creating technical controls. For this scenario tutorial, the following items are our business requirements:
 
-- Két kötelező címke az összes erőforráson: _CostCenter_ és _env_
-- A _CostCenter_ minden tárolón és egyedi erőforráson léteznie kell
-  - Az erőforrások öröklik a tárolóban lévő erőforrásokat, de előfordulhat, hogy a rendszer külön felülbírálja őket.
-- Az _env_ -nek minden tárolón és egyedi erőforráson léteznie kell
-  - Az erőforrások a tároló-elnevezési séma alapján határozzák meg a környezetet, és előfordulhat, hogy nincs felülbírálva
-  - A tárolóban lévő összes erőforrás ugyanahhoz a környezethez tartozik
+- Two required tags on all resources: _CostCenter_ and _Env_
+- _CostCenter_ must exist on all containers and individual resources
+  - Resources inherit from the container they're in, but may be individually overridden
+- _Env_ must exist on all containers and individual resources
+  - Resources determine environment by container naming scheme and may not be overridden
+  - All resources in a container are part of the same environment
 
-## <a name="configure-the-costcenter-tag"></a>A CostCenter címke konfigurálása
+## <a name="configure-the-costcenter-tag"></a>Configure the CostCenter tag
 
-A Azure Policy által felügyelt Azure-környezetekre vonatkozó feltételek a _CostCenter_ -címkézési követelmények az alábbiakat hívják meg:
+In terms specific to an Azure environment managed by Azure Policy, the _CostCenter_ tag requirements call for the following:
 
-- Az erőforráscsoportok megtagadása elemből hiányzik a _CostCenter_ címke
-- Erőforrások módosítása a _CostCenter_ címke hozzáadásához a szülő erőforráscsoporthoz, ha hiányzik
+- Deny resource groups missing the _CostCenter_ tag
+- Modify resources to add the _CostCenter_ tag from the parent resource group when missing
 
-### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Az erőforráscsoportok megtagadása elemből hiányzik a CostCenter címke
+### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Deny resource groups missing the CostCenter tag
 
-Mivel az _CostCenter_ nem határozható meg az erőforráscsoport neve, az erőforráscsoport létrehozásához a kérelemben definiált címkének kell szerepelnie. A [Megtagadás](../concepts/effects.md#deny) hatású házirend-szabály megakadályozza a _CostCenter_ címkével nem rendelkező erőforráscsoportok létrehozását vagy frissítését:
+Since the _CostCenter_ for a resource group can't be determined by the name of the resource group, it must have the tag defined on the request to create the resource group. The following policy rule with the [Deny](../concepts/effects.md#deny) effect prevents the creation or updating of resource groups that don't have the _CostCenter_ tag:
 
 ```json
 "if": {
@@ -63,11 +63,11 @@ Mivel az _CostCenter_ nem határozható meg az erőforráscsoport neve, az erőf
 ```
 
 > [!NOTE]
-> Mivel ez a házirend-szabály egy erőforráscsoportot _céloz meg, a házirend_ -definícióban az "all" értéknek kell lennie az "indexelt" helyett.
+> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
 
-### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Erőforrások módosítása, hogy a CostCenter címke örökölje a hiányzó
+### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Modify resources to inherit the CostCenter tag when missing
 
-A második _CostCenter_ szükséges, hogy a szülő erőforráscsoport címkéje örökölje az összes erőforrást, ha az nincs megadva. Ha a címke már definiálva van az erőforráson, még akkor is, ha a szülő erőforráscsoporthoz eltér, egyedül kell maradnia. A következő házirend-szabály a [módosítást](../concepts/effects.md#modify)használja:
+The second _CostCenter_ need is for any resources to inherit the tag from the parent resource group when it's missing. If the tag is already defined on the resource, even if different from the parent resource group, it must be left alone. The following policy rule uses [Modify](../concepts/effects.md#modify):
 
 ```json
 "policyRule": {
@@ -91,21 +91,21 @@ A második _CostCenter_ szükséges, hogy a szülő erőforráscsoport címkéje
 }
 ```
 
-Ez a házirend-szabály a **Hozzáadás** műveletet használja a **addOrReplace** helyett, mivel nem szeretnénk módosítani a címke értékét, ha a meglévő erőforrások [szervizelését](../how-to/remediate-resources.md) van. Emellett a `[resourcegroup()]` sablon függvényt is használja a szülő erőforráscsoporthoz tartozó címke értékének beolvasásához.
+This policy rule uses the **add** operation instead of **addOrReplace** as we don't want to alter the tag value if it's present when [remediating](../how-to/remediate-resources.md) existing resources. It also uses the `[resourcegroup()]` template function to get the tag value from the parent resource group.
 
 > [!NOTE]
-> Mivel ez a házirend-szabály a címkéket támogató erőforrásokat céloz meg, a házirend-definícióban szereplő _módnak_ "indexelt" értéknek kell lennie. Ez a konfiguráció azt is biztosítja, hogy ez a szabályzat kihagyja az erőforráscsoportokat.
+> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
 
-## <a name="configure-the-env-tag"></a>Az ENV címke konfigurálása
+## <a name="configure-the-env-tag"></a>Configure the Env tag
 
-A Azure Policy által felügyelt Azure-környezetekre vonatkozó _követelmények a következők_ :
+In terms specific to an Azure environment managed by Azure Policy, the _Env_ tag requirements call for the following:
 
-- Módosítsa az erőforrás-csoport _env_ címkéjét az erőforráscsoport elnevezési sémája alapján.
-- Módosítsa az összes erőforráshoz tartozó _env_ címkét a szülő erőforráscsoporthoz megegyező értékkel.
+- Modify the _Env_ tag on the resource group based on the naming scheme of the resource group
+- Modify the _Env_ tag on all resources in the resource group to the same as the parent resource group
 
-### <a name="modify-resource-groups-env-tag-based-on-name"></a>Erőforráscsoportok env-címke módosítása a név alapján
+### <a name="modify-resource-groups-env-tag-based-on-name"></a>Modify resource groups Env tag based on name
 
-Az Azure-környezetben található minden környezethez szükség van egy [módosítási](../concepts/effects.md#modify) házirendre. A házirend-definícióhoz hasonlóan a szabályzat módosítása:
+A [Modify](../concepts/effects.md#modify) policy is required for each environment that exists in your Azure environment. The Modify policy for each looks something like this policy definition:
 
 ```json
 "policyRule": {
@@ -137,13 +137,13 @@ Az Azure-környezetben található minden környezethez szükség van egy [módo
 ```
 
 > [!NOTE]
-> Mivel ez a házirend-szabály egy erőforráscsoportot _céloz meg, a házirend_ -definícióban az "all" értéknek kell lennie az "indexelt" helyett.
+> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
 
-Ez a szabályzat csak a `prd-`üzemi erőforrásaihoz használt minta elnevezési sémával rendelkező erőforráscsoportokat felel meg. Az összetettebb elnevezési sémák több **egyeztetési** feltétellel is elérhetők, **mint** például ebben a példában.
+This policy only matches resource groups with the sample naming scheme used for production resources of `prd-`. More complex naming scheme's can be achieved with several **match** conditions instead of the single **like** in this example.
 
-### <a name="modify-resources-to-inherit-the-env-tag"></a>Erőforrások módosítása az ENV címke örökléséhez
+### <a name="modify-resources-to-inherit-the-env-tag"></a>Modify resources to inherit the Env tag
 
-Az üzleti követelmény azt kéri, hogy az összes erőforrás rendelkezzen a szülő erőforráscsoporthoz tartozó _env_ címkével. Ezt a címkét nem lehet felülbírálni, ezért a [módosítás](../concepts/effects.md#modify) hatásával használjuk a **addOrReplace** műveletet. A minta-módosítási házirend a következő szabályhoz hasonlóan néz ki:
+The business requirement calls for all resources to have the _Env_ tag that their parent resource group does. This tag can't be overridden, so we'll use the **addOrReplace** operation with the [Modify](../concepts/effects.md#modify) effect. The sample Modify policy looks like the following rule:
 
 ```json
 "policyRule": {
@@ -175,26 +175,26 @@ Az üzleti követelmény azt kéri, hogy az összes erőforrás rendelkezzen a s
 ```
 
 > [!NOTE]
-> Mivel ez a házirend-szabály a címkéket támogató erőforrásokat céloz meg, a házirend-definícióban szereplő _módnak_ "indexelt" értéknek kell lennie. Ez a konfiguráció azt is biztosítja, hogy ez a szabályzat kihagyja az erőforráscsoportokat.
+> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
 
-Ez a házirend-szabály olyan erőforrást keres, amely nem rendelkezik szülő erőforráscsoport értékkel az _env_ címkéhez, vagy hiányzik az _env_ címke. A megfeleltetési erőforrásokhoz az _env_ kódelem van beállítva a szülő erőforráscsoport értékre, még akkor is, ha a címke már létezik az erőforráson, de más értékkel rendelkezik.
+This policy rule looks for any resource that doesn't have its parent resource groups value for the _Env_ tag or is missing the _Env_ tag. Matching resources have their _Env_ tag set to the parent resource groups value, even if the tag already existed on the resource but with a different value.
 
-## <a name="assign-the-initiative-and-remediate-resources"></a>A kezdeményezés kiosztása és az erőforrások szervizelése
+## <a name="assign-the-initiative-and-remediate-resources"></a>Assign the initiative and remediate resources
 
-Miután létrehozta a fenti címkézési szabályzatokat, csatlakoztassa azokat egyetlen kezdeményezéshez a szabályozás címkézéséhez, és rendeljen hozzá egy felügyeleti csoporthoz vagy előfizetéshez. A kezdeményezés és a belefoglalt házirendek ezt követően értékelik a meglévő erőforrások megfelelőségét, és az új vagy frissített erőforrásokra vonatkozó kéréseket módosítják, amelyek megfelelnek az **IF** tulajdonságnak a házirend-szabályban. A szabályzat azonban nem frissíti automatikusan a meglévő, nem megfelelő erőforrásokat a definiált címke módosításaival.
+Once the tag policies above are created, join them into a single initiative for tag governance and assign them to a management group or subscription. The initiative and included policies then evaluate compliance of existing resources and alters requests for new or updated resources that match the **if** property in the policy rule. However, the policy doesn't automatically update existing non-compliant resources with the defined tag changes.
 
-A [deployIfNotExists](../concepts/effects.md#deployifnotexists) -szabályzatokhoz hasonlóan a **módosítási** házirend szervizelési feladatokat használ a meglévő nem megfelelő erőforrások módosításához. Kövesse az [erőforrások szervizelésének](../how-to/remediate-resources.md) utasításait a nem megfelelő erőforrás- **módosítási** erőforrások azonosításához, és javítsa ki a címkéket a definiált besorolásban.
+Like [deployIfNotExists](../concepts/effects.md#deployifnotexists) policies, the **Modify** policy uses remediation tasks to alter existing non-compliant resources. Follow the directions on [How-to remediate resources](../how-to/remediate-resources.md) to identify your non-compliant **Modify** resources and correct the tags to your defined taxonomy.
 
 ## <a name="review"></a>Áttekintés
 
-Ez az oktatóanyag a következő feladatokat ismerteti:
+In this tutorial, you learned about the following tasks:
 
 > [!div class="checklist"]
-> - Az üzleti igények azonosítása
-> - Minden követelmény leképezve egy házirend-definícióba
-> - A címkézési házirendek csoportosítása egy kezdeményezésbe
+> - Identified your business requirements
+> - Mapped each requirement to a policy definition
+> - Grouped the tag policies into an initiative
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

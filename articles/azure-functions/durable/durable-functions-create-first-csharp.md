@@ -1,92 +1,87 @@
 ---
-title: Az első tartós funkció létrehozása az Azure-ban a használatávalC#
-description: Azure tartós függvény létrehozása és közzététele a Visual Studióval.
-services: functions
-documentationcenter: na
+title: Create your first durable function in Azure using C#
+description: Create and publish an Azure Durable Function using Visual Studio.
 author: jeffhollan
-manager: jeconnoc
-keywords: azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615010"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231516"
 ---
-# <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját C\#
+# <a name="create-your-first-durable-function-in-c"></a>Create your first durable function in C\#
 
-A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehetővé teszi állapot-nyilvántartó függvények írására kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
+*Durable Functions* is an extension of [Azure Functions](../functions-overview.md) that lets you write stateful functions in a serverless environment. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio 2019-et a "Hello World" tartós funkciójának helyi létrehozására és tesztelésére.  Ez a függvény összehangolja és láncokba rendezi a más függvények hívásait. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök az Azure-fejlesztési számítási feladatok részeként érhetők el a Visual Studio 2019-ben.
+In this article, you learn how to use the Visual Studio 2019 to locally create and test a "hello world" durable function.  This function orchestrates and chains-together calls to other functions. Ezután közzéteheti a függvénykódot az Azure-ban. These tools are available as part of the Azure development workload in Visual Studio 2019.
 
-![Tartós funkció futtatása az Azure-ban](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Running durable function in Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)alkalmazást. Győződjön meg arról, hogy az **Azure-fejlesztési** munkaterhelés is telepítve van. A Visual Studio 2017 támogatja a Durable Functions fejlesztést is, de a felhasználói felület és a lépések eltérnek egymástól.
+* Install [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Make sure that the **Azure development** workload is also installed. Visual Studio 2017 also supports Durable Functions development, but the UI and steps differ.
 
-* Ellenőrizze, hogy az [Azure Storage-emulátor](../../storage/common/storage-use-emulator.md) telepítve van-e és fut-e.
+* Verify you have the [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) installed and running.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
-A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure-beli Function alkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
+The Azure Functions template creates a project that can be published to a function app in Azure. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
 
-1. A Visual Studio **Fájl** menüjében válassza az  > Új**Projekt** lehetőséget.
+1. A Visual Studio **Fájl** menüjében válassza az **Új** > **Projekt** lehetőséget.
 
-1. Az **új projekt hozzáadása** párbeszédpanelen keresse meg a `functions`, válassza ki a **Azure functions** sablont, és kattintson a **tovább**gombra. 
+1. In the **Add a new project** dialog, search for `functions`, choose the **Azure Functions** template, and select **Next**. 
 
     ![Új projekt párbeszédpanel a Visual Studióban egy függvény létrehozásához](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. Írjon be egy **projekt nevét** a projekthez, majd kattintson **az OK gombra**. A projekt nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más nem alfanumerikus karaktereket.
+1. Type a **Project name** for your project, and select **OK**. The project name must be valid as a C# namespace, so don't use underscores, hyphens, or any other nonalphanumeric characters.
 
-1. Az **új Azure functions alkalmazás létrehozása**területen használja a képet követő táblázatban megadott beállításokat.
+1. In **Create a new Azure Functions Application**, use the settings specified in the table that follows the image.
 
-    ![Új Azure Functions alkalmazás párbeszédpanel létrehozása a Visual Studióban](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
+    ![Create a new Azure Functions Application dialog in Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Verzió** | Azure Functions 2,0 <br />(.NET Core) | Egy olyan Function projektet hoz létre, amely a .NET Core-ot támogató Azure Functions 2,0-es verzióját használja. A Azure Functions 1,0 támogatja a .NET-keretrendszert. További információ: [Azure Functions futtatókörnyezet-verzió megcélzása](../functions-versions.md).   |
-    | **Sablon** | üres | Létrehoz egy üres Function alkalmazást. |
-    | **Storage-fiók**  | Storage Emulator | A tartós működés állapotának kezeléséhez Storage-fiókra van szükség. |
+    | **Verzió** | Azure Functions 2.0 <br />(.NET Core) | Creates a function project that uses the version 2.0 runtime of Azure Functions, which supports .NET Core. Azure Functions 1.0 supports the .NET Framework. További információ: [Azure Functions futtatókörnyezet-verzió megcélzása](../functions-versions.md).   |
+    | **Sablon** | Empty | Creates an empty function app. |
+    | **Storage-fiók**  | Storage Emulator | A storage account is required for durable function state management. |
 
-4. Válassza a **Létrehozás** lehetőséget egy üres Function projekt létrehozásához. Ez a projekt a függvények futtatásához szükséges alapszintű konfigurációs fájlokat tartalmaz.
+4. Select **Create** to create an empty function project. This project has the basic configuration files needed to run your functions.
 
-## <a name="add-functions-to-the-app"></a>Függvények hozzáadása az alkalmazáshoz
+## <a name="add-functions-to-the-app"></a>Add functions to the app
 
-A következő lépésekkel hozhatja létre a projektben a tartós függvény kódját.
+The following steps use a template to create the durable function code in your project.
 
-1. Kattintson a jobb gombbal a projektre a Visual Studióban, majd válassza a **hozzáadás** > **új Azure-függvény**lehetőséget.
+1. Right-click the project in Visual Studio and select **Add** > **New Azure Function**.
 
-    ![Új függvény hozzáadása](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
+    ![Add new function](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
 
-1. Ellenőrizze, hogy az **Azure Function** be van-e jelölve a Hozzáadás menüben, C# írja be a fájl nevét, majd válassza a **Hozzáadás**lehetőséget.
+1. Verify **Azure Function** is selected from the add menu, type a name for your C# file, and then select **Add**.
 
-1. Válassza ki a **Durable functions a hangszerelési** sablont, majd kattintson **az OK gombra** .
+1. Select the **Durable Functions Orchestration** template and then select **Ok**
 
-    ![Tartós sablon kiválasztása](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
+    ![Select durable template](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
 > [!NOTE]
-> Ez a sablon jelenleg egy tartós függvényt hoz létre a bővítmény régebbi 1. x verziójának használatával. Tekintse meg a [Durable functions verziókról](durable-functions-versions.md) szóló cikket, amely arról nyújt tájékoztatást, hogyan frissíthet a Durable functions újabb 2. x verziójára.
+> This template currently creates a durable function using an older 1.x version of the extension. See the [Durable Functions Versions](durable-functions-versions.md) article for information about how to upgrade to the newer 2.x versions of Durable Functions.
 
-A rendszer új tartós függvényt ad hozzá az alkalmazáshoz.  A tartalom megtekintéséhez nyissa meg az új. cs fájlt. Ez a tartós függvény egy egyszerű függvények láncolására szolgáló példa a következő módszerekkel:  
+A new durable function is added to the app.  Open the new .cs file to view the contents. This durable function is a simple function chaining example with the following methods:  
 
-| Módszer | Függvénynév | Leírás |
+| Módszer | FunctionName | Leírás |
 | -----  | ------------ | ----------- |
-| **`RunOrchestrator`** | `<file-name>` | Kezeli a tartós összeszerelést. Ebben az esetben a folyamat elindul, létrehoz egy listát, és hozzáadja a listához a három függvény hívásának eredményét.  Ha a három függvény meghívása befejeződött, a rendszer visszaadja a listát. |
-| **`SayHello`** | `<file-name>_Hello` | A függvény egy Hello értéket ad vissza. Ez az a függvény, amely az összehangolt üzleti logikát tartalmazza. |
-| **`HttpStart`** | `<file-name>_HttpStart` | [Http-triggert használó függvény](../functions-bindings-http-webhook.md) , amely elindítja a folyamat egy példányát, és visszaadja az állapot-ellenőrzési választ. |
+| **`RunOrchestrator`** | `<file-name>` | Manages the durable orchestration. In this case, the orchestration starts, creates a list, and adds the result of three functions calls to the list.  When the three function calls are complete, it returns the list. |
+| **`SayHello`** | `<file-name>_Hello` | The function returns a hello. It is the function that contains the business logic that is being orchestrated. |
+| **`HttpStart`** | `<file-name>_HttpStart` | An [HTTP-triggered function](../functions-bindings-http-webhook.md) that starts an instance of the orchestration and returns a check status response. |
 
-Most, hogy létrehozta a függvény projektjét és egy tartós függvényt, tesztelheti a helyi számítógépen.
+Now that you've created your function project and a durable function, you can test it on your local computer.
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
@@ -98,15 +93,15 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
     ![Az Azure helyi futtatókörnyezete](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába, és hajtsa végre a kérelmet. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz:
+3. Paste the URL for the HTTP request into your browser's address bar and execute the request. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz:
 
     ![A függvény által visszaadott localhost válasz a böngészőben](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
-    A válasz a HTTP-függvény kezdeti eredménye, amely közli, hogy a tartós összehangolás sikeresen elindult.  Még nem az előkészítés végeredménye.  A válasz több hasznos URL-címet is tartalmaz.  Most pedig lekérdezjük a folyamat állapotát.
+    The response is the initial result from the HTTP function letting us know the durable orchestration has started successfully.  It is not yet the end result of the orchestration.  The response includes a few useful URLs.  For now, let's query the status of the orchestration.
 
-4. Másolja `statusQueryGetUri` és illessze be az URL-címet a böngésző címsorába, majd hajtsa végre a kérelmet.
+4. Copy the URL value for `statusQueryGetUri` and pasting it in the browser's address bar and execute the request.
 
-    A kérelem lekérdezi az állapotot az előkészítési példányon. A következőhöz hasonló, végleges választ kaphat.  Ez a kimenet mutatja, hogy a példány befejeződött, és tartalmazza a tartós függvény kimeneteit vagy eredményét.
+    The request will query the orchestration instance for the status. You should get an eventual response that looks like the following.  This output shows us the instance has completed, and includes the outputs or results of the durable function.
 
     ```json
     {
@@ -138,15 +133,15 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 1. Másolja a függvényalkalmazás alap URL-címét a Publish (Közzététel) profiloldalról. Cserélje ki a függvény helyi tesztelésekor használt `localhost:port` URL-címrészt az új alap URL-címmel.
 
-    A tartós függvény HTTP-triggerét meghívó URL-címnek a következő formátumúnak kell lennie:
+    The URL that calls your durable function HTTP trigger should be in the following format:
 
         http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart
 
-2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
+2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. You should get the same status response as before when using the published app.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A C# Visual Studio használatával tartós Function-alkalmazást hozhat létre és tehet közzé.
+You have used Visual Studio to create and publish a C# durable function app.
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)
+> [Learn about common durable function patterns](durable-functions-overview.md#application-patterns)

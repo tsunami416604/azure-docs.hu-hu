@@ -1,156 +1,152 @@
 ---
-title: A Azure Functions Core Tools használata | Microsoft Docs
-description: Megtudhatja, hogyan teheti meg az Azure functions szolgáltatást a parancssorból vagy a terminálból a helyi számítógépen, mielőtt futtatja őket a Azure Functionson.
-author: ggailey777
-manager: gwallace
+title: Work with Azure Functions Core Tools
+description: Learn how to code and test Azure functions from the command prompt or terminal on your local computer before you run them on Azure Functions.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082712"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226699"
 ---
-# <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
+# <a name="work-with-azure-functions-core-tools"></a>Work with Azure Functions Core Tools
 
-Azure Functions Core Tools lehetővé teszi a függvények fejlesztését és tesztelését a helyi számítógépen a parancssorból vagy a terminálból. A helyi függvények csatlakozhatnak az élő Azure-szolgáltatásokhoz, és a függvények a teljes functions Runtime használatával hibakeresést végezhetnek a helyi számítógépen. Az Azure-előfizetésben is üzembe helyezhet egy Function alkalmazást.
+Azure Functions Core Tools lets you develop and test your functions on your local computer from the command prompt or terminal. Your local functions can connect to live Azure services, and you can debug your functions on your local computer using the full Functions runtime. You can even deploy a function app to your Azure subscription.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-A functions a helyi számítógépen való fejlesztése és az Azure-ba való közzétételük az alapeszközök használatával az alábbi alapvető lépéseket követi:
+Developing functions on your local computer and publishing them to Azure using Core Tools follows these basic steps:
 
 > [!div class="checklist"]
-> * [Telepítse az alapvető eszközöket és a függőségeket.](#v2)
-> * [Function app-projekt létrehozása nyelvspecifikus sablonból.](#create-a-local-functions-project)
-> * [Trigger-és kötési bővítmények regisztrálása.](#register-extensions)
-> * [Tároló és egyéb kapcsolatok definiálása.](#local-settings-file)
-> * [Hozzon létre egy függvényt egy triggerből és egy nyelvspecifikus sablonból.](#create-func)
-> * [A függvény helyi futtatása](#start)
-> * [A projekt közzététele az Azure-ban](#publish)
+> * [Install the Core Tools and dependencies.](#v2)
+> * [Create a function app project from a language-specific template.](#create-a-local-functions-project)
+> * [Register trigger and binding extensions.](#register-extensions)
+> * [Define Storage and other connections.](#local-settings-file)
+> * [Create a function from a trigger and language-specific template.](#create-func)
+> * [Run the function locally](#start)
+> * [Publish the project to Azure](#publish)
 
-## <a name="core-tools-versions"></a>Alapvető eszközök verziói
+## <a name="core-tools-versions"></a>Core Tools versions
 
-A Azure Functions Core Tools két verziója létezik. A használt verzió a helyi fejlesztési környezettől, a [választott nyelvtől](supported-languages.md)és a szükséges támogatási szinttől függ:
+There are two versions of Azure Functions Core Tools. The version you use depends on your local development environment, [choice of language](supported-languages.md), and level of support required:
 
-+ 1\. x verzió: a futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://docs.npmjs.com/getting-started/what-is-npm)van telepítve. Ezzel a verzióval a nem hivatalosan támogatott kísérleti nyelveken hozhat létre függvényeket. További információ: [Azure functions támogatott nyelvei](supported-languages.md)
++ Version 1.x: supports version 1.x of the runtime. This version of the tools is only supported on Windows computers and is installed from an [npm package](https://docs.npmjs.com/getting-started/what-is-npm). With this version, you can create functions in experimental languages that are not officially supported. For more information, see [Supported languages in Azure Functions](supported-languages.md)
 
-+ [2. x verzió](#v2): [a futtatókörnyezet 2. x verzióját](functions-versions.md)támogatja. Ez a verzió támogatja a Windows, a [MacOS](#brew)és a [Linux](#linux) [rendszert](#windows-npm). Platform-specifikus csomagkezelő vagy NPM használata a telepítéshez.
++ [Version 2.x](#v2): supports [version 2.x of the runtime](functions-versions.md). This version supports [Windows](#windows-npm), [macOS](#brew), and [Linux](#linux). Uses platform-specific package managers or npm for installation.
 
-Ha másként nincs jelezve, a cikkben szereplő példák a 2. x verzióra vonatkoznak.
+Unless otherwise noted, the examples in this article are for version 2.x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
-[Azure functions Core Tools] tartalmaz egy olyan verziót, amely a helyi fejlesztési számítógépen futtatható Azure functions futtatókörnyezetet is felhasználja. Emellett parancsokat is biztosít a függvények létrehozásához, az Azure-hoz való kapcsolódáshoz és a functions-projektek üzembe helyezéséhez.
+[Azure Functions Core Tools] includes a version of the same runtime that powers Azure Functions runtime that you can run on your local development computer. It also provides commands to create functions, connect to Azure, and deploy function projects.
 
-### <a name="v2"></a>2-es verzió. x
+### <a name="v2"></a>Version 2.x
 
-Az eszközök 2. x verziója a .NET Core-ra épülő Azure Functions Runtime 2. x verziót használja. Ez a verzió a .NET Core 2. x összes platformján támogatott, beleértve a Windows, a [MacOS](#brew)és a [Linux](#linux) [rendszert](#windows-npm)is. 
+Version 2.x of the tools uses the Azure Functions runtime 2.x that is built on .NET Core. This version is supported on all platforms .NET Core 2.x supports, including [Windows](#windows-npm), [macOS](#brew), and [Linux](#linux). 
 
 > [!IMPORTANT]
-> A .NET Core 2. x SDK a [bővítmények]használatával történő telepítésének követelményét kihagyhatja.
+> You can bypass the requirement for installing the .NET Core 2.x SDK by using [extension bundles].
 
 #### <a name="windows-npm"></a>Windows
 
-A következő lépések a NPM segítségével telepítik a Windows rendszerhez tartozó alapvető eszközöket. A [csokit](https://chocolatey.org/)is használhatja. További információ: [alapvető eszközök – fontos](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)információk.
+The following steps use npm to install Core Tools on Windows. You can also use [Chocolatey](https://chocolatey.org/). For more information, see the [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Telepítse a [Node.js]-t, amely tartalmazza a NPM. Az eszközök 2. x verziója esetében csak a Node. js 8,5-es és újabb verziói támogatottak.
+1. Install [Node.js], which includes npm. For version 2.x of the tools, only Node.js 8.5 and later versions are supported.
 
-1. Telepítse a Core Tools csomagot:
+1. Install the Core Tools package:
 
     ```bash
     npm install -g azure-functions-core-tools
     ```
 
-   A NPM letöltése és telepítése eltarthat néhány percig.
+   It may take a few minutes for npm to download and install the Core Tools package.
 
-1. Ha nem tervezi a [bővítmények]használatát, telepítse a [Windowshoz készült .net Core 2. x SDK](https://www.microsoft.com/net/download/windows)-t.
+1. If you do not plan to use [extension bundles], install the [.NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows).
 
-#### <a name="brew"></a>MacOS és Homebrew
+#### <a name="brew"></a>MacOS with Homebrew
 
-A következő lépések a Homebrew-t használják a fő eszközök macOS rendszeren való telepítéséhez.
+The following steps use Homebrew to install the Core Tools on macOS.
 
-1. Telepítse a [Homebrew](https://brew.sh/)-t, ha még nincs telepítve.
+1. Install [Homebrew](https://brew.sh/), if it's not already installed.
 
-1. Telepítse a Core Tools csomagot:
+1. Install the Core Tools package:
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. Ha nem tervezi a [bővítmények]használatát, telepítse [a .net Core 2. x SDK-t a MacOS rendszerhez](https://www.microsoft.com/net/download/macos).
+1. If you do not plan to use [extension bundles], install [.NET Core 2.x SDK for macOS](https://www.microsoft.com/net/download/macos).
 
 
-#### <a name="linux"></a>Linux (Ubuntu/Debian) APT-vel
+#### <a name="linux"></a> Linux (Ubuntu/Debian) with APT
 
-Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.debian.org/Apt) eszközöket az Ubuntu/Debian Linux-disztribúción. Más Linux-disztribúciók esetében tekintse meg az [alapvető eszközök readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)című témakört.
+The following steps use [APT](https://wiki.debian.org/Apt) to install Core Tools on your Ubuntu/Debian Linux distribution. For other Linux distributions, see the [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Telepítse a Microsoft Package repository GPG kulcsot a csomag integritásának ellenőrzéséhez:
+1. Install the Microsoft package repository GPG key, to validate package integrity:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Az APT-frissítés végrehajtása előtt állítsa be a .NET-fejlesztői források listáját.
+1. Set up the .NET development source list before doing an APT update.
 
-   A következő parancs futtatásával állíthatja be az APT-forrásokhoz tartozó Ubuntu-listát:
+   To set up the APT source list for Ubuntu, run this command:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   A Debian APT-forráslista beállításához futtassa a következő parancsot:
+   To set up the APT source list for Debian, run this command:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-1. Az alábbi listában keresse meg a megfelelő Linux-verziókhoz tartozó `/etc/apt/sources.list.d/dotnetdev.list` fájlt:
+1. Check the `/etc/apt/sources.list.d/dotnetdev.list` file for one of the appropriate Linux version strings listed below:
 
-    | Linux-disztribúció | Verzió |
+    | Linux distribution | Verzió |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
-    | Ubuntu 18,10    | `cosmic`    |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17,04    | `zesty`     |
-    | Ubuntu 16.04/Linux mint 18    | `xenial`  |
+    | Ubuntu 17.04    | `zesty`     |
+    | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
-1. Az APT-forrás frissítésének elindítása:
+1. Start the APT source update:
 
     ```bash
     sudo apt-get update
     ```
 
-1. Telepítse a Core Tools csomagot:
+1. Install the Core Tools package:
 
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. Ha nem tervezi a [bővítmények]használatát, telepítse [a .net Core 2. x SDK-t a Linux rendszerhez](https://www.microsoft.com/net/download/linux).
+1. If you do not plan to use [extension bundles], install [.NET Core 2.x SDK for Linux](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
+## <a name="create-a-local-functions-project"></a>Create a local Functions project
 
-A functions projekt könyvtára tartalmazza a [Host. JSON](functions-host-json.md) és a [Local. Settings. JSON](#local-settings-file)fájlt, valamint az egyes függvények kódját tartalmazó almappákat. Ez a könyvtár egyenértékű egy Azure-beli Function alkalmazással. A functions mappa struktúrájával kapcsolatos további tudnivalókért tekintse meg a [Azure functions fejlesztői útmutató](functions-reference.md#folder-structure)című témakört.
+A functions project directory contains the files [host.json](functions-host-json.md) and [local.settings.json](#local-settings-file), along with subfolders that contain the code for individual functions. This directory is the equivalent of a function app in Azure. To learn more about the Functions folder structure, see the [Azure Functions developers guide](functions-reference.md#folder-structure).
 
-A 2. x verzióhoz az inicializáláskor ki kell választania a projekt alapértelmezett nyelvét, és az összes funkció hozzáadásra kerül az alapértelmezett nyelvi sablonok használatával. Az 1. x verzióban az egyes függvények létrehozásakor minden alkalommal meg kell adnia a nyelvet.
+Version 2.x requires you to select a default language for your project when it is initialized, and all functions added use default language templates. In version 1.x, you specify the language each time you create a function.
 
-A terminál ablakban vagy egy parancssorban futtassa a következő parancsot a projekt és a helyi git-tárház létrehozásához:
+In the terminal window or from a command prompt, run the following command to create the project and local Git repository:
 
 ```bash
 func init MyFunctionProj
 ```
 
-Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
-A 2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
+When you provide a project name, a new folder with that name is created and initialized. Otherwise, the current folder is initialized.  
+In version 2.x, when you run the command you must choose a runtime for your project. 
 
 ```output
 Select a worker runtime:
@@ -160,9 +156,9 @@ python
 powershell
 ```
 
-A fel/le nyílbillentyűk használatával válassza ki a nyelvet, majd nyomja le az ENTER billentyűt. Ha JavaScript-vagy írógéppel-függvények fejlesztését tervezi, válassza a **csomópont**lehetőséget, majd válassza ki a nyelvet. Az írógéppel [néhány további követelményt](functions-reference-node.md#typescript)is tartalmaz. 
+Use the up/down arrow keys to choose a language, then press Enter. If you plan to develop JavaScript or TypeScript functions, choose **node**, and then select the language. TypeScript has [some additional requirements](functions-reference-node.md#typescript). 
 
-A kimenet a következő példához hasonlít egy JavaScript-projekthez:
+The output looks like the following example for a JavaScript project:
 
 ```output
 Select a worker runtime: node
@@ -173,82 +169,82 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
-a `func init` a következő beállításokat támogatja, amelyek csak 2. x verziójúak, hacsak másként nincs jelezve:
+`func init` supports the following options, which are version 2.x-only, unless otherwise noted:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | Egy [ C# Class Library-(. cs) projekt](functions-dotnet-class-library.md)inicializálása. |
-| **`--csx`** | Egy [ C# parancsfájl-(. CSX) projekt](functions-reference-csharp.md)inicializálása. A következő parancsokban meg kell adnia `--csx`. |
-| **`--docker`** | Hozzon létre egy Docker egy tárolóhoz a kiválasztott `--worker-runtime`alapuló alaprendszerkép használatával. Akkor használja ezt a beállítást, ha egyéni Linux-tárolóba szeretne közzétenni. |
-| **`--docker-only`** |  Egy meglévő projekthez hozzáadja a Docker. Ha nincs megadva, vagy a local. Settings. JSON fájlban van beállítva, a rendszer felszólítja a feldolgozóra. Akkor használja ezt a beállítást, ha egy meglévő projektet szeretne közzétenni egy egyéni Linux-tárolón. |
-| **`--force`** | A projekt inicializálása akkor is, ha vannak meglévő fájlok a projektben. Ez a beállítás felülírja a meglévő fájlokat ugyanazzal a névvel. A Project mappában található egyéb fájlok nem érintettek. |
-| **`--java`**  | Egy Java- [projekt](functions-reference-java.md)inicializálása. |
-| **`--javascript`**<br/>**`--node`**  | Egy JavaScript- [projekt](functions-reference-node.md)inicializálása. |
-| **`--no-source-control`**<br/>**`-n`** | Megakadályozza a git-tárház alapértelmezett létrehozását az 1. x verzióban. A 2. x verzióban a git-tárház alapértelmezés szerint nincs létrehozva. |
-| **`--powershell`**  | Egy PowerShell- [projekt](functions-reference-powershell.md)inicializálása. |
-| **`--python`**  | Egy Python- [projekt](functions-reference-python.md)inicializálása. |
-| **`--source-control`** | Meghatározza, hogy a git-tárház létrejött-e. Alapértelmezés szerint a tárház nem jön létre. Amikor `true`, létrejön egy adattár. |
-| **`--typescript`**  | Egy géppel rendelkező [projekt](functions-reference-node.md#typescript)inicializálása. |
-| **`--worker-runtime`** | Beállítja a projekt nyelvi futtatókörnyezetét. A támogatott értékek a következők: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`és `typescript`. Ha nincs beállítva, a rendszer arra kéri, hogy válassza ki a futtatókörnyezetet az inicializálás során. |
+| **`--csharp`**<br/> **`--dotnet`** | Initializes a [C# class library (.cs) project](functions-dotnet-class-library.md). |
+| **`--csx`** | Initializes a [C# script (.csx) project](functions-reference-csharp.md). You must specify `--csx` in subsequent commands. |
+| **`--docker`** | Create a Dockerfile for a container using a base image that is based on the chosen `--worker-runtime`. Use this option when you plan to publish to a custom Linux container. |
+| **`--docker-only`** |  Adds a Dockerfile to an existing project. Prompts for the worker-runtime if not specified or set in local.settings.json. Use this option when you plan to publish an existing project to a custom Linux container. |
+| **`--force`** | Initialize the project even when there are existing files in the project. This setting overwrites existing files with the same name. Other files in the project folder aren't affected. |
+| **`--java`**  | Initializes a [Java project](functions-reference-java.md). |
+| **`--javascript`**<br/>**`--node`**  | Initializes a [JavaScript project](functions-reference-node.md). |
+| **`--no-source-control`**<br/>**`-n`** | Prevents the default creation of a Git repository in version 1.x. In version 2.x, the git repository isn't created by default. |
+| **`--powershell`**  | Initializes a [PowerShell project](functions-reference-powershell.md). |
+| **`--python`**  | Initializes a [Python project](functions-reference-python.md). |
+| **`--source-control`** | Controls whether a git repository is created. By default, a repository isn't created. When `true`, a repository is created. |
+| **`--typescript`**  | Initializes a [TypeScript project](functions-reference-node.md#typescript). |
+| **`--worker-runtime`** | Sets the language runtime for the project. Supported values are: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`, and `typescript`. When not set, you are prompted to choose your runtime during initialization. |
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a Core Tools 2. x verziója a .net futtatókörnyezethez [ C# (.](functions-dotnet-class-library.md) csproj) hoz létre Function app-projekteket. A C# Visual Studióval vagy a Visual Studio Code-hoz használható projektek a tesztelés során és az Azure-ba való közzététel során fordíthatók le. Ha ehelyett az 1. x verzióban és a portálon létrehozott ugyanazon C# parancsfájl-(. CSX) fájlokat szeretné létrehozni és használni, akkor a függvények létrehozásakor és telepítésekor a `--csx` paramétert is meg kell adnia.
+> By default, version 2.x of the Core Tools creates function app projects for the .NET runtime as [C# class projects](functions-dotnet-class-library.md) (.csproj). These C# projects, which can be used with Visual Studio or Visual Studio Code, are compiled during testing and when publishing to Azure. If you instead want to create and work with the same C# script (.csx) files created in version 1.x and in the portal, you must include the `--csx` parameter when you create and deploy functions.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan, ha a projekt közzé van téve az Azure-ban. A [közzétételkor](#publish) használja a `--publish-local-settings` kapcsolót, és győződjön meg arról, hogy ezek a beállítások bekerülnek az Azure-beli Function alkalmazásba. Vegye figyelembe, hogy a **ConnectionStrings** lévő értékek soha nem lesznek közzétéve.
+By default, these settings are not migrated automatically when the project is published to Azure. Use the `--publish-local-settings` switch [when you publish](#publish) to make sure these settings are added to the function app in Azure. Note that values in **ConnectionStrings** are never published.
 
-A Function app Settings értékeit környezeti változókként is beolvashatja a kódban. További információkért tekintse meg az alábbi nyelvspecifikus témakörök környezeti változók című szakaszát:
+The function app settings values can also be read in your code as environment variables. For more information, see the Environment variables section of these language-specific reference topics:
 
-* [C#előfordított](functions-dotnet-class-library.md#environment-variables)
+* [C# precompiled](functions-dotnet-class-library.md#environment-variables)
 * [C# script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc a [`AzureWebJobsStorage`hoz] , és az emulátor nincs használatban, a következő hibaüzenet jelenik meg:
+When no valid storage connection string is set for [`AzureWebJobsStorage`] and the emulator isn't being used, the following error message is shown:
 
-> A AzureWebJobsStorage hiányzó értéke a local. Settings. JSON fájlban. Ez a HTTP-n kívüli összes eseményindító esetében kötelező. Futtathatja a "funkció Azure functionapp Fetch-app-Settings \<functionAppName\>" parancsot, vagy megadhat egy kapcsolatok karakterláncot a local. Settings. JSON fájlban.
+> Missing value for AzureWebJobsStorage in local.settings.json. This is required for all triggers other than HTTP. You can run 'func azure functionapp fetch-app-settings \<functionAppName\>' or specify a connection string in local.settings.json.
 
-### <a name="get-your-storage-connection-strings"></a>A tárolási kapcsolatok karakterláncának beolvasása
+### <a name="get-your-storage-connection-strings"></a>Get your storage connection strings
 
-Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-create-storage-account.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
+Even when using the storage emulator for development, you may want to test with an actual storage connection. Assuming you have already [created a storage account](../storage/common/storage-create-storage-account.md), you can get a valid storage connection string in one of the following ways:
 
-- A [Azure Portal]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
-  ![válassza ki a Storage-fiókokat Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+- From the [Azure Portalra], search for and select **Storage accounts**. 
+  ![Select Storagea accounts from Azure portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Válassza ki a Storage-fiókját, válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen, majd másolja a **kapcsolati karakterlánc** egyik értékét.
-  ![a Azure Portal a kapcsolatok karakterláncának másolása](./media/functions-run-local/copy-storage-connection-portal.png)
+  Select your storage account, select **Access keys** in **Settings**, then copy one of the **Connection string** values.
+  ![Copy connection string from Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Az Azure-fiókhoz való kapcsolódáshoz használjon [Azure Storage Explorer](https://storageexplorer.com/) . Az **Explorerben**bontsa ki az előfizetését, válassza ki a Storage-fiókját, és másolja az elsődleges vagy másodlagos kapcsolatok sztringjét.
+- Use [Azure Storage Explorer](https://storageexplorer.com/) to connect to your Azure account. In the **Explorer**, expand your subscription, select your storage account, and copy the primary or secondary connection string.
 
-  ![A Storage Explorerból származó kapcsolatok karakterláncának másolása](./media/functions-run-local/storage-explorer.png)
+  ![Copy connection string from Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
-+ Az alábbi parancsok egyikével töltheti le a kapcsolódási karakterláncot az Azure-ból a Core Tools használatával:
++ Use Core Tools to download the connection string from Azure with one of the following commands:
 
-  + Egy meglévő Function alkalmazás összes beállításának letöltése:
+  + Download all settings from an existing function app:
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-  + Egy adott Storage-fiókhoz tartozó kapcsolatok karakterláncának beolvasása:
+  + Get the Connection string for a specific storage account:
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Ha még nem jelentkezett be az Azure-ba, a rendszer felszólítja erre.
+    When you are not already signed in to Azure, you are prompted to do so.
 
-## <a name="create-func"></a>Függvény létrehozása
+## <a name="create-func"></a>Create a function
 
-Hozzon létre egy függvényt, futtassa a következő parancsot:
+To create a function, run the following command:
 
 ```bash
 func new
 ```
 
-A 2. x verzióban a `func new` futtatásakor a rendszer a Function app alapértelmezett nyelvén kéri a sablon kiválasztását, és a függvény nevét is kiválaszthatja. Az 1. x verzióban a rendszer azt is kéri, hogy válassza ki a nyelvet.
+In version 2.x, when you run `func new` you are prompted to choose a template in the default language of your function app, then you are also prompted to choose a name for your function. In version 1.x, you are also prompted to choose the language.
 
 ```output
 Select a language: Select a template:
@@ -263,7 +259,7 @@ Service Bus Topic trigger
 Timer trigger
 ```
 
-A függvény kódja a megadott nevű almappában jön létre, ahogy az a következő üzenetsor-trigger kimenetében látható:
+Function code is generated in a subfolder with the provided function name, as you can see in the following queue trigger output:
 
 ```output
 Select a language: Select a template: Queue trigger
@@ -274,34 +270,34 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 ```
 
-Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
+You can also specify these options in the command using the following arguments:
 
 | Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (2. x verzió) Ugyanazokat C# a szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
-| **`--language -l`**| A sablon programozási nyelve, például C#, F#, vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x verzióban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
-| **`--name -n`** | A függvény neve. |
-| **`--template -t`** | Az `func templates list` parancs használatával megtekintheti az elérhető sablonok teljes listáját az egyes támogatott nyelvekhez.   |
+| **`--csx`** | (Version 2.x) Generates the same C# script (.csx) templates used in version 1.x and in the portal. |
+| **`--language -l`**| The template programming language, such as C#, F#, or JavaScript. This option is required in version 1.x. In version 2.x, do not use this option or choose a language that matches the worker runtime. |
+| **`--name -n`** | The function name. |
+| **`--template -t`** | Use the `func templates list` command to see the complete list of available templates for each supported language.   |
 
-Ha például JavaScript HTTP-triggert szeretne létrehozni egyetlen parancsban, futtassa a következőt:
+For example, to create a JavaScript HTTP trigger in a single command, run:
 
 ```bash
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
-Ha üzenetsor által aktivált függvényt szeretne létrehozni egyetlen parancsban, futtassa a következőt:
+To create a queue-triggered function in a single command, run:
 
 ```bash
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
-## <a name="start"></a>Függvények helyi futtatása
+## <a name="start"></a>Run functions locally
 
-Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép lehetővé teszi az eseményindítók használatát a projektben lévő összes függvénynél. 
+To run a Functions project, run the Functions host. The host enables triggers for all functions in the project. 
 
-### <a name="version-2x"></a>2-es verzió. x
+### <a name="version-2x"></a>Version 2.x
 
-A futtatókörnyezet 2. x verziójában a Start parancs a projekt nyelvétől függően változhat.
+In version 2.x of the runtime, the start command varies, depending on your project language.
 
 #### <a name="c"></a>C\#
 
@@ -322,32 +318,32 @@ npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>1\. x verzió
+### <a name="version-1x"></a>Version 1.x
 
-A functions futtatókörnyezet 1. x verziójának a `host` parancsot kell megadnia, ahogy az alábbi példában is látható:
+Version 1.x of the Functions runtime requires the `host` command, as in the following example:
 
 ```command
 func host start
 ```
 
-`func start` a következő lehetőségeket támogatja:
+`func start` supports the following options:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Csak 2. x verzió. |
-| **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak `--useHttps`használatos. Csak 2. x verzió. |
-| **`--cors-credentials`** | A csak a cookie-k és a hitelesítési fejlécek használatának engedélyezése csak a 2. x verzióban. |
-| **`--cors`** | A CORS-eredetek vesszővel tagolt listája, szóközök nélkül. |
-| **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Csak 2. x verzió. |
-| **`--nodeDebugPort -n`** | A csomópont-hibakereső által használandó port. Default (alapértelmezett): A Launch. JSON vagy A 5858 érték. Csak 1. x verzió. |
-| **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak `--cert`használatos. Csak 2. x verzió. |
-| **`--port -p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
-| **`--pause-on-error`** | A folyamat bezárása előtt szüneteltesse a további adatokat. Csak akkor használható, ha egy integrált fejlesztői környezetből (IDE) indít alapszintű eszközöket.|
-| **`--script-root --prefix`** | A futtatni vagy telepíteni kívánt Function alkalmazás gyökeréhez tartozó elérési út megadására szolgál. Ez olyan lefordított projektek esetében használatos, amelyek a projektfájlok almappában hozhatók elő. Ha például létrehoz egy C# Class Library-projektet, a Host. JSON, a local. Settings. JSON és a function. JSON fájlok egy olyan *gyökérkönyvtárban* jönnek létre, amelynek elérési útja például a `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben az előtagot `--script-root MyProject/bin/Debug/netstandard2.0`ként kell beállítani. Ez a Function alkalmazás gyökere, ha az Azure-ban fut. |
-| **`--timeout -t`** | A függvények gazdagépének időtúllépése másodpercben. Alapértelmezett: 20 másodperc.|
-| **`--useHttps`** | `https://localhost:{port}` kötése a `http://localhost:{port}`helyett. Alapértelmezés szerint ez a beállítás megbízható tanúsítványt hoz létre a számítógépen.|
+| **`--no-build`** | Do no build current project before running. For dotnet projects only. Default is set to false. Version 2.x only. |
+| **`--cert`** | The path to a .pfx file that contains a private key. Only used with `--useHttps`. Version 2.x only. |
+| **`--cors-credentials`** | Allow cross-origin authenticated requests (i.e. cookies and the Authentication header) Version 2.x only. |
+| **`--cors`** | A comma-separated list of CORS origins, with no spaces. |
+| **`--language-worker`** | Arguments to configure the language worker. Version 2.x only. |
+| **`--nodeDebugPort -n`** | The port for the node debugger to use. Default: A value from launch.json or 5858. Version 1.x only. |
+| **`--password`** | Either the password or a file that contains the password for a .pfx file. Only used with `--cert`. Version 2.x only. |
+| **`--port -p`** | The local port to listen on. Default value: 7071. |
+| **`--pause-on-error`** | Pause for additional input before exiting the process. Used only when launching Core Tools from an integrated development environment (IDE).|
+| **`--script-root --prefix`** | Used to specify the path to the root of the function app that is to be run or deployed. This is used for compiled projects that generate project files into a subfolder. For example, when you build a C# class library project, the host.json, local.settings.json, and function.json files are generated in a *root* subfolder with a path like `MyProject/bin/Debug/netstandard2.0`. In this case, set the prefix as `--script-root MyProject/bin/Debug/netstandard2.0`. This is the root of the function app when running in Azure. |
+| **`--timeout -t`** | The timeout for the Functions host to start, in seconds. Default: 20 seconds.|
+| **`--useHttps`** | Bind to `https://localhost:{port}` rather than to `http://localhost:{port}`. By default, this option creates a trusted certificate on your computer.|
 
-A functions-gazdagép indításakor a HTTP-triggert függvények URL-címét adja meg:
+When the Functions host starts, it outputs the URL of HTTP-triggered functions:
 
 ```output
 Found the following functions:
@@ -358,48 +354,48 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->A helyileg futtatott hitelesítés nem kényszeríti ki a HTTP-végpontokat. Ez azt jelenti, hogy az összes helyi HTTP-kérelem `authLevel = "anonymous"`-ként van kezelve. További információkért lásd a http- [kötést ismertető cikket](functions-bindings-http-webhook.md#authorization-keys).
+>When running locally, authentication isn't enforced for HTTP endpoints. This means that all local HTTP requests are handled as `authLevel = "anonymous"`. For more information, see the [HTTP binding article](functions-bindings-http-webhook.md#authorization-keys).
 
-### <a name="passing-test-data-to-a-function"></a>Tesztelési adat átadása egy függvénynek
+### <a name="passing-test-data-to-a-function"></a>Passing test data to a function
 
-A függvények helyi teszteléséhez [indítsa el a functions gazdagépet](#start) , és hívja meg a végpontokat a helyi kiszolgálón a HTTP-kérelmek használatával. A hívott végpont a függvény típusától függ.
+To test your functions locally, you [start the Functions host](#start) and call endpoints on the local server using HTTP requests. The endpoint you call depends on the type of function.
 
 >[!NOTE]
-> A jelen témakörben szereplő példák a cURL eszközzel küldenek HTTP-kéréseket a terminálról vagy egy parancssorból. Az Ön által választott eszköz használatával HTTP-kéréseket küldhet a helyi kiszolgálónak. A cURL eszköz alapértelmezés szerint a Linux-alapú rendszereken és a Windows 10-es Build 17063-es és újabb verzióiban érhető el. A régebbi Windows rendszeren először le kell töltenie és telepítenie kell a [curl eszközt](https://curl.haxx.se/).
+> Examples in this topic use the cURL tool to send HTTP requests from the terminal or a command prompt. You can use a tool of your choice to send HTTP requests to the local server. The cURL tool is available by default on Linux-based systems and Windows 10 build 17063 and later. On older Windows, you must first download and install the [cURL tool](https://curl.haxx.se/).
 
-A tesztelési funkciókkal kapcsolatos általánosabb információkért lásd: [stratégiák a kód teszteléséhez Azure functions](functions-test-a-function.md).
+For more general information on testing functions, see [Strategies for testing your code in Azure Functions](functions-test-a-function.md).
 
-#### <a name="http-and-webhook-triggered-functions"></a>A HTTP és a webhook által aktivált függvények
+#### <a name="http-and-webhook-triggered-functions"></a>HTTP and webhook triggered functions
 
-A következő végpontot hívja meg helyileg a HTTP és a webhook által aktivált függvények futtatásához:
+You call the following endpoint to locally run HTTP and webhook triggered functions:
 
     http://localhost:{port}/api/{function_name}
 
-Győződjön meg arról, hogy ugyanazt a kiszolgálónevet és portot használja, amelyet a functions-gazdagép figyel. Ez a függvény gazdagépének indításakor generált kimenetben jelenik meg. Ezt az URL-címet bármely, az trigger által támogatott HTTP-módszerrel meghívhatja.
+Make sure to use the same server name and port that the Functions host is listening on. You see this in the output generated when starting the Function host. You can call this URL using any HTTP method supported by the trigger.
 
-A következő cURL-parancs elindítja a `MyHttpTrigger` rövid útmutató függvényt egy GET kérelemből a lekérdezési karakterláncban átadott _Name_ paraméterrel.
+The following cURL command triggers the `MyHttpTrigger` quickstart function from a GET request with the _name_ parameter passed in the query string.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-A következő példa ugyanazt a függvényt _hívja meg a_ kérelem törzsében a post kérelem átadásakor:
+The following example is the same function called from a POST request passing _name_ in the request body:
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-A lekérdezési karakterláncban található adatok beolvasása egy böngészőből is elvégezhető. Minden más HTTP-módszer esetében a cURL, a Hegedűs, a Poster vagy egy hasonló HTTP-tesztelési eszközt kell használnia.
+You can make GET requests from a browser passing data in the query string. For all other HTTP methods, you must use cURL, Fiddler, Postman, or a similar HTTP testing tool.
 
-#### <a name="non-http-triggered-functions"></a>Nem HTTP által aktivált függvények
+#### <a name="non-http-triggered-functions"></a>Non-HTTP triggered functions
 
-A HTTP-triggereken és webhookokon kívüli egyéb függvények esetében az adminisztrációs végpont meghívásával helyileg is tesztelheti a függvényeket. Ha ezt a végpontot egy HTTP POST-kérelemmel hívja meg a helyi kiszolgálón, a függvényt indítja el. Szükség esetén a POST kérelem törzsében is elvégezheti a tesztelési célú adatellenőrzést. Ez a funkció hasonló a Azure Portal **teszt** lapjához.
+For all kinds of functions other than HTTP triggers and webhooks, you can test your functions locally by calling an administration endpoint. Calling this endpoint with an HTTP POST request on the local server triggers the function. You can optionally pass test data to the execution in the body of the POST request. This functionality is similar to the **Test** tab in the Azure portal.
 
-A nem HTTP-függvények elindításához a következő rendszergazdai végpontot kell meghívni:
+You call the following administrator endpoint to trigger non-HTTP functions:
 
     http://localhost:{port}/admin/functions/{function_name}
 
-Ahhoz, hogy egy függvény rendszergazdai végpontján át lehessen adni a tesztelési feladatokat, meg kell adnia a POST kérelem üzenet törzsében lévő összes adatát. Az üzenet törzsének a következő JSON-formátummal kell rendelkeznie:
+To pass test data to the administrator endpoint of a function, you must supply the data in the body of a POST request message. The message body is required to have the following JSON format:
 
 ```JSON
 {
@@ -407,128 +403,128 @@ Ahhoz, hogy egy függvény rendszergazdai végpontján át lehessen adni a teszt
 }
 ```
 
-A `<trigger_input>` érték a függvény által várt formátumú értékeket tartalmaz. A következő cURL-példa egy `QueueTriggerJS` függvény BEJEGYZÉSe. Ebben az esetben a bemenet egy karakterlánc, amely egyenértékű a várólistában várható üzenettel.
+The `<trigger_input>` value contains data in a format expected by the function. The following cURL example is a POST to a `QueueTriggerJS` function. In this case, the input is a string that is equivalent to the message expected to be found in the queue.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
 ```
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>A `func run` parancs használata az 1. x verzióban
+#### <a name="using-the-func-run-command-in-version-1x"></a>Using the `func run` command in version 1.x
 
 >[!IMPORTANT]
-> Az `func run` parancs nem támogatott az eszközök 2. x verziójában. További információ: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
+> The `func run` command is not supported in version 2.x of the tools. For more information, see the topic [How to target Azure Functions runtime versions](set-runtime-version.md).
 
-A függvényeket közvetlenül a `func run <FunctionName>` használatával is meghívhatja, és bemeneti adatokat is megadhat a függvénynek. Ez a parancs hasonló egy függvény futtatásához a Azure Portal **teszt** lapján.
+You can also invoke a function directly by using `func run <FunctionName>` and provide input data for the function. This command is similar to running a function using the **Test** tab in the Azure portal.
 
-`func run` a következő lehetőségeket támogatja:
+`func run` supports the following options:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | Beágyazott tartalom. |
-| **`--debug -d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
-| **`--timeout -t`** | Várakozási idő (másodpercben), amíg a helyi függvények gazdagépe nem áll készen.|
-| **`--file -f`** | A tartalomként használandó fájlnév.|
-| **`--no-interactive`** | A nem kéri a bevitelt. Automatizálási forgatókönyvek esetén hasznos.|
+| **`--content -c`** | Inline content. |
+| **`--debug -d`** | Attach a debugger to the host process before running the function.|
+| **`--timeout -t`** | Time to wait (in seconds) until the local Functions host is ready.|
+| **`--file -f`** | The file name to use as content.|
+| **`--no-interactive`** | Does not prompt for input. Useful for automation scenarios.|
 
-Ha például egy HTTP-triggert használó függvényt szeretne meghívni, és tartalmat kell átadnia, futtassa a következő parancsot:
+For example, to call an HTTP-triggered function and pass content body, run the following command:
 
 ```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish"></a>Közzététel az Azure-ban
+## <a name="publish"></a>Publish to Azure
 
-A Azure Functions Core Tools kétféle telepítési típust támogat: a Function-projektfájlok közvetlen üzembe helyezése a Function alkalmazásban a [zip üzembe helyezésével](functions-deployment-technologies.md#zip-deploy) és az [Egyéni Docker-tároló üzembe helyezésével](functions-deployment-technologies.md#docker-container). Már létre kell hoznia [egy Function alkalmazást az Azure-előfizetésében](functions-cli-samples.md#create), amelyre telepíteni fogja a kódot. A fordítást igénylő projekteket úgy kell felépíteni, hogy a bináris fájlok üzembe helyezhetők legyenek.
+The Azure Functions Core Tools supports two types of deployment: deploying function project files directly to your function app via [Zip Deploy](functions-deployment-technologies.md#zip-deploy) and [deploying a custom Docker container](functions-deployment-technologies.md#docker-container). You must have already [created a function app in your Azure subscription](functions-cli-samples.md#create), to which you'll deploy your code. Projects that require compilation should be built so that the binaries can be deployed.
 
-A Project mappa olyan nyelvspecifikus fájlokat és címtárakat tartalmazhat, amelyeket nem lehet közzétenni. A kizárt elemek a legfelső szintű projekt mappában található. funcignore fájlban szerepelnek.     
+A project folder may contain language-specific files and directories that shouldn't be published. Excluded items are listed in a .funcignore file in the root project folder.     
 
-### <a name="project-file-deployment"></a>Üzembe helyezés (projektfájlok)
+### <a name="project-file-deployment"></a>Deployment (project files)
 
-Ha a helyi kódot egy Azure-beli Function alkalmazásban szeretné közzétenni, használja a `publish` parancsot:
+To publish your local code to a function app in Azure, use the `publish` command:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hibaüzenet jelenik meg, ha olyan `<FunctionAppName>` tesz közzé, amely nem létezik az előfizetésben. Ha szeretné megtudni, hogyan hozhat létre egy Function alkalmazást a parancssorból vagy a terminál ablakból az Azure CLI használatával, tekintse meg [a Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md)című témakört. Alapértelmezés szerint ez a parancs [távoli buildet](functions-deployment-technologies.md#remote-build) használ, és üzembe helyezi az alkalmazást [a központi telepítési csomagból való futtatásra](run-functions-from-deployment-package.md). Az ajánlott telepítési mód letiltásához használja a `--nozip` kapcsolót.
+This command publishes to an existing function app in Azure. You'll get an error if you try to publish to a `<FunctionAppName>` that doesn't exist in your subscription. To learn how to create a function app from the command prompt or terminal window using the Azure CLI, see [Create a Function App for serverless execution](./scripts/functions-cli-create-serverless.md). By default, this command uses [remote build](functions-deployment-technologies.md#remote-build) and deploys your app to [run from the deployment package](run-functions-from-deployment-package.md). To disable this recommended deployment mode, use the `--nozip` option.
 
 >[!IMPORTANT]
-> Ha a Azure Portalban hoz létre egy Function alkalmazást, a függvény alapértelmezés szerint a Function Runtime 2. x verzióját használja. Ha azt szeretné, hogy a Function app a futtatókörnyezet 1. x verzióját használja, kövesse az [1. x verzió futtatásának](functions-versions.md#creating-1x-apps)utasításait.
-> Egy meglévő függvényt tartalmazó Function alkalmazás futásidejű verziója nem módosítható.
+> When you create a function app in the Azure portal, it uses version 2.x of the Function runtime by default. To make the function app use version 1.x of the runtime, follow the instructions in [Run on version 1.x](functions-versions.md#creating-1x-apps).
+> You can't change the runtime version for a function app that has existing functions.
 
-A következő közzétételi beállítások mindkét verzióra érvényesek: 1. x és 2. x.
+The following publish options apply for both versions, 1.x and 2.x:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  A beállítások közzététele a local. Settings. JSON fájlban az Azure-ba, ha a beállítás már létezik, a rendszer megkéri a felülírásra. Ha a Storage emulatort használja, először módosítsa az alkalmazás beállításait egy [tényleges Storage-kapcsolatban](#get-your-storage-connection-strings). |
-| **`--overwrite-settings -y`** | `--publish-local-settings -i` használatakor a rendszer letiltja az Alkalmazásbeállítások felülírását.|
+| **`--publish-local-settings -i`** |  Publish settings in local.settings.json to Azure, prompting to overwrite if the setting already exists. If you are using the storage emulator, first change the app setting to an [actual storage connection](#get-your-storage-connection-strings). |
+| **`--overwrite-settings -y`** | Suppress the prompt to overwrite app settings when `--publish-local-settings -i` is used.|
 
-A következő közzétételi beállítások csak a 2. x verzióban támogatottak:
+The following publish options are only supported in version 2.x:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
-|**`--list-ignored-files`** | A közzététel során figyelmen kívül hagyott fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
-| **`--list-included-files`** | A közzétett fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
-| **`--nozip`** | Kikapcsolja az alapértelmezett `Run-From-Package` módot. |
-| **`--build-native-deps`** | Kihagyja a generálás. Wheels mappát a Python-függvények alkalmazásainak közzétételekor. |
-| **`--build`**<br/>**`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. Elfogadva: `remote` és `local`. |
-| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Például: `python3-dev libevent-dev`. |
-| **`--force`** | Bizonyos helyzetekben figyelmen kívül hagyhatja a közzététel előtti ellenőrzést. |
-| **`--csx`** | C# Parancsfájl-(. CSX) projekt közzététele. |
-| **`--no-build`** | Ne hozzon létre .NET-osztálybeli függvénytár-függvényeket. |
-| **`--dotnet-cli-params`** | A lefordított C# (. csproj) függvények közzétételekor a Core Tools a "DotNet Build-output bin/publish" metódust hívja meg. Az erre átadott paraméterek a parancssorhoz lesznek hozzáfűzve. |
+| **`--publish-settings-only -o`** |  Only publish settings and skip the content. Default is prompt. |
+|**`--list-ignored-files`** | Displays a list of files that are ignored during publishing, which is based on the .funcignore file. |
+| **`--list-included-files`** | Displays a list of files that are published, which is based on the .funcignore file. |
+| **`--nozip`** | Turns the default `Run-From-Package` mode off. |
+| **`--build-native-deps`** | Skips generating .wheels folder when publishing python function apps. |
+| **`--build`**<br/>**`-b`** | Performs build action when deploying to a Linux function app. Accepts: `remote` and `local`. |
+| **`--additional-packages`** | List of packages to install when building native dependencies. Például: `python3-dev libevent-dev`. |
+| **`--force`** | Ignore pre-publishing verification in certain scenarios. |
+| **`--csx`** | Publish a C# script (.csx) project. |
+| **`--no-build`** | Don't build .NET class library functions. |
+| **`--dotnet-cli-params`** | When publishing compiled C# (.csproj) functions, the core tools calls 'dotnet build --output bin/publish'. Any parameters passed to this will be appended to the command line. |
 
-### <a name="deployment-custom-container"></a>Üzembe helyezés (egyéni tároló)
+### <a name="deployment-custom-container"></a>Deployment (custom container)
 
-Azure Functions lehetővé teszi a Function projekt üzembe helyezését egy [Egyéni Docker-tárolóban](functions-deployment-technologies.md#docker-container). További információkért lásd: [függvény létrehozása Linuxon egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md). Az egyéni tárolók Docker kell rendelkezniük. Ha Docker szeretne létrehozni egy alkalmazást, használja az--Docker kapcsolót `func init`on.
+Azure Functions lets you deploy your function project in a [custom Docker container](functions-deployment-technologies.md#docker-container). For more information, see [Create a function on Linux using a custom image](functions-create-function-linux-custom-image.md). Custom containers must have a Dockerfile. To create an app with a Dockerfile, use the --dockerfile option on `func init`.
 
 ```bash
 func deploy
 ```
 
-A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
+The following custom container deployment options are available:
 
-| Beállítás     | Leírás                            |
+| Lehetőség     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--registry`** | Annak a Docker-beállításjegyzéknek a neve, amelyre az aktuális felhasználó bejelentkezett. |
-| **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők `kubernetes` |
-| **`--name`** | Function alkalmazás neve. |
-| **`--max`**  | Igény szerint beállíthatja a alkalmazásban telepítendő Function app-példányok maximális számát. |
-| **`--min`**  | Igény szerint beállíthatja az alkalmazásban telepítendő Function app-példányok minimális számát. |
-| **`--config`** | Egy opcionális telepítési konfigurációs fájl beállítása. |
+| **`--registry`** | The name of a Docker Registry the current user signed-in to. |
+| **`--platform`** | Hosting platform for the function app. Valid options are `kubernetes` |
+| **`--name`** | Function app name. |
+| **`--max`**  | Optionally, sets the maximum number of function app instances to deploy to. |
+| **`--min`**  | Optionally, sets the minimum number of function app instances to deploy to. |
+| **`--config`** | Sets an optional deployment configuration file. |
 
-## <a name="monitoring-functions"></a>Figyelési függvények
+## <a name="monitoring-functions"></a>Monitoring functions
 
-A függvények végrehajtásának ajánlott figyelése az Azure Application Insights integrálásával történik. A végrehajtási naplókat a helyi számítógépre is továbbíthatja. További információért lásd: [Azure functions figyelése](functions-monitoring.md).
+The recommended way to monitor the execution of your functions is by integrating with Azure Application Insights. You can also stream execution logs to your local computer. To learn more, see [Monitor Azure Functions](functions-monitoring.md).
 
-### <a name="enable-application-insights-integration"></a>Application Insights integráció engedélyezése
+### <a name="enable-application-insights-integration"></a>Enable Application Insights integration
 
-Ha a Azure Portalban hoz létre egy Function alkalmazást, a rendszer alapértelmezés szerint a Application Insights-integrációt végzi. Ha azonban az Azure CLI használatával hozza létre a Function alkalmazást, az Azure-beli Function alkalmazásban nem történik meg az integráció.
+When you create a function app in the Azure portal, the Application Insights integration is done for you by default. However, when you create your function app by using the Azure CLI, the integration in your function app in Azure isn't done.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-### <a name="enable-streaming-logs"></a>Folyamatos átviteli naplók engedélyezése
+### <a name="enable-streaming-logs"></a>Enable streaming logs
 
-Megtekintheti a függvények által a helyi számítógépen lévő parancssori munkamenetben létrehozott naplófájlok streamjét. 
+You can view a stream of log files being generated by your functions in a command-line session on your local computer. 
 
-#### <a name="native-streaming-logs"></a>Natív adatfolyam-naplók
+#### <a name="native-streaming-logs"></a>Native streaming logs
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Az ilyen típusú folyamatos átviteli naplókhoz [engedélyeznie kell Application Insights integrációját](#enable-application-insights-integration) a Function alkalmazáshoz.   
+This type of streaming logs requires that you [enable Application Insights integration](#enable-application-insights-integration) for your function app.   
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Azure Functions Core Tools [nyílt forráskódú, és a githubon fut](https://github.com/azure/azure-functions-cli).  
-Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).
+Azure Functions Core Tools is [open source and hosted on GitHub](https://github.com/azure/azure-functions-cli).  
+To file a bug or feature request, [open a GitHub issue](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure Portalra]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[bővítmények]: functions-bindings-register.md#extension-bundles
+[extension bundles]: functions-bindings-register.md#extension-bundles

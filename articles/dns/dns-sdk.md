@@ -1,7 +1,7 @@
 ---
-title: DNS-zónák és-rekordhalmazok létrehozása a .NET SDK használatával
+title: Create DNS zones and record sets using the .NET SDK
 titleSuffix: Azure DNS
-description: DNS-zónák és-rekordhalmazok létrehozása a Azure DNSban a .NET SDK használatával.
+description: In this learning path, get started creating DNS zones and record sets in Azure DNS by using the .NET SDK.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: allensu
-ms.openlocfilehash: b51dd4ea3b36a9d0420a60883ebc29276a7d6b8a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0dd57bb30a993baadac41552669a629aaaaff6df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076708"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210958"
 ---
-# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zónák és-rekordhalmazok létrehozása a .NET SDK használatával
+# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Create DNS zones and record sets using the .NET SDK
 
-A DNS-zónák,-rekordhalmazok és-rekordok létrehozásához, törléséhez vagy frissítéséhez a .NET DNS felügyeleti könyvtár használatával automatizálhatja a műveleteket. A teljes Visual Studio-projekt itt érhető el [.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
+You can automate operations to create, delete, or update DNS zones, record sets, and records by using the DNS SDK with the .NET DNS Management library. A full Visual Studio project is available [here.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
 
-## <a name="create-a-service-principal-account"></a>Egyszerű szolgáltatásnév fiók létrehozása
+## <a name="create-a-service-principal-account"></a>Create a service principal account
 
-Az Azure-erőforrásokhoz való programozott hozzáférést általában a saját felhasználói hitelesítő adatai helyett egy dedikált fiókon keresztül biztosítjuk. Ezeket a dedikált fiókokat "egyszerű szolgáltatásnév" fiókoknak nevezzük. Az Azure DNS SDK-minta projekt használatához először létre kell hoznia egy egyszerű szolgáltatásnevet, és hozzá kell rendelnie a megfelelő engedélyeket.
+Typically, programmatic access to Azure resources is granted via a dedicated account rather than your own user credentials. These dedicated accounts are called 'service principal' accounts. To use the Azure DNS SDK sample project, you first need to create a service principal account and assign it the correct permissions.
 
-1. Az [alábbi útmutatást](../active-directory/develop/howto-authenticate-service-principal-powershell.md) követve hozzon létre egy egyszerű szolgáltatásnevet (a Azure DNS SDK Sample Project jelszó alapú hitelesítést feltételez.)
-2. Hozzon létre egy erőforráscsoportot (a[következőképpen](../azure-resource-manager/resource-group-template-deploy-portal.md)).
-3. Az Azure RBAC használatával adja meg a "DNS-zóna közreműködői" jogosultságokat az erőforráscsoporthoz (a következő[módon](../role-based-access-control/role-assignments-portal.md):.)
-4. Ha a Azure DNS SDK-minta projektet használja, szerkessze a "program. cs" fájlt a következőképpen:
+1. Follow [these instructions](../active-directory/develop/howto-authenticate-service-principal-powershell.md) to create a service principal account (the Azure DNS SDK sample project assumes password-based authentication.)
+2. Create a resource group ([here's how](../azure-resource-manager/resource-group-template-deploy-portal.md)).
+3. Use Azure RBAC to grant the service principal account 'DNS Zone Contributor' permissions to the resource group ([here's how](../role-based-access-control/role-assignments-portal.md).)
+4. If using the Azure DNS SDK sample project, edit the 'program.cs' file as follows:
 
-   * Szúrja be a megfelelő értékeket a `tenantId`, `clientId` (más néven fiókazonosító), `secret` (egyszerű szolgáltatásnév) és `subscriptionId` az 1. lépésben használt módon.
-   * Adja meg a 2. lépésben kiválasztott erőforráscsoport-nevet.
-   * Adja meg a választott DNS-zóna nevét.
+   * Insert the correct values for the `tenantId`, `clientId` (also known as account ID), `secret` (service principal account password) and `subscriptionId` as used in step 1.
+   * Enter the resource group name chosen in step 2.
+   * Enter a DNS zone name of your choice.
 
-## <a name="nuget-packages-and-namespace-declarations"></a>NuGet-csomagok és névtér-deklarációk
+## <a name="nuget-packages-and-namespace-declarations"></a>NuGet packages and namespace declarations
 
-A Azure DNS .NET SDK használatához telepítenie kell a **Azure DNS Management Library** NuGet csomagot és az egyéb szükséges Azure-csomagokat.
+To use the Azure DNS .NET SDK, you need to install the **Azure DNS Management Library** NuGet package and other required Azure packages.
 
-1. Nyisson meg egy projektet vagy egy új projektet a **Visual Studióban**.
-2. Nyissa meg az **eszközök** **>** **NuGet csomagkezelő** **>** **a megoldáshoz tartozó NuGet-csomagok kezelése...** lehetőséget.
-3. Kattintson a **Tallózás**gombra, engedélyezze az **előzetes kiadás belefoglalása** jelölőnégyzetet, és írja be a **Microsoft. Azure. Management. DNS** kifejezést a keresőmezőbe.
-4. Válassza ki a csomagot, majd a **telepítés** gombra kattintva adja hozzá a Visual Studio-projekthez.
-5. A fenti folyamat megismétlésével telepítse a következő csomagokat is: **Microsoft. Rest. ClientRuntime. Azure. Authentication** és **Microsoft. Azure. Management. erőforráskezelő**.
+1. In **Visual Studio**, open a project or new project.
+2. Go to **Tools** **>** **NuGet Package Manager** **>** **Manage NuGet Packages for Solution...** .
+3. Click **Browse**, enable the **Include prerelease** checkbox, and type **Microsoft.Azure.Management.Dns** into the search box.
+4. Select the package and click **Install** to add it to your Visual Studio project.
+5. Repeat the process above to also install the following packages: **Microsoft.Rest.ClientRuntime.Azure.Authentication** and **Microsoft.Azure.Management.ResourceManager**.
 
 ## <a name="add-namespace-declarations"></a>Névtér-deklarációk hozzáadása
 
-Adja hozzá a következő névtér-deklarációkat
+Add the following namespace declarations
 
 ```cs
 using Microsoft.Rest.Azure.Authentication;
@@ -58,9 +58,9 @@ using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
 ```
 
-## <a name="initialize-the-dns-management-client"></a>A DNS-kezelő ügyfél inicializálása
+## <a name="initialize-the-dns-management-client"></a>Initialize the DNS management client
 
-A `DnsManagementClient` a DNS-zónák és-rekordhalmazok kezeléséhez szükséges metódusokat és tulajdonságokat tartalmazza.  A következő kód bejelentkezik a egyszerű szolgáltatásnév fiókjába, és létrehoz egy `DnsManagementClient` objektumot.
+The `DnsManagementClient` contains the methods and properties necessary for managing DNS zones and record sets.  The following code logs into the service principal account and creates a `DnsManagementClient` object.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -69,16 +69,16 @@ var dnsClient = new DnsManagementClient(serviceCreds);
 dnsClient.SubscriptionId = subscriptionId;
 ```
 
-## <a name="create-or-update-a-dns-zone"></a>DNS-zóna létrehozása vagy frissítése
+## <a name="create-or-update-a-dns-zone"></a>Create or update a DNS zone
 
-DNS-zóna létrehozásához először a "Zone" objektum jön létre, amely tartalmazza a DNS-zóna paramétereit. Mivel a DNS-zónák nincsenek egy adott régióhoz kapcsolva, a hely a "Global" értékre van állítva. Ebben a példában egy [Azure Resource Manager "tag"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) is hozzá van adva a zónához.
+To create a DNS zone, first a "Zone" object is created to contain the DNS zone parameters. Because DNS zones are not linked to a specific region, the location is set to 'global'. In this example, an [Azure Resource Manager 'tag'](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) is also added to the zone.
 
-Ahhoz, hogy ténylegesen létrehozza vagy frissítse a zónát Azure DNSban, a rendszer a zóna paramétereit tartalmazó zónát adja át a `DnsManagementClient.Zones.CreateOrUpdateAsyc` metódusnak.
+To actually create or update the zone in Azure DNS, the zone object containing the zone parameters is passed to the `DnsManagementClient.Zones.CreateOrUpdateAsyc` method.
 
 > [!NOTE]
-> A DnsManagementClient három működési módot támogat: szinkron ("CreateOrUpdate"), aszinkron ("CreateOrUpdateAsync"), vagy aszinkron módon a HTTP-válaszhoz való hozzáféréssel ("CreateOrUpdateWithHttpMessagesAsync").  Az alkalmazás igényeitől függően bármelyik mód közül választhat.
+> DnsManagementClient supports three modes of operation: synchronous ('CreateOrUpdate'), asynchronous ('CreateOrUpdateAsync'), or asynchronous with access to the HTTP response ('CreateOrUpdateWithHttpMessagesAsync').  You can choose any of these modes, depending on your application needs.
 
-Azure DNS támogatja a [etagek](dns-getstarted-create-dnszone.md)nevű optimista egyidejűséget. Ebben a példában a "Ha-None-Match" fejlécnél a "*" értéket kell megadnia, amely azt jelzi, hogy az Azure DNS DNS-zónát hoz létre, ha még nem létezik ilyen.  A hívás sikertelen, ha a megadott nevű zóna már létezik a megadott erőforráscsoporthoz.
+Azure DNS supports optimistic concurrency, called [Etags](dns-getstarted-create-dnszone.md). In this example, specifying "*" for the 'If-None-Match' header tells Azure DNS to create a DNS zone if one does not already exist.  The call fails if a zone with the given name already exists in the given resource group.
 
 ```cs
 // Create zone parameters
@@ -95,13 +95,13 @@ dnsZoneParams.Tags.Add("dept", "finance");
 var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneName, dnsZoneParams, null, "*");
 ```
 
-## <a name="create-dns-record-sets-and-records"></a>DNS-rekordhalmazok és-rekordok létrehozása
+## <a name="create-dns-record-sets-and-records"></a>Create DNS record sets and records
 
-A DNS-rekordok rekordhalmazként vannak kezelve. A rekordhalmaz a zónán belüli azonos nevű és bejegyzéstípusú rekordok halmaza.  A rekordazonosító neve a zóna nevéhez képest nem a teljesen minősített DNS-név.
+DNS records are managed as a record set. A record set is a set of records with the same name and record type within a zone.  The record set name is relative to the zone name, not the fully qualified DNS name.
 
-Rekordhalmaz létrehozásához vagy frissítéséhez létre kell hozni egy "RecordSet" paramétereket, és át kell adni a `DnsManagementClient.RecordSets.CreateOrUpdateAsync`nak. A DNS-zónákhoz hasonlóan három működési mód van: szinkron ("CreateOrUpdate"), aszinkron ("CreateOrUpdateAsync") vagy aszinkron, a HTTP-válaszhoz való hozzáféréssel ("CreateOrUpdateWithHttpMessagesAsync").
+To create or update a record set, a "RecordSet" parameters object is created and passed to `DnsManagementClient.RecordSets.CreateOrUpdateAsync`. As with DNS zones, there are three modes of operation: synchronous ('CreateOrUpdate'), asynchronous ('CreateOrUpdateAsync'), or asynchronous with access to the HTTP response ('CreateOrUpdateWithHttpMessagesAsync').
 
-A DNS-zónákhoz hasonlóan a rekordhalmazok műveletei támogatják az optimista párhuzamosságot is.  Ebben a példában, mivel nincs megadva a "If-Match" és a "If-None-Match" érték, a rendszer mindig létrehozza a rekordot.  Ez a hívás felülírja a DNS-zónában található azonos nevű és bejegyzéstípusú meglévő rekordot.
+As with DNS zones, operations on record sets include support for optimistic concurrency.  In this example, since neither 'If-Match' nor 'If-None-Match' are specified, the record set is always created.  This call overwrites any existing record set with the same name and record type in this DNS zone.
 
 ```cs
 // Create record set parameters
@@ -121,17 +121,17 @@ recordSetParams.Metadata.Add("user", "Mary");
 var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSetParams);
 ```
 
-## <a name="get-zones-and-record-sets"></a>Zónák és rekordhalmazok beolvasása
+## <a name="get-zones-and-record-sets"></a>Get zones and record sets
 
-A `DnsManagementClient.Zones.Get` és `DnsManagementClient.RecordSets.Get` metódusok egyéni zónákat és rekordhalmazokat kérdeznek le. A rekordhalmazok a típusuk, a neveik, valamint a zóna és az erőforráscsoport alapján vannak azonosítva. A zónákat a nevük és az abban található erőforráscsoport azonosítja.
+The `DnsManagementClient.Zones.Get` and `DnsManagementClient.RecordSets.Get` methods retrieve individual zones and record sets, respectively. RecordSets are identified by their type, name, and the zone and resource group they exist in. Zones are identified by their name and the resource group they exist in.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
 ```
 
-## <a name="update-an-existing-record-set"></a>Meglévő rekordazonosító frissítése
+## <a name="update-an-existing-record-set"></a>Update an existing record set
 
-Egy meglévő DNS-rekord frissítéséhez először le kell kérnie a készletet, majd frissítenie kell a rekord-készlet tartalmát, majd el kell küldenie a módosítást.  Ebben a példában a "ETAG" a "If-Match" paraméterben megadott beolvasott rekorddal van megadva. A hívás sikertelen, ha egy egyidejű művelet időközben módosította a rekordot.
+To update an existing DNS record set, first retrieve the record set, then update the record set contents, then submit the change.  In this example, we specify the 'Etag' from the retrieved record set in the 'If-Match' parameter. The call fails if a concurrent operation has modified the record set in the meantime.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -144,11 +144,11 @@ recordSet.ARecords.Add(new ARecord("5.6.7.8"));
 recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSet, recordSet.Etag);
 ```
 
-## <a name="list-zones-and-record-sets"></a>Zónák és rekordhalmazok listázása
+## <a name="list-zones-and-record-sets"></a>List zones and record sets
 
-A zónák listázásához használja a *DnsManagementClient. Zones. list...* metódusokat, amelyek támogatják az adott erőforráscsoport összes zónáját vagy az adott Azure-előfizetés összes zónáját (erőforráscsoportok között). A rekordhalmazok listázásához használja az *DnsManagementClient. recordsets. list...* metódusokat, amelyek támogatják az adott zónában lévő összes rekordhalmaz listázását, vagy csak egy adott típusú rekordhalmazt.
+To list zones, use the *DnsManagementClient.Zones.List...* methods, which support listing either all zones in a given resource group or all zones in a given Azure subscription (across resource groups.) To list record sets, use *DnsManagementClient.RecordSets.List...* methods, which support either listing all record sets in a given zone or only those record sets of a specific type.
 
-Vegye figyelembe, hogy ha olyan zónákat és rekordhalmazokat ad meg, amelyeket az eredmények oldalszámozásba foglalhatnak.  Az alábbi példa azt szemlélteti, hogyan lehet megismételni az eredményeket az eredmények oldalain. (A "2" mesterségesen kisméretű mérete a lapozás kényszerítésére szolgál. a gyakorlatban ezt a paramétert ki kell hagyni, és az alapértelmezett oldalméret van használatban.)
+Note  when listing zones and record sets that results may be paginated.  The following example shows how to iterate through the pages of results. (An artificially small page size of '2' is used to force paging; in practice this parameter should be omitted and the default page size used.)
 
 ```cs
 // Note: in this demo, we'll use a very small page size (2 record sets) to demonstrate paging
@@ -164,6 +164,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Töltse le a [Azure DNS .net SDK-minta projektet](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), amely további példákat tartalmaz a Azure DNS .net SDK használatáról, beleértve a más DNS-bejegyzéstípusokra vonatkozó példákat is.
+Download the [Azure DNS .NET SDK sample project](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), which includes further examples on how to use the Azure DNS .NET SDK, including examples for other DNS record types.

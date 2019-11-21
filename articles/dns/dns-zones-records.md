@@ -1,9 +1,9 @@
 ---
-title: A DNS-zónák és a Records áttekintése – Azure DNS | Microsoft Docs
-description: A DNS-zónák és-rekordok Microsoft Azure DNS-ben való üzemeltetésének támogatásának áttekintése.
+title: DNS Zones and Records overview - Azure DNS | Microsoft Docs
+description: Overview of support for hosting DNS zones and records in Microsoft Azure DNS.
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 editor: ''
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
@@ -14,140 +14,140 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: victorh
-ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.author: allensu
+ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832041"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211003"
 ---
-# <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és-rekordok áttekintése
+# <a name="overview-of-dns-zones-and-records"></a>Overview of DNS zones and records
 
-Ez az oldal ismerteti a tartományok, a DNS-zónák és a DNS-rekordok és-rekordhalmazok legfontosabb fogalmait, valamint azt, hogy ezek hogyan támogatottak Azure DNSban.
+This page explains the key concepts of domains, DNS zones, and DNS records and record sets, and how they are supported in Azure DNS.
 
-## <a name="domain-names"></a>Tartománynevek
+## <a name="domain-names"></a>Domain names
 
-A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „ **.** ”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”. A DNS-hierarchia tartományait globálisan osztják el, és a DNS-névkiszolgálók világszerte futnak.
+A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „ **.** ”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”. The domains in the DNS hierarchy are globally distributed, hosted by DNS name servers around the world.
 
-A tartománynév-regisztráló egy olyan szervezet, amely lehetővé teszi egy tartománynév (például `contoso.com`) megvásárlását.  A tartománynév megvásárlásával jogosult a név alatti DNS-hierarchia szabályozására, például lehetővé teszi, hogy a nevét `www.contoso.com` a vállalati webhelyre irányítsa. A regisztrátor a saját nevében üzemeltetheti a tartományt, vagy alternatív névkiszolgálók megadását is lehetővé teszi.
+A domain name registrar is an organization that allows you to purchase a domain name, such as `contoso.com`.  Purchasing a domain name gives you the right to control the DNS hierarchy under that name, for example allowing you to direct the name `www.contoso.com` to your company web site. The registrar may host the domain in its own name servers on your behalf, or allow you to specify alternative name servers.
 
-A Azure DNS globálisan elosztott, magas rendelkezésre állású névkiszolgáló-infrastruktúrát biztosít, amely a tartomány üzemeltetésére használható. A tartományok Azure DNS-ban való üzemeltetésével a DNS-rekordokat a többi Azure-szolgáltatáshoz hasonló hitelesítő adatokkal, API-kkal, eszközökkel, számlázással és támogatással kezelheti.
+Azure DNS provides a globally distributed, high-availability name server infrastructure, which you can use to host your domain. By hosting your domains in Azure DNS, you can manage your DNS records with the same credentials, APIs, tools, billing, and support as your other Azure services.
 
-A Azure DNS jelenleg nem támogatja a tartománynevek megvásárlását. Ha tartománynevet szeretne vásárolni, egy külső gyártótól származó tartománynév-regisztrálót kell használnia. A regisztrátor általában egy kis éves díjat számol fel. A tartományokat ezután a Azure DNS a DNS-rekordok kezeléséhez is üzemeltetheti. További információkért tekintse meg a [tartományok az Azure DNS-be való delegálását](dns-domain-delegation.md) ismertető cikket.
+Azure DNS does not currently support purchasing of domain names. If you want to purchase a domain name, you need to use a third-party domain name registrar. The registrar typically charges a small annual fee. The domains can then be hosted in Azure DNS for management of DNS records. További információkért tekintse meg a [tartományok az Azure DNS-be való delegálását](dns-domain-delegation.md) ismertető cikket.
 
-## <a name="dns-zones"></a>DNS-zónák
+## <a name="dns-zones"></a>DNS zones
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>DNS-rekordok
+## <a name="dns-records"></a>DNS records
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-### <a name="time-to-live"></a>Élettartam
+### <a name="time-to-live"></a>Time-to-live
 
-Az élettartam vagy a TTL érték azt határozza meg, hogy az ügyfelek mennyi ideig gyorsítótárazzák az egyes rekordokat az Újralekérdezés előtt. A fenti példában az élettartam 3600 másodperc vagy 1 óra.
+The time to live, or TTL, specifies how long each record is cached by clients before being requeried. In the above example, the TTL is 3600 seconds or 1 hour.
 
-A Azure DNSban az élettartam meg van adva a rekordhalmazhoz, nem minden rekord esetében, így ugyanazt az értéket használja a rendszer az adott rekordhalmazban lévő összes rekordhoz.  1 és 2 147 483 647 másodperc közötti TTL-értéket is megadhat.
+In Azure DNS, the TTL is specified for the record set, not for each record, so the same value is used for all records within that record set.  You can specify any TTL value between 1 and 2,147,483,647 seconds.
 
-### <a name="wildcard-records"></a>Helyettesítő rekordok
+### <a name="wildcard-records"></a>Wildcard records
 
-Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DNS_record) használatát is támogatja. A helyettesítő rekordok a megfelelő névvel rendelkező lekérdezésekre válaszként lesznek visszaadva (kivéve, ha a nem helyettesítő rekordhalmaz nem tartalmaz szorosabb egyezést). A Azure DNS az NS és a SOA kivételével az összes bejegyzéstípushoz támogatja a helyettesítő rekordhalmazokat.
+Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DNS_record) használatát is támogatja. Wildcard records are returned in response to any query with a matching name (unless there is a closer match from a non-wildcard record set). Azure DNS supports wildcard record sets for all record types except NS and SOA.
 
-Helyettesítő bejegyzéstípus létrehozásához használja a "\*" rekordazonosító-nevet. Azt is megteheti, hogy egy "\*" nevű nevet használ a bal szélső címkével, például: "\*. foo".
+To create a wildcard record set, use the record set name '\*'. Alternatively, you can also use a name with '\*' as its left-most label, for example, '\*.foo'.
 
-### <a name="caa-records"></a>CAA-rekordok
+### <a name="caa-records"></a>CAA records
 
-A CAA-rekordok lehetővé teszik, hogy a tartományi tulajdonosok megadják, hogy mely hitelesítésszolgáltatók (CA-k) jogosultak tanúsítványok kiadására a tartományuk számára. Ez lehetővé teszi, hogy a hitelesítésszolgáltatók bizonyos körülmények között elkerüljék a helytelenül kibocsátott tanúsítványokat. A CAA-rekordok három tulajdonsággal rendelkeznek:
-* **Jelzők**: 0 és 255 közötti egész szám, amely az [RFC](https://tools.ietf.org/html/rfc6844#section-3) -ben speciális jelentéssel bíró kritikus jelző jelölésére szolgál
-* **Címke**: egy ASCII-karakterlánc, amely a következők egyike lehet:
-    * **probléma**: akkor használja ezt a lehetőséget, ha meg szeretné adni a tanúsítványokat kiállító hitelesítésszolgáltatókat (az összes típust).
-    * **issuewild**: akkor használja ezt a lehetőséget, ha meg szeretné adni a tanúsítványokat kiállító hitelesítésszolgáltatót (csak helyettesítő tanúsítványok)
-    * **iodef**: adjon meg egy e-mail-címet vagy állomásnevet, amely számára a hitelesítésszolgáltatók értesítéseket kaphatnak a jogosulatlan tanúsítványokkal kapcsolatos kérelmekről
-* **Value (érték**): a kijelölt címke értéke
+CAA records allow domain owners to specify which Certificate Authorities (CAs) are authorized to issue certificates for their domain. This allows CAs to avoid mis-issuing certificates in some circumstances. CAA records have three properties:
+* **Flags**: This is an integer between 0 and 255, used to represent the critical flag that has special meaning per the [RFC](https://tools.ietf.org/html/rfc6844#section-3)
+* **Tag**: an ASCII string that can be one of the following:
+    * **issue**: use this if you want to specify CAs that are permitted to issue certs (all types)
+    * **issuewild**: use this if you want to specify CAs that are permitted to issue certs (wildcard certs only)
+    * **iodef**: specify an email address or hostname to which CAs can notify for unauthorized cert issue requests
+* **Value**: the value for the specific Tag chosen
 
-### <a name="cname-records"></a>CNAME rekordok
+### <a name="cname-records"></a>CNAME records
 
-CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egy "www" relatív névvel rendelkező CNAME-rekordot, valamint egy olyan rekordot, amelynek relatív neve "www".
+CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. For example, you cannot create a CNAME record set with the relative name 'www' and an A record with the relative name 'www' at the same time.
 
-Mivel a zóna csúcsa (név = "\@") mindig tartalmazza a zóna létrehozásakor létrehozott NS és SOA rekordhalmazokat, nem hozhat létre CNAME-rekordot a zóna csúcsán.
+Because the zone apex (name = '\@') always contains the NS and SOA record sets that were created when the zone was created, you can't create a CNAME record set at the zone apex.
 
-Ezek a korlátozások a DNS-szabványokból erednek, és nem korlátozzák Azure DNS.
+These constraints arise from the DNS standards and are not limitations of Azure DNS.
 
-### <a name="ns-records"></a>NS-rekordok
+### <a name="ns-records"></a>NS records
 
-A zóna csúcsán beállított NS-rekord (név: "\@") automatikusan létrejön minden DNS-zónával, és automatikusan törlődik a zóna törlésekor (nem lehet külön törölni).
+The NS record set at the zone apex (name '\@') is created automatically with each DNS zone, and is deleted automatically when the zone is deleted (it cannot be deleted separately).
 
-Ez a rekordtípus a zónához rendelt Azure DNS névkiszolgálók nevét tartalmazza. Ehhez az NS-rekordhoz további névkiszolgálók hozzáadásával több DNS-szolgáltatóval rendelkező közös üzemeltetésű tartományokat is támogathat. Módosíthatja a rekord ÉLETTARTAMát és metaadatait is. Az előre megadott Azure DNS névkiszolgálók azonban nem távolíthatók el és nem módosíthatók. 
+This record set contains the names of the Azure DNS name servers assigned to the zone. You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers. 
 
-Ez csak a zóna csúcsán beállított NS-rekordra vonatkozik. A zónában lévő egyéb NS-rekordhalmazok (a gyermekobjektumok delegálásához) a korlátozás nélkül hozhatók létre, módosíthatók és törölhetők.
+This applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be created, modified, and deleted without constraint.
 
-### <a name="soa-records"></a>SOA-rekordok
+### <a name="soa-records"></a>SOA records
 
-A rendszer automatikusan létrehoz egy SOA-rekordhalmazt minden zóna csúcsán (név = "\@"), és automatikusan törlődik a zóna törlésekor.  A SOA-rekordok nem hozhatók létre és nem törölhetők külön.
+A SOA record set is created automatically at the apex of each zone (name = '\@'), and is deleted automatically when the zone is deleted.  SOA records cannot be created or deleted separately.
 
-A SOA rekord összes tulajdonságát módosíthatja, kivéve a "host" tulajdonságot, amely előre konfigurálva van, hogy a Azure DNS által biztosított elsődleges névkiszolgálói névre hivatkozzon.
+You can modify all properties of the SOA record except for the 'host' property, which is pre-configured to refer to the primary name server name provided by Azure DNS.
 
-A SOA rekordban lévő zóna sorozatszáma nem frissül automatikusan, ha a zóna rekordjaira módosul. Ha szükséges, a SOA rekord szerkesztésével manuálisan is frissíthető.
+The zone serial number in the SOA record is not updated automatically when changes are made to the records in the zone. It can be updated manually by editing the SOA record, if necessary.
 
-### <a name="spf-records"></a>SPF-rekordok
+### <a name="spf-records"></a>SPF records
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="srv-records"></a>SRV-rekordok
+### <a name="srv-records"></a>SRV records
 
-Az [SRV-rekordokat](https://en.wikipedia.org/wiki/SRV_record) a különböző szolgáltatások használják a kiszolgálók helyeinek megadására. SRV-rekord megadásakor a Azure DNSban:
+[SRV records](https://en.wikipedia.org/wiki/SRV_record) are used by various services to specify server locations. When specifying an SRV record in Azure DNS:
 
-* A *szolgáltatást* és a *protokollt* a rekordtípus nevének részeként kell megadni, az aláhúzások előtaggal.  Például: "\_SIP.\_tcp.name '.  A zóna csúcsán lévő rekord esetében nem kell megadnia a "\@" nevet a rekord nevében, egyszerűen használja a szolgáltatást és a protokollt, például: "\_SIP.\_TCP).
-* A *prioritás*, a *súlyozás*, a *port*és a *cél* paraméterként van megadva a rekordban lévő rekordok mindegyikében.
+* The *service* and *protocol* must be specified as part of the record set name, prefixed with underscores.  For example, '\_sip.\_tcp.name'.  For a record at the zone apex, there is no need to specify '\@' in the record name, simply use the service and protocol, for example '\_sip.\_tcp'.
+* The *priority*, *weight*, *port*, and *target* are specified as parameters of each record in the record set.
 
-### <a name="txt-records"></a>TXT-rekordok
+### <a name="txt-records"></a>TXT records
 
-A TXT-rekordok a tartománynevek tetszőleges szöveges karakterlánccá való leképezésére szolgálnak. Ezeket több alkalmazásban használják, különösen az e-mail-konfigurációval, például a [küldő házirend-keretrendszerével (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és a [DomainKeys azonosított levelekkel (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
+TXT records are used to map domain names to arbitrary text strings. They are used in multiple applications, in particular related to email configuration, such as the [Sender Policy Framework (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
 
-A DNS-szabványok lehetővé teszik, hogy egyetlen TXT-rekord több karakterláncot tartalmazzon, amelyek mindegyike legfeljebb 254 karakter hosszú lehet. Ha több karakterláncot használ, azokat az ügyfelek összefűzik, és egyetlen sztringként kezelik őket.
+The DNS standards permit a single TXT record to contain multiple strings, each of which may be up to 254 characters in length. Where multiple strings are used, they are concatenated by clients and treated as a single string.
 
-A Azure DNS REST API meghívásakor külön kell megadnia minden TXT-karakterláncot.  A Azure Portal, a PowerShell vagy a CLI felületek használatakor egyetlen karakterláncot kell megadnia rekordként, amely automatikusan 254 karakterre oszlik, ha szükséges.
+When calling the Azure DNS REST API, you need to specify each TXT string separately.  When using the Azure portal, PowerShell or CLI interfaces you should specify a single string per record, which is automatically divided into 254-character segments if necessary.
 
-A DNS-rekordok több karakterlánca nem tévesztendő össze a TXT-rekordhalmazban található több TXT-rekorddal.  A TXT rekordhalmaz több rekordot is tartalmazhat, *amelyek mindegyike* több karakterláncot is tartalmazhat.  Azure DNS támogatja az összes TXT-rekordhalmazban legfeljebb 1024 karakter hosszúságú teljes karakterláncot (az összes rekord összevont értékével együtt).
+The multiple strings in a DNS record should not be confused with the multiple TXT records in a TXT record set.  A TXT record set can contain multiple records, *each of which* can contain multiple strings.  Azure DNS supports a total string length of up to 1024 characters in each TXT record set (across all records combined).
 
-## <a name="tags-and-metadata"></a>Címkék és metaadatok
+## <a name="tags-and-metadata"></a>Tags and metadata
 
 ### <a name="tags"></a>Címkék
 
-A címkék a név-érték párok listája, amelyeket a Azure Resource Manager használ az erőforrások címkézéséhez.  A Azure Resource Manager címkéket használ az Azure-számla szűrt nézeteinek engedélyezéséhez, és lehetővé teszi, hogy beállítson egy olyan szabályzatot, amelynél szükség van a címkékre. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md) című cikket.
+Tags are a list of name-value pairs and are used by Azure Resource Manager to label resources.  Azure Resource Manager uses tags to enable filtered views of your Azure bill, and also enables you to set a policy on which tags are required. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md) című cikket.
 
-Azure DNS támogatja Azure Resource Manager címkék használatát a DNS-zónák erőforrásain.  A nem támogatja a címkéket a DNS-rekordhalmazokon, bár a DNS-rekordhalmazok egy másik "metaadatok" is támogatottak.
+Azure DNS supports using Azure Resource Manager tags on DNS zone resources.  It does not support tags on DNS record sets, although as an alternative 'metadata' is supported on DNS record sets as explained below.
 
 ### <a name="metadata"></a>Metaadatok
 
-A címkék rekordhalmaz alternatívájaként a Azure DNS a metaadatok használatával támogatja a rekordok megjegyzéseit.  A címkékhez hasonlóan a metaadatok lehetővé teszik a név-érték párok hozzárendelését az egyes bejegyzéstípusokhoz.  Ez akkor lehet hasznos, ha például rögzíti az egyes bejegyzéstípusok célját.  A címkéktől eltérően a metaadatok nem használhatók az Azure-számla szűrt nézetének biztosításához, és nem adhatók meg Azure Resource Manager házirendben.
+As an alternative to record set tags, Azure DNS supports annotating record sets using 'metadata'.  Similar to tags, metadata enables you to associate name-value pairs with each record set.  This can be useful, for example to record the purpose of each record set.  Unlike tags, metadata cannot be used to provide a filtered view of your Azure bill and cannot be specified in an Azure Resource Manager policy.
 
-## <a name="etags"></a>Etagek
+## <a name="etags"></a>Etags
 
-Tegyük fel, hogy két személy vagy két folyamat egyszerre próbálkozik a DNS-rekordok módosításával. Melyik nyer? És a nyertes is tudja, hogy felülírták-e valaki más által létrehozott módosításokat?
+Suppose two people or two processes try to modify a DNS record at the same time. Which one wins? And does the winner know that they've overwritten changes created by someone else?
 
-Azure DNS a Etagek használatával kezeli az egyazon erőforrás egyidejű módosításait. A etagek nem különböznek [Azure Resource Manager "címkéktől"](#tags). Minden DNS-erőforráshoz (zónához vagy rekordhoz) társítva van egy ETAG. Amikor egy erőforrást lekérik, a rendszer lekéri a ETAG is. Egy erőforrás frissítésekor dönthet úgy, hogy visszaadja a ETAG, így Azure DNS ellenőrizheti, hogy a ETAG a kiszolgálón egyezik-e. Mivel az erőforrás minden frissítése újra létrehozza a ETAG, egy ETAG eltérés azt jelzi, hogy egyidejű változás történt. A etagek új erőforrás létrehozásakor is használható, így biztosítva, hogy az erőforrás még nem létezik.
+Azure DNS uses Etags to handle concurrent changes to the same resource safely. Etags are separate from [Azure Resource Manager 'Tags'](#tags). Each DNS resource (zone or record set) has an Etag associated with it. Whenever a resource is retrieved, its Etag is also retrieved. When updating a resource, you can choose to pass back the Etag so Azure DNS can verify that the Etag on the server matches. Since each update to a resource results in the Etag being regenerated, an Etag mismatch indicates a concurrent change has occurred. Etags can also be used when creating a new resource to ensure that the resource does not already exist.
 
-Alapértelmezés szerint Azure DNS PowerShell a Etagek használatával blokkolja a zónák és a rekordhalmazok egyidejű módosításait. A nem kötelező *– felülírás* kapcsolóval letilthatja a ETAG-ellenőrzéseket, ebben az esetben a rendszer felülírja az egyidejű módosításokat.
+By default, Azure DNS PowerShell uses Etags to block concurrent changes to zones and record sets. The optional *-Overwrite* switch can be used to suppress Etag checks, in which case any concurrent changes that have occurred are overwritten.
 
-A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak megadva.  Viselkedésük a következő táblázatban szerepel:
+At the level of the Azure DNS REST API, Etags are specified using HTTP headers.  Their behavior is given in the following table:
 
 | Fejléc | Viselkedés |
 | --- | --- |
-| Nincs |Mindig sikeres (nincs ETAG-ellenőrzés) |
-| If-Match \<ETAG > |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
-| If-Match * |A PUT csak akkor sikeres, ha az erőforrás létezik |
-| If-None-Match * |A csak akkor sikeres, ha az erőforrás nem létezik |
+| None |PUT always succeeds (no Etag checks) |
+| If-match \<etag> |PUT only succeeds if resource exists and Etag matches |
+| If-match * |PUT only succeeds if resource exists |
+| If-none-match * |PUT only succeeds if resource does not exist |
 
 
 ## <a name="limits"></a>Korlátozások
 
-Azure DNS használatakor a következő alapértelmezett korlátok érvényesek:
+The following default limits apply when using Azure DNS:
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](dns-getstarted-create-dnszone-portal.md) , és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
-* Meglévő DNS-zóna áttelepítéséhez tekintse meg [a DNS-zónafájl importálását és exportálását](dns-import-export.md)ismertető témakört.
+* To start using Azure DNS, learn how to [create a DNS zone](dns-getstarted-create-dnszone-portal.md) and [create DNS records](dns-getstarted-create-recordset-portal.md).
+* To migrate an existing DNS zone, learn how to [import and export a DNS zone file](dns-import-export.md).

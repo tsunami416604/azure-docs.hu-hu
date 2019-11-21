@@ -1,86 +1,86 @@
 ---
 title: Azure Private DNS – gyakori kérdések
-description: Gyakran ismételt kérdések az Azure saját DNS
+description: In this article, learn frequently asked questions about Azure Private DNS
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: victorh
-ms.openlocfilehash: cb0cc5e99cc07728d475a9f9e54c7eb6a8c7554e
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959933"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212014"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Private DNS – gyakori kérdések
 
-Az Azure Private DNS szolgáltatással kapcsolatos gyakori kérdések a következők.
+The following are frequently asked questions about Azure private DNS.
 
-## <a name="does-azure-dns-support-private-domains"></a>Támogatja a Azure DNS a privát tartományokat?
+## <a name="does-azure-dns-support-private-domains"></a>Does Azure DNS support private domains?
 
-A privát tartományok az Azure saját DNS zónák funkció használatával támogatottak. Saját DNS zónák csak a megadott virtuális hálózatokon belül oldhatók fel. További információ: [Áttekintés](private-dns-overview.md).
+Private domains are supported using the Azure Private DNS zones feature. Private DNS zones are resolvable only from within specified virtual networks. For more information, see the [overview](private-dns-overview.md).
 
-További információ az Azure egyéb belső DNS-lehetőségeiről: a [virtuális gépek és a szerepkör példányainak névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+For information on other internal DNS options in Azure, see [Name resolution for VMs and role instances](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Az Azure saját DNS zónák működnek az Azure-régiók között?
+## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Will Azure Private DNS zones work across Azure regions?
 
-Igen. Az Azure-régiók közötti virtuális hálózatok közötti DNS-feloldáshoz a magánhálózati zónák támogatottak. A privát zónák még a virtuális hálózatok explicit módon való társítása nélkül is működnek. Az összes virtuális hálózatot hozzá kell kapcsolni a magánhálózati DNS-zónához.
+Igen. Private Zones is supported for DNS resolution between virtual networks across Azure regions. Private Zones works even without explicitly peering the virtual networks. All the virtual networks must be linked to the private DNS zone.
 
-## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Kapcsolódik-e az internethez a privát zónákhoz szükséges virtuális hálózatoktól?
+## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Is connectivity to the Internet from virtual networks required for private zones?
 
-Nem. A privát zónák a virtuális hálózatokkal együtt működnek. A használatával a virtuális gépekhez vagy más erőforrásokhoz tartozó tartományokat kezelheti a virtuális hálózatok között. A névfeloldáshoz nincs szükség internetkapcsolatra.
+Nem. Private zones work along with virtual networks. You use them to manage domains for virtual machines or other resources within and across virtual networks. Internet connectivity isn't required for name resolution.
 
-## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Használható-e ugyanaz a privát zóna a megoldáshoz több virtuális hálózat esetében is?
+## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Can the same private zone be used for several virtual networks for resolution?
 
-Igen. A privát DNS-zónák több ezer virtuális hálózattal is összekapcsolhatók. További információ: [Azure DNS korlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Igen. You can link a private DNS zone with thousands of virtual networks. For more information, see [Azure DNS Limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
 
-## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Egy másik előfizetéshez tartozó virtuális hálózat egy privát zónához van csatolva?
+## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Can a virtual network that belongs to a different subscription be linked to a private zone?
 
-Igen. Írási művelet engedéllyel kell rendelkeznie a virtuális hálózatokon és a magánhálózati DNS-zónában. Az írási engedély több RBAC-szerepkör számára is megadható. Például a klasszikus hálózati közreműködő RBAC szerepkör írási engedéllyel rendelkezik a virtuális hálózatokhoz, és saját DNS zónák közreműködői szerepkör írási engedéllyel rendelkezik a magánhálózati DNS-zónákhoz. A RBAC szerepköreivel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+Igen. You must have write operation permission on the virtual networks and the private DNS zone. The write permission can be granted to several RBAC roles. For example, the Classic Network Contributor RBAC role has write permissions to virtual networks and Private DNS zones Contributor role has write permissions on the private DNS zones. For more information on RBAC roles, see [Role-based access control](../role-based-access-control/overview.md).
 
-## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>A rendszer automatikusan törli a virtuális gép DNS-rekordjait egy privát zónában a virtuális gép törlésekor?
+## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Will the automatically registered virtual machine DNS records in a private zone be automatically deleted when you delete the virtual machine?
 
-Igen. Ha olyan virtuális gépet töröl, amelyen engedélyezve van az automatikus regisztráció, a rendszer automatikusan törli a regisztrált rekordokat.
+Igen. If you delete a virtual machine within a linked virtual network with autoregistration enabled, the registered records are automatically deleted.
 
-## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>A virtuális gépek automatikusan regisztrálhatók egy privát zónában egy csatolt virtuális hálózatból manuálisan?
+## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>Can an automatically registered virtual machine record in a private zone from a linked virtual network be deleted manually?
 
-Igen. Az automatikusan regisztrált DNS-rekordokat a zónában manuálisan létrehozott DNS-rekorddal írhatja felül. A következő kérdés és válasz címe ebben a témakörben.
+Igen. You can overwrite the automatically registered DNS records with a manually created DNS record in the zone. The following question and answer address this topic.
 
-## <a name="what-happens-when-i-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-linked-virtual-network"></a>Mi történik, ha olyan új DNS-rekordot próbálok létrehozni egy privát zónában, amely ugyanazzal az állomásnévvel rendelkezik, mint egy társított virtuális hálózatban automatikusan regisztrált meglévő virtuális gép?
+## <a name="what-happens-when-i-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-linked-virtual-network"></a>What happens when I try to manually create a new DNS record into a private zone that has the same hostname as an automatically registered existing virtual machine in a linked virtual network?
 
-Megpróbál manuálisan létrehozni egy új DNS-rekordot egy olyan privát zónában, amely ugyanazzal az állomásnévvel rendelkezik, mint egy meglévő, automatikusan regisztrált virtuális gép egy társított virtuális hálózaton. Ha ezt teszi, az új DNS-rekord felülírja a virtuális gép automatikusan regisztrált rekordját. Ha újra megpróbálja törölni ezt a manuálisan létrehozott DNS-rekordot a zónából, a törlés sikeres lesz. Az automatikus regisztráció újra megtörténik, amíg a virtuális gép továbbra is létezik, és rendelkezik a hozzá tartozó magánhálózati IP-címmel. A DNS-rekord automatikusan újra létrejön a zónában.
+You try to manually create a new DNS record into a private zone that has the same hostname as an existing, automatically registered virtual machine in a linked virtual network. When you do, the new DNS record overwrites the automatically registered virtual machine record. If you try to delete this manually created DNS record from the zone again, the delete succeeds. The automatic registration happens again as long as the virtual machine still exists and has a private IP attached to it. The DNS record is re-created automatically in the zone.
 
-## <a name="what-happens-when-we-unlink-a-linked-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>Mi történik, ha leválaszt egy csatolt virtuális hálózatot egy privát zónából? A virtuális hálózatból automatikusan regisztrált virtuálisgép-rekordok el lesznek távolítva a zónából?
+## <a name="what-happens-when-we-unlink-a-linked-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>What happens when we unlink a linked virtual network from a private zone? Will the automatically registered virtual machine records from the virtual network be removed from the zone too?
 
-Igen. Egy csatolt virtuális hálózat privát zónából való leválasztásához frissítse a DNS-zónát a társított virtuális hálózati kapcsolat eltávolításához. Ebben a folyamatban az automatikusan regisztrált virtuális gépek rekordjai törlődnek a zónából.
+Igen. To unlink a linked virtual network from a private zone, you update the DNS zone to remove the associated virtual network link. In this process, virtual machine records that were automatically registered are removed from the zone.
 
-## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>Mi történik, ha törölünk egy privát zónához csatolt csatolt virtuális hálózatot? Manuálisan kell frissíteni a privát zónát a virtuális hálózatnak a zónában lévő csatolt virtuális hálózatként való leválasztásához?
+## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>What happens when we delete a linked virtual network that's linked to a private zone? Do we have to manually update the private zone to unlink the virtual network as a linked virtual network from the zone?
 
-Nem. Ha először töröl egy csatolt virtuális hálózatot egy privát zónából való leválasztás nélkül, a törlési művelet sikeres lesz, és a rendszer automatikusan törli a DNS-zónára mutató hivatkozásokat.
+Nem. When you delete a linked virtual network without unlinking it from a private zone first, your deletion operation succeeds and the links to the DNS zone are automatically cleared.
 
-## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>A DNS-feloldás az alapértelmezett FQDN (internal.cloudapp.net) használatával akkor is működik, ha egy privát zóna (például private.contoso.com) egy virtuális hálózathoz van csatolva?
+## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Will DNS resolution by using the default FQDN (internal.cloudapp.net) still work even when a private zone (for example, private.contoso.com) is linked to a virtual network?
 
-Igen. A privát zónák nem cserélik le az alapértelmezett Azure által biztosított internal.cloudapp.net zónát. Függetlenül attól, hogy az Azure által biztosított internal.cloudapp.net vagy a saját privát zónára támaszkodik, használja a feloldani kívánt zóna teljes tartománynevét.
+Igen. Private Zones don't replace the default Azure-provided internal.cloudapp.net zone. Whether you rely on the Azure-provided internal.cloudapp.net or on your own private zone, use the FQDN of the zone you want to resolve against.
 
-## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>A rendszer a társított virtuális hálózaton belüli virtuális gépek DNS-utótagját a privát zónára módosítja?
+## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Will the DNS suffix on virtual machines within a linked virtual network be changed to that of the private zone?
 
-Nem. A társított virtuális hálózatban lévő virtuális gépek DNS-utótagja az alapértelmezett Azure által biztosított utótag ("*. internal.cloudapp.net") marad. Ezt a DNS-utótagot manuálisan is módosíthatja a virtuális gépeken a saját zónában.
-Az utótag módosításával kapcsolatos útmutatásért lásd: [dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgálón](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
+Nem. The DNS suffix on the virtual machines in your linked virtual network stays as the default Azure-provided suffix ("*.internal.cloudapp.net"). You can manually change this DNS suffix on your virtual machines to that of the private zone.
+For guidance on how to change this suffix refer to [Use dynamic DNS to register hostnames in your own DNS server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
-## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Mik a Azure DNS privát zónák használati korlátai?
+## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>What are the usage limits for Azure DNS Private zones?
 
-Azure DNS privát zónák használati korlátaival kapcsolatos részletekért tekintse meg a [Azure DNS korlátozásait](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) .
+Refer to [Azure DNS limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) for details on the usage limits for Azure DNS private zones.
 
-## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Miért nem jelennek meg a meglévő privát DNS-zónák az új portálon?
+## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Why don’t my existing private DNS zones show up in new portal experience?
 
-Ha a meglévő privát DNS-zónát az előzetes verziójú API-val hozták létre, ezeket a zónákat át kell telepítenie az új erőforrás-modellbe. Az előzetes API-val létrehozott saját DNS zónák nem jelennek meg az új portálon. Az új erőforrás-modellre való áttelepítéssel kapcsolatos információkért lásd alább.
+If your existing private DNS zone were created using preview API, you must migrate these zones to new resource model. Private DNS zones created using preview API will not show up in new portal experience. See below for instructions on how to migrate to new resource model.
 
-## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Hogyan áttelepíteni a meglévő magánhálózati DNS-zónákat az új modellre?
+## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>How do I migrate my existing private DNS zones to the new model?
 
-Javasoljuk, hogy a lehető leghamarabb telepítse át az új erőforrás-modellre. A régi erőforrás-modell támogatott lesz, azonban a modellen felül további funkciók nem lesznek kifejlesztve. A jövőben azt szeretnénk, hogy az új erőforrás-modell mellett is érvénytelenítse azt. A meglévő privát DNS-zónák új erőforrás-modellre való áttelepítésével kapcsolatos útmutatásért lásd:[Azure DNS privát zónák áttelepítési útmutatója](private-dns-migration-guide.md).
+We strongly recommend that you migrate to the new resource model as soon as possible. Legacy resource model will be supported, however, further features will not be developed on top of this model. In future, we intend to deprecate it in favor of new resource model. For guidance on how to migrate your existing private DNS zones to new resource model see[migration guide for Azure DNS private zones](private-dns-migration-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [További információ az Azure saját DNS](private-dns-overview.md)
+- [Learn more about Azure Private DNS](private-dns-overview.md)

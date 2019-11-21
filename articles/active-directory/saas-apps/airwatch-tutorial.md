@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja az AirWatch |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az AirWatch között.
+title: 'Tutorial: Azure Active Directory integration with AirWatch | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and AirWatch.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,239 +16,239 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0a684c6a38ba3a95438941f668b36b23d278df
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227592"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231993"
 ---
-# <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Oktatóanyag: AirWatch integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Tutorial: Integrate AirWatch with Azure Active Directory
 
-Ebben az oktatóanyagban elsajátíthatja a AirWatch integrálása az Azure Active Directory (Azure AD) lesz. AirWatch integrálása az Azure ad-vel, akkor a következőket teheti:
+In this tutorial, you'll learn how to integrate AirWatch with Azure Active Directory (Azure AD). When you integrate AirWatch with Azure AD, you can:
 
-* Szabályozza, ki férhet hozzá az AirWatch Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve AirWatch az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Control in Azure AD who has access to AirWatch.
+* Enable your users to be automatically signed-in to AirWatch with their Azure AD accounts.
+* Manage your accounts in one central location - the Azure portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+To get started, you need the following items:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* AirWatch egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* An Azure AD subscription. If you don't have a subscription, you can get one-month free trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* AirWatch single sign-on (SSO) enabled subscription.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja az AirWatch **SP** által kezdeményezett egyszeri bejelentkezés.
+In this tutorial, you configure and test Azure AD SSO in a test environment. AirWatch supports **SP** initiated SSO.
 
-## <a name="adding-airwatch-from-the-gallery"></a>AirWatch hozzáadása a katalógusból
+## <a name="adding-airwatch-from-the-gallery"></a>Adding AirWatch from the gallery
 
-Az Azure AD integrálása a AirWatch konfigurálásához hozzá kell AirWatch a katalógusból a felügyelt SaaS-alkalmazások listájára.
+To configure the integration of AirWatch into Azure AD, you need to add AirWatch from the gallery to your list of managed SaaS apps.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **AirWatch** kifejezést a keresőmezőbe.
-1. Válassza ki **AirWatch** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. On the left navigation pane, select the **Azure Active Directory** service.
+1. Navigate to **Enterprise Applications** and then select **All Applications**.
+1. To add new application, select **New application**.
+1. In the **Add from the gallery** section, type **AirWatch** in the search box.
+1. Select **AirWatch** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata AirWatch **B.Simon**. SSO működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolatot hozhat létre az AirWatch a kell.
+Configure and test Azure AD SSO with AirWatch using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in AirWatch.
 
-Az Azure AD SSO AirWatch tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+To configure and test Azure AD SSO with AirWatch, complete the following building blocks:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[AirWatch egyszeri bejelentkezést](#configure-airwatch-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre AirWatch tesztfelhasználót](#create-airwatch-test-user)**  – egy megfelelője a Britta Simon AirWatch, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
+2. **[Configure AirWatch SSO](#configure-airwatch-sso)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Create AirWatch test user](#create-airwatch-test-user)** - to have a counterpart of Britta Simon in AirWatch that is linked to the Azure AD representation of user.
+5. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+6. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **AirWatch** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. In the [Azure portal](https://portal.azure.com/), on the **AirWatch** application integration page, find the **Manage** section and select **Single sign-on**.
+1. On the **Select a Single sign-on method** page, select **SAML**.
+1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
+1. On the **Basic SAML Configuration** page, enter the values for the following fields:
 
-    1. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    1. In the **Sign on URL** text box, type a URL using the following pattern: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
-    1. Az a **azonosító (entityid)** szöveg írja be az értéket: `AirWatch`
+    1. In the **Identifier (Entity ID)** text box, type the value as: `AirWatch`
 
     > [!NOTE]
-    > Ez az érték nem a valós. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [AirWatch ügyfél-támogatási csapatának](https://www.air-watch.com/company/contact-us/) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > This value is not the real. Update this value with the actual Sign-on URL. Contact [AirWatch Client support team](https://www.air-watch.com/company/contact-us/) to get this value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. AirWatch alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+1. AirWatch application expects the SAML assertions in a specific format. Configure the following claims for this application. You can manage the values of these attributes from the **User Attributes** section on application integration page. On the **Set up Single Sign-On with SAML** page, click **Edit** button to open **User Attributes** dialog.
 
     ![image](common/edit-attribute.png)
 
-1. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+1. In the **User Claims** section on the **User Attributes** dialog, edit the claims by using **Edit icon** or add the claims by using **Add new claim** to configure SAML token attribute as shown in the image above and perform the following steps:
 
-    | Name (Név) |  Adatforrás-attribútum|
+    | Név |  Source Attribute|
     |---------------|----------------|
-    | EGYEDI AZONOSÍTÓJA | user.userprincipalname |
+    | UID | user.userprincipalname |
     | | |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Click **Add new claim** to open the **Manage user claims** dialog.
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. In the **Name** textbox, type the attribute name shown for that row.
 
-    c. Hagyja a **Namespace** üres.
+    c. Leave the **Namespace** blank.
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Select Source as **Attribute**.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. From the **Source attribute** list, type the attribute value shown for that row.
 
-    f. Kattintson a **Ok**
+    f. Click **Ok**
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **összevonási metaadatainak XML** válassza **letöltése** az metaadatainak XML-fájl letöltéséhez, és menti azt a számítógépet.
+1. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, find **Federation Metadata XML** and select **Download** to download the Metadata XML and save it on your computer.
 
-   ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+   ![The Certificate download link](common/metadataxml.png)
 
-1. Az a **AirWatch beállítása** területén másolja a megfelelő URL-címe szerint.
+1. On the **Set up AirWatch** section, copy the appropriate URL(s) based on your requirement.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-### <a name="configure-airwatch-sso"></a>AirWatch egyszeri bejelentkezés konfigurálása
+### <a name="configure-airwatch-sso"></a>Configure AirWatch SSO
 
-1. Egy másik böngészőablakban jelentkezzen be az AirWatch vállalati hely rendszergazdaként.
+1. In a different web browser window, sign in to your AirWatch company site as an administrator.
 
-1. A beállítások lapon. Válassza ki **beállítások > Vállalati integráció > címtárszolgáltatások**.
+1. On the settings page. Select **Settings > Enterprise Integration > Directory Services**.
 
-   ![Beállítások](./media/airwatch-tutorial/ic791921.png "beállításai")
+   ![Beállítások](./media/airwatch-tutorial/ic791921.png "Beállítások")
 
-1. Kattintson a **felhasználói** lap a **Alap DN** szövegmezőbe írja be a tartomány nevét, és kattintson **mentése**.
+1. Click the **User** tab, in the **Base DN** textbox, type your domain name, and then click **Save**.
 
-   ![Felhasználói](./media/airwatch-tutorial/ic791922.png "felhasználó")
+   ![User](./media/airwatch-tutorial/ic791922.png "Felhasználó")
 
-1. Kattintson a **kiszolgáló** fülre.
+1. Click the **Server** tab.
 
-   ![Kiszolgáló](./media/airwatch-tutorial/ic791923.png "kiszolgáló")
+   ![Kiszolgáló](./media/airwatch-tutorial/ic791923.png "Kiszolgáló")
 
-1. Hajtsa végre a következő lépéseket a **LDAP** szakaszban:
+1. Perform the following steps on the **LDAP** section:
 
-    ![Töltse fel](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Upload](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
-    a. Mint **címtár típusa**válassza **None**.
+    a. As **Directory Type**, select **None**.
 
-    b. Válassza ki **SAML hitelesítéshez használandó**.
+    b. Select **Use SAML For Authentication**.
 
-1. Az a **SAML 2.0** szakaszban, a letöltött tanúsítvány feltöltéséhez kattintson **feltöltése**.
+1. On the **SAML 2.0** section, to upload the downloaded certificate, click **Upload**.
 
-    ![Töltse fel](./media/airwatch-tutorial/ic791932.png "feltöltése")
+    ![Upload](./media/airwatch-tutorial/ic791932.png "Feltöltés")
 
-1. Az a **kérelem** szakaszban, hajtsa végre az alábbi lépéseket:
+1. In the **Request** section, perform the following steps:
 
-    ![Kérelem](./media/airwatch-tutorial/ic791925.png "kérése")  
+    ![Kérés](./media/airwatch-tutorial/ic791925.png "Kérelem")  
 
-    a. Mint **kötési típus kérése**válassza **POST**.
+    a. As **Request Binding Type**, select **POST**.
 
-    b. Az Azure Portalon az a **AirWatch, egyszeri bejelentkezés konfigurálása** párbeszédpanel oldalon, a másolási a **bejelentkezési URL-cím** értéket, és illessze be azt a **Identity Provider egyszeri bejelentkezési URL-Címként** szövegmező.
+    b. In the Azure portal, on the **Configure single sign-on at AirWatch** dialog page, copy the **Login URL** value, and then paste it into the **Identity Provider Single Sign On URL** textbox.
 
-    c. Mint **nameid-formátumához**válassza **E-mail cím**.
+    c. As **NameID Format**, select **Email Address**.
 
-    d. Mint **hitelesítési kérelem biztonsági**válassza **None**.
+    d. As **Authentication Request Security**, select **None**.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-1. Kattintson a **felhasználói** lapon újra.
+1. Click the **User** tab again.
 
-    ![Felhasználói](./media/airwatch-tutorial/ic791926.png "felhasználó")
+    ![User](./media/airwatch-tutorial/ic791926.png "Felhasználó")
 
-1. Az a **attribútum** szakaszban, hajtsa végre az alábbi lépéseket:
+1. In the **Attribute** section, perform the following steps:
 
-    ![Attribútum](./media/airwatch-tutorial/ic791927.png "attribútum")
+    ![Attribute](./media/airwatch-tutorial/ic791927.png "Attribútum")
 
-    a. Az a **objektumazonosító** szövegmezőbe írja be `http://schemas.microsoft.com/identity/claims/objectidentifier`.
+    a. In the **Object Identifier** textbox, type `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. In the **Username** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    c. Az a **megjelenítendő név** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. In the **Display Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    d. Az a **Utónév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. In the **First Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. Az a **Vezetéknév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. In the **Last Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. Az a **E-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. In the **Email** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. In the **User name** field, enter the username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban a hozzáférés biztosításával az AirWatch Azure egyszeri bejelentkezés használatára B.Simon engedélyeznie kell.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to AirWatch.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **AirWatch**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **AirWatch**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-### <a name="create-airwatch-test-user"></a>AirWatch tesztfelhasználó létrehozása
+### <a name="create-airwatch-test-user"></a>Create AirWatch test user
 
-Ahhoz, hogy az Azure AD-felhasználók AirWatch bejelentkezni, akkor ki kell építenie az AirWatch. AirWatch, esetén kiépítése a manuális feladat.
+To enable Azure AD users to sign in to AirWatch, they must be provisioned in to AirWatch. In the case of AirWatch, provisioning is a manual task.
 
-**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:**
+**To configure user provisioning, perform the following steps:**
 
-1. Jelentkezzen be a **AirWatch** rendszergazdaként a vállalati webhely.
+1. Sign in to your **AirWatch** company site as administrator.
 
-2. A bal oldali navigációs panelén kattintson **fiókok**, és kattintson a **felhasználók**.
+2. In the navigation pane on the left side, click **Accounts**, and then click **Users**.
   
-   ![Felhasználók](./media/airwatch-tutorial/ic791929.png "felhasználók")
+   ![Felhasználók](./media/airwatch-tutorial/ic791929.png "Felhasználók")
 
-3. Az a **felhasználók** menüben kattintson a **listanézet**, és kattintson a **Hozzáadás > felhasználó hozzáadása**.
+3. In the **Users** menu, click **List View**, and then click **Add > Add User**.
   
-   ![Felhasználó hozzáadása](./media/airwatch-tutorial/ic791930.png "felhasználó hozzáadása")
+   ![Add User](./media/airwatch-tutorial/ic791930.png "Felhasználó hozzáadása")
 
-4. Az a **hozzáadása / szerkesztése felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. On the **Add / Edit User** dialog, perform the following steps:
 
-   ![Felhasználó hozzáadása](./media/airwatch-tutorial/ic791931.png "felhasználó hozzáadása")
+   ![Add User](./media/airwatch-tutorial/ic791931.png "Felhasználó hozzáadása")
 
-   a. Írja be a **felhasználónév**, **jelszó**, **jelszó megerősítése**, **Utónév**, **Vezetéknév**,  **E-mail-cím** egy érvényes Azure Active Directory-fióknevet, amelyet a kapcsolódó szövegmezőkben létrehozásához.
+   a. Type the **Username**, **Password**, **Confirm Password**, **First Name**, **Last Name**, **Email Address** of a valid Azure Active Directory account you want to provision into the related textboxes.
 
    b. Kattintson a **Save** (Mentés) gombra.
 
 > [!NOTE]
-> Bármely más AirWatch felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését AirWatch által biztosított API-k.
+> You can use any other AirWatch user account creation tools or APIs provided by AirWatch to provision Azure AD user accounts.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>Test SSO
 
-Az AirWatch csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett az AirWatch, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you select the AirWatch tile in the Access Panel, you should be automatically signed in to the AirWatch for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

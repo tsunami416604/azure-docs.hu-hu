@@ -1,46 +1,42 @@
 ---
-title: Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
-description: Ismerje meg, hogyan adhat hozzá egy Azure Storage-üzenetsor kimeneti kötését a Python-függvényhez.
-author: ggailey777
-ms.author: glenga
+title: Add an Azure Storage queue binding to your Python function
+description: Learn how to add an Azure Storage queue output binding to your Python function.
 ms.date: 10/02/2019
 ms.topic: quickstart
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: dede135da56e9ed1eaaed2ae0f7b5cd14d08195c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082822"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231235"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Add an Azure Storage queue binding to your Python function
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Ez a cikk bemutatja, hogyan integrálhatja az előző rövid útmutató [cikkében](functions-create-first-function-python.md) létrehozott függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
+This article shows you how to integrate the function you created in the [previous quickstart article](functions-create-first-function-python.md) with an Azure Storage queue. The output binding that you add to this function writes data from an HTTP request to a message in the queue.
 
-A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A kapcsolódás egyszerűbbé tételéhez használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy `AzureWebJobsStorage`nevű alkalmazás-beállításban van tárolva.  
+Most bindings require a stored connection string that Functions uses to access the bound service. To make this connection easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk elkezdése előtt végezze el a [Python rövid útmutató 1. részében](functions-create-first-function-python.md)ismertetett lépéseket.
+Before you start this article, complete the steps in [part 1 of the Python quickstart](functions-create-first-function-python.md).
 
 [!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
 
-## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
+## <a name="download-the-function-app-settings"></a>Download the function app settings
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
+## <a name="enable-extension-bundles"></a>Enable extension bundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
+You can now add the Storage output binding to your project.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-A functions szolgáltatásban minden típusú kötéshez szükség van egy `direction`, `type`ra és egy egyedi `name`ra, amelyet a function. JSON fájlban kell meghatározni. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
+In Functions, each type of binding requires a `direction`, `type`, and a unique `name` to be defined in the function.json file. The way you define these attributes depends on the language of your function app.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -48,52 +44,52 @@ A functions szolgáltatásban minden típusú kötéshez szükség van egy `dire
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-Ha kimeneti kötést használ, nem kell használnia az Azure Storage SDK kódját a hitelesítéshez, a várólista-hivatkozás beszerzéséhez vagy az adatíráshoz. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
+When you use an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-Ahogy korábban is, használja a következő parancsot a functions futtatókörnyezet helyi elindításához:
+As before, use the following command to start the Functions runtime locally:
 
 ```bash
 func host start
 ```
 
 > [!NOTE]  
-> Mivel engedélyezte a bővítmények használatát a Host. JSON fájlban, a [Storage kötési bővítmény](functions-bindings-storage-blob.md#packages---functions-2x) le lett töltve és telepítve lett az indításakor, valamint a többi Microsoft-kötési bővítménysel együtt.
+> Because you enabled extension bundles in the host.json, the [Storage binding extension](functions-bindings-storage-blob.md#packages---functions-2x) was downloaded and installed for you during startup, along with the other Microsoft binding extensions.
 
-Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kimenetéből, majd illessze be a böngészője címsorába. Fűzze hozzá a lekérdezési karakterláncot `?name=<yourname>` ehhez az URL-címhez, és futtassa a kérést. Ugyanezt a választ kell megjelennie a böngészőben, ahogy az előző cikkben is volt.
+Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kimenetéből, majd illessze be a böngészője címsorába. Append the query string `?name=<yourname>` to this URL and run the request. You should see the same response in the browser as you did in the previous article.
 
-Ezúttal a kimeneti kötés is létrehoz egy `outqueue` nevű várólistát a Storage-fiókban, és hozzáadja az ugyanezt a karakterláncot tartalmazó üzenetet.
+This time, the output binding also creates a queue named `outqueue` in your Storage account and adds a message with this same string.
 
-Ezután az Azure CLI használatával megtekintheti az új várólistát, és ellenőrizheti, hogy hozzá lett-e adva üzenet. Az üzenetsor a [Microsoft Azure Storage Explorer][Azure Storage Explorer] vagy a [Azure Portal](https://portal.azure.com)használatával is megtekinthető.
+Next, you use the Azure CLI to view the new queue and verify that a message was added. You can also view your queue by using the [Microsoft Azure Storage Explorer][Azure Storage Explorer] or in the [Azure portal](https://portal.azure.com).
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-### <a name="redeploy-the-project"></a>A projekt újbóli üzembe helyezése 
+### <a name="redeploy-the-project"></a>Redeploy the project 
 
-A közzétett alkalmazás frissítéséhez használja a [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools parancsot a projekt kódjának az Azure-ban való üzembe helyezéséhez. Ebben a példában a `<APP_NAME>` helyére írja be az alkalmazás nevét.
+To update your published app, use the [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools command to deploy your project code to Azure. In this example, replace `<APP_NAME>` with the name of your app.
 
 ```command
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-A cURL vagy a böngésző használatával tesztelheti az üzembe helyezett függvényt. Ahogy korábban is, fűzze hozzá a lekérdezési karakterláncot `&name=<yourname>` az URL-címhez, az alábbi példában látható módon:
+Again, you can use cURL or a browser to test the deployed function. As before, append the query string `&name=<yourname>` to the URL, as in this example:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-[Megvizsgálhatja a tárolási üzenetsor üzenetét](#query-the-storage-queue) annak ellenőrzéséhez, hogy a kimeneti kötés a várt módon létrehoz egy új üzenetet a várólistában.
+You can [examine the Storage queue message](#query-the-storage-queue) again to verify that the output binding generates a new message in the queue, as expected.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Frissítette a HTTP-triggert a függvényt, hogy az adatait egy tárolási várólistába írja. Ha többet szeretne megtudni a Python Azure Functions fejlesztéséről, tekintse meg a [Python fejlesztői útmutató Azure functions](functions-reference-python.md) és [Azure functions triggerek és kötések](functions-triggers-bindings.md)című témakört. A Python függvényekben a teljes körű függvények projektjeiről a [Python functions](/samples/browse/?products=azure-functions&languages=python)példákban olvashat. A díjszabással kapcsolatos további információkért tekintse meg a [functions díjszabási oldalát](https://azure.microsoft.com/pricing/details/functions/) , valamint a [felhasználási terv költségeinek becslése](functions-consumption-costs.md) című cikket.
+You've updated your HTTP-triggered function to write data to a Storage queue. To learn more about developing Azure Functions with Python, see the [Azure Functions Python developer guide](functions-reference-python.md) and [Azure Functions triggers and bindings](functions-triggers-bindings.md). For examples of complete Function projects in Python, see the [Python Functions samples](/samples/browse/?products=azure-functions&languages=python). To learn more about pricing, see the [Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) and the [Estimating Consumption plan costs](functions-consumption-costs.md) article.
 
-Ezután engedélyezze Application Insights figyelését a Function alkalmazáshoz:
+Next, you should enable Application Insights monitoring for your function app:
 
 > [!div class="nextstepaction"]
 > [Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)

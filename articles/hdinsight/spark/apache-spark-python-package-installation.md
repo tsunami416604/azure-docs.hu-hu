@@ -1,33 +1,26 @@
 ---
-title: Parancsfájl-művelet a Python-csomagokhoz az Azure HDInsight Jupyter
-description: Részletes útmutató a HDInsight Spark-fürtökkel elérhető Jupyter notebookok külső Python-csomagok használatához való konfigurálásához a parancsfájl-művelet használatával.
+title: Script action for Python packages with Jupyter on Azure HDInsight
+description: Step-by-step instructions on how to use script action to configure Jupyter notebooks available with HDInsight Spark clusters to use external python packages.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: e344035f05e192de1779a60fc99a7e0144566654
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2019
+ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682187"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215562"
 ---
-# <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Parancsfájl-művelet külső Python-csomagok telepítéséhez a Jupyter notebookokhoz a HDInsight-on Apache Spark
+# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Safely manage Python environment on Azure HDInsight using Script Action
 
 > [!div class="op_single_selector"]
-> * [A Cell Magic használata](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Parancsfájl-művelet használata](apache-spark-python-package-installation.md)
+> * [Using cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Using Script Action](apache-spark-python-package-installation.md)
 
-Megtudhatja, hogyan használhat parancsfájl-műveleteket egy [Apache Spark](https://spark.apache.org/) -fürt HDInsight való konfigurálásához olyan külső, Közösség által támogatott **Python** -csomagok használatára, amelyek nem szerepelnek a fürtben.
-
-> [!NOTE]  
-> Jupyter notebookot úgy is konfigurálhat, hogy `%%configure` Magic használatával külső csomagokat használ. Útmutatásért lásd: [külső csomagok használata Jupyter notebookokkal Apache Spark-fürtökön a HDInsight-ben](apache-spark-jupyter-notebook-use-external-packages.md).
-
-A [csomag indexében](https://pypi.python.org/pypi) a rendelkezésre álló csomagok teljes listáját is megkeresheti. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. Telepítheti például a [Conda-Forge](https://conda-forge.org/feedstocks/)használatával elérhetővé tett csomagokat.
-
-Ebből a cikkből megtudhatja, hogyan telepítheti a [TensorFlow](https://www.tensorflow.org/) -csomagot a fürtön lévő parancsfájl-művelettel, és hogyan használhatja a Jupyter notebookon keresztül példaként.
+HDInsight has two built-in Python installations in the Spark cluster, Anaconda Python 2.7 and Python 3.5. In some cases, customers need to customize the Python environment, like installing external Python packages or another Python version. In this article, we show the best practice of safely managing Python environments for an [Apache Spark](https://spark.apache.org/) cluster on HDInsight.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,93 +29,126 @@ Ebből a cikkből megtudhatja, hogyan telepítheti a [TensorFlow](https://www.te
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]  
-   > Ha még nem rendelkezik Spark-fürttel a HDInsight Linuxon, a fürt létrehozása során parancsfájl-műveleteket is futtathat. Tekintse meg az [egyéni parancsfájl-műveletek használatát ismertető](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)dokumentációt.
+   > If you do not already have a Spark cluster on HDInsight Linux, you can run script actions during cluster creation. Visit the documentation on [how to use custom script actions](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftverek támogatása
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Support for open-source software used on HDInsight clusters
 
-A Microsoft Azure HDInsight szolgáltatás a Apache Hadoop által létrehozott nyílt forráskódú technológiák ökoszisztémáját használja. A Microsoft Azure a nyílt forráskódú technológiák általános támogatását biztosítja. További információ: Azure- [támogatás – gyakori kérdések webhelye](https://azure.microsoft.com/support/faq/). A HDInsight szolgáltatás további szintű támogatást biztosít a beépített összetevőkhöz.
+The Microsoft Azure HDInsight service uses an ecosystem of open-source technologies formed around Apache Hadoop. Microsoft Azure provides a general level of support for open-source technologies. For more information, see [Azure Support FAQ website](https://azure.microsoft.com/support/faq/). The HDInsight service provides an additional level of support for built-in components.
 
-A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhető el:
+There are two types of open-source components that are available in the HDInsight service:
 
-* **Beépített összetevők** – ezek az összetevők előre telepítve vannak a HDInsight-fürtökön, és alapvető funkciókat biztosítanak a fürt számára. Például Apache Hadoop fonal erőforráskezelő, a Apache Hive lekérdezési nyelve (HiveQL) és a Mahout-könyvtár ebbe a kategóriába tartozik. A fürt összetevőinek teljes listája a [HDInsight által biztosított Apache Hadoop-fürt verziójának újdonságai](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)című részében érhető el.
-* **Egyéni összetevők** – a fürt felhasználója a munkaterhelésen belül bármely, a Közösségben elérhető vagy Ön által létrehozott összetevő használatával telepítheti vagy használhatja a számítási feladatot.
+* **Built-in components** - These components are pre-installed on HDInsight clusters and provide core functionality of the cluster. For example, Apache Hadoop YARN Resource Manager, the Apache Hive query language (HiveQL), and the Mahout library belong to this category. A full list of cluster components is available in [What's new in the Apache Hadoop cluster versions provided by HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+* **Custom components** - You, as a user of the cluster, can install or use in your workload any component available in the community or created by you.
 
 > [!IMPORTANT]
-> A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
+> Components provided with the HDInsight cluster are fully supported. Microsoft Support helps to isolate and resolve issues related to these components.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.orgon ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/).
+> Custom components receive commercially reasonable support to help you to further troubleshoot the issue. Microsoft support may be able to resolve the issue OR they may ask you to engage available channels for the open source technologies where deep expertise for that technology is found. For example, there are many community sites that can be used, like: [MSDN forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Also Apache projects have project sites on [https://apache.org](https://apache.org), for example: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="use-external-packages-with-jupyter-notebooks"></a>Külső csomagok használata Jupyter notebookokkal
+## <a name="understand-default-python-installation"></a>Understand default Python installation
 
-1. A [Azure Portal](https://portal.azure.com/)navigáljon a fürthöz.  
+HDInsight Spark cluster is created with Anaconda installation. There are two Python installations in the cluster, Anaconda Python 2.7 and Python 3.5. The table below shows the default Python settings for Spark, Livy, and Jupyter.
 
-2. Ha kiválasztotta a fürtöt, a bal oldali ablaktábla **Beállítások**területén válassza a **parancsfájlok műveletek**elemet.
+| |Python 2.7|Python 3.5|
+|----|----|----|
+|Útvonal|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|Default set to 2.7|–|
+|Livy|Default set to 2.7|–|
+|Jupyter|PySpark kernel|PySpark3 kernel|
 
-3. Válassza a **+ Küldés új**lehetőséget.
+## <a name="safely-install-external-python-packages"></a>Safely install external Python packages
 
-4. Adja meg a következő értékeket a **parancsfájl elküldése művelet** ablakhoz:  
+HDInsight cluster depends on the built-in Python environment, both Python 2.7 and Python 3.5. Directly installing custom packages in those default built-in environments may cause unexpected library version changes, and break the cluster further. In order to safely install custom external Python packages for your Spark applications, follow below steps.
 
-    |Paraméter | Érték |
-    |---|---|
-    |Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-    |Name (Név) |Írja be a `tensorflow` a szövegmezőbe.|
-    |Bash-parancsfájl URI-ja |Írja be a `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` a szövegmezőbe. |
-    |Csomópont típusa (i) | Jelölje be a **Head**és a **Worker** (feldolgozó) jelölőnégyzetet. |
+1. Create Python virtual environment using conda. A virtual environment provides an isolated space for your projects without breaking others. When creating the Python virtual environment, you can specify python version that you want to use. Note that you still need to create virtual environment even though you would like to use Python 2.7 and 3.5. This is to make sure the cluster’s default environment not getting broke. Run script actions on your cluster for all nodes with below script to create a Python virtual environment. 
 
-    `tensorflowinstall.sh` a következő parancsokat tartalmazza:
+    -   `--prefix` specifies a path where a conda virtual environment lives. There are several configs that need to be changed further based on the path specified here. In this example, we use the py35new, as the cluster has an existing virtual environment called py35 already.
+    -   `python=` specifies the Python version for the virtual environment. In this example, we use version 3.5, the same version as the cluster built in one. You can also use other Python versions to create the virtual environment.
+    -   `anaconda` specifies the package_spec as anaconda to install Anaconda packages in the virtual environment.
+    
+    ```bash
+    sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes 
+    ```
+
+2. Install external Python packages in the created virtual environment if needed. Run script actions on your cluster for all nodes with below script to install external Python packages. You need to have sudo privilege here in order to write files to the virtual environment folder.
+
+    You can search the [package index](https://pypi.python.org/pypi) for the complete list of packages that are available. You can also get a list of available packages from other sources. For example, you can install packages made available through [conda-forge](https://conda-forge.org/feedstocks/).
+
+    -   `seaborn` is the package name that you would like to install.
+    -   `-n py35new` specify the virtual environment name that just gets created. Make sure to change the name correspondingly based on your virtual environment creation.
 
     ```bash
-    #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-5. Kattintson a **Létrehozás** gombra.  Tekintse meg az [egyéni parancsfájl-műveletek használatát ismertető](../hdinsight-hadoop-customize-cluster-linux.md)dokumentációt.
+    if you don't know the virtual environment name, you can SSH to the header node of the cluster and run `/usr/bin/anaconda/bin/conda info -e` to show all virtual environments.
 
-6. Várjon, amíg a parancsfájl be nem fejeződik.  A **parancsfájl műveletei** ablaktáblán meg **kell adni az új parancsfájl-műveleteket, miután a fürt aktuális művelete befejeződött** , miközben a parancsfájl végrehajtása folyamatban van.  A folyamatjelző sáv a Ambari felhasználói felületének **hátterében lévő műveletek** ablakból tekinthető meg.
+3. Change Spark and Livy configs and point to the created virtual environment.
 
-7. Nyisson meg egy PySpark Jupyter notebookot.  Lásd: [Jupyter-jegyzetfüzet létrehozása Spark-HDInsight](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) a lépések végrehajtásához.
-
-    ![Új Jupyter-jegyzetfüzet létrehozása](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Új Jupyter notebook létrehozása")
-
-8. Most `import tensorflow` és egy Hello World példát fog futtatni. Írja be a következő kódot:
-
-    ```
-    import tensorflow as tf
-    hello = tf.constant('Hello, TensorFlow!')
-    sess = tf.Session()
-    print(sess.run(hello))
-    ```
-
-    Az eredmény így néz ki:
+    1. Open Ambari UI, go to Spark2 page, Configs tab.
     
-    ![TensorFlow-kód végrehajtása](./media/apache-spark-python-package-installation/tensorflow-execution.png "TensorFlow-kód végrehajtása")
+        ![Change Spark and Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+ 
+    2. Expand Advanced livy2-env, add below statements at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
 
-> [!NOTE]  
-> Két Python-telepítés van a fürtben. A Spark a `/usr/bin/anaconda/bin` címen található anaconda Python-telepítést fogja használni, és alapértelmezés szerint a Python 2,7 környezetbe kerül. A Python 3. x és a PySpark3 kernel telepítési csomagjainak használatához használja az adott környezethez tartozó `conda` végrehajtható fájl elérési útját, és a `-n` paraméter használatával határozza meg a környezetet. A `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`parancs például telepíti a `ggplot` csomagot a Python 3,5 környezetbe a `conda-forge` csatornán keresztül.
+        ```
+        export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
+        export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
+        ```
+
+        ![Change Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+
+    3. Expand Advanced spark2-env, replace the existing export PYSPARK_PYTHON statement at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+
+        ```
+        export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
+        ```
+
+        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+
+    4. Save the changes and restart affected services. These changes need a restart of Spark2 service. Ambari UI will prompt a required restart reminder, click Restart to restart all affected services.
+
+        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+ 
+4.  If you would like to use the new created virtual environment on Jupyter. You need to change Jupyter configs and restart Jupyter. Run script actions on all header nodes with below statement to point Jupyter to the new created virtual environment. Make sure to modify the path to the prefix you specified for your virtual environment. After running this script action, restart Jupyter service through Ambari UI to make this change available.
+
+    ```
+    sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
+    ```
+
+    You could double confirm the Python environment in Jupyter Notebook by running below code:
+
+    ![Check Python version in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+
+## <a name="known-issue"></a>Ismert probléma
+
+There is a known bug for Anaconda version 4.7.11 and 4.7.12. If you see your script actions hanging at `"Collecting package metadata (repodata.json): ...working..."` and failing with `"Python script has been killed due to timeout after waiting 3600 secs"`. You can download [this script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) and run it as script actions on all nodes to fix the issue.
+
+To check your Anaconda version, you can SSH to the cluster header node and run `/usr/bin/anaconda/bin/conda --v`.
 
 ## <a name="seealso"></a>Lásd még:
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](apache-spark-use-bi-tools.md)
+* [Apache Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](apache-spark-machine-learning-mllib-ipython.md)
+* [Website log analysis using Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
+* [Run jobs remotely on an Apache Spark cluster using Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 
-* [Külső csomagok használata Jupyter notebookokkal Apache Spark-fürtökben a HDInsight-ben](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Use external packages with Jupyter notebooks in Apache Spark clusters on HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Apache Spark applications remotely](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Use Apache Zeppelin notebooks with an Apache Spark cluster on HDInsight](apache-spark-zeppelin-notebook.md)
+* [Kernels available for Jupyter notebook in Apache Spark cluster for HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése

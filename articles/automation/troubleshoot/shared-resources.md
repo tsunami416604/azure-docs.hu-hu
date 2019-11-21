@@ -1,6 +1,6 @@
 ---
-title: Azure Automation megosztott erőforrásokkal kapcsolatos hibák elhárítása
-description: Ismerje meg az Azure Automation megosztott erőforrásokkal kapcsolatos problémák elhárítása
+title: Troubleshoot errors with Azure Automation shared resources
+description: Learn how to troubleshoot issues with Azure Automation shared resources
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -8,42 +8,42 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b9b1be699190f6dc6f4771411c22f376d51637ec
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477449"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231538"
 ---
-# <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
+# <a name="troubleshoot-errors-with-shared-resources"></a>Troubleshoot errors with shared resources
 
-Ez a cikk ismerteti a megoldásokat, amelyek találkozhat az Azure Automationben a megosztott erőforrás használatakor problémák megoldásához.
+This article discusses solutions to resolve issues that you may run across when using the shared resources in Azure Automation.
 
 ## <a name="modules"></a>Modulok
 
-### <a name="module-stuck-importing"></a>Forgatókönyv: Modul importálása elakadt
+### <a name="module-stuck-importing"></a>Scenario: A Module is stuck importing
 
 #### <a name="issue"></a>Probléma
 
-Egy modul Beragadt a **importálása** állapota akkor importálhatja, vagy az Azure Automation-modulok frissítése.
+A module is stuck in the **Importing** state when you import or update your modules in Azure automation.
 
 #### <a name="cause"></a>Ok
 
-PowerShell-modulok importálása összetett több lépésből álló folyamat során a rendszer. Ez a folyamat előfordulhat, hogy a modul importálását nem megfelelően. Ez a probléma akkor fordul elő, ha a modul importálását is elakadt átmeneti állapotban. Ez a folyamat kapcsolatos további információkért lásd: [egy PowerShell-modul importálása]( /powershell/developer/module/importing-a-powershell-module#the-importing-process).
+Importing PowerShell modules is a complex multi-step process. This process introduces the possibility of a module not importing correctly. If this issue occurs, the module you're importing can be stuck in a transient state. To learn more about this process, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
-A probléma megoldásához el kell távolítania a modul, amely a elakadt a **importálása** állapot használatával a [Remove-azurermautomationmodule modulba](/powershell/module/azurerm.automation/remove-azurermautomationmodule) parancsmagot. A modul importálása próbálkozzon újra.
+To resolve this issue, you must remove the module that is stuck in the **Importing** state by using the [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet. You can then retry importing the module.
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>Forgatókönyv: AzureRM-modulok regisztrálásuk után próbálja frissíteni őket importálása
+### <a name="update-azure-modules-importing"></a>Scenario: AzureRM modules are stuck importing after trying to update them
 
 #### <a name="issue"></a>Probléma
 
-A következő üzenetet tartalmazó szalag marad a fiókjában után az AzureRM-modulok frissítése közben:
+A banner with the following message stays in your account after trying to update your AzureRM modules:
 
 ```error
 Azure modules are being updated
@@ -51,53 +51,53 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Ok
 
-Frissítése az AzureRM-modulokat: Automation-fiók, amely egy erőforráscsoportot a numerikus kezdetű névvel rendelkező 0-val rendelkező egy ismert probléma van.
+There is a known issue with updating the AzureRM modules in an Automation Account that is in a resource group with a numeric name that starts with 0.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
-Az Azure-modulokat: Automation-fiók frissítéséhez egy alfanumerikus nevű erőforráscsoportban kell lennie. Erőforráscsoportok 0-tól induló numerikus nevek nem tudnak AzureRM-modulok frissítése most.
+To update your Azure modules in your Automation Account, it must be in a resource group that has an alphanumeric name. Resource groups with numeric names starting with 0 are unable to update AzureRM modules at this time.
 
-### <a name="module-fails-to-import"></a>Forgatókönyv: Modul importálása sikertelen, vagy a parancsmagok nem hajtható végre, az importálás után
-
-#### <a name="issue"></a>Probléma
-
-Modul importálása sikertelen lesz, vagy sikeresen importálja, de nincs parancsmagok ki kell olvasni.
-
-#### <a name="cause"></a>Ok
-
-Néhány általános oka, hogy egy modul előfordulhat, hogy nem sikerült importálni az Azure Automationhöz a következők:
-
-* A struktúra nem felel meg az Automation kell a struktúra.
-* A modul, amely még nem lett telepítve az Automation-fiók egy másik modul függ.
-* A modul hiányzó függőségeit a mappában.
-* A `New-AzureRmAutomationModule` parancsmagot használják, hogy a modul feltöltése és a teljes elérési útja nem végezték el, vagy a modul még nincs betöltve egy nyilvánosan elérhető URL-cím használatával.
-
-#### <a name="resolution"></a>Megoldás:
-
-A probléma elhárításához a következő megoldások valamelyikét:
-
-* Győződjön meg arról, hogy a modul követi a következő formátumban: ModuleName.Zip **->** ModuleName vagy a verziószám **->** (ModuleName.psm1, ModuleName.psd1)
-* Nyissa meg a .psd1 fájlban, és tekintse meg, ha a modul rendelkezik-e függőségek. Ha igen, töltse fel ezeket a modulokat az Automation-fiókot.
-* Győződjön meg arról, hogy minden hivatkozott .dll modul mappában találhatók.
-
-### <a name="all-modules-suspended"></a>Forgatókönyv: Update-AzureModule.ps1 suspends when updating modules
+### <a name="module-fails-to-import"></a>Scenario: Module fails to import or cmdlets can't be executed after importing
 
 #### <a name="issue"></a>Probléma
 
-Használatakor a [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbookot, hogy a modul frissítése a frissítési folyamatot felfüggesztett lekérdezi az Azure-modulok frissítése.
+A module fails to import or imports successfully, but no cmdlets are extracted.
 
 #### <a name="cause"></a>Ok
 
-Az alapértelmezett beállítás határozza meg, hány modult egyszerre frissíti a 10 használata esetén a `Update-AzureModule.ps1` parancsfájlt. A frissítési folyamat modulok beüzemelje frissítése folyamatban van egy időben esetén a hibalehetőség.
+Some common reasons that a module might not successfully import to Azure Automation are:
 
-#### <a name="resolution"></a>Megoldás:
+* The structure doesn't match the structure that Automation needs it to be in.
+* The module depends on another module that hasn't been deployed to your Automation account.
+* The module is missing its dependencies in the folder.
+* The `New-AzureRmAutomationModule` cmdlet is being used to upload the module, and you haven't given the full storage path or haven't loaded the module by using a publicly accessible URL.
 
-A nem gyakori, hogy minden AzureRM-modul az azonos Automation-fiók szükséges. Azt javasoljuk, hogy az importálás kizárólag az AzureRM-modulok szükséges.
+#### <a name="resolution"></a>Felbontás
+
+Any of the following solutions fix the problem:
+
+* Make sure that the module follows the following format: ModuleName.Zip **->** ModuleName or Version Number **->** (ModuleName.psm1, ModuleName.psd1)
+* Open the .psd1 file and see if the module has any dependencies. If it does, upload these modules to the Automation account.
+* Make sure that any referenced .dlls are present in the module folder.
+
+### <a name="all-modules-suspended"></a>Scenario: Update-AzureModule.ps1 suspends when updating modules
+
+#### <a name="issue"></a>Probléma
+
+When using the [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook to update your Azure modules the module update the update process gets suspended.
+
+#### <a name="cause"></a>Ok
+
+The default setting to determine how many modules get updated simultaneously is 10 when using the `Update-AzureModule.ps1` script. The update process is prone to errors when too many modules are being updated at the same time.
+
+#### <a name="resolution"></a>Felbontás
+
+It's not common that all the AzureRM modules are required in the same Automation account. It's recommended to only import the AzureRM modules that you need.
 
 > [!NOTE]
-> Kerülje a importálása a **AzureRM** modul. Importálja a **AzureRM** modulok hatására az összes **AzureRM.\***  modulok importálni, ez azonban nem leronthatja.
+> Avoid importing the **AzureRM** module. Importing the **AzureRM** modules causes all **AzureRM.\*** modules to be imported, this is not recommened.
 
-Ha felfüggeszti a frissítési folyamat, hozzá kell a `SimultaneousModuleImportJobCount` paramétert a `Update-AzureModules.ps1` szkriptet, és adja meg az alapértelmezett, amely 10 alacsonyabb érték. Ha a logikai értéke 3 vagy 5 használatbavételéhez megvalósítása ajánlott. `SimultaneousModuleImportJobCount` a paraméter a `Update-AutomationAzureModulesForAccount` rendszer runbook, amellyel Azure-modulok frissítése. Ez a változás lehetővé teszi a folyamat futtatási már, de befejezése, nagyobb valószínűséggel lehet. Az alábbi példa bemutatja a paraméter és helyét, a runbook:
+If the update process suspends, you need to add the `SimultaneousModuleImportJobCount` parameter to the `Update-AzureModules.ps1` script and provide a lower value than the default that is 10. It's recommended if you implement this logic, to start with a value of 3 or 5. `SimultaneousModuleImportJobCount` is a parameter of the `Update-AutomationAzureModulesForAccount` system runbook that is used to update Azure modules. This change makes the process run longer, but has a better chance of completing. The following example shows the parameter and where to put it in the runbook:
 
  ```powershell
          $Body = @"
@@ -116,13 +116,13 @@ Ha felfüggeszti a frissítési folyamat, hozzá kell a `SimultaneousModuleImpor
 "@
 ```
 
-## <a name="run-as-accounts"></a>Futtató fiókok
+## <a name="run-as-accounts"></a>Run As accounts
 
-### <a name="unable-create-update"></a>Forgatókönyv: Nem tud létrehozni vagy frissíteni a futtató fiók
+### <a name="unable-create-update"></a>Scenario: You're unable to create or update a Run As account
 
 #### <a name="issue"></a>Probléma
 
-Amikor megpróbálja létrehozni vagy frissíteni egy futtató fiókot, az alábbihoz hasonló hibaüzenetet kap:
+When you try to create or update a Run As account, you receive an error similar to the following error message:
 
 ```error
 You do not have permissions to create…
@@ -130,19 +130,19 @@ You do not have permissions to create…
 
 #### <a name="cause"></a>Ok
 
-Nem kell az engedélyeket kell létrehozni vagy frissíteni a futtató fiókot, vagy az erőforrás zárolva van, egy erőforráscsoport szintjén.
+You don't have the permissions that you need to create or update the Run As account or the resource is locked at a resource group level.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
-Létrehozása vagy frissítése egy futtató fiókot, akkor a különböző erőforrások használják a futtató fiók megfelelő engedélyeket kell rendelkeznie. Létrehozni vagy frissíteni a futtató fiók szükséges engedélyekkel kapcsolatos további információkért lásd: [Futtatás mint fiók engedélyek](../manage-runas-account.md#permissions).
+To create or update a Run As account, you must have appropriate permissions to the various resources used by the Run As account. To learn about the permissions needed to create or update a Run As account, see [Run As account permissions](../manage-runas-account.md#permissions).
 
-Ha a probléma miatt a zárolást, ellenőrizze, hogy a zárolást az ok gombra. Távolítsa el azt. Az erőforrás zárolva van, majd keresse meg, kattintson a jobb gombbal a zárolást, és válassza a **törlése** , távolítsa el a zárolást.
+If the issue is because of a lock, verify that the lock is ok to remove it. Then navigate to the resource that is locked, right-click the lock and choose **Delete** to remove the lock.
 
-### <a name="iphelper"></a>Forgatókönyv: Ha a "Nem található a belépési pont"GetPerAdapterInfo"DLL-ben"iplpapi.dll"nevű" hibaüzenetet kapja egy runbook futtatását.
+### <a name="iphelper"></a>Scenario: You receive the error "Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'" when executing a runbook.
 
 #### <a name="issue"></a>Probléma
 
-Runbook végrehajtása során a következő kivétel:
+When executing a runbook you receive the following exception:
 
 ```error
 Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
@@ -150,11 +150,11 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba oka valószínűleg egy helytelenül konfigurált által okozott [futtató fiók](../manage-runas-account.md).
+This error is most likely caused by an incorrectly configured [Run As Account](../manage-runas-account.md).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
-Győződjön meg arról, hogy a [futtató fiók](../manage-runas-account.md) megfelelően van konfigurálva. Ha megfelelően van konfigurálva, győződjön meg arról, hogy a megfelelő kódot a runbookban, Azure-hitelesítésre. Az alábbi példa bemutatja egy kódrészletet az Azure-bA egy runbook egy futtató fiókkal hitelesítést.
+Make sure your [Run As Account](../manage-runas-account.md) is properly configured. Once it is configured correctly, ensure you have the proper code in your runbook to authenticate with Azure. The following example shows a snippet of code to authenticate to Azure in a runbook using a Run As Account.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -162,10 +162,10 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha nem jelenik meg a problémát, vagy nem lehet megoldani a problémát, látogasson el a következő csatornák további támogatás:
+If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
 
 * Az [Azure fórumain](https://azure.microsoft.com/support/forums/) Azure-szakértőktől kaphat válaszokat.
 * Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-* Ha további segítségre van szüksége, akkor is fájl egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az első**.
+* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.

@@ -1,32 +1,27 @@
 ---
-title: Hibák Durable Functions-Azure-ban való kezelésére
-description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functions Durable Functions bővítményében.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Handling errors in Durable Functions - Azure
+description: Learn how to handle errors in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: adc23cad4ad7c55ce81096b1550520c496f744c1
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614868"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231404"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák feldolgozása a Durable Functionsban (Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Handling errors in Durable Functions (Azure Functions)
 
-A tartós függvények összehangolása programkódban valósul meg, és a programozási nyelv beépített hibák kezelésére szolgáló funkcióit használhatja. Valójában nincs olyan új fogalma, amelyet meg kell tanulnia a hibák kezelésére és a kompenzációba való felvételre. Vannak azonban olyan viselkedések, amelyeket érdemes figyelembe vennie.
+Durable Function orchestrations are implemented in code and can use the programming language's built-in error-handling features. There really aren't any new concepts you need to learn to add error handling and compensation into your orchestrations. However, there are a few behaviors that you should be aware of.
 
-## <a name="errors-in-activity-functions"></a>Hibák a Activity functions szolgáltatásban
+## <a name="errors-in-activity-functions"></a>Errors in activity functions
 
-A tevékenységi függvényekben felmerülő kivételeket a rendszer visszaküldi a Orchestrator függvénynek, és `FunctionFailedException`ként dobja el. A Orchestrator függvényben az igényeinek megfelelő hibakezelés és kompenzációs kód is írható.
+Any exception that is thrown in an activity function is marshaled back to the orchestrator function and thrown as a `FunctionFailedException`. You can write error handling and compensation code that suits your needs in the orchestrator function.
 
-Vegyük például a következő Orchestrator függvényt, amely az egyik fiókból a másikba továbbítja a forrásokat:
+For example, consider the following orchestrator function that transfers funds from one account to another:
 
-### <a name="precompiled-c"></a>ElőfordítottC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -64,7 +59,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Parancsfájl
+### <a name="c-script"></a>C# Script
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -104,9 +99,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -142,13 +137,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Ha az első **CreditAccount** -függvény hívása sikertelen, a Orchestrator függvény kompenzálja a források visszaküldését a forrás fiókba.
+If the first **CreditAccount** function call fails, the orchestrator function compensates by crediting the funds back to the source account.
 
-## <a name="automatic-retry-on-failure"></a>Sikertelen automatikus újrapróbálkozás
+## <a name="automatic-retry-on-failure"></a>Automatic retry on failure
 
-A Activity functions vagy a beosztási függvények meghívásakor megadhat egy automatikus újrapróbálkozási házirendet. A következő példa legfeljebb háromszor próbálkozik egy függvény hívásával, és minden újrapróbálkozás után 5 másodpercet vár:
+When you call activity functions or sub-orchestration functions, you can specify an automatic retry policy. The following example attempts to call a function up to three times and waits 5 seconds between each retry:
 
-### <a name="precompiled-c"></a>ElőfordítottC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -164,7 +159,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Parancsfájl
+### <a name="c-script"></a>C# Script
 
 ```csharp
 public static async Task Run(IDurableOrchestrationContext context)
@@ -180,9 +175,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -196,22 +191,22 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A `CallActivityWithRetryAsync` (.NET) vagy `callActivityWithRetry` (JavaScript) API egy `RetryOptions` paramétert használ. A `CallSubOrchestratorWithRetryAsync` (.NET) vagy a `callSubOrchestratorWithRetry` (JavaScript) API-val történő rendszerelőkészítési hívások ugyanezeket az újrapróbálkozási házirendeket használhatják.
+The `CallActivityWithRetryAsync` (.NET) or `callActivityWithRetry` (JavaScript) API takes a `RetryOptions` parameter. Sub-orchestration calls using the `CallSubOrchestratorWithRetryAsync` (.NET) or `callSubOrchestratorWithRetry` (JavaScript) API can use these same retry policies.
 
-Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van:
+There are several options for customizing the automatic retry policy:
 
-* **Kísérletek maximális száma**: az újrapróbálkozási kísérletek maximális száma.
-* **Első újrapróbálkozás időköze**: az első újrapróbálkozási kísérlet előtti várakozási idő.
-* **Leállítási együttható**: a leállítási növelésének mértékét meghatározó együttható. Az alapértelmezett érték 1.
-* **Maximális újrapróbálkozási időköz**: az újrapróbálkozási kísérletek között elvárt maximális időtartam.
-* **Újrapróbálkozás időtúllépése**: az újrapróbálkozások maximálisan elkölthető ideje. Az alapértelmezett viselkedés az, ha határozatlan ideig próbálkozik.
-* **Leíró**: a felhasználó által definiált visszahívás megadható annak megállapításához, hogy egy függvényt újra kell-e próbálni.
+* **Max number of attempts**: The maximum number of retry attempts.
+* **First retry interval**: The amount of time to wait before the first retry attempt.
+* **Backoff coefficient**: The coefficient used to determine rate of increase of backoff. Defaults to 1.
+* **Max retry interval**: The maximum amount of time to wait in between retry attempts.
+* **Retry timeout**: The maximum amount of time to spend doing retries. The default behavior is to retry indefinitely.
+* **Handle**: A user-defined callback can be specified to determine whether a function should be retried.
 
-## <a name="function-timeouts"></a>Függvények időtúllépései
+## <a name="function-timeouts"></a>Function timeouts
 
-Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ennek a megfelelő módja, ha egy [tartós időzítőt](durable-functions-timers.md) hoz létre `context.CreateTimer` (.net) vagy `context.df.createTimer` (JavaScript) használatával a `Task.WhenAny` (.net) vagy a `context.df.Task.any` (JavaScript) segítségével, ahogy az alábbi példában is látható:
+You might want to abandon a function call within an orchestrator function if it's taking too long to complete. The proper way to do this today is by creating a [durable timer](durable-functions-timers.md) using `context.CreateTimer` (.NET) or `context.df.createTimer` (JavaScript) in conjunction with `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript), as in the following example:
 
-### <a name="precompiled-c"></a>ElőfordítottC#
+### <a name="precompiled-c"></a>Precompiled C#
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -241,7 +236,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 }
 ```
 
-### <a name="c-script"></a>C#Parancsfájl
+### <a name="c-script"></a>C# Script
 
 ```csharp
 public static async Task<bool> Run(IDurableOrchestrationContext context)
@@ -271,9 +266,9 @@ public static async Task<bool> Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -298,16 +293,16 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Ez a mechanizmus valójában nem szakítja meg a folyamatban lévő tevékenységek működésének végrehajtását. Ehelyett egyszerűen lehetővé teszi, hogy a Orchestrator függvény figyelmen kívül hagyja az eredményt, és továbblép. További információ: [időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációja.
+> This mechanism does not actually terminate in-progress activity function execution. Rather, it simply allows the orchestrator function to ignore the result and move on. For more information, see the [Timers](durable-functions-timers.md#usage-for-timeout) documentation.
 
 ## <a name="unhandled-exceptions"></a>Nem kezelt kivételek
 
-Ha egy Orchestrator függvény nem kezelt kivétel miatt meghiúsul, a rendszer naplózza a kivétel részleteit, és a példány `Failed` állapottal fejeződik be.
+If an orchestrator function fails with an unhandled exception, the details of the exception are logged and the instance completes with a `Failed` status.
 
-## <a name="next-steps"></a>További lépések
-
-> [!div class="nextstepaction"]
-> [Ismerje meg az örök összeszereléseket](durable-functions-eternal-orchestrations.md)
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan diagnosztizálhatja a problémákat](durable-functions-diagnostics.md)
+> [Learn about eternal orchestrations](durable-functions-eternal-orchestrations.md)
+
+> [!div class="nextstepaction"]
+> [Learn how to diagnose problems](durable-functions-diagnostics.md)

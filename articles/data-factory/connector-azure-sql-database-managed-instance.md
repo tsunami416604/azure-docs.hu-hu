@@ -1,84 +1,84 @@
 ---
-title: Adatok másolása Azure SQL Database felügyelt példányról a Azure Data Factory használatával
-description: Megtudhatja, hogyan helyezheti át az adatait Azure SQL Database felügyelt példányra Azure Data Factory használatával.
+title: Copy data to and from Azure SQL Database Managed Instance
+description: Learn how to move data to and from Azure SQL Database Managed Instance by using Azure Data Factory.
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a70ecacdf10c985cabca8fa3ddf4314bf266afe
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 09/09/2019
+ms.openlocfilehash: 9eedd8c1ad740f7393da47eac7a20cb5b58ad8d3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075609"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218773"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Adatok másolása Azure SQL Database felügyelt példányról a Azure Data Factory használatával
+# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Copy data to and from Azure SQL Database Managed Instance by using Azure Data Factory
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure SQL Database felügyelt példányba történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+This article outlines how to use the copy activity in Azure Data Factory to copy data to and from Azure SQL Database Managed Instance. It builds on the [Copy activity overview](copy-activity-overview.md) article that presents a general overview of the copy activity.
 
-## <a name="supported-capabilities"></a>Támogatott képességek
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Ez a Azure SQL Database felügyelt példány-összekötő a következő tevékenységek esetében támogatott:
+This Azure SQL Database Managed Instance connector is supported for the following activities:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
-- [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
+- [GetMetadata activity](control-flow-get-metadata-activity.md)
 
-Az adatok Azure SQL Database felügyelt példányról bármely támogatott fogadó adattárba másolhatók. A felügyelt példányba bármilyen támogatott forrás adattárból is másolhat adatok. A másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+You can copy data from Azure SQL Database Managed Instance to any supported sink data store. You also can copy data from any supported source data store to the managed instance. For a list of data stores that are supported as sources and sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-Pontosabban, ez a Azure SQL Database felügyelt példány-összekötő támogatja a következőket:
+Specifically, this Azure SQL Database Managed Instance connector supports:
 
-- Az adatok másolása SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat-hitelesítéssel az Azure-erőforrások egyszerű szolgáltatásával vagy felügyelt identitásával.
-- Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával beolvashatja az adatokból.
-- Fogadóként, az adatsorok hozzáfűzésével vagy egy tárolt eljárás meghívásával egyéni logikával a másolás során.
-
->[!NOTE]
->Ez az összekötő nem támogatja Azure SQL Database felügyelt példány [Always Encryptedét](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) . A megoldáshoz használhat egy [általános ODBC-összekötőt](connector-odbc.md) és egy SQL Server ODBC-illesztőt a saját üzemeltetésű integrációs modulon keresztül. Kövesse [ezt az útmutatót](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) az ODBC-illesztőprogram letöltésével és a kapcsolatok karakterlánc-beállításaival.
+- Copying data by using SQL authentication and Azure Active Directory (Azure AD) Application token authentication with a service principal or managed identities for Azure resources.
+- As a source, retrieving data by using a SQL query or a stored procedure.
+- As a sink, appending data to a destination table or invoking a stored procedure with custom logic during copy.
 
 >[!NOTE]
->Ez az összekötő jelenleg nem támogatja az egyszerű szolgáltatásnév és a felügyelt identitások hitelesítését. A megoldáshoz válasszon egy Azure SQL Database-összekötőt, és adja meg manuálisan a felügyelt példány kiszolgálóját.
+>Azure SQL Database Managed Instance [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) isn't supported by this connector now. To work around, you can use a [generic ODBC connector](connector-odbc.md) and a SQL Server ODBC driver via a self-hosted integration runtime. Follow [this guidance](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) with ODBC driver download and connection string configurations.
+
+>[!NOTE]
+>Service principal and managed identity authentications currently aren't supported by this connector. To work around, choose an Azure SQL Database connector and manually specify the server of your managed instance.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure SQL Database felügyelt példány [nyilvános végpontjának](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)eléréséhez használhat egy Azure Data Factory felügyelt Azure Integration Runtime programot. Ügyeljen arra, hogy engedélyezze a nyilvános végpontot, és engedélyezze a nyilvános végponti forgalmat a hálózati biztonsági csoporton, hogy Azure Data Factory csatlakozni tudjanak az adatbázishoz. További információkért tekintse meg [ezt az útmutatót](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
+To access the Azure SQL Database Managed Instance [public endpoint](../sql-database/sql-database-managed-instance-public-endpoint-securely.md), you can use an Azure Data Factory managed Azure integration runtime. Make sure that you enable the public endpoint and also allow public endpoint traffic on the network security group so that Azure Data Factory can connect to your database. For more information, see [this guidance](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
 
-A Azure SQL Database felügyelt példány privát végpontjának eléréséhez állítson be egy saját üzemeltetésű [integrációs](create-self-hosted-integration-runtime.md) modult, amely hozzáfér az adatbázishoz. Ha a saját üzemeltetésű integrációs modult ugyanabban a virtuális hálózatban hozza létre, mint a felügyelt példányát, győződjön meg arról, hogy az integrációs modul számítógépe a felügyelt példánytól eltérő alhálózaton van. Ha a saját üzemeltetésű integrációs modult a felügyelt példánytól eltérő virtuális hálózaton helyezi üzembe, a virtuális hálózati kapcsolatok vagy virtuális hálózatok használatával virtuális hálózati kapcsolatot is használhat. További információ: [az alkalmazás Összekötése Azure SQL Database felügyelt példányhoz](../sql-database/sql-database-managed-instance-connect-app.md).
+To access the Azure SQL Database Managed Instance private endpoint, set up a [self-hosted integration runtime](create-self-hosted-integration-runtime.md) that can access the database. If you provision the self-hosted integration runtime in the same virtual network as your managed instance, make sure that your integration runtime machine is in a different subnet than your managed instance. If you provision your self-hosted integration runtime in a different virtual network than your managed instance, you can use either a virtual network peering or a virtual network to virtual network connection. For more information, see [Connect your application to Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-connect-app.md).
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Az első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek a Azure SQL Database felügyelt példány-összekötőhöz tartozó Azure Data Factory-entitások definiálásához használatosak.
+The following sections provide details about properties that are used to define Azure Data Factory entities specific to the Azure SQL Database Managed Instance connector.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Linked service properties
 
-A Azure SQL Database felügyelt példány társított szolgáltatása a következő tulajdonságokat támogatja:
+The following properties are supported for the Azure SQL Database Managed Instance linked service:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot **AzureSqlMI**értékre kell beállítani. | Igen |
-| connectionString |Ez a tulajdonság határozza meg az SQL-hitelesítés használatával a felügyelt példányhoz való kapcsolódáshoz szükséges **ConnectionString** -információkat. További információkért tekintse meg az alábbi példákat. <br/>Az alapértelmezett port a 1433-as számú. Ha Azure SQL Database felügyelt példányt használ nyilvános végponttal, explicit módon megadhatja a 3342-as portot.<br>A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Azure Data Factoryban. A jelszó Azure Key Vaultban is elhelyezhető. SQL-hitelesítés esetén a `password` konfigurációt húzza ki a kapcsolatok karakterláncán kívülről. További információ: a táblázatot követő JSON-példa és a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md). |Igen |
-| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással |
-| servicePrincipalKey | Adja meg az alkalmazáskulcsot. A mező megjelölése **SecureString** -ként a biztonságos tárolás Azure Data Factory vagy [Azure Key Vault tárolt titkos kód hivatkozása](store-credentials-in-key-vault.md)alapján. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással |
-| tenant | Adja meg a bérlői adatokat, például a tartománynevet vagy a bérlő AZONOSÍTÓját, amely alatt az alkalmazás található. Lekéri a Azure Portal jobb felső sarkában lévő egér fölé. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással |
-| connectVia | Ez az [integrációs](concepts-integration-runtime.md) modul az adattárhoz való kapcsolódásra szolgál. Használhatja a saját üzemeltetésű integrációs modult vagy egy Azure Integration Runtime-t, ha a felügyelt példány nyilvános végponttal rendelkezik, és lehetővé teszi Azure Data Factory számára a hozzáférését. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Igen |
+| type | The type property must be set to **AzureSqlMI**. | Igen |
+| connectionString |This property specifies the **connectionString** information that's needed to connect to the managed instance by using SQL authentication. For more information, see the following examples. <br/>The default port is 1433. If you're using Azure SQL Database Managed Instance with a public endpoint, explicitly specify port 3342.<br>Mark this field as **SecureString** to store it securely in Azure Data Factory. You also can put a password in Azure Key Vault. If it's SQL authentication, pull the `password` configuration out of the connection string. For more information, see the JSON example following the table and [Store credentials in Azure Key Vault](store-credentials-in-key-vault.md). |Igen |
+| servicePrincipalId | Specify the application's client ID. | Yes, when you use Azure AD authentication with a service principal |
+| servicePrincipalKey | Specify the application's key. Mark this field as **SecureString** to store it securely in Azure Data Factory or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Yes, when you use Azure AD authentication with a service principal |
+| tenant | Specify the tenant information, like the domain name or tenant ID, under which your application resides. Retrieve it by hovering the mouse in the upper-right corner of the Azure portal. | Yes, when you use Azure AD authentication with a service principal |
+| connectVia | This [integration runtime](concepts-integration-runtime.md) is used to connect to the data store. You can use a self-hosted integration runtime or an Azure integration runtime if your managed instance has a public endpoint and allows Azure Data Factory to access it. If not specified, the default Azure integration runtime is used. |Igen |
 
-Különböző hitelesítési típus tekintse meg a következő szakaszok az Előfeltételek és a JSON-minták, illetve:
+For different authentication types, refer to the following sections on prerequisites and JSON samples, respectively:
 
-- [SQL-hitelesítés](#sql-authentication)
-- [Azure AD-alkalmazás-jogkivonat hitelesítése: szolgáltatásnév](#service-principal-authentication)
-- [Azure AD-alkalmazás-jogkivonat hitelesítése: felügyelt identitások az Azure-erőforrásokhoz](#managed-identity)
+- [SQL authentication](#sql-authentication)
+- [Azure AD application token authentication: Service principal](#service-principal-authentication)
+- [Azure AD application token authentication: Managed identities for Azure resources](#managed-identity)
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
-**1. példa: SQL-hitelesítés használata**
+**Example 1: use SQL authentication**
 
 ```json
 {
@@ -99,7 +99,7 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 }
 ```
 
-**2. példa: SQL-hitelesítés használata jelszóval Azure Key Vault**
+**Example 2: use SQL authentication with a password in Azure Key Vault**
 
 ```json
 {
@@ -130,37 +130,37 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-A szolgáltatás egyszerű Azure AD-alapú hitelesítésének használatához kövesse az alábbi lépéseket:
+To use a service principal-based Azure AD application token authentication, follow these steps:
 
-1. A [felügyelt példányok Azure Active Directory rendszergazdájának](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)üzembe helyezéséhez kövesse az alábbi lépéseket.
+1. Follow the steps to [Provision an Azure Active Directory administrator for your Managed Instance](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-2. [Hozzon létre egy Azure Active Directory alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a Azure Portal. Jegyezze fel az alkalmazás nevét és a következő értékeket, amelyek meghatározzák a társított szolgáltatást:
+2. [Create an Azure Active Directory application](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) from the Azure portal. Make note of the application name and the following values that define the linked service:
 
     - Alkalmazásazonosító
-    - Alkalmazáskulcs
+    - Application key
     - Bérlőazonosító
 
-3. [Hozzon létre bejelentkezési adatokat](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) a Azure Data Factory felügyelt identitáshoz. SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a felügyelt példányhoz egy **rendszergazdaként**szolgáló SQL Server-fiókkal. A **Master** adatbázisban futtassa a következő T-SQL-T:
+3. [Create logins](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) for the Azure Data Factory managed identity. In SQL Server Management Studio (SSMS), connect to your Managed Instance using a SQL Server account that is a **sysadmin**. In **master** database, run the following T-SQL:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-4. [Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) a Azure Data Factory felügyelt identitáshoz. Kapcsolódjon az adatbázishoz a vagy a rendszerből, amelyről másolni kívánja az adatait, futtassa a következő T-SQL-T: 
+4. [Create contained database users](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) for the Azure Data Factory managed identity. Connect to the database from or to which you want to copy data, run the following T-SQL: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket, ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot. További lehetőségekért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+5. Grant the Data Factory managed identity needed permissions as you normally do for SQL users and others. Run the following code. For more options, see [this document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
     ```
 
-6. Azure SQL Database felügyelt példány társított szolgáltatásának konfigurálása Azure Data Factoryban.
+6. Configure an Azure SQL Database Managed Instance linked service in Azure Data Factory.
 
-**Példa: egyszerű szolgáltatásnév hitelesítésének használata**
+**Example: use service principal authentication**
 
 ```json
 {
@@ -187,35 +187,35 @@ A szolgáltatás egyszerű Azure AD-alapú hitelesítésének használatához k�
 }
 ```
 
-### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez
+### <a name="managed-identity"></a> Managed identities for Azure resources authentication
 
-Az adatok előállítója [felügyelt identitással](data-factory-service-identity.md) társítható az Azure-erőforrások számára, amelyek az adott adatelőállítót jelölik. Ezt a felügyelt identitást Azure SQL Database felügyelt példányok hitelesítéséhez használhatja. A kijelölt gyár ezen identitás használatával férhet hozzá az adatbázishoz, és másolhatja azokat az adatbázisból.
+A data factory can be associated with a [managed identity for Azure resources](data-factory-service-identity.md) that represents the specific data factory. You can use this managed identity for Azure SQL Database Managed Instance authentication. The designated factory can access and copy data from or to your database by using this identity.
 
-A felügyelt identitásos hitelesítés használatához kövesse az alábbi lépéseket.
+To use managed identity authentication, follow these steps.
 
-1. A [felügyelt példányok Azure Active Directory rendszergazdájának](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)üzembe helyezéséhez kövesse az alábbi lépéseket.
+1. Follow the steps to [Provision an Azure Active Directory administrator for your Managed Instance](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-2. [Hozzon létre bejelentkezési adatokat](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) a Azure Data Factory felügyelt identitáshoz. SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a felügyelt példányhoz egy **rendszergazdaként**szolgáló SQL Server-fiókkal. A **Master** adatbázisban futtassa a következő T-SQL-T:
+2. [Create logins](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) for the Azure Data Factory managed identity. In SQL Server Management Studio (SSMS), connect to your Managed Instance using a SQL Server account that is a **sysadmin**. In **master** database, run the following T-SQL:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. [Hozzon létre tárolt adatbázis-felhasználókat](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) a Azure Data Factory felügyelt identitáshoz. Kapcsolódjon az adatbázishoz a vagy a rendszerből, amelyről másolni kívánja az adatait, futtassa a következő T-SQL-T: 
+3. [Create contained database users](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) for the Azure Data Factory managed identity. Connect to the database from or to which you want to copy data, run the following T-SQL: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. Adja meg a Data Factory felügyelt identitáshoz szükséges engedélyeket, ahogyan az SQL-felhasználók és mások számára általában nem. Futtassa a következő kódot. További lehetőségekért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
+4. Grant the Data Factory managed identity needed permissions as you normally do for SQL users and others. Run the following code. For more options, see [this document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current).
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
     ```
 
-5. Azure SQL Database felügyelt példány társított szolgáltatásának konfigurálása Azure Data Factoryban.
+5. Configure an Azure SQL Database Managed Instance linked service in Azure Data Factory.
 
-**Példa: felügyelt identitásos hitelesítés használata**
+**Example: uses managed identity authentication**
 
 ```json
 {
@@ -236,18 +236,18 @@ A felügyelt identitásos hitelesítés használatához kövesse az alábbi lép
 }
 ```
 
-## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
+## <a name="dataset-properties"></a>Dataset properties
 
-Az adatkészletek definiálásához használható csoportok és tulajdonságok teljes listáját az adatkészletek című cikkben találja. Ez a szakasz a Azure SQL Database felügyelt példány adatkészlete által támogatott tulajdonságok listáját tartalmazza.
+For a full list of sections and properties available for use to define datasets, see the datasets article. This section provides a list of properties supported by the Azure SQL Database Managed Instance dataset.
 
-Az adatok Azure SQL Database felügyelt példányba való másolásához a következő tulajdonságok támogatottak:
+To copy data to and from Azure SQL Database Managed Instance, the following properties are supported:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát **AzureSqlMITable**értékre kell állítani. | Igen |
-| schema | A séma neve. |Nincs forrás, a fogadó Igen  |
-| table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
-| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nincs forrás, a fogadó Igen |
+| type | The type property of the dataset must be set to **AzureSqlMITable**. | Igen |
+| schema | Name of the schema. |No for source, Yes for sink  |
+| table | Name of the table/view. |No for source, Yes for sink  |
+| tableName | Name of the table/view with schema. This property is supported for backward compatibility. For new workload, use `schema` and `table`. | No for source, Yes for sink |
 
 **Példa**
 
@@ -272,25 +272,25 @@ Az adatok Azure SQL Database felügyelt példányba való másolásához a köve
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához használható csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Azure SQL Database felügyelt példány forrása és fogadója által támogatott tulajdonságok listáját tartalmazza.
+For a full list of sections and properties available for use to define activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by the Azure SQL Database Managed Instance source and sink.
 
-### <a name="azure-sql-database-managed-instance-as-a-source"></a>Felügyelt példány Azure SQL Database forrásaként
+### <a name="azure-sql-database-managed-instance-as-a-source"></a>Azure SQL Database Managed Instance as a source
 
-Az adatok Azure SQL Database felügyelt példányból történő másolásához a másolási tevékenység forrása szakaszban a következő tulajdonságok támogatottak:
+To copy data from Azure SQL Database Managed Instance, the following properties are supported in the copy activity source section:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **SqlMISource**értékre kell állítani. | Igen |
-| sqlReaderQuery |Ez a tulajdonság az egyéni SQL-lekérdezést használja az adatolvasáshoz. Például: `select * from MyTable`. |Nem |
-| sqlReaderStoredProcedureName |Ez a tulajdonság annak a tárolt eljárásnak a neve, amely beolvassa az adatokat a forrás táblából. Az utolsó SQL-utasítást a tárolt eljárás a SELECT utasítással kell lennie. |Nem |
-| storedProcedureParameters |Ezek a paraméterek a tárolt eljáráshoz tartoznak.<br/>Megengedett értékek: neve vagy értéke párokat. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| type | The type property of the copy activity source must be set to **SqlMISource**. | Igen |
+| sqlReaderQuery |This property uses the custom SQL query to read data. Például: `select * from MyTable`. |Nem |
+| sqlReaderStoredProcedureName |This property is the name of the stored procedure that reads data from the source table. The last SQL statement must be a SELECT statement in the stored procedure. |Nem |
+| storedProcedureParameters |These parameters are for the stored procedure.<br/>Allowed values are name or value pairs. The names and casing of the parameters must match the names and casing of the stored procedure parameters. |Nem |
 
 **Vegye figyelembe a következő szempontokat:**
 
-- Ha a **SqlMISource** **sqlReaderQuery** van megadva, a másolási tevékenység futtatja ezt a lekérdezést a felügyelt példány forrásán az adatgyűjtéshez. Megadhat egy tárolt eljárást is a **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadásával, ha a tárolt eljárás paraméterekkel rendelkezik.
-- Ha nem ad meg **sqlReaderQuery** vagy **sqlReaderStoredProcedureName** tulajdonságot, a rendszer a JSON-adatkészlet "struktúra" szakaszában meghatározott oszlopokat használja a lekérdezések létrehozásához. A lekérdezés `select column1, column2 from mytable` a felügyelt példányon fut. Ha az adatkészlet definíciója nem rendelkezik "Structure" értékkel, az összes oszlop ki van választva a táblából.
+- If **sqlReaderQuery** is specified for **SqlMISource**, the copy activity runs this query against the managed instance source to get the data. You also can specify a stored procedure by specifying **sqlReaderStoredProcedureName** and **storedProcedureParameters** if the stored procedure takes parameters.
+- If you don't specify either the **sqlReaderQuery** or **sqlReaderStoredProcedureName** property, the columns defined in the "structure" section of the dataset JSON are used to construct a query. The query `select column1, column2 from mytable` runs against the managed instance. If the dataset definition doesn't have "structure," all columns are selected from the table.
 
-**Példa: SQL-lekérdezés használata**
+**Example: Use a SQL query**
 
 ```json
 "activities":[
@@ -322,7 +322,7 @@ Az adatok Azure SQL Database felügyelt példányból történő másolásához 
 ]
 ```
 
-**Példa: tárolt eljárás használata**
+**Example: Use a stored procedure**
 
 ```json
 "activities":[
@@ -358,7 +358,7 @@ Az adatok Azure SQL Database felügyelt példányból történő másolásához 
 ]
 ```
 
-**A tárolt eljárás definíciója**
+**The stored procedure definition**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -377,26 +377,26 @@ END
 GO
 ```
 
-### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Felügyelt példány Azure SQL Database fogadóként
+### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Azure SQL Database Managed Instance as a sink
 
 > [!TIP]
-> További információ a támogatott írási viselkedésekről, konfigurációkról és ajánlott eljárásokról az [adatok Azure SQL Database felügyelt példányba való betöltéséhez ajánlott](#best-practice-for-loading-data-into-azure-sql-database-managed-instance)eljárások közül.
+> Learn more about the supported write behaviors, configurations, and best practices from [Best practice for loading data into Azure SQL Database Managed Instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
 
-Az Adatmásolás Azure SQL Database felügyelt példányra történő másolásához a másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
+To copy data to Azure SQL Database Managed Instance, the following properties are supported in the copy activity sink section:
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadójának Type tulajdonságát **SqlMISink**értékre kell állítani. | Igen |
-| writeBatchSize |A *kötegekben*az SQL-táblába beszúrandó sorok száma.<br/>Az engedélyezett értékek a sorok számának egésze. Alapértelmezés szerint a Azure Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján.  |Nem |
-| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Ilyen például a "00:30:00", amely 30 percet vesz igénybe. |Nem |
-| preCopyScript |Ez a tulajdonság határozza meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az adatbevitel a felügyelt példányba történik. A rendszer csak egyszer hívja meg a példányt. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |Nem |
-| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem szükségesek a forrásadatok, például a törlés vagy a csonkítás, használja a `preCopyScript` tulajdonságot. | Nem |
-| storedProcedureTableTypeParameterName |A tárolt eljárásban megadott tábla típusú paraméter neve.  |Nem |
-| sqlWriterTableType |A tárolt eljárásban használandó táblanév neve. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a folyamatban lévő adattal másolt adatfájlokat. |Nem |
-| storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név és érték párok. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. | Nem |
-| tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate`. |Nem |
+| type | The type property of the copy activity sink must be set to **SqlMISink**. | Igen |
+| writeBatchSize |Number of rows to insert into the SQL table *per batch*.<br/>Allowed values are integers for the number of rows. By default, Azure Data Factory dynamically determines the appropriate batch size based on the row size.  |Nem |
+| writeBatchTimeout |This property specifies the wait time for the batch insert operation to complete before it times out.<br/>Allowed values are for the timespan. An example is “00:30:00,” which is 30 minutes. |Nem |
+| preCopyScript |This property specifies a SQL query for the copy activity to run before writing data into the managed instance. It's invoked only once per copy run. You can use this property to clean up preloaded data. |Nem |
+| sqlWriterStoredProcedureName | The name of the stored procedure that defines how to apply source data into a target table. <br/>This stored procedure is *invoked per batch*. For operations that run only once and have nothing to do with source data, for example, delete or truncate, use the `preCopyScript` property. | Nem |
+| storedProcedureTableTypeParameterName |The parameter name of the table type specified in the stored procedure.  |Nem |
+| sqlWriterTableType |The table type name to be used in the stored procedure. The copy activity makes the data being moved available in a temp table with this table type. Stored procedure code can then merge the data that's being copied with existing data. |Nem |
+| storedProcedureParameters |Parameters for the stored procedure.<br/>Allowed values are name and value pairs. Names and casing of parameters must match the names and casing of the stored procedure parameters. | Nem |
+| tableOption | Specifies whether to automatically create the sink table if not exists based on the source schema. Auto table creation is not supported when sink specifies stored procedure or staged copy is configured in copy activity. Allowed values are: `none` (default), `autoCreate`. |Nem |
 
-**1. példa: az adathozzáfűzés**
+**Example 1: Append data**
 
 ```json
 "activities":[
@@ -429,9 +429,9 @@ Az Adatmásolás Azure SQL Database felügyelt példányra történő másolás�
 ]
 ```
 
-**2. példa: tárolt eljárás meghívása másolás közben**
+**Example 2: Invoke a stored procedure during copy**
 
-További információ: [tárolt eljárás meghívása egy SQL mi](#invoke-a-stored-procedure-from-a-sql-sink)fogadóból.
+Learn more details from [Invoke a stored procedure from a SQL MI sink](#invoke-a-stored-procedure-from-a-sql-sink).
 
 ```json
 "activities":[
@@ -469,33 +469,33 @@ További információ: [tárolt eljárás meghívása egy SQL mi](#invoke-a-stor
 ]
 ```
 
-## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Ajánlott eljárás az adatAzure SQL Database felügyelt példányba való betöltéséhez
+## <a name="best-practice-for-loading-data-into-azure-sql-database-managed-instance"></a>Best practice for loading data into Azure SQL Database Managed Instance
 
-Az Adatmásolás Azure SQL Database felügyelt példányba történő másolásakor különböző írási viselkedésre lehet szükség:
+When you copy data into Azure SQL Database Managed Instance, you might require different write behavior:
 
-- [Hozzáfűzés](#append-data): a forrásadatok csak új rekordokkal rendelkeznek.
-- [Upsert](#upsert-data): a saját forrásadatok lapkákat és frissítéseket is tartalmaz.
-- [Felülírás](#overwrite-the-entire-table): minden alkalommal újra szeretném tölteni a teljes dimenzió táblát.
-- [Írás Egyéni logikával](#write-data-with-custom-logic): további feldolgozásra van szükség a céltábla utolsó beszúrása előtt. 
+- [Append](#append-data): My source data has only new records.
+- [Upsert](#upsert-data): My source data has both inserts and updates.
+- [Overwrite](#overwrite-the-entire-table): I want to reload the entire dimension table each time.
+- [Write with custom logic](#write-data-with-custom-logic): I need extra processing before the final insertion into the destination table. 
 
-Tekintse meg a megfelelő részeit, hogy miként konfigurálható a Azure Data Factory és az ajánlott eljárásokban.
+See the respective sections for how to configure in Azure Data Factory and best practices.
 
-### <a name="append-data"></a>Adathozzáfűzés
+### <a name="append-data"></a>Append data
 
-Az adathozzáfűzés a Azure SQL Database felügyelt példányok fogadó összekötője alapértelmezett viselkedése. A Azure Data Factory egy tömeges beszúrást végez, hogy hatékonyan írjon a táblába. A forrást és a fogadót ennek megfelelően állíthatja be a másolási tevékenységbe.
+Appending data is the default behavior of this Azure SQL Database Managed Instance sink connector. Azure Data Factory does a bulk insert to write to your table efficiently. You can configure the source and sink accordingly in the copy activity.
 
 ### <a name="upsert-data"></a>Adatok beszúrása és frissítése (upsert)
 
-**1. lehetőség:** Ha nagy mennyiségű adattal szeretne másolni, a következő megközelítéssel hajthat végre egy upsert: 
+**Option 1:** When you have a large amount of data to copy, use the following approach to do an upsert: 
 
-- Először használjon egy [ideiglenes táblázatot](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) az összes rekord tömeges betöltéséhez a másolási tevékenység használatával. Mivel a rendszer nem naplózza az ideiglenes táblák műveleteit, másodpercek alatt több millió rekordot is betölt.
-- Egy tárolt eljárási tevékenység futtatása a Azure Data Factoryban [egyesítési](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) vagy INSERT/Update utasítás alkalmazásához. A temp táblát használja forrásként az összes frissítés vagy Beszúrás egyetlen tranzakcióként való végrehajtásához. Így csökken a kerekítési és a naplózási műveletek száma. A tárolt eljárási tevékenység végén a temp tábla lerövidíthető, hogy készen álljon a következő upsert ciklusra.
+- First, use a [temporary table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) to bulk load all records by using the copy activity. Because operations against temporary tables aren't logged, you can load millions of records in seconds.
+- Run a stored procedure activity in Azure Data Factory to apply a [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) or INSERT/UPDATE statement. Use the temp table as the source to perform all updates or inserts as a single transaction. In this way, the number of round trips and log operations is reduced. At the end of the stored procedure activity, the temp table can be truncated to be ready for the next upsert cycle.
 
-Azure Data Factory például létrehozhat egy **másolási tevékenységgel** rendelkező **folyamatot egy tárolt eljárási tevékenységgel**. A korábbi adatokat a forrás tárolójából egy ideiglenes táblába másolták, például: **# #UpsertTempTable**, mint a tábla neve az adatkészletben. Ezután az utóbbi egy tárolt eljárást hív meg, hogy egyesítse a forrás adatait a temp táblából a célként megadott táblába, és törölje a temp táblát.
+As an example, in Azure Data Factory, you can create a pipeline with a **Copy activity** chained with a **Stored Procedure activity**. The former copies data from your source store into a temporary table, for example, **##UpsertTempTable**, as the table name in the dataset. Then the latter invokes a stored procedure to merge source data from the temp table into the target table and clean up the temp table.
 
 ![Beszúrás és frissítés](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-Az adatbázisában Definiáljon egy EGYESÍTÉSi logikával ellátott tárolt eljárást, például az alábbi példát, amely az előző tárolt eljárási tevékenységből mutat. Tegyük fel, hogy a cél a **marketing** tábla három oszloppal: **ProfileID**, **State**és **category**. A upsert a **ProfileID** oszlop alapján végezze el.
+In your database, define a stored procedure with MERGE logic, like the following example, which is pointed to from the previous stored procedure activity. Assume that the target is the **Marketing** table with three columns: **ProfileID**, **State**, and **Category**. Do the upsert based on the **ProfileID** column.
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -514,31 +514,31 @@ BEGIN
 END
 ```
 
-**2. lehetőség:** Azt is megteheti, hogy egy [másolási tevékenységen belül meghívja a tárolt eljárást](#invoke-a-stored-procedure-from-a-sql-sink). Ez a módszer a forrás tábla minden egyes sorát futtatja ahelyett, hogy a másolási tevékenységben a tömeges beszúrást használja alapértelmezett megközelítésként, ami nem megfelelő a nagyméretű upsert.
+**Option 2:** You also can choose to [invoke a stored procedure within a copy activity](#invoke-a-stored-procedure-from-a-sql-sink). This approach runs each row in the source table instead of using bulk insert as the default approach in the copy activity, which isn't appropriate for large-scale upsert.
 
-### <a name="overwrite-the-entire-table"></a>A teljes táblázat felülírása
+### <a name="overwrite-the-entire-table"></a>Overwrite the entire table
 
-A **preCopyScript** tulajdonságot egy másolási tevékenység fogadójában is konfigurálhatja. Ebben az esetben minden futó másolási tevékenységnél először Azure Data Factory futtatja a parancsfájlt. Ezután futtatja a másolatot az adatbeszúráshoz. Ha például felül szeretné írni a teljes táblázatot a legfrissebb adatokkal, adjon meg egy parancsfájlt, hogy először törölje az összes rekordot, mielőtt tömegesen betölti az új adatokat a forrásból.
+You can configure the **preCopyScript** property in a copy activity sink. In this case, for each copy activity that runs, Azure Data Factory runs the script first. Then it runs the copy to insert the data. For example, to overwrite the entire table with the latest data, specify a script to first delete all the records before you bulk load the new data from the source.
 
-### <a name="write-data-with-custom-logic"></a>Az adatírás egyéni logikával
+### <a name="write-data-with-custom-logic"></a>Write data with custom logic
 
-Az egyéni logikával történő adatírás lépései hasonlóak az [Upsert](#upsert-data) -adatszakaszban leírt lépésekhez. Ha további feldolgozást kell alkalmaznia a forrásadatok végső beszúrása előtt a céltáblaba, nagy méret esetén a következő két dolog közül választhat: 
+The steps to write data with custom logic are similar to those described in the [Upsert data](#upsert-data) section. When you need to apply extra processing before the final insertion of source data into the destination table, for large scale, you can do one of two things: 
 
-- Töltsön be egy ideiglenes táblába, majd hívja meg a tárolt eljárást.
-- Tárolt eljárás meghívása a másolás során.
+- Load to a temporary table and then invoke a stored procedure.
+- Invoke a stored procedure during copy.
 
-## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Tárolt eljárás meghívása egy SQL-gyűjtőből
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Invoke a stored procedure from a SQL sink
 
-Az adatok Azure SQL Database felügyelt példányba való másolása esetén a felhasználó által megadott tárolt eljárás további paraméterekkel is konfigurálható és meghívható. A tárolt eljárás funkció kihasználja a [tábla értékű paraméterek](https://msdn.microsoft.com/library/bb675163.aspx)előnyeit.
+When you copy data into Azure SQL Database Managed Instance, you also can configure and invoke a user-specified stored procedure with additional parameters. The stored procedure feature takes advantage of [table-valued parameters](https://msdn.microsoft.com/library/bb675163.aspx).
 
 > [!TIP]
-> A tárolt eljárás meghívása az adatsort soronként dolgozza fel egy tömeges művelet helyett, amelyet nem ajánlott nagyméretű másolásra használni. További tudnivalók az [adatok Azure SQL Database felügyelt példányba való betöltésének ajánlott](#best-practice-for-loading-data-into-azure-sql-database-managed-instance)eljárásairól.
+> Invoking a stored procedure processes the data row by row instead of by using a bulk operation, which we don't recommend for large-scale copy. Learn more from [Best practice for loading data into Azure SQL Database Managed Instance](#best-practice-for-loading-data-into-azure-sql-database-managed-instance).
 
-Tárolt eljárás használható, ha a beépített másolási mechanizmusok nem szolgálják ki a célt. Ilyen eset például, ha további feldolgozást szeretne alkalmazni a forrásadatok végső beszúrása előtt a céltáblaba. Néhány további feldolgozási példa az oszlopok egyesítéséhez, további értékek kereséséhez és az adatok több táblába való beszúrásához.
+You can use a stored procedure when built-in copy mechanisms don't serve the purpose. An example is when you want to apply extra processing before the final insertion of source data into the destination table. Some extra processing examples are when you want to merge columns, look up additional values, and insert data into more than one table.
 
-Az alábbi minta azt mutatja be, hogyan használható egy tárolt eljárás egy upsert a SQL Server-adatbázis egyik táblájába. Tegyük fel, hogy a bemeneti adatok és a fogadó **marketing** tábla mindhárom oszlopot tartalmaz: **ProfileID**, **State**és **category**. A upsert a **ProfileID** oszlop alapján végezze el, és csak a "producta" nevű adott kategóriára alkalmazza.
+The following sample shows how to use a stored procedure to do an upsert into a table in the SQL Server database. Assume that the input data and the sink **Marketing** table each have three columns: **ProfileID**, **State**, and **Category**. Do the upsert based on the **ProfileID** column, and only apply it for a specific category called "ProductA".
 
-1. Az adatbázisában adja meg a tábla típusát a **sqlWriterTableType**megegyező névvel. A tábla típusának sémája megegyezik a bemeneti adatok által visszaadott sémával.
+1. In your database, define the table type with the same name as **sqlWriterTableType**. The schema of the table type is the same as the schema returned by your input data.
 
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -548,7 +548,7 @@ Az alábbi minta azt mutatja be, hogyan használható egy tárolt eljárás egy 
     )
     ```
 
-2. Az adatbázisban adja meg a tárolt eljárást ugyanazzal a névvel, mint a **sqlWriterStoredProcedureName**. Kezeli a megadott forrásból származó bemeneti adatokat, és egyesíti a kimeneti táblába. A tárolt eljárásban szereplő tábla típusának neve megegyezik az adatkészletben definiált **Táblanév** .
+2. In your database, define the stored procedure with the same name as **sqlWriterStoredProcedureName**. It handles input data from your specified source and merges into the output table. The parameter name of the table type in the stored procedure is the same as **tableName** defined in the dataset.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -565,7 +565,7 @@ Az alábbi minta azt mutatja be, hogyan használható egy tárolt eljárás egy 
     END
     ```
 
-3. A Azure Data Factory a másolási tevékenységben adja meg az **SQL mi mosogató** szakaszt a következőképpen:
+3. In Azure Data Factory, define the **SQL MI sink** section in the copy activity as follows:
 
     ```json
     "sink": {
@@ -581,55 +581,55 @@ Az alábbi minta azt mutatja be, hogyan használható egy tárolt eljárás egy 
     }
     ```
 
-## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány adattípusának leképezése
+## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Data type mapping for Azure SQL Database Managed Instance
 
-Az adatok Azure SQL Database felügyelt példányra való másolásakor a rendszer a következő leképezéseket használja Azure SQL Database felügyelt példányok adattípusairól Azure Data Factory köztes adattípusokra. Annak megismeréséhez, hogy a másolási tevékenység hogyan legyen leképezve a forrás sémából és az adattípusból a fogadóba, lásd: [séma és adattípus-leképezések](copy-activity-schema-and-type-mapping.md).
+When data is copied to and from Azure SQL Database Managed Instance, the following mappings are used from Azure SQL Database Managed Instance data types to Azure Data Factory interim data types. To learn how the copy activity maps from the source schema and data type to the sink, see [Schema and data type mappings](copy-activity-schema-and-type-mapping.md).
 
-| Azure SQL Database felügyelt példány adattípusa | Azure Data Factory időközi adattípus |
+| Azure SQL Database Managed Instance data type | Azure Data Factory interim data type |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
 | bit |Logikai |
 | char |String, Char[] |
-| dátum |DateTime |
-| Dátum és idő |DateTime |
-| datetime2 |DateTime |
+| dátum |Dátum és idő |
+| Datetime |Dátum és idő |
+| datetime2 |Dátum és idő |
 | Datetimeoffset |DateTimeOffset |
-| tizedes tört |tizedes tört |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Lebegőpontos |Dupla |
+| Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |tizedes tört |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |tizedes tört |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Önálló |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Dátum és idő |
 | smallint |Int16 |
-| smallmoney |tizedes tört |
+| smallmoney |Decimal |
 | sql_variant |Objektum |
 | szöveg |String, Char[] |
 | time |TimeSpan |
 | időbélyeg |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |GUID azonosítója |
+| uniqueidentifier |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 
 >[!NOTE]
-> A decimális ideiglenes típusra leképezett adattípusok esetében jelenleg Azure Data Factory támogatja a pontosságot akár 28-ra. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.
+> For data types that map to the Decimal interim type, currently Azure Data Factory supports precision up to 28. If you have data that requires precision larger than 28, consider converting to a string in a SQL query.
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
-## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
+## <a name="getmetadata-activity-properties"></a>GetMetadata activity properties
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
+To learn details about the properties, check [GetMetadata activity](control-flow-get-metadata-activity.md) 
 
-## <a name="next-steps"></a>További lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).
+## <a name="next-steps"></a>Következő lépések
+For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [Supported data stores](copy-activity-overview.md##supported-data-stores-and-formats).
