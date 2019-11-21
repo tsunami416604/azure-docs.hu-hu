@@ -1,45 +1,39 @@
 ---
-title: Függőségi befecskendezés használata a .NET-Azure Functions
-description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a szolgáltatások .NET-függvényekbe való regisztrálásához és használatához
-services: functions
-documentationcenter: na
+title: Use dependency injection in .NET Azure Functions
+description: Learn how to use dependency injection for registering and using services in .NET functions
 author: craigshoemaker
-manager: gwallace
-keywords: Azure functions, functions, kiszolgáló nélküli architektúra
-ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 06415db201582f3e594173e9fe891ee9fdba4b18
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: dbd6762906bc189cad74d78dcd8f28b0cfeba183
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200395"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226990"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi befecskendezés használata a .NET-Azure Functions
+# <a name="use-dependency-injection-in-net-azure-functions"></a>Use dependency injection in .NET Azure Functions
 
-A Azure Functions támogatja a függőségi injektálás (DI) szoftver kialakítási mintáját, amely az osztályok és a függőségek közötti [vezérlés (NOB)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elérését szolgáló módszer.
+Azure Functions supports the dependency injection (DI) software design pattern, which is a technique to achieve [Inversion of Control (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) between classes and their dependencies.
 
-- A függőség injekciója Azure Functions a .NET Core függőségi injekciós funkciókra épül. A [.net Core-függőség injektálásának](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ismerete ajánlott. A függőségek felülbírálása és a konfigurációs értékek beolvasása a használati terv Azure Functions alapján azonban eltérő.
+- Dependency injection in Azure Functions is built on the .NET Core Dependency Injection features. Familiarity with the [.NET Core dependency injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) is recommended. There are differences, however, in how you override dependencies and how configuration values are read with Azure Functions on the Consumption plan.
 
-- A függőségi befecskendezés támogatása Azure Functions 2. x-vel kezdődik.
+- Support for dependency injection begins with Azure Functions 2.x.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A függőségi befecskendezés használata előtt telepítenie kell a következő NuGet-csomagokat:
+Before you can use dependency injection, you must install the following NuGet packages:
 
-- [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- A [Microsoft. net. SDK. functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 vagy újabb verziója
+- [Microsoft.NET.Sdk.Functions package](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) version 1.0.28 or later
 
-## <a name="register-services"></a>Szolgáltatások regisztrálása
+## <a name="register-services"></a>Register services
 
-A szolgáltatások regisztrálásához hozzon létre egy metódust egy `IFunctionsHostBuilder`-példányhoz tartozó összetevők konfigurálásához és hozzáadásához.  A Azure Functions gazdagép létrehoz egy `IFunctionsHostBuilder` egy példányát, és közvetlenül a metódusba továbbítja azokat.
+To register services, create a method to configure and add components to an `IFunctionsHostBuilder` instance.  The Azure Functions host creates an instance of `IFunctionsHostBuilder` and passes it directly into your method.
 
-A metódus regisztrálásához adja hozzá a `FunctionsStartup` Assembly attribútumot, amely megadja az indításkor használt típus nevét.
+To register the method, add the `FunctionsStartup` assembly attribute that specifies the type name used during startup.
 
 ```csharp
 using System;
@@ -68,19 +62,19 @@ namespace MyNamespace
 }
 ```
 
-### <a name="caveats"></a>Figyelmeztetések
+### <a name="caveats"></a>Caveats
 
-A Futtatás előtt és után futtatott regisztrációs lépések sorozata az indítási osztályt dolgozza fel. Ezért a következő elemeket vegye figyelembe:
+A series of registration steps run before and after the runtime processes the startup class. Therefore, the keep in mind the following items:
 
-- *Az indítási osztály csak a beállítás és a regisztráció céljára szolgál.* Ne használja az indításkor regisztrált szolgáltatásokat az indítási folyamat során. Például ne próbáljon naplózni egy olyan üzenetet, amely az indítás során regisztrálva van. A regisztrációs folyamat ezen pontja túl korai ahhoz, hogy a szolgáltatások elérhetők legyenek. A `Configure` metódus futtatása után a functions Runtime továbbra is regisztrál további függőségeket, ami befolyásolhatja a szolgáltatások működését.
+- *The startup class is meant for only setup and registration.* Avoid using services registered at startup during the startup process. For instance, don't try to log a message in a logger that is being registered during startup. This point of the registration process is too early for your services to be available for use. After the `Configure` method is run, the Functions runtime continues to register additional dependencies, which can affect how your services operate.
 
-- *A függőségi injektálási tároló csak explicit módon regisztrált típusokat*tartalmaz. A `Configure` metódusban csak az injekciós típusként elérhető szolgáltatások vannak beállítva. Ennek eredményeképpen a functions-specifikus típusok, például a `BindingContext` és az `ExecutionContext` nem érhetők el a telepítés során vagy injekciós típusokként.
+- *The dependency injection container only holds explicitly registered types*. The only services available as injectable types are what are setup in the `Configure` method. As a result, Functions-specific types like `BindingContext` and `ExecutionContext` aren't available during setup or as injectable types.
 
-## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
+## <a name="use-injected-dependencies"></a>Use injected dependencies
 
-A konstruktor-injektálás a függőségek elérhetővé tételéhez használható a függvényben. A konstruktor befecskendezésének használata megköveteli, hogy ne használjon statikus osztályokat.
+Constructor injection is used to make your dependencies available in a function. The use of constructor injection requires that you do not use static classes.
 
-Az alábbi minta azt mutatja be, hogy a rendszer hogyan fecskendez be a `IMyService` és `HttpClient` függőségeket egy HTTP-triggert igénylő függvénybe. Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja, amely a `HttpClient` indításkor való regisztrálásához szükséges.
+The following sample demonstrates how the `IMyService` and `HttpClient` dependencies are injected into an HTTP-triggered function. This example uses the [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) package required to register an `HttpClient` at startup.
 
 ```csharp
 using System;
@@ -120,46 +114,46 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>Szolgáltatás élettartama
+## <a name="service-lifetimes"></a>Service lifetimes
 
-Azure Functions alkalmazások ugyanazt a szolgáltatási élettartamot biztosítják, mint a [ASP.net függőségi injekció](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). A functions alkalmazás esetében a különböző szolgáltatási élettartamok a következőképpen viselkednek:
+Azure Functions apps provide the same service lifetimes as [ASP.NET Dependency Injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). For a Functions app, the different service lifetimes behave as follows:
 
-- **Átmeneti**: az átmeneti szolgáltatások a szolgáltatás minden egyes kérelme alapján jönnek létre.
-- **Hatókörön**belüli: a hatókörön belüli szolgáltatás élettartama megfelel a függvény végrehajtási élettartamának. A hatókörrel rendelkező szolgáltatások végrehajtáskor egyszer jönnek létre. A szolgáltatás későbbi kérelmei a végrehajtás során újra felhasználják a meglévő szolgáltatást.
-- **Egyszeres**: az egyszeres szolgáltatás élettartama megegyezik a gazdagép élettartamával, és az adott példányon végrehajtott függvények végrehajtása során újra felhasználja őket. Az egyedi élettartamú szolgáltatások a kapcsolatok és az ügyfelek számára ajánlottak, például `SqlConnection` vagy `HttpClient` példányok esetén.
+- **Transient**: Transient services are created upon each request of the service.
+- **Scoped**: The scoped service lifetime matches a function execution lifetime. Scoped services are created once per execution. Later requests for that service during the execution reuse the existing service instance.
+- **Singleton**: The singleton service lifetime matches the host lifetime and is reused across function executions on that instance. Singleton lifetime services are recommended for connections and clients, for example `SqlConnection` or `HttpClient` instances.
 
-A GitHubon megtekintheti és letöltheti a [különböző szolgáltatási élettartamokat tartalmazó mintát](https://aka.ms/functions/di-sample) .
+View or download a [sample of different service lifetimes](https://aka.ms/functions/di-sample) on GitHub.
 
-## <a name="logging-services"></a>Naplózási szolgáltatások
+## <a name="logging-services"></a>Logging services
 
-Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni típust `ILoggerProvider` példányként. A Application Insights Azure Functions automatikusan hozzáadja.
+If you need your own logging provider, register a custom type as an `ILoggerProvider` instance. Application Insights is added by Azure Functions automatically.
 
 > [!WARNING]
-> - Ne vegyen fel `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteménybe, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
-> - Ha beépített Application Insights funkciót használ, ne regisztráljon saját `TelemetryConfiguration` vagy `TelemetryClient`.
+> - Do not add `AddApplicationInsightsTelemetry()` to the services collection as it registers services that conflict with services provided by the environment.
+> - Do not register your own `TelemetryConfiguration` or `TelemetryClient` if you are using the built-in Application Insights functionality.
 
-## <a name="function-app-provided-services"></a>A függvény által biztosított szolgáltatások
+## <a name="function-app-provided-services"></a>Function app provided services
 
-A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
+The function host registers many services. The following services are safe to take as a dependency in your application:
 
-|Szolgáltatás típusa|Élettartama|Leírás|
+|Szolgáltatás típusa|Lifetime|Leírás|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuration|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Responsible for providing the ID of the host instance|
 
-Ha vannak olyan szolgáltatások, amelyeknek függőségi viszonyra van szüksége, [hozzon létre egy problémát, és javasolja őket a githubon](https://github.com/azure/azure-functions-host).
+If there are other services you want to take a dependency on, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Gazdagép-szolgáltatások felülbírálása
+### <a name="overriding-host-services"></a>Overriding host services
 
-A gazdagép által nyújtott szolgáltatások felülbírálása jelenleg nem támogatott.  Ha vannak olyan szolgáltatások, amelyeket felül szeretne bírálni, [hozzon létre egy problémát, és javasolja őket a githubon](https://github.com/azure/azure-functions-host).
+Overriding services provided by the host is currently not supported.  If there are services you want to override, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
 
-## <a name="working-with-options-and-settings"></a>Beállítások és beállítások használata
+## <a name="working-with-options-and-settings"></a>Working with options and settings
 
-Az [Alkalmazásbeállítások](./functions-how-to-use-azure-function-app-settings.md#settings) által meghatározott értékek egy `IConfiguration` példányban érhetők el, amely lehetővé teszi az Alkalmazásbeállítások értékének olvasását az indítási osztályban.
+Values defined in [app settings](./functions-how-to-use-azure-function-app-settings.md#settings) are available in an `IConfiguration` instance, which allows you to read app settings values in the startup class.
 
-Az `IConfiguration` példány értékeit egyéni típusba is kinyerheti. Ha az Alkalmazásbeállítások értékeit egyéni típusra másolja, a szolgáltatás egyszerűen tesztelhető, így ezek az értékek injektálható. A konfigurációs példányba beolvasott beállításoknak egyszerű kulcs/érték pároknak kell lenniük.
+You can extract values from the `IConfiguration` instance into a custom type. Copying the app settings values to a custom type makes it easy test your services by making these values injectable. Settings read into the configuration instance must be simple key/value pairs.
 
-Vegye figyelembe a következő osztályt, amely egy konzisztens nevű tulajdonságot tartalmaz egy alkalmazás-beállítással.
+Consider the following class that includes a property named consistent with an app setting.
 
 ```csharp
 public class MyOptions
@@ -168,7 +162,7 @@ public class MyOptions
 }
 ```
 
-A `Startup.Configure` metódusból kinyerheti a `IConfiguration` példány értékeit az egyéni típusba a következő kód használatával:
+From inside the `Startup.Configure` method, you can extract values from the `IConfiguration` instance into your custom type using the following code:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -178,9 +172,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-A rendszer meghívja a konfigurációban szereplő, az egyéni példányba tartozó tulajdonságokat tartalmazó `Bind`-példányok értékeit. A beállítások példány mostantól elérhető a NOB-tárolóban egy függvénybe való behelyezéshez.
+Calling `Bind` copies values that have matching property names from the configuration into the custom instance. The options instance is now available in the IoC container to inject into a function.
 
-A Options objektumot az általános `IOptions` felület példánya fecskendezi a függvénybe. A konfigurációban található értékek eléréséhez használja a `Value` tulajdonságot.
+The options object is injected into the function as an instance of the generic `IOptions` interface. Use the `Value` property to access the values found in your configuration.
 
 ```csharp
 using System;
@@ -197,14 +191,14 @@ public class HttpTrigger
 }
 ```
 
-A beállításokkal kapcsolatos további részletekért tekintse meg a [ASP.net Core beállítások mintáját](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
+Refer to [Options pattern in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) for more details regarding working with options.
 
 > [!WARNING]
-> Kerülje az értékek olvasását olyan fájlokból, mint például a *Local. Settings. JSON* vagy a *appSettings. { Environment}. JSON* a használati tervben. Az elindító kapcsolatokhoz kapcsolódó fájlokból beolvasott értékek nem érhetők el az alkalmazás skálázása miatt, mert az üzemeltetési infrastruktúra nem fér hozzá a konfigurációs adatokhoz.
+> Avoid attempting to read values from files like *local.settings.json* or *appsettings.{environment}.json* on the Consumption plan. Values read from these files related to trigger connections aren't available as the app scales because the hosting infrastructure has no access to the configuration information.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 
-- [A Function-alkalmazás figyelése](functions-monitoring.md)
-- [Ajánlott eljárások a functions szolgáltatáshoz](functions-best-practices.md)
+- [How to monitor your function app](functions-monitoring.md)
+- [Best practices for functions](functions-best-practices.md)

@@ -7,23 +7,23 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: b72e03f6901fbb2b904328992107e31021c76be6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969122"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229810"
 ---
-# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: A Cloudyn költségek kezelése
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: Költségek kezelése a Cloudyn használatával
 
 A Cloudynben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása során. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cloudyn használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
 
 Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
 
-A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek lehetővé teszik, hogy az erőforrások kategorizálása, valamint hogy megtekintése és kezelése a számlázási adatokat leltároz alkalmazza ugyanazt a címkét több erőforrásra és erőforráscsoportra. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
+A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -53,11 +53,11 @@ A költséglefoglalás első lépéseként a hatókört kell definiálni egy kö
 
 Egyéni költséglefoglalási modell létrehozásához válassza a **Költségek** &gt; **Költségkezelés** &gt; **Cost Allocation 360°** lehetőséget a jelentés menüjében.
 
-![Itt választhatja ki Cost Allocation 360 irányítópult megjelenítő példa](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Example showing a dashboard where you select Cost Allocation 360](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 A **Cost Allocation 360** lapon kattintson a **Hozzáadás** elemre, majd adja meg a költségmodell nevét és leírását. Válassza ki az összes fiókot vagy válasszon egy egyénit. Egyéni fiókok kiválasztása esetén egyszerre több fiókot is választhat akár különböző felhőszolgáltatóktól is. Ezután kattintson a **Kategorizálás** gombra a költségadatok kategorizálásához használt felderített címkék kiválasztásához. Válassza ki a modellbe felvenni kívánt címkéket (kategóriákat). A következő példában az **Egység** címke van kiválasztva.
 
-![Példa ábrázoló költsége a költségmodellek kategorizálására](./media/tutorial-manage-costs/cost-model01.png)
+![Example showing cost model categorization](./media/tutorial-manage-costs/cost-model01.png)
 
 A példában látható, hogy 19 680 dollár nincs kategorizálva (nem rendelkezik címkével).
 
@@ -87,15 +87,15 @@ A költségmodellek listájában az új költségmodell **Feldolgozás alatt** �
 
 A Kategóriakezelő egy adattisztító eszköz, amellyel több kategória (címke) értékeinek egyesítésével új kategóriák hozhatóak létre. Ez egy egyszerű szabályalapú eszköz, amelyben egy kategóriát kiválasztva szabályokat hozhat létre a meglévő értékek egyesítésére. Például rendelkezhet az **R&amp;D** és a **dev** meglévő kategóriákkal, ahol mindkettő a fejlesztői csapatot jelöli.
 
-A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Kategóriakezelő** elemet. Új kategória létrehozásához kattintson a plusz (**+**) jelre. Adja meg a kategória nevét, majd a **Kulcsok** mezőben adja meg a kategóriakulcsokat, amelyeket fel szeretne venni az új kategóriába.
+A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Kategóriakezelő** elemet. Új kategória létrehozásához kattintson a plusz ( **+** ) jelre. Adja meg a kategória nevét, majd a **Kulcsok** mezőben adja meg a kategóriakulcsokat, amelyeket fel szeretne venni az új kategóriába.
 
-A szabályok definiálásakor több értéket is hozzáadhat az OR (VAGY) feltétel használatával. Emellett néhány alapvető sztringműveletet is végrehajthat. Mindkét esetben kattintson a három pontra (**…**) a **Szabály** elem jobb oldalán.
+A szabályok definiálásakor több értéket is hozzáadhat az OR (VAGY) feltétel használatával. Emellett néhány alapvető sztringműveletet is végrehajthat. Mindkét esetben kattintson a három pontra ( **…** ) a **Szabály** elem jobb oldalán.
 
 Új szabály definiálásához a **Szabályok** területen hozza létre az új szabályt. Például adja meg a **dev** elemet a **Szabályok** alatt, majd az **R&amp;D** elemet a **Műveletek** alatt. Miután végzett, mentse az új kategóriát.
 
 Az alábbi képen a **Work-Load** elnevezésű új kategóriához létrehozott szabályokat bemutató példa látható.
 
-![Példa az új munkaterhelés kategória](./media/tutorial-manage-costs/category01.png)
+![Example showing the new work-load category](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Címkék forrásai és jelentések
 
@@ -122,14 +122,14 @@ Az egyes vállalatok egészen különböző módszereket alkalmazhatnak a költs
 
 A költséglefoglalási eredmények megtekintéséhez nyissa meg a Költségelemzési jelentést, és válassza ki a létrehozott költségmodellt. Ezután hozzon létre csoportosítást a költségmodellben kiválasztott egy vagy több címke alapján.
 
-![Költségelemzési jelentés megjelenítése az új költség származó adatok egy példa](./media/tutorial-manage-costs/cost-analysis.png)
+![Cost Analysis report showing an example of data from the new cost](./media/tutorial-manage-costs/cost-analysis.png)
 
 Egyszerűen hozhat létre és menthet az adott csoportok által használt adott szolgáltatásokra összpontosító jelentéseket. Például elképzelhető, hogy az egyik részleg jelentős mértékben használ Azure-beli virtuális gépeket. Létrehozhat egy, az Azure-beli virtuális gépekre szűrt jelentést a használat mértékének és a költségeknek a megjelenítéséhez.
 
 Amennyiben szeretné a csapatokat a pillanatnyi állapotokat mutató jelentésekkel ellátni, a jelentéseket exportálhatja PDF- vagy CSV-formátumba.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

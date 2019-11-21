@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba Node. js használatával'
+title: Enroll X.509 devices to Azure Device Provisioning Service using Node.js
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 3b2c27b8fc595dae39ed7374ec3647e6b4ba6f23
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: b2995c6ba031e71cba9068b691cbedc1cf80c457
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903417"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228569"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Node.js használatával
 
@@ -140,7 +139,7 @@ A teszteszköz segítségével a következő lépésekkel állíthat elő tanús
 Ha azt tervezi, hogy részletesebben is áttekinti a Node.js-szolgáltatásmintákat, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutatóhoz létrehozott összes Azure-erőforrást.
  
 1. Zárja be a Node.js-minta kimeneti ablakát a gépen.
-2. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, kattintson a regisztrációk **kezelése**lehetőségre, majd válassza a **beléptetési csoportok** fület. Válassza ki a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítóját* , majd kattintson a panel tetején található **Törlés** gombra.  
+2. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart and click the **Delete** button at the top of the blade.  
 3. Az Azure Portalon az eszközkiépítési szolgáltatásban kattintson a **Tanúsítványok** lehetőségre, majd a rövid útmutató céljaira feltöltött tanúsítványra, és végül a **Törlés** gombra a **Tanúsítvány részletei** ablak tetején.  
  
 ## <a name="next-steps"></a>Következő lépések

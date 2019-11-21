@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a IdeaScale-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és IdeaScale között.
+title: 'Tutorial: Azure Active Directory integration with IdeaScale | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and IdeaScale.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,99 +16,99 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158039"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227571"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Oktatóanyag: Azure Active Directory integráció a IdeaScale
+# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory integration with IdeaScale
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a IdeaScale a Azure Active Directory (Azure AD) szolgáltatással.
-A IdeaScale és az Azure AD integrálásával a következő előnyöket nyújtja:
+In this tutorial, you learn how to integrate IdeaScale with Azure Active Directory (Azure AD).
+Integrating IdeaScale with Azure AD provides you with the following benefits:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a IdeaScale.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a IdeaScale (egyszeri bejelentkezés) az Azure AD-fiókokkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* You can control in Azure AD who has access to IdeaScale.
+* You can enable your users to be automatically signed-in to IdeaScale (Single Sign-On) with their Azure AD accounts.
+* You can manage your accounts in one central location - the Azure portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció IdeaScale való konfigurálásához a következő elemek szükségesek:
+To configure Azure AD integration with IdeaScale, you need the following items:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* IdeaScale egyszeri bejelentkezésre engedélyezett előfizetés
+* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
+* IdeaScale single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+In this tutorial, you configure and test Azure AD single sign-on in a test environment.
 
-* A IdeaScale támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* IdeaScale supports **SP** initiated SSO
 
-## <a name="adding-ideascale-from-the-gallery"></a>IdeaScale hozzáadása a gyűjteményből
+## <a name="adding-ideascale-from-the-gallery"></a>Adding IdeaScale from the gallery
 
-A IdeaScale Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a IdeaScale a katalógusból a felügyelt SaaS-alkalmazások listájához.
+To configure the integration of IdeaScale into Azure AD, you need to add IdeaScale from the gallery to your list of managed SaaS apps.
 
-**Ha IdeaScale szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+**To add IdeaScale from the gallery, perform the following steps:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![The Azure Active Directory button](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![The Enterprise applications blade](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![The New application button](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **IdeaScale**kifejezést, válassza a **IdeaScale** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. In the search box, type **IdeaScale**, select **IdeaScale** from result panel then click **Add** button to add the application.
 
-     ![IdeaScale az eredmények listájában](common/search-new-app.png)
+     ![IdeaScale in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az IdeaScale-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a IdeaScale kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+In this section, you configure and test Azure AD single sign-on with IdeaScale based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in IdeaScale needs to be established.
 
-Az Azure AD egyszeri bejelentkezés IdeaScale való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+To configure and test Azure AD single sign-on with IdeaScale, you need to complete the following building blocks:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[IdeaScale egyszeri bejelentkezés konfigurálása](#configure-ideascale-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre IdeaScale-teszt felhasználót](#create-ideascale-test-user)** – hogy a IdeaScale Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Configure IdeaScale Single Sign-On](#configure-ideascale-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Create IdeaScale test user](#create-ideascale-test-user)** - to have a counterpart of Britta Simon in IdeaScale that is linked to the Azure AD representation of user.
+6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+In this section, you enable Azure AD single sign-on in the Azure portal.
 
-Az Azure AD egyszeri bejelentkezés IdeaScale való konfigurálásához hajtsa végre a következő lépéseket:
+To configure Azure AD single sign-on with IdeaScale, perform the following steps:
 
-1. A [Azure Portal](https://portal.azure.com/) **IdeaScale** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. In the [Azure portal](https://portal.azure.com/), on the **IdeaScale** application integration page, select **Single sign-on**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Configure single sign-on link](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Single sign-on select mode](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. On the **Basic SAML Configuration** section, perform the following steps:
 
-    ![IdeaScale tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
+    ![IdeaScale Domain and URLs single sign-on information](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.ideascale.com`
+    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<companyname>.ideascale.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern:
     
     | |
     |--|
@@ -116,144 +116,144 @@ Az Azure AD egyszeri bejelentkezés IdeaScale való konfigurálásához hajtsa v
     | `https://<companyname>.ideascale.com` |
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a IdeaScale ügyfélszolgálati [csapatához](https://support.ideascale.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [IdeaScale Client support team](https://support.ideascale.com/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** from the given options as per your requirement and save it on your computer.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![The Certificate download link](common/metadataxml.png)
 
-6. A **IdeaScale beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. On the **Set up IdeaScale** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Login URL
 
-    b. Azure ad-azonosító
+    b. Azure Ad Identifier
 
-    c. Kijelentkezési URL-cím
+    c. Logout URL
 
-### <a name="configure-ideascale-single-sign-on"></a>IdeaScale egyszeri bejelentkezés konfigurálása
+### <a name="configure-ideascale-single-sign-on"></a>Configure IdeaScale Single Sign-On
 
-1. Egy másik böngészőablakban jelentkezzen be a IdeaScale vállalati webhelyre rendszergazdaként.
+1. In a different web browser window, log in to your IdeaScale company site as an administrator.
 
-2. Lépjen a **közösségi beállítások menüpontra**.
+2. Go to **Community Settings**.
 
-    ![Közösségi beállítások](./media/ideascale-tutorial/ic790847.png "Közösségi beállítások")
+    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
 
-3. Válassza a **biztonság \> egyszeri bejelentkezés beállításai lehetőséget**.
+3. Go to **Security \> Single Signon Settings**.
 
-    ![Egyszeri bejelentkezés beállításai](./media/ideascale-tutorial/ic790848.png "Egyszeri bejelentkezés beállításai")
+    ![Single Signon Settings](./media/ideascale-tutorial/ic790848.png "Single Signon Settings")
 
-4. **Egyszeri bejelentkezés típusaként**válassza az **SAML 2,0**lehetőséget.
+4. As **Single-Signon Type**, select **SAML 2.0**.
 
-    ![Egyszeri bejelentkezés típusa](./media/ideascale-tutorial/ic790849.png "Egyszeri bejelentkezés típusa")
+    ![Single Signon Type](./media/ideascale-tutorial/ic790849.png "Single Signon Type")
 
-5. Az **egyszeri bejelentkezés beállításai** párbeszédpanelen hajtsa végre a következő lépéseket:
+5. On the **Single Signon Settings** dialog, perform the following steps:
 
-    ![Egyszeri bejelentkezés beállításai](./media/ideascale-tutorial/ic790850.png "Egyszeri bejelentkezés beállításai")
+    ![Single Signon Settings](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
 
-    a. Az **SAML identitásszolgáltató-entitás azonosítója** szövegmezőben illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
+    a. In **SAML IdP Entity ID** textbox, paste the value of **Azure Ad Identifier** which you have copied from Azure portal.
 
-    b. Nyissa meg a letöltött metaadatokat Azure Portal a Jegyzettömbbe, másolja ki a tartalmát, és illessze be az **SAML identitásszolgáltató metaadatait** tartalmazó szövegmezőbe.
+    b. Open the downloaded metadata file from Azure portal into Notepad, copy the content of it and paste into the **SAML IdP Metadata** textbox.
 
-    c. A **sikeres kilépés URL-címe** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
+    c. In **Logout Success URL** textbox, paste the value of **Logout URL** which you have copied from Azure portal.
 
-    d. Kattintson a **módosítások mentése**gombra.
+    d. Click **Save Changes**.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
     d. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a IdeaScale hozzáférésének biztosításával.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to IdeaScale.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **IdeaScale**lehetőséget.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **IdeaScale**.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **IdeaScale**lehetőséget.
+2. In the applications list, select **IdeaScale**.
 
-    ![Az IdeaScale hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![The IdeaScale link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-ideascale-test-user"></a>IdeaScale-tesztelési felhasználó létrehozása
+### <a name="create-ideascale-test-user"></a>Create IdeaScale test user
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a IdeaScale, a IdeaScale kell kiépíteni őket. IdeaScale esetén a kiépítés manuális feladat.
+To enable Azure AD users to log into IdeaScale, they must be provisioned in to IdeaScale. In the case of IdeaScale, provisioning is a manual task.
 
-**A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:**
+**To configure user provisioning, perform the following steps:**
 
-1. Jelentkezzen be a **IdeaScale** vállalati webhelyre rendszergazdaként.
+1. Log in to your **IdeaScale** company site as administrator.
 
-2. Lépjen a **közösségi beállítások menüpontra**.
+2. Go to **Community Settings**.
 
-    ![Közösségi beállítások](./media/ideascale-tutorial/ic790847.png "Közösségi beállítások")
+    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
 
-3. Lépjen az **alapbeállítások \> a tagok kezelése elemre**.
+3. Go to **Basic Settings \> Member Management**.
 
-4. Kattintson a **tag hozzáadása**gombra.
+4. Click **Add Member**.
 
-    ![Tagok kezelése](./media/ideascale-tutorial/ic790852.png "Tagok kezelése")
+    ![Member Management](./media/ideascale-tutorial/ic790852.png "Member Management")
 
-5. Az új tag hozzáadása szakaszban hajtsa végre a következő lépéseket:
+5. In the Add New Member section, perform the following steps:
 
-    ![Új tag hozzáadása](./media/ideascale-tutorial/ic790853.png "Új tag hozzáadása")
+    ![Add New Member](./media/ideascale-tutorial/ic790853.png "Add New Member")
 
-    a. Az **E-mail címek** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure ad-fiók e-mail-címét.
+    a. In the **Email Addresses** textbox, type the email address of a valid Azure AD account you want to provision.
 
-    b. Kattintson a **módosítások mentése**gombra.
+    b. Click **Save Changes**.
 
     > [!NOTE]
-    > A Azure Active Directory fiók tulajdonosa egy e-mailt kap egy hivatkozással, amely megerősíti a fiókot, mielőtt az aktívvá válna.
+    > The Azure Active Directory account holder gets an email with a link to confirm the account before it becomes active.
 
 > [!NOTE]
-> A IdeaScale által biztosított egyéb IdeaScale-létrehozási eszközöket vagy API-kat a HRE felhasználói fiókjainak kiépítésére használhatja.
+> You can use any other IdeaScale user account creation tools or APIs provided by IdeaScale to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Ha a hozzáférési panelen a IdeaScale csempére kattint, automatikusan be kell jelentkeznie arra a IdeaScale, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the IdeaScale tile in the Access Panel, you should be automatically signed in to the IdeaScale for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

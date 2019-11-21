@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center és Azure Container Registry
-description: Ismerje meg a Azure Security Center integrációját Azure Container Registry
+title: Azure Security Center and Azure Container Registry
+description: Learn about Azure Security Center's integration with Azure Container Registry
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,37 +12,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196383"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229319"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integráció a Security Center (előzetes verzió)
+# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integration with Security Center (Preview)
 
-A Azure Container Registry (ACR) egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely egy központi beállításjegyzékben tárolja és kezeli az Azure-beli központi telepítésekhez tartozó tároló lemezképeit. Ez a nyílt forráskódú Docker beállításjegyzék 2,0-es adatbázisán alapul.
+Azure Container Registry (ACR) is a managed, private Docker registry service that stores and manages your container images for Azure deployments in a central registry. It's based on the open-source Docker Registry 2.0.
 
-A beállításjegyzék és a lemezképek biztonsági réseinak mélyebb láthatósága érdekében a Azure Security Center Standard csomagjának felhasználói lehetővé teszik a választható tárolói kibocsátásiegység-forgalmi csomagokat. További információt a [díjszabás](security-center-pricing.md) tartalmaz. Ha a köteg engedélyezve van, Security Center automatikusan megvizsgálja az ACR-szolgáltatásban lévő képeket, amikor egy rendszerképet küld a beállításjegyzékbe. Ha a vizsgálat befejeződik (általában körülbelül 10 percet követően), az eredmények a következőhöz hasonló javaslatok Security Center érhetők el:
+For deeper visibility into your registry and images' vulnerabilities, users of Azure Security Center's standard tier can enable the optional Container Registries bundle. További információt a [díjszabás](security-center-pricing.md) tartalmaz. With the bundle enabled, Security Center automatically scans images in your registry whenever an image is pushed to the registry.
 
-[![minta Azure Security Center a Azure Container Registry (ACR) tárolt rendszerképben felderített biztonsági réseket](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+> [!NOTE]
+> Security Center's first scan of a registry will only occur after the Container Registries bundle is enabled and an image is pushed to the registry.
 
-## <a name="benefits-of-integration"></a>Az integráció előnyei
+When the scan completes (typically after approximately 10 minutes), findings are available in Security Center recommendations like this:
 
-Security Center az ACR-jegyzékeket az előfizetésében, és zökkenőmentesen biztosítja a következőket:
+[![Sample Azure Security Center recommendation about vulnerabilities discovered in an Azure Container Registry (ACR) hosted image](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
-* **Azure-natív sebezhetőségi vizsgálat** az összes leküldött Linux-lemezképhez. Security Center megvizsgálja a képet az iparág vezető sebezhetőségét vizsgáló gyártótól, a Qualys. Ez a natív megoldás alapértelmezés szerint zökkenőmentesen integrálható.
+## <a name="benefits-of-integration"></a>Benefits of integration
 
-* **Biztonsági javaslatok** az ismert biztonsági réseket tartalmazó Linux-lemezképekhez. Security Center részletesen ismerteti az egyes jelentett biztonsági réseket és a súlyossági besorolást. Emellett útmutatást nyújt a beállításjegyzékbe leküldett egyes rendszerbiztonsági rések javításához.
+Security Center identifies ACR registries in your subscription and seamlessly provides:
 
-![Azure Security Center és Azure Container Registry (ACR) – magas szintű áttekintés](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+* **Azure-native vulnerability scanning** for all pushed Linux images. Security Center scans the image using a scanner from the industry-leading vulnerability scanning vendor, Qualys. This native solution is seamlessly integrated by default.
+
+* **Security recommendations** for Linux images with known vulnerabilities. Security Center provides details of each reported vulnerability and a  severity classification. Additionally, it gives guidance for how to  remediate the specific vulnerabilities found on each image pushed to registry.
+
+![Azure Security Center and Azure Container Registry (ACR) high-level overview](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
+To learn more about Security Center's container security features, see:
 
-* [Azure Security Center és tárolók biztonsága](container-security.md)
+* [Azure Security Center and container security](container-security.md)
 
-* [Integráció az Azure Kubernetes szolgáltatással](azure-kubernetes-service-integration.md)
+* [Integration with Azure Kubernetes Service](azure-kubernetes-service-integration.md)
 
-* [Virtuális gépek védelme](security-center-virtual-machine-protection.md) – a Security Center javaslatainak ismertetése
+* [Virtual Machine protection](security-center-virtual-machine-protection.md) - Describes Security Center's recommendations

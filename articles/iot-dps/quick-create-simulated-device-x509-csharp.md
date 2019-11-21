@@ -1,26 +1,26 @@
 ---
-title: 'Gyors útmutató: szimulált X. 509 eszköz kiépítése az Azure IoT Hub használatávalC#'
-description: Azure rövid útmutató – Szimulált X.509-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service-hez készült C# eszközoldali SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
+title: Provision simulated X.509 device to Azure IoT Hub using C#
+description: Quickstart - Create and provision a simulated X.509 device using C# device SDK for Azure IoT Hub Device Provisioning Service. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: c89b854eb5b87d76a24335e646553bda401f1a3a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
-ms.translationtype: MT
+ms.openlocfilehash: 94ac67ec75a46dcf13bdc1024ec06be687554999
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903523"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228724"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Gyors útmutató: szimulált X. 509 eszköz létrehozása és kiépítése C# a IOT hub Device PROVISIONING Service eszköz SDK-val
+# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated X.509 device using C# device SDK for IoT Hub Device Provisioning Service
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Ezek a lépések bemutatják, hogyan lehet az [Azure IoT C# -minták](https://github.com/Azure-Samples/azure-iot-samples-csharp) használatával szimulálni egy X. 509 eszközt egy Windows operációs rendszert futtató fejlesztői gépen. A minta a szimulált eszközt is összekapcsolja egy IoT Hub a Device kiépítési szolgáltatás használatával.
+These steps show you how to use the [Azure IoT Samples for C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) to simulate an X.509 device on a development machine running the Windows OS. The sample also connects the simulated device to an IoT Hub using the Device Provisioning Service.
 
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit. 
 
@@ -35,11 +35,11 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
 
-1. Győződjön meg arról, hogy a [.net Core 2,1 SDK vagy újabb verziója](https://www.microsoft.com/net/download/windows) telepítve van a gépen. 
+1. Make sure you have the [.NET Core 2.1 SDK or later](https://www.microsoft.com/net/download/windows) installed on your machine. 
 
 1. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a telepíteni kívánt `git` eszközök legújabb verzióját, amely tartalmazza a **Git Bash** eszközt, azt a parancssori alkalmazást, amellyel kommunikálhat a helyi Git-adattárral. 
 
-1. Nyisson meg egy parancssort vagy a Git Basht. Az Azure IoT-minták klónozása a C# GitHub-tárházban:
+1. Nyisson meg egy parancssort vagy a Git Basht. Clone the Azure IoT Samples for C# GitHub repo:
     
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -52,7 +52,7 @@ Ebben a szakaszban egy önaláírt X.509-tanúsítványt fogunk használni. Font
 * Az önaláírt tanúsítványok csak tesztelési célokra alkalmasak, és nem javasolt őket éles környezetben alkalmazni.
 * Az önaláírt tanúsítványok alapértelmezett lejárati ideje 1 év.
 
-A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) mintakód használatával hozza létre a szimulált eszköz egyéni beléptetési bejegyzésével használandó tanúsítványt.
+You will use sample code from the [Provisioning Device Client Sample - X.509 Attestation](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) to create the certificate to be used with the individual enrollment entry for the simulated device.
 
 
 1. Egy parancssorban módosítsa a könyvtárakat az X.509-eszközkiépítési minta projektkönyvtárára.
@@ -85,13 +85,13 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
    - Ha végzett, kattintson a **Mentés** gombra. 
 
-     [![X.509-igazolás egyéni beléptetésének hozzáadása a portálon](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png#lightbox)
+     [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png#lightbox)
     
    Sikeres regisztráció esetén az X.509 regisztrációs bejegyzés **iothubx509device1** azonosítóval jelenik meg a *Regisztrációs azonosító* oszlopban az *Egyéni regisztrációk* lapon. 
 
 ## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
 
-1. Jegyezze fel azAzonosító hatóköre **_értéket az eszközkiépítési szolgáltatás_Áttekintés** paneljéről.
+1. Jegyezze fel az **_Azonosító hatóköre_** értéket az eszközkiépítési szolgáltatás **Áttekintés** paneljéről.
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509-csharp/copy-scope.png) 
 

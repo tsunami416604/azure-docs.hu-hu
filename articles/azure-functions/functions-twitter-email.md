@@ -1,22 +1,18 @@
 ---
 title: Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 description: Létrehozhat egy függvényt, amely integrálható az Azure Logic Apps és az Azure Cognitive Services szolgáltatással a tweetek hangulatának kategorizálásához és értesítések küldéséhez, amennyiben azok kedvezőtlen véleményt tükröznek.
-services: functions, logic-apps, cognitive-services
-keywords: munkafolyamat, felhőalapú alkalmazások, felhőszolgáltatások, üzleti folyamatok, rendszerintegráció, vállalati alkalmazásintegráció, EAI
 author: craigshoemaker
-manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480034"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226606"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 
@@ -47,7 +43,7 @@ Hajtsa végre az itt található lépéseket a függvényalkalmazás létrehozá
 
 A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A Text Analytics API-t használja a monitorozott tweetek hangulatának megállapításához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
@@ -58,7 +54,7 @@ A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A
     | Beállítás      |  Ajánlott érték   | Leírás                                        |
     | --- | --- | --- |
     | **Name (Név)** | MyCognitiveServicesAccnt | Válasszon egy egyedi fióknevet. |
-    | **Location** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
+    | **Hely** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
     | **Tarifacsomag** | F0 | Kezdjen a legalacsonyabb szinttel. Ha kifogy a hívásokból, lépjen magasabb szintre.|
     | **Erőforráscsoport** | myResourceGroup | Ugyanazt az erőforráscsoportot használja minden olyan szolgáltatáshoz, amely az oktatóanyagban szóba kerül.|
 
@@ -125,7 +121,7 @@ A függvények kiváló módot nyújtanak egy logikai alkalmazás munkafolyamat�
     ```
     Ez a függvénykód visszaad egy színkategóriát a kérésben kapott véleménypontszám alapján. 
 
-4. A függvény teszteléséhez kattintson a jobb szélen a **Tesztelés** gombra, amely kibontja a tesztelési lapot. A **Kérelem törzse** mezőben adja meg a `0.2` értéket, majd kattintson a **Futtatás** parancsra. A válasz törzse a **RED** (Vörös) értéket adja vissza. 
+4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. A válasz törzse a **RED** (Vörös) értéket adja vissza. 
 
     ![A függvény tesztelése az Azure Portalon](./media/functions-twitter-email/07-function-test.png)
 
@@ -145,7 +141,7 @@ Ezzel létrehozott egy olyan függvényt, amely kategorizálja a véleményponts
     | ----------------- | ------------ | ------------- |
     | **Name (Név)** | TweetSentiment | Válasszon egy megfelelő nevet az alkalmazáshoz. |
     | **Erőforráscsoport** | myResourceGroup | Válassza ki a korábban is használt meglévő erőforráscsoportot. |
-    | **Location** | USA keleti régiója | Válassza ki az Önhöz legközelebb eső helyet. |    
+    | **Hely** | USA keleti régiója | Válassza ki az Önhöz legközelebb eső helyet. |    
 
 4. Miután megadta a megfelelő beállításértékeket, kattintson a **Létrehozás** gombra a logikai alkalmazás létrehozásához. 
 
@@ -285,7 +281,7 @@ A logikai alkalmazás letiltásához kattintson az **Áttekintés**, majd a kép
 
 ![Függvénynaplók](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

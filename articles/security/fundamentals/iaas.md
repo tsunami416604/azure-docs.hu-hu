@@ -1,6 +1,6 @@
 ---
-title: Ajánlott biztonsági eljárások az Azure-beli IaaS számítási feladatokhoz | Microsoft Docs
-description: " A számítási feladatok Azure IaaS-ba való áttelepítése lehetőséget biztosít a tervek újraértékelésére "
+title: Security best practices for IaaS workloads in Azure | Microsoft Docs
+description: " The migration of workloads to Azure IaaS brings opportunities to reevaluate our designs "
 services: security
 documentationcenter: na
 author: barclayn
@@ -15,76 +15,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3368f72aeb7909c3e0a8653bb5b094729c4c45ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805978"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228022"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
-Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
+This article describes security best practices for VMs and operating systems.
 
-Az ajánlott eljárások a vélemények konszenzusán alapulnak, és a jelenlegi Azure platform-képességekkel és-szolgáltatásokkal működnek. Mivel a vélemények és technológiák idővel változhatnak, ez a cikk frissülni fog, hogy tükrözze ezeket a módosításokat.
+The best practices are based on a consensus of opinion, and they work with current Azure platform capabilities and feature sets. Because opinions and technologies can change over time,  this article will be updated to reflect those changes.
 
-A legtöbb infrastruktúra-szolgáltatási (IaaS) forgatókönyv esetén az [Azure Virtual Machines (VM)](/azure/virtual-machines/) a felhő-számítástechnikai szolgáltatásokat használó szervezetek fő munkaterhelése. Ez a tény olyan [hibrid forgatókönyvekben](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) nyilvánvaló, ahol a szervezetek lassan szeretnék áttelepíteni a számítási feladatokat a felhőbe. Ilyen esetekben kövesse a [IaaS általános biztonsági szempontjait](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx), és alkalmazza az ajánlott biztonsági eljárásokat az összes virtuális gépre.
+In most infrastructure as a service (IaaS) scenarios, [Azure virtual machines (VMs)](/azure/virtual-machines/) are the main workload for organizations that use cloud computing. This fact is evident in [hybrid scenarios](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) where organizations want to slowly migrate workloads to the cloud. In such scenarios, follow the [general security considerations for IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx), and apply security best practices to all your VMs.
 
-## <a name="protect-vms-by-using-authentication-and-access-control"></a>Virtuális gépek elleni védelem hitelesítés és hozzáférés-vezérlés használatával
-A virtuális gépek védelmének első lépése annak biztosítása, hogy csak a jogosult felhasználók állíthatnak be új virtuális gépeket és érhetik el a virtuális gépeket.
-
-> [!NOTE]
-> Az Azure-beli linuxos virtuális gépek biztonságának javítása érdekében integrálható az Azure AD-hitelesítéssel. Ha az [Azure ad-hitelesítést Linux rendszerű virtuális gépekhez](/azure/virtual-machines/linux/login-using-aad)használja, központilag szabályozza és érvényesíti a virtuális gépekhez való hozzáférést engedélyező vagy megtagadó házirendeket.
->
->
-
-**Ajánlott eljárás**: a virtuális gépek hozzáférésének szabályozása.   
-**Részletek**: az [Azure-szabályzatok](/azure/azure-policy/azure-policy-introduction) segítségével hozhat létre konvenciókat a szervezet erőforrásaihoz, és létrehozhat testreszabott házirendeket. Alkalmazza ezeket a házirendeket erőforrásokra, például [erőforráscsoportok](/azure/azure-resource-manager/resource-group-overview). Az erőforráscsoporthoz tartozó virtuális gépek öröklik a szabályzatokat.
-
-Ha a szervezete számos előfizetéssel rendelkezik, akkor előfordulhat, hogy az előfizetések hozzáférésének, házirendjének és megfelelőségének hatékony kezelésére van szüksége. Az [Azure felügyeleti csoportjai](/azure/azure-resource-manager/management-groups-overview) az előfizetések feletti szintű hatókört biztosítanak. Az előfizetéseket felügyeleti csoportokba (tárolókban) rendszerezheti, és alkalmazhatja az Ön irányítási feltételeit ezekre a csoportokra. Egy felügyeleti csoportban lévő összes előfizetés automatikusan örökli a csoportra alkalmazott feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
-
-**Ajánlott eljárás**: csökkentse a változékonyságot a beállításában és a virtuális gépek üzembe helyezésében.   
-**Részletek**: [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) sablonok használatával erősítse meg az üzembe helyezési lehetőségeket, és könnyebben értelmezheti és leltárba hozhatja a virtuális gépeket a környezetben.
-
-**Ajánlott eljárás**: biztonságos privilegizált hozzáférés.   
-**Részletek**: a [legalacsonyabb jogosultsági szintű megközelítés](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) és a beépített Azure-szerepkörök használata lehetővé teszi a felhasználók számára a virtuális gépek elérését és beállítását:
-
-- [Virtuális gépek közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): felügyelheti a virtuális gépeket, de nem a virtuális hálózati vagy a Storage-fiókot, amelyhez csatlakoznak.
-- [Klasszikus virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): felügyelheti a klasszikus üzemi modellel létrehozott virtuális gépeket, de nem a virtuális hálózati vagy a Storage-fiókot, amelyhez a virtuális gépek csatlakoznak.
-- [Biztonsági rendszergazda](../../role-based-access-control/built-in-roles.md#security-admin): csak Security Centerban: megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági szabályzatokat, biztonsági házirendeket szerkeszthet, megtekintheti a riasztásokat és a javaslatokat, elhagyhatja a riasztás
-- [DevTest Labs-felhasználó](../../role-based-access-control/built-in-roles.md#devtest-labs-user): megtekintheti a virtuális gépeket, és csatlakozhat, indíthat, indíthat újra és állíthat le.
-
-Az előfizetési rendszergazdák és az adminisztrátorok módosíthatják ezt a beállítást, így a rendszergazdák az előfizetésben lévő összes virtuális gép rendszergazdái. Győződjön meg arról, hogy az összes előfizetés-rendszergazda és-rendszergazda megbízhatónak tartja a számítógépekre való bejelentkezést.
+## <a name="protect-vms-by-using-authentication-and-access-control"></a>Protect VMs by using authentication and access control
+The first step in protecting your VMs is to ensure that only authorized users can set up new VMs and access VMs.
 
 > [!NOTE]
-> Javasoljuk, hogy az azonos életciklusú virtuális gépeket ugyanabban az erőforráscsoporthoz egyesítse. Az erőforráscsoportok használatával üzembe helyezheti, figyelheti és elvégezheti az erőforrások számlázási költségeit.
+> To improve the security of Linux VMs on Azure, you can integrate with Azure AD authentication. When you use [Azure AD authentication for Linux VMs](/azure/virtual-machines/linux/login-using-aad), you centrally control and enforce policies that allow or deny access to the VMs.
 >
 >
 
-A virtuális gépek hozzáférését és beállítását vezérlő szervezetek javítják a virtuális gépek teljes biztonságát.
+**Best practice**: Control VM access.   
+**Detail**: Use [Azure policies](/azure/azure-policy/azure-policy-introduction) to establish conventions for resources in your organization and create customized policies. Apply these policies to resources, such as [resource groups](/azure/azure-resource-manager/resource-group-overview). VMs that belong to a resource group inherit its policies.
 
-## <a name="use-multiple-vms-for-better-availability"></a>Több virtuális gép használata a jobb rendelkezésre állás érdekében
-Ha a virtuális gép olyan kritikus fontosságú alkalmazásokat futtat, amelyeknek magas rendelkezésre állásra van szükségük, javasoljuk, hogy több virtuális gépet használjon. A jobb rendelkezésre állás érdekében használjon [rendelkezésre állási készletet](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) vagy rendelkezésre állási [zónákat](../../availability-zones/az-overview.md).
+If your organization has many subscriptions, you might need a way to efficiently manage access, policies, and compliance for those subscriptions. [Azure management groups](/azure/azure-resource-manager/management-groups-overview) provide a level of scope above subscriptions. You organize subscriptions into management groups (containers) and apply your governance conditions to those groups. All subscriptions within a management group automatically inherit the conditions applied to the group. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 
-A rendelkezésre állási csoport olyan logikai csoportosítás, amelyet az Azure-ban használhat, így biztosíthatja, hogy a benne található virtuálisgép-erőforrások elkülönítve legyenek egymástól, amikor egy Azure-adatközpontban üzembe vannak helyezve. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási állványokon, tárolási egységeken és hálózati kapcsolókon fussanak. Ha hardveres vagy Azure-beli szoftveres hiba lép fel, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes alkalmazás továbbra is elérhető lesz az ügyfelek számára. A rendelkezésre állási csoportok nélkülözhetetlen képességgel rendelkeznek, ha megbízható felhőalapú megoldásokat szeretne létrehozni.
+**Best practice**: Reduce variability in your setup and deployment of VMs.   
+**Detail**: Use [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) templates to strengthen your deployment choices and make it easier to understand and inventory the VMs in your environment.
 
-## <a name="protect-against-malware"></a>Védelem a kártevők ellen
-A kártevők elleni védelmet a vírusok, kémprogramok és más kártevő szoftverek azonosításához és eltávolításához kell telepíteni. Telepítheti a [Microsoft antimalware](antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)és [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
+**Best practice**: Secure privileged access.   
+**Detail**: Use a [least privilege approach](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) and built-in Azure roles to enable users to access and set up VMs:
 
-A Microsoft antimalware olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az éles környezettől függetlenül üzemeltetett környezetekben a virtuális gépek és a Cloud Services elleni védelem érdekében antimalware-bővítményt használhat.
+- [Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Can manage VMs, but not the virtual network or storage account to which they are connected.
+- [Classic Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Can manage VMs created by using the classic deployment model, but not the virtual network or storage account to which the VMs are connected.
+- [Security Admin](../../role-based-access-control/built-in-roles.md#security-admin): In Security Center only: Can view security policies, view security states, edit security policies, view alerts and recommendations, dismiss alerts and recommendations.
+- [DevTest Labs User](../../role-based-access-control/built-in-roles.md#devtest-labs-user): Can view everything and connect, start, restart, and shut down VMs.
 
-Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incidensek) egyszerűen integrálható a Microsoft antimalware és a partneri megoldások [Azure Security Center](../../security-center/index.yml) használatával.
+Your subscription admins and coadmins can change this setting, making them administrators of all the VMs in a subscription. Be sure that you trust all of your subscription admins and coadmins to log in to any of your machines.
 
-**Ajánlott eljárás**: kártevők elleni védelemre szolgáló antimalware-megoldás telepítése.   
-**Részletek**: [Microsoft partneri megoldás vagy Microsoft antimalware telepítése](../../security-center/security-center-install-endpoint-protection.md)
+> [!NOTE]
+> We recommend that you consolidate VMs with the same lifecycle into the same resource group. By using resource groups, you can deploy, monitor, and roll up billing costs for your resources.
+>
+>
 
-**Ajánlott eljárás**: az antimalware-megoldás integrálása a Security Center a védelem állapotának figyelésére.   
-**Részletek**: [az Endpoint Protection hibáinak kezelése a Security Center](../../security-center/security-center-partner-integration.md)
+Organizations that control VM access and setup improve their overall VM security.
 
-## <a name="manage-your-vm-updates"></a>A virtuális gépek frissítéseinek kezelése
-Az Azure-beli virtuális gépeket, például az összes helyszíni virtuális gépet, a felhasználók felügyelik. Az Azure nem küldi le a Windows-frissítéseket. A virtuális gép frissítéseit kell kezelnie.
+## <a name="use-multiple-vms-for-better-availability"></a>Use multiple VMs for better availability
+If your VM runs critical applications that need to have high availability, we strongly recommend that you use multiple VMs. For better availability, use an [availability set](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) or availability [zones](../../availability-zones/az-overview.md).
 
-**Ajánlott eljárás**: a virtuális gépek naprakészen tartása.   
-**Részletek**: a Azure Automation [Update Management](../../automation/automation-update-management.md) megoldásával kezelheti az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban üzembe helyezett Windows-és Linux-számítógépek operációs rendszerének frissítéseit. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
+An availability set is a logical grouping that you can use in Azure to ensure that the VM resources you place within it are isolated from each other when they’re deployed in an Azure datacenter. Azure ensures that the VMs you place in an availability set run across multiple physical servers, compute racks, storage units, and network switches. If a hardware or Azure software failure occurs, only a subset of your VMs are affected, and your overall application continues to be available to your customers. Availability sets are an essential capability when you want to build reliable cloud solutions.
+
+## <a name="protect-against-malware"></a>Protect against malware
+You should install antimalware protection to help identify and remove viruses, spyware, and other malicious software. You can install [Microsoft Antimalware](antimalware.md) or a Microsoft partner’s endpoint protection solution ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security), and [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
+
+Microsoft Antimalware includes features like real-time protection, scheduled scanning, malware remediation, signature updates, engine updates, samples reporting, and exclusion event collection. For environments that are hosted separately from your production environment, you can use an antimalware extension to help protect your VMs and cloud services.
+
+You can integrate Microsoft Antimalware and partner solutions with [Azure Security Center](../../security-center/index.yml) for ease of deployment and built-in detections (alerts and incidents).
+
+**Best practice**: Install an antimalware solution to protect against malware.   
+**Detail**: [Install a Microsoft partner solution or Microsoft Antimalware](../../security-center/security-center-install-endpoint-protection.md)
+
+**Best practice**: Integrate your antimalware solution with Security Center to monitor the status of your protection.   
+**Detail**: [Manage endpoint protection issues with Security Center](../../security-center/security-center-partner-integration.md)
+
+## <a name="manage-your-vm-updates"></a>Manage your VM updates
+Azure VMs, like all on-premises VMs, are meant to be user managed. Azure doesn't push Windows updates to them. You need to manage your VM updates.
+
+**Best practice**: Keep your VMs current.   
+**Detail**: Use the [Update Management](../../automation/automation-update-management.md) solution in Azure Automation to manage operating system updates for your Windows and Linux computers that are deployed in Azure, in on-premises environments, or in other cloud providers. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 A Frissítéskezelés által kezelt számítógépek a következő konfigurációk használatával hajtják végre a felméréseket és frissítik az üzemelő példányokat:
 
@@ -93,96 +93,96 @@ A Frissítéskezelés által kezelt számítógépek a következő konfiguráci�
 - Automation hibrid runbook-feldolgozó
 - Microsoft Update vagy Windows Server Update Services (WSUS) Windows-számítógépekhez
 
-Ha Windows Update használ, hagyja engedélyezve az automatikus Windows Update beállítást.
+If you use Windows Update, leave the automatic Windows Update setting enabled.
 
-**Ajánlott eljárás**: Ellenőrizze, hogy a létrehozott rendszerképek tartalmazzák-e a legújabb Windows-frissítések körét.   
-**Részletek**: minden központi telepítés első lépéseként keresse meg és telepítse az összes Windows-frissítést. Ez a mérték különösen fontos az Ön vagy a saját könyvtárából származó rendszerképek telepítésekor. Habár az Azure Marketplace-ről származó rendszerképeket alapértelmezés szerint automatikusan frissíti a rendszer, a nyilvános kiadás után a késési idő (akár néhány hét) is lehet.
+**Best practice**: Ensure at deployment that images you built include the most recent round of Windows updates.   
+**Detail**: Check for and install all Windows updates as a first step of every deployment. This measure is especially important to apply when you deploy images that come from either you or your own library. Although images from the Azure Marketplace are updated automatically by default, there can be a lag time (up to a few weeks) after a public release.
 
-**Ajánlott eljárás**: rendszeresen telepítse újra a virtuális gépeket az operációs rendszer új verziójának kényszerítéséhez.   
-**Részletek**: megadhatja a virtuális gépet egy [Azure Resource Manager sablonnal](../../azure-resource-manager/resource-group-authoring-templates.md) , hogy könnyen újra üzembe lehessen helyezni. A sablonok használatával a rendszer egy javított és biztonságos virtuális gépet biztosít, amikor szüksége van rá.
+**Best practice**: Periodically redeploy your VMs to force a fresh version of the OS.   
+**Detail**: Define your VM with an [Azure Resource Manager template](../../azure-resource-manager/resource-group-authoring-templates.md) so you can easily redeploy it. Using a template gives you a patched and secure VM when you need it.
 
-**Ajánlott eljárás**: a virtuális gépek biztonsági frissítéseinek gyors alkalmazása.   
-**Részletek**: engedélyezze a Azure Security Center (ingyenes szint vagy standard szint) a [hiányzó biztonsági frissítések azonosításához és azok alkalmazásához](../../security-center/security-center-apply-system-updates.md).
+**Best practice**: Rapidly apply security updates to VMs.   
+**Detail**: Enable Azure Security Center (Free tier or Standard tier) to [identify missing security updates and apply them](../../security-center/security-center-apply-system-updates.md).
 
-**Ajánlott eljárás**: telepítse a legújabb biztonsági frissítéseket.   
-**Részletek**: az ügyfelek által az Azure-ba áthelyezett első munkaterhelések némelyike Labs-és külső rendszerű rendszerek. Ha az Azure-beli virtuális gépek olyan alkalmazásokat vagy szolgáltatásokat futtatnak, amelyek számára elérhetőnek kell lenniük az interneten, ügyelni kell a javítások megadására. Az operációs rendszeren túli javítás. A partneri alkalmazásokban a nem javított biztonsági rések olyan problémákat okozhatnak, amelyek elkerülhetők, ha a megfelelő javítási felügyelet van érvényben.
+**Best practice**: Install the latest security updates.   
+**Detail**: Some of the first workloads that customers move to Azure are labs and external-facing systems. If your Azure VMs host applications or services that need to be accessible to the internet, be vigilant about patching. Patch beyond the operating system. Unpatched vulnerabilities on partner applications can also lead to problems that can be avoided if good patch management is in place.
 
-**Ajánlott eljárás**: biztonsági mentési megoldás üzembe helyezése és tesztelése.   
-**Részletek**: a biztonsági mentést ugyanúgy kell kezelni, mint bármely más műveletet. Ez az éles környezet részét képező, a felhőre kiterjedő rendszerek esetében igaz.
+**Best practice**: Deploy and test a backup solution.   
+**Detail**: A backup needs to be handled the same way that you handle any other operation. This is true of systems that are part of your production environment extending to the cloud.
 
-A teszt-és fejlesztői rendszereknek olyan biztonsági mentési stratégiákat kell követniük, amelyek a felhasználók által a megszokott módon létrehozott visszaállítási képességeket biztosítják a helyszíni környezetek tapasztalatai alapján. Az Azure-ba áthelyezett éles számítási feladatok csak akkor integrálhatók a meglévő biztonsági mentési megoldásokkal, ha lehetséges. Vagy használhatja a [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) a biztonsági mentési követelmények megoldásához.
+Test and dev systems must follow backup strategies that provide restore capabilities that are similar to what users have grown accustomed to, based on their experience with on-premises environments. Production workloads moved to Azure should integrate with existing backup solutions when possible. Or, you can use [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) to help address your backup requirements.
 
-Azok a szervezetek, amelyek nem kényszerítik a szoftverfrissítési házirendeket, jobban ki vannak téve az ismert, korábban rögzített biztonsági réseket használó fenyegetéseknek. Az iparági szabályozásoknak való megfelelés érdekében a vállalatoknak bizonyítaniuk kell, hogy szorgalmasak, és a megfelelő biztonsági ellenőrzésekkel biztosítják a felhőben található számítási feladatok biztonságát.
+Organizations that don't enforce software-update policies are more exposed to threats that exploit known, previously fixed vulnerabilities. To comply with industry regulations, companies must prove that they are diligent and using correct security controls to help ensure the security of their workloads located in the cloud.
 
-Szoftver – a hagyományos adatközpontok és az Azure-IaaS ajánlott eljárásainak frissítése számos hasonlóságot mutat. Javasoljuk, hogy értékelje ki az aktuális szoftverfrissítési szabályzatokat az Azure-ban található virtuális gépek belefoglalásához.
+Software-update best practices for a traditional datacenter and Azure IaaS have many similarities. We recommend that you evaluate your current software update policies to include VMs located in Azure.
 
-## <a name="manage-your-vm-security-posture"></a>A virtuális gép biztonsági helyzetének kezelése
-A előforduló kiberfenyegetésekkel kapcsolatban fejlődik. A virtuális gépek védelméhez olyan figyelési képességre van szükség, amely gyorsan képes észlelni a fenyegetéseket, megakadályozhatja az erőforrásokhoz való jogosulatlan hozzáférést, riasztásokat indíthat, és csökkentheti a téves pozitív állapotot
+## <a name="manage-your-vm-security-posture"></a>Manage your VM security posture
+Cyberthreats are evolving. Safeguarding your VMs requires a monitoring capability that can quickly detect threats, prevent unauthorized access to your resources, trigger alerts, and reduce false positives.
 
-A Windows és a Linux [rendszerű](../../security-center/security-center-virtual-machine.md) [virtuális gépek](../../security-center/security-center-linux-virtual-machine.md)biztonsági helyzetének figyeléséhez használja a [Azure Security Center](../../security-center/security-center-intro.md). Security Center a virtuális gépek védelmét a következő lehetőségek kihasználása révén biztosíthatja:
+To monitor the security posture of your [Windows](../../security-center/security-center-virtual-machine.md) and [Linux VMs](../../security-center/security-center-linux-virtual-machine.md), use [Azure Security Center](../../security-center/security-center-intro.md). In Security Center, safeguard your VMs by taking advantage of the following capabilities:
 
-- Operációs rendszer biztonsági beállításainak alkalmazása ajánlott konfigurációs szabályokkal.
-- Azonosíthatja és letöltheti a rendszerbiztonsági és a kritikus fontosságú, esetlegesen hiányzó frissítéseket.
-- Javaslatok üzembe helyezése a végponti kártevők elleni védelemhez.
-- Ellenőrizze a lemez titkosítását.
-- A biztonsági rések felmérése és szervizelése.
-- Fenyegetések észlelése.
+- Apply OS security settings with recommended configuration rules.
+- Identify and download system security and critical updates that might be missing.
+- Deploy recommendations for endpoint antimalware protection.
+- Validate disk encryption.
+- Assess and remediate vulnerabilities.
+- Detect threats.
 
-A Security Center aktívan nyomon követheti a fenyegetéseket, és a potenciális fenyegetések a biztonsági riasztásokban vannak kitéve. A korrelált fenyegetéseket egyetlen, biztonsági incidensnek nevezett nézetben összesítjük.
+Security Center can actively monitor for threats, and potential threats are exposed in security alerts. Correlated threats are aggregated in a single view called a security incident.
 
-A Security Center [Azure monitor naplókban](/azure/log-analytics/log-analytics-overview)tárolja az adattárakat. Azure Monitor a naplók egy lekérdezési nyelvet és elemzési motort biztosítanak, amely betekintést nyújt az alkalmazások és erőforrások működésére. A rendszer az adatokat a felhőben vagy a helyszínen lévő virtuális gépekre telepített [Azure monitorokból](../../batch/monitoring-overview.md), felügyeleti megoldásokból és ügynökökből is gyűjti. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
+Security Center stores data in [Azure Monitor logs](/azure/log-analytics/log-analytics-overview). Azure Monitor logs provides a query language and analytics engine that gives you insights into the operation of your applications and resources. Data is also collected from [Azure Monitor](../../batch/monitoring-overview.md), management solutions, and agents installed on virtual machines in the cloud or on-premises. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
 
-Azok a szervezetek, amelyek nem kényszerítik ki az erős biztonságot a virtuális gépek számára, továbbra is tudatában vannak a jogosulatlan felhasználók lehetséges kísérleteinek a biztonsági ellenőrzések megkerülése érdekében
+Organizations that don't enforce strong security for their VMs remain unaware of potential attempts by unauthorized users to circumvent security controls.
 
-## <a name="monitor-vm-performance"></a>VIRTUÁLIS gépek teljesítményének figyelése
-Az erőforrás-visszaélés akkor lehet probléma, ha a virtuális gép folyamatai több erőforrást használnak, mint amennyit kellene. A virtuális gépekkel kapcsolatos teljesítményproblémák a szolgáltatás megszakadásához vezethetnek, ami sérti a rendelkezésre állás biztonsági elvét. Ez különösen fontos az IIS-t vagy más webkiszolgálókat üzemeltető virtuális gépek esetében, mivel a magas CPU-vagy memóriahasználat a szolgáltatásmegtagadási (DoS) támadásokat jelezhetik. Fontos, hogy a virtuális gépek hozzáférését a probléma előfordulásakor ne csak a reaktív módon figyelje, hanem proaktív módon, a normál működés során mért alapkonfigurációt is.
+## <a name="monitor-vm-performance"></a>Monitor VM performance
+Resource abuse can be a problem when VM processes consume more resources than they should. Performance issues with a VM can lead to service disruption, which violates the security principle of availability. This is particularly important for VMs that are hosting IIS or other web servers, because high CPU or memory usage might indicate a denial of service (DoS) attack. It’s imperative to monitor VM access not only reactively while an issue is occurring, but also proactively against baseline performance as measured during normal operation.
 
-Javasoljuk, hogy a [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) használatával betekintést nyerjen az erőforrás állapotára. Azure Monitor funkciók:
+We recommend that you use [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) to gain visibility into your resource’s health. Azure Monitor features:
 
-- [Erőforrás-diagnosztikai naplófájlok](../../azure-monitor/platform/resource-logs-overview.md): FIGYELI a virtuális gépek erőforrásait, és azonosítja a teljesítményt és a rendelkezésre állást befolyásoló lehetséges problémákat.
-- [Azure Diagnostics bővítmény](/azure/azure-monitor/platform/diagnostics-extension-overview): a Windows rendszerű virtuális gépek monitorozási és diagnosztikai képességeit biztosítja. Ezeket a képességeket engedélyezheti, ha a bővítményt a [Azure Resource Manager sablon](/azure/virtual-machines/windows/extensions-diagnostics-template)részeként is engedélyezi.
+- [Resource diagnostic log files](../../azure-monitor/platform/resource-logs-overview.md): Monitors your VM resources and identifies potential issues that might compromise performance and availability.
+- [Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview): Provides monitoring and diagnostics capabilities on Windows VMs. You can enable these capabilities by including the extension as part of the [Azure Resource Manager template](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
-Azok a szervezetek, amelyek nem figyelik a virtuális gépek teljesítményét, nem tudják megállapítani, hogy a teljesítménybeli minták bizonyos változásai normál vagy rendellenesek. Egy virtuális gép, amely a megszokottnál több erőforrást használ, a külső erőforrás vagy a virtuális gépen futó sérült folyamat támadását jelezhetik.
+Organizations that don't monitor VM performance can’t determine whether certain changes in performance patterns are normal or abnormal. A VM that’s consuming more resources than normal might indicate an attack from an external resource or a compromised process running in the VM.
 
-## <a name="encrypt-your-virtual-hard-disk-files"></a>A virtuális merevlemezek fájljainak titkosítása
-Javasoljuk, hogy Titkosítsa a virtuális merevlemezeket (VHD-k), hogy megvédje a rendszerindító kötetet és az adatmennyiségeket a tárhelyen, valamint a titkosítási kulcsokat és a titkokat.
+## <a name="encrypt-your-virtual-hard-disk-files"></a>Encrypt your virtual hard disk files
+We recommend that you encrypt your virtual hard disks (VHDs) to help protect your boot volume and data volumes at rest in storage, along with your encryption keys and secrets.
 
-A [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) segítségével titkosíthatja a Windows-és Linux-IaaS virtuális gépek lemezeit. Azure Disk Encryption a Windows iparági szabványnak megfelelő [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) FUNKCIÓJÁT használja az operációs rendszer és az adatlemezek mennyiségi titkosításának biztosításához. A megoldás integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) a Key Vault-előfizetésében lévő lemezes titkosítási kulcsok és titkos kódok vezérléséhez és kezeléséhez. A megoldás azt is biztosítja, hogy a virtuális gépek lemezein tárolt összes adatok titkosítva legyenek az Azure Storage-ban.
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) helps you encrypt your Windows and Linux IaaS virtual machine disks. Azure Disk Encryption uses the industry-standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) feature of Windows and the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux to provide volume encryption for the OS and the data disks. The solution is integrated with [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) to help you control and manage the disk-encryption keys and secrets in your key vault subscription. The solution also ensures that all data on the virtual machine disks are encrypted at rest in Azure Storage.
 
-A Azure Disk Encryption használatának ajánlott eljárásai a következők:
+Following are best practices for using Azure Disk Encryption:
 
-**Ajánlott eljárás**: a virtuális gépek titkosításának engedélyezése.   
-**Részletek**: a Azure Disk Encryption létrehozza és írja a kulcstárolóba a titkosítási kulcsokat. A Key vaultban lévő titkosítási kulcsok kezeléséhez Azure AD-hitelesítés szükséges. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célból az ügyfél titkos hitelesítése vagy az [ügyféltanúsítvány-alapú Azure ad-hitelesítés](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)is használható.
+**Best practice**: Enable encryption on VMs.   
+**Detail**: Azure Disk Encryption generates and writes the encryption keys to your key vault. Managing encryption keys in your key vault requires Azure AD authentication. Create an Azure AD application for this purpose. For authentication purposes, you can use either client secret-based authentication or [client certificate-based Azure AD authentication](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
-**Ajánlott eljárás**: kulcs titkosítási kulcs (KEK) használata a titkosítási kulcsok további biztonsági rétegéhez. Adjon hozzá egy KEK-t a kulcstartóhoz.   
-**Részletek**: az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcs-titkosítási kulcsot a kulcstartóban. Egy KEK-t is importálhat a helyszíni hardveres biztonsági modulról (HSM) a kulcskezelő szolgáltatáshoz. További információ: [Key Vault dokumentáció](../../key-vault/key-vault-hsm-protected-keys.md). Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt. A kulcs letéti másolatának a helyszíni kulcskezelő HSM-ben való megőrzése további védelmet nyújt a kulcsok véletlen törlésével szemben.
+**Best practice**: Use a key encryption key (KEK) for an additional layer of security for encryption keys. Add a KEK to your key vault.   
+**Detail**: Use the [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet to create a key encryption key in the key vault. You can also import a KEK from your on-premises hardware security module (HSM) for key management. For more information, see the [Key Vault documentation](../../key-vault/key-vault-hsm-protected-keys.md). When a key encryption key is specified, Azure Disk Encryption uses that key to wrap the encryption secrets before writing to Key Vault. Keeping an escrow copy of this key in an on-premises key management HSM offers additional protection against accidental deletion of keys.
 
-**Ajánlott eljárás**: készítsen [pillanatképet](../../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy biztonsági mentést a lemezek titkosítása előtt. A biztonsági másolatok helyreállítási lehetőséget biztosítanak, ha nem várt hiba történik a titkosítás során.   
-**Részletek**: a felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentést követően a **set-AzVMDiskEncryptionExtension** parancsmag használatával titkosíthatja a felügyelt lemezeket a *-skipVmBackup* paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
+**Best practice**: Take a [snapshot](../../virtual-machines/windows/snapshot-copy-managed-disk.md) and/or backup before disks are encrypted. Backups provide a recovery option if an unexpected failure happens during encryption.   
+**Detail**: VMs with managed disks require a backup before encryption occurs. After a backup is made, you can use the **Set-AzVMDiskEncryptionExtension** cmdlet to encrypt managed disks by specifying the *-skipVmBackup* parameter. For more information about how to back up and restore encrypted VMs, see the [Azure Backup](../../backup/backup-azure-vms-encryption.md) article.
 
-**Ajánlott eljárás**: annak biztosítása érdekében, hogy a titkosítási titkok ne legyenek régióközi határokon átívelőek, Azure Disk Encryption szükség van a kulcstartóra és a virtuális gépekre, amelyek ugyanabban a régióban találhatók.   
-**Részletek**: hozzon létre és használjon olyan kulcstartót, amely ugyanabban a régióban található, mint a titkosítani kívánt virtuális gép.
+**Best practice**: To make sure the encryption secrets don’t cross regional boundaries, Azure Disk Encryption needs the key vault and the VMs to be located in the same region.   
+**Detail**: Create and use a key vault that is in the same region as the VM to be encrypted.
 
-Azure Disk Encryption alkalmazása esetén a következő üzleti igényeknek is eleget kell tennie:
+When you apply Azure Disk Encryption, you can satisfy the following business needs:
 
-- A IaaS virtuális gépek az iparági szabványnak megfelelő titkosítási technológián keresztül, a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében biztosítva vannak.
-- A IaaS-alapú virtuális gépek az ügyfél által vezérelt kulcsok és szabályzatok alapján kezdődnek, és a Key vaultban is naplózhatja a használatot.
+- IaaS VMs are secured at rest through industry-standard encryption technology to address organizational security and compliance requirements.
+- IaaS VMs start under customer-controlled keys and policies, and you can audit their usage in your key vault.
 
-## <a name="restrict-direct-internet-connectivity"></a>Közvetlen internetkapcsolat korlátozása
-A virtuális gép közvetlen internetkapcsolatának figyelése és korlátozása. A támadók folyamatosan megkeresik a nyilvános Felhőbeli IP-tartományokat a nyílt felügyeleti portok számára, és megkísérlik a közös jelszavakat, valamint az ismert, nem javított biztonsági réseket. Az alábbi táblázat a támadások elleni védelemhez nyújt ajánlott eljárásokat:
+## <a name="restrict-direct-internet-connectivity"></a>Restrict direct internet connectivity
+Monitor and restrict VM direct internet connectivity. Attackers constantly scan public cloud IP ranges for open management ports and attempt “easy” attacks like common passwords and known unpatched vulnerabilities. The following table lists best practices to help protect against these attacks:
 
-**Ajánlott eljárás**: a hálózati Útválasztás és biztonság véletlen expozíciójának megakadályozása.   
-**Részletek**: a RBAC használatával győződjön meg arról, hogy csak a központi hálózati csoport rendelkezik engedéllyel a hálózati erőforrásokhoz.
+**Best practice**: Prevent inadvertent exposure to network routing and security.   
+**Detail**: Use RBAC to ensure that only the central networking group has permission to networking resources.
 
-**Ajánlott eljárás**: azonosítsa és javítsa ki a kitett virtuális gépeket, amelyek engedélyezik a hozzáférést az "any" forrás IP-címről.   
-**Részletek**: Azure Security Center használata. Security Center azt javasolja, hogy az internetre irányuló végpontokon keresztül korlátozza a hozzáférést, ha valamelyik hálózati biztonsági csoport egy vagy több bejövő szabályt tartalmaz, amelyek engedélyezik a hozzáférést az "any" forrás IP-címről. Security Center azt javasolja, hogy szerkessze ezeket a bejövő szabályokat, hogy [korlátozza](../../security-center/security-center-network-recommendations.md) a hozzáférést a forrás IP-címekhez, amelyeknek ténylegesen hozzáférésre van szükségük.
+**Best practice**: Identify and remediate exposed VMs that allow access from “any” source IP address.   
+**Detail**: Use Azure Security Center. Security Center will recommend that you restrict access through internet-facing endpoints if any of your network security groups has one or more inbound rules that allow access from “any” source IP address. Security Center will recommend that you edit these inbound rules to [restrict access](../../security-center/security-center-network-recommendations.md) to source IP addresses that actually need access.
 
-**Ajánlott eljárás**: a felügyeleti portok korlátozása (RDP, SSH).   
-**Részletek**: az igény szerinti [(JIT)](../../security-center/security-center-just-in-time.md) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez való csatlakozáshoz, ha szükséges. Ha a JIT engedélyezve van, Security Center a hálózati biztonsági csoport szabályának létrehozásával zárolja az Azure-beli virtuális gépek felé irányuló bejövő forgalmat. Válassza ki a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz zárva. Ezeket a portokat a JIT-megoldás vezérli.
+**Best practice**: Restrict management ports (RDP, SSH).   
+**Detail**: [Just-in-time (JIT) VM access](../../security-center/security-center-just-in-time.md) can be used to lock down inbound traffic to your Azure VMs, reducing exposure to attacks while providing easy access to connect to VMs when needed. When JIT is enabled, Security Center locks down inbound traffic to your Azure VMs by creating a network security group rule. You select the ports on the VM to which inbound traffic will be locked down. These ports are controlled by the JIT solution.
 
-## <a name="next-steps"></a>További lépések
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
+## <a name="next-steps"></a>Következő lépések
+See [Azure security best practices and patterns](best-practices-and-patterns.md) for more security best practices to use when you’re designing, deploying, and managing your cloud solutions by using Azure.
 
-Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
-* Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – a Microsoft biztonsági rései, például az Azure-nal kapcsolatos problémák, vagy e-mailen keresztül secure@microsoft.com
+The following resources are available to provide more general information about Azure security and related Microsoft services:
+* [Azure Security Team Blog](https://blogs.msdn.microsoft.com/azuresecurity/) - for up to date information on the latest in Azure Security
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) - where Microsoft security vulnerabilities, including issues with Azure, can be reported or via email to secure@microsoft.com

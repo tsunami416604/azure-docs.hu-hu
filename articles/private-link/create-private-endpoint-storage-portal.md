@@ -1,23 +1,23 @@
 ---
-title: Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
-description: Ismerje meg, hogyan csatlakozhat magántulajdonban lévő Storage-fiókhoz az Azure-ban egy privát végpont használatával.
+title: Connect privately to a storage account using Azure Private Endpoint
+description: Learn how to connect privately to a storage account in Azure using a Private Endpoint.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 8a72f70fbc1ab6052587beb1d949dd73b1ad3559
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.author: allensu
+ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376145"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228094"
 ---
-# <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
-Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
+# <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Connect privately to a storage account using Azure Private Endpoint
+Azure Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link resources.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet egy Azure-beli virtuális hálózaton, egy privát végponttal rendelkező Storage-fiókot a Azure Portal használatával. Ezután biztonságosan hozzáférhet a Storage-fiókhoz a virtuális gépről.
+In this Quickstart, you will learn how to create a VM on an Azure virtual network, a storage account with a Private Endpoint using the Azure portal. Then, you can securely access the storage account from the VM.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -25,156 +25,156 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gép
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
-Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot, amely a privát kapcsolati erőforrás eléréséhez használt virtuális GÉPET (ebben a példában a Storage-fiókot) tárolja.
+In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link Resource (a storage account in this example).
 
-### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
+### <a name="create-the-virtual-network"></a>Create the virtual network
 
-Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot a privát kapcsolati erőforrás elérésére használt virtuális gép üzemeltetéséhez.
+In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link resource.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés**@no__t – 3**virtuális hálózat**lehetőséget.
-1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
+1. In **Create virtual network**, enter or select this information:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *MyVirtualNetwork*. |
-    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
+    | Név | Enter *MyVirtualNetwork*. |
+    | Címtér | Enter *10.1.0.0/16*. |
     | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Földrajzi egység | Válassza a **WestCentralUS**lehetőséget.|
-    | Alhálózat – név | Adja meg a *mySubnet*. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
+    | Erőforráscsoport | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
+    | Földrajzi egység | Select **WestCentralUS**.|
+    | Subnet - Name | Enter *mySubnet*. |
+    | Alhálózat – címtartomány | Enter *10.1.0.0/24*. |
     |||
-1. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
+1. Leave the rest as default and select **Create**.
 
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **számítási** > **virtuális gép**lehetőséget.
+1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**.
 
-1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+1. In **Create a virtual machine - Basics**, enter or select this information:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | **PROJEKT RÉSZLETEI** | |
+    | **PROJECT DETAILS** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
-    | **PÉLDÁNY RÉSZLETEI** |  |
-    | Virtuális gép neve | Adja meg a *myVm*. |
-    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
-    | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Kép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
-    | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
-    | **RENDSZERGAZDAI FIÓK** |  |
-    | Felhasználónév | Adja meg a választott felhasználónevet. |
+    | Erőforráscsoport | Select **myResourceGroup**. You created this in the previous section.  |
+    | **INSTANCE DETAILS** |  |
+    | Virtuális gép neve | Enter *myVm*. |
+    | Region (Régió) | Select **WestCentralUS**. |
+    | Availability options | Leave the default **No infrastructure redundancy required**. |
+    | Lemezkép | Select **Windows Server 2019 Datacenter**. |
+    | Méret | Leave the default **Standard DS1 v2**. |
+    | **ADMINISTRATOR ACCOUNT** |  |
+    | Felhasználónév | Enter a username of your choosing. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **BEJÖVŐ PORTOK SZABÁLYAI** |  |
-    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs**értéket. |
-    | **PÉNZ MEGTAKARÍTÁSA** |  |
-    | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
+    | Confirm Password | Reenter password. |
+    | **INBOUND PORT RULES** |  |
+    | Public inbound ports | Leave the default **None**. |
+    | **SAVE MONEY** |  |
+    | Already have a Windows license? | Leave the default **No**. |
     |||
 
-1. Válassza a **Tovább: lemezek**lehetőséget.
+1. Select **Next: Disks**.
 
-1. A **virtuális gép létrehozása – lemezek**területen hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: hálózatkezelés**lehetőséget.
+1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
 
-1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
+1. In **Create a virtual machine - Networking**, select this information:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
-    | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
-    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
-    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
-    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget.|
+    | Virtuális hálózat | Leave the default **MyVirtualNetwork**.  |
+    | Címtér | Leave the default **10.1.0.0/24**.|
+    | Alhálózat | Leave the default **mySubnet (10.1.0.0/24)** .|
+    | Nyilvános IP-cím | Leave the default **(new) myVm-ip**. |
+    | Public inbound ports | Select **Allow selected ports**. |
+    | Select inbound ports | Select **HTTP** and **RDP**.|
     ||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. You're taken to the **Review + create** page where Azure validates your configuration.
 
-1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+1. When you see the **Validation passed** message, select **Create**.
 
-## <a name="create-your-private-endpoint"></a>Saját végpont létrehozása
-Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont használatával. 
+## <a name="create-your-private-endpoint"></a>Create your Private Endpoint
+In this section, you will create a private storage account using a Private Endpoint to it. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **Storage** > **Storage-fiók**lehetőséget.
+1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Storage** > **Storage account**.
 
-1. A **Storage-fiók létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
+1. In **Create storage account - Basics**, enter or select this information:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | **PROJEKT RÉSZLETEI** | |
+    | **PROJECT DETAILS** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
-    | **PÉLDÁNY RÉSZLETEI** |  |
-    | Storage account name (Tárfiók neve)  | Adja meg a *mystorageaccount*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    | Region (Régió) | Válassza a **WestCentralUS**lehetőséget. |
-    | Teljesítmény| Hagyja meg az alapértelmezett **standard**értéket. |
-    | Fióktípus | Hagyja meg az alapértelmezett **tárolót (általános célú v2)** . |
-    | Replikáció | Válassza a **READ-Access geo-redundáns tárolás (ra-GRS)** lehetőséget. |
+    | Erőforráscsoport | Select **myResourceGroup**. You created this in the previous section.|
+    | **INSTANCE DETAILS** |  |
+    | Storage account name (Tárfiók neve)  | Enter *mystorageaccount*. If this name is taken, create a unique name. |
+    | Region (Régió) | Select **WestCentralUS**. |
+    | Teljesítmény| Leave the default **Standard**. |
+    | Fióktípus | Leave the default **Storage (general purpose v2)** . |
+    | Replikáció | Select **Read-access geo-redundant storage (RA-GRS)** . |
     |||
   
-3. Válassza a **Tovább: hálózatkezelés**lehetőséget.
-4. A **Storage-fiók létrehozása – hálózatkezelés**, kapcsolati módszer, válassza a **privát végpont**elemet.
-5. A **Storage-fiók létrehozása – hálózatkezelés**területen válassza a **magánhálózati végpont hozzáadása**elemet. 
-6. A **privát végpont létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+3. Select **Next: Networking**.
+4. In **Create a storage account - Networking**, connectivity method, select **Private Endpoint**.
+5. In **Create a storage account - Networking**, select **Add Private Endpoint**. 
+6. In **Create Private Endpoint**, enter or select this information:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | **PROJEKT RÉSZLETEI** | |
+    | **PROJECT DETAILS** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
-    |Földrajzi egység|Válassza a **WestCentralUS**lehetőséget.|
-    |Név|Adja meg a *myPrivateEndpoint*.  |
-    |Tároló alerőforrása|Hagyja meg az alapértelmezett **blobot**. |
-    | **HÁLÓZATI** |  |
-    | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
-    | **MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**|  |
-    | Integrálás saját DNS-zónával  | Hagyja meg az alapértelmezett **Igen értéket**. |
-    | Privát DNS-zóna  | Hagyja meg az alapértelmezett * * (új) privatelink.blob.core.windows.net * * értéket. |
+    | Erőforráscsoport | Select **myResourceGroup**. You created this in the previous section.|
+    |Földrajzi egység|Select **WestCentralUS**.|
+    |Név|Enter *myPrivateEndpoint*.  |
+    |Storage sub-resource|Leave the default **Blob**. |
+    | **NETWORKING** |  |
+    | Virtuális hálózat  | Select *MyVirtualNetwork* from resource group *myResourceGroup*. |
+    | Alhálózat | Select *mySubnet*. |
+    | **PRIVATE DNS INTEGRATION**|  |
+    | Integrate with private DNS zone  | Leave the default **Yes**. |
+    | Privát DNS-zóna  | Leave the default ** (New) privatelink.blob.core.windows.net**. |
     |||
 7. Kattintson az **OK** gombra. 
-8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
-9. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
-10. Tallózással keresse meg az imént létrehozott Storage-fiók erőforrását.
-11. A bal oldali tartalom menüben válassza a **hozzáférési kulcsok** elemet.
-12. Válassza a **Másolás** lehetőséget a key1 tartozó kapcsolatok karakterláncában.
+8. Válassza az **Áttekintés + létrehozás** lehetőséget. You're taken to the **Review + create** page where Azure validates your configuration. 
+9. When you see the **Validation passed** message, select **Create**. 
+10. Browse to the storage account resource that you just created.
+11. Select **Access Keys** from the left content menu.
+12. Select **Copy** on the connection string for key1.
  
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
+Connect to the VM *myVm* from the internet as follows:
 
-1. A portál keresési sávján adja meg a *myVm*.
+1. In the portal's search bar, enter *myVm*.
 
-1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
+1. Kattintson a **Csatlakozás** gombra. After selecting the **Connect** button, **Connect to virtual machine** opens.
 
-1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
+1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
 
-1. Nyissa meg a letöltött. rdp fájlt.
+1. Open the downloaded.rdp* file.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
-    1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+    1. Enter the username and password you specified when creating the VM.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget**kell választania @no__t **-1.**
+        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
 
 1. Kattintson az **OK** gombra.
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. If you receive a certificate warning, select **Yes** or **Continue**.
 
-1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
+1. Once the VM desktop appears, minimize it to go back to your local desktop.  
 
-## <a name="access-storage-account-privately-from-the-vm"></a>Hozzáférés a Storage-fiókhoz a virtuális gépről
+## <a name="access-storage-account-privately-from-the-vm"></a>Access storage account privately from the VM
 
-Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fiókhoz.
+In this section, you will connect privately to the storage account using the Private Endpoint.
 
 > [!IMPORTANT]
-> A tároló DNS-konfigurációjának manuális módosítására van szükség a gazdagépek fájlján, hogy az tartalmazza az adott fiók teljes tartománynevét. módosítsa a következő fájlt a Windows rendszerhez készült rendszergazdai engedélyekkel: c:\Windows\System32\Drivers\etc\hosts vagy Linux/etc/hosts A fiók DNS-információinak belefoglalása az előző lépésből a következő formátumban [magánhálózati IP-cím] myaccount.blob.core.windows.net
+> DNS configuration for storage needs a manual modification on the hosts file to include the FQDN of the specific account Please modify the following file using administrator permissions on Windows: c:\Windows\System32\Drivers\etc\hosts or Linux /etc/hosts Include the DNS information for the account from previous step in the following format [Private IP Address] myaccount.blob.core.windows.net
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
-2. Adja meg a @ no__t-0 értéket, amely a következőhöz hasonló üzenetet küld:
+1. In the Remote Desktop of *myVM*, open PowerShell.
+2. Enter `nslookup mystorageaccount.blob.core.windows.net` You'll receive a message similar to this:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -184,28 +184,28 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fi�
     Aliases:  mystorageaccount.blob.core.windows.net
     ```
 3. Telepítse a [Microsoft Azure Storage Explorert](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
-4. Kattintson a jobb gombbal a **Storage-fiókok** elemre.
-5. Válassza a **Kapcsolódás Azure-tárolóhoz**lehetőséget.
-6. Válassza **a kapcsolatok karakterlánc használata**lehetőséget.
+4. Select **Storage accounts** with the right-click.
+5. Select **Connect to an azure storage**.
+6. Select **Use a connection string**.
 7. Kattintson a **Tovább** gombra.
-8. A korábban másolt adatok beillesztésével adja meg a kapcsolatok karakterláncát.
+8. Enter the connection string by pasting the information previously copied.
 9. Kattintson a **Tovább** gombra.
 10. Kattintson a **Csatlakozás** gombra.
-11. A blob-tárolók tallózása a mystorageaccount 
-12. Opcionálisan Mappák létrehozása és/vagy fájlok feltöltése a *mystorageaccount*. 
-13. A távoli asztali kapcsolat bezárásával *myVM*. 
+11. Browse the Blob containers from mystorageaccount 
+12. (Optionally) Create folders and/or upload files to *mystorageaccount*. 
+13. Close the remote desktop connection to *myVM*. 
 
-További lehetőségek a Storage-fiók eléréséhez:
-- A Microsoft Azure Storage Explorer egy önálló ingyenes alkalmazás a Microsofttól, amely lehetővé teszi, hogy vizuálisan működjön az Azure Storage-adatokkal Windows, macOS és Linux rendszeren. Telepítheti az alkalmazást a Storage-fiók tartalmának magánjellegű tallózásához. 
+Additional options to access the storage account:
+- Microsoft Azure Storage Explorer is a standalone free app from Microsoft that enables you to work visually with Azure storage data on Windows, macOS, and Linux. You can install the application to browse privately the storage account content. 
  
-- A AzCopy segédprogram egy másik lehetőség az Azure Storage-hoz készült nagy teljesítményű, parancsfájl-továbbításhoz. Az AzCopy segítségével blob, fájl és tábla típusú tárolókból és tárolókba vihet át adatokat. 
+- The AzCopy utility is another option for high-performance scriptable data transfer for Azure storage. Az AzCopy segítségével blob, fájl és tábla típusú tárolókból és tárolókba vihet át adatokat. 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha elkészült a privát végponttal, a Storage-fiókkal és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást: 
-1. Adja meg a *myResourceGroup* in a portál felső részén található **keresőmezőt** , és válassza a *myResourceGroup* from a keresési eredményeket. 
+When you're done using the Private Endpoint, storage account and the VM, delete the resource group and all of the resources it contains: 
+1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
 2. Válassza az **Erőforráscsoport törlése** elemet. 
-3. Adja meg a *myResourceGroup*@no__t – 1for **írja be az erőforráscsoport nevét** , és válassza a **Törlés**lehetőséget. 
+3. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**. 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET a virtuális hálózaton és a Storage-fiókban, valamint egy privát végpontot. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a Storage-fiókkal a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
+In this Quickstart, you created a VM on a virtual network and storage account and a Private Endpoint. You connected to one VM from the internet and securely communicated to the storage account using Private Link. To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).

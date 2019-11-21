@@ -1,6 +1,6 @@
 ---
-title: Az Azure belső terheléselosztó létrehozása a PowerShell használatával
-titlesuffix: Azure Load Balancer
+title: Create an Azure internal Load Balancer by using PowerShell
+titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure PowerShell-modullal az Azure Resource Managerben
 services: load-balancer
 documentationcenter: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b53225334c6a7d61fcee70327df5979af1e424ee
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275390"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225387"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Belső terheléselosztó létrehozása az Azure PowerShell-modullal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure Portalra](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -42,11 +42,11 @@ Ez a cikk leírja, hogyan hozhat létre belső terheléselosztót az Azure Resou
 
 A terheléselosztó üzembe helyezéséhez létre kell hoznia a következő objektumokat:
 
-* Előtér-IP-címkészlet: A magánhálózati IP-cím az összes bejövő hálózati forgalomhoz.
-* Háttérbeli címkészlet: A hálózati adapterek az előtér-IP-címről érkező elosztott terhelésű forgalom fogadására.
-* Terheléselosztási szabályok: A terheléselosztó portja (forrás és helyi) konfigurációja.
-* Mintavételi konfiguráció: A virtuális gépek állapotának mintavétele.
-* Bejövő NAT-szabályok: A virtuális gépekhez való közvetlen hozzáféréshez szükséges portszabályok.
+* Előtérbeli IP-címkészlet: Az összes bejövő hálózati forgalomhoz használt magánhálózati IP-cím.
+* Háttércímkészlet: Az előtérbeli IP-címkészletről érkező, elosztott terhelésű forgalmat fogadó hálózati adapterek.
+* Terheléselosztási szabályok: A terheléselosztó portjának (forrás és helyi) konfigurációja.
+* Mintavételi konfiguráció: A virtuális gépek állapotának mintavételei.
+* Bejövő NAT-szabályok: A virtuális gépek közvetlen elérésére vonatkozó portszabályok.
 
 A terheléselosztó összetevőkről az [Azure Resource Manager terheléselosztó-támogatását](load-balancer-arm.md) ismertető cikkben talál további információt.
 
@@ -64,7 +64,7 @@ Indítsa el az Azure Resource Manager PowerShell-modulját.
 Connect-AzAccount
 ```
 
-### <a name="step-2-view-your-subscriptions"></a>2\. lépés: Előfizetések megtekintése
+### <a name="step-2-view-your-subscriptions"></a>2\. lépés: Az előfizetések megtekintése
 
 Ellenőrizze az elérhető Azure-előfizetéseket.
 
@@ -74,7 +74,7 @@ Get-AzSubscription
 
 Amikor a rendszer a hitelesítést kéri, adja meg a hitelesítő adatait.
 
-### <a name="step-3-select-the-subscription-to-use"></a>3\. lépés: Válassza ki a használni kívánt előfizetést
+### <a name="step-3-select-the-subscription-to-use"></a>3\. lépés: A használni kívánt előfizetés kiválasztása
 
 Válassza ki, hogy melyik Azure-előfizetését használja a terheléselosztó üzembe helyezéséhez.
 
@@ -82,7 +82,7 @@ Válassza ki, hogy melyik Azure-előfizetését használja a terheléselosztó �
 Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
-### <a name="step-4-choose-the-resource-group-for-the-load-balancer"></a>4\. lépés: Válassza ki a terheléselosztó erőforráscsoportot
+### <a name="step-4-choose-the-resource-group-for-the-load-balancer"></a>4\. lépés: A terheléselosztó erőforráscsoportjának kiválasztása
 
 Hozzon létre egy új erőforráscsoportot a terheléselosztóhoz. Hagyja ki ezt a lépést, ha meglévő erőforráscsoportot használ.
 
@@ -90,7 +90,7 @@ Hozzon létre egy új erőforráscsoportot a terheléselosztóhoz. Hagyja ki ezt
 New-AzResourceGroup -Name NRP-RG -location "West US"
 ```
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. A hely lesz az erőforráscsoport összes erőforrásának alapértelmezett értéke. Mindig ugyanazt az erőforráscsoportot használja a terheléselosztó létrehozásához kapcsolódó összes parancshoz.
+Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. A hely lesz az erőforráscsoport összes erőforrásának alapértelmezett értéke. Mindig ugyanazt az erőforráscsoportot használja a terheléselosztó létrehozásához kapcsolódó összes parancshoz.
 
 Az előző példában létrehoztunk egy **NRP-RG** nevű erőforráscsoportot, amelynek a helye az USA nyugati régiója.
 
@@ -114,7 +114,7 @@ Létrejön a virtuális hálózat. A rendszer hozzáadja az **LB-Subnet-BE** alh
 
 Hozzon létre egy előtérbeli IP-címkészletet a bejövő forgalomhoz és egy háttércímkészletet az elosztott terhelésű forgalomhoz.
 
-### <a name="step-1-create-a-front-end-ip-pool"></a>1\. lépés: Előtér-IP-címkészlet létrehozása
+### <a name="step-1-create-a-front-end-ip-pool"></a>1\. lépés: Előtérbeli IP-címkészlet létrehozása
 
 Hozzon létre egy előtérbeli IP-címkészletet a 10.0.2.5 magánhálózati IP-címmel a 10.0.2.0/24 alhálózathoz. Ez a cím a bejövő hálózati forgalom végpontja.
 
@@ -138,10 +138,10 @@ Az előtérbeli IP-címkészlet és a háttércímkészlet létrehozása után a
 
 A példa a következő négy szabályobjektumot hozza létre:
 
-* Bejövő NAT-szabály a RDP protokoll (RDP) számára: A 3441-es porton lévő összes bejövő forgalmat átirányítja a 3389-es portra.
-* Egy második bejövő NAT-szabály az RDP-hez: A 3442-es porton lévő összes bejövő forgalmat átirányítja a 3389-es portra.
-* Állapot-mintavételi szabály: Ellenőrzi a HealthProbe. aspx elérési útjának állapotát.
-* Terheléselosztó-szabály: Terheléselosztás – a 80-as nyilvános porton lévő összes bejövő forgalom a háttérbeli címkészlet 80-es helyi portjára kerül.
+* A távoli asztali protokoll (RDP) bejövő NAT-szabálya: Átirányítja a 3441-es porton bejövő összes forgalmat a 3389-es portra.
+* Az RDP második bejövő NAT-szabálya: Átirányítja a 3442-es porton bejövő összes forgalmat a 3389-es portra.
+* Állapotminta-szabály: Ellenőrzi a HealthProbe.aspx elérési út állapotát.
+* Terheléselosztó-szabály: A nyilvános 80-as portra bejövő összes forgalom terhelését elosztja a háttércímkészletben szereplő 80-as helyi porton.
 
 ```azurepowershell-interactive
 $inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
@@ -239,7 +239,7 @@ A beállításoknak a következőknek kell lenniük:
 
 
 
-### <a name="step-3-assign-the-nic-to-a-vm"></a>3\. lépés: A hálózati adapter társítása egy virtuális géphez
+### <a name="step-3-assign-the-nic-to-a-vm"></a>3\. lépés: Az NIC hozzárendelése virtuális géphez
 
 Rendelje az NIC-t virtuális géphez az `Add-AzVMNetworkInterface` paranccsal.
 
@@ -249,9 +249,9 @@ A virtuális gépek létrehozásának és az NIC hozzárendelésének lépésenk
 
 A virtuális gép létrehozása után adja hozzá a hálózati adaptert.
 
-### <a name="step-1-store-the-load-balancer-resource"></a>1\. lépés: A terheléselosztó erőforrásának tárolása
+### <a name="step-1-store-the-load-balancer-resource"></a>1\. lépés: A terheléselosztó-erőforrás tárolása
 
-Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). Az **$lb** nevű változót használjuk. A szkriptben lévő attribútumértékekhez használja az előző lépésben létrehozott terheléselosztó-erőforrások neveit.
+Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -273,7 +273,7 @@ Tárolja a hálózati adaptert egy másik változóban. Ez az adapter „A hál�
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 ```
 
-### <a name="step-4-change-the-back-end-configuration"></a>4\. lépés: A háttér konfigurációjának módosítása
+### <a name="step-4-change-the-back-end-configuration"></a>4\. lépés: A háttér-konfiguráció módosítása
 
 Módosítsa a hálózati adapter háttér-konfigurációját.
 
@@ -281,7 +281,7 @@ Módosítsa a hálózati adapter háttér-konfigurációját.
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
-### <a name="step-5-save-the-network-interface-object"></a>5\. lépés: A hálózati adapter objektumának mentése
+### <a name="step-5-save-the-network-interface-object"></a>5\. lépés: A hálózati adapter objektum mentése
 
 Mentse a hálózati adapter objektumot.
 
@@ -293,7 +293,7 @@ Miután hozzáadta az adaptert a háttérkészlethez, a hálózati forgalom terh
 
 ## <a name="update-an-existing-load-balancer"></a>Meglévő terheléselosztó frissítése
 
-### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>1\. lépés: A terheléselosztó objektum társítása változóhoz
+### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>1\. lépés: A terheléselosztó objektum hozzárendelése egy változóhoz
 
 Rendelje hozzá a terheléselosztó objektumot (az előző példából) az **$slb** változóhoz a `Get-AzLoadBalancer` paranccsal:
 
@@ -328,7 +328,7 @@ Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 > [!NOTE]
 > A választható **-Force** kapcsolóval megakadályozhatja a törlés megerősítésének kérését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 * [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

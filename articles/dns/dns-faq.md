@@ -1,206 +1,206 @@
 ---
-title: Azure DNS FAQ
-description: Az Azure DNS – gyakran ismételt kérdések
+title: FAQ - Azure DNS
+description: In this article, learn about frequently asked questions about Azure DNS
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
-ms.author: victorh
-ms.openlocfilehash: bb5c4d508344f391d610aeaa7e0be54a93c997dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080029"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212031"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS FAQ
 
-## <a name="about-azure-dns"></a>Az Azure DNS szolgáltatással kapcsolatos
+## <a name="about-azure-dns"></a>About Azure DNS
 
 ### <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
-A tartománynévrendszer (DNS) a rendszer lefordítja, vagy az IP-címét a webhely vagy szolgáltatás nevének feloldása. Az Azure DNS a DNS-tartományok egy üzemeltetési szolgáltatás. Névfeloldás biztosít a Microsoft Azure-infrastruktúra használatával. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
+The Domain Name System (DNS) translates, or resolves, a website or service name to its IP address. Azure DNS is a hosting service for DNS domains. It provides name resolution by using Microsoft Azure infrastructure. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
-DNS-tartományok Azure DNS-ben üzemeltetett DNS-kiszolgálók neve az Azure globális hálózatán. A rendszer használja, a csomópontválasztásos hálózat úgy, hogy minden DNS-lekérdezést a legközelebbi elérhető DNS-kiszolgáló válaszolt. Az Azure DNS által nyújtott, gyors teljesítményt és magas rendelkezésre állást a tartomány.
+DNS domains in Azure DNS are hosted on the Azure global network of DNS name servers. This system uses Anycast networking so that each DNS query is answered by the closest available DNS server. Azure DNS provides fast performance and high availability for your domain.
 
-Az Azure DNS az Azure Resource Manager-alapú. Az Azure DNS számos előnyt biztosít, az erőforrás-kezelő szolgáltatásait, például a szerepköralapú hozzáférés-vezérlés, a vizsgálati naplók és a erőforrás zárolását. Tartományok és -rekordok az Azure Portalon, az Azure PowerShell-parancsmagok és a platformfüggetlen Azure CLI-n keresztül kezelheti. Automatikus DNS-kezelést igénylő alkalmazások integrálható a szolgáltatás a REST API-t és az SDK-k használatával.
+Azure DNS is based on Azure Resource Manager. Azure DNS benefits from Resource Manager features such as role-based access control, audit logs, and resource locking. You can manage domains and records via the Azure portal, Azure PowerShell cmdlets, and the cross-platform Azure CLI. Applications that require automatic DNS management can integrate with the service via the REST API and SDKs.
 
-### <a name="how-much-does-azure-dns-cost"></a>Az Azure DNS mennyibe?
+### <a name="how-much-does-azure-dns-cost"></a>How much does Azure DNS cost?
 
-Az Azure DNS számlázási modellt az Azure DNS Szolgáltatásban üzemeltetett DNS-zónák száma alapján. Azt is kapnak DNS-lekérdezések számán alapul. Kedvezmények biztosított használat alapján.
+The Azure DNS billing model is based on the number of DNS zones hosted in Azure DNS. It's also based on the number of DNS queries they receive. Discounts are provided based on usage.
 
-További információkért lásd: a [Azure DNS díjszabási oldalán](https://azure.microsoft.com/pricing/details/dns/).
+For more information, see the [Azure DNS pricing page](https://azure.microsoft.com/pricing/details/dns/).
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Mi az Azure DNS garantált szolgáltatási szintje?
 
-Az Azure garantálja, hogy DNS-lekérdezésekre érvényes válasz érkezik legalább egy Azure DNS-névkiszolgálótól 100 %-ában.
+Azure guarantees that valid DNS requests receive a response from at least one Azure DNS name server 100% of the time.
 
-További információkért lásd: a [Azure DNS SZOLGÁLTATÁSSZINT-szerződésünk](https://azure.microsoft.com/support/legal/sla/dns).
+For more information, see the [Azure DNS SLA page](https://azure.microsoft.com/support/legal/sla/dns).
 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Mi a DNS-zóna? Ugyanaz, mint a DNS-tartomány? 
 
-A tartomány egy egyedi nevet a tartománynévrendszerben. Például: contoso.com.
+A domain is a unique name in the domain name system. Például: contoso.com.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A contoso.com tartomány például számos DNS-rekordot tartalmazhatnak. A rekordok tartalmazhat egy levelezési kiszolgáló, illetve www mail.contoso.com\.contoso.com webhelyhez. These records are hosted in the DNS zone contoso.com.
+A DNS-zóna egy adott tartomány DNS-rekordjainak üzemeltetésére szolgál. For example, the domain contoso.com might contain several DNS records. The records might include mail.contoso.com for a mail server and www\.contoso.com for a website. These records are hosted in the DNS zone contoso.com.
 
-Egy adott tartománynév *csak egy nevét*. A DNS zone is a data resource that contains the DNS records for a domain name. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. DNS névkiszolgálókat a DNS-lekérdezések választ az internetről is tartalmazza.
+A domain name is *just a name*. A DNS zone is a data resource that contains the DNS records for a domain name. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. It also provides DNS name servers to answer DNS queries from the Internet.
 
-### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Kell vásárolni az Azure DNS használatával DNS-tartománynevet? 
+### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Do I need to buy a DNS domain name to use Azure DNS? 
 
 Nem feltétlenül.
 
-Nem kell vásárolni egy tartományhoz, hogy a DNS-zónát az Azure DNS-ben. Bármikor létrehozhat egy DNS-zónát anélkül, hogy tartománynévvel rendelkezne. A zóna DNS-lekérdezések csak feloldása, ha azok még átirányítja az Azure DNS névkiszolgálóit, a zóna.
+You don't need to buy a domain to host a DNS zone in Azure DNS. Bármikor létrehozhat egy DNS-zónát anélkül, hogy tartománynévvel rendelkezne. DNS queries for this zone resolve only if they're directed to the Azure DNS name servers assigned to the zone.
 
-A DNS-zóna összekapcsolása az globális DNS hierarchiává, meg kell vásárolnia a tartomány nevét. Ezt követően DNS-lekérdezések bárhol a világon keresse meg a DNS-zóna és a válasz a DNS-rekordjait.
+To link your DNS zone into the global DNS hierarchy, you must buy the domain name. Then, DNS queries from anywhere in the world find your DNS zone and answer with your DNS records.
 
-## <a name="azure-dns-features"></a>Az Azure DNS-szolgáltatások
+## <a name="azure-dns-features"></a>Azure DNS features
 
-### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Vonatkozik valamilyen korlátozás egy tartomány nevét a Traffic Managerrel apex alias rekordok használatakor?
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Are there any restrictions when using alias records for a domain name apex with Traffic Manager?
 
-Igen. Az Azure Traffic Managerrel statikus nyilvános IP-címeket kell használnia. Konfigurálja a **külső végpont** célként megadott statikus IP-cím használatával. 
+Igen. You must use static public IP addresses with Azure Traffic Manager. Configure the **External endpoint** target by using a static IP address. 
 
-### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Támogatja az Azure DNS DNS-alapú forgalom-útválasztást vagy a végpont feladatátvételi?
+### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Does Azure DNS support DNS-based traffic routing or endpoint failover?
 
-A Traffic Manager által biztosított DNS-alapú forgalom útválasztási és -végpont feladatátvételi. A TRAFFIC Manager egy külön Azure-szolgáltatás, amely használható az Azure DNS használata. További információkért lásd: a [a Traffic Manager áttekintése](../traffic-manager/traffic-manager-overview.md).
+DNS-based traffic routing and endpoint failover are provided by Traffic Manager. Traffic Manager is a separate Azure service that can be used with Azure DNS. For more information, see the [Traffic Manager overview](../traffic-manager/traffic-manager-overview.md).
 
-Az Azure DNS csak statikus DNS-tartományok, ahol egy adott DNS-rekord minden DNS-lekérdezés mindig megkapja ugyanazt a DNS-választ üzemeltetését is támogatja.
+Azure DNS only supports hosting static DNS domains, where each DNS query for a given DNS record always receives the same DNS response.
 
-### <a name="does-azure-dns-support-domain-name-registration"></a>Támogatja az Azure DNS tartománynév-regisztrációval?
+### <a name="does-azure-dns-support-domain-name-registration"></a>Does Azure DNS support domain name registration?
 
-Nem. Az Azure DNS jelenleg nem támogatja a tartománynév megvásárlása lehetőséget. Tartományok vásárlása egy külső tartományregisztrálóhoz kell használnia. A regisztráló általában csekély éves díjért költséget. A tartományok majd lehet üzemeltetni az Azure DNS DNS-rekordok kezelését. További információ: [Delegate a domain to Azure DNS](dns-domain-delegation.md) (Tartomány delegálása az Azure DNS-be).
+Nem. Azure DNS doesn't currently support the option to buy domain names. To buy domains, you must use a third-party domain name registrar. The registrar typically charges a small annual fee. The domains then can be hosted in Azure DNS for management of DNS records. További információ: [Delegate a domain to Azure DNS](dns-domain-delegation.md) (Tartomány delegálása az Azure DNS-be).
 
-A szolgáltatás tartományneveket megvásárlása nyomon van az Azure várakozó fájlok számát. Használja a visszajelzés hely [ennek a funkciónak a támogatási regisztrálása](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
+The feature to buy domain names is tracked in the Azure backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
 
-### <a name="does-azure-dns-support-dnssec"></a>Az Azure DNS támogatja a DNSSEC?
+### <a name="does-azure-dns-support-dnssec"></a>Does Azure DNS support DNSSEC?
 
-Nem. Az Azure DNS jelenleg nem támogatja a tartomány nevét rendszer biztonsági kiterjesztéseit (DNSSEC).
+Nem. Azure DNS doesn't currently support the Domain Name System Security Extensions (DNSSEC).
 
-A DNSSEC szolgáltatást az Azure DNS várakozó fájlok számát a követi. Használja a visszajelzés hely [ennek a funkciónak a támogatási regisztrálása](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+The DNSSEC feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Does Azure DNS support zone transfers (AXFR/IXFR)?
 
-Nem. Az Azure DNS jelenleg nem támogatja a zónaletöltések. DNS-zónák lehet [importált az Azure DNS az Azure CLI-vel](dns-import-export.md). DNS-rekordok segítségével történik a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [ Parancssori eszköz](dns-operations-recordsets-cli.md).
+Nem. Azure DNS doesn't currently support zone transfers. DNS zones can be [imported into Azure DNS by using the Azure CLI](dns-import-export.md). DNS records are managed via the [Azure DNS management portal](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlets](dns-operations-recordsets.md), or the [CLI tool](dns-operations-recordsets-cli.md).
 
-A zónák adatátviteli funkciója nyomon van az Azure DNS várakozó fájlok számát. Használja a visszajelzés hely [ennek a funkciónak a támogatási regisztrálása](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+The zone transfer feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
-### <a name="does-azure-dns-support-url-redirects"></a>Az Azure DNS támogatja a URL-cím átirányítások?
+### <a name="does-azure-dns-support-url-redirects"></a>Does Azure DNS support URL redirects?
 
-Nem. URL-cím átirányítási szolgáltatások nem egy DNS-szolgáltatás. A DNS-szint, hanem a HTTP-szinten működnek. DNS-szolgáltatók néhány csomagot egy URL-cím átirányítási szolgáltatás általános ajánlat részeként. Ez a szolgáltatás jelenleg az Azure DNS által nem támogatott.
+Nem. URL redirect services aren't a DNS service. They work at the HTTP level rather than the DNS level. Some DNS providers bundle a URL redirect service as part of their overall offering. This service isn't currently supported by Azure DNS.
 
-Az URL-cím átirányítási funkció nyomon van az Azure DNS várakozó fájlok számát a. Használja a visszajelzés hely [ennek a funkciónak a támogatási regisztrálása](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+The URL redirect feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
 
-### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Az Azure DNS támogatja a bővített ASCII-kódolás (8 bites) set txt típusú rekordhalmazok?
+### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Does Azure DNS support the extended ASCII encoding (8-bit) set for TXT record sets?
 
-Igen. Az Azure DNS támogatja a kiterjesztett ASCII-set txt típusú rekordhalmazok kódolást. De az Azure REST API-k, SDK-k, PowerShell és a CLI legújabb verzióját kell használnia. 2017\. október 1-nél régebbi verziók vagy SDK 2.1-es nem támogatják a kiterjesztett ASCII készletet. 
+Igen. Azure DNS supports the extended ASCII encoding set for TXT record sets. But you must use the latest version of the Azure REST APIs, SDKs, PowerShell, and the CLI. Versions older than October 1, 2017, or SDK 2.1 don't support the extended ASCII set. 
 
-Például, előfordulhat, hogy adjon meg egy karakterláncot értékeként egy txt típusú rekordot, amely rendelkezik a kiterjesztett ASCII karaktert \128. Ilyen például, "abcd\128efgh." Az Azure DNS belső ábrázolás ezt a karaktert, amely 128 bájt értékét használja. A DNS-feloldás időpontjában a bájtérték a választ adja vissza. Azt is vegye figyelembe, hogy "abc" és "\097\098\099" felcserélhetők feloldási illeti. 
+For example, you might provide a string as the value for a TXT record that has the extended ASCII character \128. An example is "abcd\128efgh." Azure DNS uses the byte value of this character, which is 128, in internal representation. At the time of DNS resolution, this byte value is returned in the response. Also note that "abc" and "\097\098\099" are interchangeable as far as resolution is concerned. 
 
-Követjük [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna a fájl fő formátum escape txt típusú rekordok szabályait. Ha például `\` most ténylegesen lehet kilépni mindent az RFC száma. Ha megad `A\B` txt típusú rekord értékét jelöli, és egyszerűen megoldott `AB`. Ha a TXT-rekordot, hogy valóban szeretné `A\B` karaktert kell felbontású, a `\` újra. Tegyük fel, adja meg a `A\\B`.
+We follow [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zone file master format escape rules for TXT records. For example, `\` now actually escapes everything per the RFC. If you specify `A\B` as the TXT record value, it's represented and resolved as just `AB`. If you really want the TXT record to have `A\B` at resolution, you need to escape the `\` again. As an example, specify `A\\B`.
 
-Ez a támogatás jelenleg nem érhető el az Azure portálon létrehozott txt típusú rekordok.
+This support currently isn't available for TXT records created from the Azure portal.
 
 ## <a name="alias-records"></a>Aliasrekordok
 
-### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Mik az egyes forgatókönyvekben, ahol alias rekordok hasznosak?
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>What are some scenarios where alias records are useful?
 
-Lásd a szakasz a forgatókönyveket a [Azure DNS-alias a rekordok áttekintése](dns-alias.md).
+See the scenarios section in the [Azure DNS alias records overview](dns-alias.md).
 
-### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Milyen rekordtípusokat alias rekordhalmazok támogatottak?
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>What record types are supported for alias record sets?
 
-A következő rekordtípusokhoz, az Azure DNS-zóna alias rekordhalmazok támogatottak:
+Alias record sets are supported for the following record types in an Azure DNS zone:
  
 - A 
 - AAAA
 - CNAME 
 
-### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Alias rekordhalmazok célként által támogatott?
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>What resources are supported as targets for alias record sets?
 
-- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
-- **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
-- **Az Azure Content Delivery Network (CDN) végpontjára mutató**. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására.
-- **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Alias rekordok hivatkozhat, más azonos típusú rekordhalmazok. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
+- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
+- **Point to a Traffic Manager profile from a DNS A/AAAA/CNAME record set.** You can point to the CNAME of a Traffic Manager profile from a DNS CNAME record set. An example is contoso.trafficmanager.net. Now, you also can point to a Traffic Manager profile that has external endpoints from an A or AAAA record set in your DNS zone.
+- **Point to an Azure Content Delivery Network (CDN) endpoint**. This is useful when you create static websites using Azure storage and Azure CDN.
+- **Point to another DNS record set within the same zone.** Alias records can reference to other record sets of the same type. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. This arrangement is useful if you want some record sets to be aliases and some non-aliases.
 
-### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Létrehozhat és frissíthet alias rekordokat az Azure Portalon?
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Can I create and update alias records from the Azure portal?
 
-Igen. Hozzon létre, vagy az Azure Portalon az Azure REST API-k, PowerShell, CLI és SDK-k alias-rekordok kezelése.
+Igen. You can create or manage alias records in the Azure portal along with the Azure REST APIs, PowerShell, the CLI, and SDKs.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Alias rekordok segítségével, győződjön meg arról, hogy a saját DNS-rekordhalmaz törölték az alapul szolgáló nyilvános IP-cím törlése?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Will alias records help to make sure my DNS record set is deleted when the underlying public IP is deleted?
 
-Igen. Ez a funkció egyike az alapképességek alias rekordok. Ez segít a felhasználók számára az alkalmazás az esetleges üzemkimaradások elkerülése érdekében.
+Igen. This feature is one of the core capabilities of alias records. It helps you avoid potential outages for users of your application.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Alias rögzíti lesz a segítségére ahhoz, hogy ellenőrizze, hogy a saját DNS-rekordhalmaz frissül, és a megfelelő IP-címet az alapul szolgáló nyilvános IP-cím változásakor?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Will alias records help to make sure my DNS record set is updated to the correct IP address when the underlying public IP address changes?
 
-Igen. Ez a funkció egyike az alapképességek alias rekordok. Ez segít a lehetséges valamilyen okból kimaradás lép vagy az alkalmazás biztonsági kockázatok elkerülése érdekében.
+Igen. This feature is one of the core capabilities of alias records. It helps you avoid potential outages or security risks for your application.
 
-### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Vonatkozik valamilyen korlátozás aliasrekordot használatával állít be, a vagy AAAA típusú rögzíti, mutasson a Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Are there any restrictions when using alias record sets for A or AAAA records to point to Traffic Manager?
 
-Igen. Mutasson a Traffic Manager-profil-alias a vagy AAAA típusú rekordhalmaz, a Traffic Manager a profil csak külső végpontokkal kell használnia. Amikor a Traffic Manager hoz létre a külső végpontokat, adja meg a tényleges IP-címek a végpontok.
+Igen. To point to a Traffic Manager profile as an alias from an A or AAAA record set, the Traffic Manager profile must use only external endpoints. When you create the external endpoints in Traffic Manager, provide the actual IP addresses of the endpoints.
 
-### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Van-e használni alias rekordok külön díj?
+### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Is there an additional charge to use alias records?
 
-Alias rekordok egy bizonyságot adhatnak meg egy érvényes DNS-rekordhalmaz. Nincs semmilyen további használati díjának felszámolása alias rekordok.
+Alias records are a qualification on a valid DNS record set. There's no additional billing for alias records.
 
-## <a name="use-azure-dns"></a>Az Azure DNS használata
+## <a name="use-azure-dns"></a>Use Azure DNS
 
-### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Az Azure DNS és a egy másik DNS-szolgáltató használatával közös üzemeltetésű tartomány lehetőségeket?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Can I co-host a domain by using Azure DNS and another DNS provider?
 
-Igen. Az Azure DNS támogatja a közös üzemeltetési tartományok más DNS-szolgáltatásokkal.
+Igen. Azure DNS supports co-hosting domains with other DNS services.
 
-Állítsa be a közös üzemeltetési, módosítsa a Névkiszolgálói rekordokat átirányítása mindkét szolgáltatót a névkiszolgálókat a tartományhoz. A névkiszolgáló (NS) vezérlőelem, mely szolgáltatók kapjanak a tartomány DNS-lekérdezések rögzíti. Ezeket a Névkiszolgálói rekordokat Azure DNS-ben, a másik szolgáltató és a szülőzóna rekordhalmazának módosíthatja. A szülőzóna rekordhalmazának általában van konfigurálva a tartomány tartománynév-n keresztül. A DNS-delegálás további információkért lásd: [tartomány DNS-delegálás](dns-domain-delegation.md).
+To set up co-hosting, modify the NS records for the domain to point to the name servers of both providers. The name server (NS) records control which providers receive DNS queries for the domain. You can modify these NS records in Azure DNS, in the other provider, and in the parent zone. The parent zone is typically configured via the domain name registrar. For more information on DNS delegation, see [DNS domain delegation](dns-domain-delegation.md).
 
-Bizonyosodjon meg róla, hogy mindkét DNS-szolgáltatók között a szinkronban-e a tartomány DNS-rekordjait. Az Azure DNS jelenleg nem támogatja a DNS zónaletöltés. DNS-rekordok segítségével szinkronizálva kell lenniük a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [Parancssori eszköz](dns-operations-recordsets-cli.md).
+Also, make sure that the DNS records for the domain are in sync between both DNS providers. Azure DNS doesn't currently support DNS zone transfers. DNS records must be synchronized by using either the [Azure DNS management portal](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlets](dns-operations-recordsets.md), or the [CLI tool](dns-operations-recordsets-cli.md).
 
-### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Rendelkezik az összes négy Azure DNS névkiszolgálóit saját tartomány delegálása?
+### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Do I have to delegate my domain to all four Azure DNS name servers?
 
-Igen. Azure DNS assigns four name servers to each DNS zone. Ezzel az elrendezéssel fokozott olyan hibák elszigetelését és nagyobb rugalmasság. Ahhoz, hogy az Azure DNS – SLA, tartomány delegálása az összes négy névkiszolgálói nevet.
+Igen. Azure DNS assigns four name servers to each DNS zone. This arrangement is for fault isolation and increased resilience. To qualify for the Azure DNS SLA, delegate your domain to all four name servers.
 
-### <a name="what-are-the-usage-limits-for-azure-dns"></a>Milyen használati korlátok vonatkoznak az Azure DNS?
+### <a name="what-are-the-usage-limits-for-azure-dns"></a>What are the usage limits for Azure DNS?
 
-Az alábbi alapértelmezett korlátok vonatkoznak az Azure DNS használata esetén.
+The following default limits apply when you use Azure DNS.
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Áthelyezhető az Azure DNS-zóna, erőforráscsoportok vagy előfizetések között?
+### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Can I move an Azure DNS zone between resource groups or between subscriptions?
 
-Igen. DNS-zónák is áthelyezhetők, erőforráscsoportok vagy előfizetések között.
+Igen. DNS zones can be moved between resource groups or between subscriptions.
 
-Nincsenek hatással a DNS-lekérdezések van, amikor helyezi át, hogy a DNS-zónát. A zónájához rendelt névkiszolgálókat ugyanaz maradjon. DNS-lekérdezések feldolgozása során szokásos módon történik.
+There's no effect on DNS queries when you move a DNS zone. The name servers assigned to the zone stay the same. DNS queries are processed as normal throughout.
 
-További információk és útmutatás a DNS-zónák áthelyezése, lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
+For more information and instructions on how to move DNS zones, see [Move resources to a new resource group or subscription](../azure-resource-manager/resource-group-move-resources.md).
 
-### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Mennyi ideig tart a DNS-módosítások érvénybe léptetéséhez?
+### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>How long does it take for DNS changes to take effect?
 
-Új DNS-zónák és a DNS-rekordok általában jelennek meg az Azure DNS névkiszolgálóit gyorsan. Az időzítési néhány másodpercig.
+New DNS zones and DNS records typically appear in the Azure DNS name servers quickly. The timing is a few seconds.
 
-Meglévő DNS-rekordok módosításai egy kicsit tovább is igénybe vehet. Általában megjelennek az Azure DNS névkiszolgálóit 60 másodpercen belül. DNS-gyorsítótárazást a DNS-ügyfelek és a rekurzív DNS feloldók Azure DNS-en kívül is hatással lehet a ütemezését. A gyorsítótárazás időtartama szabályozásához használja minden rekordhalmaz idő – Élettartam (TTL) tulajdonságát.
+Changes to existing DNS records can take a little longer. They typically appear in the Azure DNS name servers within 60 seconds. DNS caching by DNS clients and DNS recursive resolvers outside of Azure DNS also can affect timing. To control this cache duration, use the Time-To-Live (TTL) property of each record set.
 
-### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Hogyan segítenek a saját DNS-zónák a véletlen törlés elleni védelmében?
+### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>How can I protect my DNS zones against accidental deletion?
 
-Az Azure DNS Azure Resource Manager használatával felügyeli. Az Azure DNS számos előnyt biztosít az Azure Resource Manager biztosít hozzáférést vezérlő funkciókat. Szerepköralapú hozzáférés-vezérlés szabályozza, hogy mely felhasználók olvasási vagy írási hozzáféréssel a DNS-zónák és -rekordhalmazok. Erőforrás-zárolások elkerülése véletlen módosításának és törlésének DNS-zónák és -rekordhalmazok.
+Azure DNS is managed by using Azure Resource Manager. Azure DNS benefits from the access control features that Azure Resource Manager provides. Role-based access control controls which users have read or write access to DNS zones and record sets. Resource locks prevent accidental modification or deletion of DNS zones and record sets.
 
-További információkért lásd: [védelme DNS-zónák és rekordok](dns-protect-zones-recordsets.md).
+For more information, see [Protect DNS zones and records](dns-protect-zones-recordsets.md).
 
-### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Hogyan állíthatok be SPF-rekordokat Azure DNS-ben?
+### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>How do I set up SPF records in Azure DNS?
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS névkiszolgálóit megoldja IPv6 protokollon keresztül? 
+### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Do Azure DNS name servers resolve over IPv6? 
 
-Igen. Az Azure DNS névkiszolgálóit kettős verem. Kettős verem azt jelenti, hogy a ezeknek az IPv4 és IPv6-címeket. Az Azure DNS névkiszolgálóit, a DNS-zónához hozzárendelt IPv6-cím megkereséséhez használja a olyan eszköz, például az nslookup. Például: `nslookup -q=aaaa <Azure DNS Nameserver>`.
+Igen. Azure DNS name servers are dual stack. Dual stack means they have IPv4 and IPv6 addresses. To find the IPv6 address for the Azure DNS name servers assigned to your DNS zone, use a tool such as nslookup. Például: `nslookup -q=aaaa <Azure DNS Nameserver>`.
 
-### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Hogyan állíthatok be IDN formátumú az Azure DNS?
+### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>How do I set up an IDN in Azure DNS?
 
-IDN formátumú tartománynevek (IDN) kódolása a DNS-név használatával [punycode](https://en.wikipedia.org/wiki/Punycode). DNS-lekérdezések a punycode kódolású nevek használatával történik.
+Internationalized domain names (IDNs) encode each DNS name by using [punycode](https://en.wikipedia.org/wiki/Punycode). DNS queries are made by using these punycode-encoded names.
 
-Konfigurálja az IDN formátumú tartománynevek az Azure DNS-ben, konvertálja a zóna nevét vagy a rekordhalmaz nevének a punycode. Az Azure DNS jelenleg nem támogatja a beépített átalakítás, illetve a punycode.
+To configure IDNs in Azure DNS, convert the zone name or record set name to punycode. Azure DNS doesn't currently support built-in conversion to or from punycode.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [További információ az Azure DNS](dns-overview.md).
+- [Learn more about Azure DNS](dns-overview.md).
 
-- [További információ az Azure DNS használata saját tartományok](private-dns-overview.md).
+- [Learn more about how to use Azure DNS for private domains](private-dns-overview.md).
 
-- [További információ a DNS-zónák és rekordok](dns-zones-records.md).
+- [Learn more about DNS zones and records](dns-zones-records.md).
 
-- [Ismerkedés az Azure DNS](dns-getstarted-portal.md).
+- [Get started with Azure DNS](dns-getstarted-portal.md).

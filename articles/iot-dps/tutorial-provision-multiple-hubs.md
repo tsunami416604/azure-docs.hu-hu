@@ -1,24 +1,23 @@
 ---
-title: 'Oktatóanyag: az Azure IoT Hub Device Provisioning Service használata eszközök kiépítésére elosztott terhelésű IoT-hubok között'
-description: 'Oktatóanyag: eszközök kiépítési szolgáltatása automatikus eszköz kiépítés elosztott terhelésű IoT-hubok között az Azure Portalon'
-author: sethmanheim
-ms.author: sethm
+title: Provision devices across load balanced hubs using Azure IoT Hub Device Provisioning Service
+description: Tutorial - Device Provisioning Service automatic device provisioning across load balanced IoT hubs in Azure Portal
+author: wesmc7777
+ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: fb3002e5f195bd3dca32a3500c6789f90e9ea0d6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112778"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229453"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Provision devices across load-balanced IoT hubs
 
-Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több elosztott terhelésű IoT hubhoz a Device Provisioning Service használatával. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több elosztott terhelésű IoT hubhoz a Device Provisioning Service használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Második eszköz regisztrálása egy második IoT-központhoz az Azure Portal használatával 
@@ -64,7 +63,7 @@ Kapcsolja össze a Device Provisioning Service-t és az IoT hubot, hogy a Device
 
 1. Az **Összes erőforrás** lapon kattintson a korábban létrehozott Device Provisioning Service szolgáltatásra.
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
-3. Kattintson az **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás** parancsra.
 4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
 5. Kattintson a **Save** (Mentés) gombra.
 

@@ -1,68 +1,62 @@
 ---
-title: Azure Functions IP-címei
-description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-címeket a Function apps számára, és hogy mi okoz változást.
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
+title: IP addresses in Azure Functions
+description: Learn how to find inbound and outbound IP addresses for function apps, and what causes them to change.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: glenga
-ms.openlocfilehash: d8b6a342dd32d430f7a40a1e0a0a17a482a0816d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469054"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230331"
 ---
-# <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
+# <a name="ip-addresses-in-azure-functions"></a>IP addresses in Azure Functions
 
-Ez a cikk a Function apps IP-címeivel kapcsolatos alábbi témaköröket ismerteti:
+This article explains the following topics related to IP addresses of function apps:
 
-* A Function app által jelenleg használt IP-címek megkeresése.
-* Mi okozza a Function alkalmazás IP-címeinek módosítását.
-* A Function alkalmazáshoz hozzáférő IP-címek korlátozása.
-* Dedikált IP-címek lekérése egy Function alkalmazáshoz.
+* How to find the IP addresses currently in use by a function app.
+* What causes a function app's IP addresses to be changed.
+* How to restrict the IP addresses that can access a function app.
+* How to get dedicated IP addresses for a function app.
 
-Az IP-címek a Function apps szolgáltatáshoz vannak társítva, nem az egyes függvényekhez. A bejövő HTTP-kérések nem használhatják a bejövő IP-címet az egyes függvények meghívásához. az alapértelmezett tartománynevet (functionappname.azurewebsites.net) vagy egy egyéni tartománynevet kell használniuk.
+IP addresses are associated with function apps, not with individual functions. Incoming HTTP requests can't use the inbound IP address to call individual functions; they must use the default domain name (functionappname.azurewebsites.net) or a custom domain name.
 
-## <a name="function-app-inbound-ip-address"></a>Function alkalmazás bejövő IP-címe
+## <a name="function-app-inbound-ip-address"></a>Function app inbound IP address
 
-Mindegyik Function alkalmazás egyetlen bejövő IP-címmel rendelkezik. Az IP-cím megkeresése:
+Each function app has a single inbound IP address. To find that IP address:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-2. Navigáljon a Function alkalmazáshoz.
-3. Válassza ki a **platform funkcióit**.
-4. Válassza a **Tulajdonságok**lehetőséget, és a bejövő IP-cím megjelenik a **virtuális IP-cím**területen.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Navigate to the function app.
+3. Select **Platform features**.
+4. Select **Properties**, and the inbound IP address appears under **Virtual IP address**.
 
-## <a name="find-outbound-ip-addresses"></a>Function alkalmazás kimenő IP-címei
+## <a name="find-outbound-ip-addresses"></a>Function app outbound IP addresses
 
-Minden Function alkalmazáshoz elérhető kimenő IP-címek vannak megadva. A függvények kimenő kapcsolatai, például egy háttér-adatbázis esetében az elérhető kimenő IP-címek egyikét használják a forrás IP-címként. Nem tudja előre, hogy melyik IP-címet fogja használni az adott kapcsolatok. Emiatt a háttér-szolgáltatásnak meg kell nyitnia a tűzfalat a Function alkalmazás összes kimenő IP-címéhez.
+Each function app has a set of available outbound IP addresses. Any outbound connection from a function, such as to a back-end database, uses one of the available outbound IP addresses as the origin IP address. You can't know beforehand which IP address a given connection will use. For this reason, your back-end service must open its firewall to all of the function app's outbound IP addresses.
 
-A Function app számára elérhető kimenő IP-címek megkeresése:
+To find the outbound IP addresses available to a function app:
 
-1. Jelentkezzen be a [Azure erőforrás-kezelőba](https://resources.azure.com).
-2. Válassza **az előfizetések > {előfizetése} > providers > Microsoft. Web > helyek**lehetőséget.
-3. A JSON panelen keresse meg a helyet egy `id` tulajdonsággal, amely a Function alkalmazás nevében ér véget.
-4. Lásd: `outboundIpAddresses` és `possibleOutboundIpAddresses`. 
+1. Sign in to the [Azure Resource Explorer](https://resources.azure.com).
+2. Select **subscriptions > {your subscription} > providers > Microsoft.Web > sites**.
+3. In the JSON panel, find the site with an `id` property that ends in the name of your function app.
+4. See `outboundIpAddresses` and `possibleOutboundIpAddresses`. 
 
-A `outboundIpAddresses` készlete jelenleg elérhető a Function alkalmazás számára. A `possibleOutboundIpAddresses`-készlet olyan IP-címeket tartalmaz, amelyek csak akkor lesznek elérhetők, ha a Function alkalmazás [más díjszabási szintekre](#outbound-ip-address-changes)van igazítva.
+The set of `outboundIpAddresses` is currently available to the function app. The set of `possibleOutboundIpAddresses` includes IP addresses that will be available only if the function app [scales to other pricing tiers](#outbound-ip-address-changes).
 
-Az elérhető kimenő IP-címek keresésének másik módja a [Cloud Shell](../cloud-shell/quickstart.md)használata:
+An alternative way to find the available outbound IP addresses is by using the [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 > [!NOTE]
-> Ha a használati [csomagon](functions-scale.md#consumption-plan) futó Function alkalmazás skálázható, a kimenő IP-címek új tartománya is hozzárendelhető. A használati terv futtatásakor előfordulhat, hogy a teljes adatközpontot kell megadnia.
+> When a function app that runs on the [Consumption plan](functions-scale.md#consumption-plan) is scaled, a new range of outbound IP addresses may be assigned. When running on the Consumption plan, you may need to whitelist the entire data center.
 
-## <a name="data-center-outbound-ip-addresses"></a>Az adatközpont kimenő IP-címei
+## <a name="data-center-outbound-ip-addresses"></a>Data center outbound IP addresses
 
-Ha meg kell adnia a Function apps által használt kimenő IP-címeket, egy másik lehetőség a Function apps adatközpontjának (Azure Region) engedélyezési listájának engedélyezése. [Letöltheti az összes Azure-adatközpont IP-címeit felsoroló JSON-fájlt](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ezután keresse meg azt a JSON-kódrészletet, amely arra a régióra vonatkozik, amelyen a Function alkalmazás fut.
+If you need to whitelist the outbound IP addresses used by your function apps, another option is to whitelist the function apps' data center (Azure region). You can [download a JSON file that lists IP addresses for all Azure data centers](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Then find the JSON fragment that applies to the region that your function app runs in.
 
-A Nyugat-európai JSON-töredék például a következőhöz hasonló lehet:
+For example, this is what the Western Europe JSON fragment might look like:
 
 ```
 {
@@ -84,56 +78,56 @@ A Nyugat-európai JSON-töredék például a következőhöz hasonló lehet:
 }
 ```
 
- A fájl frissítésével és az IP-címek változásával kapcsolatos információkért bontsa ki a [Letöltőközpont oldal](https://www.microsoft.com/en-us/download/details.aspx?id=56519) **részletek** szakaszát.
+ For information about when this file is updated and when the IP addresses change, expand the **Details** section of the [Download Center page](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
-## <a name="inbound-ip-address-changes"></a>Bejövő IP-címek változásai
+## <a name="inbound-ip-address-changes"></a>Inbound IP address changes
 
-A bejövő IP-cím a következő **esetekben** változhat:
+The inbound IP address **might** change when you:
 
-- Törölje a Function alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz.
-- Törölje az utolsó függvény alkalmazást egy erőforráscsoport és egy régió kombinációjában, majd hozza létre újra.
-- Törölje az SSL-kötést, például a [tanúsítvány megújítása](../app-service/configure-ssl-certificate.md#renew-certificate)során.
+- Delete a function app and recreate it in a different resource group.
+- Delete the last function app in a resource group and region combination, and re-create it.
+- Delete an SSL binding, such as during [certificate renewal](../app-service/configure-ssl-certificate.md#renew-certificate)).
 
-Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a bejövő IP-cím is változhat, ha nem végeztek olyan műveleteket, mint például a felsoroltak.
+When your function app runs in a [Consumption plan](functions-scale.md#consumption-plan), the inbound IP address might also change when you haven't taken any actions such as the ones listed.
 
-## <a name="outbound-ip-address-changes"></a>Kimenő IP-címek változásai
+## <a name="outbound-ip-address-changes"></a>Outbound IP address changes
 
-A Function app számára elérhető kimenő IP-címek készlete a következő esetekben változhat:
+The set of available outbound IP addresses for a function app might change when you:
 
-* Hajtson végre bármilyen műveletet, amely módosíthatja a bejövő IP-címet.
-* Változtassa meg a App Service csomag díjszabási szintjét. Az alkalmazás által használható összes lehetséges kimenő IP-cím listája az összes díjszabási szinten a `possibleOutboundIPAddresses` tulajdonságban található. Lásd: [kimenő IP](#find-outbound-ip-addresses)-címek keresése.
+* Take any action that can change the inbound IP address.
+* Change your App Service plan pricing tier. The list of all possible outbound IP addresses your app can use, for all pricing tiers, is in the `possibleOutboundIPAddresses` property. See [Find outbound IPs](#find-outbound-ip-addresses).
 
-Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a kimenő IP-cím is változhat, ha nem végeztek olyan műveleteket, mint például a felsoroltak.
+When your function app runs in a [Consumption plan](functions-scale.md#consumption-plan), the outbound IP address might also change when you haven't taken any actions such as the ones listed.
 
-A kimenő IP-címek módosításának szándékos kényszerítése:
+To deliberately force an outbound IP address change:
 
-1. A standard és a prémium v2 díjszabási szintjeinek méretezése App Service.
-2. Várjon 10 percet.
-3. Méretezés vissza, ahol elindította.
+1. Scale your App Service plan up or down between Standard and Premium v2 pricing tiers.
+2. Wait 10 minutes.
+3. Scale back to where you started.
 
-## <a name="ip-address-restrictions"></a>IP-címekre vonatkozó korlátozások
+## <a name="ip-address-restrictions"></a>IP address restrictions
 
-Konfigurálhatja azon IP-címek listáját, amelyeknek engedélyezni vagy megtagadni kívánja a hozzáférést egy függvény alkalmazásához. További információ: [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md).
+You can configure a list of IP addresses that you want to allow or deny access to a function app. For more information, see [Azure App Service Static IP Restrictions](../app-service/app-service-ip-restrictions.md).
 
-## <a name="dedicated-ip-addresses"></a>Dedikált IP-címek
+## <a name="dedicated-ip-addresses"></a>Dedicated IP addresses
 
-Ha statikus, dedikált IP-címekre van szüksége, javasoljuk [app Service környezetek](../app-service/environment/intro.md) használatát (App Service-csomagok [elkülönített szintje](https://azure.microsoft.com/pricing/details/app-service/) ). További információ: [app Service Environment IP-címek](../app-service/environment/network-info.md#ase-ip-addresses) és a [Bejövő forgalom vezérlése egy app Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+If you need static, dedicated IP addresses, we recommend [App Service Environments](../app-service/environment/intro.md) (the [Isolated tier](https://azure.microsoft.com/pricing/details/app-service/) of App Service plans). For more information, see [App Service Environment IP addresses](../app-service/environment/network-info.md#ase-ip-addresses) and [How to control inbound traffic to an App Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
-Annak megállapítása, hogy a függvény alkalmazás fut-e egy App Service Environmentban:
+To find out if your function app runs in an App Service Environment:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-2. Navigáljon a Function alkalmazáshoz.
-3. Válassza az **Áttekintés** lapot.
-4. A App Service csomag szintje a **app Service terv/árképzési**szinten jelenik meg. A App Service Environment díjszabási szintje **elkülönített**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Navigate to the function app.
+3. Select the **Overview** tab.
+4. The App Service plan tier appears under **App Service plan/pricing tier**. The App Service Environment pricing tier is **Isolated**.
  
-Másik lehetőségként használhatja a [Cloud Shell](../cloud-shell/quickstart.md):
+As an alternative, you can use the [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-A App Service Environment `sku` `Isolated`.
+The App Service Environment `sku` is `Isolated`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az IP-változások gyakori oka az alkalmazások méretezésének változásai. [További információ a Function app skálázásról](functions-scale.md).
+A common cause of IP changes is function app scale changes. [Learn more about function app scaling](functions-scale.md).

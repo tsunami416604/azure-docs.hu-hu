@@ -1,93 +1,92 @@
 ---
-title: Az Azure IoT Hub Device Provisioning Service reprovisioning eszköz fogalmai |} A Microsoft Docs
-description: Ismerteti az Azure IoT Hub Device Provisioning Service fogalmak reprovisioning eszköz
+title: Azure IoT Hub Device Provisioning Service - Device concepts
+description: Describes device reprovisioning concepts for the Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d6e5b5c7e8e8bf83646b417aa94658efd25b49e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730022"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228836"
 ---
-# <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning fogalmak
+# <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning concepts
 
-IoT-megoldás élettartama során szokás az eszközök IoT-központok között. Az erről az áthelyezésről okok a következők lehetnek a következő esetekben:
+During the lifecycle of an IoT solution, it's common to move devices between IoT hubs. The reasons for this move may include the following scenarios:
 
-* **Földrajzi hely meghatározásának / GeoLatency**: Eszköz helye között helyezi át, mert az eszköz által növelése a hálózati késés közelebb IoT hubra át.
+* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device migrated to a closer IoT hub.
 
-* **Több-bérlős**: Előfordulhat, hogy egy eszköz belül az IoT-megoldásban használt és egy új ügyfél vagy ügyfél telephelyén van rendelve. Az új ügyféllel előfordulhat, hogy szolgálja ki a különböző IoT hub használatával.
+* **Multi-tenancy**: A device may be used within the same IoT solution and reassigned to a new customer, or customer site. This new customer may be serviced using a different IoT hub.
 
-* **Megoldás módosítása**: Sikerült áthelyezni egy eszközt egy új vagy frissített IoT-megoldás. Az újbóli hozzárendelést szükség lehet az eszköz kommunikáljon az egy új IoT hubot, amelyhez csatlakozik a többi háttérkomponensnek.
+* **Solution change**: A device could be moved into a new or updated IoT solution. This reassignment may require the device to communicate with a new IoT hub that's connected to other back-end components.
 
-* **Karantén**: Hasonló a megoldás módosítása. Olyan eszköz, amely hibásan működik, sérült vagy elavult rendelésekor lehet egy IoT hubra, amely csak frissítse és megfelelőségi visszaszerzésében. Miután az eszköz megfelelően működik-e, azt rendelkezik majd vissza áttelepített a fő hub.
+* **Quarantine**: Similar to a solution change. A device that's malfunctioning, compromised, or out-of-date may be reassigned to an IoT hub that can only update and get back in compliance. Once the device is functioning properly, it's then migrated back to its main hub.
 
-Belül a Device Provisioning Service-címeket támogatja ezen igények reprovisioning. Eszközök automatikusan máshoz lehessen az új IoT hubra a reprovisioning házirend, amely konfigurálva van az eszköz regisztrációs bejegyzés alapján.
+Reprovisioning support within the Device Provisioning Service addresses these needs. Devices can be automatically reassigned to new IoT hubs based on the reprovisioning policy that's configured on the device's enrollment entry.
 
-## <a name="device-state-data"></a>Eszközadatok állapota
+## <a name="device-state-data"></a>Device state data
 
-Eszköz állapotadatok áll, amelyek a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) és az eszköz képességeit. A Device Provisioning Service-példány és az IoT hub eszköz rendelt tárolja ezeket az adatokat.
+Device state data is composed of the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) and device capabilities. This data is stored in the Device Provisioning Service instance and the IoT hub that a device is assigned to.
 
-![A Device Provisioning Service-mel](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
-Ha egy eszköz kezdetben ki van építve a Device Provisioning Service-példányt, a következő lépéseket kell elvégezni:
+When a device is initially provisioned with a Device Provisioning Service instance, the following steps are done:
 
-1. Az eszköz egy kiépítési kérést küld a Device Provisioning Service-példányra. A szolgáltatáspéldány az eszközidentitást regisztrációs bejegyzés alapján hitelesíti, és létrehozza a kezdeti konfigurációt az eszköz állapota adatok. A szolgáltatáspéldány hozzárendeli az eszköz egy IoT hubra, a beléptetési konfigurációhoz alapján, és az eszköz adott IoT hub-hozzárendelést visszaadja.
+1. The device sends a provisioning request to a Device Provisioning Service instance. The service instance authenticates the device identity based on an enrollment entry, and creates the initial configuration of the device state data. The service instance assigns the device to an IoT hub based on the enrollment configuration and returns that IoT hub assignment to the device.
 
-2. A kiépítési szolgáltatás-példánya a hozzárendelt IoT-központ bármely kezdeti állapot adatokat biztosít. Az eszköz csatlakozik a hozzárendelt IoT hubhoz, és operations kezdődik.
+2. The provisioning service instance gives a copy of any initial device state data to the assigned IoT hub. The device connects to the assigned IoT hub and begins operations.
 
-Az idő múlásával a eszköz állapot adatait az IoT hub előfordulhat, hogy frissítette [eszközművelet](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) és [háttérbeli műveletek](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). A kezdeti Eszközállapot-adatokat a Device Provisioning Service-példányban tárolt változatlan marad. Ez változatlanul eszköz állapotadatok a kezdeti konfigurációs.
+Over time, the device state data on the IoT hub may be updated by [device operations](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) and [back-end operations](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). The initial device state information stored in the Device Provisioning Service instance stays untouched. This untouched device state data is the initial configuration.
 
-![A Device Provisioning Service-mel](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
+![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
 
-A forgatókönyvtől függően szerint az eszköz IoT-központok között helyezi át is lehet áttelepíteni az eszköz állapotát, az előző IoT hubon keresztül, az új IoT hub frissítése szükséges. Ez az áttelepítés reprovisioning a Device Provisioning Service-szabályzatok által támogatott.
+Depending on the scenario, as a device moves between IoT hubs, it may also be necessary to migrate device state updated on the previous IoT hub over to the new IoT hub. This migration is supported by reprovisioning policies in the Device Provisioning Service.
 
-## <a name="reprovisioning-policies"></a>Reprovisioning házirendek
+## <a name="reprovisioning-policies"></a>Reprovisioning policies
 
-A forgatókönyvtől függően egy eszköz általában egy kérést küld a kiépítési szolgáltatás példánya újraindítás. Manuálisan aktiválhatja az igény szerinti kiépítési módszert is támogatja. A regisztrációs bejegyzés reprovisioning házirend határozza meg, hogyan a device provisioning service-példány kezeli, ezek a kérelmek kiépítése. A szabályzat azt is meghatározza, e során reprovisioning eszköz állapotadatok kell áttelepíteni. Az ugyanazon házirend érhető el az egyéni regisztrációk és regisztrációs csoportok:
+Depending on the scenario, a device usually sends a request to a provisioning service instance on reboot. It also supports a method to manually trigger provisioning on demand. The reprovisioning policy on an enrollment entry determines how the device provisioning service instance handles these provisioning requests. The policy also determines whether device state data should be migrated during reprovisioning. The same policies are available for individual enrollments and enrollment groups:
 
-* **Újbóli üzembe helyezése és az adatok áttelepítése**: Ez a házirend az alapértelmezett érték az új regisztrációs bejegyzéseket. Ez a szabályzat hajt végre műveletet, amikor regisztrációs bejegyzés társított eszközök küldjön új kérelmet (1). A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A frissített Eszközállapot-adatokat a kezdeti IoT hubról fog migráljuk az új IoT hub (2). Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
+* **Re-provision and migrate data**: This policy is the default for new enrollment entries. This policy takes action when devices associated with the enrollment entry submit a new request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The updated device state information from that initial IoT hub will be migrated over to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
 
-    ![A Device Provisioning Service-mel](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Újbóli üzembe helyezése és a kezdeti konfiguráció alaphelyzetbe**: Ez a szabályzat hajt végre műveletet, amikor regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést (1). A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A kezdeti konfigurációs adatokat (2) az új IoT hub által biztosított a kiépítési szolgáltatás példány kapta, amikor az eszköz lett üzembe helyezve. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
+* **Re-provision and reset to initial config**: This policy takes action when devices associated with the enrollment entry submit a new provisioning request (1). Depending on the enrollment entry configuration, the device may be reassigned to another IoT hub. If the device is changing IoT hubs, the device registration with the initial IoT hub will be removed. The initial configuration data that the provisioning service instance received when the device was provisioned is provided to the new IoT hub (2). During migration, the device's status will be reported as **Assigning**.
 
-    Ez a szabályzat gyakran használják a gyári beállításokat az IoT-központok módosítása nélkül.
+    This policy is often used for a factory reset without changing IoT hubs.
 
-    ![A Device Provisioning Service-mel](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Provisioning with the Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Soha ne újbóli létesítéséhez**: Az eszköz soha nem van rendelve egy másik központ. Ez a házirend kezeléséhez a visszamenőleges kompatibilitás biztosítunk.
+* **Never re-provision**: The device is never reassigned to a different hub. This policy is provided for managing backwards compatibility.
 
-### <a name="managing-backwards-compatibility"></a>Visszamenőleges kompatibilitási kezelése
+### <a name="managing-backwards-compatibility"></a>Managing backwards compatibility
 
-2018 szeptember, mielőtt az eszköz-hozzárendelések az IoT hubra egy Beragadó működés rendelkezett. Amikor egy eszköz végighaladt-e vissza a kiépítési folyamat, azt csak hozzájuk vissza a azonos IoT hub használatával.
+Before September 2018, device assignments to IoT hubs had a sticky behavior. When a device went back through the provisioning process, it would only be assigned back to the same IoT hub.
 
-Függőség elvégezte ezt a viselkedést a megoldások a kiépítési szolgáltatás tartalmaz visszamenőleges kompatibilitás. Ez a viselkedés jelenleg változatlan marad a következő feltételek szerint eszközök:
+For solutions that have taken a dependency on this behavior, the provisioning service includes backwards compatibility. This behavior is presently maintained for devices according to the following criteria:
 
-1. Az eszközök csatlakoznak az API-verziót, mielőtt natív reprovisioning támogatása a Device Provisioning Service-ben rendelkezésre állását. Tekintse meg az API-t az alábbi táblázat.
+1. The devices connect with an API version before the availability of native reprovisioning support in the Device Provisioning Service. Refer to the API table below.
 
-2. Az eszköz beléptetési bejegyzésében nincs rajtuk beállított reprovisioning házirend.
+2. The enrollment entry for the devices doesn't have a reprovisioning policy set on them.
 
-Ez a kompatibilitási gondoskodik arról, hogy már üzembe helyezett eszközök élmény ugyanez a viselkedés, amely megtalálható a kezdeti tesztelés során. Meg szeretné őrizni a korábbi működése, ne mentse reprovisioning házirend ezek regisztrációk. Reprovisioning szabályzat be van állítva, ha a reprovisioning szabályzat élvez elsőbbséget a korábbinál. Azáltal, hogy a reprovisioning szabályzat elsőbbséget, ügyfelek alaphelyzetbe állítja az eszközt anélkül frissítheti eszközök viselkedését.
+This compatibility makes sure that previously deployed devices experience the same behavior that's present during initial testing. To preserve the previous behavior, don't save a reprovisioning policy to these enrollments. If a reprovisioning policy is set, the reprovisioning policy takes precedence over the behavior. By allowing the reprovisioning policy to take precedence, customers can update device behavior without having to reimage the device.
 
-Az alábbi folyamatábra segít megjelenítése a viselkedés megléte esetén:
+The following flow chart helps to show when the behavior is present:
 
-![visszamenőleges kompatibilitási folyamatábra](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+![backwards compatibility flow chart](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
 
-Az alábbi táblázat a rendelkezésre állási reprovisioning natív támogatást az API-verziókban a Device Provisioning Service-ben:
+The following table shows the API versions before the availability of native reprovisioning support in the Device Provisioning Service:
 
 | REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
-| [2018-04-01-es vagy korábbi kiadásai](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 és korábbi verziók](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 és korábbi verziók](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 vagy régebbi](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 vagy régebbi](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0-ás vagy korábbi](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
+| [2018-04-01 and earlier](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 and earlier](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 and earlier](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 or earlier](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 or earlier](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 or earlier](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
-> Ezek az értékek és hivatkozások valószínűleg módosítani. Ez a csak egy helyőrző kísérlet meghatározhatja a verziók hol lehet meghatározni egy ügyfél és a várt verzió lesz.
+> These values and links are likely to change. This is only a placeholder attempt to determine where the versions can be determined by a customer and what the expected versions will be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan kell építenie az eszközök](how-to-reprovision.md)
+* [How to reprovision devices](how-to-reprovision.md)

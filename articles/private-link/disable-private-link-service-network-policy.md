@@ -1,29 +1,29 @@
 ---
-title: 'Az Azure Private link Service forrás IP-címéhez tartozó hálózati házirendek letiltása '
-description: Ismerje meg, hogyan tilthatja le a hálózati házirendeket az Azure Private linkhez
+title: 'Disable network policies for Azure Private Link service source IP address '
+description: Learn how to disable network policies for Azure private Link
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.author: allensu
+ms.openlocfilehash: 22dbb12de0793db8aac12f610ff94380542d426a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101538"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228107"
 ---
-# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Hálózati házirendek letiltása a Private link Service forrás IP-címéhez
+# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Disable network policies for Private Link service source IP
 
-A privát kapcsolati szolgáltatás forrás IP-címének kiválasztásához az alhálózaton explicit letiltási beállítást `privateLinkServiceNetworkPolicies` szükséges. Ez a beállítás csak arra a privát IP-címére érvényes, amelyet a privát kapcsolati szolgáltatás forrás IP-címeként választott. Az alhálózatban található egyéb erőforrásokhoz a hozzáférés a hálózati biztonsági csoportok (NSG) biztonsági szabályok definíciója alapján van szabályozva. 
+In order to choose a source IP address for your Private Link service, an explicit disable setting `privateLinkServiceNetworkPolicies` is required on the subnet. This setting is only applicable for the specific private IP address you chose as the source IP of the Private Link service. For other resources in the subnet, access is controlled based on Network Security Groups (NSG) security rules definition. 
  
-Ha bármely Azure-ügyfelet (PowerShell, CLI vagy sablonok) használ, további lépésekre van szükség a tulajdonság módosításához. A szabályzatot letilthatja a Cloud shellrel Azure Portal vagy Azure PowerShell helyi telepítése, az Azure CLI vagy a Azure Resource Manager sablonok használatával.  
+When using any Azure client (PowerShell, CLI or templates), an additional step is required to change this property. You can disable the policy using the cloud shell from the Azure portal, or local installations of Azure PowerShell, Azure CLI, or use Azure Resource Manager templates.  
  
-Az alábbi lépések végrehajtásával tiltsa le a *myVirtualNetwork* nevű virtuális hálózat magánhálózati kapcsolati szolgáltatásának hálózati házirendjeit egy *myResourceGroup*nevű erőforráscsoport *alapértelmezett* alhálózatával. 
+Follow the steps below to disable private link service network policies for a virtual network named *myVirtualNetwork* with a *default* subnet hosted in a resource group named *myResourceGroup*. 
 
 ## <a name="using-azure-powershell"></a>Az Azure PowerShell használata
-Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózat magánhálózati végpont-házirendjeit a Azure PowerShell használatával.
+This section describes how to disable subnet private endpoint policies using Azure PowerShell.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Az Azure parancssori felület használata
-Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózati végpont-házirendeket az Azure CLI-vel.
+This section describes how to disable subnet private endpoint policies using Azure CLI.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -43,8 +43,8 @@ az network vnet subnet update \
   --vnet-name myVirtualNetwork \ 
   --disable-private-link-service-network-policies true 
 ```
-## <a name="using-a-template"></a>Sablon használata
-Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózati végpont-házirendeket Azure Resource Manager sablon használatával.
+## <a name="using-a-template"></a>Using a template
+This section describes how to disable subnet private endpoint policies using Azure Resource Manager Template.
 ```json
 { 
     "name": "myVirtualNetwork", 
@@ -71,5 +71,5 @@ Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózati végpont-ház
  
 ```
 ## <a name="next-steps"></a>Következő lépések
-- További információ az [Azure Private-végpontról](private-endpoint-overview.md)
+- Learn more about [Azure Private Endpoint](private-endpoint-overview.md)
  

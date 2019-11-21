@@ -7,33 +7,33 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/14/2019
 ms.topic: overview
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 90d2646aa554a20a823d29cde06537d05415b603
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792810"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230023"
 ---
 # <a name="what-is-azure-cost-management"></a>Mi az Azure Cost Management?
 
-A Cost management hatékonyan tervezési és részt az üzleti költségek ellenőrzése során a rendszer. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Az Azure Cost Management segít a szervezeteknek költség szem előtt tervezze. Emellett segít hatékonyan elemezheti a költségek, és optimalizálhatja a felhő művelet költségeit. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](cost-mgt-best-practices.md).
+A költségkezelés az a folyamat, amely során hatékonyan megtervezi és szabályozza az üzleti költségeket. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Azure Cost Management helps organizations plan with cost in mind. It also helps to analyze costs effectively and take action to optimize cloud spending. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](cost-mgt-best-practices.md).
 
-Tekintse meg a [Azure Cost Management áttekintő videó](https://www.youtube.com/watch?v=el4yN5cHsJ0) hogyan Azure Cost Management segít Önnek pénzt takaríthat meg az Azure-ban gyors áttekintését.
+Watch the [Azure Cost Management overview video](https://www.youtube.com/watch?v=el4yN5cHsJ0) for a quick overview about how Azure Cost Management can help you save money in Azure.
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Habár kapcsolódik hozzá, a számlázás eltér a költségkezeléstől. A számlázás a számlák kiállításának folyamata az ügyfelek részére árucikkekről vagy szolgáltatásokról, valamint a kereskedelmi kapcsolat kezelése.  A számlázási feladatokat általában a beszerzés és a pénzügyi csapatok végzik.
 
-A Cost Management rámutat szervezete költség- és a felhasználási mintáira, bővített analitikával. A Cost Management szóló jelentésekben megtekintheti, a használat alapú költségek Azure-szolgáltatások és a külső Piactéri ajánlatok által igénybe vett. Költségek egyeztetett árak alapulnak, és a Foglalás és a kedvezmények az Azure Hybrid Benefit figyelembe vennie. A jelentések együttesen kimutatják a belső és külső használati költségeket, valamint az Azure Marketplace-díjakat. Az egyéb díjak, mint például a foglalások, támogatási díjak és az adók, még nem látszanak a jelentésekben. A jelentések segítenek értelmezni a kiadásokat és az erőforrások felhasználtságát, továbbá könnyebben fellelhet esetleges rendellenességeket kiadásaiban. Ezen felül prediktív elemzések is elérhetők. A Cost Management Azure-beli felügyeleti csoportok, költségvetések és javaslatok használatával egyértelműen megmutatja, hogyan vannak rendszerezve költségei, és hogyan csökkenthetné azokat.
+A Cost Management rámutat szervezete költség- és a felhasználási mintáira, bővített analitikával. Reports in Cost Management show the usage-based costs consumed by Azure services and third-party Marketplace offerings. Costs are based on negotiated prices and factor in reservation and Azure Hybrid Benefit discounts. A jelentések együttesen kimutatják a belső és külső használati költségeket, valamint az Azure Marketplace-díjakat. Az egyéb díjak, mint például a foglalások, támogatási díjak és az adók, még nem látszanak a jelentésekben. A jelentések segítenek értelmezni a kiadásokat és az erőforrások felhasználtságát, továbbá könnyebben fellelhet esetleges rendellenességeket kiadásaiban. Ezen felül prediktív elemzések is elérhetők. A Cost Management Azure-beli felügyeleti csoportok, költségvetések és javaslatok használatával egyértelműen megmutatja, hogyan vannak rendszerezve költségei, és hogyan csökkenthetné azokat.
 
 Az Azure Portal vagy pedig a különféle API-k használatával automatizálhatja az adatexportálást, hogy integrálhassa a költségadatokat külső rendszerekbe és folyamatokba. Emellett lehetősége van a számlázási adatok automatikus exportálására és jelentések ütemezésére is.
 
 ## <a name="plan-and-control-expenses"></a>Költségtervezés és -irányítás
 
-A lehetőség a Cost Management segítségével tervezze meg és tarthatja kézben a költségeit tartalmazza: Költséghatékony, elemzés, költségvetése, javaslatokat, és exportálása a költségkezelési adatokhoz.
+A Cost Management többek közt a következő módokon segíthet a költségirányítással, valamint előre tervezni bizonyos költségekkel: költségelemzés, költségvetések, javaslatok és költségelemzési adatok exportálása.
 
 A költségelemzés használatával megvizsgálhatja és elemezheti szervezete költségeit. Megtekintheti szervezete összesített költségeit, hogy jobban átláthassa, hogy mely területeken vannak elhatárolt költségek, valamint felismerheti a kiadási trendeket. Továbbá láthatja az idők során felhalmozott költségeket, így a költségvetéshez viszonyítva készíthet havi, negyedéves vagy akár éves költségtrendbecsléseket is.
 
@@ -45,15 +45,15 @@ Ha külső rendszereket használ a költségadatokhoz való hozzáféréshez vag
 
 ## <a name="consider-cloudyn"></a>Fontolja meg a Cloudyn használatát
 
-A [Cloudyn](overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgáltatás. A Cloudyn használatával nyomon követheti Azure-erőforrásai felhőhasználatát és költségeit. Ezenkívül támogatja az egyéb felhőszolgáltatókat, beleértve az AWS-t és a Google-t. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management jelenleg nem támogatja költséghelyi visszacsatolásos/elszámolásos, valamint az egyéb felhőszolgáltatókat. Azonban a Cloudyn _igen_. Jelenleg nem támogatja a Cost Management Microsoft Felhőszolgáltató (CSP) fiókok, azonban a Cloudyn nem. Ha rendelkezik a CSP-partnerek vagy költséghelyi visszacsatolási és költséghelyi elszámolás használni kívánt, használhatja a Cloudyn költségek kezelése érdekében.
+A [Cloudyn](overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgáltatás. A Cloudyn használatával nyomon követheti Azure-erőforrásai felhőhasználatát és költségeit. Ezenkívül támogatja az egyéb felhőszolgáltatókat, beleértve az AWS-t és a Google-t. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management jelenleg nem támogatja költséghelyi visszacsatolásos/elszámolásos, valamint az egyéb felhőszolgáltatókat. Azonban a Cloudyn _igen_. Currently, Cost Management doesn't support Microsoft Cloud Service Provider (CSP) accounts but Cloudyn does. If you have CSP accounts or if you want to use showback/chargeback, you can use Cloudyn to help manage your costs.
 
-Tekintse meg a [Azure Cost Management és a Cloudyn videó](https://www.youtube.com/watch?v=PmwFWwSluh8) javaslatok megtekintéséhez, mikor használja az Azure Cost Management vagy a Cloudyn, a üzleti igények alapján.
+Watch the [Azure Cost Management and Cloudyn video](https://www.youtube.com/watch?v=PmwFWwSluh8) to see recommendations when you should use either Azure Cost Management or Cloudyn, based on your business needs.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="additional-azure-tools"></a>További Azure-eszközök
 
-Az Azure más olyan eszközökkel is rendelkezik, amelyeket az Azure Cost Management szolgáltatáskészlete nem tartalmaz. Azonban, hogy fontos szerepet játszik a cost management folyamat. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
+Az Azure más olyan eszközökkel is rendelkezik, amelyeket az Azure Cost Management szolgáltatáskészlete nem tartalmaz. However, they play an important role in the cost management process. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
 
 - [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) – segítségével becslést végezhet kezdeti felhőköltségeiről.
 - [Azure Migrate](../migrate/migrate-overview.md) – felmérheti adatközpontja jelenlegi számítási feladatait, így betekintést nyerhet abba, hogy mit várjon el egy Azure helyettesítő megoldástól.
@@ -61,7 +61,7 @@ Az Azure más olyan eszközökkel is rendelkezik, amelyeket az Azure Cost Manage
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) – használja az aktuális helyszíni Windows Server- vagy SQL Server-licenceit az Azure-beli virtuális gépeken a költségek csökkentése érdekében.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már megismerkedett a Cost Managementtel, a következő lépés a szolgáltatás igénybe vétele.
 

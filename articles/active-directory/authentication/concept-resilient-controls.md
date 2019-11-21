@@ -1,6 +1,6 @@
 ---
-title: Rugalmas hozzáférés-vezérlési kezelési stratégia létrehozása – Azure Active Directory
-description: Ez a dokumentum útmutatást nyújt azon stratégiákról, amelyeket a szervezetnek el kell fogadnia a rugalmasság biztosításához, hogy a váratlan megszakítások során csökkentse a zárolás kockázatát
+title: Create a resilient access control management strategy - Azure AD
+description: This document provides guidance on strategies an organization should adopt to provide resilience to reduce the risk of lockout during unforeseen disruptions
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -11,262 +11,262 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125113"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208554"
 ---
-# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
+# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Create a resilient access control management strategy with Azure Active Directory
 
 >[!NOTE]
-> A jelen dokumentumban szereplő információk a Microsoft Corporation aktuális nézetét jelentik a kiadvány napjával kapcsolatban tárgyalt problémákról. Mivel a Microsoftnak válaszolnia kell a piaci feltételek megváltoztatására, nem kell értelmezni a Microsoft részéről vállalt kötelezettséget, és a Microsoft nem tudja garantálni a közzététel időpontja után bemutatott információk pontosságát.
+> The information contained in this document represents the current view of Microsoft Corporation on the issues discussed as of the date of publication. Because Microsoft must respond to changing market conditions, it should not be interpreted to be a commitment on the part of Microsoft, and Microsoft cannot guarantee the accuracy of any information presented after the date of publication.
 
-Azok a szervezetek, amelyek egyetlen hozzáférés-vezérlést (például többtényezős hitelesítést (MFA) vagy egyetlen hálózati helyet) használnak az informatikai rendszerek biztonságossá tételéhez, az alkalmazásokhoz és erőforrásokhoz való hozzáférésük nem érhető el, ha az egyetlen hozzáférés-vezérlés elérhetetlenné válik vagy helytelenül van konfigurálva. A természeti katasztrófák például a nagy mennyiségű távközlési infrastruktúra vagy vállalati hálózatok hiányának hiányát okozhatják. Ilyen fennakadás miatt megakadályozható, hogy a végfelhasználók és a rendszergazdák be tudják jelentkezni.
+Organizations that rely on a single access control, such as multi-factor authentication (MFA) or a single network location, to secure their IT systems are susceptible to access failures to their apps and resources if that single access control becomes unavailable or misconfigured. For example, a natural disaster can result in the unavailability of large segments of telecommunications infrastructure or corporate networks. Such a disruption could prevent end users and administrators from being able to sign in.
 
-Ez a dokumentum útmutatást nyújt azon stratégiákról, amelyeket a szervezetnek el kell fogadnia a rugalmasság biztosításához, hogy csökkentse a zárolás kockázatát a váratlan megszakítások során a következő esetekben:
+This document provides guidance on strategies an organization should adopt to provide resilience to reduce the risk of lockout during unforeseen disruptions with the following scenarios:
 
- 1. A szervezetek növelhetik rugalmasságát, hogy a kockázatcsökkentő stratégiák vagy a készenléti tervek bevezetése **előtt** csökkentse a zárolás kockázatát.
- 2. A szervezetek továbbra is hozzáférhetnek **a** megszakadáskor kiválasztott alkalmazásokhoz és erőforrásokhoz azáltal, hogy kockázatcsökkentő stratégiákat és vészhelyzeti terveket alkalmaznak.
- 3. A szervezeteknek meg kell győződniük arról, hogy az adatok megmaradnak, például a naplók, **megszakítás után** , és az általuk megvalósított szükséghelyzetek visszaállítása előtt.
- 4. Azok a szervezetek, amelyek még nem hajtották végre a megelőzési stratégiákat vagy az alternatív terveket, képesek lehetnek a fennakadások kezelésére szolgáló **vészhelyzeti lehetőségek** megvalósítására.
+ 1. Organizations can increase their resiliency to reduce the risk of lockout **before a disruption** by implementing mitigation strategies or contingency plans.
+ 2. Organizations can continue to access apps and resources they choose **during a disruption** by having mitigation strategies and contingency plans in place.
+ 3. Organizations should make sure they preserve information, such as logs,  **after a disruption** and before they roll back any contingencies they implemented.
+ 4. Organizations that haven’t implemented prevention strategies or alternative plans may be able to implement **emergency options** to deal with the disruption.
 
-## <a name="key-guidance"></a>Legfontosabb útmutató
+## <a name="key-guidance"></a>Key guidance
 
-A dokumentumban négy fő elvihető fájl található:
+There are four key takeaways in this document:
 
-* A rendszergazdai zárolás elkerülése vészhelyzeti hozzáférési fiókok használatával.
-* MFA alkalmazása feltételes hozzáféréssel (CA) a felhasználónkénti MFA helyett.
-* A felhasználók zárolásának enyhítése több feltételes hozzáférési (CA) vezérlőelem használatával.
-* A felhasználók zárolásának enyhítése több hitelesítési módszer vagy ezzel egyenértékű érték kiépítve minden felhasználó számára.
+* Avoid administrator lockout by using emergency access accounts.
+* Implement MFA using Conditional Access (CA) rather than per-user MFA.
+* Mitigate user lockout by using multiple Conditional Access (CA) controls.
+* Mitigate user lockout by provisioning multiple authentication methods or equivalents for each user.
 
-## <a name="before-a-disruption"></a>Megszakítás előtt
+## <a name="before-a-disruption"></a>Before a disruption
 
-A tényleges fennakadások enyhítése csak a szervezet elsődleges fókusza lehet a hozzáférés-vezérlési problémák megoldásához. A mérséklés magában foglalja a tényleges esemény megtervezését és a stratégiák bevezetését annak érdekében, hogy a hozzáférés-vezérlés és a műveletek ne legyenek hatással a megszakadások során.
+Mitigating an actual disruption must be an organization’s primary focus in dealing with access control issues that may arise. Mitigating includes planning for an actual event plus implementing strategies to make sure access controls and operations are unaffected during disruptions.
 
-### <a name="why-do-you-need-resilient-access-control"></a>Miért van szüksége rugalmas hozzáférés-vezérlésre?
+### <a name="why-do-you-need-resilient-access-control"></a>Why do you need resilient access control?
 
- Az identitás az alkalmazásokhoz és erőforrásokhoz hozzáférő felhasználók vezérlő síkja. Az Identity rendszer szabályozza, hogy mely felhasználók és milyen feltételek mellett, például hozzáférés-vezérlési vagy hitelesítési követelmények esetén a felhasználók hozzáférjenek az alkalmazásokhoz. Ha egy vagy több hitelesítési vagy hozzáférés-vezérlési követelmény nem érhető el a felhasználók számára előre nem látható körülmények miatt, akkor a szervezetek az alábbi problémák egyikét vagy mindkettőt tapasztalják:
+ Identity is the control plane of users accessing apps and resources. Your identity system controls which users and under which conditions, such as access controls or authentication requirements, users get access to the applications. When one or more authentication or access control requirements aren’t available for users to authenticate due to unforeseen circumstances, organizations can experience one or both of the following issues:
 
-* **Rendszergazdai zárolás:** A rendszergazdák nem kezelhetik a bérlőt vagy a szolgáltatásokat.
-* **Felhasználói zárolás:** A felhasználók nem férhetnek hozzá az alkalmazásokhoz és az erőforrásokhoz.
+* **Administrator lockout:** Administrators can’t manage the tenant or services.
+* **User lockout:** Users can’t access apps or resources.
 
-### <a name="administrator-lockout-contingency"></a>Rendszergazdai zárolás készenléti
+### <a name="administrator-lockout-contingency"></a>Administrator lockout contingency
 
-A bérlőhöz való rendszergazdai hozzáférés zárolásának feloldásához hozzon létre vészhelyzeti hozzáférési fiókokat. Ezek a vészhelyzeti hozzáférési fiókok – más néven a *break Glass* -fiókok – lehetővé teszik az Azure ad-konfiguráció felügyeletét, amikor a normál jogosultsági szintű fiók hozzáférési eljárásai nem érhetők el. Legalább két vészhelyzeti hozzáférési fiókot kell létrehozni a segélyhívó [fiókra vonatkozó javaslatok]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)követésével.
+To unlock admin access to your tenant, you should create emergency access accounts. These emergency access accounts, also known as *break glass* accounts, allow access to manage Azure AD configuration when normal privileged account access procedures aren’t available. At least two emergency access accounts should be created following the [emergency access account recommendations]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access).
 
-### <a name="mitigating-user-lockout"></a>Felhasználói zárolás csökkentése
+### <a name="mitigating-user-lockout"></a>Mitigating user lockout
 
- A felhasználói zárolás kockázatának enyhítése érdekében a feltételes hozzáférési szabályzatok segítségével több vezérlővel is biztosíthatja a felhasználók számára az alkalmazások és erőforrások elérését. Ha a felhasználó számára választ ad például az MFA-ba való bejelentkezésre **vagy** egy felügyelt eszközről való bejelentkezésre **vagy** a vállalati hálózatról való bejelentkezésre, ha az egyik hozzáférési vezérlő nem érhető el, a felhasználó további lehetőségeket is biztosít a munka folytatásához.
+ To mitigate the risk of user lockout, use Conditional Access policies with multiple controls to give users a choice of how they will access apps and resources. By giving a user the choice between, for example, signing in with MFA **or** signing in from a managed device **or** signing in from the corporate network, if one of the access controls is unavailable the user has other options to continue to work.
 
-#### <a name="microsoft-recommendations"></a>Microsoft-javaslatok
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
 
-A következő hozzáférés-vezérlést a szervezet meglévő feltételes hozzáférési házirendjeiben foglalja bele:
+Incorporate the following access controls in your existing Conditional Access policies for organization:
 
-1. Több hitelesítési módszer is kiépíthető minden olyan felhasználó számára, aki különböző kommunikációs csatornákra támaszkodik, például az Microsoft Authenticator alkalmazás (internetalapú), az eskü token (az eszközön generált) és az SMS (telefonos kapcsolat).
-2. A Windows Hello for Business üzembe helyezése Windows 10-es eszközökön az MFA-követelmények közvetlenül az eszköz-bejelentkezésből való kielégítéséhez.
-3. Megbízható eszközöket használhat az [Azure ad Hybrid JOIN](https://docs.microsoft.com/azure/active-directory/devices/overview) vagy [Microsoft Intune felügyelt eszközökön](https://docs.microsoft.com/intune/planning-guide)keresztül. A megbízható eszközök növelik a felhasználói élményt, mivel maga a megbízható eszköz is kielégítheti a házirend erős hitelesítési követelményeit, ha a felhasználó nem rendelkezik MFA-kihívással. Az MFA ezt követően új eszköz beléptetéséhez és a nem megbízható eszközökről származó alkalmazások vagy erőforrások eléréséhez szükséges.
-4. Az Azure AD Identity Protection kockázatkezelési házirendjeinek használatával megakadályozhatja a hozzáférést, ha a felhasználó vagy a bejelentkezés veszélyben van a rögzített MFA-szabályzatok helyett.
+1. Provision multiple authentication methods for each user that rely on different communication channels, for example the Microsoft Authenticator app (internet-based), OATH token (generated on-device), and SMS (telephonic).
+2. Deploy Windows Hello for Business on Windows 10 devices to satisfy MFA requirements directly from device sign-in.
+3. Use trusted devices via [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/overview) or [Microsoft Intune Managed devices](https://docs.microsoft.com/intune/planning-guide). Trusted devices will improve user experience because the trusted device itself can satisfy the strong authentication requirements of policy without an MFA challenge to the user. MFA will then be required when enrolling a new device and when accessing apps or resources from untrusted devices.
+4. Use Azure AD identity protection risk-based policies that prevent access when the user or sign-in is at risk in place of fixed MFA policies.
 
 >[!NOTE]
-> A kockázatalapú házirendekhez [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) licencek szükségesek.
+> Risk-based policies require [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
 
-Az alábbi példa azokat a szabályzatokat ismerteti, amelyeket létre kell hoznia, hogy rugalmas hozzáférés-vezérlést biztosítson a felhasználók számára az alkalmazások és erőforrások eléréséhez. Ebben a példában egy biztonsági csoport **AppUsers** kell lennie azokkal a célcsoportokkal, amelyeknek hozzáférést kíván adni a szolgáltatáshoz, egy **CoreAdmins** nevű csoportot az alapvető rendszergazdákkal, valamint egy **EmergencyAccess** nevű csoportot a sürgősségi hozzáférési fiókokkal.
-Ez a példa a kiválasztott felhasználók számára biztosítja a **AppUsers**, hozzáférést biztosít a kiválasztott alkalmazásokhoz, ha azok megbízható eszközről csatlakoznak, vagy erős hitelesítést biztosítanak, például MFA-t. Kizárja a vészhelyzeti fiókokat és az alapvető rendszergazdákat.
+The following example describes policies you must create to provide a resilient access control for user to access their apps and resources. In this example, you will require a security group **AppUsers** with the target users you want to give access to, a group named **CoreAdmins** with the core administrators, and a group named **EmergencyAccess** with the emergency access accounts.
+This example policy set will grant selected users in **AppUsers**, access to selected apps if they are connecting from a trusted device OR provide strong authentication, for example MFA. It excludes emergency accounts and core administrators.
 
-**HITELESÍTÉSSZOLGÁLTATÓ-kockázatcsökkentő házirendek készlete:**
+**CA mitigation policies set:**
 
-* 1\. szabályzat: A célcsoportokon kívüli személyek hozzáférésének letiltása
-  * Felhasználók és csoportok: Minden felhasználó belefoglalása. A AppUsers, a CoreAdmins és a EmergencyAccess kizárása
-  * Felhőalapú alkalmazások: Minden alkalmazás belefoglalása
-  * Feltételek NEz egy
-  * Ellenőrzés engedélyezése: Letiltás
-* 2\. szabályzat: Az MFA-t vagy a megbízható eszközt igénylő AppUsers való hozzáférés biztosítása.
-  * Felhasználók és csoportok: AppUsers belefoglalása. CoreAdmins és EmergencyAccess kizárása
-  * Felhőalapú alkalmazások: Minden alkalmazás belefoglalása
-  * Feltételek NEz egy
-  * Ellenőrzés engedélyezése: Hozzáférés biztosítása, többtényezős hitelesítés megkövetelése, az eszköz megfelelőségének megkövetelése. Több vezérlő esetén: A kiválasztott vezérlők egyikének megkövetelése.
+* Policy 1: Block access to people outside target groups
+  * Users and Groups: Include all users. Exclude AppUsers, CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Include all apps
+  * Conditions: (None)
+  * Grant Control: Block
+* Policy 2: Grant access to AppUsers requiring MFA OR trusted device.
+  * Users and Groups: Include AppUsers. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Include all apps
+  * Conditions: (None)
+  * Grant Control: Grant access, require multi-factor authentication, require device to be compliant. For multiple controls: Require one of the selected controls.
 
-### <a name="contingencies-for-user-lockout"></a>Felhasználói zárolási szükséghelyzetek
+### <a name="contingencies-for-user-lockout"></a>Contingencies for user lockout
 
-Másik lehetőségként a szervezet is létrehozhat készenléti házirendeket. A készenléti szabályzatok létrehozásához meg kell határoznia a kompromisszumok feltételeit az üzletmenet folytonossága, az üzemeltetési költségeket, a pénzügyi költségeket és a biztonsági kockázatokat illetően. Előfordulhat például, hogy a készenléti szabályzatot csak a felhasználók egy részhalmazára, az alkalmazások egy részhalmazára, az ügyfelek egy részhalmazára vagy a helyszínek egy részhalmazára aktiválja. A készenléti szabályzatok a rendszergazdák és a végfelhasználók számára hozzáférést biztosítanak az alkalmazásokhoz és az erőforrásokhoz, a fennakadás során, amikor nincs implementálva a megoldás.
-A megszakadás során felmerülő expozíció révén csökkentheti a kockázatát, és a tervezési folyamat kritikus részét képezi. A készenléti terv létrehozásához először határozza meg a szervezet alábbi üzleti követelményeit:
+Alternatively, your organization can also create contingency policies. To create contingency policies, you must define tradeoff criteria between business continuity, operational cost, financial cost, and security risks. For example, you may activate a contingency policy only to a subset of users, for a subset of apps, for a subset of clients, or from a subset of locations. Contingency policies will give administrators and end users access to apps and resources, during a disruption when no mitigation method was implemented.
+Understanding your exposure during a disruption helps reduce your risk and is a critical part of your planning process. To create your contingency plan, first determine the following business requirements of your organization:
 
-1. A kritikus fontosságú alkalmazások megállapítása az idő előtt: Mik azok az alkalmazások, amelyeknek hozzáférést kell biztosítania, még alacsonyabb kockázati/biztonsági testhelyzet esetén is? Készítse el az alkalmazások listáját, és győződjön meg arról, hogy az érdekelt felek (üzleti, biztonsági, jogi, vezető) egyetértenek abban, hogy ha az összes hozzáférés-vezérlés leáll, az alkalmazások továbbra is futniuk kell. Valószínűleg a következő kategóriákkal fog foglalkozni:
-   * **1. kategória – olyan kritikus fontosságú alkalmazások** , amelyek nem érhetők el néhány percen belül, például olyan alkalmazások esetében, amelyek közvetlenül érintik a szervezet bevételét.
-   * **2. kategóriába tartozó fontos alkalmazások** , amelyeknek az üzleti tevékenységnek néhány órán belül elérhetőnek kell lennie.
-   * **3. kategória alacsony prioritású alkalmazások** , amelyek elérhetik néhány nap megszakadását.
-2. Az 1. és a 2. kategóriába tartozó alkalmazások esetében a Microsoft azt javasolja, hogy előre tervezze meg, hogy milyen típusú hozzáférési szintet kíván engedélyezni:
-   * Szeretné engedélyezni a teljes hozzáférést vagy a korlátozott munkamenetet, például a letöltések korlátozását?
-   * Szeretné engedélyezni az alkalmazás egy részének elérését, de nem a teljes alkalmazást?
-   * Engedélyezi az Information Worker-hozzáférést, és letiltja a rendszergazdai hozzáférést a hozzáférés-vezérlés visszaállítása előtt?
-3. Ezekhez az alkalmazásokhoz a Microsoft azt is javasolja, hogy tervezze meg, hogy mely hozzáférési utakat kell megnyitnia, és melyeket kell majd lezárulnia:
-   * Engedélyezi a böngésző számára, hogy csak a kapcsolat nélküli adatvesztést biztosító, gazdag ügyfeleket mentsen el?
-   * Szeretné engedélyezni a hozzáférést csak a vállalati hálózaton belüli felhasználók számára, és hogy a felhasználók ne legyenek letiltva?
-   * Engedélyezi bizonyos országok vagy régiók hozzáférését csak a megszakadáskor?
-   * Szeretné, hogy a szabályzatok a készenléti házirendekre legyenek, különösen a kritikus fontosságú alkalmazások esetében, ha nem sikerül egy alternatív hozzáférés-vezérlés?
+1. Determine your mission critical apps ahead of time: What are the apps that you must give access to, even with a lower risk/security posture? Build a list of these apps and make sure your other stakeholders (business, security, legal, leadership) all agree that if all access control goes away, these apps still must continue to run. You are likely going to end up with categories of:
+   * **Category 1 mission critical apps** that cannot be unavailable for more than a few minutes, for example Apps that directly affect the revenue of the organization.
+   * **Category 2 important apps** that the business needs to be accessible within a few hours.
+   * **Category 3 low-priority apps** that can withstand a disruption of a few days.
+2. For apps in category 1 and 2, Microsoft recommends you pre-plan what type of level of access you want to allow:
+   * Do you want to allow full access or restricted session, like limiting downloads?
+   * Do you want to allow access to part of the app but not the whole app?
+   * Do you want to allow information worker access and block administrator access until the access control is restored?
+3. For those apps, Microsoft also recommends you plan which avenues of access you will deliberately open and which ones you will close:
+   * Do you want to allow browser only access and block rich clients that can save offline data?
+   * Do you want to allow access only for users inside the corporate network and keep outside users blocked?
+   * Do you want to allow access from certain countries or regions only during the disruption?
+   * Do you want policies to the contingency policies, especially for mission critical apps, to fail or succeed if an alternative access control is not available?
 
-#### <a name="microsoft-recommendations"></a>Microsoft-javaslatok
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
 
-A készenléti feltételes hozzáférési szabályzat olyan **letiltott szabályzat** , amely kihagyja az Azure MFA, a harmadik féltől származó MFA, a kockázatalapú vagy az eszközökön alapuló vezérlőket. Ezután, amikor a szervezet úgy dönt, hogy aktiválja a készenléti tervet, a rendszergazdák engedélyezhetik a szabályzatot, és letilthatják a normál vezérlőn alapuló házirendeket.
+A contingency Conditional Access policy is a **disabled policy** that omits Azure MFA, third-party MFA, risk-based or device-based controls. Then, when your organization decides to activate your contingency plan, administrators can enable the policy and disable the regular control-based policies.
 
 >[!IMPORTANT]
-> A felhasználók biztonsági állapotát kényszerítő házirendek letiltása – akár átmenetileg is – csökkenti a biztonsági helyzetét, miközben a készenléti terv teljesül.
+> Disabling policies that enforce security on your users, even temporarily, will reduce your security posture while the contingency plan is in place.
 
-* Állítsa be a tartalék szabályzatok készletét, ha az egyik hitelesítőadat-típus vagy egy hozzáférés-vezérlési mechanizmus megszakad az alkalmazásokhoz való hozzáférés. Állítsa be a házirendet letiltott állapotba, amely megköveteli a tartományhoz való csatlakozást vezérlőként, egy olyan aktív házirend biztonsági mentését, amely harmadik féltől származó MFA-szolgáltatót igényel.
-* A jelszóval kapcsolatos [útmutatóban](https://aka.ms/passwordguidance) ismertetett eljárások követésével csökkentheti a nem kötelezően megjelenő jelszavak kialakulásának kockázatát, ha az MFA nem szükséges.
-* Az [Azure ad önkiszolgáló jelszó-visszaállítás (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) és az [Azure ad jelszavas védelem](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) üzembe helyezésével gondoskodhat arról, hogy a felhasználók ne használják a közös jelszót és a megtiltani kívánt kifejezéseket.
-* Használjon olyan házirendeket, amelyek korlátozzák a hozzáférést az alkalmazásokon belül, ha egy bizonyos hitelesítési szint nem érhető el ahelyett, hogy egyszerűen vissza kellene térnie a teljes hozzáféréshez. Példa:
-  * Olyan biztonsági mentési szabályzatot konfigurálhat, amely a korlátozott munkamenet-jogcímet az Exchange és a SharePoint szolgáltatásba küldi
-  * Ha a szervezet Microsoft Cloud App Security használ, érdemes lehet visszaesnie egy olyan házirendnek, amely a MCAS-t, majd a MCAS lehetővé teszi a csak olvasási hozzáférést, de a feltöltéseket nem.
-* Nevezze el a szabályzatokat, és győződjön meg róla, hogy könnyen megtalálhatja őket a megszakítás során. Adja meg a következő elemeket a szabályzat nevében:
-  * A házirend *feliratának száma* .
-  * A megjelenítendő szöveg, ez a szabályzat csak vészhelyzetekre vonatkozik. Példa: **ENGEDÉLYEZÉS VÉSZHELYZETBEN**
-  * A rendszer a megszakadást alkalmazza. Példa: **Az MFA megszakadásakor**
-  * A szabályzatok aktiválásához szükséges *sorszám* .
-  * Azok az *alkalmazások* , amelyekre érvényesek.
-  * Az alkalmazandó *vezérlők* .
-  * A szükséges *feltételek* .
+* Configure a set of fallback policies if a disruption in one credential type or one access control mechanism impacts access to your apps. Configure a policy in disabled state that requires Domain Join as a control, as a backup for an active policy that requires a third-party MFA provider.
+* Reduce the risk of bad actors guessing passwords, when MFA is not required, by following the practices in the [password guidance](https://aka.ms/passwordguidance) white paper.
+* Deploy [Azure AD Self-Service Password Reset (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) and [Azure AD Password Protection](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) to make sure users don’t use common password and terms you choose to ban.
+* Use policies that restrict the access within the apps if a certain authentication level is not attained instead of simply falling back to full access. Példa:
+  * Configure a backup policy that sends the restricted session claim to Exchange and SharePoint.
+  * If your organization uses Microsoft Cloud App Security, consider falling back to a policy that engages MCAS and then MCAS Allows read-only access but not uploads.
+* Name your policies to make sure it is easy to find them during a disruption. Include the following elements in the policy name:
+  * A *label number* for the policy.
+  * Text to show, this policy is for emergencies only. For example: **ENABLE IN EMERGENCY**
+  * The *disruption* it applies to. For example: **During MFA Disruption**
+  * A *sequence number* to show the order you must activate the policies.
+  * The *apps* it applies to.
+  * The *controls* it will apply.
+  * The *conditions* it requires.
   
-A készenléti szabályzatok elnevezési szabványa a következőképpen fog megjelenni: 
+This naming standard for the contingency policies will be as follows: 
 
 ```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-A következő példa: **Példa a feltételes hitelesítésszolgáltatói házirendre, amely a kritikus fontosságú együttműködési alkalmazásokhoz való hozzáférést állítja vissza**, ez egy tipikus vállalati készenléti feladat. Ebben az esetben a szervezet általában MFA-t igényel az összes Exchange Online-és SharePoint Online-hozzáféréshez, és ebben az esetben a megszakadás az ügyfél MFA-szolgáltatója (akár az Azure MFA, a helyszíni MFA-szolgáltató, akár a harmadik féltől származó MFA) esetében is. Ez a házirend csökkenti ezt a kimaradást azáltal, hogy a célzott felhasználók csak akkor férnek hozzá ezekhez az alkalmazásokhoz a megbízható Windows-eszközökről, ha a megbízható vállalati hálózatról érik el az alkalmazást. Emellett kizárja a vészhelyzeti fiókokat és az alapvető rendszergazdákat ezektől a korlátozásoktól. A megcélozott felhasználók ezután hozzáférhetnek az Exchange Online-hoz és a SharePoint Online-hoz, míg más felhasználók továbbra sem férhetnek hozzá az alkalmazásokhoz a leállás miatt. Ehhez a példához meg kell nevezni a hálózati hely **CorpNetwork** és egy biztonsági csoportot a **ContingencyAccess** , egy **CoreAdmins** nevű csoportot az alapvető rendszergazdákkal, valamint egy **EmergencyAccess** nevű csoportot a következővel a vészhelyzeti hozzáférési fiókok. A készenléti feltételnek négy házirendre van szüksége a kívánt hozzáférés biztosításához. 
+The following example: **Example A - Contingency CA policy to restore Access to mission-critical Collaboration Apps**, is a typical corporate contingency. In this scenario, the organization typically requires MFA for all Exchange Online and SharePoint Online access, and the disruption in this case is the MFA provider for the customer has an outage (whether Azure MFA, on-premises MFA provider, or third-party MFA). This policy mitigates this outage by allowing specific targeted users access to these apps from trusted Windows devices only when they are accessing the app from their trusted corporate network. It will also exclude emergency accounts and core administrators from these restrictions. The targeted users will then gain access to Exchange Online and SharePoint Online, while other users will still not have access to the apps due to the outage. This example will require a named network location **CorpNetwork** and a security group **ContingencyAccess** with the target users, a group named **CoreAdmins** with the core administrators, and a group named **EmergencyAccess** with the emergency access accounts. The contingency requires four policies to provide the desired access. 
 
-**Példa A-készenléti HITELESÍTÉSSZOLGÁLTATÓI szabályzatokra a kritikus fontosságú együttműködési alkalmazások elérésének visszaállításához:**
+**Example A - Contingency CA policies to restore Access to mission-critical Collaboration Apps:**
 
-* 1\. szabályzat: Tartományhoz csatlakoztatott eszközök megkövetelése az Exchange-hez és a SharePointhoz
-  * Név: EM001 – ENGEDÉLYEZÉS VÉSZHELYZETBEN: MFA-megszakítás [1/4] – Exchange SharePoint – hibrid Azure AD-csatlakozás szükséges
-  * Felhasználók és csoportok: ContingencyAccess belefoglalása. CoreAdmins és EmergencyAccess kizárása
-  * Felhőalapú alkalmazások: Exchange Online és SharePoint Online
-  * Feltételek Any
-  * Ellenőrzés engedélyezése: Tartományhoz való csatlakozás megkövetelése
-  * Állapot: Letiltva
-* 2\. szabályzat: A Windowstól eltérő platformok letiltása
-  * Név: EM002 – ENGEDÉLYEZÉS VÉSZHELYZETBEN: MFA-megszakítás [2/4] – Exchange SharePoint – hozzáférés tiltása a Windows kivételével
-  * Felhasználók és csoportok: Minden felhasználó belefoglalása. CoreAdmins és EmergencyAccess kizárása
-  * Felhőalapú alkalmazások: Exchange Online és SharePoint Online
-  * Feltételek Az eszköz platformja minden platformot tartalmaz, kizárja a Windowst
-  * Ellenőrzés engedélyezése: Letiltás
-  * Állapot: Letiltva
-* 3\. szabályzat: A CorpNetwork-től eltérő hálózatok blokkolása
-  * Név: EM003 – ENGEDÉLYEZÉS VÉSZHELYZETBEN: MFA-megszakítás [3/4] – Exchange SharePoint – hozzáférés tiltása a vállalati hálózaton kívül
-  * Felhasználók és csoportok: Minden felhasználó belefoglalása. CoreAdmins és EmergencyAccess kizárása
-  * Felhőalapú alkalmazások: Exchange Online és SharePoint Online
-  * Feltételek A helyek közé tartozik a hely, a CorpNetwork kizárása
-  * Ellenőrzés engedélyezése: Letiltás
-  * Állapot: Letiltva
-* 4\. szabályzat: EAS explicit letiltása
-  * Név: EM004 – ENGEDÉLYEZÉS VÉSZHELYZETBEN: MFA-megszakítás [4/4] – Exchange-Block EAS az összes felhasználó számára
-  * Felhasználók és csoportok: Minden felhasználó belefoglalása
-  * Felhőalapú alkalmazások: Az Exchange Online-t is beleértve
-  * Feltételek Ügyfélalkalmazások: Exchange Active Sync
-  * Ellenőrzés engedélyezése: Letiltás
-  * Állapot: Letiltva
+* Policy 1: Require Domain Joined devices for Exchange and SharePoint
+  * Name: EM001 - ENABLE IN EMERGENCY: MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
+  * Users and Groups: Include ContingencyAccess. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Any
+  * Grant Control: Require Domain Joined
+  * State: Disabled
+* Policy 2: Block platforms other than Windows
+  * Name: EM002 - ENABLE IN EMERGENCY: MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
+  * Users and Groups: Include all users. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Device Platform Include All Platforms, exclude Windows
+  * Grant Control: Block
+  * State: Disabled
+* Policy 3: Block networks other than CorpNetwork
+  * Name: EM003 - ENABLE IN EMERGENCY: MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
+  * Users and Groups: Include all users. Exclude CoreAdmins, and EmergencyAccess
+  * Cloud Apps: Exchange Online and SharePoint Online
+  * Conditions: Locations Include any location, exclude CorpNetwork
+  * Grant Control: Block
+  * State: Disabled
+* Policy 4: Block EAS Explicitly
+  * Name: EM004 - ENABLE IN EMERGENCY: MFA Disruption[4/4] - Exchange - Block EAS for all users
+  * Users and Groups: Include all users
+  * Cloud Apps: Include Exchange Online
+  * Conditions: Client apps: Exchange Active Sync
+  * Grant Control: Block
+  * State: Disabled
 
-Aktiválási sorrend:
+Order of activation:
 
-1. Zárja ki a ContingencyAccess, a CoreAdmins és a EmergencyAccess a meglévő MFA-szabályzatból. A ContingencyAccess felhasználóinak ellenőrzése a SharePoint Online és az Exchange Online szolgáltatáshoz is hozzáférhet.
-2. 1\. szabályzat engedélyezése: Győződjön meg arról, hogy a tartományhoz csatlakoztatott eszközökön a kizárási csoportokban nem szereplő felhasználók férnek hozzá az Exchange Online-hoz és a SharePoint Online-hoz. Ellenőrizze, hogy a kizárás csoportban lévő felhasználók hozzáférhetnek-e a SharePoint Online-hoz és az Exchange-hez bármely eszközről.
-3. 2\. házirend engedélyezése: Annak ellenőrzése, hogy a kizárási csoportba nem tartozó felhasználók nem tudnak-e hozzáférni a SharePoint Online-hoz és az Exchange Online-hoz a mobileszközökön. Ellenőrizze, hogy a kizárási csoportban lévő felhasználók hozzáférhetnek-e a SharePointhoz és az Exchange-hez bármely eszközről (Windows/iOS/Android).
-4. 3\. szabályzat engedélyezése: Annak ellenőrzése, hogy a kizárási csoportba nem tartozó felhasználók nem férhetnek hozzá a SharePointhoz, és hogyan cserélhetik ki a vállalati hálózatot még tartományhoz csatlakoztatott géppel is. Ellenőrizze, hogy a kizárási csoportban lévő felhasználók hozzáférhetnek-e bármely hálózatról a SharePointhoz és az Exchange-hez.
-5. 4\. szabályzat engedélyezése: Győződjön meg arról, hogy az összes felhasználó nem tudja lekérni az Exchange Online-t a mobileszközök natív levelezési alkalmazásaiból.
-6. Tiltsa le a SharePoint Online és az Exchange Online meglévő MFA-szabályzatát.
+1. Exclude ContingencyAccess, CoreAdmins, and EmergencyAccess from the existing MFA policy. Verify a user in ContingencyAccess can access SharePoint Online and Exchange Online.
+2. Enable Policy 1: Verify users on Domain Joined devices who are not in the exclude groups are able to access Exchange Online and SharePoint Online. Verify users in the Exclude group can access SharePoint Online and Exchange from any device.
+3. Enable Policy 2: Verify users who are not in the exclude group cannot get to SharePoint Online and Exchange Online from their mobile devices. Verify users in the Exclude group can access SharePoint and Exchange from any device (Windows/iOS/Android).
+4. Enable Policy 3: Verify users who are not in the exclude groups cannot access SharePoint and Exchange off the corporate network, even with a domain joined machine. Verify users in the Exclude group can access SharePoint and Exchange from any network.
+5. Enable Policy 4: Verify all users cannot get Exchange Online from the native mail applications on mobile devices.
+6. Disable the existing MFA policy for SharePoint Online and Exchange Online.
 
-Ebben a következő példában például a **B-készenléti hitelesítésszolgáltatói házirendek lehetővé teszik a Salesforce való mobil hozzáférést**, az üzleti alkalmazások hozzáférését visszaállítja a rendszer. Ebben az esetben az ügyfél általában ahhoz szükséges, hogy az értékesítési alkalmazottak hozzáférhessenek a mobileszközök Salesforce (az Azure AD-vel való egyszeri bejelentkezésre konfigurálva), és csak a megfelelő eszközökről legyenek engedélyezve. Ebben az esetben a megszakadási probléma az eszköz megfelelőségének kiértékelése, és a leállás olyan kényes időpontban történik, ahol az értékesítési csapatnak hozzá kell férnie a Salesforce a lezárt ajánlatokhoz. Ezek a készenléti szabályzatok kritikus fontosságú felhasználók számára biztosítanak hozzáférést a mobileszköz Salesforce, így továbbra is lezárhatók az ajánlatok, és nem zavarhatják a vállalatot. Ebben a példában a **SalesforceContingency** tartalmazza az összes olyan értékesítési alkalmazottat, akiknek meg kell őrizniük a hozzáférést, és a **SalesAdmins** a szükséges Salesforce-rendszergazdákat tartalmazza.
+In this next example, **Example B - Contingency CA policies to allow mobile access to Salesforce**, a business app’s access is restored. In this scenario, the customer typically requires their sales employees access to Salesforce (configured for single-sign on with Azure AD) from mobile devices to only be allowed from compliant devices. The disruption in this case is that there is an issue with evaluating device compliance and the outage is happening at a sensitive time where the sales team needs access to Salesforce to close deals. These contingency policies will grant critical users access to Salesforce from a mobile device so that they can continue to close deals and not disrupt the business. In this example, **SalesforceContingency** contains all the Sales employees who need to retain access and **SalesAdmins** contains necessary admins of Salesforce.
 
-**B példa – készenléti HITELESÍTÉSSZOLGÁLTATÓI házirendek:**
+**Example B - Contingency CA policies:**
 
-* 1\. szabályzat: A SalesContingency-csapatban nem szereplő mindenki letiltása
-  * Név: EM001 – ENGEDÉLYEZÉS VÉSZHELYZETBEN: Eszköz megfelelőségének megszakadása [1/2] – Salesforce – letiltja az összes felhasználót a SalesforceContingency kivételével
-  * Felhasználók és csoportok: Minden felhasználó belefoglalása. SalesAdmins és SalesforceContingency kizárása
-  * Felhőalapú alkalmazások: Salesforce.
-  * Feltételek Nincsenek
-  * Ellenőrzés engedélyezése: Letiltás
-  * Állapot: Letiltva
-* 2\. szabályzat: Az értékesítési csapat letiltása a mobiltól eltérő platformról (a támadási terület csökkentése érdekében)
-  * Név: EM002 – ENGEDÉLYEZÉS VÉSZHELYZETBEN: Eszköz megfelelőségének megszakadása [2/2] – Salesforce – letiltja az összes platformot az iOS és az Android kivételével
-  * Felhasználók és csoportok: SalesforceContingency belefoglalása. SalesAdmins kizárása
-  * Felhőalapú alkalmazások: Salesforce
-  * Feltételek Az eszköz platformja minden platformot tartalmaz, az iOS és az Android kizárása
-  * Ellenőrzés engedélyezése: Letiltás
-  * Állapot: Letiltva
+* Policy 1: Block everyone not in the SalesContingency team
+  * Name: EM001 - ENABLE IN EMERGENCY: Device Compliance Disruption[1/2] - Salesforce - Block All users except SalesforceContingency
+  * Users and Groups: Include all users. Exclude SalesAdmins and SalesforceContingency
+  * Cloud Apps: Salesforce.
+  * Conditions: None
+  * Grant Control: Block
+  * State: Disabled
+* Policy 2: Block the Sales team from any platform other than mobile (to reduce surface area of attack)
+  * Name: EM002 - ENABLE IN EMERGENCY: Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
+  * Users and Groups: Include SalesforceContingency. Exclude SalesAdmins
+  * Cloud Apps: Salesforce
+  * Conditions: Device Platform Include All Platforms, exclude iOS and Android
+  * Grant Control: Block
+  * State: Disabled
 
-Aktiválási sorrend:
+Order of activation:
 
-1. Zárja ki a SalesAdmins és a SalesforceContingency a Salesforce meglévő megfelelőségi házirendjéből. Ellenőrizze, hogy a SalesforceContingency csoport felhasználója hozzáférhet-e a Salesforce.
-2. 1\. szabályzat engedélyezése: A SalesContingency-en kívüli felhasználók ellenőrzése nem fér hozzá a Salesforce. Ellenőrizze, hogy a SalesAdmins és a SalesforceContingency felhasználók hozzáférhetnek-e a Salesforce.
-3. 2\. házirend engedélyezése: Annak ellenőrzése, hogy a SalesContingency csoportban lévő felhasználók nem férhetnek hozzá a Salesforce a Windows/Mac rendszerű laptopokról, de továbbra is hozzáférhetnek a mobil eszközökről. Ellenőrizze, hogy a SalesAdmin továbbra is hozzáférhet-e a Salesforce bármely eszközről.
-4. Tiltsa le a Salesforce meglévő eszköz megfelelőségi szabályzatát.
+1. Exclude SalesAdmins and SalesforceContingency from the existing device compliance policy for Salesforce. Verify a user in the SalesforceContingency group can access Salesforce.
+2. Enable Policy 1: Verify users outside of SalesContingency cannot access Salesforce. Verify users in the SalesAdmins and SalesforceContingency can access Salesforce.
+3. Enable Policy 2: Verify users in the SalesContingency group cannot access Salesforce from their Windows/Mac laptops but can still access from their mobile devices. Verify SalesAdmin can still access Salesforce from any device.
+4. Disable the existing device compliance policy for Salesforce.
 
-### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Jelszó-kivonatolási szinkronizálás telepítése akkor is, ha összevont vagy átmenő hitelesítést használ
+### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Deploy password hash sync even if you are federated or use pass-through authentication
 
-A felhasználói zárolás akkor is történhet, ha a következő feltételek teljesülnek:
+User lockout can also occur if the following conditions are true:
 
-- A szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással.
-- A helyszíni identitás-rendszerek (például Active Directory, AD FS vagy egy függő összetevő) nem érhetők el. 
+- Your organization uses a hybrid identity solution with pass-through authentication or federation.
+- Your on-premises identity systems (such as Active Directory, AD FS, or a dependent component) are unavailable. 
  
-Ahhoz, hogy rugalmasabb legyen, a szervezetnek engedélyeznie kell a [jelszó](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)-kivonatolási szinkronizálást, mivel lehetővé teszi a [jelszó-kivonatoló szinkronizálás használatát](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) , ha a helyszíni identitási rendszerek le vannak állítva.
+To be more resilient, your organization should [enable password hash sync](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), because it enables you to [switch to using password hash sync](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) if your on-premises identity systems are down.
 
-#### <a name="microsoft-recommendations"></a>Microsoft-javaslatok
- Engedélyezze a jelszó-kivonatok szinkronizálását a Azure AD Connect varázslóval, függetlenül attól, hogy a szervezete összevonási vagy átmenő hitelesítést használ-e.
-
->[!IMPORTANT]
-> A jelszó-kivonatoló szinkronizálás használatához nem szükséges a felhasználókat összevontról felügyelt hitelesítésre konvertálni.
-
-## <a name="during-a-disruption"></a>Megszakítás közben
-
-Ha úgy döntött, hogy egy kockázatcsökkentő terv megvalósítását választotta, automatikusan megmaradhat az egyetlen hozzáférés-vezérlési megszakadási lehetőség. Ha azonban úgy döntött, hogy létrehoz egy készenléti tervet, a hozzáférés-vezérlés megszakadásakor aktiválhatja a készenléti szabályzatokat:
-
-1. Olyan készenléti házirendeket engedélyezhet, amelyek meghatározott hálózatokból biztosítanak célzott felhasználókat, illetve hozzáférést adott alkalmazásokhoz.
-2. Tiltsa le a normál vezérlő-alapú házirendeket.
-
-### <a name="microsoft-recommendations"></a>Microsoft-javaslatok
-
-Attól függően, hogy a rendszer milyen enyhítéseket vagy feltételeket használ a megszakadáskor, a szervezet csak jelszóval férhet hozzá. A védelem nem jelent jelentős biztonsági kockázatot, amelyet alaposan le kell mérni. A szervezeteknek a következőket kell tenniük:
-
-1. A változás-ellenőrzési stratégia részeként dokumentálja az összes módosítást és az előző állapotot, hogy vissza tudja állítani az összes olyan előfizetési lehetőséget, amelyet azonnal végrehajtott, amint a hozzáférés-vezérlés teljesen működőképes.
-2. Tegyük fel, hogy a rosszindulatú szereplők jelszó-vagy adathalászat-támadásokkal próbálnak begyűjteni jelszavakat az MFA letiltásakor. Emellett előfordulhat, hogy a rossz színészek már rendelkeznek olyan jelszavakkal, amelyek korábban nem adtak hozzáférést minden olyan erőforráshoz, amely ebben az ablakban próbálkozhat. Az olyan kritikus fontosságú felhasználók számára, mint a vezetők, részlegesen csökkenthetik ezt a kockázatot azáltal, hogy visszaállítják a jelszavukat az MFA letiltása előtt.
-3. Az összes bejelentkezési tevékenység archiválása annak azonosításához, hogy ki férhet hozzá az MFA idejének letiltásához.
-4. Az ebben az ablakban [jelentett összes kockázati észlelés osztályozása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
-
-## <a name="after-a-disruption"></a>Megszakítás után
-
-Vonja vissza az aktivált készenléti terv részeként elvégzett módosításokat, miután a szolgáltatás helyreállt, ami a megszakadást okozta. 
-
-1. A normál házirendek engedélyezése
-2. Tiltsa le a készenléti házirendeket. 
-3. Visszaállíthatja a megszakítás során elvégzett és dokumentált egyéb módosításokat.
-4. Ha vészhelyzeti hozzáférési fiókot használt, ne felejtse el újragenerált hitelesítő adatokat, és fizikailag biztonságossá tenni az új hitelesítő adatok részleteit a vészhelyzeti hozzáférési fiók eljárásainak részeként.
-5. Folytassa a gyanús tevékenységek megszakítása után [jelentett összes kockázati észlelés osztályozását](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
-6. Vonja vissza a [PowerShell használatával](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) kiadott összes frissítési jogkivonatot a felhasználók egy csoportjának célzásához. Az összes frissítési token visszavonása fontos a megszakadáskor használt privilegizált fiókok esetében, és ezzel kényszeríti őket a visszaállított szabályzatok ismételt hitelesítésére és ellenőrzésére.
-
-## <a name="emergency-options"></a>Vészhelyzeti beállítások
-
- Vészhelyzet esetén, és a szervezet még nem hajtott végre kockázatcsökkentő vagy készenléti tervet, majd kövesse a [következő](#contingencies-for-user-lockout) témakörben ismertetett javaslatokat, ha már feltételes hozzáférési szabályzatokkal érvényesítik az MFA-t.
-Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor a következő alternatívát veheti figyelembe:
-
-1. Ha rendelkezik a vállalati hálózat kimenő IP-címével, akkor azokat megbízható IP-címekként adhatja hozzá, hogy csak a vállalati hálózathoz engedélyezze a hitelesítést.
-   1. Ha nem rendelkezik a kimenő IP-címek leltárával, vagy ha a hozzáférést a vállalati hálózaton belül és kívül is engedélyezni szeretné, a teljes IPv4-címtartományt felveheti megbízható IP-címként a 0.0.0.0/1 és a 128.0.0.0/1 érték megadásával.
+#### <a name="microsoft-recommendations"></a>Microsoft recommendations
+ Enable password hash sync using the Azure AD Connect wizard, regardless whether your organization uses federation or pass-through authentication.
 
 >[!IMPORTANT]
- > Ha kibővíti a megbízható IP-címeket a hozzáférés feloldásához, az IP-címekhez (például lehetetlen utazáshoz vagy ismeretlen helyszínekhez) kapcsolódó kockázati észleléseket nem generálja a rendszer.
+> It is not required to convert users from federated to managed authentication to use password hash sync.
+
+## <a name="during-a-disruption"></a>During a disruption
+
+If you opted for implementing a mitigation plan, you will be able to automatically survive a single access control disruption. However, if you opted to create a contingency plan, you will be able to activate your contingency policies during the access control disruption:
+
+1. Enable your contingency policies that grant targeted users, access to specific apps, from specific networks.
+2. Disable your regular control-based policies.
+
+### <a name="microsoft-recommendations"></a>Microsoft recommendations
+
+Depending on which mitigations or contingencies are used during a disruption, your organization could be granting access with just passwords. No safeguard is a considerable security risk that must be weighed carefully. Organizations must:
+
+1. As part of your change control strategy, document every change and the previous state to be able to roll back any contingencies you implemented as soon as the access controls are fully operational.
+2. Assume that malicious actors will attempt to harvest passwords through password spray or phishing attacks while you disabled MFA. Also, bad actors might already have passwords that previously did not grant access to any resource that can be attempted during this window. For critical users such as executives, you can partially mitigate this risk by resetting their passwords before disabling MFA for them.
+3. Archive all sign-in activity to identify who access what during the time MFA was disabled.
+4. [Triage all risk detections reported](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) during this window.
+
+## <a name="after-a-disruption"></a>After a disruption
+
+Undo the changes you made as part of the activated contingency plan once the service is restored that caused the disruption. 
+
+1. Enable the regular policies
+2. Disable your contingency policies. 
+3. Roll back any other changes you made and documented during the disruption.
+4. If you used an emergency access account, remember to regenerate credentials and physically secure the new credentials details as part of your emergency access account procedures.
+5. Continue to [triage all risk detections reported](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) after the disruption for suspicious activity.
+6. Revoke all refresh tokens that were issued [using PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) to target a set of users. Revoking all refresh tokens is important for privileged accounts used during the disruption and doing it will force them to reauthenticate and meet the control of the restored policies.
+
+## <a name="emergency-options"></a>Emergency options
+
+ In case of an emergency and your organization did not previously implement a mitigation or contingency plan, then follow the recommendations in the [Contingencies for user lockout](#contingencies-for-user-lockout) section if they already use Conditional Access policies to enforce MFA.
+If your organization is using per-user MFA legacy policies, then you can consider the following alternative:
+
+1. If you have the corporate network outbound IP address, you can add them as trusted IPs to enable authentication only to the corporate network.
+   1. If you don’t have the inventory of outbound IP addresses, or you required to enable access inside and outside the corporate network, you can add the entire IPv4 address space as trusted IPs by specifying 0.0.0.0/1 and 128.0.0.0/1.
+
+>[!IMPORTANT]
+ > If you broaden the trusted IP addresses to unblock access, risk detections associated with IP addresses (for example, impossible travel or unfamiliar locations) will not be generated.
 
 >[!NOTE]
- > Az Azure MFA [megbízható IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)lehetséges.
+ > Configuring [trusted IPs](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) for Azure MFA is only available with [Azure AD Premium licenses](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>További információ
 
-* [Azure AD-hitelesítési dokumentáció](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Elnevezett helyszínek konfigurálása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure AD Authentication Documentation](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Manage emergency-access administrative accounts in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [Configure named locations in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+* [How to configure hybrid Azure Active Directory joined devices](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Vállalati Windows Hello – Üzembehelyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
-  * [Jelszó-útmutató – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Mik a feltételek a feltételes hozzáférés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Mik azok a hozzáférés-vezérlések Azure Active Directory feltételes hozzáféréshez?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+  * [Password Guidance - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+* [What are conditions in Azure Active Directory Conditional Access?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [What are access controls in Azure Active Directory Conditional Access?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 09/19/2019
 ms.topic: quickstart
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 53ac79c257e88380d462e5ef69ed494ae9967c07
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 77ea61d6aafad556a90b934d77569b8166aeafef
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155182"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230175"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-előfizetések és -fiókok aktiválása a Cloudynnel
 
@@ -41,7 +41,7 @@ Ha az Ön fiókja **Közreműködő** szerepkörrel rendelkezik, nem rendelheti 
 3. Az Azure Active Directory területen válassza a **Felhasználói beállítások** lehetőséget.
 4. Ellenőrizze az **Alkalmazásregisztrációk** beállítást.
     - Ha **Igen** értékre van állítva, akkor nem rendszergazdai felhasználók is regisztrálhatnak AD-alkalmazásokat. Ez a beállítás azt jelenti, hogy az Azure AD-bérlő bármely felhasználója regisztrálhat alkalmazásokat.  
-    ![alkalmazásregisztrációk kiválasztása a felhasználói beállítások](./media/activate-subs-accounts/app-register.png)
+    ![select App registrations in User settings](./media/activate-subs-accounts/app-register.png)
     - Ha az **Alkalmazásregisztrációk** beállítás értéke **Nem**, akkor csak a bérlői rendszergazdák regisztrálhatnak Azure Active Directory-alkalmazásokat. A bérlői rendszergazdának kell regisztrálnia a CloudynCollector alkalmazást.
 
 
@@ -53,14 +53,14 @@ Fiókok hozzáadásakor vagy előfizetések frissítésekor hozzáférést bizto
 
 1. A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
 2. Kattintson az **Új fiók hozzáadása** lehetőségre. Ekkor megjelenik az **Új fiók hozzáadása** mező. Adja meg a szükséges adatokat.  
-    ![Adja meg a szükséges információkat az új fiók hozzáadása listában](./media/activate-subs-accounts/add-new-account.png)
+    ![enter required information in the Add new account box](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Előfizetés frissítése
 
 1. Ha frissíteni szeretne egy _inaktivált_ előfizetést, amely már létezik a Cloudyn Fiókkezelés területén, kattintson a szerkesztés ikonra a szülői _bérlő GUID azonosítója_ jobb oldalán. Az előfizetések egy szülői bérlő alatt vannak csoportosítva, ezért célszerű elkerülni az előfizetések külön-külön történő aktiválását.
-    ![Válassza ki a bérlő Azonosítóját a Rediscover előfizetések mezőbe](./media/activate-subs-accounts/existing-sub.png)
+    ![select your tenant ID in the Rediscover subscriptions box](./media/activate-subs-accounts/existing-sub.png)
 2. Ha szükséges, adja meg a bérlő azonosítóját. Ha nem ismeri a bérlő azonosítóját, az alábbi lépésekkel kiderítheti:
-    1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+    1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
     3. A bérlőazonosító lekéréséhez válassza ki az Azure AD-bérlőjéhez tartozó **Tulajdonságok** elemet.
     4. Másolja ki a Címtár GUID azonosítóját. Ez az érték a bérlőazonosítója.
@@ -87,7 +87,7 @@ Amikor először használja a Cloudyn portálját, a következő üzenetek jelen
 
 - *A megadott API-kulcs nem felső szintű regisztrációs kulcs* üzenet jelenik meg a **Cloudyn beállítása** varázslóban.
 - *Közvetlen regisztráció – Nem* üzenet jelenik meg a Nagyvállalati szerződés portálján.
-- *Nem találhatók az elmúlt 30 napra vonatkozó használati adatok. Lépjen kapcsolatba a terjesztőjével, és ellenőrizze, hogy engedélyezve van-e a korrektúra az Ön Azure-fiókjában*, amely a Cloudyn portálján jelenik meg.
+- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* displayed in the Cloudyn portal.
 
 Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. A viszonteladónak vagy a felhőszolgáltatónak kell engedélyeznie a _korrektúrát_ az Azure-fiókjában, mielőtt Ön megtekinthetné az adatait a Cloudyn szolgáltatásban.
 
@@ -131,6 +131,6 @@ $url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&res
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha még nem végezte el a Cloudyn első oktatóanyagát, itt megtekintheti: [Használat és költségek áttekintése](tutorial-review-usage.md).
