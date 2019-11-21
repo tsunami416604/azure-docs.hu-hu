@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezés kétfaktoros ellenőrzés használatával – Azure AD
+title: Bejelentkezés munkahelyi vagy iskolai fiókkal történő hitelesítéssel – Azure AD
 description: Ismerje meg, hogyan jelentkezhet be a munkahelyi vagy iskolai fiókjába a különböző kétfaktoros ellenőrzési módszerek használatával.
 services: active-directory
 author: eross-msft
@@ -14,14 +14,14 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de080a613c69dd6f48f548c4ba89b2728e8c5e1d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 86c7be7f786a4fcecc39ea9af552a0dc03f2fcac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820431"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233236"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába kétfaktoros ellenőrzés használatával
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába a kétfaktoros ellenőrzési módszer használatával
 
 > [!NOTE]
 > Ennek a cikknek a célja egy tipikus bejelentkezési felület bejárása. Ha segítségre van szüksége a bejelentkezéshez vagy a problémák elhárításához, tekintse meg az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatos problémákat.
@@ -83,7 +83,7 @@ Előfordulhat, hogy nem rendelkezik az előnyben részesített ellenőrzési mó
 
    ![Alternatív módszer használata](./media/multi-factor-authentication-end-user-signin/alt.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információhoz juthat az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
 
 - Ismerje meg, hogyan [kezelheti a kétlépéses ellenőrzési beállításokat](multi-factor-authentication-end-user-manage-settings.md).

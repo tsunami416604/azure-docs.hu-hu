@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 60baf2229b6c704f951e6cc54949109d5e403bc0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196066"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224992"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>A Train & több regressziós modellt hasonlít össze az autók árának előrejelzéséhez Azure Machine Learning Designer használatával
 
@@ -29,7 +29,7 @@ Ha most ismerkedik a gépi tanulással, tekintse meg a folyamat [alapszintű ver
 
 Itt látható a folyamathoz tartozó befejezett gráf:
 
-[a folyamat ![gráfja](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[a folyamat ![gráfja](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A fő adat-előkészítési feladatok közé tartozik az adatok tisztítása, az
 
 A sok hiányzó értékkel rendelkező normalizált veszteségek kizárásához használja az **adatkészlethez tartozó oszlopok kiválasztása** modult. Ezután tiszta, **hiányzó adatok** használatával távolítsa el a hiányzó értékeket tartalmazó sorokat. Ez segít a betanítási adathalmazok tiszta készletének létrehozásában.
 
-![Adatfeldolgozás előtti](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![Adatfeldolgozás előtti](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>A modell betanítása
 
@@ -78,7 +78,7 @@ A modell betanítása után használja a **pontszám modellt** , és **értékel
 
 Az eredmények a következők:
 
-![Az eredmények összehasonlítása](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![Az eredmények összehasonlítása](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
 Ezek az eredmények azt mutatják, hogy a **megnövelt döntési fa regressziós** modellje alacsonyabb, legfelső szintű, négyzetes hibával rendelkezik, mint a **döntési erdő regressziós**modelljére épülő modell.
 

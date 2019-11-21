@@ -1,20 +1,16 @@
 ---
 title: Visszatérési érték használata egy Azure-függvényből
 description: További információ a Azure Functions visszatérési értékeinek kezeléséről
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 30c9caf267482d7c3731d4848cfb26cc8120b1ac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074403"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231072"
 ---
 # <a name="using-the-azure-function-return-value"></a>Az Azure Function Return értékének használata
 
@@ -158,7 +154,7 @@ def main(input: azure.functions.InputStream) -> str:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions kötési hibák kezelése](./functions-bindings-errors.md)

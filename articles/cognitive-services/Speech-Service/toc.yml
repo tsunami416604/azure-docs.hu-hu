@@ -468,6 +468,8 @@
   items:
     - name: Támogatás
       href: support.md
+    - name: Régiók
+      href: regions.md
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Megfelelőség

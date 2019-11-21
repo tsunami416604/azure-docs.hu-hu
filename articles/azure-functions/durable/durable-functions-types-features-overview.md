@@ -1,20 +1,16 @@
 ---
 title: A függvények típusai a Azure Functions Durable Functions bővítményében
 description: Ismerje meg, hogy milyen típusú függvények és szerepkörök működnek a Durable Functions Azure Functions-ben való összehangolása során.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 7a485f31ed7e112745cf3b45bbfe348e6a2e0fd3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614606"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232771"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions típusok és szolgáltatások (Azure Functions)
 
@@ -63,7 +59,7 @@ A Orchestrator függvényeket egy előkészítési [trigger kötése](durable-fu
 
 A Orchestrator vagy az Entity functions kiváltásán túl a *tartós ügyfél* -kötés használható a futtatási feladatokkal és az entitásokkal való interakcióra is. Például lekérdezheti, leállíthatja és megszakíthatja az eseményeket. További információ a munkafolyamatok és az entitások kezeléséről: [példányok kezelése](durable-functions-instance-management.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként hozza létre első tartós funkcióját a [C#](durable-functions-create-first-csharp.md) vagy a [JavaScript](quickstart-js-vscode.md)használatával.
 

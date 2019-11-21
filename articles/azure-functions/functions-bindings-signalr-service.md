@@ -1,25 +1,16 @@
 ---
 title: Azure Functions szignáló szolgáltatás kötései
 description: Megtudhatja, hogyan használhatja a Signaler szolgáltatás kötéseit Azure Functions.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-editor: ''
-tags: ''
-keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
-ms.service: azure-functions
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 82bbd728bfd51595f0b6eacf344bc95ea5db1ea8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086161"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231018"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -83,7 +74,7 @@ public static SignalRConnectionInfo Negotiate(
 
 Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét. Megadhatja a kötés `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` [](./functions-bindings-expressions-patterns.md) tulajdonságátbármelyikfejlécértékéreegy`UserId` kötési kifejezés használatával: vagy. 
+App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét. A kötés `UserId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
 
 ```cs
 [FunctionName("negotiate")]
@@ -100,7 +91,7 @@ public static SignalRConnectionInfo Negotiate(
 
 ### <a name="2x-javascript-input-examples"></a>2. x JavaScript bemeneti példák
 
-Az alábbi példa egy Signal-kapcsolati adatokat tartalmazó bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötést használja a kapcsolati adatok visszaadásához.
+Az alábbi példa egy Signal-kapcsolati adatokat tartalmazó bemeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja a kapcsolati adatok visszaadásához.
 
 Itt a *function. JSON* fájlban található kötési adat:
 
@@ -128,7 +119,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét. Megadhatja a kötés `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` [](./functions-bindings-expressions-patterns.md) tulajdonságátbármelyikfejlécértékéreegy`userId` kötési kifejezés használatával: vagy. 
+App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét. A kötés `userId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
 
 Példa a function. JSON fájlra:
 
@@ -155,7 +146,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 ### <a name="2x-java-input-examples"></a>2. x Java-bemeneti példák
 
-Az alábbi példa egy [Java](functions-reference-java.md) -függvényt mutat be, amely a bemeneti kötés használatával szerzi be a jelző kapcsolati adatait, és visszaadja a HTTP protokollon keresztül.
+Az alábbi példa egy [Java-függvényt](functions-reference-java.md) mutat be, amely a bemeneti kötés használatával szerzi be a jelző kapcsolati adatait, és visszaadja a HTTP protokollon keresztül.
 
 ```java
 @FunctionName("negotiate")
@@ -175,7 +166,7 @@ public SignalRConnectionInfo negotiate(
 
 Ha a függvényt egy hitelesített ügyfél indítja el, felhasználói azonosító jogcímet adhat hozzá a generált jogkivonathoz. [App Service hitelesítés](../app-service/overview-authentication-authorization.md)használatával egyszerűen adhat hozzá hitelesítést egy Function alkalmazáshoz.
 
-App Service hitelesítés beállítja a nevű `x-ms-client-principal-id` http- `x-ms-client-principal-name` fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-azonosítóját és nevét. Megadhatja a kötés `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` [](./functions-bindings-expressions-patterns.md) tulajdonságátbármelyikfejlécértékéreegy`UserId` kötési kifejezés használatával: vagy.
+App Service a hitelesítés beállítja a `x-ms-client-principal-id` és `x-ms-client-principal-name` nevű HTTP-fejléceket, amelyek tartalmazzák a hitelesített felhasználó ügyfél-AZONOSÍTÓját és nevét. A kötés `UserId` tulajdonságát beállíthatja bármelyik fejléc értékére egy [kötési kifejezés](./functions-bindings-expressions-patterns.md)használatával: `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -269,7 +260,7 @@ public static Task SendMessage(
 
 ### <a name="2x-c-group-management-output-examples"></a>2. x C# csoport-felügyeleti kimeneti példák
 
-A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztály és a `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztályt a `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoporttagság.
 
 #### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
@@ -318,13 +309,13 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> `ClaimsPrincipal` A megfelelő kötés eléréséhez konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
+> Ahhoz, hogy a `ClaimsPrincipal` megfelelően kötve legyen, konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
 ### <a name="2x-javascript-send-message-output-examples"></a>2. x JavaScript-üzenetek küldésére vonatkozó példák
 
 #### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-Az alábbi példa egy Signaler kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript](functions-reference-node.md) -függvényt, amely a kötés használatával küld egy üzenetet az Azure signaler szolgáltatással. Adja meg a kimeneti kötést egy vagy több jelző üzenet tömbje számára. A jelző üzenet egy olyan `target` tulajdonságból áll, amely megadja az egyes ügyfeleken meghívott metódus nevét, valamint egy olyan `arguments` tulajdonságot, amely az ügyfél metódusának argumentumként való továbbítására szolgáló objektumok tömbje.
+Az alábbi példa egy Signaler kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötés használatával küld egy üzenetet az Azure signaler szolgáltatással. Adja meg a kimeneti kötést egy vagy több jelző üzenet tömbje számára. A jelző üzenet egy `target` tulajdonságból áll, amely meghatározza az egyes ügyfeleken meghívott metódus nevét, valamint egy `arguments` tulajdonságot, amely az ügyfél metódusának argumentumként való továbbítására szolgáló objektumok tömbje.
 
 Itt a *function. JSON* fájlban található kötési adat:
 
@@ -387,7 +378,7 @@ module.exports = async function (context, req) {
 
 ### <a name="2x-javascript-group-management-output-examples"></a>2. x JavaScript csoport-felügyeleti kimeneti példák
 
-A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A felhasználó csoporttagság kezeléséhez használhatja a `SignalR` kimeneti kötést.
 
 #### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
@@ -487,7 +478,7 @@ module.exports = async function (context, req) {
 
 #### <a name="broadcast-to-all-clients"></a>Közvetítés az összes ügyfél számára
 
-Az alábbi példa egy [Java](functions-reference-java.md) -függvényt mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A `target` az egyes ügyfeleken meghívott metódus neve. A `arguments` tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
+Az alábbi példa egy [Java-függvényt](functions-reference-java.md) mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A `target` az egyes ügyfeleken meghívott metódus neve. A `arguments` tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
 
 ```java
 @FunctionName("sendMessage")
@@ -549,7 +540,7 @@ public SignalRMessage sendMessage(
 
 ### <a name="2x-java-group-management-output-examples"></a>2. x Java csoport-felügyeleti kimeneti példák
 
-A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztály és a `SignalROutput` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
+A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalRGroupAction` osztályt a `SignalROutput` kimeneti kötés használatával kezelheti a felhasználók csoporttagság.
 
 #### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
@@ -607,7 +598,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**|| Meg kell `in`.|
 |**name**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
-|**userId**|**UserId**| Nem kötelező: A hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
+|**userId**|**UserId**| Nem kötelező: a hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
@@ -624,7 +615,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

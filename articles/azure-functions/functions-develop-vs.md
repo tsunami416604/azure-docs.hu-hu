@@ -1,19 +1,15 @@
 ---
-title: Azure Functions fejlesztése a Visual Studióval | Microsoft Docs
+title: Azure Functions fejlesztése a Visual Studióval
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseket a Visual Studio 2019 Azure Functions Tools használatával.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: glenga
-ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773163"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230660"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions fejlesztése a Visual Studióval  
 
@@ -56,7 +52,7 @@ A közzétételi folyamat során a szükséges egyéb erőforrások, például a
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Eszközök frissítése a Visual Studio 2017-ban
 
-1. A **bővítmények és frissítések** párbeszédpanelen bontsa ki a **frissítések** > **Visual Studio Marketplace**, majd a **Azure functions és a webjobs-eszközök** elemet, és válassza a **frissítés**lehetőséget.
+1. A **bővítmények és frissítések** párbeszédpanelen bontsa ki a **frissítések** > a **Visual Studio Marketplace**elemet, majd válassza a **Azure functions és a webjobs-eszközök** lehetőséget, és válassza a **frissítés**lehetőséget.
 
     ![A functions Tools verziójának frissítése](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
@@ -75,9 +71,9 @@ A Visual Studio 2019-es és újabb verzióiban a Azure Functions Tools bővítm�
 
 A Project sablon létrehoz egy C# projektet, telepíti a `Microsoft.NET.Sdk.Functions` NuGet csomagot, és beállítja a célként megadott keretrendszert. Az új projekt a következő fájlokat tartalmazhatja:
 
-* **host.json**: Lehetővé teszi a functions gazdagép konfigurálását. Ezek a beállítások mind a helyi, mind az Azure-beli futtatáskor érvényesek. További információ: [Host. JSON-dokumentáció](functions-host-json.md).
+* **Host. JSON**: lehetővé teszi a functions gazdagép konfigurálását. Ezek a beállítások mind a helyi, mind az Azure-beli futtatáskor érvényesek. További információ: [Host. JSON-dokumentáció](functions-host-json.md).
 
-* **local.settings.json**: A függvények helyi futtatásakor használt beállításokat kezeli. Ezek a beállítások nem használhatók az Azure-ban való futtatáskor. További információ: [Local Settings fájl](#local-settings-file).
+* **Local. Settings. JSON**: a függvények helyi futtatásakor használt beállításokat tartja karban. Ezek a beállítások nem használhatók az Azure-ban való futtatáskor. További információ: [Local Settings fájl](#local-settings-file).
 
     >[!IMPORTANT]
     >Mivel a local. Settings. JSON fájl tartalmazhat titkos kódokat, ki kell zárnia azt a projekt forrásának vezérlőjéből. **Ha újabb**értékre van állítva, akkor a fájl **másolásának kimeneti könyvtárra** vonatkozó beállítását mindig másolja. 
@@ -94,11 +90,11 @@ A Function app Settings értékeit környezeti változókként is beolvashatja a
 
 ## <a name="configure-the-project-for-local-development"></a>A projekt konfigurálása helyi fejlesztéshez
 
-A functions futtatókörnyezet belsőleg használ egy Azure Storage-fiókot. A HTTP és webhookok kivételével az összes trigger típusnál a **Values. AzureWebJobsStorage** kulcsot egy érvényes Azure Storage-fiók kapcsolati karakterláncához kell beállítania. A Function alkalmazás az [Azure Storage emulatort](../storage/common/storage-use-emulator.md) is használhatja a projekthez szükséges **AzureWebJobsStorage** -kapcsolatok beállításához. Az emulátor használatához állítsa a **AzureWebJobsStorage** `UseDevelopmentStorage=true`értékét a következőre:. Az üzembe helyezés előtt módosítsa a beállítást egy tényleges Storage-fiók kapcsolódási karakterláncára.
+A functions futtatókörnyezet belsőleg használ egy Azure Storage-fiókot. A HTTP és webhookok kivételével az összes trigger típusnál a **Values. AzureWebJobsStorage** kulcsot egy érvényes Azure Storage-fiók kapcsolati karakterláncához kell beállítania. A Function alkalmazás az [Azure Storage emulatort](../storage/common/storage-use-emulator.md) is használhatja a projekthez szükséges **AzureWebJobsStorage** -kapcsolatok beállításához. Az emulátor használatához állítsa `UseDevelopmentStorage=true`értékre a **AzureWebJobsStorage** értéket. Az üzembe helyezés előtt módosítsa a beállítást egy tényleges Storage-fiók kapcsolódási karakterláncára.
 
 A Storage-fiók kapcsolódási karakterláncának beállítása:
 
-1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást** **, bontsa ki a Storage-**  > **fiók**elemet, majd a **Tulajdonságok** lapon másolja ki az **elsődleges kapcsolatok karakterláncának** értékét.
+1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást**, bontsa ki a **storage** -fiók > **a Storage-fiókját**, majd a **Tulajdonságok** lapon másolja az **elsődleges kapcsolatok karakterláncának** értékét.
 
 2. A projektben nyissa meg a local. Settings. JSON fájlt, és állítsa be a **AzureWebJobsStorage** kulcs értékét a másolt kapcsolódási karakterláncra.
 
@@ -170,7 +166,7 @@ Ahogy az eseményindítók esetében, a bemeneti és kimeneti kötések kötési
         }
     }
     ```
-   A várólista-tárolóhoz való kapcsolódás a `AzureWebJobsStorage` beállításból származik. További információkért tekintse meg az adott kötésre vonatkozó hivatkozási cikket. 
+   A várólista-tárolóhoz való kapcsolódás a `AzureWebJobsStorage`-beállításból származik. További információkért tekintse meg az adott kötésre vonatkozó hivatkozási cikket. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -199,7 +195,7 @@ A következő lépésekkel teheti közzé a projektjét egy Azure-beli Function 
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Függvényalkalmazás beállításai
+## <a name="function-app-settings"></a>A függvényalkalmazás beállításai
 
 A local. Settings. JSON fájlban hozzáadott beállításokat is fel kell venni az Azure-beli Function alkalmazásba. Ezeket a beállításokat a projekt közzétételekor nem kell automatikusan feltölteni.
 
@@ -219,7 +215,7 @@ A **Local** érték a local. Settings. JSON fájlban, a **távoli** pedig az Azu
 Az alkalmazás beállításait az alábbi módokon is kezelheti:
 
 * [A Azure Portal használata](functions-how-to-use-azure-function-app-settings.md#settings).
-* [A Azure functions Core Tools közzétételilehetőségénekhasználatával.`--publish-local-settings` ](functions-run-local.md#publish)
+* A [Azure Functions Core Tools `--publish-local-settings` közzétételi lehetőségének használatával](functions-run-local.md#publish).
 * [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Figyelési függvények
@@ -232,7 +228,7 @@ Application Insights engedélyezése a Function alkalmazáshoz:
 
 További információért lásd: [Azure functions figyelése](functions-monitoring.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Functions Core Toolsről, tekintse meg a [code and test Azure functions helyileg](functions-run-local.md)című témakört.
 

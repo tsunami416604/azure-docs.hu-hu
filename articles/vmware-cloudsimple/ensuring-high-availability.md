@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5a48a75d70234b06942f5141402070c89c543f18
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903377"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206528"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Az alkalmazások magas rendelkezésre állásának biztosítása az Azure-beli VMware-ben való futtatáskor
 
@@ -21,19 +21,19 @@ A CloudSimple megoldás magas rendelkezésre állást biztosít a VMware-en fut�
 
 | Meghibásodási forgatókönyv | Az alkalmazás védett? | Platform HA funkció | VMware HA funkció | Azure HA szolgáltatás |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Lemez meghibásodása | IGEN | Sikertelen csomópont gyors cseréje | [Tudnivalók a vSAN alapértelmezett tárolási házirendjéről](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Ventilátor meghibásodása | IGEN | Redundáns ventilátorok, sikertelen csomópont gyors cseréje |  |  |
-| NIC-hiba | IGEN | Redundáns hálózati adapter, sikertelen csomópont gyors cseréje
-| Gazdagép áramszünet | IGEN | Redundáns tápegység |  |  |
-| ESXi-gazdagép meghibásodása | IGEN | sikertelen csomópont gyors cseréje | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM-hiba | IGEN | [Terheléselosztók](load-balancers.md)  | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) | Állapot nélküli VMware virtuális gépek Azure Load Balancer |
-| Levél-kapcsoló portjának hibája | IGEN | Redundáns hálózati adapter |  |  |
-| A levél kapcsolójának hibája | IGEN | Redundáns levél kapcsolók |  |  |
-| Rack-hiba | IGEN | Elhelyezési csoportok |  |  |
-| Helyi TARTOMÁNYVEZÉRLŐhöz való hálózati kapcsolat | IGEN  | Redundáns hálózati szolgáltatások |  | Redundáns ER-áramkörök |
-| Az Azure-hoz való hálózati kapcsolat | IGEN | |  | Redundáns ER-áramkörök |
-| Adatközpont-hiba | IGEN |  |  | Rendelkezésre állási zónák |
-| Regionális hiba | IGEN  |  |  | Azure-régiók |
+| Lemez meghibásodása | igen | Sikertelen csomópont gyors cseréje | [Tudnivalók a vSAN alapértelmezett tárolási házirendjéről](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Ventilátor meghibásodása | igen | Redundáns ventilátorok, sikertelen csomópont gyors cseréje |  |  |
+| NIC-hiba | igen | Redundáns hálózati adapter, sikertelen csomópont gyors cseréje
+| Gazdagép áramszünet | igen | Redundáns tápegység |  |  |
+| ESXi-gazdagép meghibásodása | igen | sikertelen csomópont gyors cseréje | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM-hiba | igen | [Terheléselosztók](load-balancers.md)  | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) | Állapot nélküli VMware virtuális gépek Azure Load Balancer |
+| Levél-kapcsoló portjának hibája | igen | Redundáns hálózati adapter |  |  |
+| A levél kapcsolójának hibája | igen | Redundáns levél kapcsolók |  |  |
+| Rack-hiba | igen | Elhelyezési csoportok |  |  |
+| Hálózati kapcsolat a helyszíni TARTOMÁNYVEZÉRLŐvel | igen  | Redundáns hálózati szolgáltatások |  | Redundáns ER-áramkörök |
+| Az Azure-hoz való hálózati kapcsolat | igen | |  | Redundáns ER-áramkörök |
+| Adatközpont-hiba | igen |  |  | Rendelkezésre állási zónák |
+| Regionális hiba | igen  |  |  | Azure-régiók |
 
 A CloudSimple által biztosított Azure VMware-megoldás a következő magas rendelkezésre állási funkciókat biztosítja.
 
@@ -47,7 +47,7 @@ Egy privát felhőt létrehozó felhasználó kijelölhet egy Azure-régiót és
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-A rendelkezésre állási zónák olyan magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régióban található speciális fizikai helyek. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. Minden régió rendelkezik egy rendelkezésre állási zónával. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md).
+A rendelkezésre állási zónák olyan magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régióban található speciális fizikai helyek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. Minden régió rendelkezik egy rendelkezésre állási zónával. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md).
 
 ## <a name="redundant-azure-expressroute-circuits"></a>Redundáns Azure ExpressRoute-áramkörök
 
