@@ -112,14 +112,6 @@
               items:
                 - name: Ismerkedés az SQL Database naplózási szolgáltatásával
                   href: sql-database-auditing.md
-        - name: Hálózati biztonság
-          items:
-            - name: Virtuális hálózati végpontok
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Virtuális hálózati végpontok – PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Privát kapcsolat
-              href: sql-database-private-endpoint-overview.md
         - name: Biztonság kezelése
           items:
             - name: Advanced Data Security
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: Önálló adatbázis biztonsága
           items:
+            - name: Hálózati hozzáférés-vezérlők
+              href: sql-database-networkaccess-overview.md
+            - name: IP-alapú tűzfal
+              href: sql-database-firewall-configure.md
+            - name: vNet-tűzfalszabályok
+              items:
+                - name: vNet-végpontok
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: vNet-végpontok – PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Privát kapcsolat
+              href: sql-database-private-endpoint-overview.md
             - name: Auditnapló formátuma
               href: sql-database-audit-log-format.md
             - name: Feltételes hozzáférés
               href: sql-database-conditional-access.md
-            - name: Kiszolgálószintű IP-tűzfalszabályok
-              items:
-                - name: Létrehozás és kezelés
-                  href: sql-database-firewall-configure.md
         - name: Felügyelt példányok biztonsága
           items:
             - name: Nyilvános végpontok biztonságossá tétele

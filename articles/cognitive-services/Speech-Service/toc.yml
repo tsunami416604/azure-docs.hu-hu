@@ -427,6 +427,33 @@
           href: 'https://aka.ms/csspeech/pythonref'
         - name: A Beszéd SDK kibocsátási megjegyzései
           href: releasenotes.md
+- name: Eszközök
+  exanded: false
+  items:
+    - name: Áttekintés
+      items:
+        - name: A Beszédeszközök SDK ismertetése
+          href: speech-devices-sdk.md
+        - name: Beszédeszközök SDK letöltése
+          href: get-speech-devices-sdk.md
+    - name: Hardver
+      items:
+        - name: Mikrofonsorra vonatkozó javaslatok
+          href: speech-devices-sdk-microphone.md
+        - name: Roobo v1 készlet
+          href: speech-devices-sdk-roobo-v1.md
+    - name: Gyors útmutatók
+      items:
+        - name: Windows
+          href: speech-devices-sdk-windows-quickstart.md
+        - name: Linux
+          href: speech-devices-sdk-linux-quickstart.md
+        - name: Android
+          href: speech-devices-sdk-android-quickstart.md
+    - name: További források
+      items:
+        - name: A Beszédeszközök SDK hibaelhárítása
+          href: speech-devices-sdk-troubleshooting.md
 - name: Migrálás
   exanded: false
   items:

@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: Titkosított virtuális gépek kulcsainak és titkos kódjának visszaállítása
               href: backup-azure-restore-key-secret.md
+    - name: Diagnosztikai események Recovery Services-tárolókhoz
+      items:
+        - name: Diagnosztikai beállítások használata Recovery Services-tárolókhoz
+          href: backup-azure-diagnostic-events.md
+        - name: Log Analytics-adatmodell erőforrás-specifikus diagnosztikai eseményekhez
+          href: backup-azure-log-analytics-new-data-model.md
     - name: Azure Backup-jelentések konfigurálása
       items:
         - name: Azure Backup-jelentések konfigurálása

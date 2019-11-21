@@ -47,6 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: Számítási feladatok kezelése
       items:
+        - name: Számításifeladat-osztályozó létrehozása
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
         - name: Számításifeladat-elkülönítés létrehozása
           items:
             - name: T-SQL

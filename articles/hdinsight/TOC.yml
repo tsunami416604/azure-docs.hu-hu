@@ -355,7 +355,7 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: 'Külső csomagok használata Jupyterrel, cellafunkciók használatával'
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: 'Külső csomagok használata Jupyterrel, szkriptműveletek használatával'
+                - name: Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
                   href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin-notebookok használata
                   href: ./spark/apache-spark-zeppelin-notebook.md

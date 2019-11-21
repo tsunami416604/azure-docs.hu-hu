@@ -1,44 +1,44 @@
 ---
-title: Az Azure Application Insights Agent részletes útmutatója | Microsoft Docs
-description: Részletes utasítások a Application Insights-ügynök első lépéseihez. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: Azure Application Insights Agent detailed instructions | Microsoft Docs
+description: Detailed instructions for getting started with Application Insights Agent. Monitor website performance without redeploying the website. Works with ASP.NET web apps hosted on-premises, in VMs, or on Azure.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8a9ae2364b51c0c201f2efffb3a7433594f76c49
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3b053b7876494a3b2e6f392850c0323b56b1c3ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899646"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230267"
 ---
-# <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights ügynök (korábbi nevén Állapotmonitor v2): részletes utasítások
+# <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (formerly named Status Monitor v2): Detailed instructions
 
-Ez a cikk a PowerShell-galéria bevezetését és a ApplicationMonitor modul letöltését ismerteti.
-Itt láthatók azok a leggyakoribb paraméterek, amelyeket el kell kezdenie.
-A manuális letöltési utasításokat is megadta, ha nem rendelkezik internet-hozzáféréssel.
+This article describes how to onboard to the PowerShell Gallery and download the ApplicationMonitor module.
+Included are the most common parameters that you'll need to get started.
+We've also provided manual download instructions in case you don't have internet access.
 
-## <a name="get-an-instrumentation-key"></a>Rendszerállapot-kulcs beszerzése
+## <a name="get-an-instrumentation-key"></a>Get an instrumentation key
 
-Első lépésként szükség van egy kialakítási kulcsra. További információ: [Application Insights erőforrás létrehozása](create-new-resource.md#copy-the-instrumentation-key).
+To get started, you need an instrumentation key. For more information, see [Create an Application Insights resource](create-new-resource.md#copy-the-instrumentation-key).
 
-## <a name="run-powershell-as-admin-with-an-elevated-execution-policy"></a>Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel
+## <a name="run-powershell-as-admin-with-an-elevated-execution-policy"></a>Run PowerShell as Admin with an elevated execution policy
 
-### <a name="run-as-admin"></a>Futtatás rendszergazdaként
+### <a name="run-as-admin"></a>Run as Admin
 
-A PowerShellnek rendszergazdai szintű engedélyekkel kell rendelkeznie a számítógép módosításához.
-### <a name="execution-policy"></a>Végrehajtási házirend
-- Leírás: alapértelmezés szerint a PowerShell-parancsfájlok futtatása le van tiltva. Javasoljuk, hogy csak az aktuális hatókörhöz engedélyezze a RemoteSigned-parancsfájlokat.
-- Hivatkozás: [a végrehajtási házirendek és a](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) [Set-ExecutionPolicy](
+PowerShell needs Administrator-level permissions to make changes to your computer.
+### <a name="execution-policy"></a>Execution policy
+- Description: By default, running PowerShell scripts is disabled. We recommend allowing RemoteSigned scripts for only the Current scope.
+- Reference: [About Execution Policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) and [Set-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 ).
-- Parancs: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
-- Választható paraméter:
-    - `-Force` kérdésre adott válaszban foglalt lépéseket. Megkerüli a megerősítési kérést.
+- Command: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
+- Optional parameter:
+    - `-Force` kérdésre adott válaszban foglalt lépéseket. Bypasses the confirmation prompt.
 
-**Példák a hibákra**
+**Example errors**
 
 ```
 Install-Module : The 'Install-Module' command was found in the module 'PowerShellGet', but the module could not be
@@ -50,10 +50,10 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 ```
 
 
-## <a name="prerequisites-for-powershell"></a>A PowerShell előfeltételei
+## <a name="prerequisites-for-powershell"></a>Prerequisites for PowerShell
 
-A PowerShell-példány naplózása a `$PSVersionTable` parancs futtatásával.
-Ez a parancs a következő kimenetet hozza létre:
+Audit your instance of PowerShell by running the `$PSVersionTable` command.
+This command produces the following output:
 
 
 ```
@@ -69,27 +69,27 @@ PSRemotingProtocolVersion      2.3
 SerializationVersion           1.1.0.1
 ```
 
-Ezeket az utasításokat a Windows 10 rendszert és a fent felsorolt verziókat futtató számítógépen írták és tesztelték.
+These instructions were written and tested on a computer running Windows 10 and the versions listed above.
 
-## <a name="prerequisites-for-powershell-gallery"></a>Az PowerShell-galéria előfeltételei
+## <a name="prerequisites-for-powershell-gallery"></a>Prerequisites for PowerShell Gallery
 
-Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból származó modulok letöltésére.
+These steps will prepare your server to download modules from PowerShell Gallery.
 
 > [!NOTE] 
-> A PowerShell-galéria Windows 10, Windows Server 2016 és PowerShell 6 rendszeren támogatott.
-> További információ a korábbi verziókról: a [PowerShellGet telepítése](https://docs.microsoft.com/powershell/gallery/installing-psget).
+> PowerShell Gallery is supported on Windows 10, Windows Server 2016, and PowerShell 6.
+> For information about earlier versions, see [Installing PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
 
-1. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
-2. Telepítse a NuGet csomag szolgáltatóját.
-    - Leírás: szükség van erre a szolgáltatóra, hogy együttműködjön a NuGet-alapú adattárakkal, például a PowerShell-galériaokkal.
-    - Hivatkozás: [install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
-    - Parancs: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
-    - Választható paraméterek:
-        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Megad egy proxykiszolgálót a kérelemhez.
-        - `-Force` kérdésre adott válaszban foglalt lépéseket. Megkerüli a megerősítési kérést.
+1. Run PowerShell as Admin with an elevated execution policy.
+2. Install the NuGet package provider.
+    - Description: You need this provider to interact with NuGet-based repositories like PowerShell Gallery.
+    - Reference: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Command: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
+    - Optional parameters:
+        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Specifies a proxy server for the request.
+        - `-Force` kérdésre adott válaszban foglalt lépéseket. Bypasses the confirmation prompt.
     
-    Ezt a kérdést akkor kapja meg, ha a NuGet nincs beállítva:
+    You'll receive this prompt if NuGet isn't set up:
         
         NuGet provider is required to continue
         PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
@@ -99,14 +99,14 @@ Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból szár
          the NuGet provider now?
         [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     
-3. PowerShell-galéria konfigurálása megbízható tárházként.
-    - Leírás: alapértelmezés szerint a PowerShell-galéria nem megbízható tárház.
-    - Hivatkozás: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
-    - Parancs: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
-    - Választható paraméter:
-        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Megad egy proxykiszolgálót a kérelemhez.
+3. Configure PowerShell Gallery as a trusted repository.
+    - Description: By default, PowerShell Gallery is an untrusted repository.
+    - Reference: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Command: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
+    - Optional parameter:
+        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Specifies a proxy server for the request.
 
-    Ezt a kérdést akkor kapja meg, ha PowerShell-galéria nem megbízható:
+    You'll receive this prompt if PowerShell Gallery isn't trusted:
 
         Untrusted repository
         You are installing the modules from an untrusted repository. If you trust this repository, change its
@@ -114,17 +114,17 @@ Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból szár
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    Ezt a módosítást és az összes PSRepositories naplózását a `Get-PSRepository` parancs futtatásával ellenőrizheti.
+    You can confirm this change and audit all PSRepositories by running the `Get-PSRepository` command.
 
-4. Telepítse a PowerShellGet legújabb verzióját.
-    - Leírás: Ez a modul a más modulok PowerShell-galériaból való beolvasásához használt eszközöket tartalmazza. Az 1.0.0.1-es verzió a Windows 10 és a Windows Server rendszerű. A 1.6.0 vagy újabb verzió szükséges. A telepített verzió meghatározásához futtassa a `Get-Command -Module PowerShellGet` parancsot.
-    - Hivatkozás: a [PowerShellGet telepítése](https://docs.microsoft.com/powershell/gallery/installing-psget).
-    - Parancs: `Install-Module -Name PowerShellGet`.
-    - Választható paraméterek:
-        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Megad egy proxykiszolgálót a kérelemhez.
-        - `-Force` kérdésre adott válaszban foglalt lépéseket. Megkerüli a "már telepített" figyelmeztetést, és telepíti a legújabb verziót.
+4. Install the newest version of PowerShellGet.
+    - Description: This module contains the tooling used to get other modules from PowerShell Gallery. Version 1.0.0.1 ships with Windows 10 and Windows Server. Version 1.6.0 or higher is required. To determine which version is installed, run the `Get-Command -Module PowerShellGet` command.
+    - Reference: [Installing PowerShellGet](/powershell/scripting/gallery/installing-psget).
+    - Command: `Install-Module -Name PowerShellGet`.
+    - Optional parameters:
+        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Specifies a proxy server for the request.
+        - `-Force` kérdésre adott válaszban foglalt lépéseket. Bypasses the "already installed" warning and installs the latest version.
 
-    Ez a hibaüzenet akkor jelenik meg, ha nem a PowerShellGet legújabb verzióját használja:
+    You'll receive this error if you're not using the newest version of PowerShellGet:
     
         Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
         At line:1 char:20
@@ -133,43 +133,43 @@ Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból szár
             CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
             FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
     
-5. Indítsa újra a PowerShellt. Az új verzió nem tölthető be az aktuális munkamenetben. Az új PowerShell-munkamenetek betöltik a PowerShellGet legújabb verzióját.
+5. Restart PowerShell. You can't load the new version in the current session. New PowerShell sessions will load the latest version of PowerShellGet.
 
-## <a name="download-and-install-the-module-via-powershell-gallery"></a>A modul letöltése és telepítése PowerShell-galéria használatával
+## <a name="download-and-install-the-module-via-powershell-gallery"></a>Download and install the module via PowerShell Gallery
 
-Ezek a lépések az az. ApplicationMonitor modult töltik le PowerShell-galériaból.
+These steps will download the Az.ApplicationMonitor module from PowerShell Gallery.
 
-1. Győződjön meg arról, hogy a PowerShell-galéria összes előfeltétele teljesül.
-2. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
-3. Telepítse az az. ApplicationMonitor modult.
-    - Hivatkozás: [install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
-    - Parancs: `Install-Module -Name Az.ApplicationMonitor`.
-    - Választható paraméterek:
-        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Megad egy proxykiszolgálót a kérelemhez.
-        - `-AllowPrerelease` kérdésre adott válaszban foglalt lépéseket. Az Alpha és a Beta kiadásának telepítését teszi lehetővé.
-        - `-AcceptLicense` kérdésre adott válaszban foglalt lépéseket. A "licenc elfogadása" üzenet megkerülése
-        - `-Force` kérdésre adott válaszban foglalt lépéseket. Megkerüli a "nem megbízható tárház" figyelmeztetést.
+1. Ensure that all prerequisites for PowerShell Gallery are met.
+2. Run PowerShell as Admin with an elevated execution policy.
+3. Install the Az.ApplicationMonitor module.
+    - Reference: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
+    - Command: `Install-Module -Name Az.ApplicationMonitor`.
+    - Optional parameters:
+        - `-Proxy` kérdésre adott válaszban foglalt lépéseket. Specifies a proxy server for the request.
+        - `-AllowPrerelease` kérdésre adott válaszban foglalt lépéseket. Allows installation of alpha and beta releases.
+        - `-AcceptLicense` kérdésre adott válaszban foglalt lépéseket. Bypasses the "Accept License" prompt
+        - `-Force` kérdésre adott válaszban foglalt lépéseket. Bypasses the "Untrusted Repository" warning.
 
-## <a name="download-and-install-the-module-manually-offline-option"></a>Töltse le és telepítse manuálisan a modult (offline beállítás)
+## <a name="download-and-install-the-module-manually-offline-option"></a>Download and install the module manually (offline option)
 
-Ha bármilyen okból nem tud csatlakozni a PowerShell-modulhoz, akkor manuálisan letöltheti és telepítheti az az. ApplicationMonitor modult.
+If for any reason you can't connect to the PowerShell module, you can manually download and install the Az.ApplicationMonitor module.
 
-### <a name="manually-download-the-latest-nupkg-file"></a>A legújabb nupkg-fájl manuális letöltése
+### <a name="manually-download-the-latest-nupkg-file"></a>Manually download the latest nupkg file
 
 1. Nyissa meg a következőt: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
-2. Válassza ki a fájl legújabb verzióját az **verziótörténete** táblában.
-3. A **telepítési beállítások**alatt válassza a **manuális Letöltés**lehetőséget.
+2. Select the latest version of the file in the **Version History** table.
+3. Under **Installation Options**, select **Manual Download**.
 
-### <a name="option-1-install-into-a-powershell-modules-directory"></a>1\. lehetőség: telepítés PowerShell-modulok könyvtárába
-Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtárba, hogy a PowerShell-munkamenetek is felderíthetők legyenek.
-További információ: PowerShell- [modul telepítése](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
+### <a name="option-1-install-into-a-powershell-modules-directory"></a>Option 1: Install into a PowerShell modules directory
+Install the manually downloaded PowerShell module into a PowerShell directory so it will be discoverable by PowerShell sessions.
+For more information, see [Installing a PowerShell Module](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 
-#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Nupkg kibontása zip-fájlként a Expand-Archive (v 1.0.1.0) használatával
+#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Unzip nupkg as a zip file by using Expand-Archive (v1.0.1.0)
 
-- Leírás: a Microsoft. PowerShell. Archive (v 1.0.1.0) alapverziója nem tudja kibontani a nupkg-fájlokat. Nevezze át a fájlt a. zip kiterjesztéssel.
-- Hivatkozás: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
-- Parancs
+- Description: The base version of Microsoft.PowerShell.Archive (v1.0.1.0) can't unzip nupkg files. Rename the file with the .zip extension.
+- Reference: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Command:
 
     ```
     $pathToNupkg = "C:\az.applicationmonitor.0.3.0-alpha.nupkg"
@@ -179,11 +179,11 @@ További információ: PowerShell- [modul telepítése](https://docs.microsoft.c
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg kicsomagolása a Expand-Archive (v 1.1.0.0) használatával
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Unzip nupkg by using Expand-Archive (v1.1.0.0)
 
-- Leírás: a Expand-Archive aktuális verziójának használatával bontsa ki a nupkg-fájlokat a bővítmény módosítása nélkül.
-- Hivatkozás: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) és [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
-- Parancs
+- Description: Use a current version of Expand-Archive to unzip nupkg files without changing the extension.
+- Reference: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) and [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Command:
 
     ```
     $pathToNupkg = "C:\az.applicationmonitor.0.2.1-alpha.nupkg"
@@ -191,37 +191,37 @@ További információ: PowerShell- [modul telepítése](https://docs.microsoft.c
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule
     ```
 
-### <a name="option-2-unzip-and-import-nupkg-manually"></a>2\. lehetőség: a nupkg manuális kicsomagolása és importálása
-Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtárba, hogy a PowerShell-munkamenetek is felderíthetők legyenek.
-További információ: PowerShell- [modul telepítése](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
+### <a name="option-2-unzip-and-import-nupkg-manually"></a>Option 2: Unzip and import nupkg manually
+Install the manually downloaded PowerShell module into a PowerShell directory so it will be discoverable by PowerShell sessions.
+For more information, see [Installing a PowerShell Module](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Ha a modult bármely más könyvtárba telepíti, manuálisan importálja a modult [importálási modul](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)használatával.
+If you're installing the module into any other directory, manually import the module by using [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
 
 > [!IMPORTANT] 
-> A DLL-eket relatív elérési utakon keresztül kell telepíteni.
-> Tárolja a csomag tartalmát a kívánt futtatókörnyezeti címtárban, és győződjön meg arról, hogy a hozzáférési engedélyek lehetővé teszik az olvasást, de nem írhatnak.
+> DLLs will install via relative paths.
+> Store the contents of the package in your intended runtime directory and confirm that access permissions allow read but not write.
 
-1. Módosítsa a kiterjesztést a ". zip" értékre, és bontsa ki a csomag tartalmát a kívánt telepítési könyvtárba.
-2. Keresse meg az az. ApplicationMonitor. psd1 fájl elérési útját.
-3. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
-4. Töltse be a modult a `Import-Module Az.ApplicationMonitor.psd1` parancs használatával.
+1. Change the extension to ".zip" and extract the contents of the package into your intended installation directory.
+2. Find the file path of Az.ApplicationMonitor.psd1.
+3. Run PowerShell as Admin with an elevated execution policy.
+4. Load the module by using the `Import-Module Az.ApplicationMonitor.psd1` command.
     
 
-## <a name="route-traffic-through-a-proxy"></a>Forgalom irányítása proxyn keresztül
+## <a name="route-traffic-through-a-proxy"></a>Route traffic through a proxy
 
-Ha a privát intraneten lévő számítógépet figyeli, a HTTP-forgalmat egy proxyn keresztül kell átirányítani.
+When you monitor a computer on your private intranet, you'll need to route HTTP traffic through a proxy.
 
-A (z) PowerShell-galéria a (z) `-Proxy` paramétert támogató PowerShell-parancsok az az. ApplicationMonitor fájlból tölthetők le és telepíthetők.
-A telepítési parancsfájlok írásakor tekintse át a fenti utasításokat.
+The PowerShell commands to download and install Az.ApplicationMonitor from the PowerShell Gallery support a `-Proxy` parameter.
+Review the preceding instructions when you write your installation scripts.
 
-A Application Insights SDK-nak el kell küldenie az alkalmazás telemetria a Microsoftnak. Javasoljuk, hogy konfigurálja az alkalmazás proxybeállításait a web. config fájlban. További információ [: Application INSIGHTS GYIK: proxy átadó](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+The Application Insights SDK will need to send your app's telemetry to Microsoft. We recommend that you configure proxy settings for your app in your web.config file. For more information, see [Application Insights FAQ: Proxy passthrough](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
 
 
 ## <a name="enable-monitoring"></a>Monitorozás engedélyezése
 
-A figyelés engedélyezéséhez használja a `Enable-ApplicationInsightsMonitoring` parancsot.
+Use the `Enable-ApplicationInsightsMonitoring` command to enable monitoring.
 
-A parancsmag használatának részletes ismertetését az [API-referenciában](status-monitor-v2-api-enable-monitoring.md) tekintheti meg.
+See the [API reference](status-monitor-v2-api-enable-monitoring.md) for a detailed description of how to use this cmdlet.
 
 
 
@@ -229,17 +229,17 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
  A telemetriai adatok megtekintése:
 
-- [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
-- [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
-- [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
+- [Explore metrics](../../azure-monitor/app/metrics-explorer.md) to monitor performance and usage.
+- [Search events and logs](../../azure-monitor/app/diagnostic-search.md) to diagnose problems.
+- [Use Analytics](../../azure-monitor/app/analytics.md) for more advanced queries.
+- [Create dashboards](../../azure-monitor/app/overview-dashboard.md).
 
  További telemetriai funkciók hozzáadása:
 
-- [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely élőben maradjon.
-- [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
-- [Adja hozzá a Application INSIGHTS SDK-t a kódhoz](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el.
+- [Create web tests](monitor-web-app-availability.md) to make sure your site stays live.
+- [Add web client telemetry](../../azure-monitor/app/javascript.md) to see exceptions from web page code and to enable trace calls.
+- [Add the Application Insights SDK to your code](../../azure-monitor/app/asp-net.md) so you can insert trace and log calls.
 
-Több Application Insights-ügynökkel:
+Do more with Application Insights Agent:
 
-- Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
+- Use our guide to [troubleshoot](status-monitor-v2-troubleshoot.md) Application Insights Agent.

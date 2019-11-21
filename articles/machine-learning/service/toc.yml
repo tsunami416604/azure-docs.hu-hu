@@ -193,7 +193,7 @@
             - name: Repülőjáratok késéseinek előrejelzése
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-flight-delay.md
-            - name: Teszt osztályozása
+            - name: Szövegbesorolás
               displayName: 'classification, studio'
               href: how-to-designer-sample-text-classification.md
         - name: Becslők használata gépi tanuláshoz

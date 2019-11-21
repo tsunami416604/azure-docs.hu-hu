@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: Speciális felügyelt tartomány létrehozása
       href: tutorial-create-instance-advanced.md
+    - name: Erdőszintű megbízhatóság létrehozása (előzetes verzió)
+      href: tutorial-create-forest-trust.md
 - name: Példák
   items:
     - name: Felügyelt tartomány létrehozása az Azure PowerShell használatával
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: Gyakori üzembehelyezési forgatókönyvek
       href: scenarios.md
+    - name: Erdők és megbízhatóságok
+      items:
+        - name: Erőforráserdők
+          href: concepts-resource-forest.md
+        - name: Erdőszintű megbízhatóságok
+          href: concepts-forest-trust.md
     - name: Az Azure AD DS szinkronizálásának működése
       href: synchronization.md
     - name: A jelszókivonat-szinkronizálás működése
