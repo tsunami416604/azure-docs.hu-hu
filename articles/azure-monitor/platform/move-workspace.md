@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: fd7ff7aa2275defba57aa24b5ef0b9adc78a5355
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093786"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278796"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
@@ -29,17 +29,17 @@ A munkaterület forrás-és célhely-előfizetésének ugyanabban a Azure Active
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
 
-## <a name="remove-solutions"></a>Megoldások eltávolítása
-A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterület áthelyezési művelettel lesznek áthelyezve. Mivel azonban el kell távolítania a hivatkozást a munkaterületről az Automation-fiókra, azonban a hivatkozáson alapuló megoldásokat el kell távolítani.
+## <a name="workspace-move-considerations"></a>A munkaterület áthelyezésével kapcsolatos megfontolások
+A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterület áthelyezési művelettel lesznek áthelyezve. A csatlakoztatott ügynökök továbbra is csatlakoztatva maradnak, és az áthelyezés után megőrzik az adatküldést a munkaterületre. Mivel az áthelyezési művelet megköveteli, hogy a munkaterületről semmilyen Automation-fiókra ne legyen hivatkozás, a hivatkozásra támaszkodó megoldásokat el kell távolítani.
 
-Az eltávolítandó megoldások közé tartoznak a következők: 
+Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolásának megszüntetése előtt:
 
 - Frissítéskezelés
 - Változások követése
 - Virtuális gépek indítása és leállítása munkaidőn kívül
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="delete-in-azure-portal"></a>Törlés az Azure Portalon
 A következő eljárással távolíthatja el a megoldásokat a Azure Portal használatával:
 
 1. Nyissa meg annak az erőforráscsoportnak a menüjét, amelyre a megoldások telepítve vannak.
@@ -48,7 +48,7 @@ A következő eljárással távolíthatja el a megoldásokat a Azure Portal hasz
 
 ![Megoldások törlése](media/move-workspace/delete-solutions.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="delete-using-powershell"></a>Törlés a PowerShell használatával
 
 A megoldások PowerShell használatával történő eltávolításához használja a [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) parancsmagot az alábbi példában látható módon:
 
@@ -58,7 +58,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-## <a name="remove-alert-rules"></a>Riasztási szabályok eltávolítása
+### <a name="remove-alert-rules"></a>Riasztási szabályok eltávolítása
 A **virtuális gépek indítása/leállítása** megoldáshoz el kell távolítania a megoldás által létrehozott riasztási szabályokat is. A következő eljárással távolíthatja el ezeket a szabályokat a Azure Portal.
 
 1. Nyissa meg a **figyelés** menüt, majd válassza a **riasztások**lehetőséget.

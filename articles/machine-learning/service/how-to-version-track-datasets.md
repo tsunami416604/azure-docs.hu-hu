@@ -1,7 +1,7 @@
 ---
 title: Adatkészlet verziószámozása
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg az adathalmazok verziójának és a verziószámozásnak a gépi tanulási folyamatokkal való használatának ajánlott eljárásait
+description: Ismerje meg, hogyan használható az adatkészletek legjobb verziója, és hogyan működik a verziószámozás a Machine learning-folyamatokkal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,31 +9,32 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: a361800623796cb3bc26a47c4f8f532503836124
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72902001"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716096"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a útmutatóban megismerheti, hogyan lehet a reprodukálhatóságot Azure Machine Learning adatkészletek verzióját és nyomon követni. Az adatkészlet verziószámozása lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így a későbbi kísérleteknél az adatkészlet adott verzióját is alkalmazhatja.
+Ebből a cikkből megtudhatja, hogyan lehet a reprodukálni Azure Machine Learning adatkészletek verzióját és nyomon követését. Az adatkészlet verziószámozása lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így az adatkészlet egy adott verzióját később is alkalmazhatja a jövőbeli kísérletekhez.
 
-A verziószámozást általában a következő esetekben érdemes figyelembe venni:
+Jellemző verziószámozási forgatókönyvek:
 
-* Ha új adatgyűjtési lehetőség áll rendelkezésre.
-* Ha különböző adatelőkészítési vagy szolgáltatás-mérnöki módszereket alkalmaz.
+* Ha új adatgyűjtési lehetőség áll rendelkezésre
+* Különböző adatelőkészítési vagy szolgáltatás-mérnöki módszerek alkalmazása esetén
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a következő útmutatók szükségesek:
+Ebben az oktatóanyagban a következőkre lesz szüksége:
 
-- A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a [azureml-adatkészletek](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) csomagot.
+- [A Azure Machine learning SDK for Python telepítve van](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Ez az SDK tartalmazza a [azureml-adatkészletek](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) csomagot.
     
-- Egy [Azure Machine learning munkaterület](concept-workspace.md). Kérje le a meglévőt a következő kóddal, vagy [hozzon létre egy új munkaterületet](how-to-manage-workspace.md).
+- Egy [Azure Machine learning munkaterület](concept-workspace.md). A következő kód futtatásával vagy [egy új munkaterület létrehozásával](how-to-manage-workspace.md)kérjen le egy meglévőt.
 
     ```Python
     import azureml.core
@@ -47,11 +48,11 @@ Ehhez a következő útmutatók szükségesek:
 
 ## <a name="register-and-retrieve-dataset-versions"></a>Adatkészlet-verziók regisztrálása és lekérése
 
-Az adatkészlet regisztrálása lehetővé teszi, hogy a kísérleteken és a munkatársakon keresztül verziót, újrahasznosítsa és megossza azokat. Több adatkészletet is regisztrálhat ugyanazon a néven, és egy adott verziót is beolvashat név és verziószám alapján.
+Az adatkészletek regisztrálásával a kísérleteken és a munkatársakon is megtekintheti, újból felhasználhatja és megoszthatja azokat. Több adatkészletet is regisztrálhat ugyanazon a néven, és egy adott verziót is beolvashat név és verziószám alapján.
 
 ### <a name="register-a-dataset-version"></a>Adatkészlet verziójának regisztrálása
 
-A következő kód regisztrálja az adatkészlet új verzióját, `titanic_ds`a `create_new_version` paraméter `True`értékre való beállításával. Ha nincs meglévő `titanic_ds` regisztrálva a munkaterületen, a létrehoz egy új adatkészletet, amelynek a neve `titanic_ds`, és beállítja annak verzióját 1-re.
+A következő kód regisztrálja az `titanic_ds` adatkészlet új verzióját úgy, hogy a `create_new_version` paramétert `True`értékre állítja be. Ha a munkaterületen nincs regisztrálva létező `titanic_ds` adatkészlet, a kód létrehoz egy új adatkészletet, amelynek a neve `titanic_ds`, és beállítja annak verzióját 1-re.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -78,14 +79,14 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 ## <a name="versioning-best-practice"></a>A verziószámozás ajánlott gyakorlata
 
-Adatkészlet verziójának létrehozásakor **nem** kell külön másolatot készítenie az adatról a munkaterületről. Az adatkészletek a tárolási szolgáltatásban lévő adatokra hivatkoznak, így csak egyetlen, a tárolási szolgáltatás által felügyelt igazság van. 
+Amikor létrehoz egy adatkészlet-verziót, az adatokat *nem* kell külön másolatot készítenie a munkaterületről. Mivel az adatkészletek a Storage szolgáltatásban lévő adatokra hivatkoznak, egyetlen, a tárolási szolgáltatás által felügyelt igazság-forrással rendelkezik.
 
 >[!IMPORTANT]
-> Ha az adatkészlet által hivatkozott adatokat felülírják vagy törlik, az adatkészlet egy adott verziójának meghívása nem tudja visszaállítani a változást. 
+> Ha az adatkészlet által hivatkozott adatokat felülírják vagy törlik, az adatkészlet egy adott verziójának meghívása *nem* tér át a módosításra.
 
-Amikor adatokat tölt be egy adatkészletből, az mindig az adatkészlet által hivatkozott aktuális adattartalmat fogja betölteni. Ha biztosítani szeretné az egyes adatkészlet-verziók reprodukálhatóságát, javasoljuk, hogy ne módosítsa az adatkészlet verziója által hivatkozott adattartalmat. Ha az új adatok bekerülnek, mentse az új adatfájlokat egy külön adatmappába, és hozzon létre egy új adatkészlet-verziót, amely az új adatmappa adatait tartalmazza.
+Amikor adatokat tölt be egy adatkészletből, az adatkészlet által hivatkozott aktuális adattartalom mindig betöltődik. Ha meg szeretné győződni arról, hogy az egyes adatkészlet-verziók reprodukálva vannak, javasoljuk, hogy ne módosítsa az adatkészlet verziója által hivatkozott adattartalmat. Ha az új adatok bekerülnek, mentse az új adatfájlokat egy külön adatmappába, majd hozzon létre egy új adatkészlet-verziót, amely az adott új mappából származó adatokat tartalmazza.
 
-Az alábbi ábra és mintakód mutatja az adatmappák strukturálása ajánlott módját, valamint az ezen mappákra hivatkozó adatkészlet-verziók létrehozását.
+A következő rendszerkép és mintakód mutatja az adatmappák strukturálása és az ezen mappákra hivatkozó adatkészlet-verziók létrehozásának ajánlott módját:
 
 ![Mappa szerkezete](media/how-to-version-datasets/folder-image.png)
 
@@ -117,9 +118,9 @@ dataset2.register(workspace = workspace,
 
 ## <a name="version-a-pipeline-output-dataset"></a>A folyamat kimeneti adatkészletének verziója
 
-Az adatkészletet az egyes Machine learning-(ML-) folyamatok bemenetének és kimenetének megfelelően használhatja. Amikor Újrafuttatja a folyamatokat, az egyes folyamatok lépéseinek kimenete új adatkészlet-verzióként lesz regisztrálva. 
+Az adatkészleteket minden Machine Learning folyamat lépéseinek bemenete és kimenete használatával is használhatja. Ha Újrafuttatja a folyamatokat, az egyes folyamatokhoz tartozó lépések kimenete új adatkészlet-verzióként lesz regisztrálva.
 
-Mivel a ML-folyamatok az egyes lépések kimenetét egy új mappába töltik fel a folyamat minden újrafuttatásakor, a verziószámmal ellátott kimeneti adatkészletek reprodukálva lesznek.
+Mivel Machine Learning folyamatok minden egyes lépés kimenetét egy új mappába töltik fel, valahányszor a folyamat újratöltődik, a verziószámmal ellátott kimeneti adatkészletek reprodukálva lesznek.
 
 ```Python
 from azureml.core import Dataset
@@ -145,9 +146,9 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Adathalmazok nyomon követése kísérletekben
 
-Minden gépi tanulási kísérlet esetében könnyedén nyomon követheti a regisztrált modell `Run` objektumában bemenetként használt adatkészleteket.
+Minden Machine Learning kísérletnél könnyedén nyomon követheti a regisztrált modell `Run` objektumában bemenetként használt adatkészleteket.
 
-A következő kód használatával regisztrálhat modelleket adatkészletekkel.
+A következő kód használatával regisztrálhat modelleket adatkészletekkel:
 
 ```Python
 model = run.register_model(model_name='keras-mlp-mnist',
@@ -155,9 +156,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-A regisztráció után megtekintheti az adatkészletben regisztrált modellek listáját a Python vagy a [munkaterület kezdőlapja](https://ml.azure.com/)segítségével.
+A regisztráció után megtekintheti az adatkészletben regisztrált modellek listáját a Python vagy a [Azure Machine learning Studio](https://ml.azure.com/)használatával.
 
-A következő kód a [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásához.
+A következő kód a [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásával:
 
 ```Python
 # get input datasets
@@ -168,17 +169,17 @@ train_dataset = inputs[0]['dataset']
 train_dataset.to_path()
 ```
 
-A kísérletek `input_datasets` a munkaterület kezdőlapja [(előzetes verzió)](https://ml.azure.com/)használatával is megtalálhatja. 
+A kísérletek `input_datasets` a [Azure Machine learning Studio](https://ml.azure.com/)használatával is megtalálhatja. 
 
-Az alábbi képen látható, hol található a kísérlet bemeneti adatkészlete a munkaterület kezdőlapján. Ebben a példában navigáljon a **kísérletek** ablaktáblához, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`. 
+Az alábbi képen látható, hogy hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studioon. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`.
 
 ![Bemeneti adatkészletek](media/how-to-version-datasets/input-datasets.png)
 
-Az adatkészletet használó modelleket a munkaterület kezdőlapján is megtalálhatja. A következő nézet az adatkészletek paneljén, az eszközök területen található. Válassza ki az adatkészletet, és navigáljon a Models (modellek) lapra az adott adatkészletet használó modellek listájához. 
+Az adatkészletet használó modelleket is megtalálhatja. A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletet használó modellek listájához. 
 
 ![Bemeneti adatkészletek modelljei](media/how-to-version-datasets/dataset-models.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Adatkészletek betanítása](how-to-train-with-datasets.md).
-* [Több minta jegyzetfüzet az adatkészletekhez](https://aka.ms/dataset-tutorial).
+* [Betanítás adatkészletekkel](how-to-train-with-datasets.md)
+* [További minta-adathalmazi jegyzetfüzetek](https://aka.ms/dataset-tutorial)

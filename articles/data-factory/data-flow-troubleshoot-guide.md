@@ -1,5 +1,5 @@
 ---
-title: Az adatfolyamatok Azure Data Factory hibáinak megoldása | Microsoft Docs
+title: Azure Data Factory adatfolyamatok hibáinak megoldása
 description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory az adatfolyamokkal kapcsolatos problémákat.
 services: data-factory
 author: kromerm
@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486184"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721345"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory adatfolyamatok hibáinak megoldása
 
@@ -76,13 +76,22 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 
 - **Megoldás**: csökkentheti a karakterlánc-oszlopok adatainak hosszát egy származtatott oszlopban lévő ```left()``` használatával, vagy a ["hiba sor" mintát.](how-to-data-flow-error-rows.md)
 
+### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Hibaüzenet: a Spark 2,3 óta a nyers JSON-/CSV-fájlokból érkező lekérdezések nem megengedettek, ha a hivatkozott oszlopok csak a belső sérült rekord oszlopot tartalmazzák. 
+
+- **Tünetek**: a JSON-forrásokból való olvasás sikertelen
+
+- **OK**: Ha egy JSON-forrásból egyetlen dokumentummal több beágyazott sorban olvas be egy dokumentumot, az ADF a sparkon keresztül nem tudja meghatározni, hogy az új dokumentum mikor kezdődik és az előző dokumentum véget ér.
+
+- **Megoldás**: JSON-adatkészletet használó forrás-átalakításon bontsa ki a "JSON-beállítások" elemet, és kapcsolja be az "egyetlen dokumentum" beállítást.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 
 1. Keresse meg az adatkészlet kapcsolatainak állapotát. Minden forrás-és fogadó-átalakításban keresse fel a társított szolgáltatást minden Ön által használt adatkészlet esetében, és tesztelje a kapcsolatokat.
 2. Győződjön meg róla, hogy a fájl és a tábla kapcsolatainak állapota az adatfolyam-tervezőben található. Kapcsolja be a hibakeresést, és kattintson az adatelőnézetre a forrás-átalakításokban, és győződjön meg arról, hogy képes hozzáférni az adataihoz.
 3. Ha minden jól látható az adatok előnézetében, ugorjon a folyamat-tervezőbe, és helyezze át az adatfolyamatot egy folyamat tevékenységbe. Egy végpontok közötti teszt folyamatának hibakeresése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

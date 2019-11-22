@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – lépésenkénti útmutató új Android-alkalmazás létrehozásához az Azure térbeli horgonyok használatával | Microsoft Docs
+title: 'Oktatóanyag: új Android-alkalmazás létrehozása'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy új Android-alkalmazást az Azure térbeli horgonyok használatával.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6386ef775f897ca56d2660adf72a885672c8dfd2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092063"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276937"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új Android-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 

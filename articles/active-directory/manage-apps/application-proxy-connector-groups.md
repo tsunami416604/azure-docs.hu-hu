@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások közzététele különálló hálózatokon Azure AD alkalmazás proxy-összekötő csoportjaival | Microsoft Docs
+title: Alkalmazások közzététele különálló hálózatokon összekötő csoportok használatával – Azure AD
 description: A cikk ismerteti, hogyan csoportok az Azure AD-alkalmazásproxy-összekötők létrehozásához és kezeléséhez.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381482"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275566"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
@@ -40,7 +40,7 @@ Az összekötők csoport, győződjön meg arról, hogy rendelkezik [több össz
 
 Ezen lépések összekötő csoportok létrehozásához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy**.
 1. Válassza ki **új összekötőcsoport**. Az új Összekötőcsoport panel jelenik meg.
 
@@ -126,7 +126,7 @@ Az alábbi példában a vállalat rendelkezik két adatközpontban, A és B val�
 
 ![Példa 2 adatközpontot és 2 összekötőt tartalmazó vállalatra](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
 * [Egyszeri bejelentkezés engedélyezése](what-is-single-sign-on.md)

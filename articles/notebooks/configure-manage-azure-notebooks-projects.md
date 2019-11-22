@@ -1,23 +1,14 @@
 ---
 title: Konfigurálhatja és kezelheti az Azure-jegyzetfüzet-projektek
 description: Hogyan kezelheti a projekt metaadatok, soubory projektu, a projekt környezet és a beállítási lépéseket az Azure notebookok felhasználói felület és a terminál közvetlen hozzáférést.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
-ms.author: kraigb
-ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 56c265122894412e79b3d5a7b256964c49ab81a6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973130"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277642"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
@@ -34,7 +25,7 @@ A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális
 
 Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgáló is bármikor leállíthatja a **leállítási** parancsot (billentyűparancs: h).
 
-## <a name="compute-tier"></a>Számítási szint
+## <a name="compute-tier"></a>Számítási szintek
 
 Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak, amely legfeljebb 4 GB memóriával és 1 GB-nyi adattal használható a visszaélések megelőzése érdekében. Megkerülheti ezeket a korlátozásokat, és növelheti a számítási teljesítményt az Azure-előfizetésben üzembe helyezett másik virtuális géppel. További információ: az [Adatelemzési Virtual Machines használata](use-data-science-virtual-machine.md).
 
@@ -70,7 +61,7 @@ A **+ új** parancsot (billentyűparancs: n) hoz létre az új fájlokat vagy ma
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
-A **feltöltési** parancs két lehetőséget kínál az adatok más helyekről történő importálására: **Az URL** -címről és **a számítógépről**. További információkért lásd: [használata az adatfájlokat az Azure-jegyzetfüzet projektek](work-with-project-data-files.md).
+A **feltöltése** parancs adatok importálása más két lehetőséget biztosít: **URL-CÍMRŐL** és **a számítógép**. További információkért lásd: [használata az adatfájlokat az Azure-jegyzetfüzet projektek](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Válassza ki a fájl-specifikus parancsok
 
@@ -81,11 +72,11 @@ A projekt fájl lista minden eleme egy kattintson a jobb gombbal a helyi menü k
 | Parancs | Billentyűparancs | Műveletek |
 | --- | --- | --- |
 | Futtassa a következőt: | az r (vagy kattintson) | A notebook fájl fut. Más fájltípusok megtekintésre nyílnak meg.  |
-| Hivatkozás másolása | Y | Másolja a vágólapra a fájl egy hivatkozást. |
+| Hivatkozás másolása | y | Másolja a vágólapra a fájl egy hivatkozást. |
 | Futtatása a Jupyter-tesztkörnyezet | J | Fut egy jegyzetfüzetet JupyterLab, azaz Jupyter általában biztosít, mint egy több fejlesztő-orientált felületet. |
 | Előzetes verzió | p | Megnyílik egy HTML-előnézetet a fájl; az előzetes verzió notebookokat, a jegyzetfüzet egy csak olvasható leképezési. További információkért lásd: a [előzetes](#preview) szakaszban. |
 | Fájl szerkesztése | I | Megnyitja a fájlt szerkesztésre. |
-| Letöltés | n | Letölti a fájl vagy mappa tartalmát tartalmazó zip-fájlt. |
+| Letöltés | d | Letölti a fájl vagy mappa tartalmát tartalmazó zip-fájlt. |
 | Átnevezés | a | Egy új nevet a fájlhoz vagy mappához tartozó utasításokat. |
 | Törlés | x | Megerősítést kér, majd véglegesen eltávolítja a fájlt a projektben. Törlés nem vonható vissza. |
 | Áthelyezés | p | A fájl ugyanabban a projektben egy másik mappába helyezi át. |
@@ -101,7 +92,7 @@ Az előzetes verziójú szolgáltatásainak weblapján különböző eszköztár
 | Megosztás | s | Megjeleníti a megosztási előugró ablak, amelyről hivatkozás beszerzése, közösségi megosztás, HTML beszerzése a beágyazáshoz és e-mail küldése. |
 | Klónozás | c  | Klónozza a fiókhoz a notebookot. |
 | Futtassa a következőt: | R | Ha Ön jogosult-e ehhez a notebook fut. |
-| Letöltés | n | A notebook másolatát tölti le. |
+| Letöltés | d | A notebook másolatát tölti le. |
 
 ## <a name="configure-the-project-environment"></a>A project-környezet konfigurálása
 
@@ -115,7 +106,7 @@ A projektkonfiguráció minden formája, amikor a virtuális gép elindul, és �
 
 ### <a name="one-time-initialization-script"></a>Egyszeri inicializálási parancsfájlja
 
-Az első Azure notebookok létrehoz egy kiszolgálót, a projekthez, hogy egy fájlt a projektben nevű megkeres *aznbsetup.sh*. Ha ez a fájl jelen, az Azure-jegyzetfüzetek futtatja. A szkript kimenetének tárolva van, a projektmappa fájllistájának *. aznbsetup.log*.
+Az első Azure Notebooks létrehoz egy kiszolgálót a projekthez, amely a *aznbsetup.sh*nevű projektben keres egy fájlt. Ha a fájl megtalálható, Azure Notebooks futtatja. A szkript kimenetének tárolva van, a projektmappa fájllistájának *. aznbsetup.log*.
 
 ### <a name="environment-setup-steps"></a>Környezet beállítási lépéseket
 
@@ -131,11 +122,11 @@ Adjon hozzá egy lépést, először válassza **+ Hozzáadás**, majd válassza
 
 Az adatokat, majd a projekt választott művelet típusától függ:
 
-- **Követelmények. txt**: A második legördülő listában válasszon ki egy, a projektben már szereplő *követelmény. txt* fájlt. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. Használatával egy *requirements.txt* fájlt, az Azure-jegyzetfüzetek futtatása `pip install -r` együtt a *requirements.txt* fájl a notebook server indítása során. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
+- **A Requirements.txt**: a második legördülő listában válassza ki a *requirements.txt* fájlt, amely a projektben már van. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. Használatával egy *requirements.txt* fájlt, az Azure-jegyzetfüzetek futtatása `pip install -r` együtt a *requirements.txt* fájl a notebook server indítása során. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
 
-- **Rendszerhéj-parancsfájl**: A második legördülő listában válasszon ki egy bash rendszerhéj-parancsfájlt a projektben (jellemzően egy *. sh* kiterjesztésű fájl), amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza.
+- **Héjszkript**: a második legördülő listában válassza ki a projekt bash héjparancsfájl (általában egy fájl a *.sh* kiterjesztéssel), amely tartalmazza a környezet inicializálása futtatni kívánt parancs.
 
-- **Environment. YML**: A második legördülő listában válasszon ki egy *Environments. YML* fájlt a Python-projektekhez Conda-környezet használatával.
+- **Environment.yml**: a második legördülő listában válassza ki egy *environments.yml* fájl Pro projekty v Pythonu egy conda-környezetben.
 
 Ha elkészült a lépések hozzáadásával, válassza ki a **mentése**.
 
@@ -188,7 +179,7 @@ A parancs egy Python-jegyzetfüzetet egyik kódcellájába is használja:
 !cat .nb.log
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Útmutató: Project-adatfájlok használata @ no__t-0
+- [Útmutató: adatok soubory projektu használata](work-with-project-data-files.md)
 - [Hozzáférés felhőbeli adatok történő használatát](access-data-resources-jupyter-notebooks.md)

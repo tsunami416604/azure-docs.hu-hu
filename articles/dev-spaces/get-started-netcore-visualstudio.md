@@ -1,24 +1,20 @@
 ---
-title: Hozzon létre egy Kubernetes-fejlesztési tárolóhelyet a felhőben a .NET Core és a Visual Studio használatával
-titleSuffix: Azure Dev Spaces
+title: Kubernetes fejlesztői terület létrehozása a felhőben a .NET Core és a Visual Studio használatával
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: 4b37da8d31fc5ac605e59d9aceb456e996df438b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
+ms.openlocfilehash: 2509226bfa76d4a2f98282b062f7d7714f202b00
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503059"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280211"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure fejlesztői szóközöket a .NET Core és a Visual Studio használatának első lépései
+# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Ismerkedés az Azure dev Spaces szolgáltatással a .NET Core és a Visual Studio használatával
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
@@ -28,7 +24,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
 > [!Note]
-> **Ha elakad,** bármikor, tekintse meg a [hibaelhárítás](troubleshooting.md) szakaszban.
+> **Ha bármikor elakad** , tekintse meg a [Hibaelhárítás](troubleshooting.md) című szakaszt.
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
@@ -36,16 +32,16 @@ Ebből az útmutatóból a következőket tudhatja meg:
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 1. Válassza az **Erőforrás létrehozása** lehetőséget > keressen a **Kubernetes** kifejezésre > válassza a **Kubernetes Service** > **Létrehozás** elemet.
 
-   A következő lépéseket minden egyes címsora alatt a *létre Kubernetes-fürt* alkotnak, és ellenőrizze a kiválasztott [régió támogatja az Azure fejlesztési tárolóhelyek][supported-regions].
+   Hajtsa végre a következő lépéseket a Kubernetes- *fürt létrehozása* űrlap minden címsorában, és ellenőrizze, hogy a kiválasztott régió támogatja-e az [Azure dev Spaces][supported-regions]elemet.
 
-   - **A PROJECT DETAILS**: válassza ki az Azure-előfizetés és a egy új vagy meglévő Azure-erőforráscsoportot.
+   - **Projekt részletei**: válasszon ki egy Azure-előfizetést és egy új vagy meglévő Azure-erőforráscsoportot.
    - **FÜRT ADATAI**: adjon meg egy nevet, régiót, verziót és DNS-névelőtagot az AKS-fürthöz.
    - **MÉRET**: válassza ki a virtuálisgép-méretet az AKS-ügynökcsomópontok számára, és a csomópontok számát. Ha most kezdte el az Azure Dev Spaces használatát, egyetlen csomópont elegendő az összes funkció kipróbálásához. A csomópontok száma bármikor egyszerűen beállítható a fürt telepítése után. Vegye figyelembe, hogy a virtuálisgép-méret az AKS-fürt létrehozását követően nem módosítható. Az AKS-fürt telepítése után azonban egyszerűen létrehozhat egy új, nagyobb virtuális gépekkel rendelkező AKS-fürtöt, majd a Dev Spaces használatával újratelepíthet erre a nagyobb fürtre, ha felskálázásra van szükség.
 
    ![Kubernetes konfigurációs beállításai](media/common/Kubernetes-Create-Cluster-2.PNG)
 
 
-   Válassza ki **tovább: Hitelesítési** teljes.
+   Ha kész, válassza a **Következő: Hitelesítés** elemet.
 
 1. Válassza ki a Szerepköralapú hozzáférés-vezérlés (RBAC) kívánt beállítását. Az Azure Dev Spaces engedélyezett és letiltott RBAC esetén is támogatja a fürtöket.
 
@@ -54,15 +50,15 @@ Ebből az útmutatóból a következőket tudhatja meg:
 1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="get-the-visual-studio-tools"></a>A Visual Studio eszközeinek beszerzése
-Telepítse a legújabb verzióját, [Visual Studio](https://www.visualstudio.com/vs/). A Windows a Visual Studio 2019, telepítenie kell az Azure-fejlesztési számítási feladatot. A Windows a Visual Studio 2017, telepítenie kell az ASP.NET- és fejlesztési számítási feladatot, valamint [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio).
+Telepítse a [Visual Studio](https://www.visualstudio.com/vs/)legújabb verzióját. A Windowshoz készült Visual Studio 2019-es számítógépeken telepítenie kell az Azure-fejlesztési munkafolyamatot. A Windowshoz készült Visual Studio 2017-es számítógépen telepítenie kell a ASP.NET és a webes fejlesztési számítási feladatot, valamint a [Kubernetes készült Visual Studio-eszközöket](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Egy tárolóban futó webalkalmazás létrehozása
 
-Ebben a szakaszban fog egy ASP.NET Core-webalkalmazás létrehozása és futtatása a Kubernetesben tárolóban lévő letöltés.
+Ebben a szakaszban létre fog hozni egy ASP.NET Core webalkalmazást, és egy tárolóban fogja futtatni a Kubernetes-ben.
 
 ### <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
-A Visual studióban hozzon létre egy új projektet. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Adja a projektnek a „**webfrontend**” nevet.
+Hozzon létre egy új projektet a Visual studióból. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Adja a projektnek a „**webfrontend**” nevet.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -90,10 +86,10 @@ Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-Válassza az **OK** gombot.
+Kattintson az **OK** gombra.
 
 > [!IMPORTANT]
-> Az Azure fejlesztési tárolóhelyek konfigurációs folyamat eltávolítja a `azds` névtér a fürtben, ha az már létezik.
+> Ha létezik, akkor az Azure dev Spaces konfigurációs folyamata eltávolítja a `azds` névteret a fürtben.
 
  Egy háttérművelet fogja végrehajtani a konfigurálást. Ez eltarthat néhány percig. Ha meg szeretné nézni, hogy tart-e még a folyamat, vigye az egérmutatót az állapotsor bal alsó sarkában lévő **Háttérfolyamatok** ikon fölé, az alábbi ábrán látható módon.
 
@@ -127,7 +123,7 @@ Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolg
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
 
 
-1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Módosítsa például [. sor, amely beolvas 73 `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) a következőhöz hasonló: 
+1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Például módosítsa a [73 sort, amely](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) az alábbihoz hasonló adatokat olvas `<h2>Application uses</h2>`: 
   
     ```html
     <h2>Hello k8s in Azure!</h2>`
@@ -150,10 +146,10 @@ Ahelyett, hogy a kód minden szerkesztése alkalmával újra létrehozna és üz
 
 Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldalra. Az egyedi üzenetnek meg kell jelennie a felhasználói felületen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók több szolgáltatást fejlesztési](multi-service-netcore-visualstudio.md)
+> [További tudnivalók a több szolgáltatás fejlesztéséről](multi-service-netcore-visualstudio.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations
