@@ -1,31 +1,31 @@
 ---
-title: Csatlakozás Truffle használatával
+title: A szarvasgomba használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz
 description: Kapcsolódás Azure Blockchain Service networkhez a szarvasgomba használatával
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932599"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285364"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Gyors útmutató: A Truffle használata egy tranzakciós csomóponthoz való kapcsolódáshoz
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Rövid útmutató: a szarvasgomba használata az Azure Blockchain szolgáltatáshoz való kapcsolódáshoz
 
-A szarvasgomba egy blockchain fejlesztési környezet, amellyel csatlakozhat egy Azure Blockchain szolgáltatás-tranzakciós csomóponthoz.
+Ebben a rövid útmutatóban a szarvasgomba-kapcsolatot használja egy Azure Blockchain szolgáltatás-tranzakciós csomóponthoz. Ezután a szarvasgomba interaktív konzollal meghívhatja a **web3** metódusokat a blockchain-hálózattal való kommunikációhoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [gyors útmutató: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI-vel](create-member-cli.md)
+* Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
 * A [szarvasgomba](https://github.com/trufflesuite/truffle)telepítése. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)-t.
 * Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a Web3.
 
@@ -58,18 +58,21 @@ A szarvasgomba egy blockchain fejlesztési környezet, amellyel csatlakozhat egy
 
 A szarvasgomba projekt konfigurálásához szükség van néhány tranzakciós csomópontra a Azure Portal.
 
-### <a name="transaction-node-endpoint-addresses"></a>Tranzakciós csomópont végpontjának címei
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Nyissa meg az Azure Blockchain-szolgáltatás tagját. Válassza a **tranzakciós csomópontok** és az alapértelmezett tranzakció csomópontja hivatkozást.
 
-1. A Azure Portal navigáljon az alapértelmezett tranzakciós csomóponthoz, és válassza a **tranzakciós csomópontok > kapcsolódási karakterláncok**lehetőséget.
-1. Másolja és mentse a végponti URL-címet a https-ről **(1. hozzáférési kulcs)** . Az oktatóanyag későbbi részében szüksége lesz az intelligens szerződés konfigurációs fájljához tartozó végponti címekre.
+    ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/connect-truffle/transaction-nodes.png)
 
-    ![Tranzakció végpontjának címe](./media/connect-truffle/endpoint.png)
+1. Válassza a **kapcsolatok karakterláncok**lehetőséget.
+1. Másolja a kapcsolati karakterláncot a https-ről **(1. hozzáférési kulcs)** . A következő szakaszhoz szüksége lesz a karakterláncra.
+
+    ![Kapcsolati sztring](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>Konfigurációs fájl szerkesztése
 
 Ezután frissítenie kell a szarvasgomba konfigurációs fájlját a tranzakciós csomópont végpontjának használatával.
 
-1. A **truffledemo** Project mappában Nyissa meg a szarvasgomba konfigurációs `truffle-config.js` fájlt egy szerkesztőben.
+1. A **truffledemo** projekt mappában Nyissa meg a szarvasgomba konfigurációs fájlt `truffle-config.js` egy szerkesztőben.
 1. Cserélje le a fájl tartalmát a következő konfigurációs adatokra. Adjon hozzá egy változót, amely tartalmazza a végponti címeket. A szögletes zárójelet cserélje le az előző szakaszból összegyűjtött értékekre.
 
     ``` javascript
@@ -86,7 +89,7 @@ Ezután frissítenie kell a szarvasgomba konfigurációs fájlját a tranzakció
     }
     ```
 
-1. Mentse a módosításokat a `truffle-config.js`következőre:.
+1. Mentse `truffle-config.js`módosításait.
 
 ## <a name="connect-to-transaction-node"></a>Csatlakozás tranzakciós csomóponthoz
 
@@ -100,7 +103,7 @@ A *Web3* használatával kapcsolódjon a tranzakciós csomóponthoz.
 
     A szarvasgomba csatlakozik az alapértelmezett tranzakciós csomóponthoz, és egy interaktív konzolt biztosít.
 
-    A **web3** objektum metódusait hívhatja a tranzakciós csomóponttal való interakcióhoz.
+    A **web3** objektumon metódusokat hívhat meg a blockchain-hálózattal való kommunikációhoz.
 
 1. Hívja meg a **getBlockNumber** metódust az aktuális blokk számának visszaadásához.
 
@@ -120,11 +123,11 @@ A *Web3* használatával kapcsolódjon a tranzakciós csomóponthoz.
     .exit
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy szarvasgomba-projektet az Azure Blockchain szolgáltatás alapértelmezett tranzakciós csomópontjához való kapcsolódáshoz.
+Ebben a rövid útmutatóban a szarvasgomba az Azure Blockchain szolgáltatás alapértelmezett tranzakciós csomóponthoz való kapcsolódását használta, és az interaktív konzollal visszaküldte az aktuális Blockchain-blokk számát.
 
-Próbálja ki a következő oktatóanyagot az Azure Blockchain Development Kit for Ethereum és a szarvasgomba használatával egy intelligens szerződési funkció egy tranzakción keresztül történő létrehozásához, létrehozásához, üzembe helyezéséhez és végrehajtásához.
+Próbálja ki a következő oktatóanyagot a Ethereum készült Azure Blockchain Development Kit használatával egy intelligens szerződési funkció létrehozásához, összeállításához, üzembe helyezéséhez és végrehajtásához tranzakción keresztül.
 
 > [!div class="nextstepaction"]
 > [Intelligens szerződések létrehozása, készítése és üzembe helyezése a Visual Studio Code használatával](send-transaction.md)

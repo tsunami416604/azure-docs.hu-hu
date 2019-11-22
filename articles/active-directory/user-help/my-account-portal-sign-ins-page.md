@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587627"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279038"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezések (előzetes verzió) lapról
 
@@ -49,7 +49,7 @@ A probléma meghatározása előtt győződjön meg arról, hogy nem jelenik meg
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Ha sikertelen bejelentkezést lát
 
-Sikertelen bejelentkezés – a munkamenet-tevékenység nélkül – az elsődleges hitelesítési módszer (username/Password) nem sikerült. Ez azt jelentheti, hogy helytelenül adta meg a felhasználónevet vagy a jelszót, de azt is jelentheti, hogy egy támadó megpróbálta kitalálni a jelszavát. Ha úgy gondolja, hogy a támadó sikeresen próbálta kitalálni a jelszavát, nem kell módosítania a jelszavát, de határozottan javasoljuk, hogy regisztrálja az Azure Multi-Factor Authentication (MFA). Az MFA-val még akkor is, ha a hacker végül kitalálta a jelszavát, nem lesz elég a fiókjához való hozzáféréshez.
+Sikertelen bejelentkezés – a munkamenet-tevékenység nélkül – az elsődleges ellenőrzési módszer (username/Password) nem sikerült. Ez azt jelentheti, hogy helytelenül adta meg a felhasználónevet vagy a jelszót, de azt is jelentheti, hogy egy támadó megpróbálta kitalálni a jelszavát. Ha úgy gondolja, hogy a támadó sikeresen próbálta kitalálni a jelszavát, nem kell módosítania a jelszavát, de határozottan javasoljuk, hogy regisztrálja az Azure Multi-Factor Authentication (MFA). Az MFA-val még akkor is, ha a hacker végül kitalálta a jelszavát, nem lesz elég a fiókjához való hozzáféréshez.
 
 Ha nem sikerül bejelentkeznie, és a munkamenet-tevékenység alatt megjegyzés jelenik meg, a **további ellenőrzés meghiúsult, a kód érvénytelen**, az azt jelenti, hogy az elsődleges hitelesítés (felhasználónév/jelszó) sikeres volt, de az MFA nem sikerült. Ha ez egy támadó, akkor helyesen kitalálta a jelszavát, de még nem tudta átadni az MFA-feladatot. Ebben az esetben javasoljuk, hogy változtassa meg a jelszavát, mert a támadó megkapta ezt a részt, majd lépjen a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapra a biztonsági beállítások frissítéséhez.
 
@@ -63,7 +63,7 @@ A legutóbbi bejelentkezési tevékenységeit bármely elérhető információ a
 
     ![Közelmúltbeli tevékenység lap, a Kiemelt keresősáv, a Keresés gomb és az eredmények megjelenítése](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legutóbbi bejelentkezési tevékenység megtekintése után a következőket teheti:
 

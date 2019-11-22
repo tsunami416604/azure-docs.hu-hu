@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Blueprints áttekintése
+    - name: Mi az az Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
 - name: Gyors útmutatók

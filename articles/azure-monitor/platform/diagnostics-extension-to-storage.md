@@ -1,6 +1,6 @@
 ---
 title: Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
-description: Azure diagnostics-adatok beolvasása az Azure Storage-ba, és azok megtekintése
+description: Ismerje meg, hogyan gyűjthet Azure-diagnosztikai adatokat egy Azure Storage-fiókban, így megtekintheti azt a számos elérhető eszköz egyikével.
 services: azure-monitor
 author: jpconnock
 ms.service: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395067"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304964"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
-Diagnosztikai adatok nem tartósan tárolja, ha azt át a Microsoft Azure storage emulator vagy az Azure storage. Egyszer a storage szolgáltatással, azt is megtekinthetők a számos elérhető eszközök egyikét.
+A diagnosztikai adatok nem tárolódnak véglegesen, hacsak nem továbbítja azt a Microsoft Azure Storage-emulátorba vagy az Azure Storage-ba. A tárolás után a több elérhető eszköz egyikével is megtekinthető.
 
-## <a name="specify-a-storage-account"></a>A storage-fiók megadása
-Megadhatja a a ServiceConfiguration.cscfg fájlban használni kívánt tárfiókot. A fiók adatait a konfigurációs beállítások kapcsolati karakterláncként van definiálva. Az alábbi példa bemutatja a Felhőszolgáltatás a Visual Studio új projekt számára létrehozott alapértelmezett kapcsolati karakterlánc:
+## <a name="specify-a-storage-account"></a>Válasszon Storage-fiókot
+A ServiceConfiguration. cscfg fájlban használni kívánt Storage-fiókot kell megadnia. A fiókadatok a konfigurációs beállításokban kapcsolatok karakterláncként vannak megadva. Az alábbi példa a Visual Studióban egy új Cloud Service-projekthez létrehozott alapértelmezett kapcsolatok karakterláncát mutatja be:
 
 ```
     <ConfigurationSettings>
@@ -27,57 +27,57 @@ Megadhatja a a ServiceConfiguration.cscfg fájlban használni kívánt tárfiók
     </ConfigurationSettings>
 ```
 
-Módosíthatja ezt a fiókot információk az Azure storage-fiókhoz tartozó kapcsolati karakterláncot.
+Ez a kapcsolódási sztring módosítható egy Azure Storage-fiókhoz tartozó fiókadatok megadásához.
 
-Gyűjtött diagnosztikai adatok típusától függően az Azure Diagnostics használja a Blob szolgáltatás vagy a Table service. Az alábbi táblázat bemutatja azokat az adatforrásokat, tárolja és a formátuma.
+A gyűjtött diagnosztikai adatok típusától függően Azure Diagnostics a Blob service vagy a Table service használja. A következő táblázat a megőrzött adatforrásokat és azok formátumát mutatja be.
 
 | Adatforrás | Tárolási formátum |
 | --- | --- |
-| Az Azure-naplók |Tábla |
-| Az IIS 7.0-naplók |Blob |
+| Azure-naplók |Tábla |
+| IIS 7,0-naplók |Blob |
 | Azure Diagnostics-infrastruktúranaplók |Tábla |
-| Sikertelen kérelmek nyomkövetési naplók |Blob |
+| Sikertelen kérelmek nyomkövetési naplói |Blob |
 | Windows-eseménynaplók |Tábla |
 | Teljesítményszámlálók |Tábla |
 | összeomlási memóriaképek, |Blob |
 | Egyéni hibanaplók |Blob |
 
 ## <a name="transfer-diagnostic-data"></a>Diagnosztikai adatok átvitele
-SDK 2.5-ös és újabb a diagnosztikai adatok átadására irányuló kérelmet fordulhat elő, a konfigurációs fájl segítségével. Diagnosztikai adatok átadhatja a konfigurációban megadott időközönként.
+Az SDK 2,5-es és újabb verzióiban a diagnosztikai adatok átvitelére irányuló kérelem a konfigurációs fájlon keresztül történhet. A diagnosztikai adatok átvihetők ütemezett időközönként a konfigurációban megadott módon.
 
-Az SDK 2.4 és az előző kérheti a diagnosztikai adatok átviteléhez, valamint a konfigurációs fájl segítségével, programozott módon. Programozott megközelítés lehetővé teszi, hogy igény szerinti adatforgalom.
+Az SDK 2,4 és az előző csomag esetében a diagnosztikai adatoknak a konfigurációs fájlon keresztül történő átvitelét, valamint programozott módon történő továbbítását kérheti. A programozott megközelítés lehetővé teszi az igény szerinti átvitelt is.
 
 > [!IMPORTANT]
-> Diagnosztikai adatok átvitele az Azure storage-fiók, ha a diagnosztikai adatok által használt tárolási erőforrások költségeinek számítunk fel.
+> A diagnosztikai adatok Azure Storage-fiókba való átvitele során a diagnosztikai adatok által használt tárolási erőforrások költségei is felmerülnek.
 > 
 > 
 
-## <a name="store-diagnostic-data"></a>Diagnosztikai adatok Store
-Naplóadatok tárolja a Blob vagy Table storage a következő nevekkel:
+## <a name="store-diagnostic-data"></a>Diagnosztikai adattárolók tárolása
+A naplófájlok tárolása a blob vagy a Table Storage szolgáltatásban történik a következő nevekkel:
 
 **Táblák**
 
-* **WadLogsTable** – írt kód a nyomkövetés-figyelő naplókat.
-* **WADDiagnosticInfrastructureLogsTable** -diagnosztikai figyelő és a konfigurációs módosítások.
-* **WADDirectoriesTable** – a diagnosztikai figyelő által figyelt könyvtárak.  Ez magában foglalja az IIS-naplók, IIS sikertelen kérelmekről készült naplók, és egyéni könyvtárak.  A blob naplófájl helye a tároló mezőben van megadva, és a blob nevét, a RelativePath mezőben.  A AbsolutePath jelzi a hely és a fájl nevét, az Azure virtuális gépen is létezett.
+* **WadLogsTable** – a nyomkövetési figyelő használatával kódban írt naplók.
+* **WADDiagnosticInfrastructureLogsTable** – diagnosztikai figyelő és konfigurációs változások.
+* **WADDirectoriesTable** – a diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett.
 * **WADPerformanceCountersTable** – teljesítményszámlálók.
-* **WADWindowsEventLogsTable** – Windows eseménynaplói nem tartalmaznak.
+* **WADWindowsEventLogsTable** – Windows-eseménynaplók.
 
 **Blobok**
 
-* **WAD-vezérlés – container** – (csak az SDK 2.4 és az előző) szabályozza az Azure diagnostics XML konfigurációs fájlokat tartalmazza.
-* **WAD-az iis-failedreqlogfiles** – a sikertelen kéréseket az IIS-naplók adatait tartalmazza.
-* **WAD-az iis-naplófájlok** – IIS-naplók információkat tartalmaz.
-* **"egyéni"** – egy egyéni tároló alapján a diagnosztikai figyelő által figyelt könyvtárak beállítása.  Ez a blobtároló nevét kell megadni a WADDirectoriesTable.
+* **wad-Control-Container** – (csak az SDK 2,4-es és korábbi esetében) tartalmazza az Azure Diagnostics-t vezérlő XML-konfigurációs fájlokat.
+* **wad-IIS-failedreqlogfiles** – az IIS sikertelen kérelmek naplóiból származó információkat tartalmaz.
+* **wad-IIS-LogFiles** – az IIS-naplókról tartalmaz információkat.
+* **"Custom"** – egyéni tároló, amely a diagnosztikai figyelő által figyelt könyvtárak konfigurálásán alapul.  A blob-tároló neve a WADDirectoriesTable-ben lesz meghatározva.
 
-## <a name="tools-to-view-diagnostic-data"></a>Eszközök diagnosztikai adatainak megtekintése
-Storage követően az adatok megtekintéséhez számos eszközök érhetők el. Példa:
+## <a name="tools-to-view-diagnostic-data"></a>Eszközök a diagnosztikai adatgyűjtés megtekintéséhez
+Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Például:
 
-* Server Explorerben a Visual Studio - Ha telepítette az Azure-eszközöket a Microsoft Visual Studio segítségével az Azure Storage-csomópont a Server Explorerben csak olvasható blobok és táblák adatainak megtekintése az Azure storage-fiókok. Helyi emulátor tárfiókban lévő adatokat megjelenítheti és is a storage-fiókok számára létrehozott Azure. További információkért lásd: [böngészés és tárolási erőforrások kezelése a Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
-* [A Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, os x és Linux rendszereken.
-* [Az Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) magában foglalja az Azure Diagnostics Managert, amely lehetővé teszi, hogy a megtekintése, letöltése és kezelése az Azure-ban futó alkalmazások által gyűjtött diagnosztikai adatok.
+* Kiszolgálókezelő a Visual Studióban – ha telepítette a Microsoft Visual studióhoz készült Azure-eszközöket, a Server Explorerben az Azure Storage csomópont használatával megtekintheti az Azure Storage-fiókok írásvédett blob-és táblázat-adatait. A helyi Storage Emulator-fiókból és az Azure-hoz létrehozott Storage-fiókoktól származó adatok is megjeleníthetők. További információ: [Storage-erőforrások tallózása és kezelése a Server Explorerben](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
+* A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.
+* Az [azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) tartalmaz Azure Diagnostics kezelőt, amely lehetővé teszi az Azure-on futó alkalmazások által gyűjtött diagnosztikai adatok megtekintését, letöltését és kezelését.
 
 ## <a name="next-steps"></a>További lépések
-[A Cloud Services-alkalmazás az Azure Diagnostics segítségével folyamatot nyomon követése](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+[A folyamat nyomon követése egy Cloud Services alkalmazásban Azure Diagnostics](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 
 

@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127925"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278086"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Az Azure CDN-termékszolgáltatások összehasonlítása
 
-Az Azure Content Delivery Network (CDN) négy terméket tartalmaz: **Azure CDN standard**a Microsofttól, **Azure CDN standard from Akamai**, **Azure CDN standard from Verizon**, és **Azure CDN Premium a verizontól**. A **Verizon Azure CDN Standard** típusú profilok **Verizon Azure CDN Premium** típusú profilba történő migrálására vonatkozó információkért lásd az [Azure CDN-profil Standard Verizonból Premium Verizonba történő migrálását](cdn-migrate.md) ismertető cikket. Vegye figyelembe, hogy habár a standard Verizon és a prémium Verizon közötti frissítési útvonal található, a többi termék között nincs konverziós mechanizmus.
+Az Azure Content Delivery Network (CDN) négy terméket tartalmaz: a **Microsoft Azure CDN Standard**, az **Akamai Azure CDN Standard**, a **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** terméket. A **Verizon Azure CDN Standard** típusú profilok **Verizon Azure CDN Premium** típusú profilba történő migrálására vonatkozó információkért lásd az [Azure CDN-profil Standard Verizonból Premium Verizonba történő migrálását](cdn-migrate.md) ismertető cikket. Vegye figyelembe, hogy habár a standard Verizon és a prémium Verizon közötti frissítési útvonal található, a többi termék között nincs konverziós mechanizmus.
 
 Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 
@@ -41,11 +41,11 @@ Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 | [Globális kiszolgálói terheléselosztás (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Gyors végleges törlés](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** Az összes törlése és a helyettesítő karakteres kiürítés nem támogatott Azure CDN a Akamai jelenleg |**&#x2713;** |**&#x2713;** |
 | [Objektumok előzetes betöltése](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| Gyorsítótár-/fejlécbeállítások (a [gyorsítótárszabályokkal](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
-| Testreszabható, szabályokon alapuló tartalomszolgáltató motor ( [Rules Engine](cdn-rules-engine.md)használatával)  |  | | |**&#x2713;** |
-| Gyorsítótár-/fejlécbeállítások (a [szabálymotorral](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| URL átirányítása/újraírása (a [szabályok motorjának](cdn-rules-engine.md)használatával)  |  | | |**&#x2713;** |
-| Mobileszközökre vonatkozó szabályok (a [szabálymotorral](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| Gyorsítótár-/fejlécbeállítások (a [gyorsítótárszabályokkal](cdn-caching-rules.md))  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használata  |**&#x2713;** |**&#x2713;** | |
+| Testreszabható, szabályokon alapuló Content Delivery Engine |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használata  | | |**&#x2713;** a [Rules Engine](cdn-rules-engine.md) használata |
+| Gyorsítótár/fejléc beállításai  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használata | | |**&#x2713;** [Premium Rules Engine](cdn-rules-engine.md) használata |
+| URL-átirányítás/újraírás |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használata  | | |**&#x2713;** [Premium Rules Engine](cdn-rules-engine.md) használata |
+| Mobileszköz-szabályok  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használata | | |**&#x2713;** [Premium Rules Engine](cdn-rules-engine.md) használata |
 | [Lekérdezési sztringek gyorsítótárazása](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Kettős verem (IPv4/IPv6) | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2-támogatás](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -72,7 +72,7 @@ Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 | Egyszerű integráció a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Web Apps](cdn-add-to-web-app.md), a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) és egyéb Azure-szolgáltatásokkal  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Felügyelet [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Tömörítési MIME-típusok](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Csak alapértelmezett |Konfigurálható |Konfigurálható  |Konfigurálható  |
-| Tömörítési kódolások  |gzip, brotli |gzip |gzip, deflate, bzip2, brotili  |gzip, deflate, bzip2, brotili  |
+| Tömörítési kódolások  |gzip, brotli |Gzip |gzip, deflate, bzip2, brotili  |gzip, deflate, bzip2, brotili  |
 
 
 

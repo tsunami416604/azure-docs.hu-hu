@@ -1,5 +1,5 @@
 ---
-title: Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
+title: Klasszikus Windowsos VM-metrikák küldése Azure Monitor metrikák adatbázisának
 description: Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
 author: anirudhcavale
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844922"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286148"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor adattárához (klasszikus)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor metrikáinak adatbázisába (klasszikus)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 A Azure Monitor [diagnosztikai bővítmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (más néven "wad" vagy "diagnosztika") lehetővé teszi mérőszámok és naplók összegyűjtését a virtuális gép, a Cloud Service vagy a Service Fabric-fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
 
-Ez a cikk a vendég operációs rendszer teljesítményének mérőszámait ismerteti a Windows rendszerű virtuális gépek (klasszikus) Azure Monitor metrika-tárolóba való küldésének folyamatán. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént. 
+Ez a cikk a vendég operációs rendszer teljesítményének mérőszámait mutatja be a Windows rendszerű virtuális gépek (klasszikus) Azure Monitor metrika-adatbázisba való küldésének folyamatát. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént. 
 
 Az ezen a helyen való tárolása lehetővé teszi, hogy ugyanazokat a műveleteket hajtsa végre, mint a platform metrikái esetében. A műveletek közé tartozik a közel valós idejű riasztás, a diagramok, az Útválasztás, a hozzáférés egy REST API és egyebek. Korábban a diagnosztikai bővítmény az Azure Storage-ba írt, de nem a Azure Monitor adattárba. 
 
@@ -31,7 +31,7 @@ A cikkben leírt folyamat csak a Windows operációs rendszert futtató klasszik
 
 - Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](../../billing/billing-add-change-azure-subscription-administrator.md) kell lennie. 
 
-- Az előfizetést regisztrálni kell a [Microsoft.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)ininsights szolgáltatásban. 
+- Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban. 
 
 - [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
 
@@ -40,12 +40,12 @@ A cikkben leírt folyamat csak a Windows operációs rendszert futtató klasszik
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Klasszikus virtuális gép és Storage-fiók létrehozása
 
 1. Hozzon létre egy klasszikus virtuális gépet a Azure Portal használatával.
-   ![Klasszikus virtuális gép létrehozása](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
+   ![klasszikus virtuális gép létrehozása](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
 1. A virtuális gép létrehozásakor válassza a klasszikus új Storage-fiók létrehozása lehetőséget. Ezt a Storage-fiókot a későbbi lépésekben használjuk.
 
 1. A Azure Portal nyissa meg a **Storage-fiókok** erőforrás panelt. Válassza a **kulcsok**lehetőséget, és jegyezze fel a Storage-fiók nevét és a Storage-fiók kulcsát. Ezt az információt a későbbi lépésekben kell megadnia.
-   ![Tároló-hozzáférési kulcsok](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+   ![Storage-hozzáférési kulcsok](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
@@ -200,9 +200,9 @@ Adja meg az alkalmazásnak a "figyelési metrika közzétevője" engedélyt ahho
 1. A névterek legördülő menüben válassza az **Azure. VM. Windows. Guest**lehetőséget.
 
 1. A metrikák legördülő menüben válassza a **Memory\Committed bájtok használatban**lehetőséget.
-   ![Kirajzolt metrikák](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+   ![mintaterület-metrikák](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
 

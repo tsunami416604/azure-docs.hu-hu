@@ -1,5 +1,5 @@
 ---
-title: Problémák a nem gyűjteményes összevont egyszeri bejelentkezés alkalmazásba való bejelentkezéskor | Microsoft Docs
+title: Problémák a nem gyűjteményes összevont egyszeri bejelentkezés alkalmazásba való bejelentkezéskor
 description: Útmutató az Azure AD-vel az SAML-alapú összevont egyszeri bejelentkezéshez konfigurált alkalmazásba való bejelentkezéskor felmerülő problémákhoz
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26f52db394877cff13bf4b0b476a9603c1ddba8
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381392"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274856"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problémák az összevont egyszeri bejelentkezéshez konfigurált, nem Gallery-alkalmazásba való bejelentkezéskor
 
@@ -32,7 +32,7 @@ Az alábbi bejelentkezési problémák elhárításához javasoljuk, hogy köves
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
-*AADSTS70001 hiba: Az azonosítóval `https://contoso.com` rendelkező alkalmazás nem található a címtárban*.
+*Hiba történt a AADSTS70001: `https://contoso.com` azonosítójú alkalmazás nem található a címtárban*.
 
 **Lehetséges ok**
 
@@ -40,7 +40,7 @@ Az SAML-kérelemben az alkalmazásból az Azure AD-be küldött kiállítói att
 
 **Felbontás**
 
-Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
@@ -62,7 +62,7 @@ Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútu
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válasz címe nem egyezik meg az alkalmazáshoz konfigurált Válaszcím-címekkel. 
 
-*AADSTS50011 hiba: A válasz címe `https://contoso.com` nem egyezik az alkalmazáshoz konfigurált Válaszcím-címekkel.* 
+*Hiba AADSTS50011: a válasz címének `https://contoso.com` nem felel meg az alkalmazáshoz konfigurált válaszoknak.* 
 
 **Lehetséges ok** 
 
@@ -70,7 +70,7 @@ Az SAML-kérelem AssertionConsumerServiceURL értéke nem felel meg az Azure AD-
 
 **Felbontás** 
 
-Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
  
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként. 
 
@@ -88,13 +88,13 @@ Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútu
 
 7. Az alkalmazás betöltése után kattintson az **egyszeri bejelentkezésre** az alkalmazás bal oldali navigációs menüjében.
 
-8. Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Ellenőrizze vagy frissítse a válasz URL-címe szövegmezőben szereplő értéket, `AssertionConsumerServiceURL` hogy az megfeleljen az SAML-kérelemben szereplő értéknek.    
+8. Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Ellenőrizze vagy frissítse a válasz URL-címe szövegmezőben szereplő értéket, hogy az megfeleljen az SAML-kérelem `AssertionConsumerServiceURL` értékének.    
     
 Miután frissítette a válasz URL-értékét az Azure AD-ben, és megfelel az alkalmazás által az SAML-kérelemben küldött értéknek, be kell tudnia jelentkezni az alkalmazásba.
 
 ## <a name="user-not-assigned-a-role"></a>A felhasználó nincs szerepkörhöz rendelve
 
-*AADSTS50105 hiba: A bejelentkezett felhasználó `brian\@contoso.com` nincs hozzárendelve az alkalmazás egyik szerepköréhez sem*
+*Hiba AADSTS50105: a bejelentkezett felhasználó `brian\@contoso.com` nincs hozzárendelve az alkalmazás egyik szerepköréhez sem*
 
 **Lehetséges ok**
 
@@ -128,7 +128,7 @@ Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendel
 
 11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható** Ha **egynél több felhasználót**szeretne felvenni, írjon be egy másik **teljes nevet** vagy **e-mail-címet** a **Keresés név vagy e-mail-cím** Keresés mezőbe, és kattintson a jelölőnégyzetre a felhasználó a **kiválasztott** listához való hozzáadásához.
+12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
 13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 
@@ -140,19 +140,19 @@ Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeke
 
 ## <a name="not-a-valid-saml-request"></a>Nem érvényes SAML-kérelem
 
-*AADSTS75005 hiba: A kérelem nem érvényes egy saml2 protokoll-üzenet.*
+*AADSTS75005 hiba: a kérés nem érvényes egy saml2 protokoll.*
 
 **Lehetséges ok**
 
 Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Néhány gyakori probléma:
 
--   Az SAML-kérelemből hiányzó kötelező mezők
+-   Hiányzó kötelező mezők az SAML-kérelemben
 
--   SAML-kérelem kódolási metódusa
+-   SAML-kérelem kódolt metódusa
 
 **Felbontás**
 
-1.  SAML-kérelem rögzítése. kövesse az [SAML-alapú egyszeri bejelentkezés az Azure ad](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) -alkalmazásokban való hibakeresését ismertető oktatóanyagot, amelyből megtudhatja, hogyan rögzítheti az SAML-kérelmet.
+1.  SAML-kérelem rögzítése. kövesse az [SAML-alapú egyszeri bejelentkezés az Azure ad-alkalmazásokban való hibakeresését](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) ismertető oktatóanyagot, amelyből megtudhatja, hogyan rögzítheti az SAML-kérelmet.
 
 2.  Vegye fel a kapcsolatot az alkalmazás gyártójával és megosztásával:
 
@@ -164,15 +164,15 @@ Az alkalmazás gyártójának ellenőriznie kell, hogy az Azure AD SAML-implemen
 
 ## <a name="misconfigured-application"></a>Hibásan konfigurált alkalmazás
 
-*AADSTS650056 hiba: Helytelenül konfigurált alkalmazás. Ezt a következők egyike okozhatja: Az ügyfél nem sorolt fel semmilyen engedélyt a HRE Graph számára a kért engedélyekben az ügyfél alkalmazás-regisztrációjában. Vagy a rendszergazda nem járult hozzá a bérlőhöz. Vagy ellenőrizze az alkalmazás azonosítóját a kérelemben annak ellenőrzéséhez, hogy az megfelel-e a konfigurált ügyfélalkalmazás-azonosítónak. Kérje meg a rendszergazdát, hogy javítsa ki a konfigurációt vagy a beleegyezik a bérlő nevében.* .
+*Hiba történt a AADSTS650056: hibásan konfigurált alkalmazás. Ennek oka az lehet, hogy az ügyfél nem szerepel a "HRE Graph" számára a kért engedélyekben az ügyfél alkalmazás-regisztrációjában. Vagy a rendszergazda nem járult hozzá a bérlőhöz. Vagy ellenőrizze az alkalmazás azonosítóját a kérelemben annak ellenőrzéséhez, hogy az megfelel-e a konfigurált ügyfélalkalmazás-azonosítónak. Kérje meg a rendszergazdát, hogy javítsa ki a konfigurációt vagy a beleegyezik a bérlő nevében*.
 
 **Lehetséges ok**
 
-Az SAML-kérelemben az alkalmazásból az Azure ad-be elküldett attribútumnemegyezikazalkalmazáshozazAzuread-benkonfiguráltazonosítóértékkel.`Issuer`
+Az SAML-kérelemben az alkalmazásból az Azure AD-be elküldett `Issuer` attribútum nem egyezik az alkalmazáshoz az Azure AD-ben konfigurált azonosító értékkel.
 
 **Felbontás**
 
-Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
+Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
 
 1.  Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
@@ -192,7 +192,7 @@ Győződjön meg arról `Issuer` , hogy az SAML-kérelemben szereplő attribútu
 
 ## <a name="certificate-or-key-not-configured"></a>Nincs konfigurálva a tanúsítvány vagy a kulcs
 
-AADSTS50003 hiba: Nincs beállítva aláíró kulcs.
+Hiba AADSTS50003: nincs konfigurált aláíró kulcs.
 
 **Lehetséges ok**
 
@@ -228,7 +228,7 @@ Az Application objektum sérült, és az Azure AD nem ismeri fel az alkalmazásh
 
 ## <a name="saml-request-not-present-in-the-request"></a>Az SAML-kérelem nem szerepel a kérelemben
 
-*AADSTS750054 hiba: A SAMLRequest vagy a SAMLResponse szolgáltatásnak lekérdezési karakterlánc paraméterként kell szerepelnie a HTTP-kérelemben az SAML-átirányítási kötéshez.*
+*Hiba AADSTS750054: a SAMLRequest vagy a SAMLResponse lekérdezési karakterlánc paraméterként kell szerepelnie a HTTP-kérelemben az SAML-átirányítási kötéshez.*
 
 **Lehetséges ok**
 
@@ -242,7 +242,7 @@ Az alkalmazásnak HTTP-átirányítási kötés használatával kell elküldenie
 
 **Lehetséges ok**
 
-Az egyszeri bejelentkezés során, ha a bejelentkezési kérés nem tartalmaz explicit válasz URL-címet (a felhasználói szolgáltatás URL-címét), akkor az Azure AD kiválasztja az adott alkalmazáshoz konfigurált összes hivatkozhat URL-címet. Annak ellenére, hogy az alkalmazás explicit válasz URL-címmel van konfigurálva, a felhasználó átirányítható https://127.0.0.1:444. 
+Az egyszeri bejelentkezés során, ha a bejelentkezési kérés nem tartalmaz explicit válasz URL-címet (a felhasználói szolgáltatás URL-címét), akkor az Azure AD kiválasztja az adott alkalmazáshoz konfigurált összes hivatkozhat URL-címet. Akkor is előfordulhat, ha az alkalmazás explicit válasz URL-címmel van konfigurálva, a felhasználó átirányíthatja https://127.0.0.1:444. 
 
 Amikor az alkalmazás hozzá lett adva nem katalógusbeli alkalmazásként, az Azure Active Directory ezt a válasz-URL-címet alapértelmezett értékként hozta létre. Ez a viselkedés azóta megváltozott, és az Azure Active Directory már nem adja hozzá ezt az URL-címet alapértelmezés szerint. 
 
@@ -272,5 +272,5 @@ Törölje az alkalmazáshoz konfigurált nem használt válasz URL-címeket.
 
 Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)

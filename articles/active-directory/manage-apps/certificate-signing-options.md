@@ -1,5 +1,5 @@
 ---
-title: Speciális SAML-jogkivonat tanúsítvány-aláírási lehetőségei az előre integrált Azure AD-alkalmazásokhoz | Microsoft Docs
+title: Speciális SAML-jogkivonat tanúsítvány-aláírási lehetőségei az Azure AD-alkalmazásokhoz
 description: Megtudhatja, hogyan használhatja a speciális tanúsítvány-aláírási lehetőségeket az SAML-jogkivonatban az előre integrált alkalmazások Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381262"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274744"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások az SAML-jogkivonatban a Gallery-alkalmazásokhoz Azure Active Directory
 
@@ -57,23 +57,23 @@ Az alkalmazás SAML-tanúsítvány-aláírási beállításainak és a tanúsít
 1. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. Megjelenik a fiókjában a vállalati alkalmazások listája.
 1. Válasszon ki egy alkalmazást. Megjelenik az alkalmazás áttekintő lapja.
 
-   ![Példa: Alkalmazás – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
+   ![Példa: alkalmazás – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
 
 Ezután módosítsa az alkalmazás SAML-jogkivonatának tanúsítvány-aláírási beállításait:
 
 1. Az alkalmazás – Áttekintés lap bal oldali ablaktábláján válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Ha megjelenik az **egyszeri bejelentkezés az SAML-** előnézettel lapon, akkor lépjen az 5. lépésre.
+1. Ha megjelenik az **egyszeri bejelentkezés az SAML-előnézettel** lapon, akkor lépjen az 5. lépésre.
 1. Ha az **egyszeri bejelentkezési módszer kiválasztása** lap nem jelenik meg, válassza az **egyszeri bejelentkezési módok módosítása** lehetőséget az oldal megjelenítéséhez.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget, ha elérhető. (Ha az **SAML** nem érhető el, az alkalmazás nem támogatja az SAML használatát, és figyelmen kívül hagyhatja az eljárás és a cikk további részét.)
 1. Az **egyszeri bejelentkezés az SAML-vel – előzetes** verziójának beállítása lapon keresse meg az **SAML aláíró tanúsítvány** fejlécét, és válassza a **Szerkesztés** ikont (egy ceruza). Megjelenik az **SAML aláíró tanúsítvány** lapja.
 
-   ![Példa: SAML-aláíró tanúsítvány lapja](./media/certificate-signing-options/saml-signing-page.png)
+   ![Példa: SAML aláíró tanúsítvány lapja](./media/certificate-signing-options/saml-signing-page.png)
 
-1. Az aláírási lehetőség legördülő listában válassza az **SAML-válasz aláírása**, az **SAML-érvényesítés**aláírása vagy az **SAML-válasz és-állítás aláírása** **lehetőséget** . Ezen beállítások leírása a jelen cikk korábbi részében jelenik meg a [tanúsítvány](#certificate-signing-options)-aláírási beállításokban.
+1. Az **aláírási lehetőség** legördülő listában válassza az **SAML-válasz aláírása**, az **SAML-érvényesítés**aláírása vagy az SAML- **Válasz és-állítás aláírása**lehetőséget. Ezen beállítások leírása a jelen cikk korábbi részében jelenik meg a [tanúsítvány-aláírási beállításokban](#certificate-signing-options).
 1. Az **aláírási algoritmus** legördülő listában válassza az **SHA-1** vagy az **SHA-256**elemet. Ezen beállítások leírása a jelen cikk korábbi, a tanúsítvány- [aláírási algoritmusok](#certificate-signing-algorithms) szakaszban található.
 1. Ha elégedett a lehetőségeivel, válassza a **Mentés** lehetőséget az új SAML-aláíró tanúsítvány beállításainak alkalmazásához. Ellenkező esetben válassza az **X-et** a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek a Azure Active Directory app Galleryben](configure-federated-single-sign-on-non-gallery-applications.md)
 * [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../develop/howto-v1-debug-saml-sso-issues.md)

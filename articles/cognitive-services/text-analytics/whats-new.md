@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031379"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286460"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -29,8 +29,8 @@ Az elnevezett entitások felismerésének következő verziója már elérhető 
     * Telefonszám
     * IP-cím
 
-* Egy [új végpont](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) a személyes információk entitás-típusai felismeréséhez (csak angol nyelven)
-* Különálló végpontok az [entitások felismeréséhez]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) és az [entitások összekapcsolásához]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Egy [új végpont](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) a személyes információk entitás-típusai felismeréséhez (csak angol nyelven)
+* Különálló végpontok az [entitások felismeréséhez](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) és az [entitások összekapcsolásához](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
 
 Az entitások csatolása az angol és a spanyol nyelvet támogatja. A nyelv támogatása az entitás típusától függően változik. 
 
@@ -39,7 +39,7 @@ Az entitások csatolása az angol és a spanyol nyelvet támogatja. A nyelv tám
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Hangulatelemzés v3 nyilvános előzetes verzió – október 2019
 
-A [Hangulatelemzés következő verziója](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) már elérhető a nyilvános előzetes verzióban, és jelentős fejlesztéseket biztosít az API Text kategorizálásának és pontozásának pontosságával és részleteivel. Emellett a következőket biztosítja:
+A [Hangulatelemzés következő verziója](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) már elérhető a nyilvános előzetes verzióban, és jelentős fejlesztéseket biztosít az API Text kategorizálásának és pontozásának pontosságával és részleteivel. Emellett a következőket biztosítja:
 
 * Automatikus címkézés a különböző érzelemekhez a szövegben.
 * A dokumentumok és a mondatok szintjének elemzése és kimenete. 

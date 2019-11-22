@@ -1,5 +1,6 @@
 ---
-title: Az Azure Network Watcher-PowerShell kapcsolatának megoldása | Microsoft Docs
+title: Kapcsolatok – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit a PowerShell használatával.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802043"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275999"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Az Azure Network Watchersal létesített kapcsolatok hibáinak megoldása a PowerShell használatával
 
@@ -39,7 +40,7 @@ Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak elle
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a (`AzureNetworkWatcherExtension` virtuálisgép-bővítmény telepítve legyen. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a `AzureNetworkWatcherExtension` virtuálisgép-bővítmény telepítve legyen. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 
@@ -64,7 +65,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Válasz
 
-A következő válasz az előző példából származik.  Ebben a válaszban a `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat meghiúsult a virtuális berendezésen, mert egy felhasználó által konfigurált `NetworkSecurityRule` nevű **UserRule_Port80**van konfigurálva, amely letiltja a bejövő forgalmat a 80-es porton. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
+A következő válasz az előző példából származik.  Ebben a válaszban a `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat meghiúsult a virtuális berendezésen, mert egy **UserRule_Port80**nevű felhasználó által konfigurált `NetworkSecurityRule`, amely a 80-es port bejövő forgalmának blokkolására van konfigurálva. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +156,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Válasz
 
-A következő példában a `ConnectionStatus` nem **érhető el**. A `Hops` részleteket a `Issues` alatt láthatja, hogy a forgalmat egy `UserDefinedRoute` miatt blokkolta a rendszer. 
+A következő példában a `ConnectionStatus` nem **érhető el**. A `Hops` részleteket a `Issues` alatt láthatja, hogy a forgalmat egy `UserDefinedRoute`miatt blokkolta a rendszer. 
 
 ```
 ConnectionStatus : Unreachable
@@ -302,7 +303,7 @@ Hops             : [
                    ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állapítsa meg, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md)meglátogatásával meg kell-e adni bizonyos forgalmat a virtuális gépen vagy kívülről.
 

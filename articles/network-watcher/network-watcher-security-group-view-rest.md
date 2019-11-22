@@ -1,6 +1,7 @@
 ---
-title: Hálózati biztonság Azure Network Watcher biztonsági csoport nézet - REST API-t elemzése |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan elemezheti a biztonsági csoport nézet a virtuális gépek biztonsági a PowerShell használatával.
+title: Hálózati biztonság elemzése – biztonsági csoport nézet – Azure REST API
+titleSuffix: Azure Network Watcher
+description: Ez a cikk leírja, hogyan elemezheti a virtuális gépek biztonságát a biztonsági csoport nézettel a PowerShell használatával.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 86fff39605fa91c1b09c1547dd0efa97b8fd26cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f11e288c28274e08fdabe7fee02a099410611872
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687851"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277892"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Biztonsági csoport nézet REST API-val a virtuális gép biztonsági elemzése
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>A virtuális gép biztonságának elemzése a biztonsági csoport nézetben REST API használatával
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Biztonsági csoport nézet konfigurált és érvényben lévő hálózati biztonsági szabályok a virtuális gépek alkalmazott adja vissza. Ez a funkció akkor hasznos, naplózás, és diagnosztizálhatja hálózati biztonsági csoportok és annak érdekében, hogy folyamatban van a forgalom egy virtuális gépen konfigurált szabályok megfelelően engedélyezi vagy megtagadja. Ebben a cikkben bemutatjuk, hogyan kérheti le a hatékony és alkalmazott biztonsági szabályok egy virtuális géphez, a REST API használatával
+A biztonsági csoport nézet a virtuális gépekre alkalmazott konfigurált és érvényes hálózati biztonsági szabályokat adja vissza. Ez a képesség hasznos lehet a hálózati biztonsági csoportok és a virtuális gépen konfigurált szabályok naplózására és diagnosztizálására, hogy a forgalom megfelelő engedélyezése vagy elutasítása sikeres legyen. Ebben a cikkben bemutatjuk, hogyan kérhető le a hatályos és alkalmazott biztonsági szabályok egy virtuális gépre REST API használatával
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ebben a forgatókönyvben a hálózati figyelő Rest API-t a biztonsági csoport nézet első virtuális gép hívható meg. ARMclient hívás a REST API, PowerShell-lel történik. ARMClient megtalálható a chocolatey [ARMClient a chocolatey-t](https://chocolatey.org/packages/ARMClient)
+Ebben az esetben a Network Watcher REST API-t hívja meg egy virtuális gép biztonsági csoportjának nézetének beolvasásához. A ARMclient a REST API a PowerShell használatával történő meghívására szolgál. A ARMClient a chocolatey címen található a [ARMClient-on](https://chocolatey.org/packages/ARMClient)
 
-Ez a forgatókönyv azt feltételezi, hogy már követte a lépéseket a [hozzon létre egy Network Watcher](network-watcher-create.md) egy Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy létezik-e egy érvényes virtuális gépet egy erőforráscsoportot használni.
+Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használatban van.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Az ebben a cikkben ismertetett forgatókönyvben a hatékony és alkalmazott biztonsági szabályok egy adott virtuális gép kérdezi le.
+A cikkben ismertetett forgatókönyv az adott virtuális gép hatályos és alkalmazott biztonsági szabályait kérdezi le.
 
-## <a name="log-in-with-armclient"></a>Jelentkezzen be ARMClient
+## <a name="log-in-with-armclient"></a>Bejelentkezés a ARMClient
 
 ```powershell
 armclient login
@@ -51,10 +52,10 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Virtuális gép beolvasása
 
-Futtassa a következő szkriptet egy virtuális machineThe vissza a következő kód változók van szüksége:
+Futtassa a következő szkriptet egy virtuális machineThe visszaadásához a kód igény szerinti változói közül:
 
-- **subscriptionId** – az előfizetés-azonosítót is lekérhető az a **Get-AzSubscription** parancsmagot.
-- **resourceGroupName** -egy virtuális gépeket tartalmazó erőforráscsoport nevét.
+- **subscriptionId** – az előfizetés-azonosító a **Get-AzSubscription** parancsmaggal is lekérhető.
+- **resourceGroupName** – a virtuális gépeket tartalmazó erőforráscsoport neve.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -63,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-A szükséges adatokat a rendszer a **azonosító** típus alatt `Microsoft.Compute/virtualMachines` válaszként, az alábbi példában látható módon:
+A szükséges információk a válaszban `Microsoft.Compute/virtualMachines` típus alatt lévő **azonosító** , az alábbi példában látható módon:
 
 ```json
 ...,
@@ -93,9 +94,9 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 }
 ```
 
-## <a name="get-security-group-view-for-virtual-machine"></a>Virtuális gép biztonsági csoport nézet beolvasása
+## <a name="get-security-group-view-for-virtual-machine"></a>Biztonsági csoport nézetének beolvasása a virtuális géphez
 
-Az alábbi példában a biztonsági csoport nézet célként kijelölt virtuális gépek kérelmeket. Ez a példa az eredményeket hasonlítsa össze a szabályok és a konfigurációs csúszásokat a keresett feladójának által meghatározott biztonsági használható.
+A következő példa egy célként megadott virtuális gép biztonsági csoport nézetét kéri le. Az ebből a példából származó eredményekkel összehasonlítható a konfiguráció eltolódása által meghatározott szabályokkal és biztonsággal.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -112,9 +113,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/securityGroupView?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="view-the-response"></a>Tekintse meg a választ
+## <a name="view-the-response"></a>Válasz megtekintése
 
-Az alábbi minta az előző parancs által visszaadott válaszra. Az eredmények megjelenítése hatékony és alkalmazott biztonsági szabályok a virtuális gépen a csoportok szerinti bontásban **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, és  **EffectiveSecurityRules**.
+Az alábbi példa az előző parancs válaszát adja vissza. Az eredmények a virtuális gép összes hatályos és alkalmazott biztonsági szabályát megjelenítik a **NetworkInterfaceSecurityRules**, a **DefaultSecurityRules**és a **EffectiveSecurityRules**csoportokban lebontva.
 
 ```json
 
@@ -182,8 +183,8 @@ Az alábbi minta az előző parancs által visszaadott válaszra. Az eredmények
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Látogasson el [naplózás hálózati biztonsági csoportok (NSG) és a Network Watcher](network-watcher-security-group-view-powershell.md) megtudhatja, hogyan automatizálhatja a hálózati biztonsági csoportok érvényesítése.
+A hálózati biztonsági csoportok érvényesítésének automatizálásához látogasson el [Network Watcher a hálózati biztonsági csoportok (NSG) naplózása](network-watcher-security-group-view-powershell.md) című témakörre.
 
 

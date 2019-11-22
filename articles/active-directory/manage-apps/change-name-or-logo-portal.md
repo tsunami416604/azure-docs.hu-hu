@@ -1,6 +1,6 @@
 ---
-title: Név vagy az Azure Active Directoryban egy vállalati alkalmazás emblémájának módosítása |} A Microsoft Docs
-description: A név vagy egy egyéni vállalati alkalmazást az Azure Active Directory emblémája módosítása
+title: Vállalati alkalmazás nevének vagy emblémájának módosítása az Azure AD-ben
+description: Egyéni vállalati alkalmazás nevének vagy emblémájának módosítása Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,38 +16,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30da8d6843c27c42d4d99adef50b9ad98a131c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780923"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274718"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Név vagy az Azure Active Directoryban egy vállalati alkalmazás emblémájának módosítása
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Vállalati alkalmazás nevének vagy emblémájának módosítása Azure Active Directory
 
-Módosítsa a nevét vagy az Azure Active Directoryban (Azure AD) egy egyéni vállalati alkalmazás emblémája, könnyebbé vált. A módosítások a megfelelő engedélyekkel kell rendelkeznie, és az egyéni alkalmazás készítőjét, kell lennie.
+A Azure Active Directory (Azure AD) alkalmazásban egyszerűen módosíthatja az egyéni vállalati alkalmazások nevét vagy emblémáját. A módosítások elvégzéséhez megfelelő engedélyekkel kell rendelkeznie, és az egyéni alkalmazás létrehozójának kell lennie.
 
-## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Hogyan változtatható meg egy vállalati alkalmazás nevére vagy emblémájára?
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Hogyan módosíthatja a vállalati alkalmazások nevét vagy emblémáját?
 
-1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/) egy olyan fiókkal, amely a címtár globális rendszergazdája. A **Azure Active Directory felügyeleti központ** lap jelenik meg.
-2. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. A vállalati alkalmazások listája jelenik meg.
-3. Válasszon ki egy alkalmazást. Az alkalmazás áttekintőlapján jelenik meg.
-4. Az alkalmazás áttekintése panelen alatt a **kezelés** szakaszban kattintson **tulajdonságok**. A **tulajdonságok** lap jelenik meg.
-5. Ha azt szeretné, módosítsa a nevet, válassza ki a **neve** be, írja be az új nevet, és nyomja meg **Enter**.
-6. Ha szeretné módosítani az embléma, keresse meg a **embléma** mezőben, majd válassza ki a mappaikont a a **válasszon ki egy fájlt** mezőbe, amely az alkalmazás aktuális embléma kép alatt.
+1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) egy olyan fiókkal, amely a címtár globális rendszergazdája. Megjelenik a **Azure Active Directory felügyeleti központ** lap.
+2. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. Megjelenik a vállalati alkalmazások listája.
+3. Válasszon ki egy alkalmazást. Megjelenik az alkalmazás áttekintése oldal.
+4. Az alkalmazás áttekintése ablaktáblán, a **kezelés** fejléc alatt válassza a **Tulajdonságok**elemet. Megjelenik a **Tulajdonságok** lap.
+5. Ha módosítani szeretné a nevet, jelölje be a **név** mezőt, írja be az új nevet, majd nyomja le az **ENTER**billentyűt.
+6. Ha módosítani kívánja az emblémát, keresse meg az **embléma** mezőt, és válassza a **fájl kiválasztása** mező melletti mappa ikont, amely az alkalmazás aktuális emblémájának képe alá esik.
 
-   ![A Tulajdonságok parancs kiválasztása](./media/change-name-or-logo-portal/change-logo.png)
+   ![A Properties parancs kiválasztása](./media/change-name-or-logo-portal/change-logo.png)
 
-   Ha az embléma nem változnak, ellenkező esetben nyissa meg a 8. lépés.
-7. A Fájlkereső válassza a kívánt fájlt, az új emblémát. A fájl nevét a mezőbe az aktuális embléma kép alatt jelenik meg.
+   Ellenkező esetben, ha nem módosítja az emblémát, ugorjon a 8. lépésre.
+7. A file Picker (fájl kiválasztása) területen válassza ki az új emblémaként használni kívánt fájlt. A fájl neve az aktuális embléma képe alatti mezőben jelenik meg.
 
    > [!NOTE]
-   > Azure megköveteli a emblémakép PNG-fájl, és a szélességét, a magasságra és a fájlméret korlátok vonatkozik.
-8. Kattintson a **Mentés** gombra. Ha úgy döntött, hogy egy új embléma a **embléma** mező kép módosításai tükrözik az új embléma fájlt.
+   > Az Azure-ban a logónak PNG-fájlként kell lennie, és a szélességre, a magasságra és a fájlméretre vonatkozó korlátozásokat alkalmaz.
+8. Kattintson a **Mentés** gombra. Ha új emblémát választ, az **embléma** mező képe úgy változik, hogy tükrözze az új embléma fájlját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Rövid útmutató: A munkahelyi csoportok és tagok megtekintése az Azure Active Directoryban](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](assign-user-or-group-access-portal.md)
-* [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazás](remove-user-or-group-access-portal.md)
-* [Tiltsa le a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás](disable-user-sign-in-portal.md)
+* [Rövid útmutató: a szervezet csoportjainak és tagjainak megtekintése Azure Active Directory](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)
+* [Vállalati alkalmazás felhasználói bejelentkezésének letiltása](disable-user-sign-in-portal.md)

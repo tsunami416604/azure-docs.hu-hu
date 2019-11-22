@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 10/29/2019
+ms.date: 11/21/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 92f8aaad1cc3279142d419faa2852406c2956595
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2a6c5ca9f7d2ceaef08b28e78b38b94a459548f5
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685981"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304762"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása T-SQL használatával
 
@@ -35,7 +35,7 @@ Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Data Warehous
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>DataLoads-beli bejelentkezés létrehozása
 
@@ -77,19 +77,25 @@ Hozzon létre egy számítási feladathoz tartozó [osztályozó](/sql/t-sql/sta
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
-WITH (WORKLOAD_GROUP = 'ELTLogin'
-      ,MEMBERNAME = 'DataLoads')
+WITH (WORKLOAD_GROUP = 'DataLoads'
+      ,MEMBERNAME = 'ELTLogin')
 ;
 ```
 
-## <a name="view-existing-workload-groups-and-classifiers"></a>Meglévő munkaterhelés-csoportok és besorolások megtekintése
+## <a name="view-existing-workload-groups-and-classifiers-and-run-time-values"></a>A meglévő munkaterhelés-csoportok, besorolások és futásidejű értékek megtekintése
 
 ```sql
+--Workload groups
 SELECT * FROM 
 sys.workload_management_workload_groups
 
+--Workload classifiers
 SELECT * FROM 
 sys.workload_management_workload_classifiers
+
+--Run-time values
+SELECT * FROM 
+sys.dm_workload_management_workload_groups_stats
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -120,7 +126,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Most létrehozott egy munkaterhelés-csoportot. Futtasson néhány lekérdezést a ELTLogin, hogy láthassa, hogyan végzik el. A lekérdezéseket és a hozzárendelt munkaterhelés-csoportot a [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tekintheti meg.
+- Most létrehozott egy munkaterhelés-csoportot. Futtasson néhány lekérdezést a ELTLogin, hogy láthassa, hogyan végzik el. A lekérdezéseket és a hozzárendelt munkaterhelési csoportot a [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) témakörben tekintheti meg.
 - További információ a Azure SQL Data Warehouse munkaterhelés-kezelésről: a számítási feladatok [kezelése](sql-data-warehouse-workload-management.md) és a számítási [feladatok elkülönítése](sql-data-warehouse-workload-isolation.md).

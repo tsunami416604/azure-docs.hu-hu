@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173637"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279653"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>A Kubernetes-fürt állapotának megértése a tárolók Azure Monitorével
 
-A tárolók Azure Monitorával figyeli és jelenti a felügyelt infrastruktúra összetevőinek, valamint a Azure Monitor által a tárolók által támogatott Kubernetes-fürtökön futó összes csomópontnak az állapotát. Ez a felület a fürt állapotának kiszámításához és a [több fürtre vonatkozó nézeten](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)jelentett állapotához is kiterjed, ahol most már megtudhatja, hogy a fürt egy vagy több csomópontja rendelkezik-e erőforrás-korlátozással, vagy egy csomópont vagy pod nem érhető el, amely hatással lehet egy futó alkalmazásra a fürtben, a kurátori mérőszámok alapján. 
+A tárolók Azure Monitorával figyeli és jelenti a felügyelt infrastruktúra összetevőinek, valamint a Azure Monitor által a tárolók által támogatott Kubernetes-fürtökön futó összes csomópontnak az állapotát. Ez a felület a fürt állapotának kiszámításához és a [több fürtre vonatkozó nézeten](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)jelentett állapotához is kiterjed, ahol most már megtudhatja, hogy a fürt egy vagy több csomópontja rendelkezik-e erőforrás-korlátozással, vagy egy csomópont vagy pod nem érhető el, amely hatással lehet egy futó alkalmazásra a fürtben, a kurátori mérőszámok alapján.
+
+>[!NOTE]
+>Az állapot szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+>
 
 További információ a tárolók Azure Monitorének engedélyezéséről: [Azure monitor a tárolók számára](container-insights-onboard.md).
 
@@ -33,7 +37,7 @@ További információ a tárolók Azure Monitorének engedélyezéséről: [Azur
 
 ## <a name="overview"></a>Áttekintés
 
-A tárolók Azure Monitor a Health szolgáltatás a Kubernetes-fürt proaktív állapotának figyelését biztosítja a problémák azonosításához és diagnosztizálásához. Lehetővé teszi az észlelt jelentős problémák megtekintését. A fürt állapotának kiértékelésére szolgáló figyelők a fürtben lévő tároló ügynökön futnak, és az állapotadatok a Log Analytics munkaterületen lévő **KubeHealth** táblába íródnak. 
+A tárolók Azure Monitor a Health (előzetes verzió) funkció a Kubernetes-fürt proaktív állapotának figyelését biztosítja a problémák azonosításához és diagnosztizálásához. Lehetővé teszi az észlelt jelentős problémák megtekintését. A fürt állapotának kiértékelésére szolgáló figyelők a fürtben lévő tároló ügynökön futnak, és az állapotadatok a Log Analytics munkaterületen lévő **KubeHealth** táblába íródnak. 
 
 A Kubernetes-fürt állapota a következő Kubernetes-objektumok és absztrakciók által szervezett figyelési forgatókönyveken alapul:
 
@@ -72,7 +76,7 @@ Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AK-vagy nem ak-alapú fürt állapotának megtekintése
 
-A Azure Monitor for containers Health szolgáltatáshoz való hozzáférés közvetlenül egy AK-fürtből érhető el, ha az Azure Portal bal oldali ablaktáblájában kijelöli az **Adatáttekintést** . Alatt a **Insights** szakaszban jelölje be **tárolók**. 
+A Azure Monitor for containers Health (előzetes verzió) szolgáltatáshoz való hozzáférés közvetlenül egy AK-fürtből érhető el **, ha az** Azure Portal bal oldali ablaktáblájában kijelöli a kiszámítások lehetőséget. Alatt a **Insights** szakaszban jelölje be **tárolók**. 
 
 Ha egy nem ak-alapú fürt állapotát szeretné megtekinteni, amely egy helyszíni vagy Azure Stackon üzemeltetett AK-alapú motor-fürt, válassza a **Azure monitor** lehetőséget a Azure Portal bal oldali ablaktábláján. Alatt a **Insights** szakaszban jelölje be **tárolók**.  A többfürtes lapon válassza ki a nem ak típusú fürtöt a listából.
 

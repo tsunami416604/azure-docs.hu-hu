@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3b7fed91be00e1bf2ac097638f14d1bbe6481f0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672092"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280308"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Rövid útmutató: Language Understanding (LUIS) a .NET-hez készült ügyféloldali kódtár készítése
 
@@ -35,11 +35,51 @@ A .NET-hez készült ügyféloldali kódtár Language Understanding (LUIS) létr
 * Language Understanding (LUIS) portál fiók – [hozzon létre egyet ingyen](https://www.luis.ai)
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
 
+
 ## <a name="setting-up"></a>Beállítás
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>A Language Understanding (LUIS) indító kulcs beszerzése
 
-Szerezze be a [kezdő kulcsot](luis-how-to-azure-subscription.md#starter-key), és [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) `COGNITIVESERVICE_AUTHORING_KEY`nevű kulcshoz.
+Hozza létre az [alapszintű kulcsot](luis-how-to-azure-subscription.md#starter-key) egy Luis authoring-erőforrás létrehozásával. Tartsa a kulcsot és a kulcs régióját a következő lépéshez.
+
+### <a name="create-an-environment-variable"></a>Környezeti változó létrehozása
+
+A kulcs és a kulcs régiójának használatával hozzon létre két környezeti változót a hitelesítéshez:
+
+* `COGNITIVESERVICE_AUTHORING_KEY` – a kérések hitelesítéséhez használt erőforrás-kulcs.
+* `COGNITIVESERVICE_REGION` – a kulcshoz társított régió. Például: `westus`.
+
+Használja az operációs rendszerének utasításait.
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+A környezeti változó hozzáadása után indítsa újra a konzolablak ablakát.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+Szerkessze `.bash_profile`, és adja hozzá a környezeti változót:
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+***
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
@@ -129,7 +169,7 @@ A projekt könyvtárában nyissa meg a **program.cs** fájlt az előnyben része
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
 
-## <a name="create-a-luis-app"></a>LUIS-alkalmazás létrehozása
+## <a name="create-a-luis-app"></a>A LUIS-alkalmazás létrehozása
 
 1. Hozzon létre egy LUIS-alkalmazást, amely tartalmazza a természetes nyelvi feldolgozó (NLP) modellt, amely a szándékok, az entitások és a példa hosszúságú kimondott szöveg. 
 
@@ -198,7 +238,7 @@ dotnet run
 
 Ha törölni szeretné a programot, törölheti a LUIS alkalmazást. Az alkalmazás törlése az [apps. DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.deleteasync?view=azure-dotnet) metódussal történik. Az alkalmazást a [Luis portálról](https://www.luis.ai)is törölheti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Az előrejelzési végpont lekérdezése a .net SDK használatával](sdk-csharp-quickstart-query-prediction-endpoint.md)

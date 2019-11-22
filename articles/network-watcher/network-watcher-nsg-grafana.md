@@ -1,6 +1,7 @@
 ---
-title: Hálózati biztonsági csoport Flow naplók a Network Watcher és a Grafana használata kezelheti |} A Microsoft Docs
-description: Kezelheti, és a hálózati biztonsági csoport folyamat-naplók elemzése az Azure Network Watcher és a Grafana használatával.
+title: NSG-folyamatok naplófájljainak kezelése a Grafana használatával
+titleSuffix: Azure Network Watcher
+description: Hálózati biztonsági csoport Folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Grafana használatával.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -15,41 +16,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e92f4db575e4b318af8dc7bf3ba2eb4b69a3a2d9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116259"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277943"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Kezelheti és elemezheti a hálózati biztonsági csoportok folyamatnaplóit a Network Watcher és a Grafana használatával
+# <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése Network Watcher és Grafana használatával
 
-[Hálózati biztonsági csoport (NSG) folyamatnaplóit](network-watcher-nsg-flow-logging-overview.md) információkkal, amelyek segítségével megismerheti a bejövő és kimenő IP-forgalom hálózati adapteren. A folyamat-naplók megjelenítése a kimenő és bejövő forgalom az egy NSG-szabály alapon történik, a hálózati Adaptert a folyamat vonatkozik, a folyamat (a forrás és cél IP-cím, forrás és a cél-Port, protokoll), 5-ször több információt, és ha a forgalom engedélyezett vagy tiltott.
+A [hálózati biztonsági csoport (NSG) folyamatábrája](network-watcher-nsg-flow-logging-overview.md) olyan információkat biztosít, amelyek segítségével megismerheti a bejövő és kimenő IP-forgalmat a hálózati adaptereken. Ezek a flow-naplók a kimenő és bejövő folyamatokat jelenítik meg NSG, a hálózati adapter a folyamatra vonatkozik, 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/célport, protokoll), és ha a forgalom engedélyezett vagy tiltott.
 
 > [!Warning]  
-> Az alábbi lépéseket a flow 1-es naplók verzió együttműködve. További információkért lásd: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md). Az alábbi utasítások nem fog működni a naplófájlokat, módosítás nélküli 2. verzióban.
+> Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
-Számos NSG-k csoportforgalom naplózása engedélyezve van a használhat a hálózaton. A naplózási adatok mennyisége segítségével elemezheti és a naplók hasznosításához nehézkes. Ez a cikk központilag kezelheti az alábbi NSG-Folyamatnaplók grafanával, egy nyílt forráskódú eszköz, az ElasticSearch, egy elosztott keresési és elemzési motorjára és Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozó folyamat függőségábrázolás megoldást kínál.  
+A hálózatban számos NSG engedélyezheti a flow naplózását. A naplózási adatok mennyisége nehézkesen elemezheti és betekintést nyerhet a naplókba. Ez a cikk megoldást nyújt ezen NSG-naplók központi felügyeletére a Grafana, egy nyílt forráskódú gráf-kezelő eszköz, egy ElasticSearch, egy elosztott keresési és elemzési motor, valamint a Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozási folyamat.  
 
 ## <a name="scenario"></a>Forgatókönyv
 
-NSG-Folyamatnaplók használatával a Network Watcher engedélyezve vannak, és az Azure blob storage szolgáltatásban tárolódnak. A Logstash beépülő modul csatlakoztatása és dolgozza fel a Folyamatnaplók blob storage-ból, és elküldeni őket az Elasticsearchbe szolgál.  Miután a folyamat-naplók találhatók, az ElasticSearch, azok elemzése és személyre szabott irányítópultok a Grafana az ábrázolt.
+A NSG-flow naplói engedélyezve vannak a Network Watcher használatával, és az Azure Blob Storage-ban tárolódnak. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a ElasticSearch való elküldéséhez használható.  A flow-naplók ElasticSearch való tárolása után a rendszer elemezheti és testre szabhatja a Grafana testreszabott irányítópultján.
 
 ![NSG Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
 ## <a name="installation-steps"></a>Telepítési lépések
 
-### <a name="enable-network-security-group-flow-logging"></a>Engedélyezése hálózati biztonsági csoportforgalom naplózása
+### <a name="enable-network-security-group-flow-logging"></a>Hálózati biztonsági csoport adatfolyam-naplózásának engedélyezése
 
-Ebben a forgatókönyvben rendelkeznie kell hálózati biztonsági csoport Flow naplózás engedélyezve van a legalább egy hálózati biztonsági csoport a fiókjában. Hálózati biztonsági Folyamatnaplók engedélyezésével kapcsolatos útmutatásért tekintse meg a következő cikkben [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
+Ebben a forgatókönyvben a hálózati biztonsági csoport flow-naplózási szolgáltatásának engedélyezve kell lennie legalább egy hálózati biztonsági csoportban a fiókjában. A hálózati biztonsági folyamatok naplófájljainak engedélyezésével kapcsolatos utasításokért tekintse meg az alábbi cikket a [hálózati biztonsági csoportok folyamatábrájának naplózása](network-watcher-nsg-flow-logging-overview.md)című cikkben.
 
-### <a name="setup-considerations"></a>Beállítási szempontok
+### <a name="setup-considerations"></a>Telepítési szempontok
 
-Ebben a példában az ElasticSearch, Logstash és a Grafana kell beállítani egy Ubuntu 16.04 LTS Server üzembe helyezett Azure-ban. A lehető legkevesebb beállítás mindhárom összetevő futtatásához használható – azokat az összes futtató ugyanazon a virtuális Gépen. Ez a beállítás csak a használható tesztelési és nem kritikus fontosságú számítási feladatokhoz. A Logstash, az Elasticsearch és a Grafana is összes kell tervezésnek egymástól független méretezését számos példányok között. További információkért tekintse meg az egyes összetevők dokumentációját.
+Ebben a példában a Grafana, a ElasticSearch és a Logstash az Azure-ban üzembe helyezett Ubuntu 16,04 LTS-kiszolgálón vannak konfigurálva. Ez a minimális beállítás mind a három összetevő futtatására használatos – ezek mind ugyanazon a virtuális gépen futnak. Ez a beállítás csak tesztelési és nem kritikus fontosságú számítási feladatokhoz használható. A Logstash, a Elasticsearch és a Grafana mind a különböző példányok egymástól független skálázására használható. További információkért tekintse meg az egyes összetevők dokumentációját.
 
-### <a name="install-logstash"></a>A Logstash telepítéséhez
+### <a name="install-logstash"></a>A Logstash telepítése
 
-A Logstash használatával simítja egybe a JSON formátumban Folyamatnaplók folyamat rekord szintre.
+A Logstash használatával lelapulhatja a JSON formátumú adatfolyam-naplókat a flow-rekord szintjére.
 
 1. A Logstash telepítéséhez futtassa a következő parancsokat:
 
@@ -58,13 +59,13 @@ A Logstash használatával simítja egybe a JSON formátumban Folyamatnaplók fo
     sudo dpkg -i logstash-5.2.0.deb
     ```
 
-2. A folyamat-naplók elemzése, és küldje el azokat az ElasticSearch, Logstash konfigurálása. Hozzon létre egy Logstash.conf fájlt:
+2. Konfigurálja a Logstash a flow-naplók elemzéséhez és a ElasticSearch való elküldéséhez. Hozzon létre egy Logstash. conf fájlt a használatával:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Adja hozzá a következő tartalmat a fájlhoz. Módosítsa a tárfiók nevét és kulcsát, hogy a tárfiók részleteit:
+3. Adja hozzá a következő tartalmat a fájlhoz. Módosítsa a Storage-fiók nevét és a hozzáférési kulcsot, hogy az tükrözze a Storage-fiók adatait:
 
    ```bash
     input {
@@ -138,27 +139,27 @@ A Logstash használatával simítja egybe a JSON formátumban Folyamatnaplók fo
     }
    ```
 
-A Logstash konfigurációs fájlt a megadott három részből áll: a bemeneti, szűrheti és kimenete.
-A bemeneti szakasz azt jelzi, hogy a bemeneti forrás dolgozza fel a Logstash – ebben az esetben fogjuk használni az "Azure BLOB" bemeneti beépülő modul (a következő lépésben telepítve), amely lehetővé teszi számunkra, hogy az NSG-t a folyamat JSON naplófájljait a blob storage-ban tárolt naplók. 
+A megadott Logstash-konfigurációs fájl három részből áll: a bemenetből, a szűrőből és a kimenetből.
+A beviteli szakasz a Logstash által feldolgozható naplók bemeneti forrását jelöli. ebben az esetben a "azureblob" beviteli beépülő modult fogjuk használni (a következő lépésekben telepítve), amely lehetővé teszi, hogy hozzáférhessen a blob Storage-ban tárolt NSG log JSON-fájlokhoz. 
 
-Úgy, hogy minden egyes folyamat rekord és a hozzájuk tartozó tulajdonságok külön Logstash esemény válik a szakaszban majd minden egyes folyamat naplófájl simítja egybe.
+A szűrő szakasz ezután összekapcsolja az egyes flow-naplófájlokat, hogy minden egyes flow-rekord és a hozzá tartozó tulajdonságok különálló Logstash-eseményvé válnak.
 
-Végül a kimeneti szakaszban továbbítja az ElasticSearch-kiszolgálóhoz a Logstash eseményekhez. Nyugodtan módosítsa a Logstash konfigurációs fájlt a konkrét igényeinek.
+Végül a kimeneti szakasz továbbítja az egyes Logstash eseményeket a ElasticSearch-kiszolgálónak. Nyugodtan módosíthatja a Logstash konfigurációs fájlját, hogy az megfeleljen az adott igényeknek.
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>A Logstash bemeneti beépülő modul telepítéséhez az Azure Blob storage
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>A Logstash bemeneti beépülő moduljának telepítése az Azure Blob Storage-hoz
 
-A Logstash beépülő modul lehetővé teszi, hogy a Folyamatnaplók tud közvetlenül hozzáférni a kijelölt blob storage-fiókból. A plug-ről történő telepítéséhez a Logstash telepítési szereplő alapértelmezett könyvtára (ez megkülönbözteti a kis /usr/share/logstash/bin) futtassa a parancsot:
+Ez a Logstash beépülő modul lehetővé teszi, hogy közvetlenül hozzáférhessen a folyamat naplófájljaihoz a kijelölt blob Storage-fiókból. Ha ezt a beépülő modult szeretné telepíteni, az alapértelmezett Logstash telepítési könyvtárból (ebben az esetben a/usr/share/logstash/bin) futtassa a következő parancsot:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-A beépülő modul kapcsolatos további információkért lásd: [Logstash bemeneti beépülő modul az Azure Storage-blobokat](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+További információ erről a beépülő modulról: [Logstash bemeneti beépülő modul az Azure Storage-blobokhoz](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="install-elasticsearch"></a>Az ElasticSearch telepítése
+### <a name="install-elasticsearch"></a>A ElasticSearch telepítése
 
-A következő parancsfájlt használhatja az ElasticSearch telepítése. Az ElasticSearch telepítésével kapcsolatos információkért lásd: [Elastic Stack](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
+A ElasticSearch telepítéséhez a következő parancsfájlt használhatja. További információ a ElasticSearch telepítéséről: [rugalmas verem](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
 
 ```bash
 apt-get install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen -y
@@ -171,9 +172,9 @@ systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
 ```
 
-### <a name="install-grafana"></a>Grafana telepítése
+### <a name="install-grafana"></a>A Grafana telepítése
 
-Telepítse és futtassa a Grafana, futtassa a következő parancsokat:
+A Grafana telepítéséhez és futtatásához futtassa a következő parancsokat:
 
 ```bash
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.5.1_amd64.deb
@@ -182,29 +183,29 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-További telepítési információk: [telepítés debian / Ubuntu](https://docs.grafana.org/installation/debian/).
+További telepítési információk: [telepítés Debian/Ubuntu rendszeren](https://docs.grafana.org/installation/debian/).
 
-#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Az ElasticSearch-kiszolgáló hozzáadása adatforrásként
+#### <a name="add-the-elasticsearch-server-as-a-data-source"></a>A ElasticSearch-kiszolgáló hozzáadása adatforrásként
 
-Következő lépésként hozzá kell az ElasticSearch indexet tartalmazó Folyamatnaplók adatforrásként. Egy adatforrás kiválasztásával adhat hozzá **adatforrás hozzáadása** elvégzi a szükséges adatokat az űrlap. A konfiguráció egy minta található a következő képernyőfelvételen látható:
+Ezután hozzá kell adnia a flow-naplókat tartalmazó ElasticSearch-indexet adatforrásként. Az adatforrások hozzáadásához válassza az **adatforrás hozzáadása** lehetőséget, és töltse ki az űrlapot a megfelelő információkkal. Ennek a konfigurációnak a mintája a következő képernyőképen található:
 
 ![Adatforrás hozzáadása](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Irányítópult létrehozása
 
-Most, hogy sikeresen konfigurálta a Grafana az ElasticSearch indexet tartalmazó NSG-Folyamatnaplók olvasni, hozhat létre és irányítópultok testreszabása. Hozzon létre egy új irányítópultot, válassza a **létrehozhatja első irányítópultját**. Az alábbi minta gráf konfiguráció Hálózatibiztonságicsoport-szabály alapján szegmentált folyamatokat mutatja be:
+Most, hogy sikeresen konfigurálta a Grafana, hogy beolvassa a NSG flow-naplókat tartalmazó ElasticSearch-indexet, létrehozhat és személyre szabhatja az irányítópultokat. Új irányítópult létrehozásához válassza **az első irányítópult létrehozása**lehetőséget. A következő gráf-konfiguráció a NSG-szabály szerint szegmentált folyamatokat jeleníti meg:
 
-![Irányítópult-diagram](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
+![Irányítópult-gráf](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 
-Az alábbi képernyőképen egy graph és a felső folyamatokat és gyakoriságát a diagram mutatja be. Folyamatok Hálózatibiztonságicsoport-szabály által is látható, és a folyamatok szerint döntési. Grafana az nagymértékben testre szabható, így ajánlatos, hogy az adott figyelési igényeinek jönnek létre. Az alábbi példa bemutatja egy tipikus irányítópultot:
+Az alábbi képernyőképen egy gráf és egy diagram látható, amely a felső folyamatokat és azok gyakoriságát mutatja. A folyamatokat a NSG-szabályok és a folyamatok döntés szerint is mutatják. A Grafana kifejezetten testreszabható, ezért javasoljuk, hogy irányítópultokat hozzon létre az adott figyelési igényeknek megfelelően. Az alábbi példa egy tipikus irányítópultot mutat be:
 
-![Irányítópult-diagram](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Irányítópult-gráf](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Összegzés
 
-A Network Watcher és az ElasticSearch és a Grafana integrálásával, kezelése és NSG-Folyamatnaplók, valamint egyéb adatok megjelenítése egy kényelmes és központosított módja most már rendelkezik. Grafana számos egyéb hatékony adatbejegyzéssel szolgáltatás, amely tovább kezelheti a forgalmi naplók és jobb megértése érdekében a hálózati forgalmat is használható. Most, hogy állítsa be, és Fedezze fel a többi funkció által kínált továbbra is csatlakozik az Azure-ba, nyugodtan a Grafana példánnyal rendelkezik.
+A Network Watcher ElasticSearch és Grafana való integrálásával mostantól kényelmes és központosított módon kezelheti és jelenítheti meg a NSG, valamint más-más adatmennyiségeket is. A Grafana számos más nagy teljesítményű gráf-funkcióval rendelkezik, amelyekkel a folyamatok további kezeléséhez és a hálózati forgalom jobb megismeréséhez is használható. Most, hogy már beállította és csatlakoztatta az Azure-hoz egy Grafana-példányt, nyugodtan folytathatja az általa kínált egyéb funkciók megismerését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ [Network Watcher](network-watcher-monitoring-overview.md).
+- További információ a [Network Watcher](network-watcher-monitoring-overview.md)használatáról.
 

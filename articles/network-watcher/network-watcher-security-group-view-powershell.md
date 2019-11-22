@@ -1,5 +1,6 @@
 ---
-title: Hálózati biztonság elemzése az Azure Network Watcher biztonsági csoport nézettel – PowerShell | Microsoft Docs
+title: Hálózati biztonság – biztonsági csoport nézetének elemzése – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Ez a cikk leírja, hogyan elemezheti a virtuális gépek biztonságát a biztonsági csoport nézettel a PowerShell használatával.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3127d60263437a18e0c8d9a98ebdfad31049c58d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163899"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277916"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>A virtuális gép biztonságának elemzése a biztonsági csoport nézetben a PowerShell használatával
 
@@ -35,7 +36,7 @@ A biztonsági csoport nézet a virtuális gépekre alkalmazott konfigurált és 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ebben az esetben a `Get-AzNetworkWatcherSecurityGroupView` parancsmagot futtatva kéri le a biztonsági szabály adatait.
+Ebben az esetben a `Get-AzNetworkWatcherSecurityGroupView` parancsmagot futtatja a biztonsági szabály adatainak lekéréséhez.
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
 
@@ -45,7 +46,7 @@ A cikkben ismertetett forgatókönyv egy adott virtuális gép konfigurált és 
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher beolvasása
 
-Az első lépés az Network Watcher példány beolvasása. A rendszer ezt a változót `Get-AzNetworkWatcherSecurityGroupView` adja át a parancsmagnak.
+Az első lépés az Network Watcher példány beolvasása. Ezt a változót a rendszer a `Get-AzNetworkWatcherSecurityGroupView` parancsmagnak adja át.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -128,7 +129,7 @@ NetworkInterfaces : [
                     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hálózati biztonsági csoportok érvényesítésének automatizálásához látogasson el [Network Watcher a hálózati biztonsági csoportok (NSG) naplózása](network-watcher-nsg-auditing-powershell.md) című témakörre.
 

@@ -1,5 +1,6 @@
 ---
-title: A csomagok rögzítésének kezelése az Azure Network Watcher-PowerShell használatával | Microsoft Docs
+title: A csomagok rögzítésének kezelése – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Ez az oldal azt ismerteti, hogyan kezelhető a Network Watcher csomag-rögzítési funkciója a PowerShell használatával
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3be68f6ef87ba37bcfaf418225ce7f460aed53a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163941"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277880"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>A csomagok rögzítésének kezelése az Azure Network Watcher a PowerShell használatával
 
@@ -50,7 +51,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 * Egy virtuális gép, amelyen engedélyezve van a Packet Capture bővítmény.
 
 > [!IMPORTANT]
-> A csomagok rögzítése a virtuálisgép-bővítményt `AzureNetworkWatcherExtension`igényli. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md).
+> A csomagok rögzítéséhez a virtuálisgép-bővítménynek `AzureNetworkWatcherExtension`kell lennie. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
@@ -62,7 +63,7 @@ $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>2\. lépés
 
-A következő példa lekéri a `Set-AzVMExtension` parancsmag futtatásához szükséges kiterjesztési adatokat. Ez a parancsmag telepíti a csomag-rögzítési ügynököt a vendég virtuális gépen.
+A következő példa lekéri a `Set-AzVMExtension` parancsmag futtatásához szükséges bővítmények adatait. Ez a parancsmag telepíti a csomag-rögzítési ügynököt a vendég virtuális gépen.
 
 > [!NOTE]
 > A `Set-AzVMExtension` parancsmag végrehajtása több percet is igénybe vehet.
@@ -83,7 +84,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-A következő példa sikeres válasz a `Set-AzVMExtension` parancsmag futtatása után.
+A következő példa egy sikeres válasz a `Set-AzVMExtension` parancsmag futtatása után.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -93,13 +94,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>3\. lépés
 
-Az ügynök telepítésének biztosításához futtassa a `Get-AzVMExtension` parancsmagot, és adja át a virtuális gép nevét és a bővítmény nevét.
+Az ügynök telepítésének biztosításához futtassa az `Get-AzVMExtension` parancsmagot, és adja át a virtuális gép nevét és a bővítmény nevét.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Az alábbi példa a futtatási választ szemlélteti`Get-AzVMExtension`
+Az alábbi példa a `Get-AzVMExtension` futtatásának válaszára mutat példát.
 
 ```
 ResourceGroupName       : testrg
@@ -127,7 +128,7 @@ Miután az előző lépések befejeződik, a rendszer telepíti a csomag-rögzí
 
 ### <a name="step-1"></a>1\. lépés
 
-A következő lépés az Network Watcher példány beolvasása. Ezt a változót a 4 `New-AzNetworkWatcherPacketCapture` . lépésben megadott parancsmagnak adja át a rendszer.
+A következő lépés az Network Watcher példány beolvasása. Ezt a változót a 4. lépésben megadott `New-AzNetworkWatcherPacketCapture` parancsmagnak adja át.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -201,7 +202,7 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Csomag rögzítésének beolvasása
 
-A `Get-AzNetworkWatcherPacketCapture` parancsmag futtatásakor a rendszer lekéri egy aktuálisan futó, vagy befejezett csomag rögzítési állapotát.
+A `Get-AzNetworkWatcherPacketCapture` parancsmag futtatásával lekéri egy jelenleg futó, vagy befejezett csomag rögzítési állapotát.
 
 ```powershell
 Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
@@ -276,11 +277,11 @@ Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a 
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a riasztások által [aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
+Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a [riasztások által aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
 
-Annak megállapítása, hogy az [IP-](diagnose-vm-network-traffic-filtering-problem.md) forgalom ellenőrzésének meglátogatása esetén engedélyezett-e a virtuális gép bejövő vagy kimenő forgalma
+Annak megállapítása, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md) meglátogatása esetén engedélyezett-e a virtuális gép bejövő vagy kimenő forgalma
 
 <!-- Image references -->
 

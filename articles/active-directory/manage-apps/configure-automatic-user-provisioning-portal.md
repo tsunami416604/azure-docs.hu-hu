@@ -1,5 +1,5 @@
 ---
-title: A felhasználók üzembe helyezésének felügyelete a Azure Active Directory vállalati alkalmazásaiban | Microsoft Docs
+title: Felhasználók üzembe helyezésének felügyelete az Azure AD-ben vállalati alkalmazásokhoz
 description: Megtudhatja, hogyan kezelheti a vállalati alkalmazások felhasználói fiókjának kiépítési folyamatait a Azure Active Directory használatával
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315270"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285625"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
@@ -85,9 +85,4 @@ Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja
 
 Állítsa a **kiépítési állapotot** **ki** értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
 
-Jelölje be a **jelenlegi állapot törlése és a szinkronizálás újraindítása** jelölőnégyzetet, és válassza a **Mentés** a következőre:
-
-* A kiépítési szolgáltatás leállítása
-* Indítsa újra a szolgáltatásokat, és futtassa újra a kezdeti ciklust
-
-Ez a beállítás lehetővé teszi, hogy a rendszergazdák újra elindítsák a kiépítési telepítési folyamatot.
+**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Ez nem használható törlési vagy letiltási kérelem elindítására, mivel ezek az események törölhető állapotba kerülnek, és újraindulnak. A kezdeti ciklus több időt vesz igénybe, mint a tipikus növekményes ciklus a kiértékeléshez szükséges objektumok száma miatt. A kezdeti és a növekményes ciklusok teljesítményéről itt olvashat bővebben [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 

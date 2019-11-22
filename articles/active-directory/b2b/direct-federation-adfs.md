@@ -1,6 +1,6 @@
 ---
-title: Állítsa be a B2B - Azure Active Directory-hez és a egy AD FS közvetlen összevonási |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be az AD FS közvetlen összevonási Identitásszolgáltatóként, így a vendégek jelentkezhetnek be az Azure AD-alkalmazások
+title: Közvetlen összevonás beállítása egy AD FS a B2B-Azure AD-hez
+description: Ismerje meg, hogyan állíthatja be a közvetlen összevonás AD FS identitás-szolgáltatóként, hogy a vendégek be tudják jelentkezni az Azure AD-alkalmazásokba
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,146 +12,146 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f709186f0ef17e037c4203118be07ea2d4f511
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544321"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272831"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Példa: Az Active Directory összevonási szolgáltatások (AD FS) közvetlen összevonási (előzetes verzió)
+# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Példa: közvetlen összevonás Active Directory összevonási szolgáltatások (AD FS) (AD FS) (előzetes verzió)
 |     |
 | --- |
-| Közvetlen összevonási az Azure Active Directory nyilvános előzetes verziójú funkció. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| A közvetlen összevonás a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Ez a cikk azt ismerteti, hogyan állítható be [összevonási közvetlen](direct-federation.md) SAML 2.0 vagy WS-Fed identitás-szolgáltatóként az Active Directory összevonási szolgáltatások (AD FS) használatával. Közvetlen összevonási támogatása érdekében egyes attribútumokról és jogcímekről kell konfigurálni, az identitásszolgáltató. Közvetlen összevonási identitásszolgáltatót konfigurálása mutatja be, az Active Directory összevonási szolgáltatások (AD FS) fogjuk használni példaként. Bemutatjuk, hogyan állítható be az AD FS SAML identitás-szolgáltatóként, mind a WS-Fed identitás-szolgáltatóként.
+Ez a cikk azt ismerteti, hogyan állítható be a [közvetlen összevonás](direct-federation.md) Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával SAML 2,0 vagy ws-fed identitás-szolgáltatóként. A közvetlen összevonás támogatásához bizonyos attribútumokat és jogcímeket konfigurálni kell az identitás-szolgáltatón. Ha szeretné bemutatni, hogyan konfigurálhat egy identitás-szolgáltatót a közvetlen összevonáshoz, használja a Active Directory összevonási szolgáltatások (AD FS) (AD FS) példaként. Bemutatjuk, hogyan állíthat be AD FS mindkettőt SAML-identitás-szolgáltatóként, illetve WS-fed identitás-szolgáltatóként.
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan állítsa be az AD FS SAML mind a WS-Fed illusztrációs célokat szolgálnak. Közvetlen összevonási Integrációk, amelyben az identitásszolgáltató-e az AD FS javasoljuk hogy WS-Fed protokollként. 
+> Ez a cikk bemutatja, hogyan állíthat be AD FSt az SAML és a WS-fed számára az illusztrációs célokra. A közvetlen összevonási integrációk esetében, ahol az Identity Provider AD FS, javasoljuk, hogy a WS-fed protokollt használja protokollként. 
 
-## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>SAML 2.0 direct összevonás az AD FS konfigurálása
-Az Azure AD B2B identitásszolgáltatókkal, az alább felsorolt különleges követelményeket az SAML protokollt használó összevonásához konfigurálható. A SAML-konfigurációs lépések bemutatják, hogy ez a szakasz bemutatja, hogyan SAML 2.0-hoz készült Active Directory összevonási szolgáltatások beállítása. 
+## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>AD FS konfigurálása SAML 2,0 közvetlen összevonás esetén
+Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-konfiguráció lépéseinek szemléltetéséhez ez a szakasz bemutatja, hogyan állíthat be AD FS az SAML 2,0-hez. 
 
-Közvetlen összevonási beállításával kapcsolatban a következő attribútumokkal kell érkeznie az identitásszolgáltatótól az SAML 2.0 válaszként. Ezek az attribútumok konfigurálható az online biztonsági jogkivonatokkal kapcsolatos szolgáltatástól XML-fájl összekapcsolása, vagy írja be őket manuálisan. 12. lépés [teszt az AD FS-példány létrehozása](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) ismerteti, hogyan találhatja meg az AD FS-végpontok vagy a metaadatok URL-CÍMÉT, például létrehozása `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
+Közvetlen összevonás beállításához a következő attribútumoknak kell szerepelniük az SAML 2,0-válaszban az identitás-szolgáltatótól. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is. A [test AD FS-példány létrehozása](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) című 12. lépés leírja, hogyan lehet megkeresni a AD FS végpontokat vagy a metaadatok URL-címét, például `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
 |Attribútum  |Érték  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
-|Kiállító     |A kibocsátó URI-t a partner identitásszolgáltató, például `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-Az identitásszolgáltató által kibocsátott SAML 2.0 jogkivonat konfigurálni kell a következő jogcímek:
+A következő jogcímeket az Identitáskezelő által kiállított SAML 2,0-tokenben kell konfigurálni:
 
 
 |Attribútum  |Érték  |
 |---------|---------|
-|NameID Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
-|e-mail cím     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|NameID formátuma     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
+|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 
-Ez a szakasz azt ábrázolja, hogyan konfigurálja a szükséges attribútumok és a jogcímek az AD FS használatával a SAML 2.0 identitásszolgáltató példaként.
+A következő szakasz bemutatja, hogyan konfigurálhatja a szükséges attribútumokat és jogcímeket AD FS használatával példaként egy SAML 2,0-identitást szolgáltatóként.
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Az AD FS-kiszolgáló már állítson fel és működik, ez az eljárás megkezdése előtt. Segítség az AD FS-kiszolgáló beállítása: [teszt AD FS 3.0 példányt hoz létre egy Azure virtuális gép](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
+Az eljárás megkezdése előtt már be kell állítania egy AD FS-kiszolgálót, és működnie kell. AD FS-kiszolgáló beállításával kapcsolatos segítségért lásd: [teszt AD FS 3,0-példány létrehozása Azure-beli virtuális gépen](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
 
-### <a name="add-the-claim-description"></a>Az igényt leírás hozzáadása
+### <a name="add-the-claim-description"></a>Jogcím leírásának hozzáadása
 
-1. Válassza ki az AD FS-kiszolgáló **eszközök** > **AD FS-kezelőben**.
-2. A navigációs panelen válassza ki **szolgáltatás** > **Jogcímleírások**.
-3. A **műveletek**válassza **Jogcímleírások hozzáadása**.
-4. Az a **adja hozzá a Jogcímleírások** ablakban adja meg a következő értékeket:
+1. A AD FS-kiszolgálón válassza az **eszközök** > **AD FS felügyelet**lehetőséget.
+2. A navigációs ablaktáblán válassza a **Service** > **jogcím leírása**elemet.
+3. A **műveletek**területen válassza a **jogcím hozzáadása leírást**.
+4. A **jogcím leírásának hozzáadása** ablakban adja meg a következő értékeket:
 
-   - **Megjelenítendő név**: Állandó azonosítója
-   - **Jogcím-azonosító**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
-   - Jelölje be a jelölőnégyzetet a **a jogcímleírások közzététele az összevonás metaadataiban az összevonási szolgáltatás elfogadó jogcím típusaként**.
-   - Jelölje be a jelölőnégyzetet a **a jogcímleírások közzététele az összevonás metaadataiban az összevonási szolgáltatás küldhet egy jogcím típusaként**.
+   - **Megjelenítendő név**: állandó azonosító
+   - **Jogcím azonosítója**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
+   - Jelölje be a **jogcím leírásának közzététele az összevonási metaadatokban jelölőnégyzetet az összevonási szolgáltatás által elfogadható jogcím-típusként**.
+   - Jelölje be a **jogcím leírásának közzétételére szolgáló jelölőnégyzetet az összevonási metaadatokban az összevonási szolgáltatás által elküldhető jogcím típusaként**.
 
 5. Kattintson az **OK** gombra.
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>A függő entitás megbízhatóságának hozzáadása és jogcímszabályok
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>A függő entitás megbízhatóságának és a jogcím szabályainak hozzáadása
 
-1. Az AD FS-kiszolgálón, lépjen a **eszközök** > **AD FS-kezelőben**.
-2. A navigációs panelen válassza ki **megbízhatósági kapcsolatok** > **függő entitás Megbízhatóságai**.
-3. A **műveletek**válassza **függő entitás megbízhatóságának hozzáadása**. 
-4. A Hozzáadás függő entitás megbízhatósági varázslóban **adatforrás kiválasztása**, használja a kapcsolót **online vagy a helyi hálózaton közzétett adatok importálása a függő entitással kapcsolatos**. Adja meg az összevonási metaadatok URL-cím - https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Hagyja meg az egyéb alapértelmezett beállításokat. Válassza ki **Bezárás**.
-5. A **Jogcímszabályok szerkesztése** megnyílik a varázsló.
-6. Az a **Jogcímszabályok szerkesztése** varázslóban válassza **szabály hozzáadása**. A **szabály típusának kiválasztása**válassza **LDAP attribútumok küldése jogcímekként**. Kattintson a **Tovább** gombra.
-7. A **Jogcímszabály konfigurálása**, adja meg a következő értékeket: 
+1. A AD FS-kiszolgálón lépjen az **eszközök** > **AD FS felügyelet**elemre.
+2. A navigációs ablaktáblán válassza a **megbízhatósági kapcsolatok** > **függő entitások megbízhatóságai**lehetőséget.
+3. A **műveletek**területen válassza a **függő entitás megbízhatóságának hozzáadása**lehetőséget. 
+4. A függő entitás megbízhatóságának hozzáadása varázslóban az **adatforrás kiválasztásához**használja az **adatimportálás lehetőséget a függő entitás online vagy helyi hálózaton közzétett adatainak importálása**lehetőséggel. Itt adhatja meg az összevonási metaadatok URL-címét – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Hagyja meg az egyéb alapértelmezett beállításokat. Válassza a **Bezárás**lehetőséget.
+5. Megnyílik a **jogcím-szabályok szerkesztése** varázsló.
+6. A **jogcím szabályainak szerkesztése** varázslóban válassza a **szabály hozzáadása**elemet. A **szabály típusának kiválasztása**területen válassza az **LDAP-attribútumok küldése jogcímként**lehetőséget. Kattintson a **Tovább** gombra.
+7. A **jogcím beállítása szabályban**adja meg a következő értékeket: 
 
-   - **Jogcímszabály neve**: E-mail jogcímszabályt 
-   - **Attribútumtár**: Active Directory 
-   - **LDAP attribútum**: E-Mail-Addresses 
-   - **Kimenő jogcím típusa**: E-Mail cím
+   - **Jogcím-szabály neve**: e-mail-jogcím szabálya 
+   - **Attribútum-tároló**: Active Directory 
+   - **LDAP-attribútum**: E-mail-címek 
+   - **Kimenő jogcím típusa**: E-mail cím
 
 8. Válassza a **Finish** (Befejezés) elemet.
-9. A **Jogcímszabályok szerkesztése** ablakban jelennek meg az új szabályt. Kattintson az **Alkalmaz** gombra. 
+9. A **jogcímek szerkesztése** ablakban megjelenik az új szabály. Kattintson az **Alkalmaz** gombra. 
 10. Kattintson az **OK** gombra.  
 
-### <a name="create-an-email-transform-rule"></a>E-mailek átalakítási szabály létrehozása
-1. Lépjen a **Jogcímszabályok szerkesztése** kattintson **szabály hozzáadása**. A **szabály típusának kiválasztása**válassza **bejövő jogcím átalakítása** kattintson **tovább**. 
-2. A **Jogcímszabály konfigurálása**, adja meg a következő értékeket: 
+### <a name="create-an-email-transform-rule"></a>E-mail átalakítási szabály létrehozása
+1. Lépjen a **jogcím szabályainak szerkesztése** elemre, majd kattintson a **szabály hozzáadása**lehetőségre. A **szabály típusának kiválasztása**területen válassza a **bejövő jogcím átalakítása** lehetőséget, majd kattintson a **tovább**gombra. 
+2. A **jogcím beállítása szabályban**adja meg a következő értékeket: 
 
-   - **Jogcímszabály neve**: E-mailek átalakítási szabály 
+   - **Jogcím-szabály neve**: e-mail-átalakítási szabály 
    - **Bejövő jogcím típusa**: E-mail cím 
-   - **Kimenő jogcím típusa**: Névazonosító 
-   - **Kimenő Névazonosító formátuma**: Állandó azonosítója 
+   - **Kimenő jogcím típusa**: név azonosítója 
+   - **Kimenő név azonosítójának formátuma**: állandó azonosító 
    - Válassza **Az összes jogcímérték továbbítása** lehetőséget.
 
 3. Kattintson a **Befejezés**gombra. 
-4. A **Jogcímszabályok szerkesztése** ablakban jelennek meg az új szabályokat. Kattintson az **Alkalmaz** gombra. 
-5. Kattintson az **OK** gombra. Az AD FS-kiszolgáló lett konfigurálva a közvetlen összevonási az SAML 2.0 protokoll használatával.
+4. A **jogcímek szerkesztése** ablakban megjelennek az új szabályok. Kattintson az **Alkalmaz** gombra. 
+5. Kattintson az **OK** gombra. A AD FS-kiszolgáló most már az SAML 2,0 protokollal történő közvetlen összevonás használatára van konfigurálva.
 
-## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>WS-Fed közvetlen összevonás az AD FS konfigurálása 
-Az Azure AD B2B identitásszolgáltatókat, amelyek a WS-Fed protokollt használja az alább felsorolt különleges követelményeket az összevonni kívánt konfigurálható. A két WS-Fed szolgáltató jelenleg teszteltük, az Azure AD-kompatibilitás az AD FS és a Shibboleth tartalmazzák. Az Active Directory összevonási szolgáltatások (AD FS) itt, például a WS-Fed identitásszolgáltató fogjuk használni. Között WS-Fed megfelelő szolgáltató és az Azure AD függő entitások megbízhatóságainak létrehozásával kapcsolatos további információkért töltse le az Azure AD Identity Provider kompatibilitási Docs.
+## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>AD FS konfigurálása a WS-fed Direct Federation számára 
+Az Azure AD B2B konfigurálható úgy, hogy a WS-fed protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Jelenleg az Azure AD-vel való kompatibilitás érdekében tesztelték a két WS-fed szolgáltatót, AD FS és Shibboleth is. Itt a WS-fed Identity Provider példájának Active Directory összevonási szolgáltatások (AD FS) (AD FS) fogjuk használni. Ha további információkra van szüksége arról, hogyan kell létrehozni egy függő entitás megbízhatóságát egy WS-fed megfelelő szolgáltató és az Azure AD között, töltse le az Azure AD Identity Provider kompatibilitási dokumentációját.
 
-Közvetlen összevonási beállításával kapcsolatban a következő attribútumokkal kell érkeznie, a WS-Fed üzenetben az identitásszolgáltatótól. Ezek az attribútumok konfigurálható az online biztonsági jogkivonatokkal kapcsolatos szolgáltatástól XML-fájl összekapcsolása, vagy írja be őket manuálisan. 12. lépés [teszt az AD FS-példány létrehozása](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) ismerteti, hogyan találhatja meg az AD FS-végpontok vagy a metaadatok URL-CÍMÉT, például létrehozása `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
+Közvetlen összevonás beállításához a következő attribútumokat kell megkapnia a WS-fed üzenetben az identitás-szolgáltatótól. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is. A [test AD FS-példány létrehozása](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) című 12. lépés leírja, hogyan lehet megkeresni a AD FS végpontokat vagy a metaadatok URL-címét, például `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
 |Attribútum  |Érték  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
-|Kiállító     |A kibocsátó URI-t a partner identitásszolgáltató, például `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-A WS-Fed token az identitásszolgáltató által kiadott jogcímeket szükséges:
+A identitásszolgáltató által kiadott WS-fed jogkivonat számára szükséges jogcímek:
 
 |Attribútum  |Érték  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
-|e-mail cím     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
+|EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-Ez a szakasz azt ábrázolja, hogyan konfigurálhatja a szükséges attribútumokkal, és a WS-Fed identitásszolgáltató példaként használva az AD FS-jogcímek.
+A következő szakasz bemutatja, hogyan konfigurálhatja a szükséges attribútumokat és jogcímeket AD FS használatával példaként egy WS-fed identitás-szolgáltatóként.
 
 ### <a name="before-you-begin"></a>Előkészületek
-Az AD FS-kiszolgáló már állítson fel és működik, ez az eljárás megkezdése előtt. Segítség az AD FS-kiszolgáló beállítása: [teszt AD FS 3.0 példányt hoz létre egy Azure virtuális gép](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
+Az eljárás megkezdése előtt már be kell állítania egy AD FS-kiszolgálót, és működnie kell. AD FS-kiszolgáló beállításával kapcsolatos segítségért lásd: [teszt AD FS 3,0-példány létrehozása Azure-beli virtuális gépen](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed).
 
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>A függő entitás megbízhatóságának hozzáadása és jogcímszabályok 
-1. Az AD FS-kiszolgálón, lépjen a **eszközök** > **AD FS-kezelőben**. 
-1. A navigációs panelen válassza ki **megbízhatósági kapcsolatok** > **függő entitás Megbízhatóságai**. 
-1. A **műveletek**válassza **függő entitás megbízhatóságának hozzáadása**.  
-1. Függő entitás megbízhatósági kapcsolat varázslót, a hozzáadása **adatforrás kiválasztása**, használja a kapcsolót **online vagy a helyi hálózaton közzétett adatok importálása a függő entitással kapcsolatos**. Adja meg az összevonási metaadatok URL-cím: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Hagyja meg az egyéb alapértelmezett beállításokat. Válassza ki **Bezárás**.
-1. A **Jogcímszabályok szerkesztése** megnyílik a varázsló. 
-1. Az a **Jogcímszabályok szerkesztése** varázslóban válassza **szabály hozzáadása**. A **szabály típusának kiválasztása**válassza **jogcímek küldése egyéni szabállyal egy**. Kattintson a *Tovább* gombra. 
-1. A **Jogcímszabály konfigurálása**, adja meg a következő értékeket:
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>A függő entitás megbízhatóságának és a jogcím szabályainak hozzáadása 
+1. A AD FS-kiszolgálón lépjen az **eszközök** > **AD FS felügyelet**elemre. 
+1. A navigációs ablaktáblán válassza a **megbízhatósági kapcsolatok** > **függő entitások megbízhatóságai**lehetőséget. 
+1. A **műveletek**területen válassza a **függő entitás megbízhatóságának hozzáadása**lehetőséget.  
+1. A függő entitás megbízhatóságának hozzáadása varázslóban az **adatforrás kiválasztásához**használja a **függő entitás online vagy helyi hálózaton közzétett adatainak importálása**lehetőséget. Itt adhatja meg az összevonási metaadatok URL-címét: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Hagyja meg az egyéb alapértelmezett beállításokat. Válassza a **Bezárás**lehetőséget.
+1. Megnyílik a **jogcím-szabályok szerkesztése** varázsló. 
+1. A **jogcím szabályainak szerkesztése** varázslóban válassza a **szabály hozzáadása**elemet. A **szabály típusának kiválasztása**területen válassza **a jogcímek küldése egyéni szabállyal**lehetőséget. Kattintson a *Tovább* gombra. 
+1. A **jogcím beállítása szabályban**adja meg a következő értékeket:
 
-   - **Jogcímszabály neve**: A probléma nem módosítható azonosító  
+   - **Jogcím-szabály neve**: nem módosítható azonosító kiadása  
    - **Egyéni szabály**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Válassza a **Finish** (Befejezés) elemet. 
-1. A **Jogcímszabályok szerkesztése** ablakban jelennek meg az új szabályt. Kattintson az **Alkalmaz** gombra.  
-1. Az egyazon **Jogcímszabályok szerkesztése** varázslóban válassza **szabály hozzáadása**. A **Cohose szabálytípus**válassza **LDAP attribútumok küldése jogcímekként**. Kattintson a **Tovább** gombra.
-1. A **Jogcímszabály konfigurálása**, adja meg a következő értékeket: 
+1. A **jogcímek szerkesztése** ablakban megjelenik az új szabály. Kattintson az **Alkalmaz** gombra.  
+1. A **jogcímek szerkesztése** varázslóban válassza a **szabály hozzáadása**elemet. A összetartozó **szabály típusa**területen válassza az **LDAP-attribútumok küldése jogcímként**lehetőséget. Kattintson a **Tovább** gombra.
+1. A **jogcím beállítása szabályban**adja meg a következő értékeket: 
 
-   - **Jogcímszabály neve**: E-mail jogcímszabályt  
-   - **Attribútumtár**: Active Directory  
-   - **LDAP attribútum**: E-Mail-Addresses  
-   - **Kimenő jogcím típusa**: E-Mail cím 
+   - **Jogcím-szabály neve**: e-mail-jogcím szabálya  
+   - **Attribútum-tároló**: Active Directory  
+   - **LDAP-attribútum**: E-mail-címek  
+   - **Kimenő jogcím típusa**: E-mail cím 
 
 1.  Válassza a **Finish** (Befejezés) elemet. 
-1.  A **Jogcímszabályok szerkesztése** ablakban jelennek meg az új szabályt. Kattintson az **Alkalmaz** gombra.  
-1.  Kattintson az **OK** gombra. Az AD FS-kiszolgáló közvetlen összevonási WS-Fed használatával lett konfigurálva.
+1.  A **jogcímek szerkesztése** ablakban megjelenik az új szabály. Kattintson az **Alkalmaz** gombra.  
+1.  Kattintson az **OK** gombra. A AD FS-kiszolgáló mostantól a WS-fed használatával történő közvetlen összevonás használatára van konfigurálva.
 
-## <a name="next-steps"></a>További lépések
-Ezután fogja [közvetlen összevonás konfigurálása az Azure ad-ben](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) vagy az Azure AD portálon vagy a PowerShell használatával. 
+## <a name="next-steps"></a>Következő lépések
+Ezután konfigurálja az Azure [ad közvetlen összevonását](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) az Azure ad-portálon vagy a PowerShell használatával. 

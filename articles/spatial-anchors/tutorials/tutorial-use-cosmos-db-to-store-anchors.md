@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – Azure térbeli horgonyok megosztása munkamenetek és eszközök között egy Azure Cosmos DB háttérrel | Microsoft Docs
+title: 'Oktatóanyag: horgonyok megosztása Azure Cosmos DB'
 description: Ebből az oktatóanyagból megtudhatja, hogyan oszthatja meg az Azure térbeli horgonyok azonosítóit az Android/iOS-eszközökön a háttér-szolgáltatás és a Azure Cosmos DB segítségével.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7ddbff563f79992f21aef5182177f4fb60c61dab
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882167"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276881"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Azure térbeli horgonyok megosztása munkamenetek és eszközök között egy Azure Cosmos DB háttérrel
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag az [Azure térbeli horgonyok munkamenetek és eszközök köz
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
-Vegyen fel egy Azure Cosmos-adatbázist a korábban létrehozott erőforráscsoporthoz. 
+Vegyen fel egy Azure Cosmos-adatbázist a korábban létrehozott erőforráscsoporthoz.
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 

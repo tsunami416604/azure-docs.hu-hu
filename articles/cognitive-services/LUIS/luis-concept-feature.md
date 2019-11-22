@@ -1,7 +1,7 @@
 ---
 title: Funkciók – LUIS
 titleSuffix: Azure Cognitive Services
-description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
+description: Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647419"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280899"
 ---
 # <a name="machine-learned-features"></a>Gépi megtanult funkciók 
 
-A gépi tanulásban a *funkció* egy olyan megkülönböztető tulajdonság vagy adatattribútum, amelyet a rendszer a & megismerésével megfigyel. A Language Understanding (LUIS) egy funkció leírja és ismerteti a szándékait és entitásait illető jelentős jelentőséget.
+A gépi tanulásban a _funkció_ egy olyan megkülönböztető tulajdonság vagy adatattribútum, amelyet a rendszer a & megismerésével megfigyel. A Language Understanding (LUIS) egy funkció leírja és ismerteti a szándékait és entitásait illető jelentős jelentőséget.
 
 A [Luis-portálon](https://preview.luis.ai)a funkciók _leírók_ , mert a szándék vagy az entitás _leírására_ szolgálnak.  
 
@@ -43,7 +43,7 @@ A kifejezést tartalmazó listával LUIS a kontextust és az általánosítások
 
 Ha szeretné tudni, hogy az új példányok felismerhetők legyenek, például egy olyan értekezlet-ütemező, amelynek fel kell ismernie az új névjegyek nevét, vagy egy olyan leltározási alkalmazást, amely új termékeket ismer fel, kezdjen egy géppel megtanult entitással. Ezután hozzon létre egy olyan kifejezést, amely segít a LUIS hasonló jelentéssel rendelkező szavak megkeresésében. Ez a kifejezési lista a LUIS-t a példák felismerésére szolgáló további jelentőséggel bír a szavak értékének megadásával. 
 
-A kifejezések listája hasonló a tartományhoz tartozó szókincshez, amely segít a szándékok és az entitások megismerésének javításában. 
+Kifejezés listák hasonlóak a tartomány-specifikus szöveg szóhasználati, amely a szándékok és entitások ismertetése minőségének javítása érdekében. 
 
 ## <a name="considerations-when-using-a-phrase-list"></a>Szempontok kifejezések listájának használatakor
 
@@ -57,7 +57,7 @@ A `enabledForAllModels` jelző a modell hatókörét szabályozza az API-ban.
 
 ### <a name="how-to-use-a-phrase-list"></a>Kifejezések listájának használata
 
-[Hozzon létre egy kifejezés lista](luis-how-to-add-features.md) listát, ha a szándék vagy az entitás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak például a következők:
+[Hozzon létre egy mondatot](luis-how-to-add-features.md) , ha a szándék vagy az entitás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak például a következők:
 
 * iparági feltételek
 * szleng
@@ -82,13 +82,13 @@ Ha például a cél egy járat foglalása, és az entitás a jegyekkel kapcsolat
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>Entitás szolgáltatásként egy másik entitáshoz
 
-Az entitást (A) szolgáltatásként hozzá kell adni egy másik entitáshoz (B), ha az adott entitás (A) észlelése a (B) esetében jelentős.
+Egy entitást (A) a szolgáltatásként egy másik entitáshoz (B) kell hozzáadni, ha az adott entitás (A) észlelése jelentős az entitás (B) előrejelzéséhez.
 
 Ha például a rendszer az utca címe entitást (A) észleli, akkor az utca címe (A) a szállítási címek entitásának (B) kiszámításához hozzáadja a súlyozást az előrejelzéshez. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
+Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a szolgáltatások hozzáadása a LUIS-alkalmazáshoz [című témakörben](luis-how-to-add-features.md) talál további információt.
+Lásd: [szolgáltatások hozzáadása](luis-how-to-add-features.md) további információt a szolgáltatások hozzáadása a LUIS-alkalmazás.

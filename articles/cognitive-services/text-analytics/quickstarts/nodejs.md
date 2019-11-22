@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Node. js használatával hívja meg a Text Analytics REST API'
+title: 'Rövid útmutató: a Text Analytics meghívásához használja a Node. js-t REST API'
 titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 2b98949ca93be5ec0324561a053df730705af152
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: fe07290eaa68965e2ebe1f9220fc963c915f48f1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671873"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284960"
 ---
-# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Node. js használata a Text Analytics kognitív szolgáltatás meghívásához  
+# <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: a Text Analytics kognitív szolgáltatás meghívása a Node. js használatával  
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti a véleményét](#SentimentAnalysis), [kinyerheti a legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a csatolt entitásokat](#Entities) a [text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711)-k  with
+Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel a nyelvet, [elemezheti Text Analytics a hangulatát](#SentimentAnalysis), [](//go.microsoft.com/fwlink/?LinkID=759711) [kinyerheti a kulcs kifejezéseit](#KeyPhraseExtraction), és hogyan [AZONOSÍThatja a társított entitásokat](#Entities) a Node. js- 
 
-Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,14 +31,14 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelvfelismerés
+## <a name="detect-language"></a>Nyelv felismerése
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új Node. JS-projektet a kedvenc IDE vagy egy, az asztalon lévő mappában.
 1. Adja hozzá az alább megadott kódot egy új `.js` fájlhoz.
-1. Futtassa a programot az ide vagy a parancssorból, például `npm start` : vagy. `node detect.js`
+1. Futtassa a programot az IDE vagy a parancssorból, például `npm start` vagy `node detect.js`.
 
 ```javascript
 'use strict';
@@ -154,10 +154,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. Az érzelmek elemzése segítségével megtudhatja, hogy az ügyfelek mit gondolnak a márka vagy a téma alapján, ha a nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az alábbi példa két dokumentum pontszámait tartalmazza, amelyek közül az egyik az angol, a másik pedig a spanyol.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új Node. JS-projektet a kedvenc IDE vagy egy, az asztalon lévő mappában.
 1. Adja hozzá az alább megadott kódot egy új `.js` fájlhoz.
-1. Futtassa a programot az ide vagy a parancssorból, például `npm start` : vagy. `node sentiment.js`
+1. Futtassa a programot az IDE vagy a parancssorból, például `npm start` vagy `node sentiment.js`.
 
 ```javascript
 'use strict';
@@ -243,14 +243,14 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak keresése
+## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. A kulcsfontosságú kifejezés kibontásával gyorsan azonosíthatók a dokumentumok vagy szövegek fő pontjai. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új Node. JS-projektet a kedvenc IDE vagy egy, az asztalon lévő mappában.
 1. Adja hozzá az alább megadott kódot egy új `.js` fájlhoz.
-1. Futtassa a programot az ide vagy a parancssorból, például `npm start` : vagy. `node key-phrases.js`
+1. Futtassa a programot az IDE vagy a parancssorból, például `npm start` vagy `node key-phrases.js`.
 
 ```javascript
 'use strict';
@@ -358,12 +358,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-linked-entities"></a>Társított entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. [](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) Az entitások szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" `location`típusa, míg a `https://en.wikipedia.org/wiki/United_States`wikipedia-ra mutató hivatkozás.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location`, míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States`.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új Node. JS-projektet a kedvenc IDE vagy egy, az asztalon lévő mappában.
 1. Adja hozzá az alább megadott kódot egy új `.js` fájlhoz.
-1. Futtassa a programot az ide vagy a parancssorból, például `npm start` : vagy. `node entities.js`
+1. Futtassa a programot az IDE vagy a parancssorból, például `npm start` vagy `node entities.js`.
 
 ```javascript
 'use strict';
@@ -476,7 +476,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)

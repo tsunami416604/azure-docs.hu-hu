@@ -1,7 +1,7 @@
 ---
 title: Minták Súgó előrejelzése – LUIS
 titleSuffix: Azure Cognitive Services
-description: Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül.
+description: A mintákkal magasabb szintű pontosság érhető el egy beszédelemnél anélkül, hogy sok további beszédelemre lenne szükség.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012013"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280857"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
-Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
+Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  A mintákkal magasabb szintű pontosság érhető el egy beszédelemnél anélkül, hogy sok további beszédelemre lenne szükség. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Minták szándék alacsony megbízhatósági megoldása
 Fontolja meg egy emberi erőforrások alkalmazáson, amely a szervezeti diagram viszonyítva egy alkalmazott a jelentést. Az alkalmazottak és a kapcsolat, LUIS ad vissza, az alkalmazottak érint. Fontolja meg egy alkalmazott Tom, egy alkalmazott felettesétől az Alice nevét, és a beosztottak nevű csapat: Michael Rebecca és Carl.
@@ -45,7 +45,7 @@ Minták előrejelzési technológiák kombinációját használja. Egy leképez�
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>A minták nem javítják a géppel megtanult entitások észlelését
 
-A mintázat elsődleges célja, hogy segítse a szándékok és a szerepkörök előrejelzését. A minta. minden entitás a szabad formátumú entitások kinyerésére szolgál. Míg a minták entitásokat használnak, a minta nem segít felderíteni a géppel megtanult entitásokat.  
+A mintázat elsődleges célja, hogy segítse a szándékok és a szerepkörök előrejelzését. A _minta. minden_ entitás a szabad formátumú entitások kinyerésére szolgál. Míg a minták entitásokat használnak, a minta nem segít felderíteni a géppel megtanult entitásokat.  
 
 Ne várja meg a továbbfejlesztett entitások előrejelzését, ha több hosszúságú kimondott szöveg összecsuk egyetlen mintára. Az egyszerű entitások a hosszúságú kimondott szöveg hozzáadásához vagy a listához tartozó entitások használata más, mint a minta nem fog tüzet használni.
 
@@ -64,7 +64,7 @@ Olyan alkalmazásokat hozhat létre, amelyek nem rendelkeznek példa hosszúság
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>A minta-szintaxis
+## <a name="pattern-syntax"></a>Minta szintaxisa
 
 A minta szintaxisának ismertetése a [minta szintaxisának](reference-pattern-syntax.md)leírásában. 
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c639cb059d773042b7f45160dea18bfc2130cae9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fcaf694e7a628232ea252585d6d9a507a9850da
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893808"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287052"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Azure IoT Central-alkalmazás létrehozása (előzetes verziójú funkciók)
 
@@ -46,17 +46,17 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
 1. Válassza ki, hogy az alkalmazást 7 napos ingyenes próbaverzióval kívánja-e létrehozni, vagy az utólagos elszámolású előfizetést használja.
     - A **próbaverziós** alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá. Ha létrehoz egy próbaverziós alkalmazást, meg kell adnia a kapcsolattartási adatait, és el kell döntenie, hogy szeretne-e információkat és tippeket kapni a Microsofttól.
-    - Az utólagos elszámolású alkalmazások számlázása eszközönkénti alapon történik, és az első két eszköz ingyenesen **elérhető** . További információ a [IoT Central díjszabásáról](https://aka.ms/iotcentral-pricing). Ha utólagos elszámolású alkalmazást hoz létre, ki kell választania a *címtárat*, az *Azure-előfizetést*és a *régiót*:
+    - Az utólagos elszámolású alkalmazások számlázása eszközönkénti alapon történik, és az első két eszköz ingyenesen **elérhető** . További információ a [IoT Central díjszabásáról](https://aka.ms/iotcentral-pricing). Ha utólagos elszámolású alkalmazást hoz létre, ki kell választania a *címtárat*, az *Azure-előfizetést*és a *helyet*:
         - A *könyvtár* a Azure Active Directory (HRE), amelyben létre fogja hozni az alkalmazást. Az Azure AD felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti adatokat tartalmaz. Ha még nem rendelkezik Azure AD-vel, akkor létrejön egy Azure-előfizetés létrehozásakor.
         - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. IoT Central az előfizetéshez tartozó erőforrásokat. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs lapján](https://aka.ms/createazuresubscription). Az Azure-előfizetés létrehozása után váltson vissza az **alkalmazás létrehozása** lapra. Az új előfizetés megjelenik az Azure- **előfizetés** legördülő listájában.
-        - A *régió* az a fizikai hely, ahol az eszközök adatait tárolni fogja. Általában az eszközökhöz legközelebb eső régiót kell kiválasztania az optimális teljesítmény eléréséhez, valamint az adatszuverenitási megfelelőség biztosításához. A régió kiválasztása után később nem helyezheti át az alkalmazást egy másik régióba.
+        - A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) *hely* , ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania az eszközökhöz legközelebb eső helyet. Az Azure IoT Central nyilvános előzetes verziója jelenleg a **Egyesült Államokban**vagy **Európában**érhető el. A hely kiválasztása után később nem helyezheti át az alkalmazást egy másik helyre.
 
         > [!NOTE]
-        > A nyilvános előzetes verzióban csak az előzetes verziójú **alkalmazások** számára elérhető régiók **Észak-Európa** és az **USA középső**régiója.
+        > A nyilvános előzetes verzióban a csak az **előzetes verziójú alkalmazások** számára elérhető helyszínek **Európa** és **Egyesült Államok**.
 
 1. Tekintse át a használati feltételeket, majd válassza a **Létrehozás** elemet az oldal alján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő javasolt lépés:
 

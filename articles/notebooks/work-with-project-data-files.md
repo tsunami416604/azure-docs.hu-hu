@@ -1,23 +1,14 @@
 ---
 title: Az Azure-jegyzetfüzeteket a projektek adatok importálása és exportálása
 description: Hogyan lehet egy Azure-jegyzetfüzetek projekt külső forrásból származó adatokat importálnak, és a egy projektet az adatok exportálása.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: b33d5dbfa354061b9b25069b3b300010b7cd49bf
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bd7ba27859e9d05c0d57c2f78b6449c2bc48ca33
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970212"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277382"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Az adatfájlokat az Azure-jegyzetfüzet projektek használata
 
@@ -41,11 +32,11 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Válassza ki a **feltöltése** parancsot, majd vagy **URL-CÍMRŐL** vagy **számítógépről** és a projekt az importálni kívánt adatok a szükséges adatokat:
 
-   - **URL-** címről: Adja meg a forrás címét a **fájl URL-címe** mezőben, valamint a **Fájlnév mezőben a** projektben lévő jegyzetfüzethez rendelendő fájlnevet. Válassza ki **+ fájl hozzáadása** az URL-cím hozzáadása a feltöltési listájához. Ismételje meg a folyamatot minden olyan további URL-címet, majd válassza a **kész**.
+   - **URL-címről**: Adja meg a forrás-címet a **fájl URL-cím** mező, és a fájlnevet a notebookot a projekt a hozzárendelése a **Fájlnév** mező. Válassza ki **+ fájl hozzáadása** az URL-cím hozzáadása a feltöltési listájához. Ismételje meg a folyamatot minden olyan további URL-címet, majd válassza a **kész**.
 
      ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
 
-   - **Számítógépről**: Húzza a fájlokat a felugró ablakba, vagy válassza a **fájlok kiválasztása**lehetőséget, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
+   - **A számítógép**: húzza és fájlok betett az előugró ablak, vagy bejelölheti **fájlok kiválasztása**, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
 
      ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
 
@@ -61,7 +52,7 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Az a **feltöltési állapot** előugró ablak, amely akkor jelenik meg, válassza ki a **célmappa** a legördülő listából:
 
-    - Munkamenet mappája ( *~/* ): Feltölti a fájlokat az aktuális jegyzetfüzet-munkamenetbe, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /* .
+    - Munkamenet-mappa ( *~/* ): feltölti az aktuális munkamenetbe notebook fájlokat, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /* .
 
         A munkamenet mappa használata Kísérletezési hasznos, és elkerülhető, hogy a projekt elárasztanák rendelkező fájlokat is, illetve előfordulhat, hogy nem kell a hosszú távon. A munkamenet-mappába, amelyeket azonos nevek a projekt fájlokat anélkül, hogy ez ütközéseket, és nevezze át a fájlokat anélkül is feltölthet fájlokat. Tegyük fel például, a egy verziójával rendelkezik *data.csv* a projektben már, de szeretné kísérletezhet a különböző verzióit *data.csv*. A fájl feltöltésével a munkamenet-mappába, a jegyzetfüzet-adatok a feltöltött fájl a futtathatja (az arra való hivatkozás a kód használatával *... /Data.csv*) ahelyett, hogy a projekt fájlban lévő adatokat.
 
@@ -119,6 +110,6 @@ Is válasszon ki egy fájlt, és használja a **letöltése** parancsot (billent
 
 1. A notebook előkészít egy *.zip* fájlt, amely tartalmazza a kijelölt fájlokat, amelyek ezután menti, normál esetben hajtsa végre a böngészőben. A notebook létrehoz egy *.zip* fájl, akkor is, ha egyetlen fájl letöltése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférés felhőbeli adatok történő használatát](access-data-resources-jupyter-notebooks.md)

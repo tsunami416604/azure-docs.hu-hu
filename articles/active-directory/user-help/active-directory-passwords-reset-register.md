@@ -1,6 +1,6 @@
 ---
-title: Register authentication info to reset your own password - Azure AD
-description: Register your authentication method information for Azure AD self-service password reset, so you can reset your own password without administrator help.
+title: Hitelesítő adatok regisztrálása a saját jelszavának alaphelyzetbe állításához – Azure AD
+description: Regisztrálja az Azure AD önkiszolgáló jelszó-visszaállítási szolgáltatásának ellenőrzési módszerének adatait, így rendszergazdai segítség nélkül állíthatja vissza saját jelszavát.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,55 +13,55 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cae72ac4752d5d1f6135312d578eb1a277ccd9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231902"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279054"
 ---
-# <a name="register-your-authentication-method-info-to-reset-your-own-password"></a>Register your authentication method info to reset your own password
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>A saját jelszavának alaphelyzetbe állításához regisztrálja az ellenőrzési módszer adatait
 
 > [!IMPORTANT]
-> Are you here because you can't sign in? If so, see [Reset your work or school password](active-directory-passwords-update-your-own-password.md).
+> Azért van itt, mert nem tud bejelentkezni? Ha igen, tekintse [meg a munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md)című témakört.
 
-As an end user, you can reset your password or unlock your account by yourself if you use Azure Active Directory (Azure AD) self-service password reset (SSPR). Before you can use this functionality, you have to register your authentication methods or confirm the predefined authentication methods that your administrator has populated.
+Végfelhasználóként visszaállíthatja a jelszavát, vagy saját maga oldhatja fel a fiókját, ha Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítást (SSPR) használ. A funkció használatához regisztrálnia kell az ellenőrzési módszereket, vagy meg kell erősítenie a rendszergazda által feltöltött előre meghatározott ellenőrzési módszereket.
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>SSPR hitelesítés adatok regisztrálása vagy megerősítése
 
-1. Open the web browser on your device and go to the [password reset registration page](https://aka.ms/ssprsetup).
-2. Enter your username and the password that your administrator provided.
-3. Depending on how your IT staff has configured things, one or more of the following options are available for you to configure and verify. If your administrator has your permission to use your information, they can populate some of the information for you.
-    * **Office phone**: Only your administrator can set this option.
-    * **Authentication Phone**: Set this option to another phone number that you have access to. An example is a cell phone that can receive a text or a call.
-    * **Authentication Email**: Set this option to an alternate email address that you can access without using the password you want to reset.
-    * **Security Questions**: Your administrator has approved this list of questions for you to answer. You can't use the same question or answer more than once.
-4. Provide and verify the information that your administrator requires. If more than one option is available, we suggest that you register multiple methods. This gives you flexibility when one of the methods isn't available. An example is when you're traveling and you're unable to access your office phone.
+1. Nyissa meg az eszközön a webböngészőt, és lépjen a [jelszó-visszaállítási regisztrációs oldalra](https://aka.ms/ssprsetup).
+2. Adja meg a felhasználónevét és a rendszergazda által megadott jelszót.
+3. Attól függően, hogy az informatikai részleg hogyan konfigurálta a dolgokat, az alábbi beállítások közül egy vagy több konfigurálható és ellenőrizhető. Ha a rendszergazda jogosult az Ön adatainak használatára, feltöltheti néhány információt.
+    * **Irodai telefon**: csak a rendszergazda állíthatja be ezt a beállítást.
+    * **Hitelesítő telefon**: ezt a beállítást egy másik telefonszámra állíthatja be, amelyhez hozzáféréssel rendelkezik. Ilyen lehet például egy mobiltelefon, amely szöveges vagy hívást tud fogadni.
+    * **Hitelesítési e-mail**: ezt a beállítást egy másodlagos e-mail-címre kell beállítani, amelyet az alaphelyzetbe állítani kívánt jelszó használata nélkül érhet el.
+    * **Biztonsági kérdések**: a rendszergazda jóváhagyta a kérdésekre adott válaszokat. Nem használhatja ugyanazt a kérdést vagy választ többször is.
+4. Adja meg és ellenőrizze a rendszergazda által igényelt adatokat. Ha több lehetőség is rendelkezésre áll, javasoljuk, hogy több metódust regisztráljon. Ez rugalmasságot biztosít, ha az egyik metódus nem érhető el. Ilyen például az, amikor utazik, és nem fér hozzá az irodai telefonhoz.
 
-    ![Register authentication methods and select finish][Register]
+    ![Ellenőrzési módszerek regisztrálása és a Befejezés kiválasztása][Register]
 
-5. Select **finish**. You can now use SSPR when you need to in the future.
+5. Válassza a **Befejezés**lehetőséget. Mostantól a jövőben is használhatja a SSPR-t.
 
-If you enter data for **Authentication Phone** or **Authentication Email**, it's not visible in the global directory. Ezeket az adatokat kizárólag Ön és a rendszergazdák láthatják. Only you can see the answers to your security questions.
+Ha **hitelesítő** vagy **hitelesítési e-mail-címet**ad meg, az nem jelenik meg a globális könyvtárban. Ezeket az adatokat kizárólag Ön és a rendszergazdák láthatják. Csak a biztonsági kérdésekre adott válaszok láthatók.
 
-Your administrators might require you to confirm your authentication methods after a period of time to make sure you still have the appropriate methods registered.
+Előfordulhat, hogy a rendszergazdáknak egy adott idő elteltével meg kell erősíteniük az ellenőrzési módszereket annak biztosításához, hogy továbbra is a megfelelő módszerek legyenek regisztrálva.
 
-## <a name="common-problems-and-their-solutions"></a>Common problems and their solutions
+## <a name="common-problems-and-their-solutions"></a>Gyakori problémák és megoldásuk
 
- Here are some common error cases and their solutions:
+ Íme néhány gyakori hiba eset és megoldásuk:
 
-| Error case| What error do you see?| Megoldás |
+| Hiba esete| Milyen hibát lát?| Megoldás |
 | --- | --- | --- |
-| I get a "please contact your administrator" page after entering my user ID | Please contact your administrator. <br> <br> We've detected that your user account password is not managed by Microsoft. As a result, we are unable to automatically reset your password. <br> <br> Contact your IT staff for any further assistance. | You're seeing this message because your IT staff manages your password in your on-premises environment and does not allow you to reset your password from the **Can't access your account** link. <br> <br> To reset your password, contact your IT staff directly for help. Let them know you want to reset your password so they can enable this feature for you.|
-| I get a "your account is not enabled for password reset" error after entering my user ID | Your account is not enabled for password reset. <br> <br> We're sorry, but your IT staff has not set up your account for use with this service. <br> <br> If you'd like, we can contact an administrator in your organization to reset your password for you. | You're seeing this message because your IT staff has not enabled password reset for your organization from the **Can't access your account** link or hasn't licensed you to use the feature. <br> <br> To reset your password, select the **contact an administrator** link. An email will be sent to your company's IT staff. The email lets them know you want to reset your password, so they can enable this feature for you. |
-| I get a "we could not verify your account" error after entering my user ID | We could not verify your account. <br> <br> If you'd like, we can contact an administrator in your organization to reset your password for you. | You're seeing this message because you're enabled for password reset, but you haven't registered to use the service. To register for password reset, go to the [password reset registration page](https://aka.ms/ssprsetup) after you have regained access to your account. <br> <br> To reset your password, select the **contact an administrator** link to send an email to your company's IT staff. |
+| "Forduljon a rendszergazdához" oldal a felhasználói azonosító megadása után | Forduljon a rendszergazdához. <br> <br> A rendszer azt észlelte, hogy a felhasználói fiók jelszavát nem a Microsoft felügyeli. Ennek eredményeképpen nem lehet automatikusan alaphelyzetbe állítani a jelszavát. <br> <br> További segítségért vegye fel a kapcsolatot az informatikai részleggel. | Ezt az üzenetet látja, mert az informatikai részleg a helyi környezetben kezeli a jelszavát, és nem teszi lehetővé, hogy alaphelyzetbe állítsa a **fiókja** hivatkozását. <br> <br> A jelszó alaphelyzetbe állításához vegye fel a kapcsolatot az informatikai részleggel közvetlenül a segítségért. Tudassa velünk, hogy szeretné alaphelyzetbe állítani a jelszavát, hogy engedélyezze ezt a funkciót.|
+| "A fiók nincs engedélyezve a jelszó-visszaállításhoz" hibaüzenet jelenik meg a felhasználói azonosító megadása után | A fiókja nincs engedélyezve a jelszó-visszaállításhoz. <br> <br> Sajnos az informatikai részleg nem állította be a fiókját a szolgáltatással való használatra. <br> <br> Ha szeretné, felvehetjük a kapcsolatot a szervezet rendszergazdájával, hogy alaphelyzetbe állítsa a jelszavát. | Ezt az üzenetet látja, mert az informatikai munkatárs nem engedélyezte a jelszó-visszaállítást a szervezet számára a **nem tud hozzáférni a fiók** hivatkozásához, vagy nem rendelkezik licenccel a funkció használatához. <br> <br> A jelszó alaphelyzetbe állításához válassza a **kapcsolat rendszergazdaként** hivatkozást. A rendszer e-mailt küld a vállalat informatikai munkatársának. Az e-mailben megtudhatja, hogy szeretné-e alaphelyzetbe állítani a jelszavát, így engedélyezheti ezt a funkciót. |
+| "Nem sikerült ellenőrizni a fiókját" hibaüzenet jelenik meg a felhasználói azonosító megadása után | Nem lehetett ellenőrizni a fiókját. <br> <br> Ha szeretné, felvehetjük a kapcsolatot a szervezet rendszergazdájával, hogy alaphelyzetbe állítsa a jelszavát. | Ezt az üzenetet látja, mert engedélyezve van a jelszó alaphelyzetbe állítása, de nem regisztrált a szolgáltatás használatára. Ha regisztrálni szeretne a jelszó-visszaállításra, lépjen a [jelszó-visszaállítási regisztrációs oldalra](https://aka.ms/ssprsetup) , miután visszanyerte a fiókhoz való hozzáférést. <br> <br> A jelszó alaphelyzetbe állításához jelölje be a **rendszergazda** hivatkozása, amely e-mailt küld a vállalat informatikai munkatársának. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Change your password by using self-service password reset](active-directory-passwords-update-your-own-password.md)
+* [Jelszó módosítása az önkiszolgáló jelszó-visszaállítás használatával](active-directory-passwords-update-your-own-password.md)
 * [Jelszó-visszaállítási regisztrációs oldal](https://aka.ms/ssprsetup)
 * [Jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com/)
-* [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
+* [Ha nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
-[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Password Reset Registration page showing the registered methods and the finish button"
+[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Jelszó-visszaállítási regisztrációs oldal a regisztrált metódusok és a Befejezés gomb megjelenítéséhez"
 

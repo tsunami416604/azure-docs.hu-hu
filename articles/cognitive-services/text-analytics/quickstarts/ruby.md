@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Text Analytics API hívása a Ruby használatával'
+title: 'Rövid útmutató: A Text Analytics API meghívása a Ruby használatával'
 titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9c7c85ae9573efa202f5fc27ae78aee57fa67ab8
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 924f3a9019d3ddac0b8f1f942028e78f9a5a432e
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142695"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286493"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Ruby használata a Text Analytics kognitív szolgáltatás meghívásához
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a Ruby használatával
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan derítheti fel [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) a [nyelvet](#Detect), elemezheti a [véleményét](#SentimentAnalysis), kinyerheti a [legfontosabb kifejezéseket](#KeyPhraseExtraction), és hogyan azonosíthatja a [társított entitásokat](#Entities) a Ruby használatával
+Ebből a cikkből megtudhatja, hogyan [derítheti](#Detect)fel  [text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) a nyelveket, [elemezheti](#SentimentAnalysis)a véleményeket, [kinyerheti a főbb kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities) a Ruby használatával
 
-Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,11 +30,11 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Nyelvfelismerés
+## <a name="detect-language"></a>Nyelv felismerése
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
 1. Futtassa a programot.
@@ -136,7 +136,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha a környezeti változót az alkalmazás szerkesztésének megkezdése után hozza létre, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha a környezeti változót az alkalmazás szerkesztésének megkezdése után hozza létre, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
 1. Futtassa a programot.
@@ -207,11 +207,11 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak keresése
+## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha a környezeti változót az alkalmazás szerkesztésének megkezdése után hozza létre, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha a környezeti változót az alkalmazás szerkesztésének megkezdése után hozza létre, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
 1. Futtassa a programot.
@@ -307,7 +307,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 Az Entities API kinyeri a szöveges dokumentumok entitásait az [Entities metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Hozzon létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` környezeti `TEXT_ANALYTICS_ENDPOINT` változókat és az erőforrás Azure-végpontját és előfizetési kulcsát. Ha a környezeti változót az alkalmazás szerkesztésének megkezdése után hozza létre, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
+1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha a környezeti változót az alkalmazás szerkesztésének megkezdése után hozza létre, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
 1. Futtassa a programot.
@@ -404,7 +404,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)

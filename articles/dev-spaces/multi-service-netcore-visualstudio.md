@@ -1,29 +1,25 @@
 ---
-title: .NET Core és a Visual Studio használatával több függő szolgáltatás fut.
-titleSuffix: Azure Dev Spaces
+title: Több függő szolgáltatás futtatása a .NET Core és a Visual Studio használatával
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: dd90dee2f973bb26a43706eb77f15778cb9116a0
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
+ms.openlocfilehash: e1e4d12591ec969b70ab1b0eaef430f5a7c7b276
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502974"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279584"
 ---
-# <a name="multi-service-development-with-azure-dev-spaces"></a>Az Azure fejlesztési tárolóhelyek több szolgáltatásos fejlesztői
+# <a name="multi-service-development-with-azure-dev-spaces"></a>Több szolgáltatás fejlesztése az Azure dev Spaces-szel
 
-Ebben az oktatóanyagban megismerheti, hogyan szóközzel Azure fejlesztői, a fejlesztői, szóközök biztosító előnyökkel némelyike együtt több szolgáltatást alkalmazások fejlesztéséhez kell.
+Ebből az oktatóanyagból megtudhatja, hogyan fejleszthet többszolgáltatásos alkalmazásokat az Azure dev Spaces használatával, valamint a dev Spaces által biztosított további előnyökkel.
 
 ## <a name="call-another-container"></a>Egy másik tároló hívása
-Ebben a szakaszban létrehoz egy második szolgáltatást fogjuk `mywebapi`, és rendelkezik `webfrontend` meghívására. Minden szolgáltatás különálló tárolókban fut. Ezt követően hibakeresést fog futtatni mindkét tárolóban.
+Ebben a szakaszban egy második szolgáltatást fog létrehozni, `mywebapi`, és `webfrontend` hívni. Minden szolgáltatás különálló tárolókban fut. Ezt követően hibakeresést fog futtatni mindkét tárolóban.
 
 ![](media/common/multi-container.png)
 
@@ -32,16 +28,16 @@ Az egyszerűség kedvéért töltsünk le egy mintakódot a GitHub-adattárból.
 
 ### <a name="run-mywebapi"></a>A *mywebapi* szolgáltatás futtatása
 1. Nyissa meg a `mywebapi` projektet egy *különálló Visual Studio-ablakban*.
-1. Válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő listájából, ahogy korábban a `webfrontend` projekt esetében is tette. Egy új AKS-fürt létrehozása helyett most válassza ki a már létrehozottat. A korábbiakhoz hasonlóan hagyja a Tér értékét az alapértelmezett `default` értéken, és kattintson az **OK** gombra. A kimeneti ablakban, Észreveheti a Visual Studio elindul, és ez az új szolgáltatás a fejlesztési tárhelyre "ízelítőt" hibakereső indításakor dolgot felgyorsítása érdekében.
+1. Válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő listájából, ahogy korábban a `webfrontend` projekt esetében is tette. Egy új AKS-fürt létrehozása helyett most válassza ki a már létrehozottat. A korábbiakhoz hasonlóan hagyja a Tér értékét az alapértelmezett `default` értéken, és kattintson az **OK** gombra. A kimeneti ablakban észreveheti, hogy a Visual Studio elkezdi az új szolgáltatás üzembe helyezését a fejlesztői térben, hogy gyorsabban felgyorsítsa a hibakeresést.
 1. Nyomja le az F5 billentyűt, és várjon, amíg a rendszer felépíti és telepíti a szolgáltatást. A művelet akkor fejeződik be, ha a Visual Studio állapotsora narancssárga színűre vált
-1. Jegyezze fel a végpont URL-cím jelenik meg a **az aks-ben az Azure fejlesztési tárolóhelyek** ablaktábláján a **kimeneti** ablak. A következőhöz hasonlóan fog kinézni: `http://localhost:<portnumber>`. Úgy tűnhet, hogy a tároló futtatása helyileg történik, de valójában a Dev Spaces-térben fut az Azure-ban.
-2. Ha a `mywebapi` elkészült, a `ValuesController` alapértelmezett GET API-jának meghívásához nyissa meg böngészőjét a localhost címen, és fűzze hozzá az `/api/values` elérési utat az URL-címhez. 
+1. Jegyezze fel a végponti URL-címet, amely megjelenik a **kimeneti** ablak **Azure dev Spaces for AK** ablaktábláján. A következőhöz hasonlóan fog kinézni: `http://localhost:<portnumber>`. Úgy tűnhet, hogy a tároló futtatása helyileg történik, de valójában a Dev Spaces-térben fut az Azure-ban.
+2. Ha a `mywebapi` elkészült, a `/api/values` alapértelmezett GET API-jának meghívásához nyissa meg böngészőjét a localhost címen, és fűzze hozzá az `ValuesController` elérési utat az URL-címhez. 
 3. Ha minden lépés sikeres volt, választ kell kapnia a `mywebapi` szolgáltatástól, amely az alábbihoz hasonlóan néz ki.
 
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Kérés indítása a *webfrontend*-ből a *mywebapi*-ba
-Most írjunk olyan kódot a `webfrontend` szolgáltatásban, amely kérést indít a `mywebapi` felé. Váltson arra a Visual Studio-ablakra, amely a `webfrontend` projektet tartalmazza. Az a `HomeController.cs` fájl *cserélje le* névjegy mód a kódot az alábbira:
+Most írjunk olyan kódot a `webfrontend` szolgáltatásban, amely kérést indít a `mywebapi` felé. Váltson arra a Visual Studio-ablakra, amely a `webfrontend` projektet tartalmazza. A `HomeController.cs` fájlban *cserélje le* a about metódus kódját a következő kódra:
 
    ```csharp
    public async Task<IActionResult> About()
@@ -66,22 +62,22 @@ Most írjunk olyan kódot a `webfrontend` szolgáltatásban, amely kérést ind�
    }
    ```
 
-Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kérelemből a kimenő kérelemhez. Látni fogja, hogyan később Ez lehetővé teszi a hatékonyabb fejlesztési környezetet biztosít [forgatókönyvek csapat](team-development-netcore-visualstudio.md).
+Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kérelemből a kimenő kérelemhez. Később látni fogja, hogy ez hogyan könnyíti meg a [csapatmunka](team-development-netcore-visualstudio.md)terén felmerülő fejlesztési élményt.
 
 ### <a name="debug-across-multiple-services"></a>Hibakeresés több szolgáltatásban
 1. Ezen a ponton a `mywebapi` elvileg még mindig fut a hozzácsatolt hibakeresővel. Ha nem fut, nyomja le az F5 billentyűt a `mywebapi` projektben.
-1. Állítson be egy töréspontot a `Controllers/ValuesController.cs` fájl `Get(int id)` metódusában, amely kezeli a `api/values/{id}` GET-kéréseket.
+1. Állítson be egy töréspontot a `Get(int id)` fájl `Controllers/ValuesController.cs` metódusában, amely kezeli a `api/values/{id}` GET-kéréseket.
 1. A `webfrontend` projektben, ahova a fenti kódot illesztette be, állítson be egy töréspontot, mielőtt az GET-kérést küldene a `mywebapi/api/values` számára.
 1. Nyomja le az F5 billentyűt a `webfrontend` projektben. A Visual Studio ismét megnyit egy böngészőablakot a localhost megfelelő portjához, és megjelenik a webalkalmazás.
 1. Kattintson az oldal tetején lévő **About** (Információ) hivatkozásra a `webfrontend` projekt töréspontjának aktiválásához. 
 1. Nyomja le az F10 billentyűt a folytatáshoz. A `mywebapi` projekt töréspontja aktiválódik.
 1. Nyomja le az F5 billentyűt a folytatáshoz, és visszakerül a `webfrontend` projekt kódjához.
-1. Nyomja le ismételten az F5 billentyűt a kérés teljesítéséhez. Ekkor betöltődik egy oldal a böngészőben. A web app alkalmazásban a névjegy lapra a két szolgáltatás által összefűzött üzenetet jelenít meg: "Hello webfrontend és Hello a mywebapi."
+1. Nyomja le ismételten az F5 billentyűt a kérés teljesítéséhez. Ekkor betöltődik egy oldal a böngészőben. A webalkalmazás About (Információ) oldalán a két szolgáltatás által összefűzött üzenet jelenik meg: „Hello from webfrontend and Hello from mywebapi.”
 
 ### <a name="well-done"></a>Remek!
 Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes tárolók külön-külön fejleszthetők és helyezhetők üzembe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További információ a fejlesztői, szóközök csoportos fejlesztése](team-development-netcore-visualstudio.md)
+> [Ismerkedjen meg a fejlesztői Spaces fejlesztőivel](team-development-netcore-visualstudio.md)

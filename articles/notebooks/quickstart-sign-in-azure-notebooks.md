@@ -1,25 +1,16 @@
 ---
 title: Jelentkezzen be Azure notebookok
 description: Gyorsan jelentkezzen be Azure notebookok, és állítsa be a felhasználói azonosító, amely lehetőséget nyújt a mentett projektek és a notebookok megoszthatja másokkal.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: 0c12c8673ff61dcca62c72addcbf0d9b33c2c252
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 234703da9662380a59c7673ca3b34a1b01b7dbef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973058"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277441"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Bejelentkezés és felhasználói azonosító beállítása
+# <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Jelentkezzen be, és állítsa be a felhasználói azonosító
 
 Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, jelentkezzen be futtathat jegyzetfüzeteket, mentett projektek és jegyzetfüzetek és a notebookok megoszthatja másokkal.
 
@@ -63,7 +54,7 @@ Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónev�
 
 ![Kijelentkezés parancsot Azure notebookokban helye](media/accounts/sign-out-command.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Jegyzetfüzet létrehozása és megosztása @ no__t-0
+> [Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása](quickstart-create-share-jupyter-notebook.md)

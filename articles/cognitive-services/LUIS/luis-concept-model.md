@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4cbca96ed95167615f3ff2876e27e546d08d92f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507714"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280870"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Tervezés a szándék és az entitás modelljeivel 
 
@@ -37,7 +37,7 @@ A modell elbomlása a következő részekből áll:
 * [gépi megtanult entitások](#machine-learned-entities)
     * [alösszetevők](#entity-subcomponents-help-extract-data) (a géppel megtanult entitások is)
         * a funkciók által biztosított [leírók](#descriptors-are-features) 
-        * nem géppel megtanult entitások, például (reguláris kifejezések és felsorolások) által biztosított [korlátozások](#constraints-are-text-rules)
+        * nem géppel megtanult entitások, például reguláris kifejezések és felsorolások által biztosított [korlátozások](#constraints-are-text-rules)
 
 ## <a name="v2-authoring-models"></a>V2 authoring modellek
 
@@ -134,7 +134,7 @@ A teljes kiértékelés kívánt eredménye az, hogy az entitások a _teljesség
 
 Ennek a Kimondás szándékának _meg kell felelnie_ , és _rendelkezhet_ entitásokkal:
 
-`Buy a airline ticket from Seattle to Cairo`
+`Buy an airline ticket from Seattle to Cairo`
 
 Ez a Kimondás egyetlen szándékkal rendelkezik:
 
@@ -155,6 +155,6 @@ A leíró egy olyan szolgáltatás, amely a modellre vonatkozik a betanítási i
 * a-nek a leíróhoz javasolt új szöveget vagy kifejezéseket ajánljuk a LUIS számára
 * a betanítási adatgyűjtési hiba elhárítása
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szándékok](luis-concept-intent.md) és az [entitások](luis-concept-entity-types.md)ismertetése. 

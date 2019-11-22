@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037051"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279132"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>Alternatív metódus, amely a szakaszos
+Az fdisk segédprogramnak interaktív bemenetre van szüksége, ezért nem ideális az Automation-parancsfájlokban való használathoz. Az elválasztott [segédprogram azonban](https://www.gnu.org/software/parted/) parancsfájlokkal is rendelkezhet, így az automatizálási forgatókönyvek esetében jobban kihasználható. Az elválasztott segédprogram egy adatlemez particionálására és formázására használható. Az alábbi forgatókönyvhöz egy új adatlemez-/dev/SDC használunk, és formázza a [XFS](https://xfs.wiki.kernel.org/) fájlrendszer használatával.
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+A fentiekben leírtak szerint a [partprobe](https://linux.die.net/man/8/partprobe) segédprogram használatával gondoskodhat arról, hogy a kernel azonnal tisztában legyen az új partícióval és a fájlrendszerrel. A partprobe használatának sikertelensége esetén a blkid vagy a lslbk parancsok azonnal nem adhatják vissza az új fájlrendszer UUID azonosítóját.
+
 ### <a name="mount-the-disk"></a>A lemez csatlakoztatása
 Hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához `mkdir`használatával. A következő példa egy könyvtárat hoz létre a */datadrive*:
 

@@ -1,6 +1,6 @@
 ---
-title: Személyes Microsoft-fiók hozzáadása egy hitelesítő alkalmazáshoz – Azure AD
-description: Személyes Microsoft-fiókjainak hozzáadása (például Outlook.com vagy Xbox LIVE) a Microsoft Authenticator alkalmazáshoz kétfaktoros ellenőrzés esetén.
+title: Személyes Microsoft-fiók hozzáadása a Microsoft Authenticator alkalmazáshoz – Azure AD
+description: Vegyen fel személyes Microsoft-fiókokat, például a Outlook.com vagy az Xbox LIVE-t a Microsoft Authenticator alkalmazásba, hogy ellenőrizze az identitását a kétfaktoros ellenőrzés használata során.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820240"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278901"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>Személyes Microsoft-fiókok hozzáadása
+# <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Személyes Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
 Adja hozzá a személyes Microsoft-fiókjait, például a Outlook.com és az Xbox LIVE-t a Microsoft Authenticator alkalmazáshoz mind a standard Kéttényezős ellenőrzési folyamat, mind a jelszó nélküli telefonos bejelentkezési módszer használatával.
 
@@ -66,7 +66,7 @@ Személyes Microsoft-fiók a kétfaktoros ellenőrzés bekapcsolásával, majd a
 
     A rendszer hozzáadja a személyes fiókját a Microsoft Authenticator alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

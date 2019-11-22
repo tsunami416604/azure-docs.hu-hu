@@ -1,8 +1,6 @@
 ---
-title: .NET Core és a Visual Studio használatával Azure-fejlesztési szóközt tartalmazó csoportos fejlesztése
-titleSuffix: Azure Dev Spaces
+title: Csoportmunka az Azure fejlesztői Spaces szolgáltatással a .NET Core és a Visual Studio használatával
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 author: DrEsteban
@@ -10,33 +8,33 @@ ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
+ms.openlocfilehash: 256cab2e88e87807f8b15866d341762b07ddb174
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442929"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279742"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan egy fejlesztői csapat egyidejűleg együttműködhetnek fejlesztési szóközzel azonos Kubernetes-fürtben.
+Ebből az oktatóanyagból megtudhatja, hogy a fejlesztők hogyan dolgozhatnak egyszerre ugyanazon a Kubernetes-fürtön a dev Spaces használatával.
 
 ## <a name="learn-about-team-development"></a>A csapatban végzett fejlesztés bemutatása
 
 Eddig úgy futtatta alkalmazása kódját, mintha Ön dolgozna egyedül fejlesztőként az alkalmazáson. Ebben a szakaszban megismerheti, hogyan teszi zökkenőmentessé az Azure Dev Spaces a csapatban végzett fejlesztést:
-* Engedélyezze egy fejlesztői csapatra ugyanabban a környezetben, mivel egy közös fejlesztési szóközt vagy a különböző fejlesztési tárolóhelyek igény szerint működjön.
+* Lehetővé teheti a fejlesztők számára, hogy ugyanabban a környezetben működjenek, ha a megosztott fejlesztői térben vagy a különböző fejlesztői területeken szükség szerint dolgozik.
 * Támogatja, hogy minden fejlesztő elszigetelten iterálhassa a saját kódját, miközben nem kell tartani attól, hogy mindeközben mások kódja működésképtelenné válik.
 * Végpontok között lehet tesztelni a kódot a kód véglegesítése előtt, és nem szükséges utánzatokat létrehozni vagy függőségeket szimulálni.
 
 ### <a name="challenges-with-developing-microservices"></a>A mikroszolgáltatások fejlesztésének kihívásai
-A mintaalkalmazás jelenleg nem bonyolult. A valóságban a fejlesztés során folyamatosan merülnek fel kihívások, ahogy egyre több szolgáltatást vesz fel, illetve ahogy nő a fejlesztői csapat.
+A minta alkalmazása jelenleg nem összetett. A valóságban a fejlesztés során folyamatosan merülnek fel kihívások, ahogy egyre több szolgáltatást vesz fel, illetve ahogy nő a fejlesztői csapat.
 
-* A fejlesztői gépén nem rendelkezhet egyszerre kell minden egyes szolgáltatás futtatásához elegendő erőforrással.
-* Bizonyos szolgáltatásokat is el kell nyilvánosan elérhetőnek kell lennie. Előfordulhat, hogy egy szolgáltatás például, hogy egy végpontot, amely válaszol a webhook kell.
-* Ha szeretné futtatni a szolgáltatások egy részhalmaza, azok tudja a teljes függőségi hierarchia közötti összes szolgáltatást. Ezt a hierarchiát meghatározása nehéz, lehet, különösen, ha a szolgáltatások számának növeléséhez.
-* Néhány fejlesztő ilyenkor szimulációba kezd, vagy utánzatokat készít a szolgáltatás függőségeiről. Ez a megközelítés segít, de ezek mocks kezelése hamarosan befolyásolhatja a fejlesztési költségeket. Emellett a fejlesztési környezet különbözik a production, ami kisebb hibák előforduló keresi ezt a megközelítést vezet.
-* Ebből az következik, hogy nehéz bármilyen adattípus könnyű integráció tesztelése során válik. Az integráció tesztelése a valóságban csak a véglegesítés után történhet meg, ami azt jelenti, hogy a fejlesztési ciklus későbbi szakaszaiban problémákat tapasztalhat.
+* Előfordulhat, hogy a fejlesztői gép nem rendelkezik elegendő erőforrással az összes szükséges szolgáltatás futtatásához.
+* Előfordulhat, hogy egyes szolgáltatásoknak nyilvánosan elérhetőnek kell lenniük. Előfordulhat például, hogy egy szolgáltatásnak rendelkeznie kell egy webhookra válaszoló végponttal.
+* Ha a szolgáltatások egy részhalmazát szeretné futtatni, ismernie kell a teljes függőségi hierarchiát az összes szolgáltatás között. A hierarchia meghatározása nehéz lehet, különösen, ha a szolgáltatások száma növekszik.
+* Néhány fejlesztő ilyenkor szimulációba kezd, vagy utánzatokat készít a szolgáltatás függőségeiről. Ez a megközelítés segíthet, de az ilyen modellek kezelése hamarosan hatással lehet a fejlesztési díjakra. Emellett ez a megközelítés az éles környezettől eltérő fejlesztési környezetet eredményez, amely finom hibákhoz vezethet.
+* Ebből következik, hogy az integrációs tesztek bármilyen típusát megnehezíti. Az integráció tesztelése a valóságban csak a véglegesítés után történhet meg, ami azt jelenti, hogy a fejlesztési ciklus későbbi szakaszaiban problémákat tapasztalhat.
 
     ![](media/common/microservices-challenges.png)
 
@@ -46,55 +44,55 @@ Az Azure Dev Spaces segítségével beállíthat egy *megosztott* Dev Spaces-ter
 ### <a name="work-in-your-own-space"></a>Munkavégzés a saját térben
 A szolgáltatás kódjának fejlesztése során, de még leadás előtt a kód sokszor nincs optimális állapotban. Az iteratív módszerrel újra és újra kell formálni, tesztelni kell, megoldásokkal kísérletezni. Az Azure Dev Spaces biztosítja a **tér** fogalmát, amely lehetővé teszi, hogy elszigetelten dolgozhasson, anélkül, hogy a többi csapattag munkájára kihatással lennének a fejlesztési munkálatok.
 
-## <a name="use-dev-spaces-for-team-development"></a>Fejlesztői szóközökkel csoportos fejlesztéshez
-Nézzük bemutatják, ezeket egy konkrét példa az ötleteit a *webfrontend* -> *mywebapi* mintaalkalmazást. Azt fogjuk imagine egy forgatókönyvet, ahol, Scott, a fejlesztőnek módosítja a *mywebapi* szolgáltatást, és *csak* szolgáltatás. A *webfrontend* Scott frissítés részeként módosítása nem szükséges.
+## <a name="use-dev-spaces-for-team-development"></a>Fejlesztői területek használata a csapatmunkához
+Bemutatjuk ezeket az ötleteket egy konkrét példával, amely a *webfrontend* -> *mywebapi* minta alkalmazását használja. Képzeljük el, hogy egy fejlesztő, Scott, a *mywebapi* szolgáltatást kell módosítania, és *csak* ezt a szolgáltatást kell használnia. A *webfrontend* nem kell változtatnia a Scott frissítésének részeként.
 
-_Nélkül_ fejlesztési szóközzel, Scott kell fejlesztése és tesztelése a frissítés néhány módszer, amelynek sem ideális:
-* Az összes összetevőt helyileg, amelyhez szükség van egy nagyobb teljesítményű fejlesztői gépen a Docker telepítve van, és potenciálisan MiniKube futtathatja.
-* Az összes összetevőt futtathatja egy elkülönített névtér a Kubernetes-fürtön. Mivel *webfrontend* nem változnak, használatával egy elkülönített névtere fürterőforrások feleslegesen használna.
-* CSAK futtatni *mywebapi*, és győződjön meg arról, manuális REST-hívások tesztelése. Az ilyen tesztelést nem ellenőrzi a teljes – teljes körű folyamatot.
-* Adja hozzá kódot fejlesztéssel foglalkozó *webfrontend* , amely lehetővé teszi, hogy a fejlesztő-kérelmeket küldjön egy másik példánya *mywebapi*. Ez a kód hozzáadása bonyolultabbá teszi a *webfrontend* szolgáltatás.
+A dev Spaces használata _nélkül_ Scott számos módon fejlesztheti és tesztelheti a frissítését, amelyek közül egyik ideális megoldás:
+* Az összes összetevőt helyileg futtassa, amelyhez a Docker által telepített és potenciálisan MiniKube nagyobb teljesítményű fejlesztői gépek szükségesek.
+* Futtassa az összes összetevőt egy elkülönített névtérben a Kubernetes-fürtön. Mivel a *webfrontend* nem változik, az elkülönített névtér használata a fürterőforrások hulladéka.
+* CSAK futtasson *mywebapi*, és VÉGEZZEN manuális Rest-hívásokat a teszteléshez. Ez a típusú tesztelés nem ellenőrzi a teljes végpontok közötti folyamatot.
+* Bővítse a fejlesztéssel célzott kódot a *webfrontendhez* , amely lehetővé teszi, hogy a fejlesztő kéréseket küldjön a *mywebapi*egy másik példányára. A kód hozzáadása megnehezíti a *webfrontend* szolgáltatást.
 
-### <a name="set-up-your-baseline"></a>Az alapkonfiguráció beállítása
-Először azt telepítenie kell egy alapkonfiguráció-szolgáltatásaink. A központi telepítés "utolsó ismert jó" képviseli, így egyszerűen össze lehessen hasonlítani a be van jelölve a verzió és helyi kódját viselkedését. Ezután létrehozunk egy gyermek hely alapján ez a alapvető, így tudjuk tesztelheti a módosításokat *mywebapi* a nagyobb alkalmazás összefüggésében.
+### <a name="set-up-your-baseline"></a>Az Alapterv beállítása
+Először üzembe kell helyeznie a szolgáltatásaink alapkonfigurációját. Ez a központi telepítés a "legutóbbi ismert jó" állapotot fogja tartalmazni, így egyszerűen összehasonlíthatja a helyi kód viselkedését és a bejelentkezett verziót. Ezután létrehozunk egy gyermek területet ezen alapkonfiguráció alapján, hogy a nagyobb alkalmazás kontextusában teszteljük a *mywebapi* módosításait.
 
-1. Klónozás a [fejlesztési tárolóhelyek mintaalkalmazás](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. A távoli ág átvétele *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
+1. A [dev Spaces minta alkalmazás](https://github.com/Azure/dev-spaces)klónozása: `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. Tekintse meg a távoli ág *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
 1. Zárjon be minden F5/hibakeresési munkamenetet minden szolgáltatás esetében, de tartsa nyitva a projekteket saját Visual Studio-ablakukban.
-1. A Visual Studio ablakban váltson a _mywebapi_ projekt.
+1. Váltson a Visual Studio ablakába a _mywebapi_ projekttel.
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, majd válassza a **Tulajdonságok** lehetőséget.
 1. Válassza a **Hibakeresés** lehetőséget a bal oldalon az Azure Dev Spaces-beállítások megjelenítéséhez.
-1. Válassza ki **módosítása** hozhat létre a helyet, amely lesz használni, az F5 billentyűt, vagy a Ctrl + F5 a szolgáltatást.
-1. A terület legördülő listában válassza ki a  **\<új tárhely létrehozása... \>** .
-1. Ellenőrizze, hogy a fölérendelt hely értéke  **\<nincs\>** , és adja meg a hely nevét **fejlesztési**. Kattintson az OK gombra.
-1. Nyomja le a Ctrl + F5 futtatásához _mywebapi_ hibakeresővel nélkül.
-1. A Visual Studio ablakban váltson a _webfrontend_ projektre, és nyomja le a Ctrl + F5 is futtatható.
+1. A **módosítás** gombra kattintva hozza létre az F5 vagy a CTRL + F5 billentyűkombinációt a szolgáltatáshoz használni kívánt terület létrehozásához.
+1. A hely legördülő menüben válassza a **\<új terület létrehozása...\>** lehetőséget.
+1. Győződjön meg arról, hogy a szülő terület **\<nincs\>** , és adja meg a Space name **dev**értéket. Kattintson az OK gombra.
+1. Nyomja le a CTRL + F5 billentyűkombinációt a _mywebapi_ futtatásához a hibakereső csatolása nélkül.
+1. Váltson a Visual Studio ablakába a _webfrontend_ -projekttel, és nyomja le a CTRL + F5 billentyűkombinációt a futtatásához is.
 
 > [!Note]
 > Néha frissíteni kell a böngészőlapot azt követően, hogy a weboldal először megjelenik a Ctrl+F5 lenyomása után.
 
 > [!TIP]
-> Az alapterv kézi beállítása a fenti lépéseket, de a CI/CD – automatikus naprakészen a referenciakonfiguráció véglegesített kód teams használatát javasoljuk.
+> A fenti lépések manuálisan állítanak be egy alapkonfigurációt, de azt javasoljuk, hogy a Teams a CI/CD használatával automatikusan tartsa naprakészen az alapkonfigurációt a véglegesített kóddal.
 >
-> Tekintse meg a [útmutató az Azure DevOps CI/CD beállítása](how-to/setup-cicd.md) munkafolyamat létrehozása a következő ábra hasonló.
+> Az alábbi ábrához hasonló munkafolyamat létrehozásához tekintse meg a [CI/CD beállítása az Azure DevOps című útmutatót](how-to/setup-cicd.md) .
 >
-> ![Példa a CI/CD-diagram](media/common/ci-cd-complex.png)
+> ![Példa CI/CD diagramra](media/common/ci-cd-complex.png)
 
-Bárki, aki megnyitja az URL-címe és a web app navigál meghívja a kódelérési út hozott melyik futtatások keresztül mindkét szolgáltatás az alapértelmezett _fejlesztési_ terület. Most tegyük fel, hogy folytatja a fejlődő *mywebapi* – hogyan lehet ezt megteszi, és nem megszakító más a fejlesztési helyet használó fejlesztők? Ehhez be kell állítania a saját terét.
+Bárki, aki megnyitja a nyilvános URL-címet, és a webalkalmazásra navigál, meghívja a kód elérési útját, amely az alapértelmezett _fejlesztői_ helyet használó szolgáltatásokon keresztül fut. Most tegyük fel, hogy folytatni kívánja a *mywebapi* fejlesztését – hogyan teheti ezt meg, és nem szakítja meg a fejlesztői területet használó többi fejlesztőt? Ehhez be kell állítania a saját terét.
 
 ### <a name="create-a-new-dev-space"></a>Új Dev Spaces-tér létrehozása
 A Visual Studióból létrehozhat további tereket, amelyek akkor lesznek használatban, ha a szolgáltatásában lenyomja az F5, illetve a Ctrl+F5 billentyűt. Olyan nevet adhat a tereknek, amilyet csak szeretne, és rugalmasan kezelheti a jelentését (pl.: _sprint4_ vagy _bemutató_).
 
 Új teret a következő módon hozhat létre:
-1. A Visual Studio ablakban váltson a *mywebapi* projekt.
+1. Váltson a Visual Studio ablakába a *mywebapi* projekttel.
 2. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, majd válassza a **Tulajdonságok** lehetőséget.
 3. Válassza a **Hibakeresés** lehetőséget a bal oldalon az Azure Dev Spaces-beállítások megjelenítéséhez.
 4. Itt módosíthatja vagy létrehozhatja azt a fürtöt és/vagy teret, amelyet a program akkor használ, ha lenyomja az F5, illetve a Ctrl+F5 billentyűt. *Győződjön meg róla, hogy a korábban létrehozott Azure Dev Spaces-tér van kiválasztva*.
-5. A terület legördülő listában válassza ki a  **\<új tárhely létrehozása... \>** .
+5. A hely legördülő menüben válassza a **\<új terület létrehozása...\>** lehetőséget.
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. Az a **terület hozzáadása** párbeszédpanelen beállítása a fölérendelt hely **fejlesztési**, és adjon meg egy nevet az új helyet. Használhatja a saját nevét (pl.: „scott”) az új térhez, így munkatársai számára is könnyen beazonosítható a munkájához használt tér. Kattintson az **OK** gombra.
+6. A **terület hozzáadása** párbeszédpanelen állítsa a szülő területet a **dev**értékre, és adja meg az új terület nevét. Használhatja a saját nevét (pl.: „scott”) az új térhez, így munkatársai számára is könnyen beazonosítható a munkájához használt tér. Kattintson az **OK** gombra.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 
@@ -104,7 +102,7 @@ A Visual Studióból létrehozhat további tereket, amelyek akkor lesznek haszn�
 
 ### <a name="update-code-for-mywebapi"></a>Kód frissítése a *mywebapi*-hoz
 
-1. Az a *mywebapi* projekt győződjön meg arról, váltson egy kódot a `string Get(int id)` metódus az fájl `Controllers/ValuesController.cs` módon:
+1. A *mywebapi* projektben a következőképpen módosítható a `string Get(int id)` metódus a fájlban `Controllers/ValuesController.cs` a következő módon:
  
     ```csharp
     [HttpGet("{id}")]
@@ -115,20 +113,20 @@ A Visual Studióból létrehozhat további tereket, amelyek akkor lesznek haszn�
     ```
 
 2. Állítson be egy töréspontot a frissített kódrészletben (elképzelhető, hogy korábban már megadott egyet).
-3. Nyomja le az F5 elindításához a _mywebapi_ szolgáltatás, amely saját fürtjében, a kiválasztott hely fogja elindítani a szolgáltatást. Ebben az esetben van a kiválasztott hely _scott_.
+3. A _mywebapi_ szolgáltatás elindításához nyomja le az F5 billentyűt, amely a kijelölt terület használatával elindítja a szolgáltatást a fürtben. Ebben az esetben a kiválasztott terület _Scott_.
 
-Ez az ábra segít megérteni, hogyan működnek a különféle terek. A lila elérési út használatával egy kérelem mutatja a _fejlesztési_ területet, amely az alapértelmezett elérési utat használja, ha nincs szabad hely van kiegészített az URL-címre. A rózsaszín elérési út használatával egy kérelem mutatja a _dev/scott_ terület.
+Ez az ábra segít megérteni, hogyan működnek a különféle terek. A lila elérési útja a _fejlesztői_ területtől érkező kérést jeleníti meg, amely az alapértelmezett elérési út, amelyet az URL-cím nem előtagértéke. A rózsaszín elérési út a _dev/Scott_ Space használatával jeleníti meg a kérést.
 
 ![](media/common/Space-Routing.png)
 
 Az Azure Dev Spaces e beépített funkciója lehetővé teszi, hogy végpontok között tesztelhesse a kódot egy megosztott környezetben anélkül, hogy minden egyes fejlesztőnek ismételten létre kellene hoznia a saját terük teljes szolgáltatási vermét. Ez az útválasztás megköveteli, hogy a propagálási fejlécek továbbítva legyenek az alkalmazáskódban, ahogy az az útmutató előző lépésében is látható.
 
-### <a name="test-code-running-in-the-devscott-space"></a>Tesztelje a kódot futtató a _dev/scott_ terület
-Új verziójának tesztelése *mywebapi* együtt *webfrontend*, nyilvános hozzáférési pont URL-CÍMÉT a böngészőben nyissa meg *webfrontend* (például http://dev.webfrontend.123456abcdef.eus.azds.io), és lépjen a névjegy lapra. Az eredeti, „Hello from webfrontend and Hello from mywebapi” üzenetnek kell megjelennie.
+### <a name="test-code-running-in-the-_devscott_-space"></a>A _fejlesztői/Scott_ -térben futó kód tesztelése
+A *mywebapi* új verziójának a *webfrontendtel*való együttes teszteléséhez nyissa meg a böngészőt a *webfrontend* nyilvános hozzáférési pontjának URL-címére (például http://dev.webfrontend.123456abcdef.eus.azds.io), és lépjen a névjegy lapra. Az eredeti, „Hello from webfrontend and Hello from mywebapi” üzenetnek kell megjelennie.
 
-Most adja hozzá a „scott.s” kifejezést az URL-címre, így az alábbihoz hasonló http olvas be egy része\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io és frissítse a böngészőt. A töréspont állítsa be a *mywebapi* kattintson beolvasni a projekt. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka az elérési útját a frissített kód *mywebapi* fut-e a _dev/scott_ terület.
+Most adja hozzá a „scott.s” kifejezést az URL-cím részeként olvasson be valamit, például http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io, és frissítse a böngészőt. A *mywebapi* -projektben megadott töréspontnak találatot kell kapnia. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka, hogy a frissített kód elérési útja a *mywebapi* -ben a _dev/Scott_ -térben fut.
 
-Ha már van egy _fejlesztési_ mindig tartalmazza a legutóbbi módosításoknak, és ha az alkalmazás-terület az célja, hogy kihasználhatja DevSpace a terület-alapú útválasztást, az oktatóanyag ezen szakaszában leírtak szerint, remélhetőleg könnyen látható lesz milyen fejlesztési tárolóhelyek nagy mértékben végrehajtásában segít a nagyobb alkalmazás környezetében lévő új szolgáltatások tesztelése. Ahelyett, hogy üzembe helyezéséhez _összes_ szolgáltatások a személyes tárhelyre, létrehozhat egy privát területet származó _fejlesztési_, és "csak be" a ténylegesen dolgozik a szolgáltatásokat. A fejlesztői, szóközök útválasztási infrastruktúra fogja kezelni a többi felügyelniük annyi szolgáltatások a privát lemezterületét talál, alapértelmezés szerint a legújabb verzióra futtatása közben a _fejlesztési_ terület. Továbbra is, hatékonyabb és _több_ fejlesztők aktívan fejleszthetnek különböző szolgáltatásokat egy időben a saját térben egymással megszakítása nélkül.
+Ha olyan _fejlesztői_ területtel rendelkezik, amely mindig tartalmazza a legújabb módosításokat, és feltételezi, hogy az alkalmazás úgy van kialakítva, hogy kihasználja a DevSpace-alapú útválasztást az oktatóanyag szakaszban leírtak szerint, remélhetőleg könnyen megtekintheti, hogy a fejlesztői helyek hogyan segíthetnek a nagyobb alkalmazások környezetében rejlő új szolgáltatások tesztelésében. Ahelyett, hogy az _összes_ szolgáltatást a saját tárhelyére kellene telepítenie, létrehozhat egy olyan privát helyet, amely a _dev_-ből származik, és csak a ténylegesen használt szolgáltatások közül választhat. A dev Spaces útválasztási infrastruktúrája a REST-t úgy fogja kezelni, hogy a saját tárterületének számos szolgáltatását használja, miközben a keresés közben a legújabb verzióra, a _fejlesztői_ térben pedig az alapértelmezett értékre kerül. És még jobb, ha _több_ fejlesztő is aktívan fejleszti a különböző szolgáltatásokat a saját területén anélkül, hogy megzavarja egymást.
 
 ### <a name="well-done"></a>Remek!
 Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
@@ -138,7 +136,7 @@ Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan vége
 > * Iteratív kódfejlesztés a tárolókban.
 > * Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
 > * A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
-> * Fejlesztői tárolóhelyek használatával egyszerűen tesztelheti az elkülönített módosításokat egy nagyobb mikroszolgáltatás-alkalmazás összefüggésében funkció megállapítja az alapértékeket
+> * A fejlesztői Spaces használatával egyszerűen tesztelheti az elkülönített módosításokat egy nagyobb, nagy teljesítményű szolgáltatásalkalmazás környezetében.
 
 Most, hogy megismerte az Azure Dev Spacest, [megoszthatja a létrehozott Dev Spaces-teret egy csapattaggal](how-to/share-dev-spaces.md), és megmutathatja neki, milyen egyszerű az együttműködés.
 

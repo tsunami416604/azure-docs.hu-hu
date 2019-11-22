@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás elrejtése a felhasználói élmény az Azure Active Directoryban |} A Microsoft Docs
-description: Alkalmazás elrejtése a felhasználói élmény az Azure Active Directory hozzáférési paneljein vagy Office 365 kilövők módja.
+title: Alkalmazás elrejtése a felhasználói felületről az Azure AD-ben
+description: Alkalmazások elrejtése a felhasználói felületről Azure Active Directory hozzáférési panelek vagy Office 365-indítók esetében.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,52 +12,52 @@ ms.date: 11/12/2018
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd98aa974f2adcd363c04c10b7a10cef6ca8ce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824534"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274006"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>A végfelhasználók számára az Azure Active Directoryban alkalmazások elrejtése
+# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Alkalmazások elrejtése a Azure Active Directoryban lévő végfelhasználók számára
 
-Útmutató az alkalmazások végfelhasználók MyApps panelről vagy az Office 365 indítója elrejtése. Amikor egy alkalmazás rejtve marad, a felhasználók továbbra is fennáll az alkalmazásnak. 
+Útmutató a végfelhasználók MyApps paneljén vagy az Office 365-Indítóban található alkalmazások elrejtéséhez. Ha egy alkalmazás rejtve van, a felhasználók továbbra is rendelkeznek engedéllyel az alkalmazáshoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Alkalmazás elrejtése a MyApps panelen és az Office 365 indítója a alkalmazás rendszergazdai jogosultság szükséges.
+Alkalmazás-rendszergazdai jogosultságok szükségesek az alkalmazások elrejtéséhez a MyApps panelen és az Office 365-Indítóban.
 
-Globális rendszergazdai jogosultság szükséges összes Office 365-alkalmazások elrejtése.
+Az Office 365 összes alkalmazásának elrejtéséhez globális rendszergazdai jogosultságok szükségesek.
 
 
-## <a name="hide-an-application-from-the-end-user"></a>A végfelhasználó számára az alkalmazás elrejtése
-Az alábbi lépések segítségével alkalmazás elrejtése a MyApps panelen és az Office 365 alkalmazásindítójában.
+## <a name="hide-an-application-from-the-end-user"></a>Alkalmazás elrejtése a végfelhasználótól
+A következő lépésekkel rejtheti el az alkalmazást a MyApps és az Office 365 Application Launcher használatával.
 
-1.  Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár globális rendszergazdájaként.
+1.  Jelentkezzen be a [Azure Portalra](https://portal.azure.com) globális rendszergazdaként a címtárában.
 2.  Válassza az **Azure Active Directory** elemet.
-3.  Válassza ki **vállalati alkalmazások**. A **nagyvállalati alkalmazások – minden alkalmazás** panel nyílik meg.
-4.  A **alkalmazástípus**válassza **vállalati alkalmazások**, ha még nincs kiválasztva.
-5.  Keresse meg a elrejtéséhez, és kattintson az alkalmazás kívánt alkalmazást.  Megnyílik az alkalmazás áttekintése.
+3.  Válassza a **vállalati alkalmazások**lehetőséget. A **vállalati alkalmazások – minden alkalmazás** panel nyílik meg.
+4.  Az **alkalmazás típusa**területen válassza a **vállalati alkalmazások**lehetőséget, ha még nincs kiválasztva.
+5.  Keresse meg az elrejteni kívánt alkalmazást, majd kattintson az alkalmazásra.  Megnyílik az alkalmazás áttekintése.
 6.  Kattintson a **Tulajdonságok** elemre. 
-7.  Az a **látható a felhasználók számára?** kérdés, kattintson a **nem**.
+7.  A **látható felhasználók számára?** kérdés, kattintson a **nem**gombra.
 8.  Kattintson a **Save** (Mentés) gombra.
 
 
-## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-alkalmazások a MyApps panelről elrejtése
+## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-alkalmazások elrejtése a MyApps panelről
 
-Az alábbi lépések segítségével a MyApps panelről az összes Office 365-alkalmazások elrejtése. Az alkalmazások továbbra is megjelennek az Office 365 portálra.
+A következő lépésekkel elrejtheti az Office 365 összes alkalmazását a MyApps panelről. Az alkalmazások továbbra is láthatók az Office 365-portálon.
 
-1.  Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár globális rendszergazdájaként.
+1.  Jelentkezzen be a [Azure Portalra](https://portal.azure.com) globális rendszergazdaként a címtárában.
 2.  Válassza az **Azure Active Directory** elemet.
-3.  Válassza ki **felhasználói beállítások**.
-4.  A **vállalati alkalmazások**, kattintson a **kezelése hogyan végfelhasználók indítsa el, és azok az alkalmazások megtekintéséhez.**
-5.  A **csak a tekintse meg az Office 365 portálon az Office 365-alkalmazások**, kattintson a **Igen**.
+3.  Válassza a **felhasználói beállítások**lehetőséget.
+4.  A **vállalati alkalmazások**területen kattintson **a kezelés a végfelhasználók általi indítás és az alkalmazások megtekintése** elemre.
+5.  A **felhasználók csak az office 365-alkalmazásokat látják az office 365-portálon**, kattintson az **Igen**gombra.
 6.  Kattintson a **Save** (Mentés) gombra.
 
 
-## <a name="next-steps"></a>További lépések
-* [Tekintse meg az összes saját csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](assign-user-or-group-access-portal.md)
-* [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazás](remove-user-or-group-access-portal.md)
-* [A name vagy a vállalati alkalmazás emblémájának módosítása](change-name-or-logo-portal.md)
+## <a name="next-steps"></a>Következő lépések
+* [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport hozzárendelésének eltávolítása vállalati alkalmazásból](remove-user-or-group-access-portal.md)
+* [Vállalati alkalmazás nevének vagy emblémájának módosítása](change-name-or-logo-portal.md)
 

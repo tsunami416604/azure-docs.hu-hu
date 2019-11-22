@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Python használata a Text Analytics API meghívásához'
+title: 'Rövid útmutató: A Text Analytics API meghívása a Python használatával'
 titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 15f0cf7725dec99884497be79b63c21ef16f88b1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387391"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284971"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Python-REST API használata a Text Analytics kognitív szolgáltatás meghívásához 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: a Text Analytics kognitív szolgáltatás meghívása a Python REST API használatával 
 <a name="HOLTop"></a>
 
 Ezzel a rövid útmutatóval megkezdheti a nyelv elemzését a Text Analytics REST API és a Python használatával. Ebből a cikkből megtudhatja, hogyan [derítheti fel a nyelveket](#Detect), [elemezheti](#SentimentAnalysis)a [fontos kifejezéseket](#KeyPhraseExtraction), és hogyan [azonosíthatja a társított entitásokat](#Entities).
 
-Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,13 +71,13 @@ Az alábbi szakaszok azt ismertetik, hogyan hívhatók meg az egyes API-funkció
 
 ## <a name="detect-languages"></a>Nyelvek felismerése
 
-Hozzáfűzés `/text/analytics/v2.1/languages` a Text Analytics alap végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
+A nyelvfelismerés URL-címének létrehozásához fűzze hozzá `/text/analytics/v2.1/languages` a Text Analytics Base végponthoz. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
-Az API `documents`-ban található hasznos adatok a `id` és a `text` attribútumot tartalmazó rekordok tartalmazzák. Az `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
+Az API hasznos adatai a `documents`listáját tartalmazzák, amely egy `id` és egy `text` attribútumot tartalmazó rekordok. A `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` bármilyen érték lehet. 
 
 ```python
 documents = {"documents": [
@@ -87,7 +87,7 @@ documents = {"documents": [
 ]}
 ```
 
-A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez, és küldje el `requests.post()`a kérelmet a következővel:. 
+A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és küldje el a kérést `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -96,7 +96,7 @@ languages = response.json()
 pprint(languages)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Kimenet
 
 ```json
 {
@@ -140,13 +140,13 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-Ahhoz, hogy észlelni lehessen a dokumentumok egy halmazának pozitív vagy negatív közötti tartományát, fűzze `/text/analytics/v2.1/sentiment` hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
+A dokumentumok egy csoportjának pozitív vagy negatív tartománya közötti érzelmek észleléséhez fűzze hozzá `/text/analytics/v2.1/sentiment`t a Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
-A nyelvfelismerés példához hasonlóan hozzon létre egy szótárt egy `documents` olyan kulccsal, amely a dokumentumok listájából áll. Minden dokumentum egy rekord, amely az `id`, az elemzendő `text` és a szöveg `language` tulajdonságából áll. 
+A nyelvfelismerés példához hasonlóan hozzon létre egy szótárt egy `documents` kulccsal, amely a dokumentumok listájából áll. Minden dokumentum egy rekord, amely az `id`, az elemzendő `text` és a szöveg `language` tulajdonságából áll. 
 
 ```python
 documents = {"documents": [
@@ -161,7 +161,7 @@ documents = {"documents": [
 ]}
 ```
 
-A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez, és küldje el `requests.post()`a kérelmet a következővel:. 
+A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és küldje el a kérést `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -170,7 +170,7 @@ sentiments = response.json()
 pprint(sentiments)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Kimenet
 
 A dokumentumra vonatkozó hangulati pontszám 0,0 és 1,0 között van, és egy magasabb pontszámot jelez, amely még pozitívabb érzést mutat.
 
@@ -200,9 +200,9 @@ A dokumentumra vonatkozó hangulati pontszám 0,0 és 1,0 között van, és egy 
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak keresése
+## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
  
-Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy `/text/analytics/v2.1/keyPhrases` csoportján, fűzze hozzá az Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
+Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy csoportján, fűzze hozzá `/text/analytics/v2.1/keyPhrases` a Text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -223,7 +223,7 @@ documents = {"documents": [
 ]}
 ```
 
-A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez, és küldje el `requests.post()`a kérelmet a következővel:. 
+A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és küldje el a kérést `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -232,7 +232,7 @@ key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Kimenet
 
 ```json
 {
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához `/text/analytics/v2.1/entities` fűzze hozzá az Text Analytics Base végpontot a nyelvfelismerés URL-címének létrehozásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához fűzze hozzá `/text/analytics/v2.1/entities`t a Text Analytics Base végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"
@@ -292,7 +292,7 @@ documents = {"documents": [
 ]}
 ```
 
-A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez, és küldje el `requests.post()`a kérelmet a következővel:.
+A dokumentumok API-nak való elküldéséhez használja a kérelmek könyvtárat. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és küldje el a kérést `requests.post()`.
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -301,7 +301,7 @@ entities = response.json()
 pprint(entities)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>Kimenet
 
 ```json
 {
@@ -456,7 +456,7 @@ pprint(entities)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)

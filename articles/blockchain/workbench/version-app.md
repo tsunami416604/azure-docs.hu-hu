@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: f6edbb54962ff11b5ed1497b6a202b9010c67aae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 35d9be219d1473ac56ca501f80fca96a265e814f
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328828"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284833"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Az Azure Blockchain Workbench előzetes verziójának alkalmazása
 
@@ -32,7 +32,7 @@ Létrehozhat és használhat egy Azure Blockchain Workbench előzetes verziójú
 
 Új verzió hozzáadásához töltse fel az új konfigurációs és intelligens szerződési fájlokat a Blockchain Workbenchbe.
 
-1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. Például `https://{workbench URL}.azurewebsites.net/` a Blockchain Workbench-webcím megkeresésével kapcsolatos információkért lásd: [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) cím
+1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. `https://{workbench URL}.azurewebsites.net/` például a Blockchain Workbench-webcímek megkeresésével kapcsolatos információkért lásd: [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címe
 2. Jelentkezzen be [Blockchain Workbench-rendszergazdaként](manage-users.md#manage-blockchain-workbench-administrators).
 3. Válassza ki a frissíteni kívánt blockchain alkalmazást egy másik verzióval.
 4. Válassza a **verzió hozzáadása**lehetőséget. Megjelenik a **verzió hozzáadása** panel.

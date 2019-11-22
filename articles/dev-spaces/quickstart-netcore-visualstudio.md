@@ -1,10 +1,6 @@
 ---
 title: Hibakeresés és iteráció a Visual Studióval és a .NET Core-val az AK-val az Azure dev Spaces használatával
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/13/2019
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
@@ -12,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 58812a4bea7948c38fb0dda782a3f601004b74c0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091814"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279838"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studióval és a .NET Core-mel a Kubernetes az Azure dev Spaces használatával
 
@@ -48,7 +44,7 @@ A [támogatott régiókban][supported-regions]létre kell hoznia egy AK-fürtöt
     ![AK létrehozása a Azure Portalban](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Kattintson az *Áttekintés + létrehozás* elemre.
-1. Kattintson a *Create* (Létrehozás) gombra.
+1. Kattintson a *Létrehozás* elemre.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
@@ -64,7 +60,7 @@ Navigáljon az AK-fürthöz a Azure Portalban, és kattintson a *dev Spaces*elem
 1. Nevezze el a projekt *webfelületét* , és kattintson a *Létrehozás*gombra.
 1. Ha a rendszer kéri, válassza a *webalkalmazás (Model-View-Controller)* elemet a sablonhoz.
 1. Válassza a *.net Core* és a *ASP.net Core 2,1* elemet a felső részen.
-1. Kattintson a *Create* (Létrehozás) gombra.
+1. Kattintson a *Létrehozás* elemre.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>A projekt összekötése a fejlesztői területtel
 

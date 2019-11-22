@@ -8,17 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d2d5e717154d16cc5579c1495aff9c1eebf54b17
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132376"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280969"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-gazdagított mezők leképezése kereshető indexre
 
-Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. A bővített dokumentumokból az indexbe való áthelyezéshez mező-hozzárendelés szükséges.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. 
 
+A bővített dokumentumokból származó tartalomnak az indexbe való áthelyezéséhez kimeneti mezők hozzárendelése szükséges.  A dúsított dokumentum valójában az információk fája, és bár az index összetett típusai is támogatottak, időnként előfordulhat, hogy a dúsított fában lévő adatokat egy egyszerű típusra kívánja átalakítani (például karakterláncok tömbje). A kimeneti mezők leképezése lehetővé teszi az adatalakzatok átalakításának elvégzését az információk összeolvasztásával.
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata
 A mezők leképezéséhez adja hozzá `outputFieldMappings` az indexelő definícióhoz az alább látható módon:
@@ -62,14 +63,72 @@ A kérelem törzse a következőképpen van strukturálva:
     ]
 }
 ```
-Minden egyes kimeneti mező leképezéséhez állítsa be a dúsított mező (sourceFieldName) nevét és a mező nevét az indexben (targetFieldName) hivatkozott módon.
 
-Egy sourceFieldName elérési útja egy vagy több elemet is jelenthet. A fenti példában a ```/document/content/sentiment``` egyetlen numerikus értéket jelöl, míg ```/document/content/organizations/*/description``` több szervezeti leírást is képvisel. Azokban az esetekben, ahol több elem is van, azok egy tömbbe kerülnek, amely tartalmazza az egyes elemeket. Pontosabban, a ```/document/content/organizations/*/description``` például a *leírások* mezőben lévő információ a leírások lapos tömbjét fogja kinézni, mielőtt bejelentkezne az indexelésbe:
+Minden egyes kimeneti mező leképezéséhez állítsa be a dúsított dokumentum fájában (sourceFieldName) található adatokat, valamint a mező nevét az indexben hivatkozott módon (targetFieldName).
+
+## <a name="flattening-information-from-complex-types"></a>Információk összeolvasztása összetett típusokból 
+
+Egy sourceFieldName elérési útja egy vagy több elemet is jelenthet. A fenti példában a ```/document/content/sentiment``` egyetlen numerikus értéket jelöl, míg ```/document/content/organizations/*/description``` több szervezeti leírást is képvisel. 
+
+Azokban az esetekben, ahol több elem is van, azok egy tömbbe kerülnek, amely tartalmazza az egyes elemeket. 
+
+Pontosabban, a ```/document/content/organizations/*/description``` például a *leírások* mezőben lévő információ a leírások lapos tömbjét fogja kinézni, mielőtt bejelentkezne az indexelésbe:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
-## <a name="next-steps"></a>További lépések
+
+Ez fontos elv, ezért egy másik példát is biztosítunk. Képzelje el, hogy az összetett típusok tömbje a dúsítási fa része. Tegyük fel, hogy van egy customEntities nevű tag, amely az alább leírtak szerint összetett típusokat tartalmaz.
+
+```json
+"document/customEntities": 
+[
+    {
+        "name": "heart failure",
+        "matches": [
+            {
+                "text": "heart failure",
+                "offset": 10,
+                "length": 12,
+                "matchDistance": 0.0
+            }
+        ]
+    },
+    {
+        "name": "morquio",
+        "matches": [
+            {
+                "text": "morquio",
+                "offset": 25,
+                "length": 7,
+                "matchDistance": 0.0
+            }
+        ]
+    }
+    //...
+]
+```
+
+Tegyük fel, hogy az indexnek van egy "diseases" nevű mezője (EDM. String), ahol az entitások nevét tárolni szeretné. 
+
+Ezt egyszerűen megteheti a "\*" szimbólum használatával, a következőképpen:
+
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": "/document/customEntities/*/name",
+            "targetFieldName": "diseases"
+        }
+    ]
+```
+
+Ez a művelet egyszerűen "lelapul" a customEntities elemek mindegyikének egyetlen tömbje a következőhöz hasonlóan:
+
+```json
+  "diseases" : ["heart failure","morquio"]
+```
+
+## <a name="next-steps"></a>Következő lépések
 Miután leképezte a dúsított mezőket a kereshető mezőkre, az [index definíciójának részeként](search-what-is-an-index.md)megadhatja az egyes kereshető mezőkhöz tartozó mezőtulajdonságokat.
 
 További információ a mezők hozzárendeléséről: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.

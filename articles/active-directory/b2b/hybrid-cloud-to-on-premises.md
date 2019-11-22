@@ -1,6 +1,6 @@
 ---
-title: Engedélyezés B2B-felhasználók a hozzáférést a helyszíni alkalmazások – Azure Active Directory |} A Microsoft Docs
-description: Bemutatja, hogyan biztosíthat a B2B-felhasználók hozzáférésének a helyi alkalmazások az Azure AD B2B együttműködés a felhőben.
+title: B2B-felhasználók hozzáférésének biztosítása a helyszíni alkalmazásokhoz – Azure AD
+description: Bemutatja, hogyan biztosítható a felhőalapú B2B-felhasználók számára a helyszíni alkalmazások elérése az Azure AD B2B együttműködéssel.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,80 +11,80 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d3fa8e71df3d1184956e1802d1b6b72411b6449
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113035"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272803"
 ---
-# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
+# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
 Azure Active Directory (Azure AD) B2B együttműködési lehetőségeket az Azure ad a fiókpartner-szervezetek vendégfelhasználók használó szervezetek, most már megadhat a B2B-felhasználók a helyszíni alkalmazásokhoz való hozzáférés. Ezek a helyszíni alkalmazások az SAML-alapú hitelesítés vagy az integrált Windows-hitelesítés (IWA) a Kerberos által korlátozott delegálás (KCD).
 
-## <a name="access-to-saml-apps"></a>SAML-alkalmazásokhoz való hozzáférés
+## <a name="access-to-saml-apps"></a>Hozzáférés az SAML-alkalmazásokhoz
 
-Ha a helyszíni alkalmazás SAML-alapú hitelesítést használ, akkor is használhatja egyszerűen ezeket az alkalmazásokat a az Azure AD B2B együttműködés felhasználók számára az Azure Portalon keresztül.
+Ha a helyszíni alkalmazás SAML-alapú hitelesítést használ, egyszerűen elérhetővé teheti ezeket az alkalmazásokat az Azure AD B2B együttműködési felhasználók számára a Azure Portalon keresztül.
 
-A következő két kell tennie:
+A következőket kell tennie:
 
-- Az SAML-alkalmazásba integrálja a katalógusban nem szereplő alkalmazást sablon használatával, leírtak szerint [konfigurálása egyszeri bejelentkezéshez, az alkalmazásokat, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Mindenképpen jegyezze fel, a használatért a **bejelentkezési URL-** értéket.
--  A helyszíni alkalmazás közzététele az Azure AD-alkalmazásproxy használatával **Azure Active Directory** a hitelesítési forrásaként beállított. Útmutatásért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](../manage-apps/application-proxy-publish-azure-portal.md). 
+- Integrálja az SAML-alkalmazást a nem katalógusból származó alkalmazás sablonnal, az [egyszeri bejelentkezés konfigurálása olyan alkalmazásokba, amelyek nem szerepelnek a Azure Active Directory alkalmazás-gyűjteményben](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Ügyeljen arra, hogy a **bejelentkezési URL-cím** értékének milyen értékét kell használnia.
+-  Az Azure AD Application Proxy használatával tegye közzé a helyszíni alkalmazást a hitelesítési forrásként konfigurált **Azure Active Directory** . Útmutatásért lásd: [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-publish-azure-portal.md). 
 
-   Konfigurálása során a **belső URL-cím** beállítást, a bejelentkezési URL-cím használata a katalógusban nem szereplő alkalmazás sablonban megadott. Ezzel a módszerrel a felhasználók elérhetik az alkalmazást a szervezet határán kívüli. Az alkalmazásproxy a helyszíni alkalmazás a SAML egyszeri bejelentkezést hajt végre.
+   A **belső URL-cím** beállításakor használja a nem katalógus alkalmazás sablonjában megadott bejelentkezési URL-címet. Így a felhasználók a szervezet határain kívülről is hozzáférhetnek az alkalmazáshoz. Az alkalmazásproxy végrehajtja a helyszíni alkalmazás SAML-alapú egyszeri bejelentkezését.
  
-   ![A helyszíni alkalmazás beállítások belső URL-CÍMÉT és a hitelesítési jeleníti meg](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+   ![A helyszíni Alkalmazásbeállítások belső URL-címét és hitelesítését jeleníti meg](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
 
-## <a name="access-to-iwa-and-kcd-apps"></a>IWA és KCD alkalmazásokhoz való hozzáférés
+## <a name="access-to-iwa-and-kcd-apps"></a>Hozzáférés IWA-és KCD-alkalmazásokhoz
 
-B2B-felhasználók hozzáférést biztosítson a helyszíni alkalmazások védett integrált Windows-hitelesítés és Kerberos által korlátozott delegálás, a következő összetevők szükségesek:
+Ahhoz, hogy a B2B-felhasználók hozzáférhessenek az integrált Windows-hitelesítéssel és a Kerberos által korlátozott delegálással védett helyszíni alkalmazásokhoz, a következő összetevőkre van szükség:
 
-- **Hitelesítés az Azure AD-alkalmazásproxyn keresztül**. B2B-felhasználók a helyszíni alkalmazás hitelesítéséhez képesnek kell lennie. Ehhez a helyszíni alkalmazást az Azure AD alkalmazásproxyn keresztül kell közzétennie. További információkért lásd: [alkalmazásproxy – első lépések, és telepítse az összekötőt](../manage-apps/application-proxy-enable.md) és [alkalmazások közzététele az Azure AD-alkalmazásproxy](../manage-apps/application-proxy-publish-azure-portal.md).
-- **Engedélyezés a következővel a B2B-felhasználói objektum a helyszíni címtárban**. Az alkalmazás felhasználói hozzáférés-ellenőrzést, és a megfelelő erőforrásokhoz való hozzáférést kell lennie. IWA és kcd Szolgáltatáshoz szükséges egy felhasználói objektumot a helyi Windows Server Active Directory az engedélyezés végrehajtásához. Leírtak szerint [az egyszeri bejelentkezés KCD Works](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), alkalmazásproxy van szüksége a felhasználó megszemélyesítése és az alkalmazás egy Kerberos-token beszerzése a felhasználói objektum. 
+- **Hitelesítés az Azure ad Application Proxyon keresztül**. A B2B-felhasználóknak képesnek kell lenniük a hitelesítésre a helyszíni alkalmazásban. Ehhez közzé kell tennie a helyszíni alkalmazást az Azure AD Application Proxyon keresztül. További információkért lásd: [az alkalmazásproxy használatának első lépései, az összekötő telepítése](../manage-apps/application-proxy-enable.md) és [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-publish-azure-portal.md).
+- **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban**. Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
 
-   A B2B-felhasználó forgatókönyvhöz két módszerrel érhető el, hogy a Vendég felhasználói objektumok, amelyek szükségesek a hitelesítéshez a helyszíni címtárban létrehozásához használhatja:
+   A B2B felhasználói forgatókönyvben két módszer áll rendelkezésre, amelyek segítségével létrehozhatja az engedélyezéshez szükséges vendég felhasználói objektumokat a helyszíni címtárban:
 
-   - A Microsoft Identity Manager (MIM) és a Microsoft Graph a MIM-kezelőügynök. 
-   - [Egy PowerShell-parancsprogram](#create-b2b-guest-user-objects-through-a-script-preview). A szkript használatával a MIM nem igénylő egyszerűbb megoldás. 
+   - Microsoft Identity Manager (webszolgáltatások) és a Microsoft Graph-hez készült felügyeleti ügynök. 
+   - [Egy PowerShell-parancsfájl](#create-b2b-guest-user-objects-through-a-script-preview). A szkript használata egy olyan könnyűsúlyú megoldás, amely nem igényli a webalkalmazást. 
 
-A következő ábra biztosít magas szintű áttekintését az Azure AD-alkalmazásproxy és a B2B-felhasználói objektum, a helyszíni generációja directory munkahelyi B2B-felhasználók a helyszíni IWA és KCD alkalmazásokhoz való hozzáférés biztosítása érdekében. A diagramot részletesebben olvashat a számozott lépéseit ismerteti.
+A következő ábra áttekintést nyújt arról, hogyan működik együtt az Azure AD Application Proxy és a VÁLLALATKÖZI felhasználói objektum létrehozása a helyszíni címtárban, hogy VÁLLALATKÖZI felhasználói hozzáférést biztosítson a helyszíni IWA és KCD-alkalmazásokhoz. A számozott lépések részletes leírását a diagram alatt találja.
 
-![A MIM és a B2B parancsfájl megoldások diagramja](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
+![A webalkalmazási és B2B parancsfájl-megoldások ábrája](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
-1.  A fiókpartner-szervezet (a Fabrikam bérlő) egy felhasználó a Contoso bérlő a cégbe.
-2.  A Contoso bérlő jön létre a Vendég felhasználói objektum (például egy egyszerű Felhasználóneve guest_fabrikam.com#EXT# a felhasználói objektum@contoso.onmicrosoft.com).
-3.  A Fabrikam Vendég rendszer importálja a Contoso MIM vagy a B2B-PowerShell-parancsfájl segítségével.
-4.  Egy ábrázolás vagy az "erőforrás-igényű" Fabrikam Vendég felhasználói objektum (Vendég EXT #.) a helyszíni címtárban, a Contoso.com, a MIM vagy a B2B-PowerShell-parancsfájl segítségével jön létre.
-5.  A Vendég felhasználó hozzáfér a helyszíni alkalmazás, app.contoso.com.
-6.  A hitelesítés engedélyezve van a Kerberos által korlátozott delegálással, alkalmazásproxyn keresztül. 
-7.  A Vendég felhasználói objektum létezik helyileg, mert a hitelesítés sikeres.
+1.  A rendszer meghívja a contoso bérlőt a partner szervezet (a fabrikam bérlője) felhasználójának.
+2.  A rendszer létrehoz egy vendég felhasználói objektumot a contoso-bérlőben (például egy, a guest_fabrikam. com # EXT #@contoso.onmicrosoft.com) egyszerű felhasználónevet használó felhasználói objektumot.
+3.  A fabrikam vendég a contoso-ból vagy a B2B PowerShell-parancsfájllal lett importálva.
+4.  A fabrikam vendég felhasználói objektum (vendég # EXT #) képviselete vagy lábnyoma a helyszíni címtárban, a Contoso.com-ben vagy a B2B PowerShell-parancsfájllal hozható létre.
+5.  A vendég felhasználó hozzáfér a helyszíni alkalmazáshoz, a app.contoso.com.
+6.  A hitelesítési kérelem a Kerberos által korlátozott delegálással hitelesíthető az alkalmazásproxy használatával. 
+7.  Mivel a vendég felhasználói objektum helyileg létezik, a hitelesítés sikeres.
 
-### <a name="lifecycle-management-policies"></a>Életciklus-kezelési házirendek
+### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-A helyszíni B2B felhasználói objektumok életciklus-kezelési házirendek használatával kezelhetők. Példa:
+A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Például:
 
-- Beállíthatja a vendégfelhasználót a többtényezős hitelesítés (MFA) szabályzatokat, hogy a többtényezős hitelesítés a Application Proxy hitelesítése során használatos. További információkért lásd: [feltételes hozzáférés B2B-együttműködés felhasználók](conditional-access.md).
-- Bármely sponsorship, a hozzáférési felülvizsgálatok, a fiók számán és az egyéb végzett felhasználói vonatkozik, a helyszíni felhasználók felhőbeli B2B. Például az életciklus-kezelési házirendek segítségével a felhőbeli felhasználó törlésekor, helyi felhasználó is törlődik az MIM Sync vagy az Azure AD Connect sync. További információkért lásd: [vendég-hozzáférés kezelése az Azure AD hozzáférési felülvizsgálatok](../governance/manage-guest-access-with-access-reviews.md).
+- Beállíthatja a többtényezős hitelesítési (MFA) házirendeket a vendég felhasználó számára, hogy az MFA-t használja az alkalmazásproxy hitelesítése során. További információ: [feltételes hozzáférés vállalatközi együttműködéssel rendelkező felhasználók](conditional-access.md)számára.
+- A felhőalapú B2B-felhasználó által végrehajtott szponzorálások, hozzáférési felülvizsgálatok, fiókok ellenőrzése stb. a helyszíni felhasználókra is érvényesek. Ha például a Felhőbeli felhasználót az életciklus-kezelési szabályzatok segítségével törli, a helyszíni felhasználót is törli a helyi felhasználó, vagy a Azure AD Connect Sync használatával. További információ: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).
 
-### <a name="create-b2b-guest-user-objects-through-mim"></a>B2B Vendég felhasználói objektumok a MIM keresztül létrehozása
+### <a name="create-b2b-guest-user-objects-through-mim"></a>VÁLLALATKÖZI vendég felhasználói objektumok létrehozása a webszolgáltatáson keresztül
 
-A Vendég felhasználói objektumok létrehozása a helyszíni címtárban a MIM 2016 Service Pack 1 és a MIM-kezelőügynök a Microsoft Graph használatával kapcsolatos információkért lásd: [az Azure AD vállalatközi (B2B) együttműködés a Microsoft Identity Manager (MIM) 2016 SP1-et az Azure-alkalmazásproxyval](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+További információ a (z) 2016 Service Pack 1 és a Rendszerfelügyeleti webszolgáltatások felügyeleti ügynökének használatáról Microsoft Graph a vendég felhasználói objektumok létrehozásához a helyszíni címtárban: Azure AD-beli vállalatközi [(B2B) együttműködés a Microsoft Identity Manager (platform) 2016 SP1 és az Azure Application proxy](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)használatával.
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>B2B-vendégként felhasználói objektumok egy parancsfájl (előzetes verzió) segítségével létrehozása
+### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>VÁLLALATKÖZI vendég felhasználói objektumok létrehozása parancsfájl használatával (előzetes verzió)
 
-Nincs elérhető, hogy használhatja kiindulási pontként a Vendég felhasználói objektumok létrehozása a helyszíni Active Directory PowerShell példaszkript.
+Létezik egy PowerShell-minta parancsfájl, amely kiindulási pontként használható a vendég felhasználói objektumok létrehozásához a helyszíni Active Directory.
 
-Letöltheti a parancsfájl, és a Readme fájlt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt, és a Readme pull az prem.zip felhasználók Azure AD B2B** fájlt.
+A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-Prem. zip fájljának lekéréséhez** .
 
-Mielőtt a parancsfájlt használja, győződjön meg arról, tekintse át az előfeltételeket és a legfontosabb szempontok a tartozó fontos fájlt. Ezenkívül megismerheti, hogy a parancsfájl lehetőségként elérhetővé tegyen csak egy minta. A fejlesztői csapat vagy egy partner testre szabhatja, és nézze át a parancsfájlt, mielőtt futtatná azt.
+A szkript használata előtt győződjön meg arról, hogy áttekinti az előfeltételeket és a fontos szempontokat a társított readme fájlban. Továbbá Ismerje meg, hogy a szkript csak mintaként érhető el. A fejlesztői csapatnak vagy partnernek a futtatása előtt testre kell szabnia és ellenőriznie kell a parancsfájlt.
 
-## <a name="license-considerations"></a>Licenccel kapcsolatos szempontok
+## <a name="license-considerations"></a>Licenctel kapcsolatos megfontolások
 
-Győződjön meg arról, hogy a megfelelő ügyféllicenc (CAL-EK) a helyszíni alkalmazásokhoz hozzáféréssel rendelkező külső vendégfelhasználók számára. További információkért tekintse meg a "Külső összekötők" szakaszában [ügyféllicencek és felügyeleti licencek](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx). Tekintse meg a Microsoft helyi képviselőjéhez vagy a helyi viszonteladóhoz vonatkozó licencelési igényeinek.
+Győződjön meg arról, hogy rendelkezik a megfelelő ügyféllicencekkel a külső vendég felhasználók számára, akik hozzáférnek a helyszíni alkalmazásokhoz. További információ: az [ügyfél-hozzáférési licencek és a felügyeleti licencek](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"külső összekötők" szakasza. Forduljon a Microsoft képviselőjéhez vagy a helyi viszonteladóhoz az adott licencelési igényekkel kapcsolatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Active Directory B2B együttműködés hibrid cégekhez és vállalkozásokhoz](hybrid-organizations.md)
+- [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
 
-- Az Azure AD Connect áttekintése, lásd: [a helyszíni címtárak integrálása az Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
+- A Azure AD Connect áttekintését lásd: a [helyszíni címtárak integrálása Azure Active Directoryokkal](../hybrid/whatis-hybrid-identity.md).
 

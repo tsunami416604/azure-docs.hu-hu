@@ -1,5 +1,6 @@
 ---
-title: Az Azure Virtual Network átjáró és a kapcsolatok – PowerShell | Microsoft Docs
+title: Az Azure VNet-átjáró és-kapcsolatok – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Ez az oldal azt ismerteti, hogyan használható az Azure Network Watcher a PowerShell-parancsmaggal való hibakereséshez
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163859"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277830"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Az Azure Network Watcher PowerShell-lel Virtual Network átjáró és kapcsolatok hibáinak megoldása
 
@@ -46,7 +47,7 @@ Az erőforrás-hibaelhárítás lehetővé teszi a Virtual Network átjárókkal
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher beolvasása
 
-Az első lépés az Network Watcher példány beolvasása. A `$networkWatcher` változót a 4. `Start-AzNetworkWatcherResourceTroubleshooting` lépésben megadott parancsmagnak adja át a rendszer.
+Az első lépés az Network Watcher példány beolvasása. A `$networkWatcher` változó a 4. lépésben megadott `Start-AzNetworkWatcherResourceTroubleshooting` parancsmagnak lesz átadva.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -60,7 +61,7 @@ Ebben a példában az erőforrás-hibaelhárítást egy kapcsolatban futtatja a 
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
 Az erőforrás-hibaelhárítás az erőforrás állapotával kapcsolatos információkat ad vissza, és a naplókat is menti egy áttekinthető Storage-fiókba. Ebben a lépésben létrehozunk egy Storage-fiókot, ha meglévő Storage-fiók létezik, használhatja azt.
 
@@ -72,10 +73,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher erőforrás-hibaelhárítás futtatása
 
-A parancsmaggal elháríthatja `Start-AzNetworkWatcherResourceTroubleshooting` az erőforrásokat. Átadjuk a parancsmagot a Network Watcher objektumnak, a kapcsolatok azonosítójának, a Virtual Network átjárónak, a Storage-fiók azonosítójának, valamint az eredmények tárolásának elérési útnak.
+Az `Start-AzNetworkWatcherResourceTroubleshooting` parancsmaggal elháríthatja az erőforrásokat. Átadjuk a parancsmagot a Network Watcher objektumnak, a kapcsolatok azonosítójának, a Virtual Network átjárónak, a Storage-fiók azonosítójának, valamint az eredmények tárolásának elérési útnak.
 
 > [!NOTE]
-> A `Start-AzNetworkWatcherResourceTroubleshooting` parancsmag hosszú ideig fut, és eltarthat néhány percig.
+> Az `Start-AzNetworkWatcherResourceTroubleshooting` parancsmag hosszú ideig fut, és eltarthat néhány percig.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
@@ -89,6 +90,6 @@ A művelet szövege általános útmutatást nyújt a probléma megoldásához. 
 
 A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a beállítások megváltoztak a VPN-kapcsolat leállításakor, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és az esetlegesen érintett biztonsági szabályok nyomon követéséhez című témakört.

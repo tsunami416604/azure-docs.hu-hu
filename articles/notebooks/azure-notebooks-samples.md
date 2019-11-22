@@ -1,46 +1,37 @@
 ---
-title: Minta Jupyter notebookok Azure Notebooks
-description: A minták nagyszerű megoldást nyújtanak az ingyenes Azure Notebooks Cloud Services szolgáltatásban futó Jupyter-jegyzetfüzetek megtapasztalása érdekében.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Mintául szolgáló Jupyter notebookok Azure notebookokhoz
+description: Minták nagyszerű módját az ingyenes Azure-jegyzetfüzetekben fut a cloud services, a Jupyter notebookok tapasztalhat.
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: kraigb
-ms.openlocfilehash: 715db36921427dc0ac5dcdad24c2c026b1ea1326
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cd615777adb28af6528afd2b95bc853372e799e8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496698"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277656"
 ---
-# <a name="discover-and-use-sample-notebooks"></a>Minta-jegyzetfüzetek felderítése és használata
+# <a name="discover-and-use-sample-notebooks"></a>Fedezze fel, és a minta notebookok használata
 
-Az Internet számos érdekes és hasznos Jupyter-jegyzetfüzetet tartalmaz, amelyeket egyszerűen beépíthet Azure Notebooksba. Ez a cikk a jelentős példák listáját tartalmazza.
+Az interneten van egyszerűen beemelése Azure notebookok érdekes és hasznos Jupyter notebookok számos gyűjteményei. Ez a cikk jelentős minták listáját tartalmazza.
 
-Miután azonosította a megtekinteni kívánt jegyzetfüzeteket, néhány részletet érdemes megismernie:
+Ismerje meg, szeretné jegyzetfüzet azonosítása, után az alábbiakban néhány adatra megértéséhez érdemes:
 
-- Ha egy jegyzetfüzet már Azure Notebooksban van, a projekt irányítópultján található **klónozás** gombra kattintva készítsen másolatot a projektről a saját fiókjában.
-- Egyes jegyzetfüzetekhez meghatározott csomagok futtatására van szükség. Habár `!pip install` (Python) vagy `install.packages` (R) használatával is telepíthet csomagokat egy jegyzetfüzetből, [a megfelelő környezettel konfigurálhat egy Azure Notebooks projektet](configure-manage-azure-notebooks-projects.md)is.
+- Ha már van Azure notebookok jegyzetfüzet, használja a **klónozott** gombot a projekt irányítópultján, hogy a projekt egy példányát a saját fiókját.
+- Néhány notebookok adott csomagjainak futtatásához szükséges. Bár a `!pip install` (Python) vagy `install.packages` (R)-csomagok telepítéséhez, egy jegyzetfüzetet a is [egy jegyzetfüzetet az Azure-projekt konfigurálása a megfelelő környezetet](configure-manage-azure-notebooks-projects.md).
 
-## <a name="great-sample-notebooks"></a>Nagyszerű minta notebookok
+## <a name="great-sample-notebooks"></a>Nagyszerű mintafüzetek
 
 - A [Azure Notebooks Starter set](https://notebooks.azure.com/#sample-redirect) a Python, az R és F#a, valamint az adathozzáférést bemutató jegyzetfüzetekkel, valamint a Azure Machine learning és néhány adatelemzési gyakorlattal is rendelkezik.
-- [A Jupyter notebookok bemutatása](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Az adatelemzés bemutatása](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) Jake Vanderplas.
-- [Érdekes jegyzetfüzetek galériája](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-projekt a githubon)
+- [Bevezetés a Jupyter notebookok](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
+- [Bevezetés a Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) Jake Vanderplas szerint.
+- [Érdekes notebookok galériája](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projekt a Githubon)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
-- Fizikai útmutatás a [londoni birodalmi Egyetemen található Physics részlegtől](https://notebooks.azure.com/cvanbreu/libraries)
-- [Azure Machine Learning első lépéseket ismertető minták](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
+- Az utasítás-fizika a [fizika részleg Londonban angolszász College](https://notebooks.azure.com/cvanbreu/libraries)
+- [Az Azure Machine Learning – első lépéseket ismertető minták](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
-- [Útmutató: projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: az adatfájlok használata](work-with-project-data-files.md)
-- [Útmutató: az adaterőforrások elérése](access-data-resources-jupyter-notebooks.md)
+- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: adatok fájlok használata](work-with-project-data-files.md)
+- [Útmutató: adat-erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
 - [Útmutató: a Azure Machine Learning használata](use-machine-learning-services-jupyter-notebooks.md)

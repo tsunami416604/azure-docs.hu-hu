@@ -1,8 +1,6 @@
 ---
 title: Egyéni NuGet-hírcsatorna használata az Azure dev Spaces szolgáltatásban
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
@@ -10,12 +8,12 @@ ms.topic: conceptual
 description: Egyéni NuGet-hírcsatorna használata NuGet-csomagok eléréséhez és használatához az Azure fejlesztői tárhelyén.
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 manager: gwallace
-ms.openlocfilehash: 019335cd73e8eaf0ada6897f08c88ef2b8bbf631
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.openlocfilehash: ee14d999872f6e739321c144831d60a4ae6f9388
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162803"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279953"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Egyéni NuGet-hírcsatorna használata az Azure fejlesztői tárhelyén
 
@@ -23,7 +21,7 @@ A NuGet-hírcsatornák kényelmes módszert biztosítanak a projektek csomagjain
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet-hírcsatorna beállítása
 
-Vegyen fel egy [csomag-referenciát](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) a függőséghez a `PackageReference` csomópont alatt található `*.csproj` fájlban. Példa:
+Vegyen fel egy [csomag-referenciát](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) a függőséghez a `PackageReference` csomópont alatt található `*.csproj` fájlban. Például:
 
 ```xml
 <ItemGroup>
@@ -33,7 +31,7 @@ Vegyen fel egy [csomag-referenciát](https://docs.microsoft.com/nuget/consume-pa
 </ItemGroup>
 ```
 
-Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és állítsa be a NuGet-csatornához tartozó `packageSources` és `packageSourceCredentials` szakaszt. Az `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AK-fürtből. A `packageSourceCredentials` a hírcsatorna eléréséhez szükséges hitelesítő adatok. Példa:
+Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és állítsa be a NuGet-csatornához tartozó `packageSources` és `packageSourceCredentials` szakaszt. Az `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AK-fürtből. A `packageSourceCredentials` a hírcsatorna eléréséhez szükséges hitelesítő adatok. Például:
 
 ```xml
 <packageSources>
@@ -48,7 +46,7 @@ Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nug
 </packageSourceCredentials>
 ```
 
-Frissítse a Dockerfiles, és másolja a `NuGet.Config` fájlt a rendszerképbe. Példa:
+Frissítse a Dockerfiles, és másolja a `NuGet.Config` fájlt a rendszerképbe. Például:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]

@@ -1,8 +1,6 @@
 ---
 title: A CI/CD és az Azure Dev Spaces használata
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
@@ -10,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264456"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280021"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD használata az Azure dev Spaces használatával
 
@@ -34,18 +32,18 @@ Bár ez a cikk végigvezeti Önt az Azure DevOps, ugyanazok a fogalmak érvénye
 * [Engedélyezze az AK-fürt számára a Azure Container Registry való lekérését](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>Mintakód letöltése
-Az idő kedvéért hozzunk létre egy elágazást a GitHub-adattárból. Lépjen a https://github.com/Azure/dev-spaces elemre, és válassza az **elágazás**lehetőséget. Az elágazási folyamat befejezése után a tárház helyi verziójának **klónozása** helyben. Alapértelmezés szerint a _főág ki_ lesz véve, de a _azds_updates_ ág néhány időmegtakarítást is tartalmaz, amelyeket az elágazás során is át kell vinni. A _azds_updates_ ág olyan frissítéseket tartalmaz, amelyekkel manuálisan a dev Spaces oktatóanyag szakaszait, valamint néhány előre elkészített YAML és JSON-fájlt HASZNÁLHAT a CI/CD rendszer központi telepítésének egyszerűsítéséhez. A _azds_updates_ ág a helyi tárházban való kikereséséhez használhatja a `git checkout -b azds_updates origin/azds_updates` parancsot is.
+Az idő kedvéért hozzunk létre egy elágazást a GitHub-adattárból. Nyissa meg https://github.com/Azure/dev-spaces és válassza az **elágazás**lehetőséget. Az elágazási folyamat befejezése után a tárház helyi verziójának **klónozása** helyben. Alapértelmezés szerint a rendszer kiveszi a _fő_ ágat, de a _azds_updates_ ág időmegtakarítása is megtörtént, amelyet az elágazás során is át kell vinni. A _azds_updates_ ág olyan frissítéseket tartalmaz, amelyekkel manuálisan elvégezhető a dev Spaces oktatóanyag szakasza, valamint néhány előre elkészített YAML és JSON-fájl, amelyekkel EGYSZERŰSÍTHETI a CI/CD rendszer üzembe helyezését. A _azds_updates_ ág a helyi tárházban való kikereséséhez használhat egy olyan parancsot, mint a `git checkout -b azds_updates origin/azds_updates`.
 
 ## <a name="dev-spaces-setup"></a>Fejlesztői szóközök beállítása
-Hozzon létre egy _fejlesztői_ nevű új helyet a `azds space select` paranccsal. A CI/CD-folyamat a kód módosításainak leküldéséhez a _fejlesztői_ területet fogja használni. _A rendszer_a fejlesztés alapján is létrehozza a _gyermekeket_ .
+Hozzon létre egy _fejlesztői_ nevű új helyet a `azds space select` parancs használatával. A CI/CD-folyamat a kód módosításainak leküldéséhez a _fejlesztői_ területet fogja használni. _A rendszer_a fejlesztés alapján is létrehozza a _gyermekeket_ .
 
 ```cmd
 azds space select -n dev
 ```
 
-Amikor a rendszer rákérdez a szülő fejlesztői terület kiválasztására, válassza a _\<none @ no__t-2_elemet.
+Amikor a rendszer rákérdez a szülő fejlesztői terület kiválasztására, válassza _\<nincs\>_ lehetőséget.
 
-A fejlesztői terület létrehozása után meg kell határoznia a gazdagép utótagját. A `azds show-context` paranccsal jelenítheti meg az Azure dev Spaces bemenő vezérlő gazdagépének utótagját.
+A fejlesztői terület létrehozása után meg kell határoznia a gazdagép utótagját. Az `azds show-context` parancs használatával jelenítheti meg az Azure dev Spaces-beli bejövő adatkezelő gazdagépének utótagját.
 
 ```cmd
 $ azds show-context
@@ -70,14 +68,14 @@ A letiltási lehetőség:
 > [!Note]
 > Az Azure DevOps _új YAML-folyamat létrehozási_ funkciójának előzetes verziója ütközik az előre definiált Build-folyamatok létrehozásával. Most le kell tiltania az előre definiált build-folyamat üzembe helyezéséhez.
 
-A _azds_updates_ ág tartalmaz egy egyszerű [Azure pipeline-YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , amely a *mywebapi* és a *webfrontend*számára szükséges fordítási lépéseket határozza meg.
+Az _azds_updates_ ág tartalmaz egy egyszerű [Azure pipeline-YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , amely a *mywebapi* és a *webfrontendhez*szükséges Build-lépéseket határozza meg.
 
 A választott nyelvtől függően a folyamat YAML a következőhöz hasonló elérési úton lett bejelentkezve: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Folyamat létrehozása ebből a fájlból:
 1. A DevOps projekt főoldalán navigáljon a folyamatok > builds elemre.
 1. Válassza az **új** létrehozási folyamat létrehozása lehetőséget.
-1. Válassza a **GitHub** lehetőséget forrásként, ha szükséges, engedélyezze a GitHub-fiókját, majd válassza ki a _azds_updates_ ágat a _dev-Spaces_ minta alkalmazás-tárházának elágazó verziójából.
+1. Válassza a **GitHub** lehetőséget forrásként, ha szükséges, engedélyezze a GitHub-fiókját, majd válassza ki a _azds_updates_ ágat a _dev-Spaces_ minta alkalmazás-tárház elágazó verziójából.
 1. Sablonként válassza a **konfiguráció kódként**vagy a **YAML**lehetőséget.
 1. Ekkor megjelenik a build-folyamat konfigurációs lapja. Ahogy fent említettük, a **...** gomb használatával navigáljon a **YAML** elérési útjához. Például: `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Lépjen a **változók** lapra.
@@ -85,7 +83,7 @@ Folyamat létrehozása ebből a fájlból:
 1. Manuálisan adja hozzá a _dockerPassword_ -t változóként, amely a [Azure Container Registry rendszergazdai fiókjának](../../container-registry/container-registry-authentication.md#admin-account)jelszava. Ügyeljen arra, hogy biztonsági okokból a _dockerPassword_ legyen titkosként megadva (a zárolás ikon kiválasztásával).
 1. Válassza a **mentés & üzenetsor**lehetőséget.
 
-Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *mywebapi* és a *webfrontendt* a GitHub-elágazás _azds_updates_ -ágában leküldett frissítésekhez. Ellenőrizheti, hogy a Docker-rendszerképek leküldése megtörtént-e a Azure Portalra való navigálással, a Azure Container Registry kiválasztásával és a **Tárházak** lapon való böngészéssel. Több percet is igénybe vehet, amíg a lemezképek felépíthetnek és megjelennek a tároló beállításjegyzékében.
+Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *mywebapi* -t és a *webfrontendt* a GitHub-elágazás _azds_updates_ ágra. Ellenőrizheti, hogy a Docker-rendszerképek leküldése megtörtént-e a Azure Portalra való navigálással, a Azure Container Registry kiválasztásával és a **Tárházak** lapon való böngészéssel. Több percet is igénybe vehet, amíg a lemezképek felépíthetnek és megjelennek a tároló beállításjegyzékében.
 
 ![Azure Container Registry adattárak](../media/common/ci-cd-images-verify.png)
 
@@ -94,20 +92,20 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. A DevOps projekt főoldalán navigáljon a folyamatok > kiadásokhoz
 1. Ha olyan vadonatúj DevOps-projektet használ, amely még nem tartalmaz kiadási definíciót, először létre kell hoznia egy üres kiadási definíciót a továbblépés előtt. Az importálási lehetőség addig nem jelenik meg a felhasználói felületen, amíg nem rendelkezik meglévő kiadási definícióval.
 1. A bal oldalon kattintson az **+ új** gombra, majd a **folyamat importálása**elemre.
-1. Kattintson a **Tallózás** gombra, és válassza ki `samples/release.json` elemet a projektből.
+1. Kattintson a **Tallózás** gombra, és válassza ki `samples/release.json` a projektből.
 1. Kattintson az **OK** gombra. Figyelje meg, hogy a folyamat ablaktábla a kiadás definíciójának szerkesztési lapjával lett betöltve. Figyelje meg, hogy van-e olyan piros figyelmeztető ikon, amely a még konfigurálni kívánt fürtre vonatkozó adatokat jelzi.
 1. A folyamat ablaktábla bal oldalán kattintson az **összetevő hozzáadása** buborékra.
 1. A **forrás** legördülő menüben válassza ki a korábban létrehozott Build folyamatot.
 1. Az **alapértelmezett verziónál**válassza **a legutóbbi lehetőséget a build folyamat alapértelmezett ága címkékkel**.
 1. Hagyja üresen a **címkéket** .
-1. Állítsa a **forrás aliast** `drop` értékre. A **forrás alias** értékét az előre meghatározott kiadási feladatok használják, így azt be kell állítani.
-1. Kattintson a **Hozzáadás** parancsra.
+1. Állítsa a **forrás aliast** `drop`értékre. A **forrás alias** értékét az előre meghatározott kiadási feladatok használják, így azt be kell állítani.
+1. Kattintson az **Hozzáadás** parancsra.
 1. Most kattintson a villám ikonra az újonnan létrehozott `drop` összetevő forrásán, az alábbi ábrán látható módon:
 
     ![Kiadási összetevő folyamatos üzembe helyezésének beállítása](../media/common/release-artifact-cd-setup.png)
 1. Engedélyezze a **folyamatos üzembe helyezési triggert**.
 1. Vigye a kurzort a **folyamat** melletti **feladatok** lapra, és kattintson a _dev_ (fejlesztés) elemre a _fejlesztői_ fázis feladatainak szerkesztéséhez.
-1. Ellenőrizze, **Azure Resource Manager** van-e kiválasztva a **kapcsolattípus területen.** Ekkor megjelenik a piros színnel jelölt három legördülő menü: ![Release-definíció beállítása @ no__t-1
+1. Ellenőrizze, **Azure Resource Manager** van-e kiválasztva a **kapcsolattípus területen.** Ekkor megjelenik a piros színnel jelölt három legördülő lista: ![kiadás definíciójának beállítása](../media/common/release-setup-tasks.png)
 1. Válassza ki azt az Azure-előfizetést, amelyet az Azure dev Spaces használatával használ. Az **Engedélyezés**elemre is szükség lehet.
 1. Válassza ki azt az erőforráscsoportot és fürtöt, amelyet az Azure dev Spaces használatával használ.
 1. Kattintson az **ügynök feladata**elemre.
@@ -117,11 +115,11 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. Kattintson az **ügynök feladata**elemre.
 1. Válassza az **üzemeltetett Ubuntu 1604** az **ügynök-készletben**lehetőséget.
 1. Kattintson a **változók** lapra a kiadás változóinak frissítéséhez.
-1. Frissítse a **DevSpacesHostSuffix** értékét a **UPDATE_ME** -ből a gazdagép utótagja értékre. Az állomás utótagja akkor jelenik meg, ha korábban a `azds show-context` parancsot futtatta.
+1. Frissítse a **DevSpacesHostSuffix** értékét **UPDATE_MEról** a gazdagép-utótagra. A gazdagép utótagja akkor jelenik meg, ha korábban a `azds show-context` parancsot futtatta.
 1. Kattintson a jobb felső sarokban található **Mentés** elemre, majd **az OK gombra**.
 1. Kattintson a **+ kiadás** elemre (a Mentés gomb mellett), és **hozzon létre egy kiadást**.
 1. Az összetevők területen **ellenőrizze, hogy ki van-e**választva a build-folyamat legújabb buildje.
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 
 Az automatizált kiadási folyamat most elindul, üzembe helyezi a *mywebapi* és a *webfrontend* -diagramokat a Kubernetes-fürtön a _fejlesztői_ legfelső szintű helyen. A kiadás előrehaladását az Azure DevOps webes portálján követheti nyomon:
 
@@ -133,12 +131,12 @@ Az automatizált kiadási folyamat most elindul, üzembe helyezi a *mywebapi* é
 A kiadás akkor történik meg, amikor az összes feladat befejeződött.
 
 > [!TIP]
-> Ha a kiadás sikertelen, például a *frissítés meghiúsult: időtúllépés történt a feltételre való várakozás közben*, próbálja meg megvizsgálni a hüvelyt a fürtben [a Kubernetes-irányítópult használatával](../../aks/kubernetes-dashboard.md). Ha úgy látja, hogy a hüvelyek nem indulnak el, például *nem sikerült lekérni a (z) "azdsexample.azurecr.IO/mywebapi:122" rendszerképet, a következő hibaüzenetet kapja: RPC-hiba: code = Unknown desc = hiba a démontól: Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: jogosulatlan: hitelesítés szükséges*, lehet, hogy mivel a fürt nem rendelkezik jogosultsággal a Azure Container Registry lekérésére. Győződjön meg arról, hogy végrehajtotta a [hitelesítő AK-fürt engedélyezését az Azure Container Registry előfeltételének lekéréséhez](../../aks/cluster-container-registry-integration.md) .
+> Ha a kiadás sikertelen, például a *frissítés meghiúsult: időtúllépés történt a feltételre való várakozás közben*, próbálja meg megvizsgálni a hüvelyt a fürtben [a Kubernetes-irányítópult használatával](../../aks/kubernetes-dashboard.md). Ha úgy látja, hogy a hüvelyek nem tudják elindítani a következő hibaüzeneteket: *nem sikerült lekérni a (z) "azdsexample.azurecr.IO/mywebapi:122" rendszerképet: RPC-hiba: kód = ismeretlen desc = hiba a démontól: Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: jogosulatlan: hitelesítés szükséges*, lehet, hogy a fürt nem jogosult a Azure Container Registry lekérésére. Győződjön meg arról, hogy végrehajtotta a [hitelesítő AK-fürt engedélyezését az Azure Container Registry előfeltételének lekéréséhez](../../aks/cluster-container-registry-integration.md) .
 
 Most már rendelkezik egy teljesen automatizált CI/CD-folyamattal a dev Spaces minta-alkalmazások GitHub-villájában. Minden alkalommal, amikor véglegesíti és leküldi a kódot, a build folyamat létrehozza és leküldi a *mywebapi* és a *webfrontend* -LEMEZKÉPeket az egyéni ACR-példányba. Ezután a kiadási folyamat üzembe helyezi a Helm-diagramot minden egyes alkalmazáshoz a dev Spaces-kompatibilis fürt _fejlesztői_ területére.
 
 ## <a name="accessing-your-_dev_-services"></a>A _fejlesztői_ szolgáltatások elérése
-Az üzembe helyezést követően a *webfrontend* _fejlesztői_ verziója egy nyilvános URL-címmel érhető el, például: `http://dev.webfrontend.fedcba098.eus.azds.io`. Ezt az URL-címet a `azds list-uri` parancs futtatásával találja: 
+Az üzembe helyezést követően a *webfrontend* _fejlesztői_ verziója egy nyilvános URL-címmel (például: `http://dev.webfrontend.fedcba098.eus.azds.io`) érhető el. Ezt az URL-címet a `azds list-uri` parancs futtatásával találja: 
 
 ```cmd
 $ azds list-uris
@@ -155,7 +153,7 @@ Ha az oktatóanyagban létrehozott CI/CD rendszer használatával manuálisan sz
 1. Kattintson a minta alkalmazás kiadási folyamatára.
 1. Kattintson a legújabb kiadás nevére.
 1. Vigye az egérmutatót a **gyártási** mező fölé a **szakaszok szakaszban** , majd kattintson a **telepítés**elemre.
-    @no__t – 0Promote az éles környezetbe @ no__t-1
+    ![az éles környezetbe való előléptetés](../media/common/prod-promote.png)
 1. Vigye az egérmutatót a **gyártási** mező fölé a **szakaszok szakaszban** , majd kattintson a **naplók**elemre.
 
 A kiadás akkor történik meg, amikor az összes feladat befejeződött.
@@ -172,18 +170,18 @@ A webfrontend szolgáltatás IP-címének meghatározásához kattintson a **web
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>Fejlesztői tárolóhelyek az éles környezetben
-Bár a dev Spaces Instrumentation úgy lett kialakítva, hogy _nem_ az alkalmazás normál működésének megfelelően fusson, javasoljuk, hogy az éles munkaterheléseket olyan Kubernetes-névtérben futtassa, amely nincs engedélyezve a dev Spaces szolgáltatásban. Ha ezt a Kubernetes-névteret használja, akkor az `kubectl` parancssori felület használatával hozza létre az éles névteret, vagy engedélyezze a CI/CD-rendszer számára az első Helm-telepítés során történő létrehozását. _Ha kijelöli_ vagy egyéb módon létrehoz egy helyet a dev Spaces-eszközök használatával, a dev Spaces-eszközöket is hozzáadja a névtérhez.
+Bár a dev Spaces Instrumentation úgy lett kialakítva, hogy _nem_ az alkalmazás normál működésének megfelelően fusson, javasoljuk, hogy az éles munkaterheléseket olyan Kubernetes-névtérben futtassa, amely nincs engedélyezve a dev Spaces szolgáltatásban. Ha ezt a Kubernetes-névteret használja, akkor a `kubectl` parancssori felületén létre kell hoznia az éles névteret, vagy engedélyeznie kell a CI/CD rendszer számára az első Helm-telepítés során. _Ha kijelöli_ vagy egyéb módon létrehoz egy helyet a dev Spaces-eszközök használatával, a dev Spaces-eszközöket is hozzáadja a névtérhez.
 
 Íme egy példa a szolgáltatások fejlesztését, a "dev" környezetet _és_ a termelést támogató, egyetlen Kubernetes-fürtben:
 
 ![Példa a névtér struktúrájára](../media/common/cicd-namespaces.png)
 
 > [!Tip]
-> Ha már létrehozott egy `prod` területet, és egyszerűen csak szeretné kizárni a fejlesztői tárolóhelyek rendszerállapotból (törlés nélkül), ezt a következő fejlesztői Spaces CLI-paranccsal teheti meg:
+> Ha már létrehozott egy `prod` területet, és egyszerűen csak szeretné kizárni a fejlesztői helyek rendszerállapotáról (törlés nélkül), ezt a következő fejlesztői Spaces CLI-paranccsal teheti meg:
 >
 > `azds space remove -n prod --no-delete`
 >
-> Előfordulhat, hogy törölnie kell az összes hüvelyt a `prod` névtérből, miután ezt megtette, így a fejlesztői szóközök kialakítása nélkül is újra létrehozhatók.
+> Előfordulhat, hogy törölnie kell az összes hüvelyt a `prod` névtérben, miután ezt megtette, így a fejlesztői szóközök kihasználása nélkül újra létrehozhatók.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bfd75f54e2b57e57fcadc27df2ca43d8be5cf37
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832856"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285520"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -34,8 +34,8 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
    - Multi-Factor Authentication
-   - Bejelentkezési kockázat
-- Automatizálhatja és méretezheti az Azure AD Joint az Azure-alapú Windows virtuális gépekhez.
+   - Bejelentkezési kockázat-ellenőrzési
+- Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -68,7 +68,7 @@ Ha Azure AD-bejelentkezést szeretne használni a Windows rendszerű virtuális 
 A Windows rendszerű virtuális gépekhez több módon is engedélyezheti az Azure AD-bejelentkezést:
 
 - Windows rendszerű virtuális gép létrehozásakor a Azure Portal élmény használata
-- Windows rendszerű virtuális gép vagy meglévő Windows rendszerű virtuális gép létrehozásakor a Azure Cloud Shell élmény használata
+- Windows rendszerű virtuális gép **vagy meglévő Windows rendszerű virtuális gép** létrehozásakor a Azure Cloud Shell élmény használata
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Az Azure AD-bejelentkezés engedélyezése Azure Portal virtuális gép létrehozásakor
 
@@ -187,6 +187,13 @@ Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatáva
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
+## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
+
+A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Windows rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Windows VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
+
+> [!NOTE]
+> Ha a "többtényezős hitelesítés megkövetelése" lehetőséget használja hozzáférés-vezérlésre az "Azure Windows rendszerű virtuális gép bejelentkezési" alkalmazáshoz való hozzáféréshez, akkor a többtényezős hitelesítési jogcímet az ügyfél részeként kell megadnia, amely az RDP-munkamenetet kezdeményezi a cél Windows virtuális gépre a következőben: Azure. Ezt csak akkor érheti el, ha Windows 10-ügyfélen szeretné elérni a Windows Hello for Business PIN-kódot vagy a biometrikus hitelesítést az RDP protokoll használata során. A biometrikus hitelesítés támogatása az RDP-ben a Windows 10 1809-ben lett hozzáadva. Ha a Windows Hello for Business hitelesítést használja az RDP-ben, csak a CERT megbízhatósági modellt használó központi telepítések esetén érhető el, és a kulcs megbízhatósági modellje jelenleg nem érhető el.
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 
 > [!IMPORTANT]
@@ -196,7 +203,7 @@ Bejelentkezés a Windows Server 2019 rendszerű virtuális gépre az Azure AD ha
 
 1. Navigáljon a virtuális gép áttekintés lapjára, amely engedélyezve van az Azure AD-bejelentkezéssel.
 1. Válassza a **Kapcsolódás** lehetőséget a Kapcsolódás a virtuális géphez panel megnyitásához.
-1. Válassza az **RDP-fájl letöltése**lehetőséget.
+1. Válassza ki **RDP-fájl letöltése**.
 1. Válassza a **Megnyitás** lehetőséget az távoli asztali kapcsolat-ügyfél elindításához.
 1. Válassza a **Kapcsolódás** lehetőséget a Windows bejelentkezési párbeszédpanelének elindításához.
 1. Jelentkezzen be az Azure AD-beli hitelesítő adataival.
@@ -337,11 +344,16 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 
 ![A használni kívánt bejelentkezési módszer nem engedélyezett.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-Ha olyan feltételes hozzáférési szabályzatot állított be, amelyhez MFA szükséges ahhoz, hogy hozzáférhessen a RBAC-erőforráshoz, meg kell győződnie arról, hogy a Windows 10 rendszerű számítógép a távoli asztali kapcsolatot kezdeményezi a virtuális géppel egy erős hitelesítési módszer használatával Windows Hello. Ha nem használ erős hitelesítési módszert a távoli asztali kapcsolathoz, a következő hibaüzenet jelenik meg.
+Ha olyan feltételes hozzáférési szabályzatot állított be, amelyhez MFA szükséges ahhoz, hogy hozzáférhessen a RBAC-erőforráshoz, meg kell győződnie arról, hogy a Windows 10 rendszerű számítógép a távoli asztali kapcsolatot kezdeményezi a virtuális géppel egy erős hitelesítési módszer használatával Windows Hello. Ha nem használ erős hitelesítési módszert a távoli asztali kapcsolathoz, a következő hibaüzenet jelenik meg. 
+
+Ha nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez nem érhető el, akkor az MFA-követelményt úgy is exlcude, hogy a feltételes hozzáférési szabályzatot, amely kizárja az "Azure Windows VM-bejelentkezés" alkalmazást az MFA-t igénylő felhőalapú alkalmazások listájából. A vállalati Windows Hello szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [vállalati Windows Hello áttekintése](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)című témakört.
+
+> [!NOTE]
+> A Windows Hello for Business PIN-kód hitelesítése az RDP protokollon keresztül már egy ideje támogatott a Windows 10 rendszerben. A biometrikus hitelesítés támogatása az RDP-ben a Windows 10 1809-ben lett hozzáadva. Ha a Windows Hello for Business hitelesítést használja az RDP-ben, csak a CERT megbízhatósági modellt használó központi telepítések esetén érhető el, és a kulcs megbízhatósági modellje jelenleg nem érhető el.
  
 ## <a name="preview-feedback"></a>Előzetes visszajelzés
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)

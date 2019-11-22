@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134956"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279693"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Azure Monitor a containers Health Monitor konfigurációs útmutatója
 
-A figyelők a tárolók állapotának méréséhez és Azure Monitor hibák észleléséhez használt elsődleges elemek. Ebből a cikkből megtudhatja, hogyan méri a rendszer az állapotot, és hogy az állapot modellje milyen elemeket tartalmaz a Kubernetes-fürt állapotának figyelésére és jelentésére az állapotfigyelő [szolgáltatással](container-insights-health.md).
+A figyelők a tárolók állapotának méréséhez és Azure Monitor hibák észleléséhez használt elsődleges elemek. Ebből a cikkből megtudhatja, hogyan méri a rendszer az állapotot, valamint az állapot modelljét a Kubernetes-fürt állapotának figyelésére és jelentésére a [Health (előzetes verzió)](container-insights-health.md) szolgáltatással.
+
+>[!NOTE]
+>Az állapot szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+>
 
 ## <a name="monitors"></a>Monitorozások
 
@@ -81,6 +85,6 @@ A tárolók Azure Monitor számos kulcsfontosságú figyelési forgatókönyvet 
 |Rendszerterhelés |Ez a figyelő a Kube számítási feladatok állapotát jelzi. Ez a figyelő megfelel a gyermek figyelő állapotának a legrosszabb állapottal, amely a **kész állapot** figyelője és a számítási feladatok tárolói között található. |Legrosszabb |
 |Tároló |Ez a figyelő egy adott munkaterhelés egy tárolójának általános állapotát jelenti. Ez a figyelő megegyezik a gyermek figyelő azon állapotával, amely a legrosszabb állapotú, azaz a **CPU-kihasználtság** és a **memóriahasználat** figyelése. |Legrosszabb |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Kubernetes-fürt állapotának megtekintéséhez tekintse meg a [fürt állapotának figyelése](container-insights-health.md) című témakört.

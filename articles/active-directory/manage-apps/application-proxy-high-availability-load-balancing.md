@@ -1,5 +1,5 @@
 ---
-title: Magas rendelkezésre állás és terheléselosztás az Azure AD Application Proxyban | Microsoft Docs
+title: Magas rendelkezésre állás és terheléselosztás – Azure AD Application Proxy
 description: A Traffic Distribution működése az alkalmazásproxy üzembe helyezésével. Az összekötők teljesítményének optimalizálására és a háttér-kiszolgálók terheléselosztásának használatára vonatkozó tippeket tartalmaz.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169807"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275539"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-összekötők és-alkalmazások magas rendelkezésre állása és terheléselosztása
 
@@ -101,5 +101,5 @@ A szoftver gyártójának dokumentációjában tájékozódhat a háttérrendsze
 - [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
-- [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
+- [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)
 - [Ismerje meg, hogyan támogatja az Azure AD architektúra a magas rendelkezésre állást](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

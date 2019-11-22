@@ -1,6 +1,6 @@
 ---
-title: Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
-description: Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
+title: Metrikák küldése a Azure Monitor metrikus adatbázisnak a REST API használatával
+description: Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253868"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285940"
 ---
-# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
+# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával
 
-Ez a cikk bemutatja, hogyan küldhet egyéni metrikákat az Azure-erőforrásokhoz a Azure Monitor-metrikák tároló egy REST API-n keresztül. Után a metrikák az Azure monitorban, egy, a standard metrikák érheti el az összes a műveleteket végezheti el. Példák vannak diagramkészítési, riasztás és az Útválasztás azokat más külső eszközök.  
+Ebből a cikkből megtudhatja, hogyan küldhet egyéni metrikákat az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával. A metrikák Azure Monitor a standard metrikákkal végezheti el az összes dolgot. Ilyenek például a diagramok, a riasztások és a többi külső eszközre történő útválasztás.  
 
 >[!NOTE]  
->A REST API-t csak lehetővé teszi az Azure-erőforrások egyéni mérőszámok küldése. A különböző környezetek vagy a helyszíni erőforrások mérőszámait elküldéséhez használhatja [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>A REST API csak egyéni metrikák küldését engedélyezi az Azure-erőforrásokhoz. A különböző környezetekben vagy a helyszínen lévő erőforrások metrikáinak elküldéséhez használhatja a [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
 
 
-## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Hozzon létre, és engedélyezze a mérőszámok kibocsátható egy egyszerű szolgáltatást 
+## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Egyszerű szolgáltatás létrehozása és engedélyezése mérőszámok kibocsátásához 
 
-Egyszerű szolgáltatás létrehozása az Azure Active Directory-bérlőben található útmutatót [egyszerű szolgáltatás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md). 
+Hozzon létre egy egyszerű szolgáltatásnevet a Azure Active Directory-bérlőben az [egyszerű szolgáltatásnév létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md)című témakörben található utasítások segítségével. 
 
-Amíg ez a folyamat lépésein, vegye figyelembe a következőket: 
+Vegye figyelembe a következőket a folyamat lépésein: 
 
-- Bármely URL-cím is megadhatja a bejelentkezési URL-címéhez.  
-- Hozzon létre egy új ügyfél az alkalmazáshoz tartozó titkos kulcsot.  
-- Mentse a kulcsot, és használja az ügyfél-Azonosítóját a későbbi lépésekben.  
+- Megadhat bármilyen URL-címet a bejelentkezési URL-cím számára.  
+- Hozzon létre egy új ügyfél-titkot ehhez az alkalmazáshoz.  
+- Mentse a kulcsot és az ügyfél-azonosítót a későbbi lépésekben való használatra.  
 
-Adja meg az 1, figyelési metrikákat közzétevő, az erőforrás kívánt gridre bocsáthatja ki az metrikákat az engedélyek részeként létrehozott alkalmazást. Ha azt tervezi, az alkalmazás használatát, gridre bocsáthatja ki az egyéni metrikákat az erőforrások száma, adja meg ezeket az engedélyeket az erőforrás-csoportba vagy előfizetésbe szinten. 
+Adja meg az alkalmazás számára az 1. lépés részeként létrehozott alkalmazást, a metrikák figyelését, a metrikák kiosztására jogosult erőforráshoz tartozó engedélyeket. Ha azt tervezi, hogy az alkalmazás használatával több erőforrásra vonatkozó egyéni metrikákat bocsát ki, ezeket az engedélyeket az erőforráscsoport vagy az előfizetés szintjén adhatja meg. 
 
-## <a name="get-an-authorization-token"></a>Egy engedélyezési jogkivonat beolvasása
+## <a name="get-an-authorization-token"></a>Engedélyezési jogkivonat beszerzése
 Nyisson meg egy parancssort, és futtassa a következő parancsot:
 
 ```shell
@@ -43,11 +43,11 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 ```
 Mentse a hozzáférési jogkivonatot a válaszból.
 
-![hozzáférési jogkivonat](./media/metrics-store-custom-rest-api/accesstoken.png)
+![Hozzáférési jogkivonat](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>A metrika a REST API-n keresztül küldik. 
+## <a name="emit-the-metric-via-the-rest-api"></a>A metrika kibocsátása a REST API használatával 
 
-1. Illessze be a következő JSON-fájlba, és mentse a fájt **custommetric.json** a helyi számítógépen. Frissítse a idő paramétert a JSON-fájlt: 
+1. Illessze be a következő JSON-fájlt egy fájlba, és mentse a **custommetric. JSON** néven a helyi számítógépen. Frissítse az Time paramétert a JSON-fájlban: 
     
     ```json
     { 
@@ -77,46 +77,46 @@ Mentse a hozzáférési jogkivonatot a válaszból.
     } 
     ``` 
 
-1. A parancssori ablakban a metrikaadatok közzététele: 
-   - **azureRegion**. Meg kell egyeznie az erőforrás metrikáit, Ön kibocsátó a telepítési régió. 
-   - **erőforrás-azonosító**.  Erőforrás-azonosító az Azure-erőforrás a mutatószám követi nyomon.  
-   - **Hozzáférési tokent**. Illessze be a jogkivonatot, korábban beszerzett.
+1. A parancssori ablakban tegye közzé a metrika adatait: 
+   - **azureRegion**. Meg kell egyeznie annak az erőforrásnak a központi telepítési régiójával, amelynek mérőszámait ki szeretné próbálni. 
+   - **resourceID**.  Annak az Azure-erőforrásnak az erőforrás-azonosítója, amellyel a metrikát nyomon követi.  
+   - **AccessToken**. Illessze be a korábban beszerzett tokent.
 
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Módosítsa a timestamp és a JSON-fájlban szereplő értékek. 
-1. Ismételje meg az előző két lépést néhány alkalommal, így adatokat kell néhány percig.
+1. Módosítsa a JSON-fájl időbélyegét és értékeit. 
+1. Ismételje meg az előző két lépést néhányszor, így több percig is elvégezheti az adattárolást.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás 
-Ha a folyamat néhány részét tartalmazó hibaüzenet kap, vegye figyelembe a következő hibaelhárítási információk:
+Ha a folyamat néhány részével hibaüzenetet kap, vegye figyelembe a következő hibaelhárítási információkat:
 
-1. Metrikákat az egy előfizetésen vagy erőforráscsoporton, az Azure-erőforrás nem adható ki. 
-1. A tárolóba, amely több mint 20 perc régi nem helyezhető el egy metrikát. A metrika tároló riasztás és valós idejű diagramkészítési van optimalizálva. 
-2. Hány dimenzió neve meg kell egyeznie az értékeket, és ez fordítva is igaz. Ellenőrizze az értékeket. 
-2. Előfordulhat, hogy metrikákat az egy régióban, amely nem támogatja az egyéni metrikákat kibocsátó. Lásd: [támogatott régiók](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+1. Azure-erőforrásként nem lehet mérőszámokat kiadni egy előfizetéshez vagy erőforráscsoporthoz. 
+1. A 20 percnél régebbi tárolóba nem helyezhető metrika. A metrikai tároló a riasztások és a valós idejű diagramok esetében van optimalizálva. 
+2. A dimenziók neveinek számának meg kell egyeznie az értékekkel, és fordítva. Keresse meg az értékeket. 
+2. Lehet, hogy mérőszámokat bocsát ki egy olyan régióra, amely nem támogatja az egyéni metrikákat. Lásd: [támogatott régiók](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
-## <a name="view-your-metrics"></a>A metrikák megtekintése 
+## <a name="view-your-metrics"></a>Metrikák megtekintése 
 
 1. Jelentkezzen be az Azure portálra. 
 
-1. A bal oldali menüben válassza ki a **figyelő**. 
+1. A bal oldali menüben válassza a **figyelő**elemet. 
 
-1. Az a **figyelő** lapon jelölje be **metrikák**. 
+1. A **figyelés** lapon válassza a **metrikák**lehetőséget. 
 
    ![Metrikák kiválasztása](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. Az összesítési időszak módosításához **elmúlt 30 percben**.  
+1. Módosítsa az összesítési időszakot az **elmúlt 30 percre**.  
 
-1. Az a **erőforrás** legördülő menüben válassza ki az erőforrást, a mérőszám alapján kibocsátott.  
+1. Az **erőforrás** legördülő menüben válassza ki azt az erőforrást, amellyel a metrikát kibocsátotta.  
 
-1. Az a **névterek** legördülő menüjében válassza **QueueProcessing**. 
+1. A **névterek** legördülő menüben válassza a **QueueProcessing**lehetőséget. 
 
-1. Az a **metrikák** legördülő menüjében válassza **QueueDepth**.  
+1. A **metrikák** legördülő menüben válassza a **QueueDepth**lehetőséget.  
 
  
-## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [egyéni metrikákat](../../azure-monitor/platform/metrics-custom-overview.md).
+## <a name="next-steps"></a>Következő lépések
+- További információ az [Egyéni metrikákkal](../../azure-monitor/platform/metrics-custom-overview.md)kapcsolatban.
 

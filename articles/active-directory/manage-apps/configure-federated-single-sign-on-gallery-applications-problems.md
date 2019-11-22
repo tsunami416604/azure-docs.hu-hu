@@ -1,5 +1,5 @@
 ---
-title: Problémák az összevont egyszeri bejelentkezés konfigurálásával az Azure AD Gallery-alkalmazásokhoz | Microsoft Docs
+title: Problémák az összevont SSO konfigurálásával az Azure AD Gallery-alkalmazásokhoz
 description: Az összevont egyszeri bejelentkezés az SAML használatával való konfigurálásakor előforduló gyakori problémák némelyike az Azure AD Application Galleryben felsorolt alkalmazások esetében
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381221"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274658"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probléma van az összevont egyszeri bejelentkezés konfigurálásával egy Azure AD Gallery-alkalmazáshoz
 
@@ -64,7 +64,7 @@ Az alkalmazáshoz előre konfigurált mintázatok ismerete:
 
 10. Az alkalmazás által támogatott minták háromféle módon ismertek:
 
-    * A szövegmezőben a támogatott mintázat (ok) helyőrző példaként jelenik meg *:* <https://contoso.com>.
+    * A szövegmezőben a támogatott mintázat (ok) helyőrző *példaként* jelenik meg: <https://contoso.com>.
 
     * Ha a minta nem támogatott, piros felkiáltójel jelenik meg, amikor megpróbálja beírni az értéket a szövegmezőbe. Ha az egérmutatót a piros felkiáltójel fölé viszi, a támogatott minták láthatók.
 
@@ -74,7 +74,7 @@ Ha az értékek nem egyeznek az Azure AD-ben előre konfigurált mintákkal. A k
 
 -   Az alkalmazás gyártójának használata az Azure AD-ben előre konfigurált mintának megfelelő értékek beolvasásához
 
--   Vagy megadhatja az Azure ad-csapatot <aadapprequest@microsoft.com> az oktatóanyagban, vagy elhagyhat egy megjegyzést az alkalmazás által támogatott minták frissítésének igényléséhez
+-   Vagy az Azure AD csapata a <aadapprequest@microsoft.com> címen érhető el, vagy az oktatóanyagban megjelenő megjegyzéssel kérheti az alkalmazás támogatott mintáinak frissítését
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Hol állítható be a EntityID (felhasználói azonosító) formátuma
 
@@ -110,5 +110,5 @@ Az Azure AD nem biztosít URL-címet a metaadatok beszerzéséhez. A metaadatoka
 
 Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

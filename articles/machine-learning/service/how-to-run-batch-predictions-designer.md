@@ -1,7 +1,7 @@
 ---
-title: Run batch predictions using Azure Machine Learning designer (preview)
+title: Batch-előrejelzések futtatása Azure Machine Learning Designer használatával (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Learn how to train a model and set up a batch prediction pipeline using the designer. Deploy the pipeline as a parameterized web service, which can be triggered from any HTTP library.
+description: Megtudhatja, hogyan taníthat ki egy modellt, és hogyan állíthat be egy batch-előrejelzési folyamatot a tervező használatával. Telepítse a folyamatot paraméteres webszolgáltatásként, amely bármely HTTP-könyvtárból indítható el.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,101 +11,101 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 623400c2ee75f9ef1495e839ba9f418e48f11708
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a44ac821271cc07a790c380287391f41650ced19
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229157"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276740"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Run batch predictions using Azure Machine Learning designer
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this how-to, you learn how to use the designer to train a model and set up a batch prediction pipeline and web service. Batch prediction allows for continuous and on-demand scoring of trained models on large data sets, optionally configured as a web service that can be triggered from any HTTP library. 
+Ebben a útmutatóban megismerheti, hogyan végezheti el a modell betanítását és a Batch-előrejelzési folyamat és webszolgáltatás beállítását. A Batch-előrejelzés lehetővé teszi a nagy adatkészleteken futó betanított modellek folyamatos és igény szerinti pontozását, amelyet opcionálisan konfigurálhat bármely HTTP-könyvtárból indítható webszolgáltatásként. 
 
-For setting up batch scoring services using the SDK, see the accompanying [how-to](how-to-run-batch-predictions.md).
+A Batch-pontozási szolgáltatások SDK használatával történő beállításához tekintse meg a kapcsolódó [útmutató](how-to-run-batch-predictions.md)című témakört.
 
-In this how-to, you learn the following tasks:
+Ebben az útmutatóban a következő feladatokat ismerheti meg:
 
 > [!div class="checklist"]
-> * Create a basic ML experiment in a pipeline
-> * Create a parameterized batch inference pipeline
-> * Manage and run pipelines manually or from a REST endpoint
+> * Alapszintű ML-kísérlet létrehozása egy folyamatban
+> * Paraméteres batch-következtetési folyamat létrehozása
+> * Folyamatok manuális vagy REST-végpontból történő kezelése és futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version of the Azure Machine Learning service](https://aka.ms/AMLFree).
+1. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-1. Create a [workspace](tutorial-1st-experiment-sdk-setup.md).
+1. Hozzon létre egy [munkaterületet](tutorial-1st-experiment-sdk-setup.md).
 
-1. Sign in to [Azure Machine Learning studio](https://ml.azure.com/).
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 
-This how-to assumes basic knowledge of building a simple pipeline in the designer. For a guided introduction to the designer, complete the [tutorial](tutorial-designer-automobile-price-train-score.md). 
+Ez az útmutató azt feltételezi, hogy alapszintű ismerettel rendelkezik egy egyszerű folyamat létrehozásához a tervezőben. A Designer bevezetéséhez fejezze be az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-To create a batch inference pipeline, you first need a machine learning experiment. To create one, navigate to the **Designer** tab in your workspace and create a new pipeline by selecting the **Easy-to-use prebuilt modules** option.
+Batch-következtetési folyamat létrehozásához először gépi tanulási kísérletre van szükség. Hozzon létre egyet a munkaterület **tervező** lapján, és hozzon létre egy új folyamatot a **könnyen használható előre elkészített modulok** lehetőség kiválasztásával.
 
-![Designer home](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
+![Tervező kezdőlapja](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
 
-The following is a simple machine learning model for demonstration purposes. The data is a registered Dataset created from the Azure Open Datasets diabetes data. See the [how-to section](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) for registering Datasets from Azure Open Datasets. The data is split into training and validation sets, and a boosted decision tree is trained and scored. The pipeline must be run at least once to be able to create an inferencing pipeline. Click the **Run** button to run the pipeline.
+A következő egy egyszerű gépi tanulási modell demonstrációs célokra. Az adatok egy olyan regisztrált adatkészlet, amely az Azure Open adatkészletek cukorbetegség-adatainak alapján lett létrehozva. Az adatkészletek Azure Open-adatkészletekben való regisztrálásával kapcsolatban lásd: [útmutató szakasz](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) . Az adat felosztása képzésre és érvényesítési csoportokra történik, és a megnövelt döntési fa betanítása és kiértékelése megtörténik. A folyamatnak legalább egyszer futtatnia kell a következtetési folyamat létrehozásához. A folyamat futtatásához kattintson a **Futtatás** gombra.
 
-![Create simple experiment](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+![Egyszerű kísérlet létrehozása](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
 
-## <a name="create-a-batch-inference-pipeline"></a>Create a batch inference pipeline
+## <a name="create-a-batch-inference-pipeline"></a>Batch-következtetési folyamat létrehozása
 
-Now that the pipeline has been run, there is a new option available next to **Run** and **Publish** called **Create inference pipeline**. Click the dropdown and select **Batch inference pipeline**.
+Most, hogy a folyamat le lett futtatva, a **Futtatás** és a **Közzététel** a **create következtetési folyamat létrehozása**nevű új lehetőség áll rendelkezésre. Kattintson a legördülő listára, és válassza a **Batch következtetési folyamat**lehetőséget.
 
-![Create batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+![Batch-következtetési folyamat létrehozása](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
 
-The result is a default batch inference pipeline. This includes a node for your original pipeline experiment setup, a node for raw data for scoring, and a node to score the raw data against your original pipeline.
+Az eredmény egy alapértelmezett batch-következtetési folyamat. Ez magában foglalja az eredeti folyamat-kísérlet beállítását, egy csomópontot a pontozáshoz, és egy csomópontot, amely az eredeti folyamat alapján szerzi be a nyers adatait.
 
-![Default batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+![Alapértelmezett batch-következtetési folyamat](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
 
-You can add other nodes to change the behavior of the batch inferencing process. In this example, you add a node for randomly sampling from the input data before scoring. Create a **Partition and Sample** node and place it between the raw data and scoring nodes. Next, click on the **Partition and Sample** node to gain access to the settings and parameters.
+További csomópontokat is hozzáadhat a Batch-következtetési folyamat működésének módosításához. Ebben a példában egy csomópontot ad hozzá a bemeneti adatok véletlenszerű mintavételezéséhez a pontozás előtt. Hozzon létre egy **partíciót és egy minta** csomópontot, és helyezze el a nyers adat-és pontozási csomópontok között. Ezután kattintson a **partícióra és a minta** csomópontra, hogy hozzáférjen a beállításokhoz és a paraméterekhez.
 
-![New node](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+![Új csomópont](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
 
-The *Rate of sampling* parameter controls what percent of the original data set to take a random sample from. This is a parameter that will be useful to adjust frequently, so you enable it as a pipeline parameter. Pipeline parameters can be changed at runtime, and can be specified in a payload object when rerunning the pipeline from a REST endpoint. 
+A *mintavételi paraméterek gyakorisága* határozza meg, hogy az eredeti adathalmaz hány százalékát használja a rendszer a véletlenszerűen kiválasztott értékre. Ez egy olyan paraméter, amely hasznos lehet a gyakori módosításhoz, így azt egy folyamat paraméterként is engedélyezheti. A folyamat paraméterei futásidőben módosíthatók, és egy adattartalom-objektumban adhatók meg, ha a folyamat újbóli futtatása REST-végpontról. 
 
-To enable this field as a pipeline parameter, click the ellipses above the field and then click **Add to pipeline parameter**. 
+Ha ezt a mezőt folyamat paraméterként szeretné engedélyezni, kattintson a mező felett lévő három pontra, majd kattintson a **Hozzáadás a folyamathoz paraméter**elemre. 
 
-![Sample settings](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+![Minta beállításai](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
 
-Next, give the parameter a name and default value. The name will be used to identify the parameter, and specify it in a REST call.
+Ezután adja meg a paraméter nevét és alapértelmezett értékét. A név azonosítja a paramétert, és megadhatja azt egy REST-hívásban.
 
 ![Folyamat paramétere](media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Deploy batch inferencing pipeline
+## <a name="deploy-batch-inferencing-pipeline"></a>Batch-következtetési folyamat üzembe helyezése
 
-Now you are ready to deploy the pipeline. Click the **Deploy** button, which opens the interface to set up an endpoint. Click the dropdown and select **New PipelineEndpoint**.
+Most már készen áll a folyamat üzembe helyezésére. Kattintson a **telepítés** gombra, amely megnyitja a felületet egy végpont beállításához. Kattintson a legördülő listára, és válassza az **új PipelineEndpoint**elemet.
 
-![Pipeline deploy](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+![Folyamat üzembe helyezése](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
 
-Give the endpoint a name and optional description. Near the bottom you see the `sample-rate` parameter you configured with a default value of 0.8. When you're ready, click **Deploy**.
+Adja meg a végpont nevét és leírását (nem kötelező). Az alsó sarokban a 0,8 alapértelmezett értékével konfigurált `sample-rate` paraméter jelenik meg. Ha elkészült, kattintson a **telepítés**elemre.
 
-![Setup endpoint](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+![Telepítési végpont](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
 
-## <a name="manage-endpoints"></a>Végpontok kezelése 
+## <a name="manage-endpoints"></a>Végpontkezelés 
 
-After deployment is complete, go to the **Endpoints** tab and click the name of the endpoint you just created.
+Az üzembe helyezés befejezése után lépjen a **végpontok** lapra, és kattintson az imént létrehozott végpont nevére.
 
-![Endpoint link](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+![Végponti hivatkozás](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
 
-This screen shows all published pipelines under the specific endpoint. Click on your inferencing pipeline.
+Ezen a képernyőn látható az adott végpont alatti összes közzétett folyamat. Kattintson a következtetési folyamatra.
 
-![Inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+![Következtetési folyamat](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
 
-The pipeline details page shows you detailed run history and connection string information for your pipeline. Click the **Run** button to create a manual run of the pipeline.
+A folyamat részletei lap részletes futtatási előzményeket és kapcsolati karakterlánc-információkat jelenít meg a folyamathoz. A folyamat manuális futtatásának létrehozásához kattintson a **Futtatás** gombra.
 
-![Pipeline details](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
+![Folyamat részletei](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-In the run setup, you can provide a description for the run, and change the value for any pipeline parameters. This time, rerun the inferencing pipeline with a sample rate of 0.9. Click **Run** to run the pipeline.
+A Futtatás beállításban megadhatja a Futtatás leírását, és módosíthatja a folyamat paramétereinek értékét. Ezúttal újra kell futtatni a következtetési folyamatot, amelynek a mintavételi sebessége 0,9. Kattintson a **Futtatás** gombra a folyamat futtatásához.
 
-![Pipeline run](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+![Folyamat futtatása](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
 
-The **Consume** tab contains the REST endpoint for rerunning your pipeline. To make a rest call, you will need an OAuth 2.0 bearer-type authentication header. See the following [tutorial section](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) for more detail on setting up authentication to your workspace and making a parameterized REST call.
+A **felhasználás lapon a** folyamat újrafuttatásához használt Rest-végpont szerepel. A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonos típusú hitelesítési fejlécre. A munkaterület hitelesítésének beállításával és a paraméteres REST-hívás létrehozásával kapcsolatos további részletekért tekintse meg a következő [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
 
 ## <a name="next-steps"></a>Következő lépések
 
-Follow the designer [tutorial](tutorial-designer-automobile-price-train-score.md) to train and deploy a regression model.
+A regressziós modell betanításához és üzembe helyezéséhez kövesse a tervezői [oktatóanyagot](tutorial-designer-automobile-price-train-score.md) .

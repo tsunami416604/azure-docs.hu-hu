@@ -1,6 +1,7 @@
 ---
-title: Hibaelhárítás az Azure virtuális hálózati átjáró és kapcsolatok – Azure CLI |} A Microsoft Docs
-description: Jelen lap bemutatja, hogyan használható az Azure Network Watcher hibaelhárítása az Azure CLI-vel
+title: Az Azure VNET-átjáró és-kapcsolatok hibáinak megoldása – Azure CLI
+titleSuffix: Azure Network Watcher
+description: Ez az oldal azt ismerteti, hogyan használható az Azure Network Watcher Az Azure CLI-vel való hibakereséséhez
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca61486ce58ccd3385518c2d22e0690c1fb34d16
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699593"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277812"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Virtuális hálózati átjáró és az Azure Network Watcher Azure CLI-vel kapcsolatok hibaelhárítása
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Az Azure Network Watcher Azure CLI-vel Virtual Network átjáró és kapcsolatok hibáinak megoldása
 
 > [!div class="op_single_selector"]
 > - [Portál](diagnose-communication-problem-between-networks.md)
@@ -29,37 +30,37 @@ ms.locfileid: "64699593"
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-A Network Watcher számos funkciót kínál a ismertetése az Azure-ban a hálózati erőforrások vonatkozik. Ezek a képességek egyik erőforrás hibaelhárítás. Erőforrások hibaelhárítása a portal, PowerShell, CLI vagy REST API használatával is meghívható. Meghívni, Network Watcher megvizsgálja a virtuális hálózati átjáró vagy a kapcsolat állapotát, és a csapatával az eredményeket adja vissza.
+A Network Watcher számos képességgel rendelkezik, amelyek az Azure hálózati erőforrásainak megismeréséhez kapcsolódnak. Ezen képességek egyike az erőforrás-hibaelhárítás. Az erőforrás-hibaelhárítás a portál, a PowerShell, a CLI vagy a REST API használatával hívható meg. A híváskor Network Watcher megvizsgálja egy Virtual Network átjáró vagy egy kapcsolat állapotát, és visszaadja az eredményeit.
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (CLI)](/cli/azure/install-azure-cli).
+A cikkben szereplő lépések végrehajtásához [telepítenie kell az Azure parancssori felületét Mac, Linux és Windows rendszerre (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a forgatókönyv azt feltételezi, hogy már követte a lépéseket a [hozzon létre egy Network Watcher](network-watcher-create.md) egy Network Watcher létrehozásához.
+Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
 
-Látogasson el a támogatott átjáró típusok, listáját [támogatott átjárótípusok](network-watcher-troubleshoot-overview.md#supported-gateway-types).
+A támogatott átjáró-típusok listáját a [támogatott átjárók típusainál](network-watcher-troubleshoot-overview.md#supported-gateway-types)találhatja meg.
 
 ## <a name="overview"></a>Áttekintés
 
-Erőforrás hibaelhárítás lehetővé teszi a virtuális hálózati átjárók és kapcsolatok felmerülő problémák hibaelhárításához. A hibaelhárítási erőforrás a kérelem elküldésekor folyamatban van-e a naplók kérdezhető le, és megvizsgálni. Ha az ellenőrzés befejeződött, a rendszer visszairányítja az eredményeket. Erőforrás-kérelmek hibaelhárítási sokáig futó kérelmek, amelyek több percig is eltarthat adja vissza az eredményt. Hibaelhárítás a naplók vannak tárolva egy tárolót a storage-fiók van megadva.
+Az erőforrás-hibaelhárítás lehetővé teszi a Virtual Network átjárókkal és kapcsolatokkal kapcsolatos hibák elhárítását. Ha az erőforrás-hibaelhárításra vonatkozó kérést végez, a rendszer lekérdezi és ellenőrzi a naplókat. Az ellenőrzés befejezésekor a rendszer az eredményeket adja vissza. Az erőforrás-hibaelhárítási kérelmek hosszú ideig futó kérelmek, amelyek több percet is igénybe vehetnek az eredmények visszaküldéséhez. A hibaelhárítási naplók a megadott Storage-fiók tárolójában tárolódnak.
 
-## <a name="retrieve-a-virtual-network-gateway-connection"></a>A virtuális hálózati átjáró kapcsolat beolvasása
+## <a name="retrieve-a-virtual-network-gateway-connection"></a>Virtual Network átjáróval létesített kapcsolatok beolvasása
 
-Ebben a példában erőforrás hibaelhárítás folyamatban futtatta a kapcsolatot. Is átadhatja azt a virtuális hálózati átjáró. A következő parancsmag listája a vpn-kapcsolatok egy erőforráscsoportban.
+Ebben a példában az erőforrás-hibaelhárítást egy kapcsolatban futtatja a rendszer. Virtual Network átjárót is átadhat. A következő parancsmag az erőforráscsoport VPN-kapcsolatait sorolja fel.
 
 ```azurecli
 az network vpn-connection list --resource-group resourceGroupName
 ```
 
-Miután a kapcsolat neve, futtathatja a következő paranccsal kérhet le az erőforrás-azonosító:
+Miután megkapta a kapcsolat nevét, futtathatja ezt a parancsot az erőforrás-azonosító lekéréséhez:
 
 ```azurecli
 az network vpn-connection show --resource-group resourceGroupName --ids vpnConnectionIds
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
-Erőforrás hibaelhárítás adja vissza az erőforrás állapotára vonatkozó adatok, naplók vizsgálni a storage-fiókba is menti. Ebben a lépésben hozunk létre egy storage-fiókot, ha egy meglévő tárfiók létezik használhatja azt.
+Az erőforrás-hibaelhárítás az erőforrás állapotával kapcsolatos információkat ad vissza, és a naplókat is menti egy áttekinthető Storage-fiókba. Ebben a lépésben létrehozunk egy Storage-fiókot, ha meglévő Storage-fiók létezik, használhatja azt.
 
 1. A tárfiók létrehozása
 
@@ -67,7 +68,7 @@ Erőforrás hibaelhárítás adja vissza az erőforrás állapotára vonatkozó 
     az storage account create --name storageAccountName --location westcentralus --resource-group resourceGroupName --sku Standard_LRS
     ```
 
-1. A storage-fiók kulcsainak lekérése
+1. A Storage-fiók kulcsainak beolvasása
 
     ```azurecli
     az storage account keys list --resource-group resourcegroupName --account-name storageAccountName
@@ -79,22 +80,22 @@ Erőforrás hibaelhárítás adja vissza az erőforrás állapotára vonatkozó 
     az storage container create --account-name storageAccountName --account-key {storageAccountKey} --name logs
     ```
 
-## <a name="run-network-watcher-resource-troubleshooting"></a>Futtassa a Network Watcher erőforrás hibaelhárítás
+## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher erőforrás-hibaelhárítás futtatása
 
-Hibaelhárítás az erőforrásokat a `az network watcher troubleshooting` parancsmagot. Adjuk át a parancsmag az erőforráscsoport nevét a Network Watcher, a kapcsolat, a storage-fiók azonosítóját azonosítója, és a hibaelhárítás tárolni a blob elérési útja eredményez.
+Az `az network watcher troubleshooting` parancsmaggal elháríthatja az erőforrásokat. Átadjuk a parancsmagot, az erőforráscsoportot, a Network Watcher nevét, a kapcsolódás azonosítóját, a Storage-fiók azonosítóját, valamint a blob elérési útját, amely a hibakeresési eredményeket tárolja.
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}
 ```
 
-A parancsmag futtatása után a Network Watcher áttekinti az erőforrás állapotának ellenőrzése. Visszaadja az eredményeket a rendszerhéj és a megadott tárfiók az eredmények naplókat tárolja.
+A parancsmag futtatása után Network Watcher áttekinti az erőforrást az állapot ellenőrzéséhez. Visszaadja az eredményeket a rendszerhéjnak, és a megadott Storage-fiókban tárolja az eredmények naplóit.
 
-## <a name="understanding-the-results"></a>Az eredmények ismertetése
+## <a name="understanding-the-results"></a>Az eredmények megismerése
 
-A művelet szöveg nyújt általános útmutatást a probléma megoldásához. Egy műveletet elvégezhet a problémára, ha egy hivatkozást a további útmutatást. Abban az esetben, ha nincsenek további útmutatást, a válasz biztosít támogatási eset nyitása URL-címét.  A válasz és foglalt tulajdonságaival kapcsolatos további információkért látogasson el a [Network Watcher hibaelhárítása – áttekintés](network-watcher-troubleshoot-overview.md)
+A művelet szövege általános útmutatást nyújt a probléma megoldásához. Ha a probléma megoldására is sor kerül, további útmutatást nyújt a hivatkozáshoz. Abban az esetben, ha nincs további útmutatás, a válasz egy támogatási eset megnyitására szolgáló URL-címet biztosít.  A válasz tulajdonságaival és a benne foglalt információkkal kapcsolatos további információkért tekintse meg [Network Watcher a hibakeresés áttekintése című](network-watcher-troubleshoot-overview.md) témakört.
 
-Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorer](https://storageexplorer.com/)
+A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha-beállításai lettek módosítva lett, hogy állítsa le VPN-kapcsolat, tekintse meg [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és biztonsági szabályok, amelyek az adott lehetnek.
+Ha a beállítások megváltoztak a VPN-kapcsolat leállításakor, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és az esetlegesen érintett biztonsági szabályok nyomon követéséhez című témakört.

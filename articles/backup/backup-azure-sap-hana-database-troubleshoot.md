@@ -2,55 +2,34 @@
 title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása SAP HANA
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: conceptual
-ms.date: 08/03/2019
-ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 11/7/2019
+ms.openlocfilehash: 9c6e4c66d96b02c2d5b4b4fe70fe6e6798c4e2c6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172751"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285933"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
-Ez a cikk a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos hibaelhárítási információkat tartalmaz. A következő szakasz a SAP HANA biztonsági mentés gyakori hibáinak diagnosztizálásához szükséges fontos fogalmakat ismerteti.
+Ez a cikk a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos hibaelhárítási információkat tartalmaz. A jelenleg támogatott SAP HANA biztonsági mentési forgatókönyvekkel kapcsolatos további információkért tekintse meg a [forgatókönyvek támogatása](sap-hana-backup-support-matrix.md#scenario-support)című témakört.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites-and-permissions"></a>Előfeltételek és engedélyek
 
-Az [Előfeltételek](backup-azure-sap-hana-database.md#prerequisites)részeként győződjön meg arról, hogy az Előregisztráció parancsfájlt futtatták azon a virtuális gépen, ahol a HANA telepítve van.
+A biztonsági mentések konfigurálása előtt tekintse át az [Előfeltételek](tutorial-backup-sap-hana-db.md#prerequisites) és az [engedélyek beállítása](tutorial-backup-sap-hana-db.md#setting-up-permissions) szakaszt.
 
-### <a name="setting-up-permissions"></a>Engedélyek beállítása
+## <a name="common-user-errors"></a>Gyakori felhasználói hibák
 
-Az Előregisztráció szkriptje:
-
-1. AZUREWLBACKUPHANAUSER hoz létre a HANA-rendszeren, és hozzáadja ezeket a szükséges szerepköröket és engedélyeket:
-    - ADATBÁZIS-rendszergazda: új adatbázisok létrehozása a visszaállítás során.
-    - Katalógus OLVASása: a biztonsági mentési katalógus beolvasása.
-    - SAP_INTERNAL_HANA_SUPPORT: néhány privát tábla eléréséhez.
-2. Feltesz egy kulcsot a HANA beépülő modul Hdbuserstore az összes művelet (adatbázis-lekérdezések, visszaállítási műveletek, a biztonsági mentés konfigurálása és futtatása) kezelésére.
-
-   A kulcs létrehozásának megerősítéséhez futtassa a HDBSQL parancsot a HANA gépen a SIDADM hitelesítő adataival:
-
-    ``` hdbsql
-    hdbuserstore list
-    ```
-
-    A parancs kimenetének meg kell jelennie a {SID} {DBNAME} kulcsnak, amely a felhasználó AZUREWLBACKUPHANAUSER jelenik meg.
-
-> [!NOTE]
-> Győződjön meg arról, hogy a SSFS-fájlok egyedi készlete van a **/usr/sap/{SID}/Home/.HDB/** területen. Ezen az elérési úton csak egy mappa lehet.
-
-### <a name="setting-up-backint-parameters"></a>BackInt paramétereinek beállítása
-
-Miután kiválasztott egy adatbázist a biztonsági mentéshez, a Azure Backup szolgáltatás az backInt-paramétereket az adatbázis szintjén konfigurálja:
-
-- [catalog_backup_using_backint: true]
-- [enable_accumulated_catalog_backup:false]
-- [parallel_data_backup_backint_channels:1]
-- [log_backup_timeout_s: 900)]
-- [backint_response_timeout: 7200]
-
-> [!NOTE]
-> Győződjön meg arról, hogy ezek a paraméterek *nem* találhatók a gazdagép szintjén. A gazdagép szintű paraméterek felülbírálják ezeket a paramétereket, és váratlan viselkedést okozhatnak.
+| Hiba                                | Hibaüzenet                    | Lehetséges okok                                              | Javasolt művelet                                           |
+| ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| UserErrorInOpeningHanaOdbcConnection | Nem sikerült csatlakozni a HANA rendszerhez | Lehet, hogy a SAP HANA példány nem található. <br> Az Azure Backup számára a HANA-adatbázissal való interakcióhoz szükséges engedélyek nincsenek beállítva. | Ellenőrizze, hogy a SAP HANA-adatbázis működik-e. Ha az adatbázis működik és fut, ellenőrizze, hogy az összes szükséges engedély be van-e állítva. Ha az engedélyek bármelyike hiányzik, futtassa az [Előregisztráció parancsfájlt](https://aka.ms/scriptforpermsonhana) a hiányzó engedélyek hozzáadásához. |
+| UserErrorHanaInstanceNameInvalid | A megadott SAP HANA példány érvénytelen vagy nem található. | Egyetlen Azure-beli virtuális gépen több SAP HANA példányról nem készíthető biztonsági másolat. | Futtassa az [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) arra a SAP HANA példányra, amelyről biztonsági másolatot szeretne készíteni. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
+| UserErrorHanaUnsupportedOperation | A megadott SAP HANA művelet nem támogatott | A SAP HANA készült Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) | További [információkért tekintse](sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
+| UserErrorHANAPODoesNotSupportBackupType | Ez a SAP HANA-adatbázis nem támogatja a kért biztonsági mentési típust | Az Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával | További [információkért tekintse](sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
+| UserErrorHANALSNValidationFailure | A biztonsági mentési napló lánca megszakadt | Lehetséges, hogy a napló biztonsági mentésének célhelye a backint-ről a fájlrendszerre lett frissítve, vagy a backint végrehajtható fájl módosítva lett. | A probléma megoldásához indítson el egy teljes biztonsági mentést |
+| UserErrorIncomaptibleSrcTargetSystsemsForRestore | A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek | A visszaállításhoz használt cél rendszer nem kompatibilis a forrással | A ma támogatott visszaállítási típusok megismeréséhez tekintse meg az [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP-megjegyzést. |
+| UserErrorSDCtoMDCUpgradeDetected | SDC a MDC frissítését észlelte | A SAP HANA példány frissítve lett a SDC-ről a MDC-re. A frissítés után a biztonsági mentések sikertelenek lesznek. | A probléma megoldásához kövesse a [verziófrissítés SAP HANA 1,0 – 2,0 szakaszban](#upgrading-from-sap-hana-10-to-20) felsorolt lépéseket |
+| UserErrorInvalidBackintConfiguration | A rendszer érvénytelen backint-konfigurációt észlelt | Helytelenül vannak megadva a háttérbeli paraméterek az Azure Backup szolgáltatáshoz | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva: <br> * [catalog_backup_using_backint: true] <br>  * [enable_accumulated_catalog_backup: FALSE] <br> * [parallel_data_backup_backint_channels: 1] <br>* [log_backup_timeout_s: 900)] <br> * [backint_response_timeout: 7200] <br> Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
 
 ## <a name="restore-checks"></a>Visszaállítási ellenőrzések
 
@@ -65,24 +44,32 @@ Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. 
 Vegye figyelembe a következő szempontokat:
 
 - Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve, azaz H21 (SDC)
-- A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC esetében a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
+- A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC kapcsolatban a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
 - Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzetre kattintva engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
-- A Linux megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy megőrizze az esetet.
+- A Linux megkülönbözteti a kis-és nagybetűket. Ezért ügyeljen arra, hogy megőrizze a kis-és nagybetűket.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Több tároló-adatbázis (MDC) visszaállítása
 
-A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Ezért miután a rendszeradatbázist visszaállította egy cél példányra, az egyiknek újra kell futtatnia az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
+A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez a visszaállítás felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Ezért miután a rendszeradatbázist visszaállította egy cél példányra, az egyiknek újra kell futtatnia az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
 
-## <a name="common-user-errors"></a>Gyakori felhasználói hibák
+## <a name="upgrading-from-sap-hana-10-to-20"></a>Frissítés SAP HANA 1,0 – 2,0
 
-### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
+Ha SAP HANA 1,0-es adatbázist véd, és a 2,0-re kíván frissíteni, hajtsa végre az alábbi lépéseket:
 
-data| Hibaüzenet | Lehetséges okok | Javasolt művelet |
-|---|---|---|
-| Nem sikerült csatlakozni a HANA rendszerhez. Ellenőrizze, hogy a rendszer működik-e.| A Azure Backup szolgáltatás nem tud csatlakozni a HANA-hoz, mert a HANA-adatbázis nem működik. Vagy a HANA fut, de nem engedélyezi a Azure Backup szolgáltatás kapcsolódását. | Győződjön meg arról, hogy a HANA-adatbázis vagy-szolgáltatás nem áll le. Ha a HANA-adatbázis vagy-szolgáltatás fut, ellenőrizze, hogy az [összes engedély be](#setting-up-permissions)van-e állítva. Ha a kulcs hiányzik, futtassa újra az előregisztrációi parancsfájlt egy új kulcs létrehozásához. |
+- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi SDC-adatbázis megőrzése érdekében.
+- Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a (SID és MDC) helyes részleteivel.
+- A bővítmény újbóli regisztrálása (Backup-> nézet részletei – > Válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja).
+- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli felderítése elemre. Ez a művelet a 2. lépésben szereplő új adatbázisok helyes részleteit (SYSTEMDB és bérlői adatbázis, nem SDC) jeleníti meg.
+- Az új adatbázisok védelméhez.
 
-### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
+## <a name="upgrading-without-an-sid-change"></a>Frissítés SID-változás nélkül
 
-| Hibaüzenet | Lehetséges okok | Javasolt művelet |
-|---|---|---|
-| A rendszer érvénytelen Backint-konfigurációt észlelt. Állítsa le a védelmet, és konfigurálja újra az adatbázist.| A backInt paraméterek helytelenül vannak megadva a Azure Backuphoz. | Győződjön [meg arról, hogy a paraméterek be vannak állítva](#setting-up-backint-parameters). Ha backInt paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a **védelem leállítása és a biztonsági mentési adatok megőrzése** a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget.|
+A SID-módosítást nem okozó operációs rendszerre vagy SAP HANAra való frissítés az alábbi módon kezelhető:
+
+- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) az adatbázis megőrzése érdekében
+- Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) újrafuttatása
+- Az adatbázis [védelmének](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) újbóli folytatása
+
+## <a name="next-steps"></a>Következő lépések
+
+- Tekintse át a SAP HANA adatbázisok Azure-beli virtuális gépekről történő biztonsági mentésével kapcsolatos [gyakori kérdéseket](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) .)

@@ -7,16 +7,20 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 6fc81fa84d4d40d5318d6bf3690aa4b90c4e3c9b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26477eeb00fe7616a8d2f2be343e586042c0d130
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196812"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279663"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift-fürtök konfigurálása a Azure Monitor for containers szolgáltatással
 
 A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Kubernetes szolgáltatás (ak) és az AK-beli motor fürtök számára. Ez a cikk azt ismerteti, hogyan engedélyezhető az [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) üzemeltetett Kubernetes-fürtök figyelése hasonló figyelési élmény eléréséhez.
+
+>[!NOTE]
+>A Red Hat OpenShift támogatása jelenleg nyilvános előzetes verzióban érhető el.
+>
 
 A tárolók Azure Monitor a következő támogatott módszerek használatával engedélyezhető az új, illetve egy vagy több Azure Red Hat-OpenShift üzemelő példányhoz:
 
@@ -29,7 +33,7 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift figyelését az 
 
 - Élő adatértékek
 - Prometheus-metrikák selejtezése
-- Metrikák gyűjtése
+- A fürtcsomópontok és a hüvelyek metrikáinak összegyűjtése és a Azure Monitor metrikai tárolóba írása
 - Állapot funkció
 
 ## <a name="prerequisites"></a>Előfeltételek

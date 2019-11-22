@@ -1,23 +1,14 @@
 ---
 title: Jelenleg a Jupyter notebook az Azure-ban diavetítésként
 description: Hogyan cellák diavetítés mód konfigurálása a Jupyter notebook majd jelentenek a diavetítés a elő kiterjesztéssel.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 04612dc8892a544397251580b3494badc84e2ad5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973115"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277596"
 ---
 # <a name="run-a-notebook-slideshow"></a>A notebook diavetítés futtatása
 
@@ -99,9 +90,9 @@ A diavetítés további függőleges térköz, mint ha a pontok megjelenítésé
 
 1. Ha elkészült a diavetítés, használja a **X** notebook nézethez való visszatéréshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Útmutató: Projektek konfigurálása és kezelése @ no__t-0
-- [Útmutató: Csomagok telepítése jegyzetfüzetből @ no__t-0
-- [Útmutató: Az adatfájlok használata @ no__t-0
-- [Útmutató: Hozzáférés az adaterőforrásokhoz @ no__t-0
+- [Hogyan: konfigurálása és projektek felügyelete](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
+- [Útmutató: adatok fájlok használata](work-with-project-data-files.md)
+- [Útmutató: adat-erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)

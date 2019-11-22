@@ -1,5 +1,5 @@
 ---
-title: Horgonyok létrehozása és megkeresése az eszközön lévő szenzorok C++használatával a/NDK-ben | Microsoft Docs
+title: Durva újrahonosítás a/NDK C++-ben
 description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a horgonyok a C++/NDK. eszközön lévő érzékelők használatával
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f5de4ae050ff01bc86f8c1e11a2afb2887fd8bd7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e505e6a8a3c9f28905c1b1fc3d90dbeee959a793
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093159"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277251"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cndk"></a>Horgonyok létrehozása és megkeresése az eszközön lévő szenzorok C++használatával a/NDK-ben
 

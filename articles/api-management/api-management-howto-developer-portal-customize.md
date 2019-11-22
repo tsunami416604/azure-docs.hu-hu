@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 28ef082d6aac5557998f7b67443d4dafd3a0fb15
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012907"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285583"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
@@ -35,10 +35,6 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 A fejlesztői portálról az [Azure API Management fejlesztői portál áttekintésében](api-management-howto-developer-portal.md)talál további információt.
 
 ![API Management fejlesztői portál – felügyeleti mód](media/api-management-howto-developer-portal-customize/cover.png)
-
-> [!WARNING]
-> A fejlesztői portál jelenleg API Management szolgáltatások számára van bevezetve.
-> Ha a szolgáltatás újonnan lett létrehozva vagy fejlesztői szintű szolgáltatás, akkor már rendelkezik a legújabb verzióval. Ellenkező esetben problémák merülhetnek fel (például a közzétételi funkcióval). A szolgáltatás bevezetése várhatóan a 2019. november 22-én fejeződik be. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
