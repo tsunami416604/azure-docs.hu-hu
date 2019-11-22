@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Authenticator alkalmazás beállítása hitelesítési módszerként – Azure AD
-description: A biztonsági adatok beállítása a hitelesítési módszerként a Microsoft Authenticator alkalmazással való ellenőrzéséhez.
+title: Az Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként – Azure AD
+description: A biztonsági adatok (előzetes verzió) lapon beállíthatja, hogy az Ön identitását a Microsoft Authenticator alkalmazással ellenőrizze ellenőrzési módszerként.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761c9d3ed4cb49a7dc95ea98ce6f884930185643
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233196"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279068"
 ---
-# <a name="set-up-the-microsoft-authenticator-app-as-your-authentication-method-from-the-security-info-preview-page"></a>A Microsoft Authenticator alkalmazás beállítása hitelesítési módszerként a biztonsági adatok (előzetes verzió) lapon
+# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként
 
 A kétfaktoros ellenőrzési és jelszó-visszaállítási módszerek hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
 

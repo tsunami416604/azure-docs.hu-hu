@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682294"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287023"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transzformációs függvények a huzavona-adatfolyamban
 
@@ -81,12 +81,21 @@ Az értékek rendezéséhez használja a [table. sort](https://docs.microsoft.co
 
 Tartsa meg és távolítsa el a Top, Keep Range (megfelelő M függvények, csak a támogatási számok, nem feltételek: [table. FirstN](https://docs.microsoft.com/powerquery-m/table-firstn), [table. skip](https://docs.microsoft.com/powerquery-m/table-skip), [table. RemoveFirstN](https://docs.microsoft.com/powerquery-m/table-removefirstn), [table. Range](https://docs.microsoft.com/powerquery-m/table-range), table. [MinN](https://docs.microsoft.com/powerquery-m/table-minn), [table. MaxN](https://docs.microsoft.com/powerquery-m/table-maxn))
 
-## <a name="known-unsupported-functionality"></a>Ismert nem támogatott funkciók
+## <a name="known-unsupported-functions"></a>Ismert nem támogatott függvények
 
-Az alábbi függvények nem támogatottak. Ez a lista nem teljes, és változhat.
-* Oszlopok egyesítése (a AddColumn használatával érhető el)
-* Oszlop felosztása
-* Lekérdezések hozzáfűzése
-* "Az első sor használata fejlécként" és "fejlécek használata első sorként"
+| Függvény | status |
+| -- | -- |
+| Table. PromoteHeaders | Nem támogatott. Ugyanezt az eredményt az "első sor fejlécként" beállítással lehet megvalósítani az adatkészletben. |
+| Table. CombineColumns | Ez egy olyan gyakori forgatókönyv, amely közvetlenül nem támogatott, de úgy érhető el, hogy hozzáad egy új oszlopot, amely két adott oszlopot ÖSSZEFŰZ.  Például: table. AddColumn (RemoveEmailColumn, "Name", each [FirstName] & "" & [LastName]) |
+| Table. TransformColumnTypes | Ez a legtöbb esetben támogatott. A következő forgatókönyvek nem támogatottak: a sztring átalakítása a pénznem típusára, a karakterlánc átalakítása időtípusra, a sztring átalakítása százalék típusúra. |
+| Table. NestedJoin | Az illesztés végrehajtása egy érvényesítési hibát eredményez. Az oszlopokat ki kell bontani ahhoz, hogy működjön. |
+| Table. DISTINCT | Az ismétlődő sorok eltávolítása nem támogatott. |
+| Table. RemoveLastN | Az alsó sorok eltávolítása nem támogatott. |
+| Table. sorszám | Nem támogatott, de a hozzá tartozó oszlop hozzáadásával az összes cella üres (feltétel oszlop használható), majd a Group By utasítás használatával. A table. Group támogatott. | 
+| Sorok szintjének hibakezelés | A sorok szintjének hibakezelés jelenleg nem támogatott. Ha például egy oszlopból nem numerikus értékeket szeretne kiszűrni, az egyik módszer az, hogy a Text (szöveg) oszlopot egy számra alakítsa át. Minden olyan cella, amely nem alakítható át, hibás állapotba kerül, és szűrni kell. Ez a forgatókönyv nem lehetséges a huzavona-adatfolyamban. |
+| Table. TRANSZPONÁLÁS | Nem támogatott |
+| Table. pivot | Nem támogatott |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+Megtudhatja, hogyan [hozhat létre huzavona-adatfolyamokat](wrangling-data-flow-tutorial.md).
