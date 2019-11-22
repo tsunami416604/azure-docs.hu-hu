@@ -1,6 +1,6 @@
 ---
-title: A Cloud App Securityvel – az Azure Active Directory a helyszíni alkalmazások integrálása |} A Microsoft Docs
-description: A helyszíni alkalmazások konfigurálása az Azure Active Directoryban, a Microsoft Cloud App Security (MCAS) működik. Használja az MCAS feltételes hozzáférést biztosító alkalmazás-vezérlő valós idejű monitorozását és ellenőrzését munkamenetek feltételes hozzáférési szabályzatok alapján. Ezek a szabályzatok a helyszíni alkalmazások az Azure Active Directoryban (Azure AD) alkalmazásproxy használó alkalmazhat.
+title: Helyszíni alkalmazások integrálása Cloud App Security-Azure AD-vel
+description: Helyszíni alkalmazás konfigurálása Azure Active Directoryban a Microsoft Cloud App Security (MCAS) szolgáltatással való együttműködéshez. A MCAS feltételes hozzáférést biztosító alkalmazás-vezérlő segítségével valós időben figyelheti és irányíthatja a munkameneteket a feltételes hozzáférési szabályzatok alapján. Ezeket a házirendeket alkalmazhatja a Azure Active Directory (Azure AD) alkalmazásproxy használatát használó helyszíni alkalmazásokra.
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
@@ -11,61 +11,61 @@ ms.date: 12/19/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9b27a3b8329f906b1adfd48d28892a7edc4d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108447"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275497"
 ---
-# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Valós idejű hozzáférés az alkalmazásfigyelés konfigurálása a Microsoft Cloud App Security és az Azure Active Directory
-Konfigurálja a Microsoft Cloud App Security (MCAS) használata az Azure Active Directoryban (Azure AD) egy helyszíni alkalmazás valós idejű monitorozásra. MCAS használja a feltételes hozzáférést biztosító alkalmazás-vezérlő figyeléséhez, és valós idejű vezérlés munkamenetek feltételes hozzáférési szabályzatok alapján. Ezek a szabályzatok a helyszíni alkalmazások az Azure Active Directoryban (Azure AD) alkalmazásproxy használó alkalmazhat.
+# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>A valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud App Security és Azure Active Directory
+Azure Active Directory (Azure AD) helyszíni alkalmazásának konfigurálása a Microsoft Cloud App Security (MCAS) valós idejű figyeléshez való használatához. A MCAS a feltételes hozzáférést biztosító alkalmazás-vezérlő a feltételes hozzáférési házirendek alapján valós időben figyeli és vezérli a munkameneteket. Ezeket a házirendeket alkalmazhatja a Azure Active Directory (Azure AD) alkalmazásproxy használatát használó helyszíni alkalmazásokra.
 
-Íme néhány példa a különböző típusú házirendet hozhat létre az MCAS:
+Íme néhány példa arra, hogy milyen típusú házirendeket hozhat létre a MCAS használatával:
 
-- Letiltása, vagy a letöltés nem felügyelt eszközökön bizalmas dokumentumok védelme.
-- Figyelő, ha magas kockázatú felhasználók jelentkezzen be az alkalmazásokat, és ezután azok a műveletek a munkameneten belül. Ezekkel az információkkal elemezheti a felhasználói viselkedés határozza meg, hogyan alkalmazhatja a munkamenet-szabályzatokat.
-- Ügyféltanúsítványok vagy az eszközmegfelelőség használatával nem felügyelt eszközökről való adott alkalmazások letiltására.
-- Korlátozza a felhasználói munkamenetek nem céges hálózatokról. Korlátozott hozzáférést biztosíthat a felhasználók számára a vállalati hálózaton kívülről származó alkalmazáshoz való hozzáférés. Például a korlátozott hozzáférésű blokkolhatja a felhasználónak a bizalmas dokumentumok letöltése.
+- A bizalmas dokumentumok letöltésének tiltása vagy letiltása a nem felügyelt eszközökön.
+- Figyelje meg, hogy mikor jelentkeznek be a magas kockázatú felhasználók az alkalmazásokba, majd a munkamenetből naplózzák a műveleteiket. Ezeknek az információknak a segítségével elemezheti a felhasználói viselkedést, és meghatározhatja a munkamenet-szabályzatok alkalmazását.
+- Az ügyféltanúsítványok vagy az eszközök megfelelőségének használatával letilthatja a nem felügyelt eszközökről származó adott alkalmazásokhoz való hozzáférést.
+- A nem vállalati hálózatokból származó felhasználói munkamenetek korlátozása. Korlátozott hozzáférést biztosíthat a vállalati hálózaton kívülről egy alkalmazáshoz hozzáférő felhasználók számára. Ez a korlátozott hozzáférés például megakadályozhatja, hogy a felhasználó bizalmas dokumentumokat töltsön le.
 
-További információkért lásd: [alkalmazások védelme a Microsoft Cloud App Security feltételes hozzáférést alkalmazás vezérlő az](/cloud-app-security/proxy-intro-aad).
+További információ: [alkalmazások Microsoft Cloud App Security feltételes hozzáférést biztosító alkalmazás-vezérlőekkel való védelemmel való](/cloud-app-security/proxy-intro-aad)ellátása.
 
 ## <a name="requirements"></a>Követelmények
 
-Licenc:
+Engedély
 
-- Az EMS E5 licencet, vagy 
-- Prémium P1 szintű Azure Active Directory és az MCAS önálló.
+- EMS E5-licenc, vagy 
+- Prémium szintű Azure Active Directory P1 és MCAS önálló.
 
-A helyszíni alkalmazás:
+Helyszíni alkalmazás:
 
-- A helyszíni alkalmazás a Kerberos által korlátozott delegálás (KCD) kell használnia.
+- A helyszíni alkalmazásnak a Kerberos által korlátozott delegálást (KCD) kell használnia.
 
-Proxy konfigurálása:
+Alkalmazásproxy konfigurálása:
 
-- Az Azure AD Application Proxy, többek között a környezet előkészítése és az alkalmazásproxy-összekötő telepítése használatára konfigurálja. Foglalkozó oktatóanyagért lásd: [egy proxyn keresztül történő alkalmazás távoli hozzáférés a helyszíni alkalmazások hozzáadása az Azure ad-ben](application-proxy-add-on-premises-application.md). 
+- Az Azure AD konfigurálása alkalmazásproxy használatára, beleértve a környezet előkészítését és az alkalmazásproxy-összekötő telepítését. Oktatóanyag: helyszíni [alkalmazások távoli eléréshez való hozzáadása az Azure ad-ben alkalmazásproxy használatával](application-proxy-add-on-premises-application.md). 
 
-## <a name="add-on-premises-application-to-azure-ad"></a>Az Azure ad-hez a helyszíni alkalmazás hozzáadása
+## <a name="add-on-premises-application-to-azure-ad"></a>Helyszíni alkalmazás hozzáadása az Azure AD-hez
 
-Az Azure ad-hez a helyszíni alkalmazás hozzáadása. A rövid útmutatóban talál [helyszíni alkalmazás hozzáadása az Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Amikor az alkalmazás ad hozzá, ügyeljen arra, hogy állítsa be a következő két beállítást a **adja hozzá a helyszíni alkalmazás** panelen:
+Helyszíni alkalmazás hozzáadása az Azure AD-hez. A gyors útmutatóért lásd: helyszíni [alkalmazás hozzáadása az Azure ad-](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)hez. Az alkalmazás hozzáadásakor ügyeljen arra, hogy az alábbi két beállítást adja meg a helyszíni **alkalmazás hozzáadása** panelen:
 
-- **Előhitelesítés**: Adja meg **az Azure Active Directory**.
-- **A kérelem törzsében URL-címek lefordítása**: Válasszon **Igen**.
+- **Előzetes hitelesítés**: írja be a **Azure Active Directory**.
+- **URL-címek fordítása az alkalmazás törzsében**: válassza az **Igen**lehetőséget.
 
-E két beállítás a szolgáltatásalkalmazás alkalmassá tétele MCAS szükségesek.
+Ezek a két beállítás szükséges ahhoz, hogy az alkalmazás működjön a MCAS.
 
-## <a name="test-the-on-premises-application"></a>A helyszíni alkalmazás tesztelése
+## <a name="test-the-on-premises-application"></a>Helyszíni alkalmazás tesztelése
 
-Miután hozzáadta az alkalmazást az Azure AD, szereplő lépések segítségével [az alkalmazás tesztelése](application-proxy-add-on-premises-application.md#test-the-application) felhasználó hozzáadása teszteléshez, és tesztelje a bejelentkezést. 
+Miután hozzáadta az alkalmazást az Azure AD-hoz, kövesse az [alkalmazás tesztelése](application-proxy-add-on-premises-application.md#test-the-application) című témakör lépéseit a felhasználók teszteléshez való hozzáadásához és a bejelentkezés teszteléséhez. 
 
-## <a name="deploy-conditional-access-app-control"></a>Feltételes hozzáférési Alkalmazásvezérlés üzembe helyezése
+## <a name="deploy-conditional-access-app-control"></a>feltételes hozzáférést biztosító alkalmazás-vezérlő üzembe helyezése
 
-Az alkalmazás konfigurálása a feltételes hozzáférési alkalmazásvezérléssel, kövesse a [üzembe helyezése a feltételes hozzáférési Alkalmazásvezérlés az Azure AD-alkalmazásokhoz](/cloud-app-security/proxy-deployment-aad).
+Az alkalmazás feltételes hozzáférésű alkalmazás-vezérlővel való konfigurálásához kövesse az [Azure ad-alkalmazások feltételes hozzáférés-vezérlésének üzembe helyezése](/cloud-app-security/proxy-deployment-aad)című témakör utasításait.
 
 
-## <a name="test-conditional-access-app-control"></a>Teszt feltételes hozzáférést biztosító alkalmazás-vezérlő
+## <a name="test-conditional-access-app-control"></a>Tesztelés feltételes hozzáférést biztosító alkalmazás-vezérlő
 
-Feltételes hozzáférési Alkalmazásvezérlés az Azure AD-alkalmazások központi telepítésének tesztelése, kövesse a [tesztelheti az üzembe helyezés az Azure AD-alkalmazásokhoz](/cloud-app-security/proxy-deployment-aad).
+Az Azure AD-alkalmazások feltételes hozzáférésű alkalmazás-vezérléssel történő üzembe helyezésének teszteléséhez kövesse az [Azure ad-alkalmazások üzembe helyezésének tesztelése](/cloud-app-security/proxy-deployment-aad)című témakör utasításait.
 
 
 

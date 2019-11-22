@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a szerepkörökkel, az engedélyekkel és a biztonsággal Azure Monitor
+title: Szerepkörök, engedélyek és biztonság a Azure Monitorban
 description: Megtudhatja, hogyan használhatja a Azure Monitor beépített szerepköreit és engedélyeit a figyelési erőforrásokhoz való hozzáférés korlátozására.
 author: johnkemnetz
 services: azure-monitor
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260621"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305161"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Ismerkedés a szerepkörökkel, az engedélyekkel és a biztonsággal Azure Monitor
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Számos csapatnak szigorúan szabályoznia kell a figyelési és a beállítási funkciókhoz való hozzáférést. Ha például vannak olyan csapattagok, akik kizárólag a figyelésen (támogatási mérnökök, DevOps-mérnökök) dolgoznak, vagy ha felügyelt szolgáltatót használ, érdemes hozzáférést biztosítani számukra, hogy csak a figyelési adatmennyiséget használják, miközben korlátozza a létrehozás, a módosítás vagy a erőforrások törlése. Ez a cikk bemutatja, hogyan alkalmazhat gyorsan egy beépített figyelési RBAC szerepkört egy Azure-beli felhasználóra, vagy létrehozhat egy saját egyéni szerepkört egy korlátozott figyelési engedélyekkel rendelkező felhasználó számára. Ezután a Azure Monitor kapcsolódó erőforrásaival kapcsolatos biztonsági szempontokat tárgyalja, valamint arról, hogyan korlátozhatja a hozzáférését a bennük található adathoz.
 
 ## <a name="built-in-monitoring-roles"></a>Beépített figyelési szerepkörök
-A Azure Monitor beépített szerepkörei úgy vannak kialakítva, hogy segítsenek korlátozni az előfizetésben lévő erőforrásokhoz való hozzáférést, miközben továbbra is lehetővé teszik az infrastruktúra figyelését a szükséges információk beszerzéséhez és konfigurálásához. Azure Monitor két beépített szerepkört biztosít: Egy figyelési olvasó és egy megfigyelő közreműködő.
+A Azure Monitor beépített szerepkörei úgy vannak kialakítva, hogy segítsenek korlátozni az előfizetésben lévő erőforrásokhoz való hozzáférést, miközben továbbra is lehetővé teszik az infrastruktúra figyelését a szükséges információk beszerzéséhez és konfigurálásához. Azure Monitor két beépített szerepkört biztosít: egy figyelési olvasót és egy figyelő közreműködőt.
 
-### <a name="monitoring-reader"></a>Figyelési olvasó
+### <a name="monitoring-reader"></a>Figyelő olvasó
 A figyelési olvasó szerepkörrel rendelkező személyek megtekinthetik az előfizetések összes figyelési adatát, de nem módosíthatják az erőforrásokat, és nem módosíthatják a figyelési erőforrásokkal kapcsolatos beállításokat. Ez a szerepkör olyan szervezet felhasználói számára megfelelő, mint például a support vagy az Operations Engineers, akiknek a következőket kell tudniuk:
 
 * Megtekintheti a portálon a figyelési irányítópultokat, és saját privát figyelési irányítópultokat hozhat létre.
@@ -48,12 +48,12 @@ A figyelési olvasó szerepkörrel rendelkező személyek megtekinthetik az elő
 > 
 > 
 
-### <a name="monitoring-contributor"></a>Figyelési közreműködő
+### <a name="monitoring-contributor"></a>Közreműködő figyelése
 A figyelő közreműködő szerepkörrel rendelkező személyek megtekinthetik az előfizetések összes figyelési adatát, és létrehozhatják vagy módosíthatják a figyelési beállításokat, de nem módosíthatják más erőforrásokat. Ez a szerepkör a figyelési olvasó szerepkör egy kibővített változata, amely a szervezet figyelési csapatának vagy olyan felügyelt szolgáltatóknak a tagjai számára megfelelő, akik a fenti engedélyeken kívül a következőkre is szükségük van:
 
 * Figyelési irányítópultok közzététele megosztott irányítópultként.
 * Erőforrás [diagnosztikai beállításainak](diagnostic-settings.md) megadása.\*
-* Adja meg [](activity-log-export.md) egy előfizetés naplózási profilját.\*
+* Adja meg egy előfizetés [naplózási profilját](activity-log-export.md) .\*
 * Riasztási szabályok tevékenységének és beállításainak megadása az [Azure-riasztások](alerts-overview.md)használatával.
 * Application Insights webes tesztek és összetevők létrehozása.
 * Log Analytics munkaterület megosztott kulcsainak listázása.
@@ -182,12 +182,12 @@ Azure Monitor hozzáférést kell biztosítania az Azure-erőforrásokhoz az Ön
 ### <a name="secured-storage-accounts"></a>Biztonságos Storage-fiókok 
 
 A figyelési adatgyűjtést gyakran egy Storage-fiókba kell írni. Előfordulhat, hogy meg kell győződnie arról, hogy a Storage-fiókba másolt adatfájlok jogosulatlan felhasználók számára nem érhetők el. A további biztonság érdekében zárolhatja a hálózati hozzáférést, hogy csak a jogosult erőforrások és a megbízható Microsoft-szolgáltatások férhessenek hozzá egy Storage-fiókhoz, ha a Storage-fiókot a "kiválasztott hálózatok" használatára korlátozza.
-![Az Azure Storage beállításai](./media/roles-permissions-security/secured-storage-example.png) párbeszédpanel Azure monitor a "megbízható Microsoft-szolgáltatások" közé tartozik, ha engedélyezi a megbízható Microsoft-szolgáltatások számára a biztonságos tároló elérését, az Azure monitor hozzáférhet a biztonságos Storage-fiókhoz, amely lehetővé teszi Azure Monitor diagnosztikai naplók, a műveletnapló és a metrikák írása a Storage-fiókba a következő védett feltételek szerint. Ez azt is lehetővé teszi, hogy a Log Analytics beolvassák a biztonságos tárolóból származó naplókat.   
+![Azure Storage-beállítások párbeszédpanel](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor a "megbízható Microsoft-szolgáltatások" közé tartozik, ha engedélyezi a megbízható Microsoft-szolgáltatások számára a biztonságos tároló elérését, akkor az Azure monitor hozzáférhet a biztonságos Storage-fiókhoz; a Azure Monitor diagnosztikai naplók, a műveletnapló és a metrikák írásának engedélyezése a Storage-fiókba a következő védett feltételek szerint. Ez azt is lehetővé teszi, hogy a Log Analytics beolvassák a biztonságos tárolóból származó naplókat.   
 
 
 További információ: [hálózati biztonság és Azure Storage](../../storage/common/storage-network-security.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [További információ a RBAC és az engedélyekről a Resource Managerben](../../role-based-access-control/overview.md)
 * [A monitorozás áttekintése az Azure-ban](../../azure-monitor/overview.md)
 

@@ -1,43 +1,43 @@
 ---
-title: Hogyan hozhat létre, és keresse meg az Azure térbeli horgonyok használatával horgonyok |} A Microsoft Docs
-description: Bemutatja, hogyan hozhat létre, és keresse meg az Azure térbeli horgonyok használatával horgonyok magyarázatra van szüksége.
+title: Hozza létre & a horgonyok áttekintése
+description: Részletes magyarázat arról, hogyan hozhat létre és kereshet horgonyokat az Azure térbeli horgonyok használatával.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bbb2eb6cca09c496328d35e075b7d2e548898b4c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964735"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270447"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Hogyan hozhat létre, és keresse meg a horgonyok Azure térbeli horgonyok használatával
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával
 
-Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé.
+Az Azure térbeli horgonyok lehetővé teszik, hogy a különböző eszközök között ossza meg a világbeli horgonyokat.
 
-Támogatja a több különböző fejlesztési környezet.
+Számos különböző fejlesztési környezetet támogat.
 
-## <a name="next-steps"></a>További lépések
-További információkért folytassa a fejlesztési környezet kiválasztásával:
-
-> [!div class="nextstepaction"]
-> [C#a Unity (a HoloLens, iOS és Android)](how-tos/create-locate-anchors-unity.md)
+## <a name="next-steps"></a>Következő lépések
+További információért folytassa a fejlesztési környezet kiválasztásával:
 
 > [!div class="nextstepaction"]
-> [Objective-C iOS rendszeren](how-tos/create-locate-anchors-objc.md)
+> [C#Unity (HoloLens, iOS és Android rendszerhez)](how-tos/create-locate-anchors-unity.md)
 
 > [!div class="nextstepaction"]
-> [IOS SWIFT](how-tos/create-locate-anchors-swift.md)
+> [Objective-C az iOS-en](how-tos/create-locate-anchors-objc.md)
+
+> [!div class="nextstepaction"]
+> [Swift iOS rendszeren](how-tos/create-locate-anchors-swift.md)
 
 > [!div class="nextstepaction"]
 > [Java Android rendszeren](how-tos/create-locate-anchors-java.md)
 
 > [!div class="nextstepaction"]
-> [C++/ Szünettel androidon](how-tos/create-locate-anchors-cpp-ndk.md)
+> [C++/NDK Androidon](how-tos/create-locate-anchors-cpp-ndk.md)
 
 > [!div class="nextstepaction"]
-> [C++/ A HoloLens WinRT](how-tos/create-locate-anchors-cpp-winrt.md)
+> [C++/WinRT a HoloLens](how-tos/create-locate-anchors-cpp-winrt.md)

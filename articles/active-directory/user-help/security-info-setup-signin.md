@@ -1,6 +1,6 @@
 ---
 title: Biztonsági adatok (előzetes verzió) beállítása bejelentkezési kérésből – Azure AD
-description: A munkahelyi vagy iskolai fiók biztonsági adatainak beállítása, ha a rendszer kéri a szervezet bejelentkezési oldaláról.
+description: A munkahelyi vagy iskolai fiókhoz tartozó biztonsági adatok (előzetes verzió) beállítása, miután a rendszer rákérdez a szervezet bejelentkezési oldalára.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820286"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278981"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása a bejelentkezési oldal parancssorában
+# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása bejelentkezési kérésből
 
 Ha a munkahelyi vagy iskolai fiókjába való bejelentkezés után azonnal kéri a biztonsági adatok beállítását, kövesse az alábbi lépéseket.
 
@@ -136,7 +136,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
     ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A biztonsági adatok alapértelmezett módszereinek módosításához, törléséhez vagy frissítéséhez lásd:
 

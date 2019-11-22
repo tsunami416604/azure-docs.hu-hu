@@ -5,20 +5,20 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: victorh
-ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580189"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267954"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Mi az Azure Firewall Manager előzetes verziója?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-A Azure Firewall Manager előzetes verziója egy biztonsági felügyeleti szolgáltatás, amely központi biztonsági házirendet és útválasztási felügyeletet biztosít a felhőalapú biztonsági körzetek számára. Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre hub-és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
+Az Azure Firewall Manager előzetes verziója olyan biztonságkezelési szolgáltatás, amely központi biztonsági házirendet és útvonalkezelést biztosít a felhőalapú biztonsági szegélyek számára. Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre hub-és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
 
 ![tűzfal – kezelő](media/overview/firewallmanagerv3.png)
 
@@ -75,8 +75,9 @@ A Azure Firewall Manager előzetes verziója a következő ismert problémákkal
 |A forgalom felosztása jelenleg nem támogatott|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|Jelenleg vizsgálja a forgalom felosztását a központban.
 |Régiónként egy hub|Régiónként legfeljebb egy hub lehet|Több virtuális WAN-t hozhat létre egy régióban.|
 |Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Jelenleg vizsgálja.|
+|A csomópontok közötti kommunikáció nem működik a biztonságos virtuális hubhoz|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott.|Jelenleg vizsgálja.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure Firewall Manager előzetes telepítésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.

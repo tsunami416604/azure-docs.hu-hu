@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717994"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307341"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
@@ -22,7 +22,7 @@ Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti 
 
 Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután valós időben be fogja olvasni az adatstreamet az Azure Stream Analytics segítségével, amely elkülöníti az érvényes tranzakciókat az érvénytelenektől, majd a Power BI használatával vizuálisan azonosítani fogja az érvénytelenként megjelölt tranzakciókat.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * Eseményközpont létrehozása
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Alkalmazás futtatása a teszt-eseményadatok létrehozásához
 
-A [GitHubon található Event Hubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) egy [anomáliaérzékelő alkalmazást](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector) tartalmaznak, amely létrehozza a tesztadatokat. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
+A [GitHubon található Event Hubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) egy [anomáliaérzékelő alkalmazást](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector) tartalmaznak, amely létrehozza a tesztadatokat. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
 
 1. Töltse le az [Azure Event Hubs-mintákat](https://github.com/Azure/azure-event-hubs/archive/master.zip) a GitHubról, majd bontsa ki őket helyben.
 
@@ -318,7 +318,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép a vizualizációtípus és a mezők megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   Kattintson a **Tovább** gombra.
+   Kattintson a **Tovább**gombra.
 
 10. A címhez írja be a **Csalárd felhasználás**, az alcímhez pedig az **Összeg az elmúlt néhány percben** szöveget. Kattintson az **Alkalmaz** gombra. Ez menti a csempét az irányítópultra.
 
@@ -330,7 +330,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
     * Kattintson a **Csempe hozzáadása** elemre.
     * Válassza az **Egyedi streamelési adatok** lehetőséget. 
-    * Kattintson a **Tovább** gombra.
+    * Kattintson a **Tovább**gombra.
     * Válassza ki az adatkészletét, majd kattintson a **Tovább** gombra. 
 
 12. A **Vizualizáció típusa** területen válassza a **Vonaldiagram** lehetőséget.
@@ -339,7 +339,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
 14. Az **Értékek** területen kattintson az **Érték hozzáadása** elemre, és válassza a **fraudulentuses** lehetőséget.
 
-15. A **Megjelenítendő időtartomány** területen válassza ki az utolsó öt percet. Kattintson a **Tovább** gombra.
+15. A **Megjelenítendő időtartomány** területen válassza ki az utolsó öt percet. Kattintson a **Tovább**gombra.
 
 16. A csempe címeként adja meg a **Csalárd felhasználás megjelenítése az idő múlásával** címet, hagyja üresen az alcím mezőt, majd kattintson az **Alkalmaz** gombra. A rendszer automatikusan visszairányítja az irányítópultra.
 
@@ -371,7 +371,7 @@ Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

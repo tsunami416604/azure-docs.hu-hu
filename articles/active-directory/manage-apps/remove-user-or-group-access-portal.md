@@ -1,5 +1,5 @@
 ---
-title: Felhasználói vagy csoportos hozzárendelések eltávolítása Azure Active Directory alkalmazásból | Microsoft Docs
+title: Felhasználói vagy csoportos hozzárendelések eltávolítása az Azure AD-ből származó alkalmazásokból
 description: Felhasználó vagy csoport hozzáférési hozzárendelésének eltávolítása egy vállalati alkalmazásból Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380816283156969c47f45a9b47435688df91f4ca
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: edf918b57212cf2adfbffb358a0257d9dbea85e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381049"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275879"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Felhasználó vagy csoport hozzárendelésének eltávolítása egy vállalati alkalmazásból Azure Active Directory
 
@@ -46,7 +46,7 @@ Egyszerűen eltávolíthat egy felhasználót vagy csoportot a Azure Active Dire
    > [!NOTE]
    > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD`). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
 
-1. Futtassa `Connect-AzureAD` a parancsot, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
+1. Futtasson `Connect-AzureAD`, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
 1. A következő parancsfájl használatával távolíthatja el a felhasználót és a szerepkört egy alkalmazásból:
 
     ```powershell
@@ -64,7 +64,7 @@ Egyszerűen eltávolíthat egy felhasználót vagy csoportot a Azure Active Dire
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Összes saját csoport megjelenítése](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md)

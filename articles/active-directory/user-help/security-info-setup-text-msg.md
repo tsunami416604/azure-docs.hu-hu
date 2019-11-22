@@ -1,6 +1,6 @@
 ---
-title: A biztonsági adatok (előzetes verzió) beállítása szöveges üzenetekhez – Azure AD
-description: A biztonsági adatok beállítása az identitás szöveges üzenetküldéssel és a mobileszköz használatával történő ellenőrzéséhez.
+title: Szöveges üzenetküldés beállítása ellenőrzési módszerként – Azure AD
+description: A biztonsági adatok (előzetes verzió) lapon beállíthatja, hogy az Ön személyazonosságát SMS-ként ellenőrizze az ellenőrzési módszerként.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803838"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278921"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>A biztonsági adatok (előzetes verzió) beállítása szöveges üzenetküldés használatához
+# <a name="set-up-text-messaging-as-your-verification-method"></a>Szöveges üzenetküldés beállítása ellenőrzési módszerként
 
 A kétfaktoros ellenőrzési és jelszó-visszaállítási módszerek hozzáadásához kövesse az alábbi lépéseket. Az első beállítás után visszatérhet a **biztonsági** információ lapra a biztonsági adatok hozzáadásához, frissítéséhez vagy törléséhez.
 
@@ -113,7 +113,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

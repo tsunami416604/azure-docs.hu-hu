@@ -1,5 +1,5 @@
 ---
-title: Problémák az Azure AD Gallery-alkalmazás jelszavas egyszeri bejelentkezésének konfigurálásakor | Microsoft Docs
+title: Problémák az Azure AD Gallery-alkalmazás jelszavas egyszeri bejelentkezésének konfigurálásakor
 description: Ismerje meg az Azure AD Application Galleryben már felsorolt alkalmazások jelszavas egyszeri bejelentkezésének konfigurálásakor felmerülő gyakori problémákat.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381125"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274193"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probléma az Azure AD Gallery-alkalmazás jelszavas egyszeri bejelentkezésének konfigurálásakor
 
@@ -37,17 +37,17 @@ Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan
 
 A probléma megoldásához először próbálja meg ezeket a dolgokat:
 
-- Először próbáljon meg **közvetlenül bejelentkezni az alkalmazás** webhelyére a felhasználók által tárolt hitelesítő adatokkal.
+- Először próbáljon meg **közvetlenül bejelentkezni az alkalmazás webhelyére** a felhasználók által tárolt hitelesítő adatokkal.
 
-  * Ha a bejelentkezés működik, akkor a felhasználó az [alkalmazás-hozzáférési panel](https://myapps.microsoft.com/) **alkalmazások** területén a hitelesítő  **adatok frissítése** gombra kattintva frissítheti azokat a legutóbbi ismert munkafelhasználónévre és jelszóra.
+  * Ha a bejelentkezés működik, akkor a felhasználó az [alkalmazás-hozzáférési panel](https://myapps.microsoft.com/) **alkalmazások** **területén a** **hitelesítő adatok frissítése** gombra kattintva frissítheti azokat a legutóbbi ismert munkafelhasználónévre és jelszóra.
 
-  * Ha Ön, vagy egy másik rendszergazda hozzárendelte a hitelesítő adatokat a felhasználóhoz, keresse meg a felhasználó vagy csoport alkalmazás-hozzárendelését az alkalmazás **felhasználók & csoportok** lapjára kattintva, és válassza ki a hozzárendelést, és kattintson a **hitelesítő adatok frissítése elemre.** gomb.
+  * Ha Ön, vagy egy másik rendszergazda hozzárendelte a hitelesítő adatokat a felhasználóhoz, keresse meg a felhasználó vagy csoport alkalmazás-hozzárendelését az alkalmazás **felhasználók & csoportok** lapjára kattintva, válassza ki a hozzárendelést, majd kattintson a **hitelesítő adatok frissítése** gombra.
 
 - Ha a felhasználó hozzárendelte a saját hitelesítő adatait, a felhasználónak ellenőriznie kell, hogy a **jelszavuk nem járt-e le az alkalmazásban** , és ha igen, **frissítse a lejárt jelszót** úgy, hogy közvetlenül az alkalmazásba jelentkezik be.
 
-  * Miután a jelszó frissítve lett az alkalmazásban, kérje meg a felhasználót, hogy kattintson **a hitelesítő adatok frissítése** gombra  az alkalmazás- [hozzáférési panel](https://myapps.microsoft.com/) **alkalmazások** területén, és frissítse azokat a legújabb ismert a Felhasználónév és a jelszó használata.
+  * Miután a jelszó frissítve lett az alkalmazásban, kérje meg a felhasználót, hogy az [alkalmazás-hozzáférési panel](https://myapps.microsoft.com/) **alkalmazások** területén **a** **hitelesítő adatok frissítése** gombra kattintva frissítse azokat a legutóbbi ismert munkafelhasználónévre és jelszóra.
 
-  * Ha Ön, vagy egy másik rendszergazda hozzárendelte a hitelesítő adatokat a felhasználóhoz, keresse meg a felhasználó vagy csoport alkalmazás-hozzárendelését az alkalmazás **felhasználók & csoportok** lapjára kattintva, és válassza ki a hozzárendelést, és kattintson a **hitelesítő adatok frissítése elemre.** gomb.
+  * Ha Ön, vagy egy másik rendszergazda hozzárendelte a hitelesítő adatokat a felhasználóhoz, keresse meg a felhasználó vagy csoport alkalmazás-hozzárendelését az alkalmazás **felhasználók & csoportok** lapjára kattintva, válassza ki a hozzárendelést, majd kattintson a **hitelesítő adatok frissítése** gombra.
 
 - A felhasználó a hozzáférési panel [böngésző bővítményének telepítése](#how-to-install-the-access-panel-browser-extension) című szakaszban ismertetett lépéseket követve frissítse a hozzáférési panel böngésző bővítményét.
 
@@ -67,7 +67,7 @@ Ennek a hibának két fő oka van:
 
 - Az Internet Explorerben engedélyezett biztonsági beállításoktól függően, ha a webhely nem egy **megbízható zónába**tartozik, akkor a szkriptet nem lehet letiltani az alkalmazás végrehajtásához.
 
-  *  A probléma megoldásához kérje meg a felhasználót, hogy az **Internet Explorer biztonsági beállításai**között **adja hozzá az alkalmazás** webhelyét a **megbízható helyek** listájához. Részletes utasításokért küldje el a felhasználókat a [hely hozzáadása a megbízható helyek listájához](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) című cikkben.
+  *  A probléma megoldásához kérje meg a felhasználót, hogy az **Internet Explorer biztonsági beállításai**között **adja hozzá az alkalmazás webhelyét** a **megbízható helyek** listájához. Részletes utasításokért küldje el a felhasználókat a [hely hozzáadása a megbízható helyek listájához](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) című cikkben.
 
 - Ritkán előfordul, hogy az Internet Explorer biztonsági érvényesítése időnként azt eredményezheti, hogy a lap lassabban töltődik be a parancsfájl végrehajtásakor.
 
@@ -87,9 +87,9 @@ Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **
 
 A hozzáférési panel böngésző bővítményének telepítéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com) az egyik támogatott böngészőben, és jelentkezzen  be FELHASZNÁLÓként az Azure ad-ben.
+1.  Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com) az egyik támogatott böngészőben, és jelentkezzen be **felhasználóként** az Azure ad-ben.
 
-2.  kattintson egy **jelszó-SSO-alkalmazásra** a hozzáférési panelen.
+2.  Kattintson egy **jelszó-SSO-alkalmazásra** a hozzáférési panelen.
 
 3.  A szoftver telepítését kérő üzenetben válassza a **Telepítés most**lehetőséget.
 
@@ -99,7 +99,7 @@ A hozzáférési panel böngésző bővítményének telepítéséhez kövesse a
 
 6.  A telepítés után **indítsa újra** a böngésző-munkamenetet.
 
-7.  Jelentkezzen be a hozzáférési panelre, és ellenőrizze,  hogy elindíthatja-e a jelszó-SSO-alkalmazásokat
+7.  Jelentkezzen be a hozzáférési panelre, és ellenőrizze, hogy **elindíthatja** -e a jelszó-SSO-alkalmazásokat
 
 A Chrome és a Firefox bővítményét az alábbi közvetlen hivatkozásokból is letöltheti:
 
@@ -107,6 +107,6 @@ A Chrome és a Firefox bővítményét az alábbi közvetlen hivatkozásokból i
 
 -   [Firefox hozzáférési panel bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)
 

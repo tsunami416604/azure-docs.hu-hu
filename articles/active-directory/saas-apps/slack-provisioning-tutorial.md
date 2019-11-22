@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Slack konfigurálása automatikus felhasználó-kiépítés Azure Active Directorysal | Microsoft Docs'
+title: 'Oktatóanyag: felhasználó kiépítés a Slackhez – Azure AD'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok Tartalékidőre való automatikus kiépítéséhez és üzembe helyezéséhez.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932485"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278163"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: A Slack beállítása automatikus felhasználó-kiépítés esetén
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: a tartalékidő konfigurálása a felhasználók automatikus kiépítési felállításához
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa, milyen lépéseket kell elvégeznie a Slack és az Azure AD-ben, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Slackbe.
 
@@ -34,7 +34,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 * Slack-bérlő a [plusz csomaggal](https://aadsyncfabric.slack.com/pricing) vagy jobb engedélyezéssel
 * Felhasználói fiók a Slackben a csapat rendszergazdai engedélyeivel
 
-Megjegyzés: Az Azure AD-kiépítés integrációja a [SLACK scim API](https://api.slack.com/scim)-ra támaszkodik, amely a plusz csomag Slack csapatainak rendelkezésére áll.
+Megjegyzés: az Azure AD-kiépítés integrációja a [SLACK scim API](https://api.slack.com/scim)-ra támaszkodik, amely a plusz csomag Slack csapatainak számára érhető el.
 
 ## <a name="assigning-users-to-slack"></a>Felhasználók kiosztása a Slackhez
 
@@ -62,7 +62,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
 2. Ha már konfigurálta a tartalékidőt az egyszeri bejelentkezéshez, keresse meg a Slack-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Slack** elemet az alkalmazás-katalógusban. Válassza a tartalékidő lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-3. Válassza ki a Slack-példányt, majd válassza a kiépítés lapot.
+3. Válassza ki a Slack-példányt, majd válassza a **kiépítés** lapot.
 
 4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
@@ -82,9 +82,9 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
 10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a slackhez**lehetőséget.
 
-11. Az **attribútum** -hozzárendelések szakaszban tekintse át azokat a felhasználói attribútumokat, amelyeket szinkronizálni fog az Azure ad-ből a slackbe. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez a Slack felhasználói fiókjainak megfelelően lesznek felhasználva. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+11. Az **attribútum-hozzárendelések** szakaszban tekintse át azokat a felhasználói attribútumokat, amelyeket szinkronizálni fog az Azure ad-ből a slackbe. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez a Slack felhasználói fiókjainak megfelelően lesznek felhasználva. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-12. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a Slack számára, módosítsa a kiépítési **állapotot** a következőre a **Beállítások** szakaszban:
+12. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a Slack számára, módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 
 13. Kattintson a **Save** (Mentés) gombra.
 
@@ -100,7 +100,7 @@ Lehetőség van arra is, hogy engedélyezheti a csoport objektumainak az Azure A
 
 2. Az attribútum-hozzárendelés panelen az Igen értékre van állítva.
 
-3. Az **attribútum** -hozzárendelések szakaszban tekintse át az Azure ad-ből a slackbe szinkronizálni kívánt csoport attribútumait. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletek során a tartalékidőben lévő csoportoknak megfelelően lesznek felhasználva. 
+3. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a slackbe szinkronizálni kívánt csoport attribútumait. Vegye figyelembe, hogy a **megfeleltetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletek során a tartalékidőben lévő csoportoknak megfelelően lesznek felhasználva. 
 
 4. Kattintson a **Save** (Mentés) gombra.
 
@@ -118,11 +118,11 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
   
   * Az engedélyezett írásjelek közé tartoznak az időszakok, az aláhúzások, a kötőjelek, az aposztrófok, a zárójelek (például **([{}])** ) és az elválasztók (például: **/;** ).
   
-  * Csak akkor frissül, ha ez a két beállítás konfigurálva van a Slack munkahelyi/ szervezeti profiljának szinkronizálásához, és a **felhasználók nem változtathatják meg a megjelenítendő nevüket**.
+  * Csak akkor frissül, ha ez a két beállítás konfigurálva van a Slack munkahelyi/szervezeti **profiljának szinkronizálásához** , és a **felhasználók nem változtathatják meg a megjelenítendő nevüket**.
   
 * A Slack **username** attribútumának 21 karakternél rövidebbnek kell lennie, és egyedi értékkel kell rendelkeznie.
 
-* A Slack csak a felhasználónévvel és az **e-mail-címmel**való megfeleltetést engedélyezi.  
+* A Slack csak a **felhasználónévvel** és az **e-mail-címmel**való megfeleltetést engedélyezi.  
 
 ## <a name="additional-resources"></a>További források
 

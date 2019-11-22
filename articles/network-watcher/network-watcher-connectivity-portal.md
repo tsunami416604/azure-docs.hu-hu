@@ -1,6 +1,7 @@
 ---
-title: Az Azure Network Watcher – Azure portal-kapcsolatok hibaelhárítása |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a kapcsolat hibaelhárítása az Azure portal segítségével Azure Network Watcher képességét.
+title: Kapcsolatok – Azure Portal
+titleSuffix: Azure Network Watcher
+description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit a Azure Portal használatával.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,54 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702002"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275970"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Kapcsolatok hibaelhárítása az Azure Network Watcher az Azure portal használatával
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > - [Portál](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
-> - [Azure REST API](network-watcher-connectivity-rest.md)
+> - [Azure-REST API](network-watcher-connectivity-rest.md)
 
-Ismerje meg, hogyan használja a kapcsolat ellenőrzése, hogy közvetlen TCP-kapcsolatot a virtuális gépről egy adott végpontot is létesíthető hibaelhárítása.
+Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak ellenőrzéséhez, hogy egy virtuális gépről egy adott végpontra irányuló közvetlen TCP-kapcsolódás létesíthető-e.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
+Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
-* A Network Watcher-kapcsolat hibaelhárítása szeretné a régióban egy példányát.
-* Virtuális gépek a kapcsolatok hibaelhárítása.
+* Network Watcher egy példánya abban a régióban, ahol a kapcsolódást szeretné elhárítani.
+* Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> Kapcsolódási hibák elhárítása megköveteli, hogy rendelkezik-e a virtuális gép a hibaelhárítás a `AzureNetworkWatcherExtension` Virtuálisgép-bővítmény telepítve van. A bővítmény telepítését egy Windows virtuális gépen látogasson el [Azure Network Watcher-ügynök virtuálisgép-bővítmény Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és Linux rendszerű virtuális gép látogasson el a [Azure Network Watcher-ügynök virtuálisgép-bővítmény Linuxhoz](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a cél-végponton.
+> A kapcsolati hibákhoz az szükséges, hogy a `AzureNetworkWatcherExtension` virtuálisgép-bővítmény telepítve legyen. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
+## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 
-Ebben a példában a cél virtuális gép kapcsolatának ellenőrzi a 80-as porton keresztül.
+Ez a példa az 80-es porton keresztül ellenőrzi a cél virtuális géphez való kapcsolódást.
 
-A Network Watcher keresse meg és kattintson **kapcsolódási hibák elhárítása**. Válassza ki a virtuális gép – ellenőrizze a kapcsolatot. Az a **cél** szakaszban válasszon **válasszon ki egy virtuális gépet** , és válassza ki a megfelelő virtuális gép és a tesztelendő portot.
+Navigáljon a Network Watcher, és kattintson a **kapcsolódási hibák**lehetőségre. Válassza ki azt a virtuális gépet, amelyről meg szeretné nézni a kapcsolatot. A **cél** szakaszban válassza a **virtuális gép kiválasztása** lehetőséget, majd válassza ki a megfelelő virtuális gépet és portot a teszteléshez.
 
-Miután rákattint **ellenőrizze**, a megadott port virtuális gépei közötti kapcsolat be van jelölve. A példában a cél virtuális gép nem érhető el, útválasztók ugrásainak listája látható.
+Ha a **Check (ellenőrzés**) gombra kattint, a megadott porton lévő virtuális gépek közötti kapcsolat be van jelölve. A példában a cél virtuális gép nem érhető el, az ugrások listája látható.
 
-![Virtuális gép kapcsolat eredmények ellenőrzése][1]
+![Virtuális gép csatlakozási eredményeinek ellenőrzése][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Ellenőrizze a kapcsolatot a távoli végpont
+## <a name="check-remote-endpoint-connectivity"></a>Távoli végpont kapcsolatának ellenőrzése
 
-A kapcsolat és a egy távoli végpontra késés ellenőrzéséhez válassza a **megadás manuálisan** választógomb a **cél** szakaszt, adjon meg az URL-címet és portot, és kattintson a **Ellenőrizze**.  Ez szolgál, például a websites és a storage végpontok távoli végpontokhoz.
+Ha szeretné megnézni a kapcsolatot és a késést egy távoli végponton, akkor a **cél** szakaszban válassza a **manuális megadása** választógombot, adja meg az URL-címet és a portot, majd kattintson az **ellenőrzése**gombra.  Ez a távoli végpontok, például a webhelyek és a tárolási végpontok esetében használatos.
 
-![A webhely csatlakozási eredmények ellenőrzése][2]
+![Webhely csatlakozási eredményeinek ellenőrzése][2]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan automatizálhatja a virtuális gép riasztások csomagrögzítés megtekintésével [hozzon létre egy aktivált riasztás csomagrögzítés](network-watcher-alert-triggered-packet-capture.md)
+Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a [riasztások által aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
 
-Keresse meg, ha bizonyos van engedélyezi a forgalmat a virtuális gép vagy a funkcionáló [ellenőrizze IP-folyamat ellenőrzése](diagnose-vm-network-traffic-filtering-problem.md)
+Annak megállapítása, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md) meglátogatása esetén engedélyezett-e a virtuális gép bejövő vagy kimenő forgalma
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

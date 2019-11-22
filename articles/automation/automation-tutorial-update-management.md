@@ -1,20 +1,20 @@
 ---
 title: Azure-beli virtuális gépek frissítéseinek és javításának kezelése
-description: Ez a cikk azt mutatja be, hogyan használható az Azure Automation Update Management az Azure-beli Windows rendszerű virtuális gépek frissítéseinek és javításainak kezeléséhez.
+description: Ez a cikk áttekintést nyújt a Azure Automation Update Management használatáról az Azure-beli és nem Azure-beli virtuális gépek frissítéseinek és javításának kezeléséhez.
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469730"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278784"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -22,7 +22,7 @@ A virtuális gépek frissítéseit és javításait az Update Management megold�
 
 Díjszabási információkért tekintse meg az [Automation Update Management-díjszabását](https://azure.microsoft.com/pricing/details/automation/) ismertető cikket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális gép felvétele az Update Managementbe
@@ -51,15 +51,15 @@ Az oktatóanyag első lépéseként engedélyezze az Update Management megoldás
 1. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Update Management.
 1. A virtuális gép lapjának **MŰVELETEK** szakaszában válassza a **Frissítéskezelés** elemet. Megjelenik **Az Update Management engedélyezése** ablaktábla.
 
-A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen, illetve hogy létezik-e Azure Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, és az Update Management már jelen van-e a munkaterületen.
+A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen, Ez az ellenőrzés magában foglalja a Log Analytics munkaterület és a társított Automation-fiók ellenőrzését, valamint azt, hogy a Update Management megoldás engedélyezve van-e a munkaterületen.
 
-A [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
+A [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
-Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és az Automation hibrid runbook-feldolgozó. Ez az ügynök kommunikál az Azure Automationnel, és begyűjti a frissítési állapottal kapcsolatos információkat. Az ügynök számára a 443-as port szükséges, hogy kommunikálhasson az Azure Automation szolgáltatással és letölthesse a frissítéseket.
+Az érvényesítési folyamat azt is ellenőrzi, hogy a virtuális gép a Log Analytics ügynökkel és az Automation hibrid Runbook-feldolgozóval van-e kiépítve. Ez az ügynök kommunikál az Azure Automationnel, és begyűjti a frissítési állapottal kapcsolatos információkat. Az ügynök számára a 443-as port szükséges, hogy kommunikálhasson az Azure Automation szolgáltatással és letölthesse a frissítéseket.
 
 Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-munkaterület
+* [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-munkaterület
 * Egy [Automation-fiók](./automation-offering-get-started.md)
 * Egy [hibrid runbook-feldolgozó](./automation-hybrid-runbook-worker.md) (a virtuális gépen engedélyezve)
 
@@ -71,9 +71,9 @@ A megoldás engedélyezése néhány percet is igénybe vehet. Ez idő alatt ne 
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
-Az Update Management engedélyezése után megnyílik az **Update Management** ablaktábla. Hiányzó frissítések esetén azok listája a **Hiányzó frissítések** lapon található.
+Az Update Management engedélyezése után megnyílik az **Update Management** ablaktábla. Ha a rendszer hiányzóként azonosította a frissítéseket, a hiányzó **frissítések** lapon megjelenik a hiányzó frissítések listája.
 
-A frissítésekkel kapcsolatos támogatási cikk új ablakban történő megnyitásához kattintson a frissítés **INFORMÁCIÓS HIVATKOZÁSÁRA**. Ebben az ablakban fontos információkhoz juthat a frissítéssel kapcsolatban.
+Az **információ hivatkozás**alatt válassza a frissítés hivatkozást a frissítés támogatási cikkének megnyitásához. A frissítéssel kapcsolatos fontos információkhoz is tájékozódhat.
 
 ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
@@ -218,7 +218,7 @@ Ha a frissítés telepítése sikeresen befejeződött, az alábbihoz hasonló e
 
 ![E-mail konfigurálása műveletcsoport](./media/automation-tutorial-update-management/email-notification.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

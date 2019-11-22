@@ -1,40 +1,40 @@
 ---
-title: 'Tutorial: Manage queries in Azure portal'
-description: In this tutorial, you create a Resource Graph Query and share the new query with others in the Azure portal.
-ms.date: 10/23/2019
+title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
+description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: a1f3213ae1dbd3bc7127b4f4adb8648e9f9adf07
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216231"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303950"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Create and share an Azure Resource Graph query in the Azure portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
-Azure Resource Graph Explorer lets you save your Resource Graph queries directly in the Azure portal. There are two types of queries: _Private_ and _Shared_. A Private query is saved in your Azure portal settings. Whereas a Shared query is a Resource Manager resource that can be managed with role-based access controls (RBAC) and protected with resource locks.
+Az Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portal mentse az erőforrás-gráf lekérdezéseit. Kétféle lekérdezés létezik: _magán_ -és _megosztott_. A rendszer a Azure Portal beállításokban menti a privát lekérdezést. Míg a megosztott lekérdezés olyan Resource Manager-erőforrás, amely szerepköralapú hozzáférés-vezérléssel (RBAC) felügyelhető és erőforrás-zárolásokkal védett. Mindkét típusú lekérdezés titkosítva van a nyugalmi állapotban.
 
-By saving queries in the Azure portal, you save the time you might otherwise spend looking for your favorite or commonly used queries. When you share queries, you help your team realize goals of consistency and efficiency through repetition.
+A lekérdezéseknek a Azure Portalban való mentésével megtakaríthatja a kedvenc vagy gyakran használt lekérdezések keresésének időpontját. A lekérdezések megosztásakor segít a csapatnak megvalósítani a konzisztencia és a hatékonyság célkitűzéseit az ismétlődéssel.
 
-In this tutorial, you'll complete the following tasks:
+Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 > [!div class="checklist"]
-> - Create and delete a Private query
-> - Create a Shared query
-> - Discover Shared queries
-> - Delete a Shared query
+> - Privát lekérdezés létrehozása és törlése
+> - Megosztott lekérdezés létrehozása
+> - Megosztott lekérdezések felderítése
+> - Megosztott lekérdezés törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
-## <a name="create-and-delete-a-private-query"></a>Create and delete a Private query
+## <a name="create-and-delete-a-private-query"></a>Privát lekérdezés létrehozása és törlése
 
-Private queries are accessible and visible only to the account that creates them. As they're saved in an account's Azure portal settings, they can be created, used, and deleted only from inside the Azure portal. A Private query isn't a Resource Manager resource. To create a new Private query, follow these steps:
+A privát lekérdezések csak az őket létrehozó fiók számára érhetők el és láthatók. Ahogy azokat a rendszer a fiók Azure Portal beállításaiban menti, azokat csak a Azure Portal belül lehet létrehozni, használni és törölni. Egy privát lekérdezés nem Resource Manager-erőforrás. Új privát lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
-1. From the portal menu, select **All services** or use the Azure search box at the top of all pages. Search for and then select **Resource Graph Explorer**.
+1. A portál menüjében válassza a **minden szolgáltatás** lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt. Keresse meg és válassza ki az **Erőforrásgrafikon Explorert**.
 
-1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
+1. Az Azure Resource Graph Explorer **lekérdezés 1** lapján adja meg a következő lekérdezést:
 
    ```kusto
    Resources
@@ -42,31 +42,31 @@ Private queries are accessible and visible only to the account that creates them
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-   Select **Run query** to see the query results in the bottom pane.
+   Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
 
-   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
+   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-virtual-machines-by-os-type).
 
 
-1. Select **Save** or **Save as**, enter **Count VMs by OS** as the name, leave the type as **Private query**, and then select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**.
+1. Válassza a **Mentés** vagy a **Mentés másként**lehetőséget, írja be a **virtuális gépek száma operációs rendszer** szerint a nevet, hagyja a típust **privát lekérdezésként**, majd kattintson **a Mentés gombra** a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**.
 
-1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
+1. Lépjen távolabb az Azure Resource Graph Explorerben a Azure Portal, majd térjen vissza. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és az **1. lekérdezés** lapot adta vissza.
 
-1. Select **Open a query**. Make sure that the type is **Private query**. The saved name **Count VMs by OS** now appears in the **Query Name** list. When you select the title link of the saved query, it's loaded into a new tab with that query's name.
+1. Válassza **a lekérdezés megnyitása**lehetőséget. Győződjön meg arról, hogy a típus **privát lekérdezés**. Az operációs rendszer most már a **lekérdezés neve** listában megjelenik a mentett nevek **száma virtuális gépek** . Amikor kiválasztja a mentett lekérdezés cím hivatkozását, a rendszer betölti egy új lapra a lekérdezés nevével.
 
    > [!NOTE] 
-   >When a saved query is open and the tab shows its name, selecting the **Save** button updates it with any changes that have been made. To create a new saved query from this open query, select **Save as** and proceed as if you were saving a brand new query.
+   > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Ha új mentett lekérdezést szeretne létrehozni ebből a nyílt lekérdezésből, válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
 
-1. To delete the saved query, select **Open a query** again, and verify that the **Type** field is set to **Private query**. On the row of the saved `Count VMs by OS` query, select **Delete** (Recycle bin icon). In the confirmation dialog box, select **Yes** to finish deleting the query.
-   Then, close the **Open a query** pane.
+1. A mentett lekérdezés törléséhez válassza ismét **a lekérdezés megnyitása** lehetőséget, és ellenőrizze, hogy a **Type (típus** ) mező **privát lekérdezésre**van-e beállítva. A mentett `Count VMs by OS` lekérdezés sorában válassza a **Törlés** lehetőséget (Lomtár ikon). A megerősítő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
+   Ezután zárjuk be a **lekérdezés megnyitása** ablaktáblát.
 
-## <a name="create-a-shared-query"></a>Create a Shared query
+## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
 
-Unlike a Private query, a Shared query is a Resource Manager resource. This fact means the query gets saved to a resource group, can be managed and controlled with RBAC, and can even be protected with resource locks. As a resource, anyone who has the appropriate permissions can see and use it.
-To create a new Shared query, follow these steps:
+Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoporthoz lesz mentve, felügyelhető és vezérelhető a RBAC, és az erőforrás-zárolásokkal is védhető. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt.
+Új megosztott lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
-1. From the portal menu, select **All services**, or use the Azure search box at the top of all pages to search for and select **Resource Graph Explorer**.
+1. A portál menüjében válassza a **minden szolgáltatás**lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt, és válassza ki az **Erőforrásgrafikon-kezelőt**.
 
-1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
+1. Az Azure Resource Graph Explorer **lekérdezés 1** lapján adja meg a következő lekérdezést:
 
    ```kusto
    Resources
@@ -74,62 +74,62 @@ To create a new Shared query, follow these steps:
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
     
-   Select **Run query** to see the query results in the bottom pane.
+   Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
 
-   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
+   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. Select **Save** or **Save as**.
+1. Válassza a **Mentés** vagy **a Mentés másként**lehetőséget.
 
    
-   ![Save the new query using the save button](../media/create-share-query/save-shared-query-buttons.png)
+   ![Az új lekérdezés mentése a Save (Mentés) gomb használatával](../media/create-share-query/save-shared-query-buttons.png)
 
-1. In the **Save query** pane, enter **Count VMs by OS** for the name.
+1. A **lekérdezés mentése** ablaktáblán adja meg a **virtuális gépek száma operációs rendszer szerint** a nevet.
 
-1. Change the type to **Shared query**, set the description to **Count of virtual machines by OS type**, and set **Subscription** to specify where the query resource gets created.
+1. Módosítsa a típust **megosztott lekérdezésre**, állítsa a leírást a **virtuális gépek számának az operációs rendszer típusa**szerint, és állítsa be az **előfizetést** a lekérdezési erőforrás létrehozási helyének megadásához.
 
-1. Leave the **Publish to resource-graph-queries resource group** check box selected and the **Resource Group location** set to **(US) West Central US**.
+1. Hagyja bejelölve a **Közzététel az erőforráshoz – Graph – lekérdezések erőforráscsoport** jelölőnégyzetet, és az **erőforráscsoport helye** az USA **nyugati középső**régiója.
 
-1. Select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**. The first time the **resource-graph-queries** resource group is used, the save takes longer than expected as the resource group gets created.
+1. Kattintson a Save ( **Mentés** ) gombra a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**. Az erőforrás **-gráf-lekérdezések** erőforráscsoport első használatakor a Mentés a vártnál hosszabb időt vesz igénybe, mert az erőforráscsoport létrejön.
    
-   ![Save the new query as a Shared query](../media/create-share-query/save-shared-query-window.png)
+   ![Az új lekérdezés mentése megosztott lekérdezésként](../media/create-share-query/save-shared-query-window.png)
 
    > [!NOTE] 
-   > You can clear the **Publish to resource-graph-queries resource group** check box if you want to provide the name of an existing resource group to save the shared query into. Using the default named resource group for queries makes Shared queries easier to discover. It also makes the purpose of that resource group more apparent. However, you might opt to select an existing resource group for security reasons based on existing permissions.
+   > Ha meg szeretné adni egy meglévő erőforráscsoport nevét, akkor törölheti a **Közzététel az erőforrás-gráf-lekérdezések erőforráscsoporthoz** jelölőnégyzetet. A lekérdezések alapértelmezett megnevezett erőforráscsoport használatával könnyebben derítheti fel a megosztott lekérdezéseket. Emellett nyilvánvalóvá teszi az erőforráscsoport célját. A meglévő engedélyek alapján azonban dönthet úgy, hogy egy meglévő erőforráscsoportot választ ki biztonsági okokból.
 
-1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
+1. Lépjen távolabb az Azure Resource Graph Explorerben a Azure Portal, majd térjen vissza. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és az **1. lekérdezés** lapot adta vissza.
 
-1. Select **Open a query**. Verify that the type is set to **Shared query** and the combination of **Subscription** and **Resource group** match where you saved the query. The saved **Count VMs by OS** item now appears in the **Query Name** list. Select the title link of the saved query to load it into a new tab with that query's name. As a Shared query, it displays an icon in the tab next to the title, denoting it as shared.
+1. Válassza **a lekérdezés megnyitása**lehetőséget. Ellenőrizze, hogy a típus a **megosztott lekérdezésre** van-e beállítva, és hogy az **előfizetés** és az **erőforráscsoport** kombinációja egyezik-e a lekérdezés mentésekor. A mentett **darabszámú virtuális gépek operációsrendszer** -elem alapján most megjelenik a **lekérdezés neve** listában. Válassza ki a mentett lekérdezés cím hivatkozását egy új lapra való betöltéshez a lekérdezés nevével. Megosztott lekérdezésként megjelenít egy ikont a cím melletti lapon, és megoszthatja azt.
 
-   ![Show the Shared Query with icon](../media/create-share-query/show-saved-shared-query.png)
+   ![A megosztott lekérdezés ikonjának megjelenítése](../media/create-share-query/show-saved-shared-query.png)
 
    > [!NOTE] 
-   > When a saved query is open and the tab shows its name, the **Save** button updates it with any changes that have been made. To create a new saved query, select **Save as** and proceed as if you were saving a brand new query.
+   > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Új mentett lekérdezés létrehozásához válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
 
-## <a name="discover-shared-queries"></a>Discover Shared queries
+## <a name="discover-shared-queries"></a>Megosztott lekérdezések felderítése
 
-Because a Shared query is a Resource Manager resource, there are several ways to find one:
+Mivel a megosztott lekérdezés egy Resource Manager-erőforrás, többféleképpen is megtalálhatja a következőt:
 
-- From Resource Graph Explorer, select **Open a query** and set the type to **Shared query**.
-- From the Resource Graph queries portal page.
-- From the resource group that the Shared query was saved in.
-- Through a query to Resource Graph.
+- A Resource Graph Explorerben válassza a **lekérdezés megnyitása** lehetőséget, és állítsa a típust **megosztott lekérdezésre**.
+- Az erőforrás-gráf lekérdezési portál oldalán.
+- Azt az erőforráscsoportot, amelyben a megosztott lekérdezés el lett mentve.
+- Lekérdezésen keresztül az erőforrás-gráfon.
 
-### <a name="view-resource-graph-queries"></a>View Resource Graph queries
+### <a name="view-resource-graph-queries"></a>Resource Graph-lekérdezések megtekintése
 
-In the Azure portal, the Resource Graph queries page displays Shared queries that the logged-in account has access to. This page enables filtering by name, subscription, resource group, and other properties of the Resource Graph query. You can also tag, export, and delete Resource Graph queries by using this interface.
+A Azure Portal az Erőforrásgrafikon-lekérdezések lap azokat a megosztott lekérdezéseket jeleníti meg, amelyekhez a bejelentkezett fiók hozzáfér. Ezen a lapon engedélyezheti a szűrést név, előfizetés, erőforráscsoport és az Erőforrásgrafikon-lekérdezés egyéb tulajdonságai alapján. Az erőforrás-gráf lekérdezéseit az interfész használatával is címkézheti, exportálhatja és törölheti.
 
-Selecting one of the queries opens the Resource Graph query page. Like other Resource Manager resources, this page offers an interactive overview along with the Activity log, access control, and tags. You can also apply a resource lock directly from this page.
+A lekérdezések egyikének kiválasztásával megnyílik az erőforrás-gráf lekérdezési lapja. A többi Resource Manager-erőforráshoz hasonlóan ez az oldal interaktív áttekintést nyújt a műveletnapló, a hozzáférés-vezérlés és a címkék mellett. Ezen a lapon közvetlenül is alkalmazhat erőforrás-zárolást.
 
-Get to the Resource Graph queries page from the portal menu by selecting **All services** or by using the Azure search box at the top of all pages. Search for and select **Resource Graph Explorer**.
+Az összes szolgáltatás vagy az összes oldal tetején található Azure Search (az összes **szolgáltatás** ) lehetőség kiválasztásával szerezze be az Erőforrásgrafikon-lekérdezések lapot a portál menüjében. Keresse meg és válassza ki a **Resource Graph Explorert**.
 
-### <a name="list-resource-groups-resources"></a>List Resource groups resources
+### <a name="list-resource-groups-resources"></a>Erőforráscsoportok erőforrásainak listázása
 
-The Resource Graph query is listed alongside other resources that are part of a resource group.
-Selecting the Resource Graph query opens the page for that query. The ellipsis and shortcut menu options (triggered by right-clicking) work the same as on the Resource Graph query page.
+Az erőforrás-gráf lekérdezés az erőforráscsoport részét képező egyéb erőforrások mellett szerepel.
+Ha kijelöli az Erőforrásgrafikon-lekérdezést, megnyílik a lekérdezés lapja. A három pont és a helyi menü beállításai (a jobb gombbal kattintva) ugyanúgy működnek, mint az erőforrás-gráf lekérdezése lapon.
 
-### <a name="query-resource-graph"></a>Query Resource Graph
+### <a name="query-resource-graph"></a>Erőforrás-diagram lekérdezése
 
-You can find Resource Graph queries through a query to Resource Graph. The following Resource Graph query limits by type `Microsoft.ResourceGraph/queries`, and then uses `project` to list only the name, time modified, and the query itself:
+Az erőforrás-gráf lekérdezéseit egy lekérdezésen keresztül keresheti meg az erőforrás-diagramon. A következő erőforrás-gráf lekérdezési határértékek `Microsoft.ResourceGraph/queries`szerint vannak korlátozva, majd a `project` használatával csak a nevet, a módosított időpontot és a lekérdezéseket listázza:
 
 ```kusto
 Resources
@@ -137,25 +137,23 @@ Resources
 | project name, properties.timeModified, properties.query
 ```
 
-## <a name="delete-a-shared-query"></a>Delete a Shared query
+## <a name="delete-a-shared-query"></a>Megosztott lekérdezés törlése
 
-If a Shared query is no longer needed, delete it. By deleting a Shared query, you remove the corresponding Resource Manager resource. Any dashboards that the results chart was pinned to now display an error message. When that error message is displayed, use the **Remove from dashboard** button to clean up your dashboard.
+Ha már nincs szükség megosztott lekérdezésre, törölje azt. Egy megosztott lekérdezés törlésével eltávolítja a megfelelő Resource Manager-erőforrást. Minden olyan irányítópult, amelyre az eredmények diagramja be lett rögzítve, hibaüzenet jelenik meg. Ha ez a hibaüzenet jelenik meg, a **Eltávolítás az irányítópultról** gombbal törölje az irányítópultot.
 
-You can delete a Shared query through the following interfaces:
-- Resource Graph queries page
-- Resource Graph query page
-- The **Open a query** page in Resource Graph Explorer
-- Resource groups page
+A megosztott lekérdezéseket az alábbi felületeken törölheti:
+- Resource Graph-lekérdezések lap
+- Erőforrás-diagram lekérdezési lapja
+- A **lekérdezés megnyitása** lap a Resource Graph Explorerben
+- Erőforráscsoportok lap
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-When you're finished with this tutorial, delete the Private and Shared queries you created if you no longer want them.
+Ha elkészült az Oktatóanyaggal, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nem szeretné őket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Run your first query by using the [Azure portal](../first-query-portal.md).
-- Get more information about the [query language](../concepts/query-language.md).
-- Learn more about how to [explore resources](../concepts/explore-resources.md).
-- See samples of [Starter queries](../samples/starter.md).
-- See samples of [Advanced queries](../samples/advanced.md).
-- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+Ebben az oktatóanyagban privát és megosztott lekérdezéseket hozott létre. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
+
+> [!div class="nextstepaction"]
+> [További információ a lekérdezési nyelvről](../concepts/query-language.md)

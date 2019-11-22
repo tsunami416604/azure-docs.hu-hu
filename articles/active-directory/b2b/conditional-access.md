@@ -1,5 +1,5 @@
 ---
-title: Feltételes hozzáférés VÁLLALATKÖZI együttműködéssel rendelkező felhasználók számára – Azure Active Directory | Microsoft Docs
+title: Feltételes hozzáférés VÁLLALATKÖZI együttműködési felhasználók számára – Azure AD
 description: Azure Active Directory B2B-együttműködés támogatja a többtényezős hitelesítést (MFA) a vállalati alkalmazások szelektív eléréséhez
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357113"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272997"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés VÁLLALATKÖZI együttműködéssel rendelkező felhasználók számára
 
@@ -46,7 +46,7 @@ Tekintse meg a következő animációt a beváltási élmény megtekintéséhez:
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>MFA alaphelyzetbe állítása B2B csoportmunka-felhasználók számára
 A rendszergazda jelenleg csak a következő PowerShell-parancsmagok használatával kérheti újra a B2B-együttműködés felhasználóit:
 
-1. Összekapcsolás az Azure AD-vel
+1. Csatlakozás az Azure AD szolgáltatáshoz
 
    ```
    $cred = Get-Credential
@@ -77,7 +77,7 @@ Ha a contoso MFA-szabályzata engedélyezve van a App1, de nem App2, akkor ha me
 
 * 1\. nap: A felhasználó rendelkezik MFA-val a contoso-ban, és hozzáfér a App1-hez, és nem jelenik meg további MFA-kérdés a fabrikam-ben.
 
-* 2\. nap: A felhasználó hozzáfért a contoso-ban található 2. alkalmazáshoz, így most, amikor a Fabrikamhoz fér hozzá, regisztrálnia kell az MFA-hoz.
+* 2\. nap: a felhasználó hozzáfért a contoso-on található 2. alkalmazáshoz, így most, amikor a Fabrikamhoz fér hozzá, regisztrálnia kell az MFA-hoz.
 
 Ez a folyamat zavaró lehet, és a bejelentkezési befejezéshez vezethet.
 
@@ -85,7 +85,7 @@ Emellett akkor is, ha a contoso rendelkezik MFA-képességgel, nem minden esetbe
 
 Végül pedig az erőforrás-bérlői MFA a MSAs és a közösségi azonosítók, valamint olyan partneri szervezethez esetében is működik, amelyeken nincs beállítva az MFA.
 
-Ezért a VÁLLALATKÖZI felhasználók MFA-ra vonatkozó javaslata mindig megköveteli az MFA használatát a meghívó bérlőben. Ez a követelmény bizonyos esetekben kettős MFA-t eredményezhet, de ha a meghívó bérlőhöz fér hozzá, a végfelhasználói élmény kiszámítható: Sally-nek regisztrálnia kell az MFA-t a meghívó Bérlővel.
+Ezért a VÁLLALATKÖZI felhasználók MFA-ra vonatkozó javaslata mindig megköveteli az MFA használatát a meghívó bérlőben. Ez a követelmény bizonyos esetekben kettős MFA-t eredményezhet, de ha a meghívó bérlőhöz fér hozzá, a végfelhasználói élmény kiszámítható: Sally regisztrálni kell az MFA-t a meghívó Bérlővel.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Eszközökön alapuló, hely-és kockázatalapú feltételes hozzáférés a B2B-felhasználók számára
 
@@ -105,7 +105,7 @@ A helyszíni feltételes hozzáférési szabályzatok kikényszeríthető a B2B-
 
 A kockázatalapú bejelentkezési szabályzatok jelenleg nem alkalmazhatók a B2B-felhasználókra, mert a kockázatértékelést a VÁLLALATKÖZI felhasználó otthoni szervezete végzi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

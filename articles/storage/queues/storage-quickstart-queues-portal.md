@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – üzenetsor létrehozása az Azure Storage-ban a Azure Portal használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy várólistát hoz létre a Azure Portal használatával. Ezután a Azure Portal használatával hozzáadhat egy üzenetet, megtekintheti az üzenet tulajdonságait, és elvégezheti az üzenet eltávolítását.
+title: 'Rövid útmutató: Azure Storage-várólisták létrehozása a portálon'
+description: Üzenetsor létrehozásához használja a Azure Portal. Ezután a Azure Portal használatával vegyen fel egy üzenetet, tekintse meg az üzenet tulajdonságait, és törölje az üzenetet.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/06/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721316"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269248"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Gyors útmutató: Üzenetsor létrehozása és üzenet hozzáadása a Azure Portal
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Gyors útmutató: várólista létrehozása és üzenet hozzáadása a Azure Portal
 
 Ebből a rövid útmutatóból megtudhatja, hogyan használható az [Azure Portal](https://portal.azure.com/) egy üzenetsor létrehozásához az Azure Storage-ban, valamint üzenetek hozzáadásához és eltávolításához.
 
@@ -61,7 +61,7 @@ A dequeuing mindig eltávolítja a legrégebbi üzenetet a várólistában.
 
 ![Az üzenetnek a portálról való eltávolítását bemutató képernyőkép](media/storage-quickstart-queues-portal/dequeue-message.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy üzenetsor, hogyan adhat hozzá egy üzenetet, megtekintheti az üzenet tulajdonságait, és elvégezheti az üzenetek elküldését a Azure Portal.
 

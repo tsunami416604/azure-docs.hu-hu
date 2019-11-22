@@ -3,12 +3,12 @@ title: Biztonsági funkciók a Felhőbeli munkaterhelések védelme érdekében
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172724"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278238"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
 
@@ -41,7 +41,7 @@ A Soft delete jelenleg támogatott az USA nyugati középső régiójában, Kele
    > [!NOTE]
    > Ha a tárolóban nem találhatók meg a helyreállított biztonsági mentési elemek, a tár ekkor nem törölhető. A biztonsági mentési elemek végleges törlését követően próbálja meg a tár törlését, és nincs olyan elem, amely a tárolóban marad.
 
-4. A helyreállított virtuális gép visszaállításához először törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted VM elemet, majd kattintson a **Törlés**visszavonása lehetőségre.
+4. A helyreállított virtuális gép visszaállításához először törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted VM elemet, majd válassza a **Törlés**visszavonása lehetőséget.
 
    ![Azure Portal képernyőkép a virtuális gép törléséről](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -60,7 +60,7 @@ A Soft delete jelenleg támogatott az USA nyugati középső régiójában, Kele
 
    ![Képernyőkép a Azure Portalről, biztonsági mentés folytatása lehetőség](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
-Ez a folyamatábra a biztonsági másolati elemek különböző lépéseit és állapotait mutatja be:
+Ez a folyamatábra a biztonsági mentési elemek különböző lépéseit és állapotát jeleníti meg, ha a Soft delete engedélyezve van:
 
 ![A nem törölt biztonságimásolat-elemek életciklusa](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
@@ -68,26 +68,47 @@ További információkért lásd az alábbi [Gyakori kérdések](backup-azure-se
 
 ## <a name="disabling-soft-delete"></a>A Soft delete letiltása
 
-A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozott tárakban. Ha a helyreállítható törlés biztonsági funkció le van tiltva, akkor a biztonsági mentési adatok nem lesznek védve a véletlen vagy kártékony törlésből. A Soft delete funkció nélkül a védett elemek összes törlése azonnali eltávolítást eredményez, a visszaállítási lehetőség nélkül. Mivel a "Soft Delete" állapotban lévő biztonsági mentési állapot nem jár költséggel az ügyfélnek, a funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és nem várja meg a törlés és az ismételt védelem (például egy tesztkörnyezetben) előtt, nem várhatja el a szükséges 14 napot.
+A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozott tárolókban a biztonsági mentési adatok véletlen vagy rosszindulatú törlésből való védelme érdekében.  A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és nem várja meg a törlés és az ismételt védelem (például egy tesztkörnyezetben) előtt, nem várhatja el a szükséges 14 napot. Csak a biztonsági mentési rendszergazda tilthatja le ezt a funkciót. Ha letiltja ezt a funkciót, a védett elemek összes törlése azonnali eltávolítást eredményez, a visszaállítás lehetősége nélkül. A szolgáltatás letiltását megelőzően a törölt állapotban lévő biztonsági mentési állapotok helyreállított állapotban maradnak. Ha véglegesen törölni kívánja ezeket a fájlokat, törölnie kell a törlést, majd újra törölnie kell őket a végleges törléshez.
 
-### <a name="prerequisites-for-disabling-soft-delete"></a>A Soft delete letiltásának előfeltételei
-
-- A tárolók (védett elemek nélküli) törlésének engedélyezése vagy letiltása csak a Azure Portal végezhető el. Ez a következőkre vonatkozik:
-  - A védett elemeket nem tartalmazó újonnan létrehozott tárolók
-  - Meglévő tárolók, amelyek védett elemei törölve lettek, és lejártak (a rögzített 14 napos adatmegőrzési időszakon túl)
-- Ha a helyreállítható törlési funkció le van tiltva a tárolóban, újra engedélyezheti, de ezt a választást nem lehet megfordítani, és nem tilthatja le újra, ha a tároló védett elemeket tartalmaz.
-- Nem lehet letiltani a helyreállítható törlést olyan tárolók esetében, amelyek védett elemeket vagy nem törölt állapotú elemeket tartalmaznak. Ha erre van szüksége, kövesse az alábbi lépéseket:
-  - A törölt adatok védelmének leállítása az összes védett elemnél.
-  - Várjon, amíg a biztonsági megőrzés 14 napja lejár.
-  - Tiltsa le a nem kötelező törlést.
-
-A Soft delete letiltásához győződjön meg arról, hogy teljesülnek az előfeltételek, majd kövesse az alábbi lépéseket:
+A Soft delete letiltásához kövesse az alábbi lépéseket:
 
 1. A Azure Portal nyissa meg a tárolót, majd lépjen a **beállítások** -> **Tulajdonságok**elemre.
-2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások** -> **frissítés**lehetőséget.
-3. A biztonsági beállítások ablaktábla Soft delete területén válassza a **Letiltás**lehetőséget.
+2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások** -> **frissítés**lehetőséget.  
+3. A biztonsági beállítások ablaktábla **Soft delete**területén válassza a **Letiltás**lehetőséget.
+
 
 ![Nem kötelező törlés letiltása](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>A helyreállított törölt biztonsági másolati elemek végleges törlése
+
+A szolgáltatás letiltását megelőzően a törölt állapotban lévő biztonsági mentési állapotok helyreállított állapotban maradnak. Ha véglegesen törölni kívánja ezeket a fájlokat, törölje a törlést, majd törölje őket a végleges törléshez. 
+
+Kövesse az alábbi lépéseket:
+
+1. A [Soft delete letiltásához](#disabling-soft-delete)kövesse a következő lépéseket:. 
+2. A Azure Portal nyissa meg a tárolót, lépjen a **biztonsági másolatok elemre** , és válassza a Soft Deleted VM elemet. 
+
+![A törölt virtuális gép kiválasztása](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. Válassza a **Törlés**visszavonása lehetőséget.
+
+![Törlés visszavonása](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. Ekkor megjelenik egy ablak. Válassza a **Törlés**visszavonása lehetőséget.
+
+![Törlés visszavonása](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. Válassza a **biztonsági mentési adattörlés** lehetőséget a biztonsági másolati adatbázis végleges törléséhez.
+
+![Válassza a biztonsági másolatok törlése lehetőséget.](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. Írja be a biztonsági mentési tétel nevét annak megerősítéséhez, hogy törölni kívánja a helyreállítási pontokat.
+
+![Írja be a biztonsági másolati tétel nevét](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
+
 
 ## <a name="other-security-features"></a>Egyéb biztonsági funkciók
 
@@ -139,7 +160,7 @@ Törlés után a folytatási művelet ismét védi az erőforrást. A folytatás
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Törölhetem a tárolót, ha a tárolóban nem találhatók a törölt elemek?
 
-Recovery Services tár nem törölhető, ha a tárolóban található helyreállítható állapotú biztonsági másolati elemek vannak. A törölt elemek véglegesen törlődnek a törlési művelet 14 napja után. A tárolót csak akkor törölheti, ha az összes helyreállított elemet törölte.  
+Az Recovery Services-tár nem törölhető, ha a tárolóban található helyreállítható állapotú biztonsági másolati elemek vannak. A törölt elemek a törlési művelet után 14 nappal véglegesen törlődnek. Ha 14 napig nem tud megvárni, tiltsa le a helyreállítható [törlést](#disabling-soft-delete), törölje a nem törölt elemek törlését, majd törölje újra a véglegesen a törléshez. Miután meggyőződött róla, hogy nincsenek védett elemek, és nem törölhetők a tárolók.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Törölhetem a 14 napnál régebbi adattörlési időszakot a törlés után?
 

@@ -1,19 +1,19 @@
 ---
-title: Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával C++a/NDK-ben | Microsoft Docs
+title: Horgonyok létrehozása & C++/NDK
 description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a horgonyok az Azure térbeli horgonyok C++használatával a/NDK.-ben
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562543"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270280"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával C++a/NDK-ben
 
@@ -274,7 +274,7 @@ További információ a [GetAnchorPropertiesAsync](https://docs.microsoft.com/cp
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-További információ a lejárati módszerről. [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration)
+További információ a [lejárati](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) módszerről.
 
 ```cpp
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -333,7 +333,7 @@ További információ a [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/s
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a leállítási módszerről. [](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop)
+További információ a [leállítási](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) módszerről.
 
 ```cpp
     cloudSession_->Stop();
@@ -341,7 +341,7 @@ További információ a leállítási módszerről. [](https://docs.microsoft.co
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-További információ az alaphelyzetbe [állítási](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) módszerről.
+További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) módszerről.
 
 ```cpp
     cloudSession_->Reset();

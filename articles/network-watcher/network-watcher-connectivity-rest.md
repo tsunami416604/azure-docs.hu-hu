@@ -1,5 +1,6 @@
 ---
-title: Az Azure Network Watcher – Azure REST API kapcsolatának megoldása | Microsoft Docs
+title: Kapcsolatok – Azure REST API
+titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit az Azure REST API használatával.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 82dd77e8ea36610244b97c1701209d5aa3be2869
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 792556a63b5ca9ef53a33960e8284354972b3895
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017769"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275957"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher-vel való kapcsolatok hibáinak megoldása az Azure-REST API használatával
 
@@ -38,7 +39,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a `AzureNetworkWatcherExtension` virtuálisgép-bővítmény telepítve legyen. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="log-in-with-armclient"></a>Bejelentkezés a ARMClient
 
@@ -133,7 +134,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat a virtuális berendezésen meghiúsult, mert egy **UserRule_Port80**nevű `NetworkSecurityRule` felhasználó konfigurálta, amely letiltja a bejövő forgalmat a 80-es porton. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
+A következő válasz az előző példából származik.  Ebben a válaszban a `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat meghiúsult a virtuális berendezésen, mert egy **UserRule_Port80**nevű felhasználó által konfigurált `NetworkSecurityRule`, amely a 80-es port bejövő forgalmának blokkolására van konfigurálva. Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
 ```json
 {
@@ -249,7 +250,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-A következő példában a `connectionStatus` látható, hogy nem **érhető el**. A `hops` részletek között `issues` látható, hogy a forgalom le lett tiltva, mert egy `UserDefinedRoute`.
+A következő példában a `connectionStatus` nem **érhető el**. A `hops` részleteket a `issues` alatt láthatja, hogy a forgalmat egy `UserDefinedRoute`miatt blokkolta a rendszer.
 
 ```json
 {
@@ -345,7 +346,7 @@ null
 
 ### <a name="response"></a>Válasz
 
-A következő válaszban láthatja, hogy a `connectionStatus` láthatók **elérhetők**. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
+A következő válaszban láthatja, hogy a `connectionStatus` **elérhetőként**jelenik meg. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
 
 ```json
 {
@@ -465,8 +466,8 @@ A következő példa az előző API-hívás futtatásának válasza. Az ellenőr
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuális gépi riasztásokkal a riasztások által [aktivált csomagok létrehozásával](network-watcher-alert-triggered-packet-capture.md).
+Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuális gépi riasztásokkal a [riasztások által aktivált csomagok létrehozásával](network-watcher-alert-triggered-packet-capture.md).
 
-Annak megállapítása, hogy az [IP-](diagnose-vm-network-traffic-filtering-problem.md)forgalom ellenőrzésének meglátogatása esetén engedélyezett-e a virtuális gépen belüli vagy kimenő forgalom.
+Annak megállapítása, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md)meglátogatása esetén engedélyezett-e a virtuális gépen belüli vagy kimenő forgalom.

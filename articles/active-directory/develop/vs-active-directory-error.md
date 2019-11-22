@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941386"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271245"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Hibák diagnosztizálása a Azure Active Directory csatlakoztatott szolgáltatással
 
-A korábbi hitelesítési kód észlelése közben az Azure Active Directory-összekötő kiszolgáló inkompatibilis hitelesítési típust észlelt.
+A korábbi hitelesítési kód észlelése közben a Azure Active Directory csatlakoztatott szolgáltatás inkompatibilis hitelesítési típust észlelt.
 
-A projekt korábbi hitelesítési kódjának megfelelő észleléséhez a projektnek felépítve kell lennie.  Ha ezt a hibát látja, és nem rendelkezik korábbi hitelesítési kóddal a projektben, építse újra, majd próbálkozzon újra.
+A projekt korábbi hitelesítési kódjának megfelelő észleléséhez újra kell építeni a projektet. Ha ezt a hibát látja, és nem rendelkezik korábbi hitelesítési kóddal a projektben, építse újra, majd próbálkozzon újra.
 
 ## <a name="project-types"></a>Projektek típusai
 

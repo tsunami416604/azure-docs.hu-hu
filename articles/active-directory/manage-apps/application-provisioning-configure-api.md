@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125073"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275718"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Kiépítés konfigurálása Microsoft Graph API-k használatával
 
-A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on).
+A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
 
 **A kiépítési konfiguráció automatizálásához Microsoft Graph API-k használatával kapcsolatos lépések áttekintése**
 

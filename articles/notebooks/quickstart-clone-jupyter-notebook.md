@@ -1,25 +1,16 @@
 ---
 title: Klónozza a GitHub-Azure-jegyzetfüzetek használata Jupyter notebook
 description: Gyorsan klónozza a GitHub-adattárból egy Jupyter notebookot, és futtathatja az Azure-jegyzetfüzet-fiókban.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: ed239c470a49fc045bd436668f83dff32eac3a66
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 500bd3f85409bb2f5e7b73be0478694695cc9c00
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970120"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277523"
 ---
-# <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Notebook klónozása
+# <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Egy jegyzetfüzetet klónozása
 
 Számos adatelemzők és fejlesztők tárolja a jegyzetfüzetekre a [GitHub-adattárak](https://github.com), egy ingyenes szolgáltatás, amely számos különböző projekttípusok tárolási és verziókövetési. GitHub gyakran használják, pedig a helyileg futó Jupyter notebookok dolgoztunk. Ezekben az esetekben minden közreműködő fenntartja az adattár helyi példányának, és futtatja a notebookok a másolatot.
 
@@ -33,15 +24,15 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
     ![A böngésző ablakának felső részén saját projektek hivatkozás](media/quickstarts/my-projects-link.png)
 
-1. A **saját projektek** lapon kattintson a felfelé mutató nyíl gombra (billentyűparancs: U a gomb a GitHub-tárház **feltöltésével** jelenik meg, ha a böngészőablak elég széles):
+1. A **saját projektek** lapon kattintson a felfelé mutató nyíl gombra (billentyűparancs: U; a gomb a GitHub-tárház **feltöltésekor** jelenik meg, ha a böngészőablak elég széles):
 
     ![GitHub-tárház-parancs feltöltése a saját projektek oldalon](media/quickstarts/upload-github-repo-command.png)
 
 1. A megjelenő **GitHub-tárház feltöltése** lapon adja meg vagy állítsa be a következő adatokat, majd válassza az **Importálás**lehetőséget:
 
-   - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név az Azure Cognitive Services Jupyter notebookjának klónozását [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
+   - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név a Jupyter notebookokat az Azure Cognitive Services [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
    - **Klónozza a rekurzív módon**: (törölve)
-   - **Projekt neve**: Cognitive Services klón
+   - **Projektnév**: Cognitive Services-klón
    - **A projekt Azonosítóját**: cognitive services-klón
    - **Nyilvános**: (törölve)
 
@@ -51,7 +42,7 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
 1. A Klónozás befejeződése után az Azure-jegyzetfüzetek megnyílik az új projekt, ahol megtekintheti az összes fájl másolatát.
 
-    [![](media/quickstarts/completed-clone.png "A befejezett klón megtekintése")](media/quickstarts/completed-clone.png#lightbox)
+    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
 
 ## <a name="share-a-notebook"></a>Jegyzetfüzet megosztása
 
@@ -73,7 +64,7 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
 1. Eltérő notebookok fájlok szerkesztéséhez kattintson a jobb gombbal a projektre, és válassza ki a fájlt **Edit file** (billentyűparancs: e). Az alapértelmezett művelet **futtatása** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem szerkeszthető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: egy Futtatás ehhez lineáris regressziós modell futtatása Jupyter notebook létrehozása](tutorial-create-run-jupyter-notebook.md)

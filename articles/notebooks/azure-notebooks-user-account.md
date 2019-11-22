@@ -1,23 +1,14 @@
 ---
 title: Jelentkezzen be az Azure notebookok
 description: Konfigurálja a felhasználói fiók Azure notebookokhoz Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókot.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: bc93f55a3349498fa82095c2bc2b3178e234c107
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a2d8c8180dfb5dc31e273c7953a57f40cf31238d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973141"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277627"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>A felhasználói fiók Azure-notebookokhoz
 
@@ -70,7 +61,7 @@ Szervezeti fiók rendszergazdája kell megadnia a jóváhagyás a felhasználó 
 
 Rendszergazdai jóváhagyás megadásához használja a [rendszergazda hozzájárulást kérő lap](https://notebooks.azure.com/account/adminConsent), amely végigvezeti a folyamatot.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 > [!div class="nextstepaction"]
 > [Szerkessze a profil és a felhasználói azonosító](azure-notebooks-user-profile.md)

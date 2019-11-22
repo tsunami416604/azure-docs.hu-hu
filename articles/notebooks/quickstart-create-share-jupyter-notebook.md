@@ -1,25 +1,16 @@
 ---
 title: Létrehozhat és megoszthat a Jupyter notebook az Azure-ban
 description: Gyorsan létrehozása és futtatása a Jupyter notebook Azure notebookokban, majd a notebook megoszthatja másokkal.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970177"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277506"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Notebook létrehozása és megosztása
+# <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása
 
 1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. (További információkért lásd: [rövid útmutató – jelentkezzen be Azure-jegyzetfüzetek](quickstart-sign-in-azure-notebooks.md)).
 
@@ -33,7 +24,7 @@ ms.locfileid: "71970177"
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-   - **Projekt neve**: "Helló világ!" alkalmazás a Pythonban
+   - **Projektnév**: Hello World Python-ben
    - **A projekt Azonosítóját**: hello-world – python
    - **Nyilvános projekt**: (törölve)
    - **Hozzon létre egy README.md**: (törölve)
@@ -42,7 +33,7 @@ ms.locfileid: "71970177"
 
 1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt. Kiválasztásával adjon hozzá egy jegyzetfüzetet a projekthez a **+ új** legördülő (amely jelennek meg, csak **+** ), majd válassza **Notebook**:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "Egy új, üres projekt, és adja hozzá a notebook parancs")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
 1. Az a **Új jegyzetfüzet létrehozása** előugró ablak, amely akkor jelenik meg, adja meg a FileName paramétert a notebook például *HelloWorldInPython.ipynb* ( *.ipynb* azt jelenti, hogy Ironpythonu (Jupyter) Notebook ), és válassza ki **Python 3.6-os** nyelvének (más néven a *kernel*):
 
@@ -82,7 +73,7 @@ ms.locfileid: "71970177"
     print(msg)
     ```
 
-1. **Futtatás** kiválasztása (billentyűparancs: SHIFT + ENTER) a kód futtatásához. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
+1. Válassza ki **futtatása** (billentyűparancs: a Shift + Enter) a kód futtatásához. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -92,7 +83,7 @@ ms.locfileid: "71970177"
 
     ![Mentés ikonra a Jupyter notebook eszköztár](media/quickstarts/hello-results-save-icon.png)
 
-1. Válassza a **fájl** > **Bezárás és** leállítás menüpontot a kiszolgáló leállításához és a böngészőablak bezárásához.
+1. Válassza ki a **fájlt** > **Bezárás és** leállítás menüpontot a kiszolgáló leállításához és a böngészőablak bezárásához.
 
 ## <a name="share-the-notebook"></a>A notebook megosztása
 
@@ -102,7 +93,7 @@ A projekt oldalon is használhatja a **megosztás** menüre, és szerezzen be eg
 
 ![Projekt megosztás parancs](media/quickstarts/share-project-command.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: egy Futtatás ehhez lineáris regressziós modell futtatása Jupyter notebook létrehozása](tutorial-create-run-jupyter-notebook.md)

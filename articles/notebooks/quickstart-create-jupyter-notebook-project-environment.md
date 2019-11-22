@@ -1,25 +1,16 @@
 ---
 title: Egyéni környezettel rendelkező Azure notebookok projekt létrehozása
 description: A telepített csomagokat, és az indítási parancsfájlok egy meghatározott készletével együtt konfigurált Azure-jegyzetfüzetekben hozzon létre egy új projektet.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 6ec0d2fae285889a731e9b881ea90f15b96c85f2
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973083"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277483"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Gyors útmutató: Projekt létrehozása egyéni környezettel
+# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Gyors útmutató: Egyéni környezettel rendelkező-projekt létrehozása
 
 A projekt Azure notebookok gyűjteménye, fájlok, például a notebookok, adatfájlokat, dokumentáció, lemezképek és így tovább, és a egy környezetben, amelyek adott telepítő parancsokkal konfigurálhatók. A környezet a projekttel definiálásával bárki, aki a projekt klónozza a saját Azure-jegyzetfüzetek fiókba, létre kell hoznia a szükséges környezetet minden adattal rendelkezik.
 
@@ -37,7 +28,7 @@ A projekt Azure notebookok gyűjteménye, fájlok, például a notebookok, adatf
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-    - **Projekt neve**: Projekt egyéni környezettel
+    - **Projektnév**: egyéni környezettel rendelkező projekt
     - **A projekt Azonosítóját**: project-egyéni-környezet
     - **Nyilvános projekt**: (törölve)
     - **Hozzon létre egy README.md**: (törölve)
@@ -70,7 +61,7 @@ A projekt Azure notebookok gyűjteménye, fájlok, például a notebookok, adatf
 
 1. A környezet teszteléséhez hozzon létre egy új jegyzetfüzet futtatása, majd hozzon létre egy kódcellát utasításokat, amelyek egy csomagot a környezetben, a Python használatával például függenek `import` utasítást. Ha az utasítás végrehajtása sikeres, majd a szükséges csomag sikeresen telepítve a környezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kezelheti és konfigurálhatja a projektek Azure-jegyzetfüzetekben](configure-manage-azure-notebooks-projects.md)

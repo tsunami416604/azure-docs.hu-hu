@@ -1,6 +1,6 @@
 ---
-title: Útmutató az Azure térbeli horgonyok használó hatékony forráshorgony élményt |} A Microsoft Docs
-description: Irányelvek és szempontok hozhat létre és Azure térbeli horgonyok használatával hatékonyan keresse meg a központi jellegűek.
+title: Útmutató a hatékony horgonyok élményéhez
+description: Útmutatás és szempontok az Azure térbeli horgonyok használatával történő hatékony létrehozásához és megkereséséhez.
 author: mattwojo
 manager: jken
 services: azure-spatial-anchors
@@ -8,108 +8,108 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60566031"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270520"
 ---
-# <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Hozzon létre egy hatékony forráshorgony élmény Azure térbeli horgonyok használatával
+# <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Hatékony Anchor-élmény létrehozása Azure térbeli horgonyok használatával
 
-Ez a cikk útmutatást nyújt, és hatékony segítséget szempontok létrehozása, és keresse meg a központi jellegűek térbeli horgonyok használatával.
+Ez a cikk útmutatást és szempontokat tartalmaz, amelyek segítenek a horgonyok hatékony létrehozásában és megkeresésében a térbeli horgonyok használatával.
 
 ## <a name="good-anchors"></a>Jó horgonyok
 
-Térbeli horgonyok segít a helyes horgonyokat létrehozni. Fontos, hogy idő oktatásához, vagy a felhasználói felület (UX) érdemes létrehozni a felhasználói megtett be. A jó horgonyok meghozni létrehozása terhelésnél, a végfelhasználókkal horgonyok megbízhatóan kereséséhez:
+A térbeli horgonyok segítségével jó horgonyokat hozhat létre. Fontos, hogy a megfelelő horgonyok létrehozásához a felhasználói élményben (UX) betanítsa vagy vezérelje a felhasználókat. A jó alapok létrehozásához való befektetéssel a végfelhasználók megbízhatóan megtalálják a horgonyokat:
 
 - Különböző eszközökön.
-- A különféle időpontokban.
-- A különböző fényviszonyok.
-- A kívánt perspektívából belül a területet.
+- Különböző időpontokban.
+- Különböző megvilágítási körülmények között.
+- A kívánt perspektívából a tárhelyen belül.
 
-## <a name="static-and-dynamic-locations"></a>Statikus és dinamikus helyek
+## <a name="static-and-dynamic-locations"></a>Statikus és dinamikus helyszínek
 
-A helyek tervezésekor a forráshorgony élmény megválasztása. Lesznek a helyek statikus és a terület a rendszergazda által meghatározott? Vagy a program, a dinamikus és a felhasználó által definiált?
+A rögzítési élmény megtervezésének része a helyszínek kiválasztása. A helyek statikusak lesznek, és a hely rendszergazdája határozza meg? Vagy dinamikusak lesznek, és a felhasználó határozza meg?
 
-Egy kereskedelmi üzletvezetőhöz érdemes rávenni a felhasználókat, hogy egy statikus az áruházi élményt. De a vegyes valóságon alapuló tábla játék fejlesztői érdemes a felhasználók a play helyének kiválasztása.
+Előfordulhat, hogy a kiskereskedelmi tárolók kezelője egy statikus, áruházbeli élményt szeretne használni a felhasználók megkereséséhez. A vegyes valóságshow-játékok fejlesztői azonban valószínűleg azt szeretnék, hogy a felhasználók hol játszanak.
 
-Statikus helyeket megtanítható a rendszergazdák számára, hogy a terület a helyes horgonyok a felfedezhetőséget időt.
+Statikus helyek esetén a rendszergazdák megtanítják, hogy a tárhelyet a jó horgonyokkal töltött idő alapján kell kidolgozni.
 
-A dinamikus helyeket gondolja hogyan tanítsa meg, vagy felhasználói útmutató a helyes horgonyokat létrehozni a felhasználói felület.
+A dinamikus helyszínek esetében érdemes meggondolni, hogyan taníthatja meg vagy irányíthatja a felhasználókat az UX-ben, hogy jó horgonyokat hozzon létre.
 
-## <a name="stable-visual-features"></a>Stabil vizuális jellemzőket
+## <a name="stable-visual-features"></a>Stabil vizualizációs funkciók
 
-Vizuális követési-rendszereket használni a vegyes valóságon alapuló és kibővített valóság eszközök a környezet visual szolgáltatásait használják. A legmegbízhatóbb élmény lekérése:  
+A vegyes valóságot és a kibővített valóságot használó eszközökön használt vizuális nyomkövető rendszerek a környezet vizuális funkcióit használják. A legmegbízhatóbb felhasználói élmény eléréséhez:
 
-- *Tegye* horgonyokat létrehozni, amelyet a stabil visual funkciók (vagyis a Funkciók, amelyek nem változnak gyakran) rendelkezik.
+- Olyan *helyen hozza létre* a horgonyokat, amelyek stabil vizualizációs funkciókkal rendelkeznek (azaz olyan funkciókkal, amelyek nem változnak gyakran).
 
-- *Nem* horgonyokat létrehozni nagy üres felületeken, amely nincs megkülönböztetni jellemzőkkel rendelkeznek.
+- *Ne* hozzon létre olyan nagyméretű üres felületen lévő horgonyokat, amelyek nem rendelkeznek megkülönböztető tulajdonságokkal.
 
-- *Nem* magas reflektív anyagokra horgonyokat létrehozni.
+- *Ne* hozzon létre horgonyokat a kifejezetten tükröző anyagokon.
 
-- *Nem* felületeken, ahol a minta megismétlődik, például carpet vagy háttérkép horgonyokat létrehozni.
+- *Ne* hozzon létre horgonyokat olyan felületeken, ahol a minta ismétlődik, például szőnyeg vagy háttérkép.
 
-![Horgonyok egy jó környezetről, és a egy rossz környezetben horgonyok példái](./media/stable-visual.png)
+![Példák jó környezetre a horgonyokhoz és a hibás környezetekhez a horgonyokhoz](./media/stable-visual.png)
 
-## <a name="various-viewing-perspectives"></a>Különböző megtekintésre szempontok szerint
+## <a name="various-viewing-perspectives"></a>Különböző megtekintési perspektívák
 
-Horgonyra létrehozásakor gondolja át a személyek, akik később megpróbálja megkeresni a horgony.
+Horgony létrehozásakor gondolja át azokat a személyeket, akik később megpróbálják megtalálni a horgonyt.
 
-Fontolja meg, például két ajtó rendelkező szoba közepén horgonyra. Valószínűleg szeretné engedélyezése a felhasználók számára adja meg a szoba vagy ajtó. A horgony létrehozásakor kell a mindkét átjáróknak pozícióját vizsgálata. Módosíthatja a horgony körül környezeti adatok rögzítése, hogy a felhasználók megtalálja a horgony vagy ajtó a perspektívákat.
+Vegyünk például egy horgonyt egy olyan helyiség közepén, amely két ajtóval rendelkezik. Valószínű, hogy lehetővé szeretné tenni a felhasználók számára, hogy bármelyik ajtóról belépjenek a helyiségbe. A horgony létrehozásakor mindkét ajtóból be kell olvasnia a pozícióját. A perspektívákat úgy módosíthatja, hogy a horgony körül rögzítse a környezet adatait, így a felhasználók bármelyik ajtóról megkereshetik a horgonyt.
 
-Általánosságban véve horgonyra létrehozásakor vizsgálja a perspektívából megpróbálja megkeresni, személy. Így az egy öltözet szobor virtuális tartalom elhelyezése, logikus körül a szobor való létrehozásakor a horgony keresésekor, és megtudhatja, hogyan. Ha a forráshorgony szoba sarkában, nincs a megközelítést csak egy irányban. Ez a horgony létrehozásakor, beolvashatja azt csak a szempontjából.
+Általánosságban elmondható, hogy a horgony létrehozásakor a rendszer megvizsgálja azon személyek perspektíváit, akik megpróbálják megkeresni. Tehát ha a virtuális tartalmat egy kültéri szobrászatba helyezi, érdemes megmutatni a szobrot a vizsgálat során, miközben a horgonyt hozza létre. Ha a horgony egy helyiség sarkában van, csak egy irányt kell megközelítenie. A horgony létrehozásakor csak ebből a nézőpontból lehet beolvasni.
 
-## <a name="multiple-anchors"></a>Több horgonyok
+## <a name="multiple-anchors"></a>Több horgony
 
-Világítás is sokat számít, hogy az észlelt alkalmazás visual szolgáltatások. Előfordulhat, hogy az erős természetes világos létrehozott horgonyok nehezen keresse ki a mesterséges fény, és ez fordítva is igaz.  
+A megvilágítás különbséget tehet az alkalmazás által észlelt vizuális funkciókban. Az erős természetes fényben létrehozott horgonyok nehéznek bizonyulnak mesterséges fényben, és fordítva.
 
-Ha a probléma, megkönnyíti két horgonyokat létrehozni. Az azonos helyszíni, hozzon létre egy kapcsolati alappal a nyári időszámítás – és a egy másik mesterséges fény a. Az alkalmazás ezután lekérdezheti a mindkét kapcsolati alapokat. Ha mindkét kapcsolati alap található, az alkalmazás számára a horgony egy testtartás tartalmaz. 
+Ha ezt a problémát tapasztalja, segít két horgony létrehozásában. Ugyanazon a helyen hozzon létre egy horgonyt a napfényben, egy másikat pedig mesterséges fényben. Az alkalmazás ezután lekérdezheti mindkét horgonyt. Ha a horgony található, az alkalmazás a horgonyt fogja tartalmazni.
 
-Ehhez hasonlóan környezetekben, ahol módosíthatja a vizuális jellemzőket, mert a legtöbb objektum áthelyezése, több horgonyok segítségével. Túl bonyolult miatt jelentős változtatásokat a környezetben található horgonyra válásakor a horgony lecserélheti egy újat. Erre akkor lehet szükség, ha például egy kiskereskedelmi bolt, ahol a elrendezése néhány havonta frissül.
+Hasonlóképpen, azokban a környezetekben, ahol a vizualizációs funkciók módosulnak, mivel a legtöbb objektum mozog, több horgony segíthet. Ha egy horgony túlságosan nehéznek bizonyul a környezet jelentős változásai miatt, a horgonyt egy újat is lecserélheti. Ezt megteheti például egy olyan kiskereskedelmi tárolóban, ahol az elrendezés néhány havonta frissül.
 
-## <a name="targets-and-rooms"></a>Tárolók és a
+## <a name="targets-and-rooms"></a>Célok és szobák
 
-Sok esetben horgonyra az alkalmazás felhasználói felülete egy belépési pontjához. Érdemes ezt a lépést keresztül gyorsan és megbízhatóan Igen felhasználókat adhat meg a felhasználói élmény. A felhasználók hogyan keresse meg a központi jellegűek költségkeret-beállítási idő egy fontos tervezési lépést. Érdemes úgy gondolja, hogy horgonyok tekintetében két széleskörű forgatókönyvek keresése: *célok* és *termek*.
+Sok esetben a horgony az alkalmazás felhasználói felületének belépési pontja. Gyorsan és megbízhatóan szeretné átvenni ezt a lépést, így a felhasználók megadhatják a felhasználói élményt. Az idő, amikor a felhasználók megtalálják a horgonyokat, fontos tervezési lépés. Érdemes meggondolni, hogyan találhatja meg a horgonyokat két széles forgatókönyv esetén: *célok* és *szobák*.
 
 ### <a name="targets"></a>Célok
 
-A cél a forgatókönyvben a horgony helye jól ismert. Például egy képzeletbeli vegyes valóságon alapuló festmény App egy felhasználói helyez egy virtuális vászonalapú a fali. Marcela arra utasítja a más felhasználók észlelnek a helyiségben, mutasson az eszközeiket, keresse meg a horgony és a felhasználói élményt üzenőfalán ugyanazon a helyen.  
+A cél forgatókönyvben a horgony helye jól ismert. Például egy kitalált Mixed-Reality festészeti alkalmazásban az egyik felhasználó egy virtuális vászonra helyezi a falra. Arra utasítja a helyiség többi felhasználóját, hogy az eszközeit a falon ugyanazon a helyen mutasson, hogy megkeresse a horgonyt, és megkezdje a felhasználói élményt.
 
-Egy másik cél például lehet egy bejelentkezési egy kávézóban, olvasó, a "Vizsgálat üzletek számára." A kávézóban rendelkezik horgonyra itt elhelyezni. A felhasználók a bejelentkezési vizsgálata, keresse meg a horgony, és adja meg a kibővített valóság élmény üzletek megtalálja a kávét.
+Egy másik példa a cél forgatókönyvre egy olyan kávézóban, amely a következőt olvassa: "keresés a Deals". A Coffee Shop itt elhelyezett horgonyt tartalmaz. Ahogy a felhasználók beolvasják a jelt, megkeresik a horgonyt, és megadják a kibővített valóságot, amely a kávén található ajánlatokat keresi meg.
 
-A cél a forgatókönyvben a fényképek segítségével. Ön felhasználók megjelenítése a szándékolt cél fénykép az eszközén, ha azok gyorsan azonosíthatja a Mi a valós életben vizsgálata. Például akkor előfordulhat, hogy segítségével a felhasználók, érkezik egy szándékolt cél általános területén belül a GPS-adatok használatával. A felhasználó érkezik, az alkalmazás a cél egy képet jelenít meg. A felhasználó körül a helyet úgy tűnik, a cél észleli, és a horgony keres.
+A cél forgatókönyvben a fotók segíthetnek. Ha az eszközön a felhasználók számára egy fényképet jelenít meg, akkor gyorsan azonosíthatja, hogy mi a valós világban való vizsgálat. Előfordulhat például, hogy a felhasználók a GPS használatával megérkeznek a kívánt cél általános területére. A felhasználó megérkezése után az alkalmazás a cél fényképét jeleníti meg. A felhasználó megtekinti a területet, megkeresi a célt, és megkeresi a horgonyt.
 
-![Egy fénykép a cél a felhasználó mobil eszközön ábrázoló horgonyra ábrája](./media/start-here-edit.png)
+![Egy horgony illusztrációja, amely a cél fényképét jeleníti meg a felhasználó mobileszközön](./media/start-here-edit.png)
 
-### <a name="rooms"></a>termek
+### <a name="rooms"></a>tárgyalótermek
 
-A hely a forgatókönyvben a felhasználók egyszerűen ismerete nincs valahol a horgony Itt adhatja adja meg. A felhasználók a terület vizsgálat az eszközükön, és gyorsan megtalálhatja a horgony.
+A Room-forgatókönyvben a felhasználók csak azt tudják, hogy van egy horgony itt valahol. A felhasználók beszkennelik a helyet az eszközzel, és gyorsan megkeresik a horgonyt.
 
-Ez a tapasztalat általában megköveteli, hogy jól válogatott horgonyokat létrehozni különböző megtekintésre perspektívák leírt módon. Ha sok perspektívából észlelnek a helyiségben a létrehozása után a horgony beolvasott, a felhasználók szinte bárhonnan beolvashatja amikor találja meg.
+Ez a megoldás általában jól válogatott horgonyok létrehozását igényli, ahogy azt a különböző megtekintési perspektívák tárgyalják. Ha a horgony létrehozásakor számos perspektívából beolvasta a termet, a felhasználók szinte bárhol ellenőrizhetik, amikor megpróbálják megkeresni.
 
-![A felhasználó hogyan beolvasás található horgonyra szoba ábrája](./media/scan-room.png)
+![Ábra arról, hogy a felhasználó hogyan tud beolvasni egy helyet a horgony megtalálásához](./media/scan-room.png)
 
-Alapvetően, több időt a lemezterület ellenőrzése a horgony létrehozásakor, így a későbbi felhasználók vizsgálata, és keresse meg a horgony gyorsan. A felhasználói élmény létrehozása, kell fontolja meg a fontos kompromisszum.
+Lényegében több időt is igénybe vehet, amikor létrehozza a horgonyt, így később a felhasználók bekereshetik és gyorsan megkereshetik a horgonyt. A tapasztalatok létrehozásakor figyelembe kell vennie ezt a fontos kompromisszumot.
 
-A példában a vegyes valóságon alapuló festmény alkalmazás, amely már volt szó korábbi nem működik jól mint egy szoba eset. Itt a felhasználó, aki helyezi el a horgony szeretné másoknak gyorsan csatlakozni a felhasználói élményt. A felhasználók nem szeretnének várjon addig, amíg a helyiségben is vizsgálja, indítsa el a felhasználói élményt. Minden felhasználó, hogy pontosan hol keresse meg a központi jellegűek eszköz pont, mert ebben a példában jobban, mint egy cél eset működik.
+A korábban megjelenő kevert-Reality festészeti alkalmazás példája nem működik megfelelően a szobákban. Itt az a felhasználó, aki a horgonyt helyezi, másokat is szeretne csatlakoztatni a gyors élményhez. A felhasználók nem szeretnének várni a élmény elindítására, amíg a szobát alaposan be nem vizsgálja. Mivel az összes felhasználó pontosan tudja, hol szeretné megkeresni az eszközét a horgonyok megtalálásához, ez a példa jobban működik célként.
 
-## <a name="anchor-location"></a>Rögzítési helye
+## <a name="anchor-location"></a>Horgony helye
 
-Vizuális követési rendszer környezetben a vizuális szolgáltatásait használják. A több vizuális jellemzőket, amely tartalmazza a vizsgálatot, minél nagyobb a valószínűsége horgonyra keresése.
+A vizuális nyomkövető rendszerek a környezet vizuális szolgáltatásaira támaszkodnak. Minél több vizuális funkciót tartalmaz a vizsgálat, annál nagyobb a valószínűsége annak, hogy megtaláljon egy horgonyt.
 
-Kövesse az ebben a szakaszban egy felhasználói felület, amely arra ösztönzi a hasznos keresését, a környezetet hozhat létre az általános útmutatást.
+Az ebben a szakaszban található általános útmutatást követve hozzon létre egy olyan UX-t, amely a környezet hasznos vizsgálatára ösztönöz.
 
-Először Ha a felhasználó nem található horgonyra néhány másodpercen belül, az alkalmazás kell ösztönözzék a felhasználókat a helyezheti az eszközöket, további perspektívákat rögzítéséhez. Az alkalmazás is képes ösztönözzék a felhasználókat a Navigálás magukat a szolgáltatást a horgony több szemszögből a környezetben. A további funkciót perspektívákat, amelyek az eszköz látja, annál jobb.
+Először is, ha a felhasználó néhány másodpercen belül nem talál horgonyt, az alkalmazásnak ösztönöznie kell a felhasználókat az eszköz áthelyezésére, hogy több perspektívát rögzítsen. Az alkalmazás arra is ösztönözheti a felhasználókat, hogy a környezetbe lépjenek, hogy több perspektívából is megkeressék a horgonyt. Minél több funkciói perspektívát lát az eszköz, annál jobb.
 
-A cél esetben kérje meg a felhasználót, hogy a célként megadott Navigálás a különböző szemszögből megtekintéséhez. Más szóval kérje meg a felhasználó a cél új perspektívából rögzítéséhez, amíg a horgony nem található.
+A cél forgatókönyvek esetében kérje meg a felhasználót, hogy a cél körül mozogjon, hogy megtekinthesse a különböző perspektívákat. Más szóval, kérje meg a felhasználót, hogy rögzítse a célt az új perspektívából, amíg a horgony nem található.
 
-Hely forgatókönyvek esetén kérje meg a felhasználót, hogy lassan vizsgálata észlelnek a helyiségben. Például kérje meg a felhasználó számára, hogy 180 fokos vagy a hely még 360 fok. Vagy kérje meg a felhasználó megtekintheti az új szempontjából észlelnek a helyiségben. 
+A Room-forgatókönyvek esetében kérje meg a felhasználót, hogy lassan vizsgálja meg a helyet. Tegyük fel például, hogy a felhasználó bekapcsolja a 180 fokos, vagy akár 360 fokos mértékben a szobát. Vagy kérje meg a felhasználót, hogy tekintse meg a szobát egy új perspektívából.
 
-A legtöbb jelentéssel bíró metódus a szoba különböző vizsgálata. A vizsgálat a szoba különböző keresését egy közeli időpont, a környezet több visual szolgáltatással például rögzíti. Keresését egy közeli időpont alapján, a környezetet tetszőleges számú hasznos vizuális jellemzőinek nem rögzíti.
+A legértelmesebb módszer a teljes helyiség vizsgálata. A helyiség vizsgálata a környezet több vizualizációs funkcióját rögzíti, mint például a közeli fal vizsgálata. A közeli fal vizsgálata nem rögzíti a környezet számos hasznos vizuális funkcióját.
 
-Nem hasznos ismételten helyezze át az eszköz oldalra horgonyra keresésekor. Ez egyszerűen a azonos szempontjából azonos pontok rögzíti.
+Az eszközt nem lehet ismételten az oldalról a oldalról áthelyezni a horgony keresésekor. Ez egyszerűen az azonos perspektívából származó pontokat rögzíti.
 
-## <a name="experience-tests"></a>Élmény tesztek
+## <a name="experience-tests"></a>Tapasztalati tesztek
 
-Ebben a cikkben korábban már volt szó általános irányelveket. A térbeli horgonyok ír le, hogy a való világból együttműködő alkalmazásokat. Ezért az alkalmazás kapcsolati alappal forgatókönyvek tesztelését valós környezetben kell áldozni idő. Ez különösen igaz környezetek, amelyek a várt a felhasználók használhatják az alkalmazást.
+Ebben a cikkben az általános irányelveket ismertetjük. A térbeli Horgonyokkal olyan alkalmazásokat írunk, amelyek a valós világban működnek. Emiatt érdemes időt fordítani az alkalmazás rögzített forgatókönyvek valós környezetekben történő tesztelésére. Ez különösen igaz olyan környezetekben, amelyek a felhasználók számára az alkalmazás használatának várható helyét jelölik.

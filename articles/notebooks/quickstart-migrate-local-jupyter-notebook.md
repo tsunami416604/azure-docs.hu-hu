@@ -1,31 +1,22 @@
 ---
 title: Helyi Jupyter notebook át Azure notebookok
 description: Gyorsan Jupyter notebook átvitele az Azure-jegyzetfüzeteket a helyi számítógépen vagy egy webes URL-címet, majd ossza meg az együttműködéshez.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 2151d5b04b0fe5d47e8e2ddfb750ac279b6f74fa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3b7d5aab05923fb4356e0d45aaf21a77076a870a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970186"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277466"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Gyors útmutató: Helyi Jupyter notebook migrálása
+# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Gyors útmutató: A helyi Jupyter notebook áttelepítése
 
 A saját számítógépén helyileg létrehozott Jupyter notebookok csak az Ön számára érhetők el. Megoszthatja azt jelenti, hogy, különböző fájljait, de majd címzettek rendelkeznek-e a notebookot a saját helyi példányát, és előfordulhat, hogy minden olyan módosításokat építhet számára nehézséget jelent. Notebookok egy megosztott, például a GitHub online tárházban is tárolhat, de ehhez továbbra is szükséges, hogy rendelkezik-e a saját helyi Jupyter-telepítés az Öné azonos konfigurációjú minden közreműködő.
 
 A helyi vagy a tárház notebookok Azure notebookok áttelepítésével tárolja ezeket a felhőben, amelyen azonnal megoszthatja a közreműködőkkel együtt. Ezeket a közreműködők kell csupán egy böngésző megtekintését és futtatását a jegyzetfüzet, ha azok [jelentkezzen be a](quickstart-sign-in-azure-notebooks.md) az Azure-jegyzetfüzeteket is módosíthatják.
 
-Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebookot a helyi számítógépről vagy egy másik elérhető fájl URL-CÍMÉT. A jegyzetfüzetek GitHub-tárházból való áttelepítéséhez tekintse meg a következőt: [Quickstart: Jegyzetfüzetek klónozása @ no__t-0.
+Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebookot a helyi számítógépről vagy egy másik elérhető fájl URL-CÍMÉT. A GitHub-adattárból notebookok áttelepítéséhez lásd: [a rövid útmutató: egy jegyzetfüzetet klónozása](quickstart-clone-jupyter-notebook.md).
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Hozzon létre egy projektet az Azure-jegyzetfüzetek
 
@@ -47,7 +38,7 @@ Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebooko
 
     ![A parancs egy URL-cím vagy a helyi számítógép notebook feltöltéséhez](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Ha a jegyzetfüzet egy GitHub-tárházban található, kövesse a következő lépéseket: [Quickstart: Jegyzetfüzetek klónozása @ no__t-0 helyett.)
+   (Újra, ha a jegyzetfüzet egy GitHub-adattárból, kövesse [a rövid útmutató: egy jegyzetfüzetet klónozása](quickstart-clone-jupyter-notebook.md) helyette.)
 
    - Ha használ **a számítógép**, áthúzása a *.ipynb* fájlok a helyi menü, vagy válasszon **fájlok kiválasztása**, majd keresse meg és jelölje ki az importálni kívánt fájlokat. Válassza ki **feltöltése**. A feltöltött fájlok vannak megadva a neve megegyezik a helyi fájlokat. (Nem szükséges töltse fel a tartalmát bármely *.ipynb_checkpoints* mappák.)
 
@@ -63,7 +54,7 @@ Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebooko
 
 1. Eltérő notebookok fájlok szerkesztéséhez kattintson a jobb gombbal a projektre, és válassza ki a fájlt **Edit file** (billentyűparancs: e). Az alapértelmezett művelet **futtatása** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem szerkeszthető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: egy Futtatás ehhez lineáris regressziós modell futtatása Jupyter notebook létrehozása](tutorial-create-run-jupyter-notebook.md)

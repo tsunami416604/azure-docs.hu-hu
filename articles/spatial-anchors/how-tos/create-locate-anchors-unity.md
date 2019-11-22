@@ -1,19 +1,19 @@
 ---
-title: Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok segítségével Unity | Microsoft Docs
+title: Horgonyok létrehozása & az egységben
 description: Részletesen ismerteti, hogyan hozhatók létre és találhatók a horgonyok az Azure térbeli horgonyok használatával az egységben.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ade16664ffb3af7a05975c2a8d657aad4f336b06
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 72d25582d15e745b0bdefcde5f68af94eab49293
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650259"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277288"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok segítségével Unity
 
@@ -141,7 +141,7 @@ További információ a [ProcessFrame](https://docs.microsoft.com/dotnet/api/mic
     if (aRCameraManager.subsystem.TryGetLatestFrame(cameraParams, out xRCameraFrame))
     {
         long latestFrameTimeStamp = xRCameraFrame.timestampNs;
-        
+
         bool newFrameToProcess = latestFrameTimeStamp > lastFrameProcessedTimeStamp;
 
         if (newFrameToProcess)
@@ -305,7 +305,7 @@ További információ a [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/ap
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a leállítási módszerről. [](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop)
+További információ a [leállítási](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) módszerről.
 
 ```csharp
     this.cloudSession.Stop();
@@ -313,7 +313,7 @@ További információ a leállítási módszerről. [](https://docs.microsoft.co
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-További információ az alaphelyzetbe [állítási](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) módszerről.
+További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) módszerről.
 
 ```csharp
     this.cloudSession.Reset();
@@ -321,7 +321,7 @@ További információ az alaphelyzetbe [állítási](https://docs.microsoft.com/
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
 
-További információ az elvetési módszerről. [](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose)
+További információ az elvetési [módszerről](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) .
 
 ```csharp
     this.cloudSession.Dispose();

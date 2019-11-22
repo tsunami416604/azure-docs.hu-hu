@@ -1,6 +1,6 @@
 ---
 title: Kérdések & Microsoft Authenticator alkalmazással kapcsolatos válaszok – Azure AD
-description: A Microsoft-hitelesítési alkalmazással és hitelesítéssel kapcsolatos gyakori kérdések és válaszok listáját tartalmazza.
+description: Gyakori kérdések és válaszok (GYIK) a Microsoft-hitelesítési alkalmazásról és a kétfaktoros ellenőrzésről.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcd8140acaff693f5b73fe9654968a5ae7cd4c4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5ba475ecae09dadf31441827a2db846286b74ad2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029803"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266963"
 ---
-# <a name="frequently-asked-questions-about-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
 Ez a cikk a Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdésekre ad választ. Ha nem talál választ a kérdésére, lépjen a [Microsoft Authenticator alkalmazás fórumára](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 

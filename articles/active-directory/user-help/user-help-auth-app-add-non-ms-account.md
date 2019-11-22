@@ -1,6 +1,6 @@
 ---
-title: Nem Microsoft-fiók hozzáadása egy hitelesítő alkalmazáshoz – Azure AD
-description: A nem Microsoft-fiókok (például a Google, a Facebook vagy a GitHub) felvétele a Microsoft Authenticator alkalmazásba kétfaktoros ellenőrzés esetén.
+title: Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz – Azure AD
+description: Vegyen fel nem Microsoft-fiókokat, például a Google vagy a Facebook alkalmazást a Microsoft Authenticator alkalmazásba, hogy ellenőrizze az identitását a kétfaktoros ellenőrzés használatakor.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803667"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278882"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
 A kétfaktoros ellenőrzéshez adja hozzá a nem Microsoft-fiókokat, például a Google, a Facebook vagy a GitHub alkalmazást a Microsoft Authenticator alkalmazáshoz. A Microsoft Authenticator alkalmazás minden olyan alkalmazással működik, amely kétfaktoros ellenőrzést használ, és minden olyan fiókot, amely támogatja az időalapú egyszeri jelszavas (TOTP) szabványokat.
 
@@ -194,7 +194,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá az Amazon-fiókját, m
     >[!NOTE]
     >A kétfaktoros ellenőrzéssel és az Amazon-fiókkal kapcsolatos további információkért lásd: [a kétlépéses ellenőrzés](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és a [Bejelentkezés kétlépéses ellenőrzéssel](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)című szakasz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

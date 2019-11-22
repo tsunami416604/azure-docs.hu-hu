@@ -4,14 +4,14 @@ description: Választ kaphat a Azure Migrate szolgáltatással kapcsolatos gyako
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185779"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284470"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
 
@@ -118,16 +118,10 @@ A kiszolgáló értékelése értékelést nyújt az áttelepítésre való felk
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Mi a különbség a kiszolgálók értékelése és a Site Recovery Deployment Planner között?
 
-A kiszolgáló értékelése egy áttelepítési tervező eszköz. A Site Recovery Deployment Planner vész-helyreállítási tervezési eszköz. 
+A kiszolgáló értékelése egy áttelepítési tervező eszköz. A Site Recovery Deployment Planner vész-helyreállítási tervezési eszköz.
 
 - Helyszíni **áttelepítés megtervezése az Azure-** ba: Ha a helyszíni kiszolgálókat az Azure-ba szeretné áttelepíteni, használja az áttelepítés megtervezésére szolgáló kiszolgáló-értékelést. Felméri a helyszíni számítási feladatokat, és útmutatást és eszközöket biztosít a Migrálás megkönnyítéséhez. Az áttelepítési terv betartása után az eszközöket, például Azure Migrate kiszolgáló áttelepítését is használhatja a gépek Azure-ba való áttelepítéséhez.
 - Vész- **helyreállítási terv az Azure**-ba: Ha a helyszíni rendszerről az Azure-ba történő vész-helyreállítást tervezi a site Recovery használatával, használja a site Recovery Deployment Planner. A Deployment Planner a helyi környezet alapos, Site Recovery-specifikus értékelését biztosítja a vész-helyreállítási célra. Javaslatokat nyújt a vész-helyreállítási megoldásokról, például a replikálásról és a feladatátvételről.
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Azure Migrate becsült költségeket a Nagyvállalati Szerződés (EA) programhoz?
-
-Azure Migrate Server Assessment jelenleg nem támogatja a [nagyvállalati szerződés programhoz](https://azure.microsoft.com/offers/enterprise-agreement-support/)tartozó költségbecslés összegét. Megkerülő megoldásként az értékelés létrehozásakor megadhatja az **utólagos** elszámolású **ajánlatot**, és manuálisan hozzáadhatja az engedmény százalékát (az előfizetésre érvényes) az értékelés tulajdonságaiban foglalt **kedvezményként** :
-
-  ![Értékelés tulajdonságai](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Mi a különbség a helyszíni és a teljesítmény-alapú méretezés között?
 
@@ -182,7 +176,7 @@ Ezek az ügynökök csak akkor szükségesek, ha függőségi vizualizációt ha
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Használhatok egy meglévő munkaterületet a függőségi vizualizációhoz?
 
-Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. [Részletek](concepts-dependency-visualization.md#how-does-it-work).
+Igen, csatlakoztathat egy meglévő munkaterületet az áttelepítési projekthez, és használhatja azt a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#how-does-it-work).
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Exportálhatók a függőségi vizualizációs jelentés?
 

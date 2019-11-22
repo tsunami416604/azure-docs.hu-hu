@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazásproxy-alkalmazáshoz szükséges tűzfal portok |} A Microsoft Docs
+title: Az alkalmazásproxy-alkalmazásokhoz szükséges tűzfal-portok megnyitása
 description: Ismerje meg, milyen portokat megfelelő működéséhez az Azure AD-alkalmazásproxy megnyitásához
 services: active-directory
 documentationcenter: ''
@@ -16,18 +16,18 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e69f2e5049ca290a17c058c9d18dc7c6ec91f49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783562"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275553"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Az alkalmazásproxy-alkalmazáshoz szükséges tűzfal portok
 
 Tekintse meg a szükséges portok és a függvény az egyes portok teljes listáját, az Előfeltételek című szakaszában talál a [alkalmazásproxy dokumentáció](application-proxy-add-on-premises-application.md). Vegye figyelembe, hogy az alkalmazásproxy csak kimenő portokat használ.
 
-Azt is ellenőrizze, hogy rendelkezik-e a szükséges portok megnyitásához nyissa meg az összes a [összekötő portok vizsgálati eszköz](https://aadap-portcheck.connectorporttest.msappproxy.net/) , a helyszíni hálózat. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság. 
+Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság. 
 
 ## <a name="app-proxy-regions"></a>Alkalmazásproxy-régiók
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy az eszközt a megfelelő eredményeket ad meg, hog
 
 -   Az eszköz a böngészőben nyissa meg a kiszolgálón, amelyre telepítve van az összekötő.
 
--   Győződjön meg arról, hogy minden olyan proxyk vagy a tűzfalak az összekötő alkalmazandó is érvényesek, ezen a weblapon. Ezt megteheti az Internet Explorerben a **beállítások**  - &gt; **Internetbeállítások**  - &gt; **kapcsolatok**  - &gt; **LAN-beállítások**. Ezen a lapon láthatja a mezőben "Használatát Proxy Server számára a helyi hálózaton". Válassza ezt a jelölőnégyzetet, és a proxykiszolgáló címét helyezze az "Address" mezőbe.
+-   Győződjön meg arról, hogy minden olyan proxyk vagy a tűzfalak az összekötő alkalmazandó is érvényesek, ezen a weblapon. Ezt az Internet Explorerben a **beállítások** -&gt; **internet beállítások** -&gt; **kapcsolatok** -&gt; **LAN-beállítások**menüpontban teheti meg. Ezen a lapon láthatja a mezőben "Használatát Proxy Server számára a helyi hálózaton". Válassza ezt a jelölőnégyzetet, és a proxykiszolgáló címét helyezze az "Address" mezőbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure térbeli kapcsolatok alapjainak áttekintése |} A Microsoft Docs
-description: Ismerje meg a térbeli horgonyok Azure segítségével miként fejleszthet platformfüggetlen vegyes valóság élményt.
+title: Az Azure térbeli horgonyok áttekintése
+description: Ismerje meg, hogy az Azure térbeli horgonyok hogyan segíthetnek a többplatformos vegyes valóságok fejlesztésében.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,35 +8,35 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 503004cba0d4109adcfee62f7acd108cbcb73eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60240479"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277141"
 ---
-# <a name="azure-spatial-anchors-overview"></a>Az Azure térbeli kapcsolatok alapjainak áttekintése
+# <a name="azure-spatial-anchors-overview"></a>Az Azure térbeli horgonyok áttekintése
 
-Üdvözli az Azure térbeli horgonyok. Azure térbeli horgonyok segítségével a fejlesztők alapvető funkcióit kijelölése tisztában a vegyes valóságon alapuló alkalmazások létrehozását. Ezeket az alkalmazásokat is támogatja a Microsoft HoloLens ARKit támogató iOS-alapú eszközök és ARCore támogató Android-alapú eszközök. Az Azure térbeli horgonyok segítségével a fejlesztők használata vegyes valósághoz platformok mennyire fogja világosnak látni a tárolóhelyek, a lényeges pontos kijelölni, és ezen pontok, a támogatott eszközökről lényeges visszaírásához.
-Ezek a lényeges pontos térbeli horgonyok nevezzük.
+Üdvözli az Azure térbeli horgonyok. Az Azure térbeli alapjai lehetővé teszik a fejlesztők számára, hogy az alapvető képességekkel rendelkezzenek a térbelien tudatos, vegyes valóságot használó alkalmazások létrehozásához. Ezek az alkalmazások támogathatják a Microsoft HoloLens, az ARKit-t támogató iOS-alapú eszközöket és az ARCore-t támogató Android-alapú eszközöket. Az Azure Spatial Anchorsben a fejlesztők vegyesvalóság-platformokat használhatnak a terek érzékeléséhez, a fontos helyek pontos kijelöléséhez, valamint a támogatott eszközökről származó fontos helyek felidézéséhez.
+Ezeket a pontos érdeklődési pontokat térbeli Horgonyoknak nevezzük.
 
 ![Platformokon átívelő](./media/cross-platform.png)
 
 ## <a name="examples"></a>Példák
 
-Egyes használati példák térbeli horgonyok által engedélyezett többek között:
+Néhány példa a térbeli horgonyok által engedélyezett használati esetekre:
 
-- [Több felhasználói élményeket](tutorials/tutorial-share-anchors-across-devices.md). Térbeli horgonyok megkönnyíti a felhasználók ugyanazon a helyen a többfelhasználós vegyes valóság alkalmazások való részvételre. Például két személy indításához vegyes valóság sakk virtuális sakktábla elhelyezése egy táblát. Ezt követően mutat, az eszközt, a tábla, megtekintheti és interakcióba együtt a virtuális sakktábla.
+- [Többfelhasználós élmény](tutorials/tutorial-share-anchors-across-devices.md). A térbeli horgonyok megkönnyítik a felhasználók számára, hogy részt vegyenek a többfelhasználós vegyes valóság alkalmazásokban. A két személy például elindíthatja a Mixed Reality Chess játékot úgy, hogy egy virtuális sakk-táblát helyez el egy táblán. Ezt követően az eszközük a táblázatban látható módon megtekinthető és használható a virtuális sakk-táblával együtt.
 
-- [Módon felmérő](concepts/anchor-relationships-way-finding.md). A fejlesztők is csatlakoztathat térbeli horgonyok együtt a kettő közötti kapcsolatok létrehozása. Például egy alkalmazás tartalmazhat felületet nyújt, amelynek két vagy több pont a lényeges, hogy egy felhasználó egy adott feladat végrehajtásához együtt kell működnie. Ezek a lényeges pontok csatlakoztatott módon hozható létre. Később amikor a felhasználó a többlépéses feladat befejeződik, az alkalmazás kérhet, amelyek a jelenlegivel irányítani felé a következő lépés a felhasználó a feladatnak a közeli kapcsolatok alapjainak.
+- [Módszer – keresés](concepts/anchor-relationships-way-finding.md). A fejlesztők összekapcsolhatják a térbeli horgonyokat, és egymás között kapcsolatokat hoznak létre. Előfordulhat például, hogy egy alkalmazás olyan élményt tartalmaz, amely két vagy több olyan hasznos ponttal rendelkezik, amelyekkel a felhasználónak működnie kell a feladat elvégzéséhez. Ezek a pontok a kapcsolódó módon hozhatók létre. Később, amikor a felhasználó elvégezte a többlépéses feladatot, az alkalmazás kérheti az aktuális közelében lévő horgonyokat, hogy a feladat következő lépése felé irányítsa a felhasználót.
 
-- [A való életből vett megőrzése virtuális tartalom](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Egy alkalmazás hagyhatja, hogy egy felhasználó egy virtuális naptár helyezze egy konferencia szoba üzenőfalon, a felhasználók egy telefonos alkalmazást vagy a HoloLens eszköz használatával is láthatják. Egy ipari beállítás, a felhasználó kap a gépre vonatkozó környezeti információkat húzni a támogatott eszközön a kamera.
+- [Virtuális tartalmak megőrzése a valós világban](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Egy alkalmazás lehetővé teheti a felhasználók számára, hogy egy konferenciaterem falán helyezik üzembe a virtuális naptárakat, így a felhasználók telefonos alkalmazást vagy HoloLens-eszközt is láthatnak. Ipari környezetben a felhasználók környezeti információkat kaphatnak egy gépről, ha egy támogatott eszköz kamerájával felé mutatnak.
 
-Az Azure térbeli horgonyok egy felügyelt szolgáltatás és ügyféloldali SDK-támogatott eszközplatformok tevődik össze. A következő szakaszok Azure térbeli horgonyok használó alkalmazások használatának első lépéseivel kapcsolatos információkat.
+Az Azure Spatial Anchors egy felügyelt szolgáltatásból és a támogatott eszközplatformok ügyféloldali SDK-iból áll. A következő szakaszokban részletesen ismertetjük az Azure térbeli horgonyokat használó alkalmazások létrehozásának első lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az első alkalmazás létrehozása a térbeli horgonyok.
+Hozza létre első alkalmazását térbeli Horgonyokkal.
 
 > [!div class="nextstepaction"]
 > [Unity](unity-overview.yml)

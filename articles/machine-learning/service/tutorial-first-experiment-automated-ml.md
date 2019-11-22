@@ -1,5 +1,5 @@
 ---
-title: Az első automatizált ML besorolási kísérlet létrehozása
+title: Az első automatizált ML-kísérlet létrehozása
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan lehet betanítani és üzembe helyezni egy besorolási modellt a Azure Machine Learning Studióban található automatizált gépi tanulással.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 04035e23c0c650fb6cbf4fdca3b78ce5e814c9d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581590"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270724"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Az automatizált gépi tanulás segítségével automatizálhatja az időigénye
 Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Azure Machine Learning munkaterületet.
+> * Az Azure Machine Learning-munkaterület létrehozása.
 > * Futtasson automatizált gépi tanulási kísérletet.
 > * A kísérlet részleteinek megtekintése.
 > * A modell üzembe helyezése.
@@ -36,7 +36,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 
-* Töltse le az [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
+* Töltse le a [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
@@ -86,19 +86,19 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
         Fájl formátuma|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Tagolt
-        Elválasztó|Egy vagy több karakter, amely&nbsp; különálló, egyszerű szöveges vagy más adatfolyamokban lévő független régiók közötti határ megadását határozza meg. |Vesszővel
+        Elválasztó karakter|Egy vagy több karakter, amely&nbsp; különálló, egyszerű szöveges vagy más adatfolyamokban lévő független régiók közötti határ megadását határozza meg. |Vesszővel
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
 
-    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Kattintson a **Tovább** gombra.
+    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ehhez a példához válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Kattintson a **Tovább** gombra.
 
         ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
     1. A **részletek megerősítése** űrlapon ellenőrizze, hogy az információ megegyezik-e az **alapinformációk** és **beállítások és az előnézeti** űrlapok által korábban feltöltött adatokkal.
     1. Válassza a **Létrehozás** lehetőséget az adatkészlet létrehozásának befejezéséhez.
     1. Válassza ki az adatkészletet, amint megjelenik a listában.
-    1. Tekintse át az **adatelőnézetet** , és győződjön meg róla, hogy nem tartalmaz **day_of_week** , majd kattintson **az OK gombra**.
+    1. Tekintse át az **adatelőnézett** , és győződjön meg arról, hogy nem tartalmaz **day_of_week** , majd kattintson **az OK gombra**.
 
     1. Kattintson a **Tovább** gombra.
 
@@ -133,10 +133,10 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
         Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
-        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| None
+        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |&nbsp;feladatok betanítása&nbsp;idő (óra): 1 <br> Metrika&nbsp;pontszám&nbsp;küszöbérték: nincs
         Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szor&nbsp;kereszt-ellenőrzési <br> <br> Érvényességek száma: 2
-        Egyidejűség| A végrehajtott párhuzamos ismétlések maximális száma és az ismétlések által használt magok száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5<br> &nbsp;&nbsp;magok maximális száma&nbsp;iteráció esetén: nincs
+        Párhuzamosság| A végrehajtott párhuzamos ismétlések maximális száma és az ismétlések által használt magok száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5<br> &nbsp;&nbsp;magok maximális száma&nbsp;iteráció esetén: nincs
         
         Kattintson az **OK** gombra.
 
@@ -151,7 +151,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 ##  <a name="explore-models"></a>Modellek megismerése
 
-Navigáljon a **modellek** lapra, és tekintse meg a tesztelt algoritmusokat (modelleket). Alapértelmezés szerint a modelleket metrikai pontszám szerint rendezi a rendszer. Ebben az oktatóanyagban a legjobb modell, amely a kiválasztott **AUC_weighted** -metrika alapján szerzi be a legmagasabb értékeket a lista elejére.
+Navigáljon a **modellek** lapra, és tekintse meg a tesztelt algoritmusokat (modelleket). Alapértelmezés szerint a modelleket metrikai pontszám szerint rendezi a rendszer. Ebben az oktatóanyagban a legfelső szinten a kiválasztott **AUC_weighted** metrika alapján elért modell a lista tetején található.
 
 Amíg megvárja az összes kísérleti modell befejeződését, válassza ki a befejezett modell **algoritmusának nevét** a teljesítmény részleteinek megismeréséhez. 
 
@@ -209,7 +209,7 @@ Törölje a központi telepítési példányt a Azure Machine Learning studiób�
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a Azure Machine Learning Studio használatával létrehozhatja és üzembe helyezheti a besorolási modellt. További információkat és további lépéseket a következő cikkekben talál:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123966"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274078"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan fejlesztheti, figyelheti és kezelheti a tárolók �
 [![Azure Security Center tárolójának biztonsági lapja](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Biztonsági rések kezelése – tároló lemezképek ellenőrzése (előzetes verzió)
-A Azure Container Registry figyeléséhez kapcsolódjon Security Centerhoz. Új rendszerképek leküldésekor Security Center megvizsgálja a képet a piacvezető sebezhetőség-ellenőrzési szállítótól, a Qualys.
+A Azure Container Registry figyeléséhez győződjön meg arról, hogy a Security Center standard szintű csomagjában van (lásd: [díjszabás](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Ezután engedélyezze a választható tároló-beállításjegyzékek köteget. Új rendszerképek leküldésekor Security Center megvizsgálja a képet a piacvezető sebezhetőség-ellenőrzési szállítótól, a Qualys.
 
 Ha problémák merülnek fel, a Qualys vagy a Security Center – értesítést kap a Security Center irányítópulton. Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. Security Center javaslatainak részleteiért tekintse meg a [virtuális gépek védelmével](security-center-virtual-machine-protection.md##compute-and-app-recs)kapcsolatos javaslatok listáját.
 
@@ -55,7 +55,7 @@ Az AK biztonsági ellenőrzéseket és láthatóságot biztosít a fürtök bizt
 
 Security Center javaslatairól a [virtuális gép védelme](security-center-virtual-machine-protection.md)című témakörben olvashat bővebben.
 
-## <a name="run-time-protection---real-time-threat-detection"></a>Futásidejű védelem – valós idejű fenyegetések észlelése 
+## <a name="run-time-protection---real-time-threat-detection"></a>Futásidejű védelem – valós idejű fenyegetések észlelése
 
 Security Center valós idejű veszélyforrások észlelését teszi lehetővé a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
@@ -66,7 +66,7 @@ A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. Részletek�
 1.  Nyissa meg Security Center **számítási & alkalmazások** lapját.
 2.  Kattintson a **tárolók** fülre. Ekkor megjelenik az AK-fürtök, az ACR-jegyzékek és a Docker-t futtató virtuális gépek testtartása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Security Center tárolók biztonságáról, tekintse meg a következőt:
 * Az [Azure Kubernetes szolgáltatással való integráció](azure-kubernetes-service-integration.md) részletei

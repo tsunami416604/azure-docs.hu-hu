@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932275"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270226"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>A blob Storage blokkolásához szükséges teljesítményi szintek
 
@@ -54,6 +54,12 @@ A prémium szintű tárterület ideális olyan munkaterhelésekhez, amelyek gyor
 ## <a name="standard-performance"></a>Standard teljesítmény
 
 A standard szintű teljesítmény a különböző [hozzáférési szinteket](storage-blob-storage-tiers.md) támogatja az adattárolásra a legköltséghatékonyabb módon. A nagyméretű adathalmazok nagy kapacitásának és nagy teljesítményének növelésére van optimalizálva.
+
+- **Biztonsági mentési és vész-helyreállítási adatkészletek**. A standard szintű tárterület költséghatékony szintet kínál, így tökéletes használatot biztosít mind a rövid, mind a hosszú távú vész-helyreállítási adatkészletekhez, a másodlagos biztonsági mentésekhez és a megfelelőségi adatarchiváláshoz.
+
+- **Médiatartalom**. A képek és a videók gyakran az első létrehozás és tárolás során gyakran érhetők el, de ezt a tartalomtípust ritkábban használják, mint a régebbiek. A standard szintű tárterület a média tartalmának megfelelő kapacitást biztosít. 
+
+- **Tömeges adatfeldolgozás**. Ezek a számítási feladatok alkalmasak a standard szintű tároláshoz, mivel a magas átviteli sebességű tárolást igénylik a következetes kis késés helyett. A nagyméretű, nyers adatkészletek feldolgozásra készülnek, és végül a hűvösebb szintre lesznek migrálva.
 
 ## <a name="migrate-from-standard-to-premium"></a>Migrálás a standard és a prémium között
 

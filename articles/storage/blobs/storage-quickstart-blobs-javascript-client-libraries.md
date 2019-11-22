@@ -1,6 +1,6 @@
 ---
-title: Azure rövid útmutató – Blob létrehozása objektumtárban JavaScript és HTML böngészőben való használatával
-description: Megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat egy BlobService-példánnyal és JavaScripttel egy HTML-oldalon.
+title: 'Gyors útmutató: Azure Blob Storage a JavaScript v2-hez a böngészőben'
+description: Megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat a BlobService egy példányával egy HTML-oldalon a JavaScript v2 SDK használatával.
 keywords: tároló, javascript, html
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,16 +8,16 @@ ms.date: 08/29/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1bf71f899a38fa4ce36f8f0ffc78de0c64f6c3f3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173088"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270036"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Gyors útmutató: Blobok feltöltése, listázása és törlése a böngészőben JavaScript/HTML használatával
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rövid útmutató: Blobok feltöltése, listázása és törlése a böngészőben JavaScript/HTML használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogy hogyan kezelheti a blobokat böngészőben futó kóddal. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében. A rövid útmutató elvégzéséhez szüksége lesz egy [Azure-előfizetésre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -76,9 +76,9 @@ az storage account generate-sas
 ```
 A paraméterek után szereplő értékek nehezen érthetőek lehetnek. Ezek a paraméterértékek a megfelelő engedélyek első betűiből vannak összeállítva. A következő táblázat az értékek eredetét írja le: 
 
-| Paraméter        | Value   | Leírás  |
+| Paraméter        | Érték   | Leírás  |
 |------------------|---------|---------|
-| *engedélyek*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
+| *permissions*    | racwdl  | Ez az SAS *olvasási*, *hozzáfűzési*, *létrehozási*, *írási*, *törlési* és *listázási* képességeket engedélyez. |
 | *resource-types* | sco     | Az SAS a *szolgáltatás*, a *tároló* és az *objektum* erőforrásokra van hatással. |
 | *services*       | b       | Az SAS a *Blob* szolgáltatásra van hatással. |
 
@@ -249,9 +249,9 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Ahhoz, hogy a kódminta működjön, meg kell adnia egy sztringértéket a *blobName* számára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. A kiválasztást követően a következő lépésekkel törölheti a Storage-fiókot: **Áttekintés > Storage-fiók törlése**.
+A rövid útmutató során létrehozott erőforrások törléséhez térjen vissza az [Azure Portalra](https://portal.azure.com), és válassza ki a tárfiókját. Ha kiválasztotta, az **Áttekintés > Tárfiók törlése** paranccsal törölheti a tárfiókot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példákból megtudhatja, hogyan tölthet le blobokat és jelentheti az állapotot a fájlfeltöltések során.
 
 > [!div class="nextstepaction"]

@@ -1,53 +1,53 @@
 ---
-title: Ismerje meg az Azure térbeli Forráshorgony támogatási lehetőségek |} A Microsoft Docs
-description: Az Azure térbeli horgonyok információk nyisson egy kérelmet a támogatási csoporthoz.
+title: Támogatási lehetőségek
+description: Információ arról, hogyan nyitható meg egy kérelem az Azure térbeli horgonyok támogatási csapatával.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1930d5fc9dafe7d480302ded9b4e5a86f55a7669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371cb9ade54da42af1ed75c3e9857b6d1a7a0f4f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964533"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276973"
 ---
-# <a name="azure-spatial-anchors-support-options"></a>Térbeli horgonyok az Azure-támogatással kapcsolatos lehetőségekről
+# <a name="azure-spatial-anchors-support-options"></a>Az Azure térbeli horgonyok támogatási lehetőségei
 
-## <a name="open-a-tech-support-ticket"></a>Nyissa meg a technikai támogatási jegy
+## <a name="open-a-tech-support-ticket"></a>Technikai támogatási jegy megnyitása
 
-Az Azure térbeli horgonyok nyissa meg a technikai támogatási jegyet az Azure Portalon:
+Technikai támogatási jegy megnyitása az Azure Portalon az Azure térbeli horgonyokhoz:
 
-1. Az a [az Azure portal](https://azure.microsoft.com/account/) nyissa meg, kattintson a Súgó ikonra a felső menüsoron, majd válassza ki a **súgó + támogatás** gombra. 
+1. A [Azure Portal](https://azure.microsoft.com/account/) megnyitva válassza ki a Súgó ikont a felső menüsoron, majd kattintson a **Súgó + támogatás** gombra.
 
-![Az Azure portal Súgó és támogatás](./media/spatial-anchor-support.png)
+![Azure Portal Súgó és támogatás](./media/spatial-anchor-support.png)
 
-1. A Súgó + támogatás lap meg van nyitva, válassza ki **+ új támogatási kérelem**.
+1. Nyissa meg a Súgó + támogatás lapot, és válassza az **+ új támogatási kérelem**lehetőséget.
 
-![Az Azure portal új támogatási kérelem](./media/spatial-anchor-support2.png)
+![Új támogatási kérelem Azure Portal](./media/spatial-anchor-support2.png)
 
-1. Ha a támogatási jegy mezők befejezése: 
+1. A támogatási jegy mezőinek végrehajtásakor:
 
-- Probléma típusa: Technikai
-- Szolgáltatás: Spatial Anchors
+- Probléma típusa: technikai
+- Szolgáltatás: térbeli horgonyok
 
-![Az Azure portal támogatási jegy mezők](./media/spatial-anchor-support3.png)
+![Azure Portal támogatási jegy mezői](./media/spatial-anchor-support3.png)
 
 ## <a name="community-support"></a>Közösségi támogatás
 
-A felhasználói Közösség támogatásra, tekintse meg [Azure térbeli horgonyok a Stack Overflow](https://stackoverflow.com/questions/tagged/azure-spatial-anchors). 
+A felhasználói Közösség támogatásához tekintse [meg a stack overflow Azure térbeli horgonyait](https://stackoverflow.com/questions/tagged/azure-spatial-anchors)ismertető témakört.
 
-## <a name="provide-content-feedback"></a>Tartalom visszajelzés küldése
+## <a name="provide-content-feedback"></a>Tartalom visszajelzésének megadása
 
-Minden egyes tartalmak a cikk alján nyisson meg egy GitHub-problémát, és visszajelzést az Azure térbeli Forráshorgony-dokumentáció tartalmát az lehetősége van. 
+Az egyes tartalmi cikkek alján lehetőség van egy GitHub-probléma megnyitására és az Azure térbeli horgony dokumentációs tartalmának visszajelzésére.
 
 ## <a name="provide-product-feedback"></a>Termékkel kapcsolatos visszajelzés küldése
 
-Visszajelzést, megosztani egy ötlete vagy javaslata a következőhöz: a térbeli horgonyok Azure-szolgáltatás, vagy szavazhat az elküldött mások ötleteire, látogasson el a [Azure térbeli horgonyok Visszajelzési fórum](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+Ha visszajelzést szeretne küldeni, ossza meg ötleteit vagy javaslatait az Azure térbeli horgonyok szolgáltatáshoz, vagy szavazzon a mások által beküldött ötletekre, és látogasson el az [Azure térbeli horgonyok visszajelzési fórumára](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-– Gyakori kérdések az Azure térbeli horgonyok, lásd: a [– gyakori kérdések](spatial-anchor-faq.md) lapot.
+Az Azure térbeli Horgonyokkal kapcsolatos gyakori kérdésekért tekintse meg a [gyakori](spatial-anchor-faq.md) kérdések oldalát.

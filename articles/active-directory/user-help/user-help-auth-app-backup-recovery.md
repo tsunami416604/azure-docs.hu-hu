@@ -1,6 +1,6 @@
 ---
-title: Biztonsági mentés és helyreállítás a Microsoft Authenticator alkalmazással – Azure AD
-description: Útmutató a fiók hitelesítő adatainak biztonsági mentéséhez és helyreállításához a Microsoft Authenticator alkalmazás használatával.
+title: Fiókok biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazással – Azure AD
+description: Megtudhatja, hogyan készíthet biztonsági másolatot a fiók hitelesítő adatairól, és hogyan állíthatja helyre a biztonsági másolatot a Microsoft Authenticator alkalmazás használatával.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 827213c8d243e9d66c58195e1d9400bed9c3e337
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820264"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267005"
 ---
-# <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Fiók hitelesítő adatainak biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazással
+# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Fiók hitelesítő adatainak biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazás használatával
 
 **A következőkre vonatkozik:**
 
@@ -121,7 +121,7 @@ Előfordulhat, hogy a biztonsági mentésnek néhány oka van:
 
 - **A biztonsági mentés elavult.** Ha a biztonsági mentési információk elavultak, előfordulhat, hogy az adatok frissítését újra be kell jelentkeznie a Microsoft helyreállítási fiókjába. A helyreállítási fiók a személyes Microsoft-fiók, amelyet kezdetben használt a biztonsági másolat tárolására. Ha bejelentkezésre van szükség, egy piros pont jelenik meg a menüben vagy a műveleti sávon. Miután kiválasztotta a piros pontot, a rendszer felszólítja az adatok frissítésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy biztonsági mentést készített, és visszaállította a fiókja hitelesítő adatait az új eszközre, továbbra is használhatja a Microsoft Authenticator alkalmazást a személyazonosságának ellenőrzéséhez. További információ: bejelentkezés a [fiókba a Microsoft Authenticator alkalmazás használatával](user-help-sign-in.md).
 

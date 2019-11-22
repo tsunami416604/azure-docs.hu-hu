@@ -1,6 +1,6 @@
 ---
-title: Jelszavas egyszeri Bejelentkezést a katalógusban nem szereplő alkalmazás konfigurálásával kapcsolatos problémák |} A Microsoft Docs
-description: Egyéni alkalmazások, amelyek nem az Azure AD alkalmazáskatalógusában a jelszavas egyszeri bejelentkezés (SSO) konfigurálásakor előforduló gyakori problémák.
+title: Problémák a nem katalógusbeli alkalmazások jelszavas BEJELENTKEZÉSének konfigurálásakor
+description: Az Azure AD-alkalmazás-katalógusban nem szereplő egyéni alkalmazások jelszavas egyszeri bejelentkezés (SSO) beállításakor előforduló gyakori problémák.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -15,241 +15,241 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24330dc874173ba1c6f15abb7b4caf9f23e2e00c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440356"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274132"
 ---
-# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálásával kapcsolatos problémák
+# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémák a nem katalógusbeli alkalmazások jelszavas egyszeri bejelentkezésének konfigurálásakor
 
-Ez a cikk ismerteti a konfigurálásakor előforduló gyakori problémák *jelszavas egyszeri bejelentkezés* (SSO) katalógusban nem szereplő alkalmazásokhoz.
+Ez a cikk azokat a gyakori problémákat ismerteti, amelyek akkor fordulhatnak elő, ha a *jelszó egyszeri bejelentkezést* (SSO) konfigurálja egy nem katalógusbeli alkalmazáshoz.
 
-## <a name="capture-sign-in-fields-for-an-app"></a>Az alkalmazás bejelentkezési mezők rögzítése
+## <a name="capture-sign-in-fields-for-an-app"></a>Alkalmazás bejelentkezési mezőinek rögzítése
 
-Bejelentkezési mezők rögzítése csak a HTML-kompatibilis bejelentkezési lapok esetében támogatott. Nem támogatott a nem szabványos bejelentkezési lapok, mint az Adobe Flash használó vagy más nem HTML-kompatibilis technológiákat.
+A bejelentkezési mezők rögzítése csak HTML-kompatibilis bejelentkezési lapok esetén támogatott. A nem szabványos bejelentkezési lapok esetében nem támogatottak, például az Adobe Flash vagy más, nem HTML-kompatibilis technológiák használatát.
 
-Az egyéni alkalmazások bejelentkezési mezők rögzítése két módja van:
+Az egyéni alkalmazások bejelentkezési mezőinek rögzítése kétféleképpen lehetséges:
 
-- **Az automatikus bejelentkezési mezők rögzítése** nagyszerűen működik a legtöbb HTML-kompatibilis bejelentkezési oldalt, *, ha azok jól ismert DIV azonosítók* a felhasználói név és jelszó mezők. A HTML-kódot az oldalon található DIV azonosítók, amelyek megfelelnek bizonyos feltételeknek van lekaparták. Ezekhez a metaadatokhoz a rendszer menti, így később megismétlését az alkalmazáshoz.
+- *Ha jól ismert div-azonosítókat használ* a Felhasználónév és a jelszó mezőkhöz, az **automatikus bejelentkezési mező rögzítése** a legtöbb HTML-kompatibilis bejelentkezési oldallal jól működik. Az oldalon található HTML-fájl a megadott feltételeknek megfelelő DIV-azonosítók megkeresésére van lekaparva. A rendszer menti a metaadatokat, hogy később újra lehessen játszani az alkalmazásban.
 
-- **Bejelentkezési mezők manuális rögzítési** akkor használatos, ha az alkalmazás gyártójával *nem címkemezők a bejelentkezési bemeneti*. Manuális rögzítési is használatos, ha a szállító *több mező található, nem lehet automatikusan észlelt rendereli*. Az Azure Active Directory (Azure AD) annyi mezők, mert a bejelentkezési lapon megadhatja, hogy ezeknek a mezőknek hol találhatók az oldalon Ha adatait tárolhatja.
+- A **bejelentkezési mező manuális rögzítése** akkor használatos, ha az alkalmazás gyártója *nem címkézi a bejelentkezési beviteli mezőket*. A manuális rögzítés akkor is használatos, ha a szállító *több olyan mezőt jelenít meg, amelyek nem észlelhetők automatikusan*. A Azure Active Directory (Azure AD) annyi mezőre képes tárolni az adattárolást, mint a bejelentkezési oldalon, ha azt mondja, hogy ezek a mezők az oldalon találhatók.
 
-Általánosságban elmondható Ha az automatikus bejelentkezési mezők rögzítése nem működik, a manuális beállítást.
+Általánosságban elmondható, hogy ha az automatikus bejelentkezési mező rögzítése nem működik, próbálkozzon a manuális beállítással.
 
-### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Automatikusan az alkalmazás bejelentkezési mezők rögzítése
+### <a name="automatically-capture-sign-in-fields-for-an-app"></a>Alkalmazás bejelentkezési mezőinek automatikus rögzítése
 
-Jelszóalapú egyszeri bejelentkezés konfigurálása az automatikus bejelentkezési mezők rögzítése használatával, kövesse az alábbi lépéseket:
+Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mező rögzítése használatával szeretné konfigurálni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
-2. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás** megnyitásához az Azure AD-bővítményben.
+2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE]
-   > Ha nem látja a kívánt alkalmazást, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás** listája. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás** lista tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. Válassza ki az alkalmazást, amely az egyszeri bejelentkezéshez konfigurálandó.
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** a bal oldali navigációs ablakban.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 
-8. Válassza ki **jelszóalapú bejelentkezés** mód.
+8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 
-9. Adja meg a **bejelentkezési URL-** , azaz az oldal, ahol adja meg a felhasználóknak a felhasználónév és a jelszót, hogy jelentkezzen be az URL-címet. *Győződjön meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-cím oldalán*.
+9. Adja meg a **bejelentkezési URL-címet**, amely annak az oldalnak az URL-címe, ahol a felhasználók megadják a felhasználónevét és jelszavát a bejelentkezéshez. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
 
 10. Kattintson a **Mentés** gombra.
 
-    A lap automatikusan lekaparták, a felhasználói nevet és jelszót beviteli mezők esetében. A hozzáférési Panel böngészőbővítményének használatánál használatával küldheti a jelszavakat, amelyet az alkalmazás most már használhatja az Azure ad-ben.
+    A rendszer automatikusan lekaparja a lapot a Felhasználónév és a jelszó beviteli mezőihez. Mostantól az Azure AD használatával biztonságosan továbbíthatja a jelszavakat az alkalmazáshoz a hozzáférési panel böngésző bővítményének használatával.
 
-### <a name="manually-capture-sign-in-fields-for-an-app"></a>Manuálisan az alkalmazás bejelentkezési mezők rögzítése
+### <a name="manually-capture-sign-in-fields-for-an-app"></a>Egy alkalmazás bejelentkezési mezőinek manuális rögzítése
 
-Bejelentkezési mezők manuális rögzítéséhez a hozzáférési Panel böngészőbővítményének használatánál telepítve kell rendelkeznie. Is, a böngésző nem fut *inPrivate*, *inkognitó*, vagy *privát* mód.
+A bejelentkezési mezők manuális rögzítéséhez telepíteni kell a hozzáférési panel böngésző bővítményét. Emellett a böngésző nem futhat *InPrivate*, *inkognitóban*vagy *privát* módban.
 
-A bővítmény telepítése: a [a hozzáférési Panel webböngésző-bővítmény telepítése](#install-the-access-panel-browser-extension) című szakaszát.
+A bővítmény telepítéséhez tekintse meg a jelen cikk [hozzáférési panel böngésző bővítményének telepítése](#install-the-access-panel-browser-extension) című szakaszát.
 
-Manuális bejelentkezési mezők rögzítése a jelszóalapú egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi lépéseket:
+Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmazáshoz a manuális bejelentkezési mező rögzítése segítségével, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
-2. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás** megnyitásához az Azure AD-bővítményben.
+2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE] 
-   > Ha nem látja a kívánt alkalmazást, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás** listája. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás** lista tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. Válassza ki az alkalmazást, amely az egyszeri bejelentkezéshez konfigurálandó.
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** a bal oldali navigációs ablakban.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 
-8. Válassza ki **jelszóalapú bejelentkezés** mód.
+8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 
-9. Adja meg a **bejelentkezési URL-** , azaz az oldal, ahol adja meg a felhasználóknak a felhasználónév és a jelszót, hogy jelentkezzen be. *Győződjön meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-cím oldalán*.
+9. Adja meg a **bejelentkezési URL-címet**, amely a felhasználók felhasználónevének és jelszavának megadására szolgáló lap. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
 
-10. Válassza ki **konfigurálása *&lt;appname&gt;* jelszó egyszeri bejelentkezési beállításainak**.
+10. Válassza a **konfigurálás *&lt;AppName&gt;* jelszó egyszeri bejelentkezési beállítások**lehetőséget.
 
-11. Válassza ki **bejelentkezési mezők manuális észlelése**.
+11. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet.
 
 14. Kattintson az **OK** gombra.
 
 15. Kattintson a **Mentés** gombra.
 
-16. Kövesse az utasításokat a hozzáférési panelen.
+16. A hozzáférési panel használatához kövesse az utasításokat.
 
-## <a name="troubleshoot-problems"></a>Kapcsolatos problémák elhárítása
+## <a name="troubleshoot-problems"></a>Problémák elhárítása
 
-### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Egy "Minden olyan bejelentkezési mezők megadott URL-címen nem található" hibaüzenet jelenik meg:
+### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>"Nem találtunk a bejelentkezési mezőket ezen az URL-címen" hibaüzenet jelenik meg.
 
-Bejelentkezési mezők automatikus észlelése sikertelen lesz. Ha ez a hibaüzenet kap. A probléma megoldásához próbálja meg a bejelentkezési mezők manuális észlelése. Tekintse meg a [manuálisan az alkalmazás bejelentkezési mezők rögzítése](#manually-capture-sign-in-fields-for-an-app) című szakaszát.
+Ez a hibaüzenet akkor jelenik meg, ha a bejelentkezési mezők automatikus észlelése sikertelen. A probléma megoldásához próbálkozzon a bejelentkezési mezők manuális észlelésével. Tekintse meg a jelen cikk [alkalmazás-és bejelentkezési mezőinek kézi rögzítése](#manually-capture-sign-in-fields-for-an-app) című szakaszát.
 
-### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>Kapok "Nem sikerült menteni az egyszeri bejelentkezés beállításainak" hiba
+### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>"Nem sikerült menteni az egyszeri bejelentkezési konfigurációt" hibaüzenet jelenik meg
 
-A ritkán az egyszeri bejelentkezés beállításainak frissítése sikertelen. A probléma megoldásához próbálja meg újra a konfiguráció mentése.
+Ritkán, az SSO-konfiguráció frissítése sikertelen. A probléma megoldásához próbálja meg újból menteni a konfigurációt.
 
-Ha a hiba továbbra is megkapja, nyisson meg egy támogatási esetet. A leírt adatokat tartalmazzák a [portal értesítése a részletek megtekintéséhez](#view-portal-notification-details) és [értesítés küldése egy támogatási szakértőhöz, ha segítséget szeretne kérni](#send-notification-details-to-a-support-engineer-to-get-help) Ez a cikk szakaszainak.
+Ha megtartja a hibát, nyisson meg egy támogatási esetet. A jelen cikk Súgó szakaszának beszerzéséhez adja meg a [portál értesítési adatainak megtekintése](#view-portal-notification-details) és az [értesítési adatok küldése támogatási szakembernek](#send-notification-details-to-a-support-engineer-to-get-help) című témakörben leírt információkat.
 
-### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>E nem manuális észlelése bejelentkezési mezők a saját alkalmazás
+### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>Nem tudom manuálisan megállapítani a bejelentkezési mezőket az alkalmazáshoz
 
-Az alábbi viselkedés tapasztalható előfordulhat, hogy figyelje meg, ha manuális észlelése nem működik:
+Ha a manuális észlelés nem működik, a következő viselkedéseket érdemes figyelembe venni:
 
-- A manuális rögzítési folyamat működéséhez jelent meg, de a rögzített mezők nem megfelelőek.
+- A manuális rögzítési folyamat úgy tűnt, hogy működik, de a rögzített mezők nem megfelelőek.
 
-- A megfelelő mezőket ne első kiemelve a rögzítési folyamat futtatásakor.
+- A rögzítési folyamat futtatásakor a megfelelő mezők nem jelennek meg a kiemelve.
 
-- A rögzítési folyamat veszi át, az alkalmazás bejelentkezési oldala a várt módon, de semmi nem történik.
+- A rögzítési folyamat végigvezeti az alkalmazás bejelentkezési oldalának a várt módon, de semmi nem történik.
 
-- Manuális rögzítési úgy tűnik, hogy működik, de SSO nem fordulhat elő, amikor a felhasználók megnyitják az alkalmazást a hozzáférési panelen.
+- A manuális rögzítés úgy tűnik, hogy működik, az egyszeri bejelentkezés azonban nem történik meg, amikor a felhasználók a hozzáférési panelen navigálnak az alkalmazáshoz.
 
-Ha bármelyik ezeket a problémákat tapasztal, tegye a következőket:
+Ha ezeket a problémákat tapasztalja, tegye a következőket:
 
-- Győződjön meg arról, hogy a legújabb verzióját a hozzáférési Panel böngészőbővítményének használatánál *telepítve és engedélyezve van*. Tekintse meg a [telepítse a hozzáférési Panel böngészőbővítményének használatánál](#install-the-access-panel-browser-extension) című szakaszát.
+- Győződjön meg arról, hogy a hozzáférési panel böngésző bővítményének legújabb verziója van *telepítve és engedélyezve*. Tekintse meg a jelen cikk [hozzáférési panel böngésző bővítményének telepítése](#install-the-access-panel-browser-extension) című szakaszát.
 
-- Győződjön meg arról, hogy a böngésző nem *inkognitó*, *inPrivate*, vagy *privát* mód a rögzítési folyamat során. A hozzáférési Panel bővítmény ezek módban nem támogatott.
+- A rögzítési folyamat során győződjön meg arról, hogy a böngésző nem az *inkognitóban*, *InPrivate*vagy *Private* módban van. A hozzáférési panel kiterjesztése ezekben a módokban nem támogatott.
 
-- Győződjön meg arról, hogy a felhasználók nem próbál jelentkezzen be az alkalmazásba a hozzáférési panelen közben az *inkognitó*, *inPrivate*, vagy *privát módban*.
+- Győződjön meg arról, hogy a felhasználók nem próbálnak bejelentkezni az alkalmazásba a hozzáférési panelről az *Incognito*, *InPrivate*vagy *Private módban*.
 
-- Próbálja meg újra a manuális rögzítési folyamat. Győződjön meg arról, hogy a piros jelölők esnek-e a megfelelő mezőket.
+- Próbálkozzon újra a manuális rögzítési folyamattal. Győződjön meg arról, hogy a piros jelölők a megfelelő mezőkön vannak.
 
-- Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamat. De ezúttal a folyamat befejezését követően az F12 billentyűt a böngésző fejlesztői konzol megnyitásához. Válassza ki a **konzol** fülre. Típus **window.location= " *&lt;a bejelentkezési URL-címet az alkalmazás konfigurálásakor megadott&gt;* "** , és nyomja le az ENTER billentyűt. Ez kényszeríti, hogy a rögzítési folyamat befejeződik, és tárolja a mezőket, amelyek akkor lettek rögzítve lap átirányítási.
+- Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = " *&lt;az&gt;alkalmazás konfigurálásakor megadott bejelentkezési URL-címet*** , majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
 
-### <a name="contact-support"></a>Forduljon a támogatási szolgálathoz.
+### <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha a probléma továbbra is fennáll, nyisson meg egy esetet Support. Írja le, mit próbált meg. A részleteket a ismertetett tartalmazza a [portal értesítése a részletek megtekintéséhez](#view-portal-notification-details) és [értesítés küldése egy támogatási szakértőhöz, ha segítséget szeretne kérni](#send-notification-details-to-a-support-engineer-to-get-help) (ha alkalmazható) Ez a cikk szakaszainak.
+Ha továbbra is problémákba ütközne, nyisson meg egy esetet Microsoft ügyfélszolgálata. Írja le, hogy mit próbált meg. Adja meg a [portálon](#view-portal-notification-details) megjelenő értesítés részletei között ismertetett részleteket, és [küldjön értesítéseket a támogatási szakembernek a cikk súgójának](#send-notification-details-to-a-support-engineer-to-get-help) megtekintéséhez (ha van ilyen).
 
-## <a name="install-the-access-panel-browser-extension"></a>A hozzáférési Panel böngészőbővítményének használatánál telepítése
+## <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel böngésző bővítményének telepítése
 
 Kövesse az alábbi lépéseket:
 
-1. Nyissa meg [hozzáférési Panel](https://myapps.microsoft.com) egy támogatott böngészővel. Jelentkezzen be az Azure ad-hez mint egy *felhasználói*.
+1. Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com) egy támogatott böngészőben. Jelentkezzen be az Azure AD-be *felhasználóként*.
 
-2. Válassza ki **jelszó-SSO alkalmazás** a hozzáférési panelen.
+2. Válassza a **jelszó-SSO-alkalmazás** lehetőséget a hozzáférési panelen.
 
-3. Ha a szoftver telepítésére kéri, válassza ki a **telepítés most**.
+3. Amikor a rendszer felszólítja a szoftver telepítésére, válassza a **Telepítés most**lehetőséget.
 
-4. Akkor jut el a letöltési oldalra a böngészőjében. Válassza ki a **Hozzáadás** a bővítményt.
+4. A böngésző letöltési lapjára lesz irányítva. Válassza a bővítmény **hozzáadását** .
 
-5. Ha az kéri, válassza ki a **engedélyezése** vagy **engedélyezése**.
+5. Ha a rendszer kéri, válassza az **Engedélyezés** vagy az **Engedélyezés**lehetőséget.
 
 6. A telepítés után indítsa újra a böngészőt.
 
-7. Jelentkezzen be a hozzáférési panelen. Tekintse meg, ha a jelszó-SSO-kompatibilis alkalmazások megnyitható.
+7. Jelentkezzen be a hozzáférési panelre. Megtudhatja, hogy megnyithatja-e a jelszó-SSO-kompatibilis alkalmazásokat.
 
-Emellett közvetlenül is letöltheti a webböngésző-bővítmény a Chrome és a Firefox keresztül ezeket a hivatkozásokat:
+Az alábbi hivatkozásokon keresztül közvetlenül is letöltheti a Chrome és a Firefox böngésző-bővítményét:
 
--   [Chrome-hozzáférési Panel kiterjesztése](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Chrome hozzáférési panel bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [A Firefox hozzáférési Panel kiterjesztése](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Firefox hozzáférési panel bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="view-portal-notification-details"></a>Portál értesítési részleteinek megtekintése
+## <a name="view-portal-notification-details"></a>A portál értesítési adatainak megtekintése
 
-Bármilyen portál értesítési részleteinek megtekintéséhez kövesse az alábbi lépéseket:
+A portálon megjelenő értesítések részleteinek megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Válassza ki a **értesítések** ikont (Csengő) az Azure portal jobb felső sarkában.
+1. Válassza ki az **értesítések** ikont (a harangot) a Azure Portal jobb felső sarkában.
 
-2. Válassza ki minden olyan értesítés, amely bemutatja egy *hiba* állapota. (A piros rendelkeznek "!".)
+2. Válassza ki a *hibás* állapotot megjelenítő értesítéseket. (Piros "!".)
 
    > [!NOTE]
-   > Nem választhat ki, amelyek az értesítések a *sikeres* vagy *folyamatban lévő* állapota.
+   > Nem választhat olyan értesítéseket, amelyek *sikeres* vagy *folyamatban* lévő állapotban vannak.
 
-3. A **értesítés részletei** panel nyílik meg. Olvassa el a problémáról további információk.
+3. Megnyílik az **értesítés részletei** ablaktábla. A problémával kapcsolatos további információkért olvassa el a következő témakört:.
 
-5. Ha segítségre van szüksége, megoszthatja az információkat a támogatási szakember vagy a csoport. Válassza ki a **másolási** ikont jobb oldalán a **hiba másolása** jelölőnégyzetet, hogy másolja vágólapra az értesítési adatokat megosztani.
+5. Ha továbbra is segítségre van szüksége, ossza meg az információkat egy támogatási szakemberrel vagy a termék csoporttal. Válassza a másolási **hiba** mező jobb oldalán található **Másolás** ikont az értesítési adatok megosztásra másolásához.
 
-## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Értesítés küldése egy támogatási szakértőhöz, ha segítséget szeretne kérni
+## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>Értesítési adatok küldése támogatási szakembernek segítség kéréséhez
 
-Fontos, hogy megosztott *összes* támogatásával, ebben a szakaszban szereplő így meghatározhatja, hogy gyorsan részleteit. Jegyezze fel, a képernyőképek készítésének vagy válasszon **hiba másolása**.
+Fontos, hogy az ebben a szakaszban felsorolt *összes* részletet a támogatással ossza meg, így gyorsan segíthet. A rögzítéshez képernyőfelvételt készíthet, vagy kiválaszthatja a **másolási hibát**.
 
-A következő információkat ismerteti, mi minden értesítési elem azt jelenti, hogy, és példákat talál.
+Az alábbi információk ismertetik, hogy az egyes értesítési elemek mit jelentenek és példákat biztosítanak.
 
-### <a name="essential-notification-items"></a>Fontos értesítés elemek
+### <a name="essential-notification-items"></a>Alapvető értesítési elemek
 
-- **Cím**: az értesítés leíró címet.
+- **Title**: az értesítés leíró címe.
 
-   Példa: *Alkalmazásproxy-beállítások*
+   Példa: *alkalmazásproxy-beállítások*
 
-- **Leírás**: Mi történt a művelet eredményeként.
+- **Leírás**: mi történt a művelet eredményeként.
 
-   Példa: *A megadott belső URL-cím már használatban van egy másik alkalmazás.*
+   Példa: *a megadott belső URL-címet már egy másik alkalmazás használja.*
 
 - **Értesítés azonosítója**: az értesítés egyedi azonosítója.
 
     Példa: *clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068*
 
-- **Ügyfélkérés azonosítója**: a megadott kérés azonosítója, hogy a böngészőben.
+- **Ügyfél-kérelem azonosítója**: a böngésző által megadott kérelem-azonosító.
 
     Példa: *302fd775-3329-4670-a9f3-bea37004f0bc*
 
-- **Szolgáltatásblokk UTC idő**: az időbélyeg, ha az értesítés történt, (UTC).
+- **Időbélyeg UTC**: az értesítés időbélyegzője, UTC szerint.
 
-    Példa: *2017-03-23T19:50:43.7583681Z*
+    Példa: *2017-03-23T19:50:43.7583681 z*
 
-- **Belső Tranzakcióazonosító**: a belső azonosítója, amellyel rendszereinkben keressen.
+- **Belső tranzakció azonosítója**: az a belső azonosító, amelyet a rendszer a hibájának keresésére használ.
 
     Példa: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **EGYSZERŰ FELHASZNÁLÓNÉV**: A felhasználó, aki futtatta a műveletet.
+- **UPN**: az a felhasználó, aki futtatta a műveletet.
 
     Példa: *tperkins\@f128.info*
 
-- **Bérlőazonosító**:, hogy a művelet futtató felhasználó tagja a bérlő egyedi azonosítója.
+- **Bérlő azonosítója**: annak a bérlőnek az egyedi azonosítója, amely a műveletet futtató felhasználó tagja.
 
     Példa: *7918d4b5-0442-4a97-be2d-36f9f9962ece*
 
-- **Felhasználói objektum azonosítója**: A művelet futtató felhasználó egyedi azonosítója.
+- **Felhasználói objektum azonosítója**: a műveletet futtató felhasználó egyedi azonosítója.
 
     Példa: *17f84be4-51f8-483a-b533-383791227a99*
 
 ### <a name="detailed-notification-items"></a>Részletes értesítési elemek
 
-- **Megjelenítendő név**: (üres is lehet) részletesebb megjelenített neve, a hibát.
+- **Megjelenített név**: (üres is lehet) a hiba részletesebb megjelenítendő neve.
 
-    Példa: *Alkalmazásproxy-beállítások*
+    Példa: *alkalmazásproxy-beállítások*
 
-- **Állapot**: az értesítés az adott állapotát.
+- **Állapot**: az értesítés konkrét állapota.
 
-    Példa: *Nem sikerült*
+    Példa: *sikertelen*
 
-- **Objektumazonosító:** : (üres is lehet) az Objektumazonosítót, amelyre vonatkozóan a művelet volt futtatva.
+- **Objektumazonosító**: (üres is lehet) a művelet futtatására szolgáló objektumazonosító.
 
    Példa: *8e08161d-f2fd-40ad-a34a-a9632d6bb599*
 
-- **Részletek**: Mi történt a művelet eredményeként a részletes leírását.
+- **Részletek**: a művelet eredményének részletes leírása.
 
-    Példa: *Belső URL-cím "<https://bing.com/>" értéke érvénytelen, mert már használatban van.*
+    Például: a *(z) "<https://bing.com/>" belső URL-cím érvénytelen, mert már használatban van.*
 
-- **Másolási hiba**: Lehetővé teszi, hogy válassza ki a **másolás ikonra** jobb oldalán a **hiba másolása** szövegmezőben másolja vágólapra az értesítési adatokat a támogatása érdekében.
+- **Másolási hiba**: lehetővé teszi, hogy a másolási **hiba** szövegmező jobb oldalán válassza ki a **Másolás ikont** az értesítési adatok másolásához, hogy segítsen a támogatásban.
 
-    Példa:   ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    Példa: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)

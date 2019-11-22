@@ -1,20 +1,16 @@
 ---
 title: Hibaelhárítás
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: 5eec9771e964cf6b47492fdad34bcba14d897d41
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072193"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279724"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -453,3 +449,13 @@ kubectl -n my-namespace delete pod --all
 ```
 
 A hüvely újraindítása után megkezdheti a meglévő névtér használatát az Azure dev Spaces használatával.
+
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Az Azure dev-szóközök engedélyezése az AK-fürtökön a fürt csomópontjainak korlátozott kimenő forgalmával
+
+Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást egy AK-fürtön, amelynél a fürtcsomópontok kimenő forgalmának korlátozása korlátozott, akkor engedélyeznie kell a következő teljes tartományneveket:
+
+| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS:443 | A Linux Alpine és más Azure dev Spaces-lemezképek lekérése |
+| gcr.io | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
+| storage.googleapis.com | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|

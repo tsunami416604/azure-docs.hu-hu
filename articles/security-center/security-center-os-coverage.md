@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803925"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307318"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -91,7 +91,7 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * MySQL
 * CosmosDB
 * Tárfiók
-* App Service
+* App Service-ben
 * Függvény
 * Felhőszolgáltatás
 * VNet
@@ -101,8 +101,8 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * Batch-fiók
 * Service Fabric-fiók
 * Automation-fiók
-* Load Balancer
-* Search
+* Terheléselosztó
+* Keresés
 * Service Bus-névtér
 * Stream Analytics
 * Eseményközpont-névtér
@@ -113,6 +113,8 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * Key Vault
 
 Ha többet szeretne megtudni a Pásti-erőforrások fenti listája által támogatott funkciókról, tekintse meg a [Pásti szolgáltatások által támogatott funkciók](security-center-services.md#paas-services)című témakört.
+
+A Azure Stackban található Virtual Machines védelme is támogatott. A Security Center Azure Stack-nal való integrálásával kapcsolatos további információkért tekintse meg [a Azure stack virtuális gépek Security Centerba való](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)bevezetését ismertető témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

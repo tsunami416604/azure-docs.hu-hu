@@ -2,18 +2,18 @@
 title: 'Előnyök: helyszíni Apache Hadoop migrálása az Azure HDInsight'
 description: Megismerheti a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítésének motivációját és előnyeit.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494944"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267322"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -90,9 +90,9 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 | **Kérdés** | **Példa** | **Válasz** |
 |---|---|---|
 |**Témakör**: **környezet**|||
-|Fürt terjesztési verziója|HDP 2.6.5, CDH 5,7|
+|Fürt terjesztési verziója|HDP 2.6.5, CDH 5.7|
 |Big adatkörnyezet-összetevők|HDFS, fonal, kaptár, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, atlasz, Falcon, Zeppelin, R|
-|Fürtök típusai|Hadoop, Spark, Fluent Kafka, Storm, Solr|
+|Fürtök típusai|Hadoop, Spark, Confluent Kafka, Storm, Solr|
 |Fürtök száma|4|
 |Fő csomópontok száma|2|
 |Munkavégző csomópontok száma|100|
@@ -183,7 +183,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |A szinkronizálni kívánt AD-felhasználók száma?|          100||
 |Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
 |Csak Felhőbeli felhasználók?|                 Igen||
-|MFA szükséges?|                       Nem|| 
+|MFA needed?|                       Nem|| 
 |Az adatengedélyezési követelmények?|  Igen||
 |Szerepköralapú Access Control?|        Igen||
 |Naplózás szükséges?|                  Igen||
@@ -199,7 +199,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Felépítési feladatok elkészítése?|Kaptár-feladatok cseréje a Spark-feladatokkal||
 |Az ADF használata az adatelőkészítéshez?|Nem||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

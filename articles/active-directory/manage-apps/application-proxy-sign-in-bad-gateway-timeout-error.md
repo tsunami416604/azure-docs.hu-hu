@@ -1,5 +1,5 @@
 ---
-title: Nem érhető el ez a vállalati alkalmazáshiba az App proxy alkalmazásban | Microsoft Docs "
+title: Nem érhető el ez a vállalati alkalmazáshiba az App proxy alkalmazással
 description: Tudnivalók az Azure AD-alkalmazásproxy alkalmazásokkal kapcsolatos gyakori hozzáférési problémák megoldásához.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381402"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275474"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Az Application Proxy-alkalmazások használata esetén "Nem tud hozzáférni a vállalati alkalmazás" hiba
 
@@ -31,13 +31,13 @@ Ez a cikk segít az Azure AD-alkalmazásproxy-alkalmazáshoz a "Vállalati alkal
 
 Ezt a hibaüzenetet, ha a hiba lapon keresse meg az állapotkódot. Ezt a kódot, valószínűleg az egyik, a következő állapotkódok:
 
-- **Átjáró időtúllépése**: Az alkalmazásproxy szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában azt jelzi, hogy az összekötő hozzárendelés, összekötő, a probléma, vagy a hálózati szabályok az összekötő körül.
-- **Hibás átjáró**: Az összekötő nem tudja elérni a háttérbeli alkalmazást. Ez a hiba oka lehet az alkalmazás egy hibás.
-- **Tiltott**: A felhasználó nem jogosult az alkalmazás elérésére. Ez a hiba akkor fordulhat elő, ha a felhasználó nincs hozzárendelve az alkalmazáshoz az Azure Active Directoryban, vagy ha a háttérkiszolgálón a felhasználónak nincs engedélye az alkalmazás eléréséhez.
+- **Átjáró időtúllépése**: az alkalmazásproxy-szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában azt jelzi, hogy az összekötő hozzárendelés, összekötő, a probléma, vagy a hálózati szabályok az összekötő körül.
+- **Hibás átjáróval**: az összekötő nem tudja elérni a háttéralkalmazás. Ez a hiba oka lehet az alkalmazás egy hibás.
+- **Tiltott**: A felhasználó nem jogosult az alkalmazás eléréséhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nincs hozzárendelve az alkalmazáshoz az Azure Active Directoryban, vagy ha a háttérkiszolgálón a felhasználónak nincs engedélye az alkalmazás eléréséhez.
 
 A kód megkereséséhez tekintse meg a szöveg a "Állapotkód:" mező a hibaüzenet bal alsó. Kereshet is minden további tippek a lap alján.
 
-![Példa: Átjáró időtúllépése hiba](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![Példa: átjáró időtúllépési hibája](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
 Ezek a hibák okának elhárítása részleteket és további információt a javasolt javítások tekintse meg a megfelelő szakaszt.
 
@@ -75,9 +75,9 @@ Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsopor
 1. Ha nem a megfelelő Összekötőcsoport jelennek meg, használatával a listából válassza ki a megfelelő csoportot, majd erősítse meg, nem lesznek láthatók a figyelmeztetéseket. Ha az importálni kívánt Összekötőcsoport jelenik-e meg, kattintson a figyelmeztető üzenetet, nyissa meg a-összekötő felügyeleti.
 1. Itt van néhány módon lehet további:
 
-   - Aktív összekötő áthelyezése a csoportba: Ha rendelkezik olyan aktív összekötővel, amelynek a csoporthoz kell tartoznia, és a cél háttérbeli alkalmazáshoz tartozik, akkor áthelyezheti az összekötőt a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
-   - Új összekötő letöltése a csoport számára: Ezen a lapon megtekintheti az [új összekötő letöltésére](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)mutató hivatkozást. Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Az összekötő általában ugyanarra a kiszolgálóra van telepítve, mint az alkalmazás. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
-   - Inaktív összekötő vizsgálata: Ha egy összekötő inaktívként jelenik meg, nem tudja elérni a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához a következő lépésekkel ellenőrizheti, hogy az összes szükséges port engedélyezve van-e.
+   - Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, az összekötő áthelyezheti a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
+   - Az adott csoporthoz új összekötő letöltéséhez: ezen a lapon megtekintheti a hivatkozásra kattintva [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Az összekötő általában ugyanarra a kiszolgálóra van telepítve, mint az alkalmazás. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
+   - Vizsgálja meg az inaktív csatlakozó: egy összekötő akkor jeleníti meg inaktívként, ha nem tudja elérni a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához a következő lépésekkel ellenőrizheti, hogy az összes szükséges port engedélyezve van-e.
 
 Használata után ezeket a lépéseket, az alkalmazás hozzá van rendelve egy csoport használata összekötők, hogy tesztelje újból az alkalmazást. Ha nem továbbra is működik, továbbra is a következő szakaszban.
 
@@ -103,6 +103,6 @@ Tekintse meg a hiba továbbra is, ha nyissa meg a gép, ahol az összekötő tel
 
 Ha az alkalmazás arról a gépről keresse meg az problémák és hibák az összekötővel saját maga is elérheti. Láthatja, hogy a gyakran előforduló hibákat a [hibaelhárítás dokumentum](application-proxy-troubleshoot.md#connector-errors). Kereshet közvetlenül a naplókban összekötő azonosítani az esetleges hibákat is. A hibaüzenetek számos lehet megosztani a javítások több konkrét javaslatokért. A naplók megtekintéséhez, lásd: [összekötők dokumentációnk](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)

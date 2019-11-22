@@ -1,5 +1,5 @@
 ---
-title: B2B együttműködés API és testreszabás – Azure Active Directory |} A Microsoft Docs
+title: B2B együttműködési API és testreszabás – Azure Active Directory
 description: Az Azure Active Directory B2B együttműködés a vállalatokon átívelő kapcsolatok támogatása érdekében lehetővé teszi, hogy az üzleti partnerek szelektíven érhessék el a vállalati alkalmazásokat
 services: active-directory
 ms.service: active-directory
@@ -11,87 +11,87 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0369988bc6f6503f9940e6aabccb91ab843d63f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65811873"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272862"
 ---
-# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Az Azure Active Directory B2B együttműködés API és testreszabás
+# <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B együttműködési API és testreszabás
 
-Ossza meg velünk, hogy szeretné-e a meghívási folyamatot úgy, hogy a szervezetek számára a leginkább testre szabhatja a számos ügyfél volt. Az API-val, egyszerűen megteheti. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Sok ügyfelünk azt közölte nekünk, hogy a Meghívási folyamatot testre szeretné szabni a szervezeteknek legmegfelelőbb módon. Az API-val csak ezt teheti meg. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
-## <a name="capabilities-of-the-invitation-api"></a>A meghívó API képességeit
+## <a name="capabilities-of-the-invitation-api"></a>A meghívó API képességei
 
-Az API-t a következő lehetőségeket biztosítja:
+Az API a következő képességeket kínálja:
 
-1. A külső felhasználó meghívása *bármely* e-mail-címét.
+1. Külső felhasználó meghívása *bármely* e-mail-címmel.
 
     ```
     "invitedUserDisplayName": "Sam"
     "invitedUserEmailAddress": "gsamoogle@gmail.com"
     ```
 
-2. Testre szabhatja, ha azt szeretné, hogy a felhasználók elfogadják a meghívót után kerül.
+2. Szabja testre a felhasználókat, hogy a meghívót elfogadják.
 
     ```
     "inviteRedirectUrl": "https://myapps.microsoft.com/"
     ```
 
-3. Válassza a keresztül velünk a kapcsolatot a standard meghívó e-mail küldése
+3. Válassza ki, hogy elküldje a szabványos meghívó e-mailt nekünk
 
     ```
     "sendInvitationMessage": true
     ```
 
-   egy üzenet, amely testre szabható címzettnek
+   egy olyan üzenettel, amely testre szabható a címzett számára
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
     ```
 
-4. Másolatot kap majd: személyek meg szeretné tartani a kapcsolatos a figyelmét a közreműködő hurokba került.
+4. És válassza ki a CC: olyan személyeket, akiket szeretne megtartani a hurokban, hogy meghívja ezt a közreműködőt.
 
-5. Vagy teljes mértékben testre szabhatja a meghívó és a regisztrációs munkafolyamat nem, ha az Azure AD-n keresztül értesítéseket küldeni.
+5. Vagy teljes mértékben testreszabhatja a meghívót és a bevezetési munkafolyamatot úgy, hogy nem küld értesítést az Azure AD-n keresztül.
 
     ```
     "sendInvitationMessage": false
     ```
 
-   Ebben az esetben vissza a beváltási URL-címe az API-val, amely ágyazható be egy e-mail sablon, IM vagy más tetszőleges terjesztési mód.
+   Ebben az esetben olyan beváltási URL-címet kap vissza az API-ból, amelyet beágyazhat egy e-mail-sablonba, IM-re vagy más, tetszés szerinti terjesztési módszerbe.
 
-6. Végül ha Ön rendszergazda, ha szeretné, a felhasználó nevében meghívása.
+6. Végül, ha Ön rendszergazda, meghívhatja a felhasználót tagként.
 
     ```
     "invitedUserType": "Member"
     ```
 
 
-## <a name="authorization-model"></a>Engedélyezési modellje
+## <a name="authorization-model"></a>Engedélyezési modell
 
-Az API-t a következő hitelesítési mód környezetben is futtatható:
+Az API-t a következő engedélyezési módokon lehet futtatni:
 
 ### <a name="app--user-mode"></a>Alkalmazás + felhasználói mód
 
-Ebben a módban személy, aki használja az API-t kell B2B meghívók lehet létrehozni a engedélyekkel kell rendelkeznie.
+Ebben a módban az API-t használó személyeknek az engedélyekkel kell rendelkezniük a B2B-meghívások létrehozásához.
 
-### <a name="app-only-mode"></a>Egyetlen alkalmazás mód
+### <a name="app-only-mode"></a>Csak alkalmazás mód
 
-Alkalmazás csak a környezetben az alkalmazás a meghívás sikeres User.Invite.All hatóköre van szüksége.
+Csak az alkalmazás kontextusában az alkalmazásnak szüksége van a felhasználó. INVITE. All hatókörre a meghívás sikerességéhez.
 
-További információkért tekintse meg: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+További információt a következő témakörben talál: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell használatával adja hozzá, és a egy szervezet külső felhasználók könnyedén meghívása. Hozzon létre egy meghívást arra parancsmag segítségével:
+A PowerShell használatával egyszerűen hozzáadhat és meghívhat külső felhasználókat a szervezet számára. Meghívás létrehozása a parancsmag használatával:
 
 ```powershell
 New-AzureADMSInvitation
 ```
 
-Használhatja a következő beállításokat:
+A következő lehetőségek közül választhat:
 
 * -InvitedUserDisplayName
 * -InvitedUserEmailAddress
@@ -100,12 +100,12 @@ Használhatja a következő beállításokat:
 
 ### <a name="invitation-status"></a>Meghívás állapota
 
-Miután egy külső felhasználót meghívó küldése, használhatja a **Get-AzureADUser** parancsmaggal ellenőrizheti, ha azok már elfogadott. A Get-AzureADUser alábbi tulajdonságait fel van töltve, egy külső felhasználót küldött meghívót:
+Miután meghívót küldött egy külső felhasználótól, a **Get-AzureADUser** parancsmag segítségével megtekintheti, hogy elfogadták-e. A Get-AzureADUser következő tulajdonságai vannak feltöltve, amikor egy külső felhasználó elküld egy meghívót:
 
-* **Felhasználó állapota** azt jelzi, hogy a meghívó **PendingAcceptance** vagy **elfogadva**.
-* **UserStateChangedOn** jeleníti meg a legutóbbi módosításának történő küldés időbélyegzője legyen a **felhasználó állapota** tulajdonság.
+* A **UserState** jelzi, hogy a meghívás **PendingAcceptance** vagy **elfogadva**van-e.
+* A **UserStateChangedOn** a **UserState** tulajdonság legutóbbi módosításának időbélyegét jeleníti meg.
 
-Használhatja a **szűrő** szűrheti az eredményeket a beállítással **felhasználó állapota**. Az alábbi példa bemutatja, hogyan szűrheti az eredményeket, csak egy függőben lévő meghívás rendelkező felhasználók megjelenítéséhez. A példában is látható a **Format-List** beállítás, amely lehetővé teszi, hogy Ön adja meg a tulajdonságok megjelenítéséhez. 
+A **Filter (szűrés** ) lehetőséggel **UserState**alapján szűrheti az eredményeket. Az alábbi példa azt mutatja be, hogyan szűrheti az eredményeket, hogy csak a függőben lévő meghívóval rendelkező felhasználók jelenjenek meg. A példa a **Format-List** kapcsolót is megjeleníti, amely lehetővé teszi a megjelenítendő tulajdonságok megadását. 
  
 
 ```powershell
@@ -113,15 +113,15 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy az Azure ad PowerShell-modult vagy AzureADPreview PowerShell-modul legújabb verzióját. 
+> Győződjön meg arról, hogy a AzureAD PowerShell-modul vagy a AzureADPreview PowerShell-modul legújabb verziója van telepítve. 
 
 ## <a name="see-also"></a>Lásd még
 
-Tekintse meg a meghívó API-referencia a [ https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+Tekintse meg a Meghívási API-referenciát [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitationban ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-- [Az elemek a B2B együttműködés meghívó e-mail](invitation-email-elements.md)
-- [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md)
-- [Adja hozzá a B2B-együttműködés felhasználók meghívás nélkül](add-user-without-invite.md)
+- [A B2B együttműködés Meghívási e-mail elemei](invitation-email-elements.md)
+- [VÁLLALATKÖZI együttműködés meghívásának beváltása](redemption-experience.md)
+- [B2B Collaboration-felhasználók hozzáadása meghívás nélkül](add-user-without-invite.md)

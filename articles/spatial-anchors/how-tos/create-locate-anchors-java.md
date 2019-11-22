@@ -1,19 +1,19 @@
 ---
-title: Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával Java-ban | Microsoft Docs
+title: Horgonyok létrehozása & Java-ban
 description: Részletes leírás arról, hogyan hozhatók létre és találhatók az Azure térbeli horgonyokat használó horgonyok a javában.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7bc4a2251fa07f201d35e385806d2eb49cd8851e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e03fb8bfc221edf209fd2480eedad822983d59a9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562517"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270176"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával javában
 
@@ -366,7 +366,7 @@ További információ a [deleteAnchorAsync](https://docs.microsoft.com/java/api/
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a leállítási módszerről. [](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop)
+További információ a [leállítási](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) módszerről.
 
 ```java
     mCloudSession.stop();
@@ -374,7 +374,7 @@ További információ a leállítási módszerről. [](https://docs.microsoft.co
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-További információ az alaphelyzetbe [állítási](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) módszerről.
+További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) módszerről.
 
 ```java
     mCloudSession.reset();

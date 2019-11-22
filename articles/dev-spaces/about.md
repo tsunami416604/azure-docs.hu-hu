@@ -1,21 +1,17 @@
 ---
 title: Bevezetés az Azure dev Spaces használatába
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 05/07/2019
 ms.topic: overview
 description: Bevezetés az Azure dev Spaces használatába
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c87aee26f5f9a4c3f919150a22a8b2f5a7b57352
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.openlocfilehash: 1065ea65c338aadbff9818ad7f7d26ddbed42602
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889755"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280252"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
@@ -44,7 +40,7 @@ Az Azure dev Spaces működésével kapcsolatos további információkért lásd
 
 Az Azure dev-tárhelyeket csak az **USA keleti**régiójában, az **USA keleti**régiójában, az USA **középső**régiójában, az USA **déli középső**régiójában, az USA **2. nyugati**régiójában, **Észak**-Európában, **Nyugat-Európában**, **Egyesült Királyság déli régiója**, **Kelet-Ázsia**, **Délkelet-Ázsiában**, **Kelet-Ausztráliaban**, **Közép**-Kanadában és **Kelet-Kanadában** található, Az Azure Dev Spaces támogatja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Visual Studio Code](https://code.visualstudio.com/download) használatát Linux, MacOS és Windows 8 vagy újabb rendszerű gépeken (ha azokon telepítve van az [Azure Dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)) az alkalmazások AKS-en való létrehozásához és futtatásához. Emellett támogatja a Windows 8 vagy újabb rendszerre telepített [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) használatát is. A Visual Studio 2019 esetében szüksége lesz az Azure-fejlesztési számítási feladatra. A Visual Studio 2017 esetében szüksége lesz a webes fejlesztési számítási feladatra és a [Visual Studio-eszközökre a Kubernetes](https://aka.ms/get-vsk8stools).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet az Azure fejlesztői útmutatóval rendelkező csapatok gyors, ismétlődő fejlesztéséről.
 

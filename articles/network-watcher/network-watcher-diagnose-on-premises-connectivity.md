@@ -1,6 +1,7 @@
 ---
-title: Diagnosztizálás használó helyszíni kapcsolatok VPN-átjárót, az Azure Network Watcher |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure Network Watcher erőforrás hibaelhárítás VPN-átjárót használó helyszíni kapcsolatok diagnosztizálása érdekében.
+title: Helyszíni kapcsolatok diagnosztizálása VPN-átjárón keresztül
+titleSuffix: Azure Network Watcher
+description: Ez a cikk azt ismerteti, hogyan diagnosztizálható a helyszíni kapcsolat a VPN-átjárón keresztül az Azure Network Watcher erőforrás-hibaelhárítással.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,38 +15,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754069"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275944"
 ---
-# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN-átjárók helyszíni kapcsolatok diagnosztizálása
+# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával
 
-Az Azure VPN Gateway lehetővé teszi, hogy hozzon létre hibrid megoldás, a címet a biztonságos kapcsolat a helyszíni hálózat és az Azure virtuális hálózat között van szükség. Egyediek-e a követelményeknek, mivel így a választás a helyszíni VPN-eszköz van. Az Azure jelenleg támogatja [több VPN-eszközök](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , amely folyamatosan ellenőrzi a ellenőriztünk. A helyszíni VPN-eszköz konfigurálása előtt tekintse át az eszközre vonatkozó konfigurációs beállításokat. Hasonló módon van konfigurálva az Azure VPN Gateway vannak beállítva [IPsec paraméterek támogatott](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) használt kapcsolatokat lehessen létesíteni. Jelenleg nincs lehetőség, hogy adja meg vagy válassza ki az IPsec paraméterek adott kombinációinak az Azure VPN Gateway átjárón. Sikeres kapcsolatlétesítés a helyszíni és az Azure között, a helyszíni VPN-eszközbeállításokat megadni az Azure VPN Gateway átjárók által előírt IPsec paraméterek összhangban kell lennie. Ha a beállítások helyesek, ott a megszakad a kapcsolat és az eddig ezen kapcsolatos hibák elhárítása nem triviális és óra azonosíthatja és megoldhatja a problémát általában tartott.
+Az Azure VPN Gateway lehetővé teszi, hogy olyan hibrid megoldást hozzon létre, amely a helyszíni hálózat és az Azure-beli virtuális hálózat közötti biztonságos kapcsolat szükségességével foglalkozik. A követelmények egyediek, így a helyszíni VPN-eszköz választható. Az Azure jelenleg [számos olyan VPN-eszközt](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) támogat, amelyek az eszközök forgalmazójával való együttműködésben folyamatosan vannak érvényesítve. A helyszíni VPN-eszköz konfigurálása előtt tekintse át az eszközre vonatkozó konfigurációs beállításokat. Hasonlóképpen, az Azure VPN Gateway a kapcsolatok létesítéséhez használt [támogatott IPsec-paraméterek](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) készletével van konfigurálva. Jelenleg nincs lehetőség az IPsec-paraméterek adott kombinációjának megadására vagy kiválasztására az Azure-VPN Gateway. A helyszíni és az Azure közötti sikeres kapcsolat létrehozásához a helyszíni VPN-eszköz beállításainak összhangban kell lenniük az Azure VPN Gateway által előírt IPsec-paraméterekkel. Ha a beállítások helyesek, a kapcsolat megszakad, és a hibák elhárítása nem volt triviális, és általában órákig tartott a probléma azonosítása és megoldása érdekében.
 
-Az Azure Network Watcher szolgáltatással a szolgáltatás hibaelhárítása, az átjáró és kapcsolatok problémák diagnosztizálása és percen belül van, hogy érdemes-e hibanaplóit a probléma megoldásához elég információ áll.
+Az Azure Network Watcher hibaelhárítási funkciója lehetővé teszi az átjáróval és a kapcsolatokkal kapcsolatos problémák diagnosztizálását, és néhány percen belül elegendő információval szolgál a probléma kijavításáról.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Azure és helyszíni között helyek közötti kapcsolat konfigurálása szeretné FortiGate használja, mint a helyszíni VPN-átjárót. Ebben a forgatókönyvben eléréséhez a következő telepítési kellene:
+Helyek közötti kapcsolatot szeretne konfigurálni az Azure és a helyszíni kapcsolat között a FortiGate használatával helyszíni VPN Gatewayként. A forgatókönyv megvalósításához a következő beállításokat kell megkövetelni:
 
-1. Virtuális hálózati átjáró – a VPN-átjárót, az Azure-ban
-1. Helyi hálózati átjáró - a [a helyszíni VPN-átjáró (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) ábrázolása az Azure-felhőben
-1. Helyek közötti kapcsolat (útvonalalapú) – [a VPN-átjáró és a helyszíni útválasztót közötti kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. Virtual Network Gateway – az Azure-beli VPN Gateway
+1. Helyi hálózati átjáró – helyszíni [(FortiGate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) ábrázolás az Azure-felhőben
+1. Helyek közötti kapcsolat (útvonalon alapuló) – [a VPN Gateway és a helyszíni útválasztó közötti kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [FortiGate konfigurálása](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Részletes részletes útmutató egy helyek közötti konfiguráció funkcionáló találhatók: [Virtuális hálózat létrehozása helyek közötti kapcsolattal az Azure Portalon](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+A helyek közötti konfiguráció konfigurálásának részletes lépéseit ismertető útmutató a következő címen érhető el: [VNet létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Az egyik fontos konfigurációs lépés konfigurálja az IPSec-kommunikáció paramétereket, a helyszíni hálózat és az Azure közötti kapcsolat megszakadása vezet bármely hibás. 1\. fázis a következő IPsec paraméterek támogatása jelenleg az Azure VPN-átjárók vannak konfigurálva. Vegye figyelembe, ahogy korábban említettük, ezek a beállítások nem módosíthatók.  Ahogy az alábbi táblázatban látható, az Azure VPN Gateway átjárók által támogatott titkosítási algoritmusokat AES256, az AES128 és a 3DES.
+A kritikus fontosságú konfigurációs lépések egyike az IPsec-kommunikációs paraméterek konfigurálása, ami bármilyen helytelen konfiguráció a helyszíni hálózat és az Azure közötti kapcsolat elvesztését eredményezi. Az Azure VPN-átjárók jelenleg úgy vannak konfigurálva, hogy támogassák az 1. fázishoz tartozó következő IPsec-paramétereket. Megjegyzés: ahogy azt korábban említettük, ezek a beállítások nem módosíthatók.  Ahogy az alábbi táblázatban is látható, az Azure VPN Gateway által támogatott titkosítási algoritmusok a következők: AES256, AES128 és 3DES.
 
-### <a name="ike-phase-1-setup"></a>Az IKE 1. fázis beállítása
+### <a name="ike-phase-1-setup"></a>IKE 1. fázis beállítása
 
-| **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és Standard vagy nagy teljesítményű VPN gateway** |
+| **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és standard vagy nagy teljesítményű VPN Gateway** |
 | --- | --- | --- |
 | IKE verziószám |IKEv1 |IKEv2 |
 | Diffie-Hellman Group |2\. csoport (1024 bites) |2\. csoport (1024 bites) |
@@ -54,66 +55,66 @@ Az egyik fontos konfigurációs lépés konfigurálja az IPSec-kommunikáció pa
 | Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
 | 1\. fázisú biztonsági társítás (SA) Élettartam (idő) |28 800 másodperc |10 800 másodperc |
 
-Felhasználóként, a FortiGate konfigurálásához szükséges lenne, egy példa konfigurációja találhatók [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Tudtuk nélkül konfigurálta az SHA-512 használata a kivonatoló algoritmusként FortiGate. Mert ez az algoritmus nem egy támogatott algoritmust a csoportházirend-alapú kapcsolatokhoz, a VPN-kapcsolat működik.
+Felhasználóként konfigurálnia kell a FortiGate, a [githubon](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt)megtalálhatja a minta konfigurációját. Nem tudtuk, hogy a FortiGate az SHA-512 használatát kivonatoló algoritmusként konfigurálta. Mivel ez az algoritmus nem támogatott a házirend-alapú kapcsolatok algoritmusa számára, a VPN-kapcsolat működik.
 
-Ezek olyan problémák hibaelhárítása nehéz, és általában nem intuitív alapvető okait. Ebben az esetben is egy támogatási jegyet a probléma megoldása segítséget szeretne kérni. Az Azure Network Watcher hibaelhárítása API, azonosíthatja ezeket a problémákat, saját maga.
+Ezek a problémák nehezen orvosolhatók, és a kiváltó okok gyakran nem intuitívek. Ebben az esetben egy támogatási jegyet nyithat meg, hogy segítséget kapjon a probléma megoldásához. Az Azure Network Watcher API-val kapcsolatos hibaelhárítása azonban lehetővé teszi ezeket a problémákat saját maga is azonosítani.
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Hibaelhárítás az Azure Network Watcher használatával
 
-A kapcsolat diagnosztizálásához, csatlakozhat az Azure PowerShell-lel, és a a `Start-AzNetworkWatcherResourceTroubleshooting` parancsmagot. Az információk a következő parancsmag használatával [elhárítása virtuális hálózati átjáró és kapcsolatok – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Ez a parancsmag igénybe vehet néhány percet végrehajtásához.
+A kapcsolat diagnosztizálásához kapcsolódjon Azure PowerShellhoz, és indítsa el a `Start-AzNetworkWatcherResourceTroubleshooting` parancsmagot. A parancsmag használatáról a következő cikkben talál további információt: [Virtual Network Gateway and Connections – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Ez a parancsmag akár néhány percet is igénybe vehet.
 
-A parancsmag befejeződése után navigálhat a parancsmag részletes információkhoz juthat kapcsolatos a probléma és a naplók a megadott tárolási helyre. Az Azure Network Watcher a következő naplófájlokat tartalmazó zip mappát hoz létre:
+A parancsmag befejezése után navigáljon a parancsmagban megadott tárolási helyre, ahol részletes információkhoz juthat a probléma és a naplókról. Az Azure Network Watcher egy zip-mappát hoz létre, amely a következő naplófájlokat tartalmazza:
 
 ![1][1]
 
-Nyissa meg a IKEErrors.txt nevű fájlt, és megjeleníti a következő hiba, a helyszíni problémáját jelzi az IKE-beállítás hibás.
+Nyissa meg a IKEErrors. txt nevű fájlt, és a következő hibaüzenetet jeleníti meg, amely a helyszíni IKE-beállítások helytelen konfigurálásával kapcsolatos problémát jelez.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Részletes információkat szerezhet a hibáról, Scrubbed-wfpdiag.txt a, ebben az esetben említi, hogy hiba történt `ERROR_IPSEC_IKE_POLICY_MATCH` érdeklődő kapcsolat nem működik megfelelően.
+Részletes információkat kaphat a scrubbed-wfpdiag. txt fájlról a hibáról, ahogy ebben az esetben megemlíti, hogy `ERROR_IPSEC_IKE_POLICY_MATCH`, hogy a kapcsolat nem működik megfelelően.
 
-Egy másik gyakori hiba a konfiguráció a megadásával helytelen megosztott kulcsok. Az előző példában megadott kellett különböző megosztott kulcsokat, ha a IKEErrors.txt jeleníti meg a következő hibával: `Error: Authentication failed. Check shared key`.
+Egy másik gyakori hibás konfiguráció a helytelen megosztott kulcsok meghatározása. Ha az előző példában eltérő megosztott kulcsokat adott meg, a IKEErrors. txt fájl a következő hibaüzenetet jeleníti meg: `Error: Authentication failed. Check shared key`.
 
-Az Azure Network Watcher hibaelhárítása szolgáltatás lehetővé teszi a diagnosztika és hibaelhárítás a VPN Gateway és a kapcsolat egy egyszerű PowerShell-parancsmag az alkalmazásaiba. Jelenleg a Microsoft támogatja a következő feltételek diagnosztizálása, és felé több feltétel hozzáadása dolgozik.
+Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway és az egyszerű PowerShell-parancsmagokkal való kapcsolat diagnosztizálását és hibakeresését. Jelenleg támogatjuk a következő feltételek diagnosztizálását, és még több feltétel hozzáadásával dolgozunk.
 
 ### <a name="gateway"></a>Átjáró
 
-| Hiba típusa | Ok | Napló|
+| Hiba típusa | Ok | napló|
 |---|---|---|
-| NoFault | Ha nem történt hiba észlelhető. |Igen|
-| GatewayNotFound | Nem található átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance |  Átjárópéldány karbantartás alatt áll.  |Nem|
-| UserDrivenUpdate | Ha egy felhasználó frissítése folyamatban van. Ez lehet egy átméretezési művelet. | Nem |
-| VipUnResponsive | Az elsődleges példány az átjáró nem érhető el. Ez akkor történik, ha az állapotfigyelő mintavételező nem sikerült. | Nem |
-| PlatformInActive | Nincs a platform problémáját. | Nem|
+| Nincs hiba | Ha nem észlelhető hiba. |Igen|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
+| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll.  |Nem|
+| UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet. | Nem |
+| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Ez akkor fordul elő, ha az állapot-ellenőrzés sikertelen. | Nem |
+| PlatformInActive | Probléma van a platformmal. | Nem|
 | ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
-| NoConnectionsFoundForGateway | Az átjáró kapcsolat nem létezik. Ez a figyelmeztetés csak.| Nem|
-| ConnectionsNotConnected | A kapcsolatok egyik sem kapcsolódik. Ez a figyelmeztetés csak.| Igen|
-| GatewayCPUUsageExceeded | A jelenlegi CPU-használat átjáró használata > 95 %-os. | Igen |
+| NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| Nem|
+| ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Igen|
+| GatewayCPUUsageExceeded | Az átjáró jelenlegi használati CPU-használata > 95%. | Igen |
 
 ### <a name="connection"></a>Kapcsolat
 
-| Hiba típusa | Ok | Napló|
+| Hiba típusa | Ok | napló|
 |---|---|---|
-| NoFault | Ha nem történt hiba észlelhető. |Igen|
-| GatewayNotFound | Nem található átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance | Átjárópéldány karbantartás alatt áll.  |Nem|
-| UserDrivenUpdate | Ha egy felhasználó frissítése folyamatban van. Ez lehet egy átméretezési művelet.  | Nem |
-| VipUnResponsive | Az elsődleges példány az átjáró nem érhető el. Ez történik, ha az állapotadat-mintavétel meghiúsul. | Nem |
-| ConnectionEntityNotFound | Kapcsolat konfigurációja hiányzik. | Nem |
-| ConnectionIsMarkedDisconnected | A kapcsolat meg van jelölve "leválasztott". |Nem|
-| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatás nem rendelkezik konfigurált kapcsolat. | Igen |
-| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti van megjelölve.| Igen|
-| Hitelesítés | Előmegosztott kulcs eltérés. | Igen|
+| Nincs hiba | Ha nem észlelhető hiba. |Igen|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
+| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll.  |Nem|
+| UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet.  | Nem |
+| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | Nem |
+| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | Nem |
+| ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |Nem|
+| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
+| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
+| Authentication | Az előmegosztott kulcs nem egyezik. | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
-| IkePolicyMismatch | A társ-átjáró IKE-szabályzatok, amelyek nem támogatottak az Azure rendelkezik. | Igen|
-| WfpParse Error | Hiba történt a Windows Fájlvédelem napló elemzése. |Igen|
+| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
+| WfpParse Error | Hiba történt a WFP-napló elemzése során. |Igen|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, ellenőrizze a VPN-átjáró kapcsolatot a PowerShell és az Azure Automation funkcionáló [figyelő VPN Gateway-átjárók az Azure Network Watcher hibáinak elhárítása](network-watcher-monitor-with-azure-automation.md)
+Megtudhatja, hogyan ellenőrizheti VPN Gateway kapcsolatot a PowerShell [Network Watcher](network-watcher-monitor-with-azure-automation.md) Azure Automation-lel
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png

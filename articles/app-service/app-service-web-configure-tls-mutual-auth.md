@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a07fa597305771ed3f4da01f2819297fc9cd3d77
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811631"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271697"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
 
@@ -31,7 +31,7 @@ A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú
 
 ## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, akkor az alkalmazáshoz a `clientCertEnabled` beállítást kell beállítania `true` értékre. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
+Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, be kell állítania az alkalmazás `clientCertEnabled` beállítását, hogy `true`. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -41,14 +41,14 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 Ha engedélyezi a kölcsönös hitelesítést az alkalmazáshoz, az alkalmazás gyökerében lévő összes elérési útnak szüksége lesz az ügyféltanúsítvány elérésére. Annak engedélyezéséhez, hogy bizonyos elérési utak nyitva maradjanak a névtelen hozzáféréshez, a kizárási útvonalakat az alkalmazás konfigurációjának részeként is meghatározhatja.
 
-A kizárási útvonalakat a **Configuration** > **általános beállítások** lehetőség kiválasztásával és a kizárási útvonal definiálásával konfigurálhatja. Ebben a példában az alkalmazás `/public` útvonala alatt bármit nem igényelhet ügyféltanúsítványt.
+A kizárási útvonalakat úgy konfigurálhatja, hogy kiválasztja a **konfiguráció** > **általános beállítások** elemet, és meghatározza a kizárási útvonalat. Ebben a példában az alkalmazás `/public` elérési útja alatt bármit nem igényelhet ügyféltanúsítványt.
 
 ![Tanúsítvány kizárási elérési útjai][exclusion-paths]
 
 
 ## <a name="access-client-certificate"></a>Hozzáférési ügyféltanúsítvány
 
-App Service a kérelem SSL-megszakítása a frontend Load balancerben történik. Ha [engedélyezve van az Ügyféltanúsítványok](#enable-client-certificates)számára az alkalmazás kódjára való továbbítás, app Service beinjektál egy `X-ARR-ClientCert` kérelem fejlécét az ügyféltanúsítványt. A App Service nem végez semmit ezzel az ügyféltanúsítvány-val, mint az alkalmazásra való továbbítása. Az alkalmazás kódjának feladata az ügyféltanúsítvány ellenőrzése.
+App Service a kérelem SSL-megszakítása a frontend Load balancerben történik. Ha [engedélyezve van az Ügyféltanúsítványok](#enable-client-certificates)számára az alkalmazás kódjára való továbbítás, app Service beinjektál egy `X-ARR-ClientCert`-kérelem fejlécét az ügyféltanúsítványt. A App Service nem végez semmit ezzel az ügyféltanúsítvány-val, mint az alkalmazásra való továbbítása. Az alkalmazás kódjának feladata az ügyféltanúsítvány ellenőrzése.
 
 A ASP.NET esetében az ügyféltanúsítvány a **HttpRequest. ClientCertificate** tulajdonságon keresztül érhető el.
 
@@ -64,7 +64,7 @@ Más alkalmazások (node. js, PHP stb.) esetén az ügyfél-tanúsítvány az al
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";

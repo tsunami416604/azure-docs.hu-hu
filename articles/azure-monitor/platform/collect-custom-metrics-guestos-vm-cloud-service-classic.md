@@ -1,6 +1,6 @@
 ---
-title: Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services
-description: Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba Cloud Services
+title: Klasszikus Cloud Services metrikák küldése Azure Monitor metrikai adatbázisba
+description: Ismerteti a vendég operációs rendszer teljesítményére vonatkozó metrikák küldésének folyamatát a klasszikus Azure-Cloud Services a Azure Monitor metrika-tárolóba.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844931"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304774"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services 
 
@@ -31,7 +31,7 @@ Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítm�
 
 - Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](~/articles/billing/billing-add-change-azure-subscription-administrator.md) kell lennie. 
 
-- Az előfizetést regisztrálni kell a [Microsoft.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)ininsights szolgáltatásban. 
+- Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban. 
 
 - [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
 
@@ -190,7 +190,7 @@ A dimenzió-szűrés és a felosztási képességek segítségével megtekinthet
 
  ![Metrikák Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
 

@@ -1,6 +1,6 @@
 ---
-title: Nem működő összekötőcsoport található Application Proxy-alkalmazások |} A Microsoft Docs
-description: Nem működik az olyan Összekötőcsoportot, az alkalmazás az Azure AD-alkalmazásproxy-összekötő esetén esetleg felmerülő problémák megoldása
+title: Nem található működő összekötő csoport egy alkalmazásproxy-alkalmazáshoz
+description: Problémák merülhetnek fel, ha nincs működő összekötő egy összekötő csoportban az alkalmazáshoz az Azure AD Application Proxy
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,59 +16,59 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f829b8e8a4bc08b43d3c30a6333771ccd4e26e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ab0d1b3bbab9c97c04da4f918f3aaa2f1d07e4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783608"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275621"
 ---
-# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Nem található egy alkalmazásproxy-alkalmazáshoz működő összekötőcsoport
+# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Nem található működő összekötő csoport a alkalmazásproxy-alkalmazáshoz
 
-Ez a cikk segít az szembesülnek, ha nem, akkor egy összekötőt, az Application Proxy-alkalmazások az Azure Active Directoryval integrált észlelt leggyakoribb hibák elhárításához.
+Ez a cikk segítséget nyújt az olyan gyakori problémák megoldásában, amelyek akkor szembesülnek, ha a Azure Active Directory-vel integrált alkalmazásproxy-alkalmazás nem észlelt összekötőt.
 
-## <a name="overview-of-steps"></a>Lépések áttekintése
-Ha nem működik olyan Összekötőcsoportot, az alkalmazás-összekötőjét, néhány módja a probléma megoldásához:
+## <a name="overview-of-steps"></a>A lépések áttekintése
+Ha nincs működő összekötő az alkalmazáshoz tartozó összekötő csoportban, a probléma megoldásának néhány módja van:
 
--   Ha a csoportban nincsenek összekötők, akkor a következőket teheti:
+-   Ha nincs összekötő a csoportban, a következőket teheti:
 
-    -   A jobb oldalon, a helyi kiszolgálón lévő új összekötő letöltéséhez, és rendelje hozzá a csoporthoz
+    -   Töltsön le egy új összekötőt a jobb oldali helyi kiszolgálón, és rendelje hozzá ehhez a csoporthoz
 
-    -   Egy aktív összekötőt áthelyezni a csoportot
+    -   Aktív összekötő áthelyezése a csoportba
 
--   Ha nincs aktív összekötő a csoportban található, akkor a következőket teheti:
+-   Ha nem rendelkezik aktív összekötővel a csoportban, a következőket teheti:
 
-    -   Az összekötő nem aktív az OK azonosítása és megoldása
+    -   Annak megállapítása, hogy az összekötő inaktív-e, és hogyan oldható fel
 
-    -   Egy aktív összekötőt áthelyezni a csoportot
+    -   Aktív összekötő áthelyezése a csoportba
 
-Felderíthesse a problémát, az alkalmazás a "Application Proxy" menü megnyitásához, és tekintse meg a Összekötőcsoport figyelmeztető üzenetet. Ha a csoportban nincsenek összekötők, a figyelmeztető üzenetet adja meg a csoport kell legalább egy összekötő. Ha nincs aktív összekötő, a figyelmeztető üzenetet, amely ismerteti. Célszerű a gyakori, hogy inaktív összekötőket tartalmaz. 
+A probléma megoldásához nyissa meg az alkalmazás "alkalmazásproxy" menüjét, és tekintse meg az összekötő csoport figyelmeztető üzenetét. Ha nincsenek összekötők a csoportban, a figyelmeztető üzenet megadja, hogy a csoportnak legalább egy összekötőt kell tartalmaznia. Ha nem rendelkezik aktív összekötővel, a figyelmeztető üzenet elmagyarázza a következőt:. Gyakori, hogy inaktív összekötők vannak. 
 
-   ![Az Azure Portalon összekötő csoport kijelölése](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
+   ![Összekötő csoport kijelölése Azure Portal](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-A felsorolt lehetőségek részletes ismertetéséért tekintse meg a megfelelő szakaszt. Az utasítások feltételezik, hogy az összekötő-felügyeleti oldal kezdve. Ha a fenti hibaüzenetet helyzet, ezen a lapon léphet a figyelmeztető üzenetet kattintva. Letöltheti az oldalra a **Azure Active Directory**, kattintson a **vállalati alkalmazások**, majd **alkalmazásproxy.**
+Az egyes beállításokkal kapcsolatos részletekért tekintse meg az alábbi megfelelő szakaszt. Az utasítások azt feltételezik, hogy az összekötő-felügyeleti lapról indul. Ha a fenti hibaüzenetet keresi, a figyelmeztető üzenetre kattintva megnyithatja ezt a lapot. A lapot a **Azure Active Directory**, a **vállalati alkalmazások**, majd az alkalmazásproxy lehetőségre kattintva is elérheti **.**
 
-   ![Összekötő eszközcsoport-kezelés az Azure Portalon](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
+   ![Összekötő csoport kezelése Azure Portal](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
-## <a name="download-a-new-connector"></a>Új összekötő letöltéséhez
+## <a name="download-a-new-connector"></a>Új összekötő letöltése
 
-Új összekötő letöltéséhez, használja a "-összekötő letöltése" gombra a lap tetején.
+Új összekötő letöltéséhez használja az oldal tetején található "Connector letöltése" gombot.
 
-Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Általában az összekötő telepítve van az alkalmazás ugyanazon a kiszolgálón. Az összekötő a letöltés után meg kell jelennie ebből a menüből. Kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik. A módosítás mentéséhez.
+Telepítse az összekötőt egy olyan gépre, amelyen közvetlen a háttérbeli alkalmazás található. Az összekötő általában ugyanarra a kiszolgálóra van telepítve, mint az alkalmazás. A letöltés után az összekötőnek ebben a menüben kell megjelennie. kattintson az összekötőre, és az "összekötő csoport" legördülő lista használatával győződjön meg arról, hogy a megfelelő csoporthoz tartozik. Mentse a változást.
 
-   ![Töltse le az összekötő az Azure Portalról](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
+   ![Az összekötő letöltése a Azure Portal](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
-## <a name="move-an-active-connector"></a>Helyezze át egy aktív összekötő
+## <a name="move-an-active-connector"></a>Aktív összekötő áthelyezése
 
-Ha egy aktív összekötőt, a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, továbbléphet az összekötő a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
+Ha rendelkezik egy olyan aktív összekötővel, amely a csoporthoz tartozik, és a cél háttérbeli alkalmazásra mutat, akkor áthelyezheti az összekötőt a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. Az "összekötő csoport" mezőben a legördülő listából válassza ki a megfelelő csoportot, majd kattintson a Mentés gombra.
 
-## <a name="resolve-an-inactive-connector"></a>Az inaktív csatlakozó feloldása
+## <a name="resolve-an-inactive-connector"></a>Inaktív összekötő feloldása
 
-Ha a csoportban csak az összekötők inaktív, valószínűleg olyan gépen, amely nem rendelkezik a szükséges portokat feloldva.
+Ha a csoport egyetlen összekötője inaktív, akkor valószínű, hogy olyan gépen van, amelyen nincs minden szükséges port feloldani.
 
-a portok hibaelhárítás dokumentum részletes tekintse meg a probléma kivizsgálása.
+a probléma kivizsgálásával kapcsolatos részletekért tekintse meg a portok – problémamegoldás című dokumentumot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
 
 

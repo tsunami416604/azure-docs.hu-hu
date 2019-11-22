@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083021"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279116"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Oktatóanyag – Tárolóblobok elérése egyéni Azure CDN-tartomány használatával HTTPS-en keresztül
 
@@ -43,11 +43,15 @@ Az Azure CDN figyelmen kívül hagyja a SAS-jogkivonathoz hozzáadott korlátoz�
 Ha ugyanazon végponthoz több SAS URL-címet hoz létre, fontolja meg a lekérdezési sztringek gyorsítótárazásának engedélyezését. Ezzel biztosíthatja, hogy a rendszer minden egyes URL-címet egyedi entitásként kezeljen. További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési sztringekkel](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP–HTTPS átirányítás
-Lehetősége van a HTTP-forgalom HTTPS-re történő átirányítására, ha létrehoz egy [URL-átirányítási szabályt](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) az [Azure CDN szabálymotorral](cdn-verizon-premium-rules-engine.md). Ehhez a lehetőséghez a következő profilra lesz szüksége: **Azure CDN Premiumhoz a Verizontól**.
+A HTTP-forgalom HTTPS-re való átirányítását úgy is megadhatja, ha URL-átirányítási szabályt hoz létre a [Standard Rules Engine](cdn-standard-rules-engine.md) vagy a [Verizon Premium Rules Engine](cdn-verizon-premium-rules-engine.md)használatával. A standard szintű szabályok motorja csak a Microsoft-profilokból Azure CDN érhető el, míg a Verizon Premium Rules Engine csak a Verizon-profilokból származó Azure CDN Premium verzióban érhető el.
 
-![URL-átirányítási szabály](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft átirányítási szabály](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-Ebben a szabályban a *CDN-végpontnév* a CDN-végponthoz megadott névre utal, amelyet a legördülő listából választhat ki. A *forrásútvonal* értéke a forrásként szolgáló tárfiókban szereplő útvonalra utal, ahol a statikus tartalmak található. Ha minden statikus tartalmat egyetlen tárolóban tárolja, cserélje le a *forrásútvonal* értékét az adott tároló nevére.
+A fenti szabályban az állomásnév, az elérési út, a lekérdezési karakterlánc és a töredék hagyva az átirányítás során használt bejövő értékeket fogja eredményezni. 
+
+![Verizon-átirányítási szabály](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+A fenti szabályban a *CDN-Endpoint-Name* kifejezés a CDN-végponthoz konfigurált nevet jelenti, amelyet a legördülő listából választhat ki. A *forrásútvonal* értéke a forrásként szolgáló tárfiókban szereplő útvonalra utal, ahol a statikus tartalmak található. Ha minden statikus tartalmat egyetlen tárolóban tárolja, cserélje le a *forrásútvonal* értékét az adott tároló nevére.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 Ha a blobokat az Azure CDN-en keresztül éri el, akkor a [Blob Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/blobs/) alapján fizet a POP-kiszolgálók és a forrás (Blob Storage) közötti forgalomért, a POP-kiszolgálókról elért adatokért pedig az [Azure CDN díjszabása](https://azure.microsoft.com/pricing/details/cdn/) alapján.

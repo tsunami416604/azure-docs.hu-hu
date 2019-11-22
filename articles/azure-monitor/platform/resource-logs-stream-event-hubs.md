@@ -1,6 +1,6 @@
 ---
 title: Azure-beli erőforrás-naplók továbbítása egy Event hubhoz
-description: Ismerje meg, hogyan továbbíthatja az Azure-beli erőforrás-naplókat az Event hub-ba.
+description: Ismerje meg, hogyan továbbíthatja az Azure-beli erőforrás-naplókat egy Event hub-ba, ha külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra küldi az információkat
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262413"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304939"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Azure-beli erőforrás-naplók továbbítása az Azure Event Hubsba
 Az Azure-beli [erőforrás-naplók](resource-logs-overview.md) részletes és gyakori információkat biztosítanak az Azure-erőforrások belső működéséről. Ez a cikk azt ismerteti, hogyan lehet adatfolyamokat továbbítani az esemény-hubok számára az olyan külső rendszerekre, mint a harmadik féltől származó SIEM-és egyéb log Analytics-megoldások.
@@ -25,7 +25,7 @@ Stream erőforrás-naplók az Azure-ban az Event hubokba a következő funkciók
 * **Stream-naplók harmadik féltől származó naplózási és telemetria rendszerekhez** – az összes erőforrás-naplót egy adott esemény központba továbbíthatja, hogy az adatcsatornán át lehessen továbbítani az adatait egy külső Siem-vagy log Analytics-eszközre.
 * **Hozzon létre egy egyéni telemetria-és naplózási platformot** – az Event hubok rugalmasan méretezhető közzétételi és előfizetési környezete lehetővé teszi az erőforrás-naplók rugalmas betöltését egy egyéni teletry-platformra. A részletekért lásd: [globális méretű telemetria platform tervezése és méretezése az Azure Event Hubsban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
 
-* A **szolgáltatás állapotának megtekintése az adattovábbítással Power BIba** – Event Hubs, Stream Analytics és Power bi használatával alakítsa át a diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. Lásd [: stream Analytics és Power bi: Valós idejű elemzési irányítópult a](../../stream-analytics/stream-analytics-power-bi-dashboard.md) megoldás részleteinek megtekintéséhez.
+* A **szolgáltatás állapotának megtekintése az adattovábbítással Power BIba** – Event Hubs, Stream Analytics és Power bi használatával alakítsa át a diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. A megoldás részleteiért tekintse meg a [stream Analytics és Power bi: valós idejű elemzési irányítópultot a folyamatos adattovábbításhoz](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
     A következő SQL-kód egy minta Stream Analytics-lekérdezés, amellyel az összes naplózási adattal elemezhető egy Power BI táblázatba:
     
@@ -64,7 +64,7 @@ Amikor erőforrás-naplókat használ az Event hubokból, az a következő tábl
 | category |Az eseményhez tartozó napló kategóriája. |
 | resourceId |Az eseményt létrehozó erőforrás erőforrás-azonosítója. |
 | operationName |A művelet neve. |
-| level |Nem kötelező. A naplózási esemény szintjét jelzi. |
+| szint |Választható. A naplózási esemény szintjét jelzi. |
 | properties |Az esemény tulajdonságai. Ezek a következő témakörben leírtak szerint változnak [ ]()minden Azure-szolgáltatás esetében. |
 
 
@@ -133,7 +133,7 @@ A következő példa kimeneti adatokat Event Hubs:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Stream Azure Active Directory a naplókat a Azure monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
 * [További információ az Azure erőforrás-naplókkal kapcsolatban](resource-logs-overview.md).

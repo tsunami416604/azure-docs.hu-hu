@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669422"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278545"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -29,6 +29,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy alkalma
 
 * Azure- [előfizetés](https://azure.microsoft.com/free)beszerzése.
 * Fejezze be az [előző portál](get-started-portal-build-app.md) rövid útmutatóját [, vagy töltse le és importálja az alkalmazást](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Ha olyan alkalmazásokkal rendelkezik, amelyek előzetes Azure-erőforrás-hitelesítést végeznek, váltson [át egy Azure-erőforrásra](luis-migration-authoring.md). Egyes portál oldalak eltérőek, ha az e-mail-hitelesítés érvényben van.
 
 ## <a name="create-the-endpoint-resource"></a>A végpont erőforrásának létrehozása
 
@@ -41,7 +42,7 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
    |Beállítás|Érték|Cél|
    |--|--|--|
    |Name (Név)|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
-   |Előfizetés|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
+   |Előfizetést|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
    |Erőforráscsoport|`my-resource-group`|Hozzon létre egy új erőforráscsoportot az összes kognitív szolgáltatás erőforrásaihoz. Ha elkészült az erőforrásokkal, törölheti az erőforráscsoportot az előfizetés tisztításához. |
    |Szerzői hely|**USA nyugati régiója**|Az Azure-régió létrehozásához.|
    |A szerzői díjak szintjei|**F0**|A szerzői műveletek alapértelmezett díjszabási szintje.|
@@ -60,7 +61,7 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
 
 Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. A hozzárendelés után ezt a lépést csak akkor kell végrehajtania, ha új erőforrást hoz létre. Létrehozhat egy új erőforrást az alkalmazás régiói kibontásához, vagy nagyobb számú előrejelzési lekérdezés támogatásához.
 
-1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
+1. Jelentkezzen be a [Luis-portálra](https://preview.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
 
 1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza az **Azure-erőforrások**lehetőséget.
 
@@ -68,9 +69,9 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
     ![A LUIS-előrejelzési erőforrás hozzáadásához válassza az előrejelzési erőforrás hozzáadása lehetőséget.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
+1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza ki **erőforrás hozzárendelése**.
 
-   ![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 
@@ -86,7 +87,7 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
 ## <a name="prediction-endpoint-request"></a>Előrejelzési végpont kérése
 
-Az URL-cím végén lévő `query=`, ahol a rendszer hozzáfűzi a felhasználót a GET kérelemhez. A `query=`után adja meg az előző rövid útmutató végén használt felhasználói kiírást:
+A betekintő portálon `query=` az URL-cím végére, ahol a rendszer hozzáfűzi a felhasználót a GET kérelemhez. A `query=`után adja meg az előző rövid útmutató végén használt felhasználói kiírást:
 
 ```Is there a form named hrf-234098```
 
@@ -142,7 +143,7 @@ Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közz
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)

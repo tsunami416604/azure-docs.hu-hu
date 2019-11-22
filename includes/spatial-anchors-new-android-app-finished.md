@@ -1,21 +1,21 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.date: 04/03/2019
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179704"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276946"
 ---
-## <a name="putting-everything-together"></a>Bármik lehetnek, minden rendben
+## <a name="putting-everything-together"></a>Az összes együttes üzembe helyezése
 
-Íme, miként a teljes `MainActivity` osztályban fájlba kell kinéznie, miután az egyes elemeket helyezze egymáshoz. Használhatja azt referenciaként képest egy saját fájlt, és ha lehetséges, hogy balra eltérések felismerése.
+A teljes `MainActivity` Class fájlnak így kell kinéznie, miután az összes különböző elemet összeállította. Használhatja hivatkozásként, hogy összehasonlítsa a saját fájlját, és megtalálhatja, hogy van-e eltérése.
 
 ```java
 package com.example.myfirstapp;
@@ -242,9 +242,9 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre egy új Android-alkalmazást, amely ARCore funkció integrálható az Azure térbeli horgonyok. Az Azure térbeli horgonyok kódtárral kapcsolatos további tudnivalókért továbbra is az útmutató, hogyan hozhat létre, és keresse meg a központi jellegűek.
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre egy új Android-alkalmazást, amely integrálja az ARCore funkciókat az Azure térbeli Horgonyokkal. Ha többet szeretne megtudni az Azure térbeli horgonyok könyvtáráról, folytassa az útmutatót a horgonyok létrehozásához és megkereséséhez.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre, és keresse meg a horgonyok Azure térbeli horgonyok használatával](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával](/azure/spatial-anchors/create-locate-anchors-overview)

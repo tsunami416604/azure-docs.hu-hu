@@ -1,5 +1,5 @@
 ---
-title: A Azurite nyílt forráskódú emulátor használata az Azure Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
+title: A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
 description: A nyílt forráskódú Azurite-emulátor (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Storage-alkalmazások teszteléséhez.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309536"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269461"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>A Azurite nyílt forráskódú emulátor használata az Azure Storage fejlesztéséhez és teszteléséhez (előzetes verzió)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>A Azurite Emulator használata helyi Azure Storage-fejlesztéshez és-teszteléshez (előzetes verzió)
 
 A Azurite 3,2-es verziójának nyílt forráskódú emulátora (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob-és üzenetsor-tárolási alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és MacOS platformokon. A Azurite v3 támogatja az Azure Blob service által megvalósított API-kat.
 
@@ -40,14 +40,14 @@ Az Azurite gyors elindításához vagy bezárásához kattintson a **[Azurite bl
 A bővítmény a következő Visual Studio Code-parancsokat támogatja:
 
    * **Azurite: Start** – az összes Azurite-szolgáltatás elindítása
-   * **Azurite: Az** összes Azurite-szolgáltatás bezárásának lezárása
-   * **Azurite: Az összes Azurite Services-perzisztenciatörlése**
-   * **Azurite: BLOB Service** indítása – blob szolgáltatás indítása
-   * **Azurite: BLOB-szolgáltatás** lezárása – blob szolgáltatás lezárása
-   * **Azurite: A blob Service** tisztítása – a blob szolgáltatás tisztítása
-   * **Azurite: Üzenetsor-szolgáltatás** indítása – üzenetsor-szolgáltatás indítása
-   * **Azurite: Várólista-szolgáltatás** lezárása – várólista-szolgáltatás lezárása
-   * **Azurite: A várólista** -szolgáltatás tiszta várólistájának szolgáltatása
+   * **Azurite: Bezárás** – az összes Azurite-szolgáltatás lezárása
+   * **Azurite:** a Azurite Services összes perzisztencia-adatbázisának törlése
+   * **Azurite: a blob** Service elindítása – blob szolgáltatás indítása
+   * **Azurite: blob szolgáltatás lezárása** – blob szolgáltatás lezárása
+   * **Azurite: a blob Service tisztítása** – a blob szolgáltatás tisztítása
+   * **Azurite: üzenetsor** -szolgáltatás indítása – üzenetsor-szolgáltatás indítása
+   * **Azurite: Bezárás üzenetsor** -szolgáltatás – Bezárás üzenetsor-szolgáltatás
+   * **Azurite: tiszta üzenetsor** -szolgáltatás – a várólista-szolgáltatás tisztítása
 
 A Azurite Visual Studio code-on belüli konfigurálásához válassza a kiterjesztések panelt. Válassza a **kezelés** (fogaskerék) ikont a **Azurite**. Válassza a **bővítmény beállításainak konfigurálása**lehetőséget.
 
@@ -55,13 +55,13 @@ A Azurite Visual Studio code-on belüli konfigurálásához válassza a kiterjes
 
 A következő beállítások támogatottak:
 
-   * **Azurite: BLOB Host** – a blob Service figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
-   * **Azurite: BLOB port** – a blob Service figyelési port. Az alapértelmezett port a 10000.
-   * **Azurite: Hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték **hamis**.
-   * **Azurite: Hely** – a munkaterület helyének elérési útja. Az alapértelmezett érték a Visual Studio Code Working mappa.
-   * **Azurite: Üzenetsor-** állomás – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
-   * **Azurite: Várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
-   * **Azurite: A** csendes-csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték **hamis**.
+   * **Azurite: blob Host** – a blob Service figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
+   * **Azurite: blob port** – a blob Service figyelési port. Az alapértelmezett port a 10000.
+   * **Azurite: hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték **hamis**.
+   * **Azurite: Location** – a munkaterület helyének elérési útja. Az alapértelmezett érték a Visual Studio Code Working mappa.
+   * **Azurite: várólista-állomás** – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
+   * **Azurite: várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
+   * **Azurite: csendes** -csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték **hamis**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
 
@@ -290,8 +290,8 @@ Az Azure Storage SDK-k vagy eszközök, például a [Azure Storage Explorer](htt
 
 A következő fióknevet és kulcsot használhatja a Azurite. Ez ugyanaz a jól ismert fiók és kulcs, amelyet a régi Azure Storage Emulator használ.
 
-* Fiók neve:`devstoreaccount1`
-* Fiók kulcsa:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
+* Fiók neve: `devstoreaccount1`
+* Fiók kulcsa: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 > [!NOTE]
 > A SharedKey-hitelesítésen kívül a Azurite támogatja a fiók és a szolgáltatás SAS-hitelesítését. A névtelen hozzáférés akkor is elérhető, ha egy tároló úgy van beállítva, hogy engedélyezze a nyilvános hozzáférést.
@@ -354,7 +354,7 @@ A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (
 
 Szívesen fogadjuk a Azurite vonatkozó hozzájárulásokat és javaslatokat. Lépjen a Azurite [GitHub-projekt](https://github.com/Azure/Azurite/projects) oldalra, vagy [GitHub-problémák](https://github.com/Azure/Azurite/issues) a mérföldkövek és munkaelemek számára, amelyeket nyomon követünk a közelgő funkciókkal és hibajavításokkal kapcsolatban. A részletes munkaelemeket is nyomon követheti a GitHubon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Használja az Azure Storage emulatort fejlesztési és tesztelési](storage-use-emulator.md) dokumentumaihoz az örökölt Azure Storage-emulátort, amelyet a Azurite felülír.
 * Az [Azure Storage-kapcsolódási karakterláncok konfigurálása](storage-configure-connection-string.md) azt ismerteti, hogyan lehet egy érvényes Azure Storage-beli kapcsolódási karakterláncot összeállítani.

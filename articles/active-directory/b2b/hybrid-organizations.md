@@ -1,6 +1,6 @@
 ---
-title: Hibrid cégekhez és vállalkozásokhoz – Azure Active Directory B2B-együttműködés |} A Microsoft Docs
-description: Hozzáférést biztosíthat partnereinek a helyszínen, és a felhőbeli erőforrások az Azure AD B2B együttműködés.
+title: B2B-együttműködés hibrid szervezetek számára – Azure AD
+description: A partnerek a helyszíni és a Felhőbeli erőforrásokhoz is hozzáférést biztosíthatnak az Azure AD B2B együttműködéssel.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,43 +11,43 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b30e9c14863f67d28203eac916606e8786101e3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768282"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272473"
 ---
-# <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Az Azure Active Directory B2B együttműködés hibrid cégekhez és vállalkozásokhoz
+# <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure Active Directory B2B-együttműködés hibrid szervezeteknél
 
-Az Azure Active Directory (Azure AD) B2B-együttműködés megkönnyíti, hogy a külső hozzáférést biztosíthat partnereinek alkalmazásokat és erőforrásokat a szervezetben. Ez a hibrid konfiguráció még akkor is, hol van a helyszíni és felhőalapú erőforrásokat is. Nem számít, ha jelenleg kezelt külső partnerfiókokhoz helyileg a helyszíni identitáskezelő rendszerbe, vagy ha Ön kezeli a külső fiókokat, a felhőben, az Azure AD B2B-felhasználók. Mostantól ezek a felhasználók hozzáférést biztosíthat az erőforrásokhoz az egyik helyen, mindkét környezetben a bejelentkezési hitelesítő adatokkal.
+A Azure Active Directory (Azure AD) B2B-együttműködés megkönnyíti a külső partnerek számára, hogy hozzáférjenek a szervezet alkalmazásaihoz és erőforrásaihoz. Ez akkor is igaz, ha a hibrid konfigurációban mind a helyszíni, mind a felhőalapú erőforrásokkal rendelkezik. Nem számít, ha a külső partneri fiókokat helyileg felügyeli a helyszíni identitási rendszerben, vagy ha a felhőben lévő külső fiókokat Azure AD B2B-felhasználóként kezeli. Mostantól megadhatja, hogy ezek a felhasználók mindkét helyen azonos bejelentkezési hitelesítő adatok használatával férhessenek hozzá az erőforrásokhoz.
 
-## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
-Ha a szervezete az Azure AD B2B együttműködési lehetőségeket az Azure ad a fiókpartner-szervezetek vendégfelhasználók meghívása, most már megadhat a B2B-felhasználók hozzáférésének a helyszíni alkalmazásokhoz.
+Ha a szervezete az Azure AD B2B együttműködési képességeket használja, hogy meghívják vendégeit a partner szervezeteitől az Azure AD-be, mostantól elérhetővé teheti a B2B-felhasználók számára a helyszíni alkalmazásokhoz való hozzáférést.
 
-Az SAML-alapú hitelesítést használó alkalmazásokhoz akkor is használhatja ezeket az alkalmazásokat a B2B-felhasználók az Azure Portalon az Azure AD-alkalmazásproxy használatával a hitelesítéshez.
+Az SAML-alapú hitelesítést használó alkalmazások számára elérhetővé teheti ezeket az alkalmazásokat a B2B-felhasználók számára a Azure Portal keresztül az Azure AD Application Proxy használatával a hitelesítéshez.
 
-A Kerberos által korlátozott delegálás (KCD) integrált Windows-hitelesítés (IWA) használó alkalmazások esetében is használhat az Azure AD alkalmazásproxy a hitelesítéshez. Azonban engedélyezési működjön, a felhasználói objektum van szükség a helyszíni Windows Server Active Directory. Kétféleképpen a B2B vendégfelhasználók képviselő helyi felhasználói objektumok létrehozására használhatja.
+Az integrált Windows-hitelesítést (IWA) használó alkalmazások számára a Kerberos által korlátozott delegálás (KCD) használatával az Azure AD proxyt is használhatja a hitelesítéshez. Az engedélyezéshez azonban felhasználói objektumra van szükség a helyszíni Windows Server Active Directoryban. Kétféle módszerrel hozhatók létre helyi felhasználói objektumok, amelyek a B2B vendég felhasználóit jelölik.
 
-- A Microsoft Identity Manager (MIM) 2016 SP1 és a MIM-kezelőügynök a Microsoft Graph használható.
-- Egy PowerShell-parancsfájlt is használhatja. (Ez a megoldás nem követeli meg a MIM.)
+- A Microsoft Graphhoz Microsoft Identity Manager (a felügyeleti csomaggal) 2016 SP1 és a fakezelési felügyeleti ügynököt használhatja.
+- PowerShell-parancsfájlt is használhat. (Ehhez a megoldáshoz nem szükséges a webalkalmazás.)
 
-Ezek a megoldások megvalósításával kapcsolatos részletekért lásd: [Grant B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások](hybrid-cloud-to-on-premises.md).
+A megoldások megvalósításával kapcsolatos további információkért lásd: [B2B-felhasználók engedélyezése az Azure ad-ben a helyszíni alkalmazásokhoz](hybrid-cloud-to-on-premises.md).
 
-## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Helyileg kezelt partnerfiókokhoz elérhető felhőalapú erőforrások biztosítása
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz
 
-Az Azure AD-ben előtt teszi a szervezetek számára a helyszíni identitáskezelési rendszereket hagyományosan felügyelt partnerfiókokhoz azok a helyszíni címtárban. Ha Ön a szervezet, győződjön meg arról, hogy a partnerek továbbra is rendelkezik hozzáféréssel, mivel az alkalmazások és más erőforrások áthelyezése a felhőbe szeretne. Ideális esetben érdemes ezek a felhasználók ugyanazokat a hitelesítő adatok használata a felhőbeli és a helyszíni erőforrások eléréséhez. 
+Az Azure AD előtt a helyszíni identitási rendszerekkel rendelkező szervezeteknek hagyományosan felügyelt partneri fiókokkal kell rendelkezniük a helyszíni címtárban. Ha Ön egy ilyen szervezet, akkor győződjön meg arról, hogy partnerei továbbra is hozzáférhetnek az alkalmazásokhoz és más erőforrásokhoz a felhőbe való áthelyezéshez. Ideális esetben azt szeretné, hogy ezek a felhasználók ugyanazt a hitelesítő adatokat használják a Felhőbeli és a helyszíni erőforrások eléréséhez. 
 
-Mi most ahol használhatja az Azure AD Connect ahol viselkednek a fiókok csak "vendég felhasználók", ezek a felhőbe a helyi fiókok szinkronizálása az ajánlat módszerek, például az Azure AD B2B-felhasználók.
+Mostantól olyan metódusokat is kínálunk, amelyekkel a Azure AD Connect használatával szinkronizálhatja ezeket a helyi fiókokat a felhőbe "vendég felhasználóként", ahol a fiókok ugyanúgy működnek, mint az Azure AD B2B-felhasználók.
 
-A vállalati adatok védelme érdekében csak a megfelelő erőforrásokhoz való hozzáférésének, és engedélyezési házirendeket, amelyek kezeli az alkalmazottak és a vendégfelhasználóknak konfigurálása.
+A vállalati adatok védelme érdekében szabályozhatja a hozzáférést a megfelelő erőforrásokhoz, és konfigurálhatja azokat az engedélyezési házirendeket, amelyek az alkalmazottaktól eltérően kezelik ezeket a vendég felhasználókat.
 
-A megvalósítás részleteit lásd: [Grant helyileg kezelt partnerfiókokhoz elérhető az Azure AD B2B együttműködés segítségével felhőalapú erőforrások](hybrid-on-premises-to-cloud.md).
+A megvalósítás részleteiért lásd: a [helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure ad B2B együttműködés használatával](hybrid-on-premises-to-cloud.md).
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások](hybrid-cloud-to-on-premises.md)
-- [Helyileg kezelt partner fiókok hozzáférést biztosít felhőbeli erőforrásokat az Azure AD B2B együttműködés segítségével](hybrid-on-premises-to-cloud.md)
+- [Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure AD B2B Collaboration használatával](hybrid-on-premises-to-cloud.md)
 
 

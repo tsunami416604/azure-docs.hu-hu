@@ -1,5 +1,5 @@
 ---
-title: A rövid útmutatóban a PowerShell használatával – az Azure Active Directory vendégfelhasználó felvétele |} A Microsoft Docs
+title: 'Gyors útmutató: vendég felhasználó hozzáadása a PowerShell használatával – Azure AD'
 description: Ebben a rövid útmutatóban megismerheti, hogyan küldhet az Azure AD B2B együttműködés külső felhasználó számára meghívót a PowerShell használatával.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5325529acb66735db0c27c0f5bdfca819e8ec4d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812306"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273358"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>Gyors útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>Rövid útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
 Az Azure Active Directory B2B együttműködés sokféle lehetőséget nyújt a külső partnerek alkalmazásokba és szolgáltatásokba történő meghívására. Az előző rövid útmutatóban láthattuk, hogyan lehet vendégfelhasználókat közvetlenül az Azure Active Directory admin portálon felvenni. Felhasználók felvételéhez a PowerShell is használható, akár egyenként, akár kötegben. Ebben a rövid útmutatóban a New-AzureADMSInvitation paranccsal adunk új vendég felhasználót az Azure bérlőhöz.
 
@@ -75,7 +75,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
 
 ## <a name="send-an-invitation"></a>Meghívó küldése
 
-1. Teszt e-mail fiókja meghívó küldése, futtassa a következő PowerShell-parancsot (cserélje le **"Sanda"** és **sanda\@fabrikam.com** és a teszt e-mail fiók nevét és e-mail cím): 
+1. Ha egy meghívót szeretne elküldeni a teszt e-mail-fiókjába, futtassa a következő PowerShell-parancsot (cserélje le a **"sanda"** és a **sanda\@fabrikam.com** a teszt e-mail fiókjának nevére és e-mail-címére): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Ellenőrizze, hogy a meghívott felhasználó egy egyszerű felhasználónévvel (UPN) a következő formátumban szerepel, a kimeneti *emailaddress*EXT #\@*tartomány*. Ha például *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com a szervezet, ahonnan a Meghívók küldése.
+3. Ellenőrizze a kimenetet, és győződjön meg arról, hogy a meghívott felhasználó szerepel-e az egyszerű felhasználónévvel (UPN) a következő formátumban: *emailaddress*#EXT #\@*tartomány*. Például *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
    ![A vendégfelhasználó felvételét mutató PowerShell kimenet](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
@@ -105,8 +105,8 @@ Ha már nincs rá szükség, törölheti a tesztfelhasználói fiókot a címtá
 Például:`Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egyetlen vendégfelhasználót hívtunk meg és adtunk hozzá a címtárhoz a PowerShell használatával. Ezután megnézzük, hogyan lehet a PowerShell segítségével vendégfelhasználókat tömegesen meghívni.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Tömeges meghívása az Azure AD B2B együttműködés felhasználók](tutorial-bulk-invite.md)
+> [Oktatóanyag: Azure AD B2B együttműködő felhasználók tömeges meghívása](tutorial-bulk-invite.md)

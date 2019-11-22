@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry-figyelés |} A Microsoft Docs
-description: A Cloud Foundry loggregator Nozzle üzembe helyezése az Azure Log Analytics lépésenkénti útmutatóját. Használja a Nozzle a Cloud Foundry rendszer állapotának és teljesítményének metrikák figyelése.
+title: Azure Log Analytics szívófej üzembe helyezése Cloud Foundry monitorozáshoz
+description: Részletes útmutató az Azure Log Analytics Cloud Foundry loggregator-fúvókának üzembe helyezéséhez. A fúvóka segítségével figyelje a Cloud Foundry rendszerállapot-és teljesítmény-mérőszámait.
 services: virtual-machines-linux
 author: ningk
 manager: jeconnoc
@@ -12,105 +12,105 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199397"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286645"
 ---
-# <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry figyelése
+# <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-szívófej üzembe helyezése Cloud Foundry rendszer-figyeléshez
 
-[Az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás az Azure-ban. Ez segít összegyűjteni és elemezni az adatokat, amelyeket akkor jön létre, a felhőből a helyszíni környezetekben.
+[Azure monitor](https://azure.microsoft.com/services/log-analytics/) egy Azure-beli szolgáltatás. Segít összegyűjteni és elemezni a felhőből és a helyszíni környezetből létrehozott adatokat.
 
-A Log Analytics Nozzle (Nozzle) egy Cloud Foundry (CF) összetevő, amely továbbítja a metrikák a [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) "firehose" az Azure Monitor naplóira. A Nozzle a collect, megtekintheti, és elemezze a CF-hez rendszer állapotának és teljesítményének metrikákat, a több központi telepítést.
+A Log Analytics fúvóka (a fúvóka) egy Cloud Foundry (CF) összetevő, amely a [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose származó mérőszámokat Azure monitor naplókba továbbítja. A fúvókával összegyűjtheti, megtekintheti és elemezheti a CF rendszerállapot-és teljesítmény-mérőszámait több üzemelő példány között.
 
-Ebből a dokumentumból megismerheti, hogyan a Nozzle a CF-hez környezet üzembe helyezése, és majd elérni az adatokat az Azure Monitor naplók konzolról.
+Ebből a dokumentumból megtudhatja, hogyan helyezheti üzembe a fúvókát a CF-környezetében, majd Hogyan férhet hozzá az adatokhoz a Azure Monitor logs konzolon.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő lépéseket kell a Nozzle üzembe helyezésére vonatkozó követelményeket.
+A következő lépések a fúvóka üzembe helyezésének előfeltételei.
 
-### <a name="1-deploy-a-cf-or-pivotal-cloud-foundry-environment-in-azure"></a>1. A CF-hez vagy a Pivotal Cloud Foundry Azure-beli környezet üzembe helyezése
+### <a name="1-deploy-a-cf-or-pivotal-cloud-foundry-environment-in-azure"></a>1. CF vagy Pivotal Cloud Foundry környezet üzembe helyezése az Azure-ban
 
-A Nozzle egy nyílt forráskódú CF központi vagy a Pivotal Cloud Foundry (PCF) központi telepítés is használhatja.
+Használhatja a fúvókát egy nyílt forráskódú CF üzembe helyezéssel vagy egy Pivotal Cloud Foundry (PCF) üzemelő példány használatával.
 
-* [Az Azure-ban a Cloud Foundry üzembe helyezése](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
+* [Cloud Foundry üzembe helyezése az Azure-ban](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md)
 
-* [Az Azure-ban a Pivotal Cloud Foundry üzembe helyezése](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
+* [Pivotal Cloud Foundry üzembe helyezése az Azure-ban](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
 
-### <a name="2-install-the-cf-command-line-tools-for-deploying-the-nozzle"></a>2. Üzembe helyezéséhez a Nozzle a CF-hez parancssori eszközök telepítése
+### <a name="2-install-the-cf-command-line-tools-for-deploying-the-nozzle"></a>2. Telepítse a CF parancssori eszközöket a szívófej üzembe helyezéséhez
 
-A Nozzle a CF-hez környezet alkalmazásként működik. Az alkalmazás központi telepítése a CF CLI van szüksége.
+A fúvóka alkalmazásként fut a CF-környezetben. Az alkalmazás telepítéséhez a CF CLI szükséges.
 
-A Nozzle kell rendelkeznie a hozzáférési engedélyt a loggregator "firehose" és a felhő vezérlő is. Hozhat létre és konfigurálja a felhasználó a felhasználói fiók és hitelesítés (UAA) szolgáltatásra van szükségük.
+A szívófejnek hozzáférési engedéllyel kell rendelkeznie a loggregator firehose és a felhőalapú vezérlőhöz is. A felhasználó létrehozásához és konfigurálásához szüksége lesz a felhasználói fiók és a hitelesítés (MHT) szolgáltatásra.
 
-* [A Cloud Foundry parancssori felület telepítése](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+* [Cloud Foundry parancssori felület telepítése](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 
 * [Cloud Foundry UAA parancssori ügyfél telepítése](https://github.com/cloudfoundry/cf-uaac/blob/master/README.md)
 
-Mielőtt beállítaná a UAA parancssori ügyfelét, győződjön meg arról, hogy telepítve van-e a RubyGems.
+Az UAA parancssori ügyfél beállítása előtt győződjön meg arról, hogy a RubyGems telepítve van.
 
-### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Az Azure Log Analytics-munkaterület létrehozása
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Log Analytics munkaterület létrehozása az Azure-ban
 
-A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon használatával. A sablon egy előre konfigurált KPI nézeteket és riasztásokat az Azure Monitor naplók konzol telepítő telepíti. 
+A Log Analytics munkaterületet manuálisan vagy sablon használatával is létrehozhatja. A sablon üzembe helyezi az előre konfigurált KPI-nézetek és riasztások telepítését a Azure Monitor naplók konzolon. 
 
-#### <a name="to-create-the-workspace-manually"></a>A munkaterület manuális létrehozásához:
+#### <a name="to-create-the-workspace-manually"></a>A munkaterület manuális létrehozása:
 
-1. Az Azure Portalon a szolgáltatások listájában keresse az Azure piactéren, és válassza ki a Log Analytics-munkaterületek.
-2. Válassza ki **létrehozás**, majd válassza ki az egyik lehetőséget a következő elemeknél:
+1. A Azure Portal keresse meg a szolgáltatások listáját az Azure piactéren, majd válassza a Log Analytics munkaterületek lehetőséget.
+2. Válassza a **Létrehozás**lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
 
-   * **Log Analytics-munkaterület**: Írja be a munkaterület nevét.
-   * **Előfizetés**: Ha több előfizetéssel rendelkezik, kiválaszthatja a ugyanaz, mint a CF-telepítés.
-   * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy használja ugyanazt a CF-hez üzemelő példány.
-   * **Hely**: Adja meg a helyet.
-   * **A tarifacsomag**: Válassza ki **OK** befejezéséhez.
+   * **Log Analytics munkaterület**: írja be a munkaterület nevét.
+   * **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki azt, amelyik megegyezik a CF üzembe helyezésével.
+   * **Erőforráscsoport**: létrehozhat egy új erőforráscsoportot, vagy használhatja ugyanezt a CF-telepítéssel.
+   * **Hely**: adja meg a helyet.
+   * **Árképzési szintek**: válassza **az OK gombot** a befejezéshez.
 
-További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+További információ: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>A figyelési sablon segítségével a Log Analytics-munkaterület létrehozása az Azure Marketplace-beli:
+#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Az Log Analytics munkaterület létrehozása a figyelési sablonnal az Azure Market helyről:
 
-1. Nyissa meg az Azure Portalon.
-1. Kattintson a "+" jelre, vagy az "Erőforrás létrehozása" a bal felső sarokban.
-1. Írja be a "Cloud Foundry" kifejezést a keresési ablakba, és válassza a "Cloud Foundry figyelési megoldás".
-1. A Cloud Foundry figyelési megoldást sablon első lapon be van töltve, a sablon panel elindításához a "Létrehozás" gombra.
+1. Nyissa meg Azure Portal.
+1. Kattintson a "+" jelre, vagy az "erőforrás létrehozása" elemre a bal felső sarokban.
+1. A keresés ablakban írja be a "Cloud Foundry" kifejezést, majd válassza a "Cloud Foundry figyelési megoldás" lehetőséget.
+1. A Cloud Foundry figyelési megoldás sablonjának elülső lapja betöltődik, majd a Létrehozás gombra kattintva elindíthatja a sablon panelt.
 1. Adja meg a szükséges paramétereket:
-    * **Előfizetés**: Válassza ki a Log Analytics-munkaterületet, általában ugyanaz a Cloud Foundry üzembe helyezés az Azure-előfizetést.
-    * **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a Log Analytics-munkaterületet.
-    * **Erőforráscsoport helye**: Válassza ki az erőforráscsoport helyét.
-    * **OMS_Workspace_Name**: Adjon meg egy nevet, ha a munkaterület nem létezik, a sablon létrehoz egy új.
-    * **OMS_Workspace_Region**: Válassza ki a munkaterület helyét.
-    * **OMS_Workspace_Pricing_Tier**: Válassza ki a Log Analytics-munkaterület Termékváltozat. Tekintse meg a [díjszabási útmutatóját](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
-    * **Jogi feltételek**: Kattintson a jogi feltételeket, majd kattintson a "Create", fogadja el a jogi kifejezés.
-1. Után minden paraméter meg van adva, kattintson a "Létrehozás" a sablon üzembe helyezéséhez. Az üzembe helyezés befejezése után az állapot jelennek meg az értesítési lapon.
+    * **Előfizetés**: válassza ki a log Analytics munkaterülethez tartozó Azure-előfizetést, amely általában megegyezik a Cloud Foundry üzemelő példányával.
+    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a log Analytics munkaterülethez.
+    * **Erőforráscsoport helye**: válassza ki az erőforráscsoport helyét.
+    * **OMS_Workspace_Name**: adjon meg egy munkaterület-nevet, ha a munkaterület nem létezik, akkor a sablon egy újat hoz létre.
+    * **OMS_Workspace_Region**: válassza ki a munkaterület helyét.
+    * **OMS_Workspace_Pricing_Tier**: válassza ki a log Analytics munkaterület SKU-t. Tekintse meg az [árképzési útmutatót](https://azure.microsoft.com/pricing/details/log-analytics/) a hivatkozáshoz.
+    * **Jogi feltételek**: kattintson a jogi feltételek elemre, majd a "létrehozás" gombra a jogi kifejezés elfogadásához.
+1. Az összes paraméter megadása után a sablon üzembe helyezéséhez kattintson a "létrehozás" gombra. Ha a telepítés befejeződött, az állapot megjelenik az értesítés lapon.
 
 
-## <a name="deploy-the-nozzle"></a>A Nozzle üzembe helyezése
+## <a name="deploy-the-nozzle"></a>A szívófej üzembe helyezése
 
-Többféleképpen is a Nozzle üzembe helyezése néhány: PCF csempe formájában, vagy a CF-alkalmazás.
+A szívófej több módon is üzembe helyezhető: PCF csempeként vagy CF-alkalmazásként.
 
-### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>A PCF az Ops Manager csempeként az Nozzle üzembe helyezése
+### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>A fúvóka üzembe helyezése PCF Ops Manager-csempével
 
-Kövesse a lépéseket a [telepítése és konfigurálása az Azure Log Analytics Nozzle a PCF](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Ez az egyszerűsített módszer, automatikusan konfigurálja és küldje le a nozzle a PCF az Ops manager csempét. 
+Kövesse az [Azure log Analytics fúvóka PCF telepítéséhez és konfigurálásához](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html)szükséges lépéseket. Ez az egyszerűsített megközelítés, a PCF Ops Manager csempe automatikusan konfigurálja és leküldi a fúvókát. 
 
-### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Telepítheti manuálisan a Nozzle a CF-alkalmazás
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>A szívófej manuális üzembe helyezése CF-alkalmazásként
 
-Ha nem használ a PCF az Ops Manager, a Nozzle üzembe helyezése alkalmazásként. A következő szakaszok ismertetik a folyamatot.
+Ha nem használja a PCF Ops-kezelőt, telepítse a fúvókát alkalmazásként. A következő szakaszok ismertetik ezt a folyamatot.
 
-#### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>Jelentkezzen be a CF-hez telepítéséhez rendszergazdai CF parancssori felületén keresztül
+#### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>Bejelentkezés a CF üzembe helyezéséhez rendszergazdaként a CF CLI-n keresztül
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
 
-"SYSTEM_DOMAIN" is your CF domain name. Kérheti le azt a "SYSTEM_DOMAIN" Keresés a CF-üzembe helyezési jegyzékfájl. 
+"SYSTEM_DOMAIN" is your CF domain name. A beolvasáshoz keresse meg a "SYSTEM_DOMAIN" kifejezést a CF üzembe helyezési jegyzékfájljában. 
 
-"CF_User" a CF-hez rendszergazdájának nevét. Keressen a "scim" szakaszban, a név és a "cf_admin_password" a CF-üzembe helyezési jegyzékfájl kérheti le a nevet és jelszót.
+A "CF_User" a CF rendszergazdai neve. A név és a jelszó lekéréséhez keresse meg a "scim" szakaszt, és a "cf_admin_password" kifejezést keresi a CF telepítési jegyzékfájljában.
 
-#### <a name="create-a-cf-user-and-grant-required-privileges"></a>A CF-felhasználó létrehozása és a szükséges jogosultságok engedélyezése
+#### <a name="create-a-cf-user-and-grant-required-privileges"></a>CF-felhasználó létrehozása és a szükséges jogosultságok megadása
 
 Futtassa az alábbi parancsot:
 ```
@@ -121,11 +121,11 @@ uaac member add cloud_controller.admin ${FIREHOSE_USER}
 uaac member add doppler.firehose ${FIREHOSE_USER}
 ```
 
-"SYSTEM_DOMAIN" is your CF domain name. Kérheti le azt a "SYSTEM_DOMAIN" Keresés a CF-üzembe helyezési jegyzékfájl.
+"SYSTEM_DOMAIN" is your CF domain name. A beolvasáshoz keresse meg a "SYSTEM_DOMAIN" kifejezést a CF üzembe helyezési jegyzékfájljában.
 
-#### <a name="download-the-latest-log-analytics-nozzle-release"></a>Töltse le a Log Analytics Nozzle legújabb kiadását
+#### <a name="download-the-latest-log-analytics-nozzle-release"></a>A legújabb Log Analytics fúvóka kiadásának letöltése
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
@@ -133,7 +133,7 @@ cd oms-log-analytics-firehose-nozzle
 
 #### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-Most már beállíthatja a környezeti változók a manifest.yml fájl az aktuális könyvtárban található. Az alábbiakban látható a Nozzle manifest aplikace. Értékeket cserélje le a Log Analytics munkaterület információkat.
+Most már beállíthatja a környezeti változókat az aktuális könyvtár manifest. YML fájljában. Az alábbi ábrán a fúvóka alkalmazásának jegyzékfájlja látható. Cserélje le az értékeket az adott Log Analytics munkaterület adataira.
 
 ```
 OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
@@ -154,97 +154,97 @@ LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle h
 LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azure Monitor logs. The default is 60 seconds.
 ```
 
-### <a name="push-the-application-from-your-development-computer"></a>Az alkalmazás a fejlesztői számítógépről küldése
+### <a name="push-the-application-from-your-development-computer"></a>Az alkalmazás leküldése a fejlesztői számítógépről
 
-Győződjön meg arról, hogy az oms-log-analytics – "firehose"-nozzle mappa alatt áll. Futtassa a következő parancsot:
+Győződjön meg arról, hogy a OMS-log-Analytics-firehose-fúvóka mappában van. Futtassa az alábbi parancsot:
 ```
 cf push
 ```
 
-## <a name="validate-the-nozzle-installation"></a>A Nozzle a telepítés ellenőrzése
+## <a name="validate-the-nozzle-installation"></a>A fúvóka telepítésének ellenőrzése
 
-### <a name="from-apps-manager-for-pcf"></a>Az alkalmazások Manager (a PCF)
+### <a name="from-apps-manager-for-pcf"></a>Az App Managerből (PCF)
 
-1. Jelentkezzen be az Ops Manager, és ellenőrizze, hogy a telepítés irányítópulton jelennek meg a csempét.
-2. Jelentkezzen be a kezelő alkalmazások, győződjön meg arról, hogy a használati jelentés megjelenik a létrehozott Nozzle a terület, és győződjön meg arról, hogy az állapot normál.
+1. Jelentkezzen be az Ops-kezelőbe, és ellenőrizze, hogy a csempe megjelenik-e a telepítési irányítópulton.
+2. Jelentkezzen be az alkalmazás-kezelőbe, győződjön meg arról, hogy a szívófejhez létrehozott terület szerepel a használati jelentésben, és ellenőrizze, hogy az állapot normális-e.
 
 ### <a name="from-your-development-computer"></a>A fejlesztői számítógépről
 
-A CF-hez parancssori felület ablakában írja be:
+A CF CLI-ablakban írja be a következőt:
 ```
 cf apps
 ```
-Győződjön meg arról, hogy az OMS Nozzle alkalmazás fut-e.
+Ellenőrizze, hogy fut-e a OMS-fúvóka alkalmazás.
 
-## <a name="view-the-data-in-the-azure-portal"></a>Az adatok megtekintése az Azure Portalon
+## <a name="view-the-data-in-the-azure-portal"></a>A Azure Portalban lévő adatmegjelenítés
 
-Ha telepítette a figyelési megoldás a Marketplace-beli sablonon keresztül, az Azure portal megnyitása, és keresse meg a megoldás. A sablonban megadott erőforráscsoportban találja a megoldást. Kattintson a megoldást, keresse meg a "log analytics konzolt", az előre konfigurált nézeteket szerepel a listában, felső Cloud Foundry rendszer KPI-k, az alkalmazásadatok, a riasztások és a virtuális gép mérőszámok. 
+Ha a figyelési megoldást a Piactéri sablonon keresztül telepítette, lépjen a Azure Portalra, és keresse meg a megoldást. A megoldás a sablonban megadott erőforráscsoporthoz is megkereshető. Kattintson a megoldásra, keresse meg a "log Analytics-konzolt", az előre konfigurált nézeteket, amelyek a fő Cloud Foundry rendszerkpi-k, az alkalmazásadatok, a riasztások és a VM-állapot metrikái. 
 
-Ha manuálisan hozott létre a Log Analytics-munkaterülethez, kövesse az alábbi lépéseket, a nézeteket és riasztásokat hozhat létre:
+Ha manuálisan hozta létre a Log Analytics munkaterületet, kövesse az alábbi lépéseket a nézetek és a riasztások létrehozásához:
 
-### <a name="1-import-the-oms-view"></a>1. Importálja az OMS-nézet
+### <a name="1-import-the-oms-view"></a>1. importálja a OMS nézetet
 
-Az OMS-portálon keresse meg a **adatforrásnézet-tervezőből** > **importálás** > **Tallózás**, és válassza ki a omsview fájlok. Válassza ki például *felhőalapú Foundry.omsview*, és mentse a nézetet. Most egy csempe jelenik meg a **áttekintése** lapot. Válassza ki azt a teszi metrikákat.
+A OMS-portálon keresse meg a **Designer** > **Importálás** > **Tallózás**elemet, majd válasszon ki egy omsview-fájlt. Válassza például a *Cloud Foundry. omsview*elemet, és mentse a nézetet. Most egy csempe jelenik meg az **Áttekintés** oldalon. Jelölje ki a vizualizációs mérőszámok megjelenítéséhez.
 
-Ezek a nézetek testreszabását, vagy hozzon létre új nézetek keresztül **adatforrásnézet-tervezőből**.
+Ezeket a nézeteket testreszabhatja, vagy létrehozhat új nézeteket a **Tervező nézet**használatával.
 
-A *"Cloud Foundry.omsview"* a Cloud Foundry OMS sablon megtekintése előzetes verziója. Ez a teljesen konfigurált alapértelmezett sablont. Ha javaslata vagy a sablonnal visszajelzést, küldje el a a [szakasz ki](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
+A *"Cloud Foundry. omsview"* a Cloud Foundry OMS View sablon előzetes verziója. Ez egy teljesen konfigurált, alapértelmezett sablon. Ha javaslata vagy visszajelzése van a sablonról, küldje el őket a [probléma szakaszba](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
 
-### <a name="2-create-alert-rules"></a>2. Riasztási szabályok létrehozása
+### <a name="2-create-alert-rules"></a>2. riasztási szabályok létrehozása
 
-Is [a riasztások létrehozása](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts), és szükség szerint a lekérdezések és a küszöbértékek testre szabhatja. A következő ajánlott riasztások:
+[Létrehozhatók a riasztások](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
 
-| Keresési lekérdezés                                                                  | Riasztás alapján | Leírás                                                                       |
+| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Leírás                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Eredmények < 1 száma   | **BBS. Domain.cf-alkalmazások** azt jelzi, hogy a cf-alkalmazás tartomány naprakész. Ez azt jelenti, hogy bbs felhőalapú adatkezelő CF-alkalmazás kéréseit a rendszer szinkronizálja. LRPsDesired (AIs Diego kívánt) végrehajtásához. Nem érkeztek adatok azt jelenti, hogy a cf-alkalmazás tartománya nem naprakész a megadott időtartományban. |
-| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Eredmények > 0 száma   | Cellák Diego a 0 azt jelenti, hogy kifogástalan, és 1 azt jelenti, hogy nem megfelelő állapotú. Állítsa be a riasztás, ha több nem kifogástalan Diego cellák észlelt a megadott időtartományban. |
-| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Eredmények > 0 száma | 1 jelenti a rendszer kifogástalan állapotú, és a 0 azt jelenti, hogy a rendszer állapota nem kifogástalan. |
-| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Eredmények > 0 száma   | Consul rendszeres időközönként bocsát ki a megfelelő állapotot. a 0 azt jelenti, a rendszer kifogástalan állapotú, és 1 azt jelenti, hogy az útvonal vezérlő észleli, hogy Consul le van-e. |
-| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Eredmények > 0 száma | A különbözeti száma miatt nyomása Doppler által szándékosan eldobott üzenetek. |
-| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Eredmények > 0 száma   | Loggregator bocsát ki **LGR** való problémáira utalnak a naplózási folyamatot. Egy példa ilyen probléma esetén, hogy a kimenet üzenet értéke túl magas. |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Eredmények > 0 száma   | A Nozzle loggregator egy lassú fogyasztói riasztást kap, amikor elküldi a **slowConsumerAlert** az Azure monitornak ValueMetric naplózza. |
-| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Eredmények > 0 száma   | Ha a különbözeti elveszett események száma eléri a küszöbértéket, az azt jelenti, a Nozzle futó problémák lehetnek. |
+| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Találatok száma < 1   | **BBS. Domain.cf – az alkalmazások** azt jelzik, hogy a CF-apps tartomány naprakész-e. Ez azt jelenti, hogy a Cloud Controller által benyújtott CF-alkalmazások szinkronizálása a BBS-be történik. LRPsDesired (Diego – kívánt AIs) a végrehajtáshoz. Nem érkezett adat: a CF-apps tartomány nem naprakész a megadott időablakban. |
+| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Találatok száma > 0   | Diego-sejtek esetén a 0 a kifogástalan állapotot jelenti, az 1 pedig sérült. Állítsa be a riasztást, ha a megadott időtartományban több nem kifogástalan állapotú Diego-cella észlelhető. |
+| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Találatok száma > 0 | 1: a rendszer kifogástalan állapotú, és 0 azt jelenti, hogy a rendszer nem kifogástalan állapotú. |
+| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Találatok száma > 0   | A konzul időről időre kibocsátja az állapotot. 0 azt jelenti, hogy a rendszer kifogástalan, és 1 azt jelenti, hogy az útvonal-kibocsátó észleli, hogy a konzul nem működik. |
+| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Találatok száma > 0 | A Doppler által a háttérbeli nyomás miatt szándékosan eldobott üzenetek különbözeti száma. |
+| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Találatok száma > 0   | A Loggregator kibocsátja a **LGR** , hogy jelezze a naplózási folyamattal kapcsolatos problémákat. Ilyen probléma például akkor, ha a napló üzeneteinek kimenete túl magas. |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Találatok száma > 0   | Ha a fúvóka lassú fogyasztói riasztást kap a loggregator, elküldi a **slowConsumerAlert** -ValueMetric Azure monitor naplókba. |
+| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Találatok száma > 0   | Ha az elveszett események különbözeti száma eléri a küszöbértéket, az azt jelenti, hogy a fúvóka probléma fut. |
 
 ## <a name="scale"></a>Méretezés
 
-A Nozzle és a loggregator skálázhatja.
+A fúvókát és a loggregator is méretezheti.
 
-### <a name="scale-the-nozzle"></a>A Nozzle méretezése
+### <a name="scale-the-nozzle"></a>A szívófej méretezése
 
-A Nozzle legalább két példányban kell kezdődnie. A "firehose" a Nozzle minden példánya között osztja el a számítási feladatok.
-Ahhoz, hogy a Nozzle képes tartani a "firehose" adatok forgalmát, állítsa be a **slowConsumerAlert** riasztás ("A riasztási szabályok létrehozása", az előző szakaszban felsorolt). Akkor figyelmezteti, miután a [lassú Nozzle útmutatást](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz) meghatározni a skálázás szükség van-e.
-A Nozzle a vertikális alkalmazások Manager vagy a CF-hez CLI segítségével kívánja a példány számokat vagy a memória vagy lemezterület erőforrások bővíthetők a Nozzle a.
+A fúvóka legalább két példányával kell kezdődnie. A firehose elosztja a számítási feladatot a fúvóka összes példánya között.
+Annak ellenőrzéséhez, hogy a fúvóka képes-e a firehose lévő adatforgalom fenntartására, állítsa be a **slowConsumerAlert** riasztást (az előző szakaszban "riasztási szabályok létrehozása"). Miután elvégezte a riasztást, kövesse a [lassú fúvókákkal kapcsolatos útmutatót](https://docs.pivotal.io/pivotalcf/1-11/loggregator/log-ops-guide.html#slow-noz) , és állapítsa meg, hogy szükséges-e a skálázás.
+A fúvóka vertikális felskálázásához használja az alkalmazások kezelőjét vagy a CF CLI-t a példányszám vagy a fúvóka memória-vagy lemez-erőforrásainak növeléséhez.
 
-### <a name="scale-the-loggregator"></a>A loggregator méretezése
+### <a name="scale-the-loggregator"></a>A loggregator skálázása
 
-Loggregator küld egy **LGR** log üzenet problémáira utalnak a naplózási folyamatot. Figyelheti a meghatározásához, hogy a loggregator vertikálisan fel kell-e riasztást.
-A loggregator vertikális felskálázásához az Doppler puffer méretét, vagy adjon hozzá további Doppler kiszolgálópéldányok a CF-jegyzékfájlban. További információkért lásd: [a loggregator skálázás útmutatóját](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
+A Loggregator **LGR** küld a naplózási folyamattal kapcsolatos problémák jelzésére. Figyelheti a riasztást annak megállapítására, hogy a loggregator bővíteni kell-e.
+A loggregator vertikális felskálázásához növelje a Doppler-puffer méretét, vagy vegyen fel további Doppler-kiszolgálói példányokat a CF-jegyzékfájlba. További információ: a [loggregator skálázásának útmutatója](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
 ## <a name="update"></a>frissítés
 
-A Nozzle frissítése egy újabb verzióval, töltse le az új Nozzle kiadásban, kövesse a fenti "A Nozzle üzembe helyezése" című szakaszának lépéseit, és újból az alkalmazást leküldéses.
+Ha újabb verzióval szeretné frissíteni a fúvókát, töltse le az új fúvóka-kiadást, kövesse az előző "a fúvóka üzembe helyezése" című szakaszt, és küldje el újra az alkalmazást.
 
-### <a name="remove-the-nozzle-from-ops-manager"></a>Távolítsa el a Nozzle az Ops Manager
+### <a name="remove-the-nozzle-from-ops-manager"></a>A fúvóka eltávolítása az Ops-kezelőből
 
-1. Jelentkezzen be az Ops Manager.
-2. Keresse meg a **a Microsoft Azure Log Analytics Nozzle a PCF** csempére.
-3. A szemétgyűjtési ikonra, és erősítse meg a törlést.
+1. Jelentkezzen be az Ops-kezelőbe.
+2. Keresse meg a **PCF csempe Microsoft Azure log Analytics fúvókát** .
+3. Válassza ki a szemetet ikont, és erősítse meg a törlést.
 
-### <a name="remove-the-nozzle-from-your-development-computer"></a>Távolítsa el a Nozzle a fejlesztői számítógépről
+### <a name="remove-the-nozzle-from-your-development-computer"></a>A fúvóka eltávolítása a fejlesztői számítógépről
 
-A CF-hez parancssori felület ablakában írja be:
+A CF CLI-ablakba írja be a következőt:
 ```
 cf delete <App Name> -r
 ```
 
-Ha eltávolítja a Nozzle, az adatok az OMS-portálon nem törlődik automatikusan. Lejár az Azure Monitor naplók megőrzési beállítás alapján.
+Ha eltávolítja a fúvókát, a rendszer nem távolítja el automatikusan a OMS-portálon lévő adatfájlokat. Ez a Azure Monitor naplók adatmegőrzési beállításának függvényében lejár.
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
-Az Azure Log Analytics Nozzle a nyílt forráskóddal. A kérdések és visszajelzés küldése a [GitHub szakasz](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues). Nyisson meg egy Azure-támogatási kérést, válassza a "Cloud Foundry szolgáltatást futtató virtuális gép" a szolgáltatás kategória szerint. 
+Az Azure Log Analytics fúvóka nyílt forráskódú. Küldje el kérdéseit és visszajelzéseit a [GitHub szakaszra](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues). Azure-támogatási kérelem megnyitásához válassza a "Cloud Foundry-t futtató virtuális gép" lehetőséget a szolgáltatás kategóriája. 
 
 ## <a name="next-step"></a>Következő lépés
 
-PCF2.0, a virtuális gép teljesítmény-mérőszámok kerüljenek az Azure Log Analytics nozzle rendszer metrikák továbbítót, és a Log Analytics-munkaterület integrálva. Már nincs szüksége a Log Analytics-ügynököket a virtuális gép teljesítmény-mérőszámon. Syslog kapcsolatos információk összegyűjtéséhez azonban a Log Analytics-ügynökök továbbra is használhatja. A Log Analytics-ügynök telepítve van egy Bosh végpontállapot CF virtuális gépekhez. 
+A PCF 2.0-s verziójában a virtuális gépek teljesítmény-mérőszámai az Azure Log Analytics-fúvókára kerülnek át a rendszermetrikák továbbítója által, és integrálva vannak a Log Analytics munkaterületbe. Már nincs szüksége a virtuális gép teljesítmény-metrikáinak Log Analytics ügynökére. Azonban továbbra is használhatja a Log Analytics ügynököt a syslog-adatok gyűjtésére. A Log Analytics ügynök a CF virtuális gépekhez tartozó Bosh-bővítményként van telepítve. 
 
-További információkért lásd: [üzembe helyezése a Log Analytics-ügynök a Cloud Foundry telepítés](https://github.com/Azure/oms-agent-for-linux-boshrelease).
+Részletekért lásd: [log Analytics ügynök központi telepítése a Cloud Foundry üzemelő példányra](https://github.com/Azure/oms-agent-for-linux-boshrelease).

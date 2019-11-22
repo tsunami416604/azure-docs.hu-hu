@@ -1,6 +1,6 @@
 ---
 title: Felkészülés a formátum módosítására Azure Monitor diagnosztikai naplókra
-description: Az Azure diagnosztikai naplók a hozzáfűzési Blobok a 2018. november 1-jén való használatára lesznek áthelyezve.
+description: A cikk azt ismerteti, hogyan lehet frissíteni az eszközöket úgy, hogy kezelni tudja az új Azure diagnosztikai naplókat, amelyeket a hozzáfűzési Blobok a 2018. november 1-jén való használatára módosítottak.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258389"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307050"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Felkészülés a formátum módosítására Azure Monitor diagnosztikai naplók archiválása egy Storage-fiókba
 
 > [!WARNING]
-> Ha [Azure Resource diagnosztikai naplókat vagy metrikákat küld egy Storage-fiókba az erőforrás-diagnosztikai beállítások](./../../azure-monitor/platform/archive-diagnostic-logs.md) vagy a tevékenység naplófájlok használatával a [Storage](./../../azure-monitor/platform/archive-activity-log.md)-fiókba, akkor a Storage-fiókban lévő adatok formátuma a JSON-sorokra változik November 1., 2018. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére. 
+> Ha [Azure Resource diagnosztikai naplókat vagy metrikákat küld egy Storage-fiókba az erőforrás-diagnosztikai beállításokkal](./../../azure-monitor/platform/archive-diagnostic-logs.md) vagy a tevékenység naplófájljaival, a [log profilok használatával](./../../azure-monitor/platform/archive-activity-log.md), a Storage-fiókban lévő adatok formátuma a JSON-sorokra változik a 2018-as november 1-jén. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére. 
 >
 > 
 
-## <a name="what-is-changing"></a>Ami változik
+## <a name="what-is-changing"></a>Mi változik
 
 Azure Monitor olyan képességgel rendelkezik, amely lehetővé teszi az erőforrás-diagnosztikai és a műveletnapló-adatküldés Azure Storage-fiókba, Event Hubs névtérbe vagy egy Log Analytics munkaterületre való küldését Azure Monitor. A rendszerteljesítményi probléma megoldásához **november 1-jén, 2018-kor, 12:00 éjfélkor** a rendszer a blob Storage-ba küldött naplófájlok formátumát fogja megváltoztatni. Ha olyan eszközzel rendelkezik, amely a blob Storage-ból olvas be adatolvasást, frissítenie kell az eszközt az új adatformátum megismeréséhez.
 
@@ -31,7 +31,7 @@ Azure Monitor olyan képességgel rendelkezik, amely lehetővé teszi az erőfor
 * Ha a Now és november 1 közötti diagnosztikai beállítást állítja be, az az aktuális formátumban, november 1-től lesz elérhető.
 * Ez a változás az összes nyilvános felhő-régióban egyszerre fog történni. A módosítás nem következik be Microsoft Azure 21Vianet, Azure Germany vagy Azure Government felhők által üzemeltetett.
 * Ez a változás a következő adattípusokra van hatással:
-  * [Azure-erőforrás diagnosztikai naplói](archive-diagnostic-logs.md) ([itt találja az erőforrások listáját](diagnostic-logs-schema.md))
+  * [Azure-erőforrás diagnosztikai naplói](archive-diagnostic-logs.md) ([lásd itt az erőforrások listáját](diagnostic-logs-schema.md))
   * [A diagnosztikai beállítások által exportált Azure-erőforrás-metrikák](diagnostic-settings.md)
   * [A log-profilok által exportált Azure-tevékenység naplófájljai](archive-activity-log.md)
 * Ez a változás nem befolyásolja a következőket:
@@ -45,7 +45,7 @@ Ezt a változást csak akkor befolyásolja, ha:
 1. A naplózási adatokat egy Azure Storage-fiókba küldi, és erőforrás-diagnosztikai beállítást használ, és
 2. A tárolóban található naplók JSON-struktúrájától függnek az eszközök.
  
-Annak megállapításához, hogy rendelkezik-e olyan erőforrás-diagnosztikai beállításokkal, amelyek adatokat küldenek egy Azure Storage-fiókba, navigáljon a **figyelés** szakaszhoz a portálon, kattintson a **diagnosztikai beállítások**elemre, és azonosítsa a diagnosztikai erőforrásokkal rendelkező erőforrásokat  **Az állapot** beállítása **engedélyezve**:
+Annak megállapításához, hogy rendelkezik-e olyan erőforrás-diagnosztikai beállításokkal, amelyek adatokat küldenek egy Azure Storage-fiókba, navigáljon a **figyelés** szakaszhoz a portálon, kattintson a **diagnosztikai beállítások**elemre, és azonosítsa az összes olyan erőforrást, amelyeken **engedélyezve**van a **diagnosztikai állapot** :
 
 ![Azure Monitor diagnosztikai beállítások panel](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
@@ -125,7 +125,7 @@ Az új formátum [JSON-vonalakat](http://jsonlines.org/)használ, ahol minden es
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Ez az új formátum lehetővé teszi, hogy Azure Monitor a [](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)naplófájlok leküldését a hozzáfűzési Blobok használatával, amelyek hatékonyabban használják az új események folyamatos hozzáfűzését.
+Ez az új formátum lehetővé teszi, hogy Azure Monitor a naplófájlok leküldését a [hozzáfűzési Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)használatával, amelyek hatékonyabban használják az új események folyamatos hozzáfűzését.
 
 ## <a name="how-to-update"></a>Frissítés
 
@@ -133,7 +133,7 @@ Csak akkor kell frissítéseket létrehoznia, ha olyan egyéni eszközzel rendel
 
 Az egyéni eszközöket úgy kell frissíteni, hogy az aktuális és a JSON-vonalak formátumát is kezelni lehessen a fent ismertetett módon. Ezzel biztosíthatja, hogy amikor az új formátumban kezdi meg az adatmegjelenítést, az eszközök nem törnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [erőforrás-diagnosztikai naplók Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * Tudnivalók a [műveletnapló adatainak a Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-activity-log.md)

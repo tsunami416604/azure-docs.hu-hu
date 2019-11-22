@@ -1,5 +1,6 @@
 ---
-title: Hálózati biztonsági csoport adatfolyam-naplófájljainak kezelése az Azure Network Watcher-PowerShell használatával | Microsoft Docs
+title: NSG-adatforgalmi naplók kezelése – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Ez az oldal ismerteti, hogyan kezelhetők a hálózati biztonsági csoportok folyamatábrái az Azure Network Watcher a PowerShell-lel
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 508fe6f7dc6c5fef99e5f62a2ce75b0c81b1577f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 162e499ba44557db388484639c21877fd8b852bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676335"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277968"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Hálózati biztonsági csoport Folyamatábráinak konfigurálása a PowerShell-lel
 
@@ -83,7 +84,7 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 
 ## <a name="download-a-flow-log"></a>Flow-napló letöltése
 
-A folyamat naplójának tárolási helye a létrehozáskor van meghatározva. Az alábbi, a Storage-fiókba mentett adatforgalmi naplók elérésére alkalmas eszköz Microsoft Azure Storage Explorer, amely letölthető innen: https://storageexplorer.com/
+A folyamat naplójának tárolási helye a létrehozáskor van meghatározva. A rendszer a Storage-fiókba mentett adatforgalmi naplók elérésére alkalmas eszközt Microsoft Azure Storage Explorer, amely letölthető innen: https://storageexplorer.com/
 
 Ha meg van adva Storage-fiók, a rendszer a flow-naplófájlokat a következő helyen menti a Storage-fiókba:
 

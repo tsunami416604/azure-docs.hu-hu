@@ -1,6 +1,7 @@
 ---
-title: Kezelése és elemzése a Network Watcher és az Elastic Stack használatával a hálózati biztonsági csoport folyamatnaplóit |} A Microsoft Docs
-description: Kezelheti, és a hálózati biztonsági csoport folyamat-naplók elemzése az Azure Network Watcher és az Elastic Stack használatával.
+title: NSG-flow-naplók megjelenítése – rugalmas verem
+titleSuffix: Azure Network Watcher
+description: Hálózati biztonsági csoport Folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és rugalmas verem használatával.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53cbfe08d310f7244134e1ae31b18644a83c63d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860116"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277742"
 ---
-# <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Nyílt forráskódú eszközök használatával az Azure Network Watcher NSG forgalmi naplók megjelenítése
+# <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-naplók megjelenítése nyílt forráskódú eszközök használatával
 
-Hálózati biztonsági csoportok folyamatnaplóit, adja meg, amelyek segítségével adatokat bejövő és kimenő IP-forgalmat a hálózati biztonsági csoportok ismertetése. A folyamat-naplók egy szabály alapján, a hálózati Adapterhez, a folyamat vonatkozik, 5 rekord információja (forrás és a cél IP-Címek használatához forrás és a cél-Port, protokoll), és ha a forgalom engedélyezett vagy tiltott bejövő és kimenő folyamatok megjelenítése.
+A hálózati biztonsági csoport folyamatábrája olyan információkat biztosít, amelyek segítségével megismerheti a bejövő és a kimenő IP-forgalmat a hálózati biztonsági csoportokon. Ezek a flow-naplók a kimenő és bejövő folyamatokat jelenítik meg egy szabály alapján, a folyamathoz tartozó hálózati adaptert, 5 rekordos információt a folyamatról (forrás/cél IP-cím, forrás/célport, protokoll), és ha a forgalmat engedélyezték vagy megtagadták.
 
-A folyamat-naplók manuális elemzése és következtetések levonásához nehéz lehet. Vannak azonban számos olyan nyílt forráskódú eszközöket, amelyek segítségével az adatok vizualizációjához. Ez a cikk nyújt megoldást jelenítheti meg ezeket a naplókat az Elastic Stacket, ami lehetővé teszi, hogy gyorsan index, és megjelenítheti a folyamat használatával jelentkezik be a Kibana irányítópultját.
+Ezek a flow-naplók nehéz kézzel elemezni és betekintést nyerni. Azonban több nyílt forráskódú eszköz is rendelkezésre áll, amelyek segítenek megjeleníteni ezeket az adatforrásokat. Ez a cikk megoldást nyújt a naplók rugalmas verem használatával történő megjelenítésére, így gyorsan indexelheti és megjelenítheti a folyamat naplóit egy Kibana-irányítópulton.
 
 > [!Warning]  
-> Az alábbi lépéseket a flow 1-es naplók verzió együttműködve. További információkért lásd: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md). Az alábbi utasítások nem fog működni a naplófájlokat, módosítás nélküli 2. verzióban.
+> Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Ebben a cikkben állítjuk be olyan megoldás, amely lehetővé teszi, hogy az Elastic Stack használatával a hálózati biztonsági csoport forgalmi naplók megjelenítése.  A bemeneti Logstash beépülő modul közvetlenül a storage blobból a Folyamatnaplók tartalmazó konfigurálva a Folyamatnaplók szerezze be. Ezután az Elastic Stack használatával, a forgalmi naplók fog kell indexelve, és az információk megjelenítése a Kibana irányítópultját létrehozásához használt.
+Ebben a cikkben egy olyan megoldást hozunk létre, amely lehetővé teszi a hálózati biztonsági csoport folyamatábráinak megjelenítését a rugalmas verem használatával.  A Logstash bemeneti beépülő modulja közvetlenül a flow-naplókat tartalmazó tárolási blobból szerzi be a folyamat naplóit. Ezután a rugalmas verem használatával a rendszer indexeli a folyamat naplóit, és egy Kibana-irányítópult létrehozásához használja az információk megjelenítéséhez.
 
 ![forgatókönyv][scenario]
 
 ## <a name="steps"></a>Lépések
 
-### <a name="enable-network-security-group-flow-logging"></a>Engedélyezése hálózati biztonsági csoportforgalom naplózása
-Ebben a forgatókönyvben rendelkeznie kell hálózati biztonsági csoport Flow naplózás engedélyezve van a legalább egy hálózati biztonsági csoport a fiókjában. Hálózati biztonsági Folyamatnaplók engedélyezésével kapcsolatos útmutatásért tekintse meg a következő cikkben [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
+### <a name="enable-network-security-group-flow-logging"></a>Hálózati biztonsági csoport adatfolyam-naplózásának engedélyezése
+Ebben a forgatókönyvben a hálózati biztonsági csoport flow-naplózási szolgáltatásának engedélyezve kell lennie legalább egy hálózati biztonsági csoportban a fiókjában. A hálózati biztonsági folyamatok naplófájljainak engedélyezésével kapcsolatos utasításokért tekintse meg az alábbi cikket a [hálózati biztonsági csoportok folyamatábrájának naplózása](network-watcher-nsg-flow-logging-overview.md)című cikkben.
 
-### <a name="set-up-the-elastic-stack"></a>Az Elastic Stack telepítése
-NSG-Folyamatnaplók az Elastic Stack rendelkező csatlakoztatásával létrehozhatjuk a Kibana irányítópultját számunkra, hogy a keresés, gráf, elemzése és ki a naplók milyen tevékenységeket engedélyez.
+### <a name="set-up-the-elastic-stack"></a>A rugalmas verem beállítása
+Ha a NSG-flow naplóit a rugalmas Veremtel csatlakoztatja, létrehozhatunk egy Kibana-irányítópultot, amely lehetővé teszi számunkra, hogy megkeressék, megrajzoljuk, elemezzük és származtatjuk a naplókat.
 
-#### <a name="install-elasticsearch"></a>Az Elasticsearch telepítése
+#### <a name="install-elasticsearch"></a>A Elasticsearch telepítése
 
-1. Az Elastic Stacket az 5.0-s verzió vagy újabb Java 8 van szükség. Futtassa a parancsot `java -version` a verzió ellenőrzéséhez. Ha nincs telepítve, a java, tekintse meg dokumentációját a a [Azure-suppored segítségével](https://aka.ms/azure-jdks).
-2. Töltse le a rendszer a megfelelő bináris csomagot:
+1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot `java -version` a verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
+2. Töltse le a rendszerének megfelelő bináris csomagot:
 
    ```bash
    curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
@@ -55,15 +56,15 @@ NSG-Folyamatnaplók az Elastic Stack rendelkező csatlakoztatásával létrehozh
    sudo /etc/init.d/elasticsearch start
    ```
 
-   Egyéb telepítési módszerek található [Elasticsearch telepítése](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
+   További telepítési módszerek találhatók a Elasticsearch- [telepítésben](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
 
-3. Győződjön meg arról, hogy az Elasticsearch fut-e a paranccsal:
+3. Ellenőrizze, hogy a Elasticsearch fut-e a paranccsal:
 
     ```bash
     curl http://127.0.0.1:9200
     ```
 
-    Ez hasonló választ kell megjelennie:
+    Ehhez a következőhöz hasonló válasznak kell megjelennie:
 
     ```json
     {
@@ -80,23 +81,23 @@ NSG-Folyamatnaplók az Elastic Stack rendelkező csatlakoztatásával létrehozh
     }
     ```
 
-A telepítést végző rugalmas keresés további útmutatásért tekintse meg [telepítési utasításokat](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
+A rugalmas keresés telepítésével kapcsolatos további információkért tekintse meg a [telepítési utasításokat](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
 
-### <a name="install-logstash"></a>A Logstash telepítéséhez
+### <a name="install-logstash"></a>A Logstash telepítése
 
-1. Futtassa az alábbi parancsokat a Logstash telepítéséhez:
+1. A Logstash telepítéséhez futtassa a következő parancsokat:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-2. Ezután azt kell eléréséhez, és a forgalmi naplók elemzése a Logstash konfigurálása. Hozzon létre egy logstash.conf fájlt:
+2. Ezután konfigurálnia kell a Logstash a folyamat naplófájljainak eléréséhez és elemzéséhez. Hozzon létre egy logstash. conf fájlt a használatával:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Adja hozzá a fájlhoz a következő tartalommal:
+3. Adja hozzá a következő tartalmat a fájlhoz:
 
    ```
    input {
@@ -159,93 +160,93 @@ A telepítést végző rugalmas keresés további útmutatásért tekintse meg [
    }  
    ```
 
-A Logstash telepítéséhez további utasításokért tekintse meg a [dokumentációs](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+A Logstash telepítésével kapcsolatos további információkért tekintse meg a [hivatalos dokumentációt](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>A Logstash bemeneti beépülő modul telepítéséhez az Azure blob storage-bA
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>A Logstash bemeneti beépülő moduljának telepítése az Azure Blob Storage-hoz
 
-A Logstash beépülő modul lehetővé teszi, hogy közvetlenül a forgalmi naplók elérését a kijelölt tárfiók. Ez a beépülő modul telepítéséhez az alapértelmezett Logstash telepítési könyvtárában (ez megkülönbözteti a kis /usr/share/logstash/bin) futtassa a parancsot:
+Ez a Logstash beépülő modul lehetővé teszi, hogy közvetlenül hozzáférhessen a folyamat naplófájljaihoz a kijelölt Storage-fiókból. A beépülő modul telepítéséhez az alapértelmezett Logstash telepítési könyvtárból (ebben az esetben a/usr/share/logstash/bin) futtassa a következő parancsot:
 
 ```bash
 logstash-plugin install logstash-input-azureblob
 ```
 
-Futtassa a parancsot a Logstash indítása:
+A Logstash elindításához futtassa a következő parancsot:
 
 ```bash
 sudo /etc/init.d/logstash start
 ```
 
-A beépülő modullal kapcsolatos további információkért tekintse meg a [dokumentáció](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+A beépülő modullal kapcsolatos további információkért tekintse meg a [dokumentációt](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="install-kibana"></a>Kibana telepítése
+### <a name="install-kibana"></a>A Kibana telepítése
 
-1. Futtassa a Kibana telepítése a következő parancsokat:
+1. Futtassa a következő parancsokat a Kibana telepítéséhez:
 
    ```bash
    curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
    tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
    ```
 
-2. A Kibana használja a parancsok futtatásával:
+2. A Kibana futtatásához használja a következő parancsokat:
 
    ```bash
    cd kibana-5.2.0-linux-x86_64/
    ./bin/kibana
    ```
 
-3. Megtekintheti a Kibana webes felületét, navigáljon a `http://localhost:5601`
-4. A jelen esetben az index a Folyamatnaplók használt egyik "nsg-folyamat-naplók". Változtassa meg az index minta a logstash.conf fájl "kimeneti" szakaszában.
-5. Ha távolról tekintheti meg a Kibana irányítópultját szeretne, hozzon létre bejövő Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést a **port 5601**.
+3. A Kibana webes felületének megtekintéséhez navigáljon `http://localhost:5601`
+4. Ebben az esetben a folyamat naplóihoz használt index minta a "NSG-flow-logs". Az index minta az logstash. conf fájl "output" szakaszában módosítható.
+5. Ha távolról szeretné megtekinteni a Kibana-irányítópultot, hozzon létre egy bejövő NSG-szabályt, amely engedélyezi a hozzáférést a 5601-es **porthoz**.
 
-### <a name="create-a-kibana-dashboard"></a>A Kibana-irányítópult létrehozása
+### <a name="create-a-kibana-dashboard"></a>Kibana-irányítópult létrehozása
 
-Egy minta-irányítópult a riasztásokat a trendek és a részletek megtekintéséhez a következő képen látható:
+A következő ábrán látható a trendek és a riasztások részleteinek megtekintésére szolgáló minta irányítópult:
 
 ![1\. ábra][1]
 
-Töltse le a [irányítópult fájl](https://aka.ms/networkwatchernsgflowlogdashboard), a [vizualizációs fájlt](https://aka.ms/networkwatchernsgflowlogvisualizations), és a [adatfájl a keresési mentett](https://aka.ms/networkwatchernsgflowlogsearch).
+Töltse le az [irányítópult-fájlt](https://aka.ms/networkwatchernsgflowlogdashboard), a [vizualizációs fájlt](https://aka.ms/networkwatchernsgflowlogvisualizations)és a [mentett keresési fájlt](https://aka.ms/networkwatchernsgflowlogsearch).
 
-Alatt a **felügyeleti** lapon lépjen a Kibana, **objektumok mentése** mindhárom fájlt importálja. Majd a **irányítópult** lapot is megnyithatja és a minta-irányítópult betöltése.
+A Kibana **felügyelet** lapján navigáljon a **mentett objektumokhoz** , és importálja mindhárom fájlt. Ezután az **irányítópult** lapon megnyithatja és betöltheti a minta irányítópultot.
 
-A saját vizualizációkat, és azokra az érdekes mérőszám vizsgálatára saját személyre szabott irányítópultokat is létrehozhat. További információk a Kibana-Vizualizációk létrehozása a Kibana által [dokumentációs](https://www.elastic.co/guide/en/kibana/current/visualize.html).
+Saját igényei szerint saját vizualizációkat és irányítópultokat is létrehozhat. További információ a Kibana-vizualizációk létrehozásáról a Kibana [hivatalos dokumentációjában](https://www.elastic.co/guide/en/kibana/current/visualize.html)olvasható.
 
-### <a name="visualize-nsg-flow-logs"></a>NSG-forgalom naplóinak megjelenítése
+### <a name="visualize-nsg-flow-logs"></a>NSG-naplók megjelenítése
 
-A minta-irányítópult több vizualizációt, a forgalmi naplók biztosítja:
+A minta irányítópult több vizualizációt biztosít a flow naplóihoz:
 
-1. Folyamatok szerint határozat vagy iránya Over Time - idő sorozat diagramok megjelenítése az idő alatt folyamatok száma. Az időegység, és mindkét ezek a Vizualizációk span szerkesztheti. Folyamatok döntési szerint jeleníti meg az időarány, amíg engedélyezik vagy megtagadják a döntések, miközben irány szerinti folyamatokat a bejövő és kimenő forgalom arányát jeleníti meg. Ezeket a vizualizációkat tartalmazó idővel vizsgálja meg a forgalom trendeket, és keresse meg az összes adatforgalmi csúcsokhoz és a szokatlan mintákat.
+1. Az időpontok közötti adatsorozat-grafikonok alapján, az adott időszakon belüli folyamatok számát ábrázoló döntési/irányi folyamatok. Szerkesztheti az időegységet és a két vizualizáció közötti időtartamot is. A folyamatokra vonatkozó döntés az engedélyezési vagy megtagadási döntések arányát jeleníti meg, míg a folyamatok iránya szerint a bejövő és a kimenő forgalom arányát jeleníti meg. Ezekkel a vizualizációkkal az idő múlásával ellenőrizheti a forgalmi trendeket, és megkeresheti az esetleges tüskéket vagy szokatlan mintákat.
 
    ![2\. ábra][2]
 
-2. A cél/forrásport – folyamatokat a tortadiagramok a megfelelő portok folyamatok áttekintését megjelenítő. Ebben a nézetben látható a leggyakrabban használt portokat. Ha a kördiagramon belül egy adott porton kattint, a rendszer kiszűri az irányítópult a többi le annak a portnak folyamatok.
+2. Folyamatok a cél/forrás port – kördiagramok – a megfelelő portokra irányuló folyamatok részletezését mutatják. Ebben a nézetben láthatja a leggyakrabban használt portokat. Ha a tortadiagramon belül egy adott portra kattint, az irányítópult többi része az adott porton belüli folyamatokra lesz szűrve.
 
    ![figure3][3]
 
-3. Folyamatok és legkorábbi naplózási idő –-mérőszámok, rögzített folyamatok száma és a dátum a legkorábbi napló rögzített száma.
+3. Folyamatok száma és a legkorábbi naplózási idő – a metrikák a rögzített folyamatok számát és a legkorábbi napló rögzítésének dátumát mutatják.
 
-   ![4\. ábra][4]
+   ![figure4][4]
 
-4. NSG-t és a szabály – egy oszlopdiagram, amelyen látható a forgalom megoszlása minden NSG-n belül, valamint az egyes NSG-n belül szabályok a terjesztési folyamatokat. Itt láthatja, melyik NSG-t és a szabályokat a legtöbb forgalmat generált.
+4. Folyamatok NSG és Rule szerint – az egyes NSG belüli folyamatok eloszlását, valamint az egyes NSG belüli szabályok eloszlását bemutató oszlopdiagram. Itt láthatja, hogy mely NSG és szabályok generálják a legtöbb forgalmat.
 
    ![figure5][5]
 
-5. Az első 10 forrás és cél IP-címek – az első 10 forrás és cél IP-címeket ábrázoló sávdiagramok. Beállíthatja, hogy több vagy kevesebb felső IP-cím megjelenítéséhez a diagramokat. Itt láthatja a leggyakrabban előforduló IP-címek, valamint a forgalom döntést (engedélyezése vagy megtagadása) kerül sor az egyes IP felé.
+5. Az első 10 forrás/cél IP-címek – sávdiagramok, amelyek az első 10 forrás-és cél IP-címeket mutatják. Ezeket a diagramokat beállíthatja úgy, hogy több vagy kevesebb felső IP-címet jelenítsen meg. Itt láthatja a leggyakrabban előforduló IP-címeket, valamint az egyes IP-címekre irányuló forgalomra vonatkozó döntést (Engedélyezés vagy megtagadás).
 
    ![figure6][6]
 
-6. A folyamat rekordok – az alábbi táblázatban a következő információkat tartalmazza minden egyes folyamat rekord, valamint a megfelelő NGS és szabály.
+6. Flow rekordok – ez a táblázat az egyes folyamatokon belül található információkat, valamint a hozzá tartozó minősítések és szabályt tartalmazza.
 
    ![figure7][7]
 
-Az irányítópult tetején a lekérdezés Keresősáv használatával szűrheti le az irányítópult minden olyan folyamatok, például az előfizetés-azonosító, erőforráscsoportok, szabály vagy bármely más változó a lényeges paraméter alapján. A Kibana a lekérdezések és a szűrők kapcsolatos további információkért tekintse meg a [jelenik meg hivatalos dokumentáció](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
+Az irányítópult tetején található lekérdezési sáv használatával a folyamatok bármely paramétere alapján szűrheti az irányítópultot, például az előfizetés AZONOSÍTÓját, az erőforráscsoportot, a szabályt vagy más érdekes változót. A Kibana lekérdezéseit és szűrőit a [hivatalos dokumentációban](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html) találja.
 
 ## <a name="conclusion"></a>Összegzés
 
-A hálózati biztonsági csoportok folyamatnaplóit kombinálásával az Elastic Stackkel végzett, hogy rendelkezik kapja meg hatékony, testre szabható módon vizualizálhatja a hálózati forgalmat. Ezek az irányítópultok lehetővé teszik a gyors és a hálózati forgalom, valamint a szűrő észrevételeket oszthatnak meg és vizsgálja meg a bármely esetleges rendellenességeket. Használja a Kibana, ezek az irányítópultok testre szabni, és bármilyen biztonsági, naplózási és megfelelőségi igényeinek egyedi vizualizációkat hozhat létre.
+A hálózati biztonsági csoport folyamatábráinak és a rugalmas verem kombinálásával a hálózati forgalom megjelenítésének hatékony és testreszabható módját is elérjük. Ezek az irányítópultok lehetővé teszik a hálózati forgalom gyors megszerzését és megosztását, valamint az esetleges anomáliák szűrését és kivizsgálását. Az Kibana használatával testreszabhatja ezeket az irányítópultokat, és létrehozhat bizonyos vizualizációkat, hogy azok megfeleljenek a biztonsági, auditálási és megfelelőségi igényeknek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan jelenítheti meg az NSG-Folyamatnaplók Power BI-jal funkcionáló [megjelenítése NSG-forgalomnaplók Power BI-jal](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Ismerje meg, hogyan jelenítheti meg a NSG-flow-naplókat a Power BI a [NSG flow-naplók megjelenítése a Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 <!--Image references-->
 

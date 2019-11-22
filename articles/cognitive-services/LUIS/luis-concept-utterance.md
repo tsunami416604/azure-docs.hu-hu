@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486626"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280797"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
@@ -60,17 +60,17 @@ Végezze el az alábbi példát a hosszúságú kimondott szöveg:
 |Szeretnék beolvasni egy számítógépet, hogyan tudok?|
 |Mikor lehet a számítógépem?| 
 
-A fő kifejezés itt "számítógép", nem változtatható meg. Használjon olyan alternatívákat, mint az asztali számítógép, a laptop, a munkaállomás vagy akár a gép. A LUIS intelligensen kikövetkezteti a kontextusból származó szinonimákat, de ha hosszúságú kimondott szöveg hoz létre a betanításhoz, még jobban megváltozhat.
+A "számítógép" alapvető kifejezés nem változtatható meg. Használjon olyan alternatívákat, mint az asztali számítógép, a laptop, a munkaállomás vagy akár a gép. A LUIS intelligens módon kikövetkeztetheti a szinonimákat a kontextusból, de ha hosszúságú kimondott szöveg hoz létre a betanításhoz, mindig érdemes megváltoznia.
 
 ## <a name="example-utterances-in-each-intent"></a>Példa hosszúságú kimondott szöveg az egyes leképezésekben
 
-Minden leképezésnek legalább 15 hosszúságú kimondott szöveg kell lennie. Ha olyan szándékkal rendelkezik, amely nem rendelkezik például hosszúságú kimondott szöveg, nem fogja tudni betanítani a LUIS-t. Ha a hosszúságú kimondott szöveg egy vagy több példával rendelkezik, a LUIS nem fogja pontosan megjósolni a szándékot. 
+Minden leképezésnek legalább 15 hosszúságú kimondott szöveg kell lennie. Ha olyan szándékkal rendelkezik, amely nem rendelkezik például hosszúságú kimondott szöveg, nem fogja tudni betanítani a LUIS-t. Ha a hosszúságú kimondott szöveg egy vagy nagyon kevés példával rendelkezik, akkor a LUIS nem tudja pontosan megjósolni a szándékot. 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>15 hosszúságú kimondott szöveg kisebb csoportjainak hozzáadása minden szerzői iterációhoz
 
 A modell minden egyes iterációjában ne adjon hozzá nagy mennyiségű hosszúságú kimondott szöveg. Adja hozzá a hosszúságú kimondott szöveg a 15. számú mennyiséghez. A [betanítás](luis-how-to-train.md), [Közzététel](luis-how-to-publish-app.md)és [tesztelés](luis-interactive-test.md) .  
 
-LUIS olyan hatékony modelleket épít be a hosszúságú kimondott szöveg, amelyeket a LUIS Model szerzője körültekintően választ ki. Túl sok hosszúságú kimondott szöveg hozzáadása nem értékes, mert zavart okoz.  
+LUIS olyan hatékony modelleket épít be a hosszúságú kimondott szöveg, amelyeket a LUIS Model szerzője körültekintően választ ki. Túl sok hosszúságú kimondott szöveg hozzáadása nem értékes, mert zavart okoz.
 
 Érdemes kezdeni néhány hosszúságú kimondott szöveg, majd [tekintse át a végpontok hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) a megfelelő szándék-előrejelzés és az entitások kinyerése érdekében.
 
@@ -108,11 +108,11 @@ A normalizálás nem azt jelenti, hogy a hosszúságú kimondott szöveg vagy az
 
 ### <a name="punctuation-marks"></a>Központozás jelei
 
-A központozás egy különálló jogkivonat a LUIS-ben. Egy teljes időszakot, amely a végén található pontot és egy teljes időszakot tartalmaz, és nem tartalmaz két különálló hosszúságú kimondott szöveg, és két különböző előrejelzést kaphat. 
+Absztrakt egy külön jogkivonatot a LUIS. Egy teljes időszakot, amely a végén található pontot és egy teljes időszakot tartalmaz, és nem tartalmaz két különálló hosszúságú kimondott szöveg, és két különböző előrejelzést kaphat. 
 
 Ha a központozás nem normalizált, akkor a LUIS alapértelmezés szerint nem hagyja figyelmen kívül a központozás jelét, mert egyes ügyfélalkalmazások fontosnak helyezhetik el ezeket a jeleket. Győződjön meg arról, hogy a példa hosszúságú kimondott szöveg mindkét írásjelet használja, és nincs írásjel, hogy mindkét stílus ugyanazt a relatív pontszámot adja vissza. 
 
-Győződjön meg arról, hogy a modell kezeli a központozást a [példában szereplő hosszúságú kimondott szöveg](luis-concept-utterance.md) (és nem rendelkezik írásjelekkel), vagy azokban a [mintázatokban](luis-concept-patterns.md) , amelyekben a speciális szintaxissal egyszerűbb a központozás figyelmen kívül hagyása: `I am applying for the {Job} position[.]`
+Győződjön meg arról, hogy a modell kezeli a központozást a példában szereplő hosszúságú kimondott szöveg (és nem rendelkezik írásjelekkel), vagy azokban a [mintázatokban](luis-concept-patterns.md) , amelyekben a speciális szintaxissal egyszerűbb a központozás figyelmen kívül hagyása: `I am applying for the {Job} position[.]`
 
 Ha a központozás nem rendelkezik konkrét jelentéssel az ügyfélalkalmazás számára, akkor az írásjelek normalizálása révén érdemes [figyelmen kívül hagyni](#utterance-normalization) a központozást. 
 
@@ -136,20 +136,20 @@ A modell kiképzése, közzététele és a [végponti](luis-glossary.md#endpoint
 
 Tekintse át az [ajánlott eljárásokat](luis-concept-best-practices.md) , és alkalmazza őket a szokásos szerzői ciklus részeként.
 
-## <a name="label-for-word-meaning"></a>Felirat a szó jelentéséhez
+## <a name="label-for-word-meaning"></a>Azaz a word-címkét
 
-Ha a Word Choice vagy a Word megállapodás megegyezik, de nem ugyanazt a dolgot jelenti, ne címkézze fel az entitással. 
+Ha a választott word vagy a word megállapodás azonos, de nem ugyanazt jelenti, nem címkét, az entitáshoz. 
 
-A következő hosszúságú kimondott szöveg a Word `fair` egy homográfia. A helyesírása ugyanaz, de a jelentése eltérő:
+A következő utterances, a word `fair` egy homográfokat van. Akkor helyesírása megegyezik, de eltérő jelentéssel rendelkezik:
 
 |Kimondott szöveg|
 |--|
-|Milyen megyei vásárok történnek a Seattle területén ezen a nyáron?|
-|A Seattle felülvizsgálati vásár jelenlegi minősítése?|
+|Milyen típusú megye vásárokon Seattle környékén lévő történik az Ez évi riói nyári?|
+|Az a jelenlegi besorolása a Seattle felülvizsgálatra valós?|
 
-Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, címkézse a szót `fair` az első kiíráskor, de a másodikban nem.
+Ha egy esemény entitás összes esemény az adatok keresésére, a word címke `fair` az első utterance (kifejezés), de nem a második.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md) a Luis-alkalmazások betanításához.
 

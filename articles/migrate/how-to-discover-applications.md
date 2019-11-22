@@ -4,14 +4,14 @@ description: Ismerteti, hogyan lehet alkalmazásokat, szerepköröket és szolg�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 11/20/2019
 ms.author: snehaa
-ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278476"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -19,10 +19,10 @@ Ez a cikk bemutatja, hogyan derítheti fel az alkalmazásokat, szerepköröket �
 
 Az alkalmazások leltárának, valamint a helyszíni gépeken futó szerepköröknek/funkcióknak a felderítése révén azonosíthatók és megtervezhető az Azure-ba irányuló áttelepítési útvonal, amelyet a számítási feladatokhoz alakítottak ki.
 
-Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló értékelése ügynök nélkül történik. Semmit nem kell telepíteni a gépekre és a virtuális gépekre. A kiszolgáló értékelése a Azure Migrate berendezés használatával hajtja végre a felderítést a számítógép vendég hitelesítő adataival együtt. A készülék távolról fér hozzá a gépekhez a WMI és az SSH-hívások használatával.
-
 > [!NOTE]
 > Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott, és csak felderítésre korlátozódik. Még nem kínálunk alkalmazás-alapú értékelést.  A kiszolgáló értékelése jelenleg a helyszíni VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat vizsgálja a gépi szinten, a kiemelési és eltolási áttelepítések esetén.
+
+Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló értékelése ügynök nélkül történik. Semmit nem kell telepíteni a gépekre és a virtuális gépekre. A kiszolgáló értékelése a Azure Migrate berendezés használatával hajtja végre a felderítést a számítógép vendég hitelesítő adataival együtt. A készülék távolról éri el a VMware-gépeket a VMware API-k használatával.
 
 
 ## <a name="before-you-start"></a>Előkészületek
@@ -52,7 +52,7 @@ Ha a felderítés befejeződése után megadták a hitelesítő adatokat az alka
 1. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése**lapon kattintson a megjelenített darabszámra a **felderített kiszolgálók** lap megnyitásához.
 
     > [!NOTE]
-    > Ezen a ponton a függőségi leképezést is beállíthatja a felderített gépekhez, így a függőségeket a felmérni kívánt gépek között jelenítheti meg. [Részletek](how-to-create-group-machine-dependencies.md).
+    > Ezen a ponton a függőségi leképezést is beállíthatja a felderített gépekhez, így a függőségeket a felmérni kívánt gépek között jelenítheti meg. [További információ](how-to-create-group-machine-dependencies.md).
 
 2. A **felderített alkalmazásokban**kattintson a megjelenített darabszámra.
 3. Az **alkalmazás leltárában**megtekintheti a felderített alkalmazásokat, szerepköröket és szolgáltatásokat.

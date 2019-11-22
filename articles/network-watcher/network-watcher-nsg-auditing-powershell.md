@@ -1,5 +1,6 @@
 ---
-title: NSG-naplózás automatizálása az Azure Network Watcher biztonsági csoport nézettel | Microsoft Docs
+title: NSG-naplózás automatizálása – biztonsági csoport nézet
+titleSuffix: Azure Network Watcher
 description: Ez a lap a hálózati biztonsági csoportok naplózásának konfigurálására vonatkozó utasításokat tartalmazza.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165138"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278045"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>A NSG-naplózás automatizálása az Azure Network Watcher biztonsági csoport nézettel
 
@@ -49,7 +50,7 @@ Ebben az esetben a következőket kell tennie:
 
 ## <a name="retrieve-rule-set"></a>Szabálykészlet beolvasása
 
-Ebben a példában az első lépés egy meglévő alapterv használata. Az alábbi példa egy meglévő hálózati biztonsági csoportból kinyert JSON-t `Get-AzNetworkSecurityGroup` használja a példa alaptervként használt parancsmag használatával.
+Ebben a példában az első lépés egy meglévő alapterv használata. Az alábbi példa egy meglévő hálózati biztonsági csoportból kinyert JSON-t használ a példa alaptervként használt `Get-AzNetworkSecurityGroup` parancsmag használatával.
 
 ```json
 [
@@ -126,7 +127,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher beolvasása
 
-A következő lépés az Network Watcher példány beolvasása. A `$networkWatcher` rendszer`AzNetworkWatcherSecurityGroupView` átadja a változót a parancsmagnak.
+A következő lépés az Network Watcher példány beolvasása. A `$networkWatcher` változó a `AzNetworkWatcherSecurityGroupView` parancsmagnak lesz átadva.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -152,7 +153,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 A válasz hálózati adapterek szerint van csoportosítva. A visszaadott szabályok különböző típusai érvényesek és alapértelmezett biztonsági szabályok. Az eredmény további bontása az alkalmazás működésével, vagy egy alhálózaton vagy egy virtuális hálózati adapteren.
 
-A következő PowerShell-parancsfájl összehasonlítja a biztonsági csoport nézetének eredményét egy NSG meglévő kimenetével. Az alábbi példa egy egyszerű példa arra, hogy az eredményeket hogyan lehet összehasonlítani `Compare-Object` a parancsmaggal.
+A következő PowerShell-parancsfájl összehasonlítja a biztonsági csoport nézetének eredményét egy NSG meglévő kimenetével. Az alábbi példa egy egyszerű példa arra, hogyan lehet az eredményeket összevetni `Compare-Object` parancsmaggal.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -188,7 +189,7 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a beállítások módosultak, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és a szóban forgó biztonsági szabályok nyomon követéséhez című témakört.
 

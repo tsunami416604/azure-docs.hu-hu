@@ -1,62 +1,63 @@
 ---
-title: What are Microsoft Flow, Logic Apps, Functions, and WebJobs? – Azure
-description: 'Compare Microsoft cloud services that are optimized for integration tasks: Microsoft Flow, Logic Apps, Functions, and WebJobs.'
+title: Mi a Microsoft Flow, a Logic Apps, a functions és a webjobs? – Azure
+description: 'Az integrációs feladatokhoz optimalizált Microsoft Cloud Services összehasonlítása: Microsoft Flow, Logic Apps, functions és webjobs.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 6cf820af8a5b97de536a9d07e49ec822ffb76681
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230871"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278631"
 ---
-# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>What are Microsoft Flow, Logic Apps, Functions, and WebJobs?
+# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Mi a Microsoft Flow, a Logic Apps, a functions és a webjobs?
 
-This article compares the following Microsoft cloud 
+Ez a cikk a következő Microsoft-felhőt hasonlítja össze 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure App Service WebJobs](../app-service/webjobs-create.md)
 
-Mindegyik szolgáltatás megoldhatja az integrációs problémákat és automatizálhatja az üzleti folyamatokat. Mindegyik képes bemenet, műveletek, feltételek és kimenet meghatározására. Futtathatók ütemezve vagy eseményindítóval is. Each service has unique advantages, and this article explains the differences. 
+Mindegyik szolgáltatás megoldhatja az integrációs problémákat és automatizálhatja az üzleti folyamatokat. Mindegyik képes bemenet, műveletek, feltételek és kimenet meghatározására. Futtathatók ütemezve vagy eseményindítóval is. Az egyes szolgáltatások egyedi előnyökkel rendelkeznek, és ez a cikk ismerteti a különbségeket. 
 
-If you're looking for a more general comparison between Azure Functions and other Azure compute options, see [Criteria for choosing an Azure compute service](/azure/architecture/guide/technology-choices/compute-comparison) and [Choosing an Azure compute option for microservices](/azure/architecture/microservices/design/compute-options).
+Ha a Azure Functions és az egyéb Azure számítási lehetőségek közötti általánosabb összehasonlítást keres, tekintse meg az [Azure számítási szolgáltatás kiválasztásának feltételeit](/azure/architecture/guide/technology-choices/compute-comparison) és [egy Azure-beli számítási lehetőség kiválasztását a-szolgáltatásokhoz](/azure/architecture/microservices/design/compute-options).
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>A Microsoft Flow és az Azure Logic Apps összehasonlítása
 
-Microsoft Flow and Logic Apps are both *designer-first* integration services that can create workflows. Mindkét szolgáltatás integrálható különféle SaaS- és vállalati alkalmazásokkal. 
+A Microsoft Flow és Logic Apps mind a *Designer-First* integrációs szolgáltatások, amelyek munkafolyamatokat hozhatnak létre. Mindkét szolgáltatás integrálható különféle SaaS- és vállalati alkalmazásokkal. 
 
-Microsoft Flow is built on top of Logic Apps. They share the same workflow designer and the same [connectors](../connectors/apis-list.md). 
+A Microsoft Flow Logic Appsra épül. Ugyanazt a munkafolyamat-tervezőt és ugyanazokat az [összekötőket](../connectors/apis-list.md)használják. 
 
-Microsoft Flow empowers any office worker to perform simple integrations (for example, an approval process on a SharePoint Document Library) without going through developers or IT. Logic Apps can also enable advanced integrations (for example, B2B processes) where enterprise-level Azure DevOps and security practices are required. Az üzleti munkafolyamatokra jellemző, hogy idővel egyre összetettebbé válnak. Accordingly, you can start with a flow at first, and then convert it to a logic app as needed.
+Microsoft Flow bármely irodai feldolgozó számára lehetővé teszi az egyszerű integrációk (például a SharePoint-dokumentumtár jóváhagyási folyamatának) elvégzését anélkül, hogy a fejlesztőknek vagy az IT-nak kellene lennie. A Logic Apps a speciális integrációkat (például B2B folyamatokat) is lehetővé teheti, ahol nagyvállalati szintű Azure DevOps és biztonsági gyakorlatok szükségesek. Az üzleti munkafolyamatokra jellemző, hogy idővel egyre összetettebbé válnak. Ennek megfelelően először egy folyamat indul el, majd szükség szerint konvertálhatja egy logikai alkalmazásba.
 
-The following table helps you determine whether Microsoft Flow or Logic Apps is best for a particular integration:
+Az alábbi táblázat segítségével meghatározhatja, hogy Microsoft Flow vagy Logic Apps a legmegfelelőbb egy adott integrációhoz:
 
 |  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Felhasználók |Irodai dolgozók, üzleti felhasználók, SharePoint-adminisztrátorok |Professzionális integrátorok és fejlesztők, informatikai szakemberek |
 | Alkalmazási helyzetek |Önkiszolgáló |Speciális integrációk |
-| Design tool |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
-| Application lifecycle management (ALM) |Design and test in non-production environments, promote to production when ready |Azure DevOps: source control, testing, support, automation, and manageability in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| Admin experience |Manage Microsoft Flow environments and data loss prevention (DLP) policies, track licensing: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Manage resource groups, connections, access management, and logging: [Azure portal](https://portal.azure.com) |
-| Biztonság |Office 365 Security and Compliance audit logs, DLP, [encryption at rest](https://wikipedia.org/wiki/Data_at_rest#Encryption) for sensitive data |Security assurance of Azure: [Azure security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [audit logs](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| Kialakítási eszköz |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
+| Alkalmazások életciklus-felügyelete (ALM) |Tervezés és tesztelés nem éles környezetekben, előléptetés éles környezetben, ha készen áll |Azure DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
+| A rendszergazda teendői |Microsoft Flow környezetek és adatvesztés-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [Microsoft flow felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
+| Biztonság |Office 365 biztonsági és megfelelőségi naplók, DLP, inaktív adatok [titkosítása](https://wikipedia.org/wiki/Data_at_rest#Encryption) bizalmas adatokhoz |Az Azure biztonsági garanciája: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
 
-A Functions és a Logic Apps egy Azure-szolgáltatás, melyek kiszolgáló nélküli feladatokhoz nyújtanak támogatást. Azure Functions is a serverless compute service, whereas Azure Logic Apps provides serverless workflows. Both can create complex *orchestrations*. A vezénylés a függvények vagy lépések – a Logic Appsben ezeket *műveleteknek* nevezzük – egy olyan készlete, amelynek a végrehajtásával összetett feladatokat tud elvégezni. For example, to process a batch of orders, you might execute many instances of a function in parallel, wait for all instances to finish, and then execute a function that computes a result on the aggregate.
+A Functions és a Logic Apps egy Azure-szolgáltatás, melyek kiszolgáló nélküli feladatokhoz nyújtanak támogatást. Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, míg a Azure Logic Apps kiszolgáló nélküli munkafolyamatokat biztosít. Mindkettő összetett előkészítéseketis létrehozhat. A vezénylés a függvények vagy lépések – a Logic Appsben ezeket *műveleteknek* nevezzük – egy olyan készlete, amelynek a végrehajtásával összetett feladatokat tud elvégezni. Ha például egy köteget szeretne feldolgozni, egy függvény több példánya is végrehajtható párhuzamosan, várjon, amíg az összes példány befejeződik, majd hajtson végre egy olyan függvényt, amely kiszámítja az Összesítés eredményét.
 
 Az Azure Functions esetében a vezénylések fejlesztéséhez kódot kell írnia a [Durable Functions bővítmény](durable/durable-functions-overview.md) segítségével. A Logic Appsben a vezényléseket grafikus felhasználói felülettel vagy konfigurációs fájlok szerkesztésével tudja létrehozni.
 
-Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozásához, vagyis hívhat meg függvényeket a logikai alkalmazásokból, illetve hívhat meg logikai alkalmazásokat a függvényekből. A vezénylések építésének módját a szolgáltatások képességei és a személyes preferenciái szerint választhatja ki. The following table lists some of the key differences between these  
+Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozásához, vagyis hívhat meg függvényeket a logikai alkalmazásokból, illetve hívhat meg logikai alkalmazásokat a függvényekből. A vezénylések építésének módját a szolgáltatások képességei és a személyes preferenciái szerint választhatja ki. Az alábbi táblázat a következő főbb különbségeket sorolja fel:
+
 |  | Tartós függvények | Logic Apps |
 | --- | --- | --- |
 | Fejlesztés | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
-| Kapcsolódás | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
+| Kapcsolatok | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | Műveletek | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| Monitoring | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor logs](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| Felügyelet | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
-| Végrehajtási környezet | Can run [locally](functions-runtime-overview.md) or in the cloud | Runs only in the cloud|
+| Figyelés | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| Kezelés | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| Végrehajtási környezet | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak a felhőben fut|
 
 <a name="function"></a>
 
@@ -66,13 +67,13 @@ Ugyanúgy, mint az Azure Functions, az Azure App Service WebJobs a WebJobs SDK-v
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs és WebJobs SDK
 
-You can use the *WebJobs* feature of App Service to run a script or code in the context of an App Service web app. A *WebJobs SDK* egy, a WebJobshoz tervezett keretrendszer, amely leegyszerűsíti az Azure-szolgáltatások válaszadására írt kódokat. For example, you might respond to the creation of an image blob in Azure Storage by creating a thumbnail image. A WebJobs SDK .NET-konzolalkalmazásként fut, amelyet üzembe helyezhet egy WebJobon. 
+A App Service *webjobs* funkciójának használatával parancsfájlt vagy kódot futtathat egy app Service webalkalmazás környezetében. A *WebJobs SDK* egy, a WebJobshoz tervezett keretrendszer, amely leegyszerűsíti az Azure-szolgáltatások válaszadására írt kódokat. Előfordulhat például, hogy egy miniatűr rendszerkép létrehozásával válaszol egy képblob létrehozására az Azure Storage-ban. A WebJobs SDK .NET-konzolalkalmazásként fut, amelyet üzembe helyezhet egy WebJobon. 
 
 A WebJobs és a WebJobs SDK együtt működnek a leghatékonyabban, de használhatja az egyiket a másik nélkül is. A WebJobs képes bármilyen programot vagy szkriptet futtatni, amely képes futni az App Service tesztkörnyezetben. A WebJobs SDK-konzolalkalmazások bárhol futtathatók, ahol konzolalkalmazások futtathatók, például a helyszíni kiszolgálókon.
 
 ### <a name="comparison-table"></a>Összehasonlító táblázat
 
-Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatásokkal közös eseményindítóval és kapcsolattal rendelkezik. Here are some factors to consider when you're choosing between Azure Functions and WebJobs with the WebJobs SDK:
+Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatásokkal közös eseményindítóval és kapcsolattal rendelkezik. Az alábbiakban néhány szempontot figyelembe kell venni, amikor a webjobs SDK-val Azure Functions és webjobs-feladatok közül választ:
 
 |  | Functions | WebJobs WebJobs SDK-val |
 | --- | --- | --- |
@@ -84,42 +85,42 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 | Támogatott nyelvek  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
 |Csomagkezelők|NPM és NuGet|NuGet<sup>2</sup>|
 
-<sup>1</sup> WebJobs (without the WebJobs SDK) supports C#, Java, JavaScript, Bash, .cmd, .bat, PowerShell, PHP, TypeScript, Python, and more. This is not a comprehensive list. A WebJobs képes bármilyen programot vagy szkriptet futtatni, amely képes futni az App Service tesztkörnyezetben.
+<sup>1</sup> a webjobs (a webjobs SDK nélkül) C#támogatja a következőt: Java, JavaScript, bash,. cmd,. bat, PowerShell, php, írógéppel, Python és sok más. Ez nem egy átfogó lista. A WebJobs képes bármilyen programot vagy szkriptet futtatni, amely képes futni az App Service tesztkörnyezetben.
 
-<sup>2</sup> WebJobs (without the WebJobs SDK) supports NPM and NuGet.
+<sup>2</sup> a webjobs (a webjobs SDK nélkül) támogatja a NPM és a NuGet.
 
 ### <a name="summary"></a>Összefoglalás
 
-Azure Functions offers more developer productivity than Azure App Service WebJobs does. It also offers more options for programming languages, development environments, Azure service integration, and pricing. A legtöbb forgatókönyvhöz ez a legjobb választás.
+Azure Functions nagyobb fejlesztői hatékonyságot biztosít, mint Azure App Service webjobs. Emellett több lehetőséget is kínál a programozási nyelvek, a fejlesztői környezetek, az Azure-szolgáltatások integrálására és a díjszabásra. A legtöbb forgatókönyvhöz ez a legjobb választás.
 
 Az alábbiakban két olyan forgatókönyvet láthat, amelyekhez a WebJobs lehet a legjobb választás:
 
 * Az eseményekre figyelő kódok nagyobb mértékű felügyeletére van szüksége – `JobHost` objektum. A Functions korlátozott számú módszert biztosít a `JobHost`-viselkedés a [host.json](functions-host-json.md) fájlban való testreszabására. Néha olyan műveletekre lehet szüksége, amelyek nem adhatók meg egy JSON-fájlbeli sztringben. Például csak a WebJobs SDK teszi lehetővé egyéni újrapróbálkozási szabályzat konfigurálását az Azure Storage-ban.
-* You have an App Service app for which you want to run code snippets, and you want to manage them together in the same Azure DevOps environment.
+* Rendelkezik egy App Service alkalmazással, amelyhez kódrészleteket szeretne futtatni, és együtt szeretné kezelni őket ugyanabban az Azure DevOps-környezetben.
 
 Minden egyéb olyan forgatókönyv esetén, ahol kódrészletek futtatásával kíván Azure- vagy külső szolgáltatásokat integrálni, válassza az Azure Functionst a WebJobs és WebJobs SDK helyett.
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow, Logic Apps, Functions, and WebJobs together
+## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow, Logic Apps, functions és webjobs együtt
 
-You don't have to choose just one of these services. They integrate with each other as well as they do with external services.
+Ezen szolgáltatások közül csak egyet kell választania. Integrálva vannak egymással, valamint külső szolgáltatásokkal is.
 
 Egy folyamat meghívhat egy logikai alkalmazást. Egy logikai alkalmazás meghívhat egy függvényt, egy függvény pedig meghívhat egy logikai alkalmazást. Példa: [Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása](functions-twitter-email.md).
 
-The integration between Microsoft Flow, Logic Apps, and Functions continues to improve over time. Amit létrehoz az egyik szolgáltatásban, használhatja a többiben.
+A Microsoft Flow, a Logic Apps és a függvények közötti integráció továbbra is az idő múlásával javul. Amit létrehoz az egyik szolgáltatásban, használhatja a többiben.
 
-You can get more information on integration services by using the following links:
+Az integrációs szolgáltatásokkal kapcsolatos további információk az alábbi hivatkozásokon keresztül olvashatók:
 
 * [Christopher Anderson: Leveraging Azure Functions & Azure App Service for integration scenarios](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/) (Az Azure Functions és az Azure App Service használata integrációs forgatókönyvekhez)
 * [Charles Lamanna: Integrations Made Simple](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/) (Integráció egyszerűen)
-* [Logic Apps Live webcast](https://aka.ms/logicappslive)
-* [Microsoft Flow frequently asked questions](/power-automate/frequently-asked-questions)
+* [Élő webes közvetítés Logic Apps](https://aka.ms/logicappslive)
+* [Microsoft Flow gyakori kérdések](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Első lépésként hozza létre az első folyamatát, logikai alkalmazását vagy függvényalkalmazását. Select any of the following links:
+Első lépésként hozza létre az első folyamatát, logikai alkalmazását vagy függvényalkalmazását. Válassza ki a következő hivatkozások bármelyikét:
 
 * [A Microsoft Flow használatának első lépései](/power-automate/getting-started)
 * [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Create your first Azure function](functions-create-first-azure-function.md)
+* [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)

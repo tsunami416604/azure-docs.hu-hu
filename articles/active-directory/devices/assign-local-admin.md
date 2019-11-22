@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b222e67d06bc9fa0fabcc0bc3c0ddd2c6855fbc3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062255"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271306"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -48,7 +48,7 @@ A globális rendszergazdai szerepkör tagságának megtekintéséhez és frissí
 A Azure Portal az **eszközök** lapon kezelheti az eszköz rendszergazdai szerepkörét. Az **eszközök** lap megnyitása:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként vagy az eszköz rendszergazdájával.
-1. A bal oldali navigációs sávon kattintson a **Azure Active Directory**elemre. 
+1. Keresse meg és válassza ki a *Azure Active Directory*.
 1. A **kezelés** szakaszban kattintson az **eszközök**elemre.
 1. Az **eszközök** lapon kattintson az **eszközbeállítások**elemre.
 

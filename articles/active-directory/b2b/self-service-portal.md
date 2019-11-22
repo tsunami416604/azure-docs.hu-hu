@@ -1,5 +1,5 @@
 ---
-title: B2B-együttműködés – Azure Active Directory-előfizetési portál önkiszolgáló |} A Microsoft Docs
+title: Önkiszolgáló bejelentkezési portál B2B-együttműködéshez – Azure AD
 description: Az Azure Active Directory B2B együttműködés a vállalatokon átívelő kapcsolatok támogatása érdekében lehetővé teszi, hogy az üzleti partnerek szelektíven érhessék el a vállalati alkalmazásokat
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28db43a345fb29a7529136ddfb929f5a48ccb1f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785438"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272108"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Önkiszolgáló portál Azure AD B2B-együttműködésre való regisztrációhoz
 
@@ -30,7 +30,7 @@ Ez a GitHub-projekt bemutatja, hogyan biztosíthatnak a vállalatok szabályokon
 
 A kód mintaként lett elérhetővé téve, hogy bemutassa az Azure Active Directory B2B meghívó API használatát. Saját fejlesztői csapatának vagy egy partnerének kell módosítania, és ellenőriznie egy éles helyzetben való üzembe helyezés előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [Az Azure AD B2B-együttműködés licencelése](licensing-guidance.md)

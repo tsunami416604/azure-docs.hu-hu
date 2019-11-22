@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669679"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278578"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-Ebben a rövid útmutatóban egy új alkalmazást hoz létre a [Luis portálon](https://www.luis.ai). Először hozza létre az alkalmazás, a **szándékok**és az **entitások**alapvető részeit. Ezt követően tesztelheti az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
+Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. Először hozza létre az alkalmazás, a **szándékok**és az **entitások**alapvető részeit. Ezt követően tesztelheti az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
 
 Az alkalmazások létrehozása ingyenes, és nem igényel Azure-előfizetést. Ha készen áll az alkalmazás üzembe helyezésére, tekintse meg az [alkalmazás üzembe helyezésének](get-started-portal-deploy-app.md)rövid útmutatóját. Bemutatja, hogyan hozhat létre egy Azure kognitív szolgáltatás-erőforrást, és hogyan rendelheti hozzá az alkalmazáshoz.
 
@@ -39,7 +39,7 @@ Az alkalmazások létrehozása ingyenes, és nem igényel Azure-előfizetést. H
    |--|--|--|
    |Name (Név)|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>szükséges|
    |Kulturális környezet|**angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>szükséges|
-   |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>Választható|
+   |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
    |Előrejelzési erőforrás (nem kötelező) |-  |Ne válassza a lehetőséget. A LUIS egy alapszintű kulcsot biztosít a szerzői műveletek és a 1 000-es előrejelzési végpontokra vonatkozó kérések használatához. |
 
    ![Adja meg az új alkalmazás beállításait](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -66,7 +66,7 @@ A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
 1. Adja meg a leképezés nevét, `FindForm`, majd válassza a **kész**lehetőséget.
 
-## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
+## <a name="add-an-example-utterance"></a>Adjon hozzá egy példa utterance (kifejezés)
 
 A leképezések létrehozása után példaként adja hozzá a hosszúságú kimondott szöveg. Például a hosszúságú kimondott szöveg olyan szöveg, amelyet a felhasználó egy csevegési robotba vagy más ügyfélalkalmazásba ír. A felhasználó szövegének szándékát egy LUIS-szándékra képezik le.
 
@@ -169,7 +169,7 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [2. alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)

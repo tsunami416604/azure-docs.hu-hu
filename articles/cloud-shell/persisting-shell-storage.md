@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082982"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284813"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
 A Cloud Shell az Azure file Storage-t használja a fájlok munkamenetek közötti megőrzéséhez. A kezdeti indításkor Cloud Shell egy új vagy meglévő fájlmegosztás hozzárendelését kéri a fájlok munkamenetek közötti megőrzéséhez.
@@ -38,14 +38,11 @@ Ha alapszintű beállításokat használ, és csak egy előfizetést választ ki
 
 A fájlmegosztás `clouddrive`ként van csatolva a `$Home` könyvtárban. Ez egy egyszeri művelet, és a fájlmegosztás automatikusan csatolva lesz a következő munkamenetekben. 
 
-> [!NOTE]
-> A biztonság érdekében minden felhasználónak ki kell építenie a saját Storage-fiókját.  A szerepköralapú hozzáférés-vezérlés (RBAC) esetében a felhasználóknak a Storage-fiók szintjén kell megadniuk a közreműködő vagy annál magasabb szintű hozzáférést.
-
 A fájlmegosztás egy 5 GB-os rendszerképet is tartalmaz, amely az Ön számára készült, amely automatikusan megőrzi a `$Home` címtárban tárolt adatok adatait. Ez a bash és a PowerShell esetében is érvényes.
 
 ## <a name="use-existing-resources"></a>Meglévő erőforrások használata
 
-A speciális beállítás használatával a meglévő erőforrásokat is hozzárendelheti. Cloud Shell régió kiválasztásakor ki kell választania egy azonos régióban található, biztonsági mentést tartalmazó Storage-fiókot. Ha például a hozzárendelt régiója az USA nyugati tartománya, akkor az USA nyugati régiójában található fájlmegosztást kell hozzárendelnie.
+A speciális beállítás használatával a meglévő erőforrásokat is hozzárendelheti. Cloud Shell régió kiválasztásakor ki kell választania egy azonos régióban található, biztonsági mentést tartalmazó Storage-fiókot. Ha például a hozzárendelt régiója az USA nyugati régiója, akkor az USA nyugati régiójában található fájlmegosztást is hozzá kell rendelnie.
 
 Amikor megjelenik a Storage telepítője, válassza a **Speciális beállítások megjelenítése** lehetőséget a további beállítások megtekintéséhez. A kitöltött tárolási lehetőségek a helyileg redundáns tárolás (LRS), a Geo-redundáns tárolás (GRS) és a Zone-redundáns tárolási (ZRS) fiókok esetében használhatók. 
 
@@ -54,7 +51,14 @@ Amikor megjelenik a Storage telepítője, válassza a **Speciális beállításo
 
 ![Az erőforráscsoport-beállítás](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>Támogatott tárolási régiók
+## <a name="securing-storage-access"></a>A tárterület-hozzáférés biztonságossá tétele
+A biztonság érdekében minden felhasználónak ki kell építenie a saját Storage-fiókját.  A szerepköralapú hozzáférés-vezérlés (RBAC) esetében a felhasználóknak a Storage-fiók szintjén kell megadniuk a közreműködő vagy annál magasabb szintű hozzáférést.
+
+Cloud Shell egy Azure-fájlmegosztást használ egy Storage-fiókban egy adott előfizetésen belül. Az örökölt engedélyek miatt az előfizetéshez megfelelő hozzáférési jogosultsággal rendelkező felhasználók hozzáférhetnek az összes Storage-fiókhoz, és az előfizetésben található fájlmegosztást is.
+
+A felhasználók a fájlokhoz való hozzáférést a Storage-fiók vagy az előfizetési szint engedélyeinek beállításával zárolják.
+
+## <a name="supported-storage-regions"></a>Támogatott tárolási régiók
 A társított Azure Storage-fiókoknak ugyanabban a régióban kell lenniük, mint a csatlakoztatni kívánt Cloud Shell géppel. Ha szeretné megkeresni az aktuális régiót, `env` a bash-ben, és keresse meg a változót `ACC_LOCATION`. A fájlmegosztás egy 5 GB-os rendszerképet kap, amely a `$Home` könyvtárának megtartására lett létrehozva.
 
 Cloud Shell gépek léteznek a következő régiókban:
@@ -67,8 +71,6 @@ Cloud Shell gépek léteznek a következő régiókban:
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás-létrehozás korlátozása Azure-erőforrás-házirenddel
 A Cloud Shellban létrehozott Storage-fiókok `ms-resource-usage:azure-cloud-shell`címkével rendelkeznek. Ha azt szeretné, hogy a felhasználók ne hozzanak létre Storage-fiókokat a Cloud Shellban, hozzon létre egy Azure-erőforrás-szabályzatot az adott címke által aktivált [címkékhez](../azure-policy/json-samples.md) .
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>A Cloud Shell Storage működése 
 A Cloud Shell a következő módszerekkel is megőrzi a fájlokat: 

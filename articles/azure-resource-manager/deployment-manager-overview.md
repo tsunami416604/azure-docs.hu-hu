@@ -2,14 +2,14 @@
 title: Biztonságos üzembe helyezés régiók között – Azure telepítéskezelő
 description: Ismerteti, hogyan lehet a szolgáltatás telepítése több választható régióban az Azure Deployment Manager keresztül. Ellenőrizze a telepítés előtt minden régióban elérhetőek stabilitását biztonságos üzembe helyezési eljárásokat jeleníti meg.
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9b0e314b3911dcd3b96dc2b5b32081bd2e9c0c0c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147191"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307032"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -332,9 +332,11 @@ Ezután használja a paraméter a sablonban:
 
 Új mappák és a legfelső szintű a kibocsátás közben való átadásához rendszerverzióval ellátott központi telepítések, kezelhető. Az elérési utat, amely üzembe helyezi az erőforrásokat a sablonhoz halad keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, Deployment Manager. Folytassa a következő cikkben megtudhatja, hogyan helyezhet üzembe a Deployment Manager.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Használja az Azure Deployment Manager Resource Manager-sablonokkal](./deployment-manager-tutorial.md)
+>
+> [Rövid útmutató: az Azure telepítéskezelő kipróbálása néhány perc alatt](https://github.com/Azure-Samples/adm-quickstart)

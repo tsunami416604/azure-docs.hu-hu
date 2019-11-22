@@ -1,6 +1,6 @@
 ---
-title: Munkahelyi vagy iskolai fiók hozzáadása egy hitelesítő alkalmazáshoz – Azure AD
-description: Munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazáshoz kétfaktoros ellenőrzéshez.
+title: Munkahelyi vagy iskolai fiók felvétele a Microsoft Authenticator alkalmazásba – Azure AD
+description: Vegye fel a munkahelyi vagy iskolai fiókját a Microsoft Authenticator alkalmazásba, és ellenőrizze az identitását a kétfaktoros ellenőrzés használata során.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803736"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267143"
 ---
-# <a name="add-your-work-or-school-account"></a>Munkahelyi vagy iskolai fiók hozzáadása
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazáshoz
 
 Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja a munkahelyi vagy iskolai fiókját, hogy az Microsoft Authenticator alkalmazást az egyik ellenőrzési módszerként használja.
 
@@ -53,7 +53,7 @@ Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja a munkahelyi 
 
     ![Fiókok képernyő](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

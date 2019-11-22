@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – Azure térbeli horgonyok megosztása a munkamenetek és az eszközök között | Microsoft Docs
+title: 'Oktatóanyag: horgonyok megosztása a munkamenetek és az eszközök között'
 description: Ebből az oktatóanyagból megtudhatja, hogyan oszthatja meg az Azure térbeli horgony azonosítóit az Android/iOS-eszközök között egy háttér-szolgáltatással rendelkező egységben.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8a60d5d90b684698d6fcb612278bcae6d4ed08e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882299"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276965"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: Azure térbeli horgonyok megosztása a munkamenetek és az eszközök között
 
@@ -58,7 +58,7 @@ A szolgáltatás a VS Code-ban való üzembe helyezése előtt létre kell hozni
 
 Navigáljon a <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a> , és jelentkezzen be az Azure-előfizetésbe.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
@@ -77,8 +77,8 @@ A **üzemeltetési terv konfigurálása** párbeszédpanelen használja a követ
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
 |App Service-csomag| MySharingServicePlan | Az App Service-csomag neve. |
-| Földrajzi egység | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Méret | Ingyenes | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag. |
+| Hely | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Méret | Free | Az üzemeltetési funkciókat meghatározó [díjszabási](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) csomag. |
 
 Kattintson az **OK** gombra.
 

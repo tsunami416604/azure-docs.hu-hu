@@ -1,25 +1,25 @@
 ---
-title: Hozzon létre egy Azure Blockchain-szolgáltatás Azure CLI használatával
-description: Azure CLI-vel blockchain tag létrehozásához használja az Azure Blockchain-szolgáltatás.
+title: Azure Blockchain-szolgáltatásbeli tag létrehozása – Azure CLI
+description: Hozzon létre egy Azure Blockchain-szolgáltatási tagot egy Blockchain Consortium számára az Azure CLI használatával.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: seal
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: be5a8151f0de0a33db09194a7159aded6848c78a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
-ms.translationtype: MT
+ms.openlocfilehash: 894c6392c302e1be7c57b85f3f923ee1ba5467f6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416172"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286927"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Gyors útmutató: Azure CLI-vel, az Azure Blockchain-szolgáltatás blockchain tag létrehozása
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Rövid útmutató: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI-vel
 
-Az Azure Blockchain-szolgáltatás az blockchain platform segítségével hajtsa végre az üzleti logikára belüli egy intelligens szerződés. Ez a rövid útmutató bemutatja, hogyan első lépésként hozza létre az Azure CLI-vel blockchain tagja.
+Ebben a rövid útmutatóban egy új blockchain-tagot és-konzorciumot helyez üzembe az Azure Blockchain Service-ben az Azure CLI használatával.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,49 +29,58 @@ Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a j
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-Ha inkább a helyi telepítése és használata a parancssori felület, ehhez a rövid útmutatóhoz az Azure CLI-vel 2.0.51 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.51 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create \
+                 --name myResourceGroup \
+                 --location westus2
 ```
 
 ## <a name="create-a-blockchain-member"></a>Blokklánctagok létrehozása
 
-A blockchain tag létrehozása az Azure Blockchain Service-ben, amely a kvórum Főkönyv protokoll egy új consortium. Több paraméterek és teljesítenie kell a tulajdonságok is van. Az értékeket cserélje le a példában paramétereket.
+Hozzon létre egy blockchain tagot az Azure Blockchain szolgáltatásban, amely egy új konzorciumban futtatja a kvórum Ledger protokollt. Több paramétert és tulajdonságot kell átadnia. Cserélje le a példában szereplő paramétereket az értékekre.
 
 ```azurecli-interactive
-az resource create --resource-group myResourceGroup --name myblockchainmember --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"eastus\", \"properties\": {\"password\": \"strongMemberAccountPassword@1\", \"protocol\": \"Quorum\", \"consortium\": \"myConsortiumName\", \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\" }, \"sku\": { \"name\": \"S0\" } }"
+az resource create \
+                    --resource-group myResourceGroup \
+                    --name myblockchainmember \
+                    --resource-type Microsoft.Blockchain/blockchainMembers \
+                    --is-full-object \
+                    --properties '{"location":"westus2", "properties":{"password":"strongMemberAccountPassword@1", "protocol":"Quorum", "consortium":"myConsortiumName", "consortiumManagementAccountPassword":"strongConsortiumManagementPassword@1"}, "sku":{"name":"S0"}}'
 ```
 
 | Paraméter | Leírás |
 |---------|-------------|
-| **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. Használja az előző szakaszban létrehozott erőforráscsoportot.
-| **name** | Egyedi név, amely azonosítja az Azure Blockchain-szolgáltatás blockchain tag. A név szolgál a nyilvános végpont címe. Például: `myblockchainmember.blockchain.azure.com`.
-| **hely** | Az Azure régióban, amelyben létrehozza a blockchain tag. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
-| **jelszó** | A tag alapértelmezett tranzakció csomópont jelszava. Használja az egyszerű hitelesítést a jelszót, blockchain-tagok alapértelmezett tranzakció csomópont nyilvános végponthoz való csatlakozáskor.
-| **consortium** | A csatlakozás, vagy hozzon létre consortium neve.
-| **consortiumAccountPassword** | A consortium fiók jelszavát a tag fiók jelszavát is nevezik. A tag fiók jelszavát a Ethereum-fiókot, amely a tag jön létre a titkos kulcsfájl titkosítására szolgál. A tagsági fiók, és a tag fiók jelszavának használata consortium felügyeleti.
-| **skuName** | Csomag típusa. S0 Standard és B0 használata alapszintű.
+| **resource-group** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. Használja az előző szakaszban létrehozott erőforráscsoportot.
+| **name** | Egy egyedi név, amely az Azure Blockchain szolgáltatás Blockchain-tagját azonosítja. A nevet a rendszer a nyilvános végpont címeként használja. Például: `myblockchainmember.blockchain.azure.com`.
+| **hely** | Az az Azure-régió, ahol a blockchain-tag létrejött. Például: `westus2`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
+| **jelszó** | A tag alapértelmezett tranzakciós csomópontjának jelszava. Az alapszintű hitelesítéshez használja a jelszót az blockchain-tag alapértelmezett tranzakciós csomópontjának nyilvános végponthoz való csatlakozáskor.
+| **consortium** | A csatlakozáshoz vagy létrehozáshoz használandó konzorcium neve.
+| **consortiumAccountPassword** | A Consortium-fiók jelszavát más néven a tag fiók jelszavaként kell megadni. A tag fiók jelszava a tag számára létrehozott Ethereum-fiók titkos kulcsának titkosítására szolgál. A tag fiókja és a fiók jelszava a konzorciumok kezeléséhez.
+| **skuName** | A rétegek típusa. A standard és a B0 S0 használata alapszintű.
 
-Nagyjából 10 percet a blockchain tag és a támogató erőforrások létrehozása vesz igénybe.
+A blockchain-tag és a támogató erőforrások létrehozása körülbelül 10 percet vesz igénybe.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A következő rövid vagy az oktatóanyagban létrehozott blockchain tag használható. Ha már nincs rá szükség, törölheti az erőforrások törlése a `myResourceGroup` létrehozott erőforráscsoportot az Azure Blockchain-szolgáltatás.
+Használhatja a következő rövid útmutatóhoz vagy oktatóanyaghoz létrehozott blockchain tagot. Ha már nincs rá szükség, törölheti az erőforrásokat az Azure Blockchain szolgáltatás által létrehozott `myResourceGroup` erőforráscsoport törlésével.
 
-Futtassa az alábbi paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás.
+A következő parancs futtatásával távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+                 --name myResourceGroup \
+                 --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy létrehozta a blockchain-tag, próbálja ki a kapcsolat rövid útmutató valamelyikét [Geth](connect-geth.md), [MetaMask](connect-metamask.md), vagy [Truffle](connect-truffle.md).
+Ebben a rövid útmutatóban üzembe helyezett egy Azure Blockchain-szolgáltatási tagot és egy új konzorciumot. Próbálja ki a következő rövid útmutatót a Ethereum készült Azure Blockchain Development Kit használatával az Azure Blockchain Service-konzorciumhoz való csatlakoztatáshoz.
 
 > [!div class="nextstepaction"]
-> [Truffle használatával csatlakozni egy az Azure Blockchain-szolgáltatás hálózat](connect-truffle.md)
+> [A Visual Studio Code használata Azure Blockchain Service Consortium-hálózathoz való kapcsolódáshoz](connect-vscode.md)

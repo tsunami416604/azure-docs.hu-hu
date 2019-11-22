@@ -13,21 +13,21 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f595013d5404f0cbcb17a0d24d6395a84fa5b607
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028513"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266991"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával
 
-A kétlépéses ellenőrzés vagy a biztonsági adatok beállítása után a megadott hitelesítési módszer használatával bejelentkezhet a fiókjába.
+A kétlépéses ellenőrzés vagy a biztonsági adatok beállítása után a megadott ellenőrzési módszer használatával bejelentkezhet a fiókjába.
 
 > [!Note]
-> Ha továbbra is a kétlépéses ellenőrzési funkciót használja, a hitelesítési módszereket úgy kell beállítania, hogy a [saját fiók beállítása kétlépéses ellenőrzésre](multi-factor-authentication-end-user-first-time.md) című cikk utasításait követve.
+> Ha továbbra is a kétlépéses ellenőrzési funkciót használja, be kell állítania az ellenőrzési módszereit a [saját fiók beállítása kétlépéses ellenőrzésre](multi-factor-authentication-end-user-first-time.md) című cikk utasításait követve.
 >
-> Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos felhasználói élményt, a következő lépésekre bontott cikkekkel kell beállítania a hitelesítési módszereket:<ul><li>[Biztonsági adatok beállítása hitelesítési alkalmazás használatára](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Biztonsági adatok beállítása telefonhívás használatára](security-info-setup-phone-number.md)</li><li>[Biztonsági adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)</li></ul>
+> Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos felhasználói élményt, az alábbi lépésenkénti cikkek segítségével be kell állítania az ellenőrzési módszereket:<ul><li>[Biztonsági adatok beállítása hitelesítési alkalmazás használatára](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Biztonsági adatok beállítása telefonhívás használatára](security-info-setup-phone-number.md)</li><li>[Biztonsági adatok beállítása biztonsági kulcs használatára](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Bejelentkezés a mobileszköz hitelesítő alkalmazásával kapcsolatos értesítés használatával
 

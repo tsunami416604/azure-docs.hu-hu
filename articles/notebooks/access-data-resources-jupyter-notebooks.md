@@ -1,23 +1,14 @@
 ---
 title: Az Azure-ban a Jupyter notebookokból származó adatok erőforrások eléréséhez
 description: Hogyan lehet a Jupyter notebook fájlok, a REST API-k, az adatbázisok és a különböző Azure Storage-erőforrások eléréséhez.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970257"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277695"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Hozzáférés felhőbeli adatok történő használatát
 
@@ -79,12 +70,12 @@ Ha működik a Cosmos DB használatával, használhatja a [azure-cosmos DB-table
 
 Az Azure számos más adatbázistípusok használható. Ezeket az adatbázisokat a Python elérése útmutatást nyújtanak az az alábbi cikkeket:
 
-- @no__t 0Azure-adatbázis PostgreSQL-hez: A Python használata a kapcsolódáshoz és az adatlekérdezéshez @ no__t-0
-- [Rövid útmutató: Azure Redis Cache használata a Python @ no__t-0 használatával
-- [Azure-adatbázis a MySQL-hez: A Python használata a kapcsolódáshoz és az adatlekérdezéshez @ no__t-0
+- [PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés a Python](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Gyors útmutató: Az Azure Redis Cache használata Pythonnal](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Azure Database for MySQL: csatlakozás és adatlekérdezés a Python](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Az Azure Data Factory másolás varázsló](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Útmutató: Project-adatfájlok használata @ no__t-0
+- [Útmutató: adatok soubory projektu használata](work-with-project-data-files.md)

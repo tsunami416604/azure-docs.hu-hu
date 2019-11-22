@@ -1,19 +1,19 @@
 ---
-title: Rövid útmutató – HoloLens-alkalmazás létrehozása az Azure térbeli Horgonyokkal | Microsoft Docs
+title: 'Rövid útmutató: HoloLens-alkalmazás létrehozása a DirectX szolgáltatással'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre HoloLens-alkalmazást térbeli horgonyok használatával.
 author: craigktreasure
-manager: aliemami
+manager: virivera
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7069a3c8b266938e974d1b7130a349e0c9b66b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3814a12657b2634ede02eda83c7e7bcdf78cd7e2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111829"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277099"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure térbeli Horgonyokkal,/WinRT C++és DirectX-ben
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d517c5f0e45edd16778b1300ba9ff41a1483d84
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028508"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266956"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Saját munkahelyi vagy iskolai jelszó átállítása – áttekintés
 
@@ -34,5 +34,5 @@ A jelszó-visszaállításhoz és a jelszó alaphelyzetbe állításához szüks
 
 |Cikk |Leírás |
 |------|------------|
-| [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md) | Útmutatás a hitelesítési módszerek ellenőrzéséhez és az önkiszolgáló jelszó-visszaállításhoz való regisztrációhoz, hogy visszaállítsa a saját jelszavát. |
+| [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md) | Útmutatás az ellenőrzési módszerek ellenőrzéséhez és az önkiszolgáló jelszó-visszaállításhoz való regisztrációhoz, hogy visszaállítsa a saját jelszavát. |
 | [Új jelszó kérése](active-directory-passwords-update-your-own-password.md) | Útmutató a munkahelyi vagy iskolai fiók jelszavának alaphelyzetbe állításához vagy feloldásához. |

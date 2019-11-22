@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazásproxy alkalmazás PingAccess konfigurálása |} A Microsoft Docs
-description: Ismerje meg, hogyan használja a PingAccess az előnyöket, az Application Proxy fejlécalapú hitelesítést használó alkalmazások
+title: Alkalmazásproxy-alkalmazás konfigurálása a PingAccess használatához
+description: Ismerje meg, hogyan bővítheti az alkalmazásproxy előnyeit a PingAccess használatával a fejléc-alapú hitelesítést használó alkalmazásokhoz
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,27 +16,27 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d555aaf99470588bb3ed2b328adb3e99f6c4a50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c852c69b6f64b59845b551202bd1a25646a49eb6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783982"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275657"
 ---
-# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Az alkalmazásproxy alkalmazás PingAccess konfigurálása
+# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Alkalmazásproxy-alkalmazás konfigurálása a PingAccess használatához
 
-Az noaa Ügynökséggel PingAccess mostantól lehetővé teszi az előnyöket, az Application Proxy fejlécalapú hitelesítést használó alkalmazások. Ha az alkalmazások nem használja a fejlécek, tekintse meg a [egyszeri bejelentkezés dokumentáció](application-proxy-configure-single-sign-on-with-kcd.md) más lehetőség részletes.
+A PingAccess-nal való együttműködés mostantól lehetővé teszi, hogy a fejléc-alapú hitelesítést használó alkalmazások számára kiterjessze az alkalmazásproxy előnyeit. Ha az alkalmazások nem használnak fejléceket, a további beállításokkal kapcsolatos részletekért tekintse meg az [egyszeri bejelentkezés dokumentációját](application-proxy-configure-single-sign-on-with-kcd.md) .
 
-## <a name="overview-of-steps-and-recommended-documents"></a>Lépéseit és ajánlott dokumentumok áttekintése
+## <a name="overview-of-steps-and-recommended-documents"></a>A lépések és az ajánlott dokumentumok áttekintése
 
-Alkalmazás konfigurálása a pingaccess segítségével, négy lépésben történik:
+Az alkalmazások PingAccess való konfigurálásához négy lépésből áll:
 
 1.  Alkalmazásproxy-összekötők konfigurálása
 
-2.  Egy Azure AD alkalmazásproxy-alkalmazás létrehozása
+2.  Azure AD Application Proxy-alkalmazás létrehozása
 
-3.  Töltse le, és a PingAccess konfigurálása
+3.  Töltse le & PingAccess konfigurálása
 
-4.  Konfigurálhatja az alkalmazásokat a PingAccess
+4.  Alkalmazások konfigurálása a PingAccess-ben
 
-A lépések részletes ismertetéséért tekintse meg a [egyszeri bejelentkezést a fejlécek dokumentációjában](application-proxy-configure-single-sign-on-with-ping-access.md).
+Ezekről a lépésekről az [egyszeri bejelentkezés fejlécekkel kapcsolatos dokumentációjában](application-proxy-configure-single-sign-on-with-ping-access.md)talál további információt.

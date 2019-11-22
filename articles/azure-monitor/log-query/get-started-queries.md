@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933026"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278609"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
 
@@ -109,7 +109,7 @@ A szűrési feltételek írásakor a következő kifejezéseket használhatja:
 |:---|:---|:---|
 | == | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `Level == 8` |
 | =~ | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =, < > | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
+| !=, <> | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
 | *és*, *vagy* | Feltételek között szükséges| `Level == 16 or CommandLine != ""` |
 
 Ha több feltételt szeretne szűrni, **használhatja a következőt:**
@@ -239,4 +239,7 @@ A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szere
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tudnivalók a [keresési lekérdezések írásához](search-queries.md)
+- További információ a sztringek használatával végzett naplózási lekérdezésekben a karakterláncok használata [Azure monitor a naplók lekérdezésében](string-operations.md).
+- További információ az adatösszesítések naplózási lekérdezésekben való összesítéséről [Azure monitor log-lekérdezések speciális összesítései között](advanced-aggregations.md).
+- Megtudhatja, hogyan csatlakozhat több táblázatból származó adatokhoz [Azure monitor log-lekérdezések](joins.md)összekapcsolásával.
+- Kérje le a dokumentációt a teljes Kusto lekérdezési nyelvre a [KQL nyelvi](/azure/kusto/query/)dokumentációjában.

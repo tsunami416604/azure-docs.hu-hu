@@ -1,20 +1,20 @@
 ---
 title: Több Azure-beli virtuális gép frissítéseinek kezelése
-description: Ez a cikk az Azure-beli virtuális gépek frissítéseinek kezelését ismerteti.
+description: Ez a cikk az Azure-és nem Azure-beli virtuális gépek frissítéseinek kezelését ismerteti.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374494"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278680"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -31,6 +31,8 @@ A Update Management használatához a következőkre lesz szüksége:
 
 - Egy támogatott operációs rendszert futtató virtuális gépre vagy számítógépre.
 
+- Hozzáférés a megoldásba beépített linuxos virtuális gépek frissítési tárházához.
+
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 A Update Management a következő operációs rendszereken támogatott:
@@ -39,17 +41,13 @@ A Update Management a következő operációs rendszereken támogatott:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | A csak a frissítési felméréseket támogatja.         |
 |Windows Server 2008 R2 SP1 és újabb verziók     |A Windows PowerShell 4,0-es vagy újabb verziójára van szükség. ([WMF 4,0 letöltése](https://www.microsoft.com/download/details.aspx?id=40855))</br> A fokozott megbízhatóság érdekében ajánlott a Windows PowerShell 5,1. ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Ubuntu 14,04 LTS, 16,04 LTS és 18,04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
+|CentOS 6 (x86/x64) és 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | |
+|Ubuntu 14,04 LTS, 16,04 LTS és 18,04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Ahhoz, hogy Ubuntu rendszeren elkerülje a karbantartási időszakon kívüli frissítéstelepítést, konfigurálja újra az Unattended-Upgrade csomagot az automatikus frissítések letiltásához. További információt az [Ubuntu kiszolgáló kézikönyvének Automatikus frissítések témakörében](https://help.ubuntu.com/lts/serverguide/automatic-updates.html) talál.
-
-A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.
-
-Ez a megoldás nem támogatja a Linux rendszerhez készült Log Analytics-ügynököt, amely több Azure Log Analytics-munkaterületnek való jelentésre van konfigurálva.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Update Management engedélyezése Azure-beli virtuális gépekhez
 
@@ -69,13 +67,11 @@ A bevezetést követően a Update Management engedélyezve van a virtuális gép
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Update Management engedélyezése nem Azure-beli virtuális gépekhez és számítógépekhez
 
-A nem Azure-beli Windows rendszerű virtuális gépek és számítógépek Update Managementének engedélyezéséről a [Windows rendszerű számítógépek összekapcsolása az Azure-beli Azure monitor szolgáltatással](../log-analytics/log-analytics-windows-agent.md)című témakörben talál további információt.
-
-A nem Azure-beli linuxos virtuális gépek és számítógépek Update Managementének engedélyezéséről a Linux rendszerű [számítógépek Összekapcsolása Azure monitor naplókhoz](../log-analytics/log-analytics-agent-linux.md)című témakörben olvashat.
+A Windows és a Linux rendszerhez készült Log Analytics ügynöknek telepítve kell lennie a vállalati hálózaton vagy más felhőalapú környezetben futó virtuális gépeken, hogy azok a Update Management. Az ügynök az Azure-on kívül üzemeltetett gépekre való központi telepítéséhez szükséges rendszerkövetelmények és támogatott módszerek megismeréséhez tekintse meg [a log Analytics ügynök áttekintését](../azure-monitor/platform/log-analytics-agent.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Az Automation-fiókhoz csatlakoztatott számítógépek megtekintése
 
-Miután engedélyezte Update Management a gépek számára, a **számítógépek**elem kiválasztásával megtekintheti a számítógép adatait. Megtekintheti a *gép neve*, a *megfelelőségi állapot*, a *környezet*, az *operációs rendszer típusa*, a *kritikus és biztonsági frissítések telepítése*, a *telepített egyéb frissítések*és a *frissítési ügynök felkészültségét* számítógépek.
+Miután engedélyezte Update Management a gépek számára, a **számítógépek**elem kiválasztásával megtekintheti a számítógép adatait. A számítógép *nevére*, a *megfelelőségi állapotra*, a *környezetre*, az *operációs rendszer típusára*, a *kritikus és biztonsági frissítések telepítésére*, a *telepített egyéb frissítésekre*és a számítógépek *frissítésére való felkészültségre* vonatkozó információkat itt tekintheti meg.
 
   ![Számítógépek megtekintése lap](./media/manage-update-multi/update-computers-tab.png)
 
@@ -130,8 +126,13 @@ Az **új frissítés központi telepítése** ablaktáblán a következő inform
 
 - **Név**: adjon meg egy egyedi nevet a frissítés központi telepítésének azonosításához.
 - **Operációs rendszer**: válassza a **Windows** vagy a **Linux**lehetőséget.
-- **Frissítendő csoportok (előzetes verzió)** : Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [Dinamikus csoportok](automation-update-management-groups.md)
-- **Frissítendő gépek**: válasszon ki egy mentett keresést, importált csoportot, vagy válassza a gépek lehetőséget a frissíteni kívánt gépek kiválasztásához. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítés telepítésének megkezdése előtt láthatja a gép állapotát. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md)
+- **Frissítendő csoportok**: az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációján alapuló lekérdezéseket hozhat létre, amelyekkel felépítheti az üzembe helyezésbe felvenni kívánt Azure-beli virtuális gépek dinamikus csoportját. A nem Azure-beli virtuális gépek esetében a mentett keresések segítségével létrehozható egy dinamikus csoport, amely belefoglalja a központi telepítésbe. További információ: [dinamikus csoportok](automation-update-management-groups.md).
+- **Frissítendő gépek**: válasszon ki egy mentett keresést, importált csoportot, vagy válassza a gépek lehetőséget a frissíteni kívánt gépek kiválasztásához.
+
+   >[!NOTE]
+   >A mentett keresés lehetőség választása nem ad vissza számítógép-identitásokat, csak a nevüket. Ha több, azonos nevű virtuális géppel rendelkezik több erőforráscsoport között, a rendszer az eredményeket adja vissza. A **csoportok frissítése** beállítás használata ajánlott annak biztosítására, hogy a feltételnek megfelelő egyedi virtuális gépeket tartalmazzon.
+
+   Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítés telepítésének megkezdése előtt láthatja a gép állapotát. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md)
 
   ![Új frissítés központi telepítése panel](./media/manage-update-multi/update-select-computers.png)
 
@@ -158,7 +159,7 @@ Az **új frissítés központi telepítése** ablaktáblán a következő inform
 
 - **Újraindítás vezérlése** – ez a beállítás határozza meg, hogy a rendszer hogyan kezeli az újraindításokat a frissítés központi telepítéséhez.
 
-   |Lehetőség|Leírás|
+   |Beállítás|Leírás|
    |---|---|
    |Újraindítás szükség esetén| **(Alapértelmezett)** Ha szükséges, a rendszer újraindítást kezdeményez, ha a karbantartási időszak lehetővé teszi.|
    |Mindig induljon újra|A rendszer újraindítást kezdeményez, függetlenül attól, hogy szükség van-e rá. |
@@ -196,5 +197,5 @@ A telepítés közben felmerülő hibák részletes információinak megtekinté
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha többet szeretne megtudni a Update Managementokról, például a naplókról, a kimenetről és a hibákról, tekintse meg [Az Azure-beli Update Management megoldást](../operations-management-suite/oms-solution-update-management.md).
+Ha többet szeretne megtudni a Update Managementokról, például a naplókról, a kimenetről és a hibákról, tekintse meg [Az Azure-beli Update Management megoldást](../operations-management-suite/oms-solution-update-management.md).
 

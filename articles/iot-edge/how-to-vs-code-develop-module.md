@@ -8,18 +8,18 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e5bfd2fc127774b9630e87ab4f51241e82ed7c87
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 788d5eb049a27500a6518b7be9bb6caedd543637
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999067"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276158"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
 Az Azure IoT Edge kapcsolhatja az üzleti logikára modulokat. Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code-ot a modulok fejlesztésére és hibakeresésére szolgáló fő eszközként.
 
-A Visual Studio Code-ban C#kétféleképpen lehet hibakeresési modulokat, Node. js-t vagy Java-t írni: Csatlakoztathat egy folyamatot egy modul-tárolóban, vagy hibakeresési módban is elindíthatja a modul kódját. A Pythonban vagy C-ben írt modulok hibakereséséhez csak Linux amd64-tárolókban lévő folyamatokhoz lehet kapcsolódni.
+A Visual Studio Code-ban C#a (z), a Node. js vagy a Java nyelveken írt modulok hibakeresése kétféleképpen lehetséges: a modul-tárolóban létrehozhat egy folyamatot, vagy hibakeresési módban elindíthatja a modul kódját. A Pythonban vagy C-ben írt modulok hibakereséséhez csak Linux amd64-tárolókban lévő folyamatokhoz lehet kapcsolódni.
 
 Ha nem ismeri a Visual Studio Code hibakeresési képességeit, olvassa el a [hibakeresést](https://code.visualstudio.com/Docs/editor/debugging)ismertető cikkét.
 
@@ -37,20 +37,20 @@ Először telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot,
 - [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Docker-bővítmény](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - A fejlesztéshez használt nyelvhez tartozó Visual Studio-bővítmény (ek):
-  - C#, beleértve a Azure Functions: [C#kiterjesztés](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - C#, beleértve a Azure functions: [ C# bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
   - Python: [Python-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  - Java: [Java Extension Pack a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-  - C [C/C++ bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+  - Java: [a Visual Studio Code-hoz készült Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+  - C: [c/C++ bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
 Emellett további, nyelvfüggő eszközöket is telepítenie kell a modul fejlesztéséhez:
 
 - C#, beleértve a Azure Functions: [.net Core 2,1 SDK](https://www.microsoft.com/net/download)
 
-- Python: [](https://www.python.org/downloads/) Python és [pip](https://pip.pypa.io/en/stable/installing/#installation) a Python-csomagok telepítéséhez (jellemzően a Python-telepítés részeként).
+- Python: Python és [pip](https://pip.pypa.io/en/stable/installing/#installation) [a Python-](https://www.python.org/downloads/) csomagok telepítéséhez (jellemzően a Python-telepítés részeként).
 
-- Node.js: [Node.js](https://nodejs.org). Emellett telepítenie kell a [Yeoman](https://www.npmjs.com/package/yo) -t és a [Azure IoT Edge Node. js-modul generátort](https://www.npmjs.com/package/generator-azure-iot-edge-module)is.
+- Node. js: [Node. js](https://nodejs.org). Emellett telepítenie kell a [Yeoman](https://www.npmjs.com/package/yo) -t és a [Azure IoT Edge Node. js-modul generátort](https://www.npmjs.com/package/generator-azure-iot-edge-module)is.
 
-- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) és [Maven](https://maven.apache.org/). [ A`JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) úgy kell beállítani, hogy a JDK-telepítésre mutasson.
+- Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) és [Maven](https://maven.apache.org/). [Be kell állítania a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) , hogy a JDK-telepítésre mutasson.
 
 A modul lemezképének létrehozásához és üzembe helyezéséhez a Docker-nek létre kell hoznia a modul lemezképét és egy tároló-beállításjegyzéket a modul lemezképének tárolásához:
 
@@ -61,13 +61,15 @@ A modul lemezképének létrehozásához és üzembe helyezéséhez a Docker-nek
     > [!TIP]
     > Egy helyi Docker-beállításjegyzék prototípus és a egy felhőbeli beállításjegyzék helyett tesztelési célokra használható.
 
-Ha nem fejleszti a modult a C-ben, akkor a Python-alapú [Azure IoT EdgeHub dev eszközre](https://pypi.org/project/iotedgehubdev/) is szüksége lesz a helyi fejlesztési környezet beállításához a IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez. Ha még nem tette meg, telepítse a [Pythont (2.7/3.6 +) és a pip](https://www.python.org/) -et, majd telepítse a **iotedgehubdev** a parancs futtatásával a terminálon.
+Ha nem fejleszti a modult a C-ben, akkor a Python-alapú [Azure IoT EdgeHub dev eszközre](https://pypi.org/project/iotedgehubdev/) is szüksége lesz a helyi fejlesztési környezet beállításához a IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez. Ha még nem tette meg, telepítse a [Pythont (2.7/3.6/3.7) és a pip](https://www.python.org/) -et, majd telepítse a **iotedgehubdev** a parancs futtatásával a terminálon.
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 > [!NOTE]
-> Ha több Python is van, beleértve az előre telepített Python 2,7-et (például Ubuntu vagy MacOS rendszeren), győződjön meg arról, hogy a `pip` megfelelő `pip3` vagy a **iotedgehubdev** telepítését végzi.
+> A iotedgehubdev jelenleg a Python 3,8-es verzióval nem kompatibilis Docker-a kódtárat használ.
+>
+> Ha több Python is van, beleértve az előre telepített Python 2,7-et (például Ubuntu vagy macOS rendszeren), győződjön meg arról, hogy a megfelelő `pip` vagy `pip3`t használja a **iotedgehubdev** telepítéséhez
 
 A modul eszközön való teszteléséhez egy aktív IoT hub szükséges legalább egy IoT Edge eszközzel. Ha a számítógépet IoT Edge eszközként szeretné használni, kövesse a [Linux](quickstart-linux.md) vagy [Windows rendszerhez](quickstart.md)készült gyors útmutató lépéseit. Ha IoT Edge démont futtat a fejlesztői gépen, előfordulhat, hogy a következő lépésre való áttérés előtt le kell állítania a EdgeHub és a EdgeAgent.
 
@@ -77,7 +79,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge modult az el�
 
 1. Válassza ki **nézet** > **paletta parancs**.
 
-1. A Command paletta írja be és futtassa a parancsot **Azure IoT Edge: Új IoT Edge megoldás**.
+1. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: IoT Edge új megoldás**.
 
    ![Új IoT Edge megoldás futtatása](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -89,7 +91,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge modult az el�
 
 1. Adja meg a modul nevét. Válassza ki a tároló beállításjegyzékében egyedi nevet.
 
-1. Adja meg a modul rendszerkép-tárházának nevét. A Visual Studio Code automatikusan feltölti a modul nevét a **localhost: 5000/< a modul\>nevével**. Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy tűnik   **_\<, hogy\>a beállításjegyzék neve_. azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy a végső eredmény  **\<a *beállításjegyzék neveként*\>hasonlítson. azurecr.IO/ _\<a\>modul nevét_** .
+1. Adja meg a modul rendszerkép-tárházának nevét. A Visual Studio Code automatikusan feltölti a modul nevét a **localhost: 5000/< a modul neve\>** . Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy néz ki, mint  **_\<beállításjegyzék neve\>_ . azurecr.IO**. Csak a karakterlánc következő helyére írja a **localhost: 5000** részét, hogy a végeredmény a **\<*beállításjegyzék neve*\>. azurecr.io/ _\<a modul neve\>_** .
 
    ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-csharp-module/repository.png)
 
@@ -99,7 +101,7 @@ A megoldásban négy elem található:
 
 - A **. vscode** mappa hibakeresési konfigurációkat tartalmaz.
 
-- A **modulok** mappa almappákkal rendelkezik az egyes modulokhoz.  Az egyes modulok mappáján belül található a **Module. JSON**fájl, amely azt szabályozza, hogyan épül fel és helyezhetők üzembe a modulok.  Ezt a fájlt módosítani kell, hogy módosítsa a modul üzembe helyezési tárolójának beállításjegyzékét a localhost-ból egy távoli beállításjegyzékbe. Ezen a ponton csak egy modul van.  A parancssorban azonban további részleteket is hozzáadhat a Azure IoT Edge paranccsal **: IoT Edge modul**hozzáadása.
+- A **modulok** mappa almappákkal rendelkezik az egyes modulokhoz.  Az egyes modulok mappáján belül található a **Module. JSON**fájl, amely azt szabályozza, hogyan épül fel és helyezhetők üzembe a modulok.  Ezt a fájlt módosítani kell, hogy módosítsa a modul üzembe helyezési tárolójának beállításjegyzékét a localhost-ból egy távoli beállításjegyzékbe. Ezen a ponton csak egy modul van.  A parancssorban azonban további részleteket is hozzáadhat a **Azure IoT Edge: add IoT Edge modul**parancshoz.
 
 - A **. env** fájl felsorolja a környezeti változókat. Ha Azure Container Registry a beállításjegyzékben, akkor Azure Container Registry felhasználónevét és jelszavát fogja tartalmazni.
 
@@ -110,7 +112,7 @@ A megoldásban négy elem található:
 
 ## <a name="add-additional-modules"></a>További modulok hozzáadása
 
-Ha további modulokat szeretne hozzáadni a megoldáshoz, futtassa **a következő parancsot Azure IoT Edge: Adja hozzá IoT Edge** modult a parancs palettáján. Azt is megteheti, hogy a jobb gombbal a `deployment.template.json` modulok mappára vagy a fájlra kattint a Visual Studio Code Explorer nézetében, majd kiválasztja **IoT Edge modul hozzáadása**lehetőséget.
+Ha további modulokat szeretne felvenni a megoldásba, futtassa a következő parancsot **Azure IoT Edge: IoT Edge modul hozzáadása** a parancssorból. Azt is megteheti, hogy a jobb gombbal a **modulok** mappára vagy a `deployment.template.json` fájlra kattint a Visual Studio Code Explorer nézetében, majd kiválasztja **IoT Edge modul hozzáadása**lehetőséget.
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
@@ -120,7 +122,7 @@ A megoldás alapértelmezett moduljának kódja a következő helyen található
 - C#: **modulok > *&lt;a modul neve&gt;* > program.cs**
 - Python: **modulok > *&lt;a modul neve&gt;* > Main.py**
 - Node. js: **modulok > *&lt;a modul neve&gt;* > app. js**
-- Java: **modulok > *&lt;a modul neve&gt;* > src > Main > Java > com > edgemodulemodules > app. Java**
+- Java: **modulok > *&lt;a modul neve&gt;* > src > main > java > com > edgemodulemodules > app. Java**
 - C: **modulok > *&lt;a modul neve&gt;* > Main. c**
 
 A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul úgy van felépítve, hogy egyszerűen egy forrásból (ebben az esetben az adatokat szimuláló SimulatedTemperatureSensor modulból) beírja a bemenetet, és átadja a IoT Hubnak.
@@ -140,7 +142,7 @@ A fejlesztői gépen elindíthat egy IoT Edge szimulátort a IoT Edge biztonság
 
 ### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>IoT Edge szimulátor beállítása egyetlen Modulos alkalmazáshoz
 
-A szimulátor beállításához és elindításához futtassa a következő **parancsot Azure IoT Edge: A Visual Studio Code parancs-palettán indítsa el IoT Edge hub szimulátort egyetlen modulhoz** . Ha a rendszer kéri, használja a **input1** értéket az alapértelmezett modul kódjából (vagy a kód megfelelő értékével) az alkalmazás bemeneti neveként. A parancs elindítja a **iotedgehubdev** CLI-t, majd elindítja a IoT Edge szimulátort és a tesztelési segédprogram moduljának tárolóját. Az alábbi kimeneteket az integrált terminálon tekintheti meg, ha a szimulátort egy Modulos módban indította el sikeresen. Megtekintheti `curl` az üzenetek küldését segítő parancsot is. Erre később még szüksége lesz.
+A szimulátor beállításához és elindításához futtassa a **következő parancsot Azure IoT Edge: start IoT Edge hub Simulator egyetlen modulhoz** a Visual Studio Code Command paletta használatával. Ha a rendszer kéri, használja a **input1** értéket az alapértelmezett modul kódjából (vagy a kód megfelelő értékével) az alkalmazás bemeneti neveként. A parancs elindítja a **iotedgehubdev** CLI-t, majd elindítja a IoT Edge szimulátort és a tesztelési segédprogram moduljának tárolóját. Az alábbi kimeneteket az integrált terminálon tekintheti meg, ha a szimulátort egy Modulos módban indította el sikeresen. `curl` parancs is megjelenik, amely segítséget nyújt az üzenetek küldéséhez. Erre később még szüksége lesz.
 
    ![IoT Edge szimulátor beállítása egyetlen Modulos alkalmazáshoz](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
@@ -154,33 +156,33 @@ A szimulátor beállításához és elindításához futtassa a következő **pa
 
 1. Készítse elő a környezetet a hibakereséshez a fejlesztési nyelv követelményeinek megfelelően, állítson be egy töréspontot a modulban, és válassza ki a használni kívánt hibakeresési konfigurációt:
    - **C#**
-     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a ***&lt;saját modul neve&gt;*** mappájába, majd futtassa a következő parancsot a .net Core-alkalmazás létrehozásához.
+     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a ***&lt;a modul neve&gt;*** mappába, majd futtassa a következő parancsot a .net Core-alkalmazás létrehozásához.
 
        ```cmd
        dotnet build
        ```
 
-     - Nyissa meg `Program.cs` a fájlt, és adjon hozzá egy töréspontot.
+     - Nyissa meg `Program.cs` fájlt, és adjon hozzá egy töréspontot.
 
-     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés**lehetőséget. Válassza ki a hibakeresési konfigurációt  ***&lt;a modul neve&gt;* helyi hibakeresés (.net Core)** alapján a legördülő listából.
+     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés**lehetőséget. Válassza ki a hibakeresési konfigurációt,  ***&lt;a modul neve&gt;* helyi hibakeresés (.net Core)** elemet a legördülő listából.
 
         > [!NOTE]
-        > Ha a .net Core `TargetFramework` nem konzisztens a program `launch.json`elérési útjával, manuálisan kell `launch.json` frissítenie a program elérési útját, hogy az `TargetFramework` megfeleljen a. csproj fájlnak, hogy a Visual Studio Code sikeresen el tudja indítani ezt program.
+        > Ha a .NET Core `TargetFramework` nem konzisztens a program elérési útjának `launch.json`jában, akkor manuálisan kell frissítenie a program elérési útját a `launch.json`ban, hogy az megfeleljen a. csproj fájl `TargetFramework`ának, hogy a Visual Studio Code sikeresen elindítsa a programot.
 
    - **Node.js**
-     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a ***&lt;saját modul neve&gt;*** mappájába, majd futtassa a következő parancsot a csomópont-csomagok telepítéséhez.
+     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a ***&lt;a modul neve&gt;*** mappába, majd futtassa a következő parancsot a csomópont-csomagok telepítéséhez.
 
        ```cmd
        npm install
        ```
 
-     - Nyissa meg `app.js` a fájlt, és adjon hozzá egy töréspontot.
+     - Nyissa meg `app.js` fájlt, és adjon hozzá egy töréspontot.
 
-     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés**lehetőséget. Válassza ki a hibakeresési konfigurációt   ***&lt;a modul&gt; neve* helyi hibakeresés (node. js)** a legördülő listából.
+     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés**lehetőséget. Válassza ki a hibakeresési konfigurációt,  ***&lt;a modul neve&gt;* helyi hibakeresés (node. js)** a legördülő listából.
    - **Java**
-     - Nyissa meg `App.java` a fájlt, és adjon hozzá egy töréspontot.
+     - Nyissa meg `App.java` fájlt, és adjon hozzá egy töréspontot.
 
-     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés**lehetőséget. Válassza ki a hibakeresési konfigurációt  ***&lt;a modul neve&gt;* helyi hibakeresés (Java)** listából a legördülő listából.
+     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés**lehetőséget. Válassza ki a hibakeresési konfigurációt,  ***&lt;a modul neve&gt;* helyi hibakeresés (Java)** lehetőséget a legördülő listából.
 
 1. A hibakeresési munkamenet elindításához kattintson a **hibakeresés indítása** elemre, vagy nyomja le az **F5** billentyűt.
 
@@ -191,13 +193,13 @@ A szimulátor beállításához és elindításához futtassa a következő **pa
     ```
 
    > [!NOTE]
-   > Ha Windows rendszert használ, győződjön meg róla, hogy a Visual Studio Code integrált termináljának rendszerhéja **git bash** vagy **WSL bash**. A `curl` parancsot nem futtathatja powershellből vagy parancssorból.
+   > Ha Windows rendszert használ, győződjön meg róla, hogy a Visual Studio Code integrált termináljának rendszerhéja **git bash** vagy **WSL bash**. A `curl` parancs nem futtatható PowerShellből vagy parancssorból.
    > [!TIP]
    > Is [PostMan](https://www.getpostman.com/) vagy más API-eszközök helyett keresztül üzenetek küldéséhez `curl`.
 
 1. A Visual Studio Code hibakeresés nézetében a változók a bal oldali panelen jelennek meg.
 
-1. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra, vagy nyomja le a **SHIFT + F5**billentyűkombinációt, majd futtassa **Azure IoT Edge: Állítsa le IoT Edge** szimulátort a parancs palettáján a szimulátor leállításához és a karbantartáshoz.
+1. A hibakeresési munkamenet leállításához kattintson a Leállítás gombra, vagy nyomja le a **SHIFT + F5**billentyűkombinációt, majd futtassa Azure IoT Edge: a parancs paletta leállításához állítsa le a **IoT Edge szimulátort** , és törölje a szimulátort.
 
 ## <a name="debug-in-attach-mode-with-iot-edge-simulator-c-nodejs-java-azure-functions"></a>Hibakeresés csatolt módban IoT Edge szimulátorral (C#, Node. js, Java, Azure functions)
 
@@ -222,24 +224,24 @@ A fejlesztői gépen elindíthat egy IoT Edge szimulátort a IoT Edge biztonság
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Tároló létrehozása és futtatása a hibakereséshez és a hibakereséshez csatolási módban
 
-1. Nyissa meg a modul`Program.cs`fájlját `App.java`(, `<your module name>.cs` `app.js`, vagy), és adjon hozzá egy töréspontot.
+1. Nyissa meg a modul fájlját (`Program.cs`, `app.js`, `App.java`vagy `<your module name>.cs`), és adjon hozzá egy töréspontot.
 
-1. A Visual Studio Code Explorer nézetben kattintson a jobb gombbal a megoldásra, majd válassza az `deployment.debug.template.json` **IoT Edge megoldás létrehozása és futtatása szimulátorban**lehetőséget. Megtekintheti az összes modul-tároló naplóját ugyanabban az ablakban. A tároló állapotának megtekintéséhez a Docker-nézetet is használhatja.
+1. A Visual Studio Code Explorer nézetben kattintson a jobb gombbal a megoldás `deployment.debug.template.json` fájljára, majd válassza a **IoT Edge megoldás létrehozása és futtatása szimulátorban**lehetőséget. Megtekintheti az összes modul-tároló naplóját ugyanabban az ablakban. A tároló állapotának megtekintéséhez a Docker-nézetet is használhatja.
 
    ![Változók megtekintése](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló  ***&lt;a modul neve&gt;* távoli hibakereséshez**
+1. Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési lehetőség nevének hasonlónak kell lennie ahhoz,  ***&lt;a modul neve&gt;* távoli hibakeresés**
 
 1. Válassza a **hibakeresés elindítása** vagy az **F5**billentyűt. Válassza ki a csatolni kívánt folyamatot.
 
 1. A Visual Studio Code hibakeresés nézetében a változók a bal oldali panelen jelennek meg.
 
-1. A hibakeresési munkamenet leállításához először válassza a Leállítás gombot, vagy nyomja le a **SHIFT + F5**billentyűkombinációt, majd válassza **a Azure IoT Edge: IoT Edge szimulátor** leállítása a parancs palettáján.
+1. A hibakeresési munkamenet leállításához először válassza a Leállítás gombot, vagy nyomja le a **SHIFT + F5**billentyűkombinációt, majd válassza a **Azure IoT Edge: IoT Edge Simulator leállítása** a parancssorból lehetőséget.
 
 > [!NOTE]
 > Az előző példa bemutatja, hogyan lehet hibakeresést végezni a tárolók IoT Edge moduljaiban. Hozzá lett adva a portok a modul tárolójának `createOptions` beállításaihoz. A modulok hibakeresésének befejezése után javasoljuk, hogy távolítsa el ezeket a kitett portokat az éles használatra kész IoT Edge modulokhoz.
 >
-> A (z) C#rendszerben Azure functions írt modulok esetében ez a példa a hibakeresési verzióján `Dockerfile.amd64.debug`alapul, amely magában foglalja a .net Core parancssori hibakeresőt (VSDBG) a tároló rendszerképében a létrehozás során. A C# modulok hibakeresése után javasoljuk, hogy közvetlenül a Docker VSDBG nélkül használja az éles használatra kész IoT Edge modulokhoz.
+> A (z) C#rendszerben Azure functions írt modulok esetében ez a példa a `Dockerfile.amd64.debug`hibakeresési verziójára épül, amely magában foglalja a .net Core parancssori hibakeresőt (VSDBG) a tároló rendszerképében a létrehozás során. A C# modulok hibakeresése után javasoljuk, hogy közvetlenül a Docker VSDBG nélkül használja az éles használatra kész IoT Edge modulokhoz.
 
 ## <a name="debug-a-module-with-the-iot-edge-runtime"></a>Modul hibakeresése a IoT Edge futtatókörnyezettel
 
@@ -249,14 +251,14 @@ Ha ezt a metódust használó modulok hibakeresését végzi, a modulok a IoT Ed
 
 - Állítsa be IoT Edge eszközét, hozza létre a IoT Edge modul (oka) t a **. debug** Docker, majd telepítse a IoT Edge eszközre.
 - Tegye elérhetővé a modul IP-címét és portját, hogy a hibakereső csatolható legyen.
-- Frissítse az `launch.json` alkalmazást, hogy a Visual Studio Code képes legyen a távoli gépen lévő tárolóban található folyamathoz csatolni. Ez a fájl `.vscode` a munkaterület mappában található, és minden alkalommal frissül, amikor új modult ad hozzá, amely támogatja a hibakeresést.
+- Frissítse a `launch.json`t, hogy a Visual Studio Code képes legyen a távoli gépen lévő tárolóban lévő folyamathoz csatolni. Ez a fájl a munkaterület `.vscode` mappájában található, és minden alkalommal frissül, amikor új modult ad hozzá, amely támogatja a hibakeresést.
 
 ### <a name="build-and-deploy-your-module-to-the-iot-edge-device"></a>A modul felépítése és üzembe helyezése a IoT Edge eszközön
 
 1. A Visual Studio Code-ban nyissa meg a `deployment.debug.template.json` fájlt, amely a megfelelő `createOptions` értékekkel rendelkező modul-lemezképek hibakeresési verzióját tartalmazza.
 
 1. Ha a modult a Pythonban fejleszti, kövesse az alábbi lépéseket a továbblépés előtt:
-   - Nyissa meg `main.py` a fájlt, és adja hozzá ezt a kódot az importálás szakasz után:
+   - Nyissa meg `main.py` fájlt, és adja hozzá ezt a kódot az importálás szakasz után:
 
       ```python
       import ptvsd
@@ -269,7 +271,7 @@ Ha ezt a metódust használó modulok hibakeresését végzi, a modulok a IoT Ed
       ptvsd.break_into_debugger()
       ```
 
-     Ha például a függvényt szeretné lekérdezni `receive_message_listener` , a kódot a lent látható módon kell beszúrnia:
+     Ha például az `receive_message_listener` függvényt szeretné lekérdezni, a kódot a lent látható módon kell beszúrnia:
 
       ```python
       def receive_message_listener(client):
@@ -288,9 +290,9 @@ Ha ezt a metódust használó modulok hibakeresését végzi, a modulok a IoT Ed
       ```
 
 1. A Visual Studio Code parancs palettáján:
-   1. Futtassa az Azure IoT Edge **parancsot: IoT Edge megoldás**létrehozása és leküldése.
+   1. Futtassa a **Azure IoT Edge parancsot: IoT Edge-megoldás létrehozása és leküldése**.
 
-   1. Válassza ki `deployment.debug.template.json` a megoldáshoz tartozó fájlt.
+   1. Válassza ki a megoldás `deployment.debug.template.json`-fájlját.
 
 1. A Visual Studio Code Explorer nézet **Azure IoT hub eszközök** szakaszában:
    1. Kattintson a jobb gombbal egy IoT Edge eszköz AZONOSÍTÓra, majd válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
@@ -298,52 +300,52 @@ Ha ezt a metódust használó modulok hibakeresését végzi, a modulok a IoT Ed
       > [!TIP]
       > Annak ellenőrzéséhez, hogy a kiválasztott eszköz egy IoT Edge eszköz-e, válassza ki a modulok listájának kibontásához és a **$edgeHub** és a **$edgeAgent**meglétének ellenőrzéséhez. Minden IoT Edge eszköz tartalmazza ezt a két modult.
 
-   1. Navigáljon a megoldás **konfigurációs** mappájához, válassza ki `deployment.debug.amd64.json` a fájlt, majd válassza az **Edge központi telepítési jegyzék kiválasztása**lehetőséget.
+   1. Navigáljon a megoldás **konfigurációs** mappájához, válassza ki a `deployment.debug.amd64.json` fájlt, majd válassza az **Edge központi telepítési jegyzék kiválasztása**lehetőséget.
 
 A központi telepítés sikeresen létrejött a központi telepítési AZONOSÍTÓval az integrált terminálon.
 
-A tároló állapotát úgy tekintheti meg, hogy `docker ps` a terminálon futtatja a parancsot. Ha a Visual Studio Code és a IoT Edge Runtime ugyanazon a gépen fut, akkor a Visual Studio Code Docker nézetben is megtekintheti az állapotot.
+A tároló állapotát úgy tekintheti meg, ha a terminálon a `docker ps` parancsot futtatja. Ha a Visual Studio Code és a IoT Edge Runtime ugyanazon a gépen fut, akkor a Visual Studio Code Docker nézetben is megtekintheti az állapotot.
 
 ### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>Tegye elérhetővé a hibakereső moduljának IP-címét és portját
 
-Ezt a szakaszt kihagyhatja, ha a modulok ugyanazon a gépen futnak, mint a Visual Studio Code, mivel a localhost használatával csatlakozik a tárolóhoz, és már rendelkezik a megfelelő portbeállítások a **. debug** Docker, a modul tárolójában `createOptions` beállítások és `launch.json` fájl. Ha a modulok és a Visual Studio Code különálló gépeken fut, kövesse a fejlesztői nyelv lépéseit.
+Ezt a szakaszt kihagyhatja, ha a modulok ugyanazon a gépen futnak, mint a Visual Studio Code, mivel a localhost használatával csatlakozik a tárolóhoz, és már rendelkezik a megfelelő portbeállítások a (z **). debug** Docker, a modul tárolójában `createOptions` beállítások és `launch.json` fájl. Ha a modulok és a Visual Studio Code különálló gépeken fut, kövesse a fejlesztői nyelv lépéseit.
 
 - **C#, beleértve a Azure Functions**
 
-  [Konfigurálja az SSH-csatornát a fejlesztői gépen, és IoT Edge eszközön](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) , `launch.json` majd szerkessze a csatolni kívánt fájlt.
+  [Konfigurálja az SSH-csatornát a fejlesztői gépen, és IoT Edge eszközön](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes) , majd szerkessze `launch.json` fájlt a csatoláshoz.
 
 - **Node.js**
 
-  - Ellenőrizze, hogy fut-e a számítógép modulja, és készen áll-e a Hibakeresők csatolására, és hogy az 9229-es port külsőleg elérhető-e. Ezt a hibakereső gép megnyitásával `http://<target-machine-IP>:9229/json` ellenőrizheti. Ennek az URL-címnek meg kell jelenítenie a dehibakereső Node. js-modul információit.
+  - Ellenőrizze, hogy fut-e a számítógép modulja, és készen áll-e a Hibakeresők csatolására, és hogy az 9229-es port külsőleg elérhető-e. Ezt úgy ellenőrizheti, ha megnyitja `http://<target-machine-IP>:9229/json` a hibakereső gépen. Ennek az URL-címnek meg kell jelenítenie a dehibakereső Node. js-modul információit.
   
-  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot `launch.json` , majd szerkessze a  ***&lt;modul neve&gt;* távoli hibakeresés (node. js)** profil (vagy ***&lt;a modul neve) értékének megadásával. Távoli hibakeresés (node. js a Windows-tárolóban) profil, ha a modul Windows-tárolóként fut, a számítógép IP-címe. &gt;***
+  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, majd szerkessze `launch.json` úgy, hogy az  ***&lt;a modul neve&gt;* távoli hibakeresés (node. js)** profil (vagy  ***&lt;a modul neve&gt;* távoli hibakeresés (node. js a Windows-tárolóban)** profilt, ha a modul Windows-tárolóként fut, a hibakereső gép IP-címe.
 
 - **Java**
 
-  - Hozzon létre egy SSH-alagutat a számítógépnek a futtatásával `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`való hibakereséshez.
+  - Hozzon létre egy SSH-alagutat a számítógépnek a `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`futtatásával.
   
-  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, és szerkessze a  ***&lt;modul neve&gt;* távoli hibakeresési (Java)** profilt `launch.json` úgy, hogy az a célszámítógépen is csatolható legyen. A Java és a Visual `launch.json` Studio Code használatával kapcsolatos további tudnivalókért tekintse meg a [hibakereső konfigurálásának](https://code.visualstudio.com/docs/java/java-debugging#_configuration)szakaszát.
+  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, és szerkessze a  ***&lt;a modul neve&gt;* távoli hibakeresési (Java)** profilban a `launch.json`, hogy csatolható legyen a célszámítógépen. Ha többet szeretne megtudni a Visual Studio Code-ban található `launch.json` szerkesztéséről és a Java hibakereséséről, tekintse meg a [hibakereső konfigurálásának](https://code.visualstudio.com/docs/java/java-debugging#_configuration)szakaszát.
 
 - **Python**
 
   - Győződjön meg arról, hogy a számítógép 5678-es portja nyitva van és elérhető a hibakereséshez.
 
-  - A korábban beszúrt kódban `ptvsd.enable_attach(('0.0.0.0', 5678))` módosítsa a **0.0.0.0** -et `main.py`a hibakereső számítógép IP-címére. Hozza létre, küldje el és telepítse újra IoT Edge modulját.
+  - A `main.py`ba korábban beszúrt kódban `ptvsd.enable_attach(('0.0.0.0', 5678))` a kipróbálni kívánt gép IP-címére módosítsa a **0.0.0.0** -et. Hozza létre, küldje el és telepítse újra IoT Edge modulját.
 
-  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot `launch.json` , majd szerkessze úgy, `host` hogy a Remote  ***&lt;&gt;* debug (Python)** profil értéke a célszámítógép IP-címét használja. a `localhost`helyett.
+  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, majd szerkessze `launch.json` úgy, hogy a  ***modul neve&gt;* Remote debug (Python) profil&lt;** `host` értéke `localhost`helyett a célszámítógép IP-címét használja.
 
 ### <a name="debug-your-module"></a>A modul hibakeresése
 
-1. A Visual Studio Code hibakeresés nézetében válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló  ***&lt;a modul neve&gt;* távoli hibakereséshez**
+1. A Visual Studio Code hibakeresés nézetében válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési lehetőség nevének hasonlónak kell lennie ahhoz,  ***&lt;a modul neve&gt;* távoli hibakeresés**
 
 1. Nyissa meg a modul-fájlt a fejlesztési nyelvhez, és adjon hozzá egy töréspontot:
 
-   - **Azure-függvényC#()** : Adja hozzá a töréspontot a `<your module name>.cs`fájlhoz.
-   - **C#** : Adja hozzá a töréspontot a `Program.cs`fájlhoz.
-   - **Node.js**: Adja hozzá a töréspontot a `app.js`fájlhoz.
-   - **Java**: Adja hozzá a töréspontot a `App.java`fájlhoz.
-   - **Python**: Adja hozzá a töréspontot a `main.py`fájlhoz a visszahívási metódusban `ptvsd.break_into_debugger()` , ahol hozzáadta a sort.
-   - **C**: Adja hozzá a töréspontot a `main.c`fájlhoz.
+   - **Azure Function (C#)** : adja hozzá a töréspontot a fájlhoz `<your module name>.cs`.
+   - **C#** : Adja hozzá a töréspontot a fájlhoz `Program.cs`.
+   - **Node. js**: adja hozzá a töréspontot a fájlhoz `app.js`.
+   - **Java**: adja hozzá a töréspontot a fájlhoz `App.java`.
+   - **Python**: adja hozzá a töréspontot a fájlhoz `main.py`a visszahívási metódusban, ahol a `ptvsd.break_into_debugger()` sort adta hozzá.
+   - **C**: adja hozzá a töréspontot a fájlhoz `main.c`.
 
 1. Válassza a **hibakeresés indítása** lehetőséget, vagy válassza az **F5 billentyűt**. Válassza ki a csatolni kívánt folyamatot.
 
@@ -358,7 +360,7 @@ Az SSH-kapcsolatok támogatásához a Docker és a Moby Engine legújabb változ
 
 További információért és részletes utasításokért tekintse meg ezt a [IoT fejlesztői blogbejegyzését](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A modul létrehozása után megtudhatja, hogyan [helyezhet üzembe Azure IoT Edge modulokat a Visual Studio Code-ból](how-to-deploy-modules-vscode.md).
 

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166253"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279220"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kibocsátási megjegyzések
 
@@ -80,6 +80,7 @@ A következő funkciók engedélyezve vannak a felügyelt példány üzembe hely
 
 - Az **augusztus 2019** -ben foglalt adatbázisok teljes mértékben támogatottak a felügyelt példányokban.
 - **Tot 2019** – a üzletileg kritikus rétegből általános célú rétegbe való beépített időponthoz tartozó adatbázis-visszaállítás nem fog sikerülni, ha a forrásadatbázis memóriában tárolt OLTP objektumokat tartalmaz.
+- **Tot 2019** – a **Database mail** funkciót külső (nem Azure-beli) levelezési kiszolgálókkal is használhatja biztonságos kapcsolatok használatával.
 - **November 2019** – az adatbázis-konzisztencia ellenőrzése `DBCC CHECKDB` az Azure Blob Storage visszaállítási adatbázisának használatával.
 
 ## <a name="updates"></a>Frissítések

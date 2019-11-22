@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazás-hozzáférési panel böngésző bővítményének telepítése – Azure | Microsoft Docs
+title: Az alkalmazás-hozzáférési panel böngésző bővítményének telepítése – Azure AD
 description: A hozzáférési panel böngésző bővítményének telepítésekor előforduló gyakori hibák elhárítása.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/04/2018
 ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 580207bb10680e84cfda7d4b1874f2b460602973
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082165"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275860"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel böngésző bővítményének telepítése
 

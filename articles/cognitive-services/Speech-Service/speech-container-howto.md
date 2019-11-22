@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: b83ece803a72fe6132c1ba98414e95897a0fcc90
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132603"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304879"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása
 
@@ -155,10 +155,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>Beszéd – szöveg területi beállítások
 
-A `latest` kivételével minden címke a következő formátumban van, ahol a `<culture>` a területi tárolót jelzi:
+Az `latest` kivételével az összes címke a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
 A következő címke egy példa a formátumra:
@@ -197,10 +197,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>Szöveg – beszéd területi beállítások
 
-A `latest` kivételével az összes címke a következő formátumban van, ahol a `<culture>` a területi beállítást jelzi, a `<voice>` pedig a tároló hangját jelzi:
+Az `latest` kivételével az összes címke a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
 A következő címke egy példa a formátumra:
@@ -371,7 +371,7 @@ Ez a parancs:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
-| Tároló | Végpont | Protokoll |
+| Tároló | Végpont | Protocol |
 |--|--|--|
 | Diktálás | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
 | Custom Speech – szöveg | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
@@ -433,7 +433,7 @@ Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telep
 > [!IMPORTANT]
 >  Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem (például a lemezkép vagy az elemezni kívánt szöveget) a vásárlói adatokat küldeni a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](speech-container-configuration.md) áttekintése konfigurációs beállításokhoz
 * Ismerje meg, hogyan [használhatja a Speech Service-tárolókat a Kubernetes és a Helm használatával](speech-container-howto-on-premises.md)

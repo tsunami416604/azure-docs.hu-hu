@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b6efdc75c15e9686728236f82fea8794f3782bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716482"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276639"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Metrikák nyomon követése és modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -238,7 +238,7 @@ A következő ábra azt mutatja be, hogy a MLflow üzembe helyezési API-val a m
 
 ### <a name="log-your-model"></a>A modell naplózása
 
-A telepítés előtt győződjön meg róla, hogy a modell el lett mentve, hogy hivatkozhat rá, és annak elérési útját a központi telepítéshez. A betanítási szkriptben a következő [mlflow. sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) metódushoz hasonló kód szükséges, amely a modellt a megadott kimenet könyvtárba menti. 
+A telepítés előtt győződjön meg róla, hogy a modell el lett mentve, hogy hivatkozhat rá, és annak elérési útját a központi telepítéshez. A betanítási szkriptben a következő [mlflow. sklearn. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) metódushoz hasonló kódot kell megadni, amely a modellt a megadott kimeneti könyvtárba menti. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -269,7 +269,7 @@ model_save_path = 'model'
 
 A `mlflow.azureml.build_image()` függvény létrehoz egy Docker-rendszerképet a mentett modellből egy keretrendszer-kompatibilis módon. Automatikusan létrehozza a keretrendszer-specifikus következtetési burkoló kódját, és megadja a csomagok függőségeit. Adja meg a modell elérési útját, a munkaterületet, a futtatási azonosítót és az egyéb paramétereket.
 
-A következő kód egy Docker-rendszerképet hoz létre a *futtatások:/< Run. id >/Model* model_uri útvonalként egy Scikit-Learn kísérlethez.
+A következő kód egy Docker-rendszerképet hoz létre a *futtatások:/< Run. id >/Model* egy Scikit-learn kísérlet model_urii elérési útjaként.
 
 ```python
 import mlflow.azureml
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Ezután telepítse a lemezképet Azure Machine Learning SDK [deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) metódusával. 
+Ezt követően telepítse a lemezképet Azure Machine Learning SDK [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) metódusának használatával. 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-Ezután telepítse a lemezképet Azure Machine Learning SDK [deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) metódusával. 
+Ezt követően telepítse a lemezképet Azure Machine Learning SDK [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) metódusának használatával. 
 
 ```python
 # Webservice creation using single command
@@ -389,10 +389,10 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet.
 
 
-## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
+## <a name="example-notebooks"></a>Példa notebookok
 
 Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://aka.ms/azureml-mlflow-examples) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * Figyelje az [adateltolódáshoz](how-to-monitor-data-drift.md)használt üzemi modelleket.

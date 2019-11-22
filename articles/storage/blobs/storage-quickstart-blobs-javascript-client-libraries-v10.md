@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – blob létrehozása az Azure Storage-ban a JavaScript és a HTML használatával a böngészőben
-description: Megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat a JavaScript használatával egy HTML-oldalon.
+title: 'Gyors útmutató: Azure Blob Storage a JavaScript v10-hez a böngészőben'
+description: A HTML-lapokon a JavaScript v10 SDK használatával megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat.
 services: storage
 author: mhopkins-msft
 ms.custom: mvc
@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132004"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270193"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -356,7 +356,7 @@ Ezen a ponton elindíthatja a lapot, és kísérletet tehet a blob Storage műk�
 
 A rövid útmutató során létrehozott erőforrások törléséhez nyissa meg a [Azure Portal](https://portal.azure.com) , és törölje az előfeltételek szakaszban létrehozott erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű webhelyet, amely hozzáfér a blob Storage-hoz a böngésző alapú JavaScriptből. Ha szeretné megtudni, hogyan üzemeltetheti a webhelyeket a blob Storage szolgáltatásban, folytassa a következő oktatóanyaggal:
 

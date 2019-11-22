@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669099"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304736"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása a Azure App Serviceban
 <a name="Overview"></a>
 
-Amikor üzembe helyezi a webalkalmazást, a webalkalmazást a Linuxon, a mobil háttérben vagy az API-alkalmazáson [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714), az alapértelmezett üzemi tárolóhely helyett külön üzembe helyezési pontot használhat a **standard**, **prémium**vagy elkülönített verzióban történő futtatáskor.App Service csomag szintje. Az üzembe helyezési pontok a saját állomásneveket tartalmazó élő alkalmazások. Az alkalmazás tartalmának és konfigurációjának elemei két üzembe helyezési pont között, beleértve az üzemi tárolóhelyet is. 
+Amikor üzembe helyezi a webalkalmazást, a webalkalmazást a Linuxon, a mobil háttérben vagy az API-alkalmazáson [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714), az alapértelmezett üzemi tárolóhely helyett külön üzembe helyezési pontot használhat a **standard**, **prémium**vagy **elkülönített** app Service csomag szintjén. Az üzembe helyezési pontok a saját állomásneveket tartalmazó élő alkalmazások. Az alkalmazás tartalmának és konfigurációjának elemei két üzembe helyezési pont között, beleértve az üzemi tárolóhelyet is. 
 
 Az alkalmazás nem éles tárolóhelyre való üzembe helyezése a következő előnyökkel jár:
 
@@ -249,6 +250,10 @@ A beállítás mentése után a rendszer véletlenszerűen továbbítja az ügyf
 
 Miután egy ügyfél automatikusan átirányítja egy adott tárolóhelyre, az adott ügyfél-munkamenet élettartamára "rögzítve" lesz az adott tárolóhelyre. Az ügyfél böngészőjében megtekintheti, hogy a munkamenet melyik bővítőhelyre van rögzítve, ha a HTTP-fejlécekben megtekinti a `x-ms-routing-name` cookie-t. Az "átmeneti" tárolóhelyre átirányított kérelem a cookie `x-ms-routing-name=staging`. Az éles tárolóhelyre átirányított kérelem a cookie `x-ms-routing-name=self`.
 
+   > [!NOTE]
+   > Az Azure Portal mellett az Azure CLI [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) parancsával is beállíthatja a CI/CD-eszközök, például a DevOps-folyamatok vagy más Automation-rendszerek útválasztási százalékos arányát.
+   > 
+
 ### <a name="route-production-traffic-manually"></a>Éles forgalom manuális irányítása
 
 Az automatikus forgalmi útválasztás mellett App Service a kérelmeket egy adott tárolóhelyre irányíthatja. Ez akkor hasznos, ha azt szeretné, hogy a felhasználók bejelentkezhetnek a bétaverzióba, vagy letiltsák azokat. A termelési forgalom manuális átirányításához használja a `x-ms-routing-name` Query paramétert.
@@ -426,5 +431,5 @@ Ha bármilyen hiba történik egy [tárolóhely cseréjekor](#AboutConfiguration
 
 - A tárolóhelyek cseréje után az alkalmazás váratlan újraindítást tapasztalhat. Ennek az az oka, hogy a cserét követően az állomásnév-kötési konfiguráció elkerül a szinkronizálásból, ami önmagában nem okozza az újraindítást. Előfordulhat azonban, hogy bizonyos mögöttes tárolási események (például a tárolási kötetek feladatátvétele) észlelik ezeket az eltéréseket, és kényszerítik az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa a [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazás beállítást](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyen*. Ez az Alkalmazásbeállítás azonban *nem* működik Windows COMMUNICATION Foundation (WCF) alkalmazásokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Nem éles tárolóhelyekhez való hozzáférés letiltása](app-service-ip-restrictions.md)

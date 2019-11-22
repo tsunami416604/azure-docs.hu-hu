@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v2 a JavaScripthez'
-description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Node. js v2-hez, és töltsön fel egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). A Node. js v2-hez készült Azure Storage ügyféloldali kódtára segítségével feltöltheti a blobokat, letöltheti a blobokat, és listázhatja a tárolóban lévő blobokat.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825348"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269685"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v2 a JavaScripthez
 
@@ -88,7 +88,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 ```
 
-A *dotenv* modul tölti be a környezeti változókat, amikor az alkalmazást hibakeresési céllal helyileg futtatja. Az értékek egy *.env* nevű fájlban vannak meghatározva. A modul innen tölti be őket az aktuális végrehajtási környezetbe. Éles környezetben a kiszolgáló konfigurációja biztosítja ezeket az értékeket, ezért ezt a kód csak akkor lesz futtatva, ha a szkript nem „éles” környezetben fut.
+A *dotenv* modul betölti a környezeti változókat, ha az alkalmazás helyileg fut hibakeresés céljából. Az értékek egy *.env* fájlban vannak meghatározva. A modul innen tölti be őket az aktuális végrehajtási környezetbe. Éles környezetben a kiszolgáló konfigurációja biztosítja ezeket az értékeket, ezért ezt a kód csak akkor lesz futtatva, ha a szkript nem „éles” környezetben fut.
 
 ```javascript
 const path = require('path');
@@ -341,7 +341,7 @@ console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A kódminta végén a tárfiókba írt összes adat automatikusan törölve lesz. 
+A tárfiókba írt összes adat automatikusan törlődik a kódminta végén. 
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Blobokkal rendelkező Node.js-alkalmazások fejlesztéséhez használható forrásanyagok
 
@@ -356,7 +356,7 @@ Blob Storage-tárolókat alkalmazó Node.js-alkalmazások fejlesztéséhez tekin
 - A Node.js ügyféloldali kódtárral kapcsolatos további információért lásd [a Node.js API-referenciáját](https://docs.microsoft.com/javascript/api/overview/azure/storage).
 - Tekintse át a Node.js ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan tölthet fel egy fájlt egy helyi lemez és az Azure Blob Storage között a Node. js használatával. Ha bővebb információra van szüksége a Blobtárolók használatával kapcsolatban, lépjen tovább a GitHub adattárára.
 

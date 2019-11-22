@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: d3869438f299383a0b3096babbd4874c24f08b3a
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031430"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286590"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -33,7 +33,7 @@ Az elnevezett entitások felismerése lehetővé teszi a különböző entitáso
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Elnevezett entitás-felismerés v3 nyilvános előzetes verziója
 
-Az [elnevezett entitások felismerésének következő verziója]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) már elérhető a nyilvános előzetes verzióban. Frissítéseket biztosít mind az entitások, mind a nevesített entitások felismeréséhez. 
+Az [elnevezett entitások felismerésének következő verziója](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) már elérhető a nyilvános előzetes verzióban. Frissítéseket biztosít mind az entitások, mind a nevesített entitások felismeréséhez.
 
 :::row:::
     :::column span="":::
@@ -116,7 +116,7 @@ Entitás összekapcsolása
 | DateTime      | Time          | "08:00", "8:00"  |
 | DateTime      | Dátumtartomány     | „May 2nd to May 5th”    |
 | DateTime      | Időtartomány     | „6pm to 7pm”     |
-| DateTime      | Időtartam      | „1 minute and 45 seconds”   |
+| DateTime      | Duration      | „1 minute and 45 seconds”   |
 | DateTime      | Beállítás           | „every Tuesday”     |
 | URL-cím           | N/A\*         | "https:\//www.bing.com"    |
 | E-mail         | N/A\*         | „support@contoso.com” |

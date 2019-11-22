@@ -1,5 +1,5 @@
 ---
-title: Csatolt bejelentkezés az Azure AD-alkalmazásokhoz – Microsoft Identity platform | Microsoft Docs
+title: Csatolt bejelentkezés az Azure AD-alkalmazásokhoz – Microsoft Identity platform
 description: Társított egyszeri bejelentkezés (SSO) konfigurálása az Azure AD vállalati alkalmazásokhoz a Microsoft Identity platformon (Azure AD)
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1e26a3c7d284a60b830f6f66cdcecef97db4d6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834617"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274177"
 ---
 # <a name="configure-linked-sign-on"></a>Csatolt bejelentkezés konfigurálása
 
@@ -31,7 +31,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-1. Navigáljon **Azure Active Directory** > **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
+1. Navigáljon **Azure Active Directory** > **vállalati alkalmazások**elemre. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
 
 1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
@@ -47,7 +47,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
 - [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](configure-automatic-user-provisioning-portal.md)

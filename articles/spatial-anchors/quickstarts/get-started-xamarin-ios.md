@@ -1,21 +1,21 @@
 ---
-title: Rövid útmutató – Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal | Microsoft Docs
+title: 'Gyors útmutató: Xamarin iOS-alkalmazás létrehozása'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy iOS-alkalmazást a Xamarin térbeli horgonyok használatával.
 author: craigktreasure
-manager: virivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ef25cf07326220be36ce8f67267428ffe1ac0728
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d2e1612804c78e3436b776cdffea7e19bc2925fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931643"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276993"
 ---
-# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
+# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rövid útmutató: Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
 Ez a rövid útmutató ismerteti, hogyan hozhat létre iOS-alkalmazást az [Azure térbeli](../overview.md)Xamarin használatával. Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy olyan iOS-alkalmazással fog rendelkezni, amely képes a térbeli horgonyok mentésére és visszahívására.
 
@@ -42,17 +42,17 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Megnyitás `Xamarin/SampleXamarin.sln` a Visual Studióban.
+Nyissa meg `Xamarin/SampleXamarin.sln` a Visual Studióban.
 
 ## <a name="configure-account-identifier-and-key"></a>Fiók azonosítójának és kulcsának konfigurálása
 
 A következő lépés az alkalmazás konfigurálása a fiók azonosítójának és a fiók kulcsának használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
-Nyissa meg `Xamarin/SampleXamarin.Common/AccountDetails.cs`a t.
+Nyissa meg `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a `Set me`t a fiók azonosítójával.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Az alkalmazás üzembe helyezése iOS-eszközön
 
@@ -62,17 +62,17 @@ Kapcsolja be az iOS-eszközt, jelentkezzen be, és csatlakoztassa a számítóg�
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Az alkalmazás üzembe helyezéséhez és elindításához válassza a **Futtatás** > **indításkor hibakeresés nélkül** lehetőséget.
+Az alkalmazás üzembe helyezése és elindítása előtt válassza a **futtatás** > **Indítás hibakeresés nélkül** lehetőséget.
 
-Az alkalmazásban válassza az alapszintű lehetőséget a bemutató futtatásához, és kövesse az utasításokat a horgony elhelyezéséhez és felidézéséhez.
+Az alkalmazásban válassza az **alapszintű** lehetőséget a bemutató futtatásához, és kövesse az utasításokat a horgony elhelyezéséhez és felidézéséhez.
 
-> ![Képernyőfelvétel 1](./media/get-started-xamarin-ios/screenshot-1.jpg)
+> ![képernyőkép 1](./media/get-started-xamarin-ios/screenshot-1.jpg)
 > ![képernyőkép 2](./media/get-started-xamarin-ios/screenshot-2.jpg)
-> képernyőkép![3](./media/get-started-xamarin-ios/screenshot-3.jpg)
+> ![képernyőkép 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Oktatóanyag: térbeli horgonyok megosztása az eszközök között](../tutorials/tutorial-share-anchors-across-devices.md)

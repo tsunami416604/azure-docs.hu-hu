@@ -1,5 +1,5 @@
 ---
-title: Az App proxy Kerberos által korlátozott delegálási konfigurációinak hibáinak megoldása | Microsoft Docs
+title: Kerberos által korlátozott delegálás – alkalmazásproxy
 description: A Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381520"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275681"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos általi korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -56,11 +56,11 @@ A legjobb hely a elhelyezése az összekötők a lehető a tárolókra. Beágyaz
 
 Mi látható KCD probléma? Nincsenek számos gyakori megjelölések KCD SSO nem működik. Az első jelentkezik a probléma jelennek meg a böngészőben.
 
-![Példa: Helytelen KCD konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Példa: helytelen KCD-konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![Példa: Nem sikerült, mert nem rendelkezik engedéllyel engedélyezési](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![Példa: az engedélyezés a hiányzó engedélyek miatt nem sikerült](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Mindkét rendszerkép ugyanazt a tünetet jeleníti meg: Egyszeri bejelentkezés sikertelen. Az alkalmazás felhasználói hozzáférés megtagadva.
+Mindkét ezeket a lemezképeket a azonos tünet megjelenítése: egyszeri bejelentkezés sikertelen. Az alkalmazás felhasználói hozzáférés megtagadva.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -84,7 +84,7 @@ A külső kommunikáció az ügyfél és az Azure előtér között nincs hatás
 
 Ahogy korábban említettük, a böngésző hibaüzenetek biztosít néhány jó a keresőmotorok arról, hogy miért nem sikerül a dolgokat. Ellenőrizze, hogy jegyezze fel a tevékenység azonosítója és a válaszban szereplő időbélyeget. Ez az információ segít összehasonlíthatja a tényleges eseményekre az Azure Proxy eseménynaplóban viselkedését.
 
-![Példa: Helytelen KCD konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![Példa: helytelen KCD-konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 A megfelelő bejegyzéseket az Eseménynaplóban látható események 13019 vagy 12027 szabályzatként jelenik meg. Keresse meg az összekötő eseménynaplók **alkalmazások és szolgáltatásnaplók** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt;  **Összekötő** &gt; **rendszergazdai**.
 
@@ -168,6 +168,6 @@ Ha még nem lehet a folyamatban, a Microsoft ügyfélszolgálatához a segítsé
 - Az Azure Application Proxy egy Kerberos-jegyet kérelmek egy alkalmazáshoz a kérelem elküldése előtt. Egyes harmadik féltől származó alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások várhatóan a hagyományosabb tárgyalások kerül sor. Az első kérelem szolgáltatás névtelen, amely lehetővé teszi, hogy az alkalmazás számára, hogy a 401-es keresztül támogatja a hitelesítési típusok elhárítását.
 - Többugrásos hitelesítési gyakran olyan forgatókönyvekben használatos, a alkalmazás rétegzett, háttér és kezelőfelület, ahol mindkettő hitelesítő adatokat kér, például az SQL Server Reporting Services. A Többugrásos forgatókönyv konfigurálását lásd: a Kerberos által korlátozott delegálás támogatását ismertető cikk a [több ugrásos forgatókönyvekben történő protokoll-áttérést is szükségessé teheti](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Konfigurálja a Kerberos egy felügyelt tartományon](../../active-directory-domain-services/deploy-kcd.md).

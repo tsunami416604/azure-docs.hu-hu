@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: f39ddc8a3460bc026bdac96c18b5bea4d6ecfc0f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125503"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280403"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ Az első lépések előtt ügyeljen a következőre:
 > [!div class="checklist"]
 >
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [LUIS-alkalmazás létrehozása és végponti kulcs beszerzése](../../../../quickstarts/create-luis.md)
+> * [Language Understanding (LUIS) alkalmazás létrehozása és végponti kulcs beszerzése](../../../../quickstarts/create-luis.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md)
 
@@ -85,6 +85,6 @@ Futtassa a mintát a konzolról vagy az IDE-ben:
 
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

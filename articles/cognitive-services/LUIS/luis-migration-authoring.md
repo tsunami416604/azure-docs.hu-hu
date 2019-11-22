@@ -1,7 +1,7 @@
 ---
-title: Migrate to Azure resource for authoring
+title: Migrálás az Azure-erőforrásba szerzői műveletekhez
 titleSuffix: Azure Cognitive Services
-description: Migrate to an Azure authoring resource key.
+description: Migrálás egy Azure authoring Resource kulcsba.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,99 +11,99 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7721b6c86642ad79cd646c66b1ef578acdca1505
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 44baac5eb4e8887594ba05498901ba664380005f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225515"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280777"
 ---
-# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrate to an Azure resource authoring key
+# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
-Language Understanding (LUIS) authoring authentication changed from an email account to an Azure resource. 
+Language Understanding (LUIS) a létrehozási hitelesítés egy e-mail-fiókból egy Azure-erőforrásra módosult. Noha jelenleg nem szükséges, az Azure-erőforrásra való áttérés a jövőben is érvénybe lép.
 
-## <a name="why-migrate"></a>Why migrate?
+## <a name="why-migrate"></a>Miért érdemes az áttelepítés?
 
-Using an Azure resource for authoring allows you, as the owner of the resource, to control access to authoring. You can create and name authoring resources to manage different groups of authors. 
+Az Azure-erőforrások szerzői műveletekkel való használata lehetővé teszi, hogy az erőforrás tulajdonosaként vezérelje a szerzői műveletek elérését. Létrehozhat és elnevezheti a szerzők különböző csoportjainak kezeléséhez szükséges erőforrásokat. 
 
-For example, if you have 2 types of LUIS apps you are authoring, with different members, you can create two different authoring resources and assign contributors. The Azure authoring resource controls the authorization. 
+Ha például 2 típusú LUIS-alkalmazással rendelkezik, különböző tagokkal, létrehozhat két különböző authoring-erőforrást, és hozzárendelheti a közreműködőket is. Az Azure authoring Resource szabályozza az engedélyt. 
 
 > [!Note]
-> Before migration, co-authors are known as _collaborators_. After migration, the Azure role of _contributor_ is used for the same functionality.
+> Az áttelepítés előtt a közös szerzők neve _közreműködő_. Az áttelepítés után a _közreműködő_ Azure-szerepköre ugyanarra a funkcióra van használatban.
 
-## <a name="what-is-migrating"></a>What is migrating?
+## <a name="what-is-migrating"></a>Mi az áttelepítés?
 
-Migration includes:
+A Migrálás a következőket tartalmazza:
 
-* All users of LUIS, owners and contributors.
-* **All** apps.
-* A **one-way** migration.
+* A LUIS, a tulajdonosok és a közreműködők összes felhasználója.
+* **Minden** alkalmazás.
+* Egy **egyirányú** áttelepítés.
 
-The owner can't choose a subset of apps to migrate and the process isn't reversible. 
+A tulajdonos nem választhat az áttelepítendő alkalmazások egy részhalmazát, és a folyamat nem vonható vissza. 
 
-The migration is not: 
+Az áttelepítés nem: 
 
-* A process that collects collaborators and automatically moves or adds to the Azure authoring resource. You, as the app owner, need to complete this step. This step requires permissions to the appropriate resource.
-* A process to create and assign a prediction runtime resource. If you need a prediction runtime resource, that is [a separate process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) and is unchanged. 
+* Egy folyamat, amely összegyűjti a közreműködőket, és automatikusan áthelyezi vagy hozzáadja az Azure authoring-erőforráshoz. Az alkalmazás tulajdonosaként el kell végeznie ezt a lépést. Ehhez a lépéshez szükséges a megfelelő erőforráshoz való hozzáférés.
+* Az előrejelzési futtatókörnyezet erőforrásának létrehozásának és hozzárendelésének folyamata. Ha előrejelzési futtatókörnyezeti erőforrásra van szüksége, akkor ez [egy külön folyamat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) , és változatlan marad. 
 
-## <a name="how-are-the-apps-migrating"></a>How are the apps migrating?
+## <a name="how-are-the-apps-migrating"></a>Hogyan történik az alkalmazások áttelepítése?
 
-The [LUIS portal](https://www.luis.ai) provides the migration process. 
+A [Luis-portál](https://www.luis.ai) biztosítja az áttelepítési folyamatot. 
 
-You will be asked to migrate if:
+A rendszer a következőt fogja kérni a Migrálás esetén:
 
-* You have apps on the email authentication system for authoring.
-* And you are the app owner. 
+* Az e-mail-hitelesítési rendszeren alkalmazásokat készít a szerzői műveletekhez.
+* Ön pedig Ön az alkalmazás tulajdonosa. 
 
-You can delay the migration process, by canceling out of the window. You are periodically asked to migrate until you migrate or the migration deadline is passed. You can start the migration process from the top navigation bar's lock icon.
+Az áttelepítési folyamatot késleltetve törölheti az ablakot. A rendszer rendszeres időközönként áttelepíti az áttelepítést, vagy átadja az áttelepítési határidőt. Az áttelepítési folyamat elindításához a felső navigációs sáv zárolási ikonja látható.
 
-## <a name="migration-for-the-app-owner"></a>Migration for the app owner
+## <a name="migration-for-the-app-owner"></a>Migrálás az alkalmazás tulajdonosának
 
-### <a name="before-you-migrate"></a>Before you migrate
+### <a name="before-you-migrate"></a>Migrálás előtt
 
-* **Optionally**, backup the apps from the LUIS portal's apps list by exporting each app or use the export [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Optionally**, save each app's collaborator's list. This email list is provided as part of the migration process.
-* **Required**, you need to have an [Azure subscription](https://azure.microsoft.com/free/). A part of the subscription process does require billing information. However, you can use the Free (`F0`) pricing tier when you use LUIS. 
+* A Luis portál alkalmazások listájáról is készíthet biztonsági másolatot az alkalmazásokról az egyes alkalmazások exportálásával vagy az exportálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)használatával.
+* **Szükség**esetén mentse az egyes alkalmazások collaborator's listáját. Az e-mail-lista az áttelepítési folyamat részeként van megadva.
+* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. A LUIS használata esetén azonban használhatja az ingyenes (`F0`) díjszabási szintet. 
 
-**Authoring your LUIS app is free**, indicated by the `F0` tier. Learn [more about pricing tiers](luis-boundaries.md#key-limits).
+A **Luis-alkalmazás készítése ingyenes**, amelyet a `F0`i szinten jelez. [További információ a díjszabási szintekről](luis-boundaries.md#key-limits).
 
-If you do not have an Azure subscription, [sign up](https://azure.microsoft.com/free/). 
+Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microsoft.com/free/). 
 
-### <a name="migration-steps"></a>Migrálási lépések
+### <a name="migration-steps"></a>A migrálás lépései
 
-Follow [these migration steps](luis-migration-authoring-steps.md).
+Kövesse [az alábbi áttelepítési lépéseket](luis-migration-authoring-steps.md).
 
 ### <a name="after-you-migrate"></a>Teendők migrálás után 
 
-After the migration process, all your LUIS apps are now assigned to a single LUIS authoring resource.
+Az áttelepítési folyamat után minden LUIS-alkalmazás hozzá van rendelve egyetlen LUIS authoring-erőforráshoz.
 
-You can create more authoring resources and assign from the **Manage -> Azure resources** page in the _LUIS portal_. 
+A _Luis portálon_létrehozhat több szerzői erőforrást, és hozzárendelheti a **Manage-> Azure-erőforrások** oldaláról. 
 
-You can add contributors to the authoring resource from the _Azure portal_, on the **Access Control (IAM)** page for that resource. See [add contributor access](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) for more information.
+Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműködőket a szerzői erőforráshoz _Azure Portal_. További információért lásd: [közreműködői hozzáférés hozzáadása](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
 
-|Portál|Rendeltetés|
+|Portál|Cél|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Create prediction and authoring resources.<br>* Assign contributors.|
-|[LUIS](https://www.luis.ai)|* Migrate to new authoring resources.<br>* Assign or unassign prediction and authoring resources to apps from **Manage -> Azure resources** page.| 
+|[Azure](https://azure.microsoft.com/free/)|* Hozzon létre előrejelzési és létrehozási erőforrásokat.<br>* Közreműködők kiosztása.|
+|[LUIS](https://www.luis.ai)|* Migrálás az új szerzői erőforrásokra.<br>* A felügyeleti **> Azure-erőforrások** oldaláról kioszthatja vagy kioszthatja az alkalmazásokat az alkalmazások számára.| 
 
-## <a name="migration-for-the-app-contributor"></a>Migration for the app contributor
+## <a name="migration-for-the-app-contributor"></a>Migrálás az alkalmazás közreműködője számára
 
-Every user of LUIS needs to migrate, including collaborators/contributors. 
+A LUIS minden felhasználóját át kell telepíteni, beleértve a közreműködőket és a közreműködőket is. 
 
-### <a name="before-the-app-is-migrated"></a>Before the app is migrated
+### <a name="before-the-app-is-migrated"></a>Az alkalmazás migrálása előtt
 
-You may choose to export an app you are a collaborator on, then import the app back into LUIS. The import process creates a new app with a new app ID, for which you are the owner.
+Dönthet úgy, hogy olyan alkalmazást exportál, amelyhez Ön is közreműködő, majd importálja újra az alkalmazást a LUIS-ba. Az importálási folyamat létrehoz egy új alkalmazást egy új alkalmazás-AZONOSÍTÓval, amelynek Ön a tulajdonosa.
 
-### <a name="after-the-app-is-migrated"></a>After the app is migrated
+### <a name="after-the-app-is-migrated"></a>Az alkalmazás migrálása után
 
-The app owner needs to [add your email to the Azure authoring resource as a collaborator](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+Az alkalmazás tulajdonosának [hozzá kell adnia az e-maileket az Azure authoring-erőforráshoz közreműködőként](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
 
-After the migration process, any apps you own are available on the **My apps** page of the LUIS portal.  
+Az áttelepítési folyamat után az Ön tulajdonában lévő alkalmazások a LUIS portál **saját alkalmazások** lapján érhetők el.  
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-LUIS authoring keys are only visible in the LUIS portal after the migration process is complete. If you create the authoring keys, such as with the LUIS CLI, the user still needs to complete the migration process. 
+A LUIS authoring Keys csak az áttelepítési folyamat befejezése után látható a LUIS-portálon. Ha létrehoz egy szerzői kulcsot, például a LUIS CLI-vel, a felhasználónak továbbra is végre kell hajtania az áttelepítési folyamatot. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [How to migrate your app to an authoring resource](luis-migration-authoring-steps.md)
+* [Az alkalmazás migrálása egy szerzői erőforrásba](luis-migration-authoring-steps.md)

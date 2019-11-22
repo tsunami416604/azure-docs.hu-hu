@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/18/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577186"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284788"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -31,11 +31,11 @@ Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik 
 
 ## <a name="network-deployment-and-operations"></a>Hálózati telepítés és műveletek
 
-Az Azure Blockchain szolgáltatás üzembe helyezése a Azure Portal, az Azure CLI és a Visual Studio Code használatával végezhető el az Azure Blockchain bővítménnyel.  Az üzembe helyezés egyszerűsítve van, beleértve a tranzakciós és a érvényesítő csomópontok, az Azure Virtual Networks a biztonsági elkülönítés és a szolgáltatás által felügyelt tárolók kiépítését is.  Emellett egy új blockchain-tag telepítésekor a felhasználók is létrehozhatnak vagy csatlakozhatnak konzorciumot.  A konzorciumok lehetővé teszik, hogy a különböző Azure-előfizetések több résztvevője is biztonságosan tudjon kommunikálni egymással egy megosztott blockchain.  Ez az egyszerűsített üzembe helyezés a blockchain hálózati üzembe helyezését nap és perc között csökkenti.
+Az Azure Blockchain szolgáltatás üzembe helyezése az Azure Blockchain bővítmény használatával történik a Azure Portalon, az Azure CLI-n vagy a Visual Studio code-on keresztül. Az üzembe helyezés egyszerűsítve van, beleértve a tranzakciós és a érvényesítő csomópontok, az Azure Virtual Networks a biztonsági elkülönítés és a szolgáltatás által felügyelt tárolók kiépítését is.  Emellett egy új blockchain-tag telepítésekor a felhasználók is létrehozhatnak vagy csatlakozhatnak konzorciumot.  A konzorciumok lehetővé teszik, hogy a különböző Azure-előfizetések több résztvevője is biztonságosan tudjon kommunikálni egymással egy megosztott blockchain.  Ez az egyszerűsített üzembe helyezés a blockchain hálózati üzembe helyezését nap és perc között csökkenti.
 
 ### <a name="performance-and-service-tiers"></a>Teljesítmény-és szolgáltatási szintek
 
-Az Azure Blockchain szolgáltatás két szolgáltatási szintet kínál: *Alapszintű* és *standard*. Az egyes szintek különböző teljesítményt és képességeket biztosítanak a könnyű fejlesztési és tesztelési feladatoknak a nagy mértékben méretezhető üzemi blockchain való üzembe helyezéséhez. Mindkét réteg tartalmaz legalább egy tranzakciós csomópontot és egy validator csomópontot (alapszintű) vagy két validator csomópontot (standard).
+Az Azure Blockchain Service két szolgáltatási szintet kínál: *Alapszintű* és *standard*. Az egyes szintek különböző teljesítményt és képességeket biztosítanak a könnyű fejlesztési és tesztelési feladatoknak a nagy mértékben méretezhető üzemi blockchain való üzembe helyezéséhez. Mindkét réteg tartalmaz legalább egy tranzakciós csomópontot és egy validator csomópontot (alapszintű) vagy két validator csomópontot (standard).
 
 ![Árképzési szintek](./media/overview/pricing-tiers.png)
 
@@ -43,13 +43,13 @@ Amellett, hogy két érvényesítő csomópontot kínál, a *standard* szint 2 *
 
 ### <a name="security-and-maintenance"></a>Biztonság és karbantartás
 
-Az első blockchain-tag üzembe helyezése után további tranzakciós csomópontokat adhat hozzá a taghoz.  Alapértelmezés szerint a tranzakciós csomópontok védettek a tűzfalszabályok között, és a hozzáféréshez konfigurálni kell őket.  Emellett az összes tranzakciós csomópont a TLS-n keresztül titkosítja az adatátvitelt.  Több lehetőség is létezik a tranzakciós csomópontok hozzáférésének biztosításához, beleértve a tűzfalszabályok, az alapszintű hitelesítés, a hozzáférési kulcsok és a Azure Active Directory integrációt. További információ: a [tranzakciós csomópontok konfigurálása](configure-transaction-nodes.md) és [Azure Active Directory hozzáférés konfigurálása](configure-aad.md).
+Az első blockchain-tag üzembe helyezése után további tranzakciós csomópontokat adhat hozzá a taghoz.  Alapértelmezés szerint a tranzakciós csomópontok védettek a tűzfalszabályok között, és a hozzáféréshez konfiguráció szükséges.  Emellett az összes tranzakciós csomópont a TLS-n keresztül titkosítja az adatátvitelt.  Több lehetőség létezik a tranzakciós csomópont-hozzáférés biztonságossá tételéhez, beleértve a tűzfalszabályok, az alapszintű hitelesítés, a hozzáférési kulcsok és a Azure Active Directory integrációját. További információ: a [tranzakciós csomópontok konfigurálása](configure-transaction-nodes.md) és [Azure Active Directory hozzáférés konfigurálása](configure-aad.md).
 
 Felügyelt szolgáltatásként az Azure Blockchain Service biztosítja, hogy a Blockchain-tag csomópontjai a legújabb gazda operációs rendszerrel és a Főkönyv szoftveres verem frissítéseivel legyenek javítva, és a magas rendelkezésre álláshoz vannak konfigurálva (csak a standard csomag esetében), ami kiküszöböli a DevOps nagy részét. a hagyományos IaaS blockchain-csomópontokhoz szükséges.  A javítással és a frissítésekkel kapcsolatos további információkért lásd: az [Azure Blockchain Service Ledger támogatott verziói](ledger-versions.md).
 
 ### <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
-Emellett az Azure Blockchain szolgáltatás részletes mérőszámokat biztosít Azure Monitor szolgáltatáson keresztül, amely betekintést nyújt a csomópontok CPU-, memória-és tárterület-felhasználására, valamint hasznos információkhoz juthat a Blockchain hálózati tevékenységekről, például a kibányászott tranzakciókra és blokkokról. tranzakciós várólista mélysége, valamint aktív kapcsolatok.  A metrikák testreszabhatók úgy, hogy nézeteiket szolgáltassanak a blockchain-alkalmazás szempontjából fontos adatokhoz.  Emellett a küszöbértékeket olyan riasztások segítségével is meghatározhatja, amelyek lehetővé teszik a felhasználók számára olyan műveletek elindítását, mint például az e-mailek vagy SMS-üzenetek elküldése, a logikai alkalmazás, az Azure-függvény futtatása vagy egy egyéni módon definiált webhookra
+Emellett az Azure Blockchain szolgáltatás részletes mérőszámokat biztosít Azure Monitor szolgáltatáson keresztül, amely betekintést nyújt a csomópontok CPU-, memória-és tárterület-használati adataiba.  A Azure Monitor hasznos betekintést nyújt a blockchain hálózati tevékenységekkel, például a kibányászott tranzakciókkal, a tranzakciós várólista mélységével és az aktív kapcsolatokkal.  A metrikák testreszabhatók úgy, hogy nézeteiket szolgáltassanak a blockchain-alkalmazás szempontjából fontos adatokhoz.  Emellett a küszöbértékeket olyan riasztások segítségével is meghatározhatja, amelyek lehetővé teszik a felhasználók számára olyan műveletek elindítását, mint például az e-mailek vagy SMS-üzenetek elküldése, a logikai alkalmazás, az Azure-függvény futtatása vagy egy egyéni módon definiált webhookra
 
 ![Mérőszámok](./media/overview/metrics.png)
 
@@ -74,7 +74,7 @@ Segítségre van szüksége, vagy visszajelzést szeretne küldeni?
 * Látogasson el az [Azure Blockchain blogra](https://azure.microsoft.com/blog/topics/blockchain/), a [Microsoft műszaki közösségére](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)és az [Azure Blockchain fórumára](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
 * Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/921130-azure-blockchain-service).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként próbálkozzon egy rövid útmutatóval, vagy további részletekért tekintse meg ezeket az erőforrásokat.
 * [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md) vagy [blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)

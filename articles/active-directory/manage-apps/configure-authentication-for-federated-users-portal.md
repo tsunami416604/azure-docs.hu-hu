@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezés automatikus gyorsításának beállítása a Home Realm Discovery-szabályzat használatával | Microsoft Docs
+title: Bejelentkezés automatikus gyorsításának beállítása a Kezdőlap tartományának felderítésével
 description: Ismerje meg, hogyan konfigurálhatja a Kezdőlap tartomány-felderítési házirendet az összevont felhasználók Azure Active Directory hitelesítéséhez, beleértve az automatikus gyorsítást és a tartományi tippeket.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477202"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274627"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával
 
@@ -65,9 +65,9 @@ A tartomány-emlékeztető szintaxisa a használt protokolltól függ, és álta
 
 **WS-Federation**: whr = contoso. com a lekérdezési karakterláncban.
 
-**SAML**:  Egy olyan SAML-hitelesítési kérelem, amely tartalmaz egy tartományi emlékeztetőt vagy egy whr = contoso. com lekérdezési karakterláncot.
+**SAML**: vagy egy olyan SAML hitelesítési kérelem, amely tartalmaz egy tartományi emlékeztetőt vagy egy whr = contoso. com lekérdezési karakterláncot.
 
-Az **ID-kapcsolat megnyitása**: Egy domain_hint = contoso. com lekérdezési karakterlánc. 
+**Open ID-kapcsolat**: A lekérdezési karakterlánc domain_hint = contoso. com. 
 
 Ha egy tartományi emlékeztető szerepel az alkalmazás hitelesítési kérelmében, és a bérlő összevonta az adott tartománnyal, az Azure AD megkísérli átirányítani a bejelentkezést az adott tartományhoz konfigurált identitásszolgáltató. 
 
@@ -170,7 +170,7 @@ Az alábbi példákban az Azure AD-ben létrehozhatja, frissítheti, összekapcs
 
 Ha a rendszer nem ad vissza semmit, az azt jelenti, hogy nincsenek szabályzatok létrehozva a bérlőben.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Példa: HRD szabályzatának beállítása egy alkalmazáshoz 
+### <a name="example-set-hrd-policy-for-an-application"></a>Példa: HRD szabályzat beállítása egy alkalmazáshoz 
 
 Ebben a példában egy olyan házirendet hoz létre, amely akkor van hozzárendelve egy alkalmazáshoz, ha a következők valamelyike: 
 - Automatikusan felgyorsítja a felhasználókat egy AD FS bejelentkezési képernyőre, amikor bejelentkeznek egy alkalmazásba, ha a bérlő egyetlen tartományba esik. 
@@ -206,7 +206,7 @@ Get-AzureADPolicy
 
 Ha az HRD szabályzatot a létrehozása után szeretné alkalmazni, azt hozzárendelheti több egyszerű alkalmazás-szolgáltatáshoz is.
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. lépés: Keresse meg azt a szolgáltatásnevet, amelyhez hozzá szeretné rendelni a szabályzatot  
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. lépés: az egyszerű szolgáltatásnév megkeresése, amelyhez a szabályzatot hozzá kell rendelni  
 Szüksége lesz azon **ObjectId** , amelyekhez hozzá szeretné rendelni a szabályzatot. Az egyszerű szolgáltatások **ObjectId** többféleképpen is megtalálhatja.    
 
 Használhatja a portált, vagy lekérdezheti [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Lépjen a [Graph Explorer eszközre](https://developer.microsoft.com/graph/graph-explorer) , és jelentkezzen be az Azure ad-fiókjába, és tekintse meg az összes szervezet egyszerű szolgáltatását. 
@@ -217,7 +217,7 @@ Mivel a PowerShellt használja, az alábbi parancsmaggal listázhatja az egyszer
 Get-AzureADServicePrincipal
 ```
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3\. lépés: A szabályzat társítása a szolgáltatáshoz  
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3\. lépés: a szabályzat társítása a szolgáltatáshoz  
 Miután megtörtént annak az alkalmazásnak a **ObjectId** , amelyre az automatikus gyorsítást konfigurálni kívánja, futtassa a következő parancsot. Ez a parancs az 1. lépésben létrehozott HRD-házirendet társítja a 2. lépésben található egyszerű szolgáltatással.
 
 ``` powershell
@@ -228,18 +228,18 @@ Ezt a parancsot minden olyan egyszerű szolgáltatásnév esetében megismételh
 
 Abban az esetben, ha egy alkalmazáshoz már hozzá van rendelve egy HomeRealmDiscovery szabályzat, nem adhat hozzá egy másodikat.  Ebben az esetben módosítsa az alkalmazáshoz hozzárendelt Kezdőlap tartomány-felderítési szabályzat definícióját további paraméterek hozzáadásához.
 
-#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>4\. lépés: Annak megadásához, hogy a HRD szabályzat melyik egyszerű szolgáltatáshoz van rendelve
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>4\. lépés: annak meghatározása, hogy az HRD szabályzat melyik egyszerű szolgáltatáshoz van rendelve
 A **Get-AzureADPolicyAppliedObject** parancsmaggal ellenőrizhető, hogy mely alkalmazások rendelkeznek HRD szabályzattal. Adja át a bejelentkezni kívánt szabályzat **ObjectId** .
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>5\. lépés: Készen van!
+#### <a name="step-5-youre-done"></a>5\. lépés: elkészült!
 Próbálja ki az alkalmazást, és győződjön meg arról, hogy az új házirend működik.
 
-### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Példa: Azon alkalmazások listázása, amelyekhez a HRD házirend konfigurálva van
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Példa: azoknak az alkalmazásoknak a listája, amelyekhez a HRD házirend konfigurálva van
 
-#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1\. lépés: A szervezetben létrehozott összes szabályzat listázása 
+#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1\. lépés: a szervezetben létrehozott összes szabályzat listázása 
 
 ``` powershell
 Get-AzureADPolicy
@@ -247,28 +247,28 @@ Get-AzureADPolicy
 
 Jegyezze fel annak a szabályzatnak a **ObjectId** , amelynek hozzárendeléseit listázni szeretné.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2\. lépés: Azon egyszerű szolgáltatások listázása, amelyekhez a szabályzat hozzá van rendelve  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2\. lépés: azoknak a szolgáltatásoknak a listája, amelyekre a szabályzat hozzá van rendelve  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Példa: HRD szabályzat eltávolítása egy alkalmazáshoz
-#### <a name="step-1-get-the-objectid"></a>1\. lépés: A ObjectID beolvasása
+### <a name="example-remove-an-hrd-policy-for-an-application"></a>Példa: egy alkalmazás HRD szabályzatának eltávolítása
+#### <a name="step-1-get-the-objectid"></a>1\. lépés: a ObjectID beolvasása
 Az előző példával beolvashatja a házirend **ObjectId** , valamint azt, hogy az alkalmazás melyik egyszerű szolgáltatását kívánja eltávolítani. 
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2\. lépés: A szabályzat-hozzárendelés eltávolítása az egyszerű szolgáltatásnév alapján  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2\. lépés: a szabályzat-hozzárendelés eltávolítása az Application Service-résztvevőből  
 
 ``` powershell
 Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3\. lépés: Az Eltávolítás ellenőrzésével megtalálhatja azokat a szolgáltatásokat, amelyekre a szabályzat hozzá van rendelve 
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3\. lépés: az Eltávolítás ellenőrzéséhez a Szabályzathoz hozzárendelt egyszerű szolgáltatások listázásával 
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a hitelesítés működéséről az Azure AD-ben: [hitelesítési forgatókönyvek az Azure ad-hez](../develop/authentication-scenarios.md).
 - A felhasználói egyszeri bejelentkezéssel kapcsolatos további információkért lásd: [egyszeri bejelentkezés a Azure Active Directory alkalmazásaihoz](what-is-single-sign-on.md).
 - A fejlesztővel kapcsolatos összes tartalom áttekintéséhez látogasson el a [Active Directory fejlesztői útmutatóba](../develop/v1-overview.md) .

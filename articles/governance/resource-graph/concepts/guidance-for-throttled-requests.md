@@ -1,14 +1,14 @@
 ---
 title: Útmutatás szabályozott kérésekhez
-description: Megtudhatja, hogyan hozhat létre jobb lekérdezéseket az Azure Resource Graph-ba irányuló kérések szabályozásának elkerülése érdekében.
-ms.date: 10/18/2019
+description: Megtudhatja, hogyan végezhet párhuzamosan kötegelt, lépcsőzetes, tördelési és lekérdezési kéréseket, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: 651a5daa9e7e19a5dc157ba0cfa17da2c8abe3db
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038326"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304677"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 

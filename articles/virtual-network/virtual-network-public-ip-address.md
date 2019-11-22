@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 5e71f30723826a18f10d4c8e1b9d34e356c9962b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9071596d384d09bf6cbc46316a7f33c69c7b32e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114639"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278457"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Nyilvános IP-címek létrehozása, módosítása és törlése
 
@@ -45,7 +45,7 @@ A nyilvános IP-címekhez névleges díj tartozik. A díjszabás megtekintéséh
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-1. A portál bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 2. A *Keresés a piactéren* mezőbe írja be a *nyilvános IP-címet* . Ha a **nyilvános IP-cím** megjelenik a keresési eredmények között, válassza ki.
 3. A **nyilvános IP-cím**területen válassza a **Létrehozás**lehetőséget.
 4. Adja meg vagy válassza ki a következő beállítások értékeit a **nyilvános IP-cím létrehozása**területen, majd válassza a **Létrehozás**lehetőséget:
@@ -63,7 +63,7 @@ A nyilvános IP-címekhez névleges díj tartozik. A díjszabás megtekintéséh
    |IP-cím hozzárendelése (csak akkor látható, ha bejelölte az **IPv6-cím létrehozása (vagy IPv4)** jelölőnégyzetet)|Igen, ha bejelöli az **IPv6 létrehozása** (vagy az IPv4) jelölőnégyzetet.|Ha a jelölőnégyzetben **egy IPv4-címeket hoz létre**, kiválaszthat egy hozzárendelési módszert. Ha a jelölőnégyzet **egy IPv6-cím létrehozását**írja elő, akkor nem választhat hozzárendelési módszert, mert a **dinamikusnak**kell lennie.|
    |Előfizetést|Igen|Ugyanabban az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) kell lennie, mint azt az erőforrást, amelyhez hozzá szeretné rendelni a nyilvános IP-címet.|
    |Erőforráscsoport|Igen|Ugyanabban a vagy más [erőforrás-csoportban](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) létezhet, mint azt az erőforrást, amelyhez hozzá szeretné rendelni a nyilvános IP-címet.|
-   |Földrajzi egység|Igen|Ugyanazon a [helyen](https://azure.microsoft.com/regions)kell lennie, más néven a régió, mint az erőforrás, amelyhez a nyilvános IP-címet hozzá szeretné rendelni.|
+   |Hely|Igen|Ugyanazon a [helyen](https://azure.microsoft.com/regions)kell lennie, más néven a régió, mint az erőforrás, amelyhez a nyilvános IP-címet hozzá szeretné rendelni.|
    |Rendelkezésre állási zóna| Nem | Ez a beállítás csak akkor jelenik meg, ha egy támogatott helyet választ ki. A támogatott helyek listáját lásd: a [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha az **alapszintű** SKU lehetőséget választotta, a *nincs* beállítás automatikusan lesz kiválasztva. Ha inkább egy adott zónát szeretne garantálni, kiválaszthat egy adott zónát. Bármelyik választás nem redundáns. Ha bejelölte a **standard** SKU: Zone-redundáns beállítást, a rendszer automatikusan kijelöli az adatelérési utat a zóna meghibásodása miatt. Ha inkább egy adott zónát szeretne garantálni, amely nem rugalmas a zóna meghibásodása esetén, kiválaszthat egy adott zónát.
 
 **Parancsok**
@@ -115,7 +115,7 @@ A nyilvános IP-címekre vonatkozó feladatok végrehajtásához a fiókját hoz
 | Microsoft.Network/publicIPAddresses/delete                         | Nyilvános IP-cím törlése                                     |
 | Microsoft.Network/publicIPAddresses/join/action                    | Nyilvános IP-cím hozzárendelése erőforráshoz                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyilvános IP-cím létrehozása a [PowerShell](powershell-samples.md) vagy az [Azure CLI](cli-samples.md) parancsfájl használatával vagy Azure [Resource Manager-sablonok](template-samples.md) használatával
 - [Azure](policy-samples.md) -szabályzat létrehozása és alkalmazása nyilvános IP-címekhez

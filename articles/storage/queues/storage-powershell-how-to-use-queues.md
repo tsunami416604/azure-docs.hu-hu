@@ -1,5 +1,5 @@
 ---
-title: Műveletek végrehajtása az Azure üzenetsor-tárolón a PowerShell használatával – Azure Storage
+title: Azure üzenetsor-tárolási műveletek végrehajtása a PowerShellben
 description: Műveletek végrehajtása az Azure üzenetsor-tárolón a PowerShell használatával
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721227"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269381"
 ---
-# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure üzenetsor-tárolási műveletek végrehajtása a Azure PowerShell
+# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
 Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely a világ bármely pontjáról HTTP vagy HTTPS használatával elérhető, nagy mennyiségű üzenetet tárol. Részletes információ: [Bevezetés az Azure Queues](storage-queues-introduction.md)szolgáltatásba. Ez a cikk a közös üzenetsor-tárolási műveleteket ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -179,7 +179,7 @@ Az ebben a gyakorlatban létrehozott összes eszköz eltávolításához távol�
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta az alapszintű üzenetsor-tárolás kezelését a PowerShell használatával, beleértve a következőket:
 

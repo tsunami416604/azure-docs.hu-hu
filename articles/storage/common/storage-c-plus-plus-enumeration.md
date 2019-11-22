@@ -1,5 +1,5 @@
 ---
-title: Azure Storage-erőforrások listázása a Storage ügyféloldali függvénytárával C++ | Microsoft Docs
+title: Azure Storage-erőforrások listázása az C++ ügyféloldali függvénytárral
 description: Megtudhatja, hogyan használhatja a Microsoft Azure Storage ügyféloldali függvénytárában C++ lévő API-kat a tárolók, blobok, várólisták, táblák és entitások enumerálásához.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721920"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269450"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása itt:C++
 
@@ -34,7 +34,7 @@ Ezek a módszerek különböző túlterhelések használatával jelennek meg a k
 
 ## <a name="asynchronous-versus-synchronous"></a>Aszinkron és szinkron
 
-Mivel a Storage ügyféloldali kódtára C++ a [ C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)paranccsal az aszinkron műveleteket is támogatjuk. Példa:
+Mivel a Storage ügyféloldali kódtára C++ a [ C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)paranccsal az aszinkron műveleteket is támogatjuk. Például:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -59,10 +59,10 @@ Ezért nem célszerű egyetlen válaszban lévő összes objektumot listázni. E
 
 A szegmentált listázási műveletre adott válasz az alábbiakat tartalmazza:
 
-* a *_segment*, amely a tőzsdei API-nak egyetlen hívása által visszaadott eredmények készletét tartalmazza.
-* *continuation_token*, amelyet a rendszer a következő hívásnak továbbít a találatok következő oldalának beolvasása érdekében. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
+* *_segment*, amely a tőzsdei API-hoz való egyetlen hívás eredményét adja vissza.
+* *continuation_token*, amelyet a következő hívásnak továbbít a rendszer, hogy az eredmények következő oldalát kapja meg. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
 
-A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a mintákban érhető [](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)el:
+A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a [mintákban](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)érhető el:
 
 ```cpp
 // List blobs in the blob container
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-Vegye figyelembe, hogy a lapon visszaadott eredmények száma az egyes API-k túlterhelése *max_results* paraméterrel szabályozható, például:
+Vegye figyelembe, hogy a lapon visszaadott eredmények számának szabályozása az egyes API-k túlterhelése *max_results* paraméterrel ellenőrizhető, például:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -97,7 +97,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 Ha nem adja meg a *max_results* paramétert, a rendszer legfeljebb 5000 eredmény alapértelmezett maximális értékét adja vissza egyetlen lapon.
 
-Azt is vegye figyelembe, hogy az Azure Table Storage-beli lekérdezés nem adhat vissza rekordokat, vagy kevesebb rekordot, mint a megadott *max_results* paraméter, még akkor is, ha a folytatási jogkivonat nem üres. Ennek egyik oka az lehet, hogy a lekérdezés öt másodpercen belül nem fejeződött be. Mindaddig, amíg a folytatási jogkivonat nem üres, a lekérdezésnek folytatódnia kell, és a kód nem feltételezheti a szegmens eredményeinek méretét.
+Azt is vegye figyelembe, hogy az Azure Table Storage-beli lekérdezés nem adhat vissza rekordokat, vagy kevesebb rekordot, mint a megadott *max_results* paraméter értéke, még akkor is, ha a folytatási jogkivonat nem üres. Ennek egyik oka az lehet, hogy a lekérdezés öt másodpercen belül nem fejeződött be. Mindaddig, amíg a folytatási jogkivonat nem üres, a lekérdezésnek folytatódnia kell, és a kód nem feltételezheti a szegmens eredményeinek méretét.
 
 A legtöbb forgatókönyv esetén ajánlott kódolási minta a szegmentált lista, amely explicit módon mutatja be a listázási és lekérdezési folyamatokat, valamint azt, hogy a szolgáltatás hogyan válaszol az egyes kérelmekre. Különösen C++ alkalmazások vagy szolgáltatások esetében a tőzsdei folyamat alacsonyabb szintű felügyelete segíthet a memória és a teljesítmény szabályozásában.
 
@@ -153,7 +153,7 @@ Bár a kapzsi felsorolás potenciális problémákat okoz, érdemes lehet, ha a 
 
 Ha a vagy az Oracle C# Java SDK-kat is használja, ismerkedjen meg a enumerable programozási modellel, amely egy lusta stílusú listát biztosít, ahol az adatok bizonyos eltolás esetén csak akkor lesznek beolvasva, ha szükségesek. A C++-ben az iteráció-alapú sablon hasonló megközelítést is biztosít.
 
-Egy tipikus lusta tőzsdei API, a **list_blobs** használatával példaként a következőképpen néz ki:
+Egy tipikus lusta tőzsdei API, **list_blobs** példaként használva a következőképpen néz ki:
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
@@ -192,7 +192,7 @@ Ebben a cikkben különböző túlterheléseket beszéltünk a Storage ügyfélo
 * A lusta lista a könyvtárban kényelmes burkolóként van megadva a szinkron helyzetekben.
 * A kapzsi felsorolás nem ajánlott, és el lett távolítva a könyvtárból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Storage-ról és az C++ügyféloldali kódtáraról: az alábbi források.
 

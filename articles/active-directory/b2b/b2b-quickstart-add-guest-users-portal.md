@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: vendég felhasználók hozzáadása a Azure Portal-Azure Active Directory'
+title: 'Gyors útmutató: vendég felhasználók hozzáadása a Azure Portal-Azure AD-ben'
 description: Ez a rövid útmutató bemutatja, hogyan vehetnek fel az Azure AD rendszergazdák B2B vendégfelhasználókat az Azure portálon és végigvezet a B2B-meghívási munkafolyamat lépésein.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064af4f54f3d3069c7e04a66cc7248dbfaa7ba0b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 431d2eac6b612bee629df184ed80c5c8a15513db
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008555"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273370"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Rövid útmutató: Vendégfelhasználók felvétele a címtárhoz az Azure portálon
 

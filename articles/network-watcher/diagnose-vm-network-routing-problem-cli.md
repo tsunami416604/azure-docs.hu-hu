@@ -1,6 +1,7 @@
 ---
-title: Virtuális gép hálózati útválasztási probléma diagnosztizálása – Azure CLI-vel |} A Microsoft Docs
-description: Ebből a cikkből elsajátíthatja, hogyan útválasztási problémáinak diagnosztizálása virtuális gépek hálózati használatával az Azure Network Watcher következő ugrás képességét.
+title: Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása – Azure CLI
+titleSuffix: Azure Network Watcher
+description: Ebből a cikkből megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati útválasztási problémáit az Azure Network Watcher következő ugrási funkciója segítségével.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -17,22 +18,22 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ffc16948c250a6999c33b8812769ba889f4900
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688219"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276087"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Virtuális gép hálózati útválasztási probléma diagnosztizálása – Azure CLI-vel
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása – Azure CLI
 
-Ebben a cikkben üzembe helyezése egy virtuális gépet (VM), és ezután ellenőrizze a kommunikációt egy IP-cím és az URL-címe. Meghatározza a kommunikációs hiba okát és feloldásának módját.
+Ebben a cikkben üzembe helyez egy virtuális gépet (VM), majd megtekintheti a kommunikációt egy IP-címmel és egy URL-címmel. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.28-as vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. A CLI-verzió ellenőrzése után futtassa az `az login` parancsot az Azure-hoz való kapcsolódáshoz. Ebben a cikkben a CLI-parancsok futtatásához Bash-felületen vannak formázva.
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell futtatnia. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. A CLI-verzió ellenőrzése után futtassa az `az login` parancsot az Azure-hoz való kapcsolódáshoz. A cikkben szereplő CLI-parancsok egy bash-rendszerhéjban történő futtatásra vannak formázva.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -56,11 +57,11 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa
 
 ## <a name="test-network-communication"></a>Hálózati kommunikáció tesztelése
 
-Hálózati kommunikáció és a Network Watcher teszteléséhez először engedélyezni a network watchert a régióban, a tesztelni kívánt virtuális gép, és a Network Watcher következő ugrás képesség segítségével kommunikáció tesztelése.
+A Network Watcherával folytatott hálózati kommunikáció teszteléséhez először engedélyeznie kell egy hálózati figyelőt abban a régióban, ahol a tesztelni kívánt virtuális gép be van kapcsolva, majd a kommunikáció teszteléséhez használja a Network Watcher következő ugrási képességét.
 
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-Ha már rendelkezik egy hálózati figyelő engedélyezve van az USA keleti régiójában, ugorjon [használja a következő Ugrás](#use-next-hop). Használja a [az a network watcher konfigurálása](/cli/azure/network/watcher#az-network-watcher-configure) parancs egy network watcher létrehozásához az USA keleti régiójában:
+Ha az USA keleti régiójában már engedélyezve van egy hálózati figyelő, ugorjon a [következő ugrás használata](#use-next-hop)lehetőségre. Az az [Network Watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) parancs használatával hozzon létre egy Network watchert az USA keleti régiójában:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -71,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>A következő ugrás használata
 
-Az Azure automatikusan létrehoz útvonalakat az alapértelmezett célokhoz. Egyéni útvonalakat is létrehozhat, amelyekkel felülírhatja az Azure alapértelmezett útvonalait. Bizonyos esetekben az egyéni útvonalak kommunikációs hibákat eredményezhetnek. Útválasztás a virtuális gép teszteléséhez használhatja a [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) meghatározni a következő útválasztási Ugrás, ha van egy adott cím szolgáltatásba irányuló forgalom.
+Az Azure automatikusan létrehoz útvonalakat az alapértelmezett célokhoz. Egyéni útvonalakat is létrehozhat, amelyekkel felülírhatja az Azure alapértelmezett útvonalait. Bizonyos esetekben az egyéni útvonalak kommunikációs hibákat eredményezhetnek. Egy virtuális gép útválasztásának teszteléséhez használja az [az Network Watcher show-Next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) elemet a következő útválasztási ugrás meghatározásához, ha a forgalom egy adott címnek van szánva.
 
 Tesztelje a virtuális gép kimenő kommunikációját a www.bing.com IP-címeinek egyikén:
 
@@ -85,7 +86,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Néhány másodperc elteltével a kimeneti figyelmeztet, amely a **nexthoptype típusa** van **Internet**, és hogy a **routeTableId** van **Rendszerútvonal**. Ez az eredmény jelzi, hogy nincs-e egy érvényes útvonalat a cél.
+Néhány másodperc elteltével a kimenet tájékoztatja Önt arról, hogy a **NextHopType** **internetes**, és hogy a **routeTableId** a **rendszer útvonala**. Ebből az eredményből megtudhatja, hogy van-e érvényes útvonal a célhelyre.
 
 Tesztelje a virtuális gép kimenő kommunikációját a 172.31.0.100 címen:
 
@@ -99,11 +100,11 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Kapott kimenetre figyelmeztet, amely **nincs** van a **nexthoptype típusa**, és hogy a **routeTableId** is **Rendszerútvonal**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
+A visszaadott kimenet tájékoztatja, hogy **egyik sem** a **nextHopType**, és hogy a **routeTableId** is a **rendszer útvonala**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
 
 ## <a name="view-details-of-a-route"></a>Útvonal részleteinek megtekintése
 
-Elemzéséhez további útválasztási, tekintse át a hálózati adapter az érvényes útvonalak a [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) parancsot:
+Az Útválasztás további elemzéséhez tekintse át a hálózati adapter érvényes útvonalait az az [Network NIC show-effektív-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) paranccsal:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -111,7 +112,7 @@ az network nic show-effective-route-table \
   --name myVmVMNic
 ```
 
-A következő szöveget a visszaadott kimenetet szerepel:
+A visszaadott kimenet a következő szöveget tartalmazza:
 
 ```azurecli
 {
@@ -129,9 +130,9 @@ A következő szöveget a visszaadott kimenetet szerepel:
 },
 ```
 
-Ha használta a `az network watcher show-next-hop` parancs 13.107.21.200 a kimenő kommunikáció tesztelése [használja a következő Ugrás](#use-next-hop), az útvonal a **addressPrefix** 0.0.0.0/0** használt irányíthatja a forgalmat a címre, mivel nincs más útvonal a kimenet tartalmazza a címet. Alapértelmezés szerint minden olyan cím, amely nincs egy másik útvonal címelőtagjában meghatározva, az internetre lesz irányítva.
+Ha a `az network watcher show-next-hop` parancs használatával teszteli a 13.107.21.200 kimenő kommunikációját a [következő ugrás használata](#use-next-hop)során, a rendszer a 0.0.0.0/0 * * **addressPrefix** útvonalat használta a forgalom a címnek való irányítására, mivel a kimenetben nem szerepel más útvonal a címben. Alapértelmezés szerint minden olyan cím, amely nincs egy másik útvonal címelőtagjában meghatározva, az internetre lesz irányítva.
 
-Ha használta a `az network watcher show-next-hop` 172.31.0.100 kimenő kommunikáció azonban teszteléséhez paranccsal, az eredmény tájékoztatja, hogy nincs következő ugrási típus nem létezik. A visszaadott kimenetben a következő szöveget is megjelenik:
+Ha a `az network watcher show-next-hop` parancsot használta a 172.31.0.100 kimenő kommunikáció tesztelésére, az eredmény arról tájékoztat, hogy nem volt következő ugrási típus. A visszaadott kimenetben a következő szöveg is látható:
 
 ```azurecli
 {
@@ -149,7 +150,7 @@ Ha használta a `az network watcher show-next-hop` 172.31.0.100 kimenő kommunik
 },
 ```
 
-Kimenetében láthatja a `az network watcher nic show-effective-route-table` parancsot, azonban, a 172.16.0.0/12 előtagot, amely tartalmazza a 172.31.0.100 egy alapértelmezett útvonalat címet, a **nextHopType** van **None**. Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például a 172.16.0.0/12-címtartományt adott a virtuális hálózat címteréhez, Azure módosítja a **nextHopType** való **virtuális hálózati** útvonal. Egy ellenőrzés jelenik majd meg **virtuális hálózati** , a **nextHopType**.
+Ahogy a `az network watcher nic show-effective-route-table` parancs kimenetében látható, a 172.16.0.0/12 előtag alapértelmezett útvonala, amely magában foglalja a 172.31.0.100-címeket, a **nextHopType** **nincs.** Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például hozzáadta a 172.16.0.0/12 címtartományt a virtuális hálózat címterület számára, az Azure a **NextHopType** **virtuális hálózatra** módosítja az útvonalon. Az ellenőrzések után a **virtuális hálózat** **nextHopType**jelenik meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -159,8 +160,8 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-dele
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben létrehozott egy virtuális Gépet, és felderítette a hálózati útválasztás a virtuális gépről. Megtudta, hogy az Azure számos alapértelmezett utat létrehoz, és tesztelte az útválasztást két különböző cél felé. További tudnivalók az [Azure-beli útválasztásról](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és az [egyéni útvonalak létrehozásáról](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+Ebben a cikkben létrehozta a virtuális gépet, és diagnosztizálta a hálózati útválasztást a virtuális gépről. Megtudta, hogy az Azure számos alapértelmezett utat létrehoz, és tesztelte az útválasztást két különböző cél felé. További tudnivalók az [Azure-beli útválasztásról](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és az [egyéni útvonalak létrehozásáról](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-Virtuális gép kimenő kapcsolatok esetén azt is meghatározhatja, a késés és engedélyezett és letiltott a virtuális gép és a egy végpontot a Network watcherrel közötti hálózati forgalom [kapcsolódási hibák elhárítása](network-watcher-connectivity-cli.md) képesség. A Network Watcher kapcsolódási figyelő funkcióval idővel egy virtuális Gépet és a egy végpontot, például az IP-cím vagy URL-cím közötti kommunikáció követheti nyomon. További információ [hálózati kapcsolat figyeléséhez](connection-monitor.md).
+A kimenő virtuálisgép-kapcsolatok esetében meghatározhatja a virtuális gép és a végpont közötti hálózati forgalmat a Network Watcher [kapcsolódási hibákkal kapcsolatos](network-watcher-connectivity-cli.md) funkciójának használatával is. Egy virtuális gép és egy végpont (például IP-cím vagy URL) közötti kommunikációt figyelheti az Network Watcher a kapcsolat figyelője funkciójának használatával. További információ: [hálózati kapcsolatok figyelése](connection-monitor.md).

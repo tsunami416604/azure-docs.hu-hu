@@ -1,5 +1,5 @@
 ---
-title: SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz Azure AD alkalmazás proxyval | Microsoft Docs
+title: SAML egyszeri bejelentkezés a helyi alkalmazásokhoz Azure AD alkalmazás proxyval
 description: Ismerje meg, hogyan biztosíthat egyszeri bejelentkezést az SAML-hitelesítéssel védett helyszíni alkalmazásokhoz. Távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz alkalmazásproxy használatával.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062502"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275588"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
-Az egyszeri bejelentkezést (SSO) az SAML-hitelesítéssel védett helyszíni alkalmazások számára is biztosíthatja, és az alkalmazás-proxyn keresztül távoli hozzáférést biztosíthat ezekhez az alkalmazásokhoz. Az SAML egyszeri bejelentkezéssel az Azure Active Directory (Azure AD) a felhasználó Azure AD-fiókjának használatával hitelesíti az alkalmazást. Az Azure AD a bejelentkezési adatokat kapcsolati protokollon keresztül továbbítja az alkalmazásnak. A felhasználókat az SAML-jogcímek által meghatározott szabályok alapján adott alkalmazási szerepkörökre is leképezheti. A SAML SSO mellett az alkalmazásproxy engedélyezésével a felhasználók külső hozzáféréssel fognak rendelkezni az alkalmazáshoz és a zökkenőmentes SSO-élményhez.
+Az egyszeri bejelentkezést (SSO) az SAML-hitelesítéssel védett helyszíni alkalmazások számára is biztosíthatja, és az alkalmazás-proxyn keresztül távoli hozzáférést biztosíthat ezekhez az alkalmazásokhoz. Az SAML egyszeri bejelentkezéssel az Azure Active Directory (Azure AD) a felhasználó Azure AD-fiókjának használatával hitelesíti az alkalmazást. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. A felhasználókat az SAML-jogcímek által meghatározott szabályok alapján adott alkalmazási szerepkörökre is leképezheti. A SAML SSO mellett az alkalmazásproxy engedélyezésével a felhasználók külső hozzáféréssel fognak rendelkezni az alkalmazáshoz és a zökkenőmentes SSO-élményhez.
 
 Az alkalmazásoknak képesnek kell lenniük a **Azure Active Directory**által kiadott SAML-tokenek felhasználására. Ez a konfiguráció nem vonatkozik a helyszíni identitás-szolgáltatót használó alkalmazásokra. Ezen forgatókönyvek esetében javasoljuk, hogy tekintse [át az alkalmazások Azure ad-ba való áttelepítésének erőforrásait](migration-resources.md).
 
@@ -92,12 +92,12 @@ A helyszíni alkalmazásokhoz való egyszeri bejelentkezés biztosítása előtt
     
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 
-Az összes lépés elvégzése után az alkalmazásnak futnia kell. Az alkalmazás tesztelése:
+Ha végrehajtotta ezeket a lépéseket, az alkalmazás működik és kell lennie. Az alkalmazás tesztelése:
 
 1. Nyisson meg egy böngészőt, és navigáljon arra a **külső URL-címre** , amelyet az alkalmazás közzétételekor hozott létre. 
-1. Jelentkezzen be az alkalmazáshoz hozzárendelt tesztelési fiókkal. Képesnek kell lennie az alkalmazás betöltésére és az egyszeri bejelentkezésre az alkalmazásba.
+1. Jelentkezzen be a teszt-fiókkal, amelyet az alkalmazáshoz rendelt. Képesnek kell lennie az alkalmazás betöltésére és az egyszeri bejelentkezésre az alkalmazásba.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hogyan biztosítja az Azure AD Application Proxy az egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
-- [Alkalmazásproxy – problémamegoldás](application-proxy-troubleshoot.md)
+- [Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
+- [Az alkalmazásproxy hibaelhárítása](application-proxy-troubleshoot.md)

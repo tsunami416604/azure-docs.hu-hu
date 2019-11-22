@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag a B2B együttműködési felhasználók tömeges meghívásához – Azure Active Directory | Microsoft Docs
+title: Oktatóanyag a B2B együttműködési felhasználók tömeges meghívásához – Azure AD
 description: Ebben az oktatóanyagban megismerheti, hogyan küldhet az Azure AD B2B együttműködés külső felhasználói számára tömeges meghívókat a PowerShell és egy CSV-fájl használatával.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128720"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272358"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Oktatóanyag: Azure AD B2B csoportmunka-felhasználók tömeges meghívása (előzetes verzió)
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Oktatóanyag: Azure AD B2B együttműködési felhasználók tömeges meghívása (előzetes verzió)
 
 |     |
 | --- |
@@ -82,13 +82,13 @@ Ellenőrizze, hogy a hozzáadott vendég felhasználók szerepelnek-e a könyvt�
 
 ### <a name="view-guest-users-with-powershell"></a>Vendég felhasználók megtekintése a PowerShell-lel
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-A meghívott felhasználókat a következő formátumban kell megjelennie: *EmailAddress*#EXT #\@*tartomány*. Például: *lstokes_fabrikam. com #\@ext # contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
+A meghívott felhasználókat a következő formátumban kell megjelennie: *emailaddress*#EXT #\@*tartomány*. Például *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -102,7 +102,7 @@ Vagy futtathatja a következő PowerShell-parancsot egy felhasználói fiók tö
 
 Például:`Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban tömeges meghívókat küldött szervezeten kívüli vendégfelhasználóknak. A következő szakaszban megtudhatja, hogyan működik a meghívások érvényesítési folyamata.
 

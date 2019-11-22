@@ -1,23 +1,19 @@
 ---
 title: Alkalmazás üzembe helyezése a Kubernetes az Azure dev Spaces használatával
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Webszolgáltatás üzembe helyezése az AK-ban az Azure dev Spaces szolgáltatással
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: b43cedce2660c081f51d90cd8dd587e8d0361acd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815825"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279821"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Alkalmazás fejlesztése Kubernetes az Azure dev Spaces használatával
+# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: alkalmazás fejlesztése Kubernetes az Azure dev Spaces használatával
 Ebből az útmutatóból a következőket tudhatja meg:
 
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
@@ -77,17 +73,17 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 Ahhoz, hogy alkalmazást futtasson az Azure dev Spaces szolgáltatásban, szüksége lesz egy Docker és egy Helm-diagramra. Bizonyos nyelveken (például a [Java][java-quickstart], a [.net Core][netcore-quickstart]és a [Node. js][nodejs-quickstart]esetében) az Azure dev Spaces Client Tooling az összes szükséges eszközt képes létrehozni. Számos más nyelv, például a go, a PHP és a Python esetében az ügyfél-eszközkészlet létrehozhatja a Helm diagramot, feltéve, hogy érvényes Docker ad meg.
 
-A Docker és a Helm diagram eszközeinek előállítása az alkalmazás Kubernetes való `azds prep` futtatásához a következő parancs használatával:
+A Docker és a Helm diagram eszközeinek előállítása az alkalmazás Kubernetes való futtatásához a `azds prep` parancs használatával:
 
 ```cmd
 azds prep --public
 ```
 
-A Docker és `prep` a Helm diagram eszközeinek megfelelő létrehozásához futtatnia kell a parancsot a *dev-Spaces/Samples/NodeJS/Getting-Started/webfrontend* könyvtárból.
+A Docker és a Helm diagram eszközeinek megfelelő létrehozásához futtatnia kell a `prep` parancsot a *dev-Spaces/Samples/NodeJS/Getting-Started/webfrontend* könyvtárból.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
 
-Hozza létre és futtassa a kódot az AK- `azds up` ban a parancs használatával:
+Hozza létre és futtassa a kódot az AK-ban a `azds up` parancs használatával:
 
 ```cmd
 $ azds up
@@ -111,26 +107,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-A szolgáltatás futtatásához nyissa meg a `azds up` parancs kimenetében megjelenő nyilvános URL-címet. Ebben a példában a nyilvános URL-cím *http://webfrontend.1234567890abcdef1234.eus.azds.io/* a következő:.
+A szolgáltatás futását a `azds up` parancs kimenetében megjelenő nyilvános URL-cím megnyitásával tekintheti meg. Ebben a példában a nyilvános URL-cím *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 > [!NOTE]
-> Ha a futás közben navigál a szolgáltatáshoz `azds up`, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja `--disable-http-traces` a futtatásakor. `azds up`
+> Amikor `azds up`futtatása közben navigál a szolgáltatáshoz, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. A nyomkövetéseket letilthatja a `--disable-http-traces` használatával `azds up`futtatásakor.
 
-Ha a `azds up` *CTRL + c billentyűkombinációval*állítja le a parancsot, a szolgáltatás továbbra is az AK-ban fog futni, és a nyilvános URL-cím továbbra is elérhető marad.
+Ha leállítja a `azds up` parancsot a *CTRL + c billentyűkombinációval*, a szolgáltatás továbbra is az AK-ban fut, és a nyilvános URL-cím továbbra is elérhető marad.
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, majd újra futtathatja a `azds up` parancsot. Példa:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a `azds up` parancsot. Például:
 
 1. Ha `azds up` még fut, nyomja le a *CTRL + c*billentyűkombinációt.
-1. [A 13. sor `server.js` frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
+1. [A `server.js`13. sorának frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Mentse a módosításokat.
-1. Futtassa újra `azds up` a parancsot:
+1. Futtassa újra a `azds up` parancsot:
 
     ```cmd
     $ azds up
@@ -142,7 +138,7 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
     ```
 
 1. Navigáljon a futó szolgáltatáshoz, és figyelje meg a módosításokat.
-1. Nyomja le a *CTRL + c* billentyűkombinációt a `azds up` parancs leállításához.
+1. Nyomja le a *CTRL + c* billentyűkombinációt az `azds up` parancs leállításához.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
@@ -150,7 +146,7 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 

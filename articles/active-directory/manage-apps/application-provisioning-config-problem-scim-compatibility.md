@@ -1,6 +1,6 @@
 ---
-title: SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás ismert problémák és megoldásuk |} A Microsoft Docs
-description: Egy, amely támogatja az SCIM 2.0 az Azure AD katalógusban nem szereplő alkalmazás hozzáadása során szembesülnek közös protokollt kompatibilitási problémák megoldása
+title: Az SCIM 2,0 protokoll megfelelőségével kapcsolatos ismert problémák – Azure AD
+description: A SCIM 2,0-et az Azure AD-t támogató nem katalógusbeli alkalmazások hozzáadásakor felmerülő általános protokoll-kompatibilitási problémák megoldása
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,102 +16,102 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963170"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275800"
 ---
-# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Ismert problémák és megoldásaik az SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás
+# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
-Az Azure Active Directory (Azure AD) automatikusan létesítsen felhasználók és csoportok bármilyen alkalmazás vagy a rendszer, amely egy webszolgáltatás felhasználói felülettel fronted van definiálva a [rendszer tartományok közötti Identity Management (SCIM) 2.0-s protokoll specifikáció](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
+Azure Active Directory (Azure AD) automatikusan kiépítheti a felhasználókat és a csoportokat bármely olyan alkalmazásra vagy rendszerre, amelyet egy webszolgáltatásnak kell ellátnia a [rendszeren a tartományok közötti Identitáskezelés (scim) 2,0 protokoll specifikációja](https://tools.ietf.org/html/draft-ietf-scim-api-19)alapján meghatározott felületen. 
 
-Az SCIM 2.0 protokoll támogatása az Azure AD leírt [használatával a rendszer a tartományok közötti Identity Management (SCIM) automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból](use-scim-to-provision-users-and-groups.md), amely felsorolja a a protokoll, amely megvalósítja az annak érdekében, hogy a felhasználók és csoportok Azure AD-ből, amelyek támogatják az SCIM 2.0 alkalmazások automatikusan üzembe meghatározott részeit.
+A SCIM 2,0 protokoll Azure AD-támogatását a [rendszer a tartományok közötti Identitáskezelés (scim) használatával című témakör ismerteti, amellyel automatikusan kiépítheti a felhasználókat és csoportokat a Azure Active Directoryból az alkalmazásokba](use-scim-to-provision-users-and-groups.md), amelyek a scim 2,0-et támogató alkalmazások számára automatikusan kiépítik a felhasználókat és csoportokat az Azure ad-ből.
 
-Ez a cikk a kiépítési szolgáltatás megfeleljen az SCIM 2.0 protokollt, és hogyan működnek ezek a hibák elhárítása Azure AD-felhasználót az aktuális és korábbi kapcsolatos problémákat ismerteti.
+Ez a cikk az Azure AD-felhasználó kiépítési szolgáltatásának az SCIM 2,0-es protokollal való betartásával kapcsolatos aktuális és múltbeli problémákat ismerteti, valamint a problémák megoldását.
 
 > [!IMPORTANT]
-> Az Azure AD felhasználói kiépítési szolgáltatás SCIM ügyfélre a legújabb frissítés történt a 2018. December 18. Ez a frissítés az alábbi táblázatban felsorolt ismert kompatibilitási problémákkal foglalkozik. További információt a frissítés alatt a gyakori kérdések listája.
+> Az Azure AD felhasználói kiépítési szolgáltatás SCIM-ügyfelének legújabb frissítése 2018. december 18-án történt. Ez a frissítés az alábbi táblázatban felsorolt ismert kompatibilitási problémákat tárgyalja. A frissítéssel kapcsolatos további információkért tekintse meg az alábbi gyakran ismételt kérdéseket.
 
-## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 megfelelőségi problémák megoldása és állapota
+## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2,0 megfelelőségi problémák és állapot
 
-| **SCIM 2.0 házirendnek való megfeleléssel** |  **Rögzített?** | **Javítsa ki a dátum**  |  
+| **SCIM 2,0 megfelelőségi probléma** |  **Rögzített?** | **Javítás dátuma**  |  
 |---|---|---|
-| Az Azure AD szükséges "/ scim" kell lennie az alkalmazás által az SCIM-végpont URL-címe  | Igen  |  2018\. december 18. | 
-| A bővítményattribútumok használata pont "."jelöléssel attribútum neve helyett kettőspont előtt":" jelöléssel |  Igen  | 2018\. december 18.  | 
-|  A Patch kéréseknek többértékű attribútumok érvénytelen elérési út szűrési szintaxist tartalmaz | Igen  |  2018\. december 18.  | 
-|  Létrehozási kérelmek csoportosítása tartalmaz egy érvénytelen séma URI | Igen  |  2018\. december 18.  |  
+| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Igen  |  December 18., 2018 | 
+| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Igen  | December 18., 2018  | 
+|  A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Igen  |  December 18., 2018  | 
+|  A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Igen  |  December 18., 2018  |  
 
-## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>A szolgáltatások javítások leírt automatikusan alkalmazza a már meglévő SCIM alkalmazásomat?
+## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>A szolgáltatási javítások automatikusan érvénybe lépnek a meglévő SCIM-alkalmazáson?
 
-Nem. Ahogy azt kellene alkotnak, az SCIM-alkalmazásoknak a régebbi működése működéséhez kódolni is használhatatlanná tévő változást, a módosítások lettek nem alkalmazza automatikusan a meglévő alkalmazások.
+Nem. Mivel a régi viselkedéssel való együttműködéshez kódolt SCIM-alkalmazások esetében nem történt változás, a módosítások nem lettek automatikusan alkalmazva a meglévő alkalmazásokra.
 
-A módosítások érvénybe lépnek minden új [katalógusban nem szereplő SCIM alkalmazások](configure-single-sign-on-non-gallery-applications.md) a javítást követően az Azure Portalon konfigurálni.
+A módosítások a javítás után a Azure Portal konfigurált összes új, nem katalógusba [scim](configure-single-sign-on-non-gallery-applications.md) alkalmazásra érvényesek.
 
-Hogyan telepíthet át egy meglévő felhasználó fürtkiépítési feladat tartalmazza a legújabb javításokkal információkért lásd: a következő szakaszban.
+A következő szakaszban talál információt arról, hogyan telepítheti át a meglévő felhasználó-kiépítési feladatot a legújabb javítások befoglalására.
 
-## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Áttelepíthetek egy meglévő SCIM-alapú felhasználó fürtkiépítési feladat a szolgáltatás legújabb javításokkal felvenni?
+## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Áttelepíthetek egy meglévő SCIM-alapú felhasználói kiépítési feladatot a legújabb szolgáltatás-javítások befoglalására?
 
-Igen. Ha már használja az alkalmazáspéldány egyszeri bejelentkezést, és szeretne áttelepíteni a meglévő üzembe helyezési feladat tartalmazza a legújabb javításokat, kövesse az alábbi eljárást. Ez az eljárás ismerteti, hogyan használhatja a Microsoft Graph API és a Microsoft Graph API explorer távolítsa el a régi létesítési feladat a meglévő SCIM-alkalmazást, és hozzon létre egy újat, amely az új viselkedés érvényes.
+Igen. Ha már használja ezt az alkalmazás-példányt az egyszeri bejelentkezéshez, és át kell telepítenie a meglévő kiépítési feladatot a legújabb javítások befoglalásához, kövesse az alábbi eljárást. Ez az eljárás azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a régi kiépítési feladat meglévő SCIM-alkalmazásból való eltávolításához, valamint egy olyan új művelet létrehozásához, amely az új viselkedést mutatja be.
 
 > [!NOTE]
-> Ha az alkalmazás még fejlesztés alatt áll, és egyszeri bejelentkezés vagy a felhasználók átadásának még nem vezette, a legegyszerűbb megoldás, ami törli az alkalmazás bejegyzést a **Azure Active Directory > Vállalati alkalmazások**szakaszában az Azure Portalon, és egyszerűen adjon hozzá egy új bejegyzést az alkalmazás használatával a **-alkalmazás létrehozása > katalógusban nem szereplő** lehetőséget. Ez az alábbi eljárás futtatása helyett használhatók.
+> Ha az alkalmazás még fejlesztés alatt áll, és még nincs telepítve az egyszeri bejelentkezéshez vagy a felhasználók üzembe helyezéséhez, a legegyszerűbb megoldás az alkalmazás bejegyzésének törlése a Azure Portal **Azure Active Directory > Enterprise Applications** szakaszában, és egyszerűen vegyen fel új bejegyzést az alkalmazáshoz az **alkalmazás létrehozása > nem** katalógus beállítással. Ez egy alternatív megoldás az alábbi eljárás futtatására.
  
-1. Jelentkezzen be az Azure Portalra a https://portal.azure.com.
-2. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban az Azure Portalon keresse meg és válassza ki a meglévő SCIM-alkalmazást.
-3. Az a **tulajdonságok** szakaszában a meglévő SCIM-alkalmazás, példány a **Objektumazonosító**.
-4. Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
-5. A Graph Explorer keresse meg az üzembe helyezési feladat Azonosítóját az alábbi parancs futtatásával. Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
+1. Jelentkezzen be a Azure Portal https://portal.azure.com.
+2. A Azure Portal **Azure Active Directory > vállalati alkalmazások** szakaszában keresse meg és válassza ki a meglévő scim alkalmazást.
+3. A meglévő SCIM-alkalmazás **Tulajdonságok** szakaszában másolja át az **objektumazonosítót**.
+4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorert, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
+5. A Graph Explorerben futtassa az alábbi parancsot a kiépítési feladatok AZONOSÍTÓjának megkereséséhez. Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Első feladatok](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "feladatok beolvasása") 
+   ![Feladatok beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Feladatok beolvasása") 
 
 
-6. Az eredmények között másolja a teljes "ID" karakterlánccal kezdődik "customappsso" vagy "scim".
-7. Futtassa az alábbi parancsot a attribútumleképezés konfiguráció, lekérése érdekében, hogy biztonsági mentést. A azonos [-objektumazonosító], mielőtt használja, és cserélje le az előző lépésben másolt kiépítési Feladatazonosítót [feladatazonosító].
+6. Az eredmények között másolja a "customappsso" vagy a "scim" kifejezéssel kezdődő teljes "ID" karakterláncot.
+7. Futtassa az alábbi parancsot az attribútum-leképezési konfiguráció lekéréséhez, így biztonsági mentést készíthet. Használja ugyanazokat az [Object-id]-t, mint korábban, és cserélje le a [Job-id] elemet az utolsó lépésből másolt kiépítési feladatokhoz tartozó AZONOSÍTÓra.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Séma beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "séma beolvasása") 
+   ![Séma beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Séma beolvasása") 
 
-8. Másolja az utolsó lépés a JSON-kimenetet, és mentse egy szövegfájlba. Ez tartalmazza a bármely egyéni attribútum-leképezések, hogy a régi alkalmazáshoz hozzáadott, és körülbelül több ezer sornyi JSON kell lennie.
-9. Futtassa az alábbi parancsot az üzembe helyezési feladat törléséhez:
+8. Másolja a JSON-kimenetet az utolsó lépésből, és mentse egy szövegfájlba. Ez tartalmaz minden egyéni attribútumot, amelyet a régi alkalmazáshoz adott hozzá, és körülbelül néhány ezer sornyi JSON-t kell használnia.
+9. Futtassa az alábbi parancsot a kiépítési feladatok törléséhez:
  
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
-10. Futtassa az alábbi parancsot egy új létesítési feladat létrehozása, amely rendelkezik a szolgáltatás legújabb javításokkal.
+10. Az alábbi parancs futtatásával hozzon létre egy új kiépítési feladatot, amely a legújabb szolgáltatás-javításokkal rendelkezik.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   templateId: "scim"   }`
    
-11. Az utolsó lépés az eredmények között másolja a teljes "ID" karakterlánccal kezdődik "scim". Igény szerint alkalmazza újra a régi attribútumleképezések az alábbi [Új – feladat-id] cserélje le az imént másolt új feladat azonosítója, és írja be a JSON kimenete kérelemtörzsként való #7. lépés: a parancs futtatásával.
+11. Az utolsó lépés eredményeiben másolja a "scim" karakterlánccal kezdődő teljes "ID" karakterláncot. Szükség esetén újra alkalmazhatja a régi attribútum-hozzárendeléseket az alábbi parancs futtatásával, lecserélve a [New-Job-id] paramétert az imént másolt új AZONOSÍTÓJÚ feladattípusra, majd a kérelem törzsének #7. lépésével adja meg a JSON-kimenetet.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
 
-12. Az első böngészőablakban adja vissza, és válassza ki a **kiépítési** az alkalmazás lapon.
-13. Ellenőrizze a konfigurációt, és indítsa el az üzembe helyezési feladat. 
+12. Térjen vissza az első böngészőablakba, és válassza ki az alkalmazás **kiépítési** lapját.
+13. Ellenőrizze a konfigurációt, majd indítsa el a kiépítési feladatot. 
 
-## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Adhat hozzá egy új katalógusban nem szereplő alkalmazást, amely rendelkezik a régi felhasználói viselkedés kiépítés?
+## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Hozzáadhatok olyan új, nem katalógusbeli alkalmazást, amely a régi felhasználó-kiépítési viselkedéssel rendelkezik?
 
-Igen. Ha az alkalmazás régi viselkedés előtti a javításokat, és üzembe helyezése egy új példányát kell kellett kódolni, kövesse az alábbi utasításokat. Ez az eljárás ismerteti, hogyan lehet egy, a régi viselkedés érvényes kiépítési SCIM-feladat létrehozása a Microsoft Graph API és a Microsoft Graph API explorer használatával.
+Igen. Ha az alkalmazást a javítások előtt meglévő régi viselkedéshez kódolta, és új példányt kell telepítenie, kövesse az alábbi eljárást. Ez az eljárás azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer egy olyan SCIM-létesítési feladat létrehozásához, amely a régi viselkedést mutatja.
  
-1. Jelentkezzen be az Azure Portalra a https://portal.azure.com.
-2. az a **Azure Active Directory > Vállalati alkalmazások > alkalmazás létrehozása** szakaszban az Azure Portal, hozzon létre egy új **katalógusban nem szereplő** alkalmazás.
-3. Az a **tulajdonságok** az új egyéni alkalmazás, példány szakaszában a **Objektumazonosító**.
-4. Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
-5. A Graph Explorer futtassa az alábbi parancsot az alkalmazás kiépítési konfigurációjának inicializálása.
-   Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
+1. Jelentkezzen be a Azure Portal https://portal.azure.com.
+2. a **Azure Active Directory > vállalati alkalmazások > alkalmazás létrehozása** című Azure Portal szakaszában hozzon létre egy új, **nem** katalógusbeli alkalmazást.
+3. Az új egyéni alkalmazás **Tulajdonságok** szakaszában másolja ki az **objektumazonosítót**.
+4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorert, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
+5. A Graph Explorerben futtassa az alábbi parancsot az alkalmazás létesítési konfigurációjának inicializálásához.
+   Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
  
-6. Az első böngészőablakban adja vissza, és válassza ki a **kiépítési** az alkalmazás lapon.
-7. Fejezze be a felhasználó konfigurációs kiépítése, ahogy azt szokásosan tenné.
+6. Térjen vissza az első böngészőablakba, és válassza ki az alkalmazás **kiépítési** lapját.
+7. A szokásos módon végezze el a felhasználó kiépítési konfigurációját.
 
 
-## <a name="next-steps"></a>További lépések
-[További információ az üzembe helyezést és megszüntetést SaaS-alkalmazásokhoz](user-provisioning.md)
+## <a name="next-steps"></a>Következő lépések
+[További információ az SaaS-alkalmazásokhoz való kiépítés és kiépítés ellen](user-provisioning.md)
 

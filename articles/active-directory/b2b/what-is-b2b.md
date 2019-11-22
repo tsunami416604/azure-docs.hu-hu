@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Active Directory B2B együttműködés? – Az azure Active Directory |} A Microsoft Docs
+title: Mi a B2B együttműködés a Azure Active Directoryban?
 description: Az Azure Active Directory B2B együttműködés támogatja a vendég hozzáférést, így biztonságosan megoszthat erőforrásokat és együttműködhet külső partnerekkel.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62bc550a809d596b5378c03aa95877db5e15febb
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18d60614a07895c7e9468d35b2d389a28129af4d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019515"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271651"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -75,11 +75,11 @@ A vendégfelhasználók kezelését rábízhatja a felhasználó tulajdonosokra,
 
 Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
 - A [B2B együttműködés meghívó API-kat](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) használva egyénre szabhatja a felvételi folyamatot, az önkiszolgáló regisztrációs portál létrehozását is beleértve. 
-- A GitHubon található önkiszolgáló portálhoz a mintakód használata. [](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)
+- A [githubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)található önkiszolgáló portálhoz a mintakód használata.
 
 ![A minta regisztrációs portált ábrázoló képernyőfelvétel](media/what-is-b2b/sign-up-portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)

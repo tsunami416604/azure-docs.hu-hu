@@ -1,6 +1,6 @@
 ---
 title: Töltse le és telepítse a Microsoft Authenticator alkalmazást – Azure AD
-description: A kétfaktoros ellenőrzés Microsoft Authenticator alkalmazásának letöltése, telepítése és használata.
+description: Töltse le és telepítse a Microsoft Authenticator alkalmazást, hogy ellenőrizze az identitását a kétfaktoros ellenőrzés használata során.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 86bbe9560a4c3520bce5aa006c18f794c8298a54
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820228"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266929"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
 
@@ -54,6 +54,6 @@ Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operá
 >[!Important]
 >Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/en-us/account/authenticator).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután letöltötte és telepítette az alkalmazást, hozzá kell adnia a különböző fiókokat. További információt [a fiókok hozzáadása](user-help-auth-app-add-account-overview.md)című témakörben talál.
