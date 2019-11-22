@@ -49,6 +49,8 @@
           href: routing-coverage.md
         - name: Mobilitási lefedettség
           href: mobility-coverage.md
+        - name: Időjárási lefedettség
+          href: weather-coverage.md
     - name: Honosítási támogatás
       href: supported-languages.md
     - name: Támogatott térképstílusok
@@ -57,6 +59,8 @@
       href: zoom-levels-and-tile-grid.md
     - name: Mobilitási szolgáltatás adatstruktúrája
       href: mobility-service-data-structure.md
+    - name: Az időjárási szolgáltatással kapcsolatos fogalmak
+      href: weather-services-concepts.md
 - name: Útmutatók
   items:
     - name: Maps-fiókok kezelése
@@ -185,6 +189,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Megjelenítő szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: 'Megjelenítő szolgáltatás, 2. verzió'
+          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
         - name: Útvonal szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: Keresési szolgáltatás
@@ -195,6 +201,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Forgalom szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Időjárás-szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/weather'
         - name: Maps-fiókkezelés
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

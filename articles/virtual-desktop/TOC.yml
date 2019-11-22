@@ -62,6 +62,8 @@
       href: customize-rdp-properties.md
     - name: A diagnosztikai eszköz üzembe helyezése
       href: deploy-diagnostics.md
+    - name: MSIX-alkalmazás csatolásának beállítása
+      href: app-attach.md
 - name: Alapelvek
   items:
     - name: A Windows Virtual Desktop környezete

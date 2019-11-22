@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure Data Factory dokumentációja
-summary: Az Azure Data Factory az Azure felhőalapú ETL-szolgáltatása a kiszolgáló nélküli adatintegráció és adatátalakítás felskálázásához.  A szolgáltatás kódolás nélküli felhasználói felületet biztosít az intuitív létrehozáshoz, valamint az egytáblás monitorozáshoz és felügyelethez. A meglévő SSIS-csomagokat átemelheti az Azure-ba, és az ADF-ben teljes körű kompatibilitással futtathatja azokat. Az SSIS Integration Runtime teljes mértékben felügyelt szolgáltatást biztosít, így nem kell foglalkoznia az infrastruktúra-kezeléssel.
+summary: Az Azure Data Factory az Azure felhőalapú ETL-szolgáltatása a kiszolgáló nélküli adatintegráció és adatátalakítás felskálázásához.  A szolgáltatás kódolás nélküli felhasználói felületet biztosít az intuitív tartalomkészítéshez, valamint az egy ablaktáblás monitorozáshoz és felügyelethez. A meglévő SSIS-csomagokat átemelheti az Azure-ba, és az ADF-ben teljes körű kompatibilitással futtathatja azokat. Az SSIS Integration Runtime teljes mértékben felügyelt szolgáltatást biztosít, így nem kell foglalkoznia az infrastruktúra-kezeléssel.
 metadata:
   title: Az Azure Data Factory dokumentációja
   description: Ismerkedjen meg a Data Factory felhőalapú integrációs szolgáltatás használatával, amelynek segítségével adattárolási, -továbbítási és -feldolgozási folyamatokat állíthat össze automatizált adatfeldolgozási folyamatokká. Az oktatóanyagok és az egyéb dokumentáció bemutatják az adatfeldolgozási folyamatok telepítésének és felügyeletének, valamint az adatok az elemzéshez való továbbításának és átalakításának módjait.
@@ -12,12 +12,12 @@ metadata:
   ms.author: maghan
   ms.date: 10/02/2019
   monikerRange: ''
-  ms.openlocfilehash: 570a549bc132b1126d904d52af3066e152687e72
-  ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+  ms.openlocfilehash: fc85ae8cc6dcb2d5d04a6cbd7f79eb03470a58fb
+  ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/17/2019
-  ms.locfileid: "72554854"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74321756"
 landingContent:
 - title: Az Azure Data Factory bemutatása
   linkLists:

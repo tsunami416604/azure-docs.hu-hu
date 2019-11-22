@@ -526,7 +526,7 @@
               href: sql-database-elastic-pool-manage.md
         - name: Adatbázis-kiszolgálói erőforrások
           items:
-            - name: Az adatbázis-kiszolgáló erőforráskorlátai
+            - name: Adatbázis erőforráskorlátai
               href: sql-database-resource-limits-database-server.md
             - name: Kapcsolati architektúra
               href: sql-database-connectivity-architecture.md

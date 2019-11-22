@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543024"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052172"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -44,7 +44,7 @@ Először a Microsoft megszakítja a meglévő foglalást, és visszatéríti az
 
 ### <a name="enterprise-agreement-customers"></a>Nagyvállalati Szerződéssel rendelkező ügyfelek
 
-A pénz hozzáadódik a csereprogramok és visszatérítések pénzügyi keretéhez, ha az eredeti vásárlás is ilyen módon történt. Az eredeti vásárlások óta készült túlhasználati számlákat a rendszer újra megnyitja és újraszámolja, ezzel biztosítva a pénzügyi keret felhasználását. Ha a foglalást használó pénzügyi keret időtartama már nem aktív, akkor a kredit hozzáadódik a jelenlegi Nagyvállalati Szerződéshez tartozó pénzügyi keret időtartamához.
+A pénz hozzáadódik a csereprogramok és visszatérítések pénzügyi keretéhez, ha az eredeti vásárlás is ilyen módon történt. Az eredeti vásárlások óta készült túlhasználati számlákat a rendszer újra megnyitja és újraszámolja, ezzel biztosítva a pénzügyi keret felhasználását. Ha a foglalást használó pénzügyi keret időtartama már nem aktív, akkor a kredit hozzáadódik a jelenlegi Nagyvállalati Szerződéshez tartozó pénzügyi keret időtartamához. A jóváírás a visszatérítés napjától kezdve 90 napig érvényes. A fel nem használt jóváírás 90 nap után lejár.
 
 Ha az eredeti vásárlás túlhasználatként történt, a Microsoft kiállít egy jóváírási emlékeztetőt.
 

@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: Sablon exportálása
       href: export-template-portal.md
-    - name: Áthelyezés
+    - name: Áthelyezés – régiók
       items:
-        - name: Erőforrások áthelyezése
+        - name: Áthelyezés régiók között
+          href: resource-group-move-region.md
+        - name: Támogatott szolgáltatások
+          href: region-move-support.md
+        - name: Szolgáltatások
+          items:
+            - name: Azure-beli virtuális gépek
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuális hálózat
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Hálózati biztonsági csoport (NSG)
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Nyilvános IP-címek
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Áthelyezés – erőforráscsoportok/előfizetések
+      items:
+        - name: Áthelyezés erőforráscsoportok/előfizetések között
           href: resource-group-move-resources.md
-        - name: Erőforrás-támogatás
+        - name: Támogatott szolgáltatások
           href: move-support-resources.md
         - name: Áthelyezés hibaelhárítása
           href: troubleshoot-move.md
-        - name: Útmutatás a szolgáltatások áthelyezéséhez
+        - name: Szolgáltatások
           items:
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md

@@ -28,6 +28,8 @@
       href: tutorial-restore-files.md
     - name: Azure-beli virtuális gépen futó SQL Server biztonsági mentése
       href: tutorial-sql-backup.md
+    - name: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
+      href: tutorial-backup-sap-hana-db.md
     - name: Azure Files-fájlmegosztások biztonsági mentése
       href: tutorial-backup-azure-files.md
     - name: A Windows Server biztonsági mentése
@@ -52,6 +54,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: A MARS-ügynök támogatási mátrixa
           href: backup-support-matrix-mars-agent.md
+        - name: A SAP HANA biztonsági mentésének támogatási mátrixa
+          href: sap-hana-backup-support-matrix.md
     - name: Biztonság
       items:
         - name: Szerepköralapú hozzáférés-vezérlés
@@ -74,6 +78,8 @@
           href: backup-azure-files-faq.md
         - name: GYIK – Azure-beli virtuális gépeken futó SQL Server-adatbázisok biztonsági mentése
           href: faq-backup-sql-server.md
+        - name: GYIK – SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
+          href: sap-hana-faq-backup-azure-vm.md
         - name: GYIK – Azure Backup Server és DPM
           href: backup-azure-dpm-azure-server-faq.md
         - name: GYIK – Azure Backup monitorozási riasztás
@@ -228,8 +234,14 @@
           href: restore-sql-database-azure-vm.md
         - name: Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése
           href: manage-monitor-sql-database-backup.md
-    - name: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
-      href: backup-azure-sap-hana-database.md
+    - name: SAP HANA-adatbázisok Azure-beli virtuális gépeken
+      items:
+        - name: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
+          href: backup-azure-sap-hana-database.md
+        - name: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
+          href: sap-hana-db-restore.md
+        - name: Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése
+          href: sap-hana-db-manage.md
     - name: Windows Server
       items:
         - name: Windows Serveren lévő fájlok és mappák biztonsági mentése
