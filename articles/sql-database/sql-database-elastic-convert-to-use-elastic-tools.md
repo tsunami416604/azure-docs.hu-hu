@@ -1,6 +1,6 @@
 ---
-title: Meglévő adatbázisok migrálása a vertikális felskálázáshoz
-description: Többrétegű adatbázisok átalakítása rugalmas adatbázis-eszközök használatára egy szegmens Térkép-kezelő létrehozásával
+title: Migrate existing databases to scale out | Microsoft Docs
+description: Convert sharded databases to use elastic database tools by creating a shard map manager
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,160 +11,165 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 7d4eab7546a488bf2d4ede8f7c71143e823ba493
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c776f4ac09626f0abd1eb754cde391a1c5447627
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823932"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421222"
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>Meglévő adatbázisok migrálása a vertikális felskálázáshoz
-A meglévő horizontális felskálázású adatbázisok egyszerűen kezelhetők Azure SQL Database adatbázis-eszközökkel (például a [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md)használatával). Először alakítsa át egy meglévő adatbázis-készletet a szegmenses [Térkép kezelőjének](sql-database-elastic-scale-shard-map-management.md)használatára. 
+# <a name="migrate-existing-databases-to-scale-out"></a>Migrate existing databases to scale out
+
+Easily manage your existing scaled-out sharded databases using Azure SQL Database database tools (such as the [Elastic Database client library](sql-database-elastic-database-client-library.md)). First convert an existing set of databases to use the [shard map manager](sql-database-elastic-scale-shard-map-management.md).
 
 ## <a name="overview"></a>Áttekintés
-Meglévő, horizontálisan használt adatbázis migrálása: 
 
-1. Készítse elő a szegmens [map Manager-adatbázist](sql-database-elastic-scale-shard-map-management.md).
-2. Hozza létre a szegmenses térképet.
-3. Készítse elő az egyes szegmenseket.  
-4. Leképezések hozzáadása a szegmenses térképhez
+To migrate an existing sharded database:
 
-Ezek a technikák a [.NET-keretrendszer ügyféloldali függvénytárával](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)vagy az [Azure SQL db-Elastic Database eszközök parancsfájljaiban](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)található PowerShell-parancsfájlok használatával valósíthatók meg. Az itt található példák a PowerShell-szkripteket használják.
+1. Prepare the [shard map manager database](sql-database-elastic-scale-shard-map-management.md).
+2. Create the shard map.
+3. Prepare the individual shards.  
+4. Add mappings to the shard map.
 
-A ShardMapManager kapcsolatos további információkért lásd: a szegmenses [hozzárendelések kezelése](sql-database-elastic-scale-shard-map-management.md). A rugalmas adatbázis-eszközök áttekintését lásd: [Elastic Database funkciók áttekintése](sql-database-elastic-scale-introduction.md).
+These techniques can be implemented using either the [.NET Framework client library](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), or the PowerShell scripts found at [Azure SQL DB - Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). The examples here use the PowerShell scripts.
 
-## <a name="prepare-the-shard-map-manager-database"></a>A szegmens Map Manager adatbázisának előkészítése
-A szegmenses Térkép-kezelő egy olyan speciális adatbázis, amely tartalmazza a kibővített adatbázisok kezelésére szolgáló adatmennyiséget. Használhat meglévő adatbázist, vagy létrehozhat egy új adatbázist. A szegmenses Térkép-kezelőként működő adatbázis nem lehet ugyanaz az adatbázis, mint a Szilánk. A PowerShell-parancsfájl nem hozza létre az adatbázist. 
+For more information about the ShardMapManager, see [Shard map management](sql-database-elastic-scale-shard-map-management.md). For an overview of the elastic database tools, see [Elastic Database features overview](sql-database-elastic-scale-introduction.md).
 
-## <a name="step-1-create-a-shard-map-manager"></a>1\. lépés: a szegmenses Térkép kezelőjének létrehozása
-    # Create a shard map manager. 
-    New-ShardMapManager -UserName '<user_name>' 
-    -Password '<password>' 
-    -SqlServerName '<server_name>' 
-    -SqlDatabaseName '<smm_db_name>' 
-    #<server_name> and <smm_db_name> are the server name and database name 
-    # for the new or existing database that should be used for storing 
-    # tenant-database mapping information.
+## <a name="prepare-the-shard-map-manager-database"></a>Prepare the shard map manager database
 
-### <a name="to-retrieve-the-shard-map-manager"></a>A szegmens Térkép kezelőjének beolvasása
-A létrehozást követően lekérheti a szegmens Map Managert ezzel a parancsmaggal. Erre a lépésre minden alkalommal szükség van, amikor a ShardMapManager objektumot kell használnia.
+The shard map manager is a special database that contains the data to manage scaled-out databases. You can use an existing database, or create a new database. A database acting as shard map manager should not be the same database as a shard. The PowerShell script does not create the database for you.
 
-    # Try to get a reference to the Shard Map Manager  
-    $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' 
-    -Password '<password>' 
-    -SqlServerName '<server_name>' 
-    -SqlDatabaseName '<smm_db_name>' 
+## <a name="step-1-create-a-shard-map-manager"></a>Step 1: create a shard map manager
 
+```powershell
+# Create a shard map manager
+New-ShardMapManager -UserName '<user_name>' -Password '<password>' -SqlServerName '<server_name>' -SqlDatabaseName '<smm_db_name>'
+#<server_name> and <smm_db_name> are the server name and database name
+# for the new or existing database that should be used for storing
+# tenant-database mapping information.
+```
 
-## <a name="step-2-create-the-shard-map"></a>2\. lépés: a szegmenses Térkép létrehozása
-Válassza ki a létrehozandó szegmens-hozzárendelés típusát. A választás az adatbázis-architektúrától függ: 
+### <a name="to-retrieve-the-shard-map-manager"></a>To retrieve the shard map manager
 
-1. Egyetlen bérlő/adatbázis (a használati feltételekhez lásd a [szószedetet](sql-database-elastic-scale-glossary.md)). 
-2. Több bérlő/adatbázis (két típus):
-   1. Lista megfeleltetése
-   2. Tartomány-hozzárendelés
+After creation, you can retrieve the shard map manager with this cmdlet. This step is needed every time you need to use the ShardMapManager object.
 
-Egybérlős modell esetén hozzon létre egy **lista-hozzárendelési** szegmens leképezést. Az egybérlős modell bérlőként egy adatbázist rendel hozzá. Ez egy hatékony modell az SaaS-fejlesztők számára, mivel leegyszerűsíti a felügyeletet.
+```powershell
+# Try to get a reference to the Shard Map Manager  
+$ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<password>' -SqlServerName '<server_name>' -SqlDatabaseName '<smm_db_name>'
+```
 
-![Lista megfeleltetése][1]
+## <a name="step-2-create-the-shard-map"></a>Step 2: create the shard map
 
-A több-bérlős modell több bérlőt rendel egy adott adatbázishoz (és több adatbázisból is terjesztheti a bérlők csoportjait). Akkor használja ezt a modellt, ha várható, hogy az egyes bérlők kis mennyiségű adatra van szükségük. Ebben a modellben a **tartomány-hozzárendelés**használatával rendeljen hozzá bérlőket egy adatbázishoz. 
+Select the type of shard map to create. The choice depends on the database architecture:
 
-![Tartomány-hozzárendelés][2]
+1. Single tenant per database (For terms, see the [glossary](sql-database-elastic-scale-glossary.md).)
+2. Multiple tenants per database (two types):
+   1. List mapping
+   2. Range mapping
 
-Akár több-bérlős adatbázis-modellt is alkalmazhat egy *lista-hozzárendeléssel* , hogy több bérlőt rendeljen hozzá egy adott adatbázishoz. A DB1 például az 1. és az 5. bérlői azonosító adatainak tárolására szolgál, a DB2 pedig a 7. Bérlő és a bérlő 10 adatait tárolja. 
+For a single-tenant model, create a **list mapping** shard map. The single-tenant model assigns one database per tenant. This is an effective model for SaaS developers as it simplifies management.
 
-![Több bérlő egyetlen ADATBÁZISon][3] 
+![List mapping][1]
 
-**Válasszon egyet az alábbi lehetőségek közül:**
+The multi-tenant model assigns several tenants to an individual database (and you can distribute groups of tenants across multiple databases). Use this model when you expect each tenant to have small data needs. In this model, assign a range of tenants to a database using **range mapping**.
 
-### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>1\. lehetőség: szegmenses Térkép létrehozása lista-hozzárendeléshez
-Hozzon létre egy szegmenses térképet a ShardMapManager objektum használatával. 
+![Range mapping][2]
 
-    # $ShardMapManager is the shard map manager object. 
-    $ShardMap = New-ListShardMap -KeyType $([int]) 
-    -ListShardMapName 'ListShardMap' 
-    -ShardMapManager $ShardMapManager 
+Or you can implement a multi-tenant database model using a *list mapping* to assign multiple tenants to an individual database. For example, DB1 is used to store information about tenant ID 1 and 5, and DB2 stores data for tenant 7 and tenant 10.
 
+![Multiple tenants on single DB][3]
 
-### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>2\. lehetőség: szegmens leképezés létrehozása tartomány-hozzárendeléshez
-A leképezési minta kihasználása érdekében a bérlői azonosító értékének folytonos tartománynak kell lennie, és elfogadható, hogy az adatbázisok létrehozásakor kihagyja a tartományt a tartományokban.
+**Based on your choice, choose one of these options:**
 
-    # $ShardMapManager is the shard map manager object 
-    # 'RangeShardMap' is the unique identifier for the range shard map.  
-    $ShardMap = New-RangeShardMap 
-    -KeyType $([int]) 
-    -RangeShardMapName 'RangeShardMap' 
-    -ShardMapManager $ShardMapManager 
+### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Option 1: create a shard map for a list mapping
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>3\. lehetőség: az egyes adatbázisokra vonatkozó megfeleltetések listázása
-A minta beállításához szükség van egy lista-hozzárendelés létrehozására is, ahogy azt a 2. lépés, 1. lehetőség mutatja.
+Create a shard map using the ShardMapManager object.
 
-## <a name="step-3-prepare-individual-shards"></a>3\. lépés: az egyes szegmensek előkészítése
-Adja hozzá az egyes szegmenseket (adatbázisokat) a szegmenses Térkép kezelőjéhez. Ezzel előkészíti az egyes adatbázisokat a leképezési adatok tárolásához. Hajtsa végre ezt a metódust az egyes szegmenseken.
+```powershell
+# $ShardMapManager is the shard map manager object
+$ShardMap = New-ListShardMap -KeyType $([int]) -ListShardMapName 'ListShardMap' -ShardMapManager $ShardMapManager
+```
 
-    Add-Shard 
-    -ShardMap $ShardMap 
-    -SqlServerName '<shard_server_name>' 
-    -SqlDatabaseName '<shard_database_name>'
-    # The $ShardMap is the shard map created in step 2.
+### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Option 2: create a shard map for a range mapping
 
+To utilize this mapping pattern, tenant ID values needs to be continuous ranges, and it is acceptable to have gap in the ranges by skipping the range when creating the databases.
 
-## <a name="step-4-add-mappings"></a>4\. lépés: leképezések hozzáadása
-A leképezések hozzáadása a létrehozott szegmens-leképezés típusától függ. Ha létrehozta a listához tartozó térképet, a lista-hozzárendeléseket is hozzáadhatja. Ha tartományhoz tartozó térképet hozott létre, tartomány-hozzárendeléseket adhat hozzá.
+```powershell
+# $ShardMapManager is the shard map manager object
+# 'RangeShardMap' is the unique identifier for the range shard map.  
+$ShardMap = New-RangeShardMap -KeyType $([int]) -RangeShardMapName 'RangeShardMap' -ShardMapManager $ShardMapManager
+```
 
-### <a name="option-1-map-the-data-for-a-list-mapping"></a>1\. lehetőség: a lista megfeleltetéséhez tartozó adatleképezés
-Rendelje hozzá az adatleképezést az egyes bérlők listájának hozzárendelésével.  
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Option 3: List mappings on an individual database
 
-    # Create the mappings and associate it with the new shards 
-    Add-ListMapping 
-    -KeyType $([int]) 
-    -ListPoint '<tenant_id>' 
-    -ListShardMap $ShardMap 
-    -SqlServerName '<shard_server_name>' 
-    -SqlDatabaseName '<shard_database_name>' 
+Setting up this pattern also requires creation of a list map as shown in step 2, option 1.
 
-### <a name="option-2-map-the-data-for-a-range-mapping"></a>2\. lehetőség: az adattartomány-hozzárendelések leképezése
-Adja hozzá a tartomány-hozzárendeléseket az összes bérlői azonosító tartományhoz – adatbázis-társítások:
+## <a name="step-3-prepare-individual-shards"></a>Step 3: Prepare individual shards
 
-    # Create the mappings and associate it with the new shards 
-    Add-RangeMapping 
-    -KeyType $([int]) 
-    -RangeHigh '5' 
-    -RangeLow '1' 
-    -RangeShardMap $ShardMap 
-    -SqlServerName '<shard_server_name>' 
-    -SqlDatabaseName '<shard_database_name>' 
+Add each shard (database) to the shard map manager. This prepares the individual databases for storing mapping information. Execute this method on each shard.
 
+```powershell
+Add-Shard -ShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
+# The $ShardMap is the shard map created in step 2.
+```
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>3\. lépés: a több bérlőre vonatkozó adatleképezés egy adott adatbázisban
-Az egyes bérlők esetében futtassa az Add-ListMapping (1. lehetőség). 
+## <a name="step-4-add-mappings"></a>Step 4: Add mappings
 
-## <a name="checking-the-mappings"></a>A leképezések ellenőrzése
-A meglévő szegmensekkel és a hozzájuk társított leképezésekkel kapcsolatos információkat a következő parancsokkal kérdezheti le:  
+The addition of mappings depends on the kind of shard map you created. If you created a list map, you add list mappings. If you created a range map, you add range mappings.
 
-    # List the shards and mappings 
-    Get-Shards -ShardMap $ShardMap 
-    Get-Mappings -ShardMap $ShardMap 
+### <a name="option-1-map-the-data-for-a-list-mapping"></a>Option 1: map the data for a list mapping
+
+Map the data by adding a list mapping for each tenant.  
+
+```powershell
+# Create the mappings and associate it with the new shards
+Add-ListMapping -KeyType $([int]) -ListPoint '<tenant_id>' -ListShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
+```
+
+### <a name="option-2-map-the-data-for-a-range-mapping"></a>Option 2: map the data for a range mapping
+
+Add the range mappings for all the tenant ID range - database associations:
+
+```powershell
+# Create the mappings and associate it with the new shards
+Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
+```
+
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Step 4 option 3: map the data for multiple tenants on an individual database
+
+For each tenant, run the Add-ListMapping (option 1).
+
+## <a name="checking-the-mappings"></a>Checking the mappings
+
+Information about the existing shards and the mappings associated with them can be queried using following commands:  
+
+```powershell
+# List the shards and mappings
+Get-Shards -ShardMap $ShardMap
+Get-Mappings -ShardMap $ShardMap
+```
 
 ## <a name="summary"></a>Összefoglalás
-A telepítés befejezése után megkezdheti az Elastic Database ügyféloldali függvénytár használatát. Az [Adatfüggő útválasztást](sql-database-elastic-scale-data-dependent-routing.md) és a [több szegmensre](sql-database-elastic-scale-multishard-querying.md)kiterjedő lekérdezést is használhatja.
 
-## <a name="next-steps"></a>További lépések
-A PowerShell-parancsfájlok beszerzése az [Azure SQL db-Elastic Database eszközök parancsfájljaiból](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Once you have completed the setup, you can begin to use the Elastic Database client library. You can also use [data-dependent routing](sql-database-elastic-scale-data-dependent-routing.md) and [multi-shard query](sql-database-elastic-scale-multishard-querying.md).
 
-Az eszközök a GitHubon is elérhetők: [Azure/rugalmas adatbázis-eszközök](https://github.com/Azure/elastic-db-tools).
+## <a name="next-steps"></a>Következő lépések
 
-A Split-Merge eszköz használatával több-bérlős modellbe helyezheti át az adatait egyetlen bérlős modellbe. Lásd: [felosztás egyesítése eszköz](sql-database-elastic-scale-get-started.md).
+Get the PowerShell scripts from [Azure SQL DB-Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+
+The tools are also on GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+
+Use the split-merge tool to move data to or from a multi-tenant model to a single tenant model. See [Split merge tool](sql-database-elastic-scale-get-started.md).
 
 ## <a name="additional-resources"></a>További források
+
 A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások általános adatarchitektúra-mintázataival kapcsolatos információk: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-## <a name="questions-and-feature-requests"></a>Kérdések és szolgáltatások kérései
-Ha kérdése van, használja a [SQL Database fórumot](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a szolgáltatásra vonatkozó kérelmeket, vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
+## <a name="questions-and-feature-requests"></a>Questions and Feature Requests
+
+For questions, use the [SQL Database forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) and for feature requests, add them to the [SQL Database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png
 [2]: ./media/sql-database-elastic-convert-to-use-elastic-tools/rangemapping.png
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
-
