@@ -1,6 +1,6 @@
 ---
-title: Hálózati kommunikáció monitorozása – oktatóanyag – Azure Portal | Microsoft Docs
-description: Megismerheti, hogyan monitorozhatja a két virtuális gép közötti hálózati kommunikációt az Azure Network Watcher kapcsolatfigyelő funkciójával.
+title: Tutorial - Monitor network communication using the Azure portal
+description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233887"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419693"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Az Azure portal használatával, két virtuális gép közötti hálózati kommunikáció monitorozása
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
 
 A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti sikeres kommunikáció kulcsfontosságú lehet vállalata számára. Olykor előfordulhat, hogy egyes konfigurációs módosítások megszakítják a kommunikációt. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Virtuális gépek létrehozása
 
@@ -49,14 +49,14 @@ Hozzon létre két virtuális gépet.
 2. Válassza a **Számítás** lehetőséget, majd válasszon egy operációs rendszert. Ebben az oktatóanyagban **Windows Server 2016 Datacenter** rendszert használunk.
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    |Beállítás|Érték|
+    |Beállítás|Value (Díj)|
     |---|---|
-    |Name (Név)|myVm1|
+    |Név|myVm1|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
+    |Földrajzi egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Bővítmények** elemet. Válassza a **Bővítmény hozzáadása**, majd a **Windowshoz készült Network Watcher-ügynök** lehetőséget, ahogyan az az alábbi képen is látható:
@@ -71,13 +71,13 @@ Hozzon létre két virtuális gépet.
 
 Végezze el ismét [Az első virtuális gép létrehozása](#create-the-first-vm) szakaszban leírt lépéseket az alábbi módosításokkal:
 
-|Lépés|Beállítás|Érték|
+|Lépés:|Beállítás|Value (Díj)|
 |---|---|---|
-| 1. | Válassza ki a verziót **Ubuntu Server** |                                                                         |
-| 3 | Name (Név)                                  | myVm2                                                                   |
+| 1 | Select a version of **Ubuntu Server** |                                                                         |
+| 3 | Név                                  | myVm2                                                                   |
 | 3 | Hitelesítés típusa                   | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
 | 3 | Erőforráscsoport                        | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
-| 6 | Kiterjesztések                            | **Network Watcher-ügynök Linux rendszeren**                                             |
+| 6 | Bővítmények                            | **Network Watcher Agent for Linux**                                             |
 
 A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg a virtuális gép üzembe helyezése befejeződik, mielőtt folytatná a további lépésekkel.
 
@@ -91,12 +91,12 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
 4. Válassza a **+ Hozzáadás** lehetőséget.
 5. Írja be vagy válassza ki a monitorozni kívánt kapcsolat adatait, majd válassza a **Hozzáadás** lehetőséget. Az alábbi képen látható példában a *myVm1* virtuális géptől a *myVm2* virtuális gépre irányuló, a 22-es porton áthaladó kommunikáció van monitorozva:
 
-    | Beállítás                  | Érték               |
+    | Beállítás                  | Value (Díj)               |
     | ---------                | ---------           |
-    | Name (Név)                     | myVm1-myVm2(22)     |
-    | Source                   |                     |
+    | Név                     | myVm1-myVm2(22)     |
+    | Forrás                   |                     |
     | Virtuális gép          | myVm1               |
-    | Célhely              |                     |
+    | Cél              |                     |
     | Virtuális gép kiválasztása |                     |
     | Virtuális gép          | myVm2               |
     | Port                     | 22                  |
@@ -115,7 +115,7 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
 
     Tekintse meg az alábbi információkat:
 
-    | Elem                     | Érték                      | Részletek                                                     |
+    | Tétel                     | Value (Díj)                      | Részletek                                                     |
     | ---------                | ---------                  |--------                                                     |
     | Állapot                   | Elérhető                  | Jelzi, hogy a végpont elérhető-e.|
     | ÁTL. ADATVÁLTÁS          | A kapcsolat adatváltási idejét jelzi ezredmásodpercben. A kapcsolatfigyelő 60 másodpercenként teszteli a kapcsolatot, így a késést az idő függvényében is monitorozhatja.                                         |
@@ -147,12 +147,12 @@ Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt k
 
 4. Az alapértelmezett szabály, amely engedélyezi a kommunikációt az azonos virtuális hálózaton található virtuális gépek között, a következő: **AllowVnetInBound**. Hozzon létre egy szabályt az **AllowVnetInBound** szabálynál magasabb prioritással (alacsonyabb számmal), amely elutasítja a 22-es porton keresztül érkező bejövő kommunikációt. Válassza ki vagy írja be a következő adatokat, fogadja el a fennmaradó alapértelmezett adatokat, majd válassza a **Hozzáadás** elemet:
 
-    | Beállítás                 | Érték          |
+    | Beállítás                 | Value (Díj)          |
     | ---                     | ---            |
     | Célporttartományok | 22             |
     | Műveletek                  | Megtagadás           |
     | Prioritás                | 100            |
-    | Name (Név)                    | DenySshInbound |
+    | Név                    | DenySshInbound |
 
 5. Mivel a kapcsolatfigyelő 60 másodpercenként vesz mintát, várjon néhány percet, és a portál bal oldalán válassza a **Network Watcher**, majd a **Kapcsolatfigyelő** elemet, és válassza ki ismét a **myVm1-myVm2(22)** figyelőt. Az eredmények most eltérőek lesznek, ahogyan az a következő képen látható:
 
@@ -160,7 +160,7 @@ Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt k
 
     Egy piros felkiáltójel ikon látható a **myvm2529** hálózati adapter állapotoszlopában.
 
-6. Az állapotváltozás okának megismeréséhez válassza ki az előző képen látható 10.0.0.5-ös IP-címet. A kapcsolatfigyelő tájékoztatja, hogy a kommunikációs hiba oka: *Forgalomleállás miatt a következő hálózati biztonsági csoportra vonatkozó szabályt: UserRule_DenySshInbound*.
+6. Az állapotváltozás okának megismeréséhez válassza ki az előző képen látható 10.0.0.5-ös IP-címet. A kapcsolatfigyelő megmutatja, hogy a kommunikációs hiba oka a következő: *A forgalom blokkolva van a következő hálózati biztonsági csoport szabály miatt: UserRule_DenySshInbound*.
 
     Ha nem tudott róla, hogy valaki megvalósította a 4. lépésben létrehozott biztonsági szabályt, a kapcsolatfigyelőből megtudhatta, hogy ez a szabály okozza a kommunikációs problémát. Ezután módosíthatja, felülírhatja vagy eltávolíthatja a szabályt, és visszaállíthatja a virtuális gépek közötti kommunikációt.
 
@@ -172,7 +172,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan monitorozhatja a két virtuális gép közötti kommunikációt. Megtudta, hogy egy hálózati biztonsági csoport szabály akadályozta meg a virtuális géppel való kommunikációt. A kapcsolatfigyelő által visszaadható válaszok megismeréséhez tekintse meg a [választípusokra](network-watcher-connectivity-overview.md#response) vonatkozó részt. Lehetősége van egy virtuális gép, egy teljes tartománynév, egy URI vagy egy IP-cím közötti kommunikáció monitorozására is.
 

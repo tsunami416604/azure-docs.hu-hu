@@ -1,164 +1,164 @@
 ---
-title: 'ExpressRoute: áramkör létrehozása és módosítása: Azure Portal'
-description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
+title: Tutorial - Create and modify a circuit with ExpressRoute
+description: In this tutorial, learn how to create, provision, verify, update, delete, and deprovision an ExpressRoute circuit.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7327031a7cd05674e9823f21601aab34c859f540
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083568"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423559"
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
+# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Create and modify an ExpressRoute circuit
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portalra](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
-> * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
 
-Ez a cikk segít az Azure portal és az Azure Resource Manager üzemi modell használatával egy ExpressRoute-kapcsolatcsoportot létrehozni. Azt is ellenőrizze az állapotát, frissítése, törlése, vagy egy kapcsolatcsoport megszüntetése.
+This article helps you create an ExpressRoute circuit using the Azure portal and the Azure Resource Manager deployment model. You can also check the status, update, delete, or deprovision a circuit.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-* Tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
-* Gondoskodjon arról, hogy van-e a hozzáférést a [az Azure portal](https://portal.azure.com).
-* Győződjön meg arról, hogy új hálózati erőforrások létrehozásához szükséges engedélyek. Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiókadminisztrátorral.
-* Is [videó](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) megtudhatja, a lépések megkezdése előtt.
+* Review the [prerequisites](expressroute-prerequisites.md) and [workflows](expressroute-workflows.md) before you begin configuration.
+* Ensure that you have access to the [Azure portal](https://portal.azure.com).
+* Ensure that you have permissions to create new networking resources. Contact your account administrator if you do not have the right permissions.
+* You can [view a video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) before beginning in order to better understand the steps.
 
-## <a name="create"></a>Létrehozása és kiépítése az ExpressRoute-kapcsolatcsoport
+## <a name="create"></a>Create and provision an ExpressRoute circuit
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Jelentkezzen be a Azure Portalba
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Sign in to the Azure portal
 
 Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. hozzon létre egy új ExpressRoute áramkört
+### <a name="2-create-a-new-expressroute-circuit"></a>2. Create a new ExpressRoute circuit
 
 > [!IMPORTANT]
-> Az ExpressRoute-kapcsolatcsoport számlázása a szolgáltatáskulcs pillanatától kezdve. Győződjön meg arról, hogy ha a kapcsolatszolgáltató üzembe helyezi a kapcsolatcsoportot készen áll a művelet végrehajtása.
+> Your ExpressRoute circuit is billed from the moment a service key is issued. Ensure that you perform this operation when the connectivity provider is ready to provision the circuit.
 
-1. Egy ExpressRoute-kapcsolatcsoportot is létrehozhat egy új erőforrás létrehozásának lehetősége kiválasztásával. Kattintson a **erőforrás létrehozása** > **hálózatkezelés** > **ExpressRoute**, ahogy az alábbi képen látható:
+1. You can create an ExpressRoute circuit by selecting the option to create a new resource. Click **Create a resource** > **Networking** > **ExpressRoute**, as shown in the following image:
 
    ![ExpressRoute-kapcsolatcsoport létrehozása](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-2. Miután rákattintott **ExpressRoute**, látni fogja a **létrehozása az ExpressRoute-kapcsolatcsoport** lap. Ha Ön az értékeket, ezen a lapon megadott információkat, győződjön meg arról, adja meg a megfelelő Termékváltozat-szint (Standard vagy prémium) és a számlázási modellt (korlátlan és forgalmi díjas) mérési adatokat.
+2. After you click **ExpressRoute**, you'll see the **Create ExpressRoute circuit** page. When you're filling in the values on this page, make sure that you specify the correct SKU tier (Standard, or Premium) and data metering billing model (Unlimited or Metered).
 
-   ![A Termékváltozat-szint és az adatforgalom-mérést konfigurálása](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
+   ![Configure the SKU tier and data metering](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
-   * **Réteg** határozza meg, hogy egy ExpressRoute-standard vagy az ExpressRoute prémium bővítmény engedélyezve van. Megadhat **Standard** beolvasni a standard Termékváltozat vagy **prémium** for a premium bővítményt.
-   * **Az adatforgalom-mérést** határozza meg a számlázási típusát. Megadhat **forgalmi díjas** forgalmi díjas csomag, és **korlátlan** a korlátlan adatforgalmú. Vegye figyelembe, hogy a számlázási típus a **mért** értékről **korlátlanra**módosítható.
-
-     > [!IMPORTANT]
-     > A típus nem módosítható **korlátlanról** **mértre**.
-
-   * **Társviszony-létesítési helyszínen** a fizikai hely, ahol van Microsoft-társviszony van.
+   * **Tier** determines whether an ExpressRoute standard or an ExpressRoute premium add-on is enabled. You can specify **Standard** to get the standard SKU or **Premium** for the premium add-on.
+   * **Data metering** determines the billing type. You can specify **Metered** for a metered data plan and **Unlimited** for an unlimited data plan. Note that you can change the billing type from **Metered** to **Unlimited**.
 
      > [!IMPORTANT]
-     > Azt jelzi, hogy a társviszony-létesítési helye a [fizikai helyének](expressroute-locations.md) hol vannak a Microsoft társviszony. Ez a **nem** "Hely" tulajdonság, amely hivatkozik a földrajzi hely, ahol az Azure hálózati erőforrás-szolgáltató csatolva. Amíg nem áll(nak), tanácsos válassza ki a hálózati erőforrás-szolgáltató földrajzilag közeli, a kapcsolatcsoport társviszony-létesítési helye.
+     > You can't change the type from **Unlimited** to **Metered**.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. a áramkörök és a tulajdonságok megtekintése
+   * **Peering Location** is the physical location where you are peering with Microsoft.
 
-**Minden kapcsolatcsoportra megtekintése**
+     > [!IMPORTANT]
+     > The Peering Location indicates the [physical location](expressroute-locations.md) where you are peering with Microsoft. This is **not** linked to "Location" property, which refers to the geography where the Azure Network Resource Provider is located. While they are not related, it is a good practice to choose a Network Resource Provider geographically close to the Peering Location of the circuit.
 
-Megtekintheti a Kapcsolatcsoportok kiválasztásával létrehozott **összes erőforrás** a bal oldali menüben.
+### <a name="3-view-the-circuits-and-properties"></a>3. View the circuits and properties
 
-![Kapcsolatok megtekintése](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
+**View all the circuits**
 
-**A tulajdonságok megtekintéséhez**
+You can view all the circuits that you created by selecting **All resources** on the left-side menu.
 
-A kapcsolatcsoport tulajdonságainak megtekintéséhez jelölje ki. Az a **áttekintése** a kapcsolatcsoport lapon, a kulcs szolgáltatás key mezőben jelennek meg. Másolja a kulcsot a kapcsolatcsoport kell, és adja át azt le a service provider, a kiépítési folyamat befejezéséhez. Kör szolgáltatáskulcsának csak a kapcsolatcsoporthoz.
+![View circuits](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
+
+**View the properties**
+
+You can view the properties of the circuit by selecting it. On the **Overview** page for your circuit, the service key appears in the service key field. You must copy the service key for your circuit and pass it down to the service provider to complete the provisioning process. The circuit service key is specific to your circuit.
 
 ![Tulajdonságok megtekintése](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. küldje el a szolgáltatási kulcsot a kapcsolat szolgáltatójának az üzembe helyezéshez
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Send the service key to your connectivity provider for provisioning
 
-Ezen a lapon **szolgáltató állapota** információt nyújt a szolgáltatói oldalon kiépítés aktuális állapotát. **Kapcsolatcsoport állapota** a állapotot biztosít a Microsoft oldalán. A kapcsolatcsoport kiépítési állapotok kapcsolatos további információkért lásd: a [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states) cikk.
+On this page, **Provider status** provides information on the current state of provisioning on the service-provider side. **Circuit status** provides the state on the Microsoft side. For more information about circuit provisioning states, see the [Workflows](expressroute-workflows.md#expressroute-circuit-provisioning-states) article.
 
-Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolatcsoport a következő állapotban van:
+When you create a new ExpressRoute circuit, the circuit is in the following state:
 
-Szolgáltató állapota: nincs kiépítve<BR>
-Kapcsolatcsoport-állapot: engedélyezve
+Provider status: Not provisioned<BR>
+Circuit status: Enabled
 
-![Üzembe helyezési folyamatának elindításához](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
+![Initiate provisioning process](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
-A kapcsolatcsoport változik a következő állapotot, amikor a kapcsolatszolgáltató van folyamatban, amely lehetővé teszi az Ön számára:
+The circuit changes to the following state when the connectivity provider is in the process of enabling it for you:
 
-Szolgáltató állapota: kiépítése<BR>
-Kapcsolatcsoport-állapot: engedélyezve
+Provider status: Provisioning<BR>
+Circuit status: Enabled
 
-ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
+For you to be able to use an ExpressRoute circuit, it must be in the following state:
 
-Szolgáltató állapota: kiépítve<BR>
-Kapcsolatcsoport-állapot: engedélyezve
+Provider status: Provisioned<BR>
+Circuit status: Enabled
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Periodically check the status and the state of the circuit key
 
-Megtekintheti, hogy az Önt érdeklő, ha kiválasztja a kapcsolatcsoport tulajdonságainak. Ellenőrizze a **szolgáltató állapota** , és győződjön meg arról, hogy átkerült az **kiépített** a folytatás előtt.
+You can view the properties of the circuit that you're interested in by selecting it. Check the **Provider status** and ensure that it has moved to **Provisioned** before you continue.
 
-![Kapcsolatcsoport és a szolgáltató állapota](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
+![Circuit and provider status](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
-### <a name="6-create-your-routing-configuration"></a>6. az útválasztási konfiguráció létrehozása
+### <a name="6-create-your-routing-configuration"></a>6. Create your routing configuration
 
-Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útválasztási konfigurációja](expressroute-howto-routing-portal-resource-manager.md) cikk létrehozásához és módosításához a kapcsolatcsoport társviszony-létesítéseket.
+For step-by-step instructions, refer to the [ExpressRoute circuit routing configuration](expressroute-howto-routing-portal-resource-manager.md) article to create and modify circuit peerings.
 
 > [!IMPORTANT]
-> Ezek az utasítások csak 2 réteg szolgáltatás kínáló szolgáltatóknál létrehozott Kapcsolatcsoportok vonatkoznak. Ha használja a szolgáltató által kínált felügyelt réteg (általában egy IP VPN, mint az MPLS) 3 szolgáltatások, a kapcsolatszolgáltató konfigurálja és kezeli az útválasztást Ön helyett.
+> These instructions only apply to circuits that are created with service providers that offer layer 2 connectivity services. If you're using a service provider that offers managed layer 3 services (typically an IP VPN, like MPLS), your connectivity provider configures and manages routing for you.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Link a virtual network to an ExpressRoute circuit
 
-Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot. Használja a [virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok](expressroute-howto-linkvnet-arm.md) című cikket, amikor a Resource Manager üzemi modellel dolgozik.
+Next, link a virtual network to your ExpressRoute circuit. Use the [Linking virtual networks to ExpressRoute circuits](expressroute-howto-linkvnet-arm.md) article when you work with the Resource Manager deployment model.
 
-## <a name="status"></a>Az ExpressRoute-Kapcsolatcsoportok állapotának beolvasása
+## <a name="status"></a>Getting the status of an ExpressRoute circuit
 
-Megtekintheti a kapcsolatcsoport állapotát, jelölje ki, és az Áttekintés oldal megtekintése.
+You can view the status of a circuit by selecting it and viewing the Overview page.
 
-## <a name="modify"></a>Az ExpressRoute-Kapcsolatcsoportok módosítása
+## <a name="modify"></a>Modifying an ExpressRoute circuit
 
-Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása nélkül módosíthatja. A sávszélesség, Termékváltozat, számlázási modellt módosíthatja, és a klasszikus működés engedélyezése a **konfigurációs** lapot. A korlátok és korlátozások további információkért lásd: a [ExpressRoute – gyakori kérdések](expressroute-faqs.md).
+You can modify certain properties of an ExpressRoute circuit without impacting connectivity. You can modify the bandwidth, SKU, billing model and allow classic operations on the **Configuration** page. For information on limits and limitations, see the [ExpressRoute FAQ](expressroute-faqs.md).
 
-Leállás nélkül a következő feladatokat hajthatja végre:
+You can perform the following tasks with no downtime:
 
-* Engedélyezi vagy letiltja az ExpressRoute Premium az ExpressRoute-kapcsolatcsoport bővítménye.
-* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton.
-
-  > [!IMPORTANT]
-  > A sávszélesség csökkentése azonban a kapcsolat nem támogatott.
-
-* Módosítsa a mérési a csomagot az *díjas* való *korlátlan*.
+* Enable or disable an ExpressRoute Premium add-on for your ExpressRoute circuit.
+* Increase the bandwidth of your ExpressRoute circuit, provided there is capacity available on the port.
 
   > [!IMPORTANT]
-  > Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
+  > Downgrading the bandwidth of a circuit is not supported.
 
-* Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
+* Change the metering plan from *Metered Data* to *Unlimited Data*.
+
   > [!IMPORTANT]
-  > Az ExpressRoute-kapcsolatcsoport hozza létre újra, ha nincs elegendő kapacitás a meglévő porton is. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
+  > Changing the metering plan from Unlimited Data to Metered Data is not supported.
+
+* You can enable and disable *Allow Classic Operations*.
+  > [!IMPORTANT]
+  > You may have to recreate the ExpressRoute circuit if there is inadequate capacity on the existing port. You cannot upgrade the circuit if there is no additional capacity available at that location.
   >
-  > Bár a zökkenőmentes frissítés a sávszélesség, megszakítás nélküli ExpressRoute-kapcsolatcsoport sávszélességét nem csökkenthető. Alacsonyabb verziójúra változtatása sávszélesség megköveteli, hogy az ExpressRoute-kapcsolatcsoport megszüntetése, és ezután építse ki újra a egy új ExpressRoute-kapcsolatcsoportot.
+  > Although you can seamlessly upgrade the bandwidth, you cannot reduce the bandwidth of an ExpressRoute circuit without disruption. Downgrading bandwidth requires you to deprovision the ExpressRoute circuit and then reprovision a new ExpressRoute circuit.
   >
-  > A Premium bővítmény művelet letiltása meghiúsulhat, ha az erőforrást, amely nagyobb, mint a megengedett a standard szintű kapcsolatcsoportot használ.
+  > Disabling the Premium add-on operation can fail if you're using resources that are greater than what is permitted for the standard circuit.
 
-ExpressRoute-kapcsolatcsoport módosításához kattintson **konfigurációs**.
+To modify an ExpressRoute circuit, click **Configuration**.
 
-![Kapcsolatcsoport módosítása](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![Modify circuit](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
 
-## <a name="delete"></a>A megszüntetés és a egy ExpressRoute-kapcsolatcsoport törlése
+## <a name="delete"></a>Deprovisioning and deleting an ExpressRoute circuit
 
-Az ExpressRoute-kapcsolatcsoport kiválasztásával törölheti a **törlése** ikonra. Tekintse meg az alábbi információkat:
+You can delete your ExpressRoute circuit by selecting the **delete** icon. Tekintse meg az alábbi információkat:
 
-* Az összes virtuális hálózatot le kell választania az ExpressRoute-kapcsolatcsoportról. Ha ez a művelet sikertelen, ellenőrizze-e minden olyan virtuális hálózatok kapcsolódnak-e a kapcsolatcsoportot.
-* Ha az ExpressRoute kapcsolatcsoport szolgáltató üzembe helyezési állapota **kiépítési** vagy **kiépített** -e, hogy azok oldalán a kapcsolatcsoport megszüntetése a szolgáltató. Továbbra is erőforrásokat tartalékolnia, és addig, amíg a szolgáltató befejeződött, a kapcsolatcsoport megszüntetése, és értesítést küld nekünk fel díjat.
-* Ha a szolgáltató eltávolította a kapcsolatcsoportot (a kiépítési állapota szolgáltató beállítása **nincs kiépítve**), törölheti a kapcsolatcsoportot. Ez leállítja a kapcsolatcsoport számlázását.
+* Az összes virtuális hálózatot le kell választania az ExpressRoute-kapcsolatcsoportról. If this operation fails, check whether any virtual networks are linked to the circuit.
+* If the ExpressRoute circuit service provider provisioning state is **Provisioning** or **Provisioned** you must work with your service provider to deprovision the circuit on their side. We continue to reserve resources and bill you until the service provider completes deprovisioning the circuit and notifies us.
+* If the service provider has deprovisioned the circuit (the service provider provisioning state is set to **Not provisioned**), you can delete the circuit. Ez leállítja a kapcsolatcsoport számlázását.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta a kapcsolatcsoportot, folytassa a következő lépések:
+After you create your circuit, continue with the following next steps:
 
-* [Útválasztás az ExpressRoute-kapcsolatcsoport létrehozása vagy módosítása](expressroute-howto-routing-portal-resource-manager.md)
-* [A virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoport](expressroute-howto-linkvnet-arm.md)
+* [Create and modify routing for your ExpressRoute circuit](expressroute-howto-routing-portal-resource-manager.md)
+* [Link your virtual network to your ExpressRoute circuit](expressroute-howto-linkvnet-arm.md)

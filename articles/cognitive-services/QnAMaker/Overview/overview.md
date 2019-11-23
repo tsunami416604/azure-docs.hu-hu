@@ -1,92 +1,95 @@
 ---
-title: Mi az QnA Maker szolgáltatás?
+title: What is QnA Maker service?
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker egy felhőalapú NLP-szolgáltatás, amely könnyen létrehoz egy természetes társalgási réteget az adataiban. A felhasználó az egyéni Tudásbázis (KB) adatai alapján megkeresheti a legmegfelelőbb választ az adott természetes nyelvi bevitelhez.
+description: QnA Maker is a cloud-based NLP service that easily creates a natural conversational layer over your data. It can be used to find the most appropriate answer for any given natural language input, from your custom knowledge base (KB) of information.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 944ddb7f83a4d10861e5a16dbc69b8f9e4dabfe0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973785"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422680"
 ---
-# <a name="what-is-the-qna-maker-service"></a>Mi a QnA Maker szolgáltatás?
+# <a name="what-is-the-qna-maker-service"></a>What is the QnA Maker service?
 
-A QnA Maker egy felhőalapú természetes nyelvi feldolgozó (NLP) szolgáltatás, amely könnyen létrehoz egy természetes társalgási réteget az adataiban. A felhasználó az egyéni Tudásbázis (KB) adatai alapján megkeresheti a legmegfelelőbb választ az adott természetes nyelvi bevitelhez.
+QnA Maker is a cloud-based Natural Language Processing (NLP) service that easily creates a natural conversational layer over your data. It can be used to find the most appropriate answer for any given natural language input, from your custom knowledge base (KB) of information.
 
-QnA Maker-ügyfélalkalmazás bármely olyan társalgási alkalmazás, amely természetes nyelven kommunikál a felhasználóval a kérdés megválaszolásához. Az ügyfélalkalmazások közé sorolhatók például a közösségimédia-alkalmazások, a csevegőrobotok és a beszédalapú asztali alkalmazások.
+A client application for QnA Maker is any conversational application that communicates with a user in natural language to answer a question. Az ügyfélalkalmazások közé sorolhatók például a közösségimédia-alkalmazások, a csevegőrobotok és a beszédalapú asztali alkalmazások.
 
-## <a name="when-to-use-qna-maker"></a>Mikor kell használni a QnA Maker
+## <a name="when-to-use-qna-maker"></a>When to use QnA Maker
 
-* **Ha statikus információval rendelkezik** – használja a QnA Maker, ha a válaszokat a Tudásbázisban statikus információkkal látja el. Ez a Tudásbázis az Ön igényeinek megfelelően egyedi, amelyet dokumentumok, például [PDF-EK és URL-címek](../concepts/data-sources-supported.md)használatával készített.
-* **Ha ugyanazt a választ szeretné adni egy kérelemhez, kérdéshez vagy parancshoz** – ha a különböző felhasználók ugyanezt a kérdést nyújtják be, ugyanazt a választ is visszaadja a rendszer. 
-* **Ha a metaadatok alapján szeretné szűrni a statikus adatokat** – a [metaadat](../how-to/metadata-generateanswer-usage.md) -Címkék hozzáadása lehetőséggel további szűrési lehetőségeket biztosíthat az ügyfélalkalmazás felhasználóival és az információkkal kapcsolatban. A metaadatok általános információi közé tartozik a [Chit-Chat](../how-to/chit-chat-knowledge-base.md), a tartalom típusa vagy a formátum, a tartalom célja és a tartalom frissessége.
-* **Ha olyan robot-beszélgetést szeretne kezelni, amely statikus adatokat tartalmaz** – az Ön tudomásul veszi a felhasználó beszélgetési szövegét vagy parancsát, és megválaszolja azt. Ha a válasz egy előre meghatározott beszélgetési folyamat része, amely a Tudásbázisban a [többfordulatos kontextusban](../how-to/multiturn-conversation.md)szerepel, a robot egyszerűen megadhatja ezt a folyamatot.  
+* **When you have static information** - Use QnA Maker when you have static information in your knowledge base of answers. This knowledge base is custom to your needs, which you've built with documents such as [PDFs and URLs](../concepts/data-sources-supported.md).
+* **When you want to provide the same answer to a request, question, or command** - when different users submit the same question, the same answer is returned. 
+* **When you want to filter static information based on meta-information** - add [metadata](../how-to/metadata-generateanswer-usage.md) tags to provide additional filtering options relevant to your client application's users and the information. Common metadata information includes [chit-chat](../how-to/chit-chat-knowledge-base.md), content type or format, content purpose, and content freshness.
+* **When you want to manage a bot conversation that includes static information** - your knowledge base takes a user's conversational text or command and answers it. If the answer is part of a pre-determined conversation flow, represented in your knowledge base with [multi-turn context](../how-to/multiturn-conversation.md), the bot can easily provide this flow.  
 
-## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>QnA Maker Tudásbázis használata egy csevegési robotban
+## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>Use QnA Maker knowledge base in a chat bot
 
-QnA Maker Tudásbázis közzétételét követően az ügyfélalkalmazás egy kérdést küld a Tudásbázis-végpontnak, és JSON-válaszként fogadja az eredményeket. QnA Maker egy közös ügyfélalkalmazás egy csevegési robot.
+Once a QnA Maker knowledge base is published, a client application sends a question to your knowledge base endpoint and receives the results as a JSON response. A common client application for QnA Maker is a chat bot.
 
-![Kérdezzen egy robotot, és kapjon választ a Tudásbázis tartalmából](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
+![Ask a bot a question and get answer from knowledge base content](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Lépés|Műveletek|
+|Lépés:|Műveletek|
 |:--|:--|
-|1|Az ügyfélalkalmazás elküldi a felhasználó _kérdését_ (a szöveg a saját szavaival), "hogyan programozott módon frissíti a tudásbázist?" a Tudásbázis-végponthoz.|
-|2|A QnA Maker a betanított Tudásbázis használatával biztosítja a megfelelő választ, valamint azokat a követési kérdéseket, amelyek a legjobb válasz keresésének pontosítására használhatók. QnA Maker egy JSON-formátumú választ ad vissza.|
-|3|Az ügyfélalkalmazás a JSON-választ használva döntéseket hoz a beszélgetés folytatásához. Ezek a döntések magukban foglalhatják a legjobb választ, vagy további választási lehetőségeket mutatnak be a legjobb válasz keresésének pontosításához. |
+|1|The client application sends the user's _question_ (text in their own words), "How do I programmatically update my Knowledge Base?" to your knowledge base endpoint.|
+|2|QnA Maker uses the trained knowledge base to provide the correct answer and any follow-up prompts that can be used to refine the search for the best answer. QnA Maker returns a JSON-formatted response.|
+|3|The client application uses the JSON response to make decisions about how to continue the conversation. These decisions can include showing the top answer and presenting more choices to refine the search for the best answer. |
 |||
 
-## <a name="what-is-a-knowledge-base"></a>Mi az a Tudásbázis? 
+## <a name="what-is-a-knowledge-base"></a>What is a knowledge base? 
 
-QnA Maker [importálja a tartalmat](../concepts/data-sources-supported.md) a kérdés-és Levelesláda tudásbázisba. Az importálási folyamat kigyűjti a strukturált és részben strukturált tartalom részei közötti kapcsolat adatait, hogy a kérdés-és a válaszfájlok közötti kapcsolatra utaljon. Ezeket a kérdéseket és a válaszokat szerkesztheti, illetve újakat is hozzáadhat.  
+QnA Maker [imports your content](../concepts/data-sources-supported.md) into a knowledge base of question and answer sets. The import process extracts information about the relationship between the parts of your structured and semi-structured content to imply relationships between the question and answer sets. You can edit these question and answer sets or add new sets.  
 
-A kérdés és a válaszfájl tartalma tartalmazza az adott válaszra vonatkozó összes alternatív kérdést, a keresés során a válaszok kiválasztásához használt metaadat-címkéket, valamint a keresési pontosítást a keresés folytatásához.
+The content of the question and answer set includes:
+* All the alternate forms of the question
+* Metadata tags used to filter answer choices during the search
+* Follow-up prompts to continue the search refinement
 
-![Példa kérdésre és válaszra a metaadatokkal](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
+![Example question and answer with metadata](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
-Miután közzétette a tudásbázist, egy ügyfélalkalmazás elküldi a felhasználó kérdését a végpontnak. A QnA Maker szolgáltatás feldolgozza a kérdést, és válaszol a legjobb válaszra. 
+After you publish your knowledge base, a client application sends a user's question to your endpoint. Your QnA Maker service processes the question and responds with the best answer. 
 
-## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Kód nélküli robot létrehozása, kezelése és közzététele
+## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Create, manage, and publish to a bot without code
 
-A QnA Maker portál a teljes Tudásbázis-létrehozási élményt biztosítja. Az aktuális formában importálhatja a dokumentumokat a tudásbázisba. Ezek a dokumentumok (például a gyakori kérdések, a manuális, a számolótáblák vagy a weblapok) át lesznek alakítva a kérdés-és a válasz-készletekbe. Az egyes készleteket a rendszer a követő kérések elemzésére és más készletekhez való csatlakozásra elemzi. A végső Markdown formátuma támogatja a gazdag bemutatót, beleértve a képeket és a hivatkozásokat. 
+The QnA Maker portal provides the complete knowledge base authoring experience. You can import documents, in their current form, to your knowledge base. These documents (such as an FAQ, product manual, spreadsheet, or web page) are converted into question and answer sets. Each set is analyzed for follow-up prompts and connected to other sets. The final _markdown_ format supports rich presentation including images and links. 
 
-A Tudásbázis szerkesztése után tegye közzé a tudásbázist egy működő [Azure webalkalmazás-roboton](https://azure.microsoft.com/services/bot-service/) anélkül, hogy kódot kellene írnia. Tesztelje a robotot a [Azure Portalban](https://portal.azure.com) , vagy töltse le és folytassa a fejlesztést. 
+Once your knowledge base is edited, publish the knowledge base to a working [Azure Web App bot](https://azure.microsoft.com/services/bot-service/) without writing any code. Test your bot in the [Azure portal](https://portal.azure.com) or download and continue development. 
 
-## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>A keresési minőség és rangsorolás a lehető legjobb választ nyújtja
+## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>Search quality and ranking provides the best possible answer
 
-A QnA Maker rendszer egy rétegzett rangsorolási megközelítés. Az adattárolás az Azure Search szolgáltatásban történik, amely az első rangsorolási rétegként is szolgál. Az Azure Search legfontosabb eredményeit a rendszer átadja a QnA Maker NLP-re rangsoroló modelljének a végső eredmények és a megbízhatósági pontszám létrehozásához.
+QnA Maker's system is a layered ranking approach. The data is stored in Azure search, which also serves as the first ranking layer. The top results from Azure search are then passed through QnA Maker's NLP re-ranking model to produce the final results and confidence score.
 
-## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker javítja a beszélgetési folyamatot
+## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker improves the conversation process
 
-A QnA Maker lehetővé teszi a több funkciós és az aktív tanulást, hogy segítsen az alapvető kérdés-és válaszfájlok tökéletesítésében. 
+QnA Maker provides multi-turn prompts and active learning to help you improve your basic question and answer sets. 
 
-A **több fordulatos kérések** lehetővé teszi a kérdések és válaszok párok összekapcsolását. Ez a kapcsolódás lehetővé teszi az ügyfélalkalmazás számára a legjobb válasz megadását, és további kérdéseket biztosít a végső válasz keresésének pontosításához. 
+**Multi-turn prompts** give you the opportunity to connect question and answer pairs. This connection allows the client application to provide a top answer and provides more questions to refine the search for a final answer. 
 
-Miután a Tudásbázis a közzétett végponton lévő felhasználóktól kapott kérdéseket, QnA Maker alkalmazza az **aktív tanulást** ezekre a valós kérdésekre, hogy a minőség javítása érdekében a Tudásbázisban módosításokat javasoljon a Tudásbázisban. 
+After the knowledge base receives questions from users at the published endpoint, QnA Maker applies **active learning** to these real-world questions to suggest changes to your knowledge base to improve the quality. 
 
 ## <a name="development-lifecycle"></a>Fejlesztési életciklus
 
-A QnA Maker a szerzői műveletek, a képzés és a közzététel, valamint együttműködési engedélyek használatával integrálható a teljes fejlesztési életciklusba. 
+QnA Maker provides authoring, training, and publishing along with collaboration permissions to integrate into the full development life cycle. 
 
 ## <a name="how-do-i-start"></a>Hogyan fogjak hozzá?
 
-**1. lépés**: Hozzon létre egy QnA Maker erőforrást a [Azure Portalban](https://portal.azure.com). 
+**Step 1**: Create a QnA Maker resource in the [Azure portal](https://portal.azure.com). 
 
-**2. lépés**: Hozzon létre egy tudásbázist a [QnA Maker](https://www.qnamaker.ai) portálon. [Fájlok és URL-címek](../concepts/data-sources-supported.md) hozzáadása a Tudásbázis létrehozásához.  
+**Step 2**: Create a knowledge base in the [QnA Maker](https://www.qnamaker.ai) portal. Add [files and URLs](../concepts/data-sources-supported.md) to create the knowledge base.  
 
-**3. lépés**: Közzéteheti a tudásbázist, és tesztelheti az egyéni végpontot [curl](../quickstarts/get-answer-from-kb-using-curl.md) vagy [Poster](../quickstarts/get-answer-from-kb-using-postman.md)használatával. 
+**Step 3**: Publish your knowledge base and test from your custom endpoint using [cURL or Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md). 
 
-**4. lépés**: Az ügyfélalkalmazás által programozott módon hívja meg a Tudásbázis végpontját, és olvassa el a JSON-választ, amely a legjobb választ jeleníti meg a felhasználónak.  
+**Step 4**: From your client application, programmatically call your knowledge base's endpoint. The client application processes the JSON response to show the best answer to the user.  
 
-## <a name="next-steps"></a>További lépések
-QnA Maker az egyéni Tudásbázis létrehozásához, kezeléséhez és üzembe helyezéséhez szükséges összes információt tartalmazza. 
+## <a name="next-steps"></a>Következő lépések
+QnA Maker provides everything you need to build, manage, and deploy your custom knowledge base. 
 
 > [!div class="nextstepaction"]
-> [A legutóbbi módosítások áttekintése](../whats-new.md)
+> [Review the latest changes](../whats-new.md)

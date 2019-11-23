@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a hálózatok közötti kommunikációs probléma diagnosztizálása – Azure Portal'
+title: Tutorial - Diagnose communication problem between networks using the Azure portal
 titleSuffix: Azure Network Watcher
-description: Megismerheti, hogyan diagnosztizálhatja a kommunikációs problémákat egy helyszíni vagy más virtuális hálózathoz egy Azure virtuális hálózati átjárón keresztül csatlakoztatott Azure Virtual Network esetében a Network Watcher VPN-diagnosztikai funkciójával.
+description: In this tutorial, learn how to diagnose a communication problem between an Azure virtual network connected to an on-premises, or other virtual network, through an Azure virtual network gateway, using Network Watcher's VPN diagnostics capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0f7ce37bd6454492980525f288212fbff2c06625
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276147"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419730"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Oktatóanyag: Hálózatok közötti kommunikációs probléma diagnosztizálása az Azure Portal használatával
 
-A virtuális hálózati átjárók egy Azure Virtual Networköt kapcsolnak össze egy helyszíni vagy más virtuális hálózattal. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+A virtuális hálózati átjárók egy Azure Virtual Networköt kapcsolnak össze egy helyszíni vagy más virtuális hálózattal. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális hálózati átjárókkal kapcsolatos problémák diagnosztizálása a Network Watcher VPN-diagnosztikai funkciójával
@@ -40,21 +40,21 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 A VPN-diagnosztika használatához rendelkeznie kell egy meglévő, futó VPN Gatewayjel. Ha nem rendelkezik meglévő VPN Gatewayjel, amelyet diagnosztizálhatna, egy [PowerShell-szkript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) használatával üzembe helyezhet egyet. A PowerShell-szkriptet innen futtathatja:
-- **Helyi PowerShell-telepítés**: a parancsfájlhoz a Azure PowerShell `Az` modul szükséges. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- **A local PowerShell installation**: The script requires the Azure PowerShell `Az` module. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - **Az Azure Cloud Shell**: Az [Azure Cloud Shell](https://shell.azure.com/powershell) a PowerShell legfrissebb verziójával rendelkezik, amely telepítve és konfigurálva is van, és belépteti Önt az Azure-ba.
 
 A szkript nagyjából egy óra alatt hozza létre a VPN Gatewayt. A további lépések azt feltételezik, hogy a diagnosztizálni kívánt átjáró megegyezik a szkript által üzembe helyezettel. Ha saját meglévő átjáróját diagnosztizálja, az eredmények eltérőek lehetnek.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
 Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytassa az [Átjáró diagnosztizálása](#diagnose-a-gateway) szakasszal.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
-2. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
+1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik az eredmények között, válassza ki.
+2. Válassza a **Régiók** elemet a kibontásához, majd válassza az **USA keleti régiója** elem jobb oldalán található **...** lehetőséget az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
 
@@ -75,7 +75,7 @@ Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytas
 8. Amíg a teszt fut, a **Fut** érték látható a **HIBAELHÁRÍTÁSI ÁLLAPOT** oszlopban, ahol az előző képen még **Nem indult el** szerepelt. A teszt futtatása több percig is eltarthat.
 9. Tekintse meg az elvégzett teszt állapotát. Az alábbi képen egy befejezett diagnosztikai teszt állapoteredményei láthatók:
 
-    ![status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Állapot](./media/diagnose-communication-problem-between-networks/status.png)
 
     Látható, hogy a **HIBAELHÁRÍTÁSI ÁLLAPOT** **Nem kifogástalan**, illetve a probléma **Összegzése** és **Részletei** is láthatók az **Állapot** lapon.
 10. A **Művelet** lap kiválasztásakor a VPN-diagnosztika további információkkal szolgál. Az alábbi képen látható példában a VPN-diagnosztikából megtudhatja, hogy ellenőriznie kell az összes kapcsolat állapotát:
@@ -99,7 +99,7 @@ Az átjárók átjárókapcsolatokkal csatlakoznak más hálózatokhoz. Az átj�
 
     A VPN-diagnosztika megmutatja a hibát az **Állapot** lapon, és a **Művelet** lapon több javaslatot is tesz arra, hogy mi okozhatja a problémát.
 
-    Ha a tesztelt átjáró az [Előfeltételek](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) szakaszban leírt [szkript](#prerequisites) által üzembe helyezett átjáró volt, akkor az **Állapot** lapon szereplő probléma és a **Műveletek** lapon szereplő első két elem pontosan megegyezik a problémával. A szkript konfigurál egy helyőrző IP-címet (23.99.221.164) a helyszíni VPN Gateway eszköz számára.
+    Ha a tesztelt átjáró az [Előfeltételek](#prerequisites) szakaszban leírt [szkript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) által üzembe helyezett átjáró volt, akkor az **Állapot** lapon szereplő probléma és a **Műveletek** lapon szereplő első két elem pontosan megegyezik a problémával. A szkript konfigurál egy helyőrző IP-címet (23.99.221.164) a helyszíni VPN Gateway eszköz számára.
 
     A probléma megoldásához ellenőrizze, hogy a helyszíni VPN Gateway [megfelelően van-e konfigurálva](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), és módosítsa a szkript által a helyi hálózati átjáró számára konfigurált IP-címet a helyszíni VPN Gateway tényleges nyilvános címére.
 

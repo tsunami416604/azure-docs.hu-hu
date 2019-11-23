@@ -1,6 +1,6 @@
 ---
-title: Műveleti csoportok létrehozása és kezelése a Azure Portal
-description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
+title: Create and manage action groups in the Azure portal
+description: Learn how to create and manage action groups in the Azure portal.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,131 +8,129 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898152"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423848"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
-A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Create and manage action groups in the Azure portal
+An action group is a collection of notification preferences defined by the owner of an Azure subscription. Azure Monitor and Service Health alerts use action groups to notify users that an alert has been triggered. Various alerts may use the same action group or different action groups depending on the user's requirements. You may configure up to 2,000 action groups in a subscription.
 
-Egy olyan műveletet konfigurálhat, amely e-mailben vagy SMS-ben értesíti a személyeket, és megerősíti, hogy hozzá lettek adva a műveleti csoporthoz.
+You configure an action to notify a person by email or SMS, they receive a confirmation indicating they have been added to the action group.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
+This article shows you how to create and manage action groups in the Azure portal.
 
-Az egyes műveletek a következő tulajdonságokből állnak:
+Each action is made up of the following properties:
 
-* **Név**: A műveleti csoporton belüli egyedi azonosító.  
-* **Művelet típusa**: A művelet végrehajtása megtörtént. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
-* **Részletek**: A *művelet típusa*szerint változó megfelelő részletek.
+* **Name**: A unique identifier within the action group.  
+* **Action type**: The action performed. Examples include sending a voice call, SMS, email; or triggering various types of automated actions. See types later in this article.
+* **Details**: The corresponding details that vary by *action type*.
 
-További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+For information on how to use Azure Resource Manager templates to configure action groups, see [Action group Resource Manager templates](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveleti csoport létrehozása a Azure Portal használatával
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Create an action group by using the Azure portal
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **figyelő**elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
+1. In the [Azure portal](https://portal.azure.com), search for and select **Monitor**. The **Monitor** pane consolidates all your monitoring settings and data in one view.
 
-    ![A "figyelő" szolgáltatás](./media/action-groups/home-monitor.png)
+1. Válassza a **Riasztások**, majd a **Műveletek kezelése** lehetőséget.
+
+    ![Manage Actions button](./media/action-groups/manage-action-groups.png)
     
-1. Válassza a riasztások lehetőséget, majd a **műveletek kezelése**lehetőséget.
+1. Select **Add action group**, and fill in the fields.
 
-    ![Műveletek kezelése gomb](./media/action-groups/manage-action-groups.png)
+    ![The "Add action group" command](./media/action-groups/add-action-group.png)
     
-1. Válassza a **műveleti csoport hozzáadása**lehetőséget, és töltse ki a mezőket.
+1. Enter a name in the **Action group name** box, and enter a name in the **Short name** box. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
-    ![A "műveleti csoport hozzáadása" parancs](./media/action-groups/add-action-group.png)
+      ![The Add action group" dialog box](./media/action-groups/action-group-define.png)
+
+1. The **Subscription** box autofills with your current subscription. This subscription is the one in which the action group is saved.
+
+1. Select the **Resource group** in which the action group is saved.
+
+1. Define a list of actions. Provide the following for each action:
+
+    1. **Name**: Enter a unique identifier for this action.
+
+    1. **Action Type**: Select Email/SMS/Push/Voice, Logic App, Webhook, ITSM, or Automation Runbook.
+
+    1. **Details**: Based on the action type, enter a phone number, email address, webhook URI, Azure app, ITSM connection, or Automation runbook. For ITSM Action, additionally specify **Work Item** and other fields your ITSM tool requires.
     
-1. Írjon be egy nevet a **műveleti csoport neve** mezőbe, és adjon meg egy nevet a **rövid név** mezőben. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
+    1. **Common alert schema**: You can choose to enable the [common alert schema](https://aka.ms/commonAlertSchemaDocs), which provides the advantage of having a single extensible and unified alert payload across all the alert services in Azure Monitor.
 
-      ![A műveleti csoport hozzáadása párbeszédpanel](./media/action-groups/action-group-define.png)
+1. Select **OK** to create the action group.
 
-1. Az **előfizetés** mezője az aktuális előfizetéssel együtt kitölti az előfizetést. Ez az előfizetés az a művelet, amelyben a műveleti csoport mentve lett.
+## <a name="manage-your-action-groups"></a>Manage your action groups
 
-1. Válassza ki azt az **erőforráscsoportot** , amelyben a műveleti csoportot menti.
+After you create an action group, it's visible in the **Action groups** section of the **Monitor** pane. Select the action group you want to manage to:
 
-1. Adja meg a műveletek listáját. Minden művelethez adja meg a következőket:
+* Add, edit, or remove actions.
+* Delete the action group.
 
-    1. **Név**: Adjon meg egy egyedi azonosítót ehhez a művelethez.
-
-    1. **Művelet típusa**: Válassza az E-mail/SMS/leküldés/hang, a Logic app, a webhook, a ITSM vagy az Automation Runbook lehetőséget.
-
-    1. **Részletek**: A Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-JÁT, az Azure-alkalmazást, a ITSM-kapcsolat vagy az Automation-runbook. A ITSM művelethez emellett adja meg a munkaelemet és a ITSM eszköz által igényelt egyéb mezőket.
-    
-    1. **Gyakori riasztási séma**: Engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
-
-1. A műveleti csoport létrehozásához kattintson **az OK gombra** .
-
-## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése
-
-Miután létrehozta a műveleti csoportot, a **figyelő** ablaktábla **műveleti csoportok** szakaszában látható. Válassza ki a kezelni kívánt műveleti csoportot:
-
-* Műveletek hozzáadása, szerkesztése vagy eltávolítása.
-* A műveleti csoport törlése.
-
-## <a name="action-specific-information"></a>Műveletre vonatkozó információk
+## <a name="action-specific-information"></a>Action specific information
 
 > [!NOTE]
-> Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
+> See [Subscription Service Limits for Monitoring](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) for numeric limits on each of the items below.  
 
-### <a name="automation-runbook"></a>Automation-forgatókönyv
-Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
+### <a name="automation-runbook"></a>Automation Runbook
+Refer to the [Azure subscription service limits](../../azure-subscription-service-limits.md) for limits on Runbook payloads.
 
-A műveleti csoportban korlátozott számú Runbook művelet lehet. 
+You may have a limited number of Runbook actions in an Action Group. 
 
-### <a name="azure-app-push-notifications"></a>Azure-alkalmazás leküldéses értesítései
-Előfordulhat, hogy egy műveleti csoportban korlátozott számú Azure-alkalmazási művelet van.
+### <a name="azure-app-push-notifications"></a>Azure app Push Notifications
+You may have a limited number of Azure app actions in an Action Group.
 
-### <a name="email"></a>Email
-A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mail-szűrés megfelelően van konfigurálva
+### <a name="email"></a>E-mail cím
+Emails will be sent from the following email addresses. Ensure that your email filtering is configured appropriately
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+You may have a limited number of email actions in an Action Group. See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
 
-### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager-szerepkör küldése e-mailben
-E-mail küldése az előfizetés szerepkörének tagjainak.
+### <a name="email-azure-resource-manager-role"></a>Email Azure Resource Manager Role
+Send email to the members of the subscription's role.
 
-A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+You may have a limited number of email actions in an Action Group. See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
 
 ### <a name="function"></a>Függvény
-A műveletként konfigurált functions-alkalmazások kulcsai a functions API-n keresztül olvashatók, amely jelenleg a v2 Function apps-alkalmazásokkal konfigurálja a "AzureWebJobsSecretStorageType" beállítást a "files" értékre. További információ: [változások a kulcskezelő szolgáltatásban a functions v2-ben]( https://aka.ms/funcsecrets).
+The function keys for Function Apps configured as actions are read through the Functions API, which currently requires v2 function apps to configure the app setting “AzureWebJobsSecretStorageType” to “files”. For more information, see [Changes to Key Management in Functions V2]( https://aka.ms/funcsecrets).
 
-A műveleti csoportban korlátozott számú Function művelet lehet.
+You may have a limited number of Function actions in an Action Group.
 
 ### <a name="itsm"></a>ITSM
-A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](../../azure-monitor/platform/itsmc-overview.md).
+ITSM Action requires an ITSM Connection. Learn how to create an [ITSM Connection](../../azure-monitor/platform/itsmc-overview.md).
 
-A műveleti csoportban korlátozott számú ITSM művelet lehet. 
+You may have a limited number of ITSM actions in an Action Group. 
 
 ### <a name="logic-app"></a>Logic App
-A műveleti csoportban korlátozott számú Logic app-művelet lehet.
+You may have a limited number of Logic App actions in an Action Group.
 
 ### <a name="secure-webhook"></a>Secure Webhook
-**A biztonságos webhook funkció jelenleg előzetes verzióban érhető el.**
+**The Secure Webhook functionality is currently in Preview.**
 
-A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+The Action Groups Webhook action enables you to take advantage of Azure Active Directory to secure the connection between your action group and your protected web API (webhook endpoint). The overall workflow for taking advantage of this functionality is described below. For an overview of Azure AD Applications and service principals, see [Microsoft identity platform (v2.0) overview](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Hozzon létre egy Azure AD-alkalmazást a védett webes API-hoz. Lásd https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview:.
-    - Beállíthatja, hogy a védett API-t egy Daemon-alkalmazás hívja meg.
+1. Create an Azure AD Application for your protected web API. Lásd: https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+    - Configure your protected API to be called by a daemon app.
     
-1. Engedélyezze a műveleti csoportokat az Azure AD-alkalmazás használatához.
+1. Enable Action Groups to use your Azure AD Application.
 
     > [!NOTE]
-    > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) tagjának kell lennie.
+    > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-    - Módosítsa a PowerShell-parancsfájl összekapcsolási AzureAD hívását az Azure AD-bérlői azonosító használatára.
-    - Módosítsa a PowerShell-parancsfájl változóját $myAzureADApplicationObjectId az Azure AD-alkalmazás objektumazonosítójának használatára
-    - Futtassa a módosított parancsfájlt.
+    - Modify the PowerShell script's Connect-AzureAD call to use your Azure AD Tenant ID.
+    - Modify the PowerShell script's variable $myAzureADApplicationObjectId to use the Object ID of your Azure AD Application
+    - Run the modified script.
     
-1. Konfigurálja a műveleti csoport biztonságos webhook műveletét.
-    - Másolja a $myApp. ObjectId értéket a parancsfájlból, és adja meg a webhook műveleti definíciójának Application Object ID mezőjében.
+1. Configure the Action Group Secure Webhook action.
+    - Copy the value $myApp.ObjectId from the script and enter it in the Application Object ID field in the Webhook action definition.
     
-    ![Biztonságos webhook művelet](./media/action-groups/action-groups-secure-webhook.png)
+    ![Secure Webhook action](./media/action-groups/action-groups-secure-webhook.png)
 
-#### <a name="secure-webhook-powershell-script"></a>Webhook PowerShell-parancsfájl biztonságossá tétele
+#### <a name="secure-webhook-powershell-script"></a>Secure Webhook PowerShell Script
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -202,19 +200,19 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>SMS
-További fontos információk: az információk és az [SMS](../../azure-monitor/platform/alerts-sms-behavior.md) -riasztások viselkedésének [korlátozása](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) and [SMS alert behavior](../../azure-monitor/platform/alerts-sms-behavior.md) for additional important information.
 
-A műveleti csoportban korlátozott számú SMS-művelet lehet.  
+You may have a limited number of SMS actions in an Action Group.  
 
-### <a name="voice"></a>Hang
-Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+### <a name="voice"></a>Beszédhang
+See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
 
-A műveleti csoportban korlátozott számú hangművelet lehet.
+You may have a limited number of Voice actions in an Action Group.
 
 ### <a name="webhook"></a>Webhook
-A webhookok a következő szabályok alapján lesznek újrapróbálkozva. A webhook hívása a következő HTTP-állapotkódok visszaadásakor legfeljebb 2 alkalommal próbálkozik újra: 408, 429, 503, 504, illetve ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozás 100 másodperc után történik. Két hiba után a műveleti csoport 30 percig nem fogja hívni a végpontot. 
+Webhooks are retried using the following rules. The webhook call is retried a maximum of 2 times when the following HTTP status codes are returned: 408, 429, 503, 504 or the HTTP endpoint does not respond. Az első újrapróbálkozás 10 másodperc után történik. The second retry happens after 100 seconds. After two failures, no action group will call the endpoint for 30 minutes. 
 
-Forrás IP-címtartományok
+Source IP address ranges
  - 13.72.19.232
  - 13.106.57.181
  - 13.106.54.3
@@ -231,16 +229,16 @@ Forrás IP-címtartományok
  - 51.5.148.86
  - 51.5.149.19
 
-Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, hogy állítson be egy Service Health riasztást, amely figyeli a műveleti csoportok szolgáltatással kapcsolatos tájékoztató értesítéseket.
+To receive updates about changes to these IP addresses, we recommend you configure a Service Health alert, which monitors for Informational notifications about the Action Groups service.
 
-Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
+You may have a limited number of Webhook actions in an Action Group.
 
 
 
-## <a name="next-steps"></a>További lépések
-* További információ az [SMS-riasztás viselkedéséről](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* További információ a [ITSM-csatoló](../../azure-monitor/platform/itsmc-overview.md)
-* További információ a [](../../azure-monitor/platform/alerts-rate-limiting.md) riasztások díjszabásának korlátozásáról.
-* Tekintse [át a tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
-* Megtudhatja, hogyan [konfigurálhatja a riasztásokat, amikor egy szolgáltatás állapotáról értesítést küldenek](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="next-steps"></a>Következő lépések
+* Learn more about [SMS alert behavior](../../azure-monitor/platform/alerts-sms-behavior.md).  
+* Gain an [understanding of the activity log alert webhook schema](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
+* Learn more about [ITSM Connector](../../azure-monitor/platform/itsmc-overview.md)
+* Learn more about [rate limiting](../../azure-monitor/platform/alerts-rate-limiting.md) on alerts.
+* Get an [overview of activity log alerts](../../azure-monitor/platform/alerts-overview.md), and learn how to receive alerts.  
+* Learn how to [configure alerts whenever a service health notification is posted](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

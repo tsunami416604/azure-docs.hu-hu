@@ -1,6 +1,6 @@
 ---
 title: Feladatátvételi csoportok
-description: Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehetővé teszi egy SQL Database-kiszolgálón vagy a felügyelt példányon lévő összes adatbázisban lévő adatbázis-csoport replikálásának és automatikus/összehangolt feladatátvételének kezelését.
+description: Auto-failover groups is a SQL Database feature that allows you to manage replication and automatic / coordinated failover of a group of databases on a SQL Database server or all databases in managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,382 +11,406 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 11/07/2019
-ms.openlocfilehash: 16fc15a574655f20e3e6e37f164773b41ffe0b78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839337"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421369"
 ---
-# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
+# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Use auto-failover groups to enable transparent and coordinated failover of multiple databases
 
-Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehetővé teszi a SQL Database-kiszolgálón vagy a felügyelt példányban lévő összes adatbázisban lévő adatbázisok replikálásának és feladatátvételének kezelését egy másik régióba. A meglévő [aktív geo-replikálási](sql-database-active-geo-replication.md) szolgáltatás egyik deklaratív absztrakciója, amely a földrajzilag replikált adatbázisok nagy léptékű üzembe helyezésének és kezelésének egyszerűsítésére szolgál. A feladatátvételt manuálisan is kezdeményezheti, vagy delegálhatja a SQL Database szolgáltatásnak egy felhasználó által definiált házirend alapján. Az utóbbi lehetőség lehetővé teszi, hogy egy végzetes hiba vagy más nem tervezett esemény után automatikusan helyreállítson több kapcsolódó adatbázist egy másodlagos régióban, ami az SQL Database szolgáltatás rendelkezésre állásának teljes vagy részleges elvesztését eredményezi az elsődleges régióban. A feladatátvételi csoportok tartalmazhatnak egy vagy több adatbázist, jellemzően ugyanazt az alkalmazást használják. Emellett az olvasható másodlagos adatbázisokat is használhatja az írásvédett lekérdezési feladatok kiszervezéséhez. Mivel az automatikus feladatátvételi csoportok több adatbázist is tartalmaznak, ezeket az adatbázisokat az elsődleges kiszolgálón kell konfigurálni. Az automatikus feladatátvételi csoportok támogatják a csoportban lévő összes adatbázis replikációját egy másik régióban lévő egyetlen másodlagos kiszolgálóra.
+Auto-failover groups is a SQL Database feature that allows you to manage replication and failover of a group of databases on a SQL Database server or all databases in a managed instance to another region. It is a declarative abstraction on top of the existing [active geo-replication](sql-database-active-geo-replication.md) feature, designed to simplify deployment and management of geo-replicated databases at scale. You can initiate failover manually or you can delegate it to the SQL Database service based on a user-defined policy. The latter option allows you to automatically recover multiple related databases in a secondary region after a catastrophic failure or other unplanned event that results in full or partial loss of the SQL Database service’s availability in the primary region. A failover group can include one or multiple databases, typically used by the same application. Additionally, you can use the readable secondary databases to offload read-only query workloads. Because auto-failover groups involve multiple databases, these databases must be configured on the primary server. Auto-failover groups support replication of all databases in the group to only one secondary server in a different region.
 
 > [!NOTE]
-> Ha SQL Database-kiszolgálón található önálló vagy készletezett adatbázisokkal dolgozik, és több formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md). 
+> When working with single or pooled databases on a SQL Database server and you want multiple secondaries in the same or different regions, use [active geo-replication](sql-database-active-geo-replication.md). 
 
-Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Ezek általában olyan incidensek, amelyeket a beépített automatikus magas rendelkezésre állású műveletek nem képesek önállóan elhárítani. A feladatátvételi eseményindítók példái közé tartozik egy olyan incidens, amely egy SQL-bérlői kör vagy egy ellenőrző gyűrű miatt leállt, mert egy operációsrendszer-kernel memóriája több számítási csomóponton van, vagy egy vagy több bérlői kör okozta incidens, mert rossz hálózati kábelt vágtak le utine hardver leszerelése.  További információ: [SQL Database magas rendelkezésre állás](sql-database-high-availability.md).
+When you are using auto-failover groups with automatic failover policy, any outage that impacts one or several of the databases in the group results in automatic failover. Typically these are incidents that cannot be self-mitigated by the built-in automatic high availability operations. The examples of failover triggers include an incident caused by a SQL tenant ring or control ring being down due to an OS kernel memory leak on several compute nodes, or an incident caused by one or more tenant rings being down because a wrong network cable was cut during routine hardware decommissioning.  For more information, see [SQL Database High Availability](sql-database-high-availability.md).
 
-Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási figyelőket is biztosítanak, amelyek változatlanok maradnak a feladatátvételek során. Akár kézi, akár automatikus feladatátvételi aktiválást használ, a feladatátvétel a csoportban lévő összes másodlagos adatbázist elsődlegesre váltja. Az adatbázis-feladatátvétel befejeződése után a rendszer automatikusan frissíti a DNS-rekordot, hogy átirányítsa a végpontokat az új régióba. Az adott RPO-és RTO-információk esetében lásd: [az üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
+In addition, auto-failover groups provide read-write and read-only listener end-points that remain unchanged during failovers. Whether you use manual or automatic failover activation, failover switches all secondary databases in the group to primary. After the database failover is completed, the DNS record is automatically updated to redirect the endpoints to the new region. For the specific RPO and RTO data, see [Overview of Business Continuity](sql-database-business-continuity.md).
 
-Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, az SQL Database-kiszolgáló vagy a felügyelt példány adatbázisait érintő kimaradások automatikusan feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportot az alábbiak szerint kezelheti:
+When you are using auto-failover groups with automatic failover policy, any outage that impacts databases in the SQL Database server or managed instance results in automatic failover. You can manage auto-failover group using:
 
 - Az [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [PowerShell: feladatátvételi csoport](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST API: feladatátvételi csoport](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [PowerShell: Failover Group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- [REST API: Failover group](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
-A feladatátvételt követően gondoskodjon arról, hogy a kiszolgáló és az adatbázis hitelesítési követelményei az új elsődlegesen legyenek konfigurálva. Részletekért lásd: [SQL Database biztonság a katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md).
+After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
 
-A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti adatbázis-redundancia csak a megoldás része. Egy alkalmazás (szolgáltatás) teljes körű helyreállítása végzetes hiba után a szolgáltatást és a függő szolgáltatásokat alkotó összes összetevő helyreállítását igényli. Ezen összetevők közé tartoznak például az ügyfélszoftverek (például egy egyéni JavaScripttel rendelkező böngésző), a webes kezelőfelületek, a tárterület és a DNS. Kritikus fontosságú, hogy minden összetevő azonos hibákra legyen rugalmas, és az alkalmazás helyreállítási idő célkitűzésén (RTO) belül elérhetővé váljon. Ezért az összes függő szolgáltatást azonosítania kell, és ismernie kell az általuk nyújtott garanciákat és képességeket. Ezt követően meg kell tennie a megfelelő lépéseket annak biztosításához, hogy a szolgáltatás a szolgáltatások feladatátvétele alatt működjön, amelytől függ. A megoldásoknak a vész-helyreállításhoz való kialakításával kapcsolatos további információkért lásd: [felhőalapú megoldások tervezése a vész-helyreállításhoz az aktív földrajzi replikálás használatával](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+To achieve real business continuity, adding database redundancy between datacenters is only part of the solution. Recovering an application (service) end-to-end after a catastrophic failure requires recovery of all components that constitute the service and any dependent services. Examples of these components include the client software (for example, a browser with a custom JavaScript), web front ends, storage, and DNS. It is critical that all components are resilient to the same failures and become available within the recovery time objective (RTO) of your application. Therefore, you need to identify all dependent services and understand the guarantees and capabilities they provide. Then, you must take adequate steps to ensure that your service functions during the failover of the services on which it depends. For more information about designing solutions for disaster recovery, see [Designing Cloud Solutions for Disaster Recovery Using active geo-replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-## <a name="auto-failover-group-terminology-and-capabilities"></a>Automatikus feladatátvételi csoport terminológiája és képességei
+## <a name="auto-failover-group-terminology-and-capabilities"></a>Auto-failover group terminology and capabilities
 
-- **Feladatátvételi csoport (köd)**
+- **Failover group (FOG)**
 
-  A feladatátvételi csoport egyetlen SQL Database kiszolgáló vagy egyetlen felügyelt példány által felügyelt adatbázisok névvel ellátott csoportja, amely a feladatátvételt egységként egy másik régióba helyezi, ha az összes vagy néhány elsődleges adatbázis elérhetetlenné válik az elsődleges régió meghibásodása miatt. Felügyelt példányok esetén a feladatátvételi csoport a példány összes felhasználói adatbázisát tartalmazza, ezért csak egy feladatátvételi csoport konfigurálható egy példányon.
+  A failover group is a named group of databases managed by a single SQL Database server or within a single managed instance that can fail over as a unit to another region in case all or some primary databases become unavailable due to an outage in the primary region. When created for managed instances, a failover group contains all user databases in the instance and therefore only one failover group can be configured on an instance.
   
   > [!IMPORTANT]
-  > A feladatátvételi csoport nevének globálisan egyedinek kell lennie a `.database.windows.net` tartományon belül.
+  > The name of the failover group must be globally unique within the `.database.windows.net` domain.
 
-- **Kiszolgálók SQL Database**
+- **SQL Database servers**
 
-     A SQL Database-kiszolgálókkal egy adott SQL Database-kiszolgálón lévő felhasználói adatbázisok némelyike vagy mindegyike feladatátvételi csoportba helyezhető. Emellett a SQL Database-kiszolgálók több feladatátvételi csoportot is támogatnak egyetlen SQL Database-kiszolgálón.
+     With SQL Database servers, some or all of the user databases on a single SQL Database server can be placed in a failover group. Also, a SQL Database server supports multiple failover groups on a single SQL Database server.
 
-- **Elsődleges**
+- **Primary**
 
-  A feladatátvételi csoportban lévő elsődleges adatbázisokat üzemeltető SQL Database-kiszolgáló vagy felügyelt példány.
+  The SQL Database server or managed instance that hosts the primary databases in the failover group.
 
-- **Másodlagos**
+- **Secondary**
 
-  A feladatátvételi csoportban található másodlagos adatbázisokat üzemeltető SQL Database-kiszolgáló vagy felügyelt példány. A másodlagos nem lehet ugyanabban a régióban, mint az elsődleges.
+  The SQL Database server or managed instance that hosts the secondary databases in the failover group. The secondary cannot be in the same region as the primary.
 
-- **Önálló adatbázisok hozzáadása a feladatátvételi csoporthoz**
+- **Adding single databases to failover group**
 
-  Ugyanazon a SQL Database kiszolgálón több önálló adatbázis is elhelyezhető ugyanabba a feladatátvételi csoportba. Ha egyetlen adatbázist ad hozzá a feladatátvételi csoporthoz, a automatikusan létrehoz egy másodlagos adatbázist ugyanazzal a kiadással és számítási mérettel a másodlagos kiszolgálón.  A kiszolgálót a feladatátvételi csoport létrehozásakor adta meg. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal a másodlagos kiszolgálón, a csoport örökli a földrajzi replikálási hivatkozást. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal egy olyan kiszolgálón, amely nem része a feladatátvételi csoportnak, akkor a rendszer egy új másodlagost hoz létre a másodlagos kiszolgálón.
-  
+  You can put several single databases on the same SQL Database server into the same failover group. If you add a single database to the failover group, it automatically creates a secondary database using the same edition and compute size on secondary server.  You specified that server when the failover group was created. If you add a database that already has a secondary database in the secondary server, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary server.
+
   > [!IMPORTANT]
-  > Győződjön meg arról, hogy a másodlagos kiszolgálónak nincs azonos nevű adatbázisa, kivéve, ha egy meglévő másodlagos adatbázis. A felügyelt példány feladatátvételi csoportjaiban minden felhasználói adatbázis replikálódik. A feladatátvételi csoportban nem választhat felhasználói adatbázisok egy részhalmazát.
+  > Make sure that the secondary server doesn't have a database with the same name unless it is an existing secondary database. In failover groups for managed instance all user databases are replicated. You cannot pick a subset of user databases for replication in the failover group.
 
-- **Adatbázisok hozzáadása rugalmas készletből a feladatátvételi csoportba**
+- **Adding databases in elastic pool to failover group**
 
-  Egy rugalmas készletben lévő összes vagy több adatbázis ugyanabba a feladatátvételi csoportba helyezhető. Ha az elsődleges adatbázis egy rugalmas készletben van, a rendszer automatikusan létrehozza a másodlagost a rugalmas készletben ugyanazzal a névvel (másodlagos készlettel). Győződjön meg arról, hogy a másodlagos kiszolgáló tartalmaz egy rugalmas készletet ugyanazzal a pontos névvel és elegendő szabad kapacitással a feladatátvételi csoport által létrehozandó másodlagos adatbázisok üzemeltetéséhez. Ha olyan adatbázist ad hozzá a készlethez, amely már rendelkezik másodlagos adatbázissal a másodlagos készletben, akkor a csoport örökli a földrajzi replikálási hivatkozást. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal egy olyan kiszolgálón, amely nem része a feladatátvételi csoportnak, a rendszer egy új másodlagost hoz létre a másodlagos készletben.
+  You can put all or several databases within an elastic pool into the same failover group. If the primary database is in an elastic pool, the secondary is automatically created in the elastic pool with the same name (secondary pool). You must ensure that the secondary server contains an elastic pool with the same exact name and enough free capacity to host the secondary databases that will be created by the failover group. If you add a database in the pool that already has a secondary database in the secondary pool, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary pool.
   
 - **DNS-zóna**
 
-  Egy új példány létrehozásakor automatikusan generált egyedi azonosító. A példányhoz több tartományra kiterjedő (SAN) tanúsítvány van kiépítve, amely az ügyfélkapcsolatokat az azonos DNS-zónában lévő bármelyik példánnyal hitelesíti. Az ugyanabban a feladatátvételi csoportban lévő két felügyelt példánynak meg kell osztania a DNS-zónát. 
+  A unique ID that is automatically generated when a new instance is created. A multi-domain (SAN) certificate for this instance is provisioned to authenticate the client connections to any instance in the same DNS zone. The two managed instances in the same failover group must share the DNS zone.
   
   > [!NOTE]
-  > SQL Database kiszolgálókhoz létrehozott feladatátvételi csoportok esetében nincs szükség DNS-zóna AZONOSÍTÓra.
+  > A DNS zone ID is not required for failover groups created for SQL Database servers.
 
-- **Feladatátvételi csoport írási-olvasási figyelője**
+- **Failover group read-write listener**
 
-  DNS-CNAME rekord, amely az aktuális elsődleges URL-címre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi az írható és olvasható SQL-feladatok transzparens újracsatlakozását az elsődleges adatbázishoz, amikor az elsődleges módosítások a feladatátvételt követően változnak. Ha a feladatátvételi csoport egy SQL Database kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME-rekord `<fog-name>.database.windows.net`ként jön létre. Ha a feladatátvételi csoportot felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME-rekord `<fog-name>.zone_id.database.windows.net`ként jön létre.
+  A DNS CNAME record that points to the current primary's URL. It is created automatically when the failover group is created and allows the read-write SQL workload to transparently reconnect to the primary database when the primary changes after failover. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.database.windows.net`.
 
-- **Feladatátvételi csoport írásvédett figyelője**
+- **Failover group read-only listener**
 
-  Egy olyan DNS-CNAME rekord, amely a másodlagos URL-címére mutató írásvédett figyelőre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi, hogy a csak olvasási jogosultsággal rendelkező SQL-munkaterhelés transzparens módon kapcsolódjon a másodlagoshoz a megadott terheléselosztási szabályok használatával. Ha a feladatátvételi csoport egy SQL Database kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME-rekord `<fog-name>.secondary.database.windows.net`ként jön létre. Ha a feladatátvételi csoportot felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME-rekord `<fog-name>.zone_id.secondary.database.windows.net`ként jön létre.
+  A DNS CNAME record formed that points to the read-only listener that points to the secondary's URL. It is created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary using the specified load-balancing rules. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.secondary.database.windows.net`.
 
-- **Automatikus feladatátvételi szabályzat**
+- **Automatic failover policy**
 
-  Alapértelmezés szerint a feladatátvételi csoport automatikus feladatátvételi házirenddel van konfigurálva. A SQL Database szolgáltatás elindítja a feladatátvételt a hiba észlelése után, és a türelmi időszak lejárt. A rendszernek ellenőriznie kell, hogy a kiesést nem lehet-e enyhíteni a [SQL Database szolgáltatás beépített, magas rendelkezésre állású infrastruktúrája](sql-database-high-availability.md) által a hatás skálázása miatt. Ha az alkalmazásból szeretné vezérelni a feladatátvételi munkafolyamatot, kikapcsolhatja az automatikus feladatátvételt.
+  By default, a failover group is configured with an automatic failover policy. The SQL Database service triggers failover after the failure is detected and the grace period has expired. The system must verify that the outage cannot be mitigated by the built-in [high availability infrastructure of the SQL Database service](sql-database-high-availability.md) due to the scale of the impact. If you want to control the failover workflow from the application, you can turn off automatic failover.
   
   > [!NOTE]
-  > Mivel a leállás skálázásának ellenőrzése és az, hogy milyen gyorsan lehet enyhíteni az operatív csapat által végzett emberi műveleteket, a türelmi időszak nem állítható be egy óra alatt.  Ez a korlátozás a feladatátvételi csoport összes adatbázisára vonatkozik, az adatszinkronizálási állapotuktól függetlenül. 
+  > Because verification of the scale of the outage and how quickly it can be mitigated involves human actions by the operations team, the grace period cannot be set below one hour.  This  limitation applies to all databases in the failover group regardless of their data synchronization state. 
 
-- **Csak olvasási feladatátvételi szabályzat**
+- **Read-only failover policy**
 
-  Alapértelmezés szerint a csak olvasási figyelő feladatátvétele le van tiltva. Gondoskodik arról, hogy az elsődleges teljesítmény ne legyen hatással a másodlagos kapcsolat nélküli állapotra. Ez azonban azt is jelenti, hogy a csak olvasási munkamenetek nem fognak tudni csatlakozni, amíg a másodlagos helyre nem kerül. Ha nem tudja elviselni az állásidőt a csak olvasási munkamenetek esetében, és az OK, hogy az elsődlegeset átmenetileg használja mind a írásvédett, mind az írási és olvasási forgalom számára, akkor engedélyezheti a feladatátvételt a csak olvasási figyelő számára a `AllowReadOnlyFailoverToPrimary` tulajdonság konfigurálásával. Ebben az esetben a csak olvasási forgalom automatikusan átirányítva lesz az elsődlegesre, ha a másodlagos nem érhető el.
+  By default, the failover of the read-only listener is disabled. It ensures that the performance of the primary is not impacted when the secondary is offline. However, it also means the read-only sessions will not be able to connect until the secondary is recovered. If you cannot tolerate downtime for the read-only sessions and are OK to temporarily use the primary for both read-only and read-write traffic at the expense of the potential performance degradation of the primary, you can enable failover for the read-only listener by configuring the `AllowReadOnlyFailoverToPrimary` property. In that case, the read-only traffic will be automatically redirected to the primary if the secondary is not available.
 
-- **Tervezett feladatátvétel**
+- **Planned failover**
 
-   A tervezett feladatátvétel teljes szinkronizálást végez az elsődleges és a másodlagos adatbázisok között, mielőtt a másodlagos kapcsolók az elsődleges szerepkörre kerülnek. Ez nem garantálja az adatvesztést. A tervezett feladatátvételt a következő esetekben használja a rendszer:
+   Planned failover performs full synchronization between primary and secondary databases before the secondary switches to the primary role. This guarantees no data loss. Planned failover is used in the following scenarios:
 
-  - Vész-helyreállítási (DR) gyakorlatok készítése az éles környezetben, ha az adatvesztés nem fogadható el
-  - Adatbázisok áthelyezése másik régióba
-  - Az adatbázisok visszaküldése az elsődleges régióba a leállás csökkentése után (feladat-visszavétel).
+  - Perform disaster recovery (DR) drills in production when the data loss is not acceptable
+  - Relocate the databases to a different region
+  - Return the databases to the primary region after the outage has been mitigated (failback).
 
-- **Nem tervezett feladatátvétel**
+- **Unplanned failover**
 
-   A nem tervezett vagy kényszerített feladatátvétel azonnal átváltja a másodlagost az elsődleges szerepkörre anélkül, hogy szinkronizálnia kellene az elsődlegesével. A művelet adatvesztést eredményezhet. A nem tervezett feladatátvétel helyreállítási módszerként használatos a leállás során, ha az elsődleges nem érhető el. Amikor az eredeti elsődleges ismét online állapotba kerül, automatikusan újrakapcsolódik a szinkronizálás nélkül, és új másodlagos lesz.
+   Unplanned or forced failover immediately switches the secondary to the primary role without any synchronization with the primary. This operation will result in data loss. Unplanned failover is used as a recovery method during outages when the primary is not accessible. When the original primary is back online, it will automatically reconnect without synchronization and become a new secondary.
 
-- **Manuális feladatátvétel**
+- **Manual failover**
 
-  A feladatátvételt manuálisan is kezdeményezheti az automatikus feladatátvételi konfigurációtól függetlenül. Ha az automatikus feladatátvételi házirend nincs konfigurálva, a feladatátvételi csoportban lévő adatbázisok másodlagosra történő helyreállításához manuális feladatátvétel szükséges. Kényszerített vagy felhasználóbarát feladatátvételt is kezdeményezhet (teljes adatszinkronizálással). Az utóbbit az elsődlegesnek a másodlagos régióba való áthelyezésére lehet használni. A feladatátvétel befejezésekor a rendszer automatikusan frissíti a DNS-rekordokat, hogy biztosítsa az új elsődleges kapcsolat elérését
+  You can initiate failover manually at any time regardless of the automatic failover configuration. If automatic failover policy is not configured, manual failover is required to recover databases in the failover group to the secondary. You can initiate forced or friendly failover (with full data synchronization). The latter could be used to relocate the primary to the secondary region. When failover is completed, the DNS records are automatically updated to ensure connectivity to the new primary
 
-- **Türelmi időszak adatvesztéssel**
+- **Grace period with data loss**
 
-  Mivel az elsődleges és másodlagos adatbázisok aszinkron replikálással vannak szinkronizálva, a feladatátvétel adatvesztést okozhat. Testreszabhatja az automatikus feladatátvételi szabályzatot, hogy tükrözze az alkalmazás adatvesztési tűréshatárát. `GracePeriodWithDataLossHours`konfigurálásával szabályozhatja, hogy a rendszer mennyi ideig várjon, amíg a rendszer megvárja a feladatátvételt, amely valószínűleg adatvesztést okoz.
+  Because the primary and secondary databases are synchronized using asynchronous replication, the failover may result in data loss. You can customize the automatic failover policy to reflect your application’s tolerance to data loss. By configuring `GracePeriodWithDataLossHours`, you can control how long the system waits before initiating the failover that is likely to result data loss.
 
-- **Több feladatátvételi csoport**
+- **Multiple failover groups**
 
-  Több feladatátvételi csoportot is beállíthat ugyanahhoz a pár kiszolgálóhoz a feladatátvételi skála szabályozása érdekében. A csoportok egymástól függetlenül hajtják végre a feladatátvételt. Ha a több-bérlős alkalmazás rugalmas készleteket használ, ezt a képességet használhatja az egyes készletekben lévő elsődleges és másodlagos adatbázisok összekeveréséhez. Így csökkentheti a leállás hatását a bérlők felére.
+  You can configure multiple failover groups for the same pair of servers to control the scale of failovers. Each group fails over independently. If your multi-tenant application uses elastic pools, you can use this capability to mix primary and secondary databases in each pool. This way you can reduce the impact of an outage to only half of the tenants.
 
   > [!NOTE]
-  > A felügyelt példány nem támogatja több feladatátvételi csoport használatát.
+  > Managed Instance does not support multiple failover groups.
   
 ## <a name="permissions"></a>Engedélyek
-A feladatátvételi csoport engedélyei a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md)használatával kezelhetők. A [SQL Server közreműködő](../role-based-access-control/built-in-roles.md#sql-server-contributor) szerepkör rendelkezik a feladatátvételi csoportok kezeléséhez szükséges engedélyekkel. 
 
-### <a name="create-failover-group"></a>Feladatátvételi csoport létrehozása
-A feladatátvételi csoport létrehozásához írási hozzáféréssel kell rendelkeznie az elsődleges és a másodlagos kiszolgálókhoz, valamint a feladatátvételi csoport összes adatbázisához is RBAC kell. Felügyelt példány esetén az elsődleges és a másodlagos felügyelt példányhoz is írási hozzáférésre van szükség, de az egyes adatbázisokra vonatkozó engedélyek nem relevánsak, mert az egyes felügyelt példány-adatbázisok nem vehetők fel és nem távolíthatók el egy feladatátvételi csoportból a RBAC. 
+Permissions for a failover group are managed via [role-based access control (RBAC)](../role-based-access-control/overview.md). The [SQL Server Contributor](../role-based-access-control/built-in-roles.md#sql-server-contributor) role has all the necessary permissions to manage failover groups.
 
-### <a name="update-a-failover-group"></a>Feladatátvételi csoport frissítése
-A feladatátvételi csoport frissítéséhez írási hozzáféréssel kell rendelkeznie a feladatátvételi csoporthoz, és az aktuális elsődleges kiszolgálón vagy felügyelt példányon lévő összes adatbázishoz RBAC kell.  
+### <a name="create-failover-group"></a>Create failover group
 
-### <a name="failover-a-failover-group"></a>Feladatátvételi csoport feladatátvétele
-A feladatátvételi csoport feladatátvételéhez írási hozzáféréssel kell rendelkeznie a feladatátvételi csoporthoz az új elsődleges kiszolgálón vagy a felügyelt példányon RBAC. 
+To create a failover group, you need RBAC write access to both the primary and secondary servers, and to all databases in the failover group. For a managed instance, you need RBAC write access to both the primary and secondary managed instance, but permissions on individual databases are not relevant since individual managed instance databases cannot be added to or removed from a failover group. 
 
-## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Ajánlott eljárások a feladatátvételi csoportok használatáról önálló adatbázisokkal és rugalmas készletekkel
+### <a name="update-a-failover-group"></a>Update a failover group
 
-Az automatikus feladatátvételi csoportot az elsődleges SQL Database-kiszolgálón kell konfigurálni, és azt egy másik Azure-régióban lévő másodlagos SQL Database-kiszolgálóhoz kell kapcsolni. A csoportok tartalmazhatják a kiszolgálók összes vagy néhány adatbázisát. A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját mutatja be, amely több adatbázist és automatikus feladatátvételi csoportot használ.
+To update a failover group, you need RBAC write access to the failover group, and all databases on the current primary server or managed instance.  
 
-![automatikus feladatátvétel](./media/sql-database-auto-failover-group/auto-failover-group.png)
+### <a name="failover-a-failover-group"></a>Failover a failover group
+
+To fail over a failover group, you need RBAC write access to the failover group on the new primary server or managed instance.
+
+## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Best practices of using failover groups with single databases and elastic pools
+
+The auto-failover group must be configured on the primary SQL Database server and will connect it to the secondary SQL Database server in a different Azure region. The groups can include all or some databases in these servers. The following diagram illustrates a typical configuration of a geo-redundant cloud application using multiple databases and auto-failover group.
+
+![auto failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
 > [!NOTE]
-> Az önálló adatbázis feladatátvételi csoportba való felvételével kapcsolatos részletes oktatóanyagért lásd: [egyetlen adatbázis hozzáadása feladatátvételi csoporthoz](sql-database-single-database-failover-group-tutorial.md) . 
+> See [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a single database to a failover group.
 
+When designing a service with business continuity in mind, follow these general guidelines:
 
-Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irányelvek szerint járjon el:
+- **Use one or several failover groups to manage failover of multiple databases**
 
-- **Több adatbázis feladatátvételének kezeléséhez használjon egy vagy több feladatátvételi csoportot**
-
-  A különböző régiókban (elsődleges és másodlagos kiszolgálókon) lévő két kiszolgáló között egy vagy több feladatátvételi csoport is létrehozható. Az egyes csoportok tartalmazhatnak egy vagy több olyan adatbázist, amelyeket egységként állítanak be abban az esetben, ha az összes vagy néhány elsődleges adatbázis elérhetetlenné válik az elsődleges régióban bekövetkező leállás miatt. A feladatátvételi csoport a földrajzilag másodlagos adatbázist hozza létre ugyanazzal a szolgáltatási céllal, mint az elsődleges. Ha egy meglévő geo-replikációs kapcsolatot ad hozzá a feladatátvételi csoporthoz, győződjön meg arról, hogy a Geo-másodlagos kiszolgáló ugyanazzal a szolgáltatási réteggel és számítási mérettel van konfigurálva, mint az elsődleges.
+  One or many failover groups can be created between two servers in different regions (primary and secondary servers). Each group can include one or several databases that are recovered as a unit in case all or some primary databases become unavailable due to an outage in the primary region. The failover group creates geo-secondary database with the same service objective as the primary. If you add an existing geo-replication relationship to the failover group, make sure the geo-secondary is configured with the same service tier and compute size as the primary.
   
   > [!IMPORTANT]
-  > Az önálló adatbázisok és a rugalmas készletek jelenleg nem támogatják a feladatátvételi csoportok létrehozását a különböző előfizetésekben található két kiszolgáló között. Ha a feladatátvételi csoport létrehozása után áthelyezi az elsődleges vagy a másodlagos kiszolgálót egy másik előfizetésre, a feladatátvételi kérelmek és egyéb műveletek meghibásodását okozhatják.
+  > Creating failover groups between two servers in different subscriptions is not currently supported for single databases and elastic pools. If you move the primary or secondary server to a different subscription after the failover group has been created, it could result in failures of the failover requests and other operations.
 
-- **Olvasási és írási figyelő használata a OLTP számítási feladatokhoz**
+- **Use read-write listener for OLTP workload**
 
-  OLTP műveletek végrehajtásakor használja a `<fog-name>.database.windows.net` kiszolgáló URL-címét, és a kapcsolatok automatikusan az elsődlegesre lesznek irányítva. Ez az URL-cím nem változik a feladatátvétel után. Megjegyzés: a feladatátvétel magában foglalja a DNS-rekord frissítését, hogy az ügyfélkapcsolatok csak az ügyfél DNS-gyorsítótárának frissítésekor legyenek átirányítva az új elsődlegesre.
+  When performing OLTP operations, use `<fog-name>.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. Note the failover involves updating the DNS record so the client connections are redirected to the new primary only after the client DNS cache is refreshed.
 
-- **Írásvédett munkaterheléshez csak olvasási figyelő használható**
+- **Use read-only listener for read-only workload**
 
-  Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja a `<fog-name>.secondary.database.windows.net` kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a `ApplicationIntent=ReadOnly`használatával jelezze a kapcsolódó karakterláncot a következővel:. Ha biztosítani kívánja, hogy a csak olvasási feladattal rendelkező munkaterhelés újrakapcsolódjon a feladatátvétel után, vagy ha a másodlagos kiszolgáló offline állapotba kerül, konfigurálja a feladatátvételi házirend `AllowReadOnlyFailoverToPrimary` tulajdonságát. 
+  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. For read-only sessions, use `<fog-name>.secondary.database.windows.net` as the server URL and the connection is automatically directed to the secondary. It is also recommended that you indicate in connection string read intent by using `ApplicationIntent=ReadOnly`. If you want to ensure that the read-only workload can reconnect after failover or in case the secondary server goes offline, make sure to configure the `AllowReadOnlyFailoverToPrimary` property of the failover policy.
 
-- **Készüljön fel a teljesítmény romlására**
+- **Be prepared for perf degradation**
 
-  Az SQL-feladatátvételi döntés független a többi alkalmazástól vagy más használt szolgáltatástól. Előfordulhat, hogy az alkalmazás "vegyes", és egy adott régióban néhány összetevővel rendelkezik. A romlás elkerülése érdekében gondoskodjon a redundáns alkalmazások telepítéséről a DR régióban, és kövesse ezeket a [hálózati biztonsági irányelveket](#failover-groups-and-network-security).
+  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
 
   > [!NOTE]
-  > A DR régióban lévő alkalmazásnak nem kell másik kapcsolódási karakterláncot használnia.  
+  > The application in the DR region does not have to use a different connection string.  
 
-- **Felkészülés az adatvesztésre**
+- **Prepare for data loss**
 
-  Ha a rendszer kimaradást észlel, az SQL megvárja a `GracePeriodWithDataLossHours`által megadott időszakot. Az alapértelmezett érték 1 óra. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a `GracePeriodWithDataLossHours`t elég nagy számra, például 24 órára állítsa be. A manuális csoport feladatátvételi szolgáltatásával visszatérhet a másodlagosról az elsődlegesre.
+  If an outage is detected, SQL waits for the period you specified by `GracePeriodWithDataLossHours`. The default value is 1 hour. If you cannot afford data loss, make sure to set `GracePeriodWithDataLossHours` to a sufficiently large number, such as 24 hours. Use manual group failover to fail back from the secondary to the primary.
 
   > [!IMPORTANT]
-  > A 800-es vagy kevesebb DTU és több mint 250 adatbázissal rendelkező, Geo-replikációt használó rugalmas készletek olyan problémákba ütközhet, mint a hosszabb tervezett feladatátvétel és a csökkentett teljesítmény.  Ezek a problémák nagyobb valószínűséggel fordulnak elő az írási igényű munkaterhelések esetében, ha a Geo-replikációs végpontok földrajzilag széles körben elkülönülnek, vagy ha az egyes adatbázisokhoz több másodlagos végpont is használatos.  Ezeknek a problémáknak a tünetei akkor jelennek meg, ha a földrajzi replikálási késés idővel növekszik.  Ez a késés figyelhető a [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)használatával.  Ha ezek a problémák lépnek fel, a mérséklések közé tartozik a készlet DTU számának növelése vagy a Geo-replikált adatbázisok számának csökkentése ugyanabban a készletben.
+  > Elastic pools with 800 or fewer DTUs and more than 250 databases using geo-replication may encounter issues including longer planned failovers and degraded performance.  These issues are more likely to occur for write intensive workloads, when geo-replication endpoints are widely separated by geography, or when multiple secondary endpoints are used for each database.  Symptoms of these issues are indicated when the geo-replication lag increases over time.  This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  If these issues occur, then mitigations include increasing the number of pool DTUs, or reducing the number of geo-replicated databases in the same pool.
 
-## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Ajánlott eljárások a feladatátvételi csoportok használatáról felügyelt példányokkal
+## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Best practices of using failover groups with managed instances
 
-Az automatikus feladatátvételi csoportot az elsődleges példányon kell konfigurálni, és egy másik Azure-régióban található másodlagos példánnyal kell csatlakoznia.  A példány összes adatbázisa replikálva lesz a másodlagos példányra. 
+The auto-failover group must be configured on the primary instance and will connect it to the secondary instance in a different Azure region.  All databases in the instance will be replicated to the secondary instance.
 
-A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti, amely felügyelt példányt és automatikus feladatátvételi csoportot használ.
+The following diagram illustrates a typical configuration of a geo-redundant cloud application using managed instance and auto-failover group.
 
-![automatikus feladatátvétel](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
+![auto failover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
-> Tekintse meg a felügyelt [példány hozzáadása feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md) című témakört, amely részletesen ismerteti a felügyelt példányok feladatátvételi csoport használatára való hozzáadásának lépéseit. 
+> See [Add managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a managed instance to use failover group.
 
-Ha az alkalmazás felügyelt példányt használ adatcsomagként, kövesse az alábbi általános irányelveket az üzletmenet folytonosságának tervezésekor:
+If your application uses managed instance as the data tier, follow these general guidelines when designing for business continuity:
 
-- **A másodlagos példány létrehozása ugyanabban a DNS-zónában, mint az elsődleges példány**
+- **Create the secondary instance in the same DNS zone as the primary instance**
 
-  Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példányok feladatátvétele ne szakítsa meg a kapcsolatot az elsődleges példánnyal, ugyanabban a DNS-zónában kell lennie. A szolgáltatás garantálja, hogy ugyanaz a többtartományos (SAN) tanúsítvány használható az ügyfélkapcsolatok hitelesítésére a feladatátvételi csoport két példányának egyikén. Ha az alkalmazás készen áll az éles környezetben való üzembe helyezésre, hozzon létre egy másodlagos példányt egy másik régióban, és győződjön meg róla, hogy az elsődleges példánnyal osztja meg a DNS-zónát. Ezt megteheti egy `DNS Zone Partner` választható paraméter megadásával a Azure Portal, a PowerShell vagy a REST API használatával. 
+  To ensure non-interrupted connectivity to the primary instance after failover both the primary and secondary instances must be in the same DNS zone. It will guarantee that the same multi-domain (SAN) certificate can be used to authenticate the client connections to either of the two instances in the failover group. When your application is ready for production deployment, create a secondary instance in a different region and make sure it shares the DNS zone with the primary instance. You can do it by specifying a `DNS Zone Partner` optional parameter using the Azure portal, PowerShell, or the REST API.
 
 > [!IMPORTANT]
-> Az alhálózatban létrehozott első példány határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példánynál. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.   
+> First instance created in the subnet determines DNS zone for all subsequent instances in the same subnet. This means that two instances from the same subnet cannot belong to different DNS zones.
 
-  Az elsődleges példánnyal azonos DNS-zónában található másodlagos példány létrehozásával kapcsolatos további információkért lásd: [másodlagos felügyelt példány létrehozása](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
+  For more information about creating the secondary instance in the same DNS zone as the primary instance, see [Create a secondary managed instance](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
-- **Replikációs forgalom engedélyezése két példány között**
+- **Enable replication traffic between two instances**
 
-  Mivel minden példány el van különítve a saját VNet, engedélyezni kell a két irányú adatforgalmat a virtuális hálózatok között. Lásd: [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+  Because each instance is isolated in its own VNet, two-directional traffic between these VNets must be allowed. See [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-- **Feladatátvételi csoport létrehozása a felügyelt példányok között különböző előfizetésekben**
+- **Create a failover group between managed instances in different subscriptions**
 
-  A felügyelt példányok között két különböző előfizetésben hozhat létre feladatátvételi csoportot. A PowerShell API használatakor megteheti a `PartnerSubscriptionId` paraméter megadásával a másodlagos példányhoz. REST API használatakor a `properties.managedInstancePairs` paraméterben szereplő minden példány-azonosító saját subscriptionID rendelkezhet. 
+  You can create a failover group between managed instances in two different subscriptions. When using PowerShell API you can do it by  specifying the `PartnerSubscriptionId` parameter for the secondary instance. When using REST API, each instance ID included in the `properties.managedInstancePairs` parameter can have its own subscriptionID.
   
   > [!IMPORTANT]
-  > Az Azure Portal nem támogatja a feladatátvételi csoportokat a különböző előfizetések között.
+  > Azure Portal does not support failover groups across different subscriptions.
 
-  
-- **Feladatátvételi csoport konfigurálása a teljes példány feladatátvételének kezeléséhez**
+- **Configure a failover group to manage failover of entire instance**
 
-  A feladatátvételi csoport a példány összes adatbázisának feladatátvételét fogja kezelni. Egy csoport létrehozásakor a példány minden adatbázisa automatikusan a másodlagos példányra lesz replikálva. A feladatátvételi csoportok nem használhatók az adatbázisok egy részhalmazának részleges feladatátvételének kezdeményezésére.
+  The failover group will manage the failover of all the databases in the instance. When a group is created, each database in the instance will be automatically geo-replicated to the secondary instance. You cannot use failover groups to initiate a partial failover of a subset of the databases.
 
   > [!IMPORTANT]
-  > Ha egy adatbázis el lett távolítva az elsődleges példányból, akkor a rendszer automatikusan elveszi a Geo másodlagos példányon is.
+  > If a database is removed from the primary instance, it will also be dropped automatically on the geo secondary instance.
 
-- **Olvasási és írási figyelő használata a OLTP számítási feladatokhoz**
+- **Use read-write listener for OLTP workload**
 
-  OLTP műveletek végrehajtásakor használja a `<fog-name>.zone_id.database.windows.net` kiszolgáló URL-címét, és a kapcsolatok automatikusan az elsődlegesre lesznek irányítva. Ez az URL-cím nem változik a feladatátvétel után. A feladatátvétel magában foglalja a DNS-rekord frissítését, így az ügyfélkapcsolatok csak az ügyfél DNS-gyorsítótárának frissítésekor lesznek átirányítva az új elsődlegesre. Mivel a másodlagos példány megosztja a DNS-zónát az elsődleges értékkel, az ügyfélalkalmazás újra csatlakozhat ugyanahhoz a SAN-tanúsítványhoz.
+  When performing OLTP operations, use `<fog-name>.zone_id.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. The failover involves updating the DNS record, so the client connections are redirected to the new primary only after the client DNS cache is refreshed. Because the secondary instance shares the DNS zone with the primary, the client application will be able to reconnect to it using the same SAN certificate.
 
-- **Közvetlen kapcsolódás a földrajzilag replikált másodlagoshoz a csak olvasási lekérdezésekhez**
+- **Connect directly to geo-replicated secondary for read-only queries**
 
-  Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Ha közvetlenül a földrajzilag replikált másodlagoshoz szeretne csatlakozni, használja a `server.secondary.zone_id.database.windows.net` kiszolgáló URL-címére, és a kapcsolat közvetlenül a földrajzilag replikált másodlagosra történik.
+  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. To connect directly to the geo-replicated secondary, use `server.secondary.zone_id.database.windows.net` as the server URL and the connection is made directly to the geo-replicated secondary.
 
   > [!NOTE]
-  > Bizonyos szolgáltatási rétegekben a Azure SQL Database támogatja a csak olvasható [replikák](sql-database-read-scale-out.md) használatát, hogy csak egy írásvédett replika kapacitásával és a kapcsolódási karakterláncban szereplő `ApplicationIntent=ReadOnly` paraméterrel terheléselosztást lehessen alkalmazni az írásvédett lekérdezési feladatok kiegyensúlyozására. Ha egy földrajzilag replikált másodlagos beállítást konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a földrajzilag replikált helyen.
-  > - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a `<fog-name>.zone_id.database.windows.net`.
-  > - A másodlagos helyen található írásvédett replikához való kapcsolódáshoz használja a `<fog-name>.secondary.zone_id.database.windows.net`.
+  > In certain service tiers, Azure SQL Database supports the use of [read-only replicas](sql-database-read-scale-out.md) to load balance read-only query workloads using the capacity of one read-only replica and using the `ApplicationIntent=ReadOnly` parameter in the connection string. When you have configured a geo-replicated secondary, you can use this capability to connect to either a read-only replica in the primary location or in the geo-replicated location.
+  > - To connect to a read-only replica in the primary location, use `<fog-name>.zone_id.database.windows.net`.
+  > - To connect to a read-only replica in the secondary location, use `<fog-name>.secondary.zone_id.database.windows.net`.
 
-- **Készüljön fel a teljesítmény romlására**
+- **Be prepared for perf degradation**
 
-  Az SQL-feladatátvételi döntés független a többi alkalmazástól vagy más használt szolgáltatástól. Előfordulhat, hogy az alkalmazás "vegyes", és egy adott régióban néhány összetevővel rendelkezik. A romlás elkerülése érdekében gondoskodjon a redundáns alkalmazások telepítéséről a DR régióban, és kövesse ezeket a [hálózati biztonsági irányelveket](#failover-groups-and-network-security).
+  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
 
-- **Felkészülés az adatvesztésre**
+- **Prepare for data loss**
 
-  Ha a rendszer áramszünetet észlel, az SQL automatikusan elindítja az írási és olvasási feladatátvételt, ha a lehető legjobb ismerete nulla adatvesztést okoz. Ellenkező esetben a `GracePeriodWithDataLossHours`által megadott időszakra vár. Ha a `GracePeriodWithDataLossHours`t adta meg, előkészítheti az adatvesztést. Általánosságban elmondható, hogy az Azure továbbra is rendelkezésre áll. Ha nem engedheti meg az adatvesztést, ügyeljen arra, hogy a GracePeriodWithDataLossHours megfelelően nagy számú, például 24 óráig állítsa be.
+  If an outage is detected, SQL automatically triggers read-write failover if there is zero data loss to the best of our knowledge. Otherwise, it waits for the period you specified by `GracePeriodWithDataLossHours`. If you specified `GracePeriodWithDataLossHours`, be prepared for data loss. In general, during outages, Azure favors availability. If you cannot afford data loss, make sure to set GracePeriodWithDataLossHours to a sufficiently large number, such as 24 hours.
 
-  Az írható-olvasható figyelő DNS-frissítése a feladatátvétel megkezdése után azonnal megtörténik. Ez a művelet nem eredményez adatvesztést. Az adatbázis-szerepkörök váltásának folyamata azonban normál körülmények között akár 5 percet is igénybe vehet. Amíg a művelet be nem fejeződik, az új elsődleges példány egyes adatbázisai továbbra is írásvédettek maradnak. Ha a feladatátvételt a PowerShell használatával kezdeményezik, a teljes művelet szinkronban van. Ha a Azure Portal használatával kezdeményezik, akkor a felhasználói felület a befejezési állapotot jelzi. Ha a REST API használatával kezdeményezik, a végrehajtás figyeléséhez használja a standard Azure Resource Manager lekérdezési mechanizmusát.
+  The DNS update of the read-write listener will happen immediately after the failover is initiated. This operation will not result in data loss. However, the process of switching database roles can take up to 5 minutes under normal conditions. Until it is completed, some databases in the new primary instance will still be read-only. If failover is initiated using PowerShell, the entire operation is synchronous. If it is initiated using the Azure portal, the UI will indicate completion status. If it is initiated using the REST API, use standard Azure Resource Manager’s polling mechanism to monitor for completion.
 
   > [!IMPORTANT]
-  > A manuális csoport feladatátvételével visszahelyezheti az elsődleges helyre az elsődleges helyet. Ha a feladatátvételt okozó leállás le lett csökkentve, az elsődleges adatbázisokat az eredeti helyre helyezheti át. Ehhez el kell indítania a csoport manuális feladatátvételét.
+  > Use manual group failover to move primaries back to the original location. When the outage that caused the failover is mitigated, you can move your primary databases to the original location. To do that you should initiate the manual failover of the group.
 
-- **A feladatátvételi csoportok ismert korlátainak nyugtázása**
+- **Acknowledge known limitations of failover groups**
 
-  A feladatátvételi csoportban lévő példányok nem támogatják az adatbázis átnevezését. Az adatbázisok átnevezéséhez átmenetileg törölnie kell a feladatátvételi csoportot.
+  Database rename is not supported for instances in failover group. You will need to temporarily delete failover group to be able to rename a database.
 
-## <a name="failover-groups-and-network-security"></a>Feladatátvételi csoportok és hálózati biztonság
+## <a name="failover-groups-and-network-security"></a>Failover groups and network security
 
-Egyes alkalmazásokhoz a biztonsági szabályok megkövetelik, hogy az adatcsomaghoz való hálózati hozzáférés egy adott összetevőhöz vagy összetevőkhöz, például egy virtuális géphez, egy webszolgáltatáshoz, stb. van korlátozva. Ez a követelmény az üzletmenet folytonosságának kialakítására és a feladatátvételi csoportok használatára vonatkozó kihívásokat mutatja be. Az ilyen korlátozott hozzáférés megvalósításakor vegye figyelembe az alábbi beállításokat.
+For some applications the security rules require that the network access to the data tier is restricted to a specific component or components such as a VM, web service etc. This requirement presents some challenges for business continuity design and the use of the failover groups. Consider the following options when implementing such restricted access.
 
-### <a name="using-failover-groups-and-virtual-network-rules"></a>Feladatátvételi csoportok és virtuális hálózati szabályok használata
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Using failover groups and virtual network rules
 
-Ha [Virtual Network szolgáltatási végpontokat és szabályokat](sql-database-vnet-service-endpoint-rule-overview.md) használ az SQL-adatbázishoz való hozzáférés korlátozására, vegye figyelembe, hogy az egyes Virtual Network szolgáltatási végpontok csak egy Azure-régióra vonatkoznak. A végpont nem teszi lehetővé más régiók számára, hogy fogadják a kommunikációt az alhálózatból. Ezért csak az ugyanabban a régióban üzembe helyezett ügyfélalkalmazások csatlakozhatnak az elsődleges adatbázishoz. Mivel a feladatátvétel az SQL-ügyfél munkameneteinek egy másik (másodlagos) régióban lévő kiszolgálóra való átirányítását eredményezi, akkor ezek a munkamenetek sikertelenek lesznek, ha az adott régión kívüli ügyféltől származik. Emiatt az automatikus feladatátvételi házirend nem engedélyezhető, ha a résztvevő kiszolgálók szerepelnek a Virtual Network szabályokban. A manuális feladatátvétel támogatásához kövesse az alábbi lépéseket:
+If you are using [Virtual Network service endpoints and rules](sql-database-vnet-service-endpoint-rule-overview.md) to restrict access to your SQL database, be aware that Each Virtual Network service endpoint applies to only one Azure region. The endpoint does not enable other regions to accept communication from the subnet. Therefore, only the client applications deployed in the same region can connect to the primary database. Since the failover results in the SQL client sessions being rerouted to a server in a different (secondary) region, these sessions will fail if originated from a client outside of that region. For that reason, the automatic failover policy cannot be enabled if the participating servers are included in the Virtual Network rules. To support manual failover, follow these steps:
 
-1. Az alkalmazás előtér-összetevőinek (webszolgáltatás, virtuális gépek stb.) redundáns másolatainak kiépítése a másodlagos régióban
-2. A [virtuális hálózati szabályok](sql-database-vnet-service-endpoint-rule-overview.md) konfigurálása egyenként az elsődleges és a másodlagos kiszolgáló számára
-3. Az [előtér-feladatátvétel engedélyezése Traffic Manager-konfiguráció használatával](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
-4. A manuális feladatátvétel elindítása a leállás észlelésekor. Ez a beállítás olyan alkalmazásokra van optimalizálva, amelyek konzisztens késést igényelnek az előtér és az adatréteg között, és támogatja a helyreállítást, ha az előtér, az adatréteg vagy mindkettő hatással van a kimaradásra.
+1. Provision the redundant copies of the front-end components of your application (web service, virtual machines etc.) in the secondary region
+2. Configure the [virtual network rules](sql-database-vnet-service-endpoint-rule-overview.md) individually for primary and secondary server
+3. Enable the [front-end failover using a Traffic manager configuration](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+4. Initiate manual failover when the outage is detected. This option is optimized for the applications that require consistent latency between the front-end and the data tier and supports recovery when either front end, data tier or both are impacted by the outage.
 
 > [!NOTE]
-> Ha az írásvédett **figyelőt** a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
+> If you are using the **read-only listener** to load-balance a read-only workload, make sure that this workload is executed in a VM or other resource in the secondary region so it can connect to the secondary database.
 
-### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Feladatátvételi csoportok és SQL Database-tűzfalszabályok használata
+### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Using failover groups and SQL database firewall rules
 
-Ha az üzletmenet-folytonossági terv automatikus feladatátvételi csoportokkal való feladatátvételt igényel, akkor a hagyományos tűzfalszabályok használatával korlátozhatja az SQL-adatbázishoz való hozzáférést.  Az automatikus feladatátvétel támogatásához kövesse az alábbi lépéseket:
+If your business continuity plan requires failover using groups with automatic failover, you can restrict access to your SQL database using the traditional firewall rules. To support automatic failover, follow these steps:
 
-1. [Nyilvános IP-cím létrehozása](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Hozzon létre egy nyilvános Load balancert](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) , és rendelje hozzá a nyilvános IP-címet.
-3. [Hozzon létre egy virtuális hálózatot és a virtuális gépeket](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) az előtér-összetevőkhöz
-4. [Hozzon létre egy hálózati biztonsági csoportot](../virtual-network/security-overview.md) , és konfigurálja a bejövő kapcsolatokat.
-5. Győződjön meg arról, hogy a kimenő kapcsolatok az SQL [szolgáltatás címkével](../virtual-network/security-overview.md#service-tags)vannak megnyitva az Azure SQL Database-ben.
-6. Hozzon létre egy [SQL Database-tűzfalszabály](sql-database-firewall-configure.md) , amely engedélyezi a bejövő forgalmat az 1. lépésben létrehozott nyilvános IP-címről.
+1. [Create a public IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
+2. [Create a public load balancer](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) and assign the public IP to it.
+3. [Create a virtual network and the virtual machines](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) for your front-end components
+4. [Create network security group](../virtual-network/security-overview.md) and configure inbound connections.
+5. Ensure that the outbound connections are open to Azure SQL database by using ‘Sql’ [service tag](../virtual-network/security-overview.md#service-tags).
+6. Create a [SQL database firewall rule](sql-database-firewall-configure.md) to allow inbound traffic from the public IP address you create in step 1.
 
-További információ arról, hogyan konfigurálhatja a kimenő hozzáférést és a tűzfalszabályok által használandó IP-címet a terheléselosztó [kimenő kapcsolatainak](../load-balancer/load-balancer-outbound-connections.md)megtekintéséhez.
+For more information about on how to configure outbound access and what IP to use in the firewall rules, see [Load balancer outbound connections](../load-balancer/load-balancer-outbound-connections.md).
 
-A fenti konfiguráció biztosítja, hogy az automatikus feladatátvétel ne blokkolja az előtér-összetevők kapcsolatait, és azt feltételezi, hogy az alkalmazás képes tolerálni az előtér és az adatréteg közötti nagyobb késést.
+The above configuration will ensure that the automatic failover will not block connections from the front-end components and assumes that the application can tolerate the longer latency between the front end and the data tier.
 
 > [!IMPORTANT]
-> A regionális kimaradások üzletmenet-folytonosságának garantálása érdekében biztosítania kell a földrajzi redundanciát mind az előtér-összetevők, mind az adatbázisok számára.
+> To guarantee business continuity for regional outages you must ensure geographic redundancy for both front-end components and the databases.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>A földrajzi replikálás engedélyezése a felügyelt példányok és a virtuális hálózatok között
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Enabling geo-replication between managed instances and their VNets
 
-Ha az elsődleges és a másodlagos felügyelt példányok közötti feladatátvételi csoportot állít be két különböző régióban, az egyes példányok különálló virtuális hálózattal vannak elkülönítve. A virtuális hálózatok közötti replikációs forgalom engedélyezéséhez ellenőrizze, hogy teljesülnek-e az előfeltételek:
+When you set up a failover group between primary and secondary managed instances in two different regions, each instance is isolated using an independent virtual network. To allow replication traffic between these VNets ensure these prerequisites are met:
 
-1. A két felügyelt példánynak különböző Azure-régiókban kell lennie.
-1. A két felügyelt példánynak ugyanazt a szolgáltatási szintet kell megadnia, és ugyanazzal a tárolási mérettel kell rendelkeznie. 
-1. A másodlagos felügyelt példánynak üresnek kell lennie (nincs felhasználói adatbázis).
-1. A felügyelt példányok által használt virtuális hálózatokat [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy expressz útvonalon keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül kapcsolódik, győződjön meg arról, hogy nincs tűzfalszabály blokkolja a 5022-es és a 11000-11999-es portot. A globális VNet-társítás nem támogatott.
-1. A felügyelt példányok két virtuális hálózatok nem rendelkezhet átfedéses IP-címekkel.
-1. Be kell állítania a hálózati biztonsági csoportokat (NSG) úgy, hogy a 5022-es és a 11000 ~ 12000-as tartomány nyitott bejövő és kimenő a többi felügyelt példányhoz tartozó alhálózat kapcsolataihoz. Ez lehetővé teszi a példányok közötti replikációs forgalmat.
+1. The two managed instances need to be in different Azure regions.
+1. The two managed instances need to be the same service tier, and have the same storage size.
+1. Your secondary managed instance must be empty (no user databases).
+1. The virtual networks used by the managed instances need to be connected through a [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or Express Route. When two virtual networks connect through an on-premises network, ensure there is no firewall rule blocking ports 5022, and 11000-11999. Global VNet Peering is not supported.
+1. The two managed instance VNets cannot have overlapping IP addresses.
+1. You need to set up your Network Security Groups (NSG) such that ports 5022 and the range 11000~12000 are open inbound and outbound for connections from the other managed instanced subnet. This is to allow replication traffic between the instances
 
    > [!IMPORTANT]
-   > Helytelenül konfigurált NSG biztonsági szabályok vezetnek az adatbázis-másolási műveletek elakadása érdekében.
+   > Misconfigured NSG security rules leads to stuck database copy operations.
 
-7. A másodlagos példány a helyes DNS-zóna azonosítójával van konfigurálva. A DNS-zóna felügyelt példányok és virtuális fürtök egyik tulajdonsága, és az azonosítója szerepel az állomásnév címe mezőben. A zóna azonosítója véletlenszerű karakterláncként jön létre, ha az első felügyelt példány létrejön az egyes VNet, és ugyanaz az azonosító az ugyanazon alhálózaton lévő összes többi példányhoz van rendelve. Hozzárendelés után a DNS-zóna nem módosítható. Az ugyanabban a feladatátvételi csoportban található felügyelt példányoknak meg kell osztaniuk a DNS-zónát. Ezt úgy érheti el, ha a másodlagos példány létrehozásakor a DnsZonePartner paraméter értékeként átadja az elsődleges példány zónájának AZONOSÍTÓját. 
+1. The secondary instance is configured with the correct DNS zone ID. DNS zone is a property of a managed instance and virtual cluster, and its ID is included in the host name address. The zone ID is generated as a random string when the first managed instance is created in each VNet and the same ID is assigned to all other instances in the same subnet. Once assigned, the DNS zone cannot be modified. Managed instances included in the same failover group must share the DNS zone. You accomplish this by passing the primary instance's zone ID as the value of DnsZonePartner parameter when creating the secondary instance. 
 
    > [!NOTE]
-   > A feladatátvételi csoportok felügyelt példánnyal való konfigurálásával kapcsolatos részletes oktatóanyagért lásd: [felügyelt példány hozzáadása feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md).
+   > For a detailed tutorial on configuring failover groups with managed instance, see [add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md).
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Elsődleges adatbázis frissítése vagy visszaminősítése
+## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrading or downgrading a primary database
 
-A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminősítheti az elsődleges adatbázist más számítási méretre (ugyanazon a szolgáltatási szinten belül, általános célú és üzletileg kritikus között). A frissítéskor javasoljuk, hogy először frissítse az összes másodlagos adatbázist, majd frissítse az elsődlegest. A visszalépést követően a sorrend megfordításakor a rendszer visszaminősíti az elsődlegest, majd lecseréli az összes másodlagos adatbázist. Ha az adatbázist egy másik szolgáltatási szintre frissíti vagy visszaminősíti, ez a javaslat érvénybe lép.
+You can upgrade or downgrade a primary database to a different compute size (within the same service tier, not between General Purpose and Business Critical) without disconnecting any secondary databases. When upgrading, we recommend that you upgrade all of the secondary databases first, and then upgrade the primary. When downgrading, reverse the order: downgrade the primary first, and then downgrade all of the secondary databases. When you upgrade or downgrade the database to a different service tier, this recommendation is enforced.
 
-Ezt a sorozatot kifejezetten arra a problémára érdemes elkerülni, hogy az alacsonyabb SKU-ban lévő másodlagos példány túlterhelt legyen, és a frissítés vagy a lefokozási folyamat során újra kell telepíteni őket. A problémát úgy is elkerülheti, ha az elsődleges írásvédett, az összes írási és olvasási feladatnak az elsődlegesen való hatásának rovására kerül. 
-
-> [!NOTE]
-> Ha a másodlagos adatbázist a feladatátvételi csoport konfigurációjának részeként hozta létre, a másodlagos adatbázis visszalépéséhez nem ajánlott. Ezzel biztosíthatja, hogy az adatmennyiség elegendő kapacitással legyen feldolgozva a rendszeres számítási feladatok elvégzése után a feladatátvétel aktiválása után.
-
-## <a name="preventing-the-loss-of-critical-data"></a>A kritikus fontosságú adatmennyiség elvesztésének megakadályozása
-
-A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztője a tranzakció véglegesítése után azonnal meghívhatja a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A hívás `sp_wait_for_database_copy_sync` blokkolja a hívó szálat, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. `sp_wait_for_database_copy_sync` hatóköre egy adott folyamatos másolási hivatkozásra vonatkozik. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
+This sequence is recommended specifically to avoid the problem where the secondary at a lower SKU gets overloaded and must be re-seeded during an upgrade or downgrade process. You could also avoid the problem by making the primary read-only, at the expense of impacting all read-write workloads against the primary.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. A `sp_wait_for_database_copy_sync`i eljárás hívása által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
+> If you created secondary database as part of the failover group configuration it is not recommended to downgrade the secondary database. This is to ensure your data tier has sufficient capacity to process your regular workload after failover is activated.
 
-## <a name="failover-groups-and-point-in-time-restore"></a>Feladatátvételi csoportok és időponthoz történő visszaállítás
+## <a name="preventing-the-loss-of-critical-data"></a>Preventing the loss of critical data
 
-További információ a feladatátvételi csoportokkal való időpontra történő visszaállításról: [időponthoz való helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+Due to the high latency of wide area networks, continuous copy uses an asynchronous replication mechanism. Asynchronous replication makes some data loss unavoidable if a failure occurs. However, some applications may require no data loss. To protect these critical updates, an application developer can call the [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) system procedure immediately after committing the transaction. Calling `sp_wait_for_database_copy_sync` blocks the calling thread until the last committed transaction has been transmitted to the secondary database. However, it does not wait for the transmitted transactions to be replayed and committed on the secondary. `sp_wait_for_database_copy_sync` is scoped to a specific continuous copy link. Any user with the connection rights to the primary database can call this procedure.
 
-## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
+> [!NOTE]
+> `sp_wait_for_database_copy_sync` prevents data loss after failover, but does not guarantee full synchronization for read access. The delay caused by a `sp_wait_for_database_copy_sync` procedure call can be significant and depends on the size of the transaction log at the time of the call.
 
-Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/overview). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú Access Control](../role-based-access-control/overview.md).
+## <a name="failover-groups-and-point-in-time-restore"></a>Failover groups and point-in-time restore
 
-### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: az SQL Database feladatátvételének kezelése önálló adatbázisokkal és rugalmas készletekkel
+For information about using point-in-time restore with failover groups, see [Point in Time Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## <a name="programmatically-managing-failover-groups"></a>Programmatically managing failover groups
+
+As discussed previously, auto-failover groups and active geo-replication can also be managed programmatically using Azure PowerShell and the REST API. The following tables describe the set of commands available. Active geo-replication includes a set of Azure Resource Manager APIs for management, including the [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) and [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview). These APIs require the use of resource groups and support role-based security (RBAC). For more information on how to implement access roles, see [Azure Role-Based Access Control](../role-based-access-control/overview.md).
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
 
 | Parancsmag | Leírás |
 | --- | --- |
-| [Új – AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
-| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Eltávolítja a feladatátvételi csoportot a kiszolgálóról, és törli a csoportba tartozó összes másodlagos adatbázist. |
-| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | A feladatátvételi csoport konfigurációjának beolvasása |
-| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Módosítja a feladatátvételi csoport konfigurációját. |
-| [Kapcsoló – AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Elindítja a feladatátvételi csoport feladatátvételét a másodlagos kiszolgálóra. |
-| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Egy vagy több adatbázis hozzáadását Azure SQL Database feladatátvételi csoportba|
-|  | |
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Removes the failover group from the server and deletes all secondary databases included the group |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Retrieves the failover group configuration |
+| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modifies the configuration of the failover group |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Triggers failover of the failover group to the secondary server |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Adds one or more databases to an Azure SQL Database failover group|
+
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+
+| Parancsmag | Leírás |
+| --- | --- |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modifies the configuration of the failover group|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Retrieves the failover group configuration|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Triggers failover of the failover group to the secondary server|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Removes a failover group|
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
+
+| Parancs | Leírás |
+| --- | --- |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |This command creates a failover group and registers it on both primary and secondary servers|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Removes the failover group from the server and deletes all secondary databases included the group |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Retrieves the failover group configuration |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Modifies the configuration of the failover group and/or adds one or more databases to an Azure SQL Database failover group|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Triggers failover of the failover group to the secondary server |
+
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+
+| Parancs | Leírás |
+| --- | --- |
+| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | This command creates a failover group and registers it on both primary and secondary servers|
+| [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Modifies the configuration of the failover group|
+| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Retrieves the failover group configuration|
+| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Triggers failover of the failover group to the secondary server|
+| [az sql instance-failover-group delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Removes a failover group |
+
+* * *
 
 > [!IMPORTANT]
-> Egy minta parancsfájl esetében lásd: [feladatátvételi csoport konfigurálása és feladatátvétele egyetlen adatbázishoz](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
->
+> For a sample script, see [Configure and failover a failover group for a single database](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 
-### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell: SQL Database feladatátvételi csoportok kezelése felügyelt példányokkal 
-
-| Parancsmag | Leírás |
-| --- | --- |
-| [Új – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
-| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Módosítja a feladatátvételi csoport konfigurációját.|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |A feladatátvételi csoport konfigurációjának beolvasása|
-| [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Elindítja a feladatátvételi csoport feladatátvételét a másodlagos kiszolgálóra.|
-| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Feladatátvételi csoport eltávolítása|
-|  | |
-
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: az SQL Database feladatátvételi csoportok kezelése egyetlen és készletezett adatbázisokkal
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Manage SQL database failover groups with single and pooled databases
 
 | API | Leírás |
 | --- | --- |
-| [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
-| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | A feladatátvételi csoport eltávolítása a kiszolgálóról |
-| [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Feladatátvétel az aktuális elsődleges kiszolgálóról erre a kiszolgálóra. |
-| [Adatvesztés kényszerített feladatátvételének engedélyezése](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |Baja az aktuális elsődleges kiszolgálóról erre a kiszolgálóra. A művelet adatvesztéshez vezethet. |
-| [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Feladatátvételi csoport beolvasása. |
-| [Feladatátvételi csoportok listázása kiszolgáló szerint](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Felsorolja a kiszolgálók feladatátvételi csoportjait. |
-| [Feladatátvételi csoport frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Frissíti a feladatátvételi csoportot. |
-|  | |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Creates or updates a failover group |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Removes the failover group from the server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Fails over from the current primary server to this server. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Gets a failover group. |
+| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Lists the failover groups in a server. |
+| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Updates a failover group. |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: feladatátvevő csoportok kezelése felügyelt példányokkal
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Manage failover groups with Managed Instances
 
 | API | Leírás |
 | --- | --- |
-| [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
-| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | A feladatátvételi csoport eltávolítása a kiszolgálóról |
-| [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Feladatátvétel az aktuális elsődleges kiszolgálóról erre a kiszolgálóra. |
-| [Adatvesztés kényszerített feladatátvételének engedélyezése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |Baja az aktuális elsődleges kiszolgálóról erre a kiszolgálóra. A művelet adatvesztéshez vezethet. |
-| [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Feladatátvételi csoport beolvasása. |
-| [Feladatátvételi csoportok listázása hely szerint](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Egy helyen lévő feladatátvételi csoportok felsorolása. |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Creates or updates a failover group |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Removes the failover group from the server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Fails over from the current primary server to this server. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Gets a failover group. |
+| [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Lists the failover groups in a location. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Részletes oktatóanyagok:
-    - [Önálló adatbázis hozzáadása egy feladatátvételi csoporthoz](sql-database-single-database-failover-group-tutorial.md)
-    - [Rugalmas készlet hozzáadása feladatátvételi csoporthoz](sql-database-elastic-pool-failover-group-tutorial.md)
-    - [Felügyelt példány hozzáadása feladatátvételi csoporthoz](sql-database-managed-instance-failover-group-tutorial.md)
-- A minta parancsfájlokat lásd:
-  - [A PowerShell használatával konfigurálhatja az aktív földrajzi replikálást egyetlen adatbázishoz Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [A PowerShell használatával konfigurálhatja az aktív földrajzi replikálást egy készletezett adatbázishoz Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz a PowerShell használatával](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md)
-- Az automatikus biztonsági mentések Azure SQL Databaseáról a [SQL Database automatizált biztonsági mentések](sql-database-automated-backups.md)című témakörben olvashat bővebben.
-- Ha többet szeretne megtudni a helyreállítás automatizált biztonsági mentéséről, olvassa el [az adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatokból](sql-database-recovery-using-backups.md)című témakört.
-- Az új elsődleges kiszolgáló és adatbázis hitelesítési követelményeinek megismeréséhez tekintse meg a SQL Database biztonság a vész- [helyreállítás után](sql-database-geo-replication-security-config.md)című témakört.
+- For detailed tutorials, see
+    - [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md)
+    - [Add elastic pool to a failover group](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md)
+- For sample scripts, see:
+  - [Use PowerShell to configure active geo-replication for a single database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [Use PowerShell to configure active geo-replication for a pooled database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Use PowerShell to add an Azure SQL Database single database to a failover group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md).
+- To learn about using automated backups for recovery, see [Restore a database from the service-initiated backups](sql-database-recovery-using-backups.md).
+- To learn about authentication requirements for a new primary server and database, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).

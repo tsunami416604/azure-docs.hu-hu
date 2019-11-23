@@ -1,6 +1,6 @@
 ---
-title: Bérlői alkalmazások megtekintése – Azure Active Directory | Microsoft Docs
-description: Az Azure Portal használatával megtekintheti az Azure Active Directory- (Azure AD-) bérlő alkalmazásait.
+title: Quickstart - View tenant applications using Azure Active Directory
+description: In this Quickstart, use the Azure portal to view the applications in your Azure Active Directory (Azure AD) tenant.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 764c7c048dd0398b495ee31421a8e2bc9f8169ee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 1d40e968bb7079d50e3fa18889ae996c9b59c90f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477198"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421815"
 ---
-# <a name="view-your-azure-active-directory-tenant-applications"></a>Azure Active Directory-bérlői alkalmazások megtekintése
+# <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>Quickstart: View your Azure Active Directory tenant applications
 
 Ebben a rövid útmutatóban az Azure Portal használatával tekintheti meg az Azure Active Directory- (Azure AD-) bérlő alkalmazásait.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az eredmények megtekintéséhez legalább egy alkalmazásnak lennie kell az Azure AD-bérlőn. Az alkalmazás hozzáadásának lépéseit lásd az [Alkalmazás hozzáadása](add-application-portal.md) rövid útmutatóban.
 
@@ -39,16 +39,16 @@ Az Azure AD-bérlői alkalmazások az Azure Portal **Vállalati alkalmazások** 
 
 A bérlői alkalmazások megkeresésének lépései:
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
-1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget.
-1. Az **alkalmazás típusa** legördülő menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
-1. További alkalmazások megtekintéséhez válassza a lista  alján található továbbiak betöltés lehetőséget. A bérlői alkalmazások számától függően a listában való görgetés helyett hasznosabbnak bizonyulhat [az adott alkalmazás megkeresése](#search-for-a-tenant-application).
+1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, select **Azure Active Directory**.
+1. In the **Azure Active Directory** pane, select **Enterprise applications**.
+1. From the **Application Type** drop-down menu, select **All Applications**, and choose **Apply**. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
+1. To view more applications, select **Load more** at the bottom of the list. A bérlői alkalmazások számától függően a listában való görgetés helyett hasznosabbnak bizonyulhat [az adott alkalmazás megkeresése](#search-for-a-tenant-application).
 
 ## <a name="select-viewing-options"></a>Megtekintési beállítások kiválasztása
 
-Válassza ki a beállításokat a keresett elemek alapján.
+Select options according to what you're looking for.
 
-1. Az alkalmazásokat az **alkalmazás típusa**, az **alkalmazás állapota**és az **alkalmazás láthatósága**alapján tekintheti meg.
+1. You can view the applications by **Application Type**, **Application Status**, and **Application visibility**.
 1. Az **Alkalmazás típusa** területen az alábbi beállítások egyikét választhatja ki:
 
     - **Vállalati alkalmazások** – a nem a Microsoft által fejlesztett alkalmazások megjelenítése.
@@ -56,27 +56,27 @@ Válassza ki a beállításokat a keresett elemek alapján.
     - **Minden alkalmazás** – a nem a Microsoft által fejlesztett alkalmazások és a Microsoft-alkalmazások együttes megjelenítése.
 
 1. Az **Alkalmazás állapota** területen a **Bármely**, **Letiltva** vagy **Engedélyezve** lehetőségek közül választhat. A **Bármely** beállítás magában foglalja a letiltott és az engedélyezett alkalmazásokat is.
-1. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. A **rejtett** beállítás megjeleníti a bérlőben található alkalmazásokat, de a felhasználók számára nem láthatók.
-1. A kívánt beállítások kiválasztása után válassza az **alkalmaz**lehetőséget.
+1. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. The **Hidden** option shows applications that are in the tenant, but aren't visible to users.
+1. After choosing the options you want, select **Apply**.
 
 ## <a name="search-for-a-tenant-application"></a>Bérlői alkalmazás keresése
 
-Egy adott alkalmazás megkeresése:
+To search for a particular application:
 
-1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
-1. Adja meg a megkeresni kívánt alkalmazás nevét. Ha az alkalmazás hozzá lett adva az Azure AD-bérlőhöz, az megjelenik a keresési eredmények között. Ez a példa azt mutatja, hogy a GitHub még nem lett hozzáadva a bérlői alkalmazásokhoz.
+1. In the **Application Type** menu, select **All applications**, and choose **Apply**.
+1. Adja meg a megkeresni kívánt alkalmazás nevét. If the application has been added to your Azure AD tenant, it appears in the search results. This example shows that GitHub hasn't been added to the tenant applications.
 
-    ![Példa egy olyan alkalmazást mutat be, amely még nem lett hozzáadva a bérlőhöz](media/view-applications-portal/search-for-tenant-application.png)
+    ![Example shows an app hasn't been added to the tenant](media/view-applications-portal/search-for-tenant-application.png)
 
 1. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával. Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
 
-    ![Példa az összes értékesítést elindító alkalmazásra](media/view-applications-portal/search-by-prefix.png)
+    ![Example shows all apps that start with Sales](media/view-applications-portal/search-by-prefix.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan tekintheti meg az alkalmazásokat az Azure AD-bérlőben. Megtanulta, hogyan szűrheti az alkalmazások listáját az alkalmazás típusa, állapota és láthatósága alapján. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
+In this quickstart, you learned how to view the applications in your Azure AD tenant. You learned how to filter the list of applications by application type, status, and visibility. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
 
-Most, hogy megtalálta a keresett alkalmazást, továbbra is [hozzáadhat további alkalmazásokat a bérlőhöz](add-application-portal.md). Vagy kiválaszthatja az alkalmazást a tulajdonságok és a konfigurációs beállítások megtekintéséhez vagy szerkesztéséhez. Konfigurálhat például egyszeri bejelentkezést.
+Now that you've found the application you were looking for, you can continue to [Add more applications to your tenant](add-application-portal.md). Or, you can select the application to view or edit properties and configuration options. Konfigurálhat például egyszeri bejelentkezést.
 
 > [!div class="nextstepaction"]
 > [Egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md)

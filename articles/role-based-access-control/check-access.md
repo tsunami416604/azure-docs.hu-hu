@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure-erőforrások megtekintése a hozzáférés egy felhasználó rendelkezik |} A Microsoft Docs
-description: Ismerje meg, a hozzáférés egy felhasználó vagy az egyéb rendszerbiztonsági tag van szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure portal segítségével Azure-erőforrások megtekintése.
+title: Quickstart - View the access a user has to Azure resources
+description: In this QuickStart, learn how to view the access a user or other security principal has to Azure resources using role-based access control (RBAC) and the Azure portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,44 +14,44 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782325"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419617"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Gyors útmutató: A felhasználó rendelkezik Azure-erőforrásokhoz való hozzáférés megtekintése
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Quickstart: View the access a user has to Azure resources
 
-Használhatja a **hozzáférés-vezérlés (IAM)** paneljén [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) a hozzáférés egy felhasználó, vagy a rendszerbiztonsági tag egy másik Azure-erőforrások megtekintéséhez. Azonban néha egyszerűen gyorsan megtekintheti az egy-egy felhasználóhoz vagy egy másik rendszerbiztonsági tagot a hozzáférést. Ennek legegyszerűbb módja az, hogy használja a **hozzáférés ellenőrzése** funkció az Azure Portalon.
+You can use the **Access control (IAM)** blade in [role-based access control (RBAC)](overview.md) to view the access a user or another security principal has to Azure resources. However, sometimes you just need to quickly view the access for a single user or another security principal. The easiest way to do this is to use the **Check access** feature in the Azure portal.
 
-## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
+## <a name="view-role-assignments"></a>View role assignments
 
- Az, hogy megtekintheti a hozzáférés egy felhasználó úgy, hogy a szerepkör-hozzárendelések lista. Kövesse az alábbi lépéseket a szerepkör-hozzárendeléseit egy egyetlen felhasználó, csoport, egyszerű szolgáltatás vagy az előfizetések szintjén felügyelt identitás megtekintéséhez.
+ The way that you view the access for a user is to list their roles assignments. Follow these steps to view the role assignments for a single user, group, service principal, or managed identity at the subscription scope.
 
-1. Az Azure Portalon kattintson a **minden szolgáltatás** , majd **előfizetések**.
+1. In the Azure portal, click **All services** and then **Subscriptions**.
 
-1. Kattintson az előfizetésre.
+1. Click your subscription.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. Kattintson a **hozzáférés ellenőrzése** fülre.
+1. Click the **Check access** tab.
 
-    ![Hozzáférés - ellenőrzés hozzáférés lap](./media/check-access/access-control-check-access.png)
+    ![Access control - Check access tab](./media/check-access/access-control-check-access.png)
 
-1. Az a **található** listájához, válassza ki a hozzáférést az ellenőrizni kívánt rendszerbiztonsági tag típusát.
+1. In the **Find** list, select the type of security principal you want to check access for.
 
-1. A keresőmezőbe adjon meg egy karakterláncot megfeleltessen keressen a könyvtárban, a megjelenítendő nevekre, e-mail-címek vagy az objektumazonosítók.
+1. In the search box, enter a string to search the directory for display names, email addresses, or object identifiers.
 
-    ![Ellenőrizze a kiválasztási listán hozzáférés](./media/check-access/check-access-select.png)
+    ![Check access select list](./media/check-access/check-access-select.png)
 
-1. A rendszerbiztonsági tag megnyitásához kattintson a **hozzárendelések** ablaktáblán.
+1. Click the security principal to open the **assignments** pane.
 
-    ![hozzárendelések panelről](./media/check-access/check-access-assignments.png)
+    ![assignments pane](./media/check-access/check-access-assignments.png)
 
-    A panelen megjelenik a kiválasztott rendszerbiztonsági tag és a hatókör hozzárendelt szerepkörök. Ha bármelyik megtagadása a hatókör-hozzárendelést, vagy az örökölt ebben a hatókörben, azok megjelennek.
+    On this pane, you can see the roles assigned to the selected security principal and the scope. If there are any deny assignments at this scope or inherited to this scope, they will be listed.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások](quickstart-assign-role-user-portal.md)
+> [Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal](quickstart-assign-role-user-portal.md)

@@ -1,113 +1,92 @@
 ---
-title: Adattárház-egységek (DWU, cDWUs) az Azure szinapszis Analyticsben (korábban SQL DW)
-description: Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
+title: Data Warehouse Units (DWUs) in Azure Synapse Analytics (formerly SQL DW)
+description: Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7cd6a037f339f193f63cbe152f0ea9964679c231
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133159"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420495"
 ---
-# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs-EK)
+# <a name="data-warehouse-units-dwus"></a>Data Warehouse Units (DWUs)
 
-Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
+Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
 
-## <a name="what-are-data-warehouse-units"></a>Mik az adatraktár-egységek
+## <a name="what-are-data-warehouse-units"></a>What are Data Warehouse Units
 
-Az SQL-készlet az [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)használatakor kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikai erőforrások a CPU, a memória és az IO kombinációja vannak meghatározva. Ez a három erőforrás az adatraktár-egységek (DWU) számítási skálázási egységei között van. A DWU a számítási erőforrások és a teljesítmény absztrakt, normalizált mértékét jelöli. A szolgáltatási szint módosítása megváltoztatja a rendszer számára elérhető DWU számát, ami viszont a teljesítmény és a szolgáltatás költségeit is módosítja.
+A [SQL pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) represents a collection of analytic resources that are being provisioned when using [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Analytic resources are defined as a combination of CPU, memory and IO. These three resources are bundled into units of compute scale called Data Warehouse Units (DWUs). A DWU represents an abstract, normalized measure of compute resources and performance. A change to your service level alters the number of DWUs that are available to the system, which in turn adjusts the performance, and the cost, of your system.
 
-A nagyobb teljesítmény érdekében növelheti az adatraktár-egységek számát. Kevesebb teljesítmény esetén csökkentse az adatraktár-egységeket. A tárolási és a számítási költségek számlázása külön történik, így az adatraktár-egységek módosítása nem befolyásolja a tárolási költségeket.
+For higher performance, you can increase the number of data warehouse units. For less performance, reduce data warehouse units. Storage and compute costs are billed separately, so changing data warehouse units does not affect storage costs.
 
-Az adatraktár-egységek teljesítménye a következő számítási feladatok mérőszámán alapul:
+Performance for data warehouse units is based on these workload metrics:
 
-- A szabványos adattárház-lekérdezések gyors vizsgálata nagy mennyiségű sort vizsgál, majd összetett összesítést hajt végre. Ez a művelet I/O-és CPU-igényes.
-- Az adattárház az Azure Storage-Blobokból vagy Azure Data Lakeokból származó adatok betöltésének gyorsasága. A művelet a hálózati és a CPU-igényes.
-- A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) t-SQL-parancs gyors másolása egy tábla másolásához. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
+- How fast a standard data warehousing query can scan a large number of rows and then perform a complex aggregation. This operation is I/O and CPU intensive.
+- How fast the data warehouse can ingest data from Azure Storage Blobs or Azure Data Lake. This operation is network and CPU intensive.
+- How fast the [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL command can copy a table. This operation involves reading data from storage, distributing it across the nodes of the appliance and writing to storage again. This operation is CPU, IO, and network intensive.
 
-Növekvő DWU:
+Increasing DWUs:
 
-- A rendszer lineárisan módosítja a vizsgálatok, összesítések és CTAS utasításokhoz tartozó rendszerek teljesítményét
-- Növeli az olvasók és az írók számát a kiinduló betöltési műveletekhez
-- Növeli az egyidejű lekérdezések és a párhuzamossági bővítőhelyek maximális számát.
+- Linearly changes performance of the system for scans, aggregations, and CTAS statements
+- Increases the number of readers and writers for PolyBase load operations
+- Increases the maximum number of concurrent queries and concurrency slots.
 
-## <a name="service-level-objective"></a>Szolgáltatási szint célkitűzése
+## <a name="service-level-objective"></a>Service Level Objective
 
-A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 SQL-készlet szolgáltatási szintjeit számítási adattárház-egységek (cDWU-EK) mérik, például DW2000c. A Gen1 SQL-készlet szolgáltatási szintjei a DWU-ben mérhetőek, például a DW2000.
-  > [!NOTE]
-  > A 2. generációs SQL-készlet a közelmúltban hozzáadott további méretezési képességeket a számítási rétegek támogatásához, amely a 100 cDWU alacsony. A jelenleg Gen1-alapú meglévő SQL-készletek, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.md).
+The Service Level Objective (SLO) is the scalability setting that determines the cost and performance level of your data warehouse. The service levels for Gen2 SQL pool are measured in data warehouse units (DWU), for example DW2000c.
 
-A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az SQL-készlet szolgáltatási szintjét és teljesítményét.
+In T-SQL, the SERVICE_OBJECTIVE setting determines the service level for your SQL pool.
 
 ```sql
---Gen1
-CREATE DATABASE myElasticSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000'
-)
-;
-
---Gen2
-CREATE DATABASE myComputeSQLDW
-(Edition = 'Datawarehouse'
+CREATE DATABASE mySQLDW
+( EDITION = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="performance-tiers-and-data-warehouse-units"></a>Teljesítmény szintjei és adattárház-egységek
+## <a name="capacity-limits"></a>Teljesítménykorlátok
 
-Minden teljesítményszint némileg eltérő mértékegységet használ az adattárház-egységek számára. Ez a különbség a számlán jelenik meg, mivel a skálázási egység közvetlenül a számlázásra van lefordítva.
+Each SQL server (for example, myserver.database.windows.net) has a [Database Transaction Unit (DTU)](../sql-database/sql-database-what-is-a-dtu.md) quota that allows a specific number of data warehouse units. For more information, see the [workload management capacity limits](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
-- A Gen1 SQL-készletek mérése adatraktár-egységekben történik (DWU).
-- A Gen2 SQL-készleteket számítási adattárház-egységek (cDWUs-EK) mérik.
+## <a name="how-many-data-warehouse-units-do-i-need"></a>How many data warehouse units do I need
 
-Mind a DWU, mind a cDWUs támogatja a méretezést a számítási feladatokhoz, illetve a számítás felfüggesztéséhez, ha nem kell használnia az SQL-készletet. Ezek a műveletek mind igény szerint használhatók. A Gen2 egy helyi lemezes gyorsítótárat használ a számítási csomópontokon a teljesítmény javítása érdekében. A rendszer skálázása vagy szüneteltetése után a gyorsítótár érvénytelenné válik, így az optimális teljesítmény elérése előtt szükség van egy gyorsítótár-felmelegedésre.  
+The ideal number of data warehouse units depends very much on your workload and the amount of data you have loaded into the system.
 
-Az adatraktár-egységek növelése során lineárisan növelheti a számítástechnikai erőforrásokat. A Gen2 a legjobb lekérdezési teljesítményt és a legmagasabb szintű méretezést biztosítja. A Gen2 rendszerek a gyorsítótár legtöbbjét is használják.
+Steps for finding the best DWU for your workload:
 
-### <a name="capacity-limits"></a>Kapacitási korlátok
+1. Begin by selecting a smaller DWU.
+2. Monitor your application performance as you test data loads into the system, observing the number of DWUs selected compared to the performance you observe.
+3. Identify any additional requirements for periodic periods of peak activity. Workloads that show significant peaks and troughs in activity may need to be scaled frequently.
 
-Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../sql-database/sql-database-what-is-a-dtu.md) kvótával, amely egy adott számú adattárház-egységet engedélyez. További információ: [munkaterhelés-kezelési kapacitás korlátai](sql-data-warehouse-service-capacity-limits.md#workload-management).
-
-## <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adatraktár-egységre van szükségem
-
-Az adatraktár-egységek ideális száma nagy mértékben függ a munkaterheléstől és a rendszerbe betöltött adatok mennyiségétől.
-
-A számítási feladatok legjobb DWU megkeresésének lépései:
-
-1. Először válasszon kisebb DWU.
-2. Az alkalmazások teljesítményének figyelése az adatterhelések a rendszeren való tesztelésekor, a kiválasztott DWU számának megjelölésével.
-3. Azonosítsa a maximális tevékenység időszakos időszakára vonatkozó további követelményeket. Előfordulhat, hogy a jelentős csúcsokat és a tevékenységekben lévő vályúkat bemutató munkaterheléseket gyakran kell méretezni.
-
-Az SQL Analytics egy kibővíthető rendszer, amely nagy mennyiségű számítási és lekérdezési mennyiségű adatmennyiséget tud kiépíteni. Ha szeretné megtekinteni a skálázás valódi képességeit, különösen nagyobb DWU esetében, javasoljuk, hogy az adatkészletet méretezéssel méretezheti, hogy elegendő mennyiségű adattal rendelkezzen a processzorok megadásához. A méretezési teszteléshez legalább 1 TB-ot ajánlott használni.
+SQL Analytics is a scale-out system that can provision vast amounts of compute and query sizeable quantities of data. To see its true capabilities for scaling, especially at larger DWUs, we recommend scaling the data set as you scale to ensure that you have enough data to feed the CPUs. For scale testing, we recommend using at least 1 TB.
 
 > [!NOTE]
 >
-> A lekérdezési teljesítmény csak akkor nő további párhuzamos, ha a munka felosztható a számítási csomópontok között. Ha azt tapasztalja, hogy a méretezés nem változik a teljesítményen, előfordulhat, hogy a tábla kialakítását és/vagy a lekérdezéseit is meg kell adnia. A lekérdezések hangolásával kapcsolatos útmutatásért lásd: [felhasználói lekérdezések kezelése](sql-data-warehouse-overview-manage-user-queries.md).
+> Query performance only increases with more parallelization if the work can be split between compute nodes. If you find that scaling is not changing your performance, you may need to tune your table design and/or your queries. For query tuning guidance, see [Manage user queries](sql-data-warehouse-overview-manage-user-queries.md).
 
 ## <a name="permissions"></a>Engedélyek
 
-Az adatraktár-egységek módosításához az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql)utasításban ismertetett engedélyek szükségesek.
+Changing the data warehouse units requires the permissions described in [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql).
 
-Az Azure-erőforrások, például az SQL-adatbázis közreműködői és SQL Server közreműködők beépített szerepkörei módosíthatják a DWU beállításait.
+Built-in roles for Azure resources such as SQL DB Contributor and SQL Server Contributor can change DWU settings.
 
-## <a name="view-current-dwu-settings"></a>Aktuális DWU-beállítások megtekintése
+## <a name="view-current-dwu-settings"></a>View current DWU settings
 
-Az aktuális DWU-beállítás megtekintése:
+To view the current DWU setting:
 
-1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
-2. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
-3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Például:
+1. Open SQL Server Object Explorer in Visual Studio.
+2. Connect to the master database associated with the logical SQL Database server.
+3. Select from the sys.database_service_objectives dynamic management view. Például:
 
 ```sql
 SELECT  db.name [Database]
@@ -118,15 +97,15 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 ;
 ```
 
-## <a name="change-data-warehouse-units"></a>Adatraktár-egységek módosítása
+## <a name="change-data-warehouse-units"></a>Change data warehouse units
 
 ### <a name="azure-portal"></a>Azure Portal
 
-DWU vagy cDWUs módosítása:
+To change DWUs:
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com), nyissa meg az adatbázist, és kattintson a **skálázás**elemre.
+1. Open the [Azure portal](https://portal.azure.com), open your database, and click **Scale**.
 
-2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
+2. Under **Scale**, move the slider left or right to change the DWU setting.
 
 3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
@@ -134,32 +113,32 @@ DWU vagy cDWUs módosítása:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A DWU vagy a cDWUs módosításához használja a [set-AzSqlDatabase PowerShell-](/powershell/module/az.sql/set-azsqldatabase) parancsmagot. A következő példa beállítja a szolgáltatási szint célkitűzését, hogy DW1000 a Server MyServer üzemeltetett adatbázis-MySQLDW.
+To change the DWUs, use the [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet. The following example sets the service level objective to DW1000c for the database MySQLDW that is hosted on server MyServer.
 
 ```Powershell
-Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-További információ: PowerShell- [parancsmagok a SQL Data Warehousehoz](sql-data-warehouse-reference-powershell-cmdlets.md)
+For more information, see [PowerShell cmdlets for SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 
-A T-SQL használatával megtekintheti az aktuális DWU-vagy cDWU-beállításokat, módosíthatja a beállításokat, és megtekintheti a folyamatot.
+With T-SQL you can view the current DWU settings, change the settings, and check the progress.
 
-A DWU vagy a cDWUs módosítása:
+To change the DWUs:
 
-1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
-2. Használja az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql) TSQL utasítást. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000 adatbázis-MySQLDW.
+1. Connect to the master database associated with your logical SQL Database server.
+2. Use the [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL statement. The following example sets the service level objective to DW1000c for the database MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW
-MODIFY (SERVICE_OBJECTIVE = 'DW1000')
+MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 ;
 ```
 
 ### <a name="rest-apis"></a>REST API-k
 
-A DWU módosításához használja az [adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) REST API. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000 adatbázis-MySQLDW, amely a kiszolgáló MyServer található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
+To change the DWUs, use the [Create or Update Database](/rest/api/sql/databases/createorupdate) REST API. The following example sets the service level objective to DW1000c for the database MySQLDW, which is hosted on server MyServer. The server is in an Azure resource group named ResourceGroup1.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -167,26 +146,26 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": DW1000c
     }
 }
 ```
 
-További REST API példákat a [SQL Data Warehouse REST API](sql-data-warehouse-manage-compute-rest-api.md)-k című témakörben talál.
+For more REST API examples, see [REST APIs for SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
 
-## <a name="check-status-of-dwu-changes"></a>DWU-változások állapotának ellenõrzése
+## <a name="check-status-of-dwu-changes"></a>Check status of DWU changes
 
-A DWU módosításai több percet is igénybe vehetnek. Ha automatikusan méretezést végez, érdemes megfontolnia a logikát, hogy a művelet végrehajtása előtt bizonyos műveleteket végre lehessen hajtani.
+DWU changes may take several minutes to complete. If you are scaling automatically, consider implementing logic to ensure that certain operations have been completed before proceeding with another action.
 
-Az adatbázis állapotának ellenőrzése különböző végpontokon keresztül lehetővé teszi az automatizálás megfelelő megvalósítását. A portál értesítést küld egy művelet és az adatbázisok aktuális állapotának befejezéséről, de nem teszi lehetővé az állapot programozott ellenőrzését.
+Checking the database state through various endpoints allows you to correctly implement automation. The portal provides notification upon completion of an operation and the databases current state but does not allow for programmatic checking of state.
 
-A kibővíthető műveletekhez tartozó adatbázis-állapot nem ellenőrizhető a Azure Portal.
+You cannot check the database state for scale-out operations with the Azure portal.
 
-A DWU változásainak állapotának ellenõrzése:
+To check the status of DWU changes:
 
-1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+1. Connect to the master database associated with your logical SQL Database server.
 
-1. Az adatbázis állapotának vizsgálatához küldje el a következő lekérdezést.
+1. Submit the following query to check database state.
 
     ```sql
     SELECT    *
@@ -194,7 +173,7 @@ A DWU változásainak állapotának ellenõrzése:
     ;
     ```
     
-1. A művelet állapotának vizsgálatához küldje el a következő lekérdezést
+1. Submit the following query to check status of operation
 
     ```sql
     SELECT    *
@@ -204,15 +183,15 @@ A DWU változásainak állapotának ellenõrzése:
     ;
     ```
     
-Ez a DMV az SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS vagy kész.
+This DMV returns information about various management operations on your SQL pool such as the operation and the state of the operation, which is either IN_PROGRESS or COMPLETED.
 
-## <a name="the-scaling-workflow"></a>A skálázási munkafolyamat
+## <a name="the-scaling-workflow"></a>The scaling workflow
 
-Amikor elindít egy méretezési műveletet, a rendszer először az összes nyitott munkamenetet megöli, és minden nyitott tranzakciót visszagörget, hogy konzisztens állapotot biztosítson. A skálázási műveletek esetében a méretezés csak a tranzakciós visszaállítás befejeződése után történik meg.  
+When you start a scale operation, the system first kills all open sessions, rolling back any open transactions to ensure a consistent state. For scale operations, scaling only occurs after this transactional rollback has completed.  
 
-- A skálázási műveletek esetében a rendszer leválasztja az összes számítási csomópontot, kiépíti a további számítási csomópontokat, majd újracsatlakoztatja a tárolási réteghez.
-- A leskálázási művelethez a rendszer leválasztja az összes számítási csomópontot, majd csak a szükséges csomópontokat csatlakoztatja a tárolási réteghez.
+- For a scale-up operation, the system detaches all compute nodes, provisions the additional compute nodes, and then reattaches to the storage layer.
+- For a scale-down operation, the system detaches all compute nodes and then reattaches only the needed nodes to the storage layer.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) , valamint a [memória és a Egyidejűség korlátai](memory-concurrency-limits.md).
+To learn more about managing performance, see [Resource classes for workload management](resource-classes-for-workload-management.md) and [Memory and concurrency limits](memory-concurrency-limits.md).

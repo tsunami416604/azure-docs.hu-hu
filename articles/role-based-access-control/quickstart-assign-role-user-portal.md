@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a felhasználó rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés biztosítása |} A Microsoft Docs
-description: Megtudhatja, hogyan felhasználó szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure Portalon az Azure-erőforrásokhoz való hozzáférést.
+title: Tutorial - Grant a user access to Azure resources using RBAC and the Azure portal
+description: In this tutorial, learn how to grant a user access to Azure resources using role-based access control (RBAC) in the Azure portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 5786f7b48477fa705b43e3a953ac15b2c768bd71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4dd3995df2a068824c4aa6bccca5606d250a165
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344843"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419663"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ebben az oktatóanyagban egy erőforráscsoportba tartozó virtuális gépek létrehozása és kezelése egy felhasználó hozzáférést ad.
+[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. In this tutorial, you grant a user access to create and manage virtual machines in a resource group.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzáférés engedélyezése egy felhasználó egy erőforrás-csoport hatóköre:
+> * Grant access for a user at a resource group scope
 > * Hozzáférés eltávolítása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -36,21 +36,21 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-1. Kattintson a navigációs lista **erőforráscsoportok**.
+1. In the navigation list, click **Resource groups**.
 
-1. Kattintson a **Hozzáadás** megnyitásához a **erőforráscsoport** panelen.
+1. Click **Add** to open the **Resource group** blade.
 
    ![Új erőforráscsoport hozzáadása](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. A **erőforráscsoport-név**, adja meg **rbac-resource-group**.
+1. For **Resource group name**, enter **rbac-resource-group**.
 
 1. Válasszon egy előfizetést és a egy helyet.
 
-1. Kattintson a **létrehozás** az erőforráscsoport létrehozásához.
+1. Click **Create** to create the resource group.
 
-1. Kattintson a **frissítése** az erőforráscsoportok listájának frissítéséhez.
+1. Click **Refresh** to refresh the list of resource groups.
 
    Az új erőforráscsoport az erőforráscsoportok listájában jelenik meg.
 
@@ -60,29 +60,29 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik.
 
-1. Listájában **erőforráscsoportok**, kattintson az új **rbac-resource-group** erőforráscsoportot.
+1. In the list of **Resource groups**, click the new **rbac-resource-group** resource group.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. Kattintson a **szerepkör-hozzárendelések** fülre, és tekintse meg a szerepkör-hozzárendelések listáját.
+1. Click the **Role assignments** tab to see the current list of role assignments.
 
    ![Hozzáférés-vezérlés (IAM) panel erőforráscsoporthoz](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Kattintson a **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása** a hozzáadása szerepkör-hozzárendelés panel megnyitásához.
+1. Click **Add** > **Add role assignment** to open the Add role assignment pane.
 
-   Ha nem rendelkezik engedélyekkel szerepkörök hozzárendeléséhez, a Hozzáadás szerepkör-hozzárendelés beállítás letiltásra kerül.
+   If you don't have permissions to assign roles, the Add role assignment option will be disabled.
 
-   ![Hozzáadásra szolgáló menü](./media/role-assignments-portal/add-menu.png)
+   ![Add menu](./media/role-assignments-portal/add-menu.png)
 
-   ![Szerepkör-hozzárendelési ablaktáblán hozzáadása](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+   ![Add role assignment pane](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
 1. A **Szerepkör** legördülő listájában válassza a **Virtuális gépek közreműködője** szerepkört.
 
 1. A **Kiválasztás** listában válassza ki saját magát vagy egy másik felhasználót.
 
-1. Kattintson a **mentése** a szerepkör-hozzárendelés létrehozásához.
+1. Click **Save** to create the role assignment.
 
-   Néhány pillanat múlva a felhasználó társítva van a virtuális gépek Közreműködője szerepkör az rbac-resource-group erőforrás csoport hatókörben.
+   After a few moments, the user is assigned the Virtual Machine Contributor role at the rbac-resource-group resource group scope.
 
    ![Virtuális gépek közreműködője szerepkör hozzárendelése](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
@@ -90,30 +90,29 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 
 Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania.
 
-1. Szerepkör-hozzárendelések listájában adja hozzá a felhasználót a virtuális gépek Közreműködője szerepkör melletti jelölőnégyzet bejelölésekor.
+1. In the list of role assignments, add a checkmark next to the user with the Virtual Machine Contributor role.
 
-1. Kattintson a **eltávolítása**.
+1. Click **Remove**.
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. A remove szerepkör hozzárendelése megjelenő üzenetben kattintson **Igen**.
+1. In the remove role assignment message that appears, click **Yes**.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-1. Kattintson a navigációs lista **erőforráscsoportok**.
+1. In the navigation list, click **Resource groups**.
 
-1. Kattintson a **rbac-resource-group** , nyissa meg az erőforráscsoportot.
+1. Click **rbac-resource-group** to open the resource group.
 
-1. Kattintson a **erőforráscsoport törlése** , törölje az erőforráscsoportot.
+1. Click **Delete resource group** to delete the resource group.
 
    ![Erőforráscsoport törlése](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
-1. Az a **Opravdu chcete odstranit** panelen írja be az erőforráscsoport neve: **rbac-resource-group**.
+1. On the **Are you sure you want to delete** blade, type the resource group name: **rbac-resource-group**.
 
-1. Kattintson a **törlése** , törölje az erőforráscsoportot.
+1. Click **Delete** to delete the resource group.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egy felhasználó hozzáférést biztosítani Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
-
+> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)

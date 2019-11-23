@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 96dae96e16ce033ce15a8f1e9386e5252562654a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e92e51e8aabf24f1c5c4db31e2e203f391620ecc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796227"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423483"
 ---
 # <a name="what-is-azure-front-door-service"></a>Mi az az Azure Front Door Service?
 Az Azure Front Door Service segítségével meghatározhatja, felügyelheti és monitorozhatja a webes forgalmának globális forgalomirányítását, optimalizálhatja annak teljesítményét, és azonnali globális feladatátvétellel magas rendelkezésre állást biztosíthat. A Front Door használatával a globális (több régióban található) fogyasztói és nagyvállalati alkalmazásait olyan robusztus, nagy teljesítményű, személyre szabott és modern alkalmazásokká, API-kká és tartalmakká alakíthatja, amelyek az Azure-on keresztül elérhetik a globális közönségüket.
@@ -26,6 +26,8 @@ A Front Door a 7. rétegben, a HTTP/HTTPS rétegben működik, és szétválaszt
 
 >[!NOTE]
 > Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha DNS-alapú globális útvonalválasztásra van szüksége, de **nem** teljesíti a Transport Layer Security (TLS) protokoll-lezárás („SSL-kiszervezés”) követelményeit vagy per-HTTP/HTTPS kérelmeket, illetve alkalmazásréteg-feldolgozást keres, tekintse át az [Traffic Managert](../traffic-manager/traffic-manager-overview.md) ismertető cikket. Ha egy azonos régióban található kiszolgálói között szeretne terheléselosztást megvalósítani, akkor az alkalmazás rétegű terheléselosztás esetén tekintse át az [Application Gatewayt](../application-gateway/application-gateway-introduction.md), hálózati rétegű esetén pedig a [Load Balancert](../load-balancer/load-balancer-overview.md) ismertető cikket. A végpontok közötti forgatókönyvek esetében előnyt jelenthet ezen megoldások igény szerinti kombinációja.
+>
+> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 A Front Door a következő funkciókat tartalmazza:
 
@@ -57,16 +59,16 @@ Amikor a Front Doort használja a tartalom továbbítására, és azt szeretné,
 A Front Door a HTTPS-t is támogatja az egyéni tartománynevekben. Ezzel a funkcióval kiválaszthatja a forgalmához a Front Door által kezelt tanúsítványait, vagy feltöltheti a saját SSL-tanúsítványát.
 
 ## <a name="application-layer-security"></a>Alkalmazásrétegbeli biztonság
-Az Azure bejárati ajtóval egyéni webalkalmazási tűzfal (WAF) szabályok hozhatók létre a hozzáférés-vezérléshez, így az ügyfél IP-címei, az országkód és a http-paraméterek alapján védetté teheti a HTTP/HTTPS-munkaterheléseket. Ezenkívül a Front Doorral létrehozhat olyan sebességkorlátozó szabályokat is, amelyekkel a robotok rosszindulatú forgalma ellen is hatékonyan védekezhet. A webalkalmazási tűzfallal kapcsolatos további információkért lásd: [Mi az az Azure webalkalmazási tűzfal?](../web-application-firewall/overview.md)
+Azure Front Door allows you to author custom Web Application Firewall (WAF) rules for access control to protect your HTTP/HTTPS workload from exploitation based on client IP addresses, country code, and http parameters. Ezenkívül a Front Doorral létrehozhat olyan sebességkorlátozó szabályokat is, amelyekkel a robotok rosszindulatú forgalma ellen is hatékonyan védekezhet. For more information about Web Application Firewall, see [What is Azure Web Application Firewall?](../web-application-firewall/overview.md)
 
 Maga a Front Door platform alapszintű [Azure DDoS Protectionnel](../virtual-network/ddos-protection-overview.md) rendelkezik. További védelemként engedélyezheti a virtuális hálózatain a Standard szintű Azure DDoS Protectiont, így automatikus finomhangolással és kárenyhítéssel megvédheti erőforrásait a hálózati rétegből érkező (TCP/UDP) támadásokkal szemben. A Front Door egy 7. rétegű fordított proxy, amely alapértelmezés szerint csak a háttérrendszerek felé irányuló forgalmat engedi át, minden más forgalmat blokkol.
 
 ## <a name="url-redirection"></a>URL-cím átirányítása
-Az erős iparági Leküldés csak a biztonságos kommunikáció támogatására teszi lehetővé, hogy a webalkalmazások automatikusan átirányítsák a HTTP-forgalmat a HTTPS-be. Ez biztosítja, hogy a felhasználók és az alkalmazás közötti összes kommunikáció egy titkosított útvonalon történjen. 
+With the strong industry push on supporting only secure communication, web applications are expected to automatically redirect any HTTP traffic to HTTPS. This ensures that all communication between the users and the application occurs over an encrypted path. 
 
-Az alkalmazások tulajdonosai általában egy dedikált szolgáltatás létrehozásával foglalkoztak ezzel a követelménysel, amelynek egyetlen célja a HTTP protokollon keresztül a HTTPS-re irányuló kérelmek átirányítása. Az Azure bejárati szolgáltatása lehetővé teszi a forgalom HTTP-ről HTTPS-re való átirányítását. Ez leegyszerűsíti az alkalmazáskonfigurációt, optimalizálja az erőforrás-használatot, és új átirányítási forgatókönyveket támogat, például a globális és útvonalalapú átirányítást. Az Azure-beli előtérben elérhető URL-átirányítás nem korlátozódik a HTTP-alapú HTTPS-átirányításra, hanem egy másik állomásnévre való átirányításra, egy másik elérési útra való átirányításra, vagy akár egy új lekérdezési karakterláncra is átirányítja az URL-címet.
+Traditionally, application owners have dealt with this requirement by creating a dedicated service, whose sole purpose was to redirect requests it receives on HTTP to HTTPS. Azure Front Door Service supports the ability to redirect traffic from HTTP to HTTPS. Ez leegyszerűsíti az alkalmazáskonfigurációt, optimalizálja az erőforrás-használatot, és új átirányítási forgatókönyveket támogat, például a globális és útvonalalapú átirányítást. URL redirection from Azure Front Door Service is not limited to HTTP to HTTPS redirection alone, but also to redirect to a different hostname, redirecting to a different path, or even redirecting to a new query string in the URL.
 
-További információ: a [forgalom átirányítása](front-door-url-redirect.md) az Azure bejárati ajtó szolgáltatással.
+For more information, see [redirecting traffic](front-door-url-redirect.md) with Azure Front Door Service.
 
 ## <a name="url-rewrite"></a>URL-átírás
 A Front Door azáltal támogatja az [URL-átírást](front-door-url-rewrite.md), hogy lehetővé teszi egy olyan egyéni továbbítási útvonal konfigurálását, amely a háttérrendszer felé továbbítandó kérelem megalkotásakor használható. A Front Door továbbá lehetővé teszi, hogy konfiguráljon egy olyan állomásfejlécet, amelyet akkor küld el rendszer, amikor továbbítja a kérelmet a háttérrendszer felé.
@@ -80,7 +82,7 @@ A HTTP/2 protokoll teljes körű duplex kommunikációt tesz lehetővé egy alka
 
 Díjszabási információkért tekintse meg [A Front Door díjszabása](https://azure.microsoft.com/pricing/details/frontdoor/) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door létrehozására](quickstart-create-front-door.md) vonatkozó információk.
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

@@ -1,63 +1,63 @@
 ---
-title: Földrajzi forgalom útválasztásának konfigurálása – Azure Traffic Manager
-description: Ez a cikk bemutatja, hogyan konfigurálhatja a földrajzi forgalom útválasztási módszerét az Azure Traffic Manager használatával
+title: Tutorial - Configure geographic traffic routing with Azure Traffic Manager
+description: This tutorial explains how to configure the geographic traffic routing method using Azure Traffic Manager
 services: traffic-manager
 author: asudbring
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: allensu
-ms.openlocfilehash: f15871705b9839f1c7a7c7f04f6f4a88641673fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9de1f0b0adc4d82b666adcd4bc9b26e31e7750d6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031953"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422797"
 ---
-# <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>A földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Tutorial: Configure the geographic traffic routing method using Traffic Manager
 
-A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott végpontokra irányítsa a forgalmat azon a földrajzi hely alapján, ahol a kérelmek származnak. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Traffic Manager profilt ezzel az útválasztási módszerrel, és hogyan konfigurálhatja a végpontokat az adott földrajzi helyekről érkező forgalom fogadására.
+The Geographic traffic routing method allows you to direct traffic to specific endpoints based on the geographic location where the requests originate. This tutorial shows you how to create a Traffic Manager profile with this routing method and configure the endpoints to receive traffic from specific geographies.
 
-## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
+## <a name="create-a-traffic-manager-profile"></a>Create a Traffic Manager Profile
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** lehetőségre.
-4. A **Traffic Manager létrehozása profilban**:
-    1. Adja meg a profil nevét. Ennek a névnek egyedinek kell lennie az trafficmanager.net zónán belül. A Traffic Manager-profil eléréséhez használja a DNS-nevet `<profilename>.trafficmanager.net`.
-    2. Válassza ki a **földrajzi** útválasztási módszert.
-    3. Válassza ki azt az előfizetést, amelyhez a profilt létre kívánja hozni.
-    4. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot, amelybe a profilt be kívánja helyezni. Ha úgy dönt, hogy létrehoz egy új erőforráscsoportot, az **erőforráscsoport helye** legördülő menüben adja meg az erőforráscsoport helyét. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan telepített Traffic Manager-profilra.
-    5. Miután rákattintott a **Létrehozás**gombra, a rendszer a Traffic Manager-profilt globálisan hozza létre és telepíti.
+4. In the **Create Traffic Manager profile**:
+    1. Provide a name for your profile. This name needs to be unique within the trafficmanager.net zone. To access your Traffic Manager profile, you use the DNS name `<profilename>.trafficmanager.net`.
+    2. Select the **Geographic** routing method.
+    3. Select the subscription you want to create this profile under.
+    4. Use an existing resource group or create a new resource group to place this profile under. If you choose to create a new resource group, use the **Resource Group location** dropdown to specify the location of the resource group. This setting refers to the location of the resource group, and has no impact on the Traffic Manager profile that's deployed globally.
+    5. After you click **Create**, your Traffic Manager profile is created and deployed globally.
 
 ![Traffic Manager-profil létrehozása](./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png)
 
-## <a name="add-endpoints"></a>Végpontok hozzáadása
+## <a name="add-endpoints"></a>Add endpoints
 
-1. Keresse meg a portál keresési sávjában létrehozott Traffic Manager profil nevét, és kattintson az eredményre, amikor megjelenik.
-2. Navigáljon a **beállítások** -> a Traffic Manager **végpontok** elemre.
-3. A Hozzáadás **végpont**megjelenítéséhez kattintson a **Hozzáadás** gombra.
-3. Kattintson a **Hozzáadás** gombra, és a megjelenő **végpont hozzáadása** lapon fejezze be a következőt:
-4. Válassza a **típus** lehetőséget a hozzáadni kívánt végpont típusától függően. Az éles környezetben használt földrajzi útválasztási profilok esetében javasoljuk, hogy használjon olyan beágyazott végpontokat, amelyek egynél több végponttal rendelkező alárendelt profilt tartalmaznak. További részletekért tekintse meg a [földrajzi forgalom útválasztási módszereivel kapcsolatos gyakori kérdések](traffic-manager-FAQs.md)című témakört.
+1. Search for the Traffic Manager profile name you created in the portal’s search bar and click on the result when it is shown.
+2. Navigate to **Settings** -> **Endpoints** in Traffic Manager.
+3. Click **Add** to show the **Add Endpoint**.
+3. Click **Add** and in the **Add endpoint** that is displayed, complete as follows:
+4. Select **Type** depending upon the type of endpoint you are adding. For geographic routing profiles used in production, we strongly recommend using nested endpoint types containing a child profile with more than one endpoint. For more details, see [FAQs about geographic traffic routing methods](traffic-manager-FAQs.md).
 5. Adjon meg egy **Nevet**, amelyről felismeri majd a végpontot.
-6. Ezen a lapon bizonyos mezők a hozzáadott végpont típusától függenek:
-    1. Ha Azure-végpontot ad hozzá, válassza ki a **cél erőforrás típusát** és **célját** azon erőforrás alapján, amelynek a forgalmát át szeretné irányítani
-    2. Ha **külső** végpontot ad hozzá, adja meg a végpont teljes tartománynevét **(FQDN)** .
-    3. Ha **beágyazott végpontot**ad hozzá, válassza ki a használni kívánt gyermek profilnak megfelelő **cél erőforrást** , és adja meg a **gyermek végpontok minimális darabszámát**.
-7. A földrajzi leképezés szakaszban a legördülő lista használatával adja hozzá azokat a régiókat, amelyekről szeretné elküldeni a forgalmat a végpontnak. Legalább egy régiót fel kell vennie, és több régió is leképezhető.
-8. Ezt ismételje meg a profilban hozzáadni kívánt összes végpont esetében
+6. Certain fields on this page depend on the type of endpoint you are adding:
+    1. If you are adding an Azure endpoint, select the **Target resource type** and the **Target** based on the resource you want to direct traffic to
+    2. If you are adding an **External** endpoint, provide the **Fully-qualified domain name (FQDN)** for your endpoint.
+    3. If you are adding a **Nested endpoint**, select the **Target resource** that corresponds to the child profile you want to use and specify the **Minimum child endpoints count**.
+7. In the Geo-mapping section, use the drop down to add the regions from where you want traffic to be sent to this endpoint. You must add at least one region, and you can have multiple regions mapped.
+8. Repeat this for all endpoints you want to add under this profile
 
 ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-geographic-routing-method/add-traffic-manager-endpoint.png)
 
-## <a name="use-the-traffic-manager-profile"></a>A Traffic Manager profil használata
-1.  A portálon keresse meg az előző szakaszban létrehozott **Traffic Manager profil** nevét, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
+## <a name="use-the-traffic-manager-profile"></a>Use the Traffic Manager profile
+1.  In the portal’s search bar, search for the **Traffic Manager profile** name that you created in the preceding section and click on the traffic manager profile in the results that the displayed.
 2. Kattintson az **Áttekintés** elemre.
-3. A **Traffic Manager-profil** mezőben megjelenik az újonnan létrehozott Traffic Manager-profil DNS-neve. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján.  Földrajzi útválasztás esetén Traffic Manager a bejövő kérelem forrás IP-címét vizsgálja, és meghatározza azt a régiót, ahonnan származik. Ha az adott régió egy végpontra van leképezve, a rendszer átirányítja a forgalmat oda. Ha ez a régió nincs leképezve végpontra, akkor Traffic Manager egy Adatlekérdezési választ ad vissza.
+3. A **Traffic Manager-profil** mezőben megjelenik az újonnan létrehozott Traffic Manager-profil DNS-neve. This can be used by any clients (for example, by navigating to it using a web browser) to get routed to the right endpoint as determined by the routing type.  In the case of geographic routing, Traffic Manager looks at the source IP of the incoming request and determines the region from which it is originating. If that region is mapped to an endpoint, traffic is routed to there. If this region is not mapped to an endpoint, then Traffic Manager returns a NODATA query response.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [földrajzi forgalom útválasztási módszeréről](traffic-manager-routing-methods.md#geographic).
-- Ismerje meg, hogyan [tesztelheti Traffic Manager beállításait](traffic-manager-testing-settings.md).
+- Learn more about [Geographic traffic routing method](traffic-manager-routing-methods.md#geographic).
+- Learn how to [test Traffic Manager settings](traffic-manager-testing-settings.md).

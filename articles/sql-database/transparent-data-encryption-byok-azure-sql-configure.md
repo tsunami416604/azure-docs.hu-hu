@@ -1,6 +1,6 @@
 ---
-title: SQL-TDE engedélyezése Azure Key Vault
-description: Megtudhatja, hogyan konfigurálhat egy Azure SQL Database és egy adattárházat, hogy a PowerShell vagy a parancssori felület használatával megkezdje a titkosítást a transzparens adattitkosítás (TDE) használatával.
+title: Enable SQL TDE with Azure Key Vault
+description: Learn how to configure an Azure SQL Database and Data Warehouse to start using Transparent Data Encryption (TDE) for encryption-at-rest using PowerShell or CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,266 +11,235 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 8668718f33cff1ebc0c8e159c0edcae41de3ad75
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e60b83f8eb1e95733512180417bb2a1be679b0a0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821688"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422468"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell and CLI: Enable Transparent Data Encryption with customer-managed key from Azure Key Vault
 
-Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens adattitkosítás (TDE) kulcsát SQL Database vagy adattárházban. Ha többet szeretne megtudni a Azure Key Vault Integration-Bring Your Own Key (BYOK) támogatással rendelkező TDE, látogasson el a [TDE felhasználó által felügyelt kulcsokra a Azure Key Vault](transparent-data-encryption-byok-azure-sql.md). 
+This article walks through how to use a key from Azure Key Vault for Transparent Data Encryption (TDE) on a SQL Database or Data Warehouse. To learn more about the TDE with Azure Key Vault integration - Bring Your Own Key (BYOK) Support, visit [TDE with customer-managed keys in Azure Key Vault](transparent-data-encryption-byok-azure-sql.md).
 
-## <a name="prerequisites-for-powershell"></a>A PowerShell előfeltételei
+## <a name="prerequisites-for-powershell"></a>Prerequisites for PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+- You must have an Azure subscription and be an administrator on that subscription.
+- [Recommended but Optional] Have a hardware security module (HSM) or local key store for creating a local copy of the TDE Protector key material.
+- You must have Azure PowerShell installed and running.
+- Create an Azure Key Vault and Key to use for TDE.
+  - [Instructions for using a hardware security module (HSM) and Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - The key vault must have the following property to be used for TDE:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md) and purge protection
+- The key must have the following attributes to be used for TDE:
+   - No expiration date
+   - Not disabled
+   - Able to perform *get*, *wrap key*, *unwrap key* operations
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. For specific cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+
+For specifics on Key Vault, see [PowerShell instructions from Key Vault](../key-vault/quick-create-powershell.md) and [How to use Key Vault soft-delete with PowerShell](../key-vault/key-vault-soft-delete-powershell.md).
+
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
-- Rendelkeznie kell egy Azure-előfizetéssel, és rendszergazdának kell lennie az előfizetésben.
-- [Ajánlott, de nem kötelező] Hardveres biztonsági modult (HSM) vagy helyi kulcstárolót kell létrehoznia a TDE-védő kulcsfontosságú anyagának helyi másolatának létrehozásához.
-- A Azure PowerShell telepítése és futtatása szükséges. 
-- Hozzon létre egy Azure Key Vault és egy kulcsot a TDE használatához.
-  - [PowerShell-utasítások a Key Vaultból](../key-vault/quick-create-powershell.md)
-  - [Útmutató a hardveres biztonsági modul (HSM) és a Key Vault használatához](../key-vault/key-vault-hsm-protected-keys.md)
-    - A Key vaultnak a következő tulajdonságot kell használnia a TDE:
-  - a védelem eltávolítása és [törlése](../key-vault/key-vault-ovw-soft-delete.md)
-  - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](../key-vault/key-vault-soft-delete-powershell.md) 
-- A kulcsnak a következő attribútumokkal kell rendelkeznie a TDE való használathoz:
-   - Nincs lejárati dátum
-   - Nincs letiltva
-   - Képes a *Get*, a *wrap Key*, a *dewrap Key* Operations művelet végrehajtására
+## <a name="assign-an-azure-ad-identity-to-your-server"></a>Assign an Azure AD identity to your server
 
-## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>1\. lépés Azure AD-identitás kiosztása a kiszolgálóhoz 
-
-Ha rendelkezik meglévő kiszolgálóval, az alábbi paranccsal adhat hozzá Azure AD-identitást a kiszolgálóhoz:
+If you have an existing server, use the following to add an Azure AD identity to your server:
 
    ```powershell
-   $server = Set-AzSqlServer `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> `
-   -AssignIdentity
+   $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
    ```
 
-Ha kiszolgálót hoz létre, használja a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) parancsmagot a tag-Identity paranccsal az Azure ad-identitás hozzáadásához a kiszolgáló létrehozásakor:
+If you are creating a server, use the [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) cmdlet with the tag -Identity to add an Azure AD identity during server creation:
 
    ```powershell
-   $server = New-AzSqlServer `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -Location <RegionName> `
-   -ServerName <LogicalServerName> `
-   -ServerVersion "12.0" `
-   -SqlAdministratorCredentials <PSCredential> `
-   -AssignIdentity 
+   $server = New-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -Location <RegionName> `
+       -ServerName <LogicalServerName> -ServerVersion "12.0" -SqlAdministratorCredentials <PSCredential> -AssignIdentity
    ```
 
-## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>2\. lépés Key Vault engedélyek megadása a kiszolgálónak
+## <a name="grant-key-vault-permissions-to-your-server"></a>Grant Key Vault permissions to your server
 
-A [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmag használatával biztosíthatja a kiszolgáló hozzáférését a Key vaulthoz, mielőtt a TDE-hoz tartozó kulcsot használ.
+Use the [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet to grant your server access to the key vault before using a key from it for TDE.
 
    ```powershell
-   Set-AzKeyVaultAccessPolicy  `
-   -VaultName <KeyVaultName> `
-   -ObjectId $server.Identity.PrincipalId `
-   -PermissionsToKeys get, wrapKey, unwrapKey
+   Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
+       -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
 
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. lépés Adja hozzá a Key Vault kulcsot a kiszolgálóhoz, és állítsa be a TDE-védőt.
+## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Add the Key Vault key to the server and set the TDE Protector
 
+- Use the [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet to retrieve the key ID from key vault
+- Use the [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet to add the key from the Key Vault to the server.
+- Use the [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet to set the key as the TDE protector for all server resources.
+- Use the [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet to confirm that the TDE protector was configured as intended.
 
-- A Key Vault AZONOSÍTÓjának lekéréséhez használja a [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) parancsmagot.
-- Az [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) parancsmag használatával adja hozzá a kulcsot a Key Vault a-kiszolgálóhoz.
-- A [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmag használatával állítsa be a kulcsot TDE-védőként az összes kiszolgálói erőforráshoz.
-- A [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) parancsmag használatával ellenőrizze, hogy a TDE-védő a kívánt módon lett-e konfigurálva.
+> [!NOTE]
+> The combined length for the key vault name and key name cannot exceed 94 characters.
 
-> [!Note]
-> A Key Vault neve és a kulcsnév együttes hossza nem lehet hosszabb 94 karakternél.
-> 
+> [!TIP]
+> An example KeyId from Key Vault: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
->[!Tip]
->Példa a Key Vault: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h KeyId
->
+```powershell
+# add the key from Key Vault to the server
+Add-AzSqlServerKeyVaultKey -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -KeyId <KeyVaultKeyId>
+
+# set the key as the TDE protector for all resources under the server
+Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> `
+   -Type AzureKeyVault -KeyId <KeyVaultKeyId>
+
+# confirm the TDE protector was configured as intended
+Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName>
+```
+
+## <a name="turn-on-tde"></a>Turn on TDE
+
+Use the [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet to turn on TDE.
+
+```powershell
+Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResourceGroupName> `
+   -ServerName <LogicalServerName> -DatabaseName <DatabaseName> -State "Enabled"
+```
+
+Now the database or data warehouse has TDE enabled with an encryption key in Key Vault.
+
+## <a name="check-the-encryption-state-and-encryption-activity"></a>Check the encryption state and encryption activity
+
+Use the [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) to get the encryption state and the [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) to check the encryption progress for a database or data warehouse.
+
+```powershell
+# get the encryption state
+Get-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResourceGroupName> `
+   -ServerName <LogicalServerName> -DatabaseName <DatabaseName> `
+
+# check the encryption progress for a database or data warehouse
+Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDatabaseResourceGroupName> `
+   -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+To install the required Command-Line Interface version 2.0 or later and connect to your Azure subscription, see [Install and Configure the Azure Cross-Platform Command-Line Interface 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+For specifics on Key Vault, see [Manage Key Vault using CLI 2.0](../key-vault/key-vault-manage-with-cli2.md) and [How to use Key Vault soft-delete with CLI](../key-vault/key-vault-soft-delete-cli.md).
+
+## <a name="assign-an-azure-ad-identity-to-your-server"></a>Assign an Azure AD identity to your server
+
+```powershell
+# create server (with identity) and database
+az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
+az sql db create --name <dbname> --server <servername> --resource-group <rgname>
+```
+
+> [!TIP]
+> Keep the "principalID" from creating the server, it is the object id used to assign key vault permissions in the next step
+
+## <a name="grant-key-vault-permissions-to-your-server"></a>Grant Key Vault permissions to your server
+
+```powershell
+# create key vault, key and grant permission
+az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
+az keyvault key create --name <keyname> --vault-name <kvname> --protection software
+az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group <rgname> --key-permissions wrapKey unwrapKey get
+```
+
+> [!TIP]
+> Keep the key URI or keyID of the new key for the next step, for example: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+
+## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Add the Key Vault key to the server and set the TDE Protector
+
+```powershell
+# add server key and update encryption protector
+az sql server key create --server <servername> --resource-group <rgname> --kid <keyID>
+az sql server tde-key set --server <servername> --server-key-type AzureKeyVault  --resource-group <rgname> --kid <keyID>
+```
+
+> [!NOTE]
+> The combined length for the key vault name and key name cannot exceed 94 characters.
+
+## <a name="turn-on-tde"></a>Turn on TDE
+
+```powershell
+# enable encryption
+az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled
+```
+
+Now the database or data warehouse has TDE enabled with a customer-managed encryption key in Azure Key Vault.
+
+## <a name="check-the-encryption-state-and-encryption-activity"></a>Check the encryption state and encryption activity
+
+```powershell
+# get encryption scan progress
+az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
+
+# get whether encryption is on or off
+az sql db tde show --database <dbname> --server <servername> --resource-group <rgname>
+```
+
+* * *
+
+## <a name="useful-powershell-cmdlets"></a>Useful PowerShell cmdlets
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- Use the [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet to turn off TDE.
 
    ```powershell
-   <# Add the key from Key Vault to the server #>
-   Add-AzSqlServerKeyVaultKey `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> `
-   -KeyId <KeyVaultKeyId>
-
-   <# Set the key as the TDE protector for all resources under the server #>
-   Set-AzSqlServerTransparentDataEncryptionProtector `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> `
-   -Type AzureKeyVault `
-   -KeyId <KeyVaultKeyId> 
-
-   <# To confirm that the TDE protector was configured as intended: #>
-   Get-AzSqlServerTransparentDataEncryptionProtector `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> 
+   Set-AzSqlDatabaseTransparentDataEncryption -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName> `
+      -DatabaseName <DatabaseName> -State "Disabled”
    ```
 
-## <a name="step-4-turn-on-tde"></a>4\. lépés TDE bekapcsolása 
-
-A TDE bekapcsolásához használja a [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) parancsmagot.
+- Use the [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet to return the list of Key Vault keys added to the server.
 
    ```powershell
-   Set-AzSqlDatabaseTransparentDataEncryption `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> `
-   -DatabaseName <DatabaseName> `
-   -State "Enabled"
+   # KeyId is an optional parameter, to return a specific key version
+   Get-AzSqlServerKeyVaultKey -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-Most, hogy az adatbázis vagy az adattárház TDE engedélyezve van a Key Vaultban lévő titkosítási kulccsal.
-
-## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>5\. lépés A titkosítási állapot és a titkosítási tevékenység keresése
-
-A [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) használatával lekérheti a titkosítási állapotot és a [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) , és megtekintheti az adatbázis vagy az adatraktár titkosítási folyamatát.
+- Use the [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) to remove a Key Vault key from the server.
 
    ```powershell
-   # Get the encryption state
-   Get-AzSqlDatabaseTransparentDataEncryption `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> `
-   -DatabaseName <DatabaseName> `
-
-   <# Check the encryption progress for a database or data warehouse #>
-   Get-AzSqlDatabaseTransparentDataEncryptionActivity `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -ServerName <LogicalServerName> `
-   -DatabaseName <DatabaseName>  
+   # the key set as the TDE Protector cannot be removed
+   Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-## <a name="other-useful-powershell-cmdlets"></a>Egyéb hasznos PowerShell-parancsmagok
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- A TDE kikapcsolásához használja a [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) parancsmagot.
+- For general database settings, see [az sql](/cli/azure/sql).
+
+- For vault key settings, see [az sql server key](/cli/azure/sql/server/key).
+
+- For TDE settings, see [az sql server tde-key](/cli/azure/sql/server/tde-key) and [az sql db tde](/cli/azure/sql/db/tde).
+
+* * *
+
+## <a name="troubleshooting"></a>Hibakeresés
+
+Check the following if an issue occurs:
+
+- If the key vault cannot be found, make sure you're in the right subscription.
+
+   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell
-   Set-AzSqlDatabaseTransparentDataEncryption `
-   -ServerName <LogicalServerName> `
-   -ResourceGroupName <SQLDatabaseResourceGroupName> `
-   -DatabaseName <DatabaseName> `
-   -State "Disabled"
+   Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
- 
-- A [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) parancsmag használatával adja vissza a kiszolgálóhoz hozzáadott Key Vault kulcsok listáját.
+
+   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
-   <# KeyId is an optional parameter, to return a specific key version #>
-   Get-AzSqlServerKeyVaultKey `
-   -ServerName <LogicalServerName> `
-   -ResourceGroupName <SQLDatabaseResourceGroupName>
-   ```
- 
-- A [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) használatával távolítson el egy Key Vault kulcsot a kiszolgálóról.
-
-   ```powershell
-   <# The key set as the TDE Protector cannot be removed. #>
-   Remove-AzSqlServerKeyVaultKey `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroupName <SQLDatabaseResourceGroupName>   
-   ```
- 
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-Ha probléma merül fel, ellenőrizze a következőket:
-- Ha a kulcstároló nem található, győződjön meg róla, hogy a megfelelő előfizetést használja a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) parancsmaggal.
-
-   ```powershell
-   Get-AzSubscription `
-   -SubscriptionId <SubscriptionId>
+   az account show - s <SubscriptionId>
    ```
 
-- Ha az új kulcs nem adható hozzá a kiszolgálóhoz, vagy az új kulcs nem frissíthető TDE-védőként, ellenőrizze a következőket:
-   - A kulcs nem rendelkezhet lejárati dátummal
-   - A kulcsnak engedélyezve kell lennie a *Get*, a *wrap Key*és a *dewrap Key* műveletnek.
+   * * *
 
-## <a name="next-steps"></a>További lépések
+- If the new key cannot be added to the server, or the new key cannot be updated as the TDE Protector, check the following:
+   - The key should not have an expiration date
+   - The key must have the *get*, *wrap key*, and *unwrap key* operations enabled.
 
-- Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelményeknek való megfelelés érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [távolítson el egy potenciálisan feltört kulcsot](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="prerequisites-for-cli"></a>A CLI előfeltételei
-
-- Rendelkeznie kell egy Azure-előfizetéssel, és rendszergazdának kell lennie az előfizetésben.
-- [Ajánlott, de nem kötelező] Hardveres biztonsági modult (HSM) vagy helyi kulcstárolót kell létrehoznia a TDE-védő kulcsfontosságú anyagának helyi másolatának létrehozásához.
-- Parancssori felület 2,0-es vagy újabb verziója. A legújabb verzió telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz lásd: [Az Azure többplatformos parancssori felületének telepítése és konfigurálása (2,0](https://docs.microsoft.com/cli/azure/install-azure-cli)). 
-- Hozzon létre egy Azure Key Vault és egy kulcsot a TDE használatához.
-  - [Key Vault kezelése a CLI 2,0 használatával](../key-vault/key-vault-manage-with-cli2.md)
-  - [Útmutató a hardveres biztonsági modul (HSM) és a Key Vault használatához](../key-vault/key-vault-hsm-protected-keys.md)
-    - A Key vaultnak a következő tulajdonságot kell használnia a TDE:
-  - [helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
-  - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](../key-vault/key-vault-soft-delete-cli.md) 
-- A kulcsnak a következő attribútumokkal kell rendelkeznie a TDE való használathoz:
-   - Nincs lejárati dátum
-   - Nincs letiltva
-   - Képes a *Get*, a *wrap Key*, a *dewrap Key* Operations művelet végrehajtására
-   
-## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>1\. lépés Kiszolgáló létrehozása Azure AD-identitással
-      cli
-      # create server (with identity) and database
-      az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
-      az sql db create --name <dbname> --server <servername> --resource-group <rgname>  
- 
- 
->[!Tip]
->Tartsa meg a "principalID" a kiszolgáló létrehozásával, a Key Vault-engedélyek hozzárendeléséhez használt objektumazonosító a következő lépésben
->
- 
-## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>2\. lépés Key Vault engedélyek megadása a logikai SQL-kiszolgálónak
-      cli
-      # create key vault, key and grant permission
-       az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
-       az keyvault key create --name <keyname> --vault-name <kvname> --protection software
-       az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group <rgname> --key-permissions wrapKey unwrapKey get 
-
-
->[!Tip]
->Tartsa meg az új kulcs kulcs-URI-JÁT vagy keyID a következő lépéshez, például: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
->
- 
-       
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. lépés Adja hozzá a Key Vault kulcsot a kiszolgálóhoz, és állítsa be a TDE-védőt.
-  
-     cli
-     # add server key and update encryption protector
-     az sql server key create --server <servername> --resource-group <rgname> --kid <keyID>
-     az sql server tde-key set --server <servername> --server-key-type AzureKeyVault  --resource-group <rgname> --kid <keyID>
-
-        
-  > [!Note]
-> A Key Vault neve és a kulcsnév együttes hossza nem lehet hosszabb 94 karakternél.
-> 
-
-  
-## <a name="step-4-turn-on-tde"></a>4\. lépés TDE bekapcsolása 
-      cli
-      # enable encryption
-      az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled 
-      
-
-Most, hogy az adatbázis vagy az adattárház TDE van engedélyezve a felhasználó által felügyelt titkosítási kulccsal Azure Key Vaultban.
-
-## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>5\. lépés A titkosítási állapot és a titkosítási tevékenység keresése
-
-     cli
-      # get encryption scan progress
-      az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
-
-      # get whether encryption is on or off
-      az sql db tde show --database <dbname> --server <servername> --resource-group <rgname> 
-
-## <a name="sql-cli-references"></a>SQL CLI-hivatkozások
-
-https://docs.microsoft.com/cli/azure/sql 
-
-https://docs.microsoft.com/cli/azure/sql/server/key 
-
-https://docs.microsoft.com/cli/azure/sql/server/tde-key 
-
-https://docs.microsoft.com/cli/azure/sql/db/tde 
-
+- Learn how to rotate the TDE Protector of a server to comply with security requirements: [Rotate the Transparent Data Encryption protector Using PowerShell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- In case of a security risk, learn how to remove a potentially compromised TDE Protector: [Remove a potentially compromised key](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).

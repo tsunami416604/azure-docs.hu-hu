@@ -1,6 +1,6 @@
 ---
 title: Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
-description: Elmagyarázza, hogyan kezelhetők a szegmensek, és hogyan helyezhetők át az adatai egy saját üzemeltetésű szolgáltatással a rugalmas adatbázis-API-k használatával.
+description: Explains how to manipulate shards and move data via a self-hosted service using elastic database APIs.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,264 +11,270 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 00f579017ce4dd79e913565ee27698398b5feb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823588"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421559"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 
-Ha Ön egy szolgáltatás-fejlesztőként szolgáló szoftver, és az alkalmazás hirtelen igénybe veszi a növekedést, alkalmazkodnia kell a növekedéshez. Így további adatbázisokat (szegmenseket) adhat hozzá. Hogyan terjeszthetők újra az adatok az új adatbázisokra az adatok integritásának megszakadása nélkül? A **felosztott egyesítés eszköz** használatával a korlátozott adatbázisokból származó adatok az új adatbázisokra helyezhetők át.  
+If you are a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.  
 
-A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszergazda vagy a fejlesztő az eszköz használatával helyezi át a shardletek (a szegmensből származó adatok) a különböző adatbázisok (szegmensek) között. Az eszköz a szegmensek közötti leképezések felügyeletét használja a szolgáltatás metaadatainak adatbázisának karbantartásához, és biztosítja a konzisztens leképezéseket.
+The split-merge tool runs as an Azure web service. An administrator or developer uses the tool to move shardlets (data from a shard) between different databases (shards). The tool uses shard map management to maintain the service metadata database, and ensure consistent mappings.
 
 ![Áttekintés][1]
 
 ## <a name="download"></a>Letöltés
 
-[Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentáció
 
-1. [Rugalmas adatbázis felosztása – egyesítési eszköz oktatóanyaga](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Felosztás – biztonsági konfiguráció egyesítése](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Felosztás – biztonsági szempontok egyesítése](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Elastic database Split-Merge tool tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Split-merge security considerations](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [A szilánkleképezés kezelése](sql-database-elastic-scale-shard-map-management.md)
 5. [Meglévő adatbázisok migrálása horizontális felskálázáshoz](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Rugalmas adatbázis-eszközök](sql-database-elastic-scale-introduction.md)
-7. [Elastic Database eszközök szószedete](sql-database-elastic-scale-glossary.md)
+6. [Elastic database tools](sql-database-elastic-scale-introduction.md)
+7. [Elastic Database tools glossary](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Miért érdemes a Split-Merge eszközt használni
+## <a name="why-use-the-split-merge-tool"></a>Why use the split-merge tool
 
-- **Rugalmasságot**
+- **Flexibility**
 
-  Az alkalmazásoknak rugalmasan kell kiterjeszteniük az egyetlen Azure SQL DB-adatbázis korlátain kívül. Az eszköz használatával az adatok szükség szerint helyezhetők át az új adatbázisokra az integritás megőrzése mellett.
+  Applications need to stretch flexibly beyond the limits of a single Azure SQL DB database. Use the tool to move data as needed to new databases while retaining integrity.
 
-- **Felosztás növekvőre**
+- **Split to grow**
 
-  A teljes kapacitás növeléséhez a robbanásszerű növekedés kezelése érdekében hozzon létre további kapacitást az adatelosztással és a Növekményesen több adatbázis között, amíg a kapacitási igények nem teljesülnek. Ez az **osztott** funkció elsődleges példája.
+  To increase overall capacity to handle explosive growth, create additional capacity by sharding the data and by distributing it across incrementally more databases until capacity needs are fulfilled. This is a prime example of the **split** feature.
 
-- **Egyesítés a zsugorodáshoz**
+- **Merge to shrink**
 
-  A kapacitást a vállalat szezonális jellege miatt kell csökkenteni. Az eszköz lehetővé teszi, hogy kevesebb méretezési egységre Szűkítse az üzleti lassulást. A rugalmas méretezésű felosztott egyesítési szolgáltatás "Merge" funkciója magában foglalja ezt a követelményt.
+  Capacity needs shrink due to the seasonal nature of a business. The tool lets you scale down to fewer scale units when business slows. The ‘merge’ feature in the Elastic Scale split-merge Service covers this requirement.
 
-- **Pontok kezelése a shardletek áthelyezésével**
+- **Manage hotspots by moving shardlets**
 
-  Ha az adatbázis több Bérlővel rendelkezik, a shardletek szegmensekre való kiosztása a kapacitás szűk keresztmetszetét eredményezheti bizonyos szegmensekben. Ehhez újra le kell foglalni a shardletek, vagy a foglalt shardletek új vagy kevésbé használt szegmensekre kell áthelyeznie.
+  With multiple tenants per database, the allocation of shardlets to shards can lead to capacity bottlenecks on some shards. This requires re-allocating shardlets or moving busy shardlets to new or less utilized shards.
 
-## <a name="concepts--key-features"></a>Alapfogalmak & főbb funkciók
+## <a name="concepts--key-features"></a>Concepts & key features
 
-- **Ügyfél által üzemeltetett szolgáltatások**
+- **Customer-hosted services**
 
-  A felosztott egyesítés ügyfél által üzemeltetett szolgáltatásként történik. A szolgáltatást a Microsoft Azure-előfizetésében kell telepítenie és üzemeltetni. A NuGet-ből letöltött csomag egy olyan konfigurációs sablont tartalmaz, amely az adott üzemelő példányra vonatkozó információkkal fejeződött be. A részletekért tekintse meg a [Split-Merge oktatóanyagot](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Mivel a szolgáltatás az Azure-előfizetésben fut, a szolgáltatás legtöbb biztonsági aspektusát szabályozhatja és konfigurálhatja. Az alapértelmezett sablon az SSL konfigurálására, a tanúsítványalapú ügyfél-hitelesítésre, a tárolt hitelesítő adatok titkosítására, a DoS-védelemre és az IP-korlátozásokra vonatkozó beállításokat tartalmazza. A biztonsági szempontokról további információt a következő dokumentum [felosztás – egyesítés biztonsági konfigurációjában](sql-database-elastic-scale-split-merge-security-configuration.md)talál.
+  The split-merge is delivered as a customer-hosted service. You must deploy and host the service in your Microsoft Azure subscription. The package you download from NuGet contains a configuration template to complete with the information for your specific deployment. See the [split-merge tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) for details. Since the service runs in your Azure subscription, you can control and configure most security aspects of the service. The default template includes the options to configure SSL, certificate-based client authentication, encryption for stored credentials, DoS guarding and IP restrictions. You can find more information on the security aspects in the following document [split-merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-  Az alapértelmezett telepített szolgáltatás egy feldolgozóval és egy webes szerepkörrel fut. Mindegyik az A1-es VM-méretet használja az Azure Cloud Servicesban. Noha ezeket a beállításokat nem lehet módosítani a csomag telepítésekor, a futó felhőalapú szolgáltatásban (a Azure Portalon keresztül) sikeres üzembe helyezés után megváltoztathatja őket. Vegye figyelembe, hogy a feldolgozói szerepkört a technikai okokból nem lehet egynél több példányra konfigurálni.
+  The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you cannot modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service, (through the Azure portal). Note that the worker role must not be configured for more than a single instance for technical reasons.
 
-- **Szegmens Térkép integrációja**
+- **Shard map integration**
 
-  A felosztási-egyesítési szolgáltatás az alkalmazás szegmenses térképével kommunikál. Ha a felosztási és egyesítési szolgáltatást a tartományok felosztása vagy egyesítése céljából, vagy a szegmensek közötti shardletek helyezi át, a szolgáltatás automatikusan naprakészen tartja a szegmenses leképezést. Ehhez a szolgáltatás csatlakozik az alkalmazás szegmens Map Manager-adatbázisához, és megtartja a tartományokat és a leképezéseket a felosztott/egyesítés/áthelyezési kérelmek folyamata során. Ez biztosítja, hogy a szegmens Térkép mindig naprakész nézetet jelenít meg, amikor a felosztott egyesítési műveletek folyamatban vannak. A felosztott, egyesíthető és shardletbe mozgatási műveletek a shardletek a forrás szegmensből a cél szegmensbe való áthelyezésével valósíthatók meg. A shardletbe-áthelyezési művelet során az aktuális köteg alá tartozó shardletek offline állapotú vannak megjelölve a szegmenses térképen, és nem érhetők el az adatkezelési útválasztási kapcsolatok számára a **OpenConnectionForKey** API használatával.
+  The split-merge service interacts with the shard map of the application. When using the split-merge service to split or merge ranges or to move shardlets between shards, the service automatically keeps the shard map up-to-date. To do so, the service connects to the shard map manager database of the application and maintains ranges and mappings as split/merge/move requests progress. This ensures that the shard map always presents an up-to-date view when split-merge operations are going on. Split, merge and shardlet movement operations are implemented by moving a batch of shardlets from the source shard to the target shard. During the shardlet movement operation the shardlets subject to the current batch are marked as offline in the shard map and are unavailable for data-dependent routing connections using the **OpenConnectionForKey** API.
 
-- **Konzisztens shardletbe-kapcsolatok**
+- **Consistent shardlet connections**
 
-  Ha az adatátvitel új batch-shardletek kezdődik, akkor a rendszer a shardletbe tároló szegmensek által biztosított adatátviteli útválasztási kapcsolatokat is letiltotta, és a szegmenses Térkép API-jai és a shardletek közötti kapcsolatok blokkolása le van tiltva az adatáthelyezés során. folyamatban van a következetlenségek elkerülése érdekében. Az ugyanazon a szegmensen lévő más shardletek létesített kapcsolatok is megszakadnak, de az újrapróbálkozáskor azonnal sikeresek lesznek. A köteg áthelyezése után a shardletek ismét online állapotba kerülnek, és a forrásadatok el lesznek távolítva a forrás szegmensből. A szolgáltatás minden köteghez végrehajtja ezeket a lépéseket, amíg az összes shardletek át nem helyezi. Ez több kapcsolódási műveletet is eredményez a teljes felosztási/egyesítési/áthelyezési művelet során.  
+  When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the course of the complete split/merge/move operation.  
 
-- **A shardletbe rendelkezésre állásának kezelése**
+- **Managing shardlet availability**
 
-  Ha a fentiekben leírtak szerint korlátozni szeretné a shardletek aktuális kötegét, a fentiekben ismertetett módon korlátozza a nem rendelkezésre állási hatókört egyszerre egy köteg shardletek. Ez előnyben részesített egy olyan megközelítésnél, amelyben a teljes szegmens kapcsolat nélküli állapotban marad az összes shardletek egy megosztott vagy egyesítési művelet során. Egy olyan köteg mérete, amely egy időben áthelyezendő különböző shardletek száma, egy konfigurációs paraméter. Az alkalmazás rendelkezésre állási és teljesítménybeli igényeitől függően minden felosztási és egyesítési művelethez definiálható. Vegye figyelembe, hogy a szegmenses térképen zárolt tartomány mérete nagyobb, mint a megadott batch-méret. Ennek az az oka, hogy a szolgáltatás a tartomány méretét úgy keresi meg, hogy az adatokban szereplő, hozzávetőleges kulcs értékeinek tényleges száma nagyjából megfelel a köteg méretének. Fontos megjegyezni, hogy különösen a ritkán használt horizontális Felskálázási kulcsok esetében.
+  Limiting the connection killing to the current batch of shardlets as discussed above restricts the scope of unavailability to one batch of shardlets at a time. This is preferred over an approach where the complete shard would remain offline for all its shardlets during the course of a split or merge operation. The size of a batch, defined as the number of distinct shardlets to move at a time, is a configuration parameter. It can be defined for each split and merge operation depending on the application’s availability and performance needs. Note that the range that is being locked in the shard map may be larger than the batch size specified. This is because the service picks the range size such that the actual number of sharding key values in the data approximately matches the batch size. This is important to remember in particular for sparsely populated sharding keys.
 
-- **Metaadat-tároló**
+- **Metadata storage**
 
-  A felosztási-egyesítési szolgáltatás adatbázis használatával tartja karban az állapotát, és a naplók a kérelmek feldolgozásakor maradnak. A felhasználó létrehozza ezt az adatbázist az előfizetésében, és megadja a kapcsolódási karakterláncot a szolgáltatás központi telepítésének konfigurációs fájljában. A felhasználó szervezetének rendszergazdái is csatlakozhatnak ehhez az adatbázishoz a kérelmek előrehaladásának áttekintéséhez és a lehetséges hibákkal kapcsolatos részletes információk vizsgálatához.
+  The split-merge service uses a database to maintain its status and to keep logs during request processing. The user creates this database in their subscription and provides the connection string for it in the configuration file for the service deployment. Administrators from the user’s organization can also connect to this database to review request progress and to investigate detailed information regarding potential failures.
 
-- **Horizontális felskálázás – figyelemfelkeltés**
+- **Sharding-awareness**
 
-  A felosztott egyesítési szolgáltatás különbséget tesz a (1) tagolt táblázatok, (2) és a (3) normál táblák között. A felosztási/egyesítési/áthelyezési művelet szemantikai köre a használt táblázat típusától függ, és a következők szerint van meghatározva:
+  The split-merge service differentiates between (1) sharded tables, (2) reference tables, and (3) normal tables. The semantics of a split/merge/move operation depend on the type of the table used and are defined as follows:
 
-  - **Szilánkokra osztott táblák**
+  - **Sharded tables**
 
-    A felosztási, egyesítési és áthelyezési műveletek shardletek helyezik át a forrásról a cél szegmensbe. A teljes kérelem sikeres befejezése után ezek a shardletek már nem jelennek meg a forráson. Vegye figyelembe, hogy a cél-tábláknak léteznie kell a cél szegmensen, és a művelet feldolgozása előtt nem tartalmazhatnak a céltartományban lévő adatmennyiséget.
+    Split, merge, and move operations move shardlets from source to target shard. After successful completion of the overall request, those shardlets are no longer present on the source. Note that the target tables need to exist on the target shard and must not contain data in the target range prior to processing of the operation.
 
-  - **Hivatkozási táblák**
+  - **Reference tables**
 
-    A hivatkozási táblák esetében a felosztási, egyesítési és áthelyezési műveletek az adatok a forrásról a cél szegmensbe másolhatók. Ne feledje azonban, hogy egy adott tábla cél szegmensén nem történt változás, ha a cél egy sor már szerepel ebben a táblázatban. A táblázatnak üresnek kell lennie minden táblázatos másolási művelet feldolgozásához.
+    For reference tables, the split, merge and move operations copy the data from the source to the target shard. Note, however, that no changes occur on the target shard for a given table if any row is already present in this table on the target. The table has to be empty for any reference table copy operation to get processed.
 
-  - **Egyéb táblák**
+  - **Other Tables**
 
-    A többi tábla lehet egy felosztási és egyesítési művelet forrásán vagy célján is. A felosztási-egyesítési szolgáltatás figyelmen kívül hagyja ezeket a táblákat bármilyen adatáthelyezési vagy másolási művelet esetében. Ne feledje azonban, hogy megkötések esetén ezek a műveletek zavarhatják a műveleteket.
+    Other tables can be present on either the source or the target of a split and merge operation. The split-merge service disregards these tables for any data movement or copy operations. Note, however, that they can interfere with these operations in case of constraints.
 
-    A hivatkozással és a többrétegű táblákkal kapcsolatos információkat a szegmensek `SchemaInfo` API-k nyújtanak. Az alábbi példa bemutatja, hogyan használhatók ezek az API-k egy adott szegmenses Térkép-kezelő objektumon:
+    The information on reference vs. sharded tables is provided by the `SchemaInfo` APIs on the shard map. The following example illustrates the use of these APIs on a given shard map manager object:
 
     ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
-    // Reference tables
+    // reference tables
     schemaInfo.Add(new ReferenceTableInfo("dbo", "region"));
     schemaInfo.Add(new ReferenceTableInfo("dbo", "nation"));
 
-    // Sharded tables
+    // sharded tables
     schemaInfo.Add(new ShardedTableInfo("dbo", "customer", "C_CUSTKEY"));
     schemaInfo.Add(new ShardedTableInfo("dbo", "orders", "O_CUSTKEY"));
-    // Publish
+
+    // publish
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    A "Region" és a "Nation" tábla a hivatkozási táblákként van definiálva, és a rendszer a felosztott/egyesítési/áthelyezési műveletekkel másolja őket. a "Customer" és a "Orders" elem a következőként van meghatározva: szilánkokra osztott táblák. a `C_CUSTKEY` és a `O_CUSTKEY` a kiosztott kulcsként szolgál.
+    The tables ‘region’ and ‘nation’ are defined as reference tables and will be copied with split/merge/move operations. ‘customer’ and ‘orders’ in turn are defined as sharded tables. `C_CUSTKEY` and `O_CUSTKEY` serve as the sharding key.
 
-- **Hivatkozási integritás**
+- **Referential Integrity**
 
-  A felosztási-egyesítési szolgáltatás elemzi a táblák közötti függőségeket, és a idegenkulcs-elsődleges kulcs kapcsolatait használja a táblák és shardletek áthelyezésére szolgáló műveletek előkészítéséhez. Általánosságban a hivatkozási táblákat a rendszer először a függőségi sorrendben másolja, majd az egyes kötegeken belüli függőségeik sorrendjében másolja a shardletek. Erre azért van szükség, hogy a célként megadott szegmensen az FK-PK megkötések tiszteletben legyenek, mivel az új adatértékek megérkeznek.
+  The split-merge service analyzes dependencies between tables and uses foreign key-primary key relationships to stage the operations for moving reference tables and shardlets. In general, reference tables are copied first in dependency order, then shardlets are copied in order of their dependencies within each batch. This is necessary so that FK-PK constraints on the target shard are honored as the new data arrives.
 
-- **Szegmens Térkép konzisztenciája és végleges befejezése**
+- **Shard Map Consistency and Eventual Completion**
 
-  A meghibásodások jelenléte esetén a felosztási-egyesítési szolgáltatás a leállás után folytatja a műveleteket, és a folyamatban lévő kérelmek teljesítését célozza meg. Előfordulhat azonban, hogy helyreállíthatatlan helyzetek merülhetnek fel, például ha a cél szegmens elvész, vagy a javítás után sérült. Ilyen körülmények között előfordulhat, hogy egyes áthelyezni kívánt shardletek továbbra is a forrás szegmensen találhatók. A szolgáltatás biztosítja, hogy a shardletbe-hozzárendelések csak akkor frissüljenek, ha sikeresen átmásolta a szükséges adatfájlokat a célhelyre. A shardletek csak akkor törlődnek a forráshoz, ha az összes adattal a célhelyre másolták, és a megfelelő leképezések frissítése sikeresen megtörtént. A törlési művelet a háttérben történik, miközben a tartomány már online állapotú a cél szegmensen. A felosztási-egyesítési szolgáltatás mindig biztosítja a szegmenses térképen tárolt leképezések helyességét.
+  In the presence of failures, the split-merge service resumes operations after any outage and aims to complete any in progress requests. However, there may be unrecoverable situations, e.g., when the target shard is lost or compromised beyond repair. Under those circumstances, some shardlets that were supposed to be moved may continue to reside on the source shard. The service ensures that shardlet mappings are only updated after the necessary data has been successfully copied to the target. Shardlets are only deleted on the source once all their data has been copied to the target and the corresponding mappings have been updated successfully. The deletion operation happens in the background while the range is already online on the target shard. The split-merge service always ensures correctness of the mappings stored in the shard map.
 
-## <a name="the-split-merge-user-interface"></a>A felosztás és egyesítés felhasználói felülete
+## <a name="the-split-merge-user-interface"></a>The split-merge user interface
 
-A felosztási-egyesítési szolgáltatási csomag tartalmaz egy feldolgozói szerepkört és egy webes szerepkört. A webes szerepkör a felosztott egyesítési kérelmek interaktív módon történő küldésére szolgál. A felhasználói felület fő összetevői a következők:
+The split-merge service package includes a worker role and a web role. The web role is used to submit split-merge requests in an interactive way. The main components of the user interface are as follows:
 
-- **Művelet típusa**
+- **Operation Type**
 
-  A művelet típusa egy választógomb, amely a kérelem által a szolgáltatás által végrehajtott művelet típusát vezérli. Választhat a felosztás, az egyesítés és az áthelyezés forgatókönyvek között. Egy korábban elküldött műveletet is megszakíthat. Használhatja a felosztási, egyesítési és áthelyezési kérelmeket a tartományhoz tartozó szegmenses térképekhez. A szegmenses térképek listázása csak az áthelyezési műveleteket támogatja.
+  The operation type is a radio button that controls the kind of operation performed by the service for this request. You can choose between the split, merge and move scenarios. You can also cancel a previously submitted operation. You can use split, merge and move requests for range shard maps. List shard maps only support move operations.
 
-- **Szegmenses Térkép**
+- **Shard Map**
 
-  A kérelem paramétereinek következő szakasza a szegmenses térképre és a szegmens-térképet üzemeltető adatbázisra vonatkozó információkat tartalmazza. Különösen meg kell adnia a shardmap üzemeltető Azure SQL Database-kiszolgáló és-adatbázis nevét, a szegmens Térkép adatbázisához való kapcsolódáshoz szükséges hitelesítő adatokat, végül pedig a szegmens Térkép nevét. Jelenleg a művelet csak a hitelesítő adatok egyetlen halmazát fogadja el. Ezeknek a hitelesítő adatoknak megfelelő engedélyekkel kell rendelkezniük a szegmenses Térkép módosításainak végrehajtásához, valamint a szegmensekben lévő felhasználói adatokhoz.
+  The next section of request parameters covers information about the shard map and the database hosting your shard map. In particular, you need to provide the name of the Azure SQL Database server and database hosting the shardmap, credentials to connect to the shard map database, and finally the name of the shard map. Currently, the operation only accepts a single set of credentials. These credentials need to have sufficient permissions to perform changes to the shard map as well as to the user data on the shards.
 
-- **Forrás tartománya (felosztás és egyesítés)**
+- **Source Range (split and merge)**
 
-  A felosztott és egyesítési művelet az alacsony és a magas kulcs használatával dolgozza fel a tartományt. Ha nem kötött magas kulccsal rendelkező műveletet szeretne megadni, jelölje be a "magas kulcs max." jelölőnégyzetet, és hagyja üresen a magas kulcs mezőt. A megadott tartomány-kulcs értékeinek nem kell pontosan egyezniük a leképezés és a hozzá tartozó szegélyek között a szegmens térképen. Ha nem ad meg tartományon kívüli határokat az összes szolgáltatásnál, a rendszer automatikusan kikövetkezteti a legközelebbi tartományt. A GetMappings. ps1 PowerShell-parancsfájl segítségével lekérheti az aktuális leképezéseket egy adott szegmens-térképen.
+  A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the “High key is max” check box and leave the high key field empty. The range key values that you specify do not need to precisely match a mapping and its boundaries in your shard map. If you do not specify any range boundaries at all the service will infer the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
 
-- **Felosztott forrás viselkedése (Split)**
+- **Split Source Behavior (split)**
 
-  A felosztási műveletek esetében adja meg a forrástartomány felosztására szolgáló pontot. Ezt úgy teheti meg, hogy megadja a felosztáshoz használni kívánt horizontális kulcsot. A választógomb használatával megadhatja, hogy a tartomány alsó részét (a felosztott kulcs kivételével) át kívánja-e helyezni, vagy hogy szeretné-e áthelyezni a felső részt (beleértve a felosztott kulcsot is).
+  For split operations, define the point to split the source range. You do this by providing the sharding key where you want the split to occur. Use the radio button specify whether you want the lower part of the range (excluding the split key) to move, or whether you want the upper part to move (including the split key).
 
-- **Forrás Shardletbe (áthelyezés)**
+- **Source Shardlet (move)**
 
-  Az áthelyezési műveletek nem különböznek a felosztási vagy egyesítési művelettől, mert a forrás leírásához nem szükséges tartomány. Az áthelyezés forrása egyszerűen azonosítható az áthelyezni kívánt horizontálisan használt kulcs értékével.
+  Move operations are different from split or merge operations as they do not require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
 
-- **Cél szilánk (felosztás)**
+- **Target Shard (split)**
 
-  Miután megadta az adatokat a felosztott művelet forrásán, meg kell adnia, hogy hová szeretné másolni az adatokat az Azure SQL db-kiszolgáló és az adatbázis nevének biztosításával.
+  Once you have provided the information on the source of your split operation, you need to define where you want the data to be copied to by providing the Azure SQL Db server and database name for the target.
 
-- **Céltartomány (egyesítés)**
+- **Target Range (merge)**
 
-  Az egyesítési műveletek áthelyezik a shardletek egy meglévő szegmensbe. A meglévő szegmenst úgy azonosíthatja, hogy megadja a meglévő tartomány tartományának határait, amelyekkel egyesíteni kívánja a-t.
+  Merge operations move shardlets to an existing shard. You identify the existing shard by providing the range boundaries of the existing range that you want to merge with.
 
-- **Köteg mérete**
+- **Batch Size**
 
-  A köteg mérete határozza meg az adatáthelyezés során az offline állapotú shardletek számát. Ez egy egész szám, amelyben kisebb értékeket használhat, ha a shardletek hosszú ideje érzékeny. A nagyobb értékek növelik azt az időt, ameddig egy adott shardletbe offline állapotban van, de javíthatja a teljesítményt.
+  The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you are sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but may improve performance.
 
-- **Művelet azonosítója (Mégse)**
+- **Operation ID (Cancel)**
 
-  Ha már folyamatban van egy már nem szükséges művelet, megszakíthatja a műveletet úgy, hogy megadja a művelet AZONOSÍTÓját ebben a mezőben. A művelet AZONOSÍTÓját a kérelem állapota táblából kérheti le (lásd a 8,1 szakaszt) vagy a webböngészőben lévő kimenetet, ahová a kérelmet elküldte.
+  If you have an ongoing operation that is no longer needed, you can cancel the operation by providing its operation ID in this field. You can retrieve the operation ID from the request status table (see Section 8.1) or from the output in the web browser where you submitted the request.
 
-## <a name="requirements-and-limitations"></a>Követelmények és korlátozások
+## <a name="requirements-and-limitations"></a>Requirements and Limitations
 
-A felosztási-egyesítési szolgáltatás aktuális implementációja az alábbi követelmények és korlátozások hatálya alá tartozik:
+The current implementation of the split-merge service is subject to the following requirements and limitations:
 
-- A szegmenseknek léteznie kell a szegmensben, és regisztrálni kell őket a szegmensben lévő felosztási művelet elvégzése előtt.
-- A szolgáltatás a művelet részeként nem hoz létre táblákat vagy más adatbázis-objektumokat automatikusan. Ez azt jelenti, hogy az összes felosztott tábla és hivatkozási tábla sémájának léteznie kell a cél szegmensen a felosztás/egyesítés/áthelyezés művelet előtt. A többrészes táblázatok csak abban a tartományban maradhatnak üresen, amelyben az új shardletek hozzá kell adni egy felosztott/egyesítési/áthelyezési művelethez. Ellenkező esetben a művelet sikertelen lesz a kezdeti konzisztencia-ellenőrzés a cél szegmensen. Azt is vegye figyelembe, hogy a hivatkozási adatok csak akkor másolódnak le, ha a hivatkozási tábla üres, és hogy nincsenek konzisztencia-garanciák a hivatkozási táblákon lévő más egyidejű írási műveletekkel kapcsolatban. Javasoljuk, hogy a felosztási/egyesítési műveletek futtatásakor más írási műveletek ne módosítsák a hivatkozási táblákat.
-- A szolgáltatás egy egyedi index vagy kulcs által létrehozott sor identitásra támaszkodik, amely magában foglalja a horizontális Felskálázási kulcsot a nagy shardletek teljesítményének és megbízhatóságának javítása érdekében. Ez lehetővé teszi, hogy a szolgáltatás még finomabb részletességgel helyezze át az adatokat, mint a horizontális Felskálázási kulcs értéke. Ez segít csökkenteni a művelet során szükséges naplófájlok és zárolások maximális mennyiségét. Hozzon létre egy egyedi indexet vagy egy elsődleges kulcsot, beleértve az adott tábla horizontális Felskálázási kulcsát is, ha azt szeretné, hogy a táblázatot a felosztott/egyesítési/áthelyezési kérelmekkel kívánja használni. A teljesítménnyel kapcsolatos okokból a horizontális Felskálázási kulcsnak a kulcs vagy az index vezető oszlopának kell lennie.
-- A kérelmek feldolgozásának során bizonyos shardletbe-adatmennyiségek a forráson és a cél szegmensen is szerepelhetnek. Ez a shardletbe-áthelyezés során fellépő hibák elleni védelemhez szükséges. A felosztási egyesítés és a szegmenses társítás összevonása biztosítja, hogy az Adatfüggő útválasztási API-k által a **OpenConnectionForKey** metódus használatával létesített kapcsolatok ne lássanak inkonzisztens közbenső állapotokat. Ha azonban a **OpenConnectionForKey** metódus használata nélkül csatlakozik a forráshoz vagy a cél szegmensekhez, inkonzisztens közbenső állapotok jelenhetnek meg, ha a felosztási/egyesítési/áthelyezési kérelmek folyamatban vannak. Ezek a kapcsolatok részleges vagy ismétlődő eredményeket is megjeleníthetnek az Időzítéstől vagy a kapcsolat alapjául szolgáló szegmenstől függően. Ez a korlátozás jelenleg a rugalmas skálázású többszegmenses lekérdezések által létrehozott kapcsolatokat foglalja magában.
-- A felosztási-egyesítési szolgáltatás metaadat-adatbázisa nem osztható meg a különböző szerepkörök között. Például az átmeneti tárolásban futó felosztási-egyesítési szolgáltatás szerepkörének egy másik metaadat-adatbázisra kell mutatnia, mint a termelési szerepkörnek.
+- The shards need to exist and be registered in the shard map before a split-merge operation on these shards can be performed.
+- The service does not create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables needs to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
+- The service relies on row identity established by a unique index or key that includes the sharding key to improve performance and reliability for large shardlets. This allows the service to move data at an even finer granularity than just the sharding key value. This helps to reduce the maximum amount of log space and locks that are required during the operation. Consider creating a unique index or a primary key including the sharding key on a given table if you want to use that table with split/merge/move requests. For performance reasons, the sharding key should be the leading column in the key or the index.
+- During the course of request processing, some shardlet data may be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data-dependent routing APIs using the **OpenConnectionForKey** method on the shard map do not see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections may show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
+- The metadata database for the split-merge service must not be shared between different roles. For example, a role of the split-merge service running in staging needs to point to a different metadata database than the production role.
 
 ## <a name="billing"></a>Számlázás
 
-A felosztott egyesítés szolgáltatás felhőalapú szolgáltatásként fut a Microsoft Azure-előfizetésben. Ezért a Cloud Services díjai a szolgáltatás egy példányára vonatkoznak. Ha gyakran végez felosztási/egyesítési/áthelyezési műveleteket, javasoljuk, hogy törölje a felosztott egyesítéses felhőalapú szolgáltatást. Ez a szolgáltatás a Cloud Service-példányok futtatására és üzembe helyezésére vonatkozó költségeket takarít meg. Bármikor újratelepítheti és elindíthatja az azonnal futtatható-konfigurációt, amikor felosztási vagy egyesítési műveleteket kell végrehajtania.
+The split-merge service runs as a cloud service in your Microsoft Azure subscription. Therefore charges for cloud services apply to your instance of the service. Unless you frequently perform split/merge/move operations, we recommend you delete your split-merge cloud service. That saves costs for running or deployed cloud service instances. You can re-deploy and start your readily runnable configuration whenever you need to perform split or merge operations.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
-### <a name="status-tables"></a>Állapot táblák
+### <a name="status-tables"></a>Status tables
 
-A felosztott egyesítés szolgáltatás biztosítja a **RequestStatus** táblát a metaadat-tároló adatbázisban a befejezett és a folyamatban lévő kérések figyeléséhez. A táblázat felsorolja az egyes felosztott egyesítési kérelmek sorát, amelyeket elküldtek a felosztott egyesítési szolgáltatás ezen példánya számára. Minden kérelemhez a következő információkat adja meg:
+The split-merge Service provides the **RequestStatus** table in the metadata store database for monitoring of completed and ongoing requests. The table lists a row for each split-merge request that has been submitted to this instance of the split-merge service. It gives the following information for each request:
 
-- **Időbélyeg**
+- **Timestamp**
 
-  A kérelem elindításának időpontja és dátuma.
+  The time and date when the request was started.
 
 - **OperationId**
 
-  Egy GUID, amely egyedileg azonosítja a kérést. Ezt a kérést a művelet megszakítására is használhatja, amíg még folyamatban van.
+  A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it is still ongoing.
 
 - **Állapot**
 
-  A kérelem aktuális állapota. A folyamatban lévő kérések esetében az azt is felsorolja, hogy a kérelem milyen aktuális fázisban van.
+  The current state of the request. For ongoing requests, it also lists the current phase in which the request is.
 
 - **CancelRequest**
 
-  Egy jelző, amely jelzi, hogy a kérést megszakították-e.
+  A flag that indicates whether the request has been canceled.
 
-- **Haladás**
+- **Progress**
 
-  A művelet befejezésének százalékos értéke. A 50 érték azt jelzi, hogy a művelet körülbelül 50%-ban befejeződött.
+  A percentage estimate of completion for the operation. A value of 50 indicates that the operation is approximately 50% complete.
 
 - **Részletek**
 
-  Egy XML-érték, amely részletesebb jelentést nyújt a folyamatról. Az előrehaladási jelentés rendszeres időközönként frissül, mert a rendszer a forrásról a célhelyre másolja a sorok készletét. Meghibásodások vagy kivételek esetén ez az oszlop a hibával kapcsolatos részletesebb információkat is tartalmaz.
+  An XML value that provides a more detailed progress report. The progress report is periodically updated as sets of rows are copied from source to target. In case of failures or exceptions, this column also includes more detailed information about the failure.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-A felosztási-egyesítési szolgáltatás az Azure SDK 2,5-alapú, monitorozási és diagnosztikai célú Azure Diagnosticst használja. A diagnosztikai konfigurációt az itt leírtak szerint vezérelheti: a [diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltési csomag két diagnosztikai konfigurációt tartalmaz: egyet a webes szerepkörhöz, egyet pedig a feldolgozói szerepkörhöz. Ez magában foglalja a teljesítményszámlálók naplózását, az IIS-naplókat, a Windows-eseménynaplókat és a felosztott alkalmazás-eseménynaplókat.
+The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. You control the diagnostics configuration as explained here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). The download package includes two diagnostics configurations - one for the web role and one for the worker role. It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs.
 
-## <a name="deploy-diagnostics"></a>Diagnosztika üzembe helyezése
+## <a name="deploy-diagnostics"></a>Deploy Diagnostics
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-Ha a NuGet-csomag által biztosított webes és feldolgozói szerepkörök diagnosztikai konfigurációjának használatával szeretné engedélyezni a figyelést és a diagnosztikát, futtassa a következő parancsokat a Azure PowerShell használatával:
+> [!IMPORTANT]
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+
+To enable monitoring and diagnostics using the diagnostic configuration for the web and worker roles provided by the NuGet package, run the following commands using Azure PowerShell:
 
 ```powershell
-    $storage_name = "<YourAzureStorageAccount>"
-    $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
-    $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"
-    $config_path = "<YourFilePath>\SplitMergeWorkerContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
+$storageName = "<azureStorageAccount>"
+$key = "<azureStorageAccountKey"
+$storageContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $key
+$configPath = "<filePath>\SplitMergeWebContent.diagnostics.xml"
+$serviceName = "<cloudServiceName>"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWeb"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWorker"
 ```
 
-A diagnosztikai beállítások konfigurálásával és üzembe helyezésével kapcsolatos további információkért tekintse meg a [diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+You can find more information on how to configure and deploy diagnostics settings here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="retrieve-diagnostics"></a>Diagnosztika beolvasása
+## <a name="retrieve-diagnostics"></a>Retrieve diagnostics
 
-A diagnosztika a Server Explorer fájának Azure-részében könnyen elérhető a Visual Studio Server Explorerben. Nyisson meg egy Visual Studio-példányt, és a menüsávban kattintson a nézet, majd a Server Explorer elemre. Az Azure-előfizetéshez való kapcsolódáshoz kattintson az Azure ikonra. Ezután navigáljon az Azure-> Storage-> `<your storage account>`-> Tables-> WADLogsTable. További információ: [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
+You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree. Open a Visual Studio instance, and in the menu bar click View, and Server Explorer. Click the Azure icon to connect to your Azure subscription. Then navigate to Azure -> Storage -> `<your storage account>` -> Tables -> WADLogsTable. For more information, see [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
-A fenti ábrán Kiemelt WADLogsTable a felosztott egyesítési szolgáltatás alkalmazási naplójának részletes eseményeit tartalmazza. Vegye figyelembe, hogy a letöltött csomag alapértelmezett konfigurációja az éles üzembe helyezésre irányul. Ezért a naplók és a számlálók a szolgáltatási példányokból való kihúzásának időköze nagy (5 perc). A teszteléshez és fejlesztéshez csökkentse az intervallumot úgy, hogy a webes vagy a feldolgozói szerepkör diagnosztikai beállításait módosítja az igényeinek megfelelően. Kattintson a jobb gombbal a szerepkörre a Visual Studio Server Explorerben (lásd fentebb), majd módosítsa az átvitel időtartamát a párbeszédpanelen a diagnosztika konfigurációs beállításaihoz:
+The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service’s application log. Note that the default configuration of the downloaded package is geared towards a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings:
 
 ![Konfiguráció][3]
 
 ## <a name="performance"></a>Teljesítmény
 
-Általánosságban elmondható, hogy a jobb teljesítmény várható a magasabb, több teljesítményt nyújtó szolgáltatási szinten Azure SQL Database. Magasabb IO-, processzor-és memória-kiosztások a magasabb szolgáltatási rétegekhez előnyben részesülnek a felosztott egyesítési szolgáltatás által használt tömeges másolási és törlési műveletekben. Ebből kifolyólag növelje a szolgáltatási szintet az adott adatbázisokra vonatkozóan egy meghatározott, korlátozott ideig.
+In general, better performance is to be expected from the higher, more performant service tiers in Azure SQL Database. Higher IO, CPU and memory allocations for the higher service tiers benefit the bulk copy and delete operations that the split-merge service uses. For that reason, increase the service tier just for those databases for a defined, limited period of time.
 
-A szolgáltatás a szokásos műveleteinek részeként is végrehajtja az érvényesítési lekérdezéseket. Ezek az ellenőrzési lekérdezések az adatok váratlan jelenlétét keresik a céltartományban, és biztosítják, hogy a felosztott/egyesítési/áthelyezési műveletek konzisztens állapotból induljon el. Ezek a lekérdezések mindegyike a művelet hatóköre és a kérelem definíciójának részeként megadott köteg mérete által meghatározott horizontális skálázási tartományokon működik. Ezeket a lekérdezéseket a legjobban akkor hajtják végre, ha egy olyan index van jelen, amely a fő oszlophoz tartozó horizontális Felskálázási kulccsal rendelkezik.
+The service also performs validation queries as part of its normal operations. These validation queries check for unexpected presence of data in the target range and ensure that any split/merge/move operation starts from a consistent state. These queries all work over sharding key ranges defined by the scope of the operation and the batch size provided as part of the request definition. These queries perform best when an index is present that has the sharding key as the leading column.
 
-Továbbá egy egyediségi tulajdonság a horizontális Felskálázási kulccsal, amely a vezető oszlopban lehetővé teszi, hogy a szolgáltatás egy optimalizált megközelítést használjon, amely az erőforrás-felhasználást korlátozza a naplózási terület és a memória tekintetében. Ez az egyediségi tulajdonság a nagyméretű adatméretek áthelyezéséhez szükséges (általában 1 GB-nál nagyobb).
+In addition, a uniqueness property with the sharding key as the leading column will allow the service to use an optimized approach that limits resource consumption in terms of log space and memory. This uniqueness property is required to move large data sizes (typically above 1GB).
 
-## <a name="how-to-upgrade"></a>A frissítés módja
+## <a name="how-to-upgrade"></a>How to upgrade
 
-1. Kövesse a [Split-Merge szolgáltatás üzembe helyezése](sql-database-elastic-scale-configure-deploy-split-and-merge.md)című témakör lépéseit.
-2. Módosítsa a felhőalapú szolgáltatás konfigurációs fájlját a felosztott egyesítési központi telepítésre, hogy az tükrözze az új konfigurációs paramétereket. Egy új kötelező paraméter a titkosításhoz használt tanúsítványra vonatkozó információ. Ennek egyszerű módja, ha összehasonlítja az új konfigurációs sablonfájl fájlját a letöltéssel a meglévő konfiguráció alapján. Ügyeljen rá, hogy a "DataEncryptionPrimaryCertificateThumbprint" és a "DataEncryptionPrimary" beállításait is hozzáadja a webes és a feldolgozói szerepkörhöz.
-3. Mielőtt telepítené a frissítést az Azure-ban, győződjön meg arról, hogy az összes jelenleg futó felosztott egyesítési művelet befejeződött. Ezt egyszerűen megteheti úgy, hogy lekérdezi a RequestStatus és a PendingWorkflows táblákat a folyamatos kérések összevonása a metaadatokat tartalmazó adatbázisban.
-4. Frissítse meglévő felhőalapú szolgáltatását az Azure-előfizetésben az új csomaggal és a frissített szolgáltatás konfigurációs fájljával, és ossza meg az Azure-előfizetését.
+1. Follow the steps in [Deploy a split-merge service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+2. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for “DataEncryptionPrimaryCertificateThumbprint” and “DataEncryptionPrimary” for both the web and the worker role.
+3. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
+4. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
 
-A frissítéshez nem szükséges új metaadat-adatbázist kiépíteni a felosztott egyesítéshez. Az új verzió automatikusan frissíti a meglévő metaadat-adatbázist az új verzióra.
+You do not need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version.
 
-## <a name="best-practices--troubleshooting"></a>Ajánlott eljárások & hibaelhárításhoz
+## <a name="best-practices--troubleshooting"></a>Best practices & troubleshooting
 
-- Definiáljon egy teszt bérlőt, és gyakorolja a legfontosabb felosztott/egyesítési/áthelyezési műveleteket a több szegmensen belüli tesztelési Bérlővel. Győződjön meg arról, hogy az összes metaadat helyesen van definiálva a szegmenses térképen, és hogy a műveletek nem sértik a korlátozásokat vagy a külső kulcsokat.
-- Tartsa meg a legnagyobb bérlő maximális adatmérete feletti teszt bérlői adatméretet, hogy ne legyenek az adatmérettel kapcsolatos problémák. Ez segít felmérni a felső határt arra az időre, amíg egyetlen bérlőt helyez át a köré.
-- Győződjön meg arról, hogy a séma lehetővé teszi a törlést. A felosztási-egyesítési szolgáltatásnak képesnek kell lennie az adatok eltávolítására a forrás szegmensből, ha az adatok a célhelyre való másolása sikeresen megtörtént. Az **Eseményindítók törlésével** például megakadályozhatja, hogy a szolgáltatás törölje a forrás adatait, és a műveletek meghiúsulnak.
-- A horizontális Felskálázási kulcsnak az elsődleges kulcs vagy az egyedi index definíciójának vezető oszlopának kell lennie. Ez biztosítja a legjobb teljesítményt a felosztási vagy egyesítési ellenőrzési lekérdezéseknél, valamint a tényleges adatáthelyezési és törlési műveletekhez, amelyek mindig a kulcsfontosságú tartományokon működnek.
-- A rézvezetékes végezhet a régióban és az adatközpontban tárolja az adatbázisokat.
+- Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations do not violate constraints or foreign keys.
+- Keep the test tenant data size above the maximum data size of your largest tenant to ensure you are not encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around.
+- Make sure that your schema allows deletions. The split-merge service requires the ability to remove data from the source shard once the data has been successfully copied to the target. For example, **delete triggers** can prevent the service from deleting the data on the source and may cause operations to fail.
+- The sharding key should be the leading column in your primary key or unique index definition. That ensures the best performance for the split or merge validation queries, and for the actual data movement and deletion operations which always operate on sharding key ranges.
+- Collocate your split-merge service in the region and data center where your databases reside.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

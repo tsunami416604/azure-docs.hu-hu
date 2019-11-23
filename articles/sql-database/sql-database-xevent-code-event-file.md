@@ -1,6 +1,6 @@
 ---
-title: XEvent-esemény fájljának kódja
-description: A PowerShell és a Transact-SQL egy kétfázisú kódrészletet biztosít, amely bemutatja az eseménynaplót egy Azure SQL Database kiterjesztett eseményében. Az Azure Storage a forgatókönyv kötelező része.
+title: XEvent Event File code
+description: Provides PowerShell and Transact-SQL for a two-phase code sample that demonstrates the Event File target in an extended event on Azure SQL Database. Azure Storage is a required part of this scenario.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,67 +11,70 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: 3b1e8881b2e2004a94064e472690ee40414ea02d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 00f31bdf147c4711715cd600fa8a8fd4bac2162a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822390"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422473"
 ---
-# <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Az eseménynaplóban a kiterjesztett események SQL Database
+# <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Event File target code for extended events in SQL Database
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Egy teljes kódrészletet szeretne, amely robusztus módszert biztosít a kiterjesztett események adatainak rögzítésére és jelentésére.
+You want a complete code sample for a robust way to capture and report information for an extended event.
 
-A Microsoft SQL Server az Event [file Target](https://msdn.microsoft.com/library/ff878115.aspx) használatával tárolja az esemény kimeneteit egy helyi merevlemez-fájlba. Ezek a fájlok azonban nem érhetők el Azure SQL Database számára. Ehelyett az Azure Storage szolgáltatást használjuk az Event file cél támogatásához.
+In Microsoft SQL Server, the [Event File target](https://msdn.microsoft.com/library/ff878115.aspx) is used to store event outputs into a local hard drive file. But such files are not available to Azure SQL Database. Instead we use the Azure Storage service to support the Event File target.
 
-Ez a témakör egy kétfázisú mintakód-mintát mutat be:
+This topic presents a two-phase code sample:
 
-* PowerShell, Azure Storage-tároló létrehozása a felhőben.
-* Transact-SQL:
+- PowerShell, to create an Azure Storage container in the cloud.
+- Transact-SQL:
   
-  * Az Azure Storage-tároló társítása egy eseményvezérelt fájl céljához.
-  * Az esemény-munkamenet létrehozásához és elindításához, és így tovább.
+  - To assign the Azure Storage container to an Event File target.
+  - To create and start the event session, and so on.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
 
-* Azure-fiók és -előfizetés. Regisztrálhat [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Bármely adatbázis, amelyben létrehozhat egy táblát.
+- Azure-fiók és -előfizetés. Regisztrálhat [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
+- Any database you can create a table in.
   
-  * Igény szerint percek alatt [létrehozhat egy **AdventureWorksLT** bemutató adatbázist](sql-database-get-started.md) .
-* SQL Server Management Studio (SSMS. exe), ideális esetben a legújabb havi frissítési verzió. 
-  A legújabb SSMS. exe fájlt a következő címről töltheti le:
+  - Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.
+
+- SQL Server Management Studio (ssms.exe), ideally its latest monthly update version.
+  You can download the latest ssms.exe from:
   
-  * A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
-  * [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
-* Telepítenie kell a [Azure PowerShell modulokat](https://go.microsoft.com/?linkid=9811175) .
-  
-  * A modulok olyan parancsokat biztosítanak, mint a- **New-AzStorageAccount**.
+  - Topic titled [Download SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  - [A direct link to the download.](https://go.microsoft.com/fwlink/?linkid=616025)
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>1\. fázis: az Azure Storage-tároló PowerShell-kódja
+- You must have the [Azure PowerShell modules](https://go.microsoft.com/?linkid=9811175) installed.
 
-Ez a PowerShell a kétfázisú mintakód 1. fázisa.
+  - The modules provide commands such as - **New-AzStorageAccount**.
 
-A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsokkal kezdődik, és a rerunnable.
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell code for Azure Storage container
 
-1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például a Notepad. exe fájlba, és mentse a parancsfájlt fájlként a **. ps1**kiterjesztéssel.
-2. Indítsa el a PowerShell ISE-t rendszergazdaként.
-3. A parancssorba írja be a következőt:<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>majd nyomja le az ENTER billentyűt.
-4. A PowerShell ISE-ben nyissa meg a **. ps1** fájlt. Futtassa a szkriptet.
-5. A szkript először egy új ablakot indít el, amelyben bejelentkezik az Azure-ba.
-   
-   * Ha a munkamenet megszakítása nélkül Újrafuttatja a parancsfájlt, lehetősége van az **Add-AzureAccount** parancs megjegyzésére.
+This PowerShell is phase 1 of the two-phase code sample.
 
-![A PowerShell ISE, amelyen telepítve van az Azure-modul, készen áll a szkript futtatására.][30_powershell_ise]
+The script starts with commands to clean up after a possible previous run, and is rerunnable.
 
-### <a name="powershell-code"></a>PowerShell-kód
+1. Paste the PowerShell script into a simple text editor such as Notepad.exe, and save the script as a file with the extension **.ps1**.
+2. Start PowerShell ISE as an Administrator.
+3. At the prompt, type<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>and then press Enter.
+4. In PowerShell ISE, open your **.ps1** file. Futtassa a szkriptet.
+5. The script first starts a new window in which you log in to Azure.
 
-Ez a PowerShell-parancsfájl feltételezi, hogy már telepítette az az modult. További információ: [a Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps).
+   - If you rerun the script without disrupting your session, you have the convenient option of commenting out the **Add-AzureAccount** command.
+
+![PowerShell ISE, with Azure module installed, ready to run script.][30_powershell_ise]
+
+### <a name="powershell-code"></a>PowerShell code
+
+This PowerShell script assumes you have already installed the Az module. For information, see [Install the Azure PowerShell module](/powershell/azure/install-Az-ps).
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
@@ -123,8 +126,7 @@ Select-AzSubscription -Subscription $subscriptionName;
 Clean up the old Azure Storage Account after any previous run, 
 before continuing this new run.';
 
-If ($storageAccountName)
-{
+if ($storageAccountName) {
     Remove-AzStorageAccount `
         -Name              $storageAccountName `
         -ResourceGroupName $resourceGroupName;
@@ -196,15 +198,13 @@ New-AzStorageContainerStoredAccessPolicy `
 '
 Generate a SAS token for the container.
 ';
-Try
-{
+try {
     $sasTokenWithPolicy = New-AzStorageContainerSASToken `
         -Name    $containerName `
         -Context $context `
         -Policy  $policySasToken;
 }
-Catch 
-{
+catch {
     $Error[0].Exception.ToString();
 }
 
@@ -230,31 +230,28 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 # EOFile
 ```
 
+Take note of the few named values that the PowerShell script prints when it ends. You must edit those values into the Transact-SQL script that follows as phase 2.
 
-Jegyezze fel a PowerShell-szkript végén kinyomtatott néhány elnevezett értéket. Ezeket az értékeket a 2. fázisként következő Transact-SQL-szkriptbe kell szerkesztenie.
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL code that uses Azure Storage container
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2\. fázis: az Azure Storage-tárolót használó Transact-SQL-kód
+- In phase 1 of this code sample, you ran a PowerShell script to create an Azure Storage container.
+- Next in phase 2, the following Transact-SQL script must use the container.
 
-* A kód 1. fázisában egy PowerShell-szkriptet futtatott egy Azure Storage-tároló létrehozásához.
-* A 2. fázisban a következő Transact-SQL-szkriptnek kell használnia a tárolót.
+The script starts with commands to clean up after a possible previous run, and is rerunnable.
 
-A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsokkal kezdődik, és a rerunnable.
+The PowerShell script printed a few named values when it ended. You must edit the Transact-SQL script to use those values. Find **TODO** in the Transact-SQL script to locate the edit points.
 
-A PowerShell-parancsfájl néhány elnevezett értéket kinyomtatott, amikor véget ért. Az értékek használatához szerkesztenie kell a Transact-SQL parancsfájlt. Keresse meg a **teendőket** a Transact-SQL-szkriptben a szerkesztési pontok megkereséséhez.
-
-1. Nyissa meg SQL Server Management Studio (SSMS. exe).
-2. Kapcsolódjon a Azure SQL Database-adatbázishoz.
-3. Kattintson ide egy új lekérdezési panel megnyitásához.
-4. Illessze be a következő Transact-SQL-parancsfájlt a lekérdezési ablaktáblába.
-5. Keresse meg az összes **teendőt** a parancsfájlban, és végezze el a megfelelő módosításokat.
-6. Mentse, majd futtassa a parancsfájlt.
-
+1. Open SQL Server Management Studio (ssms.exe).
+2. Connect to your Azure SQL Database database.
+3. Click to open a new query pane.
+4. Paste the following Transact-SQL script into the query pane.
+5. Find every **TODO** in the script and make the appropriate edits.
+6. Save, and then run the script.
 
 > [!WARNING]
-> Az előző PowerShell-parancsfájl által generált SAS-kulcs értéke "?" kezdetű lehet. (kérdőjel). Ha a következő T-SQL-parancsfájlban az SAS-kulcsot használja, *el kell távolítania a vezetőt (?* ). Ellenkező esetben előfordulhat, hogy a biztonság blokkolja a saját erőfeszítéseit.
+> The SAS key value generated by the preceding PowerShell script might begin with a '?' (question mark). When you use the SAS key in the following T-SQL script, you must *remove the leading '?'* . Otherwise your efforts might be blocked by security.
 
-
-### <a name="transact-sql-code"></a>Transact-SQL-kód
+### <a name="transact-sql-code"></a>Transact-SQL code
 
 ```sql
 ---- TODO: First, run the earlier PowerShell portion of this two-part code sample.
@@ -262,14 +259,11 @@ A PowerShell-parancsfájl néhány elnevezett értéket kinyomtatott, amikor vé
 
 ---- Transact-SQL code for Event File target on Azure SQL Database.
 
-
 SET NOCOUNT ON;
 GO
 
-
 ----  Step 1.  Establish one little table, and  ---------
 ----  insert one row of data.
-
 
 IF EXISTS
     (SELECT * FROM sys.objects
@@ -278,7 +272,6 @@ BEGIN
     DROP TABLE gmTabEmployee;
 END
 GO
-
 
 CREATE TABLE gmTabEmployee
 (
@@ -289,15 +282,12 @@ CREATE TABLE gmTabEmployee
 );
 GO
 
-
 INSERT INTO gmTabEmployee ( EmployeeDescr )
     VALUES ( 'Jane Doe' );
 GO
 
-
 ------  Step 2.  Create key, and  ------------
 ------  Create credential (your Azure Storage container must already exist).
-
 
 IF NOT EXISTS
     (SELECT * FROM sys.symmetric_keys
@@ -306,7 +296,6 @@ BEGIN
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = '0C34C960-6621-4682-A123-C7EA08E3FC46' -- Or any newid().
 END
 GO
-
 
 IF EXISTS
     (SELECT * FROM sys.database_scoped_credentials
@@ -318,7 +307,6 @@ BEGIN
         [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent] ;
 END
 GO
-
 
 CREATE
     DATABASE SCOPED
@@ -332,7 +320,6 @@ CREATE
         SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
     ;
 GO
-
 
 ------  Step 3.  Create (define) an event session.  --------
 ------  The event session has an event with an action,
@@ -348,7 +335,6 @@ BEGIN
         ON DATABASE;
 END
 GO
-
 
 CREATE
     EVENT SESSION
@@ -375,7 +361,6 @@ CREATE
     ;
 GO
 
-
 ------  Step 4.  Start the event session.  ----------------
 ------  Issue the SQL Update statements that will be traced.
 ------  Then stop the session.
@@ -390,7 +375,6 @@ ALTER
     STATE = START;
 GO
 
-
 SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 UPDATE gmTabEmployee
@@ -404,14 +388,12 @@ UPDATE gmTabEmployee
 SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 GO
 
-
 ALTER
     EVENT SESSION
         gmeventsessionname240b
     ON DATABASE
     STATE = STOP;
 GO
-
 
 -------------- Step 5.  Select the results. ----------
 
@@ -427,7 +409,6 @@ SELECT
                 null, null, null
             );
 GO
-
 
 -------------- Step 6.  Clean up. ----------
 
@@ -450,8 +431,7 @@ PRINT 'Use PowerShell Remove-AzStorageAccount to delete your Azure Storage accou
 GO
 ```
 
-
-Ha a cél nem tud kapcsolódni a futtatásakor, le kell állítania és újra kell indítania az esemény-munkamenetet:
+If the target fails to attach when you run, you must stop and restart the event session:
 
 ```sql
 ALTER EVENT SESSION ... STATE = STOP;
@@ -460,13 +440,11 @@ ALTER EVENT SESSION ... STATE = START;
 GO
 ```
 
-
 ## <a name="output"></a>Kimenet
 
-Amikor a Transact-SQL parancsfájl befejeződik, kattintson egy cellára a **event_data_XML** oszlop fejlécében. Egy **\<event >** elem jelenik meg, amely egy Update utasítást mutat be.
+When the Transact-SQL script completes, click a cell under the **event_data_XML** column header. One **\<event>** element is displayed which shows one UPDATE statement.
 
-Itt látható egy **\<event >** elem, amelyet a rendszer a tesztelés során generált:
-
+Here is one **\<event>** element that was generated during testing:
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
@@ -507,40 +485,34 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
+The preceding Transact-SQL script used the following system function to read the event_file:
 
-Az előző Transact-SQL-szkript a következő rendszerfüggvényt használta a event_file olvasásához:
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
-* [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+An explanation of advanced options for the viewing of data from extended events is available at:
 
-A kiterjesztett események adatainak megtekintésére szolgáló speciális beállítások magyarázata a következő címen érhető el:
+- [Advanced Viewing of Target Data from Extended Events](https://msdn.microsoft.com/library/mt752502.aspx)
 
-* [A megcélzott adatok speciális megtekintése a kiterjesztett eseményekről](https://msdn.microsoft.com/library/mt752502.aspx)
+## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Converting the code sample to run on SQL Server
 
+Suppose you wanted to run the preceding Transact-SQL sample on Microsoft SQL Server.
 
-## <a name="converting-the-code-sample-to-run-on-sql-server"></a>A kód minta konvertálása SQL Serverre való futtatásra
-
-Tegyük fel, hogy az előző Transact-SQL-mintát szeretné futtatni Microsoft SQL Serveron.
-
-* Az egyszerűség kedvéért szeretné teljesen lecserélni az Azure Storage-tároló használatát egy egyszerű fájllal (például **C:\myeventdata.xel**). A fájl a SQL Servert futtató számítógép helyi merevlemezére íródik.
-* Nem szükséges semmilyen Transact-SQL-utasítás a **főkulcs létrehozásához** és a **hitelesítő adatok létrehozásához**.
-* Az **esemény-munkamenet létrehozása** utasításban, az **Add Target** záradékában a **filename =** számára hozzárendelt http-értéket cserélje le a teljes elérésiút-karakterlánccal (például **C:\myfile.xel**).
+- For simplicity, you would want to completely replace use of the Azure Storage container with a simple file such as *C:\myeventdata.xel*. The file would be written to the local hard drive of the computer that hosts SQL Server.
+- You would not need any kind of Transact-SQL statements for **CREATE MASTER KEY** and **CREATE CREDENTIAL**.
+- In the **CREATE EVENT SESSION** statement, in its **ADD TARGET** clause, you would replace the Http value assigned made to **filename=** with a full path string like *C:\myfile.xel*.
   
-  * Nincs szükség Azure Storage-fiókra.
+  - No Azure Storage account need be involved.
 
 ## <a name="more-information"></a>További információ
 
-Az Azure Storage szolgáltatás fiókjaival és tárolókkal kapcsolatos további információkért lásd:
+For more info about accounts and containers in the Azure Storage service, see:
 
-* [A blob Storage használata a .NET-keretrendszerrel](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Tárolók, blobok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [A legfelső szintű tároló használata](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [1. lecke: tárolt hozzáférési szabályzat és közös hozzáférésű aláírás létrehozása Azure-tárolón](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [2. lecke: SQL Server hitelesítő adat létrehozása közös hozzáférési aláírás használatával](https://msdn.microsoft.com/library/dn466435.aspx)
-* [Microsoft SQL Server bővített eseményei](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [How to use Blob storage from .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+- [Tárolók, blobok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+- [Working with the Root Container](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+- [Lesson 1: Create a stored access policy and a shared access signature on an Azure container](https://msdn.microsoft.com/library/dn466430.aspx)
+  - [Lesson 2: Create a SQL Server credential using a shared access signature](https://msdn.microsoft.com/library/dn466435.aspx)
+- [Extended Events for Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
-<!--
-Image references.
--->
-
+<!-- Image references. -->
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
-
